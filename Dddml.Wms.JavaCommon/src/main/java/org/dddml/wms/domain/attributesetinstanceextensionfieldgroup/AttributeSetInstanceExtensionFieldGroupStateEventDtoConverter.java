@@ -34,13 +34,6 @@ public class AttributeSetInstanceExtensionFieldGroupStateEventDtoConverter {
         dto.setNameFormat(e.getNameFormat());
         dto.setDescription(e.getDescription());
         dto.setActive(e.getActive());
-        List<AttributeSetInstanceExtensionFieldStateEventDto.AttributeSetInstanceExtensionFieldStateCreatedDto> attributeSetInstanceExtensionFieldEvents = new ArrayList<>();
-        for (AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateCreated ee : e.getAttributeSetInstanceExtensionFieldEvents()) {
-            AttributeSetInstanceExtensionFieldStateEventDto.AttributeSetInstanceExtensionFieldStateCreatedDto eeDto = getAttributeSetInstanceExtensionFieldStateEventDtoConverter().toAttributeSetInstanceExtensionFieldStateCreatedDto(ee);
-            attributeSetInstanceExtensionFieldEvents.add(eeDto);
-        }
-        dto.setAttributeSetInstanceExtensionFieldEvents(attributeSetInstanceExtensionFieldEvents.toArray(new AttributeSetInstanceExtensionFieldStateEventDto.AttributeSetInstanceExtensionFieldStateCreatedDto[0]));
-
         return dto;
     }
 
@@ -62,13 +55,6 @@ public class AttributeSetInstanceExtensionFieldGroupStateEventDtoConverter {
         dto.setIsPropertyNameFormatRemoved(e.getIsPropertyNameFormatRemoved());
         dto.setIsPropertyDescriptionRemoved(e.getIsPropertyDescriptionRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
-        List<AttributeSetInstanceExtensionFieldStateEventDto> attributeSetInstanceExtensionFieldEvents = new ArrayList<>();
-        for (AttributeSetInstanceExtensionFieldStateEvent ee : e.getAttributeSetInstanceExtensionFieldEvents()) {
-            AttributeSetInstanceExtensionFieldStateEventDto eeDto = getAttributeSetInstanceExtensionFieldStateEventDtoConverter().toAttributeSetInstanceExtensionFieldStateEventDto((AbstractAttributeSetInstanceExtensionFieldStateEvent) ee);
-            attributeSetInstanceExtensionFieldEvents.add(eeDto);
-        }
-        dto.setAttributeSetInstanceExtensionFieldEvents(attributeSetInstanceExtensionFieldEvents.toArray(new AttributeSetInstanceExtensionFieldStateEventDto[0]));
-
         return dto;
     }
 
@@ -79,18 +65,7 @@ public class AttributeSetInstanceExtensionFieldGroupStateEventDtoConverter {
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
-        List<AttributeSetInstanceExtensionFieldStateEventDto.AttributeSetInstanceExtensionFieldStateRemovedDto> attributeSetInstanceExtensionFieldEvents = new ArrayList<>();
-        for (AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateRemoved ee : e.getAttributeSetInstanceExtensionFieldEvents()) {
-            AttributeSetInstanceExtensionFieldStateEventDto.AttributeSetInstanceExtensionFieldStateRemovedDto eeDto = getAttributeSetInstanceExtensionFieldStateEventDtoConverter().toAttributeSetInstanceExtensionFieldStateRemovedDto(ee);
-            attributeSetInstanceExtensionFieldEvents.add(eeDto);
-        }
-        dto.setAttributeSetInstanceExtensionFieldEvents(attributeSetInstanceExtensionFieldEvents.toArray(new AttributeSetInstanceExtensionFieldStateEventDto.AttributeSetInstanceExtensionFieldStateRemovedDto[0]));
-
         return dto;
-    }
-
-    protected AttributeSetInstanceExtensionFieldStateEventDtoConverter getAttributeSetInstanceExtensionFieldStateEventDtoConverter() {
-        return new AttributeSetInstanceExtensionFieldStateEventDtoConverter();
     }
 
 }

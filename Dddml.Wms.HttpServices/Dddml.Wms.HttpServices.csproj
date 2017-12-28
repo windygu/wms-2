@@ -278,7 +278,7 @@
     <Compile Include="Generated\Controllers\AttributeSetInstanceExtensionFieldGroupsController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Controllers\AttributeSetInstanceExtensionFieldMvosController.cs">
+    <Compile Include="Generated\Controllers\AttributeSetInstanceExtensionFieldsController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\AttributeSetInstancesController.cs">
@@ -457,7 +457,7 @@
       <LastOutputs>
 .\AttributesController.cs
 .\AttributeSetInstanceExtensionFieldGroupsController.cs
-.\AttributeSetInstanceExtensionFieldMvosController.cs
+.\AttributeSetInstanceExtensionFieldsController.cs
 .\AttributeSetInstancesController.cs
 .\AttributeSetsController.cs
 .\AttributeUseMvosController.cs

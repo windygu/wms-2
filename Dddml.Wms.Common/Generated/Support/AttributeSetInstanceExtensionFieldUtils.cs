@@ -138,6 +138,7 @@ namespace Dddml.Wms.Support
                 },
             };
 
+            /*
             foreach (var g in groups)
             {
                 for (int i = 0; i < g.FieldCount; i++)
@@ -151,6 +152,7 @@ namespace Dddml.Wms.Support
                     g.Fields.Add(field);
                 }
             }
+            */
 
             return groups;
 

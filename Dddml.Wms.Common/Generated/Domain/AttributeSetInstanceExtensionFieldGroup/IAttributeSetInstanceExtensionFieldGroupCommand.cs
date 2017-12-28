@@ -40,10 +40,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 
 	public interface ICreateAttributeSetInstanceExtensionFieldGroup : ICreateOrMergePatchOrDeleteAttributeSetInstanceExtensionFieldGroup
 	{
-        ICreateAttributeSetInstanceExtensionFieldCommands Fields { get; }
-
-        ICreateAttributeSetInstanceExtensionField NewCreateAttributeSetInstanceExtensionField();
-
 	}
 
 	public interface IMergePatchAttributeSetInstanceExtensionFieldGroup : ICreateOrMergePatchOrDeleteAttributeSetInstanceExtensionFieldGroup
@@ -61,40 +57,12 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 
 		bool IsPropertyActiveRemoved { get; set; }
 
-        IAttributeSetInstanceExtensionFieldCommands AttributeSetInstanceExtensionFieldCommands { get; }
-
-        ICreateAttributeSetInstanceExtensionField NewCreateAttributeSetInstanceExtensionField();
-
-        IMergePatchAttributeSetInstanceExtensionField NewMergePatchAttributeSetInstanceExtensionField();
-
-        IRemoveAttributeSetInstanceExtensionField NewRemoveAttributeSetInstanceExtensionField();
-
 
 	}
 
 	public interface IDeleteAttributeSetInstanceExtensionFieldGroup : ICreateOrMergePatchOrDeleteAttributeSetInstanceExtensionFieldGroup
 	{
 	}
-
-    public interface ICreateAttributeSetInstanceExtensionFieldCommands : IEnumerable<ICreateAttributeSetInstanceExtensionField>
-    {
-        void Add(ICreateAttributeSetInstanceExtensionField c);
-
-        void Remove(ICreateAttributeSetInstanceExtensionField c);
-
-        void Clear();
-
-    }
-
-    public interface IAttributeSetInstanceExtensionFieldCommands : IEnumerable<IAttributeSetInstanceExtensionFieldCommand>
-    {
-        void Add(IAttributeSetInstanceExtensionFieldCommand c);
-
-        void Remove(IAttributeSetInstanceExtensionFieldCommand c);
-
-        void Clear();
-
-    }
 
 
 }

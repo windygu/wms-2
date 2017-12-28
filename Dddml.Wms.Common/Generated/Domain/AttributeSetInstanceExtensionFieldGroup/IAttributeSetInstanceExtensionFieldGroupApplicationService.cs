@@ -39,8 +39,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 
         IAttributeSetInstanceExtensionFieldGroupState GetHistoryState(string id, long version);
 
-        IAttributeSetInstanceExtensionFieldState GetAttributeSetInstanceExtensionField(string groupId, string index);
-
 
 	}
 

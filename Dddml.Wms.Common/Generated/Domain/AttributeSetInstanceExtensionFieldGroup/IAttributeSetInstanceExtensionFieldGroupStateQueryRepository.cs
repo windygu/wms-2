@@ -32,8 +32,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 
         long GetCount(ICriterion filter);
 
-        IAttributeSetInstanceExtensionFieldState GetAttributeSetInstanceExtensionField(string groupId, string index);
-
 	}
 
 }

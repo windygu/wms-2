@@ -15,20 +15,18 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 	public static partial class AttributeSetInstanceExtensionFieldGroupStateInterfaceExtension
 	{
 
-        public static IAttributeSetInstanceExtensionFieldGroupCommand ToCreateOrMergePatchAttributeSetInstanceExtensionFieldGroup<TCreateAttributeSetInstanceExtensionFieldGroup, TMergePatchAttributeSetInstanceExtensionFieldGroup, TCreateAttributeSetInstanceExtensionField, TMergePatchAttributeSetInstanceExtensionField>(this IAttributeSetInstanceExtensionFieldGroupState state)
+        public static IAttributeSetInstanceExtensionFieldGroupCommand ToCreateOrMergePatchAttributeSetInstanceExtensionFieldGroup<TCreateAttributeSetInstanceExtensionFieldGroup, TMergePatchAttributeSetInstanceExtensionFieldGroup>(this IAttributeSetInstanceExtensionFieldGroupState state)
             where TCreateAttributeSetInstanceExtensionFieldGroup : ICreateAttributeSetInstanceExtensionFieldGroup, new()
             where TMergePatchAttributeSetInstanceExtensionFieldGroup : IMergePatchAttributeSetInstanceExtensionFieldGroup, new()
-            where TCreateAttributeSetInstanceExtensionField : ICreateAttributeSetInstanceExtensionField, new()
-            where TMergePatchAttributeSetInstanceExtensionField : IMergePatchAttributeSetInstanceExtensionField, new()
         {
             bool bUnsaved = ((IAttributeSetInstanceExtensionFieldGroupState)state).IsUnsaved;
             if (bUnsaved)
             {
-                return state.ToCreateAttributeSetInstanceExtensionFieldGroup<TCreateAttributeSetInstanceExtensionFieldGroup, TCreateAttributeSetInstanceExtensionField>();
+                return state.ToCreateAttributeSetInstanceExtensionFieldGroup<TCreateAttributeSetInstanceExtensionFieldGroup>();
             }
             else 
             {
-                return state.ToMergePatchAttributeSetInstanceExtensionFieldGroup<TMergePatchAttributeSetInstanceExtensionFieldGroup, TCreateAttributeSetInstanceExtensionField, TMergePatchAttributeSetInstanceExtensionField>();
+                return state.ToMergePatchAttributeSetInstanceExtensionFieldGroup<TMergePatchAttributeSetInstanceExtensionFieldGroup>();
             }
         }
 
@@ -42,10 +40,8 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
             return cmd;
         }
 
-        public static TMergePatchAttributeSetInstanceExtensionFieldGroup ToMergePatchAttributeSetInstanceExtensionFieldGroup<TMergePatchAttributeSetInstanceExtensionFieldGroup, TCreateAttributeSetInstanceExtensionField, TMergePatchAttributeSetInstanceExtensionField>(this IAttributeSetInstanceExtensionFieldGroupState state)
+        public static TMergePatchAttributeSetInstanceExtensionFieldGroup ToMergePatchAttributeSetInstanceExtensionFieldGroup<TMergePatchAttributeSetInstanceExtensionFieldGroup>(this IAttributeSetInstanceExtensionFieldGroupState state)
             where TMergePatchAttributeSetInstanceExtensionFieldGroup : IMergePatchAttributeSetInstanceExtensionFieldGroup, new()
-            where TCreateAttributeSetInstanceExtensionField : ICreateAttributeSetInstanceExtensionField, new()
-            where TMergePatchAttributeSetInstanceExtensionField : IMergePatchAttributeSetInstanceExtensionField, new()
         {
             var cmd = new TMergePatchAttributeSetInstanceExtensionFieldGroup();
 
@@ -63,17 +59,11 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
             if (state.FieldLength == null) { cmd.IsPropertyFieldLengthRemoved = true; }
             if (state.NameFormat == null) { cmd.IsPropertyNameFormatRemoved = true; }
             if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
-            foreach (var d in state.Fields)
-            {
-                var c = d.ToCreateOrMergePatchAttributeSetInstanceExtensionField<TCreateAttributeSetInstanceExtensionField, TMergePatchAttributeSetInstanceExtensionField>();
-                cmd.AttributeSetInstanceExtensionFieldCommands.Add(c);
-            }
             return cmd;
         }
 
-        public static TCreateAttributeSetInstanceExtensionFieldGroup ToCreateAttributeSetInstanceExtensionFieldGroup<TCreateAttributeSetInstanceExtensionFieldGroup, TCreateAttributeSetInstanceExtensionField>(this IAttributeSetInstanceExtensionFieldGroupState state)
+        public static TCreateAttributeSetInstanceExtensionFieldGroup ToCreateAttributeSetInstanceExtensionFieldGroup<TCreateAttributeSetInstanceExtensionFieldGroup>(this IAttributeSetInstanceExtensionFieldGroupState state)
             where TCreateAttributeSetInstanceExtensionFieldGroup : ICreateAttributeSetInstanceExtensionFieldGroup, new()
-            where TCreateAttributeSetInstanceExtensionField : ICreateAttributeSetInstanceExtensionField, new()
         {
             var cmd = new TCreateAttributeSetInstanceExtensionFieldGroup();
 
@@ -86,11 +76,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
             cmd.NameFormat = state.NameFormat;
             cmd.Description = state.Description;
             cmd.Active = ((IAttributeSetInstanceExtensionFieldGroupStateProperties)state).Active;
-            foreach (var d in state.Fields)
-            {
-                var c = d.ToCreateAttributeSetInstanceExtensionField<TCreateAttributeSetInstanceExtensionField>();
-                cmd.Fields.Add(c);
-            }
             return cmd;
         }
 		

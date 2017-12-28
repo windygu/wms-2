@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 
-public abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateCommandConverter<TCreateAttributeSetInstanceExtensionFieldGroup extends AttributeSetInstanceExtensionFieldGroupCommand.CreateAttributeSetInstanceExtensionFieldGroup, TMergePatchAttributeSetInstanceExtensionFieldGroup extends AttributeSetInstanceExtensionFieldGroupCommand.MergePatchAttributeSetInstanceExtensionFieldGroup, TDeleteAttributeSetInstanceExtensionFieldGroup extends AttributeSetInstanceExtensionFieldGroupCommand.DeleteAttributeSetInstanceExtensionFieldGroup, TCreateAttributeSetInstanceExtensionField extends AttributeSetInstanceExtensionFieldCommand.CreateAttributeSetInstanceExtensionField, TMergePatchAttributeSetInstanceExtensionField extends AttributeSetInstanceExtensionFieldCommand.MergePatchAttributeSetInstanceExtensionField, TRemoveAttributeSetInstanceExtensionField extends AttributeSetInstanceExtensionFieldCommand.RemoveAttributeSetInstanceExtensionField>
+public abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateCommandConverter<TCreateAttributeSetInstanceExtensionFieldGroup extends AttributeSetInstanceExtensionFieldGroupCommand.CreateAttributeSetInstanceExtensionFieldGroup, TMergePatchAttributeSetInstanceExtensionFieldGroup extends AttributeSetInstanceExtensionFieldGroupCommand.MergePatchAttributeSetInstanceExtensionFieldGroup, TDeleteAttributeSetInstanceExtensionFieldGroup extends AttributeSetInstanceExtensionFieldGroupCommand.DeleteAttributeSetInstanceExtensionFieldGroup>
 {
     public AttributeSetInstanceExtensionFieldGroupCommand toCreateOrMergePatchAttributeSetInstanceExtensionFieldGroup(AttributeSetInstanceExtensionFieldGroupState state)
     {
@@ -50,11 +50,6 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateComman
         if (state.getNameFormat() == null) { cmd.setIsPropertyNameFormatRemoved(true); }
         if (state.getDescription() == null) { cmd.setIsPropertyDescriptionRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
-        for (AttributeSetInstanceExtensionFieldState d : state.getFields())
-        {
-            AttributeSetInstanceExtensionFieldCommand c = getAttributeSetInstanceExtensionFieldStateCommandConverter().toCreateOrMergePatchAttributeSetInstanceExtensionField(d);
-            cmd.getAttributeSetInstanceExtensionFieldCommands().add(c);
-        }
         return cmd;
     }
 
@@ -70,16 +65,8 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateComman
         cmd.setNameFormat(state.getNameFormat());
         cmd.setDescription(state.getDescription());
         cmd.setActive(state.getActive());
-        for (AttributeSetInstanceExtensionFieldState d : state.getFields())
-        {
-            AttributeSetInstanceExtensionFieldCommand.CreateAttributeSetInstanceExtensionField c = getAttributeSetInstanceExtensionFieldStateCommandConverter().toCreateAttributeSetInstanceExtensionField(d);
-            cmd.getFields().add(c);
-        }
         return cmd;
     }
-
-    protected abstract AbstractAttributeSetInstanceExtensionFieldStateCommandConverter<TCreateAttributeSetInstanceExtensionField, TMergePatchAttributeSetInstanceExtensionField, TRemoveAttributeSetInstanceExtensionField>
-        getAttributeSetInstanceExtensionFieldStateCommandConverter();
 
     protected abstract TCreateAttributeSetInstanceExtensionFieldGroup newCreateAttributeSetInstanceExtensionFieldGroup();
 
@@ -87,7 +74,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateComman
 
     protected abstract TDeleteAttributeSetInstanceExtensionFieldGroup newDeleteAttributeSetInstanceExtensionFieldGroup();
 
-    public static class SimpleAttributeSetInstanceExtensionFieldGroupStateCommandConverter extends AbstractAttributeSetInstanceExtensionFieldGroupStateCommandConverter<AbstractAttributeSetInstanceExtensionFieldGroupCommand.SimpleCreateAttributeSetInstanceExtensionFieldGroup, AbstractAttributeSetInstanceExtensionFieldGroupCommand.SimpleMergePatchAttributeSetInstanceExtensionFieldGroup, AbstractAttributeSetInstanceExtensionFieldGroupCommand.SimpleDeleteAttributeSetInstanceExtensionFieldGroup, AbstractAttributeSetInstanceExtensionFieldCommand.SimpleCreateAttributeSetInstanceExtensionField, AbstractAttributeSetInstanceExtensionFieldCommand.SimpleMergePatchAttributeSetInstanceExtensionField, AbstractAttributeSetInstanceExtensionFieldCommand.SimpleRemoveAttributeSetInstanceExtensionField>
+    public static class SimpleAttributeSetInstanceExtensionFieldGroupStateCommandConverter extends AbstractAttributeSetInstanceExtensionFieldGroupStateCommandConverter<AbstractAttributeSetInstanceExtensionFieldGroupCommand.SimpleCreateAttributeSetInstanceExtensionFieldGroup, AbstractAttributeSetInstanceExtensionFieldGroupCommand.SimpleMergePatchAttributeSetInstanceExtensionFieldGroup, AbstractAttributeSetInstanceExtensionFieldGroupCommand.SimpleDeleteAttributeSetInstanceExtensionFieldGroup>
     {
         @Override
         protected AbstractAttributeSetInstanceExtensionFieldGroupCommand.SimpleCreateAttributeSetInstanceExtensionFieldGroup newCreateAttributeSetInstanceExtensionFieldGroup() {
@@ -102,12 +89,6 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateComman
         @Override
         protected AbstractAttributeSetInstanceExtensionFieldGroupCommand.SimpleDeleteAttributeSetInstanceExtensionFieldGroup newDeleteAttributeSetInstanceExtensionFieldGroup() {
             return new AbstractAttributeSetInstanceExtensionFieldGroupCommand.SimpleDeleteAttributeSetInstanceExtensionFieldGroup();
-        }
-
-        @Override
-        protected AbstractAttributeSetInstanceExtensionFieldStateCommandConverter<AbstractAttributeSetInstanceExtensionFieldCommand.SimpleCreateAttributeSetInstanceExtensionField, AbstractAttributeSetInstanceExtensionFieldCommand.SimpleMergePatchAttributeSetInstanceExtensionField, AbstractAttributeSetInstanceExtensionFieldCommand.SimpleRemoveAttributeSetInstanceExtensionField> getAttributeSetInstanceExtensionFieldStateCommandConverter()
-        {
-            return new AbstractAttributeSetInstanceExtensionFieldStateCommandConverter.SimpleAttributeSetInstanceExtensionFieldStateCommandConverter();
         }
 
 

@@ -54,12 +54,6 @@
     <Content Include="src\main\java\org\dddml\wms\domain\AbstractStateEvent.java">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AbstractAttributeSetInstanceExtensionFieldCommand.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AbstractAttributeSetInstanceExtensionFieldCommandDto.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AbstractAttributeSetInstanceExtensionFieldGroupAggregate.java">
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
     </Content>
@@ -79,21 +73,6 @@
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AbstractAttributeSetInstanceExtensionFieldGroupStateEvent.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AbstractAttributeSetInstanceExtensionFieldState.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AbstractAttributeSetInstanceExtensionFieldStateCommandConverter.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AbstractAttributeSetInstanceExtensionFieldStateEvent.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AbstractAttributeSetInstanceExtensionFieldStates.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AttributeSetInstanceExtensionFieldCommand.java">
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AttributeSetInstanceExtensionFieldGroupAggregate.java">
@@ -141,63 +120,6 @@
     <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AttributeSetInstanceExtensionFieldGroupStateRepository.java">
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AttributeSetInstanceExtensionFieldId.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AttributeSetInstanceExtensionFieldIdDto.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AttributeSetInstanceExtensionFieldIdDtoWrapper.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AttributeSetInstanceExtensionFieldIdFlattenedDto.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AttributeSetInstanceExtensionFieldIdFlattenedDtoFormatter.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AttributeSetInstanceExtensionFieldState.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AttributeSetInstanceExtensionFieldStateDao.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AttributeSetInstanceExtensionFieldStateDto.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AttributeSetInstanceExtensionFieldStateEvent.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AttributeSetInstanceExtensionFieldStateEventDao.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AttributeSetInstanceExtensionFieldStateEventDto.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AttributeSetInstanceExtensionFieldStateEventDtoConverter.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AttributeSetInstanceExtensionFieldStateEventId.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AttributeSetInstanceExtensionFieldStateEventIdDto.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AttributeSetInstanceExtensionFieldStateEventIdDtoWrapper.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AttributeSetInstanceExtensionFieldStateEventIdFlattenedDto.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AttributeSetInstanceExtensionFieldStateEventIdFlattenedDtoFormatter.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\AttributeSetInstanceExtensionFieldStates.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\CreateOrMergePatchAttributeSetInstanceExtensionFieldDto.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\CreateOrMergePatchAttributeSetInstanceExtensionFieldGroupDto.java">
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
     </Content>
@@ -209,85 +131,82 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\RemoveAttributeSetInstanceExtensionFieldDto.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\AbstractAttributeSetInstanceExtensionFieldAggregate.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\AbstractAttributeSetInstanceExtensionFieldMvoAggregate.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\AbstractAttributeSetInstanceExtensionFieldApplicationService.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\AbstractAttributeSetInstanceExtensionFieldMvoApplicationService.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\AbstractAttributeSetInstanceExtensionFieldCommand.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\AbstractAttributeSetInstanceExtensionFieldMvoCommand.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\AbstractAttributeSetInstanceExtensionFieldCommandDto.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\AbstractAttributeSetInstanceExtensionFieldMvoCommandDto.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\AbstractAttributeSetInstanceExtensionFieldState.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\AbstractAttributeSetInstanceExtensionFieldMvoState.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\AbstractAttributeSetInstanceExtensionFieldStateCommandConverter.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\AbstractAttributeSetInstanceExtensionFieldMvoStateCommandConverter.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\AbstractAttributeSetInstanceExtensionFieldStateEvent.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\AbstractAttributeSetInstanceExtensionFieldMvoStateEvent.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\AttributeSetInstanceExtensionFieldAggregate.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\AttributeSetInstanceExtensionFieldMvoAggregate.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\AttributeSetInstanceExtensionFieldApplicationService.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\AttributeSetInstanceExtensionFieldMvoApplicationService.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\AttributeSetInstanceExtensionFieldCommand.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\AttributeSetInstanceExtensionFieldMvoCommand.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\AttributeSetInstanceExtensionFieldState.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\AttributeSetInstanceExtensionFieldMvoState.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\AttributeSetInstanceExtensionFieldStateDto.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\AttributeSetInstanceExtensionFieldMvoStateDto.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\AttributeSetInstanceExtensionFieldStateEvent.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\AttributeSetInstanceExtensionFieldMvoStateEvent.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\AttributeSetInstanceExtensionFieldStateEventDto.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\AttributeSetInstanceExtensionFieldMvoStateEventDto.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\AttributeSetInstanceExtensionFieldStateEventDtoConverter.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\AttributeSetInstanceExtensionFieldMvoStateEventDtoConverter.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\AttributeSetInstanceExtensionFieldStateEventId.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\AttributeSetInstanceExtensionFieldMvoStateEventId.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\AttributeSetInstanceExtensionFieldStateEventIdDto.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\AttributeSetInstanceExtensionFieldMvoStateEventIdDto.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\AttributeSetInstanceExtensionFieldStateEventIdDtoWrapper.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\AttributeSetInstanceExtensionFieldMvoStateEventIdDtoWrapper.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\AttributeSetInstanceExtensionFieldStateEventIdFlattenedDto.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\AttributeSetInstanceExtensionFieldMvoStateEventIdFlattenedDto.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\AttributeSetInstanceExtensionFieldStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\AttributeSetInstanceExtensionFieldMvoStateEventIdFlattenedDtoFormatter.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\AttributeSetInstanceExtensionFieldStateQueryRepository.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\AttributeSetInstanceExtensionFieldMvoStateQueryRepository.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\AttributeSetInstanceExtensionFieldStateRepository.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\AttributeSetInstanceExtensionFieldMvoStateRepository.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\CreateOrMergePatchAttributeSetInstanceExtensionFieldDto.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\CreateOrMergePatchAttributeSetInstanceExtensionFieldMvoDto.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\DeleteAttributeSetInstanceExtensionFieldDto.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\DeleteAttributeSetInstanceExtensionFieldMvoDto.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\GenerateAttributeSetInstanceExtensionFieldMvoDomain.txt">
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\GenerateAttributeSetInstanceExtensionFieldDomain.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstance\AbstractAttributeSetInstanceAggregate.java">
       <DependentUpon>GenerateAttributeSetInstanceDomain.tt</DependentUpon>
@@ -1966,12 +1885,6 @@
     <Content Include="src\main\java\org\dddml\wms\domain\meta\AttributeSetInstanceExtensionFieldMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\meta\AttributeSetInstanceExtensionFieldMvoFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\meta\AttributeSetInstanceExtensionFieldMvoMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\meta\AttributeSetInstanceFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
@@ -2025,8 +1938,6 @@
 .\AttributeSetInstanceExtensionFieldGroupFilteringProperties.java
 .\AttributeSetInstanceExtensionFieldGroupMetadata.java
 .\AttributeSetInstanceExtensionFieldMetadata.java
-.\AttributeSetInstanceExtensionFieldMvoFilteringProperties.java
-.\AttributeSetInstanceExtensionFieldMvoMetadata.java
 .\AttributeSetInstanceFilteringProperties.java
 .\AttributeSetInstanceMetadata.java
 .\AttributeSetMetadata.java
@@ -5084,8 +4995,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAttributeSetInstanceExtensionFieldGroupDomain.txt</LastGenOutput>
       <LastOutputs>
-.\AbstractAttributeSetInstanceExtensionFieldCommand.java
-.\AbstractAttributeSetInstanceExtensionFieldCommandDto.java
 .\AbstractAttributeSetInstanceExtensionFieldGroupAggregate.java
 .\AbstractAttributeSetInstanceExtensionFieldGroupApplicationService.java
 .\AbstractAttributeSetInstanceExtensionFieldGroupCommand.java
@@ -5093,11 +5002,6 @@
 .\AbstractAttributeSetInstanceExtensionFieldGroupState.java
 .\AbstractAttributeSetInstanceExtensionFieldGroupStateCommandConverter.java
 .\AbstractAttributeSetInstanceExtensionFieldGroupStateEvent.java
-.\AbstractAttributeSetInstanceExtensionFieldState.java
-.\AbstractAttributeSetInstanceExtensionFieldStateCommandConverter.java
-.\AbstractAttributeSetInstanceExtensionFieldStateEvent.java
-.\AbstractAttributeSetInstanceExtensionFieldStates.java
-.\AttributeSetInstanceExtensionFieldCommand.java
 .\AttributeSetInstanceExtensionFieldGroupAggregate.java
 .\AttributeSetInstanceExtensionFieldGroupApplicationService.java
 .\AttributeSetInstanceExtensionFieldGroupCommand.java
@@ -5113,29 +5017,9 @@
 .\AttributeSetInstanceExtensionFieldGroupStateEventIdFlattenedDtoFormatter.java
 .\AttributeSetInstanceExtensionFieldGroupStateQueryRepository.java
 .\AttributeSetInstanceExtensionFieldGroupStateRepository.java
-.\AttributeSetInstanceExtensionFieldId.java
-.\AttributeSetInstanceExtensionFieldIdDto.java
-.\AttributeSetInstanceExtensionFieldIdDtoWrapper.java
-.\AttributeSetInstanceExtensionFieldIdFlattenedDto.java
-.\AttributeSetInstanceExtensionFieldIdFlattenedDtoFormatter.java
-.\AttributeSetInstanceExtensionFieldState.java
-.\AttributeSetInstanceExtensionFieldStateDao.java
-.\AttributeSetInstanceExtensionFieldStateDto.java
-.\AttributeSetInstanceExtensionFieldStateEvent.java
-.\AttributeSetInstanceExtensionFieldStateEventDao.java
-.\AttributeSetInstanceExtensionFieldStateEventDto.java
-.\AttributeSetInstanceExtensionFieldStateEventDtoConverter.java
-.\AttributeSetInstanceExtensionFieldStateEventId.java
-.\AttributeSetInstanceExtensionFieldStateEventIdDto.java
-.\AttributeSetInstanceExtensionFieldStateEventIdDtoWrapper.java
-.\AttributeSetInstanceExtensionFieldStateEventIdFlattenedDto.java
-.\AttributeSetInstanceExtensionFieldStateEventIdFlattenedDtoFormatter.java
-.\AttributeSetInstanceExtensionFieldStates.java
-.\CreateOrMergePatchAttributeSetInstanceExtensionFieldDto.java
 .\CreateOrMergePatchAttributeSetInstanceExtensionFieldGroupDto.java
 .\DeleteAttributeSetInstanceExtensionFieldGroupDto.java
 .\GenerateAttributeSetInstanceExtensionFieldGroupDomain.txt
-.\RemoveAttributeSetInstanceExtensionFieldDto.java
 </LastOutputs>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\attribute\GenerateAttributeDomain.tt">
@@ -5345,37 +5229,6 @@
 .\InOutLineMvoStateEventIdFlattenedDtoFormatter.java
 .\InOutLineMvoStateQueryRepository.java
 .\InOutLineMvoStateRepository.java
-</LastOutputs>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateAttributeSetInstanceExtensionFieldMvoDomain.txt</LastGenOutput>
-      <LastOutputs>
-.\AbstractAttributeSetInstanceExtensionFieldMvoAggregate.java
-.\AbstractAttributeSetInstanceExtensionFieldMvoApplicationService.java
-.\AbstractAttributeSetInstanceExtensionFieldMvoCommand.java
-.\AbstractAttributeSetInstanceExtensionFieldMvoCommandDto.java
-.\AbstractAttributeSetInstanceExtensionFieldMvoState.java
-.\AbstractAttributeSetInstanceExtensionFieldMvoStateCommandConverter.java
-.\AbstractAttributeSetInstanceExtensionFieldMvoStateEvent.java
-.\AttributeSetInstanceExtensionFieldMvoAggregate.java
-.\AttributeSetInstanceExtensionFieldMvoApplicationService.java
-.\AttributeSetInstanceExtensionFieldMvoCommand.java
-.\AttributeSetInstanceExtensionFieldMvoState.java
-.\AttributeSetInstanceExtensionFieldMvoStateDto.java
-.\AttributeSetInstanceExtensionFieldMvoStateEvent.java
-.\AttributeSetInstanceExtensionFieldMvoStateEventDto.java
-.\AttributeSetInstanceExtensionFieldMvoStateEventDtoConverter.java
-.\AttributeSetInstanceExtensionFieldMvoStateEventId.java
-.\AttributeSetInstanceExtensionFieldMvoStateEventIdDto.java
-.\AttributeSetInstanceExtensionFieldMvoStateEventIdDtoWrapper.java
-.\AttributeSetInstanceExtensionFieldMvoStateEventIdFlattenedDto.java
-.\AttributeSetInstanceExtensionFieldMvoStateEventIdFlattenedDtoFormatter.java
-.\AttributeSetInstanceExtensionFieldMvoStateQueryRepository.java
-.\AttributeSetInstanceExtensionFieldMvoStateRepository.java
-.\CreateOrMergePatchAttributeSetInstanceExtensionFieldMvoDto.java
-.\DeleteAttributeSetInstanceExtensionFieldMvoDto.java
-.\GenerateAttributeSetInstanceExtensionFieldMvoDomain.txt
 </LastOutputs>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\inventoryitem\GenerateInventoryItemDomain.tt">
@@ -6457,6 +6310,37 @@
 .\PhysicalInventoryLineMvoStateEventIdFlattenedDtoFormatter.java
 .\PhysicalInventoryLineMvoStateQueryRepository.java
 .\PhysicalInventoryLineMvoStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\GenerateAttributeSetInstanceExtensionFieldDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateAttributeSetInstanceExtensionFieldDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractAttributeSetInstanceExtensionFieldAggregate.java
+.\AbstractAttributeSetInstanceExtensionFieldApplicationService.java
+.\AbstractAttributeSetInstanceExtensionFieldCommand.java
+.\AbstractAttributeSetInstanceExtensionFieldCommandDto.java
+.\AbstractAttributeSetInstanceExtensionFieldState.java
+.\AbstractAttributeSetInstanceExtensionFieldStateCommandConverter.java
+.\AbstractAttributeSetInstanceExtensionFieldStateEvent.java
+.\AttributeSetInstanceExtensionFieldAggregate.java
+.\AttributeSetInstanceExtensionFieldApplicationService.java
+.\AttributeSetInstanceExtensionFieldCommand.java
+.\AttributeSetInstanceExtensionFieldState.java
+.\AttributeSetInstanceExtensionFieldStateDto.java
+.\AttributeSetInstanceExtensionFieldStateEvent.java
+.\AttributeSetInstanceExtensionFieldStateEventDto.java
+.\AttributeSetInstanceExtensionFieldStateEventDtoConverter.java
+.\AttributeSetInstanceExtensionFieldStateEventId.java
+.\AttributeSetInstanceExtensionFieldStateEventIdDto.java
+.\AttributeSetInstanceExtensionFieldStateEventIdDtoWrapper.java
+.\AttributeSetInstanceExtensionFieldStateEventIdFlattenedDto.java
+.\AttributeSetInstanceExtensionFieldStateEventIdFlattenedDtoFormatter.java
+.\AttributeSetInstanceExtensionFieldStateQueryRepository.java
+.\AttributeSetInstanceExtensionFieldStateRepository.java
+.\CreateOrMergePatchAttributeSetInstanceExtensionFieldDto.java
+.\DeleteAttributeSetInstanceExtensionFieldDto.java
+.\GenerateAttributeSetInstanceExtensionFieldDomain.txt
 </LastOutputs>
     </Content>
   </ItemGroup>

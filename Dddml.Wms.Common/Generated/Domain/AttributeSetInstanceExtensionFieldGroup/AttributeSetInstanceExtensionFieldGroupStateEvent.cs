@@ -92,33 +92,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
             this.StateEventId = stateEventId;
         }
 
-		protected IAttributeSetInstanceExtensionFieldStateEventDao AttributeSetInstanceExtensionFieldStateEventDao
-		{
-			get { return ApplicationContext.Current["AttributeSetInstanceExtensionFieldStateEventDao"] as IAttributeSetInstanceExtensionFieldStateEventDao; }
-		}
-
-        protected AttributeSetInstanceExtensionFieldStateEventId NewAttributeSetInstanceExtensionFieldStateEventId(string index)
-        {
-            var stateEventId = new AttributeSetInstanceExtensionFieldStateEventId(this.StateEventId.Id, index, this.StateEventId.Version);
-            return stateEventId;
-        }
-
-
-        protected void ThrowOnInconsistentEventIds(IAttributeSetInstanceExtensionFieldStateEvent e)
-        {
-            ThrowOnInconsistentEventIds(this, e);
-        }
-
-		public static void ThrowOnInconsistentEventIds(IAttributeSetInstanceExtensionFieldGroupStateEvent oe, IAttributeSetInstanceExtensionFieldStateEvent e)
-		{
-			if (!oe.StateEventId.Id.Equals(e.StateEventId.GroupId))
-			{ 
-				throw DomainError.Named("inconsistentEventIds", "Outer Id Id {0} but inner id GroupId {1}", 
-					oe.StateEventId.Id, e.StateEventId.GroupId);
-			}
-		}
-
-
 
         string IStateEventDto.StateEventType
         {
@@ -129,7 +102,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 
 	}
 
-	public class AttributeSetInstanceExtensionFieldGroupStateCreated : AttributeSetInstanceExtensionFieldGroupStateEventBase, IAttributeSetInstanceExtensionFieldGroupStateCreated, ISaveable
+	public class AttributeSetInstanceExtensionFieldGroupStateCreated : AttributeSetInstanceExtensionFieldGroupStateEventBase, IAttributeSetInstanceExtensionFieldGroupStateCreated
 	{
 		public AttributeSetInstanceExtensionFieldGroupStateCreated () : this(new AttributeSetInstanceExtensionFieldGroupStateEventId())
 		{
@@ -139,62 +112,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 		{
 		}
 
-		private Dictionary<AttributeSetInstanceExtensionFieldStateEventId, IAttributeSetInstanceExtensionFieldStateCreated> _attributeSetInstanceExtensionFieldEvents = new Dictionary<AttributeSetInstanceExtensionFieldStateEventId, IAttributeSetInstanceExtensionFieldStateCreated>();
-        
-        private IEnumerable<IAttributeSetInstanceExtensionFieldStateCreated> _readOnlyAttributeSetInstanceExtensionFieldEvents;
-
-        public virtual IEnumerable<IAttributeSetInstanceExtensionFieldStateCreated> AttributeSetInstanceExtensionFieldEvents
-        {
-            get
-            {
-                if (!StateEventReadOnly)
-                {
-                    return this._attributeSetInstanceExtensionFieldEvents.Values;
-                }
-                else
-                {
-                    if (_readOnlyAttributeSetInstanceExtensionFieldEvents != null) { return _readOnlyAttributeSetInstanceExtensionFieldEvents; }
-                    var eventDao = AttributeSetInstanceExtensionFieldStateEventDao;
-                    var eL = new List<IAttributeSetInstanceExtensionFieldStateCreated>();
-                    foreach (var e in eventDao.FindByAttributeSetInstanceExtensionFieldGroupStateEventId(this.StateEventId))
-                    {
-                        e.ReadOnly = true;
-                        eL.Add((IAttributeSetInstanceExtensionFieldStateCreated)e);
-                    }
-                    return (_readOnlyAttributeSetInstanceExtensionFieldEvents = eL);
-                }
-            }
-            set 
-            {
-                if (value != null)
-                {
-                    foreach (var e in value)
-                    {
-                        AddAttributeSetInstanceExtensionFieldEvent(e);
-                    }
-                }
-                else { this._attributeSetInstanceExtensionFieldEvents.Clear(); }
-            }
-        }
-    
-		public virtual void AddAttributeSetInstanceExtensionFieldEvent(IAttributeSetInstanceExtensionFieldStateCreated e)
-		{
-			ThrowOnInconsistentEventIds(e);
-			this._attributeSetInstanceExtensionFieldEvents[e.StateEventId] = e;
-		}
-
-        public virtual IAttributeSetInstanceExtensionFieldStateCreated NewAttributeSetInstanceExtensionFieldStateCreated(string index)
-        {
-            var stateEvent = new AttributeSetInstanceExtensionFieldStateCreated(NewAttributeSetInstanceExtensionFieldStateEventId(index));
-            return stateEvent;
-        }
-
-		public virtual void Save ()
-		{
-			foreach (IAttributeSetInstanceExtensionFieldStateCreated e in this.AttributeSetInstanceExtensionFieldEvents) {
-				AttributeSetInstanceExtensionFieldStateEventDao.Save(e);
-			}
-		}
 
         protected override string GetStateEventType()
         {
@@ -204,7 +121,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 	}
 
 
-	public class AttributeSetInstanceExtensionFieldGroupStateMergePatched : AttributeSetInstanceExtensionFieldGroupStateEventBase, IAttributeSetInstanceExtensionFieldGroupStateMergePatched, ISaveable
+	public class AttributeSetInstanceExtensionFieldGroupStateMergePatched : AttributeSetInstanceExtensionFieldGroupStateEventBase, IAttributeSetInstanceExtensionFieldGroupStateMergePatched
 	{
 		public virtual bool IsPropertyFieldTypeRemoved { get; set; }
 
@@ -227,74 +144,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 		{
 		}
 
-		private Dictionary<AttributeSetInstanceExtensionFieldStateEventId, IAttributeSetInstanceExtensionFieldStateEvent> _attributeSetInstanceExtensionFieldEvents = new Dictionary<AttributeSetInstanceExtensionFieldStateEventId, IAttributeSetInstanceExtensionFieldStateEvent>();
-
-        private IEnumerable<IAttributeSetInstanceExtensionFieldStateEvent> _readOnlyAttributeSetInstanceExtensionFieldEvents;
-        
-        public virtual IEnumerable<IAttributeSetInstanceExtensionFieldStateEvent> AttributeSetInstanceExtensionFieldEvents
-        {
-            get
-            {
-                if (!StateEventReadOnly)
-                {
-                    return this._attributeSetInstanceExtensionFieldEvents.Values;
-                }
-                else
-                {
-                    if (_readOnlyAttributeSetInstanceExtensionFieldEvents != null) { return _readOnlyAttributeSetInstanceExtensionFieldEvents; }
-                    var eventDao = AttributeSetInstanceExtensionFieldStateEventDao;
-                    var eL = new List<IAttributeSetInstanceExtensionFieldStateEvent>();
-                    foreach (var e in eventDao.FindByAttributeSetInstanceExtensionFieldGroupStateEventId(this.StateEventId))
-                    {
-                        e.ReadOnly = true;
-                        eL.Add((IAttributeSetInstanceExtensionFieldStateEvent)e);
-                    }
-                    return (_readOnlyAttributeSetInstanceExtensionFieldEvents = eL);
-                }
-            }
-            set 
-            {
-                if (value != null)
-                {
-                    foreach (var e in value)
-                    {
-                        AddAttributeSetInstanceExtensionFieldEvent(e);
-                    }
-                }
-                else { this._attributeSetInstanceExtensionFieldEvents.Clear(); }
-            }
-        }
-
-		public virtual void AddAttributeSetInstanceExtensionFieldEvent(IAttributeSetInstanceExtensionFieldStateEvent e)
-		{
-			ThrowOnInconsistentEventIds(e);
-			this._attributeSetInstanceExtensionFieldEvents[e.StateEventId] = e;
-		}
-
-        public virtual IAttributeSetInstanceExtensionFieldStateCreated NewAttributeSetInstanceExtensionFieldStateCreated(string index)
-        {
-            var stateEvent = new AttributeSetInstanceExtensionFieldStateCreated(NewAttributeSetInstanceExtensionFieldStateEventId(index));
-            return stateEvent;
-        }
-
-        public virtual IAttributeSetInstanceExtensionFieldStateMergePatched NewAttributeSetInstanceExtensionFieldStateMergePatched(string index)
-        {
-            var stateEvent = new AttributeSetInstanceExtensionFieldStateMergePatched(NewAttributeSetInstanceExtensionFieldStateEventId(index));
-            return stateEvent;
-        }
-
-        public virtual IAttributeSetInstanceExtensionFieldStateRemoved NewAttributeSetInstanceExtensionFieldStateRemoved(string index)
-        {
-            var stateEvent = new AttributeSetInstanceExtensionFieldStateRemoved(NewAttributeSetInstanceExtensionFieldStateEventId(index));
-            return stateEvent;
-        }
-
-		public virtual void Save ()
-		{
-			foreach (IAttributeSetInstanceExtensionFieldStateEvent e in this.AttributeSetInstanceExtensionFieldEvents) {
-				AttributeSetInstanceExtensionFieldStateEventDao.Save(e);
-			}
-		}
 
         protected override string GetStateEventType()
         {
@@ -304,7 +153,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 	}
 
 
-	public class AttributeSetInstanceExtensionFieldGroupStateDeleted : AttributeSetInstanceExtensionFieldGroupStateEventBase, IAttributeSetInstanceExtensionFieldGroupStateDeleted, ISaveable
+	public class AttributeSetInstanceExtensionFieldGroupStateDeleted : AttributeSetInstanceExtensionFieldGroupStateEventBase, IAttributeSetInstanceExtensionFieldGroupStateDeleted
 	{
 		public AttributeSetInstanceExtensionFieldGroupStateDeleted ()
 		{
@@ -319,62 +168,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
 
-		private Dictionary<AttributeSetInstanceExtensionFieldStateEventId, IAttributeSetInstanceExtensionFieldStateRemoved> _attributeSetInstanceExtensionFieldEvents = new Dictionary<AttributeSetInstanceExtensionFieldStateEventId, IAttributeSetInstanceExtensionFieldStateRemoved>();
-		
-        private IEnumerable<IAttributeSetInstanceExtensionFieldStateRemoved> _readOnlyAttributeSetInstanceExtensionFieldEvents;
-
-        public virtual IEnumerable<IAttributeSetInstanceExtensionFieldStateRemoved> AttributeSetInstanceExtensionFieldEvents
-        {
-            get
-            {
-                if (!StateEventReadOnly)
-                {
-                    return this._attributeSetInstanceExtensionFieldEvents.Values;
-                }
-                else
-                {
-                    if (_readOnlyAttributeSetInstanceExtensionFieldEvents != null) { return _readOnlyAttributeSetInstanceExtensionFieldEvents; }
-                    var eventDao = AttributeSetInstanceExtensionFieldStateEventDao;
-                    var eL = new List<IAttributeSetInstanceExtensionFieldStateRemoved>();
-                    foreach (var e in eventDao.FindByAttributeSetInstanceExtensionFieldGroupStateEventId(this.StateEventId))
-                    {
-                        e.ReadOnly = true;
-                        eL.Add((IAttributeSetInstanceExtensionFieldStateRemoved)e);
-                    }
-                    return (_readOnlyAttributeSetInstanceExtensionFieldEvents = eL);
-                }
-            }
-            set 
-            {
-                if (value != null)
-                {
-                    foreach (var e in value)
-                    {
-                        AddAttributeSetInstanceExtensionFieldEvent(e);
-                    }
-                }
-                else { this._attributeSetInstanceExtensionFieldEvents.Clear(); }
-            }
-        }
-	
-		public virtual void AddAttributeSetInstanceExtensionFieldEvent(IAttributeSetInstanceExtensionFieldStateRemoved e)
-		{
-			ThrowOnInconsistentEventIds(e);
-			this._attributeSetInstanceExtensionFieldEvents[e.StateEventId] = e;
-		}
-
-        public virtual IAttributeSetInstanceExtensionFieldStateRemoved NewAttributeSetInstanceExtensionFieldStateRemoved(string index)
-        {
-            var stateEvent = new AttributeSetInstanceExtensionFieldStateRemoved(NewAttributeSetInstanceExtensionFieldStateEventId(index));
-            return stateEvent;
-        }
-
-		public virtual void Save ()
-		{
-			foreach (IAttributeSetInstanceExtensionFieldStateRemoved e in this.AttributeSetInstanceExtensionFieldEvents) {
-				AttributeSetInstanceExtensionFieldStateEventDao.Save(e);
-			}
-		}
 
 
 	}

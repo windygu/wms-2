@@ -80,10 +80,10 @@
     <Compile Include="Generated\AttributeSetInstanceApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\AttributeSetInstanceExtensionFieldGroupApplicationServiceProxy.cs">
+    <Compile Include="Generated\AttributeSetInstanceExtensionFieldApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\AttributeSetInstanceExtensionFieldMvoApplicationServiceProxy.cs">
+    <Compile Include="Generated\AttributeSetInstanceExtensionFieldGroupApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\AttributeUseMvoApplicationServiceProxy.cs">
@@ -213,8 +213,8 @@
 .\AttributeApplicationServiceProxy.cs
 .\AttributeSetApplicationServiceProxy.cs
 .\AttributeSetInstanceApplicationServiceProxy.cs
+.\AttributeSetInstanceExtensionFieldApplicationServiceProxy.cs
 .\AttributeSetInstanceExtensionFieldGroupApplicationServiceProxy.cs
-.\AttributeSetInstanceExtensionFieldMvoApplicationServiceProxy.cs
 .\AttributeUseMvoApplicationServiceProxy.cs
 .\AttributeValueMvoApplicationServiceProxy.cs
 .\DddmlWmsRamlClient.cs

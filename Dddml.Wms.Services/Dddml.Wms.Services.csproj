@@ -101,23 +101,17 @@
     <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\NHibernate\NHibernateAttributeSetInstanceExtensionFieldGroupStateRepository.cs">
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\NHibernate\NHibernateAttributeSetInstanceExtensionFieldStateDao.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomainNHibernate.tt</DependentUpon>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\NHibernate\AttributeSetInstanceExtensionFieldApplicationService.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\NHibernate\NHibernateAttributeSetInstanceExtensionFieldStateEventDao.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomainNHibernate.tt</DependentUpon>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\NHibernate\NHibernateAttributeSetInstanceExtensionFieldEventStore.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\NHibernate\AttributeSetInstanceExtensionFieldMvoApplicationService.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomainNHibernate.tt</DependentUpon>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\NHibernate\NHibernateAttributeSetInstanceExtensionFieldStateQueryRepository.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\NHibernate\NHibernateAttributeSetInstanceExtensionFieldMvoEventStore.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\NHibernate\NHibernateAttributeSetInstanceExtensionFieldMvoStateQueryRepository.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomainNHibernate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\NHibernate\NHibernateAttributeSetInstanceExtensionFieldMvoStateRepository.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomainNHibernate.tt</DependentUpon>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\NHibernate\NHibernateAttributeSetInstanceExtensionFieldStateRepository.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\AttributeSetInstance\NHibernate\AttributeSetInstanceApplicationService.cs">
       <DependentUpon>GenerateAttributeSetInstanceDomainNHibernate.tt</DependentUpon>
@@ -687,10 +681,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomainNHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\NHibernate\GenerateAttributeSetInstanceExtensionFieldMvoDomainNHibernate.txt">
+    <Content Include="Generated\Domain\AttributeSetInstanceExtensionField\NHibernate\GenerateAttributeSetInstanceExtensionFieldDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomainNHibernate.tt</DependentUpon>
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomainNHibernate.tt</DependentUpon>
     </Content>
     <Content Include="Generated\Domain\AttributeSetInstance\NHibernate\GenerateAttributeSetInstanceDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
@@ -969,20 +963,12 @@
     <EmbeddedResource Include="Generated\NHibernate\Mappings\AttributeUseMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\AttributeSetInstanceExtensionFieldMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\AttributeSetInstanceExtensionFieldMvoStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <Content Include="Generated\NHibernate\Mappings\GenerateAggregatesHbm.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAggregatesHbm.txt</LastGenOutput>
       <LastOutputs>
 .\AttributeSetInstanceExtensionFieldGroupState.hbm.xml
 .\AttributeSetInstanceExtensionFieldGroupStateEvent.hbm.xml
-.\AttributeSetInstanceExtensionFieldMvoState.hbm.xml
-.\AttributeSetInstanceExtensionFieldMvoStateEvent.hbm.xml
 .\AttributeSetInstanceExtensionFieldState.hbm.xml
 .\AttributeSetInstanceExtensionFieldStateEvent.hbm.xml
 .\AttributeSetInstanceState.hbm.xml
@@ -1459,8 +1445,6 @@
 .\NHibernateAttributeSetInstanceExtensionFieldGroupEventStore.cs
 .\NHibernateAttributeSetInstanceExtensionFieldGroupStateQueryRepository.cs
 .\NHibernateAttributeSetInstanceExtensionFieldGroupStateRepository.cs
-.\NHibernateAttributeSetInstanceExtensionFieldStateDao.cs
-.\NHibernateAttributeSetInstanceExtensionFieldStateEventDao.cs
 </LastOutputs>
     </Content>
     <Content Include="Generated\Domain\AttributeValueMvo\NHibernate\GenerateAttributeValueMvoDomainNHibernate.tt">
@@ -1494,17 +1478,6 @@
 .\NHibernateInOutLineMvoEventStore.cs
 .\NHibernateInOutLineMvoStateQueryRepository.cs
 .\NHibernateInOutLineMvoStateRepository.cs
-</LastOutputs>
-    </Content>
-    <Content Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\NHibernate\GenerateAttributeSetInstanceExtensionFieldMvoDomainNHibernate.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateAttributeSetInstanceExtensionFieldMvoDomainNHibernate.txt</LastGenOutput>
-      <LastOutputs>
-.\AttributeSetInstanceExtensionFieldMvoApplicationService.cs
-.\GenerateAttributeSetInstanceExtensionFieldMvoDomainNHibernate.txt
-.\NHibernateAttributeSetInstanceExtensionFieldMvoEventStore.cs
-.\NHibernateAttributeSetInstanceExtensionFieldMvoStateQueryRepository.cs
-.\NHibernateAttributeSetInstanceExtensionFieldMvoStateRepository.cs
 </LastOutputs>
     </Content>
     <Content Include="Generated\Domain\InventoryItem\NHibernate\GenerateInventoryItemDomainNHibernate.tt">
@@ -1809,6 +1782,17 @@
 .\NHibernatePhysicalInventoryLineMvoStateQueryRepository.cs
 .\NHibernatePhysicalInventoryLineMvoStateRepository.cs
 .\PhysicalInventoryLineMvoApplicationService.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\AttributeSetInstanceExtensionField\NHibernate\GenerateAttributeSetInstanceExtensionFieldDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateAttributeSetInstanceExtensionFieldDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\AttributeSetInstanceExtensionFieldApplicationService.cs
+.\GenerateAttributeSetInstanceExtensionFieldDomainNHibernate.txt
+.\NHibernateAttributeSetInstanceExtensionFieldEventStore.cs
+.\NHibernateAttributeSetInstanceExtensionFieldStateQueryRepository.cs
+.\NHibernateAttributeSetInstanceExtensionFieldStateRepository.cs
 </LastOutputs>
     </Content>
   </ItemGroup>

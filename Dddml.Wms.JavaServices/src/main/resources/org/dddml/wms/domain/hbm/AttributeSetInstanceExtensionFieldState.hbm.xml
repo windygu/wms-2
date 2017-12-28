@@ -4,21 +4,18 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="org.dddml.wms.domain.attributesetinstanceextensionfieldgroup">
+<hibernate-mapping package="org.dddml.wms.domain.attributesetinstanceextensionfield">
   
-  <class name="org.dddml.wms.domain.attributesetinstanceextensionfieldgroup.AbstractAttributeSetInstanceExtensionFieldState$SimpleAttributeSetInstanceExtensionFieldState" table="AttributeSetInstanceExtensionFields">
+  <class name="org.dddml.wms.domain.attributesetinstanceextensionfield.AbstractAttributeSetInstanceExtensionFieldState$SimpleAttributeSetInstanceExtensionFieldState" table="AttributeSetInstanceExtensionFields">
 
-	<composite-id name="attributeSetInstanceExtensionFieldId" class="org.dddml.wms.domain.attributesetinstanceextensionfieldgroup.AttributeSetInstanceExtensionFieldId">
-		<key-property name="groupId" ><column name="AttributeSetInstanceExtensionFieldIdGroupId" length="50" /></key-property>
-		<key-property name="index" ><column name="AttributeSetInstanceExtensionFieldIdIndex" length="50" /></key-property>
-	</composite-id>
+	<id name="name" length="50" column="Name"><generator class="assigned"/></id>
 	<version name="version" column="Version" type="long" />
 
-	<property name="name" ><column name="Name" unique-key="UniqueName" /></property>
 	<property name="type" ></property>
 	<property name="length" ></property>
 	<property name="alias" ><column name="Alias" unique-key="UniqueAlias" /></property>
 	<property name="description" ></property>
+	<property name="groupId" ></property>
 	<property name="createdBy" ></property>
 	<property name="updatedBy" ></property>
 	<property name="active" ></property>

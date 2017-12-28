@@ -26,7 +26,5 @@ public interface AttributeSetInstanceExtensionFieldGroupStateQueryRepository
 
     long getCount(Criterion filter);
 
-    AttributeSetInstanceExtensionFieldState getAttributeSetInstanceExtensionField(String groupId, String index);
-
 }
 

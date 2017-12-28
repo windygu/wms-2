@@ -86,31 +86,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 		}
 
 
-        private CreateAttributeSetInstanceExtensionFieldCommands _fields = new CreateAttributeSetInstanceExtensionFieldCommands();
-
-        public ICreateAttributeSetInstanceExtensionFieldCommands Fields
-        {
-            get
-            {
-                return this._fields;
-            }
-        }
-
-        public CreateAttributeSetInstanceExtensionField NewCreateAttributeSetInstanceExtensionField()
-        {
-            var c = new CreateAttributeSetInstanceExtensionField();
-            c.GroupId = this.Id;
-
-            return c;
-        }
-
-        ICreateAttributeSetInstanceExtensionField ICreateAttributeSetInstanceExtensionFieldGroup.NewCreateAttributeSetInstanceExtensionField()
-        {
-            return this.NewCreateAttributeSetInstanceExtensionField();
-        }
-
-
-
         protected override string GetCommandType()
         {
             return Dddml.Wms.Specialization.CommandType.Create;
@@ -138,58 +113,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 		{
 		}
 
-        private AttributeSetInstanceExtensionFieldCommands _attributeSetInstanceExtensionFieldCommands = new AttributeSetInstanceExtensionFieldCommands();
-
-        public IAttributeSetInstanceExtensionFieldCommands AttributeSetInstanceExtensionFieldCommands
-        {
-            get
-            {
-                return this._attributeSetInstanceExtensionFieldCommands;
-            }
-        }
-
-
-        public CreateAttributeSetInstanceExtensionField NewCreateAttributeSetInstanceExtensionField()
-        {
-            var c = new CreateAttributeSetInstanceExtensionField();
-            c.GroupId = this.Id;
-
-            return c;
-        }
-
-        ICreateAttributeSetInstanceExtensionField IMergePatchAttributeSetInstanceExtensionFieldGroup.NewCreateAttributeSetInstanceExtensionField()
-        {
-            return this.NewCreateAttributeSetInstanceExtensionField();
-        }
-
-        public MergePatchAttributeSetInstanceExtensionField NewMergePatchAttributeSetInstanceExtensionField()
-        {
-            var c = new MergePatchAttributeSetInstanceExtensionField();
-            c.GroupId = this.Id;
-
-            return c;
-        }
-
-        IMergePatchAttributeSetInstanceExtensionField IMergePatchAttributeSetInstanceExtensionFieldGroup.NewMergePatchAttributeSetInstanceExtensionField()
-        {
-            return this.NewMergePatchAttributeSetInstanceExtensionField();
-        }
-
-
-        public RemoveAttributeSetInstanceExtensionField NewRemoveAttributeSetInstanceExtensionField()
-        {
-            var c = new RemoveAttributeSetInstanceExtensionField();
-            c.GroupId = this.Id;
-
-            return c;
-        }
-
-        IRemoveAttributeSetInstanceExtensionField IMergePatchAttributeSetInstanceExtensionFieldGroup.NewRemoveAttributeSetInstanceExtensionField()
-        {
-            return this.NewRemoveAttributeSetInstanceExtensionField();
-        }
-
-
         protected override string GetCommandType()
         {
             return Dddml.Wms.Specialization.CommandType.MergePatch;
@@ -209,69 +132,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
         }
 
 	}
-
-
-    public class CreateAttributeSetInstanceExtensionFieldCommands : ICreateAttributeSetInstanceExtensionFieldCommands
-    {
-        private List<ICreateAttributeSetInstanceExtensionField> _innerCommands = new List<ICreateAttributeSetInstanceExtensionField>();
-
-        public void Add(ICreateAttributeSetInstanceExtensionField c)
-        {
-            _innerCommands.Add(c);
-        }
-
-        public void Remove(ICreateAttributeSetInstanceExtensionField c)
-        {
-            _innerCommands.Remove(c);
-        }
-
-        public void Clear()
-        {
-            _innerCommands.Clear();
-        }
-
-        public IEnumerator<ICreateAttributeSetInstanceExtensionField> GetEnumerator()
-        {
-            return _innerCommands.GetEnumerator();
-        }
-
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return _innerCommands.GetEnumerator();
-        }
-
-    }
-
-    public class AttributeSetInstanceExtensionFieldCommands : IAttributeSetInstanceExtensionFieldCommands
-    {
-        private List<IAttributeSetInstanceExtensionFieldCommand> _innerCommands = new List<IAttributeSetInstanceExtensionFieldCommand>();
-
-        public void Add(IAttributeSetInstanceExtensionFieldCommand c)
-        {
-            _innerCommands.Add(c);
-        }
-
-        public void Remove(IAttributeSetInstanceExtensionFieldCommand c)
-        {
-            _innerCommands.Remove(c);
-        }
-
-        public void Clear()
-        {
-            _innerCommands.Clear();
-        }
-
-        public IEnumerator<IAttributeSetInstanceExtensionFieldCommand> GetEnumerator()
-        {
-            return _innerCommands.GetEnumerator();
-        }
-
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return _innerCommands.GetEnumerator();
-        }
-
-    }
 
     public static partial class AttributeSetInstanceExtensionFieldGroupCommands
     {

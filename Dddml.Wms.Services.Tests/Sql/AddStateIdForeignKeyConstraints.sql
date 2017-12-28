@@ -62,11 +62,3 @@ alter TABLE `ShipmentItems` add
     (`ShipmentId`) 
   ON DELETE NO ACTION ON UPDATE NO ACTION;
 
-alter TABLE `AttributeSetInstanceExtensionFields` add
-  CONSTRAINT `FK_AttributeSetInstanceExtensionField_AttrSetInstEFGroup_StateId` 
-  FOREIGN KEY 
-    (`AttributeSetInstanceExtensionFieldIdGroupId`) 
-  REFERENCES `AttributeSetInstanceExtensionFieldGroups` 
-    (`Id`) 
-  ON DELETE NO ACTION ON UPDATE NO ACTION;
-

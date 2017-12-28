@@ -70,12 +70,6 @@
     <Compile Include="Domain\Services\IAttributeSetService.cs" />
     <Compile Include="Domain\ShipmentType\ShipmentTypeIds.cs" />
     <Compile Include="Domain\StatusItem\StatusTypeIds.cs" />
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\AttributeSetInstanceExtensionFieldCommand.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\AttributeSetInstanceExtensionFieldCommandDto.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\AttributeSetInstanceExtensionFieldGroupAggregate.cs">
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
     </Compile>
@@ -133,66 +127,6 @@
     <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\AttributeSetInstanceExtensionFieldGroupStateProperties.cs">
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\AttributeSetInstanceExtensionFieldId.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\AttributeSetInstanceExtensionFieldIdDto.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\AttributeSetInstanceExtensionFieldIdDtoWrapper.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\AttributeSetInstanceExtensionFieldIdFlattenedDto.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\AttributeSetInstanceExtensionFieldState.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\AttributeSetInstanceExtensionFieldStateDto.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\AttributeSetInstanceExtensionFieldStateDtoExtension.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\AttributeSetInstanceExtensionFieldStateDtoWrapper.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\AttributeSetInstanceExtensionFieldStateEvent.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\AttributeSetInstanceExtensionFieldStateEventDto.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\AttributeSetInstanceExtensionFieldStateEventDtoConverter.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\AttributeSetInstanceExtensionFieldStateEventId.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\AttributeSetInstanceExtensionFieldStateEventIdDto.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\AttributeSetInstanceExtensionFieldStateEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\AttributeSetInstanceExtensionFieldStateEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\AttributeSetInstanceExtensionFieldStateExtension.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\AttributeSetInstanceExtensionFieldStateInterfaceExtension.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\AttributeSetInstanceExtensionFieldStateProperties.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\AttributeSetInstanceExtensionFieldStates.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\IAttributeSetInstanceExtensionFieldCommand.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\IAttributeSetInstanceExtensionFieldGroupAggregate.cs">
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
     </Compile>
@@ -223,113 +157,92 @@
     <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\IAttributeSetInstanceExtensionFieldGroupStateRepository.cs">
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\IAttributeSetInstanceExtensionFieldState.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\AttributeSetInstanceExtensionFieldAggregate.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\IAttributeSetInstanceExtensionFieldStateDao.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\AttributeSetInstanceExtensionFieldApplicationServiceBase.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\IAttributeSetInstanceExtensionFieldStateDto.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\AttributeSetInstanceExtensionFieldApplicationServiceFactory.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\IAttributeSetInstanceExtensionFieldStateEvent.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\AttributeSetInstanceExtensionFieldCommand.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\IAttributeSetInstanceExtensionFieldStateEventDao.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\AttributeSetInstanceExtensionFieldCommandDto.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\IAttributeSetInstanceExtensionFieldStateProperties.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\AttributeSetInstanceExtensionFieldState.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\IAttributeSetInstanceExtensionFieldStates.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\AttributeSetInstanceExtensionFieldStateDto.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\AttributeSetInstanceExtensionFieldMvoAggregate.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\AttributeSetInstanceExtensionFieldStateDtoExtension.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\AttributeSetInstanceExtensionFieldMvoApplicationServiceBase.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\AttributeSetInstanceExtensionFieldStateDtoWrapper.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\AttributeSetInstanceExtensionFieldMvoApplicationServiceFactory.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\AttributeSetInstanceExtensionFieldStateEvent.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\AttributeSetInstanceExtensionFieldMvoCommand.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\AttributeSetInstanceExtensionFieldStateEventDto.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\AttributeSetInstanceExtensionFieldMvoCommandDto.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\AttributeSetInstanceExtensionFieldStateEventDtoConverter.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\AttributeSetInstanceExtensionFieldMvoState.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\AttributeSetInstanceExtensionFieldStateEventId.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\AttributeSetInstanceExtensionFieldMvoStateDto.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\AttributeSetInstanceExtensionFieldStateEventIdDto.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\AttributeSetInstanceExtensionFieldMvoStateDtoExtension.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\AttributeSetInstanceExtensionFieldStateEventIdDtoWrapper.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\AttributeSetInstanceExtensionFieldMvoStateDtoWrapper.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\AttributeSetInstanceExtensionFieldStateEventIdFlattenedDto.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\AttributeSetInstanceExtensionFieldMvoStateEvent.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\AttributeSetInstanceExtensionFieldStateExtension.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\AttributeSetInstanceExtensionFieldMvoStateEventDto.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\AttributeSetInstanceExtensionFieldStateInterfaceExtension.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\AttributeSetInstanceExtensionFieldMvoStateEventDtoConverter.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\AttributeSetInstanceExtensionFieldStateProperties.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\AttributeSetInstanceExtensionFieldMvoStateEventId.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\IAttributeSetInstanceExtensionFieldAggregate.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\AttributeSetInstanceExtensionFieldMvoStateEventIdDto.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\IAttributeSetInstanceExtensionFieldApplicationService.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\AttributeSetInstanceExtensionFieldMvoStateEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\IAttributeSetInstanceExtensionFieldApplicationServiceFactory.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\AttributeSetInstanceExtensionFieldMvoStateEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\IAttributeSetInstanceExtensionFieldCommand.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\AttributeSetInstanceExtensionFieldMvoStateExtension.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\IAttributeSetInstanceExtensionFieldState.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\AttributeSetInstanceExtensionFieldMvoStateInterfaceExtension.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\IAttributeSetInstanceExtensionFieldStateDto.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\AttributeSetInstanceExtensionFieldMvoStateProperties.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\IAttributeSetInstanceExtensionFieldStateEvent.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\IAttributeSetInstanceExtensionFieldMvoAggregate.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\IAttributeSetInstanceExtensionFieldStateProperties.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\IAttributeSetInstanceExtensionFieldMvoApplicationService.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\IAttributeSetInstanceExtensionFieldStateQueryRepository.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\IAttributeSetInstanceExtensionFieldMvoApplicationServiceFactory.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\IAttributeSetInstanceExtensionFieldMvoCommand.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\IAttributeSetInstanceExtensionFieldMvoState.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\IAttributeSetInstanceExtensionFieldMvoStateDto.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\IAttributeSetInstanceExtensionFieldMvoStateEvent.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\IAttributeSetInstanceExtensionFieldMvoStateProperties.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\IAttributeSetInstanceExtensionFieldMvoStateQueryRepository.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\IAttributeSetInstanceExtensionFieldMvoStateRepository.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\IAttributeSetInstanceExtensionFieldStateRepository.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\AttributeSetInstance\AttributeSetInstanceAggregate.cs">
       <DependentUpon>GenerateAttributeSetInstanceDomain.tt</DependentUpon>
@@ -2132,9 +2045,6 @@
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Metadata\AttributeSetInstanceExtensionFieldMetadata.cs">
-      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Metadata\AttributeSetInstanceExtensionFieldMvoMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Metadata\AttributeSetInstanceMetadata.cs">
@@ -4969,10 +4879,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
     </Content>
-    <Content Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\GenerateAttributeSetInstanceExtensionFieldMvoDomain.txt">
+    <Content Include="Generated\Domain\AttributeSetInstanceExtensionField\GenerateAttributeSetInstanceExtensionFieldDomain.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt</DependentUpon>
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Content>
     <Content Include="Generated\Domain\AttributeSetInstance\GenerateAttributeSetInstanceDomain.txt">
       <AutoGen>True</AutoGen>
@@ -5522,8 +5432,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAttributeSetInstanceExtensionFieldGroupDomain.txt</LastGenOutput>
       <LastOutputs>
-.\AttributeSetInstanceExtensionFieldCommand.cs
-.\AttributeSetInstanceExtensionFieldCommandDto.cs
 .\AttributeSetInstanceExtensionFieldGroupAggregate.cs
 .\AttributeSetInstanceExtensionFieldGroupApplicationServiceBase.cs
 .\AttributeSetInstanceExtensionFieldGroupApplicationServiceFactory.cs
@@ -5543,27 +5451,7 @@
 .\AttributeSetInstanceExtensionFieldGroupStateExtension.cs
 .\AttributeSetInstanceExtensionFieldGroupStateInterfaceExtension.cs
 .\AttributeSetInstanceExtensionFieldGroupStateProperties.cs
-.\AttributeSetInstanceExtensionFieldId.cs
-.\AttributeSetInstanceExtensionFieldIdDto.cs
-.\AttributeSetInstanceExtensionFieldIdDtoWrapper.cs
-.\AttributeSetInstanceExtensionFieldIdFlattenedDto.cs
-.\AttributeSetInstanceExtensionFieldState.cs
-.\AttributeSetInstanceExtensionFieldStateDto.cs
-.\AttributeSetInstanceExtensionFieldStateDtoExtension.cs
-.\AttributeSetInstanceExtensionFieldStateDtoWrapper.cs
-.\AttributeSetInstanceExtensionFieldStateEvent.cs
-.\AttributeSetInstanceExtensionFieldStateEventDto.cs
-.\AttributeSetInstanceExtensionFieldStateEventDtoConverter.cs
-.\AttributeSetInstanceExtensionFieldStateEventId.cs
-.\AttributeSetInstanceExtensionFieldStateEventIdDto.cs
-.\AttributeSetInstanceExtensionFieldStateEventIdDtoWrapper.cs
-.\AttributeSetInstanceExtensionFieldStateEventIdFlattenedDto.cs
-.\AttributeSetInstanceExtensionFieldStateExtension.cs
-.\AttributeSetInstanceExtensionFieldStateInterfaceExtension.cs
-.\AttributeSetInstanceExtensionFieldStateProperties.cs
-.\AttributeSetInstanceExtensionFieldStates.cs
 .\GenerateAttributeSetInstanceExtensionFieldGroupDomain.txt
-.\IAttributeSetInstanceExtensionFieldCommand.cs
 .\IAttributeSetInstanceExtensionFieldGroupAggregate.cs
 .\IAttributeSetInstanceExtensionFieldGroupApplicationService.cs
 .\IAttributeSetInstanceExtensionFieldGroupApplicationServiceFactory.cs
@@ -5574,13 +5462,6 @@
 .\IAttributeSetInstanceExtensionFieldGroupStateProperties.cs
 .\IAttributeSetInstanceExtensionFieldGroupStateQueryRepository.cs
 .\IAttributeSetInstanceExtensionFieldGroupStateRepository.cs
-.\IAttributeSetInstanceExtensionFieldState.cs
-.\IAttributeSetInstanceExtensionFieldStateDao.cs
-.\IAttributeSetInstanceExtensionFieldStateDto.cs
-.\IAttributeSetInstanceExtensionFieldStateEvent.cs
-.\IAttributeSetInstanceExtensionFieldStateEventDao.cs
-.\IAttributeSetInstanceExtensionFieldStateProperties.cs
-.\IAttributeSetInstanceExtensionFieldStates.cs
 </LastOutputs>
     </Content>
     <Content Include="Generated\Domain\Attribute\GenerateAttributeDomain.tt">
@@ -5819,42 +5700,6 @@
 .\InOutLineMvoStateExtension.cs
 .\InOutLineMvoStateInterfaceExtension.cs
 .\InOutLineMvoStateProperties.cs
-</LastOutputs>
-    </Content>
-    <Content Include="Generated\Domain\AttributeSetInstanceExtensionFieldMvo\GenerateAttributeSetInstanceExtensionFieldMvoDomain.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateAttributeSetInstanceExtensionFieldMvoDomain.txt</LastGenOutput>
-      <LastOutputs>
-.\AttributeSetInstanceExtensionFieldMvoAggregate.cs
-.\AttributeSetInstanceExtensionFieldMvoApplicationServiceBase.cs
-.\AttributeSetInstanceExtensionFieldMvoApplicationServiceFactory.cs
-.\AttributeSetInstanceExtensionFieldMvoCommand.cs
-.\AttributeSetInstanceExtensionFieldMvoCommandDto.cs
-.\AttributeSetInstanceExtensionFieldMvoState.cs
-.\AttributeSetInstanceExtensionFieldMvoStateDto.cs
-.\AttributeSetInstanceExtensionFieldMvoStateDtoExtension.cs
-.\AttributeSetInstanceExtensionFieldMvoStateDtoWrapper.cs
-.\AttributeSetInstanceExtensionFieldMvoStateEvent.cs
-.\AttributeSetInstanceExtensionFieldMvoStateEventDto.cs
-.\AttributeSetInstanceExtensionFieldMvoStateEventDtoConverter.cs
-.\AttributeSetInstanceExtensionFieldMvoStateEventId.cs
-.\AttributeSetInstanceExtensionFieldMvoStateEventIdDto.cs
-.\AttributeSetInstanceExtensionFieldMvoStateEventIdDtoWrapper.cs
-.\AttributeSetInstanceExtensionFieldMvoStateEventIdFlattenedDto.cs
-.\AttributeSetInstanceExtensionFieldMvoStateExtension.cs
-.\AttributeSetInstanceExtensionFieldMvoStateInterfaceExtension.cs
-.\AttributeSetInstanceExtensionFieldMvoStateProperties.cs
-.\GenerateAttributeSetInstanceExtensionFieldMvoDomain.txt
-.\IAttributeSetInstanceExtensionFieldMvoAggregate.cs
-.\IAttributeSetInstanceExtensionFieldMvoApplicationService.cs
-.\IAttributeSetInstanceExtensionFieldMvoApplicationServiceFactory.cs
-.\IAttributeSetInstanceExtensionFieldMvoCommand.cs
-.\IAttributeSetInstanceExtensionFieldMvoState.cs
-.\IAttributeSetInstanceExtensionFieldMvoStateDto.cs
-.\IAttributeSetInstanceExtensionFieldMvoStateEvent.cs
-.\IAttributeSetInstanceExtensionFieldMvoStateProperties.cs
-.\IAttributeSetInstanceExtensionFieldMvoStateQueryRepository.cs
-.\IAttributeSetInstanceExtensionFieldMvoStateRepository.cs
 </LastOutputs>
     </Content>
     <Content Include="Generated\Domain\InventoryItem\GenerateInventoryItemDomain.tt">
@@ -7084,6 +6929,42 @@
 .\PhysicalInventoryLineMvoStateProperties.cs
 </LastOutputs>
     </Content>
+    <Content Include="Generated\Domain\AttributeSetInstanceExtensionField\GenerateAttributeSetInstanceExtensionFieldDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateAttributeSetInstanceExtensionFieldDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AttributeSetInstanceExtensionFieldAggregate.cs
+.\AttributeSetInstanceExtensionFieldApplicationServiceBase.cs
+.\AttributeSetInstanceExtensionFieldApplicationServiceFactory.cs
+.\AttributeSetInstanceExtensionFieldCommand.cs
+.\AttributeSetInstanceExtensionFieldCommandDto.cs
+.\AttributeSetInstanceExtensionFieldState.cs
+.\AttributeSetInstanceExtensionFieldStateDto.cs
+.\AttributeSetInstanceExtensionFieldStateDtoExtension.cs
+.\AttributeSetInstanceExtensionFieldStateDtoWrapper.cs
+.\AttributeSetInstanceExtensionFieldStateEvent.cs
+.\AttributeSetInstanceExtensionFieldStateEventDto.cs
+.\AttributeSetInstanceExtensionFieldStateEventDtoConverter.cs
+.\AttributeSetInstanceExtensionFieldStateEventId.cs
+.\AttributeSetInstanceExtensionFieldStateEventIdDto.cs
+.\AttributeSetInstanceExtensionFieldStateEventIdDtoWrapper.cs
+.\AttributeSetInstanceExtensionFieldStateEventIdFlattenedDto.cs
+.\AttributeSetInstanceExtensionFieldStateExtension.cs
+.\AttributeSetInstanceExtensionFieldStateInterfaceExtension.cs
+.\AttributeSetInstanceExtensionFieldStateProperties.cs
+.\GenerateAttributeSetInstanceExtensionFieldDomain.txt
+.\IAttributeSetInstanceExtensionFieldAggregate.cs
+.\IAttributeSetInstanceExtensionFieldApplicationService.cs
+.\IAttributeSetInstanceExtensionFieldApplicationServiceFactory.cs
+.\IAttributeSetInstanceExtensionFieldCommand.cs
+.\IAttributeSetInstanceExtensionFieldState.cs
+.\IAttributeSetInstanceExtensionFieldStateDto.cs
+.\IAttributeSetInstanceExtensionFieldStateEvent.cs
+.\IAttributeSetInstanceExtensionFieldStateProperties.cs
+.\IAttributeSetInstanceExtensionFieldStateQueryRepository.cs
+.\IAttributeSetInstanceExtensionFieldStateRepository.cs
+</LastOutputs>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Generated\Domain\GenerateBoundedContextDomainAggregates.tt">
@@ -7122,7 +7003,6 @@
 .\AttributeMetadata.cs
 .\AttributeSetInstanceExtensionFieldGroupMetadata.cs
 .\AttributeSetInstanceExtensionFieldMetadata.cs
-.\AttributeSetInstanceExtensionFieldMvoMetadata.cs
 .\AttributeSetInstanceMetadata.cs
 .\AttributeSetMetadata.cs
 .\AttributeUseMetadata.cs

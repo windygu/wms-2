@@ -34,7 +34,5 @@ public interface AttributeSetInstanceExtensionFieldGroupApplicationService
 
     AttributeSetInstanceExtensionFieldGroupState getHistoryState(String id, long version);
 
-    AttributeSetInstanceExtensionFieldState getAttributeSetInstanceExtensionField(String groupId, String index);
-
 }
 

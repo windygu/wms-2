@@ -86,12 +86,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
             set;
         }
 
-        IAttributeSetInstanceExtensionFieldStateDto[] Fields
-        {
-            get;
-            set;
-        }
-
         IAttributeSetInstanceExtensionFieldGroupState ToAttributeSetInstanceExtensionFieldGroupState();
 
     }

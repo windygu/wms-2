@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 	public partial class AttributeSetInstanceExtensionFieldGroupStateDtoWrapper : StateDtoWrapperBase, IAttributeSetInstanceExtensionFieldGroupStateDto, IAttributeSetInstanceExtensionFieldGroupState
 	{
 
-        internal static IList<string> _collectionFieldNames = new string[] { "Fields" };
+        internal static IList<string> _collectionFieldNames = new string[] {  };
 
         protected override bool IsCollectionField(string fieldName)
         {
@@ -415,52 +415,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
             get { return this.Version == AttributeSetInstanceExtensionFieldGroupState.VersionZero; }
         }
 
-        public virtual IAttributeSetInstanceExtensionFieldStateDto[] Fields
-        {
-            get 
-            {
-                if (!(this as IStateDtoWrapper).ReturnedFieldsContains("Fields"))
-                {
-                    return null;
-                }
-                var dtos = new List<IAttributeSetInstanceExtensionFieldStateDto>();
-                if (this._state.Fields != null)
-                {
-                    foreach (var s in this._state.Fields)
-                    {
-                        var dto = new AttributeSetInstanceExtensionFieldStateDtoWrapper((AttributeSetInstanceExtensionFieldState)s);
-                        var returnFS = CollectionUtils.DictionaryGetValueIgnoringCase(ReturnedFields, "Fields");
-                        if (!String.IsNullOrWhiteSpace(returnFS))
-                        {
-                            (dto as IStateDtoWrapper).ReturnedFieldsString = returnFS;
-                        }
-                        else
-                        {
-                            (dto as IStateDtoWrapper).AllFieldsReturned = this.AllFieldsReturned;
-                        }
-                        dtos.Add(dto);
-                    }
-                }
-                return dtos.ToArray();
-            }
-            set 
-            {
-                if (value == null) { value = new AttributeSetInstanceExtensionFieldStateDtoWrapper[0]; }
-                var states = new List<IAttributeSetInstanceExtensionFieldState>();
-                foreach (var s in value)
-                {
-                    states.Add(s.ToAttributeSetInstanceExtensionFieldState());
-                }
-                this._state.Fields = new DtoAttributeSetInstanceExtensionFieldStates(this._state, states);
-            }
-        }
-
-        IAttributeSetInstanceExtensionFieldStates IAttributeSetInstanceExtensionFieldGroupState.Fields
-        {
-            get { return _state.Fields; }
-            set { _state.Fields = value; }
-        }
-
 		void IAttributeSetInstanceExtensionFieldGroupState.When(IAttributeSetInstanceExtensionFieldGroupStateCreated e)
 		{
             throw new NotSupportedException();
@@ -495,67 +449,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 		}
 
         // //////////////////////////////////////////////////////////////
-
-        public class DtoAttributeSetInstanceExtensionFieldStates : IAttributeSetInstanceExtensionFieldStates
-        {
-
-            private IAttributeSetInstanceExtensionFieldGroupState _outerState;
-
-            private IEnumerable<IAttributeSetInstanceExtensionFieldState> _innerStates;
-
-            public DtoAttributeSetInstanceExtensionFieldStates(IAttributeSetInstanceExtensionFieldGroupState outerState, IEnumerable<IAttributeSetInstanceExtensionFieldState> innerStates)
-            {
-                this._outerState = outerState;
-                if (innerStates == null)
-                {
-                    this._innerStates = new IAttributeSetInstanceExtensionFieldState[] { };
-                }
-                else
-                {
-                    this._innerStates = innerStates;
-                }
-            }
-
-            public IEnumerator<IAttributeSetInstanceExtensionFieldState> GetEnumerator()
-            {
-                return _innerStates.GetEnumerator();
-            }
-
-            System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-            {
-                return _innerStates.GetEnumerator();
-            }
-
-            public IAttributeSetInstanceExtensionFieldState Get(string index)
-            {
-                throw new NotSupportedException();
-            }
-
-            public IAttributeSetInstanceExtensionFieldState Get(string index, bool forCreation)
-            {
-                throw new NotSupportedException();
-            }
-
-            public IAttributeSetInstanceExtensionFieldState Get(string index, bool forCreation, bool nullAllowed)
-            {
-                throw new NotSupportedException();
-            }
-
-            public void Remove(IAttributeSetInstanceExtensionFieldState state)
-            {
-                throw new NotSupportedException();
-            }
-
-            public void AddToSave(IAttributeSetInstanceExtensionFieldState state)
-            {
-                throw new NotSupportedException();
-            }
-
-            public void Save()
-            {
-                throw new NotSupportedException();
-            }
-        }
 
 	}
 

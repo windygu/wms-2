@@ -4,6 +4,10 @@
 <#@ include file="..\LoadBoundedContext.tt" #>
 <#
 
+    // ///////////////////////////////
+    //return String.Empty;
+    // ///////////////////////////////
+
 	var listedTypes = new SortedSet<string>();
 
 // ////////////////////////////

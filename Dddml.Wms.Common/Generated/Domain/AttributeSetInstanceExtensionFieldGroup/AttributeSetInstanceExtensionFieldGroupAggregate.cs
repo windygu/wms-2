@@ -120,14 +120,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
             e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 			var version = c.Version;
 
-            foreach (ICreateAttributeSetInstanceExtensionField innerCommand in c.Fields)
-            {
-                ThrowOnInconsistentCommands(c, innerCommand);
-
-                IAttributeSetInstanceExtensionFieldStateCreated innerEvent = MapCreate(innerCommand, c, version, _state);
-                e.AddAttributeSetInstanceExtensionFieldEvent(innerEvent);
-            }
-
 
             return e;
         }
@@ -158,14 +150,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 
 			var version = c.Version;
 
-            foreach (IAttributeSetInstanceExtensionFieldCommand innerCommand in c.AttributeSetInstanceExtensionFieldCommands)
-            {
-                ThrowOnInconsistentCommands(c, innerCommand);
-
-                IAttributeSetInstanceExtensionFieldStateEvent innerEvent = Map(innerCommand, c, version, _state);
-                e.AddAttributeSetInstanceExtensionFieldEvent(innerEvent);
-            }
-
 
             return e;
         }
@@ -184,115 +168,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 
             return e;
         }
-
-
-        protected void ThrowOnInconsistentCommands(IAttributeSetInstanceExtensionFieldGroupCommand command, IAttributeSetInstanceExtensionFieldCommand innerCommand)
-        {
-
-            var properties =  command as ICreateOrMergePatchOrDeleteAttributeSetInstanceExtensionFieldGroup;
-            var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveAttributeSetInstanceExtensionField;
-            if (properties == null || innerProperties == null) { return; }
-            if (innerProperties.GroupId == default(string))
-            {
-                innerProperties.GroupId = properties.Id;
-            }
-            else
-            {
-                var outerIdName = "Id";
-                var outerIdValue = properties.Id;
-                var innerGroupIdName = "GroupId";
-                var innerGroupIdValue = innerProperties.GroupId;
-                ThrowOnInconsistentIds(innerProperties, innerGroupIdName, innerGroupIdValue, outerIdName, outerIdValue);
-            }
-
-        }// END ThrowOnInconsistentCommands /////////////////////
-
-
-        protected virtual IAttributeSetInstanceExtensionFieldStateEvent Map(IAttributeSetInstanceExtensionFieldCommand c, IAttributeSetInstanceExtensionFieldGroupCommand outerCommand, long version, IAttributeSetInstanceExtensionFieldGroupState outerState)
-        {
-            var create = (c.CommandType == CommandType.Create) ? (c as ICreateAttributeSetInstanceExtensionField) : null;
-            if(create != null)
-            {
-                return MapCreate(create, outerCommand, version, outerState);
-            }
-
-            var merge = (c.CommandType == CommandType.MergePatch) ? (c as IMergePatchAttributeSetInstanceExtensionField) : null;
-            if(merge != null)
-            {
-                return MapMergePatch(merge, outerCommand, version, outerState);
-            }
-
-            var remove = (c.CommandType == CommandType.Remove) ? (c as IRemoveAttributeSetInstanceExtensionField) : null;
-            if (remove != null)
-            {
-                return MapRemove(remove, outerCommand, version);
-            }
-            throw new NotSupportedException();
-        }
-
-
-        protected virtual IAttributeSetInstanceExtensionFieldStateCreated MapCreate(ICreateAttributeSetInstanceExtensionField c, IAttributeSetInstanceExtensionFieldGroupCommand outerCommand, long version, IAttributeSetInstanceExtensionFieldGroupState outerState)
-        {
-            c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new AttributeSetInstanceExtensionFieldStateEventId(c.GroupId, c.Index, version);
-            IAttributeSetInstanceExtensionFieldStateCreated e = NewAttributeSetInstanceExtensionFieldStateCreated(stateEventId);
-            var s = outerState.Fields.Get(c.Index, true);
-
-            e.Name = c.Name;
-            e.Type = c.Type;
-            e.Length = c.Length;
-            e.Alias = c.Alias;
-            e.Description = c.Description;
-            e.Active = c.Active;
-
-            e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
-            return e;
-
-        }// END Map(ICreate... ////////////////////////////
-
-
-
-        protected virtual IAttributeSetInstanceExtensionFieldStateMergePatched MapMergePatch(IMergePatchAttributeSetInstanceExtensionField c, IAttributeSetInstanceExtensionFieldGroupCommand outerCommand, long version, IAttributeSetInstanceExtensionFieldGroupState outerState)
-        {
-            c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new AttributeSetInstanceExtensionFieldStateEventId(c.GroupId, c.Index, version);
-            IAttributeSetInstanceExtensionFieldStateMergePatched e = NewAttributeSetInstanceExtensionFieldStateMergePatched(stateEventId);
-            var s = outerState.Fields.Get(c.Index);
-
-            e.Name = c.Name;
-            e.Type = c.Type;
-            e.Length = c.Length;
-            e.Alias = c.Alias;
-            e.Description = c.Description;
-            e.Active = c.Active;
-            e.IsPropertyNameRemoved = c.IsPropertyNameRemoved;
-            e.IsPropertyTypeRemoved = c.IsPropertyTypeRemoved;
-            e.IsPropertyLengthRemoved = c.IsPropertyLengthRemoved;
-            e.IsPropertyAliasRemoved = c.IsPropertyAliasRemoved;
-            e.IsPropertyDescriptionRemoved = c.IsPropertyDescriptionRemoved;
-            e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
-
-            e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
-            return e;
-
-        }// END Map(IMergePatch... ////////////////////////////
-
-
-        protected virtual IAttributeSetInstanceExtensionFieldStateRemoved MapRemove(IRemoveAttributeSetInstanceExtensionField c, IAttributeSetInstanceExtensionFieldGroupCommand outerCommand, long version)
-        {
-            c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new AttributeSetInstanceExtensionFieldStateEventId(c.GroupId, c.Index, version);
-            IAttributeSetInstanceExtensionFieldStateRemoved e = NewAttributeSetInstanceExtensionFieldStateRemoved(stateEventId);
-
-
-            e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
-
-            return e;
-
-        }// END Map(IRemove... ////////////////////////////
 
         private void ThrowOnInconsistentIds(object innerObject, string innerIdName, object innerIdValue, string outerIdName, object outerIdValue)
         {
@@ -364,22 +239,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 		{
 			return new AttributeSetInstanceExtensionFieldGroupStateDeleted(stateEventId);
 		}
-
-		private AttributeSetInstanceExtensionFieldStateCreated NewAttributeSetInstanceExtensionFieldStateCreated(AttributeSetInstanceExtensionFieldStateEventId stateEventId)
-		{
-			return new AttributeSetInstanceExtensionFieldStateCreated(stateEventId);
-		}
-
-        private AttributeSetInstanceExtensionFieldStateMergePatched NewAttributeSetInstanceExtensionFieldStateMergePatched(AttributeSetInstanceExtensionFieldStateEventId stateEventId)
-		{
-			return new AttributeSetInstanceExtensionFieldStateMergePatched(stateEventId);
-		}
-
-        private AttributeSetInstanceExtensionFieldStateRemoved NewAttributeSetInstanceExtensionFieldStateRemoved(AttributeSetInstanceExtensionFieldStateEventId stateEventId)
-		{
-			return new AttributeSetInstanceExtensionFieldStateRemoved(stateEventId);
-		}
-
 
     }
 

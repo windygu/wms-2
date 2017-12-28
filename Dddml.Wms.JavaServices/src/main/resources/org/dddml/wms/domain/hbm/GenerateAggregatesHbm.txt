@@ -90,10 +90,10 @@
         <mapping resource="org/dddml/wms/domain/hbm/LocatorState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/LocatorStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/AttributeSetInstanceState.hbm.xml"/>
-        <mapping resource="org/dddml/wms/domain/hbm/AttributeSetInstanceExtensionFieldGroupState.hbm.xml"/>
-        <mapping resource="org/dddml/wms/domain/hbm/AttributeSetInstanceExtensionFieldGroupStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/AttributeSetInstanceExtensionFieldState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/AttributeSetInstanceExtensionFieldStateEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/AttributeSetInstanceExtensionFieldGroupState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/AttributeSetInstanceExtensionFieldGroupStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/AttributeValueMvoState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/AttributeValueMvoStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/AttributeUseMvoState.hbm.xml"/>
@@ -116,5 +116,3 @@
         <mapping resource="org/dddml/wms/domain/hbm/SellableInventoryItemEntryMvoStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ShipmentItemMvoState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ShipmentItemMvoStateEvent.hbm.xml"/>
-        <mapping resource="org/dddml/wms/domain/hbm/AttributeSetInstanceExtensionFieldMvoState.hbm.xml"/>
-        <mapping resource="org/dddml/wms/domain/hbm/AttributeSetInstanceExtensionFieldMvoStateEvent.hbm.xml"/>

@@ -13,7 +13,7 @@ using Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup;
 namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 {
 
-	public partial class AttributeSetInstanceExtensionFieldGroupState : AttributeSetInstanceExtensionFieldGroupStateProperties, IAttributeSetInstanceExtensionFieldGroupState, ISaveable
+	public partial class AttributeSetInstanceExtensionFieldGroupState : AttributeSetInstanceExtensionFieldGroupStateProperties, IAttributeSetInstanceExtensionFieldGroupState
 	{
 
 		public virtual string CreatedBy { get; set; }
@@ -131,21 +131,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 		}
 
 
-        private IAttributeSetInstanceExtensionFieldStates _fields;
-      
-        public virtual IAttributeSetInstanceExtensionFieldStates Fields
-        {
-            get
-            {
-                return this._fields;
-            }
-            set
-            {
-                this._fields = value;
-            }
-        }
-
-
         public virtual bool StateReadOnly { get; set; }
 
         bool IState.ReadOnly
@@ -182,22 +167,8 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
         public AttributeSetInstanceExtensionFieldGroupState(bool forReapplying)
         {
             this._forReapplying = forReapplying;
-            _fields = new AttributeSetInstanceExtensionFieldStates(this);
-
             InitializeProperties();
         }
-
-
-		#region Saveable Implements
-
-        public virtual void Save()
-        {
-            _fields.Save();
-
-        }
-
-
-		#endregion
 
 
 		public virtual void When(IAttributeSetInstanceExtensionFieldGroupStateCreated e)
@@ -220,10 +191,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 			this.CreatedBy = e.CreatedBy;
 			this.CreatedAt = e.CreatedAt;
 
-			foreach (IAttributeSetInstanceExtensionFieldStateCreated innerEvent in e.AttributeSetInstanceExtensionFieldEvents) {
-				IAttributeSetInstanceExtensionFieldState innerState = this.Fields.Get(innerEvent.GlobalId.Index, true);
-				innerState.Mutate (innerEvent);
-			}
 
 		}
 
@@ -309,19 +276,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 			this.UpdatedAt = e.CreatedAt;
 
 
-			foreach (IAttributeSetInstanceExtensionFieldStateEvent innerEvent in e.AttributeSetInstanceExtensionFieldEvents)
-            {
-                IAttributeSetInstanceExtensionFieldState innerState = this.Fields.Get(innerEvent.GlobalId.Index);
-
-                innerState.Mutate(innerEvent);
-                var removed = innerEvent as IAttributeSetInstanceExtensionFieldStateRemoved;
-                if (removed != null)
-                {
-                    this.Fields.Remove(innerState);
-                }
-          
-            }
-
 		}
 
 		public virtual void When(IAttributeSetInstanceExtensionFieldGroupStateDeleted e)
@@ -331,18 +285,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 			this.Deleted = true;
 			this.UpdatedBy = e.CreatedBy;
 			this.UpdatedAt = e.CreatedAt;
-
-            foreach (var innerState in this.Fields)
-            {
-                this.Fields.Remove(innerState);
-                
-                var innerE = e.NewAttributeSetInstanceExtensionFieldStateRemoved(innerState.Index);
-                ((AttributeSetInstanceExtensionFieldStateEventBase)innerE).CreatedAt = e.CreatedAt;
-                ((AttributeSetInstanceExtensionFieldStateEventBase)innerE).CreatedBy = e.CreatedBy;
-                innerState.When(innerE);
-                //e.AddAttributeSetInstanceExtensionFieldEvent(innerE);
-
-            }
 
 		}
 

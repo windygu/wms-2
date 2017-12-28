@@ -1,0 +1,92 @@
+﻿<#@ template language="C#" debug="True" #>
+<#@ output extension="yaml" #>
+<#@ assembly name="%DddmlDotNetToolsSolutionDir%\Dddml.Core\bin\Debug\Dddml.Core.dll" #>
+<#@ assembly name="%DddmlDotNetToolsSolutionDir%\Dddml.Serialization\bin\Debug\Dddml.Serialization.dll" #>
+<#@ assembly name="%DddmlDotNetToolsSolutionDir%\Dddml.T4\bin\Debug\Dddml.T4.dll" #>
+<#@ assembly name="%DddmlDotNetToolsSolutionDir%\packages\YamlDotNet.3.8.0\lib\net35\YamlDotNet.dll" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="Dddml.Core.Dom" #>
+<#@ import namespace="Dddml.Serialization" #>
+<#@ import namespace="Dddml.T4" #>
+<#@ import namespace="Dddml.T4.Extensions" #>
+<#@ import namespace="Dddml.T4.Generator" #>
+<#@ include file="T4Toolbox.tt" #>
+<#+
+
+public class ExtensionFieldDddmlTemplate : CSharpTemplate
+{
+    string ObjectName { get; set; }
+
+    bool GeneratingGroup { get; set; }
+
+    public ExtensionFieldDddmlTemplate(string objName, bool generatingGroup)
+    {
+        this.ObjectName = objName;
+        this.GeneratingGroup = generatingGroup;
+    }
+
+	public override string TransformText()
+	{
+
+#>
+#%DDDML 0.1
+
+---
+
+# ------------------------------
+aggregates:
+
+    # --------------- aggregate ---------------
+    <#= ObjectName #>ExtensionField:
+      id:
+        name: Name
+        type: string
+
+      properties: 
+        Type: 
+          type: string
+        Length:
+          type: int?
+        Alias:
+          type: string
+        Description:
+          type: string
+        GroupId:
+          type: string
+        
+      uniqueConstraints:
+        UniqueAlias: [Alias]
+
+<#+
+        if (GeneratingGroup) 
+        {
+#>        
+    # --------------- aggregate ---------------
+    <#= ObjectName #>ExtensionFieldGroup:
+      id:
+        name: Id
+        type: string
+            
+      properties:
+        FieldType:
+          type: string
+        FieldLength:
+          type: int?
+        FieldCount:
+          type: int
+        NameFormat:
+          type: string
+        Description:
+          type: string
+        # Fields:
+        #   itemType: <#= ObjectName #>ExtensionField
+       
+<#+
+        }
+#>
+<#+
+        return this.GenerationEnvironment.ToString();
+	}
+}
+#>

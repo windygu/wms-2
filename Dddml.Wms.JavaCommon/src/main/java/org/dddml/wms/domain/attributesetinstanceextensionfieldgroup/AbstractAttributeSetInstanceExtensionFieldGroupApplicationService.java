@@ -102,10 +102,6 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupApplication
         return new AbstractAttributeSetInstanceExtensionFieldGroupState.SimpleAttributeSetInstanceExtensionFieldGroupState(eventStream.getEvents());
     }
 
-    public AttributeSetInstanceExtensionFieldState getAttributeSetInstanceExtensionField(String groupId, String index) {
-        return getStateQueryRepository().getAttributeSetInstanceExtensionField(groupId, index);
-    }
-
 
     public AttributeSetInstanceExtensionFieldGroupAggregate getAttributeSetInstanceExtensionFieldGroupAggregate(AttributeSetInstanceExtensionFieldGroupState state)
     {

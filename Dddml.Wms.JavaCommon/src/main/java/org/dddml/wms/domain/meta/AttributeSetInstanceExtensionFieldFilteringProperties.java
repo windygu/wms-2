@@ -11,12 +11,12 @@ public final class AttributeSetInstanceExtensionFieldFilteringProperties
     }
 
     public static final String[] propertyNames = new String[] {
-            "index",
             "name",
             "type",
             "length",
             "alias",
             "description",
+            "groupId",
             "version",
             "createdBy",
             "createdAt",
@@ -24,16 +24,13 @@ public final class AttributeSetInstanceExtensionFieldFilteringProperties
             "updatedAt",
             "active",
             "deleted",
-            "groupId",
-            "attributeSetInstanceExtensionFieldId.groupId",
-            "attributeSetInstanceExtensionFieldId.index",
     };
 
     public static final String[] propertyTypes = new String[] {
             "String",
             "String",
-            "String",
             "Integer",
+            "String",
             "String",
             "String",
             "Long",
@@ -43,9 +40,6 @@ public final class AttributeSetInstanceExtensionFieldFilteringProperties
             "Date",
             "Boolean",
             "Boolean",
-            "String",
-            "String",
-            "String",
     };
 
     public static final Map<String, String> propertyTypeMap;
@@ -60,8 +54,6 @@ public final class AttributeSetInstanceExtensionFieldFilteringProperties
     }
 
     private static  void initAliasMap() {
-        aliasMap.put("index", "attributeSetInstanceExtensionFieldId.index");
-        aliasMap.put("Index", "attributeSetInstanceExtensionFieldId.index");
         aliasMap.put("name", "name");
         aliasMap.put("Name", "name");
         aliasMap.put("type", "type");
@@ -72,6 +64,8 @@ public final class AttributeSetInstanceExtensionFieldFilteringProperties
         aliasMap.put("Alias", "alias");
         aliasMap.put("description", "description");
         aliasMap.put("Description", "description");
+        aliasMap.put("groupId", "groupId");
+        aliasMap.put("GroupId", "groupId");
         aliasMap.put("version", "version");
         aliasMap.put("Version", "version");
         aliasMap.put("createdBy", "createdBy");
@@ -86,12 +80,6 @@ public final class AttributeSetInstanceExtensionFieldFilteringProperties
         aliasMap.put("Active", "active");
         aliasMap.put("deleted", "deleted");
         aliasMap.put("Deleted", "deleted");
-        aliasMap.put("groupId", "attributeSetInstanceExtensionFieldId.groupId");
-        aliasMap.put("GroupId", "attributeSetInstanceExtensionFieldId.groupId");
-        aliasMap.put("attributeSetInstanceExtensionFieldId.groupId", "attributeSetInstanceExtensionFieldId.groupId");
-        aliasMap.put("AttributeSetInstanceExtensionFieldId.GroupId", "attributeSetInstanceExtensionFieldId.groupId");
-        aliasMap.put("attributeSetInstanceExtensionFieldId.index", "attributeSetInstanceExtensionFieldId.index");
-        aliasMap.put("AttributeSetInstanceExtensionFieldId.Index", "attributeSetInstanceExtensionFieldId.index");
     }
 
     private static void initPropertyTypeMap() {

@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.attributesetinstanceextensionfieldgroup.AttributeSetInstanceExtensionFieldGroupStateEvent.*;
 
-public abstract class AbstractAttributeSetInstanceExtensionFieldGroupState implements AttributeSetInstanceExtensionFieldGroupState, Saveable
+public abstract class AbstractAttributeSetInstanceExtensionFieldGroupState implements AttributeSetInstanceExtensionFieldGroupState
 {
 
     private String id;
@@ -170,18 +170,6 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupState imple
         return this.getVersion() == null;
     }
 
-    private AttributeSetInstanceExtensionFieldStates fields;
-
-    public AttributeSetInstanceExtensionFieldStates getFields()
-    {
-        return this.fields;
-    }
-
-    public void setFields(AttributeSetInstanceExtensionFieldStates fields)
-    {
-        this.fields = fields;
-    }
-
     private Boolean stateReadOnly;
 
     public Boolean getStateReadOnly() { return this.stateReadOnly; }
@@ -221,7 +209,6 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupState imple
     }
     
     protected void initializeProperties() {
-        fields = new SimpleAttributeSetInstanceExtensionFieldStates(this);
     }
 
 
@@ -254,10 +241,6 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupState imple
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
-        for (AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateCreated innerEvent : e.getAttributeSetInstanceExtensionFieldEvents()) {
-            AttributeSetInstanceExtensionFieldState innerState = this.getFields().get(innerEvent.getStateEventId().getIndex());
-            innerState.mutate(innerEvent);
-        }
     }
 
     public void when(AttributeSetInstanceExtensionFieldGroupStateMergePatched e)
@@ -334,15 +317,6 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupState imple
         this.setUpdatedBy(e.getCreatedBy());
         this.setUpdatedAt(e.getCreatedAt());
 
-        for (AttributeSetInstanceExtensionFieldStateEvent innerEvent : e.getAttributeSetInstanceExtensionFieldEvents()) {
-            AttributeSetInstanceExtensionFieldState innerState = this.getFields().get(innerEvent.getStateEventId().getIndex());
-            innerState.mutate(innerEvent);
-            if (innerEvent instanceof AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateRemoved)
-            {
-                //AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateRemoved removed = (AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateRemoved)innerEvent;
-                this.getFields().remove(innerState);
-            }
-        }
     }
 
     public void when(AttributeSetInstanceExtensionFieldGroupStateDeleted e)
@@ -353,22 +327,10 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupState imple
         this.setUpdatedBy(e.getCreatedBy());
         this.setUpdatedAt(e.getCreatedAt());
 
-        for (AttributeSetInstanceExtensionFieldState innerState : this.getFields())
-        {
-            this.getFields().remove(innerState);
-        
-            AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateRemoved innerE = e.newAttributeSetInstanceExtensionFieldStateRemoved(innerState.getIndex());
-            innerE.setCreatedAt(e.getCreatedAt());
-            innerE.setCreatedBy(e.getCreatedBy());
-            innerState.when(innerE);
-            //e.addAttributeSetInstanceExtensionFieldEvent(innerE);
-        }
     }
 
     public void save()
     {
-        fields.save();
-
     }
 
     protected void throwOnWrongEvent(AttributeSetInstanceExtensionFieldGroupStateEvent stateEvent)
@@ -406,14 +368,6 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupState imple
             super(events);
         }
 
-    }
-
-    static class SimpleAttributeSetInstanceExtensionFieldStates extends AbstractAttributeSetInstanceExtensionFieldStates
-    {
-        public SimpleAttributeSetInstanceExtensionFieldStates(AbstractAttributeSetInstanceExtensionFieldGroupState outerState)
-        {
-            super(outerState);
-        }
     }
 
 

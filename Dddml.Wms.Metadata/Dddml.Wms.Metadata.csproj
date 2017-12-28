@@ -75,7 +75,7 @@
     </None>
     <None Include="Templates\AttributeSetInstanceDddmlTemplate.tt" />
     <None Include="AttributeSetInstanceExtensionFieldMetadataUtils.ttinclude" />
-    <None Include="Templates\AttributeSetInstanceExtensionFieldGroupDddmlTemplate.tt" />
+    <None Include="Templates\ExtensionFieldDddmlTemplate.tt" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

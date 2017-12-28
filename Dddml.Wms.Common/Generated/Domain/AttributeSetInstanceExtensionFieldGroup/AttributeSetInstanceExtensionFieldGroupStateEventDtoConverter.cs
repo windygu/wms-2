@@ -48,14 +48,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
             dto.NameFormat = e.NameFormat;
             dto.Description = e.Description;
             dto.Active = e.Active;
-            var attributeSetInstanceExtensionFieldEvents = new List<AttributeSetInstanceExtensionFieldStateCreatedDto>();
-            foreach (var ee in e.AttributeSetInstanceExtensionFieldEvents)
-            {
-                AttributeSetInstanceExtensionFieldStateCreatedDto eeDto = AttributeSetInstanceExtensionFieldStateEventDtoConverter.ToAttributeSetInstanceExtensionFieldStateCreatedDto(ee);
-                attributeSetInstanceExtensionFieldEvents.Add(eeDto);
-            }
-            dto.AttributeSetInstanceExtensionFieldEvents = attributeSetInstanceExtensionFieldEvents.ToArray();
-
             return dto;
         }
 
@@ -78,14 +70,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
             dto.IsPropertyNameFormatRemoved = e.IsPropertyNameFormatRemoved;
             dto.IsPropertyDescriptionRemoved = e.IsPropertyDescriptionRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;
-            var attributeSetInstanceExtensionFieldEvents = new List<AttributeSetInstanceExtensionFieldStateCreatedOrMergePatchedOrRemovedDto>();
-            foreach (var ee in e.AttributeSetInstanceExtensionFieldEvents)
-            {
-                AttributeSetInstanceExtensionFieldStateCreatedOrMergePatchedOrRemovedDto eeDto = AttributeSetInstanceExtensionFieldStateEventDtoConverter.ToAttributeSetInstanceExtensionFieldStateEventDto(ee);
-                attributeSetInstanceExtensionFieldEvents.Add(eeDto);
-            }
-            dto.AttributeSetInstanceExtensionFieldEvents = attributeSetInstanceExtensionFieldEvents.ToArray();
-
 
             return dto;
         }
@@ -98,24 +82,8 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
-            var attributeSetInstanceExtensionFieldEvents = new List<AttributeSetInstanceExtensionFieldStateRemovedDto>();
-            foreach (var ee in e.AttributeSetInstanceExtensionFieldEvents)
-            {
-                AttributeSetInstanceExtensionFieldStateRemovedDto eeDto = AttributeSetInstanceExtensionFieldStateEventDtoConverter.ToAttributeSetInstanceExtensionFieldStateRemovedDto(ee);
-                attributeSetInstanceExtensionFieldEvents.Add(eeDto);
-            }
-            dto.AttributeSetInstanceExtensionFieldEvents = attributeSetInstanceExtensionFieldEvents.ToArray();
-
 
             return dto;
-        }
-
-        protected virtual AttributeSetInstanceExtensionFieldStateEventDtoConverter AttributeSetInstanceExtensionFieldStateEventDtoConverter
-        {
-            get
-            {
-                return new AttributeSetInstanceExtensionFieldStateEventDtoConverter();
-            }
         }
 
 

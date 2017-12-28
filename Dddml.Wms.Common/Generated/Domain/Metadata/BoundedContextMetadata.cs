@@ -58,6 +58,7 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNames.Add("Warehouse");
             _aggregateNames.Add("Locator");
             _aggregateNames.Add("AttributeSetInstance");
+            _aggregateNames.Add("AttributeSetInstanceExtensionField");
             _aggregateNames.Add("AttributeSetInstanceExtensionFieldGroup");
             _aggregateNames.Add("AttributeValueMvo");
             _aggregateNames.Add("AttributeUseMvo");
@@ -70,7 +71,6 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNames.Add("PhysicalInventoryLineMvo");
             _aggregateNames.Add("SellableInventoryItemEntryMvo");
             _aggregateNames.Add("ShipmentItemMvo");
-            _aggregateNames.Add("AttributeSetInstanceExtensionFieldMvo");
 
             _aggregateNamespaces = new Dictionary<string, string>();
             _aggregateNamespaces.Add("Attribute", "Dddml.Wms.Domain.Attribute");
@@ -101,6 +101,7 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNamespaces.Add("Warehouse", "Dddml.Wms.Domain.Warehouse");
             _aggregateNamespaces.Add("Locator", "Dddml.Wms.Domain.Locator");
             _aggregateNamespaces.Add("AttributeSetInstance", "Dddml.Wms.Domain.AttributeSetInstance");
+            _aggregateNamespaces.Add("AttributeSetInstanceExtensionField", "Dddml.Wms.Domain.AttributeSetInstanceExtensionField");
             _aggregateNamespaces.Add("AttributeSetInstanceExtensionFieldGroup", "Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup");
             _aggregateNamespaces.Add("AttributeValueMvo", "Dddml.Wms.Domain.AttributeValueMvo");
             _aggregateNamespaces.Add("AttributeUseMvo", "Dddml.Wms.Domain.AttributeUseMvo");
@@ -113,7 +114,6 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNamespaces.Add("PhysicalInventoryLineMvo", "Dddml.Wms.Domain.PhysicalInventoryLineMvo");
             _aggregateNamespaces.Add("SellableInventoryItemEntryMvo", "Dddml.Wms.Domain.SellableInventoryItemEntryMvo");
             _aggregateNamespaces.Add("ShipmentItemMvo", "Dddml.Wms.Domain.ShipmentItemMvo");
-            _aggregateNamespaces.Add("AttributeSetInstanceExtensionFieldMvo", "Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldMvo");
         }
 
     }

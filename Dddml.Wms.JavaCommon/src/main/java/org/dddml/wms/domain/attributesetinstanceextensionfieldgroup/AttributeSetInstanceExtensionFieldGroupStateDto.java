@@ -153,22 +153,10 @@ public class AttributeSetInstanceExtensionFieldGroupStateDto
         this.updatedAt = updatedAt;
     }
 
-    private AttributeSetInstanceExtensionFieldStateDto[] fields;
-
-    public AttributeSetInstanceExtensionFieldStateDto[] getFields()
-    {
-        return this.fields;
-    }	
-
-    public void setFields(AttributeSetInstanceExtensionFieldStateDto[] fields)
-    {
-        this.fields = fields;
-    }
-
 
     public static class DtoConverter extends AbstractStateDtoConverter
     {
-        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{"Fields"});
+        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{});
 
         @Override
         protected boolean isCollectionField(String fieldName) {
@@ -226,18 +214,6 @@ public class AttributeSetInstanceExtensionFieldGroupStateDto
             }
             if (returnedFieldsContains("UpdatedAt")) {
                 dto.setUpdatedAt(state.getUpdatedAt());
-            }
-            if (returnedFieldsContains("Fields")) {
-                ArrayList<AttributeSetInstanceExtensionFieldStateDto> arrayList = new ArrayList();
-                if (state.getFields() != null) {
-                    AttributeSetInstanceExtensionFieldStateDto.DtoConverter conv = new AttributeSetInstanceExtensionFieldStateDto.DtoConverter();
-                    String returnFS = CollectionUtils.mapGetValueIgnoringCase(getReturnedFields(), "Fields");
-                    if(returnFS != null) { conv.setReturnedFieldsString(returnFS); } else { conv.setAllFieldsReturned(this.getAllFieldsReturned()); }
-                    for (AttributeSetInstanceExtensionFieldState s : state.getFields()) {
-                        arrayList.add(conv.toAttributeSetInstanceExtensionFieldStateDto(s));
-                    }
-                }
-                dto.setFields(arrayList.toArray(new AttributeSetInstanceExtensionFieldStateDto[0]));
             }
             return dto;
         }

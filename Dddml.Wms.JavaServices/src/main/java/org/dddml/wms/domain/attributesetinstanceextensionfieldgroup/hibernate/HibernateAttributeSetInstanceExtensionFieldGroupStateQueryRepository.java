@@ -26,7 +26,7 @@ public class HibernateAttributeSetInstanceExtensionFieldGroupStateQueryRepositor
         return this.sessionFactory.getCurrentSession();
     }
     
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("Id", "FieldType", "FieldLength", "FieldCount", "NameFormat", "Description", "Fields", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("Id", "FieldType", "FieldLength", "FieldCount", "NameFormat", "Description", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     
@@ -43,7 +43,7 @@ public class HibernateAttributeSetInstanceExtensionFieldGroupStateQueryRepositor
 
         AttributeSetInstanceExtensionFieldGroupState state = (AttributeSetInstanceExtensionFieldGroupState)getCurrentSession().get(AbstractAttributeSetInstanceExtensionFieldGroupState.SimpleAttributeSetInstanceExtensionFieldGroupState.class, id);
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (AttributeSetInstanceExtensionFieldGroupState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{AttributeSetInstanceExtensionFieldGroupState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (AttributeSetInstanceExtensionFieldGroupState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{AttributeSetInstanceExtensionFieldGroupState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }
@@ -130,13 +130,6 @@ public class HibernateAttributeSetInstanceExtensionFieldGroupStateQueryRepositor
         }
         addNotDeletedRestriction(criteria);
         return (long)criteria.uniqueResult();
-    }
-
-    @Transactional(readOnly = true)
-    public AttributeSetInstanceExtensionFieldState getAttributeSetInstanceExtensionField(String groupId, String index)
-    {
-        AttributeSetInstanceExtensionFieldId entityId = new AttributeSetInstanceExtensionFieldId(groupId, index);
-        return (AttributeSetInstanceExtensionFieldState) getCurrentSession().get(AbstractAttributeSetInstanceExtensionFieldState.SimpleAttributeSetInstanceExtensionFieldState.class, entityId);
     }
 
 

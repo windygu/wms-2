@@ -165,11 +165,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
             return new AttributeSetInstanceExtensionFieldGroupState(eventStream.Events);
         }
 
-        public virtual IAttributeSetInstanceExtensionFieldState GetAttributeSetInstanceExtensionField(string groupId, string index)
-        {
-            return StateQueryRepository.GetAttributeSetInstanceExtensionField(groupId, index);
-        }
-
 
 		public abstract IAttributeSetInstanceExtensionFieldGroupAggregate GetAttributeSetInstanceExtensionFieldGroupAggregate(IAttributeSetInstanceExtensionFieldGroupState state);
 

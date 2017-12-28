@@ -175,17 +175,6 @@ public class AttributeSetInstanceExtensionFieldGroupStateEventDto extends Abstra
     }
 
 
-    private AttributeSetInstanceExtensionFieldStateEventDto[] attributeSetInstanceExtensionFieldEvents;
-
-    public AttributeSetInstanceExtensionFieldStateEventDto[] getAttributeSetInstanceExtensionFieldEvents() {
-        return this.attributeSetInstanceExtensionFieldEvents;
-    }
-
-    public void setAttributeSetInstanceExtensionFieldEvents(AttributeSetInstanceExtensionFieldStateEventDto[] events) {
-        this.attributeSetInstanceExtensionFieldEvents = events;
-    }
-
-
 	public static class AttributeSetInstanceExtensionFieldGroupStateCreatedDto extends AttributeSetInstanceExtensionFieldGroupStateEventDto
 	{
         @Override

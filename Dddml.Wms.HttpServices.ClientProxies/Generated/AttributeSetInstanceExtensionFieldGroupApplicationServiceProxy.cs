@@ -289,23 +289,6 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetHistoryStateAsync(id, version).GetAwaiter().GetResult();
         }
 
-        public async virtual Task<IAttributeSetInstanceExtensionFieldState> GetAttributeSetInstanceExtensionFieldAsync(string groupId, string index)
-        {
-            var uriParameters = new AttributeSetInstanceExtensionFieldUriParameters();
-            uriParameters.GroupId = groupId;
-            uriParameters.Index = index;
-
-            var req = new AttributeSetInstanceExtensionFieldGetRequest(uriParameters);
-            var resp = await _ramlClient.AttributeSetInstanceExtensionField.Get(req);
-            AttributeSetInstanceExtensionFieldGroupProxyUtils.ThrowOnHttpResponseError(resp);
-            return (resp.Content == null) ? null : resp.Content.ToAttributeSetInstanceExtensionFieldState();
-        }
-
-        public virtual IAttributeSetInstanceExtensionFieldState GetAttributeSetInstanceExtensionField(string groupId, string index)
-        {
-            return GetAttributeSetInstanceExtensionFieldAsync(groupId, index).GetAwaiter().GetResult();
-        }
-
 
         protected virtual string QueryFieldValueSeparator
         {

@@ -87,18 +87,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
             set;
         }
 
-        public virtual AttributeSetInstanceExtensionFieldStateDto[] Fields
-        {
-            get;
-            set;
-        }
-
-        IAttributeSetInstanceExtensionFieldStateDto[] IAttributeSetInstanceExtensionFieldGroupStateDto.Fields
-        {
-            get { return this.Fields; }
-            set { this.Fields = value.Select(e => ((AttributeSetInstanceExtensionFieldStateDto)e)).ToArray(); }
-        }
-
         public virtual IAttributeSetInstanceExtensionFieldGroupState ToAttributeSetInstanceExtensionFieldGroupState()
         {
             var state = new AttributeSetInstanceExtensionFieldGroupState(true);
@@ -114,7 +102,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
             if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }
             state.UpdatedBy = this.UpdatedBy;
             if (this.UpdatedAt != null && this.UpdatedAt.HasValue) { state.UpdatedAt = this.UpdatedAt.Value; }
-            if (this.Fields != null) { foreach (var s in this.Fields) { state.Fields.AddToSave(s.ToAttributeSetInstanceExtensionFieldState()); } };
 
             return state;
         }

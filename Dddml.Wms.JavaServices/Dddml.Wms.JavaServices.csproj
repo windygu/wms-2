@@ -56,25 +56,19 @@
     <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\hibernate\HibernateAttributeSetInstanceExtensionFieldGroupStateRepository.java">
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\hibernate\HibernateAttributeSetInstanceExtensionFieldStateDao.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomainHibernate.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\hibernate\HibernateAttributeSetInstanceExtensionFieldStateEventDao.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomainHibernate.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\hibernate\GenerateAttributeSetInstanceExtensionFieldMvoDomainHibernate.txt">
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\hibernate\GenerateAttributeSetInstanceExtensionFieldDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomainHibernate.tt</DependentUpon>
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\hibernate\HibernateAttributeSetInstanceExtensionFieldMvoEventStore.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomainHibernate.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\hibernate\HibernateAttributeSetInstanceExtensionFieldEventStore.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\hibernate\HibernateAttributeSetInstanceExtensionFieldMvoStateQueryRepository.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomainHibernate.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\hibernate\HibernateAttributeSetInstanceExtensionFieldStateQueryRepository.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\hibernate\HibernateAttributeSetInstanceExtensionFieldMvoStateRepository.java">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldMvoDomainHibernate.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\hibernate\HibernateAttributeSetInstanceExtensionFieldStateRepository.java">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomainHibernate.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstance\hibernate\GenerateAttributeSetInstanceDomainHibernate.txt">
       <AutoGen>True</AutoGen>
@@ -1024,20 +1018,12 @@
     <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\AttributeUseMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldMvoStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <Content Include="src\main\resources\org\dddml\wms\domain\hbm\GenerateAggregatesHbm.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAggregatesHbm.txt</LastGenOutput>
       <LastOutputs>
 .\AttributeSetInstanceExtensionFieldGroupState.hbm.xml
 .\AttributeSetInstanceExtensionFieldGroupStateEvent.hbm.xml
-.\AttributeSetInstanceExtensionFieldMvoState.hbm.xml
-.\AttributeSetInstanceExtensionFieldMvoStateEvent.hbm.xml
 .\AttributeSetInstanceExtensionFieldState.hbm.xml
 .\AttributeSetInstanceExtensionFieldStateEvent.hbm.xml
 .\AttributeSetInstanceState.hbm.xml
@@ -1243,8 +1229,6 @@
 .\HibernateAttributeSetInstanceExtensionFieldGroupEventStore.java
 .\HibernateAttributeSetInstanceExtensionFieldGroupStateQueryRepository.java
 .\HibernateAttributeSetInstanceExtensionFieldGroupStateRepository.java
-.\HibernateAttributeSetInstanceExtensionFieldStateDao.java
-.\HibernateAttributeSetInstanceExtensionFieldStateEventDao.java
 </LastOutputs>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\attributevaluemvo\hibernate\GenerateAttributeValueMvoDomainHibernate.tt">
@@ -1275,16 +1259,6 @@
 .\HibernateInOutLineMvoEventStore.java
 .\HibernateInOutLineMvoStateQueryRepository.java
 .\HibernateInOutLineMvoStateRepository.java
-</LastOutputs>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldmvo\hibernate\GenerateAttributeSetInstanceExtensionFieldMvoDomainHibernate.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateAttributeSetInstanceExtensionFieldMvoDomainHibernate.txt</LastGenOutput>
-      <LastOutputs>
-.\GenerateAttributeSetInstanceExtensionFieldMvoDomainHibernate.txt
-.\HibernateAttributeSetInstanceExtensionFieldMvoEventStore.java
-.\HibernateAttributeSetInstanceExtensionFieldMvoStateQueryRepository.java
-.\HibernateAttributeSetInstanceExtensionFieldMvoStateRepository.java
 </LastOutputs>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\inventoryitem\hibernate\GenerateInventoryItemDomainHibernate.tt">
@@ -1562,6 +1536,16 @@
 .\HibernatePhysicalInventoryLineMvoEventStore.java
 .\HibernatePhysicalInventoryLineMvoStateQueryRepository.java
 .\HibernatePhysicalInventoryLineMvoStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\hibernate\GenerateAttributeSetInstanceExtensionFieldDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateAttributeSetInstanceExtensionFieldDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateAttributeSetInstanceExtensionFieldDomainHibernate.txt
+.\HibernateAttributeSetInstanceExtensionFieldEventStore.java
+.\HibernateAttributeSetInstanceExtensionFieldStateQueryRepository.java
+.\HibernateAttributeSetInstanceExtensionFieldStateRepository.java
 </LastOutputs>
     </Content>
   </ItemGroup>

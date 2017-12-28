@@ -69,8 +69,6 @@ public interface AttributeSetInstanceExtensionFieldGroupState
 
     boolean getForReapplying();
 
-    AttributeSetInstanceExtensionFieldStates getFields();
-
 
     void mutate(Event e);
 

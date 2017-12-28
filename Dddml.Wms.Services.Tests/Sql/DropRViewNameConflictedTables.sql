@@ -9,4 +9,3 @@ DROP TABLE if exists `OrderItem_RV`;
 DROP TABLE if exists `PhysicalInventoryLine_RV`;
 DROP TABLE if exists `SellableInventoryItemEntry_RV`;
 DROP TABLE if exists `ShipmentItem_RV`;
-DROP TABLE if exists `AttributeSetInstanceExtensionField_RV`;

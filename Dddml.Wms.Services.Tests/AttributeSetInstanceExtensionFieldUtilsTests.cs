@@ -1,4 +1,5 @@
 ﻿using Dddml.Wms.Domain;
+using Dddml.Wms.Domain.AttributeSetInstanceExtensionField;
 using Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Specialization.Spring;
@@ -19,6 +20,7 @@ namespace Dddml.Wms.Services.Tests
 
         IAttributeSetInstanceExtensionFieldGroupApplicationService attributeSetInstanceExtensionFieldGroupApplicationService;
 
+        IAttributeSetInstanceExtensionFieldApplicationService attributeSetInstanceExtensionFieldApplicationService;
 
 
         [SetUp]
@@ -26,7 +28,10 @@ namespace Dddml.Wms.Services.Tests
         {
             base.SetUp();
 
-            attributeSetInstanceExtensionFieldGroupApplicationService = ApplicationContext.Current["attributeSetInstanceExtensionFieldGroupApplicationService"] as IAttributeSetInstanceExtensionFieldGroupApplicationService;
+            attributeSetInstanceExtensionFieldGroupApplicationService
+                = ApplicationContext.Current["attributeSetInstanceExtensionFieldGroupApplicationService"] as IAttributeSetInstanceExtensionFieldGroupApplicationService;
+            attributeSetInstanceExtensionFieldApplicationService
+                = ApplicationContext.Current["attributeSetInstanceExtensionFieldApplicationService"] as IAttributeSetInstanceExtensionFieldApplicationService;
         }
 
         [Test]
@@ -39,6 +44,21 @@ namespace Dddml.Wms.Services.Tests
                 attributeSetInstanceExtensionFieldGroupApplicationService.When(g);
             }
 
+            foreach (var g in extensionFieldGroups)
+            {
+                for (int i = 0; i < g.FieldCount; i++)
+                {
+                    var field = new CreateAttributeSetInstanceExtensionField();
+                    //field.Index = i.ToString();
+                    field.Name = String.Format(g.NameFormat, i);
+                    field.Type = g.FieldType;
+                    field.Length = g.FieldLength;
+                    field.Active = true;
+                    field.GroupId = g.Id;//g.Fields.Add(field);
+
+                    attributeSetInstanceExtensionFieldApplicationService.When(field);
+                }
+            }
         }
 
 

@@ -33,12 +33,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 
 	public interface IAttributeSetInstanceExtensionFieldGroupStateCreated : IAttributeSetInstanceExtensionFieldGroupStateEvent//, IAttributeSetInstanceExtensionFieldGroupStateProperties
 	{
-		IEnumerable<IAttributeSetInstanceExtensionFieldStateCreated> AttributeSetInstanceExtensionFieldEvents { get; }
-		
-		void AddAttributeSetInstanceExtensionFieldEvent(IAttributeSetInstanceExtensionFieldStateCreated e);
-
-		IAttributeSetInstanceExtensionFieldStateCreated NewAttributeSetInstanceExtensionFieldStateCreated(string index);
-
 	
 	}
 
@@ -57,27 +51,11 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 
 		bool IsPropertyActiveRemoved { get; set; }
 
-		IEnumerable<IAttributeSetInstanceExtensionFieldStateEvent> AttributeSetInstanceExtensionFieldEvents { get; }
-		
-		void AddAttributeSetInstanceExtensionFieldEvent(IAttributeSetInstanceExtensionFieldStateEvent e);
-
-		IAttributeSetInstanceExtensionFieldStateCreated NewAttributeSetInstanceExtensionFieldStateCreated(string index);
-
-		IAttributeSetInstanceExtensionFieldStateMergePatched NewAttributeSetInstanceExtensionFieldStateMergePatched(string index);
-
-		IAttributeSetInstanceExtensionFieldStateRemoved NewAttributeSetInstanceExtensionFieldStateRemoved(string index);
-
 
 	}
 
 	public interface IAttributeSetInstanceExtensionFieldGroupStateDeleted : IAttributeSetInstanceExtensionFieldGroupStateEvent
 	{
-		IEnumerable<IAttributeSetInstanceExtensionFieldStateRemoved> AttributeSetInstanceExtensionFieldEvents { get; }
-		
-		void AddAttributeSetInstanceExtensionFieldEvent(IAttributeSetInstanceExtensionFieldStateRemoved e);
-		
-		IAttributeSetInstanceExtensionFieldStateRemoved NewAttributeSetInstanceExtensionFieldStateRemoved(string index);
-
 	}
 
 

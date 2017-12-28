@@ -32,9 +32,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 		void Mutate(IEvent e);
 
 
-		IAttributeSetInstanceExtensionFieldStates Fields { get; set; }
-
-
         bool IsUnsaved { get; }
 
 	}

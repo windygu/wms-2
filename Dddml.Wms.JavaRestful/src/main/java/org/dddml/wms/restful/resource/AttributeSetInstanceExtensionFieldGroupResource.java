@@ -179,20 +179,6 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{groupId}/AttributeSetInstanceExtensionFields/{index}") @GET
-    public AttributeSetInstanceExtensionFieldStateDto getAttributeSetInstanceExtensionField(@PathParam("groupId") String groupId, @PathParam("index") String index) {
-        try {
-
-            AttributeSetInstanceExtensionFieldState state = attributeSetInstanceExtensionFieldGroupApplicationService.getAttributeSetInstanceExtensionField(groupId, index);
-            if (state == null) { return null; }
-            AttributeSetInstanceExtensionFieldStateDto.DtoConverter dtoConverter = new AttributeSetInstanceExtensionFieldStateDto.DtoConverter();
-            AttributeSetInstanceExtensionFieldStateDto stateDto = dtoConverter.toAttributeSetInstanceExtensionFieldStateDto(state);
-            dtoConverter.setAllFieldsReturned(true);
-            return stateDto;
-
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
-    }
-
 
     protected  AttributeSetInstanceExtensionFieldGroupStateEventDtoConverter getAttributeSetInstanceExtensionFieldGroupStateEventDtoConverter() {
         return new AttributeSetInstanceExtensionFieldGroupStateEventDtoConverter();

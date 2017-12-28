@@ -517,39 +517,3 @@ CREATE VIEW `ShipmentItem_RV` AS
         );
 
 
-CREATE VIEW `AttributeSetInstanceExtensionField_RV` AS
-    SELECT 
-        `AttributeSetInstanceExtensionFields`.`AttributeSetInstanceExtensionFieldIdGroupId`,
-        `AttributeSetInstanceExtensionFields`.`AttributeSetInstanceExtensionFieldIdIndex`,
-        `AttributeSetInstanceExtensionFields`.`Name`,
-        `AttributeSetInstanceExtensionFields`.`Type`,
-        `AttributeSetInstanceExtensionFields`.`Length`,
-        `AttributeSetInstanceExtensionFields`.`Alias`,
-        `AttributeSetInstanceExtensionFields`.`Description`,
-        `AttributeSetInstanceExtensionFields`.`Version`,
-        `AttributeSetInstanceExtensionFields`.`CreatedBy`,
-        `AttributeSetInstanceExtensionFields`.`CreatedAt`,
-        `AttributeSetInstanceExtensionFields`.`UpdatedBy`,
-        `AttributeSetInstanceExtensionFields`.`UpdatedAt`,
-        `AttributeSetInstanceExtensionFields`.`Active`,
-        `AttributeSetInstanceExtensionFields`.`Deleted`,
-        `AttributeSetInstanceExtensionFieldGroups`.`FieldType` AS `AttrSetInstEFGroupFieldType`,
-        `AttributeSetInstanceExtensionFieldGroups`.`FieldLength` AS `AttrSetInstEFGroupFieldLength`,
-        `AttributeSetInstanceExtensionFieldGroups`.`FieldCount` AS `AttrSetInstEFGroupFieldCount`,
-        `AttributeSetInstanceExtensionFieldGroups`.`NameFormat` AS `AttrSetInstEFGroupNameFormat`,
-        `AttributeSetInstanceExtensionFieldGroups`.`Description` AS `AttrSetInstEFGroupDescription`,
-        `AttributeSetInstanceExtensionFieldGroups`.`Version` AS `AttrSetInstEFGroupVersion`,
-        `AttributeSetInstanceExtensionFieldGroups`.`CreatedBy` AS `AttrSetInstEFGroupCreatedBy`,
-        `AttributeSetInstanceExtensionFieldGroups`.`CreatedAt` AS `AttrSetInstEFGroupCreatedAt`,
-        `AttributeSetInstanceExtensionFieldGroups`.`UpdatedBy` AS `AttrSetInstEFGroupUpdatedBy`,
-        `AttributeSetInstanceExtensionFieldGroups`.`UpdatedAt` AS `AttrSetInstEFGroupUpdatedAt`,
-        `AttributeSetInstanceExtensionFieldGroups`.`Active` AS `AttrSetInstEFGroupActive`,
-        `AttributeSetInstanceExtensionFieldGroups`.`Deleted` AS `AttrSetInstEFGroupDeleted`
-    FROM
-        (`AttributeSetInstanceExtensionFields`
-            JOIN `AttributeSetInstanceExtensionFieldGroups` ON ( 1=1 
-                and (`AttributeSetInstanceExtensionFields`.`AttributeSetInstanceExtensionFieldIdGroupId` = `AttributeSetInstanceExtensionFieldGroups`.`Id`)
-            )
-        );
-
-

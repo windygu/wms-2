@@ -45,10 +45,10 @@
             {
                 for (int iG = 0; iG < extensionFieldGroups.Count; iG++)
                 {
-                    var group = extensionFieldGroups[iG];
-                    if (i < group.FieldCount)
+                    var grp = extensionFieldGroups[iG];
+                    if (i < grp.FieldCount)
                     {
-                        fields.Add(group.CreateExtensionFieldMetadata(i));
+                        fields.Add(grp.CreateExtensionFieldMetadata(i));
                     }
                 }
             }

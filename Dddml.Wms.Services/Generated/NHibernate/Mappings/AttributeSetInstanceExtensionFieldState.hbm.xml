@@ -1,22 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
 				   assembly="Dddml.Wms.Common" 
-				   namespace="Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup">
+				   namespace="Dddml.Wms.Domain.AttributeSetInstanceExtensionField">
   
-  <class name="Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup.AttributeSetInstanceExtensionFieldState" table="AttributeSetInstanceExtensionFields">
+  <class name="Dddml.Wms.Domain.AttributeSetInstanceExtensionField.AttributeSetInstanceExtensionFieldState" table="AttributeSetInstanceExtensionFields">
 
-    <composite-id name="AttributeSetInstanceExtensionFieldId" class="Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup.AttributeSetInstanceExtensionFieldId">
-        <key-property name="GroupId" ><column name="AttributeSetInstanceExtensionFieldIdGroupId" length="50" /></key-property>
-        <key-property name="Index" ><column name="AttributeSetInstanceExtensionFieldIdIndex" length="50" /></key-property>
-    </composite-id>
+	<id name="Name" length="50" column="Name"><generator class="assigned"/></id>
 
 	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 
-    <property name="Name" ><column name="Name" unique-key="UniqueName" /></property>
     <property name="Type" ></property>
     <property name="Length" ></property>
     <property name="Alias" ><column name="Alias" unique-key="UniqueAlias" /></property>
     <property name="Description" ></property>
+    <property name="GroupId" ></property>
     <property name="CreatedBy" ></property>
     <property name="UpdatedBy" ></property>
     <property name="Active" ></property>

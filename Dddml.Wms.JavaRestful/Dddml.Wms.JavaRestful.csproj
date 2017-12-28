@@ -48,7 +48,7 @@
     <Content Include="src\main\java\org\dddml\wms\restful\resource\AttributeSetInstanceExtensionFieldGroupResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\restful\resource\AttributeSetInstanceExtensionFieldMvoResource.java">
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\AttributeSetInstanceExtensionFieldResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\AttributeSetInstanceResource.java">
@@ -72,7 +72,7 @@
       <LastOutputs>
 .\AttributeResource.java
 .\AttributeSetInstanceExtensionFieldGroupResource.java
-.\AttributeSetInstanceExtensionFieldMvoResource.java
+.\AttributeSetInstanceExtensionFieldResource.java
 .\AttributeSetInstanceResource.java
 .\AttributeSetResource.java
 .\AttributeUseMvoResource.java

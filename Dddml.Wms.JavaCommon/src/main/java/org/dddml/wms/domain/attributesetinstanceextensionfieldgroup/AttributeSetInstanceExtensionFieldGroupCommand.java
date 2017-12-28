@@ -68,10 +68,6 @@ public interface AttributeSetInstanceExtensionFieldGroupCommand extends Command
 
     interface CreateAttributeSetInstanceExtensionFieldGroup extends CreateOrMergePatchAttributeSetInstanceExtensionFieldGroup
     {
-        CreateAttributeSetInstanceExtensionFieldCommands getFields();
-
-        AttributeSetInstanceExtensionFieldCommand.CreateAttributeSetInstanceExtensionField newCreateAttributeSetInstanceExtensionField();
-
     }
 
     interface MergePatchAttributeSetInstanceExtensionFieldGroup extends CreateOrMergePatchAttributeSetInstanceExtensionFieldGroup
@@ -100,37 +96,11 @@ public interface AttributeSetInstanceExtensionFieldGroupCommand extends Command
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
-        AttributeSetInstanceExtensionFieldCommands getAttributeSetInstanceExtensionFieldCommands();
-
-        AttributeSetInstanceExtensionFieldCommand.CreateAttributeSetInstanceExtensionField newCreateAttributeSetInstanceExtensionField();
-
-        AttributeSetInstanceExtensionFieldCommand.MergePatchAttributeSetInstanceExtensionField newMergePatchAttributeSetInstanceExtensionField();
-
-        AttributeSetInstanceExtensionFieldCommand.RemoveAttributeSetInstanceExtensionField newRemoveAttributeSetInstanceExtensionField();
-
     }
 
 	interface DeleteAttributeSetInstanceExtensionFieldGroup extends AttributeSetInstanceExtensionFieldGroupCommand
 	{
 	}
-
-    interface CreateAttributeSetInstanceExtensionFieldCommands extends Iterable<AttributeSetInstanceExtensionFieldCommand.CreateAttributeSetInstanceExtensionField>
-    {
-        void add(AttributeSetInstanceExtensionFieldCommand.CreateAttributeSetInstanceExtensionField c);
-
-        void remove(AttributeSetInstanceExtensionFieldCommand.CreateAttributeSetInstanceExtensionField c);
-
-        void clear();
-    }
-
-    interface AttributeSetInstanceExtensionFieldCommands extends Iterable<AttributeSetInstanceExtensionFieldCommand>
-    {
-        void add(AttributeSetInstanceExtensionFieldCommand c);
-
-        void remove(AttributeSetInstanceExtensionFieldCommand c);
-
-        void clear();
-    }
 
 }
 

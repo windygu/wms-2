@@ -35,10 +35,6 @@
 
     drop table if exists AttributeUseMvoStateEvents;
 
-    drop table if exists AttributeSetInstanceExtensionField_RV;
-
-    drop table if exists AttributeSetInstanceExtensionFieldMvoStateEvents;
-
     drop table if exists InOuts;
 
     drop table if exists InOutStateEvents;
@@ -883,48 +879,43 @@
     );
 
     create table AttributeSetInstanceExtensionFields (
-        AttributeSetInstanceExtensionFieldIdGroupId VARCHAR(50) not null,
-       AttributeSetInstanceExtensionFieldIdIndex VARCHAR(50) not null,
+        Name VARCHAR(50) not null,
        Version BIGINT not null,
-       Name VARCHAR(255),
        Type VARCHAR(255),
        Length INTEGER,
        Alias VARCHAR(255),
        Description VARCHAR(255),
+       GroupId VARCHAR(255),
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
        Active TINYINT(1),
        Deleted TINYINT(1),
        CreatedAt DATETIME,
        UpdatedAt DATETIME,
-       primary key (AttributeSetInstanceExtensionFieldIdGroupId, AttributeSetInstanceExtensionFieldIdIndex),
-      unique (Name),
+       primary key (Name),
       unique (Alias)
     );
 
     create table AttributeSetInstanceExtensionFieldStateEvents (
-        AttributeSetInstanceExtensionFieldIdGroupId VARCHAR(50) not null,
-       AttributeSetInstanceExtensionFieldIdIndex VARCHAR(50) not null,
-       AttributeSetInstanceExtensionFieldGroupVersion BIGINT not null,
+        Name VARCHAR(50) not null,
+       Version BIGINT not null,
        StateEventType VARCHAR(255) not null,
-       Name VARCHAR(255),
        Type VARCHAR(255),
        Length INTEGER,
        Alias VARCHAR(255),
        Description VARCHAR(255),
+       GroupId VARCHAR(255),
        Active TINYINT(1),
        CreatedBy VARCHAR(255),
        CreatedAt DATETIME,
        CommandId VARCHAR(255),
-       Version BIGINT not null,
-       IsPropertyNameRemoved TINYINT(1),
        IsPropertyTypeRemoved TINYINT(1),
        IsPropertyLengthRemoved TINYINT(1),
        IsPropertyAliasRemoved TINYINT(1),
        IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertyGroupIdRemoved TINYINT(1),
        IsPropertyActiveRemoved TINYINT(1),
-       primary key (AttributeSetInstanceExtensionFieldIdGroupId, AttributeSetInstanceExtensionFieldIdIndex, AttributeSetInstanceExtensionFieldGroupVersion),
-      unique (Name),
+       primary key (Name, Version),
       unique (Alias)
     );
 
@@ -1080,87 +1071,6 @@
        IsPropertyAttributeSetActiveRemoved TINYINT(1),
        IsPropertyAttributeSetDeletedRemoved TINYINT(1),
        primary key (AttributeSetAttributeUseIdAttributeSetId, AttributeSetAttributeUseIdAttributeId, AttributeSetVersion)
-    );
-
-    create table AttributeSetInstanceExtensionField_RV (
-        AttributeSetInstanceExtensionFieldIdGroupId VARCHAR(50) not null,
-       AttributeSetInstanceExtensionFieldIdIndex VARCHAR(50) not null,
-       AttrSetInstEFGroupVersion BIGINT not null,
-       Name VARCHAR(255),
-       Type VARCHAR(255),
-       Length INTEGER,
-       Alias VARCHAR(255),
-       Description VARCHAR(255),
-       Version BIGINT,
-       CreatedBy VARCHAR(255),
-       UpdatedBy VARCHAR(255),
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       AttrSetInstEFGroupFieldType VARCHAR(255),
-       AttrSetInstEFGroupFieldLength INTEGER,
-       AttrSetInstEFGroupFieldCount INTEGER,
-       AttrSetInstEFGroupNameFormat VARCHAR(255),
-       AttrSetInstEFGroupDescription VARCHAR(255),
-       AttrSetInstEFGroupCreatedBy VARCHAR(255),
-       AttrSetInstEFGroupCreatedAt DATETIME,
-       AttrSetInstEFGroupUpdatedBy VARCHAR(255),
-       AttrSetInstEFGroupUpdatedAt DATETIME,
-       AttrSetInstEFGroupActive TINYINT(1),
-       AttrSetInstEFGroupDeleted TINYINT(1),
-       CreatedAt DATETIME,
-       UpdatedAt DATETIME,
-       primary key (AttributeSetInstanceExtensionFieldIdGroupId, AttributeSetInstanceExtensionFieldIdIndex),
-      unique (Name),
-      unique (Alias)
-    );
-
-    create table AttributeSetInstanceExtensionFieldMvoStateEvents (
-        AttributeSetInstanceExtensionFieldIdGroupId VARCHAR(50) not null,
-       AttributeSetInstanceExtensionFieldIdIndex VARCHAR(50) not null,
-       AttrSetInstEFGroupVersion BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       Name VARCHAR(255),
-       Type VARCHAR(255),
-       Length INTEGER,
-       Alias VARCHAR(255),
-       Description VARCHAR(255),
-       Version BIGINT,
-       Active TINYINT(1),
-       AttrSetInstEFGroupFieldType VARCHAR(255),
-       AttrSetInstEFGroupFieldLength INTEGER,
-       AttrSetInstEFGroupFieldCount INTEGER,
-       AttrSetInstEFGroupNameFormat VARCHAR(255),
-       AttrSetInstEFGroupDescription VARCHAR(255),
-       AttrSetInstEFGroupCreatedBy VARCHAR(255),
-       AttrSetInstEFGroupCreatedAt DATETIME,
-       AttrSetInstEFGroupUpdatedBy VARCHAR(255),
-       AttrSetInstEFGroupUpdatedAt DATETIME,
-       AttrSetInstEFGroupActive TINYINT(1),
-       AttrSetInstEFGroupDeleted TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       IsPropertyNameRemoved TINYINT(1),
-       IsPropertyTypeRemoved TINYINT(1),
-       IsPropertyLengthRemoved TINYINT(1),
-       IsPropertyAliasRemoved TINYINT(1),
-       IsPropertyDescriptionRemoved TINYINT(1),
-       IsPropertyVersionRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       IsPropertyAttrSetInstEFGroupFieldTypeRemoved TINYINT(1),
-       IsPropertyAttrSetInstEFGroupFieldLengthRemoved TINYINT(1),
-       IsPropertyAttrSetInstEFGroupFieldCountRemoved TINYINT(1),
-       IsPropertyAttrSetInstEFGroupNameFormatRemoved TINYINT(1),
-       IsPropertyAttrSetInstEFGroupDescriptionRemoved TINYINT(1),
-       IsPropertyAttrSetInstEFGroupCreatedByRemoved TINYINT(1),
-       IsPropertyAttrSetInstEFGroupCreatedAtRemoved TINYINT(1),
-       IsPropertyAttrSetInstEFGroupUpdatedByRemoved TINYINT(1),
-       IsPropertyAttrSetInstEFGroupUpdatedAtRemoved TINYINT(1),
-       IsPropertyAttrSetInstEFGroupActiveRemoved TINYINT(1),
-       IsPropertyAttrSetInstEFGroupDeletedRemoved TINYINT(1),
-       primary key (AttributeSetInstanceExtensionFieldIdGroupId, AttributeSetInstanceExtensionFieldIdIndex, AttrSetInstEFGroupVersion),
-      unique (Name),
-      unique (Alias)
     );
 
     create table InOuts (

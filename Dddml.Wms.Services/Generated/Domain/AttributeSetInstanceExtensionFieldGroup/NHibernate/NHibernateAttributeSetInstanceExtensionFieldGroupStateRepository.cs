@@ -28,7 +28,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup.NHibernate
 			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
-        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "Id", "FieldType", "FieldLength", "FieldCount", "NameFormat", "Description", "Fields", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
+        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "Id", "FieldType", "FieldLength", "FieldCount", "NameFormat", "Description", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
     
         public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
 
@@ -46,7 +46,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup.NHibernate
 			}
             if (ReadOnlyProxyGenerator != null && state != null)
             {
-                return ReadOnlyProxyGenerator.CreateProxy<IAttributeSetInstanceExtensionFieldGroupState>(state, new Type[] { typeof(ISaveable) }, _readOnlyPropertyNames);
+                return ReadOnlyProxyGenerator.CreateProxy<IAttributeSetInstanceExtensionFieldGroupState>(state, new Type[] {  }, _readOnlyPropertyNames);
             }
 			return state;
 		}

@@ -24,8 +24,8 @@ using Dddml.Wms.HttpServices.ClientProxies.Raml.Models;
 using Dddml.Wms.Domain.Attribute;
 using Dddml.Wms.Domain.AttributeSet;
 using Dddml.Wms.Domain.AttributeSetInstance;
+using Dddml.Wms.Domain.AttributeSetInstanceExtensionField;
 using Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup;
-using Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldMvo;
 using Dddml.Wms.Domain.AttributeUseMvo;
 using Dddml.Wms.Domain.AttributeValueMvo;
 using Dddml.Wms.Domain.DocumentType;
@@ -12764,6 +12764,434 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 
     }
 
+    public partial class AttributeSetInstanceExtensionField
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal AttributeSetInstanceExtensionField(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.AttributeSetInstanceExtensionFieldGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.AttributeSetInstanceExtensionFieldGetResponse> Get(Models.AttributeSetInstanceExtensionFieldGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "AttributeSetInstanceExtensionFields/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.Fields != null)
+                    url += "&fields=" + request.Query.Fields;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.AttributeSetInstanceExtensionFieldGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+
+        		/// <param name="request">Models.AttributeSetInstanceExtensionFieldPutRequest</param>
+        public virtual async Task<ApiResponse> Put(Models.AttributeSetInstanceExtensionFieldPutRequest request)
+        {
+
+            var url = "AttributeSetInstanceExtensionFields/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Put, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+            if(request.Formatter == null)
+                request.Formatter = proxy.GetJsonMediaTypeFormatter();
+            req.Content = new ObjectContent(typeof(CreateAttributeSetInstanceExtensionFieldDto), request.Content , request.Formatter);                           
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+
+        		/// <param name="request">Models.AttributeSetInstanceExtensionFieldPatchRequest</param>
+        public virtual async Task<ApiResponse> Patch(Models.AttributeSetInstanceExtensionFieldPatchRequest request)
+        {
+
+            var url = "AttributeSetInstanceExtensionFields/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(new HttpMethod("PATCH"), url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+            if(request.Formatter == null)
+                request.Formatter = proxy.GetJsonMediaTypeFormatter();
+            req.Content = new ObjectContent(typeof(MergePatchAttributeSetInstanceExtensionFieldDto), request.Content , request.Formatter);                           
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+
+        		/// <param name="request">Models.AttributeSetInstanceExtensionFieldDeleteRequest</param>
+        public virtual async Task<ApiResponse> Delete(Models.AttributeSetInstanceExtensionFieldDeleteRequest request)
+        {
+
+            var url = "AttributeSetInstanceExtensionFields/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.CommandId != null)
+                    url += "&commandId=" + request.Query.CommandId;
+                if(request.Query.Version != null)
+                    url += "&version=" + request.Query.Version;
+                if(request.Query.RequesterId != null)
+                    url += "&requesterId=" + request.Query.RequesterId;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Delete, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class AttributeSetInstanceExtensionFields
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal AttributeSetInstanceExtensionFields(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.AttributeSetInstanceExtensionFieldsGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.AttributeSetInstanceExtensionFieldsGetResponse> Get(Models.AttributeSetInstanceExtensionFieldsGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "AttributeSetInstanceExtensionFields";
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.FirstResult != null)
+                    url += "&firstResult=" + request.Query.FirstResult;
+                if(request.Query.MaxResults != null)
+                    url += "&maxResults=" + request.Query.MaxResults;
+                if(request.Query.Sort != null)
+                    url += "&sort=" + request.Query.Sort;
+                if(request.Query.Fields != null)
+                    url += "&fields=" + request.Query.Fields;
+                if(request.Query.Filter != null)
+                    url += "&filter=" + request.Query.Filter;
+                if(request.Query.FilterTag != null)
+                    url += "&filterTag=" + request.Query.FilterTag;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.AttributeSetInstanceExtensionFieldsGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class AttributeSetInstanceExtensionFieldsCount
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal AttributeSetInstanceExtensionFieldsCount(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.AttributeSetInstanceExtensionFieldsCountGetRequest</param>
+        public virtual async Task<ApiResponse> Get(Models.AttributeSetInstanceExtensionFieldsCountGetRequest request)
+        {
+
+            var url = "AttributeSetInstanceExtensionFields/_count";
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.Filter != null)
+                    url += "&filter=" + request.Query.Filter;
+                if(request.Query.FilterTag != null)
+                    url += "&filterTag=" + request.Query.FilterTag;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class AttributeSetInstanceExtensionFieldStateEvent
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal AttributeSetInstanceExtensionFieldStateEvent(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.AttributeSetInstanceExtensionFieldStateEventGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.AttributeSetInstanceExtensionFieldStateEventGetResponse> Get(Models.AttributeSetInstanceExtensionFieldStateEventGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "AttributeSetInstanceExtensionFields/{id}/_stateEvents/{version}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+			if(request.UriParameters.Version == null)
+				throw new InvalidOperationException("Uri Parameter Version cannot be null");
+
+            url = url.Replace("{version}", request.UriParameters.Version.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.AttributeSetInstanceExtensionFieldStateEventGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class AttributeSetInstanceExtensionFieldHistoryState
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal AttributeSetInstanceExtensionFieldHistoryState(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.AttributeSetInstanceExtensionFieldHistoryStateGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.AttributeSetInstanceExtensionFieldHistoryStateGetResponse> Get(Models.AttributeSetInstanceExtensionFieldHistoryStateGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "AttributeSetInstanceExtensionFields/{id}/_historyStates/{version}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+			if(request.UriParameters.Version == null)
+				throw new InvalidOperationException("Uri Parameter Version cannot be null");
+
+            url = url.Replace("{version}", request.UriParameters.Version.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.AttributeSetInstanceExtensionFieldHistoryStateGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
     public partial class AttributeSetInstanceExtensionFieldGroup
     {
         private readonly DddmlWmsRamlClient proxy;
@@ -13180,68 +13608,6 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 				
             }
             return new Models.AttributeSetInstanceExtensionFieldGroupHistoryStateGetResponse  
-                                            {
-                                                RawContent = response.Content,
-                                                RawHeaders = response.Headers,
-	                                            Formatters = responseFormatters,
-                                                StatusCode = response.StatusCode,
-                                                ReasonPhrase = response.ReasonPhrase,
-												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
-                                            };
-        }
-
-    }
-
-    public partial class AttributeSetInstanceExtensionField
-    {
-        private readonly DddmlWmsRamlClient proxy;
-
-        internal AttributeSetInstanceExtensionField(DddmlWmsRamlClient proxy)
-        {
-            this.proxy = proxy;
-        }
-
-        		/// <param name="request">Models.AttributeSetInstanceExtensionFieldGetRequest</param>
-		/// <param name="responseFormatters">response formatters</param>
-        public virtual async Task<Models.AttributeSetInstanceExtensionFieldGetResponse> Get(Models.AttributeSetInstanceExtensionFieldGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
-        {
-
-            var url = "AttributeSetInstanceExtensionFieldGroups/{groupId}/AttributeSetInstanceExtensionFields/{index}";
-			if(request.UriParameters == null)
-				throw new InvalidOperationException("Uri Parameters cannot be null");               
-
-			if(request.UriParameters.GroupId == null)
-				throw new InvalidOperationException("Uri Parameter GroupId cannot be null");
-
-            url = url.Replace("{groupId}", request.UriParameters.GroupId.ToString());
-
-			if(request.UriParameters.Index == null)
-				throw new InvalidOperationException("Uri Parameter Index cannot be null");
-
-            url = url.Replace("{index}", request.UriParameters.Index.ToString());
-
-            url = url.Replace("?&", "?");
-
-            var req = new HttpRequestMessage(HttpMethod.Get, url);
-            proxy.SetAuthenticationHeader(req);
-
-            if(request.RawHeaders != null)
-            {
-                foreach(var header in request.RawHeaders)
-                {
-                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
-                }
-            }
-	        var response = await proxy.Client.SendAsync(req);
-			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
-            {
-				if(proxy.SchemaValidation.RaiseExceptions)
-				{
-					;
-				}
-				
-            }
-            return new Models.AttributeSetInstanceExtensionFieldGetResponse  
                                             {
                                                 RawContent = response.Content,
                                                 RawHeaders = response.Headers,
@@ -17962,434 +18328,6 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 
     }
 
-    public partial class AttributeSetInstanceExtensionFieldMvo
-    {
-        private readonly DddmlWmsRamlClient proxy;
-
-        internal AttributeSetInstanceExtensionFieldMvo(DddmlWmsRamlClient proxy)
-        {
-            this.proxy = proxy;
-        }
-
-        		/// <param name="request">Models.AttributeSetInstanceExtensionFieldMvoGetRequest</param>
-		/// <param name="responseFormatters">response formatters</param>
-        public virtual async Task<Models.AttributeSetInstanceExtensionFieldMvoGetResponse> Get(Models.AttributeSetInstanceExtensionFieldMvoGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
-        {
-
-            var url = "AttributeSetInstanceExtensionFieldMvos/{id}";
-			if(request.UriParameters == null)
-				throw new InvalidOperationException("Uri Parameters cannot be null");               
-
-			if(request.UriParameters.Id == null)
-				throw new InvalidOperationException("Uri Parameter Id cannot be null");
-
-            url = url.Replace("{id}", request.UriParameters.Id.ToString());
-            if(request.Query != null)
-            {
-                url += "?";
-                if(request.Query.Fields != null)
-                    url += "&fields=" + request.Query.Fields;
-            }
-
-            url = url.Replace("?&", "?");
-
-            var req = new HttpRequestMessage(HttpMethod.Get, url);
-            proxy.SetAuthenticationHeader(req);
-
-            if(request.RawHeaders != null)
-            {
-                foreach(var header in request.RawHeaders)
-                {
-                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
-                }
-            }
-	        var response = await proxy.Client.SendAsync(req);
-			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
-            {
-				if(proxy.SchemaValidation.RaiseExceptions)
-				{
-					;
-				}
-				
-            }
-            return new Models.AttributeSetInstanceExtensionFieldMvoGetResponse  
-                                            {
-                                                RawContent = response.Content,
-                                                RawHeaders = response.Headers,
-	                                            Formatters = responseFormatters,
-                                                StatusCode = response.StatusCode,
-                                                ReasonPhrase = response.ReasonPhrase,
-												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
-                                            };
-        }
-
-
-        		/// <param name="request">Models.AttributeSetInstanceExtensionFieldMvoPutRequest</param>
-        public virtual async Task<ApiResponse> Put(Models.AttributeSetInstanceExtensionFieldMvoPutRequest request)
-        {
-
-            var url = "AttributeSetInstanceExtensionFieldMvos/{id}";
-			if(request.UriParameters == null)
-				throw new InvalidOperationException("Uri Parameters cannot be null");               
-
-			if(request.UriParameters.Id == null)
-				throw new InvalidOperationException("Uri Parameter Id cannot be null");
-
-            url = url.Replace("{id}", request.UriParameters.Id.ToString());
-
-            url = url.Replace("?&", "?");
-
-            var req = new HttpRequestMessage(HttpMethod.Put, url);
-            proxy.SetAuthenticationHeader(req);
-
-            if(request.RawHeaders != null)
-            {
-                foreach(var header in request.RawHeaders)
-                {
-                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
-                }
-            }
-            if(request.Formatter == null)
-                request.Formatter = proxy.GetJsonMediaTypeFormatter();
-            req.Content = new ObjectContent(typeof(CreateAttributeSetInstanceExtensionFieldMvoDto), request.Content , request.Formatter);                           
-	        var response = await proxy.Client.SendAsync(req);
-            return new ApiResponse  
-                                            {
-                                                RawContent = response.Content,
-                                                RawHeaders = response.Headers,
-                                                StatusCode = response.StatusCode,
-                                                ReasonPhrase = response.ReasonPhrase,
-												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
-                                            };
-        }
-
-
-        		/// <param name="request">Models.AttributeSetInstanceExtensionFieldMvoPatchRequest</param>
-        public virtual async Task<ApiResponse> Patch(Models.AttributeSetInstanceExtensionFieldMvoPatchRequest request)
-        {
-
-            var url = "AttributeSetInstanceExtensionFieldMvos/{id}";
-			if(request.UriParameters == null)
-				throw new InvalidOperationException("Uri Parameters cannot be null");               
-
-			if(request.UriParameters.Id == null)
-				throw new InvalidOperationException("Uri Parameter Id cannot be null");
-
-            url = url.Replace("{id}", request.UriParameters.Id.ToString());
-
-            url = url.Replace("?&", "?");
-
-            var req = new HttpRequestMessage(new HttpMethod("PATCH"), url);
-            proxy.SetAuthenticationHeader(req);
-
-            if(request.RawHeaders != null)
-            {
-                foreach(var header in request.RawHeaders)
-                {
-                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
-                }
-            }
-            if(request.Formatter == null)
-                request.Formatter = proxy.GetJsonMediaTypeFormatter();
-            req.Content = new ObjectContent(typeof(MergePatchAttributeSetInstanceExtensionFieldMvoDto), request.Content , request.Formatter);                           
-	        var response = await proxy.Client.SendAsync(req);
-            return new ApiResponse  
-                                            {
-                                                RawContent = response.Content,
-                                                RawHeaders = response.Headers,
-                                                StatusCode = response.StatusCode,
-                                                ReasonPhrase = response.ReasonPhrase,
-												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
-                                            };
-        }
-
-
-        		/// <param name="request">Models.AttributeSetInstanceExtensionFieldMvoDeleteRequest</param>
-        public virtual async Task<ApiResponse> Delete(Models.AttributeSetInstanceExtensionFieldMvoDeleteRequest request)
-        {
-
-            var url = "AttributeSetInstanceExtensionFieldMvos/{id}";
-			if(request.UriParameters == null)
-				throw new InvalidOperationException("Uri Parameters cannot be null");               
-
-			if(request.UriParameters.Id == null)
-				throw new InvalidOperationException("Uri Parameter Id cannot be null");
-
-            url = url.Replace("{id}", request.UriParameters.Id.ToString());
-            if(request.Query != null)
-            {
-                url += "?";
-                if(request.Query.CommandId != null)
-                    url += "&commandId=" + request.Query.CommandId;
-                if(request.Query.Version != null)
-                    url += "&version=" + request.Query.Version;
-                if(request.Query.RequesterId != null)
-                    url += "&requesterId=" + request.Query.RequesterId;
-            }
-
-            url = url.Replace("?&", "?");
-
-            var req = new HttpRequestMessage(HttpMethod.Delete, url);
-            proxy.SetAuthenticationHeader(req);
-
-            if(request.RawHeaders != null)
-            {
-                foreach(var header in request.RawHeaders)
-                {
-                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
-                }
-            }
-	        var response = await proxy.Client.SendAsync(req);
-            return new ApiResponse  
-                                            {
-                                                RawContent = response.Content,
-                                                RawHeaders = response.Headers,
-                                                StatusCode = response.StatusCode,
-                                                ReasonPhrase = response.ReasonPhrase,
-												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
-                                            };
-        }
-
-    }
-
-    public partial class AttributeSetInstanceExtensionFieldMvos
-    {
-        private readonly DddmlWmsRamlClient proxy;
-
-        internal AttributeSetInstanceExtensionFieldMvos(DddmlWmsRamlClient proxy)
-        {
-            this.proxy = proxy;
-        }
-
-        		/// <param name="request">Models.AttributeSetInstanceExtensionFieldMvosGetRequest</param>
-		/// <param name="responseFormatters">response formatters</param>
-        public virtual async Task<Models.AttributeSetInstanceExtensionFieldMvosGetResponse> Get(Models.AttributeSetInstanceExtensionFieldMvosGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
-        {
-
-            var url = "AttributeSetInstanceExtensionFieldMvos";
-            if(request.Query != null)
-            {
-                url += "?";
-                if(request.Query.FirstResult != null)
-                    url += "&firstResult=" + request.Query.FirstResult;
-                if(request.Query.MaxResults != null)
-                    url += "&maxResults=" + request.Query.MaxResults;
-                if(request.Query.Sort != null)
-                    url += "&sort=" + request.Query.Sort;
-                if(request.Query.Fields != null)
-                    url += "&fields=" + request.Query.Fields;
-                if(request.Query.Filter != null)
-                    url += "&filter=" + request.Query.Filter;
-                if(request.Query.FilterTag != null)
-                    url += "&filterTag=" + request.Query.FilterTag;
-            }
-
-            url = url.Replace("?&", "?");
-
-            var req = new HttpRequestMessage(HttpMethod.Get, url);
-            proxy.SetAuthenticationHeader(req);
-
-            if(request.RawHeaders != null)
-            {
-                foreach(var header in request.RawHeaders)
-                {
-                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
-                }
-            }
-	        var response = await proxy.Client.SendAsync(req);
-			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
-            {
-				if(proxy.SchemaValidation.RaiseExceptions)
-				{
-					;
-				}
-				
-            }
-            return new Models.AttributeSetInstanceExtensionFieldMvosGetResponse  
-                                            {
-                                                RawContent = response.Content,
-                                                RawHeaders = response.Headers,
-	                                            Formatters = responseFormatters,
-                                                StatusCode = response.StatusCode,
-                                                ReasonPhrase = response.ReasonPhrase,
-												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
-                                            };
-        }
-
-    }
-
-    public partial class AttributeSetInstanceExtensionFieldMvosCount
-    {
-        private readonly DddmlWmsRamlClient proxy;
-
-        internal AttributeSetInstanceExtensionFieldMvosCount(DddmlWmsRamlClient proxy)
-        {
-            this.proxy = proxy;
-        }
-
-        		/// <param name="request">Models.AttributeSetInstanceExtensionFieldMvosCountGetRequest</param>
-        public virtual async Task<ApiResponse> Get(Models.AttributeSetInstanceExtensionFieldMvosCountGetRequest request)
-        {
-
-            var url = "AttributeSetInstanceExtensionFieldMvos/_count";
-            if(request.Query != null)
-            {
-                url += "?";
-                if(request.Query.Filter != null)
-                    url += "&filter=" + request.Query.Filter;
-                if(request.Query.FilterTag != null)
-                    url += "&filterTag=" + request.Query.FilterTag;
-            }
-
-            url = url.Replace("?&", "?");
-
-            var req = new HttpRequestMessage(HttpMethod.Get, url);
-            proxy.SetAuthenticationHeader(req);
-
-            if(request.RawHeaders != null)
-            {
-                foreach(var header in request.RawHeaders)
-                {
-                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
-                }
-            }
-	        var response = await proxy.Client.SendAsync(req);
-            return new ApiResponse  
-                                            {
-                                                RawContent = response.Content,
-                                                RawHeaders = response.Headers,
-                                                StatusCode = response.StatusCode,
-                                                ReasonPhrase = response.ReasonPhrase,
-												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
-                                            };
-        }
-
-    }
-
-    public partial class AttributeSetInstanceExtensionFieldMvoStateEvent
-    {
-        private readonly DddmlWmsRamlClient proxy;
-
-        internal AttributeSetInstanceExtensionFieldMvoStateEvent(DddmlWmsRamlClient proxy)
-        {
-            this.proxy = proxy;
-        }
-
-        		/// <param name="request">Models.AttributeSetInstanceExtensionFieldMvoStateEventGetRequest</param>
-		/// <param name="responseFormatters">response formatters</param>
-        public virtual async Task<Models.AttributeSetInstanceExtensionFieldMvoStateEventGetResponse> Get(Models.AttributeSetInstanceExtensionFieldMvoStateEventGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
-        {
-
-            var url = "AttributeSetInstanceExtensionFieldMvos/{id}/_stateEvents/{version}";
-			if(request.UriParameters == null)
-				throw new InvalidOperationException("Uri Parameters cannot be null");               
-
-			if(request.UriParameters.Id == null)
-				throw new InvalidOperationException("Uri Parameter Id cannot be null");
-
-            url = url.Replace("{id}", request.UriParameters.Id.ToString());
-
-			if(request.UriParameters.Version == null)
-				throw new InvalidOperationException("Uri Parameter Version cannot be null");
-
-            url = url.Replace("{version}", request.UriParameters.Version.ToString());
-
-            url = url.Replace("?&", "?");
-
-            var req = new HttpRequestMessage(HttpMethod.Get, url);
-            proxy.SetAuthenticationHeader(req);
-
-            if(request.RawHeaders != null)
-            {
-                foreach(var header in request.RawHeaders)
-                {
-                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
-                }
-            }
-	        var response = await proxy.Client.SendAsync(req);
-			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
-            {
-				if(proxy.SchemaValidation.RaiseExceptions)
-				{
-					;
-				}
-				
-            }
-            return new Models.AttributeSetInstanceExtensionFieldMvoStateEventGetResponse  
-                                            {
-                                                RawContent = response.Content,
-                                                RawHeaders = response.Headers,
-	                                            Formatters = responseFormatters,
-                                                StatusCode = response.StatusCode,
-                                                ReasonPhrase = response.ReasonPhrase,
-												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
-                                            };
-        }
-
-    }
-
-    public partial class AttributeSetInstanceExtensionFieldMvoHistoryState
-    {
-        private readonly DddmlWmsRamlClient proxy;
-
-        internal AttributeSetInstanceExtensionFieldMvoHistoryState(DddmlWmsRamlClient proxy)
-        {
-            this.proxy = proxy;
-        }
-
-        		/// <param name="request">Models.AttributeSetInstanceExtensionFieldMvoHistoryStateGetRequest</param>
-		/// <param name="responseFormatters">response formatters</param>
-        public virtual async Task<Models.AttributeSetInstanceExtensionFieldMvoHistoryStateGetResponse> Get(Models.AttributeSetInstanceExtensionFieldMvoHistoryStateGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
-        {
-
-            var url = "AttributeSetInstanceExtensionFieldMvos/{id}/_historyStates/{version}";
-			if(request.UriParameters == null)
-				throw new InvalidOperationException("Uri Parameters cannot be null");               
-
-			if(request.UriParameters.Id == null)
-				throw new InvalidOperationException("Uri Parameter Id cannot be null");
-
-            url = url.Replace("{id}", request.UriParameters.Id.ToString());
-
-			if(request.UriParameters.Version == null)
-				throw new InvalidOperationException("Uri Parameter Version cannot be null");
-
-            url = url.Replace("{version}", request.UriParameters.Version.ToString());
-
-            url = url.Replace("?&", "?");
-
-            var req = new HttpRequestMessage(HttpMethod.Get, url);
-            proxy.SetAuthenticationHeader(req);
-
-            if(request.RawHeaders != null)
-            {
-                foreach(var header in request.RawHeaders)
-                {
-                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
-                }
-            }
-	        var response = await proxy.Client.SendAsync(req);
-			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
-            {
-				if(proxy.SchemaValidation.RaiseExceptions)
-				{
-					;
-				}
-				
-            }
-            return new Models.AttributeSetInstanceExtensionFieldMvoHistoryStateGetResponse  
-                                            {
-                                                RawContent = response.Content,
-                                                RawHeaders = response.Headers,
-	                                            Formatters = responseFormatters,
-                                                StatusCode = response.StatusCode,
-                                                ReasonPhrase = response.ReasonPhrase,
-												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
-                                            };
-        }
-
-    }
-
     public partial class OrganizationTrees
     {
         private readonly DddmlWmsRamlClient proxy;
@@ -18777,6 +18715,12 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
+        public virtual AttributeSetInstanceExtensionField AttributeSetInstanceExtensionField
+        {
+            get { return new AttributeSetInstanceExtensionField(this); }
+        }
+                
+
         public virtual AttributeSetInstanceExtensionFieldGroup AttributeSetInstanceExtensionFieldGroup
         {
             get { return new AttributeSetInstanceExtensionFieldGroup(this); }
@@ -18846,12 +18790,6 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         public virtual ShipmentItemMvo ShipmentItemMvo
         {
             get { return new ShipmentItemMvo(this); }
-        }
-                
-
-        public virtual AttributeSetInstanceExtensionFieldMvo AttributeSetInstanceExtensionFieldMvo
-        {
-            get { return new AttributeSetInstanceExtensionFieldMvo(this); }
         }
                 
 
@@ -19023,6 +18961,12 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
+        public virtual AttributeSetInstanceExtensionFields AttributeSetInstanceExtensionFields
+        {
+            get { return new AttributeSetInstanceExtensionFields(this); }
+        }
+                
+
         public virtual AttributeSetInstanceExtensionFieldGroups AttributeSetInstanceExtensionFieldGroups
         {
             get { return new AttributeSetInstanceExtensionFieldGroups(this); }
@@ -19092,12 +19036,6 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         public virtual ShipmentItemMvos ShipmentItemMvos
         {
             get { return new ShipmentItemMvos(this); }
-        }
-                
-
-        public virtual AttributeSetInstanceExtensionFieldMvos AttributeSetInstanceExtensionFieldMvos
-        {
-            get { return new AttributeSetInstanceExtensionFieldMvos(this); }
         }
                 
 
@@ -19269,6 +19207,12 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
+        public virtual AttributeSetInstanceExtensionFieldsCount AttributeSetInstanceExtensionFieldsCount
+        {
+            get { return new AttributeSetInstanceExtensionFieldsCount(this); }
+        }
+                
+
         public virtual AttributeSetInstanceExtensionFieldGroupsCount AttributeSetInstanceExtensionFieldGroupsCount
         {
             get { return new AttributeSetInstanceExtensionFieldGroupsCount(this); }
@@ -19338,12 +19282,6 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         public virtual ShipmentItemMvosCount ShipmentItemMvosCount
         {
             get { return new ShipmentItemMvosCount(this); }
-        }
-                
-
-        public virtual AttributeSetInstanceExtensionFieldMvosCount AttributeSetInstanceExtensionFieldMvosCount
-        {
-            get { return new AttributeSetInstanceExtensionFieldMvosCount(this); }
         }
                 
 
@@ -19515,6 +19453,12 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
+        public virtual AttributeSetInstanceExtensionFieldStateEvent AttributeSetInstanceExtensionFieldStateEvent
+        {
+            get { return new AttributeSetInstanceExtensionFieldStateEvent(this); }
+        }
+                
+
         public virtual AttributeSetInstanceExtensionFieldGroupStateEvent AttributeSetInstanceExtensionFieldGroupStateEvent
         {
             get { return new AttributeSetInstanceExtensionFieldGroupStateEvent(this); }
@@ -19584,12 +19528,6 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         public virtual ShipmentItemMvoStateEvent ShipmentItemMvoStateEvent
         {
             get { return new ShipmentItemMvoStateEvent(this); }
-        }
-                
-
-        public virtual AttributeSetInstanceExtensionFieldMvoStateEvent AttributeSetInstanceExtensionFieldMvoStateEvent
-        {
-            get { return new AttributeSetInstanceExtensionFieldMvoStateEvent(this); }
         }
                 
 
@@ -19761,6 +19699,12 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
+        public virtual AttributeSetInstanceExtensionFieldHistoryState AttributeSetInstanceExtensionFieldHistoryState
+        {
+            get { return new AttributeSetInstanceExtensionFieldHistoryState(this); }
+        }
+                
+
         public virtual AttributeSetInstanceExtensionFieldGroupHistoryState AttributeSetInstanceExtensionFieldGroupHistoryState
         {
             get { return new AttributeSetInstanceExtensionFieldGroupHistoryState(this); }
@@ -19833,12 +19777,6 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
-        public virtual AttributeSetInstanceExtensionFieldMvoHistoryState AttributeSetInstanceExtensionFieldMvoHistoryState
-        {
-            get { return new AttributeSetInstanceExtensionFieldMvoHistoryState(this); }
-        }
-                
-
         public virtual AttributeValue AttributeValue
         {
             get { return new AttributeValue(this); }
@@ -19902,12 +19840,6 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         public virtual ShipmentItem ShipmentItem
         {
             get { return new ShipmentItem(this); }
-        }
-                
-
-        public virtual AttributeSetInstanceExtensionField AttributeSetInstanceExtensionField
-        {
-            get { return new AttributeSetInstanceExtensionField(this); }
         }
                 
 
@@ -21517,6 +21449,62 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
 
     } // end class
 
+    public partial class  AttributeSetInstanceExtensionFieldGetQuery 
+    {
+		[JsonProperty("fields")]
+        public string Fields { get; set; }
+
+
+    } // end class
+
+    public partial class  AttributeSetInstanceExtensionFieldDeleteQuery 
+    {
+		[JsonProperty("commandId")]
+        public string CommandId { get; set; }
+
+		[JsonProperty("version")]
+        public string Version { get; set; }
+
+		[JsonProperty("requesterId")]
+        public string RequesterId { get; set; }
+
+
+    } // end class
+
+    public partial class  AttributeSetInstanceExtensionFieldsGetQuery 
+    {
+		[JsonProperty("firstResult")]
+        public int? FirstResult { get; set; }
+
+		[JsonProperty("maxResults")]
+        public int? MaxResults { get; set; }
+
+		[JsonProperty("sort")]
+        public string Sort { get; set; }
+
+		[JsonProperty("fields")]
+        public string Fields { get; set; }
+
+		[JsonProperty("filter")]
+        public string Filter { get; set; }
+
+		[JsonProperty("filterTag")]
+        public string FilterTag { get; set; }
+
+
+    } // end class
+
+    public partial class  AttributeSetInstanceExtensionFieldsCountGetQuery 
+    {
+		[JsonProperty("filter")]
+        public string Filter { get; set; }
+
+		[JsonProperty("filterTag")]
+        public string FilterTag { get; set; }
+
+
+    } // end class
+
     public partial class  AttributeSetInstanceExtensionFieldGroupGetQuery 
     {
 		[JsonProperty("fields")]
@@ -22179,62 +22167,6 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     public partial class  ShipmentItemMvosCountGetQuery 
-    {
-		[JsonProperty("filter")]
-        public string Filter { get; set; }
-
-		[JsonProperty("filterTag")]
-        public string FilterTag { get; set; }
-
-
-    } // end class
-
-    public partial class  AttributeSetInstanceExtensionFieldMvoGetQuery 
-    {
-		[JsonProperty("fields")]
-        public string Fields { get; set; }
-
-
-    } // end class
-
-    public partial class  AttributeSetInstanceExtensionFieldMvoDeleteQuery 
-    {
-		[JsonProperty("commandId")]
-        public string CommandId { get; set; }
-
-		[JsonProperty("version")]
-        public string Version { get; set; }
-
-		[JsonProperty("requesterId")]
-        public string RequesterId { get; set; }
-
-
-    } // end class
-
-    public partial class  AttributeSetInstanceExtensionFieldMvosGetQuery 
-    {
-		[JsonProperty("firstResult")]
-        public int? FirstResult { get; set; }
-
-		[JsonProperty("maxResults")]
-        public int? MaxResults { get; set; }
-
-		[JsonProperty("sort")]
-        public string Sort { get; set; }
-
-		[JsonProperty("fields")]
-        public string Fields { get; set; }
-
-		[JsonProperty("filter")]
-        public string Filter { get; set; }
-
-		[JsonProperty("filterTag")]
-        public string FilterTag { get; set; }
-
-
-    } // end class
-
-    public partial class  AttributeSetInstanceExtensionFieldMvosCountGetQuery 
     {
 		[JsonProperty("filter")]
         public string Filter { get; set; }
@@ -23544,6 +23476,45 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
+    /// Uri Parameters for resource /AttributeSetInstanceExtensionFields/{id}
+    /// </summary>
+    public partial class  AttributeSetInstanceExtensionFieldUriParameters 
+    {
+		[JsonProperty("id")]
+        public string Id { get; set; }
+
+
+    } // end class
+
+    /// <summary>
+    /// Uri Parameters for resource /AttributeSetInstanceExtensionFields/{id}/_stateEvents/{version}
+    /// </summary>
+    public partial class  AttributeSetInstanceExtensionFieldStateEventUriParameters 
+    {
+		[JsonProperty("id")]
+        public string Id { get; set; }
+
+		[JsonProperty("version")]
+        public string Version { get; set; }
+
+
+    } // end class
+
+    /// <summary>
+    /// Uri Parameters for resource /AttributeSetInstanceExtensionFields/{id}/_historyStates/{version}
+    /// </summary>
+    public partial class  AttributeSetInstanceExtensionFieldHistoryStateUriParameters 
+    {
+		[JsonProperty("id")]
+        public string Id { get; set; }
+
+		[JsonProperty("version")]
+        public string Version { get; set; }
+
+
+    } // end class
+
+    /// <summary>
     /// Uri Parameters for resource /AttributeSetInstanceExtensionFieldGroups/{id}
     /// </summary>
     public partial class  AttributeSetInstanceExtensionFieldGroupUriParameters 
@@ -23578,20 +23549,6 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
 
 		[JsonProperty("version")]
         public string Version { get; set; }
-
-
-    } // end class
-
-    /// <summary>
-    /// Uri Parameters for resource /AttributeSetInstanceExtensionFieldGroups/{groupId}/AttributeSetInstanceExtensionFields/{index}
-    /// </summary>
-    public partial class  AttributeSetInstanceExtensionFieldUriParameters 
-    {
-		[JsonProperty("groupId")]
-        public string GroupId { get; set; }
-
-		[JsonProperty("index")]
-        public string Index { get; set; }
 
 
     } // end class
@@ -24015,45 +23972,6 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     /// Uri Parameters for resource /ShipmentItemMvos/{id}/_historyStates/{version}
     /// </summary>
     public partial class  ShipmentItemMvoHistoryStateUriParameters 
-    {
-		[JsonProperty("id")]
-        public string Id { get; set; }
-
-		[JsonProperty("version")]
-        public string Version { get; set; }
-
-
-    } // end class
-
-    /// <summary>
-    /// Uri Parameters for resource /AttributeSetInstanceExtensionFieldMvos/{id}
-    /// </summary>
-    public partial class  AttributeSetInstanceExtensionFieldMvoUriParameters 
-    {
-		[JsonProperty("id")]
-        public string Id { get; set; }
-
-
-    } // end class
-
-    /// <summary>
-    /// Uri Parameters for resource /AttributeSetInstanceExtensionFieldMvos/{id}/_stateEvents/{version}
-    /// </summary>
-    public partial class  AttributeSetInstanceExtensionFieldMvoStateEventUriParameters 
-    {
-		[JsonProperty("id")]
-        public string Id { get; set; }
-
-		[JsonProperty("version")]
-        public string Version { get; set; }
-
-
-    } // end class
-
-    /// <summary>
-    /// Uri Parameters for resource /AttributeSetInstanceExtensionFieldMvos/{id}/_historyStates/{version}
-    /// </summary>
-    public partial class  AttributeSetInstanceExtensionFieldMvoHistoryStateUriParameters 
     {
 		[JsonProperty("id")]
         public string Id { get; set; }
@@ -28922,6 +28840,172 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
+    /// Request object for method Get of class AttributeSetInstanceExtensionField
+    /// </summary>
+    public partial class AttributeSetInstanceExtensionFieldGetRequest : ApiRequest
+    {
+        public AttributeSetInstanceExtensionFieldGetRequest(AttributeSetInstanceExtensionFieldUriParameters UriParameters, AttributeSetInstanceExtensionFieldGetQuery Query = null)
+        {
+            this.Query = Query;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public AttributeSetInstanceExtensionFieldGetQuery Query { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public AttributeSetInstanceExtensionFieldUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Put of class AttributeSetInstanceExtensionField
+    /// </summary>
+    public partial class AttributeSetInstanceExtensionFieldPutRequest : ApiRequest
+    {
+        public AttributeSetInstanceExtensionFieldPutRequest(AttributeSetInstanceExtensionFieldUriParameters UriParameters, CreateAttributeSetInstanceExtensionFieldDto Content = null, MediaTypeFormatter Formatter = null)
+        {
+            this.Content = Content;
+            this.Formatter = Formatter;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request content
+        /// </summary>
+        public CreateAttributeSetInstanceExtensionFieldDto Content { get; set; }
+        /// <summary>
+        /// Request formatter
+        /// </summary>
+        public MediaTypeFormatter Formatter { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public AttributeSetInstanceExtensionFieldUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Patch of class AttributeSetInstanceExtensionField
+    /// </summary>
+    public partial class AttributeSetInstanceExtensionFieldPatchRequest : ApiRequest
+    {
+        public AttributeSetInstanceExtensionFieldPatchRequest(AttributeSetInstanceExtensionFieldUriParameters UriParameters, MergePatchAttributeSetInstanceExtensionFieldDto Content = null, MediaTypeFormatter Formatter = null)
+        {
+            this.Content = Content;
+            this.Formatter = Formatter;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request content
+        /// </summary>
+        public MergePatchAttributeSetInstanceExtensionFieldDto Content { get; set; }
+        /// <summary>
+        /// Request formatter
+        /// </summary>
+        public MediaTypeFormatter Formatter { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public AttributeSetInstanceExtensionFieldUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Delete of class AttributeSetInstanceExtensionField
+    /// </summary>
+    public partial class AttributeSetInstanceExtensionFieldDeleteRequest : ApiRequest
+    {
+        public AttributeSetInstanceExtensionFieldDeleteRequest(AttributeSetInstanceExtensionFieldUriParameters UriParameters, AttributeSetInstanceExtensionFieldDeleteQuery Query = null)
+        {
+            this.Query = Query;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public AttributeSetInstanceExtensionFieldDeleteQuery Query { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public AttributeSetInstanceExtensionFieldUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class AttributeSetInstanceExtensionFields
+    /// </summary>
+    public partial class AttributeSetInstanceExtensionFieldsGetRequest : ApiRequest
+    {
+        public AttributeSetInstanceExtensionFieldsGetRequest(AttributeSetInstanceExtensionFieldsGetQuery Query = null)
+        {
+            this.Query = Query;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public AttributeSetInstanceExtensionFieldsGetQuery Query { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class AttributeSetInstanceExtensionFieldsCount
+    /// </summary>
+    public partial class AttributeSetInstanceExtensionFieldsCountGetRequest : ApiRequest
+    {
+        public AttributeSetInstanceExtensionFieldsCountGetRequest(AttributeSetInstanceExtensionFieldsCountGetQuery Query = null)
+        {
+            this.Query = Query;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public AttributeSetInstanceExtensionFieldsCountGetQuery Query { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class AttributeSetInstanceExtensionFieldStateEvent
+    /// </summary>
+    public partial class AttributeSetInstanceExtensionFieldStateEventGetRequest : ApiRequest
+    {
+        public AttributeSetInstanceExtensionFieldStateEventGetRequest(AttributeSetInstanceExtensionFieldStateEventUriParameters UriParameters)
+        {
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public AttributeSetInstanceExtensionFieldStateEventUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class AttributeSetInstanceExtensionFieldHistoryState
+    /// </summary>
+    public partial class AttributeSetInstanceExtensionFieldHistoryStateGetRequest : ApiRequest
+    {
+        public AttributeSetInstanceExtensionFieldHistoryStateGetRequest(AttributeSetInstanceExtensionFieldHistoryStateUriParameters UriParameters)
+        {
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public AttributeSetInstanceExtensionFieldHistoryStateUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
     /// Request object for method Get of class AttributeSetInstanceExtensionFieldGroup
     /// </summary>
     public partial class AttributeSetInstanceExtensionFieldGroupGetRequest : ApiRequest
@@ -29084,23 +29168,6 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// Request Uri Parameters
         /// </summary>
         public AttributeSetInstanceExtensionFieldGroupHistoryStateUriParameters UriParameters { get; set; }
-
-    } // end class
-
-    /// <summary>
-    /// Request object for method Get of class AttributeSetInstanceExtensionField
-    /// </summary>
-    public partial class AttributeSetInstanceExtensionFieldGetRequest : ApiRequest
-    {
-        public AttributeSetInstanceExtensionFieldGetRequest(AttributeSetInstanceExtensionFieldUriParameters UriParameters)
-        {
-            this.UriParameters = UriParameters;
-        }
-
-        /// <summary>
-        /// Request Uri Parameters
-        /// </summary>
-        public AttributeSetInstanceExtensionFieldUriParameters UriParameters { get; set; }
 
     } // end class
 
@@ -30927,172 +30994,6 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// Request Uri Parameters
         /// </summary>
         public ShipmentItemMvoHistoryStateUriParameters UriParameters { get; set; }
-
-    } // end class
-
-    /// <summary>
-    /// Request object for method Get of class AttributeSetInstanceExtensionFieldMvo
-    /// </summary>
-    public partial class AttributeSetInstanceExtensionFieldMvoGetRequest : ApiRequest
-    {
-        public AttributeSetInstanceExtensionFieldMvoGetRequest(AttributeSetInstanceExtensionFieldMvoUriParameters UriParameters, AttributeSetInstanceExtensionFieldMvoGetQuery Query = null)
-        {
-            this.Query = Query;
-            this.UriParameters = UriParameters;
-        }
-
-        /// <summary>
-        /// Request query string properties
-        /// </summary>
-        public AttributeSetInstanceExtensionFieldMvoGetQuery Query { get; set; }
-        /// <summary>
-        /// Request Uri Parameters
-        /// </summary>
-        public AttributeSetInstanceExtensionFieldMvoUriParameters UriParameters { get; set; }
-
-    } // end class
-
-    /// <summary>
-    /// Request object for method Put of class AttributeSetInstanceExtensionFieldMvo
-    /// </summary>
-    public partial class AttributeSetInstanceExtensionFieldMvoPutRequest : ApiRequest
-    {
-        public AttributeSetInstanceExtensionFieldMvoPutRequest(AttributeSetInstanceExtensionFieldMvoUriParameters UriParameters, CreateAttributeSetInstanceExtensionFieldMvoDto Content = null, MediaTypeFormatter Formatter = null)
-        {
-            this.Content = Content;
-            this.Formatter = Formatter;
-            this.UriParameters = UriParameters;
-        }
-
-        /// <summary>
-        /// Request content
-        /// </summary>
-        public CreateAttributeSetInstanceExtensionFieldMvoDto Content { get; set; }
-        /// <summary>
-        /// Request formatter
-        /// </summary>
-        public MediaTypeFormatter Formatter { get; set; }
-        /// <summary>
-        /// Request Uri Parameters
-        /// </summary>
-        public AttributeSetInstanceExtensionFieldMvoUriParameters UriParameters { get; set; }
-
-    } // end class
-
-    /// <summary>
-    /// Request object for method Patch of class AttributeSetInstanceExtensionFieldMvo
-    /// </summary>
-    public partial class AttributeSetInstanceExtensionFieldMvoPatchRequest : ApiRequest
-    {
-        public AttributeSetInstanceExtensionFieldMvoPatchRequest(AttributeSetInstanceExtensionFieldMvoUriParameters UriParameters, MergePatchAttributeSetInstanceExtensionFieldMvoDto Content = null, MediaTypeFormatter Formatter = null)
-        {
-            this.Content = Content;
-            this.Formatter = Formatter;
-            this.UriParameters = UriParameters;
-        }
-
-        /// <summary>
-        /// Request content
-        /// </summary>
-        public MergePatchAttributeSetInstanceExtensionFieldMvoDto Content { get; set; }
-        /// <summary>
-        /// Request formatter
-        /// </summary>
-        public MediaTypeFormatter Formatter { get; set; }
-        /// <summary>
-        /// Request Uri Parameters
-        /// </summary>
-        public AttributeSetInstanceExtensionFieldMvoUriParameters UriParameters { get; set; }
-
-    } // end class
-
-    /// <summary>
-    /// Request object for method Delete of class AttributeSetInstanceExtensionFieldMvo
-    /// </summary>
-    public partial class AttributeSetInstanceExtensionFieldMvoDeleteRequest : ApiRequest
-    {
-        public AttributeSetInstanceExtensionFieldMvoDeleteRequest(AttributeSetInstanceExtensionFieldMvoUriParameters UriParameters, AttributeSetInstanceExtensionFieldMvoDeleteQuery Query = null)
-        {
-            this.Query = Query;
-            this.UriParameters = UriParameters;
-        }
-
-        /// <summary>
-        /// Request query string properties
-        /// </summary>
-        public AttributeSetInstanceExtensionFieldMvoDeleteQuery Query { get; set; }
-        /// <summary>
-        /// Request Uri Parameters
-        /// </summary>
-        public AttributeSetInstanceExtensionFieldMvoUriParameters UriParameters { get; set; }
-
-    } // end class
-
-    /// <summary>
-    /// Request object for method Get of class AttributeSetInstanceExtensionFieldMvos
-    /// </summary>
-    public partial class AttributeSetInstanceExtensionFieldMvosGetRequest : ApiRequest
-    {
-        public AttributeSetInstanceExtensionFieldMvosGetRequest(AttributeSetInstanceExtensionFieldMvosGetQuery Query = null)
-        {
-            this.Query = Query;
-        }
-
-        /// <summary>
-        /// Request query string properties
-        /// </summary>
-        public AttributeSetInstanceExtensionFieldMvosGetQuery Query { get; set; }
-
-    } // end class
-
-    /// <summary>
-    /// Request object for method Get of class AttributeSetInstanceExtensionFieldMvosCount
-    /// </summary>
-    public partial class AttributeSetInstanceExtensionFieldMvosCountGetRequest : ApiRequest
-    {
-        public AttributeSetInstanceExtensionFieldMvosCountGetRequest(AttributeSetInstanceExtensionFieldMvosCountGetQuery Query = null)
-        {
-            this.Query = Query;
-        }
-
-        /// <summary>
-        /// Request query string properties
-        /// </summary>
-        public AttributeSetInstanceExtensionFieldMvosCountGetQuery Query { get; set; }
-
-    } // end class
-
-    /// <summary>
-    /// Request object for method Get of class AttributeSetInstanceExtensionFieldMvoStateEvent
-    /// </summary>
-    public partial class AttributeSetInstanceExtensionFieldMvoStateEventGetRequest : ApiRequest
-    {
-        public AttributeSetInstanceExtensionFieldMvoStateEventGetRequest(AttributeSetInstanceExtensionFieldMvoStateEventUriParameters UriParameters)
-        {
-            this.UriParameters = UriParameters;
-        }
-
-        /// <summary>
-        /// Request Uri Parameters
-        /// </summary>
-        public AttributeSetInstanceExtensionFieldMvoStateEventUriParameters UriParameters { get; set; }
-
-    } // end class
-
-    /// <summary>
-    /// Request object for method Get of class AttributeSetInstanceExtensionFieldMvoHistoryState
-    /// </summary>
-    public partial class AttributeSetInstanceExtensionFieldMvoHistoryStateGetRequest : ApiRequest
-    {
-        public AttributeSetInstanceExtensionFieldMvoHistoryStateGetRequest(AttributeSetInstanceExtensionFieldMvoHistoryStateUriParameters UriParameters)
-        {
-            this.UriParameters = UriParameters;
-        }
-
-        /// <summary>
-        /// Request Uri Parameters
-        /// </summary>
-        public AttributeSetInstanceExtensionFieldMvoHistoryStateUriParameters UriParameters { get; set; }
 
     } // end class
 
@@ -37158,6 +37059,202 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
+    /// Response object for method Get of class AttributeSetInstanceExtensionField
+    /// </summary>
+
+    public partial class AttributeSetInstanceExtensionFieldGetResponse : ApiResponse
+    {
+
+
+	    private AttributeSetInstanceExtensionFieldStateDto typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public AttributeSetInstanceExtensionFieldStateDto Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (AttributeSetInstanceExtensionFieldStateDto)new XmlSerializer(typeof(AttributeSetInstanceExtensionFieldStateDto)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<AttributeSetInstanceExtensionFieldStateDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<AttributeSetInstanceExtensionFieldStateDto>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class AttributeSetInstanceExtensionFields
+    /// </summary>
+
+    public partial class AttributeSetInstanceExtensionFieldsGetResponse : ApiResponse
+    {
+
+
+	    private IList<AttributeSetInstanceExtensionFieldStateDto> typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public IList<AttributeSetInstanceExtensionFieldStateDto> Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (IList<AttributeSetInstanceExtensionFieldStateDto>)new XmlSerializer(typeof(IList<AttributeSetInstanceExtensionFieldStateDto>)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<IList<AttributeSetInstanceExtensionFieldStateDto>>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<IList<AttributeSetInstanceExtensionFieldStateDto>>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class AttributeSetInstanceExtensionFieldStateEvent
+    /// </summary>
+
+    public partial class AttributeSetInstanceExtensionFieldStateEventGetResponse : ApiResponse
+    {
+
+
+	    private AttributeSetInstanceExtensionFieldStateCreatedOrMergePatchedOrDeletedDto typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public AttributeSetInstanceExtensionFieldStateCreatedOrMergePatchedOrDeletedDto Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (AttributeSetInstanceExtensionFieldStateCreatedOrMergePatchedOrDeletedDto)new XmlSerializer(typeof(AttributeSetInstanceExtensionFieldStateCreatedOrMergePatchedOrDeletedDto)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<AttributeSetInstanceExtensionFieldStateCreatedOrMergePatchedOrDeletedDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<AttributeSetInstanceExtensionFieldStateCreatedOrMergePatchedOrDeletedDto>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class AttributeSetInstanceExtensionFieldHistoryState
+    /// </summary>
+
+    public partial class AttributeSetInstanceExtensionFieldHistoryStateGetResponse : ApiResponse
+    {
+
+
+	    private AttributeSetInstanceExtensionFieldStateDto typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public AttributeSetInstanceExtensionFieldStateDto Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (AttributeSetInstanceExtensionFieldStateDto)new XmlSerializer(typeof(AttributeSetInstanceExtensionFieldStateDto)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<AttributeSetInstanceExtensionFieldStateDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<AttributeSetInstanceExtensionFieldStateDto>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
     /// Response object for method Get of class AttributeSetInstanceExtensionFieldGroup
     /// </summary>
 
@@ -37340,55 +37437,6 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
                     var task =  Formatters != null && Formatters.Any() 
                                 ? RawContent.ReadAsAsync<AttributeSetInstanceExtensionFieldGroupStateDto>(Formatters).ConfigureAwait(false)
                                 : RawContent.ReadAsAsync<AttributeSetInstanceExtensionFieldGroupStateDto>().ConfigureAwait(false);
-		        
-		            typedContent = task.GetAwaiter().GetResult();
-                }
-
-		        return typedContent;
-	        }
-	    }
-
-		
-
-
-    } // end class
-
-    /// <summary>
-    /// Response object for method Get of class AttributeSetInstanceExtensionField
-    /// </summary>
-
-    public partial class AttributeSetInstanceExtensionFieldGetResponse : ApiResponse
-    {
-
-
-	    private AttributeSetInstanceExtensionFieldStateDto typedContent;
-        /// <summary>
-        /// Typed Response content
-        /// </summary>
-        public AttributeSetInstanceExtensionFieldStateDto Content 
-    	{
-	        get
-	        {
-		        if (typedContent != null)
-			        return typedContent;
-
-                IEnumerable<string> values = new List<string>();
-                if (RawContent != null && RawContent.Headers != null)
-                    RawContent.Headers.TryGetValues("Content-Type", out values);
-
-                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
-                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
-                {
-                    var task = RawContent.ReadAsStreamAsync();
-
-                    var xmlStream = task.GetAwaiter().GetResult();
-                    typedContent = (AttributeSetInstanceExtensionFieldStateDto)new XmlSerializer(typeof(AttributeSetInstanceExtensionFieldStateDto)).Deserialize(xmlStream);
-                }
-                else
-                {
-                    var task =  Formatters != null && Formatters.Any() 
-                                ? RawContent.ReadAsAsync<AttributeSetInstanceExtensionFieldStateDto>(Formatters).ConfigureAwait(false)
-                                : RawContent.ReadAsAsync<AttributeSetInstanceExtensionFieldStateDto>().ConfigureAwait(false);
 		        
 		            typedContent = task.GetAwaiter().GetResult();
                 }
@@ -39545,202 +39593,6 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
                     var task =  Formatters != null && Formatters.Any() 
                                 ? RawContent.ReadAsAsync<ShipmentItemMvoStateDto>(Formatters).ConfigureAwait(false)
                                 : RawContent.ReadAsAsync<ShipmentItemMvoStateDto>().ConfigureAwait(false);
-		        
-		            typedContent = task.GetAwaiter().GetResult();
-                }
-
-		        return typedContent;
-	        }
-	    }
-
-		
-
-
-    } // end class
-
-    /// <summary>
-    /// Response object for method Get of class AttributeSetInstanceExtensionFieldMvo
-    /// </summary>
-
-    public partial class AttributeSetInstanceExtensionFieldMvoGetResponse : ApiResponse
-    {
-
-
-	    private AttributeSetInstanceExtensionFieldMvoStateDto typedContent;
-        /// <summary>
-        /// Typed Response content
-        /// </summary>
-        public AttributeSetInstanceExtensionFieldMvoStateDto Content 
-    	{
-	        get
-	        {
-		        if (typedContent != null)
-			        return typedContent;
-
-                IEnumerable<string> values = new List<string>();
-                if (RawContent != null && RawContent.Headers != null)
-                    RawContent.Headers.TryGetValues("Content-Type", out values);
-
-                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
-                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
-                {
-                    var task = RawContent.ReadAsStreamAsync();
-
-                    var xmlStream = task.GetAwaiter().GetResult();
-                    typedContent = (AttributeSetInstanceExtensionFieldMvoStateDto)new XmlSerializer(typeof(AttributeSetInstanceExtensionFieldMvoStateDto)).Deserialize(xmlStream);
-                }
-                else
-                {
-                    var task =  Formatters != null && Formatters.Any() 
-                                ? RawContent.ReadAsAsync<AttributeSetInstanceExtensionFieldMvoStateDto>(Formatters).ConfigureAwait(false)
-                                : RawContent.ReadAsAsync<AttributeSetInstanceExtensionFieldMvoStateDto>().ConfigureAwait(false);
-		        
-		            typedContent = task.GetAwaiter().GetResult();
-                }
-
-		        return typedContent;
-	        }
-	    }
-
-		
-
-
-    } // end class
-
-    /// <summary>
-    /// Response object for method Get of class AttributeSetInstanceExtensionFieldMvos
-    /// </summary>
-
-    public partial class AttributeSetInstanceExtensionFieldMvosGetResponse : ApiResponse
-    {
-
-
-	    private IList<AttributeSetInstanceExtensionFieldMvoStateDto> typedContent;
-        /// <summary>
-        /// Typed Response content
-        /// </summary>
-        public IList<AttributeSetInstanceExtensionFieldMvoStateDto> Content 
-    	{
-	        get
-	        {
-		        if (typedContent != null)
-			        return typedContent;
-
-                IEnumerable<string> values = new List<string>();
-                if (RawContent != null && RawContent.Headers != null)
-                    RawContent.Headers.TryGetValues("Content-Type", out values);
-
-                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
-                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
-                {
-                    var task = RawContent.ReadAsStreamAsync();
-
-                    var xmlStream = task.GetAwaiter().GetResult();
-                    typedContent = (IList<AttributeSetInstanceExtensionFieldMvoStateDto>)new XmlSerializer(typeof(IList<AttributeSetInstanceExtensionFieldMvoStateDto>)).Deserialize(xmlStream);
-                }
-                else
-                {
-                    var task =  Formatters != null && Formatters.Any() 
-                                ? RawContent.ReadAsAsync<IList<AttributeSetInstanceExtensionFieldMvoStateDto>>(Formatters).ConfigureAwait(false)
-                                : RawContent.ReadAsAsync<IList<AttributeSetInstanceExtensionFieldMvoStateDto>>().ConfigureAwait(false);
-		        
-		            typedContent = task.GetAwaiter().GetResult();
-                }
-
-		        return typedContent;
-	        }
-	    }
-
-		
-
-
-    } // end class
-
-    /// <summary>
-    /// Response object for method Get of class AttributeSetInstanceExtensionFieldMvoStateEvent
-    /// </summary>
-
-    public partial class AttributeSetInstanceExtensionFieldMvoStateEventGetResponse : ApiResponse
-    {
-
-
-	    private AttributeSetInstanceExtensionFieldMvoStateCreatedOrMergePatchedOrDeletedDto typedContent;
-        /// <summary>
-        /// Typed Response content
-        /// </summary>
-        public AttributeSetInstanceExtensionFieldMvoStateCreatedOrMergePatchedOrDeletedDto Content 
-    	{
-	        get
-	        {
-		        if (typedContent != null)
-			        return typedContent;
-
-                IEnumerable<string> values = new List<string>();
-                if (RawContent != null && RawContent.Headers != null)
-                    RawContent.Headers.TryGetValues("Content-Type", out values);
-
-                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
-                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
-                {
-                    var task = RawContent.ReadAsStreamAsync();
-
-                    var xmlStream = task.GetAwaiter().GetResult();
-                    typedContent = (AttributeSetInstanceExtensionFieldMvoStateCreatedOrMergePatchedOrDeletedDto)new XmlSerializer(typeof(AttributeSetInstanceExtensionFieldMvoStateCreatedOrMergePatchedOrDeletedDto)).Deserialize(xmlStream);
-                }
-                else
-                {
-                    var task =  Formatters != null && Formatters.Any() 
-                                ? RawContent.ReadAsAsync<AttributeSetInstanceExtensionFieldMvoStateCreatedOrMergePatchedOrDeletedDto>(Formatters).ConfigureAwait(false)
-                                : RawContent.ReadAsAsync<AttributeSetInstanceExtensionFieldMvoStateCreatedOrMergePatchedOrDeletedDto>().ConfigureAwait(false);
-		        
-		            typedContent = task.GetAwaiter().GetResult();
-                }
-
-		        return typedContent;
-	        }
-	    }
-
-		
-
-
-    } // end class
-
-    /// <summary>
-    /// Response object for method Get of class AttributeSetInstanceExtensionFieldMvoHistoryState
-    /// </summary>
-
-    public partial class AttributeSetInstanceExtensionFieldMvoHistoryStateGetResponse : ApiResponse
-    {
-
-
-	    private AttributeSetInstanceExtensionFieldMvoStateDto typedContent;
-        /// <summary>
-        /// Typed Response content
-        /// </summary>
-        public AttributeSetInstanceExtensionFieldMvoStateDto Content 
-    	{
-	        get
-	        {
-		        if (typedContent != null)
-			        return typedContent;
-
-                IEnumerable<string> values = new List<string>();
-                if (RawContent != null && RawContent.Headers != null)
-                    RawContent.Headers.TryGetValues("Content-Type", out values);
-
-                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
-                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
-                {
-                    var task = RawContent.ReadAsStreamAsync();
-
-                    var xmlStream = task.GetAwaiter().GetResult();
-                    typedContent = (AttributeSetInstanceExtensionFieldMvoStateDto)new XmlSerializer(typeof(AttributeSetInstanceExtensionFieldMvoStateDto)).Deserialize(xmlStream);
-                }
-                else
-                {
-                    var task =  Formatters != null && Formatters.Any() 
-                                ? RawContent.ReadAsAsync<AttributeSetInstanceExtensionFieldMvoStateDto>(Formatters).ConfigureAwait(false)
-                                : RawContent.ReadAsAsync<AttributeSetInstanceExtensionFieldMvoStateDto>().ConfigureAwait(false);
 		        
 		            typedContent = task.GetAwaiter().GetResult();
                 }

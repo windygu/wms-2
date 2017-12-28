@@ -106,30 +106,6 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupCommand ext
             this.active = active;
         }
 
-        public AttributeSetInstanceExtensionFieldCommand.CreateAttributeSetInstanceExtensionField newCreateAttributeSetInstanceExtensionField()
-        {
-            AbstractAttributeSetInstanceExtensionFieldCommand.SimpleCreateAttributeSetInstanceExtensionField c = new AbstractAttributeSetInstanceExtensionFieldCommand.SimpleCreateAttributeSetInstanceExtensionField();
-            c.setGroupId(this.getId());
-
-            return c;
-        }
-
-        public AttributeSetInstanceExtensionFieldCommand.MergePatchAttributeSetInstanceExtensionField newMergePatchAttributeSetInstanceExtensionField()
-        {
-            AbstractAttributeSetInstanceExtensionFieldCommand.SimpleMergePatchAttributeSetInstanceExtensionField c = new AbstractAttributeSetInstanceExtensionFieldCommand.SimpleMergePatchAttributeSetInstanceExtensionField();
-            c.setGroupId(this.getId());
-
-            return c;
-        }
-
-        public AttributeSetInstanceExtensionFieldCommand.RemoveAttributeSetInstanceExtensionField newRemoveAttributeSetInstanceExtensionField()
-        {
-            AbstractAttributeSetInstanceExtensionFieldCommand.SimpleRemoveAttributeSetInstanceExtensionField c = new AbstractAttributeSetInstanceExtensionFieldCommand.SimpleRemoveAttributeSetInstanceExtensionField();
-            c.setGroupId(this.getId());
-
-            return c;
-        }
-
     }
 
     public static abstract class AbstractCreateAttributeSetInstanceExtensionFieldGroup extends AbstractCreateOrMergePatchAttributeSetInstanceExtensionFieldGroup implements CreateAttributeSetInstanceExtensionFieldGroup
@@ -137,13 +113,6 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupCommand ext
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
-        }
-
-        private CreateAttributeSetInstanceExtensionFieldCommands fields = new SimpleCreateAttributeSetInstanceExtensionFieldCommands();
-
-        public CreateAttributeSetInstanceExtensionFieldCommands getFields()
-        {
-            return this.fields;
         }
 
     }
@@ -227,13 +196,6 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupCommand ext
             this.isPropertyActiveRemoved = removed;
         }
 
-        private AttributeSetInstanceExtensionFieldCommands attributeSetInstanceExtensionFieldCommands = new SimpleAttributeSetInstanceExtensionFieldCommands();
-
-        public AttributeSetInstanceExtensionFieldCommands getAttributeSetInstanceExtensionFieldCommands()
-        {
-            return this.attributeSetInstanceExtensionFieldCommands;
-        }
-
     }
 
     public static class SimpleCreateAttributeSetInstanceExtensionFieldGroup extends AbstractCreateAttributeSetInstanceExtensionFieldGroup
@@ -255,58 +217,6 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupCommand ext
 	}
 
     
-    public static class SimpleCreateAttributeSetInstanceExtensionFieldCommands implements CreateAttributeSetInstanceExtensionFieldCommands
-    {
-        private List<AttributeSetInstanceExtensionFieldCommand.CreateAttributeSetInstanceExtensionField> innerCommands = new ArrayList<AttributeSetInstanceExtensionFieldCommand.CreateAttributeSetInstanceExtensionField>();
-
-        public void add(AttributeSetInstanceExtensionFieldCommand.CreateAttributeSetInstanceExtensionField c)
-        {
-            innerCommands.add(c);
-        }
-
-        public void remove(AttributeSetInstanceExtensionFieldCommand.CreateAttributeSetInstanceExtensionField c)
-        {
-            innerCommands.remove(c);
-        }
-
-        public void clear()
-        {
-            innerCommands.clear();
-        }
-
-        @Override
-        public Iterator<AttributeSetInstanceExtensionFieldCommand.CreateAttributeSetInstanceExtensionField> iterator()
-        {
-            return innerCommands.iterator();
-        }
-    }
-
-    public static class SimpleAttributeSetInstanceExtensionFieldCommands implements AttributeSetInstanceExtensionFieldCommands
-    {
-        private List<AttributeSetInstanceExtensionFieldCommand> innerCommands = new ArrayList<AttributeSetInstanceExtensionFieldCommand>();
-
-        public void add(AttributeSetInstanceExtensionFieldCommand c)
-        {
-            innerCommands.add(c);
-        }
-
-        public void remove(AttributeSetInstanceExtensionFieldCommand c)
-        {
-            innerCommands.remove(c);
-        }
-
-        public void clear()
-        {
-            innerCommands.clear();
-        }
-
-        @Override
-        public Iterator<AttributeSetInstanceExtensionFieldCommand> iterator()
-        {
-            return innerCommands.iterator();
-        }
-    }
-
 
 }
 

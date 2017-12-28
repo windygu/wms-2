@@ -1,14 +1,14 @@
 <#@ template language="C#" debug="True" #>
 <#@ output extension="txt" #>
 <#@ include file="T4Toolbox.tt" #>
-<#@ include file="Templates\AttributeSetInstanceExtensionFieldGroupDddmlTemplate.tt" #>
+<#@ include file="Templates\ExtensionFieldDddmlTemplate.tt" #>
 <#@ include file="AttributeSetInstanceExtensionFieldMetadataUtils.ttinclude" #>
 <#
 // <copyright file="AttributeSetInstanceExtensionFieldGroupDddml.tt" company="dddml.org">
 //  Copyright © . All Rights Reserved.
 // </copyright>
 
- 	var attributeSetInstanceExtensionFieldGroupDddmlTemplate = new AttributeSetInstanceExtensionFieldGroupDddmlTemplate();
+ 	var attributeSetInstanceExtensionFieldGroupDddmlTemplate = new ExtensionFieldDddmlTemplate("AttributeSetInstance", true);
     attributeSetInstanceExtensionFieldGroupDddmlTemplate.Output.Encoding = new System.Text.UTF8Encoding(false);
 	attributeSetInstanceExtensionFieldGroupDddmlTemplate.RenderToFile("AttributeSetInstanceExtensionFieldGroupDddml.yaml");
 

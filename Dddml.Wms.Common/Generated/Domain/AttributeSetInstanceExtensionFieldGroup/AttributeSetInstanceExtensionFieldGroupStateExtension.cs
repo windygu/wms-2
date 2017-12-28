@@ -17,7 +17,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 
         public static IAttributeSetInstanceExtensionFieldGroupCommand ToCreateOrMergePatchAttributeSetInstanceExtensionFieldGroup(this AttributeSetInstanceExtensionFieldGroupState state)
         {
-            return state.ToCreateOrMergePatchAttributeSetInstanceExtensionFieldGroup<CreateAttributeSetInstanceExtensionFieldGroup, MergePatchAttributeSetInstanceExtensionFieldGroup, CreateAttributeSetInstanceExtensionField, MergePatchAttributeSetInstanceExtensionField>();
+            return state.ToCreateOrMergePatchAttributeSetInstanceExtensionFieldGroup<CreateAttributeSetInstanceExtensionFieldGroup, MergePatchAttributeSetInstanceExtensionFieldGroup>();
         }
 
         public static DeleteAttributeSetInstanceExtensionFieldGroup ToDeleteAttributeSetInstanceExtensionFieldGroup(this AttributeSetInstanceExtensionFieldGroupState state)
@@ -27,12 +27,12 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 
         public static MergePatchAttributeSetInstanceExtensionFieldGroup ToMergePatchAttributeSetInstanceExtensionFieldGroup(this AttributeSetInstanceExtensionFieldGroupState state)
         {
-            return state.ToMergePatchAttributeSetInstanceExtensionFieldGroup<MergePatchAttributeSetInstanceExtensionFieldGroup, CreateAttributeSetInstanceExtensionField, MergePatchAttributeSetInstanceExtensionField>();
+            return state.ToMergePatchAttributeSetInstanceExtensionFieldGroup<MergePatchAttributeSetInstanceExtensionFieldGroup>();
         }
 
         public static CreateAttributeSetInstanceExtensionFieldGroup ToCreateAttributeSetInstanceExtensionFieldGroup(this AttributeSetInstanceExtensionFieldGroupState state)
         {
-            return state.ToCreateAttributeSetInstanceExtensionFieldGroup<CreateAttributeSetInstanceExtensionFieldGroup, CreateAttributeSetInstanceExtensionField>();
+            return state.ToCreateAttributeSetInstanceExtensionFieldGroup<CreateAttributeSetInstanceExtensionFieldGroup>();
         }
 		
 

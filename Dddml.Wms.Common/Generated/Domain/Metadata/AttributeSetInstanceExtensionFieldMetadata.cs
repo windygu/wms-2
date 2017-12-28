@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
-using Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup;
+using Dddml.Wms.Domain.AttributeSetInstanceExtensionField;
 
 namespace Dddml.Wms.Domain.Metadata
 {
@@ -16,7 +16,7 @@ namespace Dddml.Wms.Domain.Metadata
     {
         private static PropertyMetadata[] _properties = new PropertyMetadata[]{
                 new PropertyMetadata {
-                    Name = "Index",
+                    Name = "Name",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -31,38 +31,7 @@ namespace Dddml.Wms.Domain.Metadata
                     InverseOf = "",
                     IsHoisted = false,
                     IsId = true,
-                    IsGlobalId = false,
-                    IsDerived = true,
-                    IsOuterId = true,
-                    DerivedFrom = "AttributeSetInstanceExtensionFieldId.Index",
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
-                new PropertyMetadata {
-                    Name = "Name",
-                    Type = typeof(string),
-                    TypeName = "string",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 0,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
+                    IsGlobalId = true,
                     IsDerived = false,
                     IsDiscriminator = false,
                     IsReservedProperty = false,
@@ -164,6 +133,35 @@ namespace Dddml.Wms.Domain.Metadata
                 },
                 new PropertyMetadata {
                     Name = "Description",
+                    Type = typeof(string),
+                    TypeName = "string",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
+                    Name = "GroupId",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -394,128 +392,6 @@ namespace Dddml.Wms.Domain.Metadata
                     IsReservedPropertyUpdatedAt = false,
                     IsFilteringProperty = true,
                 },
-                new PropertyMetadata {
-                    Name = "AttributeSetInstanceExtensionFieldId",
-                    Type = typeof(AttributeSetInstanceExtensionFieldId),
-                    TypeName = "AttributeSetInstanceExtensionFieldId",
-                    IsSimpleValueObjectType = false,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 0,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = true,
-                    IsDerived = false,
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = false,
-                },
-                new PropertyMetadata {
-                    Name = "GroupId",
-                    Type = typeof(string),
-                    TypeName = "string",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 50,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = true,
-                    IsOuterId = true,
-                    DerivedFrom = "AttributeSetInstanceExtensionFieldId.GroupId",
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
-                new PropertyMetadata {
-                    Name = "AttributeSetInstanceExtensionFieldId.GroupId",
-                    Type = typeof(string),
-                    TypeName = "string",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 50,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = false,
-                    IsReallyFlattened = false,
-                    SourceChainingName = "AttributeSetInstanceExtensionFieldId.GroupId",
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
-                new PropertyMetadata {
-                    Name = "AttributeSetInstanceExtensionFieldId.Index",
-                    Type = typeof(string),
-                    TypeName = "string",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 50,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = false,
-                    IsReallyFlattened = false,
-                    SourceChainingName = "AttributeSetInstanceExtensionFieldId.Index",
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
             };
 
 
@@ -531,8 +407,6 @@ namespace Dddml.Wms.Domain.Metadata
         private static void InitFilteringPropertyAliasDictionary()
         {
             var d = new Dictionary<string, string>();
-            d.Add("Index", "AttributeSetInstanceExtensionFieldId.Index");
-            d.Add("index", "AttributeSetInstanceExtensionFieldId.Index");
             d.Add("Name", "Name");
             d.Add("name", "Name");
             d.Add("Type", "Type");
@@ -543,6 +417,8 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("alias", "Alias");
             d.Add("Description", "Description");
             d.Add("description", "Description");
+            d.Add("GroupId", "GroupId");
+            d.Add("groupId", "GroupId");
             d.Add("Version", "Version");
             d.Add("version", "Version");
             d.Add("CreatedBy", "CreatedBy");
@@ -557,12 +433,6 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("active", "Active");
             d.Add("Deleted", "Deleted");
             d.Add("deleted", "Deleted");
-            d.Add("GroupId", "AttributeSetInstanceExtensionFieldId.GroupId");
-            d.Add("groupId", "AttributeSetInstanceExtensionFieldId.GroupId");
-            d.Add("AttributeSetInstanceExtensionFieldId.GroupId", "AttributeSetInstanceExtensionFieldId.GroupId");
-            d.Add("attributeSetInstanceExtensionFieldId.groupId", "AttributeSetInstanceExtensionFieldId.GroupId");
-            d.Add("AttributeSetInstanceExtensionFieldId.Index", "AttributeSetInstanceExtensionFieldId.Index");
-            d.Add("attributeSetInstanceExtensionFieldId.index", "AttributeSetInstanceExtensionFieldId.Index");
             _filteringPropertyAliasDictionary = d;
         }
 

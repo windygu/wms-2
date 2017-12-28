@@ -77,18 +77,6 @@ public class CreateOrMergePatchAttributeSetInstanceExtensionFieldGroupDto extend
         this.active = active;
     }
 
-    private CreateOrMergePatchAttributeSetInstanceExtensionFieldDto[] fields;
-
-    public CreateOrMergePatchAttributeSetInstanceExtensionFieldDto[] getFields()
-    {
-        return this.fields;
-    }
-
-    public void setFields(CreateOrMergePatchAttributeSetInstanceExtensionFieldDto[] fields)
-    {
-        this.fields = fields;
-    }
-
     private Boolean isPropertyFieldTypeRemoved;
 
     public Boolean getIsPropertyFieldTypeRemoved()
@@ -177,20 +165,10 @@ public class CreateOrMergePatchAttributeSetInstanceExtensionFieldGroupDto extend
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractAttributeSetInstanceExtensionFieldGroupCommand.SimpleCreateAttributeSetInstanceExtensionFieldGroup command = new AbstractAttributeSetInstanceExtensionFieldGroupCommand.SimpleCreateAttributeSetInstanceExtensionFieldGroup();
             copyTo((AbstractAttributeSetInstanceExtensionFieldGroupCommand.AbstractCreateAttributeSetInstanceExtensionFieldGroup) command);
-            if (this.getFields() != null) {
-                for (CreateOrMergePatchAttributeSetInstanceExtensionFieldDto cmd : this.getFields()) {
-                    command.getFields().add((AttributeSetInstanceExtensionFieldCommand.CreateAttributeSetInstanceExtensionField) cmd.toCommand());
-                }
-            }
             return command;
         } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {
             AbstractAttributeSetInstanceExtensionFieldGroupCommand.SimpleMergePatchAttributeSetInstanceExtensionFieldGroup command = new AbstractAttributeSetInstanceExtensionFieldGroupCommand.SimpleMergePatchAttributeSetInstanceExtensionFieldGroup();
             copyTo((AbstractAttributeSetInstanceExtensionFieldGroupCommand.SimpleMergePatchAttributeSetInstanceExtensionFieldGroup) command);
-            if (this.getFields() != null) {
-                for (CreateOrMergePatchAttributeSetInstanceExtensionFieldDto cmd : this.getFields()) {
-                    command.getAttributeSetInstanceExtensionFieldCommands().add(cmd.toCommand());
-                }
-            }
             return command;
         } 
         throw new IllegalStateException("Unknown command type:" + getCommandType());

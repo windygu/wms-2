@@ -17,7 +17,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 
         public static IAttributeSetInstanceExtensionFieldGroupCommand ToCreateOrMergePatchAttributeSetInstanceExtensionFieldGroup(this AttributeSetInstanceExtensionFieldGroupStateDtoWrapper state)
         {
-            return state.ToCreateOrMergePatchAttributeSetInstanceExtensionFieldGroup<CreateAttributeSetInstanceExtensionFieldGroupDto, MergePatchAttributeSetInstanceExtensionFieldGroupDto, CreateAttributeSetInstanceExtensionFieldDto, MergePatchAttributeSetInstanceExtensionFieldDto>();
+            return state.ToCreateOrMergePatchAttributeSetInstanceExtensionFieldGroup<CreateAttributeSetInstanceExtensionFieldGroupDto, MergePatchAttributeSetInstanceExtensionFieldGroupDto>();
         }
 
         public static DeleteAttributeSetInstanceExtensionFieldGroupDto ToDeleteAttributeSetInstanceExtensionFieldGroup(this AttributeSetInstanceExtensionFieldGroupStateDtoWrapper state)
@@ -27,12 +27,12 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 
         public static MergePatchAttributeSetInstanceExtensionFieldGroupDto ToMergePatchAttributeSetInstanceExtensionFieldGroup(this AttributeSetInstanceExtensionFieldGroupStateDtoWrapper state)
         {
-            return state.ToMergePatchAttributeSetInstanceExtensionFieldGroup<MergePatchAttributeSetInstanceExtensionFieldGroupDto, CreateAttributeSetInstanceExtensionFieldDto, MergePatchAttributeSetInstanceExtensionFieldDto>();
+            return state.ToMergePatchAttributeSetInstanceExtensionFieldGroup<MergePatchAttributeSetInstanceExtensionFieldGroupDto>();
         }
 
         public static CreateAttributeSetInstanceExtensionFieldGroupDto ToCreateAttributeSetInstanceExtensionFieldGroup(this AttributeSetInstanceExtensionFieldGroupStateDtoWrapper state)
         {
-            return state.ToCreateAttributeSetInstanceExtensionFieldGroup<CreateAttributeSetInstanceExtensionFieldGroupDto, CreateAttributeSetInstanceExtensionFieldDto>();
+            return state.ToCreateAttributeSetInstanceExtensionFieldGroup<CreateAttributeSetInstanceExtensionFieldGroupDto>();
         }
 		
 
