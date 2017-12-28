@@ -7,7 +7,7 @@
 
     <composite-id name="AttributeAliasId" class="Dddml.Wms.Domain.Attribute.AttributeAliasId">
         <key-property name="AttributeId" ><column name="AttributeAliasIdAttributeId" length="50" /></key-property>
-        <key-property name="Code" ><column name="AttributeAliasIdCode" length="50" /></key-property>
+        <key-property name="Code" ><column name="AttributeAliasIdCode" length="50" unique-key="UniqueAttributeAliasId" /></key-property>
     </composite-id>
 
 	<version name="Version" column="Version" type="long" unsaved-value="0"/>

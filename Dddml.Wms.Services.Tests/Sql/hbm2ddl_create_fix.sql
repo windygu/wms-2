@@ -1093,6 +1093,7 @@
        CreatedAt DATETIME,
        UpdatedAt DATETIME,
        primary key (AttributeAliasIdAttributeId, AttributeAliasIdCode),
+      unique (AttributeAliasIdCode),
       unique (Name)
     );
 
@@ -1142,6 +1143,7 @@
        CreatedAt DATETIME,
        UpdatedAt DATETIME,
        primary key (AttributeAliasIdAttributeId, AttributeAliasIdCode),
+      unique (AttributeAliasIdCode),
       unique (Name)
     );
 
