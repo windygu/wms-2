@@ -2,7 +2,6 @@
 <#@ output extension="txt" #>
 <#@ include file="T4Toolbox.tt" #>
 <#@ include file="Templates\ExtensionFieldDddmlTemplate.tt" #>
-<#@ include file="AttributeSetInstanceExtensionFieldMetadataUtils.ttinclude" #>
 <#
 // <copyright file="AttributeSetInstanceExtensionFieldGroupDddml.tt" company="dddml.org">
 //  Copyright © . All Rights Reserved.

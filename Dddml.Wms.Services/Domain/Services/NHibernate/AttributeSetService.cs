@@ -8,7 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
 
 namespace Dddml.Wms.Domain.Services.NHibernate
 {
@@ -24,6 +25,10 @@ namespace Dddml.Wms.Domain.Services.NHibernate
         {
         }
 
+        // ///////////////////////////////////////////////////////
+        static Regex FieldNameRegex = new Regex("^[_A-Za-z][_A-Za-z0-9]*$");
+        // ///////////////////////////////////////////////////////
+
         [Transaction(ReadOnly = true)]
         public virtual IDictionary<string, string> GetExtensionPropertyFieldDictionary(string attributeSetId)
         {
@@ -36,7 +41,33 @@ namespace Dddml.Wms.Domain.Services.NHibernate
                     var a = AttributeStateQueryRepository.Get(au.AttributeId);
                     if (a != null)
                     {
-                        pDic.Add(a.AttributeName, a.FieldName);
+                        var fname = a.FieldName;
+                        if (String.IsNullOrWhiteSpace(fname))
+                        {
+                            // ??? /////////////////////////////////////
+                            if (FieldNameRegex.IsMatch(a.AttributeId)) 
+                            {
+                                fname = a.AttributeId;
+                            }
+                            else if (FieldNameRegex.IsMatch(a.AttributeName))
+                            {
+                                fname = a.AttributeName;
+                            }
+                        }
+                        if (!String.IsNullOrWhiteSpace(fname))
+                        {
+                            pDic.Add(a.AttributeId, fname);
+                            pDic.Add(a.AttributeName, fname);
+                            // ???
+                            //if (a.Aliases != null)
+                            //{
+                            //    foreach (var alias in a.Aliases)
+                            //    {
+                            //        pDic.Add(alias.Name, fname);
+                            //    }
+                            //}
+                        }
+                        
                     }
                 }
             }
