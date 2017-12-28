@@ -9,6 +9,7 @@
 // </copyright>
 
  	var attributeSetInstanceExtensionFieldGroupDddmlTemplate = new AttributeSetInstanceExtensionFieldGroupDddmlTemplate();
+    attributeSetInstanceExtensionFieldGroupDddmlTemplate.Output.Encoding = new System.Text.UTF8Encoding(false);
 	attributeSetInstanceExtensionFieldGroupDddmlTemplate.RenderToFile("AttributeSetInstanceExtensionFieldGroupDddml.yaml");
 
 #>

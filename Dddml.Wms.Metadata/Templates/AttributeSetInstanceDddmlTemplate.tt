@@ -28,6 +28,7 @@ public class AttributeSetInstanceDddmlTemplate : CSharpTemplate
 
 	public override string TransformText()
 	{
+
 #>
 #%DDDML 0.1
 

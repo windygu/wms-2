@@ -11,6 +11,7 @@
     var extensionFields = AttributeSetInstanceExtensionFieldMetadataUtils.GetAllExtensionFields();
 
 	var attributeSetInstanceDddmlTemplate = new AttributeSetInstanceDddmlTemplate(extensionFields);
+    attributeSetInstanceDddmlTemplate.Output.Encoding = new System.Text.UTF8Encoding(false);
 	attributeSetInstanceDddmlTemplate.RenderToFile("AttributeSetInstanceDddml.yaml");
 
 

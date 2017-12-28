@@ -4960,7 +4960,7 @@
     <Compile Include="Support\AttributeSetBuilder.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Support\AttributeSetInstanceExtensionFieldUtils.cs">
+    <Compile Include="Generated\Support\AttributeSetInstanceExtensionFieldUtils.cs">
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldUtils.tt</DependentUpon>
     </Compile>
     <Compile Include="Support\AuthorizationUtils.cs" />
@@ -5208,7 +5208,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LoadBoundedContextFiles.tt</DependentUpon>
     </Content>
-    <Content Include="Support\GenerateAttributeSetInstancePropertyUtils.tt">
+    <Content Include="Generated\Support\GenerateAttributeSetInstancePropertyUtils.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAttributeSetInstancePropertyUtils.txt</LastGenOutput>
       <LastOutputs>
@@ -5216,14 +5216,14 @@
 .\GenerateAttributeSetInstancePropertyUtils.txt
 </LastOutputs>
     </Content>
-    <Compile Include="Support\AttributeSetInstancePropertyUtils.cs">
+    <Compile Include="Generated\Support\AttributeSetInstancePropertyUtils.cs">
       <DependentUpon>GenerateAttributeSetInstancePropertyUtils.tt</DependentUpon>
     </Compile>
     <Compile Include="Support\AttributeValueListAttribute.cs" />
     <Compile Include="Support\AttributeValueTypeUtils.cs" />
     <Compile Include="Support\NullableUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Content Include="Support\GenerateAttributeSetInstancePropertyUtils.txt">
+    <Content Include="Generated\Support\GenerateAttributeSetInstancePropertyUtils.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateAttributeSetInstancePropertyUtils.tt</DependentUpon>
@@ -7190,7 +7190,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LoadBoundedContext.tt</DependentUpon>
     </Content>
-    <Content Include="Support\GenerateAttributeSetInstanceExtensionFieldUtils.tt">
+    <Content Include="Generated\Support\GenerateAttributeSetInstanceExtensionFieldUtils.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAttributeSetInstanceExtensionFieldUtils.txt</LastGenOutput>
       <LastOutputs>
@@ -7198,7 +7198,7 @@
 .\GenerateAttributeSetInstanceExtensionFieldUtils.txt
 </LastOutputs>
     </Content>
-    <Content Include="Support\GenerateAttributeSetInstanceExtensionFieldUtils.txt">
+    <Content Include="Generated\Support\GenerateAttributeSetInstanceExtensionFieldUtils.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldUtils.tt</DependentUpon>
