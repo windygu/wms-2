@@ -10,7 +10,9 @@
 	
     var extensionFieldGroups = AttributeSetInstanceExtensionFieldMetadataUtils.GetExtensionFieldGroups();
 
-	var attributeSetInstanceExtensionFieldUtilsTemplate = new AttributeSetInstanceExtensionFieldUtilsTemplate(extensionFieldGroups);
+    var extensionFields = AttributeSetInstanceExtensionFieldMetadataUtils.GetAllExtensionFields();
+
+	var attributeSetInstanceExtensionFieldUtilsTemplate = new AttributeSetInstanceExtensionFieldUtilsTemplate(extensionFieldGroups, extensionFields);
 	attributeSetInstanceExtensionFieldUtilsTemplate.RenderToFile("AttributeSetInstanceExtensionFieldUtils.cs");
 
 #>

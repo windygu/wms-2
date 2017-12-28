@@ -42,14 +42,29 @@ namespace Dddml.Wms.Domain.Services.NHibernate
                     if (a != null)
                     {
                         var fname = a.FieldName;
-                        if (String.IsNullOrWhiteSpace(fname))
+                        // /////////////////////////////////////////////////////////////////////////////////////
+                        //
+                        // 我们通过这样的方式支持动态 / 扩展“属性”：
+                        //
+                        // 预先在实体中预留若干扩展“字段”，然后，通过元数据（配置）来实现这样的映射：
+                        // 
+                        // 属性名 -> 字段名 -> 列名
+                        //
+                        // 这里的“字段名”是指可以直接映射到“底层”存储————列名的那个名称（“中间层”）。
+                        // 
+                        // 这里的例子，属性名 -> 字段名的映射元数据保存在数据库中（运行时可变），
+                        // 
+                        // 字段名 -> 列名的映射实际上是通过 ORM 来完成的。
+                        //
+                        // /////////////////////////////////////////////////////////////////////////////////////
+
+                        if (String.IsNullOrWhiteSpace(fname)) // 如果“属性”没有指定字段名
                         {
-                            // ??? /////////////////////////////////////
-                            if (FieldNameRegex.IsMatch(a.AttributeId)) 
+                            if (FieldNameRegex.IsMatch(a.AttributeId)) // 使用“属性 Id”作为字段名
                             {
                                 fname = a.AttributeId;
                             }
-                            else if (FieldNameRegex.IsMatch(a.AttributeName))
+                            else if (FieldNameRegex.IsMatch(a.AttributeName)) //使用“属性名称”作为字段名
                             {
                                 fname = a.AttributeName;
                             }

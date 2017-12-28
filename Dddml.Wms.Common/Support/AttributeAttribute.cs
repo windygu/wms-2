@@ -43,6 +43,7 @@ namespace Dddml.Wms.Support
             set { isInstanceAttribute = value; }
         }
 
+        public string[] Aliases { get; set; }
 
         public AttributeAttribute()
         { }

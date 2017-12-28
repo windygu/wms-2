@@ -274,7 +274,7 @@ namespace Dddml.Wms.Services.Tests
 
             [AttributeGroup("电子料")]
             [AttributeGroup("大宗料")]
-            [Dddml.Wms.Support.Attribute(Description = "Vendor Code")]
+            [Dddml.Wms.Support.Attribute(Description = "Vendor Code", Aliases = new string[] { "ProviderCode" })]
             public virtual string VendorCode { get; set; }
 
             [AttributeGroup("电子料")]

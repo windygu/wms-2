@@ -10,15 +10,503 @@ using System.Text;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup;
+using Dddml.Wms.Domain.AttributeSetInstanceExtensionField;
 
 namespace Dddml.Wms.Support
 {
     public static class AttributeSetInstanceExtensionFieldUtils
     {
 
+        public static CreateAttributeSetInstanceExtensionField[] CreateAttributeSetInstanceExtensionFields()
+        {
+            var fs = new CreateAttributeSetInstanceExtensionField[]{
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "WidthInch",
+                    Type = "decimal?",
+                    Length = null,
+                    GroupId = null,
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "DiameterInch",
+                    Type = "decimal?",
+                    Length = null,
+                    GroupId = null,
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "WeightLbs",
+                    Type = "decimal?",
+                    Length = null,
+                    GroupId = null,
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "WeightKg",
+                    Type = "decimal?",
+                    Length = null,
+                    GroupId = null,
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "AirDryWeightLbs",
+                    Type = "decimal?",
+                    Length = null,
+                    GroupId = null,
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "AirDryWeightKg",
+                    Type = "decimal?",
+                    Length = null,
+                    GroupId = null,
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "AirDryMetricTon",
+                    Type = "decimal?",
+                    Length = null,
+                    GroupId = null,
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "PackageCount",
+                    Type = "int?",
+                    Length = null,
+                    GroupId = null,
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "AirDryPct",
+                    Type = "decimal?",
+                    Length = null,
+                    GroupId = null,
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_B_0_",
+                    Type = "bool?",
+                    Length = null,
+                    GroupId = "_F_B_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_I_0_",
+                    Type = "int?",
+                    Length = null,
+                    GroupId = "_F_I_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_L_0_",
+                    Type = "long?",
+                    Length = null,
+                    GroupId = "_F_L_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_DT_0_",
+                    Type = "DateTime?",
+                    Length = null,
+                    GroupId = "_F_DT_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_N_0_",
+                    Type = "decimal?",
+                    Length = null,
+                    GroupId = "_F_N_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_C5_0_",
+                    Type = "string",
+                    Length = 5,
+                    GroupId = "_F_C5_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_C10_0_",
+                    Type = "string",
+                    Length = 10,
+                    GroupId = "_F_C10_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_C20_0_",
+                    Type = "string",
+                    Length = 20,
+                    GroupId = "_F_C20_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_C50_0_",
+                    Type = "string",
+                    Length = 50,
+                    GroupId = "_F_C50_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_C100_0_",
+                    Type = "string",
+                    Length = 100,
+                    GroupId = "_F_C100_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_C200_0_",
+                    Type = "string",
+                    Length = 200,
+                    GroupId = "_F_C200_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_C500_0_",
+                    Type = "string",
+                    Length = 500,
+                    GroupId = "_F_C500_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_C1000_0_",
+                    Type = "string",
+                    Length = 1000,
+                    GroupId = "_F_C1000_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_B_1_",
+                    Type = "bool?",
+                    Length = null,
+                    GroupId = "_F_B_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_I_1_",
+                    Type = "int?",
+                    Length = null,
+                    GroupId = "_F_I_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_L_1_",
+                    Type = "long?",
+                    Length = null,
+                    GroupId = "_F_L_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_DT_1_",
+                    Type = "DateTime?",
+                    Length = null,
+                    GroupId = "_F_DT_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_N_1_",
+                    Type = "decimal?",
+                    Length = null,
+                    GroupId = "_F_N_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_C5_1_",
+                    Type = "string",
+                    Length = 5,
+                    GroupId = "_F_C5_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_C10_1_",
+                    Type = "string",
+                    Length = 10,
+                    GroupId = "_F_C10_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_C20_1_",
+                    Type = "string",
+                    Length = 20,
+                    GroupId = "_F_C20_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_C50_1_",
+                    Type = "string",
+                    Length = 50,
+                    GroupId = "_F_C50_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_C100_1_",
+                    Type = "string",
+                    Length = 100,
+                    GroupId = "_F_C100_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_C200_1_",
+                    Type = "string",
+                    Length = 200,
+                    GroupId = "_F_C200_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_B_2_",
+                    Type = "bool?",
+                    Length = null,
+                    GroupId = "_F_B_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_I_2_",
+                    Type = "int?",
+                    Length = null,
+                    GroupId = "_F_I_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_L_2_",
+                    Type = "long?",
+                    Length = null,
+                    GroupId = "_F_L_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_DT_2_",
+                    Type = "DateTime?",
+                    Length = null,
+                    GroupId = "_F_DT_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_N_2_",
+                    Type = "decimal?",
+                    Length = null,
+                    GroupId = "_F_N_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_C5_2_",
+                    Type = "string",
+                    Length = 5,
+                    GroupId = "_F_C5_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_C10_2_",
+                    Type = "string",
+                    Length = 10,
+                    GroupId = "_F_C10_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_C20_2_",
+                    Type = "string",
+                    Length = 20,
+                    GroupId = "_F_C20_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_C50_2_",
+                    Type = "string",
+                    Length = 50,
+                    GroupId = "_F_C50_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_B_3_",
+                    Type = "bool?",
+                    Length = null,
+                    GroupId = "_F_B_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_I_3_",
+                    Type = "int?",
+                    Length = null,
+                    GroupId = "_F_I_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_L_3_",
+                    Type = "long?",
+                    Length = null,
+                    GroupId = "_F_L_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_DT_3_",
+                    Type = "DateTime?",
+                    Length = null,
+                    GroupId = "_F_DT_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_N_3_",
+                    Type = "decimal?",
+                    Length = null,
+                    GroupId = "_F_N_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_C5_3_",
+                    Type = "string",
+                    Length = 5,
+                    GroupId = "_F_C5_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_C10_3_",
+                    Type = "string",
+                    Length = 10,
+                    GroupId = "_F_C10_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_C20_3_",
+                    Type = "string",
+                    Length = 20,
+                    GroupId = "_F_C20_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_C50_3_",
+                    Type = "string",
+                    Length = 50,
+                    GroupId = "_F_C50_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_B_4_",
+                    Type = "bool?",
+                    Length = null,
+                    GroupId = "_F_B_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_I_4_",
+                    Type = "int?",
+                    Length = null,
+                    GroupId = "_F_I_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_L_4_",
+                    Type = "long?",
+                    Length = null,
+                    GroupId = "_F_L_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_DT_4_",
+                    Type = "DateTime?",
+                    Length = null,
+                    GroupId = "_F_DT_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_N_4_",
+                    Type = "decimal?",
+                    Length = null,
+                    GroupId = "_F_N_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_C5_4_",
+                    Type = "string",
+                    Length = 5,
+                    GroupId = "_F_C5_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_C10_4_",
+                    Type = "string",
+                    Length = 10,
+                    GroupId = "_F_C10_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_C20_4_",
+                    Type = "string",
+                    Length = 20,
+                    GroupId = "_F_C20_",
+                    Active = true,
+                },
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "_F_C50_4_",
+                    Type = "string",
+                    Length = 50,
+                    GroupId = "_F_C50_",
+                    Active = true,
+                },
+            };
+            return fs;
+        }
+
         public static CreateAttributeSetInstanceExtensionFieldGroup[] CreateAttributeSetInstanceExtensionFieldGroups()
         {
-            var groups = new CreateAttributeSetInstanceExtensionFieldGroup[]{
+            var groups = new CreateAttributeSetInstanceExtensionFieldGroup[] {
                 new CreateAttributeSetInstanceExtensionFieldGroup
                 {
                     Id = "_F_B_",
@@ -137,22 +625,6 @@ namespace Dddml.Wms.Support
                     Active = true
                 },
             };
-
-            /*
-            foreach (var g in groups)
-            {
-                for (int i = 0; i < g.FieldCount; i++)
-                {
-                    var field = g.NewCreateAttributeSetInstanceExtensionField();
-                    field.Index = i.ToString();
-                    field.Name = String.Format(g.NameFormat, i);
-                    field.Type = g.FieldType;
-                    field.Length = g.FieldLength;
-                    field.Active = true;
-                    g.Fields.Add(field);
-                }
-            }
-            */
 
             return groups;
 

@@ -416,6 +416,17 @@ namespace Dddml.Wms.Support
                 { a.AttributeValueType = aa.AttributeValueType; }
                 a.Active = aa.IsActive;
                 a.IsInstanceAttribute = aa.IsInstanceAttribute;
+                // ////////////////////////////
+                if (aa.Aliases != null)
+                {
+                    foreach (var aaa in aa.Aliases)
+                    {
+                        ICreateAttributeAlias alias = a.NewCreateAttributeAlias();
+                        alias.Code = aaa;
+                        alias.Name = aaa;
+                        a.Aliases.Add(alias);
+                    }
+                }
             }
         }
 

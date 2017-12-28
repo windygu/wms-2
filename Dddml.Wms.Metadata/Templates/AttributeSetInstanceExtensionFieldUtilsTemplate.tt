@@ -9,9 +9,12 @@ public class AttributeSetInstanceExtensionFieldUtilsTemplate : CSharpTemplate
 {
     IList<ExtensionFieldGroupMetadata> _extensionFieldGroups;
 
-    public AttributeSetInstanceExtensionFieldUtilsTemplate(IList<ExtensionFieldGroupMetadata> extensionFieldGroups)
+    IList<ExtensionFieldMetadata> _extensionFields;
+
+    public AttributeSetInstanceExtensionFieldUtilsTemplate(IList<ExtensionFieldGroupMetadata> extensionFieldGroups, IList<ExtensionFieldMetadata> extensionFields)
     {
         this._extensionFieldGroups = extensionFieldGroups;
+        this._extensionFields = extensionFields;
     }
 
 	public override string TransformText()
@@ -26,15 +29,38 @@ using System.Text;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup;
+using Dddml.Wms.Domain.AttributeSetInstanceExtensionField;
 
 namespace Dddml.Wms.Support
 {
     public static class AttributeSetInstanceExtensionFieldUtils
     {
 
+        public static CreateAttributeSetInstanceExtensionField[] CreateAttributeSetInstanceExtensionFields()
+        {
+            var fs = new CreateAttributeSetInstanceExtensionField[]{
+<#+ 
+		foreach (var fMeta in this._extensionFields)
+		{
+#>
+                new CreateAttributeSetInstanceExtensionField
+                {
+                    Name = "<#= fMeta.Name #>",
+                    Type = "<#= fMeta.Type #>",
+                    Length = <#= fMeta.Length == null ? "null" : fMeta.Length.Value.ToString() #>,
+                    GroupId = <#= fMeta.GroupId == null ? "null" : String.Format("\"{0}\"", fMeta.GroupId) #>,
+                    Active = true,
+                },
+<#+ 
+		}
+#>
+            };
+            return fs;
+        }
+
         public static CreateAttributeSetInstanceExtensionFieldGroup[] CreateAttributeSetInstanceExtensionFieldGroups()
         {
-            var groups = new CreateAttributeSetInstanceExtensionFieldGroup[]{
+            var groups = new CreateAttributeSetInstanceExtensionFieldGroup[] {
 <#+ 
 		foreach (var gMeta in this._extensionFieldGroups)
 		{
@@ -52,22 +78,6 @@ namespace Dddml.Wms.Support
 		}
 #>
             };
-
-            /*
-            foreach (var g in groups)
-            {
-                for (int i = 0; i < g.FieldCount; i++)
-                {
-                    var field = g.NewCreateAttributeSetInstanceExtensionField();
-                    field.Index = i.ToString();
-                    field.Name = String.Format(g.NameFormat, i);
-                    field.Type = g.FieldType;
-                    field.Length = g.FieldLength;
-                    field.Active = true;
-                    g.Fields.Add(field);
-                }
-            }
-            */
 
             return groups;
 

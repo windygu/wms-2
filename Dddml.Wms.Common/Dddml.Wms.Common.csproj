@@ -5044,14 +5044,14 @@
     <Compile Include="Generated\Domain\Warehouse\WarehouseStateProperties.cs">
       <DependentUpon>GenerateWarehouseDomain.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Support\AttributeSetInstanceExtensionFieldUtils.cs">
+      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldUtils.tt</DependentUpon>
+    </Compile>
     <Compile Include="Support\AttributeAttribute.cs" />
     <Compile Include="Support\AttributeGroupAttribute.cs" />
     <Compile Include="Support\AttributeIgnoreAttribute.cs" />
     <Compile Include="Support\AttributeSetBuilder.cs">
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Generated\Support\AttributeSetInstanceExtensionFieldUtils.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldUtils.tt</DependentUpon>
     </Compile>
     <Compile Include="Support\AuthorizationUtils.cs" />
     <Content Include="Generated\Domain\AttributeAliasMvo\GenerateAttributeAliasMvoDomain.txt">
