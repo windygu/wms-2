@@ -236,21 +236,21 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         public override JObject MapState(IAttributeSetInstanceStateDto state)
         {
             var dynamicObject = NewJObject(state);
-            MapExtensionProperties(state, dynamicObject);
+            MapDynamicProperties(state, dynamicObject);
             return dynamicObject;
         }
 
         public override CreateAttributeSetInstanceDto ToCommandCreate(JObject dynamicObject)
         {
             CreateAttributeSetInstanceDto command = NewCreateAttributeSetInstanceDto(dynamicObject);
-            MapExtensionProperties(dynamicObject, command);
+            MapDynamicProperties(dynamicObject, command);
             return command;
         }
 
         public override MergePatchAttributeSetInstanceDto ToCommandMergePatch(JObject dynamicObject)
         {
             MergePatchAttributeSetInstanceDto command = NewMergePatchAttributeSetInstanceDto(dynamicObject);
-            MapExtensionProperties(dynamicObject, command);
+            MapDynamicProperties(dynamicObject, command);
             return command;
         }
 
@@ -272,11 +272,11 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             return dynamicObject;
         }
 
-        protected abstract void MapExtensionProperties(IAttributeSetInstanceStateDto state, JObject dynamicObject);
+        protected abstract void MapDynamicProperties(IAttributeSetInstanceStateDto state, JObject dynamicObject);
 
-        protected abstract void MapExtensionProperties(JObject dynamicObject, CreateAttributeSetInstanceDto command);
+        protected abstract void MapDynamicProperties(JObject dynamicObject, CreateAttributeSetInstanceDto command);
 
-        protected abstract void MapExtensionProperties(JObject dynamicObject, MergePatchAttributeSetInstanceDto command);
+        protected abstract void MapDynamicProperties(JObject dynamicObject, MergePatchAttributeSetInstanceDto command);
 
     }
 

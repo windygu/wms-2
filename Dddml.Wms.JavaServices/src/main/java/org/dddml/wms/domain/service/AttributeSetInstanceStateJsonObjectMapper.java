@@ -1,6 +1,5 @@
 package org.dddml.wms.domain.service;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.PropertyUtilsBean;
@@ -66,7 +65,7 @@ public class AttributeSetInstanceStateJsonObjectMapper extends AbstractDynamicOb
         }
         //FIXME 也许遗漏了固定字段
         Map<String, String> maps = attributeSetService.
-                getExtensionPropertyFieldDictionary(state.getAttributeSetId());
+                getPropertyExtensionFieldDictionary(state.getAttributeSetId());
         maps.forEach((name, fieldName) -> {
             //FIXME 这里应该判断fields是否为空，并且判断 name 是否位于 fields 中
             try {
@@ -90,7 +89,7 @@ public class AttributeSetInstanceStateJsonObjectMapper extends AbstractDynamicOb
         AbstractAttributeSetInstanceCommand.SimpleCreateAttributeSetInstance createAttributeSetInstance =
                 jsonObject.toJavaObject(AbstractAttributeSetInstanceCommand.SimpleCreateAttributeSetInstance.class);
         Map<String, String> maps = attributeSetService.
-                getExtensionPropertyFieldDictionary(createAttributeSetInstance.getAttributeSetId());
+                getPropertyExtensionFieldDictionary(createAttributeSetInstance.getAttributeSetId());
         maps.forEach((name, filedName) -> {
             try {
                 Object value = jsonObject.get(name);
@@ -116,7 +115,7 @@ public class AttributeSetInstanceStateJsonObjectMapper extends AbstractDynamicOb
         //AbstractAttributeSetInstanceCommand.MergePatchAttributeSetInstance mergePatchAttributeSetInstance =
         //        JSON.parseObject(jsonText, AbstractAttributeSetInstanceCommand.MergePatchAttributeSetInstance.class);
         Map<String, String> maps = attributeSetService.
-                getExtensionPropertyFieldDictionary(mergePatchAttributeSetInstance.getAttributeSetId());
+                getPropertyExtensionFieldDictionary(mergePatchAttributeSetInstance.getAttributeSetId());
         maps.forEach((name, filedName) -> {
             try {
                 Object value = jsonObject.get(name);

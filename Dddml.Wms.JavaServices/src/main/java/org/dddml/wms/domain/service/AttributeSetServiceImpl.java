@@ -27,7 +27,7 @@ public class AttributeSetServiceImpl implements AttributeSetService {
     }
 
     @Transactional(readOnly = true)
-    public Map<String, String> getExtensionPropertyFieldDictionary(String attributeSetId) {
+    public Map<String, String> getPropertyExtensionFieldDictionary(String attributeSetId) {
         AttributeSetState attributeSetState = attributeSetStateQueryRepository.get(attributeSetId);
         Map<String, String> map = new HashMap<>();
         if (attributeSetState != null && attributeSetState.getAttributeUses() != null) {

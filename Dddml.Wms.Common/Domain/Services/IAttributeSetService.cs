@@ -9,7 +9,7 @@ namespace Dddml.Wms.Domain.Services
     /// </summary>
     public interface IAttributeSetService
     {
-        IDictionary<string, string> GetExtensionPropertyFieldDictionary(string attributeSetId);
+        IDictionary<string, string> GetPropertyExtensionFieldDictionary(string attributeSetId);
 
     }
 }

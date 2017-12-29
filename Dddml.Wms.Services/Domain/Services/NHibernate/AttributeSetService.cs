@@ -30,7 +30,7 @@ namespace Dddml.Wms.Domain.Services.NHibernate
         // ///////////////////////////////////////////////////////
 
         [Transaction(ReadOnly = true)]
-        public virtual IDictionary<string, string> GetExtensionPropertyFieldDictionary(string attributeSetId)
+        public virtual IDictionary<string, string> GetPropertyExtensionFieldDictionary(string attributeSetId)
         {
             var attrSet = AttributeSetStateQueryRepository.Get(attributeSetId);
             var pDic = new Dictionary<string, string>();
@@ -44,7 +44,7 @@ namespace Dddml.Wms.Domain.Services.NHibernate
                         var fname = a.FieldName;
                         // /////////////////////////////////////////////////////////////////////////////////////
                         //
-                        // 我们通过这样的方式支持动态 / 扩展“属性”：
+                        // 我们通过这样的方式支持动态“属性”：
                         //
                         // 预先在实体中预留若干扩展“字段”，然后，通过元数据（配置）来实现这样的映射：
                         // 

@@ -17,23 +17,23 @@ namespace Dddml.Wms.HttpServices.ApiControllers
     {
         public IAttributeSetService AttributeSetService { get; set; }
 
-        protected override void MapExtensionProperties(JObject dynamicObject, CreateAttributeSetInstanceDto command)
+        protected override void MapDynamicProperties(JObject dynamicObject, CreateAttributeSetInstanceDto command)
         {
-            var pDic = AttributeSetService.GetExtensionPropertyFieldDictionary(command.AttributeSetId);
+            var pDic = AttributeSetService.GetPropertyExtensionFieldDictionary(command.AttributeSetId);
             MapExtensionProperties(dynamicObject, command, pDic, null);
         }
 
-        protected override void MapExtensionProperties(JObject dynamicObject, MergePatchAttributeSetInstanceDto command)
+        protected override void MapDynamicProperties(JObject dynamicObject, MergePatchAttributeSetInstanceDto command)
         {
-            var pDic = AttributeSetService.GetExtensionPropertyFieldDictionary(command.AttributeSetId);
+            var pDic = AttributeSetService.GetPropertyExtensionFieldDictionary(command.AttributeSetId);
             MapExtensionProperties(dynamicObject, command, pDic, null);
             var propertyRemovedFormat = "IsProperty{0}Removed";
             MapExtensionProperties(dynamicObject, command, pDic, propertyRemovedFormat);
         }
 
-        protected override void MapExtensionProperties(IAttributeSetInstanceStateDto state, JObject dynamicObject)
+        protected override void MapDynamicProperties(IAttributeSetInstanceStateDto state, JObject dynamicObject)
         {
-            var pDic = AttributeSetService.GetExtensionPropertyFieldDictionary(state.AttributeSetId);
+            var pDic = AttributeSetService.GetPropertyExtensionFieldDictionary(state.AttributeSetId);
             MapExtensionProperties(state, dynamicObject, pDic, null);
         }
 
