@@ -167,6 +167,10 @@ aggregates:
       # ---------------------------------------
       AttributeSetId:
         type: string
+        referenceType: AttributeSet
+      AttributeSetInstanceId:
+        type: string
+        referenceType: AttributeSetInstance
       #----------------------------------------
       
     references:

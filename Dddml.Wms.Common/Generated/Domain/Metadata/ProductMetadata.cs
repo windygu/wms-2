@@ -1707,7 +1707,36 @@ namespace Dddml.Wms.Domain.Metadata
                     Description = "",
                     Length = 0,
                     GenericTypeName = "",
-                    ReferenceTypeName = "",
+                    ReferenceTypeName = "AttributeSet",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
+                    Name = "AttributeSetInstanceId",
+                    Type = typeof(string),
+                    TypeName = "string",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "AttributeSetInstance",
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
@@ -2062,6 +2091,8 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("lotIdFilledIn", "LotIdFilledIn");
             d.Add("AttributeSetId", "AttributeSetId");
             d.Add("attributeSetId", "AttributeSetId");
+            d.Add("AttributeSetInstanceId", "AttributeSetInstanceId");
+            d.Add("attributeSetInstanceId", "AttributeSetInstanceId");
             d.Add("Version", "Version");
             d.Add("version", "Version");
             d.Add("CreatedBy", "CreatedBy");

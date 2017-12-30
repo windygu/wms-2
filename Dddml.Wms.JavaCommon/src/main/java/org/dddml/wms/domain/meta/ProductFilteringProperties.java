@@ -70,6 +70,7 @@ public final class ProductFilteringProperties
             "defaultShipmentBoxTypeId",
             "lotIdFilledIn",
             "attributeSetId",
+            "attributeSetInstanceId",
             "version",
             "createdBy",
             "createdAt",
@@ -126,6 +127,7 @@ public final class ProductFilteringProperties
             "String",
             "java.math.BigDecimal",
             "java.math.BigDecimal",
+            "String",
             "String",
             "String",
             "String",
@@ -278,6 +280,8 @@ public final class ProductFilteringProperties
         aliasMap.put("LotIdFilledIn", "lotIdFilledIn");
         aliasMap.put("attributeSetId", "attributeSetId");
         aliasMap.put("AttributeSetId", "attributeSetId");
+        aliasMap.put("attributeSetInstanceId", "attributeSetInstanceId");
+        aliasMap.put("AttributeSetInstanceId", "attributeSetInstanceId");
         aliasMap.put("version", "version");
         aliasMap.put("Version", "version");
         aliasMap.put("createdBy", "createdBy");

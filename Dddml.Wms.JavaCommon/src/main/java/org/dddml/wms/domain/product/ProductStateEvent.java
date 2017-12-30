@@ -245,6 +245,10 @@ public interface ProductStateEvent extends Event
 
     void setAttributeSetId(String attributeSetId);
 
+    String getAttributeSetInstanceId();
+
+    void setAttributeSetInstanceId(String attributeSetInstanceId);
+
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -500,6 +504,10 @@ public interface ProductStateEvent extends Event
         Boolean getIsPropertyAttributeSetIdRemoved();
 
         void setIsPropertyAttributeSetIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyAttributeSetInstanceIdRemoved();
+
+        void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

@@ -614,6 +614,16 @@ public class ProductStateEventDto extends AbstractStateEvent
         this.attributeSetId = attributeSetId;
     }
 
+    private String attributeSetInstanceId;
+
+    public String getAttributeSetInstanceId() {
+        return this.attributeSetInstanceId;
+    }
+
+    public void setAttributeSetInstanceId(String attributeSetInstanceId) {
+        this.attributeSetInstanceId = attributeSetInstanceId;
+    }
+
     private Boolean active;
 
     public Boolean getActive() {
@@ -1222,6 +1232,16 @@ public class ProductStateEventDto extends AbstractStateEvent
 
     public void setIsPropertyAttributeSetIdRemoved(Boolean removed) {
         this.isPropertyAttributeSetIdRemoved = removed;
+    }
+
+    private Boolean isPropertyAttributeSetInstanceIdRemoved;
+
+    public Boolean getIsPropertyAttributeSetInstanceIdRemoved() {
+        return this.isPropertyAttributeSetInstanceIdRemoved;
+    }
+
+    public void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed) {
+        this.isPropertyAttributeSetInstanceIdRemoved = removed;
     }
 
     private Boolean isPropertyActiveRemoved;

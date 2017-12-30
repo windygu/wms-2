@@ -368,6 +368,12 @@ namespace Dddml.Wms.Domain.Product
             set;
         }
 
+        string AttributeSetInstanceId
+        {
+            get;
+            set;
+        }
+
         bool? Active
         {
             get;

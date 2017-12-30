@@ -1,22 +1,4 @@
 
-    alter table AttributeSetInstances 
-        add column WidthInch NUMERIC(19,5);
-    alter table AttributeSetInstances 
-        add column DiameterInch NUMERIC(19,5);
-    alter table AttributeSetInstances 
-        add column WeightLbs NUMERIC(19,5);
-    alter table AttributeSetInstances 
-        add column WeightKg NUMERIC(19,5);
-    alter table AttributeSetInstances 
-        add column AirDryWeightLbs NUMERIC(19,5);
-    alter table AttributeSetInstances 
-        add column AirDryWeightKg NUMERIC(19,5);
-    alter table AttributeSetInstances 
-        add column AirDryMetricTon NUMERIC(19,5);
-    alter table AttributeSetInstances 
-        add column PackageCount INTEGER;
-    alter table AttributeSetInstances 
-        add column AirDryPct NUMERIC(19,5);
     create table AttributeValue_RV (
         AttributeValueIdAttributeId VARCHAR(50) not null,
        AttributeValueIdValue VARCHAR(50) not null,
@@ -107,6 +89,12 @@
       unique (AttributeAliasIdCode),
       unique (Name)
     );
+    alter table Products 
+        add column AttributeSetInstanceId VARCHAR(255);
+    alter table ProductStateEvents 
+        add column AttributeSetInstanceId VARCHAR(255);
+    alter table ProductStateEvents 
+        add column IsPropertyAttributeSetInstanceIdRemoved TINYINT(1);
     create table InOutLine_RV (
         InOutLineIdInOutDocumentNumber VARCHAR(50) not null,
        InOutLineIdLineNumber VARCHAR(50) not null,

@@ -717,6 +717,18 @@ public abstract class AbstractProductState implements ProductState
         this.attributeSetId = attributeSetId;
     }
 
+    private String attributeSetInstanceId;
+
+    public String getAttributeSetInstanceId()
+    {
+        return this.attributeSetInstanceId;
+    }
+
+    public void setAttributeSetInstanceId(String attributeSetInstanceId)
+    {
+        this.attributeSetInstanceId = attributeSetInstanceId;
+    }
+
     private Long version;
 
     public Long getVersion()
@@ -909,6 +921,7 @@ public abstract class AbstractProductState implements ProductState
         this.setDefaultShipmentBoxTypeId(e.getDefaultShipmentBoxTypeId());
         this.setLotIdFilledIn(e.getLotIdFilledIn());
         this.setAttributeSetId(e.getAttributeSetId());
+        this.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
         this.setActive(e.getActive());
 
         this.setCreatedBy(e.getCreatedBy());
@@ -1557,6 +1570,17 @@ public abstract class AbstractProductState implements ProductState
         else
         {
             this.setAttributeSetId(e.getAttributeSetId());
+        }
+        if (e.getAttributeSetInstanceId() == null)
+        {
+            if (e.getIsPropertyAttributeSetInstanceIdRemoved() != null && e.getIsPropertyAttributeSetInstanceIdRemoved())
+            {
+                this.setAttributeSetInstanceId(null);
+            }
+        }
+        else
+        {
+            this.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
         }
         if (e.getActive() == null)
         {

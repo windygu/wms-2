@@ -277,6 +277,8 @@ namespace Dddml.Wms.Domain.Product
 
 			this.AttributeSetId = e.AttributeSetId;
 
+			this.AttributeSetInstanceId = e.AttributeSetInstanceId;
+
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 
 			this.CreatedBy = e.CreatedBy;
@@ -984,6 +986,18 @@ namespace Dddml.Wms.Domain.Product
 			else
 			{
 				this.AttributeSetId = e.AttributeSetId;
+			}
+
+			if (e.AttributeSetInstanceId == null)
+			{
+				if (e.IsPropertyAttributeSetInstanceIdRemoved)
+				{
+					this.AttributeSetInstanceId = default(string);
+				}
+			}
+			else
+			{
+				this.AttributeSetInstanceId = e.AttributeSetInstanceId;
 			}
 
 			if (e.Active == null)

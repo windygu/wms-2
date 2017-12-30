@@ -1562,6 +1562,7 @@
        DefaultShipmentBoxTypeId VARCHAR(20),
        LotIdFilledIn VARCHAR(255),
        AttributeSetId VARCHAR(255),
+       AttributeSetInstanceId VARCHAR(255),
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
        Active TINYINT(1),
@@ -1632,6 +1633,7 @@
        DefaultShipmentBoxTypeId VARCHAR(20),
        LotIdFilledIn VARCHAR(255),
        AttributeSetId VARCHAR(255),
+       AttributeSetInstanceId VARCHAR(255),
        Active TINYINT(1),
        CreatedBy VARCHAR(255),
        CreatedAt DATETIME,
@@ -1694,6 +1696,7 @@
        IsPropertyDefaultShipmentBoxTypeIdRemoved TINYINT(1),
        IsPropertyLotIdFilledInRemoved TINYINT(1),
        IsPropertyAttributeSetIdRemoved TINYINT(1),
+       IsPropertyAttributeSetInstanceIdRemoved TINYINT(1),
        IsPropertyActiveRemoved TINYINT(1),
        primary key (ProductId, Version)
     );

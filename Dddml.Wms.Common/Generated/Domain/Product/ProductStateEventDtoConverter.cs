@@ -95,6 +95,7 @@ namespace Dddml.Wms.Domain.Product
             dto.DefaultShipmentBoxTypeId = e.DefaultShipmentBoxTypeId;
             dto.LotIdFilledIn = e.LotIdFilledIn;
             dto.AttributeSetId = e.AttributeSetId;
+            dto.AttributeSetInstanceId = e.AttributeSetInstanceId;
             dto.Active = e.Active;
             return dto;
         }
@@ -164,6 +165,7 @@ namespace Dddml.Wms.Domain.Product
             dto.DefaultShipmentBoxTypeId = e.DefaultShipmentBoxTypeId;
             dto.LotIdFilledIn = e.LotIdFilledIn;
             dto.AttributeSetId = e.AttributeSetId;
+            dto.AttributeSetInstanceId = e.AttributeSetInstanceId;
             dto.Active = e.Active;
             dto.IsPropertyProductTypeIdRemoved = e.IsPropertyProductTypeIdRemoved;
             dto.IsPropertyPrimaryProductCategoryIdRemoved = e.IsPropertyPrimaryProductCategoryIdRemoved;
@@ -223,6 +225,7 @@ namespace Dddml.Wms.Domain.Product
             dto.IsPropertyDefaultShipmentBoxTypeIdRemoved = e.IsPropertyDefaultShipmentBoxTypeIdRemoved;
             dto.IsPropertyLotIdFilledInRemoved = e.IsPropertyLotIdFilledInRemoved;
             dto.IsPropertyAttributeSetIdRemoved = e.IsPropertyAttributeSetIdRemoved;
+            dto.IsPropertyAttributeSetInstanceIdRemoved = e.IsPropertyAttributeSetInstanceIdRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;
 
             return dto;

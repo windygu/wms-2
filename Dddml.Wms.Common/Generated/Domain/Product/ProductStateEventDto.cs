@@ -158,6 +158,8 @@ namespace Dddml.Wms.Domain.Product
 
 		public virtual string AttributeSetId { get; set; }
 
+		public virtual string AttributeSetInstanceId { get; set; }
+
 		public virtual bool? Active { get; set; }
 
 		public virtual string CreatedBy { get; set; }
@@ -1288,6 +1290,25 @@ namespace Dddml.Wms.Domain.Product
             set 
             {
                 this.IsPropertyAttributeSetIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyAttributeSetInstanceIdRemoved { get; set; }
+
+        bool IProductStateMergePatched.IsPropertyAttributeSetInstanceIdRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyAttributeSetInstanceIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyAttributeSetInstanceIdRemoved = value;
             }
         }
 

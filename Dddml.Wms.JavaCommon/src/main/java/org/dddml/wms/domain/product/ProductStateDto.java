@@ -717,6 +717,18 @@ public class ProductStateDto
         this.attributeSetId = attributeSetId;
     }
 
+    private String attributeSetInstanceId;
+
+    public String getAttributeSetInstanceId()
+    {
+        return this.attributeSetInstanceId;
+    }
+
+    public void setAttributeSetInstanceId(String attributeSetInstanceId)
+    {
+        this.attributeSetInstanceId = attributeSetInstanceId;
+    }
+
     private Boolean active;
 
     public Boolean getActive()
@@ -991,6 +1003,9 @@ public class ProductStateDto
             }
             if (returnedFieldsContains("AttributeSetId")) {
                 dto.setAttributeSetId(state.getAttributeSetId());
+            }
+            if (returnedFieldsContains("AttributeSetInstanceId")) {
+                dto.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
             }
             if (returnedFieldsContains("Active")) {
                 dto.setActive(state.getActive());

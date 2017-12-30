@@ -109,6 +109,7 @@ public abstract class AbstractProductAggregate extends AbstractAggregate impleme
         e.setDefaultShipmentBoxTypeId(c.getDefaultShipmentBoxTypeId());
         e.setLotIdFilledIn(c.getLotIdFilledIn());
         e.setAttributeSetId(c.getAttributeSetId());
+        e.setAttributeSetInstanceId(c.getAttributeSetInstanceId());
         e.setActive(c.getActive());
         ((AbstractProductStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
@@ -177,6 +178,7 @@ public abstract class AbstractProductAggregate extends AbstractAggregate impleme
         e.setDefaultShipmentBoxTypeId(c.getDefaultShipmentBoxTypeId());
         e.setLotIdFilledIn(c.getLotIdFilledIn());
         e.setAttributeSetId(c.getAttributeSetId());
+        e.setAttributeSetInstanceId(c.getAttributeSetInstanceId());
         e.setActive(c.getActive());
         e.setIsPropertyProductTypeIdRemoved(c.getIsPropertyProductTypeIdRemoved());
         e.setIsPropertyPrimaryProductCategoryIdRemoved(c.getIsPropertyPrimaryProductCategoryIdRemoved());
@@ -236,6 +238,7 @@ public abstract class AbstractProductAggregate extends AbstractAggregate impleme
         e.setIsPropertyDefaultShipmentBoxTypeIdRemoved(c.getIsPropertyDefaultShipmentBoxTypeIdRemoved());
         e.setIsPropertyLotIdFilledInRemoved(c.getIsPropertyLotIdFilledInRemoved());
         e.setIsPropertyAttributeSetIdRemoved(c.getIsPropertyAttributeSetIdRemoved());
+        e.setIsPropertyAttributeSetInstanceIdRemoved(c.getIsPropertyAttributeSetInstanceIdRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         ((AbstractProductStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());

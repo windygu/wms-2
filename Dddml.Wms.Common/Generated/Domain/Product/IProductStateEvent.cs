@@ -133,6 +133,8 @@ namespace Dddml.Wms.Domain.Product
 
 		string AttributeSetId { get; set; }
 
+		string AttributeSetInstanceId { get; set; }
+
 		bool? Active { get; set; }
 
 	}
@@ -260,6 +262,8 @@ namespace Dddml.Wms.Domain.Product
 		bool IsPropertyLotIdFilledInRemoved { get; set; }
 
 		bool IsPropertyAttributeSetIdRemoved { get; set; }
+
+		bool IsPropertyAttributeSetInstanceIdRemoved { get; set; }
 
 		bool IsPropertyActiveRemoved { get; set; }
 

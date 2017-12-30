@@ -83,6 +83,7 @@ public class ProductStateEventDtoConverter {
         dto.setDefaultShipmentBoxTypeId(e.getDefaultShipmentBoxTypeId());
         dto.setLotIdFilledIn(e.getLotIdFilledIn());
         dto.setAttributeSetId(e.getAttributeSetId());
+        dto.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
         dto.setActive(e.getActive());
         return dto;
     }
@@ -151,6 +152,7 @@ public class ProductStateEventDtoConverter {
         dto.setDefaultShipmentBoxTypeId(e.getDefaultShipmentBoxTypeId());
         dto.setLotIdFilledIn(e.getLotIdFilledIn());
         dto.setAttributeSetId(e.getAttributeSetId());
+        dto.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
         dto.setActive(e.getActive());
         dto.setIsPropertyProductTypeIdRemoved(e.getIsPropertyProductTypeIdRemoved());
         dto.setIsPropertyPrimaryProductCategoryIdRemoved(e.getIsPropertyPrimaryProductCategoryIdRemoved());
@@ -210,6 +212,7 @@ public class ProductStateEventDtoConverter {
         dto.setIsPropertyDefaultShipmentBoxTypeIdRemoved(e.getIsPropertyDefaultShipmentBoxTypeIdRemoved());
         dto.setIsPropertyLotIdFilledInRemoved(e.getIsPropertyLotIdFilledInRemoved());
         dto.setIsPropertyAttributeSetIdRemoved(e.getIsPropertyAttributeSetIdRemoved());
+        dto.setIsPropertyAttributeSetInstanceIdRemoved(e.getIsPropertyAttributeSetInstanceIdRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
         return dto;
     }

@@ -132,6 +132,8 @@ namespace Dddml.Wms.Domain.Product
 
 		string AttributeSetId { get; set; }
 
+		string AttributeSetInstanceId { get; set; }
+
 		long Version { get; set; }
 
 		bool Active { get; set; }

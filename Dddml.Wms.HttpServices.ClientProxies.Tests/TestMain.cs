@@ -12,9 +12,35 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Tests
 {
     class TestMain
     {
+
+        // ///////////////////////////////////////////////////////
+        class Zoo
+        {
+            public string ZooName { get; set; }
+
+            public string Keeper { get; set; }
+
+            private IDictionary<string, object> moreProperties = new Dictionary<string, object>();
+
+            public IDictionary<string, object> MoreProperties
+            {
+                get { return moreProperties; }
+                set { moreProperties = value; }
+            }
+        }
+        // ///////////////////////////////////////////////////////
+
         static void Main(string[] args)
         {
+            var zoo = new Zoo() {
+                ZooName = "Dongzhuobei Zoo",
+                Keeper = "Brouce Lee",
+            };
 
+            zoo.MoreProperties.Add("Pandas", "BeiBei, JingJing");
+
+            JObject jobj = JObject.FromObject(zoo);
+            Console.WriteLine(jobj.ToString());
             Console.ReadKey();
 
         }

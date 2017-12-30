@@ -701,6 +701,18 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.attributeSetId = attributeSetId;
     }
 
+    private String attributeSetInstanceId;
+
+    public String getAttributeSetInstanceId()
+    {
+        return this.attributeSetInstanceId;
+    }
+
+    public void setAttributeSetInstanceId(String attributeSetInstanceId)
+    {
+        this.attributeSetInstanceId = attributeSetInstanceId;
+    }
+
     private Boolean active;
 
     public Boolean getActive()
@@ -1409,6 +1421,18 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         this.isPropertyAttributeSetIdRemoved = removed;
     }
 
+    private Boolean isPropertyAttributeSetInstanceIdRemoved;
+
+    public Boolean getIsPropertyAttributeSetInstanceIdRemoved()
+    {
+        return this.isPropertyAttributeSetInstanceIdRemoved;
+    }
+
+    public void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed)
+    {
+        this.isPropertyAttributeSetInstanceIdRemoved = removed;
+    }
+
     private Boolean isPropertyActiveRemoved;
 
     public Boolean getIsPropertyActiveRemoved()
@@ -1482,6 +1506,7 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         command.setDefaultShipmentBoxTypeId(this.getDefaultShipmentBoxTypeId());
         command.setLotIdFilledIn(this.getLotIdFilledIn());
         command.setAttributeSetId(this.getAttributeSetId());
+        command.setAttributeSetInstanceId(this.getAttributeSetInstanceId());
         command.setActive(this.getActive());
     }
 
@@ -1565,6 +1590,7 @@ public class CreateOrMergePatchProductDto extends AbstractProductCommandDto
         command.setIsPropertyDefaultShipmentBoxTypeIdRemoved(this.getIsPropertyDefaultShipmentBoxTypeIdRemoved());
         command.setIsPropertyLotIdFilledInRemoved(this.getIsPropertyLotIdFilledInRemoved());
         command.setIsPropertyAttributeSetIdRemoved(this.getIsPropertyAttributeSetIdRemoved());
+        command.setIsPropertyAttributeSetInstanceIdRemoved(this.getIsPropertyAttributeSetInstanceIdRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
     }
 

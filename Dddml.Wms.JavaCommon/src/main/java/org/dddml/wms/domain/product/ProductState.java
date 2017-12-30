@@ -248,6 +248,10 @@ public interface ProductState
 
     void setAttributeSetId(String attributeSetId);
 
+    String getAttributeSetInstanceId();
+
+    void setAttributeSetInstanceId(String attributeSetInstanceId);
+
     Long getVersion();
 
     void setVersion(Long version);
