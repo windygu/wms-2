@@ -193,6 +193,18 @@
 
     drop table if exists PhysicalInventoryLineMvoStateEvents;
 
+    drop table if exists Uoms;
+
+    drop table if exists UomStateEvents;
+
+    drop table if exists UomConversions;
+
+    drop table if exists UomConversionStateEvents;
+
+    drop table if exists UomTypes;
+
+    drop table if exists UomTypeStateEvents;
+
     create table Attributes (
         AttributeId VARCHAR(50) not null,
        Version BIGINT not null,
@@ -3516,4 +3528,108 @@
        IsPropertyPhysicalInventoryActiveRemoved TINYINT(1),
        IsPropertyPhysicalInventoryDeletedRemoved TINYINT(1),
        primary key (PhysicalInventoryLineIdPhysicalInventoryDocumentNumber, PhysicalInventoryLineIdLineNumber, PhysicalInventoryVersion)
+    );
+
+    create table Uoms (
+        UomId VARCHAR(20) not null,
+       Version BIGINT not null,
+       UomTypeId VARCHAR(20),
+       Abbreviation VARCHAR(60),
+       Description VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (UomId)
+    );
+
+    create table UomStateEvents (
+        UomId VARCHAR(20) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       UomTypeId VARCHAR(20),
+       Abbreviation VARCHAR(60),
+       Description VARCHAR(255),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyUomTypeIdRemoved TINYINT(1),
+       IsPropertyAbbreviationRemoved TINYINT(1),
+       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (UomId, Version)
+    );
+
+    create table UomConversions (
+        UomConversionIdUomId VARCHAR(20) not null,
+       UomConversionIdUomIdTo VARCHAR(20) not null,
+       Version BIGINT not null,
+       ConversionFactor DOUBLE,
+       CustomMethodId VARCHAR(20),
+       DecimalScale DECIMAL(20,0),
+       RoundingMode VARCHAR(20),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (UomConversionIdUomId, UomConversionIdUomIdTo)
+    );
+
+    create table UomConversionStateEvents (
+        UomConversionIdUomId VARCHAR(20) not null,
+       UomConversionIdUomIdTo VARCHAR(20) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       ConversionFactor DOUBLE,
+       CustomMethodId VARCHAR(20),
+       DecimalScale DECIMAL(20,0),
+       RoundingMode VARCHAR(20),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyConversionFactorRemoved TINYINT(1),
+       IsPropertyCustomMethodIdRemoved TINYINT(1),
+       IsPropertyDecimalScaleRemoved TINYINT(1),
+       IsPropertyRoundingModeRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (UomConversionIdUomId, UomConversionIdUomIdTo, Version)
+    );
+
+    create table UomTypes (
+        UomTypeId VARCHAR(20) not null,
+       Version BIGINT not null,
+       ParentTypeId VARCHAR(20),
+       HasTable CHAR(1),
+       Description VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (UomTypeId)
+    );
+
+    create table UomTypeStateEvents (
+        UomTypeId VARCHAR(20) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       ParentTypeId VARCHAR(20),
+       HasTable CHAR(1),
+       Description VARCHAR(255),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyParentTypeIdRemoved TINYINT(1),
+       IsPropertyHasTableRemoved TINYINT(1),
+       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (UomTypeId, Version)
     );

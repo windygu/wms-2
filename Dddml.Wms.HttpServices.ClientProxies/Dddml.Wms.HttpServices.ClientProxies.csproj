@@ -203,6 +203,15 @@
     <Compile Include="Generated\SupplierProductApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\UomApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\UomConversionApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\UomTypeApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\WarehouseApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
@@ -258,6 +267,9 @@
 .\ShipmentTypeApplicationServiceProxy.cs
 .\StatusItemApplicationServiceProxy.cs
 .\SupplierProductApplicationServiceProxy.cs
+.\UomApplicationServiceProxy.cs
+.\UomConversionApplicationServiceProxy.cs
+.\UomTypeApplicationServiceProxy.cs
 .\WarehouseApplicationServiceProxy.cs
 </LastOutputs>
     </Content>

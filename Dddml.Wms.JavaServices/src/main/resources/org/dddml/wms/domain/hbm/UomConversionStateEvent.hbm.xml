@@ -1,0 +1,58 @@
+﻿<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.uomconversion">
+  
+  <class name="AbstractUomConversionStateEvent" table="UomConversionStateEvents" mutable="false" abstract="true">
+
+	<composite-id name="stateEventId" class="org.dddml.wms.domain.uomconversion.UomConversionStateEventId">
+		<key-property name="uomConversionIdUomId" ><column name="UomConversionIdUomId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="uomConversionIdUomIdTo" ><column name="UomConversionIdUomIdTo" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="version" ></key-property>
+	</composite-id>
+
+    <discriminator column="StateEventType" type="string" />
+
+	<property name="conversionFactor" ><column name="ConversionFactor" sql-type="DOUBLE" /></property>
+	<property name="customMethodId" ><column name="CustomMethodId" sql-type="VARCHAR(20)" /></property>
+	<property name="decimalScale" ><column name="DecimalScale" sql-type="DECIMAL(20,0)" /></property>
+	<property name="roundingMode" ><column name="RoundingMode" sql-type="VARCHAR(20)" /></property>
+	<property name="active" ></property>
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+    <subclass name="AbstractUomConversionStateEvent$SimpleUomConversionStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="AbstractUomConversionStateEvent$SimpleUomConversionStateMergePatched" discriminator-value="MergePatched">
+
+        <property name="isPropertyConversionFactorRemoved" column="IsPropertyConversionFactorRemoved"/>
+
+        <property name="isPropertyCustomMethodIdRemoved" column="IsPropertyCustomMethodIdRemoved"/>
+
+        <property name="isPropertyDecimalScaleRemoved" column="IsPropertyDecimalScaleRemoved"/>
+
+        <property name="isPropertyRoundingModeRemoved" column="IsPropertyRoundingModeRemoved"/>
+
+        <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+
+
+    </subclass>
+
+    <subclass name="AbstractUomConversionStateEvent$SimpleUomConversionStateDeleted" discriminator-value="Deleted">
+
+    </subclass>
+
+
+
+  </class>
+  
+</hibernate-mapping>

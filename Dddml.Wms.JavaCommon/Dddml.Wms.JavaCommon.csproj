@@ -2208,6 +2208,12 @@
 .\StatusItemMetadata.java
 .\SupplierProductFilteringProperties.java
 .\SupplierProductMetadata.java
+.\UomConversionFilteringProperties.java
+.\UomConversionMetadata.java
+.\UomFilteringProperties.java
+.\UomMetadata.java
+.\UomTypeFilteringProperties.java
+.\UomTypeMetadata.java
 .\WarehouseFilteringProperties.java
 .\WarehouseMetadata.java
 </LastOutputs>
@@ -2474,6 +2480,24 @@
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\meta\SupplierProductMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\UomConversionFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\UomConversionMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\UomFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\UomMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\UomTypeFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\UomTypeMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\meta\WarehouseFilteringProperties.java">
@@ -4811,6 +4835,252 @@
     <Content Include="src\main\java\org\dddml\wms\domain\supplierproduct\SupplierProductStateRepository.java">
       <DependentUpon>GenerateSupplierProductDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\AbstractUomConversionAggregate.java">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\AbstractUomConversionApplicationService.java">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\AbstractUomConversionCommand.java">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\AbstractUomConversionCommandDto.java">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\AbstractUomConversionState.java">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\AbstractUomConversionStateCommandConverter.java">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\AbstractUomConversionStateEvent.java">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\CreateOrMergePatchUomConversionDto.java">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\DeleteUomConversionDto.java">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\GenerateUomConversionDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\UomConversionAggregate.java">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\UomConversionApplicationService.java">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\UomConversionCommand.java">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\UomConversionId.java">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\UomConversionIdDto.java">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\UomConversionIdDtoWrapper.java">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\UomConversionIdFlattenedDto.java">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\UomConversionIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\UomConversionState.java">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\UomConversionStateDto.java">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\UomConversionStateEvent.java">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\UomConversionStateEventDto.java">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\UomConversionStateEventDtoConverter.java">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\UomConversionStateEventId.java">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\UomConversionStateEventIdDto.java">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\UomConversionStateEventIdDtoWrapper.java">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\UomConversionStateEventIdFlattenedDto.java">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\UomConversionStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\UomConversionStateQueryRepository.java">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\UomConversionStateRepository.java">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\AbstractUomTypeAggregate.java">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\AbstractUomTypeApplicationService.java">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\AbstractUomTypeCommand.java">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\AbstractUomTypeCommandDto.java">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\AbstractUomTypeState.java">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\AbstractUomTypeStateCommandConverter.java">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\AbstractUomTypeStateEvent.java">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\CreateOrMergePatchUomTypeDto.java">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\DeleteUomTypeDto.java">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\GenerateUomTypeDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\UomTypeAggregate.java">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\UomTypeApplicationService.java">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\UomTypeCommand.java">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\UomTypeState.java">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\UomTypeStateDto.java">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\UomTypeStateEvent.java">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\UomTypeStateEventDto.java">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\UomTypeStateEventDtoConverter.java">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\UomTypeStateEventId.java">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\UomTypeStateEventIdDto.java">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\UomTypeStateEventIdDtoWrapper.java">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\UomTypeStateEventIdFlattenedDto.java">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\UomTypeStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\UomTypeStateQueryRepository.java">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\UomTypeStateRepository.java">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uom\AbstractUomAggregate.java">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uom\AbstractUomApplicationService.java">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uom\AbstractUomCommand.java">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uom\AbstractUomCommandDto.java">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uom\AbstractUomState.java">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uom\AbstractUomStateCommandConverter.java">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uom\AbstractUomStateEvent.java">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uom\CreateOrMergePatchUomDto.java">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uom\DeleteUomDto.java">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uom\GenerateUomDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uom\UomAggregate.java">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uom\UomApplicationService.java">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uom\UomCommand.java">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uom\UomState.java">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uom\UomStateDto.java">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uom\UomStateEvent.java">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uom\UomStateEventDto.java">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uom\UomStateEventDtoConverter.java">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uom\UomStateEventId.java">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uom\UomStateEventIdDto.java">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uom\UomStateEventIdDtoWrapper.java">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uom\UomStateEventIdFlattenedDto.java">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uom\UomStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uom\UomStateQueryRepository.java">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uom\UomStateRepository.java">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\warehouse\AbstractWarehouseAggregate.java">
       <DependentUpon>GenerateWarehouseDomain.tt</DependentUpon>
     </Content>
@@ -6573,6 +6843,104 @@
 .\CreateOrMergePatchAttributeAliasMvoDto.java
 .\DeleteAttributeAliasMvoDto.java
 .\GenerateAttributeAliasMvoDomain.txt
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uom\GenerateUomDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateUomDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractUomAggregate.java
+.\AbstractUomApplicationService.java
+.\AbstractUomCommand.java
+.\AbstractUomCommandDto.java
+.\AbstractUomState.java
+.\AbstractUomStateCommandConverter.java
+.\AbstractUomStateEvent.java
+.\CreateOrMergePatchUomDto.java
+.\DeleteUomDto.java
+.\GenerateUomDomain.txt
+.\UomAggregate.java
+.\UomApplicationService.java
+.\UomCommand.java
+.\UomState.java
+.\UomStateDto.java
+.\UomStateEvent.java
+.\UomStateEventDto.java
+.\UomStateEventDtoConverter.java
+.\UomStateEventId.java
+.\UomStateEventIdDto.java
+.\UomStateEventIdDtoWrapper.java
+.\UomStateEventIdFlattenedDto.java
+.\UomStateEventIdFlattenedDtoFormatter.java
+.\UomStateQueryRepository.java
+.\UomStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\GenerateUomConversionDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateUomConversionDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractUomConversionAggregate.java
+.\AbstractUomConversionApplicationService.java
+.\AbstractUomConversionCommand.java
+.\AbstractUomConversionCommandDto.java
+.\AbstractUomConversionState.java
+.\AbstractUomConversionStateCommandConverter.java
+.\AbstractUomConversionStateEvent.java
+.\CreateOrMergePatchUomConversionDto.java
+.\DeleteUomConversionDto.java
+.\GenerateUomConversionDomain.txt
+.\UomConversionAggregate.java
+.\UomConversionApplicationService.java
+.\UomConversionCommand.java
+.\UomConversionId.java
+.\UomConversionIdDto.java
+.\UomConversionIdDtoWrapper.java
+.\UomConversionIdFlattenedDto.java
+.\UomConversionIdFlattenedDtoFormatter.java
+.\UomConversionState.java
+.\UomConversionStateDto.java
+.\UomConversionStateEvent.java
+.\UomConversionStateEventDto.java
+.\UomConversionStateEventDtoConverter.java
+.\UomConversionStateEventId.java
+.\UomConversionStateEventIdDto.java
+.\UomConversionStateEventIdDtoWrapper.java
+.\UomConversionStateEventIdFlattenedDto.java
+.\UomConversionStateEventIdFlattenedDtoFormatter.java
+.\UomConversionStateQueryRepository.java
+.\UomConversionStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\GenerateUomTypeDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateUomTypeDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractUomTypeAggregate.java
+.\AbstractUomTypeApplicationService.java
+.\AbstractUomTypeCommand.java
+.\AbstractUomTypeCommandDto.java
+.\AbstractUomTypeState.java
+.\AbstractUomTypeStateCommandConverter.java
+.\AbstractUomTypeStateEvent.java
+.\CreateOrMergePatchUomTypeDto.java
+.\DeleteUomTypeDto.java
+.\GenerateUomTypeDomain.txt
+.\UomTypeAggregate.java
+.\UomTypeApplicationService.java
+.\UomTypeCommand.java
+.\UomTypeState.java
+.\UomTypeStateDto.java
+.\UomTypeStateEvent.java
+.\UomTypeStateEventDto.java
+.\UomTypeStateEventDtoConverter.java
+.\UomTypeStateEventId.java
+.\UomTypeStateEventIdDto.java
+.\UomTypeStateEventIdDtoWrapper.java
+.\UomTypeStateEventIdFlattenedDto.java
+.\UomTypeStateEventIdFlattenedDtoFormatter.java
+.\UomTypeStateQueryRepository.java
+.\UomTypeStateRepository.java
 </LastOutputs>
     </Content>
   </ItemGroup>

@@ -1,0 +1,54 @@
+﻿#%DDDML 0.1
+
+---
+
+# ------------------------------
+aggregates:
+
+  UomConversion:
+    id:
+      name: UomConversionId
+      type: UomConversionId
+      
+    properties:
+      ConversionFactor:
+        type: floating-point
+      CustomMethodId:
+        type: id-ne
+      DecimalScale:
+        type: numeric
+      RoundingMode:
+        type: id
+        
+    references:
+      UomId:
+        name: UomId
+        displayName: UOM-ID
+        description: Main
+        type: Uom
+        properties:
+        - UomConversionId.UomId
+        foreignKeyName: UOM_CONV_MAIN
+      UomIdTo:
+        name: UomIdTo
+        displayName: UOM-ID-TO
+        description: ConvTo
+        type: Uom
+        properties:
+        - UomConversionId.UomIdTo
+        foreignKeyName: UOM_CONV_TO
+        
+    reservedProperties: {}
+    
+    valueObjects:
+      UomConversionId:
+        name: UomConversionId
+        properties:
+          UomId:
+            type: id-ne
+          UomIdTo:
+            type: id-ne
+            
+
+            
+            

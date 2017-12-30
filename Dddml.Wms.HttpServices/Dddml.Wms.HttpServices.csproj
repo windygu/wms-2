@@ -401,6 +401,15 @@
     <Compile Include="Generated\Controllers\SupplierProductsController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Controllers\UomConversionsController.cs">
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Controllers\UomsController.cs">
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Controllers\UomTypesController.cs">
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Controllers\WarehousesController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
@@ -500,6 +509,9 @@
 .\ShipmentTypesController.cs
 .\StatusItemsController.cs
 .\SupplierProductsController.cs
+.\UomConversionsController.cs
+.\UomsController.cs
+.\UomTypesController.cs
 .\WarehousesController.cs
 </LastOutputs>
     </Content>

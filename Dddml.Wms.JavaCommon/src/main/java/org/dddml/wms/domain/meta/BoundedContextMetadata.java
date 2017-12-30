@@ -57,6 +57,9 @@ public class BoundedContextMetadata {
         map.put("ShipmentType", "ShipmentType");
         map.put("StatusItem", "StatusItem");
         map.put("SupplierProduct", "SupplierProduct");
+        map.put("Uom", "Uom");
+        map.put("UomConversion", "UomConversion");
+        map.put("UomType", "UomType");
         map.put("Warehouse", "Warehouse");
         map.put("Locator", "Locator");
         map.put("AttributeSetInstance", "AttributeSetInstance");

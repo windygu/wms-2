@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.uomtype">
+  
+  <class name="org.dddml.wms.domain.uomtype.AbstractUomTypeState$SimpleUomTypeState" table="UomTypes">
+
+	<id name="uomTypeId" length="20" column="UomTypeId"><generator class="assigned"/></id>
+	<version name="version" column="Version" type="long" />
+
+	<property name="parentTypeId" ><column name="ParentTypeId" sql-type="VARCHAR(20)" /></property>
+	<property name="hasTable" ><column name="HasTable" sql-type="CHAR(1)" /></property>
+	<property name="description" ><column name="Description" sql-type="VARCHAR(255)" /></property>
+	<property name="createdBy" ></property>
+	<property name="updatedBy" ></property>
+	<property name="active" ></property>
+	<property name="deleted" ></property>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="updatedAt" column="UpdatedAt" />
+
+
+  </class>
+  
+</hibernate-mapping>
+

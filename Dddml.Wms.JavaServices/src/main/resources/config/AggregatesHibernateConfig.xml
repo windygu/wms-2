@@ -597,6 +597,69 @@
   </bean>
 
 
+  <bean id="uomStateRepository" class="org.dddml.wms.domain.uom.hibernate.HibernateUomStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="uomStateQueryRepository" class="org.dddml.wms.domain.uom.hibernate.HibernateUomStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="uomEventStore" class="org.dddml.wms.domain.uom.hibernate.HibernateUomEventStore">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="uomApplicationService" class="org.dddml.wms.domain.uom.AbstractUomApplicationService$SimpleUomApplicationService">
+    <constructor-arg ref="uomEventStore"/>
+    <constructor-arg ref="uomStateRepository"/>
+    <constructor-arg ref="uomStateQueryRepository"/>
+  </bean>
+
+
+  <bean id="uomConversionStateRepository" class="org.dddml.wms.domain.uomconversion.hibernate.HibernateUomConversionStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="uomConversionStateQueryRepository" class="org.dddml.wms.domain.uomconversion.hibernate.HibernateUomConversionStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="uomConversionEventStore" class="org.dddml.wms.domain.uomconversion.hibernate.HibernateUomConversionEventStore">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="uomConversionApplicationService" class="org.dddml.wms.domain.uomconversion.AbstractUomConversionApplicationService$SimpleUomConversionApplicationService">
+    <constructor-arg ref="uomConversionEventStore"/>
+    <constructor-arg ref="uomConversionStateRepository"/>
+    <constructor-arg ref="uomConversionStateQueryRepository"/>
+  </bean>
+
+
+  <bean id="uomTypeStateRepository" class="org.dddml.wms.domain.uomtype.hibernate.HibernateUomTypeStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="uomTypeStateQueryRepository" class="org.dddml.wms.domain.uomtype.hibernate.HibernateUomTypeStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="uomTypeEventStore" class="org.dddml.wms.domain.uomtype.hibernate.HibernateUomTypeEventStore">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="uomTypeApplicationService" class="org.dddml.wms.domain.uomtype.AbstractUomTypeApplicationService$SimpleUomTypeApplicationService">
+    <constructor-arg ref="uomTypeEventStore"/>
+    <constructor-arg ref="uomTypeStateRepository"/>
+    <constructor-arg ref="uomTypeStateQueryRepository"/>
+  </bean>
+
+
   <bean id="warehouseStateRepository" class="org.dddml.wms.domain.warehouse.hibernate.HibernateWarehouseStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>

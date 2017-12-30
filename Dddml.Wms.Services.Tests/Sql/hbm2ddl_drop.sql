@@ -192,3 +192,15 @@
     drop table if exists PhysicalInventoryLine_RV;
 
     drop table if exists PhysicalInventoryLineMvoStateEvents;
+
+    drop table if exists Uoms;
+
+    drop table if exists UomStateEvents;
+
+    drop table if exists UomConversions;
+
+    drop table if exists UomConversionStateEvents;
+
+    drop table if exists UomTypes;
+
+    drop table if exists UomTypeStateEvents;

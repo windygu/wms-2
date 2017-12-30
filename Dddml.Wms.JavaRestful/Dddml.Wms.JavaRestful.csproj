@@ -115,6 +115,9 @@
 .\ShipmentTypeResource.java
 .\StatusItemResource.java
 .\SupplierProductResource.java
+.\UomConversionResource.java
+.\UomResource.java
+.\UomTypeResource.java
 .\WarehouseResource.java
 </LastOutputs>
     </Content>
@@ -243,6 +246,15 @@
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\SupplierProductResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\UomConversionResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\UomResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\UomTypeResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\WarehouseResource.java">

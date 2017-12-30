@@ -619,6 +619,72 @@
 
 
 
+  <object id="uomStateRepository" type="Dddml.Wms.Domain.Uom.NHibernate.NHibernateUomStateRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="uomStateQueryRepository" type="Dddml.Wms.Domain.Uom.NHibernate.NHibernateUomStateQueryRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="uomEventStore" type="Dddml.Wms.Domain.Uom.NHibernate.NHibernateUomEventStore, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
+  <object id="uomApplicationService" type="Dddml.Wms.Domain.Uom.NHibernate.UomApplicationService, Dddml.Wms.Services">
+    <constructor-arg ref="uomEventStore"/>
+    <constructor-arg ref="uomStateRepository"/>
+    <constructor-arg ref="uomStateQueryRepository"/>
+  </object>
+
+
+
+  <object id="uomConversionStateRepository" type="Dddml.Wms.Domain.UomConversion.NHibernate.NHibernateUomConversionStateRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="uomConversionStateQueryRepository" type="Dddml.Wms.Domain.UomConversion.NHibernate.NHibernateUomConversionStateQueryRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="uomConversionEventStore" type="Dddml.Wms.Domain.UomConversion.NHibernate.NHibernateUomConversionEventStore, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
+  <object id="uomConversionApplicationService" type="Dddml.Wms.Domain.UomConversion.NHibernate.UomConversionApplicationService, Dddml.Wms.Services">
+    <constructor-arg ref="uomConversionEventStore"/>
+    <constructor-arg ref="uomConversionStateRepository"/>
+    <constructor-arg ref="uomConversionStateQueryRepository"/>
+  </object>
+
+
+
+  <object id="uomTypeStateRepository" type="Dddml.Wms.Domain.UomType.NHibernate.NHibernateUomTypeStateRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="uomTypeStateQueryRepository" type="Dddml.Wms.Domain.UomType.NHibernate.NHibernateUomTypeStateQueryRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="uomTypeEventStore" type="Dddml.Wms.Domain.UomType.NHibernate.NHibernateUomTypeEventStore, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
+  <object id="uomTypeApplicationService" type="Dddml.Wms.Domain.UomType.NHibernate.UomTypeApplicationService, Dddml.Wms.Services">
+    <constructor-arg ref="uomTypeEventStore"/>
+    <constructor-arg ref="uomTypeStateRepository"/>
+    <constructor-arg ref="uomTypeStateQueryRepository"/>
+  </object>
+
+
+
   <object id="warehouseStateRepository" type="Dddml.Wms.Domain.Warehouse.NHibernate.NHibernateWarehouseStateRepository, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>

@@ -697,6 +697,48 @@
     <Content Include="src\main\java\org\dddml\wms\domain\supplierproduct\hibernate\HibernateSupplierProductStateRepository.java">
       <DependentUpon>GenerateSupplierProductDomainHibernate.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\hibernate\GenerateUomConversionDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateUomConversionDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\hibernate\HibernateUomConversionEventStore.java">
+      <DependentUpon>GenerateUomConversionDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\hibernate\HibernateUomConversionStateQueryRepository.java">
+      <DependentUpon>GenerateUomConversionDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\hibernate\HibernateUomConversionStateRepository.java">
+      <DependentUpon>GenerateUomConversionDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\hibernate\GenerateUomTypeDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateUomTypeDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\hibernate\HibernateUomTypeEventStore.java">
+      <DependentUpon>GenerateUomTypeDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\hibernate\HibernateUomTypeStateQueryRepository.java">
+      <DependentUpon>GenerateUomTypeDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\hibernate\HibernateUomTypeStateRepository.java">
+      <DependentUpon>GenerateUomTypeDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uom\hibernate\GenerateUomDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateUomDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uom\hibernate\HibernateUomEventStore.java">
+      <DependentUpon>GenerateUomDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uom\hibernate\HibernateUomStateQueryRepository.java">
+      <DependentUpon>GenerateUomDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uom\hibernate\HibernateUomStateRepository.java">
+      <DependentUpon>GenerateUomDomainHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\warehouse\hibernate\GenerateWarehouseDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -721,6 +763,24 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Content>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\UomTypeStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\UomTypeState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\UomConversionStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\UomConversionState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\UomStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\UomState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\PhysicalInventoryLineMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
@@ -1150,6 +1210,12 @@
 .\StatusItemState.hbm.xml
 .\SupplierProductState.hbm.xml
 .\SupplierProductStateEvent.hbm.xml
+.\UomConversionState.hbm.xml
+.\UomConversionStateEvent.hbm.xml
+.\UomState.hbm.xml
+.\UomStateEvent.hbm.xml
+.\UomTypeState.hbm.xml
+.\UomTypeStateEvent.hbm.xml
 .\WarehouseState.hbm.xml
 .\WarehouseStateEvent.hbm.xml
 </LastOutputs>
@@ -1594,6 +1660,36 @@
 .\HibernateAttributeAliasMvoEventStore.java
 .\HibernateAttributeAliasMvoStateQueryRepository.java
 .\HibernateAttributeAliasMvoStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uom\hibernate\GenerateUomDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateUomDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateUomDomainHibernate.txt
+.\HibernateUomEventStore.java
+.\HibernateUomStateQueryRepository.java
+.\HibernateUomStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\hibernate\GenerateUomConversionDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateUomConversionDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateUomConversionDomainHibernate.txt
+.\HibernateUomConversionEventStore.java
+.\HibernateUomConversionStateQueryRepository.java
+.\HibernateUomConversionStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\hibernate\GenerateUomTypeDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateUomTypeDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateUomTypeDomainHibernate.txt
+.\HibernateUomTypeEventStore.java
+.\HibernateUomTypeStateQueryRepository.java
+.\HibernateUomTypeStateRepository.java
 </LastOutputs>
     </Content>
   </ItemGroup>

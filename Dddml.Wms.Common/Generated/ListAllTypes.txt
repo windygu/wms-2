@@ -24,6 +24,7 @@
                 dict.Add("SellableInventoryItemEntryId", "_SELLABLEINVENTORYITEMENTRYID_");
                 dict.Add("ShipmentItemId", "_SHIPMENTITEMID_");
                 dict.Add("SupplierProductId", "_SUPPLIERPRODUCTID_");
+                dict.Add("UomConversionId", "_UOMCONVERSIONID_");
 // //////////////////////
                 dict.Add("AttributeAlias", "_ATTRIBUTEALIAS_");
                 dict.Add("AttributeUse", "_ATTRIBUTEUSE_");
@@ -40,6 +41,7 @@
                 dict.Add("decimal?", "_DECIMAL__");
                 dict.Add("description", "_DESCRIPTION_");
                 dict.Add("fixed-point", "_FIXED-POINT_");
+                dict.Add("floating-point", "_FLOATING-POINT_");
                 dict.Add("id", "_ID_");
                 dict.Add("id-long", "_ID-LONG_");
                 dict.Add("id-ne", "_ID-NE_");

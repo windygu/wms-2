@@ -55,6 +55,9 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNames.Add("ShipmentType");
             _aggregateNames.Add("StatusItem");
             _aggregateNames.Add("SupplierProduct");
+            _aggregateNames.Add("Uom");
+            _aggregateNames.Add("UomConversion");
+            _aggregateNames.Add("UomType");
             _aggregateNames.Add("Warehouse");
             _aggregateNames.Add("Locator");
             _aggregateNames.Add("AttributeSetInstance");
@@ -99,6 +102,9 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNamespaces.Add("ShipmentType", "Dddml.Wms.Domain.ShipmentType");
             _aggregateNamespaces.Add("StatusItem", "Dddml.Wms.Domain.StatusItem");
             _aggregateNamespaces.Add("SupplierProduct", "Dddml.Wms.Domain.SupplierProduct");
+            _aggregateNamespaces.Add("Uom", "Dddml.Wms.Domain.Uom");
+            _aggregateNamespaces.Add("UomConversion", "Dddml.Wms.Domain.UomConversion");
+            _aggregateNamespaces.Add("UomType", "Dddml.Wms.Domain.UomType");
             _aggregateNamespaces.Add("Warehouse", "Dddml.Wms.Domain.Warehouse");
             _aggregateNamespaces.Add("Locator", "Dddml.Wms.Domain.Locator");
             _aggregateNamespaces.Add("AttributeSetInstance", "Dddml.Wms.Domain.AttributeSetInstance");

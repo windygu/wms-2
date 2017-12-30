@@ -1,0 +1,33 @@
+﻿#%DDDML 0.1
+
+---
+
+# ------------------------------
+aggregates:
+
+  Uom:
+    id:
+      name: UomId
+      type: id-ne
+      
+    properties:
+      UomTypeId:
+        type: id
+      Abbreviation:
+        type: short-varchar
+      Description:
+        type: description
+        
+    references:
+      UomType:
+        displayName: UomType
+        type: UomType
+        properties:
+        - UomTypeId
+        foreignKeyName: UOM_TO_TYPE
+        
+    reservedProperties: {}
+    
+    discriminator: UomTypeId
+
+    

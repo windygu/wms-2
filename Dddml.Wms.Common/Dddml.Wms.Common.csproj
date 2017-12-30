@@ -2374,6 +2374,15 @@
     <Compile Include="Generated\Domain\Metadata\SupplierProductMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\Metadata\UomConversionMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Metadata\UomMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Metadata\UomTypeMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\Metadata\WarehouseMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
@@ -4957,6 +4966,279 @@
     <Compile Include="Generated\Domain\SupplierProduct\SupplierProductStateProperties.cs">
       <DependentUpon>GenerateSupplierProductDomain.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\UomConversion\IUomConversionAggregate.cs">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomConversion\IUomConversionApplicationService.cs">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomConversion\IUomConversionApplicationServiceFactory.cs">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomConversion\IUomConversionCommand.cs">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomConversion\IUomConversionState.cs">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomConversion\IUomConversionStateDto.cs">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomConversion\IUomConversionStateEvent.cs">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomConversion\IUomConversionStateProperties.cs">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomConversion\IUomConversionStateQueryRepository.cs">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomConversion\IUomConversionStateRepository.cs">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomConversion\UomConversionAggregate.cs">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomConversion\UomConversionApplicationServiceBase.cs">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomConversion\UomConversionApplicationServiceFactory.cs">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomConversion\UomConversionCommand.cs">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomConversion\UomConversionCommandDto.cs">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomConversion\UomConversionId.cs">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomConversion\UomConversionIdDto.cs">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomConversion\UomConversionIdDtoWrapper.cs">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomConversion\UomConversionIdFlattenedDto.cs">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomConversion\UomConversionState.cs">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomConversion\UomConversionStateDto.cs">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomConversion\UomConversionStateDtoExtension.cs">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomConversion\UomConversionStateDtoWrapper.cs">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomConversion\UomConversionStateEvent.cs">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomConversion\UomConversionStateEventDto.cs">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomConversion\UomConversionStateEventDtoConverter.cs">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomConversion\UomConversionStateEventId.cs">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomConversion\UomConversionStateEventIdDto.cs">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomConversion\UomConversionStateEventIdDtoWrapper.cs">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomConversion\UomConversionStateEventIdFlattenedDto.cs">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomConversion\UomConversionStateExtension.cs">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomConversion\UomConversionStateInterfaceExtension.cs">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomConversion\UomConversionStateProperties.cs">
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomType\IUomTypeAggregate.cs">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomType\IUomTypeApplicationService.cs">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomType\IUomTypeApplicationServiceFactory.cs">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomType\IUomTypeCommand.cs">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomType\IUomTypeState.cs">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomType\IUomTypeStateDto.cs">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomType\IUomTypeStateEvent.cs">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomType\IUomTypeStateProperties.cs">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomType\IUomTypeStateQueryRepository.cs">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomType\IUomTypeStateRepository.cs">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomType\UomTypeAggregate.cs">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomType\UomTypeApplicationServiceBase.cs">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomType\UomTypeApplicationServiceFactory.cs">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomType\UomTypeCommand.cs">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomType\UomTypeCommandDto.cs">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomType\UomTypeState.cs">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomType\UomTypeStateDto.cs">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomType\UomTypeStateDtoExtension.cs">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomType\UomTypeStateDtoWrapper.cs">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomType\UomTypeStateEvent.cs">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomType\UomTypeStateEventDto.cs">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomType\UomTypeStateEventDtoConverter.cs">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomType\UomTypeStateEventId.cs">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomType\UomTypeStateEventIdDto.cs">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomType\UomTypeStateEventIdDtoWrapper.cs">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomType\UomTypeStateEventIdFlattenedDto.cs">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomType\UomTypeStateExtension.cs">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomType\UomTypeStateInterfaceExtension.cs">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomType\UomTypeStateProperties.cs">
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Uom\IUomAggregate.cs">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Uom\IUomApplicationService.cs">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Uom\IUomApplicationServiceFactory.cs">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Uom\IUomCommand.cs">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Uom\IUomState.cs">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Uom\IUomStateDto.cs">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Uom\IUomStateEvent.cs">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Uom\IUomStateProperties.cs">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Uom\IUomStateQueryRepository.cs">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Uom\IUomStateRepository.cs">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Uom\UomAggregate.cs">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Uom\UomApplicationServiceBase.cs">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Uom\UomApplicationServiceFactory.cs">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Uom\UomCommand.cs">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Uom\UomCommandDto.cs">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Uom\UomState.cs">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Uom\UomStateDto.cs">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Uom\UomStateDtoExtension.cs">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Uom\UomStateDtoWrapper.cs">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Uom\UomStateEvent.cs">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Uom\UomStateEventDto.cs">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Uom\UomStateEventDtoConverter.cs">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Uom\UomStateEventId.cs">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Uom\UomStateEventIdDto.cs">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Uom\UomStateEventIdDtoWrapper.cs">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Uom\UomStateEventIdFlattenedDto.cs">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Uom\UomStateExtension.cs">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Uom\UomStateInterfaceExtension.cs">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Uom\UomStateProperties.cs">
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\Warehouse\IWarehouseAggregate.cs">
       <DependentUpon>GenerateWarehouseDomain.tt</DependentUpon>
     </Compile>
@@ -5278,6 +5560,21 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateSupplierProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\UomConversion\GenerateUomConversionDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\UomType\GenerateUomTypeDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\Uom\GenerateUomDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
     </Content>
     <Content Include="Generated\Domain\Warehouse\GenerateWarehouseDomain.txt">
       <AutoGen>True</AutoGen>
@@ -7215,6 +7512,118 @@
 .\IAttributeAliasMvoStateRepository.cs
 </LastOutputs>
     </Content>
+    <Content Include="Generated\Domain\Uom\GenerateUomDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateUomDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateUomDomain.txt
+.\IUomAggregate.cs
+.\IUomApplicationService.cs
+.\IUomApplicationServiceFactory.cs
+.\IUomCommand.cs
+.\IUomState.cs
+.\IUomStateDto.cs
+.\IUomStateEvent.cs
+.\IUomStateProperties.cs
+.\IUomStateQueryRepository.cs
+.\IUomStateRepository.cs
+.\UomAggregate.cs
+.\UomApplicationServiceBase.cs
+.\UomApplicationServiceFactory.cs
+.\UomCommand.cs
+.\UomCommandDto.cs
+.\UomState.cs
+.\UomStateDto.cs
+.\UomStateDtoExtension.cs
+.\UomStateDtoWrapper.cs
+.\UomStateEvent.cs
+.\UomStateEventDto.cs
+.\UomStateEventDtoConverter.cs
+.\UomStateEventId.cs
+.\UomStateEventIdDto.cs
+.\UomStateEventIdDtoWrapper.cs
+.\UomStateEventIdFlattenedDto.cs
+.\UomStateExtension.cs
+.\UomStateInterfaceExtension.cs
+.\UomStateProperties.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\UomConversion\GenerateUomConversionDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateUomConversionDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateUomConversionDomain.txt
+.\IUomConversionAggregate.cs
+.\IUomConversionApplicationService.cs
+.\IUomConversionApplicationServiceFactory.cs
+.\IUomConversionCommand.cs
+.\IUomConversionState.cs
+.\IUomConversionStateDto.cs
+.\IUomConversionStateEvent.cs
+.\IUomConversionStateProperties.cs
+.\IUomConversionStateQueryRepository.cs
+.\IUomConversionStateRepository.cs
+.\UomConversionAggregate.cs
+.\UomConversionApplicationServiceBase.cs
+.\UomConversionApplicationServiceFactory.cs
+.\UomConversionCommand.cs
+.\UomConversionCommandDto.cs
+.\UomConversionId.cs
+.\UomConversionIdDto.cs
+.\UomConversionIdDtoWrapper.cs
+.\UomConversionIdFlattenedDto.cs
+.\UomConversionState.cs
+.\UomConversionStateDto.cs
+.\UomConversionStateDtoExtension.cs
+.\UomConversionStateDtoWrapper.cs
+.\UomConversionStateEvent.cs
+.\UomConversionStateEventDto.cs
+.\UomConversionStateEventDtoConverter.cs
+.\UomConversionStateEventId.cs
+.\UomConversionStateEventIdDto.cs
+.\UomConversionStateEventIdDtoWrapper.cs
+.\UomConversionStateEventIdFlattenedDto.cs
+.\UomConversionStateExtension.cs
+.\UomConversionStateInterfaceExtension.cs
+.\UomConversionStateProperties.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\UomType\GenerateUomTypeDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateUomTypeDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateUomTypeDomain.txt
+.\IUomTypeAggregate.cs
+.\IUomTypeApplicationService.cs
+.\IUomTypeApplicationServiceFactory.cs
+.\IUomTypeCommand.cs
+.\IUomTypeState.cs
+.\IUomTypeStateDto.cs
+.\IUomTypeStateEvent.cs
+.\IUomTypeStateProperties.cs
+.\IUomTypeStateQueryRepository.cs
+.\IUomTypeStateRepository.cs
+.\UomTypeAggregate.cs
+.\UomTypeApplicationServiceBase.cs
+.\UomTypeApplicationServiceFactory.cs
+.\UomTypeCommand.cs
+.\UomTypeCommandDto.cs
+.\UomTypeState.cs
+.\UomTypeStateDto.cs
+.\UomTypeStateDtoExtension.cs
+.\UomTypeStateDtoWrapper.cs
+.\UomTypeStateEvent.cs
+.\UomTypeStateEventDto.cs
+.\UomTypeStateEventDtoConverter.cs
+.\UomTypeStateEventId.cs
+.\UomTypeStateEventIdDto.cs
+.\UomTypeStateEventIdDtoWrapper.cs
+.\UomTypeStateEventIdFlattenedDto.cs
+.\UomTypeStateExtension.cs
+.\UomTypeStateInterfaceExtension.cs
+.\UomTypeStateProperties.cs
+</LastOutputs>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Generated\Domain\GenerateBoundedContextDomainAggregates.tt">
@@ -7305,6 +7714,9 @@
 .\ShipmentTypeMetadata.cs
 .\StatusItemMetadata.cs
 .\SupplierProductMetadata.cs
+.\UomConversionMetadata.cs
+.\UomMetadata.cs
+.\UomTypeMetadata.cs
 .\WarehouseMetadata.cs
 </LastOutputs>
     </Content>

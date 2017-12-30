@@ -644,6 +644,42 @@
     <Compile Include="Generated\Domain\SupplierProduct\NHibernate\SupplierProductApplicationService.cs">
       <DependentUpon>GenerateSupplierProductDomainNHibernate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\UomConversion\NHibernate\NHibernateUomConversionEventStore.cs">
+      <DependentUpon>GenerateUomConversionDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomConversion\NHibernate\NHibernateUomConversionStateQueryRepository.cs">
+      <DependentUpon>GenerateUomConversionDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomConversion\NHibernate\NHibernateUomConversionStateRepository.cs">
+      <DependentUpon>GenerateUomConversionDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomConversion\NHibernate\UomConversionApplicationService.cs">
+      <DependentUpon>GenerateUomConversionDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomType\NHibernate\NHibernateUomTypeEventStore.cs">
+      <DependentUpon>GenerateUomTypeDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomType\NHibernate\NHibernateUomTypeStateQueryRepository.cs">
+      <DependentUpon>GenerateUomTypeDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomType\NHibernate\NHibernateUomTypeStateRepository.cs">
+      <DependentUpon>GenerateUomTypeDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\UomType\NHibernate\UomTypeApplicationService.cs">
+      <DependentUpon>GenerateUomTypeDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Uom\NHibernate\NHibernateUomEventStore.cs">
+      <DependentUpon>GenerateUomDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Uom\NHibernate\NHibernateUomStateQueryRepository.cs">
+      <DependentUpon>GenerateUomDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Uom\NHibernate\NHibernateUomStateRepository.cs">
+      <DependentUpon>GenerateUomDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Uom\NHibernate\UomApplicationService.cs">
+      <DependentUpon>GenerateUomDomainNHibernate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\Warehouse\NHibernate\NHibernateWarehouseEventStore.cs">
       <DependentUpon>GenerateWarehouseDomainNHibernate.tt</DependentUpon>
     </Compile>
@@ -959,6 +995,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateSupplierProductDomainNHibernate.tt</DependentUpon>
     </Content>
+    <Content Include="Generated\Domain\UomConversion\NHibernate\GenerateUomConversionDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateUomConversionDomainNHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\UomType\NHibernate\GenerateUomTypeDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateUomTypeDomainNHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\Uom\NHibernate\GenerateUomDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateUomDomainNHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="Generated\Domain\Warehouse\NHibernate\GenerateWarehouseDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1109,6 +1160,12 @@
 .\StatusItemState.hbm.xml
 .\SupplierProductState.hbm.xml
 .\SupplierProductStateEvent.hbm.xml
+.\UomConversionState.hbm.xml
+.\UomConversionStateEvent.hbm.xml
+.\UomState.hbm.xml
+.\UomStateEvent.hbm.xml
+.\UomTypeState.hbm.xml
+.\UomTypeStateEvent.hbm.xml
 .\WarehouseState.hbm.xml
 .\WarehouseStateEvent.hbm.xml
 </LastOutputs>
@@ -1351,6 +1408,24 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateAggregatesNhv.tt</DependentUpon>
     </Content>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\UomState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\UomStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\UomConversionState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\UomConversionStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\UomTypeState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\UomTypeStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
     <Content Include="LoadBoundedContext.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>LoadBoundedContext.txt</LastGenOutput>
@@ -1861,6 +1936,39 @@
 .\NHibernateAttributeAliasMvoEventStore.cs
 .\NHibernateAttributeAliasMvoStateQueryRepository.cs
 .\NHibernateAttributeAliasMvoStateRepository.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\Uom\NHibernate\GenerateUomDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateUomDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateUomDomainNHibernate.txt
+.\NHibernateUomEventStore.cs
+.\NHibernateUomStateQueryRepository.cs
+.\NHibernateUomStateRepository.cs
+.\UomApplicationService.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\UomConversion\NHibernate\GenerateUomConversionDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateUomConversionDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateUomConversionDomainNHibernate.txt
+.\NHibernateUomConversionEventStore.cs
+.\NHibernateUomConversionStateQueryRepository.cs
+.\NHibernateUomConversionStateRepository.cs
+.\UomConversionApplicationService.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\UomType\NHibernate\GenerateUomTypeDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateUomTypeDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateUomTypeDomainNHibernate.txt
+.\NHibernateUomTypeEventStore.cs
+.\NHibernateUomTypeStateQueryRepository.cs
+.\NHibernateUomTypeStateRepository.cs
+.\UomTypeApplicationService.cs
 </LastOutputs>
     </Content>
   </ItemGroup>
