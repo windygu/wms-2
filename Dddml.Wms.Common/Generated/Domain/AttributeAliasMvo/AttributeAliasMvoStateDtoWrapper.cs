@@ -273,37 +273,6 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
             }
         }
 
-		public virtual bool? AttributeIsInstanceAttribute
-        {
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("AttributeIsInstanceAttribute"))
-                {
-                    return _state.AttributeIsInstanceAttribute;
-                }
-                return null;
-            }
-            set
-            {
-                if (value != null && value.HasValue)
-                {
-                    _state.AttributeIsInstanceAttribute = value.Value;
-                }
-            }
-        }
-
-        bool IAttributeAliasMvoStateProperties.AttributeIsInstanceAttribute
-        {
-            get 
-            {
-                return (this._state as IAttributeAliasMvoStateProperties).AttributeIsInstanceAttribute;
-            }
-            set 
-            {
-                (this._state as IAttributeAliasMvoStateProperties).AttributeIsInstanceAttribute = value;
-            }
-        }
-
 		public virtual string AttributeAttributeValueType
 		{
             get

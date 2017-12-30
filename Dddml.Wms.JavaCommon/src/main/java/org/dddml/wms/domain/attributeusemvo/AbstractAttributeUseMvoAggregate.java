@@ -67,6 +67,8 @@ public abstract class AbstractAttributeUseMvoAggregate extends AbstractAggregate
         e.setAttributeSetSerialNumberAttributeId(c.getAttributeSetSerialNumberAttributeId());
         e.setAttributeSetLotAttributeId(c.getAttributeSetLotAttributeId());
         e.setAttributeSetReferenceId(c.getAttributeSetReferenceId());
+        e.setAttributeSetIsInstanceAttributeSet(c.getAttributeSetIsInstanceAttributeSet());
+        e.setAttributeSetIsMandatory(c.getAttributeSetIsMandatory());
         e.setAttributeSetCreatedBy(c.getAttributeSetCreatedBy());
         e.setAttributeSetCreatedAt(c.getAttributeSetCreatedAt());
         e.setAttributeSetUpdatedBy(c.getAttributeSetUpdatedBy());
@@ -91,6 +93,8 @@ public abstract class AbstractAttributeUseMvoAggregate extends AbstractAggregate
         e.setAttributeSetSerialNumberAttributeId(c.getAttributeSetSerialNumberAttributeId());
         e.setAttributeSetLotAttributeId(c.getAttributeSetLotAttributeId());
         e.setAttributeSetReferenceId(c.getAttributeSetReferenceId());
+        e.setAttributeSetIsInstanceAttributeSet(c.getAttributeSetIsInstanceAttributeSet());
+        e.setAttributeSetIsMandatory(c.getAttributeSetIsMandatory());
         e.setAttributeSetCreatedBy(c.getAttributeSetCreatedBy());
         e.setAttributeSetCreatedAt(c.getAttributeSetCreatedAt());
         e.setAttributeSetUpdatedBy(c.getAttributeSetUpdatedBy());
@@ -106,6 +110,8 @@ public abstract class AbstractAttributeUseMvoAggregate extends AbstractAggregate
         e.setIsPropertyAttributeSetSerialNumberAttributeIdRemoved(c.getIsPropertyAttributeSetSerialNumberAttributeIdRemoved());
         e.setIsPropertyAttributeSetLotAttributeIdRemoved(c.getIsPropertyAttributeSetLotAttributeIdRemoved());
         e.setIsPropertyAttributeSetReferenceIdRemoved(c.getIsPropertyAttributeSetReferenceIdRemoved());
+        e.setIsPropertyAttributeSetIsInstanceAttributeSetRemoved(c.getIsPropertyAttributeSetIsInstanceAttributeSetRemoved());
+        e.setIsPropertyAttributeSetIsMandatoryRemoved(c.getIsPropertyAttributeSetIsMandatoryRemoved());
         e.setIsPropertyAttributeSetCreatedByRemoved(c.getIsPropertyAttributeSetCreatedByRemoved());
         e.setIsPropertyAttributeSetCreatedAtRemoved(c.getIsPropertyAttributeSetCreatedAtRemoved());
         e.setIsPropertyAttributeSetUpdatedByRemoved(c.getIsPropertyAttributeSetUpdatedByRemoved());

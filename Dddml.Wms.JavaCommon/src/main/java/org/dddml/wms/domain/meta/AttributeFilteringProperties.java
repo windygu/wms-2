@@ -16,7 +16,6 @@ public final class AttributeFilteringProperties
             "organizationId",
             "description",
             "isMandatory",
-            "isInstanceAttribute",
             "attributeValueType",
             "attributeValueLength",
             "isList",
@@ -36,7 +35,6 @@ public final class AttributeFilteringProperties
             "String",
             "String",
             "String",
-            "Boolean",
             "Boolean",
             "String",
             "Integer",
@@ -74,8 +72,6 @@ public final class AttributeFilteringProperties
         aliasMap.put("Description", "description");
         aliasMap.put("isMandatory", "isMandatory");
         aliasMap.put("IsMandatory", "isMandatory");
-        aliasMap.put("isInstanceAttribute", "isInstanceAttribute");
-        aliasMap.put("IsInstanceAttribute", "isInstanceAttribute");
         aliasMap.put("attributeValueType", "attributeValueType");
         aliasMap.put("AttributeValueType", "attributeValueType");
         aliasMap.put("attributeValueLength", "attributeValueLength");

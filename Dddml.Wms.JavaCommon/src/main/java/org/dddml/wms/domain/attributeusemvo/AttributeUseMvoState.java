@@ -73,6 +73,14 @@ public interface AttributeUseMvoState
 
     void setAttributeSetReferenceId(String attributeSetReferenceId);
 
+    Boolean getAttributeSetIsInstanceAttributeSet();
+
+    void setAttributeSetIsInstanceAttributeSet(Boolean attributeSetIsInstanceAttributeSet);
+
+    Boolean getAttributeSetIsMandatory();
+
+    void setAttributeSetIsMandatory(Boolean attributeSetIsMandatory);
+
     Long getAttributeSetVersion();
 
     void setAttributeSetVersion(Long attributeSetVersion);

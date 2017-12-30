@@ -1,0 +1,19 @@
+<#@ template language="C#" debug="True" #>
+<#@ output extension="txt" #>
+<#@ import namespace="Dddml.Core.Dom" #>
+<#@ include file="T4Toolbox.tt" #>
+<#@ include file="%DddmlDotNetToolsSolutionDir%\Dddml.T4.Templates\NHibernate\Mappings\AggregateNhvGenerator.tt" #>
+<#@ include file="..\..\..\LoadBoundedContext.tt" #>
+<#
+
+	var ignoringAggregateNames = new string[] {};
+
+	foreach (var aggregate in boundedContext.Aggregates.Values)
+	{
+		if ((ignoringAggregateNames as ICollection<string>).Contains(aggregate.Name)) { continue; }
+	    var generator = new AggregateNhvGenerator(aggregate);
+
+	    generator.Run();
+	}
+
+#>

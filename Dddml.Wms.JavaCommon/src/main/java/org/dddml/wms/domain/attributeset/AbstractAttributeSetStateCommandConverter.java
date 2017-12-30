@@ -43,6 +43,8 @@ public abstract class AbstractAttributeSetStateCommandConverter<TCreateAttribute
         cmd.setSerialNumberAttributeId(state.getSerialNumberAttributeId());
         cmd.setLotAttributeId(state.getLotAttributeId());
         cmd.setReferenceId(state.getReferenceId());
+        cmd.setIsInstanceAttributeSet(state.getIsInstanceAttributeSet());
+        cmd.setIsMandatory(state.getIsMandatory());
         cmd.setActive(state.getActive());
             
         if (state.getAttributeSetName() == null) { cmd.setIsPropertyAttributeSetNameRemoved(true); }
@@ -51,6 +53,8 @@ public abstract class AbstractAttributeSetStateCommandConverter<TCreateAttribute
         if (state.getSerialNumberAttributeId() == null) { cmd.setIsPropertySerialNumberAttributeIdRemoved(true); }
         if (state.getLotAttributeId() == null) { cmd.setIsPropertyLotAttributeIdRemoved(true); }
         if (state.getReferenceId() == null) { cmd.setIsPropertyReferenceIdRemoved(true); }
+        if (state.getIsInstanceAttributeSet() == null) { cmd.setIsPropertyIsInstanceAttributeSetRemoved(true); }
+        if (state.getIsMandatory() == null) { cmd.setIsPropertyIsMandatoryRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
         for (AttributeUseState d : state.getAttributeUses())
         {
@@ -72,6 +76,8 @@ public abstract class AbstractAttributeSetStateCommandConverter<TCreateAttribute
         cmd.setSerialNumberAttributeId(state.getSerialNumberAttributeId());
         cmd.setLotAttributeId(state.getLotAttributeId());
         cmd.setReferenceId(state.getReferenceId());
+        cmd.setIsInstanceAttributeSet(state.getIsInstanceAttributeSet());
+        cmd.setIsMandatory(state.getIsMandatory());
         cmd.setActive(state.getActive());
         for (AttributeUseState d : state.getAttributeUses())
         {

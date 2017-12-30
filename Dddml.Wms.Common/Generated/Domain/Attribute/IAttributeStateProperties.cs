@@ -24,8 +24,6 @@ namespace Dddml.Wms.Domain.Attribute
 
 		bool IsMandatory { get; set; }
 
-		bool IsInstanceAttribute { get; set; }
-
 		string AttributeValueType { get; set; }
 
 		int? AttributeValueLength { get; set; }

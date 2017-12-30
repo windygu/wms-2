@@ -29,6 +29,10 @@ namespace Dddml.Wms.Domain.AttributeSet
 
 		string ReferenceId { get; set; }
 
+		bool? IsInstanceAttributeSet { get; set; }
+
+		bool? IsMandatory { get; set; }
+
 		bool? Active { get; set; }
 
 	}
@@ -58,6 +62,10 @@ namespace Dddml.Wms.Domain.AttributeSet
 		bool IsPropertyLotAttributeIdRemoved { get; set; }
 
 		bool IsPropertyReferenceIdRemoved { get; set; }
+
+		bool IsPropertyIsInstanceAttributeSetRemoved { get; set; }
+
+		bool IsPropertyIsMandatoryRemoved { get; set; }
 
 		bool IsPropertyActiveRemoved { get; set; }
 

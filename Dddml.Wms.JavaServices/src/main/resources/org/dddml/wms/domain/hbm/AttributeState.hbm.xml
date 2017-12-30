@@ -15,7 +15,6 @@
 	<property name="organizationId" ></property>
 	<property name="description" ></property>
 	<property name="isMandatory" ></property>
-	<property name="isInstanceAttribute" ></property>
 	<property name="attributeValueType" ></property>
 	<property name="attributeValueLength" ></property>
 	<property name="isList" ></property>

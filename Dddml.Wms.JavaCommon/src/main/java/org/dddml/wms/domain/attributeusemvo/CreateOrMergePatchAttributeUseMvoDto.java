@@ -114,6 +114,30 @@ public class CreateOrMergePatchAttributeUseMvoDto extends AbstractAttributeUseMv
         this.attributeSetReferenceId = attributeSetReferenceId;
     }
 
+    private Boolean attributeSetIsInstanceAttributeSet;
+
+    public Boolean getAttributeSetIsInstanceAttributeSet()
+    {
+        return this.attributeSetIsInstanceAttributeSet;
+    }
+
+    public void setAttributeSetIsInstanceAttributeSet(Boolean attributeSetIsInstanceAttributeSet)
+    {
+        this.attributeSetIsInstanceAttributeSet = attributeSetIsInstanceAttributeSet;
+    }
+
+    private Boolean attributeSetIsMandatory;
+
+    public Boolean getAttributeSetIsMandatory()
+    {
+        return this.attributeSetIsMandatory;
+    }
+
+    public void setAttributeSetIsMandatory(Boolean attributeSetIsMandatory)
+    {
+        this.attributeSetIsMandatory = attributeSetIsMandatory;
+    }
+
     private String attributeSetCreatedBy;
 
     public String getAttributeSetCreatedBy()
@@ -294,6 +318,30 @@ public class CreateOrMergePatchAttributeUseMvoDto extends AbstractAttributeUseMv
         this.isPropertyAttributeSetReferenceIdRemoved = removed;
     }
 
+    private Boolean isPropertyAttributeSetIsInstanceAttributeSetRemoved;
+
+    public Boolean getIsPropertyAttributeSetIsInstanceAttributeSetRemoved()
+    {
+        return this.isPropertyAttributeSetIsInstanceAttributeSetRemoved;
+    }
+
+    public void setIsPropertyAttributeSetIsInstanceAttributeSetRemoved(Boolean removed)
+    {
+        this.isPropertyAttributeSetIsInstanceAttributeSetRemoved = removed;
+    }
+
+    private Boolean isPropertyAttributeSetIsMandatoryRemoved;
+
+    public Boolean getIsPropertyAttributeSetIsMandatoryRemoved()
+    {
+        return this.isPropertyAttributeSetIsMandatoryRemoved;
+    }
+
+    public void setIsPropertyAttributeSetIsMandatoryRemoved(Boolean removed)
+    {
+        this.isPropertyAttributeSetIsMandatoryRemoved = removed;
+    }
+
     private Boolean isPropertyAttributeSetCreatedByRemoved;
 
     public Boolean getIsPropertyAttributeSetCreatedByRemoved()
@@ -378,6 +426,8 @@ public class CreateOrMergePatchAttributeUseMvoDto extends AbstractAttributeUseMv
         command.setAttributeSetSerialNumberAttributeId(this.getAttributeSetSerialNumberAttributeId());
         command.setAttributeSetLotAttributeId(this.getAttributeSetLotAttributeId());
         command.setAttributeSetReferenceId(this.getAttributeSetReferenceId());
+        command.setAttributeSetIsInstanceAttributeSet(this.getAttributeSetIsInstanceAttributeSet());
+        command.setAttributeSetIsMandatory(this.getAttributeSetIsMandatory());
         command.setAttributeSetCreatedBy(this.getAttributeSetCreatedBy());
         command.setAttributeSetCreatedAt(this.getAttributeSetCreatedAt());
         command.setAttributeSetUpdatedBy(this.getAttributeSetUpdatedBy());
@@ -417,6 +467,8 @@ public class CreateOrMergePatchAttributeUseMvoDto extends AbstractAttributeUseMv
         command.setIsPropertyAttributeSetSerialNumberAttributeIdRemoved(this.getIsPropertyAttributeSetSerialNumberAttributeIdRemoved());
         command.setIsPropertyAttributeSetLotAttributeIdRemoved(this.getIsPropertyAttributeSetLotAttributeIdRemoved());
         command.setIsPropertyAttributeSetReferenceIdRemoved(this.getIsPropertyAttributeSetReferenceIdRemoved());
+        command.setIsPropertyAttributeSetIsInstanceAttributeSetRemoved(this.getIsPropertyAttributeSetIsInstanceAttributeSetRemoved());
+        command.setIsPropertyAttributeSetIsMandatoryRemoved(this.getIsPropertyAttributeSetIsMandatoryRemoved());
         command.setIsPropertyAttributeSetCreatedByRemoved(this.getIsPropertyAttributeSetCreatedByRemoved());
         command.setIsPropertyAttributeSetCreatedAtRemoved(this.getIsPropertyAttributeSetCreatedAtRemoved());
         command.setIsPropertyAttributeSetUpdatedByRemoved(this.getIsPropertyAttributeSetUpdatedByRemoved());

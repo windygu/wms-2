@@ -36,8 +36,6 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 
 		bool? AttributeIsMandatory { get; set; }
 
-		bool? AttributeIsInstanceAttribute { get; set; }
-
 		string AttributeAttributeValueType { get; set; }
 
 		int? AttributeAttributeValueLength { get; set; }
@@ -87,8 +85,6 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 		bool IsPropertyAttributeDescriptionRemoved { get; set; }
 
 		bool IsPropertyAttributeIsMandatoryRemoved { get; set; }
-
-		bool IsPropertyAttributeIsInstanceAttributeRemoved { get; set; }
 
 		bool IsPropertyAttributeAttributeValueTypeRemoved { get; set; }
 

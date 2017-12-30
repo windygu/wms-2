@@ -35,6 +35,10 @@ namespace Dddml.Wms.Domain.AttributeSet
 
 		public virtual string ReferenceId { get; set; }
 
+		public virtual bool? IsInstanceAttributeSet { get; set; }
+
+		public virtual bool? IsMandatory { get; set; }
+
 		public virtual bool? Active { get; set; }
 
 		public virtual string CreatedBy { get; set; }
@@ -219,6 +223,10 @@ namespace Dddml.Wms.Domain.AttributeSet
 		public virtual bool IsPropertyLotAttributeIdRemoved { get; set; }
 
 		public virtual bool IsPropertyReferenceIdRemoved { get; set; }
+
+		public virtual bool IsPropertyIsInstanceAttributeSetRemoved { get; set; }
+
+		public virtual bool IsPropertyIsMandatoryRemoved { get; set; }
 
 		public virtual bool IsPropertyActiveRemoved { get; set; }
 

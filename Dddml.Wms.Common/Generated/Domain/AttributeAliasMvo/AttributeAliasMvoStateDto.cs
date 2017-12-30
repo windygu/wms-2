@@ -65,12 +65,6 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
             set;
         }
 
-        public virtual bool? AttributeIsInstanceAttribute
-        {
-            get;
-            set;
-        }
-
         public virtual string AttributeAttributeValueType
         {
             get;
@@ -178,7 +172,6 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
             state.AttributeOrganizationId = this.AttributeOrganizationId;
             state.AttributeDescription = this.AttributeDescription;
             if (this.AttributeIsMandatory != null && this.AttributeIsMandatory.HasValue) { state.AttributeIsMandatory = this.AttributeIsMandatory.Value; }
-            if (this.AttributeIsInstanceAttribute != null && this.AttributeIsInstanceAttribute.HasValue) { state.AttributeIsInstanceAttribute = this.AttributeIsInstanceAttribute.Value; }
             state.AttributeAttributeValueType = this.AttributeAttributeValueType;
             state.AttributeAttributeValueLength = this.AttributeAttributeValueLength;
             if (this.AttributeIsList != null && this.AttributeIsList.HasValue) { state.AttributeIsList = this.AttributeIsList.Value; }

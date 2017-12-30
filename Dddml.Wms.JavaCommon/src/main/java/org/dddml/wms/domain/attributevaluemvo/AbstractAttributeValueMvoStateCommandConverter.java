@@ -47,7 +47,6 @@ public abstract class AbstractAttributeValueMvoStateCommandConverter<TCreateAttr
         cmd.setAttributeOrganizationId(state.getAttributeOrganizationId());
         cmd.setAttributeDescription(state.getAttributeDescription());
         cmd.setAttributeIsMandatory(state.getAttributeIsMandatory());
-        cmd.setAttributeIsInstanceAttribute(state.getAttributeIsInstanceAttribute());
         cmd.setAttributeAttributeValueType(state.getAttributeAttributeValueType());
         cmd.setAttributeAttributeValueLength(state.getAttributeAttributeValueLength());
         cmd.setAttributeIsList(state.getAttributeIsList());
@@ -69,7 +68,6 @@ public abstract class AbstractAttributeValueMvoStateCommandConverter<TCreateAttr
         if (state.getAttributeOrganizationId() == null) { cmd.setIsPropertyAttributeOrganizationIdRemoved(true); }
         if (state.getAttributeDescription() == null) { cmd.setIsPropertyAttributeDescriptionRemoved(true); }
         if (state.getAttributeIsMandatory() == null) { cmd.setIsPropertyAttributeIsMandatoryRemoved(true); }
-        if (state.getAttributeIsInstanceAttribute() == null) { cmd.setIsPropertyAttributeIsInstanceAttributeRemoved(true); }
         if (state.getAttributeAttributeValueType() == null) { cmd.setIsPropertyAttributeAttributeValueTypeRemoved(true); }
         if (state.getAttributeAttributeValueLength() == null) { cmd.setIsPropertyAttributeAttributeValueLengthRemoved(true); }
         if (state.getAttributeIsList() == null) { cmd.setIsPropertyAttributeIsListRemoved(true); }
@@ -99,7 +97,6 @@ public abstract class AbstractAttributeValueMvoStateCommandConverter<TCreateAttr
         cmd.setAttributeOrganizationId(state.getAttributeOrganizationId());
         cmd.setAttributeDescription(state.getAttributeDescription());
         cmd.setAttributeIsMandatory(state.getAttributeIsMandatory());
-        cmd.setAttributeIsInstanceAttribute(state.getAttributeIsInstanceAttribute());
         cmd.setAttributeAttributeValueType(state.getAttributeAttributeValueType());
         cmd.setAttributeAttributeValueLength(state.getAttributeAttributeValueLength());
         cmd.setAttributeIsList(state.getAttributeIsList());

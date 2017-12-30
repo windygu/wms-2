@@ -329,6 +329,68 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             }
         }
 
+		public virtual bool? AttributeSetIsInstanceAttributeSet
+        {
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("AttributeSetIsInstanceAttributeSet"))
+                {
+                    return _state.AttributeSetIsInstanceAttributeSet;
+                }
+                return null;
+            }
+            set
+            {
+                if (value != null && value.HasValue)
+                {
+                    _state.AttributeSetIsInstanceAttributeSet = value.Value;
+                }
+            }
+        }
+
+        bool IAttributeUseMvoStateProperties.AttributeSetIsInstanceAttributeSet
+        {
+            get 
+            {
+                return (this._state as IAttributeUseMvoStateProperties).AttributeSetIsInstanceAttributeSet;
+            }
+            set 
+            {
+                (this._state as IAttributeUseMvoStateProperties).AttributeSetIsInstanceAttributeSet = value;
+            }
+        }
+
+		public virtual bool? AttributeSetIsMandatory
+        {
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("AttributeSetIsMandatory"))
+                {
+                    return _state.AttributeSetIsMandatory;
+                }
+                return null;
+            }
+            set
+            {
+                if (value != null && value.HasValue)
+                {
+                    _state.AttributeSetIsMandatory = value.Value;
+                }
+            }
+        }
+
+        bool IAttributeUseMvoStateProperties.AttributeSetIsMandatory
+        {
+            get 
+            {
+                return (this._state as IAttributeUseMvoStateProperties).AttributeSetIsMandatory;
+            }
+            set 
+            {
+                (this._state as IAttributeUseMvoStateProperties).AttributeSetIsMandatory = value;
+            }
+        }
+
 		public virtual string AttributeSetCreatedBy
 		{
             get

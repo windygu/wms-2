@@ -189,8 +189,6 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 
             this.AttributeIsMandatory = (e.AttributeIsMandatory != null && e.AttributeIsMandatory.HasValue) ? e.AttributeIsMandatory.Value : default(bool);
 
-            this.AttributeIsInstanceAttribute = (e.AttributeIsInstanceAttribute != null && e.AttributeIsInstanceAttribute.HasValue) ? e.AttributeIsInstanceAttribute.Value : default(bool);
-
 			this.AttributeAttributeValueType = e.AttributeAttributeValueType;
 
 			this.AttributeAttributeValueLength = e.AttributeAttributeValueLength;
@@ -308,18 +306,6 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 			else
 			{
 				this.AttributeIsMandatory = (e.AttributeIsMandatory != null && e.AttributeIsMandatory.HasValue) ? e.AttributeIsMandatory.Value : default(bool);
-			}
-
-			if (e.AttributeIsInstanceAttribute == null)
-			{
-				if (e.IsPropertyAttributeIsInstanceAttributeRemoved)
-				{
-					this.AttributeIsInstanceAttribute = default(bool);
-				}
-			}
-			else
-			{
-				this.AttributeIsInstanceAttribute = (e.AttributeIsInstanceAttribute != null && e.AttributeIsInstanceAttribute.HasValue) ? e.AttributeIsInstanceAttribute.Value : default(bool);
 			}
 
 			if (e.AttributeAttributeValueType == null)

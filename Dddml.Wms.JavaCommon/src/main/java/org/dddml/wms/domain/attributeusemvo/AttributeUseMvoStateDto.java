@@ -130,6 +130,30 @@ public class AttributeUseMvoStateDto
         this.attributeSetReferenceId = attributeSetReferenceId;
     }
 
+    private Boolean attributeSetIsInstanceAttributeSet;
+
+    public Boolean getAttributeSetIsInstanceAttributeSet()
+    {
+        return this.attributeSetIsInstanceAttributeSet;
+    }
+
+    public void setAttributeSetIsInstanceAttributeSet(Boolean attributeSetIsInstanceAttributeSet)
+    {
+        this.attributeSetIsInstanceAttributeSet = attributeSetIsInstanceAttributeSet;
+    }
+
+    private Boolean attributeSetIsMandatory;
+
+    public Boolean getAttributeSetIsMandatory()
+    {
+        return this.attributeSetIsMandatory;
+    }
+
+    public void setAttributeSetIsMandatory(Boolean attributeSetIsMandatory)
+    {
+        this.attributeSetIsMandatory = attributeSetIsMandatory;
+    }
+
     private String attributeSetCreatedBy;
 
     public String getAttributeSetCreatedBy()
@@ -317,6 +341,12 @@ public class AttributeUseMvoStateDto
             }
             if (returnedFieldsContains("AttributeSetReferenceId")) {
                 dto.setAttributeSetReferenceId(state.getAttributeSetReferenceId());
+            }
+            if (returnedFieldsContains("AttributeSetIsInstanceAttributeSet")) {
+                dto.setAttributeSetIsInstanceAttributeSet(state.getAttributeSetIsInstanceAttributeSet());
+            }
+            if (returnedFieldsContains("AttributeSetIsMandatory")) {
+                dto.setAttributeSetIsMandatory(state.getAttributeSetIsMandatory());
             }
             if (returnedFieldsContains("AttributeSetCreatedBy")) {
                 dto.setAttributeSetCreatedBy(state.getAttributeSetCreatedBy());

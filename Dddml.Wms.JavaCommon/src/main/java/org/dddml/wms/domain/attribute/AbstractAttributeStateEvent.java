@@ -80,18 +80,6 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
         this.isMandatory = isMandatory;
     }
 
-    private Boolean isInstanceAttribute;
-
-    public Boolean getIsInstanceAttribute()
-    {
-        return this.isInstanceAttribute;
-    }
-
-    public void setIsInstanceAttribute(Boolean isInstanceAttribute)
-    {
-        this.isInstanceAttribute = isInstanceAttribute;
-    }
-
     private String attributeValueType;
 
     public String getAttributeValueType()
@@ -448,16 +436,6 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
 
         public void setIsPropertyIsMandatoryRemoved(Boolean removed) {
             this.isPropertyIsMandatoryRemoved = removed;
-        }
-
-        private Boolean isPropertyIsInstanceAttributeRemoved;
-
-        public Boolean getIsPropertyIsInstanceAttributeRemoved() {
-            return this.isPropertyIsInstanceAttributeRemoved;
-        }
-
-        public void setIsPropertyIsInstanceAttributeRemoved(Boolean removed) {
-            this.isPropertyIsInstanceAttributeRemoved = removed;
         }
 
         private Boolean isPropertyAttributeValueTypeRemoved;

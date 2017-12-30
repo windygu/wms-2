@@ -659,6 +659,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Generated\NHibernate\Mappings\GenerateAggregatesNhv.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateAggregatesNhv.txt</LastGenOutput>
+      <LastOutputs>
+.\AttributeState.nhv.xml
+.\GenerateAggregatesNhv.txt
+</LastOutputs>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -998,6 +1006,9 @@
     <EmbeddedResource Include="Generated\NHibernate\Mappings\AttributeAliasMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\AttributeState.nhv.xml">
+      <DependentUpon>GenerateAggregatesNhv.tt</DependentUpon>
+    </EmbeddedResource>
     <Content Include="Generated\NHibernate\Mappings\GenerateAggregatesHbm.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAggregatesHbm.txt</LastGenOutput>
@@ -1335,6 +1346,11 @@
     <EmbeddedResource Include="Generated\NHibernate\Mappings\PhysicalInventoryLineMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
+    <Content Include="Generated\NHibernate\Mappings\GenerateAggregatesNhv.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateAggregatesNhv.tt</DependentUpon>
+    </Content>
     <Content Include="LoadBoundedContext.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>LoadBoundedContext.txt</LastGenOutput>

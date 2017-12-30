@@ -34,6 +34,8 @@ public class AttributeSetStateEventDtoConverter {
         dto.setSerialNumberAttributeId(e.getSerialNumberAttributeId());
         dto.setLotAttributeId(e.getLotAttributeId());
         dto.setReferenceId(e.getReferenceId());
+        dto.setIsInstanceAttributeSet(e.getIsInstanceAttributeSet());
+        dto.setIsMandatory(e.getIsMandatory());
         dto.setActive(e.getActive());
         List<AttributeUseStateEventDto.AttributeUseStateCreatedDto> attributeUseEvents = new ArrayList<>();
         for (AttributeUseStateEvent.AttributeUseStateCreated ee : e.getAttributeUseEvents()) {
@@ -57,6 +59,8 @@ public class AttributeSetStateEventDtoConverter {
         dto.setSerialNumberAttributeId(e.getSerialNumberAttributeId());
         dto.setLotAttributeId(e.getLotAttributeId());
         dto.setReferenceId(e.getReferenceId());
+        dto.setIsInstanceAttributeSet(e.getIsInstanceAttributeSet());
+        dto.setIsMandatory(e.getIsMandatory());
         dto.setActive(e.getActive());
         dto.setIsPropertyAttributeSetNameRemoved(e.getIsPropertyAttributeSetNameRemoved());
         dto.setIsPropertyOrganizationIdRemoved(e.getIsPropertyOrganizationIdRemoved());
@@ -64,6 +68,8 @@ public class AttributeSetStateEventDtoConverter {
         dto.setIsPropertySerialNumberAttributeIdRemoved(e.getIsPropertySerialNumberAttributeIdRemoved());
         dto.setIsPropertyLotAttributeIdRemoved(e.getIsPropertyLotAttributeIdRemoved());
         dto.setIsPropertyReferenceIdRemoved(e.getIsPropertyReferenceIdRemoved());
+        dto.setIsPropertyIsInstanceAttributeSetRemoved(e.getIsPropertyIsInstanceAttributeSetRemoved());
+        dto.setIsPropertyIsMandatoryRemoved(e.getIsPropertyIsMandatoryRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
         List<AttributeUseStateEventDto> attributeUseEvents = new ArrayList<>();
         for (AttributeUseStateEvent ee : e.getAttributeUseEvents()) {

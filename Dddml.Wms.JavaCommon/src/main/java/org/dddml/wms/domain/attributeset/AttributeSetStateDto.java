@@ -93,6 +93,30 @@ public class AttributeSetStateDto
         this.referenceId = referenceId;
     }
 
+    private Boolean isInstanceAttributeSet;
+
+    public Boolean getIsInstanceAttributeSet()
+    {
+        return this.isInstanceAttributeSet;
+    }
+
+    public void setIsInstanceAttributeSet(Boolean isInstanceAttributeSet)
+    {
+        this.isInstanceAttributeSet = isInstanceAttributeSet;
+    }
+
+    private Boolean isMandatory;
+
+    public Boolean getIsMandatory()
+    {
+        return this.isMandatory;
+    }
+
+    public void setIsMandatory(Boolean isMandatory)
+    {
+        this.isMandatory = isMandatory;
+    }
+
     private Boolean active;
 
     public Boolean getActive()
@@ -223,6 +247,12 @@ public class AttributeSetStateDto
             }
             if (returnedFieldsContains("ReferenceId")) {
                 dto.setReferenceId(state.getReferenceId());
+            }
+            if (returnedFieldsContains("IsInstanceAttributeSet")) {
+                dto.setIsInstanceAttributeSet(state.getIsInstanceAttributeSet());
+            }
+            if (returnedFieldsContains("IsMandatory")) {
+                dto.setIsMandatory(state.getIsMandatory());
             }
             if (returnedFieldsContains("Active")) {
                 dto.setActive(state.getActive());

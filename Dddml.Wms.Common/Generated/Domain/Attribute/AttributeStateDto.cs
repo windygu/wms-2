@@ -45,12 +45,6 @@ namespace Dddml.Wms.Domain.Attribute
             set;
         }
 
-        public virtual bool? IsInstanceAttribute
-        {
-            get;
-            set;
-        }
-
         public virtual string AttributeValueType
         {
             get;
@@ -149,7 +143,6 @@ namespace Dddml.Wms.Domain.Attribute
             state.OrganizationId = this.OrganizationId;
             state.Description = this.Description;
             if (this.IsMandatory != null && this.IsMandatory.HasValue) { state.IsMandatory = this.IsMandatory.Value; }
-            if (this.IsInstanceAttribute != null && this.IsInstanceAttribute.HasValue) { state.IsInstanceAttribute = this.IsInstanceAttribute.Value; }
             state.AttributeValueType = this.AttributeValueType;
             state.AttributeValueLength = this.AttributeValueLength;
             if (this.IsList != null && this.IsList.HasValue) { state.IsList = this.IsList.Value; }

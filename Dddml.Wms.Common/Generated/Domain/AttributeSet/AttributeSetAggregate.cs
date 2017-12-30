@@ -113,6 +113,8 @@ namespace Dddml.Wms.Domain.AttributeSet
             e.SerialNumberAttributeId = c.SerialNumberAttributeId;
             e.LotAttributeId = c.LotAttributeId;
             e.ReferenceId = c.ReferenceId;
+            e.IsInstanceAttributeSet = c.IsInstanceAttributeSet;
+            e.IsMandatory = c.IsMandatory;
             e.Active = c.Active;
             e.CommandId = c.CommandId;
 
@@ -144,6 +146,8 @@ namespace Dddml.Wms.Domain.AttributeSet
             e.SerialNumberAttributeId = c.SerialNumberAttributeId;
             e.LotAttributeId = c.LotAttributeId;
             e.ReferenceId = c.ReferenceId;
+            e.IsInstanceAttributeSet = c.IsInstanceAttributeSet;
+            e.IsMandatory = c.IsMandatory;
             e.Active = c.Active;
             e.IsPropertyAttributeSetNameRemoved = c.IsPropertyAttributeSetNameRemoved;
             e.IsPropertyOrganizationIdRemoved = c.IsPropertyOrganizationIdRemoved;
@@ -151,6 +155,8 @@ namespace Dddml.Wms.Domain.AttributeSet
             e.IsPropertySerialNumberAttributeIdRemoved = c.IsPropertySerialNumberAttributeIdRemoved;
             e.IsPropertyLotAttributeIdRemoved = c.IsPropertyLotAttributeIdRemoved;
             e.IsPropertyReferenceIdRemoved = c.IsPropertyReferenceIdRemoved;
+            e.IsPropertyIsInstanceAttributeSetRemoved = c.IsPropertyIsInstanceAttributeSetRemoved;
+            e.IsPropertyIsMandatoryRemoved = c.IsPropertyIsMandatoryRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
             e.CommandId = c.CommandId;

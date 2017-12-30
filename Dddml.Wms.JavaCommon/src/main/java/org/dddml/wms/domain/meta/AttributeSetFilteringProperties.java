@@ -18,6 +18,8 @@ public final class AttributeSetFilteringProperties
             "serialNumberAttributeId",
             "lotAttributeId",
             "referenceId",
+            "isInstanceAttributeSet",
+            "isMandatory",
             "version",
             "createdBy",
             "createdAt",
@@ -35,6 +37,8 @@ public final class AttributeSetFilteringProperties
             "String",
             "String",
             "String",
+            "Boolean",
+            "Boolean",
             "Long",
             "String",
             "Date",
@@ -70,6 +74,10 @@ public final class AttributeSetFilteringProperties
         aliasMap.put("LotAttributeId", "lotAttributeId");
         aliasMap.put("referenceId", "referenceId");
         aliasMap.put("ReferenceId", "referenceId");
+        aliasMap.put("isInstanceAttributeSet", "isInstanceAttributeSet");
+        aliasMap.put("IsInstanceAttributeSet", "isInstanceAttributeSet");
+        aliasMap.put("isMandatory", "isMandatory");
+        aliasMap.put("IsMandatory", "isMandatory");
         aliasMap.put("version", "version");
         aliasMap.put("Version", "version");
         aliasMap.put("createdBy", "createdBy");

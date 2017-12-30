@@ -37,6 +37,14 @@ public interface AttributeSetStateEvent extends Event
 
     void setReferenceId(String referenceId);
 
+    Boolean getIsInstanceAttributeSet();
+
+    void setIsInstanceAttributeSet(Boolean isInstanceAttributeSet);
+
+    Boolean getIsMandatory();
+
+    void setIsMandatory(Boolean isMandatory);
+
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -90,6 +98,14 @@ public interface AttributeSetStateEvent extends Event
         Boolean getIsPropertyReferenceIdRemoved();
 
         void setIsPropertyReferenceIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyIsInstanceAttributeSetRemoved();
+
+        void setIsPropertyIsInstanceAttributeSetRemoved(Boolean removed);
+
+        Boolean getIsPropertyIsMandatoryRemoved();
+
+        void setIsPropertyIsMandatoryRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

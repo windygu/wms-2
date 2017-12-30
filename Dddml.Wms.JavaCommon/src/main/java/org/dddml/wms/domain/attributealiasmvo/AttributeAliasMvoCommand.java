@@ -69,10 +69,6 @@ public interface AttributeAliasMvoCommand extends Command
 
         void setAttributeIsMandatory(Boolean attributeIsMandatory);
 
-        Boolean getAttributeIsInstanceAttribute();
-
-        void setAttributeIsInstanceAttribute(Boolean attributeIsInstanceAttribute);
-
         String getAttributeAttributeValueType();
 
         void setAttributeAttributeValueType(String attributeAttributeValueType);
@@ -152,10 +148,6 @@ public interface AttributeAliasMvoCommand extends Command
         Boolean getIsPropertyAttributeIsMandatoryRemoved();
 
         void setIsPropertyAttributeIsMandatoryRemoved(Boolean removed);
-
-        Boolean getIsPropertyAttributeIsInstanceAttributeRemoved();
-
-        void setIsPropertyAttributeIsInstanceAttributeRemoved(Boolean removed);
 
         Boolean getIsPropertyAttributeAttributeValueTypeRemoved();
 

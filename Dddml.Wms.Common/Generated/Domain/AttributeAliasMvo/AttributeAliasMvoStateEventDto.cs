@@ -57,8 +57,6 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 
 		public virtual bool? AttributeIsMandatory { get; set; }
 
-		public virtual bool? AttributeIsInstanceAttribute { get; set; }
-
 		public virtual string AttributeAttributeValueType { get; set; }
 
 		public virtual int? AttributeAttributeValueLength { get; set; }
@@ -240,25 +238,6 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
             set 
             {
                 this.IsPropertyAttributeIsMandatoryRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyAttributeIsInstanceAttributeRemoved { get; set; }
-
-        bool IAttributeAliasMvoStateMergePatched.IsPropertyAttributeIsInstanceAttributeRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyAttributeIsInstanceAttributeRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyAttributeIsInstanceAttributeRemoved = value;
             }
         }
 

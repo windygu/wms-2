@@ -44,12 +44,6 @@ namespace Dddml.Wms.Domain.Attribute
             set;
         }
 
-        bool? IsInstanceAttribute
-        {
-            get;
-            set;
-        }
-
         string AttributeValueType
         {
             get;

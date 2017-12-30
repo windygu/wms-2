@@ -26,7 +26,7 @@ public class HibernateAttributeStateRepository implements AttributeStateReposito
         return this.sessionFactory.getCurrentSession();
     }
     
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("AttributeId", "AttributeName", "OrganizationId", "Description", "IsMandatory", "IsInstanceAttribute", "AttributeValueType", "AttributeValueLength", "IsList", "FieldName", "ReferenceId", "AttributeValues", "Aliases", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("AttributeId", "AttributeName", "OrganizationId", "Description", "IsMandatory", "AttributeValueType", "AttributeValueLength", "IsList", "FieldName", "ReferenceId", "AttributeValues", "Aliases", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     

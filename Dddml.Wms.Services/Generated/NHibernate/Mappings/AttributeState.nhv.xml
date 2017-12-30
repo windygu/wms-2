@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<nhv-mapping xmlns="urn:nhibernate-validator-1.0">
+  <class name="Dddml.Wms.Domain.Attribute.AttributeState, Dddml.Wms.Common">
+    
+
+    <property name="AttributeId">
+
+      <pattern regex="^[\(A-Za-z0-9][A-Za-z0-9]*" message="Must match AttributeId"/>
+    </property>
+
+
+    
+  </class>  
+</nhv-mapping>

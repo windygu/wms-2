@@ -182,37 +182,6 @@ namespace Dddml.Wms.Domain.Attribute
             }
         }
 
-		public virtual bool? IsInstanceAttribute
-        {
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("IsInstanceAttribute"))
-                {
-                    return _state.IsInstanceAttribute;
-                }
-                return null;
-            }
-            set
-            {
-                if (value != null && value.HasValue)
-                {
-                    _state.IsInstanceAttribute = value.Value;
-                }
-            }
-        }
-
-        bool IAttributeStateProperties.IsInstanceAttribute
-        {
-            get 
-            {
-                return (this._state as IAttributeStateProperties).IsInstanceAttribute;
-            }
-            set 
-            {
-                (this._state as IAttributeStateProperties).IsInstanceAttribute = value;
-            }
-        }
-
 		public virtual string AttributeValueType
 		{
             get

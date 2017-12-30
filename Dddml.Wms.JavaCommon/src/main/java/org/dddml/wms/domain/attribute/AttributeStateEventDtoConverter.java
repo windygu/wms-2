@@ -32,7 +32,6 @@ public class AttributeStateEventDtoConverter {
         dto.setOrganizationId(e.getOrganizationId());
         dto.setDescription(e.getDescription());
         dto.setIsMandatory(e.getIsMandatory());
-        dto.setIsInstanceAttribute(e.getIsInstanceAttribute());
         dto.setAttributeValueType(e.getAttributeValueType());
         dto.setAttributeValueLength(e.getAttributeValueLength());
         dto.setIsList(e.getIsList());
@@ -66,7 +65,6 @@ public class AttributeStateEventDtoConverter {
         dto.setOrganizationId(e.getOrganizationId());
         dto.setDescription(e.getDescription());
         dto.setIsMandatory(e.getIsMandatory());
-        dto.setIsInstanceAttribute(e.getIsInstanceAttribute());
         dto.setAttributeValueType(e.getAttributeValueType());
         dto.setAttributeValueLength(e.getAttributeValueLength());
         dto.setIsList(e.getIsList());
@@ -77,7 +75,6 @@ public class AttributeStateEventDtoConverter {
         dto.setIsPropertyOrganizationIdRemoved(e.getIsPropertyOrganizationIdRemoved());
         dto.setIsPropertyDescriptionRemoved(e.getIsPropertyDescriptionRemoved());
         dto.setIsPropertyIsMandatoryRemoved(e.getIsPropertyIsMandatoryRemoved());
-        dto.setIsPropertyIsInstanceAttributeRemoved(e.getIsPropertyIsInstanceAttributeRemoved());
         dto.setIsPropertyAttributeValueTypeRemoved(e.getIsPropertyAttributeValueTypeRemoved());
         dto.setIsPropertyAttributeValueLengthRemoved(e.getIsPropertyAttributeValueLengthRemoved());
         dto.setIsPropertyIsListRemoved(e.getIsPropertyIsListRemoved());

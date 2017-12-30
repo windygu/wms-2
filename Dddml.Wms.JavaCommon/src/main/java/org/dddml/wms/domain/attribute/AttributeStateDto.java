@@ -69,18 +69,6 @@ public class AttributeStateDto
         this.isMandatory = isMandatory;
     }
 
-    private Boolean isInstanceAttribute;
-
-    public Boolean getIsInstanceAttribute()
-    {
-        return this.isInstanceAttribute;
-    }
-
-    public void setIsInstanceAttribute(Boolean isInstanceAttribute)
-    {
-        this.isInstanceAttribute = isInstanceAttribute;
-    }
-
     private String attributeValueType;
 
     public String getAttributeValueType()
@@ -277,9 +265,6 @@ public class AttributeStateDto
             }
             if (returnedFieldsContains("IsMandatory")) {
                 dto.setIsMandatory(state.getIsMandatory());
-            }
-            if (returnedFieldsContains("IsInstanceAttribute")) {
-                dto.setIsInstanceAttribute(state.getIsInstanceAttribute());
             }
             if (returnedFieldsContains("AttributeValueType")) {
                 dto.setAttributeValueType(state.getAttributeValueType());

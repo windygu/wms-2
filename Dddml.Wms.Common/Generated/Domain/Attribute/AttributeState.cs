@@ -230,8 +230,6 @@ namespace Dddml.Wms.Domain.Attribute
 
             this.IsMandatory = (e.IsMandatory != null && e.IsMandatory.HasValue) ? e.IsMandatory.Value : default(bool);
 
-            this.IsInstanceAttribute = (e.IsInstanceAttribute != null && e.IsInstanceAttribute.HasValue) ? e.IsInstanceAttribute.Value : default(bool);
-
 			this.AttributeValueType = e.AttributeValueType;
 
 			this.AttributeValueLength = e.AttributeValueLength;
@@ -311,18 +309,6 @@ namespace Dddml.Wms.Domain.Attribute
 			else
 			{
 				this.IsMandatory = (e.IsMandatory != null && e.IsMandatory.HasValue) ? e.IsMandatory.Value : default(bool);
-			}
-
-			if (e.IsInstanceAttribute == null)
-			{
-				if (e.IsPropertyIsInstanceAttributeRemoved)
-				{
-					this.IsInstanceAttribute = default(bool);
-				}
-			}
-			else
-			{
-				this.IsInstanceAttribute = (e.IsInstanceAttribute != null && e.IsInstanceAttribute.HasValue) ? e.IsInstanceAttribute.Value : default(bool);
 			}
 
 			if (e.AttributeValueType == null)

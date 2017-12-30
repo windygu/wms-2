@@ -53,18 +53,6 @@ public class CreateOrMergePatchAttributeDto extends AbstractAttributeCommandDto
         this.isMandatory = isMandatory;
     }
 
-    private Boolean isInstanceAttribute;
-
-    public Boolean getIsInstanceAttribute()
-    {
-        return this.isInstanceAttribute;
-    }
-
-    public void setIsInstanceAttribute(Boolean isInstanceAttribute)
-    {
-        this.isInstanceAttribute = isInstanceAttribute;
-    }
-
     private String attributeValueType;
 
     public String getAttributeValueType()
@@ -209,18 +197,6 @@ public class CreateOrMergePatchAttributeDto extends AbstractAttributeCommandDto
         this.isPropertyIsMandatoryRemoved = removed;
     }
 
-    private Boolean isPropertyIsInstanceAttributeRemoved;
-
-    public Boolean getIsPropertyIsInstanceAttributeRemoved()
-    {
-        return this.isPropertyIsInstanceAttributeRemoved;
-    }
-
-    public void setIsPropertyIsInstanceAttributeRemoved(Boolean removed)
-    {
-        this.isPropertyIsInstanceAttributeRemoved = removed;
-    }
-
     private Boolean isPropertyAttributeValueTypeRemoved;
 
     public Boolean getIsPropertyAttributeValueTypeRemoved()
@@ -300,7 +276,6 @@ public class CreateOrMergePatchAttributeDto extends AbstractAttributeCommandDto
         command.setOrganizationId(this.getOrganizationId());
         command.setDescription(this.getDescription());
         command.setIsMandatory(this.getIsMandatory());
-        command.setIsInstanceAttribute(this.getIsInstanceAttribute());
         command.setAttributeValueType(this.getAttributeValueType());
         command.setAttributeValueLength(this.getAttributeValueLength());
         command.setIsList(this.getIsList());
@@ -355,7 +330,6 @@ public class CreateOrMergePatchAttributeDto extends AbstractAttributeCommandDto
         command.setIsPropertyOrganizationIdRemoved(this.getIsPropertyOrganizationIdRemoved());
         command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
         command.setIsPropertyIsMandatoryRemoved(this.getIsPropertyIsMandatoryRemoved());
-        command.setIsPropertyIsInstanceAttributeRemoved(this.getIsPropertyIsInstanceAttributeRemoved());
         command.setIsPropertyAttributeValueTypeRemoved(this.getIsPropertyAttributeValueTypeRemoved());
         command.setIsPropertyAttributeValueLengthRemoved(this.getIsPropertyAttributeValueLengthRemoved());
         command.setIsPropertyIsListRemoved(this.getIsPropertyIsListRemoved());

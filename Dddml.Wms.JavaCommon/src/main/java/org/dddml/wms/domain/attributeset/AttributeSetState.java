@@ -40,6 +40,14 @@ public interface AttributeSetState
 
     void setReferenceId(String referenceId);
 
+    Boolean getIsInstanceAttributeSet();
+
+    void setIsInstanceAttributeSet(Boolean isInstanceAttributeSet);
+
+    Boolean getIsMandatory();
+
+    void setIsMandatory(Boolean isMandatory);
+
     Long getVersion();
 
     void setVersion(Long version);

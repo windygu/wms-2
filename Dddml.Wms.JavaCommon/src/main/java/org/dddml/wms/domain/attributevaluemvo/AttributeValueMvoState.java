@@ -73,10 +73,6 @@ public interface AttributeValueMvoState
 
     void setAttributeIsMandatory(Boolean attributeIsMandatory);
 
-    Boolean getAttributeIsInstanceAttribute();
-
-    void setAttributeIsInstanceAttribute(Boolean attributeIsInstanceAttribute);
-
     String getAttributeAttributeValueType();
 
     void setAttributeAttributeValueType(String attributeAttributeValueType);

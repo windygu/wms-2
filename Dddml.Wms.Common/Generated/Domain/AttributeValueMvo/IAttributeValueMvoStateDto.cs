@@ -76,12 +76,6 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
             set;
         }
 
-        bool? AttributeIsInstanceAttribute
-        {
-            get;
-            set;
-        }
-
         string AttributeAttributeValueType
         {
             get;

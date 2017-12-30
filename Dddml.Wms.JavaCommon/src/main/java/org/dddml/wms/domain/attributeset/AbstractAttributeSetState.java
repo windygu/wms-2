@@ -93,6 +93,30 @@ public abstract class AbstractAttributeSetState implements AttributeSetState, Sa
         this.referenceId = referenceId;
     }
 
+    private Boolean isInstanceAttributeSet;
+
+    public Boolean getIsInstanceAttributeSet()
+    {
+        return this.isInstanceAttributeSet;
+    }
+
+    public void setIsInstanceAttributeSet(Boolean isInstanceAttributeSet)
+    {
+        this.isInstanceAttributeSet = isInstanceAttributeSet;
+    }
+
+    private Boolean isMandatory;
+
+    public Boolean getIsMandatory()
+    {
+        return this.isMandatory;
+    }
+
+    public void setIsMandatory(Boolean isMandatory)
+    {
+        this.isMandatory = isMandatory;
+    }
+
     private Long version;
 
     public Long getVersion()
@@ -260,6 +284,8 @@ public abstract class AbstractAttributeSetState implements AttributeSetState, Sa
         this.setSerialNumberAttributeId(e.getSerialNumberAttributeId());
         this.setLotAttributeId(e.getLotAttributeId());
         this.setReferenceId(e.getReferenceId());
+        this.setIsInstanceAttributeSet(e.getIsInstanceAttributeSet());
+        this.setIsMandatory(e.getIsMandatory());
         this.setActive(e.getActive());
 
         this.setDeleted(false);
@@ -342,6 +368,28 @@ public abstract class AbstractAttributeSetState implements AttributeSetState, Sa
         else
         {
             this.setReferenceId(e.getReferenceId());
+        }
+        if (e.getIsInstanceAttributeSet() == null)
+        {
+            if (e.getIsPropertyIsInstanceAttributeSetRemoved() != null && e.getIsPropertyIsInstanceAttributeSetRemoved())
+            {
+                this.setIsInstanceAttributeSet(null);
+            }
+        }
+        else
+        {
+            this.setIsInstanceAttributeSet(e.getIsInstanceAttributeSet());
+        }
+        if (e.getIsMandatory() == null)
+        {
+            if (e.getIsPropertyIsMandatoryRemoved() != null && e.getIsPropertyIsMandatoryRemoved())
+            {
+                this.setIsMandatory(null);
+            }
+        }
+        else
+        {
+            this.setIsMandatory(e.getIsMandatory());
         }
         if (e.getActive() == null)
         {

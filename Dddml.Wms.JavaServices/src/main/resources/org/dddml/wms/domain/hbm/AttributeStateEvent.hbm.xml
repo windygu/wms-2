@@ -19,7 +19,6 @@
 	<property name="organizationId" ></property>
 	<property name="description" ></property>
 	<property name="isMandatory" ></property>
-	<property name="isInstanceAttribute" ></property>
 	<property name="attributeValueType" ></property>
 	<property name="attributeValueLength" ></property>
 	<property name="isList" ></property>
@@ -46,8 +45,6 @@
         <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
 
         <property name="isPropertyIsMandatoryRemoved" column="IsPropertyIsMandatoryRemoved"/>
-
-        <property name="isPropertyIsInstanceAttributeRemoved" column="IsPropertyIsInstanceAttributeRemoved"/>
 
         <property name="isPropertyAttributeValueTypeRemoved" column="IsPropertyAttributeValueTypeRemoved"/>
 

@@ -77,6 +77,18 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             set;
         }
 
+        public virtual bool? AttributeSetIsInstanceAttributeSet
+        {
+            get;
+            set;
+        }
+
+        public virtual bool? AttributeSetIsMandatory
+        {
+            get;
+            set;
+        }
+
         public virtual string AttributeSetCreatedBy
         {
             get;
@@ -156,6 +168,8 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             state.AttributeSetSerialNumberAttributeId = this.AttributeSetSerialNumberAttributeId;
             state.AttributeSetLotAttributeId = this.AttributeSetLotAttributeId;
             state.AttributeSetReferenceId = this.AttributeSetReferenceId;
+            if (this.AttributeSetIsInstanceAttributeSet != null && this.AttributeSetIsInstanceAttributeSet.HasValue) { state.AttributeSetIsInstanceAttributeSet = this.AttributeSetIsInstanceAttributeSet.Value; }
+            if (this.AttributeSetIsMandatory != null && this.AttributeSetIsMandatory.HasValue) { state.AttributeSetIsMandatory = this.AttributeSetIsMandatory.Value; }
             state.AttributeSetCreatedBy = this.AttributeSetCreatedBy;
             if (this.AttributeSetCreatedAt != null && this.AttributeSetCreatedAt.HasValue) { state.AttributeSetCreatedAt = this.AttributeSetCreatedAt.Value; }
             state.AttributeSetUpdatedBy = this.AttributeSetUpdatedBy;

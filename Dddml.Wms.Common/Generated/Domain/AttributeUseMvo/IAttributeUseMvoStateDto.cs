@@ -76,6 +76,18 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             set;
         }
 
+        bool? AttributeSetIsInstanceAttributeSet
+        {
+            get;
+            set;
+        }
+
+        bool? AttributeSetIsMandatory
+        {
+            get;
+            set;
+        }
+
         string AttributeSetCreatedBy
         {
             get;

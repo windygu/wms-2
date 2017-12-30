@@ -56,10 +56,6 @@ public interface AttributeCommand extends Command
 
         void setIsMandatory(Boolean isMandatory);
 
-        Boolean getIsInstanceAttribute();
-
-        void setIsInstanceAttribute(Boolean isInstanceAttribute);
-
         String getAttributeValueType();
 
         void setAttributeValueType(String attributeValueType);
@@ -115,10 +111,6 @@ public interface AttributeCommand extends Command
         Boolean getIsPropertyIsMandatoryRemoved();
 
         void setIsPropertyIsMandatoryRemoved(Boolean removed);
-
-        Boolean getIsPropertyIsInstanceAttributeRemoved();
-
-        void setIsPropertyIsInstanceAttributeRemoved(Boolean removed);
 
         Boolean getIsPropertyAttributeValueTypeRemoved();
 

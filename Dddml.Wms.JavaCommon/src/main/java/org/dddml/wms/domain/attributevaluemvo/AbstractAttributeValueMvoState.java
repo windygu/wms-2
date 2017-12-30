@@ -190,18 +190,6 @@ public abstract class AbstractAttributeValueMvoState implements AttributeValueMv
         this.attributeIsMandatory = attributeIsMandatory;
     }
 
-    private Boolean attributeIsInstanceAttribute;
-
-    public Boolean getAttributeIsInstanceAttribute()
-    {
-        return this.attributeIsInstanceAttribute;
-    }
-
-    public void setAttributeIsInstanceAttribute(Boolean attributeIsInstanceAttribute)
-    {
-        this.attributeIsInstanceAttribute = attributeIsInstanceAttribute;
-    }
-
     private String attributeAttributeValueType;
 
     public String getAttributeAttributeValueType()
@@ -419,7 +407,6 @@ public abstract class AbstractAttributeValueMvoState implements AttributeValueMv
         this.setAttributeOrganizationId(e.getAttributeOrganizationId());
         this.setAttributeDescription(e.getAttributeDescription());
         this.setAttributeIsMandatory(e.getAttributeIsMandatory());
-        this.setAttributeIsInstanceAttribute(e.getAttributeIsInstanceAttribute());
         this.setAttributeAttributeValueType(e.getAttributeAttributeValueType());
         this.setAttributeAttributeValueLength(e.getAttributeAttributeValueLength());
         this.setAttributeIsList(e.getAttributeIsList());
@@ -541,17 +528,6 @@ public abstract class AbstractAttributeValueMvoState implements AttributeValueMv
         else
         {
             this.setAttributeIsMandatory(e.getAttributeIsMandatory());
-        }
-        if (e.getAttributeIsInstanceAttribute() == null)
-        {
-            if (e.getIsPropertyAttributeIsInstanceAttributeRemoved() != null && e.getIsPropertyAttributeIsInstanceAttributeRemoved())
-            {
-                this.setAttributeIsInstanceAttribute(null);
-            }
-        }
-        else
-        {
-            this.setAttributeIsInstanceAttribute(e.getAttributeIsInstanceAttribute());
         }
         if (e.getAttributeAttributeValueType() == null)
         {

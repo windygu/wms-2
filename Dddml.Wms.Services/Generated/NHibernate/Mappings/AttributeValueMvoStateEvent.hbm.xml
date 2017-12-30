@@ -21,7 +21,6 @@
     <property name="AttributeOrganizationId" ></property>
     <property name="AttributeDescription" ></property>
     <property name="AttributeIsMandatory" ></property>
-    <property name="AttributeIsInstanceAttribute" ></property>
     <property name="AttributeAttributeValueType" ></property>
     <property name="AttributeAttributeValueLength" ></property>
     <property name="AttributeIsList" ></property>
@@ -62,8 +61,6 @@
         <property name="IsPropertyAttributeDescriptionRemoved" column="IsPropertyAttributeDescriptionRemoved"/>
 
         <property name="IsPropertyAttributeIsMandatoryRemoved" column="IsPropertyAttributeIsMandatoryRemoved"/>
-
-        <property name="IsPropertyAttributeIsInstanceAttributeRemoved" column="IsPropertyAttributeIsInstanceAttributeRemoved"/>
 
         <property name="IsPropertyAttributeAttributeValueTypeRemoved" column="IsPropertyAttributeAttributeValueTypeRemoved"/>
 

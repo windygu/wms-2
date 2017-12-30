@@ -52,7 +52,6 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
             dto.AttributeOrganizationId = e.AttributeOrganizationId;
             dto.AttributeDescription = e.AttributeDescription;
             dto.AttributeIsMandatory = e.AttributeIsMandatory;
-            dto.AttributeIsInstanceAttribute = e.AttributeIsInstanceAttribute;
             dto.AttributeAttributeValueType = e.AttributeAttributeValueType;
             dto.AttributeAttributeValueLength = e.AttributeAttributeValueLength;
             dto.AttributeIsList = e.AttributeIsList;
@@ -83,7 +82,6 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
             dto.AttributeOrganizationId = e.AttributeOrganizationId;
             dto.AttributeDescription = e.AttributeDescription;
             dto.AttributeIsMandatory = e.AttributeIsMandatory;
-            dto.AttributeIsInstanceAttribute = e.AttributeIsInstanceAttribute;
             dto.AttributeAttributeValueType = e.AttributeAttributeValueType;
             dto.AttributeAttributeValueLength = e.AttributeAttributeValueLength;
             dto.AttributeIsList = e.AttributeIsList;
@@ -104,7 +102,6 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
             dto.IsPropertyAttributeOrganizationIdRemoved = e.IsPropertyAttributeOrganizationIdRemoved;
             dto.IsPropertyAttributeDescriptionRemoved = e.IsPropertyAttributeDescriptionRemoved;
             dto.IsPropertyAttributeIsMandatoryRemoved = e.IsPropertyAttributeIsMandatoryRemoved;
-            dto.IsPropertyAttributeIsInstanceAttributeRemoved = e.IsPropertyAttributeIsInstanceAttributeRemoved;
             dto.IsPropertyAttributeAttributeValueTypeRemoved = e.IsPropertyAttributeAttributeValueTypeRemoved;
             dto.IsPropertyAttributeAttributeValueLengthRemoved = e.IsPropertyAttributeAttributeValueLengthRemoved;
             dto.IsPropertyAttributeIsListRemoved = e.IsPropertyAttributeIsListRemoved;

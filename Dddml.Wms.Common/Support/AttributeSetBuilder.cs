@@ -397,7 +397,7 @@ namespace Dddml.Wms.Support
             a.AttributeValueType = aValueType;
             a.IsList = isList;
             a.Active = true;
-            a.IsInstanceAttribute = true;
+            //a.IsInstanceAttribute = true;
             SetAttributeByAttributeAttribute(memberInfo, a);
             SetAttributeByDescriptionAttribute(memberInfo, a);
             a.AttributeId = this._theIdGenerator.GenerateAttributeId(a);
@@ -415,7 +415,7 @@ namespace Dddml.Wms.Support
                 if (!String.IsNullOrEmpty(aa.AttributeValueType))
                 { a.AttributeValueType = aa.AttributeValueType; }
                 a.Active = aa.IsActive;
-                a.IsInstanceAttribute = aa.IsInstanceAttribute;
+                //a.IsInstanceAttribute = aa.IsInstanceAttribute;
                 // ////////////////////////////
                 if (aa.Aliases != null)
                 {

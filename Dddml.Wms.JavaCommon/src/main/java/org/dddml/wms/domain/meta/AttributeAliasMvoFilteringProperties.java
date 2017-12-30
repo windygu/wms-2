@@ -23,7 +23,6 @@ public final class AttributeAliasMvoFilteringProperties
             "attributeOrganizationId",
             "attributeDescription",
             "attributeIsMandatory",
-            "attributeIsInstanceAttribute",
             "attributeAttributeValueType",
             "attributeAttributeValueLength",
             "attributeIsList",
@@ -52,7 +51,6 @@ public final class AttributeAliasMvoFilteringProperties
             "String",
             "String",
             "String",
-            "Boolean",
             "Boolean",
             "String",
             "Integer",
@@ -106,8 +104,6 @@ public final class AttributeAliasMvoFilteringProperties
         aliasMap.put("AttributeDescription", "attributeDescription");
         aliasMap.put("attributeIsMandatory", "attributeIsMandatory");
         aliasMap.put("AttributeIsMandatory", "attributeIsMandatory");
-        aliasMap.put("attributeIsInstanceAttribute", "attributeIsInstanceAttribute");
-        aliasMap.put("AttributeIsInstanceAttribute", "attributeIsInstanceAttribute");
         aliasMap.put("attributeAttributeValueType", "attributeAttributeValueType");
         aliasMap.put("AttributeAttributeValueType", "attributeAttributeValueType");
         aliasMap.put("attributeAttributeValueLength", "attributeAttributeValueLength");

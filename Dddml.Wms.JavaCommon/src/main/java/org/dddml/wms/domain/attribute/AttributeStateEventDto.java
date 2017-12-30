@@ -74,16 +74,6 @@ public class AttributeStateEventDto extends AbstractStateEvent
         this.isMandatory = isMandatory;
     }
 
-    private Boolean isInstanceAttribute;
-
-    public Boolean getIsInstanceAttribute() {
-        return this.isInstanceAttribute;
-    }
-
-    public void setIsInstanceAttribute(Boolean isInstanceAttribute) {
-        this.isInstanceAttribute = isInstanceAttribute;
-    }
-
     private String attributeValueType;
 
     public String getAttributeValueType() {
@@ -202,16 +192,6 @@ public class AttributeStateEventDto extends AbstractStateEvent
 
     public void setIsPropertyIsMandatoryRemoved(Boolean removed) {
         this.isPropertyIsMandatoryRemoved = removed;
-    }
-
-    private Boolean isPropertyIsInstanceAttributeRemoved;
-
-    public Boolean getIsPropertyIsInstanceAttributeRemoved() {
-        return this.isPropertyIsInstanceAttributeRemoved;
-    }
-
-    public void setIsPropertyIsInstanceAttributeRemoved(Boolean removed) {
-        this.isPropertyIsInstanceAttributeRemoved = removed;
     }
 
     private Boolean isPropertyAttributeValueTypeRemoved;

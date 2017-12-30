@@ -28,6 +28,10 @@ namespace Dddml.Wms.Domain.AttributeSet
 
 		string ReferenceId { get; set; }
 
+		bool IsInstanceAttributeSet { get; set; }
+
+		bool IsMandatory { get; set; }
+
 		long Version { get; set; }
 
 		bool Active { get; set; }

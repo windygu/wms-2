@@ -65,6 +65,10 @@ namespace Dddml.Wms.Domain.AttributeSet
 
 		public virtual string ReferenceId { get; set; }
 
+		public virtual bool? IsInstanceAttributeSet { get; set; }
+
+		public virtual bool? IsMandatory { get; set; }
+
 		public virtual bool? Active { get; set; }
 
 		public virtual bool? IsPropertyAttributeSetNameRemoved { get; set; }
@@ -178,6 +182,44 @@ namespace Dddml.Wms.Domain.AttributeSet
             set
             {
                 this.IsPropertyReferenceIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyIsInstanceAttributeSetRemoved { get; set; }
+
+        bool IMergePatchAttributeSet.IsPropertyIsInstanceAttributeSetRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyIsInstanceAttributeSetRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyIsInstanceAttributeSetRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyIsMandatoryRemoved { get; set; }
+
+        bool IMergePatchAttributeSet.IsPropertyIsMandatoryRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyIsMandatoryRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyIsMandatoryRemoved = value;
             }
         }
 

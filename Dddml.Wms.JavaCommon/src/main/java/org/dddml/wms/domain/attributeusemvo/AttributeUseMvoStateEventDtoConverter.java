@@ -38,6 +38,8 @@ public class AttributeUseMvoStateEventDtoConverter {
         dto.setAttributeSetSerialNumberAttributeId(e.getAttributeSetSerialNumberAttributeId());
         dto.setAttributeSetLotAttributeId(e.getAttributeSetLotAttributeId());
         dto.setAttributeSetReferenceId(e.getAttributeSetReferenceId());
+        dto.setAttributeSetIsInstanceAttributeSet(e.getAttributeSetIsInstanceAttributeSet());
+        dto.setAttributeSetIsMandatory(e.getAttributeSetIsMandatory());
         dto.setAttributeSetCreatedBy(e.getAttributeSetCreatedBy());
         dto.setAttributeSetCreatedAt(e.getAttributeSetCreatedAt());
         dto.setAttributeSetUpdatedBy(e.getAttributeSetUpdatedBy());
@@ -62,6 +64,8 @@ public class AttributeUseMvoStateEventDtoConverter {
         dto.setAttributeSetSerialNumberAttributeId(e.getAttributeSetSerialNumberAttributeId());
         dto.setAttributeSetLotAttributeId(e.getAttributeSetLotAttributeId());
         dto.setAttributeSetReferenceId(e.getAttributeSetReferenceId());
+        dto.setAttributeSetIsInstanceAttributeSet(e.getAttributeSetIsInstanceAttributeSet());
+        dto.setAttributeSetIsMandatory(e.getAttributeSetIsMandatory());
         dto.setAttributeSetCreatedBy(e.getAttributeSetCreatedBy());
         dto.setAttributeSetCreatedAt(e.getAttributeSetCreatedAt());
         dto.setAttributeSetUpdatedBy(e.getAttributeSetUpdatedBy());
@@ -77,6 +81,8 @@ public class AttributeUseMvoStateEventDtoConverter {
         dto.setIsPropertyAttributeSetSerialNumberAttributeIdRemoved(e.getIsPropertyAttributeSetSerialNumberAttributeIdRemoved());
         dto.setIsPropertyAttributeSetLotAttributeIdRemoved(e.getIsPropertyAttributeSetLotAttributeIdRemoved());
         dto.setIsPropertyAttributeSetReferenceIdRemoved(e.getIsPropertyAttributeSetReferenceIdRemoved());
+        dto.setIsPropertyAttributeSetIsInstanceAttributeSetRemoved(e.getIsPropertyAttributeSetIsInstanceAttributeSetRemoved());
+        dto.setIsPropertyAttributeSetIsMandatoryRemoved(e.getIsPropertyAttributeSetIsMandatoryRemoved());
         dto.setIsPropertyAttributeSetCreatedByRemoved(e.getIsPropertyAttributeSetCreatedByRemoved());
         dto.setIsPropertyAttributeSetCreatedAtRemoved(e.getIsPropertyAttributeSetCreatedAtRemoved());
         dto.setIsPropertyAttributeSetUpdatedByRemoved(e.getIsPropertyAttributeSetUpdatedByRemoved());

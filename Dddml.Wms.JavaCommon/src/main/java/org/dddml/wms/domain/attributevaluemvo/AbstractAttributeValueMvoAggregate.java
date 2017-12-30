@@ -67,7 +67,6 @@ public abstract class AbstractAttributeValueMvoAggregate extends AbstractAggrega
         e.setAttributeOrganizationId(c.getAttributeOrganizationId());
         e.setAttributeDescription(c.getAttributeDescription());
         e.setAttributeIsMandatory(c.getAttributeIsMandatory());
-        e.setAttributeIsInstanceAttribute(c.getAttributeIsInstanceAttribute());
         e.setAttributeAttributeValueType(c.getAttributeAttributeValueType());
         e.setAttributeAttributeValueLength(c.getAttributeAttributeValueLength());
         e.setAttributeIsList(c.getAttributeIsList());
@@ -97,7 +96,6 @@ public abstract class AbstractAttributeValueMvoAggregate extends AbstractAggrega
         e.setAttributeOrganizationId(c.getAttributeOrganizationId());
         e.setAttributeDescription(c.getAttributeDescription());
         e.setAttributeIsMandatory(c.getAttributeIsMandatory());
-        e.setAttributeIsInstanceAttribute(c.getAttributeIsInstanceAttribute());
         e.setAttributeAttributeValueType(c.getAttributeAttributeValueType());
         e.setAttributeAttributeValueLength(c.getAttributeAttributeValueLength());
         e.setAttributeIsList(c.getAttributeIsList());
@@ -118,7 +116,6 @@ public abstract class AbstractAttributeValueMvoAggregate extends AbstractAggrega
         e.setIsPropertyAttributeOrganizationIdRemoved(c.getIsPropertyAttributeOrganizationIdRemoved());
         e.setIsPropertyAttributeDescriptionRemoved(c.getIsPropertyAttributeDescriptionRemoved());
         e.setIsPropertyAttributeIsMandatoryRemoved(c.getIsPropertyAttributeIsMandatoryRemoved());
-        e.setIsPropertyAttributeIsInstanceAttributeRemoved(c.getIsPropertyAttributeIsInstanceAttributeRemoved());
         e.setIsPropertyAttributeAttributeValueTypeRemoved(c.getIsPropertyAttributeAttributeValueTypeRemoved());
         e.setIsPropertyAttributeAttributeValueLengthRemoved(c.getIsPropertyAttributeAttributeValueLengthRemoved());
         e.setIsPropertyAttributeIsListRemoved(c.getIsPropertyAttributeIsListRemoved());

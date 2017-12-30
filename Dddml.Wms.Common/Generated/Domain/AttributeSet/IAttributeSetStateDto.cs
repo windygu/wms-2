@@ -56,6 +56,18 @@ namespace Dddml.Wms.Domain.AttributeSet
             set;
         }
 
+        bool? IsInstanceAttributeSet
+        {
+            get;
+            set;
+        }
+
+        bool? IsMandatory
+        {
+            get;
+            set;
+        }
+
         bool? Active
         {
             get;

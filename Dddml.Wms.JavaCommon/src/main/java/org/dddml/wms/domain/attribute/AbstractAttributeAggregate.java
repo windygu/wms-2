@@ -61,7 +61,6 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
         e.setOrganizationId(c.getOrganizationId());
         e.setDescription(c.getDescription());
         e.setIsMandatory(c.getIsMandatory());
-        e.setIsInstanceAttribute(c.getIsInstanceAttribute());
         e.setAttributeValueType(c.getAttributeValueType());
         e.setAttributeValueLength(c.getAttributeValueLength());
         e.setIsList(c.getIsList());
@@ -96,7 +95,6 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
         e.setOrganizationId(c.getOrganizationId());
         e.setDescription(c.getDescription());
         e.setIsMandatory(c.getIsMandatory());
-        e.setIsInstanceAttribute(c.getIsInstanceAttribute());
         e.setAttributeValueType(c.getAttributeValueType());
         e.setAttributeValueLength(c.getAttributeValueLength());
         e.setIsList(c.getIsList());
@@ -107,7 +105,6 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
         e.setIsPropertyOrganizationIdRemoved(c.getIsPropertyOrganizationIdRemoved());
         e.setIsPropertyDescriptionRemoved(c.getIsPropertyDescriptionRemoved());
         e.setIsPropertyIsMandatoryRemoved(c.getIsPropertyIsMandatoryRemoved());
-        e.setIsPropertyIsInstanceAttributeRemoved(c.getIsPropertyIsInstanceAttributeRemoved());
         e.setIsPropertyAttributeValueTypeRemoved(c.getIsPropertyAttributeValueTypeRemoved());
         e.setIsPropertyAttributeValueLengthRemoved(c.getIsPropertyAttributeValueLengthRemoved());
         e.setIsPropertyIsListRemoved(c.getIsPropertyIsListRemoved());

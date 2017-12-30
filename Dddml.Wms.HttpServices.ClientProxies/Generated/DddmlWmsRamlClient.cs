@@ -556,6 +556,9 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 
     }
 
+    /// <summary>
+    /// The alias of the attribute.
+    /// </summary>
     public partial class AttributeAlias
     {
         private readonly DddmlWmsRamlClient proxy;

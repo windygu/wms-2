@@ -52,6 +52,8 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             dto.AttributeSetSerialNumberAttributeId = e.AttributeSetSerialNumberAttributeId;
             dto.AttributeSetLotAttributeId = e.AttributeSetLotAttributeId;
             dto.AttributeSetReferenceId = e.AttributeSetReferenceId;
+            dto.AttributeSetIsInstanceAttributeSet = e.AttributeSetIsInstanceAttributeSet;
+            dto.AttributeSetIsMandatory = e.AttributeSetIsMandatory;
             dto.AttributeSetCreatedBy = e.AttributeSetCreatedBy;
             dto.AttributeSetCreatedAt = e.AttributeSetCreatedAt;
             dto.AttributeSetUpdatedBy = e.AttributeSetUpdatedBy;
@@ -77,6 +79,8 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             dto.AttributeSetSerialNumberAttributeId = e.AttributeSetSerialNumberAttributeId;
             dto.AttributeSetLotAttributeId = e.AttributeSetLotAttributeId;
             dto.AttributeSetReferenceId = e.AttributeSetReferenceId;
+            dto.AttributeSetIsInstanceAttributeSet = e.AttributeSetIsInstanceAttributeSet;
+            dto.AttributeSetIsMandatory = e.AttributeSetIsMandatory;
             dto.AttributeSetCreatedBy = e.AttributeSetCreatedBy;
             dto.AttributeSetCreatedAt = e.AttributeSetCreatedAt;
             dto.AttributeSetUpdatedBy = e.AttributeSetUpdatedBy;
@@ -92,6 +96,8 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             dto.IsPropertyAttributeSetSerialNumberAttributeIdRemoved = e.IsPropertyAttributeSetSerialNumberAttributeIdRemoved;
             dto.IsPropertyAttributeSetLotAttributeIdRemoved = e.IsPropertyAttributeSetLotAttributeIdRemoved;
             dto.IsPropertyAttributeSetReferenceIdRemoved = e.IsPropertyAttributeSetReferenceIdRemoved;
+            dto.IsPropertyAttributeSetIsInstanceAttributeSetRemoved = e.IsPropertyAttributeSetIsInstanceAttributeSetRemoved;
+            dto.IsPropertyAttributeSetIsMandatoryRemoved = e.IsPropertyAttributeSetIsMandatoryRemoved;
             dto.IsPropertyAttributeSetCreatedByRemoved = e.IsPropertyAttributeSetCreatedByRemoved;
             dto.IsPropertyAttributeSetCreatedAtRemoved = e.IsPropertyAttributeSetCreatedAtRemoved;
             dto.IsPropertyAttributeSetUpdatedByRemoved = e.IsPropertyAttributeSetUpdatedByRemoved;

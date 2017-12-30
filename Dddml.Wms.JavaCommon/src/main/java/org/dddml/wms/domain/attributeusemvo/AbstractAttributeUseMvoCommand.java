@@ -143,6 +143,30 @@ public abstract class AbstractAttributeUseMvoCommand extends AbstractCommand imp
             this.attributeSetReferenceId = attributeSetReferenceId;
         }
 
+        private Boolean attributeSetIsInstanceAttributeSet;
+
+        public Boolean getAttributeSetIsInstanceAttributeSet()
+        {
+            return this.attributeSetIsInstanceAttributeSet;
+        }
+
+        public void setAttributeSetIsInstanceAttributeSet(Boolean attributeSetIsInstanceAttributeSet)
+        {
+            this.attributeSetIsInstanceAttributeSet = attributeSetIsInstanceAttributeSet;
+        }
+
+        private Boolean attributeSetIsMandatory;
+
+        public Boolean getAttributeSetIsMandatory()
+        {
+            return this.attributeSetIsMandatory;
+        }
+
+        public void setAttributeSetIsMandatory(Boolean attributeSetIsMandatory)
+        {
+            this.attributeSetIsMandatory = attributeSetIsMandatory;
+        }
+
         private String attributeSetCreatedBy;
 
         public String getAttributeSetCreatedBy()
@@ -339,6 +363,30 @@ public abstract class AbstractAttributeUseMvoCommand extends AbstractCommand imp
         public void setIsPropertyAttributeSetReferenceIdRemoved(Boolean removed)
         {
             this.isPropertyAttributeSetReferenceIdRemoved = removed;
+        }
+
+        private Boolean isPropertyAttributeSetIsInstanceAttributeSetRemoved;
+
+        public Boolean getIsPropertyAttributeSetIsInstanceAttributeSetRemoved()
+        {
+            return this.isPropertyAttributeSetIsInstanceAttributeSetRemoved;
+        }
+
+        public void setIsPropertyAttributeSetIsInstanceAttributeSetRemoved(Boolean removed)
+        {
+            this.isPropertyAttributeSetIsInstanceAttributeSetRemoved = removed;
+        }
+
+        private Boolean isPropertyAttributeSetIsMandatoryRemoved;
+
+        public Boolean getIsPropertyAttributeSetIsMandatoryRemoved()
+        {
+            return this.isPropertyAttributeSetIsMandatoryRemoved;
+        }
+
+        public void setIsPropertyAttributeSetIsMandatoryRemoved(Boolean removed)
+        {
+            this.isPropertyAttributeSetIsMandatoryRemoved = removed;
         }
 
         private Boolean isPropertyAttributeSetCreatedByRemoved;

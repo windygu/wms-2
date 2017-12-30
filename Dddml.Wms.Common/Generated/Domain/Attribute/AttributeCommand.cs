@@ -60,8 +60,6 @@ namespace Dddml.Wms.Domain.Attribute
 
 		public virtual bool? IsMandatory { get; set; }
 
-		public virtual bool? IsInstanceAttribute { get; set; }
-
 		public virtual string AttributeValueType { get; set; }
 
 		public virtual int? AttributeValueLength { get; set; }
@@ -163,8 +161,6 @@ namespace Dddml.Wms.Domain.Attribute
 		public virtual bool IsPropertyDescriptionRemoved { get; set; }
 
 		public virtual bool IsPropertyIsMandatoryRemoved { get; set; }
-
-		public virtual bool IsPropertyIsInstanceAttributeRemoved { get; set; }
 
 		public virtual bool IsPropertyAttributeValueTypeRemoved { get; set; }
 

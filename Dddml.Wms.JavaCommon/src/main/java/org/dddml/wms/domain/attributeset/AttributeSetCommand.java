@@ -64,6 +64,14 @@ public interface AttributeSetCommand extends Command
 
         void setReferenceId(String referenceId);
 
+        Boolean getIsInstanceAttributeSet();
+
+        void setIsInstanceAttributeSet(Boolean isInstanceAttributeSet);
+
+        Boolean getIsMandatory();
+
+        void setIsMandatory(Boolean isMandatory);
+
         Boolean getActive();
 
         void setActive(Boolean active);
@@ -103,6 +111,14 @@ public interface AttributeSetCommand extends Command
         Boolean getIsPropertyReferenceIdRemoved();
 
         void setIsPropertyReferenceIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyIsInstanceAttributeSetRemoved();
+
+        void setIsPropertyIsInstanceAttributeSetRemoved(Boolean removed);
+
+        Boolean getIsPropertyIsMandatoryRemoved();
+
+        void setIsPropertyIsMandatoryRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

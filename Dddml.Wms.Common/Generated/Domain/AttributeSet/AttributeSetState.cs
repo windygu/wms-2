@@ -215,6 +215,10 @@ namespace Dddml.Wms.Domain.AttributeSet
 
 			this.ReferenceId = e.ReferenceId;
 
+            this.IsInstanceAttributeSet = (e.IsInstanceAttributeSet != null && e.IsInstanceAttributeSet.HasValue) ? e.IsInstanceAttributeSet.Value : default(bool);
+
+            this.IsMandatory = (e.IsMandatory != null && e.IsMandatory.HasValue) ? e.IsMandatory.Value : default(bool);
+
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 
 			this.Deleted = false;
@@ -304,6 +308,30 @@ namespace Dddml.Wms.Domain.AttributeSet
 			else
 			{
 				this.ReferenceId = e.ReferenceId;
+			}
+
+			if (e.IsInstanceAttributeSet == null)
+			{
+				if (e.IsPropertyIsInstanceAttributeSetRemoved)
+				{
+					this.IsInstanceAttributeSet = default(bool);
+				}
+			}
+			else
+			{
+				this.IsInstanceAttributeSet = (e.IsInstanceAttributeSet != null && e.IsInstanceAttributeSet.HasValue) ? e.IsInstanceAttributeSet.Value : default(bool);
+			}
+
+			if (e.IsMandatory == null)
+			{
+				if (e.IsPropertyIsMandatoryRemoved)
+				{
+					this.IsMandatory = default(bool);
+				}
+			}
+			else
+			{
+				this.IsMandatory = (e.IsMandatory != null && e.IsMandatory.HasValue) ? e.IsMandatory.Value : default(bool);
 			}
 
 			if (e.Active == null)

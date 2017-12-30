@@ -58,6 +58,8 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             cmd.AttributeSetSerialNumberAttributeId = state.AttributeSetSerialNumberAttributeId;
             cmd.AttributeSetLotAttributeId = state.AttributeSetLotAttributeId;
             cmd.AttributeSetReferenceId = state.AttributeSetReferenceId;
+            cmd.AttributeSetIsInstanceAttributeSet = state.AttributeSetIsInstanceAttributeSet;
+            cmd.AttributeSetIsMandatory = state.AttributeSetIsMandatory;
             cmd.AttributeSetCreatedBy = state.AttributeSetCreatedBy;
             cmd.AttributeSetCreatedAt = state.AttributeSetCreatedAt;
             cmd.AttributeSetUpdatedBy = state.AttributeSetUpdatedBy;
@@ -93,6 +95,8 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             cmd.AttributeSetSerialNumberAttributeId = state.AttributeSetSerialNumberAttributeId;
             cmd.AttributeSetLotAttributeId = state.AttributeSetLotAttributeId;
             cmd.AttributeSetReferenceId = state.AttributeSetReferenceId;
+            cmd.AttributeSetIsInstanceAttributeSet = state.AttributeSetIsInstanceAttributeSet;
+            cmd.AttributeSetIsMandatory = state.AttributeSetIsMandatory;
             cmd.AttributeSetCreatedBy = state.AttributeSetCreatedBy;
             cmd.AttributeSetCreatedAt = state.AttributeSetCreatedAt;
             cmd.AttributeSetUpdatedBy = state.AttributeSetUpdatedBy;

@@ -90,18 +90,6 @@ public class CreateOrMergePatchAttributeAliasMvoDto extends AbstractAttributeAli
         this.attributeIsMandatory = attributeIsMandatory;
     }
 
-    private Boolean attributeIsInstanceAttribute;
-
-    public Boolean getAttributeIsInstanceAttribute()
-    {
-        return this.attributeIsInstanceAttribute;
-    }
-
-    public void setAttributeIsInstanceAttribute(Boolean attributeIsInstanceAttribute)
-    {
-        this.attributeIsInstanceAttribute = attributeIsInstanceAttribute;
-    }
-
     private String attributeAttributeValueType;
 
     public String getAttributeAttributeValueType()
@@ -318,18 +306,6 @@ public class CreateOrMergePatchAttributeAliasMvoDto extends AbstractAttributeAli
         this.isPropertyAttributeIsMandatoryRemoved = removed;
     }
 
-    private Boolean isPropertyAttributeIsInstanceAttributeRemoved;
-
-    public Boolean getIsPropertyAttributeIsInstanceAttributeRemoved()
-    {
-        return this.isPropertyAttributeIsInstanceAttributeRemoved;
-    }
-
-    public void setIsPropertyAttributeIsInstanceAttributeRemoved(Boolean removed)
-    {
-        this.isPropertyAttributeIsInstanceAttributeRemoved = removed;
-    }
-
     private Boolean isPropertyAttributeAttributeValueTypeRemoved;
 
     public Boolean getIsPropertyAttributeAttributeValueTypeRemoved()
@@ -472,7 +448,6 @@ public class CreateOrMergePatchAttributeAliasMvoDto extends AbstractAttributeAli
         command.setAttributeOrganizationId(this.getAttributeOrganizationId());
         command.setAttributeDescription(this.getAttributeDescription());
         command.setAttributeIsMandatory(this.getAttributeIsMandatory());
-        command.setAttributeIsInstanceAttribute(this.getAttributeIsInstanceAttribute());
         command.setAttributeAttributeValueType(this.getAttributeAttributeValueType());
         command.setAttributeAttributeValueLength(this.getAttributeAttributeValueLength());
         command.setAttributeIsList(this.getAttributeIsList());
@@ -515,7 +490,6 @@ public class CreateOrMergePatchAttributeAliasMvoDto extends AbstractAttributeAli
         command.setIsPropertyAttributeOrganizationIdRemoved(this.getIsPropertyAttributeOrganizationIdRemoved());
         command.setIsPropertyAttributeDescriptionRemoved(this.getIsPropertyAttributeDescriptionRemoved());
         command.setIsPropertyAttributeIsMandatoryRemoved(this.getIsPropertyAttributeIsMandatoryRemoved());
-        command.setIsPropertyAttributeIsInstanceAttributeRemoved(this.getIsPropertyAttributeIsInstanceAttributeRemoved());
         command.setIsPropertyAttributeAttributeValueTypeRemoved(this.getIsPropertyAttributeAttributeValueTypeRemoved());
         command.setIsPropertyAttributeAttributeValueLengthRemoved(this.getIsPropertyAttributeAttributeValueLengthRemoved());
         command.setIsPropertyAttributeIsListRemoved(this.getIsPropertyAttributeIsListRemoved());

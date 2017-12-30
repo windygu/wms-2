@@ -14,6 +14,7 @@ aggregates:
         type: string
         arbitrary: true
         isServerSideGenerated: true
+        constraints: [AttributeId]
 
       properties:  
       
@@ -28,28 +29,22 @@ aggregates:
 
         IsMandatory:
           type: bool
-
-
-        # <summary>
-        # The product attribute is specific to the instance (like Serial No, Lot or Guarantee Date)
-        # [If true, the individual instance of the product has this attribute - 
-        # like the individual Serial or Lot Numbers or Guarantee Date of a product instance. 
-        # If not selected, all instances of the product share the attribute (e.g. color=green). ]
-        # </summary>
-        IsInstanceAttribute:
-          type: bool
-
+          description: The field must have a value for the record to be saved to the database.
+          
         AttributeValueType:
           type: string
+          description: The Attribute Value type deternines the data/validation type.
 
         AttributeValueLength:
           type: int?
         
         IsList:
           type: bool
+          description: Is the attribute values a list(enumerable).
         
         FieldName:
           type: string
+          description: The field name to save this attribute.
 
         ReferenceId:
           type: string
@@ -82,6 +77,7 @@ aggregates:
 
         # -------------------------------
         AttributeAlias:
+          description: The alias of the attribute.
           id:
             name: Code
             type: string
@@ -111,25 +107,33 @@ aggregates:
         Description:
           type: string
         
+        # bool HasSerialNumber
+        # bool IsSerialNumberMandatory
         SerialNumberAttributeId:
           type: string
 
+        # bool HasLot
+        # bool IsLotMandatory
         LotAttributeId:
           type: string
            
+        # bool HasGuaranteeDate
+        # bool IsGuaranteeDateMandatory
+        
         ReferenceId:
           type: string
-          
-        # bool HasSerialNumber
-        # bool HasLot
-        # bool HasGuaranteeDate
-        
-        # bool IsInstanceAttributeSet
-        # string MandatoryType
 
-        # bool IsGuaranteeDateMandatory
-        # bool IsLotMandatory
-        # bool IsSerialNumberMandatory
+        # The product attribute is specific to the instance (like Serial No, Lot or Guarantee Date)
+        # [If true, the individual instance of the product has this attribute - 
+        # like the individual Serial or Lot Numbers or Guarantee Date of a product instance. 
+        # If not selected, all instances of the product share the attribute (e.g. color=green). ]
+        IsInstanceAttributeSet:
+          type: bool
+          
+        # string MandatoryType
+        # The specification of a Product Attribute Instance is mandatory.
+        IsMandatory:
+          type: bool
           
         AttributeUses:
           itemType: AttributeUse
@@ -138,7 +142,6 @@ aggregates:
       entities:
           
         AttributeUse:
-          
           id: 
             name: AttributeId
             type: string

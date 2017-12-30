@@ -35,6 +35,10 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
 		public virtual string AttributeSetReferenceId { get; set; }
 
+		public virtual bool AttributeSetIsInstanceAttributeSet { get; set; }
+
+		public virtual bool AttributeSetIsMandatory { get; set; }
+
 		public virtual long AttributeSetVersion { get; set; }
 
 		public virtual string AttributeSetCreatedBy { get; set; }

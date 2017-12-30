@@ -58,7 +58,6 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
             cmd.AttributeOrganizationId = state.AttributeOrganizationId;
             cmd.AttributeDescription = state.AttributeDescription;
             cmd.AttributeIsMandatory = state.AttributeIsMandatory;
-            cmd.AttributeIsInstanceAttribute = state.AttributeIsInstanceAttribute;
             cmd.AttributeAttributeValueType = state.AttributeAttributeValueType;
             cmd.AttributeAttributeValueLength = state.AttributeAttributeValueLength;
             cmd.AttributeIsList = state.AttributeIsList;
@@ -103,7 +102,6 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
             cmd.AttributeOrganizationId = state.AttributeOrganizationId;
             cmd.AttributeDescription = state.AttributeDescription;
             cmd.AttributeIsMandatory = state.AttributeIsMandatory;
-            cmd.AttributeIsInstanceAttribute = state.AttributeIsInstanceAttribute;
             cmd.AttributeAttributeValueType = state.AttributeAttributeValueType;
             cmd.AttributeAttributeValueLength = state.AttributeAttributeValueLength;
             cmd.AttributeIsList = state.AttributeIsList;

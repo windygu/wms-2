@@ -48,6 +48,8 @@ namespace Dddml.Wms.Domain.AttributeSet
             dto.SerialNumberAttributeId = e.SerialNumberAttributeId;
             dto.LotAttributeId = e.LotAttributeId;
             dto.ReferenceId = e.ReferenceId;
+            dto.IsInstanceAttributeSet = e.IsInstanceAttributeSet;
+            dto.IsMandatory = e.IsMandatory;
             dto.Active = e.Active;
             var attributeUseEvents = new List<AttributeUseStateCreatedDto>();
             foreach (var ee in e.AttributeUseEvents)
@@ -73,6 +75,8 @@ namespace Dddml.Wms.Domain.AttributeSet
             dto.SerialNumberAttributeId = e.SerialNumberAttributeId;
             dto.LotAttributeId = e.LotAttributeId;
             dto.ReferenceId = e.ReferenceId;
+            dto.IsInstanceAttributeSet = e.IsInstanceAttributeSet;
+            dto.IsMandatory = e.IsMandatory;
             dto.Active = e.Active;
             dto.IsPropertyAttributeSetNameRemoved = e.IsPropertyAttributeSetNameRemoved;
             dto.IsPropertyOrganizationIdRemoved = e.IsPropertyOrganizationIdRemoved;
@@ -80,6 +84,8 @@ namespace Dddml.Wms.Domain.AttributeSet
             dto.IsPropertySerialNumberAttributeIdRemoved = e.IsPropertySerialNumberAttributeIdRemoved;
             dto.IsPropertyLotAttributeIdRemoved = e.IsPropertyLotAttributeIdRemoved;
             dto.IsPropertyReferenceIdRemoved = e.IsPropertyReferenceIdRemoved;
+            dto.IsPropertyIsInstanceAttributeSetRemoved = e.IsPropertyIsInstanceAttributeSetRemoved;
+            dto.IsPropertyIsMandatoryRemoved = e.IsPropertyIsMandatoryRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;
             var attributeUseEvents = new List<AttributeUseStateCreatedOrMergePatchedOrRemovedDto>();
             foreach (var ee in e.AttributeUseEvents)

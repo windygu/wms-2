@@ -60,7 +60,6 @@ namespace Dddml.Wms.Domain.Attribute
             cmd.OrganizationId = state.OrganizationId;
             cmd.Description = state.Description;
             cmd.IsMandatory = state.IsMandatory;
-            cmd.IsInstanceAttribute = state.IsInstanceAttribute;
             cmd.AttributeValueType = state.AttributeValueType;
             cmd.AttributeValueLength = state.AttributeValueLength;
             cmd.IsList = state.IsList;
@@ -102,7 +101,6 @@ namespace Dddml.Wms.Domain.Attribute
             cmd.OrganizationId = state.OrganizationId;
             cmd.Description = state.Description;
             cmd.IsMandatory = state.IsMandatory;
-            cmd.IsInstanceAttribute = state.IsInstanceAttribute;
             cmd.AttributeValueType = state.AttributeValueType;
             cmd.AttributeValueLength = state.AttributeValueLength;
             cmd.IsList = state.IsList;

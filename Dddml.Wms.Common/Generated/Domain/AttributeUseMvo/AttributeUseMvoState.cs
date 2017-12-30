@@ -193,6 +193,10 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
 			this.AttributeSetReferenceId = e.AttributeSetReferenceId;
 
+            this.AttributeSetIsInstanceAttributeSet = (e.AttributeSetIsInstanceAttributeSet != null && e.AttributeSetIsInstanceAttributeSet.HasValue) ? e.AttributeSetIsInstanceAttributeSet.Value : default(bool);
+
+            this.AttributeSetIsMandatory = (e.AttributeSetIsMandatory != null && e.AttributeSetIsMandatory.HasValue) ? e.AttributeSetIsMandatory.Value : default(bool);
+
 			this.AttributeSetCreatedBy = e.AttributeSetCreatedBy;
 
             this.AttributeSetCreatedAt = (e.AttributeSetCreatedAt != null && e.AttributeSetCreatedAt.HasValue) ? e.AttributeSetCreatedAt.Value : default(DateTime);
@@ -324,6 +328,30 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 			else
 			{
 				this.AttributeSetReferenceId = e.AttributeSetReferenceId;
+			}
+
+			if (e.AttributeSetIsInstanceAttributeSet == null)
+			{
+				if (e.IsPropertyAttributeSetIsInstanceAttributeSetRemoved)
+				{
+					this.AttributeSetIsInstanceAttributeSet = default(bool);
+				}
+			}
+			else
+			{
+				this.AttributeSetIsInstanceAttributeSet = (e.AttributeSetIsInstanceAttributeSet != null && e.AttributeSetIsInstanceAttributeSet.HasValue) ? e.AttributeSetIsInstanceAttributeSet.Value : default(bool);
+			}
+
+			if (e.AttributeSetIsMandatory == null)
+			{
+				if (e.IsPropertyAttributeSetIsMandatoryRemoved)
+				{
+					this.AttributeSetIsMandatory = default(bool);
+				}
+			}
+			else
+			{
+				this.AttributeSetIsMandatory = (e.AttributeSetIsMandatory != null && e.AttributeSetIsMandatory.HasValue) ? e.AttributeSetIsMandatory.Value : default(bool);
 			}
 
 			if (e.AttributeSetCreatedBy == null)

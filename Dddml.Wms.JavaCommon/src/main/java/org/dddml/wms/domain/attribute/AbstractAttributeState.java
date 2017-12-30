@@ -69,18 +69,6 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
         this.isMandatory = isMandatory;
     }
 
-    private Boolean isInstanceAttribute;
-
-    public Boolean getIsInstanceAttribute()
-    {
-        return this.isInstanceAttribute;
-    }
-
-    public void setIsInstanceAttribute(Boolean isInstanceAttribute)
-    {
-        this.isInstanceAttribute = isInstanceAttribute;
-    }
-
     private String attributeValueType;
 
     public String getAttributeValueType()
@@ -319,7 +307,6 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
         this.setOrganizationId(e.getOrganizationId());
         this.setDescription(e.getDescription());
         this.setIsMandatory(e.getIsMandatory());
-        this.setIsInstanceAttribute(e.getIsInstanceAttribute());
         this.setAttributeValueType(e.getAttributeValueType());
         this.setAttributeValueLength(e.getAttributeValueLength());
         this.setIsList(e.getIsList());
@@ -389,17 +376,6 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
         else
         {
             this.setIsMandatory(e.getIsMandatory());
-        }
-        if (e.getIsInstanceAttribute() == null)
-        {
-            if (e.getIsPropertyIsInstanceAttributeRemoved() != null && e.getIsPropertyIsInstanceAttributeRemoved())
-            {
-                this.setIsInstanceAttribute(null);
-            }
-        }
-        else
-        {
-            this.setIsInstanceAttribute(e.getIsInstanceAttribute());
         }
         if (e.getAttributeValueType() == null)
         {

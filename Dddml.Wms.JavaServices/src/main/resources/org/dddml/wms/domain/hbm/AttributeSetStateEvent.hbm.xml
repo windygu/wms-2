@@ -21,6 +21,8 @@
 	<property name="serialNumberAttributeId" ></property>
 	<property name="lotAttributeId" ></property>
 	<property name="referenceId" ></property>
+	<property name="isInstanceAttributeSet" ></property>
+	<property name="isMandatory" ></property>
 	<property name="active" ></property>
 
     <property name="createdBy" column="CreatedBy"/>
@@ -46,6 +48,10 @@
         <property name="isPropertyLotAttributeIdRemoved" column="IsPropertyLotAttributeIdRemoved"/>
 
         <property name="isPropertyReferenceIdRemoved" column="IsPropertyReferenceIdRemoved"/>
+
+        <property name="isPropertyIsInstanceAttributeSetRemoved" column="IsPropertyIsInstanceAttributeSetRemoved"/>
+
+        <property name="isPropertyIsMandatoryRemoved" column="IsPropertyIsMandatoryRemoved"/>
 
         <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 

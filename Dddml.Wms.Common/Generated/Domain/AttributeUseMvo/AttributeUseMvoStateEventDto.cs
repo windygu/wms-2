@@ -61,6 +61,10 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
 		public virtual string AttributeSetReferenceId { get; set; }
 
+		public virtual bool? AttributeSetIsInstanceAttributeSet { get; set; }
+
+		public virtual bool? AttributeSetIsMandatory { get; set; }
+
 		public virtual string AttributeSetCreatedBy { get; set; }
 
 		public virtual DateTime? AttributeSetCreatedAt { get; set; }
@@ -270,6 +274,44 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             set 
             {
                 this.IsPropertyAttributeSetReferenceIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyAttributeSetIsInstanceAttributeSetRemoved { get; set; }
+
+        bool IAttributeUseMvoStateMergePatched.IsPropertyAttributeSetIsInstanceAttributeSetRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyAttributeSetIsInstanceAttributeSetRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyAttributeSetIsInstanceAttributeSetRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyAttributeSetIsMandatoryRemoved { get; set; }
+
+        bool IAttributeUseMvoStateMergePatched.IsPropertyAttributeSetIsMandatoryRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyAttributeSetIsMandatoryRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyAttributeSetIsMandatoryRemoved = value;
             }
         }
 

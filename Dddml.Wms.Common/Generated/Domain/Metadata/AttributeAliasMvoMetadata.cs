@@ -371,36 +371,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsSimpleValueObjectType = true,
                     IsNullableType = false,
                     DisplayName = "",
-                    Description = "",
-                    Length = 0,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = false,
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
-                new PropertyMetadata {
-                    Name = "AttributeIsInstanceAttribute",
-                    Type = typeof(bool),
-                    TypeName = "bool",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
+                    Description = "The field must have a value for the record to be saved to the database.",
                     Length = 0,
                     GenericTypeName = "",
                     ReferenceTypeName = "",
@@ -429,7 +400,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsSimpleValueObjectType = true,
                     IsNullableType = false,
                     DisplayName = "",
-                    Description = "",
+                    Description = "The Attribute Value type deternines the data/validation type.",
                     Length = 0,
                     GenericTypeName = "",
                     ReferenceTypeName = "",
@@ -487,7 +458,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsSimpleValueObjectType = true,
                     IsNullableType = false,
                     DisplayName = "",
-                    Description = "",
+                    Description = "Is the attribute values a list(enumerable).",
                     Length = 0,
                     GenericTypeName = "",
                     ReferenceTypeName = "",
@@ -516,7 +487,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsSimpleValueObjectType = true,
                     IsNullableType = false,
                     DisplayName = "",
-                    Description = "",
+                    Description = "The field name to save this attribute.",
                     Length = 0,
                     GenericTypeName = "",
                     ReferenceTypeName = "",
@@ -921,8 +892,6 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("attributeDescription", "AttributeDescription");
             d.Add("AttributeIsMandatory", "AttributeIsMandatory");
             d.Add("attributeIsMandatory", "AttributeIsMandatory");
-            d.Add("AttributeIsInstanceAttribute", "AttributeIsInstanceAttribute");
-            d.Add("attributeIsInstanceAttribute", "AttributeIsInstanceAttribute");
             d.Add("AttributeAttributeValueType", "AttributeAttributeValueType");
             d.Add("attributeAttributeValueType", "AttributeAttributeValueType");
             d.Add("AttributeAttributeValueLength", "AttributeAttributeValueLength");

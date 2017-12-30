@@ -58,10 +58,6 @@ public interface AttributeValueMvoStateEvent extends Event
 
     void setAttributeIsMandatory(Boolean attributeIsMandatory);
 
-    Boolean getAttributeIsInstanceAttribute();
-
-    void setAttributeIsInstanceAttribute(Boolean attributeIsInstanceAttribute);
-
     String getAttributeAttributeValueType();
 
     void setAttributeAttributeValueType(String attributeAttributeValueType);
@@ -153,10 +149,6 @@ public interface AttributeValueMvoStateEvent extends Event
         Boolean getIsPropertyAttributeIsMandatoryRemoved();
 
         void setIsPropertyAttributeIsMandatoryRemoved(Boolean removed);
-
-        Boolean getIsPropertyAttributeIsInstanceAttributeRemoved();
-
-        void setIsPropertyAttributeIsInstanceAttributeRemoved(Boolean removed);
 
         Boolean getIsPropertyAttributeAttributeValueTypeRemoved();
 

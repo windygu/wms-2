@@ -36,6 +36,10 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
 		string AttributeSetReferenceId { get; set; }
 
+		bool? AttributeSetIsInstanceAttributeSet { get; set; }
+
+		bool? AttributeSetIsMandatory { get; set; }
+
 		string AttributeSetCreatedBy { get; set; }
 
 		DateTime? AttributeSetCreatedAt { get; set; }
@@ -75,6 +79,10 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 		bool IsPropertyAttributeSetLotAttributeIdRemoved { get; set; }
 
 		bool IsPropertyAttributeSetReferenceIdRemoved { get; set; }
+
+		bool IsPropertyAttributeSetIsInstanceAttributeSetRemoved { get; set; }
+
+		bool IsPropertyAttributeSetIsMandatoryRemoved { get; set; }
 
 		bool IsPropertyAttributeSetCreatedByRemoved { get; set; }
 

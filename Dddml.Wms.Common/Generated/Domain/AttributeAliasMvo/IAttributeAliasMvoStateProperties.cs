@@ -31,8 +31,6 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 
 		bool AttributeIsMandatory { get; set; }
 
-		bool AttributeIsInstanceAttribute { get; set; }
-
 		string AttributeAttributeValueType { get; set; }
 
 		int? AttributeAttributeValueLength { get; set; }

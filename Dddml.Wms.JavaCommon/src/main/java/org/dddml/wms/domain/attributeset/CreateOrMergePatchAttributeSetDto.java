@@ -77,6 +77,30 @@ public class CreateOrMergePatchAttributeSetDto extends AbstractAttributeSetComma
         this.referenceId = referenceId;
     }
 
+    private Boolean isInstanceAttributeSet;
+
+    public Boolean getIsInstanceAttributeSet()
+    {
+        return this.isInstanceAttributeSet;
+    }
+
+    public void setIsInstanceAttributeSet(Boolean isInstanceAttributeSet)
+    {
+        this.isInstanceAttributeSet = isInstanceAttributeSet;
+    }
+
+    private Boolean isMandatory;
+
+    public Boolean getIsMandatory()
+    {
+        return this.isMandatory;
+    }
+
+    public void setIsMandatory(Boolean isMandatory)
+    {
+        this.isMandatory = isMandatory;
+    }
+
     private Boolean active;
 
     public Boolean getActive()
@@ -173,6 +197,30 @@ public class CreateOrMergePatchAttributeSetDto extends AbstractAttributeSetComma
         this.isPropertyReferenceIdRemoved = removed;
     }
 
+    private Boolean isPropertyIsInstanceAttributeSetRemoved;
+
+    public Boolean getIsPropertyIsInstanceAttributeSetRemoved()
+    {
+        return this.isPropertyIsInstanceAttributeSetRemoved;
+    }
+
+    public void setIsPropertyIsInstanceAttributeSetRemoved(Boolean removed)
+    {
+        this.isPropertyIsInstanceAttributeSetRemoved = removed;
+    }
+
+    private Boolean isPropertyIsMandatoryRemoved;
+
+    public Boolean getIsPropertyIsMandatoryRemoved()
+    {
+        return this.isPropertyIsMandatoryRemoved;
+    }
+
+    public void setIsPropertyIsMandatoryRemoved(Boolean removed)
+    {
+        this.isPropertyIsMandatoryRemoved = removed;
+    }
+
     private Boolean isPropertyActiveRemoved;
 
     public Boolean getIsPropertyActiveRemoved()
@@ -194,6 +242,8 @@ public class CreateOrMergePatchAttributeSetDto extends AbstractAttributeSetComma
         command.setSerialNumberAttributeId(this.getSerialNumberAttributeId());
         command.setLotAttributeId(this.getLotAttributeId());
         command.setReferenceId(this.getReferenceId());
+        command.setIsInstanceAttributeSet(this.getIsInstanceAttributeSet());
+        command.setIsMandatory(this.getIsMandatory());
         command.setActive(this.getActive());
     }
 
@@ -235,6 +285,8 @@ public class CreateOrMergePatchAttributeSetDto extends AbstractAttributeSetComma
         command.setIsPropertySerialNumberAttributeIdRemoved(this.getIsPropertySerialNumberAttributeIdRemoved());
         command.setIsPropertyLotAttributeIdRemoved(this.getIsPropertyLotAttributeIdRemoved());
         command.setIsPropertyReferenceIdRemoved(this.getIsPropertyReferenceIdRemoved());
+        command.setIsPropertyIsInstanceAttributeSetRemoved(this.getIsPropertyIsInstanceAttributeSetRemoved());
+        command.setIsPropertyIsMandatoryRemoved(this.getIsPropertyIsMandatoryRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
     }
 

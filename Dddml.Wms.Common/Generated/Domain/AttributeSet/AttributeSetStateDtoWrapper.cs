@@ -235,6 +235,68 @@ namespace Dddml.Wms.Domain.AttributeSet
             }
         }
 
+		public virtual bool? IsInstanceAttributeSet
+        {
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("IsInstanceAttributeSet"))
+                {
+                    return _state.IsInstanceAttributeSet;
+                }
+                return null;
+            }
+            set
+            {
+                if (value != null && value.HasValue)
+                {
+                    _state.IsInstanceAttributeSet = value.Value;
+                }
+            }
+        }
+
+        bool IAttributeSetStateProperties.IsInstanceAttributeSet
+        {
+            get 
+            {
+                return (this._state as IAttributeSetStateProperties).IsInstanceAttributeSet;
+            }
+            set 
+            {
+                (this._state as IAttributeSetStateProperties).IsInstanceAttributeSet = value;
+            }
+        }
+
+		public virtual bool? IsMandatory
+        {
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("IsMandatory"))
+                {
+                    return _state.IsMandatory;
+                }
+                return null;
+            }
+            set
+            {
+                if (value != null && value.HasValue)
+                {
+                    _state.IsMandatory = value.Value;
+                }
+            }
+        }
+
+        bool IAttributeSetStateProperties.IsMandatory
+        {
+            get 
+            {
+                return (this._state as IAttributeSetStateProperties).IsMandatory;
+            }
+            set 
+            {
+                (this._state as IAttributeSetStateProperties).IsMandatory = value;
+            }
+        }
+
 		public virtual bool? Active
         {
             get

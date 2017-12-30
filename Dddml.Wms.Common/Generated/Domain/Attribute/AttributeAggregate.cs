@@ -111,7 +111,6 @@ namespace Dddml.Wms.Domain.Attribute
             e.OrganizationId = c.OrganizationId;
             e.Description = c.Description;
             e.IsMandatory = c.IsMandatory;
-            e.IsInstanceAttribute = c.IsInstanceAttribute;
             e.AttributeValueType = c.AttributeValueType;
             e.AttributeValueLength = c.AttributeValueLength;
             e.IsList = c.IsList;
@@ -154,7 +153,6 @@ namespace Dddml.Wms.Domain.Attribute
             e.OrganizationId = c.OrganizationId;
             e.Description = c.Description;
             e.IsMandatory = c.IsMandatory;
-            e.IsInstanceAttribute = c.IsInstanceAttribute;
             e.AttributeValueType = c.AttributeValueType;
             e.AttributeValueLength = c.AttributeValueLength;
             e.IsList = c.IsList;
@@ -165,7 +163,6 @@ namespace Dddml.Wms.Domain.Attribute
             e.IsPropertyOrganizationIdRemoved = c.IsPropertyOrganizationIdRemoved;
             e.IsPropertyDescriptionRemoved = c.IsPropertyDescriptionRemoved;
             e.IsPropertyIsMandatoryRemoved = c.IsPropertyIsMandatoryRemoved;
-            e.IsPropertyIsInstanceAttributeRemoved = c.IsPropertyIsInstanceAttributeRemoved;
             e.IsPropertyAttributeValueTypeRemoved = c.IsPropertyAttributeValueTypeRemoved;
             e.IsPropertyAttributeValueLengthRemoved = c.IsPropertyAttributeValueLengthRemoved;
             e.IsPropertyIsListRemoved = c.IsPropertyIsListRemoved;

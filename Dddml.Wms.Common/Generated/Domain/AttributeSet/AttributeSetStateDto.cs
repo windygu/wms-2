@@ -57,6 +57,18 @@ namespace Dddml.Wms.Domain.AttributeSet
             set;
         }
 
+        public virtual bool? IsInstanceAttributeSet
+        {
+            get;
+            set;
+        }
+
+        public virtual bool? IsMandatory
+        {
+            get;
+            set;
+        }
+
         public virtual bool? Active
         {
             get;
@@ -115,6 +127,8 @@ namespace Dddml.Wms.Domain.AttributeSet
             state.SerialNumberAttributeId = this.SerialNumberAttributeId;
             state.LotAttributeId = this.LotAttributeId;
             state.ReferenceId = this.ReferenceId;
+            if (this.IsInstanceAttributeSet != null && this.IsInstanceAttributeSet.HasValue) { state.IsInstanceAttributeSet = this.IsInstanceAttributeSet.Value; }
+            if (this.IsMandatory != null && this.IsMandatory.HasValue) { state.IsMandatory = this.IsMandatory.Value; }
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             state.CreatedBy = this.CreatedBy;

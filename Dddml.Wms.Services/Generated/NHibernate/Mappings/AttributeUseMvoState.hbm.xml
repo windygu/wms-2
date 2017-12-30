@@ -24,6 +24,8 @@
     <property name="AttributeSetSerialNumberAttributeId" ></property>
     <property name="AttributeSetLotAttributeId" ></property>
     <property name="AttributeSetReferenceId" ></property>
+    <property name="AttributeSetIsInstanceAttributeSet" ></property>
+    <property name="AttributeSetIsMandatory" ></property>
     <property name="AttributeSetCreatedBy" ></property>
     <property name="AttributeSetCreatedAt" ></property>
     <property name="AttributeSetUpdatedBy" ></property>

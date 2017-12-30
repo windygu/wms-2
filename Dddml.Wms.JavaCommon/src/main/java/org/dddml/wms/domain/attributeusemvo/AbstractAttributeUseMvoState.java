@@ -190,6 +190,30 @@ public abstract class AbstractAttributeUseMvoState implements AttributeUseMvoSta
         this.attributeSetReferenceId = attributeSetReferenceId;
     }
 
+    private Boolean attributeSetIsInstanceAttributeSet;
+
+    public Boolean getAttributeSetIsInstanceAttributeSet()
+    {
+        return this.attributeSetIsInstanceAttributeSet;
+    }
+
+    public void setAttributeSetIsInstanceAttributeSet(Boolean attributeSetIsInstanceAttributeSet)
+    {
+        this.attributeSetIsInstanceAttributeSet = attributeSetIsInstanceAttributeSet;
+    }
+
+    private Boolean attributeSetIsMandatory;
+
+    public Boolean getAttributeSetIsMandatory()
+    {
+        return this.attributeSetIsMandatory;
+    }
+
+    public void setAttributeSetIsMandatory(Boolean attributeSetIsMandatory)
+    {
+        this.attributeSetIsMandatory = attributeSetIsMandatory;
+    }
+
     private Long attributeSetVersion;
 
     public Long getAttributeSetVersion()
@@ -347,6 +371,8 @@ public abstract class AbstractAttributeUseMvoState implements AttributeUseMvoSta
         this.setAttributeSetSerialNumberAttributeId(e.getAttributeSetSerialNumberAttributeId());
         this.setAttributeSetLotAttributeId(e.getAttributeSetLotAttributeId());
         this.setAttributeSetReferenceId(e.getAttributeSetReferenceId());
+        this.setAttributeSetIsInstanceAttributeSet(e.getAttributeSetIsInstanceAttributeSet());
+        this.setAttributeSetIsMandatory(e.getAttributeSetIsMandatory());
         this.setAttributeSetCreatedBy(e.getAttributeSetCreatedBy());
         this.setAttributeSetCreatedAt(e.getAttributeSetCreatedAt());
         this.setAttributeSetUpdatedBy(e.getAttributeSetUpdatedBy());
@@ -463,6 +489,28 @@ public abstract class AbstractAttributeUseMvoState implements AttributeUseMvoSta
         else
         {
             this.setAttributeSetReferenceId(e.getAttributeSetReferenceId());
+        }
+        if (e.getAttributeSetIsInstanceAttributeSet() == null)
+        {
+            if (e.getIsPropertyAttributeSetIsInstanceAttributeSetRemoved() != null && e.getIsPropertyAttributeSetIsInstanceAttributeSetRemoved())
+            {
+                this.setAttributeSetIsInstanceAttributeSet(null);
+            }
+        }
+        else
+        {
+            this.setAttributeSetIsInstanceAttributeSet(e.getAttributeSetIsInstanceAttributeSet());
+        }
+        if (e.getAttributeSetIsMandatory() == null)
+        {
+            if (e.getIsPropertyAttributeSetIsMandatoryRemoved() != null && e.getIsPropertyAttributeSetIsMandatoryRemoved())
+            {
+                this.setAttributeSetIsMandatory(null);
+            }
+        }
+        else
+        {
+            this.setAttributeSetIsMandatory(e.getAttributeSetIsMandatory());
         }
         if (e.getAttributeSetCreatedBy() == null)
         {

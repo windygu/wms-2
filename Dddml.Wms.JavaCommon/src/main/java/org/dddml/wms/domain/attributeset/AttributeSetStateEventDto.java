@@ -94,6 +94,26 @@ public class AttributeSetStateEventDto extends AbstractStateEvent
         this.referenceId = referenceId;
     }
 
+    private Boolean isInstanceAttributeSet;
+
+    public Boolean getIsInstanceAttributeSet() {
+        return this.isInstanceAttributeSet;
+    }
+
+    public void setIsInstanceAttributeSet(Boolean isInstanceAttributeSet) {
+        this.isInstanceAttributeSet = isInstanceAttributeSet;
+    }
+
+    private Boolean isMandatory;
+
+    public Boolean getIsMandatory() {
+        return this.isMandatory;
+    }
+
+    public void setIsMandatory(Boolean isMandatory) {
+        this.isMandatory = isMandatory;
+    }
+
     private Boolean active;
 
     public Boolean getActive() {
@@ -182,6 +202,26 @@ public class AttributeSetStateEventDto extends AbstractStateEvent
 
     public void setIsPropertyReferenceIdRemoved(Boolean removed) {
         this.isPropertyReferenceIdRemoved = removed;
+    }
+
+    private Boolean isPropertyIsInstanceAttributeSetRemoved;
+
+    public Boolean getIsPropertyIsInstanceAttributeSetRemoved() {
+        return this.isPropertyIsInstanceAttributeSetRemoved;
+    }
+
+    public void setIsPropertyIsInstanceAttributeSetRemoved(Boolean removed) {
+        this.isPropertyIsInstanceAttributeSetRemoved = removed;
+    }
+
+    private Boolean isPropertyIsMandatoryRemoved;
+
+    public Boolean getIsPropertyIsMandatoryRemoved() {
+        return this.isPropertyIsMandatoryRemoved;
+    }
+
+    public void setIsPropertyIsMandatoryRemoved(Boolean removed) {
+        this.isPropertyIsMandatoryRemoved = removed;
     }
 
     private Boolean isPropertyActiveRemoved;

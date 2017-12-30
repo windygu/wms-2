@@ -58,6 +58,8 @@ namespace Dddml.Wms.Domain.AttributeSet
             cmd.SerialNumberAttributeId = state.SerialNumberAttributeId;
             cmd.LotAttributeId = state.LotAttributeId;
             cmd.ReferenceId = state.ReferenceId;
+            cmd.IsInstanceAttributeSet = state.IsInstanceAttributeSet;
+            cmd.IsMandatory = state.IsMandatory;
             cmd.Active = ((IAttributeSetStateProperties)state).Active;
             
             if (state.AttributeSetName == null) { cmd.IsPropertyAttributeSetNameRemoved = true; }
@@ -89,6 +91,8 @@ namespace Dddml.Wms.Domain.AttributeSet
             cmd.SerialNumberAttributeId = state.SerialNumberAttributeId;
             cmd.LotAttributeId = state.LotAttributeId;
             cmd.ReferenceId = state.ReferenceId;
+            cmd.IsInstanceAttributeSet = state.IsInstanceAttributeSet;
+            cmd.IsMandatory = state.IsMandatory;
             cmd.Active = ((IAttributeSetStateProperties)state).Active;
             foreach (var d in state.AttributeUses)
             {

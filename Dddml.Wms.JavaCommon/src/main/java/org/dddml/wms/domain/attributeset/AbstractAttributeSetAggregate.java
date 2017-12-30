@@ -63,6 +63,8 @@ public abstract class AbstractAttributeSetAggregate extends AbstractAggregate im
         e.setSerialNumberAttributeId(c.getSerialNumberAttributeId());
         e.setLotAttributeId(c.getLotAttributeId());
         e.setReferenceId(c.getReferenceId());
+        e.setIsInstanceAttributeSet(c.getIsInstanceAttributeSet());
+        e.setIsMandatory(c.getIsMandatory());
         e.setActive(c.getActive());
         ((AbstractAttributeSetStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
@@ -87,6 +89,8 @@ public abstract class AbstractAttributeSetAggregate extends AbstractAggregate im
         e.setSerialNumberAttributeId(c.getSerialNumberAttributeId());
         e.setLotAttributeId(c.getLotAttributeId());
         e.setReferenceId(c.getReferenceId());
+        e.setIsInstanceAttributeSet(c.getIsInstanceAttributeSet());
+        e.setIsMandatory(c.getIsMandatory());
         e.setActive(c.getActive());
         e.setIsPropertyAttributeSetNameRemoved(c.getIsPropertyAttributeSetNameRemoved());
         e.setIsPropertyOrganizationIdRemoved(c.getIsPropertyOrganizationIdRemoved());
@@ -94,6 +98,8 @@ public abstract class AbstractAttributeSetAggregate extends AbstractAggregate im
         e.setIsPropertySerialNumberAttributeIdRemoved(c.getIsPropertySerialNumberAttributeIdRemoved());
         e.setIsPropertyLotAttributeIdRemoved(c.getIsPropertyLotAttributeIdRemoved());
         e.setIsPropertyReferenceIdRemoved(c.getIsPropertyReferenceIdRemoved());
+        e.setIsPropertyIsInstanceAttributeSetRemoved(c.getIsPropertyIsInstanceAttributeSetRemoved());
+        e.setIsPropertyIsMandatoryRemoved(c.getIsPropertyIsMandatoryRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         ((AbstractAttributeSetStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());

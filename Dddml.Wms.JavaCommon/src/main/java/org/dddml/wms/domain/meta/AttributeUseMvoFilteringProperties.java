@@ -25,6 +25,8 @@ public final class AttributeUseMvoFilteringProperties
             "attributeSetSerialNumberAttributeId",
             "attributeSetLotAttributeId",
             "attributeSetReferenceId",
+            "attributeSetIsInstanceAttributeSet",
+            "attributeSetIsMandatory",
             "attributeSetVersion",
             "attributeSetCreatedBy",
             "attributeSetCreatedAt",
@@ -51,6 +53,8 @@ public final class AttributeUseMvoFilteringProperties
             "String",
             "String",
             "String",
+            "Boolean",
+            "Boolean",
             "Long",
             "String",
             "Date",
@@ -102,6 +106,10 @@ public final class AttributeUseMvoFilteringProperties
         aliasMap.put("AttributeSetLotAttributeId", "attributeSetLotAttributeId");
         aliasMap.put("attributeSetReferenceId", "attributeSetReferenceId");
         aliasMap.put("AttributeSetReferenceId", "attributeSetReferenceId");
+        aliasMap.put("attributeSetIsInstanceAttributeSet", "attributeSetIsInstanceAttributeSet");
+        aliasMap.put("AttributeSetIsInstanceAttributeSet", "attributeSetIsInstanceAttributeSet");
+        aliasMap.put("attributeSetIsMandatory", "attributeSetIsMandatory");
+        aliasMap.put("AttributeSetIsMandatory", "attributeSetIsMandatory");
         aliasMap.put("attributeSetVersion", "attributeSetVersion");
         aliasMap.put("AttributeSetVersion", "attributeSetVersion");
         aliasMap.put("attributeSetCreatedBy", "attributeSetCreatedBy");

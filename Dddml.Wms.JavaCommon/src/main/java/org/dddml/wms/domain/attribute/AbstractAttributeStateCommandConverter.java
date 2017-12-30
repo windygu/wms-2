@@ -41,7 +41,6 @@ public abstract class AbstractAttributeStateCommandConverter<TCreateAttribute ex
         cmd.setOrganizationId(state.getOrganizationId());
         cmd.setDescription(state.getDescription());
         cmd.setIsMandatory(state.getIsMandatory());
-        cmd.setIsInstanceAttribute(state.getIsInstanceAttribute());
         cmd.setAttributeValueType(state.getAttributeValueType());
         cmd.setAttributeValueLength(state.getAttributeValueLength());
         cmd.setIsList(state.getIsList());
@@ -53,7 +52,6 @@ public abstract class AbstractAttributeStateCommandConverter<TCreateAttribute ex
         if (state.getOrganizationId() == null) { cmd.setIsPropertyOrganizationIdRemoved(true); }
         if (state.getDescription() == null) { cmd.setIsPropertyDescriptionRemoved(true); }
         if (state.getIsMandatory() == null) { cmd.setIsPropertyIsMandatoryRemoved(true); }
-        if (state.getIsInstanceAttribute() == null) { cmd.setIsPropertyIsInstanceAttributeRemoved(true); }
         if (state.getAttributeValueType() == null) { cmd.setIsPropertyAttributeValueTypeRemoved(true); }
         if (state.getAttributeValueLength() == null) { cmd.setIsPropertyAttributeValueLengthRemoved(true); }
         if (state.getIsList() == null) { cmd.setIsPropertyIsListRemoved(true); }
@@ -83,7 +81,6 @@ public abstract class AbstractAttributeStateCommandConverter<TCreateAttribute ex
         cmd.setOrganizationId(state.getOrganizationId());
         cmd.setDescription(state.getDescription());
         cmd.setIsMandatory(state.getIsMandatory());
-        cmd.setIsInstanceAttribute(state.getIsInstanceAttribute());
         cmd.setAttributeValueType(state.getAttributeValueType());
         cmd.setAttributeValueLength(state.getAttributeValueLength());
         cmd.setIsList(state.getIsList());

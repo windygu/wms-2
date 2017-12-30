@@ -47,6 +47,8 @@ public abstract class AbstractAttributeUseMvoStateCommandConverter<TCreateAttrib
         cmd.setAttributeSetSerialNumberAttributeId(state.getAttributeSetSerialNumberAttributeId());
         cmd.setAttributeSetLotAttributeId(state.getAttributeSetLotAttributeId());
         cmd.setAttributeSetReferenceId(state.getAttributeSetReferenceId());
+        cmd.setAttributeSetIsInstanceAttributeSet(state.getAttributeSetIsInstanceAttributeSet());
+        cmd.setAttributeSetIsMandatory(state.getAttributeSetIsMandatory());
         cmd.setAttributeSetCreatedBy(state.getAttributeSetCreatedBy());
         cmd.setAttributeSetCreatedAt(state.getAttributeSetCreatedAt());
         cmd.setAttributeSetUpdatedBy(state.getAttributeSetUpdatedBy());
@@ -63,6 +65,8 @@ public abstract class AbstractAttributeUseMvoStateCommandConverter<TCreateAttrib
         if (state.getAttributeSetSerialNumberAttributeId() == null) { cmd.setIsPropertyAttributeSetSerialNumberAttributeIdRemoved(true); }
         if (state.getAttributeSetLotAttributeId() == null) { cmd.setIsPropertyAttributeSetLotAttributeIdRemoved(true); }
         if (state.getAttributeSetReferenceId() == null) { cmd.setIsPropertyAttributeSetReferenceIdRemoved(true); }
+        if (state.getAttributeSetIsInstanceAttributeSet() == null) { cmd.setIsPropertyAttributeSetIsInstanceAttributeSetRemoved(true); }
+        if (state.getAttributeSetIsMandatory() == null) { cmd.setIsPropertyAttributeSetIsMandatoryRemoved(true); }
         if (state.getAttributeSetCreatedBy() == null) { cmd.setIsPropertyAttributeSetCreatedByRemoved(true); }
         if (state.getAttributeSetCreatedAt() == null) { cmd.setIsPropertyAttributeSetCreatedAtRemoved(true); }
         if (state.getAttributeSetUpdatedBy() == null) { cmd.setIsPropertyAttributeSetUpdatedByRemoved(true); }
@@ -87,6 +91,8 @@ public abstract class AbstractAttributeUseMvoStateCommandConverter<TCreateAttrib
         cmd.setAttributeSetSerialNumberAttributeId(state.getAttributeSetSerialNumberAttributeId());
         cmd.setAttributeSetLotAttributeId(state.getAttributeSetLotAttributeId());
         cmd.setAttributeSetReferenceId(state.getAttributeSetReferenceId());
+        cmd.setAttributeSetIsInstanceAttributeSet(state.getAttributeSetIsInstanceAttributeSet());
+        cmd.setAttributeSetIsMandatory(state.getAttributeSetIsMandatory());
         cmd.setAttributeSetCreatedBy(state.getAttributeSetCreatedBy());
         cmd.setAttributeSetCreatedAt(state.getAttributeSetCreatedAt());
         cmd.setAttributeSetUpdatedBy(state.getAttributeSetUpdatedBy());

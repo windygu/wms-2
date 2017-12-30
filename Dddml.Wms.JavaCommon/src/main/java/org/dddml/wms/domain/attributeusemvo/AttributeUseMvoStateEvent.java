@@ -58,6 +58,14 @@ public interface AttributeUseMvoStateEvent extends Event
 
     void setAttributeSetReferenceId(String attributeSetReferenceId);
 
+    Boolean getAttributeSetIsInstanceAttributeSet();
+
+    void setAttributeSetIsInstanceAttributeSet(Boolean attributeSetIsInstanceAttributeSet);
+
+    Boolean getAttributeSetIsMandatory();
+
+    void setAttributeSetIsMandatory(Boolean attributeSetIsMandatory);
+
     String getAttributeSetCreatedBy();
 
     void setAttributeSetCreatedBy(String attributeSetCreatedBy);
@@ -129,6 +137,14 @@ public interface AttributeUseMvoStateEvent extends Event
         Boolean getIsPropertyAttributeSetReferenceIdRemoved();
 
         void setIsPropertyAttributeSetReferenceIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyAttributeSetIsInstanceAttributeSetRemoved();
+
+        void setIsPropertyAttributeSetIsInstanceAttributeSetRemoved(Boolean removed);
+
+        Boolean getIsPropertyAttributeSetIsMandatoryRemoved();
+
+        void setIsPropertyAttributeSetIsMandatoryRemoved(Boolean removed);
 
         Boolean getIsPropertyAttributeSetCreatedByRemoved();
 

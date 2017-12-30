@@ -1,4 +1,16 @@
 
+    alter table AttributeSets 
+        add column IsInstanceAttributeSet TINYINT(1);
+    alter table AttributeSets 
+        add column IsMandatory TINYINT(1);
+    alter table AttributeSetStateEvents 
+        add column IsInstanceAttributeSet TINYINT(1);
+    alter table AttributeSetStateEvents 
+        add column IsMandatory TINYINT(1);
+    alter table AttributeSetStateEvents 
+        add column IsPropertyIsInstanceAttributeSetRemoved TINYINT(1);
+    alter table AttributeSetStateEvents 
+        add column IsPropertyIsMandatoryRemoved TINYINT(1);
     create table AttributeValue_RV (
         AttributeValueIdAttributeId VARCHAR(50) not null,
        AttributeValueIdValue VARCHAR(50) not null,
@@ -15,7 +27,6 @@
        AttributeOrganizationId VARCHAR(255),
        AttributeDescription VARCHAR(255),
        AttributeIsMandatory TINYINT(1),
-       AttributeIsInstanceAttribute TINYINT(1),
        AttributeAttributeValueType VARCHAR(255),
        AttributeAttributeValueLength INTEGER,
        AttributeIsList TINYINT(1),
@@ -47,6 +58,8 @@
        AttributeSetSerialNumberAttributeId VARCHAR(255),
        AttributeSetLotAttributeId VARCHAR(255),
        AttributeSetReferenceId VARCHAR(255),
+       AttributeSetIsInstanceAttributeSet TINYINT(1),
+       AttributeSetIsMandatory TINYINT(1),
        AttributeSetCreatedBy VARCHAR(255),
        AttributeSetCreatedAt DATETIME,
        AttributeSetUpdatedBy VARCHAR(255),
@@ -57,6 +70,14 @@
        UpdatedAt DATETIME,
        primary key (AttributeSetAttributeUseIdAttributeSetId, AttributeSetAttributeUseIdAttributeId)
     );
+    alter table AttributeUseMvoStateEvents 
+        add column AttributeSetIsInstanceAttributeSet TINYINT(1);
+    alter table AttributeUseMvoStateEvents 
+        add column AttributeSetIsMandatory TINYINT(1);
+    alter table AttributeUseMvoStateEvents 
+        add column IsPropertyAttributeSetIsInstanceAttributeSetRemoved TINYINT(1);
+    alter table AttributeUseMvoStateEvents 
+        add column IsPropertyAttributeSetIsMandatoryRemoved TINYINT(1);
     create table AttributeAlias_RV (
         AttributeAliasIdAttributeId VARCHAR(50) not null,
        AttributeAliasIdCode VARCHAR(50) not null,
@@ -71,7 +92,6 @@
        AttributeOrganizationId VARCHAR(255),
        AttributeDescription VARCHAR(255),
        AttributeIsMandatory TINYINT(1),
-       AttributeIsInstanceAttribute TINYINT(1),
        AttributeAttributeValueType VARCHAR(255),
        AttributeAttributeValueLength INTEGER,
        AttributeIsList TINYINT(1),
@@ -89,12 +109,6 @@
       unique (AttributeAliasIdCode),
       unique (Name)
     );
-    alter table Products 
-        add column AttributeSetInstanceId VARCHAR(255);
-    alter table ProductStateEvents 
-        add column AttributeSetInstanceId VARCHAR(255);
-    alter table ProductStateEvents 
-        add column IsPropertyAttributeSetInstanceIdRemoved TINYINT(1);
     create table InOutLine_RV (
         InOutLineIdInOutDocumentNumber VARCHAR(50) not null,
        InOutLineIdLineNumber VARCHAR(50) not null,
