@@ -8,7 +8,7 @@ using System.Text;
 namespace Dddml.Wms.Support
 {
 
-    internal static class NullableUtils
+    public static class NullableUtils
     {
 
         public static bool IsNullableType(System.Type type)

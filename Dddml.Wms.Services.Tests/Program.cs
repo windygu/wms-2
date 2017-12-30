@@ -19,6 +19,11 @@ namespace Dddml.Wms.Services.Tests
             var initdb = new InitDatabase();
             initdb.SetUp();
 
+            //var xmlDataLoader1 = new XmlDataLoader();
+            //xmlDataLoader1.Process(".\\", "*ConversionData.xml");
+            //Console.ReadKey();
+            //return;
+
             initdb.Hbm2DdlOutput();
             Console.WriteLine("Output hbm2ddl files, ok.");
 

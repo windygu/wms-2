@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Reflection;
-
+using Dddml.Wms.Support;
 
 namespace Dddml.Wms.Services.Tests
 {
@@ -14,13 +14,18 @@ namespace Dddml.Wms.Services.Tests
     {
         public void Process(string path)
         {
+            Process(path, "*Data.xml");
+        }
+
+        public void Process(string path, string filter)
+        {
             var entityDataProcessor = new EntityDataProcessor();
-            entityDataProcessor.Process(path, "*Data.xml",
+            entityDataProcessor.Process(path, filter,
                 GetEntityInstanceFactory(),
                 (entityName, targetObject, attributeName, attributeValue) =>
                 {
-                    var pName = AttributeNameToPropertyName(attributeName);
-                    var pValue = attributeValue;
+                    var pName = AttributeNameToPropertyName(entityName, targetObject, attributeName);
+                    var pValue = ConvertAttributeValue(targetObject, attributeName, attributeValue);
                     Dynamitey.Dynamic.InvokeSetChain(targetObject, pName, pValue);
                 }
                 );
@@ -45,12 +50,36 @@ namespace Dddml.Wms.Services.Tests
             }
         }
 
-        private static string AttributeNameToPropertyName(string attributeName)
+
+        private static object ConvertAttributeValue(object targetObject, string attributeName, object attributeValue)
         {
+            var propName = attributeName.Substring(0, 1).ToUpperInvariant() + attributeName.Substring(1);
+            var propType = targetObject.GetType().GetProperty(propName);
+            if (propType != null)
+            {
+                var valueType = propType.PropertyType;
+                if (NullableUtils.IsNullableType(valueType))
+                {
+                    valueType = NullableUtils.GetUnderlyingType(valueType);
+                }
+                return Convert.ChangeType(attributeValue, valueType);
+            }
+            return attributeValue;
+        }
+
+        private static string AttributeNameToPropertyName(string entityName, object targetObject, string attributeName)
+        {
+            var propName = attributeName.Substring(0, 1).ToUpperInvariant() + attributeName.Substring(1);
             // /////////////////////////////////////
-            //todo Chaining Property Name
+            // Chaining Property Name
             // /////////////////////////////////////
-            return attributeName.Substring(0, 1).ToUpperInvariant() + attributeName.Substring(1);
+            var propType = targetObject.GetType().GetProperty(propName);
+            if (propType == null)
+            {
+                string stateEventIdPropFormat = "StateEventId.{0}Id.{1}";
+                propName = String.Format(stateEventIdPropFormat, entityName, propName);
+            }
+            return propName;
         }
 
         private static Func<string, object> GetEntityInitializationServiceFactory()

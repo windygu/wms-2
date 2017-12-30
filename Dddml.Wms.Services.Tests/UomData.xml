@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+
+  <!-- C:\svn\ofbiz.15.12\framework\common\data\CurrencyData.xml -->
+  <Uom abbreviation="CRC" description="Costa Rica Colon" uomId="CRC" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="COP" description="Colombian Peso" uomId="COP" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="CNY" description="China" uomId="CNY" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="CLP" description="Chilean Peso" uomId="CLP" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="CHF" description="Swiss Franc" uomId="CHF" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="CDP" description="Santo Domiongo" uomId="CDP" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="CAD" description="Canadian Dollar" uomId="CAD" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="BZD" description="Belize Dollar" uomId="BZD" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="BYR" description="Belorussian Ruble" uomId="BYR" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="BWP" description="Botswana Pula" uomId="BWP" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="BSD" description="Bahaman Dollar" uomId="BSD" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="BRR" description="Brazil" uomId="BRR" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="BRL" description="Brazilian Real" uomId="BRL" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="BOB" description="Bolivian Boliviano" uomId="BOB" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="BND" description="Brunei Dollar" uomId="BND" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="BMD" description="Bermudan Dollar" uomId="BMD" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="BIF" description="Burundi Franc" uomId="BIF" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="BHD" description="Bahrain Dinar" uomId="BHD" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="BGN" description="Bulgarian Lev" uomId="BGN" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="BDT" description="Bangladesh Taka" uomId="BDT" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="BBD" description="Barbados Dollar" uomId="BBD" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="BAD" description="Bosnia-Herzogovinian Dinar" uomId="BAD" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="AZM" description="Azerbaijan Manat" uomId="AZM" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="AWG" description="Aruban Guilder" uomId="AWG" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="AUD" description="Australian Dollar" uomId="AUD" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="ARS" description="Argentina Peso" uomId="ARS" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="ARA" description="Argentinian Austral" uomId="ARA" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="AOK" description="Angolan Kwanza" uomId="AOK" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="ANG" description="West Indian Guilder" uomId="ANG" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="AMD" description="Armenian Dram" uomId="AMD" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="ALL" description="Albanian Lek" uomId="ALL" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="AFA" description="Afghani" uomId="AFA" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="AED" description="United Arab Emirates Dirham" uomId="AED" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="ADP" description="Andoran peseta" uomId="ADP" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="CUP" description="Cuban Peso" uomId="CUP" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="CVE" description="Cape Verde Escudo" uomId="CVE" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="CYP" description="Cyprus Pound" uomId="CYP" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="CZK" description="Czech Koruna" uomId="CZK" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="DJF" description="Djibouti Franc" uomId="DJF" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="DKK" description="Danish Krone" uomId="DKK" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="DOP" description="Dominican Peso" uomId="DOP" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="DRP" description="Dominican Republic Peso" uomId="DRP" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="DZD" description="Algerian Dinar" uomId="DZD" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="ECS" description="Ecuador Sucre" uomId="ECS" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="EEK" description="Estonian Krone" uomId="EEK" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="EGP" description="Egyptian Pound" uomId="EGP" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="ETB" description="Ethiopian Birr" uomId="ETB" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="EUR" description="Euro" uomId="EUR" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="FJD" description="Fiji Dollar" uomId="FJD" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="FKP" description="Falkland Pound" uomId="FKP" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="GBP" description="British Pound" uomId="GBP" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="GEK" description="Georgian Kupon" uomId="GEK" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="GHC" description="Ghanian Cedi" uomId="GHC" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="GIP" description="Gibraltar Pound" uomId="GIP" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="GMD" description="Gambian Dalasi" uomId="GMD" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="GNF" description="Guinea Franc" uomId="GNF" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="GTQ" description="Guatemalan Quedzal" uomId="GTQ" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="GWP" description="Guinea Peso" uomId="GWP" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="GYD" description="Guyanese Dollar" uomId="GYD" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="HKD" description="Hong Kong Dollar" uomId="HKD" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="HNL" description="Honduran Lempira" uomId="HNL" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="HRK" description="Croatian Kuna" uomId="HRK" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="HTG" description="Haitian Gourde" uomId="HTG" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="HUF" description="Hungarian forint" uomId="HUF" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="IDR" description="Indeonesian Rupiah" uomId="IDR" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="INR" description="Indian Rupee" uomId="INR" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="IQD" description="Iraqui Dinar" uomId="IQD" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="IRR" description="Iranian Rial" uomId="IRR" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="ISK" description="Iceland Krona" uomId="ISK" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="JMD" description="Jamaican Dollar" uomId="JMD" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="JOD" description="Jordanian Dinar" uomId="JOD" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="JPY" description="Japanese Yen" uomId="JPY" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="KES" description="Kenyan Shilling" uomId="KES" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="KHR" description="Cambodian Riel" uomId="KHR" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="KIS" description="Kirghizstan Som" uomId="KIS" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="KMF" description="Comoros Franc" uomId="KMF" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="KPW" description="North Korean Won" uomId="KPW" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="KRW" description="South Korean Won" uomId="KRW" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="KWD" description="Kuwaiti Dinar" uomId="KWD" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="KYD" description="Cayman Dollar" uomId="KYD" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="KZT" description="Kazakhstani Tenge" uomId="KZT" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="LAK" description="Laotian Kip" uomId="LAK" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="LBP" description="Lebanese Pound" uomId="LBP" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="LKR" description="Sri Lankan Rupee" uomId="LKR" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="LRD" description="Liberian Dollar" uomId="LRD" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="LSL" description="Lesotho Loti" uomId="LSL" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="LTL" description="Lithuanian Lita" uomId="LTL" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="LVL" description="Latvian Lat" uomId="LVL" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="LYD" description="Libyan Dinar" uomId="LYD" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="MAD" description="Moroccan Dirham" uomId="MAD" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="MDL" description="Moldavian Lei" uomId="MDL" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="MGF" description="Madagascan Franc" uomId="MGF" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="MNT" description="Mongolian Tugrik" uomId="MNT" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="MOP" description="Macao Pataca" uomId="MOP" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="MRO" description="Mauritanian Ouguiya" uomId="MRO" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="MTL" description="Maltese Lira" uomId="MTL" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="MUR" description="Mauritius Rupee" uomId="MUR" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="MVR" description="Maldive Rufiyaa" uomId="MVR" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="MWK" description="Malawi Kwacha" uomId="MWK" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="MXN" description="Mexican Peso (new)" uomId="MXN" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="MXP" description="Mexican Peso (old)" uomId="MXP" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="MYR" description="Malaysian Ringgit" uomId="MYR" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="MZM" description="Mozambique Metical" uomId="MZM" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="NGN" description="Nigerian Naira" uomId="NGN" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="NIC" description="Nicaragua" uomId="NIC" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="NIO" description="Nicaraguan Cordoba" uomId="NIO" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="NIS" description="New Israeli Shekel" uomId="NIS" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="NOK" description="Norwegian Krone" uomId="NOK" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="NPR" description="Nepalese Rupee" uomId="NPR" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="NZD" description="New Zealand Dollar" uomId="NZD" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="OMR" description="Omani Rial" uomId="OMR" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="PAB" description="Panamanian Balboa" uomId="PAB" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="PEI" description="Peruvian Inti" uomId="PEI" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="PEN" description="Peruvian Sol - New" uomId="PEN" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="PES" description="Peruvian Sol" uomId="PES" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="PGK" description="Papua New Guinea Kina" uomId="PGK" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="PHP" description="Philippino Peso" uomId="PHP" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="PKR" description="Pakistan Rupee" uomId="PKR" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="PLN" description="Polish Zloty" uomId="PLN" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="PLZ" description="Poland" uomId="PLZ" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="PYG" description="Paraguayan Guarani" uomId="PYG" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="QAR" description="Qatar Riyal" uomId="QAR" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="ROL" description="Romanian Leu" uomId="ROL" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="RUR" description="Russian Rouble" uomId="RUR" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="RWF" description="Rwanda Franc" uomId="RWF" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="SAR" description="Saudi Riyal" uomId="SAR" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="SBD" description="Solomon Islands Dollar" uomId="SBD" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="SCR" description="Seychelles Rupee" uomId="SCR" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="SDP" description="Sudanese Pound" uomId="SDP" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="SEK" description="Swedish Krona" uomId="SEK" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="SGD" description="Singapore Dollar" uomId="SGD" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="SHP" description="St.Helena Pound" uomId="SHP" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="SLL" description="Leone" uomId="SLL" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="SOL" description="Peru" uomId="SOL" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="SOS" description="Somalian Shilling" uomId="SOS" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="SRG" description="Surinam Guilder" uomId="SRG" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="STD" description="Sao Tome / Principe Dobra" uomId="STD" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="SUR" description="Russian Ruble (old)" uomId="SUR" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="SVC" description="El Salvador Colon" uomId="SVC" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="SYP" description="Syrian Pound" uomId="SYP" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="SZL" description="Swaziland Lilangeni" uomId="SZL" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="THB" description="Thailand Baht" uomId="THB" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="TJR" description="Tadzhikistani Ruble" uomId="TJR" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="TMM" description="Turkmenistani Manat" uomId="TMM" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="TND" description="Tunisian Dinar" uomId="TND" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="TOP" description="Tongan Pa'anga" uomId="TOP" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="TPE" description="Timor Escudo" uomId="TPE" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="TRY" description="Turkish Lira" uomId="TRY" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="TTD" description="Trinidad and Tobago Dollar" uomId="TTD" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="TWD" description="New Taiwan Dollar" uomId="TWD" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="TZS" description="Tanzanian Shilling" uomId="TZS" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="UAH" description="Ukrainian Hryvnia" uomId="UAH" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="UGS" description="Ugandan Shilling" uomId="UGS" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="USD" description="United States Dollar" uomId="USD" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="UYP" description="Uruguayan New Peso" uomId="UYP" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="UYU" description="Uruguay" uomId="UYU" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="VEB" description="Venezuelan Bolivar" uomId="VEB" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="VND" description="Vietnamese Dong" uomId="VND" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="VUV" description="Vanuatu Vatu" uomId="VUV" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="WST" description="Samoan Tala" uomId="WST" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="XAF" description="Gabon C.f.A Franc" uomId="XAF" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="XCD" description="East Carribean Dollar" uomId="XCD" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="XOF" description="Benin C.f.A. Franc" uomId="XOF" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="YER" description="Yemeni Ryal" uomId="YER" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="ZAR" description="South African Rand" uomId="ZAR" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="ZMK" description="Zambian Kwacha" uomId="ZMK" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="ZRZ" description="Zaire" uomId="ZRZ" uomTypeId="CURRENCY_MEASURE" />
+  <Uom abbreviation="ZWD" description="Zimbabwean Dollar" uomId="ZWD" uomTypeId="CURRENCY_MEASURE" />
+
+  <!-- C:\svn\ofbiz.15.12\framework\common\data\UnitData.xml -->
+  <Uom abbreviation="b" description="Bit of Data" uomId="DATA_b" uomTypeId="DATA_MEASURE" />
+  <Uom abbreviation="Kb" description="Kilobit of Data" uomId="DATA_Kb" uomTypeId="DATA_MEASURE" />
+  <Uom abbreviation="Mb" description="Megabit of Data" uomId="DATA_Mb" uomTypeId="DATA_MEASURE" />
+  <Uom abbreviation="Gb" description="Gigabit of Data" uomId="DATA_Gb" uomTypeId="DATA_MEASURE" />
+  <Uom abbreviation="Tb" description="Terabit of Data" uomId="DATA_Tb" uomTypeId="DATA_MEASURE" />
+  <Uom abbreviation="Pb" description="Petabit of Data" uomId="DATA_Pb" uomTypeId="DATA_MEASURE" />
+  <Uom abbreviation="B" description="Byte of Data" uomId="DATA_B" uomTypeId="DATA_MEASURE" />
+  <Uom abbreviation="KB" description="Kilobyte of Data" uomId="DATA_KB" uomTypeId="DATA_MEASURE" />
+  <Uom abbreviation="MB" description="Megabyte of Data" uomId="DATA_MB" uomTypeId="DATA_MEASURE" />
+  <Uom abbreviation="GB" description="Gigabyte of Data" uomId="DATA_GB" uomTypeId="DATA_MEASURE" />
+  <Uom abbreviation="TB" description="Terabyte of Data" uomId="DATA_TB" uomTypeId="DATA_MEASURE" />
+  <Uom abbreviation="PB" description="Petabyte of Data" uomId="DATA_PB" uomTypeId="DATA_MEASURE" />
+  <Uom abbreviation="bps" description="Bit-per-second of Data" uomId="DATASPD_bps" uomTypeId="DATASPD_MEASURE" />
+  <Uom abbreviation="Kbps" description="Kilobit-per-second of Data" uomId="DATASPD_Kbps" uomTypeId="DATASPD_MEASURE" />
+  <Uom abbreviation="Mbps" description="Megabit-per-second of Data" uomId="DATASPD_Mbps" uomTypeId="DATASPD_MEASURE" />
+  <Uom abbreviation="Gbps" description="Gigabit-per-second of Data" uomId="DATASPD_Gbps" uomTypeId="DATASPD_MEASURE" />
+  <Uom abbreviation="Tbps" description="Terabit-per-second of Data" uomId="DATASPD_Tbps" uomTypeId="DATASPD_MEASURE" />
+  <Uom abbreviation="ms" description="Time in Milli-Seconds" uomId="TF_ms" uomTypeId="TIME_FREQ_MEASURE" />
+  <Uom abbreviation="s" description="Time in Seconds" uomId="TF_s" uomTypeId="TIME_FREQ_MEASURE" />
+  <Uom abbreviation="min" description="Time in Minutes" uomId="TF_min" uomTypeId="TIME_FREQ_MEASURE" />
+  <Uom abbreviation="hr" description="Time in Hours" uomId="TF_hr" uomTypeId="TIME_FREQ_MEASURE" />
+  <Uom abbreviation="day" description="Time in Days" uomId="TF_day" uomTypeId="TIME_FREQ_MEASURE" />
+  <Uom abbreviation="wk" description="Time in Weeks" uomId="TF_wk" uomTypeId="TIME_FREQ_MEASURE" />
+  <Uom abbreviation="mon" description="Time in Months" uomId="TF_mon" uomTypeId="TIME_FREQ_MEASURE" />
+  <Uom abbreviation="yr" description="Time in Years" uomId="TF_yr" uomTypeId="TIME_FREQ_MEASURE" />
+  <Uom abbreviation="decade" description="Time in Decades" uomId="TF_decade" uomTypeId="TIME_FREQ_MEASURE" />
+  <Uom abbreviation="score" description="Time in Scores" uomId="TF_score" uomTypeId="TIME_FREQ_MEASURE" />
+  <Uom abbreviation="century" description="Time in Centuries" uomId="TF_century" uomTypeId="TIME_FREQ_MEASURE" />
+  <Uom abbreviation="millenium" description="Time in Millenia" uomId="TF_millenium" uomTypeId="TIME_FREQ_MEASURE" />
+  <Uom abbreviation="A" description="Angstrom" uomId="LEN_A" uomTypeId="LENGTH_MEASURE" />
+  <Uom abbreviation="cb" description="Cable" uomId="LEN_cb" uomTypeId="LENGTH_MEASURE" />
+  <Uom abbreviation="cm" description="Centimeter" uomId="LEN_cm" uomTypeId="LENGTH_MEASURE" />
+  <Uom abbreviation="chG" description="Chain (Gunter's/surveyor's)" uomId="LEN_chG" uomTypeId="LENGTH_MEASURE" />
+  <Uom abbreviation="chR" description="Chain (Ramden's/engineer's)" uomId="LEN_chR" uomTypeId="LENGTH_MEASURE" />
+  <Uom abbreviation="dm" description="Decimeter" uomId="LEN_dm" uomTypeId="LENGTH_MEASURE" />
+  <Uom abbreviation="dam" description="Dekameter" uomId="LEN_dam" uomTypeId="LENGTH_MEASURE" />
+  <Uom abbreviation="fm" description="Fathom" uomId="LEN_fm" uomTypeId="LENGTH_MEASURE" />
+  <Uom abbreviation="ft" description="Foot" uomId="LEN_ft" uomTypeId="LENGTH_MEASURE" />
+  <Uom abbreviation="fur" description="Furlong" uomId="LEN_fur" uomTypeId="LENGTH_MEASURE" />
+  <Uom abbreviation="hand" description="Hand (horse's height)" uomId="LEN_hand" uomTypeId="LENGTH_MEASURE" />
+  <Uom abbreviation="in" description="Inch" uomId="LEN_in" uomTypeId="LENGTH_MEASURE" />
+  <Uom abbreviation="km" description="Kilometer" uomId="LEN_km" uomTypeId="LENGTH_MEASURE" />
+  <Uom abbreviation="league" description="League" uomId="LEN_league" uomTypeId="LENGTH_MEASURE" />
+  <Uom abbreviation="lnG" description="Link (Gunter's)" uomId="LEN_lnG" uomTypeId="LENGTH_MEASURE" />
+  <Uom abbreviation="lnR" description="Link (Ramden's)" uomId="LEN_lnR" uomTypeId="LENGTH_MEASURE" />
+  <Uom abbreviation="m" description="Meter" uomId="LEN_m" uomTypeId="LENGTH_MEASURE" />
+  <Uom abbreviation="u" description="Micrometer (Micron)" uomId="LEN_u" uomTypeId="LENGTH_MEASURE" />
+  <Uom abbreviation="mi" description="Mile (statute/land)" uomId="LEN_mi" uomTypeId="LENGTH_MEASURE" />
+  <Uom abbreviation="nmi" description="Mile (nautical/sea)" uomId="LEN_nmi" uomTypeId="LENGTH_MEASURE" />
+  <Uom abbreviation="mm" description="Millimeter" uomId="LEN_mm" uomTypeId="LENGTH_MEASURE" />
+  <Uom abbreviation="mil" description="Mil (Milli-inch)" uomId="LEN_mil" uomTypeId="LENGTH_MEASURE" />
+  <Uom abbreviation="point" description="Point (type size)" uomId="LEN_point" uomTypeId="LENGTH_MEASURE" />
+  <Uom abbreviation="pica" description="Pica (type size)" uomId="LEN_pica" uomTypeId="LENGTH_MEASURE" />
+  <Uom abbreviation="rd" description="Rod" uomId="LEN_rd" uomTypeId="LENGTH_MEASURE" />
+  <Uom abbreviation="yd" description="Yard" uomId="LEN_yd" uomTypeId="LENGTH_MEASURE" />
+  <Uom abbreviation="A" description="Acre" uomId="AREA_A" uomTypeId="AREA_MEASURE" />
+  <Uom abbreviation="a" description="Are" uomId="AREA_a" uomTypeId="AREA_MEASURE" />
+  <Uom abbreviation="ha" description="Hectare" uomId="AREA_ha" uomTypeId="AREA_MEASURE" />
+  <Uom abbreviation="cm2" description="Square Centimeter" uomId="AREA_cm2" uomTypeId="AREA_MEASURE" />
+  <Uom abbreviation="ft2" description="Square Foot" uomId="AREA_ft2" uomTypeId="AREA_MEASURE" />
+  <Uom abbreviation="in2" description="Square Inch" uomId="AREA_in2" uomTypeId="AREA_MEASURE" />
+  <Uom abbreviation="km2" description="Square Kilometer" uomId="AREA_km2" uomTypeId="AREA_MEASURE" />
+  <Uom abbreviation="m2" description="Square Meter" uomId="AREA_m2" uomTypeId="AREA_MEASURE" />
+  <Uom abbreviation="mi2" description="Square Mile" uomId="AREA_mi2" uomTypeId="AREA_MEASURE" />
+  <Uom abbreviation="mm2" description="Square Millimeter" uomId="AREA_mm2" uomTypeId="AREA_MEASURE" />
+  <Uom abbreviation="rd2" description="Square Rod" uomId="AREA_rd2" uomTypeId="AREA_MEASURE" />
+  <Uom abbreviation="yd2" description="Square Yard" uomId="AREA_yd2" uomTypeId="AREA_MEASURE" />
+  <Uom abbreviation="bbl" description="Barrel (US)" uomId="VLIQ_bbl" uomTypeId="VOLUME_LIQ_MEASURE" />
+  <Uom abbreviation="cup" description="Cup" uomId="VLIQ_cup" uomTypeId="VOLUME_LIQ_MEASURE" />
+  <Uom abbreviation="dr" description="Dram (US)" uomId="VLIQ_dr" uomTypeId="VOLUME_LIQ_MEASURE" />
+  <Uom abbreviation="gi" description="Gill (1/4 UK pint)" uomId="VLIQ_gi" uomTypeId="VOLUME_LIQ_MEASURE" />
+  <Uom abbreviation="gal" description="Gallon (UK)" uomId="VLIQ_galUK" uomTypeId="VOLUME_LIQ_MEASURE" />
+  <Uom abbreviation="gal" description="Gallon (US)" uomId="VLIQ_galUS" uomTypeId="VOLUME_LIQ_MEASURE" />
+  <Uom abbreviation="m3" description="Cubic meter (liquid)" uomId="VLIQ_M3" uomTypeId="VOLUME_LIQ_MEASURE" />
+  <Uom abbreviation="hL" description="Hectoliter" uomId="VLIQ_HL" uomTypeId="VOLUME_LIQ_MEASURE" />
+  <Uom abbreviation="L" description="Liter" uomId="VLIQ_L" uomTypeId="VOLUME_LIQ_MEASURE" />
+  <Uom abbreviation="ml" description="Milliliter" uomId="VLIQ_ml" uomTypeId="VOLUME_LIQ_MEASURE" />
+  <Uom abbreviation="fl. oz (UK)" description="Ounce, fluid (UK)" uomId="VLIQ_ozUK" uomTypeId="VOLUME_LIQ_MEASURE" />
+  <Uom abbreviation="fl. oz (US)" description="Ounce, fluid (US)" uomId="VLIQ_ozUS" uomTypeId="VOLUME_LIQ_MEASURE" />
+  <Uom abbreviation="pt (UK)" description="Pint (UK)" uomId="VLIQ_ptUK" uomTypeId="VOLUME_LIQ_MEASURE" />
+  <Uom abbreviation="pt (US)" description="Pint (US)" uomId="VLIQ_ptUS" uomTypeId="VOLUME_LIQ_MEASURE" />
+  <Uom abbreviation="qt" description="Quart" uomId="VLIQ_qt" uomTypeId="VOLUME_LIQ_MEASURE" />
+  <Uom abbreviation="Tbs" description="Tablespoon" uomId="VLIQ_Tbs" uomTypeId="VOLUME_LIQ_MEASURE" />
+  <Uom abbreviation="tsp" description="Teaspoon" uomId="VLIQ_tsp" uomTypeId="VOLUME_LIQ_MEASURE" />
+  <Uom abbreviation="cm3" description="Cubic centimeter" uomId="VDRY_cm3" uomTypeId="VOLUME_DRY_MEASURE" />
+  <Uom abbreviation="ft3" description="Cubic foot" uomId="VDRY_ft3" uomTypeId="VOLUME_DRY_MEASURE" />
+  <Uom abbreviation="in3" description="Cubic inch" uomId="VDRY_in3" uomTypeId="VOLUME_DRY_MEASURE" />
+  <Uom abbreviation="m3" description="Cubic meter" uomId="VDRY_m3" uomTypeId="VOLUME_DRY_MEASURE" />
+  <Uom abbreviation="mm3" description="Cubic millimeter" uomId="VDRY_mm3" uomTypeId="VOLUME_DRY_MEASURE" />
+  <Uom abbreviation="ST" description="Stere (cubic meter)" uomId="VDRY_ST" uomTypeId="VOLUME_DRY_MEASURE" />
+  <Uom abbreviation="yd3" description="Cubic yard" uomId="VDRY_yd3" uomTypeId="VOLUME_DRY_MEASURE" />
+  <Uom abbreviation="dr avdp" description="Dram (avdp)" uomId="WT_dr_avdp" uomTypeId="WEIGHT_MEASURE" />
+  <Uom abbreviation="gr" description="Grain" uomId="WT_gr" uomTypeId="WEIGHT_MEASURE" />
+  <Uom abbreviation="g" description="Gram" uomId="WT_g" uomTypeId="WEIGHT_MEASURE" />
+  <Uom abbreviation="kg" description="Kilogram" uomId="WT_kg" uomTypeId="WEIGHT_MEASURE" />
+  <Uom abbreviation="mg" description="Milligram" uomId="WT_mg" uomTypeId="WEIGHT_MEASURE" />
+  <Uom abbreviation="oz" description="Ounce (avdp)" uomId="WT_oz" uomTypeId="WEIGHT_MEASURE" />
+  <Uom abbreviation="oz tr" description="Ounce (troy)" uomId="WT_oz_tr" uomTypeId="WEIGHT_MEASURE" />
+  <Uom abbreviation="dwt" description="Pennyweight" uomId="WT_dwt" uomTypeId="WEIGHT_MEASURE" />
+  <Uom abbreviation="lb" description="Pound (avdp)" uomId="WT_lb" uomTypeId="WEIGHT_MEASURE" />
+  <Uom abbreviation="st" description="Stone" uomId="WT_st" uomTypeId="WEIGHT_MEASURE" />
+  <Uom abbreviation="lt" description="Ton (long or British)" uomId="WT_lt" uomTypeId="WEIGHT_MEASURE" />
+  <Uom abbreviation="mt" description="Ton (metric)" uomId="WT_mt" uomTypeId="WEIGHT_MEASURE" />
+  <Uom abbreviation="sh t" description="Ton (short or US)" uomId="WT_sh_t" uomTypeId="WEIGHT_MEASURE" />
+  <Uom abbreviation="Btu" description="British Thermal Unit" uomId="EN_Btu" uomTypeId="ENERGY_MEASURE" />
+  <Uom abbreviation="cal15" description="Calorie (@15.5c)" uomId="EN_cal15" uomTypeId="ENERGY_MEASURE" />
+  <Uom abbreviation="HP" description="Horsepower (mechanical)" uomId="EN_HP" uomTypeId="ENERGY_MEASURE" />
+  <Uom abbreviation="J" description="Joule (absolute)" uomId="EN_J" uomTypeId="ENERGY_MEASURE" />
+  <Uom abbreviation="Kw" description="Kilowatt" uomId="EN_Kw" uomTypeId="ENERGY_MEASURE" />
+  <Uom abbreviation="w" description="Watt" uomId="EN_w" uomTypeId="ENERGY_MEASURE" />
+  <Uom abbreviation="K" description="Kelvin" uomId="TEMP_K" uomTypeId="TEMP_MEASURE" />
+  <Uom abbreviation="C" description="Degrees Celsius" uomId="TEMP_C" uomTypeId="TEMP_MEASURE" />
+  <Uom abbreviation="F" description="Degrees Fahrenheit" uomId="TEMP_F" uomTypeId="TEMP_MEASURE" />
+  <Uom abbreviation="A" description="Amphere - Electric current" uomId="OTH_A" uomTypeId="OTHER_MEASURE" />
+  <Uom abbreviation="cd" description="Candela - Luminosity (intensity of light)" uomId="OTH_cd" uomTypeId="OTHER_MEASURE" />
+  <Uom abbreviation="mol" description="Mole - Substance (molecule)" uomId="OTH_mol" uomTypeId="OTHER_MEASURE" />
+  <Uom abbreviation="ea" description="Each" uomId="OTH_ea" uomTypeId="OTHER_MEASURE" />
+  <Uom abbreviation="pp" description="Per Person" uomId="OTH_pp" uomTypeId="OTHER_MEASURE" />
+  <Uom abbreviation="bx" description="Box" uomId="OTH_box" uomTypeId="OTHER_MEASURE" />
+  <Uom abbreviation="pk" description="Package" uomId="OTH_pk" uomTypeId="OTHER_MEASURE" />
+
+</entity-engine-xml>

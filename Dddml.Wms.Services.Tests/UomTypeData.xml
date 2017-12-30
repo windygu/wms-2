@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+
+  <!-- C:\svn\ofbiz.15.12\framework\common\data\CommonTypeData.xml -->
+  <UomType description="Currency" hasTable="N" parentTypeId="" uomTypeId="CURRENCY_MEASURE" />
+  <UomType description="Data Size" hasTable="N" parentTypeId="" uomTypeId="DATA_MEASURE" />
+  <UomType description="Data Speed" hasTable="N" parentTypeId="" uomTypeId="DATASPD_MEASURE" />
+  <UomType description="Time/Frequency" hasTable="N" parentTypeId="" uomTypeId="TIME_FREQ_MEASURE" />
+  <UomType description="Length" hasTable="N" parentTypeId="" uomTypeId="LENGTH_MEASURE" />
+  <UomType description="Area" hasTable="N" parentTypeId="" uomTypeId="AREA_MEASURE" />
+  <UomType description="Liquid Volume" hasTable="N" parentTypeId="" uomTypeId="VOLUME_LIQ_MEASURE" />
+  <UomType description="Dry Volume" hasTable="N" parentTypeId="" uomTypeId="VOLUME_DRY_MEASURE" />
+  <UomType description="Weight" hasTable="N" parentTypeId="" uomTypeId="WEIGHT_MEASURE" />
+  <UomType description="Energy" hasTable="N" parentTypeId="" uomTypeId="ENERGY_MEASURE" />
+  <UomType description="Temperature" hasTable="N" parentTypeId="" uomTypeId="TEMP_MEASURE" />
+  <UomType description="Other" hasTable="N" parentTypeId="" uomTypeId="OTHER_MEASURE" />
+
+</entity-engine-xml>
