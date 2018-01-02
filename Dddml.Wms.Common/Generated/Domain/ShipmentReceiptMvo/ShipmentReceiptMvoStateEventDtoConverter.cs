@@ -40,7 +40,9 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             dto.CommandId = e.CommandId;
             dto.ProductId = e.ProductId;
             dto.ShipmentItemSeqId = e.ShipmentItemSeqId;
-            dto.RejectionId = e.RejectionId;
+            dto.RejectionReasonId = e.RejectionReasonId;
+            dto.DamageStatusId = e.DamageStatusId;
+            dto.DamageReasonId = e.DamageReasonId;
             dto.ItemDescription = e.ItemDescription;
             dto.AcceptedQuantity = e.AcceptedQuantity;
             dto.RejectedQuantity = e.RejectedQuantity;
@@ -87,7 +89,9 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             dto.CommandId = e.CommandId;
             dto.ProductId = e.ProductId;
             dto.ShipmentItemSeqId = e.ShipmentItemSeqId;
-            dto.RejectionId = e.RejectionId;
+            dto.RejectionReasonId = e.RejectionReasonId;
+            dto.DamageStatusId = e.DamageStatusId;
+            dto.DamageReasonId = e.DamageReasonId;
             dto.ItemDescription = e.ItemDescription;
             dto.AcceptedQuantity = e.AcceptedQuantity;
             dto.RejectedQuantity = e.RejectedQuantity;
@@ -124,7 +128,9 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             dto.ShipmentActive = e.ShipmentActive;
             dto.IsPropertyProductIdRemoved = e.IsPropertyProductIdRemoved;
             dto.IsPropertyShipmentItemSeqIdRemoved = e.IsPropertyShipmentItemSeqIdRemoved;
-            dto.IsPropertyRejectionIdRemoved = e.IsPropertyRejectionIdRemoved;
+            dto.IsPropertyRejectionReasonIdRemoved = e.IsPropertyRejectionReasonIdRemoved;
+            dto.IsPropertyDamageStatusIdRemoved = e.IsPropertyDamageStatusIdRemoved;
+            dto.IsPropertyDamageReasonIdRemoved = e.IsPropertyDamageReasonIdRemoved;
             dto.IsPropertyItemDescriptionRemoved = e.IsPropertyItemDescriptionRemoved;
             dto.IsPropertyAcceptedQuantityRemoved = e.IsPropertyAcceptedQuantityRemoved;
             dto.IsPropertyRejectedQuantityRemoved = e.IsPropertyRejectedQuantityRemoved;

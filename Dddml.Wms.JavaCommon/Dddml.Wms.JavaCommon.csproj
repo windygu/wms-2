@@ -916,6 +916,83 @@
     <Content Include="src\main\java\org\dddml\wms\domain\Command.java">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\AbstractDamageReasonAggregate.java">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\AbstractDamageReasonApplicationService.java">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\AbstractDamageReasonCommand.java">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\AbstractDamageReasonCommandDto.java">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\AbstractDamageReasonState.java">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\AbstractDamageReasonStateCommandConverter.java">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\AbstractDamageReasonStateEvent.java">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\CreateOrMergePatchDamageReasonDto.java">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\DamageReasonAggregate.java">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\DamageReasonApplicationService.java">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\DamageReasonCommand.java">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\DamageReasonState.java">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\DamageReasonStateDto.java">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\DamageReasonStateEvent.java">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\DamageReasonStateEventDto.java">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\DamageReasonStateEventDtoConverter.java">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\DamageReasonStateEventId.java">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\DamageReasonStateEventIdDto.java">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\DamageReasonStateEventIdDtoWrapper.java">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\DamageReasonStateEventIdFlattenedDto.java">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\DamageReasonStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\DamageReasonStateQueryRepository.java">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\DamageReasonStateRepository.java">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\DeleteDamageReasonDto.java">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\GenerateDamageReasonDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\DocumentAction.java">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Content>
@@ -2168,6 +2245,12 @@
     <Content Include="src\main\java\org\dddml\wms\domain\meta\BoundedContextMetadata.java">
       <DependentUpon>GenerateBoundedContextMetadata.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\DamageReasonFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\DamageReasonMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\meta\DocumentTypeFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
@@ -2200,6 +2283,8 @@
 .\AttributeValueMetadata.java
 .\AttributeValueMvoFilteringProperties.java
 .\AttributeValueMvoMetadata.java
+.\DamageReasonFilteringProperties.java
+.\DamageReasonMetadata.java
 .\DocumentTypeFilteringProperties.java
 .\DocumentTypeMetadata.java
 .\GenerateBoundedContextDomainAggregatesMetadata.txt
@@ -2269,6 +2354,8 @@
 .\ProductCategoryMetadata.java
 .\ProductFilteringProperties.java
 .\ProductMetadata.java
+.\RejectionReasonFilteringProperties.java
+.\RejectionReasonMetadata.java
 .\SellableInventoryItemEntryFilteringProperties.java
 .\SellableInventoryItemEntryMetadata.java
 .\SellableInventoryItemEntryMvoFilteringProperties.java
@@ -2515,6 +2602,12 @@
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\meta\ProductMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\RejectionReasonFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\RejectionReasonMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\meta\SellableInventoryItemEntryFilteringProperties.java">
@@ -4219,6 +4312,83 @@
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\product\ProductStateRepository.java">
       <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\AbstractRejectionReasonAggregate.java">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\AbstractRejectionReasonApplicationService.java">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\AbstractRejectionReasonCommand.java">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\AbstractRejectionReasonCommandDto.java">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\AbstractRejectionReasonState.java">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\AbstractRejectionReasonStateCommandConverter.java">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\AbstractRejectionReasonStateEvent.java">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\CreateOrMergePatchRejectionReasonDto.java">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\DeleteRejectionReasonDto.java">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\GenerateRejectionReasonDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\RejectionReasonAggregate.java">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\RejectionReasonApplicationService.java">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\RejectionReasonCommand.java">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\RejectionReasonState.java">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\RejectionReasonStateDto.java">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\RejectionReasonStateEvent.java">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\RejectionReasonStateEventDto.java">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\RejectionReasonStateEventDtoConverter.java">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\RejectionReasonStateEventId.java">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\RejectionReasonStateEventIdDto.java">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\RejectionReasonStateEventIdDtoWrapper.java">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\RejectionReasonStateEventIdFlattenedDto.java">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\RejectionReasonStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\RejectionReasonStateQueryRepository.java">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\RejectionReasonStateRepository.java">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\AbstractSellableInventoryItemEntryMvoAggregate.java">
       <DependentUpon>GenerateSellableInventoryItemEntryMvoDomain.tt</DependentUpon>
@@ -7289,6 +7459,68 @@
 .\ShipmentReceiptMvoStateEventIdFlattenedDtoFormatter.java
 .\ShipmentReceiptMvoStateQueryRepository.java
 .\ShipmentReceiptMvoStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\GenerateDamageReasonDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateDamageReasonDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractDamageReasonAggregate.java
+.\AbstractDamageReasonApplicationService.java
+.\AbstractDamageReasonCommand.java
+.\AbstractDamageReasonCommandDto.java
+.\AbstractDamageReasonState.java
+.\AbstractDamageReasonStateCommandConverter.java
+.\AbstractDamageReasonStateEvent.java
+.\CreateOrMergePatchDamageReasonDto.java
+.\DamageReasonAggregate.java
+.\DamageReasonApplicationService.java
+.\DamageReasonCommand.java
+.\DamageReasonState.java
+.\DamageReasonStateDto.java
+.\DamageReasonStateEvent.java
+.\DamageReasonStateEventDto.java
+.\DamageReasonStateEventDtoConverter.java
+.\DamageReasonStateEventId.java
+.\DamageReasonStateEventIdDto.java
+.\DamageReasonStateEventIdDtoWrapper.java
+.\DamageReasonStateEventIdFlattenedDto.java
+.\DamageReasonStateEventIdFlattenedDtoFormatter.java
+.\DamageReasonStateQueryRepository.java
+.\DamageReasonStateRepository.java
+.\DeleteDamageReasonDto.java
+.\GenerateDamageReasonDomain.txt
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\GenerateRejectionReasonDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateRejectionReasonDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractRejectionReasonAggregate.java
+.\AbstractRejectionReasonApplicationService.java
+.\AbstractRejectionReasonCommand.java
+.\AbstractRejectionReasonCommandDto.java
+.\AbstractRejectionReasonState.java
+.\AbstractRejectionReasonStateCommandConverter.java
+.\AbstractRejectionReasonStateEvent.java
+.\CreateOrMergePatchRejectionReasonDto.java
+.\DeleteRejectionReasonDto.java
+.\GenerateRejectionReasonDomain.txt
+.\RejectionReasonAggregate.java
+.\RejectionReasonApplicationService.java
+.\RejectionReasonCommand.java
+.\RejectionReasonState.java
+.\RejectionReasonStateDto.java
+.\RejectionReasonStateEvent.java
+.\RejectionReasonStateEventDto.java
+.\RejectionReasonStateEventDtoConverter.java
+.\RejectionReasonStateEventId.java
+.\RejectionReasonStateEventIdDto.java
+.\RejectionReasonStateEventIdDtoWrapper.java
+.\RejectionReasonStateEventIdFlattenedDto.java
+.\RejectionReasonStateEventIdFlattenedDtoFormatter.java
+.\RejectionReasonStateQueryRepository.java
+.\RejectionReasonStateRepository.java
 </LastOutputs>
     </Content>
   </ItemGroup>

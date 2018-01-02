@@ -14,6 +14,7 @@ namespace Dddml.Wms.Domain.StatusItem
         public const string ShipmentStatus = "SHIPMENT_STATUS";
         
         public const string PurchaseShipmentStatus = "PURCH_SHIP_STATUS";
-        
+
+        public const string DamageStatus = "DAMAGE_STATUS";
     }
 }

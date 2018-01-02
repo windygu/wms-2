@@ -1,5 +1,26 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <entity-engine-xml>
+  
+  <!-- 纸边破损 -->
+  <StatusItem description="Edge Damage" sequenceId="01" statusCode="EDGE_DAMAGE" statusId="DAMAGE_EDGE" statusTypeId="DAMAGE_STATUS" />
+  <!-- 侧面破损 -->
+  <StatusItem description="Side Damage" sequenceId="02" statusCode="SIDE_DAMAGE" statusId="DAMAGE_SIDE" statusTypeId="DAMAGE_STATUS" />
+  <!-- 两端破损 -->
+  <StatusItem description="End Damage" sequenceId="03" statusCode="END_DAMAGE" statusId="DAMAGE_END" statusTypeId="DAMAGE_STATUS" />
+  <!-- 包装破损 -->
+  <StatusItem description="Wrapper Damage/Broken Pallet base" sequenceId="04" statusCode="WRAPPER_DAMAGE" statusId="DAMAGE_WRAPPER" statusTypeId="DAMAGE_STATUS" />
+  <!-- 纸芯不良 -->
+  <StatusItem description="Core Damage" sequenceId="05" statusCode="CORE_DAMAGE" statusId="DAMAGE_CORE" statusTypeId="DAMAGE_STATUS" />
+  <!-- 严重变形 -->
+  <StatusItem description="Deformation/our of roudness" sequenceId="06" statusCode="DEFORMATION" statusId="DAMAGE_DEFORMATION" statusTypeId="DAMAGE_STATUS" />
+  <!-- 水湿 -->
+  <StatusItem description="Water Damage" sequenceId="07" statusCode="WATER_DAMAGE" statusId="DAMAGE_WATER" statusTypeId="DAMAGE_STATUS" />
+  <!-- 脏污、异物 -->
+  <StatusItem description="Dirt and Contamination" sequenceId="08" statusCode="DIRT" statusId="DAMAGE_DIRT_AND_CONTAMINATION" statusTypeId="DAMAGE_STATUS" />
+  <!-- 短重，短装 -->
+  <StatusItem description="Shortage, Non-delivery" sequenceId="09" statusCode="SHORTAGE" statusId="DAMAGE_SHORTAGE" statusTypeId="DAMAGE_STATUS" />
+  <!-- 其他 -->
+  <StatusItem description="Other(wrinkle,spoiling,mould,rust,etc.)" sequenceId="10" statusCode="OTHER" statusId="DAMAGE_OTHER" statusTypeId="DAMAGE_STATUS" />
 
   <!-- C:\svn\ofbiz.15.12\applications\order\data\OrderTypeData.xml -->
   <StatusItem description="Created" sequenceId="01" statusCode="CREATED" statusId="ORDER_CREATED" statusTypeId="ORDER_STATUS" />

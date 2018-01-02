@@ -124,31 +124,87 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             }
         }
 
-		public virtual string RejectionId
+		public virtual string RejectionReasonId
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("RejectionId"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("RejectionReasonId"))
                 {
-                    return _state.RejectionId;
+                    return _state.RejectionReasonId;
                 }
                 return null;
             }
             set
             {
-                _state.RejectionId = value;
+                _state.RejectionReasonId = value;
             }
         }
 
-        string IShipmentReceiptMvoStateProperties.RejectionId
+        string IShipmentReceiptMvoStateProperties.RejectionReasonId
         {
             get 
             {
-                return (this._state as IShipmentReceiptMvoStateProperties).RejectionId;
+                return (this._state as IShipmentReceiptMvoStateProperties).RejectionReasonId;
             }
             set 
             {
-                (this._state as IShipmentReceiptMvoStateProperties).RejectionId = value;
+                (this._state as IShipmentReceiptMvoStateProperties).RejectionReasonId = value;
+            }
+        }
+
+		public virtual string DamageStatusId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("DamageStatusId"))
+                {
+                    return _state.DamageStatusId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.DamageStatusId = value;
+            }
+        }
+
+        string IShipmentReceiptMvoStateProperties.DamageStatusId
+        {
+            get 
+            {
+                return (this._state as IShipmentReceiptMvoStateProperties).DamageStatusId;
+            }
+            set 
+            {
+                (this._state as IShipmentReceiptMvoStateProperties).DamageStatusId = value;
+            }
+        }
+
+		public virtual string DamageReasonId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("DamageReasonId"))
+                {
+                    return _state.DamageReasonId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.DamageReasonId = value;
+            }
+        }
+
+        string IShipmentReceiptMvoStateProperties.DamageReasonId
+        {
+            get 
+            {
+                return (this._state as IShipmentReceiptMvoStateProperties).DamageReasonId;
+            }
+            set 
+            {
+                (this._state as IShipmentReceiptMvoStateProperties).DamageReasonId = value;
             }
         }
 

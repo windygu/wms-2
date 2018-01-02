@@ -74,6 +74,28 @@
 
 
 
+  <object id="damageReasonStateRepository" type="Dddml.Wms.Domain.DamageReason.NHibernate.NHibernateDamageReasonStateRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="damageReasonStateQueryRepository" type="Dddml.Wms.Domain.DamageReason.NHibernate.NHibernateDamageReasonStateQueryRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="damageReasonEventStore" type="Dddml.Wms.Domain.DamageReason.NHibernate.NHibernateDamageReasonEventStore, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
+  <object id="damageReasonApplicationService" type="Dddml.Wms.Domain.DamageReason.NHibernate.DamageReasonApplicationService, Dddml.Wms.Services">
+    <constructor-arg ref="damageReasonEventStore"/>
+    <constructor-arg ref="damageReasonStateRepository"/>
+    <constructor-arg ref="damageReasonStateQueryRepository"/>
+  </object>
+
+
+
   <object id="documentTypeStateRepository" type="Dddml.Wms.Domain.DocumentType.NHibernate.NHibernateDocumentTypeStateRepository, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
@@ -528,6 +550,28 @@
     <constructor-arg ref="productCategoryMemberEventStore"/>
     <constructor-arg ref="productCategoryMemberStateRepository"/>
     <constructor-arg ref="productCategoryMemberStateQueryRepository"/>
+  </object>
+
+
+
+  <object id="rejectionReasonStateRepository" type="Dddml.Wms.Domain.RejectionReason.NHibernate.NHibernateRejectionReasonStateRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="rejectionReasonStateQueryRepository" type="Dddml.Wms.Domain.RejectionReason.NHibernate.NHibernateRejectionReasonStateQueryRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="rejectionReasonEventStore" type="Dddml.Wms.Domain.RejectionReason.NHibernate.NHibernateRejectionReasonEventStore, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
+  <object id="rejectionReasonApplicationService" type="Dddml.Wms.Domain.RejectionReason.NHibernate.RejectionReasonApplicationService, Dddml.Wms.Services">
+    <constructor-arg ref="rejectionReasonEventStore"/>
+    <constructor-arg ref="rejectionReasonStateRepository"/>
+    <constructor-arg ref="rejectionReasonStateQueryRepository"/>
   </object>
 
 

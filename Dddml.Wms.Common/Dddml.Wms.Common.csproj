@@ -1030,6 +1030,93 @@
     <Compile Include="Generated\Domain\Attribute\IAttributeValueStates.cs">
       <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\DamageReason\DamageReasonAggregate.cs">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageReason\DamageReasonApplicationServiceBase.cs">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageReason\DamageReasonApplicationServiceFactory.cs">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageReason\DamageReasonCommand.cs">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageReason\DamageReasonCommandDto.cs">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageReason\DamageReasonState.cs">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageReason\DamageReasonStateDto.cs">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageReason\DamageReasonStateDtoExtension.cs">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageReason\DamageReasonStateDtoWrapper.cs">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageReason\DamageReasonStateEvent.cs">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageReason\DamageReasonStateEventDto.cs">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageReason\DamageReasonStateEventDtoConverter.cs">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageReason\DamageReasonStateEventId.cs">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageReason\DamageReasonStateEventIdDto.cs">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageReason\DamageReasonStateEventIdDtoWrapper.cs">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageReason\DamageReasonStateEventIdFlattenedDto.cs">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageReason\DamageReasonStateExtension.cs">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageReason\DamageReasonStateInterfaceExtension.cs">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageReason\DamageReasonStateProperties.cs">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageReason\IDamageReasonAggregate.cs">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageReason\IDamageReasonApplicationService.cs">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageReason\IDamageReasonApplicationServiceFactory.cs">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageReason\IDamageReasonCommand.cs">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageReason\IDamageReasonState.cs">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageReason\IDamageReasonStateDto.cs">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageReason\IDamageReasonStateEvent.cs">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageReason\IDamageReasonStateProperties.cs">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageReason\IDamageReasonStateQueryRepository.cs">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageReason\IDamageReasonStateRepository.cs">
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\DocumentAction.cs">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Compile>
@@ -2335,6 +2422,9 @@
     <Compile Include="Generated\Domain\Metadata\BoundedContextMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\Metadata\DamageReasonMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\Metadata\DocumentTypeMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
@@ -2435,6 +2525,9 @@
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Metadata\ProductMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Metadata\RejectionReasonMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Metadata\SellableInventoryItemEntryMetadata.cs">
@@ -4267,6 +4360,93 @@
     <Compile Include="Generated\Domain\Product\ProductStateProperties.cs">
       <DependentUpon>GenerateProductDomain.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\RejectionReason\IRejectionReasonAggregate.cs">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\RejectionReason\IRejectionReasonApplicationService.cs">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\RejectionReason\IRejectionReasonApplicationServiceFactory.cs">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\RejectionReason\IRejectionReasonCommand.cs">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\RejectionReason\IRejectionReasonState.cs">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\RejectionReason\IRejectionReasonStateDto.cs">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\RejectionReason\IRejectionReasonStateEvent.cs">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\RejectionReason\IRejectionReasonStateProperties.cs">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\RejectionReason\IRejectionReasonStateQueryRepository.cs">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\RejectionReason\IRejectionReasonStateRepository.cs">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\RejectionReason\RejectionReasonAggregate.cs">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\RejectionReason\RejectionReasonApplicationServiceBase.cs">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\RejectionReason\RejectionReasonApplicationServiceFactory.cs">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\RejectionReason\RejectionReasonCommand.cs">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\RejectionReason\RejectionReasonCommandDto.cs">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\RejectionReason\RejectionReasonState.cs">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\RejectionReason\RejectionReasonStateDto.cs">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\RejectionReason\RejectionReasonStateDtoExtension.cs">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\RejectionReason\RejectionReasonStateDtoWrapper.cs">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\RejectionReason\RejectionReasonStateEvent.cs">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\RejectionReason\RejectionReasonStateEventDto.cs">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\RejectionReason\RejectionReasonStateEventDtoConverter.cs">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\RejectionReason\RejectionReasonStateEventId.cs">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\RejectionReason\RejectionReasonStateEventIdDto.cs">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\RejectionReason\RejectionReasonStateEventIdDtoWrapper.cs">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\RejectionReason\RejectionReasonStateEventIdFlattenedDto.cs">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\RejectionReason\RejectionReasonStateExtension.cs">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\RejectionReason\RejectionReasonStateInterfaceExtension.cs">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\RejectionReason\RejectionReasonStateProperties.cs">
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\SellableInventoryItemEntryMvo\ISellableInventoryItemEntryMvoAggregate.cs">
       <DependentUpon>GenerateSellableInventoryItemEntryMvoDomain.tt</DependentUpon>
     </Compile>
@@ -5646,6 +5826,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
     </Content>
+    <Content Include="Generated\Domain\DamageReason\GenerateDamageReasonDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Content>
     <Content Include="Generated\Domain\DocumentType\GenerateDocumentTypeDomain.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -5780,6 +5965,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateProductDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\RejectionReason\GenerateRejectionReasonDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
     </Content>
     <Content Include="Generated\Domain\SellableInventoryItemEntryMvo\GenerateSellableInventoryItemEntryMvoDomain.txt">
       <AutoGen>True</AutoGen>
@@ -8005,6 +8195,78 @@
 .\ShipmentReceiptMvoStateProperties.cs
 </LastOutputs>
     </Content>
+    <Content Include="Generated\Domain\DamageReason\GenerateDamageReasonDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateDamageReasonDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\DamageReasonAggregate.cs
+.\DamageReasonApplicationServiceBase.cs
+.\DamageReasonApplicationServiceFactory.cs
+.\DamageReasonCommand.cs
+.\DamageReasonCommandDto.cs
+.\DamageReasonState.cs
+.\DamageReasonStateDto.cs
+.\DamageReasonStateDtoExtension.cs
+.\DamageReasonStateDtoWrapper.cs
+.\DamageReasonStateEvent.cs
+.\DamageReasonStateEventDto.cs
+.\DamageReasonStateEventDtoConverter.cs
+.\DamageReasonStateEventId.cs
+.\DamageReasonStateEventIdDto.cs
+.\DamageReasonStateEventIdDtoWrapper.cs
+.\DamageReasonStateEventIdFlattenedDto.cs
+.\DamageReasonStateExtension.cs
+.\DamageReasonStateInterfaceExtension.cs
+.\DamageReasonStateProperties.cs
+.\GenerateDamageReasonDomain.txt
+.\IDamageReasonAggregate.cs
+.\IDamageReasonApplicationService.cs
+.\IDamageReasonApplicationServiceFactory.cs
+.\IDamageReasonCommand.cs
+.\IDamageReasonState.cs
+.\IDamageReasonStateDto.cs
+.\IDamageReasonStateEvent.cs
+.\IDamageReasonStateProperties.cs
+.\IDamageReasonStateQueryRepository.cs
+.\IDamageReasonStateRepository.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\RejectionReason\GenerateRejectionReasonDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateRejectionReasonDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateRejectionReasonDomain.txt
+.\IRejectionReasonAggregate.cs
+.\IRejectionReasonApplicationService.cs
+.\IRejectionReasonApplicationServiceFactory.cs
+.\IRejectionReasonCommand.cs
+.\IRejectionReasonState.cs
+.\IRejectionReasonStateDto.cs
+.\IRejectionReasonStateEvent.cs
+.\IRejectionReasonStateProperties.cs
+.\IRejectionReasonStateQueryRepository.cs
+.\IRejectionReasonStateRepository.cs
+.\RejectionReasonAggregate.cs
+.\RejectionReasonApplicationServiceBase.cs
+.\RejectionReasonApplicationServiceFactory.cs
+.\RejectionReasonCommand.cs
+.\RejectionReasonCommandDto.cs
+.\RejectionReasonState.cs
+.\RejectionReasonStateDto.cs
+.\RejectionReasonStateDtoExtension.cs
+.\RejectionReasonStateDtoWrapper.cs
+.\RejectionReasonStateEvent.cs
+.\RejectionReasonStateEventDto.cs
+.\RejectionReasonStateEventDtoConverter.cs
+.\RejectionReasonStateEventId.cs
+.\RejectionReasonStateEventIdDto.cs
+.\RejectionReasonStateEventIdDtoWrapper.cs
+.\RejectionReasonStateEventIdFlattenedDto.cs
+.\RejectionReasonStateExtension.cs
+.\RejectionReasonStateInterfaceExtension.cs
+.\RejectionReasonStateProperties.cs
+</LastOutputs>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Generated\Domain\GenerateBoundedContextDomainAggregates.tt">
@@ -8052,6 +8314,7 @@
 .\AttributeValueMetadata.cs
 .\AttributeValueMvoMetadata.cs
 .\BoundedContextMetadata.cs
+.\DamageReasonMetadata.cs
 .\DocumentTypeMetadata.cs
 .\GenerateDomainMetadata.txt
 .\InOutLineMetadata.cs
@@ -8087,6 +8350,7 @@
 .\ProductCategoryMemberMetadata.cs
 .\ProductCategoryMetadata.cs
 .\ProductMetadata.cs
+.\RejectionReasonMetadata.cs
 .\SellableInventoryItemEntryMetadata.cs
 .\SellableInventoryItemEntryMvoMetadata.cs
 .\SellableInventoryItemMetadata.cs

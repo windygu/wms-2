@@ -29,5 +29,9 @@ aggregates:
     reservedProperties: {}
     
     discriminator: UomTypeId
+    
+    # metadata:
+      # NoEventSourcing: true
+      
 
     

@@ -25,9 +25,17 @@ public interface ShipmentReceiptStateEvent extends Event
 
     void setShipmentItemSeqId(String shipmentItemSeqId);
 
-    String getRejectionId();
+    String getRejectionReasonId();
 
-    void setRejectionId(String rejectionId);
+    void setRejectionReasonId(String rejectionReasonId);
+
+    String getDamageStatusId();
+
+    void setDamageStatusId(String damageStatusId);
+
+    String getDamageReasonId();
+
+    void setDamageReasonId(String damageReasonId);
 
     String getItemDescription();
 
@@ -73,9 +81,17 @@ public interface ShipmentReceiptStateEvent extends Event
 
         void setIsPropertyShipmentItemSeqIdRemoved(Boolean removed);
 
-        Boolean getIsPropertyRejectionIdRemoved();
+        Boolean getIsPropertyRejectionReasonIdRemoved();
 
-        void setIsPropertyRejectionIdRemoved(Boolean removed);
+        void setIsPropertyRejectionReasonIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyDamageStatusIdRemoved();
+
+        void setIsPropertyDamageStatusIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyDamageReasonIdRemoved();
+
+        void setIsPropertyDamageReasonIdRemoved(Boolean removed);
 
         Boolean getIsPropertyItemDescriptionRemoved();
 

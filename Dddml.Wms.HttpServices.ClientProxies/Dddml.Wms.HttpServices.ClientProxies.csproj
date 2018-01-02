@@ -95,6 +95,9 @@
     <Compile Include="Generated\AttributeValueMvoApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\DamageReasonApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\DddmlWmsRamlClient.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
@@ -185,6 +188,9 @@
     <Compile Include="Generated\ProductCategoryMemberApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\RejectionReasonApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\SellableInventoryItemApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
@@ -236,6 +242,7 @@
 .\AttributeSetInstanceExtensionFieldGroupApplicationServiceProxy.cs
 .\AttributeUseMvoApplicationServiceProxy.cs
 .\AttributeValueMvoApplicationServiceProxy.cs
+.\DamageReasonApplicationServiceProxy.cs
 .\DddmlWmsRamlClient.cs
 .\DocumentTypeApplicationServiceProxy.cs
 .\GenerateRamlClientProxies.txt
@@ -267,6 +274,7 @@
 .\ProductApplicationServiceProxy.cs
 .\ProductCategoryApplicationServiceProxy.cs
 .\ProductCategoryMemberApplicationServiceProxy.cs
+.\RejectionReasonApplicationServiceProxy.cs
 .\SellableInventoryItemApplicationServiceProxy.cs
 .\SellableInventoryItemEntryMvoApplicationServiceProxy.cs
 .\ShipmentApplicationServiceProxy.cs

@@ -1,0 +1,23 @@
+﻿#%DDDML 0.1
+
+---
+
+# ------------------------------
+aggregates:
+
+  RejectionReason:
+    id:
+      name: RejectionReasonId
+      type: id-ne
+      
+    properties:
+    
+      Description:
+        type: description
+        
+    references: {}
+    reservedProperties: {}
+    
+    # metadata: 
+      # NoEventSourcing: true
+      

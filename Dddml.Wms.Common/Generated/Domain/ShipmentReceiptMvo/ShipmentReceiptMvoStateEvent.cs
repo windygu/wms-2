@@ -28,7 +28,11 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
 		public virtual string ShipmentItemSeqId { get; set; }
 
-		public virtual string RejectionId { get; set; }
+		public virtual string RejectionReasonId { get; set; }
+
+		public virtual string DamageStatusId { get; set; }
+
+		public virtual string DamageReasonId { get; set; }
 
 		public virtual string ItemDescription { get; set; }
 
@@ -190,7 +194,11 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
 		public virtual bool IsPropertyShipmentItemSeqIdRemoved { get; set; }
 
-		public virtual bool IsPropertyRejectionIdRemoved { get; set; }
+		public virtual bool IsPropertyRejectionReasonIdRemoved { get; set; }
+
+		public virtual bool IsPropertyDamageStatusIdRemoved { get; set; }
+
+		public virtual bool IsPropertyDamageReasonIdRemoved { get; set; }
 
 		public virtual bool IsPropertyItemDescriptionRemoved { get; set; }
 

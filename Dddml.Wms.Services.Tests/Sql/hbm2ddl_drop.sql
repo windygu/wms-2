@@ -43,6 +43,10 @@
 
     drop table if exists AttributeAliasMvoStateEvents;
 
+    drop table if exists DamageReasons;
+
+    drop table if exists DamageReasonStateEvents;
+
     drop table if exists InOuts;
 
     drop table if exists InOutStateEvents;
@@ -216,3 +220,7 @@
     drop table if exists ShipmentReceipt_RV;
 
     drop table if exists ShipmentReceiptMvoStateEvents;
+
+    drop table if exists RejectionReasons;
+
+    drop table if exists RejectionReasonStateEvents;

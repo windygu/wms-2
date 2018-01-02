@@ -35,7 +35,9 @@ public abstract class AbstractShipmentReceiptStateCommandConverter<TCreateShipme
         cmd.setReceiptSeqId(state.getReceiptSeqId());
         cmd.setProductId(state.getProductId());
         cmd.setShipmentItemSeqId(state.getShipmentItemSeqId());
-        cmd.setRejectionId(state.getRejectionId());
+        cmd.setRejectionReasonId(state.getRejectionReasonId());
+        cmd.setDamageStatusId(state.getDamageStatusId());
+        cmd.setDamageReasonId(state.getDamageReasonId());
         cmd.setItemDescription(state.getItemDescription());
         cmd.setAcceptedQuantity(state.getAcceptedQuantity());
         cmd.setRejectedQuantity(state.getRejectedQuantity());
@@ -44,7 +46,9 @@ public abstract class AbstractShipmentReceiptStateCommandConverter<TCreateShipme
             
         if (state.getProductId() == null) { cmd.setIsPropertyProductIdRemoved(true); }
         if (state.getShipmentItemSeqId() == null) { cmd.setIsPropertyShipmentItemSeqIdRemoved(true); }
-        if (state.getRejectionId() == null) { cmd.setIsPropertyRejectionIdRemoved(true); }
+        if (state.getRejectionReasonId() == null) { cmd.setIsPropertyRejectionReasonIdRemoved(true); }
+        if (state.getDamageStatusId() == null) { cmd.setIsPropertyDamageStatusIdRemoved(true); }
+        if (state.getDamageReasonId() == null) { cmd.setIsPropertyDamageReasonIdRemoved(true); }
         if (state.getItemDescription() == null) { cmd.setIsPropertyItemDescriptionRemoved(true); }
         if (state.getAcceptedQuantity() == null) { cmd.setIsPropertyAcceptedQuantityRemoved(true); }
         if (state.getRejectedQuantity() == null) { cmd.setIsPropertyRejectedQuantityRemoved(true); }
@@ -59,7 +63,9 @@ public abstract class AbstractShipmentReceiptStateCommandConverter<TCreateShipme
         cmd.setReceiptSeqId(state.getReceiptSeqId());
         cmd.setProductId(state.getProductId());
         cmd.setShipmentItemSeqId(state.getShipmentItemSeqId());
-        cmd.setRejectionId(state.getRejectionId());
+        cmd.setRejectionReasonId(state.getRejectionReasonId());
+        cmd.setDamageStatusId(state.getDamageStatusId());
+        cmd.setDamageReasonId(state.getDamageReasonId());
         cmd.setItemDescription(state.getItemDescription());
         cmd.setAcceptedQuantity(state.getAcceptedQuantity());
         cmd.setRejectedQuantity(state.getRejectedQuantity());

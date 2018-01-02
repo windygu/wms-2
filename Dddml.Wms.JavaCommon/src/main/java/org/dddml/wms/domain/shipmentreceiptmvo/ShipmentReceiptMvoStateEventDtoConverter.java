@@ -28,7 +28,9 @@ public class ShipmentReceiptMvoStateEventDtoConverter {
         dto.setCommandId(e.getCommandId());
         dto.setProductId(e.getProductId());
         dto.setShipmentItemSeqId(e.getShipmentItemSeqId());
-        dto.setRejectionId(e.getRejectionId());
+        dto.setRejectionReasonId(e.getRejectionReasonId());
+        dto.setDamageStatusId(e.getDamageStatusId());
+        dto.setDamageReasonId(e.getDamageReasonId());
         dto.setItemDescription(e.getItemDescription());
         dto.setAcceptedQuantity(e.getAcceptedQuantity());
         dto.setRejectedQuantity(e.getRejectedQuantity());
@@ -74,7 +76,9 @@ public class ShipmentReceiptMvoStateEventDtoConverter {
         dto.setCommandId(e.getCommandId());
         dto.setProductId(e.getProductId());
         dto.setShipmentItemSeqId(e.getShipmentItemSeqId());
-        dto.setRejectionId(e.getRejectionId());
+        dto.setRejectionReasonId(e.getRejectionReasonId());
+        dto.setDamageStatusId(e.getDamageStatusId());
+        dto.setDamageReasonId(e.getDamageReasonId());
         dto.setItemDescription(e.getItemDescription());
         dto.setAcceptedQuantity(e.getAcceptedQuantity());
         dto.setRejectedQuantity(e.getRejectedQuantity());
@@ -111,7 +115,9 @@ public class ShipmentReceiptMvoStateEventDtoConverter {
         dto.setShipmentActive(e.getShipmentActive());
         dto.setIsPropertyProductIdRemoved(e.getIsPropertyProductIdRemoved());
         dto.setIsPropertyShipmentItemSeqIdRemoved(e.getIsPropertyShipmentItemSeqIdRemoved());
-        dto.setIsPropertyRejectionIdRemoved(e.getIsPropertyRejectionIdRemoved());
+        dto.setIsPropertyRejectionReasonIdRemoved(e.getIsPropertyRejectionReasonIdRemoved());
+        dto.setIsPropertyDamageStatusIdRemoved(e.getIsPropertyDamageStatusIdRemoved());
+        dto.setIsPropertyDamageReasonIdRemoved(e.getIsPropertyDamageReasonIdRemoved());
         dto.setIsPropertyItemDescriptionRemoved(e.getIsPropertyItemDescriptionRemoved());
         dto.setIsPropertyAcceptedQuantityRemoved(e.getIsPropertyAcceptedQuantityRemoved());
         dto.setIsPropertyRejectedQuantityRemoved(e.getIsPropertyRejectedQuantityRemoved());

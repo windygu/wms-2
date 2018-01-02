@@ -21,7 +21,7 @@ public class HibernateShipmentReceiptStateDao implements ShipmentReceiptStateDao
         return this.sessionFactory.getCurrentSession();
     }
 
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("ReceiptSeqId", "ProductId", "ShipmentItemSeqId", "RejectionId", "ItemDescription", "AcceptedQuantity", "RejectedQuantity", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "ShipmentId"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("ReceiptSeqId", "ProductId", "ShipmentItemSeqId", "RejectionReasonId", "DamageStatusId", "DamageReasonId", "ItemDescription", "AcceptedQuantity", "RejectedQuantity", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "ShipmentId"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     

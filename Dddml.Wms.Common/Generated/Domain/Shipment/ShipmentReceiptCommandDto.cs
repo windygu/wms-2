@@ -38,7 +38,11 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual string ShipmentItemSeqId { get; set; }
 
-		public virtual string RejectionId { get; set; }
+		public virtual string RejectionReasonId { get; set; }
+
+		public virtual string DamageStatusId { get; set; }
+
+		public virtual string DamageReasonId { get; set; }
 
 		public virtual string ItemDescription { get; set; }
 
@@ -88,13 +92,13 @@ namespace Dddml.Wms.Domain.Shipment
             }
         }
 
-		public virtual bool? IsPropertyRejectionIdRemoved { get; set; }
+		public virtual bool? IsPropertyRejectionReasonIdRemoved { get; set; }
 
-        bool IMergePatchShipmentReceipt.IsPropertyRejectionIdRemoved
+        bool IMergePatchShipmentReceipt.IsPropertyRejectionReasonIdRemoved
         {
             get
             {
-                var b = this.IsPropertyRejectionIdRemoved;
+                var b = this.IsPropertyRejectionReasonIdRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -103,7 +107,45 @@ namespace Dddml.Wms.Domain.Shipment
             }
             set
             {
-                this.IsPropertyRejectionIdRemoved = value;
+                this.IsPropertyRejectionReasonIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyDamageStatusIdRemoved { get; set; }
+
+        bool IMergePatchShipmentReceipt.IsPropertyDamageStatusIdRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyDamageStatusIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyDamageStatusIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyDamageReasonIdRemoved { get; set; }
+
+        bool IMergePatchShipmentReceipt.IsPropertyDamageReasonIdRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyDamageReasonIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyDamageReasonIdRemoved = value;
             }
         }
 

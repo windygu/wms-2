@@ -1,0 +1,25 @@
+﻿#%DDDML 0.1
+
+---
+
+# ------------------------------
+aggregates:
+
+  DamageReason:
+    id:
+      name: DamageReasonId
+      type: id-ne
+      
+    properties:
+    
+      Description:
+        type: description
+      SequenceId:
+        type: id
+        
+    references: {}
+    reservedProperties: {}
+    
+    # metadata: 
+      # NoEventSourcing: true
+      

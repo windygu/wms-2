@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+  
+  <DamageReason damageReasonId="HANDLING" description="Handling" sequenceId="01" />
+  <DamageReason damageReasonId="TRANSPORTATION" description="Transportation" sequenceId="02" />
+  <DamageReason damageReasonId="WAREHOUSING" description="Warehousing" sequenceId="03" />
+  <DamageReason damageReasonId="DEFI_OF_HANDLING_EQUIPMENTS" description="Deficiencies of handling equipments" sequenceId="04" />
+  <DamageReason damageReasonId="DEFI_OF_TRANSPORT_FACILITIES" description="Deficiencies of transport facilities" sequenceId="05" />
+  <DamageReason damageReasonId="DEFI_OF_WAREHOUSES" description="Deficiencies of warehouses" sequenceId="06" />
+  <DamageReason damageReasonId="INSUFFICIENT_PACKING" description="Insufficient packing" sequenceId="07" />
+  <DamageReason damageReasonId="INSUFFICIENT_LASHING" description="Insufficient lashing" sequenceId="08" />
+  <DamageReason damageReasonId="CONDENSATION" description="Condensation" sequenceId="09" />
+  <DamageReason damageReasonId="OTHER" description="Other" sequenceId="10" />
+
+</entity-engine-xml>

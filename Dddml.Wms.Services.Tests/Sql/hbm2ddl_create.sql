@@ -43,6 +43,10 @@
 
     drop table if exists AttributeAliasMvoStateEvents;
 
+    drop table if exists DamageReasons;
+
+    drop table if exists DamageReasonStateEvents;
+
     drop table if exists InOuts;
 
     drop table if exists InOutStateEvents;
@@ -216,6 +220,10 @@
     drop table if exists ShipmentReceipt_RV;
 
     drop table if exists ShipmentReceiptMvoStateEvents;
+
+    drop table if exists RejectionReasons;
+
+    drop table if exists RejectionReasonStateEvents;
 
     create table Attributes (
         AttributeId VARCHAR(50) not null,
@@ -815,6 +823,36 @@
        IsPropertyAttributeDeletedRemoved TINYINT(1),
        primary key (AttributeAliasIdAttributeId, AttributeAliasIdCode, AttributeVersion),
       unique (Name)
+    );
+
+    create table DamageReasons (
+        DamageReasonId VARCHAR(20) not null,
+       Version BIGINT not null,
+       Description VARCHAR(255),
+       SequenceId VARCHAR(20),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (DamageReasonId)
+    );
+
+    create table DamageReasonStateEvents (
+        DamageReasonId VARCHAR(20) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       Description VARCHAR(255),
+       SequenceId VARCHAR(20),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertySequenceIdRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (DamageReasonId, Version)
     );
 
     create table InOuts (
@@ -3679,7 +3717,9 @@
        Version BIGINT not null,
        ProductId VARCHAR(20),
        ShipmentItemSeqId VARCHAR(20),
-       RejectionId VARCHAR(20),
+       RejectionReasonId VARCHAR(20),
+       DamageStatusId VARCHAR(20),
+       DamageReasonId VARCHAR(20),
        ItemDescription VARCHAR(255),
        AcceptedQuantity DECIMAL(18,6),
        RejectedQuantity DECIMAL(18,6),
@@ -3698,7 +3738,9 @@
        StateEventType VARCHAR(255) not null,
        ProductId VARCHAR(20),
        ShipmentItemSeqId VARCHAR(20),
-       RejectionId VARCHAR(20),
+       RejectionReasonId VARCHAR(20),
+       DamageStatusId VARCHAR(20),
+       DamageReasonId VARCHAR(20),
        ItemDescription VARCHAR(255),
        AcceptedQuantity DECIMAL(18,6),
        RejectedQuantity DECIMAL(18,6),
@@ -3709,7 +3751,9 @@
        Version BIGINT not null,
        IsPropertyProductIdRemoved TINYINT(1),
        IsPropertyShipmentItemSeqIdRemoved TINYINT(1),
-       IsPropertyRejectionIdRemoved TINYINT(1),
+       IsPropertyRejectionReasonIdRemoved TINYINT(1),
+       IsPropertyDamageStatusIdRemoved TINYINT(1),
+       IsPropertyDamageReasonIdRemoved TINYINT(1),
        IsPropertyItemDescriptionRemoved TINYINT(1),
        IsPropertyAcceptedQuantityRemoved TINYINT(1),
        IsPropertyRejectedQuantityRemoved TINYINT(1),
@@ -3723,7 +3767,9 @@
        ShipmentVersion BIGINT not null,
        ProductId VARCHAR(20),
        ShipmentItemSeqId VARCHAR(20),
-       RejectionId VARCHAR(20),
+       RejectionReasonId VARCHAR(20),
+       DamageStatusId VARCHAR(20),
+       DamageReasonId VARCHAR(20),
        ItemDescription VARCHAR(255),
        AcceptedQuantity DECIMAL(18,6),
        RejectedQuantity DECIMAL(18,6),
@@ -3772,7 +3818,9 @@
        StateEventType VARCHAR(255) not null,
        ProductId VARCHAR(20),
        ShipmentItemSeqId VARCHAR(20),
-       RejectionId VARCHAR(20),
+       RejectionReasonId VARCHAR(20),
+       DamageStatusId VARCHAR(20),
+       DamageReasonId VARCHAR(20),
        ItemDescription VARCHAR(255),
        AcceptedQuantity DECIMAL(18,6),
        RejectedQuantity DECIMAL(18,6),
@@ -3812,7 +3860,9 @@
        CommandId VARCHAR(255),
        IsPropertyProductIdRemoved TINYINT(1),
        IsPropertyShipmentItemSeqIdRemoved TINYINT(1),
-       IsPropertyRejectionIdRemoved TINYINT(1),
+       IsPropertyRejectionReasonIdRemoved TINYINT(1),
+       IsPropertyDamageStatusIdRemoved TINYINT(1),
+       IsPropertyDamageReasonIdRemoved TINYINT(1),
        IsPropertyItemDescriptionRemoved TINYINT(1),
        IsPropertyAcceptedQuantityRemoved TINYINT(1),
        IsPropertyRejectedQuantityRemoved TINYINT(1),
@@ -3848,4 +3898,31 @@
        IsPropertyShipmentUpdatedAtRemoved TINYINT(1),
        IsPropertyShipmentActiveRemoved TINYINT(1),
        primary key (ShipmentReceiptIdShipmentId, ShipmentReceiptIdReceiptSeqId, ShipmentVersion)
+    );
+
+    create table RejectionReasons (
+        RejectionReasonId VARCHAR(20) not null,
+       Version BIGINT not null,
+       Description VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (RejectionReasonId)
+    );
+
+    create table RejectionReasonStateEvents (
+        RejectionReasonId VARCHAR(20) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       Description VARCHAR(255),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (RejectionReasonId, Version)
     );

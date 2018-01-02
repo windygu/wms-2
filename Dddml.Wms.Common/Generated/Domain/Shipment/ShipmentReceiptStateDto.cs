@@ -33,7 +33,19 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
-        public virtual string RejectionId
+        public virtual string RejectionReasonId
+        {
+            get;
+            set;
+        }
+
+        public virtual string DamageStatusId
+        {
+            get;
+            set;
+        }
+
+        public virtual string DamageReasonId
         {
             get;
             set;
@@ -105,7 +117,9 @@ namespace Dddml.Wms.Domain.Shipment
             state.ReceiptSeqId = this.ReceiptSeqId;
             state.ProductId = this.ProductId;
             state.ShipmentItemSeqId = this.ShipmentItemSeqId;
-            state.RejectionId = this.RejectionId;
+            state.RejectionReasonId = this.RejectionReasonId;
+            state.DamageStatusId = this.DamageStatusId;
+            state.DamageReasonId = this.DamageReasonId;
             state.ItemDescription = this.ItemDescription;
             state.AcceptedQuantity = this.AcceptedQuantity;
             state.RejectedQuantity = this.RejectedQuantity;

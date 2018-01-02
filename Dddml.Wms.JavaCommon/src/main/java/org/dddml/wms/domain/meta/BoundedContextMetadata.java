@@ -25,6 +25,7 @@ public class BoundedContextMetadata {
         map.put("AttributeAlias", "Attribute");
         map.put("AttributeSet", "AttributeSet");
         map.put("AttributeUse", "AttributeSet");
+        map.put("DamageReason", "DamageReason");
         map.put("DocumentType", "DocumentType");
         map.put("InOut", "InOut");
         map.put("InOutLine", "InOut");
@@ -51,6 +52,7 @@ public class BoundedContextMetadata {
         map.put("Product", "Product");
         map.put("ProductCategory", "ProductCategory");
         map.put("ProductCategoryMember", "ProductCategoryMember");
+        map.put("RejectionReason", "RejectionReason");
         map.put("SellableInventoryItem", "SellableInventoryItem");
         map.put("SellableInventoryItemEntry", "SellableInventoryItem");
         map.put("Shipment", "Shipment");

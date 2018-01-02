@@ -257,7 +257,9 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
 
         e.setProductId(c.getProductId());
         e.setShipmentItemSeqId(c.getShipmentItemSeqId());
-        e.setRejectionId(c.getRejectionId());
+        e.setRejectionReasonId(c.getRejectionReasonId());
+        e.setDamageStatusId(c.getDamageStatusId());
+        e.setDamageReasonId(c.getDamageReasonId());
         e.setItemDescription(c.getItemDescription());
         e.setAcceptedQuantity(c.getAcceptedQuantity());
         e.setRejectedQuantity(c.getRejectedQuantity());
@@ -277,14 +279,18 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
 
         e.setProductId(c.getProductId());
         e.setShipmentItemSeqId(c.getShipmentItemSeqId());
-        e.setRejectionId(c.getRejectionId());
+        e.setRejectionReasonId(c.getRejectionReasonId());
+        e.setDamageStatusId(c.getDamageStatusId());
+        e.setDamageReasonId(c.getDamageReasonId());
         e.setItemDescription(c.getItemDescription());
         e.setAcceptedQuantity(c.getAcceptedQuantity());
         e.setRejectedQuantity(c.getRejectedQuantity());
         e.setActive(c.getActive());
         e.setIsPropertyProductIdRemoved(c.getIsPropertyProductIdRemoved());
         e.setIsPropertyShipmentItemSeqIdRemoved(c.getIsPropertyShipmentItemSeqIdRemoved());
-        e.setIsPropertyRejectionIdRemoved(c.getIsPropertyRejectionIdRemoved());
+        e.setIsPropertyRejectionReasonIdRemoved(c.getIsPropertyRejectionReasonIdRemoved());
+        e.setIsPropertyDamageStatusIdRemoved(c.getIsPropertyDamageStatusIdRemoved());
+        e.setIsPropertyDamageReasonIdRemoved(c.getIsPropertyDamageReasonIdRemoved());
         e.setIsPropertyItemDescriptionRemoved(c.getIsPropertyItemDescriptionRemoved());
         e.setIsPropertyAcceptedQuantityRemoved(c.getIsPropertyAcceptedQuantityRemoved());
         e.setIsPropertyRejectedQuantityRemoved(c.getIsPropertyRejectedQuantityRemoved());

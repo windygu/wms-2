@@ -20,7 +20,11 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual string ShipmentItemSeqId { get; set; }
 
-		public virtual string RejectionId { get; set; }
+		public virtual string RejectionReasonId { get; set; }
+
+		public virtual string DamageStatusId { get; set; }
+
+		public virtual string DamageReasonId { get; set; }
 
 		public virtual string ItemDescription { get; set; }
 

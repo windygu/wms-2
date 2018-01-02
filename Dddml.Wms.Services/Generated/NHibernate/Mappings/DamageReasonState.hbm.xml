@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+				   assembly="Dddml.Wms.Common" 
+				   namespace="Dddml.Wms.Domain.DamageReason">
+  
+  <class name="Dddml.Wms.Domain.DamageReason.DamageReasonState" table="DamageReasons">
+
+	<id name="DamageReasonId" length="20" column="DamageReasonId"><generator class="assigned"/></id>
+
+	<version name="Version" column="Version" type="long" unsaved-value="0"/>
+
+    <property name="Description" ><column name="Description" sql-type="VARCHAR(255)" /></property>
+    <property name="SequenceId" ><column name="SequenceId" sql-type="VARCHAR(20)" /></property>
+    <property name="CreatedBy" ></property>
+    <property name="UpdatedBy" ></property>
+    <property name="Active" ></property>
+    <property name="Deleted" ></property>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+
+    <property name="UpdatedAt" column="UpdatedAt" type="DateTimeUtc"/>
+
+
+  </class>
+  
+</hibernate-mapping>
+

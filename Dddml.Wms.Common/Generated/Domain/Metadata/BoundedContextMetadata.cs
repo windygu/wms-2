@@ -32,6 +32,7 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNames = new List<string>();
             _aggregateNames.Add("Attribute");
             _aggregateNames.Add("AttributeSet");
+            _aggregateNames.Add("DamageReason");
             _aggregateNames.Add("DocumentType");
             _aggregateNames.Add("InOut");
             _aggregateNames.Add("InventoryItem");
@@ -51,6 +52,7 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNames.Add("Product");
             _aggregateNames.Add("ProductCategory");
             _aggregateNames.Add("ProductCategoryMember");
+            _aggregateNames.Add("RejectionReason");
             _aggregateNames.Add("SellableInventoryItem");
             _aggregateNames.Add("Shipment");
             _aggregateNames.Add("ShipmentType");
@@ -81,6 +83,7 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNamespaces = new Dictionary<string, string>();
             _aggregateNamespaces.Add("Attribute", "Dddml.Wms.Domain.Attribute");
             _aggregateNamespaces.Add("AttributeSet", "Dddml.Wms.Domain.AttributeSet");
+            _aggregateNamespaces.Add("DamageReason", "Dddml.Wms.Domain.DamageReason");
             _aggregateNamespaces.Add("DocumentType", "Dddml.Wms.Domain.DocumentType");
             _aggregateNamespaces.Add("InOut", "Dddml.Wms.Domain.InOut");
             _aggregateNamespaces.Add("InventoryItem", "Dddml.Wms.Domain.InventoryItem");
@@ -100,6 +103,7 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNamespaces.Add("Product", "Dddml.Wms.Domain.Product");
             _aggregateNamespaces.Add("ProductCategory", "Dddml.Wms.Domain.ProductCategory");
             _aggregateNamespaces.Add("ProductCategoryMember", "Dddml.Wms.Domain.ProductCategoryMember");
+            _aggregateNamespaces.Add("RejectionReason", "Dddml.Wms.Domain.RejectionReason");
             _aggregateNamespaces.Add("SellableInventoryItem", "Dddml.Wms.Domain.SellableInventoryItem");
             _aggregateNamespaces.Add("Shipment", "Dddml.Wms.Domain.Shipment");
             _aggregateNamespaces.Add("ShipmentType", "Dddml.Wms.Domain.ShipmentType");

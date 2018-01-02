@@ -87,18 +87,12 @@
       unique (AttributeAliasIdCode),
       unique (Name)
     );
-    alter table ProductCategories 
-        add column AttributeSetId VARCHAR(255);
-    alter table ProductCategoryStateEvents 
-        add column AttributeSetId VARCHAR(255);
-    alter table ProductCategoryStateEvents 
-        add column IsPropertyAttributeSetIdRemoved TINYINT(1);
-    alter table ShipmentItems 
-        add column AttributeSetInstanceId VARCHAR(255);
-    alter table ShipmentItemStateEvents 
-        add column AttributeSetInstanceId VARCHAR(255);
-    alter table ShipmentItemStateEvents 
-        add column IsPropertyAttributeSetInstanceIdRemoved TINYINT(1);
+    alter table DamageReasons 
+        add column SequenceId VARCHAR(20);
+    alter table DamageReasonStateEvents 
+        add column SequenceId VARCHAR(20);
+    alter table DamageReasonStateEvents 
+        add column IsPropertySequenceIdRemoved TINYINT(1);
     create table InOutLine_RV (
         InOutLineIdInOutDocumentNumber VARCHAR(50) not null,
        InOutLineIdLineNumber VARCHAR(50) not null,
@@ -361,16 +355,6 @@
        UpdatedAt DATETIME,
        primary key (ShipmentItemIdShipmentId, ShipmentItemIdShipmentItemSeqId)
     );
-    alter table ShipmentItemMvoStateEvents 
-        add column AttributeSetInstanceId VARCHAR(255);
-    alter table ShipmentItemMvoStateEvents 
-        add column IsPropertyAttributeSetInstanceIdRemoved TINYINT(1);
-    alter table MovementLines 
-        add column AttributeSetInstanceId VARCHAR(255);
-    alter table MovementLineStateEvents 
-        add column AttributeSetInstanceId VARCHAR(255);
-    alter table MovementLineStateEvents 
-        add column IsPropertyAttributeSetInstanceIdRemoved TINYINT(1);
     create table MovementLine_RV (
         MovementLineIdMovementDocumentNumber VARCHAR(50) not null,
        MovementLineIdLineNumber VARCHAR(50) not null,
@@ -417,10 +401,6 @@
        UpdatedAt DATETIME,
        primary key (MovementLineIdMovementDocumentNumber, MovementLineIdLineNumber)
     );
-    alter table MovementLineMvoStateEvents 
-        add column AttributeSetInstanceId VARCHAR(255);
-    alter table MovementLineMvoStateEvents 
-        add column IsPropertyAttributeSetInstanceIdRemoved TINYINT(1);
     create table MovementConfirmationLine_RV (
         MovementConfirmationLineIdMovementConfirmationDocumentNumber VARCHAR(50) not null,
        MovementConfirmationLineIdLineNumber VARCHAR(50) not null,
@@ -500,7 +480,9 @@
        ShipmentVersion BIGINT not null,
        ProductId VARCHAR(20),
        ShipmentItemSeqId VARCHAR(20),
-       RejectionId VARCHAR(20),
+       RejectionReasonId VARCHAR(20),
+       DamageStatusId VARCHAR(20),
+       DamageReasonId VARCHAR(20),
        ItemDescription VARCHAR(255),
        AcceptedQuantity DECIMAL(18,6),
        RejectedQuantity DECIMAL(18,6),

@@ -34,7 +34,19 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             set;
         }
 
-        string RejectionId
+        string RejectionReasonId
+        {
+            get;
+            set;
+        }
+
+        string DamageStatusId
+        {
+            get;
+            set;
+        }
+
+        string DamageReasonId
         {
             get;
             set;

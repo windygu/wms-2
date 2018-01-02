@@ -100,7 +100,9 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 		
             e.ProductId = c.ProductId;
             e.ShipmentItemSeqId = c.ShipmentItemSeqId;
-            e.RejectionId = c.RejectionId;
+            e.RejectionReasonId = c.RejectionReasonId;
+            e.DamageStatusId = c.DamageStatusId;
+            e.DamageReasonId = c.DamageReasonId;
             e.ItemDescription = c.ItemDescription;
             e.AcceptedQuantity = c.AcceptedQuantity;
             e.RejectedQuantity = c.RejectedQuantity;
@@ -153,7 +155,9 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
             e.ProductId = c.ProductId;
             e.ShipmentItemSeqId = c.ShipmentItemSeqId;
-            e.RejectionId = c.RejectionId;
+            e.RejectionReasonId = c.RejectionReasonId;
+            e.DamageStatusId = c.DamageStatusId;
+            e.DamageReasonId = c.DamageReasonId;
             e.ItemDescription = c.ItemDescription;
             e.AcceptedQuantity = c.AcceptedQuantity;
             e.RejectedQuantity = c.RejectedQuantity;
@@ -190,7 +194,9 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             e.ShipmentActive = c.ShipmentActive;
             e.IsPropertyProductIdRemoved = c.IsPropertyProductIdRemoved;
             e.IsPropertyShipmentItemSeqIdRemoved = c.IsPropertyShipmentItemSeqIdRemoved;
-            e.IsPropertyRejectionIdRemoved = c.IsPropertyRejectionIdRemoved;
+            e.IsPropertyRejectionReasonIdRemoved = c.IsPropertyRejectionReasonIdRemoved;
+            e.IsPropertyDamageStatusIdRemoved = c.IsPropertyDamageStatusIdRemoved;
+            e.IsPropertyDamageReasonIdRemoved = c.IsPropertyDamageReasonIdRemoved;
             e.IsPropertyItemDescriptionRemoved = c.IsPropertyItemDescriptionRemoved;
             e.IsPropertyAcceptedQuantityRemoved = c.IsPropertyAcceptedQuantityRemoved;
             e.IsPropertyRejectedQuantityRemoved = c.IsPropertyRejectedQuantityRemoved;

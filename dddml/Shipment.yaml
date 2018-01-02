@@ -165,12 +165,26 @@ aggregates:
             # type: id
           # ReturnItemSeqId:
             # type: id
-          RejectionId:
+          
+          # -----------------------------------
+          RejectionReasonId:
             type: id
+            referenceType: RejectionReason
+            
+          DamageStatusId:
+            type: id
+            referenceType: StatusItem
+            
+          DamageReasonId:
+            type: id
+            referenceType: DamageReason
+          # -----------------------------------
+            
           # ReceivedByUserLoginId:
             # type: id-vlong
           # DatetimeReceived:
             # type: date-time
+            
           ItemDescription:
             type: description
           AcceptedQuantity:

@@ -203,6 +203,18 @@
     <Compile Include="Generated\Domain\Attribute\NHibernate\NHibernateAttributeValueStateEventDao.cs">
       <DependentUpon>GenerateAttributeDomainNHibernate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\DamageReason\NHibernate\DamageReasonApplicationService.cs">
+      <DependentUpon>GenerateDamageReasonDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageReason\NHibernate\NHibernateDamageReasonEventStore.cs">
+      <DependentUpon>GenerateDamageReasonDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageReason\NHibernate\NHibernateDamageReasonStateQueryRepository.cs">
+      <DependentUpon>GenerateDamageReasonDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageReason\NHibernate\NHibernateDamageReasonStateRepository.cs">
+      <DependentUpon>GenerateDamageReasonDomainNHibernate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\DocumentType\NHibernate\DocumentTypeApplicationService.cs">
       <DependentUpon>GenerateDocumentTypeDomainNHibernate.tt</DependentUpon>
     </Compile>
@@ -572,6 +584,18 @@
     <Compile Include="Generated\Domain\Product\NHibernate\ProductApplicationService.cs">
       <DependentUpon>GenerateProductDomainNHibernate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\RejectionReason\NHibernate\NHibernateRejectionReasonEventStore.cs">
+      <DependentUpon>GenerateRejectionReasonDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\RejectionReason\NHibernate\NHibernateRejectionReasonStateQueryRepository.cs">
+      <DependentUpon>GenerateRejectionReasonDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\RejectionReason\NHibernate\NHibernateRejectionReasonStateRepository.cs">
+      <DependentUpon>GenerateRejectionReasonDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\RejectionReason\NHibernate\RejectionReasonApplicationService.cs">
+      <DependentUpon>GenerateRejectionReasonDomainNHibernate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\SellableInventoryItemEntryMvo\NHibernate\NHibernateSellableInventoryItemEntryMvoEventStore.cs">
       <DependentUpon>GenerateSellableInventoryItemEntryMvoDomainNHibernate.tt</DependentUpon>
     </Compile>
@@ -808,6 +832,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateAttributeDomainNHibernate.tt</DependentUpon>
     </Content>
+    <Content Include="Generated\Domain\DamageReason\NHibernate\GenerateDamageReasonDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateDamageReasonDomainNHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="Generated\Domain\DocumentType\NHibernate\GenerateDocumentTypeDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -995,6 +1024,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateProductDomainNHibernate.tt</DependentUpon>
     </Content>
+    <Content Include="Generated\Domain\RejectionReason\NHibernate\GenerateRejectionReasonDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateRejectionReasonDomainNHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="Generated\Domain\SellableInventoryItemEntryMvo\NHibernate\GenerateSellableInventoryItemEntryMvoDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1100,6 +1134,12 @@
     <EmbeddedResource Include="Generated\NHibernate\Mappings\AttributeState.nhv.xml">
       <DependentUpon>GenerateAggregatesNhv.tt</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\DamageReasonState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\DamageReasonStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
     <Content Include="Generated\NHibernate\Mappings\GenerateAggregatesHbm.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAggregatesHbm.txt</LastGenOutput>
@@ -1125,6 +1165,8 @@
 .\AttributeValueMvoStateEvent.hbm.xml
 .\AttributeValueState.hbm.xml
 .\AttributeValueStateEvent.hbm.xml
+.\DamageReasonState.hbm.xml
+.\DamageReasonStateEvent.hbm.xml
 .\DocumentTypeState.hbm.xml
 .\GenerateAggregatesHbm.txt
 .\InOutLineMvoState.hbm.xml
@@ -1188,6 +1230,8 @@
 .\ProductCategoryStateEvent.hbm.xml
 .\ProductState.hbm.xml
 .\ProductStateEvent.hbm.xml
+.\RejectionReasonState.hbm.xml
+.\RejectionReasonStateEvent.hbm.xml
 .\SellableInventoryItemEntryMvoState.hbm.xml
 .\SellableInventoryItemEntryMvoStateEvent.hbm.xml
 .\SellableInventoryItemEntryState.hbm.xml
@@ -1488,6 +1532,12 @@
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Generated\NHibernate\Mappings\ShipmentReceiptMvoStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\RejectionReasonState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\RejectionReasonStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <Content Include="LoadBoundedContext.tt">
@@ -2057,6 +2107,28 @@
 .\NHibernateShipmentReceiptMvoStateQueryRepository.cs
 .\NHibernateShipmentReceiptMvoStateRepository.cs
 .\ShipmentReceiptMvoApplicationService.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\DamageReason\NHibernate\GenerateDamageReasonDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateDamageReasonDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\DamageReasonApplicationService.cs
+.\GenerateDamageReasonDomainNHibernate.txt
+.\NHibernateDamageReasonEventStore.cs
+.\NHibernateDamageReasonStateQueryRepository.cs
+.\NHibernateDamageReasonStateRepository.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\RejectionReason\NHibernate\GenerateRejectionReasonDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateRejectionReasonDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateRejectionReasonDomainNHibernate.txt
+.\NHibernateRejectionReasonEventStore.cs
+.\NHibernateRejectionReasonStateQueryRepository.cs
+.\NHibernateRejectionReasonStateRepository.cs
+.\RejectionReasonApplicationService.cs
 </LastOutputs>
     </Content>
   </ItemGroup>

@@ -66,6 +66,9 @@
     <Content Include="src\main\java\org\dddml\wms\restful\resource\AttributeValueMvoResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\DamageReasonResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\DocumentTypeResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
@@ -81,6 +84,7 @@
 .\AttributeSetResource.java
 .\AttributeUseMvoResource.java
 .\AttributeValueMvoResource.java
+.\DamageReasonResource.java
 .\DocumentTypeResource.java
 .\GenerateAggregatesResources.txt
 .\InOutLineMvoResource.java
@@ -109,6 +113,7 @@
 .\ProductCategoryMemberResource.java
 .\ProductCategoryResource.java
 .\ProductResource.java
+.\RejectionReasonResource.java
 .\SellableInventoryItemEntryMvoResource.java
 .\SellableInventoryItemResource.java
 .\ShipmentItemMvoResource.java
@@ -230,6 +235,9 @@
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\ProductResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\RejectionReasonResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\SellableInventoryItemEntryMvoResource.java">

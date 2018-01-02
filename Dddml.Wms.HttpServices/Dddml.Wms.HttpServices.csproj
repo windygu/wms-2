@@ -296,6 +296,9 @@
     <Compile Include="Generated\Controllers\AttributeValueMvosController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Controllers\DamageReasonsController.cs">
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Controllers\DocumentTypesController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
@@ -381,6 +384,9 @@
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\ProductsController.cs">
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Controllers\RejectionReasonsController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\SellableInventoryItemEntryMvosController.cs">
@@ -481,6 +487,7 @@
 .\AttributeSetsController.cs
 .\AttributeUseMvosController.cs
 .\AttributeValueMvosController.cs
+.\DamageReasonsController.cs
 .\DocumentTypesController.cs
 .\GenerateAggregatesControllers.txt
 .\InOutLineMvosController.cs
@@ -509,6 +516,7 @@
 .\ProductCategoriesController.cs
 .\ProductCategoryMembersController.cs
 .\ProductsController.cs
+.\RejectionReasonsController.cs
 .\SellableInventoryItemEntryMvosController.cs
 .\SellableInventoryItemsController.cs
 .\ShipmentItemMvosController.cs

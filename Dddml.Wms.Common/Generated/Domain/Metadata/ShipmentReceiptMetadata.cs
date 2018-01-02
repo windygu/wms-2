@@ -105,7 +105,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "RejectionId",
+                    Name = "RejectionReasonId",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -114,7 +114,65 @@ namespace Dddml.Wms.Domain.Metadata
                     Description = "",
                     Length = 0,
                     GenericTypeName = "",
-                    ReferenceTypeName = "",
+                    ReferenceTypeName = "RejectionReason",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
+                    Name = "DamageStatusId",
+                    Type = typeof(string),
+                    TypeName = "string",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "StatusItem",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
+                    Name = "DamageReasonId",
+                    Type = typeof(string),
+                    TypeName = "string",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "DamageReason",
                     ReferenceName = "",
                     ItemTypeName = "",
                     InverseOf = "",
@@ -566,8 +624,12 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("productId", "ProductId");
             d.Add("ShipmentItemSeqId", "ShipmentItemSeqId");
             d.Add("shipmentItemSeqId", "ShipmentItemSeqId");
-            d.Add("RejectionId", "RejectionId");
-            d.Add("rejectionId", "RejectionId");
+            d.Add("RejectionReasonId", "RejectionReasonId");
+            d.Add("rejectionReasonId", "RejectionReasonId");
+            d.Add("DamageStatusId", "DamageStatusId");
+            d.Add("damageStatusId", "DamageStatusId");
+            d.Add("DamageReasonId", "DamageReasonId");
+            d.Add("damageReasonId", "DamageReasonId");
             d.Add("ItemDescription", "ItemDescription");
             d.Add("itemDescription", "ItemDescription");
             d.Add("AcceptedQuantity", "AcceptedQuantity");

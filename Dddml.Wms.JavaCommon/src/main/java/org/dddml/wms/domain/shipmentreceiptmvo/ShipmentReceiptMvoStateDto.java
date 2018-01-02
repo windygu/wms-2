@@ -46,16 +46,40 @@ public class ShipmentReceiptMvoStateDto
         this.shipmentItemSeqId = shipmentItemSeqId;
     }
 
-    private String rejectionId;
+    private String rejectionReasonId;
 
-    public String getRejectionId()
+    public String getRejectionReasonId()
     {
-        return this.rejectionId;
+        return this.rejectionReasonId;
     }
 
-    public void setRejectionId(String rejectionId)
+    public void setRejectionReasonId(String rejectionReasonId)
     {
-        this.rejectionId = rejectionId;
+        this.rejectionReasonId = rejectionReasonId;
+    }
+
+    private String damageStatusId;
+
+    public String getDamageStatusId()
+    {
+        return this.damageStatusId;
+    }
+
+    public void setDamageStatusId(String damageStatusId)
+    {
+        this.damageStatusId = damageStatusId;
+    }
+
+    private String damageReasonId;
+
+    public String getDamageReasonId()
+    {
+        return this.damageReasonId;
+    }
+
+    public void setDamageReasonId(String damageReasonId)
+    {
+        this.damageReasonId = damageReasonId;
     }
 
     private String itemDescription;
@@ -561,8 +585,14 @@ public class ShipmentReceiptMvoStateDto
             if (returnedFieldsContains("ShipmentItemSeqId")) {
                 dto.setShipmentItemSeqId(state.getShipmentItemSeqId());
             }
-            if (returnedFieldsContains("RejectionId")) {
-                dto.setRejectionId(state.getRejectionId());
+            if (returnedFieldsContains("RejectionReasonId")) {
+                dto.setRejectionReasonId(state.getRejectionReasonId());
+            }
+            if (returnedFieldsContains("DamageStatusId")) {
+                dto.setDamageStatusId(state.getDamageStatusId());
+            }
+            if (returnedFieldsContains("DamageReasonId")) {
+                dto.setDamageReasonId(state.getDamageReasonId());
             }
             if (returnedFieldsContains("ItemDescription")) {
                 dto.setItemDescription(state.getItemDescription());

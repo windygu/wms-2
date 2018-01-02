@@ -59,16 +59,40 @@ public abstract class AbstractShipmentReceiptState implements ShipmentReceiptSta
         this.shipmentItemSeqId = shipmentItemSeqId;
     }
 
-    private String rejectionId;
+    private String rejectionReasonId;
 
-    public String getRejectionId()
+    public String getRejectionReasonId()
     {
-        return this.rejectionId;
+        return this.rejectionReasonId;
     }
 
-    public void setRejectionId(String rejectionId)
+    public void setRejectionReasonId(String rejectionReasonId)
     {
-        this.rejectionId = rejectionId;
+        this.rejectionReasonId = rejectionReasonId;
+    }
+
+    private String damageStatusId;
+
+    public String getDamageStatusId()
+    {
+        return this.damageStatusId;
+    }
+
+    public void setDamageStatusId(String damageStatusId)
+    {
+        this.damageStatusId = damageStatusId;
+    }
+
+    private String damageReasonId;
+
+    public String getDamageReasonId()
+    {
+        return this.damageReasonId;
+    }
+
+    public void setDamageReasonId(String damageReasonId)
+    {
+        this.damageReasonId = damageReasonId;
     }
 
     private String itemDescription;
@@ -232,7 +256,9 @@ public abstract class AbstractShipmentReceiptState implements ShipmentReceiptSta
 
         this.setProductId(e.getProductId());
         this.setShipmentItemSeqId(e.getShipmentItemSeqId());
-        this.setRejectionId(e.getRejectionId());
+        this.setRejectionReasonId(e.getRejectionReasonId());
+        this.setDamageStatusId(e.getDamageStatusId());
+        this.setDamageReasonId(e.getDamageReasonId());
         this.setItemDescription(e.getItemDescription());
         this.setAcceptedQuantity(e.getAcceptedQuantity());
         this.setRejectedQuantity(e.getRejectedQuantity());
@@ -269,16 +295,38 @@ public abstract class AbstractShipmentReceiptState implements ShipmentReceiptSta
         {
             this.setShipmentItemSeqId(e.getShipmentItemSeqId());
         }
-        if (e.getRejectionId() == null)
+        if (e.getRejectionReasonId() == null)
         {
-            if (e.getIsPropertyRejectionIdRemoved() != null && e.getIsPropertyRejectionIdRemoved())
+            if (e.getIsPropertyRejectionReasonIdRemoved() != null && e.getIsPropertyRejectionReasonIdRemoved())
             {
-                this.setRejectionId(null);
+                this.setRejectionReasonId(null);
             }
         }
         else
         {
-            this.setRejectionId(e.getRejectionId());
+            this.setRejectionReasonId(e.getRejectionReasonId());
+        }
+        if (e.getDamageStatusId() == null)
+        {
+            if (e.getIsPropertyDamageStatusIdRemoved() != null && e.getIsPropertyDamageStatusIdRemoved())
+            {
+                this.setDamageStatusId(null);
+            }
+        }
+        else
+        {
+            this.setDamageStatusId(e.getDamageStatusId());
+        }
+        if (e.getDamageReasonId() == null)
+        {
+            if (e.getIsPropertyDamageReasonIdRemoved() != null && e.getIsPropertyDamageReasonIdRemoved())
+            {
+                this.setDamageReasonId(null);
+            }
+        }
+        else
+        {
+            this.setDamageReasonId(e.getDamageReasonId());
         }
         if (e.getItemDescription() == null)
         {

@@ -172,6 +172,20 @@
     <Content Include="src\main\java\org\dddml\wms\domain\attribute\hibernate\HibernateAttributeValueStateEventDao.java">
       <DependentUpon>GenerateAttributeDomainHibernate.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\hibernate\GenerateDamageReasonDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateDamageReasonDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\hibernate\HibernateDamageReasonEventStore.java">
+      <DependentUpon>GenerateDamageReasonDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\hibernate\HibernateDamageReasonStateQueryRepository.java">
+      <DependentUpon>GenerateDamageReasonDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\hibernate\HibernateDamageReasonStateRepository.java">
+      <DependentUpon>GenerateDamageReasonDomainHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\documenttype\hibernate\GenerateDocumentTypeDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -613,6 +627,20 @@
     <Content Include="src\main\java\org\dddml\wms\domain\product\hibernate\HibernateProductStateRepository.java">
       <DependentUpon>GenerateProductDomainHibernate.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\hibernate\GenerateRejectionReasonDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateRejectionReasonDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\hibernate\HibernateRejectionReasonEventStore.java">
+      <DependentUpon>GenerateRejectionReasonDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\hibernate\HibernateRejectionReasonStateQueryRepository.java">
+      <DependentUpon>GenerateRejectionReasonDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\hibernate\HibernateRejectionReasonStateRepository.java">
+      <DependentUpon>GenerateRejectionReasonDomainHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\hibernate\GenerateSellableInventoryItemEntryMvoDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -797,6 +825,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Content>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\RejectionReasonStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\RejectionReasonState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\ShipmentReceiptMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
@@ -1162,6 +1196,12 @@
     <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\AttributeAliasMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\DamageReasonState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\DamageReasonStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
     <Content Include="src\main\resources\org\dddml\wms\domain\hbm\GenerateAggregatesHbm.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAggregatesHbm.txt</LastGenOutput>
@@ -1187,6 +1227,8 @@
 .\AttributeValueMvoStateEvent.hbm.xml
 .\AttributeValueState.hbm.xml
 .\AttributeValueStateEvent.hbm.xml
+.\DamageReasonState.hbm.xml
+.\DamageReasonStateEvent.hbm.xml
 .\DocumentTypeState.hbm.xml
 .\GenerateAggregatesHbm.txt
 .\InOutLineMvoState.hbm.xml
@@ -1250,6 +1292,8 @@
 .\ProductCategoryStateEvent.hbm.xml
 .\ProductState.hbm.xml
 .\ProductStateEvent.hbm.xml
+.\RejectionReasonState.hbm.xml
+.\RejectionReasonStateEvent.hbm.xml
 .\SellableInventoryItemEntryMvoState.hbm.xml
 .\SellableInventoryItemEntryMvoStateEvent.hbm.xml
 .\SellableInventoryItemEntryState.hbm.xml
@@ -1770,6 +1814,26 @@
 .\HibernateShipmentReceiptMvoEventStore.java
 .\HibernateShipmentReceiptMvoStateQueryRepository.java
 .\HibernateShipmentReceiptMvoStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\hibernate\GenerateDamageReasonDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateDamageReasonDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateDamageReasonDomainHibernate.txt
+.\HibernateDamageReasonEventStore.java
+.\HibernateDamageReasonStateQueryRepository.java
+.\HibernateDamageReasonStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\hibernate\GenerateRejectionReasonDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateRejectionReasonDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateRejectionReasonDomainHibernate.txt
+.\HibernateRejectionReasonEventStore.java
+.\HibernateRejectionReasonStateQueryRepository.java
+.\HibernateRejectionReasonStateRepository.java
 </LastOutputs>
     </Content>
   </ItemGroup>

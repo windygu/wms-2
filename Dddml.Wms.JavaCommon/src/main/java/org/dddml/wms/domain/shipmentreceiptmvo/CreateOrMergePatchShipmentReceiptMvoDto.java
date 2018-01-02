@@ -30,16 +30,40 @@ public class CreateOrMergePatchShipmentReceiptMvoDto extends AbstractShipmentRec
         this.shipmentItemSeqId = shipmentItemSeqId;
     }
 
-    private String rejectionId;
+    private String rejectionReasonId;
 
-    public String getRejectionId()
+    public String getRejectionReasonId()
     {
-        return this.rejectionId;
+        return this.rejectionReasonId;
     }
 
-    public void setRejectionId(String rejectionId)
+    public void setRejectionReasonId(String rejectionReasonId)
     {
-        this.rejectionId = rejectionId;
+        this.rejectionReasonId = rejectionReasonId;
+    }
+
+    private String damageStatusId;
+
+    public String getDamageStatusId()
+    {
+        return this.damageStatusId;
+    }
+
+    public void setDamageStatusId(String damageStatusId)
+    {
+        this.damageStatusId = damageStatusId;
+    }
+
+    private String damageReasonId;
+
+    public String getDamageReasonId()
+    {
+        return this.damageReasonId;
+    }
+
+    public void setDamageReasonId(String damageReasonId)
+    {
+        this.damageReasonId = damageReasonId;
     }
 
     private String itemDescription;
@@ -474,16 +498,40 @@ public class CreateOrMergePatchShipmentReceiptMvoDto extends AbstractShipmentRec
         this.isPropertyShipmentItemSeqIdRemoved = removed;
     }
 
-    private Boolean isPropertyRejectionIdRemoved;
+    private Boolean isPropertyRejectionReasonIdRemoved;
 
-    public Boolean getIsPropertyRejectionIdRemoved()
+    public Boolean getIsPropertyRejectionReasonIdRemoved()
     {
-        return this.isPropertyRejectionIdRemoved;
+        return this.isPropertyRejectionReasonIdRemoved;
     }
 
-    public void setIsPropertyRejectionIdRemoved(Boolean removed)
+    public void setIsPropertyRejectionReasonIdRemoved(Boolean removed)
     {
-        this.isPropertyRejectionIdRemoved = removed;
+        this.isPropertyRejectionReasonIdRemoved = removed;
+    }
+
+    private Boolean isPropertyDamageStatusIdRemoved;
+
+    public Boolean getIsPropertyDamageStatusIdRemoved()
+    {
+        return this.isPropertyDamageStatusIdRemoved;
+    }
+
+    public void setIsPropertyDamageStatusIdRemoved(Boolean removed)
+    {
+        this.isPropertyDamageStatusIdRemoved = removed;
+    }
+
+    private Boolean isPropertyDamageReasonIdRemoved;
+
+    public Boolean getIsPropertyDamageReasonIdRemoved()
+    {
+        return this.isPropertyDamageReasonIdRemoved;
+    }
+
+    public void setIsPropertyDamageReasonIdRemoved(Boolean removed)
+    {
+        this.isPropertyDamageReasonIdRemoved = removed;
     }
 
     private Boolean isPropertyItemDescriptionRemoved;
@@ -899,7 +947,9 @@ public class CreateOrMergePatchShipmentReceiptMvoDto extends AbstractShipmentRec
         ((AbstractShipmentReceiptMvoCommandDto) this).copyTo(command);
         command.setProductId(this.getProductId());
         command.setShipmentItemSeqId(this.getShipmentItemSeqId());
-        command.setRejectionId(this.getRejectionId());
+        command.setRejectionReasonId(this.getRejectionReasonId());
+        command.setDamageStatusId(this.getDamageStatusId());
+        command.setDamageReasonId(this.getDamageReasonId());
         command.setItemDescription(this.getItemDescription());
         command.setAcceptedQuantity(this.getAcceptedQuantity());
         command.setRejectedQuantity(this.getRejectedQuantity());
@@ -960,7 +1010,9 @@ public class CreateOrMergePatchShipmentReceiptMvoDto extends AbstractShipmentRec
         copyTo((AbstractShipmentReceiptMvoCommand.AbstractCreateOrMergePatchShipmentReceiptMvo) command);
         command.setIsPropertyProductIdRemoved(this.getIsPropertyProductIdRemoved());
         command.setIsPropertyShipmentItemSeqIdRemoved(this.getIsPropertyShipmentItemSeqIdRemoved());
-        command.setIsPropertyRejectionIdRemoved(this.getIsPropertyRejectionIdRemoved());
+        command.setIsPropertyRejectionReasonIdRemoved(this.getIsPropertyRejectionReasonIdRemoved());
+        command.setIsPropertyDamageStatusIdRemoved(this.getIsPropertyDamageStatusIdRemoved());
+        command.setIsPropertyDamageReasonIdRemoved(this.getIsPropertyDamageReasonIdRemoved());
         command.setIsPropertyItemDescriptionRemoved(this.getIsPropertyItemDescriptionRemoved());
         command.setIsPropertyAcceptedQuantityRemoved(this.getIsPropertyAcceptedQuantityRemoved());
         command.setIsPropertyRejectedQuantityRemoved(this.getIsPropertyRejectedQuantityRemoved());

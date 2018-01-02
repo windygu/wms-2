@@ -51,7 +51,9 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             cmd.ShipmentReceiptId = state.ShipmentReceiptId;
             cmd.ProductId = state.ProductId;
             cmd.ShipmentItemSeqId = state.ShipmentItemSeqId;
-            cmd.RejectionId = state.RejectionId;
+            cmd.RejectionReasonId = state.RejectionReasonId;
+            cmd.DamageStatusId = state.DamageStatusId;
+            cmd.DamageReasonId = state.DamageReasonId;
             cmd.ItemDescription = state.ItemDescription;
             cmd.AcceptedQuantity = state.AcceptedQuantity;
             cmd.RejectedQuantity = state.RejectedQuantity;
@@ -89,7 +91,9 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             
             if (state.ProductId == null) { cmd.IsPropertyProductIdRemoved = true; }
             if (state.ShipmentItemSeqId == null) { cmd.IsPropertyShipmentItemSeqIdRemoved = true; }
-            if (state.RejectionId == null) { cmd.IsPropertyRejectionIdRemoved = true; }
+            if (state.RejectionReasonId == null) { cmd.IsPropertyRejectionReasonIdRemoved = true; }
+            if (state.DamageStatusId == null) { cmd.IsPropertyDamageStatusIdRemoved = true; }
+            if (state.DamageReasonId == null) { cmd.IsPropertyDamageReasonIdRemoved = true; }
             if (state.ItemDescription == null) { cmd.IsPropertyItemDescriptionRemoved = true; }
             if (state.AcceptedQuantity == null) { cmd.IsPropertyAcceptedQuantityRemoved = true; }
             if (state.RejectedQuantity == null) { cmd.IsPropertyRejectedQuantityRemoved = true; }
@@ -132,7 +136,9 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             cmd.ShipmentReceiptId = state.ShipmentReceiptId;
             cmd.ProductId = state.ProductId;
             cmd.ShipmentItemSeqId = state.ShipmentItemSeqId;
-            cmd.RejectionId = state.RejectionId;
+            cmd.RejectionReasonId = state.RejectionReasonId;
+            cmd.DamageStatusId = state.DamageStatusId;
+            cmd.DamageReasonId = state.DamageReasonId;
             cmd.ItemDescription = state.ItemDescription;
             cmd.AcceptedQuantity = state.AcceptedQuantity;
             cmd.RejectedQuantity = state.RejectedQuantity;

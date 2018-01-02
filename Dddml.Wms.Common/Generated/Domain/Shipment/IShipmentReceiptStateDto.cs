@@ -32,7 +32,19 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
-        string RejectionId
+        string RejectionReasonId
+        {
+            get;
+            set;
+        }
+
+        string DamageStatusId
+        {
+            get;
+            set;
+        }
+
+        string DamageReasonId
         {
             get;
             set;

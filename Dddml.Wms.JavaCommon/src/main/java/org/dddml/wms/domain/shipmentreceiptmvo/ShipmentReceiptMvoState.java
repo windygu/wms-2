@@ -25,9 +25,17 @@ public interface ShipmentReceiptMvoState
 
     void setShipmentItemSeqId(String shipmentItemSeqId);
 
-    String getRejectionId();
+    String getRejectionReasonId();
 
-    void setRejectionId(String rejectionId);
+    void setRejectionReasonId(String rejectionReasonId);
+
+    String getDamageStatusId();
+
+    void setDamageStatusId(String damageStatusId);
+
+    String getDamageReasonId();
+
+    void setDamageReasonId(String damageReasonId);
 
     String getItemDescription();
 

@@ -33,6 +33,8 @@
         <mapping resource="org/dddml/wms/domain/hbm/AttributeSetStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/AttributeUseState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/AttributeUseStateEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/DamageReasonState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/DamageReasonStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/DocumentTypeState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InOutState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InOutStateEvent.hbm.xml"/>
@@ -79,6 +81,8 @@
         <mapping resource="org/dddml/wms/domain/hbm/ProductCategoryStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ProductCategoryMemberState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ProductCategoryMemberStateEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/RejectionReasonState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/RejectionReasonStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/SellableInventoryItemState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/SellableInventoryItemEntryState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ShipmentState.hbm.xml"/>

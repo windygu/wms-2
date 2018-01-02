@@ -166,7 +166,11 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
 			this.ShipmentItemSeqId = e.ShipmentItemSeqId;
 
-			this.RejectionId = e.RejectionId;
+			this.RejectionReasonId = e.RejectionReasonId;
+
+			this.DamageStatusId = e.DamageStatusId;
+
+			this.DamageReasonId = e.DamageReasonId;
 
 			this.ItemDescription = e.ItemDescription;
 
@@ -271,16 +275,40 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 				this.ShipmentItemSeqId = e.ShipmentItemSeqId;
 			}
 
-			if (e.RejectionId == null)
+			if (e.RejectionReasonId == null)
 			{
-				if (e.IsPropertyRejectionIdRemoved)
+				if (e.IsPropertyRejectionReasonIdRemoved)
 				{
-					this.RejectionId = default(string);
+					this.RejectionReasonId = default(string);
 				}
 			}
 			else
 			{
-				this.RejectionId = e.RejectionId;
+				this.RejectionReasonId = e.RejectionReasonId;
+			}
+
+			if (e.DamageStatusId == null)
+			{
+				if (e.IsPropertyDamageStatusIdRemoved)
+				{
+					this.DamageStatusId = default(string);
+				}
+			}
+			else
+			{
+				this.DamageStatusId = e.DamageStatusId;
+			}
+
+			if (e.DamageReasonId == null)
+			{
+				if (e.IsPropertyDamageReasonIdRemoved)
+				{
+					this.DamageReasonId = default(string);
+				}
+			}
+			else
+			{
+				this.DamageReasonId = e.DamageReasonId;
 			}
 
 			if (e.ItemDescription == null)
