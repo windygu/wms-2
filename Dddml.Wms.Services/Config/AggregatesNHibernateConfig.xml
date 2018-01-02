@@ -562,6 +562,15 @@
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
+  <object id="shipmentReceiptStateDao" type="Dddml.Wms.Domain.Shipment.NHibernate.NHibernateShipmentReceiptStateDao, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="shipmentReceiptStateEventDao" type="Dddml.Wms.Domain.Shipment.NHibernate.NHibernateShipmentReceiptStateEventDao, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
 
   <object id="shipmentStateRepository" type="Dddml.Wms.Domain.Shipment.NHibernate.NHibernateShipmentStateRepository, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
@@ -1078,6 +1087,28 @@
     <constructor-arg ref="shipmentItemMvoEventStore"/>
     <constructor-arg ref="shipmentItemMvoStateRepository"/>
     <constructor-arg ref="shipmentItemMvoStateQueryRepository"/>
+  </object>
+
+
+
+  <object id="shipmentReceiptMvoStateRepository" type="Dddml.Wms.Domain.ShipmentReceiptMvo.NHibernate.NHibernateShipmentReceiptMvoStateRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="shipmentReceiptMvoStateQueryRepository" type="Dddml.Wms.Domain.ShipmentReceiptMvo.NHibernate.NHibernateShipmentReceiptMvoStateQueryRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="shipmentReceiptMvoEventStore" type="Dddml.Wms.Domain.ShipmentReceiptMvo.NHibernate.NHibernateShipmentReceiptMvoEventStore, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
+  <object id="shipmentReceiptMvoApplicationService" type="Dddml.Wms.Domain.ShipmentReceiptMvo.NHibernate.ShipmentReceiptMvoApplicationService, Dddml.Wms.Services">
+    <constructor-arg ref="shipmentReceiptMvoEventStore"/>
+    <constructor-arg ref="shipmentReceiptMvoStateRepository"/>
+    <constructor-arg ref="shipmentReceiptMvoStateQueryRepository"/>
   </object>
 
 </objects>
