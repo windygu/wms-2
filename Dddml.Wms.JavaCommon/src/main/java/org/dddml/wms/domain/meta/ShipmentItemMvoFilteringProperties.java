@@ -12,6 +12,7 @@ public final class ShipmentItemMvoFilteringProperties
 
     public static final String[] propertyNames = new String[] {
             "productId",
+            "attributeSetInstanceId",
             "quantity",
             "shipmentContentDescription",
             "version",
@@ -56,6 +57,7 @@ public final class ShipmentItemMvoFilteringProperties
     };
 
     public static final String[] propertyTypes = new String[] {
+            "String",
             "String",
             "java.math.BigDecimal",
             "String",
@@ -114,6 +116,8 @@ public final class ShipmentItemMvoFilteringProperties
     private static  void initAliasMap() {
         aliasMap.put("productId", "productId");
         aliasMap.put("ProductId", "productId");
+        aliasMap.put("attributeSetInstanceId", "attributeSetInstanceId");
+        aliasMap.put("AttributeSetInstanceId", "attributeSetInstanceId");
         aliasMap.put("quantity", "quantity");
         aliasMap.put("Quantity", "quantity");
         aliasMap.put("shipmentContentDescription", "shipmentContentDescription");

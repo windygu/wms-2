@@ -45,13 +45,7 @@ namespace Dddml.Wms.Domain.Movement
             set;
         }
 
-        public virtual string AttributeSetInstanceIdFrom
-        {
-            get;
-            set;
-        }
-
-        public virtual string AttributeSetInstanceIdTo
+        public virtual string AttributeSetInstanceId
         {
             get;
             set;
@@ -119,8 +113,7 @@ namespace Dddml.Wms.Domain.Movement
             state.ProductId = this.ProductId;
             state.LocatorIdFrom = this.LocatorIdFrom;
             state.LocatorIdTo = this.LocatorIdTo;
-            state.AttributeSetInstanceIdFrom = this.AttributeSetInstanceIdFrom;
-            state.AttributeSetInstanceIdTo = this.AttributeSetInstanceIdTo;
+            state.AttributeSetInstanceId = this.AttributeSetInstanceId;
             if (this.Processed != null && this.Processed.HasValue) { state.Processed = this.Processed.Value; }
             state.ReversalLineNumber = this.ReversalLineNumber;
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }

@@ -16,8 +16,7 @@
     <property name="ProductId" ></property>
     <property name="LocatorIdFrom" ></property>
     <property name="LocatorIdTo" ></property>
-    <property name="AttributeSetInstanceIdFrom" ></property>
-    <property name="AttributeSetInstanceIdTo" ></property>
+    <property name="AttributeSetInstanceId" ></property>
     <property name="Processed" ></property>
     <property name="ReversalLineNumber" ></property>
     <property name="Active" ></property>
@@ -43,9 +42,7 @@
 
         <property name="IsPropertyLocatorIdToRemoved" column="IsPropertyLocatorIdToRemoved"/>
 
-        <property name="IsPropertyAttributeSetInstanceIdFromRemoved" column="IsPropertyAttributeSetInstanceIdFromRemoved"/>
-
-        <property name="IsPropertyAttributeSetInstanceIdToRemoved" column="IsPropertyAttributeSetInstanceIdToRemoved"/>
+        <property name="IsPropertyAttributeSetInstanceIdRemoved" column="IsPropertyAttributeSetInstanceIdRemoved"/>
 
         <property name="IsPropertyProcessedRemoved" column="IsPropertyProcessedRemoved"/>
 

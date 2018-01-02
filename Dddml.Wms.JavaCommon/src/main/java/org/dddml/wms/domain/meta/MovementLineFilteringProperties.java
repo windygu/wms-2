@@ -16,8 +16,7 @@ public final class MovementLineFilteringProperties
             "productId",
             "locatorIdFrom",
             "locatorIdTo",
-            "attributeSetInstanceIdFrom",
-            "attributeSetInstanceIdTo",
+            "attributeSetInstanceId",
             "processed",
             "reversalLineNumber",
             "version",
@@ -35,7 +34,6 @@ public final class MovementLineFilteringProperties
     public static final String[] propertyTypes = new String[] {
             "String",
             "BigDecimal",
-            "String",
             "String",
             "String",
             "String",
@@ -76,10 +74,8 @@ public final class MovementLineFilteringProperties
         aliasMap.put("LocatorIdFrom", "locatorIdFrom");
         aliasMap.put("locatorIdTo", "locatorIdTo");
         aliasMap.put("LocatorIdTo", "locatorIdTo");
-        aliasMap.put("attributeSetInstanceIdFrom", "attributeSetInstanceIdFrom");
-        aliasMap.put("AttributeSetInstanceIdFrom", "attributeSetInstanceIdFrom");
-        aliasMap.put("attributeSetInstanceIdTo", "attributeSetInstanceIdTo");
-        aliasMap.put("AttributeSetInstanceIdTo", "attributeSetInstanceIdTo");
+        aliasMap.put("attributeSetInstanceId", "attributeSetInstanceId");
+        aliasMap.put("AttributeSetInstanceId", "attributeSetInstanceId");
         aliasMap.put("processed", "processed");
         aliasMap.put("Processed", "processed");
         aliasMap.put("reversalLineNumber", "reversalLineNumber");

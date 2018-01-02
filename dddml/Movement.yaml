@@ -105,11 +105,11 @@ aggregates:
             LocatorIdTo:
               type: string
               
-            AttributeSetInstanceIdFrom:
+            AttributeSetInstanceId:
               type: string
               
-            AttributeSetInstanceIdTo:
-              type: string
+            # AttributeSetInstanceIdTo:
+              # type: string
               
             Processed:
               type: bool

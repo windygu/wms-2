@@ -22,7 +22,7 @@ public class HibernateMovementLineStateDao implements MovementLineStateDao
         return this.sessionFactory.getCurrentSession();
     }
 
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("LineNumber", "MovementQuantity", "ProductId", "LocatorIdFrom", "LocatorIdTo", "AttributeSetInstanceIdFrom", "AttributeSetInstanceIdTo", "Processed", "ReversalLineNumber", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "MovementDocumentNumber"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("LineNumber", "MovementQuantity", "ProductId", "LocatorIdFrom", "LocatorIdTo", "AttributeSetInstanceId", "Processed", "ReversalLineNumber", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "MovementDocumentNumber"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     

@@ -26,6 +26,8 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 
 		string ProductId { get; set; }
 
+		string AttributeSetInstanceId { get; set; }
+
 		decimal? Quantity { get; set; }
 
 		string ShipmentContentDescription { get; set; }
@@ -103,6 +105,8 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 	{
 
 		bool IsPropertyProductIdRemoved { get; set; }
+
+		bool IsPropertyAttributeSetInstanceIdRemoved { get; set; }
 
 		bool IsPropertyQuantityRemoved { get; set; }
 

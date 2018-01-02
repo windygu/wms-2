@@ -46,6 +46,18 @@ public abstract class AbstractShipmentItemCommand extends AbstractCommand implem
             this.productId = productId;
         }
 
+        private String attributeSetInstanceId;
+
+        public String getAttributeSetInstanceId()
+        {
+            return this.attributeSetInstanceId;
+        }
+
+        public void setAttributeSetInstanceId(String attributeSetInstanceId)
+        {
+            this.attributeSetInstanceId = attributeSetInstanceId;
+        }
+
         private java.math.BigDecimal quantity;
 
         public java.math.BigDecimal getQuantity()
@@ -110,6 +122,18 @@ public abstract class AbstractShipmentItemCommand extends AbstractCommand implem
         public void setIsPropertyProductIdRemoved(Boolean removed)
         {
             this.isPropertyProductIdRemoved = removed;
+        }
+
+        private Boolean isPropertyAttributeSetInstanceIdRemoved;
+
+        public Boolean getIsPropertyAttributeSetInstanceIdRemoved()
+        {
+            return this.isPropertyAttributeSetInstanceIdRemoved;
+        }
+
+        public void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed)
+        {
+            this.isPropertyAttributeSetInstanceIdRemoved = removed;
         }
 
         private Boolean isPropertyQuantityRemoved;

@@ -29,6 +29,12 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             set;
         }
 
+        public virtual string AttributeSetInstanceId
+        {
+            get;
+            set;
+        }
+
         public virtual decimal? Quantity
         {
             get;
@@ -262,6 +268,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             var state = new ShipmentItemMvoState(true);
             state.ShipmentItemId = (this.ShipmentItemId == null) ? null : this.ShipmentItemId.ToShipmentItemId();
             state.ProductId = this.ProductId;
+            state.AttributeSetInstanceId = this.AttributeSetInstanceId;
             state.Quantity = this.Quantity;
             state.ShipmentContentDescription = this.ShipmentContentDescription;
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }

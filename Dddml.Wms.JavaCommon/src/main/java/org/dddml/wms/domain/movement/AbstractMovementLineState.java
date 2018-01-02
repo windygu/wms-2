@@ -84,28 +84,16 @@ public abstract class AbstractMovementLineState implements MovementLineState
         this.locatorIdTo = locatorIdTo;
     }
 
-    private String attributeSetInstanceIdFrom;
+    private String attributeSetInstanceId;
 
-    public String getAttributeSetInstanceIdFrom()
+    public String getAttributeSetInstanceId()
     {
-        return this.attributeSetInstanceIdFrom;
+        return this.attributeSetInstanceId;
     }
 
-    public void setAttributeSetInstanceIdFrom(String attributeSetInstanceIdFrom)
+    public void setAttributeSetInstanceId(String attributeSetInstanceId)
     {
-        this.attributeSetInstanceIdFrom = attributeSetInstanceIdFrom;
-    }
-
-    private String attributeSetInstanceIdTo;
-
-    public String getAttributeSetInstanceIdTo()
-    {
-        return this.attributeSetInstanceIdTo;
-    }
-
-    public void setAttributeSetInstanceIdTo(String attributeSetInstanceIdTo)
-    {
-        this.attributeSetInstanceIdTo = attributeSetInstanceIdTo;
+        this.attributeSetInstanceId = attributeSetInstanceId;
     }
 
     private Boolean processed;
@@ -273,8 +261,7 @@ public abstract class AbstractMovementLineState implements MovementLineState
         this.setProductId(e.getProductId());
         this.setLocatorIdFrom(e.getLocatorIdFrom());
         this.setLocatorIdTo(e.getLocatorIdTo());
-        this.setAttributeSetInstanceIdFrom(e.getAttributeSetInstanceIdFrom());
-        this.setAttributeSetInstanceIdTo(e.getAttributeSetInstanceIdTo());
+        this.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
         this.setProcessed(e.getProcessed());
         this.setReversalLineNumber(e.getReversalLineNumber());
         this.setActive(e.getActive());
@@ -334,27 +321,16 @@ public abstract class AbstractMovementLineState implements MovementLineState
         {
             this.setLocatorIdTo(e.getLocatorIdTo());
         }
-        if (e.getAttributeSetInstanceIdFrom() == null)
+        if (e.getAttributeSetInstanceId() == null)
         {
-            if (e.getIsPropertyAttributeSetInstanceIdFromRemoved() != null && e.getIsPropertyAttributeSetInstanceIdFromRemoved())
+            if (e.getIsPropertyAttributeSetInstanceIdRemoved() != null && e.getIsPropertyAttributeSetInstanceIdRemoved())
             {
-                this.setAttributeSetInstanceIdFrom(null);
+                this.setAttributeSetInstanceId(null);
             }
         }
         else
         {
-            this.setAttributeSetInstanceIdFrom(e.getAttributeSetInstanceIdFrom());
-        }
-        if (e.getAttributeSetInstanceIdTo() == null)
-        {
-            if (e.getIsPropertyAttributeSetInstanceIdToRemoved() != null && e.getIsPropertyAttributeSetInstanceIdToRemoved())
-            {
-                this.setAttributeSetInstanceIdTo(null);
-            }
-        }
-        else
-        {
-            this.setAttributeSetInstanceIdTo(e.getAttributeSetInstanceIdTo());
+            this.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
         }
         if (e.getProcessed() == null)
         {

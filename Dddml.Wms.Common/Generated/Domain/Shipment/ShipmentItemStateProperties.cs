@@ -18,6 +18,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual string ProductId { get; set; }
 
+		public virtual string AttributeSetInstanceId { get; set; }
+
 		public virtual decimal? Quantity { get; set; }
 
 		public virtual string ShipmentContentDescription { get; set; }

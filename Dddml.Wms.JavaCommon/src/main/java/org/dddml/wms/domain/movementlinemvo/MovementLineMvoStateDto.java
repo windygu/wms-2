@@ -71,28 +71,16 @@ public class MovementLineMvoStateDto
         this.locatorIdTo = locatorIdTo;
     }
 
-    private String attributeSetInstanceIdFrom;
+    private String attributeSetInstanceId;
 
-    public String getAttributeSetInstanceIdFrom()
+    public String getAttributeSetInstanceId()
     {
-        return this.attributeSetInstanceIdFrom;
+        return this.attributeSetInstanceId;
     }
 
-    public void setAttributeSetInstanceIdFrom(String attributeSetInstanceIdFrom)
+    public void setAttributeSetInstanceId(String attributeSetInstanceId)
     {
-        this.attributeSetInstanceIdFrom = attributeSetInstanceIdFrom;
-    }
-
-    private String attributeSetInstanceIdTo;
-
-    public String getAttributeSetInstanceIdTo()
-    {
-        return this.attributeSetInstanceIdTo;
-    }
-
-    public void setAttributeSetInstanceIdTo(String attributeSetInstanceIdTo)
-    {
-        this.attributeSetInstanceIdTo = attributeSetInstanceIdTo;
+        this.attributeSetInstanceId = attributeSetInstanceId;
     }
 
     private Boolean processed;
@@ -556,11 +544,8 @@ public class MovementLineMvoStateDto
             if (returnedFieldsContains("LocatorIdTo")) {
                 dto.setLocatorIdTo(state.getLocatorIdTo());
             }
-            if (returnedFieldsContains("AttributeSetInstanceIdFrom")) {
-                dto.setAttributeSetInstanceIdFrom(state.getAttributeSetInstanceIdFrom());
-            }
-            if (returnedFieldsContains("AttributeSetInstanceIdTo")) {
-                dto.setAttributeSetInstanceIdTo(state.getAttributeSetInstanceIdTo());
+            if (returnedFieldsContains("AttributeSetInstanceId")) {
+                dto.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
             }
             if (returnedFieldsContains("Processed")) {
                 dto.setProcessed(state.getProcessed());

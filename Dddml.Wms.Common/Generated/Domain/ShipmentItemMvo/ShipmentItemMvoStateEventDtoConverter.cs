@@ -39,6 +39,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
             dto.ProductId = e.ProductId;
+            dto.AttributeSetInstanceId = e.AttributeSetInstanceId;
             dto.Quantity = e.Quantity;
             dto.ShipmentContentDescription = e.ShipmentContentDescription;
             dto.Version = e.Version;
@@ -83,6 +84,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
             dto.ProductId = e.ProductId;
+            dto.AttributeSetInstanceId = e.AttributeSetInstanceId;
             dto.Quantity = e.Quantity;
             dto.ShipmentContentDescription = e.ShipmentContentDescription;
             dto.Version = e.Version;
@@ -117,6 +119,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             dto.ShipmentUpdatedAt = e.ShipmentUpdatedAt;
             dto.ShipmentActive = e.ShipmentActive;
             dto.IsPropertyProductIdRemoved = e.IsPropertyProductIdRemoved;
+            dto.IsPropertyAttributeSetInstanceIdRemoved = e.IsPropertyAttributeSetInstanceIdRemoved;
             dto.IsPropertyQuantityRemoved = e.IsPropertyQuantityRemoved;
             dto.IsPropertyShipmentContentDescriptionRemoved = e.IsPropertyShipmentContentDescriptionRemoved;
             dto.IsPropertyVersionRemoved = e.IsPropertyVersionRemoved;

@@ -44,13 +44,7 @@ namespace Dddml.Wms.Domain.Movement
             set;
         }
 
-        string AttributeSetInstanceIdFrom
-        {
-            get;
-            set;
-        }
-
-        string AttributeSetInstanceIdTo
+        string AttributeSetInstanceId
         {
             get;
             set;

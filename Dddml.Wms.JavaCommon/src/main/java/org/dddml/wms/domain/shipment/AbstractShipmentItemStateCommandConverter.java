@@ -34,12 +34,14 @@ public abstract class AbstractShipmentItemStateCommandConverter<TCreateShipmentI
 
         cmd.setShipmentItemSeqId(state.getShipmentItemSeqId());
         cmd.setProductId(state.getProductId());
+        cmd.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
         cmd.setQuantity(state.getQuantity());
         cmd.setShipmentContentDescription(state.getShipmentContentDescription());
         cmd.setActive(state.getActive());
         cmd.setShipmentId(state.getShipmentId());
             
         if (state.getProductId() == null) { cmd.setIsPropertyProductIdRemoved(true); }
+        if (state.getAttributeSetInstanceId() == null) { cmd.setIsPropertyAttributeSetInstanceIdRemoved(true); }
         if (state.getQuantity() == null) { cmd.setIsPropertyQuantityRemoved(true); }
         if (state.getShipmentContentDescription() == null) { cmd.setIsPropertyShipmentContentDescriptionRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
@@ -52,6 +54,7 @@ public abstract class AbstractShipmentItemStateCommandConverter<TCreateShipmentI
 
         cmd.setShipmentItemSeqId(state.getShipmentItemSeqId());
         cmd.setProductId(state.getProductId());
+        cmd.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
         cmd.setQuantity(state.getQuantity());
         cmd.setShipmentContentDescription(state.getShipmentContentDescription());
         cmd.setActive(state.getActive());

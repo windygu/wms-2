@@ -56,6 +56,8 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 
 		public virtual string ProductId { get; set; }
 
+		public virtual string AttributeSetInstanceId { get; set; }
+
 		public virtual decimal? Quantity { get; set; }
 
 		public virtual string ShipmentContentDescription { get; set; }
@@ -151,6 +153,25 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             set
             {
                 this.IsPropertyProductIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyAttributeSetInstanceIdRemoved { get; set; }
+
+        bool IMergePatchShipmentItemMvo.IsPropertyAttributeSetInstanceIdRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyAttributeSetInstanceIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyAttributeSetInstanceIdRemoved = value;
             }
         }
 

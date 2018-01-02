@@ -31,9 +31,7 @@ namespace Dddml.Wms.Domain.Movement
 
 		public virtual string LocatorIdTo { get; set; }
 
-		public virtual string AttributeSetInstanceIdFrom { get; set; }
-
-		public virtual string AttributeSetInstanceIdTo { get; set; }
+		public virtual string AttributeSetInstanceId { get; set; }
 
 		public virtual bool? Processed { get; set; }
 
@@ -139,9 +137,7 @@ namespace Dddml.Wms.Domain.Movement
 
 		public virtual bool IsPropertyLocatorIdToRemoved { get; set; }
 
-		public virtual bool IsPropertyAttributeSetInstanceIdFromRemoved { get; set; }
-
-		public virtual bool IsPropertyAttributeSetInstanceIdToRemoved { get; set; }
+		public virtual bool IsPropertyAttributeSetInstanceIdRemoved { get; set; }
 
 		public virtual bool IsPropertyProcessedRemoved { get; set; }
 

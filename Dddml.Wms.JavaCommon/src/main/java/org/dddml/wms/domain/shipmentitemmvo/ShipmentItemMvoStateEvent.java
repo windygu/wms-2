@@ -18,6 +18,10 @@ public interface ShipmentItemMvoStateEvent extends Event
 
     void setProductId(String productId);
 
+    String getAttributeSetInstanceId();
+
+    void setAttributeSetInstanceId(String attributeSetInstanceId);
+
     java.math.BigDecimal getQuantity();
 
     void setQuantity(java.math.BigDecimal quantity);
@@ -173,6 +177,10 @@ public interface ShipmentItemMvoStateEvent extends Event
         Boolean getIsPropertyProductIdRemoved();
 
         void setIsPropertyProductIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyAttributeSetInstanceIdRemoved();
+
+        void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed);
 
         Boolean getIsPropertyQuantityRemoved();
 

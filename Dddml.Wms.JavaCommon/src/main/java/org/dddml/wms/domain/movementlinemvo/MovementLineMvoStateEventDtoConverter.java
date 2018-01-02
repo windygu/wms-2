@@ -34,8 +34,7 @@ public class MovementLineMvoStateEventDtoConverter {
         dto.setProductId(e.getProductId());
         dto.setLocatorIdFrom(e.getLocatorIdFrom());
         dto.setLocatorIdTo(e.getLocatorIdTo());
-        dto.setAttributeSetInstanceIdFrom(e.getAttributeSetInstanceIdFrom());
-        dto.setAttributeSetInstanceIdTo(e.getAttributeSetInstanceIdTo());
+        dto.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
         dto.setProcessed(e.getProcessed());
         dto.setReversalLineNumber(e.getReversalLineNumber());
         dto.setVersion(e.getVersion());
@@ -79,8 +78,7 @@ public class MovementLineMvoStateEventDtoConverter {
         dto.setProductId(e.getProductId());
         dto.setLocatorIdFrom(e.getLocatorIdFrom());
         dto.setLocatorIdTo(e.getLocatorIdTo());
-        dto.setAttributeSetInstanceIdFrom(e.getAttributeSetInstanceIdFrom());
-        dto.setAttributeSetInstanceIdTo(e.getAttributeSetInstanceIdTo());
+        dto.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
         dto.setProcessed(e.getProcessed());
         dto.setReversalLineNumber(e.getReversalLineNumber());
         dto.setVersion(e.getVersion());
@@ -115,8 +113,7 @@ public class MovementLineMvoStateEventDtoConverter {
         dto.setIsPropertyProductIdRemoved(e.getIsPropertyProductIdRemoved());
         dto.setIsPropertyLocatorIdFromRemoved(e.getIsPropertyLocatorIdFromRemoved());
         dto.setIsPropertyLocatorIdToRemoved(e.getIsPropertyLocatorIdToRemoved());
-        dto.setIsPropertyAttributeSetInstanceIdFromRemoved(e.getIsPropertyAttributeSetInstanceIdFromRemoved());
-        dto.setIsPropertyAttributeSetInstanceIdToRemoved(e.getIsPropertyAttributeSetInstanceIdToRemoved());
+        dto.setIsPropertyAttributeSetInstanceIdRemoved(e.getIsPropertyAttributeSetInstanceIdRemoved());
         dto.setIsPropertyProcessedRemoved(e.getIsPropertyProcessedRemoved());
         dto.setIsPropertyReversalLineNumberRemoved(e.getIsPropertyReversalLineNumberRemoved());
         dto.setIsPropertyVersionRemoved(e.getIsPropertyVersionRemoved());

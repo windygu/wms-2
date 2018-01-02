@@ -24,6 +24,10 @@ public interface ShipmentItemState
 
     void setProductId(String productId);
 
+    String getAttributeSetInstanceId();
+
+    void setAttributeSetInstanceId(String attributeSetInstanceId);
+
     java.math.BigDecimal getQuantity();
 
     void setQuantity(java.math.BigDecimal quantity);

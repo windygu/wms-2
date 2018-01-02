@@ -33,6 +33,18 @@ public class ShipmentItemStateDto
         this.productId = productId;
     }
 
+    private String attributeSetInstanceId;
+
+    public String getAttributeSetInstanceId()
+    {
+        return this.attributeSetInstanceId;
+    }
+
+    public void setAttributeSetInstanceId(String attributeSetInstanceId)
+    {
+        this.attributeSetInstanceId = attributeSetInstanceId;
+    }
+
     private java.math.BigDecimal quantity;
 
     public java.math.BigDecimal getQuantity()
@@ -172,6 +184,9 @@ public class ShipmentItemStateDto
             }
             if (returnedFieldsContains("ProductId")) {
                 dto.setProductId(state.getProductId());
+            }
+            if (returnedFieldsContains("AttributeSetInstanceId")) {
+                dto.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
             }
             if (returnedFieldsContains("Quantity")) {
                 dto.setQuantity(state.getQuantity());

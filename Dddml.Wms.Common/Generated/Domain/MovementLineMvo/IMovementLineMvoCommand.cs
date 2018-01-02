@@ -32,9 +32,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
 		string LocatorIdTo { get; set; }
 
-		string AttributeSetInstanceIdFrom { get; set; }
-
-		string AttributeSetInstanceIdTo { get; set; }
+		string AttributeSetInstanceId { get; set; }
 
 		bool? Processed { get; set; }
 
@@ -114,9 +112,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
 		bool IsPropertyLocatorIdToRemoved { get; set; }
 
-		bool IsPropertyAttributeSetInstanceIdFromRemoved { get; set; }
-
-		bool IsPropertyAttributeSetInstanceIdToRemoved { get; set; }
+		bool IsPropertyAttributeSetInstanceIdRemoved { get; set; }
 
 		bool IsPropertyProcessedRemoved { get; set; }
 

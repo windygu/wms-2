@@ -163,36 +163,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "AttributeSetInstanceIdFrom",
-                    Type = typeof(string),
-                    TypeName = "string",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 0,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = false,
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
-                new PropertyMetadata {
-                    Name = "AttributeSetInstanceIdTo",
+                    Name = "AttributeSetInstanceId",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -628,10 +599,8 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("locatorIdFrom", "LocatorIdFrom");
             d.Add("LocatorIdTo", "LocatorIdTo");
             d.Add("locatorIdTo", "LocatorIdTo");
-            d.Add("AttributeSetInstanceIdFrom", "AttributeSetInstanceIdFrom");
-            d.Add("attributeSetInstanceIdFrom", "AttributeSetInstanceIdFrom");
-            d.Add("AttributeSetInstanceIdTo", "AttributeSetInstanceIdTo");
-            d.Add("attributeSetInstanceIdTo", "AttributeSetInstanceIdTo");
+            d.Add("AttributeSetInstanceId", "AttributeSetInstanceId");
+            d.Add("attributeSetInstanceId", "AttributeSetInstanceId");
             d.Add("Processed", "Processed");
             d.Add("processed", "Processed");
             d.Add("ReversalLineNumber", "ReversalLineNumber");

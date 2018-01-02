@@ -76,24 +76,14 @@ public class MovementLineMvoStateEventDto extends AbstractStateEvent
         this.locatorIdTo = locatorIdTo;
     }
 
-    private String attributeSetInstanceIdFrom;
+    private String attributeSetInstanceId;
 
-    public String getAttributeSetInstanceIdFrom() {
-        return this.attributeSetInstanceIdFrom;
+    public String getAttributeSetInstanceId() {
+        return this.attributeSetInstanceId;
     }
 
-    public void setAttributeSetInstanceIdFrom(String attributeSetInstanceIdFrom) {
-        this.attributeSetInstanceIdFrom = attributeSetInstanceIdFrom;
-    }
-
-    private String attributeSetInstanceIdTo;
-
-    public String getAttributeSetInstanceIdTo() {
-        return this.attributeSetInstanceIdTo;
-    }
-
-    public void setAttributeSetInstanceIdTo(String attributeSetInstanceIdTo) {
-        this.attributeSetInstanceIdTo = attributeSetInstanceIdTo;
+    public void setAttributeSetInstanceId(String attributeSetInstanceId) {
+        this.attributeSetInstanceId = attributeSetInstanceId;
     }
 
     private Boolean processed;
@@ -456,24 +446,14 @@ public class MovementLineMvoStateEventDto extends AbstractStateEvent
         this.isPropertyLocatorIdToRemoved = removed;
     }
 
-    private Boolean isPropertyAttributeSetInstanceIdFromRemoved;
+    private Boolean isPropertyAttributeSetInstanceIdRemoved;
 
-    public Boolean getIsPropertyAttributeSetInstanceIdFromRemoved() {
-        return this.isPropertyAttributeSetInstanceIdFromRemoved;
+    public Boolean getIsPropertyAttributeSetInstanceIdRemoved() {
+        return this.isPropertyAttributeSetInstanceIdRemoved;
     }
 
-    public void setIsPropertyAttributeSetInstanceIdFromRemoved(Boolean removed) {
-        this.isPropertyAttributeSetInstanceIdFromRemoved = removed;
-    }
-
-    private Boolean isPropertyAttributeSetInstanceIdToRemoved;
-
-    public Boolean getIsPropertyAttributeSetInstanceIdToRemoved() {
-        return this.isPropertyAttributeSetInstanceIdToRemoved;
-    }
-
-    public void setIsPropertyAttributeSetInstanceIdToRemoved(Boolean removed) {
-        this.isPropertyAttributeSetInstanceIdToRemoved = removed;
+    public void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed) {
+        this.isPropertyAttributeSetInstanceIdRemoved = removed;
     }
 
     private Boolean isPropertyProcessedRemoved;

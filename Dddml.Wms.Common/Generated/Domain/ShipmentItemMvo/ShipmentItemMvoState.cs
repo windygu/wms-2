@@ -164,6 +164,8 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 			ThrowOnWrongEvent(e);
 			this.ProductId = e.ProductId;
 
+			this.AttributeSetInstanceId = e.AttributeSetInstanceId;
+
 			this.Quantity = e.Quantity;
 
 			this.ShipmentContentDescription = e.ShipmentContentDescription;
@@ -251,6 +253,18 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 			else
 			{
 				this.ProductId = e.ProductId;
+			}
+
+			if (e.AttributeSetInstanceId == null)
+			{
+				if (e.IsPropertyAttributeSetInstanceIdRemoved)
+				{
+					this.AttributeSetInstanceId = default(string);
+				}
+			}
+			else
+			{
+				this.AttributeSetInstanceId = e.AttributeSetInstanceId;
 			}
 
 			if (e.Quantity == null)

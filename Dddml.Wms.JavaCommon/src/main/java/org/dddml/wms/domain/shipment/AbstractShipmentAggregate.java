@@ -197,6 +197,7 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         ShipmentItemState s = outerState.getShipmentItems().get(c.getShipmentItemSeqId());
 
         e.setProductId(c.getProductId());
+        e.setAttributeSetInstanceId(c.getAttributeSetInstanceId());
         e.setQuantity(c.getQuantity());
         e.setShipmentContentDescription(c.getShipmentContentDescription());
         e.setActive(c.getActive());
@@ -214,10 +215,12 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         ShipmentItemState s = outerState.getShipmentItems().get(c.getShipmentItemSeqId());
 
         e.setProductId(c.getProductId());
+        e.setAttributeSetInstanceId(c.getAttributeSetInstanceId());
         e.setQuantity(c.getQuantity());
         e.setShipmentContentDescription(c.getShipmentContentDescription());
         e.setActive(c.getActive());
         e.setIsPropertyProductIdRemoved(c.getIsPropertyProductIdRemoved());
+        e.setIsPropertyAttributeSetInstanceIdRemoved(c.getIsPropertyAttributeSetInstanceIdRemoved());
         e.setIsPropertyQuantityRemoved(c.getIsPropertyQuantityRemoved());
         e.setIsPropertyShipmentContentDescriptionRemoved(c.getIsPropertyShipmentContentDescriptionRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());

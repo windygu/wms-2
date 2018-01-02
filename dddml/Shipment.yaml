@@ -107,6 +107,10 @@ aggregates:
         
           ProductId:
             type: id
+            
+          AttributeSetInstanceId:
+            type: string
+              
           Quantity:
             type: fixed-point
             

@@ -37,13 +37,9 @@ public interface MovementLineState
 
     void setLocatorIdTo(String locatorIdTo);
 
-    String getAttributeSetInstanceIdFrom();
+    String getAttributeSetInstanceId();
 
-    void setAttributeSetInstanceIdFrom(String attributeSetInstanceIdFrom);
-
-    String getAttributeSetInstanceIdTo();
-
-    void setAttributeSetInstanceIdTo(String attributeSetInstanceIdTo);
+    void setAttributeSetInstanceId(String attributeSetInstanceId);
 
     Boolean getProcessed();
 

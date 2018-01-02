@@ -25,6 +25,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual string ProductId { get; set; }
 
+		public virtual string AttributeSetInstanceId { get; set; }
+
 		public virtual decimal? Quantity { get; set; }
 
 		public virtual string ShipmentContentDescription { get; set; }
@@ -122,6 +124,8 @@ namespace Dddml.Wms.Domain.Shipment
 	public class ShipmentItemStateMergePatched : ShipmentItemStateEventBase, IShipmentItemStateMergePatched
 	{
 		public virtual bool IsPropertyProductIdRemoved { get; set; }
+
+		public virtual bool IsPropertyAttributeSetInstanceIdRemoved { get; set; }
 
 		public virtual bool IsPropertyQuantityRemoved { get; set; }
 

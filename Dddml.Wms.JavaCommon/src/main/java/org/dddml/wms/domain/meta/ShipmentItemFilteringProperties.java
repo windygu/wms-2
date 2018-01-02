@@ -13,6 +13,7 @@ public final class ShipmentItemFilteringProperties
     public static final String[] propertyNames = new String[] {
             "shipmentItemSeqId",
             "productId",
+            "attributeSetInstanceId",
             "quantity",
             "shipmentContentDescription",
             "version",
@@ -28,6 +29,7 @@ public final class ShipmentItemFilteringProperties
     };
 
     public static final String[] propertyTypes = new String[] {
+            "String",
             "String",
             "String",
             "java.math.BigDecimal",
@@ -60,6 +62,8 @@ public final class ShipmentItemFilteringProperties
         aliasMap.put("ShipmentItemSeqId", "shipmentItemId.shipmentItemSeqId");
         aliasMap.put("productId", "productId");
         aliasMap.put("ProductId", "productId");
+        aliasMap.put("attributeSetInstanceId", "attributeSetInstanceId");
+        aliasMap.put("AttributeSetInstanceId", "attributeSetInstanceId");
         aliasMap.put("quantity", "quantity");
         aliasMap.put("Quantity", "quantity");
         aliasMap.put("shipmentContentDescription", "shipmentContentDescription");

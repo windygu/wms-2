@@ -41,6 +41,10 @@ public interface ShipmentItemMvoCommand extends Command
 
         void setProductId(String productId);
 
+        String getAttributeSetInstanceId();
+
+        void setAttributeSetInstanceId(String attributeSetInstanceId);
+
         java.math.BigDecimal getQuantity();
 
         void setQuantity(java.math.BigDecimal quantity);
@@ -184,6 +188,10 @@ public interface ShipmentItemMvoCommand extends Command
         Boolean getIsPropertyProductIdRemoved();
 
         void setIsPropertyProductIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyAttributeSetInstanceIdRemoved();
+
+        void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed);
 
         Boolean getIsPropertyQuantityRemoved();
 

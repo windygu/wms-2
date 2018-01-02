@@ -63,8 +63,7 @@ public abstract class AbstractMovementLineMvoAggregate extends AbstractAggregate
         e.setProductId(c.getProductId());
         e.setLocatorIdFrom(c.getLocatorIdFrom());
         e.setLocatorIdTo(c.getLocatorIdTo());
-        e.setAttributeSetInstanceIdFrom(c.getAttributeSetInstanceIdFrom());
-        e.setAttributeSetInstanceIdTo(c.getAttributeSetInstanceIdTo());
+        e.setAttributeSetInstanceId(c.getAttributeSetInstanceId());
         e.setProcessed(c.getProcessed());
         e.setReversalLineNumber(c.getReversalLineNumber());
         e.setVersion(c.getVersion());
@@ -108,8 +107,7 @@ public abstract class AbstractMovementLineMvoAggregate extends AbstractAggregate
         e.setProductId(c.getProductId());
         e.setLocatorIdFrom(c.getLocatorIdFrom());
         e.setLocatorIdTo(c.getLocatorIdTo());
-        e.setAttributeSetInstanceIdFrom(c.getAttributeSetInstanceIdFrom());
-        e.setAttributeSetInstanceIdTo(c.getAttributeSetInstanceIdTo());
+        e.setAttributeSetInstanceId(c.getAttributeSetInstanceId());
         e.setProcessed(c.getProcessed());
         e.setReversalLineNumber(c.getReversalLineNumber());
         e.setVersion(c.getVersion());
@@ -144,8 +142,7 @@ public abstract class AbstractMovementLineMvoAggregate extends AbstractAggregate
         e.setIsPropertyProductIdRemoved(c.getIsPropertyProductIdRemoved());
         e.setIsPropertyLocatorIdFromRemoved(c.getIsPropertyLocatorIdFromRemoved());
         e.setIsPropertyLocatorIdToRemoved(c.getIsPropertyLocatorIdToRemoved());
-        e.setIsPropertyAttributeSetInstanceIdFromRemoved(c.getIsPropertyAttributeSetInstanceIdFromRemoved());
-        e.setIsPropertyAttributeSetInstanceIdToRemoved(c.getIsPropertyAttributeSetInstanceIdToRemoved());
+        e.setIsPropertyAttributeSetInstanceIdRemoved(c.getIsPropertyAttributeSetInstanceIdRemoved());
         e.setIsPropertyProcessedRemoved(c.getIsPropertyProcessedRemoved());
         e.setIsPropertyReversalLineNumberRemoved(c.getIsPropertyReversalLineNumberRemoved());
         e.setIsPropertyVersionRemoved(c.getIsPropertyVersionRemoved());

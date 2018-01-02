@@ -18,6 +18,18 @@ public class CreateOrMergePatchShipmentItemMvoDto extends AbstractShipmentItemMv
         this.productId = productId;
     }
 
+    private String attributeSetInstanceId;
+
+    public String getAttributeSetInstanceId()
+    {
+        return this.attributeSetInstanceId;
+    }
+
+    public void setAttributeSetInstanceId(String attributeSetInstanceId)
+    {
+        this.attributeSetInstanceId = attributeSetInstanceId;
+    }
+
     private java.math.BigDecimal quantity;
 
     public java.math.BigDecimal getQuantity()
@@ -426,6 +438,18 @@ public class CreateOrMergePatchShipmentItemMvoDto extends AbstractShipmentItemMv
         this.isPropertyProductIdRemoved = removed;
     }
 
+    private Boolean isPropertyAttributeSetInstanceIdRemoved;
+
+    public Boolean getIsPropertyAttributeSetInstanceIdRemoved()
+    {
+        return this.isPropertyAttributeSetInstanceIdRemoved;
+    }
+
+    public void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed)
+    {
+        this.isPropertyAttributeSetInstanceIdRemoved = removed;
+    }
+
     private Boolean isPropertyQuantityRemoved;
 
     public Boolean getIsPropertyQuantityRemoved()
@@ -826,6 +850,7 @@ public class CreateOrMergePatchShipmentItemMvoDto extends AbstractShipmentItemMv
     {
         ((AbstractShipmentItemMvoCommandDto) this).copyTo(command);
         command.setProductId(this.getProductId());
+        command.setAttributeSetInstanceId(this.getAttributeSetInstanceId());
         command.setQuantity(this.getQuantity());
         command.setShipmentContentDescription(this.getShipmentContentDescription());
         command.setVersion(this.getVersion());
@@ -884,6 +909,7 @@ public class CreateOrMergePatchShipmentItemMvoDto extends AbstractShipmentItemMv
     {
         copyTo((AbstractShipmentItemMvoCommand.AbstractCreateOrMergePatchShipmentItemMvo) command);
         command.setIsPropertyProductIdRemoved(this.getIsPropertyProductIdRemoved());
+        command.setIsPropertyAttributeSetInstanceIdRemoved(this.getIsPropertyAttributeSetInstanceIdRemoved());
         command.setIsPropertyQuantityRemoved(this.getIsPropertyQuantityRemoved());
         command.setIsPropertyShipmentContentDescriptionRemoved(this.getIsPropertyShipmentContentDescriptionRemoved());
         command.setIsPropertyVersionRemoved(this.getIsPropertyVersionRemoved());

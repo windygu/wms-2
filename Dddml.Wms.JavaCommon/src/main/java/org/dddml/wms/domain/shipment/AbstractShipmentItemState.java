@@ -47,6 +47,18 @@ public abstract class AbstractShipmentItemState implements ShipmentItemState
         this.productId = productId;
     }
 
+    private String attributeSetInstanceId;
+
+    public String getAttributeSetInstanceId()
+    {
+        return this.attributeSetInstanceId;
+    }
+
+    public void setAttributeSetInstanceId(String attributeSetInstanceId)
+    {
+        this.attributeSetInstanceId = attributeSetInstanceId;
+    }
+
     private java.math.BigDecimal quantity;
 
     public java.math.BigDecimal getQuantity()
@@ -195,6 +207,7 @@ public abstract class AbstractShipmentItemState implements ShipmentItemState
         throwOnWrongEvent(e);
 
         this.setProductId(e.getProductId());
+        this.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
         this.setQuantity(e.getQuantity());
         this.setShipmentContentDescription(e.getShipmentContentDescription());
         this.setActive(e.getActive());
@@ -218,6 +231,17 @@ public abstract class AbstractShipmentItemState implements ShipmentItemState
         else
         {
             this.setProductId(e.getProductId());
+        }
+        if (e.getAttributeSetInstanceId() == null)
+        {
+            if (e.getIsPropertyAttributeSetInstanceIdRemoved() != null && e.getIsPropertyAttributeSetInstanceIdRemoved())
+            {
+                this.setAttributeSetInstanceId(null);
+            }
+        }
+        else
+        {
+            this.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
         }
         if (e.getQuantity() == null)
         {

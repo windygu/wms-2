@@ -47,8 +47,7 @@ namespace Dddml.Wms.Domain.Movement
             dto.ProductId = e.ProductId;
             dto.LocatorIdFrom = e.LocatorIdFrom;
             dto.LocatorIdTo = e.LocatorIdTo;
-            dto.AttributeSetInstanceIdFrom = e.AttributeSetInstanceIdFrom;
-            dto.AttributeSetInstanceIdTo = e.AttributeSetInstanceIdTo;
+            dto.AttributeSetInstanceId = e.AttributeSetInstanceId;
             dto.Processed = e.Processed;
             dto.ReversalLineNumber = e.ReversalLineNumber;
             dto.Active = e.Active;
@@ -67,8 +66,7 @@ namespace Dddml.Wms.Domain.Movement
             dto.ProductId = e.ProductId;
             dto.LocatorIdFrom = e.LocatorIdFrom;
             dto.LocatorIdTo = e.LocatorIdTo;
-            dto.AttributeSetInstanceIdFrom = e.AttributeSetInstanceIdFrom;
-            dto.AttributeSetInstanceIdTo = e.AttributeSetInstanceIdTo;
+            dto.AttributeSetInstanceId = e.AttributeSetInstanceId;
             dto.Processed = e.Processed;
             dto.ReversalLineNumber = e.ReversalLineNumber;
             dto.Active = e.Active;
@@ -76,8 +74,7 @@ namespace Dddml.Wms.Domain.Movement
             dto.IsPropertyProductIdRemoved = e.IsPropertyProductIdRemoved;
             dto.IsPropertyLocatorIdFromRemoved = e.IsPropertyLocatorIdFromRemoved;
             dto.IsPropertyLocatorIdToRemoved = e.IsPropertyLocatorIdToRemoved;
-            dto.IsPropertyAttributeSetInstanceIdFromRemoved = e.IsPropertyAttributeSetInstanceIdFromRemoved;
-            dto.IsPropertyAttributeSetInstanceIdToRemoved = e.IsPropertyAttributeSetInstanceIdToRemoved;
+            dto.IsPropertyAttributeSetInstanceIdRemoved = e.IsPropertyAttributeSetInstanceIdRemoved;
             dto.IsPropertyProcessedRemoved = e.IsPropertyProcessedRemoved;
             dto.IsPropertyReversalLineNumberRemoved = e.IsPropertyReversalLineNumberRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;

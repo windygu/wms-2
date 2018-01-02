@@ -99,6 +99,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             IShipmentItemMvoStateCreated e = NewShipmentItemMvoStateCreated(stateEventId);
 		
             e.ProductId = c.ProductId;
+            e.AttributeSetInstanceId = c.AttributeSetInstanceId;
             e.Quantity = c.Quantity;
             e.ShipmentContentDescription = c.ShipmentContentDescription;
             e.Version = c.Version;
@@ -149,6 +150,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             IShipmentItemMvoStateMergePatched e = NewShipmentItemMvoStateMergePatched(stateEventId);
 
             e.ProductId = c.ProductId;
+            e.AttributeSetInstanceId = c.AttributeSetInstanceId;
             e.Quantity = c.Quantity;
             e.ShipmentContentDescription = c.ShipmentContentDescription;
             e.Version = c.Version;
@@ -183,6 +185,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             e.ShipmentUpdatedAt = c.ShipmentUpdatedAt;
             e.ShipmentActive = c.ShipmentActive;
             e.IsPropertyProductIdRemoved = c.IsPropertyProductIdRemoved;
+            e.IsPropertyAttributeSetInstanceIdRemoved = c.IsPropertyAttributeSetInstanceIdRemoved;
             e.IsPropertyQuantityRemoved = c.IsPropertyQuantityRemoved;
             e.IsPropertyShipmentContentDescriptionRemoved = c.IsPropertyShipmentContentDescriptionRemoved;
             e.IsPropertyVersionRemoved = c.IsPropertyVersionRemoved;

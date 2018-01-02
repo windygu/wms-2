@@ -27,6 +27,7 @@ public class ShipmentItemMvoStateEventDtoConverter {
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
         dto.setProductId(e.getProductId());
+        dto.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
         dto.setQuantity(e.getQuantity());
         dto.setShipmentContentDescription(e.getShipmentContentDescription());
         dto.setVersion(e.getVersion());
@@ -70,6 +71,7 @@ public class ShipmentItemMvoStateEventDtoConverter {
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
         dto.setProductId(e.getProductId());
+        dto.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
         dto.setQuantity(e.getQuantity());
         dto.setShipmentContentDescription(e.getShipmentContentDescription());
         dto.setVersion(e.getVersion());
@@ -104,6 +106,7 @@ public class ShipmentItemMvoStateEventDtoConverter {
         dto.setShipmentUpdatedAt(e.getShipmentUpdatedAt());
         dto.setShipmentActive(e.getShipmentActive());
         dto.setIsPropertyProductIdRemoved(e.getIsPropertyProductIdRemoved());
+        dto.setIsPropertyAttributeSetInstanceIdRemoved(e.getIsPropertyAttributeSetInstanceIdRemoved());
         dto.setIsPropertyQuantityRemoved(e.getIsPropertyQuantityRemoved());
         dto.setIsPropertyShipmentContentDescriptionRemoved(e.getIsPropertyShipmentContentDescriptionRemoved());
         dto.setIsPropertyVersionRemoved(e.getIsPropertyVersionRemoved());

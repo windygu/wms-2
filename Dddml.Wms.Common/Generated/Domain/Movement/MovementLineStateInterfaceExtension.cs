@@ -48,8 +48,7 @@ namespace Dddml.Wms.Domain.Movement
             cmd.ProductId = state.ProductId;
             cmd.LocatorIdFrom = state.LocatorIdFrom;
             cmd.LocatorIdTo = state.LocatorIdTo;
-            cmd.AttributeSetInstanceIdFrom = state.AttributeSetInstanceIdFrom;
-            cmd.AttributeSetInstanceIdTo = state.AttributeSetInstanceIdTo;
+            cmd.AttributeSetInstanceId = state.AttributeSetInstanceId;
             cmd.Processed = state.Processed;
             cmd.ReversalLineNumber = state.ReversalLineNumber;
             cmd.Active = ((IMovementLineStateProperties)state).Active;
@@ -58,8 +57,7 @@ namespace Dddml.Wms.Domain.Movement
             if (state.ProductId == null) { cmd.IsPropertyProductIdRemoved = true; }
             if (state.LocatorIdFrom == null) { cmd.IsPropertyLocatorIdFromRemoved = true; }
             if (state.LocatorIdTo == null) { cmd.IsPropertyLocatorIdToRemoved = true; }
-            if (state.AttributeSetInstanceIdFrom == null) { cmd.IsPropertyAttributeSetInstanceIdFromRemoved = true; }
-            if (state.AttributeSetInstanceIdTo == null) { cmd.IsPropertyAttributeSetInstanceIdToRemoved = true; }
+            if (state.AttributeSetInstanceId == null) { cmd.IsPropertyAttributeSetInstanceIdRemoved = true; }
             if (state.ReversalLineNumber == null) { cmd.IsPropertyReversalLineNumberRemoved = true; }
             return cmd;
         }
@@ -74,8 +72,7 @@ namespace Dddml.Wms.Domain.Movement
             cmd.ProductId = state.ProductId;
             cmd.LocatorIdFrom = state.LocatorIdFrom;
             cmd.LocatorIdTo = state.LocatorIdTo;
-            cmd.AttributeSetInstanceIdFrom = state.AttributeSetInstanceIdFrom;
-            cmd.AttributeSetInstanceIdTo = state.AttributeSetInstanceIdTo;
+            cmd.AttributeSetInstanceId = state.AttributeSetInstanceId;
             cmd.Processed = state.Processed;
             cmd.ReversalLineNumber = state.ReversalLineNumber;
             cmd.Active = ((IMovementLineStateProperties)state).Active;

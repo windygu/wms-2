@@ -27,6 +27,12 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
+        public virtual string AttributeSetInstanceId
+        {
+            get;
+            set;
+        }
+
         public virtual decimal? Quantity
         {
             get;
@@ -86,6 +92,7 @@ namespace Dddml.Wms.Domain.Shipment
             var state = new ShipmentItemState(true);
             state.ShipmentItemSeqId = this.ShipmentItemSeqId;
             state.ProductId = this.ProductId;
+            state.AttributeSetInstanceId = this.AttributeSetInstanceId;
             state.Quantity = this.Quantity;
             state.ShipmentContentDescription = this.ShipmentContentDescription;
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }

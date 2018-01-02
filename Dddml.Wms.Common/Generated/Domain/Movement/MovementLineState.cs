@@ -202,9 +202,7 @@ namespace Dddml.Wms.Domain.Movement
 
 			this.LocatorIdTo = e.LocatorIdTo;
 
-			this.AttributeSetInstanceIdFrom = e.AttributeSetInstanceIdFrom;
-
-			this.AttributeSetInstanceIdTo = e.AttributeSetInstanceIdTo;
+			this.AttributeSetInstanceId = e.AttributeSetInstanceId;
 
             this.Processed = (e.Processed != null && e.Processed.HasValue) ? e.Processed.Value : default(bool);
 
@@ -273,28 +271,16 @@ namespace Dddml.Wms.Domain.Movement
 				this.LocatorIdTo = e.LocatorIdTo;
 			}
 
-			if (e.AttributeSetInstanceIdFrom == null)
+			if (e.AttributeSetInstanceId == null)
 			{
-				if (e.IsPropertyAttributeSetInstanceIdFromRemoved)
+				if (e.IsPropertyAttributeSetInstanceIdRemoved)
 				{
-					this.AttributeSetInstanceIdFrom = default(string);
+					this.AttributeSetInstanceId = default(string);
 				}
 			}
 			else
 			{
-				this.AttributeSetInstanceIdFrom = e.AttributeSetInstanceIdFrom;
-			}
-
-			if (e.AttributeSetInstanceIdTo == null)
-			{
-				if (e.IsPropertyAttributeSetInstanceIdToRemoved)
-				{
-					this.AttributeSetInstanceIdTo = default(string);
-				}
-			}
-			else
-			{
-				this.AttributeSetInstanceIdTo = e.AttributeSetInstanceIdTo;
+				this.AttributeSetInstanceId = e.AttributeSetInstanceId;
 			}
 
 			if (e.Processed == null)

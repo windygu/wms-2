@@ -182,59 +182,31 @@ namespace Dddml.Wms.Domain.Movement
             }
         }
 
-		public virtual string AttributeSetInstanceIdFrom
+		public virtual string AttributeSetInstanceId
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("AttributeSetInstanceIdFrom"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("AttributeSetInstanceId"))
                 {
-                    return _state.AttributeSetInstanceIdFrom;
+                    return _state.AttributeSetInstanceId;
                 }
                 return null;
             }
             set
             {
-                _state.AttributeSetInstanceIdFrom = value;
+                _state.AttributeSetInstanceId = value;
             }
         }
 
-        string IMovementLineStateProperties.AttributeSetInstanceIdFrom
+        string IMovementLineStateProperties.AttributeSetInstanceId
         {
             get 
             {
-                return (this._state as IMovementLineStateProperties).AttributeSetInstanceIdFrom;
+                return (this._state as IMovementLineStateProperties).AttributeSetInstanceId;
             }
             set 
             {
-                (this._state as IMovementLineStateProperties).AttributeSetInstanceIdFrom = value;
-            }
-        }
-
-		public virtual string AttributeSetInstanceIdTo
-		{
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("AttributeSetInstanceIdTo"))
-                {
-                    return _state.AttributeSetInstanceIdTo;
-                }
-                return null;
-            }
-            set
-            {
-                _state.AttributeSetInstanceIdTo = value;
-            }
-        }
-
-        string IMovementLineStateProperties.AttributeSetInstanceIdTo
-        {
-            get 
-            {
-                return (this._state as IMovementLineStateProperties).AttributeSetInstanceIdTo;
-            }
-            set 
-            {
-                (this._state as IMovementLineStateProperties).AttributeSetInstanceIdTo = value;
+                (this._state as IMovementLineStateProperties).AttributeSetInstanceId = value;
             }
         }
 

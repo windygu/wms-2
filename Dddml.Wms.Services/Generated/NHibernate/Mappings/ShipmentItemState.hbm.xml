@@ -13,6 +13,7 @@
 	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 
     <property name="ProductId" ><column name="ProductId" sql-type="VARCHAR(20)" /></property>
+    <property name="AttributeSetInstanceId" ></property>
     <property name="Quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>
     <property name="ShipmentContentDescription" ><column name="ShipmentContentDescription" sql-type="VARCHAR(255)" /></property>
     <property name="CreatedBy" ></property>

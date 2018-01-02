@@ -28,6 +28,12 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             set;
         }
 
+        string AttributeSetInstanceId
+        {
+            get;
+            set;
+        }
+
         decimal? Quantity
         {
             get;

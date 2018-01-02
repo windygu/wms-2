@@ -31,13 +31,9 @@ public interface MovementLineMvoStateEvent extends Event
 
     void setLocatorIdTo(String locatorIdTo);
 
-    String getAttributeSetInstanceIdFrom();
+    String getAttributeSetInstanceId();
 
-    void setAttributeSetInstanceIdFrom(String attributeSetInstanceIdFrom);
-
-    String getAttributeSetInstanceIdTo();
-
-    void setAttributeSetInstanceIdTo(String attributeSetInstanceIdTo);
+    void setAttributeSetInstanceId(String attributeSetInstanceId);
 
     Boolean getProcessed();
 
@@ -195,13 +191,9 @@ public interface MovementLineMvoStateEvent extends Event
 
         void setIsPropertyLocatorIdToRemoved(Boolean removed);
 
-        Boolean getIsPropertyAttributeSetInstanceIdFromRemoved();
+        Boolean getIsPropertyAttributeSetInstanceIdRemoved();
 
-        void setIsPropertyAttributeSetInstanceIdFromRemoved(Boolean removed);
-
-        Boolean getIsPropertyAttributeSetInstanceIdToRemoved();
-
-        void setIsPropertyAttributeSetInstanceIdToRemoved(Boolean removed);
+        void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed);
 
         Boolean getIsPropertyProcessedRemoved();
 

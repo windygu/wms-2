@@ -53,6 +53,7 @@ public abstract class AbstractShipmentItemMvoAggregate extends AbstractAggregate
         ShipmentItemMvoStateEventId stateEventId = new ShipmentItemMvoStateEventId(c.getShipmentItemId(), c.getShipmentVersion());
         ShipmentItemMvoStateEvent.ShipmentItemMvoStateCreated e = newShipmentItemMvoStateCreated(stateEventId);
         e.setProductId(c.getProductId());
+        e.setAttributeSetInstanceId(c.getAttributeSetInstanceId());
         e.setQuantity(c.getQuantity());
         e.setShipmentContentDescription(c.getShipmentContentDescription());
         e.setVersion(c.getVersion());
@@ -96,6 +97,7 @@ public abstract class AbstractShipmentItemMvoAggregate extends AbstractAggregate
         ShipmentItemMvoStateEventId stateEventId = new ShipmentItemMvoStateEventId(c.getShipmentItemId(), c.getShipmentVersion());
         ShipmentItemMvoStateEvent.ShipmentItemMvoStateMergePatched e = newShipmentItemMvoStateMergePatched(stateEventId);
         e.setProductId(c.getProductId());
+        e.setAttributeSetInstanceId(c.getAttributeSetInstanceId());
         e.setQuantity(c.getQuantity());
         e.setShipmentContentDescription(c.getShipmentContentDescription());
         e.setVersion(c.getVersion());
@@ -130,6 +132,7 @@ public abstract class AbstractShipmentItemMvoAggregate extends AbstractAggregate
         e.setShipmentUpdatedAt(c.getShipmentUpdatedAt());
         e.setShipmentActive(c.getShipmentActive());
         e.setIsPropertyProductIdRemoved(c.getIsPropertyProductIdRemoved());
+        e.setIsPropertyAttributeSetInstanceIdRemoved(c.getIsPropertyAttributeSetInstanceIdRemoved());
         e.setIsPropertyQuantityRemoved(c.getIsPropertyQuantityRemoved());
         e.setIsPropertyShipmentContentDescriptionRemoved(c.getIsPropertyShipmentContentDescriptionRemoved());
         e.setIsPropertyVersionRemoved(c.getIsPropertyVersionRemoved());

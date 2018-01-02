@@ -62,9 +62,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
 		public virtual string LocatorIdTo { get; set; }
 
-		public virtual string AttributeSetInstanceIdFrom { get; set; }
-
-		public virtual string AttributeSetInstanceIdTo { get; set; }
+		public virtual string AttributeSetInstanceId { get; set; }
 
 		public virtual bool? Processed { get; set; }
 
@@ -215,13 +213,13 @@ namespace Dddml.Wms.Domain.MovementLineMvo
             }
         }
 
-		public virtual bool? IsPropertyAttributeSetInstanceIdFromRemoved { get; set; }
+		public virtual bool? IsPropertyAttributeSetInstanceIdRemoved { get; set; }
 
-        bool IMergePatchMovementLineMvo.IsPropertyAttributeSetInstanceIdFromRemoved
+        bool IMergePatchMovementLineMvo.IsPropertyAttributeSetInstanceIdRemoved
         {
             get
             {
-                var b = this.IsPropertyAttributeSetInstanceIdFromRemoved;
+                var b = this.IsPropertyAttributeSetInstanceIdRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -230,26 +228,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
             }
             set
             {
-                this.IsPropertyAttributeSetInstanceIdFromRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyAttributeSetInstanceIdToRemoved { get; set; }
-
-        bool IMergePatchMovementLineMvo.IsPropertyAttributeSetInstanceIdToRemoved
-        {
-            get
-            {
-                var b = this.IsPropertyAttributeSetInstanceIdToRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return false;
-            }
-            set
-            {
-                this.IsPropertyAttributeSetInstanceIdToRemoved = value;
+                this.IsPropertyAttributeSetInstanceIdRemoved = value;
             }
         }
 

@@ -304,6 +304,7 @@ namespace Dddml.Wms.Domain.Shipment
             var s = outerState.ShipmentItems.Get(c.ShipmentItemSeqId, true);
 
             e.ProductId = c.ProductId;
+            e.AttributeSetInstanceId = c.AttributeSetInstanceId;
             e.Quantity = c.Quantity;
             e.ShipmentContentDescription = c.ShipmentContentDescription;
             e.Active = c.Active;
@@ -324,10 +325,12 @@ namespace Dddml.Wms.Domain.Shipment
             var s = outerState.ShipmentItems.Get(c.ShipmentItemSeqId);
 
             e.ProductId = c.ProductId;
+            e.AttributeSetInstanceId = c.AttributeSetInstanceId;
             e.Quantity = c.Quantity;
             e.ShipmentContentDescription = c.ShipmentContentDescription;
             e.Active = c.Active;
             e.IsPropertyProductIdRemoved = c.IsPropertyProductIdRemoved;
+            e.IsPropertyAttributeSetInstanceIdRemoved = c.IsPropertyAttributeSetInstanceIdRemoved;
             e.IsPropertyQuantityRemoved = c.IsPropertyQuantityRemoved;
             e.IsPropertyShipmentContentDescriptionRemoved = c.IsPropertyShipmentContentDescriptionRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;

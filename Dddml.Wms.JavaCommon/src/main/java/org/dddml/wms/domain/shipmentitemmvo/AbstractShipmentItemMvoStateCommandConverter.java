@@ -39,6 +39,7 @@ public abstract class AbstractShipmentItemMvoStateCommandConverter<TCreateShipme
 
         cmd.setShipmentItemId(state.getShipmentItemId());
         cmd.setProductId(state.getProductId());
+        cmd.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
         cmd.setQuantity(state.getQuantity());
         cmd.setShipmentContentDescription(state.getShipmentContentDescription());
         cmd.setVersion(state.getVersion());
@@ -74,6 +75,7 @@ public abstract class AbstractShipmentItemMvoStateCommandConverter<TCreateShipme
         cmd.setShipmentActive(state.getShipmentActive());
             
         if (state.getProductId() == null) { cmd.setIsPropertyProductIdRemoved(true); }
+        if (state.getAttributeSetInstanceId() == null) { cmd.setIsPropertyAttributeSetInstanceIdRemoved(true); }
         if (state.getQuantity() == null) { cmd.setIsPropertyQuantityRemoved(true); }
         if (state.getShipmentContentDescription() == null) { cmd.setIsPropertyShipmentContentDescriptionRemoved(true); }
         if (state.getVersion() == null) { cmd.setIsPropertyVersionRemoved(true); }
@@ -117,6 +119,7 @@ public abstract class AbstractShipmentItemMvoStateCommandConverter<TCreateShipme
         cmd.setShipmentVersion(state.getShipmentVersion());
         cmd.setShipmentItemId(state.getShipmentItemId());
         cmd.setProductId(state.getProductId());
+        cmd.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
         cmd.setQuantity(state.getQuantity());
         cmd.setShipmentContentDescription(state.getShipmentContentDescription());
         cmd.setVersion(state.getVersion());

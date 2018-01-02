@@ -25,9 +25,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
 		public virtual string LocatorIdTo { get; set; }
 
-		public virtual string AttributeSetInstanceIdFrom { get; set; }
-
-		public virtual string AttributeSetInstanceIdTo { get; set; }
+		public virtual string AttributeSetInstanceId { get; set; }
 
 		public virtual bool Processed { get; set; }
 
