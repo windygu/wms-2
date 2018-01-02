@@ -2281,6 +2281,10 @@
 .\ShipmentItemMvoFilteringProperties.java
 .\ShipmentItemMvoMetadata.java
 .\ShipmentMetadata.java
+.\ShipmentReceiptFilteringProperties.java
+.\ShipmentReceiptMetadata.java
+.\ShipmentReceiptMvoFilteringProperties.java
+.\ShipmentReceiptMvoMetadata.java
 .\ShipmentTypeFilteringProperties.java
 .\ShipmentTypeMetadata.java
 .\StatusItemFilteringProperties.java
@@ -2547,6 +2551,18 @@
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\meta\ShipmentMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\ShipmentReceiptFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\ShipmentReceiptMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\ShipmentReceiptMvoFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\ShipmentReceiptMvoMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\meta\ShipmentTypeFilteringProperties.java">
@@ -4516,6 +4532,83 @@
     <Content Include="src\main\java\org\dddml\wms\domain\shipmentitemmvo\ShipmentItemMvoStateRepository.java">
       <DependentUpon>GenerateShipmentItemMvoDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\AbstractShipmentReceiptMvoAggregate.java">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\AbstractShipmentReceiptMvoApplicationService.java">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\AbstractShipmentReceiptMvoCommand.java">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\AbstractShipmentReceiptMvoCommandDto.java">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\AbstractShipmentReceiptMvoState.java">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\AbstractShipmentReceiptMvoStateCommandConverter.java">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\AbstractShipmentReceiptMvoStateEvent.java">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\CreateOrMergePatchShipmentReceiptMvoDto.java">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\DeleteShipmentReceiptMvoDto.java">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\GenerateShipmentReceiptMvoDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\ShipmentReceiptMvoAggregate.java">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\ShipmentReceiptMvoApplicationService.java">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\ShipmentReceiptMvoCommand.java">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\ShipmentReceiptMvoState.java">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\ShipmentReceiptMvoStateDto.java">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\ShipmentReceiptMvoStateEvent.java">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\ShipmentReceiptMvoStateEventDto.java">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\ShipmentReceiptMvoStateEventDtoConverter.java">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\ShipmentReceiptMvoStateEventId.java">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\ShipmentReceiptMvoStateEventIdDto.java">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\ShipmentReceiptMvoStateEventIdDtoWrapper.java">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\ShipmentReceiptMvoStateEventIdFlattenedDto.java">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\ShipmentReceiptMvoStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\ShipmentReceiptMvoStateQueryRepository.java">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\ShipmentReceiptMvoStateRepository.java">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\shipmenttype\AbstractShipmentTypeAggregate.java">
       <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
     </Content>
@@ -4623,6 +4716,24 @@
     <Content Include="src\main\java\org\dddml\wms\domain\shipment\AbstractShipmentItemStates.java">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipment\AbstractShipmentReceiptCommand.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipment\AbstractShipmentReceiptCommandDto.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipment\AbstractShipmentReceiptState.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipment\AbstractShipmentReceiptStateCommandConverter.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipment\AbstractShipmentReceiptStateEvent.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipment\AbstractShipmentReceiptStates.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\shipment\AbstractShipmentState.java">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
@@ -4638,6 +4749,9 @@
     <Content Include="src\main\java\org\dddml\wms\domain\shipment\CreateOrMergePatchShipmentItemDto.java">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipment\CreateOrMergePatchShipmentReceiptDto.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\shipment\DeleteShipmentDto.java">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
@@ -4647,6 +4761,9 @@
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\shipment\RemoveShipmentItemDto.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipment\RemoveShipmentReceiptDto.java">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\shipment\ShipmentAggregate.java">
@@ -4713,6 +4830,63 @@
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\shipment\ShipmentItemStates.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipment\ShipmentReceiptCommand.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipment\ShipmentReceiptId.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipment\ShipmentReceiptIdDto.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipment\ShipmentReceiptIdDtoWrapper.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipment\ShipmentReceiptIdFlattenedDto.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipment\ShipmentReceiptIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipment\ShipmentReceiptState.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipment\ShipmentReceiptStateDao.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipment\ShipmentReceiptStateDto.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipment\ShipmentReceiptStateEvent.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipment\ShipmentReceiptStateEventDao.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipment\ShipmentReceiptStateEventDto.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipment\ShipmentReceiptStateEventDtoConverter.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipment\ShipmentReceiptStateEventId.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipment\ShipmentReceiptStateEventIdDto.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipment\ShipmentReceiptStateEventIdDtoWrapper.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipment\ShipmentReceiptStateEventIdFlattenedDto.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipment\ShipmentReceiptStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipment\ShipmentReceiptStates.java">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\shipment\ShipmentState.java">
@@ -6250,14 +6424,22 @@
 .\AbstractShipmentItemStateCommandConverter.java
 .\AbstractShipmentItemStateEvent.java
 .\AbstractShipmentItemStates.java
+.\AbstractShipmentReceiptCommand.java
+.\AbstractShipmentReceiptCommandDto.java
+.\AbstractShipmentReceiptState.java
+.\AbstractShipmentReceiptStateCommandConverter.java
+.\AbstractShipmentReceiptStateEvent.java
+.\AbstractShipmentReceiptStates.java
 .\AbstractShipmentState.java
 .\AbstractShipmentStateCommandConverter.java
 .\AbstractShipmentStateEvent.java
 .\CreateOrMergePatchShipmentDto.java
 .\CreateOrMergePatchShipmentItemDto.java
+.\CreateOrMergePatchShipmentReceiptDto.java
 .\DeleteShipmentDto.java
 .\GenerateShipmentDomain.txt
 .\RemoveShipmentItemDto.java
+.\RemoveShipmentReceiptDto.java
 .\ShipmentAggregate.java
 .\ShipmentApplicationService.java
 .\ShipmentCommand.java
@@ -6280,6 +6462,25 @@
 .\ShipmentItemStateEventIdFlattenedDto.java
 .\ShipmentItemStateEventIdFlattenedDtoFormatter.java
 .\ShipmentItemStates.java
+.\ShipmentReceiptCommand.java
+.\ShipmentReceiptId.java
+.\ShipmentReceiptIdDto.java
+.\ShipmentReceiptIdDtoWrapper.java
+.\ShipmentReceiptIdFlattenedDto.java
+.\ShipmentReceiptIdFlattenedDtoFormatter.java
+.\ShipmentReceiptState.java
+.\ShipmentReceiptStateDao.java
+.\ShipmentReceiptStateDto.java
+.\ShipmentReceiptStateEvent.java
+.\ShipmentReceiptStateEventDao.java
+.\ShipmentReceiptStateEventDto.java
+.\ShipmentReceiptStateEventDtoConverter.java
+.\ShipmentReceiptStateEventId.java
+.\ShipmentReceiptStateEventIdDto.java
+.\ShipmentReceiptStateEventIdDtoWrapper.java
+.\ShipmentReceiptStateEventIdFlattenedDto.java
+.\ShipmentReceiptStateEventIdFlattenedDtoFormatter.java
+.\ShipmentReceiptStates.java
 .\ShipmentState.java
 .\ShipmentStateDto.java
 .\ShipmentStateEvent.java
@@ -7057,6 +7258,37 @@
 .\LotStateEventIdFlattenedDtoFormatter.java
 .\LotStateQueryRepository.java
 .\LotStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\GenerateShipmentReceiptMvoDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateShipmentReceiptMvoDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractShipmentReceiptMvoAggregate.java
+.\AbstractShipmentReceiptMvoApplicationService.java
+.\AbstractShipmentReceiptMvoCommand.java
+.\AbstractShipmentReceiptMvoCommandDto.java
+.\AbstractShipmentReceiptMvoState.java
+.\AbstractShipmentReceiptMvoStateCommandConverter.java
+.\AbstractShipmentReceiptMvoStateEvent.java
+.\CreateOrMergePatchShipmentReceiptMvoDto.java
+.\DeleteShipmentReceiptMvoDto.java
+.\GenerateShipmentReceiptMvoDomain.txt
+.\ShipmentReceiptMvoAggregate.java
+.\ShipmentReceiptMvoApplicationService.java
+.\ShipmentReceiptMvoCommand.java
+.\ShipmentReceiptMvoState.java
+.\ShipmentReceiptMvoStateDto.java
+.\ShipmentReceiptMvoStateEvent.java
+.\ShipmentReceiptMvoStateEventDto.java
+.\ShipmentReceiptMvoStateEventDtoConverter.java
+.\ShipmentReceiptMvoStateEventId.java
+.\ShipmentReceiptMvoStateEventIdDto.java
+.\ShipmentReceiptMvoStateEventIdDtoWrapper.java
+.\ShipmentReceiptMvoStateEventIdFlattenedDto.java
+.\ShipmentReceiptMvoStateEventIdFlattenedDtoFormatter.java
+.\ShipmentReceiptMvoStateQueryRepository.java
+.\ShipmentReceiptMvoStateRepository.java
 </LastOutputs>
     </Content>
   </ItemGroup>

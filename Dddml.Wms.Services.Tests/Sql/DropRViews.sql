@@ -10,3 +10,4 @@ DROP view if exists `OrderItem_RV` ;
 DROP view if exists `PhysicalInventoryLine_RV` ;
 DROP view if exists `SellableInventoryItemEntry_RV` ;
 DROP view if exists `ShipmentItem_RV` ;
+DROP view if exists `ShipmentReceipt_RV` ;

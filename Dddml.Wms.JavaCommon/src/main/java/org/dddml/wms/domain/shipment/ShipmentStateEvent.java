@@ -133,6 +133,12 @@ public interface ShipmentStateEvent extends Event
 
         ShipmentItemStateEvent.ShipmentItemStateCreated newShipmentItemStateCreated(String shipmentItemSeqId);
 
+        Iterable<ShipmentReceiptStateEvent.ShipmentReceiptStateCreated> getShipmentReceiptEvents();
+        
+        void addShipmentReceiptEvent(ShipmentReceiptStateEvent.ShipmentReceiptStateCreated e);
+
+        ShipmentReceiptStateEvent.ShipmentReceiptStateCreated newShipmentReceiptStateCreated(String receiptSeqId);
+
     
     }
 
@@ -246,6 +252,14 @@ public interface ShipmentStateEvent extends Event
         ShipmentItemStateEvent.ShipmentItemStateCreated newShipmentItemStateCreated(String shipmentItemSeqId);
 
         ShipmentItemStateEvent.ShipmentItemStateMergePatched newShipmentItemStateMergePatched(String shipmentItemSeqId);
+
+        Iterable<ShipmentReceiptStateEvent> getShipmentReceiptEvents();
+        
+        void addShipmentReceiptEvent(ShipmentReceiptStateEvent e);
+
+        ShipmentReceiptStateEvent.ShipmentReceiptStateCreated newShipmentReceiptStateCreated(String receiptSeqId);
+
+        ShipmentReceiptStateEvent.ShipmentReceiptStateMergePatched newShipmentReceiptStateMergePatched(String receiptSeqId);
 
 
     }

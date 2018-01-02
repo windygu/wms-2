@@ -57,6 +57,13 @@ public class ShipmentStateEventDtoConverter {
         }
         dto.setShipmentItemEvents(shipmentItemEvents.toArray(new ShipmentItemStateEventDto.ShipmentItemStateCreatedDto[0]));
 
+        List<ShipmentReceiptStateEventDto.ShipmentReceiptStateCreatedDto> shipmentReceiptEvents = new ArrayList<>();
+        for (ShipmentReceiptStateEvent.ShipmentReceiptStateCreated ee : e.getShipmentReceiptEvents()) {
+            ShipmentReceiptStateEventDto.ShipmentReceiptStateCreatedDto eeDto = getShipmentReceiptStateEventDtoConverter().toShipmentReceiptStateCreatedDto(ee);
+            shipmentReceiptEvents.add(eeDto);
+        }
+        dto.setShipmentReceiptEvents(shipmentReceiptEvents.toArray(new ShipmentReceiptStateEventDto.ShipmentReceiptStateCreatedDto[0]));
+
         return dto;
     }
 
@@ -123,12 +130,23 @@ public class ShipmentStateEventDtoConverter {
         }
         dto.setShipmentItemEvents(shipmentItemEvents.toArray(new ShipmentItemStateEventDto[0]));
 
+        List<ShipmentReceiptStateEventDto> shipmentReceiptEvents = new ArrayList<>();
+        for (ShipmentReceiptStateEvent ee : e.getShipmentReceiptEvents()) {
+            ShipmentReceiptStateEventDto eeDto = getShipmentReceiptStateEventDtoConverter().toShipmentReceiptStateEventDto((AbstractShipmentReceiptStateEvent) ee);
+            shipmentReceiptEvents.add(eeDto);
+        }
+        dto.setShipmentReceiptEvents(shipmentReceiptEvents.toArray(new ShipmentReceiptStateEventDto[0]));
+
         return dto;
     }
 
 
     protected ShipmentItemStateEventDtoConverter getShipmentItemStateEventDtoConverter() {
         return new ShipmentItemStateEventDtoConverter();
+    }
+
+    protected ShipmentReceiptStateEventDtoConverter getShipmentReceiptStateEventDtoConverter() {
+        return new ShipmentReceiptStateEventDtoConverter();
     }
 
 }

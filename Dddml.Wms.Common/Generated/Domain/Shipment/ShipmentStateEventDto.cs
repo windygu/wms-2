@@ -693,6 +693,84 @@ namespace Dddml.Wms.Domain.Shipment
         }
 
 
+        private ShipmentReceiptStateCreatedOrMergePatchedOrRemovedDtos _shipmentReceiptEvents = new ShipmentReceiptStateCreatedOrMergePatchedOrRemovedDtos();
+
+        public virtual ShipmentReceiptStateCreatedOrMergePatchedOrRemovedDto[] ShipmentReceiptEvents
+        {
+            get
+            {
+                return _shipmentReceiptEvents.ToArray();
+            }
+            set
+            {
+                _shipmentReceiptEvents.Clear();
+                _shipmentReceiptEvents.AddRange(value);
+            }
+        }
+
+
+
+        private ShipmentReceiptStateEventIdDto NewShipmentReceiptStateEventId(string receiptSeqId)
+        {
+            var eId = new ShipmentReceiptStateEventIdDto();
+            eId.ShipmentId = this.StateEventId.ShipmentId;
+            eId.ReceiptSeqId = receiptSeqId;
+            eId.ShipmentVersion = this.StateEventId.Version;
+            return eId;
+        }
+
+        public virtual ShipmentReceiptStateCreatedDto NewShipmentReceiptStateCreated(string receiptSeqId)
+        {
+            var e = new ShipmentReceiptStateCreatedDto();
+            var eId = NewShipmentReceiptStateEventId(receiptSeqId);
+            e.StateEventId = eId;
+            return e;
+        }
+
+        public virtual ShipmentReceiptStateMergePatchedDto NewShipmentReceiptStateMergePatched(string receiptSeqId)
+        {
+            var e = new ShipmentReceiptStateMergePatchedDto();
+            var eId = NewShipmentReceiptStateEventId(receiptSeqId);
+            e.StateEventId = eId;
+            return e;
+        }
+
+        IEnumerable<IShipmentReceiptStateCreated> IShipmentStateCreated.ShipmentReceiptEvents
+        {
+            get { return this._shipmentReceiptEvents; }
+        }
+
+        void IShipmentStateCreated.AddShipmentReceiptEvent(IShipmentReceiptStateCreated e)
+        {
+            this._shipmentReceiptEvents.AddShipmentReceiptEvent(e);
+        }
+
+        IShipmentReceiptStateCreated IShipmentStateCreated.NewShipmentReceiptStateCreated(string receiptSeqId)
+        {
+            return NewShipmentReceiptStateCreated(receiptSeqId);
+        }
+
+        IEnumerable<IShipmentReceiptStateEvent> IShipmentStateMergePatched.ShipmentReceiptEvents
+        {
+            get { return this._shipmentReceiptEvents; }
+        }
+
+        void IShipmentStateMergePatched.AddShipmentReceiptEvent(IShipmentReceiptStateEvent e)
+        {
+            this._shipmentReceiptEvents.AddShipmentReceiptEvent(e);
+        }
+
+        IShipmentReceiptStateCreated IShipmentStateMergePatched.NewShipmentReceiptStateCreated(string receiptSeqId)
+        {
+            return NewShipmentReceiptStateCreated(receiptSeqId);
+        }
+
+        IShipmentReceiptStateMergePatched IShipmentStateMergePatched.NewShipmentReceiptStateMergePatched(string receiptSeqId)
+        {
+            return NewShipmentReceiptStateMergePatched(receiptSeqId);
+        }
+
+
         ShipmentStateEventId IShipmentStateEvent.StateEventId
         {
             get { return this.StateEventId.ToShipmentStateEventId(); }

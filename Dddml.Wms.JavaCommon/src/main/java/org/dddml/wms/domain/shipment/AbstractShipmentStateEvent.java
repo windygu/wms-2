@@ -400,12 +400,46 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
         }
     }
 
+    protected ShipmentReceiptStateEventDao getShipmentReceiptStateEventDao() {
+        return (ShipmentReceiptStateEventDao)ApplicationContext.current.get("ShipmentReceiptStateEventDao");
+    }
+
+    protected ShipmentReceiptStateEventId newShipmentReceiptStateEventId(String receiptSeqId)
+    {
+        ShipmentReceiptStateEventId stateEventId = new ShipmentReceiptStateEventId(this.getStateEventId().getShipmentId(), 
+            receiptSeqId, 
+            this.getStateEventId().getVersion());
+        return stateEventId;
+    }
+
+    protected void throwOnInconsistentEventIds(ShipmentReceiptStateEvent e)
+    {
+        throwOnInconsistentEventIds(this, e);
+    }
+
+    public static void throwOnInconsistentEventIds(ShipmentStateEvent oe, ShipmentReceiptStateEvent e)
+    {
+        if (!oe.getStateEventId().getShipmentId().equals(e.getStateEventId().getShipmentId()))
+        { 
+            throw DomainError.named("inconsistentEventIds", "Outer Id ShipmentId %1$s but inner id ShipmentId %2$s", 
+                oe.getStateEventId().getShipmentId(), e.getStateEventId().getShipmentId());
+        }
+    }
+
     public ShipmentItemStateEvent.ShipmentItemStateCreated newShipmentItemStateCreated(String shipmentItemSeqId) {
         return new AbstractShipmentItemStateEvent.SimpleShipmentItemStateCreated(newShipmentItemStateEventId(shipmentItemSeqId));
     }
 
     public ShipmentItemStateEvent.ShipmentItemStateMergePatched newShipmentItemStateMergePatched(String shipmentItemSeqId) {
         return new AbstractShipmentItemStateEvent.SimpleShipmentItemStateMergePatched(newShipmentItemStateEventId(shipmentItemSeqId));
+    }
+
+    public ShipmentReceiptStateEvent.ShipmentReceiptStateCreated newShipmentReceiptStateCreated(String receiptSeqId) {
+        return new AbstractShipmentReceiptStateEvent.SimpleShipmentReceiptStateCreated(newShipmentReceiptStateEventId(receiptSeqId));
+    }
+
+    public ShipmentReceiptStateEvent.ShipmentReceiptStateMergePatched newShipmentReceiptStateMergePatched(String receiptSeqId) {
+        return new AbstractShipmentReceiptStateEvent.SimpleShipmentReceiptStateMergePatched(newShipmentReceiptStateEventId(receiptSeqId));
     }
 
 
@@ -468,10 +502,55 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
             this.shipmentItemEvents.put(e.getStateEventId(), e);
         }
 
+        private Map<ShipmentReceiptStateEventId, ShipmentReceiptStateEvent.ShipmentReceiptStateCreated> shipmentReceiptEvents = new HashMap<ShipmentReceiptStateEventId, ShipmentReceiptStateEvent.ShipmentReceiptStateCreated>();
+        
+        private Iterable<ShipmentReceiptStateEvent.ShipmentReceiptStateCreated> readOnlyShipmentReceiptEvents;
+
+        public Iterable<ShipmentReceiptStateEvent.ShipmentReceiptStateCreated> getShipmentReceiptEvents()
+        {
+            if (!getStateEventReadOnly())
+            {
+                return this.shipmentReceiptEvents.values();
+            }
+            else
+            {
+                if (readOnlyShipmentReceiptEvents != null) { return readOnlyShipmentReceiptEvents; }
+                ShipmentReceiptStateEventDao eventDao = getShipmentReceiptStateEventDao();
+                List<ShipmentReceiptStateEvent.ShipmentReceiptStateCreated> eL = new ArrayList<ShipmentReceiptStateEvent.ShipmentReceiptStateCreated>();
+                for (ShipmentReceiptStateEvent e : eventDao.findByShipmentStateEventId(this.getStateEventId()))
+                {
+                    e.setStateEventReadOnly(true);
+                    eL.add((ShipmentReceiptStateEvent.ShipmentReceiptStateCreated)e);
+                }
+                return (readOnlyShipmentReceiptEvents = eL);
+            }
+        }
+
+        public void setShipmentReceiptEvents(Iterable<ShipmentReceiptStateEvent.ShipmentReceiptStateCreated> es)
+        {
+            if (es != null)
+            {
+                for (ShipmentReceiptStateEvent.ShipmentReceiptStateCreated e : es)
+                {
+                    addShipmentReceiptEvent(e);
+                }
+            }
+            else { this.shipmentReceiptEvents.clear(); }
+        }
+        
+        public void addShipmentReceiptEvent(ShipmentReceiptStateEvent.ShipmentReceiptStateCreated e)
+        {
+            throwOnInconsistentEventIds(e);
+            this.shipmentReceiptEvents.put(e.getStateEventId(), e);
+        }
+
         public void save()
         {
             for (ShipmentItemStateEvent.ShipmentItemStateCreated e : this.getShipmentItemEvents()) {
                 getShipmentItemStateEventDao().save(e);
+            }
+            for (ShipmentReceiptStateEvent.ShipmentReceiptStateCreated e : this.getShipmentReceiptEvents()) {
+                getShipmentReceiptStateEventDao().save(e);
             }
         }
     }
@@ -783,10 +862,55 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
             this.shipmentItemEvents.put(e.getStateEventId(), e);
         }
 
+        private Map<ShipmentReceiptStateEventId, ShipmentReceiptStateEvent> shipmentReceiptEvents = new HashMap<ShipmentReceiptStateEventId, ShipmentReceiptStateEvent>();
+        
+        private Iterable<ShipmentReceiptStateEvent> readOnlyShipmentReceiptEvents;
+
+        public Iterable<ShipmentReceiptStateEvent> getShipmentReceiptEvents()
+        {
+            if (!getStateEventReadOnly())
+            {
+                return this.shipmentReceiptEvents.values();
+            }
+            else
+            {
+                if (readOnlyShipmentReceiptEvents != null) { return readOnlyShipmentReceiptEvents; }
+                ShipmentReceiptStateEventDao eventDao = getShipmentReceiptStateEventDao();
+                List<ShipmentReceiptStateEvent> eL = new ArrayList<ShipmentReceiptStateEvent>();
+                for (ShipmentReceiptStateEvent e : eventDao.findByShipmentStateEventId(this.getStateEventId()))
+                {
+                    e.setStateEventReadOnly(true);
+                    eL.add((ShipmentReceiptStateEvent)e);
+                }
+                return (readOnlyShipmentReceiptEvents = eL);
+            }
+        }
+
+        public void setShipmentReceiptEvents(Iterable<ShipmentReceiptStateEvent> es)
+        {
+            if (es != null)
+            {
+                for (ShipmentReceiptStateEvent e : es)
+                {
+                    addShipmentReceiptEvent(e);
+                }
+            }
+            else { this.shipmentReceiptEvents.clear(); }
+        }
+        
+        public void addShipmentReceiptEvent(ShipmentReceiptStateEvent e)
+        {
+            throwOnInconsistentEventIds(e);
+            this.shipmentReceiptEvents.put(e.getStateEventId(), e);
+        }
+
         public void save()
         {
             for (ShipmentItemStateEvent e : this.getShipmentItemEvents()) {
                 getShipmentItemStateEventDao().save(e);
+            }
+            for (ShipmentReceiptStateEvent e : this.getShipmentReceiptEvents()) {
+                getShipmentReceiptStateEventDao().save(e);
             }
         }
     }

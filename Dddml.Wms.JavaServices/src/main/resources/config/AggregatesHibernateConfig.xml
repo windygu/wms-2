@@ -544,6 +544,15 @@
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
+  <bean id="shipmentReceiptStateDao" class="org.dddml.wms.domain.shipment.hibernate.HibernateShipmentReceiptStateDao">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="shipmentReceiptStateEventDao" class="org.dddml.wms.domain.shipment.hibernate.HibernateShipmentReceiptStateEventDao">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
   <bean id="shipmentStateRepository" class="org.dddml.wms.domain.shipment.hibernate.HibernateShipmentStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
@@ -1036,6 +1045,27 @@
     <constructor-arg ref="shipmentItemMvoEventStore"/>
     <constructor-arg ref="shipmentItemMvoStateRepository"/>
     <constructor-arg ref="shipmentItemMvoStateQueryRepository"/>
+  </bean>
+
+
+  <bean id="shipmentReceiptMvoStateRepository" class="org.dddml.wms.domain.shipmentreceiptmvo.hibernate.HibernateShipmentReceiptMvoStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="shipmentReceiptMvoStateQueryRepository" class="org.dddml.wms.domain.shipmentreceiptmvo.hibernate.HibernateShipmentReceiptMvoStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="shipmentReceiptMvoEventStore" class="org.dddml.wms.domain.shipmentreceiptmvo.hibernate.HibernateShipmentReceiptMvoEventStore">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="shipmentReceiptMvoApplicationService" class="org.dddml.wms.domain.shipmentreceiptmvo.AbstractShipmentReceiptMvoApplicationService$SimpleShipmentReceiptMvoApplicationService">
+    <constructor-arg ref="shipmentReceiptMvoEventStore"/>
+    <constructor-arg ref="shipmentReceiptMvoStateRepository"/>
+    <constructor-arg ref="shipmentReceiptMvoStateQueryRepository"/>
   </bean>
 
 </beans>

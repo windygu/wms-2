@@ -398,6 +398,18 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
         this.shipmentItems = shipmentItems;
     }
 
+    private ShipmentReceiptStates shipmentReceipts;
+
+    public ShipmentReceiptStates getShipmentReceipts()
+    {
+        return this.shipmentReceipts;
+    }
+
+    public void setShipmentReceipts(ShipmentReceiptStates shipmentReceipts)
+    {
+        this.shipmentReceipts = shipmentReceipts;
+    }
+
     private Boolean stateReadOnly;
 
     public Boolean getStateReadOnly() { return this.stateReadOnly; }
@@ -438,6 +450,7 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
     
     protected void initializeProperties() {
         shipmentItems = new SimpleShipmentItemStates(this);
+        shipmentReceipts = new SimpleShipmentReceiptStates(this);
     }
 
 
@@ -487,6 +500,10 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
 
         for (ShipmentItemStateEvent.ShipmentItemStateCreated innerEvent : e.getShipmentItemEvents()) {
             ShipmentItemState innerState = this.getShipmentItems().get(innerEvent.getStateEventId().getShipmentItemSeqId());
+            innerState.mutate(innerEvent);
+        }
+        for (ShipmentReceiptStateEvent.ShipmentReceiptStateCreated innerEvent : e.getShipmentReceiptEvents()) {
+            ShipmentReceiptState innerState = this.getShipmentReceipts().get(innerEvent.getStateEventId().getReceiptSeqId());
             innerState.mutate(innerEvent);
         }
     }
@@ -778,11 +795,17 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
             ShipmentItemState innerState = this.getShipmentItems().get(innerEvent.getStateEventId().getShipmentItemSeqId());
             innerState.mutate(innerEvent);
         }
+        for (ShipmentReceiptStateEvent innerEvent : e.getShipmentReceiptEvents()) {
+            ShipmentReceiptState innerState = this.getShipmentReceipts().get(innerEvent.getStateEventId().getReceiptSeqId());
+            innerState.mutate(innerEvent);
+        }
     }
 
     public void save()
     {
         shipmentItems.save();
+
+        shipmentReceipts.save();
 
     }
 
@@ -826,6 +849,14 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
     static class SimpleShipmentItemStates extends AbstractShipmentItemStates
     {
         public SimpleShipmentItemStates(AbstractShipmentState outerState)
+        {
+            super(outerState);
+        }
+    }
+
+    static class SimpleShipmentReceiptStates extends AbstractShipmentReceiptStates
+    {
+        public SimpleShipmentReceiptStates(AbstractShipmentState outerState)
         {
             super(outerState);
         }

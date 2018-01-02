@@ -149,6 +149,31 @@ namespace Dddml.Wms.Domain.Shipment
 
 
 
+        private CreateShipmentReceiptCommands _shipmentReceipts = new CreateShipmentReceiptCommands();
+
+        public ICreateShipmentReceiptCommands ShipmentReceipts
+        {
+            get
+            {
+                return this._shipmentReceipts;
+            }
+        }
+
+        public CreateShipmentReceipt NewCreateShipmentReceipt()
+        {
+            var c = new CreateShipmentReceipt();
+            c.ShipmentId = this.ShipmentId;
+
+            return c;
+        }
+
+        ICreateShipmentReceipt ICreateShipment.NewCreateShipmentReceipt()
+        {
+            return this.NewCreateShipmentReceipt();
+        }
+
+
+
         protected override string GetCommandType()
         {
             return Dddml.Wms.Specialization.CommandType.Create;
@@ -266,6 +291,58 @@ namespace Dddml.Wms.Domain.Shipment
         }
 
 
+        private ShipmentReceiptCommands _shipmentReceiptCommands = new ShipmentReceiptCommands();
+
+        public IShipmentReceiptCommands ShipmentReceiptCommands
+        {
+            get
+            {
+                return this._shipmentReceiptCommands;
+            }
+        }
+
+
+        public CreateShipmentReceipt NewCreateShipmentReceipt()
+        {
+            var c = new CreateShipmentReceipt();
+            c.ShipmentId = this.ShipmentId;
+
+            return c;
+        }
+
+        ICreateShipmentReceipt IMergePatchShipment.NewCreateShipmentReceipt()
+        {
+            return this.NewCreateShipmentReceipt();
+        }
+
+        public MergePatchShipmentReceipt NewMergePatchShipmentReceipt()
+        {
+            var c = new MergePatchShipmentReceipt();
+            c.ShipmentId = this.ShipmentId;
+
+            return c;
+        }
+
+        IMergePatchShipmentReceipt IMergePatchShipment.NewMergePatchShipmentReceipt()
+        {
+            return this.NewMergePatchShipmentReceipt();
+        }
+
+
+        public RemoveShipmentReceipt NewRemoveShipmentReceipt()
+        {
+            var c = new RemoveShipmentReceipt();
+            c.ShipmentId = this.ShipmentId;
+
+            return c;
+        }
+
+        IRemoveShipmentReceipt IMergePatchShipment.NewRemoveShipmentReceipt()
+        {
+            return this.NewRemoveShipmentReceipt();
+        }
+
+
         protected override string GetCommandType()
         {
             return Dddml.Wms.Specialization.CommandType.MergePatch;
@@ -338,6 +415,69 @@ namespace Dddml.Wms.Domain.Shipment
         }
 
         public IEnumerator<IShipmentItemCommand> GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+    }
+
+
+    public class CreateShipmentReceiptCommands : ICreateShipmentReceiptCommands
+    {
+        private List<ICreateShipmentReceipt> _innerCommands = new List<ICreateShipmentReceipt>();
+
+        public void Add(ICreateShipmentReceipt c)
+        {
+            _innerCommands.Add(c);
+        }
+
+        public void Remove(ICreateShipmentReceipt c)
+        {
+            _innerCommands.Remove(c);
+        }
+
+        public void Clear()
+        {
+            _innerCommands.Clear();
+        }
+
+        public IEnumerator<ICreateShipmentReceipt> GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+    }
+
+    public class ShipmentReceiptCommands : IShipmentReceiptCommands
+    {
+        private List<IShipmentReceiptCommand> _innerCommands = new List<IShipmentReceiptCommand>();
+
+        public void Add(IShipmentReceiptCommand c)
+        {
+            _innerCommands.Add(c);
+        }
+
+        public void Remove(IShipmentReceiptCommand c)
+        {
+            _innerCommands.Remove(c);
+        }
+
+        public void Clear()
+        {
+            _innerCommands.Clear();
+        }
+
+        public IEnumerator<IShipmentReceiptCommand> GetEnumerator()
         {
             return _innerCommands.GetEnumerator();
         }

@@ -144,6 +144,10 @@ public interface ShipmentCommand extends Command
 
         ShipmentItemCommand.CreateShipmentItem newCreateShipmentItem();
 
+        CreateShipmentReceiptCommands getShipmentReceipts();
+
+        ShipmentReceiptCommand.CreateShipmentReceipt newCreateShipmentReceipt();
+
     }
 
     interface MergePatchShipment extends CreateOrMergePatchShipment
@@ -256,6 +260,14 @@ public interface ShipmentCommand extends Command
 
         ShipmentItemCommand.RemoveShipmentItem newRemoveShipmentItem();
 
+        ShipmentReceiptCommands getShipmentReceiptCommands();
+
+        ShipmentReceiptCommand.CreateShipmentReceipt newCreateShipmentReceipt();
+
+        ShipmentReceiptCommand.MergePatchShipmentReceipt newMergePatchShipmentReceipt();
+
+        ShipmentReceiptCommand.RemoveShipmentReceipt newRemoveShipmentReceipt();
+
     }
 
 	interface DeleteShipment extends ShipmentCommand
@@ -276,6 +288,24 @@ public interface ShipmentCommand extends Command
         void add(ShipmentItemCommand c);
 
         void remove(ShipmentItemCommand c);
+
+        void clear();
+    }
+
+    interface CreateShipmentReceiptCommands extends Iterable<ShipmentReceiptCommand.CreateShipmentReceipt>
+    {
+        void add(ShipmentReceiptCommand.CreateShipmentReceipt c);
+
+        void remove(ShipmentReceiptCommand.CreateShipmentReceipt c);
+
+        void clear();
+    }
+
+    interface ShipmentReceiptCommands extends Iterable<ShipmentReceiptCommand>
+    {
+        void add(ShipmentReceiptCommand c);
+
+        void remove(ShipmentReceiptCommand c);
 
         void clear();
     }

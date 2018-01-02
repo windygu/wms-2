@@ -55,6 +55,7 @@ public class BoundedContextMetadata {
         map.put("SellableInventoryItemEntry", "SellableInventoryItem");
         map.put("Shipment", "Shipment");
         map.put("ShipmentItem", "Shipment");
+        map.put("ShipmentReceipt", "Shipment");
         map.put("ShipmentType", "ShipmentType");
         map.put("StatusItem", "StatusItem");
         map.put("SupplierProduct", "SupplierProduct");
@@ -78,6 +79,7 @@ public class BoundedContextMetadata {
         map.put("PhysicalInventoryLineMvo", "PhysicalInventoryLineMvo");
         map.put("SellableInventoryItemEntryMvo", "SellableInventoryItemEntryMvo");
         map.put("ShipmentItemMvo", "ShipmentItemMvo");
+        map.put("ShipmentReceiptMvo", "ShipmentReceiptMvo");
         
         TYPE_NAME_TO_AGGREGATE_NAME_MAP = map;
     }

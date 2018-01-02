@@ -70,3 +70,11 @@ alter TABLE `ShipmentItems` add
     (`ShipmentId`) 
   ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+alter TABLE `ShipmentReceipts` add
+  CONSTRAINT `FK_ShipmentReceipt_Shipment_StateId` 
+  FOREIGN KEY 
+    (`ShipmentReceiptIdShipmentId`) 
+  REFERENCES `Shipments` 
+    (`ShipmentId`) 
+  ON DELETE NO ACTION ON UPDATE NO ACTION;
+

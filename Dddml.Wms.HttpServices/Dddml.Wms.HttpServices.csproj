@@ -392,6 +392,9 @@
     <Compile Include="Generated\Controllers\ShipmentItemMvosController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Controllers\ShipmentReceiptMvosController.cs">
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Controllers\ShipmentsController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
@@ -509,6 +512,7 @@
 .\SellableInventoryItemEntryMvosController.cs
 .\SellableInventoryItemsController.cs
 .\ShipmentItemMvosController.cs
+.\ShipmentReceiptMvosController.cs
 .\ShipmentsController.cs
 .\ShipmentTypesController.cs
 .\StatusItemsController.cs

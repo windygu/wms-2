@@ -213,6 +213,18 @@ namespace Dddml.Wms.Domain.Shipment
             set { this.ShipmentItems = value.Select(e => ((ShipmentItemStateDto)e)).ToArray(); }
         }
 
+        public virtual ShipmentReceiptStateDto[] ShipmentReceipts
+        {
+            get;
+            set;
+        }
+
+        IShipmentReceiptStateDto[] IShipmentStateDto.ShipmentReceipts
+        {
+            get { return this.ShipmentReceipts; }
+            set { this.ShipmentReceipts = value.Select(e => ((ShipmentReceiptStateDto)e)).ToArray(); }
+        }
+
         public virtual IShipmentState ToShipmentState()
         {
             var state = new ShipmentState(true);
@@ -248,6 +260,7 @@ namespace Dddml.Wms.Domain.Shipment
             state.UpdatedBy = this.UpdatedBy;
             if (this.UpdatedAt != null && this.UpdatedAt.HasValue) { state.UpdatedAt = this.UpdatedAt.Value; }
             if (this.ShipmentItems != null) { foreach (var s in this.ShipmentItems) { state.ShipmentItems.AddToSave(s.ToShipmentItemState()); } };
+            if (this.ShipmentReceipts != null) { foreach (var s in this.ShipmentReceipts) { state.ShipmentReceipts.AddToSave(s.ToShipmentReceiptState()); } };
 
             return state;
         }

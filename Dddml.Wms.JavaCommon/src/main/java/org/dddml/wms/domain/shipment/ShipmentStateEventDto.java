@@ -566,6 +566,17 @@ public class ShipmentStateEventDto extends AbstractStateEvent
     }
 
 
+    private ShipmentReceiptStateEventDto[] shipmentReceiptEvents;
+
+    public ShipmentReceiptStateEventDto[] getShipmentReceiptEvents() {
+        return this.shipmentReceiptEvents;
+    }
+
+    public void setShipmentReceiptEvents(ShipmentReceiptStateEventDto[] events) {
+        this.shipmentReceiptEvents = events;
+    }
+
+
 	public static class ShipmentStateCreatedDto extends ShipmentStateEventDto
 	{
         @Override

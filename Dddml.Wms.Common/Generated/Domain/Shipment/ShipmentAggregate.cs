@@ -137,6 +137,14 @@ namespace Dddml.Wms.Domain.Shipment
                 e.AddShipmentItemEvent(innerEvent);
             }
 
+            foreach (ICreateShipmentReceipt innerCommand in c.ShipmentReceipts)
+            {
+                ThrowOnInconsistentCommands(c, innerCommand);
+
+                IShipmentReceiptStateCreated innerEvent = MapCreate(innerCommand, c, version, _state);
+                e.AddShipmentReceiptEvent(innerEvent);
+            }
+
 
             return e;
         }
@@ -213,6 +221,14 @@ namespace Dddml.Wms.Domain.Shipment
                 e.AddShipmentItemEvent(innerEvent);
             }
 
+            foreach (IShipmentReceiptCommand innerCommand in c.ShipmentReceiptCommands)
+            {
+                ThrowOnInconsistentCommands(c, innerCommand);
+
+                IShipmentReceiptStateEvent innerEvent = Map(innerCommand, c, version, _state);
+                e.AddShipmentReceiptEvent(innerEvent);
+            }
+
 
             return e;
         }
@@ -223,6 +239,28 @@ namespace Dddml.Wms.Domain.Shipment
 
             var properties =  command as ICreateOrMergePatchOrDeleteShipment;
             var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveShipmentItem;
+            if (properties == null || innerProperties == null) { return; }
+            if (innerProperties.ShipmentId == default(string))
+            {
+                innerProperties.ShipmentId = properties.ShipmentId;
+            }
+            else
+            {
+                var outerShipmentIdName = "ShipmentId";
+                var outerShipmentIdValue = properties.ShipmentId;
+                var innerShipmentIdName = "ShipmentId";
+                var innerShipmentIdValue = innerProperties.ShipmentId;
+                ThrowOnInconsistentIds(innerProperties, innerShipmentIdName, innerShipmentIdValue, outerShipmentIdName, outerShipmentIdValue);
+            }
+
+        }// END ThrowOnInconsistentCommands /////////////////////
+
+
+        protected void ThrowOnInconsistentCommands(IShipmentCommand command, IShipmentReceiptCommand innerCommand)
+        {
+
+            var properties =  command as ICreateOrMergePatchOrDeleteShipment;
+            var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveShipmentReceipt;
             if (properties == null || innerProperties == null) { return; }
             if (innerProperties.ShipmentId == default(string))
             {
@@ -301,6 +339,77 @@ namespace Dddml.Wms.Domain.Shipment
         }// END Map(IMergePatch... ////////////////////////////
 
 
+
+        protected virtual IShipmentReceiptStateEvent Map(IShipmentReceiptCommand c, IShipmentCommand outerCommand, long version, IShipmentState outerState)
+        {
+            var create = (c.CommandType == CommandType.Create) ? (c as ICreateShipmentReceipt) : null;
+            if(create != null)
+            {
+                return MapCreate(create, outerCommand, version, outerState);
+            }
+
+            var merge = (c.CommandType == CommandType.MergePatch) ? (c as IMergePatchShipmentReceipt) : null;
+            if(merge != null)
+            {
+                return MapMergePatch(merge, outerCommand, version, outerState);
+            }
+
+            throw new NotSupportedException();
+        }
+
+
+        protected virtual IShipmentReceiptStateCreated MapCreate(ICreateShipmentReceipt c, IShipmentCommand outerCommand, long version, IShipmentState outerState)
+        {
+            c.RequesterId = outerCommand.RequesterId;
+			var stateEventId = new ShipmentReceiptStateEventId(c.ShipmentId, c.ReceiptSeqId, version);
+            IShipmentReceiptStateCreated e = NewShipmentReceiptStateCreated(stateEventId);
+            var s = outerState.ShipmentReceipts.Get(c.ReceiptSeqId, true);
+
+            e.ProductId = c.ProductId;
+            e.ShipmentItemSeqId = c.ShipmentItemSeqId;
+            e.RejectionId = c.RejectionId;
+            e.ItemDescription = c.ItemDescription;
+            e.AcceptedQuantity = c.AcceptedQuantity;
+            e.RejectedQuantity = c.RejectedQuantity;
+            e.Active = c.Active;
+
+            e.CreatedBy = (string)c.RequesterId;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+            return e;
+
+        }// END Map(ICreate... ////////////////////////////
+
+
+
+        protected virtual IShipmentReceiptStateMergePatched MapMergePatch(IMergePatchShipmentReceipt c, IShipmentCommand outerCommand, long version, IShipmentState outerState)
+        {
+            c.RequesterId = outerCommand.RequesterId;
+			var stateEventId = new ShipmentReceiptStateEventId(c.ShipmentId, c.ReceiptSeqId, version);
+            IShipmentReceiptStateMergePatched e = NewShipmentReceiptStateMergePatched(stateEventId);
+            var s = outerState.ShipmentReceipts.Get(c.ReceiptSeqId);
+
+            e.ProductId = c.ProductId;
+            e.ShipmentItemSeqId = c.ShipmentItemSeqId;
+            e.RejectionId = c.RejectionId;
+            e.ItemDescription = c.ItemDescription;
+            e.AcceptedQuantity = c.AcceptedQuantity;
+            e.RejectedQuantity = c.RejectedQuantity;
+            e.Active = c.Active;
+            e.IsPropertyProductIdRemoved = c.IsPropertyProductIdRemoved;
+            e.IsPropertyShipmentItemSeqIdRemoved = c.IsPropertyShipmentItemSeqIdRemoved;
+            e.IsPropertyRejectionIdRemoved = c.IsPropertyRejectionIdRemoved;
+            e.IsPropertyItemDescriptionRemoved = c.IsPropertyItemDescriptionRemoved;
+            e.IsPropertyAcceptedQuantityRemoved = c.IsPropertyAcceptedQuantityRemoved;
+            e.IsPropertyRejectedQuantityRemoved = c.IsPropertyRejectedQuantityRemoved;
+            e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
+
+            e.CreatedBy = (string)c.RequesterId;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+            return e;
+
+        }// END Map(IMergePatch... ////////////////////////////
+
+
         private void ThrowOnInconsistentIds(object innerObject, string innerIdName, object innerIdValue, string outerIdName, object outerIdValue)
         {
             if (!Object.Equals(innerIdValue, outerIdValue))
@@ -363,6 +472,17 @@ namespace Dddml.Wms.Domain.Shipment
         private ShipmentItemStateMergePatched NewShipmentItemStateMergePatched(ShipmentItemStateEventId stateEventId)
 		{
 			return new ShipmentItemStateMergePatched(stateEventId);
+		}
+
+
+		private ShipmentReceiptStateCreated NewShipmentReceiptStateCreated(ShipmentReceiptStateEventId stateEventId)
+		{
+			return new ShipmentReceiptStateCreated(stateEventId);
+		}
+
+        private ShipmentReceiptStateMergePatched NewShipmentReceiptStateMergePatched(ShipmentReceiptStateEventId stateEventId)
+		{
+			return new ShipmentReceiptStateMergePatched(stateEventId);
 		}
 
 

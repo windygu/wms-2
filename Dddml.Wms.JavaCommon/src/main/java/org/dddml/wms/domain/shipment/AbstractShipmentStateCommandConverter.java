@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 
-public abstract class AbstractShipmentStateCommandConverter<TCreateShipment extends ShipmentCommand.CreateShipment, TMergePatchShipment extends ShipmentCommand.MergePatchShipment, TDeleteShipment extends ShipmentCommand.DeleteShipment, TCreateShipmentItem extends ShipmentItemCommand.CreateShipmentItem, TMergePatchShipmentItem extends ShipmentItemCommand.MergePatchShipmentItem, TRemoveShipmentItem extends ShipmentItemCommand.RemoveShipmentItem>
+public abstract class AbstractShipmentStateCommandConverter<TCreateShipment extends ShipmentCommand.CreateShipment, TMergePatchShipment extends ShipmentCommand.MergePatchShipment, TDeleteShipment extends ShipmentCommand.DeleteShipment, TCreateShipmentItem extends ShipmentItemCommand.CreateShipmentItem, TMergePatchShipmentItem extends ShipmentItemCommand.MergePatchShipmentItem, TRemoveShipmentItem extends ShipmentItemCommand.RemoveShipmentItem, TCreateShipmentReceipt extends ShipmentReceiptCommand.CreateShipmentReceipt, TMergePatchShipmentReceipt extends ShipmentReceiptCommand.MergePatchShipmentReceipt, TRemoveShipmentReceipt extends ShipmentReceiptCommand.RemoveShipmentReceipt>
 {
     public ShipmentCommand toCreateOrMergePatchShipment(ShipmentState state)
     {
@@ -93,6 +93,11 @@ public abstract class AbstractShipmentStateCommandConverter<TCreateShipment exte
             ShipmentItemCommand c = getShipmentItemStateCommandConverter().toCreateOrMergePatchShipmentItem(d);
             cmd.getShipmentItemCommands().add(c);
         }
+        for (ShipmentReceiptState d : state.getShipmentReceipts())
+        {
+            ShipmentReceiptCommand c = getShipmentReceiptStateCommandConverter().toCreateOrMergePatchShipmentReceipt(d);
+            cmd.getShipmentReceiptCommands().add(c);
+        }
         return cmd;
     }
 
@@ -132,11 +137,19 @@ public abstract class AbstractShipmentStateCommandConverter<TCreateShipment exte
             ShipmentItemCommand.CreateShipmentItem c = getShipmentItemStateCommandConverter().toCreateShipmentItem(d);
             cmd.getShipmentItems().add(c);
         }
+        for (ShipmentReceiptState d : state.getShipmentReceipts())
+        {
+            ShipmentReceiptCommand.CreateShipmentReceipt c = getShipmentReceiptStateCommandConverter().toCreateShipmentReceipt(d);
+            cmd.getShipmentReceipts().add(c);
+        }
         return cmd;
     }
 
     protected abstract AbstractShipmentItemStateCommandConverter<TCreateShipmentItem, TMergePatchShipmentItem, TRemoveShipmentItem>
         getShipmentItemStateCommandConverter();
+
+    protected abstract AbstractShipmentReceiptStateCommandConverter<TCreateShipmentReceipt, TMergePatchShipmentReceipt, TRemoveShipmentReceipt>
+        getShipmentReceiptStateCommandConverter();
 
     protected abstract TCreateShipment newCreateShipment();
 
@@ -144,7 +157,7 @@ public abstract class AbstractShipmentStateCommandConverter<TCreateShipment exte
 
     protected abstract TDeleteShipment newDeleteShipment();
 
-    public static class SimpleShipmentStateCommandConverter extends AbstractShipmentStateCommandConverter<AbstractShipmentCommand.SimpleCreateShipment, AbstractShipmentCommand.SimpleMergePatchShipment, AbstractShipmentCommand.SimpleDeleteShipment, AbstractShipmentItemCommand.SimpleCreateShipmentItem, AbstractShipmentItemCommand.SimpleMergePatchShipmentItem, AbstractShipmentItemCommand.SimpleRemoveShipmentItem>
+    public static class SimpleShipmentStateCommandConverter extends AbstractShipmentStateCommandConverter<AbstractShipmentCommand.SimpleCreateShipment, AbstractShipmentCommand.SimpleMergePatchShipment, AbstractShipmentCommand.SimpleDeleteShipment, AbstractShipmentItemCommand.SimpleCreateShipmentItem, AbstractShipmentItemCommand.SimpleMergePatchShipmentItem, AbstractShipmentItemCommand.SimpleRemoveShipmentItem, AbstractShipmentReceiptCommand.SimpleCreateShipmentReceipt, AbstractShipmentReceiptCommand.SimpleMergePatchShipmentReceipt, AbstractShipmentReceiptCommand.SimpleRemoveShipmentReceipt>
     {
         @Override
         protected AbstractShipmentCommand.SimpleCreateShipment newCreateShipment() {
@@ -165,6 +178,12 @@ public abstract class AbstractShipmentStateCommandConverter<TCreateShipment exte
         protected AbstractShipmentItemStateCommandConverter<AbstractShipmentItemCommand.SimpleCreateShipmentItem, AbstractShipmentItemCommand.SimpleMergePatchShipmentItem, AbstractShipmentItemCommand.SimpleRemoveShipmentItem> getShipmentItemStateCommandConverter()
         {
             return new AbstractShipmentItemStateCommandConverter.SimpleShipmentItemStateCommandConverter();
+        }
+
+        @Override
+        protected AbstractShipmentReceiptStateCommandConverter<AbstractShipmentReceiptCommand.SimpleCreateShipmentReceipt, AbstractShipmentReceiptCommand.SimpleMergePatchShipmentReceipt, AbstractShipmentReceiptCommand.SimpleRemoveShipmentReceipt> getShipmentReceiptStateCommandConverter()
+        {
+            return new AbstractShipmentReceiptStateCommandConverter.SimpleShipmentReceiptStateCommandConverter();
         }
 
 

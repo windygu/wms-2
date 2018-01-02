@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.Shipment
 	public partial class ShipmentStateDtoWrapper : StateDtoWrapperBase, IShipmentStateDto, IShipmentState
 	{
 
-        internal static IList<string> _collectionFieldNames = new string[] { "ShipmentItems" };
+        internal static IList<string> _collectionFieldNames = new string[] { "ShipmentItems", "ShipmentReceipts" };
 
         protected override bool IsCollectionField(string fieldName)
         {
@@ -981,6 +981,52 @@ namespace Dddml.Wms.Domain.Shipment
             set { _state.ShipmentItems = value; }
         }
 
+        public virtual IShipmentReceiptStateDto[] ShipmentReceipts
+        {
+            get 
+            {
+                if (!(this as IStateDtoWrapper).ReturnedFieldsContains("ShipmentReceipts"))
+                {
+                    return null;
+                }
+                var dtos = new List<IShipmentReceiptStateDto>();
+                if (this._state.ShipmentReceipts != null)
+                {
+                    foreach (var s in this._state.ShipmentReceipts)
+                    {
+                        var dto = new ShipmentReceiptStateDtoWrapper((ShipmentReceiptState)s);
+                        var returnFS = CollectionUtils.DictionaryGetValueIgnoringCase(ReturnedFields, "ShipmentReceipts");
+                        if (!String.IsNullOrWhiteSpace(returnFS))
+                        {
+                            (dto as IStateDtoWrapper).ReturnedFieldsString = returnFS;
+                        }
+                        else
+                        {
+                            (dto as IStateDtoWrapper).AllFieldsReturned = this.AllFieldsReturned;
+                        }
+                        dtos.Add(dto);
+                    }
+                }
+                return dtos.ToArray();
+            }
+            set 
+            {
+                if (value == null) { value = new ShipmentReceiptStateDtoWrapper[0]; }
+                var states = new List<IShipmentReceiptState>();
+                foreach (var s in value)
+                {
+                    states.Add(s.ToShipmentReceiptState());
+                }
+                this._state.ShipmentReceipts = new DtoShipmentReceiptStates(this._state, states);
+            }
+        }
+
+        IShipmentReceiptStates IShipmentState.ShipmentReceipts
+        {
+            get { return _state.ShipmentReceipts; }
+            set { _state.ShipmentReceipts = value; }
+        }
+
 		void IShipmentState.When(IShipmentStateCreated e)
 		{
             throw new NotSupportedException();
@@ -1062,6 +1108,67 @@ namespace Dddml.Wms.Domain.Shipment
             }
 
             public void AddToSave(IShipmentItemState state)
+            {
+                throw new NotSupportedException();
+            }
+
+            public void Save()
+            {
+                throw new NotSupportedException();
+            }
+        }
+
+        public class DtoShipmentReceiptStates : IShipmentReceiptStates
+        {
+
+            private IShipmentState _outerState;
+
+            private IEnumerable<IShipmentReceiptState> _innerStates;
+
+            public DtoShipmentReceiptStates(IShipmentState outerState, IEnumerable<IShipmentReceiptState> innerStates)
+            {
+                this._outerState = outerState;
+                if (innerStates == null)
+                {
+                    this._innerStates = new IShipmentReceiptState[] { };
+                }
+                else
+                {
+                    this._innerStates = innerStates;
+                }
+            }
+
+            public IEnumerator<IShipmentReceiptState> GetEnumerator()
+            {
+                return _innerStates.GetEnumerator();
+            }
+
+            System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+            {
+                return _innerStates.GetEnumerator();
+            }
+
+            public IShipmentReceiptState Get(string receiptSeqId)
+            {
+                throw new NotSupportedException();
+            }
+
+            public IShipmentReceiptState Get(string receiptSeqId, bool forCreation)
+            {
+                throw new NotSupportedException();
+            }
+
+            public IShipmentReceiptState Get(string receiptSeqId, bool forCreation, bool nullAllowed)
+            {
+                throw new NotSupportedException();
+            }
+
+            public void Remove(IShipmentReceiptState state)
+            {
+                throw new NotSupportedException();
+            }
+
+            public void AddToSave(IShipmentReceiptState state)
             {
                 throw new NotSupportedException();
             }

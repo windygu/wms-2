@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+				   assembly="Dddml.Wms.Common" 
+				   namespace="Dddml.Wms.Domain.ShipmentReceiptMvo">
+  
+  <class name="Dddml.Wms.Domain.ShipmentReceiptMvo.ShipmentReceiptMvoState" table="ShipmentReceipt_RV">
+
+    <composite-id name="ShipmentReceiptId" class="Dddml.Wms.Domain.Shipment.ShipmentReceiptId">
+        <key-property name="ShipmentId" ><column name="ShipmentReceiptIdShipmentId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="ReceiptSeqId" ><column name="ShipmentReceiptIdReceiptSeqId" sql-type="VARCHAR(20)" /></key-property>
+    </composite-id>
+
+	<version name="ShipmentVersion" column="ShipmentVersion" type="long" unsaved-value="0"/>
+
+    <property name="ProductId" ><column name="ProductId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentItemSeqId" ><column name="ShipmentItemSeqId" sql-type="VARCHAR(20)" /></property>
+    <property name="RejectionId" ><column name="RejectionId" sql-type="VARCHAR(20)" /></property>
+    <property name="ItemDescription" ><column name="ItemDescription" sql-type="VARCHAR(255)" /></property>
+    <property name="AcceptedQuantity" ><column name="AcceptedQuantity" sql-type="DECIMAL(18,6)" /></property>
+    <property name="RejectedQuantity" ><column name="RejectedQuantity" sql-type="DECIMAL(18,6)" /></property>
+    <property name="Version" ></property>
+    <property name="CreatedBy" ></property>
+    <property name="UpdatedBy" ></property>
+    <property name="Active" ></property>
+    <property name="ShipmentShipmentTypeId" ><column name="ShipmentShipmentTypeId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentStatusId" ><column name="ShipmentStatusId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentPrimaryOrderId" ><column name="ShipmentPrimaryOrderId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentPrimaryReturnId" ><column name="ShipmentPrimaryReturnId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentPicklistBinId" ><column name="ShipmentPicklistBinId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentEstimatedReadyDate" ><column name="ShipmentEstimatedReadyDate" sql-type="DATETIME" /></property>
+    <property name="ShipmentEstimatedShipDate" ><column name="ShipmentEstimatedShipDate" sql-type="DATETIME" /></property>
+    <property name="ShipmentEstimatedShipWorkEffId" ><column name="ShipmentEstimatedShipWorkEffId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentEstimatedArrivalDate" ><column name="ShipmentEstimatedArrivalDate" sql-type="DATETIME" /></property>
+    <property name="ShipmentEstimatedArrivalWorkEffId" ><column name="ShipmentEstimatedArrivalWorkEffId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentLatestCancelDate" ><column name="ShipmentLatestCancelDate" sql-type="DATETIME" /></property>
+    <property name="ShipmentEstimatedShipCost" ><column name="ShipmentEstimatedShipCost" sql-type="DECIMAL(18,2)" /></property>
+    <property name="ShipmentCurrencyUomId" ><column name="ShipmentCurrencyUomId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentHandlingInstructions" ><column name="ShipmentHandlingInstructions" sql-type="VARCHAR(255)" /></property>
+    <property name="ShipmentOriginFacilityId" ><column name="ShipmentOriginFacilityId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentDestinationFacilityId" ><column name="ShipmentDestinationFacilityId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentOriginContactMechId" ><column name="ShipmentOriginContactMechId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentOriginTelecomNumberId" ><column name="ShipmentOriginTelecomNumberId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentDestinationContactMechId" ><column name="ShipmentDestinationContactMechId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentDestinationTelecomNumberId" ><column name="ShipmentDestinationTelecomNumberId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentPartyIdTo" ><column name="ShipmentPartyIdTo" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentPartyIdFrom" ><column name="ShipmentPartyIdFrom" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentAdditionalShippingCharge" ><column name="ShipmentAdditionalShippingCharge" sql-type="DECIMAL(18,2)" /></property>
+    <property name="ShipmentAddtlShippingChargeDesc" ><column name="ShipmentAddtlShippingChargeDesc" sql-type="VARCHAR(255)" /></property>
+    <property name="ShipmentCreatedBy" ></property>
+    <property name="ShipmentCreatedAt" ></property>
+    <property name="ShipmentUpdatedBy" ></property>
+    <property name="ShipmentUpdatedAt" ></property>
+    <property name="ShipmentActive" ></property>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+
+    <property name="UpdatedAt" column="UpdatedAt" type="DateTimeUtc"/>
+
+
+  </class>
+  
+</hibernate-mapping>
+

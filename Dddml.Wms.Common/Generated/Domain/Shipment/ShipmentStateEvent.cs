@@ -157,6 +157,33 @@ namespace Dddml.Wms.Domain.Shipment
 		}
 
 
+		protected IShipmentReceiptStateEventDao ShipmentReceiptStateEventDao
+		{
+			get { return ApplicationContext.Current["ShipmentReceiptStateEventDao"] as IShipmentReceiptStateEventDao; }
+		}
+
+        protected ShipmentReceiptStateEventId NewShipmentReceiptStateEventId(string receiptSeqId)
+        {
+            var stateEventId = new ShipmentReceiptStateEventId(this.StateEventId.ShipmentId, receiptSeqId, this.StateEventId.Version);
+            return stateEventId;
+        }
+
+
+        protected void ThrowOnInconsistentEventIds(IShipmentReceiptStateEvent e)
+        {
+            ThrowOnInconsistentEventIds(this, e);
+        }
+
+		public static void ThrowOnInconsistentEventIds(IShipmentStateEvent oe, IShipmentReceiptStateEvent e)
+		{
+			if (!oe.StateEventId.ShipmentId.Equals(e.StateEventId.ShipmentId))
+			{ 
+				throw DomainError.Named("inconsistentEventIds", "Outer Id ShipmentId {0} but inner id ShipmentId {1}", 
+					oe.StateEventId.ShipmentId, e.StateEventId.ShipmentId);
+			}
+		}
+
+
 
         string IStateEventDto.StateEventType
         {
@@ -227,10 +254,63 @@ namespace Dddml.Wms.Domain.Shipment
             return stateEvent;
         }
 
+		private Dictionary<ShipmentReceiptStateEventId, IShipmentReceiptStateCreated> _shipmentReceiptEvents = new Dictionary<ShipmentReceiptStateEventId, IShipmentReceiptStateCreated>();
+        
+        private IEnumerable<IShipmentReceiptStateCreated> _readOnlyShipmentReceiptEvents;
+
+        public virtual IEnumerable<IShipmentReceiptStateCreated> ShipmentReceiptEvents
+        {
+            get
+            {
+                if (!StateEventReadOnly)
+                {
+                    return this._shipmentReceiptEvents.Values;
+                }
+                else
+                {
+                    if (_readOnlyShipmentReceiptEvents != null) { return _readOnlyShipmentReceiptEvents; }
+                    var eventDao = ShipmentReceiptStateEventDao;
+                    var eL = new List<IShipmentReceiptStateCreated>();
+                    foreach (var e in eventDao.FindByShipmentStateEventId(this.StateEventId))
+                    {
+                        e.ReadOnly = true;
+                        eL.Add((IShipmentReceiptStateCreated)e);
+                    }
+                    return (_readOnlyShipmentReceiptEvents = eL);
+                }
+            }
+            set 
+            {
+                if (value != null)
+                {
+                    foreach (var e in value)
+                    {
+                        AddShipmentReceiptEvent(e);
+                    }
+                }
+                else { this._shipmentReceiptEvents.Clear(); }
+            }
+        }
+    
+		public virtual void AddShipmentReceiptEvent(IShipmentReceiptStateCreated e)
+		{
+			ThrowOnInconsistentEventIds(e);
+			this._shipmentReceiptEvents[e.StateEventId] = e;
+		}
+
+        public virtual IShipmentReceiptStateCreated NewShipmentReceiptStateCreated(string receiptSeqId)
+        {
+            var stateEvent = new ShipmentReceiptStateCreated(NewShipmentReceiptStateEventId(receiptSeqId));
+            return stateEvent;
+        }
+
 		public virtual void Save ()
 		{
 			foreach (IShipmentItemStateCreated e in this.ShipmentItemEvents) {
 				ShipmentItemStateEventDao.Save(e);
+			}
+			foreach (IShipmentReceiptStateCreated e in this.ShipmentReceiptEvents) {
+				ShipmentReceiptStateEventDao.Save(e);
 			}
 		}
 
@@ -359,10 +439,69 @@ namespace Dddml.Wms.Domain.Shipment
             return stateEvent;
         }
 
+		private Dictionary<ShipmentReceiptStateEventId, IShipmentReceiptStateEvent> _shipmentReceiptEvents = new Dictionary<ShipmentReceiptStateEventId, IShipmentReceiptStateEvent>();
+
+        private IEnumerable<IShipmentReceiptStateEvent> _readOnlyShipmentReceiptEvents;
+        
+        public virtual IEnumerable<IShipmentReceiptStateEvent> ShipmentReceiptEvents
+        {
+            get
+            {
+                if (!StateEventReadOnly)
+                {
+                    return this._shipmentReceiptEvents.Values;
+                }
+                else
+                {
+                    if (_readOnlyShipmentReceiptEvents != null) { return _readOnlyShipmentReceiptEvents; }
+                    var eventDao = ShipmentReceiptStateEventDao;
+                    var eL = new List<IShipmentReceiptStateEvent>();
+                    foreach (var e in eventDao.FindByShipmentStateEventId(this.StateEventId))
+                    {
+                        e.ReadOnly = true;
+                        eL.Add((IShipmentReceiptStateEvent)e);
+                    }
+                    return (_readOnlyShipmentReceiptEvents = eL);
+                }
+            }
+            set 
+            {
+                if (value != null)
+                {
+                    foreach (var e in value)
+                    {
+                        AddShipmentReceiptEvent(e);
+                    }
+                }
+                else { this._shipmentReceiptEvents.Clear(); }
+            }
+        }
+
+		public virtual void AddShipmentReceiptEvent(IShipmentReceiptStateEvent e)
+		{
+			ThrowOnInconsistentEventIds(e);
+			this._shipmentReceiptEvents[e.StateEventId] = e;
+		}
+
+        public virtual IShipmentReceiptStateCreated NewShipmentReceiptStateCreated(string receiptSeqId)
+        {
+            var stateEvent = new ShipmentReceiptStateCreated(NewShipmentReceiptStateEventId(receiptSeqId));
+            return stateEvent;
+        }
+
+        public virtual IShipmentReceiptStateMergePatched NewShipmentReceiptStateMergePatched(string receiptSeqId)
+        {
+            var stateEvent = new ShipmentReceiptStateMergePatched(NewShipmentReceiptStateEventId(receiptSeqId));
+            return stateEvent;
+        }
+
 		public virtual void Save ()
 		{
 			foreach (IShipmentItemStateEvent e in this.ShipmentItemEvents) {
 				ShipmentItemStateEventDao.Save(e);
+			}
+			foreach (IShipmentReceiptStateEvent e in this.ShipmentReceiptEvents) {
+				ShipmentReceiptStateEventDao.Save(e);
 			}
 		}
 

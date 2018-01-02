@@ -206,6 +206,12 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
+        IShipmentReceiptStateDto[] ShipmentReceipts
+        {
+            get;
+            set;
+        }
+
         IShipmentState ToShipmentState();
 
     }

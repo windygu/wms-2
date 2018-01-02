@@ -23,6 +23,7 @@
                 dict.Add("ProductCategoryMemberId", "_PRODUCTCATEGORYMEMBERID_");
                 dict.Add("SellableInventoryItemEntryId", "_SELLABLEINVENTORYITEMENTRYID_");
                 dict.Add("ShipmentItemId", "_SHIPMENTITEMID_");
+                dict.Add("ShipmentReceiptId", "_SHIPMENTRECEIPTID_");
                 dict.Add("SupplierProductId", "_SUPPLIERPRODUCTID_");
                 dict.Add("UomConversionId", "_UOMCONVERSIONID_");
 // //////////////////////
@@ -64,6 +65,7 @@
                 dict.Add("ProductCategory", "_PRODUCTCATEGORY_");
                 dict.Add("SellableInventoryItemEntry", "_SELLABLEINVENTORYITEMENTRY_");
                 dict.Add("ShipmentItem", "_SHIPMENTITEM_");
+                dict.Add("ShipmentReceipt", "_SHIPMENTRECEIPT_");
                 dict.Add("short-varchar", "_SHORT-VARCHAR_");
                 dict.Add("string", "_STRING_");
                 dict.Add("url", "_URL_");

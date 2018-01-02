@@ -130,3 +130,14 @@ prepare stmt from @var;
 execute stmt;
 deallocate prepare stmt;
 
+set @var=if((SELECT true FROM information_schema.TABLE_CONSTRAINTS WHERE
+            CONSTRAINT_SCHEMA = DATABASE() AND
+            TABLE_NAME        = 'ShipmentReceipts' AND
+            CONSTRAINT_NAME   = 'FK_ShipmentReceipt_Shipment_StateId' AND
+            CONSTRAINT_TYPE   = 'FOREIGN KEY') = true,'ALTER TABLE ShipmentReceipts
+            drop foreign key FK_ShipmentReceipt_Shipment_StateId','select 1');
+
+prepare stmt from @var;
+execute stmt;
+deallocate prepare stmt;
+

@@ -82,6 +82,10 @@ namespace Dddml.Wms.Domain.Shipment
 
         ICreateShipmentItem NewCreateShipmentItem();
 
+        ICreateShipmentReceiptCommands ShipmentReceipts { get; }
+
+        ICreateShipmentReceipt NewCreateShipmentReceipt();
+
 	}
 
 	public interface IMergePatchShipment : ICreateOrMergePatchOrDeleteShipment
@@ -145,6 +149,14 @@ namespace Dddml.Wms.Domain.Shipment
 
         IRemoveShipmentItem NewRemoveShipmentItem();
 
+        IShipmentReceiptCommands ShipmentReceiptCommands { get; }
+
+        ICreateShipmentReceipt NewCreateShipmentReceipt();
+
+        IMergePatchShipmentReceipt NewMergePatchShipmentReceipt();
+
+        IRemoveShipmentReceipt NewRemoveShipmentReceipt();
+
 
 	}
 
@@ -167,6 +179,26 @@ namespace Dddml.Wms.Domain.Shipment
         void Add(IShipmentItemCommand c);
 
         void Remove(IShipmentItemCommand c);
+
+        void Clear();
+
+    }
+
+    public interface ICreateShipmentReceiptCommands : IEnumerable<ICreateShipmentReceipt>
+    {
+        void Add(ICreateShipmentReceipt c);
+
+        void Remove(ICreateShipmentReceipt c);
+
+        void Clear();
+
+    }
+
+    public interface IShipmentReceiptCommands : IEnumerable<IShipmentReceiptCommand>
+    {
+        void Add(IShipmentReceiptCommand c);
+
+        void Remove(IShipmentReceiptCommand c);
 
         void Clear();
 

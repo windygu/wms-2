@@ -77,6 +77,12 @@ namespace Dddml.Wms.Domain.Shipment
 
 		IShipmentItemStateCreated NewShipmentItemStateCreated(string shipmentItemSeqId);
 
+		IEnumerable<IShipmentReceiptStateCreated> ShipmentReceiptEvents { get; }
+		
+		void AddShipmentReceiptEvent(IShipmentReceiptStateCreated e);
+
+		IShipmentReceiptStateCreated NewShipmentReceiptStateCreated(string receiptSeqId);
+
 	
 	}
 
@@ -140,6 +146,14 @@ namespace Dddml.Wms.Domain.Shipment
 		IShipmentItemStateCreated NewShipmentItemStateCreated(string shipmentItemSeqId);
 
 		IShipmentItemStateMergePatched NewShipmentItemStateMergePatched(string shipmentItemSeqId);
+
+		IEnumerable<IShipmentReceiptStateEvent> ShipmentReceiptEvents { get; }
+		
+		void AddShipmentReceiptEvent(IShipmentReceiptStateEvent e);
+
+		IShipmentReceiptStateCreated NewShipmentReceiptStateCreated(string receiptSeqId);
+
+		IShipmentReceiptStateMergePatched NewShipmentReceiptStateMergePatched(string receiptSeqId);
 
 
 	}

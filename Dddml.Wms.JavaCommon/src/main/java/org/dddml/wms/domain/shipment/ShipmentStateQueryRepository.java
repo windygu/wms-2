@@ -28,5 +28,7 @@ public interface ShipmentStateQueryRepository
 
     ShipmentItemState getShipmentItem(String shipmentId, String shipmentItemSeqId);
 
+    ShipmentReceiptState getShipmentReceipt(String shipmentId, String receiptSeqId);
+
 }
 

@@ -70,6 +70,14 @@ namespace Dddml.Wms.Domain.Shipment
             }
             dto.ShipmentItemEvents = shipmentItemEvents.ToArray();
 
+            var shipmentReceiptEvents = new List<ShipmentReceiptStateCreatedDto>();
+            foreach (var ee in e.ShipmentReceiptEvents)
+            {
+                ShipmentReceiptStateCreatedDto eeDto = ShipmentReceiptStateEventDtoConverter.ToShipmentReceiptStateCreatedDto(ee);
+                shipmentReceiptEvents.Add(eeDto);
+            }
+            dto.ShipmentReceiptEvents = shipmentReceiptEvents.ToArray();
+
             return dto;
         }
 
@@ -138,6 +146,14 @@ namespace Dddml.Wms.Domain.Shipment
             }
             dto.ShipmentItemEvents = shipmentItemEvents.ToArray();
 
+            var shipmentReceiptEvents = new List<ShipmentReceiptStateCreatedOrMergePatchedOrRemovedDto>();
+            foreach (var ee in e.ShipmentReceiptEvents)
+            {
+                ShipmentReceiptStateCreatedOrMergePatchedOrRemovedDto eeDto = ShipmentReceiptStateEventDtoConverter.ToShipmentReceiptStateEventDto(ee);
+                shipmentReceiptEvents.Add(eeDto);
+            }
+            dto.ShipmentReceiptEvents = shipmentReceiptEvents.ToArray();
+
 
             return dto;
         }
@@ -148,6 +164,14 @@ namespace Dddml.Wms.Domain.Shipment
             get
             {
                 return new ShipmentItemStateEventDtoConverter();
+            }
+        }
+
+        protected virtual ShipmentReceiptStateEventDtoConverter ShipmentReceiptStateEventDtoConverter
+        {
+            get
+            {
+                return new ShipmentReceiptStateEventDtoConverter();
             }
         }
 

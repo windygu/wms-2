@@ -197,6 +197,9 @@
     <Compile Include="Generated\ShipmentItemMvoApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\ShipmentReceiptMvoApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\ShipmentTypeApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
@@ -268,6 +271,7 @@
 .\SellableInventoryItemEntryMvoApplicationServiceProxy.cs
 .\ShipmentApplicationServiceProxy.cs
 .\ShipmentItemMvoApplicationServiceProxy.cs
+.\ShipmentReceiptMvoApplicationServiceProxy.cs
 .\ShipmentTypeApplicationServiceProxy.cs
 .\StatusItemApplicationServiceProxy.cs
 .\SupplierProductApplicationServiceProxy.cs

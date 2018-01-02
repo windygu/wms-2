@@ -165,6 +165,11 @@ namespace Dddml.Wms.Domain.Shipment
             return StateQueryRepository.GetShipmentItem(shipmentId, shipmentItemSeqId);
         }
 
+        public virtual IShipmentReceiptState GetShipmentReceipt(string shipmentId, string receiptSeqId)
+        {
+            return StateQueryRepository.GetShipmentReceipt(shipmentId, receiptSeqId);
+        }
+
 
 		public abstract IShipmentAggregate GetShipmentAggregate(IShipmentState state);
 

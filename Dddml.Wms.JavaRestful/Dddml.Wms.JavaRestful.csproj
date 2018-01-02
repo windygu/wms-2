@@ -112,6 +112,7 @@
 .\SellableInventoryItemEntryMvoResource.java
 .\SellableInventoryItemResource.java
 .\ShipmentItemMvoResource.java
+.\ShipmentReceiptMvoResource.java
 .\ShipmentResource.java
 .\ShipmentTypeResource.java
 .\StatusItemResource.java
@@ -238,6 +239,9 @@
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\ShipmentItemMvoResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\ShipmentReceiptMvoResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\ShipmentResource.java">

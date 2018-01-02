@@ -653,6 +653,81 @@ namespace Dddml.Wms.Domain.Shipment
             }
         }
 
+        ICreateShipmentReceiptCommands ICreateShipment.ShipmentReceipts
+        {
+            get
+            {
+                return this._shipmentReceipts;
+            }
+        }
+
+        IShipmentReceiptCommands IMergePatchShipment.ShipmentReceiptCommands
+        {
+            get
+            {
+                return this._shipmentReceipts;
+            }
+        }
+
+        public virtual CreateShipmentReceiptDto NewCreateShipmentReceipt()
+        {
+            var c = new CreateShipmentReceiptDto();
+            c.ShipmentId = this.ShipmentId;
+
+            return c;
+        }
+
+        ICreateShipmentReceipt ICreateShipment.NewCreateShipmentReceipt()
+        {
+            return this.NewCreateShipmentReceipt();
+        }
+
+        ICreateShipmentReceipt IMergePatchShipment.NewCreateShipmentReceipt()
+        {
+            return this.NewCreateShipmentReceipt();
+        }
+
+        public virtual MergePatchShipmentReceiptDto NewMergePatchShipmentReceipt()
+        {
+            var c = new MergePatchShipmentReceiptDto();
+            c.ShipmentId = this.ShipmentId;
+
+            return c;
+        }
+
+        IMergePatchShipmentReceipt IMergePatchShipment.NewMergePatchShipmentReceipt()
+        {
+            return this.NewMergePatchShipmentReceipt();
+        }
+
+        public virtual RemoveShipmentReceiptDto NewRemoveShipmentReceipt()
+        {
+            var c = new RemoveShipmentReceiptDto();
+            c.ShipmentId = this.ShipmentId;
+
+            return c;
+        }
+
+        IRemoveShipmentReceipt IMergePatchShipment.NewRemoveShipmentReceipt()
+        {
+            return this.NewRemoveShipmentReceipt();
+        }
+
+        private CreateOrMergePatchOrRemoveShipmentReceiptDtos _shipmentReceipts = new CreateOrMergePatchOrRemoveShipmentReceiptDtos();
+
+        public virtual CreateOrMergePatchOrRemoveShipmentReceiptDto[] ShipmentReceipts
+        {
+            get
+            {
+                return _shipmentReceipts.ToArray();
+            }
+            set
+            {
+                _shipmentReceipts.Clear();
+                _shipmentReceipts.AddRange(value);
+            }
+        }
+
 
         string ICommandDto.CommandType 
         {

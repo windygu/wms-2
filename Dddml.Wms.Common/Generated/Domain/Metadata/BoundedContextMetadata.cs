@@ -76,6 +76,7 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNames.Add("PhysicalInventoryLineMvo");
             _aggregateNames.Add("SellableInventoryItemEntryMvo");
             _aggregateNames.Add("ShipmentItemMvo");
+            _aggregateNames.Add("ShipmentReceiptMvo");
 
             _aggregateNamespaces = new Dictionary<string, string>();
             _aggregateNamespaces.Add("Attribute", "Dddml.Wms.Domain.Attribute");
@@ -124,6 +125,7 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNamespaces.Add("PhysicalInventoryLineMvo", "Dddml.Wms.Domain.PhysicalInventoryLineMvo");
             _aggregateNamespaces.Add("SellableInventoryItemEntryMvo", "Dddml.Wms.Domain.SellableInventoryItemEntryMvo");
             _aggregateNamespaces.Add("ShipmentItemMvo", "Dddml.Wms.Domain.ShipmentItemMvo");
+            _aggregateNamespaces.Add("ShipmentReceiptMvo", "Dddml.Wms.Domain.ShipmentReceiptMvo");
         }
 
     }

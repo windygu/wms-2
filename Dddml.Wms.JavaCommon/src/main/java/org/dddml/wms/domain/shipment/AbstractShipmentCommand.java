@@ -358,6 +358,30 @@ public abstract class AbstractShipmentCommand extends AbstractCommand implements
             return c;
         }
 
+        public ShipmentReceiptCommand.CreateShipmentReceipt newCreateShipmentReceipt()
+        {
+            AbstractShipmentReceiptCommand.SimpleCreateShipmentReceipt c = new AbstractShipmentReceiptCommand.SimpleCreateShipmentReceipt();
+            c.setShipmentId(this.getShipmentId());
+
+            return c;
+        }
+
+        public ShipmentReceiptCommand.MergePatchShipmentReceipt newMergePatchShipmentReceipt()
+        {
+            AbstractShipmentReceiptCommand.SimpleMergePatchShipmentReceipt c = new AbstractShipmentReceiptCommand.SimpleMergePatchShipmentReceipt();
+            c.setShipmentId(this.getShipmentId());
+
+            return c;
+        }
+
+        public ShipmentReceiptCommand.RemoveShipmentReceipt newRemoveShipmentReceipt()
+        {
+            AbstractShipmentReceiptCommand.SimpleRemoveShipmentReceipt c = new AbstractShipmentReceiptCommand.SimpleRemoveShipmentReceipt();
+            c.setShipmentId(this.getShipmentId());
+
+            return c;
+        }
+
     }
 
     public static abstract class AbstractCreateShipment extends AbstractCreateOrMergePatchShipment implements CreateShipment
@@ -372,6 +396,13 @@ public abstract class AbstractShipmentCommand extends AbstractCommand implements
         public CreateShipmentItemCommands getShipmentItems()
         {
             return this.shipmentItems;
+        }
+
+        private CreateShipmentReceiptCommands shipmentReceipts = new SimpleCreateShipmentReceiptCommands();
+
+        public CreateShipmentReceiptCommands getShipmentReceipts()
+        {
+            return this.shipmentReceipts;
         }
 
     }
@@ -690,6 +721,13 @@ public abstract class AbstractShipmentCommand extends AbstractCommand implements
             return this.shipmentItemCommands;
         }
 
+        private ShipmentReceiptCommands shipmentReceiptCommands = new SimpleShipmentReceiptCommands();
+
+        public ShipmentReceiptCommands getShipmentReceiptCommands()
+        {
+            return this.shipmentReceiptCommands;
+        }
+
     }
 
     public static class SimpleCreateShipment extends AbstractCreateShipment
@@ -758,6 +796,58 @@ public abstract class AbstractShipmentCommand extends AbstractCommand implements
 
         @Override
         public Iterator<ShipmentItemCommand> iterator()
+        {
+            return innerCommands.iterator();
+        }
+    }
+
+    public static class SimpleCreateShipmentReceiptCommands implements CreateShipmentReceiptCommands
+    {
+        private List<ShipmentReceiptCommand.CreateShipmentReceipt> innerCommands = new ArrayList<ShipmentReceiptCommand.CreateShipmentReceipt>();
+
+        public void add(ShipmentReceiptCommand.CreateShipmentReceipt c)
+        {
+            innerCommands.add(c);
+        }
+
+        public void remove(ShipmentReceiptCommand.CreateShipmentReceipt c)
+        {
+            innerCommands.remove(c);
+        }
+
+        public void clear()
+        {
+            innerCommands.clear();
+        }
+
+        @Override
+        public Iterator<ShipmentReceiptCommand.CreateShipmentReceipt> iterator()
+        {
+            return innerCommands.iterator();
+        }
+    }
+
+    public static class SimpleShipmentReceiptCommands implements ShipmentReceiptCommands
+    {
+        private List<ShipmentReceiptCommand> innerCommands = new ArrayList<ShipmentReceiptCommand>();
+
+        public void add(ShipmentReceiptCommand c)
+        {
+            innerCommands.add(c);
+        }
+
+        public void remove(ShipmentReceiptCommand c)
+        {
+            innerCommands.remove(c);
+        }
+
+        public void clear()
+        {
+            innerCommands.clear();
+        }
+
+        @Override
+        public Iterator<ShipmentReceiptCommand> iterator()
         {
             return innerCommands.iterator();
         }

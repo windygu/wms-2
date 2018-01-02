@@ -188,6 +188,19 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = ShipmentsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{shipmentId}/ShipmentReceipts/{receiptSeqId}")]
+        [HttpGet]
+        public IShipmentReceiptStateDto GetShipmentReceipt(string shipmentId, string receiptSeqId)
+        {
+          try {
+            var state = (ShipmentReceiptState)_shipmentApplicationService.GetShipmentReceipt(shipmentId, receiptSeqId);
+            if (state == null) { return null; }
+            var stateDto = new ShipmentReceiptStateDtoWrapper(state);
+            stateDto.AllFieldsReturned = true;
+            return stateDto;
+          } catch (Exception ex) { var response = ShipmentsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
 
 		// /////////////////////////////////////////////////
 

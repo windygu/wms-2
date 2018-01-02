@@ -34,5 +34,7 @@ public interface ShipmentApplicationService
 
     ShipmentItemState getShipmentItem(String shipmentId, String shipmentItemSeqId);
 
+    ShipmentReceiptState getShipmentReceipt(String shipmentId, String receiptSeqId);
+
 }
 

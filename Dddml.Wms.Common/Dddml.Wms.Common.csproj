@@ -2455,6 +2455,12 @@
     <Compile Include="Generated\Domain\Metadata\ShipmentMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\Metadata\ShipmentReceiptMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Metadata\ShipmentReceiptMvoMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\Metadata\ShipmentTypeMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
@@ -4609,6 +4615,93 @@
     <Compile Include="Generated\Domain\ShipmentItemMvo\ShipmentItemMvoStateProperties.cs">
       <DependentUpon>GenerateShipmentItemMvoDomain.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\ShipmentReceiptMvo\IShipmentReceiptMvoAggregate.cs">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentReceiptMvo\IShipmentReceiptMvoApplicationService.cs">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentReceiptMvo\IShipmentReceiptMvoApplicationServiceFactory.cs">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentReceiptMvo\IShipmentReceiptMvoCommand.cs">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentReceiptMvo\IShipmentReceiptMvoState.cs">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentReceiptMvo\IShipmentReceiptMvoStateDto.cs">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentReceiptMvo\IShipmentReceiptMvoStateEvent.cs">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentReceiptMvo\IShipmentReceiptMvoStateProperties.cs">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentReceiptMvo\IShipmentReceiptMvoStateQueryRepository.cs">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentReceiptMvo\IShipmentReceiptMvoStateRepository.cs">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentReceiptMvo\ShipmentReceiptMvoAggregate.cs">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentReceiptMvo\ShipmentReceiptMvoApplicationServiceBase.cs">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentReceiptMvo\ShipmentReceiptMvoApplicationServiceFactory.cs">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentReceiptMvo\ShipmentReceiptMvoCommand.cs">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentReceiptMvo\ShipmentReceiptMvoCommandDto.cs">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentReceiptMvo\ShipmentReceiptMvoState.cs">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentReceiptMvo\ShipmentReceiptMvoStateDto.cs">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentReceiptMvo\ShipmentReceiptMvoStateDtoExtension.cs">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentReceiptMvo\ShipmentReceiptMvoStateDtoWrapper.cs">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentReceiptMvo\ShipmentReceiptMvoStateEvent.cs">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentReceiptMvo\ShipmentReceiptMvoStateEventDto.cs">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentReceiptMvo\ShipmentReceiptMvoStateEventDtoConverter.cs">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentReceiptMvo\ShipmentReceiptMvoStateEventId.cs">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentReceiptMvo\ShipmentReceiptMvoStateEventIdDto.cs">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentReceiptMvo\ShipmentReceiptMvoStateEventIdDtoWrapper.cs">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentReceiptMvo\ShipmentReceiptMvoStateEventIdFlattenedDto.cs">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentReceiptMvo\ShipmentReceiptMvoStateExtension.cs">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentReceiptMvo\ShipmentReceiptMvoStateInterfaceExtension.cs">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentReceiptMvo\ShipmentReceiptMvoStateProperties.cs">
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\ShipmentType\IShipmentTypeAggregate.cs">
       <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
     </Compile>
@@ -4732,6 +4825,30 @@
     <Compile Include="Generated\Domain\Shipment\IShipmentItemStates.cs">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\Shipment\IShipmentReceiptCommand.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\IShipmentReceiptState.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\IShipmentReceiptStateDao.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\IShipmentReceiptStateDto.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\IShipmentReceiptStateEvent.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\IShipmentReceiptStateEventDao.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\IShipmentReceiptStateProperties.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\IShipmentReceiptStates.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\Shipment\IShipmentState.cs">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Compile>
@@ -4826,6 +4943,69 @@
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Shipment\ShipmentItemStates.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptCommand.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptCommandDto.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptId.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptIdDto.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptIdDtoWrapper.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptIdFlattenedDto.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptState.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptStateDto.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptStateDtoExtension.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptStateDtoWrapper.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptStateEvent.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptStateEventDto.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptStateEventDtoConverter.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptStateEventId.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptStateEventIdDto.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptStateEventIdDtoWrapper.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptStateEventIdFlattenedDto.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptStateExtension.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptStateInterfaceExtension.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptStateProperties.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptStates.cs">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Shipment\ShipmentState.cs">
@@ -5635,6 +5815,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateShipmentItemMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\ShipmentReceiptMvo\GenerateShipmentReceiptMvoDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
     </Content>
     <Content Include="Generated\Domain\ShipmentType\GenerateShipmentTypeDomain.txt">
       <AutoGen>True</AutoGen>
@@ -6834,6 +7019,14 @@
 .\IShipmentItemStateEventDao.cs
 .\IShipmentItemStateProperties.cs
 .\IShipmentItemStates.cs
+.\IShipmentReceiptCommand.cs
+.\IShipmentReceiptState.cs
+.\IShipmentReceiptStateDao.cs
+.\IShipmentReceiptStateDto.cs
+.\IShipmentReceiptStateEvent.cs
+.\IShipmentReceiptStateEventDao.cs
+.\IShipmentReceiptStateProperties.cs
+.\IShipmentReceiptStates.cs
 .\IShipmentState.cs
 .\IShipmentStateDto.cs
 .\IShipmentStateEvent.cs
@@ -6866,6 +7059,27 @@
 .\ShipmentItemStateInterfaceExtension.cs
 .\ShipmentItemStateProperties.cs
 .\ShipmentItemStates.cs
+.\ShipmentReceiptCommand.cs
+.\ShipmentReceiptCommandDto.cs
+.\ShipmentReceiptId.cs
+.\ShipmentReceiptIdDto.cs
+.\ShipmentReceiptIdDtoWrapper.cs
+.\ShipmentReceiptIdFlattenedDto.cs
+.\ShipmentReceiptState.cs
+.\ShipmentReceiptStateDto.cs
+.\ShipmentReceiptStateDtoExtension.cs
+.\ShipmentReceiptStateDtoWrapper.cs
+.\ShipmentReceiptStateEvent.cs
+.\ShipmentReceiptStateEventDto.cs
+.\ShipmentReceiptStateEventDtoConverter.cs
+.\ShipmentReceiptStateEventId.cs
+.\ShipmentReceiptStateEventIdDto.cs
+.\ShipmentReceiptStateEventIdDtoWrapper.cs
+.\ShipmentReceiptStateEventIdFlattenedDto.cs
+.\ShipmentReceiptStateExtension.cs
+.\ShipmentReceiptStateInterfaceExtension.cs
+.\ShipmentReceiptStateProperties.cs
+.\ShipmentReceiptStates.cs
 .\ShipmentState.cs
 .\ShipmentStateDto.cs
 .\ShipmentStateDtoExtension.cs
@@ -7755,6 +7969,42 @@
 .\LotStateProperties.cs
 </LastOutputs>
     </Content>
+    <Content Include="Generated\Domain\ShipmentReceiptMvo\GenerateShipmentReceiptMvoDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateShipmentReceiptMvoDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateShipmentReceiptMvoDomain.txt
+.\IShipmentReceiptMvoAggregate.cs
+.\IShipmentReceiptMvoApplicationService.cs
+.\IShipmentReceiptMvoApplicationServiceFactory.cs
+.\IShipmentReceiptMvoCommand.cs
+.\IShipmentReceiptMvoState.cs
+.\IShipmentReceiptMvoStateDto.cs
+.\IShipmentReceiptMvoStateEvent.cs
+.\IShipmentReceiptMvoStateProperties.cs
+.\IShipmentReceiptMvoStateQueryRepository.cs
+.\IShipmentReceiptMvoStateRepository.cs
+.\ShipmentReceiptMvoAggregate.cs
+.\ShipmentReceiptMvoApplicationServiceBase.cs
+.\ShipmentReceiptMvoApplicationServiceFactory.cs
+.\ShipmentReceiptMvoCommand.cs
+.\ShipmentReceiptMvoCommandDto.cs
+.\ShipmentReceiptMvoState.cs
+.\ShipmentReceiptMvoStateDto.cs
+.\ShipmentReceiptMvoStateDtoExtension.cs
+.\ShipmentReceiptMvoStateDtoWrapper.cs
+.\ShipmentReceiptMvoStateEvent.cs
+.\ShipmentReceiptMvoStateEventDto.cs
+.\ShipmentReceiptMvoStateEventDtoConverter.cs
+.\ShipmentReceiptMvoStateEventId.cs
+.\ShipmentReceiptMvoStateEventIdDto.cs
+.\ShipmentReceiptMvoStateEventIdDtoWrapper.cs
+.\ShipmentReceiptMvoStateEventIdFlattenedDto.cs
+.\ShipmentReceiptMvoStateExtension.cs
+.\ShipmentReceiptMvoStateInterfaceExtension.cs
+.\ShipmentReceiptMvoStateProperties.cs
+</LastOutputs>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Generated\Domain\GenerateBoundedContextDomainAggregates.tt">
@@ -7843,6 +8093,8 @@
 .\ShipmentItemMetadata.cs
 .\ShipmentItemMvoMetadata.cs
 .\ShipmentMetadata.cs
+.\ShipmentReceiptMetadata.cs
+.\ShipmentReceiptMvoMetadata.cs
 .\ShipmentTypeMetadata.cs
 .\StatusItemMetadata.cs
 .\SupplierProductMetadata.cs

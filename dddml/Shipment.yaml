@@ -76,6 +76,8 @@ aggregates:
         
       ShipmentItems:
         itemType: ShipmentItem
+      ShipmentReceipts:
+        itemType: ShipmentReceipt
         
     references: {}
     
@@ -133,5 +135,51 @@ aggregates:
         # metadata: 
           # StateEventDatabaseTableName: SHIPMENT_ITEM_STATE_EVENT
 
+      # ------------------------------------------
+      ShipmentReceipt:
+        id:
+          # name: ReceiptId
+          name: ReceiptSeqId
+          type: id
+          
+        properties:
+          # InventoryItemId:
+            # type: id
+          ProductId:
+            type: id
+          # ShipmentId:
+            # type: id
+          ShipmentItemSeqId:
+            type: id
+          # ShipmentPackageSeqId:
+            # type: id
+          # OrderId:
+            # type: id
+          # OrderItemSeqId:
+            # type: id
+          # ReturnId:
+            # type: id
+          # ReturnItemSeqId:
+            # type: id
+          RejectionId:
+            type: id
+          # ReceivedByUserLoginId:
+            # type: id-vlong
+          # DatetimeReceived:
+            # type: date-time
+          ItemDescription:
+            type: description
+          AcceptedQuantity:
+            type: fixed-point
+          RejectedQuantity:
+            type: fixed-point
+            
+        # references: {}
+        
+        reservedProperties:
+          noDeleted: true
+          
+        # metadata:
+          # StateEventDatabaseTableName: SHIPMENT_RECEIPT_STATE_EVENT
           
     

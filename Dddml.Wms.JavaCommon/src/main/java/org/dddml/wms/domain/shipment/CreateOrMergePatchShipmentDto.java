@@ -317,6 +317,18 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.shipmentItems = shipmentItems;
     }
 
+    private CreateOrMergePatchShipmentReceiptDto[] shipmentReceipts;
+
+    public CreateOrMergePatchShipmentReceiptDto[] getShipmentReceipts()
+    {
+        return this.shipmentReceipts;
+    }
+
+    public void setShipmentReceipts(CreateOrMergePatchShipmentReceiptDto[] shipmentReceipts)
+    {
+        this.shipmentReceipts = shipmentReceipts;
+    }
+
     private Boolean isPropertyShipmentTypeIdRemoved;
 
     public Boolean getIsPropertyShipmentTypeIdRemoved()
@@ -657,6 +669,11 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
                     command.getShipmentItems().add((ShipmentItemCommand.CreateShipmentItem) cmd.toCommand());
                 }
             }
+            if (this.getShipmentReceipts() != null) {
+                for (CreateOrMergePatchShipmentReceiptDto cmd : this.getShipmentReceipts()) {
+                    command.getShipmentReceipts().add((ShipmentReceiptCommand.CreateShipmentReceipt) cmd.toCommand());
+                }
+            }
             return command;
         } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {
             AbstractShipmentCommand.SimpleMergePatchShipment command = new AbstractShipmentCommand.SimpleMergePatchShipment();
@@ -664,6 +681,11 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
             if (this.getShipmentItems() != null) {
                 for (CreateOrMergePatchShipmentItemDto cmd : this.getShipmentItems()) {
                     command.getShipmentItemCommands().add(cmd.toCommand());
+                }
+            }
+            if (this.getShipmentReceipts() != null) {
+                for (CreateOrMergePatchShipmentReceiptDto cmd : this.getShipmentReceipts()) {
+                    command.getShipmentReceiptCommands().add(cmd.toCommand());
                 }
             }
             return command;

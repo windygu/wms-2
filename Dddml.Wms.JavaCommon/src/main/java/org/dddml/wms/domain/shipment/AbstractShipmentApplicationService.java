@@ -102,6 +102,10 @@ public abstract class AbstractShipmentApplicationService implements ShipmentAppl
         return getStateQueryRepository().getShipmentItem(shipmentId, shipmentItemSeqId);
     }
 
+    public ShipmentReceiptState getShipmentReceipt(String shipmentId, String receiptSeqId) {
+        return getStateQueryRepository().getShipmentReceipt(shipmentId, receiptSeqId);
+    }
+
 
     public ShipmentAggregate getShipmentAggregate(ShipmentState state)
     {

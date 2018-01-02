@@ -208,3 +208,11 @@
     drop table if exists Lots;
 
     drop table if exists LotStateEvents;
+
+    drop table if exists ShipmentReceipts;
+
+    drop table if exists ShipmentReceiptStateEvents;
+
+    drop table if exists ShipmentReceipt_RV;
+
+    drop table if exists ShipmentReceiptMvoStateEvents;

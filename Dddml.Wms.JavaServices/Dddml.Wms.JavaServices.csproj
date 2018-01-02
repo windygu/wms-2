@@ -655,6 +655,20 @@
     <Content Include="src\main\java\org\dddml\wms\domain\shipmentitemmvo\hibernate\HibernateShipmentItemMvoStateRepository.java">
       <DependentUpon>GenerateShipmentItemMvoDomainHibernate.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\hibernate\GenerateShipmentReceiptMvoDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateShipmentReceiptMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\hibernate\HibernateShipmentReceiptMvoEventStore.java">
+      <DependentUpon>GenerateShipmentReceiptMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\hibernate\HibernateShipmentReceiptMvoStateQueryRepository.java">
+      <DependentUpon>GenerateShipmentReceiptMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\hibernate\HibernateShipmentReceiptMvoStateRepository.java">
+      <DependentUpon>GenerateShipmentReceiptMvoDomainHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\shipmenttype\hibernate\GenerateShipmentTypeDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -678,6 +692,12 @@
       <DependentUpon>GenerateShipmentDomainHibernate.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\shipment\hibernate\HibernateShipmentItemStateEventDao.java">
+      <DependentUpon>GenerateShipmentDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipment\hibernate\HibernateShipmentReceiptStateDao.java">
+      <DependentUpon>GenerateShipmentDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipment\hibernate\HibernateShipmentReceiptStateEventDao.java">
       <DependentUpon>GenerateShipmentDomainHibernate.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\shipment\hibernate\HibernateShipmentStateQueryRepository.java">
@@ -777,6 +797,18 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Content>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\ShipmentReceiptMvoStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\ShipmentReceiptMvoState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\ShipmentReceiptStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\ShipmentReceiptState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\LotStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
@@ -1226,6 +1258,10 @@
 .\ShipmentItemMvoStateEvent.hbm.xml
 .\ShipmentItemState.hbm.xml
 .\ShipmentItemStateEvent.hbm.xml
+.\ShipmentReceiptMvoState.hbm.xml
+.\ShipmentReceiptMvoStateEvent.hbm.xml
+.\ShipmentReceiptState.hbm.xml
+.\ShipmentReceiptStateEvent.hbm.xml
 .\ShipmentState.hbm.xml
 .\ShipmentStateEvent.hbm.xml
 .\ShipmentTypeState.hbm.xml
@@ -1514,6 +1550,8 @@
 .\HibernateShipmentEventStore.java
 .\HibernateShipmentItemStateDao.java
 .\HibernateShipmentItemStateEventDao.java
+.\HibernateShipmentReceiptStateDao.java
+.\HibernateShipmentReceiptStateEventDao.java
 .\HibernateShipmentStateQueryRepository.java
 .\HibernateShipmentStateRepository.java
 </LastOutputs>
@@ -1722,6 +1760,16 @@
 .\HibernateLotEventStore.java
 .\HibernateLotStateQueryRepository.java
 .\HibernateLotStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\hibernate\GenerateShipmentReceiptMvoDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateShipmentReceiptMvoDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateShipmentReceiptMvoDomainHibernate.txt
+.\HibernateShipmentReceiptMvoEventStore.java
+.\HibernateShipmentReceiptMvoStateQueryRepository.java
+.\HibernateShipmentReceiptMvoStateRepository.java
 </LastOutputs>
     </Content>
   </ItemGroup>

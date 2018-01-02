@@ -608,6 +608,18 @@
     <Compile Include="Generated\Domain\ShipmentItemMvo\NHibernate\ShipmentItemMvoApplicationService.cs">
       <DependentUpon>GenerateShipmentItemMvoDomainNHibernate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\ShipmentReceiptMvo\NHibernate\NHibernateShipmentReceiptMvoEventStore.cs">
+      <DependentUpon>GenerateShipmentReceiptMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentReceiptMvo\NHibernate\NHibernateShipmentReceiptMvoStateQueryRepository.cs">
+      <DependentUpon>GenerateShipmentReceiptMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentReceiptMvo\NHibernate\NHibernateShipmentReceiptMvoStateRepository.cs">
+      <DependentUpon>GenerateShipmentReceiptMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\ShipmentReceiptMvo\NHibernate\ShipmentReceiptMvoApplicationService.cs">
+      <DependentUpon>GenerateShipmentReceiptMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\ShipmentType\NHibernate\NHibernateShipmentTypeStateQueryRepository.cs">
       <DependentUpon>GenerateShipmentTypeDomainNHibernate.tt</DependentUpon>
     </Compile>
@@ -624,6 +636,12 @@
       <DependentUpon>GenerateShipmentDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Shipment\NHibernate\NHibernateShipmentItemStateEventDao.cs">
+      <DependentUpon>GenerateShipmentDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\NHibernate\NHibernateShipmentReceiptStateDao.cs">
+      <DependentUpon>GenerateShipmentDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\NHibernate\NHibernateShipmentReceiptStateEventDao.cs">
       <DependentUpon>GenerateShipmentDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Shipment\NHibernate\NHibernateShipmentStateQueryRepository.cs">
@@ -992,6 +1010,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateShipmentItemMvoDomainNHibernate.tt</DependentUpon>
     </Content>
+    <Content Include="Generated\Domain\ShipmentReceiptMvo\NHibernate\GenerateShipmentReceiptMvoDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateShipmentReceiptMvoDomainNHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="Generated\Domain\ShipmentType\NHibernate\GenerateShipmentTypeDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1173,6 +1196,10 @@
 .\ShipmentItemMvoStateEvent.hbm.xml
 .\ShipmentItemState.hbm.xml
 .\ShipmentItemStateEvent.hbm.xml
+.\ShipmentReceiptMvoState.hbm.xml
+.\ShipmentReceiptMvoStateEvent.hbm.xml
+.\ShipmentReceiptState.hbm.xml
+.\ShipmentReceiptStateEvent.hbm.xml
 .\ShipmentState.hbm.xml
 .\ShipmentStateEvent.hbm.xml
 .\ShipmentTypeState.hbm.xml
@@ -1449,6 +1476,18 @@
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Generated\NHibernate\Mappings\LotStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\ShipmentReceiptState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\ShipmentReceiptStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\ShipmentReceiptMvoState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\ShipmentReceiptMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <Content Include="LoadBoundedContext.tt">
@@ -1776,6 +1815,8 @@
 .\NHibernateShipmentEventStore.cs
 .\NHibernateShipmentItemStateDao.cs
 .\NHibernateShipmentItemStateEventDao.cs
+.\NHibernateShipmentReceiptStateDao.cs
+.\NHibernateShipmentReceiptStateEventDao.cs
 .\NHibernateShipmentStateQueryRepository.cs
 .\NHibernateShipmentStateRepository.cs
 .\ShipmentApplicationService.cs
@@ -2005,6 +2046,17 @@
 .\NHibernateLotEventStore.cs
 .\NHibernateLotStateQueryRepository.cs
 .\NHibernateLotStateRepository.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\ShipmentReceiptMvo\NHibernate\GenerateShipmentReceiptMvoDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateShipmentReceiptMvoDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateShipmentReceiptMvoDomainNHibernate.txt
+.\NHibernateShipmentReceiptMvoEventStore.cs
+.\NHibernateShipmentReceiptMvoStateQueryRepository.cs
+.\NHibernateShipmentReceiptMvoStateRepository.cs
+.\ShipmentReceiptMvoApplicationService.cs
 </LastOutputs>
     </Content>
   </ItemGroup>

@@ -133,6 +133,21 @@ namespace Dddml.Wms.Domain.Shipment
         }
 
 
+        private IShipmentReceiptStates _shipmentReceipts;
+      
+        public virtual IShipmentReceiptStates ShipmentReceipts
+        {
+            get
+            {
+                return this._shipmentReceipts;
+            }
+            set
+            {
+                this._shipmentReceipts = value;
+            }
+        }
+
+
         public virtual bool StateReadOnly { get; set; }
 
         bool IState.ReadOnly
@@ -171,6 +186,8 @@ namespace Dddml.Wms.Domain.Shipment
             this._forReapplying = forReapplying;
             _shipmentItems = new ShipmentItemStates(this);
 
+            _shipmentReceipts = new ShipmentReceiptStates(this);
+
             InitializeProperties();
         }
 
@@ -180,6 +197,8 @@ namespace Dddml.Wms.Domain.Shipment
         public virtual void Save()
         {
             _shipmentItems.Save();
+
+            _shipmentReceipts.Save();
 
         }
 
@@ -245,6 +264,10 @@ namespace Dddml.Wms.Domain.Shipment
 
 			foreach (IShipmentItemStateCreated innerEvent in e.ShipmentItemEvents) {
 				IShipmentItemState innerState = this.ShipmentItems.Get(innerEvent.GlobalId.ShipmentItemSeqId, true);
+				innerState.Mutate (innerEvent);
+			}
+			foreach (IShipmentReceiptStateCreated innerEvent in e.ShipmentReceiptEvents) {
+				IShipmentReceiptState innerState = this.ShipmentReceipts.Get(innerEvent.GlobalId.ReceiptSeqId, true);
 				innerState.Mutate (innerEvent);
 			}
 
@@ -563,6 +586,14 @@ namespace Dddml.Wms.Domain.Shipment
 			foreach (IShipmentItemStateEvent innerEvent in e.ShipmentItemEvents)
             {
                 IShipmentItemState innerState = this.ShipmentItems.Get(innerEvent.GlobalId.ShipmentItemSeqId);
+
+                innerState.Mutate(innerEvent);
+          
+            }
+
+			foreach (IShipmentReceiptStateEvent innerEvent in e.ShipmentReceiptEvents)
+            {
+                IShipmentReceiptState innerState = this.ShipmentReceipts.Get(innerEvent.GlobalId.ReceiptSeqId);
 
                 innerState.Mutate(innerEvent);
           

@@ -143,6 +143,8 @@ public interface ShipmentState
 
     ShipmentItemStates getShipmentItems();
 
+    ShipmentReceiptStates getShipmentReceipts();
+
 
     void mutate(Event e);
 

@@ -552,3 +552,57 @@ CREATE VIEW `ShipmentItem_RV` AS
         );
 
 
+CREATE VIEW `ShipmentReceipt_RV` AS
+    SELECT 
+        `ShipmentReceipts`.`ShipmentReceiptIdShipmentId`,
+        `ShipmentReceipts`.`ShipmentReceiptIdReceiptSeqId`,
+        `ShipmentReceipts`.`ProductId`,
+        `ShipmentReceipts`.`ShipmentItemSeqId`,
+        `ShipmentReceipts`.`RejectionId`,
+        `ShipmentReceipts`.`ItemDescription`,
+        `ShipmentReceipts`.`AcceptedQuantity`,
+        `ShipmentReceipts`.`RejectedQuantity`,
+        `ShipmentReceipts`.`Version`,
+        `ShipmentReceipts`.`CreatedBy`,
+        `ShipmentReceipts`.`CreatedAt`,
+        `ShipmentReceipts`.`UpdatedBy`,
+        `ShipmentReceipts`.`UpdatedAt`,
+        `ShipmentReceipts`.`Active`,
+        `Shipments`.`ShipmentTypeId` AS `ShipmentShipmentTypeId`,
+        `Shipments`.`StatusId` AS `ShipmentStatusId`,
+        `Shipments`.`PrimaryOrderId` AS `ShipmentPrimaryOrderId`,
+        `Shipments`.`PrimaryReturnId` AS `ShipmentPrimaryReturnId`,
+        `Shipments`.`PicklistBinId` AS `ShipmentPicklistBinId`,
+        `Shipments`.`EstimatedReadyDate` AS `ShipmentEstimatedReadyDate`,
+        `Shipments`.`EstimatedShipDate` AS `ShipmentEstimatedShipDate`,
+        `Shipments`.`EstimatedShipWorkEffId` AS `ShipmentEstimatedShipWorkEffId`,
+        `Shipments`.`EstimatedArrivalDate` AS `ShipmentEstimatedArrivalDate`,
+        `Shipments`.`EstimatedArrivalWorkEffId` AS `ShipmentEstimatedArrivalWorkEffId`,
+        `Shipments`.`LatestCancelDate` AS `ShipmentLatestCancelDate`,
+        `Shipments`.`EstimatedShipCost` AS `ShipmentEstimatedShipCost`,
+        `Shipments`.`CurrencyUomId` AS `ShipmentCurrencyUomId`,
+        `Shipments`.`HandlingInstructions` AS `ShipmentHandlingInstructions`,
+        `Shipments`.`OriginFacilityId` AS `ShipmentOriginFacilityId`,
+        `Shipments`.`DestinationFacilityId` AS `ShipmentDestinationFacilityId`,
+        `Shipments`.`OriginContactMechId` AS `ShipmentOriginContactMechId`,
+        `Shipments`.`OriginTelecomNumberId` AS `ShipmentOriginTelecomNumberId`,
+        `Shipments`.`DestinationContactMechId` AS `ShipmentDestinationContactMechId`,
+        `Shipments`.`DestinationTelecomNumberId` AS `ShipmentDestinationTelecomNumberId`,
+        `Shipments`.`PartyIdTo` AS `ShipmentPartyIdTo`,
+        `Shipments`.`PartyIdFrom` AS `ShipmentPartyIdFrom`,
+        `Shipments`.`AdditionalShippingCharge` AS `ShipmentAdditionalShippingCharge`,
+        `Shipments`.`AddtlShippingChargeDesc` AS `ShipmentAddtlShippingChargeDesc`,
+        `Shipments`.`Version` AS `ShipmentVersion`,
+        `Shipments`.`CreatedBy` AS `ShipmentCreatedBy`,
+        `Shipments`.`CreatedAt` AS `ShipmentCreatedAt`,
+        `Shipments`.`UpdatedBy` AS `ShipmentUpdatedBy`,
+        `Shipments`.`UpdatedAt` AS `ShipmentUpdatedAt`,
+        `Shipments`.`Active` AS `ShipmentActive`
+    FROM
+        (`ShipmentReceipts`
+            JOIN `Shipments` ON ( 1=1 
+                and (`ShipmentReceipts`.`ShipmentReceiptIdShipmentId` = `Shipments`.`ShipmentId`)
+            )
+        );
+
+
