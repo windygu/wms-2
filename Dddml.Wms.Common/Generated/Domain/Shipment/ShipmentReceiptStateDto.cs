@@ -69,6 +69,12 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
+        public virtual decimal? DamagedQuantity
+        {
+            get;
+            set;
+        }
+
         public virtual bool? Active
         {
             get;
@@ -123,6 +129,7 @@ namespace Dddml.Wms.Domain.Shipment
             state.ItemDescription = this.ItemDescription;
             state.AcceptedQuantity = this.AcceptedQuantity;
             state.RejectedQuantity = this.RejectedQuantity;
+            state.DamagedQuantity = this.DamagedQuantity;
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             state.ShipmentId = this.ShipmentId;

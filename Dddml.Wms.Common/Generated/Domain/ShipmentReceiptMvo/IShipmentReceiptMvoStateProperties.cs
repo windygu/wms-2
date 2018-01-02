@@ -33,6 +33,8 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
 		decimal? RejectedQuantity { get; set; }
 
+		decimal? DamagedQuantity { get; set; }
+
 		long Version { get; set; }
 
 		bool Active { get; set; }

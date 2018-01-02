@@ -46,6 +46,7 @@ public abstract class AbstractShipmentReceiptMvoStateCommandConverter<TCreateShi
         cmd.setItemDescription(state.getItemDescription());
         cmd.setAcceptedQuantity(state.getAcceptedQuantity());
         cmd.setRejectedQuantity(state.getRejectedQuantity());
+        cmd.setDamagedQuantity(state.getDamagedQuantity());
         cmd.setVersion(state.getVersion());
         cmd.setActive(state.getActive());
         cmd.setShipmentShipmentTypeId(state.getShipmentShipmentTypeId());
@@ -86,6 +87,7 @@ public abstract class AbstractShipmentReceiptMvoStateCommandConverter<TCreateShi
         if (state.getItemDescription() == null) { cmd.setIsPropertyItemDescriptionRemoved(true); }
         if (state.getAcceptedQuantity() == null) { cmd.setIsPropertyAcceptedQuantityRemoved(true); }
         if (state.getRejectedQuantity() == null) { cmd.setIsPropertyRejectedQuantityRemoved(true); }
+        if (state.getDamagedQuantity() == null) { cmd.setIsPropertyDamagedQuantityRemoved(true); }
         if (state.getVersion() == null) { cmd.setIsPropertyVersionRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
         if (state.getShipmentShipmentTypeId() == null) { cmd.setIsPropertyShipmentShipmentTypeIdRemoved(true); }
@@ -134,6 +136,7 @@ public abstract class AbstractShipmentReceiptMvoStateCommandConverter<TCreateShi
         cmd.setItemDescription(state.getItemDescription());
         cmd.setAcceptedQuantity(state.getAcceptedQuantity());
         cmd.setRejectedQuantity(state.getRejectedQuantity());
+        cmd.setDamagedQuantity(state.getDamagedQuantity());
         cmd.setVersion(state.getVersion());
         cmd.setActive(state.getActive());
         cmd.setShipmentShipmentTypeId(state.getShipmentShipmentTypeId());

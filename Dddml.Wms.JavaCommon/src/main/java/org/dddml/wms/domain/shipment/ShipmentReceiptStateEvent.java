@@ -49,6 +49,10 @@ public interface ShipmentReceiptStateEvent extends Event
 
     void setRejectedQuantity(java.math.BigDecimal rejectedQuantity);
 
+    java.math.BigDecimal getDamagedQuantity();
+
+    void setDamagedQuantity(java.math.BigDecimal damagedQuantity);
+
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -104,6 +108,10 @@ public interface ShipmentReceiptStateEvent extends Event
         Boolean getIsPropertyRejectedQuantityRemoved();
 
         void setIsPropertyRejectedQuantityRemoved(Boolean removed);
+
+        Boolean getIsPropertyDamagedQuantityRemoved();
+
+        void setIsPropertyDamagedQuantityRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

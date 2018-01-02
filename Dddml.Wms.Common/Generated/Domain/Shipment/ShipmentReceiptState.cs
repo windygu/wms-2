@@ -197,6 +197,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 			this.RejectedQuantity = e.RejectedQuantity;
 
+			this.DamagedQuantity = e.DamagedQuantity;
+
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 
 			this.CreatedBy = e.CreatedBy;
@@ -304,6 +306,18 @@ namespace Dddml.Wms.Domain.Shipment
 			else
 			{
 				this.RejectedQuantity = e.RejectedQuantity;
+			}
+
+			if (e.DamagedQuantity == null)
+			{
+				if (e.IsPropertyDamagedQuantityRemoved)
+				{
+					this.DamagedQuantity = default(decimal?);
+				}
+			}
+			else
+			{
+				this.DamagedQuantity = e.DamagedQuantity;
 			}
 
 			if (e.Active == null)

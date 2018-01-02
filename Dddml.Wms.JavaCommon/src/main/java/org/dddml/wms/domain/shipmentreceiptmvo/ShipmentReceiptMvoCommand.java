@@ -69,6 +69,10 @@ public interface ShipmentReceiptMvoCommand extends Command
 
         void setRejectedQuantity(java.math.BigDecimal rejectedQuantity);
 
+        java.math.BigDecimal getDamagedQuantity();
+
+        void setDamagedQuantity(java.math.BigDecimal damagedQuantity);
+
         Long getVersion();
 
         void setVersion(Long version);
@@ -232,6 +236,10 @@ public interface ShipmentReceiptMvoCommand extends Command
         Boolean getIsPropertyRejectedQuantityRemoved();
 
         void setIsPropertyRejectedQuantityRemoved(Boolean removed);
+
+        Boolean getIsPropertyDamagedQuantityRemoved();
+
+        void setIsPropertyDamagedQuantityRemoved(Boolean removed);
 
         Boolean getIsPropertyVersionRemoved();
 

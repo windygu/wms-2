@@ -71,6 +71,12 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             set;
         }
 
+        public virtual decimal? DamagedQuantity
+        {
+            get;
+            set;
+        }
+
         public virtual long? Version
         {
             get;
@@ -299,6 +305,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             state.ItemDescription = this.ItemDescription;
             state.AcceptedQuantity = this.AcceptedQuantity;
             state.RejectedQuantity = this.RejectedQuantity;
+            state.DamagedQuantity = this.DamagedQuantity;
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             state.ShipmentShipmentTypeId = this.ShipmentShipmentTypeId;

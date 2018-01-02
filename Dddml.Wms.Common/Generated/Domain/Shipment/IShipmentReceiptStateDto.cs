@@ -68,6 +68,12 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
+        decimal? DamagedQuantity
+        {
+            get;
+            set;
+        }
+
         bool? Active
         {
             get;

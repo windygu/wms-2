@@ -20,6 +20,7 @@ public final class ShipmentReceiptFilteringProperties
             "itemDescription",
             "acceptedQuantity",
             "rejectedQuantity",
+            "damagedQuantity",
             "version",
             "createdBy",
             "createdAt",
@@ -40,6 +41,7 @@ public final class ShipmentReceiptFilteringProperties
             "String",
             "String",
             "String",
+            "java.math.BigDecimal",
             "java.math.BigDecimal",
             "java.math.BigDecimal",
             "Long",
@@ -84,6 +86,8 @@ public final class ShipmentReceiptFilteringProperties
         aliasMap.put("AcceptedQuantity", "acceptedQuantity");
         aliasMap.put("rejectedQuantity", "rejectedQuantity");
         aliasMap.put("RejectedQuantity", "rejectedQuantity");
+        aliasMap.put("damagedQuantity", "damagedQuantity");
+        aliasMap.put("DamagedQuantity", "damagedQuantity");
         aliasMap.put("version", "version");
         aliasMap.put("Version", "version");
         aliasMap.put("createdBy", "createdBy");

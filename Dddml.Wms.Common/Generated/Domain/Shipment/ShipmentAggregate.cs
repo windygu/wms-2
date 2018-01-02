@@ -376,6 +376,7 @@ namespace Dddml.Wms.Domain.Shipment
             e.ItemDescription = c.ItemDescription;
             e.AcceptedQuantity = c.AcceptedQuantity;
             e.RejectedQuantity = c.RejectedQuantity;
+            e.DamagedQuantity = c.DamagedQuantity;
             e.Active = c.Active;
 
             e.CreatedBy = (string)c.RequesterId;
@@ -401,6 +402,7 @@ namespace Dddml.Wms.Domain.Shipment
             e.ItemDescription = c.ItemDescription;
             e.AcceptedQuantity = c.AcceptedQuantity;
             e.RejectedQuantity = c.RejectedQuantity;
+            e.DamagedQuantity = c.DamagedQuantity;
             e.Active = c.Active;
             e.IsPropertyProductIdRemoved = c.IsPropertyProductIdRemoved;
             e.IsPropertyShipmentItemSeqIdRemoved = c.IsPropertyShipmentItemSeqIdRemoved;
@@ -410,6 +412,7 @@ namespace Dddml.Wms.Domain.Shipment
             e.IsPropertyItemDescriptionRemoved = c.IsPropertyItemDescriptionRemoved;
             e.IsPropertyAcceptedQuantityRemoved = c.IsPropertyAcceptedQuantityRemoved;
             e.IsPropertyRejectedQuantityRemoved = c.IsPropertyRejectedQuantityRemoved;
+            e.IsPropertyDamagedQuantityRemoved = c.IsPropertyDamagedQuantityRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
             e.CreatedBy = (string)c.RequesterId;

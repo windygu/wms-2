@@ -52,6 +52,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual decimal? RejectedQuantity { get; set; }
 
+		public virtual decimal? DamagedQuantity { get; set; }
+
 		public virtual bool? Active { get; set; }
 
 		public virtual string CreatedBy { get; set; }
@@ -234,6 +236,25 @@ namespace Dddml.Wms.Domain.Shipment
             set 
             {
                 this.IsPropertyRejectedQuantityRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyDamagedQuantityRemoved { get; set; }
+
+        bool IShipmentReceiptStateMergePatched.IsPropertyDamagedQuantityRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyDamagedQuantityRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyDamagedQuantityRemoved = value;
             }
         }
 

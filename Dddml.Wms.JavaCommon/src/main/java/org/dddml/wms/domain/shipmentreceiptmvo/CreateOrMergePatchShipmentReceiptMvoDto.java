@@ -102,6 +102,18 @@ public class CreateOrMergePatchShipmentReceiptMvoDto extends AbstractShipmentRec
         this.rejectedQuantity = rejectedQuantity;
     }
 
+    private java.math.BigDecimal damagedQuantity;
+
+    public java.math.BigDecimal getDamagedQuantity()
+    {
+        return this.damagedQuantity;
+    }
+
+    public void setDamagedQuantity(java.math.BigDecimal damagedQuantity)
+    {
+        this.damagedQuantity = damagedQuantity;
+    }
+
     private Long version;
 
     public Long getVersion()
@@ -570,6 +582,18 @@ public class CreateOrMergePatchShipmentReceiptMvoDto extends AbstractShipmentRec
         this.isPropertyRejectedQuantityRemoved = removed;
     }
 
+    private Boolean isPropertyDamagedQuantityRemoved;
+
+    public Boolean getIsPropertyDamagedQuantityRemoved()
+    {
+        return this.isPropertyDamagedQuantityRemoved;
+    }
+
+    public void setIsPropertyDamagedQuantityRemoved(Boolean removed)
+    {
+        this.isPropertyDamagedQuantityRemoved = removed;
+    }
+
     private Boolean isPropertyVersionRemoved;
 
     public Boolean getIsPropertyVersionRemoved()
@@ -953,6 +977,7 @@ public class CreateOrMergePatchShipmentReceiptMvoDto extends AbstractShipmentRec
         command.setItemDescription(this.getItemDescription());
         command.setAcceptedQuantity(this.getAcceptedQuantity());
         command.setRejectedQuantity(this.getRejectedQuantity());
+        command.setDamagedQuantity(this.getDamagedQuantity());
         command.setVersion(this.getVersion());
         command.setActive(this.getActive());
         command.setShipmentShipmentTypeId(this.getShipmentShipmentTypeId());
@@ -1016,6 +1041,7 @@ public class CreateOrMergePatchShipmentReceiptMvoDto extends AbstractShipmentRec
         command.setIsPropertyItemDescriptionRemoved(this.getIsPropertyItemDescriptionRemoved());
         command.setIsPropertyAcceptedQuantityRemoved(this.getIsPropertyAcceptedQuantityRemoved());
         command.setIsPropertyRejectedQuantityRemoved(this.getIsPropertyRejectedQuantityRemoved());
+        command.setIsPropertyDamagedQuantityRemoved(this.getIsPropertyDamagedQuantityRemoved());
         command.setIsPropertyVersionRemoved(this.getIsPropertyVersionRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
         command.setIsPropertyShipmentShipmentTypeIdRemoved(this.getIsPropertyShipmentShipmentTypeIdRemoved());

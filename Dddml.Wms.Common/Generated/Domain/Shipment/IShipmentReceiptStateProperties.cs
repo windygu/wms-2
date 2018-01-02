@@ -32,6 +32,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 		decimal? RejectedQuantity { get; set; }
 
+		decimal? DamagedQuantity { get; set; }
+
 		long Version { get; set; }
 
 		bool Active { get; set; }

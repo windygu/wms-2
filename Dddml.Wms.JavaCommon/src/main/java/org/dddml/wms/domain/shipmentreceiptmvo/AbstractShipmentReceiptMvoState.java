@@ -118,6 +118,18 @@ public abstract class AbstractShipmentReceiptMvoState implements ShipmentReceipt
         this.rejectedQuantity = rejectedQuantity;
     }
 
+    private java.math.BigDecimal damagedQuantity;
+
+    public java.math.BigDecimal getDamagedQuantity()
+    {
+        return this.damagedQuantity;
+    }
+
+    public void setDamagedQuantity(java.math.BigDecimal damagedQuantity)
+    {
+        this.damagedQuantity = damagedQuantity;
+    }
+
     private Long version;
 
     public Long getVersion()
@@ -620,6 +632,7 @@ public abstract class AbstractShipmentReceiptMvoState implements ShipmentReceipt
         this.setItemDescription(e.getItemDescription());
         this.setAcceptedQuantity(e.getAcceptedQuantity());
         this.setRejectedQuantity(e.getRejectedQuantity());
+        this.setDamagedQuantity(e.getDamagedQuantity());
         this.setVersion(e.getVersion());
         this.setActive(e.getActive());
         this.setShipmentShipmentTypeId(e.getShipmentShipmentTypeId());
@@ -748,6 +761,17 @@ public abstract class AbstractShipmentReceiptMvoState implements ShipmentReceipt
         else
         {
             this.setRejectedQuantity(e.getRejectedQuantity());
+        }
+        if (e.getDamagedQuantity() == null)
+        {
+            if (e.getIsPropertyDamagedQuantityRemoved() != null && e.getIsPropertyDamagedQuantityRemoved())
+            {
+                this.setDamagedQuantity(null);
+            }
+        }
+        else
+        {
+            this.setDamagedQuantity(e.getDamagedQuantity());
         }
         if (e.getVersion() == null)
         {

@@ -101,6 +101,18 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         this.rejectedQuantity = rejectedQuantity;
     }
 
+    private java.math.BigDecimal damagedQuantity;
+
+    public java.math.BigDecimal getDamagedQuantity()
+    {
+        return this.damagedQuantity;
+    }
+
+    public void setDamagedQuantity(java.math.BigDecimal damagedQuantity)
+    {
+        this.damagedQuantity = damagedQuantity;
+    }
+
     private Boolean active;
 
     public Boolean getActive()
@@ -209,6 +221,18 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         this.isPropertyRejectedQuantityRemoved = removed;
     }
 
+    private Boolean isPropertyDamagedQuantityRemoved;
+
+    public Boolean getIsPropertyDamagedQuantityRemoved()
+    {
+        return this.isPropertyDamagedQuantityRemoved;
+    }
+
+    public void setIsPropertyDamagedQuantityRemoved(Boolean removed)
+    {
+        this.isPropertyDamagedQuantityRemoved = removed;
+    }
+
     private Boolean isPropertyActiveRemoved;
 
     public Boolean getIsPropertyActiveRemoved()
@@ -232,6 +256,7 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         command.setItemDescription(this.getItemDescription());
         command.setAcceptedQuantity(this.getAcceptedQuantity());
         command.setRejectedQuantity(this.getRejectedQuantity());
+        command.setDamagedQuantity(this.getDamagedQuantity());
         command.setActive(this.getActive());
     }
 
@@ -270,6 +295,7 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         command.setIsPropertyItemDescriptionRemoved(this.getIsPropertyItemDescriptionRemoved());
         command.setIsPropertyAcceptedQuantityRemoved(this.getIsPropertyAcceptedQuantityRemoved());
         command.setIsPropertyRejectedQuantityRemoved(this.getIsPropertyRejectedQuantityRemoved());
+        command.setIsPropertyDamagedQuantityRemoved(this.getIsPropertyDamagedQuantityRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
     }
 

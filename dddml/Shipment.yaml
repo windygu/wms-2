@@ -187,9 +187,12 @@ aggregates:
             
           ItemDescription:
             type: description
+            
           AcceptedQuantity:
             type: fixed-point
           RejectedQuantity:
+            type: fixed-point
+          DamagedQuantity:
             type: fixed-point
             
         # references: {}

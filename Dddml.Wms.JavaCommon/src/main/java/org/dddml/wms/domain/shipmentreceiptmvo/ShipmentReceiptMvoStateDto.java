@@ -118,6 +118,18 @@ public class ShipmentReceiptMvoStateDto
         this.rejectedQuantity = rejectedQuantity;
     }
 
+    private java.math.BigDecimal damagedQuantity;
+
+    public java.math.BigDecimal getDamagedQuantity()
+    {
+        return this.damagedQuantity;
+    }
+
+    public void setDamagedQuantity(java.math.BigDecimal damagedQuantity)
+    {
+        this.damagedQuantity = damagedQuantity;
+    }
+
     private Long version;
 
     public Long getVersion()
@@ -602,6 +614,9 @@ public class ShipmentReceiptMvoStateDto
             }
             if (returnedFieldsContains("RejectedQuantity")) {
                 dto.setRejectedQuantity(state.getRejectedQuantity());
+            }
+            if (returnedFieldsContains("DamagedQuantity")) {
+                dto.setDamagedQuantity(state.getDamagedQuantity());
             }
             if (returnedFieldsContains("Version")) {
                 dto.setVersion(state.getVersion());

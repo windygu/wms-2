@@ -263,6 +263,7 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         e.setItemDescription(c.getItemDescription());
         e.setAcceptedQuantity(c.getAcceptedQuantity());
         e.setRejectedQuantity(c.getRejectedQuantity());
+        e.setDamagedQuantity(c.getDamagedQuantity());
         e.setActive(c.getActive());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
@@ -285,6 +286,7 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         e.setItemDescription(c.getItemDescription());
         e.setAcceptedQuantity(c.getAcceptedQuantity());
         e.setRejectedQuantity(c.getRejectedQuantity());
+        e.setDamagedQuantity(c.getDamagedQuantity());
         e.setActive(c.getActive());
         e.setIsPropertyProductIdRemoved(c.getIsPropertyProductIdRemoved());
         e.setIsPropertyShipmentItemSeqIdRemoved(c.getIsPropertyShipmentItemSeqIdRemoved());
@@ -294,6 +296,7 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         e.setIsPropertyItemDescriptionRemoved(c.getIsPropertyItemDescriptionRemoved());
         e.setIsPropertyAcceptedQuantityRemoved(c.getIsPropertyAcceptedQuantityRemoved());
         e.setIsPropertyRejectedQuantityRemoved(c.getIsPropertyRejectedQuantityRemoved());
+        e.setIsPropertyDamagedQuantityRemoved(c.getIsPropertyDamagedQuantityRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));

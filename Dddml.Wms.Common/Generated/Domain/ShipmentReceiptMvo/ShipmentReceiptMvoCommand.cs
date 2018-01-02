@@ -69,6 +69,8 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
 		public virtual decimal? RejectedQuantity { get; set; }
 
+		public virtual decimal? DamagedQuantity { get; set; }
+
 		public virtual long? Version { get; set; }
 
 		public virtual bool? Active { get; set; }
@@ -178,6 +180,8 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 		public virtual bool IsPropertyAcceptedQuantityRemoved { get; set; }
 
 		public virtual bool IsPropertyRejectedQuantityRemoved { get; set; }
+
+		public virtual bool IsPropertyDamagedQuantityRemoved { get; set; }
 
 		public virtual bool IsPropertyVersionRemoved { get; set; }
 

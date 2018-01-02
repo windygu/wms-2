@@ -87,12 +87,6 @@
       unique (AttributeAliasIdCode),
       unique (Name)
     );
-    alter table DamageReasons 
-        add column SequenceId VARCHAR(20);
-    alter table DamageReasonStateEvents 
-        add column SequenceId VARCHAR(20);
-    alter table DamageReasonStateEvents 
-        add column IsPropertySequenceIdRemoved TINYINT(1);
     create table InOutLine_RV (
         InOutLineIdInOutDocumentNumber VARCHAR(50) not null,
        InOutLineIdLineNumber VARCHAR(50) not null,
@@ -474,6 +468,12 @@
        UpdatedAt DATETIME,
        primary key (PhysicalInventoryLineIdPhysicalInventoryDocumentNumber, PhysicalInventoryLineIdLineNumber)
     );
+    alter table ShipmentReceipts 
+        add column DamagedQuantity DECIMAL(18,6);
+    alter table ShipmentReceiptStateEvents 
+        add column DamagedQuantity DECIMAL(18,6);
+    alter table ShipmentReceiptStateEvents 
+        add column IsPropertyDamagedQuantityRemoved TINYINT(1);
     create table ShipmentReceipt_RV (
         ShipmentReceiptIdShipmentId VARCHAR(20) not null,
        ShipmentReceiptIdReceiptSeqId VARCHAR(20) not null,
@@ -486,6 +486,7 @@
        ItemDescription VARCHAR(255),
        AcceptedQuantity DECIMAL(18,6),
        RejectedQuantity DECIMAL(18,6),
+       DamagedQuantity DECIMAL(18,6),
        Version BIGINT,
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
@@ -523,3 +524,7 @@
        UpdatedAt DATETIME,
        primary key (ShipmentReceiptIdShipmentId, ShipmentReceiptIdReceiptSeqId)
     );
+    alter table ShipmentReceiptMvoStateEvents 
+        add column DamagedQuantity DECIMAL(18,6);
+    alter table ShipmentReceiptMvoStateEvents 
+        add column IsPropertyDamagedQuantityRemoved TINYINT(1);

@@ -292,6 +292,34 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             }
         }
 
+		public virtual decimal? DamagedQuantity
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("DamagedQuantity"))
+                {
+                    return _state.DamagedQuantity;
+                }
+                return null;
+            }
+            set
+            {
+                _state.DamagedQuantity = value;
+            }
+        }
+
+        decimal? IShipmentReceiptMvoStateProperties.DamagedQuantity
+        {
+            get 
+            {
+                return (this._state as IShipmentReceiptMvoStateProperties).DamagedQuantity;
+            }
+            set 
+            {
+                (this._state as IShipmentReceiptMvoStateProperties).DamagedQuantity = value;
+            }
+        }
+
 		public virtual long? Version
         {
             get

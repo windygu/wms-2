@@ -46,6 +46,10 @@ public interface ShipmentReceiptMvoStateEvent extends Event
 
     void setRejectedQuantity(java.math.BigDecimal rejectedQuantity);
 
+    java.math.BigDecimal getDamagedQuantity();
+
+    void setDamagedQuantity(java.math.BigDecimal damagedQuantity);
+
     Long getVersion();
 
     void setVersion(Long version);
@@ -221,6 +225,10 @@ public interface ShipmentReceiptMvoStateEvent extends Event
         Boolean getIsPropertyRejectedQuantityRemoved();
 
         void setIsPropertyRejectedQuantityRemoved(Boolean removed);
+
+        Boolean getIsPropertyDamagedQuantityRemoved();
+
+        void setIsPropertyDamagedQuantityRemoved(Boolean removed);
 
         Boolean getIsPropertyVersionRemoved();
 

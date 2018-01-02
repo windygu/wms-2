@@ -52,6 +52,7 @@ namespace Dddml.Wms.Domain.Shipment
             cmd.ItemDescription = state.ItemDescription;
             cmd.AcceptedQuantity = state.AcceptedQuantity;
             cmd.RejectedQuantity = state.RejectedQuantity;
+            cmd.DamagedQuantity = state.DamagedQuantity;
             cmd.Active = ((IShipmentReceiptStateProperties)state).Active;
             cmd.ShipmentId = state.ShipmentId;
             
@@ -63,6 +64,7 @@ namespace Dddml.Wms.Domain.Shipment
             if (state.ItemDescription == null) { cmd.IsPropertyItemDescriptionRemoved = true; }
             if (state.AcceptedQuantity == null) { cmd.IsPropertyAcceptedQuantityRemoved = true; }
             if (state.RejectedQuantity == null) { cmd.IsPropertyRejectedQuantityRemoved = true; }
+            if (state.DamagedQuantity == null) { cmd.IsPropertyDamagedQuantityRemoved = true; }
             return cmd;
         }
 
@@ -80,6 +82,7 @@ namespace Dddml.Wms.Domain.Shipment
             cmd.ItemDescription = state.ItemDescription;
             cmd.AcceptedQuantity = state.AcceptedQuantity;
             cmd.RejectedQuantity = state.RejectedQuantity;
+            cmd.DamagedQuantity = state.DamagedQuantity;
             cmd.Active = ((IShipmentReceiptStateProperties)state).Active;
             cmd.ShipmentId = state.ShipmentId;
             return cmd;

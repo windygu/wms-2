@@ -60,6 +60,7 @@ public abstract class AbstractShipmentReceiptMvoAggregate extends AbstractAggreg
         e.setItemDescription(c.getItemDescription());
         e.setAcceptedQuantity(c.getAcceptedQuantity());
         e.setRejectedQuantity(c.getRejectedQuantity());
+        e.setDamagedQuantity(c.getDamagedQuantity());
         e.setVersion(c.getVersion());
         e.setActive(c.getActive());
         e.setShipmentShipmentTypeId(c.getShipmentShipmentTypeId());
@@ -108,6 +109,7 @@ public abstract class AbstractShipmentReceiptMvoAggregate extends AbstractAggreg
         e.setItemDescription(c.getItemDescription());
         e.setAcceptedQuantity(c.getAcceptedQuantity());
         e.setRejectedQuantity(c.getRejectedQuantity());
+        e.setDamagedQuantity(c.getDamagedQuantity());
         e.setVersion(c.getVersion());
         e.setActive(c.getActive());
         e.setShipmentShipmentTypeId(c.getShipmentShipmentTypeId());
@@ -147,6 +149,7 @@ public abstract class AbstractShipmentReceiptMvoAggregate extends AbstractAggreg
         e.setIsPropertyItemDescriptionRemoved(c.getIsPropertyItemDescriptionRemoved());
         e.setIsPropertyAcceptedQuantityRemoved(c.getIsPropertyAcceptedQuantityRemoved());
         e.setIsPropertyRejectedQuantityRemoved(c.getIsPropertyRejectedQuantityRemoved());
+        e.setIsPropertyDamagedQuantityRemoved(c.getIsPropertyDamagedQuantityRemoved());
         e.setIsPropertyVersionRemoved(c.getIsPropertyVersionRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         e.setIsPropertyShipmentShipmentTypeIdRemoved(c.getIsPropertyShipmentShipmentTypeIdRemoved());

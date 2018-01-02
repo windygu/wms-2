@@ -35,6 +35,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 		decimal? RejectedQuantity { get; set; }
 
+		decimal? DamagedQuantity { get; set; }
+
 		bool? Active { get; set; }
 
 		// Outer Id:
@@ -65,6 +67,8 @@ namespace Dddml.Wms.Domain.Shipment
 		bool IsPropertyAcceptedQuantityRemoved { get; set; }
 
 		bool IsPropertyRejectedQuantityRemoved { get; set; }
+
+		bool IsPropertyDamagedQuantityRemoved { get; set; }
 
 		bool IsPropertyActiveRemoved { get; set; }
 

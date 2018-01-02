@@ -564,6 +564,7 @@ CREATE VIEW `ShipmentReceipt_RV` AS
         `ShipmentReceipts`.`ItemDescription`,
         `ShipmentReceipts`.`AcceptedQuantity`,
         `ShipmentReceipts`.`RejectedQuantity`,
+        `ShipmentReceipts`.`DamagedQuantity`,
         `ShipmentReceipts`.`Version`,
         `ShipmentReceipts`.`CreatedBy`,
         `ShipmentReceipts`.`CreatedAt`,

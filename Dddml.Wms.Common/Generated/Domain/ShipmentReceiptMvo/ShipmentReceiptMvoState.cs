@@ -178,6 +178,8 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
 			this.RejectedQuantity = e.RejectedQuantity;
 
+			this.DamagedQuantity = e.DamagedQuantity;
+
             this.Version = (e.Version != null && e.Version.HasValue) ? e.Version.Value : default(long);
 
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
@@ -345,6 +347,18 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 			else
 			{
 				this.RejectedQuantity = e.RejectedQuantity;
+			}
+
+			if (e.DamagedQuantity == null)
+			{
+				if (e.IsPropertyDamagedQuantityRemoved)
+				{
+					this.DamagedQuantity = default(decimal?);
+				}
+			}
+			else
+			{
+				this.DamagedQuantity = e.DamagedQuantity;
 			}
 
 			if (e.Version == null)

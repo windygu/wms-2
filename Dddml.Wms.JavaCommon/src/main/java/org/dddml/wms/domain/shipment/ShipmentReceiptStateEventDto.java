@@ -106,6 +106,16 @@ public class ShipmentReceiptStateEventDto extends AbstractStateEvent
         this.rejectedQuantity = rejectedQuantity;
     }
 
+    private java.math.BigDecimal damagedQuantity;
+
+    public java.math.BigDecimal getDamagedQuantity() {
+        return this.damagedQuantity;
+    }
+
+    public void setDamagedQuantity(java.math.BigDecimal damagedQuantity) {
+        this.damagedQuantity = damagedQuantity;
+    }
+
     private Boolean active;
 
     public Boolean getActive() {
@@ -224,6 +234,16 @@ public class ShipmentReceiptStateEventDto extends AbstractStateEvent
 
     public void setIsPropertyRejectedQuantityRemoved(Boolean removed) {
         this.isPropertyRejectedQuantityRemoved = removed;
+    }
+
+    private Boolean isPropertyDamagedQuantityRemoved;
+
+    public Boolean getIsPropertyDamagedQuantityRemoved() {
+        return this.isPropertyDamagedQuantityRemoved;
+    }
+
+    public void setIsPropertyDamagedQuantityRemoved(Boolean removed) {
+        this.isPropertyDamagedQuantityRemoved = removed;
     }
 
     private Boolean isPropertyActiveRemoved;

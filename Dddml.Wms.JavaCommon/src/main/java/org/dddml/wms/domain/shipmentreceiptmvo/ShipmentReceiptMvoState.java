@@ -49,6 +49,10 @@ public interface ShipmentReceiptMvoState
 
     void setRejectedQuantity(java.math.BigDecimal rejectedQuantity);
 
+    java.math.BigDecimal getDamagedQuantity();
+
+    void setDamagedQuantity(java.math.BigDecimal damagedQuantity);
+
     Long getVersion();
 
     void setVersion(Long version);

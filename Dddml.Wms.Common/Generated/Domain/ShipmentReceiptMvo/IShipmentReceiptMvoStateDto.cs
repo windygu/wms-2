@@ -70,6 +70,12 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             set;
         }
 
+        decimal? DamagedQuantity
+        {
+            get;
+            set;
+        }
+
         long? Version
         {
             get;

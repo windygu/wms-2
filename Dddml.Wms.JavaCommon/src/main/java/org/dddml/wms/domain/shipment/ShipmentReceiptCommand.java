@@ -50,6 +50,10 @@ public interface ShipmentReceiptCommand extends Command
 
         void setRejectedQuantity(java.math.BigDecimal rejectedQuantity);
 
+        java.math.BigDecimal getDamagedQuantity();
+
+        void setDamagedQuantity(java.math.BigDecimal damagedQuantity);
+
         Boolean getActive();
 
         void setActive(Boolean active);
@@ -93,6 +97,10 @@ public interface ShipmentReceiptCommand extends Command
         Boolean getIsPropertyRejectedQuantityRemoved();
 
         void setIsPropertyRejectedQuantityRemoved(Boolean removed);
+
+        Boolean getIsPropertyDamagedQuantityRemoved();
+
+        void setIsPropertyDamagedQuantityRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

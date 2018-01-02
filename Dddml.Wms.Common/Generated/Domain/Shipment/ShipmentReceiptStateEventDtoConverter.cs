@@ -46,6 +46,7 @@ namespace Dddml.Wms.Domain.Shipment
             dto.ItemDescription = e.ItemDescription;
             dto.AcceptedQuantity = e.AcceptedQuantity;
             dto.RejectedQuantity = e.RejectedQuantity;
+            dto.DamagedQuantity = e.DamagedQuantity;
             dto.Active = e.Active;
             return dto;
         }
@@ -66,6 +67,7 @@ namespace Dddml.Wms.Domain.Shipment
             dto.ItemDescription = e.ItemDescription;
             dto.AcceptedQuantity = e.AcceptedQuantity;
             dto.RejectedQuantity = e.RejectedQuantity;
+            dto.DamagedQuantity = e.DamagedQuantity;
             dto.Active = e.Active;
             dto.IsPropertyProductIdRemoved = e.IsPropertyProductIdRemoved;
             dto.IsPropertyShipmentItemSeqIdRemoved = e.IsPropertyShipmentItemSeqIdRemoved;
@@ -75,6 +77,7 @@ namespace Dddml.Wms.Domain.Shipment
             dto.IsPropertyItemDescriptionRemoved = e.IsPropertyItemDescriptionRemoved;
             dto.IsPropertyAcceptedQuantityRemoved = e.IsPropertyAcceptedQuantityRemoved;
             dto.IsPropertyRejectedQuantityRemoved = e.IsPropertyRejectedQuantityRemoved;
+            dto.IsPropertyDamagedQuantityRemoved = e.IsPropertyDamagedQuantityRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;
 
             return dto;

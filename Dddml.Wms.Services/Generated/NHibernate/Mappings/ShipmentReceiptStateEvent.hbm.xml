@@ -20,6 +20,7 @@
     <property name="ItemDescription" ><column name="ItemDescription" sql-type="VARCHAR(255)" /></property>
     <property name="AcceptedQuantity" ><column name="AcceptedQuantity" sql-type="DECIMAL(18,6)" /></property>
     <property name="RejectedQuantity" ><column name="RejectedQuantity" sql-type="DECIMAL(18,6)" /></property>
+    <property name="DamagedQuantity" ><column name="DamagedQuantity" sql-type="DECIMAL(18,6)" /></property>
     <property name="Active" ></property>
 
     <property name="CreatedBy" column="CreatedBy"/>
@@ -50,6 +51,8 @@
         <property name="IsPropertyAcceptedQuantityRemoved" column="IsPropertyAcceptedQuantityRemoved"/>
 
         <property name="IsPropertyRejectedQuantityRemoved" column="IsPropertyRejectedQuantityRemoved"/>
+
+        <property name="IsPropertyDamagedQuantityRemoved" column="IsPropertyDamagedQuantityRemoved"/>
 
         <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
     </subclass>

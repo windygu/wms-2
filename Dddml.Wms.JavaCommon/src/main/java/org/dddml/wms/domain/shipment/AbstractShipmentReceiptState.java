@@ -131,6 +131,18 @@ public abstract class AbstractShipmentReceiptState implements ShipmentReceiptSta
         this.rejectedQuantity = rejectedQuantity;
     }
 
+    private java.math.BigDecimal damagedQuantity;
+
+    public java.math.BigDecimal getDamagedQuantity()
+    {
+        return this.damagedQuantity;
+    }
+
+    public void setDamagedQuantity(java.math.BigDecimal damagedQuantity)
+    {
+        this.damagedQuantity = damagedQuantity;
+    }
+
     private Long version;
 
     public Long getVersion()
@@ -262,6 +274,7 @@ public abstract class AbstractShipmentReceiptState implements ShipmentReceiptSta
         this.setItemDescription(e.getItemDescription());
         this.setAcceptedQuantity(e.getAcceptedQuantity());
         this.setRejectedQuantity(e.getRejectedQuantity());
+        this.setDamagedQuantity(e.getDamagedQuantity());
         this.setActive(e.getActive());
 
         this.setCreatedBy(e.getCreatedBy());
@@ -360,6 +373,17 @@ public abstract class AbstractShipmentReceiptState implements ShipmentReceiptSta
         else
         {
             this.setRejectedQuantity(e.getRejectedQuantity());
+        }
+        if (e.getDamagedQuantity() == null)
+        {
+            if (e.getIsPropertyDamagedQuantityRemoved() != null && e.getIsPropertyDamagedQuantityRemoved())
+            {
+                this.setDamagedQuantity(null);
+            }
+        }
+        else
+        {
+            this.setDamagedQuantity(e.getDamagedQuantity());
         }
         if (e.getActive() == null)
         {

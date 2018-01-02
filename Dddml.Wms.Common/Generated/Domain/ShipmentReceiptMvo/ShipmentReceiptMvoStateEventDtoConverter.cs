@@ -46,6 +46,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             dto.ItemDescription = e.ItemDescription;
             dto.AcceptedQuantity = e.AcceptedQuantity;
             dto.RejectedQuantity = e.RejectedQuantity;
+            dto.DamagedQuantity = e.DamagedQuantity;
             dto.Version = e.Version;
             dto.Active = e.Active;
             dto.ShipmentShipmentTypeId = e.ShipmentShipmentTypeId;
@@ -95,6 +96,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             dto.ItemDescription = e.ItemDescription;
             dto.AcceptedQuantity = e.AcceptedQuantity;
             dto.RejectedQuantity = e.RejectedQuantity;
+            dto.DamagedQuantity = e.DamagedQuantity;
             dto.Version = e.Version;
             dto.Active = e.Active;
             dto.ShipmentShipmentTypeId = e.ShipmentShipmentTypeId;
@@ -134,6 +136,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             dto.IsPropertyItemDescriptionRemoved = e.IsPropertyItemDescriptionRemoved;
             dto.IsPropertyAcceptedQuantityRemoved = e.IsPropertyAcceptedQuantityRemoved;
             dto.IsPropertyRejectedQuantityRemoved = e.IsPropertyRejectedQuantityRemoved;
+            dto.IsPropertyDamagedQuantityRemoved = e.IsPropertyDamagedQuantityRemoved;
             dto.IsPropertyVersionRemoved = e.IsPropertyVersionRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;
             dto.IsPropertyShipmentShipmentTypeIdRemoved = e.IsPropertyShipmentShipmentTypeIdRemoved;
