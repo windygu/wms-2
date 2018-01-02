@@ -19,6 +19,7 @@ public final class ProductCategoryFilteringProperties
             "categoryImageUrl",
             "detailScreen",
             "showInSelect",
+            "attributeSetId",
             "version",
             "createdBy",
             "createdAt",
@@ -37,6 +38,7 @@ public final class ProductCategoryFilteringProperties
             "String",
             "String",
             "Boolean",
+            "String",
             "Long",
             "String",
             "Date",
@@ -74,6 +76,8 @@ public final class ProductCategoryFilteringProperties
         aliasMap.put("DetailScreen", "detailScreen");
         aliasMap.put("showInSelect", "showInSelect");
         aliasMap.put("ShowInSelect", "showInSelect");
+        aliasMap.put("attributeSetId", "attributeSetId");
+        aliasMap.put("AttributeSetId", "attributeSetId");
         aliasMap.put("version", "version");
         aliasMap.put("Version", "version");
         aliasMap.put("createdBy", "createdBy");

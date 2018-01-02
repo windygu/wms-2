@@ -26,7 +26,7 @@ public class HibernateProductCategoryStateQueryRepository implements ProductCate
         return this.sessionFactory.getCurrentSession();
     }
     
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("ProductCategoryId", "ProductCategoryTypeId", "PrimaryParentCategoryId", "CategoryName", "Description", "CategoryImageUrl", "DetailScreen", "ShowInSelect", "ProductCategoryIdToProductCategories", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("ProductCategoryId", "ProductCategoryTypeId", "PrimaryParentCategoryId", "CategoryName", "Description", "CategoryImageUrl", "DetailScreen", "ShowInSelect", "AttributeSetId", "ChildProductCategories", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     
@@ -133,7 +133,7 @@ public class HibernateProductCategoryStateQueryRepository implements ProductCate
     }
 
     @Transactional(readOnly = true)
-    public Iterable<ProductCategoryState> getProductCategoryIdToProductCategories(String productCategoryId) {
+    public Iterable<ProductCategoryState> getChildProductCategories(String productCategoryId) {
         ProductCategoryState productCategoryState = getCurrentSession().get(AbstractProductCategoryState.SimpleProductCategoryState.class, productCategoryId);
         if (productCategoryState == null) { return null; }
         Criteria criteria = getCurrentSession().createCriteria(ProductCategoryState.class);

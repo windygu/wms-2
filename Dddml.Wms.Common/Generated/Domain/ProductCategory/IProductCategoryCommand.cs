@@ -37,6 +37,8 @@ namespace Dddml.Wms.Domain.ProductCategory
 
 		bool? ShowInSelect { get; set; }
 
+		string AttributeSetId { get; set; }
+
 		bool? Active { get; set; }
 
 
@@ -62,6 +64,8 @@ namespace Dddml.Wms.Domain.ProductCategory
 		bool IsPropertyDetailScreenRemoved { get; set; }
 
 		bool IsPropertyShowInSelectRemoved { get; set; }
+
+		bool IsPropertyAttributeSetIdRemoved { get; set; }
 
 		bool IsPropertyActiveRemoved { get; set; }
 

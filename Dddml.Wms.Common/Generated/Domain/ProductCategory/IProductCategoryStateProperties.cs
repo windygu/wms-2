@@ -30,6 +30,8 @@ namespace Dddml.Wms.Domain.ProductCategory
 
 		bool ShowInSelect { get; set; }
 
+		string AttributeSetId { get; set; }
+
 		long Version { get; set; }
 
 		bool Active { get; set; }

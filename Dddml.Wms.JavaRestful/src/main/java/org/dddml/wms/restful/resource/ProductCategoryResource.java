@@ -179,12 +179,12 @@ public class ProductCategoryResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/ProductCategoryIdToProductCategories") @GET
-    public ProductCategoryStateDto[] getProductCategoryIdToProductCategories(String id)
+    @Path("{id}/ChildProductCategories") @GET
+    public ProductCategoryStateDto[] getChildProductCategories(String id)
     {
         try {
             String idObj = id;
-            Iterable<ProductCategoryState> states = productCategoryApplicationService.getProductCategoryIdToProductCategories(idObj);
+            Iterable<ProductCategoryState> states = productCategoryApplicationService.getChildProductCategories(idObj);
             if (states == null) { return null; }
             ProductCategoryStateDto.DtoConverter dtoConverter = new ProductCategoryStateDto.DtoConverter();
             dtoConverter.setAllFieldsReturned(true);

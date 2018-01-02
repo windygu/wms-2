@@ -248,9 +248,38 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "ProductCategoryIdToProductCategories",
+                    Name = "AttributeSetId",
+                    Type = typeof(string),
+                    TypeName = "string",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
                     DisplayName = "",
-                    Description = "PrimaryChild",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "AttributeSet",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
+                    Name = "ChildProductCategories",
+                    DisplayName = "",
+                    Description = "",
                     Length = 0,
                     GenericTypeName = "",
                     ReferenceTypeName = "",
@@ -506,6 +535,8 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("detailScreen", "DetailScreen");
             d.Add("ShowInSelect", "ShowInSelect");
             d.Add("showInSelect", "ShowInSelect");
+            d.Add("AttributeSetId", "AttributeSetId");
+            d.Add("attributeSetId", "AttributeSetId");
             d.Add("Version", "Version");
             d.Add("version", "Version");
             d.Add("CreatedBy", "CreatedBy");

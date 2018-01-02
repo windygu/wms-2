@@ -18,6 +18,7 @@
 	<property name="categoryImageUrl" ><column name="CategoryImageUrl" sql-type="VARCHAR(2000)" /></property>
 	<property name="detailScreen" ><column name="DetailScreen" sql-type="VARCHAR(255)" /></property>
 	<property name="showInSelect" ></property>
+	<property name="attributeSetId" ></property>
 	<property name="createdBy" ></property>
 	<property name="updatedBy" ></property>
 	<property name="active" ></property>

@@ -104,6 +104,16 @@ public class ProductCategoryStateEventDto extends AbstractStateEvent
         this.showInSelect = showInSelect;
     }
 
+    private String attributeSetId;
+
+    public String getAttributeSetId() {
+        return this.attributeSetId;
+    }
+
+    public void setAttributeSetId(String attributeSetId) {
+        this.attributeSetId = attributeSetId;
+    }
+
     private Boolean active;
 
     public Boolean getActive() {
@@ -202,6 +212,16 @@ public class ProductCategoryStateEventDto extends AbstractStateEvent
 
     public void setIsPropertyShowInSelectRemoved(Boolean removed) {
         this.isPropertyShowInSelectRemoved = removed;
+    }
+
+    private Boolean isPropertyAttributeSetIdRemoved;
+
+    public Boolean getIsPropertyAttributeSetIdRemoved() {
+        return this.isPropertyAttributeSetIdRemoved;
+    }
+
+    public void setIsPropertyAttributeSetIdRemoved(Boolean removed) {
+        this.isPropertyAttributeSetIdRemoved = removed;
     }
 
     private Boolean isPropertyActiveRemoved;

@@ -266,6 +266,34 @@ namespace Dddml.Wms.Domain.ProductCategory
             }
         }
 
+		public virtual string AttributeSetId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("AttributeSetId"))
+                {
+                    return _state.AttributeSetId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.AttributeSetId = value;
+            }
+        }
+
+        string IProductCategoryStateProperties.AttributeSetId
+        {
+            get 
+            {
+                return (this._state as IProductCategoryStateProperties).AttributeSetId;
+            }
+            set 
+            {
+                (this._state as IProductCategoryStateProperties).AttributeSetId = value;
+            }
+        }
+
 		public virtual bool? Active
         {
             get

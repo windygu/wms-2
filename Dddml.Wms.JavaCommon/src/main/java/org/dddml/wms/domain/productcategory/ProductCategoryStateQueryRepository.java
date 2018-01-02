@@ -26,7 +26,7 @@ public interface ProductCategoryStateQueryRepository
 
     long getCount(Criterion filter);
 
-    Iterable<ProductCategoryState> getProductCategoryIdToProductCategories(String productCategoryId);
+    Iterable<ProductCategoryState> getChildProductCategories(String productCategoryId);
 
 }
 

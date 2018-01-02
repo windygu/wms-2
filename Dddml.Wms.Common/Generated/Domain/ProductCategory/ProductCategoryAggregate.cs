@@ -114,6 +114,7 @@ namespace Dddml.Wms.Domain.ProductCategory
             e.CategoryImageUrl = c.CategoryImageUrl;
             e.DetailScreen = c.DetailScreen;
             e.ShowInSelect = c.ShowInSelect;
+            e.AttributeSetId = c.AttributeSetId;
             e.Active = c.Active;
             e.CommandId = c.CommandId;
 
@@ -138,6 +139,7 @@ namespace Dddml.Wms.Domain.ProductCategory
             e.CategoryImageUrl = c.CategoryImageUrl;
             e.DetailScreen = c.DetailScreen;
             e.ShowInSelect = c.ShowInSelect;
+            e.AttributeSetId = c.AttributeSetId;
             e.Active = c.Active;
             e.IsPropertyProductCategoryTypeIdRemoved = c.IsPropertyProductCategoryTypeIdRemoved;
             e.IsPropertyPrimaryParentCategoryIdRemoved = c.IsPropertyPrimaryParentCategoryIdRemoved;
@@ -146,6 +148,7 @@ namespace Dddml.Wms.Domain.ProductCategory
             e.IsPropertyCategoryImageUrlRemoved = c.IsPropertyCategoryImageUrlRemoved;
             e.IsPropertyDetailScreenRemoved = c.IsPropertyDetailScreenRemoved;
             e.IsPropertyShowInSelectRemoved = c.IsPropertyShowInSelectRemoved;
+            e.IsPropertyAttributeSetIdRemoved = c.IsPropertyAttributeSetIdRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
             e.CommandId = c.CommandId;

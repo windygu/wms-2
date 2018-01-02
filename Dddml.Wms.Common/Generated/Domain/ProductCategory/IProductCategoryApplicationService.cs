@@ -39,7 +39,7 @@ namespace Dddml.Wms.Domain.ProductCategory
 
         IProductCategoryState GetHistoryState(string productCategoryId, long version);
 
-        IEnumerable<IProductCategoryState> GetProductCategoryIdToProductCategories(string productCategoryId);
+        IEnumerable<IProductCategoryState> GetChildProductCategories(string productCategoryId);
 
 
 	}

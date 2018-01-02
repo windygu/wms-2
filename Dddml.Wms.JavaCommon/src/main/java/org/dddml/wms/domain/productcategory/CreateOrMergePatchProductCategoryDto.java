@@ -89,6 +89,18 @@ public class CreateOrMergePatchProductCategoryDto extends AbstractProductCategor
         this.showInSelect = showInSelect;
     }
 
+    private String attributeSetId;
+
+    public String getAttributeSetId()
+    {
+        return this.attributeSetId;
+    }
+
+    public void setAttributeSetId(String attributeSetId)
+    {
+        this.attributeSetId = attributeSetId;
+    }
+
     private Boolean active;
 
     public Boolean getActive()
@@ -185,6 +197,18 @@ public class CreateOrMergePatchProductCategoryDto extends AbstractProductCategor
         this.isPropertyShowInSelectRemoved = removed;
     }
 
+    private Boolean isPropertyAttributeSetIdRemoved;
+
+    public Boolean getIsPropertyAttributeSetIdRemoved()
+    {
+        return this.isPropertyAttributeSetIdRemoved;
+    }
+
+    public void setIsPropertyAttributeSetIdRemoved(Boolean removed)
+    {
+        this.isPropertyAttributeSetIdRemoved = removed;
+    }
+
     private Boolean isPropertyActiveRemoved;
 
     public Boolean getIsPropertyActiveRemoved()
@@ -207,6 +231,7 @@ public class CreateOrMergePatchProductCategoryDto extends AbstractProductCategor
         command.setCategoryImageUrl(this.getCategoryImageUrl());
         command.setDetailScreen(this.getDetailScreen());
         command.setShowInSelect(this.getShowInSelect());
+        command.setAttributeSetId(this.getAttributeSetId());
         command.setActive(this.getActive());
     }
 
@@ -239,6 +264,7 @@ public class CreateOrMergePatchProductCategoryDto extends AbstractProductCategor
         command.setIsPropertyCategoryImageUrlRemoved(this.getIsPropertyCategoryImageUrlRemoved());
         command.setIsPropertyDetailScreenRemoved(this.getIsPropertyDetailScreenRemoved());
         command.setIsPropertyShowInSelectRemoved(this.getIsPropertyShowInSelectRemoved());
+        command.setIsPropertyAttributeSetIdRemoved(this.getIsPropertyAttributeSetIdRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
     }
 

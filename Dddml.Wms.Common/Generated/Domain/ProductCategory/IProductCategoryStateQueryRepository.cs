@@ -32,7 +32,7 @@ namespace Dddml.Wms.Domain.ProductCategory
 
         long GetCount(ICriterion filter);
 
-        IEnumerable<IProductCategoryState> GetProductCategoryIdToProductCategories(string productCategoryId);
+        IEnumerable<IProductCategoryState> GetChildProductCategories(string productCategoryId);
 
 	}
 

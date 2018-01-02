@@ -28,7 +28,7 @@ namespace Dddml.Wms.Domain.ProductCategory.NHibernate
 			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
-        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "ProductCategoryId", "ProductCategoryTypeId", "PrimaryParentCategoryId", "CategoryName", "Description", "CategoryImageUrl", "DetailScreen", "ShowInSelect", "ProductCategoryIdToProductCategories", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
+        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "ProductCategoryId", "ProductCategoryTypeId", "PrimaryParentCategoryId", "CategoryName", "Description", "CategoryImageUrl", "DetailScreen", "ShowInSelect", "AttributeSetId", "ChildProductCategories", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
     
         public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
 

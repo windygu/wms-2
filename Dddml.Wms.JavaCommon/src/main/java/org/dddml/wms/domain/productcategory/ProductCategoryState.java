@@ -44,6 +44,10 @@ public interface ProductCategoryState
 
     void setShowInSelect(Boolean showInSelect);
 
+    String getAttributeSetId();
+
+    void setAttributeSetId(String attributeSetId);
+
     Long getVersion();
 
     void setVersion(Long version);

@@ -165,9 +165,9 @@ namespace Dddml.Wms.Domain.ProductCategory
             return new ProductCategoryState(eventStream.Events);
         }
 
-        public virtual IEnumerable<IProductCategoryState> GetProductCategoryIdToProductCategories(string productCategoryId)
+        public virtual IEnumerable<IProductCategoryState> GetChildProductCategories(string productCategoryId)
         {
-            var states = StateQueryRepository.GetProductCategoryIdToProductCategories(productCategoryId);
+            var states = StateQueryRepository.GetChildProductCategories(productCategoryId);
 			return states;
         }
 

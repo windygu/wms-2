@@ -102,8 +102,8 @@ public abstract class AbstractProductCategoryApplicationService implements Produ
         return new AbstractProductCategoryState.SimpleProductCategoryState(eventStream.getEvents());
     }
 
-    public Iterable<ProductCategoryState> getProductCategoryIdToProductCategories(String productCategoryId) {
-        Iterable<ProductCategoryState> states = getStateQueryRepository().getProductCategoryIdToProductCategories(productCategoryId);
+    public Iterable<ProductCategoryState> getChildProductCategories(String productCategoryId) {
+        Iterable<ProductCategoryState> states = getStateQueryRepository().getChildProductCategories(productCategoryId);
 		return states;
     }
 

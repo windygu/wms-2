@@ -44,6 +44,7 @@ public abstract class AbstractProductCategoryStateCommandConverter<TCreateProduc
         cmd.setCategoryImageUrl(state.getCategoryImageUrl());
         cmd.setDetailScreen(state.getDetailScreen());
         cmd.setShowInSelect(state.getShowInSelect());
+        cmd.setAttributeSetId(state.getAttributeSetId());
         cmd.setActive(state.getActive());
             
         if (state.getProductCategoryTypeId() == null) { cmd.setIsPropertyProductCategoryTypeIdRemoved(true); }
@@ -53,6 +54,7 @@ public abstract class AbstractProductCategoryStateCommandConverter<TCreateProduc
         if (state.getCategoryImageUrl() == null) { cmd.setIsPropertyCategoryImageUrlRemoved(true); }
         if (state.getDetailScreen() == null) { cmd.setIsPropertyDetailScreenRemoved(true); }
         if (state.getShowInSelect() == null) { cmd.setIsPropertyShowInSelectRemoved(true); }
+        if (state.getAttributeSetId() == null) { cmd.setIsPropertyAttributeSetIdRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
         return cmd;
     }
@@ -70,6 +72,7 @@ public abstract class AbstractProductCategoryStateCommandConverter<TCreateProduc
         cmd.setCategoryImageUrl(state.getCategoryImageUrl());
         cmd.setDetailScreen(state.getDetailScreen());
         cmd.setShowInSelect(state.getShowInSelect());
+        cmd.setAttributeSetId(state.getAttributeSetId());
         cmd.setActive(state.getActive());
         return cmd;
     }

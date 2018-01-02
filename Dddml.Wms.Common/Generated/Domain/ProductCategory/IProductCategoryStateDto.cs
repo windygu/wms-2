@@ -62,6 +62,12 @@ namespace Dddml.Wms.Domain.ProductCategory
             set;
         }
 
+        string AttributeSetId
+        {
+            get;
+            set;
+        }
+
         bool? Active
         {
             get;

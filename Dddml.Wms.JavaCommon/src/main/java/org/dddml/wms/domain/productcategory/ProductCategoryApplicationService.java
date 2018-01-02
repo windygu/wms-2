@@ -34,7 +34,7 @@ public interface ProductCategoryApplicationService
 
     ProductCategoryState getHistoryState(String productCategoryId, long version);
 
-    Iterable<ProductCategoryState> getProductCategoryIdToProductCategories(String productCategoryId);
+    Iterable<ProductCategoryState> getChildProductCategories(String productCategoryId);
 
 }
 

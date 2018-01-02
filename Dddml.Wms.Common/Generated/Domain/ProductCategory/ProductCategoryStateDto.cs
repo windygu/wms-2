@@ -63,6 +63,12 @@ namespace Dddml.Wms.Domain.ProductCategory
             set;
         }
 
+        public virtual string AttributeSetId
+        {
+            get;
+            set;
+        }
+
         public virtual bool? Active
         {
             get;
@@ -110,6 +116,7 @@ namespace Dddml.Wms.Domain.ProductCategory
             state.CategoryImageUrl = this.CategoryImageUrl;
             state.DetailScreen = this.DetailScreen;
             if (this.ShowInSelect != null && this.ShowInSelect.HasValue) { state.ShowInSelect = this.ShowInSelect.Value; }
+            state.AttributeSetId = this.AttributeSetId;
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             state.CreatedBy = this.CreatedBy;

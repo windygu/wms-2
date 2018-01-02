@@ -68,6 +68,10 @@ public interface ProductCategoryCommand extends Command
 
         void setShowInSelect(Boolean showInSelect);
 
+        String getAttributeSetId();
+
+        void setAttributeSetId(String attributeSetId);
+
         Boolean getActive();
 
         void setActive(Boolean active);
@@ -107,6 +111,10 @@ public interface ProductCategoryCommand extends Command
         Boolean getIsPropertyShowInSelectRemoved();
 
         void setIsPropertyShowInSelectRemoved(Boolean removed);
+
+        Boolean getIsPropertyAttributeSetIdRemoved();
+
+        void setIsPropertyAttributeSetIdRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

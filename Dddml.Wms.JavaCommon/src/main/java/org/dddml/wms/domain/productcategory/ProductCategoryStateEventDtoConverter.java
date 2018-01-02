@@ -35,6 +35,7 @@ public class ProductCategoryStateEventDtoConverter {
         dto.setCategoryImageUrl(e.getCategoryImageUrl());
         dto.setDetailScreen(e.getDetailScreen());
         dto.setShowInSelect(e.getShowInSelect());
+        dto.setAttributeSetId(e.getAttributeSetId());
         dto.setActive(e.getActive());
         return dto;
     }
@@ -52,6 +53,7 @@ public class ProductCategoryStateEventDtoConverter {
         dto.setCategoryImageUrl(e.getCategoryImageUrl());
         dto.setDetailScreen(e.getDetailScreen());
         dto.setShowInSelect(e.getShowInSelect());
+        dto.setAttributeSetId(e.getAttributeSetId());
         dto.setActive(e.getActive());
         dto.setIsPropertyProductCategoryTypeIdRemoved(e.getIsPropertyProductCategoryTypeIdRemoved());
         dto.setIsPropertyPrimaryParentCategoryIdRemoved(e.getIsPropertyPrimaryParentCategoryIdRemoved());
@@ -60,6 +62,7 @@ public class ProductCategoryStateEventDtoConverter {
         dto.setIsPropertyCategoryImageUrlRemoved(e.getIsPropertyCategoryImageUrlRemoved());
         dto.setIsPropertyDetailScreenRemoved(e.getIsPropertyDetailScreenRemoved());
         dto.setIsPropertyShowInSelectRemoved(e.getIsPropertyShowInSelectRemoved());
+        dto.setIsPropertyAttributeSetIdRemoved(e.getIsPropertyAttributeSetIdRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
         return dto;
     }

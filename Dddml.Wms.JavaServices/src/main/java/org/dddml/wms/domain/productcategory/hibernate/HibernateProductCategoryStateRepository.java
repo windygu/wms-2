@@ -26,7 +26,7 @@ public class HibernateProductCategoryStateRepository implements ProductCategoryS
         return this.sessionFactory.getCurrentSession();
     }
     
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("ProductCategoryId", "ProductCategoryTypeId", "PrimaryParentCategoryId", "CategoryName", "Description", "CategoryImageUrl", "DetailScreen", "ShowInSelect", "ProductCategoryIdToProductCategories", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("ProductCategoryId", "ProductCategoryTypeId", "PrimaryParentCategoryId", "CategoryName", "Description", "CategoryImageUrl", "DetailScreen", "ShowInSelect", "AttributeSetId", "ChildProductCategories", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     

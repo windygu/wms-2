@@ -49,6 +49,7 @@ namespace Dddml.Wms.Domain.ProductCategory
             dto.CategoryImageUrl = e.CategoryImageUrl;
             dto.DetailScreen = e.DetailScreen;
             dto.ShowInSelect = e.ShowInSelect;
+            dto.AttributeSetId = e.AttributeSetId;
             dto.Active = e.Active;
             return dto;
         }
@@ -67,6 +68,7 @@ namespace Dddml.Wms.Domain.ProductCategory
             dto.CategoryImageUrl = e.CategoryImageUrl;
             dto.DetailScreen = e.DetailScreen;
             dto.ShowInSelect = e.ShowInSelect;
+            dto.AttributeSetId = e.AttributeSetId;
             dto.Active = e.Active;
             dto.IsPropertyProductCategoryTypeIdRemoved = e.IsPropertyProductCategoryTypeIdRemoved;
             dto.IsPropertyPrimaryParentCategoryIdRemoved = e.IsPropertyPrimaryParentCategoryIdRemoved;
@@ -75,6 +77,7 @@ namespace Dddml.Wms.Domain.ProductCategory
             dto.IsPropertyCategoryImageUrlRemoved = e.IsPropertyCategoryImageUrlRemoved;
             dto.IsPropertyDetailScreenRemoved = e.IsPropertyDetailScreenRemoved;
             dto.IsPropertyShowInSelectRemoved = e.IsPropertyShowInSelectRemoved;
+            dto.IsPropertyAttributeSetIdRemoved = e.IsPropertyAttributeSetIdRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;
 
             return dto;

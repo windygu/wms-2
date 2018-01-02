@@ -289,7 +289,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetHistoryStateAsync(productCategoryId, version).GetAwaiter().GetResult();
         }
 
-        public IEnumerable<IProductCategoryState> GetProductCategoryIdToProductCategories(string productCategoryId)
+        public IEnumerable<IProductCategoryState> GetChildProductCategories(string productCategoryId)
         {
             throw new NotImplementedException();//todo
         }

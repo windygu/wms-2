@@ -55,6 +55,7 @@ namespace Dddml.Wms.Domain.ProductCategory
             cmd.CategoryImageUrl = state.CategoryImageUrl;
             cmd.DetailScreen = state.DetailScreen;
             cmd.ShowInSelect = state.ShowInSelect;
+            cmd.AttributeSetId = state.AttributeSetId;
             cmd.Active = ((IProductCategoryStateProperties)state).Active;
             
             if (state.ProductCategoryTypeId == null) { cmd.IsPropertyProductCategoryTypeIdRemoved = true; }
@@ -63,6 +64,7 @@ namespace Dddml.Wms.Domain.ProductCategory
             if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
             if (state.CategoryImageUrl == null) { cmd.IsPropertyCategoryImageUrlRemoved = true; }
             if (state.DetailScreen == null) { cmd.IsPropertyDetailScreenRemoved = true; }
+            if (state.AttributeSetId == null) { cmd.IsPropertyAttributeSetIdRemoved = true; }
             return cmd;
         }
 
@@ -81,6 +83,7 @@ namespace Dddml.Wms.Domain.ProductCategory
             cmd.CategoryImageUrl = state.CategoryImageUrl;
             cmd.DetailScreen = state.DetailScreen;
             cmd.ShowInSelect = state.ShowInSelect;
+            cmd.AttributeSetId = state.AttributeSetId;
             cmd.Active = ((IProductCategoryStateProperties)state).Active;
             return cmd;
         }

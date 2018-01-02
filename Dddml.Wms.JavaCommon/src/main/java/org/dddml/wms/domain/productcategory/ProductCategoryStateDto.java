@@ -105,6 +105,18 @@ public class ProductCategoryStateDto
         this.showInSelect = showInSelect;
     }
 
+    private String attributeSetId;
+
+    public String getAttributeSetId()
+    {
+        return this.attributeSetId;
+    }
+
+    public void setAttributeSetId(String attributeSetId)
+    {
+        this.attributeSetId = attributeSetId;
+    }
+
     private Boolean active;
 
     public Boolean getActive()
@@ -226,6 +238,9 @@ public class ProductCategoryStateDto
             }
             if (returnedFieldsContains("ShowInSelect")) {
                 dto.setShowInSelect(state.getShowInSelect());
+            }
+            if (returnedFieldsContains("AttributeSetId")) {
+                dto.setAttributeSetId(state.getAttributeSetId());
             }
             if (returnedFieldsContains("Active")) {
                 dto.setActive(state.getActive());

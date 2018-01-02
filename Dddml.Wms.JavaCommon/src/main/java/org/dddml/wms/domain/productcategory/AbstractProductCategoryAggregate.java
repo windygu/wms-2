@@ -64,6 +64,7 @@ public abstract class AbstractProductCategoryAggregate extends AbstractAggregate
         e.setCategoryImageUrl(c.getCategoryImageUrl());
         e.setDetailScreen(c.getDetailScreen());
         e.setShowInSelect(c.getShowInSelect());
+        e.setAttributeSetId(c.getAttributeSetId());
         e.setActive(c.getActive());
         ((AbstractProductCategoryStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
@@ -81,6 +82,7 @@ public abstract class AbstractProductCategoryAggregate extends AbstractAggregate
         e.setCategoryImageUrl(c.getCategoryImageUrl());
         e.setDetailScreen(c.getDetailScreen());
         e.setShowInSelect(c.getShowInSelect());
+        e.setAttributeSetId(c.getAttributeSetId());
         e.setActive(c.getActive());
         e.setIsPropertyProductCategoryTypeIdRemoved(c.getIsPropertyProductCategoryTypeIdRemoved());
         e.setIsPropertyPrimaryParentCategoryIdRemoved(c.getIsPropertyPrimaryParentCategoryIdRemoved());
@@ -89,6 +91,7 @@ public abstract class AbstractProductCategoryAggregate extends AbstractAggregate
         e.setIsPropertyCategoryImageUrlRemoved(c.getIsPropertyCategoryImageUrlRemoved());
         e.setIsPropertyDetailScreenRemoved(c.getIsPropertyDetailScreenRemoved());
         e.setIsPropertyShowInSelectRemoved(c.getIsPropertyShowInSelectRemoved());
+        e.setIsPropertyAttributeSetIdRemoved(c.getIsPropertyAttributeSetIdRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         ((AbstractProductCategoryStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());

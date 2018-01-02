@@ -104,13 +104,13 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = ProductCategoriesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
-        [Route("{id}/ProductCategoryIdToProductCategories")]
+        [Route("{id}/ChildProductCategories")]
         [HttpGet]
-        public IEnumerable<IProductCategoryStateDto> GetProductCategoryIdToProductCategories(string id)
+        public IEnumerable<IProductCategoryStateDto> GetChildProductCategories(string id)
         {
           try {
             var idObj = id;
-            var states = _productCategoryApplicationService.GetProductCategoryIdToProductCategories(idObj);
+            var states = _productCategoryApplicationService.GetChildProductCategories(idObj);
             if (states == null) { return null; }
             var stateDtos = new List<IProductCategoryStateDto>();
             foreach (var s in states)

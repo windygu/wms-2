@@ -4,10 +4,12 @@
 
 # ------------------------------
 aggregates:
-  ProductCategory: &o0
+
+  ProductCategory:
     id:
       name: ProductCategoryId
       type: id-ne
+      
     properties:
       ProductCategoryTypeId:
         type: id
@@ -29,13 +31,21 @@ aggregates:
         type: long-varchar
       ShowInSelect:
         type: bool
-      ProductCategoryIdToProductCategories:
-        description: PrimaryChild
+      
+      # ------------------------------------
+      AttributeSetId:
+        type: string
+        referenceType: AttributeSet
+        notNull: false
+      # ------------------------------------
+        
+      ChildProductCategories:
         itemType: ProductCategory
         isDerived: true
         itemPropertyMap:
         - propertyName: ProductCategoryId
           relatedPropertyName: PrimaryParentCategoryId
+          
     references:
       PrimaryParentCategoryId:
         displayName: PRIMARY-PARENT-CATEGORY-ID

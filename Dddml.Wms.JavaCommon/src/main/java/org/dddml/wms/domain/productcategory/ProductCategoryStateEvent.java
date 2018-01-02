@@ -41,6 +41,10 @@ public interface ProductCategoryStateEvent extends Event
 
     void setShowInSelect(Boolean showInSelect);
 
+    String getAttributeSetId();
+
+    void setAttributeSetId(String attributeSetId);
+
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -92,6 +96,10 @@ public interface ProductCategoryStateEvent extends Event
         Boolean getIsPropertyShowInSelectRemoved();
 
         void setIsPropertyShowInSelectRemoved(Boolean removed);
+
+        Boolean getIsPropertyAttributeSetIdRemoved();
+
+        void setIsPropertyAttributeSetIdRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

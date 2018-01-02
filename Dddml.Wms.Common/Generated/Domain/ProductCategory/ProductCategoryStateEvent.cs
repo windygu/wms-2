@@ -37,6 +37,8 @@ namespace Dddml.Wms.Domain.ProductCategory
 
 		public virtual bool? ShowInSelect { get; set; }
 
+		public virtual string AttributeSetId { get; set; }
+
 		public virtual bool? Active { get; set; }
 
 		public virtual string CreatedBy { get; set; }
@@ -140,6 +142,8 @@ namespace Dddml.Wms.Domain.ProductCategory
 		public virtual bool IsPropertyDetailScreenRemoved { get; set; }
 
 		public virtual bool IsPropertyShowInSelectRemoved { get; set; }
+
+		public virtual bool IsPropertyAttributeSetIdRemoved { get; set; }
 
 		public virtual bool IsPropertyActiveRemoved { get; set; }
 

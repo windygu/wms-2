@@ -105,6 +105,18 @@ public abstract class AbstractProductCategoryState implements ProductCategorySta
         this.showInSelect = showInSelect;
     }
 
+    private String attributeSetId;
+
+    public String getAttributeSetId()
+    {
+        return this.attributeSetId;
+    }
+
+    public void setAttributeSetId(String attributeSetId)
+    {
+        this.attributeSetId = attributeSetId;
+    }
+
     private Long version;
 
     public Long getVersion()
@@ -260,6 +272,7 @@ public abstract class AbstractProductCategoryState implements ProductCategorySta
         this.setCategoryImageUrl(e.getCategoryImageUrl());
         this.setDetailScreen(e.getDetailScreen());
         this.setShowInSelect(e.getShowInSelect());
+        this.setAttributeSetId(e.getAttributeSetId());
         this.setActive(e.getActive());
 
         this.setDeleted(false);
@@ -349,6 +362,17 @@ public abstract class AbstractProductCategoryState implements ProductCategorySta
         else
         {
             this.setShowInSelect(e.getShowInSelect());
+        }
+        if (e.getAttributeSetId() == null)
+        {
+            if (e.getIsPropertyAttributeSetIdRemoved() != null && e.getIsPropertyAttributeSetIdRemoved())
+            {
+                this.setAttributeSetId(null);
+            }
+        }
+        else
+        {
+            this.setAttributeSetId(e.getAttributeSetId());
         }
         if (e.getActive() == null)
         {

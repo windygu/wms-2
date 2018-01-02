@@ -188,6 +188,8 @@ namespace Dddml.Wms.Domain.ProductCategory
 
             this.ShowInSelect = (e.ShowInSelect != null && e.ShowInSelect.HasValue) ? e.ShowInSelect.Value : default(bool);
 
+			this.AttributeSetId = e.AttributeSetId;
+
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 
 			this.Deleted = false;
@@ -285,6 +287,18 @@ namespace Dddml.Wms.Domain.ProductCategory
 			else
 			{
 				this.ShowInSelect = (e.ShowInSelect != null && e.ShowInSelect.HasValue) ? e.ShowInSelect.Value : default(bool);
+			}
+
+			if (e.AttributeSetId == null)
+			{
+				if (e.IsPropertyAttributeSetIdRemoved)
+				{
+					this.AttributeSetId = default(string);
+				}
+			}
+			else
+			{
+				this.AttributeSetId = e.AttributeSetId;
 			}
 
 			if (e.Active == null)
