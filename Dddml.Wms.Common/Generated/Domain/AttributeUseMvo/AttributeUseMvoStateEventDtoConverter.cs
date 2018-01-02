@@ -49,8 +49,6 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             dto.AttributeSetAttributeSetName = e.AttributeSetAttributeSetName;
             dto.AttributeSetOrganizationId = e.AttributeSetOrganizationId;
             dto.AttributeSetDescription = e.AttributeSetDescription;
-            dto.AttributeSetSerialNumberAttributeId = e.AttributeSetSerialNumberAttributeId;
-            dto.AttributeSetLotAttributeId = e.AttributeSetLotAttributeId;
             dto.AttributeSetReferenceId = e.AttributeSetReferenceId;
             dto.AttributeSetIsInstanceAttributeSet = e.AttributeSetIsInstanceAttributeSet;
             dto.AttributeSetIsMandatory = e.AttributeSetIsMandatory;
@@ -76,8 +74,6 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             dto.AttributeSetAttributeSetName = e.AttributeSetAttributeSetName;
             dto.AttributeSetOrganizationId = e.AttributeSetOrganizationId;
             dto.AttributeSetDescription = e.AttributeSetDescription;
-            dto.AttributeSetSerialNumberAttributeId = e.AttributeSetSerialNumberAttributeId;
-            dto.AttributeSetLotAttributeId = e.AttributeSetLotAttributeId;
             dto.AttributeSetReferenceId = e.AttributeSetReferenceId;
             dto.AttributeSetIsInstanceAttributeSet = e.AttributeSetIsInstanceAttributeSet;
             dto.AttributeSetIsMandatory = e.AttributeSetIsMandatory;
@@ -93,8 +89,6 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             dto.IsPropertyAttributeSetAttributeSetNameRemoved = e.IsPropertyAttributeSetAttributeSetNameRemoved;
             dto.IsPropertyAttributeSetOrganizationIdRemoved = e.IsPropertyAttributeSetOrganizationIdRemoved;
             dto.IsPropertyAttributeSetDescriptionRemoved = e.IsPropertyAttributeSetDescriptionRemoved;
-            dto.IsPropertyAttributeSetSerialNumberAttributeIdRemoved = e.IsPropertyAttributeSetSerialNumberAttributeIdRemoved;
-            dto.IsPropertyAttributeSetLotAttributeIdRemoved = e.IsPropertyAttributeSetLotAttributeIdRemoved;
             dto.IsPropertyAttributeSetReferenceIdRemoved = e.IsPropertyAttributeSetReferenceIdRemoved;
             dto.IsPropertyAttributeSetIsInstanceAttributeSetRemoved = e.IsPropertyAttributeSetIsInstanceAttributeSetRemoved;
             dto.IsPropertyAttributeSetIsMandatoryRemoved = e.IsPropertyAttributeSetIsMandatoryRemoved;

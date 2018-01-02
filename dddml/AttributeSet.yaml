@@ -109,13 +109,9 @@ aggregates:
         
         # bool HasSerialNumber
         # bool IsSerialNumberMandatory
-        SerialNumberAttributeId:
-          type: string
 
         # bool HasLot
         # bool IsLotMandatory
-        LotAttributeId:
-          type: string
            
         # bool HasGuaranteeDate
         # bool IsGuaranteeDateMandatory
@@ -129,11 +125,17 @@ aggregates:
         # If not selected, all instances of the product share the attribute (e.g. color=green). ]
         IsInstanceAttributeSet:
           type: bool
+          defaultLogic:
+            Java: "true"
+            CSharp: "true"
           
         # string MandatoryType
         # The specification of a Product Attribute Instance is mandatory.
         IsMandatory:
           type: bool
+          defaultLogic:
+            Java: "true"
+            CSharp: "true"
           
         AttributeUses:
           itemType: AttributeUse

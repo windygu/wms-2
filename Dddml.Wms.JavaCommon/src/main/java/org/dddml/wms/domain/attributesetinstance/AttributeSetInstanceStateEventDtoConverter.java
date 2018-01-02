@@ -27,7 +27,7 @@ public class AttributeSetInstanceStateEventDtoConverter {
         dto.setOrganizationId(e.getOrganizationId());
         dto.setReferenceId(e.getReferenceId());
         dto.setSerialNumber(e.getSerialNumber());
-        dto.setLot(e.getLot());
+        dto.setLotId(e.getLotId());
         dto.setDescription(e.getDescription());
         dto.setHash(e.getHash());
         dto.setWidthInch(e.getWidthInch());

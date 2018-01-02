@@ -75,14 +75,14 @@ public class AttributeSetInstanceStateEventDto extends AbstractStateEvent
         this.serialNumber = serialNumber;
     }
 
-    private String lot;
+    private String lotId;
 
-    public String getLot() {
-        return this.lot;
+    public String getLotId() {
+        return this.lotId;
     }
 
-    public void setLot(String lot) {
-        this.lot = lot;
+    public void setLotId(String lotId) {
+        this.lotId = lotId;
     }
 
     private String description;
@@ -775,14 +775,14 @@ public class AttributeSetInstanceStateEventDto extends AbstractStateEvent
         this.isPropertySerialNumberRemoved = removed;
     }
 
-    private Boolean isPropertyLotRemoved;
+    private Boolean isPropertyLotIdRemoved;
 
-    public Boolean getIsPropertyLotRemoved() {
-        return this.isPropertyLotRemoved;
+    public Boolean getIsPropertyLotIdRemoved() {
+        return this.isPropertyLotIdRemoved;
     }
 
-    public void setIsPropertyLotRemoved(Boolean removed) {
-        this.isPropertyLotRemoved = removed;
+    public void setIsPropertyLotIdRemoved(Boolean removed) {
+        this.isPropertyLotIdRemoved = removed;
     }
 
     private Boolean isPropertyDescriptionRemoved;

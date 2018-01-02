@@ -161,7 +161,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "Lot",
+                    Name = "LotId",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -2215,8 +2215,8 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("referenceId", "ReferenceId");
             d.Add("SerialNumber", "SerialNumber");
             d.Add("serialNumber", "SerialNumber");
-            d.Add("Lot", "Lot");
-            d.Add("lot", "Lot");
+            d.Add("LotId", "LotId");
+            d.Add("lotId", "LotId");
             d.Add("Description", "Description");
             d.Add("description", "Description");
             d.Add("WidthInch", "WidthInch");

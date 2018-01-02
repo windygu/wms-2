@@ -357,7 +357,13 @@ namespace Dddml.Wms.Domain.Product
             set;
         }
 
-        public virtual string LotIdFilledIn
+        public virtual bool? IsSerialNumbered
+        {
+            get;
+            set;
+        }
+
+        public virtual bool? IsManagedByLot
         {
             get;
             set;
@@ -471,7 +477,8 @@ namespace Dddml.Wms.Domain.Product
             state.VirtualVariantMethodEnum = this.VirtualVariantMethodEnum;
             state.InShippingBox = this.InShippingBox;
             state.DefaultShipmentBoxTypeId = this.DefaultShipmentBoxTypeId;
-            state.LotIdFilledIn = this.LotIdFilledIn;
+            if (this.IsSerialNumbered != null && this.IsSerialNumbered.HasValue) { state.IsSerialNumbered = this.IsSerialNumbered.Value; }
+            if (this.IsManagedByLot != null && this.IsManagedByLot.HasValue) { state.IsManagedByLot = this.IsManagedByLot.Value; }
             state.AttributeSetId = this.AttributeSetId;
             state.AttributeSetInstanceId = this.AttributeSetInstanceId;
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }

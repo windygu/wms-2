@@ -1635,31 +1635,65 @@ namespace Dddml.Wms.Domain.Product
             }
         }
 
-		public virtual string LotIdFilledIn
-		{
+		public virtual bool? IsSerialNumbered
+        {
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("LotIdFilledIn"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("IsSerialNumbered"))
                 {
-                    return _state.LotIdFilledIn;
+                    return _state.IsSerialNumbered;
                 }
                 return null;
             }
             set
             {
-                _state.LotIdFilledIn = value;
+                if (value != null && value.HasValue)
+                {
+                    _state.IsSerialNumbered = value.Value;
+                }
             }
         }
 
-        string IProductStateProperties.LotIdFilledIn
+        bool IProductStateProperties.IsSerialNumbered
         {
             get 
             {
-                return (this._state as IProductStateProperties).LotIdFilledIn;
+                return (this._state as IProductStateProperties).IsSerialNumbered;
             }
             set 
             {
-                (this._state as IProductStateProperties).LotIdFilledIn = value;
+                (this._state as IProductStateProperties).IsSerialNumbered = value;
+            }
+        }
+
+		public virtual bool? IsManagedByLot
+        {
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("IsManagedByLot"))
+                {
+                    return _state.IsManagedByLot;
+                }
+                return null;
+            }
+            set
+            {
+                if (value != null && value.HasValue)
+                {
+                    _state.IsManagedByLot = value.Value;
+                }
+            }
+        }
+
+        bool IProductStateProperties.IsManagedByLot
+        {
+            get 
+            {
+                return (this._state as IProductStateProperties).IsManagedByLot;
+            }
+            set 
+            {
+                (this._state as IProductStateProperties).IsManagedByLot = value;
             }
         }
 

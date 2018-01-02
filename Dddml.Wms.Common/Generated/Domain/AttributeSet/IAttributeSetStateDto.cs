@@ -38,18 +38,6 @@ namespace Dddml.Wms.Domain.AttributeSet
             set;
         }
 
-        string SerialNumberAttributeId
-        {
-            get;
-            set;
-        }
-
-        string LotAttributeId
-        {
-            get;
-            set;
-        }
-
         string ReferenceId
         {
             get;

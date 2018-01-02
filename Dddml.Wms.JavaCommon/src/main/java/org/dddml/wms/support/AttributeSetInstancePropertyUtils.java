@@ -47,12 +47,12 @@ public class AttributeSetInstancePropertyUtils {
     public static String getHash(AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated instance) {
         StringBuilder sb = new StringBuilder();
         sb.append("AttributeSetId").append("=").append(getSafeStringValue(instance.getAttributeSetId())).append("|");
-        sb.append("OrganizationId").append("=").append(getSafeStringValue(instance.getAttributeSetId())).append("|");
-        sb.append("ReferenceId").append("=").append(getSafeStringValue(instance.getAttributeSetId())).append("|");
-        sb.append("SerialNumber").append("=").append(getSafeStringValue(instance.getAttributeSetId())).append("|");
-        sb.append("Lot").append("=").append(getSafeStringValue(instance.getAttributeSetId())).append("|");
-        sb.append("Description").append("=").append(getSafeStringValue(instance.getAttributeSetId())).append("|");
-        sb.append("Active").append("=").append(getSafeStringValue(instance.getAttributeSetId())).append("|");
+        sb.append("OrganizationId").append("=").append(getSafeStringValue(instance.getOrganizationId())).append("|");
+        sb.append("ReferenceId").append("=").append(getSafeStringValue(instance.getReferenceId())).append("|");
+        sb.append("SerialNumber").append("=").append(getSafeStringValue(instance.getSerialNumber())).append("|");
+        sb.append("LotId").append("=").append(getSafeStringValue(instance.getLotId())).append("|");
+        sb.append("Description").append("=").append(getSafeStringValue(instance.getDescription())).append("|");
+        sb.append("Active").append("=").append(instance.getActive()).append("|");
         sb.append("WidthInch").append("=").append(instance.getWidthInch()).append("|");
         sb.append("DiameterInch").append("=").append(instance.getDiameterInch()).append("|");
         sb.append("WeightLbs").append("=").append(instance.getWeightLbs()).append("|");
@@ -127,12 +127,12 @@ public class AttributeSetInstancePropertyUtils {
     public static String getHash(AttributeSetInstanceCommand.CreateAttributeSetInstance instance) {
         StringBuilder sb = new StringBuilder();
         sb.append("AttributeSetId").append("=").append(getSafeStringValue(instance.getAttributeSetId())).append("|");
-        sb.append("OrganizationId").append("=").append(getSafeStringValue(instance.getAttributeSetId())).append("|");
-        sb.append("ReferenceId").append("=").append(getSafeStringValue(instance.getAttributeSetId())).append("|");
-        sb.append("SerialNumber").append("=").append(getSafeStringValue(instance.getAttributeSetId())).append("|");
-        sb.append("Lot").append("=").append(getSafeStringValue(instance.getAttributeSetId())).append("|");
-        sb.append("Description").append("=").append(getSafeStringValue(instance.getAttributeSetId())).append("|");
-        sb.append("Active").append("=").append(getSafeStringValue(instance.getAttributeSetId())).append("|");
+        sb.append("OrganizationId").append("=").append(getSafeStringValue(instance.getOrganizationId())).append("|");
+        sb.append("ReferenceId").append("=").append(getSafeStringValue(instance.getReferenceId())).append("|");
+        sb.append("SerialNumber").append("=").append(getSafeStringValue(instance.getSerialNumber())).append("|");
+        sb.append("LotId").append("=").append(getSafeStringValue(instance.getLotId())).append("|");
+        sb.append("Description").append("=").append(getSafeStringValue(instance.getDescription())).append("|");
+        sb.append("Active").append("=").append(instance.getActive()).append("|");
         sb.append("WidthInch").append("=").append(instance.getWidthInch()).append("|");
         sb.append("DiameterInch").append("=").append(instance.getDiameterInch()).append("|");
         sb.append("WeightLbs").append("=").append(instance.getWeightLbs()).append("|");
@@ -207,12 +207,12 @@ public class AttributeSetInstancePropertyUtils {
     public static String getHash(AttributeSetInstanceState instance) {
         StringBuilder sb = new StringBuilder();
         sb.append("AttributeSetId").append("=").append(getSafeStringValue(instance.getAttributeSetId())).append("|");
-        sb.append("OrganizationId").append("=").append(getSafeStringValue(instance.getAttributeSetId())).append("|");
-        sb.append("ReferenceId").append("=").append(getSafeStringValue(instance.getAttributeSetId())).append("|");
-        sb.append("SerialNumber").append("=").append(getSafeStringValue(instance.getAttributeSetId())).append("|");
-        sb.append("Lot").append("=").append(getSafeStringValue(instance.getAttributeSetId())).append("|");
-        sb.append("Description").append("=").append(getSafeStringValue(instance.getAttributeSetId())).append("|");
-        sb.append("Active").append("=").append(getSafeStringValue(instance.getAttributeSetId())).append("|");
+        sb.append("OrganizationId").append("=").append(getSafeStringValue(instance.getOrganizationId())).append("|");
+        sb.append("ReferenceId").append("=").append(getSafeStringValue(instance.getReferenceId())).append("|");
+        sb.append("SerialNumber").append("=").append(getSafeStringValue(instance.getSerialNumber())).append("|");
+        sb.append("LotId").append("=").append(getSafeStringValue(instance.getLotId())).append("|");
+        sb.append("Description").append("=").append(getSafeStringValue(instance.getDescription())).append("|");
+        sb.append("Active").append("=").append(instance.getActive()).append("|");
         sb.append("WidthInch").append("=").append(instance.getWidthInch()).append("|");
         sb.append("DiameterInch").append("=").append(instance.getDiameterInch()).append("|");
         sb.append("WeightLbs").append("=").append(instance.getWeightLbs()).append("|");
@@ -289,7 +289,7 @@ public class AttributeSetInstancePropertyUtils {
                 || !propertyEquals(instance1.getOrganizationId(), instance2.getOrganizationId())
                 || !propertyEquals(instance1.getReferenceId(), instance2.getReferenceId())
                 || !propertyEquals(instance1.getSerialNumber(), instance2.getSerialNumber())
-                || !propertyEquals(instance1.getLot(), instance2.getLot())
+                || !propertyEquals(instance1.getLotId(), instance2.getLotId())
                 || !propertyEquals(instance1.getDescription(), instance2.getDescription())
                 || !propertyEquals(instance1.getActive(), instance2.getActive())
                 || !propertyEquals(instance1.getWidthInch(), instance2.getWidthInch())

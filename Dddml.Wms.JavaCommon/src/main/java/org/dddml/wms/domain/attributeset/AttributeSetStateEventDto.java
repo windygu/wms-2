@@ -64,26 +64,6 @@ public class AttributeSetStateEventDto extends AbstractStateEvent
         this.description = description;
     }
 
-    private String serialNumberAttributeId;
-
-    public String getSerialNumberAttributeId() {
-        return this.serialNumberAttributeId;
-    }
-
-    public void setSerialNumberAttributeId(String serialNumberAttributeId) {
-        this.serialNumberAttributeId = serialNumberAttributeId;
-    }
-
-    private String lotAttributeId;
-
-    public String getLotAttributeId() {
-        return this.lotAttributeId;
-    }
-
-    public void setLotAttributeId(String lotAttributeId) {
-        this.lotAttributeId = lotAttributeId;
-    }
-
     private String referenceId;
 
     public String getReferenceId() {
@@ -172,26 +152,6 @@ public class AttributeSetStateEventDto extends AbstractStateEvent
 
     public void setIsPropertyDescriptionRemoved(Boolean removed) {
         this.isPropertyDescriptionRemoved = removed;
-    }
-
-    private Boolean isPropertySerialNumberAttributeIdRemoved;
-
-    public Boolean getIsPropertySerialNumberAttributeIdRemoved() {
-        return this.isPropertySerialNumberAttributeIdRemoved;
-    }
-
-    public void setIsPropertySerialNumberAttributeIdRemoved(Boolean removed) {
-        this.isPropertySerialNumberAttributeIdRemoved = removed;
-    }
-
-    private Boolean isPropertyLotAttributeIdRemoved;
-
-    public Boolean getIsPropertyLotAttributeIdRemoved() {
-        return this.isPropertyLotAttributeIdRemoved;
-    }
-
-    public void setIsPropertyLotAttributeIdRemoved(Boolean removed) {
-        this.isPropertyLotAttributeIdRemoved = removed;
     }
 
     private Boolean isPropertyReferenceIdRemoved;

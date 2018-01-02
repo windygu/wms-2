@@ -57,30 +57,6 @@ public class AttributeSetStateDto
         this.description = description;
     }
 
-    private String serialNumberAttributeId;
-
-    public String getSerialNumberAttributeId()
-    {
-        return this.serialNumberAttributeId;
-    }
-
-    public void setSerialNumberAttributeId(String serialNumberAttributeId)
-    {
-        this.serialNumberAttributeId = serialNumberAttributeId;
-    }
-
-    private String lotAttributeId;
-
-    public String getLotAttributeId()
-    {
-        return this.lotAttributeId;
-    }
-
-    public void setLotAttributeId(String lotAttributeId)
-    {
-        this.lotAttributeId = lotAttributeId;
-    }
-
     private String referenceId;
 
     public String getReferenceId()
@@ -238,12 +214,6 @@ public class AttributeSetStateDto
             }
             if (returnedFieldsContains("Description")) {
                 dto.setDescription(state.getDescription());
-            }
-            if (returnedFieldsContains("SerialNumberAttributeId")) {
-                dto.setSerialNumberAttributeId(state.getSerialNumberAttributeId());
-            }
-            if (returnedFieldsContains("LotAttributeId")) {
-                dto.setLotAttributeId(state.getLotAttributeId());
             }
             if (returnedFieldsContains("ReferenceId")) {
                 dto.setReferenceId(state.getReferenceId());

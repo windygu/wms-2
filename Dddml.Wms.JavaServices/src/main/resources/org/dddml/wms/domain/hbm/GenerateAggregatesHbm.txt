@@ -46,6 +46,8 @@
         <mapping resource="org/dddml/wms/domain/hbm/InventoryPostingRuleState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InventoryPostingRuleStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InventoryPRTriggeredState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/LotState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/LotStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/MovementState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/MovementStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/MovementLineState.hbm.xml"/>

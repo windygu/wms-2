@@ -245,62 +245,6 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             }
         }
 
-		public virtual string AttributeSetSerialNumberAttributeId
-		{
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("AttributeSetSerialNumberAttributeId"))
-                {
-                    return _state.AttributeSetSerialNumberAttributeId;
-                }
-                return null;
-            }
-            set
-            {
-                _state.AttributeSetSerialNumberAttributeId = value;
-            }
-        }
-
-        string IAttributeUseMvoStateProperties.AttributeSetSerialNumberAttributeId
-        {
-            get 
-            {
-                return (this._state as IAttributeUseMvoStateProperties).AttributeSetSerialNumberAttributeId;
-            }
-            set 
-            {
-                (this._state as IAttributeUseMvoStateProperties).AttributeSetSerialNumberAttributeId = value;
-            }
-        }
-
-		public virtual string AttributeSetLotAttributeId
-		{
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("AttributeSetLotAttributeId"))
-                {
-                    return _state.AttributeSetLotAttributeId;
-                }
-                return null;
-            }
-            set
-            {
-                _state.AttributeSetLotAttributeId = value;
-            }
-        }
-
-        string IAttributeUseMvoStateProperties.AttributeSetLotAttributeId
-        {
-            get 
-            {
-                return (this._state as IAttributeUseMvoStateProperties).AttributeSetLotAttributeId;
-            }
-            set 
-            {
-                (this._state as IAttributeUseMvoStateProperties).AttributeSetLotAttributeId = value;
-            }
-        }
-
 		public virtual string AttributeSetReferenceId
 		{
             get

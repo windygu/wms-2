@@ -104,7 +104,8 @@ namespace Dddml.Wms.Domain.Product
             cmd.VirtualVariantMethodEnum = state.VirtualVariantMethodEnum;
             cmd.InShippingBox = state.InShippingBox;
             cmd.DefaultShipmentBoxTypeId = state.DefaultShipmentBoxTypeId;
-            cmd.LotIdFilledIn = state.LotIdFilledIn;
+            cmd.IsSerialNumbered = state.IsSerialNumbered;
+            cmd.IsManagedByLot = state.IsManagedByLot;
             cmd.AttributeSetId = state.AttributeSetId;
             cmd.AttributeSetInstanceId = state.AttributeSetInstanceId;
             cmd.Active = ((IProductStateProperties)state).Active;
@@ -165,7 +166,6 @@ namespace Dddml.Wms.Domain.Product
             if (state.VirtualVariantMethodEnum == null) { cmd.IsPropertyVirtualVariantMethodEnumRemoved = true; }
             if (state.InShippingBox == null) { cmd.IsPropertyInShippingBoxRemoved = true; }
             if (state.DefaultShipmentBoxTypeId == null) { cmd.IsPropertyDefaultShipmentBoxTypeIdRemoved = true; }
-            if (state.LotIdFilledIn == null) { cmd.IsPropertyLotIdFilledInRemoved = true; }
             if (state.AttributeSetId == null) { cmd.IsPropertyAttributeSetIdRemoved = true; }
             if (state.AttributeSetInstanceId == null) { cmd.IsPropertyAttributeSetInstanceIdRemoved = true; }
             return cmd;
@@ -235,7 +235,8 @@ namespace Dddml.Wms.Domain.Product
             cmd.VirtualVariantMethodEnum = state.VirtualVariantMethodEnum;
             cmd.InShippingBox = state.InShippingBox;
             cmd.DefaultShipmentBoxTypeId = state.DefaultShipmentBoxTypeId;
-            cmd.LotIdFilledIn = state.LotIdFilledIn;
+            cmd.IsSerialNumbered = state.IsSerialNumbered;
+            cmd.IsManagedByLot = state.IsManagedByLot;
             cmd.AttributeSetId = state.AttributeSetId;
             cmd.AttributeSetInstanceId = state.AttributeSetInstanceId;
             cmd.Active = ((IProductStateProperties)state).Active;

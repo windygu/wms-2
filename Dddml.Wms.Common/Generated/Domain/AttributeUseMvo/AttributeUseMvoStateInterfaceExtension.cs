@@ -55,8 +55,6 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             cmd.AttributeSetAttributeSetName = state.AttributeSetAttributeSetName;
             cmd.AttributeSetOrganizationId = state.AttributeSetOrganizationId;
             cmd.AttributeSetDescription = state.AttributeSetDescription;
-            cmd.AttributeSetSerialNumberAttributeId = state.AttributeSetSerialNumberAttributeId;
-            cmd.AttributeSetLotAttributeId = state.AttributeSetLotAttributeId;
             cmd.AttributeSetReferenceId = state.AttributeSetReferenceId;
             cmd.AttributeSetIsInstanceAttributeSet = state.AttributeSetIsInstanceAttributeSet;
             cmd.AttributeSetIsMandatory = state.AttributeSetIsMandatory;
@@ -70,8 +68,6 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             if (state.AttributeSetAttributeSetName == null) { cmd.IsPropertyAttributeSetAttributeSetNameRemoved = true; }
             if (state.AttributeSetOrganizationId == null) { cmd.IsPropertyAttributeSetOrganizationIdRemoved = true; }
             if (state.AttributeSetDescription == null) { cmd.IsPropertyAttributeSetDescriptionRemoved = true; }
-            if (state.AttributeSetSerialNumberAttributeId == null) { cmd.IsPropertyAttributeSetSerialNumberAttributeIdRemoved = true; }
-            if (state.AttributeSetLotAttributeId == null) { cmd.IsPropertyAttributeSetLotAttributeIdRemoved = true; }
             if (state.AttributeSetReferenceId == null) { cmd.IsPropertyAttributeSetReferenceIdRemoved = true; }
             if (state.AttributeSetCreatedBy == null) { cmd.IsPropertyAttributeSetCreatedByRemoved = true; }
             if (state.AttributeSetUpdatedBy == null) { cmd.IsPropertyAttributeSetUpdatedByRemoved = true; }
@@ -92,8 +88,6 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             cmd.AttributeSetAttributeSetName = state.AttributeSetAttributeSetName;
             cmd.AttributeSetOrganizationId = state.AttributeSetOrganizationId;
             cmd.AttributeSetDescription = state.AttributeSetDescription;
-            cmd.AttributeSetSerialNumberAttributeId = state.AttributeSetSerialNumberAttributeId;
-            cmd.AttributeSetLotAttributeId = state.AttributeSetLotAttributeId;
             cmd.AttributeSetReferenceId = state.AttributeSetReferenceId;
             cmd.AttributeSetIsInstanceAttributeSet = state.AttributeSetIsInstanceAttributeSet;
             cmd.AttributeSetIsMandatory = state.AttributeSetIsMandatory;

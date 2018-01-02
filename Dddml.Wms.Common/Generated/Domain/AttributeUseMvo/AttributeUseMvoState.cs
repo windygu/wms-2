@@ -187,10 +187,6 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
 			this.AttributeSetDescription = e.AttributeSetDescription;
 
-			this.AttributeSetSerialNumberAttributeId = e.AttributeSetSerialNumberAttributeId;
-
-			this.AttributeSetLotAttributeId = e.AttributeSetLotAttributeId;
-
 			this.AttributeSetReferenceId = e.AttributeSetReferenceId;
 
             this.AttributeSetIsInstanceAttributeSet = (e.AttributeSetIsInstanceAttributeSet != null && e.AttributeSetIsInstanceAttributeSet.HasValue) ? e.AttributeSetIsInstanceAttributeSet.Value : default(bool);
@@ -292,30 +288,6 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 			else
 			{
 				this.AttributeSetDescription = e.AttributeSetDescription;
-			}
-
-			if (e.AttributeSetSerialNumberAttributeId == null)
-			{
-				if (e.IsPropertyAttributeSetSerialNumberAttributeIdRemoved)
-				{
-					this.AttributeSetSerialNumberAttributeId = default(string);
-				}
-			}
-			else
-			{
-				this.AttributeSetSerialNumberAttributeId = e.AttributeSetSerialNumberAttributeId;
-			}
-
-			if (e.AttributeSetLotAttributeId == null)
-			{
-				if (e.IsPropertyAttributeSetLotAttributeIdRemoved)
-				{
-					this.AttributeSetLotAttributeId = default(string);
-				}
-			}
-			else
-			{
-				this.AttributeSetLotAttributeId = e.AttributeSetLotAttributeId;
 			}
 
 			if (e.AttributeSetReferenceId == null)

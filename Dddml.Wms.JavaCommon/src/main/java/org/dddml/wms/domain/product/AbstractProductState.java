@@ -693,16 +693,28 @@ public abstract class AbstractProductState implements ProductState
         this.defaultShipmentBoxTypeId = defaultShipmentBoxTypeId;
     }
 
-    private String lotIdFilledIn;
+    private Boolean isSerialNumbered;
 
-    public String getLotIdFilledIn()
+    public Boolean getIsSerialNumbered()
     {
-        return this.lotIdFilledIn;
+        return this.isSerialNumbered;
     }
 
-    public void setLotIdFilledIn(String lotIdFilledIn)
+    public void setIsSerialNumbered(Boolean isSerialNumbered)
     {
-        this.lotIdFilledIn = lotIdFilledIn;
+        this.isSerialNumbered = isSerialNumbered;
+    }
+
+    private Boolean isManagedByLot;
+
+    public Boolean getIsManagedByLot()
+    {
+        return this.isManagedByLot;
+    }
+
+    public void setIsManagedByLot(Boolean isManagedByLot)
+    {
+        this.isManagedByLot = isManagedByLot;
     }
 
     private String attributeSetId;
@@ -919,7 +931,8 @@ public abstract class AbstractProductState implements ProductState
         this.setVirtualVariantMethodEnum(e.getVirtualVariantMethodEnum());
         this.setInShippingBox(e.getInShippingBox());
         this.setDefaultShipmentBoxTypeId(e.getDefaultShipmentBoxTypeId());
-        this.setLotIdFilledIn(e.getLotIdFilledIn());
+        this.setIsSerialNumbered(e.getIsSerialNumbered());
+        this.setIsManagedByLot(e.getIsManagedByLot());
         this.setAttributeSetId(e.getAttributeSetId());
         this.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
         this.setActive(e.getActive());
@@ -1549,16 +1562,27 @@ public abstract class AbstractProductState implements ProductState
         {
             this.setDefaultShipmentBoxTypeId(e.getDefaultShipmentBoxTypeId());
         }
-        if (e.getLotIdFilledIn() == null)
+        if (e.getIsSerialNumbered() == null)
         {
-            if (e.getIsPropertyLotIdFilledInRemoved() != null && e.getIsPropertyLotIdFilledInRemoved())
+            if (e.getIsPropertyIsSerialNumberedRemoved() != null && e.getIsPropertyIsSerialNumberedRemoved())
             {
-                this.setLotIdFilledIn(null);
+                this.setIsSerialNumbered(null);
             }
         }
         else
         {
-            this.setLotIdFilledIn(e.getLotIdFilledIn());
+            this.setIsSerialNumbered(e.getIsSerialNumbered());
+        }
+        if (e.getIsManagedByLot() == null)
+        {
+            if (e.getIsPropertyIsManagedByLotRemoved() != null && e.getIsPropertyIsManagedByLotRemoved())
+            {
+                this.setIsManagedByLot(null);
+            }
+        }
+        else
+        {
+            this.setIsManagedByLot(e.getIsManagedByLot());
         }
         if (e.getAttributeSetId() == null)
         {

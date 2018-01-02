@@ -154,30 +154,6 @@ public abstract class AbstractAttributeUseMvoState implements AttributeUseMvoSta
         this.attributeSetDescription = attributeSetDescription;
     }
 
-    private String attributeSetSerialNumberAttributeId;
-
-    public String getAttributeSetSerialNumberAttributeId()
-    {
-        return this.attributeSetSerialNumberAttributeId;
-    }
-
-    public void setAttributeSetSerialNumberAttributeId(String attributeSetSerialNumberAttributeId)
-    {
-        this.attributeSetSerialNumberAttributeId = attributeSetSerialNumberAttributeId;
-    }
-
-    private String attributeSetLotAttributeId;
-
-    public String getAttributeSetLotAttributeId()
-    {
-        return this.attributeSetLotAttributeId;
-    }
-
-    public void setAttributeSetLotAttributeId(String attributeSetLotAttributeId)
-    {
-        this.attributeSetLotAttributeId = attributeSetLotAttributeId;
-    }
-
     private String attributeSetReferenceId;
 
     public String getAttributeSetReferenceId()
@@ -368,8 +344,6 @@ public abstract class AbstractAttributeUseMvoState implements AttributeUseMvoSta
         this.setAttributeSetAttributeSetName(e.getAttributeSetAttributeSetName());
         this.setAttributeSetOrganizationId(e.getAttributeSetOrganizationId());
         this.setAttributeSetDescription(e.getAttributeSetDescription());
-        this.setAttributeSetSerialNumberAttributeId(e.getAttributeSetSerialNumberAttributeId());
-        this.setAttributeSetLotAttributeId(e.getAttributeSetLotAttributeId());
         this.setAttributeSetReferenceId(e.getAttributeSetReferenceId());
         this.setAttributeSetIsInstanceAttributeSet(e.getAttributeSetIsInstanceAttributeSet());
         this.setAttributeSetIsMandatory(e.getAttributeSetIsMandatory());
@@ -456,28 +430,6 @@ public abstract class AbstractAttributeUseMvoState implements AttributeUseMvoSta
         else
         {
             this.setAttributeSetDescription(e.getAttributeSetDescription());
-        }
-        if (e.getAttributeSetSerialNumberAttributeId() == null)
-        {
-            if (e.getIsPropertyAttributeSetSerialNumberAttributeIdRemoved() != null && e.getIsPropertyAttributeSetSerialNumberAttributeIdRemoved())
-            {
-                this.setAttributeSetSerialNumberAttributeId(null);
-            }
-        }
-        else
-        {
-            this.setAttributeSetSerialNumberAttributeId(e.getAttributeSetSerialNumberAttributeId());
-        }
-        if (e.getAttributeSetLotAttributeId() == null)
-        {
-            if (e.getIsPropertyAttributeSetLotAttributeIdRemoved() != null && e.getIsPropertyAttributeSetLotAttributeIdRemoved())
-            {
-                this.setAttributeSetLotAttributeId(null);
-            }
-        }
-        else
-        {
-            this.setAttributeSetLotAttributeId(e.getAttributeSetLotAttributeId());
         }
         if (e.getAttributeSetReferenceId() == null)
         {

@@ -48,10 +48,6 @@ namespace Dddml.Wms.Domain.AttributeSet
 
 		public virtual string Description { get; set; }
 
-		public virtual string SerialNumberAttributeId { get; set; }
-
-		public virtual string LotAttributeId { get; set; }
-
 		public virtual string ReferenceId { get; set; }
 
 		public virtual bool? IsInstanceAttributeSet { get; set; }
@@ -143,44 +139,6 @@ namespace Dddml.Wms.Domain.AttributeSet
             set 
             {
                 this.IsPropertyDescriptionRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertySerialNumberAttributeIdRemoved { get; set; }
-
-        bool IAttributeSetStateMergePatched.IsPropertySerialNumberAttributeIdRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertySerialNumberAttributeIdRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertySerialNumberAttributeIdRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyLotAttributeIdRemoved { get; set; }
-
-        bool IAttributeSetStateMergePatched.IsPropertyLotAttributeIdRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyLotAttributeIdRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyLotAttributeIdRemoved = value;
             }
         }
 

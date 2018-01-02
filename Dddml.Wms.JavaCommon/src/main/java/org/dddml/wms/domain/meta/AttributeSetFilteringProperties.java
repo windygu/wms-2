@@ -15,8 +15,6 @@ public final class AttributeSetFilteringProperties
             "attributeSetName",
             "organizationId",
             "description",
-            "serialNumberAttributeId",
-            "lotAttributeId",
             "referenceId",
             "isInstanceAttributeSet",
             "isMandatory",
@@ -30,8 +28,6 @@ public final class AttributeSetFilteringProperties
     };
 
     public static final String[] propertyTypes = new String[] {
-            "String",
-            "String",
             "String",
             "String",
             "String",
@@ -68,10 +64,6 @@ public final class AttributeSetFilteringProperties
         aliasMap.put("OrganizationId", "organizationId");
         aliasMap.put("description", "description");
         aliasMap.put("Description", "description");
-        aliasMap.put("serialNumberAttributeId", "serialNumberAttributeId");
-        aliasMap.put("SerialNumberAttributeId", "serialNumberAttributeId");
-        aliasMap.put("lotAttributeId", "lotAttributeId");
-        aliasMap.put("LotAttributeId", "lotAttributeId");
         aliasMap.put("referenceId", "referenceId");
         aliasMap.put("ReferenceId", "referenceId");
         aliasMap.put("isInstanceAttributeSet", "isInstanceAttributeSet");

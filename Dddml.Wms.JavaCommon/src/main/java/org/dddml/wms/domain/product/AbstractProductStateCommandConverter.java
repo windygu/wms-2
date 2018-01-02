@@ -93,7 +93,8 @@ public abstract class AbstractProductStateCommandConverter<TCreateProduct extend
         cmd.setVirtualVariantMethodEnum(state.getVirtualVariantMethodEnum());
         cmd.setInShippingBox(state.getInShippingBox());
         cmd.setDefaultShipmentBoxTypeId(state.getDefaultShipmentBoxTypeId());
-        cmd.setLotIdFilledIn(state.getLotIdFilledIn());
+        cmd.setIsSerialNumbered(state.getIsSerialNumbered());
+        cmd.setIsManagedByLot(state.getIsManagedByLot());
         cmd.setAttributeSetId(state.getAttributeSetId());
         cmd.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
         cmd.setActive(state.getActive());
@@ -154,7 +155,8 @@ public abstract class AbstractProductStateCommandConverter<TCreateProduct extend
         if (state.getVirtualVariantMethodEnum() == null) { cmd.setIsPropertyVirtualVariantMethodEnumRemoved(true); }
         if (state.getInShippingBox() == null) { cmd.setIsPropertyInShippingBoxRemoved(true); }
         if (state.getDefaultShipmentBoxTypeId() == null) { cmd.setIsPropertyDefaultShipmentBoxTypeIdRemoved(true); }
-        if (state.getLotIdFilledIn() == null) { cmd.setIsPropertyLotIdFilledInRemoved(true); }
+        if (state.getIsSerialNumbered() == null) { cmd.setIsPropertyIsSerialNumberedRemoved(true); }
+        if (state.getIsManagedByLot() == null) { cmd.setIsPropertyIsManagedByLotRemoved(true); }
         if (state.getAttributeSetId() == null) { cmd.setIsPropertyAttributeSetIdRemoved(true); }
         if (state.getAttributeSetInstanceId() == null) { cmd.setIsPropertyAttributeSetInstanceIdRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
@@ -223,7 +225,8 @@ public abstract class AbstractProductStateCommandConverter<TCreateProduct extend
         cmd.setVirtualVariantMethodEnum(state.getVirtualVariantMethodEnum());
         cmd.setInShippingBox(state.getInShippingBox());
         cmd.setDefaultShipmentBoxTypeId(state.getDefaultShipmentBoxTypeId());
-        cmd.setLotIdFilledIn(state.getLotIdFilledIn());
+        cmd.setIsSerialNumbered(state.getIsSerialNumbered());
+        cmd.setIsManagedByLot(state.getIsManagedByLot());
         cmd.setAttributeSetId(state.getAttributeSetId());
         cmd.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
         cmd.setActive(state.getActive());

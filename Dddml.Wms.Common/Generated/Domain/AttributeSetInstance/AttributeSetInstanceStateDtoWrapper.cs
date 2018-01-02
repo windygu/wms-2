@@ -179,31 +179,31 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
             }
         }
 
-		public virtual string Lot
+		public virtual string LotId
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("Lot"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("LotId"))
                 {
-                    return _state.Lot;
+                    return _state.LotId;
                 }
                 return null;
             }
             set
             {
-                _state.Lot = value;
+                _state.LotId = value;
             }
         }
 
-        string IAttributeSetInstanceStateProperties.Lot
+        string IAttributeSetInstanceStateProperties.LotId
         {
             get 
             {
-                return (this._state as IAttributeSetInstanceStateProperties).Lot;
+                return (this._state as IAttributeSetInstanceStateProperties).LotId;
             }
             set 
             {
-                (this._state as IAttributeSetInstanceStateProperties).Lot = value;
+                (this._state as IAttributeSetInstanceStateProperties).LotId = value;
             }
         }
 

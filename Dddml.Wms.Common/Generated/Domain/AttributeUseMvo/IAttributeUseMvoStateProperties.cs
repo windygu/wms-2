@@ -29,10 +29,6 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
 		string AttributeSetDescription { get; set; }
 
-		string AttributeSetSerialNumberAttributeId { get; set; }
-
-		string AttributeSetLotAttributeId { get; set; }
-
 		string AttributeSetReferenceId { get; set; }
 
 		bool AttributeSetIsInstanceAttributeSet { get; set; }

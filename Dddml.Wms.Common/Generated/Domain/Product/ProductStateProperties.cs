@@ -128,7 +128,9 @@ namespace Dddml.Wms.Domain.Product
 
 		public virtual string DefaultShipmentBoxTypeId { get; set; }
 
-		public virtual string LotIdFilledIn { get; set; }
+		public virtual bool IsSerialNumbered { get; set; }
+
+		public virtual bool IsManagedByLot { get; set; }
 
 		public virtual string AttributeSetId { get; set; }
 

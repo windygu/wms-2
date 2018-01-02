@@ -38,6 +38,7 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNames.Add("InventoryItemRequirement");
             _aggregateNames.Add("InventoryPostingRule");
             _aggregateNames.Add("InventoryPRTriggered");
+            _aggregateNames.Add("Lot");
             _aggregateNames.Add("Movement");
             _aggregateNames.Add("MovementConfirmation");
             _aggregateNames.Add("MovementType");
@@ -85,6 +86,7 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNamespaces.Add("InventoryItemRequirement", "Dddml.Wms.Domain.InventoryItemRequirement");
             _aggregateNamespaces.Add("InventoryPostingRule", "Dddml.Wms.Domain.InventoryPostingRule");
             _aggregateNamespaces.Add("InventoryPRTriggered", "Dddml.Wms.Domain.InventoryPRTriggered");
+            _aggregateNamespaces.Add("Lot", "Dddml.Wms.Domain.Lot");
             _aggregateNamespaces.Add("Movement", "Dddml.Wms.Domain.Movement");
             _aggregateNamespaces.Add("MovementConfirmation", "Dddml.Wms.Domain.MovementConfirmation");
             _aggregateNamespaces.Add("MovementType", "Dddml.Wms.Domain.MovementType");

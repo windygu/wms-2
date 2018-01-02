@@ -21,7 +21,7 @@
             "OrganizationId",
             "ReferenceId",
             "SerialNumber",
-            "Lot",
+            "LotId",
             "Description",
             "Hash",
             });

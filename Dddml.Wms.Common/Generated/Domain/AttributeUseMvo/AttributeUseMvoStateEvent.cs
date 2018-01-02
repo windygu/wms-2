@@ -36,10 +36,6 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
 		public virtual string AttributeSetDescription { get; set; }
 
-		public virtual string AttributeSetSerialNumberAttributeId { get; set; }
-
-		public virtual string AttributeSetLotAttributeId { get; set; }
-
 		public virtual string AttributeSetReferenceId { get; set; }
 
 		public virtual bool? AttributeSetIsInstanceAttributeSet { get; set; }
@@ -157,10 +153,6 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 		public virtual bool IsPropertyAttributeSetOrganizationIdRemoved { get; set; }
 
 		public virtual bool IsPropertyAttributeSetDescriptionRemoved { get; set; }
-
-		public virtual bool IsPropertyAttributeSetSerialNumberAttributeIdRemoved { get; set; }
-
-		public virtual bool IsPropertyAttributeSetLotAttributeIdRemoved { get; set; }
 
 		public virtual bool IsPropertyAttributeSetReferenceIdRemoved { get; set; }
 

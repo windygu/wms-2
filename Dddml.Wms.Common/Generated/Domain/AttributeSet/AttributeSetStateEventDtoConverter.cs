@@ -45,8 +45,6 @@ namespace Dddml.Wms.Domain.AttributeSet
             dto.AttributeSetName = e.AttributeSetName;
             dto.OrganizationId = e.OrganizationId;
             dto.Description = e.Description;
-            dto.SerialNumberAttributeId = e.SerialNumberAttributeId;
-            dto.LotAttributeId = e.LotAttributeId;
             dto.ReferenceId = e.ReferenceId;
             dto.IsInstanceAttributeSet = e.IsInstanceAttributeSet;
             dto.IsMandatory = e.IsMandatory;
@@ -72,8 +70,6 @@ namespace Dddml.Wms.Domain.AttributeSet
             dto.AttributeSetName = e.AttributeSetName;
             dto.OrganizationId = e.OrganizationId;
             dto.Description = e.Description;
-            dto.SerialNumberAttributeId = e.SerialNumberAttributeId;
-            dto.LotAttributeId = e.LotAttributeId;
             dto.ReferenceId = e.ReferenceId;
             dto.IsInstanceAttributeSet = e.IsInstanceAttributeSet;
             dto.IsMandatory = e.IsMandatory;
@@ -81,8 +77,6 @@ namespace Dddml.Wms.Domain.AttributeSet
             dto.IsPropertyAttributeSetNameRemoved = e.IsPropertyAttributeSetNameRemoved;
             dto.IsPropertyOrganizationIdRemoved = e.IsPropertyOrganizationIdRemoved;
             dto.IsPropertyDescriptionRemoved = e.IsPropertyDescriptionRemoved;
-            dto.IsPropertySerialNumberAttributeIdRemoved = e.IsPropertySerialNumberAttributeIdRemoved;
-            dto.IsPropertyLotAttributeIdRemoved = e.IsPropertyLotAttributeIdRemoved;
             dto.IsPropertyReferenceIdRemoved = e.IsPropertyReferenceIdRemoved;
             dto.IsPropertyIsInstanceAttributeSetRemoved = e.IsPropertyIsInstanceAttributeSetRemoved;
             dto.IsPropertyIsMandatoryRemoved = e.IsPropertyIsMandatoryRemoved;

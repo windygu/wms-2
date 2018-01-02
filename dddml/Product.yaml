@@ -157,20 +157,32 @@ aggregates:
         type: indicator
       DefaultShipmentBoxTypeId:
         type: id
-      LotIdFilledIn:
-        description: Indicate if the lotId must be informed
-        type: long-varchar
+      # LotIdFilledIn:
+        # description: Indicate if the lotId must be informed
+        # type: long-varchar
       # OrderDecimalQuantity:
         # description: use to indicate if decimal quantity can be ordered for this product. Default value is Y
         # type: indicator
         
       # ---------------------------------------
+      IsSerialNumbered:
+        type: bool
+        # bool IsSerialNumberMandatory
+
+      IsManagedByLot:
+        type: bool
+        # bool IsLotMandatory
+
       AttributeSetId:
         type: string
         referenceType: AttributeSet
+        notNull: false
+        
       AttributeSetInstanceId:
         type: string
         referenceType: AttributeSetInstance
+        notNull: false
+        
       #----------------------------------------
       
     references:

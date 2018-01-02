@@ -70,16 +70,16 @@ public abstract class AbstractAttributeSetInstanceState implements AttributeSetI
         this.serialNumber = serialNumber;
     }
 
-    private String lot;
+    private String lotId;
 
-    public String getLot()
+    public String getLotId()
     {
-        return this.lot;
+        return this.lotId;
     }
 
-    public void setLot(String lot)
+    public void setLotId(String lotId)
     {
-        this.lot = lot;
+        this.lotId = lotId;
     }
 
     private String description;
@@ -972,7 +972,7 @@ public abstract class AbstractAttributeSetInstanceState implements AttributeSetI
         this.setOrganizationId(e.getOrganizationId());
         this.setReferenceId(e.getReferenceId());
         this.setSerialNumber(e.getSerialNumber());
-        this.setLot(e.getLot());
+        this.setLotId(e.getLotId());
         this.setDescription(e.getDescription());
         this.setHash(e.getHash());
         this.setWidthInch(e.getWidthInch());

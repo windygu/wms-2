@@ -67,7 +67,8 @@
     <property name="VirtualVariantMethodEnum" ><column name="VirtualVariantMethodEnum" sql-type="VARCHAR(20)" /></property>
     <property name="InShippingBox" ><column name="InShippingBox" sql-type="CHAR(1)" /></property>
     <property name="DefaultShipmentBoxTypeId" ><column name="DefaultShipmentBoxTypeId" sql-type="VARCHAR(20)" /></property>
-    <property name="LotIdFilledIn" ><column name="LotIdFilledIn" sql-type="VARCHAR(255)" /></property>
+    <property name="IsSerialNumbered" ></property>
+    <property name="IsManagedByLot" ></property>
     <property name="AttributeSetId" ></property>
     <property name="AttributeSetInstanceId" ></property>
     <property name="Active" ></property>
@@ -195,7 +196,9 @@
 
         <property name="IsPropertyDefaultShipmentBoxTypeIdRemoved" column="IsPropertyDefaultShipmentBoxTypeIdRemoved"/>
 
-        <property name="IsPropertyLotIdFilledInRemoved" column="IsPropertyLotIdFilledInRemoved"/>
+        <property name="IsPropertyIsSerialNumberedRemoved" column="IsPropertyIsSerialNumberedRemoved"/>
+
+        <property name="IsPropertyIsManagedByLotRemoved" column="IsPropertyIsManagedByLotRemoved"/>
 
         <property name="IsPropertyAttributeSetIdRemoved" column="IsPropertyAttributeSetIdRemoved"/>
 

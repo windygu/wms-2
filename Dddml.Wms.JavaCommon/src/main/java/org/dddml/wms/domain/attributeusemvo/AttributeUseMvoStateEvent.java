@@ -46,14 +46,6 @@ public interface AttributeUseMvoStateEvent extends Event
 
     void setAttributeSetDescription(String attributeSetDescription);
 
-    String getAttributeSetSerialNumberAttributeId();
-
-    void setAttributeSetSerialNumberAttributeId(String attributeSetSerialNumberAttributeId);
-
-    String getAttributeSetLotAttributeId();
-
-    void setAttributeSetLotAttributeId(String attributeSetLotAttributeId);
-
     String getAttributeSetReferenceId();
 
     void setAttributeSetReferenceId(String attributeSetReferenceId);
@@ -125,14 +117,6 @@ public interface AttributeUseMvoStateEvent extends Event
         Boolean getIsPropertyAttributeSetDescriptionRemoved();
 
         void setIsPropertyAttributeSetDescriptionRemoved(Boolean removed);
-
-        Boolean getIsPropertyAttributeSetSerialNumberAttributeIdRemoved();
-
-        void setIsPropertyAttributeSetSerialNumberAttributeIdRemoved(Boolean removed);
-
-        Boolean getIsPropertyAttributeSetLotAttributeIdRemoved();
-
-        void setIsPropertyAttributeSetLotAttributeIdRemoved(Boolean removed);
 
         Boolean getIsPropertyAttributeSetReferenceIdRemoved();
 

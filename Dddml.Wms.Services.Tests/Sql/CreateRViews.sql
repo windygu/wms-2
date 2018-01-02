@@ -87,8 +87,6 @@ CREATE VIEW `AttributeUse_RV` AS
         `AttributeSets`.`AttributeSetName` AS `AttributeSetAttributeSetName`,
         `AttributeSets`.`OrganizationId` AS `AttributeSetOrganizationId`,
         `AttributeSets`.`Description` AS `AttributeSetDescription`,
-        `AttributeSets`.`SerialNumberAttributeId` AS `AttributeSetSerialNumberAttributeId`,
-        `AttributeSets`.`LotAttributeId` AS `AttributeSetLotAttributeId`,
         `AttributeSets`.`ReferenceId` AS `AttributeSetReferenceId`,
         `AttributeSets`.`IsInstanceAttributeSet` AS `AttributeSetIsInstanceAttributeSet`,
         `AttributeSets`.`IsMandatory` AS `AttributeSetIsMandatory`,

@@ -78,14 +78,14 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         this.state.setSerialNumber(serialNumber);
     }
 
-    public String getLot()
+    public String getLotId()
     {
-        return this.state.getLot();
+        return this.state.getLotId();
     }
 
-    public void setLot(String lot)
+    public void setLotId(String lotId)
     {
-        this.state.setLot(lot);
+        this.state.setLotId(lotId);
     }
 
     public String getDescription()

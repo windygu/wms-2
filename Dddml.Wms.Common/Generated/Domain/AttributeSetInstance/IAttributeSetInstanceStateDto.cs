@@ -44,7 +44,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
             set;
         }
 
-        string Lot
+        string LotId
         {
             get;
             set;

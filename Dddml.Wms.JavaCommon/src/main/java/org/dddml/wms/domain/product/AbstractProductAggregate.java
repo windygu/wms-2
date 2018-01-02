@@ -107,7 +107,8 @@ public abstract class AbstractProductAggregate extends AbstractAggregate impleme
         e.setVirtualVariantMethodEnum(c.getVirtualVariantMethodEnum());
         e.setInShippingBox(c.getInShippingBox());
         e.setDefaultShipmentBoxTypeId(c.getDefaultShipmentBoxTypeId());
-        e.setLotIdFilledIn(c.getLotIdFilledIn());
+        e.setIsSerialNumbered(c.getIsSerialNumbered());
+        e.setIsManagedByLot(c.getIsManagedByLot());
         e.setAttributeSetId(c.getAttributeSetId());
         e.setAttributeSetInstanceId(c.getAttributeSetInstanceId());
         e.setActive(c.getActive());
@@ -176,7 +177,8 @@ public abstract class AbstractProductAggregate extends AbstractAggregate impleme
         e.setVirtualVariantMethodEnum(c.getVirtualVariantMethodEnum());
         e.setInShippingBox(c.getInShippingBox());
         e.setDefaultShipmentBoxTypeId(c.getDefaultShipmentBoxTypeId());
-        e.setLotIdFilledIn(c.getLotIdFilledIn());
+        e.setIsSerialNumbered(c.getIsSerialNumbered());
+        e.setIsManagedByLot(c.getIsManagedByLot());
         e.setAttributeSetId(c.getAttributeSetId());
         e.setAttributeSetInstanceId(c.getAttributeSetInstanceId());
         e.setActive(c.getActive());
@@ -236,7 +238,8 @@ public abstract class AbstractProductAggregate extends AbstractAggregate impleme
         e.setIsPropertyVirtualVariantMethodEnumRemoved(c.getIsPropertyVirtualVariantMethodEnumRemoved());
         e.setIsPropertyInShippingBoxRemoved(c.getIsPropertyInShippingBoxRemoved());
         e.setIsPropertyDefaultShipmentBoxTypeIdRemoved(c.getIsPropertyDefaultShipmentBoxTypeIdRemoved());
-        e.setIsPropertyLotIdFilledInRemoved(c.getIsPropertyLotIdFilledInRemoved());
+        e.setIsPropertyIsSerialNumberedRemoved(c.getIsPropertyIsSerialNumberedRemoved());
+        e.setIsPropertyIsManagedByLotRemoved(c.getIsPropertyIsManagedByLotRemoved());
         e.setIsPropertyAttributeSetIdRemoved(c.getIsPropertyAttributeSetIdRemoved());
         e.setIsPropertyAttributeSetInstanceIdRemoved(c.getIsPropertyAttributeSetInstanceIdRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());

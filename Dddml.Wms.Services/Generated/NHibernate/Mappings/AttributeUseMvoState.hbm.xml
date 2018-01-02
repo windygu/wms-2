@@ -21,8 +21,6 @@
     <property name="AttributeSetAttributeSetName" ></property>
     <property name="AttributeSetOrganizationId" ></property>
     <property name="AttributeSetDescription" ></property>
-    <property name="AttributeSetSerialNumberAttributeId" ></property>
-    <property name="AttributeSetLotAttributeId" ></property>
     <property name="AttributeSetReferenceId" ></property>
     <property name="AttributeSetIsInstanceAttributeSet" ></property>
     <property name="AttributeSetIsMandatory" ></property>

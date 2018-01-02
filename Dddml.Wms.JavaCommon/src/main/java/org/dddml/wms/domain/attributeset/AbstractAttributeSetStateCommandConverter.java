@@ -40,8 +40,6 @@ public abstract class AbstractAttributeSetStateCommandConverter<TCreateAttribute
         cmd.setAttributeSetName(state.getAttributeSetName());
         cmd.setOrganizationId(state.getOrganizationId());
         cmd.setDescription(state.getDescription());
-        cmd.setSerialNumberAttributeId(state.getSerialNumberAttributeId());
-        cmd.setLotAttributeId(state.getLotAttributeId());
         cmd.setReferenceId(state.getReferenceId());
         cmd.setIsInstanceAttributeSet(state.getIsInstanceAttributeSet());
         cmd.setIsMandatory(state.getIsMandatory());
@@ -50,8 +48,6 @@ public abstract class AbstractAttributeSetStateCommandConverter<TCreateAttribute
         if (state.getAttributeSetName() == null) { cmd.setIsPropertyAttributeSetNameRemoved(true); }
         if (state.getOrganizationId() == null) { cmd.setIsPropertyOrganizationIdRemoved(true); }
         if (state.getDescription() == null) { cmd.setIsPropertyDescriptionRemoved(true); }
-        if (state.getSerialNumberAttributeId() == null) { cmd.setIsPropertySerialNumberAttributeIdRemoved(true); }
-        if (state.getLotAttributeId() == null) { cmd.setIsPropertyLotAttributeIdRemoved(true); }
         if (state.getReferenceId() == null) { cmd.setIsPropertyReferenceIdRemoved(true); }
         if (state.getIsInstanceAttributeSet() == null) { cmd.setIsPropertyIsInstanceAttributeSetRemoved(true); }
         if (state.getIsMandatory() == null) { cmd.setIsPropertyIsMandatoryRemoved(true); }
@@ -73,8 +69,6 @@ public abstract class AbstractAttributeSetStateCommandConverter<TCreateAttribute
         cmd.setAttributeSetName(state.getAttributeSetName());
         cmd.setOrganizationId(state.getOrganizationId());
         cmd.setDescription(state.getDescription());
-        cmd.setSerialNumberAttributeId(state.getSerialNumberAttributeId());
-        cmd.setLotAttributeId(state.getLotAttributeId());
         cmd.setReferenceId(state.getReferenceId());
         cmd.setIsInstanceAttributeSet(state.getIsInstanceAttributeSet());
         cmd.setIsMandatory(state.getIsMandatory());

@@ -58,10 +58,6 @@ namespace Dddml.Wms.Domain.AttributeSet
 
 		public virtual string Description { get; set; }
 
-		public virtual string SerialNumberAttributeId { get; set; }
-
-		public virtual string LotAttributeId { get; set; }
-
 		public virtual string ReferenceId { get; set; }
 
 		public virtual bool? IsInstanceAttributeSet { get; set; }
@@ -132,10 +128,6 @@ namespace Dddml.Wms.Domain.AttributeSet
 		public virtual bool IsPropertyOrganizationIdRemoved { get; set; }
 
 		public virtual bool IsPropertyDescriptionRemoved { get; set; }
-
-		public virtual bool IsPropertySerialNumberAttributeIdRemoved { get; set; }
-
-		public virtual bool IsPropertyLotAttributeIdRemoved { get; set; }
 
 		public virtual bool IsPropertyReferenceIdRemoved { get; set; }
 

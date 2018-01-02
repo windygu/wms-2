@@ -78,30 +78,6 @@ public class CreateOrMergePatchAttributeUseMvoDto extends AbstractAttributeUseMv
         this.attributeSetDescription = attributeSetDescription;
     }
 
-    private String attributeSetSerialNumberAttributeId;
-
-    public String getAttributeSetSerialNumberAttributeId()
-    {
-        return this.attributeSetSerialNumberAttributeId;
-    }
-
-    public void setAttributeSetSerialNumberAttributeId(String attributeSetSerialNumberAttributeId)
-    {
-        this.attributeSetSerialNumberAttributeId = attributeSetSerialNumberAttributeId;
-    }
-
-    private String attributeSetLotAttributeId;
-
-    public String getAttributeSetLotAttributeId()
-    {
-        return this.attributeSetLotAttributeId;
-    }
-
-    public void setAttributeSetLotAttributeId(String attributeSetLotAttributeId)
-    {
-        this.attributeSetLotAttributeId = attributeSetLotAttributeId;
-    }
-
     private String attributeSetReferenceId;
 
     public String getAttributeSetReferenceId()
@@ -282,30 +258,6 @@ public class CreateOrMergePatchAttributeUseMvoDto extends AbstractAttributeUseMv
         this.isPropertyAttributeSetDescriptionRemoved = removed;
     }
 
-    private Boolean isPropertyAttributeSetSerialNumberAttributeIdRemoved;
-
-    public Boolean getIsPropertyAttributeSetSerialNumberAttributeIdRemoved()
-    {
-        return this.isPropertyAttributeSetSerialNumberAttributeIdRemoved;
-    }
-
-    public void setIsPropertyAttributeSetSerialNumberAttributeIdRemoved(Boolean removed)
-    {
-        this.isPropertyAttributeSetSerialNumberAttributeIdRemoved = removed;
-    }
-
-    private Boolean isPropertyAttributeSetLotAttributeIdRemoved;
-
-    public Boolean getIsPropertyAttributeSetLotAttributeIdRemoved()
-    {
-        return this.isPropertyAttributeSetLotAttributeIdRemoved;
-    }
-
-    public void setIsPropertyAttributeSetLotAttributeIdRemoved(Boolean removed)
-    {
-        this.isPropertyAttributeSetLotAttributeIdRemoved = removed;
-    }
-
     private Boolean isPropertyAttributeSetReferenceIdRemoved;
 
     public Boolean getIsPropertyAttributeSetReferenceIdRemoved()
@@ -423,8 +375,6 @@ public class CreateOrMergePatchAttributeUseMvoDto extends AbstractAttributeUseMv
         command.setAttributeSetAttributeSetName(this.getAttributeSetAttributeSetName());
         command.setAttributeSetOrganizationId(this.getAttributeSetOrganizationId());
         command.setAttributeSetDescription(this.getAttributeSetDescription());
-        command.setAttributeSetSerialNumberAttributeId(this.getAttributeSetSerialNumberAttributeId());
-        command.setAttributeSetLotAttributeId(this.getAttributeSetLotAttributeId());
         command.setAttributeSetReferenceId(this.getAttributeSetReferenceId());
         command.setAttributeSetIsInstanceAttributeSet(this.getAttributeSetIsInstanceAttributeSet());
         command.setAttributeSetIsMandatory(this.getAttributeSetIsMandatory());
@@ -464,8 +414,6 @@ public class CreateOrMergePatchAttributeUseMvoDto extends AbstractAttributeUseMv
         command.setIsPropertyAttributeSetAttributeSetNameRemoved(this.getIsPropertyAttributeSetAttributeSetNameRemoved());
         command.setIsPropertyAttributeSetOrganizationIdRemoved(this.getIsPropertyAttributeSetOrganizationIdRemoved());
         command.setIsPropertyAttributeSetDescriptionRemoved(this.getIsPropertyAttributeSetDescriptionRemoved());
-        command.setIsPropertyAttributeSetSerialNumberAttributeIdRemoved(this.getIsPropertyAttributeSetSerialNumberAttributeIdRemoved());
-        command.setIsPropertyAttributeSetLotAttributeIdRemoved(this.getIsPropertyAttributeSetLotAttributeIdRemoved());
         command.setIsPropertyAttributeSetReferenceIdRemoved(this.getIsPropertyAttributeSetReferenceIdRemoved());
         command.setIsPropertyAttributeSetIsInstanceAttributeSetRemoved(this.getIsPropertyAttributeSetIsInstanceAttributeSetRemoved());
         command.setIsPropertyAttributeSetIsMandatoryRemoved(this.getIsPropertyAttributeSetIsMandatoryRemoved());

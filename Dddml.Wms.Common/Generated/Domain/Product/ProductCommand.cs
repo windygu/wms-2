@@ -164,7 +164,9 @@ namespace Dddml.Wms.Domain.Product
 
 		public virtual string DefaultShipmentBoxTypeId { get; set; }
 
-		public virtual string LotIdFilledIn { get; set; }
+		public virtual bool? IsSerialNumbered { get; set; }
+
+		public virtual bool? IsManagedByLot { get; set; }
 
 		public virtual string AttributeSetId { get; set; }
 
@@ -316,7 +318,9 @@ namespace Dddml.Wms.Domain.Product
 
 		public virtual bool IsPropertyDefaultShipmentBoxTypeIdRemoved { get; set; }
 
-		public virtual bool IsPropertyLotIdFilledInRemoved { get; set; }
+		public virtual bool IsPropertyIsSerialNumberedRemoved { get; set; }
+
+		public virtual bool IsPropertyIsManagedByLotRemoved { get; set; }
 
 		public virtual bool IsPropertyAttributeSetIdRemoved { get; set; }
 

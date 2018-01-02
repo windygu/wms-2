@@ -129,7 +129,9 @@ namespace Dddml.Wms.Domain.Product
 
 		string DefaultShipmentBoxTypeId { get; set; }
 
-		string LotIdFilledIn { get; set; }
+		bool? IsSerialNumbered { get; set; }
+
+		bool? IsManagedByLot { get; set; }
 
 		string AttributeSetId { get; set; }
 
@@ -259,7 +261,9 @@ namespace Dddml.Wms.Domain.Product
 
 		bool IsPropertyDefaultShipmentBoxTypeIdRemoved { get; set; }
 
-		bool IsPropertyLotIdFilledInRemoved { get; set; }
+		bool IsPropertyIsSerialNumberedRemoved { get; set; }
+
+		bool IsPropertyIsManagedByLotRemoved { get; set; }
 
 		bool IsPropertyAttributeSetIdRemoved { get; set; }
 

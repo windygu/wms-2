@@ -44,8 +44,6 @@ public abstract class AbstractAttributeUseMvoStateCommandConverter<TCreateAttrib
         cmd.setAttributeSetAttributeSetName(state.getAttributeSetAttributeSetName());
         cmd.setAttributeSetOrganizationId(state.getAttributeSetOrganizationId());
         cmd.setAttributeSetDescription(state.getAttributeSetDescription());
-        cmd.setAttributeSetSerialNumberAttributeId(state.getAttributeSetSerialNumberAttributeId());
-        cmd.setAttributeSetLotAttributeId(state.getAttributeSetLotAttributeId());
         cmd.setAttributeSetReferenceId(state.getAttributeSetReferenceId());
         cmd.setAttributeSetIsInstanceAttributeSet(state.getAttributeSetIsInstanceAttributeSet());
         cmd.setAttributeSetIsMandatory(state.getAttributeSetIsMandatory());
@@ -62,8 +60,6 @@ public abstract class AbstractAttributeUseMvoStateCommandConverter<TCreateAttrib
         if (state.getAttributeSetAttributeSetName() == null) { cmd.setIsPropertyAttributeSetAttributeSetNameRemoved(true); }
         if (state.getAttributeSetOrganizationId() == null) { cmd.setIsPropertyAttributeSetOrganizationIdRemoved(true); }
         if (state.getAttributeSetDescription() == null) { cmd.setIsPropertyAttributeSetDescriptionRemoved(true); }
-        if (state.getAttributeSetSerialNumberAttributeId() == null) { cmd.setIsPropertyAttributeSetSerialNumberAttributeIdRemoved(true); }
-        if (state.getAttributeSetLotAttributeId() == null) { cmd.setIsPropertyAttributeSetLotAttributeIdRemoved(true); }
         if (state.getAttributeSetReferenceId() == null) { cmd.setIsPropertyAttributeSetReferenceIdRemoved(true); }
         if (state.getAttributeSetIsInstanceAttributeSet() == null) { cmd.setIsPropertyAttributeSetIsInstanceAttributeSetRemoved(true); }
         if (state.getAttributeSetIsMandatory() == null) { cmd.setIsPropertyAttributeSetIsMandatoryRemoved(true); }
@@ -88,8 +84,6 @@ public abstract class AbstractAttributeUseMvoStateCommandConverter<TCreateAttrib
         cmd.setAttributeSetAttributeSetName(state.getAttributeSetAttributeSetName());
         cmd.setAttributeSetOrganizationId(state.getAttributeSetOrganizationId());
         cmd.setAttributeSetDescription(state.getAttributeSetDescription());
-        cmd.setAttributeSetSerialNumberAttributeId(state.getAttributeSetSerialNumberAttributeId());
-        cmd.setAttributeSetLotAttributeId(state.getAttributeSetLotAttributeId());
         cmd.setAttributeSetReferenceId(state.getAttributeSetReferenceId());
         cmd.setAttributeSetIsInstanceAttributeSet(state.getAttributeSetIsInstanceAttributeSet());
         cmd.setAttributeSetIsMandatory(state.getAttributeSetIsMandatory());

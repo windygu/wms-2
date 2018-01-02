@@ -165,7 +165,9 @@ namespace Dddml.Wms.Domain.Product
 
 		public virtual string DefaultShipmentBoxTypeId { get; set; }
 
-		public virtual string LotIdFilledIn { get; set; }
+		public virtual bool? IsSerialNumbered { get; set; }
+
+		public virtual bool? IsManagedByLot { get; set; }
 
 		public virtual string AttributeSetId { get; set; }
 
@@ -1237,13 +1239,13 @@ namespace Dddml.Wms.Domain.Product
             }
         }
 
-		public virtual bool? IsPropertyLotIdFilledInRemoved { get; set; }
+		public virtual bool? IsPropertyIsSerialNumberedRemoved { get; set; }
 
-        bool IMergePatchProduct.IsPropertyLotIdFilledInRemoved
+        bool IMergePatchProduct.IsPropertyIsSerialNumberedRemoved
         {
             get
             {
-                var b = this.IsPropertyLotIdFilledInRemoved;
+                var b = this.IsPropertyIsSerialNumberedRemoved;
                 if (b != null && b.HasValue)
                 {
                     return b.Value;
@@ -1252,7 +1254,26 @@ namespace Dddml.Wms.Domain.Product
             }
             set
             {
-                this.IsPropertyLotIdFilledInRemoved = value;
+                this.IsPropertyIsSerialNumberedRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyIsManagedByLotRemoved { get; set; }
+
+        bool IMergePatchProduct.IsPropertyIsManagedByLotRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyIsManagedByLotRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyIsManagedByLotRemoved = value;
             }
         }
 

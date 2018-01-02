@@ -34,6 +34,7 @@ public class BoundedContextMetadata {
         map.put("InventoryItemRequirementEntry", "InventoryItemRequirement");
         map.put("InventoryPostingRule", "InventoryPostingRule");
         map.put("InventoryPRTriggered", "InventoryPRTriggered");
+        map.put("Lot", "Lot");
         map.put("Movement", "Movement");
         map.put("MovementLine", "Movement");
         map.put("MovementConfirmation", "MovementConfirmation");

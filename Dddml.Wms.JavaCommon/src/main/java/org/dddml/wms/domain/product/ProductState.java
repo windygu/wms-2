@@ -240,9 +240,13 @@ public interface ProductState
 
     void setDefaultShipmentBoxTypeId(String defaultShipmentBoxTypeId);
 
-    String getLotIdFilledIn();
+    Boolean getIsSerialNumbered();
 
-    void setLotIdFilledIn(String lotIdFilledIn);
+    void setIsSerialNumbered(Boolean isSerialNumbered);
+
+    Boolean getIsManagedByLot();
+
+    void setIsManagedByLot(Boolean isManagedByLot);
 
     String getAttributeSetId();
 

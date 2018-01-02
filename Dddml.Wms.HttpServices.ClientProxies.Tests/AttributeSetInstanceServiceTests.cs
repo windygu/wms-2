@@ -97,7 +97,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Tests
         {
             var attrSetInst = new CreateAttributeSetInstanceDto();
             attrSetInst.SerialNumber = attrSetId;
-            attrSetInst.Lot = DateTime.Today.ToString();
+            attrSetInst.LotId = DateTime.Today.ToString();
 
             attrSetInst.AttributeSetId = attrSetId;
 
@@ -140,7 +140,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Tests
             var attrSetInst = new MergePatchAttributeSetInstanceDto();
             attrSetInst.AttributeSetId = _testColorAttributeSetId;//IdGenerator._lastAttributeSetId;
             attrSetInst.SerialNumber = attrSetInstId;
-            attrSetInst.Lot = DateTime.Today.ToString();
+            attrSetInst.LotId = DateTime.Today.ToString();
             attrSetInst.Version = 1;
 
             dynamic jObject = JObject.FromObject(attrSetInst);

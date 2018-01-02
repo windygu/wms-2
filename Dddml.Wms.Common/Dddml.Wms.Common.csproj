@@ -2212,6 +2212,93 @@
     <Compile Include="Generated\Domain\Locator\LocatorStateProperties.cs">
       <DependentUpon>GenerateLocatorDomain.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\Lot\ILotAggregate.cs">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Lot\ILotApplicationService.cs">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Lot\ILotApplicationServiceFactory.cs">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Lot\ILotCommand.cs">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Lot\ILotState.cs">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Lot\ILotStateDto.cs">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Lot\ILotStateEvent.cs">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Lot\ILotStateProperties.cs">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Lot\ILotStateQueryRepository.cs">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Lot\ILotStateRepository.cs">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Lot\LotAggregate.cs">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Lot\LotApplicationServiceBase.cs">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Lot\LotApplicationServiceFactory.cs">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Lot\LotCommand.cs">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Lot\LotCommandDto.cs">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Lot\LotState.cs">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Lot\LotStateDto.cs">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Lot\LotStateDtoExtension.cs">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Lot\LotStateDtoWrapper.cs">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Lot\LotStateEvent.cs">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Lot\LotStateEventDto.cs">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Lot\LotStateEventDtoConverter.cs">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Lot\LotStateEventId.cs">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Lot\LotStateEventIdDto.cs">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Lot\LotStateEventIdDtoWrapper.cs">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Lot\LotStateEventIdFlattenedDto.cs">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Lot\LotStateExtension.cs">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Lot\LotStateInterfaceExtension.cs">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Lot\LotStateProperties.cs">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\Metadata\AttributeAliasMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
@@ -2285,6 +2372,9 @@
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Metadata\LocatorMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Metadata\LotMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Metadata\MovementConfirmationLineMetadata.cs">
@@ -5426,6 +5516,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateLocatorDomain.tt</DependentUpon>
     </Content>
+    <Content Include="Generated\Domain\Lot\GenerateLotDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Content>
     <Content Include="Generated\Domain\MovementConfirmationLineMvo\GenerateMovementConfirmationLineMvoDomain.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -7624,6 +7719,42 @@
 .\UomTypeStateProperties.cs
 </LastOutputs>
     </Content>
+    <Content Include="Generated\Domain\Lot\GenerateLotDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateLotDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateLotDomain.txt
+.\ILotAggregate.cs
+.\ILotApplicationService.cs
+.\ILotApplicationServiceFactory.cs
+.\ILotCommand.cs
+.\ILotState.cs
+.\ILotStateDto.cs
+.\ILotStateEvent.cs
+.\ILotStateProperties.cs
+.\ILotStateQueryRepository.cs
+.\ILotStateRepository.cs
+.\LotAggregate.cs
+.\LotApplicationServiceBase.cs
+.\LotApplicationServiceFactory.cs
+.\LotCommand.cs
+.\LotCommandDto.cs
+.\LotState.cs
+.\LotStateDto.cs
+.\LotStateDtoExtension.cs
+.\LotStateDtoWrapper.cs
+.\LotStateEvent.cs
+.\LotStateEventDto.cs
+.\LotStateEventDtoConverter.cs
+.\LotStateEventId.cs
+.\LotStateEventIdDto.cs
+.\LotStateEventIdDtoWrapper.cs
+.\LotStateEventIdFlattenedDto.cs
+.\LotStateExtension.cs
+.\LotStateInterfaceExtension.cs
+.\LotStateProperties.cs
+</LastOutputs>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Generated\Domain\GenerateBoundedContextDomainAggregates.tt">
@@ -7685,6 +7816,7 @@
 .\InventoryPostingRuleMetadata.cs
 .\InventoryPRTriggeredMetadata.cs
 .\LocatorMetadata.cs
+.\LotMetadata.cs
 .\MovementConfirmationLineMetadata.cs
 .\MovementConfirmationLineMvoMetadata.cs
 .\MovementConfirmationMetadata.cs

@@ -68,7 +68,8 @@ public final class ProductFilteringProperties
             "virtualVariantMethodEnum",
             "inShippingBox",
             "defaultShipmentBoxTypeId",
-            "lotIdFilledIn",
+            "isSerialNumbered",
+            "isManagedByLot",
             "attributeSetId",
             "attributeSetInstanceId",
             "version",
@@ -138,7 +139,8 @@ public final class ProductFilteringProperties
             "String",
             "String",
             "String",
-            "String",
+            "Boolean",
+            "Boolean",
             "String",
             "String",
             "Long",
@@ -276,8 +278,10 @@ public final class ProductFilteringProperties
         aliasMap.put("InShippingBox", "inShippingBox");
         aliasMap.put("defaultShipmentBoxTypeId", "defaultShipmentBoxTypeId");
         aliasMap.put("DefaultShipmentBoxTypeId", "defaultShipmentBoxTypeId");
-        aliasMap.put("lotIdFilledIn", "lotIdFilledIn");
-        aliasMap.put("LotIdFilledIn", "lotIdFilledIn");
+        aliasMap.put("isSerialNumbered", "isSerialNumbered");
+        aliasMap.put("IsSerialNumbered", "isSerialNumbered");
+        aliasMap.put("isManagedByLot", "isManagedByLot");
+        aliasMap.put("IsManagedByLot", "isManagedByLot");
         aliasMap.put("attributeSetId", "attributeSetId");
         aliasMap.put("AttributeSetId", "attributeSetId");
         aliasMap.put("attributeSetInstanceId", "attributeSetInstanceId");

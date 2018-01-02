@@ -29,7 +29,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo.NHibernate
 			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
-        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "AttributeSetAttributeUseId", "SequenceNumber", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "AttributeSetAttributeSetName", "AttributeSetOrganizationId", "AttributeSetDescription", "AttributeSetSerialNumberAttributeId", "AttributeSetLotAttributeId", "AttributeSetReferenceId", "AttributeSetIsInstanceAttributeSet", "AttributeSetIsMandatory", "AttributeSetAttributeUses", "AttributeSetVersion", "AttributeSetCreatedBy", "AttributeSetCreatedAt", "AttributeSetUpdatedBy", "AttributeSetUpdatedAt", "AttributeSetActive", "AttributeSetDeleted" });
+        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "AttributeSetAttributeUseId", "SequenceNumber", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "AttributeSetAttributeSetName", "AttributeSetOrganizationId", "AttributeSetDescription", "AttributeSetReferenceId", "AttributeSetIsInstanceAttributeSet", "AttributeSetIsMandatory", "AttributeSetAttributeUses", "AttributeSetVersion", "AttributeSetCreatedBy", "AttributeSetCreatedAt", "AttributeSetUpdatedBy", "AttributeSetUpdatedAt", "AttributeSetActive", "AttributeSetDeleted" });
     
         public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
 

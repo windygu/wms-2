@@ -693,16 +693,28 @@ public class ProductStateDto
         this.defaultShipmentBoxTypeId = defaultShipmentBoxTypeId;
     }
 
-    private String lotIdFilledIn;
+    private Boolean isSerialNumbered;
 
-    public String getLotIdFilledIn()
+    public Boolean getIsSerialNumbered()
     {
-        return this.lotIdFilledIn;
+        return this.isSerialNumbered;
     }
 
-    public void setLotIdFilledIn(String lotIdFilledIn)
+    public void setIsSerialNumbered(Boolean isSerialNumbered)
     {
-        this.lotIdFilledIn = lotIdFilledIn;
+        this.isSerialNumbered = isSerialNumbered;
+    }
+
+    private Boolean isManagedByLot;
+
+    public Boolean getIsManagedByLot()
+    {
+        return this.isManagedByLot;
+    }
+
+    public void setIsManagedByLot(Boolean isManagedByLot)
+    {
+        this.isManagedByLot = isManagedByLot;
     }
 
     private String attributeSetId;
@@ -998,8 +1010,11 @@ public class ProductStateDto
             if (returnedFieldsContains("DefaultShipmentBoxTypeId")) {
                 dto.setDefaultShipmentBoxTypeId(state.getDefaultShipmentBoxTypeId());
             }
-            if (returnedFieldsContains("LotIdFilledIn")) {
-                dto.setLotIdFilledIn(state.getLotIdFilledIn());
+            if (returnedFieldsContains("IsSerialNumbered")) {
+                dto.setIsSerialNumbered(state.getIsSerialNumbered());
+            }
+            if (returnedFieldsContains("IsManagedByLot")) {
+                dto.setIsManagedByLot(state.getIsManagedByLot());
             }
             if (returnedFieldsContains("AttributeSetId")) {
                 dto.setAttributeSetId(state.getAttributeSetId());

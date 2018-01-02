@@ -204,3 +204,7 @@
     drop table if exists UomTypes;
 
     drop table if exists UomTypeStateEvents;
+
+    drop table if exists Lots;
+
+    drop table if exists LotStateEvents;

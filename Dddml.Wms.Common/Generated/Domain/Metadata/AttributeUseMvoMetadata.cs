@@ -365,64 +365,6 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "AttributeSetSerialNumberAttributeId",
-                    Type = typeof(string),
-                    TypeName = "string",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 0,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = false,
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
-                new PropertyMetadata {
-                    Name = "AttributeSetLotAttributeId",
-                    Type = typeof(string),
-                    TypeName = "string",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 0,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = false,
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
-                new PropertyMetadata {
                     Name = "AttributeSetReferenceId",
                     Type = typeof(string),
                     TypeName = "string",
@@ -836,10 +778,6 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("attributeSetOrganizationId", "AttributeSetOrganizationId");
             d.Add("AttributeSetDescription", "AttributeSetDescription");
             d.Add("attributeSetDescription", "AttributeSetDescription");
-            d.Add("AttributeSetSerialNumberAttributeId", "AttributeSetSerialNumberAttributeId");
-            d.Add("attributeSetSerialNumberAttributeId", "AttributeSetSerialNumberAttributeId");
-            d.Add("AttributeSetLotAttributeId", "AttributeSetLotAttributeId");
-            d.Add("attributeSetLotAttributeId", "AttributeSetLotAttributeId");
             d.Add("AttributeSetReferenceId", "AttributeSetReferenceId");
             d.Add("attributeSetReferenceId", "AttributeSetReferenceId");
             d.Add("AttributeSetIsInstanceAttributeSet", "AttributeSetIsInstanceAttributeSet");

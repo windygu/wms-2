@@ -184,7 +184,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
 			this.SerialNumber = e.SerialNumber;
 
-			this.Lot = e.Lot;
+			this.LotId = e.LotId;
 
 			this.Description = e.Description;
 

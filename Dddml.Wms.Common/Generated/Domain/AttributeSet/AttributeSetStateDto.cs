@@ -39,18 +39,6 @@ namespace Dddml.Wms.Domain.AttributeSet
             set;
         }
 
-        public virtual string SerialNumberAttributeId
-        {
-            get;
-            set;
-        }
-
-        public virtual string LotAttributeId
-        {
-            get;
-            set;
-        }
-
         public virtual string ReferenceId
         {
             get;
@@ -124,8 +112,6 @@ namespace Dddml.Wms.Domain.AttributeSet
             state.AttributeSetName = this.AttributeSetName;
             state.OrganizationId = this.OrganizationId;
             state.Description = this.Description;
-            state.SerialNumberAttributeId = this.SerialNumberAttributeId;
-            state.LotAttributeId = this.LotAttributeId;
             state.ReferenceId = this.ReferenceId;
             if (this.IsInstanceAttributeSet != null && this.IsInstanceAttributeSet.HasValue) { state.IsInstanceAttributeSet = this.IsInstanceAttributeSet.Value; }
             if (this.IsMandatory != null && this.IsMandatory.HasValue) { state.IsMandatory = this.IsMandatory.Value; }

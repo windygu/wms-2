@@ -45,7 +45,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
             set;
         }
 
-        public virtual string Lot
+        public virtual string LotId
         {
             get;
             set;
@@ -467,7 +467,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
             state.OrganizationId = this.OrganizationId;
             state.ReferenceId = this.ReferenceId;
             state.SerialNumber = this.SerialNumber;
-            state.Lot = this.Lot;
+            state.LotId = this.LotId;
             state.Description = this.Description;
             state.Hash = this.Hash;
             state.WidthInch = this.WidthInch;

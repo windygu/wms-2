@@ -1669,13 +1669,42 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "LotIdFilledIn",
-                    Type = typeof(string),
-                    TypeName = "string",
+                    Name = "IsSerialNumbered",
+                    Type = typeof(bool),
+                    TypeName = "bool",
                     IsSimpleValueObjectType = true,
                     IsNullableType = false,
                     DisplayName = "",
-                    Description = "Indicate if the lotId must be informed",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
+                    Name = "IsManagedByLot",
+                    Type = typeof(bool),
+                    TypeName = "bool",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
                     Length = 0,
                     GenericTypeName = "",
                     ReferenceTypeName = "",
@@ -2087,8 +2116,10 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("inShippingBox", "InShippingBox");
             d.Add("DefaultShipmentBoxTypeId", "DefaultShipmentBoxTypeId");
             d.Add("defaultShipmentBoxTypeId", "DefaultShipmentBoxTypeId");
-            d.Add("LotIdFilledIn", "LotIdFilledIn");
-            d.Add("lotIdFilledIn", "LotIdFilledIn");
+            d.Add("IsSerialNumbered", "IsSerialNumbered");
+            d.Add("isSerialNumbered", "IsSerialNumbered");
+            d.Add("IsManagedByLot", "IsManagedByLot");
+            d.Add("isManagedByLot", "IsManagedByLot");
             d.Add("AttributeSetId", "AttributeSetId");
             d.Add("attributeSetId", "AttributeSetId");
             d.Add("AttributeSetInstanceId", "AttributeSetInstanceId");

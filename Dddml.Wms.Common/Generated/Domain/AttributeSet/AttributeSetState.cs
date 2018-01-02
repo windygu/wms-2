@@ -209,10 +209,6 @@ namespace Dddml.Wms.Domain.AttributeSet
 
 			this.Description = e.Description;
 
-			this.SerialNumberAttributeId = e.SerialNumberAttributeId;
-
-			this.LotAttributeId = e.LotAttributeId;
-
 			this.ReferenceId = e.ReferenceId;
 
             this.IsInstanceAttributeSet = (e.IsInstanceAttributeSet != null && e.IsInstanceAttributeSet.HasValue) ? e.IsInstanceAttributeSet.Value : default(bool);
@@ -272,30 +268,6 @@ namespace Dddml.Wms.Domain.AttributeSet
 			else
 			{
 				this.Description = e.Description;
-			}
-
-			if (e.SerialNumberAttributeId == null)
-			{
-				if (e.IsPropertySerialNumberAttributeIdRemoved)
-				{
-					this.SerialNumberAttributeId = default(string);
-				}
-			}
-			else
-			{
-				this.SerialNumberAttributeId = e.SerialNumberAttributeId;
-			}
-
-			if (e.LotAttributeId == null)
-			{
-				if (e.IsPropertyLotAttributeIdRemoved)
-				{
-					this.LotAttributeId = default(string);
-				}
-			}
-			else
-			{
-				this.LotAttributeId = e.LotAttributeId;
 			}
 
 			if (e.ReferenceId == null)

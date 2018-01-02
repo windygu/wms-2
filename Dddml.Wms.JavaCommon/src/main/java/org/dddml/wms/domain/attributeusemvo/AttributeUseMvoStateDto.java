@@ -94,30 +94,6 @@ public class AttributeUseMvoStateDto
         this.attributeSetDescription = attributeSetDescription;
     }
 
-    private String attributeSetSerialNumberAttributeId;
-
-    public String getAttributeSetSerialNumberAttributeId()
-    {
-        return this.attributeSetSerialNumberAttributeId;
-    }
-
-    public void setAttributeSetSerialNumberAttributeId(String attributeSetSerialNumberAttributeId)
-    {
-        this.attributeSetSerialNumberAttributeId = attributeSetSerialNumberAttributeId;
-    }
-
-    private String attributeSetLotAttributeId;
-
-    public String getAttributeSetLotAttributeId()
-    {
-        return this.attributeSetLotAttributeId;
-    }
-
-    public void setAttributeSetLotAttributeId(String attributeSetLotAttributeId)
-    {
-        this.attributeSetLotAttributeId = attributeSetLotAttributeId;
-    }
-
     private String attributeSetReferenceId;
 
     public String getAttributeSetReferenceId()
@@ -332,12 +308,6 @@ public class AttributeUseMvoStateDto
             }
             if (returnedFieldsContains("AttributeSetDescription")) {
                 dto.setAttributeSetDescription(state.getAttributeSetDescription());
-            }
-            if (returnedFieldsContains("AttributeSetSerialNumberAttributeId")) {
-                dto.setAttributeSetSerialNumberAttributeId(state.getAttributeSetSerialNumberAttributeId());
-            }
-            if (returnedFieldsContains("AttributeSetLotAttributeId")) {
-                dto.setAttributeSetLotAttributeId(state.getAttributeSetLotAttributeId());
             }
             if (returnedFieldsContains("AttributeSetReferenceId")) {
                 dto.setAttributeSetReferenceId(state.getAttributeSetReferenceId());

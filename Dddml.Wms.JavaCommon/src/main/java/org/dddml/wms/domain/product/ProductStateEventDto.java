@@ -594,14 +594,24 @@ public class ProductStateEventDto extends AbstractStateEvent
         this.defaultShipmentBoxTypeId = defaultShipmentBoxTypeId;
     }
 
-    private String lotIdFilledIn;
+    private Boolean isSerialNumbered;
 
-    public String getLotIdFilledIn() {
-        return this.lotIdFilledIn;
+    public Boolean getIsSerialNumbered() {
+        return this.isSerialNumbered;
     }
 
-    public void setLotIdFilledIn(String lotIdFilledIn) {
-        this.lotIdFilledIn = lotIdFilledIn;
+    public void setIsSerialNumbered(Boolean isSerialNumbered) {
+        this.isSerialNumbered = isSerialNumbered;
+    }
+
+    private Boolean isManagedByLot;
+
+    public Boolean getIsManagedByLot() {
+        return this.isManagedByLot;
+    }
+
+    public void setIsManagedByLot(Boolean isManagedByLot) {
+        this.isManagedByLot = isManagedByLot;
     }
 
     private String attributeSetId;
@@ -1214,14 +1224,24 @@ public class ProductStateEventDto extends AbstractStateEvent
         this.isPropertyDefaultShipmentBoxTypeIdRemoved = removed;
     }
 
-    private Boolean isPropertyLotIdFilledInRemoved;
+    private Boolean isPropertyIsSerialNumberedRemoved;
 
-    public Boolean getIsPropertyLotIdFilledInRemoved() {
-        return this.isPropertyLotIdFilledInRemoved;
+    public Boolean getIsPropertyIsSerialNumberedRemoved() {
+        return this.isPropertyIsSerialNumberedRemoved;
     }
 
-    public void setIsPropertyLotIdFilledInRemoved(Boolean removed) {
-        this.isPropertyLotIdFilledInRemoved = removed;
+    public void setIsPropertyIsSerialNumberedRemoved(Boolean removed) {
+        this.isPropertyIsSerialNumberedRemoved = removed;
+    }
+
+    private Boolean isPropertyIsManagedByLotRemoved;
+
+    public Boolean getIsPropertyIsManagedByLotRemoved() {
+        return this.isPropertyIsManagedByLotRemoved;
+    }
+
+    public void setIsPropertyIsManagedByLotRemoved(Boolean removed) {
+        this.isPropertyIsManagedByLotRemoved = removed;
     }
 
     private Boolean isPropertyAttributeSetIdRemoved;

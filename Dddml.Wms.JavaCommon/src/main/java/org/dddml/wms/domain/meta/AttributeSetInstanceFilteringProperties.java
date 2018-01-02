@@ -16,7 +16,7 @@ public final class AttributeSetInstanceFilteringProperties
             "organizationId",
             "referenceId",
             "serialNumber",
-            "lot",
+            "lotId",
             "description",
             "widthInch",
             "diameterInch",
@@ -186,8 +186,8 @@ public final class AttributeSetInstanceFilteringProperties
         aliasMap.put("ReferenceId", "referenceId");
         aliasMap.put("serialNumber", "serialNumber");
         aliasMap.put("SerialNumber", "serialNumber");
-        aliasMap.put("lot", "lot");
-        aliasMap.put("Lot", "lot");
+        aliasMap.put("lotId", "lotId");
+        aliasMap.put("LotId", "lotId");
         aliasMap.put("description", "description");
         aliasMap.put("Description", "description");
         aliasMap.put("widthInch", "widthInch");

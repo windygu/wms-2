@@ -16,7 +16,7 @@
 	<property name="organizationId" ></property>
 	<property name="referenceId" ></property>
 	<property name="serialNumber" ></property>
-	<property name="lot" ></property>
+	<property name="lotId" ></property>
 	<property name="description" ></property>
 	<property name="hash" ></property>
 	<property name="widthInch" ></property>

@@ -22,8 +22,6 @@
 	<property name="attributeSetAttributeSetName" ></property>
 	<property name="attributeSetOrganizationId" ></property>
 	<property name="attributeSetDescription" ></property>
-	<property name="attributeSetSerialNumberAttributeId" ></property>
-	<property name="attributeSetLotAttributeId" ></property>
 	<property name="attributeSetReferenceId" ></property>
 	<property name="attributeSetIsInstanceAttributeSet" ></property>
 	<property name="attributeSetIsMandatory" ></property>
@@ -57,10 +55,6 @@
         <property name="isPropertyAttributeSetOrganizationIdRemoved" column="IsPropertyAttributeSetOrganizationIdRemoved"/>
 
         <property name="isPropertyAttributeSetDescriptionRemoved" column="IsPropertyAttributeSetDescriptionRemoved"/>
-
-        <property name="isPropertyAttributeSetSerialNumberAttributeIdRemoved" column="IsPropertyAttributeSetSerialNumberAttributeIdRemoved"/>
-
-        <property name="isPropertyAttributeSetLotAttributeIdRemoved" column="IsPropertyAttributeSetLotAttributeIdRemoved"/>
 
         <property name="isPropertyAttributeSetReferenceIdRemoved" column="IsPropertyAttributeSetReferenceIdRemoved"/>
 

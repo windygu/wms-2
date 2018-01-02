@@ -23,10 +23,6 @@ namespace Dddml.Wms.Domain.AttributeSet
 
 		string Description { get; set; }
 
-		string SerialNumberAttributeId { get; set; }
-
-		string LotAttributeId { get; set; }
-
 		string ReferenceId { get; set; }
 
 		bool? IsInstanceAttributeSet { get; set; }
@@ -56,10 +52,6 @@ namespace Dddml.Wms.Domain.AttributeSet
 		bool IsPropertyOrganizationIdRemoved { get; set; }
 
 		bool IsPropertyDescriptionRemoved { get; set; }
-
-		bool IsPropertySerialNumberAttributeIdRemoved { get; set; }
-
-		bool IsPropertyLotAttributeIdRemoved { get; set; }
 
 		bool IsPropertyReferenceIdRemoved { get; set; }
 

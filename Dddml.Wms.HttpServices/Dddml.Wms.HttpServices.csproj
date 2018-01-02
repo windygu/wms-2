@@ -329,6 +329,9 @@
     <Compile Include="Generated\Controllers\LocatorTreesController.cs">
       <DependentUpon>GenerateTreeControllers.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Controllers\LotsController.cs">
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Controllers\MovementConfirmationLineMvosController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
@@ -486,6 +489,7 @@
 .\InventoryPostingRulesController.cs
 .\InventoryPRTriggeredsController.cs
 .\LocatorsController.cs
+.\LotsController.cs
 .\MovementConfirmationLineMvosController.cs
 .\MovementConfirmationsController.cs
 .\MovementLineMvosController.cs

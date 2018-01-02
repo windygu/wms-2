@@ -351,6 +351,20 @@
     <Content Include="src\main\java\org\dddml\wms\domain\locator\hibernate\HibernateLocatorTreeLocatorStateQueryRepository.java">
       <DependentUpon>GenerateLocatorDomainHibernate.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\lot\hibernate\GenerateLotDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateLotDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\lot\hibernate\HibernateLotEventStore.java">
+      <DependentUpon>GenerateLotDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\lot\hibernate\HibernateLotStateQueryRepository.java">
+      <DependentUpon>GenerateLotDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\lot\hibernate\HibernateLotStateRepository.java">
+      <DependentUpon>GenerateLotDomainHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\hibernate\GenerateMovementConfirmationLineMvoDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -763,6 +777,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Content>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\LotStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\LotState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\UomTypeStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
@@ -1157,6 +1177,8 @@
 .\InventoryPRTriggeredState.hbm.xml
 .\LocatorState.hbm.xml
 .\LocatorStateEvent.hbm.xml
+.\LotState.hbm.xml
+.\LotStateEvent.hbm.xml
 .\MovementConfirmationLineMvoState.hbm.xml
 .\MovementConfirmationLineMvoStateEvent.hbm.xml
 .\MovementConfirmationLineState.hbm.xml
@@ -1690,6 +1712,16 @@
 .\HibernateUomTypeEventStore.java
 .\HibernateUomTypeStateQueryRepository.java
 .\HibernateUomTypeStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\lot\hibernate\GenerateLotDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateLotDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateLotDomainHibernate.txt
+.\HibernateLotEventStore.java
+.\HibernateLotStateQueryRepository.java
+.\HibernateLotStateRepository.java
 </LastOutputs>
     </Content>
   </ItemGroup>

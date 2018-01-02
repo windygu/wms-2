@@ -14,8 +14,6 @@
 	<property name="attributeSetName" ></property>
 	<property name="organizationId" ></property>
 	<property name="description" ></property>
-	<property name="serialNumberAttributeId" ></property>
-	<property name="lotAttributeId" ></property>
 	<property name="referenceId" ></property>
 	<property name="isInstanceAttributeSet" ></property>
 	<property name="isMandatory" ></property>

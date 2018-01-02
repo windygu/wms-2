@@ -81,7 +81,8 @@ public class ProductStateEventDtoConverter {
         dto.setVirtualVariantMethodEnum(e.getVirtualVariantMethodEnum());
         dto.setInShippingBox(e.getInShippingBox());
         dto.setDefaultShipmentBoxTypeId(e.getDefaultShipmentBoxTypeId());
-        dto.setLotIdFilledIn(e.getLotIdFilledIn());
+        dto.setIsSerialNumbered(e.getIsSerialNumbered());
+        dto.setIsManagedByLot(e.getIsManagedByLot());
         dto.setAttributeSetId(e.getAttributeSetId());
         dto.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
         dto.setActive(e.getActive());
@@ -150,7 +151,8 @@ public class ProductStateEventDtoConverter {
         dto.setVirtualVariantMethodEnum(e.getVirtualVariantMethodEnum());
         dto.setInShippingBox(e.getInShippingBox());
         dto.setDefaultShipmentBoxTypeId(e.getDefaultShipmentBoxTypeId());
-        dto.setLotIdFilledIn(e.getLotIdFilledIn());
+        dto.setIsSerialNumbered(e.getIsSerialNumbered());
+        dto.setIsManagedByLot(e.getIsManagedByLot());
         dto.setAttributeSetId(e.getAttributeSetId());
         dto.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
         dto.setActive(e.getActive());
@@ -210,7 +212,8 @@ public class ProductStateEventDtoConverter {
         dto.setIsPropertyVirtualVariantMethodEnumRemoved(e.getIsPropertyVirtualVariantMethodEnumRemoved());
         dto.setIsPropertyInShippingBoxRemoved(e.getIsPropertyInShippingBoxRemoved());
         dto.setIsPropertyDefaultShipmentBoxTypeIdRemoved(e.getIsPropertyDefaultShipmentBoxTypeIdRemoved());
-        dto.setIsPropertyLotIdFilledInRemoved(e.getIsPropertyLotIdFilledInRemoved());
+        dto.setIsPropertyIsSerialNumberedRemoved(e.getIsPropertyIsSerialNumberedRemoved());
+        dto.setIsPropertyIsManagedByLotRemoved(e.getIsPropertyIsManagedByLotRemoved());
         dto.setIsPropertyAttributeSetIdRemoved(e.getIsPropertyAttributeSetIdRemoved());
         dto.setIsPropertyAttributeSetInstanceIdRemoved(e.getIsPropertyAttributeSetInstanceIdRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());

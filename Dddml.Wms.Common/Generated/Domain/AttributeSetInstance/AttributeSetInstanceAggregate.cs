@@ -99,7 +99,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
             e.OrganizationId = c.OrganizationId;
             e.ReferenceId = c.ReferenceId;
             e.SerialNumber = c.SerialNumber;
-            e.Lot = c.Lot;
+            e.LotId = c.LotId;
             e.Description = c.Description;
             e.Hash = c.Hash;
             e.WidthInch = c.WidthInch;

@@ -132,64 +132,6 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "SerialNumberAttributeId",
-                    Type = typeof(string),
-                    TypeName = "string",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 0,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = false,
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
-                new PropertyMetadata {
-                    Name = "LotAttributeId",
-                    Type = typeof(string),
-                    TypeName = "string",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 0,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = false,
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
-                new PropertyMetadata {
                     Name = "ReferenceId",
                     Type = typeof(string),
                     TypeName = "string",
@@ -527,10 +469,6 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("organizationId", "OrganizationId");
             d.Add("Description", "Description");
             d.Add("description", "Description");
-            d.Add("SerialNumberAttributeId", "SerialNumberAttributeId");
-            d.Add("serialNumberAttributeId", "SerialNumberAttributeId");
-            d.Add("LotAttributeId", "LotAttributeId");
-            d.Add("lotAttributeId", "LotAttributeId");
             d.Add("ReferenceId", "ReferenceId");
             d.Add("referenceId", "ReferenceId");
             d.Add("IsInstanceAttributeSet", "IsInstanceAttributeSet");

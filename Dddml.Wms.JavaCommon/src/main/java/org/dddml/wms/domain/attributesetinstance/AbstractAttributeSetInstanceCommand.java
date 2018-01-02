@@ -83,16 +83,16 @@ public abstract class AbstractAttributeSetInstanceCommand extends AbstractComman
             this.serialNumber = serialNumber;
         }
 
-        private String lot;
+        private String lotId;
 
-        public String getLot()
+        public String getLotId()
         {
-            return this.lot;
+            return this.lotId;
         }
 
-        public void setLot(String lot)
+        public void setLotId(String lotId)
         {
-            this.lot = lot;
+            this.lotId = lotId;
         }
 
         private String description;

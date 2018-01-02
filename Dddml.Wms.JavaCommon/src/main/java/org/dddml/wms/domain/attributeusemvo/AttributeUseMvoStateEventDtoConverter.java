@@ -35,8 +35,6 @@ public class AttributeUseMvoStateEventDtoConverter {
         dto.setAttributeSetAttributeSetName(e.getAttributeSetAttributeSetName());
         dto.setAttributeSetOrganizationId(e.getAttributeSetOrganizationId());
         dto.setAttributeSetDescription(e.getAttributeSetDescription());
-        dto.setAttributeSetSerialNumberAttributeId(e.getAttributeSetSerialNumberAttributeId());
-        dto.setAttributeSetLotAttributeId(e.getAttributeSetLotAttributeId());
         dto.setAttributeSetReferenceId(e.getAttributeSetReferenceId());
         dto.setAttributeSetIsInstanceAttributeSet(e.getAttributeSetIsInstanceAttributeSet());
         dto.setAttributeSetIsMandatory(e.getAttributeSetIsMandatory());
@@ -61,8 +59,6 @@ public class AttributeUseMvoStateEventDtoConverter {
         dto.setAttributeSetAttributeSetName(e.getAttributeSetAttributeSetName());
         dto.setAttributeSetOrganizationId(e.getAttributeSetOrganizationId());
         dto.setAttributeSetDescription(e.getAttributeSetDescription());
-        dto.setAttributeSetSerialNumberAttributeId(e.getAttributeSetSerialNumberAttributeId());
-        dto.setAttributeSetLotAttributeId(e.getAttributeSetLotAttributeId());
         dto.setAttributeSetReferenceId(e.getAttributeSetReferenceId());
         dto.setAttributeSetIsInstanceAttributeSet(e.getAttributeSetIsInstanceAttributeSet());
         dto.setAttributeSetIsMandatory(e.getAttributeSetIsMandatory());
@@ -78,8 +74,6 @@ public class AttributeUseMvoStateEventDtoConverter {
         dto.setIsPropertyAttributeSetAttributeSetNameRemoved(e.getIsPropertyAttributeSetAttributeSetNameRemoved());
         dto.setIsPropertyAttributeSetOrganizationIdRemoved(e.getIsPropertyAttributeSetOrganizationIdRemoved());
         dto.setIsPropertyAttributeSetDescriptionRemoved(e.getIsPropertyAttributeSetDescriptionRemoved());
-        dto.setIsPropertyAttributeSetSerialNumberAttributeIdRemoved(e.getIsPropertyAttributeSetSerialNumberAttributeIdRemoved());
-        dto.setIsPropertyAttributeSetLotAttributeIdRemoved(e.getIsPropertyAttributeSetLotAttributeIdRemoved());
         dto.setIsPropertyAttributeSetReferenceIdRemoved(e.getIsPropertyAttributeSetReferenceIdRemoved());
         dto.setIsPropertyAttributeSetIsInstanceAttributeSetRemoved(e.getIsPropertyAttributeSetIsInstanceAttributeSetRemoved());
         dto.setIsPropertyAttributeSetIsMandatoryRemoved(e.getIsPropertyAttributeSetIsMandatoryRemoved());

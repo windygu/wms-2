@@ -57,30 +57,6 @@ public abstract class AbstractAttributeSetState implements AttributeSetState, Sa
         this.description = description;
     }
 
-    private String serialNumberAttributeId;
-
-    public String getSerialNumberAttributeId()
-    {
-        return this.serialNumberAttributeId;
-    }
-
-    public void setSerialNumberAttributeId(String serialNumberAttributeId)
-    {
-        this.serialNumberAttributeId = serialNumberAttributeId;
-    }
-
-    private String lotAttributeId;
-
-    public String getLotAttributeId()
-    {
-        return this.lotAttributeId;
-    }
-
-    public void setLotAttributeId(String lotAttributeId)
-    {
-        this.lotAttributeId = lotAttributeId;
-    }
-
     private String referenceId;
 
     public String getReferenceId()
@@ -93,7 +69,7 @@ public abstract class AbstractAttributeSetState implements AttributeSetState, Sa
         this.referenceId = referenceId;
     }
 
-    private Boolean isInstanceAttributeSet;
+    private Boolean isInstanceAttributeSet = true;
 
     public Boolean getIsInstanceAttributeSet()
     {
@@ -105,7 +81,7 @@ public abstract class AbstractAttributeSetState implements AttributeSetState, Sa
         this.isInstanceAttributeSet = isInstanceAttributeSet;
     }
 
-    private Boolean isMandatory;
+    private Boolean isMandatory = true;
 
     public Boolean getIsMandatory()
     {
@@ -281,11 +257,9 @@ public abstract class AbstractAttributeSetState implements AttributeSetState, Sa
         this.setAttributeSetName(e.getAttributeSetName());
         this.setOrganizationId(e.getOrganizationId());
         this.setDescription(e.getDescription());
-        this.setSerialNumberAttributeId(e.getSerialNumberAttributeId());
-        this.setLotAttributeId(e.getLotAttributeId());
         this.setReferenceId(e.getReferenceId());
-        this.setIsInstanceAttributeSet(e.getIsInstanceAttributeSet());
-        this.setIsMandatory(e.getIsMandatory());
+        if(e.getIsInstanceAttributeSet() != null) { this.setIsInstanceAttributeSet(e.getIsInstanceAttributeSet()); }
+        if(e.getIsMandatory() != null) { this.setIsMandatory(e.getIsMandatory()); }
         this.setActive(e.getActive());
 
         this.setDeleted(false);
@@ -335,28 +309,6 @@ public abstract class AbstractAttributeSetState implements AttributeSetState, Sa
         else
         {
             this.setDescription(e.getDescription());
-        }
-        if (e.getSerialNumberAttributeId() == null)
-        {
-            if (e.getIsPropertySerialNumberAttributeIdRemoved() != null && e.getIsPropertySerialNumberAttributeIdRemoved())
-            {
-                this.setSerialNumberAttributeId(null);
-            }
-        }
-        else
-        {
-            this.setSerialNumberAttributeId(e.getSerialNumberAttributeId());
-        }
-        if (e.getLotAttributeId() == null)
-        {
-            if (e.getIsPropertyLotAttributeIdRemoved() != null && e.getIsPropertyLotAttributeIdRemoved())
-            {
-                this.setLotAttributeId(null);
-            }
-        }
-        else
-        {
-            this.setLotAttributeId(e.getLotAttributeId());
         }
         if (e.getReferenceId() == null)
         {

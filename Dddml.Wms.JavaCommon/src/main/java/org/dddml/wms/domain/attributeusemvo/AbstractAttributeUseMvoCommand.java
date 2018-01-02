@@ -107,30 +107,6 @@ public abstract class AbstractAttributeUseMvoCommand extends AbstractCommand imp
             this.attributeSetDescription = attributeSetDescription;
         }
 
-        private String attributeSetSerialNumberAttributeId;
-
-        public String getAttributeSetSerialNumberAttributeId()
-        {
-            return this.attributeSetSerialNumberAttributeId;
-        }
-
-        public void setAttributeSetSerialNumberAttributeId(String attributeSetSerialNumberAttributeId)
-        {
-            this.attributeSetSerialNumberAttributeId = attributeSetSerialNumberAttributeId;
-        }
-
-        private String attributeSetLotAttributeId;
-
-        public String getAttributeSetLotAttributeId()
-        {
-            return this.attributeSetLotAttributeId;
-        }
-
-        public void setAttributeSetLotAttributeId(String attributeSetLotAttributeId)
-        {
-            this.attributeSetLotAttributeId = attributeSetLotAttributeId;
-        }
-
         private String attributeSetReferenceId;
 
         public String getAttributeSetReferenceId()
@@ -327,30 +303,6 @@ public abstract class AbstractAttributeUseMvoCommand extends AbstractCommand imp
         public void setIsPropertyAttributeSetDescriptionRemoved(Boolean removed)
         {
             this.isPropertyAttributeSetDescriptionRemoved = removed;
-        }
-
-        private Boolean isPropertyAttributeSetSerialNumberAttributeIdRemoved;
-
-        public Boolean getIsPropertyAttributeSetSerialNumberAttributeIdRemoved()
-        {
-            return this.isPropertyAttributeSetSerialNumberAttributeIdRemoved;
-        }
-
-        public void setIsPropertyAttributeSetSerialNumberAttributeIdRemoved(Boolean removed)
-        {
-            this.isPropertyAttributeSetSerialNumberAttributeIdRemoved = removed;
-        }
-
-        private Boolean isPropertyAttributeSetLotAttributeIdRemoved;
-
-        public Boolean getIsPropertyAttributeSetLotAttributeIdRemoved()
-        {
-            return this.isPropertyAttributeSetLotAttributeIdRemoved;
-        }
-
-        public void setIsPropertyAttributeSetLotAttributeIdRemoved(Boolean removed)
-        {
-            this.isPropertyAttributeSetLotAttributeIdRemoved = removed;
         }
 
         private Boolean isPropertyAttributeSetReferenceIdRemoved;

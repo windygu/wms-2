@@ -706,16 +706,28 @@ public abstract class AbstractProductCommand extends AbstractCommand implements 
             this.defaultShipmentBoxTypeId = defaultShipmentBoxTypeId;
         }
 
-        private String lotIdFilledIn;
+        private Boolean isSerialNumbered;
 
-        public String getLotIdFilledIn()
+        public Boolean getIsSerialNumbered()
         {
-            return this.lotIdFilledIn;
+            return this.isSerialNumbered;
         }
 
-        public void setLotIdFilledIn(String lotIdFilledIn)
+        public void setIsSerialNumbered(Boolean isSerialNumbered)
         {
-            this.lotIdFilledIn = lotIdFilledIn;
+            this.isSerialNumbered = isSerialNumbered;
+        }
+
+        private Boolean isManagedByLot;
+
+        public Boolean getIsManagedByLot()
+        {
+            return this.isManagedByLot;
+        }
+
+        public void setIsManagedByLot(Boolean isManagedByLot)
+        {
+            this.isManagedByLot = isManagedByLot;
         }
 
         private String attributeSetId;
@@ -1444,16 +1456,28 @@ public abstract class AbstractProductCommand extends AbstractCommand implements 
             this.isPropertyDefaultShipmentBoxTypeIdRemoved = removed;
         }
 
-        private Boolean isPropertyLotIdFilledInRemoved;
+        private Boolean isPropertyIsSerialNumberedRemoved;
 
-        public Boolean getIsPropertyLotIdFilledInRemoved()
+        public Boolean getIsPropertyIsSerialNumberedRemoved()
         {
-            return this.isPropertyLotIdFilledInRemoved;
+            return this.isPropertyIsSerialNumberedRemoved;
         }
 
-        public void setIsPropertyLotIdFilledInRemoved(Boolean removed)
+        public void setIsPropertyIsSerialNumberedRemoved(Boolean removed)
         {
-            this.isPropertyLotIdFilledInRemoved = removed;
+            this.isPropertyIsSerialNumberedRemoved = removed;
+        }
+
+        private Boolean isPropertyIsManagedByLotRemoved;
+
+        public Boolean getIsPropertyIsManagedByLotRemoved()
+        {
+            return this.isPropertyIsManagedByLotRemoved;
+        }
+
+        public void setIsPropertyIsManagedByLotRemoved(Boolean removed)
+        {
+            this.isPropertyIsManagedByLotRemoved = removed;
         }
 
         private Boolean isPropertyAttributeSetIdRemoved;

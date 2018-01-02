@@ -356,7 +356,13 @@ namespace Dddml.Wms.Domain.Product
             set;
         }
 
-        string LotIdFilledIn
+        bool? IsSerialNumbered
+        {
+            get;
+            set;
+        }
+
+        bool? IsManagedByLot
         {
             get;
             set;

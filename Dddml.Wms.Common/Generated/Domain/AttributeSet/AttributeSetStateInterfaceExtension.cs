@@ -55,8 +55,6 @@ namespace Dddml.Wms.Domain.AttributeSet
             cmd.AttributeSetName = state.AttributeSetName;
             cmd.OrganizationId = state.OrganizationId;
             cmd.Description = state.Description;
-            cmd.SerialNumberAttributeId = state.SerialNumberAttributeId;
-            cmd.LotAttributeId = state.LotAttributeId;
             cmd.ReferenceId = state.ReferenceId;
             cmd.IsInstanceAttributeSet = state.IsInstanceAttributeSet;
             cmd.IsMandatory = state.IsMandatory;
@@ -65,8 +63,6 @@ namespace Dddml.Wms.Domain.AttributeSet
             if (state.AttributeSetName == null) { cmd.IsPropertyAttributeSetNameRemoved = true; }
             if (state.OrganizationId == null) { cmd.IsPropertyOrganizationIdRemoved = true; }
             if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
-            if (state.SerialNumberAttributeId == null) { cmd.IsPropertySerialNumberAttributeIdRemoved = true; }
-            if (state.LotAttributeId == null) { cmd.IsPropertyLotAttributeIdRemoved = true; }
             if (state.ReferenceId == null) { cmd.IsPropertyReferenceIdRemoved = true; }
             foreach (var d in state.AttributeUses)
             {
@@ -88,8 +84,6 @@ namespace Dddml.Wms.Domain.AttributeSet
             cmd.AttributeSetName = state.AttributeSetName;
             cmd.OrganizationId = state.OrganizationId;
             cmd.Description = state.Description;
-            cmd.SerialNumberAttributeId = state.SerialNumberAttributeId;
-            cmd.LotAttributeId = state.LotAttributeId;
             cmd.ReferenceId = state.ReferenceId;
             cmd.IsInstanceAttributeSet = state.IsInstanceAttributeSet;
             cmd.IsMandatory = state.IsMandatory;

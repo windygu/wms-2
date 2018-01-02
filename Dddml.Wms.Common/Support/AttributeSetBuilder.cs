@@ -48,7 +48,7 @@ namespace Dddml.Wms.Support
                 "OrganizationId",
                 "AttributeSet", "AttributeSetId", 
                 "AttributeSetInstanceId",
-                "Lot",
+                "LotId",
                 "LotNumber",
                 "SerialNumber",
                 "Description",

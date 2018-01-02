@@ -1,4 +1,6 @@
 
+    alter table AttributeSetInstances 
+        add column LotId VARCHAR(255);
     create table AttributeValue_RV (
         AttributeValueIdAttributeId VARCHAR(50) not null,
        AttributeValueIdValue VARCHAR(50) not null,
@@ -43,8 +45,6 @@
        AttributeSetAttributeSetName VARCHAR(255),
        AttributeSetOrganizationId VARCHAR(255),
        AttributeSetDescription VARCHAR(255),
-       AttributeSetSerialNumberAttributeId VARCHAR(255),
-       AttributeSetLotAttributeId VARCHAR(255),
        AttributeSetReferenceId VARCHAR(255),
        AttributeSetIsInstanceAttributeSet TINYINT(1),
        AttributeSetIsMandatory TINYINT(1),
@@ -89,6 +89,18 @@
       unique (AttributeAliasIdCode),
       unique (Name)
     );
+    alter table Products 
+        add column IsSerialNumbered TINYINT(1);
+    alter table Products 
+        add column IsManagedByLot TINYINT(1);
+    alter table ProductStateEvents 
+        add column IsSerialNumbered TINYINT(1);
+    alter table ProductStateEvents 
+        add column IsManagedByLot TINYINT(1);
+    alter table ProductStateEvents 
+        add column IsPropertyIsSerialNumberedRemoved TINYINT(1);
+    alter table ProductStateEvents 
+        add column IsPropertyIsManagedByLotRemoved TINYINT(1);
     create table InOutLine_RV (
         InOutLineIdInOutDocumentNumber VARCHAR(50) not null,
        InOutLineIdLineNumber VARCHAR(50) not null,
@@ -469,4 +481,35 @@
        CreatedAt DATETIME,
        UpdatedAt DATETIME,
        primary key (PhysicalInventoryLineIdPhysicalInventoryDocumentNumber, PhysicalInventoryLineIdLineNumber)
+    );
+    create table Lots (
+        LotId VARCHAR(20) not null,
+       Version BIGINT not null,
+       CreationDate DATETIME,
+       Quantity DECIMAL(18,6),
+       ExpirationDate DATETIME,
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (LotId)
+    );
+    create table LotStateEvents (
+        LotId VARCHAR(20) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       CreationDate DATETIME,
+       Quantity DECIMAL(18,6),
+       ExpirationDate DATETIME,
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyCreationDateRemoved TINYINT(1),
+       IsPropertyQuantityRemoved TINYINT(1),
+       IsPropertyExpirationDateRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (LotId, Version)
     );

@@ -28,14 +28,6 @@ public interface AttributeSetState
 
     void setDescription(String description);
 
-    String getSerialNumberAttributeId();
-
-    void setSerialNumberAttributeId(String serialNumberAttributeId);
-
-    String getLotAttributeId();
-
-    void setLotAttributeId(String lotAttributeId);
-
     String getReferenceId();
 
     void setReferenceId(String referenceId);

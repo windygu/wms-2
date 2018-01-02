@@ -93,7 +93,8 @@ namespace Dddml.Wms.Domain.Product
             dto.VirtualVariantMethodEnum = e.VirtualVariantMethodEnum;
             dto.InShippingBox = e.InShippingBox;
             dto.DefaultShipmentBoxTypeId = e.DefaultShipmentBoxTypeId;
-            dto.LotIdFilledIn = e.LotIdFilledIn;
+            dto.IsSerialNumbered = e.IsSerialNumbered;
+            dto.IsManagedByLot = e.IsManagedByLot;
             dto.AttributeSetId = e.AttributeSetId;
             dto.AttributeSetInstanceId = e.AttributeSetInstanceId;
             dto.Active = e.Active;
@@ -163,7 +164,8 @@ namespace Dddml.Wms.Domain.Product
             dto.VirtualVariantMethodEnum = e.VirtualVariantMethodEnum;
             dto.InShippingBox = e.InShippingBox;
             dto.DefaultShipmentBoxTypeId = e.DefaultShipmentBoxTypeId;
-            dto.LotIdFilledIn = e.LotIdFilledIn;
+            dto.IsSerialNumbered = e.IsSerialNumbered;
+            dto.IsManagedByLot = e.IsManagedByLot;
             dto.AttributeSetId = e.AttributeSetId;
             dto.AttributeSetInstanceId = e.AttributeSetInstanceId;
             dto.Active = e.Active;
@@ -223,7 +225,8 @@ namespace Dddml.Wms.Domain.Product
             dto.IsPropertyVirtualVariantMethodEnumRemoved = e.IsPropertyVirtualVariantMethodEnumRemoved;
             dto.IsPropertyInShippingBoxRemoved = e.IsPropertyInShippingBoxRemoved;
             dto.IsPropertyDefaultShipmentBoxTypeIdRemoved = e.IsPropertyDefaultShipmentBoxTypeIdRemoved;
-            dto.IsPropertyLotIdFilledInRemoved = e.IsPropertyLotIdFilledInRemoved;
+            dto.IsPropertyIsSerialNumberedRemoved = e.IsPropertyIsSerialNumberedRemoved;
+            dto.IsPropertyIsManagedByLotRemoved = e.IsPropertyIsManagedByLotRemoved;
             dto.IsPropertyAttributeSetIdRemoved = e.IsPropertyAttributeSetIdRemoved;
             dto.IsPropertyAttributeSetInstanceIdRemoved = e.IsPropertyAttributeSetInstanceIdRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;

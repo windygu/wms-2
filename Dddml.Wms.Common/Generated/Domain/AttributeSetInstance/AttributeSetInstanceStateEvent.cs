@@ -46,7 +46,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
         public virtual string SerialNumber { get { return _state.SerialNumber; } set { _state.SerialNumber = value; } }
 
-        public virtual string Lot { get { return _state.Lot; } set { _state.Lot = value; } }
+        public virtual string LotId { get { return _state.LotId; } set { _state.LotId = value; } }
 
         public virtual string Description { get { return _state.Description; } set { _state.Description = value; } }
 

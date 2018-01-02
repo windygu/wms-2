@@ -32,7 +32,7 @@ public abstract class AbstractAttributeSetInstanceStateCommandConverter<TCreateA
         cmd.setOrganizationId(state.getOrganizationId());
         cmd.setReferenceId(state.getReferenceId());
         cmd.setSerialNumber(state.getSerialNumber());
-        cmd.setLot(state.getLot());
+        cmd.setLotId(state.getLotId());
         cmd.setDescription(state.getDescription());
         cmd.setHash(state.getHash());
         cmd.setWidthInch(state.getWidthInch());

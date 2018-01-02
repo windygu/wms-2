@@ -273,7 +273,9 @@ namespace Dddml.Wms.Domain.Product
 
 			this.DefaultShipmentBoxTypeId = e.DefaultShipmentBoxTypeId;
 
-			this.LotIdFilledIn = e.LotIdFilledIn;
+            this.IsSerialNumbered = (e.IsSerialNumbered != null && e.IsSerialNumbered.HasValue) ? e.IsSerialNumbered.Value : default(bool);
+
+            this.IsManagedByLot = (e.IsManagedByLot != null && e.IsManagedByLot.HasValue) ? e.IsManagedByLot.Value : default(bool);
 
 			this.AttributeSetId = e.AttributeSetId;
 
@@ -964,16 +966,28 @@ namespace Dddml.Wms.Domain.Product
 				this.DefaultShipmentBoxTypeId = e.DefaultShipmentBoxTypeId;
 			}
 
-			if (e.LotIdFilledIn == null)
+			if (e.IsSerialNumbered == null)
 			{
-				if (e.IsPropertyLotIdFilledInRemoved)
+				if (e.IsPropertyIsSerialNumberedRemoved)
 				{
-					this.LotIdFilledIn = default(string);
+					this.IsSerialNumbered = default(bool);
 				}
 			}
 			else
 			{
-				this.LotIdFilledIn = e.LotIdFilledIn;
+				this.IsSerialNumbered = (e.IsSerialNumbered != null && e.IsSerialNumbered.HasValue) ? e.IsSerialNumbered.Value : default(bool);
+			}
+
+			if (e.IsManagedByLot == null)
+			{
+				if (e.IsPropertyIsManagedByLotRemoved)
+				{
+					this.IsManagedByLot = default(bool);
+				}
+			}
+			else
+			{
+				this.IsManagedByLot = (e.IsManagedByLot != null && e.IsManagedByLot.HasValue) ? e.IsManagedByLot.Value : default(bool);
 			}
 
 			if (e.AttributeSetId == null)

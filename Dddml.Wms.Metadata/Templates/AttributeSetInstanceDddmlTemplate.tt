@@ -63,7 +63,7 @@ aggregates:
         SerialNumber:
           type: string
 
-        Lot:
+        LotId:
           type: string
 
         Description:

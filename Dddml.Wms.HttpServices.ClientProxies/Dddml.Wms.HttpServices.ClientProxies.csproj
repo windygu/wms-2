@@ -131,6 +131,9 @@
     <Compile Include="Generated\LocatorTreeApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\LotApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\MovementApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
@@ -243,6 +246,7 @@
 .\InventoryPRTriggeredApplicationServiceProxy.cs
 .\LocatorApplicationServiceProxy.cs
 .\LocatorTreeApplicationServiceProxy.cs
+.\LotApplicationServiceProxy.cs
 .\MovementApplicationServiceProxy.cs
 .\MovementConfirmationApplicationServiceProxy.cs
 .\MovementConfirmationLineMvoApplicationServiceProxy.cs

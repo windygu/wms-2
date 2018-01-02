@@ -205,6 +205,10 @@
 
     drop table if exists UomTypeStateEvents;
 
+    drop table if exists Lots;
+
+    drop table if exists LotStateEvents;
+
     create table Attributes (
         AttributeId VARCHAR(50) not null,
        Version BIGINT not null,
@@ -300,8 +304,6 @@
        AttributeSetName VARCHAR(255),
        OrganizationId VARCHAR(255),
        Description VARCHAR(255),
-       SerialNumberAttributeId VARCHAR(255),
-       LotAttributeId VARCHAR(255),
        ReferenceId VARCHAR(255),
        IsInstanceAttributeSet TINYINT(1),
        IsMandatory TINYINT(1),
@@ -321,8 +323,6 @@
        AttributeSetName VARCHAR(255),
        OrganizationId VARCHAR(255),
        Description VARCHAR(255),
-       SerialNumberAttributeId VARCHAR(255),
-       LotAttributeId VARCHAR(255),
        ReferenceId VARCHAR(255),
        IsInstanceAttributeSet TINYINT(1),
        IsMandatory TINYINT(1),
@@ -333,8 +333,6 @@
        IsPropertyAttributeSetNameRemoved TINYINT(1),
        IsPropertyOrganizationIdRemoved TINYINT(1),
        IsPropertyDescriptionRemoved TINYINT(1),
-       IsPropertySerialNumberAttributeIdRemoved TINYINT(1),
-       IsPropertyLotAttributeIdRemoved TINYINT(1),
        IsPropertyReferenceIdRemoved TINYINT(1),
        IsPropertyIsInstanceAttributeSetRemoved TINYINT(1),
        IsPropertyIsMandatoryRemoved TINYINT(1),
@@ -394,7 +392,7 @@
        OrganizationId VARCHAR(255),
        ReferenceId VARCHAR(255),
        SerialNumber VARCHAR(255),
-       Lot VARCHAR(255),
+       LotId VARCHAR(255),
        Description VARCHAR(255),
        Hash VARCHAR(255),
        WidthInch NUMERIC(19,5),
@@ -643,8 +641,6 @@
        AttributeSetAttributeSetName VARCHAR(255),
        AttributeSetOrganizationId VARCHAR(255),
        AttributeSetDescription VARCHAR(255),
-       AttributeSetSerialNumberAttributeId VARCHAR(255),
-       AttributeSetLotAttributeId VARCHAR(255),
        AttributeSetReferenceId VARCHAR(255),
        AttributeSetIsInstanceAttributeSet TINYINT(1),
        AttributeSetIsMandatory TINYINT(1),
@@ -670,8 +666,6 @@
        AttributeSetAttributeSetName VARCHAR(255),
        AttributeSetOrganizationId VARCHAR(255),
        AttributeSetDescription VARCHAR(255),
-       AttributeSetSerialNumberAttributeId VARCHAR(255),
-       AttributeSetLotAttributeId VARCHAR(255),
        AttributeSetReferenceId VARCHAR(255),
        AttributeSetIsInstanceAttributeSet TINYINT(1),
        AttributeSetIsMandatory TINYINT(1),
@@ -690,8 +684,6 @@
        IsPropertyAttributeSetAttributeSetNameRemoved TINYINT(1),
        IsPropertyAttributeSetOrganizationIdRemoved TINYINT(1),
        IsPropertyAttributeSetDescriptionRemoved TINYINT(1),
-       IsPropertyAttributeSetSerialNumberAttributeIdRemoved TINYINT(1),
-       IsPropertyAttributeSetLotAttributeIdRemoved TINYINT(1),
        IsPropertyAttributeSetReferenceIdRemoved TINYINT(1),
        IsPropertyAttributeSetIsInstanceAttributeSetRemoved TINYINT(1),
        IsPropertyAttributeSetIsMandatoryRemoved TINYINT(1),
@@ -1575,7 +1567,8 @@
        VirtualVariantMethodEnum VARCHAR(20),
        InShippingBox CHAR(1),
        DefaultShipmentBoxTypeId VARCHAR(20),
-       LotIdFilledIn VARCHAR(255),
+       IsSerialNumbered TINYINT(1),
+       IsManagedByLot TINYINT(1),
        AttributeSetId VARCHAR(255),
        AttributeSetInstanceId VARCHAR(255),
        CreatedBy VARCHAR(255),
@@ -1646,7 +1639,8 @@
        VirtualVariantMethodEnum VARCHAR(20),
        InShippingBox CHAR(1),
        DefaultShipmentBoxTypeId VARCHAR(20),
-       LotIdFilledIn VARCHAR(255),
+       IsSerialNumbered TINYINT(1),
+       IsManagedByLot TINYINT(1),
        AttributeSetId VARCHAR(255),
        AttributeSetInstanceId VARCHAR(255),
        Active TINYINT(1),
@@ -1709,7 +1703,8 @@
        IsPropertyVirtualVariantMethodEnumRemoved TINYINT(1),
        IsPropertyInShippingBoxRemoved TINYINT(1),
        IsPropertyDefaultShipmentBoxTypeIdRemoved TINYINT(1),
-       IsPropertyLotIdFilledInRemoved TINYINT(1),
+       IsPropertyIsSerialNumberedRemoved TINYINT(1),
+       IsPropertyIsManagedByLotRemoved TINYINT(1),
        IsPropertyAttributeSetIdRemoved TINYINT(1),
        IsPropertyAttributeSetInstanceIdRemoved TINYINT(1),
        IsPropertyActiveRemoved TINYINT(1),
@@ -3632,4 +3627,37 @@
        IsPropertyDescriptionRemoved TINYINT(1),
        IsPropertyActiveRemoved TINYINT(1),
        primary key (UomTypeId, Version)
+    );
+
+    create table Lots (
+        LotId VARCHAR(20) not null,
+       Version BIGINT not null,
+       CreationDate DATETIME,
+       Quantity DECIMAL(18,6),
+       ExpirationDate DATETIME,
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (LotId)
+    );
+
+    create table LotStateEvents (
+        LotId VARCHAR(20) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       CreationDate DATETIME,
+       Quantity DECIMAL(18,6),
+       ExpirationDate DATETIME,
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyCreationDateRemoved TINYINT(1),
+       IsPropertyQuantityRemoved TINYINT(1),
+       IsPropertyExpirationDateRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (LotId, Version)
     );

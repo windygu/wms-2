@@ -24,7 +24,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
 		string SerialNumber { get; set; }
 
-		string Lot { get; set; }
+		string LotId { get; set; }
 
 		string Description { get; set; }
 

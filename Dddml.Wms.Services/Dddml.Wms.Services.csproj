@@ -335,6 +335,18 @@
     <Compile Include="Generated\Domain\Locator\NHibernate\NHibernateLocatorStateRepository.cs">
       <DependentUpon>GenerateLocatorDomainNHibernate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\Lot\NHibernate\LotApplicationService.cs">
+      <DependentUpon>GenerateLotDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Lot\NHibernate\NHibernateLotEventStore.cs">
+      <DependentUpon>GenerateLotDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Lot\NHibernate\NHibernateLotStateQueryRepository.cs">
+      <DependentUpon>GenerateLotDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Lot\NHibernate\NHibernateLotStateRepository.cs">
+      <DependentUpon>GenerateLotDomainNHibernate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\MovementConfirmationLineMvo\NHibernate\MovementConfirmationLineMvoApplicationService.cs">
       <DependentUpon>GenerateMovementConfirmationLineMvoDomainNHibernate.tt</DependentUpon>
     </Compile>
@@ -842,6 +854,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateLocatorDomainNHibernate.tt</DependentUpon>
     </Content>
+    <Content Include="Generated\Domain\Lot\NHibernate\GenerateLotDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateLotDomainNHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="Generated\Domain\MovementConfirmationLineMvo\NHibernate\GenerateMovementConfirmationLineMvoDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1107,6 +1124,8 @@
 .\InventoryPRTriggeredState.hbm.xml
 .\LocatorState.hbm.xml
 .\LocatorStateEvent.hbm.xml
+.\LotState.hbm.xml
+.\LotStateEvent.hbm.xml
 .\MovementConfirmationLineMvoState.hbm.xml
 .\MovementConfirmationLineMvoStateEvent.hbm.xml
 .\MovementConfirmationLineState.hbm.xml
@@ -1424,6 +1443,12 @@
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Generated\NHibernate\Mappings\UomTypeStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\LotState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\LotStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <Content Include="LoadBoundedContext.tt">
@@ -1969,6 +1994,17 @@
 .\NHibernateUomTypeStateQueryRepository.cs
 .\NHibernateUomTypeStateRepository.cs
 .\UomTypeApplicationService.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\Lot\NHibernate\GenerateLotDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateLotDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateLotDomainNHibernate.txt
+.\LotApplicationService.cs
+.\NHibernateLotEventStore.cs
+.\NHibernateLotStateQueryRepository.cs
+.\NHibernateLotStateRepository.cs
 </LastOutputs>
     </Content>
   </ItemGroup>

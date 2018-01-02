@@ -1,0 +1,22 @@
+﻿#%DDDML 0.1
+
+---
+
+# ------------------------------
+aggregates:
+
+  Lot:
+    id:
+      name: LotId
+      type: id-ne
+      
+    properties:
+      CreationDate:
+        type: date-time
+      Quantity:
+        type: fixed-point
+      ExpirationDate:
+        type: date-time
+        
+    # metadata: 
+    #   StateEventDatabaseTableName: LOT_STATE_EVENT

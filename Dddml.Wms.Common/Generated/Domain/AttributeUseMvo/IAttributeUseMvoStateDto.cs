@@ -58,18 +58,6 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             set;
         }
 
-        string AttributeSetSerialNumberAttributeId
-        {
-            get;
-            set;
-        }
-
-        string AttributeSetLotAttributeId
-        {
-            get;
-            set;
-        }
-
         string AttributeSetReferenceId
         {
             get;

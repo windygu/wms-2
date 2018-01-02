@@ -54,16 +54,16 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this.serialNumber = serialNumber;
     }
 
-    private String lot;
+    private String lotId;
 
-    public String getLot()
+    public String getLotId()
     {
-        return this.lot;
+        return this.lotId;
     }
 
-    public void setLot(String lot)
+    public void setLotId(String lotId)
     {
-        this.lot = lot;
+        this.lotId = lotId;
     }
 
     private String description;
@@ -870,16 +870,16 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         this.isPropertySerialNumberRemoved = removed;
     }
 
-    private Boolean isPropertyLotRemoved;
+    private Boolean isPropertyLotIdRemoved;
 
-    public Boolean getIsPropertyLotRemoved()
+    public Boolean getIsPropertyLotIdRemoved()
     {
-        return this.isPropertyLotRemoved;
+        return this.isPropertyLotIdRemoved;
     }
 
-    public void setIsPropertyLotRemoved(Boolean removed)
+    public void setIsPropertyLotIdRemoved(Boolean removed)
     {
-        this.isPropertyLotRemoved = removed;
+        this.isPropertyLotIdRemoved = removed;
     }
 
     private Boolean isPropertyDescriptionRemoved;
@@ -1645,7 +1645,7 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
         command.setOrganizationId(this.getOrganizationId());
         command.setReferenceId(this.getReferenceId());
         command.setSerialNumber(this.getSerialNumber());
-        command.setLot(this.getLot());
+        command.setLotId(this.getLotId());
         command.setDescription(this.getDescription());
         command.setHash(this.getHash());
         command.setWidthInch(this.getWidthInch());

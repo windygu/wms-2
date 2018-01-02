@@ -22,10 +22,6 @@ namespace Dddml.Wms.Domain.AttributeSet
 
 		public virtual string Description { get; set; }
 
-		public virtual string SerialNumberAttributeId { get; set; }
-
-		public virtual string LotAttributeId { get; set; }
-
 		public virtual string ReferenceId { get; set; }
 
 		public virtual bool IsInstanceAttributeSet { get; set; }

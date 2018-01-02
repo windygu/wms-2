@@ -54,8 +54,8 @@ public class AttributeSetInstanceStateJsonObjectMapper extends AbstractDynamicOb
         if (state.getReferenceId() != null) {
             jsonObject.put("referenceId", state.getReferenceId());
         }
-        if (state.getLot() != null) {
-            jsonObject.put("lot", state.getLot());
+        if (state.getLotId() != null) {
+            jsonObject.put("lotId", state.getLotId());
         }
         if (state.getDescription() != null) {
             jsonObject.put("description", state.getDescription());

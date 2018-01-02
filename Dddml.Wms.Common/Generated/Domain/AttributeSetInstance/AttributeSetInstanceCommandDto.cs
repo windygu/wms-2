@@ -61,7 +61,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
 		public virtual string SerialNumber { get; set; }
 
-		public virtual string Lot { get; set; }
+		public virtual string LotId { get; set; }
 
 		public virtual string Description { get; set; }
 

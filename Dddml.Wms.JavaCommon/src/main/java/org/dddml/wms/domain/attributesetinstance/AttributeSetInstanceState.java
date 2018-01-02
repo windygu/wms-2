@@ -33,9 +33,9 @@ public interface AttributeSetInstanceState
 
     void setSerialNumber(String serialNumber);
 
-    String getLot();
+    String getLotId();
 
-    void setLot(String lot);
+    void setLotId(String lotId);
 
     String getDescription();
 

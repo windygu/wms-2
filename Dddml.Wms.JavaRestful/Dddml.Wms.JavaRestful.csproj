@@ -92,6 +92,7 @@
 .\InventoryPostingRuleResource.java
 .\InventoryPRTriggeredResource.java
 .\LocatorResource.java
+.\LotResource.java
 .\MovementConfirmationLineMvoResource.java
 .\MovementConfirmationResource.java
 .\MovementLineMvoResource.java
@@ -175,6 +176,9 @@
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\LocatorTreeResource.java">
       <DependentUpon>GenerateTreeResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\LotResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\MovementConfirmationLineMvoResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>

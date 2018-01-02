@@ -41,30 +41,6 @@ public class CreateOrMergePatchAttributeSetDto extends AbstractAttributeSetComma
         this.description = description;
     }
 
-    private String serialNumberAttributeId;
-
-    public String getSerialNumberAttributeId()
-    {
-        return this.serialNumberAttributeId;
-    }
-
-    public void setSerialNumberAttributeId(String serialNumberAttributeId)
-    {
-        this.serialNumberAttributeId = serialNumberAttributeId;
-    }
-
-    private String lotAttributeId;
-
-    public String getLotAttributeId()
-    {
-        return this.lotAttributeId;
-    }
-
-    public void setLotAttributeId(String lotAttributeId)
-    {
-        this.lotAttributeId = lotAttributeId;
-    }
-
     private String referenceId;
 
     public String getReferenceId()
@@ -161,30 +137,6 @@ public class CreateOrMergePatchAttributeSetDto extends AbstractAttributeSetComma
         this.isPropertyDescriptionRemoved = removed;
     }
 
-    private Boolean isPropertySerialNumberAttributeIdRemoved;
-
-    public Boolean getIsPropertySerialNumberAttributeIdRemoved()
-    {
-        return this.isPropertySerialNumberAttributeIdRemoved;
-    }
-
-    public void setIsPropertySerialNumberAttributeIdRemoved(Boolean removed)
-    {
-        this.isPropertySerialNumberAttributeIdRemoved = removed;
-    }
-
-    private Boolean isPropertyLotAttributeIdRemoved;
-
-    public Boolean getIsPropertyLotAttributeIdRemoved()
-    {
-        return this.isPropertyLotAttributeIdRemoved;
-    }
-
-    public void setIsPropertyLotAttributeIdRemoved(Boolean removed)
-    {
-        this.isPropertyLotAttributeIdRemoved = removed;
-    }
-
     private Boolean isPropertyReferenceIdRemoved;
 
     public Boolean getIsPropertyReferenceIdRemoved()
@@ -239,8 +191,6 @@ public class CreateOrMergePatchAttributeSetDto extends AbstractAttributeSetComma
         command.setAttributeSetName(this.getAttributeSetName());
         command.setOrganizationId(this.getOrganizationId());
         command.setDescription(this.getDescription());
-        command.setSerialNumberAttributeId(this.getSerialNumberAttributeId());
-        command.setLotAttributeId(this.getLotAttributeId());
         command.setReferenceId(this.getReferenceId());
         command.setIsInstanceAttributeSet(this.getIsInstanceAttributeSet());
         command.setIsMandatory(this.getIsMandatory());
@@ -282,8 +232,6 @@ public class CreateOrMergePatchAttributeSetDto extends AbstractAttributeSetComma
         command.setIsPropertyAttributeSetNameRemoved(this.getIsPropertyAttributeSetNameRemoved());
         command.setIsPropertyOrganizationIdRemoved(this.getIsPropertyOrganizationIdRemoved());
         command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
-        command.setIsPropertySerialNumberAttributeIdRemoved(this.getIsPropertySerialNumberAttributeIdRemoved());
-        command.setIsPropertyLotAttributeIdRemoved(this.getIsPropertyLotAttributeIdRemoved());
         command.setIsPropertyReferenceIdRemoved(this.getIsPropertyReferenceIdRemoved());
         command.setIsPropertyIsInstanceAttributeSetRemoved(this.getIsPropertyIsInstanceAttributeSetRemoved());
         command.setIsPropertyIsMandatoryRemoved(this.getIsPropertyIsMandatoryRemoved());

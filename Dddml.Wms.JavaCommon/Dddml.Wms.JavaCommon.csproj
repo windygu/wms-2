@@ -2022,6 +2022,83 @@
     <Content Include="src\main\java\org\dddml\wms\domain\locator\LocatorTreeLocatorStateQueryRepository.java">
       <DependentUpon>GenerateLocatorDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\lot\AbstractLotAggregate.java">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\lot\AbstractLotApplicationService.java">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\lot\AbstractLotCommand.java">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\lot\AbstractLotCommandDto.java">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\lot\AbstractLotState.java">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\lot\AbstractLotStateCommandConverter.java">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\lot\AbstractLotStateEvent.java">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\lot\CreateOrMergePatchLotDto.java">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\lot\DeleteLotDto.java">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\lot\GenerateLotDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\lot\LotAggregate.java">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\lot\LotApplicationService.java">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\lot\LotCommand.java">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\lot\LotState.java">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\lot\LotStateDto.java">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\lot\LotStateEvent.java">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\lot\LotStateEventDto.java">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\lot\LotStateEventDtoConverter.java">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\lot\LotStateEventId.java">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\lot\LotStateEventIdDto.java">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\lot\LotStateEventIdDtoWrapper.java">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\lot\LotStateEventIdFlattenedDto.java">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\lot\LotStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\lot\LotStateQueryRepository.java">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\lot\LotStateRepository.java">
+      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\meta\AttributeAliasFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
@@ -2150,6 +2227,8 @@
 .\InventoryPRTriggeredMetadata.java
 .\LocatorFilteringProperties.java
 .\LocatorMetadata.java
+.\LotFilteringProperties.java
+.\LotMetadata.java
 .\MovementConfirmationFilteringProperties.java
 .\MovementConfirmationLineFilteringProperties.java
 .\MovementConfirmationLineMetadata.java
@@ -2306,6 +2385,12 @@
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\meta\LocatorMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\LotFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\LotMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\meta\MovementConfirmationFilteringProperties.java">
@@ -6941,6 +7026,37 @@
 .\UomTypeStateEventIdFlattenedDtoFormatter.java
 .\UomTypeStateQueryRepository.java
 .\UomTypeStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\lot\GenerateLotDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateLotDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractLotAggregate.java
+.\AbstractLotApplicationService.java
+.\AbstractLotCommand.java
+.\AbstractLotCommandDto.java
+.\AbstractLotState.java
+.\AbstractLotStateCommandConverter.java
+.\AbstractLotStateEvent.java
+.\CreateOrMergePatchLotDto.java
+.\DeleteLotDto.java
+.\GenerateLotDomain.txt
+.\LotAggregate.java
+.\LotApplicationService.java
+.\LotCommand.java
+.\LotState.java
+.\LotStateDto.java
+.\LotStateEvent.java
+.\LotStateEventDto.java
+.\LotStateEventDtoConverter.java
+.\LotStateEventId.java
+.\LotStateEventIdDto.java
+.\LotStateEventIdDtoWrapper.java
+.\LotStateEventIdFlattenedDto.java
+.\LotStateEventIdFlattenedDtoFormatter.java
+.\LotStateQueryRepository.java
+.\LotStateRepository.java
 </LastOutputs>
     </Content>
   </ItemGroup>

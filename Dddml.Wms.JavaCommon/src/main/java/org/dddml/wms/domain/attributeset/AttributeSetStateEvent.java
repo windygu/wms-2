@@ -25,14 +25,6 @@ public interface AttributeSetStateEvent extends Event
 
     void setDescription(String description);
 
-    String getSerialNumberAttributeId();
-
-    void setSerialNumberAttributeId(String serialNumberAttributeId);
-
-    String getLotAttributeId();
-
-    void setLotAttributeId(String lotAttributeId);
-
     String getReferenceId();
 
     void setReferenceId(String referenceId);
@@ -86,14 +78,6 @@ public interface AttributeSetStateEvent extends Event
         Boolean getIsPropertyDescriptionRemoved();
 
         void setIsPropertyDescriptionRemoved(Boolean removed);
-
-        Boolean getIsPropertySerialNumberAttributeIdRemoved();
-
-        void setIsPropertySerialNumberAttributeIdRemoved(Boolean removed);
-
-        Boolean getIsPropertyLotAttributeIdRemoved();
-
-        void setIsPropertyLotAttributeIdRemoved(Boolean removed);
 
         Boolean getIsPropertyReferenceIdRemoved();
 

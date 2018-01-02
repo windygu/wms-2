@@ -61,14 +61,6 @@ public interface AttributeUseMvoState
 
     void setAttributeSetDescription(String attributeSetDescription);
 
-    String getAttributeSetSerialNumberAttributeId();
-
-    void setAttributeSetSerialNumberAttributeId(String attributeSetSerialNumberAttributeId);
-
-    String getAttributeSetLotAttributeId();
-
-    void setAttributeSetLotAttributeId(String attributeSetLotAttributeId);
-
     String getAttributeSetReferenceId();
 
     void setAttributeSetReferenceId(String attributeSetReferenceId);

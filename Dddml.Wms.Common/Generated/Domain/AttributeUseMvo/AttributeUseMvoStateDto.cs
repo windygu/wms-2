@@ -59,18 +59,6 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             set;
         }
 
-        public virtual string AttributeSetSerialNumberAttributeId
-        {
-            get;
-            set;
-        }
-
-        public virtual string AttributeSetLotAttributeId
-        {
-            get;
-            set;
-        }
-
         public virtual string AttributeSetReferenceId
         {
             get;
@@ -165,8 +153,6 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             state.AttributeSetAttributeSetName = this.AttributeSetAttributeSetName;
             state.AttributeSetOrganizationId = this.AttributeSetOrganizationId;
             state.AttributeSetDescription = this.AttributeSetDescription;
-            state.AttributeSetSerialNumberAttributeId = this.AttributeSetSerialNumberAttributeId;
-            state.AttributeSetLotAttributeId = this.AttributeSetLotAttributeId;
             state.AttributeSetReferenceId = this.AttributeSetReferenceId;
             if (this.AttributeSetIsInstanceAttributeSet != null && this.AttributeSetIsInstanceAttributeSet.HasValue) { state.AttributeSetIsInstanceAttributeSet = this.AttributeSetIsInstanceAttributeSet.Value; }
             if (this.AttributeSetIsMandatory != null && this.AttributeSetIsMandatory.HasValue) { state.AttributeSetIsMandatory = this.AttributeSetIsMandatory.Value; }

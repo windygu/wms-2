@@ -151,62 +151,6 @@ namespace Dddml.Wms.Domain.AttributeSet
             }
         }
 
-		public virtual string SerialNumberAttributeId
-		{
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("SerialNumberAttributeId"))
-                {
-                    return _state.SerialNumberAttributeId;
-                }
-                return null;
-            }
-            set
-            {
-                _state.SerialNumberAttributeId = value;
-            }
-        }
-
-        string IAttributeSetStateProperties.SerialNumberAttributeId
-        {
-            get 
-            {
-                return (this._state as IAttributeSetStateProperties).SerialNumberAttributeId;
-            }
-            set 
-            {
-                (this._state as IAttributeSetStateProperties).SerialNumberAttributeId = value;
-            }
-        }
-
-		public virtual string LotAttributeId
-		{
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("LotAttributeId"))
-                {
-                    return _state.LotAttributeId;
-                }
-                return null;
-            }
-            set
-            {
-                _state.LotAttributeId = value;
-            }
-        }
-
-        string IAttributeSetStateProperties.LotAttributeId
-        {
-            get 
-            {
-                return (this._state as IAttributeSetStateProperties).LotAttributeId;
-            }
-            set 
-            {
-                (this._state as IAttributeSetStateProperties).LotAttributeId = value;
-            }
-        }
-
 		public virtual string ReferenceId
 		{
             get

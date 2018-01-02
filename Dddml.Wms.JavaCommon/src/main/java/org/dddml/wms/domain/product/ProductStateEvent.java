@@ -237,9 +237,13 @@ public interface ProductStateEvent extends Event
 
     void setDefaultShipmentBoxTypeId(String defaultShipmentBoxTypeId);
 
-    String getLotIdFilledIn();
+    Boolean getIsSerialNumbered();
 
-    void setLotIdFilledIn(String lotIdFilledIn);
+    void setIsSerialNumbered(Boolean isSerialNumbered);
+
+    Boolean getIsManagedByLot();
+
+    void setIsManagedByLot(Boolean isManagedByLot);
 
     String getAttributeSetId();
 
@@ -497,9 +501,13 @@ public interface ProductStateEvent extends Event
 
         void setIsPropertyDefaultShipmentBoxTypeIdRemoved(Boolean removed);
 
-        Boolean getIsPropertyLotIdFilledInRemoved();
+        Boolean getIsPropertyIsSerialNumberedRemoved();
 
-        void setIsPropertyLotIdFilledInRemoved(Boolean removed);
+        void setIsPropertyIsSerialNumberedRemoved(Boolean removed);
+
+        Boolean getIsPropertyIsManagedByLotRemoved();
+
+        void setIsPropertyIsManagedByLotRemoved(Boolean removed);
 
         Boolean getIsPropertyAttributeSetIdRemoved();
 

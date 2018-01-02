@@ -70,16 +70,16 @@ public class AttributeSetInstanceStateDto
         this.serialNumber = serialNumber;
     }
 
-    private String lot;
+    private String lotId;
 
-    public String getLot()
+    public String getLotId()
     {
-        return this.lot;
+        return this.lotId;
     }
 
-    public void setLot(String lot)
+    public void setLotId(String lotId)
     {
-        this.lot = lot;
+        this.lotId = lotId;
     }
 
     private String description;
@@ -939,8 +939,8 @@ public class AttributeSetInstanceStateDto
             if (returnedFieldsContains("SerialNumber")) {
                 dto.setSerialNumber(state.getSerialNumber());
             }
-            if (returnedFieldsContains("Lot")) {
-                dto.setLot(state.getLot());
+            if (returnedFieldsContains("LotId")) {
+                dto.setLotId(state.getLotId());
             }
             if (returnedFieldsContains("Description")) {
                 dto.setDescription(state.getDescription());

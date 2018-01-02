@@ -214,6 +214,28 @@
   </object>
 
 
+
+  <object id="lotStateRepository" type="Dddml.Wms.Domain.Lot.NHibernate.NHibernateLotStateRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="lotStateQueryRepository" type="Dddml.Wms.Domain.Lot.NHibernate.NHibernateLotStateQueryRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="lotEventStore" type="Dddml.Wms.Domain.Lot.NHibernate.NHibernateLotEventStore, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
+  <object id="lotApplicationService" type="Dddml.Wms.Domain.Lot.NHibernate.LotApplicationService, Dddml.Wms.Services">
+    <constructor-arg ref="lotEventStore"/>
+    <constructor-arg ref="lotStateRepository"/>
+    <constructor-arg ref="lotStateQueryRepository"/>
+  </object>
+
+
   <object id="movementLineStateDao" type="Dddml.Wms.Domain.Movement.NHibernate.NHibernateMovementLineStateDao, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
