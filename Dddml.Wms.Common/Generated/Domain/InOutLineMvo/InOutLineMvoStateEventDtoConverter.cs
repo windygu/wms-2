@@ -91,7 +91,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             dto.InOutUpdatedBy = e.InOutUpdatedBy;
             dto.InOutUpdatedAt = e.InOutUpdatedAt;
             dto.InOutActive = e.InOutActive;
-            dto.InOutDeleted = e.InOutDeleted;
             return dto;
         }
 
@@ -150,7 +149,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             dto.InOutUpdatedBy = e.InOutUpdatedBy;
             dto.InOutUpdatedAt = e.InOutUpdatedAt;
             dto.InOutActive = e.InOutActive;
-            dto.InOutDeleted = e.InOutDeleted;
             dto.IsPropertyLocatorIdRemoved = e.IsPropertyLocatorIdRemoved;
             dto.IsPropertyProductIdRemoved = e.IsPropertyProductIdRemoved;
             dto.IsPropertyAttributeSetInstanceIdRemoved = e.IsPropertyAttributeSetInstanceIdRemoved;
@@ -199,7 +197,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             dto.IsPropertyInOutUpdatedByRemoved = e.IsPropertyInOutUpdatedByRemoved;
             dto.IsPropertyInOutUpdatedAtRemoved = e.IsPropertyInOutUpdatedAtRemoved;
             dto.IsPropertyInOutActiveRemoved = e.IsPropertyInOutActiveRemoved;
-            dto.IsPropertyInOutDeletedRemoved = e.IsPropertyInOutDeletedRemoved;
 
             return dto;
         }

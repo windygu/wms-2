@@ -170,16 +170,6 @@ namespace Dddml.Wms.Domain.InOut
 
 	}
 
-	public interface IInOutStateDeleted : IInOutStateEvent
-	{
-		IEnumerable<IInOutLineStateRemoved> InOutLineEvents { get; }
-		
-		void AddInOutLineEvent(IInOutLineStateRemoved e);
-		
-		IInOutLineStateRemoved NewInOutLineStateRemoved(string lineNumber);
-
-	}
-
 
 }
 

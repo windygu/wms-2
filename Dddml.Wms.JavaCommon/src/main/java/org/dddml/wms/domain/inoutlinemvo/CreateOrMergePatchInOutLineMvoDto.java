@@ -583,18 +583,6 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.inOutActive = inOutActive;
     }
 
-    private Boolean inOutDeleted;
-
-    public Boolean getInOutDeleted()
-    {
-        return this.inOutDeleted;
-    }
-
-    public void setInOutDeleted(Boolean inOutDeleted)
-    {
-        this.inOutDeleted = inOutDeleted;
-    }
-
     private Boolean isPropertyLocatorIdRemoved;
 
     public Boolean getIsPropertyLocatorIdRemoved()
@@ -1159,18 +1147,6 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.isPropertyInOutActiveRemoved = removed;
     }
 
-    private Boolean isPropertyInOutDeletedRemoved;
-
-    public Boolean getIsPropertyInOutDeletedRemoved()
-    {
-        return this.isPropertyInOutDeletedRemoved;
-    }
-
-    public void setIsPropertyInOutDeletedRemoved(Boolean removed)
-    {
-        this.isPropertyInOutDeletedRemoved = removed;
-    }
-
     public void copyTo(AbstractInOutLineMvoCommand.AbstractCreateOrMergePatchInOutLineMvo command)
     {
         ((AbstractInOutLineMvoCommandDto) this).copyTo(command);
@@ -1222,7 +1198,6 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         command.setInOutUpdatedBy(this.getInOutUpdatedBy());
         command.setInOutUpdatedAt(this.getInOutUpdatedAt());
         command.setInOutActive(this.getInOutActive());
-        command.setInOutDeleted(this.getInOutDeleted());
     }
 
     public InOutLineMvoCommand toCommand()
@@ -1294,7 +1269,6 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         command.setIsPropertyInOutUpdatedByRemoved(this.getIsPropertyInOutUpdatedByRemoved());
         command.setIsPropertyInOutUpdatedAtRemoved(this.getIsPropertyInOutUpdatedAtRemoved());
         command.setIsPropertyInOutActiveRemoved(this.getIsPropertyInOutActiveRemoved());
-        command.setIsPropertyInOutDeletedRemoved(this.getIsPropertyInOutDeletedRemoved());
     }
 
     public static class CreateInOutLineMvoDto extends CreateOrMergePatchInOutLineMvoDto

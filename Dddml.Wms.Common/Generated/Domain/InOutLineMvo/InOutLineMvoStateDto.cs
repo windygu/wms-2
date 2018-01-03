@@ -311,12 +311,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set;
         }
 
-        public virtual bool? InOutDeleted
-        {
-            get;
-            set;
-        }
-
         public virtual long? InOutVersion
         {
             get;
@@ -399,7 +393,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             state.InOutUpdatedBy = this.InOutUpdatedBy;
             if (this.InOutUpdatedAt != null && this.InOutUpdatedAt.HasValue) { state.InOutUpdatedAt = this.InOutUpdatedAt.Value; }
             if (this.InOutActive != null && this.InOutActive.HasValue) { state.InOutActive = this.InOutActive.Value; }
-            if (this.InOutDeleted != null && this.InOutDeleted.HasValue) { state.InOutDeleted = this.InOutDeleted.Value; }
             if (this.InOutVersion != null && this.InOutVersion.HasValue) { state.InOutVersion = this.InOutVersion.Value; }
             state.CreatedBy = this.CreatedBy;
             if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }

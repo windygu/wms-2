@@ -150,8 +150,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		public virtual bool? InOutActive { get; set; }
 
-		public virtual bool? InOutDeleted { get; set; }
-
 
         InOutLineId IInOutLineMvoCommand.InOutLineId
         {
@@ -1055,25 +1053,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set
             {
                 this.IsPropertyInOutActiveRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyInOutDeletedRemoved { get; set; }
-
-        bool IMergePatchInOutLineMvo.IsPropertyInOutDeletedRemoved
-        {
-            get
-            {
-                var b = this.IsPropertyInOutDeletedRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return false;
-            }
-            set
-            {
-                this.IsPropertyInOutDeletedRemoved = value;
             }
         }
 

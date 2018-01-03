@@ -454,18 +454,6 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         this.active = active;
     }
 
-    private Boolean deleted;
-
-    public Boolean getDeleted()
-    {
-        return this.deleted;
-    }
-
-    public void setDeleted(Boolean deleted)
-    {
-        this.deleted = deleted;
-    }
-
     public boolean isStateUnsaved() 
     {
         return this.getVersion() == null;
@@ -532,8 +520,6 @@ public abstract class AbstractInOutState implements InOutState, Saveable
             when((InOutStateCreated) e);
         } else if (e instanceof InOutStateMergePatched) {
             when((InOutStateMergePatched) e);
-        } else if (e instanceof InOutStateDeleted) {
-            when((InOutStateDeleted) e);
         } else {
             throw new UnsupportedOperationException(String.format("Unsupported event type: %1$s", e.getClass().getName()));
         }
@@ -574,8 +560,6 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         this.setRmaDocumentNumber(e.getRmaDocumentNumber());
         this.setReversalDocumentNumber(e.getReversalDocumentNumber());
         this.setActive(e.getActive());
-
-        this.setDeleted(false);
 
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
@@ -943,26 +927,6 @@ public abstract class AbstractInOutState implements InOutState, Saveable
                 //InOutLineStateEvent.InOutLineStateRemoved removed = (InOutLineStateEvent.InOutLineStateRemoved)innerEvent;
                 this.getInOutLines().remove(innerState);
             }
-        }
-    }
-
-    public void when(InOutStateDeleted e)
-    {
-        throwOnWrongEvent(e);
-
-        this.setDeleted(true);
-        this.setUpdatedBy(e.getCreatedBy());
-        this.setUpdatedAt(e.getCreatedAt());
-
-        for (InOutLineState innerState : this.getInOutLines())
-        {
-            this.getInOutLines().remove(innerState);
-        
-            InOutLineStateEvent.InOutLineStateRemoved innerE = e.newInOutLineStateRemoved(innerState.getLineNumber());
-            innerE.setCreatedAt(e.getCreatedAt());
-            innerE.setCreatedBy(e.getCreatedBy());
-            innerState.when(innerE);
-            //e.addInOutLineEvent(innerE);
         }
     }
 

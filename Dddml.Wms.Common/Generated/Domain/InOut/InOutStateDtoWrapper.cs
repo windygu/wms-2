@@ -1084,15 +1084,6 @@ namespace Dddml.Wms.Domain.InOut
 
 		#endregion
 
-		#region IDeleted implementation
-
-		bool IDeleted.Deleted
-		{
-            get { return (_state as IDeleted).Deleted; }
-		}
-
-		#endregion
-
 		#region ICreated implementation
 
 		string ICreated<string>.CreatedBy
@@ -1204,11 +1195,6 @@ namespace Dddml.Wms.Domain.InOut
         }
 
 		void IInOutState.When(IInOutStateMergePatched e)
-		{
-            throw new NotSupportedException();
-		}
-
-		void IInOutState.When(IInOutStateDeleted e)
 		{
             throw new NotSupportedException();
 		}

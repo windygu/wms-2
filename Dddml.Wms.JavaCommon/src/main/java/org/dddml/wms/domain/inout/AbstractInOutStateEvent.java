@@ -929,70 +929,6 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
     }
 
 
-    public static abstract class AbstractInOutStateDeleted extends AbstractInOutStateEvent implements InOutStateEvent.InOutStateDeleted, Saveable
-    {
-        public AbstractInOutStateDeleted() {
-            this(new InOutStateEventId());
-        }
-
-        public AbstractInOutStateDeleted(InOutStateEventId stateEventId) {
-            super(stateEventId);
-        }
-
-        public String getStateEventType() {
-            return StateEventType.DELETED;
-        }
-
-		
-        private Map<InOutLineStateEventId, InOutLineStateEvent.InOutLineStateRemoved> inOutLineEvents = new HashMap<InOutLineStateEventId, InOutLineStateEvent.InOutLineStateRemoved>();
-        
-        private Iterable<InOutLineStateEvent.InOutLineStateRemoved> readOnlyInOutLineEvents;
-
-        public Iterable<InOutLineStateEvent.InOutLineStateRemoved> getInOutLineEvents()
-        {
-            if (!getStateEventReadOnly())
-            {
-                return this.inOutLineEvents.values();
-            }
-            else
-            {
-                if (readOnlyInOutLineEvents != null) { return readOnlyInOutLineEvents; }
-                InOutLineStateEventDao eventDao = getInOutLineStateEventDao();
-                List<InOutLineStateEvent.InOutLineStateRemoved> eL = new ArrayList<InOutLineStateEvent.InOutLineStateRemoved>();
-                for (InOutLineStateEvent e : eventDao.findByInOutStateEventId(this.getStateEventId()))
-                {
-                    e.setStateEventReadOnly(true);
-                    eL.add((InOutLineStateEvent.InOutLineStateRemoved)e);
-                }
-                return (readOnlyInOutLineEvents = eL);
-            }
-        }
-
-        public void setInOutLineEvents(Iterable<InOutLineStateEvent.InOutLineStateRemoved> es)
-        {
-            if (es != null)
-            {
-                for (InOutLineStateEvent.InOutLineStateRemoved e : es)
-                {
-                    addInOutLineEvent(e);
-                }
-            }
-            else { this.inOutLineEvents.clear(); }
-        }
-        
-        public void addInOutLineEvent(InOutLineStateEvent.InOutLineStateRemoved e)
-        {
-            throwOnInconsistentEventIds(e);
-            this.inOutLineEvents.put(e.getStateEventId(), e);
-        }
-
-        public void save()
-        {
-            for (InOutLineStateEvent.InOutLineStateRemoved e : this.getInOutLineEvents()) {
-                getInOutLineStateEventDao().save(e);
-            }
-        }
-    }
     public static class SimpleInOutStateCreated extends AbstractInOutStateCreated
     {
         public SimpleInOutStateCreated() {
@@ -1009,16 +945,6 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
         }
 
         public SimpleInOutStateMergePatched(InOutStateEventId stateEventId) {
-            super(stateEventId);
-        }
-    }
-
-    public static class SimpleInOutStateDeleted extends AbstractInOutStateDeleted
-    {
-        public SimpleInOutStateDeleted() {
-        }
-
-        public SimpleInOutStateDeleted(InOutStateEventId stateEventId) {
             super(stateEventId);
         }
     }

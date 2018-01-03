@@ -1472,37 +1472,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             }
         }
 
-		public virtual bool? InOutDeleted
-        {
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("InOutDeleted"))
-                {
-                    return _state.InOutDeleted;
-                }
-                return null;
-            }
-            set
-            {
-                if (value != null && value.HasValue)
-                {
-                    _state.InOutDeleted = value.Value;
-                }
-            }
-        }
-
-        bool IInOutLineMvoStateProperties.InOutDeleted
-        {
-            get 
-            {
-                return (this._state as IInOutLineMvoStateProperties).InOutDeleted;
-            }
-            set 
-            {
-                (this._state as IInOutLineMvoStateProperties).InOutDeleted = value;
-            }
-        }
-
 		public virtual long? InOutVersion
         {
             get

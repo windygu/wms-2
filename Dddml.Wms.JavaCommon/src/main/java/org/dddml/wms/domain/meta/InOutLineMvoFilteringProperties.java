@@ -65,7 +65,6 @@ public final class InOutLineMvoFilteringProperties
             "inOutUpdatedBy",
             "inOutUpdatedAt",
             "inOutActive",
-            "inOutDeleted",
             "inOutLineId.inOutDocumentNumber",
             "inOutLineId.lineNumber",
     };
@@ -124,7 +123,6 @@ public final class InOutLineMvoFilteringProperties
             "Date",
             "String",
             "Date",
-            "Boolean",
             "Boolean",
             "String",
             "String",
@@ -250,8 +248,6 @@ public final class InOutLineMvoFilteringProperties
         aliasMap.put("InOutUpdatedAt", "inOutUpdatedAt");
         aliasMap.put("inOutActive", "inOutActive");
         aliasMap.put("InOutActive", "inOutActive");
-        aliasMap.put("inOutDeleted", "inOutDeleted");
-        aliasMap.put("InOutDeleted", "inOutDeleted");
         aliasMap.put("inOutLineId.inOutDocumentNumber", "inOutLineId.inOutDocumentNumber");
         aliasMap.put("InOutLineId.InOutDocumentNumber", "inOutLineId.inOutDocumentNumber");
         aliasMap.put("inOutLineId.lineNumber", "inOutLineId.lineNumber");

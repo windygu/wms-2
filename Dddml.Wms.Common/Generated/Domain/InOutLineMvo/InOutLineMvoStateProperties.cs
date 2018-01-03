@@ -115,8 +115,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		public virtual bool InOutActive { get; set; }
 
-		public virtual bool InOutDeleted { get; set; }
-
         protected virtual void InitializeProperties()
         { 
         }

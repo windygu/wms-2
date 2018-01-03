@@ -234,10 +234,6 @@ public interface InOutLineMvoCommand extends Command
 
         void setInOutActive(Boolean inOutActive);
 
-        Boolean getInOutDeleted();
-
-        void setInOutDeleted(Boolean inOutDeleted);
-
     }
 
     interface CreateInOutLineMvo extends CreateOrMergePatchInOutLineMvo
@@ -433,10 +429,6 @@ public interface InOutLineMvoCommand extends Command
         Boolean getIsPropertyInOutActiveRemoved();
 
         void setIsPropertyInOutActiveRemoved(Boolean removed);
-
-        Boolean getIsPropertyInOutDeletedRemoved();
-
-        void setIsPropertyInOutDeletedRemoved(Boolean removed);
 
     }
 

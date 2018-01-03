@@ -86,7 +86,6 @@ public abstract class AbstractInOutLineMvoStateCommandConverter<TCreateInOutLine
         cmd.setInOutUpdatedBy(state.getInOutUpdatedBy());
         cmd.setInOutUpdatedAt(state.getInOutUpdatedAt());
         cmd.setInOutActive(state.getInOutActive());
-        cmd.setInOutDeleted(state.getInOutDeleted());
             
         if (state.getLocatorId() == null) { cmd.setIsPropertyLocatorIdRemoved(true); }
         if (state.getProductId() == null) { cmd.setIsPropertyProductIdRemoved(true); }
@@ -135,7 +134,6 @@ public abstract class AbstractInOutLineMvoStateCommandConverter<TCreateInOutLine
         if (state.getInOutUpdatedBy() == null) { cmd.setIsPropertyInOutUpdatedByRemoved(true); }
         if (state.getInOutUpdatedAt() == null) { cmd.setIsPropertyInOutUpdatedAtRemoved(true); }
         if (state.getInOutActive() == null) { cmd.setIsPropertyInOutActiveRemoved(true); }
-        if (state.getInOutDeleted() == null) { cmd.setIsPropertyInOutDeletedRemoved(true); }
         return cmd;
     }
 
@@ -192,7 +190,6 @@ public abstract class AbstractInOutLineMvoStateCommandConverter<TCreateInOutLine
         cmd.setInOutUpdatedBy(state.getInOutUpdatedBy());
         cmd.setInOutUpdatedAt(state.getInOutUpdatedAt());
         cmd.setInOutActive(state.getInOutActive());
-        cmd.setInOutDeleted(state.getInOutDeleted());
         return cmd;
     }
 

@@ -54,10 +54,6 @@ public abstract class AbstractInOutApplicationService implements InOutApplicatio
         update(c, ar -> ar.mergePatch(c));
     }
 
-    public void when(InOutCommand.DeleteInOut c) {
-        update(c, ar -> ar.delete(c));
-    }
-
     public InOutState get(String id) {
         InOutState state = getStateRepository().get(id, true);
         return state;

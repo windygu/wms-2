@@ -215,10 +215,6 @@ public interface InOutLineMvoStateEvent extends Event
 
     void setInOutActive(Boolean inOutActive);
 
-    Boolean getInOutDeleted();
-
-    void setInOutDeleted(Boolean inOutDeleted);
-
     String getCommandId();
 
     void setCommandId(String commandId);
@@ -422,10 +418,6 @@ public interface InOutLineMvoStateEvent extends Event
         Boolean getIsPropertyInOutActiveRemoved();
 
         void setIsPropertyInOutActiveRemoved(Boolean removed);
-
-        Boolean getIsPropertyInOutDeletedRemoved();
-
-        void setIsPropertyInOutDeletedRemoved(Boolean removed);
 
 
     }

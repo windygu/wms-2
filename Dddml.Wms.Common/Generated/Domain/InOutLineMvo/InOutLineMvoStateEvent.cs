@@ -120,8 +120,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		public virtual bool? InOutActive { get; set; }
 
-		public virtual bool? InOutDeleted { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -305,8 +303,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 		public virtual bool IsPropertyInOutUpdatedAtRemoved { get; set; }
 
 		public virtual bool IsPropertyInOutActiveRemoved { get; set; }
-
-		public virtual bool IsPropertyInOutDeletedRemoved { get; set; }
 
 
 		public InOutLineMvoStateMergePatched ()

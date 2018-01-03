@@ -114,8 +114,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		bool? InOutActive { get; set; }
 
-		bool? InOutDeleted { get; set; }
-
 	}
 
 	public interface IInOutLineMvoStateCreated : IInOutLineMvoStateEvent//, IInOutLineMvoStateProperties
@@ -221,8 +219,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 		bool IsPropertyInOutUpdatedAtRemoved { get; set; }
 
 		bool IsPropertyInOutActiveRemoved { get; set; }
-
-		bool IsPropertyInOutDeletedRemoved { get; set; }
 
 
 	}

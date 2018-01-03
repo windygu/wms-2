@@ -107,7 +107,6 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
         e.setInOutUpdatedBy(c.getInOutUpdatedBy());
         e.setInOutUpdatedAt(c.getInOutUpdatedAt());
         e.setInOutActive(c.getInOutActive());
-        e.setInOutDeleted(c.getInOutDeleted());
         ((AbstractInOutLineMvoStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
@@ -165,7 +164,6 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
         e.setInOutUpdatedBy(c.getInOutUpdatedBy());
         e.setInOutUpdatedAt(c.getInOutUpdatedAt());
         e.setInOutActive(c.getInOutActive());
-        e.setInOutDeleted(c.getInOutDeleted());
         e.setIsPropertyLocatorIdRemoved(c.getIsPropertyLocatorIdRemoved());
         e.setIsPropertyProductIdRemoved(c.getIsPropertyProductIdRemoved());
         e.setIsPropertyAttributeSetInstanceIdRemoved(c.getIsPropertyAttributeSetInstanceIdRemoved());
@@ -213,7 +211,6 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
         e.setIsPropertyInOutUpdatedByRemoved(c.getIsPropertyInOutUpdatedByRemoved());
         e.setIsPropertyInOutUpdatedAtRemoved(c.getIsPropertyInOutUpdatedAtRemoved());
         e.setIsPropertyInOutActiveRemoved(c.getIsPropertyInOutActiveRemoved());
-        e.setIsPropertyInOutDeletedRemoved(c.getIsPropertyInOutDeletedRemoved());
         ((AbstractInOutLineMvoStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));

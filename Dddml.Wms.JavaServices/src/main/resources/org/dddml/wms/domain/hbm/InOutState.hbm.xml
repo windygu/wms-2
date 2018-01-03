@@ -44,7 +44,6 @@
 	<property name="createdBy" ></property>
 	<property name="updatedBy" ></property>
 	<property name="active" ></property>
-	<property name="deleted" ></property>
 
     <property name="createdAt" column="CreatedAt" />
 

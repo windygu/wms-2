@@ -15,7 +15,6 @@ namespace Dddml.Wms.Domain.InOut
 		IGlobalIdentity<string>, 
 		ICreated<string>, 
 		IUpdated<string>, 
-		IDeleted, 
 		IActive, 
 		IAggregateVersioned<long>,
 		IState
@@ -26,8 +25,6 @@ namespace Dddml.Wms.Domain.InOut
 		void When(IInOutStateCreated e);
 
 		void When(IInOutStateMergePatched e);
-
-		void When(IInOutStateDeleted e);
 
 		void Mutate(IEvent e);
 

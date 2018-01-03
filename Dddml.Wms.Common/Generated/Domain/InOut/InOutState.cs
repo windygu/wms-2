@@ -24,8 +24,6 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual DateTime UpdatedAt { get; set; }
 
-		public virtual bool Deleted { get; set; }
-
 
 		#region IIdentity implementation
 
@@ -48,17 +46,6 @@ namespace Dddml.Wms.Domain.InOut
 
 		#endregion
 
-		#region IDeleted implementation
-
-		bool IDeleted.Deleted
-		{
-			get
-			{
-				return this.Deleted;
-			}
-		}
-
-		#endregion
 
 		#region ICreated implementation
 
@@ -264,8 +251,6 @@ namespace Dddml.Wms.Domain.InOut
 			this.ReversalDocumentNumber = e.ReversalDocumentNumber;
 
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
-
-			this.Deleted = false;
 
 			this.CreatedBy = e.CreatedBy;
 			this.CreatedAt = e.CreatedAt;
@@ -670,28 +655,6 @@ namespace Dddml.Wms.Domain.InOut
                     this.InOutLines.Remove(innerState);
                 }
           
-            }
-
-		}
-
-		public virtual void When(IInOutStateDeleted e)
-		{
-			ThrowOnWrongEvent(e);
-
-			this.Deleted = true;
-			this.UpdatedBy = e.CreatedBy;
-			this.UpdatedAt = e.CreatedAt;
-
-            foreach (var innerState in this.InOutLines)
-            {
-                this.InOutLines.Remove(innerState);
-                
-                var innerE = e.NewInOutLineStateRemoved(innerState.LineNumber);
-                ((InOutLineStateEventBase)innerE).CreatedAt = e.CreatedAt;
-                ((InOutLineStateEventBase)innerE).CreatedBy = e.CreatedBy;
-                innerState.When(innerE);
-                //e.AddInOutLineEvent(innerE);
-
             }
 
 		}

@@ -162,8 +162,7 @@ CREATE VIEW `InOutLine_RV` AS
         `InOuts`.`CreatedAt` AS `InOutCreatedAt`,
         `InOuts`.`UpdatedBy` AS `InOutUpdatedBy`,
         `InOuts`.`UpdatedAt` AS `InOutUpdatedAt`,
-        `InOuts`.`Active` AS `InOutActive`,
-        `InOuts`.`Deleted` AS `InOutDeleted`
+        `InOuts`.`Active` AS `InOutActive`
     FROM
         (`InOutLines`
             JOIN `InOuts` ON ( 1=1 

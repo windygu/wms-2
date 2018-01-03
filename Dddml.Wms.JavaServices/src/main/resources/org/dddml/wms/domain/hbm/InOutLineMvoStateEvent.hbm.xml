@@ -64,7 +64,6 @@
 	<property name="inOutUpdatedBy" ></property>
 	<property name="inOutUpdatedAt" ></property>
 	<property name="inOutActive" ></property>
-	<property name="inOutDeleted" ></property>
 
     <property name="createdBy" column="CreatedBy"/>
 
@@ -173,8 +172,6 @@
         <property name="isPropertyInOutUpdatedAtRemoved" column="IsPropertyInOutUpdatedAtRemoved"/>
 
         <property name="isPropertyInOutActiveRemoved" column="IsPropertyInOutActiveRemoved"/>
-
-        <property name="isPropertyInOutDeletedRemoved" column="IsPropertyInOutDeletedRemoved"/>
 
 
     </subclass>

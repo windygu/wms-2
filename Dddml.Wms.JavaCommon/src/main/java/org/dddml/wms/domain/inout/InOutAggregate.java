@@ -17,8 +17,6 @@ public interface InOutAggregate
 
     void mergePatch(InOutCommand.MergePatchInOut c);
 
-    void delete(InOutCommand.DeleteInOut c);
-
     void throwOnInvalidStateTransition(Command c);
 }
 

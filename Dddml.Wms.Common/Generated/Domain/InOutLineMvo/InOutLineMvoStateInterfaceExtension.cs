@@ -96,7 +96,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             cmd.InOutUpdatedBy = state.InOutUpdatedBy;
             cmd.InOutUpdatedAt = state.InOutUpdatedAt;
             cmd.InOutActive = state.InOutActive;
-            cmd.InOutDeleted = state.InOutDeleted;
             
             if (state.LocatorId == null) { cmd.IsPropertyLocatorIdRemoved = true; }
             if (state.ProductId == null) { cmd.IsPropertyProductIdRemoved = true; }
@@ -183,7 +182,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             cmd.InOutUpdatedBy = state.InOutUpdatedBy;
             cmd.InOutUpdatedAt = state.InOutUpdatedAt;
             cmd.InOutActive = state.InOutActive;
-            cmd.InOutDeleted = state.InOutDeleted;
             return cmd;
         }
 		

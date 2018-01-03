@@ -161,10 +161,6 @@ public interface InOutState
 
     void setActive(Boolean active);
 
-    Boolean getDeleted();
-
-    void setDeleted(Boolean deleted);
-
 
     boolean isStateUnsaved();
 
@@ -179,7 +175,6 @@ public interface InOutState
 
     void when(InOutStateEvent.InOutStateMergePatched e);
 
-    void when(InOutStateEvent.InOutStateDeleted e);
     
 }
 

@@ -234,10 +234,6 @@ public interface InOutLineMvoState
 
     void setInOutActive(Boolean inOutActive);
 
-    Boolean getInOutDeleted();
-
-    void setInOutDeleted(Boolean inOutDeleted);
-
 
     boolean isStateUnsaved();
 

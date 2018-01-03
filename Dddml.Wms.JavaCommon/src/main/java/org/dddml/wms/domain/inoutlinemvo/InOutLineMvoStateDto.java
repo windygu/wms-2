@@ -599,18 +599,6 @@ public class InOutLineMvoStateDto
         this.inOutActive = inOutActive;
     }
 
-    private Boolean inOutDeleted;
-
-    public Boolean getInOutDeleted()
-    {
-        return this.inOutDeleted;
-    }
-
-    public void setInOutDeleted(Boolean inOutDeleted)
-    {
-        this.inOutDeleted = inOutDeleted;
-    }
-
     private Long inOutVersion;
 
     public Long getInOutVersion()
@@ -843,9 +831,6 @@ public class InOutLineMvoStateDto
             }
             if (returnedFieldsContains("InOutActive")) {
                 dto.setInOutActive(state.getInOutActive());
-            }
-            if (returnedFieldsContains("InOutDeleted")) {
-                dto.setInOutDeleted(state.getInOutDeleted());
             }
             if (returnedFieldsContains("InOutVersion")) {
                 dto.setInOutVersion(state.getInOutVersion());

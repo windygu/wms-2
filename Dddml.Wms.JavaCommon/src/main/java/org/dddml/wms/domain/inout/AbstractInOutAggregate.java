@@ -38,12 +38,6 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         apply(e);
     }
 
-    public void delete(InOutCommand.DeleteInOut c)
-    {
-        InOutStateEvent e = map(c);
-        apply(e);
-    }
-
     public void throwOnInvalidStateTransition(Command c) {
         InOutCommand.throwOnInvalidStateTransition(this.state, c);
     }
@@ -178,15 +172,6 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
             e.addInOutLineEvent(innerEvent);
         }
 
-        return e;
-    }
-
-    protected InOutStateEvent map(InOutCommand.DeleteInOut c) {
-        InOutStateEventId stateEventId = new InOutStateEventId(c.getDocumentNumber(), c.getVersion());
-        InOutStateEvent.InOutStateDeleted e = newInOutStateDeleted(stateEventId);
-        ((AbstractInOutStateEvent)e).setCommandId(c.getCommandId());
-        e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
@@ -357,26 +342,12 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         return e;
     }
 
-    protected InOutStateEvent.InOutStateDeleted newInOutStateDeleted(String commandId, String requesterId) {
-        InOutStateEventId stateEventId = new InOutStateEventId(this.state.getDocumentNumber(), this.state.getVersion());
-        InOutStateEvent.InOutStateDeleted e = newInOutStateDeleted(stateEventId);
-        ((AbstractInOutStateEvent)e).setCommandId(commandId);
-        e.setCreatedBy(requesterId);
-        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
-        return e;
-    }
-
     protected InOutStateEvent.InOutStateCreated newInOutStateCreated(InOutStateEventId stateEventId) {
         return new AbstractInOutStateEvent.SimpleInOutStateCreated(stateEventId);
     }
 
     protected InOutStateEvent.InOutStateMergePatched newInOutStateMergePatched(InOutStateEventId stateEventId) {
         return new AbstractInOutStateEvent.SimpleInOutStateMergePatched(stateEventId);
-    }
-
-    protected InOutStateEvent.InOutStateDeleted newInOutStateDeleted(InOutStateEventId stateEventId)
-    {
-        return new AbstractInOutStateEvent.SimpleInOutStateDeleted(stateEventId);
     }
 
     protected InOutLineStateEvent.InOutLineStateCreated newInOutLineStateCreated(InOutLineStateEventId stateEventId) {

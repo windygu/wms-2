@@ -139,8 +139,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		public virtual bool? InOutActive { get; set; }
 
-		public virtual bool? InOutDeleted { get; set; }
-
 		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
@@ -1079,25 +1077,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set 
             {
                 this.IsPropertyInOutActiveRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyInOutDeletedRemoved { get; set; }
-
-        bool IInOutLineMvoStateMergePatched.IsPropertyInOutDeletedRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyInOutDeletedRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyInOutDeletedRemoved = value;
             }
         }
 

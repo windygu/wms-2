@@ -113,11 +113,6 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             this.When((MergePatchInOutDto)c);
         }
 
-        void IInOutApplicationService.When(IDeleteInOut c)
-        {
-            this.When((DeleteInOutDto)c);
-        }
-
         public async Task<IInOutState> GetAsync(string documentNumber)
         {
             IInOutState state = null;

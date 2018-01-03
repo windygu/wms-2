@@ -124,11 +124,6 @@
 
     </subclass>
 
-    <subclass name="AbstractInOutStateEvent$SimpleInOutStateDeleted" discriminator-value="Deleted">
-
-    </subclass>
-
-
 
   </class>
   

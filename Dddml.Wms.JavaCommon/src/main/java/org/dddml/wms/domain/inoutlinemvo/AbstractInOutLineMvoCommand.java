@@ -612,18 +612,6 @@ public abstract class AbstractInOutLineMvoCommand extends AbstractCommand implem
             this.inOutActive = inOutActive;
         }
 
-        private Boolean inOutDeleted;
-
-        public Boolean getInOutDeleted()
-        {
-            return this.inOutDeleted;
-        }
-
-        public void setInOutDeleted(Boolean inOutDeleted)
-        {
-            this.inOutDeleted = inOutDeleted;
-        }
-
     }
 
     public static abstract class AbstractCreateInOutLineMvo extends AbstractCreateOrMergePatchInOutLineMvo implements CreateInOutLineMvo
@@ -1204,18 +1192,6 @@ public abstract class AbstractInOutLineMvoCommand extends AbstractCommand implem
         public void setIsPropertyInOutActiveRemoved(Boolean removed)
         {
             this.isPropertyInOutActiveRemoved = removed;
-        }
-
-        private Boolean isPropertyInOutDeletedRemoved;
-
-        public Boolean getIsPropertyInOutDeletedRemoved()
-        {
-            return this.isPropertyInOutDeletedRemoved;
-        }
-
-        public void setIsPropertyInOutDeletedRemoved(Boolean removed)
-        {
-            this.isPropertyInOutDeletedRemoved = removed;
         }
 
     }

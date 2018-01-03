@@ -100,11 +100,6 @@ namespace Dddml.Wms.Domain.InOut
 			Update(c, ar => ar.MergePatch(c));
 		}
 
-		public virtual void When(IDeleteInOut c)
-		{
-			Update(c, ar => ar.Delete(c));
-		}
-
         public virtual IInOutState Get(string documentNumber)
         {
             var state = StateRepository.Get(documentNumber, true);

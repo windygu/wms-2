@@ -117,11 +117,6 @@
         <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
     </subclass>
 
-    <subclass name="InOutStateDeleted"  discriminator-value="Deleted">
-
-    </subclass>
-
-
 
   </class>
   

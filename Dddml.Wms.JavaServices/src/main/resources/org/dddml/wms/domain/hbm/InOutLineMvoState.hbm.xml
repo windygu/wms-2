@@ -65,7 +65,6 @@
 	<property name="inOutUpdatedBy" ></property>
 	<property name="inOutUpdatedAt" ></property>
 	<property name="inOutActive" ></property>
-	<property name="inOutDeleted" ></property>
 
     <property name="createdAt" column="CreatedAt" />
 

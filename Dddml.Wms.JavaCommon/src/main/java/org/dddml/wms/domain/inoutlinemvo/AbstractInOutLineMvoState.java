@@ -671,18 +671,6 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         this.inOutActive = inOutActive;
     }
 
-    private Boolean inOutDeleted;
-
-    public Boolean getInOutDeleted()
-    {
-        return this.inOutDeleted;
-    }
-
-    public void setInOutDeleted(Boolean inOutDeleted)
-    {
-        this.inOutDeleted = inOutDeleted;
-    }
-
     public boolean isStateUnsaved() 
     {
         return this.getInOutVersion() == null;
@@ -795,7 +783,6 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         this.setInOutUpdatedBy(e.getInOutUpdatedBy());
         this.setInOutUpdatedAt(e.getInOutUpdatedAt());
         this.setInOutActive(e.getInOutActive());
-        this.setInOutDeleted(e.getInOutDeleted());
 
         this.setDeleted(false);
 
@@ -1335,17 +1322,6 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         else
         {
             this.setInOutActive(e.getInOutActive());
-        }
-        if (e.getInOutDeleted() == null)
-        {
-            if (e.getIsPropertyInOutDeletedRemoved() != null && e.getIsPropertyInOutDeletedRemoved())
-            {
-                this.setInOutDeleted(null);
-            }
-        }
-        else
-        {
-            this.setInOutDeleted(e.getInOutDeleted());
         }
 
         this.setUpdatedBy(e.getCreatedBy());

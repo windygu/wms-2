@@ -15,9 +15,6 @@ public class InOutStateEventDtoConverter {
         } else if (stateEvent instanceof AbstractInOutStateEvent.AbstractInOutStateMergePatched) {
             InOutStateEvent.InOutStateMergePatched e = (InOutStateEvent.InOutStateMergePatched) stateEvent;
             return toInOutStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractInOutStateEvent.AbstractInOutStateDeleted) {
-            InOutStateEvent.InOutStateDeleted e = (InOutStateEvent.InOutStateDeleted) stateEvent;
-            return toInOutStateDeletedDto(e);
         }
 
         throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
@@ -148,22 +145,6 @@ public class InOutStateEventDtoConverter {
         return dto;
     }
 
-
-    public InOutStateEventDto.InOutStateDeletedDto toInOutStateDeletedDto(InOutStateEvent.InOutStateDeleted e) {
-        InOutStateEventDto.InOutStateDeletedDto dto = new InOutStateEventDto.InOutStateDeletedDto();
-        dto.setStateEventId(new InOutStateEventIdDtoWrapper(e.getStateEventId()));
-        dto.setCreatedAt(e.getCreatedAt());
-        dto.setCreatedBy(e.getCreatedBy());
-        dto.setCommandId(e.getCommandId());
-        List<InOutLineStateEventDto.InOutLineStateRemovedDto> inOutLineEvents = new ArrayList<>();
-        for (InOutLineStateEvent.InOutLineStateRemoved ee : e.getInOutLineEvents()) {
-            InOutLineStateEventDto.InOutLineStateRemovedDto eeDto = getInOutLineStateEventDtoConverter().toInOutLineStateRemovedDto(ee);
-            inOutLineEvents.add(eeDto);
-        }
-        dto.setInOutLineEvents(inOutLineEvents.toArray(new InOutLineStateEventDto.InOutLineStateRemovedDto[0]));
-
-        return dto;
-    }
 
     protected InOutLineStateEventDtoConverter getInOutLineStateEventDtoConverter() {
         return new InOutLineStateEventDtoConverter();

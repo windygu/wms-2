@@ -271,8 +271,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
             this.InOutActive = (e.InOutActive != null && e.InOutActive.HasValue) ? e.InOutActive.Value : default(bool);
 
-            this.InOutDeleted = (e.InOutDeleted != null && e.InOutDeleted.HasValue) ? e.InOutDeleted.Value : default(bool);
-
 			this.Deleted = false;
 
 			this.CreatedBy = e.CreatedBy;
@@ -860,18 +858,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 			else
 			{
 				this.InOutActive = (e.InOutActive != null && e.InOutActive.HasValue) ? e.InOutActive.Value : default(bool);
-			}
-
-			if (e.InOutDeleted == null)
-			{
-				if (e.IsPropertyInOutDeletedRemoved)
-				{
-					this.InOutDeleted = default(bool);
-				}
-			}
-			else
-			{
-				this.InOutDeleted = (e.InOutDeleted != null && e.InOutDeleted.HasValue) ? e.InOutDeleted.Value : default(bool);
 			}
 
 

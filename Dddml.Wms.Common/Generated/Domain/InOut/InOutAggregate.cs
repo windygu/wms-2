@@ -63,10 +63,6 @@ namespace Dddml.Wms.Domain.InOut
                 }
                 throw DomainError.Named("premature", "Can't do anything to unexistent aggregate");
             }
-            if (_state.Deleted)
-            {
-                throw DomainError.Named("zombie", "Can't do anything to deleted aggregate.");
-            }
             if (IsCommandCreate((IInOutCommand)c))
                 throw DomainError.Named("rebirth", "Can't create aggregate that already exists");
         }
@@ -92,12 +88,6 @@ namespace Dddml.Wms.Domain.InOut
         public virtual void MergePatch(IMergePatchInOut c)
         {
             IInOutStateMergePatched e = Map(c);
-            Apply(e);
-        }
-
-        public virtual void Delete(IDeleteInOut c)
-        {
-            IInOutStateDeleted e = Map(c);
             Apply(e);
         }
 
@@ -239,21 +229,6 @@ namespace Dddml.Wms.Domain.InOut
                 IInOutLineStateEvent innerEvent = Map(innerCommand, c, version, _state);
                 e.AddInOutLineEvent(innerEvent);
             }
-
-
-            return e;
-        }
-
-        protected virtual IInOutStateDeleted Map(IDeleteInOut c)
-        {
-			var stateEventId = new InOutStateEventId(c.DocumentNumber, c.Version);
-            IInOutStateDeleted e = NewInOutStateDeleted(stateEventId);
-			
-            e.CommandId = c.CommandId;
-
-
-            e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
 
             return e;
@@ -451,19 +426,6 @@ namespace Dddml.Wms.Domain.InOut
         }
 
 
-        protected InOutStateDeleted NewInOutStateDeleted(string commandId, string requesterId)
-        {
-            var stateEventId = new InOutStateEventId(_state.DocumentNumber, ((IInOutStateProperties)_state).Version);
-            var e = NewInOutStateDeleted(stateEventId);
-
-            e.CommandId = commandId;
-
-            e.CreatedBy = (string)requesterId;
-            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
-
-            return e;
-        }
-
 ////////////////////////
 
 		private InOutStateCreated NewInOutStateCreated(InOutStateEventId stateEventId)
@@ -476,10 +438,6 @@ namespace Dddml.Wms.Domain.InOut
 			return new InOutStateMergePatched(stateEventId);
 		}
 
-        private InOutStateDeleted NewInOutStateDeleted(InOutStateEventId stateEventId)
-		{
-			return new InOutStateDeleted(stateEventId);
-		}
 
 		private InOutLineStateCreated NewInOutLineStateCreated(InOutLineStateEventId stateEventId)
 		{

@@ -15,8 +15,6 @@ public interface InOutApplicationService
 
     void when(InOutCommand.MergePatchInOut c);
 
-    void when(InOutCommand.DeleteInOut c);
-
     InOutState get(String id);
 
     Iterable<InOutState> getAll(Integer firstResult, Integer maxResults);

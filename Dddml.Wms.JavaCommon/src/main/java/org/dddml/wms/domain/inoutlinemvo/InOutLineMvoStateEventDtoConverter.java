@@ -78,7 +78,6 @@ public class InOutLineMvoStateEventDtoConverter {
         dto.setInOutUpdatedBy(e.getInOutUpdatedBy());
         dto.setInOutUpdatedAt(e.getInOutUpdatedAt());
         dto.setInOutActive(e.getInOutActive());
-        dto.setInOutDeleted(e.getInOutDeleted());
         return dto;
     }
 
@@ -136,7 +135,6 @@ public class InOutLineMvoStateEventDtoConverter {
         dto.setInOutUpdatedBy(e.getInOutUpdatedBy());
         dto.setInOutUpdatedAt(e.getInOutUpdatedAt());
         dto.setInOutActive(e.getInOutActive());
-        dto.setInOutDeleted(e.getInOutDeleted());
         dto.setIsPropertyLocatorIdRemoved(e.getIsPropertyLocatorIdRemoved());
         dto.setIsPropertyProductIdRemoved(e.getIsPropertyProductIdRemoved());
         dto.setIsPropertyAttributeSetInstanceIdRemoved(e.getIsPropertyAttributeSetInstanceIdRemoved());
@@ -185,7 +183,6 @@ public class InOutLineMvoStateEventDtoConverter {
         dto.setIsPropertyInOutUpdatedByRemoved(e.getIsPropertyInOutUpdatedByRemoved());
         dto.setIsPropertyInOutUpdatedAtRemoved(e.getIsPropertyInOutUpdatedAtRemoved());
         dto.setIsPropertyInOutActiveRemoved(e.getIsPropertyInOutActiveRemoved());
-        dto.setIsPropertyInOutDeletedRemoved(e.getIsPropertyInOutDeletedRemoved());
         return dto;
     }
 

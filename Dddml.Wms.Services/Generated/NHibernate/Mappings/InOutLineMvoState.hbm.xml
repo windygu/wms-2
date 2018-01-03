@@ -63,7 +63,6 @@
     <property name="InOutUpdatedBy" ></property>
     <property name="InOutUpdatedAt" ></property>
     <property name="InOutActive" ></property>
-    <property name="InOutDeleted" ></property>
 
     <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
 

@@ -310,12 +310,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set;
         }
 
-        bool? InOutDeleted
-        {
-            get;
-            set;
-        }
-
         long? InOutVersion
         {
             get;

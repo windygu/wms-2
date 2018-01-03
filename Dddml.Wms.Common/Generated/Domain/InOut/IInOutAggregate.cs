@@ -24,8 +24,6 @@ namespace Dddml.Wms.Domain.InOut
 
 		void MergePatch (IMergePatchInOut c);
 
-		void Delete (IDeleteInOut c);
-
 
 	}
 

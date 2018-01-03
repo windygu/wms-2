@@ -634,18 +634,6 @@ public abstract class AbstractInOutLineMvoStateEvent extends AbstractStateEvent 
         this.inOutActive = inOutActive;
     }
 
-    private Boolean inOutDeleted;
-
-    public Boolean getInOutDeleted()
-    {
-        return this.inOutDeleted;
-    }
-
-    public void setInOutDeleted(Boolean inOutDeleted)
-    {
-        this.inOutDeleted = inOutDeleted;
-    }
-
 
     private String commandId;
 
@@ -1177,16 +1165,6 @@ public abstract class AbstractInOutLineMvoStateEvent extends AbstractStateEvent 
 
         public void setIsPropertyInOutActiveRemoved(Boolean removed) {
             this.isPropertyInOutActiveRemoved = removed;
-        }
-
-        private Boolean isPropertyInOutDeletedRemoved;
-
-        public Boolean getIsPropertyInOutDeletedRemoved() {
-            return this.isPropertyInOutDeletedRemoved;
-        }
-
-        public void setIsPropertyInOutDeletedRemoved(Boolean removed) {
-            this.isPropertyInOutDeletedRemoved = removed;
         }
 
     }

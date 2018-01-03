@@ -147,9 +147,11 @@ aggregates:
         #processedon numeric,
         #string TerminalReference:
         
-
         InOutLines:
           itemType: InOutLine
+        
+      reservedProperties:
+        noDeleted: true
         
       entities:
           
@@ -221,4 +223,7 @@ aggregates:
             #user2_id numeric(10,0),
             #ad_orgtrx_id numeric(10,0),
             #m_rmaline_id numeric(10,0),
+    
+    
+    
     

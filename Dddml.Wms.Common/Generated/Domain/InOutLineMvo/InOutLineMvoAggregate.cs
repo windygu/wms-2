@@ -156,7 +156,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             e.InOutUpdatedBy = c.InOutUpdatedBy;
             e.InOutUpdatedAt = c.InOutUpdatedAt;
             e.InOutActive = c.InOutActive;
-            e.InOutDeleted = c.InOutDeleted;
             e.CommandId = c.CommandId;
 
 
@@ -221,7 +220,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             e.InOutUpdatedBy = c.InOutUpdatedBy;
             e.InOutUpdatedAt = c.InOutUpdatedAt;
             e.InOutActive = c.InOutActive;
-            e.InOutDeleted = c.InOutDeleted;
             e.IsPropertyLocatorIdRemoved = c.IsPropertyLocatorIdRemoved;
             e.IsPropertyProductIdRemoved = c.IsPropertyProductIdRemoved;
             e.IsPropertyAttributeSetInstanceIdRemoved = c.IsPropertyAttributeSetInstanceIdRemoved;
@@ -269,7 +267,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             e.IsPropertyInOutUpdatedByRemoved = c.IsPropertyInOutUpdatedByRemoved;
             e.IsPropertyInOutUpdatedAtRemoved = c.IsPropertyInOutUpdatedAtRemoved;
             e.IsPropertyInOutActiveRemoved = c.IsPropertyInOutActiveRemoved;
-            e.IsPropertyInOutDeletedRemoved = c.IsPropertyInOutDeletedRemoved;
 
             e.CommandId = c.CommandId;
 

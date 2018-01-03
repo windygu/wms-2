@@ -27,11 +27,6 @@ namespace Dddml.Wms.Domain.InOut
                 var e = (IInOutStateMergePatched)stateEvent;
                 return ToInOutStateMergePatchedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.Deleted)
-            {
-                var e = (IInOutStateDeleted)stateEvent;
-                return ToInOutStateDeletedDto(e);
-            }
             throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
         }
 
@@ -165,25 +160,6 @@ namespace Dddml.Wms.Domain.InOut
             return dto;
         }
 
-
-        public virtual InOutStateDeletedDto ToInOutStateDeletedDto(IInOutStateDeleted e)
-        {
-            var dto = new InOutStateDeletedDto();
-            dto.StateEventId = new InOutStateEventIdDtoWrapper(e.StateEventId);
-            dto.CreatedAt = e.CreatedAt;
-            dto.CreatedBy = e.CreatedBy;
-            dto.CommandId = e.CommandId;
-            var inOutLineEvents = new List<InOutLineStateRemovedDto>();
-            foreach (var ee in e.InOutLineEvents)
-            {
-                InOutLineStateRemovedDto eeDto = InOutLineStateEventDtoConverter.ToInOutLineStateRemovedDto(ee);
-                inOutLineEvents.Add(eeDto);
-            }
-            dto.InOutLineEvents = inOutLineEvents.ToArray();
-
-
-            return dto;
-        }
 
         protected virtual InOutLineStateEventDtoConverter InOutLineStateEventDtoConverter
         {

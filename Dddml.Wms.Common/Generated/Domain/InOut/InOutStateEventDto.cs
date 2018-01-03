@@ -12,7 +12,7 @@ using Dddml.Wms.Domain.InOut;
 namespace Dddml.Wms.Domain.InOut
 {
 
-	public abstract class InOutStateEventDtoBase : IStateEventDto, IInOutStateCreated, IInOutStateMergePatched, IInOutStateDeleted
+	public abstract class InOutStateEventDtoBase : IStateEventDto, IInOutStateCreated, IInOutStateMergePatched
 	{
 
         private InOutStateEventIdDto _stateEventId;
@@ -832,23 +832,6 @@ namespace Dddml.Wms.Domain.InOut
         }
 
 
-        IEnumerable<IInOutLineStateRemoved> IInOutStateDeleted.InOutLineEvents
-        {
-            get { return this._inOutLineEvents; }
-        }
-
-        void IInOutStateDeleted.AddInOutLineEvent(IInOutLineStateRemoved e)
-        {
-            this._inOutLineEvents.AddInOutLineEvent(e);
-        }
-
-        IInOutLineStateRemoved IInOutStateDeleted.NewInOutLineStateRemoved(string lineNumber)
-        {
-            return NewInOutLineStateRemoved(lineNumber);
-        }
-
-
-
         InOutStateEventId IInOutStateEvent.StateEventId
         {
             get { return this.StateEventId.ToInOutStateEventId(); }
@@ -963,7 +946,7 @@ namespace Dddml.Wms.Domain.InOut
 	}
 
 
-    public partial class InOutStateCreatedOrMergePatchedOrDeletedDtos : IEnumerable<IInOutStateCreated>, IEnumerable<IInOutStateMergePatched>, IEnumerable<IInOutStateDeleted>
+    public partial class InOutStateCreatedOrMergePatchedOrDeletedDtos : IEnumerable<IInOutStateCreated>, IEnumerable<IInOutStateMergePatched>
     {
         private List<InOutStateCreatedOrMergePatchedOrDeletedDto> _innerStateEvents = new List<InOutStateCreatedOrMergePatchedOrDeletedDto>();
 
@@ -997,10 +980,6 @@ namespace Dddml.Wms.Domain.InOut
             return _innerStateEvents.GetEnumerator();
         }
 
-        IEnumerator<IInOutStateDeleted> IEnumerable<IInOutStateDeleted>.GetEnumerator()
-        {
-            return _innerStateEvents.GetEnumerator();
-        }
 
         public void AddInOutEvent(IInOutStateCreated e)
         {
@@ -1012,10 +991,6 @@ namespace Dddml.Wms.Domain.InOut
             _innerStateEvents.Add((InOutStateCreatedOrMergePatchedOrDeletedDto)e);
         }
 
-        public void AddInOutEvent(IInOutStateDeleted e)
-        {
-            _innerStateEvents.Add((InOutStateDeletedDto)e);
-        }
 
     }
 

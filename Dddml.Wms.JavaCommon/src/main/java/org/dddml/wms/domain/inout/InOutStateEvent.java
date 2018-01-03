@@ -301,16 +301,6 @@ public interface InOutStateEvent extends Event
 
     }
 
-    interface InOutStateDeleted extends InOutStateEvent
-    {
-        Iterable<InOutLineStateEvent.InOutLineStateRemoved> getInOutLineEvents();
-        
-        void addInOutLineEvent(InOutLineStateEvent.InOutLineStateRemoved e);
-        
-        InOutLineStateEvent.InOutLineStateRemoved newInOutLineStateRemoved(String lineNumber);
-
-    }
-
 
 }
 
