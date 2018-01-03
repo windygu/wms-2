@@ -16,7 +16,7 @@ using Spring.Transaction.Interceptor;
 namespace Dddml.Wms.Domain.InventoryPRTriggered.NHibernate
 {
 
-	public class InventoryPRTriggeredApplicationService : InventoryPRTriggeredApplicationServiceBase
+	public partial class InventoryPRTriggeredApplicationService : InventoryPRTriggeredApplicationServiceBase
 	{
 
 		private IInventoryPRTriggeredStateRepository _stateRepository;

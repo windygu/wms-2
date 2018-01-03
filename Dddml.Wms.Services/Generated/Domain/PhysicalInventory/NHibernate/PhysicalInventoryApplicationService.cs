@@ -15,7 +15,7 @@ using Spring.Transaction.Interceptor;
 namespace Dddml.Wms.Domain.PhysicalInventory.NHibernate
 {
 
-	public class PhysicalInventoryApplicationService : PhysicalInventoryApplicationServiceBase
+	public partial class PhysicalInventoryApplicationService : PhysicalInventoryApplicationServiceBase
 	{
 
 		private IEventStore _eventStore;

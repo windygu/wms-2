@@ -15,7 +15,7 @@ using Spring.Transaction.Interceptor;
 namespace Dddml.Wms.Domain.StatusItem.NHibernate
 {
 
-	public class StatusItemApplicationService : StatusItemApplicationServiceBase
+	public partial class StatusItemApplicationService : StatusItemApplicationServiceBase
 	{
 
 		private IStatusItemStateRepository _stateRepository;

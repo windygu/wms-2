@@ -15,7 +15,7 @@ using Spring.Transaction.Interceptor;
 namespace Dddml.Wms.Domain.Permission.NHibernate
 {
 
-	public class PermissionApplicationService : PermissionApplicationServiceBase
+	public partial class PermissionApplicationService : PermissionApplicationServiceBase
 	{
 
 		private IEventStore _eventStore;

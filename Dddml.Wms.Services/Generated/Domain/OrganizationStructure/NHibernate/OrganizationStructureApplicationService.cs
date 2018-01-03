@@ -15,7 +15,7 @@ using Spring.Transaction.Interceptor;
 namespace Dddml.Wms.Domain.OrganizationStructure.NHibernate
 {
 
-	public class OrganizationStructureApplicationService : OrganizationStructureApplicationServiceBase
+	public partial class OrganizationStructureApplicationService : OrganizationStructureApplicationServiceBase
 	{
 
 		private IEventStore _eventStore;

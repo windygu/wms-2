@@ -16,7 +16,7 @@ using Spring.Transaction.Interceptor;
 namespace Dddml.Wms.Domain.AttributeAliasMvo.NHibernate
 {
 
-	public class AttributeAliasMvoApplicationService : AttributeAliasMvoApplicationServiceBase
+	public partial class AttributeAliasMvoApplicationService : AttributeAliasMvoApplicationServiceBase
 	{
 
 		private IEventStore _eventStore;

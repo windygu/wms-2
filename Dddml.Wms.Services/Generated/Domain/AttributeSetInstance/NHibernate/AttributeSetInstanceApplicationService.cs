@@ -15,7 +15,7 @@ using Spring.Transaction.Interceptor;
 namespace Dddml.Wms.Domain.AttributeSetInstance.NHibernate
 {
 
-	public class AttributeSetInstanceApplicationService : AttributeSetInstanceApplicationServiceBase
+	public partial class AttributeSetInstanceApplicationService : AttributeSetInstanceApplicationServiceBase
 	{
 
 		private IEventStore _eventStore;

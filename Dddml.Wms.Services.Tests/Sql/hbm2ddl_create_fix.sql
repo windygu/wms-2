@@ -926,7 +926,6 @@
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
        Active TINYINT(1),
-       Deleted TINYINT(1),
        CreatedAt DATETIME,
        UpdatedAt DATETIME,
        primary key (DocumentNumber)
@@ -2290,7 +2289,6 @@
        InOutUpdatedBy VARCHAR(255),
        InOutUpdatedAt DATETIME,
        InOutActive TINYINT(1),
-       InOutDeleted TINYINT(1),
        CreatedAt DATETIME,
        UpdatedAt DATETIME,
        primary key (InOutLineIdInOutDocumentNumber, InOutLineIdLineNumber)
@@ -2349,7 +2347,6 @@
        InOutUpdatedBy VARCHAR(255),
        InOutUpdatedAt DATETIME,
        InOutActive TINYINT(1),
-       InOutDeleted TINYINT(1),
        CreatedBy VARCHAR(255),
        CreatedAt DATETIME,
        CommandId VARCHAR(255),
@@ -2401,7 +2398,6 @@
        IsPropertyInOutUpdatedByRemoved TINYINT(1),
        IsPropertyInOutUpdatedAtRemoved TINYINT(1),
        IsPropertyInOutActiveRemoved TINYINT(1),
-       IsPropertyInOutDeletedRemoved TINYINT(1),
        primary key (InOutLineIdInOutDocumentNumber, InOutLineIdLineNumber, InOutVersion)
     );
 

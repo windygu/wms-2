@@ -15,7 +15,7 @@ using Spring.Transaction.Interceptor;
 namespace Dddml.Wms.Domain.DocumentType.NHibernate
 {
 
-	public class DocumentTypeApplicationService : DocumentTypeApplicationServiceBase
+	public partial class DocumentTypeApplicationService : DocumentTypeApplicationServiceBase
 	{
 
 		private IDocumentTypeStateRepository _stateRepository;

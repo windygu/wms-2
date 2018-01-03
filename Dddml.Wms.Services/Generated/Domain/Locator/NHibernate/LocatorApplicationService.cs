@@ -15,7 +15,7 @@ using Spring.Transaction.Interceptor;
 namespace Dddml.Wms.Domain.Locator.NHibernate
 {
 
-	public class LocatorApplicationService : LocatorApplicationServiceBase
+	public partial class LocatorApplicationService : LocatorApplicationServiceBase
 	{
 
 		private IEventStore _eventStore;

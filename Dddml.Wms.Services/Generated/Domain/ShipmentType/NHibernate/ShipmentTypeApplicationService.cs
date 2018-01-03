@@ -15,7 +15,7 @@ using Spring.Transaction.Interceptor;
 namespace Dddml.Wms.Domain.ShipmentType.NHibernate
 {
 
-	public class ShipmentTypeApplicationService : ShipmentTypeApplicationServiceBase
+	public partial class ShipmentTypeApplicationService : ShipmentTypeApplicationServiceBase
 	{
 
 		private IShipmentTypeStateRepository _stateRepository;

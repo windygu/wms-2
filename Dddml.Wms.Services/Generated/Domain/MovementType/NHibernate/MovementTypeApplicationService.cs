@@ -15,7 +15,7 @@ using Spring.Transaction.Interceptor;
 namespace Dddml.Wms.Domain.MovementType.NHibernate
 {
 
-	public class MovementTypeApplicationService : MovementTypeApplicationServiceBase
+	public partial class MovementTypeApplicationService : MovementTypeApplicationServiceBase
 	{
 
 		private IMovementTypeStateRepository _stateRepository;

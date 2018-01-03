@@ -15,7 +15,7 @@ using Spring.Transaction.Interceptor;
 namespace Dddml.Wms.Domain.RolePermission.NHibernate
 {
 
-	public class RolePermissionApplicationService : RolePermissionApplicationServiceBase
+	public partial class RolePermissionApplicationService : RolePermissionApplicationServiceBase
 	{
 
 		private IEventStore _eventStore;

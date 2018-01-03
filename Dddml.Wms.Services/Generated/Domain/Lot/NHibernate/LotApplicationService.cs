@@ -15,7 +15,7 @@ using Spring.Transaction.Interceptor;
 namespace Dddml.Wms.Domain.Lot.NHibernate
 {
 
-	public class LotApplicationService : LotApplicationServiceBase
+	public partial class LotApplicationService : LotApplicationServiceBase
 	{
 
 		private IEventStore _eventStore;

@@ -16,7 +16,7 @@ using Spring.Transaction.Interceptor;
 namespace Dddml.Wms.Domain.MovementLineMvo.NHibernate
 {
 
-	public class MovementLineMvoApplicationService : MovementLineMvoApplicationServiceBase
+	public partial class MovementLineMvoApplicationService : MovementLineMvoApplicationServiceBase
 	{
 
 		private IEventStore _eventStore;

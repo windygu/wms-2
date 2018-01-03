@@ -15,7 +15,7 @@ using Spring.Transaction.Interceptor;
 namespace Dddml.Wms.Domain.RejectionReason.NHibernate
 {
 
-	public class RejectionReasonApplicationService : RejectionReasonApplicationServiceBase
+	public partial class RejectionReasonApplicationService : RejectionReasonApplicationServiceBase
 	{
 
 		private IEventStore _eventStore;

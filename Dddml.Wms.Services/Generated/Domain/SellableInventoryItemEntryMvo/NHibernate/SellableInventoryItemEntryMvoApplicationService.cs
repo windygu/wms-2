@@ -17,7 +17,7 @@ using Spring.Transaction.Interceptor;
 namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo.NHibernate
 {
 
-	public class SellableInventoryItemEntryMvoApplicationService : SellableInventoryItemEntryMvoApplicationServiceBase
+	public partial class SellableInventoryItemEntryMvoApplicationService : SellableInventoryItemEntryMvoApplicationServiceBase
 	{
 
 		private IEventStore _eventStore;

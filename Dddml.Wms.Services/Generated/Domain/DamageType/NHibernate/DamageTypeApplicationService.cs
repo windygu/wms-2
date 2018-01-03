@@ -15,7 +15,7 @@ using Spring.Transaction.Interceptor;
 namespace Dddml.Wms.Domain.DamageType.NHibernate
 {
 
-	public class DamageTypeApplicationService : DamageTypeApplicationServiceBase
+	public partial class DamageTypeApplicationService : DamageTypeApplicationServiceBase
 	{
 
 		private IDamageTypeStateRepository _stateRepository;

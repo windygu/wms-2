@@ -17,7 +17,7 @@ using Spring.Transaction.Interceptor;
 namespace Dddml.Wms.Domain.InventoryItemRequirement.NHibernate
 {
 
-	public class InventoryItemRequirementApplicationService : InventoryItemRequirementApplicationServiceBase
+	public partial class InventoryItemRequirementApplicationService : InventoryItemRequirementApplicationServiceBase
 	{
 
 		private IInventoryItemRequirementStateRepository _stateRepository;

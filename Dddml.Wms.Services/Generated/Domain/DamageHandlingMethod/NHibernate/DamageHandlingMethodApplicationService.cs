@@ -15,7 +15,7 @@ using Spring.Transaction.Interceptor;
 namespace Dddml.Wms.Domain.DamageHandlingMethod.NHibernate
 {
 
-	public class DamageHandlingMethodApplicationService : DamageHandlingMethodApplicationServiceBase
+	public partial class DamageHandlingMethodApplicationService : DamageHandlingMethodApplicationServiceBase
 	{
 
 		private IDamageHandlingMethodStateRepository _stateRepository;

@@ -142,7 +142,6 @@
        InOutUpdatedBy VARCHAR(255),
        InOutUpdatedAt DATETIME,
        InOutActive TINYINT(1),
-       InOutDeleted TINYINT(1),
        CreatedAt DATETIME,
        UpdatedAt DATETIME,
        primary key (InOutLineIdInOutDocumentNumber, InOutLineIdLineNumber)

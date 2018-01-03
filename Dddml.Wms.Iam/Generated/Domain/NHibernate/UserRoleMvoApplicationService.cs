@@ -16,7 +16,7 @@ using Spring.Transaction.Interceptor;
 namespace Dddml.Wms.Domain.UserRoleMvo.NHibernate
 {
 
-	public class UserRoleMvoApplicationService : UserRoleMvoApplicationServiceBase
+	public partial class UserRoleMvoApplicationService : UserRoleMvoApplicationServiceBase
 	{
 
 		private IEventStore _eventStore;

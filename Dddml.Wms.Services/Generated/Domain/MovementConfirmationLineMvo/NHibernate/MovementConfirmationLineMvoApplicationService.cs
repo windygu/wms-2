@@ -16,7 +16,7 @@ using Spring.Transaction.Interceptor;
 namespace Dddml.Wms.Domain.MovementConfirmationLineMvo.NHibernate
 {
 
-	public class MovementConfirmationLineMvoApplicationService : MovementConfirmationLineMvoApplicationServiceBase
+	public partial class MovementConfirmationLineMvoApplicationService : MovementConfirmationLineMvoApplicationServiceBase
 	{
 
 		private IEventStore _eventStore;

@@ -17,7 +17,7 @@ using Spring.Transaction.Interceptor;
 namespace Dddml.Wms.Domain.SellableInventoryItem.NHibernate
 {
 
-	public class SellableInventoryItemApplicationService : SellableInventoryItemApplicationServiceBase
+	public partial class SellableInventoryItemApplicationService : SellableInventoryItemApplicationServiceBase
 	{
 
 		private ISellableInventoryItemStateRepository _stateRepository;
