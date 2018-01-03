@@ -59,7 +59,7 @@ public abstract class AbstractInOutApplicationService implements InOutApplicatio
     }
 
     public void when(InOutCommands.Void c) {
-        update(c, ar -> ar.void(c.getCommandId(), c.getRequesterId()));
+        update(c, ar -> ar._void(c.getCommandId(), c.getRequesterId()));
     }
 
     public void when(InOutCommands.Reverse c) {

@@ -141,7 +141,7 @@ public class InOutResource {
 
 
     @Path("{id}/_commands/Void") @PUT
-    public void void(@PathParam("id") String id, InOutCommandDtos.VoidRequestContent content) {
+    public void _void(@PathParam("id") String id, InOutCommandDtos.VoidRequestContent content) {
         try {
 
             InOutCommands.Void cmd = content.toVoid();

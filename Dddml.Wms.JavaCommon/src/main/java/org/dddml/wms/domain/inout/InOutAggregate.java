@@ -19,7 +19,7 @@ public interface InOutAggregate
 
     void complete(String commandId, String requesterId);
 
-    void void(String commandId, String requesterId);
+    void _void(String commandId, String requesterId);
 
     void reverse(String commandId, String requesterId);
 

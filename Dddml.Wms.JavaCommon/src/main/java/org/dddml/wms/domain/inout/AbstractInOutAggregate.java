@@ -376,7 +376,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         }
 
         @Override
-        public void void(String commandId, String requesterId) {
+        public void _void(String commandId, String requesterId) {
             throw new UnsupportedOperationException();
         }
 
