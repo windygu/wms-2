@@ -95,7 +95,13 @@
     <Compile Include="Generated\AttributeValueMvoApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\DamageHandlingMethodApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\DamageReasonApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\DamageTypeApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\DddmlWmsRamlClient.cs">
@@ -242,7 +248,9 @@
 .\AttributeSetInstanceExtensionFieldGroupApplicationServiceProxy.cs
 .\AttributeUseMvoApplicationServiceProxy.cs
 .\AttributeValueMvoApplicationServiceProxy.cs
+.\DamageHandlingMethodApplicationServiceProxy.cs
 .\DamageReasonApplicationServiceProxy.cs
+.\DamageTypeApplicationServiceProxy.cs
 .\DddmlWmsRamlClient.cs
 .\DocumentTypeApplicationServiceProxy.cs
 .\GenerateRamlClientProxies.txt

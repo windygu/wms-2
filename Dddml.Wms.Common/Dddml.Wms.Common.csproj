@@ -1030,6 +1030,93 @@
     <Compile Include="Generated\Domain\Attribute\IAttributeValueStates.cs">
       <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\DamageHandlingMethod\DamageHandlingMethodAggregate.cs">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageHandlingMethod\DamageHandlingMethodApplicationServiceBase.cs">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageHandlingMethod\DamageHandlingMethodApplicationServiceFactory.cs">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageHandlingMethod\DamageHandlingMethodCommand.cs">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageHandlingMethod\DamageHandlingMethodCommandDto.cs">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageHandlingMethod\DamageHandlingMethodState.cs">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageHandlingMethod\DamageHandlingMethodStateDto.cs">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageHandlingMethod\DamageHandlingMethodStateDtoExtension.cs">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageHandlingMethod\DamageHandlingMethodStateDtoWrapper.cs">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageHandlingMethod\DamageHandlingMethodStateEvent.cs">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageHandlingMethod\DamageHandlingMethodStateEventDto.cs">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageHandlingMethod\DamageHandlingMethodStateEventDtoConverter.cs">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageHandlingMethod\DamageHandlingMethodStateEventId.cs">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageHandlingMethod\DamageHandlingMethodStateEventIdDto.cs">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageHandlingMethod\DamageHandlingMethodStateEventIdDtoWrapper.cs">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageHandlingMethod\DamageHandlingMethodStateEventIdFlattenedDto.cs">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageHandlingMethod\DamageHandlingMethodStateExtension.cs">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageHandlingMethod\DamageHandlingMethodStateInterfaceExtension.cs">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageHandlingMethod\DamageHandlingMethodStateProperties.cs">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageHandlingMethod\IDamageHandlingMethodAggregate.cs">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageHandlingMethod\IDamageHandlingMethodApplicationService.cs">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageHandlingMethod\IDamageHandlingMethodApplicationServiceFactory.cs">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageHandlingMethod\IDamageHandlingMethodCommand.cs">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageHandlingMethod\IDamageHandlingMethodState.cs">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageHandlingMethod\IDamageHandlingMethodStateDto.cs">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageHandlingMethod\IDamageHandlingMethodStateEvent.cs">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageHandlingMethod\IDamageHandlingMethodStateProperties.cs">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageHandlingMethod\IDamageHandlingMethodStateQueryRepository.cs">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageHandlingMethod\IDamageHandlingMethodStateRepository.cs">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\DamageReason\DamageReasonAggregate.cs">
       <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
     </Compile>
@@ -1116,6 +1203,93 @@
     </Compile>
     <Compile Include="Generated\Domain\DamageReason\IDamageReasonStateRepository.cs">
       <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageType\DamageTypeAggregate.cs">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageType\DamageTypeApplicationServiceBase.cs">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageType\DamageTypeApplicationServiceFactory.cs">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageType\DamageTypeCommand.cs">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageType\DamageTypeCommandDto.cs">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageType\DamageTypeState.cs">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageType\DamageTypeStateDto.cs">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageType\DamageTypeStateDtoExtension.cs">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageType\DamageTypeStateDtoWrapper.cs">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageType\DamageTypeStateEvent.cs">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageType\DamageTypeStateEventDto.cs">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageType\DamageTypeStateEventDtoConverter.cs">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageType\DamageTypeStateEventId.cs">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageType\DamageTypeStateEventIdDto.cs">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageType\DamageTypeStateEventIdDtoWrapper.cs">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageType\DamageTypeStateEventIdFlattenedDto.cs">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageType\DamageTypeStateExtension.cs">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageType\DamageTypeStateInterfaceExtension.cs">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageType\DamageTypeStateProperties.cs">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageType\IDamageTypeAggregate.cs">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageType\IDamageTypeApplicationService.cs">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageType\IDamageTypeApplicationServiceFactory.cs">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageType\IDamageTypeCommand.cs">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageType\IDamageTypeState.cs">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageType\IDamageTypeStateDto.cs">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageType\IDamageTypeStateEvent.cs">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageType\IDamageTypeStateProperties.cs">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageType\IDamageTypeStateQueryRepository.cs">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageType\IDamageTypeStateRepository.cs">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\DocumentAction.cs">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
@@ -2422,7 +2596,13 @@
     <Compile Include="Generated\Domain\Metadata\BoundedContextMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\Metadata\DamageHandlingMethodMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\Metadata\DamageReasonMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Metadata\DamageTypeMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Metadata\DocumentTypeMetadata.cs">
@@ -5826,10 +6006,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
     </Content>
+    <Content Include="Generated\Domain\DamageHandlingMethod\GenerateDamageHandlingMethodDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Content>
     <Content Include="Generated\Domain\DamageReason\GenerateDamageReasonDomain.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\DamageType\GenerateDamageTypeDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="Generated\Domain\DocumentType\GenerateDocumentTypeDomain.txt">
       <AutoGen>True</AutoGen>
@@ -8267,6 +8457,78 @@
 .\RejectionReasonStateProperties.cs
 </LastOutputs>
     </Content>
+    <Content Include="Generated\Domain\DamageType\GenerateDamageTypeDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateDamageTypeDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\DamageTypeAggregate.cs
+.\DamageTypeApplicationServiceBase.cs
+.\DamageTypeApplicationServiceFactory.cs
+.\DamageTypeCommand.cs
+.\DamageTypeCommandDto.cs
+.\DamageTypeState.cs
+.\DamageTypeStateDto.cs
+.\DamageTypeStateDtoExtension.cs
+.\DamageTypeStateDtoWrapper.cs
+.\DamageTypeStateEvent.cs
+.\DamageTypeStateEventDto.cs
+.\DamageTypeStateEventDtoConverter.cs
+.\DamageTypeStateEventId.cs
+.\DamageTypeStateEventIdDto.cs
+.\DamageTypeStateEventIdDtoWrapper.cs
+.\DamageTypeStateEventIdFlattenedDto.cs
+.\DamageTypeStateExtension.cs
+.\DamageTypeStateInterfaceExtension.cs
+.\DamageTypeStateProperties.cs
+.\GenerateDamageTypeDomain.txt
+.\IDamageTypeAggregate.cs
+.\IDamageTypeApplicationService.cs
+.\IDamageTypeApplicationServiceFactory.cs
+.\IDamageTypeCommand.cs
+.\IDamageTypeState.cs
+.\IDamageTypeStateDto.cs
+.\IDamageTypeStateEvent.cs
+.\IDamageTypeStateProperties.cs
+.\IDamageTypeStateQueryRepository.cs
+.\IDamageTypeStateRepository.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\DamageHandlingMethod\GenerateDamageHandlingMethodDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateDamageHandlingMethodDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\DamageHandlingMethodAggregate.cs
+.\DamageHandlingMethodApplicationServiceBase.cs
+.\DamageHandlingMethodApplicationServiceFactory.cs
+.\DamageHandlingMethodCommand.cs
+.\DamageHandlingMethodCommandDto.cs
+.\DamageHandlingMethodState.cs
+.\DamageHandlingMethodStateDto.cs
+.\DamageHandlingMethodStateDtoExtension.cs
+.\DamageHandlingMethodStateDtoWrapper.cs
+.\DamageHandlingMethodStateEvent.cs
+.\DamageHandlingMethodStateEventDto.cs
+.\DamageHandlingMethodStateEventDtoConverter.cs
+.\DamageHandlingMethodStateEventId.cs
+.\DamageHandlingMethodStateEventIdDto.cs
+.\DamageHandlingMethodStateEventIdDtoWrapper.cs
+.\DamageHandlingMethodStateEventIdFlattenedDto.cs
+.\DamageHandlingMethodStateExtension.cs
+.\DamageHandlingMethodStateInterfaceExtension.cs
+.\DamageHandlingMethodStateProperties.cs
+.\GenerateDamageHandlingMethodDomain.txt
+.\IDamageHandlingMethodAggregate.cs
+.\IDamageHandlingMethodApplicationService.cs
+.\IDamageHandlingMethodApplicationServiceFactory.cs
+.\IDamageHandlingMethodCommand.cs
+.\IDamageHandlingMethodState.cs
+.\IDamageHandlingMethodStateDto.cs
+.\IDamageHandlingMethodStateEvent.cs
+.\IDamageHandlingMethodStateProperties.cs
+.\IDamageHandlingMethodStateQueryRepository.cs
+.\IDamageHandlingMethodStateRepository.cs
+</LastOutputs>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Generated\Domain\GenerateBoundedContextDomainAggregates.tt">
@@ -8314,7 +8576,9 @@
 .\AttributeValueMetadata.cs
 .\AttributeValueMvoMetadata.cs
 .\BoundedContextMetadata.cs
+.\DamageHandlingMethodMetadata.cs
 .\DamageReasonMetadata.cs
+.\DamageTypeMetadata.cs
 .\DocumentTypeMetadata.cs
 .\GenerateDomainMetadata.txt
 .\InOutLineMetadata.cs

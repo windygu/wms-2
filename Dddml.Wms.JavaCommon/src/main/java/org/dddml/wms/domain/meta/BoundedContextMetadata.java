@@ -26,6 +26,8 @@ public class BoundedContextMetadata {
         map.put("AttributeSet", "AttributeSet");
         map.put("AttributeUse", "AttributeSet");
         map.put("DamageReason", "DamageReason");
+        map.put("DamageType", "DamageType");
+        map.put("DamageHandlingMethod", "DamageHandlingMethod");
         map.put("DocumentType", "DocumentType");
         map.put("InOut", "InOut");
         map.put("InOutLine", "InOut");

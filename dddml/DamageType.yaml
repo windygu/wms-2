@@ -1,0 +1,43 @@
+#%DDDML 0.1
+
+---
+
+# ------------------------------
+aggregates:
+              
+    # ----------------------- aggregate -------------------------
+    DamageType:
+      id:
+        name: DamageTypeId
+        type: id
+        
+      properties:
+        Description:
+          type: description
+          notNull: true
+        SequenceId:
+          type: id
+        DefaultHandlingMethodId:
+          type: id
+          referenceType: DamageHandlingMethod
+          
+      metadata:
+        NoEventSourcing: true
+
+    # ------------------------------------------------------------
+    DamageHandlingMethod:
+      id:
+        name: DamageHandlingMethodId
+        type: id
+        
+      properties:
+        Description:
+          type: description
+          notNull: true
+        SequenceId:
+          type: id
+          
+      metadata:
+        NoEventSourcing: true
+        
+        

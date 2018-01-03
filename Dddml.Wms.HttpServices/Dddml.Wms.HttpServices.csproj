@@ -296,7 +296,13 @@
     <Compile Include="Generated\Controllers\AttributeValueMvosController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Controllers\DamageHandlingMethodsController.cs">
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Controllers\DamageReasonsController.cs">
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Controllers\DamageTypesController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\DocumentTypesController.cs">
@@ -487,7 +493,9 @@
 .\AttributeSetsController.cs
 .\AttributeUseMvosController.cs
 .\AttributeValueMvosController.cs
+.\DamageHandlingMethodsController.cs
 .\DamageReasonsController.cs
+.\DamageTypesController.cs
 .\DocumentTypesController.cs
 .\GenerateAggregatesControllers.txt
 .\InOutLineMvosController.cs

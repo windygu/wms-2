@@ -35,6 +35,8 @@
         <mapping resource="org/dddml/wms/domain/hbm/AttributeUseStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/DamageReasonState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/DamageReasonStateEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/DamageTypeState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/DamageHandlingMethodState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/DocumentTypeState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InOutState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InOutStateEvent.hbm.xml"/>

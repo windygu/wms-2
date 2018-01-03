@@ -66,7 +66,13 @@
     <Content Include="src\main\java\org\dddml\wms\restful\resource\AttributeValueMvoResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\DamageHandlingMethodResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\DamageReasonResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\DamageTypeResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\DocumentTypeResource.java">
@@ -84,7 +90,9 @@
 .\AttributeSetResource.java
 .\AttributeUseMvoResource.java
 .\AttributeValueMvoResource.java
+.\DamageHandlingMethodResource.java
 .\DamageReasonResource.java
+.\DamageTypeResource.java
 .\DocumentTypeResource.java
 .\GenerateAggregatesResources.txt
 .\InOutLineMvoResource.java

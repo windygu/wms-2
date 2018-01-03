@@ -20,7 +20,7 @@ namespace Dddml.Wms.Services.Tests
             initdb.SetUp();
 
             //var xmlDataLoader1 = new XmlDataLoader();
-            //xmlDataLoader1.Process(".\\", "*ConversionData.xml");
+            //xmlDataLoader1.Process(".\\Data", "*ConversionData.xml");
             //Console.ReadKey();
             //return;
 
@@ -34,7 +34,7 @@ namespace Dddml.Wms.Services.Tests
 
             // ////////////////////////
             var xmlDataLoader = new XmlDataLoader();
-            xmlDataLoader.Process(".\\");
+            xmlDataLoader.Process(".\\Data");
             //Console.ReadKey();
             //return;
             // ////////////////////////

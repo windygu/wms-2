@@ -172,6 +172,17 @@
     <Content Include="src\main\java\org\dddml\wms\domain\attribute\hibernate\HibernateAttributeValueStateEventDao.java">
       <DependentUpon>GenerateAttributeDomainHibernate.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\hibernate\GenerateDamageHandlingMethodDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateDamageHandlingMethodDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\hibernate\HibernateDamageHandlingMethodStateQueryRepository.java">
+      <DependentUpon>GenerateDamageHandlingMethodDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\hibernate\HibernateDamageHandlingMethodStateRepository.java">
+      <DependentUpon>GenerateDamageHandlingMethodDomainHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\damagereason\hibernate\GenerateDamageReasonDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -185,6 +196,17 @@
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\damagereason\hibernate\HibernateDamageReasonStateRepository.java">
       <DependentUpon>GenerateDamageReasonDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\hibernate\GenerateDamageTypeDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateDamageTypeDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\hibernate\HibernateDamageTypeStateQueryRepository.java">
+      <DependentUpon>GenerateDamageTypeDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\hibernate\HibernateDamageTypeStateRepository.java">
+      <DependentUpon>GenerateDamageTypeDomainHibernate.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\documenttype\hibernate\GenerateDocumentTypeDomainHibernate.txt">
       <AutoGen>True</AutoGen>
@@ -1202,6 +1224,12 @@
     <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\DamageReasonStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\DamageTypeState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\DamageHandlingMethodState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
     <Content Include="src\main\resources\org\dddml\wms\domain\hbm\GenerateAggregatesHbm.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAggregatesHbm.txt</LastGenOutput>
@@ -1227,8 +1255,10 @@
 .\AttributeValueMvoStateEvent.hbm.xml
 .\AttributeValueState.hbm.xml
 .\AttributeValueStateEvent.hbm.xml
+.\DamageHandlingMethodState.hbm.xml
 .\DamageReasonState.hbm.xml
 .\DamageReasonStateEvent.hbm.xml
+.\DamageTypeState.hbm.xml
 .\DocumentTypeState.hbm.xml
 .\GenerateAggregatesHbm.txt
 .\InOutLineMvoState.hbm.xml
@@ -1834,6 +1864,24 @@
 .\HibernateRejectionReasonEventStore.java
 .\HibernateRejectionReasonStateQueryRepository.java
 .\HibernateRejectionReasonStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\hibernate\GenerateDamageTypeDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateDamageTypeDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateDamageTypeDomainHibernate.txt
+.\HibernateDamageTypeStateQueryRepository.java
+.\HibernateDamageTypeStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\hibernate\GenerateDamageHandlingMethodDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateDamageHandlingMethodDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateDamageHandlingMethodDomainHibernate.txt
+.\HibernateDamageHandlingMethodStateQueryRepository.java
+.\HibernateDamageHandlingMethodStateRepository.java
 </LastOutputs>
     </Content>
   </ItemGroup>

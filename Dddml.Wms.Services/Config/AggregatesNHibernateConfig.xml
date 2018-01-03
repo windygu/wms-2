@@ -96,6 +96,40 @@
 
 
 
+  <object id="damageTypeStateRepository" type="Dddml.Wms.Domain.DamageType.NHibernate.NHibernateDamageTypeStateRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="damageTypeStateQueryRepository" type="Dddml.Wms.Domain.DamageType.NHibernate.NHibernateDamageTypeStateQueryRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="damageTypeApplicationService" type="Dddml.Wms.Domain.DamageType.NHibernate.DamageTypeApplicationService, Dddml.Wms.Services">
+    <constructor-arg ref="damageTypeStateRepository"/>
+    <constructor-arg ref="damageTypeStateQueryRepository"/>
+  </object>
+
+
+
+  <object id="damageHandlingMethodStateRepository" type="Dddml.Wms.Domain.DamageHandlingMethod.NHibernate.NHibernateDamageHandlingMethodStateRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="damageHandlingMethodStateQueryRepository" type="Dddml.Wms.Domain.DamageHandlingMethod.NHibernate.NHibernateDamageHandlingMethodStateQueryRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="damageHandlingMethodApplicationService" type="Dddml.Wms.Domain.DamageHandlingMethod.NHibernate.DamageHandlingMethodApplicationService, Dddml.Wms.Services">
+    <constructor-arg ref="damageHandlingMethodStateRepository"/>
+    <constructor-arg ref="damageHandlingMethodStateQueryRepository"/>
+  </object>
+
+
+
   <object id="documentTypeStateRepository" type="Dddml.Wms.Domain.DocumentType.NHibernate.NHibernateDocumentTypeStateRepository, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>

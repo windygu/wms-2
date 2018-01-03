@@ -47,6 +47,10 @@
 
     drop table if exists DamageReasonStateEvents;
 
+    drop table if exists DamageTypes;
+
+    drop table if exists DamageHandlingMethods;
+
     drop table if exists InOuts;
 
     drop table if exists InOutStateEvents;
@@ -853,6 +857,37 @@
        IsPropertySequenceIdRemoved TINYINT(1),
        IsPropertyActiveRemoved TINYINT(1),
        primary key (DamageReasonId, Version)
+    );
+
+    create table DamageTypes (
+        DamageTypeId VARCHAR(20) not null,
+       Version BIGINT not null,
+       Description VARCHAR(255) not null,
+       SequenceId VARCHAR(20),
+       DefaultHandlingMethodId VARCHAR(20),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       CommandId VARCHAR(255),
+       primary key (DamageTypeId)
+    );
+
+    create table DamageHandlingMethods (
+        DamageHandlingMethodId VARCHAR(20) not null,
+       Version BIGINT not null,
+       Description VARCHAR(255) not null,
+       SequenceId VARCHAR(20),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       CommandId VARCHAR(255),
+       primary key (DamageHandlingMethodId)
     );
 
     create table InOuts (

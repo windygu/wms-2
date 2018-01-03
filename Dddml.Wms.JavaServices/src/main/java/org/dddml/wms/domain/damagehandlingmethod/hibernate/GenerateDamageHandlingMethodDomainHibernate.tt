@@ -1,0 +1,15 @@
+<#@ template language="C#" debug="True" #>
+<#@ output extension="txt" #>
+<#@ import namespace="Dddml.Core.Dom" #>
+<#@ include file="T4Toolbox.tt" #>
+<#@ include file="%DddmlDotNetToolsSolutionDir%\Dddml.T4.Templates.Java\Domain\Hibernate\AggregateDomainHibernateGenerator.tt" #>
+<#@ include file="..\..\..\LoadBoundedContext.tt" #>
+<#
+
+    var aggregate = boundedContext.Aggregates["DamageHandlingMethod"];
+    var generator = new AggregateDomainHibernateGenerator(aggregate);
+
+    generator.Run();
+
+#>
+

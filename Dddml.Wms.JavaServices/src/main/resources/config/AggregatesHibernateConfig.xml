@@ -96,6 +96,38 @@
   </bean>
 
 
+  <bean id="damageTypeStateRepository" class="org.dddml.wms.domain.damagetype.hibernate.HibernateDamageTypeStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="damageTypeStateQueryRepository" class="org.dddml.wms.domain.damagetype.hibernate.HibernateDamageTypeStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="damageTypeApplicationService" class="org.dddml.wms.domain.damagetype.AbstractDamageTypeApplicationService$SimpleDamageTypeApplicationService">
+    <constructor-arg ref="damageTypeStateRepository"/>
+    <constructor-arg ref="damageTypeStateQueryRepository"/>
+  </bean>
+
+
+  <bean id="damageHandlingMethodStateRepository" class="org.dddml.wms.domain.damagehandlingmethod.hibernate.HibernateDamageHandlingMethodStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="damageHandlingMethodStateQueryRepository" class="org.dddml.wms.domain.damagehandlingmethod.hibernate.HibernateDamageHandlingMethodStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="damageHandlingMethodApplicationService" class="org.dddml.wms.domain.damagehandlingmethod.AbstractDamageHandlingMethodApplicationService$SimpleDamageHandlingMethodApplicationService">
+    <constructor-arg ref="damageHandlingMethodStateRepository"/>
+    <constructor-arg ref="damageHandlingMethodStateQueryRepository"/>
+  </bean>
+
+
   <bean id="documentTypeStateRepository" class="org.dddml.wms.domain.documenttype.hibernate.HibernateDocumentTypeStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>

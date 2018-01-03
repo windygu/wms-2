@@ -916,6 +916,83 @@
     <Content Include="src\main\java\org\dddml\wms\domain\Command.java">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\AbstractDamageHandlingMethodAggregate.java">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\AbstractDamageHandlingMethodApplicationService.java">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\AbstractDamageHandlingMethodCommand.java">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\AbstractDamageHandlingMethodCommandDto.java">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\AbstractDamageHandlingMethodState.java">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\AbstractDamageHandlingMethodStateCommandConverter.java">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\AbstractDamageHandlingMethodStateEvent.java">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\CreateOrMergePatchDamageHandlingMethodDto.java">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\DamageHandlingMethodAggregate.java">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\DamageHandlingMethodApplicationService.java">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\DamageHandlingMethodCommand.java">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\DamageHandlingMethodState.java">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\DamageHandlingMethodStateDto.java">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\DamageHandlingMethodStateEvent.java">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\DamageHandlingMethodStateEventDto.java">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\DamageHandlingMethodStateEventDtoConverter.java">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\DamageHandlingMethodStateEventId.java">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\DamageHandlingMethodStateEventIdDto.java">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\DamageHandlingMethodStateEventIdDtoWrapper.java">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\DamageHandlingMethodStateEventIdFlattenedDto.java">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\DamageHandlingMethodStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\DamageHandlingMethodStateQueryRepository.java">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\DamageHandlingMethodStateRepository.java">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\DeleteDamageHandlingMethodDto.java">
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\GenerateDamageHandlingMethodDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\damagereason\AbstractDamageReasonAggregate.java">
       <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
     </Content>
@@ -992,6 +1069,83 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\AbstractDamageTypeAggregate.java">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\AbstractDamageTypeApplicationService.java">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\AbstractDamageTypeCommand.java">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\AbstractDamageTypeCommandDto.java">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\AbstractDamageTypeState.java">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\AbstractDamageTypeStateCommandConverter.java">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\AbstractDamageTypeStateEvent.java">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\CreateOrMergePatchDamageTypeDto.java">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\DamageTypeAggregate.java">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\DamageTypeApplicationService.java">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\DamageTypeCommand.java">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\DamageTypeState.java">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\DamageTypeStateDto.java">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\DamageTypeStateEvent.java">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\DamageTypeStateEventDto.java">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\DamageTypeStateEventDtoConverter.java">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\DamageTypeStateEventId.java">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\DamageTypeStateEventIdDto.java">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\DamageTypeStateEventIdDtoWrapper.java">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\DamageTypeStateEventIdFlattenedDto.java">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\DamageTypeStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\DamageTypeStateQueryRepository.java">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\DamageTypeStateRepository.java">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\DeleteDamageTypeDto.java">
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\GenerateDamageTypeDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\DocumentAction.java">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
@@ -2245,10 +2399,22 @@
     <Content Include="src\main\java\org\dddml\wms\domain\meta\BoundedContextMetadata.java">
       <DependentUpon>GenerateBoundedContextMetadata.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\DamageHandlingMethodFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\DamageHandlingMethodMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\meta\DamageReasonFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\meta\DamageReasonMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\DamageTypeFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\DamageTypeMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\meta\DocumentTypeFilteringProperties.java">
@@ -2283,8 +2449,12 @@
 .\AttributeValueMetadata.java
 .\AttributeValueMvoFilteringProperties.java
 .\AttributeValueMvoMetadata.java
+.\DamageHandlingMethodFilteringProperties.java
+.\DamageHandlingMethodMetadata.java
 .\DamageReasonFilteringProperties.java
 .\DamageReasonMetadata.java
+.\DamageTypeFilteringProperties.java
+.\DamageTypeMetadata.java
 .\DocumentTypeFilteringProperties.java
 .\DocumentTypeMetadata.java
 .\GenerateBoundedContextDomainAggregatesMetadata.txt
@@ -7521,6 +7691,68 @@
 .\RejectionReasonStateEventIdFlattenedDtoFormatter.java
 .\RejectionReasonStateQueryRepository.java
 .\RejectionReasonStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\GenerateDamageTypeDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateDamageTypeDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractDamageTypeAggregate.java
+.\AbstractDamageTypeApplicationService.java
+.\AbstractDamageTypeCommand.java
+.\AbstractDamageTypeCommandDto.java
+.\AbstractDamageTypeState.java
+.\AbstractDamageTypeStateCommandConverter.java
+.\AbstractDamageTypeStateEvent.java
+.\CreateOrMergePatchDamageTypeDto.java
+.\DamageTypeAggregate.java
+.\DamageTypeApplicationService.java
+.\DamageTypeCommand.java
+.\DamageTypeState.java
+.\DamageTypeStateDto.java
+.\DamageTypeStateEvent.java
+.\DamageTypeStateEventDto.java
+.\DamageTypeStateEventDtoConverter.java
+.\DamageTypeStateEventId.java
+.\DamageTypeStateEventIdDto.java
+.\DamageTypeStateEventIdDtoWrapper.java
+.\DamageTypeStateEventIdFlattenedDto.java
+.\DamageTypeStateEventIdFlattenedDtoFormatter.java
+.\DamageTypeStateQueryRepository.java
+.\DamageTypeStateRepository.java
+.\DeleteDamageTypeDto.java
+.\GenerateDamageTypeDomain.txt
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\GenerateDamageHandlingMethodDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateDamageHandlingMethodDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractDamageHandlingMethodAggregate.java
+.\AbstractDamageHandlingMethodApplicationService.java
+.\AbstractDamageHandlingMethodCommand.java
+.\AbstractDamageHandlingMethodCommandDto.java
+.\AbstractDamageHandlingMethodState.java
+.\AbstractDamageHandlingMethodStateCommandConverter.java
+.\AbstractDamageHandlingMethodStateEvent.java
+.\CreateOrMergePatchDamageHandlingMethodDto.java
+.\DamageHandlingMethodAggregate.java
+.\DamageHandlingMethodApplicationService.java
+.\DamageHandlingMethodCommand.java
+.\DamageHandlingMethodState.java
+.\DamageHandlingMethodStateDto.java
+.\DamageHandlingMethodStateEvent.java
+.\DamageHandlingMethodStateEventDto.java
+.\DamageHandlingMethodStateEventDtoConverter.java
+.\DamageHandlingMethodStateEventId.java
+.\DamageHandlingMethodStateEventIdDto.java
+.\DamageHandlingMethodStateEventIdDtoWrapper.java
+.\DamageHandlingMethodStateEventIdFlattenedDto.java
+.\DamageHandlingMethodStateEventIdFlattenedDtoFormatter.java
+.\DamageHandlingMethodStateQueryRepository.java
+.\DamageHandlingMethodStateRepository.java
+.\DeleteDamageHandlingMethodDto.java
+.\GenerateDamageHandlingMethodDomain.txt
 </LastOutputs>
     </Content>
   </ItemGroup>

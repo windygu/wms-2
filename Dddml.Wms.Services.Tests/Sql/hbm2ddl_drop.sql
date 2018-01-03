@@ -47,6 +47,10 @@
 
     drop table if exists DamageReasonStateEvents;
 
+    drop table if exists DamageTypes;
+
+    drop table if exists DamageHandlingMethods;
+
     drop table if exists InOuts;
 
     drop table if exists InOutStateEvents;

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+
+  <DamageType damageTypeId="WRAPPER_DAMAGE_LT_2HANDS" description="Wrapper Damage &lt;2hands wide" sequenceId="01" defaultHandlingMethodId="TAPE" />
+  <DamageType damageTypeId="WRAPPER_DAMAGE_GT_2HANDS" description="Wrapper Damage >2hands wide" sequenceId="02" defaultHandlingMethodId="REWRAP" />
+  <DamageType damageTypeId="ROLL DAMAGED_LT_10MM" description="Roll damaged &lt;10mm" sequenceId="03" defaultHandlingMethodId="TAPE" />
+  <DamageType damageTypeId="ROLL_DAMAGED_10_40MM" description="Roll damaged 10-40mm" sequenceId="04" defaultHandlingMethodId="REFURBISH" />
+  <DamageType damageTypeId="ROLL_DAMAGED_GT_40MM" description="Roll damaged >40mm" sequenceId="05" defaultHandlingMethodId="REJECT" />
+  <DamageType damageTypeId="ROLL_DEFORMATION_GT_10MM" description="Roll Deformation >10mm" sequenceId="06" defaultHandlingMethodId="REJECT" />
+  <DamageType damageTypeId="CORE_SHIFT_ETC_GT_5MM" description="Core shift/Evenness/core position/diameter, etc. >5mm" sequenceId="07" defaultHandlingMethodId="REJECT" />
+
+  <DamageHandlingMethod damageHandlingMethodId="TAPE" description="Tape" sequenceId="01" />
+  <DamageHandlingMethod damageHandlingMethodId="REWRAP" description="Rewrap" sequenceId="02" />
+  <DamageHandlingMethod damageHandlingMethodId="REFURBISH" description="Refurbish" sequenceId="03" />
+  <DamageHandlingMethod damageHandlingMethodId="REJECT" description="Reject" sequenceId="04" />
+
+</entity-engine-xml>

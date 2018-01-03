@@ -203,6 +203,15 @@
     <Compile Include="Generated\Domain\Attribute\NHibernate\NHibernateAttributeValueStateEventDao.cs">
       <DependentUpon>GenerateAttributeDomainNHibernate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\DamageHandlingMethod\NHibernate\DamageHandlingMethodApplicationService.cs">
+      <DependentUpon>GenerateDamageHandlingMethodDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageHandlingMethod\NHibernate\NHibernateDamageHandlingMethodStateQueryRepository.cs">
+      <DependentUpon>GenerateDamageHandlingMethodDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageHandlingMethod\NHibernate\NHibernateDamageHandlingMethodStateRepository.cs">
+      <DependentUpon>GenerateDamageHandlingMethodDomainNHibernate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\DamageReason\NHibernate\DamageReasonApplicationService.cs">
       <DependentUpon>GenerateDamageReasonDomainNHibernate.tt</DependentUpon>
     </Compile>
@@ -214,6 +223,15 @@
     </Compile>
     <Compile Include="Generated\Domain\DamageReason\NHibernate\NHibernateDamageReasonStateRepository.cs">
       <DependentUpon>GenerateDamageReasonDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageType\NHibernate\DamageTypeApplicationService.cs">
+      <DependentUpon>GenerateDamageTypeDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageType\NHibernate\NHibernateDamageTypeStateQueryRepository.cs">
+      <DependentUpon>GenerateDamageTypeDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\DamageType\NHibernate\NHibernateDamageTypeStateRepository.cs">
+      <DependentUpon>GenerateDamageTypeDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\DocumentType\NHibernate\DocumentTypeApplicationService.cs">
       <DependentUpon>GenerateDocumentTypeDomainNHibernate.tt</DependentUpon>
@@ -832,10 +850,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateAttributeDomainNHibernate.tt</DependentUpon>
     </Content>
+    <Content Include="Generated\Domain\DamageHandlingMethod\NHibernate\GenerateDamageHandlingMethodDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateDamageHandlingMethodDomainNHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="Generated\Domain\DamageReason\NHibernate\GenerateDamageReasonDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateDamageReasonDomainNHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\DamageType\NHibernate\GenerateDamageTypeDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateDamageTypeDomainNHibernate.tt</DependentUpon>
     </Content>
     <Content Include="Generated\Domain\DocumentType\NHibernate\GenerateDocumentTypeDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
@@ -1140,6 +1168,12 @@
     <EmbeddedResource Include="Generated\NHibernate\Mappings\DamageReasonStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\DamageTypeState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\DamageHandlingMethodState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
     <Content Include="Generated\NHibernate\Mappings\GenerateAggregatesHbm.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAggregatesHbm.txt</LastGenOutput>
@@ -1165,8 +1199,10 @@
 .\AttributeValueMvoStateEvent.hbm.xml
 .\AttributeValueState.hbm.xml
 .\AttributeValueStateEvent.hbm.xml
+.\DamageHandlingMethodState.hbm.xml
 .\DamageReasonState.hbm.xml
 .\DamageReasonStateEvent.hbm.xml
+.\DamageTypeState.hbm.xml
 .\DocumentTypeState.hbm.xml
 .\GenerateAggregatesHbm.txt
 .\InOutLineMvoState.hbm.xml
@@ -2129,6 +2165,26 @@
 .\NHibernateRejectionReasonStateQueryRepository.cs
 .\NHibernateRejectionReasonStateRepository.cs
 .\RejectionReasonApplicationService.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\DamageType\NHibernate\GenerateDamageTypeDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateDamageTypeDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\DamageTypeApplicationService.cs
+.\GenerateDamageTypeDomainNHibernate.txt
+.\NHibernateDamageTypeStateQueryRepository.cs
+.\NHibernateDamageTypeStateRepository.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\DamageHandlingMethod\NHibernate\GenerateDamageHandlingMethodDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateDamageHandlingMethodDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\DamageHandlingMethodApplicationService.cs
+.\GenerateDamageHandlingMethodDomainNHibernate.txt
+.\NHibernateDamageHandlingMethodStateQueryRepository.cs
+.\NHibernateDamageHandlingMethodStateRepository.cs
 </LastOutputs>
     </Content>
   </ItemGroup>

@@ -33,6 +33,8 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNames.Add("Attribute");
             _aggregateNames.Add("AttributeSet");
             _aggregateNames.Add("DamageReason");
+            _aggregateNames.Add("DamageType");
+            _aggregateNames.Add("DamageHandlingMethod");
             _aggregateNames.Add("DocumentType");
             _aggregateNames.Add("InOut");
             _aggregateNames.Add("InventoryItem");
@@ -84,6 +86,8 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNamespaces.Add("Attribute", "Dddml.Wms.Domain.Attribute");
             _aggregateNamespaces.Add("AttributeSet", "Dddml.Wms.Domain.AttributeSet");
             _aggregateNamespaces.Add("DamageReason", "Dddml.Wms.Domain.DamageReason");
+            _aggregateNamespaces.Add("DamageType", "Dddml.Wms.Domain.DamageType");
+            _aggregateNamespaces.Add("DamageHandlingMethod", "Dddml.Wms.Domain.DamageHandlingMethod");
             _aggregateNamespaces.Add("DocumentType", "Dddml.Wms.Domain.DocumentType");
             _aggregateNamespaces.Add("InOut", "Dddml.Wms.Domain.InOut");
             _aggregateNamespaces.Add("InventoryItem", "Dddml.Wms.Domain.InventoryItem");
