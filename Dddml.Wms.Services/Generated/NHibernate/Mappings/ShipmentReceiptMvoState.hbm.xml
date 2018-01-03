@@ -17,6 +17,8 @@
     <property name="RejectionReasonId" ><column name="RejectionReasonId" sql-type="VARCHAR(20)" /></property>
     <property name="DamageStatusId" ><column name="DamageStatusId" sql-type="VARCHAR(20)" /></property>
     <property name="DamageReasonId" ><column name="DamageReasonId" sql-type="VARCHAR(20)" /></property>
+    <property name="ReceivedBy" ><column name="ReceivedBy" sql-type="VARCHAR(250)" /></property>
+    <property name="DatetimeReceived" ><column name="DatetimeReceived" sql-type="DATETIME" /></property>
     <property name="ItemDescription" ><column name="ItemDescription" sql-type="VARCHAR(255)" /></property>
     <property name="AcceptedQuantity" ><column name="AcceptedQuantity" sql-type="DECIMAL(18,6)" /></property>
     <property name="RejectedQuantity" ><column name="RejectedQuantity" sql-type="DECIMAL(18,6)" /></property>
@@ -49,6 +51,7 @@
     <property name="ShipmentPartyIdFrom" ><column name="ShipmentPartyIdFrom" sql-type="VARCHAR(20)" /></property>
     <property name="ShipmentAdditionalShippingCharge" ><column name="ShipmentAdditionalShippingCharge" sql-type="DECIMAL(18,2)" /></property>
     <property name="ShipmentAddtlShippingChargeDesc" ><column name="ShipmentAddtlShippingChargeDesc" sql-type="VARCHAR(255)" /></property>
+    <property name="ShipmentShipperId" ><column name="ShipmentShipperId" sql-type="VARCHAR(20)" /></property>
     <property name="ShipmentCreatedBy" ></property>
     <property name="ShipmentCreatedAt" ></property>
     <property name="ShipmentUpdatedBy" ></property>

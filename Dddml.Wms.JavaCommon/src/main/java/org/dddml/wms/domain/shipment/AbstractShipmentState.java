@@ -309,6 +309,18 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
         this.addtlShippingChargeDesc = addtlShippingChargeDesc;
     }
 
+    private String shipperId;
+
+    public String getShipperId()
+    {
+        return this.shipperId;
+    }
+
+    public void setShipperId(String shipperId)
+    {
+        this.shipperId = shipperId;
+    }
+
     private Long version;
 
     public Long getVersion()
@@ -493,6 +505,7 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
         this.setPartyIdFrom(e.getPartyIdFrom());
         this.setAdditionalShippingCharge(e.getAdditionalShippingCharge());
         this.setAddtlShippingChargeDesc(e.getAddtlShippingChargeDesc());
+        this.setShipperId(e.getShipperId());
         this.setActive(e.getActive());
 
         this.setCreatedBy(e.getCreatedBy());
@@ -775,6 +788,17 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
         else
         {
             this.setAddtlShippingChargeDesc(e.getAddtlShippingChargeDesc());
+        }
+        if (e.getShipperId() == null)
+        {
+            if (e.getIsPropertyShipperIdRemoved() != null && e.getIsPropertyShipperIdRemoved())
+            {
+                this.setShipperId(null);
+            }
+        }
+        else
+        {
+            this.setShipperId(e.getShipperId());
         }
         if (e.getActive() == null)
         {

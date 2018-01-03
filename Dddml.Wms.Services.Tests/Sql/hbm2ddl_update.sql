@@ -87,6 +87,18 @@
       unique (AttributeAliasIdCode),
       unique (Name)
     );
+    alter table Shipments 
+        add column ShipperId VARCHAR(20);
+    alter table ShipmentStateEvents 
+        add column ShipperId VARCHAR(20);
+    alter table ShipmentStateEvents 
+        add column IsPropertyShipperIdRemoved TINYINT(1);
+    alter table ShipmentItems 
+        add column TargetQuantity DECIMAL(18,6);
+    alter table ShipmentItemStateEvents 
+        add column TargetQuantity DECIMAL(18,6);
+    alter table ShipmentItemStateEvents 
+        add column IsPropertyTargetQuantityRemoved TINYINT(1);
     create table InOutLine_RV (
         InOutLineIdInOutDocumentNumber VARCHAR(50) not null,
        InOutLineIdLineNumber VARCHAR(50) not null,
@@ -311,6 +323,7 @@
        ProductId VARCHAR(20),
        AttributeSetInstanceId VARCHAR(255),
        Quantity DECIMAL(18,6),
+       TargetQuantity DECIMAL(18,6),
        ShipmentContentDescription VARCHAR(255),
        Version BIGINT,
        CreatedBy VARCHAR(255),
@@ -340,6 +353,7 @@
        ShipmentPartyIdFrom VARCHAR(20),
        ShipmentAdditionalShippingCharge DECIMAL(18,2),
        ShipmentAddtlShippingChargeDesc VARCHAR(255),
+       ShipmentShipperId VARCHAR(20),
        ShipmentCreatedBy VARCHAR(255),
        ShipmentCreatedAt DATETIME,
        ShipmentUpdatedBy VARCHAR(255),
@@ -349,6 +363,14 @@
        UpdatedAt DATETIME,
        primary key (ShipmentItemIdShipmentId, ShipmentItemIdShipmentItemSeqId)
     );
+    alter table ShipmentItemMvoStateEvents 
+        add column TargetQuantity DECIMAL(18,6);
+    alter table ShipmentItemMvoStateEvents 
+        add column ShipmentShipperId VARCHAR(20);
+    alter table ShipmentItemMvoStateEvents 
+        add column IsPropertyTargetQuantityRemoved TINYINT(1);
+    alter table ShipmentItemMvoStateEvents 
+        add column IsPropertyShipmentShipperIdRemoved TINYINT(1);
     create table MovementLine_RV (
         MovementLineIdMovementDocumentNumber VARCHAR(50) not null,
        MovementLineIdLineNumber VARCHAR(50) not null,
@@ -469,11 +491,17 @@
        primary key (PhysicalInventoryLineIdPhysicalInventoryDocumentNumber, PhysicalInventoryLineIdLineNumber)
     );
     alter table ShipmentReceipts 
-        add column DamagedQuantity DECIMAL(18,6);
+        add column ReceivedBy VARCHAR(250);
+    alter table ShipmentReceipts 
+        add column DatetimeReceived DATETIME;
     alter table ShipmentReceiptStateEvents 
-        add column DamagedQuantity DECIMAL(18,6);
+        add column ReceivedBy VARCHAR(250);
     alter table ShipmentReceiptStateEvents 
-        add column IsPropertyDamagedQuantityRemoved TINYINT(1);
+        add column DatetimeReceived DATETIME;
+    alter table ShipmentReceiptStateEvents 
+        add column IsPropertyReceivedByRemoved TINYINT(1);
+    alter table ShipmentReceiptStateEvents 
+        add column IsPropertyDatetimeReceivedRemoved TINYINT(1);
     create table ShipmentReceipt_RV (
         ShipmentReceiptIdShipmentId VARCHAR(20) not null,
        ShipmentReceiptIdReceiptSeqId VARCHAR(20) not null,
@@ -483,6 +511,8 @@
        RejectionReasonId VARCHAR(20),
        DamageStatusId VARCHAR(20),
        DamageReasonId VARCHAR(20),
+       ReceivedBy VARCHAR(250),
+       DatetimeReceived DATETIME,
        ItemDescription VARCHAR(255),
        AcceptedQuantity DECIMAL(18,6),
        RejectedQuantity DECIMAL(18,6),
@@ -515,6 +545,7 @@
        ShipmentPartyIdFrom VARCHAR(20),
        ShipmentAdditionalShippingCharge DECIMAL(18,2),
        ShipmentAddtlShippingChargeDesc VARCHAR(255),
+       ShipmentShipperId VARCHAR(20),
        ShipmentCreatedBy VARCHAR(255),
        ShipmentCreatedAt DATETIME,
        ShipmentUpdatedBy VARCHAR(255),
@@ -525,6 +556,14 @@
        primary key (ShipmentReceiptIdShipmentId, ShipmentReceiptIdReceiptSeqId)
     );
     alter table ShipmentReceiptMvoStateEvents 
-        add column DamagedQuantity DECIMAL(18,6);
+        add column ReceivedBy VARCHAR(250);
     alter table ShipmentReceiptMvoStateEvents 
-        add column IsPropertyDamagedQuantityRemoved TINYINT(1);
+        add column DatetimeReceived DATETIME;
+    alter table ShipmentReceiptMvoStateEvents 
+        add column ShipmentShipperId VARCHAR(20);
+    alter table ShipmentReceiptMvoStateEvents 
+        add column IsPropertyReceivedByRemoved TINYINT(1);
+    alter table ShipmentReceiptMvoStateEvents 
+        add column IsPropertyDatetimeReceivedRemoved TINYINT(1);
+    alter table ShipmentReceiptMvoStateEvents 
+        add column IsPropertyShipmentShipperIdRemoved TINYINT(1);

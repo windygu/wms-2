@@ -71,6 +71,18 @@ public abstract class AbstractShipmentItemState implements ShipmentItemState
         this.quantity = quantity;
     }
 
+    private java.math.BigDecimal targetQuantity;
+
+    public java.math.BigDecimal getTargetQuantity()
+    {
+        return this.targetQuantity;
+    }
+
+    public void setTargetQuantity(java.math.BigDecimal targetQuantity)
+    {
+        this.targetQuantity = targetQuantity;
+    }
+
     private String shipmentContentDescription;
 
     public String getShipmentContentDescription()
@@ -209,6 +221,7 @@ public abstract class AbstractShipmentItemState implements ShipmentItemState
         this.setProductId(e.getProductId());
         this.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
         this.setQuantity(e.getQuantity());
+        this.setTargetQuantity(e.getTargetQuantity());
         this.setShipmentContentDescription(e.getShipmentContentDescription());
         this.setActive(e.getActive());
 
@@ -253,6 +266,17 @@ public abstract class AbstractShipmentItemState implements ShipmentItemState
         else
         {
             this.setQuantity(e.getQuantity());
+        }
+        if (e.getTargetQuantity() == null)
+        {
+            if (e.getIsPropertyTargetQuantityRemoved() != null && e.getIsPropertyTargetQuantityRemoved())
+            {
+                this.setTargetQuantity(null);
+            }
+        }
+        else
+        {
+            this.setTargetQuantity(e.getTargetQuantity());
         }
         if (e.getShipmentContentDescription() == null)
         {

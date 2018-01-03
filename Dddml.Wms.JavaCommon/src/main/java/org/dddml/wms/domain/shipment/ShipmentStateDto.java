@@ -309,6 +309,18 @@ public class ShipmentStateDto
         this.addtlShippingChargeDesc = addtlShippingChargeDesc;
     }
 
+    private String shipperId;
+
+    public String getShipperId()
+    {
+        return this.shipperId;
+    }
+
+    public void setShipperId(String shipperId)
+    {
+        this.shipperId = shipperId;
+    }
+
     private Boolean active;
 
     public Boolean getActive()
@@ -505,6 +517,9 @@ public class ShipmentStateDto
             }
             if (returnedFieldsContains("AddtlShippingChargeDesc")) {
                 dto.setAddtlShippingChargeDesc(state.getAddtlShippingChargeDesc());
+            }
+            if (returnedFieldsContains("ShipperId")) {
+                dto.setShipperId(state.getShipperId());
             }
             if (returnedFieldsContains("Active")) {
                 dto.setActive(state.getActive());

@@ -71,6 +71,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 		string AddtlShippingChargeDesc { get; set; }
 
+		string ShipperId { get; set; }
+
 		bool? Active { get; set; }
 
 
@@ -138,6 +140,8 @@ namespace Dddml.Wms.Domain.Shipment
 		bool IsPropertyAdditionalShippingChargeRemoved { get; set; }
 
 		bool IsPropertyAddtlShippingChargeDescRemoved { get; set; }
+
+		bool IsPropertyShipperIdRemoved { get; set; }
 
 		bool IsPropertyActiveRemoved { get; set; }
 

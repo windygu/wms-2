@@ -51,6 +51,18 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
+        public virtual string ReceivedBy
+        {
+            get;
+            set;
+        }
+
+        public virtual DateTime? DatetimeReceived
+        {
+            get;
+            set;
+        }
+
         public virtual string ItemDescription
         {
             get;
@@ -126,6 +138,8 @@ namespace Dddml.Wms.Domain.Shipment
             state.RejectionReasonId = this.RejectionReasonId;
             state.DamageStatusId = this.DamageStatusId;
             state.DamageReasonId = this.DamageReasonId;
+            state.ReceivedBy = this.ReceivedBy;
+            state.DatetimeReceived = this.DatetimeReceived;
             state.ItemDescription = this.ItemDescription;
             state.AcceptedQuantity = this.AcceptedQuantity;
             state.RejectedQuantity = this.RejectedQuantity;

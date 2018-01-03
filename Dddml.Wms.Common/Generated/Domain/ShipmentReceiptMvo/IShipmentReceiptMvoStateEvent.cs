@@ -28,6 +28,10 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
 		string DamageReasonId { get; set; }
 
+		string ReceivedBy { get; set; }
+
+		DateTime? DatetimeReceived { get; set; }
+
 		string ItemDescription { get; set; }
 
 		decimal? AcceptedQuantity { get; set; }
@@ -88,6 +92,8 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
 		string ShipmentAddtlShippingChargeDesc { get; set; }
 
+		string ShipmentShipperId { get; set; }
+
 		string ShipmentCreatedBy { get; set; }
 
 		DateTime? ShipmentCreatedAt { get; set; }
@@ -117,6 +123,10 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 		bool IsPropertyDamageStatusIdRemoved { get; set; }
 
 		bool IsPropertyDamageReasonIdRemoved { get; set; }
+
+		bool IsPropertyReceivedByRemoved { get; set; }
+
+		bool IsPropertyDatetimeReceivedRemoved { get; set; }
 
 		bool IsPropertyItemDescriptionRemoved { get; set; }
 
@@ -177,6 +187,8 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 		bool IsPropertyShipmentAdditionalShippingChargeRemoved { get; set; }
 
 		bool IsPropertyShipmentAddtlShippingChargeDescRemoved { get; set; }
+
+		bool IsPropertyShipmentShipperIdRemoved { get; set; }
 
 		bool IsPropertyShipmentCreatedByRemoved { get; set; }
 

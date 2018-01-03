@@ -64,6 +64,10 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
 		public virtual string DamageReasonId { get; set; }
 
+		public virtual string ReceivedBy { get; set; }
+
+		public virtual DateTime? DatetimeReceived { get; set; }
+
 		public virtual string ItemDescription { get; set; }
 
 		public virtual decimal? AcceptedQuantity { get; set; }
@@ -123,6 +127,8 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 		public virtual decimal? ShipmentAdditionalShippingCharge { get; set; }
 
 		public virtual string ShipmentAddtlShippingChargeDesc { get; set; }
+
+		public virtual string ShipmentShipperId { get; set; }
 
 		public virtual string ShipmentCreatedBy { get; set; }
 
@@ -239,6 +245,44 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             set
             {
                 this.IsPropertyDamageReasonIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyReceivedByRemoved { get; set; }
+
+        bool IMergePatchShipmentReceiptMvo.IsPropertyReceivedByRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyReceivedByRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyReceivedByRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyDatetimeReceivedRemoved { get; set; }
+
+        bool IMergePatchShipmentReceiptMvo.IsPropertyDatetimeReceivedRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyDatetimeReceivedRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyDatetimeReceivedRemoved = value;
             }
         }
 
@@ -809,6 +853,25 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             set
             {
                 this.IsPropertyShipmentAddtlShippingChargeDescRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyShipmentShipperIdRemoved { get; set; }
+
+        bool IMergePatchShipmentReceiptMvo.IsPropertyShipmentShipperIdRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyShipmentShipperIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyShipmentShipperIdRemoved = value;
             }
         }
 

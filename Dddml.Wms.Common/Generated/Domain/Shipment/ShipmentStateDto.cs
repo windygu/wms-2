@@ -165,6 +165,12 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
+        public virtual string ShipperId
+        {
+            get;
+            set;
+        }
+
         public virtual bool? Active
         {
             get;
@@ -253,6 +259,7 @@ namespace Dddml.Wms.Domain.Shipment
             state.PartyIdFrom = this.PartyIdFrom;
             state.AdditionalShippingCharge = this.AdditionalShippingCharge;
             state.AddtlShippingChargeDesc = this.AddtlShippingChargeDesc;
+            state.ShipperId = this.ShipperId;
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             state.CreatedBy = this.CreatedBy;

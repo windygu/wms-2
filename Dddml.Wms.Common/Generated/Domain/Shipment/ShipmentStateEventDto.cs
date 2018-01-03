@@ -90,6 +90,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual string AddtlShippingChargeDesc { get; set; }
 
+		public virtual string ShipperId { get; set; }
+
 		public virtual bool? Active { get; set; }
 
 		public virtual string CreatedBy { get; set; }
@@ -574,6 +576,25 @@ namespace Dddml.Wms.Domain.Shipment
             set 
             {
                 this.IsPropertyAddtlShippingChargeDescRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyShipperIdRemoved { get; set; }
+
+        bool IShipmentStateMergePatched.IsPropertyShipperIdRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyShipperIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyShipperIdRemoved = value;
             }
         }
 

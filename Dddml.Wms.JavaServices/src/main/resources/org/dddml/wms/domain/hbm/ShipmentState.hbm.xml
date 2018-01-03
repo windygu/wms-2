@@ -35,6 +35,7 @@
 	<property name="partyIdFrom" ><column name="PartyIdFrom" sql-type="VARCHAR(20)" /></property>
 	<property name="additionalShippingCharge" ><column name="AdditionalShippingCharge" sql-type="DECIMAL(18,2)" /></property>
 	<property name="addtlShippingChargeDesc" ><column name="AddtlShippingChargeDesc" sql-type="VARCHAR(255)" /></property>
+	<property name="shipperId" ><column name="ShipperId" sql-type="VARCHAR(20)" /></property>
 	<property name="createdBy" ></property>
 	<property name="updatedBy" ></property>
 	<property name="active" ></property>

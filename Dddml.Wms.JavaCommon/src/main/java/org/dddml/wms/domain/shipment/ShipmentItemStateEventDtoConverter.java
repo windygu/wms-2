@@ -29,6 +29,7 @@ public class ShipmentItemStateEventDtoConverter {
         dto.setProductId(e.getProductId());
         dto.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
         dto.setQuantity(e.getQuantity());
+        dto.setTargetQuantity(e.getTargetQuantity());
         dto.setShipmentContentDescription(e.getShipmentContentDescription());
         dto.setActive(e.getActive());
         return dto;
@@ -44,11 +45,13 @@ public class ShipmentItemStateEventDtoConverter {
         dto.setProductId(e.getProductId());
         dto.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
         dto.setQuantity(e.getQuantity());
+        dto.setTargetQuantity(e.getTargetQuantity());
         dto.setShipmentContentDescription(e.getShipmentContentDescription());
         dto.setActive(e.getActive());
         dto.setIsPropertyProductIdRemoved(e.getIsPropertyProductIdRemoved());
         dto.setIsPropertyAttributeSetInstanceIdRemoved(e.getIsPropertyAttributeSetInstanceIdRemoved());
         dto.setIsPropertyQuantityRemoved(e.getIsPropertyQuantityRemoved());
+        dto.setIsPropertyTargetQuantityRemoved(e.getIsPropertyTargetQuantityRemoved());
         dto.setIsPropertyShipmentContentDescriptionRemoved(e.getIsPropertyShipmentContentDescriptionRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
         return dto;

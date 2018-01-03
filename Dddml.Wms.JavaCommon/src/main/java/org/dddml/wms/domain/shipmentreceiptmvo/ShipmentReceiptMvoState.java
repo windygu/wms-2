@@ -37,6 +37,14 @@ public interface ShipmentReceiptMvoState
 
     void setDamageReasonId(String damageReasonId);
 
+    String getReceivedBy();
+
+    void setReceivedBy(String receivedBy);
+
+    java.sql.Timestamp getDatetimeReceived();
+
+    void setDatetimeReceived(java.sql.Timestamp datetimeReceived);
+
     String getItemDescription();
 
     void setItemDescription(String itemDescription);
@@ -172,6 +180,10 @@ public interface ShipmentReceiptMvoState
     String getShipmentAddtlShippingChargeDesc();
 
     void setShipmentAddtlShippingChargeDesc(String shipmentAddtlShippingChargeDesc);
+
+    String getShipmentShipperId();
+
+    void setShipmentShipperId(String shipmentShipperId);
 
     Long getShipmentVersion();
 

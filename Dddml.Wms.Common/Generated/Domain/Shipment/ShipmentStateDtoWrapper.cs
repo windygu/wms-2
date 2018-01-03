@@ -739,6 +739,34 @@ namespace Dddml.Wms.Domain.Shipment
             }
         }
 
+		public virtual string ShipperId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("ShipperId"))
+                {
+                    return _state.ShipperId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.ShipperId = value;
+            }
+        }
+
+        string IShipmentStateProperties.ShipperId
+        {
+            get 
+            {
+                return (this._state as IShipmentStateProperties).ShipperId;
+            }
+            set 
+            {
+                (this._state as IShipmentStateProperties).ShipperId = value;
+            }
+        }
+
 		public virtual bool? Active
         {
             get

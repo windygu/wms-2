@@ -27,6 +27,10 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
 		string DamageReasonId { get; set; }
 
+		string ReceivedBy { get; set; }
+
+		DateTime? DatetimeReceived { get; set; }
+
 		string ItemDescription { get; set; }
 
 		decimal? AcceptedQuantity { get; set; }
@@ -86,6 +90,8 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 		decimal? ShipmentAdditionalShippingCharge { get; set; }
 
 		string ShipmentAddtlShippingChargeDesc { get; set; }
+
+		string ShipmentShipperId { get; set; }
 
 		long ShipmentVersion { get; set; }
 

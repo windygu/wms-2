@@ -31,6 +31,8 @@ public class ShipmentReceiptStateEventDtoConverter {
         dto.setRejectionReasonId(e.getRejectionReasonId());
         dto.setDamageStatusId(e.getDamageStatusId());
         dto.setDamageReasonId(e.getDamageReasonId());
+        dto.setReceivedBy(e.getReceivedBy());
+        dto.setDatetimeReceived(e.getDatetimeReceived());
         dto.setItemDescription(e.getItemDescription());
         dto.setAcceptedQuantity(e.getAcceptedQuantity());
         dto.setRejectedQuantity(e.getRejectedQuantity());
@@ -51,6 +53,8 @@ public class ShipmentReceiptStateEventDtoConverter {
         dto.setRejectionReasonId(e.getRejectionReasonId());
         dto.setDamageStatusId(e.getDamageStatusId());
         dto.setDamageReasonId(e.getDamageReasonId());
+        dto.setReceivedBy(e.getReceivedBy());
+        dto.setDatetimeReceived(e.getDatetimeReceived());
         dto.setItemDescription(e.getItemDescription());
         dto.setAcceptedQuantity(e.getAcceptedQuantity());
         dto.setRejectedQuantity(e.getRejectedQuantity());
@@ -61,6 +65,8 @@ public class ShipmentReceiptStateEventDtoConverter {
         dto.setIsPropertyRejectionReasonIdRemoved(e.getIsPropertyRejectionReasonIdRemoved());
         dto.setIsPropertyDamageStatusIdRemoved(e.getIsPropertyDamageStatusIdRemoved());
         dto.setIsPropertyDamageReasonIdRemoved(e.getIsPropertyDamageReasonIdRemoved());
+        dto.setIsPropertyReceivedByRemoved(e.getIsPropertyReceivedByRemoved());
+        dto.setIsPropertyDatetimeReceivedRemoved(e.getIsPropertyDatetimeReceivedRemoved());
         dto.setIsPropertyItemDescriptionRemoved(e.getIsPropertyItemDescriptionRemoved());
         dto.setIsPropertyAcceptedQuantityRemoved(e.getIsPropertyAcceptedQuantityRemoved());
         dto.setIsPropertyRejectedQuantityRemoved(e.getIsPropertyRejectedQuantityRemoved());

@@ -53,6 +53,18 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             set;
         }
 
+        public virtual string ReceivedBy
+        {
+            get;
+            set;
+        }
+
+        public virtual DateTime? DatetimeReceived
+        {
+            get;
+            set;
+        }
+
         public virtual string ItemDescription
         {
             get;
@@ -233,6 +245,12 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             set;
         }
 
+        public virtual string ShipmentShipperId
+        {
+            get;
+            set;
+        }
+
         public virtual string ShipmentCreatedBy
         {
             get;
@@ -302,6 +320,8 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             state.RejectionReasonId = this.RejectionReasonId;
             state.DamageStatusId = this.DamageStatusId;
             state.DamageReasonId = this.DamageReasonId;
+            state.ReceivedBy = this.ReceivedBy;
+            state.DatetimeReceived = this.DatetimeReceived;
             state.ItemDescription = this.ItemDescription;
             state.AcceptedQuantity = this.AcceptedQuantity;
             state.RejectedQuantity = this.RejectedQuantity;
@@ -332,6 +352,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             state.ShipmentPartyIdFrom = this.ShipmentPartyIdFrom;
             state.ShipmentAdditionalShippingCharge = this.ShipmentAdditionalShippingCharge;
             state.ShipmentAddtlShippingChargeDesc = this.ShipmentAddtlShippingChargeDesc;
+            state.ShipmentShipperId = this.ShipmentShipperId;
             state.ShipmentCreatedBy = this.ShipmentCreatedBy;
             if (this.ShipmentCreatedAt != null && this.ShipmentCreatedAt.HasValue) { state.ShipmentCreatedAt = this.ShipmentCreatedAt.Value; }
             state.ShipmentUpdatedBy = this.ShipmentUpdatedBy;

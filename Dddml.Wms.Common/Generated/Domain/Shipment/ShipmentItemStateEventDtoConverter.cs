@@ -41,6 +41,7 @@ namespace Dddml.Wms.Domain.Shipment
             dto.ProductId = e.ProductId;
             dto.AttributeSetInstanceId = e.AttributeSetInstanceId;
             dto.Quantity = e.Quantity;
+            dto.TargetQuantity = e.TargetQuantity;
             dto.ShipmentContentDescription = e.ShipmentContentDescription;
             dto.Active = e.Active;
             return dto;
@@ -57,11 +58,13 @@ namespace Dddml.Wms.Domain.Shipment
             dto.ProductId = e.ProductId;
             dto.AttributeSetInstanceId = e.AttributeSetInstanceId;
             dto.Quantity = e.Quantity;
+            dto.TargetQuantity = e.TargetQuantity;
             dto.ShipmentContentDescription = e.ShipmentContentDescription;
             dto.Active = e.Active;
             dto.IsPropertyProductIdRemoved = e.IsPropertyProductIdRemoved;
             dto.IsPropertyAttributeSetInstanceIdRemoved = e.IsPropertyAttributeSetInstanceIdRemoved;
             dto.IsPropertyQuantityRemoved = e.IsPropertyQuantityRemoved;
+            dto.IsPropertyTargetQuantityRemoved = e.IsPropertyTargetQuantityRemoved;
             dto.IsPropertyShipmentContentDescriptionRemoved = e.IsPropertyShipmentContentDescriptionRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;
 

@@ -57,6 +57,14 @@ public interface ShipmentReceiptMvoCommand extends Command
 
         void setDamageReasonId(String damageReasonId);
 
+        String getReceivedBy();
+
+        void setReceivedBy(String receivedBy);
+
+        java.sql.Timestamp getDatetimeReceived();
+
+        void setDatetimeReceived(java.sql.Timestamp datetimeReceived);
+
         String getItemDescription();
 
         void setItemDescription(String itemDescription);
@@ -177,6 +185,10 @@ public interface ShipmentReceiptMvoCommand extends Command
 
         void setShipmentAddtlShippingChargeDesc(String shipmentAddtlShippingChargeDesc);
 
+        String getShipmentShipperId();
+
+        void setShipmentShipperId(String shipmentShipperId);
+
         String getShipmentCreatedBy();
 
         void setShipmentCreatedBy(String shipmentCreatedBy);
@@ -224,6 +236,14 @@ public interface ShipmentReceiptMvoCommand extends Command
         Boolean getIsPropertyDamageReasonIdRemoved();
 
         void setIsPropertyDamageReasonIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyReceivedByRemoved();
+
+        void setIsPropertyReceivedByRemoved(Boolean removed);
+
+        Boolean getIsPropertyDatetimeReceivedRemoved();
+
+        void setIsPropertyDatetimeReceivedRemoved(Boolean removed);
 
         Boolean getIsPropertyItemDescriptionRemoved();
 
@@ -344,6 +364,10 @@ public interface ShipmentReceiptMvoCommand extends Command
         Boolean getIsPropertyShipmentAddtlShippingChargeDescRemoved();
 
         void setIsPropertyShipmentAddtlShippingChargeDescRemoved(Boolean removed);
+
+        Boolean getIsPropertyShipmentShipperIdRemoved();
+
+        void setIsPropertyShipmentShipperIdRemoved(Boolean removed);
 
         Boolean getIsPropertyShipmentCreatedByRemoved();
 

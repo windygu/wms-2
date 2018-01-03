@@ -38,6 +38,14 @@ public interface ShipmentReceiptCommand extends Command
 
         void setDamageReasonId(String damageReasonId);
 
+        String getReceivedBy();
+
+        void setReceivedBy(String receivedBy);
+
+        java.sql.Timestamp getDatetimeReceived();
+
+        void setDatetimeReceived(java.sql.Timestamp datetimeReceived);
+
         String getItemDescription();
 
         void setItemDescription(String itemDescription);
@@ -85,6 +93,14 @@ public interface ShipmentReceiptCommand extends Command
         Boolean getIsPropertyDamageReasonIdRemoved();
 
         void setIsPropertyDamageReasonIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyReceivedByRemoved();
+
+        void setIsPropertyReceivedByRemoved(Boolean removed);
+
+        Boolean getIsPropertyDatetimeReceivedRemoved();
+
+        void setIsPropertyDatetimeReceivedRemoved(Boolean removed);
 
         Boolean getIsPropertyItemDescriptionRemoved();
 

@@ -134,6 +134,35 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
+                    Name = "TargetQuantity",
+                    Type = typeof(decimal),
+                    TypeName = "decimal",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "The Quantity which should be shipped.",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
                     Name = "ShipmentContentDescription",
                     Type = typeof(string),
                     TypeName = "string",
@@ -510,6 +539,8 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("attributeSetInstanceId", "AttributeSetInstanceId");
             d.Add("Quantity", "Quantity");
             d.Add("quantity", "Quantity");
+            d.Add("TargetQuantity", "TargetQuantity");
+            d.Add("targetQuantity", "TargetQuantity");
             d.Add("ShipmentContentDescription", "ShipmentContentDescription");
             d.Add("shipmentContentDescription", "ShipmentContentDescription");
             d.Add("Version", "Version");

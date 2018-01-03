@@ -49,6 +49,8 @@ namespace Dddml.Wms.Domain.Shipment
             cmd.RejectionReasonId = state.RejectionReasonId;
             cmd.DamageStatusId = state.DamageStatusId;
             cmd.DamageReasonId = state.DamageReasonId;
+            cmd.ReceivedBy = state.ReceivedBy;
+            cmd.DatetimeReceived = state.DatetimeReceived;
             cmd.ItemDescription = state.ItemDescription;
             cmd.AcceptedQuantity = state.AcceptedQuantity;
             cmd.RejectedQuantity = state.RejectedQuantity;
@@ -61,6 +63,8 @@ namespace Dddml.Wms.Domain.Shipment
             if (state.RejectionReasonId == null) { cmd.IsPropertyRejectionReasonIdRemoved = true; }
             if (state.DamageStatusId == null) { cmd.IsPropertyDamageStatusIdRemoved = true; }
             if (state.DamageReasonId == null) { cmd.IsPropertyDamageReasonIdRemoved = true; }
+            if (state.ReceivedBy == null) { cmd.IsPropertyReceivedByRemoved = true; }
+            if (state.DatetimeReceived == null) { cmd.IsPropertyDatetimeReceivedRemoved = true; }
             if (state.ItemDescription == null) { cmd.IsPropertyItemDescriptionRemoved = true; }
             if (state.AcceptedQuantity == null) { cmd.IsPropertyAcceptedQuantityRemoved = true; }
             if (state.RejectedQuantity == null) { cmd.IsPropertyRejectedQuantityRemoved = true; }
@@ -79,6 +83,8 @@ namespace Dddml.Wms.Domain.Shipment
             cmd.RejectionReasonId = state.RejectionReasonId;
             cmd.DamageStatusId = state.DamageStatusId;
             cmd.DamageReasonId = state.DamageReasonId;
+            cmd.ReceivedBy = state.ReceivedBy;
+            cmd.DatetimeReceived = state.DatetimeReceived;
             cmd.ItemDescription = state.ItemDescription;
             cmd.AcceptedQuantity = state.AcceptedQuantity;
             cmd.RejectedQuantity = state.RejectedQuantity;

@@ -207,6 +207,62 @@ namespace Dddml.Wms.Domain.Shipment
             }
         }
 
+		public virtual string ReceivedBy
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("ReceivedBy"))
+                {
+                    return _state.ReceivedBy;
+                }
+                return null;
+            }
+            set
+            {
+                _state.ReceivedBy = value;
+            }
+        }
+
+        string IShipmentReceiptStateProperties.ReceivedBy
+        {
+            get 
+            {
+                return (this._state as IShipmentReceiptStateProperties).ReceivedBy;
+            }
+            set 
+            {
+                (this._state as IShipmentReceiptStateProperties).ReceivedBy = value;
+            }
+        }
+
+		public virtual DateTime? DatetimeReceived
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("DatetimeReceived"))
+                {
+                    return _state.DatetimeReceived;
+                }
+                return null;
+            }
+            set
+            {
+                _state.DatetimeReceived = value;
+            }
+        }
+
+        DateTime? IShipmentReceiptStateProperties.DatetimeReceived
+        {
+            get 
+            {
+                return (this._state as IShipmentReceiptStateProperties).DatetimeReceived;
+            }
+            set 
+            {
+                (this._state as IShipmentReceiptStateProperties).DatetimeReceived = value;
+            }
+        }
+
 		public virtual string ItemDescription
 		{
             get

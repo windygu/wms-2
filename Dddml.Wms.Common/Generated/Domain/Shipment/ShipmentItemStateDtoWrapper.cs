@@ -151,6 +151,34 @@ namespace Dddml.Wms.Domain.Shipment
             }
         }
 
+		public virtual decimal? TargetQuantity
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("TargetQuantity"))
+                {
+                    return _state.TargetQuantity;
+                }
+                return null;
+            }
+            set
+            {
+                _state.TargetQuantity = value;
+            }
+        }
+
+        decimal? IShipmentItemStateProperties.TargetQuantity
+        {
+            get 
+            {
+                return (this._state as IShipmentItemStateProperties).TargetQuantity;
+            }
+            set 
+            {
+                (this._state as IShipmentItemStateProperties).TargetQuantity = value;
+            }
+        }
+
 		public virtual string ShipmentContentDescription
 		{
             get

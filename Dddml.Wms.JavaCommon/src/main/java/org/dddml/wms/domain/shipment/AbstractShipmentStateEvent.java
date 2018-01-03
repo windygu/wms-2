@@ -320,6 +320,18 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
         this.addtlShippingChargeDesc = addtlShippingChargeDesc;
     }
 
+    private String shipperId;
+
+    public String getShipperId()
+    {
+        return this.shipperId;
+    }
+
+    public void setShipperId(String shipperId)
+    {
+        this.shipperId = shipperId;
+    }
+
     private String createdBy;
 
     public String getCreatedBy()
@@ -808,6 +820,16 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
 
         public void setIsPropertyAddtlShippingChargeDescRemoved(Boolean removed) {
             this.isPropertyAddtlShippingChargeDescRemoved = removed;
+        }
+
+        private Boolean isPropertyShipperIdRemoved;
+
+        public Boolean getIsPropertyShipperIdRemoved() {
+            return this.isPropertyShipperIdRemoved;
+        }
+
+        public void setIsPropertyShipperIdRemoved(Boolean removed) {
+            this.isPropertyShipperIdRemoved = removed;
         }
 
         private Boolean isPropertyActiveRemoved;

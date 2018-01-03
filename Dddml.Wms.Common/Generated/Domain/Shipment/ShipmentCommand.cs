@@ -100,6 +100,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual string AddtlShippingChargeDesc { get; set; }
 
+		public virtual string ShipperId { get; set; }
+
 		public virtual bool? Active { get; set; }
 
 
@@ -231,6 +233,8 @@ namespace Dddml.Wms.Domain.Shipment
 		public virtual bool IsPropertyAdditionalShippingChargeRemoved { get; set; }
 
 		public virtual bool IsPropertyAddtlShippingChargeDescRemoved { get; set; }
+
+		public virtual bool IsPropertyShipperIdRemoved { get; set; }
 
 		public virtual bool IsPropertyActiveRemoved { get; set; }
 

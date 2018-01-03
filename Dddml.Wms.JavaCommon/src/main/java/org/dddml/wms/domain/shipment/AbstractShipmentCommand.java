@@ -322,6 +322,18 @@ public abstract class AbstractShipmentCommand extends AbstractCommand implements
             this.addtlShippingChargeDesc = addtlShippingChargeDesc;
         }
 
+        private String shipperId;
+
+        public String getShipperId()
+        {
+            return this.shipperId;
+        }
+
+        public void setShipperId(String shipperId)
+        {
+            this.shipperId = shipperId;
+        }
+
         private Boolean active;
 
         public Boolean getActive()
@@ -700,6 +712,18 @@ public abstract class AbstractShipmentCommand extends AbstractCommand implements
         public void setIsPropertyAddtlShippingChargeDescRemoved(Boolean removed)
         {
             this.isPropertyAddtlShippingChargeDescRemoved = removed;
+        }
+
+        private Boolean isPropertyShipperIdRemoved;
+
+        public Boolean getIsPropertyShipperIdRemoved()
+        {
+            return this.isPropertyShipperIdRemoved;
+        }
+
+        public void setIsPropertyShipperIdRemoved(Boolean removed)
+        {
+            this.isPropertyShipperIdRemoved = removed;
         }
 
         private Boolean isPropertyActiveRemoved;

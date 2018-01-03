@@ -43,6 +43,8 @@ namespace Dddml.Wms.Domain.Shipment
             dto.RejectionReasonId = e.RejectionReasonId;
             dto.DamageStatusId = e.DamageStatusId;
             dto.DamageReasonId = e.DamageReasonId;
+            dto.ReceivedBy = e.ReceivedBy;
+            dto.DatetimeReceived = e.DatetimeReceived;
             dto.ItemDescription = e.ItemDescription;
             dto.AcceptedQuantity = e.AcceptedQuantity;
             dto.RejectedQuantity = e.RejectedQuantity;
@@ -64,6 +66,8 @@ namespace Dddml.Wms.Domain.Shipment
             dto.RejectionReasonId = e.RejectionReasonId;
             dto.DamageStatusId = e.DamageStatusId;
             dto.DamageReasonId = e.DamageReasonId;
+            dto.ReceivedBy = e.ReceivedBy;
+            dto.DatetimeReceived = e.DatetimeReceived;
             dto.ItemDescription = e.ItemDescription;
             dto.AcceptedQuantity = e.AcceptedQuantity;
             dto.RejectedQuantity = e.RejectedQuantity;
@@ -74,6 +78,8 @@ namespace Dddml.Wms.Domain.Shipment
             dto.IsPropertyRejectionReasonIdRemoved = e.IsPropertyRejectionReasonIdRemoved;
             dto.IsPropertyDamageStatusIdRemoved = e.IsPropertyDamageStatusIdRemoved;
             dto.IsPropertyDamageReasonIdRemoved = e.IsPropertyDamageReasonIdRemoved;
+            dto.IsPropertyReceivedByRemoved = e.IsPropertyReceivedByRemoved;
+            dto.IsPropertyDatetimeReceivedRemoved = e.IsPropertyDatetimeReceivedRemoved;
             dto.IsPropertyItemDescriptionRemoved = e.IsPropertyItemDescriptionRemoved;
             dto.IsPropertyAcceptedQuantityRemoved = e.IsPropertyAcceptedQuantityRemoved;
             dto.IsPropertyRejectedQuantityRemoved = e.IsPropertyRejectedQuantityRemoved;

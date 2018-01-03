@@ -36,6 +36,7 @@ public final class ShipmentFilteringProperties
             "partyIdFrom",
             "additionalShippingCharge",
             "addtlShippingChargeDesc",
+            "shipperId",
             "version",
             "createdBy",
             "createdAt",
@@ -70,6 +71,7 @@ public final class ShipmentFilteringProperties
             "String",
             "String",
             "java.math.BigDecimal",
+            "String",
             "String",
             "Long",
             "String",
@@ -142,6 +144,8 @@ public final class ShipmentFilteringProperties
         aliasMap.put("AdditionalShippingCharge", "additionalShippingCharge");
         aliasMap.put("addtlShippingChargeDesc", "addtlShippingChargeDesc");
         aliasMap.put("AddtlShippingChargeDesc", "addtlShippingChargeDesc");
+        aliasMap.put("shipperId", "shipperId");
+        aliasMap.put("ShipperId", "shipperId");
         aliasMap.put("version", "version");
         aliasMap.put("Version", "version");
         aliasMap.put("createdBy", "createdBy");

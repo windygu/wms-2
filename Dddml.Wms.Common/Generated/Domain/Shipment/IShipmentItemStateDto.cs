@@ -38,6 +38,12 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
+        decimal? TargetQuantity
+        {
+            get;
+            set;
+        }
+
         string ShipmentContentDescription
         {
             get;

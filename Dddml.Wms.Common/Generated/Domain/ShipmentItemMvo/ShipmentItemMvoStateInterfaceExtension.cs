@@ -52,6 +52,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             cmd.ProductId = state.ProductId;
             cmd.AttributeSetInstanceId = state.AttributeSetInstanceId;
             cmd.Quantity = state.Quantity;
+            cmd.TargetQuantity = state.TargetQuantity;
             cmd.ShipmentContentDescription = state.ShipmentContentDescription;
             cmd.Version = ((IShipmentItemMvoStateProperties)state).Version;
             cmd.Active = ((IShipmentItemMvoStateProperties)state).Active;
@@ -79,6 +80,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             cmd.ShipmentPartyIdFrom = state.ShipmentPartyIdFrom;
             cmd.ShipmentAdditionalShippingCharge = state.ShipmentAdditionalShippingCharge;
             cmd.ShipmentAddtlShippingChargeDesc = state.ShipmentAddtlShippingChargeDesc;
+            cmd.ShipmentShipperId = state.ShipmentShipperId;
             cmd.ShipmentCreatedBy = state.ShipmentCreatedBy;
             cmd.ShipmentCreatedAt = state.ShipmentCreatedAt;
             cmd.ShipmentUpdatedBy = state.ShipmentUpdatedBy;
@@ -88,6 +90,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             if (state.ProductId == null) { cmd.IsPropertyProductIdRemoved = true; }
             if (state.AttributeSetInstanceId == null) { cmd.IsPropertyAttributeSetInstanceIdRemoved = true; }
             if (state.Quantity == null) { cmd.IsPropertyQuantityRemoved = true; }
+            if (state.TargetQuantity == null) { cmd.IsPropertyTargetQuantityRemoved = true; }
             if (state.ShipmentContentDescription == null) { cmd.IsPropertyShipmentContentDescriptionRemoved = true; }
             if (state.ShipmentShipmentTypeId == null) { cmd.IsPropertyShipmentShipmentTypeIdRemoved = true; }
             if (state.ShipmentStatusId == null) { cmd.IsPropertyShipmentStatusIdRemoved = true; }
@@ -113,6 +116,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             if (state.ShipmentPartyIdFrom == null) { cmd.IsPropertyShipmentPartyIdFromRemoved = true; }
             if (state.ShipmentAdditionalShippingCharge == null) { cmd.IsPropertyShipmentAdditionalShippingChargeRemoved = true; }
             if (state.ShipmentAddtlShippingChargeDesc == null) { cmd.IsPropertyShipmentAddtlShippingChargeDescRemoved = true; }
+            if (state.ShipmentShipperId == null) { cmd.IsPropertyShipmentShipperIdRemoved = true; }
             if (state.ShipmentCreatedBy == null) { cmd.IsPropertyShipmentCreatedByRemoved = true; }
             if (state.ShipmentUpdatedBy == null) { cmd.IsPropertyShipmentUpdatedByRemoved = true; }
             return cmd;
@@ -129,6 +133,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             cmd.ProductId = state.ProductId;
             cmd.AttributeSetInstanceId = state.AttributeSetInstanceId;
             cmd.Quantity = state.Quantity;
+            cmd.TargetQuantity = state.TargetQuantity;
             cmd.ShipmentContentDescription = state.ShipmentContentDescription;
             cmd.Version = ((IShipmentItemMvoStateProperties)state).Version;
             cmd.Active = ((IShipmentItemMvoStateProperties)state).Active;
@@ -156,6 +161,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             cmd.ShipmentPartyIdFrom = state.ShipmentPartyIdFrom;
             cmd.ShipmentAdditionalShippingCharge = state.ShipmentAdditionalShippingCharge;
             cmd.ShipmentAddtlShippingChargeDesc = state.ShipmentAddtlShippingChargeDesc;
+            cmd.ShipmentShipperId = state.ShipmentShipperId;
             cmd.ShipmentCreatedBy = state.ShipmentCreatedBy;
             cmd.ShipmentCreatedAt = state.ShipmentCreatedAt;
             cmd.ShipmentUpdatedBy = state.ShipmentUpdatedBy;

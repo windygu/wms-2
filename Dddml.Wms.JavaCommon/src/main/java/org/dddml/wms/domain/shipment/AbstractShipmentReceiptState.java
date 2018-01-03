@@ -95,6 +95,30 @@ public abstract class AbstractShipmentReceiptState implements ShipmentReceiptSta
         this.damageReasonId = damageReasonId;
     }
 
+    private String receivedBy;
+
+    public String getReceivedBy()
+    {
+        return this.receivedBy;
+    }
+
+    public void setReceivedBy(String receivedBy)
+    {
+        this.receivedBy = receivedBy;
+    }
+
+    private java.sql.Timestamp datetimeReceived;
+
+    public java.sql.Timestamp getDatetimeReceived()
+    {
+        return this.datetimeReceived;
+    }
+
+    public void setDatetimeReceived(java.sql.Timestamp datetimeReceived)
+    {
+        this.datetimeReceived = datetimeReceived;
+    }
+
     private String itemDescription;
 
     public String getItemDescription()
@@ -271,6 +295,8 @@ public abstract class AbstractShipmentReceiptState implements ShipmentReceiptSta
         this.setRejectionReasonId(e.getRejectionReasonId());
         this.setDamageStatusId(e.getDamageStatusId());
         this.setDamageReasonId(e.getDamageReasonId());
+        this.setReceivedBy(e.getReceivedBy());
+        this.setDatetimeReceived(e.getDatetimeReceived());
         this.setItemDescription(e.getItemDescription());
         this.setAcceptedQuantity(e.getAcceptedQuantity());
         this.setRejectedQuantity(e.getRejectedQuantity());
@@ -340,6 +366,28 @@ public abstract class AbstractShipmentReceiptState implements ShipmentReceiptSta
         else
         {
             this.setDamageReasonId(e.getDamageReasonId());
+        }
+        if (e.getReceivedBy() == null)
+        {
+            if (e.getIsPropertyReceivedByRemoved() != null && e.getIsPropertyReceivedByRemoved())
+            {
+                this.setReceivedBy(null);
+            }
+        }
+        else
+        {
+            this.setReceivedBy(e.getReceivedBy());
+        }
+        if (e.getDatetimeReceived() == null)
+        {
+            if (e.getIsPropertyDatetimeReceivedRemoved() != null && e.getIsPropertyDatetimeReceivedRemoved())
+            {
+                this.setDatetimeReceived(null);
+            }
+        }
+        else
+        {
+            this.setDatetimeReceived(e.getDatetimeReceived());
         }
         if (e.getItemDescription() == null)
         {

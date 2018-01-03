@@ -43,6 +43,8 @@ public abstract class AbstractShipmentReceiptMvoStateCommandConverter<TCreateShi
         cmd.setRejectionReasonId(state.getRejectionReasonId());
         cmd.setDamageStatusId(state.getDamageStatusId());
         cmd.setDamageReasonId(state.getDamageReasonId());
+        cmd.setReceivedBy(state.getReceivedBy());
+        cmd.setDatetimeReceived(state.getDatetimeReceived());
         cmd.setItemDescription(state.getItemDescription());
         cmd.setAcceptedQuantity(state.getAcceptedQuantity());
         cmd.setRejectedQuantity(state.getRejectedQuantity());
@@ -73,6 +75,7 @@ public abstract class AbstractShipmentReceiptMvoStateCommandConverter<TCreateShi
         cmd.setShipmentPartyIdFrom(state.getShipmentPartyIdFrom());
         cmd.setShipmentAdditionalShippingCharge(state.getShipmentAdditionalShippingCharge());
         cmd.setShipmentAddtlShippingChargeDesc(state.getShipmentAddtlShippingChargeDesc());
+        cmd.setShipmentShipperId(state.getShipmentShipperId());
         cmd.setShipmentCreatedBy(state.getShipmentCreatedBy());
         cmd.setShipmentCreatedAt(state.getShipmentCreatedAt());
         cmd.setShipmentUpdatedBy(state.getShipmentUpdatedBy());
@@ -84,6 +87,8 @@ public abstract class AbstractShipmentReceiptMvoStateCommandConverter<TCreateShi
         if (state.getRejectionReasonId() == null) { cmd.setIsPropertyRejectionReasonIdRemoved(true); }
         if (state.getDamageStatusId() == null) { cmd.setIsPropertyDamageStatusIdRemoved(true); }
         if (state.getDamageReasonId() == null) { cmd.setIsPropertyDamageReasonIdRemoved(true); }
+        if (state.getReceivedBy() == null) { cmd.setIsPropertyReceivedByRemoved(true); }
+        if (state.getDatetimeReceived() == null) { cmd.setIsPropertyDatetimeReceivedRemoved(true); }
         if (state.getItemDescription() == null) { cmd.setIsPropertyItemDescriptionRemoved(true); }
         if (state.getAcceptedQuantity() == null) { cmd.setIsPropertyAcceptedQuantityRemoved(true); }
         if (state.getRejectedQuantity() == null) { cmd.setIsPropertyRejectedQuantityRemoved(true); }
@@ -114,6 +119,7 @@ public abstract class AbstractShipmentReceiptMvoStateCommandConverter<TCreateShi
         if (state.getShipmentPartyIdFrom() == null) { cmd.setIsPropertyShipmentPartyIdFromRemoved(true); }
         if (state.getShipmentAdditionalShippingCharge() == null) { cmd.setIsPropertyShipmentAdditionalShippingChargeRemoved(true); }
         if (state.getShipmentAddtlShippingChargeDesc() == null) { cmd.setIsPropertyShipmentAddtlShippingChargeDescRemoved(true); }
+        if (state.getShipmentShipperId() == null) { cmd.setIsPropertyShipmentShipperIdRemoved(true); }
         if (state.getShipmentCreatedBy() == null) { cmd.setIsPropertyShipmentCreatedByRemoved(true); }
         if (state.getShipmentCreatedAt() == null) { cmd.setIsPropertyShipmentCreatedAtRemoved(true); }
         if (state.getShipmentUpdatedBy() == null) { cmd.setIsPropertyShipmentUpdatedByRemoved(true); }
@@ -133,6 +139,8 @@ public abstract class AbstractShipmentReceiptMvoStateCommandConverter<TCreateShi
         cmd.setRejectionReasonId(state.getRejectionReasonId());
         cmd.setDamageStatusId(state.getDamageStatusId());
         cmd.setDamageReasonId(state.getDamageReasonId());
+        cmd.setReceivedBy(state.getReceivedBy());
+        cmd.setDatetimeReceived(state.getDatetimeReceived());
         cmd.setItemDescription(state.getItemDescription());
         cmd.setAcceptedQuantity(state.getAcceptedQuantity());
         cmd.setRejectedQuantity(state.getRejectedQuantity());
@@ -163,6 +171,7 @@ public abstract class AbstractShipmentReceiptMvoStateCommandConverter<TCreateShi
         cmd.setShipmentPartyIdFrom(state.getShipmentPartyIdFrom());
         cmd.setShipmentAdditionalShippingCharge(state.getShipmentAdditionalShippingCharge());
         cmd.setShipmentAddtlShippingChargeDesc(state.getShipmentAddtlShippingChargeDesc());
+        cmd.setShipmentShipperId(state.getShipmentShipperId());
         cmd.setShipmentCreatedBy(state.getShipmentCreatedBy());
         cmd.setShipmentCreatedAt(state.getShipmentCreatedAt());
         cmd.setShipmentUpdatedBy(state.getShipmentUpdatedBy());

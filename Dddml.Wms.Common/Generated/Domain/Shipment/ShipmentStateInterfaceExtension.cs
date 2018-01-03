@@ -80,6 +80,7 @@ namespace Dddml.Wms.Domain.Shipment
             cmd.PartyIdFrom = state.PartyIdFrom;
             cmd.AdditionalShippingCharge = state.AdditionalShippingCharge;
             cmd.AddtlShippingChargeDesc = state.AddtlShippingChargeDesc;
+            cmd.ShipperId = state.ShipperId;
             cmd.Active = ((IShipmentStateProperties)state).Active;
             
             if (state.ShipmentTypeId == null) { cmd.IsPropertyShipmentTypeIdRemoved = true; }
@@ -106,6 +107,7 @@ namespace Dddml.Wms.Domain.Shipment
             if (state.PartyIdFrom == null) { cmd.IsPropertyPartyIdFromRemoved = true; }
             if (state.AdditionalShippingCharge == null) { cmd.IsPropertyAdditionalShippingChargeRemoved = true; }
             if (state.AddtlShippingChargeDesc == null) { cmd.IsPropertyAddtlShippingChargeDescRemoved = true; }
+            if (state.ShipperId == null) { cmd.IsPropertyShipperIdRemoved = true; }
             foreach (var d in state.ShipmentItems)
             {
                 var c = d.ToCreateOrMergePatchShipmentItem<TCreateShipmentItem, TMergePatchShipmentItem>();
@@ -153,6 +155,7 @@ namespace Dddml.Wms.Domain.Shipment
             cmd.PartyIdFrom = state.PartyIdFrom;
             cmd.AdditionalShippingCharge = state.AdditionalShippingCharge;
             cmd.AddtlShippingChargeDesc = state.AddtlShippingChargeDesc;
+            cmd.ShipperId = state.ShipperId;
             cmd.Active = ((IShipmentStateProperties)state).Active;
             foreach (var d in state.ShipmentItems)
             {

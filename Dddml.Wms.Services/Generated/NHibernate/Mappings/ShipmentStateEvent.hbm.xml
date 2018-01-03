@@ -35,6 +35,7 @@
     <property name="PartyIdFrom" ><column name="PartyIdFrom" sql-type="VARCHAR(20)" /></property>
     <property name="AdditionalShippingCharge" ><column name="AdditionalShippingCharge" sql-type="DECIMAL(18,2)" /></property>
     <property name="AddtlShippingChargeDesc" ><column name="AddtlShippingChargeDesc" sql-type="VARCHAR(255)" /></property>
+    <property name="ShipperId" ><column name="ShipperId" sql-type="VARCHAR(20)" /></property>
     <property name="Active" ></property>
 
     <property name="CreatedBy" column="CreatedBy"/>
@@ -95,6 +96,8 @@
         <property name="IsPropertyAdditionalShippingChargeRemoved" column="IsPropertyAdditionalShippingChargeRemoved"/>
 
         <property name="IsPropertyAddtlShippingChargeDescRemoved" column="IsPropertyAddtlShippingChargeDescRemoved"/>
+
+        <property name="IsPropertyShipperIdRemoved" column="IsPropertyShipperIdRemoved"/>
 
         <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
     </subclass>

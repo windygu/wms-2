@@ -34,6 +34,10 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
 		public virtual string DamageReasonId { get; set; }
 
+		public virtual string ReceivedBy { get; set; }
+
+		public virtual DateTime? DatetimeReceived { get; set; }
+
 		public virtual string ItemDescription { get; set; }
 
 		public virtual decimal? AcceptedQuantity { get; set; }
@@ -93,6 +97,8 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 		public virtual decimal? ShipmentAdditionalShippingCharge { get; set; }
 
 		public virtual string ShipmentAddtlShippingChargeDesc { get; set; }
+
+		public virtual string ShipmentShipperId { get; set; }
 
 		public virtual string ShipmentCreatedBy { get; set; }
 
@@ -202,6 +208,10 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
 		public virtual bool IsPropertyDamageReasonIdRemoved { get; set; }
 
+		public virtual bool IsPropertyReceivedByRemoved { get; set; }
+
+		public virtual bool IsPropertyDatetimeReceivedRemoved { get; set; }
+
 		public virtual bool IsPropertyItemDescriptionRemoved { get; set; }
 
 		public virtual bool IsPropertyAcceptedQuantityRemoved { get; set; }
@@ -261,6 +271,8 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 		public virtual bool IsPropertyShipmentAdditionalShippingChargeRemoved { get; set; }
 
 		public virtual bool IsPropertyShipmentAddtlShippingChargeDescRemoved { get; set; }
+
+		public virtual bool IsPropertyShipmentShipperIdRemoved { get; set; }
 
 		public virtual bool IsPropertyShipmentCreatedByRemoved { get; set; }
 

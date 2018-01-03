@@ -16,6 +16,8 @@ public final class ShipmentReceiptMvoFilteringProperties
             "rejectionReasonId",
             "damageStatusId",
             "damageReasonId",
+            "receivedBy",
+            "datetimeReceived",
             "itemDescription",
             "acceptedQuantity",
             "rejectedQuantity",
@@ -51,6 +53,7 @@ public final class ShipmentReceiptMvoFilteringProperties
             "shipmentPartyIdFrom",
             "shipmentAdditionalShippingCharge",
             "shipmentAddtlShippingChargeDesc",
+            "shipmentShipperId",
             "shipmentVersion",
             "shipmentCreatedBy",
             "shipmentCreatedAt",
@@ -67,6 +70,8 @@ public final class ShipmentReceiptMvoFilteringProperties
             "String",
             "String",
             "String",
+            "String",
+            "java.sql.Timestamp",
             "String",
             "java.math.BigDecimal",
             "java.math.BigDecimal",
@@ -101,6 +106,7 @@ public final class ShipmentReceiptMvoFilteringProperties
             "String",
             "String",
             "java.math.BigDecimal",
+            "String",
             "String",
             "Long",
             "String",
@@ -134,6 +140,10 @@ public final class ShipmentReceiptMvoFilteringProperties
         aliasMap.put("DamageStatusId", "damageStatusId");
         aliasMap.put("damageReasonId", "damageReasonId");
         aliasMap.put("DamageReasonId", "damageReasonId");
+        aliasMap.put("receivedBy", "receivedBy");
+        aliasMap.put("ReceivedBy", "receivedBy");
+        aliasMap.put("datetimeReceived", "datetimeReceived");
+        aliasMap.put("DatetimeReceived", "datetimeReceived");
         aliasMap.put("itemDescription", "itemDescription");
         aliasMap.put("ItemDescription", "itemDescription");
         aliasMap.put("acceptedQuantity", "acceptedQuantity");
@@ -204,6 +214,8 @@ public final class ShipmentReceiptMvoFilteringProperties
         aliasMap.put("ShipmentAdditionalShippingCharge", "shipmentAdditionalShippingCharge");
         aliasMap.put("shipmentAddtlShippingChargeDesc", "shipmentAddtlShippingChargeDesc");
         aliasMap.put("ShipmentAddtlShippingChargeDesc", "shipmentAddtlShippingChargeDesc");
+        aliasMap.put("shipmentShipperId", "shipmentShipperId");
+        aliasMap.put("ShipmentShipperId", "shipmentShipperId");
         aliasMap.put("shipmentVersion", "shipmentVersion");
         aliasMap.put("ShipmentVersion", "shipmentVersion");
         aliasMap.put("shipmentCreatedBy", "shipmentCreatedBy");

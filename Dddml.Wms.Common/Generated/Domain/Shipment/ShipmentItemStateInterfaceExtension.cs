@@ -47,6 +47,7 @@ namespace Dddml.Wms.Domain.Shipment
             cmd.ProductId = state.ProductId;
             cmd.AttributeSetInstanceId = state.AttributeSetInstanceId;
             cmd.Quantity = state.Quantity;
+            cmd.TargetQuantity = state.TargetQuantity;
             cmd.ShipmentContentDescription = state.ShipmentContentDescription;
             cmd.Active = ((IShipmentItemStateProperties)state).Active;
             cmd.ShipmentId = state.ShipmentId;
@@ -54,6 +55,7 @@ namespace Dddml.Wms.Domain.Shipment
             if (state.ProductId == null) { cmd.IsPropertyProductIdRemoved = true; }
             if (state.AttributeSetInstanceId == null) { cmd.IsPropertyAttributeSetInstanceIdRemoved = true; }
             if (state.Quantity == null) { cmd.IsPropertyQuantityRemoved = true; }
+            if (state.TargetQuantity == null) { cmd.IsPropertyTargetQuantityRemoved = true; }
             if (state.ShipmentContentDescription == null) { cmd.IsPropertyShipmentContentDescriptionRemoved = true; }
             return cmd;
         }
@@ -67,6 +69,7 @@ namespace Dddml.Wms.Domain.Shipment
             cmd.ProductId = state.ProductId;
             cmd.AttributeSetInstanceId = state.AttributeSetInstanceId;
             cmd.Quantity = state.Quantity;
+            cmd.TargetQuantity = state.TargetQuantity;
             cmd.ShipmentContentDescription = state.ShipmentContentDescription;
             cmd.Active = ((IShipmentItemStateProperties)state).Active;
             cmd.ShipmentId = state.ShipmentId;

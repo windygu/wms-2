@@ -132,6 +132,10 @@ public interface ShipmentCommand extends Command
 
         void setAddtlShippingChargeDesc(String addtlShippingChargeDesc);
 
+        String getShipperId();
+
+        void setShipperId(String shipperId);
+
         Boolean getActive();
 
         void setActive(Boolean active);
@@ -247,6 +251,10 @@ public interface ShipmentCommand extends Command
         Boolean getIsPropertyAddtlShippingChargeDescRemoved();
 
         void setIsPropertyAddtlShippingChargeDescRemoved(Boolean removed);
+
+        Boolean getIsPropertyShipperIdRemoved();
+
+        void setIsPropertyShipperIdRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

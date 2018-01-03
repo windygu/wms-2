@@ -44,6 +44,10 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual string DamageReasonId { get; set; }
 
+		public virtual string ReceivedBy { get; set; }
+
+		public virtual DateTime? DatetimeReceived { get; set; }
+
 		public virtual string ItemDescription { get; set; }
 
 		public virtual decimal? AcceptedQuantity { get; set; }
@@ -148,6 +152,44 @@ namespace Dddml.Wms.Domain.Shipment
             set
             {
                 this.IsPropertyDamageReasonIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyReceivedByRemoved { get; set; }
+
+        bool IMergePatchShipmentReceipt.IsPropertyReceivedByRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyReceivedByRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyReceivedByRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyDatetimeReceivedRemoved { get; set; }
+
+        bool IMergePatchShipmentReceipt.IsPropertyDatetimeReceivedRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyDatetimeReceivedRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyDatetimeReceivedRemoved = value;
             }
         }
 

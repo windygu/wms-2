@@ -14,6 +14,7 @@ public final class ShipmentItemMvoFilteringProperties
             "productId",
             "attributeSetInstanceId",
             "quantity",
+            "targetQuantity",
             "shipmentContentDescription",
             "version",
             "createdBy",
@@ -46,6 +47,7 @@ public final class ShipmentItemMvoFilteringProperties
             "shipmentPartyIdFrom",
             "shipmentAdditionalShippingCharge",
             "shipmentAddtlShippingChargeDesc",
+            "shipmentShipperId",
             "shipmentVersion",
             "shipmentCreatedBy",
             "shipmentCreatedAt",
@@ -59,6 +61,7 @@ public final class ShipmentItemMvoFilteringProperties
     public static final String[] propertyTypes = new String[] {
             "String",
             "String",
+            "java.math.BigDecimal",
             "java.math.BigDecimal",
             "String",
             "Long",
@@ -91,6 +94,7 @@ public final class ShipmentItemMvoFilteringProperties
             "String",
             "String",
             "java.math.BigDecimal",
+            "String",
             "String",
             "Long",
             "String",
@@ -120,6 +124,8 @@ public final class ShipmentItemMvoFilteringProperties
         aliasMap.put("AttributeSetInstanceId", "attributeSetInstanceId");
         aliasMap.put("quantity", "quantity");
         aliasMap.put("Quantity", "quantity");
+        aliasMap.put("targetQuantity", "targetQuantity");
+        aliasMap.put("TargetQuantity", "targetQuantity");
         aliasMap.put("shipmentContentDescription", "shipmentContentDescription");
         aliasMap.put("ShipmentContentDescription", "shipmentContentDescription");
         aliasMap.put("version", "version");
@@ -184,6 +190,8 @@ public final class ShipmentItemMvoFilteringProperties
         aliasMap.put("ShipmentAdditionalShippingCharge", "shipmentAdditionalShippingCharge");
         aliasMap.put("shipmentAddtlShippingChargeDesc", "shipmentAddtlShippingChargeDesc");
         aliasMap.put("ShipmentAddtlShippingChargeDesc", "shipmentAddtlShippingChargeDesc");
+        aliasMap.put("shipmentShipperId", "shipmentShipperId");
+        aliasMap.put("ShipmentShipperId", "shipmentShipperId");
         aliasMap.put("shipmentVersion", "shipmentVersion");
         aliasMap.put("ShipmentVersion", "shipmentVersion");
         aliasMap.put("shipmentCreatedBy", "shipmentCreatedBy");

@@ -42,6 +42,18 @@ public class CreateOrMergePatchShipmentItemMvoDto extends AbstractShipmentItemMv
         this.quantity = quantity;
     }
 
+    private java.math.BigDecimal targetQuantity;
+
+    public java.math.BigDecimal getTargetQuantity()
+    {
+        return this.targetQuantity;
+    }
+
+    public void setTargetQuantity(java.math.BigDecimal targetQuantity)
+    {
+        this.targetQuantity = targetQuantity;
+    }
+
     private String shipmentContentDescription;
 
     public String getShipmentContentDescription()
@@ -366,6 +378,18 @@ public class CreateOrMergePatchShipmentItemMvoDto extends AbstractShipmentItemMv
         this.shipmentAddtlShippingChargeDesc = shipmentAddtlShippingChargeDesc;
     }
 
+    private String shipmentShipperId;
+
+    public String getShipmentShipperId()
+    {
+        return this.shipmentShipperId;
+    }
+
+    public void setShipmentShipperId(String shipmentShipperId)
+    {
+        this.shipmentShipperId = shipmentShipperId;
+    }
+
     private String shipmentCreatedBy;
 
     public String getShipmentCreatedBy()
@@ -460,6 +484,18 @@ public class CreateOrMergePatchShipmentItemMvoDto extends AbstractShipmentItemMv
     public void setIsPropertyQuantityRemoved(Boolean removed)
     {
         this.isPropertyQuantityRemoved = removed;
+    }
+
+    private Boolean isPropertyTargetQuantityRemoved;
+
+    public Boolean getIsPropertyTargetQuantityRemoved()
+    {
+        return this.isPropertyTargetQuantityRemoved;
+    }
+
+    public void setIsPropertyTargetQuantityRemoved(Boolean removed)
+    {
+        this.isPropertyTargetQuantityRemoved = removed;
     }
 
     private Boolean isPropertyShipmentContentDescriptionRemoved;
@@ -786,6 +822,18 @@ public class CreateOrMergePatchShipmentItemMvoDto extends AbstractShipmentItemMv
         this.isPropertyShipmentAddtlShippingChargeDescRemoved = removed;
     }
 
+    private Boolean isPropertyShipmentShipperIdRemoved;
+
+    public Boolean getIsPropertyShipmentShipperIdRemoved()
+    {
+        return this.isPropertyShipmentShipperIdRemoved;
+    }
+
+    public void setIsPropertyShipmentShipperIdRemoved(Boolean removed)
+    {
+        this.isPropertyShipmentShipperIdRemoved = removed;
+    }
+
     private Boolean isPropertyShipmentCreatedByRemoved;
 
     public Boolean getIsPropertyShipmentCreatedByRemoved()
@@ -852,6 +900,7 @@ public class CreateOrMergePatchShipmentItemMvoDto extends AbstractShipmentItemMv
         command.setProductId(this.getProductId());
         command.setAttributeSetInstanceId(this.getAttributeSetInstanceId());
         command.setQuantity(this.getQuantity());
+        command.setTargetQuantity(this.getTargetQuantity());
         command.setShipmentContentDescription(this.getShipmentContentDescription());
         command.setVersion(this.getVersion());
         command.setActive(this.getActive());
@@ -879,6 +928,7 @@ public class CreateOrMergePatchShipmentItemMvoDto extends AbstractShipmentItemMv
         command.setShipmentPartyIdFrom(this.getShipmentPartyIdFrom());
         command.setShipmentAdditionalShippingCharge(this.getShipmentAdditionalShippingCharge());
         command.setShipmentAddtlShippingChargeDesc(this.getShipmentAddtlShippingChargeDesc());
+        command.setShipmentShipperId(this.getShipmentShipperId());
         command.setShipmentCreatedBy(this.getShipmentCreatedBy());
         command.setShipmentCreatedAt(this.getShipmentCreatedAt());
         command.setShipmentUpdatedBy(this.getShipmentUpdatedBy());
@@ -911,6 +961,7 @@ public class CreateOrMergePatchShipmentItemMvoDto extends AbstractShipmentItemMv
         command.setIsPropertyProductIdRemoved(this.getIsPropertyProductIdRemoved());
         command.setIsPropertyAttributeSetInstanceIdRemoved(this.getIsPropertyAttributeSetInstanceIdRemoved());
         command.setIsPropertyQuantityRemoved(this.getIsPropertyQuantityRemoved());
+        command.setIsPropertyTargetQuantityRemoved(this.getIsPropertyTargetQuantityRemoved());
         command.setIsPropertyShipmentContentDescriptionRemoved(this.getIsPropertyShipmentContentDescriptionRemoved());
         command.setIsPropertyVersionRemoved(this.getIsPropertyVersionRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
@@ -938,6 +989,7 @@ public class CreateOrMergePatchShipmentItemMvoDto extends AbstractShipmentItemMv
         command.setIsPropertyShipmentPartyIdFromRemoved(this.getIsPropertyShipmentPartyIdFromRemoved());
         command.setIsPropertyShipmentAdditionalShippingChargeRemoved(this.getIsPropertyShipmentAdditionalShippingChargeRemoved());
         command.setIsPropertyShipmentAddtlShippingChargeDescRemoved(this.getIsPropertyShipmentAddtlShippingChargeDescRemoved());
+        command.setIsPropertyShipmentShipperIdRemoved(this.getIsPropertyShipmentShipperIdRemoved());
         command.setIsPropertyShipmentCreatedByRemoved(this.getIsPropertyShipmentCreatedByRemoved());
         command.setIsPropertyShipmentCreatedAtRemoved(this.getIsPropertyShipmentCreatedAtRemoved());
         command.setIsPropertyShipmentUpdatedByRemoved(this.getIsPropertyShipmentUpdatedByRemoved());

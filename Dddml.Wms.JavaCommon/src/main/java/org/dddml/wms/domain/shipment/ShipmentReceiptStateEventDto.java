@@ -76,6 +76,26 @@ public class ShipmentReceiptStateEventDto extends AbstractStateEvent
         this.damageReasonId = damageReasonId;
     }
 
+    private String receivedBy;
+
+    public String getReceivedBy() {
+        return this.receivedBy;
+    }
+
+    public void setReceivedBy(String receivedBy) {
+        this.receivedBy = receivedBy;
+    }
+
+    private java.sql.Timestamp datetimeReceived;
+
+    public java.sql.Timestamp getDatetimeReceived() {
+        return this.datetimeReceived;
+    }
+
+    public void setDatetimeReceived(java.sql.Timestamp datetimeReceived) {
+        this.datetimeReceived = datetimeReceived;
+    }
+
     private String itemDescription;
 
     public String getItemDescription() {
@@ -204,6 +224,26 @@ public class ShipmentReceiptStateEventDto extends AbstractStateEvent
 
     public void setIsPropertyDamageReasonIdRemoved(Boolean removed) {
         this.isPropertyDamageReasonIdRemoved = removed;
+    }
+
+    private Boolean isPropertyReceivedByRemoved;
+
+    public Boolean getIsPropertyReceivedByRemoved() {
+        return this.isPropertyReceivedByRemoved;
+    }
+
+    public void setIsPropertyReceivedByRemoved(Boolean removed) {
+        this.isPropertyReceivedByRemoved = removed;
+    }
+
+    private Boolean isPropertyDatetimeReceivedRemoved;
+
+    public Boolean getIsPropertyDatetimeReceivedRemoved() {
+        return this.isPropertyDatetimeReceivedRemoved;
+    }
+
+    public void setIsPropertyDatetimeReceivedRemoved(Boolean removed) {
+        this.isPropertyDatetimeReceivedRemoved = removed;
     }
 
     private Boolean isPropertyItemDescriptionRemoved;

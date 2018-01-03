@@ -257,6 +257,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 			this.AddtlShippingChargeDesc = e.AddtlShippingChargeDesc;
 
+			this.ShipperId = e.ShipperId;
+
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 
 			this.CreatedBy = e.CreatedBy;
@@ -564,6 +566,18 @@ namespace Dddml.Wms.Domain.Shipment
 			else
 			{
 				this.AddtlShippingChargeDesc = e.AddtlShippingChargeDesc;
+			}
+
+			if (e.ShipperId == null)
+			{
+				if (e.IsPropertyShipperIdRemoved)
+				{
+					this.ShipperId = default(string);
+				}
+			}
+			else
+			{
+				this.ShipperId = e.ShipperId;
 			}
 
 			if (e.Active == null)

@@ -112,6 +112,10 @@ public interface ShipmentState
 
     void setAddtlShippingChargeDesc(String addtlShippingChargeDesc);
 
+    String getShipperId();
+
+    void setShipperId(String shipperId);
+
     Long getVersion();
 
     void setVersion(Long version);

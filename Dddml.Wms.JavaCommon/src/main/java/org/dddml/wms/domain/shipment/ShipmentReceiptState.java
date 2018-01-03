@@ -40,6 +40,14 @@ public interface ShipmentReceiptState
 
     void setDamageReasonId(String damageReasonId);
 
+    String getReceivedBy();
+
+    void setReceivedBy(String receivedBy);
+
+    java.sql.Timestamp getDatetimeReceived();
+
+    void setDatetimeReceived(java.sql.Timestamp datetimeReceived);
+
     String getItemDescription();
 
     void setItemDescription(String itemDescription);

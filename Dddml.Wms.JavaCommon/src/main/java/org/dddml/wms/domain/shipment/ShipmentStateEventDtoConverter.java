@@ -49,6 +49,7 @@ public class ShipmentStateEventDtoConverter {
         dto.setPartyIdFrom(e.getPartyIdFrom());
         dto.setAdditionalShippingCharge(e.getAdditionalShippingCharge());
         dto.setAddtlShippingChargeDesc(e.getAddtlShippingChargeDesc());
+        dto.setShipperId(e.getShipperId());
         dto.setActive(e.getActive());
         List<ShipmentItemStateEventDto.ShipmentItemStateCreatedDto> shipmentItemEvents = new ArrayList<>();
         for (ShipmentItemStateEvent.ShipmentItemStateCreated ee : e.getShipmentItemEvents()) {
@@ -97,6 +98,7 @@ public class ShipmentStateEventDtoConverter {
         dto.setPartyIdFrom(e.getPartyIdFrom());
         dto.setAdditionalShippingCharge(e.getAdditionalShippingCharge());
         dto.setAddtlShippingChargeDesc(e.getAddtlShippingChargeDesc());
+        dto.setShipperId(e.getShipperId());
         dto.setActive(e.getActive());
         dto.setIsPropertyShipmentTypeIdRemoved(e.getIsPropertyShipmentTypeIdRemoved());
         dto.setIsPropertyStatusIdRemoved(e.getIsPropertyStatusIdRemoved());
@@ -122,6 +124,7 @@ public class ShipmentStateEventDtoConverter {
         dto.setIsPropertyPartyIdFromRemoved(e.getIsPropertyPartyIdFromRemoved());
         dto.setIsPropertyAdditionalShippingChargeRemoved(e.getIsPropertyAdditionalShippingChargeRemoved());
         dto.setIsPropertyAddtlShippingChargeDescRemoved(e.getIsPropertyAddtlShippingChargeDescRemoved());
+        dto.setIsPropertyShipperIdRemoved(e.getIsPropertyShipperIdRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
         List<ShipmentItemStateEventDto> shipmentItemEvents = new ArrayList<>();
         for (ShipmentItemStateEvent ee : e.getShipmentItemEvents()) {

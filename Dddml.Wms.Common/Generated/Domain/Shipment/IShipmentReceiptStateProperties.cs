@@ -26,6 +26,10 @@ namespace Dddml.Wms.Domain.Shipment
 
 		string DamageReasonId { get; set; }
 
+		string ReceivedBy { get; set; }
+
+		DateTime? DatetimeReceived { get; set; }
+
 		string ItemDescription { get; set; }
 
 		decimal? AcceptedQuantity { get; set; }

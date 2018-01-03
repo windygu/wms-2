@@ -65,6 +65,30 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         this.damageReasonId = damageReasonId;
     }
 
+    private String receivedBy;
+
+    public String getReceivedBy()
+    {
+        return this.receivedBy;
+    }
+
+    public void setReceivedBy(String receivedBy)
+    {
+        this.receivedBy = receivedBy;
+    }
+
+    private java.sql.Timestamp datetimeReceived;
+
+    public java.sql.Timestamp getDatetimeReceived()
+    {
+        return this.datetimeReceived;
+    }
+
+    public void setDatetimeReceived(java.sql.Timestamp datetimeReceived)
+    {
+        this.datetimeReceived = datetimeReceived;
+    }
+
     private String itemDescription;
 
     public String getItemDescription()
@@ -185,6 +209,30 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         this.isPropertyDamageReasonIdRemoved = removed;
     }
 
+    private Boolean isPropertyReceivedByRemoved;
+
+    public Boolean getIsPropertyReceivedByRemoved()
+    {
+        return this.isPropertyReceivedByRemoved;
+    }
+
+    public void setIsPropertyReceivedByRemoved(Boolean removed)
+    {
+        this.isPropertyReceivedByRemoved = removed;
+    }
+
+    private Boolean isPropertyDatetimeReceivedRemoved;
+
+    public Boolean getIsPropertyDatetimeReceivedRemoved()
+    {
+        return this.isPropertyDatetimeReceivedRemoved;
+    }
+
+    public void setIsPropertyDatetimeReceivedRemoved(Boolean removed)
+    {
+        this.isPropertyDatetimeReceivedRemoved = removed;
+    }
+
     private Boolean isPropertyItemDescriptionRemoved;
 
     public Boolean getIsPropertyItemDescriptionRemoved()
@@ -253,6 +301,8 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         command.setRejectionReasonId(this.getRejectionReasonId());
         command.setDamageStatusId(this.getDamageStatusId());
         command.setDamageReasonId(this.getDamageReasonId());
+        command.setReceivedBy(this.getReceivedBy());
+        command.setDatetimeReceived(this.getDatetimeReceived());
         command.setItemDescription(this.getItemDescription());
         command.setAcceptedQuantity(this.getAcceptedQuantity());
         command.setRejectedQuantity(this.getRejectedQuantity());
@@ -292,6 +342,8 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         command.setIsPropertyRejectionReasonIdRemoved(this.getIsPropertyRejectionReasonIdRemoved());
         command.setIsPropertyDamageStatusIdRemoved(this.getIsPropertyDamageStatusIdRemoved());
         command.setIsPropertyDamageReasonIdRemoved(this.getIsPropertyDamageReasonIdRemoved());
+        command.setIsPropertyReceivedByRemoved(this.getIsPropertyReceivedByRemoved());
+        command.setIsPropertyDatetimeReceivedRemoved(this.getIsPropertyDatetimeReceivedRemoved());
         command.setIsPropertyItemDescriptionRemoved(this.getIsPropertyItemDescriptionRemoved());
         command.setIsPropertyAcceptedQuantityRemoved(this.getIsPropertyAcceptedQuantityRemoved());
         command.setIsPropertyRejectedQuantityRemoved(this.getIsPropertyRejectedQuantityRemoved());

@@ -49,6 +49,10 @@ public interface ShipmentItemMvoCommand extends Command
 
         void setQuantity(java.math.BigDecimal quantity);
 
+        java.math.BigDecimal getTargetQuantity();
+
+        void setTargetQuantity(java.math.BigDecimal targetQuantity);
+
         String getShipmentContentDescription();
 
         void setShipmentContentDescription(String shipmentContentDescription);
@@ -157,6 +161,10 @@ public interface ShipmentItemMvoCommand extends Command
 
         void setShipmentAddtlShippingChargeDesc(String shipmentAddtlShippingChargeDesc);
 
+        String getShipmentShipperId();
+
+        void setShipmentShipperId(String shipmentShipperId);
+
         String getShipmentCreatedBy();
 
         void setShipmentCreatedBy(String shipmentCreatedBy);
@@ -196,6 +204,10 @@ public interface ShipmentItemMvoCommand extends Command
         Boolean getIsPropertyQuantityRemoved();
 
         void setIsPropertyQuantityRemoved(Boolean removed);
+
+        Boolean getIsPropertyTargetQuantityRemoved();
+
+        void setIsPropertyTargetQuantityRemoved(Boolean removed);
 
         Boolean getIsPropertyShipmentContentDescriptionRemoved();
 
@@ -304,6 +316,10 @@ public interface ShipmentItemMvoCommand extends Command
         Boolean getIsPropertyShipmentAddtlShippingChargeDescRemoved();
 
         void setIsPropertyShipmentAddtlShippingChargeDescRemoved(Boolean removed);
+
+        Boolean getIsPropertyShipmentShipperIdRemoved();
+
+        void setIsPropertyShipmentShipperIdRemoved(Boolean removed);
 
         Boolean getIsPropertyShipmentCreatedByRemoved();
 

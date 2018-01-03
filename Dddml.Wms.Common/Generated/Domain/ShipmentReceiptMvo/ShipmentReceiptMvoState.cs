@@ -172,6 +172,10 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
 			this.DamageReasonId = e.DamageReasonId;
 
+			this.ReceivedBy = e.ReceivedBy;
+
+			this.DatetimeReceived = e.DatetimeReceived;
+
 			this.ItemDescription = e.ItemDescription;
 
 			this.AcceptedQuantity = e.AcceptedQuantity;
@@ -231,6 +235,8 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 			this.ShipmentAdditionalShippingCharge = e.ShipmentAdditionalShippingCharge;
 
 			this.ShipmentAddtlShippingChargeDesc = e.ShipmentAddtlShippingChargeDesc;
+
+			this.ShipmentShipperId = e.ShipmentShipperId;
 
 			this.ShipmentCreatedBy = e.ShipmentCreatedBy;
 
@@ -311,6 +317,30 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 			else
 			{
 				this.DamageReasonId = e.DamageReasonId;
+			}
+
+			if (e.ReceivedBy == null)
+			{
+				if (e.IsPropertyReceivedByRemoved)
+				{
+					this.ReceivedBy = default(string);
+				}
+			}
+			else
+			{
+				this.ReceivedBy = e.ReceivedBy;
+			}
+
+			if (e.DatetimeReceived == null)
+			{
+				if (e.IsPropertyDatetimeReceivedRemoved)
+				{
+					this.DatetimeReceived = default(DateTime?);
+				}
+			}
+			else
+			{
+				this.DatetimeReceived = e.DatetimeReceived;
 			}
 
 			if (e.ItemDescription == null)
@@ -671,6 +701,18 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 			else
 			{
 				this.ShipmentAddtlShippingChargeDesc = e.ShipmentAddtlShippingChargeDesc;
+			}
+
+			if (e.ShipmentShipperId == null)
+			{
+				if (e.IsPropertyShipmentShipperIdRemoved)
+				{
+					this.ShipmentShipperId = default(string);
+				}
+			}
+			else
+			{
+				this.ShipmentShipperId = e.ShipmentShipperId;
 			}
 
 			if (e.ShipmentCreatedBy == null)

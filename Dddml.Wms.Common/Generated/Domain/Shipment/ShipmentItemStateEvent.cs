@@ -29,6 +29,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual decimal? Quantity { get; set; }
 
+		public virtual decimal? TargetQuantity { get; set; }
+
 		public virtual string ShipmentContentDescription { get; set; }
 
 		public virtual bool? Active { get; set; }
@@ -128,6 +130,8 @@ namespace Dddml.Wms.Domain.Shipment
 		public virtual bool IsPropertyAttributeSetInstanceIdRemoved { get; set; }
 
 		public virtual bool IsPropertyQuantityRemoved { get; set; }
+
+		public virtual bool IsPropertyTargetQuantityRemoved { get; set; }
 
 		public virtual bool IsPropertyShipmentContentDescriptionRemoved { get; set; }
 

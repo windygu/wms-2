@@ -30,6 +30,8 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 
 		public virtual decimal? Quantity { get; set; }
 
+		public virtual decimal? TargetQuantity { get; set; }
+
 		public virtual string ShipmentContentDescription { get; set; }
 
 		public virtual long? Version { get; set; }
@@ -83,6 +85,8 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 		public virtual decimal? ShipmentAdditionalShippingCharge { get; set; }
 
 		public virtual string ShipmentAddtlShippingChargeDesc { get; set; }
+
+		public virtual string ShipmentShipperId { get; set; }
 
 		public virtual string ShipmentCreatedBy { get; set; }
 
@@ -188,6 +192,8 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 
 		public virtual bool IsPropertyQuantityRemoved { get; set; }
 
+		public virtual bool IsPropertyTargetQuantityRemoved { get; set; }
+
 		public virtual bool IsPropertyShipmentContentDescriptionRemoved { get; set; }
 
 		public virtual bool IsPropertyVersionRemoved { get; set; }
@@ -241,6 +247,8 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 		public virtual bool IsPropertyShipmentAdditionalShippingChargeRemoved { get; set; }
 
 		public virtual bool IsPropertyShipmentAddtlShippingChargeDescRemoved { get; set; }
+
+		public virtual bool IsPropertyShipmentShipperIdRemoved { get; set; }
 
 		public virtual bool IsPropertyShipmentCreatedByRemoved { get; set; }
 

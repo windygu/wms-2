@@ -50,6 +50,18 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
+        string ReceivedBy
+        {
+            get;
+            set;
+        }
+
+        DateTime? DatetimeReceived
+        {
+            get;
+            set;
+        }
+
         string ItemDescription
         {
             get;

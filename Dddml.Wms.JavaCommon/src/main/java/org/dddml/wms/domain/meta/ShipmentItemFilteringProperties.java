@@ -15,6 +15,7 @@ public final class ShipmentItemFilteringProperties
             "productId",
             "attributeSetInstanceId",
             "quantity",
+            "targetQuantity",
             "shipmentContentDescription",
             "version",
             "createdBy",
@@ -32,6 +33,7 @@ public final class ShipmentItemFilteringProperties
             "String",
             "String",
             "String",
+            "java.math.BigDecimal",
             "java.math.BigDecimal",
             "String",
             "Long",
@@ -66,6 +68,8 @@ public final class ShipmentItemFilteringProperties
         aliasMap.put("AttributeSetInstanceId", "attributeSetInstanceId");
         aliasMap.put("quantity", "quantity");
         aliasMap.put("Quantity", "quantity");
+        aliasMap.put("targetQuantity", "targetQuantity");
+        aliasMap.put("TargetQuantity", "targetQuantity");
         aliasMap.put("shipmentContentDescription", "shipmentContentDescription");
         aliasMap.put("ShipmentContentDescription", "shipmentContentDescription");
         aliasMap.put("version", "version");

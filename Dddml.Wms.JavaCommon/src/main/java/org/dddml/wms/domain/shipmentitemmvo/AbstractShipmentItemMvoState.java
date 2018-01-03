@@ -58,6 +58,18 @@ public abstract class AbstractShipmentItemMvoState implements ShipmentItemMvoSta
         this.quantity = quantity;
     }
 
+    private java.math.BigDecimal targetQuantity;
+
+    public java.math.BigDecimal getTargetQuantity()
+    {
+        return this.targetQuantity;
+    }
+
+    public void setTargetQuantity(java.math.BigDecimal targetQuantity)
+    {
+        this.targetQuantity = targetQuantity;
+    }
+
     private String shipmentContentDescription;
 
     public String getShipmentContentDescription()
@@ -430,6 +442,18 @@ public abstract class AbstractShipmentItemMvoState implements ShipmentItemMvoSta
         this.shipmentAddtlShippingChargeDesc = shipmentAddtlShippingChargeDesc;
     }
 
+    private String shipmentShipperId;
+
+    public String getShipmentShipperId()
+    {
+        return this.shipmentShipperId;
+    }
+
+    public void setShipmentShipperId(String shipmentShipperId)
+    {
+        this.shipmentShipperId = shipmentShipperId;
+    }
+
     private Long shipmentVersion;
 
     public Long getShipmentVersion()
@@ -567,6 +591,7 @@ public abstract class AbstractShipmentItemMvoState implements ShipmentItemMvoSta
         this.setProductId(e.getProductId());
         this.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
         this.setQuantity(e.getQuantity());
+        this.setTargetQuantity(e.getTargetQuantity());
         this.setShipmentContentDescription(e.getShipmentContentDescription());
         this.setVersion(e.getVersion());
         this.setActive(e.getActive());
@@ -594,6 +619,7 @@ public abstract class AbstractShipmentItemMvoState implements ShipmentItemMvoSta
         this.setShipmentPartyIdFrom(e.getShipmentPartyIdFrom());
         this.setShipmentAdditionalShippingCharge(e.getShipmentAdditionalShippingCharge());
         this.setShipmentAddtlShippingChargeDesc(e.getShipmentAddtlShippingChargeDesc());
+        this.setShipmentShipperId(e.getShipmentShipperId());
         this.setShipmentCreatedBy(e.getShipmentCreatedBy());
         this.setShipmentCreatedAt(e.getShipmentCreatedAt());
         this.setShipmentUpdatedBy(e.getShipmentUpdatedBy());
@@ -641,6 +667,17 @@ public abstract class AbstractShipmentItemMvoState implements ShipmentItemMvoSta
         else
         {
             this.setQuantity(e.getQuantity());
+        }
+        if (e.getTargetQuantity() == null)
+        {
+            if (e.getIsPropertyTargetQuantityRemoved() != null && e.getIsPropertyTargetQuantityRemoved())
+            {
+                this.setTargetQuantity(null);
+            }
+        }
+        else
+        {
+            this.setTargetQuantity(e.getTargetQuantity());
         }
         if (e.getShipmentContentDescription() == null)
         {
@@ -938,6 +975,17 @@ public abstract class AbstractShipmentItemMvoState implements ShipmentItemMvoSta
         else
         {
             this.setShipmentAddtlShippingChargeDesc(e.getShipmentAddtlShippingChargeDesc());
+        }
+        if (e.getShipmentShipperId() == null)
+        {
+            if (e.getIsPropertyShipmentShipperIdRemoved() != null && e.getIsPropertyShipmentShipperIdRemoved())
+            {
+                this.setShipmentShipperId(null);
+            }
+        }
+        else
+        {
+            this.setShipmentShipperId(e.getShipmentShipperId());
         }
         if (e.getShipmentCreatedBy() == null)
         {

@@ -26,6 +26,10 @@ public interface ShipmentItemMvoStateEvent extends Event
 
     void setQuantity(java.math.BigDecimal quantity);
 
+    java.math.BigDecimal getTargetQuantity();
+
+    void setTargetQuantity(java.math.BigDecimal targetQuantity);
+
     String getShipmentContentDescription();
 
     void setShipmentContentDescription(String shipmentContentDescription);
@@ -142,6 +146,10 @@ public interface ShipmentItemMvoStateEvent extends Event
 
     void setShipmentAddtlShippingChargeDesc(String shipmentAddtlShippingChargeDesc);
 
+    String getShipmentShipperId();
+
+    void setShipmentShipperId(String shipmentShipperId);
+
     String getShipmentCreatedBy();
 
     void setShipmentCreatedBy(String shipmentCreatedBy);
@@ -185,6 +193,10 @@ public interface ShipmentItemMvoStateEvent extends Event
         Boolean getIsPropertyQuantityRemoved();
 
         void setIsPropertyQuantityRemoved(Boolean removed);
+
+        Boolean getIsPropertyTargetQuantityRemoved();
+
+        void setIsPropertyTargetQuantityRemoved(Boolean removed);
 
         Boolean getIsPropertyShipmentContentDescriptionRemoved();
 
@@ -293,6 +305,10 @@ public interface ShipmentItemMvoStateEvent extends Event
         Boolean getIsPropertyShipmentAddtlShippingChargeDescRemoved();
 
         void setIsPropertyShipmentAddtlShippingChargeDescRemoved(Boolean removed);
+
+        Boolean getIsPropertyShipmentShipperIdRemoved();
+
+        void setIsPropertyShipmentShipperIdRemoved(Boolean removed);
 
         Boolean getIsPropertyShipmentCreatedByRemoved();
 

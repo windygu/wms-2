@@ -61,6 +61,7 @@ namespace Dddml.Wms.Domain.Shipment
             dto.PartyIdFrom = e.PartyIdFrom;
             dto.AdditionalShippingCharge = e.AdditionalShippingCharge;
             dto.AddtlShippingChargeDesc = e.AddtlShippingChargeDesc;
+            dto.ShipperId = e.ShipperId;
             dto.Active = e.Active;
             var shipmentItemEvents = new List<ShipmentItemStateCreatedDto>();
             foreach (var ee in e.ShipmentItemEvents)
@@ -112,6 +113,7 @@ namespace Dddml.Wms.Domain.Shipment
             dto.PartyIdFrom = e.PartyIdFrom;
             dto.AdditionalShippingCharge = e.AdditionalShippingCharge;
             dto.AddtlShippingChargeDesc = e.AddtlShippingChargeDesc;
+            dto.ShipperId = e.ShipperId;
             dto.Active = e.Active;
             dto.IsPropertyShipmentTypeIdRemoved = e.IsPropertyShipmentTypeIdRemoved;
             dto.IsPropertyStatusIdRemoved = e.IsPropertyStatusIdRemoved;
@@ -137,6 +139,7 @@ namespace Dddml.Wms.Domain.Shipment
             dto.IsPropertyPartyIdFromRemoved = e.IsPropertyPartyIdFromRemoved;
             dto.IsPropertyAdditionalShippingChargeRemoved = e.IsPropertyAdditionalShippingChargeRemoved;
             dto.IsPropertyAddtlShippingChargeDescRemoved = e.IsPropertyAddtlShippingChargeDescRemoved;
+            dto.IsPropertyShipperIdRemoved = e.IsPropertyShipperIdRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;
             var shipmentItemEvents = new List<ShipmentItemStateCreatedOrMergePatchedOrRemovedDto>();
             foreach (var ee in e.ShipmentItemEvents)

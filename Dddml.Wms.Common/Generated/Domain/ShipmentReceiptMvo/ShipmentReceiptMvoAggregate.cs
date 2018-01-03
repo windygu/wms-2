@@ -103,6 +103,8 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             e.RejectionReasonId = c.RejectionReasonId;
             e.DamageStatusId = c.DamageStatusId;
             e.DamageReasonId = c.DamageReasonId;
+            e.ReceivedBy = c.ReceivedBy;
+            e.DatetimeReceived = c.DatetimeReceived;
             e.ItemDescription = c.ItemDescription;
             e.AcceptedQuantity = c.AcceptedQuantity;
             e.RejectedQuantity = c.RejectedQuantity;
@@ -133,6 +135,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             e.ShipmentPartyIdFrom = c.ShipmentPartyIdFrom;
             e.ShipmentAdditionalShippingCharge = c.ShipmentAdditionalShippingCharge;
             e.ShipmentAddtlShippingChargeDesc = c.ShipmentAddtlShippingChargeDesc;
+            e.ShipmentShipperId = c.ShipmentShipperId;
             e.ShipmentCreatedBy = c.ShipmentCreatedBy;
             e.ShipmentCreatedAt = c.ShipmentCreatedAt;
             e.ShipmentUpdatedBy = c.ShipmentUpdatedBy;
@@ -159,6 +162,8 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             e.RejectionReasonId = c.RejectionReasonId;
             e.DamageStatusId = c.DamageStatusId;
             e.DamageReasonId = c.DamageReasonId;
+            e.ReceivedBy = c.ReceivedBy;
+            e.DatetimeReceived = c.DatetimeReceived;
             e.ItemDescription = c.ItemDescription;
             e.AcceptedQuantity = c.AcceptedQuantity;
             e.RejectedQuantity = c.RejectedQuantity;
@@ -189,6 +194,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             e.ShipmentPartyIdFrom = c.ShipmentPartyIdFrom;
             e.ShipmentAdditionalShippingCharge = c.ShipmentAdditionalShippingCharge;
             e.ShipmentAddtlShippingChargeDesc = c.ShipmentAddtlShippingChargeDesc;
+            e.ShipmentShipperId = c.ShipmentShipperId;
             e.ShipmentCreatedBy = c.ShipmentCreatedBy;
             e.ShipmentCreatedAt = c.ShipmentCreatedAt;
             e.ShipmentUpdatedBy = c.ShipmentUpdatedBy;
@@ -199,6 +205,8 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             e.IsPropertyRejectionReasonIdRemoved = c.IsPropertyRejectionReasonIdRemoved;
             e.IsPropertyDamageStatusIdRemoved = c.IsPropertyDamageStatusIdRemoved;
             e.IsPropertyDamageReasonIdRemoved = c.IsPropertyDamageReasonIdRemoved;
+            e.IsPropertyReceivedByRemoved = c.IsPropertyReceivedByRemoved;
+            e.IsPropertyDatetimeReceivedRemoved = c.IsPropertyDatetimeReceivedRemoved;
             e.IsPropertyItemDescriptionRemoved = c.IsPropertyItemDescriptionRemoved;
             e.IsPropertyAcceptedQuantityRemoved = c.IsPropertyAcceptedQuantityRemoved;
             e.IsPropertyRejectedQuantityRemoved = c.IsPropertyRejectedQuantityRemoved;
@@ -229,6 +237,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             e.IsPropertyShipmentPartyIdFromRemoved = c.IsPropertyShipmentPartyIdFromRemoved;
             e.IsPropertyShipmentAdditionalShippingChargeRemoved = c.IsPropertyShipmentAdditionalShippingChargeRemoved;
             e.IsPropertyShipmentAddtlShippingChargeDescRemoved = c.IsPropertyShipmentAddtlShippingChargeDescRemoved;
+            e.IsPropertyShipmentShipperIdRemoved = c.IsPropertyShipmentShipperIdRemoved;
             e.IsPropertyShipmentCreatedByRemoved = c.IsPropertyShipmentCreatedByRemoved;
             e.IsPropertyShipmentCreatedAtRemoved = c.IsPropertyShipmentCreatedAtRemoved;
             e.IsPropertyShipmentUpdatedByRemoved = c.IsPropertyShipmentUpdatedByRemoved;

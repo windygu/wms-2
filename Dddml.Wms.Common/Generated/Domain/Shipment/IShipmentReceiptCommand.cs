@@ -35,6 +35,10 @@ namespace Dddml.Wms.Domain.Shipment
 
 		string DamageReasonId { get; set; }
 
+		string ReceivedBy { get; set; }
+
+		DateTime? DatetimeReceived { get; set; }
+
 		string ItemDescription { get; set; }
 
 		decimal? AcceptedQuantity { get; set; }
@@ -64,6 +68,10 @@ namespace Dddml.Wms.Domain.Shipment
 		bool IsPropertyDamageStatusIdRemoved { get; set; }
 
 		bool IsPropertyDamageReasonIdRemoved { get; set; }
+
+		bool IsPropertyReceivedByRemoved { get; set; }
+
+		bool IsPropertyDatetimeReceivedRemoved { get; set; }
 
 		bool IsPropertyItemDescriptionRemoved { get; set; }
 

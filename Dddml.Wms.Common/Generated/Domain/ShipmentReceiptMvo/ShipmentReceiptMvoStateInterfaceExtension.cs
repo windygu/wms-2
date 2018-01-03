@@ -54,6 +54,8 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             cmd.RejectionReasonId = state.RejectionReasonId;
             cmd.DamageStatusId = state.DamageStatusId;
             cmd.DamageReasonId = state.DamageReasonId;
+            cmd.ReceivedBy = state.ReceivedBy;
+            cmd.DatetimeReceived = state.DatetimeReceived;
             cmd.ItemDescription = state.ItemDescription;
             cmd.AcceptedQuantity = state.AcceptedQuantity;
             cmd.RejectedQuantity = state.RejectedQuantity;
@@ -84,6 +86,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             cmd.ShipmentPartyIdFrom = state.ShipmentPartyIdFrom;
             cmd.ShipmentAdditionalShippingCharge = state.ShipmentAdditionalShippingCharge;
             cmd.ShipmentAddtlShippingChargeDesc = state.ShipmentAddtlShippingChargeDesc;
+            cmd.ShipmentShipperId = state.ShipmentShipperId;
             cmd.ShipmentCreatedBy = state.ShipmentCreatedBy;
             cmd.ShipmentCreatedAt = state.ShipmentCreatedAt;
             cmd.ShipmentUpdatedBy = state.ShipmentUpdatedBy;
@@ -95,6 +98,8 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             if (state.RejectionReasonId == null) { cmd.IsPropertyRejectionReasonIdRemoved = true; }
             if (state.DamageStatusId == null) { cmd.IsPropertyDamageStatusIdRemoved = true; }
             if (state.DamageReasonId == null) { cmd.IsPropertyDamageReasonIdRemoved = true; }
+            if (state.ReceivedBy == null) { cmd.IsPropertyReceivedByRemoved = true; }
+            if (state.DatetimeReceived == null) { cmd.IsPropertyDatetimeReceivedRemoved = true; }
             if (state.ItemDescription == null) { cmd.IsPropertyItemDescriptionRemoved = true; }
             if (state.AcceptedQuantity == null) { cmd.IsPropertyAcceptedQuantityRemoved = true; }
             if (state.RejectedQuantity == null) { cmd.IsPropertyRejectedQuantityRemoved = true; }
@@ -123,6 +128,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             if (state.ShipmentPartyIdFrom == null) { cmd.IsPropertyShipmentPartyIdFromRemoved = true; }
             if (state.ShipmentAdditionalShippingCharge == null) { cmd.IsPropertyShipmentAdditionalShippingChargeRemoved = true; }
             if (state.ShipmentAddtlShippingChargeDesc == null) { cmd.IsPropertyShipmentAddtlShippingChargeDescRemoved = true; }
+            if (state.ShipmentShipperId == null) { cmd.IsPropertyShipmentShipperIdRemoved = true; }
             if (state.ShipmentCreatedBy == null) { cmd.IsPropertyShipmentCreatedByRemoved = true; }
             if (state.ShipmentUpdatedBy == null) { cmd.IsPropertyShipmentUpdatedByRemoved = true; }
             return cmd;
@@ -141,6 +147,8 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             cmd.RejectionReasonId = state.RejectionReasonId;
             cmd.DamageStatusId = state.DamageStatusId;
             cmd.DamageReasonId = state.DamageReasonId;
+            cmd.ReceivedBy = state.ReceivedBy;
+            cmd.DatetimeReceived = state.DatetimeReceived;
             cmd.ItemDescription = state.ItemDescription;
             cmd.AcceptedQuantity = state.AcceptedQuantity;
             cmd.RejectedQuantity = state.RejectedQuantity;
@@ -171,6 +179,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             cmd.ShipmentPartyIdFrom = state.ShipmentPartyIdFrom;
             cmd.ShipmentAdditionalShippingCharge = state.ShipmentAdditionalShippingCharge;
             cmd.ShipmentAddtlShippingChargeDesc = state.ShipmentAddtlShippingChargeDesc;
+            cmd.ShipmentShipperId = state.ShipmentShipperId;
             cmd.ShipmentCreatedBy = state.ShipmentCreatedBy;
             cmd.ShipmentCreatedAt = state.ShipmentCreatedAt;
             cmd.ShipmentUpdatedBy = state.ShipmentUpdatedBy;

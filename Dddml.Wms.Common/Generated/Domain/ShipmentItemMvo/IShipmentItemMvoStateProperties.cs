@@ -23,6 +23,8 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 
 		decimal? Quantity { get; set; }
 
+		decimal? TargetQuantity { get; set; }
+
 		string ShipmentContentDescription { get; set; }
 
 		long Version { get; set; }
@@ -76,6 +78,8 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 		decimal? ShipmentAdditionalShippingCharge { get; set; }
 
 		string ShipmentAddtlShippingChargeDesc { get; set; }
+
+		string ShipmentShipperId { get; set; }
 
 		long ShipmentVersion { get; set; }
 

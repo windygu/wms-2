@@ -168,6 +168,8 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 
 			this.Quantity = e.Quantity;
 
+			this.TargetQuantity = e.TargetQuantity;
+
 			this.ShipmentContentDescription = e.ShipmentContentDescription;
 
             this.Version = (e.Version != null && e.Version.HasValue) ? e.Version.Value : default(long);
@@ -221,6 +223,8 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 			this.ShipmentAdditionalShippingCharge = e.ShipmentAdditionalShippingCharge;
 
 			this.ShipmentAddtlShippingChargeDesc = e.ShipmentAddtlShippingChargeDesc;
+
+			this.ShipmentShipperId = e.ShipmentShipperId;
 
 			this.ShipmentCreatedBy = e.ShipmentCreatedBy;
 
@@ -277,6 +281,18 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 			else
 			{
 				this.Quantity = e.Quantity;
+			}
+
+			if (e.TargetQuantity == null)
+			{
+				if (e.IsPropertyTargetQuantityRemoved)
+				{
+					this.TargetQuantity = default(decimal?);
+				}
+			}
+			else
+			{
+				this.TargetQuantity = e.TargetQuantity;
 			}
 
 			if (e.ShipmentContentDescription == null)
@@ -601,6 +617,18 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 			else
 			{
 				this.ShipmentAddtlShippingChargeDesc = e.ShipmentAddtlShippingChargeDesc;
+			}
+
+			if (e.ShipmentShipperId == null)
+			{
+				if (e.IsPropertyShipmentShipperIdRemoved)
+				{
+					this.ShipmentShipperId = default(string);
+				}
+			}
+			else
+			{
+				this.ShipmentShipperId = e.ShipmentShipperId;
 			}
 
 			if (e.ShipmentCreatedBy == null)

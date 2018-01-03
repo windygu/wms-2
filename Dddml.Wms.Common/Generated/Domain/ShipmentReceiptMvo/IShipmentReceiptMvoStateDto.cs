@@ -52,6 +52,18 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             set;
         }
 
+        string ReceivedBy
+        {
+            get;
+            set;
+        }
+
+        DateTime? DatetimeReceived
+        {
+            get;
+            set;
+        }
+
         string ItemDescription
         {
             get;
@@ -227,6 +239,12 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
         }
 
         string ShipmentAddtlShippingChargeDesc
+        {
+            get;
+            set;
+        }
+
+        string ShipmentShipperId
         {
             get;
             set;

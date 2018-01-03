@@ -15,6 +15,7 @@
     <property name="ProductId" ><column name="ProductId" sql-type="VARCHAR(20)" /></property>
     <property name="AttributeSetInstanceId" ></property>
     <property name="Quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>
+    <property name="TargetQuantity" ><column name="TargetQuantity" sql-type="DECIMAL(18,6)" /></property>
     <property name="ShipmentContentDescription" ><column name="ShipmentContentDescription" sql-type="VARCHAR(255)" /></property>
     <property name="Version" ></property>
     <property name="CreatedBy" ></property>
@@ -44,6 +45,7 @@
     <property name="ShipmentPartyIdFrom" ><column name="ShipmentPartyIdFrom" sql-type="VARCHAR(20)" /></property>
     <property name="ShipmentAdditionalShippingCharge" ><column name="ShipmentAdditionalShippingCharge" sql-type="DECIMAL(18,2)" /></property>
     <property name="ShipmentAddtlShippingChargeDesc" ><column name="ShipmentAddtlShippingChargeDesc" sql-type="VARCHAR(255)" /></property>
+    <property name="ShipmentShipperId" ><column name="ShipmentShipperId" sql-type="VARCHAR(20)" /></property>
     <property name="ShipmentCreatedBy" ></property>
     <property name="ShipmentCreatedAt" ></property>
     <property name="ShipmentUpdatedBy" ></property>

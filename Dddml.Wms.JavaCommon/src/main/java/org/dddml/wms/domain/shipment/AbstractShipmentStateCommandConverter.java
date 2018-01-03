@@ -61,6 +61,7 @@ public abstract class AbstractShipmentStateCommandConverter<TCreateShipment exte
         cmd.setPartyIdFrom(state.getPartyIdFrom());
         cmd.setAdditionalShippingCharge(state.getAdditionalShippingCharge());
         cmd.setAddtlShippingChargeDesc(state.getAddtlShippingChargeDesc());
+        cmd.setShipperId(state.getShipperId());
         cmd.setActive(state.getActive());
             
         if (state.getShipmentTypeId() == null) { cmd.setIsPropertyShipmentTypeIdRemoved(true); }
@@ -87,6 +88,7 @@ public abstract class AbstractShipmentStateCommandConverter<TCreateShipment exte
         if (state.getPartyIdFrom() == null) { cmd.setIsPropertyPartyIdFromRemoved(true); }
         if (state.getAdditionalShippingCharge() == null) { cmd.setIsPropertyAdditionalShippingChargeRemoved(true); }
         if (state.getAddtlShippingChargeDesc() == null) { cmd.setIsPropertyAddtlShippingChargeDescRemoved(true); }
+        if (state.getShipperId() == null) { cmd.setIsPropertyShipperIdRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
         for (ShipmentItemState d : state.getShipmentItems())
         {
@@ -131,6 +133,7 @@ public abstract class AbstractShipmentStateCommandConverter<TCreateShipment exte
         cmd.setPartyIdFrom(state.getPartyIdFrom());
         cmd.setAdditionalShippingCharge(state.getAdditionalShippingCharge());
         cmd.setAddtlShippingChargeDesc(state.getAddtlShippingChargeDesc());
+        cmd.setShipperId(state.getShipperId());
         cmd.setActive(state.getActive());
         for (ShipmentItemState d : state.getShipmentItems())
         {

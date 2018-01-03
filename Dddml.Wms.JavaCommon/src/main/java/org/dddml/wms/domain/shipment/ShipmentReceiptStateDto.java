@@ -81,6 +81,30 @@ public class ShipmentReceiptStateDto
         this.damageReasonId = damageReasonId;
     }
 
+    private String receivedBy;
+
+    public String getReceivedBy()
+    {
+        return this.receivedBy;
+    }
+
+    public void setReceivedBy(String receivedBy)
+    {
+        this.receivedBy = receivedBy;
+    }
+
+    private java.sql.Timestamp datetimeReceived;
+
+    public java.sql.Timestamp getDatetimeReceived()
+    {
+        return this.datetimeReceived;
+    }
+
+    public void setDatetimeReceived(java.sql.Timestamp datetimeReceived)
+    {
+        this.datetimeReceived = datetimeReceived;
+    }
+
     private String itemDescription;
 
     public String getItemDescription()
@@ -256,6 +280,12 @@ public class ShipmentReceiptStateDto
             }
             if (returnedFieldsContains("DamageReasonId")) {
                 dto.setDamageReasonId(state.getDamageReasonId());
+            }
+            if (returnedFieldsContains("ReceivedBy")) {
+                dto.setReceivedBy(state.getReceivedBy());
+            }
+            if (returnedFieldsContains("DatetimeReceived")) {
+                dto.setDatetimeReceived(state.getDatetimeReceived());
             }
             if (returnedFieldsContains("ItemDescription")) {
                 dto.setItemDescription(state.getItemDescription());

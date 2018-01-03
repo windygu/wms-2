@@ -58,6 +58,18 @@ public class ShipmentItemMvoStateDto
         this.quantity = quantity;
     }
 
+    private java.math.BigDecimal targetQuantity;
+
+    public java.math.BigDecimal getTargetQuantity()
+    {
+        return this.targetQuantity;
+    }
+
+    public void setTargetQuantity(java.math.BigDecimal targetQuantity)
+    {
+        this.targetQuantity = targetQuantity;
+    }
+
     private String shipmentContentDescription;
 
     public String getShipmentContentDescription()
@@ -382,6 +394,18 @@ public class ShipmentItemMvoStateDto
         this.shipmentAddtlShippingChargeDesc = shipmentAddtlShippingChargeDesc;
     }
 
+    private String shipmentShipperId;
+
+    public String getShipmentShipperId()
+    {
+        return this.shipmentShipperId;
+    }
+
+    public void setShipmentShipperId(String shipmentShipperId)
+    {
+        this.shipmentShipperId = shipmentShipperId;
+    }
+
     private String shipmentCreatedBy;
 
     public String getShipmentCreatedBy()
@@ -540,6 +564,9 @@ public class ShipmentItemMvoStateDto
             if (returnedFieldsContains("Quantity")) {
                 dto.setQuantity(state.getQuantity());
             }
+            if (returnedFieldsContains("TargetQuantity")) {
+                dto.setTargetQuantity(state.getTargetQuantity());
+            }
             if (returnedFieldsContains("ShipmentContentDescription")) {
                 dto.setShipmentContentDescription(state.getShipmentContentDescription());
             }
@@ -620,6 +647,9 @@ public class ShipmentItemMvoStateDto
             }
             if (returnedFieldsContains("ShipmentAddtlShippingChargeDesc")) {
                 dto.setShipmentAddtlShippingChargeDesc(state.getShipmentAddtlShippingChargeDesc());
+            }
+            if (returnedFieldsContains("ShipmentShipperId")) {
+                dto.setShipmentShipperId(state.getShipmentShipperId());
             }
             if (returnedFieldsContains("ShipmentCreatedBy")) {
                 dto.setShipmentCreatedBy(state.getShipmentCreatedBy());

@@ -74,6 +74,10 @@ aggregates:
       # LastModifiedByUserLogin:
         # type: id-vlong
         
+      # --------------------------------
+      ShipperId:
+        type: id
+      
       ShipmentItems:
         itemType: ShipmentItem
       ShipmentReceipts:
@@ -113,6 +117,10 @@ aggregates:
               
           Quantity:
             type: fixed-point
+            
+          TargetQuantity:
+            type: fixed-point
+            description: The Quantity which should be shipped.
             
           ShipmentContentDescription:
             type: description
@@ -180,18 +188,20 @@ aggregates:
             referenceType: DamageReason
           # -----------------------------------
             
-          # ReceivedByUserLoginId:
-            # type: id-vlong
-          # DatetimeReceived:
-            # type: date-time
+          ReceivedBy:
+            type: id-vlong
+          DatetimeReceived:
+            type: date-time
             
           ItemDescription:
             type: description
             
           AcceptedQuantity:
             type: fixed-point
+            
           RejectedQuantity:
             type: fixed-point
+          
           DamagedQuantity:
             type: fixed-point
             

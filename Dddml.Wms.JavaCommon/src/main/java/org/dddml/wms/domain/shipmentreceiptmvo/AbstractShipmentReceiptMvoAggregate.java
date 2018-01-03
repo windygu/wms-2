@@ -57,6 +57,8 @@ public abstract class AbstractShipmentReceiptMvoAggregate extends AbstractAggreg
         e.setRejectionReasonId(c.getRejectionReasonId());
         e.setDamageStatusId(c.getDamageStatusId());
         e.setDamageReasonId(c.getDamageReasonId());
+        e.setReceivedBy(c.getReceivedBy());
+        e.setDatetimeReceived(c.getDatetimeReceived());
         e.setItemDescription(c.getItemDescription());
         e.setAcceptedQuantity(c.getAcceptedQuantity());
         e.setRejectedQuantity(c.getRejectedQuantity());
@@ -87,6 +89,7 @@ public abstract class AbstractShipmentReceiptMvoAggregate extends AbstractAggreg
         e.setShipmentPartyIdFrom(c.getShipmentPartyIdFrom());
         e.setShipmentAdditionalShippingCharge(c.getShipmentAdditionalShippingCharge());
         e.setShipmentAddtlShippingChargeDesc(c.getShipmentAddtlShippingChargeDesc());
+        e.setShipmentShipperId(c.getShipmentShipperId());
         e.setShipmentCreatedBy(c.getShipmentCreatedBy());
         e.setShipmentCreatedAt(c.getShipmentCreatedAt());
         e.setShipmentUpdatedBy(c.getShipmentUpdatedBy());
@@ -106,6 +109,8 @@ public abstract class AbstractShipmentReceiptMvoAggregate extends AbstractAggreg
         e.setRejectionReasonId(c.getRejectionReasonId());
         e.setDamageStatusId(c.getDamageStatusId());
         e.setDamageReasonId(c.getDamageReasonId());
+        e.setReceivedBy(c.getReceivedBy());
+        e.setDatetimeReceived(c.getDatetimeReceived());
         e.setItemDescription(c.getItemDescription());
         e.setAcceptedQuantity(c.getAcceptedQuantity());
         e.setRejectedQuantity(c.getRejectedQuantity());
@@ -136,6 +141,7 @@ public abstract class AbstractShipmentReceiptMvoAggregate extends AbstractAggreg
         e.setShipmentPartyIdFrom(c.getShipmentPartyIdFrom());
         e.setShipmentAdditionalShippingCharge(c.getShipmentAdditionalShippingCharge());
         e.setShipmentAddtlShippingChargeDesc(c.getShipmentAddtlShippingChargeDesc());
+        e.setShipmentShipperId(c.getShipmentShipperId());
         e.setShipmentCreatedBy(c.getShipmentCreatedBy());
         e.setShipmentCreatedAt(c.getShipmentCreatedAt());
         e.setShipmentUpdatedBy(c.getShipmentUpdatedBy());
@@ -146,6 +152,8 @@ public abstract class AbstractShipmentReceiptMvoAggregate extends AbstractAggreg
         e.setIsPropertyRejectionReasonIdRemoved(c.getIsPropertyRejectionReasonIdRemoved());
         e.setIsPropertyDamageStatusIdRemoved(c.getIsPropertyDamageStatusIdRemoved());
         e.setIsPropertyDamageReasonIdRemoved(c.getIsPropertyDamageReasonIdRemoved());
+        e.setIsPropertyReceivedByRemoved(c.getIsPropertyReceivedByRemoved());
+        e.setIsPropertyDatetimeReceivedRemoved(c.getIsPropertyDatetimeReceivedRemoved());
         e.setIsPropertyItemDescriptionRemoved(c.getIsPropertyItemDescriptionRemoved());
         e.setIsPropertyAcceptedQuantityRemoved(c.getIsPropertyAcceptedQuantityRemoved());
         e.setIsPropertyRejectedQuantityRemoved(c.getIsPropertyRejectedQuantityRemoved());
@@ -176,6 +184,7 @@ public abstract class AbstractShipmentReceiptMvoAggregate extends AbstractAggreg
         e.setIsPropertyShipmentPartyIdFromRemoved(c.getIsPropertyShipmentPartyIdFromRemoved());
         e.setIsPropertyShipmentAdditionalShippingChargeRemoved(c.getIsPropertyShipmentAdditionalShippingChargeRemoved());
         e.setIsPropertyShipmentAddtlShippingChargeDescRemoved(c.getIsPropertyShipmentAddtlShippingChargeDescRemoved());
+        e.setIsPropertyShipmentShipperIdRemoved(c.getIsPropertyShipmentShipperIdRemoved());
         e.setIsPropertyShipmentCreatedByRemoved(c.getIsPropertyShipmentCreatedByRemoved());
         e.setIsPropertyShipmentCreatedAtRemoved(c.getIsPropertyShipmentCreatedAtRemoved());
         e.setIsPropertyShipmentUpdatedByRemoved(c.getIsPropertyShipmentUpdatedByRemoved());

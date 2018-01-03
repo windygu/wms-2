@@ -164,6 +164,12 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
+        string ShipperId
+        {
+            get;
+            set;
+        }
+
         bool? Active
         {
             get;

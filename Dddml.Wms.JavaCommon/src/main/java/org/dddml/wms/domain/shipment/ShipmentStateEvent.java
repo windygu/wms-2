@@ -109,6 +109,10 @@ public interface ShipmentStateEvent extends Event
 
     void setAddtlShippingChargeDesc(String addtlShippingChargeDesc);
 
+    String getShipperId();
+
+    void setShipperId(String shipperId);
+
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -240,6 +244,10 @@ public interface ShipmentStateEvent extends Event
         Boolean getIsPropertyAddtlShippingChargeDescRemoved();
 
         void setIsPropertyAddtlShippingChargeDescRemoved(Boolean removed);
+
+        Boolean getIsPropertyShipperIdRemoved();
+
+        void setIsPropertyShipperIdRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

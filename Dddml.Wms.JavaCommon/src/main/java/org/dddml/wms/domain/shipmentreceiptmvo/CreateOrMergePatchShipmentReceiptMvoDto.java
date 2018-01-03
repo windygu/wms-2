@@ -66,6 +66,30 @@ public class CreateOrMergePatchShipmentReceiptMvoDto extends AbstractShipmentRec
         this.damageReasonId = damageReasonId;
     }
 
+    private String receivedBy;
+
+    public String getReceivedBy()
+    {
+        return this.receivedBy;
+    }
+
+    public void setReceivedBy(String receivedBy)
+    {
+        this.receivedBy = receivedBy;
+    }
+
+    private java.sql.Timestamp datetimeReceived;
+
+    public java.sql.Timestamp getDatetimeReceived()
+    {
+        return this.datetimeReceived;
+    }
+
+    public void setDatetimeReceived(java.sql.Timestamp datetimeReceived)
+    {
+        this.datetimeReceived = datetimeReceived;
+    }
+
     private String itemDescription;
 
     public String getItemDescription()
@@ -426,6 +450,18 @@ public class CreateOrMergePatchShipmentReceiptMvoDto extends AbstractShipmentRec
         this.shipmentAddtlShippingChargeDesc = shipmentAddtlShippingChargeDesc;
     }
 
+    private String shipmentShipperId;
+
+    public String getShipmentShipperId()
+    {
+        return this.shipmentShipperId;
+    }
+
+    public void setShipmentShipperId(String shipmentShipperId)
+    {
+        this.shipmentShipperId = shipmentShipperId;
+    }
+
     private String shipmentCreatedBy;
 
     public String getShipmentCreatedBy()
@@ -544,6 +580,30 @@ public class CreateOrMergePatchShipmentReceiptMvoDto extends AbstractShipmentRec
     public void setIsPropertyDamageReasonIdRemoved(Boolean removed)
     {
         this.isPropertyDamageReasonIdRemoved = removed;
+    }
+
+    private Boolean isPropertyReceivedByRemoved;
+
+    public Boolean getIsPropertyReceivedByRemoved()
+    {
+        return this.isPropertyReceivedByRemoved;
+    }
+
+    public void setIsPropertyReceivedByRemoved(Boolean removed)
+    {
+        this.isPropertyReceivedByRemoved = removed;
+    }
+
+    private Boolean isPropertyDatetimeReceivedRemoved;
+
+    public Boolean getIsPropertyDatetimeReceivedRemoved()
+    {
+        return this.isPropertyDatetimeReceivedRemoved;
+    }
+
+    public void setIsPropertyDatetimeReceivedRemoved(Boolean removed)
+    {
+        this.isPropertyDatetimeReceivedRemoved = removed;
     }
 
     private Boolean isPropertyItemDescriptionRemoved;
@@ -906,6 +966,18 @@ public class CreateOrMergePatchShipmentReceiptMvoDto extends AbstractShipmentRec
         this.isPropertyShipmentAddtlShippingChargeDescRemoved = removed;
     }
 
+    private Boolean isPropertyShipmentShipperIdRemoved;
+
+    public Boolean getIsPropertyShipmentShipperIdRemoved()
+    {
+        return this.isPropertyShipmentShipperIdRemoved;
+    }
+
+    public void setIsPropertyShipmentShipperIdRemoved(Boolean removed)
+    {
+        this.isPropertyShipmentShipperIdRemoved = removed;
+    }
+
     private Boolean isPropertyShipmentCreatedByRemoved;
 
     public Boolean getIsPropertyShipmentCreatedByRemoved()
@@ -974,6 +1046,8 @@ public class CreateOrMergePatchShipmentReceiptMvoDto extends AbstractShipmentRec
         command.setRejectionReasonId(this.getRejectionReasonId());
         command.setDamageStatusId(this.getDamageStatusId());
         command.setDamageReasonId(this.getDamageReasonId());
+        command.setReceivedBy(this.getReceivedBy());
+        command.setDatetimeReceived(this.getDatetimeReceived());
         command.setItemDescription(this.getItemDescription());
         command.setAcceptedQuantity(this.getAcceptedQuantity());
         command.setRejectedQuantity(this.getRejectedQuantity());
@@ -1004,6 +1078,7 @@ public class CreateOrMergePatchShipmentReceiptMvoDto extends AbstractShipmentRec
         command.setShipmentPartyIdFrom(this.getShipmentPartyIdFrom());
         command.setShipmentAdditionalShippingCharge(this.getShipmentAdditionalShippingCharge());
         command.setShipmentAddtlShippingChargeDesc(this.getShipmentAddtlShippingChargeDesc());
+        command.setShipmentShipperId(this.getShipmentShipperId());
         command.setShipmentCreatedBy(this.getShipmentCreatedBy());
         command.setShipmentCreatedAt(this.getShipmentCreatedAt());
         command.setShipmentUpdatedBy(this.getShipmentUpdatedBy());
@@ -1038,6 +1113,8 @@ public class CreateOrMergePatchShipmentReceiptMvoDto extends AbstractShipmentRec
         command.setIsPropertyRejectionReasonIdRemoved(this.getIsPropertyRejectionReasonIdRemoved());
         command.setIsPropertyDamageStatusIdRemoved(this.getIsPropertyDamageStatusIdRemoved());
         command.setIsPropertyDamageReasonIdRemoved(this.getIsPropertyDamageReasonIdRemoved());
+        command.setIsPropertyReceivedByRemoved(this.getIsPropertyReceivedByRemoved());
+        command.setIsPropertyDatetimeReceivedRemoved(this.getIsPropertyDatetimeReceivedRemoved());
         command.setIsPropertyItemDescriptionRemoved(this.getIsPropertyItemDescriptionRemoved());
         command.setIsPropertyAcceptedQuantityRemoved(this.getIsPropertyAcceptedQuantityRemoved());
         command.setIsPropertyRejectedQuantityRemoved(this.getIsPropertyRejectedQuantityRemoved());
@@ -1068,6 +1145,7 @@ public class CreateOrMergePatchShipmentReceiptMvoDto extends AbstractShipmentRec
         command.setIsPropertyShipmentPartyIdFromRemoved(this.getIsPropertyShipmentPartyIdFromRemoved());
         command.setIsPropertyShipmentAdditionalShippingChargeRemoved(this.getIsPropertyShipmentAdditionalShippingChargeRemoved());
         command.setIsPropertyShipmentAddtlShippingChargeDescRemoved(this.getIsPropertyShipmentAddtlShippingChargeDescRemoved());
+        command.setIsPropertyShipmentShipperIdRemoved(this.getIsPropertyShipmentShipperIdRemoved());
         command.setIsPropertyShipmentCreatedByRemoved(this.getIsPropertyShipmentCreatedByRemoved());
         command.setIsPropertyShipmentCreatedAtRemoved(this.getIsPropertyShipmentCreatedAtRemoved());
         command.setIsPropertyShipmentUpdatedByRemoved(this.getIsPropertyShipmentUpdatedByRemoved());

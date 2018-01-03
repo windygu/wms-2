@@ -17,6 +17,8 @@ public final class ShipmentReceiptFilteringProperties
             "rejectionReasonId",
             "damageStatusId",
             "damageReasonId",
+            "receivedBy",
+            "datetimeReceived",
             "itemDescription",
             "acceptedQuantity",
             "rejectedQuantity",
@@ -40,6 +42,8 @@ public final class ShipmentReceiptFilteringProperties
             "String",
             "String",
             "String",
+            "String",
+            "java.sql.Timestamp",
             "String",
             "java.math.BigDecimal",
             "java.math.BigDecimal",
@@ -80,6 +84,10 @@ public final class ShipmentReceiptFilteringProperties
         aliasMap.put("DamageStatusId", "damageStatusId");
         aliasMap.put("damageReasonId", "damageReasonId");
         aliasMap.put("DamageReasonId", "damageReasonId");
+        aliasMap.put("receivedBy", "receivedBy");
+        aliasMap.put("ReceivedBy", "receivedBy");
+        aliasMap.put("datetimeReceived", "datetimeReceived");
+        aliasMap.put("DatetimeReceived", "datetimeReceived");
         aliasMap.put("itemDescription", "itemDescription");
         aliasMap.put("ItemDescription", "itemDescription");
         aliasMap.put("acceptedQuantity", "acceptedQuantity");

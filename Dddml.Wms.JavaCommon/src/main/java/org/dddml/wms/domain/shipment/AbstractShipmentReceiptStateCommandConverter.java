@@ -38,6 +38,8 @@ public abstract class AbstractShipmentReceiptStateCommandConverter<TCreateShipme
         cmd.setRejectionReasonId(state.getRejectionReasonId());
         cmd.setDamageStatusId(state.getDamageStatusId());
         cmd.setDamageReasonId(state.getDamageReasonId());
+        cmd.setReceivedBy(state.getReceivedBy());
+        cmd.setDatetimeReceived(state.getDatetimeReceived());
         cmd.setItemDescription(state.getItemDescription());
         cmd.setAcceptedQuantity(state.getAcceptedQuantity());
         cmd.setRejectedQuantity(state.getRejectedQuantity());
@@ -50,6 +52,8 @@ public abstract class AbstractShipmentReceiptStateCommandConverter<TCreateShipme
         if (state.getRejectionReasonId() == null) { cmd.setIsPropertyRejectionReasonIdRemoved(true); }
         if (state.getDamageStatusId() == null) { cmd.setIsPropertyDamageStatusIdRemoved(true); }
         if (state.getDamageReasonId() == null) { cmd.setIsPropertyDamageReasonIdRemoved(true); }
+        if (state.getReceivedBy() == null) { cmd.setIsPropertyReceivedByRemoved(true); }
+        if (state.getDatetimeReceived() == null) { cmd.setIsPropertyDatetimeReceivedRemoved(true); }
         if (state.getItemDescription() == null) { cmd.setIsPropertyItemDescriptionRemoved(true); }
         if (state.getAcceptedQuantity() == null) { cmd.setIsPropertyAcceptedQuantityRemoved(true); }
         if (state.getRejectedQuantity() == null) { cmd.setIsPropertyRejectedQuantityRemoved(true); }
@@ -68,6 +72,8 @@ public abstract class AbstractShipmentReceiptStateCommandConverter<TCreateShipme
         cmd.setRejectionReasonId(state.getRejectionReasonId());
         cmd.setDamageStatusId(state.getDamageStatusId());
         cmd.setDamageReasonId(state.getDamageReasonId());
+        cmd.setReceivedBy(state.getReceivedBy());
+        cmd.setDatetimeReceived(state.getDatetimeReceived());
         cmd.setItemDescription(state.getItemDescription());
         cmd.setAcceptedQuantity(state.getAcceptedQuantity());
         cmd.setRejectedQuantity(state.getRejectedQuantity());

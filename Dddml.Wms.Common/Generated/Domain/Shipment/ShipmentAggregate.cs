@@ -121,6 +121,7 @@ namespace Dddml.Wms.Domain.Shipment
             e.PartyIdFrom = c.PartyIdFrom;
             e.AdditionalShippingCharge = c.AdditionalShippingCharge;
             e.AddtlShippingChargeDesc = c.AddtlShippingChargeDesc;
+            e.ShipperId = c.ShipperId;
             e.Active = c.Active;
             e.CommandId = c.CommandId;
 
@@ -178,6 +179,7 @@ namespace Dddml.Wms.Domain.Shipment
             e.PartyIdFrom = c.PartyIdFrom;
             e.AdditionalShippingCharge = c.AdditionalShippingCharge;
             e.AddtlShippingChargeDesc = c.AddtlShippingChargeDesc;
+            e.ShipperId = c.ShipperId;
             e.Active = c.Active;
             e.IsPropertyShipmentTypeIdRemoved = c.IsPropertyShipmentTypeIdRemoved;
             e.IsPropertyStatusIdRemoved = c.IsPropertyStatusIdRemoved;
@@ -203,6 +205,7 @@ namespace Dddml.Wms.Domain.Shipment
             e.IsPropertyPartyIdFromRemoved = c.IsPropertyPartyIdFromRemoved;
             e.IsPropertyAdditionalShippingChargeRemoved = c.IsPropertyAdditionalShippingChargeRemoved;
             e.IsPropertyAddtlShippingChargeDescRemoved = c.IsPropertyAddtlShippingChargeDescRemoved;
+            e.IsPropertyShipperIdRemoved = c.IsPropertyShipperIdRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
             e.CommandId = c.CommandId;
@@ -306,6 +309,7 @@ namespace Dddml.Wms.Domain.Shipment
             e.ProductId = c.ProductId;
             e.AttributeSetInstanceId = c.AttributeSetInstanceId;
             e.Quantity = c.Quantity;
+            e.TargetQuantity = c.TargetQuantity;
             e.ShipmentContentDescription = c.ShipmentContentDescription;
             e.Active = c.Active;
 
@@ -327,11 +331,13 @@ namespace Dddml.Wms.Domain.Shipment
             e.ProductId = c.ProductId;
             e.AttributeSetInstanceId = c.AttributeSetInstanceId;
             e.Quantity = c.Quantity;
+            e.TargetQuantity = c.TargetQuantity;
             e.ShipmentContentDescription = c.ShipmentContentDescription;
             e.Active = c.Active;
             e.IsPropertyProductIdRemoved = c.IsPropertyProductIdRemoved;
             e.IsPropertyAttributeSetInstanceIdRemoved = c.IsPropertyAttributeSetInstanceIdRemoved;
             e.IsPropertyQuantityRemoved = c.IsPropertyQuantityRemoved;
+            e.IsPropertyTargetQuantityRemoved = c.IsPropertyTargetQuantityRemoved;
             e.IsPropertyShipmentContentDescriptionRemoved = c.IsPropertyShipmentContentDescriptionRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
@@ -373,6 +379,8 @@ namespace Dddml.Wms.Domain.Shipment
             e.RejectionReasonId = c.RejectionReasonId;
             e.DamageStatusId = c.DamageStatusId;
             e.DamageReasonId = c.DamageReasonId;
+            e.ReceivedBy = c.ReceivedBy;
+            e.DatetimeReceived = c.DatetimeReceived;
             e.ItemDescription = c.ItemDescription;
             e.AcceptedQuantity = c.AcceptedQuantity;
             e.RejectedQuantity = c.RejectedQuantity;
@@ -399,6 +407,8 @@ namespace Dddml.Wms.Domain.Shipment
             e.RejectionReasonId = c.RejectionReasonId;
             e.DamageStatusId = c.DamageStatusId;
             e.DamageReasonId = c.DamageReasonId;
+            e.ReceivedBy = c.ReceivedBy;
+            e.DatetimeReceived = c.DatetimeReceived;
             e.ItemDescription = c.ItemDescription;
             e.AcceptedQuantity = c.AcceptedQuantity;
             e.RejectedQuantity = c.RejectedQuantity;
@@ -409,6 +419,8 @@ namespace Dddml.Wms.Domain.Shipment
             e.IsPropertyRejectionReasonIdRemoved = c.IsPropertyRejectionReasonIdRemoved;
             e.IsPropertyDamageStatusIdRemoved = c.IsPropertyDamageStatusIdRemoved;
             e.IsPropertyDamageReasonIdRemoved = c.IsPropertyDamageReasonIdRemoved;
+            e.IsPropertyReceivedByRemoved = c.IsPropertyReceivedByRemoved;
+            e.IsPropertyDatetimeReceivedRemoved = c.IsPropertyDatetimeReceivedRemoved;
             e.IsPropertyItemDescriptionRemoved = c.IsPropertyItemDescriptionRemoved;
             e.IsPropertyAcceptedQuantityRemoved = c.IsPropertyAcceptedQuantityRemoved;
             e.IsPropertyRejectedQuantityRemoved = c.IsPropertyRejectedQuantityRemoved;

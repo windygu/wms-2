@@ -64,6 +64,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual string AddtlShippingChargeDesc { get; set; }
 
+		public virtual string ShipperId { get; set; }
+
 		public virtual long Version { get; set; }
 
 		public virtual bool Active { get; set; }
