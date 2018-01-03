@@ -17,6 +17,12 @@ public interface InOutAggregate
 
     void mergePatch(InOutCommand.MergePatchInOut c);
 
+    void complete(String commandId, String requesterId);
+
+    void void(String commandId, String requesterId);
+
+    void reverse(String commandId, String requesterId);
+
     void throwOnInvalidStateTransition(Command c);
 }
 

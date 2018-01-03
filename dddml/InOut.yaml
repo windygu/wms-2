@@ -225,5 +225,16 @@ aggregates:
             #m_rmaline_id numeric(10,0),
     
     
-    
-    
+      # --------------------------------------------
+      methods:
+      
+        Complete:
+          parameters:
+          
+        Void:
+          parameters:
+          
+        Reverse:
+          parameters:
+          
+          

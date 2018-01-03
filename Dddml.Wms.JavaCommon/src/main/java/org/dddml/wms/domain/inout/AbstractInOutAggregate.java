@@ -370,6 +370,21 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
             super(state);
         }
 
+        @Override
+        public void complete(String commandId, String requesterId) {
+            throw new UnsupportedOperationException();
+        }
+
+        @Override
+        public void void(String commandId, String requesterId) {
+            throw new UnsupportedOperationException();
+        }
+
+        @Override
+        public void reverse(String commandId, String requesterId) {
+            throw new UnsupportedOperationException();
+        }
+
     }
 
 }

@@ -122,6 +122,57 @@ public class InOutResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+
+    @Path("{id}/_commands/Complete") @PUT
+    public void complete(@PathParam("id") String id, InOutCommandDtos.CompleteRequestContent content) {
+        try {
+
+            InOutCommands.Complete cmd = content.toComplete();
+            String idObj = id;
+            if (cmd.getDocumentNumber() == null) {
+                cmd.setDocumentNumber(idObj);
+            } else if (!cmd.getDocumentNumber().equals(idObj)) {
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, cmd.getDocumentNumber());
+            }
+            inOutApplicationService.when(cmd);
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
+    @Path("{id}/_commands/Void") @PUT
+    public void void(@PathParam("id") String id, InOutCommandDtos.VoidRequestContent content) {
+        try {
+
+            InOutCommands.Void cmd = content.toVoid();
+            String idObj = id;
+            if (cmd.getDocumentNumber() == null) {
+                cmd.setDocumentNumber(idObj);
+            } else if (!cmd.getDocumentNumber().equals(idObj)) {
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, cmd.getDocumentNumber());
+            }
+            inOutApplicationService.when(cmd);
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
+    @Path("{id}/_commands/Reverse") @PUT
+    public void reverse(@PathParam("id") String id, InOutCommandDtos.ReverseRequestContent content) {
+        try {
+
+            InOutCommands.Reverse cmd = content.toReverse();
+            String idObj = id;
+            if (cmd.getDocumentNumber() == null) {
+                cmd.setDocumentNumber(idObj);
+            } else if (!cmd.getDocumentNumber().equals(idObj)) {
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, cmd.getDocumentNumber());
+            }
+            inOutApplicationService.when(cmd);
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
     @Path("_metadata/filteringFields") @GET
     public List<PropertyMetadataDto> getMetadataFilteringFields() {
         try {

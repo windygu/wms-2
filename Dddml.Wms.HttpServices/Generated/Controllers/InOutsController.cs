@@ -122,6 +122,63 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = InOutsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{id}/_commands/Complete")]
+        [HttpPut][SetRequesterId]
+        public void Complete(string id, [FromBody]InOutCommandDtos.CompleteRequestContent content)
+        {
+          try {
+            var cmd = content.ToComplete();
+            var idObj = id;
+            if (cmd.DocumentNumber == null)
+            {
+                cmd.DocumentNumber = idObj;
+            }
+            else if (!cmd.DocumentNumber.Equals(idObj))
+            {
+                throw DomainError.Named("inconsistentId", "Argument Id {0} NOT equals body Id {1}", id, cmd.DocumentNumber);
+            }
+            _inOutApplicationService.When(cmd);
+          } catch (Exception ex) { var response = InOutsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
+        [Route("{id}/_commands/Void")]
+        [HttpPut][SetRequesterId]
+        public void Void(string id, [FromBody]InOutCommandDtos.VoidRequestContent content)
+        {
+          try {
+            var cmd = content.ToVoid();
+            var idObj = id;
+            if (cmd.DocumentNumber == null)
+            {
+                cmd.DocumentNumber = idObj;
+            }
+            else if (!cmd.DocumentNumber.Equals(idObj))
+            {
+                throw DomainError.Named("inconsistentId", "Argument Id {0} NOT equals body Id {1}", id, cmd.DocumentNumber);
+            }
+            _inOutApplicationService.When(cmd);
+          } catch (Exception ex) { var response = InOutsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
+        [Route("{id}/_commands/Reverse")]
+        [HttpPut][SetRequesterId]
+        public void Reverse(string id, [FromBody]InOutCommandDtos.ReverseRequestContent content)
+        {
+          try {
+            var cmd = content.ToReverse();
+            var idObj = id;
+            if (cmd.DocumentNumber == null)
+            {
+                cmd.DocumentNumber = idObj;
+            }
+            else if (!cmd.DocumentNumber.Equals(idObj))
+            {
+                throw DomainError.Named("inconsistentId", "Argument Id {0} NOT equals body Id {1}", id, cmd.DocumentNumber);
+            }
+            _inOutApplicationService.When(cmd);
+          } catch (Exception ex) { var response = InOutsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
         [Route("_metadata/filteringFields")]
         [HttpGet]
         public IEnumerable<PropertyMetadataDto> GetMetadataFilteringFields()

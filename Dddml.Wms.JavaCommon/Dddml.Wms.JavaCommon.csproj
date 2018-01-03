@@ -1405,6 +1405,12 @@
     <Content Include="src\main\java\org\dddml\wms\domain\inout\InOutCommand.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inout\InOutCommandDtos.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\inout\InOutCommands.java">
+      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\inout\InOutLineCommand.java">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Content>
@@ -5807,6 +5813,8 @@
 .\InOutAggregate.java
 .\InOutApplicationService.java
 .\InOutCommand.java
+.\InOutCommandDtos.java
+.\InOutCommands.java
 .\InOutLineCommand.java
 .\InOutLineId.java
 .\InOutLineIdDto.java

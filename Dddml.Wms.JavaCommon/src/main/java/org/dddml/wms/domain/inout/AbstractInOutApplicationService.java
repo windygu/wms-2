@@ -54,6 +54,18 @@ public abstract class AbstractInOutApplicationService implements InOutApplicatio
         update(c, ar -> ar.mergePatch(c));
     }
 
+    public void when(InOutCommands.Complete c) {
+        update(c, ar -> ar.complete(c.getCommandId(), c.getRequesterId()));
+    }
+
+    public void when(InOutCommands.Void c) {
+        update(c, ar -> ar.void(c.getCommandId(), c.getRequesterId()));
+    }
+
+    public void when(InOutCommands.Reverse c) {
+        update(c, ar -> ar.reverse(c.getCommandId(), c.getRequesterId()));
+    }
+
     public InOutState get(String id) {
         InOutState state = getStateRepository().get(id, true);
         return state;

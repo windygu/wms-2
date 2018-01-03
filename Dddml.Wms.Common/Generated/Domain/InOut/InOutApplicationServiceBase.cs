@@ -100,6 +100,21 @@ namespace Dddml.Wms.Domain.InOut
 			Update(c, ar => ar.MergePatch(c));
 		}
 
+		public virtual void When(InOutCommands.Complete c)
+		{
+			Update(c, ar => ar.Complete(c.CommandId, c.RequesterId));
+		}
+
+		public virtual void When(InOutCommands.Void c)
+		{
+			Update(c, ar => ar.Void(c.CommandId, c.RequesterId));
+		}
+
+		public virtual void When(InOutCommands.Reverse c)
+		{
+			Update(c, ar => ar.Reverse(c.CommandId, c.RequesterId));
+		}
+
         public virtual IInOutState Get(string documentNumber)
         {
             var state = StateRepository.Get(documentNumber, true);

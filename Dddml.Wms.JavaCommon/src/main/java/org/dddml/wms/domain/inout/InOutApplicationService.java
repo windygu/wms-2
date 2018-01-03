@@ -15,6 +15,12 @@ public interface InOutApplicationService
 
     void when(InOutCommand.MergePatchInOut c);
 
+    void when(InOutCommands.Complete c);
+
+    void when(InOutCommands.Void c);
+
+    void when(InOutCommands.Reverse c);
+
     InOutState get(String id);
 
     Iterable<InOutState> getAll(Integer firstResult, Integer maxResults);

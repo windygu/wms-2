@@ -19,6 +19,12 @@ namespace Dddml.Wms.Domain.InOut
 
 		void When(IMergePatchInOut c);
 
+		void When(InOutCommands.Complete c);
+
+		void When(InOutCommands.Void c);
+
+		void When(InOutCommands.Reverse c);
+
  		IInOutState Get(string documentNumber);
 
         IEnumerable<IInOutState> GetAll(int firstResult, int maxResults);

@@ -24,6 +24,12 @@ namespace Dddml.Wms.Domain.InOut
 
 		void MergePatch (IMergePatchInOut c);
 
+		void Complete(string commandId, string requesterId);
+
+		void Void(string commandId, string requesterId);
+
+		void Reverse(string commandId, string requesterId);
+
 
 	}
 

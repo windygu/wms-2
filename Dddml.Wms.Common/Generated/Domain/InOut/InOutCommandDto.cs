@@ -848,6 +848,90 @@ namespace Dddml.Wms.Domain.InOut
     public static partial class InOutCommandDtos
     {
 
+        public class CompleteRequestContent : ICommandDto
+        {
+
+            public string CommandType
+            {
+                get { return "Complete"; }
+            }
+
+            public string DocumentNumber { get; set; }
+
+            public long Version { get; set; }
+
+            public string CommandId { get; set; }
+
+            public string RequesterId { get; set; }
+
+            public InOutCommands.Complete ToComplete()
+            {
+                var cmd = new InOutCommands.Complete();
+                cmd.DocumentNumber = this.DocumentNumber;
+                cmd.Version = this.Version;
+                cmd.CommandId = this.CommandId;
+                cmd.RequesterId = this.RequesterId;
+                return cmd;
+            }
+
+        }
+
+        public class VoidRequestContent : ICommandDto
+        {
+
+            public string CommandType
+            {
+                get { return "Void"; }
+            }
+
+            public string DocumentNumber { get; set; }
+
+            public long Version { get; set; }
+
+            public string CommandId { get; set; }
+
+            public string RequesterId { get; set; }
+
+            public InOutCommands.Void ToVoid()
+            {
+                var cmd = new InOutCommands.Void();
+                cmd.DocumentNumber = this.DocumentNumber;
+                cmd.Version = this.Version;
+                cmd.CommandId = this.CommandId;
+                cmd.RequesterId = this.RequesterId;
+                return cmd;
+            }
+
+        }
+
+        public class ReverseRequestContent : ICommandDto
+        {
+
+            public string CommandType
+            {
+                get { return "Reverse"; }
+            }
+
+            public string DocumentNumber { get; set; }
+
+            public long Version { get; set; }
+
+            public string CommandId { get; set; }
+
+            public string RequesterId { get; set; }
+
+            public InOutCommands.Reverse ToReverse()
+            {
+                var cmd = new InOutCommands.Reverse();
+                cmd.DocumentNumber = this.DocumentNumber;
+                cmd.Version = this.Version;
+                cmd.CommandId = this.CommandId;
+                cmd.RequesterId = this.RequesterId;
+                return cmd;
+            }
+
+        }
+
     }
 
 }

@@ -113,6 +113,21 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             this.When((MergePatchInOutDto)c);
         }
 
+        public void When(InOutCommands.Complete c)
+        {
+            throw new NotImplementedException();//todo
+        }
+
+        public void When(InOutCommands.Void c)
+        {
+            throw new NotImplementedException();//todo
+        }
+
+        public void When(InOutCommands.Reverse c)
+        {
+            throw new NotImplementedException();//todo
+        }
+
         public async Task<IInOutState> GetAsync(string documentNumber)
         {
             IInOutState state = null;

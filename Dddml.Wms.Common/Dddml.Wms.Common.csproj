@@ -61,6 +61,7 @@
     <Compile Include="Domain\AttributeSetInstance\AttributeSetInstanceAggregate.cs" />
     <Compile Include="Domain\DocumentStatusIds.cs" />
     <Compile Include="Domain\DocumentType\DocumentTypeIds.cs" />
+    <Compile Include="Domain\InOut\InOutAggregate.cs" />
     <Compile Include="Domain\MovementConfirmation\MovementConfirmationDocumentActionCommandHandler.cs" />
     <Compile Include="Domain\InOut\InOutDocumentActionCommandHandler.cs" />
     <Compile Include="Domain\InventoryItem\InventoryItemIds.cs" />
