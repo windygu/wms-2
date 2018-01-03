@@ -24,9 +24,21 @@ namespace Dddml.Wms.Domain.AttributeSet
 
 		public virtual string ReferenceId { get; set; }
 
-		public virtual bool IsInstanceAttributeSet { get; set; }
+        private bool _isInstanceAttributeSet = true;
 
-		public virtual bool IsMandatory { get; set; }
+        public virtual bool IsInstanceAttributeSet
+        {
+            get { return this._isInstanceAttributeSet; }
+            set { this._isInstanceAttributeSet = value; }
+        }
+
+        private bool _isMandatory = true;
+
+        public virtual bool IsMandatory
+        {
+            get { return this._isMandatory; }
+            set { this._isMandatory = value; }
+        }
 
 		public virtual long Version { get; set; }
 

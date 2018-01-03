@@ -211,9 +211,9 @@ namespace Dddml.Wms.Domain.AttributeSet
 
 			this.ReferenceId = e.ReferenceId;
 
-            this.IsInstanceAttributeSet = (e.IsInstanceAttributeSet != null && e.IsInstanceAttributeSet.HasValue) ? e.IsInstanceAttributeSet.Value : default(bool);
+            if(e.IsInstanceAttributeSet != null) { this.IsInstanceAttributeSet = (e.IsInstanceAttributeSet != null && e.IsInstanceAttributeSet.HasValue) ? e.IsInstanceAttributeSet.Value : default(bool); }
 
-            this.IsMandatory = (e.IsMandatory != null && e.IsMandatory.HasValue) ? e.IsMandatory.Value : default(bool);
+            if(e.IsMandatory != null) { this.IsMandatory = (e.IsMandatory != null && e.IsMandatory.HasValue) ? e.IsMandatory.Value : default(bool); }
 
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 
