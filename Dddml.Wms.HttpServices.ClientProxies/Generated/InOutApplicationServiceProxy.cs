@@ -118,6 +118,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             throw new NotImplementedException();//todo
         }
 
+        public void When(InOutCommands.Close c)
+        {
+            throw new NotImplementedException();//todo
+        }
+
         public void When(InOutCommands.Void c)
         {
             throw new NotImplementedException();//todo

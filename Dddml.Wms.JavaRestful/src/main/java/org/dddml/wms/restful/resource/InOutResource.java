@@ -140,6 +140,23 @@ public class InOutResource {
     }
 
 
+    @Path("{id}/_commands/Close") @PUT
+    public void close(@PathParam("id") String id, InOutCommandDtos.CloseRequestContent content) {
+        try {
+
+            InOutCommands.Close cmd = content.toClose();
+            String idObj = id;
+            if (cmd.getDocumentNumber() == null) {
+                cmd.setDocumentNumber(idObj);
+            } else if (!cmd.getDocumentNumber().equals(idObj)) {
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, cmd.getDocumentNumber());
+            }
+            inOutApplicationService.when(cmd);
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}/_commands/Void") @PUT
     public void _void(@PathParam("id") String id, InOutCommandDtos.VoidRequestContent content) {
         try {

@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using NodaMoney;
 using Dddml.Support.NHibernate;
 using Dddml.Wms.Domain.InOut;
+using Dddml.Wms.Domain.MovementType;
 
 namespace Dddml.Wms.Services.Tests
 {
@@ -27,16 +28,16 @@ namespace Dddml.Wms.Services.Tests
         }
 
         [Test]
-        public void TestCreateAndVoidInout()
+        public void TestCreateAndCompleteInOut()
         {
-            for (int i = 0; i < 10; i++)
-            {
-                ContextualKeyRoutingConnectionProviderNextRandomRoutingKey();
-                TestCreateAndVoidInout_0();
-            }
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    ContextualKeyRoutingConnectionProviderNextRandomRoutingKey();
+            TestCreateAndComplateInOut_0();
+            //}
         }
 
-        private void TestCreateAndVoidInout_0()
+        private void TestCreateAndComplateInOut_0()
         {
             var documentNumber = Guid.NewGuid().ToString();
 
@@ -46,16 +47,31 @@ namespace Dddml.Wms.Services.Tests
             inOut.DocumentAction = DocumentAction.Draft;// 不能这样写：inOut.DocumentStatus = DocumentStatus.Drafted
             //inOut.ChargeAmount = new Money(10000, "CNY");
             //inOut.FreightAmount = new Money(400, "CNY");
+            inOut.MovementTypeId = MovementTypeIds.MiscellaneousIn;
+
+            var line_1 = inOut.NewCreateInOutLine();
+            line_1.LineNumber = DateTime.Now.Ticks.ToString();//todo
+            line_1.ProductId = "TEST_" + DateTime.Now.Ticks.ToString();
+            line_1.LocatorId = "TEST_" + DateTime.Now.Ticks.ToString();
+            line_1.AttributeSetInstanceId = "EMPTY";
+            line_1.MovementQuantity = 123;
+            inOut.InOutLines.Add(line_1);
+            
             inOutApplicationService.When(inOut);
 
+            var complete = new InOutCommands.Complete();
+            complete.DocumentNumber = documentNumber;
+            complete.Version = 1;
+            complete.CommandId = Guid.NewGuid().ToString();
+            inOutApplicationService.When(complete);
+
+            /*
             MergePatchInOut patchInOut = new MergePatchInOut();
             patchInOut.DocumentNumber = documentNumber;
             patchInOut.DocumentAction = DocumentAction.Void;//不能这样写：patchInOut.DocumentStatus = DocumentStatus.Voided
             patchInOut.Version = 1;
             patchInOut.CommandId = Guid.NewGuid().ToString();
-
             inOutApplicationService.When(patchInOut);
-
             var inOutResult = inOutApplicationService.Get(inOut.DocumentNumber);
             //Console.WriteLine(inOutResult.DocumentNumber);
             Assert.AreEqual(DocumentStatusIds.Voided, inOutResult.DocumentStatusId);
@@ -63,6 +79,8 @@ namespace Dddml.Wms.Services.Tests
             //Assert.AreEqual(inOut.FreightAmount, inOutResult.FreightAmount);
             //Console.WriteLine(inOutResult.ChargeAmount);
             //Assert.AreEqual(inOut.ChargeAmount, inOutResult.ChargeAmount);
+            */
+
         }
 
 

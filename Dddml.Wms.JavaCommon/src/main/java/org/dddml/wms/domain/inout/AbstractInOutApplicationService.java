@@ -58,6 +58,10 @@ public abstract class AbstractInOutApplicationService implements InOutApplicatio
         update(c, ar -> ar.complete(c.getCommandId(), c.getRequesterId()));
     }
 
+    public void when(InOutCommands.Close c) {
+        update(c, ar -> ar.close(c.getCommandId(), c.getRequesterId()));
+    }
+
     public void when(InOutCommands.Void c) {
         update(c, ar -> ar._void(c.getCommandId(), c.getRequesterId()));
     }

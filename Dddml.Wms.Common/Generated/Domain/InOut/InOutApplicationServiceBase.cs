@@ -105,6 +105,11 @@ namespace Dddml.Wms.Domain.InOut
 			Update(c, ar => ar.Complete(c.CommandId, c.RequesterId));
 		}
 
+		public virtual void When(InOutCommands.Close c)
+		{
+			Update(c, ar => ar.Close(c.CommandId, c.RequesterId));
+		}
+
 		public virtual void When(InOutCommands.Void c)
 		{
 			Update(c, ar => ar.Void(c.CommandId, c.RequesterId));

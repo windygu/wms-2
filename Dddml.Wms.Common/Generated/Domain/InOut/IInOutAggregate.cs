@@ -26,6 +26,8 @@ namespace Dddml.Wms.Domain.InOut
 
 		void Complete(string commandId, string requesterId);
 
+		void Close(string commandId, string requesterId);
+
 		void Void(string commandId, string requesterId);
 
 		void Reverse(string commandId, string requesterId);

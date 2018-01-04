@@ -21,6 +21,8 @@ namespace Dddml.Wms.Domain.InOut
 
 		void When(InOutCommands.Complete c);
 
+		void When(InOutCommands.Close c);
+
 		void When(InOutCommands.Void c);
 
 		void When(InOutCommands.Reverse c);

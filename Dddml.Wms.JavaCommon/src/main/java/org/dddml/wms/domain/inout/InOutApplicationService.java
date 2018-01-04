@@ -17,6 +17,8 @@ public interface InOutApplicationService
 
     void when(InOutCommands.Complete c);
 
+    void when(InOutCommands.Close c);
+
     void when(InOutCommands.Void c);
 
     void when(InOutCommands.Reverse c);

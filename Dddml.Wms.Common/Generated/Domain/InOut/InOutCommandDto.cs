@@ -876,6 +876,34 @@ namespace Dddml.Wms.Domain.InOut
 
         }
 
+        public class CloseRequestContent : ICommandDto
+        {
+
+            public string CommandType
+            {
+                get { return "Close"; }
+            }
+
+            public string DocumentNumber { get; set; }
+
+            public long Version { get; set; }
+
+            public string CommandId { get; set; }
+
+            public string RequesterId { get; set; }
+
+            public InOutCommands.Close ToClose()
+            {
+                var cmd = new InOutCommands.Close();
+                cmd.DocumentNumber = this.DocumentNumber;
+                cmd.Version = this.Version;
+                cmd.CommandId = this.CommandId;
+                cmd.RequesterId = this.RequesterId;
+                return cmd;
+            }
+
+        }
+
         public class VoidRequestContent : ICommandDto
         {
 

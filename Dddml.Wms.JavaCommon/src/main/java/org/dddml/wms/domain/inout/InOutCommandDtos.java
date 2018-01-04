@@ -67,6 +67,63 @@ public class InOutCommandDtos
 
     }
 
+    public static class CloseRequestContent {
+
+        public String getCommandType() {
+            return "Close";
+        }
+
+        private String documentNumber;
+
+        public String getDocumentNumber() {
+            return this.documentNumber;
+        }
+
+        public void setDocumentNumber(String documentNumber) {
+            this.documentNumber = documentNumber;
+        }
+
+        private Long version;
+
+        public Long getVersion() {
+            return this.version;
+        }
+
+        public void setVersion(Long version) {
+            this.version = version;
+        }
+
+        private String commandId;
+
+        public String getCommandId() {
+            return this.commandId;
+        }
+
+        public void setCommandId(String commandId) {
+            this.commandId = commandId;
+        }
+
+        private String requesterId;
+
+        public String getRequesterId() {
+            return this.requesterId;
+        }
+
+        public void setRequesterId(String requesterId) {
+            this.requesterId = requesterId;
+        }
+
+       public InOutCommands.Close toClose() {
+            InOutCommands.Close cmd = new InOutCommands.Close();
+            cmd.setDocumentNumber(this.getDocumentNumber());
+            cmd.setVersion(this.getVersion());
+            cmd.setCommandId(this.getCommandId());
+            cmd.setRequesterId(this.getRequesterId());
+            return cmd;
+        }
+
+    }
+
     public static class VoidRequestContent {
 
         public String getCommandType() {
