@@ -36,7 +36,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             IEnumerable<IMovementState> states = null; 
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                states = _movementApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                states = _movementApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
                     , n => (MovementMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? MovementMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
                     , MovementsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
@@ -93,7 +93,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             long count = 0;
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                count = _movementApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                count = _movementApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
                     , n => (MovementMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? MovementMetadata.Instance.FilteringPropertyAliasDictionary[n] : n)));
             }
             else 

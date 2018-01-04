@@ -36,7 +36,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             IEnumerable<IWarehouseState> states = null; 
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                states = _warehouseApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                states = _warehouseApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
                     , n => (WarehouseMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? WarehouseMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
                     , WarehousesControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
@@ -93,7 +93,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             long count = 0;
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                count = _warehouseApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                count = _warehouseApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
                     , n => (WarehouseMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? WarehouseMetadata.Instance.FilteringPropertyAliasDictionary[n] : n)));
             }
             else 

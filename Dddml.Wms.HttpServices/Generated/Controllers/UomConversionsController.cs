@@ -36,7 +36,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             IEnumerable<IUomConversionState> states = null; 
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                states = _uomConversionApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                states = _uomConversionApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
                     , n => (UomConversionMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? UomConversionMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
                     , UomConversionsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
@@ -93,7 +93,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             long count = 0;
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                count = _uomConversionApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                count = _uomConversionApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
                     , n => (UomConversionMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? UomConversionMetadata.Instance.FilteringPropertyAliasDictionary[n] : n)));
             }
             else 

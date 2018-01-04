@@ -37,7 +37,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             IEnumerable<IMovementLineMvoState> states = null; 
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                states = _movementLineMvoApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                states = _movementLineMvoApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
                     , n => (MovementLineMvoMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? MovementLineMvoMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
                     , MovementLineMvosControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
@@ -94,7 +94,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             long count = 0;
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                count = _movementLineMvoApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                count = _movementLineMvoApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
                     , n => (MovementLineMvoMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? MovementLineMvoMetadata.Instance.FilteringPropertyAliasDictionary[n] : n)));
             }
             else 

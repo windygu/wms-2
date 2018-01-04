@@ -37,7 +37,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             IEnumerable<IPhysicalInventoryLineMvoState> states = null; 
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                states = _physicalInventoryLineMvoApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                states = _physicalInventoryLineMvoApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
                     , n => (PhysicalInventoryLineMvoMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? PhysicalInventoryLineMvoMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
                     , PhysicalInventoryLineMvosControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
@@ -94,7 +94,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             long count = 0;
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                count = _physicalInventoryLineMvoApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                count = _physicalInventoryLineMvoApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
                     , n => (PhysicalInventoryLineMvoMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? PhysicalInventoryLineMvoMetadata.Instance.FilteringPropertyAliasDictionary[n] : n)));
             }
             else 

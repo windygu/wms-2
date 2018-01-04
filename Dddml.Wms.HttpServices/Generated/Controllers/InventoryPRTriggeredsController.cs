@@ -37,7 +37,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             IEnumerable<IInventoryPRTriggeredState> states = null; 
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                states = _inventoryPRTriggeredApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                states = _inventoryPRTriggeredApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
                     , n => (InventoryPRTriggeredMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? InventoryPRTriggeredMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
                     , InventoryPRTriggeredsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
@@ -94,7 +94,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             long count = 0;
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                count = _inventoryPRTriggeredApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                count = _inventoryPRTriggeredApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
                     , n => (InventoryPRTriggeredMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? InventoryPRTriggeredMetadata.Instance.FilteringPropertyAliasDictionary[n] : n)));
             }
             else 

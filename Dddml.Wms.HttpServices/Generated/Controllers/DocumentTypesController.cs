@@ -36,7 +36,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             IEnumerable<IDocumentTypeState> states = null; 
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                states = _documentTypeApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                states = _documentTypeApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
                     , n => (DocumentTypeMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? DocumentTypeMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
                     , DocumentTypesControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
@@ -93,7 +93,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             long count = 0;
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                count = _documentTypeApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                count = _documentTypeApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
                     , n => (DocumentTypeMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? DocumentTypeMetadata.Instance.FilteringPropertyAliasDictionary[n] : n)));
             }
             else 

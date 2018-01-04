@@ -36,7 +36,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             IEnumerable<IDamageReasonState> states = null; 
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                states = _damageReasonApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                states = _damageReasonApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
                     , n => (DamageReasonMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? DamageReasonMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
                     , DamageReasonsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
@@ -93,7 +93,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             long count = 0;
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                count = _damageReasonApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                count = _damageReasonApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
                     , n => (DamageReasonMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? DamageReasonMetadata.Instance.FilteringPropertyAliasDictionary[n] : n)));
             }
             else 

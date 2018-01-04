@@ -36,7 +36,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             IEnumerable<IOrderShipmentState> states = null; 
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                states = _orderShipmentApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                states = _orderShipmentApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
                     , n => (OrderShipmentMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? OrderShipmentMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
                     , OrderShipmentsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
@@ -93,7 +93,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             long count = 0;
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                count = _orderShipmentApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                count = _orderShipmentApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
                     , n => (OrderShipmentMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? OrderShipmentMetadata.Instance.FilteringPropertyAliasDictionary[n] : n)));
             }
             else 

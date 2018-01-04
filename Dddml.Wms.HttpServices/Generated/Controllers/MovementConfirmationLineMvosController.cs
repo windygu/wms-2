@@ -37,7 +37,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             IEnumerable<IMovementConfirmationLineMvoState> states = null; 
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                states = _movementConfirmationLineMvoApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                states = _movementConfirmationLineMvoApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
                     , n => (MovementConfirmationLineMvoMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? MovementConfirmationLineMvoMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
                     , MovementConfirmationLineMvosControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
@@ -94,7 +94,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             long count = 0;
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                count = _movementConfirmationLineMvoApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                count = _movementConfirmationLineMvoApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
                     , n => (MovementConfirmationLineMvoMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? MovementConfirmationLineMvoMetadata.Instance.FilteringPropertyAliasDictionary[n] : n)));
             }
             else 

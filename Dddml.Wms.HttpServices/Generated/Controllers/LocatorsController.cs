@@ -36,7 +36,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             IEnumerable<ILocatorState> states = null; 
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                states = _locatorApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                states = _locatorApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
                     , n => (LocatorMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? LocatorMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
                     , LocatorsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
@@ -93,7 +93,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             long count = 0;
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                count = _locatorApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                count = _locatorApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
                     , n => (LocatorMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? LocatorMetadata.Instance.FilteringPropertyAliasDictionary[n] : n)));
             }
             else 

@@ -36,7 +36,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             IEnumerable<IRejectionReasonState> states = null; 
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                states = _rejectionReasonApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                states = _rejectionReasonApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
                     , n => (RejectionReasonMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? RejectionReasonMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
                     , RejectionReasonsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
@@ -93,7 +93,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             long count = 0;
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                count = _rejectionReasonApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                count = _rejectionReasonApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
                     , n => (RejectionReasonMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? RejectionReasonMetadata.Instance.FilteringPropertyAliasDictionary[n] : n)));
             }
             else 

@@ -36,7 +36,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             IEnumerable<IDamageTypeState> states = null; 
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                states = _damageTypeApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                states = _damageTypeApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
                     , n => (DamageTypeMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? DamageTypeMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
                     , DamageTypesControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
@@ -93,7 +93,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             long count = 0;
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                count = _damageTypeApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                count = _damageTypeApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
                     , n => (DamageTypeMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? DamageTypeMetadata.Instance.FilteringPropertyAliasDictionary[n] : n)));
             }
             else 

@@ -37,7 +37,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             IEnumerable<IShipmentReceiptMvoState> states = null; 
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                states = _shipmentReceiptMvoApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                states = _shipmentReceiptMvoApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
                     , n => (ShipmentReceiptMvoMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? ShipmentReceiptMvoMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
                     , ShipmentReceiptMvosControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
@@ -94,7 +94,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             long count = 0;
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                count = _shipmentReceiptMvoApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                count = _shipmentReceiptMvoApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
                     , n => (ShipmentReceiptMvoMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? ShipmentReceiptMvoMetadata.Instance.FilteringPropertyAliasDictionary[n] : n)));
             }
             else 
