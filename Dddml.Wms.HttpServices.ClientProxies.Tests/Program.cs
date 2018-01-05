@@ -10,10 +10,29 @@ using System.Threading.Tasks;
 
 namespace Dddml.Wms.HttpServices.ClientProxies.Tests
 {
-    class TestMain
+    class Program
     {
 
+        static void Main(string[] args)
+        {
+
+            /*
+            var zoo = new Zoo() {
+                ZooName = "Dongzhuobei Zoo",
+                Keeper = "Brouce Lee",
+            };
+
+            zoo.MoreProperties.Add("Pandas", "BeiBei, JingJing");
+
+            JObject jobj = JObject.FromObject(zoo);
+            Console.WriteLine(jobj.ToString());
+            Console.ReadKey();
+            */ 
+
+        }
+
         // ///////////////////////////////////////////////////////
+        /*
         class Zoo
         {
             public string ZooName { get; set; }
@@ -28,22 +47,8 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Tests
                 set { moreProperties = value; }
             }
         }
+        */
         // ///////////////////////////////////////////////////////
-
-        static void Main(string[] args)
-        {
-            var zoo = new Zoo() {
-                ZooName = "Dongzhuobei Zoo",
-                Keeper = "Brouce Lee",
-            };
-
-            zoo.MoreProperties.Add("Pandas", "BeiBei, JingJing");
-
-            JObject jobj = JObject.FromObject(zoo);
-            Console.WriteLine(jobj.ToString());
-            Console.ReadKey();
-
-        }
 
     
     }

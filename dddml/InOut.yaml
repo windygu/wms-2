@@ -17,10 +17,26 @@ aggregates:
         # IsSOTransaction:
           # type: bool
 
+        # --------------------------------------
         DocumentStatusId:
           type: string
           commandType: DocumentAction
           commandName: DocumentAction
+          stateMachine:
+            transitions:
+            - sourceState: "Drafted"
+              trigger: "Complete"
+              targetState: "Completed"
+            - sourceState: "Drafted"
+              trigger: "Void"
+              targetState: "Voided"
+            - sourceState: "Completed"
+              trigger: "Close"
+              targetState: "Closed"
+            - sourceState: "Completed"
+              trigger: "Reverse"
+              targetState: "Reversed"
+        # --------------------------------------
 
         Posted:
           type: bool

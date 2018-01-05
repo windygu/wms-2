@@ -82,7 +82,7 @@
     <Compile Include="TestApplicationContext.cs" />
     <Compile Include="ValuesTests.cs" />
     <Compile Include="AttributeSetInstanceServiceTests.cs" />
-    <Compile Include="TestMain.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
