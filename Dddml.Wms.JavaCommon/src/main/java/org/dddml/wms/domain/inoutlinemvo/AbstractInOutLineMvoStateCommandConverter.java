@@ -52,6 +52,7 @@ public abstract class AbstractInOutLineMvoStateCommandConverter<TCreateInOutLine
         cmd.setReversalLineNumber(state.getReversalLineNumber());
         cmd.setVersion(state.getVersion());
         cmd.setActive(state.getActive());
+        cmd.setInOutDocumentStatusId(state.getInOutDocumentStatusId());
         cmd.setInOutPosted(state.getInOutPosted());
         cmd.setInOutProcessed(state.getInOutProcessed());
         cmd.setInOutProcessing(state.getInOutProcessing());
@@ -100,6 +101,7 @@ public abstract class AbstractInOutLineMvoStateCommandConverter<TCreateInOutLine
         if (state.getReversalLineNumber() == null) { cmd.setIsPropertyReversalLineNumberRemoved(true); }
         if (state.getVersion() == null) { cmd.setIsPropertyVersionRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
+        if (state.getInOutDocumentStatusId() == null) { cmd.setIsPropertyInOutDocumentStatusIdRemoved(true); }
         if (state.getInOutPosted() == null) { cmd.setIsPropertyInOutPostedRemoved(true); }
         if (state.getInOutProcessed() == null) { cmd.setIsPropertyInOutProcessedRemoved(true); }
         if (state.getInOutProcessing() == null) { cmd.setIsPropertyInOutProcessingRemoved(true); }
@@ -156,6 +158,7 @@ public abstract class AbstractInOutLineMvoStateCommandConverter<TCreateInOutLine
         cmd.setReversalLineNumber(state.getReversalLineNumber());
         cmd.setVersion(state.getVersion());
         cmd.setActive(state.getActive());
+        cmd.setInOutDocumentStatusId(state.getInOutDocumentStatusId());
         cmd.setInOutPosted(state.getInOutPosted());
         cmd.setInOutProcessed(state.getInOutProcessed());
         cmd.setInOutProcessing(state.getInOutProcessing());

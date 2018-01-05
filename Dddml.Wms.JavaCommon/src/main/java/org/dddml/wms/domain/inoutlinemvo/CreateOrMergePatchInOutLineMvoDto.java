@@ -163,16 +163,16 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.active = active;
     }
 
-    private String documentAction;
+    private String inOutDocumentStatusId;
 
-    public String getDocumentAction()
+    public String getInOutDocumentStatusId()
     {
-        return this.documentAction;
+        return this.inOutDocumentStatusId;
     }
 
-    public void setDocumentAction(String documentAction)
+    public void setInOutDocumentStatusId(String inOutDocumentStatusId)
     {
-        this.documentAction = documentAction;
+        this.inOutDocumentStatusId = inOutDocumentStatusId;
     }
 
     private Boolean inOutPosted;
@@ -739,6 +739,18 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         this.isPropertyActiveRemoved = removed;
     }
 
+    private Boolean isPropertyInOutDocumentStatusIdRemoved;
+
+    public Boolean getIsPropertyInOutDocumentStatusIdRemoved()
+    {
+        return this.isPropertyInOutDocumentStatusIdRemoved;
+    }
+
+    public void setIsPropertyInOutDocumentStatusIdRemoved(Boolean removed)
+    {
+        this.isPropertyInOutDocumentStatusIdRemoved = removed;
+    }
+
     private Boolean isPropertyInOutPostedRemoved;
 
     public Boolean getIsPropertyInOutPostedRemoved()
@@ -1163,7 +1175,7 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         command.setReversalLineNumber(this.getReversalLineNumber());
         command.setVersion(this.getVersion());
         command.setActive(this.getActive());
-        command.setDocumentAction(this.getDocumentAction());
+        command.setInOutDocumentStatusId(this.getInOutDocumentStatusId());
         command.setInOutPosted(this.getInOutPosted());
         command.setInOutProcessed(this.getInOutProcessed());
         command.setInOutProcessing(this.getInOutProcessing());
@@ -1235,6 +1247,7 @@ public class CreateOrMergePatchInOutLineMvoDto extends AbstractInOutLineMvoComma
         command.setIsPropertyReversalLineNumberRemoved(this.getIsPropertyReversalLineNumberRemoved());
         command.setIsPropertyVersionRemoved(this.getIsPropertyVersionRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
+        command.setIsPropertyInOutDocumentStatusIdRemoved(this.getIsPropertyInOutDocumentStatusIdRemoved());
         command.setIsPropertyInOutPostedRemoved(this.getIsPropertyInOutPostedRemoved());
         command.setIsPropertyInOutProcessedRemoved(this.getIsPropertyInOutProcessedRemoved());
         command.setIsPropertyInOutProcessingRemoved(this.getIsPropertyInOutProcessingRemoved());

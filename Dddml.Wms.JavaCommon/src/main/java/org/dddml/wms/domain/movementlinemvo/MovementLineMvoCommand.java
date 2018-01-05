@@ -78,9 +78,9 @@ public interface MovementLineMvoCommand extends Command
 
         void setActive(Boolean active);
 
-        String getDocumentAction();
+        String getMovementDocumentStatusId();
 
-        void setDocumentAction(String documentAction);
+        void setMovementDocumentStatusId(String movementDocumentStatusId);
 
         Date getMovementMovementDate();
 
@@ -225,6 +225,10 @@ public interface MovementLineMvoCommand extends Command
         Boolean getIsPropertyActiveRemoved();
 
         void setIsPropertyActiveRemoved(Boolean removed);
+
+        Boolean getIsPropertyMovementDocumentStatusIdRemoved();
+
+        void setIsPropertyMovementDocumentStatusIdRemoved(Boolean removed);
 
         Boolean getIsPropertyMovementMovementDateRemoved();
 

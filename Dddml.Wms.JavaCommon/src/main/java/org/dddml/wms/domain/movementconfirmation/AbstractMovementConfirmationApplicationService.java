@@ -58,6 +58,10 @@ public abstract class AbstractMovementConfirmationApplicationService implements 
         update(c, ar -> ar.delete(c));
     }
 
+    public void when(MovementConfirmationCommands.DocumentAction c) {
+        update(c, ar -> ar.documentAction(c.getValue(), c.getCommandId(), c.getRequesterId()));
+    }
+
     public MovementConfirmationState get(String id) {
         MovementConfirmationState state = getStateRepository().get(id, true);
         return state;

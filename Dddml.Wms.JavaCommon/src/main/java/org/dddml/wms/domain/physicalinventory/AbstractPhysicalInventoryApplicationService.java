@@ -58,6 +58,10 @@ public abstract class AbstractPhysicalInventoryApplicationService implements Phy
         update(c, ar -> ar.delete(c));
     }
 
+    public void when(PhysicalInventoryCommands.DocumentAction c) {
+        update(c, ar -> ar.documentAction(c.getValue(), c.getCommandId(), c.getRequesterId()));
+    }
+
     public PhysicalInventoryState get(String id) {
         PhysicalInventoryState state = getStateRepository().get(id, true);
         return state;

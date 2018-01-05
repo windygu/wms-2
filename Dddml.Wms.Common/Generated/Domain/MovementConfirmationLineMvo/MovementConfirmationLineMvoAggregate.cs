@@ -117,7 +117,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             e.Processed = c.Processed;
             e.Version = c.Version;
             e.Active = c.Active;
-            NewMovementConfirmationLineMvoDocumentActionCommandAndExecute(c, _state, e);
+            e.MovementConfirmationDocumentStatusId = c.MovementConfirmationDocumentStatusId;
             e.MovementConfirmationMovementDocumentNumber = c.MovementConfirmationMovementDocumentNumber;
             e.MovementConfirmationIsApproved = c.MovementConfirmationIsApproved;
             e.MovementConfirmationApprovalAmount = c.MovementConfirmationApprovalAmount;
@@ -156,6 +156,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             e.Processed = c.Processed;
             e.Version = c.Version;
             e.Active = c.Active;
+            e.MovementConfirmationDocumentStatusId = c.MovementConfirmationDocumentStatusId;
             e.MovementConfirmationMovementDocumentNumber = c.MovementConfirmationMovementDocumentNumber;
             e.MovementConfirmationIsApproved = c.MovementConfirmationIsApproved;
             e.MovementConfirmationApprovalAmount = c.MovementConfirmationApprovalAmount;
@@ -178,6 +179,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             e.IsPropertyProcessedRemoved = c.IsPropertyProcessedRemoved;
             e.IsPropertyVersionRemoved = c.IsPropertyVersionRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
+            e.IsPropertyMovementConfirmationDocumentStatusIdRemoved = c.IsPropertyMovementConfirmationDocumentStatusIdRemoved;
             e.IsPropertyMovementConfirmationMovementDocumentNumberRemoved = c.IsPropertyMovementConfirmationMovementDocumentNumberRemoved;
             e.IsPropertyMovementConfirmationIsApprovedRemoved = c.IsPropertyMovementConfirmationIsApprovedRemoved;
             e.IsPropertyMovementConfirmationApprovalAmountRemoved = c.IsPropertyMovementConfirmationApprovalAmountRemoved;
@@ -217,32 +219,6 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
 
             return e;
-        }
-
-        protected void NewMovementConfirmationLineMvoDocumentActionCommandAndExecute(ICreateMovementConfirmationLineMvo c, IMovementConfirmationLineMvoState s, IMovementConfirmationLineMvoStateCreated e)
-        {
-            var pCommandHandler = this.MovementConfirmationLineMvoDocumentActionCommandHandler;
-            var pCmdContent = default(string);
-            var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.MovementConfirmationDocumentStatusId, SetState = p => e.MovementConfirmationDocumentStatusId = p, OuterCommandType = CommandType.Create };
-            pCommandHandler.Execute(pCmd);
-        }
-
-        /*
-        protected void NewMovementConfirmationLineMvoDocumentActionCommandAndExecute(IMergePatchMovementConfirmationLineMvo c, IMovementConfirmationLineMvoState s, IMovementConfirmationLineMvoStateMergePatched e)
-        {
-            var pCommandHandler = this.MovementConfirmationLineMvoDocumentActionCommandHandler;
-            var pCmdContent = c.DocumentAction;
-            var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.MovementConfirmationDocumentStatusId, SetState = p => e.MovementConfirmationDocumentStatusId = p, OuterCommandType = CommandType.MergePatch };
-            pCommandHandler.Execute(pCmd);
-        }
-        */
-
-        protected IPropertyCommandHandler<string, string> MovementConfirmationLineMvoDocumentActionCommandHandler
-        {
-            get
-            {
-                return ApplicationContext.Current["MovementConfirmationLineMvoDocumentActionCommandHandler"] as IPropertyCommandHandler<string, string>;
-            }
         }
 
         private void ThrowOnInconsistentIds(object innerObject, string innerIdName, object innerIdValue, string outerIdName, object outerIdValue)

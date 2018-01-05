@@ -455,6 +455,11 @@ namespace Dddml.Wms.Domain.Movement
 			return new MovementLineStateRemoved(stateEventId);
 		}
 
+        protected void DoDocumentAction(string value, string commandId, string requesterId)
+        {
+            //todo...
+        }
+
 
     }
 

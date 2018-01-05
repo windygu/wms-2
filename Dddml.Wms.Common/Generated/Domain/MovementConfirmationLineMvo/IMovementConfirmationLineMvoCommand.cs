@@ -42,6 +42,8 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
 		bool? Active { get; set; }
 
+		string MovementConfirmationDocumentStatusId { get; set; }
+
 		string MovementConfirmationMovementDocumentNumber { get; set; }
 
 		bool? MovementConfirmationIsApproved { get; set; }
@@ -95,6 +97,8 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 		bool IsPropertyVersionRemoved { get; set; }
 
 		bool IsPropertyActiveRemoved { get; set; }
+
+		bool IsPropertyMovementConfirmationDocumentStatusIdRemoved { get; set; }
 
 		bool IsPropertyMovementConfirmationMovementDocumentNumberRemoved { get; set; }
 

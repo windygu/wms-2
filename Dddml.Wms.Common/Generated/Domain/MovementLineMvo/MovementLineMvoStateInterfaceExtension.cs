@@ -58,6 +58,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
             cmd.ReversalLineNumber = state.ReversalLineNumber;
             cmd.Version = ((IMovementLineMvoStateProperties)state).Version;
             cmd.Active = ((IMovementLineMvoStateProperties)state).Active;
+            cmd.MovementDocumentStatusId = state.MovementDocumentStatusId;
             cmd.MovementMovementDate = state.MovementMovementDate;
             cmd.MovementPosted = state.MovementPosted;
             cmd.MovementProcessed = state.MovementProcessed;
@@ -89,6 +90,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
             if (state.LocatorIdTo == null) { cmd.IsPropertyLocatorIdToRemoved = true; }
             if (state.AttributeSetInstanceId == null) { cmd.IsPropertyAttributeSetInstanceIdRemoved = true; }
             if (state.ReversalLineNumber == null) { cmd.IsPropertyReversalLineNumberRemoved = true; }
+            if (state.MovementDocumentStatusId == null) { cmd.IsPropertyMovementDocumentStatusIdRemoved = true; }
             if (state.MovementProcessing == null) { cmd.IsPropertyMovementProcessingRemoved = true; }
             if (state.MovementDocumentTypeId == null) { cmd.IsPropertyMovementDocumentTypeIdRemoved = true; }
             if (state.MovementShipperId == null) { cmd.IsPropertyMovementShipperIdRemoved = true; }
@@ -121,6 +123,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
             cmd.ReversalLineNumber = state.ReversalLineNumber;
             cmd.Version = ((IMovementLineMvoStateProperties)state).Version;
             cmd.Active = ((IMovementLineMvoStateProperties)state).Active;
+            cmd.MovementDocumentStatusId = state.MovementDocumentStatusId;
             cmd.MovementMovementDate = state.MovementMovementDate;
             cmd.MovementPosted = state.MovementPosted;
             cmd.MovementProcessed = state.MovementProcessed;

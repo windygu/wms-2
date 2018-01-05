@@ -32,6 +32,8 @@ namespace Dddml.Wms.Domain.InOut
 
 		void Reverse(string commandId, string requesterId);
 
+		void DocumentAction(string value, string commandId, string requesterId);
+
 
 	}
 

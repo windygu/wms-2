@@ -19,6 +19,8 @@ public interface PhysicalInventoryAggregate
 
     void delete(PhysicalInventoryCommand.DeletePhysicalInventory c);
 
+    void documentAction(String value, String commandId, String requesterId);
+
     void throwOnInvalidStateTransition(Command c);
 }
 

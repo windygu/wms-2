@@ -140,6 +140,23 @@ public class PhysicalInventoryResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+
+    @Path("{id}/_commands/DocumentAction") @PUT
+    public void documentAction(@PathParam("id") String id, PhysicalInventoryCommandDtos.DocumentActionRequestContent content) {
+        try {
+
+            PhysicalInventoryCommands.DocumentAction cmd = content.toDocumentAction();
+            String idObj = id;
+            if (cmd.getDocumentNumber() == null) {
+                cmd.setDocumentNumber(idObj);
+            } else if (!cmd.getDocumentNumber().equals(idObj)) {
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, cmd.getDocumentNumber());
+            }
+            physicalInventoryApplicationService.when(cmd);
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
     @Path("_metadata/filteringFields") @GET
     public List<PropertyMetadataDto> getMetadataFilteringFields() {
         try {

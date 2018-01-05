@@ -62,12 +62,15 @@
     <Compile Include="Domain\DocumentStatusIds.cs" />
     <Compile Include="Domain\DocumentType\DocumentTypeIds.cs" />
     <Compile Include="Domain\InOut\InOutAggregate.cs" />
+    <Compile Include="Domain\MovementConfirmation\MovementConfirmationAggregate.cs" />
     <Compile Include="Domain\MovementConfirmation\MovementConfirmationDocumentActionCommandHandler.cs" />
     <Compile Include="Domain\InOut\InOutDocumentActionCommandHandler.cs" />
     <Compile Include="Domain\InventoryItem\InventoryItemIds.cs" />
     <Compile Include="Domain\InventoryPostingRule\InventoryPostingRuleIds.cs" />
     <Compile Include="Domain\MovementType\MovementTypeIds.cs" />
+    <Compile Include="Domain\Movement\MovementAggregate.cs" />
     <Compile Include="Domain\Order\OrderTypeIds.cs" />
+    <Compile Include="Domain\PhysicalInventory\PhysicalInventoryAggregate.cs" />
     <Compile Include="Domain\Services\IAttributeSetService.cs" />
     <Compile Include="Domain\ShipmentType\ShipmentTypeIds.cs" />
     <Compile Include="Domain\StatusItem\StatusTypeIds.cs" />

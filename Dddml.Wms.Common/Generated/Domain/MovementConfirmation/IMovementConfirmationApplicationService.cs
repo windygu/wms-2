@@ -21,6 +21,8 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
 		void When(IDeleteMovementConfirmation c);
 
+		void When(MovementConfirmationCommands.DocumentAction c);
+
  		IMovementConfirmationState Get(string documentNumber);
 
         IEnumerable<IMovementConfirmationState> GetAll(int firstResult, int maxResults);

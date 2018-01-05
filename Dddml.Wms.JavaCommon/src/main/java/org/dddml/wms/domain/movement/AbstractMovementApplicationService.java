@@ -58,6 +58,10 @@ public abstract class AbstractMovementApplicationService implements MovementAppl
         update(c, ar -> ar.delete(c));
     }
 
+    public void when(MovementCommands.DocumentAction c) {
+        update(c, ar -> ar.documentAction(c.getValue(), c.getCommandId(), c.getRequesterId()));
+    }
+
     public MovementState get(String id) {
         MovementState state = getStateRepository().get(id, true);
         return state;

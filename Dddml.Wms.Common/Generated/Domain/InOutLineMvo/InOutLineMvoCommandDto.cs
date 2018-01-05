@@ -80,6 +80,8 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		public virtual bool? Active { get; set; }
 
+		public virtual string InOutDocumentStatusId { get; set; }
+
 		public virtual bool? InOutPosted { get; set; }
 
 		public virtual bool? InOutProcessed { get; set; }
@@ -405,6 +407,25 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set
             {
                 this.IsPropertyActiveRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyInOutDocumentStatusIdRemoved { get; set; }
+
+        bool IMergePatchInOutLineMvo.IsPropertyInOutDocumentStatusIdRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyInOutDocumentStatusIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyInOutDocumentStatusIdRemoved = value;
             }
         }
 

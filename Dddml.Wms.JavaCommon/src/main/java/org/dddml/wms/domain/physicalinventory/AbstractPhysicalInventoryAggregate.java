@@ -336,6 +336,11 @@ public abstract class AbstractPhysicalInventoryAggregate extends AbstractAggrega
             super(state);
         }
 
+        @Override
+        public void documentAction(String value, String commandId, String requesterId) {
+            throw new UnsupportedOperationException();
+        }
+
     }
 
 }

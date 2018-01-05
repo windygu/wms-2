@@ -59,6 +59,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             cmd.Description = state.Description;
             cmd.Version = ((IPhysicalInventoryLineMvoStateProperties)state).Version;
             cmd.Active = ((IPhysicalInventoryLineMvoStateProperties)state).Active;
+            cmd.PhysicalInventoryDocumentStatusId = state.PhysicalInventoryDocumentStatusId;
             cmd.PhysicalInventoryWarehouseId = state.PhysicalInventoryWarehouseId;
             cmd.PhysicalInventoryPosted = state.PhysicalInventoryPosted;
             cmd.PhysicalInventoryProcessed = state.PhysicalInventoryProcessed;
@@ -81,6 +82,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             if (state.ProductId == null) { cmd.IsPropertyProductIdRemoved = true; }
             if (state.AttributeSetInstanceId == null) { cmd.IsPropertyAttributeSetInstanceIdRemoved = true; }
             if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
+            if (state.PhysicalInventoryDocumentStatusId == null) { cmd.IsPropertyPhysicalInventoryDocumentStatusIdRemoved = true; }
             if (state.PhysicalInventoryWarehouseId == null) { cmd.IsPropertyPhysicalInventoryWarehouseIdRemoved = true; }
             if (state.PhysicalInventoryProcessing == null) { cmd.IsPropertyPhysicalInventoryProcessingRemoved = true; }
             if (state.PhysicalInventoryDocumentTypeId == null) { cmd.IsPropertyPhysicalInventoryDocumentTypeIdRemoved = true; }
@@ -110,6 +112,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             cmd.Description = state.Description;
             cmd.Version = ((IPhysicalInventoryLineMvoStateProperties)state).Version;
             cmd.Active = ((IPhysicalInventoryLineMvoStateProperties)state).Active;
+            cmd.PhysicalInventoryDocumentStatusId = state.PhysicalInventoryDocumentStatusId;
             cmd.PhysicalInventoryWarehouseId = state.PhysicalInventoryWarehouseId;
             cmd.PhysicalInventoryPosted = state.PhysicalInventoryPosted;
             cmd.PhysicalInventoryProcessed = state.PhysicalInventoryProcessed;

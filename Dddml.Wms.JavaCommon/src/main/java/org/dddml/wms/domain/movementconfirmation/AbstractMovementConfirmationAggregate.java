@@ -321,6 +321,11 @@ public abstract class AbstractMovementConfirmationAggregate extends AbstractAggr
             super(state);
         }
 
+        @Override
+        public void documentAction(String value, String commandId, String requesterId) {
+            throw new UnsupportedOperationException();
+        }
+
     }
 
 }

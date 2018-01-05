@@ -72,7 +72,7 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
         e.setReversalLineNumber(c.getReversalLineNumber());
         e.setVersion(c.getVersion());
         e.setActive(c.getActive());
-        newInOutLineMvoDocumentActionCommandAndExecute(c, state, e);
+        e.setInOutDocumentStatusId(c.getInOutDocumentStatusId());
         e.setInOutPosted(c.getInOutPosted());
         e.setInOutProcessed(c.getInOutProcessed());
         e.setInOutProcessing(c.getInOutProcessing());
@@ -129,7 +129,7 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
         e.setReversalLineNumber(c.getReversalLineNumber());
         e.setVersion(c.getVersion());
         e.setActive(c.getActive());
-        newInOutLineMvoDocumentActionCommandAndExecute(c, state, e);
+        e.setInOutDocumentStatusId(c.getInOutDocumentStatusId());
         e.setInOutPosted(c.getInOutPosted());
         e.setInOutProcessed(c.getInOutProcessed());
         e.setInOutProcessing(c.getInOutProcessing());
@@ -177,6 +177,7 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
         e.setIsPropertyReversalLineNumberRemoved(c.getIsPropertyReversalLineNumberRemoved());
         e.setIsPropertyVersionRemoved(c.getIsPropertyVersionRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
+        e.setIsPropertyInOutDocumentStatusIdRemoved(c.getIsPropertyInOutDocumentStatusIdRemoved());
         e.setIsPropertyInOutPostedRemoved(c.getIsPropertyInOutPostedRemoved());
         e.setIsPropertyInOutProcessedRemoved(c.getIsPropertyInOutProcessedRemoved());
         e.setIsPropertyInOutProcessingRemoved(c.getIsPropertyInOutProcessingRemoved());
@@ -224,35 +225,6 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
-    }
-
-    protected void newInOutLineMvoDocumentActionCommandAndExecute(InOutLineMvoCommand.MergePatchInOutLineMvo c, InOutLineMvoState s, InOutLineMvoStateEvent.InOutLineMvoStateMergePatched e)
-    {
-        PropertyCommandHandler<String, String> pCommandHandler = this.getInOutLineMvoDocumentActionCommandHandler();
-        String pCmdContent = c.getDocumentAction();
-        PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
-        pCmd.setContent(pCmdContent);
-        pCmd.setStateGetter(() -> s.getInOutDocumentStatusId());
-        pCmd.setStateSetter(p -> e.setInOutDocumentStatusId(p));
-        pCmd.setOuterCommandType(CommandType.MERGE_PATCH);
-        pCommandHandler.execute(pCmd);
-    }
-
-    protected void newInOutLineMvoDocumentActionCommandAndExecute(InOutLineMvoCommand.CreateInOutLineMvo c, InOutLineMvoState s, InOutLineMvoStateEvent.InOutLineMvoStateCreated e)
-    {
-        PropertyCommandHandler<String, String> pCommandHandler = this.getInOutLineMvoDocumentActionCommandHandler();
-        String pCmdContent = c.getDocumentAction();
-        PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
-        pCmd.setContent(pCmdContent);
-        pCmd.setStateGetter(() -> s.getInOutDocumentStatusId());
-        pCmd.setStateSetter(p -> e.setInOutDocumentStatusId(p));
-        pCmd.setOuterCommandType(CommandType.CREATE);
-        pCommandHandler.execute(pCmd);
-    }
-
-    protected PropertyCommandHandler<String, String> getInOutLineMvoDocumentActionCommandHandler()
-    {
-        return (PropertyCommandHandler<String, String>)ApplicationContext.current.get("InOutLineMvoDocumentActionCommandHandler");
     }
 
 

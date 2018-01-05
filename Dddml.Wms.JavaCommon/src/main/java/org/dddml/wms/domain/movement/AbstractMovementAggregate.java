@@ -357,6 +357,11 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
             super(state);
         }
 
+        @Override
+        public void documentAction(String value, String commandId, String requesterId) {
+            throw new UnsupportedOperationException();
+        }
+
     }
 
 }

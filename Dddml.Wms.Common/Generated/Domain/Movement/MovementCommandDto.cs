@@ -636,6 +636,37 @@ namespace Dddml.Wms.Domain.Movement
     public static partial class MovementCommandDtos
     {
 
+        public class DocumentActionRequestContent : ICommandDto
+        {
+
+            public string CommandType
+            {
+                get { return "DocumentAction"; }
+            }
+
+            public string Value { get; set; }
+
+            public string DocumentNumber { get; set; }
+
+            public long Version { get; set; }
+
+            public string CommandId { get; set; }
+
+            public string RequesterId { get; set; }
+
+            public MovementCommands.DocumentAction ToDocumentAction()
+            {
+                var cmd = new MovementCommands.DocumentAction();
+                cmd.Value = this.Value;
+                cmd.DocumentNumber = this.DocumentNumber;
+                cmd.Version = this.Version;
+                cmd.CommandId = this.CommandId;
+                cmd.RequesterId = this.RequesterId;
+                return cmd;
+            }
+
+        }
+
     }
 
 }

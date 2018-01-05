@@ -127,16 +127,16 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         this.active = active;
     }
 
-    private String documentAction;
+    private String physicalInventoryDocumentStatusId;
 
-    public String getDocumentAction()
+    public String getPhysicalInventoryDocumentStatusId()
     {
-        return this.documentAction;
+        return this.physicalInventoryDocumentStatusId;
     }
 
-    public void setDocumentAction(String documentAction)
+    public void setPhysicalInventoryDocumentStatusId(String physicalInventoryDocumentStatusId)
     {
-        this.documentAction = documentAction;
+        this.physicalInventoryDocumentStatusId = physicalInventoryDocumentStatusId;
     }
 
     private String physicalInventoryWarehouseId;
@@ -463,6 +463,18 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         this.isPropertyActiveRemoved = removed;
     }
 
+    private Boolean isPropertyPhysicalInventoryDocumentStatusIdRemoved;
+
+    public Boolean getIsPropertyPhysicalInventoryDocumentStatusIdRemoved()
+    {
+        return this.isPropertyPhysicalInventoryDocumentStatusIdRemoved;
+    }
+
+    public void setIsPropertyPhysicalInventoryDocumentStatusIdRemoved(Boolean removed)
+    {
+        this.isPropertyPhysicalInventoryDocumentStatusIdRemoved = removed;
+    }
+
     private Boolean isPropertyPhysicalInventoryWarehouseIdRemoved;
 
     public Boolean getIsPropertyPhysicalInventoryWarehouseIdRemoved()
@@ -680,7 +692,7 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         command.setDescription(this.getDescription());
         command.setVersion(this.getVersion());
         command.setActive(this.getActive());
-        command.setDocumentAction(this.getDocumentAction());
+        command.setPhysicalInventoryDocumentStatusId(this.getPhysicalInventoryDocumentStatusId());
         command.setPhysicalInventoryWarehouseId(this.getPhysicalInventoryWarehouseId());
         command.setPhysicalInventoryPosted(this.getPhysicalInventoryPosted());
         command.setPhysicalInventoryProcessed(this.getPhysicalInventoryProcessed());
@@ -732,6 +744,7 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
         command.setIsPropertyVersionRemoved(this.getIsPropertyVersionRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
+        command.setIsPropertyPhysicalInventoryDocumentStatusIdRemoved(this.getIsPropertyPhysicalInventoryDocumentStatusIdRemoved());
         command.setIsPropertyPhysicalInventoryWarehouseIdRemoved(this.getIsPropertyPhysicalInventoryWarehouseIdRemoved());
         command.setIsPropertyPhysicalInventoryPostedRemoved(this.getIsPropertyPhysicalInventoryPostedRemoved());
         command.setIsPropertyPhysicalInventoryProcessedRemoved(this.getIsPropertyPhysicalInventoryProcessedRemoved());

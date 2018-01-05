@@ -48,6 +48,7 @@ public abstract class AbstractMovementConfirmationLineMvoStateCommandConverter<T
         cmd.setProcessed(state.getProcessed());
         cmd.setVersion(state.getVersion());
         cmd.setActive(state.getActive());
+        cmd.setMovementConfirmationDocumentStatusId(state.getMovementConfirmationDocumentStatusId());
         cmd.setMovementConfirmationMovementDocumentNumber(state.getMovementConfirmationMovementDocumentNumber());
         cmd.setMovementConfirmationIsApproved(state.getMovementConfirmationIsApproved());
         cmd.setMovementConfirmationApprovalAmount(state.getMovementConfirmationApprovalAmount());
@@ -71,6 +72,7 @@ public abstract class AbstractMovementConfirmationLineMvoStateCommandConverter<T
         if (state.getProcessed() == null) { cmd.setIsPropertyProcessedRemoved(true); }
         if (state.getVersion() == null) { cmd.setIsPropertyVersionRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
+        if (state.getMovementConfirmationDocumentStatusId() == null) { cmd.setIsPropertyMovementConfirmationDocumentStatusIdRemoved(true); }
         if (state.getMovementConfirmationMovementDocumentNumber() == null) { cmd.setIsPropertyMovementConfirmationMovementDocumentNumberRemoved(true); }
         if (state.getMovementConfirmationIsApproved() == null) { cmd.setIsPropertyMovementConfirmationIsApprovedRemoved(true); }
         if (state.getMovementConfirmationApprovalAmount() == null) { cmd.setIsPropertyMovementConfirmationApprovalAmountRemoved(true); }
@@ -102,6 +104,7 @@ public abstract class AbstractMovementConfirmationLineMvoStateCommandConverter<T
         cmd.setProcessed(state.getProcessed());
         cmd.setVersion(state.getVersion());
         cmd.setActive(state.getActive());
+        cmd.setMovementConfirmationDocumentStatusId(state.getMovementConfirmationDocumentStatusId());
         cmd.setMovementConfirmationMovementDocumentNumber(state.getMovementConfirmationMovementDocumentNumber());
         cmd.setMovementConfirmationIsApproved(state.getMovementConfirmationIsApproved());
         cmd.setMovementConfirmationApprovalAmount(state.getMovementConfirmationApprovalAmount());

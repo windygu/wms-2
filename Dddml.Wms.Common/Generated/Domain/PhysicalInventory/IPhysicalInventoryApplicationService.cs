@@ -21,6 +21,8 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
 		void When(IDeletePhysicalInventory c);
 
+		void When(PhysicalInventoryCommands.DocumentAction c);
+
  		IPhysicalInventoryState Get(string documentNumber);
 
         IEnumerable<IPhysicalInventoryState> GetAll(int firstResult, int maxResults);

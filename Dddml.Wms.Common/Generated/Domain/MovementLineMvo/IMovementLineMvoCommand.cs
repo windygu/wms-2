@@ -42,6 +42,8 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
 		bool? Active { get; set; }
 
+		string MovementDocumentStatusId { get; set; }
+
 		DateTime? MovementMovementDate { get; set; }
 
 		bool? MovementPosted { get; set; }
@@ -119,6 +121,8 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 		bool IsPropertyVersionRemoved { get; set; }
 
 		bool IsPropertyActiveRemoved { get; set; }
+
+		bool IsPropertyMovementDocumentStatusIdRemoved { get; set; }
 
 		bool IsPropertyMovementMovementDateRemoved { get; set; }
 

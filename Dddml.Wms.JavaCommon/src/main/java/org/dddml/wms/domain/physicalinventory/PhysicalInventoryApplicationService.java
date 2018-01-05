@@ -17,6 +17,8 @@ public interface PhysicalInventoryApplicationService
 
     void when(PhysicalInventoryCommand.DeletePhysicalInventory c);
 
+    void when(PhysicalInventoryCommands.DocumentAction c);
+
     PhysicalInventoryState get(String id);
 
     Iterable<PhysicalInventoryState> getAll(Integer firstResult, Integer maxResults);

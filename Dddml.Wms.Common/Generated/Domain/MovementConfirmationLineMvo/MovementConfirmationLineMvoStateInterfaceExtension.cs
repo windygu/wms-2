@@ -58,6 +58,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             cmd.Processed = state.Processed;
             cmd.Version = ((IMovementConfirmationLineMvoStateProperties)state).Version;
             cmd.Active = ((IMovementConfirmationLineMvoStateProperties)state).Active;
+            cmd.MovementConfirmationDocumentStatusId = state.MovementConfirmationDocumentStatusId;
             cmd.MovementConfirmationMovementDocumentNumber = state.MovementConfirmationMovementDocumentNumber;
             cmd.MovementConfirmationIsApproved = state.MovementConfirmationIsApproved;
             cmd.MovementConfirmationApprovalAmount = state.MovementConfirmationApprovalAmount;
@@ -74,6 +75,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             
             if (state.MovementLineNumber == null) { cmd.IsPropertyMovementLineNumberRemoved = true; }
             if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
+            if (state.MovementConfirmationDocumentStatusId == null) { cmd.IsPropertyMovementConfirmationDocumentStatusIdRemoved = true; }
             if (state.MovementConfirmationMovementDocumentNumber == null) { cmd.IsPropertyMovementConfirmationMovementDocumentNumberRemoved = true; }
             if (state.MovementConfirmationProcessing == null) { cmd.IsPropertyMovementConfirmationProcessingRemoved = true; }
             if (state.MovementConfirmationDocumentTypeId == null) { cmd.IsPropertyMovementConfirmationDocumentTypeIdRemoved = true; }
@@ -100,6 +102,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             cmd.Processed = state.Processed;
             cmd.Version = ((IMovementConfirmationLineMvoStateProperties)state).Version;
             cmd.Active = ((IMovementConfirmationLineMvoStateProperties)state).Active;
+            cmd.MovementConfirmationDocumentStatusId = state.MovementConfirmationDocumentStatusId;
             cmd.MovementConfirmationMovementDocumentNumber = state.MovementConfirmationMovementDocumentNumber;
             cmd.MovementConfirmationIsApproved = state.MovementConfirmationIsApproved;
             cmd.MovementConfirmationApprovalAmount = state.MovementConfirmationApprovalAmount;

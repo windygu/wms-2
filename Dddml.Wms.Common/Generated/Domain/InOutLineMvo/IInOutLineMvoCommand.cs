@@ -50,6 +50,8 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		bool? Active { get; set; }
 
+		string InOutDocumentStatusId { get; set; }
+
 		bool? InOutPosted { get; set; }
 
 		bool? InOutProcessed { get; set; }
@@ -153,6 +155,8 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 		bool IsPropertyVersionRemoved { get; set; }
 
 		bool IsPropertyActiveRemoved { get; set; }
+
+		bool IsPropertyInOutDocumentStatusIdRemoved { get; set; }
 
 		bool IsPropertyInOutPostedRemoved { get; set; }
 

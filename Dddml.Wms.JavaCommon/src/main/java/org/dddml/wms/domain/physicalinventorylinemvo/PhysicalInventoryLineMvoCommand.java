@@ -82,9 +82,9 @@ public interface PhysicalInventoryLineMvoCommand extends Command
 
         void setActive(Boolean active);
 
-        String getDocumentAction();
+        String getPhysicalInventoryDocumentStatusId();
 
-        void setDocumentAction(String documentAction);
+        void setPhysicalInventoryDocumentStatusId(String physicalInventoryDocumentStatusId);
 
         String getPhysicalInventoryWarehouseId();
 
@@ -201,6 +201,10 @@ public interface PhysicalInventoryLineMvoCommand extends Command
         Boolean getIsPropertyActiveRemoved();
 
         void setIsPropertyActiveRemoved(Boolean removed);
+
+        Boolean getIsPropertyPhysicalInventoryDocumentStatusIdRemoved();
+
+        void setIsPropertyPhysicalInventoryDocumentStatusIdRemoved(Boolean removed);
 
         Boolean getIsPropertyPhysicalInventoryWarehouseIdRemoved();
 

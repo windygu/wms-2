@@ -70,6 +70,10 @@ public abstract class AbstractInOutApplicationService implements InOutApplicatio
         update(c, ar -> ar.reverse(c.getCommandId(), c.getRequesterId()));
     }
 
+    public void when(InOutCommands.DocumentAction c) {
+        update(c, ar -> ar.documentAction(c.getValue(), c.getCommandId(), c.getRequesterId()));
+    }
+
     public InOutState get(String id) {
         InOutState state = getStateRepository().get(id, true);
         return state;

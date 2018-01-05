@@ -17,6 +17,8 @@ public interface MovementConfirmationApplicationService
 
     void when(MovementConfirmationCommand.DeleteMovementConfirmation c);
 
+    void when(MovementConfirmationCommands.DocumentAction c);
+
     MovementConfirmationState get(String id);
 
     Iterable<MovementConfirmationState> getAll(Integer firstResult, Integer maxResults);

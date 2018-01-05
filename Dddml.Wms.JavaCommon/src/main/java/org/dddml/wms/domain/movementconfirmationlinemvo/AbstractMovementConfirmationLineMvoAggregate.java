@@ -68,7 +68,7 @@ public abstract class AbstractMovementConfirmationLineMvoAggregate extends Abstr
         e.setProcessed(c.getProcessed());
         e.setVersion(c.getVersion());
         e.setActive(c.getActive());
-        newMovementConfirmationLineMvoDocumentActionCommandAndExecute(c, state, e);
+        e.setMovementConfirmationDocumentStatusId(c.getMovementConfirmationDocumentStatusId());
         e.setMovementConfirmationMovementDocumentNumber(c.getMovementConfirmationMovementDocumentNumber());
         e.setMovementConfirmationIsApproved(c.getMovementConfirmationIsApproved());
         e.setMovementConfirmationApprovalAmount(c.getMovementConfirmationApprovalAmount());
@@ -100,7 +100,7 @@ public abstract class AbstractMovementConfirmationLineMvoAggregate extends Abstr
         e.setProcessed(c.getProcessed());
         e.setVersion(c.getVersion());
         e.setActive(c.getActive());
-        newMovementConfirmationLineMvoDocumentActionCommandAndExecute(c, state, e);
+        e.setMovementConfirmationDocumentStatusId(c.getMovementConfirmationDocumentStatusId());
         e.setMovementConfirmationMovementDocumentNumber(c.getMovementConfirmationMovementDocumentNumber());
         e.setMovementConfirmationIsApproved(c.getMovementConfirmationIsApproved());
         e.setMovementConfirmationApprovalAmount(c.getMovementConfirmationApprovalAmount());
@@ -123,6 +123,7 @@ public abstract class AbstractMovementConfirmationLineMvoAggregate extends Abstr
         e.setIsPropertyProcessedRemoved(c.getIsPropertyProcessedRemoved());
         e.setIsPropertyVersionRemoved(c.getIsPropertyVersionRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
+        e.setIsPropertyMovementConfirmationDocumentStatusIdRemoved(c.getIsPropertyMovementConfirmationDocumentStatusIdRemoved());
         e.setIsPropertyMovementConfirmationMovementDocumentNumberRemoved(c.getIsPropertyMovementConfirmationMovementDocumentNumberRemoved());
         e.setIsPropertyMovementConfirmationIsApprovedRemoved(c.getIsPropertyMovementConfirmationIsApprovedRemoved());
         e.setIsPropertyMovementConfirmationApprovalAmountRemoved(c.getIsPropertyMovementConfirmationApprovalAmountRemoved());
@@ -149,35 +150,6 @@ public abstract class AbstractMovementConfirmationLineMvoAggregate extends Abstr
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
-    }
-
-    protected void newMovementConfirmationLineMvoDocumentActionCommandAndExecute(MovementConfirmationLineMvoCommand.MergePatchMovementConfirmationLineMvo c, MovementConfirmationLineMvoState s, MovementConfirmationLineMvoStateEvent.MovementConfirmationLineMvoStateMergePatched e)
-    {
-        PropertyCommandHandler<String, String> pCommandHandler = this.getMovementConfirmationLineMvoDocumentActionCommandHandler();
-        String pCmdContent = c.getDocumentAction();
-        PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
-        pCmd.setContent(pCmdContent);
-        pCmd.setStateGetter(() -> s.getMovementConfirmationDocumentStatusId());
-        pCmd.setStateSetter(p -> e.setMovementConfirmationDocumentStatusId(p));
-        pCmd.setOuterCommandType(CommandType.MERGE_PATCH);
-        pCommandHandler.execute(pCmd);
-    }
-
-    protected void newMovementConfirmationLineMvoDocumentActionCommandAndExecute(MovementConfirmationLineMvoCommand.CreateMovementConfirmationLineMvo c, MovementConfirmationLineMvoState s, MovementConfirmationLineMvoStateEvent.MovementConfirmationLineMvoStateCreated e)
-    {
-        PropertyCommandHandler<String, String> pCommandHandler = this.getMovementConfirmationLineMvoDocumentActionCommandHandler();
-        String pCmdContent = c.getDocumentAction();
-        PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
-        pCmd.setContent(pCmdContent);
-        pCmd.setStateGetter(() -> s.getMovementConfirmationDocumentStatusId());
-        pCmd.setStateSetter(p -> e.setMovementConfirmationDocumentStatusId(p));
-        pCmd.setOuterCommandType(CommandType.CREATE);
-        pCommandHandler.execute(pCmd);
-    }
-
-    protected PropertyCommandHandler<String, String> getMovementConfirmationLineMvoDocumentActionCommandHandler()
-    {
-        return (PropertyCommandHandler<String, String>)ApplicationContext.current.get("MovementConfirmationLineMvoDocumentActionCommandHandler");
     }
 
 

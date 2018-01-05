@@ -69,7 +69,7 @@ public abstract class AbstractPhysicalInventoryLineMvoAggregate extends Abstract
         e.setDescription(c.getDescription());
         e.setVersion(c.getVersion());
         e.setActive(c.getActive());
-        newPhysicalInventoryLineMvoDocumentActionCommandAndExecute(c, state, e);
+        e.setPhysicalInventoryDocumentStatusId(c.getPhysicalInventoryDocumentStatusId());
         e.setPhysicalInventoryWarehouseId(c.getPhysicalInventoryWarehouseId());
         e.setPhysicalInventoryPosted(c.getPhysicalInventoryPosted());
         e.setPhysicalInventoryProcessed(c.getPhysicalInventoryProcessed());
@@ -106,7 +106,7 @@ public abstract class AbstractPhysicalInventoryLineMvoAggregate extends Abstract
         e.setDescription(c.getDescription());
         e.setVersion(c.getVersion());
         e.setActive(c.getActive());
-        newPhysicalInventoryLineMvoDocumentActionCommandAndExecute(c, state, e);
+        e.setPhysicalInventoryDocumentStatusId(c.getPhysicalInventoryDocumentStatusId());
         e.setPhysicalInventoryWarehouseId(c.getPhysicalInventoryWarehouseId());
         e.setPhysicalInventoryPosted(c.getPhysicalInventoryPosted());
         e.setPhysicalInventoryProcessed(c.getPhysicalInventoryProcessed());
@@ -134,6 +134,7 @@ public abstract class AbstractPhysicalInventoryLineMvoAggregate extends Abstract
         e.setIsPropertyDescriptionRemoved(c.getIsPropertyDescriptionRemoved());
         e.setIsPropertyVersionRemoved(c.getIsPropertyVersionRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
+        e.setIsPropertyPhysicalInventoryDocumentStatusIdRemoved(c.getIsPropertyPhysicalInventoryDocumentStatusIdRemoved());
         e.setIsPropertyPhysicalInventoryWarehouseIdRemoved(c.getIsPropertyPhysicalInventoryWarehouseIdRemoved());
         e.setIsPropertyPhysicalInventoryPostedRemoved(c.getIsPropertyPhysicalInventoryPostedRemoved());
         e.setIsPropertyPhysicalInventoryProcessedRemoved(c.getIsPropertyPhysicalInventoryProcessedRemoved());
@@ -164,35 +165,6 @@ public abstract class AbstractPhysicalInventoryLineMvoAggregate extends Abstract
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
-    }
-
-    protected void newPhysicalInventoryLineMvoDocumentActionCommandAndExecute(PhysicalInventoryLineMvoCommand.MergePatchPhysicalInventoryLineMvo c, PhysicalInventoryLineMvoState s, PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateMergePatched e)
-    {
-        PropertyCommandHandler<String, String> pCommandHandler = this.getPhysicalInventoryLineMvoDocumentActionCommandHandler();
-        String pCmdContent = c.getDocumentAction();
-        PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
-        pCmd.setContent(pCmdContent);
-        pCmd.setStateGetter(() -> s.getPhysicalInventoryDocumentStatusId());
-        pCmd.setStateSetter(p -> e.setPhysicalInventoryDocumentStatusId(p));
-        pCmd.setOuterCommandType(CommandType.MERGE_PATCH);
-        pCommandHandler.execute(pCmd);
-    }
-
-    protected void newPhysicalInventoryLineMvoDocumentActionCommandAndExecute(PhysicalInventoryLineMvoCommand.CreatePhysicalInventoryLineMvo c, PhysicalInventoryLineMvoState s, PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateCreated e)
-    {
-        PropertyCommandHandler<String, String> pCommandHandler = this.getPhysicalInventoryLineMvoDocumentActionCommandHandler();
-        String pCmdContent = c.getDocumentAction();
-        PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
-        pCmd.setContent(pCmdContent);
-        pCmd.setStateGetter(() -> s.getPhysicalInventoryDocumentStatusId());
-        pCmd.setStateSetter(p -> e.setPhysicalInventoryDocumentStatusId(p));
-        pCmd.setOuterCommandType(CommandType.CREATE);
-        pCommandHandler.execute(pCmd);
-    }
-
-    protected PropertyCommandHandler<String, String> getPhysicalInventoryLineMvoDocumentActionCommandHandler()
-    {
-        return (PropertyCommandHandler<String, String>)ApplicationContext.current.get("PhysicalInventoryLineMvoDocumentActionCommandHandler");
     }
 
 

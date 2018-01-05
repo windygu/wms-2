@@ -105,6 +105,11 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 			Update(c, ar => ar.Delete(c));
 		}
 
+		public virtual void When(MovementConfirmationCommands.DocumentAction c)
+		{
+			Update(c, ar => ar.DocumentAction(c.Value, c.CommandId, c.RequesterId));
+		}
+
         public virtual IMovementConfirmationState Get(string documentNumber)
         {
             var state = StateRepository.Get(documentNumber, true);

@@ -78,9 +78,9 @@ public interface MovementConfirmationLineMvoCommand extends Command
 
         void setActive(Boolean active);
 
-        String getDocumentAction();
+        String getMovementConfirmationDocumentStatusId();
 
-        void setDocumentAction(String documentAction);
+        void setMovementConfirmationDocumentStatusId(String movementConfirmationDocumentStatusId);
 
         String getMovementConfirmationMovementDocumentNumber();
 
@@ -177,6 +177,10 @@ public interface MovementConfirmationLineMvoCommand extends Command
         Boolean getIsPropertyActiveRemoved();
 
         void setIsPropertyActiveRemoved(Boolean removed);
+
+        Boolean getIsPropertyMovementConfirmationDocumentStatusIdRemoved();
+
+        void setIsPropertyMovementConfirmationDocumentStatusIdRemoved(Boolean removed);
 
         Boolean getIsPropertyMovementConfirmationMovementDocumentNumberRemoved();
 

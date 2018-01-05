@@ -651,6 +651,78 @@ namespace Dddml.Wms.Domain.InOut
 
         }
 
+        public class DocumentAction : IInOutCommand
+        {
+
+            public string CommandType
+            {
+                get { return "DocumentAction"; }
+            }
+
+            public string Value { get; set; }
+
+            public string DocumentNumber { get; set; }
+
+            public long Version { get; set; }
+
+            public string CommandId { get; set; }
+
+            public string RequesterId { get; set; }
+
+
+            string ICommand.CommandId
+            {
+                get
+                {
+                    return this.CommandId;
+                }
+                set
+                {
+                    this.CommandId = value;
+                }
+            }
+
+            object ICommand.RequesterId
+            {
+                get { return this.RequesterId; }
+                set { this.RequesterId = (string)value; }
+            }
+
+            string ICommandDto.CommandType
+            {
+                get { return this.CommandType; }
+            }
+
+            string IAggregateCommand<string, long>.AggregateId
+            {
+                get { return this.DocumentNumber; }
+            }
+
+            string IInOutCommand.DocumentNumber
+            {
+                get { return this.DocumentNumber; }
+                set { this.DocumentNumber = value; }
+            }
+
+            long IAggregateCommand<string, long>.AggregateVersion
+            {
+                get { return this.Version; }
+            }
+
+            long IInOutCommand.Version
+            {
+                get
+                {
+                    return this.Version;
+                }
+                set
+                {
+                    this.Version = value;
+                }
+            }
+
+        }
+
     }
 
 }

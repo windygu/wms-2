@@ -49,6 +49,7 @@ public abstract class AbstractPhysicalInventoryLineMvoStateCommandConverter<TCre
         cmd.setDescription(state.getDescription());
         cmd.setVersion(state.getVersion());
         cmd.setActive(state.getActive());
+        cmd.setPhysicalInventoryDocumentStatusId(state.getPhysicalInventoryDocumentStatusId());
         cmd.setPhysicalInventoryWarehouseId(state.getPhysicalInventoryWarehouseId());
         cmd.setPhysicalInventoryPosted(state.getPhysicalInventoryPosted());
         cmd.setPhysicalInventoryProcessed(state.getPhysicalInventoryProcessed());
@@ -77,6 +78,7 @@ public abstract class AbstractPhysicalInventoryLineMvoStateCommandConverter<TCre
         if (state.getDescription() == null) { cmd.setIsPropertyDescriptionRemoved(true); }
         if (state.getVersion() == null) { cmd.setIsPropertyVersionRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
+        if (state.getPhysicalInventoryDocumentStatusId() == null) { cmd.setIsPropertyPhysicalInventoryDocumentStatusIdRemoved(true); }
         if (state.getPhysicalInventoryWarehouseId() == null) { cmd.setIsPropertyPhysicalInventoryWarehouseIdRemoved(true); }
         if (state.getPhysicalInventoryPosted() == null) { cmd.setIsPropertyPhysicalInventoryPostedRemoved(true); }
         if (state.getPhysicalInventoryProcessed() == null) { cmd.setIsPropertyPhysicalInventoryProcessedRemoved(true); }
@@ -113,6 +115,7 @@ public abstract class AbstractPhysicalInventoryLineMvoStateCommandConverter<TCre
         cmd.setDescription(state.getDescription());
         cmd.setVersion(state.getVersion());
         cmd.setActive(state.getActive());
+        cmd.setPhysicalInventoryDocumentStatusId(state.getPhysicalInventoryDocumentStatusId());
         cmd.setPhysicalInventoryWarehouseId(state.getPhysicalInventoryWarehouseId());
         cmd.setPhysicalInventoryPosted(state.getPhysicalInventoryPosted());
         cmd.setPhysicalInventoryProcessed(state.getPhysicalInventoryProcessed());

@@ -48,6 +48,7 @@ public abstract class AbstractMovementLineMvoStateCommandConverter<TCreateMoveme
         cmd.setReversalLineNumber(state.getReversalLineNumber());
         cmd.setVersion(state.getVersion());
         cmd.setActive(state.getActive());
+        cmd.setMovementDocumentStatusId(state.getMovementDocumentStatusId());
         cmd.setMovementMovementDate(state.getMovementMovementDate());
         cmd.setMovementPosted(state.getMovementPosted());
         cmd.setMovementProcessed(state.getMovementProcessed());
@@ -83,6 +84,7 @@ public abstract class AbstractMovementLineMvoStateCommandConverter<TCreateMoveme
         if (state.getReversalLineNumber() == null) { cmd.setIsPropertyReversalLineNumberRemoved(true); }
         if (state.getVersion() == null) { cmd.setIsPropertyVersionRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
+        if (state.getMovementDocumentStatusId() == null) { cmd.setIsPropertyMovementDocumentStatusIdRemoved(true); }
         if (state.getMovementMovementDate() == null) { cmd.setIsPropertyMovementMovementDateRemoved(true); }
         if (state.getMovementPosted() == null) { cmd.setIsPropertyMovementPostedRemoved(true); }
         if (state.getMovementProcessed() == null) { cmd.setIsPropertyMovementProcessedRemoved(true); }
@@ -126,6 +128,7 @@ public abstract class AbstractMovementLineMvoStateCommandConverter<TCreateMoveme
         cmd.setReversalLineNumber(state.getReversalLineNumber());
         cmd.setVersion(state.getVersion());
         cmd.setActive(state.getActive());
+        cmd.setMovementDocumentStatusId(state.getMovementDocumentStatusId());
         cmd.setMovementMovementDate(state.getMovementMovementDate());
         cmd.setMovementPosted(state.getMovementPosted());
         cmd.setMovementProcessed(state.getMovementProcessed());

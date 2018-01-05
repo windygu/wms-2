@@ -68,7 +68,7 @@ public abstract class AbstractMovementLineMvoAggregate extends AbstractAggregate
         e.setReversalLineNumber(c.getReversalLineNumber());
         e.setVersion(c.getVersion());
         e.setActive(c.getActive());
-        newMovementLineMvoDocumentActionCommandAndExecute(c, state, e);
+        e.setMovementDocumentStatusId(c.getMovementDocumentStatusId());
         e.setMovementMovementDate(c.getMovementMovementDate());
         e.setMovementPosted(c.getMovementPosted());
         e.setMovementProcessed(c.getMovementProcessed());
@@ -112,7 +112,7 @@ public abstract class AbstractMovementLineMvoAggregate extends AbstractAggregate
         e.setReversalLineNumber(c.getReversalLineNumber());
         e.setVersion(c.getVersion());
         e.setActive(c.getActive());
-        newMovementLineMvoDocumentActionCommandAndExecute(c, state, e);
+        e.setMovementDocumentStatusId(c.getMovementDocumentStatusId());
         e.setMovementMovementDate(c.getMovementMovementDate());
         e.setMovementPosted(c.getMovementPosted());
         e.setMovementProcessed(c.getMovementProcessed());
@@ -147,6 +147,7 @@ public abstract class AbstractMovementLineMvoAggregate extends AbstractAggregate
         e.setIsPropertyReversalLineNumberRemoved(c.getIsPropertyReversalLineNumberRemoved());
         e.setIsPropertyVersionRemoved(c.getIsPropertyVersionRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
+        e.setIsPropertyMovementDocumentStatusIdRemoved(c.getIsPropertyMovementDocumentStatusIdRemoved());
         e.setIsPropertyMovementMovementDateRemoved(c.getIsPropertyMovementMovementDateRemoved());
         e.setIsPropertyMovementPostedRemoved(c.getIsPropertyMovementPostedRemoved());
         e.setIsPropertyMovementProcessedRemoved(c.getIsPropertyMovementProcessedRemoved());
@@ -185,35 +186,6 @@ public abstract class AbstractMovementLineMvoAggregate extends AbstractAggregate
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
-    }
-
-    protected void newMovementLineMvoDocumentActionCommandAndExecute(MovementLineMvoCommand.MergePatchMovementLineMvo c, MovementLineMvoState s, MovementLineMvoStateEvent.MovementLineMvoStateMergePatched e)
-    {
-        PropertyCommandHandler<String, String> pCommandHandler = this.getMovementLineMvoDocumentActionCommandHandler();
-        String pCmdContent = c.getDocumentAction();
-        PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
-        pCmd.setContent(pCmdContent);
-        pCmd.setStateGetter(() -> s.getMovementDocumentStatusId());
-        pCmd.setStateSetter(p -> e.setMovementDocumentStatusId(p));
-        pCmd.setOuterCommandType(CommandType.MERGE_PATCH);
-        pCommandHandler.execute(pCmd);
-    }
-
-    protected void newMovementLineMvoDocumentActionCommandAndExecute(MovementLineMvoCommand.CreateMovementLineMvo c, MovementLineMvoState s, MovementLineMvoStateEvent.MovementLineMvoStateCreated e)
-    {
-        PropertyCommandHandler<String, String> pCommandHandler = this.getMovementLineMvoDocumentActionCommandHandler();
-        String pCmdContent = c.getDocumentAction();
-        PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
-        pCmd.setContent(pCmdContent);
-        pCmd.setStateGetter(() -> s.getMovementDocumentStatusId());
-        pCmd.setStateSetter(p -> e.setMovementDocumentStatusId(p));
-        pCmd.setOuterCommandType(CommandType.CREATE);
-        pCommandHandler.execute(pCmd);
-    }
-
-    protected PropertyCommandHandler<String, String> getMovementLineMvoDocumentActionCommandHandler()
-    {
-        return (PropertyCommandHandler<String, String>)ApplicationContext.current.get("MovementLineMvoDocumentActionCommandHandler");
     }
 
 

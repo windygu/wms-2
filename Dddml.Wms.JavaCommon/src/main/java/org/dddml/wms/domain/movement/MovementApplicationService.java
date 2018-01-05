@@ -17,6 +17,8 @@ public interface MovementApplicationService
 
     void when(MovementCommand.DeleteMovement c);
 
+    void when(MovementCommands.DocumentAction c);
+
     MovementState get(String id);
 
     Iterable<MovementState> getAll(Integer firstResult, Integer maxResults);

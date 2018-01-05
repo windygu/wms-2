@@ -133,6 +133,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             throw new NotImplementedException();//todo
         }
 
+        public void When(InOutCommands.DocumentAction c)
+        {
+            throw new NotImplementedException();//todo
+        }
+
         public async Task<IInOutState> GetAsync(string documentNumber)
         {
             IInOutState state = null;

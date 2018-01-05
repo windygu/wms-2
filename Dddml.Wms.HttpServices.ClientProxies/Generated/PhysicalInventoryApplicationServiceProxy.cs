@@ -118,6 +118,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             this.When((DeletePhysicalInventoryDto)c);
         }
 
+        public void When(PhysicalInventoryCommands.DocumentAction c)
+        {
+            throw new NotImplementedException();//todo
+        }
+
         public async Task<IPhysicalInventoryState> GetAsync(string documentNumber)
         {
             IPhysicalInventoryState state = null;

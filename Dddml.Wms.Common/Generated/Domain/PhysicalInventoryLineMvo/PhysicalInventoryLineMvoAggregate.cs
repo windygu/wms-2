@@ -118,7 +118,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             e.Description = c.Description;
             e.Version = c.Version;
             e.Active = c.Active;
-            NewPhysicalInventoryLineMvoDocumentActionCommandAndExecute(c, _state, e);
+            e.PhysicalInventoryDocumentStatusId = c.PhysicalInventoryDocumentStatusId;
             e.PhysicalInventoryWarehouseId = c.PhysicalInventoryWarehouseId;
             e.PhysicalInventoryPosted = c.PhysicalInventoryPosted;
             e.PhysicalInventoryProcessed = c.PhysicalInventoryProcessed;
@@ -162,6 +162,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             e.Description = c.Description;
             e.Version = c.Version;
             e.Active = c.Active;
+            e.PhysicalInventoryDocumentStatusId = c.PhysicalInventoryDocumentStatusId;
             e.PhysicalInventoryWarehouseId = c.PhysicalInventoryWarehouseId;
             e.PhysicalInventoryPosted = c.PhysicalInventoryPosted;
             e.PhysicalInventoryProcessed = c.PhysicalInventoryProcessed;
@@ -189,6 +190,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             e.IsPropertyDescriptionRemoved = c.IsPropertyDescriptionRemoved;
             e.IsPropertyVersionRemoved = c.IsPropertyVersionRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
+            e.IsPropertyPhysicalInventoryDocumentStatusIdRemoved = c.IsPropertyPhysicalInventoryDocumentStatusIdRemoved;
             e.IsPropertyPhysicalInventoryWarehouseIdRemoved = c.IsPropertyPhysicalInventoryWarehouseIdRemoved;
             e.IsPropertyPhysicalInventoryPostedRemoved = c.IsPropertyPhysicalInventoryPostedRemoved;
             e.IsPropertyPhysicalInventoryProcessedRemoved = c.IsPropertyPhysicalInventoryProcessedRemoved;
@@ -232,32 +234,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
 
             return e;
-        }
-
-        protected void NewPhysicalInventoryLineMvoDocumentActionCommandAndExecute(ICreatePhysicalInventoryLineMvo c, IPhysicalInventoryLineMvoState s, IPhysicalInventoryLineMvoStateCreated e)
-        {
-            var pCommandHandler = this.PhysicalInventoryLineMvoDocumentActionCommandHandler;
-            var pCmdContent = default(string);
-            var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.PhysicalInventoryDocumentStatusId, SetState = p => e.PhysicalInventoryDocumentStatusId = p, OuterCommandType = CommandType.Create };
-            pCommandHandler.Execute(pCmd);
-        }
-
-        /*
-        protected void NewPhysicalInventoryLineMvoDocumentActionCommandAndExecute(IMergePatchPhysicalInventoryLineMvo c, IPhysicalInventoryLineMvoState s, IPhysicalInventoryLineMvoStateMergePatched e)
-        {
-            var pCommandHandler = this.PhysicalInventoryLineMvoDocumentActionCommandHandler;
-            var pCmdContent = c.DocumentAction;
-            var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.PhysicalInventoryDocumentStatusId, SetState = p => e.PhysicalInventoryDocumentStatusId = p, OuterCommandType = CommandType.MergePatch };
-            pCommandHandler.Execute(pCmd);
-        }
-        */
-
-        protected IPropertyCommandHandler<string, string> PhysicalInventoryLineMvoDocumentActionCommandHandler
-        {
-            get
-            {
-                return ApplicationContext.Current["PhysicalInventoryLineMvoDocumentActionCommandHandler"] as IPropertyCommandHandler<string, string>;
-            }
         }
 
         private void ThrowOnInconsistentIds(object innerObject, string innerIdName, object innerIdValue, string outerIdName, object outerIdValue)

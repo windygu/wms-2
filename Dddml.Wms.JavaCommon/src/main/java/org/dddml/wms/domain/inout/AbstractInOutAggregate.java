@@ -390,6 +390,11 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
             throw new UnsupportedOperationException();
         }
 
+        @Override
+        public void documentAction(String value, String commandId, String requesterId) {
+            throw new UnsupportedOperationException();
+        }
+
     }
 
 }

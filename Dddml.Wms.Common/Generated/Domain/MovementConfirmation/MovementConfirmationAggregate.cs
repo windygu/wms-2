@@ -419,6 +419,11 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 			return new MovementConfirmationLineStateRemoved(stateEventId);
 		}
 
+        protected void DoDocumentAction(string value, string commandId, string requesterId)
+        {
+            //todo...
+        }
+
 
     }
 

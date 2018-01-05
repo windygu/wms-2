@@ -455,6 +455,11 @@ namespace Dddml.Wms.Domain.InOut
 			return new InOutLineStateRemoved(stateEventId);
 		}
 
+        protected void DoDocumentAction(string value, string commandId, string requesterId)
+        {
+            //todo...
+        }
+
 
     }
 

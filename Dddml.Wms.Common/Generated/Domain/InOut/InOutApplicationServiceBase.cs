@@ -120,6 +120,11 @@ namespace Dddml.Wms.Domain.InOut
 			Update(c, ar => ar.Reverse(c.CommandId, c.RequesterId));
 		}
 
+		public virtual void When(InOutCommands.DocumentAction c)
+		{
+			Update(c, ar => ar.DocumentAction(c.Value, c.CommandId, c.RequesterId));
+		}
+
         public virtual IInOutState Get(string documentNumber)
         {
             var state = StateRepository.Get(documentNumber, true);

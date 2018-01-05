@@ -118,6 +118,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             this.When((DeleteMovementConfirmationDto)c);
         }
 
+        public void When(MovementConfirmationCommands.DocumentAction c)
+        {
+            throw new NotImplementedException();//todo
+        }
+
         public async Task<IMovementConfirmationState> GetAsync(string documentNumber)
         {
             IMovementConfirmationState state = null;

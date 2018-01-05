@@ -144,16 +144,16 @@ public abstract class AbstractMovementLineMvoCommand extends AbstractCommand imp
             this.active = active;
         }
 
-        private String documentAction;
+        private String movementDocumentStatusId;
 
-        public String getDocumentAction()
+        public String getMovementDocumentStatusId()
         {
-            return this.documentAction;
+            return this.movementDocumentStatusId;
         }
 
-        public void setDocumentAction(String documentAction)
+        public void setMovementDocumentStatusId(String movementDocumentStatusId)
         {
-            this.documentAction = documentAction;
+            this.movementDocumentStatusId = movementDocumentStatusId;
         }
 
         private Date movementMovementDate;
@@ -580,6 +580,18 @@ public abstract class AbstractMovementLineMvoCommand extends AbstractCommand imp
         public void setIsPropertyActiveRemoved(Boolean removed)
         {
             this.isPropertyActiveRemoved = removed;
+        }
+
+        private Boolean isPropertyMovementDocumentStatusIdRemoved;
+
+        public Boolean getIsPropertyMovementDocumentStatusIdRemoved()
+        {
+            return this.isPropertyMovementDocumentStatusIdRemoved;
+        }
+
+        public void setIsPropertyMovementDocumentStatusIdRemoved(Boolean removed)
+        {
+            this.isPropertyMovementDocumentStatusIdRemoved = removed;
         }
 
         private Boolean isPropertyMovementMovementDateRemoved;

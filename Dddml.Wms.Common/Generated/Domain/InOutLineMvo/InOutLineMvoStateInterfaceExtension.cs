@@ -62,6 +62,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             cmd.ReversalLineNumber = state.ReversalLineNumber;
             cmd.Version = ((IInOutLineMvoStateProperties)state).Version;
             cmd.Active = ((IInOutLineMvoStateProperties)state).Active;
+            cmd.InOutDocumentStatusId = state.InOutDocumentStatusId;
             cmd.InOutPosted = state.InOutPosted;
             cmd.InOutProcessed = state.InOutProcessed;
             cmd.InOutProcessing = state.InOutProcessing;
@@ -102,6 +103,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             if (state.AttributeSetInstanceId == null) { cmd.IsPropertyAttributeSetInstanceIdRemoved = true; }
             if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
             if (state.QuantityUomId == null) { cmd.IsPropertyQuantityUomIdRemoved = true; }
+            if (state.InOutDocumentStatusId == null) { cmd.IsPropertyInOutDocumentStatusIdRemoved = true; }
             if (state.InOutProcessing == null) { cmd.IsPropertyInOutProcessingRemoved = true; }
             if (state.InOutDocumentTypeId == null) { cmd.IsPropertyInOutDocumentTypeIdRemoved = true; }
             if (state.InOutDescription == null) { cmd.IsPropertyInOutDescriptionRemoved = true; }
@@ -148,6 +150,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             cmd.ReversalLineNumber = state.ReversalLineNumber;
             cmd.Version = ((IInOutLineMvoStateProperties)state).Version;
             cmd.Active = ((IInOutLineMvoStateProperties)state).Active;
+            cmd.InOutDocumentStatusId = state.InOutDocumentStatusId;
             cmd.InOutPosted = state.InOutPosted;
             cmd.InOutProcessed = state.InOutProcessed;
             cmd.InOutProcessing = state.InOutProcessing;

@@ -21,6 +21,8 @@ namespace Dddml.Wms.Domain.Movement
 
 		void When(IDeleteMovement c);
 
+		void When(MovementCommands.DocumentAction c);
+
  		IMovementState Get(string documentNumber);
 
         IEnumerable<IMovementState> GetAll(int firstResult, int maxResults);

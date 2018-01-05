@@ -434,6 +434,11 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 			return new PhysicalInventoryLineStateRemoved(stateEventId);
 		}
 
+        protected void DoDocumentAction(string value, string commandId, string requesterId)
+        {
+            //todo...
+        }
+
 
     }
 

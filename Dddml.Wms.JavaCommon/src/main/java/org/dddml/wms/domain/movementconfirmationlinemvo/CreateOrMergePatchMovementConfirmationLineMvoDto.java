@@ -115,16 +115,16 @@ public class CreateOrMergePatchMovementConfirmationLineMvoDto extends AbstractMo
         this.active = active;
     }
 
-    private String documentAction;
+    private String movementConfirmationDocumentStatusId;
 
-    public String getDocumentAction()
+    public String getMovementConfirmationDocumentStatusId()
     {
-        return this.documentAction;
+        return this.movementConfirmationDocumentStatusId;
     }
 
-    public void setDocumentAction(String documentAction)
+    public void setMovementConfirmationDocumentStatusId(String movementConfirmationDocumentStatusId)
     {
-        this.documentAction = documentAction;
+        this.movementConfirmationDocumentStatusId = movementConfirmationDocumentStatusId;
     }
 
     private String movementConfirmationMovementDocumentNumber;
@@ -391,6 +391,18 @@ public class CreateOrMergePatchMovementConfirmationLineMvoDto extends AbstractMo
         this.isPropertyActiveRemoved = removed;
     }
 
+    private Boolean isPropertyMovementConfirmationDocumentStatusIdRemoved;
+
+    public Boolean getIsPropertyMovementConfirmationDocumentStatusIdRemoved()
+    {
+        return this.isPropertyMovementConfirmationDocumentStatusIdRemoved;
+    }
+
+    public void setIsPropertyMovementConfirmationDocumentStatusIdRemoved(Boolean removed)
+    {
+        this.isPropertyMovementConfirmationDocumentStatusIdRemoved = removed;
+    }
+
     private Boolean isPropertyMovementConfirmationMovementDocumentNumberRemoved;
 
     public Boolean getIsPropertyMovementConfirmationMovementDocumentNumberRemoved()
@@ -559,7 +571,7 @@ public class CreateOrMergePatchMovementConfirmationLineMvoDto extends AbstractMo
         command.setProcessed(this.getProcessed());
         command.setVersion(this.getVersion());
         command.setActive(this.getActive());
-        command.setDocumentAction(this.getDocumentAction());
+        command.setMovementConfirmationDocumentStatusId(this.getMovementConfirmationDocumentStatusId());
         command.setMovementConfirmationMovementDocumentNumber(this.getMovementConfirmationMovementDocumentNumber());
         command.setMovementConfirmationIsApproved(this.getMovementConfirmationIsApproved());
         command.setMovementConfirmationApprovalAmount(this.getMovementConfirmationApprovalAmount());
@@ -606,6 +618,7 @@ public class CreateOrMergePatchMovementConfirmationLineMvoDto extends AbstractMo
         command.setIsPropertyProcessedRemoved(this.getIsPropertyProcessedRemoved());
         command.setIsPropertyVersionRemoved(this.getIsPropertyVersionRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
+        command.setIsPropertyMovementConfirmationDocumentStatusIdRemoved(this.getIsPropertyMovementConfirmationDocumentStatusIdRemoved());
         command.setIsPropertyMovementConfirmationMovementDocumentNumberRemoved(this.getIsPropertyMovementConfirmationMovementDocumentNumberRemoved());
         command.setIsPropertyMovementConfirmationIsApprovedRemoved(this.getIsPropertyMovementConfirmationIsApprovedRemoved());
         command.setIsPropertyMovementConfirmationApprovalAmountRemoved(this.getIsPropertyMovementConfirmationApprovalAmountRemoved());

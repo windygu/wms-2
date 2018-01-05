@@ -74,6 +74,8 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
 		public virtual bool? Active { get; set; }
 
+		public virtual string PhysicalInventoryDocumentStatusId { get; set; }
+
 		public virtual string PhysicalInventoryWarehouseId { get; set; }
 
 		public virtual bool? PhysicalInventoryPosted { get; set; }
@@ -308,6 +310,25 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             set
             {
                 this.IsPropertyActiveRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyPhysicalInventoryDocumentStatusIdRemoved { get; set; }
+
+        bool IMergePatchPhysicalInventoryLineMvo.IsPropertyPhysicalInventoryDocumentStatusIdRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyPhysicalInventoryDocumentStatusIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyPhysicalInventoryDocumentStatusIdRemoved = value;
             }
         }
 

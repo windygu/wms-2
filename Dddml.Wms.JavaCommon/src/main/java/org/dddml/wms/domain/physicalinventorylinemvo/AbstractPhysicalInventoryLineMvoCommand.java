@@ -156,16 +156,16 @@ public abstract class AbstractPhysicalInventoryLineMvoCommand extends AbstractCo
             this.active = active;
         }
 
-        private String documentAction;
+        private String physicalInventoryDocumentStatusId;
 
-        public String getDocumentAction()
+        public String getPhysicalInventoryDocumentStatusId()
         {
-            return this.documentAction;
+            return this.physicalInventoryDocumentStatusId;
         }
 
-        public void setDocumentAction(String documentAction)
+        public void setPhysicalInventoryDocumentStatusId(String physicalInventoryDocumentStatusId)
         {
-            this.documentAction = documentAction;
+            this.physicalInventoryDocumentStatusId = physicalInventoryDocumentStatusId;
         }
 
         private String physicalInventoryWarehouseId;
@@ -508,6 +508,18 @@ public abstract class AbstractPhysicalInventoryLineMvoCommand extends AbstractCo
         public void setIsPropertyActiveRemoved(Boolean removed)
         {
             this.isPropertyActiveRemoved = removed;
+        }
+
+        private Boolean isPropertyPhysicalInventoryDocumentStatusIdRemoved;
+
+        public Boolean getIsPropertyPhysicalInventoryDocumentStatusIdRemoved()
+        {
+            return this.isPropertyPhysicalInventoryDocumentStatusIdRemoved;
+        }
+
+        public void setIsPropertyPhysicalInventoryDocumentStatusIdRemoved(Boolean removed)
+        {
+            this.isPropertyPhysicalInventoryDocumentStatusIdRemoved = removed;
         }
 
         private Boolean isPropertyPhysicalInventoryWarehouseIdRemoved;

@@ -115,16 +115,16 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.active = active;
     }
 
-    private String documentAction;
+    private String movementDocumentStatusId;
 
-    public String getDocumentAction()
+    public String getMovementDocumentStatusId()
     {
-        return this.documentAction;
+        return this.movementDocumentStatusId;
     }
 
-    public void setDocumentAction(String documentAction)
+    public void setMovementDocumentStatusId(String movementDocumentStatusId)
     {
-        this.documentAction = documentAction;
+        this.movementDocumentStatusId = movementDocumentStatusId;
     }
 
     private Date movementMovementDate;
@@ -535,6 +535,18 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         this.isPropertyActiveRemoved = removed;
     }
 
+    private Boolean isPropertyMovementDocumentStatusIdRemoved;
+
+    public Boolean getIsPropertyMovementDocumentStatusIdRemoved()
+    {
+        return this.isPropertyMovementDocumentStatusIdRemoved;
+    }
+
+    public void setIsPropertyMovementDocumentStatusIdRemoved(Boolean removed)
+    {
+        this.isPropertyMovementDocumentStatusIdRemoved = removed;
+    }
+
     private Boolean isPropertyMovementMovementDateRemoved;
 
     public Boolean getIsPropertyMovementMovementDateRemoved()
@@ -847,7 +859,7 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         command.setReversalLineNumber(this.getReversalLineNumber());
         command.setVersion(this.getVersion());
         command.setActive(this.getActive());
-        command.setDocumentAction(this.getDocumentAction());
+        command.setMovementDocumentStatusId(this.getMovementDocumentStatusId());
         command.setMovementMovementDate(this.getMovementMovementDate());
         command.setMovementPosted(this.getMovementPosted());
         command.setMovementProcessed(this.getMovementProcessed());
@@ -906,6 +918,7 @@ public class CreateOrMergePatchMovementLineMvoDto extends AbstractMovementLineMv
         command.setIsPropertyReversalLineNumberRemoved(this.getIsPropertyReversalLineNumberRemoved());
         command.setIsPropertyVersionRemoved(this.getIsPropertyVersionRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
+        command.setIsPropertyMovementDocumentStatusIdRemoved(this.getIsPropertyMovementDocumentStatusIdRemoved());
         command.setIsPropertyMovementMovementDateRemoved(this.getIsPropertyMovementMovementDateRemoved());
         command.setIsPropertyMovementPostedRemoved(this.getIsPropertyMovementPostedRemoved());
         command.setIsPropertyMovementProcessedRemoved(this.getIsPropertyMovementProcessedRemoved());

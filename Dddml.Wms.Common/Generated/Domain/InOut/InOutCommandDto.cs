@@ -958,6 +958,37 @@ namespace Dddml.Wms.Domain.InOut
 
         }
 
+        public class DocumentActionRequestContent : ICommandDto
+        {
+
+            public string CommandType
+            {
+                get { return "DocumentAction"; }
+            }
+
+            public string Value { get; set; }
+
+            public string DocumentNumber { get; set; }
+
+            public long Version { get; set; }
+
+            public string CommandId { get; set; }
+
+            public string RequesterId { get; set; }
+
+            public InOutCommands.DocumentAction ToDocumentAction()
+            {
+                var cmd = new InOutCommands.DocumentAction();
+                cmd.Value = this.Value;
+                cmd.DocumentNumber = this.DocumentNumber;
+                cmd.Version = this.Version;
+                cmd.CommandId = this.CommandId;
+                cmd.RequesterId = this.RequesterId;
+                return cmd;
+            }
+
+        }
+
     }
 
 }

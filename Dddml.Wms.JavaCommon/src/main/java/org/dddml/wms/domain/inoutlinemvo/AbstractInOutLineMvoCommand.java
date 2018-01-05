@@ -192,16 +192,16 @@ public abstract class AbstractInOutLineMvoCommand extends AbstractCommand implem
             this.active = active;
         }
 
-        private String documentAction;
+        private String inOutDocumentStatusId;
 
-        public String getDocumentAction()
+        public String getInOutDocumentStatusId()
         {
-            return this.documentAction;
+            return this.inOutDocumentStatusId;
         }
 
-        public void setDocumentAction(String documentAction)
+        public void setInOutDocumentStatusId(String inOutDocumentStatusId)
         {
-            this.documentAction = documentAction;
+            this.inOutDocumentStatusId = inOutDocumentStatusId;
         }
 
         private Boolean inOutPosted;
@@ -784,6 +784,18 @@ public abstract class AbstractInOutLineMvoCommand extends AbstractCommand implem
         public void setIsPropertyActiveRemoved(Boolean removed)
         {
             this.isPropertyActiveRemoved = removed;
+        }
+
+        private Boolean isPropertyInOutDocumentStatusIdRemoved;
+
+        public Boolean getIsPropertyInOutDocumentStatusIdRemoved()
+        {
+            return this.isPropertyInOutDocumentStatusIdRemoved;
+        }
+
+        public void setIsPropertyInOutDocumentStatusIdRemoved(Boolean removed)
+        {
+            this.isPropertyInOutDocumentStatusIdRemoved = removed;
         }
 
         private Boolean isPropertyInOutPostedRemoved;

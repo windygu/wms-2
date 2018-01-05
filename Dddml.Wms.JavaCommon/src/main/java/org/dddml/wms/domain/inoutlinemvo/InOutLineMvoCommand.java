@@ -94,9 +94,9 @@ public interface InOutLineMvoCommand extends Command
 
         void setActive(Boolean active);
 
-        String getDocumentAction();
+        String getInOutDocumentStatusId();
 
-        void setDocumentAction(String documentAction);
+        void setInOutDocumentStatusId(String inOutDocumentStatusId);
 
         Boolean getInOutPosted();
 
@@ -293,6 +293,10 @@ public interface InOutLineMvoCommand extends Command
         Boolean getIsPropertyActiveRemoved();
 
         void setIsPropertyActiveRemoved(Boolean removed);
+
+        Boolean getIsPropertyInOutDocumentStatusIdRemoved();
+
+        void setIsPropertyInOutDocumentStatusIdRemoved(Boolean removed);
 
         Boolean getIsPropertyInOutPostedRemoved();
 

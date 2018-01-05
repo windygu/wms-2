@@ -72,6 +72,8 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
 		public virtual bool? Active { get; set; }
 
+		public virtual string MovementDocumentStatusId { get; set; }
+
 		public virtual DateTime? MovementMovementDate { get; set; }
 
 		public virtual bool? MovementPosted { get; set; }
@@ -303,6 +305,25 @@ namespace Dddml.Wms.Domain.MovementLineMvo
             set
             {
                 this.IsPropertyActiveRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyMovementDocumentStatusIdRemoved { get; set; }
+
+        bool IMergePatchMovementLineMvo.IsPropertyMovementDocumentStatusIdRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyMovementDocumentStatusIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyMovementDocumentStatusIdRemoved = value;
             }
         }
 

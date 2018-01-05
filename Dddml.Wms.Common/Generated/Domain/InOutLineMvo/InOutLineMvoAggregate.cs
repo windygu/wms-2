@@ -121,7 +121,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             e.ReversalLineNumber = c.ReversalLineNumber;
             e.Version = c.Version;
             e.Active = c.Active;
-            NewInOutLineMvoDocumentActionCommandAndExecute(c, _state, e);
+            e.InOutDocumentStatusId = c.InOutDocumentStatusId;
             e.InOutPosted = c.InOutPosted;
             e.InOutProcessed = c.InOutProcessed;
             e.InOutProcessing = c.InOutProcessing;
@@ -185,6 +185,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             e.ReversalLineNumber = c.ReversalLineNumber;
             e.Version = c.Version;
             e.Active = c.Active;
+            e.InOutDocumentStatusId = c.InOutDocumentStatusId;
             e.InOutPosted = c.InOutPosted;
             e.InOutProcessed = c.InOutProcessed;
             e.InOutProcessing = c.InOutProcessing;
@@ -232,6 +233,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             e.IsPropertyReversalLineNumberRemoved = c.IsPropertyReversalLineNumberRemoved;
             e.IsPropertyVersionRemoved = c.IsPropertyVersionRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
+            e.IsPropertyInOutDocumentStatusIdRemoved = c.IsPropertyInOutDocumentStatusIdRemoved;
             e.IsPropertyInOutPostedRemoved = c.IsPropertyInOutPostedRemoved;
             e.IsPropertyInOutProcessedRemoved = c.IsPropertyInOutProcessedRemoved;
             e.IsPropertyInOutProcessingRemoved = c.IsPropertyInOutProcessingRemoved;
@@ -292,32 +294,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 
             return e;
-        }
-
-        protected void NewInOutLineMvoDocumentActionCommandAndExecute(ICreateInOutLineMvo c, IInOutLineMvoState s, IInOutLineMvoStateCreated e)
-        {
-            var pCommandHandler = this.InOutLineMvoDocumentActionCommandHandler;
-            var pCmdContent = default(string);
-            var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.InOutDocumentStatusId, SetState = p => e.InOutDocumentStatusId = p, OuterCommandType = CommandType.Create };
-            pCommandHandler.Execute(pCmd);
-        }
-
-        /*
-        protected void NewInOutLineMvoDocumentActionCommandAndExecute(IMergePatchInOutLineMvo c, IInOutLineMvoState s, IInOutLineMvoStateMergePatched e)
-        {
-            var pCommandHandler = this.InOutLineMvoDocumentActionCommandHandler;
-            var pCmdContent = c.DocumentAction;
-            var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.InOutDocumentStatusId, SetState = p => e.InOutDocumentStatusId = p, OuterCommandType = CommandType.MergePatch };
-            pCommandHandler.Execute(pCmd);
-        }
-        */
-
-        protected IPropertyCommandHandler<string, string> InOutLineMvoDocumentActionCommandHandler
-        {
-            get
-            {
-                return ApplicationContext.Current["InOutLineMvoDocumentActionCommandHandler"] as IPropertyCommandHandler<string, string>;
-            }
         }
 
         private void ThrowOnInconsistentIds(object innerObject, string innerIdName, object innerIdValue, string outerIdName, object outerIdValue)

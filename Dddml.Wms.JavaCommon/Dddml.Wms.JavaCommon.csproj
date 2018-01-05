@@ -3015,6 +3015,12 @@
     <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmation\MovementConfirmationCommand.java">
       <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmation\MovementConfirmationCommandDtos.java">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmation\MovementConfirmationCommands.java">
+      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmation\MovementConfirmationLineCommand.java">
       <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
     </Content>
@@ -3325,6 +3331,12 @@
       <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementCommand.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementCommandDtos.java">
+      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementCommands.java">
       <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\movement\MovementLineCommand.java">
@@ -4145,6 +4157,12 @@
       <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryCommand.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryCommandDtos.java">
+      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryCommands.java">
       <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryLineCommand.java">
@@ -7174,6 +7192,8 @@
 .\MovementAggregate.java
 .\MovementApplicationService.java
 .\MovementCommand.java
+.\MovementCommandDtos.java
+.\MovementCommands.java
 .\MovementLineCommand.java
 .\MovementLineId.java
 .\MovementLineIdDto.java
@@ -7294,6 +7314,8 @@
 .\MovementConfirmationAggregate.java
 .\MovementConfirmationApplicationService.java
 .\MovementConfirmationCommand.java
+.\MovementConfirmationCommandDtos.java
+.\MovementConfirmationCommands.java
 .\MovementConfirmationLineCommand.java
 .\MovementConfirmationLineId.java
 .\MovementConfirmationLineIdDto.java
@@ -7352,6 +7374,8 @@
 .\PhysicalInventoryAggregate.java
 .\PhysicalInventoryApplicationService.java
 .\PhysicalInventoryCommand.java
+.\PhysicalInventoryCommandDtos.java
+.\PhysicalInventoryCommands.java
 .\PhysicalInventoryLineCommand.java
 .\PhysicalInventoryLineId.java
 .\PhysicalInventoryLineIdDto.java

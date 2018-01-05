@@ -25,6 +25,8 @@ public interface InOutAggregate
 
     void reverse(String commandId, String requesterId);
 
+    void documentAction(String value, String commandId, String requesterId);
+
     void throwOnInvalidStateTransition(Command c);
 }
 

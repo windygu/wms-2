@@ -26,6 +26,8 @@ namespace Dddml.Wms.Domain.Movement
 
 		void Delete (IDeleteMovement c);
 
+		void DocumentAction(string value, string commandId, string requesterId);
+
 
 	}
 

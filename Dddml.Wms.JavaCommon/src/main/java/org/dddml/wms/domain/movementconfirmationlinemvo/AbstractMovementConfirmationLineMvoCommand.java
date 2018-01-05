@@ -144,16 +144,16 @@ public abstract class AbstractMovementConfirmationLineMvoCommand extends Abstrac
             this.active = active;
         }
 
-        private String documentAction;
+        private String movementConfirmationDocumentStatusId;
 
-        public String getDocumentAction()
+        public String getMovementConfirmationDocumentStatusId()
         {
-            return this.documentAction;
+            return this.movementConfirmationDocumentStatusId;
         }
 
-        public void setDocumentAction(String documentAction)
+        public void setMovementConfirmationDocumentStatusId(String movementConfirmationDocumentStatusId)
         {
-            this.documentAction = documentAction;
+            this.movementConfirmationDocumentStatusId = movementConfirmationDocumentStatusId;
         }
 
         private String movementConfirmationMovementDocumentNumber;
@@ -436,6 +436,18 @@ public abstract class AbstractMovementConfirmationLineMvoCommand extends Abstrac
         public void setIsPropertyActiveRemoved(Boolean removed)
         {
             this.isPropertyActiveRemoved = removed;
+        }
+
+        private Boolean isPropertyMovementConfirmationDocumentStatusIdRemoved;
+
+        public Boolean getIsPropertyMovementConfirmationDocumentStatusIdRemoved()
+        {
+            return this.isPropertyMovementConfirmationDocumentStatusIdRemoved;
+        }
+
+        public void setIsPropertyMovementConfirmationDocumentStatusIdRemoved(Boolean removed)
+        {
+            this.isPropertyMovementConfirmationDocumentStatusIdRemoved = removed;
         }
 
         private Boolean isPropertyMovementConfirmationMovementDocumentNumberRemoved;
