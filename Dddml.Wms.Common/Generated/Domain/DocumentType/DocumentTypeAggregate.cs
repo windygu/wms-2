@@ -230,7 +230,6 @@ namespace Dddml.Wms.Domain.DocumentType
 		{
 			return new DocumentTypeStateDeleted(stateEventId);
 		}
-
     }
 
 }

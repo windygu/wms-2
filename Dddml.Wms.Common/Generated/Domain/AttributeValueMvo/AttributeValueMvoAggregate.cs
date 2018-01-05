@@ -282,7 +282,6 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 		{
 			return new AttributeValueMvoStateDeleted(stateEventId);
 		}
-
     }
 
 }

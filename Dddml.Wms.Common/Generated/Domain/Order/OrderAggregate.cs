@@ -461,7 +461,6 @@ namespace Dddml.Wms.Domain.Order
 			return new OrderItemStateMergePatched(stateEventId);
 		}
 
-
     }
 
 }

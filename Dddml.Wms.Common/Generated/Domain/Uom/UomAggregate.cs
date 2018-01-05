@@ -233,7 +233,6 @@ namespace Dddml.Wms.Domain.Uom
 		{
 			return new UomStateDeleted(stateEventId);
 		}
-
     }
 
 }

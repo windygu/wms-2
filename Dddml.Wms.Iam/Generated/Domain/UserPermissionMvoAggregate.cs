@@ -279,7 +279,6 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 		{
 			return new UserPermissionMvoStateDeleted(stateEventId);
 		}
-
     }
 
 }

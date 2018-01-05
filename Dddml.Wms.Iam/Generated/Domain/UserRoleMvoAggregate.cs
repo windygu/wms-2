@@ -279,7 +279,6 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 		{
 			return new UserRoleMvoStateDeleted(stateEventId);
 		}
-
     }
 
 }

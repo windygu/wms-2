@@ -205,7 +205,6 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 			return new SellableInventoryItemEntryMvoStateMergePatched(stateEventId);
 		}
 
-
     }
 
 }

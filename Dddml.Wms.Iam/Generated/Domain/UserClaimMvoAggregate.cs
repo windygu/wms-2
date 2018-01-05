@@ -285,7 +285,6 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 		{
 			return new UserClaimMvoStateDeleted(stateEventId);
 		}
-
     }
 
 }

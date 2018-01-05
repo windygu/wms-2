@@ -205,7 +205,6 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 			return new InventoryItemRequirementEntryMvoStateMergePatched(stateEventId);
 		}
 
-
     }
 
 }

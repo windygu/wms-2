@@ -233,7 +233,6 @@ namespace Dddml.Wms.Domain.DamageType
 		{
 			return new DamageTypeStateDeleted(stateEventId);
 		}
-
     }
 
 }

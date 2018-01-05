@@ -315,15 +315,13 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             pCommandHandler.Execute(pCmd);
         }
 
-        /*
-        protected void NewMovementConfirmationDocumentActionCommandAndExecute(IMergePatchMovementConfirmation c, IMovementConfirmationState s, IMovementConfirmationStateMergePatched e)
-        {
-            var pCommandHandler = this.MovementConfirmationDocumentActionCommandHandler;
-            var pCmdContent = c.DocumentAction;
-            var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.DocumentStatusId, SetState = p => e.DocumentStatusId = p, OuterCommandType = CommandType.MergePatch };
-            pCommandHandler.Execute(pCmd);
-        }
-        */
+        //protected void NewMovementConfirmationDocumentActionCommandAndExecute(IMergePatchMovementConfirmation c, IMovementConfirmationState s, IMovementConfirmationStateMergePatched e)
+        //{
+        //    var pCommandHandler = this.MovementConfirmationDocumentActionCommandHandler;
+        //    var pCmdContent = c.DocumentAction;
+        //    var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.DocumentStatusId, SetState = p => e.DocumentStatusId = p, OuterCommandType = CommandType.MergePatch };
+        //    pCommandHandler.Execute(pCmd);
+        //}
 
         protected IPropertyCommandHandler<string, string> MovementConfirmationDocumentActionCommandHandler
         {
@@ -419,11 +417,13 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 			return new MovementConfirmationLineStateRemoved(stateEventId);
 		}
 
-        protected void DoDocumentAction(string value, string commandId, string requesterId)
+        protected void DoDocumentAction(string value, Action<string> setDocumentStatusId)
         {
-            //todo...
+            var pCommandHandler = this.MovementConfirmationDocumentActionCommandHandler;
+            var pCmdContent = value;
+            var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => this.State.DocumentStatusId, SetState = setDocumentStatusId, OuterCommandType = "DocumentAction" };
+            pCommandHandler.Execute(pCmd);
         }
-
 
     }
 

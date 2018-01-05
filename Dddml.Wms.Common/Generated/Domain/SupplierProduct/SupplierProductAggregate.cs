@@ -221,7 +221,6 @@ namespace Dddml.Wms.Domain.SupplierProduct
 			return new SupplierProductStateMergePatched(stateEventId);
 		}
 
-
     }
 
 }

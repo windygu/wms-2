@@ -224,7 +224,6 @@ namespace Dddml.Wms.Domain.OrganizationStructure
 		{
 			return new OrganizationStructureStateDeleted(stateEventId);
 		}
-
     }
 
 }

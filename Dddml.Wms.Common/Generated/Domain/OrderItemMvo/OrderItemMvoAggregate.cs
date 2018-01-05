@@ -378,7 +378,6 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 			return new OrderItemMvoStateMergePatched(stateEventId);
 		}
 
-
     }
 
 }

@@ -306,7 +306,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 		{
 			return new PhysicalInventoryLineMvoStateDeleted(stateEventId);
 		}
-
     }
 
 }

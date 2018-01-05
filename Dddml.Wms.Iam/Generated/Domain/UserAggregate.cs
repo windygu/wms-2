@@ -767,7 +767,6 @@ namespace Dddml.Wms.Domain.User
 			return new UserLoginStateRemoved(stateEventId);
 		}
 
-
     }
 
 }

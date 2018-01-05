@@ -240,7 +240,6 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 		{
 			return new InventoryPostingRuleStateDeleted(stateEventId);
 		}
-
     }
 
 }

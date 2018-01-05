@@ -351,15 +351,13 @@ namespace Dddml.Wms.Domain.Movement
             pCommandHandler.Execute(pCmd);
         }
 
-        /*
-        protected void NewMovementDocumentActionCommandAndExecute(IMergePatchMovement c, IMovementState s, IMovementStateMergePatched e)
-        {
-            var pCommandHandler = this.MovementDocumentActionCommandHandler;
-            var pCmdContent = c.DocumentAction;
-            var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.DocumentStatusId, SetState = p => e.DocumentStatusId = p, OuterCommandType = CommandType.MergePatch };
-            pCommandHandler.Execute(pCmd);
-        }
-        */
+        //protected void NewMovementDocumentActionCommandAndExecute(IMergePatchMovement c, IMovementState s, IMovementStateMergePatched e)
+        //{
+        //    var pCommandHandler = this.MovementDocumentActionCommandHandler;
+        //    var pCmdContent = c.DocumentAction;
+        //    var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.DocumentStatusId, SetState = p => e.DocumentStatusId = p, OuterCommandType = CommandType.MergePatch };
+        //    pCommandHandler.Execute(pCmd);
+        //}
 
         protected IPropertyCommandHandler<string, string> MovementDocumentActionCommandHandler
         {
@@ -455,11 +453,13 @@ namespace Dddml.Wms.Domain.Movement
 			return new MovementLineStateRemoved(stateEventId);
 		}
 
-        protected void DoDocumentAction(string value, string commandId, string requesterId)
+        protected void DoDocumentAction(string value, Action<string> setDocumentStatusId)
         {
-            //todo...
+            var pCommandHandler = this.MovementDocumentActionCommandHandler;
+            var pCmdContent = value;
+            var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => this.State.DocumentStatusId, SetState = setDocumentStatusId, OuterCommandType = "DocumentAction" };
+            pCommandHandler.Execute(pCmd);
         }
-
 
     }
 

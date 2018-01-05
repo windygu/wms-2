@@ -230,7 +230,6 @@ namespace Dddml.Wms.Domain.Audience
 		{
 			return new AudienceStateDeleted(stateEventId);
 		}
-
     }
 
 }

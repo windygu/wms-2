@@ -291,7 +291,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 			return new ShipmentItemMvoStateMergePatched(stateEventId);
 		}
 
-
     }
 
 }

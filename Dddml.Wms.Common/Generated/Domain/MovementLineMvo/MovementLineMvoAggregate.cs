@@ -327,7 +327,6 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 		{
 			return new MovementLineMvoStateDeleted(stateEventId);
 		}
-
     }
 
 }

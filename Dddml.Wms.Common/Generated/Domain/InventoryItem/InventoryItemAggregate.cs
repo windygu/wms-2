@@ -292,7 +292,6 @@ namespace Dddml.Wms.Domain.InventoryItem
 			return new InventoryItemEntryStateCreated(stateEventId);
 		}
 
-
     }
 
 }

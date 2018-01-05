@@ -233,7 +233,6 @@ namespace Dddml.Wms.Domain.Permission
 		{
 			return new PermissionStateDeleted(stateEventId);
 		}
-
     }
 
 }

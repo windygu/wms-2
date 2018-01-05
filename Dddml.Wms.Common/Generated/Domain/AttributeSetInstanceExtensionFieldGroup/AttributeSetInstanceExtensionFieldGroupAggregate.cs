@@ -239,7 +239,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 		{
 			return new AttributeSetInstanceExtensionFieldGroupStateDeleted(stateEventId);
 		}
-
     }
 
 }

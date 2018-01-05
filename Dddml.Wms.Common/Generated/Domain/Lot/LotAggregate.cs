@@ -233,7 +233,6 @@ namespace Dddml.Wms.Domain.Lot
 		{
 			return new LotStateDeleted(stateEventId);
 		}
-
     }
 
 }

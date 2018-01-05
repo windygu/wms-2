@@ -279,7 +279,6 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 		{
 			return new UserLoginMvoStateDeleted(stateEventId);
 		}
-
     }
 
 }

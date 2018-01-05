@@ -185,7 +185,6 @@ namespace Dddml.Wms.Domain.OrderShipment
 			return new OrderShipmentStateMergePatched(stateEventId);
 		}
 
-
     }
 
 }

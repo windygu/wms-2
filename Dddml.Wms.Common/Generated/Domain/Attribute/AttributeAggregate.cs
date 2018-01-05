@@ -515,7 +515,6 @@ namespace Dddml.Wms.Domain.Attribute
 			return new AttributeAliasStateRemoved(stateEventId);
 		}
 
-
     }
 
 }

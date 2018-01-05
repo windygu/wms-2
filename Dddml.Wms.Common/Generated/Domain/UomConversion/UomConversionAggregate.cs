@@ -236,7 +236,6 @@ namespace Dddml.Wms.Domain.UomConversion
 		{
 			return new UomConversionStateDeleted(stateEventId);
 		}
-
     }
 
 }

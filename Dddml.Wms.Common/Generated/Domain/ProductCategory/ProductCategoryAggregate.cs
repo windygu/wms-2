@@ -248,7 +248,6 @@ namespace Dddml.Wms.Domain.ProductCategory
 		{
 			return new ProductCategoryStateDeleted(stateEventId);
 		}
-
     }
 
 }

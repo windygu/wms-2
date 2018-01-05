@@ -291,7 +291,6 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 		{
 			return new MovementConfirmationLineMvoStateDeleted(stateEventId);
 		}
-
     }
 
 }

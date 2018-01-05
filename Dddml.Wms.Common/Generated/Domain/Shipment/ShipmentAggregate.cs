@@ -509,7 +509,6 @@ namespace Dddml.Wms.Domain.Shipment
 			return new ShipmentReceiptStateMergePatched(stateEventId);
 		}
 
-
     }
 
 }

@@ -371,7 +371,6 @@ namespace Dddml.Wms.Domain.AttributeSet
 			return new AttributeUseStateRemoved(stateEventId);
 		}
 
-
     }
 
 }

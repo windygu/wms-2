@@ -251,7 +251,6 @@ namespace Dddml.Wms.Domain.Locator
 		{
 			return new LocatorStateDeleted(stateEventId);
 		}
-
     }
 
 }

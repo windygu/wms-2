@@ -362,7 +362,6 @@ namespace Dddml.Wms.Domain.Product
 			return new ProductStateMergePatched(stateEventId);
 		}
 
-
     }
 
 }

@@ -194,7 +194,6 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 			return new ProductCategoryMemberStateMergePatched(stateEventId);
 		}
 
-
     }
 
 }

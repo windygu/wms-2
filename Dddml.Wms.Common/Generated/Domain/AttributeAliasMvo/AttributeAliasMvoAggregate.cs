@@ -276,7 +276,6 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 		{
 			return new AttributeAliasMvoStateDeleted(stateEventId);
 		}
-
     }
 
 }

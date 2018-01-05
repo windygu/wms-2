@@ -227,7 +227,6 @@ namespace Dddml.Wms.Domain.RejectionReason
 		{
 			return new RejectionReasonStateDeleted(stateEventId);
 		}
-
     }
 
 }

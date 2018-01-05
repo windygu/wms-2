@@ -224,7 +224,6 @@ namespace Dddml.Wms.Domain.RolePermission
 		{
 			return new RolePermissionStateDeleted(stateEventId);
 		}
-
     }
 
 }

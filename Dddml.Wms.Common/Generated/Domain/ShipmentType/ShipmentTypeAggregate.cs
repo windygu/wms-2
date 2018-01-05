@@ -191,7 +191,6 @@ namespace Dddml.Wms.Domain.ShipmentType
 			return new ShipmentTypeStateMergePatched(stateEventId);
 		}
 
-
     }
 
 }

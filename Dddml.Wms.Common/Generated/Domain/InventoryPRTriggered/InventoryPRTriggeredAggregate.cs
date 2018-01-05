@@ -183,7 +183,6 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 			return new InventoryPRTriggeredStateMergePatched(stateEventId);
 		}
 
-
     }
 
 }

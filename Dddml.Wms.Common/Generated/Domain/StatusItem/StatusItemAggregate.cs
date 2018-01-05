@@ -194,7 +194,6 @@ namespace Dddml.Wms.Domain.StatusItem
 			return new StatusItemStateMergePatched(stateEventId);
 		}
 
-
     }
 
 }

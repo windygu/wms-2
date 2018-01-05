@@ -330,15 +330,13 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             pCommandHandler.Execute(pCmd);
         }
 
-        /*
-        protected void NewPhysicalInventoryDocumentActionCommandAndExecute(IMergePatchPhysicalInventory c, IPhysicalInventoryState s, IPhysicalInventoryStateMergePatched e)
-        {
-            var pCommandHandler = this.PhysicalInventoryDocumentActionCommandHandler;
-            var pCmdContent = c.DocumentAction;
-            var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.DocumentStatusId, SetState = p => e.DocumentStatusId = p, OuterCommandType = CommandType.MergePatch };
-            pCommandHandler.Execute(pCmd);
-        }
-        */
+        //protected void NewPhysicalInventoryDocumentActionCommandAndExecute(IMergePatchPhysicalInventory c, IPhysicalInventoryState s, IPhysicalInventoryStateMergePatched e)
+        //{
+        //    var pCommandHandler = this.PhysicalInventoryDocumentActionCommandHandler;
+        //    var pCmdContent = c.DocumentAction;
+        //    var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.DocumentStatusId, SetState = p => e.DocumentStatusId = p, OuterCommandType = CommandType.MergePatch };
+        //    pCommandHandler.Execute(pCmd);
+        //}
 
         protected IPropertyCommandHandler<string, string> PhysicalInventoryDocumentActionCommandHandler
         {
@@ -434,11 +432,13 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 			return new PhysicalInventoryLineStateRemoved(stateEventId);
 		}
 
-        protected void DoDocumentAction(string value, string commandId, string requesterId)
+        protected void DoDocumentAction(string value, Action<string> setDocumentStatusId)
         {
-            //todo...
+            var pCommandHandler = this.PhysicalInventoryDocumentActionCommandHandler;
+            var pCmdContent = value;
+            var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => this.State.DocumentStatusId, SetState = setDocumentStatusId, OuterCommandType = "DocumentAction" };
+            pCommandHandler.Execute(pCmd);
         }
-
 
     }
 

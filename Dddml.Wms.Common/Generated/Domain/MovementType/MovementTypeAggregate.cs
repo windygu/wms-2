@@ -227,7 +227,6 @@ namespace Dddml.Wms.Domain.MovementType
 		{
 			return new MovementTypeStateDeleted(stateEventId);
 		}
-
     }
 
 }

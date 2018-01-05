@@ -208,7 +208,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 			return new AttributeSetInstanceStateCreated(stateEventId);			
 		}
 
-
     }
 
 }
