@@ -42,8 +42,6 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
 		bool? Active { get; set; }
 
-		string DocumentAction { get; set; }
-
 		DateTime? MovementMovementDate { get; set; }
 
 		bool? MovementPosted { get; set; }

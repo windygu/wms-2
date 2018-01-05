@@ -23,8 +23,6 @@ namespace Dddml.Wms.Domain.InOut
 	public interface ICreateOrMergePatchOrDeleteInOut : IInOutCommand
 	{
 
-		string DocumentAction { get; set; }
-
 		bool? Posted { get; set; }
 
 		bool? Processed { get; set; }

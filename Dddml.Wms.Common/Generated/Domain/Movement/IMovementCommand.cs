@@ -23,8 +23,6 @@ namespace Dddml.Wms.Domain.Movement
 	public interface ICreateOrMergePatchOrDeleteMovement : IMovementCommand
 	{
 
-		string DocumentAction { get; set; }
-
 		DateTime? MovementDate { get; set; }
 
 		bool? Posted { get; set; }

@@ -44,8 +44,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
 		bool? Active { get; set; }
 
-		string DocumentAction { get; set; }
-
 		string PhysicalInventoryWarehouseId { get; set; }
 
 		bool? PhysicalInventoryPosted { get; set; }

@@ -152,7 +152,6 @@ namespace Dddml.Wms.Domain.Movement
 			var stateEventId = new MovementStateEventId(c.DocumentNumber, c.Version);
             IMovementStateMergePatched e = NewMovementStateMergePatched(stateEventId);
 
-            NewMovementDocumentActionCommandAndExecute(c, _state, e);
             e.MovementDate = c.MovementDate;
             e.Posted = c.Posted;
             e.Processed = c.Processed;
@@ -344,6 +343,15 @@ namespace Dddml.Wms.Domain.Movement
 
         }// END Map(IRemove... ////////////////////////////
 
+        protected void NewMovementDocumentActionCommandAndExecute(ICreateMovement c, IMovementState s, IMovementStateCreated e)
+        {
+            var pCommandHandler = this.MovementDocumentActionCommandHandler;
+            var pCmdContent = default(string);
+            var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.DocumentStatusId, SetState = p => e.DocumentStatusId = p, OuterCommandType = CommandType.Create };
+            pCommandHandler.Execute(pCmd);
+        }
+
+        /*
         protected void NewMovementDocumentActionCommandAndExecute(IMergePatchMovement c, IMovementState s, IMovementStateMergePatched e)
         {
             var pCommandHandler = this.MovementDocumentActionCommandHandler;
@@ -351,14 +359,7 @@ namespace Dddml.Wms.Domain.Movement
             var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.DocumentStatusId, SetState = p => e.DocumentStatusId = p, OuterCommandType = CommandType.MergePatch };
             pCommandHandler.Execute(pCmd);
         }
-
-        protected void NewMovementDocumentActionCommandAndExecute(ICreateMovement c, IMovementState s, IMovementStateCreated e)
-        {
-            var pCommandHandler = this.MovementDocumentActionCommandHandler;
-            var pCmdContent = c.DocumentAction;
-            var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.DocumentStatusId, SetState = p => e.DocumentStatusId = p, OuterCommandType = CommandType.Create };
-            pCommandHandler.Execute(pCmd);
-        }
+        */
 
         protected IPropertyCommandHandler<string, string> MovementDocumentActionCommandHandler
         {

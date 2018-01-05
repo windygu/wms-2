@@ -79,8 +79,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		public virtual bool? Active { get; set; }
 
-		public virtual string DocumentAction { get; set; }
-
 		public virtual bool? InOutPosted { get; set; }
 
 		public virtual bool? InOutProcessed { get; set; }

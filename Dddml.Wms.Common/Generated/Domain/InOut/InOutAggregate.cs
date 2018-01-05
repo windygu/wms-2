@@ -152,7 +152,6 @@ namespace Dddml.Wms.Domain.InOut
 			var stateEventId = new InOutStateEventId(c.DocumentNumber, c.Version);
             IInOutStateMergePatched e = NewInOutStateMergePatched(stateEventId);
 
-            NewInOutDocumentActionCommandAndExecute(c, _state, e);
             e.Posted = c.Posted;
             e.Processed = c.Processed;
             e.Processing = c.Processing;
@@ -361,6 +360,15 @@ namespace Dddml.Wms.Domain.InOut
 
         }// END Map(IRemove... ////////////////////////////
 
+        protected void NewInOutDocumentActionCommandAndExecute(ICreateInOut c, IInOutState s, IInOutStateCreated e)
+        {
+            var pCommandHandler = this.InOutDocumentActionCommandHandler;
+            var pCmdContent = default(string);
+            var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.DocumentStatusId, SetState = p => e.DocumentStatusId = p, OuterCommandType = CommandType.Create };
+            pCommandHandler.Execute(pCmd);
+        }
+
+        /*
         protected void NewInOutDocumentActionCommandAndExecute(IMergePatchInOut c, IInOutState s, IInOutStateMergePatched e)
         {
             var pCommandHandler = this.InOutDocumentActionCommandHandler;
@@ -368,14 +376,7 @@ namespace Dddml.Wms.Domain.InOut
             var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.DocumentStatusId, SetState = p => e.DocumentStatusId = p, OuterCommandType = CommandType.MergePatch };
             pCommandHandler.Execute(pCmd);
         }
-
-        protected void NewInOutDocumentActionCommandAndExecute(ICreateInOut c, IInOutState s, IInOutStateCreated e)
-        {
-            var pCommandHandler = this.InOutDocumentActionCommandHandler;
-            var pCmdContent = c.DocumentAction;
-            var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.DocumentStatusId, SetState = p => e.DocumentStatusId = p, OuterCommandType = CommandType.Create };
-            pCommandHandler.Execute(pCmd);
-        }
+        */
 
         protected IPropertyCommandHandler<string, string> InOutDocumentActionCommandHandler
         {

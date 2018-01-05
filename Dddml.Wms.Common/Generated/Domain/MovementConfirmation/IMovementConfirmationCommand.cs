@@ -23,8 +23,6 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 	public interface ICreateOrMergePatchOrDeleteMovementConfirmation : IMovementConfirmationCommand
 	{
 
-		string DocumentAction { get; set; }
-
 		string MovementDocumentNumber { get; set; }
 
 		bool? IsApproved { get; set; }

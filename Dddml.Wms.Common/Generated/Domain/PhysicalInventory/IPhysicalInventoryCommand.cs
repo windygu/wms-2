@@ -23,8 +23,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 	public interface ICreateOrMergePatchOrDeletePhysicalInventory : IPhysicalInventoryCommand
 	{
 
-		string DocumentAction { get; set; }
-
 		string WarehouseId { get; set; }
 
 		bool? Posted { get; set; }

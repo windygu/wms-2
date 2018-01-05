@@ -52,8 +52,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             set { this.CommandId = value; }
         }
 
-		public virtual string DocumentAction { get; set; }
-
 		public virtual string WarehouseId { get; set; }
 
 		public virtual bool? Posted { get; set; }

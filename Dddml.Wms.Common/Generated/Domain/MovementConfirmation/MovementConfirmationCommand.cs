@@ -52,8 +52,6 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             set { this.CommandId = value; }
         }
 
-		public virtual string DocumentAction { get; set; }
-
 		public virtual string MovementDocumentNumber { get; set; }
 
 		public virtual bool? IsApproved { get; set; }

@@ -52,8 +52,6 @@ namespace Dddml.Wms.Domain.Movement
             set { this.CommandId = value; }
         }
 
-		public virtual string DocumentAction { get; set; }
-
 		public virtual DateTime? MovementDate { get; set; }
 
 		public virtual bool? Posted { get; set; }

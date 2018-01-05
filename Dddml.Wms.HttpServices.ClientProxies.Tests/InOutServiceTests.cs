@@ -63,7 +63,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Tests
             var inOut = _inOutApplicationServiceFactory.NewCreateInOut();
             inOut.DocumentNumber = documentNumber;
             inOut.CommandId = Guid.NewGuid().ToString();
-            inOut.DocumentAction = DocumentAction.Draft;// 不能这样写：inOut.DocumentStatus = DocumentStatus.Drafted
+            //inOut.DocumentAction = DocumentAction.Draft;// 不能这样写：inOut.DocumentStatus = DocumentStatus.Drafted
             //inOut.ChargeAmount = new Money(10000, "CNY");
             //inOut.FreightAmount = new Money(400, "CNY");
             inOutApplicationService.When(inOut);
@@ -72,7 +72,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Tests
 
             var patchInOut =  _inOutApplicationServiceFactory.NewMergePatchInOut();
             patchInOut.DocumentNumber = documentNumber;
-            patchInOut.DocumentAction = DocumentAction.Void;//不能这样写：patchInOut.DocumentStatus = DocumentStatus.Voided
+            //patchInOut.DocumentAction = DocumentAction.Void;//不能这样写：patchInOut.DocumentStatus = DocumentStatus.Voided
             patchInOut.Version = 1;
             patchInOut.CommandId = Guid.NewGuid().ToString();
 

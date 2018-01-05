@@ -44,7 +44,7 @@ namespace Dddml.Wms.Services.Tests
             CreateInOut inOut = new CreateInOut();
             inOut.DocumentNumber = documentNumber;
             inOut.CommandId = Guid.NewGuid().ToString();
-            inOut.DocumentAction = DocumentAction.Draft;// 不能这样写：inOut.DocumentStatus = DocumentStatus.Drafted
+            //inOut.DocumentAction = DocumentAction.Draft;// 不能这样写：inOut.DocumentStatus = DocumentStatus.Drafted
             //inOut.ChargeAmount = new Money(10000, "CNY");
             //inOut.FreightAmount = new Money(400, "CNY");
             inOut.MovementTypeId = MovementTypeIds.MiscellaneousIn;

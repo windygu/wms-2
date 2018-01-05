@@ -42,8 +42,6 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
 		bool? Active { get; set; }
 
-		string DocumentAction { get; set; }
-
 		string MovementConfirmationMovementDocumentNumber { get; set; }
 
 		bool? MovementConfirmationIsApproved { get; set; }

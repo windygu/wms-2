@@ -168,7 +168,6 @@ namespace Dddml.Wms.Domain.MovementLineMvo
             e.ReversalLineNumber = c.ReversalLineNumber;
             e.Version = c.Version;
             e.Active = c.Active;
-            NewMovementLineMvoDocumentActionCommandAndExecute(c, _state, e);
             e.MovementMovementDate = c.MovementMovementDate;
             e.MovementPosted = c.MovementPosted;
             e.MovementProcessed = c.MovementProcessed;
@@ -256,6 +255,15 @@ namespace Dddml.Wms.Domain.MovementLineMvo
             return e;
         }
 
+        protected void NewMovementLineMvoDocumentActionCommandAndExecute(ICreateMovementLineMvo c, IMovementLineMvoState s, IMovementLineMvoStateCreated e)
+        {
+            var pCommandHandler = this.MovementLineMvoDocumentActionCommandHandler;
+            var pCmdContent = default(string);
+            var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.MovementDocumentStatusId, SetState = p => e.MovementDocumentStatusId = p, OuterCommandType = CommandType.Create };
+            pCommandHandler.Execute(pCmd);
+        }
+
+        /*
         protected void NewMovementLineMvoDocumentActionCommandAndExecute(IMergePatchMovementLineMvo c, IMovementLineMvoState s, IMovementLineMvoStateMergePatched e)
         {
             var pCommandHandler = this.MovementLineMvoDocumentActionCommandHandler;
@@ -263,14 +271,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
             var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.MovementDocumentStatusId, SetState = p => e.MovementDocumentStatusId = p, OuterCommandType = CommandType.MergePatch };
             pCommandHandler.Execute(pCmd);
         }
-
-        protected void NewMovementLineMvoDocumentActionCommandAndExecute(ICreateMovementLineMvo c, IMovementLineMvoState s, IMovementLineMvoStateCreated e)
-        {
-            var pCommandHandler = this.MovementLineMvoDocumentActionCommandHandler;
-            var pCmdContent = c.DocumentAction;
-            var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.MovementDocumentStatusId, SetState = p => e.MovementDocumentStatusId = p, OuterCommandType = CommandType.Create };
-            pCommandHandler.Execute(pCmd);
-        }
+        */
 
         protected IPropertyCommandHandler<string, string> MovementLineMvoDocumentActionCommandHandler
         {

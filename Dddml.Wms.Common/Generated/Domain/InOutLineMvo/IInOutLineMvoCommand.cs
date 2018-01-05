@@ -50,8 +50,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		bool? Active { get; set; }
 
-		string DocumentAction { get; set; }
-
 		bool? InOutPosted { get; set; }
 
 		bool? InOutProcessed { get; set; }

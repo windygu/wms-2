@@ -71,8 +71,6 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
 		public virtual bool? Active { get; set; }
 
-		public virtual string DocumentAction { get; set; }
-
 		public virtual DateTime? MovementMovementDate { get; set; }
 
 		public virtual bool? MovementPosted { get; set; }

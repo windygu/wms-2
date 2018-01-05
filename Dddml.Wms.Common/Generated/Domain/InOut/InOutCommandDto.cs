@@ -53,8 +53,6 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual string DocumentNumber { get; set; }
 
-		public virtual string DocumentAction { get; set; }
-
 		public virtual bool? Posted { get; set; }
 
 		public virtual bool? Processed { get; set; }

@@ -73,8 +73,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
 		public virtual bool? Active { get; set; }
 
-		public virtual string DocumentAction { get; set; }
-
 		public virtual string PhysicalInventoryWarehouseId { get; set; }
 
 		public virtual bool? PhysicalInventoryPosted { get; set; }

@@ -140,7 +140,6 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 			var stateEventId = new MovementConfirmationStateEventId(c.DocumentNumber, c.Version);
             IMovementConfirmationStateMergePatched e = NewMovementConfirmationStateMergePatched(stateEventId);
 
-            NewMovementConfirmationDocumentActionCommandAndExecute(c, _state, e);
             e.MovementDocumentNumber = c.MovementDocumentNumber;
             e.IsApproved = c.IsApproved;
             e.ApprovalAmount = c.ApprovalAmount;
@@ -308,6 +307,15 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
         }// END Map(IRemove... ////////////////////////////
 
+        protected void NewMovementConfirmationDocumentActionCommandAndExecute(ICreateMovementConfirmation c, IMovementConfirmationState s, IMovementConfirmationStateCreated e)
+        {
+            var pCommandHandler = this.MovementConfirmationDocumentActionCommandHandler;
+            var pCmdContent = default(string);
+            var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.DocumentStatusId, SetState = p => e.DocumentStatusId = p, OuterCommandType = CommandType.Create };
+            pCommandHandler.Execute(pCmd);
+        }
+
+        /*
         protected void NewMovementConfirmationDocumentActionCommandAndExecute(IMergePatchMovementConfirmation c, IMovementConfirmationState s, IMovementConfirmationStateMergePatched e)
         {
             var pCommandHandler = this.MovementConfirmationDocumentActionCommandHandler;
@@ -315,14 +323,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.DocumentStatusId, SetState = p => e.DocumentStatusId = p, OuterCommandType = CommandType.MergePatch };
             pCommandHandler.Execute(pCmd);
         }
-
-        protected void NewMovementConfirmationDocumentActionCommandAndExecute(ICreateMovementConfirmation c, IMovementConfirmationState s, IMovementConfirmationStateCreated e)
-        {
-            var pCommandHandler = this.MovementConfirmationDocumentActionCommandHandler;
-            var pCmdContent = c.DocumentAction;
-            var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.DocumentStatusId, SetState = p => e.DocumentStatusId = p, OuterCommandType = CommandType.Create };
-            pCommandHandler.Execute(pCmd);
-        }
+        */
 
         protected IPropertyCommandHandler<string, string> MovementConfirmationDocumentActionCommandHandler
         {

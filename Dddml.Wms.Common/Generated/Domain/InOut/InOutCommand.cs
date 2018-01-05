@@ -52,8 +52,6 @@ namespace Dddml.Wms.Domain.InOut
             set { this.CommandId = value; }
         }
 
-		public virtual string DocumentAction { get; set; }
-
 		public virtual bool? Posted { get; set; }
 
 		public virtual bool? Processed { get; set; }
