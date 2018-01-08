@@ -37,10 +37,6 @@ public interface InOutCommand extends Command
 
     interface CreateOrMergePatchInOut extends InOutCommand
     {
-        String getDocumentAction();
-
-        void setDocumentAction(String documentAction);
-
         Boolean getPosted();
 
         void setPosted(Boolean posted);

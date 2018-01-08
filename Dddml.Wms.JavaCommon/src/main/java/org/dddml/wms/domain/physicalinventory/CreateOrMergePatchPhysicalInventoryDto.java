@@ -6,18 +6,6 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchPhysicalInventoryDto extends AbstractPhysicalInventoryCommandDto
 {
-    private String documentAction;
-
-    public String getDocumentAction()
-    {
-        return this.documentAction;
-    }
-
-    public void setDocumentAction(String documentAction)
-    {
-        this.documentAction = documentAction;
-    }
-
     private String warehouseId;
 
     public String getWarehouseId()
@@ -321,7 +309,6 @@ public class CreateOrMergePatchPhysicalInventoryDto extends AbstractPhysicalInve
     public void copyTo(AbstractPhysicalInventoryCommand.AbstractCreateOrMergePatchPhysicalInventory command)
     {
         ((AbstractPhysicalInventoryCommandDto) this).copyTo(command);
-        command.setDocumentAction(this.getDocumentAction());
         command.setWarehouseId(this.getWarehouseId());
         command.setPosted(this.getPosted());
         command.setProcessed(this.getProcessed());

@@ -35,18 +35,6 @@ public abstract class AbstractInOutCommand extends AbstractCommand implements In
 
     public static abstract class AbstractCreateOrMergePatchInOut extends AbstractInOutCommand implements CreateOrMergePatchInOut
     {
-        private String documentAction;
-
-        public String getDocumentAction()
-        {
-            return this.documentAction;
-        }
-
-        public void setDocumentAction(String documentAction)
-        {
-            this.documentAction = documentAction;
-        }
-
         private Boolean posted;
 
         public Boolean getPosted()

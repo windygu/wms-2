@@ -6,18 +6,6 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchMovementConfirmationDto extends AbstractMovementConfirmationCommandDto
 {
-    private String documentAction;
-
-    public String getDocumentAction()
-    {
-        return this.documentAction;
-    }
-
-    public void setDocumentAction(String documentAction)
-    {
-        this.documentAction = documentAction;
-    }
-
     private String movementDocumentNumber;
 
     public String getMovementDocumentNumber()
@@ -225,7 +213,6 @@ public class CreateOrMergePatchMovementConfirmationDto extends AbstractMovementC
     public void copyTo(AbstractMovementConfirmationCommand.AbstractCreateOrMergePatchMovementConfirmation command)
     {
         ((AbstractMovementConfirmationCommandDto) this).copyTo(command);
-        command.setDocumentAction(this.getDocumentAction());
         command.setMovementDocumentNumber(this.getMovementDocumentNumber());
         command.setIsApproved(this.getIsApproved());
         command.setApprovalAmount(this.getApprovalAmount());

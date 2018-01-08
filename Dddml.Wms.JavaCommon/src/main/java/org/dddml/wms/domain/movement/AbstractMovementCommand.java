@@ -35,18 +35,6 @@ public abstract class AbstractMovementCommand extends AbstractCommand implements
 
     public static abstract class AbstractCreateOrMergePatchMovement extends AbstractMovementCommand implements CreateOrMergePatchMovement
     {
-        private String documentAction;
-
-        public String getDocumentAction()
-        {
-            return this.documentAction;
-        }
-
-        public void setDocumentAction(String documentAction)
-        {
-            this.documentAction = documentAction;
-        }
-
         private Date movementDate;
 
         public Date getMovementDate()

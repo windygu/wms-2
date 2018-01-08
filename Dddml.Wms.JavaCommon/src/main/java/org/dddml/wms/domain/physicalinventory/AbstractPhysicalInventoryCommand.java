@@ -35,18 +35,6 @@ public abstract class AbstractPhysicalInventoryCommand extends AbstractCommand i
 
     public static abstract class AbstractCreateOrMergePatchPhysicalInventory extends AbstractPhysicalInventoryCommand implements CreateOrMergePatchPhysicalInventory
     {
-        private String documentAction;
-
-        public String getDocumentAction()
-        {
-            return this.documentAction;
-        }
-
-        public void setDocumentAction(String documentAction)
-        {
-            this.documentAction = documentAction;
-        }
-
         private String warehouseId;
 
         public String getWarehouseId()

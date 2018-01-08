@@ -1,0 +1,16 @@
+#%DDDML 0.1
+
+---
+
+# ------------------------------
+aggregates:
+
+    # --------------- aggregate ---------------
+    Party:
+      id:
+        name: PartyId
+        type: string
+
+
+
+      

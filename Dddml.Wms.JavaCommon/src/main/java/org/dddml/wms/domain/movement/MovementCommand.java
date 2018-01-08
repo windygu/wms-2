@@ -41,10 +41,6 @@ public interface MovementCommand extends Command
 
     interface CreateOrMergePatchMovement extends MovementCommand
     {
-        String getDocumentAction();
-
-        void setDocumentAction(String documentAction);
-
         Date getMovementDate();
 
         void setMovementDate(Date movementDate);

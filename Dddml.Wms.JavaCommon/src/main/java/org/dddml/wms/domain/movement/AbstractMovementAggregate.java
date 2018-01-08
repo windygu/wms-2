@@ -96,7 +96,6 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
     protected MovementStateEvent map(MovementCommand.MergePatchMovement c) {
         MovementStateEventId stateEventId = new MovementStateEventId(c.getDocumentNumber(), c.getVersion());
         MovementStateEvent.MovementStateMergePatched e = newMovementStateMergePatched(stateEventId);
-        newMovementDocumentActionCommandAndExecute(c, state, e);
         e.setMovementDate(c.getMovementDate());
         e.setPosted(c.getPosted());
         e.setProcessed(c.getProcessed());
@@ -265,22 +264,10 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
         }
     }// END throwOnInconsistentCommands /////////////////////
 
-    protected void newMovementDocumentActionCommandAndExecute(MovementCommand.MergePatchMovement c, MovementState s, MovementStateEvent.MovementStateMergePatched e)
-    {
-        PropertyCommandHandler<String, String> pCommandHandler = this.getMovementDocumentActionCommandHandler();
-        String pCmdContent = c.getDocumentAction();
-        PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
-        pCmd.setContent(pCmdContent);
-        pCmd.setStateGetter(() -> s.getDocumentStatusId());
-        pCmd.setStateSetter(p -> e.setDocumentStatusId(p));
-        pCmd.setOuterCommandType(CommandType.MERGE_PATCH);
-        pCommandHandler.execute(pCmd);
-    }
-
     protected void newMovementDocumentActionCommandAndExecute(MovementCommand.CreateMovement c, MovementState s, MovementStateEvent.MovementStateCreated e)
     {
         PropertyCommandHandler<String, String> pCommandHandler = this.getMovementDocumentActionCommandHandler();
-        String pCmdContent = c.getDocumentAction();
+        String pCmdContent = null;
         PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
         pCmd.setContent(pCmdContent);
         pCmd.setStateGetter(() -> s.getDocumentStatusId());

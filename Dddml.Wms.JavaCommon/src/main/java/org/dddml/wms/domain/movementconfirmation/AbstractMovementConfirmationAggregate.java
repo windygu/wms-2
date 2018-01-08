@@ -84,7 +84,6 @@ public abstract class AbstractMovementConfirmationAggregate extends AbstractAggr
     protected MovementConfirmationStateEvent map(MovementConfirmationCommand.MergePatchMovementConfirmation c) {
         MovementConfirmationStateEventId stateEventId = new MovementConfirmationStateEventId(c.getDocumentNumber(), c.getVersion());
         MovementConfirmationStateEvent.MovementConfirmationStateMergePatched e = newMovementConfirmationStateMergePatched(stateEventId);
-        newMovementConfirmationDocumentActionCommandAndExecute(c, state, e);
         e.setMovementDocumentNumber(c.getMovementDocumentNumber());
         e.setIsApproved(c.getIsApproved());
         e.setApprovalAmount(c.getApprovalAmount());
@@ -229,22 +228,10 @@ public abstract class AbstractMovementConfirmationAggregate extends AbstractAggr
         }
     }// END throwOnInconsistentCommands /////////////////////
 
-    protected void newMovementConfirmationDocumentActionCommandAndExecute(MovementConfirmationCommand.MergePatchMovementConfirmation c, MovementConfirmationState s, MovementConfirmationStateEvent.MovementConfirmationStateMergePatched e)
-    {
-        PropertyCommandHandler<String, String> pCommandHandler = this.getMovementConfirmationDocumentActionCommandHandler();
-        String pCmdContent = c.getDocumentAction();
-        PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
-        pCmd.setContent(pCmdContent);
-        pCmd.setStateGetter(() -> s.getDocumentStatusId());
-        pCmd.setStateSetter(p -> e.setDocumentStatusId(p));
-        pCmd.setOuterCommandType(CommandType.MERGE_PATCH);
-        pCommandHandler.execute(pCmd);
-    }
-
     protected void newMovementConfirmationDocumentActionCommandAndExecute(MovementConfirmationCommand.CreateMovementConfirmation c, MovementConfirmationState s, MovementConfirmationStateEvent.MovementConfirmationStateCreated e)
     {
         PropertyCommandHandler<String, String> pCommandHandler = this.getMovementConfirmationDocumentActionCommandHandler();
-        String pCmdContent = c.getDocumentAction();
+        String pCmdContent = null;
         PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
         pCmd.setContent(pCmdContent);
         pCmd.setStateGetter(() -> s.getDocumentStatusId());

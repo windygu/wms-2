@@ -41,10 +41,6 @@ public interface MovementConfirmationCommand extends Command
 
     interface CreateOrMergePatchMovementConfirmation extends MovementConfirmationCommand
     {
-        String getDocumentAction();
-
-        void setDocumentAction(String documentAction);
-
         String getMovementDocumentNumber();
 
         void setMovementDocumentNumber(String movementDocumentNumber);

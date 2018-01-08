@@ -88,7 +88,6 @@ public abstract class AbstractPhysicalInventoryAggregate extends AbstractAggrega
     protected PhysicalInventoryStateEvent map(PhysicalInventoryCommand.MergePatchPhysicalInventory c) {
         PhysicalInventoryStateEventId stateEventId = new PhysicalInventoryStateEventId(c.getDocumentNumber(), c.getVersion());
         PhysicalInventoryStateEvent.PhysicalInventoryStateMergePatched e = newPhysicalInventoryStateMergePatched(stateEventId);
-        newPhysicalInventoryDocumentActionCommandAndExecute(c, state, e);
         e.setWarehouseId(c.getWarehouseId());
         e.setPosted(c.getPosted());
         e.setProcessed(c.getProcessed());
@@ -244,22 +243,10 @@ public abstract class AbstractPhysicalInventoryAggregate extends AbstractAggrega
         }
     }// END throwOnInconsistentCommands /////////////////////
 
-    protected void newPhysicalInventoryDocumentActionCommandAndExecute(PhysicalInventoryCommand.MergePatchPhysicalInventory c, PhysicalInventoryState s, PhysicalInventoryStateEvent.PhysicalInventoryStateMergePatched e)
-    {
-        PropertyCommandHandler<String, String> pCommandHandler = this.getPhysicalInventoryDocumentActionCommandHandler();
-        String pCmdContent = c.getDocumentAction();
-        PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
-        pCmd.setContent(pCmdContent);
-        pCmd.setStateGetter(() -> s.getDocumentStatusId());
-        pCmd.setStateSetter(p -> e.setDocumentStatusId(p));
-        pCmd.setOuterCommandType(CommandType.MERGE_PATCH);
-        pCommandHandler.execute(pCmd);
-    }
-
     protected void newPhysicalInventoryDocumentActionCommandAndExecute(PhysicalInventoryCommand.CreatePhysicalInventory c, PhysicalInventoryState s, PhysicalInventoryStateEvent.PhysicalInventoryStateCreated e)
     {
         PropertyCommandHandler<String, String> pCommandHandler = this.getPhysicalInventoryDocumentActionCommandHandler();
-        String pCmdContent = c.getDocumentAction();
+        String pCmdContent = null;
         PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
         pCmd.setContent(pCmdContent);
         pCmd.setStateGetter(() -> s.getDocumentStatusId());

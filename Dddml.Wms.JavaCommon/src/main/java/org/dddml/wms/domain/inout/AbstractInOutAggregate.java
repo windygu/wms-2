@@ -100,7 +100,6 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
     protected InOutStateEvent map(InOutCommand.MergePatchInOut c) {
         InOutStateEventId stateEventId = new InOutStateEventId(c.getDocumentNumber(), c.getVersion());
         InOutStateEvent.InOutStateMergePatched e = newInOutStateMergePatched(stateEventId);
-        newInOutDocumentActionCommandAndExecute(c, state, e);
         e.setPosted(c.getPosted());
         e.setProcessed(c.getProcessed());
         e.setProcessing(c.getProcessing());
@@ -292,22 +291,10 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         }
     }// END throwOnInconsistentCommands /////////////////////
 
-    protected void newInOutDocumentActionCommandAndExecute(InOutCommand.MergePatchInOut c, InOutState s, InOutStateEvent.InOutStateMergePatched e)
-    {
-        PropertyCommandHandler<String, String> pCommandHandler = this.getInOutDocumentActionCommandHandler();
-        String pCmdContent = c.getDocumentAction();
-        PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
-        pCmd.setContent(pCmdContent);
-        pCmd.setStateGetter(() -> s.getDocumentStatusId());
-        pCmd.setStateSetter(p -> e.setDocumentStatusId(p));
-        pCmd.setOuterCommandType(CommandType.MERGE_PATCH);
-        pCommandHandler.execute(pCmd);
-    }
-
     protected void newInOutDocumentActionCommandAndExecute(InOutCommand.CreateInOut c, InOutState s, InOutStateEvent.InOutStateCreated e)
     {
         PropertyCommandHandler<String, String> pCommandHandler = this.getInOutDocumentActionCommandHandler();
-        String pCmdContent = c.getDocumentAction();
+        String pCmdContent = null;
         PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
         pCmd.setContent(pCmdContent);
         pCmd.setStateGetter(() -> s.getDocumentStatusId());

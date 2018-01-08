@@ -41,10 +41,6 @@ public interface PhysicalInventoryCommand extends Command
 
     interface CreateOrMergePatchPhysicalInventory extends PhysicalInventoryCommand
     {
-        String getDocumentAction();
-
-        void setDocumentAction(String documentAction);
-
         String getWarehouseId();
 
         void setWarehouseId(String warehouseId);

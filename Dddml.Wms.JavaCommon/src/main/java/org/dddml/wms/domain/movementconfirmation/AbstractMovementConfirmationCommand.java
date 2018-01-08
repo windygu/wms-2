@@ -35,18 +35,6 @@ public abstract class AbstractMovementConfirmationCommand extends AbstractComman
 
     public static abstract class AbstractCreateOrMergePatchMovementConfirmation extends AbstractMovementConfirmationCommand implements CreateOrMergePatchMovementConfirmation
     {
-        private String documentAction;
-
-        public String getDocumentAction()
-        {
-            return this.documentAction;
-        }
-
-        public void setDocumentAction(String documentAction)
-        {
-            this.documentAction = documentAction;
-        }
-
         private String movementDocumentNumber;
 
         public String getMovementDocumentNumber()

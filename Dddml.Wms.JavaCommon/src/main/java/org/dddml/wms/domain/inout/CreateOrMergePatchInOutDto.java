@@ -6,18 +6,6 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
 {
-    private String documentAction;
-
-    public String getDocumentAction()
-    {
-        return this.documentAction;
-    }
-
-    public void setDocumentAction(String documentAction)
-    {
-        this.documentAction = documentAction;
-    }
-
     private Boolean posted;
 
     public Boolean getPosted()
@@ -753,7 +741,6 @@ public class CreateOrMergePatchInOutDto extends AbstractInOutCommandDto
     public void copyTo(AbstractInOutCommand.AbstractCreateOrMergePatchInOut command)
     {
         ((AbstractInOutCommandDto) this).copyTo(command);
-        command.setDocumentAction(this.getDocumentAction());
         command.setPosted(this.getPosted());
         command.setProcessed(this.getProcessed());
         command.setProcessing(this.getProcessing());

@@ -7,6 +7,7 @@ aggregates:
 
     # --------------- aggregate ---------------
     Organization:
+      #inheritedFrom: Party
       id:
         name: PartyId
         type: string

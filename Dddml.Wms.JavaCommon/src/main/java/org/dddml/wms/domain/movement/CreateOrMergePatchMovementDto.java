@@ -6,18 +6,6 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchMovementDto extends AbstractMovementCommandDto
 {
-    private String documentAction;
-
-    public String getDocumentAction()
-    {
-        return this.documentAction;
-    }
-
-    public void setDocumentAction(String documentAction)
-    {
-        this.documentAction = documentAction;
-    }
-
     private Date movementDate;
 
     public Date getMovementDate()
@@ -513,7 +501,6 @@ public class CreateOrMergePatchMovementDto extends AbstractMovementCommandDto
     public void copyTo(AbstractMovementCommand.AbstractCreateOrMergePatchMovement command)
     {
         ((AbstractMovementCommandDto) this).copyTo(command);
-        command.setDocumentAction(this.getDocumentAction());
         command.setMovementDate(this.getMovementDate());
         command.setPosted(this.getPosted());
         command.setProcessed(this.getProcessed());
