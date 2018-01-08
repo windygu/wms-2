@@ -27,6 +27,10 @@ aggregates:
           
             transitions:
             
+            - sourceState: null
+              trigger: null
+              targetState: "Drafted"
+              
             - sourceState: "Drafted"
               trigger: "Complete"
               targetState: "Completed"
