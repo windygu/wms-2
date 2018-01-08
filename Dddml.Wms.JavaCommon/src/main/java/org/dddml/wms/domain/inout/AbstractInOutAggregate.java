@@ -291,23 +291,6 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         }
     }// END throwOnInconsistentCommands /////////////////////
 
-    protected void newInOutDocumentActionCommandAndExecute(InOutCommand.CreateInOut c, InOutState s, InOutStateEvent.InOutStateCreated e)
-    {
-        PropertyCommandHandler<String, String> pCommandHandler = this.getInOutDocumentActionCommandHandler();
-        String pCmdContent = null;
-        PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
-        pCmd.setContent(pCmdContent);
-        pCmd.setStateGetter(() -> s.getDocumentStatusId());
-        pCmd.setStateSetter(p -> e.setDocumentStatusId(p));
-        pCmd.setOuterCommandType(CommandType.CREATE);
-        pCommandHandler.execute(pCmd);
-    }
-
-    protected PropertyCommandHandler<String, String> getInOutDocumentActionCommandHandler()
-    {
-        return (PropertyCommandHandler<String, String>)ApplicationContext.current.get("InOutDocumentActionCommandHandler");
-    }
-
 
     ////////////////////////
 
@@ -350,6 +333,49 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         return new AbstractInOutLineStateEvent.SimpleInOutLineStateRemoved(stateEventId);
     }
 
+    protected void newInOutDocumentActionCommandAndExecute(InOutCommand.CreateInOut c, InOutState s, InOutStateEvent.InOutStateCreated e)
+    {
+        PropertyCommandHandler<String, String> pCommandHandler = this.getInOutDocumentActionCommandHandler();
+        String pCmdContent = null;
+        PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
+        pCmd.setContent(pCmdContent);
+        pCmd.setStateGetter(() -> s.getDocumentStatusId());
+        pCmd.setStateSetter(p -> e.setDocumentStatusId(p));
+        pCmd.setOuterCommandType(CommandType.CREATE);
+        pCommandHandler.execute(pCmd);
+    }
+
+    protected PropertyCommandHandler<String, String> getInOutDocumentActionCommandHandler()
+    {
+        return (PropertyCommandHandler<String, String>)ApplicationContext.current.get("InOutDocumentActionCommandHandler");
+    }
+
+    public class SimpleInOutDocumentActionCommandHandler implements PropertyCommandHandler<String, String> {
+
+        public void execute(PropertyCommand<String, String> command) {
+            if (Objects.equals(null, command.getStateGetter().get()) && Objects.equals(null, command.getContent())) {
+                command.getStateSetter().accept("Drafted");
+                return;
+            }
+            if (Objects.equals("Drafted", command.getStateGetter().get()) && Objects.equals("Complete", command.getContent())) {
+                command.getStateSetter().accept("Completed");
+                return;
+            }
+            if (Objects.equals("Drafted", command.getStateGetter().get()) && Objects.equals("Void", command.getContent())) {
+                command.getStateSetter().accept("Voided");
+                return;
+            }
+            if (Objects.equals("Completed", command.getStateGetter().get()) && Objects.equals("Close", command.getContent())) {
+                command.getStateSetter().accept("Closed");
+                return;
+            }
+            if (Objects.equals("Completed", command.getStateGetter().get()) && Objects.equals("Reverse", command.getContent())) {
+                command.getStateSetter().accept("Reversed");
+                return;
+            }
+            throw new IllegalArgumentException(String.format("State: %1$s, command: %2$s", command.getStateGetter().get(), command.getContent()));
+        }
+    }
 
     public static class SimpleInOutAggregate extends AbstractInOutAggregate
     {
@@ -379,7 +405,17 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
 
         @Override
         public void documentAction(String value, String commandId, String requesterId) {
-            throw new UnsupportedOperationException();
+            InOutStateEvent.InOutStateMergePatched e = newInOutStateMergePatched(commandId, requesterId);
+            // ////////////////////////////
+            PropertyCommandHandler<String, String> pCommandHandler = this.getInOutDocumentActionCommandHandler();
+            PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<>();
+            pCmd.setContent(value);
+            pCmd.setStateGetter(() -> this.getState().getDocumentStatusId());
+            pCmd.setStateSetter(s -> e.setDocumentStatusId(s));
+            pCmd.setOuterCommandType("DocumentAction");
+            pCommandHandler.execute(pCmd);
+            // ////////////////////////////
+            apply(e);
         }
 
     }
