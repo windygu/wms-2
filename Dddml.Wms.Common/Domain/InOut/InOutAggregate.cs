@@ -10,40 +10,29 @@ namespace Dddml.Wms.Domain.InOut
     {
         public virtual void DocumentAction(string value, string commandId, string requesterId)
         {
-            //todo
+            var e = NewInOutStateMergePatched(commandId, requesterId);
+            DoDocumentAction(value, ts => e.DocumentStatusId = ts);
+            Apply(e);
         }
 
         public virtual void Complete(string commandId, string requesterId)
         {
-            var e = NewInOutStateMergePatched(commandId, requesterId);
-            var pCommandHandler = this.InOutDocumentActionCommandHandler;
-            var pCmdContent = global::Dddml.Wms.Domain.DocumentAction.Complete;//c.DocumentAction;
-            var pCmd = new PropertyCommand<string, string> 
-            { 
-                Content = pCmdContent, 
-                GetState = () => this.State.DocumentStatusId, 
-                SetState = p => e.DocumentStatusId = p, OuterCommandType = "Complete" 
-            };
-            pCommandHandler.Execute(pCmd);
-            Apply(e);
+            DocumentAction(global::Dddml.Wms.Domain.DocumentAction.Complete, commandId, requesterId);
         }
 
         public virtual void Close(string commandId, string requesterId)
         {
-            //todo
-            throw new NotImplementedException();
+            DocumentAction(global::Dddml.Wms.Domain.DocumentAction.Close, commandId, requesterId);
         }
 
         public virtual void Void(string commandId, string requesterId)
         {
-            //todo
-            throw new NotImplementedException();
+            DocumentAction(global::Dddml.Wms.Domain.DocumentAction.Void, commandId, requesterId);
         }
 
         public virtual void Reverse(string commandId, string requesterId)
         {
-            //todo
-            throw new NotImplementedException();
+            DocumentAction(global::Dddml.Wms.Domain.DocumentAction.Reverse, commandId, requesterId);
         }
     }
 }

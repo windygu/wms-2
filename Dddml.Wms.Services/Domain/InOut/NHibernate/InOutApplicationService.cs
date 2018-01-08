@@ -55,14 +55,12 @@ namespace Dddml.Wms.Domain.InOut.NHibernate
         [Transaction]
         public override void When(InOutCommands.Close c)
         {
-            //todo
             base.When(c);
         }
     
         [Transaction]
         public override void When(InOutCommands.Void c)
         {
-            //todo
             base.When(c);
         }
 
