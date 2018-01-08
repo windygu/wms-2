@@ -228,23 +228,6 @@ public abstract class AbstractMovementConfirmationAggregate extends AbstractAggr
         }
     }// END throwOnInconsistentCommands /////////////////////
 
-    protected void newMovementConfirmationDocumentActionCommandAndExecute(MovementConfirmationCommand.CreateMovementConfirmation c, MovementConfirmationState s, MovementConfirmationStateEvent.MovementConfirmationStateCreated e)
-    {
-        PropertyCommandHandler<String, String> pCommandHandler = this.getMovementConfirmationDocumentActionCommandHandler();
-        String pCmdContent = null;
-        PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
-        pCmd.setContent(pCmdContent);
-        pCmd.setStateGetter(() -> s.getDocumentStatusId());
-        pCmd.setStateSetter(p -> e.setDocumentStatusId(p));
-        pCmd.setOuterCommandType(CommandType.CREATE);
-        pCommandHandler.execute(pCmd);
-    }
-
-    protected PropertyCommandHandler<String, String> getMovementConfirmationDocumentActionCommandHandler()
-    {
-        return (PropertyCommandHandler<String, String>)ApplicationContext.current.get("MovementConfirmationDocumentActionCommandHandler");
-    }
-
 
     ////////////////////////
 
@@ -301,6 +284,22 @@ public abstract class AbstractMovementConfirmationAggregate extends AbstractAggr
         return new AbstractMovementConfirmationLineStateEvent.SimpleMovementConfirmationLineStateRemoved(stateEventId);
     }
 
+    protected void newMovementConfirmationDocumentActionCommandAndExecute(MovementConfirmationCommand.CreateMovementConfirmation c, MovementConfirmationState s, MovementConfirmationStateEvent.MovementConfirmationStateCreated e)
+    {
+        PropertyCommandHandler<String, String> pCommandHandler = this.getMovementConfirmationDocumentActionCommandHandler();
+        String pCmdContent = null;
+        PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
+        pCmd.setContent(pCmdContent);
+        pCmd.setStateGetter(() -> s.getDocumentStatusId());
+        pCmd.setStateSetter(p -> e.setDocumentStatusId(p));
+        pCmd.setOuterCommandType(CommandType.CREATE);
+        pCommandHandler.execute(pCmd);
+    }
+
+    protected PropertyCommandHandler<String, String> getMovementConfirmationDocumentActionCommandHandler()
+    {
+        return (PropertyCommandHandler<String, String>)ApplicationContext.current.get("MovementConfirmationDocumentActionCommandHandler");
+    }
 
     public static class SimpleMovementConfirmationAggregate extends AbstractMovementConfirmationAggregate
     {
@@ -310,7 +309,17 @@ public abstract class AbstractMovementConfirmationAggregate extends AbstractAggr
 
         @Override
         public void documentAction(String value, String commandId, String requesterId) {
-            throw new UnsupportedOperationException();
+            MovementConfirmationStateEvent.MovementConfirmationStateMergePatched e = newMovementConfirmationStateMergePatched(commandId, requesterId);
+            // ////////////////////////////
+            PropertyCommandHandler<String, String> pCommandHandler = this.getMovementConfirmationDocumentActionCommandHandler();
+            PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<>();
+            pCmd.setContent(value);
+            pCmd.setStateGetter(() -> this.getState().getDocumentStatusId());
+            pCmd.setStateSetter(s -> e.setDocumentStatusId(s));
+            pCmd.setOuterCommandType("DocumentAction");
+            pCommandHandler.execute(pCmd);
+            // ////////////////////////////
+            apply(e);
         }
 
     }

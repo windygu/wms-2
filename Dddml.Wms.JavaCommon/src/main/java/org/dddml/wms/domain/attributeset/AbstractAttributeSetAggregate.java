@@ -261,7 +261,6 @@ public abstract class AbstractAttributeSetAggregate extends AbstractAggregate im
         return new AbstractAttributeUseStateEvent.SimpleAttributeUseStateRemoved(stateEventId);
     }
 
-
     public static class SimpleAttributeSetAggregate extends AbstractAttributeSetAggregate
     {
         public SimpleAttributeSetAggregate(AttributeSetState state) {

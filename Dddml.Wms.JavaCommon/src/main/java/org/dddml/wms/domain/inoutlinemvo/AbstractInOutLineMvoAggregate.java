@@ -270,7 +270,6 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
         return new AbstractInOutLineMvoStateEvent.SimpleInOutLineMvoStateDeleted(stateEventId);
     }
 
-
     public static class SimpleInOutLineMvoAggregate extends AbstractInOutLineMvoAggregate
     {
         public SimpleInOutLineMvoAggregate(InOutLineMvoState state) {

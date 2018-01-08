@@ -243,23 +243,6 @@ public abstract class AbstractPhysicalInventoryAggregate extends AbstractAggrega
         }
     }// END throwOnInconsistentCommands /////////////////////
 
-    protected void newPhysicalInventoryDocumentActionCommandAndExecute(PhysicalInventoryCommand.CreatePhysicalInventory c, PhysicalInventoryState s, PhysicalInventoryStateEvent.PhysicalInventoryStateCreated e)
-    {
-        PropertyCommandHandler<String, String> pCommandHandler = this.getPhysicalInventoryDocumentActionCommandHandler();
-        String pCmdContent = null;
-        PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
-        pCmd.setContent(pCmdContent);
-        pCmd.setStateGetter(() -> s.getDocumentStatusId());
-        pCmd.setStateSetter(p -> e.setDocumentStatusId(p));
-        pCmd.setOuterCommandType(CommandType.CREATE);
-        pCommandHandler.execute(pCmd);
-    }
-
-    protected PropertyCommandHandler<String, String> getPhysicalInventoryDocumentActionCommandHandler()
-    {
-        return (PropertyCommandHandler<String, String>)ApplicationContext.current.get("PhysicalInventoryDocumentActionCommandHandler");
-    }
-
 
     ////////////////////////
 
@@ -316,6 +299,22 @@ public abstract class AbstractPhysicalInventoryAggregate extends AbstractAggrega
         return new AbstractPhysicalInventoryLineStateEvent.SimplePhysicalInventoryLineStateRemoved(stateEventId);
     }
 
+    protected void newPhysicalInventoryDocumentActionCommandAndExecute(PhysicalInventoryCommand.CreatePhysicalInventory c, PhysicalInventoryState s, PhysicalInventoryStateEvent.PhysicalInventoryStateCreated e)
+    {
+        PropertyCommandHandler<String, String> pCommandHandler = this.getPhysicalInventoryDocumentActionCommandHandler();
+        String pCmdContent = null;
+        PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
+        pCmd.setContent(pCmdContent);
+        pCmd.setStateGetter(() -> s.getDocumentStatusId());
+        pCmd.setStateSetter(p -> e.setDocumentStatusId(p));
+        pCmd.setOuterCommandType(CommandType.CREATE);
+        pCommandHandler.execute(pCmd);
+    }
+
+    protected PropertyCommandHandler<String, String> getPhysicalInventoryDocumentActionCommandHandler()
+    {
+        return (PropertyCommandHandler<String, String>)ApplicationContext.current.get("PhysicalInventoryDocumentActionCommandHandler");
+    }
 
     public static class SimplePhysicalInventoryAggregate extends AbstractPhysicalInventoryAggregate
     {
@@ -325,7 +324,17 @@ public abstract class AbstractPhysicalInventoryAggregate extends AbstractAggrega
 
         @Override
         public void documentAction(String value, String commandId, String requesterId) {
-            throw new UnsupportedOperationException();
+            PhysicalInventoryStateEvent.PhysicalInventoryStateMergePatched e = newPhysicalInventoryStateMergePatched(commandId, requesterId);
+            // ////////////////////////////
+            PropertyCommandHandler<String, String> pCommandHandler = this.getPhysicalInventoryDocumentActionCommandHandler();
+            PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<>();
+            pCmd.setContent(value);
+            pCmd.setStateGetter(() -> this.getState().getDocumentStatusId());
+            pCmd.setStateSetter(s -> e.setDocumentStatusId(s));
+            pCmd.setOuterCommandType("DocumentAction");
+            pCommandHandler.execute(pCmd);
+            // ////////////////////////////
+            apply(e);
         }
 
     }

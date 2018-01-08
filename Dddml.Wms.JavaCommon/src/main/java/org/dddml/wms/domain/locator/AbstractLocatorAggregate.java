@@ -154,7 +154,6 @@ public abstract class AbstractLocatorAggregate extends AbstractAggregate impleme
         return new AbstractLocatorStateEvent.SimpleLocatorStateDeleted(stateEventId);
     }
 
-
     public static class SimpleLocatorAggregate extends AbstractLocatorAggregate
     {
         public SimpleLocatorAggregate(LocatorState state) {

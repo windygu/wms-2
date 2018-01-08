@@ -136,7 +136,6 @@ public abstract class AbstractUomTypeAggregate extends AbstractAggregate impleme
         return new AbstractUomTypeStateEvent.SimpleUomTypeStateDeleted(stateEventId);
     }
 
-
     public static class SimpleUomTypeAggregate extends AbstractUomTypeAggregate
     {
         public SimpleUomTypeAggregate(UomTypeState state) {

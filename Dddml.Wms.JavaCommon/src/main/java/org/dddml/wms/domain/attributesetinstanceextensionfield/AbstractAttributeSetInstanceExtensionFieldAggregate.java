@@ -142,7 +142,6 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldAggregate extend
         return new AbstractAttributeSetInstanceExtensionFieldStateEvent.SimpleAttributeSetInstanceExtensionFieldStateDeleted(stateEventId);
     }
 
-
     public static class SimpleAttributeSetInstanceExtensionFieldAggregate extends AbstractAttributeSetInstanceExtensionFieldAggregate
     {
         public SimpleAttributeSetInstanceExtensionFieldAggregate(AttributeSetInstanceExtensionFieldState state) {

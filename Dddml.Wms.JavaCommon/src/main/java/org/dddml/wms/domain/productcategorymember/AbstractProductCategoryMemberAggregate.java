@@ -110,7 +110,6 @@ public abstract class AbstractProductCategoryMemberAggregate extends AbstractAgg
         return new AbstractProductCategoryMemberStateEvent.SimpleProductCategoryMemberStateMergePatched(stateEventId);
     }
 
-
     public static class SimpleProductCategoryMemberAggregate extends AbstractProductCategoryMemberAggregate
     {
         public SimpleProductCategoryMemberAggregate(ProductCategoryMemberState state) {

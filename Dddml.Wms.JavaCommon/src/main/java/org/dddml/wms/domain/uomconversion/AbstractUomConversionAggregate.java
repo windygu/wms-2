@@ -139,7 +139,6 @@ public abstract class AbstractUomConversionAggregate extends AbstractAggregate i
         return new AbstractUomConversionStateEvent.SimpleUomConversionStateDeleted(stateEventId);
     }
 
-
     public static class SimpleUomConversionAggregate extends AbstractUomConversionAggregate
     {
         public SimpleUomConversionAggregate(UomConversionState state) {

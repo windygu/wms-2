@@ -365,7 +365,6 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         return new AbstractOrderItemStateEvent.SimpleOrderItemStateMergePatched(stateEventId);
     }
 
-
     public static class SimpleOrderAggregate extends AbstractOrderAggregate
     {
         public SimpleOrderAggregate(OrderState state) {

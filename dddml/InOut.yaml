@@ -14,9 +14,6 @@ aggregates:
 
       properties:
 
-        # IsSOTransaction:
-          # type: bool
-
         # --------------------------------------
         DocumentStatusId:
           type: string
@@ -48,6 +45,9 @@ aggregates:
               targetState: "Reversed"
               
         # --------------------------------------
+
+        # IsSOTransaction:
+          # type: bool
 
         Posted:
           type: bool

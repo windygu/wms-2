@@ -133,7 +133,6 @@ public abstract class AbstractDamageReasonAggregate extends AbstractAggregate im
         return new AbstractDamageReasonStateEvent.SimpleDamageReasonStateDeleted(stateEventId);
     }
 
-
     public static class SimpleDamageReasonAggregate extends AbstractDamageReasonAggregate
     {
         public SimpleDamageReasonAggregate(DamageReasonState state) {

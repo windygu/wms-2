@@ -98,7 +98,6 @@ public abstract class AbstractInventoryPRTriggeredAggregate extends AbstractAggr
         return new AbstractInventoryPRTriggeredStateEvent.SimpleInventoryPRTriggeredStateMergePatched(stateEventId);
     }
 
-
     public static class SimpleInventoryPRTriggeredAggregate extends AbstractInventoryPRTriggeredAggregate
     {
         public SimpleInventoryPRTriggeredAggregate(InventoryPRTriggeredState state) {

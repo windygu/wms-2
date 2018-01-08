@@ -174,7 +174,6 @@ public abstract class AbstractInventoryItemRequirementAggregate extends Abstract
         return new AbstractInventoryItemRequirementEntryStateEvent.SimpleInventoryItemRequirementEntryStateCreated(stateEventId);
     }
 
-
     public static class SimpleInventoryItemRequirementAggregate extends AbstractInventoryItemRequirementAggregate
     {
         public SimpleInventoryItemRequirementAggregate(InventoryItemRequirementState state) {

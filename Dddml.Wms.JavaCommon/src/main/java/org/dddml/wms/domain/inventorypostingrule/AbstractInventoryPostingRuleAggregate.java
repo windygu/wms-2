@@ -143,7 +143,6 @@ public abstract class AbstractInventoryPostingRuleAggregate extends AbstractAggr
         return new AbstractInventoryPostingRuleStateEvent.SimpleInventoryPostingRuleStateDeleted(stateEventId);
     }
 
-
     public static class SimpleInventoryPostingRuleAggregate extends AbstractInventoryPostingRuleAggregate
     {
         public SimpleInventoryPostingRuleAggregate(InventoryPostingRuleState state) {

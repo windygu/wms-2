@@ -136,7 +136,6 @@ public abstract class AbstractAttributeSetInstanceAggregate extends AbstractAggr
         return new AbstractAttributeSetInstanceStateEvent.SimpleAttributeSetInstanceStateCreated(stateEventId);
     }
 
-
     public static class SimpleAttributeSetInstanceAggregate extends AbstractAttributeSetInstanceAggregate
     {
         public SimpleAttributeSetInstanceAggregate(AttributeSetInstanceState state) {

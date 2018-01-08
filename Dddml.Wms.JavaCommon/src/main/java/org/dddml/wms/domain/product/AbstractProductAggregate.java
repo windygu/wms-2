@@ -278,7 +278,6 @@ public abstract class AbstractProductAggregate extends AbstractAggregate impleme
         return new AbstractProductStateEvent.SimpleProductStateMergePatched(stateEventId);
     }
 
-
     public static class SimpleProductAggregate extends AbstractProductAggregate
     {
         public SimpleProductAggregate(ProductState state) {

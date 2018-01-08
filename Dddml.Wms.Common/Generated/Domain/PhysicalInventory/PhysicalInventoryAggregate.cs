@@ -322,30 +322,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
         }// END Map(IRemove... ////////////////////////////
 
-        protected void NewPhysicalInventoryDocumentActionCommandAndExecute(ICreatePhysicalInventory c, IPhysicalInventoryState s, IPhysicalInventoryStateCreated e)
-        {
-            var pCommandHandler = this.PhysicalInventoryDocumentActionCommandHandler;
-            var pCmdContent = default(string);
-            var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.DocumentStatusId, SetState = p => e.DocumentStatusId = p, OuterCommandType = CommandType.Create };
-            pCommandHandler.Execute(pCmd);
-        }
-
-        //protected void NewPhysicalInventoryDocumentActionCommandAndExecute(IMergePatchPhysicalInventory c, IPhysicalInventoryState s, IPhysicalInventoryStateMergePatched e)
-        //{
-        //    var pCommandHandler = this.PhysicalInventoryDocumentActionCommandHandler;
-        //    var pCmdContent = c.DocumentAction;
-        //    var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.DocumentStatusId, SetState = p => e.DocumentStatusId = p, OuterCommandType = CommandType.MergePatch };
-        //    pCommandHandler.Execute(pCmd);
-        //}
-
-        protected IPropertyCommandHandler<string, string> PhysicalInventoryDocumentActionCommandHandler
-        {
-            get
-            {
-                return ApplicationContext.Current["PhysicalInventoryDocumentActionCommandHandler"] as IPropertyCommandHandler<string, string>;
-            }
-        }
-
         private void ThrowOnInconsistentIds(object innerObject, string innerIdName, object innerIdValue, string outerIdName, object outerIdValue)
         {
             if (!Object.Equals(innerIdValue, outerIdValue))
@@ -432,7 +408,31 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 			return new PhysicalInventoryLineStateRemoved(stateEventId);
 		}
 
-        protected void DoDocumentAction(string value, Action<string> setDocumentStatusId)
+        protected void NewPhysicalInventoryDocumentActionCommandAndExecute(ICreatePhysicalInventory c, IPhysicalInventoryState s, IPhysicalInventoryStateCreated e)
+        {
+            var pCommandHandler = this.PhysicalInventoryDocumentActionCommandHandler;
+            var pCmdContent = default(string);
+            var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.DocumentStatusId, SetState = p => e.DocumentStatusId = p, OuterCommandType = CommandType.Create };
+            pCommandHandler.Execute(pCmd);
+        }
+
+        //protected void NewPhysicalInventoryDocumentActionCommandAndExecute(IMergePatchPhysicalInventory c, IPhysicalInventoryState s, IPhysicalInventoryStateMergePatched e)
+        //{
+        //    var pCommandHandler = this.PhysicalInventoryDocumentActionCommandHandler;
+        //    var pCmdContent = c.DocumentAction;
+        //    var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.DocumentStatusId, SetState = p => e.DocumentStatusId = p, OuterCommandType = CommandType.MergePatch };
+        //    pCommandHandler.Execute(pCmd);
+        //}
+
+        protected IPropertyCommandHandler<string, string> PhysicalInventoryDocumentActionCommandHandler
+        {
+            get
+            {
+                return ApplicationContext.Current["PhysicalInventoryDocumentActionCommandHandler"] as IPropertyCommandHandler<string, string>;
+            }
+        }
+
+        protected virtual void DoDocumentAction(string value, Action<string> setDocumentStatusId)
         {
             var pCommandHandler = this.PhysicalInventoryDocumentActionCommandHandler;
             var pCmdContent = value;

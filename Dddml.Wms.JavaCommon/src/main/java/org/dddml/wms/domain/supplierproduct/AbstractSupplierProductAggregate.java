@@ -137,7 +137,6 @@ public abstract class AbstractSupplierProductAggregate extends AbstractAggregate
         return new AbstractSupplierProductStateEvent.SimpleSupplierProductStateMergePatched(stateEventId);
     }
 
-
     public static class SimpleSupplierProductAggregate extends AbstractSupplierProductAggregate
     {
         public SimpleSupplierProductAggregate(SupplierProductState state) {

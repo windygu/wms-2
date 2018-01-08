@@ -151,7 +151,6 @@ public abstract class AbstractProductCategoryAggregate extends AbstractAggregate
         return new AbstractProductCategoryStateEvent.SimpleProductCategoryStateDeleted(stateEventId);
     }
 
-
     public static class SimpleProductCategoryAggregate extends AbstractProductCategoryAggregate
     {
         public SimpleProductCategoryAggregate(ProductCategoryState state) {

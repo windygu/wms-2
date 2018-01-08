@@ -231,7 +231,6 @@ public abstract class AbstractMovementLineMvoAggregate extends AbstractAggregate
         return new AbstractMovementLineMvoStateEvent.SimpleMovementLineMvoStateDeleted(stateEventId);
     }
 
-
     public static class SimpleMovementLineMvoAggregate extends AbstractMovementLineMvoAggregate
     {
         public SimpleMovementLineMvoAggregate(MovementLineMvoState state) {

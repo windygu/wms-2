@@ -170,7 +170,6 @@ public abstract class AbstractAttributeUseMvoAggregate extends AbstractAggregate
         return new AbstractAttributeUseMvoStateEvent.SimpleAttributeUseMvoStateDeleted(stateEventId);
     }
 
-
     public static class SimpleAttributeUseMvoAggregate extends AbstractAttributeUseMvoAggregate
     {
         public SimpleAttributeUseMvoAggregate(AttributeUseMvoState state) {

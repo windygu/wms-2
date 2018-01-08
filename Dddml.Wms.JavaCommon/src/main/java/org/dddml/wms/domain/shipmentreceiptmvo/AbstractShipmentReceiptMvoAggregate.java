@@ -225,7 +225,6 @@ public abstract class AbstractShipmentReceiptMvoAggregate extends AbstractAggreg
         return new AbstractShipmentReceiptMvoStateEvent.SimpleShipmentReceiptMvoStateMergePatched(stateEventId);
     }
 
-
     public static class SimpleShipmentReceiptMvoAggregate extends AbstractShipmentReceiptMvoAggregate
     {
         public SimpleShipmentReceiptMvoAggregate(ShipmentReceiptMvoState state) {

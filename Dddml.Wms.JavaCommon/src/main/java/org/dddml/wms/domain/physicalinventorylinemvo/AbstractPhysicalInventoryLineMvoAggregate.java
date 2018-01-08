@@ -210,7 +210,6 @@ public abstract class AbstractPhysicalInventoryLineMvoAggregate extends Abstract
         return new AbstractPhysicalInventoryLineMvoStateEvent.SimplePhysicalInventoryLineMvoStateDeleted(stateEventId);
     }
 
-
     public static class SimplePhysicalInventoryLineMvoAggregate extends AbstractPhysicalInventoryLineMvoAggregate
     {
         public SimplePhysicalInventoryLineMvoAggregate(PhysicalInventoryLineMvoState state) {

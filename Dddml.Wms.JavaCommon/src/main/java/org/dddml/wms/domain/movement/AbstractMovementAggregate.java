@@ -264,23 +264,6 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
         }
     }// END throwOnInconsistentCommands /////////////////////
 
-    protected void newMovementDocumentActionCommandAndExecute(MovementCommand.CreateMovement c, MovementState s, MovementStateEvent.MovementStateCreated e)
-    {
-        PropertyCommandHandler<String, String> pCommandHandler = this.getMovementDocumentActionCommandHandler();
-        String pCmdContent = null;
-        PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
-        pCmd.setContent(pCmdContent);
-        pCmd.setStateGetter(() -> s.getDocumentStatusId());
-        pCmd.setStateSetter(p -> e.setDocumentStatusId(p));
-        pCmd.setOuterCommandType(CommandType.CREATE);
-        pCommandHandler.execute(pCmd);
-    }
-
-    protected PropertyCommandHandler<String, String> getMovementDocumentActionCommandHandler()
-    {
-        return (PropertyCommandHandler<String, String>)ApplicationContext.current.get("MovementDocumentActionCommandHandler");
-    }
-
 
     ////////////////////////
 
@@ -337,6 +320,22 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
         return new AbstractMovementLineStateEvent.SimpleMovementLineStateRemoved(stateEventId);
     }
 
+    protected void newMovementDocumentActionCommandAndExecute(MovementCommand.CreateMovement c, MovementState s, MovementStateEvent.MovementStateCreated e)
+    {
+        PropertyCommandHandler<String, String> pCommandHandler = this.getMovementDocumentActionCommandHandler();
+        String pCmdContent = null;
+        PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<String, String>();
+        pCmd.setContent(pCmdContent);
+        pCmd.setStateGetter(() -> s.getDocumentStatusId());
+        pCmd.setStateSetter(p -> e.setDocumentStatusId(p));
+        pCmd.setOuterCommandType(CommandType.CREATE);
+        pCommandHandler.execute(pCmd);
+    }
+
+    protected PropertyCommandHandler<String, String> getMovementDocumentActionCommandHandler()
+    {
+        return (PropertyCommandHandler<String, String>)ApplicationContext.current.get("MovementDocumentActionCommandHandler");
+    }
 
     public static class SimpleMovementAggregate extends AbstractMovementAggregate
     {
@@ -346,7 +345,17 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
 
         @Override
         public void documentAction(String value, String commandId, String requesterId) {
-            throw new UnsupportedOperationException();
+            MovementStateEvent.MovementStateMergePatched e = newMovementStateMergePatched(commandId, requesterId);
+            // ////////////////////////////
+            PropertyCommandHandler<String, String> pCommandHandler = this.getMovementDocumentActionCommandHandler();
+            PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<>();
+            pCmd.setContent(value);
+            pCmd.setStateGetter(() -> this.getState().getDocumentStatusId());
+            pCmd.setStateSetter(s -> e.setDocumentStatusId(s));
+            pCmd.setOuterCommandType("DocumentAction");
+            pCommandHandler.execute(pCmd);
+            // ////////////////////////////
+            apply(e);
         }
 
     }

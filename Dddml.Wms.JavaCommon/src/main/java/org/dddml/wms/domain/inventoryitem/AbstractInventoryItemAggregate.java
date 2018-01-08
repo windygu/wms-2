@@ -200,7 +200,6 @@ public abstract class AbstractInventoryItemAggregate extends AbstractAggregate i
         return new AbstractInventoryItemEntryStateEvent.SimpleInventoryItemEntryStateCreated(stateEventId);
     }
 
-
     public static class SimpleInventoryItemAggregate extends AbstractInventoryItemAggregate
     {
         public SimpleInventoryItemAggregate(InventoryItemState state) {

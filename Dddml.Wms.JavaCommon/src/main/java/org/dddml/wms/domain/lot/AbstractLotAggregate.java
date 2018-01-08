@@ -136,7 +136,6 @@ public abstract class AbstractLotAggregate extends AbstractAggregate implements 
         return new AbstractLotStateEvent.SimpleLotStateDeleted(stateEventId);
     }
 
-
     public static class SimpleLotAggregate extends AbstractLotAggregate
     {
         public SimpleLotAggregate(LotState state) {

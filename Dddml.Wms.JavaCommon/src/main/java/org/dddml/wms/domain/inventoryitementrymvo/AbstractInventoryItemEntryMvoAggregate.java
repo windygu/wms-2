@@ -145,7 +145,6 @@ public abstract class AbstractInventoryItemEntryMvoAggregate extends AbstractAgg
         return new AbstractInventoryItemEntryMvoStateEvent.SimpleInventoryItemEntryMvoStateMergePatched(stateEventId);
     }
 
-
     public static class SimpleInventoryItemEntryMvoAggregate extends AbstractInventoryItemEntryMvoAggregate
     {
         public SimpleInventoryItemEntryMvoAggregate(InventoryItemEntryMvoState state) {

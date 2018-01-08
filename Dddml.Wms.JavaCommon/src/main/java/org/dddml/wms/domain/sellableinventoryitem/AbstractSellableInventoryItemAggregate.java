@@ -174,7 +174,6 @@ public abstract class AbstractSellableInventoryItemAggregate extends AbstractAgg
         return new AbstractSellableInventoryItemEntryStateEvent.SimpleSellableInventoryItemEntryStateCreated(stateEventId);
     }
 
-
     public static class SimpleSellableInventoryItemAggregate extends AbstractSellableInventoryItemAggregate
     {
         public SimpleSellableInventoryItemAggregate(SellableInventoryItemState state) {

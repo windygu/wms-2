@@ -294,7 +294,6 @@ public abstract class AbstractOrderItemMvoAggregate extends AbstractAggregate im
         return new AbstractOrderItemMvoStateEvent.SimpleOrderItemMvoStateMergePatched(stateEventId);
     }
 
-
     public static class SimpleOrderItemMvoAggregate extends AbstractOrderItemMvoAggregate
     {
         public SimpleOrderItemMvoAggregate(OrderItemMvoState state) {

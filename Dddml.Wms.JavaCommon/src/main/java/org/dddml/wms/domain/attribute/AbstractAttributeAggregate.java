@@ -390,7 +390,6 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
         return new AbstractAttributeAliasStateEvent.SimpleAttributeAliasStateRemoved(stateEventId);
     }
 
-
     public static class SimpleAttributeAggregate extends AbstractAttributeAggregate
     {
         public SimpleAttributeAggregate(AttributeState state) {

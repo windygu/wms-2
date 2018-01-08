@@ -136,7 +136,6 @@ public abstract class AbstractWarehouseAggregate extends AbstractAggregate imple
         return new AbstractWarehouseStateEvent.SimpleWarehouseStateDeleted(stateEventId);
     }
 
-
     public static class SimpleWarehouseAggregate extends AbstractWarehouseAggregate
     {
         public SimpleWarehouseAggregate(WarehouseState state) {

@@ -101,7 +101,6 @@ public abstract class AbstractOrderShipmentAggregate extends AbstractAggregate i
         return new AbstractOrderShipmentStateEvent.SimpleOrderShipmentStateMergePatched(stateEventId);
     }
 
-
     public static class SimpleOrderShipmentAggregate extends AbstractOrderShipmentAggregate
     {
         public SimpleOrderShipmentAggregate(OrderShipmentState state) {

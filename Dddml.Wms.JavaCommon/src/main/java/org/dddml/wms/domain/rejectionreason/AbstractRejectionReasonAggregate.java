@@ -130,7 +130,6 @@ public abstract class AbstractRejectionReasonAggregate extends AbstractAggregate
         return new AbstractRejectionReasonStateEvent.SimpleRejectionReasonStateDeleted(stateEventId);
     }
 
-
     public static class SimpleRejectionReasonAggregate extends AbstractRejectionReasonAggregate
     {
         public SimpleRejectionReasonAggregate(RejectionReasonState state) {

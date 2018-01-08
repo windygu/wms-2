@@ -133,7 +133,6 @@ public abstract class AbstractDocumentTypeAggregate extends AbstractAggregate im
         return new AbstractDocumentTypeStateEvent.SimpleDocumentTypeStateDeleted(stateEventId);
     }
 
-
     public static class SimpleDocumentTypeAggregate extends AbstractDocumentTypeAggregate
     {
         public SimpleDocumentTypeAggregate(DocumentTypeState state) {

@@ -110,7 +110,6 @@ public abstract class AbstractStatusItemAggregate extends AbstractAggregate impl
         return new AbstractStatusItemStateEvent.SimpleStatusItemStateMergePatched(stateEventId);
     }
 
-
     public static class SimpleStatusItemAggregate extends AbstractStatusItemAggregate
     {
         public SimpleStatusItemAggregate(StatusItemState state) {

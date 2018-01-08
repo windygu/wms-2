@@ -122,7 +122,6 @@ public abstract class AbstractSellableInventoryItemEntryMvoAggregate extends Abs
         return new AbstractSellableInventoryItemEntryMvoStateEvent.SimpleSellableInventoryItemEntryMvoStateMergePatched(stateEventId);
     }
 
-
     public static class SimpleSellableInventoryItemEntryMvoAggregate extends AbstractSellableInventoryItemEntryMvoAggregate
     {
         public SimpleSellableInventoryItemEntryMvoAggregate(SellableInventoryItemEntryMvoState state) {

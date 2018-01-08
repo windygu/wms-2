@@ -127,7 +127,6 @@ public abstract class AbstractOrganizationStructureAggregate extends AbstractAgg
         return new AbstractOrganizationStructureStateEvent.SimpleOrganizationStructureStateDeleted(stateEventId);
     }
 
-
     public static class SimpleOrganizationStructureAggregate extends AbstractOrganizationStructureAggregate
     {
         public SimpleOrganizationStructureAggregate(OrganizationStructureState state) {

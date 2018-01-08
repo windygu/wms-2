@@ -130,7 +130,6 @@ public abstract class AbstractMovementTypeAggregate extends AbstractAggregate im
         return new AbstractMovementTypeStateEvent.SimpleMovementTypeStateDeleted(stateEventId);
     }
 
-
     public static class SimpleMovementTypeAggregate extends AbstractMovementTypeAggregate
     {
         public SimpleMovementTypeAggregate(MovementTypeState state) {

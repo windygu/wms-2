@@ -179,7 +179,6 @@ public abstract class AbstractAttributeAliasMvoAggregate extends AbstractAggrega
         return new AbstractAttributeAliasMvoStateEvent.SimpleAttributeAliasMvoStateDeleted(stateEventId);
     }
 
-
     public static class SimpleAttributeAliasMvoAggregate extends AbstractAttributeAliasMvoAggregate
     {
         public SimpleAttributeAliasMvoAggregate(AttributeAliasMvoState state) {

@@ -195,7 +195,6 @@ public abstract class AbstractMovementConfirmationLineMvoAggregate extends Abstr
         return new AbstractMovementConfirmationLineMvoStateEvent.SimpleMovementConfirmationLineMvoStateDeleted(stateEventId);
     }
 
-
     public static class SimpleMovementConfirmationLineMvoAggregate extends AbstractMovementConfirmationLineMvoAggregate
     {
         public SimpleMovementConfirmationLineMvoAggregate(MovementConfirmationLineMvoState state) {

@@ -133,7 +133,6 @@ public abstract class AbstractDamageHandlingMethodAggregate extends AbstractAggr
         return new AbstractDamageHandlingMethodStateEvent.SimpleDamageHandlingMethodStateDeleted(stateEventId);
     }
 
-
     public static class SimpleDamageHandlingMethodAggregate extends AbstractDamageHandlingMethodAggregate
     {
         public SimpleDamageHandlingMethodAggregate(DamageHandlingMethodState state) {
