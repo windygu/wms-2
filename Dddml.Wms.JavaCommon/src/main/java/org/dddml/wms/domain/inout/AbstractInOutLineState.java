@@ -505,7 +505,7 @@ public abstract class AbstractInOutLineState implements InOutLineState
             eventVersion = stateVersion == null ? InOutLineState.VERSION_NULL : stateVersion;
             stateEvent.setVersion(eventVersion);
         }
-        if (!(stateVersion == null && eventVersion.equals(InOutLineState.VERSION_NULL)) && !eventVersion.equals(stateVersion))
+        if (!(stateVersion == null && eventVersion.equals(InOutLineState.VERSION_NULL)) && !(eventVersion.compareTo(stateVersion) >= 0))
         {
             throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
         }

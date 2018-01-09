@@ -96,8 +96,8 @@ public abstract class AbstractWarehouseAggregate extends AbstractAggregate imple
 
     ////////////////////////
 
-    protected WarehouseStateEvent.WarehouseStateCreated newWarehouseStateCreated(String commandId, String requesterId) {
-        WarehouseStateEventId stateEventId = new WarehouseStateEventId(this.state.getWarehouseId(), this.state.getVersion());
+    protected WarehouseStateEvent.WarehouseStateCreated newWarehouseStateCreated(Long version, String commandId, String requesterId) {
+        WarehouseStateEventId stateEventId = new WarehouseStateEventId(this.state.getWarehouseId(), version);
         WarehouseStateEvent.WarehouseStateCreated e = newWarehouseStateCreated(stateEventId);
         ((AbstractWarehouseStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -105,8 +105,8 @@ public abstract class AbstractWarehouseAggregate extends AbstractAggregate imple
         return e;
     }
 
-    protected WarehouseStateEvent.WarehouseStateMergePatched newWarehouseStateMergePatched(String commandId, String requesterId) {
-        WarehouseStateEventId stateEventId = new WarehouseStateEventId(this.state.getWarehouseId(), this.state.getVersion());
+    protected WarehouseStateEvent.WarehouseStateMergePatched newWarehouseStateMergePatched(Long version, String commandId, String requesterId) {
+        WarehouseStateEventId stateEventId = new WarehouseStateEventId(this.state.getWarehouseId(), version);
         WarehouseStateEvent.WarehouseStateMergePatched e = newWarehouseStateMergePatched(stateEventId);
         ((AbstractWarehouseStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -114,8 +114,8 @@ public abstract class AbstractWarehouseAggregate extends AbstractAggregate imple
         return e;
     }
 
-    protected WarehouseStateEvent.WarehouseStateDeleted newWarehouseStateDeleted(String commandId, String requesterId) {
-        WarehouseStateEventId stateEventId = new WarehouseStateEventId(this.state.getWarehouseId(), this.state.getVersion());
+    protected WarehouseStateEvent.WarehouseStateDeleted newWarehouseStateDeleted(Long version, String commandId, String requesterId) {
+        WarehouseStateEventId stateEventId = new WarehouseStateEventId(this.state.getWarehouseId(), version);
         WarehouseStateEvent.WarehouseStateDeleted e = newWarehouseStateDeleted(stateEventId);
         ((AbstractWarehouseStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

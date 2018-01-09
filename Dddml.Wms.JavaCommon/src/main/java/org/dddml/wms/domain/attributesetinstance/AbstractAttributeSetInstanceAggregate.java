@@ -123,8 +123,8 @@ public abstract class AbstractAttributeSetInstanceAggregate extends AbstractAggr
 
     ////////////////////////
 
-    protected AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated newAttributeSetInstanceStateCreated(String commandId, String requesterId) {
-        AttributeSetInstanceStateEventId stateEventId = new AttributeSetInstanceStateEventId(this.state.getAttributeSetInstanceId(), this.state.getVersion());
+    protected AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated newAttributeSetInstanceStateCreated(Long version, String commandId, String requesterId) {
+        AttributeSetInstanceStateEventId stateEventId = new AttributeSetInstanceStateEventId(this.state.getAttributeSetInstanceId(), version);
         AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated e = newAttributeSetInstanceStateCreated(stateEventId);
         ((AbstractAttributeSetInstanceStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

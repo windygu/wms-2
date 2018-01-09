@@ -96,8 +96,8 @@ public abstract class AbstractUomAggregate extends AbstractAggregate implements 
 
     ////////////////////////
 
-    protected UomStateEvent.UomStateCreated newUomStateCreated(String commandId, String requesterId) {
-        UomStateEventId stateEventId = new UomStateEventId(this.state.getUomId(), this.state.getVersion());
+    protected UomStateEvent.UomStateCreated newUomStateCreated(Long version, String commandId, String requesterId) {
+        UomStateEventId stateEventId = new UomStateEventId(this.state.getUomId(), version);
         UomStateEvent.UomStateCreated e = newUomStateCreated(stateEventId);
         ((AbstractUomStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -105,8 +105,8 @@ public abstract class AbstractUomAggregate extends AbstractAggregate implements 
         return e;
     }
 
-    protected UomStateEvent.UomStateMergePatched newUomStateMergePatched(String commandId, String requesterId) {
-        UomStateEventId stateEventId = new UomStateEventId(this.state.getUomId(), this.state.getVersion());
+    protected UomStateEvent.UomStateMergePatched newUomStateMergePatched(Long version, String commandId, String requesterId) {
+        UomStateEventId stateEventId = new UomStateEventId(this.state.getUomId(), version);
         UomStateEvent.UomStateMergePatched e = newUomStateMergePatched(stateEventId);
         ((AbstractUomStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -114,8 +114,8 @@ public abstract class AbstractUomAggregate extends AbstractAggregate implements 
         return e;
     }
 
-    protected UomStateEvent.UomStateDeleted newUomStateDeleted(String commandId, String requesterId) {
-        UomStateEventId stateEventId = new UomStateEventId(this.state.getUomId(), this.state.getVersion());
+    protected UomStateEvent.UomStateDeleted newUomStateDeleted(Long version, String commandId, String requesterId) {
+        UomStateEventId stateEventId = new UomStateEventId(this.state.getUomId(), version);
         UomStateEvent.UomStateDeleted e = newUomStateDeleted(stateEventId);
         ((AbstractUomStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

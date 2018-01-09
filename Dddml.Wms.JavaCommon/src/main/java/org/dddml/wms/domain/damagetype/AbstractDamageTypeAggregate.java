@@ -96,8 +96,8 @@ public abstract class AbstractDamageTypeAggregate extends AbstractAggregate impl
 
     ////////////////////////
 
-    protected DamageTypeStateEvent.DamageTypeStateCreated newDamageTypeStateCreated(String commandId, String requesterId) {
-        DamageTypeStateEventId stateEventId = new DamageTypeStateEventId(this.state.getDamageTypeId(), this.state.getVersion());
+    protected DamageTypeStateEvent.DamageTypeStateCreated newDamageTypeStateCreated(Long version, String commandId, String requesterId) {
+        DamageTypeStateEventId stateEventId = new DamageTypeStateEventId(this.state.getDamageTypeId(), version);
         DamageTypeStateEvent.DamageTypeStateCreated e = newDamageTypeStateCreated(stateEventId);
         ((AbstractDamageTypeStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -105,8 +105,8 @@ public abstract class AbstractDamageTypeAggregate extends AbstractAggregate impl
         return e;
     }
 
-    protected DamageTypeStateEvent.DamageTypeStateMergePatched newDamageTypeStateMergePatched(String commandId, String requesterId) {
-        DamageTypeStateEventId stateEventId = new DamageTypeStateEventId(this.state.getDamageTypeId(), this.state.getVersion());
+    protected DamageTypeStateEvent.DamageTypeStateMergePatched newDamageTypeStateMergePatched(Long version, String commandId, String requesterId) {
+        DamageTypeStateEventId stateEventId = new DamageTypeStateEventId(this.state.getDamageTypeId(), version);
         DamageTypeStateEvent.DamageTypeStateMergePatched e = newDamageTypeStateMergePatched(stateEventId);
         ((AbstractDamageTypeStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -114,8 +114,8 @@ public abstract class AbstractDamageTypeAggregate extends AbstractAggregate impl
         return e;
     }
 
-    protected DamageTypeStateEvent.DamageTypeStateDeleted newDamageTypeStateDeleted(String commandId, String requesterId) {
-        DamageTypeStateEventId stateEventId = new DamageTypeStateEventId(this.state.getDamageTypeId(), this.state.getVersion());
+    protected DamageTypeStateEvent.DamageTypeStateDeleted newDamageTypeStateDeleted(Long version, String commandId, String requesterId) {
+        DamageTypeStateEventId stateEventId = new DamageTypeStateEventId(this.state.getDamageTypeId(), version);
         DamageTypeStateEvent.DamageTypeStateDeleted e = newDamageTypeStateDeleted(stateEventId);
         ((AbstractDamageTypeStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

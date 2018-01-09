@@ -17,15 +17,15 @@ public interface InOutAggregate
 
     void mergePatch(InOutCommand.MergePatchInOut c);
 
-    void complete(String commandId, String requesterId);
+    void complete(Long version, String commandId, String requesterId);
 
-    void close(String commandId, String requesterId);
+    void close(Long version, String commandId, String requesterId);
 
-    void _void(String commandId, String requesterId);
+    void _void(Long version, String commandId, String requesterId);
 
-    void reverse(String commandId, String requesterId);
+    void reverse(Long version, String commandId, String requesterId);
 
-    void documentAction(String value, String commandId, String requesterId);
+    void documentAction(String value, Long version, String commandId, String requesterId);
 
     void throwOnInvalidStateTransition(Command c);
 }

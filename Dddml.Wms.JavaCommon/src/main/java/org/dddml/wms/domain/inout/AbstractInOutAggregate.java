@@ -294,8 +294,8 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
 
     ////////////////////////
 
-    protected InOutStateEvent.InOutStateCreated newInOutStateCreated(String commandId, String requesterId) {
-        InOutStateEventId stateEventId = new InOutStateEventId(this.state.getDocumentNumber(), this.state.getVersion());
+    protected InOutStateEvent.InOutStateCreated newInOutStateCreated(Long version, String commandId, String requesterId) {
+        InOutStateEventId stateEventId = new InOutStateEventId(this.state.getDocumentNumber(), version);
         InOutStateEvent.InOutStateCreated e = newInOutStateCreated(stateEventId);
         ((AbstractInOutStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -303,8 +303,8 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         return e;
     }
 
-    protected InOutStateEvent.InOutStateMergePatched newInOutStateMergePatched(String commandId, String requesterId) {
-        InOutStateEventId stateEventId = new InOutStateEventId(this.state.getDocumentNumber(), this.state.getVersion());
+    protected InOutStateEvent.InOutStateMergePatched newInOutStateMergePatched(Long version, String commandId, String requesterId) {
+        InOutStateEventId stateEventId = new InOutStateEventId(this.state.getDocumentNumber(), version);
         InOutStateEvent.InOutStateMergePatched e = newInOutStateMergePatched(stateEventId);
         ((AbstractInOutStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -384,28 +384,28 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         }
 
         @Override
-        public void complete(String commandId, String requesterId) {
+        public void complete(Long version, String commandId, String requesterId) {
             throw new UnsupportedOperationException();
         }
 
         @Override
-        public void close(String commandId, String requesterId) {
+        public void close(Long version, String commandId, String requesterId) {
             throw new UnsupportedOperationException();
         }
 
         @Override
-        public void _void(String commandId, String requesterId) {
+        public void _void(Long version, String commandId, String requesterId) {
             throw new UnsupportedOperationException();
         }
 
         @Override
-        public void reverse(String commandId, String requesterId) {
+        public void reverse(Long version, String commandId, String requesterId) {
             throw new UnsupportedOperationException();
         }
 
         @Override
-        public void documentAction(String value, String commandId, String requesterId) {
-            InOutStateEvent.InOutStateMergePatched e = newInOutStateMergePatched(commandId, requesterId);
+        public void documentAction(String value, Long version, String commandId, String requesterId) {
+            InOutStateEvent.InOutStateMergePatched e = newInOutStateMergePatched(version, commandId, requesterId);
             // ////////////////////////////
             PropertyCommandHandler<String, String> pCommandHandler = this.getInOutDocumentActionCommandHandler();
             PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<>();

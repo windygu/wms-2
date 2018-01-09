@@ -90,8 +90,8 @@ public abstract class AbstractRejectionReasonAggregate extends AbstractAggregate
 
     ////////////////////////
 
-    protected RejectionReasonStateEvent.RejectionReasonStateCreated newRejectionReasonStateCreated(String commandId, String requesterId) {
-        RejectionReasonStateEventId stateEventId = new RejectionReasonStateEventId(this.state.getRejectionReasonId(), this.state.getVersion());
+    protected RejectionReasonStateEvent.RejectionReasonStateCreated newRejectionReasonStateCreated(Long version, String commandId, String requesterId) {
+        RejectionReasonStateEventId stateEventId = new RejectionReasonStateEventId(this.state.getRejectionReasonId(), version);
         RejectionReasonStateEvent.RejectionReasonStateCreated e = newRejectionReasonStateCreated(stateEventId);
         ((AbstractRejectionReasonStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -99,8 +99,8 @@ public abstract class AbstractRejectionReasonAggregate extends AbstractAggregate
         return e;
     }
 
-    protected RejectionReasonStateEvent.RejectionReasonStateMergePatched newRejectionReasonStateMergePatched(String commandId, String requesterId) {
-        RejectionReasonStateEventId stateEventId = new RejectionReasonStateEventId(this.state.getRejectionReasonId(), this.state.getVersion());
+    protected RejectionReasonStateEvent.RejectionReasonStateMergePatched newRejectionReasonStateMergePatched(Long version, String commandId, String requesterId) {
+        RejectionReasonStateEventId stateEventId = new RejectionReasonStateEventId(this.state.getRejectionReasonId(), version);
         RejectionReasonStateEvent.RejectionReasonStateMergePatched e = newRejectionReasonStateMergePatched(stateEventId);
         ((AbstractRejectionReasonStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -108,8 +108,8 @@ public abstract class AbstractRejectionReasonAggregate extends AbstractAggregate
         return e;
     }
 
-    protected RejectionReasonStateEvent.RejectionReasonStateDeleted newRejectionReasonStateDeleted(String commandId, String requesterId) {
-        RejectionReasonStateEventId stateEventId = new RejectionReasonStateEventId(this.state.getRejectionReasonId(), this.state.getVersion());
+    protected RejectionReasonStateEvent.RejectionReasonStateDeleted newRejectionReasonStateDeleted(Long version, String commandId, String requesterId) {
+        RejectionReasonStateEventId stateEventId = new RejectionReasonStateEventId(this.state.getRejectionReasonId(), version);
         RejectionReasonStateEvent.RejectionReasonStateDeleted e = newRejectionReasonStateDeleted(stateEventId);
         ((AbstractRejectionReasonStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

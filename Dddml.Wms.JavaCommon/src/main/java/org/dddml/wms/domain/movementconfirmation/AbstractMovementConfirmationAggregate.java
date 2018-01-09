@@ -231,8 +231,8 @@ public abstract class AbstractMovementConfirmationAggregate extends AbstractAggr
 
     ////////////////////////
 
-    protected MovementConfirmationStateEvent.MovementConfirmationStateCreated newMovementConfirmationStateCreated(String commandId, String requesterId) {
-        MovementConfirmationStateEventId stateEventId = new MovementConfirmationStateEventId(this.state.getDocumentNumber(), this.state.getVersion());
+    protected MovementConfirmationStateEvent.MovementConfirmationStateCreated newMovementConfirmationStateCreated(Long version, String commandId, String requesterId) {
+        MovementConfirmationStateEventId stateEventId = new MovementConfirmationStateEventId(this.state.getDocumentNumber(), version);
         MovementConfirmationStateEvent.MovementConfirmationStateCreated e = newMovementConfirmationStateCreated(stateEventId);
         ((AbstractMovementConfirmationStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -240,8 +240,8 @@ public abstract class AbstractMovementConfirmationAggregate extends AbstractAggr
         return e;
     }
 
-    protected MovementConfirmationStateEvent.MovementConfirmationStateMergePatched newMovementConfirmationStateMergePatched(String commandId, String requesterId) {
-        MovementConfirmationStateEventId stateEventId = new MovementConfirmationStateEventId(this.state.getDocumentNumber(), this.state.getVersion());
+    protected MovementConfirmationStateEvent.MovementConfirmationStateMergePatched newMovementConfirmationStateMergePatched(Long version, String commandId, String requesterId) {
+        MovementConfirmationStateEventId stateEventId = new MovementConfirmationStateEventId(this.state.getDocumentNumber(), version);
         MovementConfirmationStateEvent.MovementConfirmationStateMergePatched e = newMovementConfirmationStateMergePatched(stateEventId);
         ((AbstractMovementConfirmationStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -249,8 +249,8 @@ public abstract class AbstractMovementConfirmationAggregate extends AbstractAggr
         return e;
     }
 
-    protected MovementConfirmationStateEvent.MovementConfirmationStateDeleted newMovementConfirmationStateDeleted(String commandId, String requesterId) {
-        MovementConfirmationStateEventId stateEventId = new MovementConfirmationStateEventId(this.state.getDocumentNumber(), this.state.getVersion());
+    protected MovementConfirmationStateEvent.MovementConfirmationStateDeleted newMovementConfirmationStateDeleted(Long version, String commandId, String requesterId) {
+        MovementConfirmationStateEventId stateEventId = new MovementConfirmationStateEventId(this.state.getDocumentNumber(), version);
         MovementConfirmationStateEvent.MovementConfirmationStateDeleted e = newMovementConfirmationStateDeleted(stateEventId);
         ((AbstractMovementConfirmationStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -308,8 +308,8 @@ public abstract class AbstractMovementConfirmationAggregate extends AbstractAggr
         }
 
         @Override
-        public void documentAction(String value, String commandId, String requesterId) {
-            MovementConfirmationStateEvent.MovementConfirmationStateMergePatched e = newMovementConfirmationStateMergePatched(commandId, requesterId);
+        public void documentAction(String value, Long version, String commandId, String requesterId) {
+            MovementConfirmationStateEvent.MovementConfirmationStateMergePatched e = newMovementConfirmationStateMergePatched(version, commandId, requesterId);
             // ////////////////////////////
             PropertyCommandHandler<String, String> pCommandHandler = this.getMovementConfirmationDocumentActionCommandHandler();
             PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<>();

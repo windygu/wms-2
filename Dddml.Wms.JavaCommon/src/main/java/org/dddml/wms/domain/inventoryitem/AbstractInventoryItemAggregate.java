@@ -170,8 +170,8 @@ public abstract class AbstractInventoryItemAggregate extends AbstractAggregate i
 
     ////////////////////////
 
-    protected InventoryItemStateEvent.InventoryItemStateCreated newInventoryItemStateCreated(String commandId, String requesterId) {
-        InventoryItemStateEventId stateEventId = new InventoryItemStateEventId(this.state.getInventoryItemId(), this.state.getVersion());
+    protected InventoryItemStateEvent.InventoryItemStateCreated newInventoryItemStateCreated(Long version, String commandId, String requesterId) {
+        InventoryItemStateEventId stateEventId = new InventoryItemStateEventId(this.state.getInventoryItemId(), version);
         InventoryItemStateEvent.InventoryItemStateCreated e = newInventoryItemStateCreated(stateEventId);
         ((AbstractInventoryItemStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -179,8 +179,8 @@ public abstract class AbstractInventoryItemAggregate extends AbstractAggregate i
         return e;
     }
 
-    protected InventoryItemStateEvent.InventoryItemStateMergePatched newInventoryItemStateMergePatched(String commandId, String requesterId) {
-        InventoryItemStateEventId stateEventId = new InventoryItemStateEventId(this.state.getInventoryItemId(), this.state.getVersion());
+    protected InventoryItemStateEvent.InventoryItemStateMergePatched newInventoryItemStateMergePatched(Long version, String commandId, String requesterId) {
+        InventoryItemStateEventId stateEventId = new InventoryItemStateEventId(this.state.getInventoryItemId(), version);
         InventoryItemStateEvent.InventoryItemStateMergePatched e = newInventoryItemStateMergePatched(stateEventId);
         ((AbstractInventoryItemStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

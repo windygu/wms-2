@@ -72,8 +72,8 @@ public abstract class AbstractInventoryPRTriggeredAggregate extends AbstractAggr
 
     ////////////////////////
 
-    protected InventoryPRTriggeredStateEvent.InventoryPRTriggeredStateCreated newInventoryPRTriggeredStateCreated(String commandId, String requesterId) {
-        InventoryPRTriggeredStateEventId stateEventId = new InventoryPRTriggeredStateEventId(this.state.getInventoryPRTriggeredId(), this.state.getVersion());
+    protected InventoryPRTriggeredStateEvent.InventoryPRTriggeredStateCreated newInventoryPRTriggeredStateCreated(Long version, String commandId, String requesterId) {
+        InventoryPRTriggeredStateEventId stateEventId = new InventoryPRTriggeredStateEventId(this.state.getInventoryPRTriggeredId(), version);
         InventoryPRTriggeredStateEvent.InventoryPRTriggeredStateCreated e = newInventoryPRTriggeredStateCreated(stateEventId);
         ((AbstractInventoryPRTriggeredStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -81,8 +81,8 @@ public abstract class AbstractInventoryPRTriggeredAggregate extends AbstractAggr
         return e;
     }
 
-    protected InventoryPRTriggeredStateEvent.InventoryPRTriggeredStateMergePatched newInventoryPRTriggeredStateMergePatched(String commandId, String requesterId) {
-        InventoryPRTriggeredStateEventId stateEventId = new InventoryPRTriggeredStateEventId(this.state.getInventoryPRTriggeredId(), this.state.getVersion());
+    protected InventoryPRTriggeredStateEvent.InventoryPRTriggeredStateMergePatched newInventoryPRTriggeredStateMergePatched(Long version, String commandId, String requesterId) {
+        InventoryPRTriggeredStateEventId stateEventId = new InventoryPRTriggeredStateEventId(this.state.getInventoryPRTriggeredId(), version);
         InventoryPRTriggeredStateEvent.InventoryPRTriggeredStateMergePatched e = newInventoryPRTriggeredStateMergePatched(stateEventId);
         ((AbstractInventoryPRTriggeredStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

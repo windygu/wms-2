@@ -75,8 +75,8 @@ public abstract class AbstractOrderShipmentAggregate extends AbstractAggregate i
 
     ////////////////////////
 
-    protected OrderShipmentStateEvent.OrderShipmentStateCreated newOrderShipmentStateCreated(String commandId, String requesterId) {
-        OrderShipmentStateEventId stateEventId = new OrderShipmentStateEventId(this.state.getOrderShipmentId(), this.state.getVersion());
+    protected OrderShipmentStateEvent.OrderShipmentStateCreated newOrderShipmentStateCreated(Long version, String commandId, String requesterId) {
+        OrderShipmentStateEventId stateEventId = new OrderShipmentStateEventId(this.state.getOrderShipmentId(), version);
         OrderShipmentStateEvent.OrderShipmentStateCreated e = newOrderShipmentStateCreated(stateEventId);
         ((AbstractOrderShipmentStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -84,8 +84,8 @@ public abstract class AbstractOrderShipmentAggregate extends AbstractAggregate i
         return e;
     }
 
-    protected OrderShipmentStateEvent.OrderShipmentStateMergePatched newOrderShipmentStateMergePatched(String commandId, String requesterId) {
-        OrderShipmentStateEventId stateEventId = new OrderShipmentStateEventId(this.state.getOrderShipmentId(), this.state.getVersion());
+    protected OrderShipmentStateEvent.OrderShipmentStateMergePatched newOrderShipmentStateMergePatched(Long version, String commandId, String requesterId) {
+        OrderShipmentStateEventId stateEventId = new OrderShipmentStateEventId(this.state.getOrderShipmentId(), version);
         OrderShipmentStateEvent.OrderShipmentStateMergePatched e = newOrderShipmentStateMergePatched(stateEventId);
         ((AbstractOrderShipmentStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

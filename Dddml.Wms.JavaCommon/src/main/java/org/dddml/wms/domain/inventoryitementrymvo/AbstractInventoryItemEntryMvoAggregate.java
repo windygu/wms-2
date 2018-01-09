@@ -119,8 +119,8 @@ public abstract class AbstractInventoryItemEntryMvoAggregate extends AbstractAgg
 
     ////////////////////////
 
-    protected InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateCreated newInventoryItemEntryMvoStateCreated(String commandId, String requesterId) {
-        InventoryItemEntryMvoStateEventId stateEventId = new InventoryItemEntryMvoStateEventId(this.state.getInventoryItemEntryId(), this.state.getInventoryItemVersion());
+    protected InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateCreated newInventoryItemEntryMvoStateCreated(Long version, String commandId, String requesterId) {
+        InventoryItemEntryMvoStateEventId stateEventId = new InventoryItemEntryMvoStateEventId(this.state.getInventoryItemEntryId(), version);
         InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateCreated e = newInventoryItemEntryMvoStateCreated(stateEventId);
         ((AbstractInventoryItemEntryMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -128,8 +128,8 @@ public abstract class AbstractInventoryItemEntryMvoAggregate extends AbstractAgg
         return e;
     }
 
-    protected InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateMergePatched newInventoryItemEntryMvoStateMergePatched(String commandId, String requesterId) {
-        InventoryItemEntryMvoStateEventId stateEventId = new InventoryItemEntryMvoStateEventId(this.state.getInventoryItemEntryId(), this.state.getInventoryItemVersion());
+    protected InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateMergePatched newInventoryItemEntryMvoStateMergePatched(Long version, String commandId, String requesterId) {
+        InventoryItemEntryMvoStateEventId stateEventId = new InventoryItemEntryMvoStateEventId(this.state.getInventoryItemEntryId(), version);
         InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateMergePatched e = newInventoryItemEntryMvoStateMergePatched(stateEventId);
         ((AbstractInventoryItemEntryMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

@@ -84,8 +84,8 @@ public abstract class AbstractStatusItemAggregate extends AbstractAggregate impl
 
     ////////////////////////
 
-    protected StatusItemStateEvent.StatusItemStateCreated newStatusItemStateCreated(String commandId, String requesterId) {
-        StatusItemStateEventId stateEventId = new StatusItemStateEventId(this.state.getStatusId(), this.state.getVersion());
+    protected StatusItemStateEvent.StatusItemStateCreated newStatusItemStateCreated(Long version, String commandId, String requesterId) {
+        StatusItemStateEventId stateEventId = new StatusItemStateEventId(this.state.getStatusId(), version);
         StatusItemStateEvent.StatusItemStateCreated e = newStatusItemStateCreated(stateEventId);
         ((AbstractStatusItemStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -93,8 +93,8 @@ public abstract class AbstractStatusItemAggregate extends AbstractAggregate impl
         return e;
     }
 
-    protected StatusItemStateEvent.StatusItemStateMergePatched newStatusItemStateMergePatched(String commandId, String requesterId) {
-        StatusItemStateEventId stateEventId = new StatusItemStateEventId(this.state.getStatusId(), this.state.getVersion());
+    protected StatusItemStateEvent.StatusItemStateMergePatched newStatusItemStateMergePatched(Long version, String commandId, String requesterId) {
+        StatusItemStateEventId stateEventId = new StatusItemStateEventId(this.state.getStatusId(), version);
         StatusItemStateEvent.StatusItemStateMergePatched e = newStatusItemStateMergePatched(stateEventId);
         ((AbstractStatusItemStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

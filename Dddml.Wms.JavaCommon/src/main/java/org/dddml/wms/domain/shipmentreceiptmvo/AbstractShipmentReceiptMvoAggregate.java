@@ -199,8 +199,8 @@ public abstract class AbstractShipmentReceiptMvoAggregate extends AbstractAggreg
 
     ////////////////////////
 
-    protected ShipmentReceiptMvoStateEvent.ShipmentReceiptMvoStateCreated newShipmentReceiptMvoStateCreated(String commandId, String requesterId) {
-        ShipmentReceiptMvoStateEventId stateEventId = new ShipmentReceiptMvoStateEventId(this.state.getShipmentReceiptId(), this.state.getShipmentVersion());
+    protected ShipmentReceiptMvoStateEvent.ShipmentReceiptMvoStateCreated newShipmentReceiptMvoStateCreated(Long version, String commandId, String requesterId) {
+        ShipmentReceiptMvoStateEventId stateEventId = new ShipmentReceiptMvoStateEventId(this.state.getShipmentReceiptId(), version);
         ShipmentReceiptMvoStateEvent.ShipmentReceiptMvoStateCreated e = newShipmentReceiptMvoStateCreated(stateEventId);
         ((AbstractShipmentReceiptMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -208,8 +208,8 @@ public abstract class AbstractShipmentReceiptMvoAggregate extends AbstractAggreg
         return e;
     }
 
-    protected ShipmentReceiptMvoStateEvent.ShipmentReceiptMvoStateMergePatched newShipmentReceiptMvoStateMergePatched(String commandId, String requesterId) {
-        ShipmentReceiptMvoStateEventId stateEventId = new ShipmentReceiptMvoStateEventId(this.state.getShipmentReceiptId(), this.state.getShipmentVersion());
+    protected ShipmentReceiptMvoStateEvent.ShipmentReceiptMvoStateMergePatched newShipmentReceiptMvoStateMergePatched(Long version, String commandId, String requesterId) {
+        ShipmentReceiptMvoStateEventId stateEventId = new ShipmentReceiptMvoStateEventId(this.state.getShipmentReceiptId(), version);
         ShipmentReceiptMvoStateEvent.ShipmentReceiptMvoStateMergePatched e = newShipmentReceiptMvoStateMergePatched(stateEventId);
         ((AbstractShipmentReceiptMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

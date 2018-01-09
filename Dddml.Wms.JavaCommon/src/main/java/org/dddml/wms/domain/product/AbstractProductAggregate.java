@@ -252,8 +252,8 @@ public abstract class AbstractProductAggregate extends AbstractAggregate impleme
 
     ////////////////////////
 
-    protected ProductStateEvent.ProductStateCreated newProductStateCreated(String commandId, String requesterId) {
-        ProductStateEventId stateEventId = new ProductStateEventId(this.state.getProductId(), this.state.getVersion());
+    protected ProductStateEvent.ProductStateCreated newProductStateCreated(Long version, String commandId, String requesterId) {
+        ProductStateEventId stateEventId = new ProductStateEventId(this.state.getProductId(), version);
         ProductStateEvent.ProductStateCreated e = newProductStateCreated(stateEventId);
         ((AbstractProductStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -261,8 +261,8 @@ public abstract class AbstractProductAggregate extends AbstractAggregate impleme
         return e;
     }
 
-    protected ProductStateEvent.ProductStateMergePatched newProductStateMergePatched(String commandId, String requesterId) {
-        ProductStateEventId stateEventId = new ProductStateEventId(this.state.getProductId(), this.state.getVersion());
+    protected ProductStateEvent.ProductStateMergePatched newProductStateMergePatched(Long version, String commandId, String requesterId) {
+        ProductStateEventId stateEventId = new ProductStateEventId(this.state.getProductId(), version);
         ProductStateEvent.ProductStateMergePatched e = newProductStateMergePatched(stateEventId);
         ((AbstractProductStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

@@ -208,8 +208,8 @@ public abstract class AbstractAttributeSetAggregate extends AbstractAggregate im
 
     ////////////////////////
 
-    protected AttributeSetStateEvent.AttributeSetStateCreated newAttributeSetStateCreated(String commandId, String requesterId) {
-        AttributeSetStateEventId stateEventId = new AttributeSetStateEventId(this.state.getAttributeSetId(), this.state.getVersion());
+    protected AttributeSetStateEvent.AttributeSetStateCreated newAttributeSetStateCreated(Long version, String commandId, String requesterId) {
+        AttributeSetStateEventId stateEventId = new AttributeSetStateEventId(this.state.getAttributeSetId(), version);
         AttributeSetStateEvent.AttributeSetStateCreated e = newAttributeSetStateCreated(stateEventId);
         ((AbstractAttributeSetStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -217,8 +217,8 @@ public abstract class AbstractAttributeSetAggregate extends AbstractAggregate im
         return e;
     }
 
-    protected AttributeSetStateEvent.AttributeSetStateMergePatched newAttributeSetStateMergePatched(String commandId, String requesterId) {
-        AttributeSetStateEventId stateEventId = new AttributeSetStateEventId(this.state.getAttributeSetId(), this.state.getVersion());
+    protected AttributeSetStateEvent.AttributeSetStateMergePatched newAttributeSetStateMergePatched(Long version, String commandId, String requesterId) {
+        AttributeSetStateEventId stateEventId = new AttributeSetStateEventId(this.state.getAttributeSetId(), version);
         AttributeSetStateEvent.AttributeSetStateMergePatched e = newAttributeSetStateMergePatched(stateEventId);
         ((AbstractAttributeSetStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -226,8 +226,8 @@ public abstract class AbstractAttributeSetAggregate extends AbstractAggregate im
         return e;
     }
 
-    protected AttributeSetStateEvent.AttributeSetStateDeleted newAttributeSetStateDeleted(String commandId, String requesterId) {
-        AttributeSetStateEventId stateEventId = new AttributeSetStateEventId(this.state.getAttributeSetId(), this.state.getVersion());
+    protected AttributeSetStateEvent.AttributeSetStateDeleted newAttributeSetStateDeleted(Long version, String commandId, String requesterId) {
+        AttributeSetStateEventId stateEventId = new AttributeSetStateEventId(this.state.getAttributeSetId(), version);
         AttributeSetStateEvent.AttributeSetStateDeleted e = newAttributeSetStateDeleted(stateEventId);
         ((AbstractAttributeSetStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

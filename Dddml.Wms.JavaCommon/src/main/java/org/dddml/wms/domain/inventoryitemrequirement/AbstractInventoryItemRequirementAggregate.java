@@ -144,8 +144,8 @@ public abstract class AbstractInventoryItemRequirementAggregate extends Abstract
 
     ////////////////////////
 
-    protected InventoryItemRequirementStateEvent.InventoryItemRequirementStateCreated newInventoryItemRequirementStateCreated(String commandId, String requesterId) {
-        InventoryItemRequirementStateEventId stateEventId = new InventoryItemRequirementStateEventId(this.state.getInventoryItemRequirementId(), this.state.getVersion());
+    protected InventoryItemRequirementStateEvent.InventoryItemRequirementStateCreated newInventoryItemRequirementStateCreated(Long version, String commandId, String requesterId) {
+        InventoryItemRequirementStateEventId stateEventId = new InventoryItemRequirementStateEventId(this.state.getInventoryItemRequirementId(), version);
         InventoryItemRequirementStateEvent.InventoryItemRequirementStateCreated e = newInventoryItemRequirementStateCreated(stateEventId);
         ((AbstractInventoryItemRequirementStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -153,8 +153,8 @@ public abstract class AbstractInventoryItemRequirementAggregate extends Abstract
         return e;
     }
 
-    protected InventoryItemRequirementStateEvent.InventoryItemRequirementStateMergePatched newInventoryItemRequirementStateMergePatched(String commandId, String requesterId) {
-        InventoryItemRequirementStateEventId stateEventId = new InventoryItemRequirementStateEventId(this.state.getInventoryItemRequirementId(), this.state.getVersion());
+    protected InventoryItemRequirementStateEvent.InventoryItemRequirementStateMergePatched newInventoryItemRequirementStateMergePatched(Long version, String commandId, String requesterId) {
+        InventoryItemRequirementStateEventId stateEventId = new InventoryItemRequirementStateEventId(this.state.getInventoryItemRequirementId(), version);
         InventoryItemRequirementStateEvent.InventoryItemRequirementStateMergePatched e = newInventoryItemRequirementStateMergePatched(stateEventId);
         ((AbstractInventoryItemRequirementStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

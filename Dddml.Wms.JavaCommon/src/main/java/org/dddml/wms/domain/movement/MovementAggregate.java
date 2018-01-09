@@ -19,7 +19,7 @@ public interface MovementAggregate
 
     void delete(MovementCommand.DeleteMovement c);
 
-    void documentAction(String value, String commandId, String requesterId);
+    void documentAction(String value, Long version, String commandId, String requesterId);
 
     void throwOnInvalidStateTransition(Command c);
 }

@@ -59,7 +59,7 @@ public abstract class AbstractMovementApplicationService implements MovementAppl
     }
 
     public void when(MovementCommands.DocumentAction c) {
-        update(c, ar -> ar.documentAction(c.getValue(), c.getCommandId(), c.getRequesterId()));
+        update(c, ar -> ar.documentAction(c.getValue(), c.getVersion(), c.getCommandId(), c.getRequesterId()));
     }
 
     public MovementState get(String id) {

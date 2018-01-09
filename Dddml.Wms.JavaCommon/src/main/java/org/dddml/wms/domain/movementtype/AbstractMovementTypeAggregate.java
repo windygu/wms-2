@@ -90,8 +90,8 @@ public abstract class AbstractMovementTypeAggregate extends AbstractAggregate im
 
     ////////////////////////
 
-    protected MovementTypeStateEvent.MovementTypeStateCreated newMovementTypeStateCreated(String commandId, String requesterId) {
-        MovementTypeStateEventId stateEventId = new MovementTypeStateEventId(this.state.getMovementTypeId(), this.state.getVersion());
+    protected MovementTypeStateEvent.MovementTypeStateCreated newMovementTypeStateCreated(Long version, String commandId, String requesterId) {
+        MovementTypeStateEventId stateEventId = new MovementTypeStateEventId(this.state.getMovementTypeId(), version);
         MovementTypeStateEvent.MovementTypeStateCreated e = newMovementTypeStateCreated(stateEventId);
         ((AbstractMovementTypeStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -99,8 +99,8 @@ public abstract class AbstractMovementTypeAggregate extends AbstractAggregate im
         return e;
     }
 
-    protected MovementTypeStateEvent.MovementTypeStateMergePatched newMovementTypeStateMergePatched(String commandId, String requesterId) {
-        MovementTypeStateEventId stateEventId = new MovementTypeStateEventId(this.state.getMovementTypeId(), this.state.getVersion());
+    protected MovementTypeStateEvent.MovementTypeStateMergePatched newMovementTypeStateMergePatched(Long version, String commandId, String requesterId) {
+        MovementTypeStateEventId stateEventId = new MovementTypeStateEventId(this.state.getMovementTypeId(), version);
         MovementTypeStateEvent.MovementTypeStateMergePatched e = newMovementTypeStateMergePatched(stateEventId);
         ((AbstractMovementTypeStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -108,8 +108,8 @@ public abstract class AbstractMovementTypeAggregate extends AbstractAggregate im
         return e;
     }
 
-    protected MovementTypeStateEvent.MovementTypeStateDeleted newMovementTypeStateDeleted(String commandId, String requesterId) {
-        MovementTypeStateEventId stateEventId = new MovementTypeStateEventId(this.state.getMovementTypeId(), this.state.getVersion());
+    protected MovementTypeStateEvent.MovementTypeStateDeleted newMovementTypeStateDeleted(Long version, String commandId, String requesterId) {
+        MovementTypeStateEventId stateEventId = new MovementTypeStateEventId(this.state.getMovementTypeId(), version);
         MovementTypeStateEvent.MovementTypeStateDeleted e = newMovementTypeStateDeleted(stateEventId);
         ((AbstractMovementTypeStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

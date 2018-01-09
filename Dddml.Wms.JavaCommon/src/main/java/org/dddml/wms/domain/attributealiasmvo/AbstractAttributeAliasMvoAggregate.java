@@ -139,8 +139,8 @@ public abstract class AbstractAttributeAliasMvoAggregate extends AbstractAggrega
 
     ////////////////////////
 
-    protected AttributeAliasMvoStateEvent.AttributeAliasMvoStateCreated newAttributeAliasMvoStateCreated(String commandId, String requesterId) {
-        AttributeAliasMvoStateEventId stateEventId = new AttributeAliasMvoStateEventId(this.state.getAttributeAliasId(), this.state.getAttributeVersion());
+    protected AttributeAliasMvoStateEvent.AttributeAliasMvoStateCreated newAttributeAliasMvoStateCreated(Long version, String commandId, String requesterId) {
+        AttributeAliasMvoStateEventId stateEventId = new AttributeAliasMvoStateEventId(this.state.getAttributeAliasId(), version);
         AttributeAliasMvoStateEvent.AttributeAliasMvoStateCreated e = newAttributeAliasMvoStateCreated(stateEventId);
         ((AbstractAttributeAliasMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -148,8 +148,8 @@ public abstract class AbstractAttributeAliasMvoAggregate extends AbstractAggrega
         return e;
     }
 
-    protected AttributeAliasMvoStateEvent.AttributeAliasMvoStateMergePatched newAttributeAliasMvoStateMergePatched(String commandId, String requesterId) {
-        AttributeAliasMvoStateEventId stateEventId = new AttributeAliasMvoStateEventId(this.state.getAttributeAliasId(), this.state.getAttributeVersion());
+    protected AttributeAliasMvoStateEvent.AttributeAliasMvoStateMergePatched newAttributeAliasMvoStateMergePatched(Long version, String commandId, String requesterId) {
+        AttributeAliasMvoStateEventId stateEventId = new AttributeAliasMvoStateEventId(this.state.getAttributeAliasId(), version);
         AttributeAliasMvoStateEvent.AttributeAliasMvoStateMergePatched e = newAttributeAliasMvoStateMergePatched(stateEventId);
         ((AbstractAttributeAliasMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -157,8 +157,8 @@ public abstract class AbstractAttributeAliasMvoAggregate extends AbstractAggrega
         return e;
     }
 
-    protected AttributeAliasMvoStateEvent.AttributeAliasMvoStateDeleted newAttributeAliasMvoStateDeleted(String commandId, String requesterId) {
-        AttributeAliasMvoStateEventId stateEventId = new AttributeAliasMvoStateEventId(this.state.getAttributeAliasId(), this.state.getAttributeVersion());
+    protected AttributeAliasMvoStateEvent.AttributeAliasMvoStateDeleted newAttributeAliasMvoStateDeleted(Long version, String commandId, String requesterId) {
+        AttributeAliasMvoStateEventId stateEventId = new AttributeAliasMvoStateEventId(this.state.getAttributeAliasId(), version);
         AttributeAliasMvoStateEvent.AttributeAliasMvoStateDeleted e = newAttributeAliasMvoStateDeleted(stateEventId);
         ((AbstractAttributeAliasMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

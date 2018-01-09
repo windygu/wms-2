@@ -267,8 +267,8 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
 
     ////////////////////////
 
-    protected MovementStateEvent.MovementStateCreated newMovementStateCreated(String commandId, String requesterId) {
-        MovementStateEventId stateEventId = new MovementStateEventId(this.state.getDocumentNumber(), this.state.getVersion());
+    protected MovementStateEvent.MovementStateCreated newMovementStateCreated(Long version, String commandId, String requesterId) {
+        MovementStateEventId stateEventId = new MovementStateEventId(this.state.getDocumentNumber(), version);
         MovementStateEvent.MovementStateCreated e = newMovementStateCreated(stateEventId);
         ((AbstractMovementStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -276,8 +276,8 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
         return e;
     }
 
-    protected MovementStateEvent.MovementStateMergePatched newMovementStateMergePatched(String commandId, String requesterId) {
-        MovementStateEventId stateEventId = new MovementStateEventId(this.state.getDocumentNumber(), this.state.getVersion());
+    protected MovementStateEvent.MovementStateMergePatched newMovementStateMergePatched(Long version, String commandId, String requesterId) {
+        MovementStateEventId stateEventId = new MovementStateEventId(this.state.getDocumentNumber(), version);
         MovementStateEvent.MovementStateMergePatched e = newMovementStateMergePatched(stateEventId);
         ((AbstractMovementStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -285,8 +285,8 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
         return e;
     }
 
-    protected MovementStateEvent.MovementStateDeleted newMovementStateDeleted(String commandId, String requesterId) {
-        MovementStateEventId stateEventId = new MovementStateEventId(this.state.getDocumentNumber(), this.state.getVersion());
+    protected MovementStateEvent.MovementStateDeleted newMovementStateDeleted(Long version, String commandId, String requesterId) {
+        MovementStateEventId stateEventId = new MovementStateEventId(this.state.getDocumentNumber(), version);
         MovementStateEvent.MovementStateDeleted e = newMovementStateDeleted(stateEventId);
         ((AbstractMovementStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -344,8 +344,8 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
         }
 
         @Override
-        public void documentAction(String value, String commandId, String requesterId) {
-            MovementStateEvent.MovementStateMergePatched e = newMovementStateMergePatched(commandId, requesterId);
+        public void documentAction(String value, Long version, String commandId, String requesterId) {
+            MovementStateEvent.MovementStateMergePatched e = newMovementStateMergePatched(version, commandId, requesterId);
             // ////////////////////////////
             PropertyCommandHandler<String, String> pCommandHandler = this.getMovementDocumentActionCommandHandler();
             PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<>();

@@ -55,23 +55,23 @@ public abstract class AbstractInOutApplicationService implements InOutApplicatio
     }
 
     public void when(InOutCommands.Complete c) {
-        update(c, ar -> ar.complete(c.getCommandId(), c.getRequesterId()));
+        update(c, ar -> ar.complete(c.getVersion(), c.getCommandId(), c.getRequesterId()));
     }
 
     public void when(InOutCommands.Close c) {
-        update(c, ar -> ar.close(c.getCommandId(), c.getRequesterId()));
+        update(c, ar -> ar.close(c.getVersion(), c.getCommandId(), c.getRequesterId()));
     }
 
     public void when(InOutCommands.Void c) {
-        update(c, ar -> ar._void(c.getCommandId(), c.getRequesterId()));
+        update(c, ar -> ar._void(c.getVersion(), c.getCommandId(), c.getRequesterId()));
     }
 
     public void when(InOutCommands.Reverse c) {
-        update(c, ar -> ar.reverse(c.getCommandId(), c.getRequesterId()));
+        update(c, ar -> ar.reverse(c.getVersion(), c.getCommandId(), c.getRequesterId()));
     }
 
     public void when(InOutCommands.DocumentAction c) {
-        update(c, ar -> ar.documentAction(c.getValue(), c.getCommandId(), c.getRequesterId()));
+        update(c, ar -> ar.documentAction(c.getValue(), c.getVersion(), c.getCommandId(), c.getRequesterId()));
     }
 
     public InOutState get(String id) {

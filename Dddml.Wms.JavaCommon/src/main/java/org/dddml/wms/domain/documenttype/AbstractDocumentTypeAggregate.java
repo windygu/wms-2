@@ -93,8 +93,8 @@ public abstract class AbstractDocumentTypeAggregate extends AbstractAggregate im
 
     ////////////////////////
 
-    protected DocumentTypeStateEvent.DocumentTypeStateCreated newDocumentTypeStateCreated(String commandId, String requesterId) {
-        DocumentTypeStateEventId stateEventId = new DocumentTypeStateEventId(this.state.getDocumentTypeId(), this.state.getVersion());
+    protected DocumentTypeStateEvent.DocumentTypeStateCreated newDocumentTypeStateCreated(Long version, String commandId, String requesterId) {
+        DocumentTypeStateEventId stateEventId = new DocumentTypeStateEventId(this.state.getDocumentTypeId(), version);
         DocumentTypeStateEvent.DocumentTypeStateCreated e = newDocumentTypeStateCreated(stateEventId);
         ((AbstractDocumentTypeStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -102,8 +102,8 @@ public abstract class AbstractDocumentTypeAggregate extends AbstractAggregate im
         return e;
     }
 
-    protected DocumentTypeStateEvent.DocumentTypeStateMergePatched newDocumentTypeStateMergePatched(String commandId, String requesterId) {
-        DocumentTypeStateEventId stateEventId = new DocumentTypeStateEventId(this.state.getDocumentTypeId(), this.state.getVersion());
+    protected DocumentTypeStateEvent.DocumentTypeStateMergePatched newDocumentTypeStateMergePatched(Long version, String commandId, String requesterId) {
+        DocumentTypeStateEventId stateEventId = new DocumentTypeStateEventId(this.state.getDocumentTypeId(), version);
         DocumentTypeStateEvent.DocumentTypeStateMergePatched e = newDocumentTypeStateMergePatched(stateEventId);
         ((AbstractDocumentTypeStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -111,8 +111,8 @@ public abstract class AbstractDocumentTypeAggregate extends AbstractAggregate im
         return e;
     }
 
-    protected DocumentTypeStateEvent.DocumentTypeStateDeleted newDocumentTypeStateDeleted(String commandId, String requesterId) {
-        DocumentTypeStateEventId stateEventId = new DocumentTypeStateEventId(this.state.getDocumentTypeId(), this.state.getVersion());
+    protected DocumentTypeStateEvent.DocumentTypeStateDeleted newDocumentTypeStateDeleted(Long version, String commandId, String requesterId) {
+        DocumentTypeStateEventId stateEventId = new DocumentTypeStateEventId(this.state.getDocumentTypeId(), version);
         DocumentTypeStateEvent.DocumentTypeStateDeleted e = newDocumentTypeStateDeleted(stateEventId);
         ((AbstractDocumentTypeStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

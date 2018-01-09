@@ -1066,7 +1066,7 @@ public abstract class AbstractShipmentItemMvoState implements ShipmentItemMvoSta
         if (eventVersion == null) {
             throw new NullPointerException("stateEvent.getStateEventId().getShipmentVersion() == null");
         }
-        if (!(stateVersion == null && eventVersion.equals(ShipmentItemMvoState.VERSION_NULL)) && !eventVersion.equals(stateVersion))
+        if (!(stateVersion == null && eventVersion.equals(ShipmentItemMvoState.VERSION_NULL)) && !(eventVersion.compareTo(stateVersion) >= 0))
         {
             throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
         }

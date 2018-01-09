@@ -230,8 +230,8 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
 
     ////////////////////////
 
-    protected InOutLineMvoStateEvent.InOutLineMvoStateCreated newInOutLineMvoStateCreated(String commandId, String requesterId) {
-        InOutLineMvoStateEventId stateEventId = new InOutLineMvoStateEventId(this.state.getInOutLineId(), this.state.getInOutVersion());
+    protected InOutLineMvoStateEvent.InOutLineMvoStateCreated newInOutLineMvoStateCreated(Long version, String commandId, String requesterId) {
+        InOutLineMvoStateEventId stateEventId = new InOutLineMvoStateEventId(this.state.getInOutLineId(), version);
         InOutLineMvoStateEvent.InOutLineMvoStateCreated e = newInOutLineMvoStateCreated(stateEventId);
         ((AbstractInOutLineMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -239,8 +239,8 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
         return e;
     }
 
-    protected InOutLineMvoStateEvent.InOutLineMvoStateMergePatched newInOutLineMvoStateMergePatched(String commandId, String requesterId) {
-        InOutLineMvoStateEventId stateEventId = new InOutLineMvoStateEventId(this.state.getInOutLineId(), this.state.getInOutVersion());
+    protected InOutLineMvoStateEvent.InOutLineMvoStateMergePatched newInOutLineMvoStateMergePatched(Long version, String commandId, String requesterId) {
+        InOutLineMvoStateEventId stateEventId = new InOutLineMvoStateEventId(this.state.getInOutLineId(), version);
         InOutLineMvoStateEvent.InOutLineMvoStateMergePatched e = newInOutLineMvoStateMergePatched(stateEventId);
         ((AbstractInOutLineMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -248,8 +248,8 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
         return e;
     }
 
-    protected InOutLineMvoStateEvent.InOutLineMvoStateDeleted newInOutLineMvoStateDeleted(String commandId, String requesterId) {
-        InOutLineMvoStateEventId stateEventId = new InOutLineMvoStateEventId(this.state.getInOutLineId(), this.state.getInOutVersion());
+    protected InOutLineMvoStateEvent.InOutLineMvoStateDeleted newInOutLineMvoStateDeleted(Long version, String commandId, String requesterId) {
+        InOutLineMvoStateEventId stateEventId = new InOutLineMvoStateEventId(this.state.getInOutLineId(), version);
         InOutLineMvoStateEvent.InOutLineMvoStateDeleted e = newInOutLineMvoStateDeleted(stateEventId);
         ((AbstractInOutLineMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

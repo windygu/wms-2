@@ -99,8 +99,8 @@ public abstract class AbstractUomConversionAggregate extends AbstractAggregate i
 
     ////////////////////////
 
-    protected UomConversionStateEvent.UomConversionStateCreated newUomConversionStateCreated(String commandId, String requesterId) {
-        UomConversionStateEventId stateEventId = new UomConversionStateEventId(this.state.getUomConversionId(), this.state.getVersion());
+    protected UomConversionStateEvent.UomConversionStateCreated newUomConversionStateCreated(Long version, String commandId, String requesterId) {
+        UomConversionStateEventId stateEventId = new UomConversionStateEventId(this.state.getUomConversionId(), version);
         UomConversionStateEvent.UomConversionStateCreated e = newUomConversionStateCreated(stateEventId);
         ((AbstractUomConversionStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -108,8 +108,8 @@ public abstract class AbstractUomConversionAggregate extends AbstractAggregate i
         return e;
     }
 
-    protected UomConversionStateEvent.UomConversionStateMergePatched newUomConversionStateMergePatched(String commandId, String requesterId) {
-        UomConversionStateEventId stateEventId = new UomConversionStateEventId(this.state.getUomConversionId(), this.state.getVersion());
+    protected UomConversionStateEvent.UomConversionStateMergePatched newUomConversionStateMergePatched(Long version, String commandId, String requesterId) {
+        UomConversionStateEventId stateEventId = new UomConversionStateEventId(this.state.getUomConversionId(), version);
         UomConversionStateEvent.UomConversionStateMergePatched e = newUomConversionStateMergePatched(stateEventId);
         ((AbstractUomConversionStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -117,8 +117,8 @@ public abstract class AbstractUomConversionAggregate extends AbstractAggregate i
         return e;
     }
 
-    protected UomConversionStateEvent.UomConversionStateDeleted newUomConversionStateDeleted(String commandId, String requesterId) {
-        UomConversionStateEventId stateEventId = new UomConversionStateEventId(this.state.getUomConversionId(), this.state.getVersion());
+    protected UomConversionStateEvent.UomConversionStateDeleted newUomConversionStateDeleted(Long version, String commandId, String requesterId) {
+        UomConversionStateEventId stateEventId = new UomConversionStateEventId(this.state.getUomConversionId(), version);
         UomConversionStateEvent.UomConversionStateDeleted e = newUomConversionStateDeleted(stateEventId);
         ((AbstractUomConversionStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

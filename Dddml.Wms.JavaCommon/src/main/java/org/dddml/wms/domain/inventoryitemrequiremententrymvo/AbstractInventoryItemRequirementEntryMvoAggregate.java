@@ -96,8 +96,8 @@ public abstract class AbstractInventoryItemRequirementEntryMvoAggregate extends 
 
     ////////////////////////
 
-    protected InventoryItemRequirementEntryMvoStateEvent.InventoryItemRequirementEntryMvoStateCreated newInventoryItemRequirementEntryMvoStateCreated(String commandId, String requesterId) {
-        InventoryItemRequirementEntryMvoStateEventId stateEventId = new InventoryItemRequirementEntryMvoStateEventId(this.state.getInventoryItemRequirementEntryId(), this.state.getInventoryItemRequirementVersion());
+    protected InventoryItemRequirementEntryMvoStateEvent.InventoryItemRequirementEntryMvoStateCreated newInventoryItemRequirementEntryMvoStateCreated(Long version, String commandId, String requesterId) {
+        InventoryItemRequirementEntryMvoStateEventId stateEventId = new InventoryItemRequirementEntryMvoStateEventId(this.state.getInventoryItemRequirementEntryId(), version);
         InventoryItemRequirementEntryMvoStateEvent.InventoryItemRequirementEntryMvoStateCreated e = newInventoryItemRequirementEntryMvoStateCreated(stateEventId);
         ((AbstractInventoryItemRequirementEntryMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -105,8 +105,8 @@ public abstract class AbstractInventoryItemRequirementEntryMvoAggregate extends 
         return e;
     }
 
-    protected InventoryItemRequirementEntryMvoStateEvent.InventoryItemRequirementEntryMvoStateMergePatched newInventoryItemRequirementEntryMvoStateMergePatched(String commandId, String requesterId) {
-        InventoryItemRequirementEntryMvoStateEventId stateEventId = new InventoryItemRequirementEntryMvoStateEventId(this.state.getInventoryItemRequirementEntryId(), this.state.getInventoryItemRequirementVersion());
+    protected InventoryItemRequirementEntryMvoStateEvent.InventoryItemRequirementEntryMvoStateMergePatched newInventoryItemRequirementEntryMvoStateMergePatched(Long version, String commandId, String requesterId) {
+        InventoryItemRequirementEntryMvoStateEventId stateEventId = new InventoryItemRequirementEntryMvoStateEventId(this.state.getInventoryItemRequirementEntryId(), version);
         InventoryItemRequirementEntryMvoStateEvent.InventoryItemRequirementEntryMvoStateMergePatched e = newInventoryItemRequirementEntryMvoStateMergePatched(stateEventId);
         ((AbstractInventoryItemRequirementEntryMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

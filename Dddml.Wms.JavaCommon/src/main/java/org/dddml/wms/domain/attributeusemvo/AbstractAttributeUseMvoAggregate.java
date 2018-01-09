@@ -130,8 +130,8 @@ public abstract class AbstractAttributeUseMvoAggregate extends AbstractAggregate
 
     ////////////////////////
 
-    protected AttributeUseMvoStateEvent.AttributeUseMvoStateCreated newAttributeUseMvoStateCreated(String commandId, String requesterId) {
-        AttributeUseMvoStateEventId stateEventId = new AttributeUseMvoStateEventId(this.state.getAttributeSetAttributeUseId(), this.state.getAttributeSetVersion());
+    protected AttributeUseMvoStateEvent.AttributeUseMvoStateCreated newAttributeUseMvoStateCreated(Long version, String commandId, String requesterId) {
+        AttributeUseMvoStateEventId stateEventId = new AttributeUseMvoStateEventId(this.state.getAttributeSetAttributeUseId(), version);
         AttributeUseMvoStateEvent.AttributeUseMvoStateCreated e = newAttributeUseMvoStateCreated(stateEventId);
         ((AbstractAttributeUseMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -139,8 +139,8 @@ public abstract class AbstractAttributeUseMvoAggregate extends AbstractAggregate
         return e;
     }
 
-    protected AttributeUseMvoStateEvent.AttributeUseMvoStateMergePatched newAttributeUseMvoStateMergePatched(String commandId, String requesterId) {
-        AttributeUseMvoStateEventId stateEventId = new AttributeUseMvoStateEventId(this.state.getAttributeSetAttributeUseId(), this.state.getAttributeSetVersion());
+    protected AttributeUseMvoStateEvent.AttributeUseMvoStateMergePatched newAttributeUseMvoStateMergePatched(Long version, String commandId, String requesterId) {
+        AttributeUseMvoStateEventId stateEventId = new AttributeUseMvoStateEventId(this.state.getAttributeSetAttributeUseId(), version);
         AttributeUseMvoStateEvent.AttributeUseMvoStateMergePatched e = newAttributeUseMvoStateMergePatched(stateEventId);
         ((AbstractAttributeUseMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -148,8 +148,8 @@ public abstract class AbstractAttributeUseMvoAggregate extends AbstractAggregate
         return e;
     }
 
-    protected AttributeUseMvoStateEvent.AttributeUseMvoStateDeleted newAttributeUseMvoStateDeleted(String commandId, String requesterId) {
-        AttributeUseMvoStateEventId stateEventId = new AttributeUseMvoStateEventId(this.state.getAttributeSetAttributeUseId(), this.state.getAttributeSetVersion());
+    protected AttributeUseMvoStateEvent.AttributeUseMvoStateDeleted newAttributeUseMvoStateDeleted(Long version, String commandId, String requesterId) {
+        AttributeUseMvoStateEventId stateEventId = new AttributeUseMvoStateEventId(this.state.getAttributeSetAttributeUseId(), version);
         AttributeUseMvoStateEvent.AttributeUseMvoStateDeleted e = newAttributeUseMvoStateDeleted(stateEventId);
         ((AbstractAttributeUseMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

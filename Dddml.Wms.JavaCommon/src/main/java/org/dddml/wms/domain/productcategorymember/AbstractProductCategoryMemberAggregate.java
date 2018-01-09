@@ -84,8 +84,8 @@ public abstract class AbstractProductCategoryMemberAggregate extends AbstractAgg
 
     ////////////////////////
 
-    protected ProductCategoryMemberStateEvent.ProductCategoryMemberStateCreated newProductCategoryMemberStateCreated(String commandId, String requesterId) {
-        ProductCategoryMemberStateEventId stateEventId = new ProductCategoryMemberStateEventId(this.state.getProductCategoryMemberId(), this.state.getVersion());
+    protected ProductCategoryMemberStateEvent.ProductCategoryMemberStateCreated newProductCategoryMemberStateCreated(Long version, String commandId, String requesterId) {
+        ProductCategoryMemberStateEventId stateEventId = new ProductCategoryMemberStateEventId(this.state.getProductCategoryMemberId(), version);
         ProductCategoryMemberStateEvent.ProductCategoryMemberStateCreated e = newProductCategoryMemberStateCreated(stateEventId);
         ((AbstractProductCategoryMemberStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -93,8 +93,8 @@ public abstract class AbstractProductCategoryMemberAggregate extends AbstractAgg
         return e;
     }
 
-    protected ProductCategoryMemberStateEvent.ProductCategoryMemberStateMergePatched newProductCategoryMemberStateMergePatched(String commandId, String requesterId) {
-        ProductCategoryMemberStateEventId stateEventId = new ProductCategoryMemberStateEventId(this.state.getProductCategoryMemberId(), this.state.getVersion());
+    protected ProductCategoryMemberStateEvent.ProductCategoryMemberStateMergePatched newProductCategoryMemberStateMergePatched(Long version, String commandId, String requesterId) {
+        ProductCategoryMemberStateEventId stateEventId = new ProductCategoryMemberStateEventId(this.state.getProductCategoryMemberId(), version);
         ProductCategoryMemberStateEvent.ProductCategoryMemberStateMergePatched e = newProductCategoryMemberStateMergePatched(stateEventId);
         ((AbstractProductCategoryMemberStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

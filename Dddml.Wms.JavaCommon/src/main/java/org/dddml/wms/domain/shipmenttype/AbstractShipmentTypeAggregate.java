@@ -81,8 +81,8 @@ public abstract class AbstractShipmentTypeAggregate extends AbstractAggregate im
 
     ////////////////////////
 
-    protected ShipmentTypeStateEvent.ShipmentTypeStateCreated newShipmentTypeStateCreated(String commandId, String requesterId) {
-        ShipmentTypeStateEventId stateEventId = new ShipmentTypeStateEventId(this.state.getShipmentTypeId(), this.state.getVersion());
+    protected ShipmentTypeStateEvent.ShipmentTypeStateCreated newShipmentTypeStateCreated(Long version, String commandId, String requesterId) {
+        ShipmentTypeStateEventId stateEventId = new ShipmentTypeStateEventId(this.state.getShipmentTypeId(), version);
         ShipmentTypeStateEvent.ShipmentTypeStateCreated e = newShipmentTypeStateCreated(stateEventId);
         ((AbstractShipmentTypeStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -90,8 +90,8 @@ public abstract class AbstractShipmentTypeAggregate extends AbstractAggregate im
         return e;
     }
 
-    protected ShipmentTypeStateEvent.ShipmentTypeStateMergePatched newShipmentTypeStateMergePatched(String commandId, String requesterId) {
-        ShipmentTypeStateEventId stateEventId = new ShipmentTypeStateEventId(this.state.getShipmentTypeId(), this.state.getVersion());
+    protected ShipmentTypeStateEvent.ShipmentTypeStateMergePatched newShipmentTypeStateMergePatched(Long version, String commandId, String requesterId) {
+        ShipmentTypeStateEventId stateEventId = new ShipmentTypeStateEventId(this.state.getShipmentTypeId(), version);
         ShipmentTypeStateEvent.ShipmentTypeStateMergePatched e = newShipmentTypeStateMergePatched(stateEventId);
         ((AbstractShipmentTypeStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

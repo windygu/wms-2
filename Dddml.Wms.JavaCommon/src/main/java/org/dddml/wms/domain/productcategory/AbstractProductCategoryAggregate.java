@@ -111,8 +111,8 @@ public abstract class AbstractProductCategoryAggregate extends AbstractAggregate
 
     ////////////////////////
 
-    protected ProductCategoryStateEvent.ProductCategoryStateCreated newProductCategoryStateCreated(String commandId, String requesterId) {
-        ProductCategoryStateEventId stateEventId = new ProductCategoryStateEventId(this.state.getProductCategoryId(), this.state.getVersion());
+    protected ProductCategoryStateEvent.ProductCategoryStateCreated newProductCategoryStateCreated(Long version, String commandId, String requesterId) {
+        ProductCategoryStateEventId stateEventId = new ProductCategoryStateEventId(this.state.getProductCategoryId(), version);
         ProductCategoryStateEvent.ProductCategoryStateCreated e = newProductCategoryStateCreated(stateEventId);
         ((AbstractProductCategoryStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -120,8 +120,8 @@ public abstract class AbstractProductCategoryAggregate extends AbstractAggregate
         return e;
     }
 
-    protected ProductCategoryStateEvent.ProductCategoryStateMergePatched newProductCategoryStateMergePatched(String commandId, String requesterId) {
-        ProductCategoryStateEventId stateEventId = new ProductCategoryStateEventId(this.state.getProductCategoryId(), this.state.getVersion());
+    protected ProductCategoryStateEvent.ProductCategoryStateMergePatched newProductCategoryStateMergePatched(Long version, String commandId, String requesterId) {
+        ProductCategoryStateEventId stateEventId = new ProductCategoryStateEventId(this.state.getProductCategoryId(), version);
         ProductCategoryStateEvent.ProductCategoryStateMergePatched e = newProductCategoryStateMergePatched(stateEventId);
         ((AbstractProductCategoryStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -129,8 +129,8 @@ public abstract class AbstractProductCategoryAggregate extends AbstractAggregate
         return e;
     }
 
-    protected ProductCategoryStateEvent.ProductCategoryStateDeleted newProductCategoryStateDeleted(String commandId, String requesterId) {
-        ProductCategoryStateEventId stateEventId = new ProductCategoryStateEventId(this.state.getProductCategoryId(), this.state.getVersion());
+    protected ProductCategoryStateEvent.ProductCategoryStateDeleted newProductCategoryStateDeleted(Long version, String commandId, String requesterId) {
+        ProductCategoryStateEventId stateEventId = new ProductCategoryStateEventId(this.state.getProductCategoryId(), version);
         ProductCategoryStateEvent.ProductCategoryStateDeleted e = newProductCategoryStateDeleted(stateEventId);
         ((AbstractProductCategoryStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

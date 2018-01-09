@@ -170,8 +170,8 @@ public abstract class AbstractPhysicalInventoryLineMvoAggregate extends Abstract
 
     ////////////////////////
 
-    protected PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateCreated newPhysicalInventoryLineMvoStateCreated(String commandId, String requesterId) {
-        PhysicalInventoryLineMvoStateEventId stateEventId = new PhysicalInventoryLineMvoStateEventId(this.state.getPhysicalInventoryLineId(), this.state.getPhysicalInventoryVersion());
+    protected PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateCreated newPhysicalInventoryLineMvoStateCreated(Long version, String commandId, String requesterId) {
+        PhysicalInventoryLineMvoStateEventId stateEventId = new PhysicalInventoryLineMvoStateEventId(this.state.getPhysicalInventoryLineId(), version);
         PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateCreated e = newPhysicalInventoryLineMvoStateCreated(stateEventId);
         ((AbstractPhysicalInventoryLineMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -179,8 +179,8 @@ public abstract class AbstractPhysicalInventoryLineMvoAggregate extends Abstract
         return e;
     }
 
-    protected PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateMergePatched newPhysicalInventoryLineMvoStateMergePatched(String commandId, String requesterId) {
-        PhysicalInventoryLineMvoStateEventId stateEventId = new PhysicalInventoryLineMvoStateEventId(this.state.getPhysicalInventoryLineId(), this.state.getPhysicalInventoryVersion());
+    protected PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateMergePatched newPhysicalInventoryLineMvoStateMergePatched(Long version, String commandId, String requesterId) {
+        PhysicalInventoryLineMvoStateEventId stateEventId = new PhysicalInventoryLineMvoStateEventId(this.state.getPhysicalInventoryLineId(), version);
         PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateMergePatched e = newPhysicalInventoryLineMvoStateMergePatched(stateEventId);
         ((AbstractPhysicalInventoryLineMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -188,8 +188,8 @@ public abstract class AbstractPhysicalInventoryLineMvoAggregate extends Abstract
         return e;
     }
 
-    protected PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateDeleted newPhysicalInventoryLineMvoStateDeleted(String commandId, String requesterId) {
-        PhysicalInventoryLineMvoStateEventId stateEventId = new PhysicalInventoryLineMvoStateEventId(this.state.getPhysicalInventoryLineId(), this.state.getPhysicalInventoryVersion());
+    protected PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateDeleted newPhysicalInventoryLineMvoStateDeleted(Long version, String commandId, String requesterId) {
+        PhysicalInventoryLineMvoStateEventId stateEventId = new PhysicalInventoryLineMvoStateEventId(this.state.getPhysicalInventoryLineId(), version);
         PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateDeleted e = newPhysicalInventoryLineMvoStateDeleted(stateEventId);
         ((AbstractPhysicalInventoryLineMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

@@ -114,8 +114,8 @@ public abstract class AbstractLocatorAggregate extends AbstractAggregate impleme
 
     ////////////////////////
 
-    protected LocatorStateEvent.LocatorStateCreated newLocatorStateCreated(String commandId, String requesterId) {
-        LocatorStateEventId stateEventId = new LocatorStateEventId(this.state.getLocatorId(), this.state.getVersion());
+    protected LocatorStateEvent.LocatorStateCreated newLocatorStateCreated(Long version, String commandId, String requesterId) {
+        LocatorStateEventId stateEventId = new LocatorStateEventId(this.state.getLocatorId(), version);
         LocatorStateEvent.LocatorStateCreated e = newLocatorStateCreated(stateEventId);
         ((AbstractLocatorStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -123,8 +123,8 @@ public abstract class AbstractLocatorAggregate extends AbstractAggregate impleme
         return e;
     }
 
-    protected LocatorStateEvent.LocatorStateMergePatched newLocatorStateMergePatched(String commandId, String requesterId) {
-        LocatorStateEventId stateEventId = new LocatorStateEventId(this.state.getLocatorId(), this.state.getVersion());
+    protected LocatorStateEvent.LocatorStateMergePatched newLocatorStateMergePatched(Long version, String commandId, String requesterId) {
+        LocatorStateEventId stateEventId = new LocatorStateEventId(this.state.getLocatorId(), version);
         LocatorStateEvent.LocatorStateMergePatched e = newLocatorStateMergePatched(stateEventId);
         ((AbstractLocatorStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -132,8 +132,8 @@ public abstract class AbstractLocatorAggregate extends AbstractAggregate impleme
         return e;
     }
 
-    protected LocatorStateEvent.LocatorStateDeleted newLocatorStateDeleted(String commandId, String requesterId) {
-        LocatorStateEventId stateEventId = new LocatorStateEventId(this.state.getLocatorId(), this.state.getVersion());
+    protected LocatorStateEvent.LocatorStateDeleted newLocatorStateDeleted(Long version, String commandId, String requesterId) {
+        LocatorStateEventId stateEventId = new LocatorStateEventId(this.state.getLocatorId(), version);
         LocatorStateEvent.LocatorStateDeleted e = newLocatorStateDeleted(stateEventId);
         ((AbstractLocatorStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

@@ -331,8 +331,8 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
 
     ////////////////////////
 
-    protected OrderStateEvent.OrderStateCreated newOrderStateCreated(String commandId, String requesterId) {
-        OrderStateEventId stateEventId = new OrderStateEventId(this.state.getOrderId(), this.state.getVersion());
+    protected OrderStateEvent.OrderStateCreated newOrderStateCreated(Long version, String commandId, String requesterId) {
+        OrderStateEventId stateEventId = new OrderStateEventId(this.state.getOrderId(), version);
         OrderStateEvent.OrderStateCreated e = newOrderStateCreated(stateEventId);
         ((AbstractOrderStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -340,8 +340,8 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         return e;
     }
 
-    protected OrderStateEvent.OrderStateMergePatched newOrderStateMergePatched(String commandId, String requesterId) {
-        OrderStateEventId stateEventId = new OrderStateEventId(this.state.getOrderId(), this.state.getVersion());
+    protected OrderStateEvent.OrderStateMergePatched newOrderStateMergePatched(Long version, String commandId, String requesterId) {
+        OrderStateEventId stateEventId = new OrderStateEventId(this.state.getOrderId(), version);
         OrderStateEvent.OrderStateMergePatched e = newOrderStateMergePatched(stateEventId);
         ((AbstractOrderStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

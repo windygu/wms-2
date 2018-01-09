@@ -246,8 +246,8 @@ public abstract class AbstractPhysicalInventoryAggregate extends AbstractAggrega
 
     ////////////////////////
 
-    protected PhysicalInventoryStateEvent.PhysicalInventoryStateCreated newPhysicalInventoryStateCreated(String commandId, String requesterId) {
-        PhysicalInventoryStateEventId stateEventId = new PhysicalInventoryStateEventId(this.state.getDocumentNumber(), this.state.getVersion());
+    protected PhysicalInventoryStateEvent.PhysicalInventoryStateCreated newPhysicalInventoryStateCreated(Long version, String commandId, String requesterId) {
+        PhysicalInventoryStateEventId stateEventId = new PhysicalInventoryStateEventId(this.state.getDocumentNumber(), version);
         PhysicalInventoryStateEvent.PhysicalInventoryStateCreated e = newPhysicalInventoryStateCreated(stateEventId);
         ((AbstractPhysicalInventoryStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -255,8 +255,8 @@ public abstract class AbstractPhysicalInventoryAggregate extends AbstractAggrega
         return e;
     }
 
-    protected PhysicalInventoryStateEvent.PhysicalInventoryStateMergePatched newPhysicalInventoryStateMergePatched(String commandId, String requesterId) {
-        PhysicalInventoryStateEventId stateEventId = new PhysicalInventoryStateEventId(this.state.getDocumentNumber(), this.state.getVersion());
+    protected PhysicalInventoryStateEvent.PhysicalInventoryStateMergePatched newPhysicalInventoryStateMergePatched(Long version, String commandId, String requesterId) {
+        PhysicalInventoryStateEventId stateEventId = new PhysicalInventoryStateEventId(this.state.getDocumentNumber(), version);
         PhysicalInventoryStateEvent.PhysicalInventoryStateMergePatched e = newPhysicalInventoryStateMergePatched(stateEventId);
         ((AbstractPhysicalInventoryStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -264,8 +264,8 @@ public abstract class AbstractPhysicalInventoryAggregate extends AbstractAggrega
         return e;
     }
 
-    protected PhysicalInventoryStateEvent.PhysicalInventoryStateDeleted newPhysicalInventoryStateDeleted(String commandId, String requesterId) {
-        PhysicalInventoryStateEventId stateEventId = new PhysicalInventoryStateEventId(this.state.getDocumentNumber(), this.state.getVersion());
+    protected PhysicalInventoryStateEvent.PhysicalInventoryStateDeleted newPhysicalInventoryStateDeleted(Long version, String commandId, String requesterId) {
+        PhysicalInventoryStateEventId stateEventId = new PhysicalInventoryStateEventId(this.state.getDocumentNumber(), version);
         PhysicalInventoryStateEvent.PhysicalInventoryStateDeleted e = newPhysicalInventoryStateDeleted(stateEventId);
         ((AbstractPhysicalInventoryStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -323,8 +323,8 @@ public abstract class AbstractPhysicalInventoryAggregate extends AbstractAggrega
         }
 
         @Override
-        public void documentAction(String value, String commandId, String requesterId) {
-            PhysicalInventoryStateEvent.PhysicalInventoryStateMergePatched e = newPhysicalInventoryStateMergePatched(commandId, requesterId);
+        public void documentAction(String value, Long version, String commandId, String requesterId) {
+            PhysicalInventoryStateEvent.PhysicalInventoryStateMergePatched e = newPhysicalInventoryStateMergePatched(version, commandId, requesterId);
             // ////////////////////////////
             PropertyCommandHandler<String, String> pCommandHandler = this.getPhysicalInventoryDocumentActionCommandHandler();
             PropertyCommand<String, String> pCmd = new AbstractPropertyCommand.SimplePropertyCommand<>();

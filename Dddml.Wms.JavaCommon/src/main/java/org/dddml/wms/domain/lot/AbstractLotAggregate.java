@@ -96,8 +96,8 @@ public abstract class AbstractLotAggregate extends AbstractAggregate implements 
 
     ////////////////////////
 
-    protected LotStateEvent.LotStateCreated newLotStateCreated(String commandId, String requesterId) {
-        LotStateEventId stateEventId = new LotStateEventId(this.state.getLotId(), this.state.getVersion());
+    protected LotStateEvent.LotStateCreated newLotStateCreated(Long version, String commandId, String requesterId) {
+        LotStateEventId stateEventId = new LotStateEventId(this.state.getLotId(), version);
         LotStateEvent.LotStateCreated e = newLotStateCreated(stateEventId);
         ((AbstractLotStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -105,8 +105,8 @@ public abstract class AbstractLotAggregate extends AbstractAggregate implements 
         return e;
     }
 
-    protected LotStateEvent.LotStateMergePatched newLotStateMergePatched(String commandId, String requesterId) {
-        LotStateEventId stateEventId = new LotStateEventId(this.state.getLotId(), this.state.getVersion());
+    protected LotStateEvent.LotStateMergePatched newLotStateMergePatched(Long version, String commandId, String requesterId) {
+        LotStateEventId stateEventId = new LotStateEventId(this.state.getLotId(), version);
         LotStateEvent.LotStateMergePatched e = newLotStateMergePatched(stateEventId);
         ((AbstractLotStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -114,8 +114,8 @@ public abstract class AbstractLotAggregate extends AbstractAggregate implements 
         return e;
     }
 
-    protected LotStateEvent.LotStateDeleted newLotStateDeleted(String commandId, String requesterId) {
-        LotStateEventId stateEventId = new LotStateEventId(this.state.getLotId(), this.state.getVersion());
+    protected LotStateEvent.LotStateDeleted newLotStateDeleted(Long version, String commandId, String requesterId) {
+        LotStateEventId stateEventId = new LotStateEventId(this.state.getLotId(), version);
         LotStateEvent.LotStateDeleted e = newLotStateDeleted(stateEventId);
         ((AbstractLotStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

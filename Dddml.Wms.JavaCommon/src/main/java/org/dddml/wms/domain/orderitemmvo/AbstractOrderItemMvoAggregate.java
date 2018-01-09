@@ -268,8 +268,8 @@ public abstract class AbstractOrderItemMvoAggregate extends AbstractAggregate im
 
     ////////////////////////
 
-    protected OrderItemMvoStateEvent.OrderItemMvoStateCreated newOrderItemMvoStateCreated(String commandId, String requesterId) {
-        OrderItemMvoStateEventId stateEventId = new OrderItemMvoStateEventId(this.state.getOrderItemId(), this.state.getOrderVersion());
+    protected OrderItemMvoStateEvent.OrderItemMvoStateCreated newOrderItemMvoStateCreated(Long version, String commandId, String requesterId) {
+        OrderItemMvoStateEventId stateEventId = new OrderItemMvoStateEventId(this.state.getOrderItemId(), version);
         OrderItemMvoStateEvent.OrderItemMvoStateCreated e = newOrderItemMvoStateCreated(stateEventId);
         ((AbstractOrderItemMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -277,8 +277,8 @@ public abstract class AbstractOrderItemMvoAggregate extends AbstractAggregate im
         return e;
     }
 
-    protected OrderItemMvoStateEvent.OrderItemMvoStateMergePatched newOrderItemMvoStateMergePatched(String commandId, String requesterId) {
-        OrderItemMvoStateEventId stateEventId = new OrderItemMvoStateEventId(this.state.getOrderItemId(), this.state.getOrderVersion());
+    protected OrderItemMvoStateEvent.OrderItemMvoStateMergePatched newOrderItemMvoStateMergePatched(Long version, String commandId, String requesterId) {
+        OrderItemMvoStateEventId stateEventId = new OrderItemMvoStateEventId(this.state.getOrderItemId(), version);
         OrderItemMvoStateEvent.OrderItemMvoStateMergePatched e = newOrderItemMvoStateMergePatched(stateEventId);
         ((AbstractOrderItemMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

@@ -191,8 +191,8 @@ public abstract class AbstractMovementLineMvoAggregate extends AbstractAggregate
 
     ////////////////////////
 
-    protected MovementLineMvoStateEvent.MovementLineMvoStateCreated newMovementLineMvoStateCreated(String commandId, String requesterId) {
-        MovementLineMvoStateEventId stateEventId = new MovementLineMvoStateEventId(this.state.getMovementLineId(), this.state.getMovementVersion());
+    protected MovementLineMvoStateEvent.MovementLineMvoStateCreated newMovementLineMvoStateCreated(Long version, String commandId, String requesterId) {
+        MovementLineMvoStateEventId stateEventId = new MovementLineMvoStateEventId(this.state.getMovementLineId(), version);
         MovementLineMvoStateEvent.MovementLineMvoStateCreated e = newMovementLineMvoStateCreated(stateEventId);
         ((AbstractMovementLineMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -200,8 +200,8 @@ public abstract class AbstractMovementLineMvoAggregate extends AbstractAggregate
         return e;
     }
 
-    protected MovementLineMvoStateEvent.MovementLineMvoStateMergePatched newMovementLineMvoStateMergePatched(String commandId, String requesterId) {
-        MovementLineMvoStateEventId stateEventId = new MovementLineMvoStateEventId(this.state.getMovementLineId(), this.state.getMovementVersion());
+    protected MovementLineMvoStateEvent.MovementLineMvoStateMergePatched newMovementLineMvoStateMergePatched(Long version, String commandId, String requesterId) {
+        MovementLineMvoStateEventId stateEventId = new MovementLineMvoStateEventId(this.state.getMovementLineId(), version);
         MovementLineMvoStateEvent.MovementLineMvoStateMergePatched e = newMovementLineMvoStateMergePatched(stateEventId);
         ((AbstractMovementLineMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -209,8 +209,8 @@ public abstract class AbstractMovementLineMvoAggregate extends AbstractAggregate
         return e;
     }
 
-    protected MovementLineMvoStateEvent.MovementLineMvoStateDeleted newMovementLineMvoStateDeleted(String commandId, String requesterId) {
-        MovementLineMvoStateEventId stateEventId = new MovementLineMvoStateEventId(this.state.getMovementLineId(), this.state.getMovementVersion());
+    protected MovementLineMvoStateEvent.MovementLineMvoStateDeleted newMovementLineMvoStateDeleted(Long version, String commandId, String requesterId) {
+        MovementLineMvoStateEventId stateEventId = new MovementLineMvoStateEventId(this.state.getMovementLineId(), version);
         MovementLineMvoStateEvent.MovementLineMvoStateDeleted e = newMovementLineMvoStateDeleted(stateEventId);
         ((AbstractMovementLineMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

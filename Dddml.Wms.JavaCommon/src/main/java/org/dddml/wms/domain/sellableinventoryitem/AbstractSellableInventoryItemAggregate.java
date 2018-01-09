@@ -144,8 +144,8 @@ public abstract class AbstractSellableInventoryItemAggregate extends AbstractAgg
 
     ////////////////////////
 
-    protected SellableInventoryItemStateEvent.SellableInventoryItemStateCreated newSellableInventoryItemStateCreated(String commandId, String requesterId) {
-        SellableInventoryItemStateEventId stateEventId = new SellableInventoryItemStateEventId(this.state.getSellableInventoryItemId(), this.state.getVersion());
+    protected SellableInventoryItemStateEvent.SellableInventoryItemStateCreated newSellableInventoryItemStateCreated(Long version, String commandId, String requesterId) {
+        SellableInventoryItemStateEventId stateEventId = new SellableInventoryItemStateEventId(this.state.getSellableInventoryItemId(), version);
         SellableInventoryItemStateEvent.SellableInventoryItemStateCreated e = newSellableInventoryItemStateCreated(stateEventId);
         ((AbstractSellableInventoryItemStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -153,8 +153,8 @@ public abstract class AbstractSellableInventoryItemAggregate extends AbstractAgg
         return e;
     }
 
-    protected SellableInventoryItemStateEvent.SellableInventoryItemStateMergePatched newSellableInventoryItemStateMergePatched(String commandId, String requesterId) {
-        SellableInventoryItemStateEventId stateEventId = new SellableInventoryItemStateEventId(this.state.getSellableInventoryItemId(), this.state.getVersion());
+    protected SellableInventoryItemStateEvent.SellableInventoryItemStateMergePatched newSellableInventoryItemStateMergePatched(Long version, String commandId, String requesterId) {
+        SellableInventoryItemStateEventId stateEventId = new SellableInventoryItemStateEventId(this.state.getSellableInventoryItemId(), version);
         SellableInventoryItemStateEvent.SellableInventoryItemStateMergePatched e = newSellableInventoryItemStateMergePatched(stateEventId);
         ((AbstractSellableInventoryItemStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

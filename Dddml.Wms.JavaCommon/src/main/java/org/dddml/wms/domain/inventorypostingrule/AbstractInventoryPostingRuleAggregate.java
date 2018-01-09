@@ -103,8 +103,8 @@ public abstract class AbstractInventoryPostingRuleAggregate extends AbstractAggr
 
     ////////////////////////
 
-    protected InventoryPostingRuleStateEvent.InventoryPostingRuleStateCreated newInventoryPostingRuleStateCreated(String commandId, String requesterId) {
-        InventoryPostingRuleStateEventId stateEventId = new InventoryPostingRuleStateEventId(this.state.getInventoryPostingRuleId(), this.state.getVersion());
+    protected InventoryPostingRuleStateEvent.InventoryPostingRuleStateCreated newInventoryPostingRuleStateCreated(Long version, String commandId, String requesterId) {
+        InventoryPostingRuleStateEventId stateEventId = new InventoryPostingRuleStateEventId(this.state.getInventoryPostingRuleId(), version);
         InventoryPostingRuleStateEvent.InventoryPostingRuleStateCreated e = newInventoryPostingRuleStateCreated(stateEventId);
         ((AbstractInventoryPostingRuleStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -112,8 +112,8 @@ public abstract class AbstractInventoryPostingRuleAggregate extends AbstractAggr
         return e;
     }
 
-    protected InventoryPostingRuleStateEvent.InventoryPostingRuleStateMergePatched newInventoryPostingRuleStateMergePatched(String commandId, String requesterId) {
-        InventoryPostingRuleStateEventId stateEventId = new InventoryPostingRuleStateEventId(this.state.getInventoryPostingRuleId(), this.state.getVersion());
+    protected InventoryPostingRuleStateEvent.InventoryPostingRuleStateMergePatched newInventoryPostingRuleStateMergePatched(Long version, String commandId, String requesterId) {
+        InventoryPostingRuleStateEventId stateEventId = new InventoryPostingRuleStateEventId(this.state.getInventoryPostingRuleId(), version);
         InventoryPostingRuleStateEvent.InventoryPostingRuleStateMergePatched e = newInventoryPostingRuleStateMergePatched(stateEventId);
         ((AbstractInventoryPostingRuleStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -121,8 +121,8 @@ public abstract class AbstractInventoryPostingRuleAggregate extends AbstractAggr
         return e;
     }
 
-    protected InventoryPostingRuleStateEvent.InventoryPostingRuleStateDeleted newInventoryPostingRuleStateDeleted(String commandId, String requesterId) {
-        InventoryPostingRuleStateEventId stateEventId = new InventoryPostingRuleStateEventId(this.state.getInventoryPostingRuleId(), this.state.getVersion());
+    protected InventoryPostingRuleStateEvent.InventoryPostingRuleStateDeleted newInventoryPostingRuleStateDeleted(Long version, String commandId, String requesterId) {
+        InventoryPostingRuleStateEventId stateEventId = new InventoryPostingRuleStateEventId(this.state.getInventoryPostingRuleId(), version);
         InventoryPostingRuleStateEvent.InventoryPostingRuleStateDeleted e = newInventoryPostingRuleStateDeleted(stateEventId);
         ((AbstractInventoryPostingRuleStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

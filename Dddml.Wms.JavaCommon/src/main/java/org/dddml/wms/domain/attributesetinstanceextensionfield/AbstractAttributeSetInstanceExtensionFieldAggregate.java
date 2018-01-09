@@ -102,8 +102,8 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldAggregate extend
 
     ////////////////////////
 
-    protected AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateCreated newAttributeSetInstanceExtensionFieldStateCreated(String commandId, String requesterId) {
-        AttributeSetInstanceExtensionFieldStateEventId stateEventId = new AttributeSetInstanceExtensionFieldStateEventId(this.state.getName(), this.state.getVersion());
+    protected AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateCreated newAttributeSetInstanceExtensionFieldStateCreated(Long version, String commandId, String requesterId) {
+        AttributeSetInstanceExtensionFieldStateEventId stateEventId = new AttributeSetInstanceExtensionFieldStateEventId(this.state.getName(), version);
         AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateCreated e = newAttributeSetInstanceExtensionFieldStateCreated(stateEventId);
         ((AbstractAttributeSetInstanceExtensionFieldStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -111,8 +111,8 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldAggregate extend
         return e;
     }
 
-    protected AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateMergePatched newAttributeSetInstanceExtensionFieldStateMergePatched(String commandId, String requesterId) {
-        AttributeSetInstanceExtensionFieldStateEventId stateEventId = new AttributeSetInstanceExtensionFieldStateEventId(this.state.getName(), this.state.getVersion());
+    protected AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateMergePatched newAttributeSetInstanceExtensionFieldStateMergePatched(Long version, String commandId, String requesterId) {
+        AttributeSetInstanceExtensionFieldStateEventId stateEventId = new AttributeSetInstanceExtensionFieldStateEventId(this.state.getName(), version);
         AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateMergePatched e = newAttributeSetInstanceExtensionFieldStateMergePatched(stateEventId);
         ((AbstractAttributeSetInstanceExtensionFieldStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -120,8 +120,8 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldAggregate extend
         return e;
     }
 
-    protected AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateDeleted newAttributeSetInstanceExtensionFieldStateDeleted(String commandId, String requesterId) {
-        AttributeSetInstanceExtensionFieldStateEventId stateEventId = new AttributeSetInstanceExtensionFieldStateEventId(this.state.getName(), this.state.getVersion());
+    protected AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateDeleted newAttributeSetInstanceExtensionFieldStateDeleted(Long version, String commandId, String requesterId) {
+        AttributeSetInstanceExtensionFieldStateEventId stateEventId = new AttributeSetInstanceExtensionFieldStateEventId(this.state.getName(), version);
         AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateDeleted e = newAttributeSetInstanceExtensionFieldStateDeleted(stateEventId);
         ((AbstractAttributeSetInstanceExtensionFieldStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

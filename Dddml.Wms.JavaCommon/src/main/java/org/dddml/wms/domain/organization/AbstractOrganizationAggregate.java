@@ -99,8 +99,8 @@ public abstract class AbstractOrganizationAggregate extends AbstractAggregate im
 
     ////////////////////////
 
-    protected OrganizationStateEvent.OrganizationStateCreated newOrganizationStateCreated(String commandId, String requesterId) {
-        OrganizationStateEventId stateEventId = new OrganizationStateEventId(this.state.getPartyId(), this.state.getVersion());
+    protected OrganizationStateEvent.OrganizationStateCreated newOrganizationStateCreated(Long version, String commandId, String requesterId) {
+        OrganizationStateEventId stateEventId = new OrganizationStateEventId(this.state.getPartyId(), version);
         OrganizationStateEvent.OrganizationStateCreated e = newOrganizationStateCreated(stateEventId);
         ((AbstractOrganizationStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -108,8 +108,8 @@ public abstract class AbstractOrganizationAggregate extends AbstractAggregate im
         return e;
     }
 
-    protected OrganizationStateEvent.OrganizationStateMergePatched newOrganizationStateMergePatched(String commandId, String requesterId) {
-        OrganizationStateEventId stateEventId = new OrganizationStateEventId(this.state.getPartyId(), this.state.getVersion());
+    protected OrganizationStateEvent.OrganizationStateMergePatched newOrganizationStateMergePatched(Long version, String commandId, String requesterId) {
+        OrganizationStateEventId stateEventId = new OrganizationStateEventId(this.state.getPartyId(), version);
         OrganizationStateEvent.OrganizationStateMergePatched e = newOrganizationStateMergePatched(stateEventId);
         ((AbstractOrganizationStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -117,8 +117,8 @@ public abstract class AbstractOrganizationAggregate extends AbstractAggregate im
         return e;
     }
 
-    protected OrganizationStateEvent.OrganizationStateDeleted newOrganizationStateDeleted(String commandId, String requesterId) {
-        OrganizationStateEventId stateEventId = new OrganizationStateEventId(this.state.getPartyId(), this.state.getVersion());
+    protected OrganizationStateEvent.OrganizationStateDeleted newOrganizationStateDeleted(Long version, String commandId, String requesterId) {
+        OrganizationStateEventId stateEventId = new OrganizationStateEventId(this.state.getPartyId(), version);
         OrganizationStateEvent.OrganizationStateDeleted e = newOrganizationStateDeleted(stateEventId);
         ((AbstractOrganizationStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

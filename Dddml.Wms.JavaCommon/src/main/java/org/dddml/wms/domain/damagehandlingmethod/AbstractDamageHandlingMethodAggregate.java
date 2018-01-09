@@ -93,8 +93,8 @@ public abstract class AbstractDamageHandlingMethodAggregate extends AbstractAggr
 
     ////////////////////////
 
-    protected DamageHandlingMethodStateEvent.DamageHandlingMethodStateCreated newDamageHandlingMethodStateCreated(String commandId, String requesterId) {
-        DamageHandlingMethodStateEventId stateEventId = new DamageHandlingMethodStateEventId(this.state.getDamageHandlingMethodId(), this.state.getVersion());
+    protected DamageHandlingMethodStateEvent.DamageHandlingMethodStateCreated newDamageHandlingMethodStateCreated(Long version, String commandId, String requesterId) {
+        DamageHandlingMethodStateEventId stateEventId = new DamageHandlingMethodStateEventId(this.state.getDamageHandlingMethodId(), version);
         DamageHandlingMethodStateEvent.DamageHandlingMethodStateCreated e = newDamageHandlingMethodStateCreated(stateEventId);
         ((AbstractDamageHandlingMethodStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -102,8 +102,8 @@ public abstract class AbstractDamageHandlingMethodAggregate extends AbstractAggr
         return e;
     }
 
-    protected DamageHandlingMethodStateEvent.DamageHandlingMethodStateMergePatched newDamageHandlingMethodStateMergePatched(String commandId, String requesterId) {
-        DamageHandlingMethodStateEventId stateEventId = new DamageHandlingMethodStateEventId(this.state.getDamageHandlingMethodId(), this.state.getVersion());
+    protected DamageHandlingMethodStateEvent.DamageHandlingMethodStateMergePatched newDamageHandlingMethodStateMergePatched(Long version, String commandId, String requesterId) {
+        DamageHandlingMethodStateEventId stateEventId = new DamageHandlingMethodStateEventId(this.state.getDamageHandlingMethodId(), version);
         DamageHandlingMethodStateEvent.DamageHandlingMethodStateMergePatched e = newDamageHandlingMethodStateMergePatched(stateEventId);
         ((AbstractDamageHandlingMethodStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -111,8 +111,8 @@ public abstract class AbstractDamageHandlingMethodAggregate extends AbstractAggr
         return e;
     }
 
-    protected DamageHandlingMethodStateEvent.DamageHandlingMethodStateDeleted newDamageHandlingMethodStateDeleted(String commandId, String requesterId) {
-        DamageHandlingMethodStateEventId stateEventId = new DamageHandlingMethodStateEventId(this.state.getDamageHandlingMethodId(), this.state.getVersion());
+    protected DamageHandlingMethodStateEvent.DamageHandlingMethodStateDeleted newDamageHandlingMethodStateDeleted(Long version, String commandId, String requesterId) {
+        DamageHandlingMethodStateEventId stateEventId = new DamageHandlingMethodStateEventId(this.state.getDamageHandlingMethodId(), version);
         DamageHandlingMethodStateEvent.DamageHandlingMethodStateDeleted e = newDamageHandlingMethodStateDeleted(stateEventId);
         ((AbstractDamageHandlingMethodStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

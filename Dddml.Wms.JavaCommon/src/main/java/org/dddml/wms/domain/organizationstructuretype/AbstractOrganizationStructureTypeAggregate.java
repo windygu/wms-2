@@ -90,8 +90,8 @@ public abstract class AbstractOrganizationStructureTypeAggregate extends Abstrac
 
     ////////////////////////
 
-    protected OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateCreated newOrganizationStructureTypeStateCreated(String commandId, String requesterId) {
-        OrganizationStructureTypeStateEventId stateEventId = new OrganizationStructureTypeStateEventId(this.state.getId(), this.state.getVersion());
+    protected OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateCreated newOrganizationStructureTypeStateCreated(Long version, String commandId, String requesterId) {
+        OrganizationStructureTypeStateEventId stateEventId = new OrganizationStructureTypeStateEventId(this.state.getId(), version);
         OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateCreated e = newOrganizationStructureTypeStateCreated(stateEventId);
         ((AbstractOrganizationStructureTypeStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -99,8 +99,8 @@ public abstract class AbstractOrganizationStructureTypeAggregate extends Abstrac
         return e;
     }
 
-    protected OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateMergePatched newOrganizationStructureTypeStateMergePatched(String commandId, String requesterId) {
-        OrganizationStructureTypeStateEventId stateEventId = new OrganizationStructureTypeStateEventId(this.state.getId(), this.state.getVersion());
+    protected OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateMergePatched newOrganizationStructureTypeStateMergePatched(Long version, String commandId, String requesterId) {
+        OrganizationStructureTypeStateEventId stateEventId = new OrganizationStructureTypeStateEventId(this.state.getId(), version);
         OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateMergePatched e = newOrganizationStructureTypeStateMergePatched(stateEventId);
         ((AbstractOrganizationStructureTypeStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -108,8 +108,8 @@ public abstract class AbstractOrganizationStructureTypeAggregate extends Abstrac
         return e;
     }
 
-    protected OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateDeleted newOrganizationStructureTypeStateDeleted(String commandId, String requesterId) {
-        OrganizationStructureTypeStateEventId stateEventId = new OrganizationStructureTypeStateEventId(this.state.getId(), this.state.getVersion());
+    protected OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateDeleted newOrganizationStructureTypeStateDeleted(Long version, String commandId, String requesterId) {
+        OrganizationStructureTypeStateEventId stateEventId = new OrganizationStructureTypeStateEventId(this.state.getId(), version);
         OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateDeleted e = newOrganizationStructureTypeStateDeleted(stateEventId);
         ((AbstractOrganizationStructureTypeStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

@@ -357,8 +357,8 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
 
     ////////////////////////
 
-    protected ShipmentStateEvent.ShipmentStateCreated newShipmentStateCreated(String commandId, String requesterId) {
-        ShipmentStateEventId stateEventId = new ShipmentStateEventId(this.state.getShipmentId(), this.state.getVersion());
+    protected ShipmentStateEvent.ShipmentStateCreated newShipmentStateCreated(Long version, String commandId, String requesterId) {
+        ShipmentStateEventId stateEventId = new ShipmentStateEventId(this.state.getShipmentId(), version);
         ShipmentStateEvent.ShipmentStateCreated e = newShipmentStateCreated(stateEventId);
         ((AbstractShipmentStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -366,8 +366,8 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         return e;
     }
 
-    protected ShipmentStateEvent.ShipmentStateMergePatched newShipmentStateMergePatched(String commandId, String requesterId) {
-        ShipmentStateEventId stateEventId = new ShipmentStateEventId(this.state.getShipmentId(), this.state.getVersion());
+    protected ShipmentStateEvent.ShipmentStateMergePatched newShipmentStateMergePatched(Long version, String commandId, String requesterId) {
+        ShipmentStateEventId stateEventId = new ShipmentStateEventId(this.state.getShipmentId(), version);
         ShipmentStateEvent.ShipmentStateMergePatched e = newShipmentStateMergePatched(stateEventId);
         ((AbstractShipmentStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);

@@ -59,7 +59,7 @@ public abstract class AbstractMovementConfirmationApplicationService implements 
     }
 
     public void when(MovementConfirmationCommands.DocumentAction c) {
-        update(c, ar -> ar.documentAction(c.getValue(), c.getCommandId(), c.getRequesterId()));
+        update(c, ar -> ar.documentAction(c.getValue(), c.getVersion(), c.getCommandId(), c.getRequesterId()));
     }
 
     public MovementConfirmationState get(String id) {
