@@ -32,16 +32,16 @@ namespace Dddml.Wms.Services.Tests
 
             initdb.CreateDatabaseAndSeed();
 
-            // ////////////////////////
-            var xmlDataLoader = new XmlDataLoader();
-            xmlDataLoader.Process(".\\Data");
-            //Console.ReadKey();
-            //return;
-            // ////////////////////////
+            //// ////////////////////////
+            //var xmlDataLoader = new XmlDataLoader();
+            //xmlDataLoader.Process(".\\Data");
+            ////Console.ReadKey();
+            ////return;
+            //// ////////////////////////
 
-            // /////////////////////////
-            InitInventoryPostingRules.CreateDefaultInventoryPostingRules();
-            // /////////////////////////
+            //// /////////////////////////
+            //InitInventoryPostingRules.CreateDefaultInventoryPostingRules();
+            //// /////////////////////////
 
             // ////////////////////////
             // TestMain.DoSomeTests();

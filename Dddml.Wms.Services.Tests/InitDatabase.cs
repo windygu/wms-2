@@ -108,6 +108,18 @@ namespace Dddml.Wms.Services.Tests
                 //var userIdAndPassword = CreateTestUser(roles);
 
                 //CreatePermissions();
+
+                // ////////////////////////
+                var xmlDataLoader = new XmlDataLoader();
+                xmlDataLoader.Process(".\\Data");
+                //Console.ReadKey();
+                //return;
+                // ////////////////////////
+
+                // /////////////////////////
+                InitInventoryPostingRules.CreateDefaultInventoryPostingRules();
+                // /////////////////////////
+
             }
         }
 

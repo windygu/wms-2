@@ -6,6 +6,7 @@ using Spring.Transaction.Interceptor;
 using Dddml.Wms.Domain.InventoryItem;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain.DocumentType;
+using Dddml.Wms.Specialization.NHibernate;
 
 namespace Dddml.Wms.Domain.InOut.NHibernate
 {
@@ -15,6 +16,15 @@ namespace Dddml.Wms.Domain.InOut.NHibernate
         {
             get { return ApplicationContext.Current["inventoryItemApplicationService"] as IInventoryItemApplicationService; } 
         }
+
+        private IIdGenerator<long, object, object> _seqIdGenerator = new TableIdGenerator();
+
+        public IIdGenerator<long, object, object> SeqIdGenerator
+        {
+            get { return _seqIdGenerator; }
+            set { _seqIdGenerator = value; }
+        }
+
 
         [Transaction]
         public override void When(InOutCommands.Complete c)
@@ -89,7 +99,7 @@ namespace Dddml.Wms.Domain.InOut.NHibernate
         {
             var entry = new CreateInventoryItemEntry();
             entry.InventoryItemId = new InventoryItemId(inOutLine.ProductId, inOutLine.LocatorId, inOutLine.AttributeSetInstanceId);
-            entry.EntrySeqId = DateTime.Now.Ticks; //todo
+            entry.EntrySeqId = SeqIdGenerator.GetNextId();//DateTime.Now.Ticks;
             entry.OnHandQuantity = inOutLine.MovementQuantity * signum;
             entry.Source = new InventoryItemSourceInfo(DocumentTypeIds.InOut, inOut.DocumentNumber, inOutLine.LineNumber);
             return entry;

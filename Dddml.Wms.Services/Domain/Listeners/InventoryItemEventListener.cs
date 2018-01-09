@@ -9,12 +9,21 @@ using Dddml.Wms.Domain.InventoryPRTriggered;
 using Dddml.Wms.Domain.InventoryPostingRule;
 using Dddml.Wms.Domain.SellableInventoryItem;
 using Dddml.Wms.Domain.InventoryItemRequirement;
+using Dddml.Wms.Specialization.NHibernate;
 
 namespace Dddml.Wms.Domain.Listeners
 {
     public class InventoryItemEventListener : IAggregateEventListener<IInventoryItemAggregate, IInventoryItemState>
     {
         static readonly ILog _log = LogManager.GetLogger<InventoryItemEventListener>();
+
+        private IIdGenerator<long, object, object> _seqIdGenerator = new TableIdGenerator();
+
+        public IIdGenerator<long, object, object> SeqIdGenerator
+        {
+            get { return _seqIdGenerator; }
+            set { _seqIdGenerator = value; }
+        }
 
         public virtual IInventoryPRTriggeredApplicationService InventoryPRTriggeredApplicationService
         {
@@ -125,9 +134,9 @@ namespace Dddml.Wms.Domain.Listeners
             }
         }
 
-        private static void SetCreateSellableInventoryItemEntry(decimal outputQuantity, InventoryPRTriggeredId tid, CreateSellableInventoryItemEntry createEntry)
+        private void SetCreateSellableInventoryItemEntry(decimal outputQuantity, InventoryPRTriggeredId tid, CreateSellableInventoryItemEntry createEntry)
         {
-            createEntry.EntrySeqId = DateTime.Now.Ticks;//todo ??
+            createEntry.EntrySeqId = SeqIdGenerator.GetNextId();// DateTime.Now.Ticks;
             createEntry.SellableQuantity = outputQuantity;
             createEntry.SourceEventId = tid;
         }
@@ -164,9 +173,9 @@ namespace Dddml.Wms.Domain.Listeners
             }
         }
 
-        private static void SetCreateInventoryItemRequirementEntry(decimal outputQuantity, InventoryPRTriggeredId tid, CreateInventoryItemRequirementEntry createEntry)
+        private void SetCreateInventoryItemRequirementEntry(decimal outputQuantity, InventoryPRTriggeredId tid, CreateInventoryItemRequirementEntry createEntry)
         {
-            createEntry.EntrySeqId = DateTime.Now.Ticks;//todo ??
+            createEntry.EntrySeqId = SeqIdGenerator.GetNextId();//DateTime.Now.Ticks;
             createEntry.Quantity = outputQuantity;
             createEntry.SourceEventId = tid;
         }

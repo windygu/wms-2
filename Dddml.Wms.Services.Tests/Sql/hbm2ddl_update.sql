@@ -1,9 +1,4 @@
 
-    create table Hello (
-        Id BIGINT not null,
-       Message VARCHAR(255),
-       primary key (Id)
-    );
     create table AttributeValue_RV (
         AttributeValueIdAttributeId VARCHAR(50) not null,
        AttributeValueIdValue VARCHAR(50) not null,
@@ -527,7 +522,3 @@
        UpdatedAt DATETIME,
        primary key (ShipmentReceiptIdShipmentId, ShipmentReceiptIdReceiptSeqId)
     );
-    create table nhibernate_hilo_table (
-         next_val BIGINT 
-    );
-    insert into nhibernate_hilo_table values ( 1 );
