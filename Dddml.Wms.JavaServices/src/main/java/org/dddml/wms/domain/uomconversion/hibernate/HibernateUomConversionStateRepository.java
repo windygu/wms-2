@@ -68,6 +68,7 @@ public class HibernateUomConversionStateRepository implements UomConversionState
             Saveable saveable = (Saveable) s;
             saveable.save();
         }
+        getCurrentSession().flush();
     }
 
     //protected static void addNotDeletedRestriction(Criteria criteria) {

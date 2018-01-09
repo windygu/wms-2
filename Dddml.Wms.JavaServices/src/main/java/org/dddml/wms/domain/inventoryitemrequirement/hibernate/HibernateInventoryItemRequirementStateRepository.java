@@ -66,6 +66,7 @@ public class HibernateInventoryItemRequirementStateRepository implements Invento
             Saveable saveable = (Saveable) s;
             saveable.save();
         }
+        getCurrentSession().flush();
     }
 
     //protected static void addNotDeletedRestriction(Criteria criteria) {

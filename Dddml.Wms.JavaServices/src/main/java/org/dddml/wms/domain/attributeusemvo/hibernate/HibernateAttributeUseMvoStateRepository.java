@@ -69,6 +69,7 @@ public class HibernateAttributeUseMvoStateRepository implements AttributeUseMvoS
             Saveable saveable = (Saveable) s;
             saveable.save();
         }
+        getCurrentSession().flush();
     }
 
     //protected static void addNotDeletedRestriction(Criteria criteria) {

@@ -67,6 +67,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo.NHibernate
 			if (saveable != null) {
 				saveable.Save ();
 			}
+            CurrentSession.Flush();
 		}
 
         //protected static void AddNotDeletedRestriction(ICriteria criteria)

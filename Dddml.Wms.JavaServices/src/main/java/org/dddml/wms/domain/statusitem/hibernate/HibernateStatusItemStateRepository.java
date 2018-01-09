@@ -63,6 +63,7 @@ public class HibernateStatusItemStateRepository implements StatusItemStateReposi
             Saveable saveable = (Saveable) s;
             saveable.save();
         }
+        getCurrentSession().flush();
     }
 
     //protected static void addNotDeletedRestriction(Criteria criteria) {

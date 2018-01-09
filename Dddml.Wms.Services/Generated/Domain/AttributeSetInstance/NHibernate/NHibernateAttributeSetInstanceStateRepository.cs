@@ -65,6 +65,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance.NHibernate
 			if (saveable != null) {
 				saveable.Save ();
 			}
+            CurrentSession.Flush();
 		}
 
         //protected static void AddNotDeletedRestriction(ICriteria criteria)

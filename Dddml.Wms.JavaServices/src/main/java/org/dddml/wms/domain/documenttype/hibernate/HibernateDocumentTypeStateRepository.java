@@ -63,6 +63,7 @@ public class HibernateDocumentTypeStateRepository implements DocumentTypeStateRe
             Saveable saveable = (Saveable) s;
             saveable.save();
         }
+        getCurrentSession().flush();
     }
 
     //protected static void addNotDeletedRestriction(Criteria criteria) {

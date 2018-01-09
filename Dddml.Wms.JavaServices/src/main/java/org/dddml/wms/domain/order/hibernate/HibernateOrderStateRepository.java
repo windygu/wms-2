@@ -68,6 +68,7 @@ public class HibernateOrderStateRepository implements OrderStateRepository
             Saveable saveable = (Saveable) s;
             saveable.save();
         }
+        getCurrentSession().flush();
     }
 
     //protected static void addNotDeletedRestriction(Criteria criteria) {
