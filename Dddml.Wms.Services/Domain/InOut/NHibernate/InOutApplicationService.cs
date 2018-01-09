@@ -28,7 +28,7 @@ namespace Dddml.Wms.Domain.InOut.NHibernate
         [Transaction]
         public override void When(InOutCommands.DocumentAction c)
         {
-            if (c.Value == DocumentAction.Complete) 
+            if (c.Value == DocumentAction.Complete)
             {
                 var inOut = AssertDocumentStatus(c.DocumentNumber, DocumentStatusIds.Drafted);
                 var inventoryItemEntries = CompleteInOutCreateInventoryItemEntries(inOut);
@@ -37,19 +37,10 @@ namespace Dddml.Wms.Domain.InOut.NHibernate
             }
             else if (c.Value == DocumentAction.Reverse)
             {
-                var inOut = AssertDocumentStatus(c.DocumentNumber, DocumentStatusIds.Completed);
-
-                var createReversalInOut = CreateReversalInOutAndComplete(c, inOut);
-                var srcInOutUpdated = new InOutStateMergePatched()
-                {
-                    ReversalDocumentNumber = createReversalInOut.DocumentNumber,
-                    //源单据前向关联到反转单据:
-                    Description = "(" + createReversalInOut.DocumentNumber + "<-)",//(1000016<-)
-                };
-                // //////////////////
-                // todo
-                // //////////////////
-                base.When(c);
+                var srcInOut = AssertDocumentStatus(c.DocumentNumber, DocumentStatusIds.Completed);
+                var reversalInOutInfo = CreateReversalInOutAndCompleteAndClose(c, srcInOut);
+                ReverseUpdateSourceInOut(c, reversalInOutInfo);
+                //base.When(c);
             }
             else
             {
@@ -84,7 +75,15 @@ namespace Dddml.Wms.Domain.InOut.NHibernate
    
         #region Private or protected methods.
 
-        private ICreateInOut CreateReversalInOutAndComplete(InOutCommands.DocumentAction c, IInOutState inOut)
+        private void ReverseUpdateSourceInOut(InOutCommands.DocumentAction c, ICreateInOut reversalInOutInfo)
+        {
+            //源单据前向关联到反转单据：
+            var reversalDocumentNumber = reversalInOutInfo.DocumentNumber;
+            var description = "(" + reversalInOutInfo.DocumentNumber + "<-)";//(1000016<-)
+            Update(c, ar => ((InOutAggregate)ar).Reverse(reversalDocumentNumber, description, c.Version, c.CommandId, c.RequesterId));
+        }
+
+        private ICreateInOut CreateReversalInOutAndCompleteAndClose(InOutCommands.DocumentAction c, IInOutState inOut)
         {
             var createReversalInOut = CreateReversalInOut(inOut);
            
