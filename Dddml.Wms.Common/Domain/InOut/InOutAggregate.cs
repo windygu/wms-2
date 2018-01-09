@@ -6,8 +6,15 @@ using System.Text;
 
 namespace Dddml.Wms.Domain.InOut
 {
+    /// <summary>
+    /// InOut Aggregate.
+    /// </summary>
     public partial class InOutAggregate
     {
+        // //////////////////////////////////////////////
+        // Aggregate 只负责更新聚合内的状态。
+        // //////////////////////////////////////////////
+
         public virtual void DocumentAction(string value, string commandId, string requesterId)
         {
             var e = NewInOutStateMergePatched(commandId, requesterId);
