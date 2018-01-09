@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\AttributeSetInstance\AttributeSetInstanceIdGenerator.cs" />
+    <Compile Include="Domain\Hello\HelloState.cs" />
     <Compile Include="Domain\InOut\NHibernate\InOutApplicationService.cs" />
     <Compile Include="Domain\Listeners\InventoryItemEventListener.cs" />
     <Compile Include="Domain\NHibernate\NodaMoneyType.cs" />
@@ -811,6 +812,7 @@
       <DependentUpon>GenerateTreesConfig.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Domain\NHibernate\Mappings\TypeDefs.hbm.xml" />
+    <EmbeddedResource Include="Domain\Hello\NHibernate\Mappings\HelloState.hbm.xml" />
     <Content Include="Generated\Domain\AttributeAliasMvo\NHibernate\GenerateAttributeAliasMvoDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

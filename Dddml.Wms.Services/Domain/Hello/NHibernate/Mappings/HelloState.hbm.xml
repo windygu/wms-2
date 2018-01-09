@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+				   assembly="Dddml.Wms.Services"
+				   namespace="Dddml.Wms.Domain.Hello">
+
+  <class name="Dddml.Wms.Services.Domain.Hello.HelloState" table="Hello">
+
+    <id name="Id">
+      <generator class="hilo">
+        <param name="table">nhibernate_hilo_table</param>
+        <param name="column">next_val</param>
+        <param name="max_lo">5</param>
+      </generator>
+    </id>
+
+    <property name="Message" ></property>
+
+  </class>
+
+</hibernate-mapping>
+

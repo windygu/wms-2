@@ -1,4 +1,6 @@
 
+    drop table if exists Hello;
+
     drop table if exists Attributes;
 
     drop table if exists AttributeStateEvents;
@@ -228,6 +230,14 @@
     drop table if exists RejectionReasons;
 
     drop table if exists RejectionReasonStateEvents;
+
+    drop table if exists nhibernate_hilo_table;
+
+    create table Hello (
+        Id BIGINT not null,
+       Message VARCHAR(255),
+       primary key (Id)
+    );
 
     create table Attributes (
         AttributeId VARCHAR(50) not null,
@@ -3990,3 +4000,9 @@
        IsPropertyActiveRemoved TINYINT(1),
        primary key (RejectionReasonId, Version)
     );
+
+    create table nhibernate_hilo_table (
+         next_val BIGINT 
+    );
+
+    insert into nhibernate_hilo_table values ( 1 );

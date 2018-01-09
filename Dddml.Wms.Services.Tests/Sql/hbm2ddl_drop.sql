@@ -1,4 +1,6 @@
 
+    drop table if exists Hello;
+
     drop table if exists Attributes;
 
     drop table if exists AttributeStateEvents;
@@ -228,3 +230,5 @@
     drop table if exists RejectionReasons;
 
     drop table if exists RejectionReasonStateEvents;
+
+    drop table if exists nhibernate_hilo_table;

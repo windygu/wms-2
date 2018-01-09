@@ -83,6 +83,7 @@
     <Compile Include="Specialization\NHibernate\NHibernateEventStoreBase.cs" />
     <Compile Include="Specialization\NHibernate\NHibernateUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Specialization\NHibernate\TableIdGenerator.cs" />
     <Compile Include="Specialization\Spring\SpringApplicationContext.cs" />
   </ItemGroup>
   <ItemGroup>
