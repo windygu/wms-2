@@ -86,6 +86,13 @@ namespace Dddml.Wms.Domain.Audience
             return !Object.Equals(obj1, obj2);
         }
 
+        public override string ToString()
+        {
+            return String.Empty
+                + "ClientId: " + this.ClientId + ", "
+                + "Version: " + this.Version + ", "
+                ;
+        }
 	}
 
 }

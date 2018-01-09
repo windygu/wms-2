@@ -106,6 +106,13 @@ namespace Dddml.Wms.Domain.OrderShipment
             return !Object.Equals(obj1, obj2);
         }
 
+        public override string ToString()
+        {
+            return String.Empty
+                + "OrderShipmentId: " + this.OrderShipmentId + ", "
+                + "Version: " + this.Version + ", "
+                ;
+        }
 	}
 
 }

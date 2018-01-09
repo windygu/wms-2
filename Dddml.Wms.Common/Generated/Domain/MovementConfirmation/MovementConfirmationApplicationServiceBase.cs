@@ -107,7 +107,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
 		public virtual void When(MovementConfirmationCommands.DocumentAction c)
 		{
-			Update(c, ar => ar.DocumentAction(c.Value, c.CommandId, c.RequesterId));
+			Update(c, ar => ar.DocumentAction(c.Value, c.Version, c.CommandId, c.RequesterId));
 		}
 
         public virtual IMovementConfirmationState Get(string documentNumber)

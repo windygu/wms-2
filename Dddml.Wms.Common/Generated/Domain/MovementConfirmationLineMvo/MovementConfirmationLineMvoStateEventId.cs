@@ -97,6 +97,13 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             return !Object.Equals(obj1, obj2);
         }
 
+        public override string ToString()
+        {
+            return String.Empty
+                + "MovementConfirmationLineId: " + this.MovementConfirmationLineId + ", "
+                + "MovementConfirmationVersion: " + this.MovementConfirmationVersion + ", "
+                ;
+        }
 	}
 
 }

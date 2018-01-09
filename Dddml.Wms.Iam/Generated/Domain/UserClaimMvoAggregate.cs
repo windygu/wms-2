@@ -229,9 +229,9 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 
 ////////////////////////
 
-        protected UserClaimMvoStateCreated NewUserClaimMvoStateCreated(string commandId, string requesterId)
+        protected UserClaimMvoStateCreated NewUserClaimMvoStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new UserClaimMvoStateEventId(_state.UserClaimId, ((IUserClaimMvoStateProperties)_state).UserVersion);
+            var stateEventId = new UserClaimMvoStateEventId(_state.UserClaimId, version);
             var e = NewUserClaimMvoStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -242,9 +242,9 @@ namespace Dddml.Wms.Domain.UserClaimMvo
             return e;
         }
 
-        protected UserClaimMvoStateMergePatched NewUserClaimMvoStateMergePatched(string commandId, string requesterId)
+        protected UserClaimMvoStateMergePatched NewUserClaimMvoStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new UserClaimMvoStateEventId(_state.UserClaimId, ((IUserClaimMvoStateProperties)_state).UserVersion);
+            var stateEventId = new UserClaimMvoStateEventId(_state.UserClaimId, version);
             var e = NewUserClaimMvoStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -256,9 +256,9 @@ namespace Dddml.Wms.Domain.UserClaimMvo
         }
 
 
-        protected UserClaimMvoStateDeleted NewUserClaimMvoStateDeleted(string commandId, string requesterId)
+        protected UserClaimMvoStateDeleted NewUserClaimMvoStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new UserClaimMvoStateEventId(_state.UserClaimId, ((IUserClaimMvoStateProperties)_state).UserVersion);
+            var stateEventId = new UserClaimMvoStateEventId(_state.UserClaimId, version);
             var e = NewUserClaimMvoStateDeleted(stateEventId);
 
             e.CommandId = commandId;

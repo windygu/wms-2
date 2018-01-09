@@ -235,10 +235,10 @@ aggregates:
               # type: decimal
 
             RmaLineNumber: 
-              type: long
+              type: string
 
             ReversalLineNumber:
-              type: long
+              type: string
                 
             #c_charge_id numeric(10,0),
             #c_project_id numeric(10,0),

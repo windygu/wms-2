@@ -97,6 +97,13 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             return !Object.Equals(obj1, obj2);
         }
 
+        public override string ToString()
+        {
+            return String.Empty
+                + "PhysicalInventoryLineId: " + this.PhysicalInventoryLineId + ", "
+                + "PhysicalInventoryVersion: " + this.PhysicalInventoryVersion + ", "
+                ;
+        }
 	}
 
 }

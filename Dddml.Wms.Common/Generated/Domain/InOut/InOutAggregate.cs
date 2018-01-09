@@ -374,9 +374,9 @@ namespace Dddml.Wms.Domain.InOut
 
 ////////////////////////
 
-        protected InOutStateCreated NewInOutStateCreated(string commandId, string requesterId)
+        protected InOutStateCreated NewInOutStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new InOutStateEventId(_state.DocumentNumber, ((IInOutStateProperties)_state).Version);
+            var stateEventId = new InOutStateEventId(_state.DocumentNumber, version);
             var e = NewInOutStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -387,9 +387,9 @@ namespace Dddml.Wms.Domain.InOut
             return e;
         }
 
-        protected InOutStateMergePatched NewInOutStateMergePatched(string commandId, string requesterId)
+        protected InOutStateMergePatched NewInOutStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new InOutStateEventId(_state.DocumentNumber, ((IInOutStateProperties)_state).Version);
+            var stateEventId = new InOutStateEventId(_state.DocumentNumber, version);
             var e = NewInOutStateMergePatched(stateEventId);
 
             e.CommandId = commandId;

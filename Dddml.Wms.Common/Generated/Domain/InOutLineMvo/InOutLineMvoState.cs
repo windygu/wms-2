@@ -193,9 +193,9 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
             this.Processed = (e.Processed != null && e.Processed.HasValue) ? e.Processed.Value : default(bool);
 
-            this.RmaLineNumber = (e.RmaLineNumber != null && e.RmaLineNumber.HasValue) ? e.RmaLineNumber.Value : default(long);
+			this.RmaLineNumber = e.RmaLineNumber;
 
-            this.ReversalLineNumber = (e.ReversalLineNumber != null && e.ReversalLineNumber.HasValue) ? e.ReversalLineNumber.Value : default(long);
+			this.ReversalLineNumber = e.ReversalLineNumber;
 
             this.Version = (e.Version != null && e.Version.HasValue) ? e.Version.Value : default(long);
 
@@ -396,24 +396,24 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 			{
 				if (e.IsPropertyRmaLineNumberRemoved)
 				{
-					this.RmaLineNumber = default(long);
+					this.RmaLineNumber = default(string);
 				}
 			}
 			else
 			{
-				this.RmaLineNumber = (e.RmaLineNumber != null && e.RmaLineNumber.HasValue) ? e.RmaLineNumber.Value : default(long);
+				this.RmaLineNumber = e.RmaLineNumber;
 			}
 
 			if (e.ReversalLineNumber == null)
 			{
 				if (e.IsPropertyReversalLineNumberRemoved)
 				{
-					this.ReversalLineNumber = default(long);
+					this.ReversalLineNumber = default(string);
 				}
 			}
 			else
 			{
-				this.ReversalLineNumber = (e.ReversalLineNumber != null && e.ReversalLineNumber.HasValue) ? e.ReversalLineNumber.Value : default(long);
+				this.ReversalLineNumber = e.ReversalLineNumber;
 			}
 
 			if (e.Version == null)

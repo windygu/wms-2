@@ -131,26 +131,26 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
         this.processed = processed;
     }
 
-    private Long rmaLineNumber;
+    private String rmaLineNumber;
 
-    public Long getRmaLineNumber()
+    public String getRmaLineNumber()
     {
         return this.rmaLineNumber;
     }
 
-    public void setRmaLineNumber(Long rmaLineNumber)
+    public void setRmaLineNumber(String rmaLineNumber)
     {
         this.rmaLineNumber = rmaLineNumber;
     }
 
-    private Long reversalLineNumber;
+    private String reversalLineNumber;
 
-    public Long getReversalLineNumber()
+    public String getReversalLineNumber()
     {
         return this.reversalLineNumber;
     }
 
-    public void setReversalLineNumber(Long reversalLineNumber)
+    public void setReversalLineNumber(String reversalLineNumber)
     {
         this.reversalLineNumber = reversalLineNumber;
     }

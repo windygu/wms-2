@@ -188,9 +188,9 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
 ////////////////////////
 
-        protected AttributeSetInstanceStateCreated NewAttributeSetInstanceStateCreated(string commandId, string requesterId)
+        protected AttributeSetInstanceStateCreated NewAttributeSetInstanceStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new AttributeSetInstanceStateEventId(_state.AttributeSetInstanceId, ((IAttributeSetInstanceStateProperties)_state).Version);
+            var stateEventId = new AttributeSetInstanceStateEventId(_state.AttributeSetInstanceId, version);
             var e = NewAttributeSetInstanceStateCreated(stateEventId);
 
             e.CommandId = commandId;

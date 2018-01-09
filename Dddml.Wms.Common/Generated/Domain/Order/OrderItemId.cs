@@ -86,6 +86,13 @@ namespace Dddml.Wms.Domain.Order
             return !Object.Equals(obj1, obj2);
         }
 
+        public override string ToString()
+        {
+            return String.Empty
+                + "OrderId: " + this.OrderId + ", "
+                + "OrderItemSeqId: " + this.OrderItemSeqId + ", "
+                ;
+        }
 	}
 
 }

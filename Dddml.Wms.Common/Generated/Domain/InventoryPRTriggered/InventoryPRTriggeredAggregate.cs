@@ -144,9 +144,9 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 
 ////////////////////////
 
-        protected InventoryPRTriggeredStateCreated NewInventoryPRTriggeredStateCreated(string commandId, string requesterId)
+        protected InventoryPRTriggeredStateCreated NewInventoryPRTriggeredStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new InventoryPRTriggeredStateEventId(_state.InventoryPRTriggeredId, ((IInventoryPRTriggeredStateProperties)_state).Version);
+            var stateEventId = new InventoryPRTriggeredStateEventId(_state.InventoryPRTriggeredId, version);
             var e = NewInventoryPRTriggeredStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -157,9 +157,9 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
             return e;
         }
 
-        protected InventoryPRTriggeredStateMergePatched NewInventoryPRTriggeredStateMergePatched(string commandId, string requesterId)
+        protected InventoryPRTriggeredStateMergePatched NewInventoryPRTriggeredStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new InventoryPRTriggeredStateEventId(_state.InventoryPRTriggeredId, ((IInventoryPRTriggeredStateProperties)_state).Version);
+            var stateEventId = new InventoryPRTriggeredStateEventId(_state.InventoryPRTriggeredId, version);
             var e = NewInventoryPRTriggeredStateMergePatched(stateEventId);
 
             e.CommandId = commandId;

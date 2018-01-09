@@ -57,13 +57,13 @@ public interface InOutLineState
 
     void setProcessed(Boolean processed);
 
-    Long getRmaLineNumber();
+    String getRmaLineNumber();
 
-    void setRmaLineNumber(Long rmaLineNumber);
+    void setRmaLineNumber(String rmaLineNumber);
 
-    Long getReversalLineNumber();
+    String getReversalLineNumber();
 
-    void setReversalLineNumber(Long reversalLineNumber);
+    void setReversalLineNumber(String reversalLineNumber);
 
     Long getVersion();
 

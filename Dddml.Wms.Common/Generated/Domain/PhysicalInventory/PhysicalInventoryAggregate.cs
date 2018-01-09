@@ -336,9 +336,9 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
 ////////////////////////
 
-        protected PhysicalInventoryStateCreated NewPhysicalInventoryStateCreated(string commandId, string requesterId)
+        protected PhysicalInventoryStateCreated NewPhysicalInventoryStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new PhysicalInventoryStateEventId(_state.DocumentNumber, ((IPhysicalInventoryStateProperties)_state).Version);
+            var stateEventId = new PhysicalInventoryStateEventId(_state.DocumentNumber, version);
             var e = NewPhysicalInventoryStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -349,9 +349,9 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             return e;
         }
 
-        protected PhysicalInventoryStateMergePatched NewPhysicalInventoryStateMergePatched(string commandId, string requesterId)
+        protected PhysicalInventoryStateMergePatched NewPhysicalInventoryStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new PhysicalInventoryStateEventId(_state.DocumentNumber, ((IPhysicalInventoryStateProperties)_state).Version);
+            var stateEventId = new PhysicalInventoryStateEventId(_state.DocumentNumber, version);
             var e = NewPhysicalInventoryStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -363,9 +363,9 @@ namespace Dddml.Wms.Domain.PhysicalInventory
         }
 
 
-        protected PhysicalInventoryStateDeleted NewPhysicalInventoryStateDeleted(string commandId, string requesterId)
+        protected PhysicalInventoryStateDeleted NewPhysicalInventoryStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new PhysicalInventoryStateEventId(_state.DocumentNumber, ((IPhysicalInventoryStateProperties)_state).Version);
+            var stateEventId = new PhysicalInventoryStateEventId(_state.DocumentNumber, version);
             var e = NewPhysicalInventoryStateDeleted(stateEventId);
 
             e.CommandId = commandId;

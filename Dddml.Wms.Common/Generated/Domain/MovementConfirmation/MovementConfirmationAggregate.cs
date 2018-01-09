@@ -321,9 +321,9 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
 ////////////////////////
 
-        protected MovementConfirmationStateCreated NewMovementConfirmationStateCreated(string commandId, string requesterId)
+        protected MovementConfirmationStateCreated NewMovementConfirmationStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new MovementConfirmationStateEventId(_state.DocumentNumber, ((IMovementConfirmationStateProperties)_state).Version);
+            var stateEventId = new MovementConfirmationStateEventId(_state.DocumentNumber, version);
             var e = NewMovementConfirmationStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -334,9 +334,9 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             return e;
         }
 
-        protected MovementConfirmationStateMergePatched NewMovementConfirmationStateMergePatched(string commandId, string requesterId)
+        protected MovementConfirmationStateMergePatched NewMovementConfirmationStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new MovementConfirmationStateEventId(_state.DocumentNumber, ((IMovementConfirmationStateProperties)_state).Version);
+            var stateEventId = new MovementConfirmationStateEventId(_state.DocumentNumber, version);
             var e = NewMovementConfirmationStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -348,9 +348,9 @@ namespace Dddml.Wms.Domain.MovementConfirmation
         }
 
 
-        protected MovementConfirmationStateDeleted NewMovementConfirmationStateDeleted(string commandId, string requesterId)
+        protected MovementConfirmationStateDeleted NewMovementConfirmationStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new MovementConfirmationStateEventId(_state.DocumentNumber, ((IMovementConfirmationStateProperties)_state).Version);
+            var stateEventId = new MovementConfirmationStateEventId(_state.DocumentNumber, version);
             var e = NewMovementConfirmationStateDeleted(stateEventId);
 
             e.CommandId = commandId;

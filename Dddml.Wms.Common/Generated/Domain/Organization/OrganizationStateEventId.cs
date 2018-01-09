@@ -86,6 +86,13 @@ namespace Dddml.Wms.Domain.Organization
             return !Object.Equals(obj1, obj2);
         }
 
+        public override string ToString()
+        {
+            return String.Empty
+                + "PartyId: " + this.PartyId + ", "
+                + "Version: " + this.Version + ", "
+                ;
+        }
 	}
 
 }

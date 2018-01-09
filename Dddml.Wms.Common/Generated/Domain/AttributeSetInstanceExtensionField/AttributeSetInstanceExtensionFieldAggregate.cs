@@ -183,9 +183,9 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionField
 
 ////////////////////////
 
-        protected AttributeSetInstanceExtensionFieldStateCreated NewAttributeSetInstanceExtensionFieldStateCreated(string commandId, string requesterId)
+        protected AttributeSetInstanceExtensionFieldStateCreated NewAttributeSetInstanceExtensionFieldStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new AttributeSetInstanceExtensionFieldStateEventId(_state.Name, ((IAttributeSetInstanceExtensionFieldStateProperties)_state).Version);
+            var stateEventId = new AttributeSetInstanceExtensionFieldStateEventId(_state.Name, version);
             var e = NewAttributeSetInstanceExtensionFieldStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -196,9 +196,9 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionField
             return e;
         }
 
-        protected AttributeSetInstanceExtensionFieldStateMergePatched NewAttributeSetInstanceExtensionFieldStateMergePatched(string commandId, string requesterId)
+        protected AttributeSetInstanceExtensionFieldStateMergePatched NewAttributeSetInstanceExtensionFieldStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new AttributeSetInstanceExtensionFieldStateEventId(_state.Name, ((IAttributeSetInstanceExtensionFieldStateProperties)_state).Version);
+            var stateEventId = new AttributeSetInstanceExtensionFieldStateEventId(_state.Name, version);
             var e = NewAttributeSetInstanceExtensionFieldStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -210,9 +210,9 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionField
         }
 
 
-        protected AttributeSetInstanceExtensionFieldStateDeleted NewAttributeSetInstanceExtensionFieldStateDeleted(string commandId, string requesterId)
+        protected AttributeSetInstanceExtensionFieldStateDeleted NewAttributeSetInstanceExtensionFieldStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new AttributeSetInstanceExtensionFieldStateEventId(_state.Name, ((IAttributeSetInstanceExtensionFieldStateProperties)_state).Version);
+            var stateEventId = new AttributeSetInstanceExtensionFieldStateEventId(_state.Name, version);
             var e = NewAttributeSetInstanceExtensionFieldStateDeleted(stateEventId);
 
             e.CommandId = commandId;

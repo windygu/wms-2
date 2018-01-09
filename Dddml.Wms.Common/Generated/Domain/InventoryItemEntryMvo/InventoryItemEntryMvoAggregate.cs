@@ -189,9 +189,9 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
 ////////////////////////
 
-        protected InventoryItemEntryMvoStateCreated NewInventoryItemEntryMvoStateCreated(string commandId, string requesterId)
+        protected InventoryItemEntryMvoStateCreated NewInventoryItemEntryMvoStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new InventoryItemEntryMvoStateEventId(_state.InventoryItemEntryId, ((IInventoryItemEntryMvoStateProperties)_state).InventoryItemVersion);
+            var stateEventId = new InventoryItemEntryMvoStateEventId(_state.InventoryItemEntryId, version);
             var e = NewInventoryItemEntryMvoStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -202,9 +202,9 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             return e;
         }
 
-        protected InventoryItemEntryMvoStateMergePatched NewInventoryItemEntryMvoStateMergePatched(string commandId, string requesterId)
+        protected InventoryItemEntryMvoStateMergePatched NewInventoryItemEntryMvoStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new InventoryItemEntryMvoStateEventId(_state.InventoryItemEntryId, ((IInventoryItemEntryMvoStateProperties)_state).InventoryItemVersion);
+            var stateEventId = new InventoryItemEntryMvoStateEventId(_state.InventoryItemEntryId, version);
             var e = NewInventoryItemEntryMvoStateMergePatched(stateEventId);
 
             e.CommandId = commandId;

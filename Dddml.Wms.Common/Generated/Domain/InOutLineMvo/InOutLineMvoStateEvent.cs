@@ -42,9 +42,9 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		public virtual bool? Processed { get; set; }
 
-		public virtual long? RmaLineNumber { get; set; }
+		public virtual string RmaLineNumber { get; set; }
 
-		public virtual long? ReversalLineNumber { get; set; }
+		public virtual string ReversalLineNumber { get; set; }
 
 		public virtual long? Version { get; set; }
 

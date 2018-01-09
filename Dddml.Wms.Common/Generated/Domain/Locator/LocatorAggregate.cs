@@ -195,9 +195,9 @@ namespace Dddml.Wms.Domain.Locator
 
 ////////////////////////
 
-        protected LocatorStateCreated NewLocatorStateCreated(string commandId, string requesterId)
+        protected LocatorStateCreated NewLocatorStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new LocatorStateEventId(_state.LocatorId, ((ILocatorStateProperties)_state).Version);
+            var stateEventId = new LocatorStateEventId(_state.LocatorId, version);
             var e = NewLocatorStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -208,9 +208,9 @@ namespace Dddml.Wms.Domain.Locator
             return e;
         }
 
-        protected LocatorStateMergePatched NewLocatorStateMergePatched(string commandId, string requesterId)
+        protected LocatorStateMergePatched NewLocatorStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new LocatorStateEventId(_state.LocatorId, ((ILocatorStateProperties)_state).Version);
+            var stateEventId = new LocatorStateEventId(_state.LocatorId, version);
             var e = NewLocatorStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -222,9 +222,9 @@ namespace Dddml.Wms.Domain.Locator
         }
 
 
-        protected LocatorStateDeleted NewLocatorStateDeleted(string commandId, string requesterId)
+        protected LocatorStateDeleted NewLocatorStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new LocatorStateEventId(_state.LocatorId, ((ILocatorStateProperties)_state).Version);
+            var stateEventId = new LocatorStateEventId(_state.LocatorId, version);
             var e = NewLocatorStateDeleted(stateEventId);
 
             e.CommandId = commandId;

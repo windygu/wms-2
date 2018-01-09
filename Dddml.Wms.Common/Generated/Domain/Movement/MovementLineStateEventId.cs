@@ -98,6 +98,14 @@ namespace Dddml.Wms.Domain.Movement
             return !Object.Equals(obj1, obj2);
         }
 
+        public override string ToString()
+        {
+            return String.Empty
+                + "MovementDocumentNumber: " + this.MovementDocumentNumber + ", "
+                + "LineNumber: " + this.LineNumber + ", "
+                + "MovementVersion: " + this.MovementVersion + ", "
+                ;
+        }
 	}
 
 }

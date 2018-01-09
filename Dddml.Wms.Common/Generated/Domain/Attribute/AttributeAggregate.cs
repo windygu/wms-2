@@ -427,9 +427,9 @@ namespace Dddml.Wms.Domain.Attribute
 
 ////////////////////////
 
-        protected AttributeStateCreated NewAttributeStateCreated(string commandId, string requesterId)
+        protected AttributeStateCreated NewAttributeStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new AttributeStateEventId(_state.AttributeId, ((IAttributeStateProperties)_state).Version);
+            var stateEventId = new AttributeStateEventId(_state.AttributeId, version);
             var e = NewAttributeStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -440,9 +440,9 @@ namespace Dddml.Wms.Domain.Attribute
             return e;
         }
 
-        protected AttributeStateMergePatched NewAttributeStateMergePatched(string commandId, string requesterId)
+        protected AttributeStateMergePatched NewAttributeStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new AttributeStateEventId(_state.AttributeId, ((IAttributeStateProperties)_state).Version);
+            var stateEventId = new AttributeStateEventId(_state.AttributeId, version);
             var e = NewAttributeStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -454,9 +454,9 @@ namespace Dddml.Wms.Domain.Attribute
         }
 
 
-        protected AttributeStateDeleted NewAttributeStateDeleted(string commandId, string requesterId)
+        protected AttributeStateDeleted NewAttributeStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new AttributeStateEventId(_state.AttributeId, ((IAttributeStateProperties)_state).Version);
+            var stateEventId = new AttributeStateEventId(_state.AttributeId, version);
             var e = NewAttributeStateDeleted(stateEventId);
 
             e.CommandId = commandId;

@@ -220,9 +220,9 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 
 ////////////////////////
 
-        protected AttributeAliasMvoStateCreated NewAttributeAliasMvoStateCreated(string commandId, string requesterId)
+        protected AttributeAliasMvoStateCreated NewAttributeAliasMvoStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new AttributeAliasMvoStateEventId(_state.AttributeAliasId, ((IAttributeAliasMvoStateProperties)_state).AttributeVersion);
+            var stateEventId = new AttributeAliasMvoStateEventId(_state.AttributeAliasId, version);
             var e = NewAttributeAliasMvoStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -233,9 +233,9 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
             return e;
         }
 
-        protected AttributeAliasMvoStateMergePatched NewAttributeAliasMvoStateMergePatched(string commandId, string requesterId)
+        protected AttributeAliasMvoStateMergePatched NewAttributeAliasMvoStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new AttributeAliasMvoStateEventId(_state.AttributeAliasId, ((IAttributeAliasMvoStateProperties)_state).AttributeVersion);
+            var stateEventId = new AttributeAliasMvoStateEventId(_state.AttributeAliasId, version);
             var e = NewAttributeAliasMvoStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -247,9 +247,9 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
         }
 
 
-        protected AttributeAliasMvoStateDeleted NewAttributeAliasMvoStateDeleted(string commandId, string requesterId)
+        protected AttributeAliasMvoStateDeleted NewAttributeAliasMvoStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new AttributeAliasMvoStateEventId(_state.AttributeAliasId, ((IAttributeAliasMvoStateProperties)_state).AttributeVersion);
+            var stateEventId = new AttributeAliasMvoStateEventId(_state.AttributeAliasId, version);
             var e = NewAttributeAliasMvoStateDeleted(stateEventId);
 
             e.CommandId = commandId;

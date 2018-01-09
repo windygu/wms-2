@@ -86,6 +86,13 @@ namespace Dddml.Wms.Domain.AttributeSet
             return !Object.Equals(obj1, obj2);
         }
 
+        public override string ToString()
+        {
+            return String.Empty
+                + "AttributeSetId: " + this.AttributeSetId + ", "
+                + "AttributeId: " + this.AttributeId + ", "
+                ;
+        }
 	}
 
 }

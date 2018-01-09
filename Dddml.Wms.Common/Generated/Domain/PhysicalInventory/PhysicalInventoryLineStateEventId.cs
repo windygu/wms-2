@@ -98,6 +98,14 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             return !Object.Equals(obj1, obj2);
         }
 
+        public override string ToString()
+        {
+            return String.Empty
+                + "PhysicalInventoryDocumentNumber: " + this.PhysicalInventoryDocumentNumber + ", "
+                + "LineNumber: " + this.LineNumber + ", "
+                + "PhysicalInventoryVersion: " + this.PhysicalInventoryVersion + ", "
+                ;
+        }
 	}
 
 }

@@ -174,9 +174,9 @@ namespace Dddml.Wms.Domain.Audience
 
 ////////////////////////
 
-        protected AudienceStateCreated NewAudienceStateCreated(string commandId, string requesterId)
+        protected AudienceStateCreated NewAudienceStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new AudienceStateEventId(_state.ClientId, ((IAudienceStateProperties)_state).Version);
+            var stateEventId = new AudienceStateEventId(_state.ClientId, version);
             var e = NewAudienceStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -187,9 +187,9 @@ namespace Dddml.Wms.Domain.Audience
             return e;
         }
 
-        protected AudienceStateMergePatched NewAudienceStateMergePatched(string commandId, string requesterId)
+        protected AudienceStateMergePatched NewAudienceStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new AudienceStateEventId(_state.ClientId, ((IAudienceStateProperties)_state).Version);
+            var stateEventId = new AudienceStateEventId(_state.ClientId, version);
             var e = NewAudienceStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -201,9 +201,9 @@ namespace Dddml.Wms.Domain.Audience
         }
 
 
-        protected AudienceStateDeleted NewAudienceStateDeleted(string commandId, string requesterId)
+        protected AudienceStateDeleted NewAudienceStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new AudienceStateEventId(_state.ClientId, ((IAudienceStateProperties)_state).Version);
+            var stateEventId = new AudienceStateEventId(_state.ClientId, version);
             var e = NewAudienceStateDeleted(stateEventId);
 
             e.CommandId = commandId;

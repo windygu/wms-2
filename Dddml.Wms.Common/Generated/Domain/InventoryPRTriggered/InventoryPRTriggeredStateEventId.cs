@@ -112,6 +112,13 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
             return !Object.Equals(obj1, obj2);
         }
 
+        public override string ToString()
+        {
+            return String.Empty
+                + "InventoryPRTriggeredId: " + this.InventoryPRTriggeredId + ", "
+                + "Version: " + this.Version + ", "
+                ;
+        }
 	}
 
 }

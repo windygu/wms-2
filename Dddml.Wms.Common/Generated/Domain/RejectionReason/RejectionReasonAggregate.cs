@@ -171,9 +171,9 @@ namespace Dddml.Wms.Domain.RejectionReason
 
 ////////////////////////
 
-        protected RejectionReasonStateCreated NewRejectionReasonStateCreated(string commandId, string requesterId)
+        protected RejectionReasonStateCreated NewRejectionReasonStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new RejectionReasonStateEventId(_state.RejectionReasonId, ((IRejectionReasonStateProperties)_state).Version);
+            var stateEventId = new RejectionReasonStateEventId(_state.RejectionReasonId, version);
             var e = NewRejectionReasonStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -184,9 +184,9 @@ namespace Dddml.Wms.Domain.RejectionReason
             return e;
         }
 
-        protected RejectionReasonStateMergePatched NewRejectionReasonStateMergePatched(string commandId, string requesterId)
+        protected RejectionReasonStateMergePatched NewRejectionReasonStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new RejectionReasonStateEventId(_state.RejectionReasonId, ((IRejectionReasonStateProperties)_state).Version);
+            var stateEventId = new RejectionReasonStateEventId(_state.RejectionReasonId, version);
             var e = NewRejectionReasonStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -198,9 +198,9 @@ namespace Dddml.Wms.Domain.RejectionReason
         }
 
 
-        protected RejectionReasonStateDeleted NewRejectionReasonStateDeleted(string commandId, string requesterId)
+        protected RejectionReasonStateDeleted NewRejectionReasonStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new RejectionReasonStateEventId(_state.RejectionReasonId, ((IRejectionReasonStateProperties)_state).Version);
+            var stateEventId = new RejectionReasonStateEventId(_state.RejectionReasonId, version);
             var e = NewRejectionReasonStateDeleted(stateEventId);
 
             e.CommandId = commandId;

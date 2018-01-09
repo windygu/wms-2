@@ -180,9 +180,9 @@ namespace Dddml.Wms.Domain.Organization
 
 ////////////////////////
 
-        protected OrganizationStateCreated NewOrganizationStateCreated(string commandId, string requesterId)
+        protected OrganizationStateCreated NewOrganizationStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new OrganizationStateEventId(_state.PartyId, ((IOrganizationStateProperties)_state).Version);
+            var stateEventId = new OrganizationStateEventId(_state.PartyId, version);
             var e = NewOrganizationStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -193,9 +193,9 @@ namespace Dddml.Wms.Domain.Organization
             return e;
         }
 
-        protected OrganizationStateMergePatched NewOrganizationStateMergePatched(string commandId, string requesterId)
+        protected OrganizationStateMergePatched NewOrganizationStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new OrganizationStateEventId(_state.PartyId, ((IOrganizationStateProperties)_state).Version);
+            var stateEventId = new OrganizationStateEventId(_state.PartyId, version);
             var e = NewOrganizationStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -207,9 +207,9 @@ namespace Dddml.Wms.Domain.Organization
         }
 
 
-        protected OrganizationStateDeleted NewOrganizationStateDeleted(string commandId, string requesterId)
+        protected OrganizationStateDeleted NewOrganizationStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new OrganizationStateEventId(_state.PartyId, ((IOrganizationStateProperties)_state).Version);
+            var stateEventId = new OrganizationStateEventId(_state.PartyId, version);
             var e = NewOrganizationStateDeleted(stateEventId);
 
             e.CommandId = commandId;

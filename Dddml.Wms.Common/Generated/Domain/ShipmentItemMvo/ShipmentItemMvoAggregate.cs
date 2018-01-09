@@ -252,9 +252,9 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 
 ////////////////////////
 
-        protected ShipmentItemMvoStateCreated NewShipmentItemMvoStateCreated(string commandId, string requesterId)
+        protected ShipmentItemMvoStateCreated NewShipmentItemMvoStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new ShipmentItemMvoStateEventId(_state.ShipmentItemId, ((IShipmentItemMvoStateProperties)_state).ShipmentVersion);
+            var stateEventId = new ShipmentItemMvoStateEventId(_state.ShipmentItemId, version);
             var e = NewShipmentItemMvoStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -265,9 +265,9 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             return e;
         }
 
-        protected ShipmentItemMvoStateMergePatched NewShipmentItemMvoStateMergePatched(string commandId, string requesterId)
+        protected ShipmentItemMvoStateMergePatched NewShipmentItemMvoStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new ShipmentItemMvoStateEventId(_state.ShipmentItemId, ((IShipmentItemMvoStateProperties)_state).ShipmentVersion);
+            var stateEventId = new ShipmentItemMvoStateEventId(_state.ShipmentItemId, version);
             var e = NewShipmentItemMvoStateMergePatched(stateEventId);
 
             e.CommandId = commandId;

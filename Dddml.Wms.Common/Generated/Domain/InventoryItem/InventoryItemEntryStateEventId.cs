@@ -113,6 +113,14 @@ namespace Dddml.Wms.Domain.InventoryItem
             return !Object.Equals(obj1, obj2);
         }
 
+        public override string ToString()
+        {
+            return String.Empty
+                + "InventoryItemId: " + this.InventoryItemId + ", "
+                + "EntrySeqId: " + this.EntrySeqId + ", "
+                + "InventoryItemVersion: " + this.InventoryItemVersion + ", "
+                ;
+        }
 	}
 
 }

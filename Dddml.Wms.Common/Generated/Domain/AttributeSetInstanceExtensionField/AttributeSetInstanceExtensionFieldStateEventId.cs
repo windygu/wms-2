@@ -86,6 +86,13 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionField
             return !Object.Equals(obj1, obj2);
         }
 
+        public override string ToString()
+        {
+            return String.Empty
+                + "Name: " + this.Name + ", "
+                + "Version: " + this.Version + ", "
+                ;
+        }
 	}
 
 }

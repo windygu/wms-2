@@ -75,13 +75,13 @@ namespace Dddml.Wms.Domain.InOut
             set;
         }
 
-        public virtual long? RmaLineNumber
+        public virtual string RmaLineNumber
         {
             get;
             set;
         }
 
-        public virtual long? ReversalLineNumber
+        public virtual string ReversalLineNumber
         {
             get;
             set;
@@ -142,8 +142,8 @@ namespace Dddml.Wms.Domain.InOut
             if (this.PickedQuantity != null && this.PickedQuantity.HasValue) { state.PickedQuantity = this.PickedQuantity.Value; }
             if (this.IsInvoiced != null && this.IsInvoiced.HasValue) { state.IsInvoiced = this.IsInvoiced.Value; }
             if (this.Processed != null && this.Processed.HasValue) { state.Processed = this.Processed.Value; }
-            if (this.RmaLineNumber != null && this.RmaLineNumber.HasValue) { state.RmaLineNumber = this.RmaLineNumber.Value; }
-            if (this.ReversalLineNumber != null && this.ReversalLineNumber.HasValue) { state.ReversalLineNumber = this.ReversalLineNumber.Value; }
+            state.RmaLineNumber = this.RmaLineNumber;
+            state.ReversalLineNumber = this.ReversalLineNumber;
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             state.InOutDocumentNumber = this.InOutDocumentNumber;

@@ -211,9 +211,9 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
 ////////////////////////
 
-        protected AttributeUseMvoStateCreated NewAttributeUseMvoStateCreated(string commandId, string requesterId)
+        protected AttributeUseMvoStateCreated NewAttributeUseMvoStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new AttributeUseMvoStateEventId(_state.AttributeSetAttributeUseId, ((IAttributeUseMvoStateProperties)_state).AttributeSetVersion);
+            var stateEventId = new AttributeUseMvoStateEventId(_state.AttributeSetAttributeUseId, version);
             var e = NewAttributeUseMvoStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -224,9 +224,9 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             return e;
         }
 
-        protected AttributeUseMvoStateMergePatched NewAttributeUseMvoStateMergePatched(string commandId, string requesterId)
+        protected AttributeUseMvoStateMergePatched NewAttributeUseMvoStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new AttributeUseMvoStateEventId(_state.AttributeSetAttributeUseId, ((IAttributeUseMvoStateProperties)_state).AttributeSetVersion);
+            var stateEventId = new AttributeUseMvoStateEventId(_state.AttributeSetAttributeUseId, version);
             var e = NewAttributeUseMvoStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -238,9 +238,9 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
         }
 
 
-        protected AttributeUseMvoStateDeleted NewAttributeUseMvoStateDeleted(string commandId, string requesterId)
+        protected AttributeUseMvoStateDeleted NewAttributeUseMvoStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new AttributeUseMvoStateEventId(_state.AttributeSetAttributeUseId, ((IAttributeUseMvoStateProperties)_state).AttributeSetVersion);
+            var stateEventId = new AttributeUseMvoStateEventId(_state.AttributeSetAttributeUseId, version);
             var e = NewAttributeUseMvoStateDeleted(stateEventId);
 
             e.CommandId = commandId;

@@ -223,9 +223,9 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 
 ////////////////////////
 
-        protected UserPermissionMvoStateCreated NewUserPermissionMvoStateCreated(string commandId, string requesterId)
+        protected UserPermissionMvoStateCreated NewUserPermissionMvoStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new UserPermissionMvoStateEventId(_state.UserPermissionId, ((IUserPermissionMvoStateProperties)_state).UserVersion);
+            var stateEventId = new UserPermissionMvoStateEventId(_state.UserPermissionId, version);
             var e = NewUserPermissionMvoStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -236,9 +236,9 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
             return e;
         }
 
-        protected UserPermissionMvoStateMergePatched NewUserPermissionMvoStateMergePatched(string commandId, string requesterId)
+        protected UserPermissionMvoStateMergePatched NewUserPermissionMvoStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new UserPermissionMvoStateEventId(_state.UserPermissionId, ((IUserPermissionMvoStateProperties)_state).UserVersion);
+            var stateEventId = new UserPermissionMvoStateEventId(_state.UserPermissionId, version);
             var e = NewUserPermissionMvoStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -250,9 +250,9 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
         }
 
 
-        protected UserPermissionMvoStateDeleted NewUserPermissionMvoStateDeleted(string commandId, string requesterId)
+        protected UserPermissionMvoStateDeleted NewUserPermissionMvoStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new UserPermissionMvoStateEventId(_state.UserPermissionId, ((IUserPermissionMvoStateProperties)_state).UserVersion);
+            var stateEventId = new UserPermissionMvoStateEventId(_state.UserPermissionId, version);
             var e = NewUserPermissionMvoStateDeleted(stateEventId);
 
             e.CommandId = commandId;

@@ -98,6 +98,14 @@ namespace Dddml.Wms.Domain.InventoryItem
             return !Object.Equals(obj1, obj2);
         }
 
+        public override string ToString()
+        {
+            return String.Empty
+                + "DocumentTypeId: " + this.DocumentTypeId + ", "
+                + "DocumentNumber: " + this.DocumentNumber + ", "
+                + "LineNumber: " + this.LineNumber + ", "
+                ;
+        }
 	}
 
 }

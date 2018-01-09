@@ -107,7 +107,7 @@ namespace Dddml.Wms.Domain.Movement
 
 		public virtual void When(MovementCommands.DocumentAction c)
 		{
-			Update(c, ar => ar.DocumentAction(c.Value, c.CommandId, c.RequesterId));
+			Update(c, ar => ar.DocumentAction(c.Value, c.Version, c.CommandId, c.RequesterId));
 		}
 
         public virtual IMovementState Get(string documentNumber)

@@ -98,6 +98,14 @@ namespace Dddml.Wms.Domain.InOut
             return !Object.Equals(obj1, obj2);
         }
 
+        public override string ToString()
+        {
+            return String.Empty
+                + "InOutDocumentNumber: " + this.InOutDocumentNumber + ", "
+                + "LineNumber: " + this.LineNumber + ", "
+                + "InOutVersion: " + this.InOutVersion + ", "
+                ;
+        }
 	}
 
 }

@@ -115,6 +115,14 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
             return !Object.Equals(obj1, obj2);
         }
 
+        public override string ToString()
+        {
+            return String.Empty
+                + "SellableInventoryItemId: " + this.SellableInventoryItemId + ", "
+                + "EntrySeqId: " + this.EntrySeqId + ", "
+                + "SellableInventoryItemVersion: " + this.SellableInventoryItemVersion + ", "
+                ;
+        }
 	}
 
 }

@@ -103,6 +103,8 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             if (state.AttributeSetInstanceId == null) { cmd.IsPropertyAttributeSetInstanceIdRemoved = true; }
             if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
             if (state.QuantityUomId == null) { cmd.IsPropertyQuantityUomIdRemoved = true; }
+            if (state.RmaLineNumber == null) { cmd.IsPropertyRmaLineNumberRemoved = true; }
+            if (state.ReversalLineNumber == null) { cmd.IsPropertyReversalLineNumberRemoved = true; }
             if (state.InOutDocumentStatusId == null) { cmd.IsPropertyInOutDocumentStatusIdRemoved = true; }
             if (state.InOutProcessing == null) { cmd.IsPropertyInOutProcessingRemoved = true; }
             if (state.InOutDocumentTypeId == null) { cmd.IsPropertyInOutDocumentTypeIdRemoved = true; }

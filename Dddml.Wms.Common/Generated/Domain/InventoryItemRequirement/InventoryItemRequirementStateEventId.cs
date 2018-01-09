@@ -103,6 +103,13 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
             return !Object.Equals(obj1, obj2);
         }
 
+        public override string ToString()
+        {
+            return String.Empty
+                + "InventoryItemRequirementId: " + this.InventoryItemRequirementId + ", "
+                + "Version: " + this.Version + ", "
+                ;
+        }
 	}
 
 }

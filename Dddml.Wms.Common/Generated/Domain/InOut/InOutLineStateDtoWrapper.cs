@@ -331,8 +331,8 @@ namespace Dddml.Wms.Domain.InOut
             }
         }
 
-		public virtual long? RmaLineNumber
-        {
+		public virtual string RmaLineNumber
+		{
             get
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("RmaLineNumber"))
@@ -343,14 +343,11 @@ namespace Dddml.Wms.Domain.InOut
             }
             set
             {
-                if (value != null && value.HasValue)
-                {
-                    _state.RmaLineNumber = value.Value;
-                }
+                _state.RmaLineNumber = value;
             }
         }
 
-        long IInOutLineStateProperties.RmaLineNumber
+        string IInOutLineStateProperties.RmaLineNumber
         {
             get 
             {
@@ -362,8 +359,8 @@ namespace Dddml.Wms.Domain.InOut
             }
         }
 
-		public virtual long? ReversalLineNumber
-        {
+		public virtual string ReversalLineNumber
+		{
             get
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("ReversalLineNumber"))
@@ -374,14 +371,11 @@ namespace Dddml.Wms.Domain.InOut
             }
             set
             {
-                if (value != null && value.HasValue)
-                {
-                    _state.ReversalLineNumber = value.Value;
-                }
+                _state.ReversalLineNumber = value;
             }
         }
 
-        long IInOutLineStateProperties.ReversalLineNumber
+        string IInOutLineStateProperties.ReversalLineNumber
         {
             get 
             {

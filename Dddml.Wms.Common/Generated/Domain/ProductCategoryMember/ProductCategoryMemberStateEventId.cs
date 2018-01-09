@@ -96,6 +96,13 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
             return !Object.Equals(obj1, obj2);
         }
 
+        public override string ToString()
+        {
+            return String.Empty
+                + "ProductCategoryMemberId: " + this.ProductCategoryMemberId + ", "
+                + "Version: " + this.Version + ", "
+                ;
+        }
 	}
 
 }

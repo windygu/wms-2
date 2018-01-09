@@ -102,6 +102,13 @@ namespace Dddml.Wms.Domain.UserLoginMvo
             return !Object.Equals(obj1, obj2);
         }
 
+        public override string ToString()
+        {
+            return String.Empty
+                + "UserLoginId: " + this.UserLoginId + ", "
+                + "UserVersion: " + this.UserVersion + ", "
+                ;
+        }
 	}
 
 }

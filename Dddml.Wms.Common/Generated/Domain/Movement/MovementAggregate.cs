@@ -357,9 +357,9 @@ namespace Dddml.Wms.Domain.Movement
 
 ////////////////////////
 
-        protected MovementStateCreated NewMovementStateCreated(string commandId, string requesterId)
+        protected MovementStateCreated NewMovementStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new MovementStateEventId(_state.DocumentNumber, ((IMovementStateProperties)_state).Version);
+            var stateEventId = new MovementStateEventId(_state.DocumentNumber, version);
             var e = NewMovementStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -370,9 +370,9 @@ namespace Dddml.Wms.Domain.Movement
             return e;
         }
 
-        protected MovementStateMergePatched NewMovementStateMergePatched(string commandId, string requesterId)
+        protected MovementStateMergePatched NewMovementStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new MovementStateEventId(_state.DocumentNumber, ((IMovementStateProperties)_state).Version);
+            var stateEventId = new MovementStateEventId(_state.DocumentNumber, version);
             var e = NewMovementStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -384,9 +384,9 @@ namespace Dddml.Wms.Domain.Movement
         }
 
 
-        protected MovementStateDeleted NewMovementStateDeleted(string commandId, string requesterId)
+        protected MovementStateDeleted NewMovementStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new MovementStateEventId(_state.DocumentNumber, ((IMovementStateProperties)_state).Version);
+            var stateEventId = new MovementStateEventId(_state.DocumentNumber, version);
             var e = NewMovementStateDeleted(stateEventId);
 
             e.CommandId = commandId;

@@ -98,6 +98,14 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             return !Object.Equals(obj1, obj2);
         }
 
+        public override string ToString()
+        {
+            return String.Empty
+                + "MovementConfirmationDocumentNumber: " + this.MovementConfirmationDocumentNumber + ", "
+                + "LineNumber: " + this.LineNumber + ", "
+                + "MovementConfirmationVersion: " + this.MovementConfirmationVersion + ", "
+                ;
+        }
 	}
 
 }

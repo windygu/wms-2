@@ -97,6 +97,13 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             return !Object.Equals(obj1, obj2);
         }
 
+        public override string ToString()
+        {
+            return String.Empty
+                + "ShipmentReceiptId: " + this.ShipmentReceiptId + ", "
+                + "ShipmentVersion: " + this.ShipmentVersion + ", "
+                ;
+        }
 	}
 
 }

@@ -33,11 +33,22 @@ namespace Dddml.Wms.Services.Tests
             //for (int i = 0; i < 10; i++)
             //{
             //    ContextualKeyRoutingConnectionProviderNextRandomRoutingKey();
-            TestCreateAndComplateInOut_0();
+            var documentNumber = TestCreateAndComplateInOut_0();
+            TestReverseInOut(documentNumber);
             //}
         }
 
-        private void TestCreateAndComplateInOut_0()
+        
+        private void TestReverseInOut(string documentNumber)
+        {
+            var reverse = new InOutCommands.Reverse();
+            reverse.CommandId = Guid.NewGuid().ToString();
+            reverse.Version = 2;
+            reverse.DocumentNumber = documentNumber;
+            inOutApplicationService.When(reverse);
+        }
+
+        private string TestCreateAndComplateInOut_0()
         {
             var documentNumber = Guid.NewGuid().ToString();
 
@@ -65,6 +76,7 @@ namespace Dddml.Wms.Services.Tests
             complete.CommandId = Guid.NewGuid().ToString();
             inOutApplicationService.When(complete);
 
+            return documentNumber;
             /*
             MergePatchInOut patchInOut = new MergePatchInOut();
             patchInOut.DocumentNumber = documentNumber;

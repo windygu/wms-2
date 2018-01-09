@@ -86,6 +86,13 @@ namespace Dddml.Wms.Domain.Role
             return !Object.Equals(obj1, obj2);
         }
 
+        public override string ToString()
+        {
+            return String.Empty
+                + "RoleId: " + this.RoleId + ", "
+                + "Version: " + this.Version + ", "
+                ;
+        }
 	}
 
 }

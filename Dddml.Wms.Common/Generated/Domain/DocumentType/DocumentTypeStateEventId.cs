@@ -86,6 +86,13 @@ namespace Dddml.Wms.Domain.DocumentType
             return !Object.Equals(obj1, obj2);
         }
 
+        public override string ToString()
+        {
+            return String.Empty
+                + "DocumentTypeId: " + this.DocumentTypeId + ", "
+                + "Version: " + this.Version + ", "
+                ;
+        }
 	}
 
 }

@@ -102,27 +102,27 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual void When(InOutCommands.Complete c)
 		{
-			Update(c, ar => ar.Complete(c.CommandId, c.RequesterId));
+			Update(c, ar => ar.Complete(c.Version, c.CommandId, c.RequesterId));
 		}
 
 		public virtual void When(InOutCommands.Close c)
 		{
-			Update(c, ar => ar.Close(c.CommandId, c.RequesterId));
+			Update(c, ar => ar.Close(c.Version, c.CommandId, c.RequesterId));
 		}
 
 		public virtual void When(InOutCommands.Void c)
 		{
-			Update(c, ar => ar.Void(c.CommandId, c.RequesterId));
+			Update(c, ar => ar.Void(c.Version, c.CommandId, c.RequesterId));
 		}
 
 		public virtual void When(InOutCommands.Reverse c)
 		{
-			Update(c, ar => ar.Reverse(c.CommandId, c.RequesterId));
+			Update(c, ar => ar.Reverse(c.Version, c.CommandId, c.RequesterId));
 		}
 
 		public virtual void When(InOutCommands.DocumentAction c)
 		{
-			Update(c, ar => ar.DocumentAction(c.Value, c.CommandId, c.RequesterId));
+			Update(c, ar => ar.DocumentAction(c.Value, c.Version, c.CommandId, c.RequesterId));
 		}
 
         public virtual IInOutState Get(string documentNumber)

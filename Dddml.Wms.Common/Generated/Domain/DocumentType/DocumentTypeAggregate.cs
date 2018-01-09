@@ -174,9 +174,9 @@ namespace Dddml.Wms.Domain.DocumentType
 
 ////////////////////////
 
-        protected DocumentTypeStateCreated NewDocumentTypeStateCreated(string commandId, string requesterId)
+        protected DocumentTypeStateCreated NewDocumentTypeStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new DocumentTypeStateEventId(_state.DocumentTypeId, ((IDocumentTypeStateProperties)_state).Version);
+            var stateEventId = new DocumentTypeStateEventId(_state.DocumentTypeId, version);
             var e = NewDocumentTypeStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -187,9 +187,9 @@ namespace Dddml.Wms.Domain.DocumentType
             return e;
         }
 
-        protected DocumentTypeStateMergePatched NewDocumentTypeStateMergePatched(string commandId, string requesterId)
+        protected DocumentTypeStateMergePatched NewDocumentTypeStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new DocumentTypeStateEventId(_state.DocumentTypeId, ((IDocumentTypeStateProperties)_state).Version);
+            var stateEventId = new DocumentTypeStateEventId(_state.DocumentTypeId, version);
             var e = NewDocumentTypeStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -201,9 +201,9 @@ namespace Dddml.Wms.Domain.DocumentType
         }
 
 
-        protected DocumentTypeStateDeleted NewDocumentTypeStateDeleted(string commandId, string requesterId)
+        protected DocumentTypeStateDeleted NewDocumentTypeStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new DocumentTypeStateEventId(_state.DocumentTypeId, ((IDocumentTypeStateProperties)_state).Version);
+            var stateEventId = new DocumentTypeStateEventId(_state.DocumentTypeId, version);
             var e = NewDocumentTypeStateDeleted(stateEventId);
 
             e.CommandId = commandId;

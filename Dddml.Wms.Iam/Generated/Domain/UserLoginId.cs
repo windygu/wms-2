@@ -96,6 +96,13 @@ namespace Dddml.Wms.Domain.User
             return !Object.Equals(obj1, obj2);
         }
 
+        public override string ToString()
+        {
+            return String.Empty
+                + "UserId: " + this.UserId + ", "
+                + "LoginKey: " + this.LoginKey + ", "
+                ;
+        }
 	}
 
 }

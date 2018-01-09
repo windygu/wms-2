@@ -63,6 +63,8 @@ namespace Dddml.Wms.Domain.InOut
             if (state.AttributeSetInstanceId == null) { cmd.IsPropertyAttributeSetInstanceIdRemoved = true; }
             if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
             if (state.QuantityUomId == null) { cmd.IsPropertyQuantityUomIdRemoved = true; }
+            if (state.RmaLineNumber == null) { cmd.IsPropertyRmaLineNumberRemoved = true; }
+            if (state.ReversalLineNumber == null) { cmd.IsPropertyReversalLineNumberRemoved = true; }
             return cmd;
         }
 

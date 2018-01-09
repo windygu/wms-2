@@ -86,6 +86,13 @@ namespace Dddml.Wms.Domain.UomConversion
             return !Object.Equals(obj1, obj2);
         }
 
+        public override string ToString()
+        {
+            return String.Empty
+                + "UomId: " + this.UomId + ", "
+                + "UomIdTo: " + this.UomIdTo + ", "
+                ;
+        }
 	}
 
 }

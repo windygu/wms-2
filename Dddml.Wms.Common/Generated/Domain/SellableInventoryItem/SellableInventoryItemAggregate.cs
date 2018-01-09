@@ -221,9 +221,9 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
 ////////////////////////
 
-        protected SellableInventoryItemStateCreated NewSellableInventoryItemStateCreated(string commandId, string requesterId)
+        protected SellableInventoryItemStateCreated NewSellableInventoryItemStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new SellableInventoryItemStateEventId(_state.SellableInventoryItemId, ((ISellableInventoryItemStateProperties)_state).Version);
+            var stateEventId = new SellableInventoryItemStateEventId(_state.SellableInventoryItemId, version);
             var e = NewSellableInventoryItemStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -234,9 +234,9 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
             return e;
         }
 
-        protected SellableInventoryItemStateMergePatched NewSellableInventoryItemStateMergePatched(string commandId, string requesterId)
+        protected SellableInventoryItemStateMergePatched NewSellableInventoryItemStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new SellableInventoryItemStateEventId(_state.SellableInventoryItemId, ((ISellableInventoryItemStateProperties)_state).Version);
+            var stateEventId = new SellableInventoryItemStateEventId(_state.SellableInventoryItemId, version);
             var e = NewSellableInventoryItemStateMergePatched(stateEventId);
 
             e.CommandId = commandId;

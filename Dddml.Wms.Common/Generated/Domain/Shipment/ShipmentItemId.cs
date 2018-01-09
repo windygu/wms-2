@@ -86,6 +86,13 @@ namespace Dddml.Wms.Domain.Shipment
             return !Object.Equals(obj1, obj2);
         }
 
+        public override string ToString()
+        {
+            return String.Empty
+                + "ShipmentId: " + this.ShipmentId + ", "
+                + "ShipmentItemSeqId: " + this.ShipmentItemSeqId + ", "
+                ;
+        }
 	}
 
 }

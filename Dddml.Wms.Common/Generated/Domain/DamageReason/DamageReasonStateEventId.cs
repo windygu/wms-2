@@ -86,6 +86,13 @@ namespace Dddml.Wms.Domain.DamageReason
             return !Object.Equals(obj1, obj2);
         }
 
+        public override string ToString()
+        {
+            return String.Empty
+                + "DamageReasonId: " + this.DamageReasonId + ", "
+                + "Version: " + this.Version + ", "
+                ;
+        }
 	}
 
 }

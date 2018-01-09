@@ -182,9 +182,9 @@ namespace Dddml.Wms.Domain.SupplierProduct
 
 ////////////////////////
 
-        protected SupplierProductStateCreated NewSupplierProductStateCreated(string commandId, string requesterId)
+        protected SupplierProductStateCreated NewSupplierProductStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new SupplierProductStateEventId(_state.SupplierProductId, ((ISupplierProductStateProperties)_state).Version);
+            var stateEventId = new SupplierProductStateEventId(_state.SupplierProductId, version);
             var e = NewSupplierProductStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -195,9 +195,9 @@ namespace Dddml.Wms.Domain.SupplierProduct
             return e;
         }
 
-        protected SupplierProductStateMergePatched NewSupplierProductStateMergePatched(string commandId, string requesterId)
+        protected SupplierProductStateMergePatched NewSupplierProductStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new SupplierProductStateEventId(_state.SupplierProductId, ((ISupplierProductStateProperties)_state).Version);
+            var stateEventId = new SupplierProductStateEventId(_state.SupplierProductId, version);
             var e = NewSupplierProductStateMergePatched(stateEventId);
 
             e.CommandId = commandId;

@@ -323,9 +323,9 @@ namespace Dddml.Wms.Domain.Product
 
 ////////////////////////
 
-        protected ProductStateCreated NewProductStateCreated(string commandId, string requesterId)
+        protected ProductStateCreated NewProductStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new ProductStateEventId(_state.ProductId, ((IProductStateProperties)_state).Version);
+            var stateEventId = new ProductStateEventId(_state.ProductId, version);
             var e = NewProductStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -336,9 +336,9 @@ namespace Dddml.Wms.Domain.Product
             return e;
         }
 
-        protected ProductStateMergePatched NewProductStateMergePatched(string commandId, string requesterId)
+        protected ProductStateMergePatched NewProductStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new ProductStateEventId(_state.ProductId, ((IProductStateProperties)_state).Version);
+            var stateEventId = new ProductStateEventId(_state.ProductId, version);
             var e = NewProductStateMergePatched(stateEventId);
 
             e.CommandId = commandId;

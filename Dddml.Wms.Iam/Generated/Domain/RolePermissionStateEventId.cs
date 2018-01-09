@@ -96,6 +96,13 @@ namespace Dddml.Wms.Domain.RolePermission
             return !Object.Equals(obj1, obj2);
         }
 
+        public override string ToString()
+        {
+            return String.Empty
+                + "Id: " + this.Id + ", "
+                + "Version: " + this.Version + ", "
+                ;
+        }
 	}
 
 }

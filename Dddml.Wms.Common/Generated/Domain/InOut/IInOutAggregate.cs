@@ -24,15 +24,15 @@ namespace Dddml.Wms.Domain.InOut
 
 		void MergePatch (IMergePatchInOut c);
 
-		void Complete(string commandId, string requesterId);
+		void Complete(long version, string commandId, string requesterId);
 
-		void Close(string commandId, string requesterId);
+		void Close(long version, string commandId, string requesterId);
 
-		void Void(string commandId, string requesterId);
+		void Void(long version, string commandId, string requesterId);
 
-		void Reverse(string commandId, string requesterId);
+		void Reverse(long version, string commandId, string requesterId);
 
-		void DocumentAction(string value, string commandId, string requesterId);
+		void DocumentAction(string value, long version, string commandId, string requesterId);
 
 
 	}

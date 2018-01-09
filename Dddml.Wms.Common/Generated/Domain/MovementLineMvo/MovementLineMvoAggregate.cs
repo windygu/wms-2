@@ -271,9 +271,9 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
 ////////////////////////
 
-        protected MovementLineMvoStateCreated NewMovementLineMvoStateCreated(string commandId, string requesterId)
+        protected MovementLineMvoStateCreated NewMovementLineMvoStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new MovementLineMvoStateEventId(_state.MovementLineId, ((IMovementLineMvoStateProperties)_state).MovementVersion);
+            var stateEventId = new MovementLineMvoStateEventId(_state.MovementLineId, version);
             var e = NewMovementLineMvoStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -284,9 +284,9 @@ namespace Dddml.Wms.Domain.MovementLineMvo
             return e;
         }
 
-        protected MovementLineMvoStateMergePatched NewMovementLineMvoStateMergePatched(string commandId, string requesterId)
+        protected MovementLineMvoStateMergePatched NewMovementLineMvoStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new MovementLineMvoStateEventId(_state.MovementLineId, ((IMovementLineMvoStateProperties)_state).MovementVersion);
+            var stateEventId = new MovementLineMvoStateEventId(_state.MovementLineId, version);
             var e = NewMovementLineMvoStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -298,9 +298,9 @@ namespace Dddml.Wms.Domain.MovementLineMvo
         }
 
 
-        protected MovementLineMvoStateDeleted NewMovementLineMvoStateDeleted(string commandId, string requesterId)
+        protected MovementLineMvoStateDeleted NewMovementLineMvoStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new MovementLineMvoStateEventId(_state.MovementLineId, ((IMovementLineMvoStateProperties)_state).MovementVersion);
+            var stateEventId = new MovementLineMvoStateEventId(_state.MovementLineId, version);
             var e = NewMovementLineMvoStateDeleted(stateEventId);
 
             e.CommandId = commandId;

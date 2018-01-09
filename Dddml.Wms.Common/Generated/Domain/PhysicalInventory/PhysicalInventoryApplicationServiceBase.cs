@@ -107,7 +107,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
 		public virtual void When(PhysicalInventoryCommands.DocumentAction c)
 		{
-			Update(c, ar => ar.DocumentAction(c.Value, c.CommandId, c.RequesterId));
+			Update(c, ar => ar.DocumentAction(c.Value, c.Version, c.CommandId, c.RequesterId));
 		}
 
         public virtual IPhysicalInventoryState Get(string documentNumber)

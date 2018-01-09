@@ -36,9 +36,9 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		bool? Processed { get; set; }
 
-		long? RmaLineNumber { get; set; }
+		string RmaLineNumber { get; set; }
 
-		long? ReversalLineNumber { get; set; }
+		string ReversalLineNumber { get; set; }
 
 		long? Version { get; set; }
 

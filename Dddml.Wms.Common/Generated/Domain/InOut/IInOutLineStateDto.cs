@@ -74,13 +74,13 @@ namespace Dddml.Wms.Domain.InOut
             set;
         }
 
-        long? RmaLineNumber
+        string RmaLineNumber
         {
             get;
             set;
         }
 
-        long? ReversalLineNumber
+        string ReversalLineNumber
         {
             get;
             set;

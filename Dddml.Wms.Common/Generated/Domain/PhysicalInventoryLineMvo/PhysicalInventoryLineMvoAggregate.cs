@@ -250,9 +250,9 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
 ////////////////////////
 
-        protected PhysicalInventoryLineMvoStateCreated NewPhysicalInventoryLineMvoStateCreated(string commandId, string requesterId)
+        protected PhysicalInventoryLineMvoStateCreated NewPhysicalInventoryLineMvoStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new PhysicalInventoryLineMvoStateEventId(_state.PhysicalInventoryLineId, ((IPhysicalInventoryLineMvoStateProperties)_state).PhysicalInventoryVersion);
+            var stateEventId = new PhysicalInventoryLineMvoStateEventId(_state.PhysicalInventoryLineId, version);
             var e = NewPhysicalInventoryLineMvoStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -263,9 +263,9 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             return e;
         }
 
-        protected PhysicalInventoryLineMvoStateMergePatched NewPhysicalInventoryLineMvoStateMergePatched(string commandId, string requesterId)
+        protected PhysicalInventoryLineMvoStateMergePatched NewPhysicalInventoryLineMvoStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new PhysicalInventoryLineMvoStateEventId(_state.PhysicalInventoryLineId, ((IPhysicalInventoryLineMvoStateProperties)_state).PhysicalInventoryVersion);
+            var stateEventId = new PhysicalInventoryLineMvoStateEventId(_state.PhysicalInventoryLineId, version);
             var e = NewPhysicalInventoryLineMvoStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -277,9 +277,9 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
         }
 
 
-        protected PhysicalInventoryLineMvoStateDeleted NewPhysicalInventoryLineMvoStateDeleted(string commandId, string requesterId)
+        protected PhysicalInventoryLineMvoStateDeleted NewPhysicalInventoryLineMvoStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new PhysicalInventoryLineMvoStateEventId(_state.PhysicalInventoryLineId, ((IPhysicalInventoryLineMvoStateProperties)_state).PhysicalInventoryVersion);
+            var stateEventId = new PhysicalInventoryLineMvoStateEventId(_state.PhysicalInventoryLineId, version);
             var e = NewPhysicalInventoryLineMvoStateDeleted(stateEventId);
 
             e.CommandId = commandId;

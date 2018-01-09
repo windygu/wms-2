@@ -98,6 +98,14 @@ namespace Dddml.Wms.Domain.OrganizationStructure
             return !Object.Equals(obj1, obj2);
         }
 
+        public override string ToString()
+        {
+            return String.Empty
+                + "OrganizationStructureTypeId: " + this.OrganizationStructureTypeId + ", "
+                + "ParentId: " + this.ParentId + ", "
+                + "SubsidiaryId: " + this.SubsidiaryId + ", "
+                ;
+        }
 	}
 
 }

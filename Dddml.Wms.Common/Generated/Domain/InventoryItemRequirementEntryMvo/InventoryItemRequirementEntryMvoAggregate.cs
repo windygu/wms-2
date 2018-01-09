@@ -166,9 +166,9 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 
 ////////////////////////
 
-        protected InventoryItemRequirementEntryMvoStateCreated NewInventoryItemRequirementEntryMvoStateCreated(string commandId, string requesterId)
+        protected InventoryItemRequirementEntryMvoStateCreated NewInventoryItemRequirementEntryMvoStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new InventoryItemRequirementEntryMvoStateEventId(_state.InventoryItemRequirementEntryId, ((IInventoryItemRequirementEntryMvoStateProperties)_state).InventoryItemRequirementVersion);
+            var stateEventId = new InventoryItemRequirementEntryMvoStateEventId(_state.InventoryItemRequirementEntryId, version);
             var e = NewInventoryItemRequirementEntryMvoStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -179,9 +179,9 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
             return e;
         }
 
-        protected InventoryItemRequirementEntryMvoStateMergePatched NewInventoryItemRequirementEntryMvoStateMergePatched(string commandId, string requesterId)
+        protected InventoryItemRequirementEntryMvoStateMergePatched NewInventoryItemRequirementEntryMvoStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new InventoryItemRequirementEntryMvoStateEventId(_state.InventoryItemRequirementEntryId, ((IInventoryItemRequirementEntryMvoStateProperties)_state).InventoryItemRequirementVersion);
+            var stateEventId = new InventoryItemRequirementEntryMvoStateEventId(_state.InventoryItemRequirementEntryId, version);
             var e = NewInventoryItemRequirementEntryMvoStateMergePatched(stateEventId);
 
             e.CommandId = commandId;

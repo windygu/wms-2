@@ -184,9 +184,9 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 
 ////////////////////////
 
-        protected InventoryPostingRuleStateCreated NewInventoryPostingRuleStateCreated(string commandId, string requesterId)
+        protected InventoryPostingRuleStateCreated NewInventoryPostingRuleStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new InventoryPostingRuleStateEventId(_state.InventoryPostingRuleId, ((IInventoryPostingRuleStateProperties)_state).Version);
+            var stateEventId = new InventoryPostingRuleStateEventId(_state.InventoryPostingRuleId, version);
             var e = NewInventoryPostingRuleStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -197,9 +197,9 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             return e;
         }
 
-        protected InventoryPostingRuleStateMergePatched NewInventoryPostingRuleStateMergePatched(string commandId, string requesterId)
+        protected InventoryPostingRuleStateMergePatched NewInventoryPostingRuleStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new InventoryPostingRuleStateEventId(_state.InventoryPostingRuleId, ((IInventoryPostingRuleStateProperties)_state).Version);
+            var stateEventId = new InventoryPostingRuleStateEventId(_state.InventoryPostingRuleId, version);
             var e = NewInventoryPostingRuleStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -211,9 +211,9 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
         }
 
 
-        protected InventoryPostingRuleStateDeleted NewInventoryPostingRuleStateDeleted(string commandId, string requesterId)
+        protected InventoryPostingRuleStateDeleted NewInventoryPostingRuleStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new InventoryPostingRuleStateEventId(_state.InventoryPostingRuleId, ((IInventoryPostingRuleStateProperties)_state).Version);
+            var stateEventId = new InventoryPostingRuleStateEventId(_state.InventoryPostingRuleId, version);
             var e = NewInventoryPostingRuleStateDeleted(stateEventId);
 
             e.CommandId = commandId;

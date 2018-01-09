@@ -177,9 +177,9 @@ namespace Dddml.Wms.Domain.Warehouse
 
 ////////////////////////
 
-        protected WarehouseStateCreated NewWarehouseStateCreated(string commandId, string requesterId)
+        protected WarehouseStateCreated NewWarehouseStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new WarehouseStateEventId(_state.WarehouseId, ((IWarehouseStateProperties)_state).Version);
+            var stateEventId = new WarehouseStateEventId(_state.WarehouseId, version);
             var e = NewWarehouseStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -190,9 +190,9 @@ namespace Dddml.Wms.Domain.Warehouse
             return e;
         }
 
-        protected WarehouseStateMergePatched NewWarehouseStateMergePatched(string commandId, string requesterId)
+        protected WarehouseStateMergePatched NewWarehouseStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new WarehouseStateEventId(_state.WarehouseId, ((IWarehouseStateProperties)_state).Version);
+            var stateEventId = new WarehouseStateEventId(_state.WarehouseId, version);
             var e = NewWarehouseStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -204,9 +204,9 @@ namespace Dddml.Wms.Domain.Warehouse
         }
 
 
-        protected WarehouseStateDeleted NewWarehouseStateDeleted(string commandId, string requesterId)
+        protected WarehouseStateDeleted NewWarehouseStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new WarehouseStateEventId(_state.WarehouseId, ((IWarehouseStateProperties)_state).Version);
+            var stateEventId = new WarehouseStateEventId(_state.WarehouseId, version);
             var e = NewWarehouseStateDeleted(stateEventId);
 
             e.CommandId = commandId;

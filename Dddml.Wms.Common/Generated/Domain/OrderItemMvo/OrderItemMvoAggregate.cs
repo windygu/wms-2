@@ -339,9 +339,9 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 
 ////////////////////////
 
-        protected OrderItemMvoStateCreated NewOrderItemMvoStateCreated(string commandId, string requesterId)
+        protected OrderItemMvoStateCreated NewOrderItemMvoStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new OrderItemMvoStateEventId(_state.OrderItemId, ((IOrderItemMvoStateProperties)_state).OrderVersion);
+            var stateEventId = new OrderItemMvoStateEventId(_state.OrderItemId, version);
             var e = NewOrderItemMvoStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -352,9 +352,9 @@ namespace Dddml.Wms.Domain.OrderItemMvo
             return e;
         }
 
-        protected OrderItemMvoStateMergePatched NewOrderItemMvoStateMergePatched(string commandId, string requesterId)
+        protected OrderItemMvoStateMergePatched NewOrderItemMvoStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new OrderItemMvoStateEventId(_state.OrderItemId, ((IOrderItemMvoStateProperties)_state).OrderVersion);
+            var stateEventId = new OrderItemMvoStateEventId(_state.OrderItemId, version);
             var e = NewOrderItemMvoStateMergePatched(stateEventId);
 
             e.CommandId = commandId;

@@ -192,9 +192,9 @@ namespace Dddml.Wms.Domain.ProductCategory
 
 ////////////////////////
 
-        protected ProductCategoryStateCreated NewProductCategoryStateCreated(string commandId, string requesterId)
+        protected ProductCategoryStateCreated NewProductCategoryStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new ProductCategoryStateEventId(_state.ProductCategoryId, ((IProductCategoryStateProperties)_state).Version);
+            var stateEventId = new ProductCategoryStateEventId(_state.ProductCategoryId, version);
             var e = NewProductCategoryStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -205,9 +205,9 @@ namespace Dddml.Wms.Domain.ProductCategory
             return e;
         }
 
-        protected ProductCategoryStateMergePatched NewProductCategoryStateMergePatched(string commandId, string requesterId)
+        protected ProductCategoryStateMergePatched NewProductCategoryStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new ProductCategoryStateEventId(_state.ProductCategoryId, ((IProductCategoryStateProperties)_state).Version);
+            var stateEventId = new ProductCategoryStateEventId(_state.ProductCategoryId, version);
             var e = NewProductCategoryStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -219,9 +219,9 @@ namespace Dddml.Wms.Domain.ProductCategory
         }
 
 
-        protected ProductCategoryStateDeleted NewProductCategoryStateDeleted(string commandId, string requesterId)
+        protected ProductCategoryStateDeleted NewProductCategoryStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new ProductCategoryStateEventId(_state.ProductCategoryId, ((IProductCategoryStateProperties)_state).Version);
+            var stateEventId = new ProductCategoryStateEventId(_state.ProductCategoryId, version);
             var e = NewProductCategoryStateDeleted(stateEventId);
 
             e.CommandId = commandId;

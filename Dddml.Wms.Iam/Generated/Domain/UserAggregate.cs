@@ -647,9 +647,9 @@ namespace Dddml.Wms.Domain.User
 
 ////////////////////////
 
-        protected UserStateCreated NewUserStateCreated(string commandId, string requesterId)
+        protected UserStateCreated NewUserStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new UserStateEventId(_state.UserId, ((IUserStateProperties)_state).Version);
+            var stateEventId = new UserStateEventId(_state.UserId, version);
             var e = NewUserStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -660,9 +660,9 @@ namespace Dddml.Wms.Domain.User
             return e;
         }
 
-        protected UserStateMergePatched NewUserStateMergePatched(string commandId, string requesterId)
+        protected UserStateMergePatched NewUserStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new UserStateEventId(_state.UserId, ((IUserStateProperties)_state).Version);
+            var stateEventId = new UserStateEventId(_state.UserId, version);
             var e = NewUserStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -674,9 +674,9 @@ namespace Dddml.Wms.Domain.User
         }
 
 
-        protected UserStateDeleted NewUserStateDeleted(string commandId, string requesterId)
+        protected UserStateDeleted NewUserStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new UserStateEventId(_state.UserId, ((IUserStateProperties)_state).Version);
+            var stateEventId = new UserStateEventId(_state.UserId, version);
             var e = NewUserStateDeleted(stateEventId);
 
             e.CommandId = commandId;

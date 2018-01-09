@@ -146,9 +146,9 @@ namespace Dddml.Wms.Domain.OrderShipment
 
 ////////////////////////
 
-        protected OrderShipmentStateCreated NewOrderShipmentStateCreated(string commandId, string requesterId)
+        protected OrderShipmentStateCreated NewOrderShipmentStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new OrderShipmentStateEventId(_state.OrderShipmentId, ((IOrderShipmentStateProperties)_state).Version);
+            var stateEventId = new OrderShipmentStateEventId(_state.OrderShipmentId, version);
             var e = NewOrderShipmentStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -159,9 +159,9 @@ namespace Dddml.Wms.Domain.OrderShipment
             return e;
         }
 
-        protected OrderShipmentStateMergePatched NewOrderShipmentStateMergePatched(string commandId, string requesterId)
+        protected OrderShipmentStateMergePatched NewOrderShipmentStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new OrderShipmentStateEventId(_state.OrderShipmentId, ((IOrderShipmentStateProperties)_state).Version);
+            var stateEventId = new OrderShipmentStateEventId(_state.OrderShipmentId, version);
             var e = NewOrderShipmentStateMergePatched(stateEventId);
 
             e.CommandId = commandId;

@@ -411,9 +411,9 @@ namespace Dddml.Wms.Domain.Order
 
 ////////////////////////
 
-        protected OrderStateCreated NewOrderStateCreated(string commandId, string requesterId)
+        protected OrderStateCreated NewOrderStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new OrderStateEventId(_state.OrderId, ((IOrderStateProperties)_state).Version);
+            var stateEventId = new OrderStateEventId(_state.OrderId, version);
             var e = NewOrderStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -424,9 +424,9 @@ namespace Dddml.Wms.Domain.Order
             return e;
         }
 
-        protected OrderStateMergePatched NewOrderStateMergePatched(string commandId, string requesterId)
+        protected OrderStateMergePatched NewOrderStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new OrderStateEventId(_state.OrderId, ((IOrderStateProperties)_state).Version);
+            var stateEventId = new OrderStateEventId(_state.OrderId, version);
             var e = NewOrderStateMergePatched(stateEventId);
 
             e.CommandId = commandId;

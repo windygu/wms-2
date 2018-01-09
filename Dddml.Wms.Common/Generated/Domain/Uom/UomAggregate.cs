@@ -177,9 +177,9 @@ namespace Dddml.Wms.Domain.Uom
 
 ////////////////////////
 
-        protected UomStateCreated NewUomStateCreated(string commandId, string requesterId)
+        protected UomStateCreated NewUomStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new UomStateEventId(_state.UomId, ((IUomStateProperties)_state).Version);
+            var stateEventId = new UomStateEventId(_state.UomId, version);
             var e = NewUomStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -190,9 +190,9 @@ namespace Dddml.Wms.Domain.Uom
             return e;
         }
 
-        protected UomStateMergePatched NewUomStateMergePatched(string commandId, string requesterId)
+        protected UomStateMergePatched NewUomStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new UomStateEventId(_state.UomId, ((IUomStateProperties)_state).Version);
+            var stateEventId = new UomStateEventId(_state.UomId, version);
             var e = NewUomStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -204,9 +204,9 @@ namespace Dddml.Wms.Domain.Uom
         }
 
 
-        protected UomStateDeleted NewUomStateDeleted(string commandId, string requesterId)
+        protected UomStateDeleted NewUomStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new UomStateEventId(_state.UomId, ((IUomStateProperties)_state).Version);
+            var stateEventId = new UomStateEventId(_state.UomId, version);
             var e = NewUomStateDeleted(stateEventId);
 
             e.CommandId = commandId;

@@ -87,6 +87,13 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             return !Object.Equals(obj1, obj2);
         }
 
+        public override string ToString()
+        {
+            return String.Empty
+                + "InventoryPostingRuleId: " + this.InventoryPostingRuleId + ", "
+                + "Version: " + this.Version + ", "
+                ;
+        }
 	}
 
 }

@@ -51,9 +51,9 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual bool? Processed { get; set; }
 
-		public virtual long? RmaLineNumber { get; set; }
+		public virtual string RmaLineNumber { get; set; }
 
-		public virtual long? ReversalLineNumber { get; set; }
+		public virtual string ReversalLineNumber { get; set; }
 
 		public virtual bool? Active { get; set; }
 

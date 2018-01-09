@@ -86,6 +86,13 @@ namespace Dddml.Wms.Domain.Lot
             return !Object.Equals(obj1, obj2);
         }
 
+        public override string ToString()
+        {
+            return String.Empty
+                + "LotId: " + this.LotId + ", "
+                + "Version: " + this.Version + ", "
+                ;
+        }
 	}
 
 }

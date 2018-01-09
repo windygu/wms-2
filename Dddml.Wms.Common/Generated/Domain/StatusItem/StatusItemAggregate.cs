@@ -155,9 +155,9 @@ namespace Dddml.Wms.Domain.StatusItem
 
 ////////////////////////
 
-        protected StatusItemStateCreated NewStatusItemStateCreated(string commandId, string requesterId)
+        protected StatusItemStateCreated NewStatusItemStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new StatusItemStateEventId(_state.StatusId, ((IStatusItemStateProperties)_state).Version);
+            var stateEventId = new StatusItemStateEventId(_state.StatusId, version);
             var e = NewStatusItemStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -168,9 +168,9 @@ namespace Dddml.Wms.Domain.StatusItem
             return e;
         }
 
-        protected StatusItemStateMergePatched NewStatusItemStateMergePatched(string commandId, string requesterId)
+        protected StatusItemStateMergePatched NewStatusItemStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new StatusItemStateEventId(_state.StatusId, ((IStatusItemStateProperties)_state).Version);
+            var stateEventId = new StatusItemStateEventId(_state.StatusId, version);
             var e = NewStatusItemStateMergePatched(stateEventId);
 
             e.CommandId = commandId;

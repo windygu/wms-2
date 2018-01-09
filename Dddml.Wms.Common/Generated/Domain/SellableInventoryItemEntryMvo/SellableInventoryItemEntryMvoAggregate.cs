@@ -166,9 +166,9 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 
 ////////////////////////
 
-        protected SellableInventoryItemEntryMvoStateCreated NewSellableInventoryItemEntryMvoStateCreated(string commandId, string requesterId)
+        protected SellableInventoryItemEntryMvoStateCreated NewSellableInventoryItemEntryMvoStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new SellableInventoryItemEntryMvoStateEventId(_state.SellableInventoryItemEntryId, ((ISellableInventoryItemEntryMvoStateProperties)_state).SellableInventoryItemVersion);
+            var stateEventId = new SellableInventoryItemEntryMvoStateEventId(_state.SellableInventoryItemEntryId, version);
             var e = NewSellableInventoryItemEntryMvoStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -179,9 +179,9 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
             return e;
         }
 
-        protected SellableInventoryItemEntryMvoStateMergePatched NewSellableInventoryItemEntryMvoStateMergePatched(string commandId, string requesterId)
+        protected SellableInventoryItemEntryMvoStateMergePatched NewSellableInventoryItemEntryMvoStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new SellableInventoryItemEntryMvoStateEventId(_state.SellableInventoryItemEntryId, ((ISellableInventoryItemEntryMvoStateProperties)_state).SellableInventoryItemVersion);
+            var stateEventId = new SellableInventoryItemEntryMvoStateEventId(_state.SellableInventoryItemEntryId, version);
             var e = NewSellableInventoryItemEntryMvoStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
