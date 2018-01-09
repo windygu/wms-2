@@ -1128,7 +1128,7 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 
             var stateVersion = this.OrderVersion;
             var eventVersion = stateEvent.StateEventId.OrderVersion;
-            if (stateVersion != eventVersion)
+            if (stateVersion > eventVersion)//!=
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
             }

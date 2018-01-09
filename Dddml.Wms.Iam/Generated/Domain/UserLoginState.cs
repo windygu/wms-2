@@ -275,7 +275,7 @@ namespace Dddml.Wms.Domain.User
             {
                 eventVersion = stateEvent.Version = stateVersion;
             }
-            if (stateVersion != eventVersion)
+            if (stateVersion > eventVersion)//!=
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
             }

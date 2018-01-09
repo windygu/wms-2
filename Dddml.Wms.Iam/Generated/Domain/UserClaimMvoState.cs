@@ -523,7 +523,7 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 
             var stateVersion = this.UserVersion;
             var eventVersion = stateEvent.StateEventId.UserVersion;
-            if (stateVersion != eventVersion)
+            if (stateVersion > eventVersion)//!=
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
             }

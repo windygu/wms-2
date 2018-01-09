@@ -551,7 +551,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
             var stateVersion = this.MovementConfirmationVersion;
             var eventVersion = stateEvent.StateEventId.MovementConfirmationVersion;
-            if (stateVersion != eventVersion)
+            if (stateVersion > eventVersion)//!=
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
             }

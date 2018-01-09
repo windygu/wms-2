@@ -256,7 +256,7 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 
             var stateVersion = this.Version;
             var eventVersion = stateEvent.StateEventId.Version;
-            if (stateVersion != eventVersion)
+            if (stateVersion > eventVersion)//!=
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
             }

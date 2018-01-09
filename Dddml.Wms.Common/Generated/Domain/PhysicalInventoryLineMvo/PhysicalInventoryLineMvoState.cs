@@ -621,7 +621,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
             var stateVersion = this.PhysicalInventoryVersion;
             var eventVersion = stateEvent.StateEventId.PhysicalInventoryVersion;
-            if (stateVersion != eventVersion)
+            if (stateVersion > eventVersion)//!=
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
             }
