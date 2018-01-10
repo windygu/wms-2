@@ -293,12 +293,43 @@ public abstract class AbstractMovementConfirmationAggregate extends AbstractAggr
         pCmd.setStateGetter(() -> s.getDocumentStatusId());
         pCmd.setStateSetter(p -> e.setDocumentStatusId(p));
         pCmd.setOuterCommandType(CommandType.CREATE);
+        pCmd.setContext(getState());
         pCommandHandler.execute(pCmd);
     }
 
-    protected PropertyCommandHandler<String, String> getMovementConfirmationDocumentActionCommandHandler()
-    {
-        return (PropertyCommandHandler<String, String>)ApplicationContext.current.get("MovementConfirmationDocumentActionCommandHandler");
+    public class SimpleMovementConfirmationDocumentActionCommandHandler implements PropertyCommandHandler<String, String> {
+
+        public void execute(PropertyCommand<String, String> command) {
+            if (Objects.equals(null, command.getStateGetter().get()) && Objects.equals(null, command.getContent())) {
+                command.getStateSetter().accept("InProgress");
+                return;
+            }
+            if (Objects.equals("InProgress", command.getStateGetter().get()) && Objects.equals("Confirm", command.getContent())) {
+                command.getStateSetter().accept("Complete");
+                return;
+            }
+            if (Objects.equals("Completed", command.getStateGetter().get()) && Objects.equals("Close", command.getContent())) {
+                command.getStateSetter().accept("Closed");
+                return;
+            }
+            throw new IllegalArgumentException(String.format("State: %1$s, command: %2$s", command.getStateGetter().get(), command.getContent()));
+        }
+    }
+
+    private PropertyCommandHandler<String, String> movementConfirmationDocumentActionCommandHandler = new SimpleMovementConfirmationDocumentActionCommandHandler();
+
+    public void setMovementConfirmationDocumentActionCommandHandler(PropertyCommandHandler<String, String> h) {
+        this.movementConfirmationDocumentActionCommandHandler = h;
+    }
+
+    protected PropertyCommandHandler<String, String> getMovementConfirmationDocumentActionCommandHandler() {
+        if (this.movementConfirmationDocumentActionCommandHandler == null) {
+            Object h = ApplicationContext.current.get("MovementConfirmationDocumentActionCommandHandler");
+            if (h instanceof PropertyCommandHandler) {
+                return (PropertyCommandHandler<String, String>) h;
+            }
+        }
+        return this.movementConfirmationDocumentActionCommandHandler;
     }
 
     public static class SimpleMovementConfirmationAggregate extends AbstractMovementConfirmationAggregate
@@ -317,6 +348,7 @@ public abstract class AbstractMovementConfirmationAggregate extends AbstractAggr
             pCmd.setStateGetter(() -> this.getState().getDocumentStatusId());
             pCmd.setStateSetter(s -> e.setDocumentStatusId(s));
             pCmd.setOuterCommandType("DocumentAction");
+            pCmd.setContext(getState());
             pCommandHandler.execute(pCmd);
             // ////////////////////////////
             apply(e);

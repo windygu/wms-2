@@ -434,16 +434,9 @@ namespace Dddml.Wms.Domain.Movement
             var pCommandHandler = this.MovementDocumentActionCommandHandler;
             var pCmdContent = default(string);
             var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.DocumentStatusId, SetState = p => e.DocumentStatusId = p, OuterCommandType = CommandType.Create };
+            pCmd.Context = this.State;
             pCommandHandler.Execute(pCmd);
         }
-
-        //protected void NewMovementDocumentActionCommandAndExecute(IMergePatchMovement c, IMovementState s, IMovementStateMergePatched e)
-        //{
-        //    var pCommandHandler = this.MovementDocumentActionCommandHandler;
-        //    var pCmdContent = c.DocumentAction;
-        //    var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.DocumentStatusId, SetState = p => e.DocumentStatusId = p, OuterCommandType = CommandType.MergePatch };
-        //    pCommandHandler.Execute(pCmd);
-        //}
 
         protected IPropertyCommandHandler<string, string> MovementDocumentActionCommandHandler
         {
@@ -453,11 +446,55 @@ namespace Dddml.Wms.Domain.Movement
             }
         }
 
+        public class SimpleMovementDocumentActionCommandHandler : IPropertyCommandHandler<string, string>
+        {
+            public virtual void Execute(IPropertyCommand<string, string> command)
+            {
+                if (null == command.GetState() && null == command.Content)
+                {
+                    command.SetState("Drafted");
+                    return;
+                }
+                if ("Drafted" == command.GetState() && "Void" == command.Content)
+                {
+                    command.SetState("Voided");
+                    return;
+                }
+                if ("Drafted" == command.GetState() && "Complete" == command.Content && ((IMovementState)command.Context).IsInTransit == false)
+                {
+                    command.SetState("Completed");
+                    return;
+                }
+                if ("Drafted" == command.GetState() && "Complete" == command.Content && ((IMovementState)command.Context).IsInTransit == true)
+                {
+                    command.SetState("InProgress");
+                    return;
+                }
+                if ("InProgress" == command.GetState() && "Confirm" == command.Content)
+                {
+                    command.SetState("Complete");
+                    return;
+                }
+                if ("Completed" == command.GetState() && "Close" == command.Content)
+                {
+                    command.SetState("Closed");
+                    return;
+                }
+                if ("Completed" == command.GetState() && "Reverse" == command.Content && ((IMovementState)command.Context).IsInTransit == false)
+                {
+                    command.SetState("Reversed");
+                    return;
+                }
+                throw new ArgumentException(String.Format("State: {0}, command: {1}", command.GetState, command.Content));
+            }
+        }
+
         protected virtual void DoDocumentAction(string value, Action<string> setDocumentStatusId)
         {
             var pCommandHandler = this.MovementDocumentActionCommandHandler;
             var pCmdContent = value;
             var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => this.State.DocumentStatusId, SetState = setDocumentStatusId, OuterCommandType = "DocumentAction" };
+            pCmd.Context = this.State;
             pCommandHandler.Execute(pCmd);
         }
 

@@ -14,5 +14,7 @@ namespace Dddml.Wms.Specialization
         public Action<TState> SetState { get; set; }
 
         public string OuterCommandType { get; set; }
+
+        public object Context { get; set; }
     }
 }

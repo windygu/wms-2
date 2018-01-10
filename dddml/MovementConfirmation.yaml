@@ -18,6 +18,26 @@ aggregates:
           commandType: DocumentAction
           commandName: DocumentAction
           
+          # -------------------------------------
+          stateMachine:
+          
+            transitions:
+            
+            - sourceState: null
+              trigger: null
+              targetState: "InProgress"
+              
+            - sourceState: "InProgress"
+              trigger: "Confirm"
+              targetState: "Complete"
+              
+            - sourceState: "Completed"
+              trigger: "Close"
+              targetState: "Closed"
+              
+          # -------------------------------------
+          
+          
         MovementDocumentNumber:
           type: string
 

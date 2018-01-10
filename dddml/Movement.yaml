@@ -36,12 +36,14 @@ aggregates:
               targetState: "Completed"
               guard:
                 Java: "{this}.getIsInTransit() == false"
+                CSharp: "{this}.IsInTransit == false"
               
             - sourceState: "Drafted"
               trigger: "Complete"
               targetState: "InProgress"
               guard:
                 Java: "{this}.getIsInTransit() == true"
+                CSharp: "{this}.IsInTransit == true"
                 
             - sourceState: "InProgress"
               trigger: "Confirm"
@@ -56,6 +58,7 @@ aggregates:
               targetState: "Reversed"
               guard:
                 Java: "{this}.getIsInTransit() == false"
+                CSharp: "{this}.IsInTransit == false"
               
           # -------------------------------------
           
