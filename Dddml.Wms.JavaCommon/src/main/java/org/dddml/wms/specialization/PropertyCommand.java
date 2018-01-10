@@ -24,4 +24,7 @@ public interface PropertyCommand <TContent, TState>
 
     void setOuterCommandType(String type);
 
+    Object getContext();
+
+    void setContext(Object context);
 }

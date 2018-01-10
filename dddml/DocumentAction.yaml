@@ -19,7 +19,9 @@ enumObjects:
           description: Close
         Reverse:
           description: Reverse
-
+        Confirm:
+          description: Confirm
+          
             
 # ------------------------------
 

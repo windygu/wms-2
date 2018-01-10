@@ -20,6 +20,7 @@ aggregates:
           commandType: DocumentAction
           commandName: DocumentAction
           
+          # -------------------------------------
           stateMachine:
           
             transitions:
@@ -44,7 +45,7 @@ aggregates:
               trigger: "Reverse"
               targetState: "Reversed"
               
-        # --------------------------------------
+          # -------------------------------------
 
         # IsSOTransaction:
           # type: bool

@@ -329,12 +329,59 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
         pCmd.setStateGetter(() -> s.getDocumentStatusId());
         pCmd.setStateSetter(p -> e.setDocumentStatusId(p));
         pCmd.setOuterCommandType(CommandType.CREATE);
+        pCmd.setContext(getState());
         pCommandHandler.execute(pCmd);
     }
 
-    protected PropertyCommandHandler<String, String> getMovementDocumentActionCommandHandler()
-    {
-        return (PropertyCommandHandler<String, String>)ApplicationContext.current.get("MovementDocumentActionCommandHandler");
+    public class SimpleMovementDocumentActionCommandHandler implements PropertyCommandHandler<String, String> {
+
+        public void execute(PropertyCommand<String, String> command) {
+            if (Objects.equals(null, command.getStateGetter().get()) && Objects.equals(null, command.getContent())) {
+                command.getStateSetter().accept("Drafted");
+                return;
+            }
+            if (Objects.equals("Drafted", command.getStateGetter().get()) && Objects.equals("Void", command.getContent())) {
+                command.getStateSetter().accept("Voided");
+                return;
+            }
+            if (Objects.equals("Drafted", command.getStateGetter().get()) && Objects.equals("Complete", command.getContent()) && ((MovementState)command.getContext()).getIsInTransit() == false) {
+                command.getStateSetter().accept("Completed");
+                return;
+            }
+            if (Objects.equals("Drafted", command.getStateGetter().get()) && Objects.equals("Complete", command.getContent()) && ((MovementState)command.getContext()).getIsInTransit() == true) {
+                command.getStateSetter().accept("InProgress");
+                return;
+            }
+            if (Objects.equals("InProgress", command.getStateGetter().get()) && Objects.equals("Confirm", command.getContent())) {
+                command.getStateSetter().accept("Complete");
+                return;
+            }
+            if (Objects.equals("Completed", command.getStateGetter().get()) && Objects.equals("Close", command.getContent())) {
+                command.getStateSetter().accept("Closed");
+                return;
+            }
+            if (Objects.equals("Completed", command.getStateGetter().get()) && Objects.equals("Reverse", command.getContent()) && ((MovementState)command.getContext()).getIsInTransit() == false) {
+                command.getStateSetter().accept("Reversed");
+                return;
+            }
+            throw new IllegalArgumentException(String.format("State: %1$s, command: %2$s", command.getStateGetter().get(), command.getContent()));
+        }
+    }
+
+    private PropertyCommandHandler<String, String> movementDocumentActionCommandHandler = new SimpleMovementDocumentActionCommandHandler();
+
+    public void setMovementDocumentActionCommandHandler(PropertyCommandHandler<String, String> h) {
+        this.movementDocumentActionCommandHandler = h;
+    }
+
+    protected PropertyCommandHandler<String, String> getMovementDocumentActionCommandHandler() {
+        if (this.movementDocumentActionCommandHandler == null) {
+            Object h = ApplicationContext.current.get("MovementDocumentActionCommandHandler");
+            if (h instanceof PropertyCommandHandler) {
+                return (PropertyCommandHandler<String, String>) h;
+            }
+        }
+        return this.movementDocumentActionCommandHandler;
     }
 
     public static class SimpleMovementAggregate extends AbstractMovementAggregate
@@ -353,6 +400,7 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
             pCmd.setStateGetter(() -> this.getState().getDocumentStatusId());
             pCmd.setStateSetter(s -> e.setDocumentStatusId(s));
             pCmd.setOuterCommandType("DocumentAction");
+            pCmd.setContext(getState());
             pCommandHandler.execute(pCmd);
             // ////////////////////////////
             apply(e);

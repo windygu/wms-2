@@ -342,12 +342,8 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         pCmd.setStateGetter(() -> s.getDocumentStatusId());
         pCmd.setStateSetter(p -> e.setDocumentStatusId(p));
         pCmd.setOuterCommandType(CommandType.CREATE);
+        pCmd.setContext(getState());
         pCommandHandler.execute(pCmd);
-    }
-
-    protected PropertyCommandHandler<String, String> getInOutDocumentActionCommandHandler()
-    {
-        return (PropertyCommandHandler<String, String>)ApplicationContext.current.get("InOutDocumentActionCommandHandler");
     }
 
     public class SimpleInOutDocumentActionCommandHandler implements PropertyCommandHandler<String, String> {
@@ -375,6 +371,22 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
             }
             throw new IllegalArgumentException(String.format("State: %1$s, command: %2$s", command.getStateGetter().get(), command.getContent()));
         }
+    }
+
+    private PropertyCommandHandler<String, String> inOutDocumentActionCommandHandler = new SimpleInOutDocumentActionCommandHandler();
+
+    public void setInOutDocumentActionCommandHandler(PropertyCommandHandler<String, String> h) {
+        this.inOutDocumentActionCommandHandler = h;
+    }
+
+    protected PropertyCommandHandler<String, String> getInOutDocumentActionCommandHandler() {
+        if (this.inOutDocumentActionCommandHandler == null) {
+            Object h = ApplicationContext.current.get("InOutDocumentActionCommandHandler");
+            if (h instanceof PropertyCommandHandler) {
+                return (PropertyCommandHandler<String, String>) h;
+            }
+        }
+        return this.inOutDocumentActionCommandHandler;
     }
 
     public static class SimpleInOutAggregate extends AbstractInOutAggregate
@@ -413,6 +425,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
             pCmd.setStateGetter(() -> this.getState().getDocumentStatusId());
             pCmd.setStateSetter(s -> e.setDocumentStatusId(s));
             pCmd.setOuterCommandType("DocumentAction");
+            pCmd.setContext(getState());
             pCommandHandler.execute(pCmd);
             // ////////////////////////////
             apply(e);

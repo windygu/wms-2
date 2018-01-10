@@ -52,6 +52,17 @@ public abstract class AbstractPropertyCommand<TContent, TState> implements Prope
         this.outerCommandType = type;
     }
 
+    private  Object context;
+
+    @Override
+    public Object getContext() {
+        return context;
+    }
+
+    public void setContext(Object context) {
+        this.context = context;
+    }
+
     public static class SimplePropertyCommand<TContent, TState> extends AbstractPropertyCommand<TContent, TState> {
     }
 

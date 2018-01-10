@@ -18,6 +18,47 @@ aggregates:
           commandType: DocumentAction
           commandName: DocumentAction
           
+          # -------------------------------------
+          stateMachine:
+          
+            transitions:
+            
+            - sourceState: null
+              trigger: null
+              targetState: "Drafted"
+              
+            - sourceState: "Drafted"
+              trigger: "Void"
+              targetState: "Voided"
+              
+            - sourceState: "Drafted"
+              trigger: "Complete"
+              targetState: "Completed"
+              guard:
+                Java: "{this}.getIsInTransit() == false"
+              
+            - sourceState: "Drafted"
+              trigger: "Complete"
+              targetState: "InProgress"
+              guard:
+                Java: "{this}.getIsInTransit() == true"
+                
+            - sourceState: "InProgress"
+              trigger: "Confirm"
+              targetState: "Complete"
+              
+            - sourceState: "Completed"
+              trigger: "Close"
+              targetState: "Closed"
+              
+            - sourceState: "Completed"
+              trigger: "Reverse"
+              targetState: "Reversed"
+              guard:
+                Java: "{this}.getIsInTransit() == false"
+              
+          # -------------------------------------
+          
         MovementDate:
           type: DateTime
         
