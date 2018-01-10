@@ -402,14 +402,6 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             pCommandHandler.Execute(pCmd);
         }
 
-        protected IPropertyCommandHandler<string, string> MovementConfirmationDocumentActionCommandHandler
-        {
-            get
-            {
-                return ApplicationContext.Current["MovementConfirmationDocumentActionCommandHandler"] as IPropertyCommandHandler<string, string>;
-            }
-        }
-
         public class SimpleMovementConfirmationDocumentActionCommandHandler : IPropertyCommandHandler<string, string>
         {
             public virtual void Execute(IPropertyCommand<string, string> command)
@@ -430,6 +422,23 @@ namespace Dddml.Wms.Domain.MovementConfirmation
                     return;
                 }
                 throw new ArgumentException(String.Format("State: {0}, command: {1}", command.GetState, command.Content));
+            }
+        }
+
+        private IPropertyCommandHandler<string, string> _movementConfirmationDocumentActionCommandHandler = new SimpleMovementConfirmationDocumentActionCommandHandler();
+
+        protected IPropertyCommandHandler<string, string> MovementConfirmationDocumentActionCommandHandler
+        {
+            get
+            {
+                var h = ApplicationContext.Current["MovementConfirmationDocumentActionCommandHandler"] as IPropertyCommandHandler<string, string>;
+                if (h != null)
+                { return h; }
+                return this._movementConfirmationDocumentActionCommandHandler;
+            }
+            set
+            {
+                this._movementConfirmationDocumentActionCommandHandler = value;
             }
         }
 
