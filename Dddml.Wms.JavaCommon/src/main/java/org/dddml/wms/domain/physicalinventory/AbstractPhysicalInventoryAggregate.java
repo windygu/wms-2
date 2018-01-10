@@ -308,12 +308,22 @@ public abstract class AbstractPhysicalInventoryAggregate extends AbstractAggrega
         pCmd.setStateGetter(() -> s.getDocumentStatusId());
         pCmd.setStateSetter(p -> e.setDocumentStatusId(p));
         pCmd.setOuterCommandType(CommandType.CREATE);
+        pCmd.setContext(getState());
         pCommandHandler.execute(pCmd);
     }
 
-    protected PropertyCommandHandler<String, String> getPhysicalInventoryDocumentActionCommandHandler()
-    {
-        return (PropertyCommandHandler<String, String>)ApplicationContext.current.get("PhysicalInventoryDocumentActionCommandHandler");
+    private PropertyCommandHandler<String, String> physicalInventoryDocumentActionCommandHandler;
+
+    public void setPhysicalInventoryDocumentActionCommandHandler(PropertyCommandHandler<String, String> h) {
+        this.physicalInventoryDocumentActionCommandHandler = h;
+    }
+
+    protected PropertyCommandHandler<String, String> getPhysicalInventoryDocumentActionCommandHandler() {
+        Object h = ApplicationContext.current.get("PhysicalInventoryDocumentActionCommandHandler");
+        if (h instanceof PropertyCommandHandler) {
+            return (PropertyCommandHandler<String, String>) h;
+        }
+        return this.physicalInventoryDocumentActionCommandHandler;
     }
 
     public static class SimplePhysicalInventoryAggregate extends AbstractPhysicalInventoryAggregate
@@ -332,6 +342,7 @@ public abstract class AbstractPhysicalInventoryAggregate extends AbstractAggrega
             pCmd.setStateGetter(() -> this.getState().getDocumentStatusId());
             pCmd.setStateSetter(s -> e.setDocumentStatusId(s));
             pCmd.setOuterCommandType("DocumentAction");
+            pCmd.setContext(getState());
             pCommandHandler.execute(pCmd);
             // ////////////////////////////
             apply(e);

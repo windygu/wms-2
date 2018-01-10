@@ -438,14 +438,6 @@ namespace Dddml.Wms.Domain.Movement
             pCommandHandler.Execute(pCmd);
         }
 
-        protected IPropertyCommandHandler<string, string> MovementDocumentActionCommandHandler
-        {
-            get
-            {
-                return ApplicationContext.Current["MovementDocumentActionCommandHandler"] as IPropertyCommandHandler<string, string>;
-            }
-        }
-
         public class SimpleMovementDocumentActionCommandHandler : IPropertyCommandHandler<string, string>
         {
             public virtual void Execute(IPropertyCommand<string, string> command)
@@ -486,6 +478,23 @@ namespace Dddml.Wms.Domain.Movement
                     return;
                 }
                 throw new ArgumentException(String.Format("State: {0}, command: {1}", command.GetState, command.Content));
+            }
+        }
+
+        private IPropertyCommandHandler<string, string> _movementDocumentActionCommandHandler = new SimpleMovementDocumentActionCommandHandler();
+
+        protected IPropertyCommandHandler<string, string> MovementDocumentActionCommandHandler
+        {
+            get
+            {
+                var h = ApplicationContext.Current["MovementDocumentActionCommandHandler"] as IPropertyCommandHandler<string, string>;
+                if (h != null)
+                { return h; }
+                return this._movementDocumentActionCommandHandler;
+            }
+            set
+            {
+                this._movementDocumentActionCommandHandler = value;
             }
         }
 

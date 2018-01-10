@@ -44,7 +44,14 @@ namespace Dddml.Wms.Specialization.Spring
                 }
                 else
                 {
-                    return _innerApplicationContext[name];
+                    if (_innerApplicationContext.ContainsObject(name))
+                    {
+                        return _innerApplicationContext[name];
+                    }
+                    else
+                    {
+                        return null;
+                    }
                 }
             }
         }

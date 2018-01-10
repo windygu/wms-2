@@ -438,14 +438,6 @@ namespace Dddml.Wms.Domain.InOut
             pCommandHandler.Execute(pCmd);
         }
 
-        protected IPropertyCommandHandler<string, string> InOutDocumentActionCommandHandler
-        {
-            get
-            {
-                return ApplicationContext.Current["InOutDocumentActionCommandHandler"] as IPropertyCommandHandler<string, string>;
-            }
-        }
-
         public class SimpleInOutDocumentActionCommandHandler : IPropertyCommandHandler<string, string>
         {
             public virtual void Execute(IPropertyCommand<string, string> command)
@@ -476,6 +468,23 @@ namespace Dddml.Wms.Domain.InOut
                     return;
                 }
                 throw new ArgumentException(String.Format("State: {0}, command: {1}", command.GetState, command.Content));
+            }
+        }
+
+        private IPropertyCommandHandler<string, string> _inOutDocumentActionCommandHandler = new SimpleInOutDocumentActionCommandHandler();
+
+        protected IPropertyCommandHandler<string, string> InOutDocumentActionCommandHandler
+        {
+            get
+            {
+                var h = ApplicationContext.Current["InOutDocumentActionCommandHandler"] as IPropertyCommandHandler<string, string>;
+                if (h != null)
+                { return h; }
+                return this._inOutDocumentActionCommandHandler;
+            }
+            set
+            {
+                this._inOutDocumentActionCommandHandler = value;
             }
         }
 

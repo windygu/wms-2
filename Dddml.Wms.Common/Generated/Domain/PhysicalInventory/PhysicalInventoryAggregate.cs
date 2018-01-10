@@ -413,22 +413,24 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             var pCommandHandler = this.PhysicalInventoryDocumentActionCommandHandler;
             var pCmdContent = default(string);
             var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.DocumentStatusId, SetState = p => e.DocumentStatusId = p, OuterCommandType = CommandType.Create };
+            pCmd.Context = this.State;
             pCommandHandler.Execute(pCmd);
         }
 
-        //protected void NewPhysicalInventoryDocumentActionCommandAndExecute(IMergePatchPhysicalInventory c, IPhysicalInventoryState s, IPhysicalInventoryStateMergePatched e)
-        //{
-        //    var pCommandHandler = this.PhysicalInventoryDocumentActionCommandHandler;
-        //    var pCmdContent = c.DocumentAction;
-        //    var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => s.DocumentStatusId, SetState = p => e.DocumentStatusId = p, OuterCommandType = CommandType.MergePatch };
-        //    pCommandHandler.Execute(pCmd);
-        //}
+        private IPropertyCommandHandler<string, string> _physicalInventoryDocumentActionCommandHandler;
 
         protected IPropertyCommandHandler<string, string> PhysicalInventoryDocumentActionCommandHandler
         {
             get
             {
-                return ApplicationContext.Current["PhysicalInventoryDocumentActionCommandHandler"] as IPropertyCommandHandler<string, string>;
+                var h = ApplicationContext.Current["PhysicalInventoryDocumentActionCommandHandler"] as IPropertyCommandHandler<string, string>;
+                if (h != null)
+                { return h; }
+                return this._physicalInventoryDocumentActionCommandHandler;
+            }
+            set
+            {
+                this._physicalInventoryDocumentActionCommandHandler = value;
             }
         }
 
@@ -437,6 +439,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             var pCommandHandler = this.PhysicalInventoryDocumentActionCommandHandler;
             var pCmdContent = value;
             var pCmd = new PropertyCommand<string, string> { Content = pCmdContent, GetState = () => this.State.DocumentStatusId, SetState = setDocumentStatusId, OuterCommandType = "DocumentAction" };
+            pCmd.Context = this.State;
             pCommandHandler.Execute(pCmd);
         }
 

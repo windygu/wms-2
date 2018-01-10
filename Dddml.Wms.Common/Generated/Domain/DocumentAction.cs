@@ -27,6 +27,9 @@ namespace Dddml.Wms.Domain
 		
 		public const string Reverse = "Reverse";
 
+		
+		public const string Confirm = "Confirm";
+
 	}
 
 }

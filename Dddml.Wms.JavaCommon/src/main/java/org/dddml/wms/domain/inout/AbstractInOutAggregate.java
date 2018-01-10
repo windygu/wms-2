@@ -380,11 +380,9 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
     }
 
     protected PropertyCommandHandler<String, String> getInOutDocumentActionCommandHandler() {
-        if (this.inOutDocumentActionCommandHandler == null) {
-            Object h = ApplicationContext.current.get("InOutDocumentActionCommandHandler");
-            if (h instanceof PropertyCommandHandler) {
-                return (PropertyCommandHandler<String, String>) h;
-            }
+        Object h = ApplicationContext.current.get("InOutDocumentActionCommandHandler");
+        if (h instanceof PropertyCommandHandler) {
+            return (PropertyCommandHandler<String, String>) h;
         }
         return this.inOutDocumentActionCommandHandler;
     }

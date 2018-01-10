@@ -24,5 +24,8 @@ public class DocumentAction
 		
     public static final String REVERSE = "Reverse";
 
+		
+    public static final String CONFIRM = "Confirm";
+
 }
 

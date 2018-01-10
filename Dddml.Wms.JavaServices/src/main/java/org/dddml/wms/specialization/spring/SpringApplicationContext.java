@@ -29,7 +29,11 @@ public class SpringApplicationContext extends ApplicationContext {
         }
         else
         {
-            return innerApplicationContext.getBean(name);
+            if (innerApplicationContext.containsBean(name)) {
+                return innerApplicationContext.getBean(name);
+            } else {
+                return null;
+            }
         }
     }
 }

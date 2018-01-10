@@ -375,11 +375,9 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
     }
 
     protected PropertyCommandHandler<String, String> getMovementDocumentActionCommandHandler() {
-        if (this.movementDocumentActionCommandHandler == null) {
-            Object h = ApplicationContext.current.get("MovementDocumentActionCommandHandler");
-            if (h instanceof PropertyCommandHandler) {
-                return (PropertyCommandHandler<String, String>) h;
-            }
+        Object h = ApplicationContext.current.get("MovementDocumentActionCommandHandler");
+        if (h instanceof PropertyCommandHandler) {
+            return (PropertyCommandHandler<String, String>) h;
         }
         return this.movementDocumentActionCommandHandler;
     }

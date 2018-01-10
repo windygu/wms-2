@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.InOut
         // Aggregate 只负责更新聚合内的状态。
         // //////////////////////////////////////////////
 
-        public virtual void DoDocumentAction(string value, long version, string commandId, string requesterId)
+        public virtual void DocumentAction(string value, long version, string commandId, string requesterId)
         {
             var e = NewInOutStateMergePatched(version, commandId, requesterId);
             DoDocumentAction(value, ts => e.DocumentStatusId = ts);
@@ -34,22 +34,22 @@ namespace Dddml.Wms.Domain.InOut
 
         public virtual void Complete(long version, string commandId, string requesterId)
         {
-            DoDocumentAction(global::Dddml.Wms.Domain.DocumentAction.Complete, version, commandId, requesterId);
+            DocumentAction(global::Dddml.Wms.Domain.DocumentAction.Complete, version, commandId, requesterId);
         }
 
         public virtual void Close(long version, string commandId, string requesterId)
         {
-            DoDocumentAction(global::Dddml.Wms.Domain.DocumentAction.Close, version, commandId, requesterId);
+            DocumentAction(global::Dddml.Wms.Domain.DocumentAction.Close, version, commandId, requesterId);
         }
 
         public virtual void Void(long version, string commandId, string requesterId)
         {
-            DoDocumentAction(global::Dddml.Wms.Domain.DocumentAction.Void, version, commandId, requesterId);
+            DocumentAction(global::Dddml.Wms.Domain.DocumentAction.Void, version, commandId, requesterId);
         }
 
         public virtual void Reverse(long version, string commandId, string requesterId)
         {
-            DoDocumentAction(global::Dddml.Wms.Domain.DocumentAction.Reverse, version, commandId, requesterId);
+            DocumentAction(global::Dddml.Wms.Domain.DocumentAction.Reverse, version, commandId, requesterId);
         }
     }
 }

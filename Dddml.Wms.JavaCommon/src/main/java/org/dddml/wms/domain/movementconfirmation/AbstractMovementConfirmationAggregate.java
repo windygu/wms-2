@@ -323,11 +323,9 @@ public abstract class AbstractMovementConfirmationAggregate extends AbstractAggr
     }
 
     protected PropertyCommandHandler<String, String> getMovementConfirmationDocumentActionCommandHandler() {
-        if (this.movementConfirmationDocumentActionCommandHandler == null) {
-            Object h = ApplicationContext.current.get("MovementConfirmationDocumentActionCommandHandler");
-            if (h instanceof PropertyCommandHandler) {
-                return (PropertyCommandHandler<String, String>) h;
-            }
+        Object h = ApplicationContext.current.get("MovementConfirmationDocumentActionCommandHandler");
+        if (h instanceof PropertyCommandHandler) {
+            return (PropertyCommandHandler<String, String>) h;
         }
         return this.movementConfirmationDocumentActionCommandHandler;
     }
