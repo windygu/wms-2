@@ -50,13 +50,13 @@ public class HibernatePartyStateRepository implements PartyStateRepository
             throw new ClassCastException(String.format("state is NOT instance of %1$s", type.getName()));
         }
         if (!nullAllowed && state == null) {
-            state = getEmptyState(type);
+            state = newEmptyState(type);
             state.setPartyId(id);
         }
         return state;
     }
 
-    private PartyState getEmptyState(Class<? extends PartyState> type) {
+    private PartyState newEmptyState(Class<? extends PartyState> type) {
         PartyState state = null;
         Class<? extends AbstractPartyState> clazz = null;
         if (state != null) {

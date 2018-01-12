@@ -196,10 +196,10 @@ public abstract class AbstractPartyApplicationService implements PartyApplicatio
         }
         if (discriminatorVal != null) {
             switch (discriminatorVal) {
-                case PartyTypeId.PARTY:
+                case PartyTypeIds.PARTY:
                     clazz = PartyState.class;
                     break;
-                case PartyTypeId.ORGANIZATION:
+                case PartyTypeIds.ORGANIZATION:
                     clazz = OrganizationState.class;
                     break;
             }

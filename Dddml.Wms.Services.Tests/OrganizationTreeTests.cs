@@ -46,13 +46,13 @@ namespace Dddml.Wms.Services.Tests
             organizationStructureTypeApplicationService.When(orgStructureType);
 
             var organization1 = new CreateParty();//CreateOrganization();
-            organization1.PartyTypeId = PartyTypeId.Organization;
+            organization1.PartyTypeId = PartyTypeIds.Organization;
             organization1.PartyId = Guid.NewGuid().ToString();
             organization1.OrganizationName = "Org_test_1" + organization1.PartyId;
             partyApplicationService.When(organization1);
 
             var organization2 = new CreateParty();//CreateOrganization();
-            organization1.PartyTypeId = PartyTypeId.Organization;
+            organization1.PartyTypeId = PartyTypeIds.Organization;
             organization2.PartyId = Guid.NewGuid().ToString();
             organization2.OrganizationName = "Org_test_2" + organization2.PartyId;
             partyApplicationService.When(organization2);

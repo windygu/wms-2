@@ -204,7 +204,7 @@ public abstract class AbstractPartyCommand extends AbstractCommand implements Pa
 
 	public static class SimpleCreateOrganization extends SimpleCreateParty {
         public SimpleCreateOrganization() {
-            super.setPartyTypeId(PartyTypeId.ORGANIZATION);
+            super.setPartyTypeId(PartyTypeIds.ORGANIZATION);
         }
     }
 
@@ -215,7 +215,7 @@ public abstract class AbstractPartyCommand extends AbstractCommand implements Pa
 
 	public static class SimpleMergePatchOrganization extends SimpleMergePatchParty {
         public SimpleMergePatchOrganization() {
-            super.setPartyTypeId(PartyTypeId.ORGANIZATION);
+            super.setPartyTypeId(PartyTypeIds.ORGANIZATION);
         }
     }
 
@@ -240,7 +240,7 @@ public abstract class AbstractPartyCommand extends AbstractCommand implements Pa
 
 	public static class SimpleDeleteOrganization extends SimpleDeleteParty {
         public SimpleDeleteOrganization() {
-            super.setPartyTypeId(PartyTypeId.ORGANIZATION);
+            super.setPartyTypeId(PartyTypeIds.ORGANIZATION);
         }
     }
 

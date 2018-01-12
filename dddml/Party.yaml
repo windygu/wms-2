@@ -22,4 +22,6 @@ aggregates:
     discriminatorValue: "Party"
     # ---------------------
 
-      
+    metadata:
+      DiscriminatorConstObjectNameFormat: "{0}s"
+    

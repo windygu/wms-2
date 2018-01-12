@@ -4016,7 +4016,7 @@
     <Compile Include="Generated\Domain\Party\PartyStateProperties.cs">
       <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Party\PartyTypeId.cs">
+    <Compile Include="Generated\Domain\Party\PartyTypeIds.cs">
       <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\IPhysicalInventoryLineMvoAggregate.cs">
@@ -8542,7 +8542,7 @@
 .\PartyStateExtension.cs
 .\PartyStateInterfaceExtension.cs
 .\PartyStateProperties.cs
-.\PartyTypeId.cs
+.\PartyTypeIds.cs
 </LastOutputs>
     </Content>
   </ItemGroup>

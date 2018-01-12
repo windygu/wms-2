@@ -55,10 +55,10 @@ public abstract class AbstractPartyAggregate extends AbstractAggregate implement
     }
 
     protected PartyStateEvent map(PartyCommand.CreateParty c) {
-        if(c.getPartyTypeId().equals(PartyTypeId.PARTY)) {
+        if(c.getPartyTypeId().equals(PartyTypeIds.PARTY)) {
             return mapToPartyEvent(c);
         }
-        if(c.getPartyTypeId().equals(PartyTypeId.ORGANIZATION)) {
+        if(c.getPartyTypeId().equals(PartyTypeIds.ORGANIZATION)) {
             return mapToOrganizationEvent(c);
         }
         return mapToPartyEvent(c);
@@ -91,10 +91,10 @@ public abstract class AbstractPartyAggregate extends AbstractAggregate implement
     }
 
     protected PartyStateEvent map(PartyCommand.MergePatchParty c) {
-        if(c.getPartyTypeId().equals(PartyTypeId.PARTY)) {
+        if(c.getPartyTypeId().equals(PartyTypeIds.PARTY)) {
             return mapToPartyEvent(c);
         }
-        if(c.getPartyTypeId().equals(PartyTypeId.ORGANIZATION)) {
+        if(c.getPartyTypeId().equals(PartyTypeIds.ORGANIZATION)) {
             return mapToOrganizationEvent(c);
         }
         return mapToPartyEvent(c);
@@ -135,10 +135,10 @@ public abstract class AbstractPartyAggregate extends AbstractAggregate implement
     }
 
     protected PartyStateEvent map(PartyCommand.DeleteParty c) {
-        if(c.getPartyTypeId().equals(PartyTypeId.PARTY)) {
+        if(c.getPartyTypeId().equals(PartyTypeIds.PARTY)) {
             return mapToPartyEvent(c);
         }
-        if(c.getPartyTypeId().equals(PartyTypeId.ORGANIZATION)) {
+        if(c.getPartyTypeId().equals(PartyTypeIds.ORGANIZATION)) {
             return mapToOrganizationEvent(c);
         }
         return mapToPartyEvent(c);

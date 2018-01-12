@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace Dddml.Wms.Domain.Party
 {
 
-	public static class PartyTypeId
+	public static class PartyTypeIds
 	{
 
 		

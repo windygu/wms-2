@@ -6,7 +6,7 @@
 
 package org.dddml.wms.domain.party;
 
-public class PartyTypeId
+public class PartyTypeIds
 {
 
 		
