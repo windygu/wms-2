@@ -105,7 +105,7 @@ public class OrganizationResource {
     public void put(@PathParam("id") String id, CreateOrMergePatchPartyDto.CreatePartyDto value) {
         try {
 
-            value.setPartyTypeId(PartyTypeId.ORGANIZATION);
+            value.setPartyTypeId(PartyTypeIds.ORGANIZATION);
             PartyCommand.CreateParty cmd = value.toCreateParty();
             OrganizationResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             partyApplicationService.when(cmd);
@@ -118,7 +118,7 @@ public class OrganizationResource {
     public void patch(@PathParam("id") String id, CreateOrMergePatchPartyDto.MergePatchPartyDto value) {
         try {
 
-            value.setPartyTypeId(PartyTypeId.ORGANIZATION);
+            value.setPartyTypeId(PartyTypeIds.ORGANIZATION);
             PartyCommand.MergePatchParty cmd = value.toMergePatchParty();
             OrganizationResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             partyApplicationService.when(cmd);
@@ -134,7 +134,7 @@ public class OrganizationResource {
         try {
 
             PartyCommand.DeleteParty deleteCmd = new AbstractPartyCommand.SimpleDeleteParty();
-            deleteCmd.setPartyTypeId(PartyTypeId.ORGANIZATION);
+            deleteCmd.setPartyTypeId(PartyTypeIds.ORGANIZATION);
 
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
