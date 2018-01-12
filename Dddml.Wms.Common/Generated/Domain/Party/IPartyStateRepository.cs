@@ -17,6 +17,8 @@ namespace Dddml.Wms.Domain.Party
 
         IPartyState Get(string id, bool nullAllowed);
         
+        IPartyState Get(Type type, string id, bool nullAllowed);
+
         void Save(IPartyState state);
         
 	}

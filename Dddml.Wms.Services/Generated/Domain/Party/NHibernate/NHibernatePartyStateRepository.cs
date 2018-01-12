@@ -36,20 +36,46 @@ namespace Dddml.Wms.Domain.Party.NHibernate
 		{
 		}
 
-		[Transaction (ReadOnly = true)]
+        [Transaction (ReadOnly = true)]
 		public IPartyState Get(string id, bool nullAllowed)
+        {
+            return Get(typeof(IPartyState), id, nullAllowed);
+        }
+
+		[Transaction (ReadOnly = true)]
+        public IPartyState Get(Type type, string id, bool nullAllowed)
 		{
 			IPartyState state = CurrentSession.Get<PartyState> (id);
+            if (state != null && !type.IsAssignableFrom(state.GetType())) 
+            {
+                throw new InvalidCastException(String.Format("state is NOT instance of {0}", type.Name));
+            }
 			if (!nullAllowed && state == null) {
-				state = new PartyState ();
+                state = NewEmptyState(type);
 				(state as PartyState).PartyId = id;
 			}
-            if (ReadOnlyProxyGenerator != null && state != null)
-            {
-                return ReadOnlyProxyGenerator.CreateProxy<IPartyState>(state, new Type[] {  }, _readOnlyPropertyNames);
-            }
 			return state;
 		}
+
+        private PartyState NewEmptyState(Type type) 
+        {
+            PartyState state = null;
+            Type clazz = null;
+            if (state != null) {
+                // do nothing.
+            }
+            else if (type.Equals(typeof(PartyState))) {
+                clazz = typeof(PartyState);
+            }
+            else if (type.Equals(typeof(OrganizationState))) {
+                clazz = typeof(OrganizationState);
+            }
+            else {
+                throw new ArgumentException(String.Format("type: {0}", type.Name));
+            }
+            state = (PartyState)clazz.GetConstructor(new Type[0]).Invoke(new object[0]);
+            return state;
+        }
 
 		[Transaction]
 		public void Save(IPartyState state)
