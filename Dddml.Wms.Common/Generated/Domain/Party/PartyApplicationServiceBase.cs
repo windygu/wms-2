@@ -35,7 +35,8 @@ namespace Dddml.Wms.Domain.Party
 		protected virtual void Update(IPartyCommand c, Action<IPartyAggregate> action)
 		{
 			var aggregateId = c.AggregateId;
-			var state = StateRepository.Get(aggregateId, false);
+            var stateType = GetStateType(c);
+			var state = StateRepository.Get(stateType, aggregateId, false);
 			var aggregate = GetPartyAggregate(state);
 
 			var eventStoreAggregateId = ToEventStoreAggregateId(aggregateId);
@@ -67,6 +68,30 @@ namespace Dddml.Wms.Domain.Party
             var eventStoreAggregateId = ToEventStoreAggregateId(aggregateId);
             aggregate.Apply(stateCreated);
             Persist(eventStoreAggregateId, aggregate, state);
+        }
+
+        protected virtual Type GetStateType(IPartyCommand c) 
+        {
+            Type clazz = typeof(PartyState);
+            string discriminatorVal = null;
+            if (c is ICreateParty) {
+                discriminatorVal = ((ICreateParty) c).PartyTypeId;
+            } else if (c is IMergePatchParty) {
+                discriminatorVal = ((IMergePatchParty) c).PartyTypeId;
+            } else if (c is IDeleteParty) {
+                discriminatorVal = ((IDeleteParty) c).PartyTypeId;
+            }
+            if (discriminatorVal != null) {
+                switch (discriminatorVal) {
+                    case PartyTypeIds.Party:
+                        clazz = typeof(PartyState);
+                        break;
+                    case PartyTypeIds.Organization:
+                        clazz = typeof(OrganizationState);
+                        break;
+                }
+            }
+            return clazz;
         }
 
 		protected bool IsRepeatedCommand(IPartyCommand command, IEventStoreAggregateId eventStoreAggregateId, IPartyState state)
