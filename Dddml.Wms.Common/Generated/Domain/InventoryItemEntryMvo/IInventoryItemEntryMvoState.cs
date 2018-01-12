@@ -32,5 +32,6 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
         bool IsUnsaved { get; }
 
 	}
+
 }
 

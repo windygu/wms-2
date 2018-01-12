@@ -1,5 +1,5 @@
 ﻿using Dddml.Wms.Domain;
-using Dddml.Wms.Domain.Organization;
+using Dddml.Wms.Domain.Party;
 using Dddml.Wms.Domain.OrganizationStructure;
 using Dddml.Wms.Domain.OrganizationStructureType;
 using Dddml.Wms.Specialization;
@@ -19,7 +19,7 @@ namespace Dddml.Wms.Services.Tests
 
         IOrganizationTreeRepository organizationTreeRepository;
 
-        IOrganizationApplicationService organizationApplicationService;
+        IPartyApplicationService partyApplicationService;
 
         IOrganizationStructureApplicationService organizationStructureApplicationService;
 
@@ -31,7 +31,7 @@ namespace Dddml.Wms.Services.Tests
             base.SetUp();
 
             organizationTreeRepository = ApplicationContext.Current["organizationTreeRepository"] as IOrganizationTreeRepository;
-            organizationApplicationService = ApplicationContext.Current["organizationApplicationService"] as IOrganizationApplicationService;
+            partyApplicationService = ApplicationContext.Current["partyApplicationService"] as IPartyApplicationService;
             organizationStructureApplicationService = ApplicationContext.Current["organizationStructureApplicationService"] as IOrganizationStructureApplicationService;
             organizationStructureTypeApplicationService = ApplicationContext.Current["organizationStructureTypeApplicationService"] as IOrganizationStructureTypeApplicationService;
 
@@ -45,15 +45,17 @@ namespace Dddml.Wms.Services.Tests
             orgStructureType.Id = orgStructureTypeId;
             organizationStructureTypeApplicationService.When(orgStructureType);
 
-            var organization1 = new CreateOrganization();
+            var organization1 = new CreateParty();//CreateOrganization();
+            organization1.PartyTypeId = PartyTypeId.Organization;
             organization1.PartyId = Guid.NewGuid().ToString();
             organization1.OrganizationName = "Org_test_1" + organization1.PartyId;
-            organizationApplicationService.When(organization1);
+            partyApplicationService.When(organization1);
 
-            var organization2 = new CreateOrganization();
+            var organization2 = new CreateParty();//CreateOrganization();
+            organization1.PartyTypeId = PartyTypeId.Organization;
             organization2.PartyId = Guid.NewGuid().ToString();
             organization2.OrganizationName = "Org_test_2" + organization2.PartyId;
-            organizationApplicationService.When(organization2);
+            partyApplicationService.When(organization2);
 
             var orgStructure_0_1 = new CreateOrganizationStructure();
             var orgStructure_0_1_Id = new OrganizationStructureId(orgStructureTypeId, "", organization1.PartyId);

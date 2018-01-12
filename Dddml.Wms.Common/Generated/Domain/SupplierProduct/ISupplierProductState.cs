@@ -32,5 +32,6 @@ namespace Dddml.Wms.Domain.SupplierProduct
         bool IsUnsaved { get; }
 
 	}
+
 }
 

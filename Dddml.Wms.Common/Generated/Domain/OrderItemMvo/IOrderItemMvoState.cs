@@ -33,5 +33,6 @@ namespace Dddml.Wms.Domain.OrderItemMvo
         bool IsUnsaved { get; }
 
 	}
+
 }
 

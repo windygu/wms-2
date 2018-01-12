@@ -34,5 +34,6 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
         bool IsUnsaved { get; }
 
 	}
+
 }
 

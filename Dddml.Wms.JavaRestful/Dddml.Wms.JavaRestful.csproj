@@ -116,6 +116,7 @@
 .\OrganizationResource.java
 .\OrganizationStructureResource.java
 .\OrganizationStructureTypeResource.java
+.\PartyResource.java
 .\PhysicalInventoryLineMvoResource.java
 .\PhysicalInventoryResource.java
 .\ProductCategoryMemberResource.java
@@ -229,6 +230,9 @@
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\OrganizationTreeResource.java">
       <DependentUpon>GenerateTreeResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\restful\resource\PartyResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\PhysicalInventoryLineMvoResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>

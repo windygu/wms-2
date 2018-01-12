@@ -38,5 +38,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
         bool IsUnsaved { get; }
 
 	}
+
 }
 

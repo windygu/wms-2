@@ -7,7 +7,7 @@ aggregates:
 
     # --------------- aggregate ---------------
     Organization:
-      #inheritedFrom: Party
+      inheritedFrom: Party
       id:
         name: PartyId
         type: string
@@ -23,6 +23,8 @@ aggregates:
           type: bool
           
         # ad_replicationstrategy_id numeric,
+        
+      discriminatorValue: "Organization"
 
         
     # --------------- aggregate ---------------

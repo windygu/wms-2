@@ -11,7 +11,7 @@ import org.dddml.support.criterion.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.organization.*;
+import org.dddml.wms.domain.party.*;
 import org.dddml.wms.domain.meta.*;
 
 import com.alibaba.fastjson.*;
@@ -23,11 +23,11 @@ public class OrganizationResource {
 
 
     @Autowired
-    private OrganizationApplicationService organizationApplicationService;
+    private PartyApplicationService partyApplicationService;
 
 
     @GET
-    public OrganizationStateDto[] getAll(@Context HttpServletRequest request,
+    public PartyStateDto[] getAll(@Context HttpServletRequest request,
                                    @QueryParam("sort") String sort,
                                    @QueryParam("fields") String fields,
                                    @QueryParam("firstResult") @DefaultValue("0") Integer firstResult,
@@ -37,46 +37,49 @@ public class OrganizationResource {
         if (maxResults == null || maxResults < 1) { maxResults = Integer.MAX_VALUE; }
         try {
 
-            Iterable<OrganizationState> states = null; 
+            Iterable<PartyState> states = null; 
             if (!StringHelper.isNullOrEmpty(filter)) {
-                states = organizationApplicationService.get(
+                states = partyApplicationService.get(OrganizationState.class, 
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrganizationFilteringProperties.aliasMap.containsKey(n) ? OrganizationFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PartyFilteringProperties.aliasMap.containsKey(n) ? PartyFilteringProperties.aliasMap.get(n) : n)),
                         OrganizationResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
-                states = organizationApplicationService.get(
+                states = partyApplicationService.get(OrganizationState.class, 
                         OrganizationResourceUtils.getQueryFilterMap(request.getParameterMap()),
                         OrganizationResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             }
 
-            OrganizationStateDto.DtoConverter dtoConverter = new OrganizationStateDto.DtoConverter();
+            PartyStateDto.DtoConverter dtoConverter = new PartyStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
             } else {
                 dtoConverter.setReturnedFieldsString(fields);
             }
-            return dtoConverter.toOrganizationStateDtoArray(states);
+            return dtoConverter.toPartyStateDtoArray(states);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
     @Path("{id}") @GET
-    public OrganizationStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
+    public PartyStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
             String idObj = id;
-            OrganizationState state = organizationApplicationService.get(idObj);
+            PartyState state = partyApplicationService.get(idObj);
             if (state == null) { return null; }
 
-            OrganizationStateDto.DtoConverter dtoConverter = new OrganizationStateDto.DtoConverter();
+            if (state != null && !OrganizationState.class.isAssignableFrom(state.getClass())) {
+                return null;
+            }
+            PartyStateDto.DtoConverter dtoConverter = new PartyStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
             } else {
                 dtoConverter.setReturnedFieldsString(fields);
             }
-            return dtoConverter.toOrganizationStateDto(state);
+            return dtoConverter.toPartyStateDto(state);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -87,10 +90,10 @@ public class OrganizationResource {
         try {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
-                count = organizationApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrganizationFilteringProperties.aliasMap.containsKey(n) ? OrganizationFilteringProperties.aliasMap.get(n) : n)));
+                count = partyApplicationService.getCount(OrganizationState.class, CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PartyFilteringProperties.aliasMap.containsKey(n) ? PartyFilteringProperties.aliasMap.get(n) : n)));
             } else {
-                count = organizationApplicationService.getCount(OrganizationResourceUtils.getQueryFilterMap(request.getParameterMap()));
+                count = partyApplicationService.getCount(OrganizationState.class, OrganizationResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
             return count;
 
@@ -99,24 +102,26 @@ public class OrganizationResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchOrganizationDto.CreateOrganizationDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchPartyDto.CreatePartyDto value) {
         try {
 
-            OrganizationCommand.CreateOrganization cmd = value.toCreateOrganization();
+            value.setPartyTypeId(PartyTypeId.ORGANIZATION);
+            PartyCommand.CreateParty cmd = value.toCreateParty();
             OrganizationResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
-            organizationApplicationService.when(cmd);
+            partyApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
     @Path("{id}") @PATCH
-    public void patch(@PathParam("id") String id, CreateOrMergePatchOrganizationDto.MergePatchOrganizationDto value) {
+    public void patch(@PathParam("id") String id, CreateOrMergePatchPartyDto.MergePatchPartyDto value) {
         try {
 
-            OrganizationCommand.MergePatchOrganization cmd = value.toMergePatchOrganization();
+            value.setPartyTypeId(PartyTypeId.ORGANIZATION);
+            PartyCommand.MergePatchParty cmd = value.toMergePatchParty();
             OrganizationResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
-            organizationApplicationService.when(cmd);
+            partyApplicationService.when(cmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -128,13 +133,14 @@ public class OrganizationResource {
                        @QueryParam("requesterId") String requesterId) {
         try {
 
-            OrganizationCommand.DeleteOrganization deleteCmd = new AbstractOrganizationCommand.SimpleDeleteOrganization();
+            PartyCommand.DeleteParty deleteCmd = new AbstractPartyCommand.SimpleDeleteParty();
+            deleteCmd.setPartyTypeId(PartyTypeId.ORGANIZATION);
 
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
             deleteCmd.setVersion(version);
             OrganizationResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
-            organizationApplicationService.when(deleteCmd);
+            partyApplicationService.when(deleteCmd);
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
@@ -144,7 +150,7 @@ public class OrganizationResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            OrganizationFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            PartyFilteringProperties.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -153,35 +159,35 @@ public class OrganizationResource {
     }
 
     @Path("{id}/_stateEvents/{version}") @GET
-    public OrganizationStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
+    public PartyStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
             String idObj = id;
-            OrganizationStateEventDtoConverter dtoConverter = getOrganizationStateEventDtoConverter();
-            return dtoConverter.toOrganizationStateEventDto((AbstractOrganizationStateEvent) organizationApplicationService.getStateEvent(idObj, version));
+            PartyStateEventDtoConverter dtoConverter = getPartyStateEventDtoConverter();
+            return dtoConverter.toPartyStateEventDto((AbstractPartyStateEvent) partyApplicationService.getStateEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
     @Path("{id}/_historyStates/{version}") @GET
-    public OrganizationStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version, @QueryParam("fields") String fields) {
+    public PartyStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version, @QueryParam("fields") String fields) {
         try {
 
             String idObj = id;
-            OrganizationStateDto.DtoConverter dtoConverter = new OrganizationStateDto.DtoConverter();
+            PartyStateDto.DtoConverter dtoConverter = new PartyStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
                 dtoConverter.setAllFieldsReturned(true);
             } else {
                 dtoConverter.setReturnedFieldsString(fields);
             }
-            return dtoConverter.toOrganizationStateDto(organizationApplicationService.getHistoryState(idObj, version));
+            return dtoConverter.toPartyStateDto(partyApplicationService.getHistoryState(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    protected  OrganizationStateEventDtoConverter getOrganizationStateEventDtoConverter() {
-        return new OrganizationStateEventDtoConverter();
+    protected  PartyStateEventDtoConverter getPartyStateEventDtoConverter() {
+        return new PartyStateEventDtoConverter();
     }
 
     protected String getQueryOrderSeparator() {
@@ -193,12 +199,12 @@ public class OrganizationResource {
     }
 
     protected PropertyTypeResolver getPropertyTypeResolver() {
-        return new OrganizationPropertyTypeResolver();
+        return new PartyPropertyTypeResolver();
     }
 
     // ////////////////////////////////
 
-    private class OrganizationPropertyTypeResolver implements PropertyTypeResolver {
+    private class PartyPropertyTypeResolver implements PropertyTypeResolver {
         @Override
         public Class resolveTypeByPropertyName(String propertyName) {
             return OrganizationResourceUtils.getFilterPropertyType(propertyName);
@@ -222,7 +228,7 @@ public class OrganizationResource {
             return orders;
         }
 
-        public static void setNullIdOrThrowOnInconsistentIds(String id, OrganizationCommand value) {
+        public static void setNullIdOrThrowOnInconsistentIds(String id, PartyCommand value) {
             String idObj = id;
             if (value.getPartyId() == null) {
                 value.setPartyId(idObj);
@@ -240,15 +246,15 @@ public class OrganizationResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (OrganizationFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return OrganizationFilteringProperties.aliasMap.get(fieldName);
+            if (PartyFilteringProperties.aliasMap.containsKey(fieldName)) {
+                return PartyFilteringProperties.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (OrganizationFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = OrganizationFilteringProperties.propertyTypeMap.get(propertyName);
+            if (PartyFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = PartyFilteringProperties.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (ReflectUtils.CLASS_MAP.containsKey(propertyType)) {
                         return ReflectUtils.CLASS_MAP.get(propertyType);

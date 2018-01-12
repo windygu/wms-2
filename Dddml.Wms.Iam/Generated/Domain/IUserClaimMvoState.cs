@@ -36,5 +36,6 @@ namespace Dddml.Wms.Domain.UserClaimMvo
         bool IsUnsaved { get; }
 
 	}
+
 }
 

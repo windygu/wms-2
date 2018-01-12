@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+				   assembly="Dddml.Wms.Common" 
+				   namespace="Dddml.Wms.Domain.Party">
+  
+  <class name="Dddml.Wms.Domain.Party.PartyState" table="Parties">
+
+	<id name="PartyId" length="50" column="PartyId"><generator class="assigned"/></id>
+
+	<version name="Version" column="Version" type="long" unsaved-value="0"/>
+
+    <property name="PartyTypeId" ><column name="PartyTypeId" sql-type="VARCHAR(20)" /></property>
+    <property name="CreatedBy" ></property>
+    <property name="UpdatedBy" ></property>
+    <property name="Active" ></property>
+    <property name="Deleted" ></property>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+
+    <property name="UpdatedAt" column="UpdatedAt" type="DateTimeUtc"/>
+
+
+  </class>
+  
+</hibernate-mapping>
+

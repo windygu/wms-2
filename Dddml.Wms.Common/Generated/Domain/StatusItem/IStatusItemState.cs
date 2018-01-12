@@ -34,5 +34,6 @@ namespace Dddml.Wms.Domain.StatusItem
         bool IsUnsaved { get; }
 
 	}
+
 }
 

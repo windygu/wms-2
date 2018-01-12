@@ -35,5 +35,6 @@ namespace Dddml.Wms.Domain.Uom
         bool IsUnsaved { get; }
 
 	}
+
 }
 

@@ -36,5 +36,6 @@ namespace Dddml.Wms.Domain.MovementConfirmation
         bool IsUnsaved { get; }
 
 	}
+
 }
 

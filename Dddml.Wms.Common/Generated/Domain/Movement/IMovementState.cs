@@ -38,5 +38,6 @@ namespace Dddml.Wms.Domain.Movement
         bool IsUnsaved { get; }
 
 	}
+
 }
 

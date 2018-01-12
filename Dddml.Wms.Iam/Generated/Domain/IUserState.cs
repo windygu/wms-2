@@ -47,5 +47,6 @@ namespace Dddml.Wms.Domain.User
         bool IsUnsaved { get; }
 
 	}
+
 }
 

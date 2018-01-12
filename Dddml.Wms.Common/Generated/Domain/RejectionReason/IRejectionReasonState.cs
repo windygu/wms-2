@@ -35,5 +35,6 @@ namespace Dddml.Wms.Domain.RejectionReason
         bool IsUnsaved { get; }
 
 	}
+
 }
 

@@ -38,5 +38,6 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
         bool IsUnsaved { get; }
 
 	}
+
 }
 

@@ -36,5 +36,6 @@ namespace Dddml.Wms.Domain.MovementLineMvo
         bool IsUnsaved { get; }
 
 	}
+
 }
 

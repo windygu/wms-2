@@ -411,27 +411,6 @@
   </bean>
 
 
-  <bean id="organizationStateRepository" class="org.dddml.wms.domain.organization.hibernate.HibernateOrganizationStateRepository">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
-  </bean>
-
-  <bean id="organizationStateQueryRepository" class="org.dddml.wms.domain.organization.hibernate.HibernateOrganizationStateQueryRepository">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
-  </bean>
-
-  <bean id="organizationEventStore" class="org.dddml.wms.domain.organization.hibernate.HibernateOrganizationEventStore">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-  </bean>
-
-  <bean id="organizationApplicationService" class="org.dddml.wms.domain.organization.AbstractOrganizationApplicationService$SimpleOrganizationApplicationService">
-    <constructor-arg ref="organizationEventStore"/>
-    <constructor-arg ref="organizationStateRepository"/>
-    <constructor-arg ref="organizationStateQueryRepository"/>
-  </bean>
-
-
   <bean id="organizationStructureStateRepository" class="org.dddml.wms.domain.organizationstructure.hibernate.HibernateOrganizationStructureStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
@@ -471,6 +450,32 @@
     <constructor-arg ref="organizationStructureTypeEventStore"/>
     <constructor-arg ref="organizationStructureTypeStateRepository"/>
     <constructor-arg ref="organizationStructureTypeStateQueryRepository"/>
+  </bean>
+
+
+  <bean id="partyStateRepository" class="org.dddml.wms.domain.party.hibernate.HibernatePartyStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="partyStateQueryRepository" class="org.dddml.wms.domain.party.hibernate.HibernatePartyStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="organizationStateQueryRepository" class="org.dddml.wms.domain.party.hibernate.HibernateOrganizationStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="partyEventStore" class="org.dddml.wms.domain.party.hibernate.HibernatePartyEventStore">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="partyApplicationService" class="org.dddml.wms.domain.party.AbstractPartyApplicationService$SimplePartyApplicationService">
+    <constructor-arg ref="partyEventStore"/>
+    <constructor-arg ref="partyStateRepository"/>
+    <constructor-arg ref="partyStateQueryRepository"/>
   </bean>
 
 

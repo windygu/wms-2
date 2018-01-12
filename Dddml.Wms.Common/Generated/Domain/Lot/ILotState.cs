@@ -35,5 +35,6 @@ namespace Dddml.Wms.Domain.Lot
         bool IsUnsaved { get; }
 
 	}
+
 }
 

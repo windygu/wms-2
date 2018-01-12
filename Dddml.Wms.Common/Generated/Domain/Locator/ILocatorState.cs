@@ -35,5 +35,6 @@ namespace Dddml.Wms.Domain.Locator
         bool IsUnsaved { get; }
 
 	}
+
 }
 

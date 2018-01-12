@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
-using Dddml.Wms.Domain.Organization;
+using Dddml.Wms.Domain.Party;
 using Dddml.Wms.Domain.OrganizationStructure;
 
 namespace Dddml.Wms.Domain

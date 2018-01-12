@@ -36,5 +36,6 @@ namespace Dddml.Wms.Domain.Attribute
         bool IsUnsaved { get; }
 
 	}
+
 }
 

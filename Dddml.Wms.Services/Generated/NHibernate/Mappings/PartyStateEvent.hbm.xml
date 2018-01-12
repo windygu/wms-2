@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+                   assembly="Dddml.Wms.Common" 
+                   namespace="Dddml.Wms.Domain.Party">
+  
+  <class name="PartyStateEventBase" table="PartyStateEvents" mutable="false" abstract="true">
+
+    <composite-id name="StateEventId" class="Dddml.Wms.Domain.Party.PartyStateEventId">
+        <key-property name="PartyId" ><column name="PartyId" length="50" /></key-property>
+        <key-property name="Version" ></key-property>
+    </composite-id>
+    <discriminator column="StateEventType" type="String" />
+
+    <property name="PartyTypeId" ><column name="PartyTypeId" sql-type="VARCHAR(20)" /></property>
+    <property name="Active" ></property>
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+    <subclass name="PartyStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="PartyStateMergePatched"  discriminator-value="MergePatched">
+
+
+        <property name="IsPropertyPartyTypeIdRemoved" column="IsPropertyPartyTypeIdRemoved"/>
+
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+    </subclass>
+
+    <subclass name="PartyStateDeleted"  discriminator-value="Deleted">
+
+    </subclass>
+
+
+
+  </class>
+  
+</hibernate-mapping>

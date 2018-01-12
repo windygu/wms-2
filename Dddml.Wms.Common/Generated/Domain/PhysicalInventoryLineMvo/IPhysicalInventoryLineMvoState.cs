@@ -36,5 +36,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
         bool IsUnsaved { get; }
 
 	}
+
 }
 

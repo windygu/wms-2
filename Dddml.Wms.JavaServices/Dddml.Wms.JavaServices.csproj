@@ -559,19 +559,22 @@
     <Content Include="src\main\java\org\dddml\wms\domain\organizationstructure\hibernate\HibernateOrganizationTreeOrganizationStructureStateQueryRepository.java">
       <DependentUpon>GenerateOrganizationStructureDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organization\hibernate\GenerateOrganizationDomainHibernate.txt">
+    <Content Include="src\main\java\org\dddml\wms\domain\party\hibernate\GeneratePartyDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateOrganizationDomainHibernate.tt</DependentUpon>
+      <DependentUpon>GeneratePartyDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organization\hibernate\HibernateOrganizationEventStore.java">
-      <DependentUpon>GenerateOrganizationDomainHibernate.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\hibernate\HibernateOrganizationStateQueryRepository.java">
+      <DependentUpon>GeneratePartyDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organization\hibernate\HibernateOrganizationStateQueryRepository.java">
-      <DependentUpon>GenerateOrganizationDomainHibernate.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\hibernate\HibernatePartyEventStore.java">
+      <DependentUpon>GeneratePartyDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organization\hibernate\HibernateOrganizationStateRepository.java">
-      <DependentUpon>GenerateOrganizationDomainHibernate.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\hibernate\HibernatePartyStateQueryRepository.java">
+      <DependentUpon>GeneratePartyDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\hibernate\HibernatePartyStateRepository.java">
+      <DependentUpon>GeneratePartyDomainHibernate.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\hibernate\GeneratePhysicalInventoryLineMvoDomainHibernate.txt">
       <AutoGen>True</AutoGen>
@@ -847,6 +850,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Content>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\PartyStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\PartyState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\RejectionReasonStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
@@ -1049,12 +1058,6 @@
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\OrganizationStructureTypeState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\OrganizationStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\OrganizationState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\OrderShipmentStateEvent.hbm.xml">
@@ -1304,12 +1307,12 @@
 .\OrderShipmentStateEvent.hbm.xml
 .\OrderState.hbm.xml
 .\OrderStateEvent.hbm.xml
-.\OrganizationState.hbm.xml
-.\OrganizationStateEvent.hbm.xml
 .\OrganizationStructureState.hbm.xml
 .\OrganizationStructureStateEvent.hbm.xml
 .\OrganizationStructureTypeState.hbm.xml
 .\OrganizationStructureTypeStateEvent.hbm.xml
+.\PartyState.hbm.xml
+.\PartyStateEvent.hbm.xml
 .\PhysicalInventoryLineMvoState.hbm.xml
 .\PhysicalInventoryLineMvoStateEvent.hbm.xml
 .\PhysicalInventoryLineState.hbm.xml
@@ -1393,16 +1396,6 @@
 .\HibernateInOutLineStateEventDao.java
 .\HibernateInOutStateQueryRepository.java
 .\HibernateInOutStateRepository.java
-</LastOutputs>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organization\hibernate\GenerateOrganizationDomainHibernate.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateOrganizationDomainHibernate.txt</LastGenOutput>
-      <LastOutputs>
-.\GenerateOrganizationDomainHibernate.txt
-.\HibernateOrganizationEventStore.java
-.\HibernateOrganizationStateQueryRepository.java
-.\HibernateOrganizationStateRepository.java
 </LastOutputs>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\organizationstructuretype\hibernate\GenerateOrganizationStructureTypeDomainHibernate.tt">
@@ -1882,6 +1875,17 @@
 .\GenerateDamageHandlingMethodDomainHibernate.txt
 .\HibernateDamageHandlingMethodStateQueryRepository.java
 .\HibernateDamageHandlingMethodStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\hibernate\GeneratePartyDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GeneratePartyDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GeneratePartyDomainHibernate.txt
+.\HibernateOrganizationStateQueryRepository.java
+.\HibernatePartyEventStore.java
+.\HibernatePartyStateQueryRepository.java
+.\HibernatePartyStateRepository.java
 </LastOutputs>
     </Content>
   </ItemGroup>

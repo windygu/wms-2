@@ -2512,12 +2512,12 @@
 .\OrderMetadata.java
 .\OrderShipmentFilteringProperties.java
 .\OrderShipmentMetadata.java
-.\OrganizationFilteringProperties.java
-.\OrganizationMetadata.java
 .\OrganizationStructureFilteringProperties.java
 .\OrganizationStructureMetadata.java
 .\OrganizationStructureTypeFilteringProperties.java
 .\OrganizationStructureTypeMetadata.java
+.\PartyFilteringProperties.java
+.\PartyMetadata.java
 .\PhysicalInventoryFilteringProperties.java
 .\PhysicalInventoryLineFilteringProperties.java
 .\PhysicalInventoryLineMetadata.java
@@ -2726,12 +2726,6 @@
     <Content Include="src\main\java\org\dddml\wms\domain\meta\OrderShipmentMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\meta\OrganizationFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\meta\OrganizationMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\meta\OrganizationStructureFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
@@ -2742,6 +2736,12 @@
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\meta\OrganizationStructureTypeMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\PartyFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\meta\PartyMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\meta\PhysicalInventoryFilteringProperties.java">
@@ -3943,82 +3943,103 @@
     <Content Include="src\main\java\org\dddml\wms\domain\OrganizationTreeRepository.java">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organization\AbstractOrganizationAggregate.java">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\AbstractOrganizationState.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organization\AbstractOrganizationApplicationService.java">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\AbstractOrganizationStateEvent.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organization\AbstractOrganizationCommand.java">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\AbstractPartyAggregate.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organization\AbstractOrganizationCommandDto.java">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\AbstractPartyApplicationService.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organization\AbstractOrganizationState.java">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\AbstractPartyCommand.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organization\AbstractOrganizationStateCommandConverter.java">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\AbstractPartyCommandDto.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organization\AbstractOrganizationStateEvent.java">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\AbstractPartyState.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organization\CreateOrMergePatchOrganizationDto.java">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\AbstractPartyStateCommandConverter.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organization\DeleteOrganizationDto.java">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\AbstractPartyStateEvent.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organization\GenerateOrganizationDomain.txt">
+    <Content Include="src\main\java\org\dddml\wms\domain\party\CreateOrMergePatchPartyDto.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\DeletePartyDto.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\GeneratePartyDomain.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organization\OrganizationAggregate.java">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\OrganizationState.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organization\OrganizationApplicationService.java">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\OrganizationStateDto.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organization\OrganizationCommand.java">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\OrganizationStateEvent.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organization\OrganizationState.java">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\OrganizationStateQueryRepository.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organization\OrganizationStateDto.java">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\PartyAggregate.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organization\OrganizationStateEvent.java">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\PartyApplicationService.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organization\OrganizationStateEventDto.java">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\PartyCommand.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organization\OrganizationStateEventDtoConverter.java">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\PartyState.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organization\OrganizationStateEventId.java">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\PartyStateDto.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organization\OrganizationStateEventIdDto.java">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\PartyStateEvent.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organization\OrganizationStateEventIdDtoWrapper.java">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\PartyStateEventDto.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organization\OrganizationStateEventIdFlattenedDto.java">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\PartyStateEventDtoConverter.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organization\OrganizationStateEventIdFlattenedDtoFormatter.java">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\PartyStateEventId.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organization\OrganizationStateQueryRepository.java">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\PartyStateEventIdDto.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organization\OrganizationStateRepository.java">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\PartyStateEventIdDtoWrapper.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\PartyStateEventIdFlattenedDto.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\PartyStateEventIdFlattenedDtoFormatter.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\PartyStateQueryRepository.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\PartyStateRepository.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\PartyTypeId.java">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\AbstractPhysicalInventoryLineMvoAggregate.java">
       <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
@@ -5865,37 +5886,6 @@
 .\InOutStateQueryRepository.java
 .\InOutStateRepository.java
 .\RemoveInOutLineDto.java
-</LastOutputs>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organization\GenerateOrganizationDomain.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateOrganizationDomain.txt</LastGenOutput>
-      <LastOutputs>
-.\AbstractOrganizationAggregate.java
-.\AbstractOrganizationApplicationService.java
-.\AbstractOrganizationCommand.java
-.\AbstractOrganizationCommandDto.java
-.\AbstractOrganizationState.java
-.\AbstractOrganizationStateCommandConverter.java
-.\AbstractOrganizationStateEvent.java
-.\CreateOrMergePatchOrganizationDto.java
-.\DeleteOrganizationDto.java
-.\GenerateOrganizationDomain.txt
-.\OrganizationAggregate.java
-.\OrganizationApplicationService.java
-.\OrganizationCommand.java
-.\OrganizationState.java
-.\OrganizationStateDto.java
-.\OrganizationStateEvent.java
-.\OrganizationStateEventDto.java
-.\OrganizationStateEventDtoConverter.java
-.\OrganizationStateEventId.java
-.\OrganizationStateEventIdDto.java
-.\OrganizationStateEventIdDtoWrapper.java
-.\OrganizationStateEventIdFlattenedDto.java
-.\OrganizationStateEventIdFlattenedDtoFormatter.java
-.\OrganizationStateQueryRepository.java
-.\OrganizationStateRepository.java
 </LastOutputs>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\organizationstructuretype\GenerateOrganizationStructureTypeDomain.tt">
@@ -7785,6 +7775,44 @@
 .\DamageHandlingMethodStateRepository.java
 .\DeleteDamageHandlingMethodDto.java
 .\GenerateDamageHandlingMethodDomain.txt
+</LastOutputs>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\party\GeneratePartyDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GeneratePartyDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractOrganizationState.java
+.\AbstractOrganizationStateEvent.java
+.\AbstractPartyAggregate.java
+.\AbstractPartyApplicationService.java
+.\AbstractPartyCommand.java
+.\AbstractPartyCommandDto.java
+.\AbstractPartyState.java
+.\AbstractPartyStateCommandConverter.java
+.\AbstractPartyStateEvent.java
+.\CreateOrMergePatchPartyDto.java
+.\DeletePartyDto.java
+.\GeneratePartyDomain.txt
+.\OrganizationState.java
+.\OrganizationStateDto.java
+.\OrganizationStateEvent.java
+.\OrganizationStateQueryRepository.java
+.\PartyAggregate.java
+.\PartyApplicationService.java
+.\PartyCommand.java
+.\PartyState.java
+.\PartyStateDto.java
+.\PartyStateEvent.java
+.\PartyStateEventDto.java
+.\PartyStateEventDtoConverter.java
+.\PartyStateEventId.java
+.\PartyStateEventIdDto.java
+.\PartyStateEventIdDtoWrapper.java
+.\PartyStateEventIdFlattenedDto.java
+.\PartyStateEventIdFlattenedDtoFormatter.java
+.\PartyStateQueryRepository.java
+.\PartyStateRepository.java
+.\PartyTypeId.java
 </LastOutputs>
     </Content>
   </ItemGroup>

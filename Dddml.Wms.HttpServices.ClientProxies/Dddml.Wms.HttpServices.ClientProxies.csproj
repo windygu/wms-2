@@ -167,9 +167,6 @@
     <Compile Include="Generated\OrderShipmentApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\OrganizationApplicationServiceProxy.cs">
-      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\OrganizationStructureApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
@@ -177,6 +174,9 @@
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\OrganizationTreeApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\PartyApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\PhysicalInventoryApplicationServiceProxy.cs">
@@ -273,10 +273,10 @@
 .\OrderApplicationServiceProxy.cs
 .\OrderItemMvoApplicationServiceProxy.cs
 .\OrderShipmentApplicationServiceProxy.cs
-.\OrganizationApplicationServiceProxy.cs
 .\OrganizationStructureApplicationServiceProxy.cs
 .\OrganizationStructureTypeApplicationServiceProxy.cs
 .\OrganizationTreeApplicationServiceProxy.cs
+.\PartyApplicationServiceProxy.cs
 .\PhysicalInventoryApplicationServiceProxy.cs
 .\PhysicalInventoryLineMvoApplicationServiceProxy.cs
 .\ProductApplicationServiceProxy.cs
