@@ -312,7 +312,7 @@ public abstract class AbstractAttributeValueState implements AttributeValueState
             eventVersion = stateVersion == null ? AttributeValueState.VERSION_NULL : stateVersion;
             stateEvent.setVersion(eventVersion);
         }
-        if (!(stateVersion == null && eventVersion.equals(AttributeValueState.VERSION_NULL)) && !(eventVersion.compareTo(stateVersion) >= 0))
+        if (!(stateVersion == null && eventVersion.equals(AttributeValueState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
         {
             throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
         }

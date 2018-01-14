@@ -32,6 +32,22 @@ namespace Dddml.Wms.Domain.Party
 
         long GetCount(ICriterion filter);
 
+        IEnumerable<T> GetAll<T>(int firstResult, int maxResults) where T : class, IPartyState;
+        
+        IEnumerable<T> Get<T>(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue) where T : class, IPartyState;
+
+        IEnumerable<T> Get<T>(ICriterion filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue) where T : class, IPartyState;
+
+        T GetFirst<T>(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders = null) where T : class, IPartyState;
+
+        T GetFirst<T>(KeyValuePair<string, object> keyValue, IList<string> orders = null) where T : class, IPartyState;
+
+        IEnumerable<T> GetByProperty<T>(string propertyName, object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue) where T : class, IPartyState;
+
+        long GetCount<T>(IEnumerable<KeyValuePair<string, object>> filter) where T : class, IPartyState;
+
+        long GetCount<T>(ICriterion filter) where T : class, IPartyState;
+
 	}
 
 }

@@ -308,7 +308,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 
             var stateVersion = this.SellableInventoryItemVersion;
             var eventVersion = stateEvent.StateEventId.SellableInventoryItemVersion;
-            if (stateVersion > eventVersion)//!=
+            if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
             }

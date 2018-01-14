@@ -252,6 +252,24 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 		    return GetCountAsync(filter).GetAwaiter().GetResult();
 		}
 
+        public virtual IEnumerable<T> GetAll<T>(int firstResult, int maxResults) where T : class, IPartyState
+        { throw new NotImplementedException(); }//todo
+
+        public virtual IEnumerable<T> Get<T>(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue) where T : class, IPartyState
+        { throw new NotImplementedException(); }//todo
+
+        public virtual IEnumerable<T> Get<T>(ICriterion filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue) where T : class, IPartyState
+        { throw new NotImplementedException(); }//todo
+
+        public virtual IEnumerable<T> GetByProperty<T>(string propertyName, object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue) where T : class, IPartyState
+        { throw new NotImplementedException(); }//todo
+
+        public virtual long GetCount<T>(IEnumerable<KeyValuePair<string, object>> filter) where T : class, IPartyState
+        { throw new NotImplementedException(); }//todo
+
+        public virtual long GetCount<T>(ICriterion filter) where T : class, IPartyState
+        { throw new NotImplementedException(); }//todo
+
         public async Task<IPartyStateEvent> GetStateEventAsync(string partyId, long version)
         {
             var idObj = partyId;

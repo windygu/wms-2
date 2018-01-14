@@ -174,6 +174,40 @@ namespace Dddml.Wms.Domain.Party
             return StateQueryRepository.GetCount(filter);
 		}
 
+        public virtual IEnumerable<T> GetAll<T>(int firstResult, int maxResults) where T : class, IPartyState
+		{
+            var states = StateQueryRepository.GetAll<T>(firstResult, maxResults);
+			return states;
+		}
+
+        public virtual IEnumerable<T> Get<T>(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue) where T : class, IPartyState
+		{
+            var states = StateQueryRepository.Get<T>(filter, orders, firstResult, maxResults);
+			return states;
+		}
+
+        public virtual IEnumerable<T> Get<T>(ICriterion filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue) where T : class, IPartyState
+		{
+            var states = StateQueryRepository.Get<T>(filter, orders, firstResult, maxResults);
+			return states;
+		}
+
+        public virtual IEnumerable<T> GetByProperty<T>(string propertyName, object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue) where T : class, IPartyState
+        {
+            var states = StateQueryRepository.GetByProperty<T>(propertyName, propertyValue, orders, firstResult, maxResults);
+			return states;
+        }
+
+        public virtual long GetCount<T>(IEnumerable<KeyValuePair<string, object>> filter) where T : class, IPartyState
+		{
+            return StateQueryRepository.GetCount<T>(filter);
+		}
+
+        public virtual long GetCount<T>(ICriterion filter) where T : class, IPartyState
+		{
+            return StateQueryRepository.GetCount<T>(filter);
+		}
+
 	    public virtual IPartyStateEvent GetStateEvent(string partyId, long version)
         {
             var e = (IPartyStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(partyId), version);

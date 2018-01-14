@@ -377,7 +377,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             {
                 eventVersion = stateEvent.Version = stateVersion;
             }
-            if (stateVersion > eventVersion)//!=
+            if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
             }

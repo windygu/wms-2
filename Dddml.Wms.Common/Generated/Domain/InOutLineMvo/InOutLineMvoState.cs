@@ -901,7 +901,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
             var stateVersion = this.InOutVersion;
             var eventVersion = stateEvent.StateEventId.InOutVersion;
-            if (stateVersion > eventVersion)//!=
+            if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
             }

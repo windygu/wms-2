@@ -481,7 +481,7 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 
             var stateVersion = this.AttributeVersion;
             var eventVersion = stateEvent.StateEventId.AttributeVersion;
-            if (stateVersion > eventVersion)//!=
+            if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
             }

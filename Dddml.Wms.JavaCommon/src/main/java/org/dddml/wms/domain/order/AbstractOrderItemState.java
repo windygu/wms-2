@@ -1054,7 +1054,7 @@ public abstract class AbstractOrderItemState implements OrderItemState
             eventVersion = stateVersion == null ? OrderItemState.VERSION_NULL : stateVersion;
             stateEvent.setVersion(eventVersion);
         }
-        if (!(stateVersion == null && eventVersion.equals(OrderItemState.VERSION_NULL)) && !(eventVersion.compareTo(stateVersion) >= 0))
+        if (!(stateVersion == null && eventVersion.equals(OrderItemState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
         {
             throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
         }

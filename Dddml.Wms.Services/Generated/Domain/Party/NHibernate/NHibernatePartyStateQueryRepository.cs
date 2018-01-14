@@ -126,6 +126,85 @@ namespace Dddml.Wms.Domain.Party.NHibernate
             return criteria.UniqueResult<long>();
         }
 
+        [Transaction(ReadOnly = true)]
+        public IEnumerable<T> GetAll<T>(int firstResult, int maxResults) where T : class, IPartyState
+        {
+            var criteria = CurrentSession.CreateCriteria<T>();
+            criteria.SetFirstResult(firstResult);
+            criteria.SetMaxResults(maxResults);
+            AddNotDeletedRestriction(criteria);
+            return criteria.List<T>();
+        }
+
+        [Transaction(ReadOnly = true)]
+        public virtual IEnumerable<T> Get<T>(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue) where T : class, IPartyState
+        {
+            var criteria = CurrentSession.CreateCriteria<T>();
+
+            NHibernateUtils.CriteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, firstResult, maxResults);
+            AddNotDeletedRestriction(criteria);
+            return criteria.List<T>();
+        }
+
+        [Transaction(ReadOnly = true)]
+        public virtual IEnumerable<T> Get<T>(Dddml.Support.Criterion.ICriterion filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue) where T : class, IPartyState
+        {
+            var criteria = CurrentSession.CreateCriteria<T>();
+
+            NHibernateUtils.CriteriaAddFilterAndOrdersAndSetFirstResultAndMaxResults(criteria, filter, orders, firstResult, maxResults);
+            AddNotDeletedRestriction(criteria);
+            return criteria.List<T>();
+        }
+
+
+        [Transaction(ReadOnly = true)]
+        public virtual T GetFirst<T>(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders = null) where T : class, IPartyState
+        {
+            var list = (IList<T>)Get(filter, orders, 0, 1);
+            if (list == null || list.Count <= 0)
+            {
+                return null;
+            }
+            return list[0];
+        }
+
+        [Transaction(ReadOnly = true)]
+        public virtual T GetFirst<T>(KeyValuePair<string, object> keyValue, IList<string> orders = null) where T : class, IPartyState
+        {
+            return GetFirst<T>(new KeyValuePair<string, object>[] { keyValue }, orders);
+        }
+
+        [Transaction(ReadOnly = true)]
+        public virtual IEnumerable<T> GetByProperty<T>(string propertyName, object propertyValue, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue) where T : class, IPartyState
+        {
+            var filter = new KeyValuePair<string, object>[] { new KeyValuePair<string, object>(propertyName, propertyValue) };
+            return Get<T>(filter, orders, firstResult, maxResults);
+        }
+
+        [Transaction(ReadOnly = true)]
+        public virtual long GetCount<T>(IEnumerable<KeyValuePair<string, object>> filter) where T : class, IPartyState
+        {
+            var criteria = CurrentSession.CreateCriteria<T>();
+            criteria.SetProjection(Projections.RowCountInt64());
+            NHibernateUtils.CriteriaAddFilter(criteria, filter);
+            AddNotDeletedRestriction(criteria);
+            return criteria.UniqueResult<long>();
+        }
+
+        [Transaction(ReadOnly = true)]
+        public virtual long GetCount<T>(Dddml.Support.Criterion.ICriterion filter) where T : class, IPartyState
+        {
+            var criteria = CurrentSession.CreateCriteria<T>();
+            criteria.SetProjection(Projections.RowCountInt64());
+            if (filter != null)
+            {
+                NHibernateICriterion hc = CriterionUtils.ToNHibernateCriterion(filter);
+                criteria.Add(hc);
+            }
+            AddNotDeletedRestriction(criteria);
+            return criteria.UniqueResult<long>();
+        }
+
 
         protected static void AddNotDeletedRestriction(ICriteria criteria)
         {

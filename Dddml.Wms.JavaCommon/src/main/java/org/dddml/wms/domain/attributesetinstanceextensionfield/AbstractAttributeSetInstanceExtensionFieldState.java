@@ -347,7 +347,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldState implements
         if (eventVersion == null) {
             throw new NullPointerException("stateEvent.getStateEventId().getVersion() == null");
         }
-        if (!(stateVersion == null && eventVersion.equals(AttributeSetInstanceExtensionFieldState.VERSION_NULL)) && !(eventVersion.compareTo(stateVersion) >= 0))
+        if (!(stateVersion == null && eventVersion.equals(AttributeSetInstanceExtensionFieldState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
         {
             throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
         }
