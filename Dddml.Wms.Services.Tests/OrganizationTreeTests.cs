@@ -52,7 +52,7 @@ namespace Dddml.Wms.Services.Tests
             partyApplicationService.When(organization1);
 
             var organization2 = new CreateParty();//CreateOrganization();
-            organization1.PartyTypeId = PartyTypeIds.Organization;
+            organization2.PartyTypeId = PartyTypeIds.Organization;
             organization2.PartyId = Guid.NewGuid().ToString();
             organization2.OrganizationName = "Org_test_2" + organization2.PartyId;
             partyApplicationService.When(organization2);

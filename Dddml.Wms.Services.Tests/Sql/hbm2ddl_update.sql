@@ -100,8 +100,8 @@
        PickedQuantity NUMERIC(19,5),
        IsInvoiced TINYINT(1),
        Processed TINYINT(1),
-       RmaLineNumber BIGINT,
-       ReversalLineNumber BIGINT,
+       RmaLineNumber VARCHAR(255),
+       ReversalLineNumber VARCHAR(255),
        Version BIGINT,
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
@@ -521,4 +521,36 @@
        CreatedAt DATETIME,
        UpdatedAt DATETIME,
        primary key (ShipmentReceiptIdShipmentId, ShipmentReceiptIdReceiptSeqId)
+    );
+    create table Parties (
+        PartyId VARCHAR(50) not null,
+       Version BIGINT not null,
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (PartyId)
+    );
+    create table PartyStateEvents (
+        PartyId VARCHAR(50) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       PartyTypeId VARCHAR(20),
+       OrganizationName VARCHAR(255),
+       Description VARCHAR(255),
+       Type VARCHAR(255),
+       IsSummary TINYINT(1),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyPartyTypeIdRemoved TINYINT(1),
+       IsPropertyOrganizationNameRemoved TINYINT(1),
+       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertyTypeRemoved TINYINT(1),
+       IsPropertyIsSummaryRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (PartyId, Version)
     );

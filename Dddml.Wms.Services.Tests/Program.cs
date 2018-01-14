@@ -19,9 +19,6 @@ namespace Dddml.Wms.Services.Tests
             var initdb = new InitDatabase();
             initdb.SetUp();
 
-            Console.ReadKey();
-            return;
-
             //var xmlDataLoader1 = new XmlDataLoader();
             //xmlDataLoader1.Process(".\\Data", "*ConversionData.xml");
             //Console.ReadKey();

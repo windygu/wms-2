@@ -9,7 +9,6 @@
 
 	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 
-    <property name="PartyTypeId" ><column name="PartyTypeId" sql-type="VARCHAR(20)" /></property>
     <property name="CreatedBy" ></property>
     <property name="UpdatedBy" ></property>
     <property name="Active" ></property>
@@ -18,6 +17,14 @@
     <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
 
     <property name="UpdatedAt" column="UpdatedAt" type="DateTimeUtc"/>
+  <union-subclass name="Dddml.Wms.Domain.Party.OrganizationState" table="Organizations" abstract="false">
+
+    <property name="OrganizationName" ></property>
+    <property name="Description" ></property>
+    <property name="Type" ></property>
+    <property name="IsSummary" ></property>
+  </union-subclass>
+
 
 
   </class>

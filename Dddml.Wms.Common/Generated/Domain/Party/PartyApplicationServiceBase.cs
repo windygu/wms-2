@@ -72,7 +72,7 @@ namespace Dddml.Wms.Domain.Party
 
         protected virtual Type GetStateType(IPartyCommand c) 
         {
-            Type clazz = typeof(PartyState);
+            Type clazz = null; //typeof(PartyState);
             string discriminatorVal = null;
             if (c is ICreateParty) {
                 discriminatorVal = ((ICreateParty) c).PartyTypeId;
@@ -90,6 +90,10 @@ namespace Dddml.Wms.Domain.Party
                         clazz = typeof(OrganizationState);
                         break;
                 }
+            }
+            if (clazz == null)
+            {
+                throw new ArgumentException(String.Format("CANNOT find discriminator info from command: {0}", c));
             }
             return clazz;
         }
