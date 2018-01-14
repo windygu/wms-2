@@ -365,6 +365,9 @@
     <Compile Include="Generated\Controllers\OrderShipmentsController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Controllers\OrganizationsController.cs">
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Controllers\OrganizationStructuresController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
@@ -516,6 +519,7 @@
 .\OrderItemMvosController.cs
 .\OrdersController.cs
 .\OrderShipmentsController.cs
+.\OrganizationsController.cs
 .\OrganizationStructuresController.cs
 .\OrganizationStructureTypesController.cs
 .\PartiesController.cs
