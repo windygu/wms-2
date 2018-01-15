@@ -10,6 +10,7 @@ using NodaMoney;
 using Dddml.Support.NHibernate;
 using Dddml.Wms.Domain.InOut;
 using Dddml.Wms.Domain.MovementType;
+using Dddml.Wms.Domain.DocumentType;
 
 namespace Dddml.Wms.Services.Tests
 {
@@ -58,7 +59,7 @@ namespace Dddml.Wms.Services.Tests
             //inOut.DocumentAction = DocumentAction.Draft;// 不能这样写：inOut.DocumentStatus = DocumentStatus.Drafted
             //inOut.ChargeAmount = new Money(10000, "CNY");
             //inOut.FreightAmount = new Money(400, "CNY");
-            inOut.MovementTypeId = MovementTypeIds.MiscellaneousIn;
+            inOut.MovementTypeId = DocumentTypeIds.InOut;
 
             var line_1 = inOut.NewCreateInOutLine();
             line_1.LineNumber = DateTime.Now.Ticks.ToString();//todo
