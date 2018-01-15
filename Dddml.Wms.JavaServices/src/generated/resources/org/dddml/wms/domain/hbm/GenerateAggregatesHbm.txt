@@ -23,6 +23,8 @@
 
 
 
+
+
         <mapping resource="org/dddml/wms/domain/hbm/AttributeState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/AttributeStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/AttributeValueState.hbm.xml"/>

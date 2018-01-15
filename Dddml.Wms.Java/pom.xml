@@ -14,6 +14,13 @@
     </modules>
     <packaging>pom</packaging>
 
+    <distributionManagement>
+        <repository>
+            <id>maven-snapshots</id>
+            <url>http://10.201.2.14:8081/repository/maven-snapshots</url>
+        </repository>
+    </distributionManagement>
+
     <dependencyManagement>
         <dependencies>
             <dependency>

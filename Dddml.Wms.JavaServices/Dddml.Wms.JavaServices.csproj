@@ -42,184 +42,184 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributealiasmvo\hibernate\GenerateAttributeAliasMvoDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributealiasmvo\hibernate\GenerateAttributeAliasMvoDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateAttributeAliasMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributealiasmvo\hibernate\HibernateAttributeAliasMvoEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributealiasmvo\hibernate\HibernateAttributeAliasMvoEventStore.java">
       <DependentUpon>GenerateAttributeAliasMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributealiasmvo\hibernate\HibernateAttributeAliasMvoStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributealiasmvo\hibernate\HibernateAttributeAliasMvoStateQueryRepository.java">
       <DependentUpon>GenerateAttributeAliasMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributealiasmvo\hibernate\HibernateAttributeAliasMvoStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributealiasmvo\hibernate\HibernateAttributeAliasMvoStateRepository.java">
       <DependentUpon>GenerateAttributeAliasMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\hibernate\GenerateAttributeSetInstanceExtensionFieldGroupDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\hibernate\GenerateAttributeSetInstanceExtensionFieldGroupDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\hibernate\HibernateAttributeSetInstanceExtensionFieldGroupEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\hibernate\HibernateAttributeSetInstanceExtensionFieldGroupEventStore.java">
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\hibernate\HibernateAttributeSetInstanceExtensionFieldGroupStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\hibernate\HibernateAttributeSetInstanceExtensionFieldGroupStateQueryRepository.java">
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\hibernate\HibernateAttributeSetInstanceExtensionFieldGroupStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\hibernate\HibernateAttributeSetInstanceExtensionFieldGroupStateRepository.java">
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\hibernate\GenerateAttributeSetInstanceExtensionFieldDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstanceextensionfield\hibernate\GenerateAttributeSetInstanceExtensionFieldDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\hibernate\HibernateAttributeSetInstanceExtensionFieldEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstanceextensionfield\hibernate\HibernateAttributeSetInstanceExtensionFieldEventStore.java">
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\hibernate\HibernateAttributeSetInstanceExtensionFieldStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstanceextensionfield\hibernate\HibernateAttributeSetInstanceExtensionFieldStateQueryRepository.java">
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\hibernate\HibernateAttributeSetInstanceExtensionFieldStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstanceextensionfield\hibernate\HibernateAttributeSetInstanceExtensionFieldStateRepository.java">
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstance\hibernate\GenerateAttributeSetInstanceDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstance\hibernate\GenerateAttributeSetInstanceDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateAttributeSetInstanceDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstance\hibernate\HibernateAttributeSetInstanceEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstance\hibernate\HibernateAttributeSetInstanceEventStore.java">
       <DependentUpon>GenerateAttributeSetInstanceDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstance\hibernate\HibernateAttributeSetInstanceStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstance\hibernate\HibernateAttributeSetInstanceStateQueryRepository.java">
       <DependentUpon>GenerateAttributeSetInstanceDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstance\hibernate\HibernateAttributeSetInstanceStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstance\hibernate\HibernateAttributeSetInstanceStateRepository.java">
       <DependentUpon>GenerateAttributeSetInstanceDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributeset\hibernate\GenerateAttributeSetDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributeset\hibernate\GenerateAttributeSetDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateAttributeSetDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributeset\hibernate\HibernateAttributeSetEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributeset\hibernate\HibernateAttributeSetEventStore.java">
       <DependentUpon>GenerateAttributeSetDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributeset\hibernate\HibernateAttributeSetStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributeset\hibernate\HibernateAttributeSetStateQueryRepository.java">
       <DependentUpon>GenerateAttributeSetDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributeset\hibernate\HibernateAttributeSetStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributeset\hibernate\HibernateAttributeSetStateRepository.java">
       <DependentUpon>GenerateAttributeSetDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributeset\hibernate\HibernateAttributeUseStateDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributeset\hibernate\HibernateAttributeUseStateDao.java">
       <DependentUpon>GenerateAttributeSetDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributeset\hibernate\HibernateAttributeUseStateEventDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributeset\hibernate\HibernateAttributeUseStateEventDao.java">
       <DependentUpon>GenerateAttributeSetDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributeusemvo\hibernate\GenerateAttributeUseMvoDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributeusemvo\hibernate\GenerateAttributeUseMvoDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateAttributeUseMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributeusemvo\hibernate\HibernateAttributeUseMvoEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributeusemvo\hibernate\HibernateAttributeUseMvoEventStore.java">
       <DependentUpon>GenerateAttributeUseMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributeusemvo\hibernate\HibernateAttributeUseMvoStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributeusemvo\hibernate\HibernateAttributeUseMvoStateQueryRepository.java">
       <DependentUpon>GenerateAttributeUseMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributeusemvo\hibernate\HibernateAttributeUseMvoStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributeusemvo\hibernate\HibernateAttributeUseMvoStateRepository.java">
       <DependentUpon>GenerateAttributeUseMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributevaluemvo\hibernate\GenerateAttributeValueMvoDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributevaluemvo\hibernate\GenerateAttributeValueMvoDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateAttributeValueMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributevaluemvo\hibernate\HibernateAttributeValueMvoEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributevaluemvo\hibernate\HibernateAttributeValueMvoEventStore.java">
       <DependentUpon>GenerateAttributeValueMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributevaluemvo\hibernate\HibernateAttributeValueMvoStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributevaluemvo\hibernate\HibernateAttributeValueMvoStateQueryRepository.java">
       <DependentUpon>GenerateAttributeValueMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributevaluemvo\hibernate\HibernateAttributeValueMvoStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributevaluemvo\hibernate\HibernateAttributeValueMvoStateRepository.java">
       <DependentUpon>GenerateAttributeValueMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attribute\hibernate\GenerateAttributeDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attribute\hibernate\GenerateAttributeDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateAttributeDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attribute\hibernate\HibernateAttributeAliasStateDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attribute\hibernate\HibernateAttributeAliasStateDao.java">
       <DependentUpon>GenerateAttributeDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attribute\hibernate\HibernateAttributeAliasStateEventDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attribute\hibernate\HibernateAttributeAliasStateEventDao.java">
       <DependentUpon>GenerateAttributeDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attribute\hibernate\HibernateAttributeEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attribute\hibernate\HibernateAttributeEventStore.java">
       <DependentUpon>GenerateAttributeDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attribute\hibernate\HibernateAttributeStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attribute\hibernate\HibernateAttributeStateQueryRepository.java">
       <DependentUpon>GenerateAttributeDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attribute\hibernate\HibernateAttributeStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attribute\hibernate\HibernateAttributeStateRepository.java">
       <DependentUpon>GenerateAttributeDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attribute\hibernate\HibernateAttributeValueStateDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attribute\hibernate\HibernateAttributeValueStateDao.java">
       <DependentUpon>GenerateAttributeDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attribute\hibernate\HibernateAttributeValueStateEventDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attribute\hibernate\HibernateAttributeValueStateEventDao.java">
       <DependentUpon>GenerateAttributeDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\hibernate\GenerateDamageHandlingMethodDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\damagehandlingmethod\hibernate\GenerateDamageHandlingMethodDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateDamageHandlingMethodDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\hibernate\HibernateDamageHandlingMethodStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\damagehandlingmethod\hibernate\HibernateDamageHandlingMethodStateQueryRepository.java">
       <DependentUpon>GenerateDamageHandlingMethodDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\hibernate\HibernateDamageHandlingMethodStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\damagehandlingmethod\hibernate\HibernateDamageHandlingMethodStateRepository.java">
       <DependentUpon>GenerateDamageHandlingMethodDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\hibernate\GenerateDamageReasonDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\damagereason\hibernate\GenerateDamageReasonDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateDamageReasonDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\hibernate\HibernateDamageReasonEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\damagereason\hibernate\HibernateDamageReasonEventStore.java">
       <DependentUpon>GenerateDamageReasonDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\hibernate\HibernateDamageReasonStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\damagereason\hibernate\HibernateDamageReasonStateQueryRepository.java">
       <DependentUpon>GenerateDamageReasonDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\hibernate\HibernateDamageReasonStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\damagereason\hibernate\HibernateDamageReasonStateRepository.java">
       <DependentUpon>GenerateDamageReasonDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\hibernate\GenerateDamageTypeDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\damagetype\hibernate\GenerateDamageTypeDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateDamageTypeDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\hibernate\HibernateDamageTypeStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\damagetype\hibernate\HibernateDamageTypeStateQueryRepository.java">
       <DependentUpon>GenerateDamageTypeDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\hibernate\HibernateDamageTypeStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\damagetype\hibernate\HibernateDamageTypeStateRepository.java">
       <DependentUpon>GenerateDamageTypeDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\hibernate\GenerateDocumentTypeDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\documenttype\hibernate\GenerateDocumentTypeDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateDocumentTypeDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\hibernate\HibernateDocumentTypeStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\documenttype\hibernate\HibernateDocumentTypeStateQueryRepository.java">
       <DependentUpon>GenerateDocumentTypeDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\hibernate\HibernateDocumentTypeStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\documenttype\hibernate\HibernateDocumentTypeStateRepository.java">
       <DependentUpon>GenerateDocumentTypeDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\GenerateHibernateTrees.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\hibernate\GenerateHibernateTrees.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateHibernateTrees.txt</LastGenOutput>
       <LastOutputs>
@@ -228,901 +228,906 @@
 .\HibernateOrganizationTreeRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\GenerateBoundedContextDomainHibernateAggregates.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\hibernate\GenerateBoundedContextDomainHibernateAggregates.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateBoundedContextDomainHibernateAggregates.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\GenerateHibernateTrees.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\hibernate\GenerateHibernateTrees.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateHibernateTrees.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\GenerateBoundedContextDomainHibernateAggregates.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\hibernate\GenerateBoundedContextDomainHibernateAggregates.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateBoundedContextDomainHibernateAggregates.txt</LastGenOutput>
       <LastOutputs>.\GenerateBoundedContextDomainHibernateAggregates.txt</LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateLocatorTreeRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\hibernate\HibernateLocatorTreeRepository.java">
       <DependentUpon>GenerateHibernateTrees.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\HibernateOrganizationTreeRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\hibernate\HibernateOrganizationTreeRepository.java">
       <DependentUpon>GenerateHibernateTrees.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inoutlinemvo\hibernate\GenerateInOutLineMvoDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutlinemvo\hibernate\GenerateInOutLineMvoDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateInOutLineMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inoutlinemvo\hibernate\HibernateInOutLineMvoEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutlinemvo\hibernate\HibernateInOutLineMvoEventStore.java">
       <DependentUpon>GenerateInOutLineMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inoutlinemvo\hibernate\HibernateInOutLineMvoStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutlinemvo\hibernate\HibernateInOutLineMvoStateQueryRepository.java">
       <DependentUpon>GenerateInOutLineMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inoutlinemvo\hibernate\HibernateInOutLineMvoStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutlinemvo\hibernate\HibernateInOutLineMvoStateRepository.java">
       <DependentUpon>GenerateInOutLineMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inout\hibernate\GenerateInOutDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\hibernate\GenerateInOutDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateInOutDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inout\hibernate\HibernateInOutEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\hibernate\HibernateInOutEventStore.java">
       <DependentUpon>GenerateInOutDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inout\hibernate\HibernateInOutLineStateDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\hibernate\HibernateInOutLineStateDao.java">
       <DependentUpon>GenerateInOutDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inout\hibernate\HibernateInOutLineStateEventDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\hibernate\HibernateInOutLineStateEventDao.java">
       <DependentUpon>GenerateInOutDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inout\hibernate\HibernateInOutStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\hibernate\HibernateInOutStateQueryRepository.java">
       <DependentUpon>GenerateInOutDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inout\hibernate\HibernateInOutStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\hibernate\HibernateInOutStateRepository.java">
       <DependentUpon>GenerateInOutDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitementrymvo\hibernate\GenerateInventoryItemEntryMvoDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitementrymvo\hibernate\GenerateInventoryItemEntryMvoDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateInventoryItemEntryMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitementrymvo\hibernate\HibernateInventoryItemEntryMvoEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitementrymvo\hibernate\HibernateInventoryItemEntryMvoEventStore.java">
       <DependentUpon>GenerateInventoryItemEntryMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitementrymvo\hibernate\HibernateInventoryItemEntryMvoStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitementrymvo\hibernate\HibernateInventoryItemEntryMvoStateQueryRepository.java">
       <DependentUpon>GenerateInventoryItemEntryMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitementrymvo\hibernate\HibernateInventoryItemEntryMvoStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitementrymvo\hibernate\HibernateInventoryItemEntryMvoStateRepository.java">
       <DependentUpon>GenerateInventoryItemEntryMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\hibernate\GenerateInventoryItemRequirementEntryMvoDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\hibernate\GenerateInventoryItemRequirementEntryMvoDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\hibernate\HibernateInventoryItemRequirementEntryMvoEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\hibernate\HibernateInventoryItemRequirementEntryMvoEventStore.java">
       <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\hibernate\HibernateInventoryItemRequirementEntryMvoStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\hibernate\HibernateInventoryItemRequirementEntryMvoStateQueryRepository.java">
       <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\hibernate\HibernateInventoryItemRequirementEntryMvoStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\hibernate\HibernateInventoryItemRequirementEntryMvoStateRepository.java">
       <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\hibernate\GenerateInventoryItemRequirementDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitemrequirement\hibernate\GenerateInventoryItemRequirementDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateInventoryItemRequirementDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\hibernate\HibernateInventoryItemRequirementEntryStateDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitemrequirement\hibernate\HibernateInventoryItemRequirementEntryStateDao.java">
       <DependentUpon>GenerateInventoryItemRequirementDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\hibernate\HibernateInventoryItemRequirementStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitemrequirement\hibernate\HibernateInventoryItemRequirementStateQueryRepository.java">
       <DependentUpon>GenerateInventoryItemRequirementDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\hibernate\HibernateInventoryItemRequirementStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitemrequirement\hibernate\HibernateInventoryItemRequirementStateRepository.java">
       <DependentUpon>GenerateInventoryItemRequirementDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitem\hibernate\GenerateInventoryItemDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitem\hibernate\GenerateInventoryItemDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateInventoryItemDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitem\hibernate\HibernateInventoryItemEntryStateDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitem\hibernate\HibernateInventoryItemEntryStateDao.java">
       <DependentUpon>GenerateInventoryItemDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitem\hibernate\HibernateInventoryItemEntryStateEventDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitem\hibernate\HibernateInventoryItemEntryStateEventDao.java">
       <DependentUpon>GenerateInventoryItemDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitem\hibernate\HibernateInventoryItemEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitem\hibernate\HibernateInventoryItemEventStore.java">
       <DependentUpon>GenerateInventoryItemDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitem\hibernate\HibernateInventoryItemStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitem\hibernate\HibernateInventoryItemStateQueryRepository.java">
       <DependentUpon>GenerateInventoryItemDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitem\hibernate\HibernateInventoryItemStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitem\hibernate\HibernateInventoryItemStateRepository.java">
       <DependentUpon>GenerateInventoryItemDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\hibernate\GenerateInventoryPostingRuleDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventorypostingrule\hibernate\GenerateInventoryPostingRuleDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateInventoryPostingRuleDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\hibernate\HibernateInventoryPostingRuleEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventorypostingrule\hibernate\HibernateInventoryPostingRuleEventStore.java">
       <DependentUpon>GenerateInventoryPostingRuleDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\hibernate\HibernateInventoryPostingRuleStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventorypostingrule\hibernate\HibernateInventoryPostingRuleStateQueryRepository.java">
       <DependentUpon>GenerateInventoryPostingRuleDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\hibernate\HibernateInventoryPostingRuleStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventorypostingrule\hibernate\HibernateInventoryPostingRuleStateRepository.java">
       <DependentUpon>GenerateInventoryPostingRuleDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\hibernate\GenerateInventoryPRTriggeredDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryprtriggered\hibernate\GenerateInventoryPRTriggeredDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateInventoryPRTriggeredDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\hibernate\HibernateInventoryPRTriggeredStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryprtriggered\hibernate\HibernateInventoryPRTriggeredStateQueryRepository.java">
       <DependentUpon>GenerateInventoryPRTriggeredDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\hibernate\HibernateInventoryPRTriggeredStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryprtriggered\hibernate\HibernateInventoryPRTriggeredStateRepository.java">
       <DependentUpon>GenerateInventoryPRTriggeredDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\locator\hibernate\GenerateLocatorDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\locator\hibernate\GenerateLocatorDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateLocatorDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\locator\hibernate\HibernateLocatorEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\locator\hibernate\HibernateLocatorEventStore.java">
       <DependentUpon>GenerateLocatorDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\locator\hibernate\HibernateLocatorStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\locator\hibernate\HibernateLocatorStateQueryRepository.java">
       <DependentUpon>GenerateLocatorDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\locator\hibernate\HibernateLocatorStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\locator\hibernate\HibernateLocatorStateRepository.java">
       <DependentUpon>GenerateLocatorDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\locator\hibernate\HibernateLocatorTreeLocatorStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\locator\hibernate\HibernateLocatorTreeLocatorStateQueryRepository.java">
       <DependentUpon>GenerateLocatorDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\lot\hibernate\GenerateLotDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\lot\hibernate\GenerateLotDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateLotDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\lot\hibernate\HibernateLotEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\lot\hibernate\HibernateLotEventStore.java">
       <DependentUpon>GenerateLotDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\lot\hibernate\HibernateLotStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\lot\hibernate\HibernateLotStateQueryRepository.java">
       <DependentUpon>GenerateLotDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\lot\hibernate\HibernateLotStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\lot\hibernate\HibernateLotStateRepository.java">
       <DependentUpon>GenerateLotDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\hibernate\GenerateMovementConfirmationLineMvoDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmationlinemvo\hibernate\GenerateMovementConfirmationLineMvoDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateMovementConfirmationLineMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\hibernate\HibernateMovementConfirmationLineMvoEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmationlinemvo\hibernate\HibernateMovementConfirmationLineMvoEventStore.java">
       <DependentUpon>GenerateMovementConfirmationLineMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\hibernate\HibernateMovementConfirmationLineMvoStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmationlinemvo\hibernate\HibernateMovementConfirmationLineMvoStateQueryRepository.java">
       <DependentUpon>GenerateMovementConfirmationLineMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\hibernate\HibernateMovementConfirmationLineMvoStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmationlinemvo\hibernate\HibernateMovementConfirmationLineMvoStateRepository.java">
       <DependentUpon>GenerateMovementConfirmationLineMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmation\hibernate\GenerateMovementConfirmationDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmation\hibernate\GenerateMovementConfirmationDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateMovementConfirmationDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmation\hibernate\HibernateMovementConfirmationEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmation\hibernate\HibernateMovementConfirmationEventStore.java">
       <DependentUpon>GenerateMovementConfirmationDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmation\hibernate\HibernateMovementConfirmationLineStateDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmation\hibernate\HibernateMovementConfirmationLineStateDao.java">
       <DependentUpon>GenerateMovementConfirmationDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmation\hibernate\HibernateMovementConfirmationLineStateEventDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmation\hibernate\HibernateMovementConfirmationLineStateEventDao.java">
       <DependentUpon>GenerateMovementConfirmationDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmation\hibernate\HibernateMovementConfirmationStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmation\hibernate\HibernateMovementConfirmationStateQueryRepository.java">
       <DependentUpon>GenerateMovementConfirmationDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmation\hibernate\HibernateMovementConfirmationStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmation\hibernate\HibernateMovementConfirmationStateRepository.java">
       <DependentUpon>GenerateMovementConfirmationDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\hibernate\GenerateMovementLineMvoDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\movementlinemvo\hibernate\GenerateMovementLineMvoDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateMovementLineMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\hibernate\HibernateMovementLineMvoEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\movementlinemvo\hibernate\HibernateMovementLineMvoEventStore.java">
       <DependentUpon>GenerateMovementLineMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\hibernate\HibernateMovementLineMvoStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\movementlinemvo\hibernate\HibernateMovementLineMvoStateQueryRepository.java">
       <DependentUpon>GenerateMovementLineMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\hibernate\HibernateMovementLineMvoStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\movementlinemvo\hibernate\HibernateMovementLineMvoStateRepository.java">
       <DependentUpon>GenerateMovementLineMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movementtype\hibernate\GenerateMovementTypeDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\movementtype\hibernate\GenerateMovementTypeDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateMovementTypeDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movementtype\hibernate\HibernateMovementTypeStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\movementtype\hibernate\HibernateMovementTypeStateQueryRepository.java">
       <DependentUpon>GenerateMovementTypeDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movementtype\hibernate\HibernateMovementTypeStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\movementtype\hibernate\HibernateMovementTypeStateRepository.java">
       <DependentUpon>GenerateMovementTypeDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movement\hibernate\GenerateMovementDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\movement\hibernate\GenerateMovementDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateMovementDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movement\hibernate\HibernateMovementEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\movement\hibernate\HibernateMovementEventStore.java">
       <DependentUpon>GenerateMovementDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movement\hibernate\HibernateMovementLineStateDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\movement\hibernate\HibernateMovementLineStateDao.java">
       <DependentUpon>GenerateMovementDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movement\hibernate\HibernateMovementLineStateEventDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\movement\hibernate\HibernateMovementLineStateEventDao.java">
       <DependentUpon>GenerateMovementDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movement\hibernate\HibernateMovementStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\movement\hibernate\HibernateMovementStateQueryRepository.java">
       <DependentUpon>GenerateMovementDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movement\hibernate\HibernateMovementStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\movement\hibernate\HibernateMovementStateRepository.java">
       <DependentUpon>GenerateMovementDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\orderitemmvo\hibernate\GenerateOrderItemMvoDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemmvo\hibernate\GenerateOrderItemMvoDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateOrderItemMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\orderitemmvo\hibernate\HibernateOrderItemMvoEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemmvo\hibernate\HibernateOrderItemMvoEventStore.java">
       <DependentUpon>GenerateOrderItemMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\orderitemmvo\hibernate\HibernateOrderItemMvoStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemmvo\hibernate\HibernateOrderItemMvoStateQueryRepository.java">
       <DependentUpon>GenerateOrderItemMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\orderitemmvo\hibernate\HibernateOrderItemMvoStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemmvo\hibernate\HibernateOrderItemMvoStateRepository.java">
       <DependentUpon>GenerateOrderItemMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\ordershipment\hibernate\GenerateOrderShipmentDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\ordershipment\hibernate\GenerateOrderShipmentDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateOrderShipmentDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\ordershipment\hibernate\HibernateOrderShipmentEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\ordershipment\hibernate\HibernateOrderShipmentEventStore.java">
       <DependentUpon>GenerateOrderShipmentDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\ordershipment\hibernate\HibernateOrderShipmentStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\ordershipment\hibernate\HibernateOrderShipmentStateQueryRepository.java">
       <DependentUpon>GenerateOrderShipmentDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\ordershipment\hibernate\HibernateOrderShipmentStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\ordershipment\hibernate\HibernateOrderShipmentStateRepository.java">
       <DependentUpon>GenerateOrderShipmentDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\order\hibernate\GenerateOrderDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\hibernate\GenerateOrderDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateOrderDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\order\hibernate\HibernateOrderEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\hibernate\HibernateOrderEventStore.java">
       <DependentUpon>GenerateOrderDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\order\hibernate\HibernateOrderItemStateDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\hibernate\HibernateOrderItemStateDao.java">
       <DependentUpon>GenerateOrderDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\order\hibernate\HibernateOrderItemStateEventDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\hibernate\HibernateOrderItemStateEventDao.java">
       <DependentUpon>GenerateOrderDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\order\hibernate\HibernateOrderStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\hibernate\HibernateOrderStateQueryRepository.java">
       <DependentUpon>GenerateOrderDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\order\hibernate\HibernateOrderStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\hibernate\HibernateOrderStateRepository.java">
       <DependentUpon>GenerateOrderDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organizationstructuretype\hibernate\GenerateOrganizationStructureTypeDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructuretype\hibernate\GenerateOrganizationStructureTypeDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateOrganizationStructureTypeDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organizationstructuretype\hibernate\HibernateOrganizationStructureTypeEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructuretype\hibernate\HibernateOrganizationStructureTypeEventStore.java">
       <DependentUpon>GenerateOrganizationStructureTypeDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organizationstructuretype\hibernate\HibernateOrganizationStructureTypeStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructuretype\hibernate\HibernateOrganizationStructureTypeStateQueryRepository.java">
       <DependentUpon>GenerateOrganizationStructureTypeDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organizationstructuretype\hibernate\HibernateOrganizationStructureTypeStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructuretype\hibernate\HibernateOrganizationStructureTypeStateRepository.java">
       <DependentUpon>GenerateOrganizationStructureTypeDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organizationstructure\hibernate\GenerateOrganizationStructureDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructure\hibernate\GenerateOrganizationStructureDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateOrganizationStructureDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organizationstructure\hibernate\HibernateOrganizationStructureEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructure\hibernate\HibernateOrganizationStructureEventStore.java">
       <DependentUpon>GenerateOrganizationStructureDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organizationstructure\hibernate\HibernateOrganizationStructureStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructure\hibernate\HibernateOrganizationStructureStateQueryRepository.java">
       <DependentUpon>GenerateOrganizationStructureDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organizationstructure\hibernate\HibernateOrganizationStructureStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructure\hibernate\HibernateOrganizationStructureStateRepository.java">
       <DependentUpon>GenerateOrganizationStructureDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organizationstructure\hibernate\HibernateOrganizationTreeOrganizationStructureStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructure\hibernate\HibernateOrganizationTreeOrganizationStructureStateQueryRepository.java">
       <DependentUpon>GenerateOrganizationStructureDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\party\hibernate\GeneratePartyDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\party\hibernate\GeneratePartyDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GeneratePartyDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\party\hibernate\HibernateOrganizationStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\party\hibernate\HibernateOrganizationStateQueryRepository.java">
       <DependentUpon>GeneratePartyDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\party\hibernate\HibernatePartyEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\party\hibernate\HibernatePartyEventStore.java">
       <DependentUpon>GeneratePartyDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\party\hibernate\HibernatePartyStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\party\hibernate\HibernatePartyStateQueryRepository.java">
       <DependentUpon>GeneratePartyDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\party\hibernate\HibernatePartyStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\party\hibernate\HibernatePartyStateRepository.java">
       <DependentUpon>GeneratePartyDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\hibernate\GeneratePhysicalInventoryLineMvoDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventorylinemvo\hibernate\GeneratePhysicalInventoryLineMvoDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GeneratePhysicalInventoryLineMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\hibernate\HibernatePhysicalInventoryLineMvoEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventorylinemvo\hibernate\HibernatePhysicalInventoryLineMvoEventStore.java">
       <DependentUpon>GeneratePhysicalInventoryLineMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\hibernate\HibernatePhysicalInventoryLineMvoStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventorylinemvo\hibernate\HibernatePhysicalInventoryLineMvoStateQueryRepository.java">
       <DependentUpon>GeneratePhysicalInventoryLineMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\hibernate\HibernatePhysicalInventoryLineMvoStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventorylinemvo\hibernate\HibernatePhysicalInventoryLineMvoStateRepository.java">
       <DependentUpon>GeneratePhysicalInventoryLineMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\hibernate\GeneratePhysicalInventoryDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventory\hibernate\GeneratePhysicalInventoryDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GeneratePhysicalInventoryDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\hibernate\HibernatePhysicalInventoryEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventory\hibernate\HibernatePhysicalInventoryEventStore.java">
       <DependentUpon>GeneratePhysicalInventoryDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\hibernate\HibernatePhysicalInventoryLineStateDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventory\hibernate\HibernatePhysicalInventoryLineStateDao.java">
       <DependentUpon>GeneratePhysicalInventoryDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\hibernate\HibernatePhysicalInventoryLineStateEventDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventory\hibernate\HibernatePhysicalInventoryLineStateEventDao.java">
       <DependentUpon>GeneratePhysicalInventoryDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\hibernate\HibernatePhysicalInventoryStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventory\hibernate\HibernatePhysicalInventoryStateQueryRepository.java">
       <DependentUpon>GeneratePhysicalInventoryDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\hibernate\HibernatePhysicalInventoryStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventory\hibernate\HibernatePhysicalInventoryStateRepository.java">
       <DependentUpon>GeneratePhysicalInventoryDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\productcategorymember\hibernate\GenerateProductCategoryMemberDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\productcategorymember\hibernate\GenerateProductCategoryMemberDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateProductCategoryMemberDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\productcategorymember\hibernate\HibernateProductCategoryMemberEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\productcategorymember\hibernate\HibernateProductCategoryMemberEventStore.java">
       <DependentUpon>GenerateProductCategoryMemberDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\productcategorymember\hibernate\HibernateProductCategoryMemberStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\productcategorymember\hibernate\HibernateProductCategoryMemberStateQueryRepository.java">
       <DependentUpon>GenerateProductCategoryMemberDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\productcategorymember\hibernate\HibernateProductCategoryMemberStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\productcategorymember\hibernate\HibernateProductCategoryMemberStateRepository.java">
       <DependentUpon>GenerateProductCategoryMemberDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\productcategory\hibernate\GenerateProductCategoryDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\productcategory\hibernate\GenerateProductCategoryDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateProductCategoryDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\productcategory\hibernate\HibernateProductCategoryEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\productcategory\hibernate\HibernateProductCategoryEventStore.java">
       <DependentUpon>GenerateProductCategoryDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\productcategory\hibernate\HibernateProductCategoryStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\productcategory\hibernate\HibernateProductCategoryStateQueryRepository.java">
       <DependentUpon>GenerateProductCategoryDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\productcategory\hibernate\HibernateProductCategoryStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\productcategory\hibernate\HibernateProductCategoryStateRepository.java">
       <DependentUpon>GenerateProductCategoryDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\product\hibernate\GenerateProductDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\hibernate\GenerateProductDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateProductDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\product\hibernate\HibernateProductEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\hibernate\HibernateProductEventStore.java">
       <DependentUpon>GenerateProductDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\product\hibernate\HibernateProductStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\hibernate\HibernateProductStateQueryRepository.java">
       <DependentUpon>GenerateProductDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\product\hibernate\HibernateProductStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\hibernate\HibernateProductStateRepository.java">
       <DependentUpon>GenerateProductDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\hibernate\GenerateRejectionReasonDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\rejectionreason\hibernate\GenerateRejectionReasonDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateRejectionReasonDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\hibernate\HibernateRejectionReasonEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\rejectionreason\hibernate\HibernateRejectionReasonEventStore.java">
       <DependentUpon>GenerateRejectionReasonDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\hibernate\HibernateRejectionReasonStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\rejectionreason\hibernate\HibernateRejectionReasonStateQueryRepository.java">
       <DependentUpon>GenerateRejectionReasonDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\hibernate\HibernateRejectionReasonStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\rejectionreason\hibernate\HibernateRejectionReasonStateRepository.java">
       <DependentUpon>GenerateRejectionReasonDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\hibernate\GenerateSellableInventoryItemEntryMvoDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\sellableinventoryitementrymvo\hibernate\GenerateSellableInventoryItemEntryMvoDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateSellableInventoryItemEntryMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\hibernate\HibernateSellableInventoryItemEntryMvoEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\sellableinventoryitementrymvo\hibernate\HibernateSellableInventoryItemEntryMvoEventStore.java">
       <DependentUpon>GenerateSellableInventoryItemEntryMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\hibernate\HibernateSellableInventoryItemEntryMvoStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\sellableinventoryitementrymvo\hibernate\HibernateSellableInventoryItemEntryMvoStateQueryRepository.java">
       <DependentUpon>GenerateSellableInventoryItemEntryMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\hibernate\HibernateSellableInventoryItemEntryMvoStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\sellableinventoryitementrymvo\hibernate\HibernateSellableInventoryItemEntryMvoStateRepository.java">
       <DependentUpon>GenerateSellableInventoryItemEntryMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\hibernate\GenerateSellableInventoryItemDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\sellableinventoryitem\hibernate\GenerateSellableInventoryItemDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateSellableInventoryItemDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\hibernate\HibernateSellableInventoryItemEntryStateDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\sellableinventoryitem\hibernate\HibernateSellableInventoryItemEntryStateDao.java">
       <DependentUpon>GenerateSellableInventoryItemDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\hibernate\HibernateSellableInventoryItemStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\sellableinventoryitem\hibernate\HibernateSellableInventoryItemStateQueryRepository.java">
       <DependentUpon>GenerateSellableInventoryItemDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\hibernate\HibernateSellableInventoryItemStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\sellableinventoryitem\hibernate\HibernateSellableInventoryItemStateRepository.java">
       <DependentUpon>GenerateSellableInventoryItemDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipmentitemmvo\hibernate\GenerateShipmentItemMvoDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentitemmvo\hibernate\GenerateShipmentItemMvoDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateShipmentItemMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipmentitemmvo\hibernate\HibernateShipmentItemMvoEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentitemmvo\hibernate\HibernateShipmentItemMvoEventStore.java">
       <DependentUpon>GenerateShipmentItemMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipmentitemmvo\hibernate\HibernateShipmentItemMvoStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentitemmvo\hibernate\HibernateShipmentItemMvoStateQueryRepository.java">
       <DependentUpon>GenerateShipmentItemMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipmentitemmvo\hibernate\HibernateShipmentItemMvoStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentitemmvo\hibernate\HibernateShipmentItemMvoStateRepository.java">
       <DependentUpon>GenerateShipmentItemMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\hibernate\GenerateShipmentReceiptMvoDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentreceiptmvo\hibernate\GenerateShipmentReceiptMvoDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateShipmentReceiptMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\hibernate\HibernateShipmentReceiptMvoEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentreceiptmvo\hibernate\HibernateShipmentReceiptMvoEventStore.java">
       <DependentUpon>GenerateShipmentReceiptMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\hibernate\HibernateShipmentReceiptMvoStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentreceiptmvo\hibernate\HibernateShipmentReceiptMvoStateQueryRepository.java">
       <DependentUpon>GenerateShipmentReceiptMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\hibernate\HibernateShipmentReceiptMvoStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentreceiptmvo\hibernate\HibernateShipmentReceiptMvoStateRepository.java">
       <DependentUpon>GenerateShipmentReceiptMvoDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipmenttype\hibernate\GenerateShipmentTypeDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmenttype\hibernate\GenerateShipmentTypeDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateShipmentTypeDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipmenttype\hibernate\HibernateShipmentTypeStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmenttype\hibernate\HibernateShipmentTypeStateQueryRepository.java">
       <DependentUpon>GenerateShipmentTypeDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipmenttype\hibernate\HibernateShipmentTypeStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmenttype\hibernate\HibernateShipmentTypeStateRepository.java">
       <DependentUpon>GenerateShipmentTypeDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipment\hibernate\GenerateShipmentDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\hibernate\GenerateShipmentDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateShipmentDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipment\hibernate\HibernateShipmentEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\hibernate\HibernateShipmentEventStore.java">
       <DependentUpon>GenerateShipmentDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipment\hibernate\HibernateShipmentItemStateDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\hibernate\HibernateShipmentItemStateDao.java">
       <DependentUpon>GenerateShipmentDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipment\hibernate\HibernateShipmentItemStateEventDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\hibernate\HibernateShipmentItemStateEventDao.java">
       <DependentUpon>GenerateShipmentDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipment\hibernate\HibernateShipmentReceiptStateDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\hibernate\HibernateShipmentReceiptStateDao.java">
       <DependentUpon>GenerateShipmentDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipment\hibernate\HibernateShipmentReceiptStateEventDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\hibernate\HibernateShipmentReceiptStateEventDao.java">
       <DependentUpon>GenerateShipmentDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipment\hibernate\HibernateShipmentStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\hibernate\HibernateShipmentStateQueryRepository.java">
       <DependentUpon>GenerateShipmentDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipment\hibernate\HibernateShipmentStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\hibernate\HibernateShipmentStateRepository.java">
       <DependentUpon>GenerateShipmentDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\statusitem\hibernate\GenerateStatusItemDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\statusitem\hibernate\GenerateStatusItemDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateStatusItemDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\statusitem\hibernate\HibernateStatusItemStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\statusitem\hibernate\HibernateStatusItemStateQueryRepository.java">
       <DependentUpon>GenerateStatusItemDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\statusitem\hibernate\HibernateStatusItemStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\statusitem\hibernate\HibernateStatusItemStateRepository.java">
       <DependentUpon>GenerateStatusItemDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\supplierproduct\hibernate\GenerateSupplierProductDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\supplierproduct\hibernate\GenerateSupplierProductDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateSupplierProductDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\supplierproduct\hibernate\HibernateSupplierProductEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\supplierproduct\hibernate\HibernateSupplierProductEventStore.java">
       <DependentUpon>GenerateSupplierProductDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\supplierproduct\hibernate\HibernateSupplierProductStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\supplierproduct\hibernate\HibernateSupplierProductStateQueryRepository.java">
       <DependentUpon>GenerateSupplierProductDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\supplierproduct\hibernate\HibernateSupplierProductStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\supplierproduct\hibernate\HibernateSupplierProductStateRepository.java">
       <DependentUpon>GenerateSupplierProductDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\hibernate\GenerateUomConversionDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\uomconversion\hibernate\GenerateUomConversionDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateUomConversionDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\hibernate\HibernateUomConversionEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\uomconversion\hibernate\HibernateUomConversionEventStore.java">
       <DependentUpon>GenerateUomConversionDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\hibernate\HibernateUomConversionStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\uomconversion\hibernate\HibernateUomConversionStateQueryRepository.java">
       <DependentUpon>GenerateUomConversionDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\hibernate\HibernateUomConversionStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\uomconversion\hibernate\HibernateUomConversionStateRepository.java">
       <DependentUpon>GenerateUomConversionDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\hibernate\GenerateUomTypeDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\uomtype\hibernate\GenerateUomTypeDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateUomTypeDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\hibernate\HibernateUomTypeEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\uomtype\hibernate\HibernateUomTypeEventStore.java">
       <DependentUpon>GenerateUomTypeDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\hibernate\HibernateUomTypeStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\uomtype\hibernate\HibernateUomTypeStateQueryRepository.java">
       <DependentUpon>GenerateUomTypeDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\hibernate\HibernateUomTypeStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\uomtype\hibernate\HibernateUomTypeStateRepository.java">
       <DependentUpon>GenerateUomTypeDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\uom\hibernate\GenerateUomDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\uom\hibernate\GenerateUomDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateUomDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\uom\hibernate\HibernateUomEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\uom\hibernate\HibernateUomEventStore.java">
       <DependentUpon>GenerateUomDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\uom\hibernate\HibernateUomStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\uom\hibernate\HibernateUomStateQueryRepository.java">
       <DependentUpon>GenerateUomDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\uom\hibernate\HibernateUomStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\uom\hibernate\HibernateUomStateRepository.java">
       <DependentUpon>GenerateUomDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\warehouse\hibernate\GenerateWarehouseDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\warehouse\hibernate\GenerateWarehouseDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateWarehouseDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\warehouse\hibernate\HibernateWarehouseEventStore.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\warehouse\hibernate\HibernateWarehouseEventStore.java">
       <DependentUpon>GenerateWarehouseDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\warehouse\hibernate\HibernateWarehouseStateQueryRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\warehouse\hibernate\HibernateWarehouseStateQueryRepository.java">
       <DependentUpon>GenerateWarehouseDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\warehouse\hibernate\HibernateWarehouseStateRepository.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\warehouse\hibernate\HibernateWarehouseStateRepository.java">
       <DependentUpon>GenerateWarehouseDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\LoadBoundedContext.tt">
+    <Content Include="src\generated\java\org\dddml\wms\LoadBoundedContext.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>LoadBoundedContext.txt</LastGenOutput>
       <LastOutputs>.\LoadBoundedContext.txt</LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\LoadBoundedContext.txt">
+    <Content Include="src\generated\java\org\dddml\wms\LoadBoundedContext.txt">
       <DependentUpon>LoadBoundedContext.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Content>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\PartyStateEvent.hbm.xml">
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\usertypes\MoneyType.java" />
+    <Content Include="src\main\java\org\dddml\wms\domain\listener\InventoryItemEventListener.java" />
+    <Content Include="src\main\java\org\dddml\wms\domain\service\AttributeSetInstanceIdGenerator.java" />
+    <Content Include="src\main\java\org\dddml\wms\domain\service\AttributeSetInstanceStateJsonObjectMapper.java" />
+    <Content Include="src\main\java\org\dddml\wms\domain\service\AttributeSetServiceImpl.java" />
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PartyStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\PartyState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PartyState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\RejectionReasonStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\RejectionReasonStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\RejectionReasonState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\RejectionReasonState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\ShipmentReceiptMvoStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentReceiptMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\ShipmentReceiptMvoState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentReceiptMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\ShipmentReceiptStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentReceiptStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\ShipmentReceiptState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentReceiptState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\LotStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\LotStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\LotState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\LotState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\UomTypeStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\UomTypeStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\UomTypeState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\UomTypeState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\UomConversionStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\UomConversionStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\UomConversionState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\UomConversionState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\UomStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\UomStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\UomState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\UomState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\PhysicalInventoryLineMvoStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PhysicalInventoryLineMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\PhysicalInventoryLineMvoState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PhysicalInventoryLineMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\PhysicalInventoryLineStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PhysicalInventoryLineStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\PhysicalInventoryLineState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PhysicalInventoryLineState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\PhysicalInventoryStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PhysicalInventoryStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\PhysicalInventoryState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PhysicalInventoryState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\MovementConfirmationStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementConfirmationStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\MovementConfirmationState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementConfirmationState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\MovementConfirmationLineMvoStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementConfirmationLineMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\MovementConfirmationLineMvoState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementConfirmationLineMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\MovementLineMvoStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementLineMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\MovementLineMvoState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementLineMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\MovementConfirmationLineStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementConfirmationLineStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\MovementConfirmationLineState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementConfirmationLineState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\MovementLineStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementLineStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\MovementLineState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementLineState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\MovementStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\MovementState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\ShipmentItemMvoStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentItemMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\ShipmentItemMvoState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentItemMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\SellableInventoryItemEntryMvoStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\SellableInventoryItemEntryMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\SellableInventoryItemEntryMvoState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\SellableInventoryItemEntryMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\OrderItemMvoStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderItemMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\OrderItemMvoState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderItemMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InventoryItemRequirementEntryMvoStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemRequirementEntryMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InventoryItemRequirementEntryMvoState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemRequirementEntryMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InventoryItemEntryMvoStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemEntryMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InventoryItemEntryMvoState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemEntryMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InOutLineMvoStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InOutLineMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InOutLineMvoState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InOutLineMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\LocatorStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\LocatorStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\LocatorState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\LocatorState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\WarehouseStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\WarehouseStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\WarehouseState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\WarehouseState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\SupplierProductStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\SupplierProductStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\SupplierProductState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\SupplierProductState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\StatusItemState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\StatusItemState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\ShipmentTypeState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentTypeState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\ShipmentItemStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentItemStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\ShipmentItemState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentItemState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\ShipmentStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\ShipmentState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\SellableInventoryItemEntryState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\SellableInventoryItemEntryState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\SellableInventoryItemState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\SellableInventoryItemState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\ProductCategoryMemberStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ProductCategoryMemberStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\ProductCategoryMemberState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ProductCategoryMemberState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\ProductCategoryStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ProductCategoryStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\ProductCategoryState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ProductCategoryState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\ProductStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ProductStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\ProductState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ProductState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\OrganizationStructureStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrganizationStructureStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\OrganizationStructureState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrganizationStructureState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\OrganizationStructureTypeStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrganizationStructureTypeStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\OrganizationStructureTypeState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrganizationStructureTypeState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\OrderShipmentStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderShipmentStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\OrderShipmentState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderShipmentState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\OrderItemStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderItemStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\OrderItemState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderItemState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\OrderStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\OrderState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\MovementTypeState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementTypeState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InventoryPRTriggeredState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryPRTriggeredState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InventoryItemRequirementEntryState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemRequirementEntryState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InventoryItemRequirementState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemRequirementState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InventoryPostingRuleStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryPostingRuleStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InventoryPostingRuleState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryPostingRuleState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InventoryItemEntryState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemEntryState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InventoryItemStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InventoryItemState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InOutLineStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InOutLineStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InOutLineState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InOutLineState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InOutStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InOutStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\InOutState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InOutState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\config\AggregatesHibernateConfig.xml">
+    <EmbeddedResource Include="src\generated\resources\config\AggregatesHibernateConfig.xml">
       <DependentUpon>GenerateAggregatesConfig.tt</DependentUpon>
     </EmbeddedResource>
-    <Content Include="src\main\resources\config\DatabaseConfig.xml" />
-    <Content Include="src\main\resources\config\DomainConfig.xml" />
-    <Content Include="src\main\resources\config\GenerateAggregatesConfig.tt">
+    <Content Include="src\generated\resources\config\DatabaseConfig.xml" />
+    <Content Include="src\generated\resources\config\DomainConfig.xml" />
+    <Content Include="src\generated\resources\config\GenerateAggregatesConfig.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAggregatesConfig.txt</LastGenOutput>
       <LastOutputs>
@@ -1130,12 +1135,12 @@
 .\GenerateAggregatesConfig.txt
 </LastOutputs>
     </Content>
-    <Content Include="src\main\resources\config\GenerateAggregatesConfig.txt">
+    <Content Include="src\generated\resources\config\GenerateAggregatesConfig.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateAggregatesConfig.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\resources\config\GenerateTreesConfig.tt">
+    <Content Include="src\generated\resources\config\GenerateTreesConfig.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateTreesConfig.txt</LastGenOutput>
       <LastOutputs>
@@ -1144,96 +1149,96 @@
 .\TreesHibernateConfig.xml
 </LastOutputs>
     </Content>
-    <Content Include="src\main\resources\config\GenerateTreesConfig.txt">
+    <Content Include="src\generated\resources\config\GenerateTreesConfig.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateTreesConfig.tt</DependentUpon>
     </Content>
-    <EmbeddedResource Include="src\main\resources\config\TreesHibernateConfig.xml">
+    <EmbeddedResource Include="src\generated\resources\config\TreesHibernateConfig.xml">
       <DependentUpon>GenerateTreesConfig.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\config\TreesConfig.xml">
+    <EmbeddedResource Include="src\generated\resources\config\TreesConfig.xml">
       <DependentUpon>GenerateTreesConfig.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\AttributeState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\AttributeStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\AttributeValueState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeValueState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\AttributeValueStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeValueStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\AttributeSetState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeSetState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\AttributeSetStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeSetStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\AttributeUseState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeUseState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\AttributeUseStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeUseStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\DocumentTypeState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\DocumentTypeState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\AttributeSetInstanceState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeSetInstanceState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldGroupState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldGroupState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldGroupStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldGroupStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\AttributeValueMvoState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeValueMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\AttributeValueMvoStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeValueMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\AttributeUseMvoState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeUseMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\AttributeUseMvoStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeUseMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\AttributeAliasState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeAliasState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\AttributeAliasStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeAliasStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\AttributeAliasMvoState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeAliasMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\AttributeAliasMvoStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeAliasMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\DamageReasonState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\DamageReasonState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\DamageReasonStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\DamageReasonStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\DamageTypeState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\DamageTypeState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\main\resources\org\dddml\wms\domain\hbm\DamageHandlingMethodState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\DamageHandlingMethodState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <Content Include="src\main\resources\org\dddml\wms\domain\hbm\GenerateAggregatesHbm.tt">
+    <Content Include="src\generated\resources\org\dddml\wms\domain\hbm\GenerateAggregatesHbm.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAggregatesHbm.txt</LastGenOutput>
       <LastOutputs>
@@ -1355,12 +1360,12 @@
 .\WarehouseStateEvent.hbm.xml
 </LastOutputs>
     </Content>
-    <Content Include="src\main\resources\org\dddml\wms\domain\hbm\GenerateAggregatesHbm.txt">
+    <Content Include="src\generated\resources\org\dddml\wms\domain\hbm\GenerateAggregatesHbm.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attribute\hibernate\GenerateAttributeDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attribute\hibernate\GenerateAttributeDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAttributeDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1374,7 +1379,7 @@
 .\HibernateAttributeValueStateEventDao.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributeset\hibernate\GenerateAttributeSetDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributeset\hibernate\GenerateAttributeSetDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAttributeSetDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1386,7 +1391,7 @@
 .\HibernateAttributeUseStateEventDao.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inout\hibernate\GenerateInOutDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\hibernate\GenerateInOutDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateInOutDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1398,9 +1403,8 @@
 .\HibernateInOutStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organizationstructuretype\hibernate\GenerateOrganizationStructureTypeDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructuretype\hibernate\GenerateOrganizationStructureTypeDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateOrganizationStructureTypeDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
 .\GenerateOrganizationStructureTypeDomainHibernate.txt
 .\HibernateOrganizationStructureTypeEventStore.java
@@ -1408,7 +1412,7 @@
 .\HibernateOrganizationStructureTypeStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\organizationstructure\hibernate\GenerateOrganizationStructureDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructure\hibernate\GenerateOrganizationStructureDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateOrganizationStructureDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1419,7 +1423,7 @@
 .\HibernateOrganizationTreeOrganizationStructureStateQueryRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\warehouse\hibernate\GenerateWarehouseDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\warehouse\hibernate\GenerateWarehouseDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateWarehouseDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1429,7 +1433,7 @@
 .\HibernateWarehouseStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\locator\hibernate\GenerateLocatorDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\locator\hibernate\GenerateLocatorDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateLocatorDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1440,7 +1444,7 @@
 .\HibernateLocatorTreeLocatorStateQueryRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstance\hibernate\GenerateAttributeSetInstanceDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstance\hibernate\GenerateAttributeSetInstanceDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAttributeSetInstanceDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1450,7 +1454,7 @@
 .\HibernateAttributeSetInstanceStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\hibernate\GenerateAttributeSetInstanceExtensionFieldGroupDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstanceextensionfieldgroup\hibernate\GenerateAttributeSetInstanceExtensionFieldGroupDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAttributeSetInstanceExtensionFieldGroupDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1460,7 +1464,7 @@
 .\HibernateAttributeSetInstanceExtensionFieldGroupStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributevaluemvo\hibernate\GenerateAttributeValueMvoDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributevaluemvo\hibernate\GenerateAttributeValueMvoDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAttributeValueMvoDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1470,7 +1474,7 @@
 .\HibernateAttributeValueMvoStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributeusemvo\hibernate\GenerateAttributeUseMvoDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributeusemvo\hibernate\GenerateAttributeUseMvoDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAttributeUseMvoDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1480,7 +1484,7 @@
 .\HibernateAttributeUseMvoStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inoutlinemvo\hibernate\GenerateInOutLineMvoDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inoutlinemvo\hibernate\GenerateInOutLineMvoDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateInOutLineMvoDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1490,7 +1494,7 @@
 .\HibernateInOutLineMvoStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitem\hibernate\GenerateInventoryItemDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitem\hibernate\GenerateInventoryItemDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateInventoryItemDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1502,7 +1506,7 @@
 .\HibernateInventoryItemStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitementrymvo\hibernate\GenerateInventoryItemEntryMvoDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitementrymvo\hibernate\GenerateInventoryItemEntryMvoDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateInventoryItemEntryMvoDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1512,7 +1516,7 @@
 .\HibernateInventoryItemEntryMvoStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitem\hibernate\GenerateSellableInventoryItemDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\sellableinventoryitem\hibernate\GenerateSellableInventoryItemDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateSellableInventoryItemDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1522,7 +1526,7 @@
 .\HibernateSellableInventoryItemStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventorypostingrule\hibernate\GenerateInventoryPostingRuleDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventorypostingrule\hibernate\GenerateInventoryPostingRuleDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateInventoryPostingRuleDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1532,7 +1536,7 @@
 .\HibernateInventoryPostingRuleStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryprtriggered\hibernate\GenerateInventoryPRTriggeredDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryprtriggered\hibernate\GenerateInventoryPRTriggeredDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateInventoryPRTriggeredDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1541,7 +1545,7 @@
 .\HibernateInventoryPRTriggeredStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\sellableinventoryitementrymvo\hibernate\GenerateSellableInventoryItemEntryMvoDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\sellableinventoryitementrymvo\hibernate\GenerateSellableInventoryItemEntryMvoDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateSellableInventoryItemEntryMvoDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1551,7 +1555,7 @@
 .\HibernateSellableInventoryItemEntryMvoStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\hibernate\GenerateDocumentTypeDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\documenttype\hibernate\GenerateDocumentTypeDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateDocumentTypeDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1560,7 +1564,7 @@
 .\HibernateDocumentTypeStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movementtype\hibernate\GenerateMovementTypeDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\movementtype\hibernate\GenerateMovementTypeDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateMovementTypeDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1569,7 +1573,7 @@
 .\HibernateMovementTypeStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\product\hibernate\GenerateProductDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\product\hibernate\GenerateProductDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateProductDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1579,7 +1583,7 @@
 .\HibernateProductStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\productcategory\hibernate\GenerateProductCategoryDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\productcategory\hibernate\GenerateProductCategoryDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateProductCategoryDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1589,7 +1593,7 @@
 .\HibernateProductCategoryStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\supplierproduct\hibernate\GenerateSupplierProductDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\supplierproduct\hibernate\GenerateSupplierProductDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateSupplierProductDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1599,7 +1603,7 @@
 .\HibernateSupplierProductStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\ordershipment\hibernate\GenerateOrderShipmentDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\ordershipment\hibernate\GenerateOrderShipmentDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateOrderShipmentDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1609,7 +1613,7 @@
 .\HibernateOrderShipmentStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipment\hibernate\GenerateShipmentDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\hibernate\GenerateShipmentDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateShipmentDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1623,7 +1627,7 @@
 .\HibernateShipmentStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\statusitem\hibernate\GenerateStatusItemDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\statusitem\hibernate\GenerateStatusItemDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateStatusItemDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1632,7 +1636,7 @@
 .\HibernateStatusItemStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipmenttype\hibernate\GenerateShipmentTypeDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmenttype\hibernate\GenerateShipmentTypeDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateShipmentTypeDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1641,7 +1645,7 @@
 .\HibernateShipmentTypeStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\order\hibernate\GenerateOrderDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\hibernate\GenerateOrderDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateOrderDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1653,7 +1657,7 @@
 .\HibernateOrderStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\productcategorymember\hibernate\GenerateProductCategoryMemberDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\productcategorymember\hibernate\GenerateProductCategoryMemberDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateProductCategoryMemberDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1663,7 +1667,7 @@
 .\HibernateProductCategoryMemberStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\orderitemmvo\hibernate\GenerateOrderItemMvoDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemmvo\hibernate\GenerateOrderItemMvoDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateOrderItemMvoDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1673,7 +1677,7 @@
 .\HibernateOrderItemMvoStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipmentitemmvo\hibernate\GenerateShipmentItemMvoDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentitemmvo\hibernate\GenerateShipmentItemMvoDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateShipmentItemMvoDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1683,7 +1687,7 @@
 .\HibernateShipmentItemMvoStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequirement\hibernate\GenerateInventoryItemRequirementDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitemrequirement\hibernate\GenerateInventoryItemRequirementDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateInventoryItemRequirementDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1693,7 +1697,7 @@
 .\HibernateInventoryItemRequirementStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\hibernate\GenerateInventoryItemRequirementEntryMvoDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitemrequiremententrymvo\hibernate\GenerateInventoryItemRequirementEntryMvoDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateInventoryItemRequirementEntryMvoDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1703,7 +1707,7 @@
 .\HibernateInventoryItemRequirementEntryMvoStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movement\hibernate\GenerateMovementDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\movement\hibernate\GenerateMovementDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateMovementDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1715,7 +1719,7 @@
 .\HibernateMovementStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\hibernate\GenerateMovementLineMvoDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\movementlinemvo\hibernate\GenerateMovementLineMvoDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateMovementLineMvoDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1725,7 +1729,7 @@
 .\HibernateMovementLineMvoStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmationlinemvo\hibernate\GenerateMovementConfirmationLineMvoDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmationlinemvo\hibernate\GenerateMovementConfirmationLineMvoDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateMovementConfirmationLineMvoDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1735,7 +1739,7 @@
 .\HibernateMovementConfirmationLineMvoStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movementconfirmation\hibernate\GenerateMovementConfirmationDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmation\hibernate\GenerateMovementConfirmationDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateMovementConfirmationDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1747,7 +1751,7 @@
 .\HibernateMovementConfirmationStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventory\hibernate\GeneratePhysicalInventoryDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventory\hibernate\GeneratePhysicalInventoryDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GeneratePhysicalInventoryDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1759,7 +1763,7 @@
 .\HibernatePhysicalInventoryStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\physicalinventorylinemvo\hibernate\GeneratePhysicalInventoryLineMvoDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventorylinemvo\hibernate\GeneratePhysicalInventoryLineMvoDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GeneratePhysicalInventoryLineMvoDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1769,7 +1773,7 @@
 .\HibernatePhysicalInventoryLineMvoStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributesetinstanceextensionfield\hibernate\GenerateAttributeSetInstanceExtensionFieldDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributesetinstanceextensionfield\hibernate\GenerateAttributeSetInstanceExtensionFieldDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAttributeSetInstanceExtensionFieldDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1779,7 +1783,7 @@
 .\HibernateAttributeSetInstanceExtensionFieldStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\attributealiasmvo\hibernate\GenerateAttributeAliasMvoDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributealiasmvo\hibernate\GenerateAttributeAliasMvoDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAttributeAliasMvoDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1789,7 +1793,7 @@
 .\HibernateAttributeAliasMvoStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\uom\hibernate\GenerateUomDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\uom\hibernate\GenerateUomDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateUomDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1799,7 +1803,7 @@
 .\HibernateUomStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\hibernate\GenerateUomConversionDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\uomconversion\hibernate\GenerateUomConversionDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateUomConversionDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1809,7 +1813,7 @@
 .\HibernateUomConversionStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\hibernate\GenerateUomTypeDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\uomtype\hibernate\GenerateUomTypeDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateUomTypeDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1819,7 +1823,7 @@
 .\HibernateUomTypeStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\lot\hibernate\GenerateLotDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\lot\hibernate\GenerateLotDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateLotDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1829,7 +1833,7 @@
 .\HibernateLotStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\hibernate\GenerateShipmentReceiptMvoDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentreceiptmvo\hibernate\GenerateShipmentReceiptMvoDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateShipmentReceiptMvoDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1839,7 +1843,7 @@
 .\HibernateShipmentReceiptMvoStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagereason\hibernate\GenerateDamageReasonDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\damagereason\hibernate\GenerateDamageReasonDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateDamageReasonDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1849,7 +1853,7 @@
 .\HibernateDamageReasonStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\rejectionreason\hibernate\GenerateRejectionReasonDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\rejectionreason\hibernate\GenerateRejectionReasonDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateRejectionReasonDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1859,7 +1863,7 @@
 .\HibernateRejectionReasonStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\hibernate\GenerateDamageTypeDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\damagetype\hibernate\GenerateDamageTypeDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateDamageTypeDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1868,7 +1872,7 @@
 .\HibernateDamageTypeStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\hibernate\GenerateDamageHandlingMethodDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\damagehandlingmethod\hibernate\GenerateDamageHandlingMethodDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateDamageHandlingMethodDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1877,7 +1881,7 @@
 .\HibernateDamageHandlingMethodStateRepository.java
 </LastOutputs>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\party\hibernate\GeneratePartyDomainHibernate.tt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\party\hibernate\GeneratePartyDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GeneratePartyDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
@@ -1891,6 +1895,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\main\resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

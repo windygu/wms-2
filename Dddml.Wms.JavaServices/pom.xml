@@ -88,4 +88,25 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <resources>
+            <resource><directory>src/main/resources</directory></resource>
+            <resource><directory>src/generated/resources</directory></resource>
+            <resource><directory>src/test/resources</directory></resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.2</version>
+                <configuration>
+                    <generatedSourcesDirectory>src/generated/java</generatedSourcesDirectory>
+                    <encoding>UTF-8</encoding>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

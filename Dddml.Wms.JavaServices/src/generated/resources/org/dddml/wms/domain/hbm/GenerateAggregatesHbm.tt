@@ -4,7 +4,7 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ include file="T4Toolbox.tt" #>
 <#@ include file="%DddmlDotNetToolsSolutionDir%\Dddml.T4.Templates.Java\Hibernate\Mappings\AggregateHbmGenerator.tt" #>
-<#@ include file="$(SolutionDir)Dddml.Wms.JavaCommon\src\main\java\org\dddml\wms\LoadBoundedContext.tt" #>
+<#@ include file="..\..\..\..\..\..\java\org\dddml\wms\LoadBoundedContext.tt" #>
 <#
 
 	var generatedFiles = new List<string>();

@@ -1,13 +1,15 @@
+package org.dddml.wms;
+
 import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.specialization.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import  org.dddml.wms.specialization.spring.SpringApplicationContext;
+import org.dddml.wms.specialization.spring.SpringApplicationContext;
 
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.UUID;
 
-public class Main {
+public class TestMain {
 
 
     static org.springframework.context.ApplicationContext springFrameworkApplicationContext;

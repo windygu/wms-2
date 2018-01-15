@@ -1,11 +1,9 @@
 <#@ template language="C#" debug="True" #>
 <#@ output extension="txt" #>
-<#@ include file="T4Toolbox.tt" #>
 <#
 
 	//@ import namespace="Dddml.Core.Dom" //
 	//@ include file="%DddmlDotNetToolsSolutionDir%\Dddml.T4.Templates.Java\Domain\Hibernate\AggregateDomainHibernateGenerator.tt" //
-	//@ include file="$(SolutionDir)Dddml.Wms.JavaCommon\src\main\java\org\dddml\wms\LoadBoundedContext.tt" //
 
 	//foreach (var aggregate in boundedContext.Aggregates.Values)
 	//{
