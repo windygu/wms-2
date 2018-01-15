@@ -41,15 +41,28 @@ public class InventoryItemSourceInfo implements Serializable
         this.lineNumber = lineNumber;
     }
 
+    private Integer lineSeqId;
+
+    public Integer getLineSeqId()
+    {
+        return this.lineSeqId;
+    }
+
+    public void setLineSeqId(Integer lineSeqId)
+    {
+        this.lineSeqId = lineSeqId;
+    }
+
     public InventoryItemSourceInfo()
     {
     }
 
-    public InventoryItemSourceInfo(String documentTypeId, String documentNumber, String lineNumber)
+    public InventoryItemSourceInfo(String documentTypeId, String documentNumber, String lineNumber, Integer lineSeqId)
     {
         this.documentTypeId = documentTypeId;
         this.documentNumber = documentNumber;
         this.lineNumber = lineNumber;
+        this.lineSeqId = lineSeqId;
     }
 
     @Override
@@ -67,6 +80,7 @@ public class InventoryItemSourceInfo implements Serializable
             && (documentTypeId == other.documentTypeId || (documentTypeId != null && documentTypeId.equals(other.documentTypeId)))
             && (documentNumber == other.documentNumber || (documentNumber != null && documentNumber.equals(other.documentNumber)))
             && (lineNumber == other.lineNumber || (lineNumber != null && lineNumber.equals(other.lineNumber)))
+            && (lineSeqId == other.lineSeqId || (lineSeqId != null && lineSeqId.equals(other.lineSeqId)))
             ;
     }
 
@@ -82,6 +96,9 @@ public class InventoryItemSourceInfo implements Serializable
         }
         if (this.lineNumber != null) {
             hash += 13 * this.lineNumber.hashCode();
+        }
+        if (this.lineSeqId != null) {
+            hash += 13 * this.lineSeqId.hashCode();
         }
         return hash;
     }

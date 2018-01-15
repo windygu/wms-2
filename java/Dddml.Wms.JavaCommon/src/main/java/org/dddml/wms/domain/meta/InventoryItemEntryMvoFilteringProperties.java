@@ -40,6 +40,7 @@ public final class InventoryItemEntryMvoFilteringProperties
             "source.documentTypeId",
             "source.documentNumber",
             "source.lineNumber",
+            "source.lineSeqId",
     };
 
     public static final String[] propertyTypes = new String[] {
@@ -72,6 +73,7 @@ public final class InventoryItemEntryMvoFilteringProperties
             "String",
             "String",
             "String",
+            "Integer",
     };
 
     public static final Map<String, String> propertyTypeMap;
@@ -150,6 +152,8 @@ public final class InventoryItemEntryMvoFilteringProperties
         aliasMap.put("Source.DocumentNumber", "source.documentNumber");
         aliasMap.put("source.lineNumber", "source.lineNumber");
         aliasMap.put("Source.LineNumber", "source.lineNumber");
+        aliasMap.put("source.lineSeqId", "source.lineSeqId");
+        aliasMap.put("Source.LineSeqId", "source.lineSeqId");
     }
 
     private static void initPropertyTypeMap() {

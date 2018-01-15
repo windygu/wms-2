@@ -36,6 +36,13 @@ namespace Dddml.Wms.Domain.InventoryItem
 			internal set { _lineNumber = value; } 
 		}
 
+		private int _lineSeqId;
+
+		public virtual int LineSeqId { 
+			get { return this._lineSeqId; } 
+			internal set { _lineSeqId = value; } 
+		}
+
 
         #region  Flattened Properties
 
@@ -46,11 +53,12 @@ namespace Dddml.Wms.Domain.InventoryItem
 		{
 		}
 
-		public InventoryItemSourceInfo (string documentTypeId, string documentNumber, string lineNumber)
+		public InventoryItemSourceInfo (string documentTypeId, string documentNumber, string lineNumber, int lineSeqId)
 		{
 			this._documentTypeId = documentTypeId;
 			this._documentNumber = documentNumber;
 			this._lineNumber = lineNumber;
+			this._lineSeqId = lineSeqId;
 
 		}
 
@@ -70,6 +78,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 				&& Object.Equals (this.DocumentTypeId, other.DocumentTypeId)
 				&& Object.Equals (this.DocumentNumber, other.DocumentNumber)
 				&& Object.Equals (this.LineNumber, other.LineNumber)
+				&& Object.Equals (this.LineSeqId, other.LineSeqId)
 				;
 		}
 
@@ -84,6 +93,9 @@ namespace Dddml.Wms.Domain.InventoryItem
 			}
 			if (this.LineNumber != null) {
 				hash += 13 * this.LineNumber.GetHashCode ();
+			}
+			if (this.LineSeqId != null) {
+				hash += 13 * this.LineSeqId.GetHashCode ();
 			}
 			return hash;
 		}
@@ -104,6 +116,7 @@ namespace Dddml.Wms.Domain.InventoryItem
                 + "DocumentTypeId: " + this.DocumentTypeId + ", "
                 + "DocumentNumber: " + this.DocumentNumber + ", "
                 + "LineNumber: " + this.LineNumber + ", "
+                + "LineSeqId: " + this.LineSeqId + ", "
                 ;
         }
 	}

@@ -52,7 +52,7 @@ public class TestMain {
         InventoryItemEntryCommand.CreateInventoryItemEntry iiEntry = ii.newCreateInventoryItemEntry();
         iiEntry.setEntrySeqId(new Date().getTime());
         iiEntry.setOnHandQuantity(BigDecimal.valueOf(100));
-        InventoryItemSourceInfo iiEntrySrc = new InventoryItemSourceInfo("TEST_EVT_TYPE", "TEST_DOCUMENT_NO_1", UUID.randomUUID().toString());
+        InventoryItemSourceInfo iiEntrySrc = new InventoryItemSourceInfo("TEST_EVT_TYPE", "TEST_DOCUMENT_NO_1", UUID.randomUUID().toString(), 0);
         iiEntry.setSource(iiEntrySrc);
 
         ii.getEntries().add(iiEntry);

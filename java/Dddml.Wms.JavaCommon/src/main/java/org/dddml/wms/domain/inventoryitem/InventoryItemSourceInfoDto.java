@@ -15,6 +15,7 @@ public class InventoryItemSourceInfoDto
         v.setDocumentTypeId(this.getDocumentTypeId());
         v.setDocumentNumber(this.getDocumentNumber());
         v.setLineNumber(this.getLineNumber());
+        v.setLineSeqId(this.getLineSeqId());
         return v;
     }
 
@@ -54,6 +55,18 @@ public class InventoryItemSourceInfoDto
         this.lineNumber = lineNumber;
     }
 
+    private Integer lineSeqId;
+
+    public Integer getLineSeqId()
+    {
+        return this.lineSeqId;
+    }
+
+    public void setLineSeqId(Integer lineSeqId)
+    {
+        this.lineSeqId = lineSeqId;
+    }
+
 
     @Override
     public boolean equals(Object obj)
@@ -70,6 +83,7 @@ public class InventoryItemSourceInfoDto
             && (getDocumentTypeId() == other.getDocumentTypeId() || (getDocumentTypeId() != null && getDocumentTypeId().equals(other.getDocumentTypeId())))
             && (getDocumentNumber() == other.getDocumentNumber() || (getDocumentNumber() != null && getDocumentNumber().equals(other.getDocumentNumber())))
             && (getLineNumber() == other.getLineNumber() || (getLineNumber() != null && getLineNumber().equals(other.getLineNumber())))
+            && (getLineSeqId() == other.getLineSeqId() || (getLineSeqId() != null && getLineSeqId().equals(other.getLineSeqId())))
             ;
 
     }
@@ -86,6 +100,9 @@ public class InventoryItemSourceInfoDto
         }
         if (this.getLineNumber() != null) {
             hash += 13 * this.getLineNumber().hashCode();
+        }
+        if (this.getLineSeqId() != null) {
+            hash += 13 * this.getLineSeqId().hashCode();
         }
         return hash;
     }

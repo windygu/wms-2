@@ -1128,6 +1128,7 @@
        SourceDocumentTypeId VARCHAR(255) not null,
        SourceDocumentNumber VARCHAR(255) not null,
        SourceLineNumber VARCHAR(255),
+       SourceLineSeqId INTEGER,
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
        Deleted TINYINT(1),
@@ -1135,7 +1136,7 @@
        UpdatedAt DATETIME,
        CommandId VARCHAR(255),
        primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId),
-      unique (SourceDocumentTypeId, SourceDocumentNumber, SourceLineNumber)
+      unique (SourceDocumentTypeId, SourceDocumentNumber, SourceLineNumber, SourceLineSeqId)
     );
 
     create table InventoryPostingRules (
@@ -2391,6 +2392,7 @@
        SourceDocumentTypeId VARCHAR(255) not null,
        SourceDocumentNumber VARCHAR(255) not null,
        SourceLineNumber VARCHAR(255),
+       SourceLineSeqId INTEGER,
        Version BIGINT,
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
@@ -2406,7 +2408,7 @@
        CreatedAt DATETIME,
        UpdatedAt DATETIME,
        primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId),
-      unique (SourceDocumentTypeId, SourceDocumentNumber, SourceLineNumber)
+      unique (SourceDocumentTypeId, SourceDocumentNumber, SourceLineNumber, SourceLineSeqId)
     );
 
     create table InventoryItemEntryMvoStateEvents (
@@ -2424,6 +2426,7 @@
        SourceDocumentTypeId VARCHAR(255),
        SourceDocumentNumber VARCHAR(255),
        SourceLineNumber VARCHAR(255),
+       SourceLineSeqId INTEGER,
        Version BIGINT,
        InventoryItemOnHandQuantity NUMERIC(19,5),
        InventoryItemInTransitQuantity NUMERIC(19,5),
