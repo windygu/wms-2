@@ -1,0 +1,8 @@
+﻿<#@ template language="C#" debug="True" #>
+<#@ output extension="txt" #>
+<#@ include file="T4Toolbox.tt" #>
+<#@ include file="$(SolutionDir)\java\Dddml.Wms.JavaCommon\src\main\java\org\dddml\wms\LoadBoundedContext.tt" #>
+<#
+	// ////////////////////////////
+#>
+

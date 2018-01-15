@@ -254,3 +254,15 @@ Dddml.Wms.JavaServices.Tests/out/
 Dddml.Wms.AdminUI/site/var/
 *.1
 Dddml.Wms.HttpServices/Logs/Log.log.2
+java/Dddml.Wms.JavaCommon/out/
+java/Dddml.Wms.JavaServices/.classpath
+java/Dddml.Wms.JavaServices.Tests/lib/
+java/Dddml.Wms.JavaServices.Tests/out/
+java/Dddml.Wms.JavaCommon/.settings/
+java/Dddml.Wms.JavaCommon/.classpath
+java/Dddml.Wms.JavaCommon/.project
+java/Dddml.Wms.JavaRestful/.classpath
+java/Dddml.Wms.JavaRestful/.project
+java/Dddml.Wms.JavaRestful/.settings/
+java/Dddml.Wms.JavaServices/out/
+java/Dddml.Wms.JavaServices/.settings/
