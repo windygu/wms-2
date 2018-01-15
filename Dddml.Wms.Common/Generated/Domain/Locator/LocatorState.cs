@@ -349,6 +349,10 @@ namespace Dddml.Wms.Domain.Locator
 		{
             StateReadOnly = false;
 			((dynamic)this).When((dynamic)e);
+            if (!(this.LocatorId.StartsWith(this.WarehouseId)))
+            {
+                throw DomainError.Named("constraintViolated", "Violated validation logic: {0}", "this.LocatorId.StartsWith(this.WarehouseId)");
+            }
 		}
 
         protected void ThrowOnWrongEvent(ILocatorStateEvent stateEvent)

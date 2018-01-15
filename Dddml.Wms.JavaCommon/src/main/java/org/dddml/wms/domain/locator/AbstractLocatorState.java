@@ -271,6 +271,9 @@ public abstract class AbstractLocatorState implements LocatorState
         } else {
             throw new UnsupportedOperationException(String.format("Unsupported event type: %1$s", e.getClass().getName()));
         }
+        if (!(getLocatorId().startsWith(getWarehouseId()))) {
+            throw DomainError.named("constraintViolated", "Violated validation logic: %1$s", "getLocatorId().startsWith(getWarehouseId())");
+        }
     }
 
     public void when(LocatorStateCreated e)
