@@ -1150,6 +1150,7 @@
     <Content Include="src\main\java\org\dddml\wms\domain\DocumentAction.java">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\DocumentStatusIds.java" />
     <Content Include="src\main\java\org\dddml\wms\domain\documenttype\AbstractDocumentTypeAggregate.java">
       <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
     </Content>

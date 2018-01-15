@@ -24,11 +24,11 @@ public class InOutDocumentActionCommandHandler implements PropertyCommandHandler
     {
         documentStatusStateMachineBuilder
                 = StateMachineBuilderFactory.create(DocumentStatusStateMachine.class, String.class,String.class, Object.class);
-        documentStatusStateMachineBuilder.externalTransition().from(DocumentStatusIds.INITIAL).to(DocumentStatusIds.DRAFTED).on(DocumentActionName.DRAFT);
-        documentStatusStateMachineBuilder.externalTransition().from(DocumentStatusIds.DRAFTED).to(DocumentStatusIds.COMPLETED).on(DocumentActionName.COMPLETE);
-        documentStatusStateMachineBuilder.externalTransition().from(DocumentStatusIds.DRAFTED).to(DocumentStatusIds.VOIDED).on(DocumentActionName.VOID);
-        documentStatusStateMachineBuilder.externalTransition().from(DocumentStatusIds.COMPLETED).to(DocumentStatusIds.CLOSED).on(DocumentActionName.CLOSE);
-        documentStatusStateMachineBuilder.externalTransition().from(DocumentStatusIds.COMPLETED).to(DocumentStatusIds.REVERSED).on(DocumentActionName.REVERSE);
+        documentStatusStateMachineBuilder.externalTransition().from(DocumentStatusIds.INITIAL).to(DocumentStatusIds.DRAFTED).on(DocumentAction.DRAFT);
+        documentStatusStateMachineBuilder.externalTransition().from(DocumentStatusIds.DRAFTED).to(DocumentStatusIds.COMPLETED).on(DocumentAction.COMPLETE);
+        documentStatusStateMachineBuilder.externalTransition().from(DocumentStatusIds.DRAFTED).to(DocumentStatusIds.VOIDED).on(DocumentAction.VOID);
+        documentStatusStateMachineBuilder.externalTransition().from(DocumentStatusIds.COMPLETED).to(DocumentStatusIds.CLOSED).on(DocumentAction.CLOSE);
+        documentStatusStateMachineBuilder.externalTransition().from(DocumentStatusIds.COMPLETED).to(DocumentStatusIds.REVERSED).on(DocumentAction.REVERSE);
 
     }
 
@@ -43,7 +43,7 @@ public class InOutDocumentActionCommandHandler implements PropertyCommandHandler
                 currentState = DocumentStatusIds.INITIAL;
             }
             if (trigger == null) {
-                trigger = DocumentActionName.DRAFT;
+                trigger = DocumentAction.DRAFT;
             }
         }
         DocumentStatusStateMachine stateMachine = documentStatusStateMachineBuilder.newStateMachine(currentState);
