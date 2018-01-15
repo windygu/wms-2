@@ -90,7 +90,7 @@ namespace Dddml.Wms.Services.Tests
 
         }
 
-        [Test]
+        //[Test]
         public void CreateDatabaseAndSeed()
         {
             foreach (var connRoutingKey in RoutingConnectionProviderDictionary.Keys)
@@ -247,7 +247,7 @@ namespace Dddml.Wms.Services.Tests
 
         private const string SqlDelimiter = ";";
 
-        [Test]
+        //[Test]
         public void Hbm2DdlOutput()
         {
             ContextualKeyRoutingConnectionProvider.CurrentRoutingKey = AnyConnectionRoutingKey;
@@ -287,7 +287,7 @@ prepare stmt from @sqlVar;
 execute stmt;
 deallocate prepare stmt";
 
-        [Test]
+        //[Test]
         public void CopyAndFixHbm2DdlCreateSql()
         {
             var srcFilePath = @"..\..\sql\hbm2ddl_create.sql";
