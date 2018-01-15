@@ -25,6 +25,7 @@
             <groupId>org.dddml</groupId>
             <artifactId>dddml-wms-common</artifactId>
             <version>1.0-SNAPSHOT</version>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>org.dddml</groupId>
