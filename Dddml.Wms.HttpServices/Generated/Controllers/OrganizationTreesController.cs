@@ -43,14 +43,14 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                     {
                         var ids = _organizationTreeApplicationService.GetRootIds(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
                             , n => (OrganizationStructureMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? OrganizationStructureMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
-                            , PartiesControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
+                            , OrganizationStructuresControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
                         states = PartiesControllerUtils.ToOrganizationStateCollection(ids);
                     }
                     else
                     {
                         states = _organizationTreeApplicationService.GetRoots(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
                             , n => (OrganizationStructureMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? OrganizationStructureMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
-                            , PartiesControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
+                            , OrganizationStructuresControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
                     }
                 }
                 else
@@ -59,14 +59,14 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                     {
                         var ids = _organizationTreeApplicationService.GetChildIds(parentIdObj, CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
                             , n => (OrganizationStructureMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? OrganizationStructureMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
-                            , PartiesControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
+                            , OrganizationStructuresControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
                         states = PartiesControllerUtils.ToOrganizationStateCollection(ids);
                     }
                     else
                     {
                         states = _organizationTreeApplicationService.GetChildren(parentIdObj, CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(),new ApiControllerTypeConverter(), new PropertyTypeResolver()
                             , n => (OrganizationStructureMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? OrganizationStructureMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
-                            , PartiesControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
+                            , OrganizationStructuresControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
                     }
                 }
             }
@@ -76,28 +76,28 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 {
                     if (IsOnlyIdReturned(fields))
                     {
-                        var ids = _organizationTreeApplicationService.GetRootIds(PartiesControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
-                            , PartiesControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
+                        var ids = _organizationTreeApplicationService.GetRootIds(OrganizationStructuresControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
+                            , OrganizationStructuresControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
                         states = PartiesControllerUtils.ToOrganizationStateCollection(ids);
                     }
                     else
                     {
-                        states = _organizationTreeApplicationService.GetRoots(PartiesControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
-                            , PartiesControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
+                        states = _organizationTreeApplicationService.GetRoots(OrganizationStructuresControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
+                            , OrganizationStructuresControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
                     }
                 }
                 else
                 {
                     if (IsOnlyIdReturned(fields))
                     {
-                        var ids = _organizationTreeApplicationService.GetChildIds(parentIdObj, PartiesControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
-                            , PartiesControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
+                        var ids = _organizationTreeApplicationService.GetChildIds(parentIdObj, OrganizationStructuresControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
+                            , OrganizationStructuresControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
                         states = PartiesControllerUtils.ToOrganizationStateCollection(ids);
                     }
                     else
                     {
-                        states = _organizationTreeApplicationService.GetChildren(parentIdObj, PartiesControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
-                            , PartiesControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
+                        states = _organizationTreeApplicationService.GetChildren(parentIdObj, OrganizationStructuresControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
+                            , OrganizationStructuresControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
                     }
                 }
             }
@@ -116,7 +116,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 stateDtos.Add(dto);
             }
             return stateDtos;
-          } catch (Exception ex) { var response = PartiesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = OrganizationStructuresControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [Route("_metadata/filteringFields")]
@@ -133,7 +133,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 }
             }
             return filtering;
-          } catch (Exception ex) { var response = PartiesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+          } catch (Exception ex) { var response = OrganizationStructuresControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
 		// /////////////////////////////////////////////////
@@ -192,7 +192,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
             public Type ResolveTypeByPropertyName(string propertyName)
             {
-                return PartiesControllerUtils.GetFilterPropertyType(propertyName);
+                return OrganizationStructuresControllerUtils.GetFilterPropertyType(propertyName);
             }
         }
 

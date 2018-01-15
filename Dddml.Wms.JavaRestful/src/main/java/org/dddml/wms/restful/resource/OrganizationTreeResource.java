@@ -45,7 +45,7 @@ public class OrganizationTreeResource {
                                         JSON.parseObject(filter, CriterionDto.class),
                                         getCriterionTypeConverter(),
                                         getPropertyTypeResolver(), n -> (OrganizationStructureFilteringProperties.aliasMap.containsKey(n) ? OrganizationStructureFilteringProperties.aliasMap.get(n) : n)),
-                                OrganizationResource.OrganizationResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                                OrganizationStructureResource.OrganizationStructureResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                                 firstResult, maxResults);
 
                         return OrganizationResource.OrganizationResourceUtils.toOrganizationStateDtoArray(ids);
@@ -55,7 +55,7 @@ public class OrganizationTreeResource {
                                         JSON.parseObject(filter, CriterionDto.class),
                                         getCriterionTypeConverter(),
                                         getPropertyTypeResolver(), n -> (OrganizationStructureFilteringProperties.aliasMap.containsKey(n) ? OrganizationStructureFilteringProperties.aliasMap.get(n) : n)),
-                                OrganizationResource.OrganizationResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                                OrganizationStructureResource.OrganizationStructureResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                                 firstResult, maxResults);
 
                     }
@@ -66,7 +66,7 @@ public class OrganizationTreeResource {
                                         JSON.parseObject(filter, CriterionDto.class),
                                         getCriterionTypeConverter(),
                                         getPropertyTypeResolver(), n -> (OrganizationStructureFilteringProperties.aliasMap.containsKey(n) ? OrganizationStructureFilteringProperties.aliasMap.get(n) : n)),
-                                OrganizationResource.OrganizationResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                                OrganizationStructureResource.OrganizationStructureResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                                 firstResult, maxResults);
 
                         return OrganizationResource.OrganizationResourceUtils.toOrganizationStateDtoArray(ids);
@@ -77,7 +77,7 @@ public class OrganizationTreeResource {
                                         JSON.parseObject(filter, CriterionDto.class),
                                         getCriterionTypeConverter(),
                                         getPropertyTypeResolver(), n -> (OrganizationStructureFilteringProperties.aliasMap.containsKey(n) ? OrganizationStructureFilteringProperties.aliasMap.get(n) : n)),
-                                OrganizationResource.OrganizationResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                                OrganizationStructureResource.OrganizationStructureResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                                 firstResult, maxResults);
                     }
                 }
@@ -85,32 +85,32 @@ public class OrganizationTreeResource {
                 if (parentIdObj == null) {
                     if (isOnlyIdReturned(fields)) {
                         Iterable<String> ids = organizationTreeApplicationService.getRootIds(
-                                OrganizationResource.OrganizationResourceUtils.getQueryFilterMap(request.getParameterMap()),
-                                OrganizationResource.OrganizationResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                                OrganizationStructureResource.OrganizationStructureResourceUtils.getQueryFilterMap(request.getParameterMap()),
+                                OrganizationStructureResource.OrganizationStructureResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                                 firstResult, maxResults);
 
                         return OrganizationResource.OrganizationResourceUtils.toOrganizationStateDtoArray(ids);
                     } else {
                         states = organizationTreeApplicationService.getChildren(
                                 parentIdObj,
-                                OrganizationResource.OrganizationResourceUtils.getQueryFilterMap(request.getParameterMap()),
-                                OrganizationResource.OrganizationResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                                OrganizationStructureResource.OrganizationStructureResourceUtils.getQueryFilterMap(request.getParameterMap()),
+                                OrganizationStructureResource.OrganizationStructureResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                                 firstResult, maxResults);
                     }
                 } else {
                     if (isOnlyIdReturned(fields)) {
                         Iterable<String> ids = organizationTreeApplicationService.getChildIds(
                                 parentIdObj,
-                                OrganizationResource.OrganizationResourceUtils.getQueryFilterMap(request.getParameterMap()),
-                                OrganizationResource.OrganizationResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                                OrganizationStructureResource.OrganizationStructureResourceUtils.getQueryFilterMap(request.getParameterMap()),
+                                OrganizationStructureResource.OrganizationStructureResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                                 firstResult, maxResults);
 
                         return OrganizationResource.OrganizationResourceUtils.toOrganizationStateDtoArray(ids);
                     } else {
                         states = organizationTreeApplicationService.getChildren(
                                 parentIdObj,
-                                OrganizationResource.OrganizationResourceUtils.getQueryFilterMap(request.getParameterMap()),
-                                OrganizationResource.OrganizationResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                                OrganizationStructureResource.OrganizationStructureResourceUtils.getQueryFilterMap(request.getParameterMap()),
+                                OrganizationStructureResource.OrganizationStructureResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                                 firstResult, maxResults);
                     }
                 }
@@ -171,7 +171,7 @@ public class OrganizationTreeResource {
     private class OrganizationTreePropertyTypeResolver implements PropertyTypeResolver {
         @Override
         public Class resolveTypeByPropertyName(String propertyName) {
-            return OrganizationResource.OrganizationResourceUtils.getFilterPropertyType(propertyName);
+            return OrganizationStructureResource.OrganizationStructureResourceUtils.getFilterPropertyType(propertyName);
         }
     }
 
