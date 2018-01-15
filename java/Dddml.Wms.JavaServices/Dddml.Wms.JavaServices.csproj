@@ -528,7 +528,7 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\order\hibernate\HibernateOrderStateRepository.java">
       <DependentUpon>GenerateOrderDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructuretype\hibernate\GenerateOrganizationStructureTypeDomainHibernate.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructuretype\hibernate\GenerateOrganizationStructureTypeDomainHibernate1.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateOrganizationStructureTypeDomainHibernate.tt</DependentUpon>
@@ -1125,8 +1125,6 @@
     <EmbeddedResource Include="src\generated\resources\config\AggregatesHibernateConfig.xml">
       <DependentUpon>GenerateAggregatesConfig.tt</DependentUpon>
     </EmbeddedResource>
-    <Content Include="src\generated\resources\config\DatabaseConfig.xml" />
-    <Content Include="src\generated\resources\config\DomainConfig.xml" />
     <Content Include="src\generated\resources\config\GenerateAggregatesConfig.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAggregatesConfig.txt</LastGenOutput>
@@ -1406,11 +1404,12 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructuretype\hibernate\GenerateOrganizationStructureTypeDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastOutputs>
-.\GenerateOrganizationStructureTypeDomainHibernate.txt
+.\GenerateOrganizationStructureTypeDomainHibernate1.txt
 .\HibernateOrganizationStructureTypeEventStore.java
 .\HibernateOrganizationStructureTypeStateQueryRepository.java
 .\HibernateOrganizationStructureTypeStateRepository.java
 </LastOutputs>
+      <LastGenOutput>GenerateOrganizationStructureTypeDomainHibernate1.txt</LastGenOutput>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructure\hibernate\GenerateOrganizationStructureDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

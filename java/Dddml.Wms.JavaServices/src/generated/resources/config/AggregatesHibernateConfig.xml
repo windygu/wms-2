@@ -167,7 +167,7 @@
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
-  <bean id="inOutApplicationService" class="org.dddml.wms.domain.inout.AbstractInOutApplicationService$SimpleInOutApplicationService">
+  <bean id="inOutApplicationService" class="org.dddml.wms.domain.inout.InOutApplicationServiceImpl">
     <constructor-arg ref="inOutEventStore"/>
     <constructor-arg ref="inOutStateRepository"/>
     <constructor-arg ref="inOutStateQueryRepository"/>
@@ -307,7 +307,7 @@
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
-  <bean id="movementApplicationService" class="org.dddml.wms.domain.movement.AbstractMovementApplicationService$SimpleMovementApplicationService">
+  <bean id="movementApplicationService" class="org.dddml.wms.domain.movement.MovementApplicationServiceImpl">
     <constructor-arg ref="movementEventStore"/>
     <constructor-arg ref="movementStateRepository"/>
     <constructor-arg ref="movementStateQueryRepository"/>
@@ -337,7 +337,7 @@
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
-  <bean id="movementConfirmationApplicationService" class="org.dddml.wms.domain.movementconfirmation.AbstractMovementConfirmationApplicationService$SimpleMovementConfirmationApplicationService">
+  <bean id="movementConfirmationApplicationService" class="org.dddml.wms.domain.movementconfirmation.MovementConfirmationApplicationServiceImpl">
     <constructor-arg ref="movementConfirmationEventStore"/>
     <constructor-arg ref="movementConfirmationStateRepository"/>
     <constructor-arg ref="movementConfirmationStateQueryRepository"/>

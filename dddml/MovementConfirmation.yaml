@@ -115,8 +115,10 @@ aggregates:
                 Java: "getTargetQuantity() .add (getDifferenceQuantity()) .equals (getConfirmedQuantity() .add (getScrappedQuantity()))"
 
 
-      # metadata:
+      # --------------------------------------------
+      metadata:
         # NoEventSourcing: true
-
+        JavaAggregateApplicationServiceImplementClassName: MovementConfirmationApplicationServiceImpl
+          
           
           
