@@ -9,7 +9,9 @@ namespace Dddml.Wms.Domain.MovementConfirmation
     {
         public virtual void DocumentAction(string value, long version, string commandId, string requesterId)
         {
-            //todo...
+            var e = NewMovementConfirmationStateMergePatched(version, commandId, requesterId);
+            DoDocumentAction(value, ts => e.DocumentStatusId = ts);
+            Apply(e);
         }
 
     }

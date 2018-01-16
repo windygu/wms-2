@@ -90,6 +90,7 @@
     <Compile Include="Domain\InOut\NHibernate\InOutApplicationService.cs" />
     <Compile Include="Domain\InventoryItem\InventoryItemUtils.cs" />
     <Compile Include="Domain\Listeners\InventoryItemEventListener.cs" />
+    <Compile Include="Domain\MovementConfirmation\NHibernate\MovementConfirmationApplicationService.cs" />
     <Compile Include="Domain\Movement\NHibernate\MovementApplicationService.cs" />
     <Compile Include="Domain\NHibernate\NodaMoneyType.cs" />
     <Compile Include="Domain\Services\NHibernate\AttributeSetService.cs" />

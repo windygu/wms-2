@@ -60,6 +60,7 @@ namespace Dddml.Wms.Services.Tests
             //inOut.ChargeAmount = new Money(10000, "CNY");
             //inOut.FreightAmount = new Money(400, "CNY");
             inOut.MovementTypeId = DocumentTypeIds.InOut;
+            inOut.MovementDate = DateTime.Now;
 
             var line_1 = inOut.NewCreateInOutLine();
             line_1.LineNumber = DateTime.Now.Ticks.ToString();//todo

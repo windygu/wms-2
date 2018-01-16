@@ -110,9 +110,9 @@ aggregates:
             # --------- 数量之间的约束 ------------
             QuantitiesConstraint:
               validationLogic:
-                PseudoCode: "TargetQuantity + DifferenceQuantity == ConfirmedQuantity"
-                CSharp: "{this}.TargetQuantity + {this}.DifferenceQuantity == {this}.ConfirmedQuantity"
-                Java: "getTargetQuantity() .add (getDifferenceQuantity()) .equals (getConfirmedQuantity())"
+                PseudoCode: "ConfirmedQuantity == 0 || TargetQuantity + DifferenceQuantity == ConfirmedQuantity"
+                CSharp: "{this}.ConfirmedQuantity == 0 || {this}.TargetQuantity + {this}.DifferenceQuantity == {this}.ConfirmedQuantity"
+                Java: "getConfirmedQuantity() .equals (0L) || getTargetQuantity() .add (getDifferenceQuantity()) .equals (getConfirmedQuantity())"
             ScrappedQuantityConstraint:
               validationLogic:
                 PseudoCode: "ScrappedQuantity <= ConfirmedQuantity"

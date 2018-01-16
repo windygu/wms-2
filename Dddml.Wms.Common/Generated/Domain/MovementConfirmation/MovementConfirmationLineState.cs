@@ -341,9 +341,9 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 		{
             StateReadOnly = false;
 			((dynamic)this).When((dynamic)e);
-            if (!(this.TargetQuantity + this.DifferenceQuantity == this.ConfirmedQuantity))
+            if (!(this.ConfirmedQuantity == 0 || this.TargetQuantity + this.DifferenceQuantity == this.ConfirmedQuantity))
             {
-                throw DomainError.Named("constraintViolated", "Violated validation logic: {0}", "this.TargetQuantity + this.DifferenceQuantity == this.ConfirmedQuantity");
+                throw DomainError.Named("constraintViolated", "Violated validation logic: {0}", "this.ConfirmedQuantity == 0 || this.TargetQuantity + this.DifferenceQuantity == this.ConfirmedQuantity");
             }
             if (!(this.ScrappedQuantity <= this.ConfirmedQuantity))
             {

@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Spring.Transaction.Interceptor;
+﻿using Dddml.Wms.Domain.DocumentType;
 using Dddml.Wms.Domain.InventoryItem;
 using Dddml.Wms.Specialization;
-using Dddml.Wms.Domain.DocumentType;
 using Dddml.Wms.Specialization.NHibernate;
+using Spring.Transaction.Interceptor;
+using System;
+using System.Collections.Generic;
 
 namespace Dddml.Wms.Domain.InOut.NHibernate
 {
@@ -228,7 +226,7 @@ namespace Dddml.Wms.Domain.InOut.NHibernate
             var inOut = StateRepository.Get(docNumber, true);
             if (inOut == null)
             {
-                throw new ArgumentException();
+                throw new ArgumentException(String.Format("Error document number: {0}", docNumber));
             }
             else
             {
