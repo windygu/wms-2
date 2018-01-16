@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="Spring" name="Spring">
+      <configuration />
+    </facet>
+    <facet type="web" name="Web">
+      <configuration>
+        <descriptors>
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/src/main/webapp/WEB-INF/web.xml" />
+        </descriptors>
+        <webroots>
+          <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
+        </webroots>
+        <sourceRoots>
+          <root url="file://$MODULE_DIR$/src/main/java" />
+          <root url="file://$MODULE_DIR$/src/main/resources" />
+        </sourceRoots>
+      </configuration>
+    </facet>
+  </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
@@ -13,10 +32,8 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="dddml-wms-services" />
     <orderEntry type="module" module-name="dddml-wms-common" />
-    <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.17" level="project" />
     <orderEntry type="library" name="Maven: org.dddml:dddml-criterion-support:1.0-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: com.github.drapostolos:type-parser:0.6.0" level="project" />
-    <orderEntry type="library" name="Maven: com.strategicgains:DateAdapterJ:1.1.4" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.17" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:6.0.3" level="project" />
     <orderEntry type="library" name="Maven: org.squirrelframework:squirrel-foundation:0.3.8" level="project" />
     <orderEntry type="library" name="Maven: com.google.guava:guava:16.0.1" level="project" />

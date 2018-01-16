@@ -11,8 +11,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Maven: org.dddml:dddml-criterion-support:1.0-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: com.github.drapostolos:type-parser:0.6.0" level="project" />
-    <orderEntry type="library" name="Maven: com.strategicgains:DateAdapterJ:1.1.4" level="project" />
     <orderEntry type="library" name="Maven: org.joda:joda-money:0.11" level="project" />
     <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.17" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.12" level="project" />
