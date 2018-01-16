@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
-using Dddml.Wms.Domain.Organization;
+using Dddml.Wms.Domain.Party;
 using Dddml.Wms.Domain.Metadata;
 using Dddml.Wms.HttpServices.Filters;
 using System.Linq;
@@ -26,29 +26,29 @@ namespace Dddml.Wms.HttpServices.ApiControllers
     public partial class OrganizationsController : ApiController
     {
 
-        IOrganizationApplicationService _organizationApplicationService = ApplicationContext.Current["OrganizationApplicationService"] as IOrganizationApplicationService;
+        IPartyApplicationService _partyApplicationService = ApplicationContext.Current["PartyApplicationService"] as IPartyApplicationService;
 
         [Route(Order = 1)]
         [HttpGet]
-        public IEnumerable<IOrganizationStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
+        public IEnumerable<IPartyStateDto> GetAll(string sort = null, string fields = null, int firstResult = 0, int maxResults = int.MaxValue, string filter = null)
         {
           try {
-            IEnumerable<IOrganizationState> states = null; 
+            IEnumerable<IPartyState> states = null; 
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                states = _organizationApplicationService.Get(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
-                    , n => (OrganizationMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? OrganizationMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
+                states = _partyApplicationService.Get<OrganizationState>(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                    , n => (PartyMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? PartyMetadata.Instance.FilteringPropertyAliasDictionary[n] : n))
                     , OrganizationsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
             else 
             {
-                states = _organizationApplicationService.Get(OrganizationsControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
+                states = _partyApplicationService.Get<OrganizationState>(OrganizationsControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs())
                     , OrganizationsControllerUtils.GetQueryOrders(sort, QueryOrderSeparator), firstResult, maxResults);
             }
-            var stateDtos = new List<IOrganizationStateDto>();
+            var stateDtos = new List<IPartyStateDto>();
             foreach (var s in states)
             {
-                var dto = s is OrganizationStateDtoWrapper ? (OrganizationStateDtoWrapper)s : new OrganizationStateDtoWrapper(s);
+                var dto = s is PartyStateDtoWrapper ? (PartyStateDtoWrapper)s : new PartyStateDtoWrapper(s);
                 if (String.IsNullOrWhiteSpace(fields))
                 {
                     dto.AllFieldsReturned = true;
@@ -64,13 +64,17 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpGet]
-        public IOrganizationStateDto Get(string id, string fields = null)
+        public IPartyStateDto Get(string id, string fields = null)
         {
           try {
             var idObj = id;
-            var state = _organizationApplicationService.Get(idObj);
+            var state = _partyApplicationService.Get(idObj);
             if (state == null) { return null; }
-            var stateDto = new OrganizationStateDtoWrapper(state);
+            if (state != null && !typeof(IOrganizationState).IsAssignableFrom(state.GetType())) 
+            {
+                return null;
+            }
+            var stateDto = new PartyStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -93,32 +97,34 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             long count = 0;
             if (!String.IsNullOrWhiteSpace(filter))
             {
-                count = _organizationApplicationService.GetCount(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
-                    , n => (OrganizationMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? OrganizationMetadata.Instance.FilteringPropertyAliasDictionary[n] : n)));
+                count = _partyApplicationService.GetCount<OrganizationState>(CriterionDto.ToSubclass(JObject.Parse(filter).ToObject<CriterionDto>(), new ApiControllerTypeConverter(), new PropertyTypeResolver()
+                    , n => (PartyMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(n) ? PartyMetadata.Instance.FilteringPropertyAliasDictionary[n] : n)));
             }
             else 
             {
-                count = _organizationApplicationService.GetCount(OrganizationsControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs()));
+                count = _partyApplicationService.GetCount<OrganizationState>(OrganizationsControllerUtils.GetQueryFilterDictionary(this.Request.GetQueryNameValuePairs()));
             }
             return count;
           } catch (Exception ex) { var response = OrganizationsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [HttpPut][SetRequesterId]
-        public void Put(string id, [FromBody]CreateOrganizationDto value)
+        public void Put(string id, [FromBody]CreatePartyDto value)
         {
           try {
+            value.PartyTypeId = PartyTypeIds.Organization;
             OrganizationsControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
-            _organizationApplicationService.When(value as ICreateOrganization);
+            _partyApplicationService.When(value as ICreateParty);
           } catch (Exception ex) { var response = OrganizationsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [HttpPatch][SetRequesterId]
-        public void Patch(string id, [FromBody]MergePatchOrganizationDto value)
+        public void Patch(string id, [FromBody]MergePatchPartyDto value)
         {
           try {
+            value.PartyTypeId = PartyTypeIds.Organization;
             OrganizationsControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
-            _organizationApplicationService.When(value as IMergePatchOrganization);
+            _partyApplicationService.When(value as IMergePatchParty);
           } catch (Exception ex) { var response = OrganizationsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
@@ -126,12 +132,13 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         public void Delete(string id, string commandId, string version, string requesterId = default(string))
         {
           try {
-            var value = new DeleteOrganizationDto();
+            var value = new DeletePartyDto();
+            value.PartyTypeId = PartyTypeIds.Organization;
             value.CommandId = commandId;
             value.RequesterId = requesterId;
             value.Version = (long)Convert.ChangeType(version, typeof(long));
             OrganizationsControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
-            _organizationApplicationService.When(value as IDeleteOrganization);
+            _partyApplicationService.When(value as IDeleteParty);
           } catch (Exception ex) { var response = OrganizationsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
@@ -141,7 +148,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             var filtering = new List<PropertyMetadataDto>();
-            foreach (var p in OrganizationMetadata.Instance.Properties)
+            foreach (var p in PartyMetadata.Instance.Properties)
             {
                 if (p.IsFilteringProperty)
                 {
@@ -157,25 +164,25 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         [Route("{id}/_stateEvents/{version}")]
         [HttpGet]
-        public OrganizationStateCreatedOrMergePatchedOrDeletedDto GetStateEvent(string id, long version)
+        public PartyStateCreatedOrMergePatchedOrDeletedDto GetStateEvent(string id, long version)
         {
           try {
             var idObj = id;
-            var conv = new OrganizationStateEventDtoConverter();
-            var se = _organizationApplicationService.GetStateEvent(idObj, version);
-            return se == null ? null : conv.ToOrganizationStateEventDto(se);
+            var conv = new PartyStateEventDtoConverter();
+            var se = _partyApplicationService.GetStateEvent(idObj, version);
+            return se == null ? null : conv.ToPartyStateEventDto(se);
           } catch (Exception ex) { var response = OrganizationsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
         [Route("{id}/_historyStates/{version}")]
         [HttpGet]
-        public IOrganizationStateDto GetHistoryState(string id, long version, string fields = null)
+        public IPartyStateDto GetHistoryState(string id, long version, string fields = null)
         {
           try {
             var idObj = id;
-            var state = _organizationApplicationService.GetHistoryState(idObj, version);
+            var state = _partyApplicationService.GetHistoryState(idObj, version);
             if (state == null) { return null; }
-            var stateDto = new OrganizationStateDtoWrapper(state);
+            var stateDto = new PartyStateDtoWrapper(state);
             if (String.IsNullOrWhiteSpace(fields))
             {
                 stateDto.AllFieldsReturned = true;
@@ -268,14 +275,14 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             return response;
         }
 
-        public static void SetNullIdOrThrowOnInconsistentIds(string id, CreateOrMergePatchOrDeleteOrganizationDto value)
+        public static void SetNullIdOrThrowOnInconsistentIds(string id, CreateOrMergePatchOrDeletePartyDto value)
         {
             var idObj = id;
             if (value.PartyId == null)
             {
                 value.PartyId = idObj;
             }
-            else if (!((ICreateOrMergePatchOrDeleteOrganization)value).PartyId.Equals(idObj))
+            else if (!((ICreateOrMergePatchOrDeleteParty)value).PartyId.Equals(idObj))
             {
                 throw DomainError.Named("inconsistentId", "Argument Id {0} NOT equals body Id {1}", id, value.PartyId);
             }
@@ -291,18 +298,18 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 return null;
             }
-            if (OrganizationMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(fieldName))
+            if (PartyMetadata.Instance.FilteringPropertyAliasDictionary.ContainsKey(fieldName))
             {
-                return OrganizationMetadata.Instance.FilteringPropertyAliasDictionary[fieldName];
+                return PartyMetadata.Instance.FilteringPropertyAliasDictionary[fieldName];
             }
             return null;
         }
 
         public static Type GetFilterPropertyType(string propertyName)
         {
-            if (OrganizationMetadata.Instance.PropertyMetadataDictionary.ContainsKey(propertyName))
+            if (PartyMetadata.Instance.PropertyMetadataDictionary.ContainsKey(propertyName))
             {
-                return OrganizationMetadata.Instance.PropertyMetadataDictionary[propertyName].Type;
+                return PartyMetadata.Instance.PropertyMetadataDictionary[propertyName].Type;
             }
             return typeof(string);
         }
@@ -336,6 +343,30 @@ namespace Dddml.Wms.HttpServices.ApiControllers
                 orders.Add(a.Trim());
             }
             return orders;
+        }
+
+        public static IEnumerable<IPartyStateDto> ToPartyStateDtoCollection(IEnumerable<string> ids)
+        {
+            var states = new List<IPartyStateDto>();
+            foreach (var id in ids)
+            {
+                var dto = new PartyStateDtoWrapper();
+                dto.PartyId = id;
+                states.Add(dto);
+            }
+            return states;
+        }
+
+        public static IEnumerable<IPartyState> ToPartyStateCollection(IEnumerable<string> ids)
+        {
+            var states = new List<PartyState>();
+            foreach (var id in ids)
+            {
+                var s = new PartyState();
+                s.PartyId = id;
+                states.Add(s);
+            }
+            return states;
         }
 
         public static IEnumerable<IOrganizationStateDto> ToOrganizationStateDtoCollection(IEnumerable<string> ids)

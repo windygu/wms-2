@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.inventoryitem">
+  
+  <class name="org.dddml.wms.domain.inventoryitem.AbstractInventoryItemEntryState$SimpleInventoryItemEntryState" table="InventoryItemEntries">
+
+    <cache usage="read-only"/>
+	<composite-id name="inventoryItemEntryId" class="org.dddml.wms.domain.inventoryitem.InventoryItemEntryId">
+		<key-property name="inventoryItemIdProductId" ><column name="ProductId" /></key-property>
+		<key-property name="inventoryItemIdLocatorId" ><column name="LocatorId" /></key-property>
+		<key-property name="inventoryItemIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" /></key-property>
+		<key-property name="entrySeqId" ></key-property>
+	</composite-id>
+	<version name="version" column="Version" type="long" />
+
+	<property name="onHandQuantity" ></property>
+	<property name="inTransitQuantity" ></property>
+	<property name="reservedQuantity" ></property>
+	<property name="occupiedQuantity" ></property>
+	<property name="virtualQuantity" ></property>
+	<component name="source" class="org.dddml.wms.domain.inventoryitem.InventoryItemSourceInfo" unique="true">
+		<property name="documentTypeId" ><column name="sourceDocumentTypeId" not-null="true" /></property>
+		<property name="documentNumber" ><column name="sourceDocumentNumber" not-null="true" /></property>
+		<property name="lineNumber" ><column name="sourceLineNumber" /></property>
+		<property name="lineSeqId" ><column name="sourceLineSeqId" /></property>
+	</component>
+	<property name="createdBy" ></property>
+	<property name="updatedBy" ></property>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="updatedAt" column="UpdatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+
+
+  </class>
+  
+</hibernate-mapping>
+

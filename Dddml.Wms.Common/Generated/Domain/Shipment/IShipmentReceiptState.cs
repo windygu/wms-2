@@ -33,5 +33,6 @@ namespace Dddml.Wms.Domain.Shipment
         bool IsUnsaved { get; }
 
 	}
+
 }
 

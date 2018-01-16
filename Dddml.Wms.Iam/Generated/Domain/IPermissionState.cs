@@ -35,5 +35,6 @@ namespace Dddml.Wms.Domain.Permission
         bool IsUnsaved { get; }
 
 	}
+
 }
 

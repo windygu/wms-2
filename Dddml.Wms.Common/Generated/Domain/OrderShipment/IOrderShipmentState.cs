@@ -32,5 +32,6 @@ namespace Dddml.Wms.Domain.OrderShipment
         bool IsUnsaved { get; }
 
 	}
+
 }
 

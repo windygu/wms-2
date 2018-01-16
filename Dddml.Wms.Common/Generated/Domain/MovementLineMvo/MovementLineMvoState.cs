@@ -719,7 +719,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
             var stateVersion = this.MovementVersion;
             var eventVersion = stateEvent.StateEventId.MovementVersion;
-            if (stateVersion > eventVersion)//!=
+            if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
             }

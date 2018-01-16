@@ -36,5 +36,6 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
         bool IsUnsaved { get; }
 
 	}
+
 }
 

@@ -349,6 +349,10 @@ namespace Dddml.Wms.Domain.Locator
 		{
             StateReadOnly = false;
 			((dynamic)this).When((dynamic)e);
+            if (!(this.LocatorId.StartsWith(this.WarehouseId)))
+            {
+                throw DomainError.Named("constraintViolated", "Violated validation logic: {0}", "this.LocatorId.StartsWith(this.WarehouseId)");
+            }
 		}
 
         protected void ThrowOnWrongEvent(ILocatorStateEvent stateEvent)
@@ -368,7 +372,7 @@ namespace Dddml.Wms.Domain.Locator
 
             var stateVersion = this.Version;
             var eventVersion = stateEvent.StateEventId.Version;
-            if (stateVersion > eventVersion)//!=
+            if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
             }

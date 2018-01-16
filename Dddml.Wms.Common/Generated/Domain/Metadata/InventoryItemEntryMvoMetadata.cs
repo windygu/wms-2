@@ -954,6 +954,37 @@ namespace Dddml.Wms.Domain.Metadata
                     IsReservedPropertyUpdatedAt = false,
                     IsFilteringProperty = true,
                 },
+                new PropertyMetadata {
+                    Name = "Source.LineSeqId",
+                    Type = typeof(int),
+                    TypeName = "int",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsReallyFlattened = false,
+                    SourceChainingName = "Source.LineSeqId",
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
             };
 
 
@@ -1033,6 +1064,8 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("source.documentNumber", "Source.DocumentNumber");
             d.Add("Source.LineNumber", "Source.LineNumber");
             d.Add("source.lineNumber", "Source.LineNumber");
+            d.Add("Source.LineSeqId", "Source.LineSeqId");
+            d.Add("source.lineSeqId", "Source.LineSeqId");
             _filteringPropertyAliasDictionary = d;
         }
 

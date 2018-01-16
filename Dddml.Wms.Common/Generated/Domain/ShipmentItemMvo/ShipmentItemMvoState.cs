@@ -722,7 +722,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 
             var stateVersion = this.ShipmentVersion;
             var eventVersion = stateEvent.StateEventId.ShipmentVersion;
-            if (stateVersion > eventVersion)//!=
+            if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
             }

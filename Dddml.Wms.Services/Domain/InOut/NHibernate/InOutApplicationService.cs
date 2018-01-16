@@ -258,35 +258,17 @@ namespace Dddml.Wms.Domain.InOut.NHibernate
         /// <param name="inventoryItemEntries"></param>
         private void CreateOrUpdateInventoryItems(IList<ICreateInventoryItemEntry> inventoryItemEntries)
         {
-            foreach (var e in inventoryItemEntries)
-            {
-                var iitem = InventoryItemApplicationService.Get(e.InventoryItemId);
-                if (iitem == null)
-                {
-                    var createInventoryItem = new CreateInventoryItem();
-                    createInventoryItem.InventoryItemId = e.InventoryItemId;
-                    createInventoryItem.Entries.Add(e);
-                    InventoryItemApplicationService.When(createInventoryItem);
-                }
-                else
-                {
-                    var updateInventoryItem = new MergePatchInventoryItem();
-                    updateInventoryItem.InventoryItemId = e.InventoryItemId;
-                    updateInventoryItem.Version = iitem.Version; // /////////////////
-                    updateInventoryItem.InventoryItemEntryCommands.Add(e);
-                    InventoryItemApplicationService.When(updateInventoryItem);
-                }
-            }
-
+            var invItemApplicationService = this.InventoryItemApplicationService;
+            InventoryItemUtils.CreateOrUpdateInventoryItems(invItemApplicationService, inventoryItemEntries);
         }
 
-        protected virtual ICreateInventoryItemEntry CreateInventoryItemEntry(IInOutState inOut, IInOutLineState inOutLine)//, int signum)
+        protected virtual ICreateInventoryItemEntry CreateInventoryItemEntry(IInOutState inOut, IInOutLineState inOutLine)
         {
             var entry = new CreateInventoryItemEntry();
             entry.InventoryItemId = new InventoryItemId(inOutLine.ProductId, inOutLine.LocatorId, inOutLine.AttributeSetInstanceId);
             entry.EntrySeqId = SeqIdGenerator.GetNextId();//DateTime.Now.Ticks;
             entry.OnHandQuantity = inOutLine.MovementQuantity;// *signum;
-            entry.Source = new InventoryItemSourceInfo(DocumentTypeIds.InOut, inOut.DocumentNumber, inOutLine.LineNumber);
+            entry.Source = new InventoryItemSourceInfo(DocumentTypeIds.InOut, inOut.DocumentNumber, inOutLine.LineNumber, 0);
             return entry;
         }
 

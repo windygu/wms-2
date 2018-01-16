@@ -37,5 +37,6 @@ namespace Dddml.Wms.Domain.DocumentType
         bool IsUnsaved { get; }
 
 	}
+
 }
 

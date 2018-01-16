@@ -35,5 +35,6 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
         bool IsUnsaved { get; }
 
 	}
+
 }
 

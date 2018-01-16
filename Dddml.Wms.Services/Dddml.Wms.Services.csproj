@@ -88,9 +88,12 @@
     <Compile Include="Domain\AttributeSetInstance\AttributeSetInstanceIdGenerator.cs" />
     <Compile Include="Domain\Hello\HelloState.cs" />
     <Compile Include="Domain\InOut\NHibernate\InOutApplicationService.cs" />
+    <Compile Include="Domain\InventoryItem\InventoryItemUtils.cs" />
     <Compile Include="Domain\Listeners\InventoryItemEventListener.cs" />
+    <Compile Include="Domain\Movement\NHibernate\MovementApplicationService.cs" />
     <Compile Include="Domain\NHibernate\NodaMoneyType.cs" />
     <Compile Include="Domain\Services\NHibernate\AttributeSetService.cs" />
+    <Compile Include="Domain\Warehouse\WarehouseUtils.cs" />
     <Compile Include="Generated\Domain\AttributeAliasMvo\NHibernate\AttributeAliasMvoApplicationService.cs">
       <DependentUpon>GenerateAttributeAliasMvoDomainNHibernate.tt</DependentUpon>
     </Compile>
@@ -526,17 +529,20 @@
     <Compile Include="Generated\Domain\OrganizationTreeApplicationService.cs">
       <DependentUpon>GenerateBoundedContextTreeApplicationServices.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Organization\NHibernate\NHibernateOrganizationEventStore.cs">
-      <DependentUpon>GenerateOrganizationDomainNHibernate.tt</DependentUpon>
+    <Compile Include="Generated\Domain\Party\NHibernate\NHibernateOrganizationStateQueryRepository.cs">
+      <DependentUpon>GeneratePartyDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Organization\NHibernate\NHibernateOrganizationStateQueryRepository.cs">
-      <DependentUpon>GenerateOrganizationDomainNHibernate.tt</DependentUpon>
+    <Compile Include="Generated\Domain\Party\NHibernate\NHibernatePartyEventStore.cs">
+      <DependentUpon>GeneratePartyDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Organization\NHibernate\NHibernateOrganizationStateRepository.cs">
-      <DependentUpon>GenerateOrganizationDomainNHibernate.tt</DependentUpon>
+    <Compile Include="Generated\Domain\Party\NHibernate\NHibernatePartyStateQueryRepository.cs">
+      <DependentUpon>GeneratePartyDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Organization\NHibernate\OrganizationApplicationService.cs">
-      <DependentUpon>GenerateOrganizationDomainNHibernate.tt</DependentUpon>
+    <Compile Include="Generated\Domain\Party\NHibernate\NHibernatePartyStateRepository.cs">
+      <DependentUpon>GeneratePartyDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Party\NHibernate\PartyApplicationService.cs">
+      <DependentUpon>GeneratePartyDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\NHibernate\NHibernatePhysicalInventoryLineMvoEventStore.cs">
       <DependentUpon>GeneratePhysicalInventoryLineMvoDomainNHibernate.tt</DependentUpon>
@@ -1025,10 +1031,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateOrganizationStructureDomainNHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="Generated\Domain\Organization\NHibernate\GenerateOrganizationDomainNHibernate.txt">
+    <Content Include="Generated\Domain\Party\NHibernate\GeneratePartyDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateOrganizationDomainNHibernate.tt</DependentUpon>
+      <DependentUpon>GeneratePartyDomainNHibernate.tt</DependentUpon>
     </Content>
     <Content Include="Generated\Domain\PhysicalInventoryLineMvo\NHibernate\GeneratePhysicalInventoryLineMvoDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
@@ -1251,12 +1257,12 @@
 .\OrderShipmentStateEvent.hbm.xml
 .\OrderState.hbm.xml
 .\OrderStateEvent.hbm.xml
-.\OrganizationState.hbm.xml
-.\OrganizationStateEvent.hbm.xml
 .\OrganizationStructureState.hbm.xml
 .\OrganizationStructureStateEvent.hbm.xml
 .\OrganizationStructureTypeState.hbm.xml
 .\OrganizationStructureTypeStateEvent.hbm.xml
+.\PartyState.hbm.xml
+.\PartyStateEvent.hbm.xml
 .\PhysicalInventoryLineMvoState.hbm.xml
 .\PhysicalInventoryLineMvoStateEvent.hbm.xml
 .\PhysicalInventoryLineState.hbm.xml
@@ -1362,12 +1368,6 @@
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Generated\NHibernate\Mappings\OrderShipmentStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\OrganizationState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\OrganizationStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Generated\NHibernate\Mappings\OrganizationStructureTypeState.hbm.xml">
@@ -1579,6 +1579,12 @@
     <EmbeddedResource Include="Generated\NHibernate\Mappings\RejectionReasonStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\PartyState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\PartyStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
     <Content Include="LoadBoundedContext.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>LoadBoundedContext.txt</LastGenOutput>
@@ -1651,17 +1657,6 @@
 .\NHibernateInOutLineStateEventDao.cs
 .\NHibernateInOutStateQueryRepository.cs
 .\NHibernateInOutStateRepository.cs
-</LastOutputs>
-    </Content>
-    <Content Include="Generated\Domain\Organization\NHibernate\GenerateOrganizationDomainNHibernate.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateOrganizationDomainNHibernate.txt</LastGenOutput>
-      <LastOutputs>
-.\GenerateOrganizationDomainNHibernate.txt
-.\NHibernateOrganizationEventStore.cs
-.\NHibernateOrganizationStateQueryRepository.cs
-.\NHibernateOrganizationStateRepository.cs
-.\OrganizationApplicationService.cs
 </LastOutputs>
     </Content>
     <Content Include="Generated\Domain\OrganizationStructureType\NHibernate\GenerateOrganizationStructureTypeDomainNHibernate.tt">
@@ -2188,6 +2183,18 @@
 .\GenerateDamageHandlingMethodDomainNHibernate.txt
 .\NHibernateDamageHandlingMethodStateQueryRepository.cs
 .\NHibernateDamageHandlingMethodStateRepository.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\Party\NHibernate\GeneratePartyDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GeneratePartyDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GeneratePartyDomainNHibernate.txt
+.\NHibernateOrganizationStateQueryRepository.cs
+.\NHibernatePartyEventStore.cs
+.\NHibernatePartyStateQueryRepository.cs
+.\NHibernatePartyStateRepository.cs
+.\PartyApplicationService.cs
 </LastOutputs>
     </Content>
   </ItemGroup>

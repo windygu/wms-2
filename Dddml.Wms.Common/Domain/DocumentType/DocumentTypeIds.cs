@@ -46,34 +46,14 @@ namespace Dddml.Wms.Domain.DocumentType
         public const string InTransitMovement = "InTransitMovement";
 
         ///// <summary>
-        ///// 库位调拨入库。
+        ///// 其他入出库。
         ///// </summary>
-        //public const string MovementIn = "MovementIn";
+        //public const string MiscellaneousInOut = "MiscellaneousInOut";
 
         ///// <summary>
-        ///// 库位调拨出库。
+        ///// 工单入出库。
         ///// </summary>
-        //public const string MovementOut = "MovementOut";
-
-        /// <summary>
-        /// 其他入库。
-        /// </summary>
-        public const string MiscellaneousIn = "MiscellaneousIn";
-
-        /// <summary>
-        /// 其他出库。
-        /// </summary>
-        public const string MiscellaneousOut = "MiscellaneousOut";
-
-        /// <summary>
-        /// 工单入库。
-        /// </summary>
-        public const string WorkOrderIn = "WorkOrderIn";
-
-        /// <summary>
-        /// 工单出库。
-        /// </summary>
-        public const string WorkOrderOut = "WorkOrderOut";
+        //public const string WorkOrderInOut = "WorkOrderInOut";
 
         /// <summary>
         /// （从供应商）收货。

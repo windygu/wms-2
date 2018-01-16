@@ -308,7 +308,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 
             var stateVersion = this.InventoryItemRequirementVersion;
             var eventVersion = stateEvent.StateEventId.InventoryItemRequirementVersion;
-            if (stateVersion > eventVersion)//!=
+            if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
             }

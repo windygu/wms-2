@@ -180,7 +180,7 @@ aggregates:
         
       reservedProperties:
         noDeleted: true
-        
+                
       entities:
           
         InOutLine:
@@ -267,5 +267,9 @@ aggregates:
           
         Reverse:
           parameters:
+          
+      # --------------------------------------------
+      metadata:
+        JavaAggregateApplicationServiceImplementClassName: InOutApplicationServiceImpl
           
           

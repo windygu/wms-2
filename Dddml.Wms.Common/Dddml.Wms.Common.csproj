@@ -2684,13 +2684,13 @@
     <Compile Include="Generated\Domain\Metadata\OrderShipmentMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Metadata\OrganizationMetadata.cs">
-      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\Metadata\OrganizationStructureMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Metadata\OrganizationStructureTypeMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Metadata\PartyMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Metadata\PhysicalInventoryLineMetadata.cs">
@@ -3923,92 +3923,101 @@
     <Compile Include="Generated\Domain\OrganizationTreeNode.cs">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Organization\IOrganizationAggregate.cs">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\Party\IOrganizationStateQueryRepository.cs">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Organization\IOrganizationApplicationService.cs">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\Party\IPartyAggregate.cs">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Organization\IOrganizationApplicationServiceFactory.cs">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\Party\IPartyApplicationService.cs">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Organization\IOrganizationCommand.cs">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\Party\IPartyApplicationServiceFactory.cs">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Organization\IOrganizationState.cs">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\Party\IPartyCommand.cs">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Organization\IOrganizationStateDto.cs">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\Party\IPartyState.cs">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Organization\IOrganizationStateEvent.cs">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\Party\IPartyStateDto.cs">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Organization\IOrganizationStateProperties.cs">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\Party\IPartyStateEvent.cs">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Organization\IOrganizationStateQueryRepository.cs">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\Party\IPartyStateProperties.cs">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Organization\IOrganizationStateRepository.cs">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\Party\IPartyStateQueryRepository.cs">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Organization\OrganizationAggregate.cs">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\Party\IPartyStateRepository.cs">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Organization\OrganizationApplicationServiceBase.cs">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\Party\OrganizationStateDtoWrapper.cs">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Organization\OrganizationApplicationServiceFactory.cs">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\Party\PartyAggregate.cs">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Organization\OrganizationCommand.cs">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\Party\PartyApplicationServiceBase.cs">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Organization\OrganizationCommandDto.cs">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\Party\PartyApplicationServiceFactory.cs">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Organization\OrganizationState.cs">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\Party\PartyCommand.cs">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Organization\OrganizationStateDto.cs">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\Party\PartyCommandDto.cs">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Organization\OrganizationStateDtoExtension.cs">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\Party\PartyState.cs">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Organization\OrganizationStateDtoWrapper.cs">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\Party\PartyStateDto.cs">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Organization\OrganizationStateEvent.cs">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\Party\PartyStateDtoExtension.cs">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Organization\OrganizationStateEventDto.cs">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\Party\PartyStateDtoWrapper.cs">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Organization\OrganizationStateEventDtoConverter.cs">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\Party\PartyStateEvent.cs">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Organization\OrganizationStateEventId.cs">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\Party\PartyStateEventDto.cs">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Organization\OrganizationStateEventIdDto.cs">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\Party\PartyStateEventDtoConverter.cs">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Organization\OrganizationStateEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\Party\PartyStateEventId.cs">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Organization\OrganizationStateEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\Party\PartyStateEventIdDto.cs">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Organization\OrganizationStateExtension.cs">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\Party\PartyStateEventIdDtoWrapper.cs">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Organization\OrganizationStateInterfaceExtension.cs">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\Party\PartyStateEventIdFlattenedDto.cs">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Organization\OrganizationStateProperties.cs">
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+    <Compile Include="Generated\Domain\Party\PartyStateExtension.cs">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Party\PartyStateInterfaceExtension.cs">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Party\PartyStateProperties.cs">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Party\PartyTypeIds.cs">
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\IPhysicalInventoryLineMvoAggregate.cs">
       <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
@@ -6130,10 +6139,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
     </Content>
-    <Content Include="Generated\Domain\Organization\GenerateOrganizationDomain.txt">
+    <Content Include="Generated\Domain\Party\GeneratePartyDomain.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateOrganizationDomain.tt</DependentUpon>
+      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Content>
     <Content Include="Generated\Domain\PhysicalInventoryLineMvo\GeneratePhysicalInventoryLineMvoDomain.txt">
       <AutoGen>True</AutoGen>
@@ -6349,42 +6358,6 @@
 .\InOutStateExtension.cs
 .\InOutStateInterfaceExtension.cs
 .\InOutStateProperties.cs
-</LastOutputs>
-    </Content>
-    <Content Include="Generated\Domain\Organization\GenerateOrganizationDomain.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateOrganizationDomain.txt</LastGenOutput>
-      <LastOutputs>
-.\GenerateOrganizationDomain.txt
-.\IOrganizationAggregate.cs
-.\IOrganizationApplicationService.cs
-.\IOrganizationApplicationServiceFactory.cs
-.\IOrganizationCommand.cs
-.\IOrganizationState.cs
-.\IOrganizationStateDto.cs
-.\IOrganizationStateEvent.cs
-.\IOrganizationStateProperties.cs
-.\IOrganizationStateQueryRepository.cs
-.\IOrganizationStateRepository.cs
-.\OrganizationAggregate.cs
-.\OrganizationApplicationServiceBase.cs
-.\OrganizationApplicationServiceFactory.cs
-.\OrganizationCommand.cs
-.\OrganizationCommandDto.cs
-.\OrganizationState.cs
-.\OrganizationStateDto.cs
-.\OrganizationStateDtoExtension.cs
-.\OrganizationStateDtoWrapper.cs
-.\OrganizationStateEvent.cs
-.\OrganizationStateEventDto.cs
-.\OrganizationStateEventDtoConverter.cs
-.\OrganizationStateEventId.cs
-.\OrganizationStateEventIdDto.cs
-.\OrganizationStateEventIdDtoWrapper.cs
-.\OrganizationStateEventIdFlattenedDto.cs
-.\OrganizationStateExtension.cs
-.\OrganizationStateInterfaceExtension.cs
-.\OrganizationStateProperties.cs
 </LastOutputs>
     </Content>
     <Content Include="Generated\Domain\OrganizationStructureType\GenerateOrganizationStructureTypeDomain.tt">
@@ -8533,6 +8506,45 @@
 .\IDamageHandlingMethodStateRepository.cs
 </LastOutputs>
     </Content>
+    <Content Include="Generated\Domain\Party\GeneratePartyDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GeneratePartyDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\GeneratePartyDomain.txt
+.\IOrganizationStateQueryRepository.cs
+.\IPartyAggregate.cs
+.\IPartyApplicationService.cs
+.\IPartyApplicationServiceFactory.cs
+.\IPartyCommand.cs
+.\IPartyState.cs
+.\IPartyStateDto.cs
+.\IPartyStateEvent.cs
+.\IPartyStateProperties.cs
+.\IPartyStateQueryRepository.cs
+.\IPartyStateRepository.cs
+.\OrganizationStateDtoWrapper.cs
+.\PartyAggregate.cs
+.\PartyApplicationServiceBase.cs
+.\PartyApplicationServiceFactory.cs
+.\PartyCommand.cs
+.\PartyCommandDto.cs
+.\PartyState.cs
+.\PartyStateDto.cs
+.\PartyStateDtoExtension.cs
+.\PartyStateDtoWrapper.cs
+.\PartyStateEvent.cs
+.\PartyStateEventDto.cs
+.\PartyStateEventDtoConverter.cs
+.\PartyStateEventId.cs
+.\PartyStateEventIdDto.cs
+.\PartyStateEventIdDtoWrapper.cs
+.\PartyStateEventIdFlattenedDto.cs
+.\PartyStateExtension.cs
+.\PartyStateInterfaceExtension.cs
+.\PartyStateProperties.cs
+.\PartyTypeIds.cs
+</LastOutputs>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Generated\Domain\GenerateBoundedContextDomainAggregates.tt">
@@ -8609,9 +8621,9 @@
 .\OrderItemMvoMetadata.cs
 .\OrderMetadata.cs
 .\OrderShipmentMetadata.cs
-.\OrganizationMetadata.cs
 .\OrganizationStructureMetadata.cs
 .\OrganizationStructureTypeMetadata.cs
+.\PartyMetadata.cs
 .\PhysicalInventoryLineMetadata.cs
 .\PhysicalInventoryLineMvoMetadata.cs
 .\PhysicalInventoryMetadata.cs

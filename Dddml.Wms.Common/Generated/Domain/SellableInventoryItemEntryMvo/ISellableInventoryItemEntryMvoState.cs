@@ -33,5 +33,6 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
         bool IsUnsaved { get; }
 
 	}
+
 }
 

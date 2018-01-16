@@ -23,6 +23,7 @@
         <property name="DocumentTypeId" ><column name="SourceDocumentTypeId" not-null="true" /></property>
         <property name="DocumentNumber" ><column name="SourceDocumentNumber" not-null="true" /></property>
         <property name="LineNumber" ><column name="SourceLineNumber" /></property>
+        <property name="LineSeqId" ><column name="SourceLineSeqId" /></property>
     </component>
     <property name="Version" ></property>
     <property name="CreatedBy" ></property>

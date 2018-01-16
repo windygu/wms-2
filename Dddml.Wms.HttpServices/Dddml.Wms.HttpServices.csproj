@@ -377,6 +377,9 @@
     <Compile Include="Generated\Controllers\OrganizationTreesController.cs">
       <DependentUpon>GenerateTreeControllers.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Controllers\PartiesController.cs">
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Controllers\PhysicalInventoriesController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
@@ -519,6 +522,7 @@
 .\OrganizationsController.cs
 .\OrganizationStructuresController.cs
 .\OrganizationStructureTypesController.cs
+.\PartiesController.cs
 .\PhysicalInventoriesController.cs
 .\PhysicalInventoryLineMvosController.cs
 .\ProductCategoriesController.cs

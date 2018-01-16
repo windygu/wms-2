@@ -239,7 +239,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
             {
                 eventVersion = stateEvent.Version = stateVersion;
             }
-            if (stateVersion > eventVersion)//!=
+            if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
             }

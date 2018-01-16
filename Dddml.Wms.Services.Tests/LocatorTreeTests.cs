@@ -32,18 +32,19 @@ namespace Dddml.Wms.Services.Tests
         [Test]
         public void TestAddLocators()
         {
+            var warehouseId1 = "1";
             var locator1 = new CreateLocator();
-            locator1.LocatorId = Guid.NewGuid().ToString();
+            locator1.LocatorId = warehouseId1 + "_1_" + Guid.NewGuid().ToString();
             locator1.X = "1";
-            locator1.WarehouseId = "1";
+            locator1.WarehouseId = warehouseId1;
             locatorApplicationService.When(locator1);
 
             var locator2 = new CreateLocator();
-            locator2.LocatorId = Guid.NewGuid().ToString();
+            locator2.LocatorId = warehouseId1 + "_1_2_" + Guid.NewGuid().ToString();
             locator2.ParentLocatorId = locator1.LocatorId;
             locator2.X = locator1.X;
             locator2.Y = "2";
-            locator2.WarehouseId = "1";
+            locator2.WarehouseId = warehouseId1;
             locatorApplicationService.When(locator2);
 
             var roots = locatorTreeRepository.GetRoots((IEnumerable<KeyValuePair<string, object>>)null, null).ToList();

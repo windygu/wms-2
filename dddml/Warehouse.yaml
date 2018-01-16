@@ -68,7 +68,16 @@ aggregates:
 
         Description:
           type: string
+          
+      # ------------------------------------------
+      constraints:
+        # ----------------------------------------
+        LocatorIdConstraint:
+          validationLogic:
+            CSharp: "{this}.LocatorId.StartsWith({this}.WarehouseId)"
+            Java: "getLocatorId().startsWith(getWarehouseId())"
 
+            
 # -------------------------------------
 
 trees:

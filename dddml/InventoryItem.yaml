@@ -121,6 +121,9 @@ aggregates:
             LineNumber:
               type: string
               columnName: LineNumber
+            LineSeqId:
+              type: int
+              columnName: LineSeqId
             
           
    

@@ -1,0 +1,27 @@
+#%DDDML 0.1
+
+---
+
+# ------------------------------
+aggregates:
+
+  # --------------- aggregate ---------------
+  Party:
+    id:
+      name: PartyId
+      type: string
+
+    properties:
+    
+      PartyTypeId:
+        type: id-ne
+
+    discriminator: PartyTypeId
+    # ---------------------
+    inheritanceMappingStrategy: tpcc
+    discriminatorValue: "Party"
+    # ---------------------
+
+    metadata:
+      DiscriminatorConstObjectNameFormat: "{0}s"
+    

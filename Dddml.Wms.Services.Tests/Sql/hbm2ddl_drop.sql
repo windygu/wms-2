@@ -91,10 +91,6 @@
 
     drop table if exists OrderShipmentStateEvents;
 
-    drop table if exists Organizations;
-
-    drop table if exists OrganizationStateEvents;
-
     drop table if exists OrganizationStructureTypes;
 
     drop table if exists OrganizationStructureTypeStateEvents;
@@ -230,5 +226,11 @@
     drop table if exists RejectionReasons;
 
     drop table if exists RejectionReasonStateEvents;
+
+    drop table if exists Parties;
+
+    drop table if exists Organizations;
+
+    drop table if exists PartyStateEvents;
 
     drop table if exists nhibernate_hilo_table;

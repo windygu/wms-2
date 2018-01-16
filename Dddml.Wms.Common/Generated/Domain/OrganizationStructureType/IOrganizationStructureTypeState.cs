@@ -35,5 +35,6 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
         bool IsUnsaved { get; }
 
 	}
+
 }
 

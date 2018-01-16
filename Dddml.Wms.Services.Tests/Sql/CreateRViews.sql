@@ -185,6 +185,7 @@ CREATE VIEW `InventoryItemEntry_RV` AS
         `InventoryItemEntries`.`SourceDocumentTypeId`,
         `InventoryItemEntries`.`SourceDocumentNumber`,
         `InventoryItemEntries`.`SourceLineNumber`,
+        `InventoryItemEntries`.`SourceLineSeqId`,
         `InventoryItemEntries`.`Version`,
         `InventoryItemEntries`.`CreatedBy`,
         `InventoryItemEntries`.`CreatedAt`,

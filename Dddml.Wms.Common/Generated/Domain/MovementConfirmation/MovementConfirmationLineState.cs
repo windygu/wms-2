@@ -341,9 +341,13 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 		{
             StateReadOnly = false;
 			((dynamic)this).When((dynamic)e);
-            if (!(this.TargetQuantity + this.DifferenceQuantity == this.ConfirmedQuantity + this.ScrappedQuantity))
+            if (!(this.TargetQuantity + this.DifferenceQuantity == this.ConfirmedQuantity))
             {
-                throw DomainError.Named("constraintViolated", "Violated validation logic: {0}", "this.TargetQuantity + this.DifferenceQuantity == this.ConfirmedQuantity + this.ScrappedQuantity");
+                throw DomainError.Named("constraintViolated", "Violated validation logic: {0}", "this.TargetQuantity + this.DifferenceQuantity == this.ConfirmedQuantity");
+            }
+            if (!(this.ScrappedQuantity <= this.ConfirmedQuantity))
+            {
+                throw DomainError.Named("constraintViolated", "Violated validation logic: {0}", "this.ScrappedQuantity <= this.ConfirmedQuantity");
             }
 		}
 
@@ -377,7 +381,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             {
                 eventVersion = stateEvent.Version = stateVersion;
             }
-            if (stateVersion > eventVersion)//!=
+            if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
             }

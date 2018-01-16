@@ -37,5 +37,6 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
         bool IsUnsaved { get; }
 
 	}
+
 }
 

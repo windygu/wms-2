@@ -35,5 +35,6 @@ namespace Dddml.Wms.Domain.Audience
         bool IsUnsaved { get; }
 
 	}
+
 }
 

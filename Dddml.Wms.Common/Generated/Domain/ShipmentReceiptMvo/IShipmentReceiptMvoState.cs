@@ -33,5 +33,6 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
         bool IsUnsaved { get; }
 
 	}
+
 }
 

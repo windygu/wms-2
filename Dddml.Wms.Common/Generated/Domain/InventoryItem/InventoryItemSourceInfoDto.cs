@@ -25,6 +25,7 @@ namespace Dddml.Wms.Domain.InventoryItem
             v.DocumentTypeId = this.DocumentTypeId;
             v.DocumentNumber = this.DocumentNumber;
             v.LineNumber = this.LineNumber;
+            v.LineSeqId = this.LineSeqId;
             return v;
         }
 
@@ -39,6 +40,11 @@ namespace Dddml.Wms.Domain.InventoryItem
 		}
 
 		public virtual string LineNumber { 
+			get;
+			set;
+		}
+
+		public virtual int LineSeqId { 
 			get;
 			set;
 		}
@@ -59,6 +65,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 				&& Object.Equals (this.DocumentTypeId, other.DocumentTypeId)
 				&& Object.Equals (this.DocumentNumber, other.DocumentNumber)
 				&& Object.Equals (this.LineNumber, other.LineNumber)
+				&& Object.Equals (this.LineSeqId, other.LineSeqId)
 				;
 		}
 
@@ -73,6 +80,9 @@ namespace Dddml.Wms.Domain.InventoryItem
 			}
 			if (this.LineNumber != null) {
 				hash += 13 * this.LineNumber.GetHashCode ();
+			}
+			if (this.LineSeqId != null) {
+				hash += 13 * this.LineSeqId.GetHashCode ();
 			}
 			return hash;
 		}

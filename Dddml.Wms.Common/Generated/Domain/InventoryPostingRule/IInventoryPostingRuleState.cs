@@ -36,5 +36,6 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
         bool IsUnsaved { get; }
 
 	}
+
 }
 

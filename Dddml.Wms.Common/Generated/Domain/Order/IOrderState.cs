@@ -35,5 +35,6 @@ namespace Dddml.Wms.Domain.Order
         bool IsUnsaved { get; }
 
 	}
+
 }
 

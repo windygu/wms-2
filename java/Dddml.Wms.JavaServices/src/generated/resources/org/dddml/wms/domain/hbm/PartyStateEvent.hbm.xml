@@ -1,0 +1,82 @@
+﻿<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.party">
+  
+  <class name="AbstractPartyStateEvent" table="PartyStateEvents" mutable="false" abstract="true">
+
+	<composite-id name="stateEventId" class="org.dddml.wms.domain.party.PartyStateEventId">
+		<key-property name="partyId" ><column name="PartyId" length="50" /></key-property>
+		<key-property name="version" ></key-property>
+	</composite-id>
+
+    <discriminator column="StateEventType" type="string" />
+
+	<property name="partyTypeId" ><column name="PartyTypeId" sql-type="VARCHAR(20)" /></property>
+	<property name="active" ></property>
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+    <subclass name="AbstractPartyStateEvent$SimplePartyStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="AbstractPartyStateEvent$SimplePartyStateMergePatched" discriminator-value="MergePatched">
+
+        <property name="isPropertyPartyTypeIdRemoved" column="IsPropertyPartyTypeIdRemoved"/>
+
+        <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+
+
+    </subclass>
+
+    <subclass name="AbstractPartyStateEvent$SimplePartyStateDeleted" discriminator-value="Deleted">
+
+    </subclass>
+
+  <subclass name="AbstractOrganizationStateEvent" abstract="true">
+
+	<property name="organizationName" ></property>
+	<property name="description" ></property>
+	<property name="type" ></property>
+	<property name="isSummary" ></property>
+
+    <subclass name="AbstractOrganizationStateEvent$SimpleOrganizationStateCreated" discriminator-value="OrganizationCreated">
+    	
+    </subclass>
+
+    <subclass name="AbstractOrganizationStateEvent$SimpleOrganizationStateMergePatched" discriminator-value="OrganizationMergePatched">
+
+        <property name="isPropertyOrganizationNameRemoved" column="IsPropertyOrganizationNameRemoved"/>
+
+        <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
+
+        <property name="isPropertyTypeRemoved" column="IsPropertyTypeRemoved"/>
+
+        <property name="isPropertyIsSummaryRemoved" column="IsPropertyIsSummaryRemoved"/>
+
+        <property name="isPropertyPartyTypeIdRemoved" column="IsPropertyPartyTypeIdRemoved"/>
+
+        <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+
+
+    </subclass>
+
+    <subclass name="AbstractOrganizationStateEvent$SimpleOrganizationStateDeleted" discriminator-value="OrganizationDeleted">
+
+    </subclass>
+
+  </subclass>
+
+
+
+  </class>
+  
+</hibernate-mapping>

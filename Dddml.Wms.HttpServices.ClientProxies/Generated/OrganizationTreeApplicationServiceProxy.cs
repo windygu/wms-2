@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
-using Dddml.Wms.Domain.Organization;
+using Dddml.Wms.Domain.Party;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -58,13 +58,13 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 			var q = new OrganizationTreesGetQuery();
 			q.FirstResult = firstResult;
 			q.MaxResults = maxResults;
-            q.Sort = OrganizationProxyUtils.GetOrdersQueryValueString(orders);
-            q.Fields = OrganizationProxyUtils.GetReturnedFieldsQueryValueString(fields, QueryFieldValueSeparator);
-            q.Filter = OrganizationProxyUtils.GetFilterQueryValueString(filter);
+            q.Sort = PartyProxyUtils.GetOrdersQueryValueString(orders);
+            q.Fields = PartyProxyUtils.GetReturnedFieldsQueryValueString(fields, QueryFieldValueSeparator);
+            q.Filter = PartyProxyUtils.GetFilterQueryValueString(filter);
             var req = new OrganizationTreesGetRequest();
             req.Query = q;
             var resp = await _ramlClient.OrganizationTrees.Get(req);
-            OrganizationProxyUtils.ThrowOnHttpResponseError(resp);
+            PartyProxyUtils.ThrowOnHttpResponseError(resp);
             states = (resp.Content == null) ? null : resp.Content.Select(e => e.ToOrganizationState());
             return states;
         }
@@ -87,13 +87,13 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 			q.ParentId = parentIdObj;
 			q.FirstResult = firstResult;
 			q.MaxResults = maxResults;
-            q.Sort = OrganizationProxyUtils.GetOrdersQueryValueString(orders);
-            q.Fields = OrganizationProxyUtils.GetReturnedFieldsQueryValueString(fields, QueryFieldValueSeparator);
-            q.Filter = OrganizationProxyUtils.GetFilterQueryValueString(filter);
+            q.Sort = PartyProxyUtils.GetOrdersQueryValueString(orders);
+            q.Fields = PartyProxyUtils.GetReturnedFieldsQueryValueString(fields, QueryFieldValueSeparator);
+            q.Filter = PartyProxyUtils.GetFilterQueryValueString(filter);
             var req = new OrganizationTreesGetRequest();
             req.Query = q;
             var resp = await _ramlClient.OrganizationTrees.Get(req);
-            OrganizationProxyUtils.ThrowOnHttpResponseError(resp);
+            PartyProxyUtils.ThrowOnHttpResponseError(resp);
             states = (resp.Content == null) ? null : resp.Content.Select(e => e.ToOrganizationState());
             return states;
         }
@@ -114,13 +114,13 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 			var q = new OrganizationTreesGetQuery();
 			q.FirstResult = firstResult;
 			q.MaxResults = maxResults;
-            q.Sort = OrganizationProxyUtils.GetOrdersQueryValueString(orders);
-            q.Fields = OrganizationProxyUtils.GetReturnedFieldsQueryValueString(fields, QueryFieldValueSeparator);
-            q.FilterTag = OrganizationProxyUtils.GetFilterTagQueryValueString(filter);
+            q.Sort = PartyProxyUtils.GetOrdersQueryValueString(orders);
+            q.Fields = PartyProxyUtils.GetReturnedFieldsQueryValueString(fields, QueryFieldValueSeparator);
+            q.FilterTag = PartyProxyUtils.GetFilterTagQueryValueString(filter);
             var req = new OrganizationTreesGetRequest();
             req.Query = q;
             var resp = await _ramlClient.OrganizationTrees.Get(req);
-            OrganizationProxyUtils.ThrowOnHttpResponseError(resp);
+            PartyProxyUtils.ThrowOnHttpResponseError(resp);
             states = (resp.Content == null) ? null : resp.Content.Select(e => e.ToOrganizationState());
             return states;
         }
@@ -143,13 +143,13 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 			q.ParentId = parentIdObj;
 			q.FirstResult = firstResult;
 			q.MaxResults = maxResults;
-            q.Sort = OrganizationProxyUtils.GetOrdersQueryValueString(orders);
-            q.Fields = OrganizationProxyUtils.GetReturnedFieldsQueryValueString(fields, QueryFieldValueSeparator);
-            q.FilterTag = OrganizationProxyUtils.GetFilterTagQueryValueString(filter);
+            q.Sort = PartyProxyUtils.GetOrdersQueryValueString(orders);
+            q.Fields = PartyProxyUtils.GetReturnedFieldsQueryValueString(fields, QueryFieldValueSeparator);
+            q.FilterTag = PartyProxyUtils.GetFilterTagQueryValueString(filter);
             var req = new OrganizationTreesGetRequest();
             req.Query = q;
             var resp = await _ramlClient.OrganizationTrees.Get(req);
-            OrganizationProxyUtils.ThrowOnHttpResponseError(resp);
+            PartyProxyUtils.ThrowOnHttpResponseError(resp);
             states = (resp.Content == null) ? null : resp.Content.Select(e => e.ToOrganizationState());
             return states;
         }
@@ -170,15 +170,15 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 			var q = new OrganizationTreesGetQuery();
 			q.FirstResult = firstResult;
 			q.MaxResults = maxResults;
-            q.Sort = OrganizationProxyUtils.GetOrdersQueryValueString(orders);
-            q.Fields = OrganizationProxyUtils.GetReturnedFieldsQueryValueString(fields, QueryFieldValueSeparator);
-            q.Filter = OrganizationProxyUtils.GetFilterQueryValueString(filter);
+            q.Sort = PartyProxyUtils.GetOrdersQueryValueString(orders);
+            q.Fields = PartyProxyUtils.GetReturnedFieldsQueryValueString(fields, QueryFieldValueSeparator);
+            q.Filter = PartyProxyUtils.GetFilterQueryValueString(filter);
             var req = new OrganizationTreesGetRequest();
             req.Query = q;
             var resp = await _ramlClient.OrganizationTrees.Get(req);
-            OrganizationProxyUtils.ThrowOnHttpResponseError(resp);
+            PartyProxyUtils.ThrowOnHttpResponseError(resp);
             states = (resp.Content == null) ? null : resp.Content.Select(e => e.ToOrganizationState());
-            return OrganizationProxyUtils.ToIdCollection(states);
+            return PartyProxyUtils.ToIdCollection(states);
         }
 
         public IEnumerable<string> GetRootIds(ICriterion filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue, IList<string> fields = null)
@@ -199,15 +199,15 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 			q.ParentId = parentIdObj;
 			q.FirstResult = firstResult;
 			q.MaxResults = maxResults;
-            q.Sort = OrganizationProxyUtils.GetOrdersQueryValueString(orders);
-            q.Fields = OrganizationProxyUtils.GetReturnedFieldsQueryValueString(fields, QueryFieldValueSeparator);
-            q.Filter = OrganizationProxyUtils.GetFilterQueryValueString(filter);
+            q.Sort = PartyProxyUtils.GetOrdersQueryValueString(orders);
+            q.Fields = PartyProxyUtils.GetReturnedFieldsQueryValueString(fields, QueryFieldValueSeparator);
+            q.Filter = PartyProxyUtils.GetFilterQueryValueString(filter);
             var req = new OrganizationTreesGetRequest();
             req.Query = q;
             var resp = await _ramlClient.OrganizationTrees.Get(req);
-            OrganizationProxyUtils.ThrowOnHttpResponseError(resp);
+            PartyProxyUtils.ThrowOnHttpResponseError(resp);
             states = (resp.Content == null) ? null : resp.Content.Select(e => e.ToOrganizationState());
-            return OrganizationProxyUtils.ToIdCollection(states);
+            return PartyProxyUtils.ToIdCollection(states);
         }
 
         public IEnumerable<string> GetChildIds(string parentId, ICriterion filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue, IList<string> fields = null)
@@ -226,15 +226,15 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 			var q = new OrganizationTreesGetQuery();
 			q.FirstResult = firstResult;
 			q.MaxResults = maxResults;
-            q.Sort = OrganizationProxyUtils.GetOrdersQueryValueString(orders);
-            q.Fields = OrganizationProxyUtils.GetReturnedFieldsQueryValueString(fields, QueryFieldValueSeparator);
-            q.FilterTag = OrganizationProxyUtils.GetFilterTagQueryValueString(filter);
+            q.Sort = PartyProxyUtils.GetOrdersQueryValueString(orders);
+            q.Fields = PartyProxyUtils.GetReturnedFieldsQueryValueString(fields, QueryFieldValueSeparator);
+            q.FilterTag = PartyProxyUtils.GetFilterTagQueryValueString(filter);
             var req = new OrganizationTreesGetRequest();
             req.Query = q;
             var resp = await _ramlClient.OrganizationTrees.Get(req);
-            OrganizationProxyUtils.ThrowOnHttpResponseError(resp);
+            PartyProxyUtils.ThrowOnHttpResponseError(resp);
             states = (resp.Content == null) ? null : resp.Content.Select(e => e.ToOrganizationState());
-            return OrganizationProxyUtils.ToIdCollection(states);
+            return PartyProxyUtils.ToIdCollection(states);
         }
 
         public IEnumerable<string> GetRootIds(IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue, IList<string> fields = null)
@@ -255,15 +255,15 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 			q.ParentId = parentIdObj;
 			q.FirstResult = firstResult;
 			q.MaxResults = maxResults;
-            q.Sort = OrganizationProxyUtils.GetOrdersQueryValueString(orders);
-            q.Fields = OrganizationProxyUtils.GetReturnedFieldsQueryValueString(fields, QueryFieldValueSeparator);
-            q.FilterTag = OrganizationProxyUtils.GetFilterTagQueryValueString(filter);
+            q.Sort = PartyProxyUtils.GetOrdersQueryValueString(orders);
+            q.Fields = PartyProxyUtils.GetReturnedFieldsQueryValueString(fields, QueryFieldValueSeparator);
+            q.FilterTag = PartyProxyUtils.GetFilterTagQueryValueString(filter);
             var req = new OrganizationTreesGetRequest();
             req.Query = q;
             var resp = await _ramlClient.OrganizationTrees.Get(req);
-            OrganizationProxyUtils.ThrowOnHttpResponseError(resp);
+            PartyProxyUtils.ThrowOnHttpResponseError(resp);
             states = (resp.Content == null) ? null : resp.Content.Select(e => e.ToOrganizationState());
-            return OrganizationProxyUtils.ToIdCollection(states);
+            return PartyProxyUtils.ToIdCollection(states);
         }
 
         public IEnumerable<string> GetChildIds(string parentId, IEnumerable<KeyValuePair<string, object>> filter, IList<string> orders = null, int firstResult = 0, int maxResults = int.MaxValue, IList<string> fields = null)

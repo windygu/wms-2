@@ -87,6 +87,8 @@
       unique (AttributeAliasIdCode),
       unique (Name)
     );
+    alter table InventoryItemEntries 
+        add column SourceLineSeqId INTEGER;
     create table InOutLine_RV (
         InOutLineIdInOutDocumentNumber VARCHAR(50) not null,
        InOutLineIdLineNumber VARCHAR(50) not null,
@@ -100,8 +102,8 @@
        PickedQuantity NUMERIC(19,5),
        IsInvoiced TINYINT(1),
        Processed TINYINT(1),
-       RmaLineNumber BIGINT,
-       ReversalLineNumber BIGINT,
+       RmaLineNumber VARCHAR(255),
+       ReversalLineNumber VARCHAR(255),
        Version BIGINT,
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
@@ -160,6 +162,7 @@
        SourceDocumentTypeId VARCHAR(255) not null,
        SourceDocumentNumber VARCHAR(255) not null,
        SourceLineNumber VARCHAR(255),
+       SourceLineSeqId INTEGER,
        Version BIGINT,
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
@@ -175,8 +178,10 @@
        CreatedAt DATETIME,
        UpdatedAt DATETIME,
        primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId),
-      unique (SourceDocumentTypeId, SourceDocumentNumber, SourceLineNumber)
+      unique (SourceDocumentTypeId, SourceDocumentNumber, SourceLineNumber, SourceLineSeqId)
     );
+    alter table InventoryItemEntryMvoStateEvents 
+        add column SourceLineSeqId INTEGER;
     create table InventoryItemRequirementEntry_RV (
         ProductId VARCHAR(255) not null,
        LocatorId VARCHAR(255) not null,

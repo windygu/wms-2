@@ -320,7 +320,7 @@ namespace Dddml.Wms.Domain.Shipment
             {
                 eventVersion = stateEvent.Version = stateVersion;
             }
-            if (stateVersion > eventVersion)//!=
+            if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());
             }
