@@ -331,10 +331,11 @@ namespace Dddml.Wms.Domain.Movement.NHibernate
         private ICreateMovementConfirmation CreateMovementConfirmation(IMovementState movement)
         {
             var movConfirm = new CreateMovementConfirmation();
-            //movConfirm.CreatedBy = movConfirm.UpdatedBy = Context.User;
-            //movConfirm.CreationTime = movConfirm.UpdateTime = now;
             movConfirm.MovementDocumentNumber = movement.DocumentNumber;
             movConfirm.DocumentNumber = "MC" + movement.DocumentNumber;//SeqIdGenerator.GetNextId(); 
+            movConfirm.DocumentTypeId = DocumentTypeIds.MovementConfirmation;
+            //movConfirm.CreatedBy = movConfirm.UpdatedBy = Context.User;
+            //movConfirm.CreationTime = movConfirm.UpdateTime = now;
 
             AddMovementConfirmationLines(movement, movConfirm);
 
