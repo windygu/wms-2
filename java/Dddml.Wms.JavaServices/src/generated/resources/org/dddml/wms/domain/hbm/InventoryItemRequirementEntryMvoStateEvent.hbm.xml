@@ -9,9 +9,9 @@
   <class name="AbstractInventoryItemRequirementEntryMvoStateEvent" table="InventoryItemRequirementEntryMvoStateEvents" mutable="false" abstract="true">
 
 	<composite-id name="stateEventId" class="org.dddml.wms.domain.inventoryitemrequiremententrymvo.InventoryItemRequirementEntryMvoStateEventId">
-		<key-property name="inventoryItemRequirementEntryIdInventoryItemRequirementIdProductId" ><column name="ProductId" /></key-property>
-		<key-property name="inventoryItemRequirementEntryIdInventoryItemRequirementIdLocatorId" ><column name="LocatorId" /></key-property>
-		<key-property name="inventoryItemRequirementEntryIdInventoryItemRequirementIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" /></key-property>
+		<key-property name="inventoryItemRequirementEntryIdInventoryItemRequirementIdProductId" ><column name="ProductId" length="50" /></key-property>
+		<key-property name="inventoryItemRequirementEntryIdInventoryItemRequirementIdLocatorId" ><column name="LocatorId" length="50" /></key-property>
+		<key-property name="inventoryItemRequirementEntryIdInventoryItemRequirementIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" length="50" /></key-property>
 		<key-property name="inventoryItemRequirementEntryIdEntrySeqId" ><column name="EntrySeqId" /></key-property>
 		<key-property name="inventoryItemRequirementVersion" ></key-property>
 	</composite-id>
@@ -20,11 +20,11 @@
 
 	<property name="quantity" ></property>
 	<component name="sourceEventId" class="org.dddml.wms.domain.inventoryprtriggered.InventoryPRTriggeredId">
-		<property name="sourceEntryIdInventoryItemIdProductId" ><column name="SrcEventProductId" /></property>
-		<property name="sourceEntryIdInventoryItemIdLocatorId" ><column name="SrcEventLocatorId" /></property>
-		<property name="sourceEntryIdInventoryItemIdAttributeSetInstanceId" ><column name="SrcEventAttributeSetInstanceId" /></property>
+		<property name="sourceEntryIdInventoryItemIdProductId" ><column name="SrcEventProductId" length="50" /></property>
+		<property name="sourceEntryIdInventoryItemIdLocatorId" ><column name="SrcEventLocatorId" length="50" /></property>
+		<property name="sourceEntryIdInventoryItemIdAttributeSetInstanceId" ><column name="SrcEventAttributeSetInstanceId" length="50" /></property>
 		<property name="sourceEntryIdEntrySeqId" ><column name="SrcEventEntrySeqId" /></property>
-		<property name="inventoryPostingRuleId" ><column name="SrcEventInventoryPostingRuleId" /></property>
+		<property name="inventoryPostingRuleId" ><column name="SrcEventInventoryPostingRuleId" length="50" /></property>
 	</component>
 	<property name="version" ></property>
 	<property name="inventoryItemRequirementQuantity" ></property>

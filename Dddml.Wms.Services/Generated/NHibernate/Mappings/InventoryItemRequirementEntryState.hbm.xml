@@ -7,9 +7,9 @@
 
     <cache usage="read-only"/>
     <composite-id name="InventoryItemRequirementEntryId" class="Dddml.Wms.Domain.InventoryItemRequirement.InventoryItemRequirementEntryId">
-        <key-property name="InventoryItemRequirementIdProductId" ><column name="ProductId" /></key-property>
-        <key-property name="InventoryItemRequirementIdLocatorId" ><column name="LocatorId" /></key-property>
-        <key-property name="InventoryItemRequirementIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" /></key-property>
+        <key-property name="InventoryItemRequirementIdProductId" ><column name="ProductId" length="50" /></key-property>
+        <key-property name="InventoryItemRequirementIdLocatorId" ><column name="LocatorId" length="50" /></key-property>
+        <key-property name="InventoryItemRequirementIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" length="50" /></key-property>
         <key-property name="EntrySeqId" ></key-property>
     </composite-id>
 
@@ -17,11 +17,11 @@
 
     <property name="Quantity" ></property>
     <component name="SourceEventId" class="Dddml.Wms.Domain.InventoryPRTriggered.InventoryPRTriggeredId" unique="true">
-        <property name="SourceEntryIdInventoryItemIdProductId" ><column name="SrcEventProductId" /></property>
-        <property name="SourceEntryIdInventoryItemIdLocatorId" ><column name="SrcEventLocatorId" /></property>
-        <property name="SourceEntryIdInventoryItemIdAttributeSetInstanceId" ><column name="SrcEventAttributeSetInstanceId" /></property>
+        <property name="SourceEntryIdInventoryItemIdProductId" ><column name="SrcEventProductId" length="50" /></property>
+        <property name="SourceEntryIdInventoryItemIdLocatorId" ><column name="SrcEventLocatorId" length="50" /></property>
+        <property name="SourceEntryIdInventoryItemIdAttributeSetInstanceId" ><column name="SrcEventAttributeSetInstanceId" length="50" /></property>
         <property name="SourceEntryIdEntrySeqId" ><column name="SrcEventEntrySeqId" /></property>
-        <property name="InventoryPostingRuleId" ><column name="SrcEventInventoryPostingRuleId" /></property>
+        <property name="InventoryPostingRuleId" ><column name="SrcEventInventoryPostingRuleId" length="50" /></property>
     </component>
     <property name="CreatedBy" ></property>
     <property name="UpdatedBy" ></property>

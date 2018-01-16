@@ -1076,9 +1076,9 @@
     );
 
     create table InventoryItems (
-        ProductId VARCHAR(255) not null,
-       LocatorId VARCHAR(255) not null,
-       AttributeSetInstanceId VARCHAR(255) not null,
+        ProductId VARCHAR(50) not null,
+       LocatorId VARCHAR(50) not null,
+       AttributeSetInstanceId VARCHAR(50) not null,
        Version BIGINT not null,
        OnHandQuantity NUMERIC(19,5),
        InTransitQuantity NUMERIC(19,5),
@@ -1093,9 +1093,9 @@
     );
 
     create table InventoryItemStateEvents (
-        ProductId VARCHAR(255) not null,
-       LocatorId VARCHAR(255) not null,
-       AttributeSetInstanceId VARCHAR(255) not null,
+        ProductId VARCHAR(50) not null,
+       LocatorId VARCHAR(50) not null,
+       AttributeSetInstanceId VARCHAR(50) not null,
        Version BIGINT not null,
        StateEventType VARCHAR(255) not null,
        OnHandQuantity NUMERIC(19,5),
@@ -1115,9 +1115,9 @@
     );
 
     create table InventoryItemEntries (
-        ProductId VARCHAR(255) not null,
-       LocatorId VARCHAR(255) not null,
-       AttributeSetInstanceId VARCHAR(255) not null,
+        ProductId VARCHAR(50) not null,
+       LocatorId VARCHAR(50) not null,
+       AttributeSetInstanceId VARCHAR(50) not null,
        EntrySeqId BIGINT not null,
        Version BIGINT not null,
        OnHandQuantity NUMERIC(19,5),
@@ -1142,12 +1142,12 @@
     create table InventoryPostingRules (
         InventoryPostingRuleId VARCHAR(50) not null,
        Version BIGINT not null,
-       TriggerProductId VARCHAR(255),
-       TriggerLocatorId VARCHAR(255),
-       TriggerAttributeSetInstanceId VARCHAR(255),
-       OutputProductId VARCHAR(255),
-       OutputLocatorId VARCHAR(255),
-       OutputAttributeSetInstanceId VARCHAR(255),
+       TriggerProductId VARCHAR(50),
+       TriggerLocatorId VARCHAR(50),
+       TriggerAttributeSetInstanceId VARCHAR(50),
+       OutputProductId VARCHAR(50),
+       OutputLocatorId VARCHAR(50),
+       OutputAttributeSetInstanceId VARCHAR(50),
        TriggerAccountName VARCHAR(255),
        OutputAccountName VARCHAR(255),
        IsOutputNegated TINYINT(1),
@@ -1164,12 +1164,12 @@
         InventoryPostingRuleId VARCHAR(50) not null,
        Version BIGINT not null,
        StateEventType VARCHAR(255) not null,
-       TriggerProductId VARCHAR(255),
-       TriggerLocatorId VARCHAR(255),
-       TriggerAttributeSetInstanceId VARCHAR(255),
-       OutputProductId VARCHAR(255),
-       OutputLocatorId VARCHAR(255),
-       OutputAttributeSetInstanceId VARCHAR(255),
+       TriggerProductId VARCHAR(50),
+       TriggerLocatorId VARCHAR(50),
+       TriggerAttributeSetInstanceId VARCHAR(50),
+       OutputProductId VARCHAR(50),
+       OutputLocatorId VARCHAR(50),
+       OutputAttributeSetInstanceId VARCHAR(50),
        TriggerAccountName VARCHAR(255),
        OutputAccountName VARCHAR(255),
        IsOutputNegated TINYINT(1),
@@ -1187,9 +1187,9 @@
     );
 
     create table InventoryItemRequirements (
-        ProductId VARCHAR(255) not null,
-       LocatorId VARCHAR(255) not null,
-       AttributeSetInstanceId VARCHAR(255) not null,
+        ProductId VARCHAR(50) not null,
+       LocatorId VARCHAR(50) not null,
+       AttributeSetInstanceId VARCHAR(50) not null,
        Version BIGINT not null,
        Quantity NUMERIC(19,5),
        CreatedBy VARCHAR(255),
@@ -1201,17 +1201,17 @@
     );
 
     create table InventoryItemRequirementEntries (
-        ProductId VARCHAR(255) not null,
-       LocatorId VARCHAR(255) not null,
-       AttributeSetInstanceId VARCHAR(255) not null,
+        ProductId VARCHAR(50) not null,
+       LocatorId VARCHAR(50) not null,
+       AttributeSetInstanceId VARCHAR(50) not null,
        EntrySeqId BIGINT not null,
        Version BIGINT not null,
        Quantity NUMERIC(19,5),
-       SrcEventProductId VARCHAR(255),
-       SrcEventLocatorId VARCHAR(255),
-       SrcEventAttributeSetInstanceId VARCHAR(255),
+       SrcEventProductId VARCHAR(50),
+       SrcEventLocatorId VARCHAR(50),
+       SrcEventAttributeSetInstanceId VARCHAR(50),
        SrcEventEntrySeqId BIGINT,
-       SrcEventInventoryPostingRuleId VARCHAR(255),
+       SrcEventInventoryPostingRuleId VARCHAR(50),
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
        Deleted TINYINT(1),
@@ -1223,11 +1223,11 @@
     );
 
     create table InventoryPRTriggereds (
-        ProductId VARCHAR(255) not null,
-       LocatorId VARCHAR(255) not null,
-       AttributeSetInstanceId VARCHAR(255) not null,
+        ProductId VARCHAR(50) not null,
+       LocatorId VARCHAR(50) not null,
+       AttributeSetInstanceId VARCHAR(50) not null,
        EntrySeqId BIGINT not null,
-       InventoryPostingRuleId VARCHAR(255) not null,
+       InventoryPostingRuleId VARCHAR(50) not null,
        Version BIGINT not null,
        IsProcessed TINYINT(1) not null,
        CreatedBy VARCHAR(255),
@@ -1854,9 +1854,9 @@
     );
 
     create table SellableInventoryItems (
-        ProductId VARCHAR(255) not null,
-       LocatorId VARCHAR(255) not null,
-       AttributeSetInstanceId VARCHAR(255) not null,
+        ProductId VARCHAR(50) not null,
+       LocatorId VARCHAR(50) not null,
+       AttributeSetInstanceId VARCHAR(50) not null,
        Version BIGINT not null,
        SellableQuantity NUMERIC(19,5),
        CreatedBy VARCHAR(255),
@@ -1868,17 +1868,17 @@
     );
 
     create table SellableInventoryItemEntries (
-        ProductId VARCHAR(255) not null,
-       LocatorId VARCHAR(255) not null,
-       AttributeSetInstanceId VARCHAR(255) not null,
+        ProductId VARCHAR(50) not null,
+       LocatorId VARCHAR(50) not null,
+       AttributeSetInstanceId VARCHAR(50) not null,
        EntrySeqId BIGINT not null,
        Version BIGINT not null,
        SellableQuantity NUMERIC(19,5),
-       SrcEventProductId VARCHAR(255),
-       SrcEventLocatorId VARCHAR(255),
-       SrcEventAttributeSetInstanceId VARCHAR(255),
+       SrcEventProductId VARCHAR(50),
+       SrcEventLocatorId VARCHAR(50),
+       SrcEventAttributeSetInstanceId VARCHAR(50),
        SrcEventEntrySeqId BIGINT,
-       SrcEventInventoryPostingRuleId VARCHAR(255),
+       SrcEventInventoryPostingRuleId VARCHAR(50),
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
        Deleted TINYINT(1),
@@ -2379,9 +2379,9 @@
     );
 
     create table InventoryItemEntry_RV (
-        ProductId VARCHAR(255) not null,
-       LocatorId VARCHAR(255) not null,
-       AttributeSetInstanceId VARCHAR(255) not null,
+        ProductId VARCHAR(50) not null,
+       LocatorId VARCHAR(50) not null,
+       AttributeSetInstanceId VARCHAR(50) not null,
        EntrySeqId BIGINT not null,
        InventoryItemVersion BIGINT not null,
        OnHandQuantity NUMERIC(19,5),
@@ -2412,9 +2412,9 @@
     );
 
     create table InventoryItemEntryMvoStateEvents (
-        ProductId VARCHAR(255) not null,
-       LocatorId VARCHAR(255) not null,
-       AttributeSetInstanceId VARCHAR(255) not null,
+        ProductId VARCHAR(50) not null,
+       LocatorId VARCHAR(50) not null,
+       AttributeSetInstanceId VARCHAR(50) not null,
        EntrySeqId BIGINT not null,
        InventoryItemVersion BIGINT not null,
        StateEventType VARCHAR(255) not null,
@@ -2460,17 +2460,17 @@
     );
 
     create table InventoryItemRequirementEntry_RV (
-        ProductId VARCHAR(255) not null,
-       LocatorId VARCHAR(255) not null,
-       AttributeSetInstanceId VARCHAR(255) not null,
+        ProductId VARCHAR(50) not null,
+       LocatorId VARCHAR(50) not null,
+       AttributeSetInstanceId VARCHAR(50) not null,
        EntrySeqId BIGINT not null,
        InventoryItemRequirementVersion BIGINT not null,
        Quantity NUMERIC(19,5),
-       SrcEventProductId VARCHAR(255),
-       SrcEventLocatorId VARCHAR(255),
-       SrcEventAttributeSetInstanceId VARCHAR(255),
+       SrcEventProductId VARCHAR(50),
+       SrcEventLocatorId VARCHAR(50),
+       SrcEventAttributeSetInstanceId VARCHAR(50),
        SrcEventEntrySeqId BIGINT,
-       SrcEventInventoryPostingRuleId VARCHAR(255),
+       SrcEventInventoryPostingRuleId VARCHAR(50),
        Version BIGINT,
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
@@ -2486,18 +2486,18 @@
     );
 
     create table InventoryItemRequirementEntryMvoStateEvents (
-        ProductId VARCHAR(255) not null,
-       LocatorId VARCHAR(255) not null,
-       AttributeSetInstanceId VARCHAR(255) not null,
+        ProductId VARCHAR(50) not null,
+       LocatorId VARCHAR(50) not null,
+       AttributeSetInstanceId VARCHAR(50) not null,
        EntrySeqId BIGINT not null,
        InventoryItemRequirementVersion BIGINT not null,
        StateEventType VARCHAR(255) not null,
        Quantity NUMERIC(19,5),
-       SrcEventProductId VARCHAR(255),
-       SrcEventLocatorId VARCHAR(255),
-       SrcEventAttributeSetInstanceId VARCHAR(255),
+       SrcEventProductId VARCHAR(50),
+       SrcEventLocatorId VARCHAR(50),
+       SrcEventAttributeSetInstanceId VARCHAR(50),
        SrcEventEntrySeqId BIGINT,
-       SrcEventInventoryPostingRuleId VARCHAR(255),
+       SrcEventInventoryPostingRuleId VARCHAR(50),
        Version BIGINT,
        InventoryItemRequirementQuantity NUMERIC(19,5),
        InventoryItemRequirementCreatedBy VARCHAR(255),
@@ -2739,17 +2739,17 @@
     );
 
     create table SellableInventoryItemEntry_RV (
-        ProductId VARCHAR(255) not null,
-       LocatorId VARCHAR(255) not null,
-       AttributeSetInstanceId VARCHAR(255) not null,
+        ProductId VARCHAR(50) not null,
+       LocatorId VARCHAR(50) not null,
+       AttributeSetInstanceId VARCHAR(50) not null,
        EntrySeqId BIGINT not null,
        SellableInventoryItemVersion BIGINT not null,
        SellableQuantity NUMERIC(19,5),
-       SrcEventProductId VARCHAR(255),
-       SrcEventLocatorId VARCHAR(255),
-       SrcEventAttributeSetInstanceId VARCHAR(255),
+       SrcEventProductId VARCHAR(50),
+       SrcEventLocatorId VARCHAR(50),
+       SrcEventAttributeSetInstanceId VARCHAR(50),
        SrcEventEntrySeqId BIGINT,
-       SrcEventInventoryPostingRuleId VARCHAR(255),
+       SrcEventInventoryPostingRuleId VARCHAR(50),
        Version BIGINT,
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
@@ -2765,18 +2765,18 @@
     );
 
     create table SellableInventoryItemEntryMvoStateEvents (
-        ProductId VARCHAR(255) not null,
-       LocatorId VARCHAR(255) not null,
-       AttributeSetInstanceId VARCHAR(255) not null,
+        ProductId VARCHAR(50) not null,
+       LocatorId VARCHAR(50) not null,
+       AttributeSetInstanceId VARCHAR(50) not null,
        EntrySeqId BIGINT not null,
        SellableInventoryItemVersion BIGINT not null,
        StateEventType VARCHAR(255) not null,
        SellableQuantity NUMERIC(19,5),
-       SrcEventProductId VARCHAR(255),
-       SrcEventLocatorId VARCHAR(255),
-       SrcEventAttributeSetInstanceId VARCHAR(255),
+       SrcEventProductId VARCHAR(50),
+       SrcEventLocatorId VARCHAR(50),
+       SrcEventAttributeSetInstanceId VARCHAR(50),
        SrcEventEntrySeqId BIGINT,
-       SrcEventInventoryPostingRuleId VARCHAR(255),
+       SrcEventInventoryPostingRuleId VARCHAR(50),
        Version BIGINT,
        SellableInventoryItemSellableQuantity NUMERIC(19,5),
        SellableInventoryItemCreatedBy VARCHAR(255),

@@ -87,8 +87,6 @@
       unique (AttributeAliasIdCode),
       unique (Name)
     );
-    alter table InventoryItemEntries 
-        add column SourceLineSeqId INTEGER;
     create table InOutLine_RV (
         InOutLineIdInOutDocumentNumber VARCHAR(50) not null,
        InOutLineIdLineNumber VARCHAR(50) not null,
@@ -149,9 +147,9 @@
        primary key (InOutLineIdInOutDocumentNumber, InOutLineIdLineNumber)
     );
     create table InventoryItemEntry_RV (
-        ProductId VARCHAR(255) not null,
-       LocatorId VARCHAR(255) not null,
-       AttributeSetInstanceId VARCHAR(255) not null,
+        ProductId VARCHAR(50) not null,
+       LocatorId VARCHAR(50) not null,
+       AttributeSetInstanceId VARCHAR(50) not null,
        EntrySeqId BIGINT not null,
        InventoryItemVersion BIGINT not null,
        OnHandQuantity NUMERIC(19,5),
@@ -180,20 +178,18 @@
        primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId),
       unique (SourceDocumentTypeId, SourceDocumentNumber, SourceLineNumber, SourceLineSeqId)
     );
-    alter table InventoryItemEntryMvoStateEvents 
-        add column SourceLineSeqId INTEGER;
     create table InventoryItemRequirementEntry_RV (
-        ProductId VARCHAR(255) not null,
-       LocatorId VARCHAR(255) not null,
-       AttributeSetInstanceId VARCHAR(255) not null,
+        ProductId VARCHAR(50) not null,
+       LocatorId VARCHAR(50) not null,
+       AttributeSetInstanceId VARCHAR(50) not null,
        EntrySeqId BIGINT not null,
        InventoryItemRequirementVersion BIGINT not null,
        Quantity NUMERIC(19,5),
-       SrcEventProductId VARCHAR(255),
-       SrcEventLocatorId VARCHAR(255),
-       SrcEventAttributeSetInstanceId VARCHAR(255),
+       SrcEventProductId VARCHAR(50),
+       SrcEventLocatorId VARCHAR(50),
+       SrcEventAttributeSetInstanceId VARCHAR(50),
        SrcEventEntrySeqId BIGINT,
-       SrcEventInventoryPostingRuleId VARCHAR(255),
+       SrcEventInventoryPostingRuleId VARCHAR(50),
        Version BIGINT,
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
@@ -284,17 +280,17 @@
        primary key (OrderItemIdOrderId, OrderItemIdOrderItemSeqId)
     );
     create table SellableInventoryItemEntry_RV (
-        ProductId VARCHAR(255) not null,
-       LocatorId VARCHAR(255) not null,
-       AttributeSetInstanceId VARCHAR(255) not null,
+        ProductId VARCHAR(50) not null,
+       LocatorId VARCHAR(50) not null,
+       AttributeSetInstanceId VARCHAR(50) not null,
        EntrySeqId BIGINT not null,
        SellableInventoryItemVersion BIGINT not null,
        SellableQuantity NUMERIC(19,5),
-       SrcEventProductId VARCHAR(255),
-       SrcEventLocatorId VARCHAR(255),
-       SrcEventAttributeSetInstanceId VARCHAR(255),
+       SrcEventProductId VARCHAR(50),
+       SrcEventLocatorId VARCHAR(50),
+       SrcEventAttributeSetInstanceId VARCHAR(50),
        SrcEventEntrySeqId BIGINT,
-       SrcEventInventoryPostingRuleId VARCHAR(255),
+       SrcEventInventoryPostingRuleId VARCHAR(50),
        Version BIGINT,
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),

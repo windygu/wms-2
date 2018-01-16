@@ -12,14 +12,14 @@
     <discriminator column="StateEventType" type="String" />
 
     <component name="TriggerInventoryItemId" class="Dddml.Wms.Domain.InventoryItem.InventoryItemId">
-        <property name="ProductId" ><column name="TriggerProductId" /></property>
-        <property name="LocatorId" ><column name="TriggerLocatorId" /></property>
-        <property name="AttributeSetInstanceId" ><column name="TriggerAttributeSetInstanceId" /></property>
+        <property name="ProductId" ><column name="TriggerProductId" length="50" /></property>
+        <property name="LocatorId" ><column name="TriggerLocatorId" length="50" /></property>
+        <property name="AttributeSetInstanceId" ><column name="TriggerAttributeSetInstanceId" length="50" /></property>
     </component>
     <component name="OutputInventoryItemId" class="Dddml.Wms.Domain.InventoryItem.InventoryItemId">
-        <property name="ProductId" ><column name="OutputProductId" /></property>
-        <property name="LocatorId" ><column name="OutputLocatorId" /></property>
-        <property name="AttributeSetInstanceId" ><column name="OutputAttributeSetInstanceId" /></property>
+        <property name="ProductId" ><column name="OutputProductId" length="50" /></property>
+        <property name="LocatorId" ><column name="OutputLocatorId" length="50" /></property>
+        <property name="AttributeSetInstanceId" ><column name="OutputAttributeSetInstanceId" length="50" /></property>
     </component>
     <property name="TriggerAccountName" ></property>
     <property name="OutputAccountName" ></property>

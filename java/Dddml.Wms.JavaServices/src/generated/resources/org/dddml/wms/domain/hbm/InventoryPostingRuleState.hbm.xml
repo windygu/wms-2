@@ -12,14 +12,14 @@
 	<version name="version" column="Version" type="long" />
 
 	<component name="triggerInventoryItemId" class="org.dddml.wms.domain.inventoryitem.InventoryItemId">
-		<property name="productId" ><column name="TriggerProductId" /></property>
-		<property name="locatorId" ><column name="TriggerLocatorId" /></property>
-		<property name="attributeSetInstanceId" ><column name="TriggerAttributeSetInstanceId" /></property>
+		<property name="productId" ><column name="TriggerProductId" length="50" /></property>
+		<property name="locatorId" ><column name="TriggerLocatorId" length="50" /></property>
+		<property name="attributeSetInstanceId" ><column name="TriggerAttributeSetInstanceId" length="50" /></property>
 	</component>
 	<component name="outputInventoryItemId" class="org.dddml.wms.domain.inventoryitem.InventoryItemId">
-		<property name="productId" ><column name="OutputProductId" /></property>
-		<property name="locatorId" ><column name="OutputLocatorId" /></property>
-		<property name="attributeSetInstanceId" ><column name="OutputAttributeSetInstanceId" /></property>
+		<property name="productId" ><column name="OutputProductId" length="50" /></property>
+		<property name="locatorId" ><column name="OutputLocatorId" length="50" /></property>
+		<property name="attributeSetInstanceId" ><column name="OutputAttributeSetInstanceId" length="50" /></property>
 	</component>
 	<property name="triggerAccountName" ></property>
 	<property name="outputAccountName" ></property>

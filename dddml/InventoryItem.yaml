@@ -99,12 +99,15 @@ aggregates:
             ProductId:
               type: string
               columnName: ProductId
+              length: 50
             LocatorId: 
               type: string
               columnName: LocatorId
+              length: 50
             AttributeSetInstanceId:
               type: string
               columnName: AttributeSetInstanceId
+              length: 50
         
         # -----------------------------------
         InventoryItemSourceInfo:

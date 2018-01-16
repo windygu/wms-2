@@ -6,9 +6,9 @@
   <class name="InventoryItemEntryMvoStateEventBase" table="InventoryItemEntryMvoStateEvents" mutable="false" abstract="true">
 
     <composite-id name="StateEventId" class="Dddml.Wms.Domain.InventoryItemEntryMvo.InventoryItemEntryMvoStateEventId">
-        <key-property name="InventoryItemEntryIdInventoryItemIdProductId" ><column name="ProductId" /></key-property>
-        <key-property name="InventoryItemEntryIdInventoryItemIdLocatorId" ><column name="LocatorId" /></key-property>
-        <key-property name="InventoryItemEntryIdInventoryItemIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" /></key-property>
+        <key-property name="InventoryItemEntryIdInventoryItemIdProductId" ><column name="ProductId" length="50" /></key-property>
+        <key-property name="InventoryItemEntryIdInventoryItemIdLocatorId" ><column name="LocatorId" length="50" /></key-property>
+        <key-property name="InventoryItemEntryIdInventoryItemIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" length="50" /></key-property>
         <key-property name="InventoryItemEntryIdEntrySeqId" ><column name="EntrySeqId" /></key-property>
         <key-property name="InventoryItemVersion" ></key-property>
     </composite-id>

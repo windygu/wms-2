@@ -9,9 +9,9 @@
   <class name="org.dddml.wms.domain.inventoryitementrymvo.AbstractInventoryItemEntryMvoState$SimpleInventoryItemEntryMvoState" table="InventoryItemEntry_RV">
 
 	<composite-id name="inventoryItemEntryId" class="org.dddml.wms.domain.inventoryitem.InventoryItemEntryId">
-		<key-property name="inventoryItemIdProductId" ><column name="ProductId" /></key-property>
-		<key-property name="inventoryItemIdLocatorId" ><column name="LocatorId" /></key-property>
-		<key-property name="inventoryItemIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" /></key-property>
+		<key-property name="inventoryItemIdProductId" ><column name="ProductId" length="50" /></key-property>
+		<key-property name="inventoryItemIdLocatorId" ><column name="LocatorId" length="50" /></key-property>
+		<key-property name="inventoryItemIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" length="50" /></key-property>
 		<key-property name="entrySeqId" ></key-property>
 	</composite-id>
 	<version name="inventoryItemVersion" column="InventoryItemVersion" type="long" />

@@ -6,9 +6,9 @@
   <class name="Dddml.Wms.Domain.InventoryItemEntryMvo.InventoryItemEntryMvoState" table="InventoryItemEntry_RV">
 
     <composite-id name="InventoryItemEntryId" class="Dddml.Wms.Domain.InventoryItem.InventoryItemEntryId">
-        <key-property name="InventoryItemIdProductId" ><column name="ProductId" /></key-property>
-        <key-property name="InventoryItemIdLocatorId" ><column name="LocatorId" /></key-property>
-        <key-property name="InventoryItemIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" /></key-property>
+        <key-property name="InventoryItemIdProductId" ><column name="ProductId" length="50" /></key-property>
+        <key-property name="InventoryItemIdLocatorId" ><column name="LocatorId" length="50" /></key-property>
+        <key-property name="InventoryItemIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" length="50" /></key-property>
         <key-property name="EntrySeqId" ></key-property>
     </composite-id>
 

@@ -6,9 +6,9 @@
   <class name="Dddml.Wms.Domain.SellableInventoryItemEntryMvo.SellableInventoryItemEntryMvoState" table="SellableInventoryItemEntry_RV">
 
     <composite-id name="SellableInventoryItemEntryId" class="Dddml.Wms.Domain.SellableInventoryItem.SellableInventoryItemEntryId">
-        <key-property name="SellableInventoryItemIdProductId" ><column name="ProductId" /></key-property>
-        <key-property name="SellableInventoryItemIdLocatorId" ><column name="LocatorId" /></key-property>
-        <key-property name="SellableInventoryItemIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" /></key-property>
+        <key-property name="SellableInventoryItemIdProductId" ><column name="ProductId" length="50" /></key-property>
+        <key-property name="SellableInventoryItemIdLocatorId" ><column name="LocatorId" length="50" /></key-property>
+        <key-property name="SellableInventoryItemIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" length="50" /></key-property>
         <key-property name="EntrySeqId" ></key-property>
     </composite-id>
 
@@ -16,11 +16,11 @@
 
     <property name="SellableQuantity" ></property>
     <component name="SourceEventId" class="Dddml.Wms.Domain.InventoryPRTriggered.InventoryPRTriggeredId" unique="true">
-        <property name="SourceEntryIdInventoryItemIdProductId" ><column name="SrcEventProductId" /></property>
-        <property name="SourceEntryIdInventoryItemIdLocatorId" ><column name="SrcEventLocatorId" /></property>
-        <property name="SourceEntryIdInventoryItemIdAttributeSetInstanceId" ><column name="SrcEventAttributeSetInstanceId" /></property>
+        <property name="SourceEntryIdInventoryItemIdProductId" ><column name="SrcEventProductId" length="50" /></property>
+        <property name="SourceEntryIdInventoryItemIdLocatorId" ><column name="SrcEventLocatorId" length="50" /></property>
+        <property name="SourceEntryIdInventoryItemIdAttributeSetInstanceId" ><column name="SrcEventAttributeSetInstanceId" length="50" /></property>
         <property name="SourceEntryIdEntrySeqId" ><column name="SrcEventEntrySeqId" /></property>
-        <property name="InventoryPostingRuleId" ><column name="SrcEventInventoryPostingRuleId" /></property>
+        <property name="InventoryPostingRuleId" ><column name="SrcEventInventoryPostingRuleId" length="50" /></property>
     </component>
     <property name="Version" ></property>
     <property name="CreatedBy" ></property>

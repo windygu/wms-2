@@ -30,6 +30,7 @@ aggregates:
               type: string
               referenceType: InventoryPostingRule
               columnName: InventoryPostingRuleId
+              length: 50
               
       metadata:
         NoEventSourcing: true

@@ -9,11 +9,11 @@
   <class name="org.dddml.wms.domain.inventoryprtriggered.AbstractInventoryPRTriggeredState$SimpleInventoryPRTriggeredState" table="InventoryPRTriggereds">
 
 	<composite-id name="inventoryPRTriggeredId" class="org.dddml.wms.domain.inventoryprtriggered.InventoryPRTriggeredId">
-		<key-property name="sourceEntryIdInventoryItemIdProductId" ><column name="ProductId" /></key-property>
-		<key-property name="sourceEntryIdInventoryItemIdLocatorId" ><column name="LocatorId" /></key-property>
-		<key-property name="sourceEntryIdInventoryItemIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" /></key-property>
+		<key-property name="sourceEntryIdInventoryItemIdProductId" ><column name="ProductId" length="50" /></key-property>
+		<key-property name="sourceEntryIdInventoryItemIdLocatorId" ><column name="LocatorId" length="50" /></key-property>
+		<key-property name="sourceEntryIdInventoryItemIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" length="50" /></key-property>
 		<key-property name="sourceEntryIdEntrySeqId" ><column name="EntrySeqId" /></key-property>
-		<key-property name="inventoryPostingRuleId" ></key-property>
+		<key-property name="inventoryPostingRuleId" ><column name="InventoryPostingRuleId" length="50" /></key-property>
 	</composite-id>
 	<version name="version" column="Version" type="long" />
 

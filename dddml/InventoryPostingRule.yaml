@@ -10,6 +10,7 @@ aggregates:
       id:
         name: InventoryPostingRuleId
         type: string
+        length: 50
       properties:
         TriggerInventoryItemId:
           type: InventoryItemId
