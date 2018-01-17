@@ -16,6 +16,8 @@ public interface ShipmentAggregate
 
     void mergePatch(ShipmentCommand.MergePatchShipment c);
 
+    void _import(Iterable<ImportingShipmentItem> shipmentItems, Long version, String commandId, String requesterId);
+
     void throwOnInvalidStateTransition(Command c);
 }
 

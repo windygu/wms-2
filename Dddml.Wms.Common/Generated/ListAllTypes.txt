@@ -56,6 +56,7 @@
                 dict.Add("long", "_LONG_");
                 dict.Add("long?", "_LONG__");
                 dict.Add("long-varchar", "_LONG-VARCHAR_");
+                dict.Add("map", "_MAP_");
                 dict.Add("MovementConfirmationLine", "_MOVEMENTCONFIRMATIONLINE_");
                 dict.Add("MovementLine", "_MOVEMENTLINE_");
                 dict.Add("name", "_NAME_");

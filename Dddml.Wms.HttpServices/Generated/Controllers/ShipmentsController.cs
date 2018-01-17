@@ -122,6 +122,25 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = ShipmentsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{id}/_commands/Import")]
+        [HttpPut][SetRequesterId]
+        public void Import(string id, [FromBody]ShipmentCommandDtos.ImportRequestContent content)
+        {
+          try {
+            var cmd = content.ToImport();
+            var idObj = id;
+            if (cmd.ShipmentId == null)
+            {
+                cmd.ShipmentId = idObj;
+            }
+            else if (!cmd.ShipmentId.Equals(idObj))
+            {
+                throw DomainError.Named("inconsistentId", "Argument Id {0} NOT equals body Id {1}", id, cmd.ShipmentId);
+            }
+            _shipmentApplicationService.When(cmd);
+          } catch (Exception ex) { var response = ShipmentsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
         [Route("_metadata/filteringFields")]
         [HttpGet]
         public IEnumerable<PropertyMetadataDto> GetMetadataFilteringFields()

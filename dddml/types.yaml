@@ -1,4 +1,9 @@
 typeDefinitions:
+  # --------------------------------------
+  map:
+    cSharpType: IDictionary<string, object>
+    javaType: java.util.Map<String, Object>
+  # --------------------------------------
   blob:
     sqlType: LONGBLOB
     cSharpType: byte[]

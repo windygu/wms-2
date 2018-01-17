@@ -73,6 +73,7 @@
     <Compile Include="Domain\PhysicalInventory\PhysicalInventoryAggregate.cs" />
     <Compile Include="Domain\Services\IAttributeSetService.cs" />
     <Compile Include="Domain\ShipmentType\ShipmentTypeIds.cs" />
+    <Compile Include="Domain\Shipment\ShipmentAggregate.cs" />
     <Compile Include="Domain\StatusItem\StatusTypeIds.cs" />
     <Compile Include="Generated\Domain\AttributeAliasMvo\AttributeAliasMvoAggregate.cs">
       <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
@@ -5162,6 +5163,15 @@
     <Compile Include="Generated\Domain\ShipmentType\ShipmentTypeStateProperties.cs">
       <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\Shipment\ImportingShipmentItem.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ImportingShipmentItemDto.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Shipment\ImportingShipmentItemDtoWrapper.cs">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\Shipment\IShipmentAggregate.cs">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Compile>
@@ -7364,6 +7374,9 @@
       <LastGenOutput>GenerateShipmentDomain.txt</LastGenOutput>
       <LastOutputs>
 .\GenerateShipmentDomain.txt
+.\ImportingShipmentItem.cs
+.\ImportingShipmentItemDto.cs
+.\ImportingShipmentItemDtoWrapper.cs
 .\IShipmentAggregate.cs
 .\IShipmentApplicationService.cs
 .\IShipmentApplicationServiceFactory.cs

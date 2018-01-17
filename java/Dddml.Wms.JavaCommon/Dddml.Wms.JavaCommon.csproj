@@ -5146,6 +5146,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipment\ImportingShipmentItem.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipment\ImportingShipmentItemDto.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipment\ImportingShipmentItemDtoWrapper.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\shipment\RemoveShipmentItemDto.java">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
@@ -5159,6 +5168,12 @@
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\shipment\ShipmentCommand.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipment\ShipmentCommandDtos.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\shipment\ShipmentCommands.java">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\shipment\ShipmentItemCommand.java">
@@ -6795,11 +6810,16 @@
 .\CreateOrMergePatchShipmentReceiptDto.java
 .\DeleteShipmentDto.java
 .\GenerateShipmentDomain.txt
+.\ImportingShipmentItem.java
+.\ImportingShipmentItemDto.java
+.\ImportingShipmentItemDtoWrapper.java
 .\RemoveShipmentItemDto.java
 .\RemoveShipmentReceiptDto.java
 .\ShipmentAggregate.java
 .\ShipmentApplicationService.java
 .\ShipmentCommand.java
+.\ShipmentCommandDtos.java
+.\ShipmentCommands.java
 .\ShipmentItemCommand.java
 .\ShipmentItemId.java
 .\ShipmentItemIdDto.java

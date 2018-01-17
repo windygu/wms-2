@@ -405,6 +405,11 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
             super(state);
         }
 
+        @Override
+        public void _import(Iterable<ImportingShipmentItem> shipmentItems, Long version, String commandId, String requesterId) {
+            throw new UnsupportedOperationException();
+        }
+
     }
 
 }

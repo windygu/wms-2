@@ -24,6 +24,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 		void MergePatch (IMergePatchShipment c);
 
+		void Import(IEnumerable<ImportingShipmentItem> shipmentItems, long version, string commandId, string requesterId);
+
 
 	}
 

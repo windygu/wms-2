@@ -216,28 +216,28 @@ aggregates:
         # metadata:
           # StateEventDatabaseTableName: SHIPMENT_RECEIPT_STATE_EVENT
           
-    # # ---------------------------------
-    # methods:
-      # ImportShipment:
-        # parameters:
-          # ShipmentItems:
-            # itemType: ShipmentItemInfo
+    # ---------------------------------
+    methods:
+      Import:
+        parameters:
+          ShipmentItems:
+            itemType: ImportingShipmentItem
     
-    # # ---------------------------------
-    # valueObjects:
-      # ShipmentItemInfo:
-        # properties:
-          # ProductId:
-            # type: id
-          # Quantity:
-            # type: fixed-point
-          # TargetQuantity:
-            # type: fixed-point
-            # description: The Quantity which should be shipped.
-          # ShipmentContentDescription:
-            # type: description
-          # AttributeSetInstance:
-            # itemType: KeyValuePair
+    # ---------------------------------
+    valueObjects:
+      ImportingShipmentItem:
+        properties:
+          ProductId:
+            type: id
+          Quantity:
+            type: fixed-point
+          TargetQuantity:
+            type: fixed-point
+            description: The Quantity which should be shipped.
+          ShipmentContentDescription:
+            type: description
+          AttributeSetInstance:
+            type: map
               
 # # ---------------------------------    
 # valueObjects:

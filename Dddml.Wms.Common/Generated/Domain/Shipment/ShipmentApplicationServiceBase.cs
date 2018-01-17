@@ -100,6 +100,11 @@ namespace Dddml.Wms.Domain.Shipment
 			Update(c, ar => ar.MergePatch(c));
 		}
 
+		public virtual void When(ShipmentCommands.Import c)
+		{
+			Update(c, ar => ar.Import(c.ShipmentItems, c.Version, c.CommandId, c.RequesterId));
+		}
+
         public virtual IShipmentState Get(string shipmentId)
         {
             var state = StateRepository.Get(shipmentId, true);

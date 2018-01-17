@@ -19,6 +19,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 		void When(IMergePatchShipment c);
 
+		void When(ShipmentCommands.Import c);
+
  		IShipmentState Get(string shipmentId);
 
         IEnumerable<IShipmentState> GetAll(int firstResult, int maxResults);

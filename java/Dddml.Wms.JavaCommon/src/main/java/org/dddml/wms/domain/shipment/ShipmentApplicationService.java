@@ -14,6 +14,8 @@ public interface ShipmentApplicationService
 
     void when(ShipmentCommand.MergePatchShipment c);
 
+    void when(ShipmentCommands.Import c);
+
     ShipmentState get(String id);
 
     Iterable<ShipmentState> getAll(Integer firstResult, Integer maxResults);

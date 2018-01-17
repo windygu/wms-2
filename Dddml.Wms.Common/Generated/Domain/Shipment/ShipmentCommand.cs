@@ -495,6 +495,78 @@ namespace Dddml.Wms.Domain.Shipment
 
     public static partial class ShipmentCommands
     {
+        public class Import : IShipmentCommand
+        {
+
+            public string CommandType
+            {
+                get { return "Import"; }
+            }
+
+            public ISet<ImportingShipmentItem> ShipmentItems { get; set; }
+
+            public string ShipmentId { get; set; }
+
+            public long Version { get; set; }
+
+            public string CommandId { get; set; }
+
+            public string RequesterId { get; set; }
+
+
+            string ICommand.CommandId
+            {
+                get
+                {
+                    return this.CommandId;
+                }
+                set
+                {
+                    this.CommandId = value;
+                }
+            }
+
+            object ICommand.RequesterId
+            {
+                get { return this.RequesterId; }
+                set { this.RequesterId = (string)value; }
+            }
+
+            string ICommandDto.CommandType
+            {
+                get { return this.CommandType; }
+            }
+
+            string IAggregateCommand<string, long>.AggregateId
+            {
+                get { return this.ShipmentId; }
+            }
+
+            string IShipmentCommand.ShipmentId
+            {
+                get { return this.ShipmentId; }
+                set { this.ShipmentId = value; }
+            }
+
+            long IAggregateCommand<string, long>.AggregateVersion
+            {
+                get { return this.Version; }
+            }
+
+            long IShipmentCommand.Version
+            {
+                get
+                {
+                    return this.Version;
+                }
+                set
+                {
+                    this.Version = value;
+                }
+            }
+
+        }
+
     }
 
 }

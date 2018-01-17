@@ -121,6 +121,23 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+
+    @Path("{id}/_commands/Import") @PUT
+    public void _import(@PathParam("id") String id, ShipmentCommandDtos.ImportRequestContent content) {
+        try {
+
+            ShipmentCommands.Import cmd = content.toImport();
+            String idObj = id;
+            if (cmd.getShipmentId() == null) {
+                cmd.setShipmentId(idObj);
+            } else if (!cmd.getShipmentId().equals(idObj)) {
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, cmd.getShipmentId());
+            }
+            shipmentApplicationService.when(cmd);
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
     @Path("_metadata/filteringFields") @GET
     public List<PropertyMetadataDto> getMetadataFilteringFields() {
         try {

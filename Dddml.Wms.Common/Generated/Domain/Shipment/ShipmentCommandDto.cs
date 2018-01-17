@@ -837,6 +837,37 @@ namespace Dddml.Wms.Domain.Shipment
     public static partial class ShipmentCommandDtos
     {
 
+        public class ImportRequestContent : ICommandDto
+        {
+
+            public string CommandType
+            {
+                get { return "Import"; }
+            }
+
+            public ImportingShipmentItemDto[] ShipmentItems { get; set; }
+
+            public string ShipmentId { get; set; }
+
+            public long Version { get; set; }
+
+            public string CommandId { get; set; }
+
+            public string RequesterId { get; set; }
+
+            public ShipmentCommands.Import ToImport()
+            {
+                var cmd = new ShipmentCommands.Import();
+                cmd.ShipmentItems = this.ShipmentItems == null ? null : new HashSet<ImportingShipmentItem>(this.ShipmentItems.Select(p => p.ToImportingShipmentItem()));
+                cmd.ShipmentId = this.ShipmentId;
+                cmd.Version = this.Version;
+                cmd.CommandId = this.CommandId;
+                cmd.RequesterId = this.RequesterId;
+                return cmd;
+            }
+
+        }
+
     }
 
 }
