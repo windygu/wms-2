@@ -102,10 +102,10 @@ aggregates:
       # ------------------------------------------
       ShipmentItem:
         id:
-          # name: ShipmentItemId
-          # type: ShipmentItemId
           name: ShipmentItemSeqId
           type: id
+          # name: ShipmentItemId
+          # type: ShipmentItemId
           
         properties:
         
@@ -150,19 +150,22 @@ aggregates:
       # ------------------------------------------
       ShipmentReceipt:
         id:
-          # name: ReceiptId
           name: ReceiptSeqId
           type: id
+          # name: ReceiptId
           
         properties:
-          # InventoryItemId:
-            # type: id
+        
           ProductId:
             type: id
-          # ShipmentId:
-            # type: id
+            
           ShipmentItemSeqId:
             type: id
+            
+          # InventoryItemId:
+            # type: id
+          # ShipmentId:
+            # type: id
           # ShipmentPackageSeqId:
             # type: id
           # OrderId:
@@ -213,4 +216,37 @@ aggregates:
         # metadata:
           # StateEventDatabaseTableName: SHIPMENT_RECEIPT_STATE_EVENT
           
+    # # ---------------------------------
+    # methods:
+      # ImportShipment:
+        # parameters:
+          # ShipmentItems:
+            # itemType: ShipmentItemInfo
+    
+    # # ---------------------------------
+    # valueObjects:
+      # ShipmentItemInfo:
+        # properties:
+          # ProductId:
+            # type: id
+          # Quantity:
+            # type: fixed-point
+          # TargetQuantity:
+            # type: fixed-point
+            # description: The Quantity which should be shipped.
+          # ShipmentContentDescription:
+            # type: description
+          # AttributeSetInstance:
+            # itemType: KeyValuePair
+              
+# # ---------------------------------    
+# valueObjects:
+  # KeyValuePair:
+    # properties:
+      # Key:
+        # type: string
+      # Value:
+        # type: object
+        
+        
     
