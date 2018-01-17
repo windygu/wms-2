@@ -50,7 +50,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Tests
             var iiEntry = ii.NewCreateInventoryItemEntry();
             iiEntry.EntrySeqId = DateTime.Now.Ticks;
             iiEntry.OnHandQuantity = 100;
-            var iiEntrySrc = new InventoryItemSourceInfo("TEST_EVT_TYPE", "TEST_DOCUMENT_NO_1", Guid.NewGuid().ToString());
+            var iiEntrySrc = new InventoryItemSourceInfo("TEST_EVT_TYPE", "TEST_DOCUMENT_NO_1", Guid.NewGuid().ToString(), 1);
             iiEntry.Source = iiEntrySrc;
 
             ii.Entries.Add(iiEntry);

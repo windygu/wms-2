@@ -113,6 +113,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             this.When((MergePatchShipmentDto)c);
         }
 
+        public void When(ShipmentCommands.Import c)
+        {
+            throw new NotImplementedException();//todo
+        }
+
         public async Task<IShipmentState> GetAsync(string shipmentId)
         {
             IShipmentState state = null;
