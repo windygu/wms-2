@@ -12,12 +12,25 @@ public class ImportingShipmentItemDto
     public ImportingShipmentItem toImportingShipmentItem()
     {
         ImportingShipmentItem v = new ImportingShipmentItem();
+        v.setShipmentItemSeqId(this.getShipmentItemSeqId());
         v.setProductId(this.getProductId());
         v.setQuantity(this.getQuantity());
         v.setTargetQuantity(this.getTargetQuantity());
         v.setShipmentContentDescription(this.getShipmentContentDescription());
         v.setAttributeSetInstance(this.getAttributeSetInstance());
         return v;
+    }
+
+    private String shipmentItemSeqId;
+
+    public String getShipmentItemSeqId()
+    {
+        return this.shipmentItemSeqId;
+    }
+
+    public void setShipmentItemSeqId(String shipmentItemSeqId)
+    {
+        this.shipmentItemSeqId = shipmentItemSeqId;
     }
 
     private String productId;
@@ -93,6 +106,7 @@ public class ImportingShipmentItemDto
 
         ImportingShipmentItemDto other = (ImportingShipmentItemDto)obj;
         return true 
+            && (getShipmentItemSeqId() == other.getShipmentItemSeqId() || (getShipmentItemSeqId() != null && getShipmentItemSeqId().equals(other.getShipmentItemSeqId())))
             && (getProductId() == other.getProductId() || (getProductId() != null && getProductId().equals(other.getProductId())))
             && (getQuantity() == other.getQuantity() || (getQuantity() != null && getQuantity().equals(other.getQuantity())))
             && (getTargetQuantity() == other.getTargetQuantity() || (getTargetQuantity() != null && getTargetQuantity().equals(other.getTargetQuantity())))
@@ -106,6 +120,9 @@ public class ImportingShipmentItemDto
     public int hashCode()
     {
         int hash = 0;
+        if (this.getShipmentItemSeqId() != null) {
+            hash += 13 * this.getShipmentItemSeqId().hashCode();
+        }
         if (this.getProductId() != null) {
             hash += 13 * this.getProductId().hashCode();
         }

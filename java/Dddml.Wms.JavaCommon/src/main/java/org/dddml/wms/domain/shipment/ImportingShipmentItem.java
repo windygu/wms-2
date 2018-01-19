@@ -5,6 +5,18 @@ import org.dddml.wms.domain.*;
 
 public class ImportingShipmentItem implements Serializable
 {
+    private String shipmentItemSeqId;
+
+    public String getShipmentItemSeqId()
+    {
+        return this.shipmentItemSeqId;
+    }
+
+    public void setShipmentItemSeqId(String shipmentItemSeqId)
+    {
+        this.shipmentItemSeqId = shipmentItemSeqId;
+    }
+
     private String productId;
 
     public String getProductId()
@@ -69,8 +81,9 @@ public class ImportingShipmentItem implements Serializable
     {
     }
 
-    public ImportingShipmentItem(String productId, java.math.BigDecimal quantity, java.math.BigDecimal targetQuantity, String shipmentContentDescription, java.util.Map<String, Object> attributeSetInstance)
+    public ImportingShipmentItem(String shipmentItemSeqId, String productId, java.math.BigDecimal quantity, java.math.BigDecimal targetQuantity, String shipmentContentDescription, java.util.Map<String, Object> attributeSetInstance)
     {
+        this.shipmentItemSeqId = shipmentItemSeqId;
         this.productId = productId;
         this.quantity = quantity;
         this.targetQuantity = targetQuantity;
@@ -90,6 +103,7 @@ public class ImportingShipmentItem implements Serializable
 
         ImportingShipmentItem other = (ImportingShipmentItem)obj;
         return true 
+            && (shipmentItemSeqId == other.shipmentItemSeqId || (shipmentItemSeqId != null && shipmentItemSeqId.equals(other.shipmentItemSeqId)))
             && (productId == other.productId || (productId != null && productId.equals(other.productId)))
             && (quantity == other.quantity || (quantity != null && quantity.equals(other.quantity)))
             && (targetQuantity == other.targetQuantity || (targetQuantity != null && targetQuantity.equals(other.targetQuantity)))
@@ -102,6 +116,9 @@ public class ImportingShipmentItem implements Serializable
     public int hashCode()
     {
         int hash = 0;
+        if (this.shipmentItemSeqId != null) {
+            hash += 13 * this.shipmentItemSeqId.hashCode();
+        }
         if (this.productId != null) {
             hash += 13 * this.productId.hashCode();
         }

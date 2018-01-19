@@ -54,7 +54,7 @@ public abstract class AbstractShipmentApplicationService implements ShipmentAppl
     }
 
     public void when(ShipmentCommands.Import c) {
-        update(c, ar -> ar._import(c.getShipmentItems(), c.getVersion(), c.getCommandId(), c.getRequesterId()));
+        update(c, ar -> ar._import(c.getPrimaryOrderId(), c.getPrimaryReturnId(), c.getEstimatedReadyDate(), c.getEstimatedShipDate(), c.getEstimatedShipWorkEffId(), c.getEstimatedArrivalDate(), c.getEstimatedArrivalWorkEffId(), c.getLatestCancelDate(), c.getEstimatedShipCost(), c.getCurrencyUomId(), c.getHandlingInstructions(), c.getOriginFacilityId(), c.getDestinationFacilityId(), c.getPartyIdTo(), c.getPartyIdFrom(), c.getAdditionalShippingCharge(), c.getAddtlShippingChargeDesc(), c.getShipmentItems(), c.getVersion(), c.getCommandId(), c.getRequesterId()));
     }
 
     public ShipmentState get(String id) {

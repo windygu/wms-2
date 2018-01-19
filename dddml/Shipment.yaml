@@ -220,6 +220,42 @@ aggregates:
     methods:
       Import:
         parameters:
+          PrimaryOrderId:
+            type: id
+          PrimaryReturnId:
+            type: id
+          EstimatedReadyDate:
+            type: date-time
+          EstimatedShipDate:
+            type: date-time
+          EstimatedShipWorkEffId:
+            type: id
+          EstimatedArrivalDate:
+            type: date-time
+          EstimatedArrivalWorkEffId:
+            type: id
+          LatestCancelDate:
+            type: date-time
+          EstimatedShipCost:
+            type: currency-amount
+          CurrencyUomId:
+            type: id
+          HandlingInstructions:
+            type: long-varchar
+          OriginFacilityId:
+            type: id
+          DestinationFacilityId:
+            type: id
+          PartyIdTo:
+            type: id
+          PartyIdFrom:
+            type: id
+          AdditionalShippingCharge:
+            type: currency-amount
+          AddtlShippingChargeDesc:
+            type: long-varchar
+
+          # ------------------------
           ShipmentItems:
             itemType: ImportingShipmentItem
     
@@ -227,6 +263,8 @@ aggregates:
     valueObjects:
       ImportingShipmentItem:
         properties:
+          ShipmentItemSeqId:
+            type: id
           ProductId:
             type: id-long
           Quantity:

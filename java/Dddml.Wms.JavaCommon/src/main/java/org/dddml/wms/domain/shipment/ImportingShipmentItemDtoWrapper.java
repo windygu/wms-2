@@ -24,6 +24,18 @@ public class ImportingShipmentItemDtoWrapper extends ImportingShipmentItemDto
     }
 
     @Override
+    public String getShipmentItemSeqId()
+    {
+        return this.value.getShipmentItemSeqId();
+    }
+
+    @Override
+    public void setShipmentItemSeqId(String shipmentItemSeqId)
+    {
+        this.value.setShipmentItemSeqId(shipmentItemSeqId);
+    }
+
+    @Override
     public String getProductId()
     {
         return this.value.getProductId();
