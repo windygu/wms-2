@@ -9,7 +9,7 @@
   <class name="AbstractSellableInventoryItemEntryMvoStateEvent" table="SellableInventoryItemEntryMvoStateEvents" mutable="false" abstract="true">
 
 	<composite-id name="stateEventId" class="org.dddml.wms.domain.sellableinventoryitementrymvo.SellableInventoryItemEntryMvoStateEventId">
-		<key-property name="sellableInventoryItemEntryIdSellableInventoryItemIdProductId" ><column name="ProductId" length="50" /></key-property>
+		<key-property name="sellableInventoryItemEntryIdSellableInventoryItemIdProductId" ><column name="ProductId" length="60" sql-type="VARCHAR(60)" /></key-property>
 		<key-property name="sellableInventoryItemEntryIdSellableInventoryItemIdLocatorId" ><column name="LocatorId" length="50" /></key-property>
 		<key-property name="sellableInventoryItemEntryIdSellableInventoryItemIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" length="50" /></key-property>
 		<key-property name="sellableInventoryItemEntryIdEntrySeqId" ><column name="EntrySeqId" /></key-property>
@@ -20,7 +20,7 @@
 
 	<property name="sellableQuantity" ></property>
 	<component name="sourceEventId" class="org.dddml.wms.domain.inventoryprtriggered.InventoryPRTriggeredId">
-		<property name="sourceEntryIdInventoryItemIdProductId" ><column name="SrcEventProductId" length="50" /></property>
+		<property name="sourceEntryIdInventoryItemIdProductId" ><column name="SrcEventProductId" length="60" sql-type="VARCHAR(60)" /></property>
 		<property name="sourceEntryIdInventoryItemIdLocatorId" ><column name="SrcEventLocatorId" length="50" /></property>
 		<property name="sourceEntryIdInventoryItemIdAttributeSetInstanceId" ><column name="SrcEventAttributeSetInstanceId" length="50" /></property>
 		<property name="sourceEntryIdEntrySeqId" ><column name="SrcEventEntrySeqId" /></property>

@@ -19,14 +19,14 @@ namespace Dddml.Wms.Domain.User
 
 		public virtual string UserId { 
 			get { return this._userId; } 
-			internal set { _userId = value; } 
+			set { _userId = value; } 
 		}
 
 		private string _roleId;
 
 		public virtual string RoleId { 
 			get { return this._roleId; } 
-			internal set { _roleId = value; } 
+			set { _roleId = value; } 
 		}
 
 
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.User
 
         #endregion
 
-		internal UserRoleId ()
+		public UserRoleId ()
 		{
 		}
 

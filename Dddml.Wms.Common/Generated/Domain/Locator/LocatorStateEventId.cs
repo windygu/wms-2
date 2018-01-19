@@ -19,14 +19,14 @@ namespace Dddml.Wms.Domain.Locator
 
 		public virtual string LocatorId { 
 			get { return this._locatorId; } 
-			internal set { _locatorId = value; } 
+			set { _locatorId = value; } 
 		}
 
 		private long _version;
 
 		public virtual long Version { 
 			get { return this._version; } 
-			internal set { _version = value; } 
+			set { _version = value; } 
 		}
 
 
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.Locator
 
         #endregion
 
-		internal LocatorStateEventId ()
+		public LocatorStateEventId ()
 		{
 		}
 

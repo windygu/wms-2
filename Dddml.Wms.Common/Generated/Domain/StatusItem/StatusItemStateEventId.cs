@@ -19,14 +19,14 @@ namespace Dddml.Wms.Domain.StatusItem
 
 		public virtual string StatusId { 
 			get { return this._statusId; } 
-			internal set { _statusId = value; } 
+			set { _statusId = value; } 
 		}
 
 		private long _version;
 
 		public virtual long Version { 
 			get { return this._version; } 
-			internal set { _version = value; } 
+			set { _version = value; } 
 		}
 
 
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.StatusItem
 
         #endregion
 
-		internal StatusItemStateEventId ()
+		public StatusItemStateEventId ()
 		{
 		}
 

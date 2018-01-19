@@ -19,35 +19,35 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual string ProductId { 
 			get { return this._productId; } 
-			internal set { _productId = value; } 
+			set { _productId = value; } 
 		}
 
 		private decimal? _quantity;
 
 		public virtual decimal? Quantity { 
 			get { return this._quantity; } 
-			internal set { _quantity = value; } 
+			set { _quantity = value; } 
 		}
 
 		private decimal? _targetQuantity;
 
 		public virtual decimal? TargetQuantity { 
 			get { return this._targetQuantity; } 
-			internal set { _targetQuantity = value; } 
+			set { _targetQuantity = value; } 
 		}
 
 		private string _shipmentContentDescription;
 
 		public virtual string ShipmentContentDescription { 
 			get { return this._shipmentContentDescription; } 
-			internal set { _shipmentContentDescription = value; } 
+			set { _shipmentContentDescription = value; } 
 		}
 
 		private IDictionary<string, object> _attributeSetInstance;
 
 		public virtual IDictionary<string, object> AttributeSetInstance { 
 			get { return this._attributeSetInstance; } 
-			internal set { _attributeSetInstance = value; } 
+			set { _attributeSetInstance = value; } 
 		}
 
 
@@ -56,7 +56,7 @@ namespace Dddml.Wms.Domain.Shipment
 
         #endregion
 
-		internal ImportingShipmentItem ()
+		public ImportingShipmentItem ()
 		{
 		}
 

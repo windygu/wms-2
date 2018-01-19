@@ -20,14 +20,14 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
 		public virtual PhysicalInventoryLineId PhysicalInventoryLineId { 
 			get { return this._physicalInventoryLineId; } 
-			internal set { _physicalInventoryLineId = value; } 
+			set { _physicalInventoryLineId = value; } 
 		}
 
 		private long _physicalInventoryVersion;
 
 		public virtual long PhysicalInventoryVersion { 
 			get { return this._physicalInventoryVersion; } 
-			internal set { _physicalInventoryVersion = value; } 
+			set { _physicalInventoryVersion = value; } 
 		}
 
 
@@ -36,17 +36,17 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
 		public virtual string PhysicalInventoryLineIdPhysicalInventoryDocumentNumber {
 			get { return PhysicalInventoryLineId.PhysicalInventoryDocumentNumber; }
-			internal set { PhysicalInventoryLineId.PhysicalInventoryDocumentNumber = value; }
+			set { PhysicalInventoryLineId.PhysicalInventoryDocumentNumber = value; }
 		}
 
 		public virtual string PhysicalInventoryLineIdLineNumber {
 			get { return PhysicalInventoryLineId.LineNumber; }
-			internal set { PhysicalInventoryLineId.LineNumber = value; }
+			set { PhysicalInventoryLineId.LineNumber = value; }
 		}
 
         #endregion
 
-		internal PhysicalInventoryLineMvoStateEventId ()
+		public PhysicalInventoryLineMvoStateEventId ()
 		{
 		}
 

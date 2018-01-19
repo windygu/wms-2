@@ -20,14 +20,14 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
 		public virtual AttributeSetAttributeUseId AttributeSetAttributeUseId { 
 			get { return this._attributeSetAttributeUseId; } 
-			internal set { _attributeSetAttributeUseId = value; } 
+			set { _attributeSetAttributeUseId = value; } 
 		}
 
 		private long _attributeSetVersion;
 
 		public virtual long AttributeSetVersion { 
 			get { return this._attributeSetVersion; } 
-			internal set { _attributeSetVersion = value; } 
+			set { _attributeSetVersion = value; } 
 		}
 
 
@@ -36,17 +36,17 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
 		public virtual string AttributeSetAttributeUseIdAttributeSetId {
 			get { return AttributeSetAttributeUseId.AttributeSetId; }
-			internal set { AttributeSetAttributeUseId.AttributeSetId = value; }
+			set { AttributeSetAttributeUseId.AttributeSetId = value; }
 		}
 
 		public virtual string AttributeSetAttributeUseIdAttributeId {
 			get { return AttributeSetAttributeUseId.AttributeId; }
-			internal set { AttributeSetAttributeUseId.AttributeId = value; }
+			set { AttributeSetAttributeUseId.AttributeId = value; }
 		}
 
         #endregion
 
-		internal AttributeUseMvoStateEventId ()
+		public AttributeUseMvoStateEventId ()
 		{
 		}
 

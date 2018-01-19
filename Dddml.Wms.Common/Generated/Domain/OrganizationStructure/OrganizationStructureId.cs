@@ -19,21 +19,21 @@ namespace Dddml.Wms.Domain.OrganizationStructure
 
 		public virtual string OrganizationStructureTypeId { 
 			get { return this._organizationStructureTypeId; } 
-			internal set { _organizationStructureTypeId = value; } 
+			set { _organizationStructureTypeId = value; } 
 		}
 
 		private string _parentId;
 
 		public virtual string ParentId { 
 			get { return this._parentId; } 
-			internal set { _parentId = value; } 
+			set { _parentId = value; } 
 		}
 
 		private string _subsidiaryId;
 
 		public virtual string SubsidiaryId { 
 			get { return this._subsidiaryId; } 
-			internal set { _subsidiaryId = value; } 
+			set { _subsidiaryId = value; } 
 		}
 
 
@@ -42,7 +42,7 @@ namespace Dddml.Wms.Domain.OrganizationStructure
 
         #endregion
 
-		internal OrganizationStructureId ()
+		public OrganizationStructureId ()
 		{
 		}
 

@@ -97,9 +97,9 @@ aggregates:
         InventoryItemId:
           properties:
             ProductId:
-              type: string
+              type: id-long
               columnName: ProductId
-              length: 50
+              length: 60
             LocatorId: 
               type: string
               columnName: LocatorId

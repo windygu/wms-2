@@ -12,12 +12,12 @@
 	<version name="version" column="Version" type="long" />
 
 	<component name="triggerInventoryItemId" class="org.dddml.wms.domain.inventoryitem.InventoryItemId">
-		<property name="productId" ><column name="TriggerProductId" length="50" /></property>
+		<property name="productId" ><column name="TriggerProductId" length="60" sql-type="VARCHAR(60)" /></property>
 		<property name="locatorId" ><column name="TriggerLocatorId" length="50" /></property>
 		<property name="attributeSetInstanceId" ><column name="TriggerAttributeSetInstanceId" length="50" /></property>
 	</component>
 	<component name="outputInventoryItemId" class="org.dddml.wms.domain.inventoryitem.InventoryItemId">
-		<property name="productId" ><column name="OutputProductId" length="50" /></property>
+		<property name="productId" ><column name="OutputProductId" length="60" sql-type="VARCHAR(60)" /></property>
 		<property name="locatorId" ><column name="OutputLocatorId" length="50" /></property>
 		<property name="attributeSetInstanceId" ><column name="OutputAttributeSetInstanceId" length="50" /></property>
 	</component>

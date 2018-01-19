@@ -19,21 +19,21 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
 		public virtual string PhysicalInventoryDocumentNumber { 
 			get { return this._physicalInventoryDocumentNumber; } 
-			internal set { _physicalInventoryDocumentNumber = value; } 
+			set { _physicalInventoryDocumentNumber = value; } 
 		}
 
 		private string _lineNumber;
 
 		public virtual string LineNumber { 
 			get { return this._lineNumber; } 
-			internal set { _lineNumber = value; } 
+			set { _lineNumber = value; } 
 		}
 
 		private long _physicalInventoryVersion;
 
 		public virtual long PhysicalInventoryVersion { 
 			get { return this._physicalInventoryVersion; } 
-			internal set { _physicalInventoryVersion = value; } 
+			set { _physicalInventoryVersion = value; } 
 		}
 
 
@@ -42,7 +42,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
         #endregion
 
-		internal PhysicalInventoryLineStateEventId ()
+		public PhysicalInventoryLineStateEventId ()
 		{
 		}
 

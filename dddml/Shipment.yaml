@@ -110,7 +110,7 @@ aggregates:
         properties:
         
           ProductId:
-            type: id
+            type: id-long
             
           AttributeSetInstanceId:
             type: string
@@ -157,7 +157,7 @@ aggregates:
         properties:
         
           ProductId:
-            type: id
+            type: id-long
             
           ShipmentItemSeqId:
             type: id
@@ -228,7 +228,7 @@ aggregates:
       ImportingShipmentItem:
         properties:
           ProductId:
-            type: id
+            type: id-long
           Quantity:
             type: fixed-point
           TargetQuantity:

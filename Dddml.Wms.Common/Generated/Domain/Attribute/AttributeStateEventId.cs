@@ -19,14 +19,14 @@ namespace Dddml.Wms.Domain.Attribute
 
 		public virtual string AttributeId { 
 			get { return this._attributeId; } 
-			internal set { _attributeId = value; } 
+			set { _attributeId = value; } 
 		}
 
 		private long _version;
 
 		public virtual long Version { 
 			get { return this._version; } 
-			internal set { _version = value; } 
+			set { _version = value; } 
 		}
 
 
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.Attribute
 
         #endregion
 
-		internal AttributeStateEventId ()
+		public AttributeStateEventId ()
 		{
 		}
 

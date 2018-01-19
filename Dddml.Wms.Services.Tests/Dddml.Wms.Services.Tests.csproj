@@ -114,6 +114,7 @@
     <Compile Include="AttributeSetInstanceExtensionFieldUtilsTests.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShipmentImportTests.cs" />
     <Compile Include="TestMain.cs" />
     <Compile Include="TestsBase.cs" />
     <Compile Include="XmlDataLoader.cs" />

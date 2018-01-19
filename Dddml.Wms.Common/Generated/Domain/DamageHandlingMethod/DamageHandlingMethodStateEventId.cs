@@ -19,14 +19,14 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 
 		public virtual string DamageHandlingMethodId { 
 			get { return this._damageHandlingMethodId; } 
-			internal set { _damageHandlingMethodId = value; } 
+			set { _damageHandlingMethodId = value; } 
 		}
 
 		private long _version;
 
 		public virtual long Version { 
 			get { return this._version; } 
-			internal set { _version = value; } 
+			set { _version = value; } 
 		}
 
 
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 
         #endregion
 
-		internal DamageHandlingMethodStateEventId ()
+		public DamageHandlingMethodStateEventId ()
 		{
 		}
 

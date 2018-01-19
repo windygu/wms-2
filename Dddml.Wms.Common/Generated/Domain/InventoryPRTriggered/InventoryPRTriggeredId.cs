@@ -20,14 +20,14 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 
 		public virtual InventoryItemEntryId SourceEntryId { 
 			get { return this._sourceEntryId; } 
-			internal set { _sourceEntryId = value; } 
+			set { _sourceEntryId = value; } 
 		}
 
 		private string _inventoryPostingRuleId;
 
 		public virtual string InventoryPostingRuleId { 
 			get { return this._inventoryPostingRuleId; } 
-			internal set { _inventoryPostingRuleId = value; } 
+			set { _inventoryPostingRuleId = value; } 
 		}
 
 
@@ -36,27 +36,27 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 
 		public virtual string SourceEntryIdInventoryItemIdProductId {
 			get { return SourceEntryId.InventoryItemId.ProductId; }
-			internal set { SourceEntryId.InventoryItemId.ProductId = value; }
+			set { SourceEntryId.InventoryItemId.ProductId = value; }
 		}
 
 		public virtual string SourceEntryIdInventoryItemIdLocatorId {
 			get { return SourceEntryId.InventoryItemId.LocatorId; }
-			internal set { SourceEntryId.InventoryItemId.LocatorId = value; }
+			set { SourceEntryId.InventoryItemId.LocatorId = value; }
 		}
 
 		public virtual string SourceEntryIdInventoryItemIdAttributeSetInstanceId {
 			get { return SourceEntryId.InventoryItemId.AttributeSetInstanceId; }
-			internal set { SourceEntryId.InventoryItemId.AttributeSetInstanceId = value; }
+			set { SourceEntryId.InventoryItemId.AttributeSetInstanceId = value; }
 		}
 
 		public virtual long SourceEntryIdEntrySeqId {
 			get { return SourceEntryId.EntrySeqId; }
-			internal set { SourceEntryId.EntrySeqId = value; }
+			set { SourceEntryId.EntrySeqId = value; }
 		}
 
         #endregion
 
-		internal InventoryPRTriggeredId ()
+		public InventoryPRTriggeredId ()
 		{
 		}
 

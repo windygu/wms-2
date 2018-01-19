@@ -20,14 +20,14 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 
 		public virtual string InventoryPostingRuleId { 
 			get { return this._inventoryPostingRuleId; } 
-			internal set { _inventoryPostingRuleId = value; } 
+			set { _inventoryPostingRuleId = value; } 
 		}
 
 		private long _version;
 
 		public virtual long Version { 
 			get { return this._version; } 
-			internal set { _version = value; } 
+			set { _version = value; } 
 		}
 
 
@@ -36,7 +36,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 
         #endregion
 
-		internal InventoryPostingRuleStateEventId ()
+		public InventoryPostingRuleStateEventId ()
 		{
 		}
 

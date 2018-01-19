@@ -19,14 +19,14 @@ namespace Dddml.Wms.Domain.Audience
 
 		public virtual string ClientId { 
 			get { return this._clientId; } 
-			internal set { _clientId = value; } 
+			set { _clientId = value; } 
 		}
 
 		private long _version;
 
 		public virtual long Version { 
 			get { return this._version; } 
-			internal set { _version = value; } 
+			set { _version = value; } 
 		}
 
 
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.Audience
 
         #endregion
 
-		internal AudienceStateEventId ()
+		public AudienceStateEventId ()
 		{
 		}
 

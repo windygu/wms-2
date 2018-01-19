@@ -19,14 +19,14 @@ namespace Dddml.Wms.Domain.RejectionReason
 
 		public virtual string RejectionReasonId { 
 			get { return this._rejectionReasonId; } 
-			internal set { _rejectionReasonId = value; } 
+			set { _rejectionReasonId = value; } 
 		}
 
 		private long _version;
 
 		public virtual long Version { 
 			get { return this._version; } 
-			internal set { _version = value; } 
+			set { _version = value; } 
 		}
 
 
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.RejectionReason
 
         #endregion
 
-		internal RejectionReasonStateEventId ()
+		public RejectionReasonStateEventId ()
 		{
 		}
 

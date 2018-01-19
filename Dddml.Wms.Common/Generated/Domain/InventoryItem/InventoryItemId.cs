@@ -19,21 +19,21 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 		public virtual string ProductId { 
 			get { return this._productId; } 
-			internal set { _productId = value; } 
+			set { _productId = value; } 
 		}
 
 		private string _locatorId;
 
 		public virtual string LocatorId { 
 			get { return this._locatorId; } 
-			internal set { _locatorId = value; } 
+			set { _locatorId = value; } 
 		}
 
 		private string _attributeSetInstanceId;
 
 		public virtual string AttributeSetInstanceId { 
 			get { return this._attributeSetInstanceId; } 
-			internal set { _attributeSetInstanceId = value; } 
+			set { _attributeSetInstanceId = value; } 
 		}
 
 
@@ -42,7 +42,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 
         #endregion
 
-		internal InventoryItemId ()
+		public InventoryItemId ()
 		{
 		}
 

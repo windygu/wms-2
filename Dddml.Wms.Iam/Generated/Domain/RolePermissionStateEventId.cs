@@ -19,14 +19,14 @@ namespace Dddml.Wms.Domain.RolePermission
 
 		public virtual RolePermissionId Id { 
 			get { return this._id; } 
-			internal set { _id = value; } 
+			set { _id = value; } 
 		}
 
 		private long _version;
 
 		public virtual long Version { 
 			get { return this._version; } 
-			internal set { _version = value; } 
+			set { _version = value; } 
 		}
 
 
@@ -35,17 +35,17 @@ namespace Dddml.Wms.Domain.RolePermission
 
 		public virtual string IdRoleId {
 			get { return Id.RoleId; }
-			internal set { Id.RoleId = value; }
+			set { Id.RoleId = value; }
 		}
 
 		public virtual string IdPermissionId {
 			get { return Id.PermissionId; }
-			internal set { Id.PermissionId = value; }
+			set { Id.PermissionId = value; }
 		}
 
         #endregion
 
-		internal RolePermissionStateEventId ()
+		public RolePermissionStateEventId ()
 		{
 		}
 

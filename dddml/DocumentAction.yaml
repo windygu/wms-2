@@ -30,7 +30,7 @@ enumObjects:
     #SkuId:
     #  properties:
     #    ProductId:
-    #      type: string
+    #      type: id-long
     #    AttributeSetInstanceId:
     #      type: string        
 

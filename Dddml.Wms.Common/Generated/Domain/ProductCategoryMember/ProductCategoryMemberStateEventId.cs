@@ -19,14 +19,14 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 
 		public virtual ProductCategoryMemberId ProductCategoryMemberId { 
 			get { return this._productCategoryMemberId; } 
-			internal set { _productCategoryMemberId = value; } 
+			set { _productCategoryMemberId = value; } 
 		}
 
 		private long _version;
 
 		public virtual long Version { 
 			get { return this._version; } 
-			internal set { _version = value; } 
+			set { _version = value; } 
 		}
 
 
@@ -35,17 +35,17 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 
 		public virtual string ProductCategoryMemberIdProductCategoryId {
 			get { return ProductCategoryMemberId.ProductCategoryId; }
-			internal set { ProductCategoryMemberId.ProductCategoryId = value; }
+			set { ProductCategoryMemberId.ProductCategoryId = value; }
 		}
 
 		public virtual string ProductCategoryMemberIdProductId {
 			get { return ProductCategoryMemberId.ProductId; }
-			internal set { ProductCategoryMemberId.ProductId = value; }
+			set { ProductCategoryMemberId.ProductId = value; }
 		}
 
         #endregion
 
-		internal ProductCategoryMemberStateEventId ()
+		public ProductCategoryMemberStateEventId ()
 		{
 		}
 

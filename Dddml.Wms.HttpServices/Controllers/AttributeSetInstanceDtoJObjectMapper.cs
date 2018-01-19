@@ -49,7 +49,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         /// </summary>
         /// <param name="dynamicObject">Source object.</param>
         /// <param name="command">Target object.</param>
-        /// <param name="propertyFieldDictionary">Extension propertyName-to-underlyingFieldName dictionary.</param>
+        /// <param name="propertyFieldDictionary">PropertyName-to-underlyingFieldName dictionary.</param>
         private static void MapExtensionProperties(JObject dynamicObject, CreateOrMergePatchOrDeleteAttributeSetInstanceDto command, IDictionary<string, string> propertyFieldDictionary, string nameFormat)
         {
             foreach (var p in propertyFieldDictionary)
@@ -65,6 +65,13 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="state">Source object.</param>
+        /// <param name="dynamicObject">Target object.</param>
+        /// <param name="propertyFieldDictionary"></param>
+        /// <param name="nameFormat"></param>
         private static void MapExtensionProperties(IAttributeSetInstanceStateDto state, JObject dynamicObject, IDictionary<string, string> propertyFieldDictionary, string nameFormat)
         {
             foreach (var p in propertyFieldDictionary)

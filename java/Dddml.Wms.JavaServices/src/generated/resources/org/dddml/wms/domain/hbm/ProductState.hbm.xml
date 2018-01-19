@@ -8,7 +8,7 @@
   
   <class name="org.dddml.wms.domain.product.AbstractProductState$SimpleProductState" table="Products">
 
-	<id name="productId" length="20" column="ProductId"><generator class="assigned"/></id>
+	<id name="productId" length="60" column="ProductId"><generator class="assigned"/></id>
 	<version name="version" column="Version" type="long" />
 
 	<property name="productTypeId" ><column name="ProductTypeId" sql-type="VARCHAR(20)" /></property>

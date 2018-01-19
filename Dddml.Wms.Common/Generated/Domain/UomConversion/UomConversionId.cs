@@ -19,14 +19,14 @@ namespace Dddml.Wms.Domain.UomConversion
 
 		public virtual string UomId { 
 			get { return this._uomId; } 
-			internal set { _uomId = value; } 
+			set { _uomId = value; } 
 		}
 
 		private string _uomIdTo;
 
 		public virtual string UomIdTo { 
 			get { return this._uomIdTo; } 
-			internal set { _uomIdTo = value; } 
+			set { _uomIdTo = value; } 
 		}
 
 
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.UomConversion
 
         #endregion
 
-		internal UomConversionId ()
+		public UomConversionId ()
 		{
 		}
 

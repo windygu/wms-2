@@ -6,7 +6,7 @@
   <class name="Dddml.Wms.Domain.InventoryPRTriggered.InventoryPRTriggeredState" table="InventoryPRTriggereds">
 
     <composite-id name="InventoryPRTriggeredId" class="Dddml.Wms.Domain.InventoryPRTriggered.InventoryPRTriggeredId">
-        <key-property name="SourceEntryIdInventoryItemIdProductId" ><column name="ProductId" length="50" /></key-property>
+        <key-property name="SourceEntryIdInventoryItemIdProductId" ><column name="ProductId" length="60" sql-type="VARCHAR(60)" /></key-property>
         <key-property name="SourceEntryIdInventoryItemIdLocatorId" ><column name="LocatorId" length="50" /></key-property>
         <key-property name="SourceEntryIdInventoryItemIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" length="50" /></key-property>
         <key-property name="SourceEntryIdEntrySeqId" ><column name="EntrySeqId" /></key-property>

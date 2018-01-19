@@ -6,7 +6,7 @@
   <class name="Dddml.Wms.Domain.SupplierProduct.SupplierProductState" table="SupplierProducts">
 
     <composite-id name="SupplierProductId" class="Dddml.Wms.Domain.SupplierProduct.SupplierProductId">
-        <key-property name="ProductId" ><column name="SupplierProductIdProductId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="ProductId" ><column name="SupplierProductIdProductId" sql-type="VARCHAR(60)" /></key-property>
         <key-property name="PartyId" ><column name="SupplierProductIdPartyId" sql-type="VARCHAR(20)" /></key-property>
         <key-property name="CurrencyUomId" ><column name="SupplierProductIdCurrencyUomId" sql-type="VARCHAR(20)" /></key-property>
         <key-property name="MinimumOrderQuantity" ><column name="SupplierProductIdMinimumOrderQuantity" sql-type="DECIMAL(18,6)" /></key-property>

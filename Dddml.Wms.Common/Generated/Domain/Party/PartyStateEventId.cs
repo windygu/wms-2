@@ -19,14 +19,14 @@ namespace Dddml.Wms.Domain.Party
 
 		public virtual string PartyId { 
 			get { return this._partyId; } 
-			internal set { _partyId = value; } 
+			set { _partyId = value; } 
 		}
 
 		private long _version;
 
 		public virtual long Version { 
 			get { return this._version; } 
-			internal set { _version = value; } 
+			set { _version = value; } 
 		}
 
 
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.Party
 
         #endregion
 
-		internal PartyStateEventId ()
+		public PartyStateEventId ()
 		{
 		}
 

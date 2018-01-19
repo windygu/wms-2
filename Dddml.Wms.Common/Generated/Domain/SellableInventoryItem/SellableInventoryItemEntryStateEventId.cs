@@ -21,21 +21,21 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
 		public virtual InventoryItemId SellableInventoryItemId { 
 			get { return this._sellableInventoryItemId; } 
-			internal set { _sellableInventoryItemId = value; } 
+			set { _sellableInventoryItemId = value; } 
 		}
 
 		private long _entrySeqId;
 
 		public virtual long EntrySeqId { 
 			get { return this._entrySeqId; } 
-			internal set { _entrySeqId = value; } 
+			set { _entrySeqId = value; } 
 		}
 
 		private long _sellableInventoryItemVersion;
 
 		public virtual long SellableInventoryItemVersion { 
 			get { return this._sellableInventoryItemVersion; } 
-			internal set { _sellableInventoryItemVersion = value; } 
+			set { _sellableInventoryItemVersion = value; } 
 		}
 
 
@@ -44,22 +44,22 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
 		public virtual string SellableInventoryItemIdProductId {
 			get { return SellableInventoryItemId.ProductId; }
-			internal set { SellableInventoryItemId.ProductId = value; }
+			set { SellableInventoryItemId.ProductId = value; }
 		}
 
 		public virtual string SellableInventoryItemIdLocatorId {
 			get { return SellableInventoryItemId.LocatorId; }
-			internal set { SellableInventoryItemId.LocatorId = value; }
+			set { SellableInventoryItemId.LocatorId = value; }
 		}
 
 		public virtual string SellableInventoryItemIdAttributeSetInstanceId {
 			get { return SellableInventoryItemId.AttributeSetInstanceId; }
-			internal set { SellableInventoryItemId.AttributeSetInstanceId = value; }
+			set { SellableInventoryItemId.AttributeSetInstanceId = value; }
 		}
 
         #endregion
 
-		internal SellableInventoryItemEntryStateEventId ()
+		public SellableInventoryItemEntryStateEventId ()
 		{
 		}
 

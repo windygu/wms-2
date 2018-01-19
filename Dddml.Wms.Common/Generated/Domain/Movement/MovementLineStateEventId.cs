@@ -19,21 +19,21 @@ namespace Dddml.Wms.Domain.Movement
 
 		public virtual string MovementDocumentNumber { 
 			get { return this._movementDocumentNumber; } 
-			internal set { _movementDocumentNumber = value; } 
+			set { _movementDocumentNumber = value; } 
 		}
 
 		private string _lineNumber;
 
 		public virtual string LineNumber { 
 			get { return this._lineNumber; } 
-			internal set { _lineNumber = value; } 
+			set { _lineNumber = value; } 
 		}
 
 		private long _movementVersion;
 
 		public virtual long MovementVersion { 
 			get { return this._movementVersion; } 
-			internal set { _movementVersion = value; } 
+			set { _movementVersion = value; } 
 		}
 
 
@@ -42,7 +42,7 @@ namespace Dddml.Wms.Domain.Movement
 
         #endregion
 
-		internal MovementLineStateEventId ()
+		public MovementLineStateEventId ()
 		{
 		}
 

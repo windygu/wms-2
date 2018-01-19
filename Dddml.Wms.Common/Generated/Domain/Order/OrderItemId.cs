@@ -19,14 +19,14 @@ namespace Dddml.Wms.Domain.Order
 
 		public virtual string OrderId { 
 			get { return this._orderId; } 
-			internal set { _orderId = value; } 
+			set { _orderId = value; } 
 		}
 
 		private string _orderItemSeqId;
 
 		public virtual string OrderItemSeqId { 
 			get { return this._orderItemSeqId; } 
-			internal set { _orderItemSeqId = value; } 
+			set { _orderItemSeqId = value; } 
 		}
 
 
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.Order
 
         #endregion
 
-		internal OrderItemId ()
+		public OrderItemId ()
 		{
 		}
 

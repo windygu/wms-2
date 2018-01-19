@@ -19,14 +19,14 @@ namespace Dddml.Wms.Domain.MovementType
 
 		public virtual string MovementTypeId { 
 			get { return this._movementTypeId; } 
-			internal set { _movementTypeId = value; } 
+			set { _movementTypeId = value; } 
 		}
 
 		private long _version;
 
 		public virtual long Version { 
 			get { return this._version; } 
-			internal set { _version = value; } 
+			set { _version = value; } 
 		}
 
 
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.MovementType
 
         #endregion
 
-		internal MovementTypeStateEventId ()
+		public MovementTypeStateEventId ()
 		{
 		}
 

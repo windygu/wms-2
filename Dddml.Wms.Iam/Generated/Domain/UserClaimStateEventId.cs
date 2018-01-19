@@ -19,21 +19,21 @@ namespace Dddml.Wms.Domain.User
 
 		public virtual string UserId { 
 			get { return this._userId; } 
-			internal set { _userId = value; } 
+			set { _userId = value; } 
 		}
 
 		private int _claimId;
 
 		public virtual int ClaimId { 
 			get { return this._claimId; } 
-			internal set { _claimId = value; } 
+			set { _claimId = value; } 
 		}
 
 		private long _userVersion;
 
 		public virtual long UserVersion { 
 			get { return this._userVersion; } 
-			internal set { _userVersion = value; } 
+			set { _userVersion = value; } 
 		}
 
 
@@ -42,7 +42,7 @@ namespace Dddml.Wms.Domain.User
 
         #endregion
 
-		internal UserClaimStateEventId ()
+		public UserClaimStateEventId ()
 		{
 		}
 

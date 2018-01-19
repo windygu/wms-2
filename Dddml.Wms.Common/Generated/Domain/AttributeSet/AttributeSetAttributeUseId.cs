@@ -19,14 +19,14 @@ namespace Dddml.Wms.Domain.AttributeSet
 
 		public virtual string AttributeSetId { 
 			get { return this._attributeSetId; } 
-			internal set { _attributeSetId = value; } 
+			set { _attributeSetId = value; } 
 		}
 
 		private string _attributeId;
 
 		public virtual string AttributeId { 
 			get { return this._attributeId; } 
-			internal set { _attributeId = value; } 
+			set { _attributeId = value; } 
 		}
 
 
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 
         #endregion
 
-		internal AttributeSetAttributeUseId ()
+		public AttributeSetAttributeUseId ()
 		{
 		}
 

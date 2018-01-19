@@ -19,28 +19,28 @@ namespace Dddml.Wms.Domain.SupplierProduct
 
 		public virtual string ProductId { 
 			get { return this._productId; } 
-			internal set { _productId = value; } 
+			set { _productId = value; } 
 		}
 
 		private string _partyId;
 
 		public virtual string PartyId { 
 			get { return this._partyId; } 
-			internal set { _partyId = value; } 
+			set { _partyId = value; } 
 		}
 
 		private string _currencyUomId;
 
 		public virtual string CurrencyUomId { 
 			get { return this._currencyUomId; } 
-			internal set { _currencyUomId = value; } 
+			set { _currencyUomId = value; } 
 		}
 
 		private decimal? _minimumOrderQuantity;
 
 		public virtual decimal? MinimumOrderQuantity { 
 			get { return this._minimumOrderQuantity; } 
-			internal set { _minimumOrderQuantity = value; } 
+			set { _minimumOrderQuantity = value; } 
 		}
 
 
@@ -49,7 +49,7 @@ namespace Dddml.Wms.Domain.SupplierProduct
 
         #endregion
 
-		internal SupplierProductId ()
+		public SupplierProductId ()
 		{
 		}
 

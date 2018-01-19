@@ -19,14 +19,14 @@ namespace Dddml.Wms.Domain.Lot
 
 		public virtual string LotId { 
 			get { return this._lotId; } 
-			internal set { _lotId = value; } 
+			set { _lotId = value; } 
 		}
 
 		private long _version;
 
 		public virtual long Version { 
 			get { return this._version; } 
-			internal set { _version = value; } 
+			set { _version = value; } 
 		}
 
 
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.Lot
 
         #endregion
 
-		internal LotStateEventId ()
+		public LotStateEventId ()
 		{
 		}
 

@@ -17,11 +17,56 @@ namespace Dddml.Wms.Specialization
 
         public static void SetPropertyValue(string propertyName, object obj, object value)
         {
+            SetPropertyValue(propertyName, obj, value, true);
+        }
+
+        public static bool TrySetPropertyValue(string propertyName, object obj, object value)
+        {
+            return SetPropertyValue(propertyName, obj, value, false);
+        }
+
+        private static bool SetPropertyValue(string propertyName, object obj, object value, bool throwOnError)
+        {
             var dstProp = obj.GetType().GetProperty(propertyName);
-            if (dstProp != null)
+            if (dstProp == null)
             {
-                dstProp.SetValue(obj, value);
+                if (throwOnError)
+                {
+                    throw new ArgumentException(String.Format("Property NOT found. propertyName: {0}", propertyName));
+                }
+                else
+                {
+                    return false;
+                }
             }
+            try
+            {
+                bool b = false;
+                if (value != null && value.GetType() != dstProp.PropertyType)
+                {
+                    if (IsNullableType(dstProp.PropertyType) && value.GetType() != Nullable.GetUnderlyingType(dstProp.PropertyType))
+                    {
+                        dstProp.SetValue(obj, Convert.ChangeType(value, Nullable.GetUnderlyingType(dstProp.PropertyType)));
+                        b = true;
+                    }
+                    else if (!IsNullableType(dstProp.PropertyType))
+                    {
+                        dstProp.SetValue(obj, Convert.ChangeType(value, dstProp.PropertyType));
+                        b = true;
+                    }
+                }
+                if (!b)
+                {
+                    dstProp.SetValue(obj, value);
+                    b = true;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                if (throwOnError) { throw ex; }
+            }
+            return false;
         }
 
         public static object GetPropertyValue(string propertyName, object obj)
@@ -53,6 +98,13 @@ namespace Dddml.Wms.Specialization
                 return memberExpr.Member.Name;
             }
             return GetMemberExpression(propertySelector.Body).Member.Name;
+        }
+
+        public static bool IsNullableType(System.Type type)
+        {
+            if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
+            { return true; }
+            return false;
         }
 
         #region Private Methods

@@ -10,7 +10,7 @@
 
     <cache usage="read-only"/>
 	<composite-id name="inventoryItemRequirementEntryId" class="org.dddml.wms.domain.inventoryitemrequirement.InventoryItemRequirementEntryId">
-		<key-property name="inventoryItemRequirementIdProductId" ><column name="ProductId" length="50" /></key-property>
+		<key-property name="inventoryItemRequirementIdProductId" ><column name="ProductId" length="60" sql-type="VARCHAR(60)" /></key-property>
 		<key-property name="inventoryItemRequirementIdLocatorId" ><column name="LocatorId" length="50" /></key-property>
 		<key-property name="inventoryItemRequirementIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" length="50" /></key-property>
 		<key-property name="entrySeqId" ></key-property>
@@ -19,7 +19,7 @@
 
 	<property name="quantity" ></property>
 	<component name="sourceEventId" class="org.dddml.wms.domain.inventoryprtriggered.InventoryPRTriggeredId" unique="true">
-		<property name="sourceEntryIdInventoryItemIdProductId" ><column name="SrcEventProductId" length="50" /></property>
+		<property name="sourceEntryIdInventoryItemIdProductId" ><column name="SrcEventProductId" length="60" sql-type="VARCHAR(60)" /></property>
 		<property name="sourceEntryIdInventoryItemIdLocatorId" ><column name="SrcEventLocatorId" length="50" /></property>
 		<property name="sourceEntryIdInventoryItemIdAttributeSetInstanceId" ><column name="SrcEventAttributeSetInstanceId" length="50" /></property>
 		<property name="sourceEntryIdEntrySeqId" ><column name="SrcEventEntrySeqId" /></property>

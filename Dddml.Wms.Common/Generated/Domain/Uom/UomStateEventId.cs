@@ -19,14 +19,14 @@ namespace Dddml.Wms.Domain.Uom
 
 		public virtual string UomId { 
 			get { return this._uomId; } 
-			internal set { _uomId = value; } 
+			set { _uomId = value; } 
 		}
 
 		private long _version;
 
 		public virtual long Version { 
 			get { return this._version; } 
-			internal set { _version = value; } 
+			set { _version = value; } 
 		}
 
 
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.Uom
 
         #endregion
 
-		internal UomStateEventId ()
+		public UomStateEventId ()
 		{
 		}
 

@@ -6,7 +6,7 @@
   <class name="SupplierProductStateEventBase" table="SupplierProductStateEvents" mutable="false" abstract="true">
 
     <composite-id name="StateEventId" class="Dddml.Wms.Domain.SupplierProduct.SupplierProductStateEventId">
-        <key-property name="SupplierProductIdProductId" ><column name="SupplierProductIdProductId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="SupplierProductIdProductId" ><column name="SupplierProductIdProductId" sql-type="VARCHAR(60)" /></key-property>
         <key-property name="SupplierProductIdPartyId" ><column name="SupplierProductIdPartyId" sql-type="VARCHAR(20)" /></key-property>
         <key-property name="SupplierProductIdCurrencyUomId" ><column name="SupplierProductIdCurrencyUomId" sql-type="VARCHAR(20)" /></key-property>
         <key-property name="SupplierProductIdMinimumOrderQuantity" ><column name="SupplierProductIdMinimumOrderQuantity" sql-type="DECIMAL(18,6)" /></key-property>

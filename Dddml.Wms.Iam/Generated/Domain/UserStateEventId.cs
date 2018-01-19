@@ -19,14 +19,14 @@ namespace Dddml.Wms.Domain.User
 
 		public virtual string UserId { 
 			get { return this._userId; } 
-			internal set { _userId = value; } 
+			set { _userId = value; } 
 		}
 
 		private long _version;
 
 		public virtual long Version { 
 			get { return this._version; } 
-			internal set { _version = value; } 
+			set { _version = value; } 
 		}
 
 
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.User
 
         #endregion
 
-		internal UserStateEventId ()
+		public UserStateEventId ()
 		{
 		}
 

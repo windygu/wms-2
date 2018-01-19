@@ -21,14 +21,14 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 
 		public virtual InventoryItemRequirementEntryId InventoryItemRequirementEntryId { 
 			get { return this._inventoryItemRequirementEntryId; } 
-			internal set { _inventoryItemRequirementEntryId = value; } 
+			set { _inventoryItemRequirementEntryId = value; } 
 		}
 
 		private long _inventoryItemRequirementVersion;
 
 		public virtual long InventoryItemRequirementVersion { 
 			get { return this._inventoryItemRequirementVersion; } 
-			internal set { _inventoryItemRequirementVersion = value; } 
+			set { _inventoryItemRequirementVersion = value; } 
 		}
 
 
@@ -37,27 +37,27 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 
 		public virtual string InventoryItemRequirementEntryIdInventoryItemRequirementIdProductId {
 			get { return InventoryItemRequirementEntryId.InventoryItemRequirementId.ProductId; }
-			internal set { InventoryItemRequirementEntryId.InventoryItemRequirementId.ProductId = value; }
+			set { InventoryItemRequirementEntryId.InventoryItemRequirementId.ProductId = value; }
 		}
 
 		public virtual string InventoryItemRequirementEntryIdInventoryItemRequirementIdLocatorId {
 			get { return InventoryItemRequirementEntryId.InventoryItemRequirementId.LocatorId; }
-			internal set { InventoryItemRequirementEntryId.InventoryItemRequirementId.LocatorId = value; }
+			set { InventoryItemRequirementEntryId.InventoryItemRequirementId.LocatorId = value; }
 		}
 
 		public virtual string InventoryItemRequirementEntryIdInventoryItemRequirementIdAttributeSetInstanceId {
 			get { return InventoryItemRequirementEntryId.InventoryItemRequirementId.AttributeSetInstanceId; }
-			internal set { InventoryItemRequirementEntryId.InventoryItemRequirementId.AttributeSetInstanceId = value; }
+			set { InventoryItemRequirementEntryId.InventoryItemRequirementId.AttributeSetInstanceId = value; }
 		}
 
 		public virtual long InventoryItemRequirementEntryIdEntrySeqId {
 			get { return InventoryItemRequirementEntryId.EntrySeqId; }
-			internal set { InventoryItemRequirementEntryId.EntrySeqId = value; }
+			set { InventoryItemRequirementEntryId.EntrySeqId = value; }
 		}
 
         #endregion
 
-		internal InventoryItemRequirementEntryMvoStateEventId ()
+		public InventoryItemRequirementEntryMvoStateEventId ()
 		{
 		}
 

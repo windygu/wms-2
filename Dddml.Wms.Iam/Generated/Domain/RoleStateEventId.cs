@@ -19,14 +19,14 @@ namespace Dddml.Wms.Domain.Role
 
 		public virtual string RoleId { 
 			get { return this._roleId; } 
-			internal set { _roleId = value; } 
+			set { _roleId = value; } 
 		}
 
 		private long _version;
 
 		public virtual long Version { 
 			get { return this._version; } 
-			internal set { _version = value; } 
+			set { _version = value; } 
 		}
 
 
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.Role
 
         #endregion
 
-		internal RoleStateEventId ()
+		public RoleStateEventId ()
 		{
 		}
 

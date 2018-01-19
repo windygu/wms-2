@@ -19,14 +19,14 @@ namespace Dddml.Wms.Domain.UomConversion
 
 		public virtual UomConversionId UomConversionId { 
 			get { return this._uomConversionId; } 
-			internal set { _uomConversionId = value; } 
+			set { _uomConversionId = value; } 
 		}
 
 		private long _version;
 
 		public virtual long Version { 
 			get { return this._version; } 
-			internal set { _version = value; } 
+			set { _version = value; } 
 		}
 
 
@@ -35,17 +35,17 @@ namespace Dddml.Wms.Domain.UomConversion
 
 		public virtual string UomConversionIdUomId {
 			get { return UomConversionId.UomId; }
-			internal set { UomConversionId.UomId = value; }
+			set { UomConversionId.UomId = value; }
 		}
 
 		public virtual string UomConversionIdUomIdTo {
 			get { return UomConversionId.UomIdTo; }
-			internal set { UomConversionId.UomIdTo = value; }
+			set { UomConversionId.UomIdTo = value; }
 		}
 
         #endregion
 
-		internal UomConversionStateEventId ()
+		public UomConversionStateEventId ()
 		{
 		}
 

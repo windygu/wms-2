@@ -19,14 +19,14 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 
 		public virtual string ProductCategoryId { 
 			get { return this._productCategoryId; } 
-			internal set { _productCategoryId = value; } 
+			set { _productCategoryId = value; } 
 		}
 
 		private string _productId;
 
 		public virtual string ProductId { 
 			get { return this._productId; } 
-			internal set { _productId = value; } 
+			set { _productId = value; } 
 		}
 
 
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 
         #endregion
 
-		internal ProductCategoryMemberId ()
+		public ProductCategoryMemberId ()
 		{
 		}
 

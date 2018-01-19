@@ -31,7 +31,7 @@ aggregates:
           ProductCategoryId:
             type: id-ne
           ProductId:
-            type: id-ne
+            type: id-long-ne
           # FromDate:
             # type: date-time
             

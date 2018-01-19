@@ -13,7 +13,7 @@
 	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 
     <property name="MovementQuantity" ></property>
-    <property name="ProductId" ></property>
+    <property name="ProductId" ><column name="ProductId" sql-type="VARCHAR(60)" /></property>
     <property name="LocatorIdFrom" ></property>
     <property name="LocatorIdTo" ></property>
     <property name="AttributeSetInstanceId" ></property>

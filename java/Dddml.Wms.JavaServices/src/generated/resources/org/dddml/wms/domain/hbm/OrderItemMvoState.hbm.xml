@@ -14,7 +14,7 @@
 	</composite-id>
 	<version name="orderVersion" column="OrderVersion" type="long" />
 
-	<property name="productId" ><column name="ProductId" sql-type="VARCHAR(20)" /></property>
+	<property name="productId" ><column name="ProductId" sql-type="VARCHAR(60)" /></property>
 	<property name="externalProductId" ><column name="ExternalProductId" sql-type="VARCHAR(60)" /></property>
 	<property name="quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>
 	<property name="cancelQuantity" ><column name="CancelQuantity" sql-type="DECIMAL(18,6)" /></property>

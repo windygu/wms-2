@@ -7,7 +7,7 @@ aggregates:
   Product: &o0
     id:
       name: ProductId
-      type: id-ne
+      type: id-long-ne
     properties:
       ProductTypeId:
         type: id

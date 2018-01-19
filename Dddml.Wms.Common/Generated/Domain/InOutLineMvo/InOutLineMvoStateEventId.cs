@@ -20,14 +20,14 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		public virtual InOutLineId InOutLineId { 
 			get { return this._inOutLineId; } 
-			internal set { _inOutLineId = value; } 
+			set { _inOutLineId = value; } 
 		}
 
 		private long _inOutVersion;
 
 		public virtual long InOutVersion { 
 			get { return this._inOutVersion; } 
-			internal set { _inOutVersion = value; } 
+			set { _inOutVersion = value; } 
 		}
 
 
@@ -36,17 +36,17 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 		public virtual string InOutLineIdInOutDocumentNumber {
 			get { return InOutLineId.InOutDocumentNumber; }
-			internal set { InOutLineId.InOutDocumentNumber = value; }
+			set { InOutLineId.InOutDocumentNumber = value; }
 		}
 
 		public virtual string InOutLineIdLineNumber {
 			get { return InOutLineId.LineNumber; }
-			internal set { InOutLineId.LineNumber = value; }
+			set { InOutLineId.LineNumber = value; }
 		}
 
         #endregion
 
-		internal InOutLineMvoStateEventId ()
+		public InOutLineMvoStateEventId ()
 		{
 		}
 

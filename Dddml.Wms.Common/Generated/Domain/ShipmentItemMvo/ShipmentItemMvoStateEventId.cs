@@ -20,14 +20,14 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 
 		public virtual ShipmentItemId ShipmentItemId { 
 			get { return this._shipmentItemId; } 
-			internal set { _shipmentItemId = value; } 
+			set { _shipmentItemId = value; } 
 		}
 
 		private long _shipmentVersion;
 
 		public virtual long ShipmentVersion { 
 			get { return this._shipmentVersion; } 
-			internal set { _shipmentVersion = value; } 
+			set { _shipmentVersion = value; } 
 		}
 
 
@@ -36,17 +36,17 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 
 		public virtual string ShipmentItemIdShipmentId {
 			get { return ShipmentItemId.ShipmentId; }
-			internal set { ShipmentItemId.ShipmentId = value; }
+			set { ShipmentItemId.ShipmentId = value; }
 		}
 
 		public virtual string ShipmentItemIdShipmentItemSeqId {
 			get { return ShipmentItemId.ShipmentItemSeqId; }
-			internal set { ShipmentItemId.ShipmentItemSeqId = value; }
+			set { ShipmentItemId.ShipmentItemSeqId = value; }
 		}
 
         #endregion
 
-		internal ShipmentItemMvoStateEventId ()
+		public ShipmentItemMvoStateEventId ()
 		{
 		}
 

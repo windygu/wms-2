@@ -15,7 +15,7 @@
 	<version name="version" column="Version" type="long" />
 
 	<property name="locatorId" ></property>
-	<property name="productId" ></property>
+	<property name="productId" ><column name="ProductId" sql-type="VARCHAR(60)" /></property>
 	<property name="attributeSetInstanceId" ></property>
 	<property name="bookQuantity" ></property>
 	<property name="countedQuantity" ></property>

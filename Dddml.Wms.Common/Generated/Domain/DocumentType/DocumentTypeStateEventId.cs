@@ -19,14 +19,14 @@ namespace Dddml.Wms.Domain.DocumentType
 
 		public virtual string DocumentTypeId { 
 			get { return this._documentTypeId; } 
-			internal set { _documentTypeId = value; } 
+			set { _documentTypeId = value; } 
 		}
 
 		private long _version;
 
 		public virtual long Version { 
 			get { return this._version; } 
-			internal set { _version = value; } 
+			set { _version = value; } 
 		}
 
 
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.DocumentType
 
         #endregion
 
-		internal DocumentTypeStateEventId ()
+		public DocumentTypeStateEventId ()
 		{
 		}
 

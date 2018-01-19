@@ -19,28 +19,28 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 		public virtual string DocumentTypeId { 
 			get { return this._documentTypeId; } 
-			internal set { _documentTypeId = value; } 
+			set { _documentTypeId = value; } 
 		}
 
 		private string _documentNumber;
 
 		public virtual string DocumentNumber { 
 			get { return this._documentNumber; } 
-			internal set { _documentNumber = value; } 
+			set { _documentNumber = value; } 
 		}
 
 		private string _lineNumber;
 
 		public virtual string LineNumber { 
 			get { return this._lineNumber; } 
-			internal set { _lineNumber = value; } 
+			set { _lineNumber = value; } 
 		}
 
 		private int _lineSeqId;
 
 		public virtual int LineSeqId { 
 			get { return this._lineSeqId; } 
-			internal set { _lineSeqId = value; } 
+			set { _lineSeqId = value; } 
 		}
 
 
@@ -49,7 +49,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 
         #endregion
 
-		internal InventoryItemSourceInfo ()
+		public InventoryItemSourceInfo ()
 		{
 		}
 

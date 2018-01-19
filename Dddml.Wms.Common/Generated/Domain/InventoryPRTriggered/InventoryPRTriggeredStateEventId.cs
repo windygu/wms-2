@@ -20,14 +20,14 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 
 		public virtual InventoryPRTriggeredId InventoryPRTriggeredId { 
 			get { return this._inventoryPRTriggeredId; } 
-			internal set { _inventoryPRTriggeredId = value; } 
+			set { _inventoryPRTriggeredId = value; } 
 		}
 
 		private long _version;
 
 		public virtual long Version { 
 			get { return this._version; } 
-			internal set { _version = value; } 
+			set { _version = value; } 
 		}
 
 
@@ -36,32 +36,32 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 
 		public virtual string InventoryPRTriggeredIdSourceEntryIdInventoryItemIdProductId {
 			get { return InventoryPRTriggeredId.SourceEntryId.InventoryItemId.ProductId; }
-			internal set { InventoryPRTriggeredId.SourceEntryId.InventoryItemId.ProductId = value; }
+			set { InventoryPRTriggeredId.SourceEntryId.InventoryItemId.ProductId = value; }
 		}
 
 		public virtual string InventoryPRTriggeredIdSourceEntryIdInventoryItemIdLocatorId {
 			get { return InventoryPRTriggeredId.SourceEntryId.InventoryItemId.LocatorId; }
-			internal set { InventoryPRTriggeredId.SourceEntryId.InventoryItemId.LocatorId = value; }
+			set { InventoryPRTriggeredId.SourceEntryId.InventoryItemId.LocatorId = value; }
 		}
 
 		public virtual string InventoryPRTriggeredIdSourceEntryIdInventoryItemIdAttributeSetInstanceId {
 			get { return InventoryPRTriggeredId.SourceEntryId.InventoryItemId.AttributeSetInstanceId; }
-			internal set { InventoryPRTriggeredId.SourceEntryId.InventoryItemId.AttributeSetInstanceId = value; }
+			set { InventoryPRTriggeredId.SourceEntryId.InventoryItemId.AttributeSetInstanceId = value; }
 		}
 
 		public virtual long InventoryPRTriggeredIdSourceEntryIdEntrySeqId {
 			get { return InventoryPRTriggeredId.SourceEntryId.EntrySeqId; }
-			internal set { InventoryPRTriggeredId.SourceEntryId.EntrySeqId = value; }
+			set { InventoryPRTriggeredId.SourceEntryId.EntrySeqId = value; }
 		}
 
 		public virtual string InventoryPRTriggeredIdInventoryPostingRuleId {
 			get { return InventoryPRTriggeredId.InventoryPostingRuleId; }
-			internal set { InventoryPRTriggeredId.InventoryPostingRuleId = value; }
+			set { InventoryPRTriggeredId.InventoryPostingRuleId = value; }
 		}
 
         #endregion
 
-		internal InventoryPRTriggeredStateEventId ()
+		public InventoryPRTriggeredStateEventId ()
 		{
 		}
 

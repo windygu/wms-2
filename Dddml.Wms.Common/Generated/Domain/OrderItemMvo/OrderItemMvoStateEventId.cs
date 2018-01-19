@@ -20,14 +20,14 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 
 		public virtual OrderItemId OrderItemId { 
 			get { return this._orderItemId; } 
-			internal set { _orderItemId = value; } 
+			set { _orderItemId = value; } 
 		}
 
 		private long _orderVersion;
 
 		public virtual long OrderVersion { 
 			get { return this._orderVersion; } 
-			internal set { _orderVersion = value; } 
+			set { _orderVersion = value; } 
 		}
 
 
@@ -36,17 +36,17 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 
 		public virtual string OrderItemIdOrderId {
 			get { return OrderItemId.OrderId; }
-			internal set { OrderItemId.OrderId = value; }
+			set { OrderItemId.OrderId = value; }
 		}
 
 		public virtual string OrderItemIdOrderItemSeqId {
 			get { return OrderItemId.OrderItemSeqId; }
-			internal set { OrderItemId.OrderItemSeqId = value; }
+			set { OrderItemId.OrderItemSeqId = value; }
 		}
 
         #endregion
 
-		internal OrderItemMvoStateEventId ()
+		public OrderItemMvoStateEventId ()
 		{
 		}
 

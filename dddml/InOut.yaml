@@ -197,7 +197,7 @@ aggregates:
               type: string
 
             ProductId:
-              type: string
+              type: id-long
 
             AttributeSetInstanceId:
               type: string

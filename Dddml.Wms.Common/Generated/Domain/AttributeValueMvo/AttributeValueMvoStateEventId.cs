@@ -20,14 +20,14 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 
 		public virtual AttributeValueId AttributeValueId { 
 			get { return this._attributeValueId; } 
-			internal set { _attributeValueId = value; } 
+			set { _attributeValueId = value; } 
 		}
 
 		private long _attributeVersion;
 
 		public virtual long AttributeVersion { 
 			get { return this._attributeVersion; } 
-			internal set { _attributeVersion = value; } 
+			set { _attributeVersion = value; } 
 		}
 
 
@@ -36,17 +36,17 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 
 		public virtual string AttributeValueIdAttributeId {
 			get { return AttributeValueId.AttributeId; }
-			internal set { AttributeValueId.AttributeId = value; }
+			set { AttributeValueId.AttributeId = value; }
 		}
 
 		public virtual string AttributeValueIdValue {
 			get { return AttributeValueId.Value; }
-			internal set { AttributeValueId.Value = value; }
+			set { AttributeValueId.Value = value; }
 		}
 
         #endregion
 
-		internal AttributeValueMvoStateEventId ()
+		public AttributeValueMvoStateEventId ()
 		{
 		}
 

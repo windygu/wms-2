@@ -6,7 +6,7 @@
   <class name="Dddml.Wms.Domain.InventoryItemRequirement.InventoryItemRequirementState" table="InventoryItemRequirements">
 
     <composite-id name="InventoryItemRequirementId" class="Dddml.Wms.Domain.InventoryItem.InventoryItemId">
-        <key-property name="ProductId" ><column name="ProductId" length="50" /></key-property>
+        <key-property name="ProductId" ><column name="ProductId" length="60" sql-type="VARCHAR(60)" /></key-property>
         <key-property name="LocatorId" ><column name="LocatorId" length="50" /></key-property>
         <key-property name="AttributeSetInstanceId" ><column name="AttributeSetInstanceId" length="50" /></key-property>
     </composite-id>

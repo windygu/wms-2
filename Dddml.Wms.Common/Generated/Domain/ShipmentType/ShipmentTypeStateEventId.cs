@@ -19,14 +19,14 @@ namespace Dddml.Wms.Domain.ShipmentType
 
 		public virtual string ShipmentTypeId { 
 			get { return this._shipmentTypeId; } 
-			internal set { _shipmentTypeId = value; } 
+			set { _shipmentTypeId = value; } 
 		}
 
 		private long _version;
 
 		public virtual long Version { 
 			get { return this._version; } 
-			internal set { _version = value; } 
+			set { _version = value; } 
 		}
 
 
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.ShipmentType
 
         #endregion
 
-		internal ShipmentTypeStateEventId ()
+		public ShipmentTypeStateEventId ()
 		{
 		}
 

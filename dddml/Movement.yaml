@@ -141,7 +141,7 @@ aggregates:
               description: The Movement Quantity indicates the quantity of a product that has been moved. 
 
             ProductId:
-              type: string
+              type: id-long
               
             LocatorIdFrom:
               type: string

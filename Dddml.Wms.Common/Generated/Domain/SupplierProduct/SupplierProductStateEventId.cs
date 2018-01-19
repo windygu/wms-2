@@ -19,14 +19,14 @@ namespace Dddml.Wms.Domain.SupplierProduct
 
 		public virtual SupplierProductId SupplierProductId { 
 			get { return this._supplierProductId; } 
-			internal set { _supplierProductId = value; } 
+			set { _supplierProductId = value; } 
 		}
 
 		private long _version;
 
 		public virtual long Version { 
 			get { return this._version; } 
-			internal set { _version = value; } 
+			set { _version = value; } 
 		}
 
 
@@ -35,27 +35,27 @@ namespace Dddml.Wms.Domain.SupplierProduct
 
 		public virtual string SupplierProductIdProductId {
 			get { return SupplierProductId.ProductId; }
-			internal set { SupplierProductId.ProductId = value; }
+			set { SupplierProductId.ProductId = value; }
 		}
 
 		public virtual string SupplierProductIdPartyId {
 			get { return SupplierProductId.PartyId; }
-			internal set { SupplierProductId.PartyId = value; }
+			set { SupplierProductId.PartyId = value; }
 		}
 
 		public virtual string SupplierProductIdCurrencyUomId {
 			get { return SupplierProductId.CurrencyUomId; }
-			internal set { SupplierProductId.CurrencyUomId = value; }
+			set { SupplierProductId.CurrencyUomId = value; }
 		}
 
 		public virtual decimal? SupplierProductIdMinimumOrderQuantity {
 			get { return SupplierProductId.MinimumOrderQuantity; }
-			internal set { SupplierProductId.MinimumOrderQuantity = value; }
+			set { SupplierProductId.MinimumOrderQuantity = value; }
 		}
 
         #endregion
 
-		internal SupplierProductStateEventId ()
+		public SupplierProductStateEventId ()
 		{
 		}
 

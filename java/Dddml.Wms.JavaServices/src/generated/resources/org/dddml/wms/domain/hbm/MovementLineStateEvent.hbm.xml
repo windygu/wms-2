@@ -17,7 +17,7 @@
     <discriminator column="StateEventType" type="string" />
 
 	<property name="movementQuantity" ></property>
-	<property name="productId" ></property>
+	<property name="productId" ><column name="ProductId" sql-type="VARCHAR(60)" /></property>
 	<property name="locatorIdFrom" ></property>
 	<property name="locatorIdTo" ></property>
 	<property name="attributeSetInstanceId" ></property>

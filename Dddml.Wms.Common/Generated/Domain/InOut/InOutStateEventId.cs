@@ -19,14 +19,14 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual string DocumentNumber { 
 			get { return this._documentNumber; } 
-			internal set { _documentNumber = value; } 
+			set { _documentNumber = value; } 
 		}
 
 		private long _version;
 
 		public virtual long Version { 
 			get { return this._version; } 
-			internal set { _version = value; } 
+			set { _version = value; } 
 		}
 
 
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.InOut
 
         #endregion
 
-		internal InOutStateEventId ()
+		public InOutStateEventId ()
 		{
 		}
 

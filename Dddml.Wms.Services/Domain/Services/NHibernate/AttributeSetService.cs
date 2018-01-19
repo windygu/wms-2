@@ -1,4 +1,5 @@
-﻿using Dddml.Wms.Domain;
+﻿using Common.Logging;
+using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.Attribute;
 using Dddml.Wms.Domain.AttributeSet;
 using Dddml.Wms.Domain.Services;
@@ -16,6 +17,7 @@ namespace Dddml.Wms.Domain.Services.NHibernate
 
     public class AttributeSetService : IAttributeSetService
     {
+        static readonly ILog _log = LogManager.GetLogger<AttributeSetService>();
 
         public IAttributeSetStateQueryRepository AttributeSetStateQueryRepository { get; set; }
 
@@ -71,8 +73,24 @@ namespace Dddml.Wms.Domain.Services.NHibernate
                         }
                         if (!String.IsNullOrWhiteSpace(fname))
                         {
-                            pDic.Add(a.AttributeId, fname);
-                            pDic.Add(a.AttributeName, fname);
+                            // ///////////////////////////////
+                            if (pDic.ContainsKey(a.AttributeId)) 
+                            {
+                                if (_log.IsInfoEnabled) { _log.Info(String.Format("pDic.ContainsKey(a.AttributeId). Key: {0}", a.AttributeId)); }
+                            }
+                            if (pDic.ContainsKey(a.AttributeName))
+                            {
+                                if (_log.IsDebugEnabled) { _log.Debug(String.Format("pDic.ContainsKey(a.AttributeName). Key: {0}", a.AttributeName)); }
+                            }
+                            // ///////////////////////////////
+                            if(!pDic.ContainsKey(a.AttributeId))
+                            {
+                                pDic.Add(a.AttributeId, fname);
+                            }
+                            if (!pDic.ContainsKey(a.AttributeName))
+                            {
+                                pDic.Add(a.AttributeName, fname);
+                            }
                             // ???
                             //if (a.Aliases != null)
                             //{

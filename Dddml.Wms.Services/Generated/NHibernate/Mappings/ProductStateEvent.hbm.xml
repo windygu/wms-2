@@ -6,7 +6,7 @@
   <class name="ProductStateEventBase" table="ProductStateEvents" mutable="false" abstract="true">
 
     <composite-id name="StateEventId" class="Dddml.Wms.Domain.Product.ProductStateEventId">
-        <key-property name="ProductId" ><column name="ProductId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="ProductId" ><column name="ProductId" sql-type="VARCHAR(60)" /></key-property>
         <key-property name="Version" ></key-property>
     </composite-id>
     <discriminator column="StateEventType" type="String" />

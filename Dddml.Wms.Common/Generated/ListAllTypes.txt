@@ -45,6 +45,7 @@
                 dict.Add("floating-point", "_FLOATING-POINT_");
                 dict.Add("id", "_ID_");
                 dict.Add("id-long", "_ID-LONG_");
+                dict.Add("id-long-ne", "_ID-LONG-NE_");
                 dict.Add("id-ne", "_ID-NE_");
                 dict.Add("id-vlong", "_ID-VLONG_");
                 dict.Add("indicator", "_INDICATOR_");

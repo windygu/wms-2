@@ -19,21 +19,21 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual string ShipmentId { 
 			get { return this._shipmentId; } 
-			internal set { _shipmentId = value; } 
+			set { _shipmentId = value; } 
 		}
 
 		private string _receiptSeqId;
 
 		public virtual string ReceiptSeqId { 
 			get { return this._receiptSeqId; } 
-			internal set { _receiptSeqId = value; } 
+			set { _receiptSeqId = value; } 
 		}
 
 		private long _shipmentVersion;
 
 		public virtual long ShipmentVersion { 
 			get { return this._shipmentVersion; } 
-			internal set { _shipmentVersion = value; } 
+			set { _shipmentVersion = value; } 
 		}
 
 
@@ -42,7 +42,7 @@ namespace Dddml.Wms.Domain.Shipment
 
         #endregion
 
-		internal ShipmentReceiptStateEventId ()
+		public ShipmentReceiptStateEventId ()
 		{
 		}
 

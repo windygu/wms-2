@@ -20,14 +20,14 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
 		public virtual MovementConfirmationLineId MovementConfirmationLineId { 
 			get { return this._movementConfirmationLineId; } 
-			internal set { _movementConfirmationLineId = value; } 
+			set { _movementConfirmationLineId = value; } 
 		}
 
 		private long _movementConfirmationVersion;
 
 		public virtual long MovementConfirmationVersion { 
 			get { return this._movementConfirmationVersion; } 
-			internal set { _movementConfirmationVersion = value; } 
+			set { _movementConfirmationVersion = value; } 
 		}
 
 
@@ -36,17 +36,17 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
 		public virtual string MovementConfirmationLineIdMovementConfirmationDocumentNumber {
 			get { return MovementConfirmationLineId.MovementConfirmationDocumentNumber; }
-			internal set { MovementConfirmationLineId.MovementConfirmationDocumentNumber = value; }
+			set { MovementConfirmationLineId.MovementConfirmationDocumentNumber = value; }
 		}
 
 		public virtual string MovementConfirmationLineIdLineNumber {
 			get { return MovementConfirmationLineId.LineNumber; }
-			internal set { MovementConfirmationLineId.LineNumber = value; }
+			set { MovementConfirmationLineId.LineNumber = value; }
 		}
 
         #endregion
 
-		internal MovementConfirmationLineMvoStateEventId ()
+		public MovementConfirmationLineMvoStateEventId ()
 		{
 		}
 

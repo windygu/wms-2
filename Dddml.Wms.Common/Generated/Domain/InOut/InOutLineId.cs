@@ -19,14 +19,14 @@ namespace Dddml.Wms.Domain.InOut
 
 		public virtual string InOutDocumentNumber { 
 			get { return this._inOutDocumentNumber; } 
-			internal set { _inOutDocumentNumber = value; } 
+			set { _inOutDocumentNumber = value; } 
 		}
 
 		private string _lineNumber;
 
 		public virtual string LineNumber { 
 			get { return this._lineNumber; } 
-			internal set { _lineNumber = value; } 
+			set { _lineNumber = value; } 
 		}
 
 
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.InOut
 
         #endregion
 
-		internal InOutLineId ()
+		public InOutLineId ()
 		{
 		}
 

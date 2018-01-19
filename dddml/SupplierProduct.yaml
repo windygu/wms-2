@@ -71,7 +71,7 @@ aggregates:
         name: SupplierProductId
         properties:
           ProductId:
-            type: id-ne
+            type: id-long-ne
           PartyId:
             type: id-ne
           CurrencyUomId:

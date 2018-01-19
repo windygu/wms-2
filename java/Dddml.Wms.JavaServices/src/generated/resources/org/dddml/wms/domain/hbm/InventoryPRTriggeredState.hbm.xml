@@ -9,7 +9,7 @@
   <class name="org.dddml.wms.domain.inventoryprtriggered.AbstractInventoryPRTriggeredState$SimpleInventoryPRTriggeredState" table="InventoryPRTriggereds">
 
 	<composite-id name="inventoryPRTriggeredId" class="org.dddml.wms.domain.inventoryprtriggered.InventoryPRTriggeredId">
-		<key-property name="sourceEntryIdInventoryItemIdProductId" ><column name="ProductId" length="50" /></key-property>
+		<key-property name="sourceEntryIdInventoryItemIdProductId" ><column name="ProductId" length="60" sql-type="VARCHAR(60)" /></key-property>
 		<key-property name="sourceEntryIdInventoryItemIdLocatorId" ><column name="LocatorId" length="50" /></key-property>
 		<key-property name="sourceEntryIdInventoryItemIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" length="50" /></key-property>
 		<key-property name="sourceEntryIdEntrySeqId" ><column name="EntrySeqId" /></key-property>

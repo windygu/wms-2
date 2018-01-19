@@ -19,14 +19,14 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionField
 
 		public virtual string Name { 
 			get { return this._name; } 
-			internal set { _name = value; } 
+			set { _name = value; } 
 		}
 
 		private long _version;
 
 		public virtual long Version { 
 			get { return this._version; } 
-			internal set { _version = value; } 
+			set { _version = value; } 
 		}
 
 
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionField
 
         #endregion
 
-		internal AttributeSetInstanceExtensionFieldStateEventId ()
+		public AttributeSetInstanceExtensionFieldStateEventId ()
 		{
 		}
 

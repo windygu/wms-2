@@ -19,14 +19,14 @@ namespace Dddml.Wms.Domain.DamageType
 
 		public virtual string DamageTypeId { 
 			get { return this._damageTypeId; } 
-			internal set { _damageTypeId = value; } 
+			set { _damageTypeId = value; } 
 		}
 
 		private long _version;
 
 		public virtual long Version { 
 			get { return this._version; } 
-			internal set { _version = value; } 
+			set { _version = value; } 
 		}
 
 
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.DamageType
 
         #endregion
 
-		internal DamageTypeStateEventId ()
+		public DamageTypeStateEventId ()
 		{
 		}
 

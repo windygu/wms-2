@@ -19,14 +19,14 @@ namespace Dddml.Wms.Domain.User
 
 		public virtual string LoginProvider { 
 			get { return this._loginProvider; } 
-			internal set { _loginProvider = value; } 
+			set { _loginProvider = value; } 
 		}
 
 		private string _providerKey;
 
 		public virtual string ProviderKey { 
 			get { return this._providerKey; } 
-			internal set { _providerKey = value; } 
+			set { _providerKey = value; } 
 		}
 
 
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.User
 
         #endregion
 
-		internal LoginKey ()
+		public LoginKey ()
 		{
 		}
 

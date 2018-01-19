@@ -19,14 +19,14 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual string ShipmentId { 
 			get { return this._shipmentId; } 
-			internal set { _shipmentId = value; } 
+			set { _shipmentId = value; } 
 		}
 
 		private string _shipmentItemSeqId;
 
 		public virtual string ShipmentItemSeqId { 
 			get { return this._shipmentItemSeqId; } 
-			internal set { _shipmentItemSeqId = value; } 
+			set { _shipmentItemSeqId = value; } 
 		}
 
 
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.Shipment
 
         #endregion
 
-		internal ShipmentItemId ()
+		public ShipmentItemId ()
 		{
 		}
 

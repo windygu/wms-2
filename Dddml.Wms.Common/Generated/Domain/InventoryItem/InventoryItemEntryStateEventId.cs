@@ -19,21 +19,21 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 		public virtual InventoryItemId InventoryItemId { 
 			get { return this._inventoryItemId; } 
-			internal set { _inventoryItemId = value; } 
+			set { _inventoryItemId = value; } 
 		}
 
 		private long _entrySeqId;
 
 		public virtual long EntrySeqId { 
 			get { return this._entrySeqId; } 
-			internal set { _entrySeqId = value; } 
+			set { _entrySeqId = value; } 
 		}
 
 		private long _inventoryItemVersion;
 
 		public virtual long InventoryItemVersion { 
 			get { return this._inventoryItemVersion; } 
-			internal set { _inventoryItemVersion = value; } 
+			set { _inventoryItemVersion = value; } 
 		}
 
 
@@ -42,22 +42,22 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 		public virtual string InventoryItemIdProductId {
 			get { return InventoryItemId.ProductId; }
-			internal set { InventoryItemId.ProductId = value; }
+			set { InventoryItemId.ProductId = value; }
 		}
 
 		public virtual string InventoryItemIdLocatorId {
 			get { return InventoryItemId.LocatorId; }
-			internal set { InventoryItemId.LocatorId = value; }
+			set { InventoryItemId.LocatorId = value; }
 		}
 
 		public virtual string InventoryItemIdAttributeSetInstanceId {
 			get { return InventoryItemId.AttributeSetInstanceId; }
-			internal set { InventoryItemId.AttributeSetInstanceId = value; }
+			set { InventoryItemId.AttributeSetInstanceId = value; }
 		}
 
         #endregion
 
-		internal InventoryItemEntryStateEventId ()
+		public InventoryItemEntryStateEventId ()
 		{
 		}
 

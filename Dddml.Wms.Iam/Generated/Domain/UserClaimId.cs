@@ -19,14 +19,14 @@ namespace Dddml.Wms.Domain.User
 
 		public virtual string UserId { 
 			get { return this._userId; } 
-			internal set { _userId = value; } 
+			set { _userId = value; } 
 		}
 
 		private int _claimId;
 
 		public virtual int ClaimId { 
 			get { return this._claimId; } 
-			internal set { _claimId = value; } 
+			set { _claimId = value; } 
 		}
 
 
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.User
 
         #endregion
 
-		internal UserClaimId ()
+		public UserClaimId ()
 		{
 		}
 

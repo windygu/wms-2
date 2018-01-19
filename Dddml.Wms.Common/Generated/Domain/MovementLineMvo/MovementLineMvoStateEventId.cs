@@ -20,14 +20,14 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
 		public virtual MovementLineId MovementLineId { 
 			get { return this._movementLineId; } 
-			internal set { _movementLineId = value; } 
+			set { _movementLineId = value; } 
 		}
 
 		private long _movementVersion;
 
 		public virtual long MovementVersion { 
 			get { return this._movementVersion; } 
-			internal set { _movementVersion = value; } 
+			set { _movementVersion = value; } 
 		}
 
 
@@ -36,17 +36,17 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
 		public virtual string MovementLineIdMovementDocumentNumber {
 			get { return MovementLineId.MovementDocumentNumber; }
-			internal set { MovementLineId.MovementDocumentNumber = value; }
+			set { MovementLineId.MovementDocumentNumber = value; }
 		}
 
 		public virtual string MovementLineIdLineNumber {
 			get { return MovementLineId.LineNumber; }
-			internal set { MovementLineId.LineNumber = value; }
+			set { MovementLineId.LineNumber = value; }
 		}
 
         #endregion
 
-		internal MovementLineMvoStateEventId ()
+		public MovementLineMvoStateEventId ()
 		{
 		}
 

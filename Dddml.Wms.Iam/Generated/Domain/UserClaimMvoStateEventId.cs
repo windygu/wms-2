@@ -20,14 +20,14 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 
 		public virtual UserClaimId UserClaimId { 
 			get { return this._userClaimId; } 
-			internal set { _userClaimId = value; } 
+			set { _userClaimId = value; } 
 		}
 
 		private long _userVersion;
 
 		public virtual long UserVersion { 
 			get { return this._userVersion; } 
-			internal set { _userVersion = value; } 
+			set { _userVersion = value; } 
 		}
 
 
@@ -36,17 +36,17 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 
 		public virtual string UserClaimIdUserId {
 			get { return UserClaimId.UserId; }
-			internal set { UserClaimId.UserId = value; }
+			set { UserClaimId.UserId = value; }
 		}
 
 		public virtual int UserClaimIdClaimId {
 			get { return UserClaimId.ClaimId; }
-			internal set { UserClaimId.ClaimId = value; }
+			set { UserClaimId.ClaimId = value; }
 		}
 
         #endregion
 
-		internal UserClaimMvoStateEventId ()
+		public UserClaimMvoStateEventId ()
 		{
 		}
 

@@ -20,14 +20,14 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 
 		public virtual UserRoleId UserRoleId { 
 			get { return this._userRoleId; } 
-			internal set { _userRoleId = value; } 
+			set { _userRoleId = value; } 
 		}
 
 		private long _userVersion;
 
 		public virtual long UserVersion { 
 			get { return this._userVersion; } 
-			internal set { _userVersion = value; } 
+			set { _userVersion = value; } 
 		}
 
 
@@ -36,17 +36,17 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 
 		public virtual string UserRoleIdUserId {
 			get { return UserRoleId.UserId; }
-			internal set { UserRoleId.UserId = value; }
+			set { UserRoleId.UserId = value; }
 		}
 
 		public virtual string UserRoleIdRoleId {
 			get { return UserRoleId.RoleId; }
-			internal set { UserRoleId.RoleId = value; }
+			set { UserRoleId.RoleId = value; }
 		}
 
         #endregion
 
-		internal UserRoleMvoStateEventId ()
+		public UserRoleMvoStateEventId ()
 		{
 		}
 

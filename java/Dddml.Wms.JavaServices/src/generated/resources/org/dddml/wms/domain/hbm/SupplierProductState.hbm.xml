@@ -9,7 +9,7 @@
   <class name="org.dddml.wms.domain.supplierproduct.AbstractSupplierProductState$SimpleSupplierProductState" table="SupplierProducts">
 
 	<composite-id name="supplierProductId" class="org.dddml.wms.domain.supplierproduct.SupplierProductId">
-		<key-property name="productId" ><column name="SupplierProductIdProductId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="productId" ><column name="SupplierProductIdProductId" sql-type="VARCHAR(60)" /></key-property>
 		<key-property name="partyId" ><column name="SupplierProductIdPartyId" sql-type="VARCHAR(20)" /></key-property>
 		<key-property name="currencyUomId" ><column name="SupplierProductIdCurrencyUomId" sql-type="VARCHAR(20)" /></key-property>
 		<key-property name="minimumOrderQuantity" ><column name="SupplierProductIdMinimumOrderQuantity" sql-type="DECIMAL(18,6)" /></key-property>

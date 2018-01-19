@@ -311,7 +311,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsNullableType = false,
                     DisplayName = "",
                     Description = "",
-                    Length = 50,
+                    Length = 60,
                     GenericTypeName = "",
                     ReferenceTypeName = "",
                     ReferenceName = "",

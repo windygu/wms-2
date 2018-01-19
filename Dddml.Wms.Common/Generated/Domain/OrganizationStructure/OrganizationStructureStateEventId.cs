@@ -19,14 +19,14 @@ namespace Dddml.Wms.Domain.OrganizationStructure
 
 		public virtual OrganizationStructureId Id { 
 			get { return this._id; } 
-			internal set { _id = value; } 
+			set { _id = value; } 
 		}
 
 		private long _version;
 
 		public virtual long Version { 
 			get { return this._version; } 
-			internal set { _version = value; } 
+			set { _version = value; } 
 		}
 
 
@@ -35,22 +35,22 @@ namespace Dddml.Wms.Domain.OrganizationStructure
 
 		public virtual string IdOrganizationStructureTypeId {
 			get { return Id.OrganizationStructureTypeId; }
-			internal set { Id.OrganizationStructureTypeId = value; }
+			set { Id.OrganizationStructureTypeId = value; }
 		}
 
 		public virtual string IdParentId {
 			get { return Id.ParentId; }
-			internal set { Id.ParentId = value; }
+			set { Id.ParentId = value; }
 		}
 
 		public virtual string IdSubsidiaryId {
 			get { return Id.SubsidiaryId; }
-			internal set { Id.SubsidiaryId = value; }
+			set { Id.SubsidiaryId = value; }
 		}
 
         #endregion
 
-		internal OrganizationStructureStateEventId ()
+		public OrganizationStructureStateEventId ()
 		{
 		}
 

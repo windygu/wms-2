@@ -19,14 +19,14 @@ namespace Dddml.Wms.Domain.Permission
 
 		public virtual string PermissionId { 
 			get { return this._permissionId; } 
-			internal set { _permissionId = value; } 
+			set { _permissionId = value; } 
 		}
 
 		private long _version;
 
 		public virtual long Version { 
 			get { return this._version; } 
-			internal set { _version = value; } 
+			set { _version = value; } 
 		}
 
 
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.Permission
 
         #endregion
 
-		internal PermissionStateEventId ()
+		public PermissionStateEventId ()
 		{
 		}
 

@@ -20,14 +20,14 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 
 		public virtual AttributeAliasId AttributeAliasId { 
 			get { return this._attributeAliasId; } 
-			internal set { _attributeAliasId = value; } 
+			set { _attributeAliasId = value; } 
 		}
 
 		private long _attributeVersion;
 
 		public virtual long AttributeVersion { 
 			get { return this._attributeVersion; } 
-			internal set { _attributeVersion = value; } 
+			set { _attributeVersion = value; } 
 		}
 
 
@@ -36,17 +36,17 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 
 		public virtual string AttributeAliasIdAttributeId {
 			get { return AttributeAliasId.AttributeId; }
-			internal set { AttributeAliasId.AttributeId = value; }
+			set { AttributeAliasId.AttributeId = value; }
 		}
 
 		public virtual string AttributeAliasIdCode {
 			get { return AttributeAliasId.Code; }
-			internal set { AttributeAliasId.Code = value; }
+			set { AttributeAliasId.Code = value; }
 		}
 
         #endregion
 
-		internal AttributeAliasMvoStateEventId ()
+		public AttributeAliasMvoStateEventId ()
 		{
 		}
 

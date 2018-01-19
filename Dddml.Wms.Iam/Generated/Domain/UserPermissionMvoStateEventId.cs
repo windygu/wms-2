@@ -20,14 +20,14 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 
 		public virtual UserPermissionId UserPermissionId { 
 			get { return this._userPermissionId; } 
-			internal set { _userPermissionId = value; } 
+			set { _userPermissionId = value; } 
 		}
 
 		private long _userVersion;
 
 		public virtual long UserVersion { 
 			get { return this._userVersion; } 
-			internal set { _userVersion = value; } 
+			set { _userVersion = value; } 
 		}
 
 
@@ -36,17 +36,17 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 
 		public virtual string UserPermissionIdUserId {
 			get { return UserPermissionId.UserId; }
-			internal set { UserPermissionId.UserId = value; }
+			set { UserPermissionId.UserId = value; }
 		}
 
 		public virtual string UserPermissionIdPermissionId {
 			get { return UserPermissionId.PermissionId; }
-			internal set { UserPermissionId.PermissionId = value; }
+			set { UserPermissionId.PermissionId = value; }
 		}
 
         #endregion
 
-		internal UserPermissionMvoStateEventId ()
+		public UserPermissionMvoStateEventId ()
 		{
 		}
 

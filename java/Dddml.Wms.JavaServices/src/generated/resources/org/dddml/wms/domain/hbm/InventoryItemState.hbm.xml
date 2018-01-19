@@ -9,7 +9,7 @@
   <class name="org.dddml.wms.domain.inventoryitem.AbstractInventoryItemState$SimpleInventoryItemState" table="InventoryItems">
 
 	<composite-id name="inventoryItemId" class="org.dddml.wms.domain.inventoryitem.InventoryItemId">
-		<key-property name="productId" ><column name="ProductId" length="50" /></key-property>
+		<key-property name="productId" ><column name="ProductId" length="60" sql-type="VARCHAR(60)" /></key-property>
 		<key-property name="locatorId" ><column name="LocatorId" length="50" /></key-property>
 		<key-property name="attributeSetInstanceId" ><column name="AttributeSetInstanceId" length="50" /></key-property>
 	</composite-id>

@@ -10,7 +10,7 @@
 
     <cache usage="read-only"/>
 	<composite-id name="inventoryItemEntryId" class="org.dddml.wms.domain.inventoryitem.InventoryItemEntryId">
-		<key-property name="inventoryItemIdProductId" ><column name="ProductId" length="50" /></key-property>
+		<key-property name="inventoryItemIdProductId" ><column name="ProductId" length="60" sql-type="VARCHAR(60)" /></key-property>
 		<key-property name="inventoryItemIdLocatorId" ><column name="LocatorId" length="50" /></key-property>
 		<key-property name="inventoryItemIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" length="50" /></key-property>
 		<key-property name="entrySeqId" ></key-property>

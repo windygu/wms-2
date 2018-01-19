@@ -97,7 +97,7 @@ aggregates:
         properties:
         
           ProductId:
-            type: id
+            type: id-long
             
           ExternalProductId:
             type: id-long

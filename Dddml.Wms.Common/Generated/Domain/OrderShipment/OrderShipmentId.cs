@@ -19,28 +19,28 @@ namespace Dddml.Wms.Domain.OrderShipment
 
 		public virtual string OrderId { 
 			get { return this._orderId; } 
-			internal set { _orderId = value; } 
+			set { _orderId = value; } 
 		}
 
 		private string _orderItemSeqId;
 
 		public virtual string OrderItemSeqId { 
 			get { return this._orderItemSeqId; } 
-			internal set { _orderItemSeqId = value; } 
+			set { _orderItemSeqId = value; } 
 		}
 
 		private string _shipmentId;
 
 		public virtual string ShipmentId { 
 			get { return this._shipmentId; } 
-			internal set { _shipmentId = value; } 
+			set { _shipmentId = value; } 
 		}
 
 		private string _shipmentItemSeqId;
 
 		public virtual string ShipmentItemSeqId { 
 			get { return this._shipmentItemSeqId; } 
-			internal set { _shipmentItemSeqId = value; } 
+			set { _shipmentItemSeqId = value; } 
 		}
 
 
@@ -49,7 +49,7 @@ namespace Dddml.Wms.Domain.OrderShipment
 
         #endregion
 
-		internal OrderShipmentId ()
+		public OrderShipmentId ()
 		{
 		}
 

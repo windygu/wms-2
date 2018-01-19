@@ -6,7 +6,7 @@
   <class name="InventoryItemRequirementEntryMvoStateEventBase" table="InventoryItemRequirementEntryMvoStateEvents" mutable="false" abstract="true">
 
     <composite-id name="StateEventId" class="Dddml.Wms.Domain.InventoryItemRequirementEntryMvo.InventoryItemRequirementEntryMvoStateEventId">
-        <key-property name="InventoryItemRequirementEntryIdInventoryItemRequirementIdProductId" ><column name="ProductId" length="50" /></key-property>
+        <key-property name="InventoryItemRequirementEntryIdInventoryItemRequirementIdProductId" ><column name="ProductId" length="60" sql-type="VARCHAR(60)" /></key-property>
         <key-property name="InventoryItemRequirementEntryIdInventoryItemRequirementIdLocatorId" ><column name="LocatorId" length="50" /></key-property>
         <key-property name="InventoryItemRequirementEntryIdInventoryItemRequirementIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" length="50" /></key-property>
         <key-property name="InventoryItemRequirementEntryIdEntrySeqId" ><column name="EntrySeqId" /></key-property>
@@ -16,7 +16,7 @@
 
     <property name="Quantity" ></property>
     <component name="SourceEventId" class="Dddml.Wms.Domain.InventoryPRTriggered.InventoryPRTriggeredId">
-        <property name="SourceEntryIdInventoryItemIdProductId" ><column name="SrcEventProductId" length="50" /></property>
+        <property name="SourceEntryIdInventoryItemIdProductId" ><column name="SrcEventProductId" length="60" sql-type="VARCHAR(60)" /></property>
         <property name="SourceEntryIdInventoryItemIdLocatorId" ><column name="SrcEventLocatorId" length="50" /></property>
         <property name="SourceEntryIdInventoryItemIdAttributeSetInstanceId" ><column name="SrcEventAttributeSetInstanceId" length="50" /></property>
         <property name="SourceEntryIdEntrySeqId" ><column name="SrcEventEntrySeqId" /></property>

@@ -19,14 +19,14 @@ namespace Dddml.Wms.Domain.Product
 
 		public virtual string ProductId { 
 			get { return this._productId; } 
-			internal set { _productId = value; } 
+			set { _productId = value; } 
 		}
 
 		private long _version;
 
 		public virtual long Version { 
 			get { return this._version; } 
-			internal set { _version = value; } 
+			set { _version = value; } 
 		}
 
 
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.Product
 
         #endregion
 
-		internal ProductStateEventId ()
+		public ProductStateEventId ()
 		{
 		}
 

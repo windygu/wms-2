@@ -21,14 +21,14 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 
 		public virtual InventoryItemId InventoryItemRequirementId { 
 			get { return this._inventoryItemRequirementId; } 
-			internal set { _inventoryItemRequirementId = value; } 
+			set { _inventoryItemRequirementId = value; } 
 		}
 
 		private long _entrySeqId;
 
 		public virtual long EntrySeqId { 
 			get { return this._entrySeqId; } 
-			internal set { _entrySeqId = value; } 
+			set { _entrySeqId = value; } 
 		}
 
 
@@ -37,22 +37,22 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 
 		public virtual string InventoryItemRequirementIdProductId {
 			get { return InventoryItemRequirementId.ProductId; }
-			internal set { InventoryItemRequirementId.ProductId = value; }
+			set { InventoryItemRequirementId.ProductId = value; }
 		}
 
 		public virtual string InventoryItemRequirementIdLocatorId {
 			get { return InventoryItemRequirementId.LocatorId; }
-			internal set { InventoryItemRequirementId.LocatorId = value; }
+			set { InventoryItemRequirementId.LocatorId = value; }
 		}
 
 		public virtual string InventoryItemRequirementIdAttributeSetInstanceId {
 			get { return InventoryItemRequirementId.AttributeSetInstanceId; }
-			internal set { InventoryItemRequirementId.AttributeSetInstanceId = value; }
+			set { InventoryItemRequirementId.AttributeSetInstanceId = value; }
 		}
 
         #endregion
 
-		internal InventoryItemRequirementEntryId ()
+		public InventoryItemRequirementEntryId ()
 		{
 		}
 

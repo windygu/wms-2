@@ -7,7 +7,7 @@
 
     <composite-id name="ProductCategoryMemberId" class="Dddml.Wms.Domain.ProductCategoryMember.ProductCategoryMemberId">
         <key-property name="ProductCategoryId" ><column name="ProductCategoryMemberIdProductCategoryId" sql-type="VARCHAR(20)" /></key-property>
-        <key-property name="ProductId" ><column name="ProductCategoryMemberIdProductId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="ProductId" ><column name="ProductCategoryMemberIdProductId" sql-type="VARCHAR(60)" /></key-property>
     </composite-id>
 
 	<version name="Version" column="Version" type="long" unsaved-value="0"/>

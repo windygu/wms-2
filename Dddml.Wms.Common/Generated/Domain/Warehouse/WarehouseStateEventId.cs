@@ -19,14 +19,14 @@ namespace Dddml.Wms.Domain.Warehouse
 
 		public virtual string WarehouseId { 
 			get { return this._warehouseId; } 
-			internal set { _warehouseId = value; } 
+			set { _warehouseId = value; } 
 		}
 
 		private long _version;
 
 		public virtual long Version { 
 			get { return this._version; } 
-			internal set { _version = value; } 
+			set { _version = value; } 
 		}
 
 
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.Warehouse
 
         #endregion
 
-		internal WarehouseStateEventId ()
+		public WarehouseStateEventId ()
 		{
 		}
 

@@ -19,21 +19,21 @@ namespace Dddml.Wms.Domain.User
 
 		public virtual string UserId { 
 			get { return this._userId; } 
-			internal set { _userId = value; } 
+			set { _userId = value; } 
 		}
 
 		private LoginKey _loginKey = new LoginKey();
 
 		public virtual LoginKey LoginKey { 
 			get { return this._loginKey; } 
-			internal set { _loginKey = value; } 
+			set { _loginKey = value; } 
 		}
 
 		private long _userVersion;
 
 		public virtual long UserVersion { 
 			get { return this._userVersion; } 
-			internal set { _userVersion = value; } 
+			set { _userVersion = value; } 
 		}
 
 
@@ -42,17 +42,17 @@ namespace Dddml.Wms.Domain.User
 
 		public virtual string LoginKeyLoginProvider {
 			get { return LoginKey.LoginProvider; }
-			internal set { LoginKey.LoginProvider = value; }
+			set { LoginKey.LoginProvider = value; }
 		}
 
 		public virtual string LoginKeyProviderKey {
 			get { return LoginKey.ProviderKey; }
-			internal set { LoginKey.ProviderKey = value; }
+			set { LoginKey.ProviderKey = value; }
 		}
 
         #endregion
 
-		internal UserLoginStateEventId ()
+		public UserLoginStateEventId ()
 		{
 		}
 

@@ -20,14 +20,14 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 
 		public virtual UserLoginId UserLoginId { 
 			get { return this._userLoginId; } 
-			internal set { _userLoginId = value; } 
+			set { _userLoginId = value; } 
 		}
 
 		private long _userVersion;
 
 		public virtual long UserVersion { 
 			get { return this._userVersion; } 
-			internal set { _userVersion = value; } 
+			set { _userVersion = value; } 
 		}
 
 
@@ -36,22 +36,22 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 
 		public virtual string UserLoginIdUserId {
 			get { return UserLoginId.UserId; }
-			internal set { UserLoginId.UserId = value; }
+			set { UserLoginId.UserId = value; }
 		}
 
 		public virtual string UserLoginIdLoginKeyLoginProvider {
 			get { return UserLoginId.LoginKey.LoginProvider; }
-			internal set { UserLoginId.LoginKey.LoginProvider = value; }
+			set { UserLoginId.LoginKey.LoginProvider = value; }
 		}
 
 		public virtual string UserLoginIdLoginKeyProviderKey {
 			get { return UserLoginId.LoginKey.ProviderKey; }
-			internal set { UserLoginId.LoginKey.ProviderKey = value; }
+			set { UserLoginId.LoginKey.ProviderKey = value; }
 		}
 
         #endregion
 
-		internal UserLoginMvoStateEventId ()
+		public UserLoginMvoStateEventId ()
 		{
 		}
 
