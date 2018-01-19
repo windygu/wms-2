@@ -190,7 +190,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Tests
             Assert.AreEqual(1, attrSets.Count); //System.Console.WriteLine(attrSets);
             Assert.AreEqual(1, attrs.Count); //System.Console.WriteLine(attrs);
             Assert.IsTrue(attrs[0].IsList);
-            Assert.AreEqual((typeof(string)).Name, attrs[0].AttributeValueType);
+            //Assert.AreEqual((typeof(string)).Name, attrs[0].AttributeValueType);
             Assert.AreEqual(3, attrVals.Count); //System.Console.WriteLine(attrVals);
             System.Console.WriteLine(attrUses);
 

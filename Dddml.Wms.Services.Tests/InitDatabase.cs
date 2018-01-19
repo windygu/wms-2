@@ -120,6 +120,9 @@ namespace Dddml.Wms.Services.Tests
                 InitInventoryPostingRules.CreateDefaultInventoryPostingRules();
                 // /////////////////////////
 
+                // ////////////////////////
+                InitAttributeSets.CreateDefaultAttributeSets();
+                // ////////////////////////
             }
         }
 
