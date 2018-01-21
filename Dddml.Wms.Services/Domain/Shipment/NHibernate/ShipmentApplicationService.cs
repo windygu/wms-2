@@ -35,7 +35,11 @@ namespace Dddml.Wms.Domain.Shipment.NHibernate
         {
             var shipment = new CreateShipment();
             shipment.ShipmentId = c.ShipmentId;
-            //todo
+            shipment.OriginFacilityId = c.OriginFacilityId;
+            shipment.DestinationFacilityId= c.DestinationFacilityId;
+            shipment.PartyIdFrom = c.PartyIdFrom;
+            shipment.PartyIdTo = c.PartyIdTo;
+            //todo More properties...
 
             var shipItems = new List<ICreateShipmentItem>();
             int i = 0;
@@ -48,12 +52,12 @@ namespace Dddml.Wms.Domain.Shipment.NHibernate
                 string attrSetInstId = CreateAttributeSetInstance(d, prdState);
                 if (_log.IsDebugEnabled) { _log.Debug("Create attribute set instance, id: " + attrSetInstId); }
 
-                //todo
-                shipItem.AttributeSetInstanceId = attrSetInstId;
+                shipItem.ShipmentItemSeqId = i.ToString();
                 shipItem.ProductId = prdState.ProductId;
+                shipItem.AttributeSetInstanceId = attrSetInstId;
                 shipItem.Quantity = d.Quantity;
                 shipItem.Active = true;
-                shipItem.ShipmentItemSeqId = i.ToString();
+                //todo More proerties???
 
                 shipment.ShipmentItems.Add(shipItem);
                 i++;
@@ -62,32 +66,45 @@ namespace Dddml.Wms.Domain.Shipment.NHibernate
             When(shipment);
         }
 
+        [Transaction]
+        public override void When(ShipmentCommands.ReceiveItem c)
+        {
+            //todo
+            base.When(c);
+        }
+
         private string CreateAttributeSetInstance(ImportingShipmentItem d, IProductState prdState)
         {
-            string attrSetInstId = null;
             var attrSetId = prdState.AttributeSetId;
-            if (!String.IsNullOrWhiteSpace(attrSetId))
+            if (String.IsNullOrWhiteSpace(attrSetId))
             {
-                var nameDict = AttributeSetService.GetPropertyExtensionFieldDictionary(attrSetId);
-
-                var attrSetInstDict = d.AttributeSetInstance;
-                var createAttrSetInst = new CreateAttributeSetInstance();
-                foreach (var kv in attrSetInstDict)
-                {
-                    // //////////////////////////////////////////
-                    var fname = nameDict.ContainsKey(kv.Key) ? nameDict[kv.Key] : kv.Key;
-                    // createAttrSetInst.AirDryMetricTon = (decimal)kv.Value;
-                    var b = ReflectUtils.TrySetPropertyValue(fname, createAttrSetInst, kv.Value);
-                    if (!b)
-                    {
-                        var fmt = "Set property error. Property name: {0}";
-                        if (_log.IsInfoEnabled) { _log.Info(String.Format(fmt, fname)); }
-                        throw new DomainError(fmt, fname);
-                    }
-                    // //////////////////////////////////////////
-                }
-                attrSetInstId = AttributeSetInstanceApplicationService.CreateWithoutId(createAttrSetInst);
+                return null;
             }
+            var attrSetInstDict = d.AttributeSetInstance;
+            return CreateAttributeSetInstance(attrSetId, attrSetInstDict);
+
+        }
+
+        private string CreateAttributeSetInstance(string attrSetId, IDictionary<string, object> attrSetInstDict)
+        {
+            var nameDict = AttributeSetService.GetPropertyExtensionFieldDictionary(attrSetId);
+
+            var createAttrSetInst = new CreateAttributeSetInstance();
+            foreach (var kv in attrSetInstDict)
+            {
+                // //////////////////////////////////////////
+                var fname = nameDict.ContainsKey(kv.Key) ? nameDict[kv.Key] : kv.Key;
+                // createAttrSetInst.AirDryMetricTon = (decimal)kv.Value;
+                var b = ReflectUtils.TrySetPropertyValue(fname, createAttrSetInst, kv.Value);
+                if (!b)
+                {
+                    var fmt = "Set property error. Property name: {0}";
+                    if (_log.IsInfoEnabled) { _log.Info(String.Format(fmt, fname)); }
+                    throw new DomainError(fmt, fname);
+                }
+                // //////////////////////////////////////////
+            }
+            var attrSetInstId = AttributeSetInstanceApplicationService.CreateWithoutId(createAttrSetInst);
             return attrSetInstId;
         }
 
