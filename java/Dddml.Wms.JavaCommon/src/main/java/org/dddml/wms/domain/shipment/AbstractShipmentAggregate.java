@@ -262,6 +262,7 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         ShipmentReceiptState s = outerState.getShipmentReceipts().get(c.getReceiptSeqId());
 
         e.setProductId(c.getProductId());
+        e.setAttributeSetInstanceId(c.getAttributeSetInstanceId());
         e.setShipmentItemSeqId(c.getShipmentItemSeqId());
         e.setRejectionReasonId(c.getRejectionReasonId());
         e.setDamageStatusId(c.getDamageStatusId());
@@ -287,6 +288,7 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         ShipmentReceiptState s = outerState.getShipmentReceipts().get(c.getReceiptSeqId());
 
         e.setProductId(c.getProductId());
+        e.setAttributeSetInstanceId(c.getAttributeSetInstanceId());
         e.setShipmentItemSeqId(c.getShipmentItemSeqId());
         e.setRejectionReasonId(c.getRejectionReasonId());
         e.setDamageStatusId(c.getDamageStatusId());
@@ -299,6 +301,7 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         e.setDamagedQuantity(c.getDamagedQuantity());
         e.setActive(c.getActive());
         e.setIsPropertyProductIdRemoved(c.getIsPropertyProductIdRemoved());
+        e.setIsPropertyAttributeSetInstanceIdRemoved(c.getIsPropertyAttributeSetInstanceIdRemoved());
         e.setIsPropertyShipmentItemSeqIdRemoved(c.getIsPropertyShipmentItemSeqIdRemoved());
         e.setIsPropertyRejectionReasonIdRemoved(c.getIsPropertyRejectionReasonIdRemoved());
         e.setIsPropertyDamageStatusIdRemoved(c.getIsPropertyDamageStatusIdRemoved());
@@ -406,7 +409,12 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         }
 
         @Override
-        public void _import(String primaryOrderId, String primaryReturnId, java.sql.Timestamp estimatedReadyDate, java.sql.Timestamp estimatedShipDate, String estimatedShipWorkEffId, java.sql.Timestamp estimatedArrivalDate, String estimatedArrivalWorkEffId, java.sql.Timestamp latestCancelDate, java.math.BigDecimal estimatedShipCost, String currencyUomId, String handlingInstructions, String originFacilityId, String destinationFacilityId, String partyIdTo, String partyIdFrom, java.math.BigDecimal additionalShippingCharge, String addtlShippingChargeDesc, Iterable<ImportingShipmentItem> shipmentItems, Long version, String commandId, String requesterId) {
+        public void _import(String primaryOrderId, String primaryReturnId, java.sql.Timestamp estimatedReadyDate, java.sql.Timestamp estimatedShipDate, java.sql.Timestamp estimatedArrivalDate, java.sql.Timestamp latestCancelDate, java.math.BigDecimal estimatedShipCost, String currencyUomId, String handlingInstructions, String originFacilityId, String destinationFacilityId, String partyIdTo, String partyIdFrom, java.math.BigDecimal additionalShippingCharge, String addtlShippingChargeDesc, Iterable<ImportingShipmentItem> shipmentItems, Long version, String commandId, String requesterId) {
+            throw new UnsupportedOperationException();
+        }
+
+        @Override
+        public void receiveItem(String shipmentItemSeqId, java.util.Map<String, Object> attributeSetInstance, String rejectionReasonId, String damageStatusId, String damageReasonId, java.math.BigDecimal acceptedQuantity, java.math.BigDecimal rejectedQuantity, java.math.BigDecimal damagedQuantity, String itemDescription, Long version, String commandId, String requesterId) {
             throw new UnsupportedOperationException();
         }
 

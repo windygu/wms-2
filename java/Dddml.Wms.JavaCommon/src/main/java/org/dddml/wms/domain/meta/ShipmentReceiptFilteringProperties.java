@@ -13,6 +13,7 @@ public final class ShipmentReceiptFilteringProperties
     public static final String[] propertyNames = new String[] {
             "receiptSeqId",
             "productId",
+            "attributeSetInstanceId",
             "shipmentItemSeqId",
             "rejectionReasonId",
             "damageStatusId",
@@ -36,6 +37,7 @@ public final class ShipmentReceiptFilteringProperties
     };
 
     public static final String[] propertyTypes = new String[] {
+            "String",
             "String",
             "String",
             "String",
@@ -76,6 +78,8 @@ public final class ShipmentReceiptFilteringProperties
         aliasMap.put("ReceiptSeqId", "shipmentReceiptId.receiptSeqId");
         aliasMap.put("productId", "productId");
         aliasMap.put("ProductId", "productId");
+        aliasMap.put("attributeSetInstanceId", "attributeSetInstanceId");
+        aliasMap.put("AttributeSetInstanceId", "attributeSetInstanceId");
         aliasMap.put("shipmentItemSeqId", "shipmentItemSeqId");
         aliasMap.put("ShipmentItemSeqId", "shipmentItemSeqId");
         aliasMap.put("rejectionReasonId", "rejectionReasonId");

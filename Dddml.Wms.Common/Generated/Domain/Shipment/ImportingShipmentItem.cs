@@ -15,6 +15,13 @@ namespace Dddml.Wms.Domain.Shipment
 	public class ImportingShipmentItem
 	{
 
+		private string _shipmentItemSeqId;
+
+		public virtual string ShipmentItemSeqId { 
+			get { return this._shipmentItemSeqId; } 
+			set { _shipmentItemSeqId = value; } 
+		}
+
 		private string _productId;
 
 		public virtual string ProductId { 
@@ -60,8 +67,9 @@ namespace Dddml.Wms.Domain.Shipment
 		{
 		}
 
-		public ImportingShipmentItem (string productId, decimal? quantity, decimal? targetQuantity, string shipmentContentDescription, IDictionary<string, object> attributeSetInstance)
+		public ImportingShipmentItem (string shipmentItemSeqId, string productId, decimal? quantity, decimal? targetQuantity, string shipmentContentDescription, IDictionary<string, object> attributeSetInstance)
 		{
+			this._shipmentItemSeqId = shipmentItemSeqId;
 			this._productId = productId;
 			this._quantity = quantity;
 			this._targetQuantity = targetQuantity;
@@ -83,6 +91,7 @@ namespace Dddml.Wms.Domain.Shipment
 			}
 
 			return true 
+				&& Object.Equals (this.ShipmentItemSeqId, other.ShipmentItemSeqId)
 				&& Object.Equals (this.ProductId, other.ProductId)
 				&& Object.Equals (this.Quantity, other.Quantity)
 				&& Object.Equals (this.TargetQuantity, other.TargetQuantity)
@@ -94,6 +103,9 @@ namespace Dddml.Wms.Domain.Shipment
 		public override int GetHashCode ()
 		{
 			int hash = 0;
+			if (this.ShipmentItemSeqId != null) {
+				hash += 13 * this.ShipmentItemSeqId.GetHashCode ();
+			}
 			if (this.ProductId != null) {
 				hash += 13 * this.ProductId.GetHashCode ();
 			}
@@ -125,6 +137,7 @@ namespace Dddml.Wms.Domain.Shipment
         public override string ToString()
         {
             return String.Empty
+                + "ShipmentItemSeqId: " + this.ShipmentItemSeqId + ", "
                 + "ProductId: " + this.ProductId + ", "
                 + "Quantity: " + this.Quantity + ", "
                 + "TargetQuantity: " + this.TargetQuantity + ", "

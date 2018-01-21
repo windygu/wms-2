@@ -50,6 +50,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
             cmd.ShipmentReceiptId = state.ShipmentReceiptId;
             cmd.ProductId = state.ProductId;
+            cmd.AttributeSetInstanceId = state.AttributeSetInstanceId;
             cmd.ShipmentItemSeqId = state.ShipmentItemSeqId;
             cmd.RejectionReasonId = state.RejectionReasonId;
             cmd.DamageStatusId = state.DamageStatusId;
@@ -94,6 +95,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             cmd.ShipmentActive = state.ShipmentActive;
             
             if (state.ProductId == null) { cmd.IsPropertyProductIdRemoved = true; }
+            if (state.AttributeSetInstanceId == null) { cmd.IsPropertyAttributeSetInstanceIdRemoved = true; }
             if (state.ShipmentItemSeqId == null) { cmd.IsPropertyShipmentItemSeqIdRemoved = true; }
             if (state.RejectionReasonId == null) { cmd.IsPropertyRejectionReasonIdRemoved = true; }
             if (state.DamageStatusId == null) { cmd.IsPropertyDamageStatusIdRemoved = true; }
@@ -143,6 +145,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
             cmd.ShipmentReceiptId = state.ShipmentReceiptId;
             cmd.ProductId = state.ProductId;
+            cmd.AttributeSetInstanceId = state.AttributeSetInstanceId;
             cmd.ShipmentItemSeqId = state.ShipmentItemSeqId;
             cmd.RejectionReasonId = state.RejectionReasonId;
             cmd.DamageStatusId = state.DamageStatusId;

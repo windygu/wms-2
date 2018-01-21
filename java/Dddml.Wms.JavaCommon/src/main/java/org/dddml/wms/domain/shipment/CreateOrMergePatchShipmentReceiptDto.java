@@ -17,6 +17,18 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         this.productId = productId;
     }
 
+    private String attributeSetInstanceId;
+
+    public String getAttributeSetInstanceId()
+    {
+        return this.attributeSetInstanceId;
+    }
+
+    public void setAttributeSetInstanceId(String attributeSetInstanceId)
+    {
+        this.attributeSetInstanceId = attributeSetInstanceId;
+    }
+
     private String shipmentItemSeqId;
 
     public String getShipmentItemSeqId()
@@ -161,6 +173,18 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         this.isPropertyProductIdRemoved = removed;
     }
 
+    private Boolean isPropertyAttributeSetInstanceIdRemoved;
+
+    public Boolean getIsPropertyAttributeSetInstanceIdRemoved()
+    {
+        return this.isPropertyAttributeSetInstanceIdRemoved;
+    }
+
+    public void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed)
+    {
+        this.isPropertyAttributeSetInstanceIdRemoved = removed;
+    }
+
     private Boolean isPropertyShipmentItemSeqIdRemoved;
 
     public Boolean getIsPropertyShipmentItemSeqIdRemoved()
@@ -297,6 +321,7 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
     {
         ((AbstractShipmentReceiptCommandDto) this).copyTo(command);
         command.setProductId(this.getProductId());
+        command.setAttributeSetInstanceId(this.getAttributeSetInstanceId());
         command.setShipmentItemSeqId(this.getShipmentItemSeqId());
         command.setRejectionReasonId(this.getRejectionReasonId());
         command.setDamageStatusId(this.getDamageStatusId());
@@ -338,6 +363,7 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
     {
         copyTo((AbstractShipmentReceiptCommand.AbstractCreateOrMergePatchShipmentReceipt) command);
         command.setIsPropertyProductIdRemoved(this.getIsPropertyProductIdRemoved());
+        command.setIsPropertyAttributeSetInstanceIdRemoved(this.getIsPropertyAttributeSetInstanceIdRemoved());
         command.setIsPropertyShipmentItemSeqIdRemoved(this.getIsPropertyShipmentItemSeqIdRemoved());
         command.setIsPropertyRejectionReasonIdRemoved(this.getIsPropertyRejectionReasonIdRemoved());
         command.setIsPropertyDamageStatusIdRemoved(this.getIsPropertyDamageStatusIdRemoved());

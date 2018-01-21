@@ -503,7 +503,125 @@ namespace Dddml.Wms.Domain.Shipment
                 get { return "Import"; }
             }
 
+            public string PrimaryOrderId { get; set; }
+
+            public string PrimaryReturnId { get; set; }
+
+            public DateTime? EstimatedReadyDate { get; set; }
+
+            public DateTime? EstimatedShipDate { get; set; }
+
+            public DateTime? EstimatedArrivalDate { get; set; }
+
+            public DateTime? LatestCancelDate { get; set; }
+
+            public decimal? EstimatedShipCost { get; set; }
+
+            public string CurrencyUomId { get; set; }
+
+            public string HandlingInstructions { get; set; }
+
+            public string OriginFacilityId { get; set; }
+
+            public string DestinationFacilityId { get; set; }
+
+            public string PartyIdTo { get; set; }
+
+            public string PartyIdFrom { get; set; }
+
+            public decimal? AdditionalShippingCharge { get; set; }
+
+            public string AddtlShippingChargeDesc { get; set; }
+
             public ISet<ImportingShipmentItem> ShipmentItems { get; set; }
+
+            public string ShipmentId { get; set; }
+
+            public long Version { get; set; }
+
+            public string CommandId { get; set; }
+
+            public string RequesterId { get; set; }
+
+
+            string ICommand.CommandId
+            {
+                get
+                {
+                    return this.CommandId;
+                }
+                set
+                {
+                    this.CommandId = value;
+                }
+            }
+
+            object ICommand.RequesterId
+            {
+                get { return this.RequesterId; }
+                set { this.RequesterId = (string)value; }
+            }
+
+            string ICommandDto.CommandType
+            {
+                get { return this.CommandType; }
+            }
+
+            string IAggregateCommand<string, long>.AggregateId
+            {
+                get { return this.ShipmentId; }
+            }
+
+            string IShipmentCommand.ShipmentId
+            {
+                get { return this.ShipmentId; }
+                set { this.ShipmentId = value; }
+            }
+
+            long IAggregateCommand<string, long>.AggregateVersion
+            {
+                get { return this.Version; }
+            }
+
+            long IShipmentCommand.Version
+            {
+                get
+                {
+                    return this.Version;
+                }
+                set
+                {
+                    this.Version = value;
+                }
+            }
+
+        }
+
+        public class ReceiveItem : IShipmentCommand
+        {
+
+            public string CommandType
+            {
+                get { return "ReceiveItem"; }
+            }
+
+            public string ShipmentItemSeqId { get; set; }
+
+            public IDictionary<string, object> AttributeSetInstance { get; set; }
+
+            public string RejectionReasonId { get; set; }
+
+            public string DamageStatusId { get; set; }
+
+            public string DamageReasonId { get; set; }
+
+            public decimal? AcceptedQuantity { get; set; }
+
+            public decimal? RejectedQuantity { get; set; }
+
+            public decimal? DamagedQuantity { get; set; }
+
+            public string ItemDescription { get; set; }
 
             public string ShipmentId { get; set; }
 

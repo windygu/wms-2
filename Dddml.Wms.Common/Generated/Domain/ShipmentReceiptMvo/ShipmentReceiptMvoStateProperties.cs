@@ -19,6 +19,8 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
 		public virtual string ProductId { get; set; }
 
+		public virtual string AttributeSetInstanceId { get; set; }
+
 		public virtual string ShipmentItemSeqId { get; set; }
 
 		public virtual string RejectionReasonId { get; set; }

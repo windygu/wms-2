@@ -17,6 +17,7 @@
     <discriminator column="StateEventType" type="string" />
 
 	<property name="productId" ><column name="ProductId" sql-type="VARCHAR(60)" /></property>
+	<property name="attributeSetInstanceId" ></property>
 	<property name="shipmentItemSeqId" ><column name="ShipmentItemSeqId" sql-type="VARCHAR(20)" /></property>
 	<property name="rejectionReasonId" ><column name="RejectionReasonId" sql-type="VARCHAR(20)" /></property>
 	<property name="damageStatusId" ><column name="DamageStatusId" sql-type="VARCHAR(20)" /></property>
@@ -44,6 +45,8 @@
     <subclass name="AbstractShipmentReceiptStateEvent$SimpleShipmentReceiptStateMergePatched" discriminator-value="MergePatched">
 
         <property name="isPropertyProductIdRemoved" column="IsPropertyProductIdRemoved"/>
+
+        <property name="isPropertyAttributeSetInstanceIdRemoved" column="IsPropertyAttributeSetInstanceIdRemoved"/>
 
         <property name="isPropertyShipmentItemSeqIdRemoved" column="IsPropertyShipmentItemSeqIdRemoved"/>
 

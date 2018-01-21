@@ -39,6 +39,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
             dto.ProductId = e.ProductId;
+            dto.AttributeSetInstanceId = e.AttributeSetInstanceId;
             dto.ShipmentItemSeqId = e.ShipmentItemSeqId;
             dto.RejectionReasonId = e.RejectionReasonId;
             dto.DamageStatusId = e.DamageStatusId;
@@ -92,6 +93,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
             dto.ProductId = e.ProductId;
+            dto.AttributeSetInstanceId = e.AttributeSetInstanceId;
             dto.ShipmentItemSeqId = e.ShipmentItemSeqId;
             dto.RejectionReasonId = e.RejectionReasonId;
             dto.DamageStatusId = e.DamageStatusId;
@@ -135,6 +137,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             dto.ShipmentUpdatedAt = e.ShipmentUpdatedAt;
             dto.ShipmentActive = e.ShipmentActive;
             dto.IsPropertyProductIdRemoved = e.IsPropertyProductIdRemoved;
+            dto.IsPropertyAttributeSetInstanceIdRemoved = e.IsPropertyAttributeSetInstanceIdRemoved;
             dto.IsPropertyShipmentItemSeqIdRemoved = e.IsPropertyShipmentItemSeqIdRemoved;
             dto.IsPropertyRejectionReasonIdRemoved = e.IsPropertyRejectionReasonIdRemoved;
             dto.IsPropertyDamageStatusIdRemoved = e.IsPropertyDamageStatusIdRemoved;

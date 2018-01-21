@@ -53,6 +53,7 @@ public abstract class AbstractShipmentReceiptMvoAggregate extends AbstractAggreg
         ShipmentReceiptMvoStateEventId stateEventId = new ShipmentReceiptMvoStateEventId(c.getShipmentReceiptId(), c.getShipmentVersion());
         ShipmentReceiptMvoStateEvent.ShipmentReceiptMvoStateCreated e = newShipmentReceiptMvoStateCreated(stateEventId);
         e.setProductId(c.getProductId());
+        e.setAttributeSetInstanceId(c.getAttributeSetInstanceId());
         e.setShipmentItemSeqId(c.getShipmentItemSeqId());
         e.setRejectionReasonId(c.getRejectionReasonId());
         e.setDamageStatusId(c.getDamageStatusId());
@@ -105,6 +106,7 @@ public abstract class AbstractShipmentReceiptMvoAggregate extends AbstractAggreg
         ShipmentReceiptMvoStateEventId stateEventId = new ShipmentReceiptMvoStateEventId(c.getShipmentReceiptId(), c.getShipmentVersion());
         ShipmentReceiptMvoStateEvent.ShipmentReceiptMvoStateMergePatched e = newShipmentReceiptMvoStateMergePatched(stateEventId);
         e.setProductId(c.getProductId());
+        e.setAttributeSetInstanceId(c.getAttributeSetInstanceId());
         e.setShipmentItemSeqId(c.getShipmentItemSeqId());
         e.setRejectionReasonId(c.getRejectionReasonId());
         e.setDamageStatusId(c.getDamageStatusId());
@@ -148,6 +150,7 @@ public abstract class AbstractShipmentReceiptMvoAggregate extends AbstractAggreg
         e.setShipmentUpdatedAt(c.getShipmentUpdatedAt());
         e.setShipmentActive(c.getShipmentActive());
         e.setIsPropertyProductIdRemoved(c.getIsPropertyProductIdRemoved());
+        e.setIsPropertyAttributeSetInstanceIdRemoved(c.getIsPropertyAttributeSetInstanceIdRemoved());
         e.setIsPropertyShipmentItemSeqIdRemoved(c.getIsPropertyShipmentItemSeqIdRemoved());
         e.setIsPropertyRejectionReasonIdRemoved(c.getIsPropertyRejectionReasonIdRemoved());
         e.setIsPropertyDamageStatusIdRemoved(c.getIsPropertyDamageStatusIdRemoved());

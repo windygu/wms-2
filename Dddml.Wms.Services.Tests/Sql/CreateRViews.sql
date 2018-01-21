@@ -559,6 +559,7 @@ CREATE VIEW `ShipmentReceipt_RV` AS
         `ShipmentReceipts`.`ShipmentReceiptIdShipmentId`,
         `ShipmentReceipts`.`ShipmentReceiptIdReceiptSeqId`,
         `ShipmentReceipts`.`ProductId`,
+        `ShipmentReceipts`.`AttributeSetInstanceId`,
         `ShipmentReceipts`.`ShipmentItemSeqId`,
         `ShipmentReceipts`.`RejectionReasonId`,
         `ShipmentReceipts`.`DamageStatusId`,

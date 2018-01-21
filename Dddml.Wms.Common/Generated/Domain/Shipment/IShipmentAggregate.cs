@@ -24,7 +24,9 @@ namespace Dddml.Wms.Domain.Shipment
 
 		void MergePatch (IMergePatchShipment c);
 
-		void Import(IEnumerable<ImportingShipmentItem> shipmentItems, long version, string commandId, string requesterId);
+		void Import(id primaryOrderId, id primaryReturnId, date-time estimatedReadyDate, date-time estimatedShipDate, date-time estimatedArrivalDate, date-time latestCancelDate, currency-amount estimatedShipCost, id currencyUomId, long-varchar handlingInstructions, id originFacilityId, id destinationFacilityId, id partyIdTo, id partyIdFrom, currency-amount additionalShippingCharge, long-varchar addtlShippingChargeDesc, IEnumerable<ImportingShipmentItem> shipmentItems, long version, string commandId, string requesterId);
+
+		void ReceiveItem(id shipmentItemSeqId, map attributeSetInstance, id rejectionReasonId, id damageStatusId, id damageReasonId, fixed-point acceptedQuantity, fixed-point rejectedQuantity, fixed-point damagedQuantity, description itemDescription, long version, string commandId, string requesterId);
 
 
 	}

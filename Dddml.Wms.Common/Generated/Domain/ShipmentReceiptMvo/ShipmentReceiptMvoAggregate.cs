@@ -99,6 +99,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             IShipmentReceiptMvoStateCreated e = NewShipmentReceiptMvoStateCreated(stateEventId);
 		
             e.ProductId = c.ProductId;
+            e.AttributeSetInstanceId = c.AttributeSetInstanceId;
             e.ShipmentItemSeqId = c.ShipmentItemSeqId;
             e.RejectionReasonId = c.RejectionReasonId;
             e.DamageStatusId = c.DamageStatusId;
@@ -158,6 +159,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             IShipmentReceiptMvoStateMergePatched e = NewShipmentReceiptMvoStateMergePatched(stateEventId);
 
             e.ProductId = c.ProductId;
+            e.AttributeSetInstanceId = c.AttributeSetInstanceId;
             e.ShipmentItemSeqId = c.ShipmentItemSeqId;
             e.RejectionReasonId = c.RejectionReasonId;
             e.DamageStatusId = c.DamageStatusId;
@@ -201,6 +203,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             e.ShipmentUpdatedAt = c.ShipmentUpdatedAt;
             e.ShipmentActive = c.ShipmentActive;
             e.IsPropertyProductIdRemoved = c.IsPropertyProductIdRemoved;
+            e.IsPropertyAttributeSetInstanceIdRemoved = c.IsPropertyAttributeSetInstanceIdRemoved;
             e.IsPropertyShipmentItemSeqIdRemoved = c.IsPropertyShipmentItemSeqIdRemoved;
             e.IsPropertyRejectionReasonIdRemoved = c.IsPropertyRejectionReasonIdRemoved;
             e.IsPropertyDamageStatusIdRemoved = c.IsPropertyDamageStatusIdRemoved;

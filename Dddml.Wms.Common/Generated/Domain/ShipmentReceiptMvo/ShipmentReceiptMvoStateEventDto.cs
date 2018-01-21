@@ -45,6 +45,8 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
 		public virtual string ProductId { get; set; }
 
+		public virtual string AttributeSetInstanceId { get; set; }
+
 		public virtual string ShipmentItemSeqId { get; set; }
 
 		public virtual string RejectionReasonId { get; set; }
@@ -174,6 +176,25 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             set 
             {
                 this.IsPropertyProductIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyAttributeSetInstanceIdRemoved { get; set; }
+
+        bool IShipmentReceiptMvoStateMergePatched.IsPropertyAttributeSetInstanceIdRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyAttributeSetInstanceIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyAttributeSetInstanceIdRemoved = value;
             }
         }
 

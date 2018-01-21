@@ -28,6 +28,12 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             set;
         }
 
+        string AttributeSetInstanceId
+        {
+            get;
+            set;
+        }
+
         string ShipmentItemSeqId
         {
             get;

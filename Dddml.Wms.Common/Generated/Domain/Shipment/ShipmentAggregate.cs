@@ -375,6 +375,7 @@ namespace Dddml.Wms.Domain.Shipment
             var s = outerState.ShipmentReceipts.Get(c.ReceiptSeqId, true);
 
             e.ProductId = c.ProductId;
+            e.AttributeSetInstanceId = c.AttributeSetInstanceId;
             e.ShipmentItemSeqId = c.ShipmentItemSeqId;
             e.RejectionReasonId = c.RejectionReasonId;
             e.DamageStatusId = c.DamageStatusId;
@@ -403,6 +404,7 @@ namespace Dddml.Wms.Domain.Shipment
             var s = outerState.ShipmentReceipts.Get(c.ReceiptSeqId);
 
             e.ProductId = c.ProductId;
+            e.AttributeSetInstanceId = c.AttributeSetInstanceId;
             e.ShipmentItemSeqId = c.ShipmentItemSeqId;
             e.RejectionReasonId = c.RejectionReasonId;
             e.DamageStatusId = c.DamageStatusId;
@@ -415,6 +417,7 @@ namespace Dddml.Wms.Domain.Shipment
             e.DamagedQuantity = c.DamagedQuantity;
             e.Active = c.Active;
             e.IsPropertyProductIdRemoved = c.IsPropertyProductIdRemoved;
+            e.IsPropertyAttributeSetInstanceIdRemoved = c.IsPropertyAttributeSetInstanceIdRemoved;
             e.IsPropertyShipmentItemSeqIdRemoved = c.IsPropertyShipmentItemSeqIdRemoved;
             e.IsPropertyRejectionReasonIdRemoved = c.IsPropertyRejectionReasonIdRemoved;
             e.IsPropertyDamageStatusIdRemoved = c.IsPropertyDamageStatusIdRemoved;

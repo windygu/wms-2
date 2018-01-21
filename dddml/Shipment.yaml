@@ -159,6 +159,9 @@ aggregates:
           ProductId:
             type: id-long
             
+          AttributeSetInstanceId:
+            type: string
+            
           ShipmentItemSeqId:
             type: id
             
@@ -218,6 +221,8 @@ aggregates:
           
     # ---------------------------------
     methods:
+    
+      # --------------------------------------
       Import:
         parameters:
           PrimaryOrderId:
@@ -228,12 +233,12 @@ aggregates:
             type: date-time
           EstimatedShipDate:
             type: date-time
-          EstimatedShipWorkEffId:
-            type: id
+          # EstimatedShipWorkEffId:
+            # type: id
           EstimatedArrivalDate:
             type: date-time
-          EstimatedArrivalWorkEffId:
-            type: id
+          # EstimatedArrivalWorkEffId:
+            # type: id
           LatestCancelDate:
             type: date-time
           EstimatedShipCost:
@@ -258,7 +263,38 @@ aggregates:
           # ------------------------
           ShipmentItems:
             itemType: ImportingShipmentItem
-    
+      
+      # --------------------------------------
+      ReceiveItem:
+        parameters:
+          ShipmentItemSeqId:
+            type: id
+          # -----------------------------------
+          # ProductId:
+            # type: id-long
+          # AttributeSetInstanceId:
+            # type: string
+          AttributeSetInstance:
+            type: map
+          RejectionReasonId:
+            type: id
+            referenceType: RejectionReason
+          DamageStatusId:
+            type: id
+            referenceType: StatusItem
+          DamageReasonId:
+            type: id
+            referenceType: DamageReason
+          AcceptedQuantity:
+            type: fixed-point
+          RejectedQuantity:
+            type: fixed-point
+          DamagedQuantity:
+            type: fixed-point
+          # -----------------------------------
+          ItemDescription:
+            type: description
+      
     # ---------------------------------
     valueObjects:
       ImportingShipmentItem:

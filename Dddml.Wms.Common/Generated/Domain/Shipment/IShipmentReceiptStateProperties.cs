@@ -18,6 +18,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 		string ProductId { get; set; }
 
+		string AttributeSetInstanceId { get; set; }
+
 		string ShipmentItemSeqId { get; set; }
 
 		string RejectionReasonId { get; set; }

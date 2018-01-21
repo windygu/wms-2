@@ -21,6 +21,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 		void When(ShipmentCommands.Import c);
 
+		void When(ShipmentCommands.ReceiveItem c);
+
  		IShipmentState Get(string shipmentId);
 
         IEnumerable<IShipmentState> GetAll(int firstResult, int maxResults);

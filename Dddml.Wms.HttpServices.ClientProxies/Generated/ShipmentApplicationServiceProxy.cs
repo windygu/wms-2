@@ -118,6 +118,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             throw new NotImplementedException();//todo
         }
 
+        public void When(ShipmentCommands.ReceiveItem c)
+        {
+            throw new NotImplementedException();//todo
+        }
+
         public async Task<IShipmentState> GetAsync(string shipmentId)
         {
             IShipmentState state = null;

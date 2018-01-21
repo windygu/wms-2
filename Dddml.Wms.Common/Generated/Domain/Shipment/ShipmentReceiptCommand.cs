@@ -35,6 +35,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual string ProductId { get; set; }
 
+		public virtual string AttributeSetInstanceId { get; set; }
+
 		public virtual string ShipmentItemSeqId { get; set; }
 
 		public virtual string RejectionReasonId { get; set; }
@@ -94,6 +96,8 @@ namespace Dddml.Wms.Domain.Shipment
 	{
 
 		public virtual bool IsPropertyProductIdRemoved { get; set; }
+
+		public virtual bool IsPropertyAttributeSetInstanceIdRemoved { get; set; }
 
 		public virtual bool IsPropertyShipmentItemSeqIdRemoved { get; set; }
 

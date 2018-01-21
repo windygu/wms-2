@@ -13,6 +13,7 @@
     <discriminator column="StateEventType" type="String" />
 
     <property name="ProductId" ><column name="ProductId" sql-type="VARCHAR(60)" /></property>
+    <property name="AttributeSetInstanceId" ></property>
     <property name="ShipmentItemSeqId" ><column name="ShipmentItemSeqId" sql-type="VARCHAR(20)" /></property>
     <property name="RejectionReasonId" ><column name="RejectionReasonId" sql-type="VARCHAR(20)" /></property>
     <property name="DamageStatusId" ><column name="DamageStatusId" sql-type="VARCHAR(20)" /></property>
@@ -39,6 +40,8 @@
 
 
         <property name="IsPropertyProductIdRemoved" column="IsPropertyProductIdRemoved"/>
+
+        <property name="IsPropertyAttributeSetInstanceIdRemoved" column="IsPropertyAttributeSetInstanceIdRemoved"/>
 
         <property name="IsPropertyShipmentItemSeqIdRemoved" column="IsPropertyShipmentItemSeqIdRemoved"/>
 

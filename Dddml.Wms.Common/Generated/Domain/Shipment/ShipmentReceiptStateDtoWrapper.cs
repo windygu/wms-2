@@ -95,6 +95,34 @@ namespace Dddml.Wms.Domain.Shipment
             }
         }
 
+		public virtual string AttributeSetInstanceId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("AttributeSetInstanceId"))
+                {
+                    return _state.AttributeSetInstanceId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.AttributeSetInstanceId = value;
+            }
+        }
+
+        string IShipmentReceiptStateProperties.AttributeSetInstanceId
+        {
+            get 
+            {
+                return (this._state as IShipmentReceiptStateProperties).AttributeSetInstanceId;
+            }
+            set 
+            {
+                (this._state as IShipmentReceiptStateProperties).AttributeSetInstanceId = value;
+            }
+        }
+
 		public virtual string ShipmentItemSeqId
 		{
             get

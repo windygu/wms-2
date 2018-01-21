@@ -845,6 +845,36 @@ namespace Dddml.Wms.Domain.Shipment
                 get { return "Import"; }
             }
 
+            public string PrimaryOrderId { get; set; }
+
+            public string PrimaryReturnId { get; set; }
+
+            public DateTime? EstimatedReadyDate { get; set; }
+
+            public DateTime? EstimatedShipDate { get; set; }
+
+            public DateTime? EstimatedArrivalDate { get; set; }
+
+            public DateTime? LatestCancelDate { get; set; }
+
+            public decimal? EstimatedShipCost { get; set; }
+
+            public string CurrencyUomId { get; set; }
+
+            public string HandlingInstructions { get; set; }
+
+            public string OriginFacilityId { get; set; }
+
+            public string DestinationFacilityId { get; set; }
+
+            public string PartyIdTo { get; set; }
+
+            public string PartyIdFrom { get; set; }
+
+            public decimal? AdditionalShippingCharge { get; set; }
+
+            public string AddtlShippingChargeDesc { get; set; }
+
             public ImportingShipmentItemDto[] ShipmentItems { get; set; }
 
             public string ShipmentId { get; set; }
@@ -858,7 +888,77 @@ namespace Dddml.Wms.Domain.Shipment
             public ShipmentCommands.Import ToImport()
             {
                 var cmd = new ShipmentCommands.Import();
+                cmd.PrimaryOrderId = this.PrimaryOrderId;
+                cmd.PrimaryReturnId = this.PrimaryReturnId;
+                cmd.EstimatedReadyDate = this.EstimatedReadyDate;
+                cmd.EstimatedShipDate = this.EstimatedShipDate;
+                cmd.EstimatedArrivalDate = this.EstimatedArrivalDate;
+                cmd.LatestCancelDate = this.LatestCancelDate;
+                cmd.EstimatedShipCost = this.EstimatedShipCost;
+                cmd.CurrencyUomId = this.CurrencyUomId;
+                cmd.HandlingInstructions = this.HandlingInstructions;
+                cmd.OriginFacilityId = this.OriginFacilityId;
+                cmd.DestinationFacilityId = this.DestinationFacilityId;
+                cmd.PartyIdTo = this.PartyIdTo;
+                cmd.PartyIdFrom = this.PartyIdFrom;
+                cmd.AdditionalShippingCharge = this.AdditionalShippingCharge;
+                cmd.AddtlShippingChargeDesc = this.AddtlShippingChargeDesc;
                 cmd.ShipmentItems = this.ShipmentItems == null ? null : new HashSet<ImportingShipmentItem>(this.ShipmentItems.Select(p => p.ToImportingShipmentItem()));
+                cmd.ShipmentId = this.ShipmentId;
+                cmd.Version = this.Version;
+                cmd.CommandId = this.CommandId;
+                cmd.RequesterId = this.RequesterId;
+                return cmd;
+            }
+
+        }
+
+        public class ReceiveItemRequestContent : ICommandDto
+        {
+
+            public string CommandType
+            {
+                get { return "ReceiveItem"; }
+            }
+
+            public string ShipmentItemSeqId { get; set; }
+
+            public IDictionary<string, object> AttributeSetInstance { get; set; }
+
+            public string RejectionReasonId { get; set; }
+
+            public string DamageStatusId { get; set; }
+
+            public string DamageReasonId { get; set; }
+
+            public decimal? AcceptedQuantity { get; set; }
+
+            public decimal? RejectedQuantity { get; set; }
+
+            public decimal? DamagedQuantity { get; set; }
+
+            public string ItemDescription { get; set; }
+
+            public string ShipmentId { get; set; }
+
+            public long Version { get; set; }
+
+            public string CommandId { get; set; }
+
+            public string RequesterId { get; set; }
+
+            public ShipmentCommands.ReceiveItem ToReceiveItem()
+            {
+                var cmd = new ShipmentCommands.ReceiveItem();
+                cmd.ShipmentItemSeqId = this.ShipmentItemSeqId;
+                cmd.AttributeSetInstance = this.AttributeSetInstance;
+                cmd.RejectionReasonId = this.RejectionReasonId;
+                cmd.DamageStatusId = this.DamageStatusId;
+                cmd.DamageReasonId = this.DamageReasonId;
+                cmd.AcceptedQuantity = this.AcceptedQuantity;
+                cmd.RejectedQuantity = this.RejectedQuantity;
+                cmd.DamagedQuantity = this.DamagedQuantity;
+                cmd.ItemDescription = this.ItemDescription;
                 cmd.ShipmentId = this.ShipmentId;
                 cmd.Version = this.Version;
                 cmd.CommandId = this.CommandId;

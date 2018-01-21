@@ -55,16 +55,6 @@ public class ShipmentCommandDtos
             this.estimatedShipDate = estimatedShipDate;
         }
 
-        private String estimatedShipWorkEffId;
-
-        public String getEstimatedShipWorkEffId() {
-            return this.estimatedShipWorkEffId;
-        }
-
-        public void setEstimatedShipWorkEffId(String estimatedShipWorkEffId) {
-            this.estimatedShipWorkEffId = estimatedShipWorkEffId;
-        }
-
         private java.sql.Timestamp estimatedArrivalDate;
 
         public java.sql.Timestamp getEstimatedArrivalDate() {
@@ -73,16 +63,6 @@ public class ShipmentCommandDtos
 
         public void setEstimatedArrivalDate(java.sql.Timestamp estimatedArrivalDate) {
             this.estimatedArrivalDate = estimatedArrivalDate;
-        }
-
-        private String estimatedArrivalWorkEffId;
-
-        public String getEstimatedArrivalWorkEffId() {
-            return this.estimatedArrivalWorkEffId;
-        }
-
-        public void setEstimatedArrivalWorkEffId(String estimatedArrivalWorkEffId) {
-            this.estimatedArrivalWorkEffId = estimatedArrivalWorkEffId;
         }
 
         private java.sql.Timestamp latestCancelDate;
@@ -241,9 +221,7 @@ public class ShipmentCommandDtos
             cmd.setPrimaryReturnId(this.getPrimaryReturnId());
             cmd.setEstimatedReadyDate(this.getEstimatedReadyDate());
             cmd.setEstimatedShipDate(this.getEstimatedShipDate());
-            cmd.setEstimatedShipWorkEffId(this.getEstimatedShipWorkEffId());
             cmd.setEstimatedArrivalDate(this.getEstimatedArrivalDate());
-            cmd.setEstimatedArrivalWorkEffId(this.getEstimatedArrivalWorkEffId());
             cmd.setLatestCancelDate(this.getLatestCancelDate());
             cmd.setEstimatedShipCost(this.getEstimatedShipCost());
             cmd.setCurrencyUomId(this.getCurrencyUomId());
@@ -255,6 +233,162 @@ public class ShipmentCommandDtos
             cmd.setAdditionalShippingCharge(this.getAdditionalShippingCharge());
             cmd.setAddtlShippingChargeDesc(this.getAddtlShippingChargeDesc());
             cmd.setShipmentItems(this.getShipmentItems() == null ? null : java.util.Collections.unmodifiableSet(java.util.Arrays.stream(this.getShipmentItems()).map(p -> p.toImportingShipmentItem()).collect(java.util.stream.Collectors.toSet())));
+            cmd.setShipmentId(this.getShipmentId());
+            cmd.setVersion(this.getVersion());
+            cmd.setCommandId(this.getCommandId());
+            cmd.setRequesterId(this.getRequesterId());
+            return cmd;
+        }
+
+    }
+
+    public static class ReceiveItemRequestContent {
+
+        public String getCommandType() {
+            return "ReceiveItem";
+        }
+
+        private String shipmentItemSeqId;
+
+        public String getShipmentItemSeqId() {
+            return this.shipmentItemSeqId;
+        }
+
+        public void setShipmentItemSeqId(String shipmentItemSeqId) {
+            this.shipmentItemSeqId = shipmentItemSeqId;
+        }
+
+        private java.util.Map<String, Object> attributeSetInstance;
+
+        public java.util.Map<String, Object> getAttributeSetInstance() {
+            return this.attributeSetInstance;
+        }
+
+        public void setAttributeSetInstance(java.util.Map<String, Object> attributeSetInstance) {
+            this.attributeSetInstance = attributeSetInstance;
+        }
+
+        private String rejectionReasonId;
+
+        public String getRejectionReasonId() {
+            return this.rejectionReasonId;
+        }
+
+        public void setRejectionReasonId(String rejectionReasonId) {
+            this.rejectionReasonId = rejectionReasonId;
+        }
+
+        private String damageStatusId;
+
+        public String getDamageStatusId() {
+            return this.damageStatusId;
+        }
+
+        public void setDamageStatusId(String damageStatusId) {
+            this.damageStatusId = damageStatusId;
+        }
+
+        private String damageReasonId;
+
+        public String getDamageReasonId() {
+            return this.damageReasonId;
+        }
+
+        public void setDamageReasonId(String damageReasonId) {
+            this.damageReasonId = damageReasonId;
+        }
+
+        private java.math.BigDecimal acceptedQuantity;
+
+        public java.math.BigDecimal getAcceptedQuantity() {
+            return this.acceptedQuantity;
+        }
+
+        public void setAcceptedQuantity(java.math.BigDecimal acceptedQuantity) {
+            this.acceptedQuantity = acceptedQuantity;
+        }
+
+        private java.math.BigDecimal rejectedQuantity;
+
+        public java.math.BigDecimal getRejectedQuantity() {
+            return this.rejectedQuantity;
+        }
+
+        public void setRejectedQuantity(java.math.BigDecimal rejectedQuantity) {
+            this.rejectedQuantity = rejectedQuantity;
+        }
+
+        private java.math.BigDecimal damagedQuantity;
+
+        public java.math.BigDecimal getDamagedQuantity() {
+            return this.damagedQuantity;
+        }
+
+        public void setDamagedQuantity(java.math.BigDecimal damagedQuantity) {
+            this.damagedQuantity = damagedQuantity;
+        }
+
+        private String itemDescription;
+
+        public String getItemDescription() {
+            return this.itemDescription;
+        }
+
+        public void setItemDescription(String itemDescription) {
+            this.itemDescription = itemDescription;
+        }
+
+        private String shipmentId;
+
+        public String getShipmentId() {
+            return this.shipmentId;
+        }
+
+        public void setShipmentId(String shipmentId) {
+            this.shipmentId = shipmentId;
+        }
+
+        private Long version;
+
+        public Long getVersion() {
+            return this.version;
+        }
+
+        public void setVersion(Long version) {
+            this.version = version;
+        }
+
+        private String commandId;
+
+        public String getCommandId() {
+            return this.commandId;
+        }
+
+        public void setCommandId(String commandId) {
+            this.commandId = commandId;
+        }
+
+        private String requesterId;
+
+        public String getRequesterId() {
+            return this.requesterId;
+        }
+
+        public void setRequesterId(String requesterId) {
+            this.requesterId = requesterId;
+        }
+
+       public ShipmentCommands.ReceiveItem toReceiveItem() {
+            ShipmentCommands.ReceiveItem cmd = new ShipmentCommands.ReceiveItem();
+            cmd.setShipmentItemSeqId(this.getShipmentItemSeqId());
+            cmd.setAttributeSetInstance(this.getAttributeSetInstance());
+            cmd.setRejectionReasonId(this.getRejectionReasonId());
+            cmd.setDamageStatusId(this.getDamageStatusId());
+            cmd.setDamageReasonId(this.getDamageReasonId());
+            cmd.setAcceptedQuantity(this.getAcceptedQuantity());
+            cmd.setRejectedQuantity(this.getRejectedQuantity());
+            cmd.setDamagedQuantity(this.getDamagedQuantity());
+            cmd.setItemDescription(this.getItemDescription());
             cmd.setShipmentId(this.getShipmentId());
             cmd.setVersion(this.getVersion());
             cmd.setCommandId(this.getCommandId());

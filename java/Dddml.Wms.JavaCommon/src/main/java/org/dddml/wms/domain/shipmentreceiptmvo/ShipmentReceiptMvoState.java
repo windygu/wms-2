@@ -21,6 +21,10 @@ public interface ShipmentReceiptMvoState
 
     void setProductId(String productId);
 
+    String getAttributeSetInstanceId();
+
+    void setAttributeSetInstanceId(String attributeSetInstanceId);
+
     String getShipmentItemSeqId();
 
     void setShipmentItemSeqId(String shipmentItemSeqId);

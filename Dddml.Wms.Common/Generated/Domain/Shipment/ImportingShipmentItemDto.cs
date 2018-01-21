@@ -22,6 +22,7 @@ namespace Dddml.Wms.Domain.Shipment
         public virtual ImportingShipmentItem ToImportingShipmentItem()
         {
             ImportingShipmentItem v = new ImportingShipmentItem();
+            v.ShipmentItemSeqId = this.ShipmentItemSeqId;
             v.ProductId = this.ProductId;
             v.Quantity = this.Quantity;
             v.TargetQuantity = this.TargetQuantity;
@@ -29,6 +30,11 @@ namespace Dddml.Wms.Domain.Shipment
             v.AttributeSetInstance = this.AttributeSetInstance;
             return v;
         }
+
+		public virtual string ShipmentItemSeqId { 
+			get;
+			set;
+		}
 
 		public virtual string ProductId { 
 			get;
@@ -68,6 +74,7 @@ namespace Dddml.Wms.Domain.Shipment
 			}
 
 			return true 
+				&& Object.Equals (this.ShipmentItemSeqId, other.ShipmentItemSeqId)
 				&& Object.Equals (this.ProductId, other.ProductId)
 				&& Object.Equals (this.Quantity, other.Quantity)
 				&& Object.Equals (this.TargetQuantity, other.TargetQuantity)
@@ -79,6 +86,9 @@ namespace Dddml.Wms.Domain.Shipment
 		public override int GetHashCode ()
 		{
 			int hash = 0;
+			if (this.ShipmentItemSeqId != null) {
+				hash += 13 * this.ShipmentItemSeqId.GetHashCode ();
+			}
 			if (this.ProductId != null) {
 				hash += 13 * this.ProductId.GetHashCode ();
 			}

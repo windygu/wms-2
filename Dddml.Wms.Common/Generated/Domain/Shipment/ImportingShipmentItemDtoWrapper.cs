@@ -32,6 +32,11 @@ namespace Dddml.Wms.Domain.Shipment
             return this._value;
         }
 
+		public override string ShipmentItemSeqId { 
+			get { return _value.ShipmentItemSeqId; } 
+			set { _value.ShipmentItemSeqId = value; } 
+		}
+
 		public override string ProductId { 
 			get { return _value.ProductId; } 
 			set { _value.ProductId = value; } 

@@ -26,6 +26,8 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
 		string ProductId { get; set; }
 
+		string AttributeSetInstanceId { get; set; }
+
 		string ShipmentItemSeqId { get; set; }
 
 		string RejectionReasonId { get; set; }
@@ -121,6 +123,8 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 	{
 
 		bool IsPropertyProductIdRemoved { get; set; }
+
+		bool IsPropertyAttributeSetInstanceIdRemoved { get; set; }
 
 		bool IsPropertyShipmentItemSeqIdRemoved { get; set; }
 

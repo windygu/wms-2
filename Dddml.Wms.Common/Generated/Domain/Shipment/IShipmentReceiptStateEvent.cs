@@ -21,6 +21,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 		string ProductId { get; set; }
 
+		string AttributeSetInstanceId { get; set; }
+
 		string ShipmentItemSeqId { get; set; }
 
 		string RejectionReasonId { get; set; }
@@ -57,6 +59,8 @@ namespace Dddml.Wms.Domain.Shipment
 	public interface IShipmentReceiptStateMergePatched : IShipmentReceiptStateEvent//, IShipmentReceiptStateProperties
 	{
 		bool IsPropertyProductIdRemoved { get; set; }
+
+		bool IsPropertyAttributeSetInstanceIdRemoved { get; set; }
 
 		bool IsPropertyShipmentItemSeqIdRemoved { get; set; }
 

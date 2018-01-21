@@ -12,6 +12,7 @@ public final class ShipmentReceiptMvoFilteringProperties
 
     public static final String[] propertyNames = new String[] {
             "productId",
+            "attributeSetInstanceId",
             "shipmentItemSeqId",
             "rejectionReasonId",
             "damageStatusId",
@@ -65,6 +66,7 @@ public final class ShipmentReceiptMvoFilteringProperties
     };
 
     public static final String[] propertyTypes = new String[] {
+            "String",
             "String",
             "String",
             "String",
@@ -132,6 +134,8 @@ public final class ShipmentReceiptMvoFilteringProperties
     private static  void initAliasMap() {
         aliasMap.put("productId", "productId");
         aliasMap.put("ProductId", "productId");
+        aliasMap.put("attributeSetInstanceId", "attributeSetInstanceId");
+        aliasMap.put("AttributeSetInstanceId", "attributeSetInstanceId");
         aliasMap.put("shipmentItemSeqId", "shipmentItemSeqId");
         aliasMap.put("ShipmentItemSeqId", "shipmentItemSeqId");
         aliasMap.put("rejectionReasonId", "rejectionReasonId");

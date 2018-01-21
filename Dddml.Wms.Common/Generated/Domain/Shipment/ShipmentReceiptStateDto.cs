@@ -27,6 +27,12 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
+        public virtual string AttributeSetInstanceId
+        {
+            get;
+            set;
+        }
+
         public virtual string ShipmentItemSeqId
         {
             get;
@@ -134,6 +140,7 @@ namespace Dddml.Wms.Domain.Shipment
             var state = new ShipmentReceiptState(true);
             state.ReceiptSeqId = this.ReceiptSeqId;
             state.ProductId = this.ProductId;
+            state.AttributeSetInstanceId = this.AttributeSetInstanceId;
             state.ShipmentItemSeqId = this.ShipmentItemSeqId;
             state.RejectionReasonId = this.RejectionReasonId;
             state.DamageStatusId = this.DamageStatusId;

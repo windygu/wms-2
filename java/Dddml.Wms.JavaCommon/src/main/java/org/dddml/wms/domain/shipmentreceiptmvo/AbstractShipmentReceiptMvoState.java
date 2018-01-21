@@ -34,6 +34,18 @@ public abstract class AbstractShipmentReceiptMvoState implements ShipmentReceipt
         this.productId = productId;
     }
 
+    private String attributeSetInstanceId;
+
+    public String getAttributeSetInstanceId()
+    {
+        return this.attributeSetInstanceId;
+    }
+
+    public void setAttributeSetInstanceId(String attributeSetInstanceId)
+    {
+        this.attributeSetInstanceId = attributeSetInstanceId;
+    }
+
     private String shipmentItemSeqId;
 
     public String getShipmentItemSeqId()
@@ -661,6 +673,7 @@ public abstract class AbstractShipmentReceiptMvoState implements ShipmentReceipt
         throwOnWrongEvent(e);
 
         this.setProductId(e.getProductId());
+        this.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
         this.setShipmentItemSeqId(e.getShipmentItemSeqId());
         this.setRejectionReasonId(e.getRejectionReasonId());
         this.setDamageStatusId(e.getDamageStatusId());
@@ -723,6 +736,17 @@ public abstract class AbstractShipmentReceiptMvoState implements ShipmentReceipt
         else
         {
             this.setProductId(e.getProductId());
+        }
+        if (e.getAttributeSetInstanceId() == null)
+        {
+            if (e.getIsPropertyAttributeSetInstanceIdRemoved() != null && e.getIsPropertyAttributeSetInstanceIdRemoved())
+            {
+                this.setAttributeSetInstanceId(null);
+            }
+        }
+        else
+        {
+            this.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
         }
         if (e.getShipmentItemSeqId() == null)
         {

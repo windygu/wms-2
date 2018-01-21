@@ -46,6 +46,18 @@ public abstract class AbstractShipmentReceiptCommand extends AbstractCommand imp
             this.productId = productId;
         }
 
+        private String attributeSetInstanceId;
+
+        public String getAttributeSetInstanceId()
+        {
+            return this.attributeSetInstanceId;
+        }
+
+        public void setAttributeSetInstanceId(String attributeSetInstanceId)
+        {
+            this.attributeSetInstanceId = attributeSetInstanceId;
+        }
+
         private String shipmentItemSeqId;
 
         public String getShipmentItemSeqId()
@@ -206,6 +218,18 @@ public abstract class AbstractShipmentReceiptCommand extends AbstractCommand imp
         public void setIsPropertyProductIdRemoved(Boolean removed)
         {
             this.isPropertyProductIdRemoved = removed;
+        }
+
+        private Boolean isPropertyAttributeSetInstanceIdRemoved;
+
+        public Boolean getIsPropertyAttributeSetInstanceIdRemoved()
+        {
+            return this.isPropertyAttributeSetInstanceIdRemoved;
+        }
+
+        public void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed)
+        {
+            this.isPropertyAttributeSetInstanceIdRemoved = removed;
         }
 
         private Boolean isPropertyShipmentItemSeqIdRemoved;

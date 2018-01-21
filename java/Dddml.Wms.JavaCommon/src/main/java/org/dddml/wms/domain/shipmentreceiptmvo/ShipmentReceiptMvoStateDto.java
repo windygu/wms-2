@@ -34,6 +34,18 @@ public class ShipmentReceiptMvoStateDto
         this.productId = productId;
     }
 
+    private String attributeSetInstanceId;
+
+    public String getAttributeSetInstanceId()
+    {
+        return this.attributeSetInstanceId;
+    }
+
+    public void setAttributeSetInstanceId(String attributeSetInstanceId)
+    {
+        this.attributeSetInstanceId = attributeSetInstanceId;
+    }
+
     private String shipmentItemSeqId;
 
     public String getShipmentItemSeqId()
@@ -629,6 +641,9 @@ public class ShipmentReceiptMvoStateDto
             }
             if (returnedFieldsContains("ProductId")) {
                 dto.setProductId(state.getProductId());
+            }
+            if (returnedFieldsContains("AttributeSetInstanceId")) {
+                dto.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
             }
             if (returnedFieldsContains("ShipmentItemSeqId")) {
                 dto.setShipmentItemSeqId(state.getShipmentItemSeqId());

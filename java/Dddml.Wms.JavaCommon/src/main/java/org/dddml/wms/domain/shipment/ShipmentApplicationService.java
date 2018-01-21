@@ -16,6 +16,8 @@ public interface ShipmentApplicationService
 
     void when(ShipmentCommands.Import c);
 
+    void when(ShipmentCommands.ReceiveItem c);
+
     ShipmentState get(String id);
 
     Iterable<ShipmentState> getAll(Integer firstResult, Integer maxResults);
