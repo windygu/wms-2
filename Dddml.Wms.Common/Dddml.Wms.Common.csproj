@@ -5478,6 +5478,9 @@
     <Compile Include="Generated\Domain\StatusItem\StatusItemCommandDto.cs">
       <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\StatusItem\StatusItemIds.cs">
+      <DependentUpon>GenerateStatusItemOfbizDataConstObjects.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\StatusItem\StatusItemState.cs">
       <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
     </Compile>
@@ -6234,6 +6237,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
+    <Content Include="Generated\Domain\StatusItem\GenerateStatusItemOfbizDataConstObjects.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateStatusItemOfbizDataConstObjects.tt</DependentUpon>
+    </Content>
     <Content Include="Generated\Domain\StatusItem\GenerateStatusItemDomain.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -6304,6 +6312,14 @@
       <DependentUpon>GenerateAttributeSetInstancePropertyUtils.tt</DependentUpon>
     </Content>
     <None Include="DddmlSerializationForT4.tc" />
+    <None Include="Generated\Domain\StatusItem\GenerateStatusItemOfbizDataConstObjects.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastOutputs>
+.\GenerateStatusItemOfbizDataConstObjects.txt
+.\StatusItemIds.cs
+</LastOutputs>
+      <LastGenOutput>GenerateStatusItemOfbizDataConstObjects.txt</LastGenOutput>
+    </None>
     <None Include="packages.config" />
     <Content Include="Generated\Domain\InOut\GenerateInOutDomain.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

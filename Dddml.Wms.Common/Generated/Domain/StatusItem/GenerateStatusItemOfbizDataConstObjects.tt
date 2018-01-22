@@ -1,0 +1,21 @@
+<#@ template language="C#" debug="True" #>
+<#@ output extension="txt" #>
+<#@ import namespace="Dddml.Core.Dom" #>
+<#@ include file="%DddmlDotNetToolsSolutionDir%\Dddml.T4.Templates\Domain\Ofbiz\OfbizDataConstObjectTemplate.tt" #>
+<#@ include file="..\..\..\LoadBoundedContext.tt" #>
+<#
+    string projectFile = TransformationContext.Current.GetPropertyValue("MSBuildProjectFullPath");
+	string projectDir = System.IO.Path.GetDirectoryName(projectFile);
+
+    string filePath1 = System.IO.Path.Combine(projectDir, "..\\Data");
+
+    var template1 = new OfbizDataConstObjectTemplate(boundedContext, 
+        filePath1, 
+        "*Data.xml", 
+        "StatusItem",
+        "StatusItemIds",
+        "statusId"
+        );
+    template1.RenderToFile("StatusItemIds.cs");      
+
+#>

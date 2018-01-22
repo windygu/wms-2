@@ -157,13 +157,32 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\DamageReasonData.xml">
+    <Content Include="..\data\DamageReasonData.xml">
+      <Link>Data\DamageReasonData.xml</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Data\DamageTypeData.xml">
+    <Content Include="..\data\DamageTypeData.xml">
+      <Link>Data\DamageTypeData.xml</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Data\ShipmentTypeData.xml">
+    <Content Include="..\data\ShipmentTypeData.xml">
+      <Link>Data\ShipmentTypeData.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\data\StatusItemData.xml">
+      <Link>Data\StatusItemData.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\data\UomConversionData.xml">
+      <Link>Data\UomConversionData.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\data\UomData.xml">
+      <Link>Data\UomData.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\data\UomTypeData.xml">
+      <Link>Data\UomTypeData.xml</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Sql\AddStateIdForeignKeyConstraints.sql">
@@ -233,18 +252,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateDropRViewNameConflictedTables.tt</DependentUpon>
-    </Content>
-    <Content Include="Data\StatusItemData.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\UomConversionData.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\UomData.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\UomTypeData.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
