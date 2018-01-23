@@ -105,9 +105,19 @@ namespace Dddml.Wms.Domain.Shipment
 			Update(c, ar => ar.Import(c.ShipmentTypeId, c.PrimaryOrderId, c.PrimaryReturnId, c.EstimatedReadyDate, c.EstimatedShipDate, c.EstimatedArrivalDate, c.LatestCancelDate, c.EstimatedShipCost, c.CurrencyUomId, c.HandlingInstructions, c.OriginFacilityId, c.DestinationFacilityId, c.PartyIdTo, c.PartyIdFrom, c.AdditionalShippingCharge, c.AddtlShippingChargeDesc, c.ShipmentItems, c.Version, c.CommandId, c.RequesterId));
 		}
 
+		public virtual void When(ShipmentCommands.Ship c)
+		{
+			Update(c, ar => ar.Ship(c.Version, c.CommandId, c.RequesterId));
+		}
+
 		public virtual void When(ShipmentCommands.ReceiveItem c)
 		{
 			Update(c, ar => ar.ReceiveItem(c.ShipmentItemSeqId, c.AttributeSetInstance, c.RejectionReasonId, c.DamageStatusId, c.DamageReasonId, c.AcceptedQuantity, c.RejectedQuantity, c.DamagedQuantity, c.ItemDescription, c.Version, c.CommandId, c.RequesterId));
+		}
+
+		public virtual void When(ShipmentCommands.ConfirmReceipt c)
+		{
+			Update(c, ar => ar.ConfirmReceipt(c.Version, c.CommandId, c.RequesterId));
 		}
 
         public virtual IShipmentState Get(string shipmentId)

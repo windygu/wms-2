@@ -21,7 +21,11 @@ namespace Dddml.Wms.Domain.Shipment
 
 		void When(ShipmentCommands.Import c);
 
+		void When(ShipmentCommands.Ship c);
+
 		void When(ShipmentCommands.ReceiveItem c);
+
+		void When(ShipmentCommands.ConfirmReceipt c);
 
  		IShipmentState Get(string shipmentId);
 

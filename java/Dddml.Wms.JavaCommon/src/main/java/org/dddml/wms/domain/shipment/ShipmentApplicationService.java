@@ -16,7 +16,11 @@ public interface ShipmentApplicationService
 
     void when(ShipmentCommands.Import c);
 
+    void when(ShipmentCommands.Ship c);
+
     void when(ShipmentCommands.ReceiveItem c);
+
+    void when(ShipmentCommands.ConfirmReceipt c);
 
     ShipmentState get(String id);
 

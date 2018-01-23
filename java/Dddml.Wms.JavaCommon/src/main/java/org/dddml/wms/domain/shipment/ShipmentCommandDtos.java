@@ -253,6 +253,63 @@ public class ShipmentCommandDtos
 
     }
 
+    public static class ShipRequestContent {
+
+        public String getCommandType() {
+            return "Ship";
+        }
+
+        private String shipmentId;
+
+        public String getShipmentId() {
+            return this.shipmentId;
+        }
+
+        public void setShipmentId(String shipmentId) {
+            this.shipmentId = shipmentId;
+        }
+
+        private Long version;
+
+        public Long getVersion() {
+            return this.version;
+        }
+
+        public void setVersion(Long version) {
+            this.version = version;
+        }
+
+        private String commandId;
+
+        public String getCommandId() {
+            return this.commandId;
+        }
+
+        public void setCommandId(String commandId) {
+            this.commandId = commandId;
+        }
+
+        private String requesterId;
+
+        public String getRequesterId() {
+            return this.requesterId;
+        }
+
+        public void setRequesterId(String requesterId) {
+            this.requesterId = requesterId;
+        }
+
+       public ShipmentCommands.Ship toShip() {
+            ShipmentCommands.Ship cmd = new ShipmentCommands.Ship();
+            cmd.setShipmentId(this.getShipmentId());
+            cmd.setVersion(this.getVersion());
+            cmd.setCommandId(this.getCommandId());
+            cmd.setRequesterId(this.getRequesterId());
+            return cmd;
+        }
+
+    }
+
     public static class ReceiveItemRequestContent {
 
         public String getCommandType() {
@@ -400,6 +457,63 @@ public class ShipmentCommandDtos
             cmd.setRejectedQuantity(this.getRejectedQuantity());
             cmd.setDamagedQuantity(this.getDamagedQuantity());
             cmd.setItemDescription(this.getItemDescription());
+            cmd.setShipmentId(this.getShipmentId());
+            cmd.setVersion(this.getVersion());
+            cmd.setCommandId(this.getCommandId());
+            cmd.setRequesterId(this.getRequesterId());
+            return cmd;
+        }
+
+    }
+
+    public static class ConfirmReceiptRequestContent {
+
+        public String getCommandType() {
+            return "ConfirmReceipt";
+        }
+
+        private String shipmentId;
+
+        public String getShipmentId() {
+            return this.shipmentId;
+        }
+
+        public void setShipmentId(String shipmentId) {
+            this.shipmentId = shipmentId;
+        }
+
+        private Long version;
+
+        public Long getVersion() {
+            return this.version;
+        }
+
+        public void setVersion(Long version) {
+            this.version = version;
+        }
+
+        private String commandId;
+
+        public String getCommandId() {
+            return this.commandId;
+        }
+
+        public void setCommandId(String commandId) {
+            this.commandId = commandId;
+        }
+
+        private String requesterId;
+
+        public String getRequesterId() {
+            return this.requesterId;
+        }
+
+        public void setRequesterId(String requesterId) {
+            this.requesterId = requesterId;
+        }
+
+       public ShipmentCommands.ConfirmReceipt toConfirmReceipt() {
+            ShipmentCommands.ConfirmReceipt cmd = new ShipmentCommands.ConfirmReceipt();
             cmd.setShipmentId(this.getShipmentId());
             cmd.setVersion(this.getVersion());
             cmd.setCommandId(this.getCommandId());

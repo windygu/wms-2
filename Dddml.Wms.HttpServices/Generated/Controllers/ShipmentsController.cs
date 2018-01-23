@@ -141,12 +141,50 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = ShipmentsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{id}/_commands/Ship")]
+        [HttpPut][SetRequesterId]
+        public void Ship(string id, [FromBody]ShipmentCommandDtos.ShipRequestContent content)
+        {
+          try {
+            var cmd = content.ToShip();
+            var idObj = id;
+            if (cmd.ShipmentId == null)
+            {
+                cmd.ShipmentId = idObj;
+            }
+            else if (!cmd.ShipmentId.Equals(idObj))
+            {
+                throw DomainError.Named("inconsistentId", "Argument Id {0} NOT equals body Id {1}", id, cmd.ShipmentId);
+            }
+            _shipmentApplicationService.When(cmd);
+          } catch (Exception ex) { var response = ShipmentsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
         [Route("{id}/_commands/ReceiveItem")]
         [HttpPut][SetRequesterId]
         public void ReceiveItem(string id, [FromBody]ShipmentCommandDtos.ReceiveItemRequestContent content)
         {
           try {
             var cmd = content.ToReceiveItem();
+            var idObj = id;
+            if (cmd.ShipmentId == null)
+            {
+                cmd.ShipmentId = idObj;
+            }
+            else if (!cmd.ShipmentId.Equals(idObj))
+            {
+                throw DomainError.Named("inconsistentId", "Argument Id {0} NOT equals body Id {1}", id, cmd.ShipmentId);
+            }
+            _shipmentApplicationService.When(cmd);
+          } catch (Exception ex) { var response = ShipmentsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
+        [Route("{id}/_commands/ConfirmReceipt")]
+        [HttpPut][SetRequesterId]
+        public void ConfirmReceipt(string id, [FromBody]ShipmentCommandDtos.ConfirmReceiptRequestContent content)
+        {
+          try {
+            var cmd = content.ToConfirmReceipt();
             var idObj = id;
             if (cmd.ShipmentId == null)
             {

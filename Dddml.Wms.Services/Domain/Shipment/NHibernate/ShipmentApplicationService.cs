@@ -9,6 +9,11 @@ using Dddml.Wms.Domain.Product;
 using Common.Logging;
 using Dddml.Wms.Domain.Services;
 using Dddml.Wms.Domain.StatusItem;
+using Dddml.Wms.Domain.ShipmentType;
+using Dddml.Wms.Domain.InventoryItem;
+using Dddml.Wms.Domain.Warehouse;
+using Dddml.Wms.Domain.DocumentType;
+using Dddml.Wms.Specialization.NHibernate;
 
 namespace Dddml.Wms.Domain.Shipment.NHibernate
 {
@@ -31,15 +36,98 @@ namespace Dddml.Wms.Domain.Shipment.NHibernate
             get { return ApplicationContext.Current["attributeSetService"] as IAttributeSetService; }
         }
 
+        IInventoryItemApplicationService InventoryItemApplicationService
+        {
+            get { return ApplicationContext.Current["inventoryItemApplicationService"] as IInventoryItemApplicationService; }
+        }
+
+        private IIdGenerator<long, object, object> _seqIdGenerator = new TableIdGenerator();
+
+        public IIdGenerator<long, object, object> SeqIdGenerator
+        {
+            get { return _seqIdGenerator; }
+            set { _seqIdGenerator = value; }
+        }
+
+        [Transaction]
+        public override void When(ShipmentCommands.ConfirmReceipt c)
+        {
+            var shipment = AssertShipmentStatus(c.ShipmentId, StatusItemIds.PurchShipShipped);
+
+            var shipmentReceiptDict = shipment.ShipmentReceipts.ToDictionary(i => i.ShipmentItemSeqId);
+
+            var shipmentItemDict = shipment.ShipmentItems.ToDictionary(i => i.ShipmentItemSeqId);
+
+            // /////////////////////////////
+            var itemIdNotFound = shipmentItemDict.Keys.Where(i => !shipmentReceiptDict.ContainsKey(i)).FirstOrDefault();
+            if (itemIdNotFound != null) 
+            {
+                throw new ArgumentException(String.Format("Shipment item NOT received. ShipmentItemSeqId.: {0}", itemIdNotFound));
+            }
+            // /////////////////////////////
+            var receiptUnknown = shipmentReceiptDict.Values.Where(i => !shipmentItemDict.ContainsKey(i.ShipmentItemSeqId)).FirstOrDefault();
+            if (receiptUnknown != null)
+            {
+                throw new ArgumentException(String.Format("Shipment receipt has unknown ShipmentItemSeqId.: {0}", receiptUnknown.ShipmentItemSeqId));
+            }
+
+            var inventoryItemEntries = CompleteInOutCreateInventoryItemEntries(shipment, shipmentReceiptDict.Values);
+            CreateOrUpdateInventoryItems(inventoryItemEntries);
+            
+            base.When(c);
+        }
+
+        protected virtual IList<ICreateInventoryItemEntry> CompleteInOutCreateInventoryItemEntries(IShipmentState shipment, IEnumerable<IShipmentReceiptState> receipts)
+        {
+            var entries = new List<ICreateInventoryItemEntry>();
+            foreach (var d in receipts)
+            {
+                var e = CreateInventoryItemEntry(shipment, d);
+                entries.Add(e);
+            }
+            return entries;
+        }
+
+
+        /// <summary>
+        /// 更新库存单元。
+        /// </summary>
+        /// <param name="inventoryItemEntries"></param>
+        private void CreateOrUpdateInventoryItems(IList<ICreateInventoryItemEntry> inventoryItemEntries)
+        {
+            var invItemApplicationService = this.InventoryItemApplicationService;
+            InventoryItemUtils.CreateOrUpdateInventoryItems(invItemApplicationService, inventoryItemEntries);
+        }
+
+        protected virtual ICreateInventoryItemEntry CreateInventoryItemEntry(IShipmentState shipment, IShipmentReceiptState lineReceipt)
+        {
+            var targetLocatorId = WarehouseUtils.GetReceivingLocatorId(shipment.DestinationFacilityId);
+            var entry = new CreateInventoryItemEntry();
+            entry.InventoryItemId = new InventoryItemId(lineReceipt.ProductId, targetLocatorId, lineReceipt.AttributeSetInstanceId);
+            entry.EntrySeqId = SeqIdGenerator.GetNextId();//DateTime.Now.Ticks;
+            entry.OnHandQuantity = lineReceipt.AcceptedQuantity;// *signum;
+            entry.Source = new InventoryItemSourceInfo(DocumentTypeIds.Shipment, shipment.ShipmentId, lineReceipt.ReceiptSeqId, 0);
+            return entry;
+        }
+
         [Transaction]
         public override void When(ShipmentCommands.Import c)
         {
             var shipment = new CreateShipment();
             shipment.ShipmentId = c.ShipmentId;
+            shipment.ShipmentTypeId = c.ShipmentTypeId;
             shipment.OriginFacilityId = c.OriginFacilityId;
-            shipment.DestinationFacilityId= c.DestinationFacilityId;
+            shipment.DestinationFacilityId = c.DestinationFacilityId;
             shipment.PartyIdFrom = c.PartyIdFrom;
             shipment.PartyIdTo = c.PartyIdTo;
+            if (c.ShipmentTypeId == ShipmentTypeIds.PurchaseShipment || c.ShipmentTypeId == ShipmentTypeIds.IncomingShipment) 
+            {
+                shipment.StatusId = StatusItemIds.PurchShipCreated;
+            }
+            else 
+            {
+                shipment.StatusId = StatusItemIds.ShipmentInput;
+            }
             //todo More properties...
 
             var shipItems = new List<ICreateShipmentItem>();

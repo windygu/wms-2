@@ -916,6 +916,34 @@ namespace Dddml.Wms.Domain.Shipment
 
         }
 
+        public class ShipRequestContent : ICommandDto
+        {
+
+            public string CommandType
+            {
+                get { return "Ship"; }
+            }
+
+            public string ShipmentId { get; set; }
+
+            public long Version { get; set; }
+
+            public string CommandId { get; set; }
+
+            public string RequesterId { get; set; }
+
+            public ShipmentCommands.Ship ToShip()
+            {
+                var cmd = new ShipmentCommands.Ship();
+                cmd.ShipmentId = this.ShipmentId;
+                cmd.Version = this.Version;
+                cmd.CommandId = this.CommandId;
+                cmd.RequesterId = this.RequesterId;
+                return cmd;
+            }
+
+        }
+
         public class ReceiveItemRequestContent : ICommandDto
         {
 
@@ -962,6 +990,34 @@ namespace Dddml.Wms.Domain.Shipment
                 cmd.RejectedQuantity = this.RejectedQuantity;
                 cmd.DamagedQuantity = this.DamagedQuantity;
                 cmd.ItemDescription = this.ItemDescription;
+                cmd.ShipmentId = this.ShipmentId;
+                cmd.Version = this.Version;
+                cmd.CommandId = this.CommandId;
+                cmd.RequesterId = this.RequesterId;
+                return cmd;
+            }
+
+        }
+
+        public class ConfirmReceiptRequestContent : ICommandDto
+        {
+
+            public string CommandType
+            {
+                get { return "ConfirmReceipt"; }
+            }
+
+            public string ShipmentId { get; set; }
+
+            public long Version { get; set; }
+
+            public string CommandId { get; set; }
+
+            public string RequesterId { get; set; }
+
+            public ShipmentCommands.ConfirmReceipt ToConfirmReceipt()
+            {
+                var cmd = new ShipmentCommands.ConfirmReceipt();
                 cmd.ShipmentId = this.ShipmentId;
                 cmd.Version = this.Version;
                 cmd.CommandId = this.CommandId;

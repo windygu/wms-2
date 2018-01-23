@@ -11,7 +11,14 @@ namespace Dddml.Wms.Domain.Warehouse
 
         public static string GetInTransitLocatorId(string warehouseId)
         {
+            if (String.IsNullOrWhiteSpace(warehouseId)) { throw new ArgumentNullException("warehouseId"); }
             return warehouseId + "-IN_TRANSIT";
+        }
+
+        public static string GetReceivingLocatorId(string warehouseId)
+        {
+            if (String.IsNullOrWhiteSpace(warehouseId)) { throw new ArgumentNullException("warehouseId"); }
+            return warehouseId + "-RECEIVING_AREA";
         }
 
     }

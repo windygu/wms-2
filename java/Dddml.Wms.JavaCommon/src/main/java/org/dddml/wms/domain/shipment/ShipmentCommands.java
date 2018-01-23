@@ -231,6 +231,58 @@ public class ShipmentCommands
 
     }
 
+    public static class Ship implements ShipmentCommand {
+
+        public String getCommandType() {
+            return "Ship";
+        }
+
+        public void setCommandType(String commandType) {
+            //do nothing
+        }
+
+        private String shipmentId;
+
+        public String getShipmentId() {
+            return this.shipmentId;
+        }
+
+        public void setShipmentId(String shipmentId) {
+            this.shipmentId = shipmentId;
+        }
+
+        private Long version;
+
+        public Long getVersion() {
+            return this.version;
+        }
+
+        public void setVersion(Long version) {
+            this.version = version;
+        }
+
+        private String commandId;
+
+        public String getCommandId() {
+            return this.commandId;
+        }
+
+        public void setCommandId(String commandId) {
+            this.commandId = commandId;
+        }
+
+        private String requesterId;
+
+        public String getRequesterId() {
+            return this.requesterId;
+        }
+
+        public void setRequesterId(String requesterId) {
+            this.requesterId = requesterId;
+        }
+
+    }
+
     public static class ReceiveItem implements ShipmentCommand {
 
         public String getCommandType() {
@@ -329,6 +381,58 @@ public class ShipmentCommands
 
         public void setItemDescription(String itemDescription) {
             this.itemDescription = itemDescription;
+        }
+
+        private String shipmentId;
+
+        public String getShipmentId() {
+            return this.shipmentId;
+        }
+
+        public void setShipmentId(String shipmentId) {
+            this.shipmentId = shipmentId;
+        }
+
+        private Long version;
+
+        public Long getVersion() {
+            return this.version;
+        }
+
+        public void setVersion(Long version) {
+            this.version = version;
+        }
+
+        private String commandId;
+
+        public String getCommandId() {
+            return this.commandId;
+        }
+
+        public void setCommandId(String commandId) {
+            this.commandId = commandId;
+        }
+
+        private String requesterId;
+
+        public String getRequesterId() {
+            return this.requesterId;
+        }
+
+        public void setRequesterId(String requesterId) {
+            this.requesterId = requesterId;
+        }
+
+    }
+
+    public static class ConfirmReceipt implements ShipmentCommand {
+
+        public String getCommandType() {
+            return "ConfirmReceipt";
+        }
+
+        public void setCommandType(String commandType) {
+            //do nothing
         }
 
         private String shipmentId;

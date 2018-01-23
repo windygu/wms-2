@@ -47,7 +47,8 @@ namespace Dddml.Wms.Services.Tests
             UpdateShipmentToPurchShipShipped(shipmentId);
 
             ReceiveAllItems(shipmentId);
-            
+
+            UpdateShipmentToPurchShipReceived(shipmentId);
         }
 
         private void ReceiveAllItems(string shipmentId)
@@ -99,11 +100,23 @@ namespace Dddml.Wms.Services.Tests
 
         private void UpdateShipmentToPurchShipShipped(string shipmentId)
         {
-            var updateShipment = new MergePatchShipment();
+            //var updateShipment = new MergePatchShipment();
+            var updateShipment = new ShipmentCommands.Ship();
             updateShipment.ShipmentId = shipmentId;
             updateShipment.CommandId = Guid.NewGuid().ToString();
-            updateShipment.StatusId = StatusItemIds.PurchShipShipped;
+            //updateShipment.StatusId = StatusItemIds.PurchShipShipped;
             updateShipment.Version = 1;
+            shipmentApplicationService.When(updateShipment);
+        }
+
+        private void UpdateShipmentToPurchShipReceived(string shipmentId)
+        {
+            //var updateShipment = new MergePatchShipment();
+            var updateShipment = new ShipmentCommands.ConfirmReceipt();
+            updateShipment.ShipmentId = shipmentId;
+            updateShipment.CommandId = Guid.NewGuid().ToString();
+            //updateShipment.StatusId = StatusItemIds.PurchShipShipped;
+            updateShipment.Version = 4; //todo???
             shipmentApplicationService.When(updateShipment);
         }
 
@@ -127,6 +140,7 @@ namespace Dddml.Wms.Services.Tests
                 });
 
             shipImport.ShipmentTypeId = ShipmentTypeIds.IncomingShipment;
+            shipImport.DestinationFacilityId = "TEST_1";
 
             shipmentApplicationService.When(shipImport);
             return shipmentId;

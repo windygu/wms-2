@@ -269,7 +269,11 @@ aggregates:
           # ------------------------
           ShipmentItems:
             itemType: ImportingShipmentItem
-      
+            
+      # --------------------------------------
+      Ship:
+        parameters:
+
       # --------------------------------------
       ReceiveItem:
         parameters:
@@ -300,6 +304,11 @@ aggregates:
           # -----------------------------------
           ItemDescription:
             type: description
+      
+      # --------------------------------------
+      ConfirmReceipt:
+        parameters:
+      
       
     # ---------------------------------
     valueObjects:
