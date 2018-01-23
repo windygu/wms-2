@@ -13,8 +13,8 @@
         filePath1, // data files path
         "*Data.xml", // data file filter
         "StatusItem", // entity name
-        "StatusItemIds", // generated class name(file name)
-        "statusId" // the xml attribute name of Id.
+        "StatusItemIds"//, // generated class name(file name)
+        //"statusId" // the xml attribute name of Id.
         );
     template1.Output.Encoding = new System.Text.UTF8Encoding(false);
     template1.RenderToFile("StatusItemIds.java");      

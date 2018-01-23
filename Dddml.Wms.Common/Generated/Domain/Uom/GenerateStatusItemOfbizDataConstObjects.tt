@@ -12,10 +12,10 @@
     var template1 = new OfbizDataConstObjectTemplate(boundedContext, 
         filePath1, // data files path
         "*Data.xml", // data file filter
-        "StatusItem", // entity name
-        "StatusItemIds"//, // generated class name(file name)
+        "Uom", // entity name
+        "UomIds"//, // generated class name(file name)
         //"statusId" // the xml attribute name of Id.
         );
-    template1.RenderToFile("StatusItemIds.cs");      
+    template1.RenderToFile("UomIds.cs");      
 
 #>
