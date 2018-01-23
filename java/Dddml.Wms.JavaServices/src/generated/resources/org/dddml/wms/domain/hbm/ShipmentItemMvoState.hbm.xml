@@ -16,7 +16,7 @@
 
 	<property name="productId" ><column name="ProductId" sql-type="VARCHAR(60)" /></property>
 	<property name="attributeSetInstanceId" ></property>
-	<property name="quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>
+	<property name="quantity" ><column name="Quantity" not-null="true" sql-type="DECIMAL(18,6)" /></property>
 	<property name="targetQuantity" ><column name="TargetQuantity" sql-type="DECIMAL(18,6)" /></property>
 	<property name="shipmentContentDescription" ><column name="ShipmentContentDescription" sql-type="VARCHAR(255)" /></property>
 	<property name="version" ></property>

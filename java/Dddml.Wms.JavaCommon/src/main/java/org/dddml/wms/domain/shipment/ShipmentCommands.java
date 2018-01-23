@@ -19,6 +19,16 @@ public class ShipmentCommands
             //do nothing
         }
 
+        private String shipmentTypeId;
+
+        public String getShipmentTypeId() {
+            return this.shipmentTypeId;
+        }
+
+        public void setShipmentTypeId(String shipmentTypeId) {
+            this.shipmentTypeId = shipmentTypeId;
+        }
+
         private String primaryOrderId;
 
         public String getPrimaryOrderId() {

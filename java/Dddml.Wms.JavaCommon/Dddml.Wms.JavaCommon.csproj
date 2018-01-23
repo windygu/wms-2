@@ -5358,6 +5358,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\statusitem\GenerateStatusItemOfbizDataConstObjects.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateStatusItemOfbizDataConstObjects.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\statusitem\StatusItemAggregate.java">
       <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
     </Content>
@@ -5366,6 +5371,9 @@
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\statusitem\StatusItemCommand.java">
       <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\statusitem\StatusItemIds.java">
+      <DependentUpon>GenerateStatusItemOfbizDataConstObjects.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\statusitem\StatusItemState.java">
       <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
@@ -7846,6 +7854,14 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateBoundedContextDomainServices.txt</LastGenOutput>
       <LastOutputs>.\GenerateBoundedContextDomainServices.txt</LastOutputs>
+    </None>
+    <None Include="src\main\java\org\dddml\wms\domain\statusitem\GenerateStatusItemOfbizDataConstObjects.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateStatusItemOfbizDataConstObjects.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateStatusItemOfbizDataConstObjects.txt
+.\StatusItemIds.java
+</LastOutputs>
     </None>
   </ItemGroup>
   <ItemGroup>

@@ -503,6 +503,8 @@ namespace Dddml.Wms.Domain.Shipment
                 get { return "Import"; }
             }
 
+            public string ShipmentTypeId { get; set; }
+
             public string PrimaryOrderId { get; set; }
 
             public string PrimaryReturnId { get; set; }

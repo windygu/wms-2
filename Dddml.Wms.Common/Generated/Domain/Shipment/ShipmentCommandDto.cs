@@ -845,6 +845,8 @@ namespace Dddml.Wms.Domain.Shipment
                 get { return "Import"; }
             }
 
+            public string ShipmentTypeId { get; set; }
+
             public string PrimaryOrderId { get; set; }
 
             public string PrimaryReturnId { get; set; }
@@ -888,6 +890,7 @@ namespace Dddml.Wms.Domain.Shipment
             public ShipmentCommands.Import ToImport()
             {
                 var cmd = new ShipmentCommands.Import();
+                cmd.ShipmentTypeId = this.ShipmentTypeId;
                 cmd.PrimaryOrderId = this.PrimaryOrderId;
                 cmd.PrimaryReturnId = this.PrimaryReturnId;
                 cmd.EstimatedReadyDate = this.EstimatedReadyDate;

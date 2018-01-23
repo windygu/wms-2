@@ -117,6 +117,7 @@ aggregates:
               
           Quantity:
             type: fixed-point
+            notNull: true
             
           TargetQuantity:
             type: fixed-point
@@ -204,12 +205,15 @@ aggregates:
             
           AcceptedQuantity:
             type: fixed-point
+            notNull: true
             
           RejectedQuantity:
             type: fixed-point
+            notNull: true
           
           DamagedQuantity:
             type: fixed-point
+            notNull: true
             
         # references: {}
         
@@ -225,6 +229,8 @@ aggregates:
       # --------------------------------------
       Import:
         parameters:
+          ShipmentTypeId:
+            type: id
           PrimaryOrderId:
             type: id
           PrimaryReturnId:

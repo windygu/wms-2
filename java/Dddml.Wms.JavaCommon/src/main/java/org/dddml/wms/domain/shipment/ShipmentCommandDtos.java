@@ -15,6 +15,16 @@ public class ShipmentCommandDtos
             return "Import";
         }
 
+        private String shipmentTypeId;
+
+        public String getShipmentTypeId() {
+            return this.shipmentTypeId;
+        }
+
+        public void setShipmentTypeId(String shipmentTypeId) {
+            this.shipmentTypeId = shipmentTypeId;
+        }
+
         private String primaryOrderId;
 
         public String getPrimaryOrderId() {
@@ -217,6 +227,7 @@ public class ShipmentCommandDtos
 
        public ShipmentCommands.Import toImport() {
             ShipmentCommands.Import cmd = new ShipmentCommands.Import();
+            cmd.setShipmentTypeId(this.getShipmentTypeId());
             cmd.setPrimaryOrderId(this.getPrimaryOrderId());
             cmd.setPrimaryReturnId(this.getPrimaryReturnId());
             cmd.setEstimatedReadyDate(this.getEstimatedReadyDate());

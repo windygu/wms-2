@@ -310,7 +310,7 @@
        ShipmentVersion BIGINT not null,
        ProductId VARCHAR(60),
        AttributeSetInstanceId VARCHAR(255),
-       Quantity DECIMAL(18,6),
+       Quantity DECIMAL(18,6) not null,
        TargetQuantity DECIMAL(18,6),
        ShipmentContentDescription VARCHAR(255),
        Version BIGINT,
@@ -470,11 +470,18 @@
        UpdatedAt DATETIME,
        primary key (PhysicalInventoryLineIdPhysicalInventoryDocumentNumber, PhysicalInventoryLineIdLineNumber)
     );
+    alter table ShipmentReceipts 
+        add column AttributeSetInstanceId VARCHAR(255);
+    alter table ShipmentReceiptStateEvents 
+        add column AttributeSetInstanceId VARCHAR(255);
+    alter table ShipmentReceiptStateEvents 
+        add column IsPropertyAttributeSetInstanceIdRemoved TINYINT(1);
     create table ShipmentReceipt_RV (
         ShipmentReceiptIdShipmentId VARCHAR(20) not null,
        ShipmentReceiptIdReceiptSeqId VARCHAR(20) not null,
        ShipmentVersion BIGINT not null,
        ProductId VARCHAR(60),
+       AttributeSetInstanceId VARCHAR(255),
        ShipmentItemSeqId VARCHAR(20),
        RejectionReasonId VARCHAR(20),
        DamageStatusId VARCHAR(20),
@@ -482,9 +489,9 @@
        ReceivedBy VARCHAR(250),
        DatetimeReceived DATETIME,
        ItemDescription VARCHAR(255),
-       AcceptedQuantity DECIMAL(18,6),
-       RejectedQuantity DECIMAL(18,6),
-       DamagedQuantity DECIMAL(18,6),
+       AcceptedQuantity DECIMAL(18,6) not null,
+       RejectedQuantity DECIMAL(18,6) not null,
+       DamagedQuantity DECIMAL(18,6) not null,
        Version BIGINT,
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
@@ -523,3 +530,7 @@
        UpdatedAt DATETIME,
        primary key (ShipmentReceiptIdShipmentId, ShipmentReceiptIdReceiptSeqId)
     );
+    alter table ShipmentReceiptMvoStateEvents 
+        add column AttributeSetInstanceId VARCHAR(255);
+    alter table ShipmentReceiptMvoStateEvents 
+        add column IsPropertyAttributeSetInstanceIdRemoved TINYINT(1);

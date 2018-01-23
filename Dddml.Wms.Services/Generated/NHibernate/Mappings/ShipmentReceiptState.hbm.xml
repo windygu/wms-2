@@ -21,9 +21,9 @@
     <property name="ReceivedBy" ><column name="ReceivedBy" sql-type="VARCHAR(250)" /></property>
     <property name="DatetimeReceived" ><column name="DatetimeReceived" sql-type="DATETIME" /></property>
     <property name="ItemDescription" ><column name="ItemDescription" sql-type="VARCHAR(255)" /></property>
-    <property name="AcceptedQuantity" ><column name="AcceptedQuantity" sql-type="DECIMAL(18,6)" /></property>
-    <property name="RejectedQuantity" ><column name="RejectedQuantity" sql-type="DECIMAL(18,6)" /></property>
-    <property name="DamagedQuantity" ><column name="DamagedQuantity" sql-type="DECIMAL(18,6)" /></property>
+    <property name="AcceptedQuantity" ><column name="AcceptedQuantity" not-null="true" sql-type="DECIMAL(18,6)" /></property>
+    <property name="RejectedQuantity" ><column name="RejectedQuantity" not-null="true" sql-type="DECIMAL(18,6)" /></property>
+    <property name="DamagedQuantity" ><column name="DamagedQuantity" not-null="true" sql-type="DECIMAL(18,6)" /></property>
     <property name="CreatedBy" ></property>
     <property name="UpdatedBy" ></property>
     <property name="Active" ></property>

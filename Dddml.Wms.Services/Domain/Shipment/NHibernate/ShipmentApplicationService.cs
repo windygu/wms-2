@@ -8,6 +8,7 @@ using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain.Product;
 using Common.Logging;
 using Dddml.Wms.Domain.Services;
+using Dddml.Wms.Domain.StatusItem;
 
 namespace Dddml.Wms.Domain.Shipment.NHibernate
 {
@@ -45,19 +46,7 @@ namespace Dddml.Wms.Domain.Shipment.NHibernate
             int i = 0;
             foreach (var d in c.ShipmentItems)
             {
-                var shipItem = shipment.NewCreateShipmentItem();
-
-                var prdState = GetProductState(d);
-
-                string attrSetInstId = CreateAttributeSetInstance(d, prdState);
-                if (_log.IsDebugEnabled) { _log.Debug("Create attribute set instance, id: " + attrSetInstId); }
-
-                shipItem.ShipmentItemSeqId = i.ToString();
-                shipItem.ProductId = prdState.ProductId;
-                shipItem.AttributeSetInstanceId = attrSetInstId;
-                shipItem.Quantity = d.Quantity;
-                shipItem.Active = true;
-                //todo More proerties???
+                var shipItem = CreateShipmentItem(i, d);
 
                 shipment.ShipmentItems.Add(shipItem);
                 i++;
@@ -66,27 +55,97 @@ namespace Dddml.Wms.Domain.Shipment.NHibernate
             When(shipment);
         }
 
+        private CreateShipmentItem CreateShipmentItem(int i, ImportingShipmentItem d)
+        {
+            var shipItem = new CreateShipmentItem();
+
+            var prdState = GetProductState(d.ProductId);
+
+            string attrSetInstId = CreateAttributeSetInstance(prdState.AttributeSetId, d.AttributeSetInstance);
+            if (_log.IsDebugEnabled) { _log.Debug("Create attribute set instance, id: " + attrSetInstId); }
+
+            shipItem.ShipmentItemSeqId = i.ToString();
+            shipItem.ProductId = prdState.ProductId;
+            shipItem.AttributeSetInstanceId = attrSetInstId;
+            shipItem.Quantity = d.Quantity;
+            shipItem.Active = true;
+            //todo More proerties???
+            return shipItem;
+        }
+
         [Transaction]
         public override void When(ShipmentCommands.ReceiveItem c)
         {
-            //todo
-            base.When(c);
+            var shipment = AssertShipmentStatus(c.ShipmentId, StatusItemIds.PurchShipShipped);
+            var shipmentItem = shipment.ShipmentItems.Get(c.ShipmentItemSeqId);
+            if (shipmentItem == null)
+            {
+                throw new ArgumentException(String.Format("CANNOT get shipment item. ShipmentItemSeqId: {0}", c.ShipmentItemSeqId));
+            }
+            if (shipmentItem.Quantity != c.AcceptedQuantity + c.RejectedQuantity)
+            {
+                throw new ArgumentException(String.Format("shipmentItem.Quantity != c.AcceptedQuantity + c.RejectedQuantity. {0} != {1} + {2}"
+                    , shipmentItem.Quantity, c.AcceptedQuantity, c.RejectedQuantity));
+            }
+
+            // ////////////////////////////////////////////////////
+            ICreateOrMergePatchOrRemoveShipmentReceipt updateReceipt = CreateOrUpdateShipmentReceipt(c, shipment, shipmentItem);
+            
+            // ////////////////////////////////////////////////////
+            UpdateShipment(c, updateReceipt);
+            
         }
 
-        private string CreateAttributeSetInstance(ImportingShipmentItem d, IProductState prdState)
+        private void UpdateShipment(ShipmentCommands.ReceiveItem c, ICreateOrMergePatchOrRemoveShipmentReceipt updateReceipt)
         {
-            var attrSetId = prdState.AttributeSetId;
-            if (String.IsNullOrWhiteSpace(attrSetId))
-            {
-                return null;
-            }
-            var attrSetInstDict = d.AttributeSetInstance;
-            return CreateAttributeSetInstance(attrSetId, attrSetInstDict);
+            var updateShipment = new MergePatchShipment();
+            updateShipment.ShipmentReceiptCommands.Add(updateReceipt);
+            updateShipment.ShipmentId = c.ShipmentId;
+            updateShipment.Version = c.Version;
+            updateShipment.CommandId = c.CommandId;
+            updateShipment.RequesterId = c.RequesterId;
+            When(updateShipment);
+        }
 
+        private ICreateOrMergePatchOrRemoveShipmentReceipt CreateOrUpdateShipmentReceipt(ShipmentCommands.ReceiveItem c, IShipmentState shipment, IShipmentItemState shipmentItem)
+        {
+            ICreateOrMergePatchOrRemoveShipmentReceipt updateReceipt = null;
+            var receiptSeqId = c.ShipmentItemSeqId;
+            var receipt = shipment.ShipmentReceipts.Get(receiptSeqId, false, true);
+            if (receipt == null)
+            {
+                updateReceipt = new CreateShipmentReceipt();
+            }
+            else
+            {
+                updateReceipt = new MergePatchShipmentReceipt();
+            }
+
+            var prdState = GetProductState(shipmentItem.ProductId);
+
+            string attrSetInstId = CreateAttributeSetInstance(prdState.AttributeSetId, c.AttributeSetInstance);
+            if (_log.IsDebugEnabled) { _log.Debug("Create attribute set instance, id: " + attrSetInstId); }
+
+            updateReceipt.AttributeSetInstanceId = attrSetInstId;
+
+            updateReceipt.ReceiptSeqId = receiptSeqId;
+            updateReceipt.ShipmentItemSeqId = shipmentItem.ShipmentItemSeqId;
+            updateReceipt.ProductId = shipmentItem.ProductId;
+            updateReceipt.AcceptedQuantity = c.AcceptedQuantity;
+            updateReceipt.RejectedQuantity = c.RejectedQuantity;
+            updateReceipt.DamagedQuantity = c.DamagedQuantity;
+            updateReceipt.DamageStatusId = c.DamageStatusId;
+            updateReceipt.DamageReasonId = c.DamageReasonId;
+            updateReceipt.ReceivedBy = c.RequesterId;
+            return updateReceipt;
         }
 
         private string CreateAttributeSetInstance(string attrSetId, IDictionary<string, object> attrSetInstDict)
         {
+            if (String.IsNullOrWhiteSpace(attrSetId))
+            {
+                return null;
+            }
             var nameDict = AttributeSetService.GetPropertyExtensionFieldDictionary(attrSetId);
 
             var createAttrSetInst = new CreateAttributeSetInstance();
@@ -108,15 +167,35 @@ namespace Dddml.Wms.Domain.Shipment.NHibernate
             return attrSetInstId;
         }
 
-        private IProductState GetProductState(ImportingShipmentItem d)
+        private IProductState GetProductState(string productId)
         {
-            var prdState = ProductApplicationService.Get(d.ProductId);
+            var prdState = ProductApplicationService.Get(productId);
             if (prdState == null)
             {
-                throw new ArgumentException(String.Format("Product NOT found. Product Id.: {0}", d.ProductId));
+                throw new ArgumentException(String.Format("Product NOT found. Product Id.: {0}", productId));
             }
             return prdState;
         }
+
+        private IShipmentState AssertShipmentStatus(string shipmentId, string status)
+        {
+            var shipment = StateRepository.Get(shipmentId, true);
+            if (shipment == null)
+            {
+                throw new ArgumentException(String.Format("Error shipment Id.: {0}", shipmentId));
+            }
+            else
+            {
+                if (status != shipment.StatusId)
+                {
+                    throw new ApplicationException(String.Format("Error shipment status: {0}", shipment.StatusId));
+                }
+            }
+            return shipment;
+        }
+
+
+
 
     }
 }
