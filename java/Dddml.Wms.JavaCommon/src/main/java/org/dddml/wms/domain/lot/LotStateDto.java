@@ -1,137 +1,118 @@
 package org.dddml.wms.domain.lot;
 
-import java.util.*;
+import org.dddml.wms.specialization.AbstractStateDtoConverter;
+import org.dddml.wms.specialization.CollectionUtils;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Date;
-import org.dddml.wms.domain.*;
-import org.dddml.wms.specialization.*;
 
 
-public class LotStateDto
-{
+public class LotStateDto {
 
     private String lotId;
 
-    public String getLotId()
-    {
+    public String getLotId() {
         return this.lotId;
     }
 
-    public void setLotId(String lotId)
-    {
+    public void setLotId(String lotId) {
         this.lotId = lotId;
     }
 
     private java.sql.Timestamp creationDate;
 
-    public java.sql.Timestamp getCreationDate()
-    {
+    public java.sql.Timestamp getCreationDate() {
         return this.creationDate;
     }
 
-    public void setCreationDate(java.sql.Timestamp creationDate)
-    {
+    public void setCreationDate(java.sql.Timestamp creationDate) {
         this.creationDate = creationDate;
     }
 
     private java.math.BigDecimal quantity;
 
-    public java.math.BigDecimal getQuantity()
-    {
+    public java.math.BigDecimal getQuantity() {
         return this.quantity;
     }
 
-    public void setQuantity(java.math.BigDecimal quantity)
-    {
+    public void setQuantity(java.math.BigDecimal quantity) {
         this.quantity = quantity;
     }
 
     private java.sql.Timestamp expirationDate;
 
-    public java.sql.Timestamp getExpirationDate()
-    {
+    public java.sql.Timestamp getExpirationDate() {
         return this.expirationDate;
     }
 
-    public void setExpirationDate(java.sql.Timestamp expirationDate)
-    {
+    public void setExpirationDate(java.sql.Timestamp expirationDate) {
         this.expirationDate = expirationDate;
     }
 
     private Boolean active;
 
-    public Boolean getActive()
-    {
+    public Boolean getActive() {
         return this.active;
     }
 
-    public void setActive(Boolean active)
-    {
+    public void setActive(Boolean active) {
         this.active = active;
     }
 
     private Long version;
 
-    public Long getVersion()
-    {
+    public Long getVersion() {
         return this.version;
     }
 
-    public void setVersion(Long version)
-    {
+    public void setVersion(Long version) {
         this.version = version;
     }
 
     private String createdBy;
 
-    public String getCreatedBy()
-    {
+    public String getCreatedBy() {
         return this.createdBy;
     }
 
-    public void setCreatedBy(String createdBy)
-    {
+    public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
     }
 
     private Date createdAt;
 
-    public Date getCreatedAt()
-    {
+    public Date getCreatedAt() {
         return this.createdAt;
     }
 
-    public void setCreatedAt(Date createdAt)
-    {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 
     private String updatedBy;
 
-    public String getUpdatedBy()
-    {
+    public String getUpdatedBy() {
         return this.updatedBy;
     }
 
-    public void setUpdatedBy(String updatedBy)
-    {
+    public void setUpdatedBy(String updatedBy) {
         this.updatedBy = updatedBy;
     }
 
     private Date updatedAt;
 
-    public Date getUpdatedAt()
-    {
+    public Date getUpdatedAt() {
         return this.updatedAt;
     }
 
-    public void setUpdatedAt(Date updatedAt)
-    {
+    public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
 
 
-    public static class DtoConverter extends AbstractStateDtoConverter
-    {
+    public static class DtoConverter extends AbstractStateDtoConverter {
         public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{});
 
         @Override
@@ -139,8 +120,7 @@ public class LotStateDto
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public LotStateDto[] toLotStateDtoArray(Iterable<LotState> states) 
-        {
+        public LotStateDto[] toLotStateDtoArray(Iterable<LotState> states) {
             ArrayList<LotStateDto> stateDtos = new ArrayList();
             for (LotState s : states) {
                 LotStateDto dto = toLotStateDto(s);
@@ -149,9 +129,8 @@ public class LotStateDto
             return stateDtos.toArray(new LotStateDto[0]);
         }
 
-        public LotStateDto toLotStateDto(LotState state)
-        {
-            if(state == null) {
+        public LotStateDto toLotStateDto(LotState state) {
+            if (state == null) {
                 return null;
             }
             LotStateDto dto = new LotStateDto();

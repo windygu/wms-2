@@ -1,12 +1,10 @@
 package org.dddml.wms.domain.uom;
 
-import java.util.*;
-import java.util.Date;
-import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface UomStateEvent extends Event
-{
+import java.util.Date;
+
+public interface UomStateEvent extends Event {
     UomStateEventId getStateEventId();
 
     boolean getStateEventReadOnly();
@@ -41,14 +39,12 @@ public interface UomStateEvent extends Event
 
     void setCommandId(String commandId);
 
-    interface UomStateCreated extends UomStateEvent
-    {
-    
+    interface UomStateCreated extends UomStateEvent {
+
     }
 
 
-    interface UomStateMergePatched extends UomStateEvent
-    {
+    interface UomStateMergePatched extends UomStateEvent {
         Boolean getIsPropertyUomTypeIdRemoved();
 
         void setIsPropertyUomTypeIdRemoved(Boolean removed);
@@ -68,8 +64,7 @@ public interface UomStateEvent extends Event
 
     }
 
-    interface UomStateDeleted extends UomStateEvent
-    {
+    interface UomStateDeleted extends UomStateEvent {
     }
 
 

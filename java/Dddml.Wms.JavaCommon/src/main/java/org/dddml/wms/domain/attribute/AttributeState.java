@@ -1,13 +1,10 @@
 package org.dddml.wms.domain.attribute;
 
-import java.util.Set;
-import java.util.Date;
-import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.attribute.AttributeStateEvent.*;
 
-public interface AttributeState
-{
+import java.util.Date;
+
+public interface AttributeState {
     Long VERSION_ZERO = 0L;
 
     Long VERSION_NULL = VERSION_ZERO - 1;
@@ -97,6 +94,6 @@ public interface AttributeState
     void when(AttributeStateEvent.AttributeStateMergePatched e);
 
     void when(AttributeStateEvent.AttributeStateDeleted e);
-    
+
 }
 

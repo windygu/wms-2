@@ -3,14 +3,12 @@ package org.dddml.wms.domain.meta;
 import java.util.HashMap;
 import java.util.Map;
 
-public final class InOutLineMvoFilteringProperties
-{
+public final class InOutLineMvoFilteringProperties {
 
-    private InOutLineMvoFilteringProperties()
-    {
+    private InOutLineMvoFilteringProperties() {
     }
 
-    public static final String[] propertyNames = new String[] {
+    public static final String[] propertyNames = new String[]{
             "locatorId",
             "productId",
             "attributeSetInstanceId",
@@ -69,7 +67,7 @@ public final class InOutLineMvoFilteringProperties
             "inOutLineId.lineNumber",
     };
 
-    public static final String[] propertyTypes = new String[] {
+    public static final String[] propertyTypes = new String[]{
             "String",
             "String",
             "String",
@@ -139,7 +137,7 @@ public final class InOutLineMvoFilteringProperties
         initAliasMap();
     }
 
-    private static  void initAliasMap() {
+    private static void initAliasMap() {
         aliasMap.put("locatorId", "locatorId");
         aliasMap.put("LocatorId", "locatorId");
         aliasMap.put("productId", "productId");
@@ -255,7 +253,7 @@ public final class InOutLineMvoFilteringProperties
     }
 
     private static void initPropertyTypeMap() {
-        for (int i = 0; i < propertyNames.length; i++ ) {
+        for (int i = 0; i < propertyNames.length; i++) {
             propertyTypeMap.put(propertyNames[i], propertyTypes[i]);
         }
     }

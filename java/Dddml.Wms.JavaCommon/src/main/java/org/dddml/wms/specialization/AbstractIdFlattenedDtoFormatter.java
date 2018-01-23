@@ -38,10 +38,10 @@ public abstract class AbstractIdFlattenedDtoFormatter<TDto> {
         this.fieldSeparator = separator;
     }
 
-    public AbstractIdFlattenedDtoFormatter(){
+    public AbstractIdFlattenedDtoFormatter() {
     }
 
-    public AbstractIdFlattenedDtoFormatter(String fieldSeparator){
+    public AbstractIdFlattenedDtoFormatter(String fieldSeparator) {
         this.fieldSeparator = fieldSeparator;
     }
 

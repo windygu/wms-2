@@ -13,7 +13,7 @@ public interface EventStoreAggregateId {
         private Serializable id;
 
         @Override
-        public Serializable getId(){
+        public Serializable getId() {
             return this.id;
         }
 

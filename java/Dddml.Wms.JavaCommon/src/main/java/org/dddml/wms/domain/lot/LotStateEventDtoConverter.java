@@ -1,9 +1,6 @@
 package org.dddml.wms.domain.lot;
 
-import java.util.*;
-import java.util.Date;
-import org.dddml.wms.domain.*;
-import org.dddml.wms.specialization.*;
+import org.dddml.wms.specialization.DomainError;
 
 public class LotStateEventDtoConverter {
 

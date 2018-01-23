@@ -1,91 +1,73 @@
 package org.dddml.wms.domain.lot;
 
-import java.util.*;
-import java.util.Date;
-import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.AbstractCommand;
 
-public abstract class AbstractLotCommand extends AbstractCommand implements LotCommand
-{
+public abstract class AbstractLotCommand extends AbstractCommand implements LotCommand {
     private String lotId;
 
-    public String getLotId()
-    {
+    public String getLotId() {
         return this.lotId;
     }
 
-    public void setLotId(String lotId)
-    {
+    public void setLotId(String lotId) {
         this.lotId = lotId;
     }
 
     private Long version;
 
-    public Long getVersion()
-    {
+    public Long getVersion() {
         return this.version;
     }
 
-    public void setVersion(Long version)
-    {
+    public void setVersion(Long version) {
         this.version = version;
     }
 
 
-    public static abstract class AbstractCreateOrMergePatchLot extends AbstractLotCommand implements CreateOrMergePatchLot
-    {
+    public static abstract class AbstractCreateOrMergePatchLot extends AbstractLotCommand implements CreateOrMergePatchLot {
         private java.sql.Timestamp creationDate;
 
-        public java.sql.Timestamp getCreationDate()
-        {
+        public java.sql.Timestamp getCreationDate() {
             return this.creationDate;
         }
 
-        public void setCreationDate(java.sql.Timestamp creationDate)
-        {
+        public void setCreationDate(java.sql.Timestamp creationDate) {
             this.creationDate = creationDate;
         }
 
         private java.math.BigDecimal quantity;
 
-        public java.math.BigDecimal getQuantity()
-        {
+        public java.math.BigDecimal getQuantity() {
             return this.quantity;
         }
 
-        public void setQuantity(java.math.BigDecimal quantity)
-        {
+        public void setQuantity(java.math.BigDecimal quantity) {
             this.quantity = quantity;
         }
 
         private java.sql.Timestamp expirationDate;
 
-        public java.sql.Timestamp getExpirationDate()
-        {
+        public java.sql.Timestamp getExpirationDate() {
             return this.expirationDate;
         }
 
-        public void setExpirationDate(java.sql.Timestamp expirationDate)
-        {
+        public void setExpirationDate(java.sql.Timestamp expirationDate) {
             this.expirationDate = expirationDate;
         }
 
         private Boolean active;
 
-        public Boolean getActive()
-        {
+        public Boolean getActive() {
             return this.active;
         }
 
-        public void setActive(Boolean active)
-        {
+        public void setActive(Boolean active) {
             this.active = active;
         }
 
     }
 
-    public static abstract class AbstractCreateLot extends AbstractCreateOrMergePatchLot implements CreateLot
-    {
+    public static abstract class AbstractCreateLot extends AbstractCreateOrMergePatchLot implements CreateLot {
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
@@ -93,8 +75,7 @@ public abstract class AbstractLotCommand extends AbstractCommand implements LotC
 
     }
 
-    public static abstract class AbstractMergePatchLot extends AbstractCreateOrMergePatchLot implements MergePatchLot
-    {
+    public static abstract class AbstractMergePatchLot extends AbstractCreateOrMergePatchLot implements MergePatchLot {
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
@@ -102,73 +83,61 @@ public abstract class AbstractLotCommand extends AbstractCommand implements LotC
 
         private Boolean isPropertyCreationDateRemoved;
 
-        public Boolean getIsPropertyCreationDateRemoved()
-        {
+        public Boolean getIsPropertyCreationDateRemoved() {
             return this.isPropertyCreationDateRemoved;
         }
 
-        public void setIsPropertyCreationDateRemoved(Boolean removed)
-        {
+        public void setIsPropertyCreationDateRemoved(Boolean removed) {
             this.isPropertyCreationDateRemoved = removed;
         }
 
         private Boolean isPropertyQuantityRemoved;
 
-        public Boolean getIsPropertyQuantityRemoved()
-        {
+        public Boolean getIsPropertyQuantityRemoved() {
             return this.isPropertyQuantityRemoved;
         }
 
-        public void setIsPropertyQuantityRemoved(Boolean removed)
-        {
+        public void setIsPropertyQuantityRemoved(Boolean removed) {
             this.isPropertyQuantityRemoved = removed;
         }
 
         private Boolean isPropertyExpirationDateRemoved;
 
-        public Boolean getIsPropertyExpirationDateRemoved()
-        {
+        public Boolean getIsPropertyExpirationDateRemoved() {
             return this.isPropertyExpirationDateRemoved;
         }
 
-        public void setIsPropertyExpirationDateRemoved(Boolean removed)
-        {
+        public void setIsPropertyExpirationDateRemoved(Boolean removed) {
             this.isPropertyExpirationDateRemoved = removed;
         }
 
         private Boolean isPropertyActiveRemoved;
 
-        public Boolean getIsPropertyActiveRemoved()
-        {
+        public Boolean getIsPropertyActiveRemoved() {
             return this.isPropertyActiveRemoved;
         }
 
-        public void setIsPropertyActiveRemoved(Boolean removed)
-        {
+        public void setIsPropertyActiveRemoved(Boolean removed) {
             this.isPropertyActiveRemoved = removed;
         }
 
     }
 
-    public static class SimpleCreateLot extends AbstractCreateLot
-    {
+    public static class SimpleCreateLot extends AbstractCreateLot {
     }
 
-    
-    public static class SimpleMergePatchLot extends AbstractMergePatchLot
-    {
+
+    public static class SimpleMergePatchLot extends AbstractMergePatchLot {
     }
 
-    
-	public static class SimpleDeleteLot extends AbstractLotCommand implements DeleteLot
-	{
+
+    public static class SimpleDeleteLot extends AbstractLotCommand implements DeleteLot {
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_DELETE;
         }
-	}
+    }
 
-    
 
 }
 

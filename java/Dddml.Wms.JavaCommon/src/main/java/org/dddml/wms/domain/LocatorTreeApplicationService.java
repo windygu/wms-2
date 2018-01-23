@@ -1,14 +1,12 @@
 package org.dddml.wms.domain;
 
-import java.util.*;
-import java.util.Date;
-import org.dddml.wms.domain.*;
 import org.dddml.support.criterion.Criterion;
-import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.locator.*;
+import org.dddml.wms.domain.locator.LocatorState;
 
-public interface LocatorTreeApplicationService
-{
+import java.util.List;
+import java.util.Map;
+
+public interface LocatorTreeApplicationService {
     Iterable<LocatorState> getRoots(Criterion filter, List<String> orders, Integer firstResult, Integer maxResults);
 
     Iterable<LocatorState> getChildren(String parentId, Criterion filter, List<String> orders, Integer firstResult, Integer maxResults);

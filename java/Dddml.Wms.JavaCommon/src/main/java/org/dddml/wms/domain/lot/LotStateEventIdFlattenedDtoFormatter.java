@@ -1,11 +1,10 @@
 package org.dddml.wms.domain.lot;
 
-import org.dddml.wms.domain.*;
-import java.util.*;
-import org.dddml.wms.specialization.*;
+import org.dddml.wms.specialization.AbstractIdFlattenedDtoFormatter;
+import org.dddml.wms.specialization.ApplicationContext;
+import org.dddml.wms.specialization.ReflectUtils;
 
-public class LotStateEventIdFlattenedDtoFormatter extends AbstractIdFlattenedDtoFormatter<LotStateEventIdFlattenedDto>
-{
+public class LotStateEventIdFlattenedDtoFormatter extends AbstractIdFlattenedDtoFormatter<LotStateEventIdFlattenedDto> {
 
 
     @Override
@@ -50,7 +49,7 @@ public class LotStateEventIdFlattenedDtoFormatter extends AbstractIdFlattenedDto
 
     protected Class getFieldClass(String fieldName) {
         String type = LotStateEventIdFlattenedDto.propertyTypeMap.get(fieldName);
-        if(type == null) {
+        if (type == null) {
             throw new IllegalArgumentException(String.format("The field name \"%1$s\" is NOT right.", fieldName));
         }
         Class clazz = ReflectUtils.CLASS_MAP.get(type);

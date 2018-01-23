@@ -1,13 +1,11 @@
 package org.dddml.wms.domain.uom;
 
-import java.util.List;
-import java.util.Date;
-import org.dddml.wms.domain.*;
-import org.dddml.wms.specialization.Event;
 import org.dddml.wms.domain.Command;
+import org.dddml.wms.specialization.Event;
 
-public interface UomAggregate
-{
+import java.util.List;
+
+public interface UomAggregate {
     UomState getState();
 
     List<Event> getChanges();

@@ -3,14 +3,12 @@ package org.dddml.wms.domain.meta;
 import java.util.HashMap;
 import java.util.Map;
 
-public final class OrderItemMvoFilteringProperties
-{
+public final class OrderItemMvoFilteringProperties {
 
-    private OrderItemMvoFilteringProperties()
-    {
+    private OrderItemMvoFilteringProperties() {
     }
 
-    public static final String[] propertyNames = new String[] {
+    public static final String[] propertyNames = new String[]{
             "productId",
             "externalProductId",
             "quantity",
@@ -87,7 +85,7 @@ public final class OrderItemMvoFilteringProperties
             "orderItemId.orderItemSeqId",
     };
 
-    public static final String[] propertyTypes = new String[] {
+    public static final String[] propertyTypes = new String[]{
             "String",
             "String",
             "java.math.BigDecimal",
@@ -175,7 +173,7 @@ public final class OrderItemMvoFilteringProperties
         initAliasMap();
     }
 
-    private static  void initAliasMap() {
+    private static void initAliasMap() {
         aliasMap.put("productId", "productId");
         aliasMap.put("ProductId", "productId");
         aliasMap.put("externalProductId", "externalProductId");
@@ -327,7 +325,7 @@ public final class OrderItemMvoFilteringProperties
     }
 
     private static void initPropertyTypeMap() {
-        for (int i = 0; i < propertyNames.length; i++ ) {
+        for (int i = 0; i < propertyNames.length; i++) {
             propertyTypeMap.put(propertyNames[i], propertyTypes[i]);
         }
     }

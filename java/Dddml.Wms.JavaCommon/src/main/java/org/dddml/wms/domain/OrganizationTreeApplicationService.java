@@ -1,14 +1,12 @@
 package org.dddml.wms.domain;
 
-import java.util.*;
-import java.util.Date;
-import org.dddml.wms.domain.*;
 import org.dddml.support.criterion.Criterion;
-import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.party.*;
+import org.dddml.wms.domain.party.OrganizationState;
 
-public interface OrganizationTreeApplicationService
-{
+import java.util.List;
+import java.util.Map;
+
+public interface OrganizationTreeApplicationService {
     Iterable<OrganizationState> getRoots(Criterion filter, List<String> orders, Integer firstResult, Integer maxResults);
 
     Iterable<OrganizationState> getChildren(String parentId, Criterion filter, List<String> orders, Integer firstResult, Integer maxResults);

@@ -1,17 +1,15 @@
 package org.dddml.wms.domain.uom;
 
-import java.util.Map;
-import java.util.List;
 import org.dddml.support.criterion.Criterion;
-import java.util.Date;
-import org.dddml.wms.domain.*;
 
-public interface UomStateQueryRepository
-{
+import java.util.List;
+import java.util.Map;
+
+public interface UomStateQueryRepository {
     UomState get(String id);
 
     Iterable<UomState> getAll(Integer firstResult, Integer maxResults);
-    
+
     Iterable<UomState> get(Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults);
 
     Iterable<UomState> get(Criterion filter, List<String> orders, Integer firstResult, Integer maxResults);

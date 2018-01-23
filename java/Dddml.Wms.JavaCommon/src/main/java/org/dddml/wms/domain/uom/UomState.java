@@ -1,13 +1,10 @@
 package org.dddml.wms.domain.uom;
 
-import java.util.Set;
-import java.util.Date;
-import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.uom.UomStateEvent.*;
 
-public interface UomState
-{
+import java.util.Date;
+
+public interface UomState {
     Long VERSION_ZERO = 0L;
 
     Long VERSION_NULL = VERSION_ZERO - 1;
@@ -69,6 +66,6 @@ public interface UomState
     void when(UomStateEvent.UomStateMergePatched e);
 
     void when(UomStateEvent.UomStateDeleted e);
-    
+
 }
 

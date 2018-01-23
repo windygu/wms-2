@@ -1,47 +1,38 @@
 package org.dddml.wms.domain.lot;
 
 import java.io.Serializable;
-import org.dddml.wms.domain.*;
 
-public class LotStateEventId implements Serializable
-{
+public class LotStateEventId implements Serializable {
     private String lotId;
 
-    public String getLotId()
-    {
+    public String getLotId() {
         return this.lotId;
     }
 
-    public void setLotId(String lotId)
-    {
+    public void setLotId(String lotId) {
         this.lotId = lotId;
     }
 
     private Long version;
 
-    public Long getVersion()
-    {
+    public Long getVersion() {
         return this.version;
     }
 
-    public void setVersion(Long version)
-    {
+    public void setVersion(Long version) {
         this.version = version;
     }
 
-    public LotStateEventId()
-    {
+    public LotStateEventId() {
     }
 
-    public LotStateEventId(String lotId, Long version)
-    {
+    public LotStateEventId(String lotId, Long version) {
         this.lotId = lotId;
         this.version = version;
     }
 
     @Override
-    public boolean equals(Object obj)
-    {
+    public boolean equals(Object obj) {
         if (obj == this) {
             return true;
         }
@@ -49,16 +40,15 @@ public class LotStateEventId implements Serializable
             return false;
         }
 
-        LotStateEventId other = (LotStateEventId)obj;
-        return true 
-            && (lotId == other.lotId || (lotId != null && lotId.equals(other.lotId)))
-            && (version == other.version || (version != null && version.equals(other.version)))
-            ;
+        LotStateEventId other = (LotStateEventId) obj;
+        return true
+                && (lotId == other.lotId || (lotId != null && lotId.equals(other.lotId)))
+                && (version == other.version || (version != null && version.equals(other.version)))
+                ;
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         int hash = 0;
         if (this.lotId != null) {
             hash += 13 * this.lotId.hashCode();

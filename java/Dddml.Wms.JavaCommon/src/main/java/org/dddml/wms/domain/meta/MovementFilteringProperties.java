@@ -3,14 +3,12 @@ package org.dddml.wms.domain.meta;
 import java.util.HashMap;
 import java.util.Map;
 
-public final class MovementFilteringProperties
-{
+public final class MovementFilteringProperties {
 
-    private MovementFilteringProperties()
-    {
+    private MovementFilteringProperties() {
     }
 
-    public static final String[] propertyNames = new String[] {
+    public static final String[] propertyNames = new String[]{
             "documentNumber",
             "documentStatusId",
             "movementDate",
@@ -41,7 +39,7 @@ public final class MovementFilteringProperties
             "deleted",
     };
 
-    public static final String[] propertyTypes = new String[] {
+    public static final String[] propertyTypes = new String[]{
             "String",
             "String",
             "Date",
@@ -83,7 +81,7 @@ public final class MovementFilteringProperties
         initAliasMap();
     }
 
-    private static  void initAliasMap() {
+    private static void initAliasMap() {
         aliasMap.put("documentNumber", "documentNumber");
         aliasMap.put("DocumentNumber", "documentNumber");
         aliasMap.put("documentStatusId", "documentStatusId");
@@ -143,7 +141,7 @@ public final class MovementFilteringProperties
     }
 
     private static void initPropertyTypeMap() {
-        for (int i = 0; i < propertyNames.length; i++ ) {
+        for (int i = 0; i < propertyNames.length; i++) {
             propertyTypeMap.put(propertyNames[i], propertyTypes[i]);
         }
     }

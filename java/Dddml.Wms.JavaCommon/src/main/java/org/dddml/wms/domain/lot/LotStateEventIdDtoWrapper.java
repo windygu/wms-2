@@ -1,56 +1,47 @@
 package org.dddml.wms.domain.lot;
 
-import org.dddml.wms.domain.*;
+public class LotStateEventIdDtoWrapper extends LotStateEventIdDto {
 
-public class LotStateEventIdDtoWrapper extends LotStateEventIdDto
-{
-	
     private LotStateEventId value;
 
-    public LotStateEventIdDtoWrapper()
-    {
+    public LotStateEventIdDtoWrapper() {
         this(new LotStateEventId());
     }
 
-    public LotStateEventIdDtoWrapper(LotStateEventId value)
-    {
-        if (value == null) { throw new IllegalArgumentException("value == null"); }
+    public LotStateEventIdDtoWrapper(LotStateEventId value) {
+        if (value == null) {
+            throw new IllegalArgumentException("value == null");
+        }
         this.value = value;
     }
 
-    public LotStateEventId toLotStateEventId()
-    {
+    public LotStateEventId toLotStateEventId() {
         return this.value;
     }
 
     @Override
-    public String getLotId()
-    {
+    public String getLotId() {
         return this.value.getLotId();
     }
 
     @Override
-    public void setLotId(String lotId)
-    {
+    public void setLotId(String lotId) {
         this.value.setLotId(lotId);
     }
 
     @Override
-    public Long getVersion()
-    {
+    public Long getVersion() {
         return this.value.getVersion();
     }
 
     @Override
-    public void setVersion(Long version)
-    {
+    public void setVersion(Long version) {
         this.value.setVersion(version);
     }
 
 
     @Override
-    public boolean equals(Object obj)
-    {
+    public boolean equals(Object obj) {
         if (obj == this) {
             return true;
         }
@@ -64,7 +55,7 @@ public class LotStateEventIdDtoWrapper extends LotStateEventIdDto
             return false;
         }
 
-        LotStateEventIdDtoWrapper other = (LotStateEventIdDtoWrapper)obj;
+        LotStateEventIdDtoWrapper other = (LotStateEventIdDtoWrapper) obj;
         return value.equals(other.value);
     }
 

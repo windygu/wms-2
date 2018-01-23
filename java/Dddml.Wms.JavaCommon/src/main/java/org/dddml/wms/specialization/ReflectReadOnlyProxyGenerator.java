@@ -36,12 +36,12 @@ public class ReflectReadOnlyProxyGenerator implements ReadOnlyProxyGenerator {
         }
     }
 
-    private static Method getDeclaredMethod(Object object, String methodName, Class<?> ... parameterTypes) {
-        Method method = null ;
-        for(Class<?> clazz = object.getClass() ; clazz != Object.class ; clazz = clazz.getSuperclass()) {
+    private static Method getDeclaredMethod(Object object, String methodName, Class<?>... parameterTypes) {
+        Method method = null;
+        for (Class<?> clazz = object.getClass(); clazz != Object.class; clazz = clazz.getSuperclass()) {
             try {
-                method = clazz.getDeclaredMethod(methodName, parameterTypes) ;
-                return method ;
+                method = clazz.getDeclaredMethod(methodName, parameterTypes);
+                return method;
             } catch (NoSuchMethodException e) {
                 //e.printStackTrace();
             }

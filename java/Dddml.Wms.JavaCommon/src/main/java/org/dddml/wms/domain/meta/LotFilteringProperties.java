@@ -3,14 +3,12 @@ package org.dddml.wms.domain.meta;
 import java.util.HashMap;
 import java.util.Map;
 
-public final class LotFilteringProperties
-{
+public final class LotFilteringProperties {
 
-    private LotFilteringProperties()
-    {
+    private LotFilteringProperties() {
     }
 
-    public static final String[] propertyNames = new String[] {
+    public static final String[] propertyNames = new String[]{
             "lotId",
             "creationDate",
             "quantity",
@@ -24,7 +22,7 @@ public final class LotFilteringProperties
             "deleted",
     };
 
-    public static final String[] propertyTypes = new String[] {
+    public static final String[] propertyTypes = new String[]{
             "String",
             "java.sql.Timestamp",
             "java.math.BigDecimal",
@@ -49,7 +47,7 @@ public final class LotFilteringProperties
         initAliasMap();
     }
 
-    private static  void initAliasMap() {
+    private static void initAliasMap() {
         aliasMap.put("lotId", "lotId");
         aliasMap.put("LotId", "lotId");
         aliasMap.put("creationDate", "creationDate");
@@ -75,7 +73,7 @@ public final class LotFilteringProperties
     }
 
     private static void initPropertyTypeMap() {
-        for (int i = 0; i < propertyNames.length; i++ ) {
+        for (int i = 0; i < propertyNames.length; i++) {
             propertyTypeMap.put(propertyNames[i], propertyTypes[i]);
         }
     }

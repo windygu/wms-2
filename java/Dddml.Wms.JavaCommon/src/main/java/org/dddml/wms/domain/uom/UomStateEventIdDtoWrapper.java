@@ -1,56 +1,47 @@
 package org.dddml.wms.domain.uom;
 
-import org.dddml.wms.domain.*;
+public class UomStateEventIdDtoWrapper extends UomStateEventIdDto {
 
-public class UomStateEventIdDtoWrapper extends UomStateEventIdDto
-{
-	
     private UomStateEventId value;
 
-    public UomStateEventIdDtoWrapper()
-    {
+    public UomStateEventIdDtoWrapper() {
         this(new UomStateEventId());
     }
 
-    public UomStateEventIdDtoWrapper(UomStateEventId value)
-    {
-        if (value == null) { throw new IllegalArgumentException("value == null"); }
+    public UomStateEventIdDtoWrapper(UomStateEventId value) {
+        if (value == null) {
+            throw new IllegalArgumentException("value == null");
+        }
         this.value = value;
     }
 
-    public UomStateEventId toUomStateEventId()
-    {
+    public UomStateEventId toUomStateEventId() {
         return this.value;
     }
 
     @Override
-    public String getUomId()
-    {
+    public String getUomId() {
         return this.value.getUomId();
     }
 
     @Override
-    public void setUomId(String uomId)
-    {
+    public void setUomId(String uomId) {
         this.value.setUomId(uomId);
     }
 
     @Override
-    public Long getVersion()
-    {
+    public Long getVersion() {
         return this.value.getVersion();
     }
 
     @Override
-    public void setVersion(Long version)
-    {
+    public void setVersion(Long version) {
         this.value.setVersion(version);
     }
 
 
     @Override
-    public boolean equals(Object obj)
-    {
+    public boolean equals(Object obj) {
         if (obj == this) {
             return true;
         }
@@ -64,7 +55,7 @@ public class UomStateEventIdDtoWrapper extends UomStateEventIdDto
             return false;
         }
 
-        UomStateEventIdDtoWrapper other = (UomStateEventIdDtoWrapper)obj;
+        UomStateEventIdDtoWrapper other = (UomStateEventIdDtoWrapper) obj;
         return value.equals(other.value);
     }
 

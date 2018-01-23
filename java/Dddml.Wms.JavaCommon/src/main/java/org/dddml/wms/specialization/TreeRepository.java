@@ -2,8 +2,7 @@ package org.dddml.wms.specialization;
 
 import org.dddml.support.criterion.Criterion;
 
-public interface TreeRepository<TNode, TId>
-{
+public interface TreeRepository<TNode, TId> {
     Iterable<TNode> getRoots(Criterion filter, java.util.List<String> orders, Integer firstResult, Integer maxResults);
 
     Iterable<TNode> getChildren(TId parentId, Criterion filter, java.util.List<String> orders, Integer firstResult, Integer maxResults);

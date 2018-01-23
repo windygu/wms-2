@@ -3,14 +3,12 @@ package org.dddml.wms.domain.meta;
 import java.util.HashMap;
 import java.util.Map;
 
-public final class MovementLineMvoFilteringProperties
-{
+public final class MovementLineMvoFilteringProperties {
 
-    private MovementLineMvoFilteringProperties()
-    {
+    private MovementLineMvoFilteringProperties() {
     }
 
-    public static final String[] propertyNames = new String[] {
+    public static final String[] propertyNames = new String[]{
             "movementQuantity",
             "productId",
             "locatorIdFrom",
@@ -56,7 +54,7 @@ public final class MovementLineMvoFilteringProperties
             "movementLineId.lineNumber",
     };
 
-    public static final String[] propertyTypes = new String[] {
+    public static final String[] propertyTypes = new String[]{
             "BigDecimal",
             "String",
             "String",
@@ -113,7 +111,7 @@ public final class MovementLineMvoFilteringProperties
         initAliasMap();
     }
 
-    private static  void initAliasMap() {
+    private static void initAliasMap() {
         aliasMap.put("movementQuantity", "movementQuantity");
         aliasMap.put("MovementQuantity", "movementQuantity");
         aliasMap.put("productId", "productId");
@@ -203,7 +201,7 @@ public final class MovementLineMvoFilteringProperties
     }
 
     private static void initPropertyTypeMap() {
-        for (int i = 0; i < propertyNames.length; i++ ) {
+        for (int i = 0; i < propertyNames.length; i++) {
             propertyTypeMap.put(propertyNames[i], propertyTypes[i]);
         }
     }

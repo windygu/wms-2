@@ -3,14 +3,12 @@ package org.dddml.wms.domain.meta;
 import java.util.HashMap;
 import java.util.Map;
 
-public final class PartyFilteringProperties
-{
+public final class PartyFilteringProperties {
 
-    private PartyFilteringProperties()
-    {
+    private PartyFilteringProperties() {
     }
 
-    public static final String[] propertyNames = new String[] {
+    public static final String[] propertyNames = new String[]{
             "partyId",
             "partyTypeId",
             "organizationName",
@@ -26,7 +24,7 @@ public final class PartyFilteringProperties
             "deleted",
     };
 
-    public static final String[] propertyTypes = new String[] {
+    public static final String[] propertyTypes = new String[]{
             "String",
             "String",
             "String",
@@ -53,7 +51,7 @@ public final class PartyFilteringProperties
         initAliasMap();
     }
 
-    private static  void initAliasMap() {
+    private static void initAliasMap() {
         aliasMap.put("partyId", "partyId");
         aliasMap.put("PartyId", "partyId");
         aliasMap.put("partyTypeId", "partyTypeId");
@@ -83,7 +81,7 @@ public final class PartyFilteringProperties
     }
 
     private static void initPropertyTypeMap() {
-        for (int i = 0; i < propertyNames.length; i++ ) {
+        for (int i = 0; i < propertyNames.length; i++) {
             propertyTypeMap.put(propertyNames[i], propertyTypes[i]);
         }
     }

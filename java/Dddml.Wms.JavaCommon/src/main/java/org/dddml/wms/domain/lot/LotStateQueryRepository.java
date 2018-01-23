@@ -1,17 +1,15 @@
 package org.dddml.wms.domain.lot;
 
-import java.util.Map;
-import java.util.List;
 import org.dddml.support.criterion.Criterion;
-import java.util.Date;
-import org.dddml.wms.domain.*;
 
-public interface LotStateQueryRepository
-{
+import java.util.List;
+import java.util.Map;
+
+public interface LotStateQueryRepository {
     LotState get(String id);
 
     Iterable<LotState> getAll(Integer firstResult, Integer maxResults);
-    
+
     Iterable<LotState> get(Iterable<Map.Entry<String, Object>> filter, List<String> orders, Integer firstResult, Integer maxResults);
 
     Iterable<LotState> get(Criterion filter, List<String> orders, Integer firstResult, Integer maxResults);

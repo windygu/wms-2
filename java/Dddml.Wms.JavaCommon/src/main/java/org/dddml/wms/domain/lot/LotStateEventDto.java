@@ -1,16 +1,17 @@
 package org.dddml.wms.domain.lot;
 
-import java.util.Date;
-import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.AbstractStateEvent;
 
-public class LotStateEventDto extends AbstractStateEvent
-{
+import java.util.Date;
+
+public class LotStateEventDto extends AbstractStateEvent {
 
     private LotStateEventIdDto stateEventId;
 
     LotStateEventIdDto getStateEventId() {
-        if (stateEventId == null) { stateEventId = new LotStateEventIdDto(); }
+        if (stateEventId == null) {
+            stateEventId = new LotStateEventIdDto();
+        }
         return this.stateEventId;
     }
 
@@ -29,7 +30,7 @@ public class LotStateEventDto extends AbstractStateEvent
     public Long getVersion() {
         return getStateEventId().getVersion();
     }
-    
+
     public void getVersion(Long version) {
         getStateEventId().setVersion(version);
     }
@@ -135,37 +136,31 @@ public class LotStateEventDto extends AbstractStateEvent
     }
 
 
-	public static class LotStateCreatedDto extends LotStateEventDto
-	{
+    public static class LotStateCreatedDto extends LotStateEventDto {
         @Override
-        public String getStateEventType()
-        {
+        public String getStateEventType() {
             return STATE_EVENT_TYPE_CREATED;
         }
 
-	}
+    }
 
 
-	public static class LotStateMergePatchedDto extends LotStateEventDto
-	{
+    public static class LotStateMergePatchedDto extends LotStateEventDto {
         @Override
-        public String getStateEventType()
-        {
+        public String getStateEventType() {
             return STATE_EVENT_TYPE_MERGE_PATCHED;
         }
 
-	}
+    }
 
 
-	public static class LotStateDeletedDto extends LotStateEventDto
-	{
+    public static class LotStateDeletedDto extends LotStateEventDto {
         @Override
-        public String getStateEventType()
-        {
+        public String getStateEventType() {
             return STATE_EVENT_TYPE_DELETED;
         }
 
-	}
+    }
 
 
 }

@@ -1,176 +1,30 @@
 package org.dddml.wms.domain.damagetype;
 
-import java.util.*;
-import java.util.Date;
-import org.dddml.wms.domain.*;
-import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.damagetype.DamageTypeStateEvent.*;
+import org.dddml.wms.domain.damagetype.DamageTypeStateEvent.DamageTypeStateCreated;
+import org.dddml.wms.domain.damagetype.DamageTypeStateEvent.DamageTypeStateDeleted;
+import org.dddml.wms.domain.damagetype.DamageTypeStateEvent.DamageTypeStateMergePatched;
+import org.dddml.wms.specialization.DomainError;
+import org.dddml.wms.specialization.Event;
 
-public abstract class AbstractDamageTypeState implements DamageTypeState
-{
+import java.util.Date;
+import java.util.List;
+
+public abstract class AbstractDamageTypeState implements DamageTypeState {
 
     private String damageTypeId;
-
-    public String getDamageTypeId()
-    {
-        return this.damageTypeId;
-    }
-
-    public void setDamageTypeId(String damageTypeId)
-    {
-        this.damageTypeId = damageTypeId;
-    }
-
     private String description;
-
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
-
     private String sequenceId;
-
-    public String getSequenceId()
-    {
-        return this.sequenceId;
-    }
-
-    public void setSequenceId(String sequenceId)
-    {
-        this.sequenceId = sequenceId;
-    }
-
     private String defaultHandlingMethodId;
-
-    public String getDefaultHandlingMethodId()
-    {
-        return this.defaultHandlingMethodId;
-    }
-
-    public void setDefaultHandlingMethodId(String defaultHandlingMethodId)
-    {
-        this.defaultHandlingMethodId = defaultHandlingMethodId;
-    }
-
     private Long version;
-
-    public Long getVersion()
-    {
-        return this.version;
-    }
-
-    public void setVersion(Long version)
-    {
-        this.version = version;
-    }
-
     private String createdBy;
-
-    public String getCreatedBy()
-    {
-        return this.createdBy;
-    }
-
-    public void setCreatedBy(String createdBy)
-    {
-        this.createdBy = createdBy;
-    }
-
     private Date createdAt;
-
-    public Date getCreatedAt()
-    {
-        return this.createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt)
-    {
-        this.createdAt = createdAt;
-    }
-
     private String updatedBy;
-
-    public String getUpdatedBy()
-    {
-        return this.updatedBy;
-    }
-
-    public void setUpdatedBy(String updatedBy)
-    {
-        this.updatedBy = updatedBy;
-    }
-
     private Date updatedAt;
-
-    public Date getUpdatedAt()
-    {
-        return this.updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt)
-    {
-        this.updatedAt = updatedAt;
-    }
-
     private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
     private Boolean deleted;
-
-    public Boolean getDeleted()
-    {
-        return this.deleted;
-    }
-
-    public void setDeleted(Boolean deleted)
-    {
-        this.deleted = deleted;
-    }
-
-    public boolean isStateUnsaved() 
-    {
-        return this.getVersion() == null;
-    }
-
     private Boolean stateReadOnly;
-
-    public Boolean getStateReadOnly() { return this.stateReadOnly; }
-
-    public void setStateReadOnly(Boolean readOnly) { this.stateReadOnly = readOnly; }
-
     private boolean forReapplying;
-
-    public boolean getForReapplying() {
-        return forReapplying;
-    }
-
-    public void setForReapplying(boolean forReapplying) {
-        this.forReapplying = forReapplying;
-    }
-
     private String commandId;
-
-    public String getCommandId() {
-        return this.commandId;
-    }
-
-    public void setCommandId(String commandId) {
-        this.commandId = commandId;
-    }
 
     public AbstractDamageTypeState(List<Event> events) {
         this(true);
@@ -183,7 +37,6 @@ public abstract class AbstractDamageTypeState implements DamageTypeState
         }
     }
 
-
     public AbstractDamageTypeState() {
         this(false);
     }
@@ -193,7 +46,123 @@ public abstract class AbstractDamageTypeState implements DamageTypeState
 
         initializeProperties();
     }
-    
+
+    public String getDamageTypeId() {
+        return this.damageTypeId;
+    }
+
+    public void setDamageTypeId(String damageTypeId) {
+        this.damageTypeId = damageTypeId;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getSequenceId() {
+        return this.sequenceId;
+    }
+
+    public void setSequenceId(String sequenceId) {
+        this.sequenceId = sequenceId;
+    }
+
+    public String getDefaultHandlingMethodId() {
+        return this.defaultHandlingMethodId;
+    }
+
+    public void setDefaultHandlingMethodId(String defaultHandlingMethodId) {
+        this.defaultHandlingMethodId = defaultHandlingMethodId;
+    }
+
+    public Long getVersion() {
+        return this.version;
+    }
+
+    public void setVersion(Long version) {
+        this.version = version;
+    }
+
+    public String getCreatedBy() {
+        return this.createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public Date getCreatedAt() {
+        return this.createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getUpdatedBy() {
+        return this.updatedBy;
+    }
+
+    public void setUpdatedBy(String updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+
+    public Date getUpdatedAt() {
+        return this.updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public Boolean getActive() {
+        return this.active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    public Boolean getDeleted() {
+        return this.deleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
+    }
+
+    public boolean isStateUnsaved() {
+        return this.getVersion() == null;
+    }
+
+    public Boolean getStateReadOnly() {
+        return this.stateReadOnly;
+    }
+
+    public void setStateReadOnly(Boolean readOnly) {
+        this.stateReadOnly = readOnly;
+    }
+
+    public boolean getForReapplying() {
+        return forReapplying;
+    }
+
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+    public String getCommandId() {
+        return this.commandId;
+    }
+
+    public void setCommandId(String commandId) {
+        this.commandId = commandId;
+    }
+
     protected void initializeProperties() {
     }
 
@@ -211,8 +180,7 @@ public abstract class AbstractDamageTypeState implements DamageTypeState
         }
     }
 
-    public void when(DamageTypeStateCreated e)
-    {
+    public void when(DamageTypeStateCreated e) {
         throwOnWrongEvent(e);
 
         this.setDescription(e.getDescription());
@@ -227,52 +195,35 @@ public abstract class AbstractDamageTypeState implements DamageTypeState
 
     }
 
-    public void when(DamageTypeStateMergePatched e)
-    {
+    public void when(DamageTypeStateMergePatched e) {
         throwOnWrongEvent(e);
 
-        if (e.getDescription() == null)
-        {
-            if (e.getIsPropertyDescriptionRemoved() != null && e.getIsPropertyDescriptionRemoved())
-            {
+        if (e.getDescription() == null) {
+            if (e.getIsPropertyDescriptionRemoved() != null && e.getIsPropertyDescriptionRemoved()) {
                 this.setDescription(null);
             }
-        }
-        else
-        {
+        } else {
             this.setDescription(e.getDescription());
         }
-        if (e.getSequenceId() == null)
-        {
-            if (e.getIsPropertySequenceIdRemoved() != null && e.getIsPropertySequenceIdRemoved())
-            {
+        if (e.getSequenceId() == null) {
+            if (e.getIsPropertySequenceIdRemoved() != null && e.getIsPropertySequenceIdRemoved()) {
                 this.setSequenceId(null);
             }
-        }
-        else
-        {
+        } else {
             this.setSequenceId(e.getSequenceId());
         }
-        if (e.getDefaultHandlingMethodId() == null)
-        {
-            if (e.getIsPropertyDefaultHandlingMethodIdRemoved() != null && e.getIsPropertyDefaultHandlingMethodIdRemoved())
-            {
+        if (e.getDefaultHandlingMethodId() == null) {
+            if (e.getIsPropertyDefaultHandlingMethodIdRemoved() != null && e.getIsPropertyDefaultHandlingMethodIdRemoved()) {
                 this.setDefaultHandlingMethodId(null);
             }
-        }
-        else
-        {
+        } else {
             this.setDefaultHandlingMethodId(e.getDefaultHandlingMethodId());
         }
-        if (e.getActive() == null)
-        {
-            if (e.getIsPropertyActiveRemoved() != null && e.getIsPropertyActiveRemoved())
-            {
+        if (e.getActive() == null) {
+            if (e.getIsPropertyActiveRemoved() != null && e.getIsPropertyActiveRemoved()) {
                 this.setActive(null);
             }
-        }
-        else
-        {
+        } else {
             this.setActive(e.getActive());
         }
 
@@ -281,8 +232,7 @@ public abstract class AbstractDamageTypeState implements DamageTypeState
 
     }
 
-    public void when(DamageTypeStateDeleted e)
-    {
+    public void when(DamageTypeStateDeleted e) {
         throwOnWrongEvent(e);
 
         this.setDeleted(true);
@@ -291,16 +241,13 @@ public abstract class AbstractDamageTypeState implements DamageTypeState
 
     }
 
-    public void save()
-    {
+    public void save() {
     }
 
-    protected void throwOnWrongEvent(DamageTypeStateEvent stateEvent)
-    {
+    protected void throwOnWrongEvent(DamageTypeStateEvent stateEvent) {
         String stateEntityId = this.getDamageTypeId(); // Aggregate Id
         String eventEntityId = stateEvent.getStateEventId().getDamageTypeId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
-        if (!stateEntityId.equals(eventEntityId))
-        {
+        if (!stateEntityId.equals(eventEntityId)) {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
@@ -316,8 +263,7 @@ public abstract class AbstractDamageTypeState implements DamageTypeState
 
     }
 
-    public static class SimpleDamageTypeState extends AbstractDamageTypeState
-    {
+    public static class SimpleDamageTypeState extends AbstractDamageTypeState {
 
         public SimpleDamageTypeState() {
         }

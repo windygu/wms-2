@@ -3,14 +3,12 @@ package org.dddml.wms.domain.meta;
 import java.util.HashMap;
 import java.util.Map;
 
-public final class UomConversionFilteringProperties
-{
+public final class UomConversionFilteringProperties {
 
-    private UomConversionFilteringProperties()
-    {
+    private UomConversionFilteringProperties() {
     }
 
-    public static final String[] propertyNames = new String[] {
+    public static final String[] propertyNames = new String[]{
             "conversionFactor",
             "customMethodId",
             "decimalScale",
@@ -26,7 +24,7 @@ public final class UomConversionFilteringProperties
             "uomConversionId.uomIdTo",
     };
 
-    public static final String[] propertyTypes = new String[] {
+    public static final String[] propertyTypes = new String[]{
             "Double",
             "String",
             "Long",
@@ -53,7 +51,7 @@ public final class UomConversionFilteringProperties
         initAliasMap();
     }
 
-    private static  void initAliasMap() {
+    private static void initAliasMap() {
         aliasMap.put("conversionFactor", "conversionFactor");
         aliasMap.put("ConversionFactor", "conversionFactor");
         aliasMap.put("customMethodId", "customMethodId");
@@ -83,7 +81,7 @@ public final class UomConversionFilteringProperties
     }
 
     private static void initPropertyTypeMap() {
-        for (int i = 0; i < propertyNames.length; i++ ) {
+        for (int i = 0; i < propertyNames.length; i++) {
             propertyTypeMap.put(propertyNames[i], propertyTypes[i]);
         }
     }

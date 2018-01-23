@@ -3,14 +3,12 @@ package org.dddml.wms.domain.meta;
 import java.util.HashMap;
 import java.util.Map;
 
-public final class ProductCategoryFilteringProperties
-{
+public final class ProductCategoryFilteringProperties {
 
-    private ProductCategoryFilteringProperties()
-    {
+    private ProductCategoryFilteringProperties() {
     }
 
-    public static final String[] propertyNames = new String[] {
+    public static final String[] propertyNames = new String[]{
             "productCategoryId",
             "productCategoryTypeId",
             "primaryParentCategoryId",
@@ -29,7 +27,7 @@ public final class ProductCategoryFilteringProperties
             "deleted",
     };
 
-    public static final String[] propertyTypes = new String[] {
+    public static final String[] propertyTypes = new String[]{
             "String",
             "String",
             "String",
@@ -59,7 +57,7 @@ public final class ProductCategoryFilteringProperties
         initAliasMap();
     }
 
-    private static  void initAliasMap() {
+    private static void initAliasMap() {
         aliasMap.put("productCategoryId", "productCategoryId");
         aliasMap.put("ProductCategoryId", "productCategoryId");
         aliasMap.put("productCategoryTypeId", "productCategoryTypeId");
@@ -95,7 +93,7 @@ public final class ProductCategoryFilteringProperties
     }
 
     private static void initPropertyTypeMap() {
-        for (int i = 0; i < propertyNames.length; i++ ) {
+        for (int i = 0; i < propertyNames.length; i++) {
             propertyTypeMap.put(propertyNames[i], propertyTypes[i]);
         }
     }

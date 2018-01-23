@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ReflectUtils {
-    private ReflectUtils(){
+    private ReflectUtils() {
     }
 
     public static final Map<String, Class> CLASS_MAP = new HashMap<>();

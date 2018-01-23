@@ -3,14 +3,12 @@ package org.dddml.wms.domain.meta;
 import java.util.HashMap;
 import java.util.Map;
 
-public final class AttributeUseMvoFilteringProperties
-{
+public final class AttributeUseMvoFilteringProperties {
 
-    private AttributeUseMvoFilteringProperties()
-    {
+    private AttributeUseMvoFilteringProperties() {
     }
 
-    public static final String[] propertyNames = new String[] {
+    public static final String[] propertyNames = new String[]{
             "sequenceNumber",
             "version",
             "createdBy",
@@ -36,7 +34,7 @@ public final class AttributeUseMvoFilteringProperties
             "attributeSetAttributeUseId.attributeId",
     };
 
-    public static final String[] propertyTypes = new String[] {
+    public static final String[] propertyTypes = new String[]{
             "Integer",
             "Long",
             "String",
@@ -73,7 +71,7 @@ public final class AttributeUseMvoFilteringProperties
         initAliasMap();
     }
 
-    private static  void initAliasMap() {
+    private static void initAliasMap() {
         aliasMap.put("sequenceNumber", "sequenceNumber");
         aliasMap.put("SequenceNumber", "sequenceNumber");
         aliasMap.put("version", "version");
@@ -123,7 +121,7 @@ public final class AttributeUseMvoFilteringProperties
     }
 
     private static void initPropertyTypeMap() {
-        for (int i = 0; i < propertyNames.length; i++ ) {
+        for (int i = 0; i < propertyNames.length; i++) {
             propertyTypeMap.put(propertyNames[i], propertyTypes[i]);
         }
     }

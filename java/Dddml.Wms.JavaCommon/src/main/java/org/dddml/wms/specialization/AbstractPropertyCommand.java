@@ -52,7 +52,7 @@ public abstract class AbstractPropertyCommand<TContent, TState> implements Prope
         this.outerCommandType = type;
     }
 
-    private  Object context;
+    private Object context;
 
     @Override
     public Object getContext() {
