@@ -34,7 +34,7 @@ namespace Dddml.Wms.Services.Tests
         }
 
         [Test]
-        public void TestImport_1()
+        public void TestImportAndReceive()
         {
             // ///////////////////////////////////////
             // Create a product for test.
