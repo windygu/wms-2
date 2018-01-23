@@ -1,139 +1,156 @@
 package org.dddml.wms.domain.lot;
 
-import org.dddml.wms.domain.lot.LotStateEvent.LotStateCreated;
-import org.dddml.wms.domain.lot.LotStateEvent.LotStateDeleted;
-import org.dddml.wms.domain.lot.LotStateEvent.LotStateMergePatched;
-import org.dddml.wms.specialization.DomainError;
-import org.dddml.wms.specialization.Event;
-
+import java.util.*;
 import java.util.Date;
-import java.util.List;
+import org.dddml.wms.domain.*;
+import org.dddml.wms.specialization.*;
+import org.dddml.wms.domain.lot.LotStateEvent.*;
 
-public abstract class AbstractLotState implements LotState {
+public abstract class AbstractLotState implements LotState
+{
 
     private String lotId;
 
-    public String getLotId() {
+    public String getLotId()
+    {
         return this.lotId;
     }
 
-    public void setLotId(String lotId) {
+    public void setLotId(String lotId)
+    {
         this.lotId = lotId;
     }
 
     private java.sql.Timestamp creationDate;
 
-    public java.sql.Timestamp getCreationDate() {
+    public java.sql.Timestamp getCreationDate()
+    {
         return this.creationDate;
     }
 
-    public void setCreationDate(java.sql.Timestamp creationDate) {
+    public void setCreationDate(java.sql.Timestamp creationDate)
+    {
         this.creationDate = creationDate;
     }
 
     private java.math.BigDecimal quantity;
 
-    public java.math.BigDecimal getQuantity() {
+    public java.math.BigDecimal getQuantity()
+    {
         return this.quantity;
     }
 
-    public void setQuantity(java.math.BigDecimal quantity) {
+    public void setQuantity(java.math.BigDecimal quantity)
+    {
         this.quantity = quantity;
     }
 
     private java.sql.Timestamp expirationDate;
 
-    public java.sql.Timestamp getExpirationDate() {
+    public java.sql.Timestamp getExpirationDate()
+    {
         return this.expirationDate;
     }
 
-    public void setExpirationDate(java.sql.Timestamp expirationDate) {
+    public void setExpirationDate(java.sql.Timestamp expirationDate)
+    {
         this.expirationDate = expirationDate;
     }
 
     private Long version;
 
-    public Long getVersion() {
+    public Long getVersion()
+    {
         return this.version;
     }
 
-    public void setVersion(Long version) {
+    public void setVersion(Long version)
+    {
         this.version = version;
     }
 
     private String createdBy;
 
-    public String getCreatedBy() {
+    public String getCreatedBy()
+    {
         return this.createdBy;
     }
 
-    public void setCreatedBy(String createdBy) {
+    public void setCreatedBy(String createdBy)
+    {
         this.createdBy = createdBy;
     }
 
     private Date createdAt;
 
-    public Date getCreatedAt() {
+    public Date getCreatedAt()
+    {
         return this.createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(Date createdAt)
+    {
         this.createdAt = createdAt;
     }
 
     private String updatedBy;
 
-    public String getUpdatedBy() {
+    public String getUpdatedBy()
+    {
         return this.updatedBy;
     }
 
-    public void setUpdatedBy(String updatedBy) {
+    public void setUpdatedBy(String updatedBy)
+    {
         this.updatedBy = updatedBy;
     }
 
     private Date updatedAt;
 
-    public Date getUpdatedAt() {
+    public Date getUpdatedAt()
+    {
         return this.updatedAt;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(Date updatedAt)
+    {
         this.updatedAt = updatedAt;
     }
 
     private Boolean active;
 
-    public Boolean getActive() {
+    public Boolean getActive()
+    {
         return this.active;
     }
 
-    public void setActive(Boolean active) {
+    public void setActive(Boolean active)
+    {
         this.active = active;
     }
 
     private Boolean deleted;
 
-    public Boolean getDeleted() {
+    public Boolean getDeleted()
+    {
         return this.deleted;
     }
 
-    public void setDeleted(Boolean deleted) {
+    public void setDeleted(Boolean deleted)
+    {
         this.deleted = deleted;
     }
 
-    public boolean isStateUnsaved() {
+    public boolean isStateUnsaved() 
+    {
         return this.getVersion() == null;
     }
 
     private Boolean stateReadOnly;
 
-    public Boolean getStateReadOnly() {
-        return this.stateReadOnly;
-    }
+    public Boolean getStateReadOnly() { return this.stateReadOnly; }
 
-    public void setStateReadOnly(Boolean readOnly) {
-        this.stateReadOnly = readOnly;
-    }
+    public void setStateReadOnly(Boolean readOnly) { this.stateReadOnly = readOnly; }
 
     private boolean forReapplying;
 
@@ -166,7 +183,7 @@ public abstract class AbstractLotState implements LotState {
 
         initializeProperties();
     }
-
+    
     protected void initializeProperties() {
     }
 
@@ -184,7 +201,8 @@ public abstract class AbstractLotState implements LotState {
         }
     }
 
-    public void when(LotStateCreated e) {
+    public void when(LotStateCreated e)
+    {
         throwOnWrongEvent(e);
 
         this.setCreationDate(e.getCreationDate());
@@ -199,35 +217,52 @@ public abstract class AbstractLotState implements LotState {
 
     }
 
-    public void when(LotStateMergePatched e) {
+    public void when(LotStateMergePatched e)
+    {
         throwOnWrongEvent(e);
 
-        if (e.getCreationDate() == null) {
-            if (e.getIsPropertyCreationDateRemoved() != null && e.getIsPropertyCreationDateRemoved()) {
+        if (e.getCreationDate() == null)
+        {
+            if (e.getIsPropertyCreationDateRemoved() != null && e.getIsPropertyCreationDateRemoved())
+            {
                 this.setCreationDate(null);
             }
-        } else {
+        }
+        else
+        {
             this.setCreationDate(e.getCreationDate());
         }
-        if (e.getQuantity() == null) {
-            if (e.getIsPropertyQuantityRemoved() != null && e.getIsPropertyQuantityRemoved()) {
+        if (e.getQuantity() == null)
+        {
+            if (e.getIsPropertyQuantityRemoved() != null && e.getIsPropertyQuantityRemoved())
+            {
                 this.setQuantity(null);
             }
-        } else {
+        }
+        else
+        {
             this.setQuantity(e.getQuantity());
         }
-        if (e.getExpirationDate() == null) {
-            if (e.getIsPropertyExpirationDateRemoved() != null && e.getIsPropertyExpirationDateRemoved()) {
+        if (e.getExpirationDate() == null)
+        {
+            if (e.getIsPropertyExpirationDateRemoved() != null && e.getIsPropertyExpirationDateRemoved())
+            {
                 this.setExpirationDate(null);
             }
-        } else {
+        }
+        else
+        {
             this.setExpirationDate(e.getExpirationDate());
         }
-        if (e.getActive() == null) {
-            if (e.getIsPropertyActiveRemoved() != null && e.getIsPropertyActiveRemoved()) {
+        if (e.getActive() == null)
+        {
+            if (e.getIsPropertyActiveRemoved() != null && e.getIsPropertyActiveRemoved())
+            {
                 this.setActive(null);
             }
-        } else {
+        }
+        else
+        {
             this.setActive(e.getActive());
         }
 
@@ -236,7 +271,8 @@ public abstract class AbstractLotState implements LotState {
 
     }
 
-    public void when(LotStateDeleted e) {
+    public void when(LotStateDeleted e)
+    {
         throwOnWrongEvent(e);
 
         this.setDeleted(true);
@@ -245,13 +281,16 @@ public abstract class AbstractLotState implements LotState {
 
     }
 
-    public void save() {
+    public void save()
+    {
     }
 
-    protected void throwOnWrongEvent(LotStateEvent stateEvent) {
+    protected void throwOnWrongEvent(LotStateEvent stateEvent)
+    {
         String stateEntityId = this.getLotId(); // Aggregate Id
         String eventEntityId = stateEvent.getStateEventId().getLotId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
-        if (!stateEntityId.equals(eventEntityId)) {
+        if (!stateEntityId.equals(eventEntityId))
+        {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
@@ -267,7 +306,8 @@ public abstract class AbstractLotState implements LotState {
 
     }
 
-    public static class SimpleLotState extends AbstractLotState {
+    public static class SimpleLotState extends AbstractLotState
+    {
 
         public SimpleLotState() {
         }

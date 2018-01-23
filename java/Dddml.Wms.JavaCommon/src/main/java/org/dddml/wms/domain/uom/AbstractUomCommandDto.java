@@ -1,33 +1,41 @@
 package org.dddml.wms.domain.uom;
 
+import java.util.Date;
+import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.AbstractCommand;
 
-public abstract class AbstractUomCommandDto extends AbstractCommand {
+public abstract class AbstractUomCommandDto extends AbstractCommand
+{
     private String uomId;
 
-    public String getUomId() {
+    public String getUomId()
+    {
         return this.uomId;
     }
 
-    public void setUomId(String uomId) {
+    public void setUomId(String uomId)
+    {
         this.uomId = uomId;
     }
 
     private Long version;
 
-    public Long getVersion() {
+    public Long getVersion()
+    {
         return this.version;
     }
 
-    public void setVersion(Long version) {
+    public void setVersion(Long version)
+    {
         this.version = version;
     }
 
 
-    public void copyTo(AbstractUomCommand command) {
+    public void copyTo(AbstractUomCommand command)
+    {
         command.setUomId(this.getUomId());
         command.setVersion(this.getVersion());
-
+        
         command.setRequesterId(this.getRequesterId());
         command.setCommandId(this.getCommandId());
     }

@@ -1,20 +1,19 @@
 package org.dddml.wms.domain.meta;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class BoundedContextMetadata {
 
-    public static final String NAME_REQUESTER_ID = "requesterId";
-    public static final String DISCRIMINATOR_COMMAND_TYPE = "commandType";
-    public static final String DISCRIMINATOR_STATE_EVENT_TYPE = "stateEventType";
-    public static final String DISCRIMINATOR_COMMAND_ID = "commandId";
+    public static final String NAME_REQUESTER_ID				= "requesterId";
+    public static final String DISCRIMINATOR_COMMAND_TYPE		= "commandType";
+    public static final String DISCRIMINATOR_STATE_EVENT_TYPE	= "stateEventType";
+    public static final String DISCRIMINATOR_COMMAND_ID			= "commandId";
 
-    public static final String HTTP_SERVICE_ORDERS_QUERY_NAME = "sort";
-    public static final String HTTP_SERVICE_FIRST_RESULT_QUERY_NAME = "firstResult";
-    public static final String HTTP_SERVICE_MAX_RESULTS_QUERY_NAME = "maxResults";
-    public static final String HTTP_SERVICE_RETURNED_FIELDS_QUERY_NAME = "fields";
-    public static final String HTTP_SERVICE_FILTER_QUERY_NAME = "filter";
+    public static final String HTTP_SERVICE_ORDERS_QUERY_NAME			= "sort";
+    public static final String HTTP_SERVICE_FIRST_RESULT_QUERY_NAME		= "firstResult";
+    public static final String HTTP_SERVICE_MAX_RESULTS_QUERY_NAME		= "maxResults";
+    public static final String HTTP_SERVICE_RETURNED_FIELDS_QUERY_NAME	= "fields";
+    public static final String HTTP_SERVICE_FILTER_QUERY_NAME			= "filter";
 
     public static final Map<String, String> TYPE_NAME_TO_AGGREGATE_NAME_MAP;
 
@@ -86,7 +85,7 @@ public class BoundedContextMetadata {
         map.put("SellableInventoryItemEntryMvo", "SellableInventoryItemEntryMvo");
         map.put("ShipmentItemMvo", "ShipmentItemMvo");
         map.put("ShipmentReceiptMvo", "ShipmentReceiptMvo");
-
+        
         TYPE_NAME_TO_AGGREGATE_NAME_MAP = map;
     }
 

@@ -1,10 +1,12 @@
 package org.dddml.wms.domain.lot;
 
+import java.util.*;
+import java.util.Date;
+import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-import java.util.Date;
-
-public interface LotStateEvent extends Event {
+public interface LotStateEvent extends Event
+{
     LotStateEventId getStateEventId();
 
     boolean getStateEventReadOnly();
@@ -39,12 +41,14 @@ public interface LotStateEvent extends Event {
 
     void setCommandId(String commandId);
 
-    interface LotStateCreated extends LotStateEvent {
-
+    interface LotStateCreated extends LotStateEvent
+    {
+    
     }
 
 
-    interface LotStateMergePatched extends LotStateEvent {
+    interface LotStateMergePatched extends LotStateEvent
+    {
         Boolean getIsPropertyCreationDateRemoved();
 
         void setIsPropertyCreationDateRemoved(Boolean removed);
@@ -64,7 +68,8 @@ public interface LotStateEvent extends Event {
 
     }
 
-    interface LotStateDeleted extends LotStateEvent {
+    interface LotStateDeleted extends LotStateEvent
+    {
     }
 
 

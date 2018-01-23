@@ -2,7 +2,8 @@ package org.dddml.wms.domain;
 
 import org.dddml.wms.specialization.StateEventType;
 
-public abstract class AbstractStateEvent {
+public abstract class AbstractStateEvent
+{
     public static final String STATE_EVENT_TYPE_CREATED = StateEventType.CREATED;
 
     public static final String STATE_EVENT_TYPE_MERGE_PATCHED = StateEventType.MERGE_PATCHED;
@@ -13,21 +14,25 @@ public abstract class AbstractStateEvent {
 
     private String stateEventType;
 
-    public String getStateEventType() {
+    public String getStateEventType()
+    {
         return this.stateEventType;
     }
 
-    public void setStateEventType(String stateEventType) {
+    public void setStateEventType(String stateEventType)
+    {
         this.stateEventType = stateEventType;
     }
 
     private String commandId;
 
-    public String getCommandId() {
+    public String getCommandId()
+    {
         return this.commandId;
     }
 
-    public void setCommandId(String commandId) {
+    public void setCommandId(String commandId)
+    {
         this.commandId = commandId;
     }
 

@@ -1,10 +1,13 @@
 package org.dddml.wms.domain.lot;
 
-import org.dddml.wms.specialization.Event;
-
+import java.util.Set;
 import java.util.Date;
+import org.dddml.wms.domain.*;
+import org.dddml.wms.specialization.Event;
+import org.dddml.wms.domain.lot.LotStateEvent.*;
 
-public interface LotState {
+public interface LotState
+{
     Long VERSION_ZERO = 0L;
 
     Long VERSION_NULL = VERSION_ZERO - 1;
@@ -66,6 +69,6 @@ public interface LotState {
     void when(LotStateEvent.LotStateMergePatched e);
 
     void when(LotStateEvent.LotStateDeleted e);
-
+    
 }
 

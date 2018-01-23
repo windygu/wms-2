@@ -1,17 +1,16 @@
 package org.dddml.wms.domain.uom;
 
+import java.util.Date;
+import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.AbstractStateEvent;
 
-import java.util.Date;
-
-public class UomStateEventDto extends AbstractStateEvent {
+public class UomStateEventDto extends AbstractStateEvent
+{
 
     private UomStateEventIdDto stateEventId;
 
     UomStateEventIdDto getStateEventId() {
-        if (stateEventId == null) {
-            stateEventId = new UomStateEventIdDto();
-        }
+        if (stateEventId == null) { stateEventId = new UomStateEventIdDto(); }
         return this.stateEventId;
     }
 
@@ -30,7 +29,7 @@ public class UomStateEventDto extends AbstractStateEvent {
     public Long getVersion() {
         return getStateEventId().getVersion();
     }
-
+    
     public void getVersion(Long version) {
         getStateEventId().setVersion(version);
     }
@@ -136,31 +135,37 @@ public class UomStateEventDto extends AbstractStateEvent {
     }
 
 
-    public static class UomStateCreatedDto extends UomStateEventDto {
+	public static class UomStateCreatedDto extends UomStateEventDto
+	{
         @Override
-        public String getStateEventType() {
+        public String getStateEventType()
+        {
             return STATE_EVENT_TYPE_CREATED;
         }
 
-    }
+	}
 
 
-    public static class UomStateMergePatchedDto extends UomStateEventDto {
+	public static class UomStateMergePatchedDto extends UomStateEventDto
+	{
         @Override
-        public String getStateEventType() {
+        public String getStateEventType()
+        {
             return STATE_EVENT_TYPE_MERGE_PATCHED;
         }
 
-    }
+	}
 
 
-    public static class UomStateDeletedDto extends UomStateEventDto {
+	public static class UomStateDeletedDto extends UomStateEventDto
+	{
         @Override
-        public String getStateEventType() {
+        public String getStateEventType()
+        {
             return STATE_EVENT_TYPE_DELETED;
         }
 
-    }
+	}
 
 
 }

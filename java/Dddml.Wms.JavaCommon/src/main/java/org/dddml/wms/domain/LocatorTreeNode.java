@@ -1,9 +1,13 @@
 package org.dddml.wms.domain;
 
-import org.dddml.wms.domain.locator.LocatorState;
-import org.dddml.wms.specialization.TreeNode;
+import java.util.*;
+import java.util.Date;
+import org.dddml.wms.domain.*;
+import org.dddml.wms.specialization.*;
+import org.dddml.wms.domain.locator.*;
 
-public interface LocatorTreeNode extends TreeNode<LocatorState> {
+public interface LocatorTreeNode extends TreeNode<LocatorState>
+{
     //Iterable<LocatorTree> getLocatorTreeChildren();
 }
 

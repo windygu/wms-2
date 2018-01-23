@@ -1,18 +1,19 @@
 package org.dddml.wms.domain.uom;
 
+import java.util.*;
+import java.util.function.Consumer;
 import org.dddml.support.criterion.Criterion;
-import org.dddml.wms.domain.AbstractStateEvent;
+import java.util.Date;
+import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 
-import java.util.List;
-import java.util.Map;
-import java.util.function.Consumer;
-
-public abstract class AbstractUomApplicationService implements UomApplicationService {
+public abstract class AbstractUomApplicationService implements UomApplicationService
+{
 
     private EventStore eventStore;
 
-    protected EventStore getEventStore() {
+    protected EventStore getEventStore()
+    {
         return eventStore;
     }
 
@@ -86,10 +87,11 @@ public abstract class AbstractUomApplicationService implements UomApplicationSer
     }
 
     public UomStateEvent getStateEvent(String uomId, long version) {
-        UomStateEvent e = (UomStateEvent) getEventStore().getStateEvent(toEventStoreAggregateId(uomId), version);
-        if (e != null) {
-            e.setStateEventReadOnly(true);
-        } else if (version == -1) {
+        UomStateEvent e = (UomStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(uomId), version);
+        if (e != null)
+        { e.setStateEventReadOnly(true); }
+        else if (version == -1)
+        {
             return getStateEvent(uomId, 0);
         }
         return e;
@@ -101,23 +103,24 @@ public abstract class AbstractUomApplicationService implements UomApplicationSer
     }
 
 
-    public UomAggregate getUomAggregate(UomState state) {
+    public UomAggregate getUomAggregate(UomState state)
+    {
         return new AbstractUomAggregate.SimpleUomAggregate(state);
     }
 
-    public EventStoreAggregateId toEventStoreAggregateId(String aggregateId) {
+    public EventStoreAggregateId toEventStoreAggregateId(String aggregateId)
+    {
         return new EventStoreAggregateId.SimpleEventStoreAggregateId(aggregateId);
     }
 
-    protected void update(UomCommand c, Consumer<UomAggregate> action) {
+    protected void update(UomCommand c, Consumer<UomAggregate> action)
+    {
         String aggregateId = c.getUomId();
         UomState state = getStateRepository().get(aggregateId, false);
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
 
         boolean repeated = isRepeatedCommand(c, eventStoreAggregateId, state);
-        if (repeated) {
-            return;
-        }
+        if (repeated) { return; }
 
         UomAggregate aggregate = getUomAggregate(state);
         aggregate.throwOnInvalidStateTransition(c);
@@ -127,10 +130,8 @@ public abstract class AbstractUomApplicationService implements UomApplicationSer
     }
 
     private void persist(EventStoreAggregateId eventStoreAggregateId, long version, UomAggregate aggregate, UomState state) {
-        getEventStore().appendEvents(eventStoreAggregateId, version,
-                aggregate.getChanges(), (events) -> {
-                    getStateRepository().save(state);
-                });
+        getEventStore().appendEvents(eventStoreAggregateId, version, 
+            aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
         if (aggregateEventListener != null) {
             aggregateEventListener.eventAppended(new AggregateEvent<>(aggregate, state, aggregate.getChanges()));
         }
@@ -148,23 +149,26 @@ public abstract class AbstractUomApplicationService implements UomApplicationSer
         persist(eventStoreAggregateId, stateCreated.getStateEventId().getVersion(), aggregate, state);
     }
 
-    protected boolean isRepeatedCommand(UomCommand command, EventStoreAggregateId eventStoreAggregateId, UomState state) {
+    protected boolean isRepeatedCommand(UomCommand command, EventStoreAggregateId eventStoreAggregateId, UomState state)
+    {
         boolean repeated = false;
-        if (command.getVersion() == null) {
-            command.setVersion(UomState.VERSION_NULL);
-        }
-        if (state.getVersion() != null && state.getVersion() > command.getVersion()) {
+        if (command.getVersion() == null) { command.setVersion(UomState.VERSION_NULL); }
+        if (state.getVersion() != null && state.getVersion() > command.getVersion())
+        {
             Event lastEvent = getEventStore().findLastEvent(AbstractUomStateEvent.class, eventStoreAggregateId, command.getVersion());
             if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-                    && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId())) {
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            {
                 repeated = true;
             }
         }
         return repeated;
     }
 
-    public static class SimpleUomApplicationService extends AbstractUomApplicationService {
-        public SimpleUomApplicationService(EventStore eventStore, UomStateRepository stateRepository, UomStateQueryRepository stateQueryRepository) {
+    public static class SimpleUomApplicationService extends AbstractUomApplicationService 
+    {
+        public SimpleUomApplicationService(EventStore eventStore, UomStateRepository stateRepository, UomStateQueryRepository stateQueryRepository)
+        {
             super(eventStore, stateRepository, stateQueryRepository);
         }
     }

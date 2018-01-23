@@ -3,12 +3,14 @@ package org.dddml.wms.domain.meta;
 import java.util.HashMap;
 import java.util.Map;
 
-public final class AttributeValueFilteringProperties {
+public final class AttributeValueFilteringProperties
+{
 
-    private AttributeValueFilteringProperties() {
+    private AttributeValueFilteringProperties()
+    {
     }
 
-    public static final String[] propertyNames = new String[]{
+    public static final String[] propertyNames = new String[] {
             "value",
             "attributeValueName",
             "description",
@@ -25,7 +27,7 @@ public final class AttributeValueFilteringProperties {
             "attributeValueId.value",
     };
 
-    public static final String[] propertyTypes = new String[]{
+    public static final String[] propertyTypes = new String[] {
             "String",
             "String",
             "String",
@@ -53,7 +55,7 @@ public final class AttributeValueFilteringProperties {
         initAliasMap();
     }
 
-    private static void initAliasMap() {
+    private static  void initAliasMap() {
         aliasMap.put("value", "attributeValueId.value");
         aliasMap.put("Value", "attributeValueId.value");
         aliasMap.put("attributeValueName", "attributeValueName");
@@ -85,7 +87,7 @@ public final class AttributeValueFilteringProperties {
     }
 
     private static void initPropertyTypeMap() {
-        for (int i = 0; i < propertyNames.length; i++) {
+        for (int i = 0; i < propertyNames.length; i++ ) {
             propertyTypeMap.put(propertyNames[i], propertyTypes[i]);
         }
     }

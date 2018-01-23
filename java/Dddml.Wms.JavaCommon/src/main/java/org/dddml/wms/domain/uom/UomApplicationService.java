@@ -1,11 +1,15 @@
 package org.dddml.wms.domain.uom;
 
-import org.dddml.support.criterion.Criterion;
-
-import java.util.List;
 import java.util.Map;
+import java.util.List;
+import org.dddml.support.criterion.Criterion;
+import java.util.Date;
+import org.dddml.wms.domain.*;
+import org.dddml.wms.specialization.Event;
+import org.dddml.wms.domain.Command;
 
-public interface UomApplicationService {
+public interface UomApplicationService
+{
     void when(UomCommand.CreateUom c);
 
     void when(UomCommand.MergePatchUom c);

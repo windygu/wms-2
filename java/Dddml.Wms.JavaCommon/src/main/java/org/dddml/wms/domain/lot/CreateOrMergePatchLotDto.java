@@ -1,87 +1,108 @@
 package org.dddml.wms.domain.lot;
 
-public class CreateOrMergePatchLotDto extends AbstractLotCommandDto {
+import java.util.Date;
+import org.dddml.wms.domain.*;
+
+public class CreateOrMergePatchLotDto extends AbstractLotCommandDto
+{
     private java.sql.Timestamp creationDate;
 
-    public java.sql.Timestamp getCreationDate() {
+    public java.sql.Timestamp getCreationDate()
+    {
         return this.creationDate;
     }
 
-    public void setCreationDate(java.sql.Timestamp creationDate) {
+    public void setCreationDate(java.sql.Timestamp creationDate)
+    {
         this.creationDate = creationDate;
     }
 
     private java.math.BigDecimal quantity;
 
-    public java.math.BigDecimal getQuantity() {
+    public java.math.BigDecimal getQuantity()
+    {
         return this.quantity;
     }
 
-    public void setQuantity(java.math.BigDecimal quantity) {
+    public void setQuantity(java.math.BigDecimal quantity)
+    {
         this.quantity = quantity;
     }
 
     private java.sql.Timestamp expirationDate;
 
-    public java.sql.Timestamp getExpirationDate() {
+    public java.sql.Timestamp getExpirationDate()
+    {
         return this.expirationDate;
     }
 
-    public void setExpirationDate(java.sql.Timestamp expirationDate) {
+    public void setExpirationDate(java.sql.Timestamp expirationDate)
+    {
         this.expirationDate = expirationDate;
     }
 
     private Boolean active;
 
-    public Boolean getActive() {
+    public Boolean getActive()
+    {
         return this.active;
     }
 
-    public void setActive(Boolean active) {
+    public void setActive(Boolean active)
+    {
         this.active = active;
     }
 
     private Boolean isPropertyCreationDateRemoved;
 
-    public Boolean getIsPropertyCreationDateRemoved() {
+    public Boolean getIsPropertyCreationDateRemoved()
+    {
         return this.isPropertyCreationDateRemoved;
     }
 
-    public void setIsPropertyCreationDateRemoved(Boolean removed) {
+    public void setIsPropertyCreationDateRemoved(Boolean removed)
+    {
         this.isPropertyCreationDateRemoved = removed;
     }
 
     private Boolean isPropertyQuantityRemoved;
 
-    public Boolean getIsPropertyQuantityRemoved() {
+    public Boolean getIsPropertyQuantityRemoved()
+    {
         return this.isPropertyQuantityRemoved;
     }
 
-    public void setIsPropertyQuantityRemoved(Boolean removed) {
+    public void setIsPropertyQuantityRemoved(Boolean removed)
+    {
         this.isPropertyQuantityRemoved = removed;
     }
 
     private Boolean isPropertyExpirationDateRemoved;
 
-    public Boolean getIsPropertyExpirationDateRemoved() {
+    public Boolean getIsPropertyExpirationDateRemoved()
+    {
         return this.isPropertyExpirationDateRemoved;
     }
 
-    public void setIsPropertyExpirationDateRemoved(Boolean removed) {
+    public void setIsPropertyExpirationDateRemoved(Boolean removed)
+    {
         this.isPropertyExpirationDateRemoved = removed;
     }
 
     private Boolean isPropertyActiveRemoved;
 
-    public Boolean getIsPropertyActiveRemoved() {
+    public Boolean getIsPropertyActiveRemoved()
+    {
         return this.isPropertyActiveRemoved;
     }
 
-    public void setIsPropertyActiveRemoved(Boolean removed) {
+    public void setIsPropertyActiveRemoved(Boolean removed)
+    {
         this.isPropertyActiveRemoved = removed;
     }
 
-    public void copyTo(AbstractLotCommand.AbstractCreateOrMergePatchLot command) {
+    public void copyTo(AbstractLotCommand.AbstractCreateOrMergePatchLot command)
+    {
         ((AbstractLotCommandDto) this).copyTo(command);
         command.setCreationDate(this.getCreationDate());
         command.setQuantity(this.getQuantity());
@@ -89,7 +110,8 @@ public class CreateOrMergePatchLotDto extends AbstractLotCommandDto {
         command.setActive(this.getActive());
     }
 
-    public LotCommand toCommand() {
+    public LotCommand toCommand()
+    {
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractLotCommand.SimpleCreateLot command = new AbstractLotCommand.SimpleCreateLot();
             copyTo((AbstractLotCommand.AbstractCreateLot) command);
@@ -98,15 +120,17 @@ public class CreateOrMergePatchLotDto extends AbstractLotCommandDto {
             AbstractLotCommand.SimpleMergePatchLot command = new AbstractLotCommand.SimpleMergePatchLot();
             copyTo((AbstractLotCommand.SimpleMergePatchLot) command);
             return command;
-        }
+        } 
         throw new IllegalStateException("Unknown command type:" + getCommandType());
     }
 
-    public void copyTo(AbstractLotCommand.AbstractCreateLot command) {
+    public void copyTo(AbstractLotCommand.AbstractCreateLot command)
+    {
         copyTo((AbstractLotCommand.AbstractCreateOrMergePatchLot) command);
     }
 
-    public void copyTo(AbstractLotCommand.AbstractMergePatchLot command) {
+    public void copyTo(AbstractLotCommand.AbstractMergePatchLot command)
+    {
         copyTo((AbstractLotCommand.AbstractCreateOrMergePatchLot) command);
         command.setIsPropertyCreationDateRemoved(this.getIsPropertyCreationDateRemoved());
         command.setIsPropertyQuantityRemoved(this.getIsPropertyQuantityRemoved());
@@ -114,25 +138,27 @@ public class CreateOrMergePatchLotDto extends AbstractLotCommandDto {
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
     }
 
-    public static class CreateLotDto extends CreateOrMergePatchLotDto {
+    public static class CreateLotDto extends CreateOrMergePatchLotDto
+    {
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
         }
-
-        public LotCommand.CreateLot toCreateLot() {
+        public LotCommand.CreateLot toCreateLot()
+        {
             return (LotCommand.CreateLot) toCommand();
         }
 
     }
 
-    public static class MergePatchLotDto extends CreateOrMergePatchLotDto {
+    public static class MergePatchLotDto extends CreateOrMergePatchLotDto
+    {
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
         }
-
-        public LotCommand.MergePatchLot toMergePatchLot() {
+        public LotCommand.MergePatchLot toMergePatchLot()
+        {
             return (LotCommand.MergePatchLot) toCommand();
         }
 

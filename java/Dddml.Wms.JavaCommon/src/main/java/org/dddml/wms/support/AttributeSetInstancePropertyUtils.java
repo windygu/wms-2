@@ -5,13 +5,12 @@
 
 package org.dddml.wms.support;
 
-import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceCommand;
-import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceState;
-import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceStateEvent;
+import org.dddml.wms.domain.*;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import org.dddml.wms.domain.attributesetinstance.*;
 
 
 public class AttributeSetInstancePropertyUtils {
@@ -42,6 +41,7 @@ public class AttributeSetInstancePropertyUtils {
             return null;
         }
     }
+
 
 
     public static String getHash(AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated instance) {
@@ -123,6 +123,7 @@ public class AttributeSetInstancePropertyUtils {
     }
 
 
+
     public static String getHash(AttributeSetInstanceCommand.CreateAttributeSetInstance instance) {
         StringBuilder sb = new StringBuilder();
         sb.append("AttributeSetId").append("=").append(getSafeStringValue(instance.getAttributeSetId())).append("|");
@@ -200,6 +201,7 @@ public class AttributeSetInstancePropertyUtils {
             return null;
         }
     }
+
 
 
     public static String getHash(AttributeSetInstanceState instance) {
@@ -350,8 +352,9 @@ public class AttributeSetInstancePropertyUtils {
                 || !propertyEquals(instance1.get_F_C10_4_(), instance2.get_F_C10_4_())
                 || !propertyEquals(instance1.get_F_C20_4_(), instance2.get_F_C20_4_())
                 || !propertyEquals(instance1.get_F_C50_4_(), instance2.get_F_C50_4_())
-                ) {
-            return false;
+            )
+        {
+            return false; 
         }
         return true;
     }

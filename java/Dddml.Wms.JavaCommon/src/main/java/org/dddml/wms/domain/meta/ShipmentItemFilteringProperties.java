@@ -3,12 +3,14 @@ package org.dddml.wms.domain.meta;
 import java.util.HashMap;
 import java.util.Map;
 
-public final class ShipmentItemFilteringProperties {
+public final class ShipmentItemFilteringProperties
+{
 
-    private ShipmentItemFilteringProperties() {
+    private ShipmentItemFilteringProperties()
+    {
     }
 
-    public static final String[] propertyNames = new String[]{
+    public static final String[] propertyNames = new String[] {
             "shipmentItemSeqId",
             "productId",
             "attributeSetInstanceId",
@@ -27,7 +29,7 @@ public final class ShipmentItemFilteringProperties {
             "shipmentItemId.shipmentItemSeqId",
     };
 
-    public static final String[] propertyTypes = new String[]{
+    public static final String[] propertyTypes = new String[] {
             "String",
             "String",
             "String",
@@ -57,7 +59,7 @@ public final class ShipmentItemFilteringProperties {
         initAliasMap();
     }
 
-    private static void initAliasMap() {
+    private static  void initAliasMap() {
         aliasMap.put("shipmentItemSeqId", "shipmentItemId.shipmentItemSeqId");
         aliasMap.put("ShipmentItemSeqId", "shipmentItemId.shipmentItemSeqId");
         aliasMap.put("productId", "productId");
@@ -93,7 +95,7 @@ public final class ShipmentItemFilteringProperties {
     }
 
     private static void initPropertyTypeMap() {
-        for (int i = 0; i < propertyNames.length; i++) {
+        for (int i = 0; i < propertyNames.length; i++ ) {
             propertyTypeMap.put(propertyNames[i], propertyTypes[i]);
         }
     }

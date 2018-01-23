@@ -1,30 +1,24 @@
 package org.dddml.wms.restful.resource;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import org.apache.cxf.jaxrs.ext.PATCH;
-import org.dddml.support.criterion.*;
-import org.dddml.wms.domain.damagetype.*;
-import org.dddml.wms.domain.meta.DamageTypeFilteringProperties;
-import org.dddml.wms.specialization.ApplicationContext;
-import org.dddml.wms.specialization.DomainError;
-import org.dddml.wms.specialization.PropertyMetadataDto;
-import org.dddml.wms.specialization.ReflectUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
+import java.util.*;
+import javax.servlet.http.*;
+import javax.validation.constraints.*;
 import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.ws.rs.core.*;
+import org.apache.cxf.jaxrs.ext.PATCH;
 
-@Path("DamageTypes")
-@Produces(MediaType.APPLICATION_JSON)
+import org.dddml.support.criterion.*;
+import java.util.Date;
+import org.dddml.wms.domain.*;
+import org.dddml.wms.specialization.*;
+import org.dddml.wms.domain.damagetype.*;
+import org.dddml.wms.domain.meta.*;
+
+import com.alibaba.fastjson.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.dddml.support.criterion.TypeConverter;
+
+@Path("DamageTypes") @Produces(MediaType.APPLICATION_JSON)
 public class DamageTypeResource {
 
 
@@ -34,20 +28,16 @@ public class DamageTypeResource {
 
     @GET
     public DamageTypeStateDto[] getAll(@Context HttpServletRequest request,
-                                       @QueryParam("sort") String sort,
-                                       @QueryParam("fields") String fields,
-                                       @QueryParam("firstResult") @DefaultValue("0") Integer firstResult,
-                                       @QueryParam("maxResults") @DefaultValue("2147483647") Integer maxResults,
-                                       @QueryParam("filter") String filter) {
-        if (firstResult < 0) {
-            firstResult = 0;
-        }
-        if (maxResults == null || maxResults < 1) {
-            maxResults = Integer.MAX_VALUE;
-        }
+                                   @QueryParam("sort") String sort,
+                                   @QueryParam("fields") String fields,
+                                   @QueryParam("firstResult") @DefaultValue("0") Integer firstResult,
+                                   @QueryParam("maxResults") @DefaultValue("2147483647") Integer maxResults,
+                                   @QueryParam("filter") String filter) {
+        if (firstResult < 0) { firstResult = 0; }
+        if (maxResults == null || maxResults < 1) { maxResults = Integer.MAX_VALUE; }
         try {
 
-            Iterable<DamageTypeState> states = null;
+            Iterable<DamageTypeState> states = null; 
             if (!StringHelper.isNullOrEmpty(filter)) {
                 states = damageTypeApplicationService.get(
                         CriterionDto.toSubclass(
@@ -70,22 +60,15 @@ public class DamageTypeResource {
             }
             return dtoConverter.toDamageTypeStateDtoArray(states);
 
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}")
-    @GET
+    @Path("{id}") @GET
     public DamageTypeStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
             String idObj = id;
             DamageTypeState state = damageTypeApplicationService.get(idObj);
-            if (state == null) {
-                return null;
-            }
+            if (state == null) { return null; }
 
             DamageTypeStateDto.DtoConverter dtoConverter = new DamageTypeStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
@@ -95,15 +78,10 @@ public class DamageTypeResource {
             }
             return dtoConverter.toDamageTypeStateDto(state);
 
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_count")
-    @GET
+    @Path("_count") @GET
     public long getCount(@Context HttpServletRequest request,
                          @QueryParam("filter") String filter) {
         try {
@@ -116,16 +94,11 @@ public class DamageTypeResource {
             }
             return count;
 
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @Path("{id}")
-    @PUT
+    @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchDamageTypeDto.CreateDamageTypeDto value) {
         try {
 
@@ -133,16 +106,11 @@ public class DamageTypeResource {
             DamageTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             damageTypeApplicationService.when(cmd);
 
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @Path("{id}")
-    @PATCH
+    @Path("{id}") @PATCH
     public void patch(@PathParam("id") String id, CreateOrMergePatchDamageTypeDto.MergePatchDamageTypeDto value) {
         try {
 
@@ -150,15 +118,10 @@ public class DamageTypeResource {
             DamageTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             damageTypeApplicationService.when(cmd);
 
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}")
-    @DELETE
+    @Path("{id}") @DELETE
     public void delete(@PathParam("id") String id,
                        @NotNull @QueryParam("commandId") String commandId,
                        @NotNull @QueryParam("version") @Min(value = -1) Long version,
@@ -173,15 +136,10 @@ public class DamageTypeResource {
             DamageTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             damageTypeApplicationService.when(deleteCmd);
 
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_metadata/filteringFields")
-    @GET
+    @Path("_metadata/filteringFields") @GET
     public List<PropertyMetadataDto> getMetadataFilteringFields() {
         try {
 
@@ -191,15 +149,11 @@ public class DamageTypeResource {
             });
             return filtering;
 
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    protected DamageTypeStateEventDtoConverter getDamageTypeStateEventDtoConverter() {
+    protected  DamageTypeStateEventDtoConverter getDamageTypeStateEventDtoConverter() {
         return new DamageTypeStateEventDtoConverter();
     }
 
@@ -217,6 +171,14 @@ public class DamageTypeResource {
 
     // ////////////////////////////////
 
+    private class DamageTypePropertyTypeResolver implements PropertyTypeResolver {
+        @Override
+        public Class resolveTypeByPropertyName(String propertyName) {
+            return DamageTypeResourceUtils.getFilterPropertyType(propertyName);
+        }
+    }
+
+ 
     public static class DamageTypeResourceUtils {
 
         public static List<String> getQueryOrders(String str, String separator) {
@@ -241,6 +203,7 @@ public class DamageTypeResource {
                 throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getDamageTypeId());
             }
         }
+    
 
 
         public static String getFilterPropertyName(String fieldName) {
@@ -292,13 +255,6 @@ public class DamageTypeResource {
             return states.toArray(new DamageTypeStateDto[0]);
         }
 
-    }
-
-    private class DamageTypePropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return DamageTypeResourceUtils.getFilterPropertyType(propertyName);
-        }
     }
 
 }

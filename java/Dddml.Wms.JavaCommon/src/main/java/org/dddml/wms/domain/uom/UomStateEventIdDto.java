@@ -1,11 +1,16 @@
 package org.dddml.wms.domain.uom;
 
-public class UomStateEventIdDto {
+import org.dddml.wms.domain.*;
 
-    public UomStateEventIdDto() {
+public class UomStateEventIdDto
+{
+
+    public UomStateEventIdDto()
+    {
     }
 
-    public UomStateEventId toUomStateEventId() {
+    public UomStateEventId toUomStateEventId()
+    {
         UomStateEventId v = new UomStateEventId();
         v.setUomId(this.getUomId());
         v.setVersion(this.getVersion());
@@ -14,27 +19,32 @@ public class UomStateEventIdDto {
 
     private String uomId;
 
-    public String getUomId() {
+    public String getUomId()
+    {
         return this.uomId;
     }
 
-    public void setUomId(String uomId) {
+    public void setUomId(String uomId)
+    {
         this.uomId = uomId;
     }
 
     private Long version;
 
-    public Long getVersion() {
+    public Long getVersion()
+    {
         return this.version;
     }
 
-    public void setVersion(Long version) {
+    public void setVersion(Long version)
+    {
         this.version = version;
     }
 
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(Object obj)
+    {
         if (obj == this) {
             return true;
         }
@@ -42,16 +52,17 @@ public class UomStateEventIdDto {
             return false;
         }
 
-        UomStateEventIdDto other = (UomStateEventIdDto) obj;
-        return true
-                && (getUomId() == other.getUomId() || (getUomId() != null && getUomId().equals(other.getUomId())))
-                && (getVersion() == other.getVersion() || (getVersion() != null && getVersion().equals(other.getVersion())))
-                ;
+        UomStateEventIdDto other = (UomStateEventIdDto)obj;
+        return true 
+            && (getUomId() == other.getUomId() || (getUomId() != null && getUomId().equals(other.getUomId())))
+            && (getVersion() == other.getVersion() || (getVersion() != null && getVersion().equals(other.getVersion())))
+            ;
 
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         int hash = 0;
         if (this.getUomId() != null) {
             hash += 13 * this.getUomId().hashCode();

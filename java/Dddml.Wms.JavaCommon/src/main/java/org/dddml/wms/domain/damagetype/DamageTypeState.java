@@ -1,10 +1,13 @@
 package org.dddml.wms.domain.damagetype;
 
-import org.dddml.wms.specialization.Event;
-
+import java.util.Set;
 import java.util.Date;
+import org.dddml.wms.domain.*;
+import org.dddml.wms.specialization.Event;
+import org.dddml.wms.domain.damagetype.DamageTypeStateEvent.*;
 
-public interface DamageTypeState {
+public interface DamageTypeState
+{
     Long VERSION_ZERO = 0L;
 
     Long VERSION_NULL = VERSION_ZERO - 1;
@@ -70,6 +73,6 @@ public interface DamageTypeState {
     void when(DamageTypeStateEvent.DamageTypeStateMergePatched e);
 
     void when(DamageTypeStateEvent.DamageTypeStateDeleted e);
-
+    
 }
 

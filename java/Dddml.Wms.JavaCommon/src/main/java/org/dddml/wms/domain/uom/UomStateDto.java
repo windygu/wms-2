@@ -1,118 +1,137 @@
 package org.dddml.wms.domain.uom;
 
-import org.dddml.wms.specialization.AbstractStateDtoConverter;
-import org.dddml.wms.specialization.CollectionUtils;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
+import java.util.*;
 import java.util.Date;
+import org.dddml.wms.domain.*;
+import org.dddml.wms.specialization.*;
 
 
-public class UomStateDto {
+public class UomStateDto
+{
 
     private String uomId;
 
-    public String getUomId() {
+    public String getUomId()
+    {
         return this.uomId;
     }
 
-    public void setUomId(String uomId) {
+    public void setUomId(String uomId)
+    {
         this.uomId = uomId;
     }
 
     private String uomTypeId;
 
-    public String getUomTypeId() {
+    public String getUomTypeId()
+    {
         return this.uomTypeId;
     }
 
-    public void setUomTypeId(String uomTypeId) {
+    public void setUomTypeId(String uomTypeId)
+    {
         this.uomTypeId = uomTypeId;
     }
 
     private String abbreviation;
 
-    public String getAbbreviation() {
+    public String getAbbreviation()
+    {
         return this.abbreviation;
     }
 
-    public void setAbbreviation(String abbreviation) {
+    public void setAbbreviation(String abbreviation)
+    {
         this.abbreviation = abbreviation;
     }
 
     private String description;
 
-    public String getDescription() {
+    public String getDescription()
+    {
         return this.description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(String description)
+    {
         this.description = description;
     }
 
     private Boolean active;
 
-    public Boolean getActive() {
+    public Boolean getActive()
+    {
         return this.active;
     }
 
-    public void setActive(Boolean active) {
+    public void setActive(Boolean active)
+    {
         this.active = active;
     }
 
     private Long version;
 
-    public Long getVersion() {
+    public Long getVersion()
+    {
         return this.version;
     }
 
-    public void setVersion(Long version) {
+    public void setVersion(Long version)
+    {
         this.version = version;
     }
 
     private String createdBy;
 
-    public String getCreatedBy() {
+    public String getCreatedBy()
+    {
         return this.createdBy;
     }
 
-    public void setCreatedBy(String createdBy) {
+    public void setCreatedBy(String createdBy)
+    {
         this.createdBy = createdBy;
     }
 
     private Date createdAt;
 
-    public Date getCreatedAt() {
+    public Date getCreatedAt()
+    {
         return this.createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(Date createdAt)
+    {
         this.createdAt = createdAt;
     }
 
     private String updatedBy;
 
-    public String getUpdatedBy() {
+    public String getUpdatedBy()
+    {
         return this.updatedBy;
     }
 
-    public void setUpdatedBy(String updatedBy) {
+    public void setUpdatedBy(String updatedBy)
+    {
         this.updatedBy = updatedBy;
     }
 
     private Date updatedAt;
 
-    public Date getUpdatedAt() {
+    public Date getUpdatedAt()
+    {
         return this.updatedAt;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(Date updatedAt)
+    {
         this.updatedAt = updatedAt;
     }
 
 
-    public static class DtoConverter extends AbstractStateDtoConverter {
+    public static class DtoConverter extends AbstractStateDtoConverter
+    {
         public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{});
 
         @Override
@@ -120,7 +139,8 @@ public class UomStateDto {
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public UomStateDto[] toUomStateDtoArray(Iterable<UomState> states) {
+        public UomStateDto[] toUomStateDtoArray(Iterable<UomState> states) 
+        {
             ArrayList<UomStateDto> stateDtos = new ArrayList();
             for (UomState s : states) {
                 UomStateDto dto = toUomStateDto(s);
@@ -129,8 +149,9 @@ public class UomStateDto {
             return stateDtos.toArray(new UomStateDto[0]);
         }
 
-        public UomStateDto toUomStateDto(UomState state) {
-            if (state == null) {
+        public UomStateDto toUomStateDto(UomState state)
+        {
+            if(state == null) {
                 return null;
             }
             UomStateDto dto = new UomStateDto();

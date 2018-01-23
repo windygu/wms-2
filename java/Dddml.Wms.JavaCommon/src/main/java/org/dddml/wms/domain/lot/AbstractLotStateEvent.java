@@ -1,11 +1,13 @@
 package org.dddml.wms.domain.lot;
 
-import org.dddml.wms.domain.AbstractStateEvent;
-import org.dddml.wms.specialization.StateEventType;
-
+import java.util.*;
 import java.util.Date;
+import org.dddml.wms.domain.*;
+import org.dddml.wms.specialization.*;
+import org.dddml.wms.domain.AbstractStateEvent;
 
-public abstract class AbstractLotStateEvent extends AbstractStateEvent implements LotStateEvent {
+public abstract class AbstractLotStateEvent extends AbstractStateEvent implements LotStateEvent 
+{
     private LotStateEventId stateEventId;
 
     public LotStateEventId getStateEventId() {
@@ -15,7 +17,7 @@ public abstract class AbstractLotStateEvent extends AbstractStateEvent implement
     public void setStateEventId(LotStateEventId stateEventId) {
         this.stateEventId = stateEventId;
     }
-
+    
     public String getLotId() {
         return getStateEventId().getLotId();
     }
@@ -26,71 +28,79 @@ public abstract class AbstractLotStateEvent extends AbstractStateEvent implement
 
     private boolean stateEventReadOnly;
 
-    public boolean getStateEventReadOnly() {
-        return this.stateEventReadOnly;
-    }
+    public boolean getStateEventReadOnly() { return this.stateEventReadOnly; }
 
-    public void setStateEventReadOnly(boolean readOnly) {
-        this.stateEventReadOnly = readOnly;
-    }
+    public void setStateEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     private java.sql.Timestamp creationDate;
 
-    public java.sql.Timestamp getCreationDate() {
+    public java.sql.Timestamp getCreationDate()
+    {
         return this.creationDate;
     }
 
-    public void setCreationDate(java.sql.Timestamp creationDate) {
+    public void setCreationDate(java.sql.Timestamp creationDate)
+    {
         this.creationDate = creationDate;
     }
 
     private java.math.BigDecimal quantity;
 
-    public java.math.BigDecimal getQuantity() {
+    public java.math.BigDecimal getQuantity()
+    {
         return this.quantity;
     }
 
-    public void setQuantity(java.math.BigDecimal quantity) {
+    public void setQuantity(java.math.BigDecimal quantity)
+    {
         this.quantity = quantity;
     }
 
     private java.sql.Timestamp expirationDate;
 
-    public java.sql.Timestamp getExpirationDate() {
+    public java.sql.Timestamp getExpirationDate()
+    {
         return this.expirationDate;
     }
 
-    public void setExpirationDate(java.sql.Timestamp expirationDate) {
+    public void setExpirationDate(java.sql.Timestamp expirationDate)
+    {
         this.expirationDate = expirationDate;
     }
 
     private String createdBy;
 
-    public String getCreatedBy() {
+    public String getCreatedBy()
+    {
         return this.createdBy;
     }
 
-    public void setCreatedBy(String createdBy) {
+    public void setCreatedBy(String createdBy)
+    {
         this.createdBy = createdBy;
     }
 
     private Date createdAt;
 
-    public Date getCreatedAt() {
+    public Date getCreatedAt()
+    {
         return this.createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(Date createdAt)
+    {
         this.createdAt = createdAt;
     }
 
     private Boolean active;
 
-    public Boolean getActive() {
+    public Boolean getActive()
+    {
         return this.active;
     }
 
-    public void setActive(Boolean active) {
+    public void setActive(Boolean active)
+    {
         this.active = active;
     }
 
@@ -116,7 +126,8 @@ public abstract class AbstractLotStateEvent extends AbstractStateEvent implement
     public abstract String getStateEventType();
 
 
-    public static abstract class AbstractLotStateCreated extends AbstractLotStateEvent implements LotStateEvent.LotStateCreated {
+    public static abstract class AbstractLotStateCreated extends AbstractLotStateEvent implements LotStateEvent.LotStateCreated
+    {
         public AbstractLotStateCreated() {
             this(new LotStateEventId());
         }
@@ -132,7 +143,8 @@ public abstract class AbstractLotStateEvent extends AbstractStateEvent implement
     }
 
 
-    public static abstract class AbstractLotStateMergePatched extends AbstractLotStateEvent implements LotStateEvent.LotStateMergePatched {
+    public static abstract class AbstractLotStateMergePatched extends AbstractLotStateEvent implements LotStateEvent.LotStateMergePatched
+    {
         public AbstractLotStateMergePatched() {
             this(new LotStateEventId());
         }
@@ -188,7 +200,8 @@ public abstract class AbstractLotStateEvent extends AbstractStateEvent implement
     }
 
 
-    public static abstract class AbstractLotStateDeleted extends AbstractLotStateEvent implements LotStateEvent.LotStateDeleted {
+    public static abstract class AbstractLotStateDeleted extends AbstractLotStateEvent implements LotStateEvent.LotStateDeleted
+    {
         public AbstractLotStateDeleted() {
             this(new LotStateEventId());
         }
@@ -202,8 +215,8 @@ public abstract class AbstractLotStateEvent extends AbstractStateEvent implement
         }
 
     }
-
-    public static class SimpleLotStateCreated extends AbstractLotStateCreated {
+    public static class SimpleLotStateCreated extends AbstractLotStateCreated
+    {
         public SimpleLotStateCreated() {
         }
 
@@ -212,7 +225,8 @@ public abstract class AbstractLotStateEvent extends AbstractStateEvent implement
         }
     }
 
-    public static class SimpleLotStateMergePatched extends AbstractLotStateMergePatched {
+    public static class SimpleLotStateMergePatched extends AbstractLotStateMergePatched
+    {
         public SimpleLotStateMergePatched() {
         }
 
@@ -221,7 +235,8 @@ public abstract class AbstractLotStateEvent extends AbstractStateEvent implement
         }
     }
 
-    public static class SimpleLotStateDeleted extends AbstractLotStateDeleted {
+    public static class SimpleLotStateDeleted extends AbstractLotStateDeleted
+    {
         public SimpleLotStateDeleted() {
         }
 

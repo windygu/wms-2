@@ -1,10 +1,11 @@
 package org.dddml.wms.domain.uom;
 
-import org.dddml.wms.specialization.AbstractIdFlattenedDtoFormatter;
-import org.dddml.wms.specialization.ApplicationContext;
-import org.dddml.wms.specialization.ReflectUtils;
+import org.dddml.wms.domain.*;
+import java.util.*;
+import org.dddml.wms.specialization.*;
 
-public class UomStateEventIdFlattenedDtoFormatter extends AbstractIdFlattenedDtoFormatter<UomStateEventIdFlattenedDto> {
+public class UomStateEventIdFlattenedDtoFormatter extends AbstractIdFlattenedDtoFormatter<UomStateEventIdFlattenedDto>
+{
 
 
     @Override
@@ -49,7 +50,7 @@ public class UomStateEventIdFlattenedDtoFormatter extends AbstractIdFlattenedDto
 
     protected Class getFieldClass(String fieldName) {
         String type = UomStateEventIdFlattenedDto.propertyTypeMap.get(fieldName);
-        if (type == null) {
+        if(type == null) {
             throw new IllegalArgumentException(String.format("The field name \"%1$s\" is NOT right.", fieldName));
         }
         Class clazz = ReflectUtils.CLASS_MAP.get(type);

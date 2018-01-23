@@ -1,30 +1,24 @@
 package org.dddml.wms.restful.resource;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import org.apache.cxf.jaxrs.ext.PATCH;
-import org.dddml.support.criterion.*;
-import org.dddml.wms.domain.attributesetinstanceextensionfieldgroup.*;
-import org.dddml.wms.domain.meta.AttributeSetInstanceExtensionFieldGroupFilteringProperties;
-import org.dddml.wms.specialization.ApplicationContext;
-import org.dddml.wms.specialization.DomainError;
-import org.dddml.wms.specialization.PropertyMetadataDto;
-import org.dddml.wms.specialization.ReflectUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
+import java.util.*;
+import javax.servlet.http.*;
+import javax.validation.constraints.*;
 import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.ws.rs.core.*;
+import org.apache.cxf.jaxrs.ext.PATCH;
 
-@Path("AttributeSetInstanceExtensionFieldGroups")
-@Produces(MediaType.APPLICATION_JSON)
+import org.dddml.support.criterion.*;
+import java.util.Date;
+import org.dddml.wms.domain.*;
+import org.dddml.wms.specialization.*;
+import org.dddml.wms.domain.attributesetinstanceextensionfieldgroup.*;
+import org.dddml.wms.domain.meta.*;
+
+import com.alibaba.fastjson.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.dddml.support.criterion.TypeConverter;
+
+@Path("AttributeSetInstanceExtensionFieldGroups") @Produces(MediaType.APPLICATION_JSON)
 public class AttributeSetInstanceExtensionFieldGroupResource {
 
 
@@ -34,20 +28,16 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
 
     @GET
     public AttributeSetInstanceExtensionFieldGroupStateDto[] getAll(@Context HttpServletRequest request,
-                                                                    @QueryParam("sort") String sort,
-                                                                    @QueryParam("fields") String fields,
-                                                                    @QueryParam("firstResult") @DefaultValue("0") Integer firstResult,
-                                                                    @QueryParam("maxResults") @DefaultValue("2147483647") Integer maxResults,
-                                                                    @QueryParam("filter") String filter) {
-        if (firstResult < 0) {
-            firstResult = 0;
-        }
-        if (maxResults == null || maxResults < 1) {
-            maxResults = Integer.MAX_VALUE;
-        }
+                                   @QueryParam("sort") String sort,
+                                   @QueryParam("fields") String fields,
+                                   @QueryParam("firstResult") @DefaultValue("0") Integer firstResult,
+                                   @QueryParam("maxResults") @DefaultValue("2147483647") Integer maxResults,
+                                   @QueryParam("filter") String filter) {
+        if (firstResult < 0) { firstResult = 0; }
+        if (maxResults == null || maxResults < 1) { maxResults = Integer.MAX_VALUE; }
         try {
 
-            Iterable<AttributeSetInstanceExtensionFieldGroupState> states = null;
+            Iterable<AttributeSetInstanceExtensionFieldGroupState> states = null; 
             if (!StringHelper.isNullOrEmpty(filter)) {
                 states = attributeSetInstanceExtensionFieldGroupApplicationService.get(
                         CriterionDto.toSubclass(
@@ -70,22 +60,15 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
             }
             return dtoConverter.toAttributeSetInstanceExtensionFieldGroupStateDtoArray(states);
 
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}")
-    @GET
+    @Path("{id}") @GET
     public AttributeSetInstanceExtensionFieldGroupStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
             String idObj = id;
             AttributeSetInstanceExtensionFieldGroupState state = attributeSetInstanceExtensionFieldGroupApplicationService.get(idObj);
-            if (state == null) {
-                return null;
-            }
+            if (state == null) { return null; }
 
             AttributeSetInstanceExtensionFieldGroupStateDto.DtoConverter dtoConverter = new AttributeSetInstanceExtensionFieldGroupStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
@@ -95,15 +78,10 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
             }
             return dtoConverter.toAttributeSetInstanceExtensionFieldGroupStateDto(state);
 
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_count")
-    @GET
+    @Path("_count") @GET
     public long getCount(@Context HttpServletRequest request,
                          @QueryParam("filter") String filter) {
         try {
@@ -116,16 +94,11 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
             }
             return count;
 
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @Path("{id}")
-    @PUT
+    @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchAttributeSetInstanceExtensionFieldGroupDto.CreateAttributeSetInstanceExtensionFieldGroupDto value) {
         try {
 
@@ -133,16 +106,11 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
             AttributeSetInstanceExtensionFieldGroupResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             attributeSetInstanceExtensionFieldGroupApplicationService.when(cmd);
 
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    @Path("{id}")
-    @PATCH
+    @Path("{id}") @PATCH
     public void patch(@PathParam("id") String id, CreateOrMergePatchAttributeSetInstanceExtensionFieldGroupDto.MergePatchAttributeSetInstanceExtensionFieldGroupDto value) {
         try {
 
@@ -150,15 +118,10 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
             AttributeSetInstanceExtensionFieldGroupResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             attributeSetInstanceExtensionFieldGroupApplicationService.when(cmd);
 
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}")
-    @DELETE
+    @Path("{id}") @DELETE
     public void delete(@PathParam("id") String id,
                        @NotNull @QueryParam("commandId") String commandId,
                        @NotNull @QueryParam("version") @Min(value = -1) Long version,
@@ -173,15 +136,10 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
             AttributeSetInstanceExtensionFieldGroupResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             attributeSetInstanceExtensionFieldGroupApplicationService.when(deleteCmd);
 
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("_metadata/filteringFields")
-    @GET
+    @Path("_metadata/filteringFields") @GET
     public List<PropertyMetadataDto> getMetadataFilteringFields() {
         try {
 
@@ -191,15 +149,10 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
             });
             return filtering;
 
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_stateEvents/{version}")
-    @GET
+    @Path("{id}/_stateEvents/{version}") @GET
     public AttributeSetInstanceExtensionFieldGroupStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
@@ -207,15 +160,10 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
             AttributeSetInstanceExtensionFieldGroupStateEventDtoConverter dtoConverter = getAttributeSetInstanceExtensionFieldGroupStateEventDtoConverter();
             return dtoConverter.toAttributeSetInstanceExtensionFieldGroupStateEventDto((AbstractAttributeSetInstanceExtensionFieldGroupStateEvent) attributeSetInstanceExtensionFieldGroupApplicationService.getStateEvent(idObj, version));
 
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}/_historyStates/{version}")
-    @GET
+    @Path("{id}/_historyStates/{version}") @GET
     public AttributeSetInstanceExtensionFieldGroupStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version, @QueryParam("fields") String fields) {
         try {
 
@@ -228,15 +176,11 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
             }
             return dtoConverter.toAttributeSetInstanceExtensionFieldGroupStateDto(attributeSetInstanceExtensionFieldGroupApplicationService.getHistoryState(idObj, version));
 
-        } catch (DomainError error) {
-            throw error;
-        } catch (Exception ex) {
-            throw new DomainError("ExceptionCaught", ex);
-        }
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
 
-    protected AttributeSetInstanceExtensionFieldGroupStateEventDtoConverter getAttributeSetInstanceExtensionFieldGroupStateEventDtoConverter() {
+    protected  AttributeSetInstanceExtensionFieldGroupStateEventDtoConverter getAttributeSetInstanceExtensionFieldGroupStateEventDtoConverter() {
         return new AttributeSetInstanceExtensionFieldGroupStateEventDtoConverter();
     }
 
@@ -254,6 +198,14 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
 
     // ////////////////////////////////
 
+    private class AttributeSetInstanceExtensionFieldGroupPropertyTypeResolver implements PropertyTypeResolver {
+        @Override
+        public Class resolveTypeByPropertyName(String propertyName) {
+            return AttributeSetInstanceExtensionFieldGroupResourceUtils.getFilterPropertyType(propertyName);
+        }
+    }
+
+ 
     public static class AttributeSetInstanceExtensionFieldGroupResourceUtils {
 
         public static List<String> getQueryOrders(String str, String separator) {
@@ -278,6 +230,7 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
                 throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getId());
             }
         }
+    
 
 
         public static String getFilterPropertyName(String fieldName) {
@@ -329,13 +282,6 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
             return states.toArray(new AttributeSetInstanceExtensionFieldGroupStateDto[0]);
         }
 
-    }
-
-    private class AttributeSetInstanceExtensionFieldGroupPropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return AttributeSetInstanceExtensionFieldGroupResourceUtils.getFilterPropertyType(propertyName);
-        }
     }
 
 }

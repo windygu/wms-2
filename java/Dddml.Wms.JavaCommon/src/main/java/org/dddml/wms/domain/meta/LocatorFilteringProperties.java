@@ -3,12 +3,14 @@ package org.dddml.wms.domain.meta;
 import java.util.HashMap;
 import java.util.Map;
 
-public final class LocatorFilteringProperties {
+public final class LocatorFilteringProperties
+{
 
-    private LocatorFilteringProperties() {
+    private LocatorFilteringProperties()
+    {
     }
 
-    public static final String[] propertyNames = new String[]{
+    public static final String[] propertyNames = new String[] {
             "locatorId",
             "warehouseId",
             "parentLocatorId",
@@ -28,7 +30,7 @@ public final class LocatorFilteringProperties {
             "deleted",
     };
 
-    public static final String[] propertyTypes = new String[]{
+    public static final String[] propertyTypes = new String[] {
             "String",
             "String",
             "String",
@@ -59,7 +61,7 @@ public final class LocatorFilteringProperties {
         initAliasMap();
     }
 
-    private static void initAliasMap() {
+    private static  void initAliasMap() {
         aliasMap.put("locatorId", "locatorId");
         aliasMap.put("LocatorId", "locatorId");
         aliasMap.put("warehouseId", "warehouseId");
@@ -97,7 +99,7 @@ public final class LocatorFilteringProperties {
     }
 
     private static void initPropertyTypeMap() {
-        for (int i = 0; i < propertyNames.length; i++) {
+        for (int i = 0; i < propertyNames.length; i++ ) {
             propertyTypeMap.put(propertyNames[i], propertyTypes[i]);
         }
     }

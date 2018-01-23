@@ -1,13 +1,22 @@
 package org.dddml.wms.domain.uom;
 
-public abstract class AbstractUomStateCommandConverter<TCreateUom extends UomCommand.CreateUom, TMergePatchUom extends UomCommand.MergePatchUom, TDeleteUom extends UomCommand.DeleteUom> {
-    public UomCommand toCreateOrMergePatchUom(UomState state) {
+import java.util.*;
+import java.util.Date;
+import org.dddml.wms.domain.*;
+
+public abstract class AbstractUomStateCommandConverter<TCreateUom extends UomCommand.CreateUom, TMergePatchUom extends UomCommand.MergePatchUom, TDeleteUom extends UomCommand.DeleteUom>
+{
+    public UomCommand toCreateOrMergePatchUom(UomState state)
+    {
         //where TCreateUom : ICreateUom, new()
         //where TMergePatchUom : IMergePatchUom, new()
         boolean bUnsaved = state.isStateUnsaved();
-        if (bUnsaved) {
+        if (bUnsaved)
+        {
             return toCreateUom(state);
-        } else {
+        }
+        else 
+        {
             return toMergePatchUom(state);
         }
     }
@@ -32,19 +41,11 @@ public abstract class AbstractUomStateCommandConverter<TCreateUom extends UomCom
         cmd.setAbbreviation(state.getAbbreviation());
         cmd.setDescription(state.getDescription());
         cmd.setActive(state.getActive());
-
-        if (state.getUomTypeId() == null) {
-            cmd.setIsPropertyUomTypeIdRemoved(true);
-        }
-        if (state.getAbbreviation() == null) {
-            cmd.setIsPropertyAbbreviationRemoved(true);
-        }
-        if (state.getDescription() == null) {
-            cmd.setIsPropertyDescriptionRemoved(true);
-        }
-        if (state.getActive() == null) {
-            cmd.setIsPropertyActiveRemoved(true);
-        }
+            
+        if (state.getUomTypeId() == null) { cmd.setIsPropertyUomTypeIdRemoved(true); }
+        if (state.getAbbreviation() == null) { cmd.setIsPropertyAbbreviationRemoved(true); }
+        if (state.getDescription() == null) { cmd.setIsPropertyDescriptionRemoved(true); }
+        if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
         return cmd;
     }
 
@@ -63,11 +64,12 @@ public abstract class AbstractUomStateCommandConverter<TCreateUom extends UomCom
 
     protected abstract TCreateUom newCreateUom();
 
-    protected abstract TMergePatchUom newMergePatchUom();
+    protected abstract TMergePatchUom newMergePatchUom(); 
 
     protected abstract TDeleteUom newDeleteUom();
 
-    public static class SimpleUomStateCommandConverter extends AbstractUomStateCommandConverter<AbstractUomCommand.SimpleCreateUom, AbstractUomCommand.SimpleMergePatchUom, AbstractUomCommand.SimpleDeleteUom> {
+    public static class SimpleUomStateCommandConverter extends AbstractUomStateCommandConverter<AbstractUomCommand.SimpleCreateUom, AbstractUomCommand.SimpleMergePatchUom, AbstractUomCommand.SimpleDeleteUom>
+    {
         @Override
         protected AbstractUomCommand.SimpleCreateUom newCreateUom() {
             return new AbstractUomCommand.SimpleCreateUom();

@@ -1,9 +1,13 @@
 package org.dddml.wms.domain.lot;
 
+import java.util.*;
+import java.util.Date;
+import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.Command;
 import org.dddml.wms.specialization.DomainError;
 
-public interface LotCommand extends Command {
+public interface LotCommand extends Command
+{
     String getLotId();
 
     void setLotId(String lotId);
@@ -13,25 +17,29 @@ public interface LotCommand extends Command {
     void setVersion(Long version);
 
     static void throwOnInvalidStateTransition(LotState state, Command c) {
-        if (state.getVersion() == null) {
-            if (isCommandCreate((LotCommand) c)) {
+        if (state.getVersion() == null)
+        {
+            if (isCommandCreate((LotCommand)c))
+            {
                 return;
             }
             throw DomainError.named("premature", "Can't do anything to unexistent aggregate");
         }
-        if (state.getDeleted()) {
+        if (state.getDeleted())
+        {
             throw DomainError.named("zombie", "Can't do anything to deleted aggregate.");
         }
-        if (isCommandCreate((LotCommand) c))
+        if (isCommandCreate((LotCommand)c))
             throw DomainError.named("rebirth", "Can't create aggregate that already exists");
     }
 
     static boolean isCommandCreate(LotCommand c) {
-        return ((c instanceof LotCommand.CreateLot)
-                && c.getVersion().equals(LotState.VERSION_NULL));
+        return ((c instanceof LotCommand.CreateLot) 
+            && c.getVersion().equals(LotState.VERSION_NULL));
     }
 
-    interface CreateOrMergePatchLot extends LotCommand {
+    interface CreateOrMergePatchLot extends LotCommand
+    {
         java.sql.Timestamp getCreationDate();
 
         void setCreationDate(java.sql.Timestamp creationDate);
@@ -50,10 +58,12 @@ public interface LotCommand extends Command {
 
     }
 
-    interface CreateLot extends CreateOrMergePatchLot {
+    interface CreateLot extends CreateOrMergePatchLot
+    {
     }
 
-    interface MergePatchLot extends CreateOrMergePatchLot {
+    interface MergePatchLot extends CreateOrMergePatchLot
+    {
         Boolean getIsPropertyCreationDateRemoved();
 
         void setIsPropertyCreationDateRemoved(Boolean removed);
@@ -72,8 +82,9 @@ public interface LotCommand extends Command {
 
     }
 
-    interface DeleteLot extends LotCommand {
-    }
+	interface DeleteLot extends LotCommand
+	{
+	}
 
 }
 

@@ -1,11 +1,16 @@
 package org.dddml.wms.domain.lot;
 
-public class LotStateEventIdDto {
+import org.dddml.wms.domain.*;
 
-    public LotStateEventIdDto() {
+public class LotStateEventIdDto
+{
+
+    public LotStateEventIdDto()
+    {
     }
 
-    public LotStateEventId toLotStateEventId() {
+    public LotStateEventId toLotStateEventId()
+    {
         LotStateEventId v = new LotStateEventId();
         v.setLotId(this.getLotId());
         v.setVersion(this.getVersion());
@@ -14,27 +19,32 @@ public class LotStateEventIdDto {
 
     private String lotId;
 
-    public String getLotId() {
+    public String getLotId()
+    {
         return this.lotId;
     }
 
-    public void setLotId(String lotId) {
+    public void setLotId(String lotId)
+    {
         this.lotId = lotId;
     }
 
     private Long version;
 
-    public Long getVersion() {
+    public Long getVersion()
+    {
         return this.version;
     }
 
-    public void setVersion(Long version) {
+    public void setVersion(Long version)
+    {
         this.version = version;
     }
 
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(Object obj)
+    {
         if (obj == this) {
             return true;
         }
@@ -42,16 +52,17 @@ public class LotStateEventIdDto {
             return false;
         }
 
-        LotStateEventIdDto other = (LotStateEventIdDto) obj;
-        return true
-                && (getLotId() == other.getLotId() || (getLotId() != null && getLotId().equals(other.getLotId())))
-                && (getVersion() == other.getVersion() || (getVersion() != null && getVersion().equals(other.getVersion())))
-                ;
+        LotStateEventIdDto other = (LotStateEventIdDto)obj;
+        return true 
+            && (getLotId() == other.getLotId() || (getLotId() != null && getLotId().equals(other.getLotId())))
+            && (getVersion() == other.getVersion() || (getVersion() != null && getVersion().equals(other.getVersion())))
+            ;
 
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         int hash = 0;
         if (this.getLotId() != null) {
             hash += 13 * this.getLotId().hashCode();

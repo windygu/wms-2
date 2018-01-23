@@ -1,18 +1,19 @@
 package org.dddml.wms.domain.lot;
 
+import java.util.*;
+import java.util.function.Consumer;
 import org.dddml.support.criterion.Criterion;
-import org.dddml.wms.domain.AbstractStateEvent;
+import java.util.Date;
+import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 
-import java.util.List;
-import java.util.Map;
-import java.util.function.Consumer;
-
-public abstract class AbstractLotApplicationService implements LotApplicationService {
+public abstract class AbstractLotApplicationService implements LotApplicationService
+{
 
     private EventStore eventStore;
 
-    protected EventStore getEventStore() {
+    protected EventStore getEventStore()
+    {
         return eventStore;
     }
 
@@ -86,10 +87,11 @@ public abstract class AbstractLotApplicationService implements LotApplicationSer
     }
 
     public LotStateEvent getStateEvent(String lotId, long version) {
-        LotStateEvent e = (LotStateEvent) getEventStore().getStateEvent(toEventStoreAggregateId(lotId), version);
-        if (e != null) {
-            e.setStateEventReadOnly(true);
-        } else if (version == -1) {
+        LotStateEvent e = (LotStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(lotId), version);
+        if (e != null)
+        { e.setStateEventReadOnly(true); }
+        else if (version == -1)
+        {
             return getStateEvent(lotId, 0);
         }
         return e;
@@ -101,23 +103,24 @@ public abstract class AbstractLotApplicationService implements LotApplicationSer
     }
 
 
-    public LotAggregate getLotAggregate(LotState state) {
+    public LotAggregate getLotAggregate(LotState state)
+    {
         return new AbstractLotAggregate.SimpleLotAggregate(state);
     }
 
-    public EventStoreAggregateId toEventStoreAggregateId(String aggregateId) {
+    public EventStoreAggregateId toEventStoreAggregateId(String aggregateId)
+    {
         return new EventStoreAggregateId.SimpleEventStoreAggregateId(aggregateId);
     }
 
-    protected void update(LotCommand c, Consumer<LotAggregate> action) {
+    protected void update(LotCommand c, Consumer<LotAggregate> action)
+    {
         String aggregateId = c.getLotId();
         LotState state = getStateRepository().get(aggregateId, false);
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
 
         boolean repeated = isRepeatedCommand(c, eventStoreAggregateId, state);
-        if (repeated) {
-            return;
-        }
+        if (repeated) { return; }
 
         LotAggregate aggregate = getLotAggregate(state);
         aggregate.throwOnInvalidStateTransition(c);
@@ -127,10 +130,8 @@ public abstract class AbstractLotApplicationService implements LotApplicationSer
     }
 
     private void persist(EventStoreAggregateId eventStoreAggregateId, long version, LotAggregate aggregate, LotState state) {
-        getEventStore().appendEvents(eventStoreAggregateId, version,
-                aggregate.getChanges(), (events) -> {
-                    getStateRepository().save(state);
-                });
+        getEventStore().appendEvents(eventStoreAggregateId, version, 
+            aggregate.getChanges(), (events) -> { getStateRepository().save(state); });
         if (aggregateEventListener != null) {
             aggregateEventListener.eventAppended(new AggregateEvent<>(aggregate, state, aggregate.getChanges()));
         }
@@ -148,23 +149,26 @@ public abstract class AbstractLotApplicationService implements LotApplicationSer
         persist(eventStoreAggregateId, stateCreated.getStateEventId().getVersion(), aggregate, state);
     }
 
-    protected boolean isRepeatedCommand(LotCommand command, EventStoreAggregateId eventStoreAggregateId, LotState state) {
+    protected boolean isRepeatedCommand(LotCommand command, EventStoreAggregateId eventStoreAggregateId, LotState state)
+    {
         boolean repeated = false;
-        if (command.getVersion() == null) {
-            command.setVersion(LotState.VERSION_NULL);
-        }
-        if (state.getVersion() != null && state.getVersion() > command.getVersion()) {
+        if (command.getVersion() == null) { command.setVersion(LotState.VERSION_NULL); }
+        if (state.getVersion() != null && state.getVersion() > command.getVersion())
+        {
             Event lastEvent = getEventStore().findLastEvent(AbstractLotStateEvent.class, eventStoreAggregateId, command.getVersion());
             if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-                    && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId())) {
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            {
                 repeated = true;
             }
         }
         return repeated;
     }
 
-    public static class SimpleLotApplicationService extends AbstractLotApplicationService {
-        public SimpleLotApplicationService(EventStore eventStore, LotStateRepository stateRepository, LotStateQueryRepository stateQueryRepository) {
+    public static class SimpleLotApplicationService extends AbstractLotApplicationService 
+    {
+        public SimpleLotApplicationService(EventStore eventStore, LotStateRepository stateRepository, LotStateQueryRepository stateQueryRepository)
+        {
             super(eventStore, stateRepository, stateQueryRepository);
         }
     }

@@ -1,139 +1,156 @@
 package org.dddml.wms.domain.uom;
 
-import org.dddml.wms.domain.uom.UomStateEvent.UomStateCreated;
-import org.dddml.wms.domain.uom.UomStateEvent.UomStateDeleted;
-import org.dddml.wms.domain.uom.UomStateEvent.UomStateMergePatched;
-import org.dddml.wms.specialization.DomainError;
-import org.dddml.wms.specialization.Event;
-
+import java.util.*;
 import java.util.Date;
-import java.util.List;
+import org.dddml.wms.domain.*;
+import org.dddml.wms.specialization.*;
+import org.dddml.wms.domain.uom.UomStateEvent.*;
 
-public abstract class AbstractUomState implements UomState {
+public abstract class AbstractUomState implements UomState
+{
 
     private String uomId;
 
-    public String getUomId() {
+    public String getUomId()
+    {
         return this.uomId;
     }
 
-    public void setUomId(String uomId) {
+    public void setUomId(String uomId)
+    {
         this.uomId = uomId;
     }
 
     private String uomTypeId;
 
-    public String getUomTypeId() {
+    public String getUomTypeId()
+    {
         return this.uomTypeId;
     }
 
-    public void setUomTypeId(String uomTypeId) {
+    public void setUomTypeId(String uomTypeId)
+    {
         this.uomTypeId = uomTypeId;
     }
 
     private String abbreviation;
 
-    public String getAbbreviation() {
+    public String getAbbreviation()
+    {
         return this.abbreviation;
     }
 
-    public void setAbbreviation(String abbreviation) {
+    public void setAbbreviation(String abbreviation)
+    {
         this.abbreviation = abbreviation;
     }
 
     private String description;
 
-    public String getDescription() {
+    public String getDescription()
+    {
         return this.description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(String description)
+    {
         this.description = description;
     }
 
     private Long version;
 
-    public Long getVersion() {
+    public Long getVersion()
+    {
         return this.version;
     }
 
-    public void setVersion(Long version) {
+    public void setVersion(Long version)
+    {
         this.version = version;
     }
 
     private String createdBy;
 
-    public String getCreatedBy() {
+    public String getCreatedBy()
+    {
         return this.createdBy;
     }
 
-    public void setCreatedBy(String createdBy) {
+    public void setCreatedBy(String createdBy)
+    {
         this.createdBy = createdBy;
     }
 
     private Date createdAt;
 
-    public Date getCreatedAt() {
+    public Date getCreatedAt()
+    {
         return this.createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(Date createdAt)
+    {
         this.createdAt = createdAt;
     }
 
     private String updatedBy;
 
-    public String getUpdatedBy() {
+    public String getUpdatedBy()
+    {
         return this.updatedBy;
     }
 
-    public void setUpdatedBy(String updatedBy) {
+    public void setUpdatedBy(String updatedBy)
+    {
         this.updatedBy = updatedBy;
     }
 
     private Date updatedAt;
 
-    public Date getUpdatedAt() {
+    public Date getUpdatedAt()
+    {
         return this.updatedAt;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(Date updatedAt)
+    {
         this.updatedAt = updatedAt;
     }
 
     private Boolean active;
 
-    public Boolean getActive() {
+    public Boolean getActive()
+    {
         return this.active;
     }
 
-    public void setActive(Boolean active) {
+    public void setActive(Boolean active)
+    {
         this.active = active;
     }
 
     private Boolean deleted;
 
-    public Boolean getDeleted() {
+    public Boolean getDeleted()
+    {
         return this.deleted;
     }
 
-    public void setDeleted(Boolean deleted) {
+    public void setDeleted(Boolean deleted)
+    {
         this.deleted = deleted;
     }
 
-    public boolean isStateUnsaved() {
+    public boolean isStateUnsaved() 
+    {
         return this.getVersion() == null;
     }
 
     private Boolean stateReadOnly;
 
-    public Boolean getStateReadOnly() {
-        return this.stateReadOnly;
-    }
+    public Boolean getStateReadOnly() { return this.stateReadOnly; }
 
-    public void setStateReadOnly(Boolean readOnly) {
-        this.stateReadOnly = readOnly;
-    }
+    public void setStateReadOnly(Boolean readOnly) { this.stateReadOnly = readOnly; }
 
     private boolean forReapplying;
 
@@ -166,7 +183,7 @@ public abstract class AbstractUomState implements UomState {
 
         initializeProperties();
     }
-
+    
     protected void initializeProperties() {
     }
 
@@ -184,7 +201,8 @@ public abstract class AbstractUomState implements UomState {
         }
     }
 
-    public void when(UomStateCreated e) {
+    public void when(UomStateCreated e)
+    {
         throwOnWrongEvent(e);
 
         this.setUomTypeId(e.getUomTypeId());
@@ -199,35 +217,52 @@ public abstract class AbstractUomState implements UomState {
 
     }
 
-    public void when(UomStateMergePatched e) {
+    public void when(UomStateMergePatched e)
+    {
         throwOnWrongEvent(e);
 
-        if (e.getUomTypeId() == null) {
-            if (e.getIsPropertyUomTypeIdRemoved() != null && e.getIsPropertyUomTypeIdRemoved()) {
+        if (e.getUomTypeId() == null)
+        {
+            if (e.getIsPropertyUomTypeIdRemoved() != null && e.getIsPropertyUomTypeIdRemoved())
+            {
                 this.setUomTypeId(null);
             }
-        } else {
+        }
+        else
+        {
             this.setUomTypeId(e.getUomTypeId());
         }
-        if (e.getAbbreviation() == null) {
-            if (e.getIsPropertyAbbreviationRemoved() != null && e.getIsPropertyAbbreviationRemoved()) {
+        if (e.getAbbreviation() == null)
+        {
+            if (e.getIsPropertyAbbreviationRemoved() != null && e.getIsPropertyAbbreviationRemoved())
+            {
                 this.setAbbreviation(null);
             }
-        } else {
+        }
+        else
+        {
             this.setAbbreviation(e.getAbbreviation());
         }
-        if (e.getDescription() == null) {
-            if (e.getIsPropertyDescriptionRemoved() != null && e.getIsPropertyDescriptionRemoved()) {
+        if (e.getDescription() == null)
+        {
+            if (e.getIsPropertyDescriptionRemoved() != null && e.getIsPropertyDescriptionRemoved())
+            {
                 this.setDescription(null);
             }
-        } else {
+        }
+        else
+        {
             this.setDescription(e.getDescription());
         }
-        if (e.getActive() == null) {
-            if (e.getIsPropertyActiveRemoved() != null && e.getIsPropertyActiveRemoved()) {
+        if (e.getActive() == null)
+        {
+            if (e.getIsPropertyActiveRemoved() != null && e.getIsPropertyActiveRemoved())
+            {
                 this.setActive(null);
             }
-        } else {
+        }
+        else
+        {
             this.setActive(e.getActive());
         }
 
@@ -236,7 +271,8 @@ public abstract class AbstractUomState implements UomState {
 
     }
 
-    public void when(UomStateDeleted e) {
+    public void when(UomStateDeleted e)
+    {
         throwOnWrongEvent(e);
 
         this.setDeleted(true);
@@ -245,13 +281,16 @@ public abstract class AbstractUomState implements UomState {
 
     }
 
-    public void save() {
+    public void save()
+    {
     }
 
-    protected void throwOnWrongEvent(UomStateEvent stateEvent) {
+    protected void throwOnWrongEvent(UomStateEvent stateEvent)
+    {
         String stateEntityId = this.getUomId(); // Aggregate Id
         String eventEntityId = stateEvent.getStateEventId().getUomId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
-        if (!stateEntityId.equals(eventEntityId)) {
+        if (!stateEntityId.equals(eventEntityId))
+        {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
@@ -267,7 +306,8 @@ public abstract class AbstractUomState implements UomState {
 
     }
 
-    public static class SimpleUomState extends AbstractUomState {
+    public static class SimpleUomState extends AbstractUomState
+    {
 
         public SimpleUomState() {
         }

@@ -1,109 +1,137 @@
 package org.dddml.wms.domain.damagetype;
 
-import org.dddml.wms.specialization.AbstractStateDtoConverter;
-import org.dddml.wms.specialization.CollectionUtils;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
+import java.util.*;
 import java.util.Date;
+import org.dddml.wms.domain.*;
+import org.dddml.wms.specialization.*;
 
 
-public class DamageTypeStateDto {
+public class DamageTypeStateDto
+{
 
     private String damageTypeId;
-    private String description;
-    private String sequenceId;
-    private String defaultHandlingMethodId;
-    private Boolean active;
-    private Long version;
-    private String createdBy;
-    private Date createdAt;
-    private String updatedBy;
-    private Date updatedAt;
 
-    public String getDamageTypeId() {
+    public String getDamageTypeId()
+    {
         return this.damageTypeId;
     }
 
-    public void setDamageTypeId(String damageTypeId) {
+    public void setDamageTypeId(String damageTypeId)
+    {
         this.damageTypeId = damageTypeId;
     }
 
-    public String getDescription() {
+    private String description;
+
+    public String getDescription()
+    {
         return this.description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(String description)
+    {
         this.description = description;
     }
 
-    public String getSequenceId() {
+    private String sequenceId;
+
+    public String getSequenceId()
+    {
         return this.sequenceId;
     }
 
-    public void setSequenceId(String sequenceId) {
+    public void setSequenceId(String sequenceId)
+    {
         this.sequenceId = sequenceId;
     }
 
-    public String getDefaultHandlingMethodId() {
+    private String defaultHandlingMethodId;
+
+    public String getDefaultHandlingMethodId()
+    {
         return this.defaultHandlingMethodId;
     }
 
-    public void setDefaultHandlingMethodId(String defaultHandlingMethodId) {
+    public void setDefaultHandlingMethodId(String defaultHandlingMethodId)
+    {
         this.defaultHandlingMethodId = defaultHandlingMethodId;
     }
 
-    public Boolean getActive() {
+    private Boolean active;
+
+    public Boolean getActive()
+    {
         return this.active;
     }
 
-    public void setActive(Boolean active) {
+    public void setActive(Boolean active)
+    {
         this.active = active;
     }
 
-    public Long getVersion() {
+    private Long version;
+
+    public Long getVersion()
+    {
         return this.version;
     }
 
-    public void setVersion(Long version) {
+    public void setVersion(Long version)
+    {
         this.version = version;
     }
 
-    public String getCreatedBy() {
+    private String createdBy;
+
+    public String getCreatedBy()
+    {
         return this.createdBy;
     }
 
-    public void setCreatedBy(String createdBy) {
+    public void setCreatedBy(String createdBy)
+    {
         this.createdBy = createdBy;
     }
 
-    public Date getCreatedAt() {
+    private Date createdAt;
+
+    public Date getCreatedAt()
+    {
         return this.createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(Date createdAt)
+    {
         this.createdAt = createdAt;
     }
 
-    public String getUpdatedBy() {
+    private String updatedBy;
+
+    public String getUpdatedBy()
+    {
         return this.updatedBy;
     }
 
-    public void setUpdatedBy(String updatedBy) {
+    public void setUpdatedBy(String updatedBy)
+    {
         this.updatedBy = updatedBy;
     }
 
-    public Date getUpdatedAt() {
+    private Date updatedAt;
+
+    public Date getUpdatedAt()
+    {
         return this.updatedAt;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(Date updatedAt)
+    {
         this.updatedAt = updatedAt;
     }
 
 
-    public static class DtoConverter extends AbstractStateDtoConverter {
+    public static class DtoConverter extends AbstractStateDtoConverter
+    {
         public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{});
 
         @Override
@@ -111,7 +139,8 @@ public class DamageTypeStateDto {
             return CollectionUtils.collectionContainsIgnoringCase(collectionFieldNames, fieldName);
         }
 
-        public DamageTypeStateDto[] toDamageTypeStateDtoArray(Iterable<DamageTypeState> states) {
+        public DamageTypeStateDto[] toDamageTypeStateDtoArray(Iterable<DamageTypeState> states) 
+        {
             ArrayList<DamageTypeStateDto> stateDtos = new ArrayList();
             for (DamageTypeState s : states) {
                 DamageTypeStateDto dto = toDamageTypeStateDto(s);
@@ -120,8 +149,9 @@ public class DamageTypeStateDto {
             return stateDtos.toArray(new DamageTypeStateDto[0]);
         }
 
-        public DamageTypeStateDto toDamageTypeStateDto(DamageTypeState state) {
-            if (state == null) {
+        public DamageTypeStateDto toDamageTypeStateDto(DamageTypeState state)
+        {
+            if(state == null) {
                 return null;
             }
             DamageTypeStateDto dto = new DamageTypeStateDto();

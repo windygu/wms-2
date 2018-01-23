@@ -3,12 +3,14 @@ package org.dddml.wms.domain.meta;
 import java.util.HashMap;
 import java.util.Map;
 
-public final class InventoryItemFilteringProperties {
+public final class InventoryItemFilteringProperties
+{
 
-    private InventoryItemFilteringProperties() {
+    private InventoryItemFilteringProperties()
+    {
     }
 
-    public static final String[] propertyNames = new String[]{
+    public static final String[] propertyNames = new String[] {
             "onHandQuantity",
             "inTransitQuantity",
             "reservedQuantity",
@@ -26,7 +28,7 @@ public final class InventoryItemFilteringProperties {
             "inventoryItemId.attributeSetInstanceId",
     };
 
-    public static final String[] propertyTypes = new String[]{
+    public static final String[] propertyTypes = new String[] {
             "BigDecimal",
             "BigDecimal",
             "BigDecimal",
@@ -55,7 +57,7 @@ public final class InventoryItemFilteringProperties {
         initAliasMap();
     }
 
-    private static void initAliasMap() {
+    private static  void initAliasMap() {
         aliasMap.put("onHandQuantity", "onHandQuantity");
         aliasMap.put("OnHandQuantity", "onHandQuantity");
         aliasMap.put("inTransitQuantity", "inTransitQuantity");
@@ -89,7 +91,7 @@ public final class InventoryItemFilteringProperties {
     }
 
     private static void initPropertyTypeMap() {
-        for (int i = 0; i < propertyNames.length; i++) {
+        for (int i = 0; i < propertyNames.length; i++ ) {
             propertyTypeMap.put(propertyNames[i], propertyTypes[i]);
         }
     }
