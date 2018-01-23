@@ -150,7 +150,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Tests
             SetAuthenticationHeader(req); 
             req.Content = new ObjectContent(typeof(JObject), jObject, new JsonMediaTypeFormatter());
             var response = client.SendAsync(req).GetAwaiter().GetResult();
-
+            
             Console.WriteLine(response.Content);
             Console.WriteLine(response.Headers);
             Console.WriteLine(response.StatusCode);
