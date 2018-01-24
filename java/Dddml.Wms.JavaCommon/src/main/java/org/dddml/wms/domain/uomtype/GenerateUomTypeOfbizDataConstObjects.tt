@@ -1,0 +1,22 @@
+<#@ template language="C#" debug="True" #>
+<#@ output extension="txt" #>
+<#@ import namespace="Dddml.Core.Dom" #>
+<#@ include file="%DddmlDotNetToolsSolutionDir%\Dddml.T4.Templates.Java\Domain\Ofbiz\OfbizDataConstObjectTemplate.tt" #>
+<#@ include file="..\..\LoadBoundedContext.tt" #>
+<#
+    string projectFile = TransformationContext.Current.GetPropertyValue("MSBuildProjectFullPath");
+	string projectDir = System.IO.Path.GetDirectoryName(projectFile);
+
+    string filePath1 = System.IO.Path.Combine(projectDir, "..\\..\\Data");
+
+    var template1 = new OfbizDataConstObjectTemplate(boundedContext, 
+        filePath1, // data files path
+        "*Data.xml", // data file filter
+        "UomType", // entity name
+        "UomTypeIds"//, // generated class name(file name)
+        //"statusId" // the xml attribute name of Id.
+        );
+    template1.Output.Encoding = new System.Text.UTF8Encoding(false);
+    template1.RenderToFile("UomTypeIds.java");      
+
+#>

@@ -5415,6 +5415,11 @@
     <Content Include="src\main\java\org\dddml\wms\domain\uomtype\DeleteUomTypeDto.java">
       <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\GenerateUomTypeOfbizDataConstObjects.txt">
+      <DependentUpon>GenerateUomTypeOfbizDataConstObjects.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\uomtype\GenerateUomTypeDomain.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -5425,6 +5430,9 @@
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\uomtype\UomTypeCommand.java">
       <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\UomTypeIds.java">
+      <DependentUpon>GenerateUomTypeOfbizDataConstObjects.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\uomtype\UomTypeState.java">
       <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
@@ -7557,6 +7565,14 @@
       <LastOutputs>
 .\GenerateStatusItemOfbizDataConstObjects.txt
 .\StatusItemIds.java
+</LastOutputs>
+    </None>
+    <None Include="src\main\java\org\dddml\wms\domain\uomtype\GenerateUomTypeOfbizDataConstObjects.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateUomTypeOfbizDataConstObjects.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateUomTypeOfbizDataConstObjects.txt
+.\UomTypeIds.java
 </LastOutputs>
     </None>
     <None Include="src\main\java\org\dddml\wms\domain\uom\GenerateUomOfbizDataConstObjects.tt">

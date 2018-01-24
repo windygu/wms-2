@@ -5766,6 +5766,9 @@
     <Compile Include="Generated\Domain\UomType\UomTypeCommandDto.cs">
       <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\UomType\UomTypeIds.cs">
+      <DependentUpon>GenerateUomTypeOfbizDataConstObjects.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\UomType\UomTypeState.cs">
       <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
     </Compile>
@@ -6265,6 +6268,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
     </Content>
+    <Content Include="Generated\Domain\UomType\GenerateUomTypeOfbizDataConstObjects.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateUomTypeOfbizDataConstObjects.tt</DependentUpon>
+    </Content>
     <Content Include="Generated\Domain\Uom\GenerateUomOfbizDataConstObjects.txt">
       <DependentUpon>GenerateUomOfbizDataConstObjects.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -6327,6 +6335,14 @@
 .\StatusItemIds.cs
 </LastOutputs>
       <LastGenOutput>GenerateStatusItemOfbizDataConstObjects.txt</LastGenOutput>
+    </None>
+    <None Include="Generated\Domain\UomType\GenerateUomTypeOfbizDataConstObjects.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastOutputs>
+.\GenerateUomTypeOfbizDataConstObjects.txt
+.\UomTypeIds.cs
+</LastOutputs>
+      <LastGenOutput>GenerateUomTypeOfbizDataConstObjects.txt</LastGenOutput>
     </None>
     <None Include="Generated\Domain\Uom\GenerateUomOfbizDataConstObjects.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
