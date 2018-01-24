@@ -20,7 +20,7 @@ namespace Dddml.Wms.Services.Tests
         {
             try
             {
-                InitInventoryPostingRules.CreateDefaultInventoryPostingRules();
+                //InitInventoryPostingRules.CreateDefaultInventoryPostingRules();
             }
             catch (Exception ex)
             {
