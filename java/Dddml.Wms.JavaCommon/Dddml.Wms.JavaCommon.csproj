@@ -4839,25 +4839,13 @@
     <Content Include="src\main\java\org\dddml\wms\domain\shipmentreceiptmvo\ShipmentReceiptMvoStateRepository.java">
       <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipmenttype\AbstractShipmentTypeAggregate.java">
-      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\shipmenttype\AbstractShipmentTypeApplicationService.java">
-      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipmenttype\AbstractShipmentTypeCommand.java">
       <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\shipmenttype\AbstractShipmentTypeCommandDto.java">
       <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\shipmenttype\AbstractShipmentTypeState.java">
-      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipmenttype\AbstractShipmentTypeStateCommandConverter.java">
-      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipmenttype\AbstractShipmentTypeStateEvent.java">
       <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\shipmenttype\CreateOrMergePatchShipmentTypeDto.java">
@@ -4871,9 +4859,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipmenttype\ShipmentTypeAggregate.java">
-      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\shipmenttype\ShipmentTypeApplicationService.java">
       <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
     </Content>
@@ -4884,30 +4869,6 @@
       <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\shipmenttype\ShipmentTypeStateDto.java">
-      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipmenttype\ShipmentTypeStateEvent.java">
-      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipmenttype\ShipmentTypeStateEventDto.java">
-      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipmenttype\ShipmentTypeStateEventDtoConverter.java">
-      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipmenttype\ShipmentTypeStateEventId.java">
-      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipmenttype\ShipmentTypeStateEventIdDto.java">
-      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipmenttype\ShipmentTypeStateEventIdDtoWrapper.java">
-      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipmenttype\ShipmentTypeStateEventIdFlattenedDto.java">
-      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\shipmenttype\ShipmentTypeStateEventIdFlattenedDtoFormatter.java">
       <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\shipmenttype\ShipmentTypeStateQueryRepository.java">
@@ -6702,29 +6663,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateShipmentTypeDomain.txt</LastGenOutput>
       <LastOutputs>
-.\AbstractShipmentTypeAggregate.java
 .\AbstractShipmentTypeApplicationService.java
-.\AbstractShipmentTypeCommand.java
 .\AbstractShipmentTypeCommandDto.java
 .\AbstractShipmentTypeState.java
-.\AbstractShipmentTypeStateCommandConverter.java
-.\AbstractShipmentTypeStateEvent.java
 .\CreateOrMergePatchShipmentTypeDto.java
 .\DeleteShipmentTypeDto.java
 .\GenerateShipmentTypeDomain.txt
-.\ShipmentTypeAggregate.java
 .\ShipmentTypeApplicationService.java
 .\ShipmentTypeCommand.java
 .\ShipmentTypeState.java
 .\ShipmentTypeStateDto.java
-.\ShipmentTypeStateEvent.java
-.\ShipmentTypeStateEventDto.java
-.\ShipmentTypeStateEventDtoConverter.java
-.\ShipmentTypeStateEventId.java
-.\ShipmentTypeStateEventIdDto.java
-.\ShipmentTypeStateEventIdDtoWrapper.java
-.\ShipmentTypeStateEventIdFlattenedDto.java
-.\ShipmentTypeStateEventIdFlattenedDtoFormatter.java
 .\ShipmentTypeStateQueryRepository.java
 .\ShipmentTypeStateRepository.java
 </LastOutputs>

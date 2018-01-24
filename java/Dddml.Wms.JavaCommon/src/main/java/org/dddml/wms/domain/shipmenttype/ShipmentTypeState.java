@@ -4,7 +4,6 @@ import java.util.Set;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.shipmenttype.ShipmentTypeStateEvent.*;
 
 public interface ShipmentTypeState
 {
@@ -60,13 +59,6 @@ public interface ShipmentTypeState
     String getCommandId();
 
     void setCommandId(String commandId);
-
-
-    void mutate(Event e);
-
-    void when(ShipmentTypeStateEvent.ShipmentTypeStateCreated e);
-
-    void when(ShipmentTypeStateEvent.ShipmentTypeStateMergePatched e);
 
     
 }

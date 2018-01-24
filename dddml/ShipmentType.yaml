@@ -36,5 +36,5 @@ aggregates:
       
     metadata: 
       # StateEventDatabaseTableName: SHIPMENT_TYPE_STATE_EVENT
-      NoEventSourcing: true
+      AbsolutelyNoEventSourcing: true
       

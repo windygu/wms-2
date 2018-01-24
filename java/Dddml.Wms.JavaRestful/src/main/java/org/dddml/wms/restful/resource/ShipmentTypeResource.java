@@ -134,11 +134,6 @@ public class ShipmentTypeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-
-    protected  ShipmentTypeStateEventDtoConverter getShipmentTypeStateEventDtoConverter() {
-        return new ShipmentTypeStateEventDtoConverter();
-    }
-
     protected String getQueryOrderSeparator() {
         return ",";
     }

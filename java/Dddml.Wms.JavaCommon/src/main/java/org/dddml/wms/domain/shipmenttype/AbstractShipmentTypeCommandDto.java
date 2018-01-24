@@ -31,13 +31,4 @@ public abstract class AbstractShipmentTypeCommandDto extends AbstractCommand
     }
 
 
-    public void copyTo(AbstractShipmentTypeCommand command)
-    {
-        command.setShipmentTypeId(this.getShipmentTypeId());
-        command.setVersion(this.getVersion());
-        
-        command.setRequesterId(this.getRequesterId());
-        command.setCommandId(this.getCommandId());
-    }
-
 }
