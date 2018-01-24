@@ -11,9 +11,59 @@ public class DeleteDamageHandlingMethodDto extends AbstractDamageHandlingMethodC
 
     public DamageHandlingMethodCommand.DeleteDamageHandlingMethod toDeleteDamageHandlingMethod()
     {
-        AbstractDamageHandlingMethodCommand.SimpleDeleteDamageHandlingMethod command = new AbstractDamageHandlingMethodCommand.SimpleDeleteDamageHandlingMethod();
-        ((AbstractDamageHandlingMethodCommandDto)this).copyTo(command);
-        return command;
+        return new DamageHandlingMethodCommand.DeleteDamageHandlingMethod() {
+            @Override
+            public String getDamageHandlingMethodId() {
+                return DeleteDamageHandlingMethodDto.this.getDamageHandlingMethodId();
+            }
+
+            @Override
+            public void setDamageHandlingMethodId(String p) {
+                DeleteDamageHandlingMethodDto.this.setDamageHandlingMethodId(p);
+            }
+
+            @Override
+            public Long getVersion() {
+                return DeleteDamageHandlingMethodDto.this.getVersion();
+            }
+
+            @Override
+            public void setVersion(Long p) {
+                DeleteDamageHandlingMethodDto.this.setVersion(p);
+            }
+
+            @Override
+            public String getCommandType() {
+                return DeleteDamageHandlingMethodDto.this.getCommandType();
+            }
+
+            @Override
+            public void setCommandType(String commandType) {
+                 DeleteDamageHandlingMethodDto.this.setCommandType(commandType);
+            }
+
+            @Override
+            public String getCommandId() {
+                return DeleteDamageHandlingMethodDto.this.getCommandId();
+            }
+
+            @Override
+            public void setCommandId(String commandId) {
+                DeleteDamageHandlingMethodDto.this.setCommandId(commandId);
+            }
+
+            @Override
+            public String getRequesterId() {
+                return DeleteDamageHandlingMethodDto.this.getRequesterId();
+            }
+
+            @Override
+            public void setRequesterId(String requesterId) {
+                DeleteDamageHandlingMethodDto.this.setRequesterId(requesterId);
+            }
+
+
+        };
     }
 }
 

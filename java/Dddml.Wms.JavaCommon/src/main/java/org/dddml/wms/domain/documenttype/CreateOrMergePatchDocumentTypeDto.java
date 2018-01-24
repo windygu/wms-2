@@ -77,39 +77,216 @@ public class CreateOrMergePatchDocumentTypeDto extends AbstractDocumentTypeComma
         this.isPropertyActiveRemoved = removed;
     }
 
-    public void copyTo(AbstractDocumentTypeCommand.AbstractCreateOrMergePatchDocumentType command)
-    {
-        ((AbstractDocumentTypeCommandDto) this).copyTo(command);
-        command.setDescription(this.getDescription());
-        command.setParentDocumentTypeId(this.getParentDocumentTypeId());
-        command.setActive(this.getActive());
-    }
-
     public DocumentTypeCommand toCommand()
     {
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
-            AbstractDocumentTypeCommand.SimpleCreateDocumentType command = new AbstractDocumentTypeCommand.SimpleCreateDocumentType();
-            copyTo((AbstractDocumentTypeCommand.AbstractCreateDocumentType) command);
-            return command;
+            return toCreateDocumentType();
         } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {
-            AbstractDocumentTypeCommand.SimpleMergePatchDocumentType command = new AbstractDocumentTypeCommand.SimpleMergePatchDocumentType();
-            copyTo((AbstractDocumentTypeCommand.SimpleMergePatchDocumentType) command);
-            return command;
+            return toMergePatchDocumentType();
         } 
         throw new IllegalStateException("Unknown command type:" + getCommandType());
     }
 
-    public void copyTo(AbstractDocumentTypeCommand.AbstractCreateDocumentType command)
-    {
-        copyTo((AbstractDocumentTypeCommand.AbstractCreateOrMergePatchDocumentType) command);
+    protected DocumentTypeCommand.CreateDocumentType toCreateDocumentType() {
+        return new DocumentTypeCommand.CreateDocumentType() {
+            @Override
+            public String getDocumentTypeId() {
+                return CreateOrMergePatchDocumentTypeDto.this.getDocumentTypeId();
+            }
+
+            @Override
+            public void setDocumentTypeId(String p) {
+                CreateOrMergePatchDocumentTypeDto.this.setDocumentTypeId(p);
+            }
+
+            @Override
+            public Long getVersion() {
+                return CreateOrMergePatchDocumentTypeDto.this.getVersion();
+            }
+
+            @Override
+            public void setVersion(Long p) {
+                CreateOrMergePatchDocumentTypeDto.this.setVersion(p);
+            }
+
+            @Override
+            public String getCommandType() {
+                return CreateOrMergePatchDocumentTypeDto.this.getCommandType();
+            }
+
+            @Override
+            public void setCommandType(String commandType) {
+                 CreateOrMergePatchDocumentTypeDto.this.setCommandType(commandType);
+            }
+
+            @Override
+            public String getCommandId() {
+                return CreateOrMergePatchDocumentTypeDto.this.getCommandId();
+            }
+
+            @Override
+            public void setCommandId(String commandId) {
+                CreateOrMergePatchDocumentTypeDto.this.setCommandId(commandId);
+            }
+
+            @Override
+            public String getRequesterId() {
+                return CreateOrMergePatchDocumentTypeDto.this.getRequesterId();
+            }
+
+            @Override
+            public void setRequesterId(String requesterId) {
+                CreateOrMergePatchDocumentTypeDto.this.setRequesterId(requesterId);
+            }
+
+            @Override
+            public String getDescription() {
+                return CreateOrMergePatchDocumentTypeDto.this.getDescription();
+            }
+
+            @Override
+            public void setDescription(String p) {
+                CreateOrMergePatchDocumentTypeDto.this.setDescription(p);
+            }
+
+            @Override
+            public String getParentDocumentTypeId() {
+                return CreateOrMergePatchDocumentTypeDto.this.getParentDocumentTypeId();
+            }
+
+            @Override
+            public void setParentDocumentTypeId(String p) {
+                CreateOrMergePatchDocumentTypeDto.this.setParentDocumentTypeId(p);
+            }
+
+            @Override
+            public Boolean getActive() {
+                return CreateOrMergePatchDocumentTypeDto.this.getActive();
+            }
+
+            @Override
+            public void setActive(Boolean p) {
+                CreateOrMergePatchDocumentTypeDto.this.setActive(p);
+            }
+
+
+        };
     }
 
-    public void copyTo(AbstractDocumentTypeCommand.AbstractMergePatchDocumentType command)
-    {
-        copyTo((AbstractDocumentTypeCommand.AbstractCreateOrMergePatchDocumentType) command);
-        command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
-        command.setIsPropertyParentDocumentTypeIdRemoved(this.getIsPropertyParentDocumentTypeIdRemoved());
-        command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
+    protected DocumentTypeCommand.MergePatchDocumentType toMergePatchDocumentType() {
+        return new DocumentTypeCommand.MergePatchDocumentType() {
+            @Override
+            public String getDocumentTypeId() {
+                return CreateOrMergePatchDocumentTypeDto.this.getDocumentTypeId();
+            }
+
+            @Override
+            public void setDocumentTypeId(String p) {
+                CreateOrMergePatchDocumentTypeDto.this.setDocumentTypeId(p);
+            }
+
+            @Override
+            public Long getVersion() {
+                return CreateOrMergePatchDocumentTypeDto.this.getVersion();
+            }
+
+            @Override
+            public void setVersion(Long p) {
+                CreateOrMergePatchDocumentTypeDto.this.setVersion(p);
+            }
+
+            @Override
+            public String getCommandType() {
+                return CreateOrMergePatchDocumentTypeDto.this.getCommandType();
+            }
+
+            @Override
+            public void setCommandType(String commandType) {
+                 CreateOrMergePatchDocumentTypeDto.this.setCommandType(commandType);
+            }
+
+            @Override
+            public String getCommandId() {
+                return CreateOrMergePatchDocumentTypeDto.this.getCommandId();
+            }
+
+            @Override
+            public void setCommandId(String commandId) {
+                CreateOrMergePatchDocumentTypeDto.this.setCommandId(commandId);
+            }
+
+            @Override
+            public String getRequesterId() {
+                return CreateOrMergePatchDocumentTypeDto.this.getRequesterId();
+            }
+
+            @Override
+            public void setRequesterId(String requesterId) {
+                CreateOrMergePatchDocumentTypeDto.this.setRequesterId(requesterId);
+            }
+
+            @Override
+            public String getDescription() {
+                return CreateOrMergePatchDocumentTypeDto.this.getDescription();
+            }
+
+            @Override
+            public void setDescription(String p) {
+                CreateOrMergePatchDocumentTypeDto.this.setDescription(p);
+            }
+
+            @Override
+            public String getParentDocumentTypeId() {
+                return CreateOrMergePatchDocumentTypeDto.this.getParentDocumentTypeId();
+            }
+
+            @Override
+            public void setParentDocumentTypeId(String p) {
+                CreateOrMergePatchDocumentTypeDto.this.setParentDocumentTypeId(p);
+            }
+
+            @Override
+            public Boolean getActive() {
+                return CreateOrMergePatchDocumentTypeDto.this.getActive();
+            }
+
+            @Override
+            public void setActive(Boolean p) {
+                CreateOrMergePatchDocumentTypeDto.this.setActive(p);
+            }
+
+            @Override
+            public Boolean getIsPropertyDescriptionRemoved() {
+                return CreateOrMergePatchDocumentTypeDto.this.getIsPropertyDescriptionRemoved();
+            }
+
+            @Override
+            public void setIsPropertyDescriptionRemoved(Boolean removed) {
+                CreateOrMergePatchDocumentTypeDto.this.setIsPropertyDescriptionRemoved(removed);
+            }
+
+            @Override
+            public Boolean getIsPropertyParentDocumentTypeIdRemoved() {
+                return CreateOrMergePatchDocumentTypeDto.this.getIsPropertyParentDocumentTypeIdRemoved();
+            }
+
+            @Override
+            public void setIsPropertyParentDocumentTypeIdRemoved(Boolean removed) {
+                CreateOrMergePatchDocumentTypeDto.this.setIsPropertyParentDocumentTypeIdRemoved(removed);
+            }
+
+            @Override
+            public Boolean getIsPropertyActiveRemoved() {
+                return CreateOrMergePatchDocumentTypeDto.this.getIsPropertyActiveRemoved();
+            }
+
+            @Override
+            public void setIsPropertyActiveRemoved(Boolean removed) {
+                CreateOrMergePatchDocumentTypeDto.this.setIsPropertyActiveRemoved(removed);
+            }
+
+
+        };
     }
 
     public static class CreateDocumentTypeDto extends CreateOrMergePatchDocumentTypeDto
@@ -120,7 +297,7 @@ public class CreateOrMergePatchDocumentTypeDto extends AbstractDocumentTypeComma
         }
         public DocumentTypeCommand.CreateDocumentType toCreateDocumentType()
         {
-            return (DocumentTypeCommand.CreateDocumentType) toCommand();
+            return super.toCreateDocumentType();
         }
 
     }
@@ -133,7 +310,7 @@ public class CreateOrMergePatchDocumentTypeDto extends AbstractDocumentTypeComma
         }
         public DocumentTypeCommand.MergePatchDocumentType toMergePatchDocumentType()
         {
-            return (DocumentTypeCommand.MergePatchDocumentType) toCommand();
+            return super.toMergePatchDocumentType();
         }
 
     }

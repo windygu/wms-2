@@ -21,31 +21,57 @@ public abstract class AbstractMovementTypeApplicationService implements Movement
         return stateQueryRepository;
     }
 
-    private AggregateEventListener<MovementTypeAggregate, MovementTypeState> aggregateEventListener;
-
-    public AggregateEventListener<MovementTypeAggregate, MovementTypeState> getAggregateEventListener() {
-        return aggregateEventListener;
-    }
-
-    public void setAggregateEventListener(AggregateEventListener<MovementTypeAggregate, MovementTypeState> eventListener) {
-        this.aggregateEventListener = eventListener;
-    }
-
     public AbstractMovementTypeApplicationService(MovementTypeStateRepository stateRepository, MovementTypeStateQueryRepository stateQueryRepository) {
         this.stateRepository = stateRepository;
         this.stateQueryRepository = stateQueryRepository;
     }
 
     public void when(MovementTypeCommand.CreateMovementType c) {
-        update(c, ar -> ar.create(c));
+        update(c, s -> {
+        // //////////////////////////
+        throwOnConcurrencyConflict(s, c);
+        s.setDescription(c.getDescription());
+        s.setActive(c.getActive());
+        s.setDeleted(false);
+        s.setCreatedBy(c.getRequesterId());
+        s.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        s.setCommandId(c.getCommandId());
+        // //////////////////////////
+        });
     }
 
     public void when(MovementTypeCommand.MergePatchMovementType c) {
-        update(c, ar -> ar.mergePatch(c));
+        update(c, s -> {
+        // //////////////////////////////////
+        throwOnConcurrencyConflict(s, c);
+        if (c.getDescription() == null) {
+            if (c.getIsPropertyDescriptionRemoved() != null && c.getIsPropertyDescriptionRemoved()) {
+                s.setDescription(null);
+            }
+        } else {
+            s.setDescription(c.getDescription());
+        }
+        if (c.getActive() == null) {
+            if (c.getIsPropertyActiveRemoved() != null && c.getIsPropertyActiveRemoved()) {
+                s.setActive(null);
+            }
+        } else {
+            s.setActive(c.getActive());
+        }
+        s.setUpdatedBy(c.getRequesterId());
+        s.setUpdatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        s.setCommandId(c.getCommandId());
+        // //////////////////////////////////
+        });
     }
 
     public void when(MovementTypeCommand.DeleteMovementType c) {
-        update(c, ar -> ar.delete(c));
+        update(c, s -> {
+        throwOnConcurrencyConflict(s, c);
+        // ///////////////////////////////////
+        //todo
+        // ///////////////////////////////////
+        });
     }
 
     public MovementTypeState get(String id) {
@@ -77,18 +103,12 @@ public abstract class AbstractMovementTypeApplicationService implements Movement
         return getStateQueryRepository().getCount(filter);
     }
 
-
-    public MovementTypeAggregate getMovementTypeAggregate(MovementTypeState state)
-    {
-        return new AbstractMovementTypeAggregate.SimpleMovementTypeAggregate(state);
-    }
-
     public EventStoreAggregateId toEventStoreAggregateId(String aggregateId)
     {
         return new EventStoreAggregateId.SimpleEventStoreAggregateId(aggregateId);
     }
 
-    protected void update(MovementTypeCommand c, Consumer<MovementTypeAggregate> action)
+    protected void update(MovementTypeCommand c, Consumer<MovementTypeState> action)
     {
         String aggregateId = c.getMovementTypeId();
         MovementTypeState state = getStateRepository().get(aggregateId, false);
@@ -97,30 +117,14 @@ public abstract class AbstractMovementTypeApplicationService implements Movement
         boolean repeated = isRepeatedCommand(c, eventStoreAggregateId, state);
         if (repeated) { return; }
 
-        MovementTypeAggregate aggregate = getMovementTypeAggregate(state);
-        aggregate.throwOnInvalidStateTransition(c);
-        action.accept(aggregate);
-        persist(eventStoreAggregateId, c.getVersion(), aggregate, state); // State version may be null!
+        MovementTypeCommand.throwOnInvalidStateTransition(state, c);
+        action.accept(state);
+        persist(eventStoreAggregateId, c.getVersion(), state); // State version may be null!
 
     }
 
-    private void persist(EventStoreAggregateId eventStoreAggregateId, long version, MovementTypeAggregate aggregate, MovementTypeState state) {
+    private void persist(EventStoreAggregateId eventStoreAggregateId, long version, MovementTypeState state) {
         getStateRepository().save(state);
-        if (aggregateEventListener != null) {
-            aggregateEventListener.eventAppended(new AggregateEvent<>(aggregate, state, aggregate.getChanges()));
-        }
-    }
-
-    public void initialize(MovementTypeStateEvent.MovementTypeStateCreated stateCreated) {
-        String aggregateId = stateCreated.getStateEventId().getMovementTypeId();
-        MovementTypeState state = new AbstractMovementTypeState.SimpleMovementTypeState();
-        state.setMovementTypeId(aggregateId);
-
-        MovementTypeAggregate aggregate = getMovementTypeAggregate(state);
-        ((AbstractMovementTypeAggregate) aggregate).apply(stateCreated);
-
-        EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getStateEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(MovementTypeCommand command, EventStoreAggregateId eventStoreAggregateId, MovementTypeState state)
@@ -135,6 +139,15 @@ public abstract class AbstractMovementTypeApplicationService implements Movement
             }
         }
         return repeated;
+    }
+
+    protected static void throwOnConcurrencyConflict(MovementTypeState s, MovementTypeCommand c) {
+        Long stateVersion = s.getVersion();
+        Long commandVersion = c.getVersion();
+        if (commandVersion == null) { commandVersion = MovementTypeState.VERSION_NULL; }
+        if (!(stateVersion == null && commandVersion.equals(MovementTypeState.VERSION_NULL)) && !commandVersion.equals(stateVersion)) {
+            throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and command version (%2$s)", stateVersion, commandVersion);
+        }
     }
 
     public static class SimpleMovementTypeApplicationService extends AbstractMovementTypeApplicationService 

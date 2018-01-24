@@ -31,13 +31,4 @@ public abstract class AbstractDocumentTypeCommandDto extends AbstractCommand
     }
 
 
-    public void copyTo(AbstractDocumentTypeCommand command)
-    {
-        command.setDocumentTypeId(this.getDocumentTypeId());
-        command.setVersion(this.getVersion());
-        
-        command.setRequesterId(this.getRequesterId());
-        command.setCommandId(this.getCommandId());
-    }
-
 }

@@ -21,31 +21,73 @@ public abstract class AbstractDamageTypeApplicationService implements DamageType
         return stateQueryRepository;
     }
 
-    private AggregateEventListener<DamageTypeAggregate, DamageTypeState> aggregateEventListener;
-
-    public AggregateEventListener<DamageTypeAggregate, DamageTypeState> getAggregateEventListener() {
-        return aggregateEventListener;
-    }
-
-    public void setAggregateEventListener(AggregateEventListener<DamageTypeAggregate, DamageTypeState> eventListener) {
-        this.aggregateEventListener = eventListener;
-    }
-
     public AbstractDamageTypeApplicationService(DamageTypeStateRepository stateRepository, DamageTypeStateQueryRepository stateQueryRepository) {
         this.stateRepository = stateRepository;
         this.stateQueryRepository = stateQueryRepository;
     }
 
     public void when(DamageTypeCommand.CreateDamageType c) {
-        update(c, ar -> ar.create(c));
+        update(c, s -> {
+        // //////////////////////////
+        throwOnConcurrencyConflict(s, c);
+        s.setDescription(c.getDescription());
+        s.setSequenceId(c.getSequenceId());
+        s.setDefaultHandlingMethodId(c.getDefaultHandlingMethodId());
+        s.setActive(c.getActive());
+        s.setDeleted(false);
+        s.setCreatedBy(c.getRequesterId());
+        s.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        s.setCommandId(c.getCommandId());
+        // //////////////////////////
+        });
     }
 
     public void when(DamageTypeCommand.MergePatchDamageType c) {
-        update(c, ar -> ar.mergePatch(c));
+        update(c, s -> {
+        // //////////////////////////////////
+        throwOnConcurrencyConflict(s, c);
+        if (c.getDescription() == null) {
+            if (c.getIsPropertyDescriptionRemoved() != null && c.getIsPropertyDescriptionRemoved()) {
+                s.setDescription(null);
+            }
+        } else {
+            s.setDescription(c.getDescription());
+        }
+        if (c.getSequenceId() == null) {
+            if (c.getIsPropertySequenceIdRemoved() != null && c.getIsPropertySequenceIdRemoved()) {
+                s.setSequenceId(null);
+            }
+        } else {
+            s.setSequenceId(c.getSequenceId());
+        }
+        if (c.getDefaultHandlingMethodId() == null) {
+            if (c.getIsPropertyDefaultHandlingMethodIdRemoved() != null && c.getIsPropertyDefaultHandlingMethodIdRemoved()) {
+                s.setDefaultHandlingMethodId(null);
+            }
+        } else {
+            s.setDefaultHandlingMethodId(c.getDefaultHandlingMethodId());
+        }
+        if (c.getActive() == null) {
+            if (c.getIsPropertyActiveRemoved() != null && c.getIsPropertyActiveRemoved()) {
+                s.setActive(null);
+            }
+        } else {
+            s.setActive(c.getActive());
+        }
+        s.setUpdatedBy(c.getRequesterId());
+        s.setUpdatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        s.setCommandId(c.getCommandId());
+        // //////////////////////////////////
+        });
     }
 
     public void when(DamageTypeCommand.DeleteDamageType c) {
-        update(c, ar -> ar.delete(c));
+        update(c, s -> {
+        throwOnConcurrencyConflict(s, c);
+        // ///////////////////////////////////
+        //todo
+        // ///////////////////////////////////
+        });
     }
 
     public DamageTypeState get(String id) {
@@ -77,18 +119,12 @@ public abstract class AbstractDamageTypeApplicationService implements DamageType
         return getStateQueryRepository().getCount(filter);
     }
 
-
-    public DamageTypeAggregate getDamageTypeAggregate(DamageTypeState state)
-    {
-        return new AbstractDamageTypeAggregate.SimpleDamageTypeAggregate(state);
-    }
-
     public EventStoreAggregateId toEventStoreAggregateId(String aggregateId)
     {
         return new EventStoreAggregateId.SimpleEventStoreAggregateId(aggregateId);
     }
 
-    protected void update(DamageTypeCommand c, Consumer<DamageTypeAggregate> action)
+    protected void update(DamageTypeCommand c, Consumer<DamageTypeState> action)
     {
         String aggregateId = c.getDamageTypeId();
         DamageTypeState state = getStateRepository().get(aggregateId, false);
@@ -97,30 +133,14 @@ public abstract class AbstractDamageTypeApplicationService implements DamageType
         boolean repeated = isRepeatedCommand(c, eventStoreAggregateId, state);
         if (repeated) { return; }
 
-        DamageTypeAggregate aggregate = getDamageTypeAggregate(state);
-        aggregate.throwOnInvalidStateTransition(c);
-        action.accept(aggregate);
-        persist(eventStoreAggregateId, c.getVersion(), aggregate, state); // State version may be null!
+        DamageTypeCommand.throwOnInvalidStateTransition(state, c);
+        action.accept(state);
+        persist(eventStoreAggregateId, c.getVersion(), state); // State version may be null!
 
     }
 
-    private void persist(EventStoreAggregateId eventStoreAggregateId, long version, DamageTypeAggregate aggregate, DamageTypeState state) {
+    private void persist(EventStoreAggregateId eventStoreAggregateId, long version, DamageTypeState state) {
         getStateRepository().save(state);
-        if (aggregateEventListener != null) {
-            aggregateEventListener.eventAppended(new AggregateEvent<>(aggregate, state, aggregate.getChanges()));
-        }
-    }
-
-    public void initialize(DamageTypeStateEvent.DamageTypeStateCreated stateCreated) {
-        String aggregateId = stateCreated.getStateEventId().getDamageTypeId();
-        DamageTypeState state = new AbstractDamageTypeState.SimpleDamageTypeState();
-        state.setDamageTypeId(aggregateId);
-
-        DamageTypeAggregate aggregate = getDamageTypeAggregate(state);
-        ((AbstractDamageTypeAggregate) aggregate).apply(stateCreated);
-
-        EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getStateEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(DamageTypeCommand command, EventStoreAggregateId eventStoreAggregateId, DamageTypeState state)
@@ -135,6 +155,15 @@ public abstract class AbstractDamageTypeApplicationService implements DamageType
             }
         }
         return repeated;
+    }
+
+    protected static void throwOnConcurrencyConflict(DamageTypeState s, DamageTypeCommand c) {
+        Long stateVersion = s.getVersion();
+        Long commandVersion = c.getVersion();
+        if (commandVersion == null) { commandVersion = DamageTypeState.VERSION_NULL; }
+        if (!(stateVersion == null && commandVersion.equals(DamageTypeState.VERSION_NULL)) && !commandVersion.equals(stateVersion)) {
+            throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and command version (%2$s)", stateVersion, commandVersion);
+        }
     }
 
     public static class SimpleDamageTypeApplicationService extends AbstractDamageTypeApplicationService 

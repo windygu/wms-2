@@ -14,8 +14,6 @@ namespace Dddml.Wms.Domain.UomType
 {
 	public abstract partial class UomTypeApplicationServiceBase : IUomTypeApplicationService, IApplicationService
 	{
-		protected abstract IEventStore EventStore { get; }
-
 		protected abstract IUomTypeStateRepository StateRepository { get; }
 
 		protected abstract IUomTypeStateQueryRepository StateQueryRepository { get; }
@@ -50,7 +48,7 @@ namespace Dddml.Wms.Domain.UomType
 
         private void Persist(IEventStoreAggregateId eventStoreAggregateId, IUomTypeAggregate aggregate, IUomTypeState state)
         {
-            EventStore.AppendEvents(eventStoreAggregateId, ((IUomTypeStateProperties)state).Version, aggregate.Changes, () => { StateRepository.Save(state); });
+            StateRepository.Save(state);
             if (AggregateEventListener != null) 
             {
                 AggregateEventListener.EventAppended(new AggregateEvent<IUomTypeAggregate, IUomTypeState>(aggregate, state, aggregate.Changes));
@@ -72,10 +70,9 @@ namespace Dddml.Wms.Domain.UomType
 		protected bool IsRepeatedCommand(IUomTypeCommand command, IEventStoreAggregateId eventStoreAggregateId, IUomTypeState state)
 		{
 			bool repeated = false;
-			if (((IUomTypeStateProperties)state).Version > command.AggregateVersion)
+			if (((IUomTypeStateProperties)state).Version == command.AggregateVersion + 1)
 			{
-				var lastEvent = EventStore.FindLastEvent(typeof(IUomTypeStateEvent), eventStoreAggregateId, command.AggregateVersion);
-				if (lastEvent != null && lastEvent.CommandId == command.CommandId)
+				if (state.CommandId == command.CommandId)
 				{
 					repeated = true;
 				}
@@ -144,26 +141,6 @@ namespace Dddml.Wms.Domain.UomType
 		{
             return StateQueryRepository.GetCount(filter);
 		}
-
-	    public virtual IUomTypeStateEvent GetStateEvent(string uomTypeId, long version)
-        {
-            var e = (IUomTypeStateEvent)EventStore.GetStateEvent(ToEventStoreAggregateId(uomTypeId), version);
-            if (e != null)
-            {
-                e.ReadOnly = true;
-            }
-            else if (version == -1)
-            {
-                return GetStateEvent(uomTypeId, 0);
-            }
-            return e;
-        }
-
-        public virtual IUomTypeState GetHistoryState(string uomTypeId, long version)
-        {
-            var eventStream = EventStore.LoadEventStream(typeof(IUomTypeStateEvent), ToEventStoreAggregateId(uomTypeId), version - 1);
-            return new UomTypeState(eventStream.Events);
-        }
 
 
 		public abstract IUomTypeAggregate GetUomTypeAggregate(IUomTypeState state);

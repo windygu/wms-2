@@ -128,7 +128,7 @@ public class UomTypeResource {
                        @QueryParam("requesterId") String requesterId) {
         try {
 
-            UomTypeCommand.DeleteUomType deleteCmd = new AbstractUomTypeCommand.SimpleDeleteUomType();
+            UomTypeCommand.DeleteUomType deleteCmd = new DeleteUomTypeDto().toDeleteUomType();;
 
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
@@ -150,38 +150,6 @@ public class UomTypeResource {
             return filtering;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
-    }
-
-    @Path("{id}/_stateEvents/{version}") @GET
-    public UomTypeStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
-        try {
-
-            String idObj = id;
-            UomTypeStateEventDtoConverter dtoConverter = getUomTypeStateEventDtoConverter();
-            return dtoConverter.toUomTypeStateEventDto((AbstractUomTypeStateEvent) uomTypeApplicationService.getStateEvent(idObj, version));
-
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
-    }
-
-    @Path("{id}/_historyStates/{version}") @GET
-    public UomTypeStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version, @QueryParam("fields") String fields) {
-        try {
-
-            String idObj = id;
-            UomTypeStateDto.DtoConverter dtoConverter = new UomTypeStateDto.DtoConverter();
-            if (StringHelper.isNullOrEmpty(fields)) {
-                dtoConverter.setAllFieldsReturned(true);
-            } else {
-                dtoConverter.setReturnedFieldsString(fields);
-            }
-            return dtoConverter.toUomTypeStateDto(uomTypeApplicationService.getHistoryState(idObj, version));
-
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
-    }
-
-
-    protected  UomTypeStateEventDtoConverter getUomTypeStateEventDtoConverter() {
-        return new UomTypeStateEventDtoConverter();
     }
 
     protected String getQueryOrderSeparator() {

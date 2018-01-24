@@ -374,6 +374,19 @@ namespace Dddml.Wms.Domain.UomType
             set { this.StateReadOnly = value; }
         }
 
+        public virtual string CommandId
+        {
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("CommandId"))
+                {
+                    return _state.CommandId; 
+                }
+                return null;
+            }
+            set { _state.CommandId = value; }
+        }
+
 		void IUomTypeState.When(IUomTypeStateMergePatched e)
 		{
             throw new NotSupportedException();

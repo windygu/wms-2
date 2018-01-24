@@ -20,6 +20,7 @@
     <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
 
     <property name="UpdatedAt" column="UpdatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
 
 
   </class>

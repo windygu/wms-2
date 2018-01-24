@@ -21,31 +21,65 @@ public abstract class AbstractDamageHandlingMethodApplicationService implements 
         return stateQueryRepository;
     }
 
-    private AggregateEventListener<DamageHandlingMethodAggregate, DamageHandlingMethodState> aggregateEventListener;
-
-    public AggregateEventListener<DamageHandlingMethodAggregate, DamageHandlingMethodState> getAggregateEventListener() {
-        return aggregateEventListener;
-    }
-
-    public void setAggregateEventListener(AggregateEventListener<DamageHandlingMethodAggregate, DamageHandlingMethodState> eventListener) {
-        this.aggregateEventListener = eventListener;
-    }
-
     public AbstractDamageHandlingMethodApplicationService(DamageHandlingMethodStateRepository stateRepository, DamageHandlingMethodStateQueryRepository stateQueryRepository) {
         this.stateRepository = stateRepository;
         this.stateQueryRepository = stateQueryRepository;
     }
 
     public void when(DamageHandlingMethodCommand.CreateDamageHandlingMethod c) {
-        update(c, ar -> ar.create(c));
+        update(c, s -> {
+        // //////////////////////////
+        throwOnConcurrencyConflict(s, c);
+        s.setDescription(c.getDescription());
+        s.setSequenceId(c.getSequenceId());
+        s.setActive(c.getActive());
+        s.setDeleted(false);
+        s.setCreatedBy(c.getRequesterId());
+        s.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        s.setCommandId(c.getCommandId());
+        // //////////////////////////
+        });
     }
 
     public void when(DamageHandlingMethodCommand.MergePatchDamageHandlingMethod c) {
-        update(c, ar -> ar.mergePatch(c));
+        update(c, s -> {
+        // //////////////////////////////////
+        throwOnConcurrencyConflict(s, c);
+        if (c.getDescription() == null) {
+            if (c.getIsPropertyDescriptionRemoved() != null && c.getIsPropertyDescriptionRemoved()) {
+                s.setDescription(null);
+            }
+        } else {
+            s.setDescription(c.getDescription());
+        }
+        if (c.getSequenceId() == null) {
+            if (c.getIsPropertySequenceIdRemoved() != null && c.getIsPropertySequenceIdRemoved()) {
+                s.setSequenceId(null);
+            }
+        } else {
+            s.setSequenceId(c.getSequenceId());
+        }
+        if (c.getActive() == null) {
+            if (c.getIsPropertyActiveRemoved() != null && c.getIsPropertyActiveRemoved()) {
+                s.setActive(null);
+            }
+        } else {
+            s.setActive(c.getActive());
+        }
+        s.setUpdatedBy(c.getRequesterId());
+        s.setUpdatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        s.setCommandId(c.getCommandId());
+        // //////////////////////////////////
+        });
     }
 
     public void when(DamageHandlingMethodCommand.DeleteDamageHandlingMethod c) {
-        update(c, ar -> ar.delete(c));
+        update(c, s -> {
+        throwOnConcurrencyConflict(s, c);
+        // ///////////////////////////////////
+        //todo
+        // ///////////////////////////////////
+        });
     }
 
     public DamageHandlingMethodState get(String id) {
@@ -77,18 +111,12 @@ public abstract class AbstractDamageHandlingMethodApplicationService implements 
         return getStateQueryRepository().getCount(filter);
     }
 
-
-    public DamageHandlingMethodAggregate getDamageHandlingMethodAggregate(DamageHandlingMethodState state)
-    {
-        return new AbstractDamageHandlingMethodAggregate.SimpleDamageHandlingMethodAggregate(state);
-    }
-
     public EventStoreAggregateId toEventStoreAggregateId(String aggregateId)
     {
         return new EventStoreAggregateId.SimpleEventStoreAggregateId(aggregateId);
     }
 
-    protected void update(DamageHandlingMethodCommand c, Consumer<DamageHandlingMethodAggregate> action)
+    protected void update(DamageHandlingMethodCommand c, Consumer<DamageHandlingMethodState> action)
     {
         String aggregateId = c.getDamageHandlingMethodId();
         DamageHandlingMethodState state = getStateRepository().get(aggregateId, false);
@@ -97,30 +125,14 @@ public abstract class AbstractDamageHandlingMethodApplicationService implements 
         boolean repeated = isRepeatedCommand(c, eventStoreAggregateId, state);
         if (repeated) { return; }
 
-        DamageHandlingMethodAggregate aggregate = getDamageHandlingMethodAggregate(state);
-        aggregate.throwOnInvalidStateTransition(c);
-        action.accept(aggregate);
-        persist(eventStoreAggregateId, c.getVersion(), aggregate, state); // State version may be null!
+        DamageHandlingMethodCommand.throwOnInvalidStateTransition(state, c);
+        action.accept(state);
+        persist(eventStoreAggregateId, c.getVersion(), state); // State version may be null!
 
     }
 
-    private void persist(EventStoreAggregateId eventStoreAggregateId, long version, DamageHandlingMethodAggregate aggregate, DamageHandlingMethodState state) {
+    private void persist(EventStoreAggregateId eventStoreAggregateId, long version, DamageHandlingMethodState state) {
         getStateRepository().save(state);
-        if (aggregateEventListener != null) {
-            aggregateEventListener.eventAppended(new AggregateEvent<>(aggregate, state, aggregate.getChanges()));
-        }
-    }
-
-    public void initialize(DamageHandlingMethodStateEvent.DamageHandlingMethodStateCreated stateCreated) {
-        String aggregateId = stateCreated.getStateEventId().getDamageHandlingMethodId();
-        DamageHandlingMethodState state = new AbstractDamageHandlingMethodState.SimpleDamageHandlingMethodState();
-        state.setDamageHandlingMethodId(aggregateId);
-
-        DamageHandlingMethodAggregate aggregate = getDamageHandlingMethodAggregate(state);
-        ((AbstractDamageHandlingMethodAggregate) aggregate).apply(stateCreated);
-
-        EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getStateEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(DamageHandlingMethodCommand command, EventStoreAggregateId eventStoreAggregateId, DamageHandlingMethodState state)
@@ -135,6 +147,15 @@ public abstract class AbstractDamageHandlingMethodApplicationService implements 
             }
         }
         return repeated;
+    }
+
+    protected static void throwOnConcurrencyConflict(DamageHandlingMethodState s, DamageHandlingMethodCommand c) {
+        Long stateVersion = s.getVersion();
+        Long commandVersion = c.getVersion();
+        if (commandVersion == null) { commandVersion = DamageHandlingMethodState.VERSION_NULL; }
+        if (!(stateVersion == null && commandVersion.equals(DamageHandlingMethodState.VERSION_NULL)) && !commandVersion.equals(stateVersion)) {
+            throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and command version (%2$s)", stateVersion, commandVersion);
+        }
     }
 
     public static class SimpleDamageHandlingMethodApplicationService extends AbstractDamageHandlingMethodApplicationService 

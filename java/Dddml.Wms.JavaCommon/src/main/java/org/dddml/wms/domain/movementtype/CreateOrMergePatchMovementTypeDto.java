@@ -53,37 +53,186 @@ public class CreateOrMergePatchMovementTypeDto extends AbstractMovementTypeComma
         this.isPropertyActiveRemoved = removed;
     }
 
-    public void copyTo(AbstractMovementTypeCommand.AbstractCreateOrMergePatchMovementType command)
-    {
-        ((AbstractMovementTypeCommandDto) this).copyTo(command);
-        command.setDescription(this.getDescription());
-        command.setActive(this.getActive());
-    }
-
     public MovementTypeCommand toCommand()
     {
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
-            AbstractMovementTypeCommand.SimpleCreateMovementType command = new AbstractMovementTypeCommand.SimpleCreateMovementType();
-            copyTo((AbstractMovementTypeCommand.AbstractCreateMovementType) command);
-            return command;
+            return toCreateMovementType();
         } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {
-            AbstractMovementTypeCommand.SimpleMergePatchMovementType command = new AbstractMovementTypeCommand.SimpleMergePatchMovementType();
-            copyTo((AbstractMovementTypeCommand.SimpleMergePatchMovementType) command);
-            return command;
+            return toMergePatchMovementType();
         } 
         throw new IllegalStateException("Unknown command type:" + getCommandType());
     }
 
-    public void copyTo(AbstractMovementTypeCommand.AbstractCreateMovementType command)
-    {
-        copyTo((AbstractMovementTypeCommand.AbstractCreateOrMergePatchMovementType) command);
+    protected MovementTypeCommand.CreateMovementType toCreateMovementType() {
+        return new MovementTypeCommand.CreateMovementType() {
+            @Override
+            public String getMovementTypeId() {
+                return CreateOrMergePatchMovementTypeDto.this.getMovementTypeId();
+            }
+
+            @Override
+            public void setMovementTypeId(String p) {
+                CreateOrMergePatchMovementTypeDto.this.setMovementTypeId(p);
+            }
+
+            @Override
+            public Long getVersion() {
+                return CreateOrMergePatchMovementTypeDto.this.getVersion();
+            }
+
+            @Override
+            public void setVersion(Long p) {
+                CreateOrMergePatchMovementTypeDto.this.setVersion(p);
+            }
+
+            @Override
+            public String getCommandType() {
+                return CreateOrMergePatchMovementTypeDto.this.getCommandType();
+            }
+
+            @Override
+            public void setCommandType(String commandType) {
+                 CreateOrMergePatchMovementTypeDto.this.setCommandType(commandType);
+            }
+
+            @Override
+            public String getCommandId() {
+                return CreateOrMergePatchMovementTypeDto.this.getCommandId();
+            }
+
+            @Override
+            public void setCommandId(String commandId) {
+                CreateOrMergePatchMovementTypeDto.this.setCommandId(commandId);
+            }
+
+            @Override
+            public String getRequesterId() {
+                return CreateOrMergePatchMovementTypeDto.this.getRequesterId();
+            }
+
+            @Override
+            public void setRequesterId(String requesterId) {
+                CreateOrMergePatchMovementTypeDto.this.setRequesterId(requesterId);
+            }
+
+            @Override
+            public String getDescription() {
+                return CreateOrMergePatchMovementTypeDto.this.getDescription();
+            }
+
+            @Override
+            public void setDescription(String p) {
+                CreateOrMergePatchMovementTypeDto.this.setDescription(p);
+            }
+
+            @Override
+            public Boolean getActive() {
+                return CreateOrMergePatchMovementTypeDto.this.getActive();
+            }
+
+            @Override
+            public void setActive(Boolean p) {
+                CreateOrMergePatchMovementTypeDto.this.setActive(p);
+            }
+
+
+        };
     }
 
-    public void copyTo(AbstractMovementTypeCommand.AbstractMergePatchMovementType command)
-    {
-        copyTo((AbstractMovementTypeCommand.AbstractCreateOrMergePatchMovementType) command);
-        command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
-        command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
+    protected MovementTypeCommand.MergePatchMovementType toMergePatchMovementType() {
+        return new MovementTypeCommand.MergePatchMovementType() {
+            @Override
+            public String getMovementTypeId() {
+                return CreateOrMergePatchMovementTypeDto.this.getMovementTypeId();
+            }
+
+            @Override
+            public void setMovementTypeId(String p) {
+                CreateOrMergePatchMovementTypeDto.this.setMovementTypeId(p);
+            }
+
+            @Override
+            public Long getVersion() {
+                return CreateOrMergePatchMovementTypeDto.this.getVersion();
+            }
+
+            @Override
+            public void setVersion(Long p) {
+                CreateOrMergePatchMovementTypeDto.this.setVersion(p);
+            }
+
+            @Override
+            public String getCommandType() {
+                return CreateOrMergePatchMovementTypeDto.this.getCommandType();
+            }
+
+            @Override
+            public void setCommandType(String commandType) {
+                 CreateOrMergePatchMovementTypeDto.this.setCommandType(commandType);
+            }
+
+            @Override
+            public String getCommandId() {
+                return CreateOrMergePatchMovementTypeDto.this.getCommandId();
+            }
+
+            @Override
+            public void setCommandId(String commandId) {
+                CreateOrMergePatchMovementTypeDto.this.setCommandId(commandId);
+            }
+
+            @Override
+            public String getRequesterId() {
+                return CreateOrMergePatchMovementTypeDto.this.getRequesterId();
+            }
+
+            @Override
+            public void setRequesterId(String requesterId) {
+                CreateOrMergePatchMovementTypeDto.this.setRequesterId(requesterId);
+            }
+
+            @Override
+            public String getDescription() {
+                return CreateOrMergePatchMovementTypeDto.this.getDescription();
+            }
+
+            @Override
+            public void setDescription(String p) {
+                CreateOrMergePatchMovementTypeDto.this.setDescription(p);
+            }
+
+            @Override
+            public Boolean getActive() {
+                return CreateOrMergePatchMovementTypeDto.this.getActive();
+            }
+
+            @Override
+            public void setActive(Boolean p) {
+                CreateOrMergePatchMovementTypeDto.this.setActive(p);
+            }
+
+            @Override
+            public Boolean getIsPropertyDescriptionRemoved() {
+                return CreateOrMergePatchMovementTypeDto.this.getIsPropertyDescriptionRemoved();
+            }
+
+            @Override
+            public void setIsPropertyDescriptionRemoved(Boolean removed) {
+                CreateOrMergePatchMovementTypeDto.this.setIsPropertyDescriptionRemoved(removed);
+            }
+
+            @Override
+            public Boolean getIsPropertyActiveRemoved() {
+                return CreateOrMergePatchMovementTypeDto.this.getIsPropertyActiveRemoved();
+            }
+
+            @Override
+            public void setIsPropertyActiveRemoved(Boolean removed) {
+                CreateOrMergePatchMovementTypeDto.this.setIsPropertyActiveRemoved(removed);
+            }
+
+
+        };
     }
 
     public static class CreateMovementTypeDto extends CreateOrMergePatchMovementTypeDto
@@ -94,7 +243,7 @@ public class CreateOrMergePatchMovementTypeDto extends AbstractMovementTypeComma
         }
         public MovementTypeCommand.CreateMovementType toCreateMovementType()
         {
-            return (MovementTypeCommand.CreateMovementType) toCommand();
+            return super.toCreateMovementType();
         }
 
     }
@@ -107,7 +256,7 @@ public class CreateOrMergePatchMovementTypeDto extends AbstractMovementTypeComma
         }
         public MovementTypeCommand.MergePatchMovementType toMergePatchMovementType()
         {
-            return (MovementTypeCommand.MergePatchMovementType) toCommand();
+            return super.toMergePatchMovementType();
         }
 
     }

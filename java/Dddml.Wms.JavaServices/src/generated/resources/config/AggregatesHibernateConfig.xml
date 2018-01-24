@@ -758,12 +758,7 @@
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="uomTypeEventStore" class="org.dddml.wms.domain.uomtype.hibernate.HibernateUomTypeEventStore">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-  </bean>
-
   <bean id="uomTypeApplicationService" class="org.dddml.wms.domain.uomtype.AbstractUomTypeApplicationService$SimpleUomTypeApplicationService">
-    <constructor-arg ref="uomTypeEventStore"/>
     <constructor-arg ref="uomTypeStateRepository"/>
     <constructor-arg ref="uomTypeStateQueryRepository"/>
   </bean>

@@ -4,7 +4,6 @@ import java.util.Set;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.damagetype.DamageTypeStateEvent.*;
 
 public interface DamageTypeState
 {
@@ -65,14 +64,6 @@ public interface DamageTypeState
 
     void setCommandId(String commandId);
 
-
-    void mutate(Event e);
-
-    void when(DamageTypeStateEvent.DamageTypeStateCreated e);
-
-    void when(DamageTypeStateEvent.DamageTypeStateMergePatched e);
-
-    void when(DamageTypeStateEvent.DamageTypeStateDeleted e);
     
 }
 

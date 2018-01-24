@@ -45,18 +45,13 @@ public class HibernateUomTypeStateRepository implements UomTypeStateRepository
             state = new AbstractUomTypeState.SimpleUomTypeState();
             state.setUomTypeId(id);
         }
-        if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (UomTypeState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{UomTypeState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
-        }
         return state;
     }
 
+    @Transactional
     public void save(UomTypeState state)
     {
         UomTypeState s = state;
-        if (getReadOnlyProxyGenerator() != null) {
-            s = (UomTypeState) getReadOnlyProxyGenerator().getTarget(state);
-        }
         if(s.getVersion() == null) {
             getCurrentSession().save(s);
         }else {

@@ -155,39 +155,6 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = UomTypesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
-        [Route("{id}/_stateEvents/{version}")]
-        [HttpGet]
-        public UomTypeStateCreatedOrMergePatchedOrDeletedDto GetStateEvent(string id, long version)
-        {
-          try {
-            var idObj = id;
-            var conv = new UomTypeStateEventDtoConverter();
-            var se = _uomTypeApplicationService.GetStateEvent(idObj, version);
-            return se == null ? null : conv.ToUomTypeStateEventDto(se);
-          } catch (Exception ex) { var response = UomTypesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
-        }
-
-        [Route("{id}/_historyStates/{version}")]
-        [HttpGet]
-        public IUomTypeStateDto GetHistoryState(string id, long version, string fields = null)
-        {
-          try {
-            var idObj = id;
-            var state = _uomTypeApplicationService.GetHistoryState(idObj, version);
-            if (state == null) { return null; }
-            var stateDto = new UomTypeStateDtoWrapper(state);
-            if (String.IsNullOrWhiteSpace(fields))
-            {
-                stateDto.AllFieldsReturned = true;
-            }
-            else
-            {
-                stateDto.ReturnedFieldsString = fields;
-            }
-            return stateDto;
-          } catch (Exception ex) { var response = UomTypesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
-        }
-
 
 		// /////////////////////////////////////////////////
 

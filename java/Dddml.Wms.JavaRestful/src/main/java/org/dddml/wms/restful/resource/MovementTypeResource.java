@@ -128,7 +128,7 @@ public class MovementTypeResource {
                        @QueryParam("requesterId") String requesterId) {
         try {
 
-            MovementTypeCommand.DeleteMovementType deleteCmd = new AbstractMovementTypeCommand.SimpleDeleteMovementType();
+            MovementTypeCommand.DeleteMovementType deleteCmd = new DeleteMovementTypeDto().toDeleteMovementType();;
 
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
@@ -150,11 +150,6 @@ public class MovementTypeResource {
             return filtering;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
-    }
-
-
-    protected  MovementTypeStateEventDtoConverter getMovementTypeStateEventDtoConverter() {
-        return new MovementTypeStateEventDtoConverter();
     }
 
     protected String getQueryOrderSeparator() {

@@ -30,4 +30,7 @@ aggregates:
         
     reservedProperties: {}
     
+    metadata:
+      AbsolutelyNoEventSourcing: true
+    
     

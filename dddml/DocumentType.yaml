@@ -22,7 +22,7 @@ aggregates:
           referenceType: DocumentType
           
       metadata:
-        NoEventSourcing: true
+        AbsolutelyNoEventSourcing: true
           
 
           

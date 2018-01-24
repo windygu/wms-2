@@ -11,9 +11,59 @@ public class DeleteMovementTypeDto extends AbstractMovementTypeCommandDto
 
     public MovementTypeCommand.DeleteMovementType toDeleteMovementType()
     {
-        AbstractMovementTypeCommand.SimpleDeleteMovementType command = new AbstractMovementTypeCommand.SimpleDeleteMovementType();
-        ((AbstractMovementTypeCommandDto)this).copyTo(command);
-        return command;
+        return new MovementTypeCommand.DeleteMovementType() {
+            @Override
+            public String getMovementTypeId() {
+                return DeleteMovementTypeDto.this.getMovementTypeId();
+            }
+
+            @Override
+            public void setMovementTypeId(String p) {
+                DeleteMovementTypeDto.this.setMovementTypeId(p);
+            }
+
+            @Override
+            public Long getVersion() {
+                return DeleteMovementTypeDto.this.getVersion();
+            }
+
+            @Override
+            public void setVersion(Long p) {
+                DeleteMovementTypeDto.this.setVersion(p);
+            }
+
+            @Override
+            public String getCommandType() {
+                return DeleteMovementTypeDto.this.getCommandType();
+            }
+
+            @Override
+            public void setCommandType(String commandType) {
+                 DeleteMovementTypeDto.this.setCommandType(commandType);
+            }
+
+            @Override
+            public String getCommandId() {
+                return DeleteMovementTypeDto.this.getCommandId();
+            }
+
+            @Override
+            public void setCommandId(String commandId) {
+                DeleteMovementTypeDto.this.setCommandId(commandId);
+            }
+
+            @Override
+            public String getRequesterId() {
+                return DeleteMovementTypeDto.this.getRequesterId();
+            }
+
+            @Override
+            public void setRequesterId(String requesterId) {
+                DeleteMovementTypeDto.this.setRequesterId(requesterId);
+            }
+
+
+        };
     }
 }
 

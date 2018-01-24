@@ -44,10 +44,6 @@ namespace Dddml.Wms.Domain.UomType.NHibernate
 				state = new UomTypeState ();
 				(state as UomTypeState).UomTypeId = id;
 			}
-            if (ReadOnlyProxyGenerator != null && state != null)
-            {
-                return ReadOnlyProxyGenerator.CreateProxy<IUomTypeState>(state, new Type[] {  }, _readOnlyPropertyNames);
-            }
 			return state;
 		}
 
@@ -55,10 +51,6 @@ namespace Dddml.Wms.Domain.UomType.NHibernate
 		public void Save(IUomTypeState state)
 		{
             IUomTypeState s = state;
-            if (ReadOnlyProxyGenerator != null)
-            {
-                s = ReadOnlyProxyGenerator.GetTarget<IUomTypeState>(state);
-            }
 			CurrentSession.SaveOrUpdate (s);
 
 			var saveable = s as ISaveable;

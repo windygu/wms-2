@@ -31,13 +31,4 @@ public abstract class AbstractMovementTypeCommandDto extends AbstractCommand
     }
 
 
-    public void copyTo(AbstractMovementTypeCommand command)
-    {
-        command.setMovementTypeId(this.getMovementTypeId());
-        command.setVersion(this.getVersion());
-        
-        command.setRequesterId(this.getRequesterId());
-        command.setCommandId(this.getCommandId());
-    }
-
 }

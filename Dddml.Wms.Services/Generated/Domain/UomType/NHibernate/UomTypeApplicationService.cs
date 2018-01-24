@@ -18,16 +18,6 @@ namespace Dddml.Wms.Domain.UomType.NHibernate
 	public partial class UomTypeApplicationService : UomTypeApplicationServiceBase
 	{
 
-		private IEventStore _eventStore;
-
-		protected override IEventStore EventStore
-		{
-			get
-			{
-				return _eventStore;
-			}
-		}
-
 		private IUomTypeStateRepository _stateRepository;
 
 		protected override IUomTypeStateRepository StateRepository
@@ -48,13 +38,11 @@ namespace Dddml.Wms.Domain.UomType.NHibernate
 			}
 		}
 
-		public UomTypeApplicationService(IEventStore eventStore, IUomTypeStateRepository stateRepository, IUomTypeStateQueryRepository stateQueryRepository)
+		public UomTypeApplicationService(IUomTypeStateRepository stateRepository, IUomTypeStateQueryRepository stateQueryRepository)
 		{
-			this._eventStore = eventStore;
 			this._stateRepository = stateRepository;
 			this._stateQueryRepository = stateQueryRepository;
 		}
-
 		public override IEventStoreAggregateId ToEventStoreAggregateId(string aggregateId)
 		{
 			return new EventStoreAggregateId(aggregateId);

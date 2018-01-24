@@ -11,9 +11,59 @@ public class DeleteUomTypeDto extends AbstractUomTypeCommandDto
 
     public UomTypeCommand.DeleteUomType toDeleteUomType()
     {
-        AbstractUomTypeCommand.SimpleDeleteUomType command = new AbstractUomTypeCommand.SimpleDeleteUomType();
-        ((AbstractUomTypeCommandDto)this).copyTo(command);
-        return command;
+        return new UomTypeCommand.DeleteUomType() {
+            @Override
+            public String getUomTypeId() {
+                return DeleteUomTypeDto.this.getUomTypeId();
+            }
+
+            @Override
+            public void setUomTypeId(String p) {
+                DeleteUomTypeDto.this.setUomTypeId(p);
+            }
+
+            @Override
+            public Long getVersion() {
+                return DeleteUomTypeDto.this.getVersion();
+            }
+
+            @Override
+            public void setVersion(Long p) {
+                DeleteUomTypeDto.this.setVersion(p);
+            }
+
+            @Override
+            public String getCommandType() {
+                return DeleteUomTypeDto.this.getCommandType();
+            }
+
+            @Override
+            public void setCommandType(String commandType) {
+                 DeleteUomTypeDto.this.setCommandType(commandType);
+            }
+
+            @Override
+            public String getCommandId() {
+                return DeleteUomTypeDto.this.getCommandId();
+            }
+
+            @Override
+            public void setCommandId(String commandId) {
+                DeleteUomTypeDto.this.setCommandId(commandId);
+            }
+
+            @Override
+            public String getRequesterId() {
+                return DeleteUomTypeDto.this.getRequesterId();
+            }
+
+            @Override
+            public void setRequesterId(String requesterId) {
+                DeleteUomTypeDto.this.setRequesterId(requesterId);
+            }
+
+
+        };
     }
 }
 

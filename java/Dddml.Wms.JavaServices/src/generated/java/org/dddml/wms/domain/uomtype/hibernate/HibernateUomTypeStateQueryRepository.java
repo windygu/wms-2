@@ -42,9 +42,6 @@ public class HibernateUomTypeStateQueryRepository implements UomTypeStateQueryRe
     public UomTypeState get(String id) {
 
         UomTypeState state = (UomTypeState)getCurrentSession().get(AbstractUomTypeState.SimpleUomTypeState.class, id);
-        if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (UomTypeState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{UomTypeState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
-        }
         return state;
     }
 

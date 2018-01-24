@@ -803,9 +803,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateUomTypeDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\uomtype\hibernate\HibernateUomTypeEventStore.java">
-      <DependentUpon>GenerateUomTypeDomainHibernate.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\uomtype\hibernate\HibernateUomTypeStateQueryRepository.java">
       <DependentUpon>GenerateUomTypeDomainHibernate.tt</DependentUpon>
     </Content>
@@ -883,9 +880,6 @@
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\LotState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\UomTypeStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\UomTypeState.hbm.xml">
@@ -1353,7 +1347,6 @@
 .\UomState.hbm.xml
 .\UomStateEvent.hbm.xml
 .\UomTypeState.hbm.xml
-.\UomTypeStateEvent.hbm.xml
 .\WarehouseState.hbm.xml
 .\WarehouseStateEvent.hbm.xml
 </LastOutputs>
@@ -1817,7 +1810,6 @@
       <LastGenOutput>GenerateUomTypeDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
 .\GenerateUomTypeDomainHibernate.txt
-.\HibernateUomTypeEventStore.java
 .\HibernateUomTypeStateQueryRepository.java
 .\HibernateUomTypeStateRepository.java
 </LastOutputs>

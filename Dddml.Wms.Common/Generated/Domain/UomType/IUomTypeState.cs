@@ -23,6 +23,8 @@ namespace Dddml.Wms.Domain.UomType
 
 		bool ForReapplying { get; }
 
+		string CommandId { get; set; }
+
 		void When(IUomTypeStateCreated e);
 
 		void When(IUomTypeStateMergePatched e);

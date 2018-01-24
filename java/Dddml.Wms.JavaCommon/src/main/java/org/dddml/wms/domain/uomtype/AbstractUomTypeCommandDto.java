@@ -31,13 +31,4 @@ public abstract class AbstractUomTypeCommandDto extends AbstractCommand
     }
 
 
-    public void copyTo(AbstractUomTypeCommand command)
-    {
-        command.setUomTypeId(this.getUomTypeId());
-        command.setVersion(this.getVersion());
-        
-        command.setRequesterId(this.getRequesterId());
-        command.setCommandId(this.getCommandId());
-    }
-
 }

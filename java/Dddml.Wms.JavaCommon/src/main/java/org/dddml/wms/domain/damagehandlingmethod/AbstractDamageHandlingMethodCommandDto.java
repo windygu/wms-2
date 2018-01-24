@@ -31,13 +31,4 @@ public abstract class AbstractDamageHandlingMethodCommandDto extends AbstractCom
     }
 
 
-    public void copyTo(AbstractDamageHandlingMethodCommand command)
-    {
-        command.setDamageHandlingMethodId(this.getDamageHandlingMethodId());
-        command.setVersion(this.getVersion());
-        
-        command.setRequesterId(this.getRequesterId());
-        command.setCommandId(this.getCommandId());
-    }
-
 }

@@ -4,7 +4,6 @@ import java.util.Set;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.documenttype.DocumentTypeStateEvent.*;
 
 public interface DocumentTypeState
 {
@@ -61,14 +60,6 @@ public interface DocumentTypeState
 
     void setCommandId(String commandId);
 
-
-    void mutate(Event e);
-
-    void when(DocumentTypeStateEvent.DocumentTypeStateCreated e);
-
-    void when(DocumentTypeStateEvent.DocumentTypeStateMergePatched e);
-
-    void when(DocumentTypeStateEvent.DocumentTypeStateDeleted e);
     
 }
 

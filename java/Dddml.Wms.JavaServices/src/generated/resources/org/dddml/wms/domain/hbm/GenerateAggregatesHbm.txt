@@ -101,7 +101,6 @@
         <mapping resource="org/dddml/wms/domain/hbm/UomConversionState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/UomConversionStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/UomTypeState.hbm.xml"/>
-        <mapping resource="org/dddml/wms/domain/hbm/UomTypeStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/WarehouseState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/WarehouseStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/LocatorState.hbm.xml"/>

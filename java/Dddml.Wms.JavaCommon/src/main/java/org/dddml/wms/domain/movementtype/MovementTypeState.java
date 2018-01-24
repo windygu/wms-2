@@ -4,7 +4,6 @@ import java.util.Set;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.movementtype.MovementTypeStateEvent.*;
 
 public interface MovementTypeState
 {
@@ -57,14 +56,6 @@ public interface MovementTypeState
 
     void setCommandId(String commandId);
 
-
-    void mutate(Event e);
-
-    void when(MovementTypeStateEvent.MovementTypeStateCreated e);
-
-    void when(MovementTypeStateEvent.MovementTypeStateMergePatched e);
-
-    void when(MovementTypeStateEvent.MovementTypeStateDeleted e);
     
 }
 

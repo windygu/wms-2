@@ -101,41 +101,246 @@ public class CreateOrMergePatchUomTypeDto extends AbstractUomTypeCommandDto
         this.isPropertyActiveRemoved = removed;
     }
 
-    public void copyTo(AbstractUomTypeCommand.AbstractCreateOrMergePatchUomType command)
-    {
-        ((AbstractUomTypeCommandDto) this).copyTo(command);
-        command.setParentTypeId(this.getParentTypeId());
-        command.setHasTable(this.getHasTable());
-        command.setDescription(this.getDescription());
-        command.setActive(this.getActive());
-    }
-
     public UomTypeCommand toCommand()
     {
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
-            AbstractUomTypeCommand.SimpleCreateUomType command = new AbstractUomTypeCommand.SimpleCreateUomType();
-            copyTo((AbstractUomTypeCommand.AbstractCreateUomType) command);
-            return command;
+            return toCreateUomType();
         } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {
-            AbstractUomTypeCommand.SimpleMergePatchUomType command = new AbstractUomTypeCommand.SimpleMergePatchUomType();
-            copyTo((AbstractUomTypeCommand.SimpleMergePatchUomType) command);
-            return command;
+            return toMergePatchUomType();
         } 
         throw new IllegalStateException("Unknown command type:" + getCommandType());
     }
 
-    public void copyTo(AbstractUomTypeCommand.AbstractCreateUomType command)
-    {
-        copyTo((AbstractUomTypeCommand.AbstractCreateOrMergePatchUomType) command);
+    protected UomTypeCommand.CreateUomType toCreateUomType() {
+        return new UomTypeCommand.CreateUomType() {
+            @Override
+            public String getUomTypeId() {
+                return CreateOrMergePatchUomTypeDto.this.getUomTypeId();
+            }
+
+            @Override
+            public void setUomTypeId(String p) {
+                CreateOrMergePatchUomTypeDto.this.setUomTypeId(p);
+            }
+
+            @Override
+            public Long getVersion() {
+                return CreateOrMergePatchUomTypeDto.this.getVersion();
+            }
+
+            @Override
+            public void setVersion(Long p) {
+                CreateOrMergePatchUomTypeDto.this.setVersion(p);
+            }
+
+            @Override
+            public String getCommandType() {
+                return CreateOrMergePatchUomTypeDto.this.getCommandType();
+            }
+
+            @Override
+            public void setCommandType(String commandType) {
+                 CreateOrMergePatchUomTypeDto.this.setCommandType(commandType);
+            }
+
+            @Override
+            public String getCommandId() {
+                return CreateOrMergePatchUomTypeDto.this.getCommandId();
+            }
+
+            @Override
+            public void setCommandId(String commandId) {
+                CreateOrMergePatchUomTypeDto.this.setCommandId(commandId);
+            }
+
+            @Override
+            public String getRequesterId() {
+                return CreateOrMergePatchUomTypeDto.this.getRequesterId();
+            }
+
+            @Override
+            public void setRequesterId(String requesterId) {
+                CreateOrMergePatchUomTypeDto.this.setRequesterId(requesterId);
+            }
+
+            @Override
+            public String getParentTypeId() {
+                return CreateOrMergePatchUomTypeDto.this.getParentTypeId();
+            }
+
+            @Override
+            public void setParentTypeId(String p) {
+                CreateOrMergePatchUomTypeDto.this.setParentTypeId(p);
+            }
+
+            @Override
+            public String getHasTable() {
+                return CreateOrMergePatchUomTypeDto.this.getHasTable();
+            }
+
+            @Override
+            public void setHasTable(String p) {
+                CreateOrMergePatchUomTypeDto.this.setHasTable(p);
+            }
+
+            @Override
+            public String getDescription() {
+                return CreateOrMergePatchUomTypeDto.this.getDescription();
+            }
+
+            @Override
+            public void setDescription(String p) {
+                CreateOrMergePatchUomTypeDto.this.setDescription(p);
+            }
+
+            @Override
+            public Boolean getActive() {
+                return CreateOrMergePatchUomTypeDto.this.getActive();
+            }
+
+            @Override
+            public void setActive(Boolean p) {
+                CreateOrMergePatchUomTypeDto.this.setActive(p);
+            }
+
+
+        };
     }
 
-    public void copyTo(AbstractUomTypeCommand.AbstractMergePatchUomType command)
-    {
-        copyTo((AbstractUomTypeCommand.AbstractCreateOrMergePatchUomType) command);
-        command.setIsPropertyParentTypeIdRemoved(this.getIsPropertyParentTypeIdRemoved());
-        command.setIsPropertyHasTableRemoved(this.getIsPropertyHasTableRemoved());
-        command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
-        command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
+    protected UomTypeCommand.MergePatchUomType toMergePatchUomType() {
+        return new UomTypeCommand.MergePatchUomType() {
+            @Override
+            public String getUomTypeId() {
+                return CreateOrMergePatchUomTypeDto.this.getUomTypeId();
+            }
+
+            @Override
+            public void setUomTypeId(String p) {
+                CreateOrMergePatchUomTypeDto.this.setUomTypeId(p);
+            }
+
+            @Override
+            public Long getVersion() {
+                return CreateOrMergePatchUomTypeDto.this.getVersion();
+            }
+
+            @Override
+            public void setVersion(Long p) {
+                CreateOrMergePatchUomTypeDto.this.setVersion(p);
+            }
+
+            @Override
+            public String getCommandType() {
+                return CreateOrMergePatchUomTypeDto.this.getCommandType();
+            }
+
+            @Override
+            public void setCommandType(String commandType) {
+                 CreateOrMergePatchUomTypeDto.this.setCommandType(commandType);
+            }
+
+            @Override
+            public String getCommandId() {
+                return CreateOrMergePatchUomTypeDto.this.getCommandId();
+            }
+
+            @Override
+            public void setCommandId(String commandId) {
+                CreateOrMergePatchUomTypeDto.this.setCommandId(commandId);
+            }
+
+            @Override
+            public String getRequesterId() {
+                return CreateOrMergePatchUomTypeDto.this.getRequesterId();
+            }
+
+            @Override
+            public void setRequesterId(String requesterId) {
+                CreateOrMergePatchUomTypeDto.this.setRequesterId(requesterId);
+            }
+
+            @Override
+            public String getParentTypeId() {
+                return CreateOrMergePatchUomTypeDto.this.getParentTypeId();
+            }
+
+            @Override
+            public void setParentTypeId(String p) {
+                CreateOrMergePatchUomTypeDto.this.setParentTypeId(p);
+            }
+
+            @Override
+            public String getHasTable() {
+                return CreateOrMergePatchUomTypeDto.this.getHasTable();
+            }
+
+            @Override
+            public void setHasTable(String p) {
+                CreateOrMergePatchUomTypeDto.this.setHasTable(p);
+            }
+
+            @Override
+            public String getDescription() {
+                return CreateOrMergePatchUomTypeDto.this.getDescription();
+            }
+
+            @Override
+            public void setDescription(String p) {
+                CreateOrMergePatchUomTypeDto.this.setDescription(p);
+            }
+
+            @Override
+            public Boolean getActive() {
+                return CreateOrMergePatchUomTypeDto.this.getActive();
+            }
+
+            @Override
+            public void setActive(Boolean p) {
+                CreateOrMergePatchUomTypeDto.this.setActive(p);
+            }
+
+            @Override
+            public Boolean getIsPropertyParentTypeIdRemoved() {
+                return CreateOrMergePatchUomTypeDto.this.getIsPropertyParentTypeIdRemoved();
+            }
+
+            @Override
+            public void setIsPropertyParentTypeIdRemoved(Boolean removed) {
+                CreateOrMergePatchUomTypeDto.this.setIsPropertyParentTypeIdRemoved(removed);
+            }
+
+            @Override
+            public Boolean getIsPropertyHasTableRemoved() {
+                return CreateOrMergePatchUomTypeDto.this.getIsPropertyHasTableRemoved();
+            }
+
+            @Override
+            public void setIsPropertyHasTableRemoved(Boolean removed) {
+                CreateOrMergePatchUomTypeDto.this.setIsPropertyHasTableRemoved(removed);
+            }
+
+            @Override
+            public Boolean getIsPropertyDescriptionRemoved() {
+                return CreateOrMergePatchUomTypeDto.this.getIsPropertyDescriptionRemoved();
+            }
+
+            @Override
+            public void setIsPropertyDescriptionRemoved(Boolean removed) {
+                CreateOrMergePatchUomTypeDto.this.setIsPropertyDescriptionRemoved(removed);
+            }
+
+            @Override
+            public Boolean getIsPropertyActiveRemoved() {
+                return CreateOrMergePatchUomTypeDto.this.getIsPropertyActiveRemoved();
+            }
+
+            @Override
+            public void setIsPropertyActiveRemoved(Boolean removed) {
+                CreateOrMergePatchUomTypeDto.this.setIsPropertyActiveRemoved(removed);
+            }
+
+
+        };
     }
 
     public static class CreateUomTypeDto extends CreateOrMergePatchUomTypeDto
@@ -146,7 +351,7 @@ public class CreateOrMergePatchUomTypeDto extends AbstractUomTypeCommandDto
         }
         public UomTypeCommand.CreateUomType toCreateUomType()
         {
-            return (UomTypeCommand.CreateUomType) toCommand();
+            return super.toCreateUomType();
         }
 
     }
@@ -159,7 +364,7 @@ public class CreateOrMergePatchUomTypeDto extends AbstractUomTypeCommandDto
         }
         public UomTypeCommand.MergePatchUomType toMergePatchUomType()
         {
-            return (UomTypeCommand.MergePatchUomType) toCommand();
+            return super.toMergePatchUomType();
         }
 
     }

@@ -787,12 +787,7 @@
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
   </object>
 
-  <object id="uomTypeEventStore" type="Dddml.Wms.Domain.UomType.NHibernate.NHibernateUomTypeEventStore, Dddml.Wms.Services">
-    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
-  </object>
-
   <object id="uomTypeApplicationService" type="Dddml.Wms.Domain.UomType.NHibernate.UomTypeApplicationService, Dddml.Wms.Services">
-    <constructor-arg ref="uomTypeEventStore"/>
     <constructor-arg ref="uomTypeStateRepository"/>
     <constructor-arg ref="uomTypeStateQueryRepository"/>
   </object>

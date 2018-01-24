@@ -77,39 +77,216 @@ public class CreateOrMergePatchDamageHandlingMethodDto extends AbstractDamageHan
         this.isPropertyActiveRemoved = removed;
     }
 
-    public void copyTo(AbstractDamageHandlingMethodCommand.AbstractCreateOrMergePatchDamageHandlingMethod command)
-    {
-        ((AbstractDamageHandlingMethodCommandDto) this).copyTo(command);
-        command.setDescription(this.getDescription());
-        command.setSequenceId(this.getSequenceId());
-        command.setActive(this.getActive());
-    }
-
     public DamageHandlingMethodCommand toCommand()
     {
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
-            AbstractDamageHandlingMethodCommand.SimpleCreateDamageHandlingMethod command = new AbstractDamageHandlingMethodCommand.SimpleCreateDamageHandlingMethod();
-            copyTo((AbstractDamageHandlingMethodCommand.AbstractCreateDamageHandlingMethod) command);
-            return command;
+            return toCreateDamageHandlingMethod();
         } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {
-            AbstractDamageHandlingMethodCommand.SimpleMergePatchDamageHandlingMethod command = new AbstractDamageHandlingMethodCommand.SimpleMergePatchDamageHandlingMethod();
-            copyTo((AbstractDamageHandlingMethodCommand.SimpleMergePatchDamageHandlingMethod) command);
-            return command;
+            return toMergePatchDamageHandlingMethod();
         } 
         throw new IllegalStateException("Unknown command type:" + getCommandType());
     }
 
-    public void copyTo(AbstractDamageHandlingMethodCommand.AbstractCreateDamageHandlingMethod command)
-    {
-        copyTo((AbstractDamageHandlingMethodCommand.AbstractCreateOrMergePatchDamageHandlingMethod) command);
+    protected DamageHandlingMethodCommand.CreateDamageHandlingMethod toCreateDamageHandlingMethod() {
+        return new DamageHandlingMethodCommand.CreateDamageHandlingMethod() {
+            @Override
+            public String getDamageHandlingMethodId() {
+                return CreateOrMergePatchDamageHandlingMethodDto.this.getDamageHandlingMethodId();
+            }
+
+            @Override
+            public void setDamageHandlingMethodId(String p) {
+                CreateOrMergePatchDamageHandlingMethodDto.this.setDamageHandlingMethodId(p);
+            }
+
+            @Override
+            public Long getVersion() {
+                return CreateOrMergePatchDamageHandlingMethodDto.this.getVersion();
+            }
+
+            @Override
+            public void setVersion(Long p) {
+                CreateOrMergePatchDamageHandlingMethodDto.this.setVersion(p);
+            }
+
+            @Override
+            public String getCommandType() {
+                return CreateOrMergePatchDamageHandlingMethodDto.this.getCommandType();
+            }
+
+            @Override
+            public void setCommandType(String commandType) {
+                 CreateOrMergePatchDamageHandlingMethodDto.this.setCommandType(commandType);
+            }
+
+            @Override
+            public String getCommandId() {
+                return CreateOrMergePatchDamageHandlingMethodDto.this.getCommandId();
+            }
+
+            @Override
+            public void setCommandId(String commandId) {
+                CreateOrMergePatchDamageHandlingMethodDto.this.setCommandId(commandId);
+            }
+
+            @Override
+            public String getRequesterId() {
+                return CreateOrMergePatchDamageHandlingMethodDto.this.getRequesterId();
+            }
+
+            @Override
+            public void setRequesterId(String requesterId) {
+                CreateOrMergePatchDamageHandlingMethodDto.this.setRequesterId(requesterId);
+            }
+
+            @Override
+            public String getDescription() {
+                return CreateOrMergePatchDamageHandlingMethodDto.this.getDescription();
+            }
+
+            @Override
+            public void setDescription(String p) {
+                CreateOrMergePatchDamageHandlingMethodDto.this.setDescription(p);
+            }
+
+            @Override
+            public String getSequenceId() {
+                return CreateOrMergePatchDamageHandlingMethodDto.this.getSequenceId();
+            }
+
+            @Override
+            public void setSequenceId(String p) {
+                CreateOrMergePatchDamageHandlingMethodDto.this.setSequenceId(p);
+            }
+
+            @Override
+            public Boolean getActive() {
+                return CreateOrMergePatchDamageHandlingMethodDto.this.getActive();
+            }
+
+            @Override
+            public void setActive(Boolean p) {
+                CreateOrMergePatchDamageHandlingMethodDto.this.setActive(p);
+            }
+
+
+        };
     }
 
-    public void copyTo(AbstractDamageHandlingMethodCommand.AbstractMergePatchDamageHandlingMethod command)
-    {
-        copyTo((AbstractDamageHandlingMethodCommand.AbstractCreateOrMergePatchDamageHandlingMethod) command);
-        command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
-        command.setIsPropertySequenceIdRemoved(this.getIsPropertySequenceIdRemoved());
-        command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
+    protected DamageHandlingMethodCommand.MergePatchDamageHandlingMethod toMergePatchDamageHandlingMethod() {
+        return new DamageHandlingMethodCommand.MergePatchDamageHandlingMethod() {
+            @Override
+            public String getDamageHandlingMethodId() {
+                return CreateOrMergePatchDamageHandlingMethodDto.this.getDamageHandlingMethodId();
+            }
+
+            @Override
+            public void setDamageHandlingMethodId(String p) {
+                CreateOrMergePatchDamageHandlingMethodDto.this.setDamageHandlingMethodId(p);
+            }
+
+            @Override
+            public Long getVersion() {
+                return CreateOrMergePatchDamageHandlingMethodDto.this.getVersion();
+            }
+
+            @Override
+            public void setVersion(Long p) {
+                CreateOrMergePatchDamageHandlingMethodDto.this.setVersion(p);
+            }
+
+            @Override
+            public String getCommandType() {
+                return CreateOrMergePatchDamageHandlingMethodDto.this.getCommandType();
+            }
+
+            @Override
+            public void setCommandType(String commandType) {
+                 CreateOrMergePatchDamageHandlingMethodDto.this.setCommandType(commandType);
+            }
+
+            @Override
+            public String getCommandId() {
+                return CreateOrMergePatchDamageHandlingMethodDto.this.getCommandId();
+            }
+
+            @Override
+            public void setCommandId(String commandId) {
+                CreateOrMergePatchDamageHandlingMethodDto.this.setCommandId(commandId);
+            }
+
+            @Override
+            public String getRequesterId() {
+                return CreateOrMergePatchDamageHandlingMethodDto.this.getRequesterId();
+            }
+
+            @Override
+            public void setRequesterId(String requesterId) {
+                CreateOrMergePatchDamageHandlingMethodDto.this.setRequesterId(requesterId);
+            }
+
+            @Override
+            public String getDescription() {
+                return CreateOrMergePatchDamageHandlingMethodDto.this.getDescription();
+            }
+
+            @Override
+            public void setDescription(String p) {
+                CreateOrMergePatchDamageHandlingMethodDto.this.setDescription(p);
+            }
+
+            @Override
+            public String getSequenceId() {
+                return CreateOrMergePatchDamageHandlingMethodDto.this.getSequenceId();
+            }
+
+            @Override
+            public void setSequenceId(String p) {
+                CreateOrMergePatchDamageHandlingMethodDto.this.setSequenceId(p);
+            }
+
+            @Override
+            public Boolean getActive() {
+                return CreateOrMergePatchDamageHandlingMethodDto.this.getActive();
+            }
+
+            @Override
+            public void setActive(Boolean p) {
+                CreateOrMergePatchDamageHandlingMethodDto.this.setActive(p);
+            }
+
+            @Override
+            public Boolean getIsPropertyDescriptionRemoved() {
+                return CreateOrMergePatchDamageHandlingMethodDto.this.getIsPropertyDescriptionRemoved();
+            }
+
+            @Override
+            public void setIsPropertyDescriptionRemoved(Boolean removed) {
+                CreateOrMergePatchDamageHandlingMethodDto.this.setIsPropertyDescriptionRemoved(removed);
+            }
+
+            @Override
+            public Boolean getIsPropertySequenceIdRemoved() {
+                return CreateOrMergePatchDamageHandlingMethodDto.this.getIsPropertySequenceIdRemoved();
+            }
+
+            @Override
+            public void setIsPropertySequenceIdRemoved(Boolean removed) {
+                CreateOrMergePatchDamageHandlingMethodDto.this.setIsPropertySequenceIdRemoved(removed);
+            }
+
+            @Override
+            public Boolean getIsPropertyActiveRemoved() {
+                return CreateOrMergePatchDamageHandlingMethodDto.this.getIsPropertyActiveRemoved();
+            }
+
+            @Override
+            public void setIsPropertyActiveRemoved(Boolean removed) {
+                CreateOrMergePatchDamageHandlingMethodDto.this.setIsPropertyActiveRemoved(removed);
+            }
+
+
+        };
     }
 
     public static class CreateDamageHandlingMethodDto extends CreateOrMergePatchDamageHandlingMethodDto
@@ -120,7 +297,7 @@ public class CreateOrMergePatchDamageHandlingMethodDto extends AbstractDamageHan
         }
         public DamageHandlingMethodCommand.CreateDamageHandlingMethod toCreateDamageHandlingMethod()
         {
-            return (DamageHandlingMethodCommand.CreateDamageHandlingMethod) toCommand();
+            return super.toCreateDamageHandlingMethod();
         }
 
     }
@@ -133,7 +310,7 @@ public class CreateOrMergePatchDamageHandlingMethodDto extends AbstractDamageHan
         }
         public DamageHandlingMethodCommand.MergePatchDamageHandlingMethod toMergePatchDamageHandlingMethod()
         {
-            return (DamageHandlingMethodCommand.MergePatchDamageHandlingMethod) toCommand();
+            return super.toMergePatchDamageHandlingMethod();
         }
 
     }

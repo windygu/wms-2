@@ -4,7 +4,6 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.documenttype.DocumentTypeStateEvent.*;
 
 public abstract class AbstractDocumentTypeState implements DocumentTypeState
 {
@@ -160,17 +159,6 @@ public abstract class AbstractDocumentTypeState implements DocumentTypeState
         this.commandId = commandId;
     }
 
-    public AbstractDocumentTypeState(List<Event> events) {
-        this(true);
-        if (events != null && events.size() > 0) {
-            this.setDocumentTypeId(((DocumentTypeStateEvent) events.get(0)).getStateEventId().getDocumentTypeId());
-            for (Event e : events) {
-                mutate(e);
-                this.setVersion(this.getVersion() + 1);
-            }
-        }
-    }
-
 
     public AbstractDocumentTypeState() {
         this(false);
@@ -185,111 +173,8 @@ public abstract class AbstractDocumentTypeState implements DocumentTypeState
     protected void initializeProperties() {
     }
 
-
-    public void mutate(Event e) {
-        setStateReadOnly(false);
-        if (e instanceof DocumentTypeStateCreated) {
-            when((DocumentTypeStateCreated) e);
-        } else if (e instanceof DocumentTypeStateMergePatched) {
-            when((DocumentTypeStateMergePatched) e);
-        } else if (e instanceof DocumentTypeStateDeleted) {
-            when((DocumentTypeStateDeleted) e);
-        } else {
-            throw new UnsupportedOperationException(String.format("Unsupported event type: %1$s", e.getClass().getName()));
-        }
-    }
-
-    public void when(DocumentTypeStateCreated e)
-    {
-        throwOnWrongEvent(e);
-
-        this.setDescription(e.getDescription());
-        this.setParentDocumentTypeId(e.getParentDocumentTypeId());
-        this.setActive(e.getActive());
-
-        this.setDeleted(false);
-
-        this.setCreatedBy(e.getCreatedBy());
-        this.setCreatedAt(e.getCreatedAt());
-
-    }
-
-    public void when(DocumentTypeStateMergePatched e)
-    {
-        throwOnWrongEvent(e);
-
-        if (e.getDescription() == null)
-        {
-            if (e.getIsPropertyDescriptionRemoved() != null && e.getIsPropertyDescriptionRemoved())
-            {
-                this.setDescription(null);
-            }
-        }
-        else
-        {
-            this.setDescription(e.getDescription());
-        }
-        if (e.getParentDocumentTypeId() == null)
-        {
-            if (e.getIsPropertyParentDocumentTypeIdRemoved() != null && e.getIsPropertyParentDocumentTypeIdRemoved())
-            {
-                this.setParentDocumentTypeId(null);
-            }
-        }
-        else
-        {
-            this.setParentDocumentTypeId(e.getParentDocumentTypeId());
-        }
-        if (e.getActive() == null)
-        {
-            if (e.getIsPropertyActiveRemoved() != null && e.getIsPropertyActiveRemoved())
-            {
-                this.setActive(null);
-            }
-        }
-        else
-        {
-            this.setActive(e.getActive());
-        }
-
-        this.setUpdatedBy(e.getCreatedBy());
-        this.setUpdatedAt(e.getCreatedAt());
-
-    }
-
-    public void when(DocumentTypeStateDeleted e)
-    {
-        throwOnWrongEvent(e);
-
-        this.setDeleted(true);
-        this.setUpdatedBy(e.getCreatedBy());
-        this.setUpdatedAt(e.getCreatedAt());
-
-    }
-
     public void save()
     {
-    }
-
-    protected void throwOnWrongEvent(DocumentTypeStateEvent stateEvent)
-    {
-        String stateEntityId = this.getDocumentTypeId(); // Aggregate Id
-        String eventEntityId = stateEvent.getStateEventId().getDocumentTypeId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
-        if (!stateEntityId.equals(eventEntityId))
-        {
-            throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
-        }
-
-        Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getStateEventId().getVersion();// Aggregate Version
-        if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getStateEventId().getVersion() == null");
-        }
-        if (!(stateVersion == null && eventVersion.equals(DocumentTypeState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
-        {
-            throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
-        }
-
     }
 
     public static class SimpleDocumentTypeState extends AbstractDocumentTypeState
@@ -300,10 +185,6 @@ public abstract class AbstractDocumentTypeState implements DocumentTypeState
 
         public SimpleDocumentTypeState(boolean forReapplying) {
             super(forReapplying);
-        }
-
-        public SimpleDocumentTypeState(List<Event> events) {
-            super(events);
         }
 
     }

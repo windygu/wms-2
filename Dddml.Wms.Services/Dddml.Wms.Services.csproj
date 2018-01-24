@@ -738,9 +738,6 @@
     <Compile Include="Generated\Domain\UomConversion\NHibernate\UomConversionApplicationService.cs">
       <DependentUpon>GenerateUomConversionDomainNHibernate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\UomType\NHibernate\NHibernateUomTypeEventStore.cs">
-      <DependentUpon>GenerateUomTypeDomainNHibernate.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\UomType\NHibernate\NHibernateUomTypeStateQueryRepository.cs">
       <DependentUpon>GenerateUomTypeDomainNHibernate.tt</DependentUpon>
     </Compile>
@@ -1302,7 +1299,6 @@
 .\UomState.hbm.xml
 .\UomStateEvent.hbm.xml
 .\UomTypeState.hbm.xml
-.\UomTypeStateEvent.hbm.xml
 .\WarehouseState.hbm.xml
 .\WarehouseStateEvent.hbm.xml
 </LastOutputs>
@@ -1552,9 +1548,6 @@
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Generated\NHibernate\Mappings\UomTypeState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Generated\NHibernate\Mappings\UomTypeStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Generated\NHibernate\Mappings\LotState.hbm.xml">
@@ -2117,7 +2110,6 @@
       <LastGenOutput>GenerateUomTypeDomainNHibernate.txt</LastGenOutput>
       <LastOutputs>
 .\GenerateUomTypeDomainNHibernate.txt
-.\NHibernateUomTypeEventStore.cs
 .\NHibernateUomTypeStateQueryRepository.cs
 .\NHibernateUomTypeStateRepository.cs
 .\UomTypeApplicationService.cs

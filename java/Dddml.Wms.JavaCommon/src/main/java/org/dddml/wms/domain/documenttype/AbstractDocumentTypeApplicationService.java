@@ -21,31 +21,65 @@ public abstract class AbstractDocumentTypeApplicationService implements Document
         return stateQueryRepository;
     }
 
-    private AggregateEventListener<DocumentTypeAggregate, DocumentTypeState> aggregateEventListener;
-
-    public AggregateEventListener<DocumentTypeAggregate, DocumentTypeState> getAggregateEventListener() {
-        return aggregateEventListener;
-    }
-
-    public void setAggregateEventListener(AggregateEventListener<DocumentTypeAggregate, DocumentTypeState> eventListener) {
-        this.aggregateEventListener = eventListener;
-    }
-
     public AbstractDocumentTypeApplicationService(DocumentTypeStateRepository stateRepository, DocumentTypeStateQueryRepository stateQueryRepository) {
         this.stateRepository = stateRepository;
         this.stateQueryRepository = stateQueryRepository;
     }
 
     public void when(DocumentTypeCommand.CreateDocumentType c) {
-        update(c, ar -> ar.create(c));
+        update(c, s -> {
+        // //////////////////////////
+        throwOnConcurrencyConflict(s, c);
+        s.setDescription(c.getDescription());
+        s.setParentDocumentTypeId(c.getParentDocumentTypeId());
+        s.setActive(c.getActive());
+        s.setDeleted(false);
+        s.setCreatedBy(c.getRequesterId());
+        s.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        s.setCommandId(c.getCommandId());
+        // //////////////////////////
+        });
     }
 
     public void when(DocumentTypeCommand.MergePatchDocumentType c) {
-        update(c, ar -> ar.mergePatch(c));
+        update(c, s -> {
+        // //////////////////////////////////
+        throwOnConcurrencyConflict(s, c);
+        if (c.getDescription() == null) {
+            if (c.getIsPropertyDescriptionRemoved() != null && c.getIsPropertyDescriptionRemoved()) {
+                s.setDescription(null);
+            }
+        } else {
+            s.setDescription(c.getDescription());
+        }
+        if (c.getParentDocumentTypeId() == null) {
+            if (c.getIsPropertyParentDocumentTypeIdRemoved() != null && c.getIsPropertyParentDocumentTypeIdRemoved()) {
+                s.setParentDocumentTypeId(null);
+            }
+        } else {
+            s.setParentDocumentTypeId(c.getParentDocumentTypeId());
+        }
+        if (c.getActive() == null) {
+            if (c.getIsPropertyActiveRemoved() != null && c.getIsPropertyActiveRemoved()) {
+                s.setActive(null);
+            }
+        } else {
+            s.setActive(c.getActive());
+        }
+        s.setUpdatedBy(c.getRequesterId());
+        s.setUpdatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        s.setCommandId(c.getCommandId());
+        // //////////////////////////////////
+        });
     }
 
     public void when(DocumentTypeCommand.DeleteDocumentType c) {
-        update(c, ar -> ar.delete(c));
+        update(c, s -> {
+        throwOnConcurrencyConflict(s, c);
+        // ///////////////////////////////////
+        //todo
+        // ///////////////////////////////////
+        });
     }
 
     public DocumentTypeState get(String id) {
@@ -77,18 +111,12 @@ public abstract class AbstractDocumentTypeApplicationService implements Document
         return getStateQueryRepository().getCount(filter);
     }
 
-
-    public DocumentTypeAggregate getDocumentTypeAggregate(DocumentTypeState state)
-    {
-        return new AbstractDocumentTypeAggregate.SimpleDocumentTypeAggregate(state);
-    }
-
     public EventStoreAggregateId toEventStoreAggregateId(String aggregateId)
     {
         return new EventStoreAggregateId.SimpleEventStoreAggregateId(aggregateId);
     }
 
-    protected void update(DocumentTypeCommand c, Consumer<DocumentTypeAggregate> action)
+    protected void update(DocumentTypeCommand c, Consumer<DocumentTypeState> action)
     {
         String aggregateId = c.getDocumentTypeId();
         DocumentTypeState state = getStateRepository().get(aggregateId, false);
@@ -97,30 +125,14 @@ public abstract class AbstractDocumentTypeApplicationService implements Document
         boolean repeated = isRepeatedCommand(c, eventStoreAggregateId, state);
         if (repeated) { return; }
 
-        DocumentTypeAggregate aggregate = getDocumentTypeAggregate(state);
-        aggregate.throwOnInvalidStateTransition(c);
-        action.accept(aggregate);
-        persist(eventStoreAggregateId, c.getVersion(), aggregate, state); // State version may be null!
+        DocumentTypeCommand.throwOnInvalidStateTransition(state, c);
+        action.accept(state);
+        persist(eventStoreAggregateId, c.getVersion(), state); // State version may be null!
 
     }
 
-    private void persist(EventStoreAggregateId eventStoreAggregateId, long version, DocumentTypeAggregate aggregate, DocumentTypeState state) {
+    private void persist(EventStoreAggregateId eventStoreAggregateId, long version, DocumentTypeState state) {
         getStateRepository().save(state);
-        if (aggregateEventListener != null) {
-            aggregateEventListener.eventAppended(new AggregateEvent<>(aggregate, state, aggregate.getChanges()));
-        }
-    }
-
-    public void initialize(DocumentTypeStateEvent.DocumentTypeStateCreated stateCreated) {
-        String aggregateId = stateCreated.getStateEventId().getDocumentTypeId();
-        DocumentTypeState state = new AbstractDocumentTypeState.SimpleDocumentTypeState();
-        state.setDocumentTypeId(aggregateId);
-
-        DocumentTypeAggregate aggregate = getDocumentTypeAggregate(state);
-        ((AbstractDocumentTypeAggregate) aggregate).apply(stateCreated);
-
-        EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getStateEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(DocumentTypeCommand command, EventStoreAggregateId eventStoreAggregateId, DocumentTypeState state)
@@ -135,6 +147,15 @@ public abstract class AbstractDocumentTypeApplicationService implements Document
             }
         }
         return repeated;
+    }
+
+    protected static void throwOnConcurrencyConflict(DocumentTypeState s, DocumentTypeCommand c) {
+        Long stateVersion = s.getVersion();
+        Long commandVersion = c.getVersion();
+        if (commandVersion == null) { commandVersion = DocumentTypeState.VERSION_NULL; }
+        if (!(stateVersion == null && commandVersion.equals(DocumentTypeState.VERSION_NULL)) && !commandVersion.equals(stateVersion)) {
+            throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and command version (%2$s)", stateVersion, commandVersion);
+        }
     }
 
     public static class SimpleDocumentTypeApplicationService extends AbstractDocumentTypeApplicationService 

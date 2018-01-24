@@ -40,10 +40,6 @@ namespace Dddml.Wms.Domain.UomType.NHibernate
 		public IUomTypeState Get(string id)
 		{
 			IUomTypeState state = CurrentSession.Get<UomTypeState>(id);
-            if (ReadOnlyProxyGenerator != null && state != null)
-            {
-                return ReadOnlyProxyGenerator.CreateProxy<IUomTypeState>(state, new Type[] {  }, _readOnlyPropertyNames);
-            }
 			return state;
 		}
 

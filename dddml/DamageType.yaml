@@ -22,7 +22,7 @@ aggregates:
           referenceType: DamageHandlingMethod
           
       metadata:
-        NoEventSourcing: true
+        AbsolutelyNoEventSourcing: true
 
     # ------------------------------------------------------------
     DamageHandlingMethod:
@@ -38,6 +38,6 @@ aggregates:
           type: id
           
       metadata:
-        NoEventSourcing: true
+        AbsolutelyNoEventSourcing: true
         
         

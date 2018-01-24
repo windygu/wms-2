@@ -30,9 +30,5 @@ public interface UomTypeApplicationService
 
     long getCount(Criterion filter);
 
-    UomTypeStateEvent getStateEvent(String uomTypeId, long version);
-
-    UomTypeState getHistoryState(String uomTypeId, long version);
-
 }
 

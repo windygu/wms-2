@@ -15,6 +15,6 @@ aggregates:
           type: string
           notNull: true
       metadata:
-        NoEventSourcing: true
+        AbsolutelyNoEventSourcing: true
 
           

@@ -916,13 +916,7 @@
     <Content Include="src\main\java\org\dddml\wms\domain\Command.java">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\AbstractDamageHandlingMethodAggregate.java">
-      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\AbstractDamageHandlingMethodApplicationService.java">
-      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\AbstractDamageHandlingMethodCommand.java">
       <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\AbstractDamageHandlingMethodCommandDto.java">
@@ -931,16 +925,7 @@
     <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\AbstractDamageHandlingMethodState.java">
       <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\AbstractDamageHandlingMethodStateCommandConverter.java">
-      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\AbstractDamageHandlingMethodStateEvent.java">
-      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\CreateOrMergePatchDamageHandlingMethodDto.java">
-      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\DamageHandlingMethodAggregate.java">
       <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\DamageHandlingMethodApplicationService.java">
@@ -953,30 +938,6 @@
       <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\DamageHandlingMethodStateDto.java">
-      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\DamageHandlingMethodStateEvent.java">
-      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\DamageHandlingMethodStateEventDto.java">
-      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\DamageHandlingMethodStateEventDtoConverter.java">
-      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\DamageHandlingMethodStateEventId.java">
-      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\DamageHandlingMethodStateEventIdDto.java">
-      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\DamageHandlingMethodStateEventIdDtoWrapper.java">
-      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\DamageHandlingMethodStateEventIdFlattenedDto.java">
-      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\DamageHandlingMethodStateEventIdFlattenedDtoFormatter.java">
       <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\damagehandlingmethod\DamageHandlingMethodStateQueryRepository.java">
@@ -1070,13 +1031,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\AbstractDamageTypeAggregate.java">
-      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\damagetype\AbstractDamageTypeApplicationService.java">
-      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\AbstractDamageTypeCommand.java">
       <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\damagetype\AbstractDamageTypeCommandDto.java">
@@ -1085,16 +1040,7 @@
     <Content Include="src\main\java\org\dddml\wms\domain\damagetype\AbstractDamageTypeState.java">
       <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\AbstractDamageTypeStateCommandConverter.java">
-      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\AbstractDamageTypeStateEvent.java">
-      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\damagetype\CreateOrMergePatchDamageTypeDto.java">
-      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\DamageTypeAggregate.java">
       <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\damagetype\DamageTypeApplicationService.java">
@@ -1107,30 +1053,6 @@
       <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\damagetype\DamageTypeStateDto.java">
-      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\DamageTypeStateEvent.java">
-      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\DamageTypeStateEventDto.java">
-      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\DamageTypeStateEventDtoConverter.java">
-      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\DamageTypeStateEventId.java">
-      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\DamageTypeStateEventIdDto.java">
-      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\DamageTypeStateEventIdDtoWrapper.java">
-      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\DamageTypeStateEventIdFlattenedDto.java">
-      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\damagetype\DamageTypeStateEventIdFlattenedDtoFormatter.java">
       <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\damagetype\DamageTypeStateQueryRepository.java">
@@ -1151,13 +1073,7 @@
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\DocumentStatusIds.java" />
-    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\AbstractDocumentTypeAggregate.java">
-      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\documenttype\AbstractDocumentTypeApplicationService.java">
-      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\AbstractDocumentTypeCommand.java">
       <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\documenttype\AbstractDocumentTypeCommandDto.java">
@@ -1166,19 +1082,10 @@
     <Content Include="src\main\java\org\dddml\wms\domain\documenttype\AbstractDocumentTypeState.java">
       <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\AbstractDocumentTypeStateCommandConverter.java">
-      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\AbstractDocumentTypeStateEvent.java">
-      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\documenttype\CreateOrMergePatchDocumentTypeDto.java">
       <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\documenttype\DeleteDocumentTypeDto.java">
-      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\DocumentTypeAggregate.java">
       <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\documenttype\DocumentTypeApplicationService.java">
@@ -1191,30 +1098,6 @@
       <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\documenttype\DocumentTypeStateDto.java">
-      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\DocumentTypeStateEvent.java">
-      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\DocumentTypeStateEventDto.java">
-      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\DocumentTypeStateEventDtoConverter.java">
-      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\DocumentTypeStateEventId.java">
-      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\DocumentTypeStateEventIdDto.java">
-      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\DocumentTypeStateEventIdDtoWrapper.java">
-      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\DocumentTypeStateEventIdFlattenedDto.java">
-      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\documenttype\DocumentTypeStateEventIdFlattenedDtoFormatter.java">
       <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\documenttype\DocumentTypeStateQueryRepository.java">
@@ -3195,25 +3078,13 @@
     <Content Include="src\main\java\org\dddml\wms\domain\movementlinemvo\MovementLineMvoStateRepository.java">
       <DependentUpon>GenerateMovementLineMvoDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movementtype\AbstractMovementTypeAggregate.java">
-      <DependentUpon>GenerateMovementTypeDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\movementtype\AbstractMovementTypeApplicationService.java">
-      <DependentUpon>GenerateMovementTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movementtype\AbstractMovementTypeCommand.java">
       <DependentUpon>GenerateMovementTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\movementtype\AbstractMovementTypeCommandDto.java">
       <DependentUpon>GenerateMovementTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\movementtype\AbstractMovementTypeState.java">
-      <DependentUpon>GenerateMovementTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movementtype\AbstractMovementTypeStateCommandConverter.java">
-      <DependentUpon>GenerateMovementTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movementtype\AbstractMovementTypeStateEvent.java">
       <DependentUpon>GenerateMovementTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\movementtype\CreateOrMergePatchMovementTypeDto.java">
@@ -3227,9 +3098,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateMovementTypeDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movementtype\MovementTypeAggregate.java">
-      <DependentUpon>GenerateMovementTypeDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\movementtype\MovementTypeApplicationService.java">
       <DependentUpon>GenerateMovementTypeDomain.tt</DependentUpon>
     </Content>
@@ -3240,30 +3108,6 @@
       <DependentUpon>GenerateMovementTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\movementtype\MovementTypeStateDto.java">
-      <DependentUpon>GenerateMovementTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movementtype\MovementTypeStateEvent.java">
-      <DependentUpon>GenerateMovementTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movementtype\MovementTypeStateEventDto.java">
-      <DependentUpon>GenerateMovementTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movementtype\MovementTypeStateEventDtoConverter.java">
-      <DependentUpon>GenerateMovementTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movementtype\MovementTypeStateEventId.java">
-      <DependentUpon>GenerateMovementTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movementtype\MovementTypeStateEventIdDto.java">
-      <DependentUpon>GenerateMovementTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movementtype\MovementTypeStateEventIdDtoWrapper.java">
-      <DependentUpon>GenerateMovementTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movementtype\MovementTypeStateEventIdFlattenedDto.java">
-      <DependentUpon>GenerateMovementTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\movementtype\MovementTypeStateEventIdFlattenedDtoFormatter.java">
       <DependentUpon>GenerateMovementTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\movementtype\MovementTypeStateQueryRepository.java">
@@ -5595,25 +5439,13 @@
     <Content Include="src\main\java\org\dddml\wms\domain\uomconversion\UomConversionStateRepository.java">
       <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\AbstractUomTypeAggregate.java">
-      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\uomtype\AbstractUomTypeApplicationService.java">
-      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\AbstractUomTypeCommand.java">
       <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\uomtype\AbstractUomTypeCommandDto.java">
       <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\uomtype\AbstractUomTypeState.java">
-      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\AbstractUomTypeStateCommandConverter.java">
-      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\AbstractUomTypeStateEvent.java">
       <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\uomtype\CreateOrMergePatchUomTypeDto.java">
@@ -5627,9 +5459,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\UomTypeAggregate.java">
-      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
-    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\uomtype\UomTypeApplicationService.java">
       <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
     </Content>
@@ -5640,30 +5469,6 @@
       <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\uomtype\UomTypeStateDto.java">
-      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\UomTypeStateEvent.java">
-      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\UomTypeStateEventDto.java">
-      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\UomTypeStateEventDtoConverter.java">
-      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\UomTypeStateEventId.java">
-      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\UomTypeStateEventIdDto.java">
-      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\UomTypeStateEventIdDtoWrapper.java">
-      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\UomTypeStateEventIdFlattenedDto.java">
-      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\uomtype\UomTypeStateEventIdFlattenedDtoFormatter.java">
       <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\uomtype\UomTypeStateQueryRepository.java">
@@ -6606,28 +6411,15 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateDocumentTypeDomain.txt</LastGenOutput>
       <LastOutputs>
-.\AbstractDocumentTypeAggregate.java
 .\AbstractDocumentTypeApplicationService.java
-.\AbstractDocumentTypeCommand.java
 .\AbstractDocumentTypeCommandDto.java
 .\AbstractDocumentTypeState.java
-.\AbstractDocumentTypeStateCommandConverter.java
-.\AbstractDocumentTypeStateEvent.java
 .\CreateOrMergePatchDocumentTypeDto.java
 .\DeleteDocumentTypeDto.java
-.\DocumentTypeAggregate.java
 .\DocumentTypeApplicationService.java
 .\DocumentTypeCommand.java
 .\DocumentTypeState.java
 .\DocumentTypeStateDto.java
-.\DocumentTypeStateEvent.java
-.\DocumentTypeStateEventDto.java
-.\DocumentTypeStateEventDtoConverter.java
-.\DocumentTypeStateEventId.java
-.\DocumentTypeStateEventIdDto.java
-.\DocumentTypeStateEventIdDtoWrapper.java
-.\DocumentTypeStateEventIdFlattenedDto.java
-.\DocumentTypeStateEventIdFlattenedDtoFormatter.java
 .\DocumentTypeStateQueryRepository.java
 .\DocumentTypeStateRepository.java
 .\GenerateDocumentTypeDomain.txt
@@ -6637,29 +6429,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateMovementTypeDomain.txt</LastGenOutput>
       <LastOutputs>
-.\AbstractMovementTypeAggregate.java
 .\AbstractMovementTypeApplicationService.java
-.\AbstractMovementTypeCommand.java
 .\AbstractMovementTypeCommandDto.java
 .\AbstractMovementTypeState.java
-.\AbstractMovementTypeStateCommandConverter.java
-.\AbstractMovementTypeStateEvent.java
 .\CreateOrMergePatchMovementTypeDto.java
 .\DeleteMovementTypeDto.java
 .\GenerateMovementTypeDomain.txt
-.\MovementTypeAggregate.java
 .\MovementTypeApplicationService.java
 .\MovementTypeCommand.java
 .\MovementTypeState.java
 .\MovementTypeStateDto.java
-.\MovementTypeStateEvent.java
-.\MovementTypeStateEventDto.java
-.\MovementTypeStateEventDtoConverter.java
-.\MovementTypeStateEventId.java
-.\MovementTypeStateEventIdDto.java
-.\MovementTypeStateEventIdDtoWrapper.java
-.\MovementTypeStateEventIdFlattenedDto.java
-.\MovementTypeStateEventIdFlattenedDtoFormatter.java
 .\MovementTypeStateQueryRepository.java
 .\MovementTypeStateRepository.java
 </LastOutputs>
@@ -7601,29 +7380,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateUomTypeDomain.txt</LastGenOutput>
       <LastOutputs>
-.\AbstractUomTypeAggregate.java
 .\AbstractUomTypeApplicationService.java
-.\AbstractUomTypeCommand.java
 .\AbstractUomTypeCommandDto.java
 .\AbstractUomTypeState.java
-.\AbstractUomTypeStateCommandConverter.java
-.\AbstractUomTypeStateEvent.java
 .\CreateOrMergePatchUomTypeDto.java
 .\DeleteUomTypeDto.java
 .\GenerateUomTypeDomain.txt
-.\UomTypeAggregate.java
 .\UomTypeApplicationService.java
 .\UomTypeCommand.java
 .\UomTypeState.java
 .\UomTypeStateDto.java
-.\UomTypeStateEvent.java
-.\UomTypeStateEventDto.java
-.\UomTypeStateEventDtoConverter.java
-.\UomTypeStateEventId.java
-.\UomTypeStateEventIdDto.java
-.\UomTypeStateEventIdDtoWrapper.java
-.\UomTypeStateEventIdFlattenedDto.java
-.\UomTypeStateEventIdFlattenedDtoFormatter.java
 .\UomTypeStateQueryRepository.java
 .\UomTypeStateRepository.java
 </LastOutputs>
@@ -7756,27 +7522,14 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateDamageTypeDomain.txt</LastGenOutput>
       <LastOutputs>
-.\AbstractDamageTypeAggregate.java
 .\AbstractDamageTypeApplicationService.java
-.\AbstractDamageTypeCommand.java
 .\AbstractDamageTypeCommandDto.java
 .\AbstractDamageTypeState.java
-.\AbstractDamageTypeStateCommandConverter.java
-.\AbstractDamageTypeStateEvent.java
 .\CreateOrMergePatchDamageTypeDto.java
-.\DamageTypeAggregate.java
 .\DamageTypeApplicationService.java
 .\DamageTypeCommand.java
 .\DamageTypeState.java
 .\DamageTypeStateDto.java
-.\DamageTypeStateEvent.java
-.\DamageTypeStateEventDto.java
-.\DamageTypeStateEventDtoConverter.java
-.\DamageTypeStateEventId.java
-.\DamageTypeStateEventIdDto.java
-.\DamageTypeStateEventIdDtoWrapper.java
-.\DamageTypeStateEventIdFlattenedDto.java
-.\DamageTypeStateEventIdFlattenedDtoFormatter.java
 .\DamageTypeStateQueryRepository.java
 .\DamageTypeStateRepository.java
 .\DeleteDamageTypeDto.java
@@ -7787,27 +7540,14 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateDamageHandlingMethodDomain.txt</LastGenOutput>
       <LastOutputs>
-.\AbstractDamageHandlingMethodAggregate.java
 .\AbstractDamageHandlingMethodApplicationService.java
-.\AbstractDamageHandlingMethodCommand.java
 .\AbstractDamageHandlingMethodCommandDto.java
 .\AbstractDamageHandlingMethodState.java
-.\AbstractDamageHandlingMethodStateCommandConverter.java
-.\AbstractDamageHandlingMethodStateEvent.java
 .\CreateOrMergePatchDamageHandlingMethodDto.java
-.\DamageHandlingMethodAggregate.java
 .\DamageHandlingMethodApplicationService.java
 .\DamageHandlingMethodCommand.java
 .\DamageHandlingMethodState.java
 .\DamageHandlingMethodStateDto.java
-.\DamageHandlingMethodStateEvent.java
-.\DamageHandlingMethodStateEventDto.java
-.\DamageHandlingMethodStateEventDtoConverter.java
-.\DamageHandlingMethodStateEventId.java
-.\DamageHandlingMethodStateEventIdDto.java
-.\DamageHandlingMethodStateEventIdDtoWrapper.java
-.\DamageHandlingMethodStateEventIdFlattenedDto.java
-.\DamageHandlingMethodStateEventIdFlattenedDtoFormatter.java
 .\DamageHandlingMethodStateQueryRepository.java
 .\DamageHandlingMethodStateRepository.java
 .\DeleteDamageHandlingMethodDto.java

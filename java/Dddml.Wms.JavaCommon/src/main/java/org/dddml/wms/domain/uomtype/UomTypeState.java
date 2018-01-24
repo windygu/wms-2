@@ -4,7 +4,6 @@ import java.util.Set;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.uomtype.UomTypeStateEvent.*;
 
 public interface UomTypeState
 {
@@ -61,14 +60,10 @@ public interface UomTypeState
 
     boolean getForReapplying();
 
+    String getCommandId();
 
-    void mutate(Event e);
+    void setCommandId(String commandId);
 
-    void when(UomTypeStateEvent.UomTypeStateCreated e);
-
-    void when(UomTypeStateEvent.UomTypeStateMergePatched e);
-
-    void when(UomTypeStateEvent.UomTypeStateDeleted e);
     
 }
 

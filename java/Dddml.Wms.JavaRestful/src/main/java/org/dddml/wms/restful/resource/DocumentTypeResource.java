@@ -128,7 +128,7 @@ public class DocumentTypeResource {
                        @QueryParam("requesterId") String requesterId) {
         try {
 
-            DocumentTypeCommand.DeleteDocumentType deleteCmd = new AbstractDocumentTypeCommand.SimpleDeleteDocumentType();
+            DocumentTypeCommand.DeleteDocumentType deleteCmd = new DeleteDocumentTypeDto().toDeleteDocumentType();;
 
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
@@ -150,11 +150,6 @@ public class DocumentTypeResource {
             return filtering;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
-    }
-
-
-    protected  DocumentTypeStateEventDtoConverter getDocumentTypeStateEventDtoConverter() {
-        return new DocumentTypeStateEventDtoConverter();
     }
 
     protected String getQueryOrderSeparator() {

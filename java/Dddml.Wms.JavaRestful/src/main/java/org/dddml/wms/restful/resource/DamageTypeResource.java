@@ -128,7 +128,7 @@ public class DamageTypeResource {
                        @QueryParam("requesterId") String requesterId) {
         try {
 
-            DamageTypeCommand.DeleteDamageType deleteCmd = new AbstractDamageTypeCommand.SimpleDeleteDamageType();
+            DamageTypeCommand.DeleteDamageType deleteCmd = new DeleteDamageTypeDto().toDeleteDamageType();;
 
             deleteCmd.setCommandId(commandId);
             deleteCmd.setRequesterId(requesterId);
@@ -150,11 +150,6 @@ public class DamageTypeResource {
             return filtering;
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
-    }
-
-
-    protected  DamageTypeStateEventDtoConverter getDamageTypeStateEventDtoConverter() {
-        return new DamageTypeStateEventDtoConverter();
     }
 
     protected String getQueryOrderSeparator() {
