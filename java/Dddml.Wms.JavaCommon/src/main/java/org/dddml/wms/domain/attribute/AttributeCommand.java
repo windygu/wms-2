@@ -4,6 +4,14 @@ import org.dddml.wms.domain.Command;
 import org.dddml.wms.specialization.DomainError;
 
 public interface AttributeCommand extends Command {
+    String getAttributeId();
+
+    void setAttributeId(String attributeId);
+
+    Long getVersion();
+
+    void setVersion(Long version);
+
     static void throwOnInvalidStateTransition(AttributeState state, Command c) {
         if (state.getVersion() == null) {
             if (isCommandCreate((AttributeCommand) c)) {
@@ -22,14 +30,6 @@ public interface AttributeCommand extends Command {
         return ((c instanceof AttributeCommand.CreateAttribute)
                 && c.getVersion().equals(AttributeState.VERSION_NULL));
     }
-
-    String getAttributeId();
-
-    void setAttributeId(String attributeId);
-
-    Long getVersion();
-
-    void setVersion(Long version);
 
     interface CreateOrMergePatchAttribute extends AttributeCommand {
         String getAttributeName();
