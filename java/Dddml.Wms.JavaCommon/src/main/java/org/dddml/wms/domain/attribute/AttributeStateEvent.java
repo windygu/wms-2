@@ -1,12 +1,10 @@
 package org.dddml.wms.domain.attribute;
 
-import java.util.*;
-import java.util.Date;
-import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
-public interface AttributeStateEvent extends Event
-{
+import java.util.Date;
+
+public interface AttributeStateEvent extends Event {
     AttributeStateEventId getStateEventId();
 
     boolean getStateEventReadOnly();
@@ -65,26 +63,24 @@ public interface AttributeStateEvent extends Event
 
     void setCommandId(String commandId);
 
-    interface AttributeStateCreated extends AttributeStateEvent
-    {
+    interface AttributeStateCreated extends AttributeStateEvent {
         Iterable<AttributeValueStateEvent.AttributeValueStateCreated> getAttributeValueEvents();
-        
+
         void addAttributeValueEvent(AttributeValueStateEvent.AttributeValueStateCreated e);
 
         AttributeValueStateEvent.AttributeValueStateCreated newAttributeValueStateCreated(String value);
 
         Iterable<AttributeAliasStateEvent.AttributeAliasStateCreated> getAttributeAliasEvents();
-        
+
         void addAttributeAliasEvent(AttributeAliasStateEvent.AttributeAliasStateCreated e);
 
         AttributeAliasStateEvent.AttributeAliasStateCreated newAttributeAliasStateCreated(String code);
 
-    
+
     }
 
 
-    interface AttributeStateMergePatched extends AttributeStateEvent
-    {
+    interface AttributeStateMergePatched extends AttributeStateEvent {
         Boolean getIsPropertyAttributeNameRemoved();
 
         void setIsPropertyAttributeNameRemoved(Boolean removed);
@@ -126,7 +122,7 @@ public interface AttributeStateEvent extends Event
         void setIsPropertyActiveRemoved(Boolean removed);
 
         Iterable<AttributeValueStateEvent> getAttributeValueEvents();
-        
+
         void addAttributeValueEvent(AttributeValueStateEvent e);
 
         AttributeValueStateEvent.AttributeValueStateCreated newAttributeValueStateCreated(String value);
@@ -136,7 +132,7 @@ public interface AttributeStateEvent extends Event
         AttributeValueStateEvent.AttributeValueStateRemoved newAttributeValueStateRemoved(String value);
 
         Iterable<AttributeAliasStateEvent> getAttributeAliasEvents();
-        
+
         void addAttributeAliasEvent(AttributeAliasStateEvent e);
 
         AttributeAliasStateEvent.AttributeAliasStateCreated newAttributeAliasStateCreated(String code);
@@ -148,18 +144,17 @@ public interface AttributeStateEvent extends Event
 
     }
 
-    interface AttributeStateDeleted extends AttributeStateEvent
-    {
+    interface AttributeStateDeleted extends AttributeStateEvent {
         Iterable<AttributeValueStateEvent.AttributeValueStateRemoved> getAttributeValueEvents();
-        
+
         void addAttributeValueEvent(AttributeValueStateEvent.AttributeValueStateRemoved e);
-        
+
         AttributeValueStateEvent.AttributeValueStateRemoved newAttributeValueStateRemoved(String value);
 
         Iterable<AttributeAliasStateEvent.AttributeAliasStateRemoved> getAttributeAliasEvents();
-        
+
         void addAttributeAliasEvent(AttributeAliasStateEvent.AttributeAliasStateRemoved e);
-        
+
         AttributeAliasStateEvent.AttributeAliasStateRemoved newAttributeAliasStateRemoved(String code);
 
     }
