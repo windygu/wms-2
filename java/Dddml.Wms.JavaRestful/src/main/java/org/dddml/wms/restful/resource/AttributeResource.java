@@ -1,24 +1,28 @@
 package org.dddml.wms.restful.resource;
 
-import java.util.*;
-import javax.servlet.http.*;
-import javax.validation.constraints.*;
-import javax.ws.rs.*;
-import javax.ws.rs.core.*;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import org.apache.cxf.jaxrs.ext.PATCH;
-
 import org.dddml.support.criterion.*;
-import java.util.Date;
-import org.dddml.wms.domain.*;
-import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.attribute.*;
-import org.dddml.wms.domain.meta.*;
-
-import com.alibaba.fastjson.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.dddml.support.criterion.TypeConverter;
+import org.dddml.wms.domain.attribute.*;
+import org.dddml.wms.domain.meta.AttributeFilteringProperties;
+import org.dddml.wms.specialization.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
-@Path("Attributes") @Produces(MediaType.APPLICATION_JSON)
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+@Path("Attributes")
+@Produces(MediaType.APPLICATION_JSON)
 public class AttributeResource {
 
     @Autowired
@@ -31,16 +35,20 @@ public class AttributeResource {
 
     @GET
     public AttributeStateDto[] getAll(@Context HttpServletRequest request,
-                                   @QueryParam("sort") String sort,
-                                   @QueryParam("fields") String fields,
-                                   @QueryParam("firstResult") @DefaultValue("0") Integer firstResult,
-                                   @QueryParam("maxResults") @DefaultValue("2147483647") Integer maxResults,
-                                   @QueryParam("filter") String filter) {
-        if (firstResult < 0) { firstResult = 0; }
-        if (maxResults == null || maxResults < 1) { maxResults = Integer.MAX_VALUE; }
+                                      @QueryParam("sort") String sort,
+                                      @QueryParam("fields") String fields,
+                                      @QueryParam("firstResult") @DefaultValue("0") Integer firstResult,
+                                      @QueryParam("maxResults") @DefaultValue("2147483647") Integer maxResults,
+                                      @QueryParam("filter") String filter) {
+        if (firstResult < 0) {
+            firstResult = 0;
+        }
+        if (maxResults == null || maxResults < 1) {
+            maxResults = Integer.MAX_VALUE;
+        }
         try {
 
-            Iterable<AttributeState> states = null; 
+            Iterable<AttributeState> states = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 states = attributeApplicationService.get(
                         CriterionDto.toSubclass(
@@ -63,15 +71,22 @@ public class AttributeResource {
             }
             return dtoConverter.toAttributeStateDtoArray(states);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) {
+            throw error;
+        } catch (Exception ex) {
+            throw new DomainError("ExceptionCaught", ex);
+        }
     }
 
-    @Path("{id}") @GET
+    @Path("{id}")
+    @GET
     public AttributeStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
         try {
             String idObj = id;
             AttributeState state = attributeApplicationService.get(idObj);
-            if (state == null) { return null; }
+            if (state == null) {
+                return null;
+            }
 
             AttributeStateDto.DtoConverter dtoConverter = new AttributeStateDto.DtoConverter();
             if (StringHelper.isNullOrEmpty(fields)) {
@@ -81,18 +96,28 @@ public class AttributeResource {
             }
             return dtoConverter.toAttributeStateDto(state);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) {
+            throw error;
+        } catch (Exception ex) {
+            throw new DomainError("ExceptionCaught", ex);
+        }
     }
 
 
-    @Path("_nextId") @GET
+    @Path("_nextId")
+    @GET
     public String getNextId() {
         try {
             return attributeIdGenerator.getNextId();
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) {
+            throw error;
+        } catch (Exception ex) {
+            throw new DomainError("ExceptionCaught", ex);
+        }
     }
 
-    @Path("_count") @GET
+    @Path("_count")
+    @GET
     public long getCount(@Context HttpServletRequest request,
                          @QueryParam("filter") String filter) {
         try {
@@ -105,11 +130,16 @@ public class AttributeResource {
             }
             return count;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) {
+            throw error;
+        } catch (Exception ex) {
+            throw new DomainError("ExceptionCaught", ex);
+        }
     }
 
 
-    @Path("{id}") @PUT
+    @Path("{id}")
+    @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchAttributeDto.CreateAttributeDto value) {
         try {
 
@@ -117,11 +147,16 @@ public class AttributeResource {
             AttributeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             attributeApplicationService.when(cmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) {
+            throw error;
+        } catch (Exception ex) {
+            throw new DomainError("ExceptionCaught", ex);
+        }
     }
 
 
-    @Path("{id}") @PATCH
+    @Path("{id}")
+    @PATCH
     public void patch(@PathParam("id") String id, CreateOrMergePatchAttributeDto.MergePatchAttributeDto value) {
         try {
 
@@ -129,10 +164,15 @@ public class AttributeResource {
             AttributeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             attributeApplicationService.when(cmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) {
+            throw error;
+        } catch (Exception ex) {
+            throw new DomainError("ExceptionCaught", ex);
+        }
     }
 
-    @Path("{id}") @DELETE
+    @Path("{id}")
+    @DELETE
     public void delete(@PathParam("id") String id,
                        @NotNull @QueryParam("commandId") String commandId,
                        @NotNull @QueryParam("version") @Min(value = -1) Long version,
@@ -147,10 +187,15 @@ public class AttributeResource {
             AttributeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
             attributeApplicationService.when(deleteCmd);
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) {
+            throw error;
+        } catch (Exception ex) {
+            throw new DomainError("ExceptionCaught", ex);
+        }
     }
 
-    @Path("_metadata/filteringFields") @GET
+    @Path("_metadata/filteringFields")
+    @GET
     public List<PropertyMetadataDto> getMetadataFilteringFields() {
         try {
 
@@ -160,10 +205,15 @@ public class AttributeResource {
             });
             return filtering;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) {
+            throw error;
+        } catch (Exception ex) {
+            throw new DomainError("ExceptionCaught", ex);
+        }
     }
 
-    @Path("{id}/_stateEvents/{version}") @GET
+    @Path("{id}/_stateEvents/{version}")
+    @GET
     public AttributeStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
         try {
 
@@ -171,10 +221,15 @@ public class AttributeResource {
             AttributeStateEventDtoConverter dtoConverter = getAttributeStateEventDtoConverter();
             return dtoConverter.toAttributeStateEventDto((AbstractAttributeStateEvent) attributeApplicationService.getStateEvent(idObj, version));
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) {
+            throw error;
+        } catch (Exception ex) {
+            throw new DomainError("ExceptionCaught", ex);
+        }
     }
 
-    @Path("{id}/_historyStates/{version}") @GET
+    @Path("{id}/_historyStates/{version}")
+    @GET
     public AttributeStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version, @QueryParam("fields") String fields) {
         try {
 
@@ -187,39 +242,57 @@ public class AttributeResource {
             }
             return dtoConverter.toAttributeStateDto(attributeApplicationService.getHistoryState(idObj, version));
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) {
+            throw error;
+        } catch (Exception ex) {
+            throw new DomainError("ExceptionCaught", ex);
+        }
     }
 
-    @Path("{attributeId}/AttributeValues/{value}") @GET
+    @Path("{attributeId}/AttributeValues/{value}")
+    @GET
     public AttributeValueStateDto getAttributeValue(@PathParam("attributeId") String attributeId, @PathParam("value") String value) {
         try {
 
             AttributeValueState state = attributeApplicationService.getAttributeValue(attributeId, value);
-            if (state == null) { return null; }
+            if (state == null) {
+                return null;
+            }
             AttributeValueStateDto.DtoConverter dtoConverter = new AttributeValueStateDto.DtoConverter();
             AttributeValueStateDto stateDto = dtoConverter.toAttributeValueStateDto(state);
             dtoConverter.setAllFieldsReturned(true);
             return stateDto;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) {
+            throw error;
+        } catch (Exception ex) {
+            throw new DomainError("ExceptionCaught", ex);
+        }
     }
 
-    @Path("{attributeId}/AttributeAlias/{code}") @GET
+    @Path("{attributeId}/AttributeAlias/{code}")
+    @GET
     public AttributeAliasStateDto getAttributeAlias(@PathParam("attributeId") String attributeId, @PathParam("code") String code) {
         try {
 
             AttributeAliasState state = attributeApplicationService.getAttributeAlias(attributeId, code);
-            if (state == null) { return null; }
+            if (state == null) {
+                return null;
+            }
             AttributeAliasStateDto.DtoConverter dtoConverter = new AttributeAliasStateDto.DtoConverter();
             AttributeAliasStateDto stateDto = dtoConverter.toAttributeAliasStateDto(state);
             dtoConverter.setAllFieldsReturned(true);
             return stateDto;
 
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+        } catch (DomainError error) {
+            throw error;
+        } catch (Exception ex) {
+            throw new DomainError("ExceptionCaught", ex);
+        }
     }
 
 
-    protected  AttributeStateEventDtoConverter getAttributeStateEventDtoConverter() {
+    protected AttributeStateEventDtoConverter getAttributeStateEventDtoConverter() {
         return new AttributeStateEventDtoConverter();
     }
 
@@ -237,14 +310,6 @@ public class AttributeResource {
 
     // ////////////////////////////////
 
-    private class AttributePropertyTypeResolver implements PropertyTypeResolver {
-        @Override
-        public Class resolveTypeByPropertyName(String propertyName) {
-            return AttributeResourceUtils.getFilterPropertyType(propertyName);
-        }
-    }
-
- 
     public static class AttributeResourceUtils {
 
         public static List<String> getQueryOrders(String str, String separator) {
@@ -269,7 +334,6 @@ public class AttributeResource {
                 throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getAttributeId());
             }
         }
-    
 
 
         public static String getFilterPropertyName(String fieldName) {
@@ -321,6 +385,13 @@ public class AttributeResource {
             return states.toArray(new AttributeStateDto[0]);
         }
 
+    }
+
+    private class AttributePropertyTypeResolver implements PropertyTypeResolver {
+        @Override
+        public Class resolveTypeByPropertyName(String propertyName) {
+            return AttributeResourceUtils.getFilterPropertyType(propertyName);
+        }
     }
 
 }
