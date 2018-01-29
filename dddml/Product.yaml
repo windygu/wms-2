@@ -12,9 +12,11 @@ aggregates:
     properties:
       ProductTypeId:
         type: id
+      # 主产品分类 Id.
       PrimaryProductCategoryId:
         description: The primary category ; it should be one of the productCategoryId already setup in ProductCategoryMember
         type: id
+      # 制造商 Id.
       ManufacturerPartyId:
         type: id
       FacilityId:
@@ -64,6 +66,7 @@ aggregates:
       RequireInventory:
         type: indicator
         
+      # 产品的数量单位
       QuantityUomId:
         type: id
       QuantityIncluded:
@@ -107,8 +110,10 @@ aggregates:
       ProductDiameter:
         type: fixed-point
         
+      # 产品等级
       ProductRating:
         type: fixed-point
+        
       RatingTypeEnum:
         type: id
         
@@ -166,19 +171,23 @@ aggregates:
         # type: indicator
         
       # ---------------------------------------
+      # 是否需要序列号管理
       IsSerialNumbered:
         type: bool
         # bool IsSerialNumberMandatory
 
+      # 是否需要批次管理
       IsManagedByLot:
         type: bool
         # bool IsLotMandatory
 
+      # 产品属性集 Id.，决定产品的库存实例需要具备的属性信息。比如说，收货的时候，需要录入相应的“产品属性集实例”。
       AttributeSetId:
         type: string
         referenceType: AttributeSet
         notNull: false
         
+      # 产品属性集实例 Id.，描述产品（而不是产品的库存实例）的共同属性。
       AttributeSetInstanceId:
         type: string
         referenceType: AttributeSetInstance
