@@ -39,7 +39,12 @@ public class TestMain {
         //if (true) return;
 
         ApplicationContext.current = new SpringApplicationContext(springFrameworkApplicationContext);
+
+        // ///////////////////////////////////
         initEntityXmlData();
+
+        InitInventoryPostingRules.createDefaultInventoryPostingRules();
+        // ///////////////////////////////////
         //if(true) return;
 
         testInventoryItemApplicationService();
