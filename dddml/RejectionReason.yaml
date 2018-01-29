@@ -4,7 +4,7 @@
 
 # ------------------------------
 aggregates:
-
+  # 拒收原因
   RejectionReason:
     id:
       name: RejectionReasonId

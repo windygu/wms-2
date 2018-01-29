@@ -6,6 +6,7 @@
 aggregates:
               
     # ----------------------- aggregate -------------------------
+    # 库存移动单（调拨单）
     Movement:
       id:
         name: DocumentNumber
@@ -13,14 +14,16 @@ aggregates:
         
       properties:
       
+        # 单据状态 Id.
         DocumentStatusId:
           type: string
           commandType: DocumentAction
           commandName: DocumentAction
           
           # -------------------------------------
+          # 单据状态的状态机
           stateMachine:
-          
+            # 转换
             transitions:
             
             - sourceState: null
@@ -34,6 +37,7 @@ aggregates:
             - sourceState: "Drafted"
               trigger: "Complete"
               targetState: "Completed"
+              # 守备条件（如果不是在途单据，直接转换到“已完成”状态）
               guard:
                 Java: "{this}.getIsInTransit() == false"
                 CSharp: "{this}.IsInTransit == false"
@@ -41,6 +45,7 @@ aggregates:
             - sourceState: "Drafted"
               trigger: "Complete"
               targetState: "InProgress"
+              # 守备条件（如果是在途单据，转换到“进程中”状态）
               guard:
                 Java: "{this}.getIsInTransit() == true"
                 CSharp: "{this}.IsInTransit == true"
@@ -123,6 +128,7 @@ aggregates:
           type: string
 
         # ------------------------------------
+        # 移动单行项
         MovementLines:
           itemType: MovementLine
           
@@ -134,21 +140,26 @@ aggregates:
             type: string
         
           properties:
-          
+            
+            # 移动数量
             MovementQuantity:
               type: decimal
               displayName: Quantity of a product moved.
               description: The Movement Quantity indicates the quantity of a product that has been moved. 
 
+            # 产品 Id.
             ProductId:
               type: id-long
               
+            # 源货位 Id.
             LocatorIdFrom:
               type: string
               
+            # 目标货位 Id.
             LocatorIdTo:
               type: string
               
+            # 属性集实例 Id.
             AttributeSetInstanceId:
               type: string
               

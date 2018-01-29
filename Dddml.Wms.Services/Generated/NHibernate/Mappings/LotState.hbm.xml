@@ -9,7 +9,6 @@
 
 	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 
-    <property name="CreationDate" ><column name="CreationDate" sql-type="DATETIME" /></property>
     <property name="Quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>
     <property name="ExpirationDate" ><column name="ExpirationDate" sql-type="DATETIME" /></property>
     <property name="CreatedBy" ></property>

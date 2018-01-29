@@ -5,35 +5,28 @@
 # ------------------------------
 enumObjects:
     
+    # 单据操作
     DocumentAction:
       baseType: string
       
       values:
+        # 起草
         Draft:
           description: Draft
+        # 完成
         Complete:
           description: Complete
+        # 作废
         Void:
           description: Void
+        # 关闭
         Close: 
           description: Close
+        # 反转（完成后撤销）
         Reverse:
           description: Reverse
+        # 确认（部分单据需要确认）
         Confirm:
           description: Confirm
           
             
-# ------------------------------
-
-#valueObjects:
-
-    #SkuId:
-    #  properties:
-    #    ProductId:
-    #      type: id-long
-    #    AttributeSetInstanceId:
-    #      type: string        
-
-                
-                
-                 

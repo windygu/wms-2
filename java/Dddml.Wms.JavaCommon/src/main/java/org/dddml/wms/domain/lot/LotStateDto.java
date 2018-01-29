@@ -21,18 +21,6 @@ public class LotStateDto
         this.lotId = lotId;
     }
 
-    private java.sql.Timestamp creationDate;
-
-    public java.sql.Timestamp getCreationDate()
-    {
-        return this.creationDate;
-    }
-
-    public void setCreationDate(java.sql.Timestamp creationDate)
-    {
-        this.creationDate = creationDate;
-    }
-
     private java.math.BigDecimal quantity;
 
     public java.math.BigDecimal getQuantity()
@@ -157,9 +145,6 @@ public class LotStateDto
             LotStateDto dto = new LotStateDto();
             if (returnedFieldsContains("LotId")) {
                 dto.setLotId(state.getLotId());
-            }
-            if (returnedFieldsContains("CreationDate")) {
-                dto.setCreationDate(state.getCreationDate());
             }
             if (returnedFieldsContains("Quantity")) {
                 dto.setQuantity(state.getQuantity());

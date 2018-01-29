@@ -5,6 +5,7 @@
 # ------------------------------
 aggregates:
 
+  # 度量单位转换
   UomConversion:
     id:
       name: UomConversionId

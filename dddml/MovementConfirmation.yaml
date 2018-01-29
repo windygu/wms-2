@@ -6,6 +6,7 @@
 aggregates:
               
     # ----------------------- aggregate -------------------------
+    # 库存移动确认单
     MovementConfirmation:
       id:
         name: DocumentNumber
@@ -64,6 +65,7 @@ aggregates:
           type: string
 
         # ------------------------------------
+        # 移动确认单行项
         MovementConfirmationLines:
           itemType: MovementConfirmationLine
         
@@ -76,22 +78,27 @@ aggregates:
         
           properties:
 
+            # 移动单行项
             MovementLineNumber:
               type: string
               # referenceType: MovementLine
 
+            # 目标数量
             TargetQuantity:
               description: The Quantity which should have been received.
               type: decimal
               
+            # 确认数量
             ConfirmedQuantity:
               description: Confirmation of a received quantity.
               type: decimal
               
+            # 差异数量
             DifferenceQuantity:
               description: If there is a difference quantity, a Physical Inventory is created for the source (from) warehouse. 
               type: decimal
 
+            # 破损数量
             ScrappedQuantity:
               description: "The Quantity scrapped due to QA issues. If there is a scrapped quantity, a Physical Inventory is created for the target (to) warehouse."
               type: decimal
@@ -109,6 +116,7 @@ aggregates:
           constraints:
             # --------- 数量之间的约束 ------------
             QuantitiesConstraint:
+              # 确认后，目标数量 + 差异数量 = 确认数量
               validationLogic:
                 PseudoCode: "ConfirmedQuantity == 0 || TargetQuantity + DifferenceQuantity == ConfirmedQuantity"
                 CSharp: "{this}.ConfirmedQuantity == 0 || {this}.TargetQuantity + {this}.DifferenceQuantity == {this}.ConfirmedQuantity"

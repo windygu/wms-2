@@ -42,7 +42,6 @@ namespace Dddml.Wms.Domain.Lot
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
-            dto.CreationDate = e.CreationDate;
             dto.Quantity = e.Quantity;
             dto.ExpirationDate = e.ExpirationDate;
             dto.Active = e.Active;
@@ -56,11 +55,9 @@ namespace Dddml.Wms.Domain.Lot
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
-            dto.CreationDate = e.CreationDate;
             dto.Quantity = e.Quantity;
             dto.ExpirationDate = e.ExpirationDate;
             dto.Active = e.Active;
-            dto.IsPropertyCreationDateRemoved = e.IsPropertyCreationDateRemoved;
             dto.IsPropertyQuantityRemoved = e.IsPropertyQuantityRemoved;
             dto.IsPropertyExpirationDateRemoved = e.IsPropertyExpirationDateRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;

@@ -209,8 +209,6 @@
 
     drop table if exists UomTypes;
 
-    drop table if exists UomTypeStateEvents;
-
     drop table if exists Lots;
 
     drop table if exists LotStateEvents;
@@ -3679,31 +3677,13 @@
        Deleted TINYINT(1),
        CreatedAt DATETIME,
        UpdatedAt DATETIME,
-       primary key (UomTypeId)
-    );
-
-    create table UomTypeStateEvents (
-        UomTypeId VARCHAR(20) not null,
-       Version BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       ParentTypeId VARCHAR(20),
-       HasTable CHAR(1),
-       Description VARCHAR(255),
-       Active TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
        CommandId VARCHAR(255),
-       IsPropertyParentTypeIdRemoved TINYINT(1),
-       IsPropertyHasTableRemoved TINYINT(1),
-       IsPropertyDescriptionRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (UomTypeId, Version)
+       primary key (UomTypeId)
     );
 
     create table Lots (
         LotId VARCHAR(20) not null,
        Version BIGINT not null,
-       CreationDate DATETIME,
        Quantity DECIMAL(18,6),
        ExpirationDate DATETIME,
        CreatedBy VARCHAR(255),
@@ -3719,14 +3699,12 @@
         LotId VARCHAR(20) not null,
        Version BIGINT not null,
        StateEventType VARCHAR(255) not null,
-       CreationDate DATETIME,
        Quantity DECIMAL(18,6),
        ExpirationDate DATETIME,
        Active TINYINT(1),
        CreatedBy VARCHAR(255),
        CreatedAt DATETIME,
        CommandId VARCHAR(255),
-       IsPropertyCreationDateRemoved TINYINT(1),
        IsPropertyQuantityRemoved TINYINT(1),
        IsPropertyExpirationDateRemoved TINYINT(1),
        IsPropertyActiveRemoved TINYINT(1),

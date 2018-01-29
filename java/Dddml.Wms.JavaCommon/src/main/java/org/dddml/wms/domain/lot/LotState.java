@@ -16,10 +16,6 @@ public interface LotState
 
     void setLotId(String lotId);
 
-    java.sql.Timestamp getCreationDate();
-
-    void setCreationDate(java.sql.Timestamp creationDate);
-
     java.math.BigDecimal getQuantity();
 
     void setQuantity(java.math.BigDecimal quantity);

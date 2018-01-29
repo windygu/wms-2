@@ -4,7 +4,7 @@
 
 # ------------------------------
 aggregates:
-
+  # 产品分类
   ProductCategory:
     id:
       name: ProductCategoryId

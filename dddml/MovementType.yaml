@@ -6,6 +6,7 @@
 aggregates:
               
     # ----------------------- aggregate -------------------------
+    # 库存变化（移动）类型
     MovementType:
       id:
         name: MovementTypeId

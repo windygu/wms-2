@@ -5,6 +5,7 @@
 # ------------------------------
 aggregates:
 
+  # 度量单位
   Uom:
     id:
       name: UomId

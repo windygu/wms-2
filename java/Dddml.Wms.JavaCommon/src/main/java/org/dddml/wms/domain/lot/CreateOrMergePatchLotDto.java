@@ -5,18 +5,6 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchLotDto extends AbstractLotCommandDto
 {
-    private java.sql.Timestamp creationDate;
-
-    public java.sql.Timestamp getCreationDate()
-    {
-        return this.creationDate;
-    }
-
-    public void setCreationDate(java.sql.Timestamp creationDate)
-    {
-        this.creationDate = creationDate;
-    }
-
     private java.math.BigDecimal quantity;
 
     public java.math.BigDecimal getQuantity()
@@ -51,18 +39,6 @@ public class CreateOrMergePatchLotDto extends AbstractLotCommandDto
     public void setActive(Boolean active)
     {
         this.active = active;
-    }
-
-    private Boolean isPropertyCreationDateRemoved;
-
-    public Boolean getIsPropertyCreationDateRemoved()
-    {
-        return this.isPropertyCreationDateRemoved;
-    }
-
-    public void setIsPropertyCreationDateRemoved(Boolean removed)
-    {
-        this.isPropertyCreationDateRemoved = removed;
     }
 
     private Boolean isPropertyQuantityRemoved;
@@ -104,7 +80,6 @@ public class CreateOrMergePatchLotDto extends AbstractLotCommandDto
     public void copyTo(AbstractLotCommand.AbstractCreateOrMergePatchLot command)
     {
         ((AbstractLotCommandDto) this).copyTo(command);
-        command.setCreationDate(this.getCreationDate());
         command.setQuantity(this.getQuantity());
         command.setExpirationDate(this.getExpirationDate());
         command.setActive(this.getActive());
@@ -132,7 +107,6 @@ public class CreateOrMergePatchLotDto extends AbstractLotCommandDto
     public void copyTo(AbstractLotCommand.AbstractMergePatchLot command)
     {
         copyTo((AbstractLotCommand.AbstractCreateOrMergePatchLot) command);
-        command.setIsPropertyCreationDateRemoved(this.getIsPropertyCreationDateRemoved());
         command.setIsPropertyQuantityRemoved(this.getIsPropertyQuantityRemoved());
         command.setIsPropertyExpirationDateRemoved(this.getIsPropertyExpirationDateRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());

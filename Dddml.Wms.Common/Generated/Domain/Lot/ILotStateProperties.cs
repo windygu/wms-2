@@ -16,8 +16,6 @@ namespace Dddml.Wms.Domain.Lot
 	{
 		string LotId { get; set; }
 
-		DateTime? CreationDate { get; set; }
-
 		decimal? Quantity { get; set; }
 
 		DateTime? ExpirationDate { get; set; }

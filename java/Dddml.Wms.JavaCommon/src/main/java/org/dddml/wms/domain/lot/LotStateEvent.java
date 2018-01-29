@@ -13,10 +13,6 @@ public interface LotStateEvent extends Event
 
     void setStateEventReadOnly(boolean readOnly);
 
-    java.sql.Timestamp getCreationDate();
-
-    void setCreationDate(java.sql.Timestamp creationDate);
-
     java.math.BigDecimal getQuantity();
 
     void setQuantity(java.math.BigDecimal quantity);
@@ -49,10 +45,6 @@ public interface LotStateEvent extends Event
 
     interface LotStateMergePatched extends LotStateEvent
     {
-        Boolean getIsPropertyCreationDateRemoved();
-
-        void setIsPropertyCreationDateRemoved(Boolean removed);
-
         Boolean getIsPropertyQuantityRemoved();
 
         void setIsPropertyQuantityRemoved(Boolean removed);

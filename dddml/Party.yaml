@@ -6,6 +6,7 @@
 aggregates:
 
   # --------------- aggregate ---------------
+  # 业务实体（团体）
   Party:
     id:
       name: PartyId

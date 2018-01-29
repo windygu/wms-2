@@ -20,12 +20,6 @@ namespace Dddml.Wms.Domain.Lot
             set;
         }
 
-        DateTime? CreationDate
-        {
-            get;
-            set;
-        }
-
         decimal? Quantity
         {
             get;

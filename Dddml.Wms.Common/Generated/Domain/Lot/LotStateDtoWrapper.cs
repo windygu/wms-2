@@ -67,34 +67,6 @@ namespace Dddml.Wms.Domain.Lot
             }
         }
 
-		public virtual DateTime? CreationDate
-		{
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("CreationDate"))
-                {
-                    return _state.CreationDate;
-                }
-                return null;
-            }
-            set
-            {
-                _state.CreationDate = value;
-            }
-        }
-
-        DateTime? ILotStateProperties.CreationDate
-        {
-            get 
-            {
-                return (this._state as ILotStateProperties).CreationDate;
-            }
-            set 
-            {
-                (this._state as ILotStateProperties).CreationDate = value;
-            }
-        }
-
 		public virtual decimal? Quantity
 		{
             get

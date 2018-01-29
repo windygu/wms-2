@@ -5,6 +5,7 @@
 # ------------------------------
 aggregates:
 
+  # 订单
   Order:
     id:
       name: OrderId

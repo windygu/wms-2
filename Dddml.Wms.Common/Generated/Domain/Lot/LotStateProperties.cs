@@ -16,8 +16,6 @@ namespace Dddml.Wms.Domain.Lot
 	{
 		public virtual string LotId { get; set; }
 
-		public virtual DateTime? CreationDate { get; set; }
-
 		public virtual decimal? Quantity { get; set; }
 
 		public virtual DateTime? ExpirationDate { get; set; }

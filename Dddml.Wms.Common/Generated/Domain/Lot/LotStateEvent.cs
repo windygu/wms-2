@@ -23,8 +23,6 @@ namespace Dddml.Wms.Domain.Lot
             set { StateEventId.LotId = value; }
         }
 
-		public virtual DateTime? CreationDate { get; set; }
-
 		public virtual decimal? Quantity { get; set; }
 
 		public virtual DateTime? ExpirationDate { get; set; }
@@ -119,8 +117,6 @@ namespace Dddml.Wms.Domain.Lot
 
 	public class LotStateMergePatched : LotStateEventBase, ILotStateMergePatched
 	{
-		public virtual bool IsPropertyCreationDateRemoved { get; set; }
-
 		public virtual bool IsPropertyQuantityRemoved { get; set; }
 
 		public virtual bool IsPropertyExpirationDateRemoved { get; set; }

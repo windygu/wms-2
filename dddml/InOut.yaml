@@ -6,6 +6,7 @@
 aggregates:
 
     # --------------- aggregate ---------------
+    # 入库/出库单
     InOut:
 
       id:
@@ -15,14 +16,16 @@ aggregates:
       properties:
 
         # --------------------------------------
+        # 单据状态 Id
         DocumentStatusId:
           type: string
           commandType: DocumentAction
           commandName: DocumentAction
           
           # -------------------------------------
+          # 单据状态的状态机
           stateMachine:
-          
+            # 转换
             transitions:
             
             - sourceState: null
@@ -49,7 +52,8 @@ aggregates:
 
         # IsSOTransaction:
           # type: bool
-
+          
+        # 是否已过账
         Posted:
           type: bool
 
@@ -59,12 +63,15 @@ aggregates:
         Processing:
           type: string
 
+        # 单据类型
         DocumentTypeId:
           referenceType: DocumentType
 
+        # 描述
         Description:
           type: string
 
+        # 订单 Id.
         OrderId:
           type: string
 
@@ -79,25 +86,30 @@ aggregates:
           type: string
           referenceType: MovementType
 
+        # 出入库时间
         MovementDate:  
           type: DateTime?
 
+        # 合作伙伴 Id.
         BusinessPartnerId:
           type: string
 
+        # 仓库 Id.
         WarehouseId:
           type: string
 
         POReference:
           type: string
 
+        # 运费
         FreightAmount:
           # type: Money
           type: decimal
 
+        # 运输商 Id.
         ShipperId:
           type: string
-          
+        
         ChargeAmount:
           # type: Money
           type: decimal
@@ -111,6 +123,7 @@ aggregates:
         SalesRepresentativeId:
           type: string
 
+        # 包裹数量
         NumberOfPackages:
           type: int
           
@@ -120,6 +133,7 @@ aggregates:
         ShipDate:
           type: DateTime?
           
+        # 跟踪代码
         TrackingNumber:
           type: string
 
@@ -175,6 +189,7 @@ aggregates:
         #processedon numeric,
         #string TerminalReference:
         
+        # 出入库行项
         InOutLines:
           itemType: InOutLine
         
@@ -183,6 +198,7 @@ aggregates:
                 
       entities:
           
+        # 入库/出库行项
         InOutLine:
           
           id: 
@@ -193,12 +209,15 @@ aggregates:
               
           properties:  
 
+            # 货位 Id.
             LocatorId:
               type: string
 
+            # 产品 Id.
             ProductId:
               type: id-long
 
+            # 属性集实例 Id.
             AttributeSetInstanceId:
               type: string
 
@@ -208,9 +227,11 @@ aggregates:
             # IsDescription:
               # type: bool
 
+            # 数量单位 Id.
             QuantityUomId:
               type: string
 
+            # 出入库数量.
             MovementQuantity: 
               type: decimal
 
@@ -223,6 +244,7 @@ aggregates:
             # TargetQuantity: 
               # type: decimal
 
+            # 拣货数量
             PickedQuantity: 
               type: decimal
 
@@ -254,17 +276,22 @@ aggregates:
     
     
       # --------------------------------------------
+      # 方法
       methods:
       
+        # 完成
         Complete:
           parameters:
         
+        # 关闭
         Close:
           parameters:
           
+        # 取消
         Void:
           parameters:
           
+        # 反转
         Reverse:
           parameters:
           

@@ -21,18 +21,6 @@ public abstract class AbstractLotState implements LotState
         this.lotId = lotId;
     }
 
-    private java.sql.Timestamp creationDate;
-
-    public java.sql.Timestamp getCreationDate()
-    {
-        return this.creationDate;
-    }
-
-    public void setCreationDate(java.sql.Timestamp creationDate)
-    {
-        this.creationDate = creationDate;
-    }
-
     private java.math.BigDecimal quantity;
 
     public java.math.BigDecimal getQuantity()
@@ -205,7 +193,6 @@ public abstract class AbstractLotState implements LotState
     {
         throwOnWrongEvent(e);
 
-        this.setCreationDate(e.getCreationDate());
         this.setQuantity(e.getQuantity());
         this.setExpirationDate(e.getExpirationDate());
         this.setActive(e.getActive());
@@ -221,17 +208,6 @@ public abstract class AbstractLotState implements LotState
     {
         throwOnWrongEvent(e);
 
-        if (e.getCreationDate() == null)
-        {
-            if (e.getIsPropertyCreationDateRemoved() != null && e.getIsPropertyCreationDateRemoved())
-            {
-                this.setCreationDate(null);
-            }
-        }
-        else
-        {
-            this.setCreationDate(e.getCreationDate());
-        }
         if (e.getQuantity() == null)
         {
             if (e.getIsPropertyQuantityRemoved() != null && e.getIsPropertyQuantityRemoved())

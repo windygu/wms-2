@@ -6,20 +6,25 @@
 aggregates:
               
     # --------------- aggregate ---------------
+    # 库存记入规则
     InventoryPostingRule:
       id:
         name: InventoryPostingRuleId
         type: string
         length: 50
       properties:
+        # “触发”的库存单元 Id.
         TriggerInventoryItemId:
           type: InventoryItemId
           columnNamePrefix: "Trigger"
+        # “输出”的库存单元 Id.
         OutputInventoryItemId:
           type: InventoryItemId
           columnNamePrefix: "Output"
+        # 触发的“账户”名称（数量属性）
         TriggerAccountName:
           type: string
+        # 输出的“账户”名称（数量属性）
         OutputAccountName:
           type: string
         # 输出的数量是否需要“取反”  

@@ -470,12 +470,8 @@
        UpdatedAt DATETIME,
        primary key (PhysicalInventoryLineIdPhysicalInventoryDocumentNumber, PhysicalInventoryLineIdLineNumber)
     );
-    alter table ShipmentReceipts 
-        add column AttributeSetInstanceId VARCHAR(255);
-    alter table ShipmentReceiptStateEvents 
-        add column AttributeSetInstanceId VARCHAR(255);
-    alter table ShipmentReceiptStateEvents 
-        add column IsPropertyAttributeSetInstanceIdRemoved TINYINT(1);
+    alter table UomTypes 
+        add column CommandId VARCHAR(255);
     create table ShipmentReceipt_RV (
         ShipmentReceiptIdShipmentId VARCHAR(20) not null,
        ShipmentReceiptIdReceiptSeqId VARCHAR(20) not null,
@@ -530,7 +526,3 @@
        UpdatedAt DATETIME,
        primary key (ShipmentReceiptIdShipmentId, ShipmentReceiptIdReceiptSeqId)
     );
-    alter table ShipmentReceiptMvoStateEvents 
-        add column AttributeSetInstanceId VARCHAR(255);
-    alter table ShipmentReceiptMvoStateEvents 
-        add column IsPropertyAttributeSetInstanceIdRemoved TINYINT(1);

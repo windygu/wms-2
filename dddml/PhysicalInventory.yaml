@@ -6,6 +6,7 @@
 aggregates:
 
     # --------------- aggregate ---------------
+    # 实物盘点
     PhysicalInventory:
 
       id:
@@ -54,12 +55,14 @@ aggregates:
         
         ReversalDocumentNumber:
           type: string
-
+        
+        # 盘点行项
         PhysicalInventoryLines:
           itemType: PhysicalInventoryLine
         
       entities:
           
+        # 盘点行项实体
         PhysicalInventoryLine:
           
           id: 

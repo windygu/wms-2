@@ -107,7 +107,6 @@ namespace Dddml.Wms.Domain.Lot
 			var stateEventId = new LotStateEventId(c.LotId, c.Version);
             ILotStateCreated e = NewLotStateCreated(stateEventId);
 		
-            e.CreationDate = c.CreationDate;
             e.Quantity = c.Quantity;
             e.ExpirationDate = c.ExpirationDate;
             e.Active = c.Active;
@@ -127,11 +126,9 @@ namespace Dddml.Wms.Domain.Lot
 			var stateEventId = new LotStateEventId(c.LotId, c.Version);
             ILotStateMergePatched e = NewLotStateMergePatched(stateEventId);
 
-            e.CreationDate = c.CreationDate;
             e.Quantity = c.Quantity;
             e.ExpirationDate = c.ExpirationDate;
             e.Active = c.Active;
-            e.IsPropertyCreationDateRemoved = c.IsPropertyCreationDateRemoved;
             e.IsPropertyQuantityRemoved = c.IsPropertyQuantityRemoved;
             e.IsPropertyExpirationDateRemoved = c.IsPropertyExpirationDateRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;

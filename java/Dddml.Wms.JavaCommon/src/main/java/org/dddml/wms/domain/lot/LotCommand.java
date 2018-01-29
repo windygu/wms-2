@@ -40,10 +40,6 @@ public interface LotCommand extends Command
 
     interface CreateOrMergePatchLot extends LotCommand
     {
-        java.sql.Timestamp getCreationDate();
-
-        void setCreationDate(java.sql.Timestamp creationDate);
-
         java.math.BigDecimal getQuantity();
 
         void setQuantity(java.math.BigDecimal quantity);
@@ -64,10 +60,6 @@ public interface LotCommand extends Command
 
     interface MergePatchLot extends CreateOrMergePatchLot
     {
-        Boolean getIsPropertyCreationDateRemoved();
-
-        void setIsPropertyCreationDateRemoved(Boolean removed);
-
         Boolean getIsPropertyQuantityRemoved();
 
         void setIsPropertyQuantityRemoved(Boolean removed);

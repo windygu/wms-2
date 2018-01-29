@@ -5,6 +5,7 @@
 # ------------------------------
 aggregates:
 
+  # 装运单
   Shipment:
     id:
       name: ShipmentId

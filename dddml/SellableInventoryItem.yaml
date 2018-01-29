@@ -6,6 +6,7 @@
 aggregates:
               
     # --------------- aggregate ---------------
+    # 可销售库存单元
     SellableInventoryItem:
       id: 
         name: SellableInventoryItemId
@@ -39,7 +40,9 @@ aggregates:
           reservedProperties:
             noActive: true
           # ------------------------------
+          # 唯一约束
           uniqueConstraints:
+            # 一个库存 PostingRule 不能触发多次
             UniqueInventoryPRTriggeredId: [SourceEventId]
           # ------------------------------
       

@@ -5,6 +5,7 @@
 # ------------------------------
 aggregates:
 
+  # 损坏原因
   DamageReason:
     id:
       name: DamageReasonId

@@ -4,6 +4,7 @@
 
 # ------------------------------
 aggregates:
+  # 产品 - 分类关系
   ProductCategoryMember:
     id:
       name: ProductCategoryMemberId

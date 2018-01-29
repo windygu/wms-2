@@ -5,6 +5,7 @@
 # ------------------------------
 aggregates:
 
+  # 供应商 - 产品关系
   SupplierProduct:
     id:
       name: SupplierProductId

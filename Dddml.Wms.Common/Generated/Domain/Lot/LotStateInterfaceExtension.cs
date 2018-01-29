@@ -48,12 +48,10 @@ namespace Dddml.Wms.Domain.Lot
             cmd.Version = ((ILotStateProperties)state).Version;
 
             cmd.LotId = state.LotId;
-            cmd.CreationDate = state.CreationDate;
             cmd.Quantity = state.Quantity;
             cmd.ExpirationDate = state.ExpirationDate;
             cmd.Active = ((ILotStateProperties)state).Active;
             
-            if (state.CreationDate == null) { cmd.IsPropertyCreationDateRemoved = true; }
             if (state.Quantity == null) { cmd.IsPropertyQuantityRemoved = true; }
             if (state.ExpirationDate == null) { cmd.IsPropertyExpirationDateRemoved = true; }
             return cmd;
@@ -67,7 +65,6 @@ namespace Dddml.Wms.Domain.Lot
             cmd.Version = ((ILotStateProperties)state).Version;
 
             cmd.LotId = state.LotId;
-            cmd.CreationDate = state.CreationDate;
             cmd.Quantity = state.Quantity;
             cmd.ExpirationDate = state.ExpirationDate;
             cmd.Active = ((ILotStateProperties)state).Active;

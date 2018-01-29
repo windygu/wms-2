@@ -4,6 +4,7 @@
 
 # ------------------------------
 aggregates:
+  # 产品
   Product: &o0
     id:
       name: ProductId

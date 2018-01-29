@@ -32,18 +32,6 @@ public abstract class AbstractLotStateEvent extends AbstractStateEvent implement
 
     public void setStateEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
-    private java.sql.Timestamp creationDate;
-
-    public java.sql.Timestamp getCreationDate()
-    {
-        return this.creationDate;
-    }
-
-    public void setCreationDate(java.sql.Timestamp creationDate)
-    {
-        this.creationDate = creationDate;
-    }
-
     private java.math.BigDecimal quantity;
 
     public java.math.BigDecimal getQuantity()
@@ -155,16 +143,6 @@ public abstract class AbstractLotStateEvent extends AbstractStateEvent implement
 
         public String getStateEventType() {
             return StateEventType.MERGE_PATCHED;
-        }
-
-        private Boolean isPropertyCreationDateRemoved;
-
-        public Boolean getIsPropertyCreationDateRemoved() {
-            return this.isPropertyCreationDateRemoved;
-        }
-
-        public void setIsPropertyCreationDateRemoved(Boolean removed) {
-            this.isPropertyCreationDateRemoved = removed;
         }
 
         private Boolean isPropertyQuantityRemoved;

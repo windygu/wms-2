@@ -15,7 +15,6 @@
 
     <discriminator column="StateEventType" type="string" />
 
-	<property name="creationDate" ><column name="CreationDate" sql-type="DATETIME" /></property>
 	<property name="quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>
 	<property name="expirationDate" ><column name="ExpirationDate" sql-type="DATETIME" /></property>
 	<property name="active" ></property>
@@ -31,8 +30,6 @@
     </subclass>
 
     <subclass name="AbstractLotStateEvent$SimpleLotStateMergePatched" discriminator-value="MergePatched">
-
-        <property name="isPropertyCreationDateRemoved" column="IsPropertyCreationDateRemoved"/>
 
         <property name="isPropertyQuantityRemoved" column="IsPropertyQuantityRemoved"/>
 

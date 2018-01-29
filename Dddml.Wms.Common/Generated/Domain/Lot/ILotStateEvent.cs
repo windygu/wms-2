@@ -17,8 +17,6 @@ namespace Dddml.Wms.Domain.Lot
 
         bool ReadOnly { get; set; }
 
-		DateTime? CreationDate { get; set; }
-
 		decimal? Quantity { get; set; }
 
 		DateTime? ExpirationDate { get; set; }
@@ -35,8 +33,6 @@ namespace Dddml.Wms.Domain.Lot
 
 	public interface ILotStateMergePatched : ILotStateEvent//, ILotStateProperties
 	{
-		bool IsPropertyCreationDateRemoved { get; set; }
-
 		bool IsPropertyQuantityRemoved { get; set; }
 
 		bool IsPropertyExpirationDateRemoved { get; set; }

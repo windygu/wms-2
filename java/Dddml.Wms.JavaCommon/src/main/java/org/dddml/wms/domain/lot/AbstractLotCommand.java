@@ -34,18 +34,6 @@ public abstract class AbstractLotCommand extends AbstractCommand implements LotC
 
     public static abstract class AbstractCreateOrMergePatchLot extends AbstractLotCommand implements CreateOrMergePatchLot
     {
-        private java.sql.Timestamp creationDate;
-
-        public java.sql.Timestamp getCreationDate()
-        {
-            return this.creationDate;
-        }
-
-        public void setCreationDate(java.sql.Timestamp creationDate)
-        {
-            this.creationDate = creationDate;
-        }
-
         private java.math.BigDecimal quantity;
 
         public java.math.BigDecimal getQuantity()
@@ -98,18 +86,6 @@ public abstract class AbstractLotCommand extends AbstractCommand implements LotC
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
-        }
-
-        private Boolean isPropertyCreationDateRemoved;
-
-        public Boolean getIsPropertyCreationDateRemoved()
-        {
-            return this.isPropertyCreationDateRemoved;
-        }
-
-        public void setIsPropertyCreationDateRemoved(Boolean removed)
-        {
-            this.isPropertyCreationDateRemoved = removed;
         }
 
         private Boolean isPropertyQuantityRemoved;

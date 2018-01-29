@@ -5,6 +5,7 @@
 # ------------------------------
 aggregates:
 
+  # 装运类型
   ShipmentType:
     id:
       name: ShipmentTypeId

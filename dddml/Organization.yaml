@@ -6,6 +6,7 @@
 aggregates:
 
     # --------------- aggregate ---------------
+    # 组织
     Organization:
       inheritedFrom: Party
       id:
@@ -28,6 +29,7 @@ aggregates:
 
         
     # --------------- aggregate ---------------
+    # 组织结构
     OrganizationStructure:
       id:
         name: Id
@@ -50,6 +52,7 @@ aggregates:
 
 
     # --------------- aggregate ---------------
+    # 组织结构类型
     OrganizationStructureType:
       id: 
         name: Id
@@ -63,6 +66,7 @@ aggregates:
 # -------------------------------------
 trees:
     
+    # 组织树
     OrganizationTree:
       nodeContentType: Organization
       structureType: OrganizationStructure

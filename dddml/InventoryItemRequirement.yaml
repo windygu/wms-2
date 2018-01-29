@@ -6,14 +6,17 @@
 aggregates:
               
     # --------------- aggregate ---------------
+    # 库存单元需求
     InventoryItemRequirement:
       id: 
         name: InventoryItemRequirementId
         type: InventoryItemId
         
       properties:
+        # 需求数量
         Quantity:
           type: decimal
+        # 需求（数量变化）条目
         Entries:
           itemType: InventoryItemRequirementEntry
           
@@ -22,6 +25,7 @@ aggregates:
         noDeleted: true
         
       entities:
+        # 库存需求（数量变化）条目实体
         InventoryItemRequirementEntry:
           immutable: True
           id:
@@ -39,10 +43,14 @@ aggregates:
           reservedProperties:
             noActive: true
           # ------------------------------
+          # 唯一约束
           uniqueConstraints:
+            # 一个库存 PostingRule 不能触发多次
             UniqueInventoryPRTriggeredId: [SourceEventId]
           # ------------------------------
       
+      # ---------------------------------------------
+      # 定义聚合根中属于“账户”的“数量”（属性）
       accounts:
         Quantity:
           entryEntityName: "InventoryItemRequirementEntry"

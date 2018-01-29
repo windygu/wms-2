@@ -5,6 +5,7 @@
 # ------------------------------
 aggregates:
 
+  # 度量单位类型
   UomType:
     id:
       name: UomTypeId

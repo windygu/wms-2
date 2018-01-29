@@ -6,6 +6,7 @@
 aggregates:
               
     # ----------------------- aggregate -------------------------
+    # 损坏类型
     DamageType:
       id:
         name: DamageTypeId
@@ -25,6 +26,7 @@ aggregates:
         AbsolutelyNoEventSourcing: true
 
     # ------------------------------------------------------------
+    # 损坏处理方法
     DamageHandlingMethod:
       id:
         name: DamageHandlingMethodId

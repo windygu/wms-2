@@ -6,6 +6,7 @@
 aggregates:
               
     # --------------- aggregate ---------------
+    # 库存单元
     InventoryItem:
       
       id:
@@ -14,17 +15,23 @@ aggregates:
 
       properties:
       
+        # 在库数量
         OnHandQuantity:
           type: decimal
+        # 在途数量
         InTransitQuantity:
           type: decimal
+        # 保留数量
         ReservedQuantity:
           type: decimal
+        # 占用数量
         OccupiedQuantity:
           type: decimal
+        # 虚拟数量
         VirtualQuantity:
           type: decimal
         
+        # 库存事务条目（分录）
         Entries:
           itemType: InventoryItemEntry
       
@@ -34,7 +41,7 @@ aggregates:
       
       entities:
       
-        # --------------- 库存事务 / 分录 ------------------
+        # --------------- 库存事务条目（分录） ------------------
         InventoryItemEntry:
           immutable: True
           
@@ -44,18 +51,22 @@ aggregates:
             columnName: EntrySeqId
             
           properties:
-          
+            # 在库数量（变化）
             OnHandQuantity:
               type: decimal
+            # 在途数量（变化）
             InTransitQuantity:
               type: decimal
+            # 保留数量（变化）
             ReservedQuantity:
               type: decimal
+            # 占用数量（变化）
             OccupiedQuantity:
               type: decimal
+            # 虚拟数量（变化）
             VirtualQuantity:
               type: decimal
-            
+            # 来源信息
             Source:
               type: InventoryItemSourceInfo
               notNull: true
@@ -64,66 +75,86 @@ aggregates:
             noActive: true
             
           # ------------------------------
+          # 唯一约束
           uniqueConstraints:
-            UniqueInventoryPRTriggeredId: [Source]
+            # 一个库存 PostingRule 不能触发多次
+            UniqueInventoryItemSource: [Source]
           # ------------------------------
       
       # --------------- Accounts -------------------
+      # 定义聚合根中属于“账户”的“数量”（属性）
       accounts:
+        # 在库数量
         OnHandQuantity:
+          # 条目实体名称
           entryEntityName: "InventoryItemEntry"
+          # 条目数额属性名称
           entryAmountPropertyName: "OnHandQuantity"
+        # 在途数量
         InTransitQuantity:
           entryEntityName: "InventoryItemEntry"
           entryAmountPropertyName: "InTransitQuantity"
+        # 保留数量
         ReservedQuantity:
           entryEntityName: "InventoryItemEntry"
           entryAmountPropertyName: "ReservedQuantity"
+        # 占用数量
         OccupiedQuantity:
           entryEntityName: "InventoryItemEntry"
           entryAmountPropertyName: "OccupiedQuantity"
+        # 虚拟数量
         VirtualQuantity:
           entryEntityName: "InventoryItemEntry"
           entryAmountPropertyName: "VirtualQuantity"
       
       metadata:
         # NoEventSourcing: true
+        # 聚合时间的 Listener 名称
         AggregateEventListenerName: inventoryItemEventListener
       
       # ---------------- Value Objects -------------------
       valueObjects:
       
         # ----------------------------------
+        # 库存单元 Id
         InventoryItemId:
           properties:
+            # 产品 Id
             ProductId:
               type: id-long
               columnName: ProductId
               length: 60
+            # 货位 Id.
             LocatorId: 
               type: string
               columnName: LocatorId
               length: 50
+            # 属性集实例 Id.
             AttributeSetInstanceId:
               type: string
               columnName: AttributeSetInstanceId
               length: 50
         
         # -----------------------------------
+        # 库存单元来源信息
         InventoryItemSourceInfo:
           properties:
+            # 单据类型 Id.
             DocumentTypeId:
               type: string
               referenceType: DocumentType
               notNull: true
               columnName: DocumentTypeId
+            # 单据号
             DocumentNumber:
               type: string
               notNull: true
               columnName: DocumentNumber
+            # 行号
             LineNumber:
               type: string
               columnName: LineNumber
+            # 行的子序列号（一个源单据行项可能产生多个库存事务条目）
             LineSeqId:
               type: int
               columnName: LineSeqId

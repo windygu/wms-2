@@ -6,6 +6,7 @@
 aggregates:
 
     # --------------- aggregate ---------------
+    # 仓库
     Warehouse:
       
       id:
@@ -33,6 +34,7 @@ aggregates:
 
           
     # --------------- aggregate ---------------
+    # 货位
     Locator:
 
       id:
@@ -82,6 +84,7 @@ aggregates:
 
 trees:
     
+    # 货位树
     LocatorTree:
     
       nodeContentType: Locator

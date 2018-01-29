@@ -21,12 +21,6 @@ namespace Dddml.Wms.Domain.Lot
             set;
         }
 
-        public virtual DateTime? CreationDate
-        {
-            get;
-            set;
-        }
-
         public virtual decimal? Quantity
         {
             get;
@@ -79,7 +73,6 @@ namespace Dddml.Wms.Domain.Lot
         {
             var state = new LotState(true);
             state.LotId = this.LotId;
-            state.CreationDate = this.CreationDate;
             state.Quantity = this.Quantity;
             state.ExpirationDate = this.ExpirationDate;
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }

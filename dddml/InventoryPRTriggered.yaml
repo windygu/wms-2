@@ -6,12 +6,14 @@
 aggregates:
 
     # --------------- aggregate ---------------
+    # 库存记入规则触发事件
     InventoryPRTriggered:
       id:
         name: InventoryPRTriggeredId
         type: InventoryPRTriggeredId
         
       properties:
+        # 是否已处理
         IsProcessed:
           type: bool
           notNull: true
@@ -21,11 +23,14 @@ aggregates:
         noDeleted: true
         
       valueObjects:
+        # 触发事件 Id.
         InventoryPRTriggeredId:
           properties:
+            # 源库存事务条目 Id.
             SourceEntryId:
               type: InventoryItemEntryId
               referenceType: InventoryItemEntry
+            # 记入规则 Id.
             InventoryPostingRuleId:
               type: string
               referenceType: InventoryPostingRule

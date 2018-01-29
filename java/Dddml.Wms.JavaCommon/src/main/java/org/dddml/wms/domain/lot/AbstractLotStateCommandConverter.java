@@ -37,12 +37,10 @@ public abstract class AbstractLotStateCommandConverter<TCreateLot extends LotCom
         cmd.setVersion(state.getVersion());
 
         cmd.setLotId(state.getLotId());
-        cmd.setCreationDate(state.getCreationDate());
         cmd.setQuantity(state.getQuantity());
         cmd.setExpirationDate(state.getExpirationDate());
         cmd.setActive(state.getActive());
             
-        if (state.getCreationDate() == null) { cmd.setIsPropertyCreationDateRemoved(true); }
         if (state.getQuantity() == null) { cmd.setIsPropertyQuantityRemoved(true); }
         if (state.getExpirationDate() == null) { cmd.setIsPropertyExpirationDateRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
@@ -55,7 +53,6 @@ public abstract class AbstractLotStateCommandConverter<TCreateLot extends LotCom
 
         cmd.setVersion(state.getVersion());
         cmd.setLotId(state.getLotId());
-        cmd.setCreationDate(state.getCreationDate());
         cmd.setQuantity(state.getQuantity());
         cmd.setExpirationDate(state.getExpirationDate());
         cmd.setActive(state.getActive());

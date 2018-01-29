@@ -34,16 +34,6 @@ public class LotStateEventDto extends AbstractStateEvent
         getStateEventId().setVersion(version);
     }
 
-    private java.sql.Timestamp creationDate;
-
-    public java.sql.Timestamp getCreationDate() {
-        return this.creationDate;
-    }
-
-    public void setCreationDate(java.sql.Timestamp creationDate) {
-        this.creationDate = creationDate;
-    }
-
     private java.math.BigDecimal quantity;
 
     public java.math.BigDecimal getQuantity() {
@@ -92,16 +82,6 @@ public class LotStateEventDto extends AbstractStateEvent
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
-    }
-
-    private Boolean isPropertyCreationDateRemoved;
-
-    public Boolean getIsPropertyCreationDateRemoved() {
-        return this.isPropertyCreationDateRemoved;
-    }
-
-    public void setIsPropertyCreationDateRemoved(Boolean removed) {
-        this.isPropertyCreationDateRemoved = removed;
     }
 
     private Boolean isPropertyQuantityRemoved;

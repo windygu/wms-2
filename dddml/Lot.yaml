@@ -4,19 +4,23 @@
 
 # ------------------------------
 aggregates:
-
+  
+  # ---------------------------------
+  # 批次
   Lot:
     id:
       name: LotId
       type: id-ne
       
     properties:
-      CreationDate:
-        type: date-time
+      # 数量
       Quantity:
         type: fixed-point
+      # 过期日期
       ExpirationDate:
         type: date-time
+      # CreationDate:
+      #  type: date-time
         
     # metadata: 
     #   StateEventDatabaseTableName: LOT_STATE_EVENT

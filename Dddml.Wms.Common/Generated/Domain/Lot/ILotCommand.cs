@@ -23,8 +23,6 @@ namespace Dddml.Wms.Domain.Lot
 	public interface ICreateOrMergePatchOrDeleteLot : ILotCommand
 	{
 
-		DateTime? CreationDate { get; set; }
-
 		decimal? Quantity { get; set; }
 
 		DateTime? ExpirationDate { get; set; }
@@ -40,8 +38,6 @@ namespace Dddml.Wms.Domain.Lot
 
 	public interface IMergePatchLot : ICreateOrMergePatchOrDeleteLot
 	{
-
-		bool IsPropertyCreationDateRemoved { get; set; }
 
 		bool IsPropertyQuantityRemoved { get; set; }
 

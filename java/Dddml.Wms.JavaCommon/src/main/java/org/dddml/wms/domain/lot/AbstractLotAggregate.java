@@ -57,7 +57,6 @@ public abstract class AbstractLotAggregate extends AbstractAggregate implements 
     protected LotStateEvent map(LotCommand.CreateLot c) {
         LotStateEventId stateEventId = new LotStateEventId(c.getLotId(), c.getVersion());
         LotStateEvent.LotStateCreated e = newLotStateCreated(stateEventId);
-        e.setCreationDate(c.getCreationDate());
         e.setQuantity(c.getQuantity());
         e.setExpirationDate(c.getExpirationDate());
         e.setActive(c.getActive());
@@ -70,11 +69,9 @@ public abstract class AbstractLotAggregate extends AbstractAggregate implements 
     protected LotStateEvent map(LotCommand.MergePatchLot c) {
         LotStateEventId stateEventId = new LotStateEventId(c.getLotId(), c.getVersion());
         LotStateEvent.LotStateMergePatched e = newLotStateMergePatched(stateEventId);
-        e.setCreationDate(c.getCreationDate());
         e.setQuantity(c.getQuantity());
         e.setExpirationDate(c.getExpirationDate());
         e.setActive(c.getActive());
-        e.setIsPropertyCreationDateRemoved(c.getIsPropertyCreationDateRemoved());
         e.setIsPropertyQuantityRemoved(c.getIsPropertyQuantityRemoved());
         e.setIsPropertyExpirationDateRemoved(c.getIsPropertyExpirationDateRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());

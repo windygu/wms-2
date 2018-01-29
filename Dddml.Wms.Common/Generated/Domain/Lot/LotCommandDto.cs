@@ -53,32 +53,11 @@ namespace Dddml.Wms.Domain.Lot
 
 		public virtual string LotId { get; set; }
 
-		public virtual DateTime? CreationDate { get; set; }
-
 		public virtual decimal? Quantity { get; set; }
 
 		public virtual DateTime? ExpirationDate { get; set; }
 
 		public virtual bool? Active { get; set; }
-
-		public virtual bool? IsPropertyCreationDateRemoved { get; set; }
-
-        bool IMergePatchLot.IsPropertyCreationDateRemoved
-        {
-            get
-            {
-                var b = this.IsPropertyCreationDateRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return false;
-            }
-            set
-            {
-                this.IsPropertyCreationDateRemoved = value;
-            }
-        }
 
 		public virtual bool? IsPropertyQuantityRemoved { get; set; }
 

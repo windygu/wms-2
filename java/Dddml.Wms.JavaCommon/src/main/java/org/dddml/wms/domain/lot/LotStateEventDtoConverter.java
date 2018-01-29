@@ -28,7 +28,6 @@ public class LotStateEventDtoConverter {
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
-        dto.setCreationDate(e.getCreationDate());
         dto.setQuantity(e.getQuantity());
         dto.setExpirationDate(e.getExpirationDate());
         dto.setActive(e.getActive());
@@ -41,11 +40,9 @@ public class LotStateEventDtoConverter {
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
-        dto.setCreationDate(e.getCreationDate());
         dto.setQuantity(e.getQuantity());
         dto.setExpirationDate(e.getExpirationDate());
         dto.setActive(e.getActive());
-        dto.setIsPropertyCreationDateRemoved(e.getIsPropertyCreationDateRemoved());
         dto.setIsPropertyQuantityRemoved(e.getIsPropertyQuantityRemoved());
         dto.setIsPropertyExpirationDateRemoved(e.getIsPropertyExpirationDateRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());

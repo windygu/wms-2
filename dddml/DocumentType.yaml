@@ -6,6 +6,7 @@
 aggregates:
               
     # ----------------------- aggregate -------------------------
+    # 单据类型
     DocumentType:
       id:
         name: DocumentTypeId

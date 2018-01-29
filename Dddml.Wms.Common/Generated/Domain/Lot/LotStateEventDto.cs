@@ -42,8 +42,6 @@ namespace Dddml.Wms.Domain.Lot
             set { StateEventId.Version = value; }
         }
 
-		public virtual DateTime? CreationDate { get; set; }
-
 		public virtual decimal? Quantity { get; set; }
 
 		public virtual DateTime? ExpirationDate { get; set; }
@@ -76,25 +74,6 @@ namespace Dddml.Wms.Domain.Lot
             set
             {
                 this.StateEventReadOnly = value;
-            }
-        }
-
-		public virtual bool? IsPropertyCreationDateRemoved { get; set; }
-
-        bool ILotStateMergePatched.IsPropertyCreationDateRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyCreationDateRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyCreationDateRemoved = value;
             }
         }
 

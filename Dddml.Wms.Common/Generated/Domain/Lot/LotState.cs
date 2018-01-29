@@ -174,8 +174,6 @@ namespace Dddml.Wms.Domain.Lot
 		public virtual void When(ILotStateCreated e)
 		{
 			ThrowOnWrongEvent(e);
-			this.CreationDate = e.CreationDate;
-
 			this.Quantity = e.Quantity;
 
 			this.ExpirationDate = e.ExpirationDate;
@@ -194,18 +192,6 @@ namespace Dddml.Wms.Domain.Lot
 		public virtual void When(ILotStateMergePatched e)
 		{
 			ThrowOnWrongEvent(e);
-
-			if (e.CreationDate == null)
-			{
-				if (e.IsPropertyCreationDateRemoved)
-				{
-					this.CreationDate = default(DateTime?);
-				}
-			}
-			else
-			{
-				this.CreationDate = e.CreationDate;
-			}
 
 			if (e.Quantity == null)
 			{

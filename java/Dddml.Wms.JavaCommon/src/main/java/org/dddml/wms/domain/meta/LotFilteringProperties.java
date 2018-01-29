@@ -12,7 +12,6 @@ public final class LotFilteringProperties
 
     public static final String[] propertyNames = new String[] {
             "lotId",
-            "creationDate",
             "quantity",
             "expirationDate",
             "version",
@@ -26,7 +25,6 @@ public final class LotFilteringProperties
 
     public static final String[] propertyTypes = new String[] {
             "String",
-            "java.sql.Timestamp",
             "java.math.BigDecimal",
             "java.sql.Timestamp",
             "Long",
@@ -52,8 +50,6 @@ public final class LotFilteringProperties
     private static  void initAliasMap() {
         aliasMap.put("lotId", "lotId");
         aliasMap.put("LotId", "lotId");
-        aliasMap.put("creationDate", "creationDate");
-        aliasMap.put("CreationDate", "creationDate");
         aliasMap.put("quantity", "quantity");
         aliasMap.put("Quantity", "quantity");
         aliasMap.put("expirationDate", "expirationDate");

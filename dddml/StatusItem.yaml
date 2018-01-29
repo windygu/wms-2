@@ -5,6 +5,7 @@
 # ------------------------------
 aggregates:
 
+  # 状态项
   StatusItem:
     id:
       name: StatusId
