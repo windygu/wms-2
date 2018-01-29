@@ -847,275 +847,353 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Content>
-    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\usertypes\MoneyType.java" />
-    <Content Include="src\main\java\org\dddml\wms\domain\listener\InventoryItemEventListener.java" />
-    <Content Include="src\main\java\org\dddml\wms\domain\service\AttributeSetInstanceIdGenerator.java" />
-    <Content Include="src\main\java\org\dddml\wms\domain\service\AttributeSetInstanceStateJsonObjectMapper.java" />
-    <Content Include="src\main\java\org\dddml\wms\domain\service\AttributeSetServiceImpl.java" />
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PartyStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PartyState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\RejectionReasonStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeValueState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\RejectionReasonState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeValueStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentReceiptMvoStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeAliasState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentReceiptMvoState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeAliasStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentReceiptStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeSetState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentReceiptState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeSetStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\LotStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeUseState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\LotState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeUseStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\UomTypeState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\DamageReasonState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\UomConversionStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\DamageReasonStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\UomConversionState.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\DamageTypeState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\UomStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\DamageHandlingMethodState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\UomState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PhysicalInventoryLineMvoStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PhysicalInventoryLineMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PhysicalInventoryLineStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PhysicalInventoryLineState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PhysicalInventoryStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PhysicalInventoryState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementConfirmationStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementConfirmationState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementConfirmationLineMvoStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementConfirmationLineMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementLineMvoStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementLineMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementConfirmationLineStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementConfirmationLineState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementLineStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementLineState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentItemMvoStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentItemMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\SellableInventoryItemEntryMvoStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\SellableInventoryItemEntryMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderItemMvoStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderItemMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemRequirementEntryMvoStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemRequirementEntryMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemEntryMvoStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemEntryMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InOutLineMvoStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InOutLineMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\LocatorStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\LocatorState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\WarehouseStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\WarehouseState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\SupplierProductStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\SupplierProductState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\StatusItemState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentTypeState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentItemStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentItemState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\SellableInventoryItemEntryState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\SellableInventoryItemState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ProductCategoryMemberStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ProductCategoryMemberState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ProductCategoryStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ProductCategoryState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ProductStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ProductState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrganizationStructureStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrganizationStructureState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrganizationStructureTypeStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrganizationStructureTypeState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderShipmentStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderShipmentState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderItemStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderItemState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementTypeState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryPRTriggeredState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemRequirementEntryState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemRequirementState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryPostingRuleStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryPostingRuleState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemEntryState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InOutLineStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InOutLineState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InOutStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\DocumentTypeState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InOutState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InOutStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InOutLineState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InOutLineStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemEntryState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemRequirementState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemRequirementEntryState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryPostingRuleState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryPostingRuleStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryPRTriggeredState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\LotState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\LotStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementLineState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementLineStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementConfirmationState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementConfirmationStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementConfirmationLineState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementConfirmationLineStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementTypeState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderItemState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderItemStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderShipmentState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderShipmentStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrganizationStructureState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrganizationStructureStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrganizationStructureTypeState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrganizationStructureTypeStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PartyState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PartyStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PhysicalInventoryState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PhysicalInventoryStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PhysicalInventoryLineState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PhysicalInventoryLineStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ProductState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ProductStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ProductCategoryState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ProductCategoryStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ProductCategoryMemberState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ProductCategoryMemberStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\RejectionReasonState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\RejectionReasonStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\SellableInventoryItemState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\SellableInventoryItemEntryState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentItemState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentItemStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentReceiptState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentReceiptStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentTypeState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\StatusItemState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\SupplierProductState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\SupplierProductStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\UomState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\UomStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\UomConversionState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\UomConversionStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\UomTypeState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\WarehouseState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\WarehouseStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\LocatorState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\LocatorStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeSetInstanceState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldGroupState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldGroupStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeValueMvoState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeValueMvoStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeAliasMvoState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeAliasMvoStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeUseMvoState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeUseMvoStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InOutLineMvoState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InOutLineMvoStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemEntryMvoState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemEntryMvoStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemRequirementEntryMvoState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemRequirementEntryMvoStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementLineMvoState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementLineMvoStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementConfirmationLineMvoState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementConfirmationLineMvoStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderItemMvoState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderItemMvoStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PhysicalInventoryLineMvoState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PhysicalInventoryLineMvoStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\SellableInventoryItemEntryMvoState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\SellableInventoryItemEntryMvoStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentItemMvoState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentItemMvoStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentReceiptMvoState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentReceiptMvoStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <Content Include="src\main\java\org\dddml\wms\domain\hibernate\usertypes\MoneyType.java" />
+    <Content Include="src\main\java\org\dddml\wms\domain\listener\InventoryItemEventListener.java" />
+    <Content Include="src\main\java\org\dddml\wms\domain\service\AttributeSetInstanceIdGenerator.java" />
+    <Content Include="src\main\java\org\dddml\wms\domain\service\AttributeSetInstanceStateJsonObjectMapper.java" />
+    <Content Include="src\main\java\org\dddml\wms\domain\service\AttributeSetServiceImpl.java" />
     <EmbeddedResource Include="src\generated\resources\config\AggregatesHibernateConfig.xml">
       <DependentUpon>GenerateAggregatesConfig.tt</DependentUpon>
     </EmbeddedResource>
@@ -1151,84 +1229,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\config\TreesConfig.xml">
       <DependentUpon>GenerateTreesConfig.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeValueState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeValueStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeSetState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeSetStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeUseState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeUseStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\DocumentTypeState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeSetInstanceState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldGroupState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldGroupStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeValueMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeValueMvoStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeUseMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeUseMvoStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeAliasState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeAliasStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeAliasMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeAliasMvoStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\DamageReasonState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\DamageReasonStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\DamageTypeState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\DamageHandlingMethodState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <Content Include="src\generated\resources\org\dddml\wms\domain\hbm\GenerateAggregatesHbm.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

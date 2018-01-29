@@ -5,7 +5,7 @@
   
   <class name="Dddml.Wms.Domain.DamageHandlingMethod.DamageHandlingMethodState" table="DamageHandlingMethods">
 
-	<id name="DamageHandlingMethodId" length="20" column="DamageHandlingMethodId"><generator class="assigned"/></id>
+	<id name="DamageHandlingMethodId" length="60" column="DamageHandlingMethodId"><generator class="assigned"/></id>
 
 	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 

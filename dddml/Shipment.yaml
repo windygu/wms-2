@@ -184,7 +184,7 @@ aggregates:
           
           # -----------------------------------
           RejectionReasonId:
-            type: id
+            type: id-long
             referenceType: RejectionReason
             
           DamageStatusId:
@@ -192,7 +192,7 @@ aggregates:
             referenceType: StatusItem
             
           DamageReasonId:
-            type: id
+            type: id-long
             referenceType: DamageReason
           # -----------------------------------
             

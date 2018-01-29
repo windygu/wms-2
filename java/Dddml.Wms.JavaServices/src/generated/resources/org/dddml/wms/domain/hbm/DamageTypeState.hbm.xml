@@ -8,12 +8,12 @@
   
   <class name="org.dddml.wms.domain.damagetype.AbstractDamageTypeState$SimpleDamageTypeState" table="DamageTypes">
 
-	<id name="damageTypeId" length="20" column="DamageTypeId"><generator class="assigned"/></id>
+	<id name="damageTypeId" length="60" column="DamageTypeId"><generator class="assigned"/></id>
 	<version name="version" column="Version" type="long" />
 
 	<property name="description" ><column name="Description" not-null="true" sql-type="VARCHAR(255)" /></property>
 	<property name="sequenceId" ><column name="SequenceId" sql-type="VARCHAR(20)" /></property>
-	<property name="defaultHandlingMethodId" ><column name="DefaultHandlingMethodId" sql-type="VARCHAR(20)" /></property>
+	<property name="defaultHandlingMethodId" ><column name="DefaultHandlingMethodId" sql-type="VARCHAR(60)" /></property>
 	<property name="createdBy" ></property>
 	<property name="updatedBy" ></property>
 	<property name="active" ></property>

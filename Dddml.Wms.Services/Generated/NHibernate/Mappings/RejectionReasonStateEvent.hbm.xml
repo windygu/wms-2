@@ -6,7 +6,7 @@
   <class name="RejectionReasonStateEventBase" table="RejectionReasonStateEvents" mutable="false" abstract="true">
 
     <composite-id name="StateEventId" class="Dddml.Wms.Domain.RejectionReason.RejectionReasonStateEventId">
-        <key-property name="RejectionReasonId" ><column name="RejectionReasonId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="RejectionReasonId" ><column name="RejectionReasonId" sql-type="VARCHAR(60)" /></key-property>
         <key-property name="Version" ></key-property>
     </composite-id>
     <discriminator column="StateEventType" type="String" />

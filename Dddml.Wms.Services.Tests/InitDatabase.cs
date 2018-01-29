@@ -96,33 +96,25 @@ namespace Dddml.Wms.Services.Tests
             foreach (var connRoutingKey in RoutingConnectionProviderDictionary.Keys)
             {
                 ContextualKeyRoutingConnectionProvider.CurrentRoutingKey = connRoutingKey;
-
                 var connString = GetCurrentConnectionString();
-
                 DropCreateDatebase(connString);
 
                 //CreateSelfClient();
-
                 //var roles = CreateRoles();
-
                 //var userIdAndPassword = CreateTestUser(roles);
-
                 //CreatePermissions();
+                return;
 
                 // ////////////////////////
                 var xmlDataLoader = new XmlDataLoader();
                 xmlDataLoader.Process(".\\Data");
-                //Console.ReadKey();
-                //return;
-                // ////////////////////////
+                //Console.ReadKey(); return;
 
                 // /////////////////////////
                 InitInventoryPostingRules.CreateDefaultInventoryPostingRules();
-                // /////////////////////////
 
                 // ////////////////////////
                 InitAttributeSets.CreateDefaultAttributeSets();
-                // ////////////////////////
             }
         }
 

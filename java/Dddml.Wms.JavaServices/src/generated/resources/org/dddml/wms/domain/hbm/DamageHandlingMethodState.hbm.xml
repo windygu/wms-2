@@ -8,7 +8,7 @@
   
   <class name="org.dddml.wms.domain.damagehandlingmethod.AbstractDamageHandlingMethodState$SimpleDamageHandlingMethodState" table="DamageHandlingMethods">
 
-	<id name="damageHandlingMethodId" length="20" column="DamageHandlingMethodId"><generator class="assigned"/></id>
+	<id name="damageHandlingMethodId" length="60" column="DamageHandlingMethodId"><generator class="assigned"/></id>
 	<version name="version" column="Version" type="long" />
 
 	<property name="description" ><column name="Description" not-null="true" sql-type="VARCHAR(255)" /></property>

@@ -19,7 +19,7 @@
         <!--<property name="password" value="z5J9OT0urtbfVuRuViK7"/>-->
         <property name="url" value="jdbc:mysql://localhost/test?characterEncoding=utf8&amp;serverTimezone=GMT%2b8"/>
         <property name="username" value="root"/>
-        <property name="password" value="root"/>
+        <property name="password" value="123456"/>
     </bean>
 
     <bean id="hibernateSessionFactory"

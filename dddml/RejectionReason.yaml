@@ -8,7 +8,7 @@ aggregates:
   RejectionReason:
     id:
       name: RejectionReasonId
-      type: id-ne
+      type: id-long
       
     properties:
     

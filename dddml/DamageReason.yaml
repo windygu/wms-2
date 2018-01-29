@@ -9,7 +9,7 @@ aggregates:
   DamageReason:
     id:
       name: DamageReasonId
-      type: id-ne
+      type: id-long
       
     properties:
     

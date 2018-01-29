@@ -9,6 +9,10 @@
 
     drop table if exists AttributeValueStateEvents;
 
+    drop table if exists AttributeAlias;
+
+    drop table if exists AttributeAliasStateEvents;
+
     drop table if exists AttributeSets;
 
     drop table if exists AttributeSetStateEvents;
@@ -17,34 +21,6 @@
 
     drop table if exists AttributeUseStateEvents;
 
-    drop table if exists DocumentTypes;
-
-    drop table if exists AttributeSetInstances;
-
-    drop table if exists AttributeSetInstanceExtensionFieldGroups;
-
-    drop table if exists AttributeSetInstanceExtensionFieldGroupStateEvents;
-
-    drop table if exists AttributeSetInstanceExtensionFields;
-
-    drop table if exists AttributeSetInstanceExtensionFieldStateEvents;
-
-    drop table if exists AttributeValue_RV;
-
-    drop table if exists AttributeValueMvoStateEvents;
-
-    drop table if exists AttributeUse_RV;
-
-    drop table if exists AttributeUseMvoStateEvents;
-
-    drop table if exists AttributeAlias;
-
-    drop table if exists AttributeAliasStateEvents;
-
-    drop table if exists AttributeAlias_RV;
-
-    drop table if exists AttributeAliasMvoStateEvents;
-
     drop table if exists DamageReasons;
 
     drop table if exists DamageReasonStateEvents;
@@ -52,6 +28,30 @@
     drop table if exists DamageTypes;
 
     drop table if exists DamageHandlingMethods;
+
+    drop table if exists DocumentTypes;
+
+    drop table if exists AttributeSetInstances;
+
+    drop table if exists AttributeSetInstanceExtensionFields;
+
+    drop table if exists AttributeSetInstanceExtensionFieldStateEvents;
+
+    drop table if exists AttributeSetInstanceExtensionFieldGroups;
+
+    drop table if exists AttributeSetInstanceExtensionFieldGroupStateEvents;
+
+    drop table if exists AttributeValue_RV;
+
+    drop table if exists AttributeValueMvoStateEvents;
+
+    drop table if exists AttributeAlias_RV;
+
+    drop table if exists AttributeAliasMvoStateEvents;
+
+    drop table if exists AttributeUse_RV;
+
+    drop table if exists AttributeUseMvoStateEvents;
 
     drop table if exists InOuts;
 
@@ -67,15 +67,35 @@
 
     drop table if exists InventoryItemEntries;
 
-    drop table if exists InventoryPostingRules;
-
-    drop table if exists InventoryPostingRuleStateEvents;
-
     drop table if exists InventoryItemRequirements;
 
     drop table if exists InventoryItemRequirementEntries;
 
+    drop table if exists InventoryPostingRules;
+
+    drop table if exists InventoryPostingRuleStateEvents;
+
     drop table if exists InventoryPRTriggereds;
+
+    drop table if exists Lots;
+
+    drop table if exists LotStateEvents;
+
+    drop table if exists Movements;
+
+    drop table if exists MovementStateEvents;
+
+    drop table if exists MovementLines;
+
+    drop table if exists MovementLineStateEvents;
+
+    drop table if exists MovementConfirmations;
+
+    drop table if exists MovementConfirmationStateEvents;
+
+    drop table if exists MovementConfirmationLines;
+
+    drop table if exists MovementConfirmationLineStateEvents;
 
     drop table if exists MovementTypes;
 
@@ -91,13 +111,27 @@
 
     drop table if exists OrderShipmentStateEvents;
 
+    drop table if exists OrganizationStructures;
+
+    drop table if exists OrganizationStructureStateEvents;
+
     drop table if exists OrganizationStructureTypes;
 
     drop table if exists OrganizationStructureTypeStateEvents;
 
-    drop table if exists OrganizationStructures;
+    drop table if exists Parties;
 
-    drop table if exists OrganizationStructureStateEvents;
+    drop table if exists Organizations;
+
+    drop table if exists PartyStateEvents;
+
+    drop table if exists PhysicalInventories;
+
+    drop table if exists PhysicalInventoryStateEvents;
+
+    drop table if exists PhysicalInventoryLines;
+
+    drop table if exists PhysicalInventoryLineStateEvents;
 
     drop table if exists Products;
 
@@ -111,6 +145,10 @@
 
     drop table if exists ProductCategoryMemberStateEvents;
 
+    drop table if exists RejectionReasons;
+
+    drop table if exists RejectionReasonStateEvents;
+
     drop table if exists SellableInventoryItems;
 
     drop table if exists SellableInventoryItemEntries;
@@ -123,6 +161,10 @@
 
     drop table if exists ShipmentItemStateEvents;
 
+    drop table if exists ShipmentReceipts;
+
+    drop table if exists ShipmentReceiptStateEvents;
+
     drop table if exists ShipmentTypes;
 
     drop table if exists StatusItems;
@@ -130,6 +172,16 @@
     drop table if exists SupplierProducts;
 
     drop table if exists SupplierProductStateEvents;
+
+    drop table if exists Uoms;
+
+    drop table if exists UomStateEvents;
+
+    drop table if exists UomConversions;
+
+    drop table if exists UomConversionStateEvents;
+
+    drop table if exists UomTypes;
 
     drop table if exists Warehouses;
 
@@ -151,9 +203,21 @@
 
     drop table if exists InventoryItemRequirementEntryMvoStateEvents;
 
+    drop table if exists MovementLine_RV;
+
+    drop table if exists MovementLineMvoStateEvents;
+
+    drop table if exists MovementConfirmationLine_RV;
+
+    drop table if exists MovementConfirmationLineMvoStateEvents;
+
     drop table if exists OrderItem_RV;
 
     drop table if exists OrderItemMvoStateEvents;
+
+    drop table if exists PhysicalInventoryLine_RV;
+
+    drop table if exists PhysicalInventoryLineMvoStateEvents;
 
     drop table if exists SellableInventoryItemEntry_RV;
 
@@ -163,73 +227,9 @@
 
     drop table if exists ShipmentItemMvoStateEvents;
 
-    drop table if exists Movements;
-
-    drop table if exists MovementStateEvents;
-
-    drop table if exists MovementLines;
-
-    drop table if exists MovementLineStateEvents;
-
-    drop table if exists MovementConfirmationLines;
-
-    drop table if exists MovementConfirmationLineStateEvents;
-
-    drop table if exists MovementLine_RV;
-
-    drop table if exists MovementLineMvoStateEvents;
-
-    drop table if exists MovementConfirmationLine_RV;
-
-    drop table if exists MovementConfirmationLineMvoStateEvents;
-
-    drop table if exists MovementConfirmations;
-
-    drop table if exists MovementConfirmationStateEvents;
-
-    drop table if exists PhysicalInventories;
-
-    drop table if exists PhysicalInventoryStateEvents;
-
-    drop table if exists PhysicalInventoryLines;
-
-    drop table if exists PhysicalInventoryLineStateEvents;
-
-    drop table if exists PhysicalInventoryLine_RV;
-
-    drop table if exists PhysicalInventoryLineMvoStateEvents;
-
-    drop table if exists Uoms;
-
-    drop table if exists UomStateEvents;
-
-    drop table if exists UomConversions;
-
-    drop table if exists UomConversionStateEvents;
-
-    drop table if exists UomTypes;
-
-    drop table if exists Lots;
-
-    drop table if exists LotStateEvents;
-
-    drop table if exists ShipmentReceipts;
-
-    drop table if exists ShipmentReceiptStateEvents;
-
     drop table if exists ShipmentReceipt_RV;
 
     drop table if exists ShipmentReceiptMvoStateEvents;
-
-    drop table if exists RejectionReasons;
-
-    drop table if exists RejectionReasonStateEvents;
-
-    drop table if exists Parties;
-
-    drop table if exists Organizations;
-
-    drop table if exists PartyStateEvents;
 
     drop table if exists nhibernate_hilo_table;
 
@@ -328,6 +328,39 @@
        primary key (AttributeValueIdAttributeId, AttributeValueIdValue, AttributeVersion)
     );
 
+    create table AttributeAlias (
+        AttributeAliasIdAttributeId VARCHAR(50) not null,
+       AttributeAliasIdCode VARCHAR(50) not null,
+       Version BIGINT not null,
+       Name VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (AttributeAliasIdAttributeId, AttributeAliasIdCode),
+      unique (AttributeAliasIdCode),
+      unique (Name)
+    );
+
+    create table AttributeAliasStateEvents (
+        AttributeAliasIdAttributeId VARCHAR(50) not null,
+       AttributeAliasIdCode VARCHAR(50) not null,
+       AttributeVersion BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       Name VARCHAR(255),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       Version BIGINT not null,
+       IsPropertyNameRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (AttributeAliasIdAttributeId, AttributeAliasIdCode, AttributeVersion),
+      unique (Name)
+    );
+
     create table AttributeSets (
         AttributeSetId VARCHAR(50) not null,
        Version BIGINT not null,
@@ -398,6 +431,67 @@
        IsPropertySequenceNumberRemoved TINYINT(1),
        IsPropertyActiveRemoved TINYINT(1),
        primary key (AttributeSetAttributeUseIdAttributeSetId, AttributeSetAttributeUseIdAttributeId, AttributeSetVersion)
+    );
+
+    create table DamageReasons (
+        DamageReasonId VARCHAR(60) not null,
+       Version BIGINT not null,
+       Description VARCHAR(255),
+       SequenceId VARCHAR(20),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (DamageReasonId)
+    );
+
+    create table DamageReasonStateEvents (
+        DamageReasonId VARCHAR(60) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       Description VARCHAR(255),
+       SequenceId VARCHAR(20),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertySequenceIdRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (DamageReasonId, Version)
+    );
+
+    create table DamageTypes (
+        DamageTypeId VARCHAR(60) not null,
+       Version BIGINT not null,
+       Description VARCHAR(255) not null,
+       SequenceId VARCHAR(20),
+       DefaultHandlingMethodId VARCHAR(60),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       CommandId VARCHAR(255),
+       primary key (DamageTypeId)
+    );
+
+    create table DamageHandlingMethods (
+        DamageHandlingMethodId VARCHAR(60) not null,
+       Version BIGINT not null,
+       Description VARCHAR(255) not null,
+       SequenceId VARCHAR(20),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       CommandId VARCHAR(255),
+       primary key (DamageHandlingMethodId)
     );
 
     create table DocumentTypes (
@@ -495,45 +589,6 @@
        primary key (AttributeSetInstanceId)
     );
 
-    create table AttributeSetInstanceExtensionFieldGroups (
-        Id VARCHAR(50) not null,
-       Version BIGINT not null,
-       FieldType VARCHAR(255),
-       FieldLength INTEGER,
-       FieldCount INTEGER,
-       NameFormat VARCHAR(255),
-       Description VARCHAR(255),
-       CreatedBy VARCHAR(255),
-       UpdatedBy VARCHAR(255),
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       CreatedAt DATETIME,
-       UpdatedAt DATETIME,
-       primary key (Id)
-    );
-
-    create table AttributeSetInstanceExtensionFieldGroupStateEvents (
-        Id VARCHAR(50) not null,
-       Version BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       FieldType VARCHAR(255),
-       FieldLength INTEGER,
-       FieldCount INTEGER,
-       NameFormat VARCHAR(255),
-       Description VARCHAR(255),
-       Active TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       IsPropertyFieldTypeRemoved TINYINT(1),
-       IsPropertyFieldLengthRemoved TINYINT(1),
-       IsPropertyFieldCountRemoved TINYINT(1),
-       IsPropertyNameFormatRemoved TINYINT(1),
-       IsPropertyDescriptionRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (Id, Version)
-    );
-
     create table AttributeSetInstanceExtensionFields (
         Name VARCHAR(50) not null,
        Version BIGINT not null,
@@ -573,6 +628,45 @@
        IsPropertyActiveRemoved TINYINT(1),
        primary key (Name, Version),
       unique (Alias)
+    );
+
+    create table AttributeSetInstanceExtensionFieldGroups (
+        Id VARCHAR(50) not null,
+       Version BIGINT not null,
+       FieldType VARCHAR(255),
+       FieldLength INTEGER,
+       FieldCount INTEGER,
+       NameFormat VARCHAR(255),
+       Description VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (Id)
+    );
+
+    create table AttributeSetInstanceExtensionFieldGroupStateEvents (
+        Id VARCHAR(50) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       FieldType VARCHAR(255),
+       FieldLength INTEGER,
+       FieldCount INTEGER,
+       NameFormat VARCHAR(255),
+       Description VARCHAR(255),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyFieldTypeRemoved TINYINT(1),
+       IsPropertyFieldLengthRemoved TINYINT(1),
+       IsPropertyFieldCountRemoved TINYINT(1),
+       IsPropertyNameFormatRemoved TINYINT(1),
+       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (Id, Version)
     );
 
     create table AttributeValue_RV (
@@ -658,107 +752,6 @@
        primary key (AttributeValueIdAttributeId, AttributeValueIdValue, AttributeVersion)
     );
 
-    create table AttributeUse_RV (
-        AttributeSetAttributeUseIdAttributeSetId VARCHAR(50) not null,
-       AttributeSetAttributeUseIdAttributeId VARCHAR(50) not null,
-       AttributeSetVersion BIGINT not null,
-       SequenceNumber INTEGER,
-       Version BIGINT,
-       CreatedBy VARCHAR(255),
-       UpdatedBy VARCHAR(255),
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       AttributeSetAttributeSetName VARCHAR(255),
-       AttributeSetOrganizationId VARCHAR(255),
-       AttributeSetDescription VARCHAR(255),
-       AttributeSetReferenceId VARCHAR(255),
-       AttributeSetIsInstanceAttributeSet TINYINT(1),
-       AttributeSetIsMandatory TINYINT(1),
-       AttributeSetCreatedBy VARCHAR(255),
-       AttributeSetCreatedAt DATETIME,
-       AttributeSetUpdatedBy VARCHAR(255),
-       AttributeSetUpdatedAt DATETIME,
-       AttributeSetActive TINYINT(1),
-       AttributeSetDeleted TINYINT(1),
-       CreatedAt DATETIME,
-       UpdatedAt DATETIME,
-       primary key (AttributeSetAttributeUseIdAttributeSetId, AttributeSetAttributeUseIdAttributeId)
-    );
-
-    create table AttributeUseMvoStateEvents (
-        AttributeSetAttributeUseIdAttributeSetId VARCHAR(50) not null,
-       AttributeSetAttributeUseIdAttributeId VARCHAR(50) not null,
-       AttributeSetVersion BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       SequenceNumber INTEGER,
-       Version BIGINT,
-       Active TINYINT(1),
-       AttributeSetAttributeSetName VARCHAR(255),
-       AttributeSetOrganizationId VARCHAR(255),
-       AttributeSetDescription VARCHAR(255),
-       AttributeSetReferenceId VARCHAR(255),
-       AttributeSetIsInstanceAttributeSet TINYINT(1),
-       AttributeSetIsMandatory TINYINT(1),
-       AttributeSetCreatedBy VARCHAR(255),
-       AttributeSetCreatedAt DATETIME,
-       AttributeSetUpdatedBy VARCHAR(255),
-       AttributeSetUpdatedAt DATETIME,
-       AttributeSetActive TINYINT(1),
-       AttributeSetDeleted TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       IsPropertySequenceNumberRemoved TINYINT(1),
-       IsPropertyVersionRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       IsPropertyAttributeSetAttributeSetNameRemoved TINYINT(1),
-       IsPropertyAttributeSetOrganizationIdRemoved TINYINT(1),
-       IsPropertyAttributeSetDescriptionRemoved TINYINT(1),
-       IsPropertyAttributeSetReferenceIdRemoved TINYINT(1),
-       IsPropertyAttributeSetIsInstanceAttributeSetRemoved TINYINT(1),
-       IsPropertyAttributeSetIsMandatoryRemoved TINYINT(1),
-       IsPropertyAttributeSetCreatedByRemoved TINYINT(1),
-       IsPropertyAttributeSetCreatedAtRemoved TINYINT(1),
-       IsPropertyAttributeSetUpdatedByRemoved TINYINT(1),
-       IsPropertyAttributeSetUpdatedAtRemoved TINYINT(1),
-       IsPropertyAttributeSetActiveRemoved TINYINT(1),
-       IsPropertyAttributeSetDeletedRemoved TINYINT(1),
-       primary key (AttributeSetAttributeUseIdAttributeSetId, AttributeSetAttributeUseIdAttributeId, AttributeSetVersion)
-    );
-
-    create table AttributeAlias (
-        AttributeAliasIdAttributeId VARCHAR(50) not null,
-       AttributeAliasIdCode VARCHAR(50) not null,
-       Version BIGINT not null,
-       Name VARCHAR(255),
-       CreatedBy VARCHAR(255),
-       UpdatedBy VARCHAR(255),
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       CreatedAt DATETIME,
-       UpdatedAt DATETIME,
-       primary key (AttributeAliasIdAttributeId, AttributeAliasIdCode),
-      unique (AttributeAliasIdCode),
-      unique (Name)
-    );
-
-    create table AttributeAliasStateEvents (
-        AttributeAliasIdAttributeId VARCHAR(50) not null,
-       AttributeAliasIdCode VARCHAR(50) not null,
-       AttributeVersion BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       Name VARCHAR(255),
-       Active TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       Version BIGINT not null,
-       IsPropertyNameRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (AttributeAliasIdAttributeId, AttributeAliasIdCode, AttributeVersion),
-      unique (Name)
-    );
-
     create table AttributeAlias_RV (
         AttributeAliasIdAttributeId VARCHAR(50) not null,
        AttributeAliasIdCode VARCHAR(50) not null,
@@ -839,65 +832,72 @@
       unique (Name)
     );
 
-    create table DamageReasons (
-        DamageReasonId VARCHAR(20) not null,
-       Version BIGINT not null,
-       Description VARCHAR(255),
-       SequenceId VARCHAR(20),
+    create table AttributeUse_RV (
+        AttributeSetAttributeUseIdAttributeSetId VARCHAR(50) not null,
+       AttributeSetAttributeUseIdAttributeId VARCHAR(50) not null,
+       AttributeSetVersion BIGINT not null,
+       SequenceNumber INTEGER,
+       Version BIGINT,
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
        Active TINYINT(1),
        Deleted TINYINT(1),
+       AttributeSetAttributeSetName VARCHAR(255),
+       AttributeSetOrganizationId VARCHAR(255),
+       AttributeSetDescription VARCHAR(255),
+       AttributeSetReferenceId VARCHAR(255),
+       AttributeSetIsInstanceAttributeSet TINYINT(1),
+       AttributeSetIsMandatory TINYINT(1),
+       AttributeSetCreatedBy VARCHAR(255),
+       AttributeSetCreatedAt DATETIME,
+       AttributeSetUpdatedBy VARCHAR(255),
+       AttributeSetUpdatedAt DATETIME,
+       AttributeSetActive TINYINT(1),
+       AttributeSetDeleted TINYINT(1),
        CreatedAt DATETIME,
        UpdatedAt DATETIME,
-       primary key (DamageReasonId)
+       primary key (AttributeSetAttributeUseIdAttributeSetId, AttributeSetAttributeUseIdAttributeId)
     );
 
-    create table DamageReasonStateEvents (
-        DamageReasonId VARCHAR(20) not null,
-       Version BIGINT not null,
+    create table AttributeUseMvoStateEvents (
+        AttributeSetAttributeUseIdAttributeSetId VARCHAR(50) not null,
+       AttributeSetAttributeUseIdAttributeId VARCHAR(50) not null,
+       AttributeSetVersion BIGINT not null,
        StateEventType VARCHAR(255) not null,
-       Description VARCHAR(255),
-       SequenceId VARCHAR(20),
+       SequenceNumber INTEGER,
+       Version BIGINT,
        Active TINYINT(1),
+       AttributeSetAttributeSetName VARCHAR(255),
+       AttributeSetOrganizationId VARCHAR(255),
+       AttributeSetDescription VARCHAR(255),
+       AttributeSetReferenceId VARCHAR(255),
+       AttributeSetIsInstanceAttributeSet TINYINT(1),
+       AttributeSetIsMandatory TINYINT(1),
+       AttributeSetCreatedBy VARCHAR(255),
+       AttributeSetCreatedAt DATETIME,
+       AttributeSetUpdatedBy VARCHAR(255),
+       AttributeSetUpdatedAt DATETIME,
+       AttributeSetActive TINYINT(1),
+       AttributeSetDeleted TINYINT(1),
        CreatedBy VARCHAR(255),
        CreatedAt DATETIME,
        CommandId VARCHAR(255),
-       IsPropertyDescriptionRemoved TINYINT(1),
-       IsPropertySequenceIdRemoved TINYINT(1),
+       IsPropertySequenceNumberRemoved TINYINT(1),
+       IsPropertyVersionRemoved TINYINT(1),
        IsPropertyActiveRemoved TINYINT(1),
-       primary key (DamageReasonId, Version)
-    );
-
-    create table DamageTypes (
-        DamageTypeId VARCHAR(20) not null,
-       Version BIGINT not null,
-       Description VARCHAR(255) not null,
-       SequenceId VARCHAR(20),
-       DefaultHandlingMethodId VARCHAR(20),
-       CreatedBy VARCHAR(255),
-       UpdatedBy VARCHAR(255),
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       CreatedAt DATETIME,
-       UpdatedAt DATETIME,
-       CommandId VARCHAR(255),
-       primary key (DamageTypeId)
-    );
-
-    create table DamageHandlingMethods (
-        DamageHandlingMethodId VARCHAR(20) not null,
-       Version BIGINT not null,
-       Description VARCHAR(255) not null,
-       SequenceId VARCHAR(20),
-       CreatedBy VARCHAR(255),
-       UpdatedBy VARCHAR(255),
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       CreatedAt DATETIME,
-       UpdatedAt DATETIME,
-       CommandId VARCHAR(255),
-       primary key (DamageHandlingMethodId)
+       IsPropertyAttributeSetAttributeSetNameRemoved TINYINT(1),
+       IsPropertyAttributeSetOrganizationIdRemoved TINYINT(1),
+       IsPropertyAttributeSetDescriptionRemoved TINYINT(1),
+       IsPropertyAttributeSetReferenceIdRemoved TINYINT(1),
+       IsPropertyAttributeSetIsInstanceAttributeSetRemoved TINYINT(1),
+       IsPropertyAttributeSetIsMandatoryRemoved TINYINT(1),
+       IsPropertyAttributeSetCreatedByRemoved TINYINT(1),
+       IsPropertyAttributeSetCreatedAtRemoved TINYINT(1),
+       IsPropertyAttributeSetUpdatedByRemoved TINYINT(1),
+       IsPropertyAttributeSetUpdatedAtRemoved TINYINT(1),
+       IsPropertyAttributeSetActiveRemoved TINYINT(1),
+       IsPropertyAttributeSetDeletedRemoved TINYINT(1),
+       primary key (AttributeSetAttributeUseIdAttributeSetId, AttributeSetAttributeUseIdAttributeId, AttributeSetVersion)
     );
 
     create table InOuts (
@@ -1137,6 +1137,42 @@
       unique (SourceDocumentTypeId, SourceDocumentNumber, SourceLineNumber, SourceLineSeqId)
     );
 
+    create table InventoryItemRequirements (
+        ProductId VARCHAR(60) not null,
+       LocatorId VARCHAR(50) not null,
+       AttributeSetInstanceId VARCHAR(50) not null,
+       Version BIGINT not null,
+       Quantity NUMERIC(19,5),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       CommandId VARCHAR(255),
+       primary key (ProductId, LocatorId, AttributeSetInstanceId)
+    );
+
+    create table InventoryItemRequirementEntries (
+        ProductId VARCHAR(60) not null,
+       LocatorId VARCHAR(50) not null,
+       AttributeSetInstanceId VARCHAR(50) not null,
+       EntrySeqId BIGINT not null,
+       Version BIGINT not null,
+       Quantity NUMERIC(19,5),
+       SrcEventProductId VARCHAR(60),
+       SrcEventLocatorId VARCHAR(50),
+       SrcEventAttributeSetInstanceId VARCHAR(50),
+       SrcEventEntrySeqId BIGINT,
+       SrcEventInventoryPostingRuleId VARCHAR(50),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       CommandId VARCHAR(255),
+       primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId),
+      unique (SrcEventProductId, SrcEventLocatorId, SrcEventAttributeSetInstanceId, SrcEventEntrySeqId, SrcEventInventoryPostingRuleId)
+    );
+
     create table InventoryPostingRules (
         InventoryPostingRuleId VARCHAR(50) not null,
        Version BIGINT not null,
@@ -1184,42 +1220,6 @@
        primary key (InventoryPostingRuleId, Version)
     );
 
-    create table InventoryItemRequirements (
-        ProductId VARCHAR(60) not null,
-       LocatorId VARCHAR(50) not null,
-       AttributeSetInstanceId VARCHAR(50) not null,
-       Version BIGINT not null,
-       Quantity NUMERIC(19,5),
-       CreatedBy VARCHAR(255),
-       UpdatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       UpdatedAt DATETIME,
-       CommandId VARCHAR(255),
-       primary key (ProductId, LocatorId, AttributeSetInstanceId)
-    );
-
-    create table InventoryItemRequirementEntries (
-        ProductId VARCHAR(60) not null,
-       LocatorId VARCHAR(50) not null,
-       AttributeSetInstanceId VARCHAR(50) not null,
-       EntrySeqId BIGINT not null,
-       Version BIGINT not null,
-       Quantity NUMERIC(19,5),
-       SrcEventProductId VARCHAR(60),
-       SrcEventLocatorId VARCHAR(50),
-       SrcEventAttributeSetInstanceId VARCHAR(50),
-       SrcEventEntrySeqId BIGINT,
-       SrcEventInventoryPostingRuleId VARCHAR(50),
-       CreatedBy VARCHAR(255),
-       UpdatedBy VARCHAR(255),
-       Deleted TINYINT(1),
-       CreatedAt DATETIME,
-       UpdatedAt DATETIME,
-       CommandId VARCHAR(255),
-       primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId),
-      unique (SrcEventProductId, SrcEventLocatorId, SrcEventAttributeSetInstanceId, SrcEventEntrySeqId, SrcEventInventoryPostingRuleId)
-    );
-
     create table InventoryPRTriggereds (
         ProductId VARCHAR(60) not null,
        LocatorId VARCHAR(50) not null,
@@ -1234,6 +1234,264 @@
        UpdatedAt DATETIME,
        CommandId VARCHAR(255),
        primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId, InventoryPostingRuleId)
+    );
+
+    create table Lots (
+        LotId VARCHAR(20) not null,
+       Version BIGINT not null,
+       Quantity DECIMAL(18,6),
+       ExpirationDate DATETIME,
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (LotId)
+    );
+
+    create table LotStateEvents (
+        LotId VARCHAR(20) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       Quantity DECIMAL(18,6),
+       ExpirationDate DATETIME,
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyQuantityRemoved TINYINT(1),
+       IsPropertyExpirationDateRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (LotId, Version)
+    );
+
+    create table Movements (
+        DocumentNumber VARCHAR(50) not null,
+       Version BIGINT not null,
+       DocumentStatusId VARCHAR(255),
+       MovementDate DATETIME,
+       Posted TINYINT(1),
+       Processed TINYINT(1),
+       Processing VARCHAR(255),
+       DateReceived DATETIME,
+       DocumentTypeId VARCHAR(255),
+       IsInTransit TINYINT(1),
+       IsApproved TINYINT(1),
+       ApprovalAmount NUMERIC(19,5),
+       ShipperId VARCHAR(255),
+       SalesRepresentativeId VARCHAR(255),
+       BusinessPartnerId VARCHAR(255),
+       ChargeAmount NUMERIC(19,5),
+       CreateFrom VARCHAR(255),
+       FreightAmount NUMERIC(19,5),
+       ReversalDocumentNumber VARCHAR(255),
+       WarehouseIdFrom VARCHAR(255),
+       WarehouseIdTo VARCHAR(255),
+       Description VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (DocumentNumber)
+    );
+
+    create table MovementStateEvents (
+        DocumentNumber VARCHAR(50) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       DocumentStatusId VARCHAR(255),
+       MovementDate DATETIME,
+       Posted TINYINT(1),
+       Processed TINYINT(1),
+       Processing VARCHAR(255),
+       DateReceived DATETIME,
+       DocumentTypeId VARCHAR(255),
+       IsInTransit TINYINT(1),
+       IsApproved TINYINT(1),
+       ApprovalAmount NUMERIC(19,5),
+       ShipperId VARCHAR(255),
+       SalesRepresentativeId VARCHAR(255),
+       BusinessPartnerId VARCHAR(255),
+       ChargeAmount NUMERIC(19,5),
+       CreateFrom VARCHAR(255),
+       FreightAmount NUMERIC(19,5),
+       ReversalDocumentNumber VARCHAR(255),
+       WarehouseIdFrom VARCHAR(255),
+       WarehouseIdTo VARCHAR(255),
+       Description VARCHAR(255),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyDocumentStatusIdRemoved TINYINT(1),
+       IsPropertyMovementDateRemoved TINYINT(1),
+       IsPropertyPostedRemoved TINYINT(1),
+       IsPropertyProcessedRemoved TINYINT(1),
+       IsPropertyProcessingRemoved TINYINT(1),
+       IsPropertyDateReceivedRemoved TINYINT(1),
+       IsPropertyDocumentTypeIdRemoved TINYINT(1),
+       IsPropertyIsInTransitRemoved TINYINT(1),
+       IsPropertyIsApprovedRemoved TINYINT(1),
+       IsPropertyApprovalAmountRemoved TINYINT(1),
+       IsPropertyShipperIdRemoved TINYINT(1),
+       IsPropertySalesRepresentativeIdRemoved TINYINT(1),
+       IsPropertyBusinessPartnerIdRemoved TINYINT(1),
+       IsPropertyChargeAmountRemoved TINYINT(1),
+       IsPropertyCreateFromRemoved TINYINT(1),
+       IsPropertyFreightAmountRemoved TINYINT(1),
+       IsPropertyReversalDocumentNumberRemoved TINYINT(1),
+       IsPropertyWarehouseIdFromRemoved TINYINT(1),
+       IsPropertyWarehouseIdToRemoved TINYINT(1),
+       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (DocumentNumber, Version)
+    );
+
+    create table MovementLines (
+        MovementLineIdMovementDocumentNumber VARCHAR(50) not null,
+       MovementLineIdLineNumber VARCHAR(50) not null,
+       Version BIGINT not null,
+       MovementQuantity NUMERIC(19,5),
+       ProductId VARCHAR(60),
+       LocatorIdFrom VARCHAR(255),
+       LocatorIdTo VARCHAR(255),
+       AttributeSetInstanceId VARCHAR(255),
+       Processed TINYINT(1),
+       ReversalLineNumber VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (MovementLineIdMovementDocumentNumber, MovementLineIdLineNumber)
+    );
+
+    create table MovementLineStateEvents (
+        MovementLineIdMovementDocumentNumber VARCHAR(50) not null,
+       MovementLineIdLineNumber VARCHAR(50) not null,
+       MovementVersion BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       MovementQuantity NUMERIC(19,5),
+       ProductId VARCHAR(60),
+       LocatorIdFrom VARCHAR(255),
+       LocatorIdTo VARCHAR(255),
+       AttributeSetInstanceId VARCHAR(255),
+       Processed TINYINT(1),
+       ReversalLineNumber VARCHAR(255),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       Version BIGINT not null,
+       IsPropertyMovementQuantityRemoved TINYINT(1),
+       IsPropertyProductIdRemoved TINYINT(1),
+       IsPropertyLocatorIdFromRemoved TINYINT(1),
+       IsPropertyLocatorIdToRemoved TINYINT(1),
+       IsPropertyAttributeSetInstanceIdRemoved TINYINT(1),
+       IsPropertyProcessedRemoved TINYINT(1),
+       IsPropertyReversalLineNumberRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (MovementLineIdMovementDocumentNumber, MovementLineIdLineNumber, MovementVersion)
+    );
+
+    create table MovementConfirmations (
+        DocumentNumber VARCHAR(50) not null,
+       Version BIGINT not null,
+       DocumentStatusId VARCHAR(255),
+       MovementDocumentNumber VARCHAR(255),
+       IsApproved TINYINT(1),
+       ApprovalAmount NUMERIC(19,5),
+       Processed TINYINT(1),
+       Processing VARCHAR(255),
+       DocumentTypeId VARCHAR(255),
+       Description VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (DocumentNumber)
+    );
+
+    create table MovementConfirmationStateEvents (
+        DocumentNumber VARCHAR(50) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       DocumentStatusId VARCHAR(255),
+       MovementDocumentNumber VARCHAR(255),
+       IsApproved TINYINT(1),
+       ApprovalAmount NUMERIC(19,5),
+       Processed TINYINT(1),
+       Processing VARCHAR(255),
+       DocumentTypeId VARCHAR(255),
+       Description VARCHAR(255),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyDocumentStatusIdRemoved TINYINT(1),
+       IsPropertyMovementDocumentNumberRemoved TINYINT(1),
+       IsPropertyIsApprovedRemoved TINYINT(1),
+       IsPropertyApprovalAmountRemoved TINYINT(1),
+       IsPropertyProcessedRemoved TINYINT(1),
+       IsPropertyProcessingRemoved TINYINT(1),
+       IsPropertyDocumentTypeIdRemoved TINYINT(1),
+       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (DocumentNumber, Version)
+    );
+
+    create table MovementConfirmationLines (
+        MovementConfirmationLineIdMovementConfirmationDocumentNumber VARCHAR(50) not null,
+       MovementConfirmationLineIdLineNumber VARCHAR(50) not null,
+       Version BIGINT not null,
+       MovementLineNumber VARCHAR(255),
+       TargetQuantity NUMERIC(19,5),
+       ConfirmedQuantity NUMERIC(19,5),
+       DifferenceQuantity NUMERIC(19,5),
+       ScrappedQuantity NUMERIC(19,5),
+       Description VARCHAR(255),
+       Processed TINYINT(1),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (MovementConfirmationLineIdMovementConfirmationDocumentNumber, MovementConfirmationLineIdLineNumber)
+    );
+
+    create table MovementConfirmationLineStateEvents (
+        MovementConfirmationLineIdMovementConfirmationDocumentNumber VARCHAR(50) not null,
+       MovementConfirmationLineIdLineNumber VARCHAR(50) not null,
+       MovementConfirmationVersion BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       MovementLineNumber VARCHAR(255),
+       TargetQuantity NUMERIC(19,5),
+       ConfirmedQuantity NUMERIC(19,5),
+       DifferenceQuantity NUMERIC(19,5),
+       ScrappedQuantity NUMERIC(19,5),
+       Description VARCHAR(255),
+       Processed TINYINT(1),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       Version BIGINT not null,
+       IsPropertyMovementLineNumberRemoved TINYINT(1),
+       IsPropertyTargetQuantityRemoved TINYINT(1),
+       IsPropertyConfirmedQuantityRemoved TINYINT(1),
+       IsPropertyDifferenceQuantityRemoved TINYINT(1),
+       IsPropertyScrappedQuantityRemoved TINYINT(1),
+       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertyProcessedRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (MovementConfirmationLineIdMovementConfirmationDocumentNumber, MovementConfirmationLineIdLineNumber, MovementConfirmationVersion)
     );
 
     create table MovementTypes (
@@ -1508,6 +1766,34 @@
        primary key (OrderShipmentIdOrderId, OrderShipmentIdOrderItemSeqId, OrderShipmentIdShipmentId, OrderShipmentIdShipmentItemSeqId, Version)
     );
 
+    create table OrganizationStructures (
+        IdOrganizationStructureTypeId VARCHAR(255) not null,
+       IdParentId VARCHAR(255) not null,
+       IdSubsidiaryId VARCHAR(255) not null,
+       Version BIGINT not null,
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (IdOrganizationStructureTypeId, IdParentId, IdSubsidiaryId)
+    );
+
+    create table OrganizationStructureStateEvents (
+        IdOrganizationStructureTypeId VARCHAR(255) not null,
+       IdParentId VARCHAR(255) not null,
+       IdSubsidiaryId VARCHAR(255) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (IdOrganizationStructureTypeId, IdParentId, IdSubsidiaryId, Version)
+    );
+
     create table OrganizationStructureTypes (
         Id VARCHAR(50) not null,
        Version BIGINT not null,
@@ -1535,10 +1821,8 @@
        primary key (Id, Version)
     );
 
-    create table OrganizationStructures (
-        IdOrganizationStructureTypeId VARCHAR(255) not null,
-       IdParentId VARCHAR(255) not null,
-       IdSubsidiaryId VARCHAR(255) not null,
+    create table Parties (
+        PartyId VARCHAR(50) not null,
        Version BIGINT not null,
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
@@ -1546,21 +1830,156 @@
        Deleted TINYINT(1),
        CreatedAt DATETIME,
        UpdatedAt DATETIME,
-       primary key (IdOrganizationStructureTypeId, IdParentId, IdSubsidiaryId)
+       primary key (PartyId)
     );
 
-    create table OrganizationStructureStateEvents (
-        IdOrganizationStructureTypeId VARCHAR(255) not null,
-       IdParentId VARCHAR(255) not null,
-       IdSubsidiaryId VARCHAR(255) not null,
+    create table Organizations (
+        PartyId VARCHAR(50) not null,
+       Version BIGINT not null,
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       OrganizationName VARCHAR(255),
+       Description VARCHAR(255),
+       Type VARCHAR(255),
+       IsSummary TINYINT(1),
+       primary key (PartyId)
+    );
+
+    create table PartyStateEvents (
+        PartyId VARCHAR(50) not null,
        Version BIGINT not null,
        StateEventType VARCHAR(255) not null,
+       PartyTypeId VARCHAR(20),
+       OrganizationName VARCHAR(255),
+       Description VARCHAR(255),
+       Type VARCHAR(255),
+       IsSummary TINYINT(1),
        Active TINYINT(1),
        CreatedBy VARCHAR(255),
        CreatedAt DATETIME,
        CommandId VARCHAR(255),
+       IsPropertyPartyTypeIdRemoved TINYINT(1),
+       IsPropertyOrganizationNameRemoved TINYINT(1),
+       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertyTypeRemoved TINYINT(1),
+       IsPropertyIsSummaryRemoved TINYINT(1),
        IsPropertyActiveRemoved TINYINT(1),
-       primary key (IdOrganizationStructureTypeId, IdParentId, IdSubsidiaryId, Version)
+       primary key (PartyId, Version)
+    );
+
+    create table PhysicalInventories (
+        DocumentNumber VARCHAR(50) not null,
+       Version BIGINT not null,
+       DocumentStatusId VARCHAR(255),
+       WarehouseId VARCHAR(255),
+       Posted TINYINT(1),
+       Processed TINYINT(1),
+       Processing VARCHAR(255),
+       DocumentTypeId VARCHAR(255),
+       MovementDate DATETIME,
+       Description VARCHAR(255),
+       IsApproved TINYINT(1),
+       ApprovalAmount NUMERIC(19,5),
+       IsQuantityUpdated TINYINT(1),
+       ReversalDocumentNumber VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (DocumentNumber)
+    );
+
+    create table PhysicalInventoryStateEvents (
+        DocumentNumber VARCHAR(50) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       DocumentStatusId VARCHAR(255),
+       WarehouseId VARCHAR(255),
+       Posted TINYINT(1),
+       Processed TINYINT(1),
+       Processing VARCHAR(255),
+       DocumentTypeId VARCHAR(255),
+       MovementDate DATETIME,
+       Description VARCHAR(255),
+       IsApproved TINYINT(1),
+       ApprovalAmount NUMERIC(19,5),
+       IsQuantityUpdated TINYINT(1),
+       ReversalDocumentNumber VARCHAR(255),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyDocumentStatusIdRemoved TINYINT(1),
+       IsPropertyWarehouseIdRemoved TINYINT(1),
+       IsPropertyPostedRemoved TINYINT(1),
+       IsPropertyProcessedRemoved TINYINT(1),
+       IsPropertyProcessingRemoved TINYINT(1),
+       IsPropertyDocumentTypeIdRemoved TINYINT(1),
+       IsPropertyMovementDateRemoved TINYINT(1),
+       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertyIsApprovedRemoved TINYINT(1),
+       IsPropertyApprovalAmountRemoved TINYINT(1),
+       IsPropertyIsQuantityUpdatedRemoved TINYINT(1),
+       IsPropertyReversalDocumentNumberRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (DocumentNumber, Version)
+    );
+
+    create table PhysicalInventoryLines (
+        PhysicalInventoryLineIdPhysicalInventoryDocumentNumber VARCHAR(50) not null,
+       PhysicalInventoryLineIdLineNumber VARCHAR(50) not null,
+       Version BIGINT not null,
+       LocatorId VARCHAR(255),
+       ProductId VARCHAR(60),
+       AttributeSetInstanceId VARCHAR(255),
+       BookQuantity NUMERIC(19,5),
+       CountedQuantity NUMERIC(19,5),
+       Processed TINYINT(1),
+       ReversalLineNumber BIGINT,
+       Description VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (PhysicalInventoryLineIdPhysicalInventoryDocumentNumber, PhysicalInventoryLineIdLineNumber)
+    );
+
+    create table PhysicalInventoryLineStateEvents (
+        PhysicalInventoryLineIdPhysicalInventoryDocumentNumber VARCHAR(50) not null,
+       PhysicalInventoryLineIdLineNumber VARCHAR(50) not null,
+       PhysicalInventoryVersion BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       LocatorId VARCHAR(255),
+       ProductId VARCHAR(60),
+       AttributeSetInstanceId VARCHAR(255),
+       BookQuantity NUMERIC(19,5),
+       CountedQuantity NUMERIC(19,5),
+       Processed TINYINT(1),
+       ReversalLineNumber BIGINT,
+       Description VARCHAR(255),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       Version BIGINT not null,
+       IsPropertyLocatorIdRemoved TINYINT(1),
+       IsPropertyProductIdRemoved TINYINT(1),
+       IsPropertyAttributeSetInstanceIdRemoved TINYINT(1),
+       IsPropertyBookQuantityRemoved TINYINT(1),
+       IsPropertyCountedQuantityRemoved TINYINT(1),
+       IsPropertyProcessedRemoved TINYINT(1),
+       IsPropertyReversalLineNumberRemoved TINYINT(1),
+       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (PhysicalInventoryLineIdPhysicalInventoryDocumentNumber, PhysicalInventoryLineIdLineNumber, PhysicalInventoryVersion)
     );
 
     create table Products (
@@ -1851,6 +2270,33 @@
        primary key (ProductCategoryMemberIdProductCategoryId, ProductCategoryMemberIdProductId, Version)
     );
 
+    create table RejectionReasons (
+        RejectionReasonId VARCHAR(60) not null,
+       Version BIGINT not null,
+       Description VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (RejectionReasonId)
+    );
+
+    create table RejectionReasonStateEvents (
+        RejectionReasonId VARCHAR(60) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       Description VARCHAR(255),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (RejectionReasonId, Version)
+    );
+
     create table SellableInventoryItems (
         ProductId VARCHAR(60) not null,
        LocatorId VARCHAR(50) not null,
@@ -2026,6 +2472,68 @@
        primary key (ShipmentItemIdShipmentId, ShipmentItemIdShipmentItemSeqId, ShipmentVersion)
     );
 
+    create table ShipmentReceipts (
+        ShipmentReceiptIdShipmentId VARCHAR(20) not null,
+       ShipmentReceiptIdReceiptSeqId VARCHAR(20) not null,
+       Version BIGINT not null,
+       ProductId VARCHAR(60),
+       AttributeSetInstanceId VARCHAR(255),
+       ShipmentItemSeqId VARCHAR(20),
+       RejectionReasonId VARCHAR(60),
+       DamageStatusId VARCHAR(20),
+       DamageReasonId VARCHAR(60),
+       ReceivedBy VARCHAR(250),
+       DatetimeReceived DATETIME,
+       ItemDescription VARCHAR(255),
+       AcceptedQuantity DECIMAL(18,6) not null,
+       RejectedQuantity DECIMAL(18,6) not null,
+       DamagedQuantity DECIMAL(18,6) not null,
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (ShipmentReceiptIdShipmentId, ShipmentReceiptIdReceiptSeqId)
+    );
+
+    create table ShipmentReceiptStateEvents (
+        ShipmentReceiptIdShipmentId VARCHAR(20) not null,
+       ShipmentReceiptIdReceiptSeqId VARCHAR(20) not null,
+       ShipmentVersion BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       ProductId VARCHAR(60),
+       AttributeSetInstanceId VARCHAR(255),
+       ShipmentItemSeqId VARCHAR(20),
+       RejectionReasonId VARCHAR(60),
+       DamageStatusId VARCHAR(20),
+       DamageReasonId VARCHAR(60),
+       ReceivedBy VARCHAR(250),
+       DatetimeReceived DATETIME,
+       ItemDescription VARCHAR(255),
+       AcceptedQuantity DECIMAL(18,6),
+       RejectedQuantity DECIMAL(18,6),
+       DamagedQuantity DECIMAL(18,6),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       Version BIGINT not null,
+       IsPropertyProductIdRemoved TINYINT(1),
+       IsPropertyAttributeSetInstanceIdRemoved TINYINT(1),
+       IsPropertyShipmentItemSeqIdRemoved TINYINT(1),
+       IsPropertyRejectionReasonIdRemoved TINYINT(1),
+       IsPropertyDamageStatusIdRemoved TINYINT(1),
+       IsPropertyDamageReasonIdRemoved TINYINT(1),
+       IsPropertyReceivedByRemoved TINYINT(1),
+       IsPropertyDatetimeReceivedRemoved TINYINT(1),
+       IsPropertyItemDescriptionRemoved TINYINT(1),
+       IsPropertyAcceptedQuantityRemoved TINYINT(1),
+       IsPropertyRejectedQuantityRemoved TINYINT(1),
+       IsPropertyDamagedQuantityRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (ShipmentReceiptIdShipmentId, ShipmentReceiptIdReceiptSeqId, ShipmentVersion)
+    );
+
     create table ShipmentTypes (
         ShipmentTypeId VARCHAR(20) not null,
        Version BIGINT not null,
@@ -2123,6 +2631,93 @@
        IsPropertyCommentsRemoved TINYINT(1),
        IsPropertyActiveRemoved TINYINT(1),
        primary key (SupplierProductIdProductId, SupplierProductIdPartyId, SupplierProductIdCurrencyUomId, SupplierProductIdMinimumOrderQuantity, Version)
+    );
+
+    create table Uoms (
+        UomId VARCHAR(20) not null,
+       Version BIGINT not null,
+       UomTypeId VARCHAR(20),
+       Abbreviation VARCHAR(60),
+       Description VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (UomId)
+    );
+
+    create table UomStateEvents (
+        UomId VARCHAR(20) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       UomTypeId VARCHAR(20),
+       Abbreviation VARCHAR(60),
+       Description VARCHAR(255),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyUomTypeIdRemoved TINYINT(1),
+       IsPropertyAbbreviationRemoved TINYINT(1),
+       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (UomId, Version)
+    );
+
+    create table UomConversions (
+        UomConversionIdUomId VARCHAR(20) not null,
+       UomConversionIdUomIdTo VARCHAR(20) not null,
+       Version BIGINT not null,
+       ConversionFactor DOUBLE,
+       CustomMethodId VARCHAR(20),
+       DecimalScale DECIMAL(20,0),
+       RoundingMode VARCHAR(20),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (UomConversionIdUomId, UomConversionIdUomIdTo)
+    );
+
+    create table UomConversionStateEvents (
+        UomConversionIdUomId VARCHAR(20) not null,
+       UomConversionIdUomIdTo VARCHAR(20) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       ConversionFactor DOUBLE,
+       CustomMethodId VARCHAR(20),
+       DecimalScale DECIMAL(20,0),
+       RoundingMode VARCHAR(20),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyConversionFactorRemoved TINYINT(1),
+       IsPropertyCustomMethodIdRemoved TINYINT(1),
+       IsPropertyDecimalScaleRemoved TINYINT(1),
+       IsPropertyRoundingModeRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (UomConversionIdUomId, UomConversionIdUomIdTo, Version)
+    );
+
+    create table UomTypes (
+        UomTypeId VARCHAR(20) not null,
+       Version BIGINT not null,
+       ParentTypeId VARCHAR(20),
+       HasTable CHAR(1),
+       Description VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       CommandId VARCHAR(255),
+       primary key (UomTypeId)
     );
 
     create table Warehouses (
@@ -2516,598 +3111,6 @@
        primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId, InventoryItemRequirementVersion)
     );
 
-    create table OrderItem_RV (
-        OrderItemIdOrderId VARCHAR(20) not null,
-       OrderItemIdOrderItemSeqId VARCHAR(20) not null,
-       OrderVersion BIGINT not null,
-       ProductId VARCHAR(60),
-       ExternalProductId VARCHAR(60),
-       Quantity DECIMAL(18,6),
-       CancelQuantity DECIMAL(18,6),
-       SelectedAmount DECIMAL(18,6),
-       ExternalId VARCHAR(20),
-       OrderItemTypeId VARCHAR(20),
-       OrderItemGroupSeqId VARCHAR(20),
-       IsItemGroupPrimary CHAR(1),
-       FromInventoryItemId VARCHAR(20),
-       IsPromo CHAR(1),
-       QuoteId VARCHAR(20),
-       QuoteItemSeqId VARCHAR(20),
-       ShoppingListId VARCHAR(20),
-       ShoppingListItemSeqId VARCHAR(20),
-       UnitPrice DECIMAL(18,3),
-       UnitListPrice DECIMAL(18,3),
-       UnitAverageCost DECIMAL(18,2),
-       UnitRecurringPrice DECIMAL(18,2),
-       IsModifiedPrice CHAR(1),
-       RecurringFreqUomId VARCHAR(20),
-       ItemDescription VARCHAR(255),
-       Comments VARCHAR(255),
-       CorrespondingPoId VARCHAR(20),
-       StatusId VARCHAR(20),
-       SyncStatusId VARCHAR(20),
-       EstimatedShipDate DATETIME,
-       EstimatedDeliveryDate DATETIME,
-       AutoCancelDate DATETIME,
-       DontCancelSetDate DATETIME,
-       DontCancelSetBy VARCHAR(250),
-       ShipBeforeDate DATETIME,
-       ShipAfterDate DATETIME,
-       CancelBackOrderDate DATETIME,
-       OverrideGlAccountId VARCHAR(20),
-       Version BIGINT,
-       CreatedBy VARCHAR(255),
-       UpdatedBy VARCHAR(255),
-       Active TINYINT(1),
-       OrderOrderTypeId VARCHAR(20),
-       OrderOrderName VARCHAR(100),
-       OrderExternalId VARCHAR(20),
-       OrderSalesChannelEnumId VARCHAR(20),
-       OrderOrderDate DATETIME,
-       OrderPriority CHAR(1),
-       OrderEntryDate DATETIME,
-       OrderPickSheetPrintedDate DATETIME,
-       OrderStatusId VARCHAR(20),
-       OrderCurrencyUom VARCHAR(20),
-       OrderSyncStatusId VARCHAR(20),
-       OrderBillingAccountId VARCHAR(20),
-       OrderOriginFacilityId VARCHAR(20),
-       OrderWebSiteId VARCHAR(20),
-       OrderProductStoreId VARCHAR(20),
-       OrderTerminalId VARCHAR(60),
-       OrderTransactionId VARCHAR(60),
-       OrderAutoOrderShoppingListId VARCHAR(20),
-       OrderNeedsInventoryIssuance CHAR(1),
-       OrderIsRushOrder CHAR(1),
-       OrderInternalCode VARCHAR(60),
-       OrderRemainingSubTotal DECIMAL(18,2),
-       OrderGrandTotal DECIMAL(18,2),
-       OrderInvoicePerShipment CHAR(1),
-       OrderCreatedBy VARCHAR(255),
-       OrderCreatedAt DATETIME,
-       OrderUpdatedBy VARCHAR(255),
-       OrderUpdatedAt DATETIME,
-       OrderActive TINYINT(1),
-       CreatedAt DATETIME,
-       UpdatedAt DATETIME,
-       primary key (OrderItemIdOrderId, OrderItemIdOrderItemSeqId)
-    );
-
-    create table OrderItemMvoStateEvents (
-        OrderItemIdOrderId VARCHAR(20) not null,
-       OrderItemIdOrderItemSeqId VARCHAR(20) not null,
-       OrderVersion BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       ProductId VARCHAR(60),
-       ExternalProductId VARCHAR(60),
-       Quantity DECIMAL(18,6),
-       CancelQuantity DECIMAL(18,6),
-       SelectedAmount DECIMAL(18,6),
-       ExternalId VARCHAR(20),
-       OrderItemTypeId VARCHAR(20),
-       OrderItemGroupSeqId VARCHAR(20),
-       IsItemGroupPrimary CHAR(1),
-       FromInventoryItemId VARCHAR(20),
-       IsPromo CHAR(1),
-       QuoteId VARCHAR(20),
-       QuoteItemSeqId VARCHAR(20),
-       ShoppingListId VARCHAR(20),
-       ShoppingListItemSeqId VARCHAR(20),
-       UnitPrice DECIMAL(18,3),
-       UnitListPrice DECIMAL(18,3),
-       UnitAverageCost DECIMAL(18,2),
-       UnitRecurringPrice DECIMAL(18,2),
-       IsModifiedPrice CHAR(1),
-       RecurringFreqUomId VARCHAR(20),
-       ItemDescription VARCHAR(255),
-       Comments VARCHAR(255),
-       CorrespondingPoId VARCHAR(20),
-       StatusId VARCHAR(20),
-       SyncStatusId VARCHAR(20),
-       EstimatedShipDate DATETIME,
-       EstimatedDeliveryDate DATETIME,
-       AutoCancelDate DATETIME,
-       DontCancelSetDate DATETIME,
-       DontCancelSetBy VARCHAR(250),
-       ShipBeforeDate DATETIME,
-       ShipAfterDate DATETIME,
-       CancelBackOrderDate DATETIME,
-       OverrideGlAccountId VARCHAR(20),
-       Version BIGINT,
-       Active TINYINT(1),
-       OrderOrderTypeId VARCHAR(20),
-       OrderOrderName VARCHAR(100),
-       OrderExternalId VARCHAR(20),
-       OrderSalesChannelEnumId VARCHAR(20),
-       OrderOrderDate DATETIME,
-       OrderPriority CHAR(1),
-       OrderEntryDate DATETIME,
-       OrderPickSheetPrintedDate DATETIME,
-       OrderStatusId VARCHAR(20),
-       OrderCurrencyUom VARCHAR(20),
-       OrderSyncStatusId VARCHAR(20),
-       OrderBillingAccountId VARCHAR(20),
-       OrderOriginFacilityId VARCHAR(20),
-       OrderWebSiteId VARCHAR(20),
-       OrderProductStoreId VARCHAR(20),
-       OrderTerminalId VARCHAR(60),
-       OrderTransactionId VARCHAR(60),
-       OrderAutoOrderShoppingListId VARCHAR(20),
-       OrderNeedsInventoryIssuance CHAR(1),
-       OrderIsRushOrder CHAR(1),
-       OrderInternalCode VARCHAR(60),
-       OrderRemainingSubTotal DECIMAL(18,2),
-       OrderGrandTotal DECIMAL(18,2),
-       OrderInvoicePerShipment CHAR(1),
-       OrderCreatedBy VARCHAR(255),
-       OrderCreatedAt DATETIME,
-       OrderUpdatedBy VARCHAR(255),
-       OrderUpdatedAt DATETIME,
-       OrderActive TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       IsPropertyProductIdRemoved TINYINT(1),
-       IsPropertyExternalProductIdRemoved TINYINT(1),
-       IsPropertyQuantityRemoved TINYINT(1),
-       IsPropertyCancelQuantityRemoved TINYINT(1),
-       IsPropertySelectedAmountRemoved TINYINT(1),
-       IsPropertyExternalIdRemoved TINYINT(1),
-       IsPropertyOrderItemTypeIdRemoved TINYINT(1),
-       IsPropertyOrderItemGroupSeqIdRemoved TINYINT(1),
-       IsPropertyIsItemGroupPrimaryRemoved TINYINT(1),
-       IsPropertyFromInventoryItemIdRemoved TINYINT(1),
-       IsPropertyIsPromoRemoved TINYINT(1),
-       IsPropertyQuoteIdRemoved TINYINT(1),
-       IsPropertyQuoteItemSeqIdRemoved TINYINT(1),
-       IsPropertyShoppingListIdRemoved TINYINT(1),
-       IsPropertyShoppingListItemSeqIdRemoved TINYINT(1),
-       IsPropertyUnitPriceRemoved TINYINT(1),
-       IsPropertyUnitListPriceRemoved TINYINT(1),
-       IsPropertyUnitAverageCostRemoved TINYINT(1),
-       IsPropertyUnitRecurringPriceRemoved TINYINT(1),
-       IsPropertyIsModifiedPriceRemoved TINYINT(1),
-       IsPropertyRecurringFreqUomIdRemoved TINYINT(1),
-       IsPropertyItemDescriptionRemoved TINYINT(1),
-       IsPropertyCommentsRemoved TINYINT(1),
-       IsPropertyCorrespondingPoIdRemoved TINYINT(1),
-       IsPropertyStatusIdRemoved TINYINT(1),
-       IsPropertySyncStatusIdRemoved TINYINT(1),
-       IsPropertyEstimatedShipDateRemoved TINYINT(1),
-       IsPropertyEstimatedDeliveryDateRemoved TINYINT(1),
-       IsPropertyAutoCancelDateRemoved TINYINT(1),
-       IsPropertyDontCancelSetDateRemoved TINYINT(1),
-       IsPropertyDontCancelSetByRemoved TINYINT(1),
-       IsPropertyShipBeforeDateRemoved TINYINT(1),
-       IsPropertyShipAfterDateRemoved TINYINT(1),
-       IsPropertyCancelBackOrderDateRemoved TINYINT(1),
-       IsPropertyOverrideGlAccountIdRemoved TINYINT(1),
-       IsPropertyVersionRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       IsPropertyOrderOrderTypeIdRemoved TINYINT(1),
-       IsPropertyOrderOrderNameRemoved TINYINT(1),
-       IsPropertyOrderExternalIdRemoved TINYINT(1),
-       IsPropertyOrderSalesChannelEnumIdRemoved TINYINT(1),
-       IsPropertyOrderOrderDateRemoved TINYINT(1),
-       IsPropertyOrderPriorityRemoved TINYINT(1),
-       IsPropertyOrderEntryDateRemoved TINYINT(1),
-       IsPropertyOrderPickSheetPrintedDateRemoved TINYINT(1),
-       IsPropertyOrderStatusIdRemoved TINYINT(1),
-       IsPropertyOrderCurrencyUomRemoved TINYINT(1),
-       IsPropertyOrderSyncStatusIdRemoved TINYINT(1),
-       IsPropertyOrderBillingAccountIdRemoved TINYINT(1),
-       IsPropertyOrderOriginFacilityIdRemoved TINYINT(1),
-       IsPropertyOrderWebSiteIdRemoved TINYINT(1),
-       IsPropertyOrderProductStoreIdRemoved TINYINT(1),
-       IsPropertyOrderTerminalIdRemoved TINYINT(1),
-       IsPropertyOrderTransactionIdRemoved TINYINT(1),
-       IsPropertyOrderAutoOrderShoppingListIdRemoved TINYINT(1),
-       IsPropertyOrderNeedsInventoryIssuanceRemoved TINYINT(1),
-       IsPropertyOrderIsRushOrderRemoved TINYINT(1),
-       IsPropertyOrderInternalCodeRemoved TINYINT(1),
-       IsPropertyOrderRemainingSubTotalRemoved TINYINT(1),
-       IsPropertyOrderGrandTotalRemoved TINYINT(1),
-       IsPropertyOrderInvoicePerShipmentRemoved TINYINT(1),
-       IsPropertyOrderCreatedByRemoved TINYINT(1),
-       IsPropertyOrderCreatedAtRemoved TINYINT(1),
-       IsPropertyOrderUpdatedByRemoved TINYINT(1),
-       IsPropertyOrderUpdatedAtRemoved TINYINT(1),
-       IsPropertyOrderActiveRemoved TINYINT(1),
-       primary key (OrderItemIdOrderId, OrderItemIdOrderItemSeqId, OrderVersion)
-    );
-
-    create table SellableInventoryItemEntry_RV (
-        ProductId VARCHAR(60) not null,
-       LocatorId VARCHAR(50) not null,
-       AttributeSetInstanceId VARCHAR(50) not null,
-       EntrySeqId BIGINT not null,
-       SellableInventoryItemVersion BIGINT not null,
-       SellableQuantity NUMERIC(19,5),
-       SrcEventProductId VARCHAR(60),
-       SrcEventLocatorId VARCHAR(50),
-       SrcEventAttributeSetInstanceId VARCHAR(50),
-       SrcEventEntrySeqId BIGINT,
-       SrcEventInventoryPostingRuleId VARCHAR(50),
-       Version BIGINT,
-       CreatedBy VARCHAR(255),
-       UpdatedBy VARCHAR(255),
-       SellableInventoryItemSellableQuantity NUMERIC(19,5),
-       SellableInventoryItemCreatedBy VARCHAR(255),
-       SellableInventoryItemCreatedAt DATETIME,
-       SellableInventoryItemUpdatedBy VARCHAR(255),
-       SellableInventoryItemUpdatedAt DATETIME,
-       CreatedAt DATETIME,
-       UpdatedAt DATETIME,
-       primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId),
-      unique (SrcEventProductId, SrcEventLocatorId, SrcEventAttributeSetInstanceId, SrcEventEntrySeqId, SrcEventInventoryPostingRuleId)
-    );
-
-    create table SellableInventoryItemEntryMvoStateEvents (
-        ProductId VARCHAR(60) not null,
-       LocatorId VARCHAR(50) not null,
-       AttributeSetInstanceId VARCHAR(50) not null,
-       EntrySeqId BIGINT not null,
-       SellableInventoryItemVersion BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       SellableQuantity NUMERIC(19,5),
-       SrcEventProductId VARCHAR(60),
-       SrcEventLocatorId VARCHAR(50),
-       SrcEventAttributeSetInstanceId VARCHAR(50),
-       SrcEventEntrySeqId BIGINT,
-       SrcEventInventoryPostingRuleId VARCHAR(50),
-       Version BIGINT,
-       SellableInventoryItemSellableQuantity NUMERIC(19,5),
-       SellableInventoryItemCreatedBy VARCHAR(255),
-       SellableInventoryItemCreatedAt DATETIME,
-       SellableInventoryItemUpdatedBy VARCHAR(255),
-       SellableInventoryItemUpdatedAt DATETIME,
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       IsPropertySellableQuantityRemoved TINYINT(1),
-       IsPropertySourceEventIdRemoved TINYINT(1),
-       IsPropertyVersionRemoved TINYINT(1),
-       IsPropertySellableInventoryItemSellableQuantityRemoved TINYINT(1),
-       IsPropertySellableInventoryItemCreatedByRemoved TINYINT(1),
-       IsPropertySellableInventoryItemCreatedAtRemoved TINYINT(1),
-       IsPropertySellableInventoryItemUpdatedByRemoved TINYINT(1),
-       IsPropertySellableInventoryItemUpdatedAtRemoved TINYINT(1),
-       primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId, SellableInventoryItemVersion)
-    );
-
-    create table ShipmentItem_RV (
-        ShipmentItemIdShipmentId VARCHAR(20) not null,
-       ShipmentItemIdShipmentItemSeqId VARCHAR(20) not null,
-       ShipmentVersion BIGINT not null,
-       ProductId VARCHAR(60),
-       AttributeSetInstanceId VARCHAR(255),
-       Quantity DECIMAL(18,6) not null,
-       TargetQuantity DECIMAL(18,6),
-       ShipmentContentDescription VARCHAR(255),
-       Version BIGINT,
-       CreatedBy VARCHAR(255),
-       UpdatedBy VARCHAR(255),
-       Active TINYINT(1),
-       ShipmentShipmentTypeId VARCHAR(20),
-       ShipmentStatusId VARCHAR(20),
-       ShipmentPrimaryOrderId VARCHAR(20),
-       ShipmentPrimaryReturnId VARCHAR(20),
-       ShipmentPicklistBinId VARCHAR(20),
-       ShipmentEstimatedReadyDate DATETIME,
-       ShipmentEstimatedShipDate DATETIME,
-       ShipmentEstimatedShipWorkEffId VARCHAR(20),
-       ShipmentEstimatedArrivalDate DATETIME,
-       ShipmentEstimatedArrivalWorkEffId VARCHAR(20),
-       ShipmentLatestCancelDate DATETIME,
-       ShipmentEstimatedShipCost DECIMAL(18,2),
-       ShipmentCurrencyUomId VARCHAR(20),
-       ShipmentHandlingInstructions VARCHAR(255),
-       ShipmentOriginFacilityId VARCHAR(20),
-       ShipmentDestinationFacilityId VARCHAR(20),
-       ShipmentOriginContactMechId VARCHAR(20),
-       ShipmentOriginTelecomNumberId VARCHAR(20),
-       ShipmentDestinationContactMechId VARCHAR(20),
-       ShipmentDestinationTelecomNumberId VARCHAR(20),
-       ShipmentPartyIdTo VARCHAR(20),
-       ShipmentPartyIdFrom VARCHAR(20),
-       ShipmentAdditionalShippingCharge DECIMAL(18,2),
-       ShipmentAddtlShippingChargeDesc VARCHAR(255),
-       ShipmentShipperId VARCHAR(20),
-       ShipmentCreatedBy VARCHAR(255),
-       ShipmentCreatedAt DATETIME,
-       ShipmentUpdatedBy VARCHAR(255),
-       ShipmentUpdatedAt DATETIME,
-       ShipmentActive TINYINT(1),
-       CreatedAt DATETIME,
-       UpdatedAt DATETIME,
-       primary key (ShipmentItemIdShipmentId, ShipmentItemIdShipmentItemSeqId)
-    );
-
-    create table ShipmentItemMvoStateEvents (
-        ShipmentItemIdShipmentId VARCHAR(20) not null,
-       ShipmentItemIdShipmentItemSeqId VARCHAR(20) not null,
-       ShipmentVersion BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       ProductId VARCHAR(60),
-       AttributeSetInstanceId VARCHAR(255),
-       Quantity DECIMAL(18,6),
-       TargetQuantity DECIMAL(18,6),
-       ShipmentContentDescription VARCHAR(255),
-       Version BIGINT,
-       Active TINYINT(1),
-       ShipmentShipmentTypeId VARCHAR(20),
-       ShipmentStatusId VARCHAR(20),
-       ShipmentPrimaryOrderId VARCHAR(20),
-       ShipmentPrimaryReturnId VARCHAR(20),
-       ShipmentPicklistBinId VARCHAR(20),
-       ShipmentEstimatedReadyDate DATETIME,
-       ShipmentEstimatedShipDate DATETIME,
-       ShipmentEstimatedShipWorkEffId VARCHAR(20),
-       ShipmentEstimatedArrivalDate DATETIME,
-       ShipmentEstimatedArrivalWorkEffId VARCHAR(20),
-       ShipmentLatestCancelDate DATETIME,
-       ShipmentEstimatedShipCost DECIMAL(18,2),
-       ShipmentCurrencyUomId VARCHAR(20),
-       ShipmentHandlingInstructions VARCHAR(255),
-       ShipmentOriginFacilityId VARCHAR(20),
-       ShipmentDestinationFacilityId VARCHAR(20),
-       ShipmentOriginContactMechId VARCHAR(20),
-       ShipmentOriginTelecomNumberId VARCHAR(20),
-       ShipmentDestinationContactMechId VARCHAR(20),
-       ShipmentDestinationTelecomNumberId VARCHAR(20),
-       ShipmentPartyIdTo VARCHAR(20),
-       ShipmentPartyIdFrom VARCHAR(20),
-       ShipmentAdditionalShippingCharge DECIMAL(18,2),
-       ShipmentAddtlShippingChargeDesc VARCHAR(255),
-       ShipmentShipperId VARCHAR(20),
-       ShipmentCreatedBy VARCHAR(255),
-       ShipmentCreatedAt DATETIME,
-       ShipmentUpdatedBy VARCHAR(255),
-       ShipmentUpdatedAt DATETIME,
-       ShipmentActive TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       IsPropertyProductIdRemoved TINYINT(1),
-       IsPropertyAttributeSetInstanceIdRemoved TINYINT(1),
-       IsPropertyQuantityRemoved TINYINT(1),
-       IsPropertyTargetQuantityRemoved TINYINT(1),
-       IsPropertyShipmentContentDescriptionRemoved TINYINT(1),
-       IsPropertyVersionRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       IsPropertyShipmentShipmentTypeIdRemoved TINYINT(1),
-       IsPropertyShipmentStatusIdRemoved TINYINT(1),
-       IsPropertyShipmentPrimaryOrderIdRemoved TINYINT(1),
-       IsPropertyShipmentPrimaryReturnIdRemoved TINYINT(1),
-       IsPropertyShipmentPicklistBinIdRemoved TINYINT(1),
-       IsPropertyShipmentEstimatedReadyDateRemoved TINYINT(1),
-       IsPropertyShipmentEstimatedShipDateRemoved TINYINT(1),
-       IsPropertyShipmentEstimatedShipWorkEffIdRemoved TINYINT(1),
-       IsPropertyShipmentEstimatedArrivalDateRemoved TINYINT(1),
-       IsPropertyShipmentEstimatedArrivalWorkEffIdRemoved TINYINT(1),
-       IsPropertyShipmentLatestCancelDateRemoved TINYINT(1),
-       IsPropertyShipmentEstimatedShipCostRemoved TINYINT(1),
-       IsPropertyShipmentCurrencyUomIdRemoved TINYINT(1),
-       IsPropertyShipmentHandlingInstructionsRemoved TINYINT(1),
-       IsPropertyShipmentOriginFacilityIdRemoved TINYINT(1),
-       IsPropertyShipmentDestinationFacilityIdRemoved TINYINT(1),
-       IsPropertyShipmentOriginContactMechIdRemoved TINYINT(1),
-       IsPropertyShipmentOriginTelecomNumberIdRemoved TINYINT(1),
-       IsPropertyShipmentDestinationContactMechIdRemoved TINYINT(1),
-       IsPropertyShipmentDestinationTelecomNumberIdRemoved TINYINT(1),
-       IsPropertyShipmentPartyIdToRemoved TINYINT(1),
-       IsPropertyShipmentPartyIdFromRemoved TINYINT(1),
-       IsPropertyShipmentAdditionalShippingChargeRemoved TINYINT(1),
-       IsPropertyShipmentAddtlShippingChargeDescRemoved TINYINT(1),
-       IsPropertyShipmentShipperIdRemoved TINYINT(1),
-       IsPropertyShipmentCreatedByRemoved TINYINT(1),
-       IsPropertyShipmentCreatedAtRemoved TINYINT(1),
-       IsPropertyShipmentUpdatedByRemoved TINYINT(1),
-       IsPropertyShipmentUpdatedAtRemoved TINYINT(1),
-       IsPropertyShipmentActiveRemoved TINYINT(1),
-       primary key (ShipmentItemIdShipmentId, ShipmentItemIdShipmentItemSeqId, ShipmentVersion)
-    );
-
-    create table Movements (
-        DocumentNumber VARCHAR(50) not null,
-       Version BIGINT not null,
-       DocumentStatusId VARCHAR(255),
-       MovementDate DATETIME,
-       Posted TINYINT(1),
-       Processed TINYINT(1),
-       Processing VARCHAR(255),
-       DateReceived DATETIME,
-       DocumentTypeId VARCHAR(255),
-       IsInTransit TINYINT(1),
-       IsApproved TINYINT(1),
-       ApprovalAmount NUMERIC(19,5),
-       ShipperId VARCHAR(255),
-       SalesRepresentativeId VARCHAR(255),
-       BusinessPartnerId VARCHAR(255),
-       ChargeAmount NUMERIC(19,5),
-       CreateFrom VARCHAR(255),
-       FreightAmount NUMERIC(19,5),
-       ReversalDocumentNumber VARCHAR(255),
-       WarehouseIdFrom VARCHAR(255),
-       WarehouseIdTo VARCHAR(255),
-       Description VARCHAR(255),
-       CreatedBy VARCHAR(255),
-       UpdatedBy VARCHAR(255),
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       CreatedAt DATETIME,
-       UpdatedAt DATETIME,
-       primary key (DocumentNumber)
-    );
-
-    create table MovementStateEvents (
-        DocumentNumber VARCHAR(50) not null,
-       Version BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       DocumentStatusId VARCHAR(255),
-       MovementDate DATETIME,
-       Posted TINYINT(1),
-       Processed TINYINT(1),
-       Processing VARCHAR(255),
-       DateReceived DATETIME,
-       DocumentTypeId VARCHAR(255),
-       IsInTransit TINYINT(1),
-       IsApproved TINYINT(1),
-       ApprovalAmount NUMERIC(19,5),
-       ShipperId VARCHAR(255),
-       SalesRepresentativeId VARCHAR(255),
-       BusinessPartnerId VARCHAR(255),
-       ChargeAmount NUMERIC(19,5),
-       CreateFrom VARCHAR(255),
-       FreightAmount NUMERIC(19,5),
-       ReversalDocumentNumber VARCHAR(255),
-       WarehouseIdFrom VARCHAR(255),
-       WarehouseIdTo VARCHAR(255),
-       Description VARCHAR(255),
-       Active TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       IsPropertyDocumentStatusIdRemoved TINYINT(1),
-       IsPropertyMovementDateRemoved TINYINT(1),
-       IsPropertyPostedRemoved TINYINT(1),
-       IsPropertyProcessedRemoved TINYINT(1),
-       IsPropertyProcessingRemoved TINYINT(1),
-       IsPropertyDateReceivedRemoved TINYINT(1),
-       IsPropertyDocumentTypeIdRemoved TINYINT(1),
-       IsPropertyIsInTransitRemoved TINYINT(1),
-       IsPropertyIsApprovedRemoved TINYINT(1),
-       IsPropertyApprovalAmountRemoved TINYINT(1),
-       IsPropertyShipperIdRemoved TINYINT(1),
-       IsPropertySalesRepresentativeIdRemoved TINYINT(1),
-       IsPropertyBusinessPartnerIdRemoved TINYINT(1),
-       IsPropertyChargeAmountRemoved TINYINT(1),
-       IsPropertyCreateFromRemoved TINYINT(1),
-       IsPropertyFreightAmountRemoved TINYINT(1),
-       IsPropertyReversalDocumentNumberRemoved TINYINT(1),
-       IsPropertyWarehouseIdFromRemoved TINYINT(1),
-       IsPropertyWarehouseIdToRemoved TINYINT(1),
-       IsPropertyDescriptionRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (DocumentNumber, Version)
-    );
-
-    create table MovementLines (
-        MovementLineIdMovementDocumentNumber VARCHAR(50) not null,
-       MovementLineIdLineNumber VARCHAR(50) not null,
-       Version BIGINT not null,
-       MovementQuantity NUMERIC(19,5),
-       ProductId VARCHAR(60),
-       LocatorIdFrom VARCHAR(255),
-       LocatorIdTo VARCHAR(255),
-       AttributeSetInstanceId VARCHAR(255),
-       Processed TINYINT(1),
-       ReversalLineNumber VARCHAR(255),
-       CreatedBy VARCHAR(255),
-       UpdatedBy VARCHAR(255),
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       CreatedAt DATETIME,
-       UpdatedAt DATETIME,
-       primary key (MovementLineIdMovementDocumentNumber, MovementLineIdLineNumber)
-    );
-
-    create table MovementLineStateEvents (
-        MovementLineIdMovementDocumentNumber VARCHAR(50) not null,
-       MovementLineIdLineNumber VARCHAR(50) not null,
-       MovementVersion BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       MovementQuantity NUMERIC(19,5),
-       ProductId VARCHAR(60),
-       LocatorIdFrom VARCHAR(255),
-       LocatorIdTo VARCHAR(255),
-       AttributeSetInstanceId VARCHAR(255),
-       Processed TINYINT(1),
-       ReversalLineNumber VARCHAR(255),
-       Active TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       Version BIGINT not null,
-       IsPropertyMovementQuantityRemoved TINYINT(1),
-       IsPropertyProductIdRemoved TINYINT(1),
-       IsPropertyLocatorIdFromRemoved TINYINT(1),
-       IsPropertyLocatorIdToRemoved TINYINT(1),
-       IsPropertyAttributeSetInstanceIdRemoved TINYINT(1),
-       IsPropertyProcessedRemoved TINYINT(1),
-       IsPropertyReversalLineNumberRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (MovementLineIdMovementDocumentNumber, MovementLineIdLineNumber, MovementVersion)
-    );
-
-    create table MovementConfirmationLines (
-        MovementConfirmationLineIdMovementConfirmationDocumentNumber VARCHAR(50) not null,
-       MovementConfirmationLineIdLineNumber VARCHAR(50) not null,
-       Version BIGINT not null,
-       MovementLineNumber VARCHAR(255),
-       TargetQuantity NUMERIC(19,5),
-       ConfirmedQuantity NUMERIC(19,5),
-       DifferenceQuantity NUMERIC(19,5),
-       ScrappedQuantity NUMERIC(19,5),
-       Description VARCHAR(255),
-       Processed TINYINT(1),
-       CreatedBy VARCHAR(255),
-       UpdatedBy VARCHAR(255),
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       CreatedAt DATETIME,
-       UpdatedAt DATETIME,
-       primary key (MovementConfirmationLineIdMovementConfirmationDocumentNumber, MovementConfirmationLineIdLineNumber)
-    );
-
-    create table MovementConfirmationLineStateEvents (
-        MovementConfirmationLineIdMovementConfirmationDocumentNumber VARCHAR(50) not null,
-       MovementConfirmationLineIdLineNumber VARCHAR(50) not null,
-       MovementConfirmationVersion BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       MovementLineNumber VARCHAR(255),
-       TargetQuantity NUMERIC(19,5),
-       ConfirmedQuantity NUMERIC(19,5),
-       DifferenceQuantity NUMERIC(19,5),
-       ScrappedQuantity NUMERIC(19,5),
-       Description VARCHAR(255),
-       Processed TINYINT(1),
-       Active TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       Version BIGINT not null,
-       IsPropertyMovementLineNumberRemoved TINYINT(1),
-       IsPropertyTargetQuantityRemoved TINYINT(1),
-       IsPropertyConfirmedQuantityRemoved TINYINT(1),
-       IsPropertyDifferenceQuantityRemoved TINYINT(1),
-       IsPropertyScrappedQuantityRemoved TINYINT(1),
-       IsPropertyDescriptionRemoved TINYINT(1),
-       IsPropertyProcessedRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (MovementConfirmationLineIdMovementConfirmationDocumentNumber, MovementConfirmationLineIdLineNumber, MovementConfirmationVersion)
-    );
-
     create table MovementLine_RV (
         MovementLineIdMovementDocumentNumber VARCHAR(50) not null,
        MovementLineIdLineNumber VARCHAR(50) not null,
@@ -3328,163 +3331,224 @@
        primary key (MovementConfirmationLineIdMovementConfirmationDocumentNumber, MovementConfirmationLineIdLineNumber, MovementConfirmationVersion)
     );
 
-    create table MovementConfirmations (
-        DocumentNumber VARCHAR(50) not null,
-       Version BIGINT not null,
-       DocumentStatusId VARCHAR(255),
-       MovementDocumentNumber VARCHAR(255),
-       IsApproved TINYINT(1),
-       ApprovalAmount NUMERIC(19,5),
-       Processed TINYINT(1),
-       Processing VARCHAR(255),
-       DocumentTypeId VARCHAR(255),
-       Description VARCHAR(255),
-       CreatedBy VARCHAR(255),
-       UpdatedBy VARCHAR(255),
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       CreatedAt DATETIME,
-       UpdatedAt DATETIME,
-       primary key (DocumentNumber)
-    );
-
-    create table MovementConfirmationStateEvents (
-        DocumentNumber VARCHAR(50) not null,
-       Version BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       DocumentStatusId VARCHAR(255),
-       MovementDocumentNumber VARCHAR(255),
-       IsApproved TINYINT(1),
-       ApprovalAmount NUMERIC(19,5),
-       Processed TINYINT(1),
-       Processing VARCHAR(255),
-       DocumentTypeId VARCHAR(255),
-       Description VARCHAR(255),
-       Active TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       IsPropertyDocumentStatusIdRemoved TINYINT(1),
-       IsPropertyMovementDocumentNumberRemoved TINYINT(1),
-       IsPropertyIsApprovedRemoved TINYINT(1),
-       IsPropertyApprovalAmountRemoved TINYINT(1),
-       IsPropertyProcessedRemoved TINYINT(1),
-       IsPropertyProcessingRemoved TINYINT(1),
-       IsPropertyDocumentTypeIdRemoved TINYINT(1),
-       IsPropertyDescriptionRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (DocumentNumber, Version)
-    );
-
-    create table PhysicalInventories (
-        DocumentNumber VARCHAR(50) not null,
-       Version BIGINT not null,
-       DocumentStatusId VARCHAR(255),
-       WarehouseId VARCHAR(255),
-       Posted TINYINT(1),
-       Processed TINYINT(1),
-       Processing VARCHAR(255),
-       DocumentTypeId VARCHAR(255),
-       MovementDate DATETIME,
-       Description VARCHAR(255),
-       IsApproved TINYINT(1),
-       ApprovalAmount NUMERIC(19,5),
-       IsQuantityUpdated TINYINT(1),
-       ReversalDocumentNumber VARCHAR(255),
-       CreatedBy VARCHAR(255),
-       UpdatedBy VARCHAR(255),
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       CreatedAt DATETIME,
-       UpdatedAt DATETIME,
-       primary key (DocumentNumber)
-    );
-
-    create table PhysicalInventoryStateEvents (
-        DocumentNumber VARCHAR(50) not null,
-       Version BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       DocumentStatusId VARCHAR(255),
-       WarehouseId VARCHAR(255),
-       Posted TINYINT(1),
-       Processed TINYINT(1),
-       Processing VARCHAR(255),
-       DocumentTypeId VARCHAR(255),
-       MovementDate DATETIME,
-       Description VARCHAR(255),
-       IsApproved TINYINT(1),
-       ApprovalAmount NUMERIC(19,5),
-       IsQuantityUpdated TINYINT(1),
-       ReversalDocumentNumber VARCHAR(255),
-       Active TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       IsPropertyDocumentStatusIdRemoved TINYINT(1),
-       IsPropertyWarehouseIdRemoved TINYINT(1),
-       IsPropertyPostedRemoved TINYINT(1),
-       IsPropertyProcessedRemoved TINYINT(1),
-       IsPropertyProcessingRemoved TINYINT(1),
-       IsPropertyDocumentTypeIdRemoved TINYINT(1),
-       IsPropertyMovementDateRemoved TINYINT(1),
-       IsPropertyDescriptionRemoved TINYINT(1),
-       IsPropertyIsApprovedRemoved TINYINT(1),
-       IsPropertyApprovalAmountRemoved TINYINT(1),
-       IsPropertyIsQuantityUpdatedRemoved TINYINT(1),
-       IsPropertyReversalDocumentNumberRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (DocumentNumber, Version)
-    );
-
-    create table PhysicalInventoryLines (
-        PhysicalInventoryLineIdPhysicalInventoryDocumentNumber VARCHAR(50) not null,
-       PhysicalInventoryLineIdLineNumber VARCHAR(50) not null,
-       Version BIGINT not null,
-       LocatorId VARCHAR(255),
+    create table OrderItem_RV (
+        OrderItemIdOrderId VARCHAR(20) not null,
+       OrderItemIdOrderItemSeqId VARCHAR(20) not null,
+       OrderVersion BIGINT not null,
        ProductId VARCHAR(60),
-       AttributeSetInstanceId VARCHAR(255),
-       BookQuantity NUMERIC(19,5),
-       CountedQuantity NUMERIC(19,5),
-       Processed TINYINT(1),
-       ReversalLineNumber BIGINT,
-       Description VARCHAR(255),
+       ExternalProductId VARCHAR(60),
+       Quantity DECIMAL(18,6),
+       CancelQuantity DECIMAL(18,6),
+       SelectedAmount DECIMAL(18,6),
+       ExternalId VARCHAR(20),
+       OrderItemTypeId VARCHAR(20),
+       OrderItemGroupSeqId VARCHAR(20),
+       IsItemGroupPrimary CHAR(1),
+       FromInventoryItemId VARCHAR(20),
+       IsPromo CHAR(1),
+       QuoteId VARCHAR(20),
+       QuoteItemSeqId VARCHAR(20),
+       ShoppingListId VARCHAR(20),
+       ShoppingListItemSeqId VARCHAR(20),
+       UnitPrice DECIMAL(18,3),
+       UnitListPrice DECIMAL(18,3),
+       UnitAverageCost DECIMAL(18,2),
+       UnitRecurringPrice DECIMAL(18,2),
+       IsModifiedPrice CHAR(1),
+       RecurringFreqUomId VARCHAR(20),
+       ItemDescription VARCHAR(255),
+       Comments VARCHAR(255),
+       CorrespondingPoId VARCHAR(20),
+       StatusId VARCHAR(20),
+       SyncStatusId VARCHAR(20),
+       EstimatedShipDate DATETIME,
+       EstimatedDeliveryDate DATETIME,
+       AutoCancelDate DATETIME,
+       DontCancelSetDate DATETIME,
+       DontCancelSetBy VARCHAR(250),
+       ShipBeforeDate DATETIME,
+       ShipAfterDate DATETIME,
+       CancelBackOrderDate DATETIME,
+       OverrideGlAccountId VARCHAR(20),
+       Version BIGINT,
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
        Active TINYINT(1),
-       Deleted TINYINT(1),
+       OrderOrderTypeId VARCHAR(20),
+       OrderOrderName VARCHAR(100),
+       OrderExternalId VARCHAR(20),
+       OrderSalesChannelEnumId VARCHAR(20),
+       OrderOrderDate DATETIME,
+       OrderPriority CHAR(1),
+       OrderEntryDate DATETIME,
+       OrderPickSheetPrintedDate DATETIME,
+       OrderStatusId VARCHAR(20),
+       OrderCurrencyUom VARCHAR(20),
+       OrderSyncStatusId VARCHAR(20),
+       OrderBillingAccountId VARCHAR(20),
+       OrderOriginFacilityId VARCHAR(20),
+       OrderWebSiteId VARCHAR(20),
+       OrderProductStoreId VARCHAR(20),
+       OrderTerminalId VARCHAR(60),
+       OrderTransactionId VARCHAR(60),
+       OrderAutoOrderShoppingListId VARCHAR(20),
+       OrderNeedsInventoryIssuance CHAR(1),
+       OrderIsRushOrder CHAR(1),
+       OrderInternalCode VARCHAR(60),
+       OrderRemainingSubTotal DECIMAL(18,2),
+       OrderGrandTotal DECIMAL(18,2),
+       OrderInvoicePerShipment CHAR(1),
+       OrderCreatedBy VARCHAR(255),
+       OrderCreatedAt DATETIME,
+       OrderUpdatedBy VARCHAR(255),
+       OrderUpdatedAt DATETIME,
+       OrderActive TINYINT(1),
        CreatedAt DATETIME,
        UpdatedAt DATETIME,
-       primary key (PhysicalInventoryLineIdPhysicalInventoryDocumentNumber, PhysicalInventoryLineIdLineNumber)
+       primary key (OrderItemIdOrderId, OrderItemIdOrderItemSeqId)
     );
 
-    create table PhysicalInventoryLineStateEvents (
-        PhysicalInventoryLineIdPhysicalInventoryDocumentNumber VARCHAR(50) not null,
-       PhysicalInventoryLineIdLineNumber VARCHAR(50) not null,
-       PhysicalInventoryVersion BIGINT not null,
+    create table OrderItemMvoStateEvents (
+        OrderItemIdOrderId VARCHAR(20) not null,
+       OrderItemIdOrderItemSeqId VARCHAR(20) not null,
+       OrderVersion BIGINT not null,
        StateEventType VARCHAR(255) not null,
-       LocatorId VARCHAR(255),
        ProductId VARCHAR(60),
-       AttributeSetInstanceId VARCHAR(255),
-       BookQuantity NUMERIC(19,5),
-       CountedQuantity NUMERIC(19,5),
-       Processed TINYINT(1),
-       ReversalLineNumber BIGINT,
-       Description VARCHAR(255),
+       ExternalProductId VARCHAR(60),
+       Quantity DECIMAL(18,6),
+       CancelQuantity DECIMAL(18,6),
+       SelectedAmount DECIMAL(18,6),
+       ExternalId VARCHAR(20),
+       OrderItemTypeId VARCHAR(20),
+       OrderItemGroupSeqId VARCHAR(20),
+       IsItemGroupPrimary CHAR(1),
+       FromInventoryItemId VARCHAR(20),
+       IsPromo CHAR(1),
+       QuoteId VARCHAR(20),
+       QuoteItemSeqId VARCHAR(20),
+       ShoppingListId VARCHAR(20),
+       ShoppingListItemSeqId VARCHAR(20),
+       UnitPrice DECIMAL(18,3),
+       UnitListPrice DECIMAL(18,3),
+       UnitAverageCost DECIMAL(18,2),
+       UnitRecurringPrice DECIMAL(18,2),
+       IsModifiedPrice CHAR(1),
+       RecurringFreqUomId VARCHAR(20),
+       ItemDescription VARCHAR(255),
+       Comments VARCHAR(255),
+       CorrespondingPoId VARCHAR(20),
+       StatusId VARCHAR(20),
+       SyncStatusId VARCHAR(20),
+       EstimatedShipDate DATETIME,
+       EstimatedDeliveryDate DATETIME,
+       AutoCancelDate DATETIME,
+       DontCancelSetDate DATETIME,
+       DontCancelSetBy VARCHAR(250),
+       ShipBeforeDate DATETIME,
+       ShipAfterDate DATETIME,
+       CancelBackOrderDate DATETIME,
+       OverrideGlAccountId VARCHAR(20),
+       Version BIGINT,
        Active TINYINT(1),
+       OrderOrderTypeId VARCHAR(20),
+       OrderOrderName VARCHAR(100),
+       OrderExternalId VARCHAR(20),
+       OrderSalesChannelEnumId VARCHAR(20),
+       OrderOrderDate DATETIME,
+       OrderPriority CHAR(1),
+       OrderEntryDate DATETIME,
+       OrderPickSheetPrintedDate DATETIME,
+       OrderStatusId VARCHAR(20),
+       OrderCurrencyUom VARCHAR(20),
+       OrderSyncStatusId VARCHAR(20),
+       OrderBillingAccountId VARCHAR(20),
+       OrderOriginFacilityId VARCHAR(20),
+       OrderWebSiteId VARCHAR(20),
+       OrderProductStoreId VARCHAR(20),
+       OrderTerminalId VARCHAR(60),
+       OrderTransactionId VARCHAR(60),
+       OrderAutoOrderShoppingListId VARCHAR(20),
+       OrderNeedsInventoryIssuance CHAR(1),
+       OrderIsRushOrder CHAR(1),
+       OrderInternalCode VARCHAR(60),
+       OrderRemainingSubTotal DECIMAL(18,2),
+       OrderGrandTotal DECIMAL(18,2),
+       OrderInvoicePerShipment CHAR(1),
+       OrderCreatedBy VARCHAR(255),
+       OrderCreatedAt DATETIME,
+       OrderUpdatedBy VARCHAR(255),
+       OrderUpdatedAt DATETIME,
+       OrderActive TINYINT(1),
        CreatedBy VARCHAR(255),
        CreatedAt DATETIME,
        CommandId VARCHAR(255),
-       Version BIGINT not null,
-       IsPropertyLocatorIdRemoved TINYINT(1),
        IsPropertyProductIdRemoved TINYINT(1),
-       IsPropertyAttributeSetInstanceIdRemoved TINYINT(1),
-       IsPropertyBookQuantityRemoved TINYINT(1),
-       IsPropertyCountedQuantityRemoved TINYINT(1),
-       IsPropertyProcessedRemoved TINYINT(1),
-       IsPropertyReversalLineNumberRemoved TINYINT(1),
-       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertyExternalProductIdRemoved TINYINT(1),
+       IsPropertyQuantityRemoved TINYINT(1),
+       IsPropertyCancelQuantityRemoved TINYINT(1),
+       IsPropertySelectedAmountRemoved TINYINT(1),
+       IsPropertyExternalIdRemoved TINYINT(1),
+       IsPropertyOrderItemTypeIdRemoved TINYINT(1),
+       IsPropertyOrderItemGroupSeqIdRemoved TINYINT(1),
+       IsPropertyIsItemGroupPrimaryRemoved TINYINT(1),
+       IsPropertyFromInventoryItemIdRemoved TINYINT(1),
+       IsPropertyIsPromoRemoved TINYINT(1),
+       IsPropertyQuoteIdRemoved TINYINT(1),
+       IsPropertyQuoteItemSeqIdRemoved TINYINT(1),
+       IsPropertyShoppingListIdRemoved TINYINT(1),
+       IsPropertyShoppingListItemSeqIdRemoved TINYINT(1),
+       IsPropertyUnitPriceRemoved TINYINT(1),
+       IsPropertyUnitListPriceRemoved TINYINT(1),
+       IsPropertyUnitAverageCostRemoved TINYINT(1),
+       IsPropertyUnitRecurringPriceRemoved TINYINT(1),
+       IsPropertyIsModifiedPriceRemoved TINYINT(1),
+       IsPropertyRecurringFreqUomIdRemoved TINYINT(1),
+       IsPropertyItemDescriptionRemoved TINYINT(1),
+       IsPropertyCommentsRemoved TINYINT(1),
+       IsPropertyCorrespondingPoIdRemoved TINYINT(1),
+       IsPropertyStatusIdRemoved TINYINT(1),
+       IsPropertySyncStatusIdRemoved TINYINT(1),
+       IsPropertyEstimatedShipDateRemoved TINYINT(1),
+       IsPropertyEstimatedDeliveryDateRemoved TINYINT(1),
+       IsPropertyAutoCancelDateRemoved TINYINT(1),
+       IsPropertyDontCancelSetDateRemoved TINYINT(1),
+       IsPropertyDontCancelSetByRemoved TINYINT(1),
+       IsPropertyShipBeforeDateRemoved TINYINT(1),
+       IsPropertyShipAfterDateRemoved TINYINT(1),
+       IsPropertyCancelBackOrderDateRemoved TINYINT(1),
+       IsPropertyOverrideGlAccountIdRemoved TINYINT(1),
+       IsPropertyVersionRemoved TINYINT(1),
        IsPropertyActiveRemoved TINYINT(1),
-       primary key (PhysicalInventoryLineIdPhysicalInventoryDocumentNumber, PhysicalInventoryLineIdLineNumber, PhysicalInventoryVersion)
+       IsPropertyOrderOrderTypeIdRemoved TINYINT(1),
+       IsPropertyOrderOrderNameRemoved TINYINT(1),
+       IsPropertyOrderExternalIdRemoved TINYINT(1),
+       IsPropertyOrderSalesChannelEnumIdRemoved TINYINT(1),
+       IsPropertyOrderOrderDateRemoved TINYINT(1),
+       IsPropertyOrderPriorityRemoved TINYINT(1),
+       IsPropertyOrderEntryDateRemoved TINYINT(1),
+       IsPropertyOrderPickSheetPrintedDateRemoved TINYINT(1),
+       IsPropertyOrderStatusIdRemoved TINYINT(1),
+       IsPropertyOrderCurrencyUomRemoved TINYINT(1),
+       IsPropertyOrderSyncStatusIdRemoved TINYINT(1),
+       IsPropertyOrderBillingAccountIdRemoved TINYINT(1),
+       IsPropertyOrderOriginFacilityIdRemoved TINYINT(1),
+       IsPropertyOrderWebSiteIdRemoved TINYINT(1),
+       IsPropertyOrderProductStoreIdRemoved TINYINT(1),
+       IsPropertyOrderTerminalIdRemoved TINYINT(1),
+       IsPropertyOrderTransactionIdRemoved TINYINT(1),
+       IsPropertyOrderAutoOrderShoppingListIdRemoved TINYINT(1),
+       IsPropertyOrderNeedsInventoryIssuanceRemoved TINYINT(1),
+       IsPropertyOrderIsRushOrderRemoved TINYINT(1),
+       IsPropertyOrderInternalCodeRemoved TINYINT(1),
+       IsPropertyOrderRemainingSubTotalRemoved TINYINT(1),
+       IsPropertyOrderGrandTotalRemoved TINYINT(1),
+       IsPropertyOrderInvoicePerShipmentRemoved TINYINT(1),
+       IsPropertyOrderCreatedByRemoved TINYINT(1),
+       IsPropertyOrderCreatedAtRemoved TINYINT(1),
+       IsPropertyOrderUpdatedByRemoved TINYINT(1),
+       IsPropertyOrderUpdatedAtRemoved TINYINT(1),
+       IsPropertyOrderActiveRemoved TINYINT(1),
+       primary key (OrderItemIdOrderId, OrderItemIdOrderItemSeqId, OrderVersion)
     );
 
     create table PhysicalInventoryLine_RV (
@@ -3594,183 +3658,196 @@
        primary key (PhysicalInventoryLineIdPhysicalInventoryDocumentNumber, PhysicalInventoryLineIdLineNumber, PhysicalInventoryVersion)
     );
 
-    create table Uoms (
-        UomId VARCHAR(20) not null,
-       Version BIGINT not null,
-       UomTypeId VARCHAR(20),
-       Abbreviation VARCHAR(60),
-       Description VARCHAR(255),
+    create table SellableInventoryItemEntry_RV (
+        ProductId VARCHAR(60) not null,
+       LocatorId VARCHAR(50) not null,
+       AttributeSetInstanceId VARCHAR(50) not null,
+       EntrySeqId BIGINT not null,
+       SellableInventoryItemVersion BIGINT not null,
+       SellableQuantity NUMERIC(19,5),
+       SrcEventProductId VARCHAR(60),
+       SrcEventLocatorId VARCHAR(50),
+       SrcEventAttributeSetInstanceId VARCHAR(50),
+       SrcEventEntrySeqId BIGINT,
+       SrcEventInventoryPostingRuleId VARCHAR(50),
+       Version BIGINT,
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
-       Active TINYINT(1),
-       Deleted TINYINT(1),
+       SellableInventoryItemSellableQuantity NUMERIC(19,5),
+       SellableInventoryItemCreatedBy VARCHAR(255),
+       SellableInventoryItemCreatedAt DATETIME,
+       SellableInventoryItemUpdatedBy VARCHAR(255),
+       SellableInventoryItemUpdatedAt DATETIME,
        CreatedAt DATETIME,
        UpdatedAt DATETIME,
-       primary key (UomId)
+       primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId),
+      unique (SrcEventProductId, SrcEventLocatorId, SrcEventAttributeSetInstanceId, SrcEventEntrySeqId, SrcEventInventoryPostingRuleId)
     );
 
-    create table UomStateEvents (
-        UomId VARCHAR(20) not null,
-       Version BIGINT not null,
+    create table SellableInventoryItemEntryMvoStateEvents (
+        ProductId VARCHAR(60) not null,
+       LocatorId VARCHAR(50) not null,
+       AttributeSetInstanceId VARCHAR(50) not null,
+       EntrySeqId BIGINT not null,
+       SellableInventoryItemVersion BIGINT not null,
        StateEventType VARCHAR(255) not null,
-       UomTypeId VARCHAR(20),
-       Abbreviation VARCHAR(60),
-       Description VARCHAR(255),
-       Active TINYINT(1),
+       SellableQuantity NUMERIC(19,5),
+       SrcEventProductId VARCHAR(60),
+       SrcEventLocatorId VARCHAR(50),
+       SrcEventAttributeSetInstanceId VARCHAR(50),
+       SrcEventEntrySeqId BIGINT,
+       SrcEventInventoryPostingRuleId VARCHAR(50),
+       Version BIGINT,
+       SellableInventoryItemSellableQuantity NUMERIC(19,5),
+       SellableInventoryItemCreatedBy VARCHAR(255),
+       SellableInventoryItemCreatedAt DATETIME,
+       SellableInventoryItemUpdatedBy VARCHAR(255),
+       SellableInventoryItemUpdatedAt DATETIME,
        CreatedBy VARCHAR(255),
        CreatedAt DATETIME,
        CommandId VARCHAR(255),
-       IsPropertyUomTypeIdRemoved TINYINT(1),
-       IsPropertyAbbreviationRemoved TINYINT(1),
-       IsPropertyDescriptionRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (UomId, Version)
+       IsPropertySellableQuantityRemoved TINYINT(1),
+       IsPropertySourceEventIdRemoved TINYINT(1),
+       IsPropertyVersionRemoved TINYINT(1),
+       IsPropertySellableInventoryItemSellableQuantityRemoved TINYINT(1),
+       IsPropertySellableInventoryItemCreatedByRemoved TINYINT(1),
+       IsPropertySellableInventoryItemCreatedAtRemoved TINYINT(1),
+       IsPropertySellableInventoryItemUpdatedByRemoved TINYINT(1),
+       IsPropertySellableInventoryItemUpdatedAtRemoved TINYINT(1),
+       primary key (ProductId, LocatorId, AttributeSetInstanceId, EntrySeqId, SellableInventoryItemVersion)
     );
 
-    create table UomConversions (
-        UomConversionIdUomId VARCHAR(20) not null,
-       UomConversionIdUomIdTo VARCHAR(20) not null,
-       Version BIGINT not null,
-       ConversionFactor DOUBLE,
-       CustomMethodId VARCHAR(20),
-       DecimalScale DECIMAL(20,0),
-       RoundingMode VARCHAR(20),
-       CreatedBy VARCHAR(255),
-       UpdatedBy VARCHAR(255),
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       CreatedAt DATETIME,
-       UpdatedAt DATETIME,
-       primary key (UomConversionIdUomId, UomConversionIdUomIdTo)
-    );
-
-    create table UomConversionStateEvents (
-        UomConversionIdUomId VARCHAR(20) not null,
-       UomConversionIdUomIdTo VARCHAR(20) not null,
-       Version BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       ConversionFactor DOUBLE,
-       CustomMethodId VARCHAR(20),
-       DecimalScale DECIMAL(20,0),
-       RoundingMode VARCHAR(20),
-       Active TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       IsPropertyConversionFactorRemoved TINYINT(1),
-       IsPropertyCustomMethodIdRemoved TINYINT(1),
-       IsPropertyDecimalScaleRemoved TINYINT(1),
-       IsPropertyRoundingModeRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (UomConversionIdUomId, UomConversionIdUomIdTo, Version)
-    );
-
-    create table UomTypes (
-        UomTypeId VARCHAR(20) not null,
-       Version BIGINT not null,
-       ParentTypeId VARCHAR(20),
-       HasTable CHAR(1),
-       Description VARCHAR(255),
-       CreatedBy VARCHAR(255),
-       UpdatedBy VARCHAR(255),
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       CreatedAt DATETIME,
-       UpdatedAt DATETIME,
-       CommandId VARCHAR(255),
-       primary key (UomTypeId)
-    );
-
-    create table Lots (
-        LotId VARCHAR(20) not null,
-       Version BIGINT not null,
-       Quantity DECIMAL(18,6),
-       ExpirationDate DATETIME,
-       CreatedBy VARCHAR(255),
-       UpdatedBy VARCHAR(255),
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       CreatedAt DATETIME,
-       UpdatedAt DATETIME,
-       primary key (LotId)
-    );
-
-    create table LotStateEvents (
-        LotId VARCHAR(20) not null,
-       Version BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       Quantity DECIMAL(18,6),
-       ExpirationDate DATETIME,
-       Active TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       IsPropertyQuantityRemoved TINYINT(1),
-       IsPropertyExpirationDateRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (LotId, Version)
-    );
-
-    create table ShipmentReceipts (
-        ShipmentReceiptIdShipmentId VARCHAR(20) not null,
-       ShipmentReceiptIdReceiptSeqId VARCHAR(20) not null,
-       Version BIGINT not null,
+    create table ShipmentItem_RV (
+        ShipmentItemIdShipmentId VARCHAR(20) not null,
+       ShipmentItemIdShipmentItemSeqId VARCHAR(20) not null,
+       ShipmentVersion BIGINT not null,
        ProductId VARCHAR(60),
        AttributeSetInstanceId VARCHAR(255),
-       ShipmentItemSeqId VARCHAR(20),
-       RejectionReasonId VARCHAR(20),
-       DamageStatusId VARCHAR(20),
-       DamageReasonId VARCHAR(20),
-       ReceivedBy VARCHAR(250),
-       DatetimeReceived DATETIME,
-       ItemDescription VARCHAR(255),
-       AcceptedQuantity DECIMAL(18,6) not null,
-       RejectedQuantity DECIMAL(18,6) not null,
-       DamagedQuantity DECIMAL(18,6) not null,
+       Quantity DECIMAL(18,6) not null,
+       TargetQuantity DECIMAL(18,6),
+       ShipmentContentDescription VARCHAR(255),
+       Version BIGINT,
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
        Active TINYINT(1),
+       ShipmentShipmentTypeId VARCHAR(20),
+       ShipmentStatusId VARCHAR(20),
+       ShipmentPrimaryOrderId VARCHAR(20),
+       ShipmentPrimaryReturnId VARCHAR(20),
+       ShipmentPicklistBinId VARCHAR(20),
+       ShipmentEstimatedReadyDate DATETIME,
+       ShipmentEstimatedShipDate DATETIME,
+       ShipmentEstimatedShipWorkEffId VARCHAR(20),
+       ShipmentEstimatedArrivalDate DATETIME,
+       ShipmentEstimatedArrivalWorkEffId VARCHAR(20),
+       ShipmentLatestCancelDate DATETIME,
+       ShipmentEstimatedShipCost DECIMAL(18,2),
+       ShipmentCurrencyUomId VARCHAR(20),
+       ShipmentHandlingInstructions VARCHAR(255),
+       ShipmentOriginFacilityId VARCHAR(20),
+       ShipmentDestinationFacilityId VARCHAR(20),
+       ShipmentOriginContactMechId VARCHAR(20),
+       ShipmentOriginTelecomNumberId VARCHAR(20),
+       ShipmentDestinationContactMechId VARCHAR(20),
+       ShipmentDestinationTelecomNumberId VARCHAR(20),
+       ShipmentPartyIdTo VARCHAR(20),
+       ShipmentPartyIdFrom VARCHAR(20),
+       ShipmentAdditionalShippingCharge DECIMAL(18,2),
+       ShipmentAddtlShippingChargeDesc VARCHAR(255),
+       ShipmentShipperId VARCHAR(20),
+       ShipmentCreatedBy VARCHAR(255),
+       ShipmentCreatedAt DATETIME,
+       ShipmentUpdatedBy VARCHAR(255),
+       ShipmentUpdatedAt DATETIME,
+       ShipmentActive TINYINT(1),
        CreatedAt DATETIME,
        UpdatedAt DATETIME,
-       primary key (ShipmentReceiptIdShipmentId, ShipmentReceiptIdReceiptSeqId)
+       primary key (ShipmentItemIdShipmentId, ShipmentItemIdShipmentItemSeqId)
     );
 
-    create table ShipmentReceiptStateEvents (
-        ShipmentReceiptIdShipmentId VARCHAR(20) not null,
-       ShipmentReceiptIdReceiptSeqId VARCHAR(20) not null,
+    create table ShipmentItemMvoStateEvents (
+        ShipmentItemIdShipmentId VARCHAR(20) not null,
+       ShipmentItemIdShipmentItemSeqId VARCHAR(20) not null,
        ShipmentVersion BIGINT not null,
        StateEventType VARCHAR(255) not null,
        ProductId VARCHAR(60),
        AttributeSetInstanceId VARCHAR(255),
-       ShipmentItemSeqId VARCHAR(20),
-       RejectionReasonId VARCHAR(20),
-       DamageStatusId VARCHAR(20),
-       DamageReasonId VARCHAR(20),
-       ReceivedBy VARCHAR(250),
-       DatetimeReceived DATETIME,
-       ItemDescription VARCHAR(255),
-       AcceptedQuantity DECIMAL(18,6),
-       RejectedQuantity DECIMAL(18,6),
-       DamagedQuantity DECIMAL(18,6),
+       Quantity DECIMAL(18,6),
+       TargetQuantity DECIMAL(18,6),
+       ShipmentContentDescription VARCHAR(255),
+       Version BIGINT,
        Active TINYINT(1),
+       ShipmentShipmentTypeId VARCHAR(20),
+       ShipmentStatusId VARCHAR(20),
+       ShipmentPrimaryOrderId VARCHAR(20),
+       ShipmentPrimaryReturnId VARCHAR(20),
+       ShipmentPicklistBinId VARCHAR(20),
+       ShipmentEstimatedReadyDate DATETIME,
+       ShipmentEstimatedShipDate DATETIME,
+       ShipmentEstimatedShipWorkEffId VARCHAR(20),
+       ShipmentEstimatedArrivalDate DATETIME,
+       ShipmentEstimatedArrivalWorkEffId VARCHAR(20),
+       ShipmentLatestCancelDate DATETIME,
+       ShipmentEstimatedShipCost DECIMAL(18,2),
+       ShipmentCurrencyUomId VARCHAR(20),
+       ShipmentHandlingInstructions VARCHAR(255),
+       ShipmentOriginFacilityId VARCHAR(20),
+       ShipmentDestinationFacilityId VARCHAR(20),
+       ShipmentOriginContactMechId VARCHAR(20),
+       ShipmentOriginTelecomNumberId VARCHAR(20),
+       ShipmentDestinationContactMechId VARCHAR(20),
+       ShipmentDestinationTelecomNumberId VARCHAR(20),
+       ShipmentPartyIdTo VARCHAR(20),
+       ShipmentPartyIdFrom VARCHAR(20),
+       ShipmentAdditionalShippingCharge DECIMAL(18,2),
+       ShipmentAddtlShippingChargeDesc VARCHAR(255),
+       ShipmentShipperId VARCHAR(20),
+       ShipmentCreatedBy VARCHAR(255),
+       ShipmentCreatedAt DATETIME,
+       ShipmentUpdatedBy VARCHAR(255),
+       ShipmentUpdatedAt DATETIME,
+       ShipmentActive TINYINT(1),
        CreatedBy VARCHAR(255),
        CreatedAt DATETIME,
        CommandId VARCHAR(255),
-       Version BIGINT not null,
        IsPropertyProductIdRemoved TINYINT(1),
        IsPropertyAttributeSetInstanceIdRemoved TINYINT(1),
-       IsPropertyShipmentItemSeqIdRemoved TINYINT(1),
-       IsPropertyRejectionReasonIdRemoved TINYINT(1),
-       IsPropertyDamageStatusIdRemoved TINYINT(1),
-       IsPropertyDamageReasonIdRemoved TINYINT(1),
-       IsPropertyReceivedByRemoved TINYINT(1),
-       IsPropertyDatetimeReceivedRemoved TINYINT(1),
-       IsPropertyItemDescriptionRemoved TINYINT(1),
-       IsPropertyAcceptedQuantityRemoved TINYINT(1),
-       IsPropertyRejectedQuantityRemoved TINYINT(1),
-       IsPropertyDamagedQuantityRemoved TINYINT(1),
+       IsPropertyQuantityRemoved TINYINT(1),
+       IsPropertyTargetQuantityRemoved TINYINT(1),
+       IsPropertyShipmentContentDescriptionRemoved TINYINT(1),
+       IsPropertyVersionRemoved TINYINT(1),
        IsPropertyActiveRemoved TINYINT(1),
-       primary key (ShipmentReceiptIdShipmentId, ShipmentReceiptIdReceiptSeqId, ShipmentVersion)
+       IsPropertyShipmentShipmentTypeIdRemoved TINYINT(1),
+       IsPropertyShipmentStatusIdRemoved TINYINT(1),
+       IsPropertyShipmentPrimaryOrderIdRemoved TINYINT(1),
+       IsPropertyShipmentPrimaryReturnIdRemoved TINYINT(1),
+       IsPropertyShipmentPicklistBinIdRemoved TINYINT(1),
+       IsPropertyShipmentEstimatedReadyDateRemoved TINYINT(1),
+       IsPropertyShipmentEstimatedShipDateRemoved TINYINT(1),
+       IsPropertyShipmentEstimatedShipWorkEffIdRemoved TINYINT(1),
+       IsPropertyShipmentEstimatedArrivalDateRemoved TINYINT(1),
+       IsPropertyShipmentEstimatedArrivalWorkEffIdRemoved TINYINT(1),
+       IsPropertyShipmentLatestCancelDateRemoved TINYINT(1),
+       IsPropertyShipmentEstimatedShipCostRemoved TINYINT(1),
+       IsPropertyShipmentCurrencyUomIdRemoved TINYINT(1),
+       IsPropertyShipmentHandlingInstructionsRemoved TINYINT(1),
+       IsPropertyShipmentOriginFacilityIdRemoved TINYINT(1),
+       IsPropertyShipmentDestinationFacilityIdRemoved TINYINT(1),
+       IsPropertyShipmentOriginContactMechIdRemoved TINYINT(1),
+       IsPropertyShipmentOriginTelecomNumberIdRemoved TINYINT(1),
+       IsPropertyShipmentDestinationContactMechIdRemoved TINYINT(1),
+       IsPropertyShipmentDestinationTelecomNumberIdRemoved TINYINT(1),
+       IsPropertyShipmentPartyIdToRemoved TINYINT(1),
+       IsPropertyShipmentPartyIdFromRemoved TINYINT(1),
+       IsPropertyShipmentAdditionalShippingChargeRemoved TINYINT(1),
+       IsPropertyShipmentAddtlShippingChargeDescRemoved TINYINT(1),
+       IsPropertyShipmentShipperIdRemoved TINYINT(1),
+       IsPropertyShipmentCreatedByRemoved TINYINT(1),
+       IsPropertyShipmentCreatedAtRemoved TINYINT(1),
+       IsPropertyShipmentUpdatedByRemoved TINYINT(1),
+       IsPropertyShipmentUpdatedAtRemoved TINYINT(1),
+       IsPropertyShipmentActiveRemoved TINYINT(1),
+       primary key (ShipmentItemIdShipmentId, ShipmentItemIdShipmentItemSeqId, ShipmentVersion)
     );
 
     create table ShipmentReceipt_RV (
@@ -3780,9 +3857,9 @@
        ProductId VARCHAR(60),
        AttributeSetInstanceId VARCHAR(255),
        ShipmentItemSeqId VARCHAR(20),
-       RejectionReasonId VARCHAR(20),
+       RejectionReasonId VARCHAR(60),
        DamageStatusId VARCHAR(20),
-       DamageReasonId VARCHAR(20),
+       DamageReasonId VARCHAR(60),
        ReceivedBy VARCHAR(250),
        DatetimeReceived DATETIME,
        ItemDescription VARCHAR(255),
@@ -3836,9 +3913,9 @@
        ProductId VARCHAR(60),
        AttributeSetInstanceId VARCHAR(255),
        ShipmentItemSeqId VARCHAR(20),
-       RejectionReasonId VARCHAR(20),
+       RejectionReasonId VARCHAR(60),
        DamageStatusId VARCHAR(20),
-       DamageReasonId VARCHAR(20),
+       DamageReasonId VARCHAR(60),
        ReceivedBy VARCHAR(250),
        DatetimeReceived DATETIME,
        ItemDescription VARCHAR(255),
@@ -3925,83 +4002,6 @@
        IsPropertyShipmentUpdatedAtRemoved TINYINT(1),
        IsPropertyShipmentActiveRemoved TINYINT(1),
        primary key (ShipmentReceiptIdShipmentId, ShipmentReceiptIdReceiptSeqId, ShipmentVersion)
-    );
-
-    create table RejectionReasons (
-        RejectionReasonId VARCHAR(20) not null,
-       Version BIGINT not null,
-       Description VARCHAR(255),
-       CreatedBy VARCHAR(255),
-       UpdatedBy VARCHAR(255),
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       CreatedAt DATETIME,
-       UpdatedAt DATETIME,
-       primary key (RejectionReasonId)
-    );
-
-    create table RejectionReasonStateEvents (
-        RejectionReasonId VARCHAR(20) not null,
-       Version BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       Description VARCHAR(255),
-       Active TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       IsPropertyDescriptionRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (RejectionReasonId, Version)
-    );
-
-    create table Parties (
-        PartyId VARCHAR(50) not null,
-       Version BIGINT not null,
-       CreatedBy VARCHAR(255),
-       UpdatedBy VARCHAR(255),
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       CreatedAt DATETIME,
-       UpdatedAt DATETIME,
-       primary key (PartyId)
-    );
-
-    create table Organizations (
-        PartyId VARCHAR(50) not null,
-       Version BIGINT not null,
-       CreatedBy VARCHAR(255),
-       UpdatedBy VARCHAR(255),
-       Active TINYINT(1),
-       Deleted TINYINT(1),
-       CreatedAt DATETIME,
-       UpdatedAt DATETIME,
-       OrganizationName VARCHAR(255),
-       Description VARCHAR(255),
-       Type VARCHAR(255),
-       IsSummary TINYINT(1),
-       primary key (PartyId)
-    );
-
-    create table PartyStateEvents (
-        PartyId VARCHAR(50) not null,
-       Version BIGINT not null,
-       StateEventType VARCHAR(255) not null,
-       PartyTypeId VARCHAR(20),
-       OrganizationName VARCHAR(255),
-       Description VARCHAR(255),
-       Type VARCHAR(255),
-       IsSummary TINYINT(1),
-       Active TINYINT(1),
-       CreatedBy VARCHAR(255),
-       CreatedAt DATETIME,
-       CommandId VARCHAR(255),
-       IsPropertyPartyTypeIdRemoved TINYINT(1),
-       IsPropertyOrganizationNameRemoved TINYINT(1),
-       IsPropertyDescriptionRemoved TINYINT(1),
-       IsPropertyTypeRemoved TINYINT(1),
-       IsPropertyIsSummaryRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (PartyId, Version)
     );
 
     create table nhibernate_hilo_table (

@@ -19,9 +19,9 @@
 	<property name="productId" ><column name="ProductId" sql-type="VARCHAR(60)" /></property>
 	<property name="attributeSetInstanceId" ></property>
 	<property name="shipmentItemSeqId" ><column name="ShipmentItemSeqId" sql-type="VARCHAR(20)" /></property>
-	<property name="rejectionReasonId" ><column name="RejectionReasonId" sql-type="VARCHAR(20)" /></property>
+	<property name="rejectionReasonId" ><column name="RejectionReasonId" sql-type="VARCHAR(60)" /></property>
 	<property name="damageStatusId" ><column name="DamageStatusId" sql-type="VARCHAR(20)" /></property>
-	<property name="damageReasonId" ><column name="DamageReasonId" sql-type="VARCHAR(20)" /></property>
+	<property name="damageReasonId" ><column name="DamageReasonId" sql-type="VARCHAR(60)" /></property>
 	<property name="receivedBy" ><column name="ReceivedBy" sql-type="VARCHAR(250)" /></property>
 	<property name="datetimeReceived" ><column name="DatetimeReceived" sql-type="DATETIME" /></property>
 	<property name="itemDescription" ><column name="ItemDescription" sql-type="VARCHAR(255)" /></property>

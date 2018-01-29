@@ -6,7 +6,7 @@
   <class name="DamageReasonStateEventBase" table="DamageReasonStateEvents" mutable="false" abstract="true">
 
     <composite-id name="StateEventId" class="Dddml.Wms.Domain.DamageReason.DamageReasonStateEventId">
-        <key-property name="DamageReasonId" ><column name="DamageReasonId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="DamageReasonId" ><column name="DamageReasonId" sql-type="VARCHAR(60)" /></key-property>
         <key-property name="Version" ></key-property>
     </composite-id>
     <discriminator column="StateEventType" type="String" />

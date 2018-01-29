@@ -10,7 +10,7 @@ aggregates:
     DamageType:
       id:
         name: DamageTypeId
-        type: id
+        type: id-long
         
       properties:
         Description:
@@ -19,7 +19,7 @@ aggregates:
         SequenceId:
           type: id
         DefaultHandlingMethodId:
-          type: id
+          type: id-long
           referenceType: DamageHandlingMethod
           
       metadata:
@@ -30,7 +30,7 @@ aggregates:
     DamageHandlingMethod:
       id:
         name: DamageHandlingMethodId
-        type: id
+        type: id-long
         
       properties:
         Description:

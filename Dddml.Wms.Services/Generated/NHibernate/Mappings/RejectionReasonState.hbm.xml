@@ -5,7 +5,7 @@
   
   <class name="Dddml.Wms.Domain.RejectionReason.RejectionReasonState" table="RejectionReasons">
 
-	<id name="RejectionReasonId" length="20" column="RejectionReasonId"><generator class="assigned"/></id>
+	<id name="RejectionReasonId" length="60" column="RejectionReasonId"><generator class="assigned"/></id>
 
 	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 

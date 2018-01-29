@@ -16,7 +16,7 @@
   <!-- 水湿 -->
   <StatusItem description="Water Damage" sequenceId="07" statusCode="WATER_DAMAGE" statusId="DAMAGE_WATER" statusTypeId="DAMAGE_STATUS" />
   <!-- 脏污、异物 -->
-  <StatusItem description="Dirt and Contamination" sequenceId="08" statusCode="DIRT" statusId="DAMAGE_DIRT_AND_CONTAMINATION" statusTypeId="DAMAGE_STATUS" />
+  <StatusItem description="Dirt and Contamination" sequenceId="08" statusCode="DIRT" statusId="DAMAGE_DIRT" statusTypeId="DAMAGE_STATUS" />
   <!-- 短重，短装 -->
   <StatusItem description="Shortage, Non-delivery" sequenceId="09" statusCode="SHORTAGE" statusId="DAMAGE_SHORTAGE" statusTypeId="DAMAGE_STATUS" />
   <!-- 其他 -->
