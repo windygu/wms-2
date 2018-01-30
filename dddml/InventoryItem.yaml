@@ -77,7 +77,7 @@ aggregates:
           # ------------------------------
           # 唯一约束
           uniqueConstraints:
-            # 一个库存 PostingRule 不能触发多次
+            # 一个“来源”不能重复产生库存事务（分录）
             UniqueInventoryItemSource: [Source]
           # ------------------------------
       
