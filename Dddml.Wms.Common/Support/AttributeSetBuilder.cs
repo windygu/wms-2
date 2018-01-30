@@ -500,11 +500,18 @@ namespace Dddml.Wms.Support
         private TAttributeSet GetAttributeSet(Type entityType)
         {
             TAttributeSet attributeSet = new TAttributeSet();
-            attributeSet.AttributeSetName = entityType.Name;
+            attributeSet.AttributeSetName = GetAttributeName(entityType);
             attributeSet.Description = entityType.Name;
             attributeSet.Active = true;
             attributeSet.AttributeSetId = this._theIdGenerator.GenerateAttributeSetId(attributeSet);
             return attributeSet;
+        }
+
+        private string GetAttributeName(Type entityType)
+        {
+            return entityType.Name.EndsWith("SetInstance") //like this: FluffPulpAttrSetInstance
+                ? entityType.Name.Substring(0, entityType.Name.Length - "Instance".Length) 
+                : entityType.Name;
         }
 
         /// <summary>
