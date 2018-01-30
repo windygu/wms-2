@@ -1,11 +1,16 @@
 package org.dddml.wms;
 
+import org.dddml.wms.domain.attribute.AbstractAttributeCommand;
 import org.dddml.wms.domain.attribute.AttributeApplicationService;
 import org.dddml.wms.domain.attribute.AttributeCommand;
+import org.dddml.wms.domain.attributeset.AbstractAttributeSetCommand;
 import org.dddml.wms.domain.attributeset.AttributeSetApplicationService;
 import org.dddml.wms.domain.attributeset.AttributeSetCommand;
+import org.dddml.wms.domain.attributeset.AttributeUseCommand;
 import org.dddml.wms.specialization.ApplicationContext;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -33,17 +38,45 @@ public class InitAttributeSets {
 
     static AttributeSetApplicationService attributeSetApplicationService;
 
-    public static void CreateDefaultAttributeSets() {
+    public static void createDefaultAttributeSets() {
         attributeApplicationService = (AttributeApplicationService) ApplicationContext.current.get("attributeApplicationService");
         attributeSetApplicationService = (AttributeSetApplicationService) ApplicationContext.current.get("attributeSetApplicationService");
 
-        List<AttributeCommand.CreateAttribute> attrs = null;//todo
+        List<AttributeCommand.CreateAttribute> attrs = createFluffPulpAttributes();
         //List<CreateAttributeValue> attrVals;
-        List<AttributeSetCommand.CreateAttributeSet> attrSets = null;//todo
+        List<AttributeSetCommand.CreateAttributeSet> attrSets = Arrays.asList(createFluffPulpAttributeSet(attrs));
         //List<CreateAttributeUse> attrUses;
 
         save(attrs, attrSets);
     }
+
+    private static List<AttributeCommand.CreateAttribute> createFluffPulpAttributes(){
+        List<AttributeCommand.CreateAttribute> attrs = new ArrayList<>();
+        for(String[] attrInfo : FLUFF_PULP_ATTRS){
+            AttributeCommand.CreateAttribute a = new AbstractAttributeCommand.SimpleCreateAttribute();
+            a.setAttributeId(attrInfo[0]);
+            a.setAttributeName(a.getAttributeId());
+            a.setActive(true);
+            a.setAttributeValueType(attrInfo[1]);
+            attrs.add(a);
+        }
+        return attrs;
+    }
+
+    private static AttributeSetCommand.CreateAttributeSet createFluffPulpAttributeSet(List<AttributeCommand.CreateAttribute> attrs) {
+        AttributeSetCommand.CreateAttributeSet attrSet = new AbstractAttributeSetCommand.SimpleCreateAttributeSet();
+        attrSet.setAttributeSetId(FLUFF_PULP_ATTR_SET_ID);
+        attrSet.setAttributeSetName(attrSet.getAttributeSetId());
+        attrSet.setActive(true);
+        for (AttributeCommand.CreateAttribute a : attrs) {
+            AttributeUseCommand.CreateAttributeUse attrUse = attrSet.newCreateAttributeUse();
+            attrUse.setAttributeId(a.getAttributeId());
+            attrUse.setActive(true);
+            attrSet.getAttributeUses().add(attrUse);
+        }
+        return attrSet;
+    }
+
 
     private static void save(List<AttributeCommand.CreateAttribute> attrs, List<AttributeSetCommand.CreateAttributeSet> attrSets) {
         for (AttributeCommand.CreateAttribute a : attrs) {

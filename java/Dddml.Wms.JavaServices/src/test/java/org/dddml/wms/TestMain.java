@@ -44,6 +44,8 @@ public class TestMain {
         initEntityXmlData();
 
         InitInventoryPostingRules.createDefaultInventoryPostingRules();
+
+        InitAttributeSets.createDefaultAttributeSets();
         // ///////////////////////////////////
         //if(true) return;
 
