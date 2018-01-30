@@ -103,7 +103,7 @@ namespace Dddml.Wms.Services.Tests
                 //var roles = CreateRoles();
                 //var userIdAndPassword = CreateTestUser(roles);
                 //CreatePermissions();
-                return;
+                //return;
 
                 // ////////////////////////
                 var xmlDataLoader = new XmlDataLoader();

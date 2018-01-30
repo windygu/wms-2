@@ -41,7 +41,7 @@ public class TestMain {
         ApplicationContext.current = new SpringApplicationContext(springFrameworkApplicationContext);
 
         // ///////////////////////////////////
-        initEntityXmlData();
+        InitEntityXmlData.createEntityXmlData();
 
         InitInventoryPostingRules.createDefaultInventoryPostingRules();
 
@@ -54,29 +54,6 @@ public class TestMain {
     }
 
 
-    // ///////////////////////////////////////////////////////////////////////////
-    // 使用 data 目录中的数据（xml）文件初始化
-    // ///////////////////////////////////////////////////////////////////////////
-    private static void initEntityXmlData() {
-        Map<String, List<Object>> allData = XmlEntityDataTool.deserializeAllGroupByEntityName(
-                XmlEntityDataTool.DEFAULT_XML_DATA_LOCATION_PATTERN);
-        for (Map.Entry<String, List<Object>> kv : allData.entrySet()) {
-            for (Object e : kv.getValue()) {
-                try {
-                    ApplicationServiceReflectUtils.invokeApplicationServiceInitializeMethod(kv.getKey(), e);
-                } catch (Exception ex) {
-                    if(ex.getCause() != null && ex.getCause().getClass().getName().endsWith("ConstraintViolationException")
-                            || ex.getCause() != null && ex.getCause().getCause() != null && ex.getCause().getCause().getClass().getName().endsWith("ConstraintViolationException")
-                            || ex.getMessage() != null && ex.getMessage().startsWith("Duplicate entry")) {
-                        ex.printStackTrace();
-                    } else {
-                        ex.printStackTrace();
-                        throw new RuntimeException(ex);
-                    }
-                }
-            }
-        }
-    }
     // /////////////////////////////////////////////////////////////
 
     private static void testInventoryItemApplicationService(){
