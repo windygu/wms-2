@@ -155,7 +155,7 @@ aggregates:
               type: string
               columnName: LineNumber
             # 行的子序列号（一个源单据行项可能产生多个库存事务条目）
-            LineSeqId:
+            LineSubSeqId:
               type: int
               columnName: LineSeqId
             

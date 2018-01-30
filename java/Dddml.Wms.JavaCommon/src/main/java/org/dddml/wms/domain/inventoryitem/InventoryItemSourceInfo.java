@@ -41,28 +41,28 @@ public class InventoryItemSourceInfo implements Serializable
         this.lineNumber = lineNumber;
     }
 
-    private Integer lineSeqId;
+    private Integer lineSubSeqId;
 
-    public Integer getLineSeqId()
+    public Integer getLineSubSeqId()
     {
-        return this.lineSeqId;
+        return this.lineSubSeqId;
     }
 
-    public void setLineSeqId(Integer lineSeqId)
+    public void setLineSubSeqId(Integer lineSubSeqId)
     {
-        this.lineSeqId = lineSeqId;
+        this.lineSubSeqId = lineSubSeqId;
     }
 
     public InventoryItemSourceInfo()
     {
     }
 
-    public InventoryItemSourceInfo(String documentTypeId, String documentNumber, String lineNumber, Integer lineSeqId)
+    public InventoryItemSourceInfo(String documentTypeId, String documentNumber, String lineNumber, Integer lineSubSeqId)
     {
         this.documentTypeId = documentTypeId;
         this.documentNumber = documentNumber;
         this.lineNumber = lineNumber;
-        this.lineSeqId = lineSeqId;
+        this.lineSubSeqId = lineSubSeqId;
     }
 
     @Override
@@ -80,7 +80,7 @@ public class InventoryItemSourceInfo implements Serializable
             && (documentTypeId == other.documentTypeId || (documentTypeId != null && documentTypeId.equals(other.documentTypeId)))
             && (documentNumber == other.documentNumber || (documentNumber != null && documentNumber.equals(other.documentNumber)))
             && (lineNumber == other.lineNumber || (lineNumber != null && lineNumber.equals(other.lineNumber)))
-            && (lineSeqId == other.lineSeqId || (lineSeqId != null && lineSeqId.equals(other.lineSeqId)))
+            && (lineSubSeqId == other.lineSubSeqId || (lineSubSeqId != null && lineSubSeqId.equals(other.lineSubSeqId)))
             ;
     }
 
@@ -97,8 +97,8 @@ public class InventoryItemSourceInfo implements Serializable
         if (this.lineNumber != null) {
             hash += 13 * this.lineNumber.hashCode();
         }
-        if (this.lineSeqId != null) {
-            hash += 13 * this.lineSeqId.hashCode();
+        if (this.lineSubSeqId != null) {
+            hash += 13 * this.lineSubSeqId.hashCode();
         }
         return hash;
     }

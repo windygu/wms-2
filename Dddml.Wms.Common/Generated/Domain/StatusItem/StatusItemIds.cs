@@ -49,7 +49,7 @@ namespace Dddml.Wms.Domain.StatusItem
         /// <summary>
         /// Dirt and Contamination.
         /// </summary>
-        public const string DamageDirtAndContamination = "DAMAGE_DIRT_AND_CONTAMINATION";
+        public const string DamageDirt = "DAMAGE_DIRT";
 
         /// <summary>
         /// Shortage, Non-delivery.

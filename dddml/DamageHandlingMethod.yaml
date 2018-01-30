@@ -6,10 +6,10 @@
 aggregates:
               
     # ----------------------- aggregate -------------------------
-    # 损坏类型
-    DamageType:
+    # 损坏处理方法
+    DamageHandlingMethod:
       id:
-        name: DamageTypeId
+        name: DamageHandlingMethodId
         type: id-long
         
       properties:
@@ -18,10 +18,8 @@ aggregates:
           notNull: true
         SequenceId:
           type: id
-        DefaultHandlingMethodId:
-          type: id-long
-          referenceType: DamageHandlingMethod
           
       metadata:
         AbsolutelyNoEventSourcing: true
-
+        
+        

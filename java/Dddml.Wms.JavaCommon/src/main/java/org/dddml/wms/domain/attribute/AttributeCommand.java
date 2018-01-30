@@ -1,9 +1,13 @@
 package org.dddml.wms.domain.attribute;
 
+import java.util.*;
+import java.util.Date;
+import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.Command;
 import org.dddml.wms.specialization.DomainError;
 
-public interface AttributeCommand extends Command {
+public interface AttributeCommand extends Command
+{
     String getAttributeId();
 
     void setAttributeId(String attributeId);
@@ -13,25 +17,29 @@ public interface AttributeCommand extends Command {
     void setVersion(Long version);
 
     static void throwOnInvalidStateTransition(AttributeState state, Command c) {
-        if (state.getVersion() == null) {
-            if (isCommandCreate((AttributeCommand) c)) {
+        if (state.getVersion() == null)
+        {
+            if (isCommandCreate((AttributeCommand)c))
+            {
                 return;
             }
             throw DomainError.named("premature", "Can't do anything to unexistent aggregate");
         }
-        if (state.getDeleted()) {
+        if (state.getDeleted())
+        {
             throw DomainError.named("zombie", "Can't do anything to deleted aggregate.");
         }
-        if (isCommandCreate((AttributeCommand) c))
+        if (isCommandCreate((AttributeCommand)c))
             throw DomainError.named("rebirth", "Can't create aggregate that already exists");
     }
 
     static boolean isCommandCreate(AttributeCommand c) {
-        return ((c instanceof AttributeCommand.CreateAttribute)
-                && c.getVersion().equals(AttributeState.VERSION_NULL));
+        return ((c instanceof AttributeCommand.CreateAttribute) 
+            && c.getVersion().equals(AttributeState.VERSION_NULL));
     }
 
-    interface CreateOrMergePatchAttribute extends AttributeCommand {
+    interface CreateOrMergePatchAttribute extends AttributeCommand
+    {
         String getAttributeName();
 
         void setAttributeName(String attributeName);
@@ -74,7 +82,8 @@ public interface AttributeCommand extends Command {
 
     }
 
-    interface CreateAttribute extends CreateOrMergePatchAttribute {
+    interface CreateAttribute extends CreateOrMergePatchAttribute
+    {
         CreateAttributeValueCommands getAttributeValues();
 
         AttributeValueCommand.CreateAttributeValue newCreateAttributeValue();
@@ -85,7 +94,8 @@ public interface AttributeCommand extends Command {
 
     }
 
-    interface MergePatchAttribute extends CreateOrMergePatchAttribute {
+    interface MergePatchAttribute extends CreateOrMergePatchAttribute
+    {
         Boolean getIsPropertyAttributeNameRemoved();
 
         void setIsPropertyAttributeNameRemoved(Boolean removed);
@@ -144,10 +154,12 @@ public interface AttributeCommand extends Command {
 
     }
 
-    interface DeleteAttribute extends AttributeCommand {
-    }
+	interface DeleteAttribute extends AttributeCommand
+	{
+	}
 
-    interface CreateAttributeValueCommands extends Iterable<AttributeValueCommand.CreateAttributeValue> {
+    interface CreateAttributeValueCommands extends Iterable<AttributeValueCommand.CreateAttributeValue>
+    {
         void add(AttributeValueCommand.CreateAttributeValue c);
 
         void remove(AttributeValueCommand.CreateAttributeValue c);
@@ -155,7 +167,8 @@ public interface AttributeCommand extends Command {
         void clear();
     }
 
-    interface AttributeValueCommands extends Iterable<AttributeValueCommand> {
+    interface AttributeValueCommands extends Iterable<AttributeValueCommand>
+    {
         void add(AttributeValueCommand c);
 
         void remove(AttributeValueCommand c);
@@ -163,7 +176,8 @@ public interface AttributeCommand extends Command {
         void clear();
     }
 
-    interface CreateAttributeAliasCommands extends Iterable<AttributeAliasCommand.CreateAttributeAlias> {
+    interface CreateAttributeAliasCommands extends Iterable<AttributeAliasCommand.CreateAttributeAlias>
+    {
         void add(AttributeAliasCommand.CreateAttributeAlias c);
 
         void remove(AttributeAliasCommand.CreateAttributeAlias c);
@@ -171,7 +185,8 @@ public interface AttributeCommand extends Command {
         void clear();
     }
 
-    interface AttributeAliasCommands extends Iterable<AttributeAliasCommand> {
+    interface AttributeAliasCommands extends Iterable<AttributeAliasCommand>
+    {
         void add(AttributeAliasCommand c);
 
         void remove(AttributeAliasCommand c);

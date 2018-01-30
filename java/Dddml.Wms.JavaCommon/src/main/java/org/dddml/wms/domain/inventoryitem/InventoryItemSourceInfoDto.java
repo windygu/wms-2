@@ -15,7 +15,7 @@ public class InventoryItemSourceInfoDto
         v.setDocumentTypeId(this.getDocumentTypeId());
         v.setDocumentNumber(this.getDocumentNumber());
         v.setLineNumber(this.getLineNumber());
-        v.setLineSeqId(this.getLineSeqId());
+        v.setLineSubSeqId(this.getLineSubSeqId());
         return v;
     }
 
@@ -55,16 +55,16 @@ public class InventoryItemSourceInfoDto
         this.lineNumber = lineNumber;
     }
 
-    private Integer lineSeqId;
+    private Integer lineSubSeqId;
 
-    public Integer getLineSeqId()
+    public Integer getLineSubSeqId()
     {
-        return this.lineSeqId;
+        return this.lineSubSeqId;
     }
 
-    public void setLineSeqId(Integer lineSeqId)
+    public void setLineSubSeqId(Integer lineSubSeqId)
     {
-        this.lineSeqId = lineSeqId;
+        this.lineSubSeqId = lineSubSeqId;
     }
 
 
@@ -83,7 +83,7 @@ public class InventoryItemSourceInfoDto
             && (getDocumentTypeId() == other.getDocumentTypeId() || (getDocumentTypeId() != null && getDocumentTypeId().equals(other.getDocumentTypeId())))
             && (getDocumentNumber() == other.getDocumentNumber() || (getDocumentNumber() != null && getDocumentNumber().equals(other.getDocumentNumber())))
             && (getLineNumber() == other.getLineNumber() || (getLineNumber() != null && getLineNumber().equals(other.getLineNumber())))
-            && (getLineSeqId() == other.getLineSeqId() || (getLineSeqId() != null && getLineSeqId().equals(other.getLineSeqId())))
+            && (getLineSubSeqId() == other.getLineSubSeqId() || (getLineSubSeqId() != null && getLineSubSeqId().equals(other.getLineSubSeqId())))
             ;
 
     }
@@ -101,8 +101,8 @@ public class InventoryItemSourceInfoDto
         if (this.getLineNumber() != null) {
             hash += 13 * this.getLineNumber().hashCode();
         }
-        if (this.getLineSeqId() != null) {
-            hash += 13 * this.getLineSeqId().hashCode();
+        if (this.getLineSubSeqId() != null) {
+            hash += 13 * this.getLineSubSeqId().hashCode();
         }
         return hash;
     }

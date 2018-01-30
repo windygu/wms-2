@@ -36,11 +36,11 @@ namespace Dddml.Wms.Domain.InventoryItem
 			set { _lineNumber = value; } 
 		}
 
-		private int _lineSeqId;
+		private int _lineSubSeqId;
 
-		public virtual int LineSeqId { 
-			get { return this._lineSeqId; } 
-			set { _lineSeqId = value; } 
+		public virtual int LineSubSeqId { 
+			get { return this._lineSubSeqId; } 
+			set { _lineSubSeqId = value; } 
 		}
 
 
@@ -53,12 +53,12 @@ namespace Dddml.Wms.Domain.InventoryItem
 		{
 		}
 
-		public InventoryItemSourceInfo (string documentTypeId, string documentNumber, string lineNumber, int lineSeqId)
+		public InventoryItemSourceInfo (string documentTypeId, string documentNumber, string lineNumber, int lineSubSeqId)
 		{
 			this._documentTypeId = documentTypeId;
 			this._documentNumber = documentNumber;
 			this._lineNumber = lineNumber;
-			this._lineSeqId = lineSeqId;
+			this._lineSubSeqId = lineSubSeqId;
 
 		}
 
@@ -78,7 +78,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 				&& Object.Equals (this.DocumentTypeId, other.DocumentTypeId)
 				&& Object.Equals (this.DocumentNumber, other.DocumentNumber)
 				&& Object.Equals (this.LineNumber, other.LineNumber)
-				&& Object.Equals (this.LineSeqId, other.LineSeqId)
+				&& Object.Equals (this.LineSubSeqId, other.LineSubSeqId)
 				;
 		}
 
@@ -94,8 +94,8 @@ namespace Dddml.Wms.Domain.InventoryItem
 			if (this.LineNumber != null) {
 				hash += 13 * this.LineNumber.GetHashCode ();
 			}
-			if (this.LineSeqId != null) {
-				hash += 13 * this.LineSeqId.GetHashCode ();
+			if (this.LineSubSeqId != null) {
+				hash += 13 * this.LineSubSeqId.GetHashCode ();
 			}
 			return hash;
 		}
@@ -116,7 +116,7 @@ namespace Dddml.Wms.Domain.InventoryItem
                 + "DocumentTypeId: " + this.DocumentTypeId + ", "
                 + "DocumentNumber: " + this.DocumentNumber + ", "
                 + "LineNumber: " + this.LineNumber + ", "
-                + "LineSeqId: " + this.LineSeqId + ", "
+                + "LineSubSeqId: " + this.LineSubSeqId + ", "
                 ;
         }
 	}

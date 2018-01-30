@@ -1,27 +1,28 @@
 package org.dddml.wms.domain.attribute;
 
+import java.util.*;
+import java.util.Date;
+import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.ApplicationContext;
 
-import java.util.*;
+public abstract class AbstractAttributeValueStates implements AttributeValueStates
+{
+    protected AttributeValueStateDao getAttributeValueStateDao()
+    {
+        return (AttributeValueStateDao)ApplicationContext.current.get("AttributeValueStateDao");
+    }
 
-public abstract class AbstractAttributeValueStates implements AttributeValueStates {
     private AttributeState attributeState;
+
     private Map<AttributeValueId, AttributeValueState> loadedAttributeValueStates = new HashMap<AttributeValueId, AttributeValueState>();
+
     private Map<AttributeValueId, AttributeValueState> removedAttributeValueStates = new HashMap<AttributeValueId, AttributeValueState>();
-    private boolean forReapplying;
-
-    public AbstractAttributeValueStates(AttributeState outerState) {
-        this.attributeState = outerState;
-        this.setForReapplying(outerState.getForReapplying());
-    }
-
-    protected AttributeValueStateDao getAttributeValueStateDao() {
-        return (AttributeValueStateDao) ApplicationContext.current.get("AttributeValueStateDao");
-    }
 
     protected Iterable<AttributeValueState> getLoadedAttributeValueStates() {
         return this.loadedAttributeValueStates.values();
     }
+
+    private boolean forReapplying;
 
     public boolean getForReapplying() {
         return forReapplying;
@@ -43,6 +44,11 @@ public abstract class AbstractAttributeValueStates implements AttributeValueStat
             }
             return ss;
         }
+    }
+
+    public AbstractAttributeValueStates(AttributeState outerState) {
+        this.attributeState = outerState;
+        this.setForReapplying(outerState.getForReapplying());
     }
 
     @Override
@@ -78,17 +84,20 @@ public abstract class AbstractAttributeValueStates implements AttributeValueStat
 
     }
 
-    public void remove(AttributeValueState state) {
+    public void remove(AttributeValueState state)
+    {
         this.removedAttributeValueStates.put(state.getAttributeValueId(), state);
     }
 
-    public void addToSave(AttributeValueState state) {
+    public void addToSave(AttributeValueState state)
+    {
         this.loadedAttributeValueStates.put(state.getAttributeValueId(), state);
     }
 
     //region Saveable Implements
 
-    public void save() {
+    public void save ()
+    {
         for (AttributeValueState s : this.getLoadedAttributeValueStates()) {
             getAttributeValueStateDao().save(s);
         }

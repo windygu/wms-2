@@ -23,7 +23,7 @@
         <property name="DocumentTypeId" ><column name="SourceDocumentTypeId" /></property>
         <property name="DocumentNumber" ><column name="SourceDocumentNumber" /></property>
         <property name="LineNumber" ><column name="SourceLineNumber" /></property>
-        <property name="LineSeqId" ><column name="SourceLineSeqId" /></property>
+        <property name="LineSubSeqId" ><column name="SourceLineSeqId" /></property>
     </component>
     <property name="Version" ></property>
     <property name="InventoryItemOnHandQuantity" ></property>

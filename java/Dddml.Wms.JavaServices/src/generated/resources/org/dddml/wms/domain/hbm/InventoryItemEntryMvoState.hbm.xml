@@ -25,7 +25,7 @@
 		<property name="documentTypeId" ><column name="sourceDocumentTypeId" not-null="true" /></property>
 		<property name="documentNumber" ><column name="sourceDocumentNumber" not-null="true" /></property>
 		<property name="lineNumber" ><column name="sourceLineNumber" /></property>
-		<property name="lineSeqId" ><column name="sourceLineSeqId" /></property>
+		<property name="lineSubSeqId" ><column name="sourceLineSeqId" /></property>
 	</component>
 	<property name="version" ></property>
 	<property name="createdBy" ></property>

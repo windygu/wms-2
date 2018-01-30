@@ -44,7 +44,7 @@ public class StatusItemIds {
     /**
      * Dirt and Contamination.
      */
-    public static final String DAMAGE_DIRT_AND_CONTAMINATION = "DAMAGE_DIRT_AND_CONTAMINATION";
+    public static final String DAMAGE_DIRT = "DAMAGE_DIRT";
 
     /**
      * Shortage, Non-delivery.

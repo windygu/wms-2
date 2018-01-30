@@ -1,32 +1,43 @@
 package org.dddml.wms.domain;
 
-public abstract class AbstractCommand implements Command {
+import org.dddml.wms.specialization.CommandType;
+
+public abstract class AbstractCommand implements Command
+{
 
     private String commandType;
-    private String commandId;
-    private String requesterId;
 
-    public String getCommandType() {
+    public String getCommandType()
+    {
         return this.commandType;
     }
 
-    public void setCommandType(String commandType) {
+    public void setCommandType(String commandType)
+    {
         this.commandType = commandType;
     }
 
-    public String getCommandId() {
+    private String commandId;
+
+    public String getCommandId()
+    {
         return this.commandId;
     }
 
-    public void setCommandId(String commandId) {
+    public void setCommandId(String commandId)
+    {
         this.commandId = commandId;
     }
 
-    public String getRequesterId() {
+    private String requesterId;
+
+    public String getRequesterId()
+    {
         return this.requesterId;
     }
 
-    public void setRequesterId(String requesterId) {
+    public void setRequesterId(String requesterId)
+    {
         this.requesterId = requesterId;
     }
 

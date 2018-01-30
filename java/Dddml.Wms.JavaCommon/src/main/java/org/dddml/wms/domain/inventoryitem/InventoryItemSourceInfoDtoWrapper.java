@@ -60,15 +60,15 @@ public class InventoryItemSourceInfoDtoWrapper extends InventoryItemSourceInfoDt
     }
 
     @Override
-    public Integer getLineSeqId()
+    public Integer getLineSubSeqId()
     {
-        return this.value.getLineSeqId();
+        return this.value.getLineSubSeqId();
     }
 
     @Override
-    public void setLineSeqId(Integer lineSeqId)
+    public void setLineSubSeqId(Integer lineSubSeqId)
     {
-        this.value.setLineSeqId(lineSeqId);
+        this.value.setLineSubSeqId(lineSubSeqId);
     }
 
 

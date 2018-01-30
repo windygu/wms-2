@@ -1,0 +1,91 @@
+#%DDDML 0.1
+
+---
+
+# ------------------------------
+aggregates:
+
+
+    # --------------- aggregate ---------------
+    Attribute:
+
+      id:
+        name: AttributeId
+        type: string
+        arbitrary: true
+        isServerSideGenerated: true
+        constraints: [AttributeId]
+
+      properties:  
+      
+        AttributeName:
+          type: string
+
+        OrganizationId:
+          type: string
+          
+        Description:
+          type: string
+
+        IsMandatory:
+          type: bool
+          description: The field must have a value for the record to be saved to the database.
+          
+        AttributeValueType:
+          type: string
+          description: The Attribute Value type deternines the data/validation type.
+
+        AttributeValueLength:
+          type: int?
+        
+        IsList:
+          type: bool
+          description: Is the attribute values a list(enumerable).
+        
+        FieldName:
+          type: string
+          description: The field name to save this attribute.
+
+        ReferenceId:
+          type: string
+
+        # -------------------------------
+        AttributeValues:
+          itemType: AttributeValue
+        Aliases:
+          itemType: AttributeAlias
+        # -------------------------------
+          
+      uniqueConstraints:
+        UniqueFieldName: [FieldName]
+
+        
+      entities:
+        
+        # -------------------------------
+        AttributeValue:
+          id:
+            name: Value
+            type: string
+          properties:
+            AttributeValueName:
+              type: string
+            Description:
+              type: string
+            ReferenceId:
+              type: string
+
+        # -------------------------------
+        AttributeAlias:
+          description: The alias of the attribute.
+          id:
+            name: Code
+            type: string
+          properties:
+            Name:
+              type: string
+          uniqueConstraints:
+            UniqueAttributeAliasId: [Code]
+            UniqueAttributeAliasName: [Name]
+        # -------------------------------
+              

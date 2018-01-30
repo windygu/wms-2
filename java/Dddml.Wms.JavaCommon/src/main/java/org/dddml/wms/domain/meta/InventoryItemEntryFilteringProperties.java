@@ -27,7 +27,7 @@ public final class InventoryItemEntryFilteringProperties
             "source.documentTypeId",
             "source.documentNumber",
             "source.lineNumber",
-            "source.lineSeqId",
+            "source.lineSubSeqId",
             "inventoryItemEntryId.inventoryItemIdProductId",
             "inventoryItemEntryId.inventoryItemIdLocatorId",
             "inventoryItemEntryId.inventoryItemIdAttributeSetInstanceId",
@@ -108,8 +108,8 @@ public final class InventoryItemEntryFilteringProperties
         aliasMap.put("Source.DocumentNumber", "source.documentNumber");
         aliasMap.put("source.lineNumber", "source.lineNumber");
         aliasMap.put("Source.LineNumber", "source.lineNumber");
-        aliasMap.put("source.lineSeqId", "source.lineSeqId");
-        aliasMap.put("Source.LineSeqId", "source.lineSeqId");
+        aliasMap.put("source.lineSubSeqId", "source.lineSubSeqId");
+        aliasMap.put("Source.LineSubSeqId", "source.lineSubSeqId");
         aliasMap.put("inventoryItemEntryId.inventoryItemIdProductId", "inventoryItemEntryId.inventoryItemIdProductId");
         aliasMap.put("InventoryItemEntryId.InventoryItemIdProductId", "inventoryItemEntryId.inventoryItemIdProductId");
         aliasMap.put("inventoryItemEntryId.inventoryItemId.productId", "inventoryItemEntryId.inventoryItemIdProductId");

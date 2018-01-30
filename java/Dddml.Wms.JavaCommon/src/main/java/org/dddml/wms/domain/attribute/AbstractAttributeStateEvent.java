@@ -1,14 +1,13 @@
 package org.dddml.wms.domain.attribute;
 
-import org.dddml.wms.domain.AbstractStateEvent;
-import org.dddml.wms.specialization.ApplicationContext;
-import org.dddml.wms.specialization.DomainError;
-import org.dddml.wms.specialization.Saveable;
-import org.dddml.wms.specialization.StateEventType;
-
 import java.util.*;
+import java.util.Date;
+import org.dddml.wms.domain.*;
+import org.dddml.wms.specialization.*;
+import org.dddml.wms.domain.AbstractStateEvent;
 
-public abstract class AbstractAttributeStateEvent extends AbstractStateEvent implements AttributeStateEvent {
+public abstract class AbstractAttributeStateEvent extends AbstractStateEvent implements AttributeStateEvent 
+{
     private AttributeStateEventId stateEventId;
 
     public AttributeStateEventId getStateEventId() {
@@ -18,7 +17,7 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
     public void setStateEventId(AttributeStateEventId stateEventId) {
         this.stateEventId = stateEventId;
     }
-
+    
     public String getAttributeId() {
         return getStateEventId().getAttributeId();
     }
@@ -29,131 +28,151 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
 
     private boolean stateEventReadOnly;
 
-    public boolean getStateEventReadOnly() {
-        return this.stateEventReadOnly;
-    }
+    public boolean getStateEventReadOnly() { return this.stateEventReadOnly; }
 
-    public void setStateEventReadOnly(boolean readOnly) {
-        this.stateEventReadOnly = readOnly;
-    }
+    public void setStateEventReadOnly(boolean readOnly) { this.stateEventReadOnly = readOnly; }
 
     private String attributeName;
 
-    public String getAttributeName() {
+    public String getAttributeName()
+    {
         return this.attributeName;
     }
 
-    public void setAttributeName(String attributeName) {
+    public void setAttributeName(String attributeName)
+    {
         this.attributeName = attributeName;
     }
 
     private String organizationId;
 
-    public String getOrganizationId() {
+    public String getOrganizationId()
+    {
         return this.organizationId;
     }
 
-    public void setOrganizationId(String organizationId) {
+    public void setOrganizationId(String organizationId)
+    {
         this.organizationId = organizationId;
     }
 
     private String description;
 
-    public String getDescription() {
+    public String getDescription()
+    {
         return this.description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(String description)
+    {
         this.description = description;
     }
 
     private Boolean isMandatory;
 
-    public Boolean getIsMandatory() {
+    public Boolean getIsMandatory()
+    {
         return this.isMandatory;
     }
 
-    public void setIsMandatory(Boolean isMandatory) {
+    public void setIsMandatory(Boolean isMandatory)
+    {
         this.isMandatory = isMandatory;
     }
 
     private String attributeValueType;
 
-    public String getAttributeValueType() {
+    public String getAttributeValueType()
+    {
         return this.attributeValueType;
     }
 
-    public void setAttributeValueType(String attributeValueType) {
+    public void setAttributeValueType(String attributeValueType)
+    {
         this.attributeValueType = attributeValueType;
     }
 
     private Integer attributeValueLength;
 
-    public Integer getAttributeValueLength() {
+    public Integer getAttributeValueLength()
+    {
         return this.attributeValueLength;
     }
 
-    public void setAttributeValueLength(Integer attributeValueLength) {
+    public void setAttributeValueLength(Integer attributeValueLength)
+    {
         this.attributeValueLength = attributeValueLength;
     }
 
     private Boolean isList;
 
-    public Boolean getIsList() {
+    public Boolean getIsList()
+    {
         return this.isList;
     }
 
-    public void setIsList(Boolean isList) {
+    public void setIsList(Boolean isList)
+    {
         this.isList = isList;
     }
 
     private String fieldName;
 
-    public String getFieldName() {
+    public String getFieldName()
+    {
         return this.fieldName;
     }
 
-    public void setFieldName(String fieldName) {
+    public void setFieldName(String fieldName)
+    {
         this.fieldName = fieldName;
     }
 
     private String referenceId;
 
-    public String getReferenceId() {
+    public String getReferenceId()
+    {
         return this.referenceId;
     }
 
-    public void setReferenceId(String referenceId) {
+    public void setReferenceId(String referenceId)
+    {
         this.referenceId = referenceId;
     }
 
     private String createdBy;
 
-    public String getCreatedBy() {
+    public String getCreatedBy()
+    {
         return this.createdBy;
     }
 
-    public void setCreatedBy(String createdBy) {
+    public void setCreatedBy(String createdBy)
+    {
         this.createdBy = createdBy;
     }
 
     private Date createdAt;
 
-    public Date getCreatedAt() {
+    public Date getCreatedAt()
+    {
         return this.createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(Date createdAt)
+    {
         this.createdAt = createdAt;
     }
 
     private Boolean active;
 
-    public Boolean getActive() {
+    public Boolean getActive()
+    {
         return this.active;
     }
 
-    public void setActive(Boolean active) {
+    public void setActive(Boolean active)
+    {
         this.active = active;
     }
 
@@ -176,46 +195,54 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
     }
 
     protected AttributeValueStateEventDao getAttributeValueStateEventDao() {
-        return (AttributeValueStateEventDao) ApplicationContext.current.get("AttributeValueStateEventDao");
+        return (AttributeValueStateEventDao)ApplicationContext.current.get("AttributeValueStateEventDao");
     }
 
-    protected AttributeValueStateEventId newAttributeValueStateEventId(String value) {
-        AttributeValueStateEventId stateEventId = new AttributeValueStateEventId(this.getStateEventId().getAttributeId(),
-                value,
-                this.getStateEventId().getVersion());
+    protected AttributeValueStateEventId newAttributeValueStateEventId(String value)
+    {
+        AttributeValueStateEventId stateEventId = new AttributeValueStateEventId(this.getStateEventId().getAttributeId(), 
+            value, 
+            this.getStateEventId().getVersion());
         return stateEventId;
     }
 
-    protected void throwOnInconsistentEventIds(AttributeValueStateEvent e) {
+    protected void throwOnInconsistentEventIds(AttributeValueStateEvent e)
+    {
         throwOnInconsistentEventIds(this, e);
     }
 
-    public static void throwOnInconsistentEventIds(AttributeStateEvent oe, AttributeValueStateEvent e) {
-        if (!oe.getStateEventId().getAttributeId().equals(e.getStateEventId().getAttributeId())) {
-            throw DomainError.named("inconsistentEventIds", "Outer Id AttributeId %1$s but inner id AttributeId %2$s",
-                    oe.getStateEventId().getAttributeId(), e.getStateEventId().getAttributeId());
+    public static void throwOnInconsistentEventIds(AttributeStateEvent oe, AttributeValueStateEvent e)
+    {
+        if (!oe.getStateEventId().getAttributeId().equals(e.getStateEventId().getAttributeId()))
+        { 
+            throw DomainError.named("inconsistentEventIds", "Outer Id AttributeId %1$s but inner id AttributeId %2$s", 
+                oe.getStateEventId().getAttributeId(), e.getStateEventId().getAttributeId());
         }
     }
 
     protected AttributeAliasStateEventDao getAttributeAliasStateEventDao() {
-        return (AttributeAliasStateEventDao) ApplicationContext.current.get("AttributeAliasStateEventDao");
+        return (AttributeAliasStateEventDao)ApplicationContext.current.get("AttributeAliasStateEventDao");
     }
 
-    protected AttributeAliasStateEventId newAttributeAliasStateEventId(String code) {
-        AttributeAliasStateEventId stateEventId = new AttributeAliasStateEventId(this.getStateEventId().getAttributeId(),
-                code,
-                this.getStateEventId().getVersion());
+    protected AttributeAliasStateEventId newAttributeAliasStateEventId(String code)
+    {
+        AttributeAliasStateEventId stateEventId = new AttributeAliasStateEventId(this.getStateEventId().getAttributeId(), 
+            code, 
+            this.getStateEventId().getVersion());
         return stateEventId;
     }
 
-    protected void throwOnInconsistentEventIds(AttributeAliasStateEvent e) {
+    protected void throwOnInconsistentEventIds(AttributeAliasStateEvent e)
+    {
         throwOnInconsistentEventIds(this, e);
     }
 
-    public static void throwOnInconsistentEventIds(AttributeStateEvent oe, AttributeAliasStateEvent e) {
-        if (!oe.getStateEventId().getAttributeId().equals(e.getStateEventId().getAttributeId())) {
-            throw DomainError.named("inconsistentEventIds", "Outer Id AttributeId %1$s but inner id AttributeId %2$s",
-                    oe.getStateEventId().getAttributeId(), e.getStateEventId().getAttributeId());
+    public static void throwOnInconsistentEventIds(AttributeStateEvent oe, AttributeAliasStateEvent e)
+    {
+        if (!oe.getStateEventId().getAttributeId().equals(e.getStateEventId().getAttributeId()))
+        { 
+            throw DomainError.named("inconsistentEventIds", "Outer Id AttributeId %1$s but inner id AttributeId %2$s", 
+                oe.getStateEventId().getAttributeId(), e.getStateEventId().getAttributeId());
         }
     }
 
@@ -247,7 +274,8 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
     public abstract String getStateEventType();
 
 
-    public static abstract class AbstractAttributeStateCreated extends AbstractAttributeStateEvent implements AttributeStateEvent.AttributeStateCreated, Saveable {
+    public static abstract class AbstractAttributeStateCreated extends AbstractAttributeStateEvent implements AttributeStateEvent.AttributeStateCreated, Saveable
+    {
         public AbstractAttributeStateCreated() {
             this(new AttributeStateEventId());
         }
@@ -261,78 +289,91 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
         }
 
         private Map<AttributeValueStateEventId, AttributeValueStateEvent.AttributeValueStateCreated> attributeValueEvents = new HashMap<AttributeValueStateEventId, AttributeValueStateEvent.AttributeValueStateCreated>();
-
+        
         private Iterable<AttributeValueStateEvent.AttributeValueStateCreated> readOnlyAttributeValueEvents;
 
-        public Iterable<AttributeValueStateEvent.AttributeValueStateCreated> getAttributeValueEvents() {
-            if (!getStateEventReadOnly()) {
+        public Iterable<AttributeValueStateEvent.AttributeValueStateCreated> getAttributeValueEvents()
+        {
+            if (!getStateEventReadOnly())
+            {
                 return this.attributeValueEvents.values();
-            } else {
-                if (readOnlyAttributeValueEvents != null) {
-                    return readOnlyAttributeValueEvents;
-                }
+            }
+            else
+            {
+                if (readOnlyAttributeValueEvents != null) { return readOnlyAttributeValueEvents; }
                 AttributeValueStateEventDao eventDao = getAttributeValueStateEventDao();
                 List<AttributeValueStateEvent.AttributeValueStateCreated> eL = new ArrayList<AttributeValueStateEvent.AttributeValueStateCreated>();
-                for (AttributeValueStateEvent e : eventDao.findByAttributeStateEventId(this.getStateEventId())) {
+                for (AttributeValueStateEvent e : eventDao.findByAttributeStateEventId(this.getStateEventId()))
+                {
                     e.setStateEventReadOnly(true);
-                    eL.add((AttributeValueStateEvent.AttributeValueStateCreated) e);
+                    eL.add((AttributeValueStateEvent.AttributeValueStateCreated)e);
                 }
                 return (readOnlyAttributeValueEvents = eL);
             }
         }
 
-        public void setAttributeValueEvents(Iterable<AttributeValueStateEvent.AttributeValueStateCreated> es) {
-            if (es != null) {
-                for (AttributeValueStateEvent.AttributeValueStateCreated e : es) {
+        public void setAttributeValueEvents(Iterable<AttributeValueStateEvent.AttributeValueStateCreated> es)
+        {
+            if (es != null)
+            {
+                for (AttributeValueStateEvent.AttributeValueStateCreated e : es)
+                {
                     addAttributeValueEvent(e);
                 }
-            } else {
-                this.attributeValueEvents.clear();
             }
+            else { this.attributeValueEvents.clear(); }
         }
-
-        public void addAttributeValueEvent(AttributeValueStateEvent.AttributeValueStateCreated e) {
+        
+        public void addAttributeValueEvent(AttributeValueStateEvent.AttributeValueStateCreated e)
+        {
             throwOnInconsistentEventIds(e);
             this.attributeValueEvents.put(e.getStateEventId(), e);
         }
 
         private Map<AttributeAliasStateEventId, AttributeAliasStateEvent.AttributeAliasStateCreated> attributeAliasEvents = new HashMap<AttributeAliasStateEventId, AttributeAliasStateEvent.AttributeAliasStateCreated>();
-
+        
         private Iterable<AttributeAliasStateEvent.AttributeAliasStateCreated> readOnlyAttributeAliasEvents;
 
-        public Iterable<AttributeAliasStateEvent.AttributeAliasStateCreated> getAttributeAliasEvents() {
-            if (!getStateEventReadOnly()) {
+        public Iterable<AttributeAliasStateEvent.AttributeAliasStateCreated> getAttributeAliasEvents()
+        {
+            if (!getStateEventReadOnly())
+            {
                 return this.attributeAliasEvents.values();
-            } else {
-                if (readOnlyAttributeAliasEvents != null) {
-                    return readOnlyAttributeAliasEvents;
-                }
+            }
+            else
+            {
+                if (readOnlyAttributeAliasEvents != null) { return readOnlyAttributeAliasEvents; }
                 AttributeAliasStateEventDao eventDao = getAttributeAliasStateEventDao();
                 List<AttributeAliasStateEvent.AttributeAliasStateCreated> eL = new ArrayList<AttributeAliasStateEvent.AttributeAliasStateCreated>();
-                for (AttributeAliasStateEvent e : eventDao.findByAttributeStateEventId(this.getStateEventId())) {
+                for (AttributeAliasStateEvent e : eventDao.findByAttributeStateEventId(this.getStateEventId()))
+                {
                     e.setStateEventReadOnly(true);
-                    eL.add((AttributeAliasStateEvent.AttributeAliasStateCreated) e);
+                    eL.add((AttributeAliasStateEvent.AttributeAliasStateCreated)e);
                 }
                 return (readOnlyAttributeAliasEvents = eL);
             }
         }
 
-        public void setAttributeAliasEvents(Iterable<AttributeAliasStateEvent.AttributeAliasStateCreated> es) {
-            if (es != null) {
-                for (AttributeAliasStateEvent.AttributeAliasStateCreated e : es) {
+        public void setAttributeAliasEvents(Iterable<AttributeAliasStateEvent.AttributeAliasStateCreated> es)
+        {
+            if (es != null)
+            {
+                for (AttributeAliasStateEvent.AttributeAliasStateCreated e : es)
+                {
                     addAttributeAliasEvent(e);
                 }
-            } else {
-                this.attributeAliasEvents.clear();
             }
+            else { this.attributeAliasEvents.clear(); }
         }
-
-        public void addAttributeAliasEvent(AttributeAliasStateEvent.AttributeAliasStateCreated e) {
+        
+        public void addAttributeAliasEvent(AttributeAliasStateEvent.AttributeAliasStateCreated e)
+        {
             throwOnInconsistentEventIds(e);
             this.attributeAliasEvents.put(e.getStateEventId(), e);
         }
 
-        public void save() {
+        public void save()
+        {
             for (AttributeValueStateEvent.AttributeValueStateCreated e : this.getAttributeValueEvents()) {
                 getAttributeValueStateEventDao().save(e);
             }
@@ -343,7 +384,8 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
     }
 
 
-    public static abstract class AbstractAttributeStateMergePatched extends AbstractAttributeStateEvent implements AttributeStateEvent.AttributeStateMergePatched, Saveable {
+    public static abstract class AbstractAttributeStateMergePatched extends AbstractAttributeStateEvent implements AttributeStateEvent.AttributeStateMergePatched, Saveable
+    {
         public AbstractAttributeStateMergePatched() {
             this(new AttributeStateEventId());
         }
@@ -457,78 +499,91 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
         }
 
         private Map<AttributeValueStateEventId, AttributeValueStateEvent> attributeValueEvents = new HashMap<AttributeValueStateEventId, AttributeValueStateEvent>();
-
+        
         private Iterable<AttributeValueStateEvent> readOnlyAttributeValueEvents;
 
-        public Iterable<AttributeValueStateEvent> getAttributeValueEvents() {
-            if (!getStateEventReadOnly()) {
+        public Iterable<AttributeValueStateEvent> getAttributeValueEvents()
+        {
+            if (!getStateEventReadOnly())
+            {
                 return this.attributeValueEvents.values();
-            } else {
-                if (readOnlyAttributeValueEvents != null) {
-                    return readOnlyAttributeValueEvents;
-                }
+            }
+            else
+            {
+                if (readOnlyAttributeValueEvents != null) { return readOnlyAttributeValueEvents; }
                 AttributeValueStateEventDao eventDao = getAttributeValueStateEventDao();
                 List<AttributeValueStateEvent> eL = new ArrayList<AttributeValueStateEvent>();
-                for (AttributeValueStateEvent e : eventDao.findByAttributeStateEventId(this.getStateEventId())) {
+                for (AttributeValueStateEvent e : eventDao.findByAttributeStateEventId(this.getStateEventId()))
+                {
                     e.setStateEventReadOnly(true);
-                    eL.add((AttributeValueStateEvent) e);
+                    eL.add((AttributeValueStateEvent)e);
                 }
                 return (readOnlyAttributeValueEvents = eL);
             }
         }
 
-        public void setAttributeValueEvents(Iterable<AttributeValueStateEvent> es) {
-            if (es != null) {
-                for (AttributeValueStateEvent e : es) {
+        public void setAttributeValueEvents(Iterable<AttributeValueStateEvent> es)
+        {
+            if (es != null)
+            {
+                for (AttributeValueStateEvent e : es)
+                {
                     addAttributeValueEvent(e);
                 }
-            } else {
-                this.attributeValueEvents.clear();
             }
+            else { this.attributeValueEvents.clear(); }
         }
-
-        public void addAttributeValueEvent(AttributeValueStateEvent e) {
+        
+        public void addAttributeValueEvent(AttributeValueStateEvent e)
+        {
             throwOnInconsistentEventIds(e);
             this.attributeValueEvents.put(e.getStateEventId(), e);
         }
 
         private Map<AttributeAliasStateEventId, AttributeAliasStateEvent> attributeAliasEvents = new HashMap<AttributeAliasStateEventId, AttributeAliasStateEvent>();
-
+        
         private Iterable<AttributeAliasStateEvent> readOnlyAttributeAliasEvents;
 
-        public Iterable<AttributeAliasStateEvent> getAttributeAliasEvents() {
-            if (!getStateEventReadOnly()) {
+        public Iterable<AttributeAliasStateEvent> getAttributeAliasEvents()
+        {
+            if (!getStateEventReadOnly())
+            {
                 return this.attributeAliasEvents.values();
-            } else {
-                if (readOnlyAttributeAliasEvents != null) {
-                    return readOnlyAttributeAliasEvents;
-                }
+            }
+            else
+            {
+                if (readOnlyAttributeAliasEvents != null) { return readOnlyAttributeAliasEvents; }
                 AttributeAliasStateEventDao eventDao = getAttributeAliasStateEventDao();
                 List<AttributeAliasStateEvent> eL = new ArrayList<AttributeAliasStateEvent>();
-                for (AttributeAliasStateEvent e : eventDao.findByAttributeStateEventId(this.getStateEventId())) {
+                for (AttributeAliasStateEvent e : eventDao.findByAttributeStateEventId(this.getStateEventId()))
+                {
                     e.setStateEventReadOnly(true);
-                    eL.add((AttributeAliasStateEvent) e);
+                    eL.add((AttributeAliasStateEvent)e);
                 }
                 return (readOnlyAttributeAliasEvents = eL);
             }
         }
 
-        public void setAttributeAliasEvents(Iterable<AttributeAliasStateEvent> es) {
-            if (es != null) {
-                for (AttributeAliasStateEvent e : es) {
+        public void setAttributeAliasEvents(Iterable<AttributeAliasStateEvent> es)
+        {
+            if (es != null)
+            {
+                for (AttributeAliasStateEvent e : es)
+                {
                     addAttributeAliasEvent(e);
                 }
-            } else {
-                this.attributeAliasEvents.clear();
             }
+            else { this.attributeAliasEvents.clear(); }
         }
-
-        public void addAttributeAliasEvent(AttributeAliasStateEvent e) {
+        
+        public void addAttributeAliasEvent(AttributeAliasStateEvent e)
+        {
             throwOnInconsistentEventIds(e);
             this.attributeAliasEvents.put(e.getStateEventId(), e);
         }
 
-        public void save() {
+        public void save()
+        {
             for (AttributeValueStateEvent e : this.getAttributeValueEvents()) {
                 getAttributeValueStateEventDao().save(e);
             }
@@ -539,7 +594,8 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
     }
 
 
-    public static abstract class AbstractAttributeStateDeleted extends AbstractAttributeStateEvent implements AttributeStateEvent.AttributeStateDeleted, Saveable {
+    public static abstract class AbstractAttributeStateDeleted extends AbstractAttributeStateEvent implements AttributeStateEvent.AttributeStateDeleted, Saveable
+    {
         public AbstractAttributeStateDeleted() {
             this(new AttributeStateEventId());
         }
@@ -552,81 +608,94 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
             return StateEventType.DELETED;
         }
 
-
+		
         private Map<AttributeValueStateEventId, AttributeValueStateEvent.AttributeValueStateRemoved> attributeValueEvents = new HashMap<AttributeValueStateEventId, AttributeValueStateEvent.AttributeValueStateRemoved>();
-
+        
         private Iterable<AttributeValueStateEvent.AttributeValueStateRemoved> readOnlyAttributeValueEvents;
 
-        public Iterable<AttributeValueStateEvent.AttributeValueStateRemoved> getAttributeValueEvents() {
-            if (!getStateEventReadOnly()) {
+        public Iterable<AttributeValueStateEvent.AttributeValueStateRemoved> getAttributeValueEvents()
+        {
+            if (!getStateEventReadOnly())
+            {
                 return this.attributeValueEvents.values();
-            } else {
-                if (readOnlyAttributeValueEvents != null) {
-                    return readOnlyAttributeValueEvents;
-                }
+            }
+            else
+            {
+                if (readOnlyAttributeValueEvents != null) { return readOnlyAttributeValueEvents; }
                 AttributeValueStateEventDao eventDao = getAttributeValueStateEventDao();
                 List<AttributeValueStateEvent.AttributeValueStateRemoved> eL = new ArrayList<AttributeValueStateEvent.AttributeValueStateRemoved>();
-                for (AttributeValueStateEvent e : eventDao.findByAttributeStateEventId(this.getStateEventId())) {
+                for (AttributeValueStateEvent e : eventDao.findByAttributeStateEventId(this.getStateEventId()))
+                {
                     e.setStateEventReadOnly(true);
-                    eL.add((AttributeValueStateEvent.AttributeValueStateRemoved) e);
+                    eL.add((AttributeValueStateEvent.AttributeValueStateRemoved)e);
                 }
                 return (readOnlyAttributeValueEvents = eL);
             }
         }
 
-        public void setAttributeValueEvents(Iterable<AttributeValueStateEvent.AttributeValueStateRemoved> es) {
-            if (es != null) {
-                for (AttributeValueStateEvent.AttributeValueStateRemoved e : es) {
+        public void setAttributeValueEvents(Iterable<AttributeValueStateEvent.AttributeValueStateRemoved> es)
+        {
+            if (es != null)
+            {
+                for (AttributeValueStateEvent.AttributeValueStateRemoved e : es)
+                {
                     addAttributeValueEvent(e);
                 }
-            } else {
-                this.attributeValueEvents.clear();
             }
+            else { this.attributeValueEvents.clear(); }
         }
-
-        public void addAttributeValueEvent(AttributeValueStateEvent.AttributeValueStateRemoved e) {
+        
+        public void addAttributeValueEvent(AttributeValueStateEvent.AttributeValueStateRemoved e)
+        {
             throwOnInconsistentEventIds(e);
             this.attributeValueEvents.put(e.getStateEventId(), e);
         }
 
-
+		
         private Map<AttributeAliasStateEventId, AttributeAliasStateEvent.AttributeAliasStateRemoved> attributeAliasEvents = new HashMap<AttributeAliasStateEventId, AttributeAliasStateEvent.AttributeAliasStateRemoved>();
-
+        
         private Iterable<AttributeAliasStateEvent.AttributeAliasStateRemoved> readOnlyAttributeAliasEvents;
 
-        public Iterable<AttributeAliasStateEvent.AttributeAliasStateRemoved> getAttributeAliasEvents() {
-            if (!getStateEventReadOnly()) {
+        public Iterable<AttributeAliasStateEvent.AttributeAliasStateRemoved> getAttributeAliasEvents()
+        {
+            if (!getStateEventReadOnly())
+            {
                 return this.attributeAliasEvents.values();
-            } else {
-                if (readOnlyAttributeAliasEvents != null) {
-                    return readOnlyAttributeAliasEvents;
-                }
+            }
+            else
+            {
+                if (readOnlyAttributeAliasEvents != null) { return readOnlyAttributeAliasEvents; }
                 AttributeAliasStateEventDao eventDao = getAttributeAliasStateEventDao();
                 List<AttributeAliasStateEvent.AttributeAliasStateRemoved> eL = new ArrayList<AttributeAliasStateEvent.AttributeAliasStateRemoved>();
-                for (AttributeAliasStateEvent e : eventDao.findByAttributeStateEventId(this.getStateEventId())) {
+                for (AttributeAliasStateEvent e : eventDao.findByAttributeStateEventId(this.getStateEventId()))
+                {
                     e.setStateEventReadOnly(true);
-                    eL.add((AttributeAliasStateEvent.AttributeAliasStateRemoved) e);
+                    eL.add((AttributeAliasStateEvent.AttributeAliasStateRemoved)e);
                 }
                 return (readOnlyAttributeAliasEvents = eL);
             }
         }
 
-        public void setAttributeAliasEvents(Iterable<AttributeAliasStateEvent.AttributeAliasStateRemoved> es) {
-            if (es != null) {
-                for (AttributeAliasStateEvent.AttributeAliasStateRemoved e : es) {
+        public void setAttributeAliasEvents(Iterable<AttributeAliasStateEvent.AttributeAliasStateRemoved> es)
+        {
+            if (es != null)
+            {
+                for (AttributeAliasStateEvent.AttributeAliasStateRemoved e : es)
+                {
                     addAttributeAliasEvent(e);
                 }
-            } else {
-                this.attributeAliasEvents.clear();
             }
+            else { this.attributeAliasEvents.clear(); }
         }
-
-        public void addAttributeAliasEvent(AttributeAliasStateEvent.AttributeAliasStateRemoved e) {
+        
+        public void addAttributeAliasEvent(AttributeAliasStateEvent.AttributeAliasStateRemoved e)
+        {
             throwOnInconsistentEventIds(e);
             this.attributeAliasEvents.put(e.getStateEventId(), e);
         }
 
-        public void save() {
+        public void save()
+        {
             for (AttributeValueStateEvent.AttributeValueStateRemoved e : this.getAttributeValueEvents()) {
                 getAttributeValueStateEventDao().save(e);
             }
@@ -635,8 +704,8 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
             }
         }
     }
-
-    public static class SimpleAttributeStateCreated extends AbstractAttributeStateCreated {
+    public static class SimpleAttributeStateCreated extends AbstractAttributeStateCreated
+    {
         public SimpleAttributeStateCreated() {
         }
 
@@ -645,7 +714,8 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
         }
     }
 
-    public static class SimpleAttributeStateMergePatched extends AbstractAttributeStateMergePatched {
+    public static class SimpleAttributeStateMergePatched extends AbstractAttributeStateMergePatched
+    {
         public SimpleAttributeStateMergePatched() {
         }
 
@@ -654,7 +724,8 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
         }
     }
 
-    public static class SimpleAttributeStateDeleted extends AbstractAttributeStateDeleted {
+    public static class SimpleAttributeStateDeleted extends AbstractAttributeStateDeleted
+    {
         public SimpleAttributeStateDeleted() {
         }
 

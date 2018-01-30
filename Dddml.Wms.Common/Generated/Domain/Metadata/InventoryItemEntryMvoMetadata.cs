@@ -955,7 +955,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "Source.LineSeqId",
+                    Name = "Source.LineSubSeqId",
                     Type = typeof(int),
                     TypeName = "int",
                     IsSimpleValueObjectType = true,
@@ -973,7 +973,7 @@ namespace Dddml.Wms.Domain.Metadata
                     IsGlobalId = false,
                     IsDerived = false,
                     IsReallyFlattened = false,
-                    SourceChainingName = "Source.LineSeqId",
+                    SourceChainingName = "Source.LineSubSeqId",
                     IsDiscriminator = false,
                     IsReservedProperty = false,
                     IsReservedPropertyVersion = false,
@@ -1064,8 +1064,8 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("source.documentNumber", "Source.DocumentNumber");
             d.Add("Source.LineNumber", "Source.LineNumber");
             d.Add("source.lineNumber", "Source.LineNumber");
-            d.Add("Source.LineSeqId", "Source.LineSeqId");
-            d.Add("source.lineSeqId", "Source.LineSeqId");
+            d.Add("Source.LineSubSeqId", "Source.LineSubSeqId");
+            d.Add("source.lineSubSeqId", "Source.LineSubSeqId");
             _filteringPropertyAliasDictionary = d;
         }
 

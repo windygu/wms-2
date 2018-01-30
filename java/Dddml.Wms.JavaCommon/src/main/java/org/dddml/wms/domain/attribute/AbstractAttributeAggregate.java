@@ -1,11 +1,9 @@
 package org.dddml.wms.domain.attribute;
 
-import org.dddml.wms.domain.AbstractCommand;
-import org.dddml.wms.domain.Command;
+import java.util.*;
+import java.util.Date;
+import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public abstract class AbstractAttributeAggregate extends AbstractAggregate implements AttributeAggregate
 {

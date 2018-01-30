@@ -1,206 +1,276 @@
 package org.dddml.wms.domain.attribute;
 
-public class CreateOrMergePatchAttributeDto extends AbstractAttributeCommandDto {
-    private String attributeName;
-    private String organizationId;
-    private String description;
-    private Boolean isMandatory;
-    private String attributeValueType;
-    private Integer attributeValueLength;
-    private Boolean isList;
-    private String fieldName;
-    private String referenceId;
-    private Boolean active;
-    private CreateOrMergePatchAttributeValueDto[] attributeValues;
-    private CreateOrMergePatchAttributeAliasDto[] aliases;
-    private Boolean isPropertyAttributeNameRemoved;
-    private Boolean isPropertyOrganizationIdRemoved;
-    private Boolean isPropertyDescriptionRemoved;
-    private Boolean isPropertyIsMandatoryRemoved;
-    private Boolean isPropertyAttributeValueTypeRemoved;
-    private Boolean isPropertyAttributeValueLengthRemoved;
-    private Boolean isPropertyIsListRemoved;
-    private Boolean isPropertyFieldNameRemoved;
-    private Boolean isPropertyReferenceIdRemoved;
-    private Boolean isPropertyActiveRemoved;
+import java.util.Date;
+import org.dddml.wms.domain.*;
 
-    public String getAttributeName() {
+public class CreateOrMergePatchAttributeDto extends AbstractAttributeCommandDto
+{
+    private String attributeName;
+
+    public String getAttributeName()
+    {
         return this.attributeName;
     }
 
-    public void setAttributeName(String attributeName) {
+    public void setAttributeName(String attributeName)
+    {
         this.attributeName = attributeName;
     }
 
-    public String getOrganizationId() {
+    private String organizationId;
+
+    public String getOrganizationId()
+    {
         return this.organizationId;
     }
 
-    public void setOrganizationId(String organizationId) {
+    public void setOrganizationId(String organizationId)
+    {
         this.organizationId = organizationId;
     }
 
-    public String getDescription() {
+    private String description;
+
+    public String getDescription()
+    {
         return this.description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(String description)
+    {
         this.description = description;
     }
 
-    public Boolean getIsMandatory() {
+    private Boolean isMandatory;
+
+    public Boolean getIsMandatory()
+    {
         return this.isMandatory;
     }
 
-    public void setIsMandatory(Boolean isMandatory) {
+    public void setIsMandatory(Boolean isMandatory)
+    {
         this.isMandatory = isMandatory;
     }
 
-    public String getAttributeValueType() {
+    private String attributeValueType;
+
+    public String getAttributeValueType()
+    {
         return this.attributeValueType;
     }
 
-    public void setAttributeValueType(String attributeValueType) {
+    public void setAttributeValueType(String attributeValueType)
+    {
         this.attributeValueType = attributeValueType;
     }
 
-    public Integer getAttributeValueLength() {
+    private Integer attributeValueLength;
+
+    public Integer getAttributeValueLength()
+    {
         return this.attributeValueLength;
     }
 
-    public void setAttributeValueLength(Integer attributeValueLength) {
+    public void setAttributeValueLength(Integer attributeValueLength)
+    {
         this.attributeValueLength = attributeValueLength;
     }
 
-    public Boolean getIsList() {
+    private Boolean isList;
+
+    public Boolean getIsList()
+    {
         return this.isList;
     }
 
-    public void setIsList(Boolean isList) {
+    public void setIsList(Boolean isList)
+    {
         this.isList = isList;
     }
 
-    public String getFieldName() {
+    private String fieldName;
+
+    public String getFieldName()
+    {
         return this.fieldName;
     }
 
-    public void setFieldName(String fieldName) {
+    public void setFieldName(String fieldName)
+    {
         this.fieldName = fieldName;
     }
 
-    public String getReferenceId() {
+    private String referenceId;
+
+    public String getReferenceId()
+    {
         return this.referenceId;
     }
 
-    public void setReferenceId(String referenceId) {
+    public void setReferenceId(String referenceId)
+    {
         this.referenceId = referenceId;
     }
 
-    public Boolean getActive() {
+    private Boolean active;
+
+    public Boolean getActive()
+    {
         return this.active;
     }
 
-    public void setActive(Boolean active) {
+    public void setActive(Boolean active)
+    {
         this.active = active;
     }
 
-    public CreateOrMergePatchAttributeValueDto[] getAttributeValues() {
+    private CreateOrMergePatchAttributeValueDto[] attributeValues;
+
+    public CreateOrMergePatchAttributeValueDto[] getAttributeValues()
+    {
         return this.attributeValues;
     }
 
-    public void setAttributeValues(CreateOrMergePatchAttributeValueDto[] attributeValues) {
+    public void setAttributeValues(CreateOrMergePatchAttributeValueDto[] attributeValues)
+    {
         this.attributeValues = attributeValues;
     }
 
-    public CreateOrMergePatchAttributeAliasDto[] getAliases() {
+    private CreateOrMergePatchAttributeAliasDto[] aliases;
+
+    public CreateOrMergePatchAttributeAliasDto[] getAliases()
+    {
         return this.aliases;
     }
 
-    public void setAliases(CreateOrMergePatchAttributeAliasDto[] aliases) {
+    public void setAliases(CreateOrMergePatchAttributeAliasDto[] aliases)
+    {
         this.aliases = aliases;
     }
 
-    public Boolean getIsPropertyAttributeNameRemoved() {
+    private Boolean isPropertyAttributeNameRemoved;
+
+    public Boolean getIsPropertyAttributeNameRemoved()
+    {
         return this.isPropertyAttributeNameRemoved;
     }
 
-    public void setIsPropertyAttributeNameRemoved(Boolean removed) {
+    public void setIsPropertyAttributeNameRemoved(Boolean removed)
+    {
         this.isPropertyAttributeNameRemoved = removed;
     }
 
-    public Boolean getIsPropertyOrganizationIdRemoved() {
+    private Boolean isPropertyOrganizationIdRemoved;
+
+    public Boolean getIsPropertyOrganizationIdRemoved()
+    {
         return this.isPropertyOrganizationIdRemoved;
     }
 
-    public void setIsPropertyOrganizationIdRemoved(Boolean removed) {
+    public void setIsPropertyOrganizationIdRemoved(Boolean removed)
+    {
         this.isPropertyOrganizationIdRemoved = removed;
     }
 
-    public Boolean getIsPropertyDescriptionRemoved() {
+    private Boolean isPropertyDescriptionRemoved;
+
+    public Boolean getIsPropertyDescriptionRemoved()
+    {
         return this.isPropertyDescriptionRemoved;
     }
 
-    public void setIsPropertyDescriptionRemoved(Boolean removed) {
+    public void setIsPropertyDescriptionRemoved(Boolean removed)
+    {
         this.isPropertyDescriptionRemoved = removed;
     }
 
-    public Boolean getIsPropertyIsMandatoryRemoved() {
+    private Boolean isPropertyIsMandatoryRemoved;
+
+    public Boolean getIsPropertyIsMandatoryRemoved()
+    {
         return this.isPropertyIsMandatoryRemoved;
     }
 
-    public void setIsPropertyIsMandatoryRemoved(Boolean removed) {
+    public void setIsPropertyIsMandatoryRemoved(Boolean removed)
+    {
         this.isPropertyIsMandatoryRemoved = removed;
     }
 
-    public Boolean getIsPropertyAttributeValueTypeRemoved() {
+    private Boolean isPropertyAttributeValueTypeRemoved;
+
+    public Boolean getIsPropertyAttributeValueTypeRemoved()
+    {
         return this.isPropertyAttributeValueTypeRemoved;
     }
 
-    public void setIsPropertyAttributeValueTypeRemoved(Boolean removed) {
+    public void setIsPropertyAttributeValueTypeRemoved(Boolean removed)
+    {
         this.isPropertyAttributeValueTypeRemoved = removed;
     }
 
-    public Boolean getIsPropertyAttributeValueLengthRemoved() {
+    private Boolean isPropertyAttributeValueLengthRemoved;
+
+    public Boolean getIsPropertyAttributeValueLengthRemoved()
+    {
         return this.isPropertyAttributeValueLengthRemoved;
     }
 
-    public void setIsPropertyAttributeValueLengthRemoved(Boolean removed) {
+    public void setIsPropertyAttributeValueLengthRemoved(Boolean removed)
+    {
         this.isPropertyAttributeValueLengthRemoved = removed;
     }
 
-    public Boolean getIsPropertyIsListRemoved() {
+    private Boolean isPropertyIsListRemoved;
+
+    public Boolean getIsPropertyIsListRemoved()
+    {
         return this.isPropertyIsListRemoved;
     }
 
-    public void setIsPropertyIsListRemoved(Boolean removed) {
+    public void setIsPropertyIsListRemoved(Boolean removed)
+    {
         this.isPropertyIsListRemoved = removed;
     }
 
-    public Boolean getIsPropertyFieldNameRemoved() {
+    private Boolean isPropertyFieldNameRemoved;
+
+    public Boolean getIsPropertyFieldNameRemoved()
+    {
         return this.isPropertyFieldNameRemoved;
     }
 
-    public void setIsPropertyFieldNameRemoved(Boolean removed) {
+    public void setIsPropertyFieldNameRemoved(Boolean removed)
+    {
         this.isPropertyFieldNameRemoved = removed;
     }
 
-    public Boolean getIsPropertyReferenceIdRemoved() {
+    private Boolean isPropertyReferenceIdRemoved;
+
+    public Boolean getIsPropertyReferenceIdRemoved()
+    {
         return this.isPropertyReferenceIdRemoved;
     }
 
-    public void setIsPropertyReferenceIdRemoved(Boolean removed) {
+    public void setIsPropertyReferenceIdRemoved(Boolean removed)
+    {
         this.isPropertyReferenceIdRemoved = removed;
     }
 
-    public Boolean getIsPropertyActiveRemoved() {
+    private Boolean isPropertyActiveRemoved;
+
+    public Boolean getIsPropertyActiveRemoved()
+    {
         return this.isPropertyActiveRemoved;
     }
 
-    public void setIsPropertyActiveRemoved(Boolean removed) {
+    public void setIsPropertyActiveRemoved(Boolean removed)
+    {
         this.isPropertyActiveRemoved = removed;
     }
 
-    public void copyTo(AbstractAttributeCommand.AbstractCreateOrMergePatchAttribute command) {
+    public void copyTo(AbstractAttributeCommand.AbstractCreateOrMergePatchAttribute command)
+    {
         ((AbstractAttributeCommandDto) this).copyTo(command);
         command.setAttributeName(this.getAttributeName());
         command.setOrganizationId(this.getOrganizationId());
@@ -214,7 +284,8 @@ public class CreateOrMergePatchAttributeDto extends AbstractAttributeCommandDto 
         command.setActive(this.getActive());
     }
 
-    public AttributeCommand toCommand() {
+    public AttributeCommand toCommand()
+    {
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractAttributeCommand.SimpleCreateAttribute command = new AbstractAttributeCommand.SimpleCreateAttribute();
             copyTo((AbstractAttributeCommand.AbstractCreateAttribute) command);
@@ -243,15 +314,17 @@ public class CreateOrMergePatchAttributeDto extends AbstractAttributeCommandDto 
                 }
             }
             return command;
-        }
+        } 
         throw new IllegalStateException("Unknown command type:" + getCommandType());
     }
 
-    public void copyTo(AbstractAttributeCommand.AbstractCreateAttribute command) {
+    public void copyTo(AbstractAttributeCommand.AbstractCreateAttribute command)
+    {
         copyTo((AbstractAttributeCommand.AbstractCreateOrMergePatchAttribute) command);
     }
 
-    public void copyTo(AbstractAttributeCommand.AbstractMergePatchAttribute command) {
+    public void copyTo(AbstractAttributeCommand.AbstractMergePatchAttribute command)
+    {
         copyTo((AbstractAttributeCommand.AbstractCreateOrMergePatchAttribute) command);
         command.setIsPropertyAttributeNameRemoved(this.getIsPropertyAttributeNameRemoved());
         command.setIsPropertyOrganizationIdRemoved(this.getIsPropertyOrganizationIdRemoved());
@@ -265,25 +338,27 @@ public class CreateOrMergePatchAttributeDto extends AbstractAttributeCommandDto 
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
     }
 
-    public static class CreateAttributeDto extends CreateOrMergePatchAttributeDto {
+    public static class CreateAttributeDto extends CreateOrMergePatchAttributeDto
+    {
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
         }
-
-        public AttributeCommand.CreateAttribute toCreateAttribute() {
+        public AttributeCommand.CreateAttribute toCreateAttribute()
+        {
             return (AttributeCommand.CreateAttribute) toCommand();
         }
 
     }
 
-    public static class MergePatchAttributeDto extends CreateOrMergePatchAttributeDto {
+    public static class MergePatchAttributeDto extends CreateOrMergePatchAttributeDto
+    {
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_MERGE_PATCH;
         }
-
-        public AttributeCommand.MergePatchAttribute toMergePatchAttribute() {
+        public AttributeCommand.MergePatchAttribute toMergePatchAttribute()
+        {
             return (AttributeCommand.MergePatchAttribute) toCommand();
         }
 

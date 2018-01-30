@@ -47,9 +47,9 @@ namespace Dddml.Wms.Domain.InventoryItem
 			set { _value.LineNumber = value; } 
 		}
 
-		public override int LineSeqId { 
-			get { return _value.LineSeqId; } 
-			set { _value.LineSeqId = value; } 
+		public override int LineSubSeqId { 
+			get { return _value.LineSubSeqId; } 
+			set { _value.LineSubSeqId = value; } 
 		}
 
 
