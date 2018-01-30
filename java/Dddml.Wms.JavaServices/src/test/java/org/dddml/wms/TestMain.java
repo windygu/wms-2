@@ -41,8 +41,6 @@ public class TestMain {
 
         ApplicationContext.current = new SpringApplicationContext(springFrameworkApplicationContext);
 
-        //testTableIdGenerator();
-        //if(true) return;
         // ///////////////////////////////////
         InitEntityXmlData.createEntityXmlData();
 
@@ -53,6 +51,9 @@ public class TestMain {
         //if(true) return;
 
         testInventoryItemApplicationService();
+        
+        //testTableIdGenerator();
+        //if(true) return;
 
     }
 

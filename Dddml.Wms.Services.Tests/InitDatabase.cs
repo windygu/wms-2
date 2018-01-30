@@ -315,6 +315,7 @@ deallocate prepare stmt";
                 @"..\..\sql\DropRViewNameConflictedTables.sql", 
                 @"..\..\sql\CreateRViews.sql", 
                 @"..\..\sql\AddStateIdForeignKeyConstraints.sql",
+                @"..\..\sql\other.sql",
             };
 
             var sf = cfg.BuildSessionFactory();
