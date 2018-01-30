@@ -22,7 +22,7 @@ public class InitEntityXmlData {
                 try {
                     ApplicationServiceReflectUtils.invokeApplicationServiceInitializeMethod(kv.getKey(), e);
                 } catch (Exception ex) {
-                    if(IsCausedByConstraintViolation(ex)) {
+                    if(isCausedByConstraintViolation(ex)) {
                         ex.printStackTrace();
                     } else {
                         ex.printStackTrace();
@@ -33,7 +33,7 @@ public class InitEntityXmlData {
         }
     }
 
-    public static boolean IsCausedByConstraintViolation(Exception ex) {
+    public static boolean isCausedByConstraintViolation(Exception ex) {
         boolean b = false;
         Throwable c = ex;
         while (c != null) {
