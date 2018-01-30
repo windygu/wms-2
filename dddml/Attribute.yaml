@@ -7,6 +7,7 @@ aggregates:
 
 
     # --------------- aggregate ---------------
+    # 属性
     Attribute:
 
       id:
@@ -63,6 +64,7 @@ aggregates:
       entities:
         
         # -------------------------------
+        # 属性值
         AttributeValue:
           id:
             name: Value
@@ -76,6 +78,7 @@ aggregates:
               type: string
 
         # -------------------------------
+        # 属性别名
         AttributeAlias:
           description: The alias of the attribute.
           id:
