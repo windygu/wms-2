@@ -51,7 +51,7 @@ public class TestMain {
         //if(true) return;
 
         testInventoryItemApplicationService();
-        
+
         //testTableIdGenerator();
         //if(true) return;
 
