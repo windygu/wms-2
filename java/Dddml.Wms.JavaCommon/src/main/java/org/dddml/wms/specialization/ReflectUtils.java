@@ -2,10 +2,9 @@ package org.dddml.wms.specialization;
 
 import org.joda.money.Money;
 
+import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class ReflectUtils {
     private ReflectUtils() {
@@ -23,6 +22,29 @@ public class ReflectUtils {
         CLASS_MAP.put("String", String.class);
         CLASS_MAP.put("java.sql.Timestamp", java.sql.Timestamp.class);
         CLASS_MAP.put("java.sql.Date", java.sql.Date.class);
+    }
+
+    public static Object getPropertyValue(String propertyName, Object obj) {
+        Object val = null;
+        String pn = propertyName;
+        if (Character.isLowerCase(propertyName.charAt(0))) {
+            pn = Character.toUpperCase(propertyName.charAt(0)) + propertyName.substring(1);
+        }
+        try {
+            val = obj.getClass().getMethod("get" + pn, new Class[0]).invoke(obj);
+        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+            // e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+        //        else {
+        //            BeanInfo info = Introspector.getBeanInfo(obj.getClass());
+        //            Optional<PropertyDescriptor> pd =
+        //                    Arrays.stream(info.getPropertyDescriptors()).filter(p -> p.getName().equals(propertyName)).findFirst();
+        //            if(pd.isPresent()) {
+        //                val = pd.get().getReadMethod().invoke(obj);
+        //            }
+        //        }
+        return val;
     }
 
 }

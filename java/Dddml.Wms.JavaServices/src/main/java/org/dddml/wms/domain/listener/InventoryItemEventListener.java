@@ -3,12 +3,27 @@ package org.dddml.wms.domain.listener;
 import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.inventoryitemrequirement.InventoryItemRequirementApplicationService;
 import org.dddml.wms.domain.inventorypostingrule.InventoryPostingRuleApplicationService;
+import org.dddml.wms.domain.inventorypostingrule.InventoryPostingRuleIds;
+import org.dddml.wms.domain.inventorypostingrule.InventoryPostingRuleState;
+import org.dddml.wms.domain.inventoryprtriggered.AbstractInventoryPRTriggeredCommand;
 import org.dddml.wms.domain.inventoryprtriggered.InventoryPRTriggeredApplicationService;
+import org.dddml.wms.domain.inventoryprtriggered.InventoryPRTriggeredCommand;
+import org.dddml.wms.domain.inventoryprtriggered.InventoryPRTriggeredId;
 import org.dddml.wms.domain.sellableinventoryitem.SellableInventoryItemApplicationService;
+import org.dddml.wms.domain.sellableinventoryitem.SellableInventoryItemEntryCommand;
 import org.dddml.wms.specialization.AggregateEvent;
 import org.dddml.wms.specialization.AggregateEventListener;
 import org.dddml.wms.specialization.IdGenerator;
+import org.dddml.wms.specialization.ReflectUtils;
 import org.dddml.wms.specialization.hibernate.TableIdGenerator;
+
+import java.math.BigDecimal;
+import java.util.Collections;
+import java.util.Objects;
+import java.util.UUID;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 /**
  * Created by yangjiefeng on 2018/1/12.
@@ -19,7 +34,7 @@ public class InventoryItemEventListener implements AggregateEventListener<Invent
 
     private InventoryPostingRuleApplicationService inventoryPostingRuleApplicationService;
 
-    private InventoryPRTriggeredApplicationService invntoryPRTriggeredApplicationService;
+    private InventoryPRTriggeredApplicationService inventoryPRTriggeredApplicationService;
 
     private SellableInventoryItemApplicationService sellableInventoryItemApplicationService;
 
@@ -33,12 +48,12 @@ public class InventoryItemEventListener implements AggregateEventListener<Invent
         this.seqIdGenerator = seqIdGenerator;
     }
 
-    public InventoryPRTriggeredApplicationService getInvntoryPRTriggeredApplicationService() {
-        return invntoryPRTriggeredApplicationService;
+    public InventoryPRTriggeredApplicationService getInventoryPRTriggeredApplicationService() {
+        return inventoryPRTriggeredApplicationService;
     }
 
-    public void setInvntoryPRTriggeredApplicationService(InventoryPRTriggeredApplicationService invntoryPRTriggeredApplicationService) {
-        this.invntoryPRTriggeredApplicationService = invntoryPRTriggeredApplicationService;
+    public void setInventoryPRTriggeredApplicationService(InventoryPRTriggeredApplicationService inventoryPRTriggeredApplicationService) {
+        this.inventoryPRTriggeredApplicationService = inventoryPRTriggeredApplicationService;
     }
 
     public InventoryPostingRuleApplicationService getInventoryPostingRuleApplicationService() {
@@ -69,4 +84,66 @@ public class InventoryItemEventListener implements AggregateEventListener<Invent
     public void eventAppended(AggregateEvent<InventoryItemAggregate, InventoryItemState> e) {
         //todo
     }
+
+
+    private void setCreateSellableInventoryItemEntry(BigDecimal outputQuantity, InventoryPRTriggeredId tid, SellableInventoryItemEntryCommand.CreateSellableInventoryItemEntry createEntry) {
+        createEntry.setEntrySeqId(getSeqIdGenerator().getNextId());// DateTime.Now.Ticks;
+        createEntry.setSellableQuantity(outputQuantity);
+        createEntry.setSourceEventId(tid);
+    }
+
+    // ///////////////////////////////////
+
+    private InventoryPRTriggeredId getOrCreateInventoryPRTriggered(InventoryPostingRuleState pr, InventoryItemEntryStateEvent.InventoryItemEntryStateCreated iie) {
+        InventoryPRTriggeredCommand.CreateInventoryPRTriggered createTriggered = new AbstractInventoryPRTriggeredCommand.SimpleCreateInventoryPRTriggered();
+        InventoryItemEntryId sourceEntryId = new InventoryItemEntryId(iie.getStateEventId().getInventoryItemId(), iie.getStateEventId().getEntrySeqId());
+        String postingRuleId = pr.getInventoryPostingRuleId();
+        InventoryPRTriggeredId tid = new InventoryPRTriggeredId(sourceEntryId, postingRuleId);
+        createTriggered.setInventoryPRTriggeredId(tid);
+        createTriggered.setCommandId(UUID.randomUUID().toString());
+        getInventoryPRTriggeredApplicationService().when(createTriggered);
+        return tid;//todo If existed??
+    }
+
+    private BigDecimal getOutputQuantity(InventoryPostingRuleState pr, InventoryItemEntryStateEvent.InventoryItemEntryStateCreated sourceEntry) {
+        String accountName = pr.getTriggerAccountName();
+        BigDecimal srcAmount = (BigDecimal) (ReflectUtils.getPropertyValue(accountName, sourceEntry));
+        return pr.getIsOutputNegated() ? srcAmount.negate() : srcAmount;
+    }
+
+    private InventoryItemId getOutputInventoryItemId(InventoryPostingRuleState pr, InventoryItemId triggerItemId) {
+        String productId = Objects.equals(pr.getOutputInventoryItemId().getProductId(), InventoryItemIds.SAME_AS_SOURCE) ?
+                triggerItemId.getProductId() : pr.getOutputInventoryItemId().getProductId();
+        String locatorId = Objects.equals(pr.getOutputInventoryItemId().getLocatorId(), InventoryItemIds.SAME_AS_SOURCE) ?
+                triggerItemId.getLocatorId() : pr.getOutputInventoryItemId().getLocatorId();
+        String attrInstSetId = Objects.equals(pr.getOutputInventoryItemId().getAttributeSetInstanceId(), InventoryItemIds.SAME_AS_SOURCE) ?
+                triggerItemId.getAttributeSetInstanceId() : pr.getOutputInventoryItemId().getAttributeSetInstanceId();
+        InventoryItemId outputItemId = new InventoryItemId(productId, locatorId, attrInstSetId);
+        return outputItemId;
+    }
+
+    private Iterable<InventoryPostingRuleState> getPostingRules(InventoryItemId triggerItemId) {
+        return
+                Stream.concat(
+                        StreamSupport.stream(
+                                getInventoryPostingRuleApplicationService()
+                                        .getByProperty("OutputAccountName", InventoryPostingRuleIds.OUTPUT_ACCOUNT_NAME_SELLABLE_QUANTITY, null, 0, Integer.MAX_VALUE)
+                                        .spliterator(), false),
+                        StreamSupport.stream(
+                                getInventoryPostingRuleApplicationService()
+                                        .getByProperty("OutputAccountName", InventoryPostingRuleIds.OUTPUT_ACCOUNT_NAME_REQUIRED_QUANTITY, null, 0, Integer.MAX_VALUE)
+                                        .spliterator(), false)
+                ).filter(pr -> (
+                        Objects.equals(pr.getTriggerInventoryItemId().getProductId(), InventoryItemIds.WILDCARD)
+                                || Objects.equals(pr.getTriggerInventoryItemId().getProductId(), triggerItemId.getProductId()))
+                        &&
+                        (Objects.equals(pr.getTriggerInventoryItemId().getLocatorId(), InventoryItemIds.WILDCARD)
+                                || Objects.equals(pr.getTriggerInventoryItemId().getLocatorId(), triggerItemId.getLocatorId()))
+                        &&
+                        (Objects.equals(pr.getTriggerInventoryItemId().getAttributeSetInstanceId(), InventoryItemIds.WILDCARD)
+                                || Objects.equals(pr.getTriggerInventoryItemId().getAttributeSetInstanceId(), triggerItemId.getAttributeSetInstanceId()))
+                ).collect(Collectors.toList());
+    }
+
+
 }
