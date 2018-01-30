@@ -1,7 +1,7 @@
 package org.dddml.wms.domain.listener;
 
 import org.dddml.wms.domain.inventoryitem.*;
-import org.dddml.wms.domain.inventoryitemrequirement.InventoryItemRequirementApplicationService;
+import org.dddml.wms.domain.inventoryitemrequirement.*;
 import org.dddml.wms.domain.inventorypostingrule.InventoryPostingRuleApplicationService;
 import org.dddml.wms.domain.inventorypostingrule.InventoryPostingRuleIds;
 import org.dddml.wms.domain.inventorypostingrule.InventoryPostingRuleState;
@@ -9,8 +9,7 @@ import org.dddml.wms.domain.inventoryprtriggered.AbstractInventoryPRTriggeredCom
 import org.dddml.wms.domain.inventoryprtriggered.InventoryPRTriggeredApplicationService;
 import org.dddml.wms.domain.inventoryprtriggered.InventoryPRTriggeredCommand;
 import org.dddml.wms.domain.inventoryprtriggered.InventoryPRTriggeredId;
-import org.dddml.wms.domain.sellableinventoryitem.SellableInventoryItemApplicationService;
-import org.dddml.wms.domain.sellableinventoryitem.SellableInventoryItemEntryCommand;
+import org.dddml.wms.domain.sellableinventoryitem.*;
 import org.dddml.wms.specialization.AggregateEvent;
 import org.dddml.wms.specialization.AggregateEventListener;
 import org.dddml.wms.specialization.IdGenerator;
@@ -82,13 +81,118 @@ public class InventoryItemEventListener implements AggregateEventListener<Invent
 
     @Override
     public void eventAppended(AggregateEvent<InventoryItemAggregate, InventoryItemState> e) {
-        //todo
+        if (!(e.getEvent() != null && e.getEvent() instanceof InventoryItemStateEvent)) {
+            return;
+        }
+        InventoryItemStateEvent inventoryItemEvent = (InventoryItemStateEvent) e.getEvent();
+        Iterable<InventoryItemEntryStateEvent.InventoryItemEntryStateCreated> itemEntriesCreated = null;
+        if (inventoryItemEvent instanceof InventoryItemStateEvent.InventoryItemStateCreated) {
+            itemEntriesCreated = ((InventoryItemStateEvent.InventoryItemStateCreated) inventoryItemEvent).getInventoryItemEntryEvents();
+        } else if (inventoryItemEvent instanceof InventoryItemStateEvent.InventoryItemStateMergePatched) {
+            itemEntriesCreated =
+                    StreamSupport.stream(
+                            ((InventoryItemStateEvent.InventoryItemStateMergePatched) inventoryItemEvent)
+                                    .getInventoryItemEntryEvents().spliterator(), false
+                    ).filter(ie -> ie instanceof InventoryItemEntryStateEvent.InventoryItemEntryStateCreated)
+                            .map(ie -> (InventoryItemEntryStateEvent.InventoryItemEntryStateCreated) ie)
+                            .collect(Collectors.toList());
+        }
+        if (itemEntriesCreated == null) {
+            return;
+        }
+        for (InventoryItemEntryStateEvent.InventoryItemEntryStateCreated iie : itemEntriesCreated) {
+            for (InventoryPostingRuleState pr : getPostingRules(iie.getStateEventId().getInventoryItemId())) {
+                BigDecimal outputQuantity = getOutputQuantity(pr, iie);
+                if (outputQuantity.equals(0)) {
+                    continue;
+                }
+                InventoryPRTriggeredId tid = getOrCreateInventoryPRTriggered(pr, iie);
+
+                InventoryItemId outputItemId = getOutputInventoryItemId(pr, iie.getStateEventId().getInventoryItemId());
+                //_log.Debug(outputItemId.ProductId + ", " + outputItemId.LocatorId + ", " + outputItemId.AttributeSetInstanceId);
+                createOrUpdateOutputAccount(pr.getOutputAccountName(), outputQuantity, tid, outputItemId);
+            }
+        }
     }
 
+    private void createOrUpdateOutputAccount(String outputAccountName, BigDecimal outputQuantity, InventoryPRTriggeredId tid, InventoryItemId outputItemId) {
+        if (InventoryPostingRuleIds.OUTPUT_ACCOUNT_NAME_SELLABLE_QUANTITY.equals(outputAccountName)) {
+            createOrUpdateSellableInventoryItem(outputQuantity, tid, outputItemId);
+        } else if (InventoryPostingRuleIds.OUTPUT_ACCOUNT_NAME_REQUIRED_QUANTITY.equals(outputAccountName)) {
+            createOrUpdateInventoryItemRequirement(outputQuantity, tid, outputItemId);
+        } else {
+            throw new UnsupportedOperationException(String.format("outputAccountName = %1$s", outputAccountName));
+        }
+    }
+
+    // ///////////////////////////////////
+
+
+    private void createOrUpdateSellableInventoryItem(BigDecimal outputQuantity, InventoryPRTriggeredId tid, InventoryItemId outputItemId) {
+        SellableInventoryItemState itemState = getSellableInventoryItemApplicationService().get(outputItemId);
+        if (itemState != null) {
+            SellableInventoryItemCommand.MergePatchSellableInventoryItem updateItem = new AbstractSellableInventoryItemCommand.SimpleMergePatchSellableInventoryItem();
+            updateItem.setSellableInventoryItemId(outputItemId);
+            updateItem.setVersion(itemState.getVersion());
+            updateItem.setCommandId(UUID.randomUUID().toString());
+
+            SellableInventoryItemEntryCommand.CreateSellableInventoryItemEntry createEntry = updateItem.newCreateSellableInventoryItemEntry();
+            setCreateSellableInventoryItemEntry(outputQuantity, tid, createEntry);
+            updateItem.getSellableInventoryItemEntryCommands().add(createEntry);
+            getSellableInventoryItemApplicationService().when(updateItem);
+        } else // is null
+        {
+            SellableInventoryItemCommand.CreateSellableInventoryItem createItem = new AbstractSellableInventoryItemCommand.SimpleCreateSellableInventoryItem();
+            createItem.setSellableInventoryItemId(outputItemId);
+            createItem.setCommandId(UUID.randomUUID().toString());
+
+            SellableInventoryItemEntryCommand.CreateSellableInventoryItemEntry createEntry = createItem.newCreateSellableInventoryItemEntry();
+            setCreateSellableInventoryItemEntry(outputQuantity, tid, createEntry);
+            createItem.getEntries().add(createEntry);
+            getSellableInventoryItemApplicationService().when(createItem);
+            //return SellableInventoryItemApplicationService.Get(outputItemId);
+        }
+    }
 
     private void setCreateSellableInventoryItemEntry(BigDecimal outputQuantity, InventoryPRTriggeredId tid, SellableInventoryItemEntryCommand.CreateSellableInventoryItemEntry createEntry) {
         createEntry.setEntrySeqId(getSeqIdGenerator().getNextId());// DateTime.Now.Ticks;
         createEntry.setSellableQuantity(outputQuantity);
+        createEntry.setSourceEventId(tid);
+    }
+
+    // ///////////////////////////////////
+
+    private void createOrUpdateInventoryItemRequirement(BigDecimal outputQuantity, InventoryPRTriggeredId tid, InventoryItemId outputItemId) {
+        InventoryItemRequirementState itemState = getInventoryItemRequirementApplicationService().get(outputItemId);
+        if (itemState != null)
+        {
+            InventoryItemRequirementCommand.MergePatchInventoryItemRequirement updateItem = new AbstractInventoryItemRequirementCommand.SimpleMergePatchInventoryItemRequirement();
+            updateItem.setInventoryItemRequirementId(outputItemId);
+            updateItem.setVersion(itemState.getVersion());
+            updateItem.setCommandId(UUID.randomUUID().toString());
+
+            InventoryItemRequirementEntryCommand.CreateInventoryItemRequirementEntry createEntry = updateItem.newCreateInventoryItemRequirementEntry();
+            setCreateInventoryItemRequirementEntry(outputQuantity, tid, createEntry);
+            updateItem.getInventoryItemRequirementEntryCommands().add(createEntry);
+            getInventoryItemRequirementApplicationService().when(updateItem);
+        }
+        else // is null
+        {
+            InventoryItemRequirementCommand.CreateInventoryItemRequirement createItem = new AbstractInventoryItemRequirementCommand.SimpleCreateInventoryItemRequirement();
+            createItem.setInventoryItemRequirementId(outputItemId);
+            createItem.setCommandId(UUID.randomUUID().toString());
+
+            InventoryItemRequirementEntryCommand.CreateInventoryItemRequirementEntry createEntry = createItem.newCreateInventoryItemRequirementEntry();
+            setCreateInventoryItemRequirementEntry(outputQuantity, tid, createEntry);
+            createItem.getEntries().add(createEntry);
+            getInventoryItemRequirementApplicationService().when(createItem);
+            //return InventoryItemRequirementApplicationService.Get(outputItemId);
+        }
+    }
+
+    private void setCreateInventoryItemRequirementEntry(BigDecimal outputQuantity, InventoryPRTriggeredId tid, InventoryItemRequirementEntryCommand.CreateInventoryItemRequirementEntry createEntry) {
+        createEntry.setEntrySeqId(getSeqIdGenerator().getNextId());//DateTime.Now.Ticks;
+        createEntry.setQuantity(outputQuantity);
         createEntry.setSourceEventId(tid);
     }
 
