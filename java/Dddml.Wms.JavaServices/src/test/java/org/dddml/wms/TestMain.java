@@ -2,6 +2,7 @@ package org.dddml.wms;
 
 import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.specialization.ApplicationContext;
+import org.dddml.wms.specialization.hibernate.TableIdGenerator;
 import org.dddml.wms.tool.ApplicationServiceReflectUtils;
 import org.dddml.wms.tool.XmlEntityDataTool;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -40,6 +41,8 @@ public class TestMain {
 
         ApplicationContext.current = new SpringApplicationContext(springFrameworkApplicationContext);
 
+        //testTableIdGenerator();
+        //if(true) return;
         // ///////////////////////////////////
         InitEntityXmlData.createEntityXmlData();
 
@@ -53,6 +56,13 @@ public class TestMain {
 
     }
 
+
+    private static void testTableIdGenerator() {
+        TableIdGenerator idGenerator = new TableIdGenerator();
+        System.out.println(idGenerator.getNextId());
+        System.out.println(idGenerator.getNextId());
+        System.out.println(idGenerator.getNextId());
+    }
 
     // /////////////////////////////////////////////////////////////
 
