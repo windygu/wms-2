@@ -9,6 +9,10 @@
     </bean>
 
     <bean id="inventoryItemEventListener" class="org.dddml.wms.domain.listener.InventoryItemEventListener">
+        <property name="inventoryPostingRuleApplicationService" ref="inventoryPostingRuleApplicationService" />
+        <property name="inventoryPRTriggeredApplicationService" ref="inventoryPRTriggeredApplicationService" />
+        <property name="sellableInventoryItemApplicationService" ref="sellableInventoryItemApplicationService" />
+        <property name="inventoryItemRequirementApplicationService" ref="inventoryItemRequirementApplicationService" />
     </bean>
 
 </beans>

@@ -190,6 +190,7 @@ namespace Dddml.Wms.Domain.Listeners
             var tid = new InventoryPRTriggeredId(sourceEntryId, postingRuleId);
             createTriggered.InventoryPRTriggeredId = tid;
             createTriggered.CommandId = Guid.NewGuid().ToString();
+            createTriggered.IsProcessed = true;// now we use database strong consistency!
             InventoryPRTriggeredApplicationService.When(createTriggered);
             return tid;//todo If existed??
         }

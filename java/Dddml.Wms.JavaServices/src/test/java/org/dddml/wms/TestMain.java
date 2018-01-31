@@ -44,9 +44,27 @@ public class TestMain {
         // ///////////////////////////////////
         InitEntityXmlData.createEntityXmlData();
 
-        InitInventoryPostingRules.createDefaultInventoryPostingRules();
+        try {
+            InitInventoryPostingRules.createDefaultInventoryPostingRules();
+        } catch (Exception ex) {
+            if(InitEntityXmlData.isCausedByConstraintViolation(ex)) {
+                ex.printStackTrace();
+            } else {
+                ex.printStackTrace();
+                throw new RuntimeException(ex);
+            }
+        }
 
-        InitAttributeSets.createDefaultAttributeSets();
+        try {
+            InitAttributeSets.createDefaultAttributeSets();
+        } catch (Exception ex) {
+            if(InitEntityXmlData.isCausedByConstraintViolation(ex)) {
+                ex.printStackTrace();
+            } else {
+                ex.printStackTrace();
+                throw new RuntimeException(ex);
+            }
+        }
         // ///////////////////////////////////
         //if(true) return;
 
@@ -66,8 +84,13 @@ public class TestMain {
     }
 
     // /////////////////////////////////////////////////////////////
-
+    //todo 事实上库存单元的应用服务的创建方法应该只是一个内部服务，不应该通过 RESTful API（外部）可访问
+    // 需要有一个生成选项，把它从 RESTful API 中去掉。
+    // 直接创建库存单元是不对的。
+    // so this method is only for test!!!
+    // /////////////////////////////////////////////////////////////
     private static void testInventoryItemApplicationService(){
+
         InventoryItemApplicationService service = (InventoryItemApplicationService)ApplicationContext.current.get("inventoryItemApplicationService") ;
 
         InventoryItemCommand.CreateInventoryItem ii = new AbstractInventoryItemCommand.SimpleCreateInventoryItem();

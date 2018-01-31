@@ -103,7 +103,7 @@ public class InventoryItemEventListener implements AggregateEventListener<Invent
         for (InventoryItemEntryStateEvent.InventoryItemEntryStateCreated iie : itemEntriesCreated) {
             for (InventoryPostingRuleState pr : getPostingRules(iie.getStateEventId().getInventoryItemId())) {
                 BigDecimal outputQuantity = getOutputQuantity(pr, iie);
-                if (outputQuantity.equals(0)) {
+                if (outputQuantity == null || outputQuantity.equals(0)) {
                     continue;
                 }
                 InventoryPRTriggeredId tid = getOrCreateInventoryPRTriggered(pr, iie);
@@ -205,6 +205,7 @@ public class InventoryItemEventListener implements AggregateEventListener<Invent
         InventoryPRTriggeredId tid = new InventoryPRTriggeredId(sourceEntryId, postingRuleId);
         createTriggered.setInventoryPRTriggeredId(tid);
         createTriggered.setCommandId(UUID.randomUUID().toString());
+        createTriggered.setIsProcessed(true);// now we use database strong consistency!
         getInventoryPRTriggeredApplicationService().when(createTriggered);
         return tid;//todo If existed??
     }
@@ -212,7 +213,9 @@ public class InventoryItemEventListener implements AggregateEventListener<Invent
     private BigDecimal getOutputQuantity(InventoryPostingRuleState pr, InventoryItemEntryStateEvent.InventoryItemEntryStateCreated sourceEntry) {
         String accountName = pr.getTriggerAccountName();
         BigDecimal srcAmount = (BigDecimal) (ReflectUtils.getPropertyValue(accountName, sourceEntry));
-        return pr.getIsOutputNegated() ? srcAmount.negate() : srcAmount;
+        return (pr.getIsOutputNegated() != null && pr.getIsOutputNegated())
+                ? srcAmount == null ? BigDecimal.valueOf(0) : srcAmount.negate()
+                : srcAmount == null ? BigDecimal.valueOf(0) : srcAmount;
     }
 
     private InventoryItemId getOutputInventoryItemId(InventoryPostingRuleState pr, InventoryItemId triggerItemId) {
@@ -231,11 +234,11 @@ public class InventoryItemEventListener implements AggregateEventListener<Invent
                 Stream.concat(
                         StreamSupport.stream(
                                 getInventoryPostingRuleApplicationService()
-                                        .getByProperty("OutputAccountName", InventoryPostingRuleIds.OUTPUT_ACCOUNT_NAME_SELLABLE_QUANTITY, null, 0, Integer.MAX_VALUE)
+                                        .getByProperty("outputAccountName", InventoryPostingRuleIds.OUTPUT_ACCOUNT_NAME_SELLABLE_QUANTITY, null, 0, Integer.MAX_VALUE)
                                         .spliterator(), false),
                         StreamSupport.stream(
                                 getInventoryPostingRuleApplicationService()
-                                        .getByProperty("OutputAccountName", InventoryPostingRuleIds.OUTPUT_ACCOUNT_NAME_REQUIRED_QUANTITY, null, 0, Integer.MAX_VALUE)
+                                        .getByProperty("outputAccountName", InventoryPostingRuleIds.OUTPUT_ACCOUNT_NAME_REQUIRED_QUANTITY, null, 0, Integer.MAX_VALUE)
                                         .spliterator(), false)
                 ).filter(pr -> (
                         Objects.equals(pr.getTriggerInventoryItemId().getProductId(), InventoryItemIds.WILDCARD)
