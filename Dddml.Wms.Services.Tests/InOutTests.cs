@@ -29,7 +29,7 @@ namespace Dddml.Wms.Services.Tests
         }
 
         [Test]
-        public void TestCreateAndCompleteInOut()
+        public void TestCreateAndCompleteAndReverseInOut()
         {
             //for (int i = 0; i < 10; i++)
             //{

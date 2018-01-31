@@ -10,8 +10,6 @@ import org.dddml.wms.specialization.spring.SpringApplicationContext;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 public class TestMain {
@@ -60,7 +58,7 @@ public class TestMain {
         //testInventoryItemApplicationService();
         //if(true) return;
 
-        testCreateAndComplateInOut_0();
+        testCreateAndCompleteAndReverseInOut();
     }
 
     //        ReflectReadOnlyProxyGenerator generator = new ReflectReadOnlyProxyGenerator();
@@ -76,6 +74,20 @@ public class TestMain {
         System.out.println(idGenerator.getNextId());
         System.out.println(idGenerator.getNextId());
         System.out.println(idGenerator.getNextId());
+    }
+
+    public static void testCreateAndCompleteAndReverseInOut() {
+        String documentNumber = testCreateAndComplateInOut_0();
+        testReverseInOut(documentNumber);
+    }
+
+    private static void testReverseInOut(String documentNumber) {
+        InOutCommands.Reverse reverse = new InOutCommands.Reverse();
+        reverse.setCommandId(UUID.randomUUID().toString());
+        reverse.setVersion(1L);
+        reverse.setDocumentNumber(documentNumber);
+        InOutApplicationService inOutApplicationService = (InOutApplicationService) ApplicationContext.current.get("inOutApplicationService");
+        inOutApplicationService.when(reverse);
     }
 
     private static String testCreateAndComplateInOut_0() {
