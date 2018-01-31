@@ -1072,7 +1072,12 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\DocumentAction.java">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentreceiptmvo\GenerateShipmentReceiptMvoDomain1.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventorypostingrule\GenerateInventoryPostingRuleDomain1.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentreceiptmvo\GenerateShipmentReceiptMvoDomain.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
@@ -1142,10 +1147,10 @@
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\GenerateBoundedContextDomainAggregates.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastOutputs>.\GenerateBoundedContextDomainAggregates1.txt</LastOutputs>
-      <LastGenOutput>GenerateBoundedContextDomainAggregates1.txt</LastGenOutput>
+      <LastOutputs>.\GenerateBoundedContextDomainAggregates.txt</LastOutputs>
+      <LastGenOutput>GenerateBoundedContextDomainAggregates.txt</LastGenOutput>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\GenerateBoundedContextDomainAggregates1.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\GenerateBoundedContextDomainAggregates.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
@@ -1915,11 +1920,6 @@
       <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inventorypostingrule\DeleteInventoryPostingRuleDto.java">
-      <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inventorypostingrule\GenerateInventoryPostingRuleDomain.txt">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inventorypostingrule\InventoryPostingRuleAggregate.java">
@@ -6290,7 +6290,7 @@
 .\AbstractInventoryPostingRuleStateEvent.java
 .\CreateOrMergePatchInventoryPostingRuleDto.java
 .\DeleteInventoryPostingRuleDto.java
-.\GenerateInventoryPostingRuleDomain.txt
+.\GenerateInventoryPostingRuleDomain1.txt
 .\InventoryPostingRuleAggregate.java
 .\InventoryPostingRuleApplicationService.java
 .\InventoryPostingRuleCommand.java
@@ -6307,6 +6307,7 @@
 .\InventoryPostingRuleStateQueryRepository.java
 .\InventoryPostingRuleStateRepository.java
 </LastOutputs>
+      <LastGenOutput>GenerateInventoryPostingRuleDomain1.txt</LastGenOutput>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inventoryprtriggered\GenerateInventoryPRTriggeredDomain.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -7392,7 +7393,7 @@
 .\AbstractShipmentReceiptMvoStateEvent.java
 .\CreateOrMergePatchShipmentReceiptMvoDto.java
 .\DeleteShipmentReceiptMvoDto.java
-.\GenerateShipmentReceiptMvoDomain1.txt
+.\GenerateShipmentReceiptMvoDomain.txt
 .\ShipmentReceiptMvoAggregate.java
 .\ShipmentReceiptMvoApplicationService.java
 .\ShipmentReceiptMvoCommand.java
@@ -7409,7 +7410,7 @@
 .\ShipmentReceiptMvoStateQueryRepository.java
 .\ShipmentReceiptMvoStateRepository.java
 </LastOutputs>
-      <LastGenOutput>GenerateShipmentReceiptMvoDomain1.txt</LastGenOutput>
+      <LastGenOutput>GenerateShipmentReceiptMvoDomain.txt</LastGenOutput>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\damagereason\GenerateDamageReasonDomain.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

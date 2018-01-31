@@ -528,7 +528,7 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\order\hibernate\HibernateOrderStateRepository.java">
       <DependentUpon>GenerateOrderDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructuretype\hibernate\GenerateOrganizationStructureTypeDomainHibernate1.txt">
+    <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructuretype\hibernate\GenerateOrganizationStructureTypeDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateOrganizationStructureTypeDomainHibernate.tt</DependentUpon>
@@ -1397,12 +1397,12 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructuretype\hibernate\GenerateOrganizationStructureTypeDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastOutputs>
-.\GenerateOrganizationStructureTypeDomainHibernate1.txt
+.\GenerateOrganizationStructureTypeDomainHibernate.txt
 .\HibernateOrganizationStructureTypeEventStore.java
 .\HibernateOrganizationStructureTypeStateQueryRepository.java
 .\HibernateOrganizationStructureTypeStateRepository.java
 </LastOutputs>
-      <LastGenOutput>GenerateOrganizationStructureTypeDomainHibernate1.txt</LastGenOutput>
+      <LastGenOutput>GenerateOrganizationStructureTypeDomainHibernate.txt</LastGenOutput>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructure\hibernate\GenerateOrganizationStructureDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -1812,6 +1812,7 @@
 .\HibernateUomTypeStateQueryRepository.java
 .\HibernateUomTypeStateRepository.java
 </LastOutputs>
+      <LastGenOutput>GenerateUomTypeDomainHibernate.txt</LastGenOutput>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\lot\hibernate\GenerateLotDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
