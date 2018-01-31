@@ -5,8 +5,6 @@ import org.dddml.wms.domain.inout.*;
 import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.specialization.ApplicationContext;
 import org.dddml.wms.specialization.hibernate.TableIdGenerator;
-import org.dddml.wms.tool.ApplicationServiceReflectUtils;
-import org.dddml.wms.tool.XmlEntityDataTool;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.dddml.wms.specialization.spring.SpringApplicationContext;
 
@@ -34,18 +32,10 @@ public class TestMain {
     }
 
     public static void main(final String[] args) throws Exception {
-//        ReflectReadOnlyProxyGenerator generator = new ReflectReadOnlyProxyGenerator();
-//        TestIntf1 testIntf1 = (TestIntf1) generator.createProxy(new TestClass1(), new Class[]{TestIntf1.class}, "getStateReadOnly", TestClass1.readOnlyPropertyNames);
-//        testIntf1.setF2("testTestTest2");
-//        testIntf1.setF1("testTestTest1");
-        //testSet();
-        //if (true) return;
-
         ApplicationContext.current = new SpringApplicationContext(springFrameworkApplicationContext);
 
-        // ///////////////////////////////////
+        // //////////////////  initialize database data /////////////////
         InitEntityXmlData.createEntityXmlData();
-
         try {
             InitInventoryPostingRules.createDefaultInventoryPostingRules();
         } catch (Exception ex) {
@@ -56,7 +46,6 @@ public class TestMain {
                 throw new RuntimeException(ex);
             }
         }
-
         try {
             InitAttributeSets.createDefaultAttributeSets();
         } catch (Exception ex) {
@@ -67,17 +56,19 @@ public class TestMain {
                 throw new RuntimeException(ex);
             }
         }
-        // ///////////////////////////////////
-        //if(true) return;
-
+        // ////////////////////////////////////////////////////////////
         //testInventoryItemApplicationService();
+        //if(true) return;
 
         testCreateAndComplateInOut_0();
-
-        //testTableIdGenerator();
-        //if(true) return;
-
     }
+
+    //        ReflectReadOnlyProxyGenerator generator = new ReflectReadOnlyProxyGenerator();
+    //        TestIntf1 testIntf1 = (TestIntf1) generator.createProxy(new TestClass1(), new Class[]{TestIntf1.class}, "getStateReadOnly", TestClass1.readOnlyPropertyNames);
+    //        testIntf1.setF2("testTestTest2");
+    //        testIntf1.setF1("testTestTest1");
+    //testSet();
+    //if (true) return;
 
 
     private static void testTableIdGenerator() {
@@ -120,21 +111,21 @@ public class TestMain {
         inOutApplicationService.when(complete);
 
         return documentNumber;
-//
-//            MergePatchInOut patchInOut = new MergePatchInOut();
-//            patchInOut.DocumentNumber = documentNumber;
-//            patchInOut.DocumentAction = DocumentAction.Void;//不能这样写：patchInOut.DocumentStatus = DocumentStatus.Voided
-//            patchInOut.Version = 1;
-//            patchInOut.CommandId = Guid.NewGuid().ToString();
-//            inOutApplicationService.When(patchInOut);
-//            var inOutResult = inOutApplicationService.Get(inOut.DocumentNumber);
-//            //Console.WriteLine(inOutResult.DocumentNumber);
-//            Assert.AreEqual(DocumentStatusIds.Voided, inOutResult.DocumentStatusId);
-//            //Console.WriteLine(inOutResult.FreightAmount);
-//            //Assert.AreEqual(inOut.FreightAmount, inOutResult.FreightAmount);
-//            //Console.WriteLine(inOutResult.ChargeAmount);
-//            //Assert.AreEqual(inOut.ChargeAmount, inOutResult.ChargeAmount);
-//
+        //
+        //            MergePatchInOut patchInOut = new MergePatchInOut();
+        //            patchInOut.DocumentNumber = documentNumber;
+        //            patchInOut.DocumentAction = DocumentAction.Void;//不能这样写：patchInOut.DocumentStatus = DocumentStatus.Voided
+        //            patchInOut.Version = 1;
+        //            patchInOut.CommandId = Guid.NewGuid().ToString();
+        //            inOutApplicationService.When(patchInOut);
+        //            var inOutResult = inOutApplicationService.Get(inOut.DocumentNumber);
+        //            //Console.WriteLine(inOutResult.DocumentNumber);
+        //            Assert.AreEqual(DocumentStatusIds.Voided, inOutResult.DocumentStatusId);
+        //            //Console.WriteLine(inOutResult.FreightAmount);
+        //            //Assert.AreEqual(inOut.FreightAmount, inOutResult.FreightAmount);
+        //            //Console.WriteLine(inOutResult.ChargeAmount);
+        //            //Assert.AreEqual(inOut.ChargeAmount, inOutResult.ChargeAmount);
+        //
 
     }
 
