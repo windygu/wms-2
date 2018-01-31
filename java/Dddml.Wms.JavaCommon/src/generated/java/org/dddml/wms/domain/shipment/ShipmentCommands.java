@@ -425,10 +425,10 @@ public class ShipmentCommands
 
     }
 
-    public static class ConfirmReceipt implements ShipmentCommand {
+    public static class ConfirmAllItemsReceived implements ShipmentCommand {
 
         public String getCommandType() {
-            return "ConfirmReceipt";
+            return "ConfirmAllItemsReceived";
         }
 
         public void setCommandType(String commandType) {

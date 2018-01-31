@@ -173,11 +173,11 @@ public class ShipmentResource {
     }
 
 
-    @Path("{id}/_commands/ConfirmReceipt") @PUT
-    public void confirmReceipt(@PathParam("id") String id, ShipmentCommandDtos.ConfirmReceiptRequestContent content) {
+    @Path("{id}/_commands/ConfirmAllItemsReceived") @PUT
+    public void confirmAllItemsReceived(@PathParam("id") String id, ShipmentCommandDtos.ConfirmAllItemsReceivedRequestContent content) {
         try {
 
-            ShipmentCommands.ConfirmReceipt cmd = content.toConfirmReceipt();
+            ShipmentCommands.ConfirmAllItemsReceived cmd = content.toConfirmAllItemsReceived();
             String idObj = id;
             if (cmd.getShipmentId() == null) {
                 cmd.setShipmentId(idObj);

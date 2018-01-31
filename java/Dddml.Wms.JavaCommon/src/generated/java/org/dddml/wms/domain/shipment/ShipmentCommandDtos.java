@@ -466,10 +466,10 @@ public class ShipmentCommandDtos
 
     }
 
-    public static class ConfirmReceiptRequestContent {
+    public static class ConfirmAllItemsReceivedRequestContent {
 
         public String getCommandType() {
-            return "ConfirmReceipt";
+            return "ConfirmAllItemsReceived";
         }
 
         private String shipmentId;
@@ -512,8 +512,8 @@ public class ShipmentCommandDtos
             this.requesterId = requesterId;
         }
 
-       public ShipmentCommands.ConfirmReceipt toConfirmReceipt() {
-            ShipmentCommands.ConfirmReceipt cmd = new ShipmentCommands.ConfirmReceipt();
+       public ShipmentCommands.ConfirmAllItemsReceived toConfirmAllItemsReceived() {
+            ShipmentCommands.ConfirmAllItemsReceived cmd = new ShipmentCommands.ConfirmAllItemsReceived();
             cmd.setShipmentId(this.getShipmentId());
             cmd.setVersion(this.getVersion());
             cmd.setCommandId(this.getCommandId());

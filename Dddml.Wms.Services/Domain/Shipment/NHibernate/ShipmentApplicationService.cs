@@ -50,7 +50,7 @@ namespace Dddml.Wms.Domain.Shipment.NHibernate
         }
 
         [Transaction]
-        public override void When(ShipmentCommands.ConfirmReceipt c)
+        public override void When(ShipmentCommands.ConfirmAllItemsReceived c)
         {
             var shipment = AssertShipmentStatus(c.ShipmentId, StatusItemIds.PurchShipShipped);
 

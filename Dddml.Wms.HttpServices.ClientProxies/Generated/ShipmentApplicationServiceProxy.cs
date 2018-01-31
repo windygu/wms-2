@@ -128,7 +128,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             throw new NotImplementedException();//todo
         }
 
-        public void When(ShipmentCommands.ConfirmReceipt c)
+        public void When(ShipmentCommands.ConfirmAllItemsReceived c)
         {
             throw new NotImplementedException();//todo
         }

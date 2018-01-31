@@ -65,8 +65,8 @@ public abstract class AbstractShipmentApplicationService implements ShipmentAppl
         update(c, ar -> ar.receiveItem(c.getShipmentItemSeqId(), c.getAttributeSetInstance(), c.getRejectionReasonId(), c.getDamageStatusId(), c.getDamageReasonId(), c.getAcceptedQuantity(), c.getRejectedQuantity(), c.getDamagedQuantity(), c.getItemDescription(), c.getVersion(), c.getCommandId(), c.getRequesterId()));
     }
 
-    public void when(ShipmentCommands.ConfirmReceipt c) {
-        update(c, ar -> ar.confirmReceipt(c.getVersion(), c.getCommandId(), c.getRequesterId()));
+    public void when(ShipmentCommands.ConfirmAllItemsReceived c) {
+        update(c, ar -> ar.confirmAllItemsReceived(c.getVersion(), c.getCommandId(), c.getRequesterId()));
     }
 
     public ShipmentState get(String id) {

@@ -179,12 +179,12 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = ShipmentsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
-        [Route("{id}/_commands/ConfirmReceipt")]
+        [Route("{id}/_commands/ConfirmAllItemsReceived")]
         [HttpPut][SetRequesterId]
-        public void ConfirmReceipt(string id, [FromBody]ShipmentCommandDtos.ConfirmReceiptRequestContent content)
+        public void ConfirmAllItemsReceived(string id, [FromBody]ShipmentCommandDtos.ConfirmAllItemsReceivedRequestContent content)
         {
           try {
-            var cmd = content.ToConfirmReceipt();
+            var cmd = content.ToConfirmAllItemsReceived();
             var idObj = id;
             if (cmd.ShipmentId == null)
             {

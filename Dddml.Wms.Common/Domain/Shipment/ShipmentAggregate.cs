@@ -51,7 +51,7 @@ namespace Dddml.Wms.Domain.Shipment
             throw new NotSupportedException();
         }
 
-        public void ConfirmReceipt(long version, string commandId, string requesterId)
+        public void ConfirmAllItemsReceived(long version, string commandId, string requesterId)
         {
             bool isStatusOk = false;
             if (State.StatusId == StatusItemIds.PurchShipShipped)

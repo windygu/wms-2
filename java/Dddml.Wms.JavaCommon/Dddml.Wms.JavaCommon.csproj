@@ -1072,6 +1072,12 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\DocumentAction.java">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitem\InventoryItemCommandDtos.java">
+      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitem\InventoryItemCommands.java">
+      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inventorypostingrule\GenerateInventoryPostingRuleDomain1.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -6147,6 +6153,8 @@
 .\InventoryItemAggregate.java
 .\InventoryItemApplicationService.java
 .\InventoryItemCommand.java
+.\InventoryItemCommandDtos.java
+.\InventoryItemCommands.java
 .\InventoryItemEntryCommand.java
 .\InventoryItemEntryId.java
 .\InventoryItemEntryIdDto.java

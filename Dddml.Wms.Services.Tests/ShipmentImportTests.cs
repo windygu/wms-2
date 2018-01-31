@@ -112,7 +112,7 @@ namespace Dddml.Wms.Services.Tests
         private void UpdateShipmentToPurchShipReceived(string shipmentId)
         {
             //var updateShipment = new MergePatchShipment();
-            var updateShipment = new ShipmentCommands.ConfirmReceipt();
+            var updateShipment = new ShipmentCommands.ConfirmAllItemsReceived();
             updateShipment.ShipmentId = shipmentId;
             updateShipment.CommandId = Guid.NewGuid().ToString();
             //updateShipment.StatusId = StatusItemIds.PurchShipShipped;

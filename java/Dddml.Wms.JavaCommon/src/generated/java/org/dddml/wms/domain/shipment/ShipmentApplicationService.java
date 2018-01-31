@@ -20,7 +20,7 @@ public interface ShipmentApplicationService
 
     void when(ShipmentCommands.ReceiveItem c);
 
-    void when(ShipmentCommands.ConfirmReceipt c);
+    void when(ShipmentCommands.ConfirmAllItemsReceived c);
 
     ShipmentState get(String id);
 

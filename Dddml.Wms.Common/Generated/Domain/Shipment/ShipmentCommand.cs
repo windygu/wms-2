@@ -757,12 +757,12 @@ namespace Dddml.Wms.Domain.Shipment
 
         }
 
-        public class ConfirmReceipt : IShipmentCommand
+        public class ConfirmAllItemsReceived : IShipmentCommand
         {
 
             public string CommandType
             {
-                get { return "ConfirmReceipt"; }
+                get { return "ConfirmAllItemsReceived"; }
             }
 
             public string ShipmentId { get; set; }

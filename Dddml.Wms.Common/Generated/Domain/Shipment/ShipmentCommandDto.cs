@@ -999,12 +999,12 @@ namespace Dddml.Wms.Domain.Shipment
 
         }
 
-        public class ConfirmReceiptRequestContent : ICommandDto
+        public class ConfirmAllItemsReceivedRequestContent : ICommandDto
         {
 
             public string CommandType
             {
-                get { return "ConfirmReceipt"; }
+                get { return "ConfirmAllItemsReceived"; }
             }
 
             public string ShipmentId { get; set; }
@@ -1015,9 +1015,9 @@ namespace Dddml.Wms.Domain.Shipment
 
             public string RequesterId { get; set; }
 
-            public ShipmentCommands.ConfirmReceipt ToConfirmReceipt()
+            public ShipmentCommands.ConfirmAllItemsReceived ToConfirmAllItemsReceived()
             {
-                var cmd = new ShipmentCommands.ConfirmReceipt();
+                var cmd = new ShipmentCommands.ConfirmAllItemsReceived();
                 cmd.ShipmentId = this.ShipmentId;
                 cmd.Version = this.Version;
                 cmd.CommandId = this.CommandId;

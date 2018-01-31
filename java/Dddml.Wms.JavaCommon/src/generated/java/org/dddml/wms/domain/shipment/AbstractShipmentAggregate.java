@@ -424,7 +424,7 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         }
 
         @Override
-        public void confirmReceipt(Long version, String commandId, String requesterId) {
+        public void confirmAllItemsReceived(Long version, String commandId, String requesterId) {
             throw new UnsupportedOperationException();
         }
 

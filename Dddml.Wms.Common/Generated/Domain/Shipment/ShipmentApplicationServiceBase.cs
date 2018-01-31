@@ -115,9 +115,9 @@ namespace Dddml.Wms.Domain.Shipment
 			Update(c, ar => ar.ReceiveItem(c.ShipmentItemSeqId, c.AttributeSetInstance, c.RejectionReasonId, c.DamageStatusId, c.DamageReasonId, c.AcceptedQuantity, c.RejectedQuantity, c.DamagedQuantity, c.ItemDescription, c.Version, c.CommandId, c.RequesterId));
 		}
 
-		public virtual void When(ShipmentCommands.ConfirmReceipt c)
+		public virtual void When(ShipmentCommands.ConfirmAllItemsReceived c)
 		{
-			Update(c, ar => ar.ConfirmReceipt(c.Version, c.CommandId, c.RequesterId));
+			Update(c, ar => ar.ConfirmAllItemsReceived(c.Version, c.CommandId, c.RequesterId));
 		}
 
         public virtual IShipmentState Get(string shipmentId)
