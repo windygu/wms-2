@@ -98,30 +98,6 @@ public class InventoryItemResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-
-    @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchInventoryItemDto.CreateInventoryItemDto value) {
-        try {
-
-            InventoryItemCommand.CreateInventoryItem cmd = value.toCreateInventoryItem();
-            InventoryItemResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
-            inventoryItemApplicationService.when(cmd);
-
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
-    }
-
-
-    @Path("{id}") @PATCH
-    public void patch(@PathParam("id") String id, CreateOrMergePatchInventoryItemDto.MergePatchInventoryItemDto value) {
-        try {
-
-            InventoryItemCommand.MergePatchInventoryItem cmd = value.toMergePatchInventoryItem();
-            InventoryItemResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
-            inventoryItemApplicationService.when(cmd);
-
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
-    }
-
     @Path("_metadata/filteringFields") @GET
     public List<PropertyMetadataDto> getMetadataFilteringFields() {
         try {

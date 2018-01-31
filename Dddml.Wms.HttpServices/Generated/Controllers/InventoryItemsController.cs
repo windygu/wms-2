@@ -104,24 +104,6 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = InventoryItemsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
-        [HttpPut][SetRequesterId]
-        public void Put(string id, [FromBody]CreateInventoryItemDto value)
-        {
-          try {
-            InventoryItemsControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
-            _inventoryItemApplicationService.When(value as ICreateInventoryItem);
-          } catch (Exception ex) { var response = InventoryItemsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
-        }
-
-        [HttpPatch][SetRequesterId]
-        public void Patch(string id, [FromBody]MergePatchInventoryItemDto value)
-        {
-          try {
-            InventoryItemsControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
-            _inventoryItemApplicationService.When(value as IMergePatchInventoryItem);
-          } catch (Exception ex) { var response = InventoryItemsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
-        }
-
         [Route("_metadata/filteringFields")]
         [HttpGet]
         public IEnumerable<PropertyMetadataDto> GetMetadataFilteringFields()

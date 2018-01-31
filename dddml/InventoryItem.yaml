@@ -112,6 +112,14 @@ aggregates:
         # 聚合时间的 Listener 名称
         AggregateEventListenerName: inventoryItemEventListener
       
+      methods:
+        Create:
+          isInternal: true
+        Patch:
+          isInternal: true
+        Delete:
+          isInternal: true
+      
       # ---------------- Value Objects -------------------
       valueObjects:
       
