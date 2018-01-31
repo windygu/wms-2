@@ -74,6 +74,23 @@
 
 
 
+  <object id="damageHandlingMethodStateRepository" type="Dddml.Wms.Domain.DamageHandlingMethod.NHibernate.NHibernateDamageHandlingMethodStateRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="damageHandlingMethodStateQueryRepository" type="Dddml.Wms.Domain.DamageHandlingMethod.NHibernate.NHibernateDamageHandlingMethodStateQueryRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="damageHandlingMethodApplicationService" type="Dddml.Wms.Domain.DamageHandlingMethod.NHibernate.DamageHandlingMethodApplicationService, Dddml.Wms.Services">
+    <constructor-arg ref="damageHandlingMethodStateRepository"/>
+    <constructor-arg ref="damageHandlingMethodStateQueryRepository"/>
+  </object>
+
+
+
   <object id="damageReasonStateRepository" type="Dddml.Wms.Domain.DamageReason.NHibernate.NHibernateDamageReasonStateRepository, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
@@ -109,23 +126,6 @@
   <object id="damageTypeApplicationService" type="Dddml.Wms.Domain.DamageType.NHibernate.DamageTypeApplicationService, Dddml.Wms.Services">
     <constructor-arg ref="damageTypeStateRepository"/>
     <constructor-arg ref="damageTypeStateQueryRepository"/>
-  </object>
-
-
-
-  <object id="damageHandlingMethodStateRepository" type="Dddml.Wms.Domain.DamageHandlingMethod.NHibernate.NHibernateDamageHandlingMethodStateRepository, Dddml.Wms.Services">
-    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
-    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
-  </object>
-
-  <object id="damageHandlingMethodStateQueryRepository" type="Dddml.Wms.Domain.DamageHandlingMethod.NHibernate.NHibernateDamageHandlingMethodStateQueryRepository, Dddml.Wms.Services">
-    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
-    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
-  </object>
-
-  <object id="damageHandlingMethodApplicationService" type="Dddml.Wms.Domain.DamageHandlingMethod.NHibernate.DamageHandlingMethodApplicationService, Dddml.Wms.Services">
-    <constructor-arg ref="damageHandlingMethodStateRepository"/>
-    <constructor-arg ref="damageHandlingMethodStateQueryRepository"/>
   </object>
 
 
@@ -267,6 +267,28 @@
   <object id="inventoryPRTriggeredApplicationService" type="Dddml.Wms.Domain.InventoryPRTriggered.NHibernate.InventoryPRTriggeredApplicationService, Dddml.Wms.Services">
     <constructor-arg ref="inventoryPRTriggeredStateRepository"/>
     <constructor-arg ref="inventoryPRTriggeredStateQueryRepository"/>
+  </object>
+
+
+
+  <object id="locatorStateRepository" type="Dddml.Wms.Domain.Locator.NHibernate.NHibernateLocatorStateRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="locatorStateQueryRepository" type="Dddml.Wms.Domain.Locator.NHibernate.NHibernateLocatorStateQueryRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="locatorEventStore" type="Dddml.Wms.Domain.Locator.NHibernate.NHibernateLocatorEventStore, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
+  <object id="locatorApplicationService" type="Dddml.Wms.Domain.Locator.NHibernate.LocatorApplicationService, Dddml.Wms.Services">
+    <constructor-arg ref="locatorEventStore"/>
+    <constructor-arg ref="locatorStateRepository"/>
+    <constructor-arg ref="locatorStateQueryRepository"/>
   </object>
 
 
@@ -812,28 +834,6 @@
     <constructor-arg ref="warehouseEventStore"/>
     <constructor-arg ref="warehouseStateRepository"/>
     <constructor-arg ref="warehouseStateQueryRepository"/>
-  </object>
-
-
-
-  <object id="locatorStateRepository" type="Dddml.Wms.Domain.Locator.NHibernate.NHibernateLocatorStateRepository, Dddml.Wms.Services">
-    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
-    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
-  </object>
-
-  <object id="locatorStateQueryRepository" type="Dddml.Wms.Domain.Locator.NHibernate.NHibernateLocatorStateQueryRepository, Dddml.Wms.Services">
-    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
-    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
-  </object>
-
-  <object id="locatorEventStore" type="Dddml.Wms.Domain.Locator.NHibernate.NHibernateLocatorEventStore, Dddml.Wms.Services">
-    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
-  </object>
-
-  <object id="locatorApplicationService" type="Dddml.Wms.Domain.Locator.NHibernate.LocatorApplicationService, Dddml.Wms.Services">
-    <constructor-arg ref="locatorEventStore"/>
-    <constructor-arg ref="locatorStateRepository"/>
-    <constructor-arg ref="locatorStateQueryRepository"/>
   </object>
 
 

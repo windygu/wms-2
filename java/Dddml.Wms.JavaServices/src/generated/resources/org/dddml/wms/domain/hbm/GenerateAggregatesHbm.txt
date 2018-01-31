@@ -32,10 +32,10 @@
         <mapping resource="org/dddml/wms/domain/hbm/AttributeSetStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/AttributeUseState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/AttributeUseStateEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/DamageHandlingMethodState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/DamageReasonState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/DamageReasonStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/DamageTypeState.hbm.xml"/>
-        <mapping resource="org/dddml/wms/domain/hbm/DamageHandlingMethodState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/DocumentTypeState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InOutState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InOutStateEvent.hbm.xml"/>
@@ -49,6 +49,8 @@
         <mapping resource="org/dddml/wms/domain/hbm/InventoryPostingRuleState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InventoryPostingRuleStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/InventoryPRTriggeredState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/LocatorState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/LocatorStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/LotState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/LotStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/MovementState.hbm.xml"/>
@@ -103,8 +105,6 @@
         <mapping resource="org/dddml/wms/domain/hbm/UomTypeState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/WarehouseState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/WarehouseStateEvent.hbm.xml"/>
-        <mapping resource="org/dddml/wms/domain/hbm/LocatorState.hbm.xml"/>
-        <mapping resource="org/dddml/wms/domain/hbm/LocatorStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/AttributeSetInstanceState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/AttributeSetInstanceExtensionFieldState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/AttributeSetInstanceExtensionFieldStateEvent.hbm.xml"/>

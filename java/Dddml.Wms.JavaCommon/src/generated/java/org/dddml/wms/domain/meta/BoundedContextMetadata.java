@@ -25,9 +25,9 @@ public class BoundedContextMetadata {
         map.put("AttributeAlias", "Attribute");
         map.put("AttributeSet", "AttributeSet");
         map.put("AttributeUse", "AttributeSet");
+        map.put("DamageHandlingMethod", "DamageHandlingMethod");
         map.put("DamageReason", "DamageReason");
         map.put("DamageType", "DamageType");
-        map.put("DamageHandlingMethod", "DamageHandlingMethod");
         map.put("DocumentType", "DocumentType");
         map.put("InOut", "InOut");
         map.put("InOutLine", "InOut");
@@ -37,6 +37,7 @@ public class BoundedContextMetadata {
         map.put("InventoryItemRequirementEntry", "InventoryItemRequirement");
         map.put("InventoryPostingRule", "InventoryPostingRule");
         map.put("InventoryPRTriggered", "InventoryPRTriggered");
+        map.put("Locator", "Locator");
         map.put("Lot", "Lot");
         map.put("Movement", "Movement");
         map.put("MovementLine", "Movement");
@@ -68,7 +69,6 @@ public class BoundedContextMetadata {
         map.put("UomConversion", "UomConversion");
         map.put("UomType", "UomType");
         map.put("Warehouse", "Warehouse");
-        map.put("Locator", "Locator");
         map.put("AttributeSetInstance", "AttributeSetInstance");
         map.put("AttributeSetInstanceExtensionField", "AttributeSetInstanceExtensionField");
         map.put("AttributeSetInstanceExtensionFieldGroup", "AttributeSetInstanceExtensionFieldGroup");

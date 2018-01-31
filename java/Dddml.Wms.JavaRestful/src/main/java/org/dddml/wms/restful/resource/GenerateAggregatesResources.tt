@@ -3,7 +3,7 @@
 <#@ import namespace="Dddml.Core.Dom" #>
 <#@ include file="T4Toolbox.tt" #>
 <#@ include file="%DddmlDotNetToolsSolutionDir%\Dddml.T4.Templates.Java\Restful\AggregatesResourcesGenerator.tt" #>
-<#@ include file="$(SolutionDir)\java\Dddml.Wms.JavaCommon\src\main\java\org\dddml\wms\LoadBoundedContext.tt" #>
+<#@ include file="$(SolutionDir)\java\Dddml.Wms.JavaCommon\src\generated\java\org\dddml\wms\LoadBoundedContext.tt" #>
 <#
 
     var generator = new AggregatesResourcesGenerator(boundedContext.Aggregates.Values);

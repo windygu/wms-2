@@ -5,12 +5,12 @@
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-  <bean id="organizationTreeApplicationService" class="org.dddml.wms.domain.AbstractOrganizationTreeApplicationService$SimpleOrganizationTreeApplicationService">
-    <property name="organizationTreeRepository" ref="organizationTreeRepository"/>
-  </bean>
-
   <bean id="locatorTreeApplicationService" class="org.dddml.wms.domain.AbstractLocatorTreeApplicationService$SimpleLocatorTreeApplicationService">
     <property name="locatorTreeRepository" ref="locatorTreeRepository"/>
+  </bean>
+
+  <bean id="organizationTreeApplicationService" class="org.dddml.wms.domain.AbstractOrganizationTreeApplicationService$SimpleOrganizationTreeApplicationService">
+    <property name="organizationTreeRepository" ref="organizationTreeRepository"/>
   </bean>
 
 

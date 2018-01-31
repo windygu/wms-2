@@ -75,6 +75,22 @@
   </bean>
 
 
+  <bean id="damageHandlingMethodStateRepository" class="org.dddml.wms.domain.damagehandlingmethod.hibernate.HibernateDamageHandlingMethodStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="damageHandlingMethodStateQueryRepository" class="org.dddml.wms.domain.damagehandlingmethod.hibernate.HibernateDamageHandlingMethodStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="damageHandlingMethodApplicationService" class="org.dddml.wms.domain.damagehandlingmethod.AbstractDamageHandlingMethodApplicationService$SimpleDamageHandlingMethodApplicationService">
+    <constructor-arg ref="damageHandlingMethodStateRepository"/>
+    <constructor-arg ref="damageHandlingMethodStateQueryRepository"/>
+  </bean>
+
+
   <bean id="damageReasonStateRepository" class="org.dddml.wms.domain.damagereason.hibernate.HibernateDamageReasonStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
@@ -109,22 +125,6 @@
   <bean id="damageTypeApplicationService" class="org.dddml.wms.domain.damagetype.AbstractDamageTypeApplicationService$SimpleDamageTypeApplicationService">
     <constructor-arg ref="damageTypeStateRepository"/>
     <constructor-arg ref="damageTypeStateQueryRepository"/>
-  </bean>
-
-
-  <bean id="damageHandlingMethodStateRepository" class="org.dddml.wms.domain.damagehandlingmethod.hibernate.HibernateDamageHandlingMethodStateRepository">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
-  </bean>
-
-  <bean id="damageHandlingMethodStateQueryRepository" class="org.dddml.wms.domain.damagehandlingmethod.hibernate.HibernateDamageHandlingMethodStateQueryRepository">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
-  </bean>
-
-  <bean id="damageHandlingMethodApplicationService" class="org.dddml.wms.domain.damagehandlingmethod.AbstractDamageHandlingMethodApplicationService$SimpleDamageHandlingMethodApplicationService">
-    <constructor-arg ref="damageHandlingMethodStateRepository"/>
-    <constructor-arg ref="damageHandlingMethodStateQueryRepository"/>
   </bean>
 
 
@@ -260,6 +260,27 @@
   <bean id="inventoryPRTriggeredApplicationService" class="org.dddml.wms.domain.inventoryprtriggered.AbstractInventoryPRTriggeredApplicationService$SimpleInventoryPRTriggeredApplicationService">
     <constructor-arg ref="inventoryPRTriggeredStateRepository"/>
     <constructor-arg ref="inventoryPRTriggeredStateQueryRepository"/>
+  </bean>
+
+
+  <bean id="locatorStateRepository" class="org.dddml.wms.domain.locator.hibernate.HibernateLocatorStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="locatorStateQueryRepository" class="org.dddml.wms.domain.locator.hibernate.HibernateLocatorStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="locatorEventStore" class="org.dddml.wms.domain.locator.hibernate.HibernateLocatorEventStore">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="locatorApplicationService" class="org.dddml.wms.domain.locator.AbstractLocatorApplicationService$SimpleLocatorApplicationService">
+    <constructor-arg ref="locatorEventStore"/>
+    <constructor-arg ref="locatorStateRepository"/>
+    <constructor-arg ref="locatorStateQueryRepository"/>
   </bean>
 
 
@@ -782,27 +803,6 @@
     <constructor-arg ref="warehouseEventStore"/>
     <constructor-arg ref="warehouseStateRepository"/>
     <constructor-arg ref="warehouseStateQueryRepository"/>
-  </bean>
-
-
-  <bean id="locatorStateRepository" class="org.dddml.wms.domain.locator.hibernate.HibernateLocatorStateRepository">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
-  </bean>
-
-  <bean id="locatorStateQueryRepository" class="org.dddml.wms.domain.locator.hibernate.HibernateLocatorStateQueryRepository">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
-  </bean>
-
-  <bean id="locatorEventStore" class="org.dddml.wms.domain.locator.hibernate.HibernateLocatorEventStore">
-    <property name="sessionFactory" ref="hibernateSessionFactory"/>
-  </bean>
-
-  <bean id="locatorApplicationService" class="org.dddml.wms.domain.locator.AbstractLocatorApplicationService$SimpleLocatorApplicationService">
-    <constructor-arg ref="locatorEventStore"/>
-    <constructor-arg ref="locatorStateRepository"/>
-    <constructor-arg ref="locatorStateQueryRepository"/>
   </bean>
 
 

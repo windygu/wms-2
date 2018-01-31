@@ -1807,7 +1807,6 @@
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\uomtype\hibernate\GenerateUomTypeDomainHibernate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateUomTypeDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
 .\GenerateUomTypeDomainHibernate.txt
 .\HibernateUomTypeStateQueryRepository.java
