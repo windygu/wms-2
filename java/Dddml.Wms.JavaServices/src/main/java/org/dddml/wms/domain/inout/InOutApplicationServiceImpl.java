@@ -85,7 +85,7 @@ public class InOutApplicationServiceImpl extends AbstractInOutApplicationService
         if (inOut == null) {
             throw new IllegalArgumentException(String.format("Error document number: %1$s", docNumber));
         } else {
-            if (Objects.equals(docStatus, inOut.getDocumentStatusId())) {
+            if (!Objects.equals(docStatus.toLowerCase(), inOut.getDocumentStatusId().toLowerCase())) {
                 throw new IllegalArgumentException(String.format("Error document status: %1$s", inOut.getDocumentStatusId()));
             }
         }
