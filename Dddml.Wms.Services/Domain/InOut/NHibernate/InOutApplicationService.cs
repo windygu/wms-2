@@ -86,17 +86,18 @@ namespace Dddml.Wms.Domain.InOut.NHibernate
             var createReversalInOut = CreateReversalInOut(inOut);
            
             When(createReversalInOut);
+            long firstVersion = 1;
             When(new InOutCommands.Complete()
             {
                 DocumentNumber = createReversalInOut.DocumentNumber,
-                Version = 1,
+                Version = firstVersion,
                 CommandId = c.CommandId,
                 RequesterId = c.RequesterId,
             });
             When(new InOutCommands.Close()
             {
                 DocumentNumber = createReversalInOut.DocumentNumber,
-                Version = 2,
+                Version = firstVersion + 1,
                 CommandId = c.CommandId,
                 RequesterId = c.RequesterId,
             });
