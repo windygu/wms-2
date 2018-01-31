@@ -71,13 +71,13 @@ namespace Dddml.Wms.Domain.Shipment.NHibernate
                 throw new ArgumentException(String.Format("Shipment receipt has unknown ShipmentItemSeqId.: {0}", receiptUnknown.ShipmentItemSeqId));
             }
 
-            var inventoryItemEntries = CompleteInOutCreateInventoryItemEntries(shipment, shipmentReceiptDict.Values);
+            var inventoryItemEntries = ConfirmAllItemsReceivedCreateInventoryItemEntries(shipment, shipmentReceiptDict.Values);
             CreateOrUpdateInventoryItems(inventoryItemEntries);
             
             base.When(c);
         }
 
-        protected virtual IList<ICreateInventoryItemEntry> CompleteInOutCreateInventoryItemEntries(IShipmentState shipment, IEnumerable<IShipmentReceiptState> receipts)
+        protected virtual IList<ICreateInventoryItemEntry> ConfirmAllItemsReceivedCreateInventoryItemEntries(IShipmentState shipment, IEnumerable<IShipmentReceiptState> receipts)
         {
             var entries = new List<ICreateInventoryItemEntry>();
             foreach (var d in receipts)
