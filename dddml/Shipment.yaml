@@ -350,6 +350,11 @@ aggregates:
           # 属性集实例。这里是一个 Map
           AttributeSetInstance:
             type: map
+    # --------------------------------------------
+    metadata:
+      # NoEventSourcing: true
+      JavaAggregateApplicationServiceImplementClassName: ShipmentApplicationServiceImpl
+          
               
 # # ---------------------------------    
 # valueObjects:

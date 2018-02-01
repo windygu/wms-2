@@ -667,7 +667,7 @@
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
-  <bean id="shipmentApplicationService" class="org.dddml.wms.domain.shipment.AbstractShipmentApplicationService$SimpleShipmentApplicationService">
+  <bean id="shipmentApplicationService" class="org.dddml.wms.domain.shipment.ShipmentApplicationServiceImpl">
     <constructor-arg ref="shipmentEventStore"/>
     <constructor-arg ref="shipmentStateRepository"/>
     <constructor-arg ref="shipmentStateQueryRepository"/>
