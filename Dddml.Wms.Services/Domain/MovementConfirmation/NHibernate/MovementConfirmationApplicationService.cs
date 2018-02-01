@@ -23,12 +23,12 @@ namespace Dddml.Wms.Domain.MovementConfirmation.NHibernate
             get
             {
                 var movService = ApplicationContext.Current["movementApplicationService"] as IMovementApplicationService;
-                var aopTarget = SpringUtils.GetAopTarget<MovementApplicationService>(movService);
-                if (aopTarget != null)
+                if (movService is MovementApplicationService)
                 {
-                    return aopTarget;
+                    return (MovementApplicationService)movService;
                 }
-                return (MovementApplicationService)movService;
+                var aopTarget = SpringUtils.GetAopTarget<MovementApplicationService>(movService);
+                return aopTarget;
             }
         }
 
