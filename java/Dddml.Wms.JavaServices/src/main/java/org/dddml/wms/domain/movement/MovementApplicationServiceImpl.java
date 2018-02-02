@@ -83,18 +83,6 @@ public class MovementApplicationServiceImpl extends AbstractMovementApplicationS
         update(c, ar -> ((MovementAggregateImpl)ar).reverse(reversalDocumentNumber, description, c.getVersion(), c.getCommandId(), c.getRequesterId()));
     }
 
-    private MovementState assertDocumentStatus(String docNumber, String docStatus) {
-        MovementState mov = getStateRepository().get(docNumber, true);
-        if (mov == null) {
-            throw new IllegalArgumentException(String.format("Error document number: %1$s", docNumber));
-        } else {
-            if (!Objects.equals(docStatus.toLowerCase(), mov.getDocumentStatusId().toLowerCase())) {
-                throw new IllegalArgumentException(String.format("Error document status: %1$s", mov.getDocumentStatusId()));
-            }
-        }
-        return mov;
-    }
-
     protected List<InventoryItemEntryCommand.CreateInventoryItemEntry> completeMovementCreateInventoryItemEntries(MovementState movement) {
         List<InventoryItemEntryCommand.CreateInventoryItemEntry> invItemEntries = new ArrayList<InventoryItemEntryCommand.CreateInventoryItemEntry>();
         for (MovementLineState d : movement.getMovementLines()) {
@@ -299,6 +287,18 @@ public class MovementApplicationServiceImpl extends AbstractMovementApplicationS
                 new InventoryItemSourceInfo(DocumentTypeIds.MOVEMENT, movement.getDocumentNumber(), movementLine.getLineNumber(), lineSubSeqId)
         );
         return entry;
+    }
+
+    private MovementState assertDocumentStatus(String docNumber, String docStatus) {
+        MovementState mov = getStateRepository().get(docNumber, true);
+        if (mov == null) {
+            throw new IllegalArgumentException(String.format("Error document number: %1$s", docNumber));
+        } else {
+            if (!Objects.equals(docStatus.toLowerCase(), mov.getDocumentStatusId().toLowerCase())) {
+                throw new IllegalArgumentException(String.format("Error document status: %1$s", mov.getDocumentStatusId()));
+            }
+        }
+        return mov;
     }
 
     ///#region MovementConfirmation
