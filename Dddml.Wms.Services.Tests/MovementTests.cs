@@ -33,7 +33,7 @@ namespace Dddml.Wms.Services.Tests
         }
 
         [Test]
-        public void TestCreateAndCompleteMovement()
+        public void TestCreateAndCompleteAndReverseMovement()
         {
             //for (int i = 0; i < 10; i++)
             //{

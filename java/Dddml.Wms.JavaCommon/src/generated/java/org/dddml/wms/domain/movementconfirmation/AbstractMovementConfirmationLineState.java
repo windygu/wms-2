@@ -48,7 +48,7 @@ public abstract class AbstractMovementConfirmationLineState implements MovementC
         this.movementLineNumber = movementLineNumber;
     }
 
-    private BigDecimal targetQuantity;
+    private BigDecimal targetQuantity = BigDecimal.ZERO;
 
     public BigDecimal getTargetQuantity()
     {
@@ -60,7 +60,7 @@ public abstract class AbstractMovementConfirmationLineState implements MovementC
         this.targetQuantity = targetQuantity;
     }
 
-    private BigDecimal confirmedQuantity;
+    private BigDecimal confirmedQuantity = BigDecimal.ZERO;
 
     public BigDecimal getConfirmedQuantity()
     {
@@ -72,7 +72,7 @@ public abstract class AbstractMovementConfirmationLineState implements MovementC
         this.confirmedQuantity = confirmedQuantity;
     }
 
-    private BigDecimal differenceQuantity;
+    private BigDecimal differenceQuantity = BigDecimal.ZERO;
 
     public BigDecimal getDifferenceQuantity()
     {
@@ -84,7 +84,7 @@ public abstract class AbstractMovementConfirmationLineState implements MovementC
         this.differenceQuantity = differenceQuantity;
     }
 
-    private BigDecimal scrappedQuantity;
+    private BigDecimal scrappedQuantity = BigDecimal.ZERO;
 
     public BigDecimal getScrappedQuantity()
     {
@@ -251,11 +251,11 @@ public abstract class AbstractMovementConfirmationLineState implements MovementC
         } else {
             throw new UnsupportedOperationException(String.format("Unsupported event type: %1$s", e.getClass().getName()));
         }
-        if (!(getConfirmedQuantity() .equals (0L) || getTargetQuantity() .add (getDifferenceQuantity()) .equals (getConfirmedQuantity()))) {
-            throw DomainError.named("constraintViolated", "Violated validation logic: %1$s", "getConfirmedQuantity() .equals (0L) || getTargetQuantity() .add (getDifferenceQuantity()) .equals (getConfirmedQuantity())");
+        if (!(getConfirmedQuantity() == null || getConfirmedQuantity() .equals (BigDecimal.ZERO) || getTargetQuantity() .add (getDifferenceQuantity()) .equals (getConfirmedQuantity()))) {
+            throw DomainError.named("constraintViolated", "Violated validation logic: %1$s", "getConfirmedQuantity() == null || getConfirmedQuantity() .equals (BigDecimal.ZERO) || getTargetQuantity() .add (getDifferenceQuantity()) .equals (getConfirmedQuantity())");
         }
-        if (!(getScrappedQuantity() .compareTo (getConfirmedQuantity()) <= 0)) {
-            throw DomainError.named("constraintViolated", "Violated validation logic: %1$s", "getScrappedQuantity() .compareTo (getConfirmedQuantity()) <= 0");
+        if (!(getScrappedQuantity() == null || getScrappedQuantity() .compareTo (getConfirmedQuantity()) <= 0)) {
+            throw DomainError.named("constraintViolated", "Violated validation logic: %1$s", "getScrappedQuantity() == null || getScrappedQuantity() .compareTo (getConfirmedQuantity()) <= 0");
         }
     }
 
@@ -264,10 +264,10 @@ public abstract class AbstractMovementConfirmationLineState implements MovementC
         throwOnWrongEvent(e);
 
         this.setMovementLineNumber(e.getMovementLineNumber());
-        this.setTargetQuantity(e.getTargetQuantity());
-        this.setConfirmedQuantity(e.getConfirmedQuantity());
-        this.setDifferenceQuantity(e.getDifferenceQuantity());
-        this.setScrappedQuantity(e.getScrappedQuantity());
+        if(e.getTargetQuantity() != null) { this.setTargetQuantity(e.getTargetQuantity()); }
+        if(e.getConfirmedQuantity() != null) { this.setConfirmedQuantity(e.getConfirmedQuantity()); }
+        if(e.getDifferenceQuantity() != null) { this.setDifferenceQuantity(e.getDifferenceQuantity()); }
+        if(e.getScrappedQuantity() != null) { this.setScrappedQuantity(e.getScrappedQuantity()); }
         this.setDescription(e.getDescription());
         this.setProcessed(e.getProcessed());
         this.setActive(e.getActive());

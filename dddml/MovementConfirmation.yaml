@@ -87,21 +87,29 @@ aggregates:
             TargetQuantity:
               description: The Quantity which should have been received.
               type: decimal
+              defaultLogic:
+                Java: "BigDecimal.ZERO"
               
             # 确认数量
             ConfirmedQuantity:
               description: Confirmation of a received quantity.
               type: decimal
+              defaultLogic:
+                Java: "BigDecimal.ZERO"
               
             # 差异数量
             DifferenceQuantity:
               description: If there is a difference quantity, a Physical Inventory is created for the source (from) warehouse. 
               type: decimal
+              defaultLogic:
+                Java: "BigDecimal.ZERO"
 
             # 破损数量
             ScrappedQuantity:
               description: "The Quantity scrapped due to QA issues. If there is a scrapped quantity, a Physical Inventory is created for the target (to) warehouse."
               type: decimal
+              defaultLogic:
+                Java: "BigDecimal.ZERO"
           
             Description:
               type: string
@@ -120,12 +128,12 @@ aggregates:
               validationLogic:
                 PseudoCode: "ConfirmedQuantity == 0 || TargetQuantity + DifferenceQuantity == ConfirmedQuantity"
                 CSharp: "{this}.ConfirmedQuantity == 0 || {this}.TargetQuantity + {this}.DifferenceQuantity == {this}.ConfirmedQuantity"
-                Java: "getConfirmedQuantity() .equals (0L) || getTargetQuantity() .add (getDifferenceQuantity()) .equals (getConfirmedQuantity())"
+                Java: "getConfirmedQuantity() == null || getConfirmedQuantity() .equals (BigDecimal.ZERO) || getTargetQuantity() .add (getDifferenceQuantity()) .equals (getConfirmedQuantity())"
             ScrappedQuantityConstraint:
               validationLogic:
                 PseudoCode: "ScrappedQuantity <= ConfirmedQuantity"
                 CSharp: "{this}.ScrappedQuantity <= {this}.ConfirmedQuantity"
-                Java: "getScrappedQuantity() .compareTo (getConfirmedQuantity()) <= 0"
+                Java: "getScrappedQuantity() == null || getScrappedQuantity() .compareTo (getConfirmedQuantity()) <= 0"
 
 
       # --------------------------------------------
