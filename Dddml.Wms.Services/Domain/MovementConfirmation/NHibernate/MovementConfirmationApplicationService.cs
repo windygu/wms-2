@@ -47,9 +47,10 @@ namespace Dddml.Wms.Domain.MovementConfirmation.NHibernate
             {
                 var movConfirm = AssertDocumentStatus(c.DocumentNumber, DocumentStatusIds.InProgress);
                 var movDocNumber = movConfirm.MovementDocumentNumber;
-                var mov = AssertMovementDocumentStatus(movDocNumber);
+                var mov = AssertMovementDocumentStatusInProgress(movDocNumber);
 
-                var quantitiesDict = GetQuantitiesDictionary(movConfirm, mov);
+                var quantitiesDict = GetQuantitiesDictionary(movConfirm);
+                AssertAllLinesConfirmed(mov, quantitiesDict);
 
                 var inventoryItemEntries = ConfirmMovementCreateInventoryItemEntries(mov, quantitiesDict);
                 CreateOrUpdateInventoryItems(inventoryItemEntries);
@@ -64,7 +65,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation.NHibernate
             }
         }
 
-        private IMovementState AssertMovementDocumentStatus(string movDocNumber)
+        private IMovementState AssertMovementDocumentStatusInProgress(string movDocNumber)
         {
             var mov = MovementApplicationService.Get(movDocNumber);
             if (mov == null)
@@ -78,7 +79,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation.NHibernate
             return mov;
         }
 
-        private static IDictionary<string, Tuple<decimal, decimal, decimal>> GetQuantitiesDictionary(IMovementConfirmationState movConfirm, IMovementState mov)
+        private static IDictionary<string, Tuple<decimal, decimal, decimal>> GetQuantitiesDictionary(IMovementConfirmationState movConfirm)
         {
             var quantitiesDict = movConfirm.MovementConfirmationLines.ToDictionary(
                 d => d.MovementLineNumber,
@@ -92,13 +93,16 @@ namespace Dddml.Wms.Domain.MovementConfirmation.NHibernate
                     throw new ApplicationException(String.Format("Error movement confirmation line quantities. Movement line No.: {0}", e.Key));
                 }
             }
+            return quantitiesDict;
+        }
 
+        private static void AssertAllLinesConfirmed(IMovementState mov, IDictionary<string, Tuple<decimal, decimal, decimal>> quantitiesDict)
+        {
             var movLineNotConfirmed = mov.MovementLines.Where(line => !quantitiesDict.ContainsKey(line.LineNumber)).FirstOrDefault();
             if (null != movLineNotConfirmed)
             {
                 throw new NullReferenceException(String.Format("Movement line NOT found confirmation. Line No.: {0}", movLineNotConfirmed.LineNumber));
             }
-            return quantitiesDict;
         }
 
         private void ConfirmUpdateMovement(MovementConfirmationCommands.DocumentAction c, IMovementState mov)

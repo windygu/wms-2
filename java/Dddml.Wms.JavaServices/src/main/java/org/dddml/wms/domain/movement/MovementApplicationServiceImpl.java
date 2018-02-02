@@ -225,7 +225,7 @@ public class MovementApplicationServiceImpl extends AbstractMovementApplicationS
         return reversalLine;
     }
 
-    static List<InventoryItemEntryCommand.CreateInventoryItemEntry> confirmMovementCreateInventoryItemEntries(
+    public static List<InventoryItemEntryCommand.CreateInventoryItemEntry> confirmMovementCreateInventoryItemEntries(
             MovementState movement, java.util.function.Function<MovementLineState, BigDecimal> getConfirmedQty, Supplier<Long> nextEntrySeqId) {
         List<InventoryItemEntryCommand.CreateInventoryItemEntry> invItemEntries = new ArrayList<InventoryItemEntryCommand.CreateInventoryItemEntry>();
         for (MovementLineState d : movement.getMovementLines()) {
