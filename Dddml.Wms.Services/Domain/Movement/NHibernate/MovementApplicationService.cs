@@ -301,7 +301,7 @@ namespace Dddml.Wms.Domain.Movement.NHibernate
             return trxPair;
         }
 
-        internal static ICreateInventoryItemEntry CreateInventoryItemEntry(IMovementState movement, IMovementLineState movementLine, string locatorId, decimal quantity, int lineSeqId,
+        internal static ICreateInventoryItemEntry CreateInventoryItemEntry(IMovementState movement, IMovementLineState movementLine, string locatorId, decimal quantity, int lineSubSeqId,
             Func<long> nextEntrySeqId, bool usingInTransitQty = false)
         {
             var entry = new CreateInventoryItemEntry();
@@ -316,7 +316,7 @@ namespace Dddml.Wms.Domain.Movement.NHibernate
             {
                 entry.InTransitQuantity = quantity;
             }
-            entry.Source = new InventoryItemSourceInfo(DocumentTypeIds.Movement, movement.DocumentNumber, movementLine.LineNumber, lineSeqId);
+            entry.Source = new InventoryItemSourceInfo(DocumentTypeIds.Movement, movement.DocumentNumber, movementLine.LineNumber, lineSubSeqId);
             return entry;
         }
 
