@@ -43,14 +43,14 @@ public class InOutApplicationServiceImpl extends AbstractInOutApplicationService
         //
         // 注意：这里通过覆写父类方法，加上事务注解，其实没有遵循“聚合外最终一致”的处理原则。
         //
-        if (c.getValue().equals(DocumentAction.COMPLETE)) {
+        if (Objects.equals(c.getValue(), DocumentAction.COMPLETE)) {
             // 操作出入库单（IN_OUT）
             InOutState inOut = assertDocumentStatus(c.getDocumentNumber(), DocumentStatusIds.DRAFTED);
             // 操作库存（InventoryItem）
             List<InventoryItemEntryCommand.CreateInventoryItemEntry> inventoryItemEntries = completeInOutCreateInventoryItemEntries(inOut);
             InventoryItemUtils.createOrUpdateInventoryItems(getInventoryItemApplicationService(), inventoryItemEntries);
             super.when(c);
-        } else if (c.getValue().equals(DocumentAction.REVERSE)) {
+        } else if (Objects.equals(c.getValue(), DocumentAction.REVERSE)) {
             InOutState srcInOut = assertDocumentStatus(c.getDocumentNumber(), DocumentStatusIds.COMPLETED);
             InOutCommand.CreateInOut reversalInOutInfo = createReversalInOutAndCompleteAndClose(c, srcInOut);
             reverseUpdateSourceInOut(c, reversalInOutInfo);
