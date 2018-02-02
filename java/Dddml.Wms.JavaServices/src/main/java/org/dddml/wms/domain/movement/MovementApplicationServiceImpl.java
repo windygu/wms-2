@@ -1,6 +1,7 @@
 package org.dddml.wms.domain.movement;
 
 import org.dddml.wms.domain.DocumentAction;
+import org.dddml.wms.domain.DocumentStatusIds;
 import org.dddml.wms.domain.documenttype.DocumentTypeIds;
 import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.movementconfirmation.*;
@@ -50,26 +51,178 @@ public class MovementApplicationServiceImpl extends AbstractMovementApplicationS
     @Transactional
     public void when(MovementCommands.DocumentAction c) {
         if (Objects.equals(c.getValue(), DocumentAction.COMPLETE)) {
-            //todo
-//            var mov = AssertDocumentStatus(c.DocumentNumber, DocumentStatusIds.Drafted);
-//            var inventoryItemEntries = CompleteMovementCreateInventoryItemEntries(mov);
-//            CreateOrUpdateInventoryItems(inventoryItemEntries);
-//            if (mov.IsInTransit) {
-//                var movConfirm = CreateMovementConfirmation(mov);
-//                MovementConfirmationApplicationService.When(movConfirm);
-//            }
+            MovementState mov = assertDocumentStatus(c.getDocumentNumber(), DocumentStatusIds.DRAFTED);
+            List<InventoryItemEntryCommand.CreateInventoryItemEntry> inventoryItemEntries = completeMovementCreateInventoryItemEntries(mov);
+            InventoryItemUtils.createOrUpdateInventoryItems(getInventoryItemApplicationService(), inventoryItemEntries);
+            if (mov.getIsInTransit()) {
+                MovementConfirmationCommand.CreateMovementConfirmation movConfirm = createMovementConfirmation(mov);
+                getMovementConfirmationApplicationService().when(movConfirm);
+            }
             super.when(c);
         } else if (Objects.equals(c.getValue(), DocumentAction.CONFIRM)) {
             throw new UnsupportedOperationException("Need to confirm MovementConfirmation.");
         } else if (Objects.equals(c.getValue(), DocumentAction.REVERSE)) {
-            //todo
-//            var srcMov = AssertDocumentStatus(c.DocumentNumber, DocumentStatusIds.Completed);
-//            var reversalMovInfo = CreateReversalMovementAndCompleteAndClose(c, srcMov);
-//            ReverseUpdateSourceMovement(c, reversalMovInfo);
-//            //base.When(c);
+            MovementState srcMov = assertDocumentStatus(c.getDocumentNumber(), DocumentStatusIds.COMPLETED);
+            MovementCommand.CreateMovement reversalMovInfo = createReversalMovementAndCompleteAndClose(c, srcMov);
+            reverseUpdateSourceMovement(c, reversalMovInfo);
+            //base.When(c);
         } else {
             super.when(c);
         }
+    }
+
+    // ////////////////
+
+    public void confirmUpdateMovement(MovementCommands.DocumentAction c) {
+        update(c, ar -> ((MovementAggregate) ar).documentAction(DocumentAction.CONFIRM, c.getVersion(), c.getCommandId(), c.getRequesterId()));
+    }
+
+    private void reverseUpdateSourceMovement(MovementCommands.DocumentAction c, MovementCommand.CreateMovement reversalMovInfo) {
+        String reversalDocumentNumber = reversalMovInfo.getDocumentNumber();
+        String description = "(" + reversalMovInfo.getDocumentNumber() + "<-)"; //(1000016<-)
+        update(c, ar -> ((MovementAggregateImpl)ar).reverse(reversalDocumentNumber, description, c.getVersion(), c.getCommandId(), c.getRequesterId()));
+    }
+
+    private MovementState assertDocumentStatus(String docNumber, String docStatus) {
+        MovementState mov = getStateRepository().get(docNumber, true);
+        if (mov == null) {
+            throw new IllegalArgumentException(String.format("Error document number: %1$s", docNumber));
+        } else {
+            if (!Objects.equals(docStatus.toLowerCase(), mov.getDocumentStatusId().toLowerCase())) {
+                throw new IllegalArgumentException(String.format("Error document status: %1$s", mov.getDocumentStatusId()));
+            }
+        }
+        return mov;
+    }
+
+    protected List<InventoryItemEntryCommand.CreateInventoryItemEntry> completeMovementCreateInventoryItemEntries(MovementState movement) {
+        List<InventoryItemEntryCommand.CreateInventoryItemEntry> invItemEntries = new ArrayList<InventoryItemEntryCommand.CreateInventoryItemEntry>();
+        for (MovementLineState d : movement.getMovementLines()) {
+            InventoryItemEntryCommand.CreateInventoryItemEntry[] trxPair =
+                    completeMovementCreateInventoryItemEntryPair(movement, d, () -> getSeqIdGenerator().getNextId());
+            invItemEntries.addAll(Arrays.asList(trxPair));
+        }
+
+        //////////////////////////////////////////////////
+        //排序，出库的事务先执行
+        //invItemEntries.Sort(new Comparison<ICreateInventoryItemEntry>((x, y) =>
+        //        (x.OnHandQuantity > y.OnHandQuantity) ? 1 :
+        //            (x.OnHandQuantity == y.OnHandQuantity ? 0 : -1)));
+
+        return invItemEntries;
+    }
+
+    ///// <summary>
+    ///// Confirm all movement line quantities.
+    ///// </summary>
+    //internal IList<ICreateInventoryItemEntry> ConfirmMovementCreateInventoryItemEntries(IMovementState movement)
+    //{
+    //    Func<IMovementLineState, decimal> getConfirmedQty = d => d.MovementQuantity;
+    //    var invItemEntries = ConfirmMovementCreateInventoryItemEntries(movement, getConfirmedQty);
+    //    return invItemEntries;
+    //}
+
+    private MovementCommand.CreateMovement createReversalMovementAndCompleteAndClose(MovementCommands.DocumentAction c, MovementState movement) {
+        MovementCommand.CreateMovement createReversalMovement = createReversalMovement(movement);
+
+        when(createReversalMovement);
+        long firstVersion = 0L;//!!
+        MovementCommands.DocumentAction cmdComplete = new MovementCommands.DocumentAction();
+        cmdComplete.setValue(DocumentAction.COMPLETE);
+        cmdComplete.setDocumentNumber(createReversalMovement.getDocumentNumber());
+        cmdComplete.setVersion(firstVersion);
+        cmdComplete.setCommandId(c.getCommandId());
+        cmdComplete.setRequesterId(c.getRequesterId());
+        when(cmdComplete);
+        MovementCommands.DocumentAction cmdClose = new MovementCommands.DocumentAction();
+        cmdClose.setValue(DocumentAction.CLOSE);
+        cmdClose.setDocumentNumber(createReversalMovement.getDocumentNumber());
+        cmdClose.setVersion(firstVersion + 1);
+        cmdClose.setCommandId(c.getCommandId());
+        cmdClose.setRequesterId(c.getRequesterId());
+        when(cmdClose);
+
+        return createReversalMovement;
+    }
+
+    protected MovementCommand.CreateMovement createReversalMovement(MovementState movement) {
+        MovementCommand.CreateMovement reversalMov = doCreateReversalMovement(movement);
+        for (MovementLineState d : movement.getMovementLines()) {
+            MovementLineCommand.CreateMovementLine r = doCreateReversalMovementLine(d);
+            reversalMov.getMovementLines().add(r);
+        }
+        return reversalMov;
+    }
+
+    /**
+     生成反转的单据（但不包括行）。
+     */
+    protected MovementCommand.CreateMovement doCreateReversalMovement(MovementState movement) {
+        MovementCommand.CreateMovement reversalMov = new AbstractMovementCommand.SimpleCreateMovement();
+
+        //reversalInOut.Organization = inOut.Organization;
+        //reversalInOut.Client = inOut.Client;
+
+        //生成新的单号:
+        reversalMov.setDocumentNumber("RM" + getSeqIdGenerator().getNextId()); //DocumentNumberGenerator.GetNewDocumentNumber();
+        //设置反转关系:
+        reversalMov.setReversalDocumentNumber(movement.getDocumentNumber());
+
+        //movement.Reversal = reversalMov;
+        //源单据前向关联到反转单据:
+        //movement.Description = "(" + reversalMov.DocumentNumber + "<-)";//(1000016<-)
+
+        //反转单据后向关联到源单据:
+        reversalMov.setDescription("{->" + movement.getDocumentNumber() + ")"); //{->1000015)
+
+        //reversalMov.Posted = movement.Posted;//??
+        //reversalMov.Processing = movement.Processing;
+        //reversalMov.Processed = movement.Processed;
+
+        reversalMov.setDocumentTypeId(movement.getDocumentTypeId());
+        reversalMov.setMovementDate(movement.getMovementDate()); //???
+
+        reversalMov.setApprovalAmount(movement.getApprovalAmount());
+        reversalMov.setChargeAmount(movement.getChargeAmount());
+        reversalMov.setDateReceived(movement.getDateReceived());
+        reversalMov.setFreightAmount(movement.getFreightAmount());
+        reversalMov.setActive(movement.getActive());
+        reversalMov.setIsInTransit(false); //??
+        reversalMov.setSalesRepresentativeId(movement.getSalesRepresentativeId());
+        reversalMov.setShipperId(movement.getShipperId());
+        reversalMov.setBusinessPartnerId(movement.getBusinessPartnerId());
+        //reversalMov.User = movement.User;
+
+        reversalMov.setWarehouseIdFrom(movement.getWarehouseIdFrom());
+        reversalMov.setWarehouseIdTo(movement.getWarehouseIdTo());
+
+        return reversalMov;
+    }
+
+    protected MovementLineCommand.CreateMovementLine doCreateReversalMovementLine(MovementLineState movementLine) {
+        MovementLineCommand.CreateMovementLine reversalLine = new AbstractMovementLineCommand.SimpleCreateMovementLine();
+        //reversalLine.Organization = Context.Organization;
+        //reversalLine.UpdatedBy = Context.User;
+        //reversalLine.UpdateTime = now;
+        //reversalLine.CreatedBy = Context.User;
+        //reversalLine.CreationTime = now;
+        //reversalLine.Processed = movementLine.Processed;//???
+        reversalLine.setReversalLineNumber(movementLine.getLineNumber()); //设置反转行
+        reversalLine.setProductId(movementLine.getProductId());
+        reversalLine.setLocatorIdFrom(movementLine.getLocatorIdFrom());
+        reversalLine.setLocatorIdTo(movementLine.getLocatorIdTo());
+        reversalLine.setAttributeSetInstanceId(movementLine.getAttributeSetInstanceId());
+        //reversalLine.AttributeSetInstanceTo = movementLine.AttributeSetInstanceTo;
+
+        reversalLine.setLineNumber(movementLine.getLineNumber());
+
+        //数量反转
+        reversalLine.setMovementQuantity(movementLine.getMovementQuantity().negate());
+        //reversalLine.TargetQuantity = -movementLine.TargetQuantity;
+        //reversalLine.ConfirmedQuantity = -movementLine.ConfirmedQuantity;
+        //reversalLine.ScrappedQuantity = -movementLine.ScrappedQuantity;
+
+        return reversalLine;
     }
 
     static List<InventoryItemEntryCommand.CreateInventoryItemEntry> confirmMovementCreateInventoryItemEntries(
@@ -179,5 +332,23 @@ public class MovementApplicationServiceImpl extends AbstractMovementApplicationS
     }
 
     ///#endregion
+    @Override
+    public MovementAggregate getMovementAggregate(MovementState state) {
+        return new MovementAggregateImpl(state);
+    }
+
+    public static class MovementAggregateImpl extends AbstractMovementAggregate.SimpleMovementAggregate {
+        public MovementAggregateImpl(MovementState state) {
+            super(state);
+        }
+
+        public void reverse(String reversalDocumentNumber, String desc, long version, String commandId, String requesterId) {
+            MovementStateEvent.MovementStateMergePatched e = newMovementStateMergePatched(version, commandId, requesterId);
+            e.setReversalDocumentNumber(reversalDocumentNumber);
+            e.setDescription(desc);
+            doDocumentAction(DocumentAction.REVERSE, ts -> e.setDocumentStatusId(ts));
+            apply(e);
+        }
+    }
 
 }
