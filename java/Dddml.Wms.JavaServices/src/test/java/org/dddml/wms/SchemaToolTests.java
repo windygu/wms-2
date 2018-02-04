@@ -17,6 +17,7 @@ public class SchemaToolTests {
 
         t.setSqlDirectory(_sqlDirectory);
         t.setConnectionString(_connectionString);
+        //t.setDatabasePassword("...");
 
         t.setUp();
 
