@@ -151,7 +151,7 @@ namespace Dddml.Wms.Services.Tests
             var prd_1 = new CreateProduct();
             prd_1.ProductId = DateTime.Now.Ticks.ToString();//Guid.NewGuid().ToString();
             prd_1.ProductName = "Test_" + prd_1.ProductId;
-            prd_1.AttributeSetId = typeof(InitAttributeSets.FluffPulpAttrSetInstance).Name;
+            prd_1.AttributeSetId = "FluffPulpAttrSet";//!!!typeof(InitAttributeSets.FluffPulpAttrSetInstance).Name;
             prd_1.IsSerialNumbered = true;
             //prd_1.QuantityUomId;
             prd_1.CommandId = Guid.NewGuid().ToString();

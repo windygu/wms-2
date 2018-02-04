@@ -64,6 +64,10 @@ public class TestMain {
         movementTests.setUp();
         movementTests.testCreateAndCompleteAndReverseMovement();
 
+        ShipmentTests shipmentTests = new ShipmentTests();
+        shipmentTests.setUp();
+        shipmentTests.testImportAndReceive();
+
     }
 
     //        ReflectReadOnlyProxyGenerator generator = new ReflectReadOnlyProxyGenerator();

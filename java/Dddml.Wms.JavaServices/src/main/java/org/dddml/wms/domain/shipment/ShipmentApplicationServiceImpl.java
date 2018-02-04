@@ -77,7 +77,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         }
         // /////////////////////////////
         Optional<ShipmentReceiptState> receiptUnknown = shipmentReceiptDict.values().stream()
-                .filter(i -> !shipmentItemDict.containsKey(((ShipmentItemState) i).getShipmentItemSeqId())).findFirst();
+                .filter(i -> !shipmentItemDict.containsKey(((ShipmentReceiptState) i).getShipmentItemSeqId())).findFirst();
         if (receiptUnknown.isPresent()) {
             throw new IllegalArgumentException(String.format("Shipment receipt has unknown ShipmentItemSeqId.: %1$s", receiptUnknown.get().getShipmentItemSeqId()));
         }
@@ -223,6 +223,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         Map<String, String> nameDict = getAttributeSetService().getPropertyExtensionFieldDictionary(attrSetId);
 
         AttributeSetInstanceCommand.CreateAttributeSetInstance createAttrSetInst = new AbstractAttributeSetInstanceCommand.SimpleCreateAttributeSetInstance();
+        createAttrSetInst.setAttributeSetId(attrSetId);
         for (Map.Entry<String, Object> kv : attrSetInstDict.entrySet()) {
             String fname = nameDict.containsKey(kv.getKey()) ? nameDict.get(kv.getKey()) : kv.getKey();
             // createAttrSetInst.AirDryMetricTon = (decimal)kv.Value;

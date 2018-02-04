@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class InitAttributeSets {
 
-    static final String FLUFF_PULP_ATTR_SET_ID = "FluffPulpAttrSet";
+    public static final String FLUFF_PULP_ATTR_SET_ID = "FluffPulpAttrSet";
 
     static final String[][] FLUFF_PULP_ATTRS = new String[][]{
             // 序列号（卷号）。

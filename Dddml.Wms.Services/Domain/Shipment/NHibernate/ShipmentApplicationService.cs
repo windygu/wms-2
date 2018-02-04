@@ -237,6 +237,7 @@ namespace Dddml.Wms.Domain.Shipment.NHibernate
             var nameDict = AttributeSetService.GetPropertyExtensionFieldDictionary(attrSetId);
 
             var createAttrSetInst = new CreateAttributeSetInstance();
+            createAttrSetInst.AttributeSetId = attrSetId;
             foreach (var kv in attrSetInstDict)
             {
                 // //////////////////////////////////////////
