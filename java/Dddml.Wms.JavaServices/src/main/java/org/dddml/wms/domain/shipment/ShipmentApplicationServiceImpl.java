@@ -1,26 +1,24 @@
 package org.dddml.wms.domain.shipment;
 
 import org.apache.commons.beanutils.ConvertUtils;
-import org.dddml.wms.domain.DocumentStatusIds;
-import org.dddml.wms.domain.attributeset.AttributeSetState;
 import org.dddml.wms.domain.attributesetinstance.AbstractAttributeSetInstanceCommand;
 import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceApplicationService;
 import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceCommand;
-import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceState;
-import org.dddml.wms.domain.inventoryitem.InventoryItemApplicationService;
+import org.dddml.wms.domain.documenttype.DocumentTypeIds;
+import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.product.ProductApplicationService;
 import org.dddml.wms.domain.product.ProductState;
 import org.dddml.wms.domain.service.AttributeSetService;
 import org.dddml.wms.domain.shipmenttype.ShipmentTypeIds;
 import org.dddml.wms.domain.statusitem.StatusItemIds;
+import org.dddml.wms.domain.warehouse.WarehouseUtils;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.specialization.hibernate.TableIdGenerator;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 /**
  * Created by yangjiefeng on 2018/2/1.
@@ -60,7 +58,33 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
     @Override
     @Transactional
     public void when(ShipmentCommands.ConfirmAllItemsReceived c) {
-        //todo
+
+        ShipmentState shipment = assertShipmentStatus(c.getShipmentId(), StatusItemIds.PURCH_SHIP_SHIPPED);
+
+        Map<Object, ShipmentReceiptState> shipmentReceiptDict = StreamSupport.stream(
+                shipment.getShipmentReceipts().spliterator(), false)
+                .collect(Collectors.toMap(i -> i.getShipmentItemSeqId(), i -> i));
+
+        Map<Object, ShipmentItemState> shipmentItemDict = StreamSupport.stream(
+                shipment.getShipmentItems().spliterator(), false)
+                .collect(Collectors.toMap(i -> i.getShipmentItemSeqId(), i -> i));
+
+
+        Optional<Object> itemIdNotFound = StreamSupport.stream(shipmentItemDict.keySet().spliterator(), false)
+                .filter((i -> !shipmentReceiptDict.containsKey((String) i))).findFirst();
+        if (itemIdNotFound.isPresent()) {
+            throw new IllegalArgumentException(String.format("Shipment item NOT received. ShipmentItemSeqId.: %1$s", itemIdNotFound.get()));
+        }
+        // /////////////////////////////
+        Optional<ShipmentReceiptState> receiptUnknown = StreamSupport.stream(shipmentReceiptDict.values().spliterator(), false)
+                .filter(i -> !shipmentItemDict.containsKey(((ShipmentItemState) i).getShipmentItemSeqId())).findFirst();
+        if (receiptUnknown.isPresent()) {
+            throw new IllegalArgumentException(String.format("Shipment receipt has unknown ShipmentItemSeqId.: %1$s", receiptUnknown.get().getShipmentItemSeqId()));
+        }
+
+        List<InventoryItemEntryCommand.CreateInventoryItemEntry> inventoryItemEntries = confirmAllItemsReceivedCreateInventoryItemEntries(shipment, shipmentReceiptDict.values());
+        InventoryItemUtils.createOrUpdateInventoryItems(getInventoryItemApplicationService(), inventoryItemEntries);
+
         super.when(c);
     }
 
@@ -111,6 +135,27 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
             i++;
         }
         when(shipment);
+    }
+
+
+    protected List<InventoryItemEntryCommand.CreateInventoryItemEntry> confirmAllItemsReceivedCreateInventoryItemEntries(ShipmentState shipment, Iterable<ShipmentReceiptState> receipts) {
+        List<InventoryItemEntryCommand.CreateInventoryItemEntry> entries = new ArrayList<>();
+        for (ShipmentReceiptState d : receipts) {
+            InventoryItemEntryCommand.CreateInventoryItemEntry e = createInventoryItemEntry(shipment, d);
+            entries.add(e);
+        }
+        return entries;
+    }
+
+    protected InventoryItemEntryCommand.CreateInventoryItemEntry createInventoryItemEntry(ShipmentState shipment, ShipmentReceiptState lineReceipt) {
+        String targetLocatorId = WarehouseUtils.getReceivingLocatorId(shipment.getDestinationFacilityId());
+        InventoryItemEntryCommand.CreateInventoryItemEntry entry = new AbstractInventoryItemEntryCommand.SimpleCreateInventoryItemEntry();
+        entry.setInventoryItemId(new InventoryItemId(lineReceipt.getProductId(), targetLocatorId, lineReceipt.getAttributeSetInstanceId()));
+        entry.setEntrySeqId(getSeqIdGenerator().getNextId()); //DateTime.Now.Ticks;
+        entry.setOnHandQuantity(lineReceipt.getAcceptedQuantity()); // *signum;
+        entry.setSource(new InventoryItemSourceInfo(DocumentTypeIds.SHIPMENT, shipment.getShipmentId(),
+                lineReceipt.getReceiptSeqId(), 0));
+        return entry;
     }
 
     private ShipmentItemCommand.CreateShipmentItem createShipmentItem(int i, ImportingShipmentItem d) {
@@ -218,4 +263,55 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         return shipment;
     }
 
+    @Override
+    public ShipmentAggregate getShipmentAggregate(ShipmentState state) {
+        return new ShipmentAggregateImpl(state);
+    }
+    public static class ShipmentAggregateImpl extends AbstractShipmentAggregate.SimpleShipmentAggregate{
+
+        public ShipmentAggregateImpl(ShipmentState state) {
+            super(state);
+        }
+
+        @Override
+        public void ship(Long version, String commandId, String requesterId) {
+            boolean isStatusOk = false;
+            if (Objects.equals(getState().getStatusId().toLowerCase(), StatusItemIds.PURCH_SHIP_CREATED.toLowerCase())) {
+                isStatusOk = true;
+            } else if (Objects.equals(getState().getStatusId().toLowerCase(), StatusItemIds.SHIPMENT_INPUT.toLowerCase())
+                    || Objects.equals(getState().getStatusId().toLowerCase(), StatusItemIds.SHIPMENT_PICKED.toLowerCase())
+                    || Objects.equals(getState().getStatusId().toLowerCase(), StatusItemIds.SHIPMENT_PACKED.toLowerCase())
+                    ) //?? - ??
+            {
+                isStatusOk = true;
+            }
+            if (!isStatusOk) {
+                throw new IllegalArgumentException(String.format("Error shipment status: %1$s.", getState().getStatusId()));
+            }
+
+            ShipmentStateEvent.ShipmentStateMergePatched e = newShipmentStateMergePatched(version, commandId, requesterId);
+            if (Objects.equals(getState().getShipmentTypeId().toLowerCase(), ShipmentTypeIds.INCOMING_SHIPMENT.toLowerCase())
+                    || Objects.equals(ShipmentTypeIds.getParentTypeId(getState().getShipmentTypeId()).toLowerCase(), ShipmentTypeIds.INCOMING_SHIPMENT.toLowerCase())) {
+                e.setStatusId(StatusItemIds.PURCH_SHIP_SHIPPED);
+            } else {
+                e.setStatusId(StatusItemIds.SHIPMENT_SHIPPED);
+            }
+            apply(e);
+        }
+
+        @Override
+        public void confirmAllItemsReceived(Long version, String commandId, String requesterId) {
+            boolean isStatusOk = false;
+            if (getState().getStatusId().toLowerCase() == StatusItemIds.PURCH_SHIP_SHIPPED.toLowerCase()) {
+                isStatusOk = true;
+            }
+            if (!isStatusOk) {
+                throw new IllegalArgumentException(String.format("Error shipment status: %1$s.", getState().getStatusId()));
+            }
+            ShipmentStateEvent.ShipmentStateMergePatched e = newShipmentStateMergePatched(version, commandId, requesterId);
+            e.setStatusId(StatusItemIds.PURCH_SHIP_RECEIVED);
+            apply(e);
+        }
+
+    }
 }
