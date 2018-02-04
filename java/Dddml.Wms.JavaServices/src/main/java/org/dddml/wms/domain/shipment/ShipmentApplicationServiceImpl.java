@@ -1,5 +1,6 @@
 package org.dddml.wms.domain.shipment;
 
+import org.apache.commons.beanutils.ConvertUtils;
 import org.dddml.wms.domain.DocumentStatusIds;
 import org.dddml.wms.domain.attributeset.AttributeSetState;
 import org.dddml.wms.domain.attributesetinstance.AbstractAttributeSetInstanceCommand;
@@ -12,10 +13,7 @@ import org.dddml.wms.domain.product.ProductState;
 import org.dddml.wms.domain.service.AttributeSetService;
 import org.dddml.wms.domain.shipmenttype.ShipmentTypeIds;
 import org.dddml.wms.domain.statusitem.StatusItemIds;
-import org.dddml.wms.specialization.DomainError;
-import org.dddml.wms.specialization.EventStore;
-import org.dddml.wms.specialization.ApplicationContext;
-import org.dddml.wms.specialization.IdGenerator;
+import org.dddml.wms.specialization.*;
 import org.dddml.wms.specialization.hibernate.TableIdGenerator;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -183,7 +181,10 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         for (Map.Entry<String, Object> kv : attrSetInstDict.entrySet()) {
             String fname = nameDict.containsKey(kv.getKey()) ? nameDict.get(kv.getKey()) : kv.getKey();
             // createAttrSetInst.AirDryMetricTon = (decimal)kv.Value;
-            boolean b = false;//todo: ReflectUtils.TrySetPropertyValue(fname, createAttrSetInst, kv.getValue());
+            boolean b = ReflectUtils.trySetPropertyValue(fname, createAttrSetInst, kv.getValue(),
+                    (o, t) -> {
+                        return ConvertUtils.convert(o, t);
+                    });
             if (!b) {
                 String fmt = "Set property error. Property name: %1$s";
                 //                if (_log.IsInfoEnabled) {

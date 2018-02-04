@@ -82,9 +82,9 @@ public class SellableInventoryItemEntryMvoStateEventIdFlattenedDtoFormatter exte
         if(type == null) {
             throw new IllegalArgumentException(String.format("The field name \"%1$s\" is NOT right.", fieldName));
         }
-        Class clazz = ReflectUtils.CLASS_MAP.get(type);
+        Class clazz = org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(type);
         if (clazz == null) {
-            throw new RuntimeException("ERROR! ReflectUtils.CLASS_MAP.get(type) == null");
+            throw new RuntimeException("ERROR! CANNOT get the class from CLASS_MAP!");
         }
         return clazz;
     }

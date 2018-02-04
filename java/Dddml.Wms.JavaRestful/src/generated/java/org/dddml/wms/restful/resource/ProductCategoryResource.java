@@ -263,8 +263,8 @@ public class ProductCategoryResource {
             if (ProductCategoryFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
                 String propertyType = ProductCategoryFilteringProperties.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
-                    if (ReflectUtils.CLASS_MAP.containsKey(propertyType)) {
-                        return ReflectUtils.CLASS_MAP.get(propertyType);
+                    if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
+                        return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);
                     }
                 }
             }
