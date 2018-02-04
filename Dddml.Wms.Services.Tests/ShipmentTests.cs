@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Dddml.Wms.Services.Tests
 {
-    public class ShipmentImportTests : TestsBase
+    public class ShipmentTests : TestsBase
     {
         IShipmentApplicationService shipmentApplicationService;
 
