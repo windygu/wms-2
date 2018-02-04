@@ -70,13 +70,13 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
                 .collect(Collectors.toMap(i -> i.getShipmentItemSeqId(), i -> i));
 
 
-        Optional<Object> itemIdNotFound = StreamSupport.stream(shipmentItemDict.keySet().spliterator(), false)
+        Optional<Object> itemIdNotFound = shipmentItemDict.keySet().stream()
                 .filter((i -> !shipmentReceiptDict.containsKey((String) i))).findFirst();
         if (itemIdNotFound.isPresent()) {
             throw new IllegalArgumentException(String.format("Shipment item NOT received. ShipmentItemSeqId.: %1$s", itemIdNotFound.get()));
         }
         // /////////////////////////////
-        Optional<ShipmentReceiptState> receiptUnknown = StreamSupport.stream(shipmentReceiptDict.values().spliterator(), false)
+        Optional<ShipmentReceiptState> receiptUnknown = shipmentReceiptDict.values().stream()
                 .filter(i -> !shipmentItemDict.containsKey(((ShipmentItemState) i).getShipmentItemSeqId())).findFirst();
         if (receiptUnknown.isPresent()) {
             throw new IllegalArgumentException(String.format("Shipment receipt has unknown ShipmentItemSeqId.: %1$s", receiptUnknown.get().getShipmentItemSeqId()));
@@ -227,9 +227,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
             String fname = nameDict.containsKey(kv.getKey()) ? nameDict.get(kv.getKey()) : kv.getKey();
             // createAttrSetInst.AirDryMetricTon = (decimal)kv.Value;
             boolean b = ReflectUtils.trySetPropertyValue(fname, createAttrSetInst, kv.getValue(),
-                    (o, t) -> {
-                        return ConvertUtils.convert(o, t);
-                    });
+                    ConvertUtils::convert);
             if (!b) {
                 String fmt = "Set property error. Property name: %1$s";
                 //                if (_log.IsInfoEnabled) {
@@ -302,7 +300,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         @Override
         public void confirmAllItemsReceived(Long version, String commandId, String requesterId) {
             boolean isStatusOk = false;
-            if (getState().getStatusId().toLowerCase() == StatusItemIds.PURCH_SHIP_SHIPPED.toLowerCase()) {
+            if (Objects.equals(getState().getStatusId().toLowerCase(), StatusItemIds.PURCH_SHIP_SHIPPED.toLowerCase())) {
                 isStatusOk = true;
             }
             if (!isStatusOk) {
