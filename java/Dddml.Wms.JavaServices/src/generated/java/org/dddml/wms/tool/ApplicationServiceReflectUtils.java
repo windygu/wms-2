@@ -21,7 +21,7 @@ public class ApplicationServiceReflectUtils {
         try {
             m = appSrvClass.getMethod("initialize", getApplicationServiceInitializeMethodParameterType(aggregateName, entityName));
         }catch (NoSuchMethodException | ClassNotFoundException exM){
-            exM.printStackTrace();
+            //exM.printStackTrace();
             m = appSrvClass.getMethod("when", getApplicationServiceCreateMethodParameterType(aggregateName, entityName));
             Method convMethod = e.getClass().getMethod(String.format("toCreate%1$s", entityName));
             arg = convMethod.invoke(e);

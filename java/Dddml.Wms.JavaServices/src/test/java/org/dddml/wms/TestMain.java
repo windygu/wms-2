@@ -31,7 +31,7 @@ public class TestMain {
         ApplicationContext.current = new SpringApplicationContext(springFrameworkApplicationContext);
 
         // //////////////////  initialize database data /////////////////
-        if(false) { // if need to initialize, switch to true.
+        if(true) { // if need to initialize, switch to true, else to false.
             InitEntityXmlData.createEntityXmlData();
             try {
                 InitInventoryPostingRules.createDefaultInventoryPostingRules();
