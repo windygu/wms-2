@@ -10,6 +10,8 @@ import org.dddml.wms.domain.inventoryitem.InventoryItemApplicationService;
 import org.dddml.wms.domain.product.ProductApplicationService;
 import org.dddml.wms.domain.product.ProductState;
 import org.dddml.wms.domain.service.AttributeSetService;
+import org.dddml.wms.domain.shipmenttype.ShipmentTypeIds;
+import org.dddml.wms.domain.statusitem.StatusItemIds;
 import org.dddml.wms.specialization.DomainError;
 import org.dddml.wms.specialization.EventStore;
 import org.dddml.wms.specialization.ApplicationContext;
@@ -17,6 +19,8 @@ import org.dddml.wms.specialization.IdGenerator;
 import org.dddml.wms.specialization.hibernate.TableIdGenerator;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -65,15 +69,68 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
     @Override
     @Transactional
     public void when(ShipmentCommands.ReceiveItem c) {
-        //todo
-        super.when(c);
+        ShipmentState shipment = assertShipmentStatus(c.getShipmentId(), StatusItemIds.PURCH_SHIP_SHIPPED);
+        ShipmentItemState shipmentItem = shipment.getShipmentItems().get(c.getShipmentItemSeqId());
+        if (shipmentItem == null) {
+            throw new IllegalArgumentException(String.format(
+                    "CANNOT get shipment item. ShipmentItemSeqId: %1$s", c.getShipmentItemSeqId()));
+        }
+        if (!shipmentItem.getQuantity().equals(c.getAcceptedQuantity().add(c.getRejectedQuantity()))) {
+            throw new IllegalArgumentException(String.format(
+                    "shipmentItem.Quantity != c.AcceptedQuantity + c.RejectedQuantity. %1$s != %2$s + %3$s",
+                    shipmentItem.getQuantity(), c.getAcceptedQuantity(), c.getRejectedQuantity()));
+        }
+        // ////////////////////////////////////////////////////
+        ShipmentReceiptCommand.CreateOrMergePatchShipmentReceipt updateReceipt = createOrUpdateShipmentReceipt(c, shipment, shipmentItem);
+        // ////////////////////////////////////////////////////
+        updateShipment(c, updateReceipt);
     }
 
     @Override
     @Transactional
     public void when(ShipmentCommands.Import c) {
-        //todo
-        super.when(c);
+        ShipmentCommand.CreateShipment shipment = new AbstractShipmentCommand.SimpleCreateShipment();
+        shipment.setShipmentId(c.getShipmentId());
+        shipment.setShipmentTypeId(c.getShipmentTypeId());
+        shipment.setOriginFacilityId(c.getOriginFacilityId());
+        shipment.setDestinationFacilityId(c.getDestinationFacilityId());
+        shipment.setPartyIdFrom(c.getPartyIdFrom());
+        shipment.setPartyIdTo(c.getPartyIdTo());
+        if (Objects.equals(c.getShipmentTypeId(), ShipmentTypeIds.PURCHASE_SHIPMENT)
+                || Objects.equals(c.getShipmentTypeId(), ShipmentTypeIds.INCOMING_SHIPMENT)) {
+            shipment.setStatusId(StatusItemIds.PURCH_SHIP_CREATED);
+        } else {
+            shipment.setStatusId(StatusItemIds.SHIPMENT_INPUT);
+        }
+        //todo More properties...
+
+        List<ShipmentItemCommand.CreateShipmentItem> shipItems = new ArrayList<ShipmentItemCommand.CreateShipmentItem>();
+        int i = 0;
+        for (ImportingShipmentItem d : c.getShipmentItems()) {
+            ShipmentItemCommand.CreateShipmentItem shipItem = createShipmentItem(i, d);
+
+            shipment.getShipmentItems().add(shipItem);
+            i++;
+        }
+        when(shipment);
+    }
+
+    private ShipmentItemCommand.CreateShipmentItem createShipmentItem(int i, ImportingShipmentItem d) {
+        ShipmentItemCommand.CreateShipmentItem shipItem = new AbstractShipmentItemCommand.SimpleCreateShipmentItem();
+        ProductState prdState = getProductState(d.getProductId());
+
+        String attrSetInstId = createAttributeSetInstance(prdState.getAttributeSetId(), d.getAttributeSetInstance());
+        //        if (_log.IsDebugEnabled) {
+        //            _log.Debug("Create attribute set instance, id: " + attrSetInstId);
+        //        }
+
+        shipItem.setShipmentItemSeqId((new Integer(i)).toString());
+        shipItem.setProductId(prdState.getProductId());
+        shipItem.setAttributeSetInstanceId(attrSetInstId);
+        shipItem.setQuantity(d.getQuantity());
+        shipItem.setActive(true);
+        //todo More proerties???
+        return shipItem;
     }
 
     private void updateShipment(ShipmentCommands.ReceiveItem c, ShipmentReceiptCommand.CreateOrMergePatchShipmentReceipt updateReceipt) {
