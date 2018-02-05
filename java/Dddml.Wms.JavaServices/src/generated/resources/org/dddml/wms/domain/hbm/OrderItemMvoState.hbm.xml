@@ -78,9 +78,9 @@
 	<property name="orderGrandTotal" ><column name="OrderGrandTotal" sql-type="DECIMAL(18,2)" /></property>
 	<property name="orderInvoicePerShipment" ><column name="OrderInvoicePerShipment" sql-type="CHAR(1)" /></property>
 	<property name="orderCreatedBy" ></property>
-	<property name="orderCreatedAt" ></property>
+	<property name="orderCreatedAt" type="timestamp"><column name="OrderCreatedAt" sql-type="DATETIME" /></property>
 	<property name="orderUpdatedBy" ></property>
-	<property name="orderUpdatedAt" ></property>
+	<property name="orderUpdatedAt" type="timestamp"><column name="OrderUpdatedAt" sql-type="DATETIME" /></property>
 	<property name="orderActive" ></property>
 
     <property name="createdAt" column="CreatedAt" />

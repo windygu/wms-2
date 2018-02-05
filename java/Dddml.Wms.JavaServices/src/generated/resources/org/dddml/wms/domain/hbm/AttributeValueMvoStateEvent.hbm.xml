@@ -31,9 +31,9 @@
 	<property name="attributeFieldName" ></property>
 	<property name="attributeReferenceId" ></property>
 	<property name="attributeCreatedBy" ></property>
-	<property name="attributeCreatedAt" ></property>
+	<property name="attributeCreatedAt" type="timestamp"><column name="AttributeCreatedAt" sql-type="DATETIME" /></property>
 	<property name="attributeUpdatedBy" ></property>
-	<property name="attributeUpdatedAt" ></property>
+	<property name="attributeUpdatedAt" type="timestamp"><column name="AttributeUpdatedAt" sql-type="DATETIME" /></property>
 	<property name="attributeActive" ></property>
 	<property name="attributeDeleted" ></property>
 

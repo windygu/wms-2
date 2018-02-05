@@ -56,9 +56,9 @@
     <property name="InOutRmaDocumentNumber" ></property>
     <property name="InOutReversalDocumentNumber" ></property>
     <property name="InOutCreatedBy" ></property>
-    <property name="InOutCreatedAt" ></property>
+    <property name="InOutCreatedAt" ><column name="InOutCreatedAt" sql-type="DATETIME" /></property>
     <property name="InOutUpdatedBy" ></property>
-    <property name="InOutUpdatedAt" ></property>
+    <property name="InOutUpdatedAt" ><column name="InOutUpdatedAt" sql-type="DATETIME" /></property>
     <property name="InOutActive" ></property>
 
     <property name="CreatedBy" column="CreatedBy"/>

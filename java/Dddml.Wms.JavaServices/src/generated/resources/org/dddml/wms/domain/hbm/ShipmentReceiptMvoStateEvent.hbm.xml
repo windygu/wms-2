@@ -56,9 +56,9 @@
 	<property name="shipmentAddtlShippingChargeDesc" ><column name="ShipmentAddtlShippingChargeDesc" sql-type="VARCHAR(255)" /></property>
 	<property name="shipmentShipperId" ><column name="ShipmentShipperId" sql-type="VARCHAR(20)" /></property>
 	<property name="shipmentCreatedBy" ></property>
-	<property name="shipmentCreatedAt" ></property>
+	<property name="shipmentCreatedAt" type="timestamp"><column name="ShipmentCreatedAt" sql-type="DATETIME" /></property>
 	<property name="shipmentUpdatedBy" ></property>
-	<property name="shipmentUpdatedAt" ></property>
+	<property name="shipmentUpdatedAt" type="timestamp"><column name="ShipmentUpdatedAt" sql-type="DATETIME" /></property>
 	<property name="shipmentActive" ></property>
 
     <property name="createdBy" column="CreatedBy"/>

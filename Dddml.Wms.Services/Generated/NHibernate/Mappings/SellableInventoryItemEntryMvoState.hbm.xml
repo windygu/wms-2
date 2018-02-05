@@ -27,9 +27,9 @@
     <property name="UpdatedBy" ></property>
     <property name="SellableInventoryItemSellableQuantity" ></property>
     <property name="SellableInventoryItemCreatedBy" ></property>
-    <property name="SellableInventoryItemCreatedAt" ></property>
+    <property name="SellableInventoryItemCreatedAt" ><column name="SellableInventoryItemCreatedAt" sql-type="DATETIME" /></property>
     <property name="SellableInventoryItemUpdatedBy" ></property>
-    <property name="SellableInventoryItemUpdatedAt" ></property>
+    <property name="SellableInventoryItemUpdatedAt" ><column name="SellableInventoryItemUpdatedAt" sql-type="DATETIME" /></property>
 
     <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
 

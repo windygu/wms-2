@@ -22,11 +22,11 @@
     <property name="Version" ></property>
     <property name="Active" ></property>
     <property name="MovementDocumentStatusId" ></property>
-    <property name="MovementMovementDate" ></property>
+    <property name="MovementMovementDate" ><column name="MovementMovementDate" sql-type="DATETIME" /></property>
     <property name="MovementPosted" ></property>
     <property name="MovementProcessed" ></property>
     <property name="MovementProcessing" ></property>
-    <property name="MovementDateReceived" ></property>
+    <property name="MovementDateReceived" ><column name="MovementDateReceived" sql-type="DATETIME" /></property>
     <property name="MovementDocumentTypeId" ></property>
     <property name="MovementIsInTransit" ></property>
     <property name="MovementIsApproved" ></property>
@@ -42,9 +42,9 @@
     <property name="MovementWarehouseIdTo" ></property>
     <property name="MovementDescription" ></property>
     <property name="MovementCreatedBy" ></property>
-    <property name="MovementCreatedAt" ></property>
+    <property name="MovementCreatedAt" ><column name="MovementCreatedAt" sql-type="DATETIME" /></property>
     <property name="MovementUpdatedBy" ></property>
-    <property name="MovementUpdatedAt" ></property>
+    <property name="MovementUpdatedAt" ><column name="MovementUpdatedAt" sql-type="DATETIME" /></property>
     <property name="MovementActive" ></property>
     <property name="MovementDeleted" ></property>
 

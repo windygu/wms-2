@@ -27,9 +27,9 @@
     <property name="UserTwoFactorEnabled" ></property>
     <property name="UserSecurityStamp" ></property>
     <property name="UserCreatedBy" ></property>
-    <property name="UserCreatedAt" ></property>
+    <property name="UserCreatedAt" ><column name="UserCreatedAt" sql-type="DATETIME" /></property>
     <property name="UserUpdatedBy" ></property>
-    <property name="UserUpdatedAt" ></property>
+    <property name="UserUpdatedAt" ><column name="UserUpdatedAt" sql-type="DATETIME" /></property>
     <property name="UserActive" ></property>
     <property name="UserDeleted" ></property>
 

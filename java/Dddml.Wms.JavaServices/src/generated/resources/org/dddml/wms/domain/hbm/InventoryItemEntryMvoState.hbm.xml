@@ -36,9 +36,9 @@
 	<property name="inventoryItemOccupiedQuantity" ></property>
 	<property name="inventoryItemVirtualQuantity" ></property>
 	<property name="inventoryItemCreatedBy" ></property>
-	<property name="inventoryItemCreatedAt" ></property>
+	<property name="inventoryItemCreatedAt" type="timestamp"><column name="InventoryItemCreatedAt" sql-type="DATETIME" /></property>
 	<property name="inventoryItemUpdatedBy" ></property>
-	<property name="inventoryItemUpdatedAt" ></property>
+	<property name="inventoryItemUpdatedAt" type="timestamp"><column name="InventoryItemUpdatedAt" sql-type="DATETIME" /></property>
 
     <property name="createdAt" column="CreatedAt" />
 

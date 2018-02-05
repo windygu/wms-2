@@ -22,9 +22,9 @@
     <property name="AttributeSetIsInstanceAttributeSet" ></property>
     <property name="AttributeSetIsMandatory" ></property>
     <property name="AttributeSetCreatedBy" ></property>
-    <property name="AttributeSetCreatedAt" ></property>
+    <property name="AttributeSetCreatedAt" ><column name="AttributeSetCreatedAt" sql-type="DATETIME" /></property>
     <property name="AttributeSetUpdatedBy" ></property>
-    <property name="AttributeSetUpdatedAt" ></property>
+    <property name="AttributeSetUpdatedAt" ><column name="AttributeSetUpdatedAt" sql-type="DATETIME" /></property>
     <property name="AttributeSetActive" ></property>
     <property name="AttributeSetDeleted" ></property>
 

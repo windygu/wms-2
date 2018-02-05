@@ -40,9 +40,9 @@
 	<property name="physicalInventoryIsQuantityUpdated" ></property>
 	<property name="physicalInventoryReversalDocumentNumber" ></property>
 	<property name="physicalInventoryCreatedBy" ></property>
-	<property name="physicalInventoryCreatedAt" ></property>
+	<property name="physicalInventoryCreatedAt" type="timestamp"><column name="PhysicalInventoryCreatedAt" sql-type="DATETIME" /></property>
 	<property name="physicalInventoryUpdatedBy" ></property>
-	<property name="physicalInventoryUpdatedAt" ></property>
+	<property name="physicalInventoryUpdatedAt" type="timestamp"><column name="PhysicalInventoryUpdatedAt" sql-type="DATETIME" /></property>
 	<property name="physicalInventoryActive" ></property>
 	<property name="physicalInventoryDeleted" ></property>
 

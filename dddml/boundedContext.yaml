@@ -13,6 +13,8 @@ configuration:
   
   valueObjectBaseTypes:
     "Email": "string"
+    
+  #defaultTimestampType: "Timestamp"
 
   defaultReservedProperties:
     active: Active
@@ -22,6 +24,9 @@ configuration:
     updatedAt: UpdatedAt
     deleted: Deleted
     version: Version
+    
+  sqlTypes:
+    DateTime: DATETIME
   
   # -----------------------------------------
   accountingQuantityTypes:
@@ -73,6 +78,8 @@ configuration:
 
   cSharp: 
     defaultUserIdType: "string"
+    #typeMappings:
+    #  "Timestamp": "DateTime"
     
   java:
   
@@ -95,11 +102,13 @@ configuration:
       "long?": "Long"
       "string": "String"
       "String": "String"
+      #"Timestamp": "Timestamp"
    
     typePackages:
       "BigDecimal": "java.math"
       "Date": "java.util"
       "Money": "org.joda.money"
+      #"Timestamp": "java.sql"
       
   php:
   
@@ -185,6 +194,8 @@ configuration:
         mappingType: "org.dddml.wms.domain.hibernate.usertypes.MoneyType"
         propertyNames: ["Amount", "Currency"] 
         propertyTypes: ["decimal", "string"]
+      DateTime:
+        mappingType: timestamp
         
   nHibernate:
     

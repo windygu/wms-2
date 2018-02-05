@@ -12,11 +12,11 @@
     <discriminator column="StateEventType" type="String" />
 
     <property name="DocumentStatusId" ></property>
-    <property name="MovementDate" ></property>
+    <property name="MovementDate" ><column name="MovementDate" sql-type="DATETIME" /></property>
     <property name="Posted" ></property>
     <property name="Processed" ></property>
     <property name="Processing" ></property>
-    <property name="DateReceived" ></property>
+    <property name="DateReceived" ><column name="DateReceived" sql-type="DATETIME" /></property>
     <property name="DocumentTypeId" ></property>
     <property name="IsInTransit" ></property>
     <property name="IsApproved" ></property>

@@ -29,9 +29,9 @@
 	<property name="version" ></property>
 	<property name="sellableInventoryItemSellableQuantity" ></property>
 	<property name="sellableInventoryItemCreatedBy" ></property>
-	<property name="sellableInventoryItemCreatedAt" ></property>
+	<property name="sellableInventoryItemCreatedAt" type="timestamp"><column name="SellableInventoryItemCreatedAt" sql-type="DATETIME" /></property>
 	<property name="sellableInventoryItemUpdatedBy" ></property>
-	<property name="sellableInventoryItemUpdatedAt" ></property>
+	<property name="sellableInventoryItemUpdatedAt" type="timestamp"><column name="SellableInventoryItemUpdatedAt" sql-type="DATETIME" /></property>
 
     <property name="createdBy" column="CreatedBy"/>
 

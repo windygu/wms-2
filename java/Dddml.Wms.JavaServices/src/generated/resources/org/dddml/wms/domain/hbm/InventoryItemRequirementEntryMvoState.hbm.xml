@@ -29,9 +29,9 @@
 	<property name="updatedBy" ></property>
 	<property name="inventoryItemRequirementQuantity" ></property>
 	<property name="inventoryItemRequirementCreatedBy" ></property>
-	<property name="inventoryItemRequirementCreatedAt" ></property>
+	<property name="inventoryItemRequirementCreatedAt" type="timestamp"><column name="InventoryItemRequirementCreatedAt" sql-type="DATETIME" /></property>
 	<property name="inventoryItemRequirementUpdatedBy" ></property>
-	<property name="inventoryItemRequirementUpdatedAt" ></property>
+	<property name="inventoryItemRequirementUpdatedAt" type="timestamp"><column name="InventoryItemRequirementUpdatedAt" sql-type="DATETIME" /></property>
 
     <property name="createdAt" column="CreatedAt" />
 

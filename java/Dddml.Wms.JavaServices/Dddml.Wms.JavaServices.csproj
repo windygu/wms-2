@@ -1189,6 +1189,41 @@
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentReceiptMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
+    <Content Include="src\generated\resources\script\AddStateIdForeignKeyConstraints.sql">
+      <DependentUpon>GenerateStateIdForeignKeyConstraints.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\resources\script\CreateRViews.sql">
+      <DependentUpon>GenerateCreateRViews.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\resources\script\DropRViewNameConflictedTables.sql">
+      <DependentUpon>GenerateDropRViewNameConflictedTables.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\resources\script\DropRViews.sql">
+      <DependentUpon>GenerateDropRViews.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\resources\script\DropStateIdForeignKeyConstraints.sql">
+      <DependentUpon>GenerateStateIdForeignKeyConstraints.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\resources\script\GenerateCreateRViews.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateCreateRViews.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\resources\script\GenerateDropRViewNameConflictedTables.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateDropRViewNameConflictedTables.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\resources\script\GenerateDropRViews.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateDropRViews.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\resources\script\GenerateStateIdForeignKeyConstraints.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateStateIdForeignKeyConstraints.tt</DependentUpon>
+    </Content>
     <Content Include="src\main\java\org\dddml\wms\domain\hibernate\usertypes\MoneyType.java" />
     <Content Include="src\main\java\org\dddml\wms\domain\listener\InventoryItemEventListener.java" />
     <Content Include="src\main\java\org\dddml\wms\domain\service\AttributeSetInstanceIdGenerator.java" />
@@ -1889,6 +1924,41 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\main\resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\generated\resources\script\GenerateCreateRViews.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateCreateRViews.txt</LastGenOutput>
+      <LastOutputs>
+.\CreateRViews.sql
+.\GenerateCreateRViews.txt
+</LastOutputs>
+    </None>
+    <None Include="src\generated\resources\script\GenerateDropRViewNameConflictedTables.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateDropRViewNameConflictedTables.txt</LastGenOutput>
+      <LastOutputs>
+.\DropRViewNameConflictedTables.sql
+.\GenerateDropRViewNameConflictedTables.txt
+</LastOutputs>
+    </None>
+    <None Include="src\generated\resources\script\GenerateDropRViews.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateDropRViews.txt</LastGenOutput>
+      <LastOutputs>
+.\DropRViews.sql
+.\GenerateDropRViews.txt
+</LastOutputs>
+    </None>
+    <None Include="src\generated\resources\script\GenerateStateIdForeignKeyConstraints.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateStateIdForeignKeyConstraints.txt</LastGenOutput>
+      <LastOutputs>
+.\AddStateIdForeignKeyConstraints.sql
+.\DropStateIdForeignKeyConstraints.sql
+.\GenerateStateIdForeignKeyConstraints.txt
+</LastOutputs>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

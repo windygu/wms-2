@@ -27,9 +27,9 @@
 	<property name="attributeSetIsInstanceAttributeSet" ></property>
 	<property name="attributeSetIsMandatory" ></property>
 	<property name="attributeSetCreatedBy" ></property>
-	<property name="attributeSetCreatedAt" ></property>
+	<property name="attributeSetCreatedAt" type="timestamp"><column name="AttributeSetCreatedAt" sql-type="DATETIME" /></property>
 	<property name="attributeSetUpdatedBy" ></property>
-	<property name="attributeSetUpdatedAt" ></property>
+	<property name="attributeSetUpdatedAt" type="timestamp"><column name="AttributeSetUpdatedAt" sql-type="DATETIME" /></property>
 	<property name="attributeSetActive" ></property>
 	<property name="attributeSetDeleted" ></property>
 

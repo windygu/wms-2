@@ -30,9 +30,9 @@
     <property name="MovementConfirmationDocumentTypeId" ></property>
     <property name="MovementConfirmationDescription" ></property>
     <property name="MovementConfirmationCreatedBy" ></property>
-    <property name="MovementConfirmationCreatedAt" ></property>
+    <property name="MovementConfirmationCreatedAt" ><column name="MovementConfirmationCreatedAt" sql-type="DATETIME" /></property>
     <property name="MovementConfirmationUpdatedBy" ></property>
-    <property name="MovementConfirmationUpdatedAt" ></property>
+    <property name="MovementConfirmationUpdatedAt" ><column name="MovementConfirmationUpdatedAt" sql-type="DATETIME" /></property>
     <property name="MovementConfirmationActive" ></property>
     <property name="MovementConfirmationDeleted" ></property>
 
