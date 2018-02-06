@@ -9,7 +9,7 @@ namespace Dddml.Wms.Domain.InOut
     /// <summary>
     /// InOut Aggregate.
     /// </summary>
-    public partial class InOutAggregate
+    public partial class InOutAggregate : IInOutAggregate
     {
         // //////////////////////////////////////////////
         // Aggregate 只负责更新聚合内的状态。
@@ -50,6 +50,12 @@ namespace Dddml.Wms.Domain.InOut
         public virtual void Reverse(long version, string commandId, string requesterId)
         {
             DocumentAction(global::Dddml.Wms.Domain.DocumentAction.Reverse, version, commandId, requesterId);
+        }
+
+        public void AddLine(string lineNumber, string locatorId, string productId, IDictionary<string, object> attributeSetInstance, string description, string quantityUomId, decimal movementQuantity, long version, string commandId, string requesterId)
+        {
+            //todo
+            throw new NotImplementedException();
         }
     }
 }

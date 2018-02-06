@@ -295,6 +295,33 @@ aggregates:
         Reverse:
           parameters:
           
+    
+        # --------------------------------------
+        # 添加入库/出库行项
+        AddLine:
+          parameters:
+            LineNumber:
+              type: string
+            # 货位 Id.
+            LocatorId:
+              type: string
+            # 产品 Id.
+            ProductId:
+              type: id-long
+            # --------------------------------
+            # 属性集实例。这里是一个 Map
+            AttributeSetInstance:
+              type: map
+            Description:
+              type: string
+            # 数量单位 Id.
+            QuantityUomId:
+              type: string
+            # 出入库数量.
+            MovementQuantity: 
+              type: decimal
+
+                          
       # --------------------------------------------
       metadata:
         JavaAggregateApplicationServiceImplementClassName: InOutApplicationServiceImpl

@@ -414,6 +414,11 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         }
 
         @Override
+        public void addLine(String lineNumber, String locatorId, String productId, java.util.Map<String, Object> attributeSetInstance, String description, String quantityUomId, BigDecimal movementQuantity, Long version, String commandId, String requesterId) {
+            throw new UnsupportedOperationException();
+        }
+
+        @Override
         public void documentAction(String value, Long version, String commandId, String requesterId) {
             InOutStateEvent.InOutStateMergePatched e = newInOutStateMergePatched(version, commandId, requesterId);
             doDocumentAction(value, s -> e.setDocumentStatusId(s));

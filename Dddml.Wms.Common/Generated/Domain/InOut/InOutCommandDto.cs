@@ -958,6 +958,55 @@ namespace Dddml.Wms.Domain.InOut
 
         }
 
+        public class AddLineRequestContent : ICommandDto
+        {
+
+            public string CommandType
+            {
+                get { return "AddLine"; }
+            }
+
+            public string LineNumber { get; set; }
+
+            public string LocatorId { get; set; }
+
+            public string ProductId { get; set; }
+
+            public IDictionary<string, object> AttributeSetInstance { get; set; }
+
+            public string Description { get; set; }
+
+            public string QuantityUomId { get; set; }
+
+            public decimal MovementQuantity { get; set; }
+
+            public string DocumentNumber { get; set; }
+
+            public long Version { get; set; }
+
+            public string CommandId { get; set; }
+
+            public string RequesterId { get; set; }
+
+            public InOutCommands.AddLine ToAddLine()
+            {
+                var cmd = new InOutCommands.AddLine();
+                cmd.LineNumber = this.LineNumber;
+                cmd.LocatorId = this.LocatorId;
+                cmd.ProductId = this.ProductId;
+                cmd.AttributeSetInstance = this.AttributeSetInstance;
+                cmd.Description = this.Description;
+                cmd.QuantityUomId = this.QuantityUomId;
+                cmd.MovementQuantity = this.MovementQuantity;
+                cmd.DocumentNumber = this.DocumentNumber;
+                cmd.Version = this.Version;
+                cmd.CommandId = this.CommandId;
+                cmd.RequesterId = this.RequesterId;
+                return cmd;
+            }
+
+        }
+
         public class DocumentActionRequestContent : ICommandDto
         {
 

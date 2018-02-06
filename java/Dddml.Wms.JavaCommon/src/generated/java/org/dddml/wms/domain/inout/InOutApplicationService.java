@@ -23,6 +23,8 @@ public interface InOutApplicationService
 
     void when(InOutCommands.Reverse c);
 
+    void when(InOutCommands.AddLine c);
+
     void when(InOutCommands.DocumentAction c);
 
     InOutState get(String id);

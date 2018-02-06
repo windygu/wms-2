@@ -25,6 +25,8 @@ public interface InOutAggregate
 
     void reverse(Long version, String commandId, String requesterId);
 
+    void addLine(String lineNumber, String locatorId, String productId, java.util.Map<String, Object> attributeSetInstance, String description, String quantityUomId, BigDecimal movementQuantity, Long version, String commandId, String requesterId);
+
     void documentAction(String value, Long version, String commandId, String requesterId);
 
     void throwOnInvalidStateTransition(Command c);

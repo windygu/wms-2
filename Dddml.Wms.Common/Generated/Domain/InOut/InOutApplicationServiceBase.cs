@@ -120,6 +120,11 @@ namespace Dddml.Wms.Domain.InOut
 			Update(c, ar => ar.Reverse(c.Version, c.CommandId, c.RequesterId));
 		}
 
+		public virtual void When(InOutCommands.AddLine c)
+		{
+			Update(c, ar => ar.AddLine(c.LineNumber, c.LocatorId, c.ProductId, c.AttributeSetInstance, c.Description, c.QuantityUomId, c.MovementQuantity, c.Version, c.CommandId, c.RequesterId));
+		}
+
 		public virtual void When(InOutCommands.DocumentAction c)
 		{
 			Update(c, ar => ar.DocumentAction(c.Value, c.Version, c.CommandId, c.RequesterId));

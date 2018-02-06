@@ -27,6 +27,8 @@ namespace Dddml.Wms.Domain.InOut
 
 		void When(InOutCommands.Reverse c);
 
+		void When(InOutCommands.AddLine c);
+
 		void When(InOutCommands.DocumentAction c);
 
  		IInOutState Get(string documentNumber);
