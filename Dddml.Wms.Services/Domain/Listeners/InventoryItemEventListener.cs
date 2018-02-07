@@ -217,6 +217,7 @@ namespace Dddml.Wms.Domain.Listeners
 
         private IEnumerable<IInventoryPostingRuleState> GetPostingRules(InventoryItemId triggerItemId)
         {
+            //todo 这两个 GetByProperty 方法的效率太低，可以考虑使用缓存
             return InventoryPostingRuleApplicationService.GetByProperty("OutputAccountName", InventoryPostingRuleIds.OutputAccountNameSellableQuantity)
                 .Union(
                     InventoryPostingRuleApplicationService.GetByProperty("OutputAccountName", InventoryPostingRuleIds.OutputAccountNameRequiredQuantity)

@@ -230,6 +230,7 @@ public class InventoryItemEventListener implements AggregateEventListener<Invent
     }
 
     private Iterable<InventoryPostingRuleState> getPostingRules(InventoryItemId triggerItemId) {
+        //todo 这两个 getByProperty 方法的效率太低，可以考虑使用缓存
         return
                 Stream.concat(
                         StreamSupport.stream(
