@@ -54,8 +54,7 @@ namespace Dddml.Wms.Domain.InOut
 
         public void AddLine(string lineNumber, string locatorId, string productId, IDictionary<string, object> attributeSetInstance, string description, string quantityUomId, decimal movementQuantity, long version, string commandId, string requesterId)
         {
-            //todo
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
     }
 }

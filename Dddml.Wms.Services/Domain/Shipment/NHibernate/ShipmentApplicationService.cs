@@ -149,7 +149,7 @@ namespace Dddml.Wms.Domain.Shipment.NHibernate
 
             var prdState = GetProductState(d.ProductId);
 
-            string attrSetInstId = CreateAttributeSetInstance(prdState.AttributeSetId, d.AttributeSetInstance);
+            string attrSetInstId = AttributeSetInstanceUtils.CreateAttributeSetInstance(AttributeSetService, AttributeSetInstanceApplicationService, prdState.AttributeSetId, d.AttributeSetInstance);
             if (_log.IsDebugEnabled) { _log.Debug("Create attribute set instance, id: " + attrSetInstId); }
 
             shipItem.ShipmentItemSeqId = i.ToString();
@@ -211,7 +211,8 @@ namespace Dddml.Wms.Domain.Shipment.NHibernate
 
             var prdState = GetProductState(shipmentItem.ProductId);
 
-            string attrSetInstId = CreateAttributeSetInstance(prdState.AttributeSetId, c.AttributeSetInstance);
+            string attrSetInstId = AttributeSetInstanceUtils.CreateAttributeSetInstance(AttributeSetService, AttributeSetInstanceApplicationService,
+                prdState.AttributeSetId, c.AttributeSetInstance);
             if (_log.IsDebugEnabled) { _log.Debug("Create attribute set instance, id: " + attrSetInstId); }
 
             updateReceipt.AttributeSetInstanceId = attrSetInstId;
@@ -226,34 +227,6 @@ namespace Dddml.Wms.Domain.Shipment.NHibernate
             updateReceipt.DamageReasonId = c.DamageReasonId;
             updateReceipt.ReceivedBy = c.RequesterId;
             return updateReceipt;
-        }
-
-        private string CreateAttributeSetInstance(string attrSetId, IDictionary<string, object> attrSetInstDict)
-        {
-            if (String.IsNullOrWhiteSpace(attrSetId))
-            {
-                return null;
-            }
-            var nameDict = AttributeSetService.GetPropertyExtensionFieldDictionary(attrSetId);
-
-            var createAttrSetInst = new CreateAttributeSetInstance();
-            createAttrSetInst.AttributeSetId = attrSetId;
-            foreach (var kv in attrSetInstDict)
-            {
-                // //////////////////////////////////////////
-                var fname = nameDict.ContainsKey(kv.Key) ? nameDict[kv.Key] : kv.Key;
-                // createAttrSetInst.AirDryMetricTon = (decimal)kv.Value;
-                var b = ReflectUtils.TrySetPropertyValue(fname, createAttrSetInst, kv.Value);
-                if (!b)
-                {
-                    var fmt = "Set property error. Property name: {0}";
-                    if (_log.IsInfoEnabled) { _log.Info(String.Format(fmt, fname)); }
-                    throw new DomainError(fmt, fname);
-                }
-                // //////////////////////////////////////////
-            }
-            var attrSetInstId = AttributeSetInstanceApplicationService.CreateWithoutId(createAttrSetInst);
-            return attrSetInstId;
         }
 
         private IProductState GetProductState(string productId)

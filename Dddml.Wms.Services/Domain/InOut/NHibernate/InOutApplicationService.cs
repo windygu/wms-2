@@ -1,5 +1,9 @@
-﻿using Dddml.Wms.Domain.DocumentType;
+﻿using Common.Logging;
+using Dddml.Wms.Domain.AttributeSetInstance;
+using Dddml.Wms.Domain.DocumentType;
 using Dddml.Wms.Domain.InventoryItem;
+using Dddml.Wms.Domain.Product;
+using Dddml.Wms.Domain.Services;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Specialization.NHibernate;
 using Spring.Transaction.Interceptor;
@@ -10,6 +14,23 @@ namespace Dddml.Wms.Domain.InOut.NHibernate
 {
     public partial class InOutApplicationService
     {
+        static readonly ILog _log = LogManager.GetLogger<InOutApplicationService>();
+
+        IProductApplicationService ProductApplicationService
+        {
+            get { return ApplicationContext.Current["productApplicationService"] as IProductApplicationService; }
+        }
+
+        IAttributeSetInstanceApplicationService AttributeSetInstanceApplicationService
+        {
+            get { return ApplicationContext.Current["attributeSetInstanceApplicationService"] as IAttributeSetInstanceApplicationService; }
+        }
+
+        IAttributeSetService AttributeSetService
+        {
+            get { return ApplicationContext.Current["attributeSetService"] as IAttributeSetService; }
+        }
+
         IInventoryItemApplicationService InventoryItemApplicationService
         {
             get { return ApplicationContext.Current["inventoryItemApplicationService"] as IInventoryItemApplicationService; } 
@@ -70,8 +91,53 @@ namespace Dddml.Wms.Domain.InOut.NHibernate
             When(NewDocumentAction(DocumentAction.Reverse, c));
         }
 
+        [Transaction]
+        public override void When(InOutCommands.AddLine c)
+        {
+            var inOut = AssertDocumentStatus(c.DocumentNumber, DocumentStatusIds.Drafted);
+            var createLine = CreateInOutLine(c);
+            var updateInOut = new MergePatchInOut();
+            updateInOut.DocumentNumber = c.DocumentNumber;
+            updateInOut.Version = inOut.Version;
+            updateInOut.CommandId = c.CommandId;
+            updateInOut.RequesterId = c.RequesterId;
+            updateInOut.InOutLineCommands.Add(createLine);
+            When(updateInOut);
+        }
    
         #region Private or protected methods.
+
+        private ICreateInOutLine CreateInOutLine(InOutCommands.AddLine d)
+        {
+            var line = new CreateInOutLine();
+
+            var prdState = GetProductState(d.ProductId);
+
+            string attrSetInstId = AttributeSetInstanceUtils.CreateAttributeSetInstance(AttributeSetService, AttributeSetInstanceApplicationService,
+                prdState.AttributeSetId, d.AttributeSetInstance);
+            if (_log.IsDebugEnabled) { _log.Debug("Create attribute set instance, id: " + attrSetInstId); }
+
+            line.LineNumber = d.LineNumber;
+            line.ProductId = prdState.ProductId;
+            line.LocatorId = d.LocatorId;
+            line.AttributeSetInstanceId = attrSetInstId;
+            line.QuantityUomId = d.QuantityUomId;
+            line.MovementQuantity = d.MovementQuantity;
+            line.Description = d.Description;
+            line.Active = true;
+            //todo More proerties???
+            return line;
+        }
+
+        private IProductState GetProductState(string productId)
+        {
+            var prdState = ProductApplicationService.Get(productId);
+            if (prdState == null)
+            {
+                throw new ArgumentException(String.Format("Product NOT found. Product Id.: {0}", productId));
+            }
+            return prdState;
+        }
 
         private void ReverseUpdateSourceInOut(InOutCommands.DocumentAction c, ICreateInOut reversalInOutInfo)
         {
