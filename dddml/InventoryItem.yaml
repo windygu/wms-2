@@ -108,8 +108,7 @@ aggregates:
           entryAmountPropertyName: "VirtualQuantity"
       
       metadata:
-        # NoEventSourcing: true
-        # 聚合时间的 Listener 名称
+        # 库存单元聚合的事件的 Listener 名称
         AggregateEventListenerName: inventoryItemEventListener
       
       methods:
