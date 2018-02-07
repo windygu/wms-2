@@ -4,6 +4,7 @@ import org.apache.commons.beanutils.ConvertUtils;
 import org.dddml.wms.domain.attributesetinstance.AbstractAttributeSetInstanceCommand;
 import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceApplicationService;
 import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceCommand;
+import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceUtils;
 import org.dddml.wms.domain.documenttype.DocumentTypeIds;
 import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.product.ProductApplicationService;
@@ -162,7 +163,9 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         ShipmentItemCommand.CreateShipmentItem shipItem = new AbstractShipmentItemCommand.SimpleCreateShipmentItem();
         ProductState prdState = getProductState(d.getProductId());
 
-        String attrSetInstId = createAttributeSetInstance(prdState.getAttributeSetId(), d.getAttributeSetInstance());
+        String attrSetInstId = AttributeSetInstanceUtils.createAttributeSetInstance(
+                getAttributeSetService(), getAttributeSetInstanceApplicationService(),
+                prdState.getAttributeSetId(), d.getAttributeSetInstance());
         //        if (_log.IsDebugEnabled) {
         //            _log.Debug("Create attribute set instance, id: " + attrSetInstId);
         //        }
@@ -198,7 +201,9 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
 
         ProductState prdState = getProductState(shipmentItem.getProductId());
 
-        String attrSetInstId = createAttributeSetInstance(prdState.getAttributeSetId(), c.getAttributeSetInstance());
+        String attrSetInstId = AttributeSetInstanceUtils.createAttributeSetInstance(
+                getAttributeSetService(), getAttributeSetInstanceApplicationService(),
+                prdState.getAttributeSetId(), c.getAttributeSetInstance());
         //        if (_log.IsDebugEnabled) {
         //            _log.Debug("Create attribute set instance, id: " + attrSetInstId);
         //        }
@@ -214,32 +219,6 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         updateReceipt.setDamageReasonId(c.getDamageReasonId());
         updateReceipt.setReceivedBy(c.getRequesterId());
         return updateReceipt;
-    }
-
-    private String createAttributeSetInstance(String attrSetId, Map<String, Object> attrSetInstDict) {
-        if (attrSetId == null) {
-            return null;
-        }
-        Map<String, String> nameDict = getAttributeSetService().getPropertyExtensionFieldDictionary(attrSetId);
-
-        AttributeSetInstanceCommand.CreateAttributeSetInstance createAttrSetInst = new AbstractAttributeSetInstanceCommand.SimpleCreateAttributeSetInstance();
-        createAttrSetInst.setAttributeSetId(attrSetId);
-        for (Map.Entry<String, Object> kv : attrSetInstDict.entrySet()) {
-            String fname = nameDict.containsKey(kv.getKey()) ? nameDict.get(kv.getKey()) : kv.getKey();
-            // createAttrSetInst.AirDryMetricTon = (decimal)kv.Value;
-            boolean b = ReflectUtils.trySetPropertyValue(fname, createAttrSetInst, kv.getValue(),
-                    ConvertUtils::convert);
-            if (!b) {
-                String fmt = "Set property error. Property name: %1$s";
-                //                if (_log.IsInfoEnabled) {
-                //                    _log.Info(String.format(fmt, fname));
-                //                }
-                throw new DomainError(fmt, fname);
-            }
-            // //////////////////////////////////////////
-        }
-        String attrSetInstId = getAttributeSetInstanceApplicationService().createWithoutId(createAttrSetInst);
-        return attrSetInstId;
     }
 
     private ProductState getProductState(String productId) {

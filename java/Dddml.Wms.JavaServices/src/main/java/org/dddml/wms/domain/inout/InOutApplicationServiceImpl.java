@@ -2,8 +2,13 @@ package org.dddml.wms.domain.inout;
 
 import org.dddml.wms.domain.DocumentAction;
 import org.dddml.wms.domain.DocumentStatusIds;
+import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceApplicationService;
+import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceUtils;
 import org.dddml.wms.domain.documenttype.DocumentTypeIds;
 import org.dddml.wms.domain.inventoryitem.*;
+import org.dddml.wms.domain.product.ProductApplicationService;
+import org.dddml.wms.domain.product.ProductState;
+import org.dddml.wms.domain.service.AttributeSetService;
 import org.dddml.wms.specialization.ApplicationContext;
 import org.dddml.wms.specialization.EventStore;
 import org.dddml.wms.specialization.IdGenerator;
@@ -18,6 +23,18 @@ import java.util.Objects;
  * Created by yangjiefeng on 2018/1/15.
  */
 public class InOutApplicationServiceImpl extends AbstractInOutApplicationService.SimpleInOutApplicationService {
+
+    ProductApplicationService getProductApplicationService() {
+        return (ProductApplicationService) ApplicationContext.current.get("productApplicationService");
+    }
+
+    AttributeSetInstanceApplicationService getAttributeSetInstanceApplicationService() {
+        return (AttributeSetInstanceApplicationService) ApplicationContext.current.get("attributeSetInstanceApplicationService");
+    }
+
+    AttributeSetService getAttributeSetService() {
+        return (AttributeSetService) ApplicationContext.current.get("attributeSetService");
+    }
 
     InventoryItemApplicationService getInventoryItemApplicationService() {
         return (InventoryItemApplicationService) ApplicationContext.current.get("inventoryItemApplicationService");
@@ -248,6 +265,52 @@ public class InOutApplicationServiceImpl extends AbstractInOutApplicationService
     public void when(InOutCommands.Reverse c) {
         when(newDocumentAction(DocumentAction.REVERSE, c));
     }
+
+    @Override
+    @Transactional
+    public void when(InOutCommands.AddLine c) {
+        InOutState inOut = assertDocumentStatus(c.getDocumentNumber(), DocumentStatusIds.DRAFTED);
+        InOutLineCommand.CreateInOutLine createLine = createInOutLine(c);
+        InOutCommand.MergePatchInOut updateInOut = new AbstractInOutCommand.SimpleMergePatchInOut();
+        updateInOut.setDocumentNumber(c.getDocumentNumber());
+        updateInOut.setVersion(inOut.getVersion());
+        updateInOut.setCommandId(c.getCommandId());
+        updateInOut.setRequesterId(c.getRequesterId());
+        updateInOut.getInOutLineCommands().add(createLine);
+        when(updateInOut);
+    }
+
+
+    private InOutLineCommand.CreateInOutLine createInOutLine(InOutCommands.AddLine d) {
+        InOutLineCommand.CreateInOutLine line = new AbstractInOutLineCommand.SimpleCreateInOutLine();
+
+        ProductState prdState = getProductState(d.getProductId());
+
+        String attrSetInstId = AttributeSetInstanceUtils.createAttributeSetInstance(getAttributeSetService(), getAttributeSetInstanceApplicationService(), prdState.getAttributeSetId(), d.getAttributeSetInstance());
+        //if (_log.IsDebugEnabled) {
+        //    _log.Debug("Create attribute set instance, id: " + attrSetInstId);
+        //}
+
+        line.setLineNumber(d.getLineNumber());
+        line.setProductId(prdState.getProductId());
+        line.setLocatorId(d.getLocatorId());
+        line.setAttributeSetInstanceId(attrSetInstId);
+        line.setQuantityUomId(d.getQuantityUomId());
+        line.setMovementQuantity(d.getMovementQuantity());
+        line.setDescription(d.getDescription());
+        line.setActive(true);
+        //todo More proerties???
+        return line;
+    }
+
+    private ProductState getProductState(String productId) {
+        ProductState prdState = getProductApplicationService().get(productId);
+        if (prdState == null) {
+            throw new IllegalArgumentException(String.format("Product NOT found. Product Id.: %1$s", productId));
+        }
+        return prdState;
+    }
+
 
     private static InOutCommands.DocumentAction newDocumentAction(String value, InOutCommand c) {
         InOutCommands.DocumentAction a = new InOutCommands.DocumentAction();

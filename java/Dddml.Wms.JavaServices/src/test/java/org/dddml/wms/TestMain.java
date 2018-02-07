@@ -58,7 +58,9 @@ public class TestMain {
         //testInventoryItemApplicationService();
         //if(true) return;
 
-        InOutTests.testCreateAndCompleteAndReverseInOut();
+        InOutTests inOutTests = new InOutTests();
+        inOutTests.setUp();
+        inOutTests.testCreateAndCompleteAndReverseInOut();
 
         MovementTests movementTests = new MovementTests();
         movementTests.setUp();
