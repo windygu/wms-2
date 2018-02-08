@@ -31,10 +31,10 @@ namespace Dddml.Wms.CmdLineTools
 
                 // ///////////////////////////////////////////
                 JavaDomainProjectEnabled = true,
-                JavaDomainMsbProjectFilePath = @"..\..\..\Dddml.Wms.JavaCommon\Dddml.Wms.JavaCommon.csproj",
+                JavaDomainMsbProjectFilePath = @"..\..\..\java\Dddml.Wms.JavaCommon\Dddml.Wms.JavaCommon.csproj",
                 //T4JavaGenerateAggregateDomainHibernateScriptTemplateIncludeFile = @"..\..\..\LoadBoundedContext.tt",
                 JavaDomainProjectHibernateEnabled = false,
-                JavaDomainSubDirectoryPath = @"src\main\java\org\dddml\wms\domain",
+                JavaDomainSubDirectoryPath = @"src\generated\java\org\dddml\wms\domain",
                 T4JavaGenerateAggregateDomainScriptTemplateIncludeFile = @"..\..\LoadBoundedContext.tt",
 
             };
@@ -58,8 +58,8 @@ namespace Dddml.Wms.CmdLineTools
 
                 // //////////////////////////////
                 JavaHibernateProjectEnabled = true,
-                JavaHibernateMsbProjectFilePath = @"..\..\..\Dddml.Wms.JavaServices\Dddml.Wms.JavaServices.csproj",
-                JavaDomainSubDirectoryPath = @"src\main\java\org\dddml\wms\domain",
+                JavaHibernateMsbProjectFilePath = @"..\..\..\java\Dddml.Wms.JavaServices\Dddml.Wms.JavaServices.csproj",
+                JavaDomainSubDirectoryPath = @"src\generated\java\org\dddml\wms\domain",
                 //T4JavaGenerateAggregateDomainScriptTemplateIncludeFile = @"..\..\LoadBoundedContext.tt",
                 T4JavaGenerateAggregateDomainHibernateScriptTemplateIncludeFile = @"..\..\..\LoadBoundedContext.tt",
 
