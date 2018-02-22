@@ -1,6 +1,7 @@
 package org.dddml.wms.domain.physicalinventory;
 
 import java.io.Serializable;
+import org.dddml.wms.domain.inventoryitem.InventoryItemId;
 import org.dddml.wms.domain.*;
 
 public class PhysicalInventoryLineStateEventId implements Serializable
@@ -17,16 +18,16 @@ public class PhysicalInventoryLineStateEventId implements Serializable
         this.physicalInventoryDocumentNumber = physicalInventoryDocumentNumber;
     }
 
-    private String lineNumber;
+    private InventoryItemId inventoryItemId = new InventoryItemId();
 
-    public String getLineNumber()
+    public InventoryItemId getInventoryItemId()
     {
-        return this.lineNumber;
+        return this.inventoryItemId;
     }
 
-    public void setLineNumber(String lineNumber)
+    public void setInventoryItemId(InventoryItemId inventoryItemId)
     {
-        this.lineNumber = lineNumber;
+        this.inventoryItemId = inventoryItemId;
     }
 
     private Long physicalInventoryVersion;
@@ -41,14 +42,44 @@ public class PhysicalInventoryLineStateEventId implements Serializable
         this.physicalInventoryVersion = physicalInventoryVersion;
     }
 
+    public String getInventoryItemIdProductId()
+    {
+        return getInventoryItemId().getProductId();
+    }
+
+    public void setInventoryItemIdProductId(String inventoryItemIdProductId)
+    {
+        getInventoryItemId().setProductId(inventoryItemIdProductId);
+    }
+
+    public String getInventoryItemIdLocatorId()
+    {
+        return getInventoryItemId().getLocatorId();
+    }
+
+    public void setInventoryItemIdLocatorId(String inventoryItemIdLocatorId)
+    {
+        getInventoryItemId().setLocatorId(inventoryItemIdLocatorId);
+    }
+
+    public String getInventoryItemIdAttributeSetInstanceId()
+    {
+        return getInventoryItemId().getAttributeSetInstanceId();
+    }
+
+    public void setInventoryItemIdAttributeSetInstanceId(String inventoryItemIdAttributeSetInstanceId)
+    {
+        getInventoryItemId().setAttributeSetInstanceId(inventoryItemIdAttributeSetInstanceId);
+    }
+
     public PhysicalInventoryLineStateEventId()
     {
     }
 
-    public PhysicalInventoryLineStateEventId(String physicalInventoryDocumentNumber, String lineNumber, Long physicalInventoryVersion)
+    public PhysicalInventoryLineStateEventId(String physicalInventoryDocumentNumber, InventoryItemId inventoryItemId, Long physicalInventoryVersion)
     {
         this.physicalInventoryDocumentNumber = physicalInventoryDocumentNumber;
-        this.lineNumber = lineNumber;
+        this.inventoryItemId = inventoryItemId;
         this.physicalInventoryVersion = physicalInventoryVersion;
     }
 
@@ -65,7 +96,7 @@ public class PhysicalInventoryLineStateEventId implements Serializable
         PhysicalInventoryLineStateEventId other = (PhysicalInventoryLineStateEventId)obj;
         return true 
             && (physicalInventoryDocumentNumber == other.physicalInventoryDocumentNumber || (physicalInventoryDocumentNumber != null && physicalInventoryDocumentNumber.equals(other.physicalInventoryDocumentNumber)))
-            && (lineNumber == other.lineNumber || (lineNumber != null && lineNumber.equals(other.lineNumber)))
+            && (inventoryItemId == other.inventoryItemId || (inventoryItemId != null && inventoryItemId.equals(other.inventoryItemId)))
             && (physicalInventoryVersion == other.physicalInventoryVersion || (physicalInventoryVersion != null && physicalInventoryVersion.equals(other.physicalInventoryVersion)))
             ;
     }
@@ -77,8 +108,8 @@ public class PhysicalInventoryLineStateEventId implements Serializable
         if (this.physicalInventoryDocumentNumber != null) {
             hash += 13 * this.physicalInventoryDocumentNumber.hashCode();
         }
-        if (this.lineNumber != null) {
-            hash += 13 * this.lineNumber.hashCode();
+        if (this.inventoryItemId != null) {
+            hash += 13 * this.inventoryItemId.hashCode();
         }
         if (this.physicalInventoryVersion != null) {
             hash += 13 * this.physicalInventoryVersion.hashCode();

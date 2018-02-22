@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.PhysicalInventory
 {
@@ -27,11 +28,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
                 var e = (IPhysicalInventoryStateMergePatched)stateEvent;
                 return ToPhysicalInventoryStateMergePatchedDto(e);
             }
-            else if (stateEvent.StateEventType == StateEventType.Deleted)
-            {
-                var e = (IPhysicalInventoryStateDeleted)stateEvent;
-                return ToPhysicalInventoryStateDeletedDto(e);
-            }
             throw DomainError.Named("invalidStateEventType", String.Format("Invalid state event type: {0}", stateEvent.StateEventType));
         }
 
@@ -44,6 +40,8 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             dto.CommandId = e.CommandId;
             dto.DocumentStatusId = e.DocumentStatusId;
             dto.WarehouseId = e.WarehouseId;
+            dto.LocatorIdPattern = e.LocatorIdPattern;
+            dto.ProductIdPattern = e.ProductIdPattern;
             dto.Posted = e.Posted;
             dto.Processed = e.Processed;
             dto.Processing = e.Processing;
@@ -75,6 +73,8 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             dto.CommandId = e.CommandId;
             dto.DocumentStatusId = e.DocumentStatusId;
             dto.WarehouseId = e.WarehouseId;
+            dto.LocatorIdPattern = e.LocatorIdPattern;
+            dto.ProductIdPattern = e.ProductIdPattern;
             dto.Posted = e.Posted;
             dto.Processed = e.Processed;
             dto.Processing = e.Processing;
@@ -88,6 +88,8 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             dto.Active = e.Active;
             dto.IsPropertyDocumentStatusIdRemoved = e.IsPropertyDocumentStatusIdRemoved;
             dto.IsPropertyWarehouseIdRemoved = e.IsPropertyWarehouseIdRemoved;
+            dto.IsPropertyLocatorIdPatternRemoved = e.IsPropertyLocatorIdPatternRemoved;
+            dto.IsPropertyProductIdPatternRemoved = e.IsPropertyProductIdPatternRemoved;
             dto.IsPropertyPostedRemoved = e.IsPropertyPostedRemoved;
             dto.IsPropertyProcessedRemoved = e.IsPropertyProcessedRemoved;
             dto.IsPropertyProcessingRemoved = e.IsPropertyProcessingRemoved;
@@ -111,25 +113,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             return dto;
         }
 
-
-        public virtual PhysicalInventoryStateDeletedDto ToPhysicalInventoryStateDeletedDto(IPhysicalInventoryStateDeleted e)
-        {
-            var dto = new PhysicalInventoryStateDeletedDto();
-            dto.StateEventId = new PhysicalInventoryStateEventIdDtoWrapper(e.StateEventId);
-            dto.CreatedAt = e.CreatedAt;
-            dto.CreatedBy = e.CreatedBy;
-            dto.CommandId = e.CommandId;
-            var physicalInventoryLineEvents = new List<PhysicalInventoryLineStateRemovedDto>();
-            foreach (var ee in e.PhysicalInventoryLineEvents)
-            {
-                PhysicalInventoryLineStateRemovedDto eeDto = PhysicalInventoryLineStateEventDtoConverter.ToPhysicalInventoryLineStateRemovedDto(ee);
-                physicalInventoryLineEvents.Add(eeDto);
-            }
-            dto.PhysicalInventoryLineEvents = physicalInventoryLineEvents.ToArray();
-
-
-            return dto;
-        }
 
         protected virtual PhysicalInventoryLineStateEventDtoConverter PhysicalInventoryLineStateEventDtoConverter
         {

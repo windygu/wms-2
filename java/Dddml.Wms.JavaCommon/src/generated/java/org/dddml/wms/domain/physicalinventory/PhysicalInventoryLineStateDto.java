@@ -1,6 +1,7 @@
 package org.dddml.wms.domain.physicalinventory;
 
 import java.util.*;
+import org.dddml.wms.domain.inventoryitem.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
@@ -10,52 +11,16 @@ import org.dddml.wms.specialization.*;
 public class PhysicalInventoryLineStateDto
 {
 
-    private String lineNumber;
+    private InventoryItemIdDto inventoryItemId;
 
-    public String getLineNumber()
+    public InventoryItemIdDto getInventoryItemId()
     {
-        return this.lineNumber;
+        return this.inventoryItemId;
     }
 
-    public void setLineNumber(String lineNumber)
+    public void setInventoryItemId(InventoryItemIdDto inventoryItemId)
     {
-        this.lineNumber = lineNumber;
-    }
-
-    private String locatorId;
-
-    public String getLocatorId()
-    {
-        return this.locatorId;
-    }
-
-    public void setLocatorId(String locatorId)
-    {
-        this.locatorId = locatorId;
-    }
-
-    private String productId;
-
-    public String getProductId()
-    {
-        return this.productId;
-    }
-
-    public void setProductId(String productId)
-    {
-        this.productId = productId;
-    }
-
-    private String attributeSetInstanceId;
-
-    public String getAttributeSetInstanceId()
-    {
-        return this.attributeSetInstanceId;
-    }
-
-    public void setAttributeSetInstanceId(String attributeSetInstanceId)
-    {
-        this.attributeSetInstanceId = attributeSetInstanceId;
+        this.inventoryItemId = inventoryItemId;
     }
 
     private BigDecimal bookQuantity;
@@ -116,18 +81,6 @@ public class PhysicalInventoryLineStateDto
     public void setDescription(String description)
     {
         this.description = description;
-    }
-
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
     }
 
     private Long version;
@@ -228,17 +181,8 @@ public class PhysicalInventoryLineStateDto
                 return null;
             }
             PhysicalInventoryLineStateDto dto = new PhysicalInventoryLineStateDto();
-            if (returnedFieldsContains("LineNumber")) {
-                dto.setLineNumber(state.getLineNumber());
-            }
-            if (returnedFieldsContains("LocatorId")) {
-                dto.setLocatorId(state.getLocatorId());
-            }
-            if (returnedFieldsContains("ProductId")) {
-                dto.setProductId(state.getProductId());
-            }
-            if (returnedFieldsContains("AttributeSetInstanceId")) {
-                dto.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
+            if (returnedFieldsContains("InventoryItemId")) {
+                dto.setInventoryItemId((state.getInventoryItemId() == null) ? null : new InventoryItemIdDtoWrapper(state.getInventoryItemId()));
             }
             if (returnedFieldsContains("BookQuantity")) {
                 dto.setBookQuantity(state.getBookQuantity());
@@ -254,9 +198,6 @@ public class PhysicalInventoryLineStateDto
             }
             if (returnedFieldsContains("Description")) {
                 dto.setDescription(state.getDescription());
-            }
-            if (returnedFieldsContains("Active")) {
-                dto.setActive(state.getActive());
             }
             if (returnedFieldsContains("Version")) {
                 dto.setVersion(state.getVersion());

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.PhysicalInventory
 {
@@ -24,6 +25,10 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 	{
 
 		string WarehouseId { get; set; }
+
+		string LocatorIdPattern { get; set; }
+
+		string ProductIdPattern { get; set; }
 
 		bool? Posted { get; set; }
 
@@ -62,6 +67,10 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 	{
 
 		bool IsPropertyWarehouseIdRemoved { get; set; }
+
+		bool IsPropertyLocatorIdPatternRemoved { get; set; }
+
+		bool IsPropertyProductIdPatternRemoved { get; set; }
 
 		bool IsPropertyPostedRemoved { get; set; }
 

@@ -10,6 +10,7 @@ import org.apache.cxf.jaxrs.ext.PATCH;
 import org.dddml.support.criterion.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.physicalinventory.*;
@@ -122,24 +123,6 @@ public class PhysicalInventoryResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{id}") @DELETE
-    public void delete(@PathParam("id") String id,
-                       @NotNull @QueryParam("commandId") String commandId,
-                       @NotNull @QueryParam("version") @Min(value = -1) Long version,
-                       @QueryParam("requesterId") String requesterId) {
-        try {
-
-            PhysicalInventoryCommand.DeletePhysicalInventory deleteCmd = new AbstractPhysicalInventoryCommand.SimpleDeletePhysicalInventory();
-
-            deleteCmd.setCommandId(commandId);
-            deleteCmd.setRequesterId(requesterId);
-            deleteCmd.setVersion(version);
-            PhysicalInventoryResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
-            physicalInventoryApplicationService.when(deleteCmd);
-
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
-    }
-
 
     @Path("{id}/_commands/DocumentAction") @PUT
     public void documentAction(@PathParam("id") String id, PhysicalInventoryCommandDtos.DocumentActionRequestContent content) {
@@ -197,11 +180,11 @@ public class PhysicalInventoryResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-    @Path("{physicalInventoryDocumentNumber}/PhysicalInventoryLines/{lineNumber}") @GET
-    public PhysicalInventoryLineStateDto getPhysicalInventoryLine(@PathParam("physicalInventoryDocumentNumber") String physicalInventoryDocumentNumber, @PathParam("lineNumber") String lineNumber) {
+    @Path("{physicalInventoryDocumentNumber}/PhysicalInventoryLines/{inventoryItemId}") @GET
+    public PhysicalInventoryLineStateDto getPhysicalInventoryLine(@PathParam("physicalInventoryDocumentNumber") String physicalInventoryDocumentNumber, @PathParam("inventoryItemId") String inventoryItemId) {
         try {
 
-            PhysicalInventoryLineState state = physicalInventoryApplicationService.getPhysicalInventoryLine(physicalInventoryDocumentNumber, lineNumber);
+            PhysicalInventoryLineState state = physicalInventoryApplicationService.getPhysicalInventoryLine(physicalInventoryDocumentNumber, (new InventoryItemIdFlattenedDtoFormatter().parse(inventoryItemId)).toInventoryItemId());
             if (state == null) { return null; }
             PhysicalInventoryLineStateDto.DtoConverter dtoConverter = new PhysicalInventoryLineStateDto.DtoConverter();
             PhysicalInventoryLineStateDto stateDto = dtoConverter.toPhysicalInventoryLineStateDto(state);

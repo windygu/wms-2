@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.PhysicalInventory
 {
@@ -43,11 +44,11 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 			}
 		}
 
-        string ILocalIdentity<string>.LocalId
+        InventoryItemId ILocalIdentity<InventoryItemId>.LocalId
         {
             get
             {
-                return this.LineNumber;
+                return this.InventoryItemId;
             }
         }
 
@@ -61,22 +62,13 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 			}
 		}
 
-        public override string LineNumber {
+        public override InventoryItemId InventoryItemId {
 			get {
-				return this.PhysicalInventoryLineId.LineNumber;
+				return this.PhysicalInventoryLineId.InventoryItemId;
 			}
 			set {
-				this.PhysicalInventoryLineId.LineNumber = value;
+				this.PhysicalInventoryLineId.InventoryItemId = value;
 			}
-		}
-
-		#endregion
-
-		#region IActive implementation
-
-		bool IActive.IsActive()
-		{
-			return this.Active;
 		}
 
 		#endregion
@@ -194,12 +186,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 		public virtual void When(IPhysicalInventoryLineStateCreated e)
 		{
 			ThrowOnWrongEvent(e);
-			this.LocatorId = e.LocatorId;
-
-			this.ProductId = e.ProductId;
-
-			this.AttributeSetInstanceId = e.AttributeSetInstanceId;
-
             this.BookQuantity = (e.BookQuantity != null && e.BookQuantity.HasValue) ? e.BookQuantity.Value : default(decimal);
 
             this.CountedQuantity = (e.CountedQuantity != null && e.CountedQuantity.HasValue) ? e.CountedQuantity.Value : default(decimal);
@@ -209,8 +195,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             this.ReversalLineNumber = (e.ReversalLineNumber != null && e.ReversalLineNumber.HasValue) ? e.ReversalLineNumber.Value : default(long);
 
 			this.Description = e.Description;
-
-            this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 
 			this.Deleted = false;
 
@@ -224,42 +208,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 		public virtual void When(IPhysicalInventoryLineStateMergePatched e)
 		{
 			ThrowOnWrongEvent(e);
-
-			if (e.LocatorId == null)
-			{
-				if (e.IsPropertyLocatorIdRemoved)
-				{
-					this.LocatorId = default(string);
-				}
-			}
-			else
-			{
-				this.LocatorId = e.LocatorId;
-			}
-
-			if (e.ProductId == null)
-			{
-				if (e.IsPropertyProductIdRemoved)
-				{
-					this.ProductId = default(string);
-				}
-			}
-			else
-			{
-				this.ProductId = e.ProductId;
-			}
-
-			if (e.AttributeSetInstanceId == null)
-			{
-				if (e.IsPropertyAttributeSetInstanceIdRemoved)
-				{
-					this.AttributeSetInstanceId = default(string);
-				}
-			}
-			else
-			{
-				this.AttributeSetInstanceId = e.AttributeSetInstanceId;
-			}
 
 			if (e.BookQuantity == null)
 			{
@@ -321,18 +269,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 				this.Description = e.Description;
 			}
 
-			if (e.Active == null)
-			{
-				if (e.IsPropertyActiveRemoved)
-				{
-					this.Active = default(bool);
-				}
-			}
-			else
-			{
-				this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
-			}
-
 
 			this.UpdatedBy = e.CreatedBy;
 			this.UpdatedAt = e.CreatedAt;
@@ -370,13 +306,13 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             }
             id.Append(stateEntityIdPhysicalInventoryDocumentNumber).Append(",");
 
-            var stateEntityIdLineNumber = (this as IGlobalIdentity<PhysicalInventoryLineId>).GlobalId.LineNumber;
-            var eventEntityIdLineNumber = stateEvent.StateEventId.LineNumber;
-            if (stateEntityIdLineNumber != eventEntityIdLineNumber)
+            var stateEntityIdInventoryItemId = (this as IGlobalIdentity<PhysicalInventoryLineId>).GlobalId.InventoryItemId;
+            var eventEntityIdInventoryItemId = stateEvent.StateEventId.InventoryItemId;
+            if (stateEntityIdInventoryItemId != eventEntityIdInventoryItemId)
             {
-                throw DomainError.Named("mutateWrongEntity", "Entity Id LineNumber {0} in state but entity id LineNumber {1} in event", stateEntityIdLineNumber, eventEntityIdLineNumber);
+                throw DomainError.Named("mutateWrongEntity", "Entity Id InventoryItemId {0} in state but entity id InventoryItemId {1} in event", stateEntityIdInventoryItemId, eventEntityIdInventoryItemId);
             }
-            id.Append(stateEntityIdLineNumber).Append(",");
+            id.Append(stateEntityIdInventoryItemId).Append(",");
 
             id.Append("]");
 

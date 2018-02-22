@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.PhysicalInventory
 {
@@ -19,12 +20,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
 		long Version { get; set; }
 
-		string LocatorId { get; set; }
-
-		string ProductId { get; set; }
-
-		string AttributeSetInstanceId { get; set; }
-
 		decimal? BookQuantity { get; set; }
 
 		decimal? CountedQuantity { get; set; }
@@ -34,8 +29,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 		long? ReversalLineNumber { get; set; }
 
 		string Description { get; set; }
-
-		bool? Active { get; set; }
 
 		// Outer Id:
 		//string PhysicalInventoryDocumentNumber { get; set; }
@@ -50,12 +43,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
 	public interface IPhysicalInventoryLineStateMergePatched : IPhysicalInventoryLineStateEvent//, IPhysicalInventoryLineStateProperties
 	{
-		bool IsPropertyLocatorIdRemoved { get; set; }
-
-		bool IsPropertyProductIdRemoved { get; set; }
-
-		bool IsPropertyAttributeSetInstanceIdRemoved { get; set; }
-
 		bool IsPropertyBookQuantityRemoved { get; set; }
 
 		bool IsPropertyCountedQuantityRemoved { get; set; }
@@ -65,8 +52,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 		bool IsPropertyReversalLineNumberRemoved { get; set; }
 
 		bool IsPropertyDescriptionRemoved { get; set; }
-
-		bool IsPropertyActiveRemoved { get; set; }
 
 
 	}

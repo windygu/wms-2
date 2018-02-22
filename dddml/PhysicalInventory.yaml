@@ -23,6 +23,12 @@ aggregates:
         WarehouseId:
           type: string
           
+        LocatorIdPattern:
+          type: string
+
+        ProductIdPattern:
+          type: id-long
+          
         Posted:
           type: bool
 
@@ -60,25 +66,26 @@ aggregates:
         PhysicalInventoryLines:
           itemType: PhysicalInventoryLine
         
+      reservedProperties:
+        noDeleted: true
+        
       entities:
           
         # 盘点行项实体
         PhysicalInventoryLine:
           
           id: 
-            name: LineNumber
-            type: string
+            name: InventoryItemId
+            type: InventoryItemId
               
           properties:  
 
-            LocatorId:
-              type: string
-
-            ProductId:
-              type: id-long
-
-            AttributeSetInstanceId:
-              type: string
+            # LocatorId:
+              # type: string
+            # ProductId:
+              # type: id-long
+            # AttributeSetInstanceId:
+              # type: string
 
             BookQuantity: 
               type: decimal
@@ -98,5 +105,7 @@ aggregates:
             Description:
               type: string
 
+          reservedProperties:
+            noActive: true
                 
                 

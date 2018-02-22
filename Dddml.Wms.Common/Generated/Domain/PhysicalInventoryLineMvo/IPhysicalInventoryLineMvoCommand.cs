@@ -24,12 +24,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 	public interface ICreateOrMergePatchOrDeletePhysicalInventoryLineMvo : IPhysicalInventoryLineMvoCommand
 	{
 
-		string LocatorId { get; set; }
-
-		string ProductId { get; set; }
-
-		string AttributeSetInstanceId { get; set; }
-
 		decimal? BookQuantity { get; set; }
 
 		decimal? CountedQuantity { get; set; }
@@ -47,6 +41,10 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 		string PhysicalInventoryDocumentStatusId { get; set; }
 
 		string PhysicalInventoryWarehouseId { get; set; }
+
+		string PhysicalInventoryLocatorIdPattern { get; set; }
+
+		string PhysicalInventoryProductIdPattern { get; set; }
 
 		bool? PhysicalInventoryPosted { get; set; }
 
@@ -78,8 +76,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
 		bool? PhysicalInventoryActive { get; set; }
 
-		bool? PhysicalInventoryDeleted { get; set; }
-
 
 	}
 
@@ -89,12 +85,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
 	public interface IMergePatchPhysicalInventoryLineMvo : ICreateOrMergePatchOrDeletePhysicalInventoryLineMvo
 	{
-
-		bool IsPropertyLocatorIdRemoved { get; set; }
-
-		bool IsPropertyProductIdRemoved { get; set; }
-
-		bool IsPropertyAttributeSetInstanceIdRemoved { get; set; }
 
 		bool IsPropertyBookQuantityRemoved { get; set; }
 
@@ -113,6 +103,10 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 		bool IsPropertyPhysicalInventoryDocumentStatusIdRemoved { get; set; }
 
 		bool IsPropertyPhysicalInventoryWarehouseIdRemoved { get; set; }
+
+		bool IsPropertyPhysicalInventoryLocatorIdPatternRemoved { get; set; }
+
+		bool IsPropertyPhysicalInventoryProductIdPatternRemoved { get; set; }
 
 		bool IsPropertyPhysicalInventoryPostedRemoved { get; set; }
 
@@ -143,8 +137,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 		bool IsPropertyPhysicalInventoryUpdatedAtRemoved { get; set; }
 
 		bool IsPropertyPhysicalInventoryActiveRemoved { get; set; }
-
-		bool IsPropertyPhysicalInventoryDeletedRemoved { get; set; }
 
 
 	}

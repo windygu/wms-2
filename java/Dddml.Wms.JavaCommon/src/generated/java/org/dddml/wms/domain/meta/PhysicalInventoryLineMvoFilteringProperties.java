@@ -11,9 +11,6 @@ public final class PhysicalInventoryLineMvoFilteringProperties
     }
 
     public static final String[] propertyNames = new String[] {
-            "locatorId",
-            "productId",
-            "attributeSetInstanceId",
             "bookQuantity",
             "countedQuantity",
             "processed",
@@ -28,6 +25,8 @@ public final class PhysicalInventoryLineMvoFilteringProperties
             "deleted",
             "physicalInventoryDocumentStatusId",
             "physicalInventoryWarehouseId",
+            "physicalInventoryLocatorIdPattern",
+            "physicalInventoryProductIdPattern",
             "physicalInventoryPosted",
             "physicalInventoryProcessed",
             "physicalInventoryProcessing",
@@ -44,15 +43,13 @@ public final class PhysicalInventoryLineMvoFilteringProperties
             "physicalInventoryUpdatedBy",
             "physicalInventoryUpdatedAt",
             "physicalInventoryActive",
-            "physicalInventoryDeleted",
             "physicalInventoryLineId.physicalInventoryDocumentNumber",
-            "physicalInventoryLineId.lineNumber",
+            "physicalInventoryLineId.inventoryItemIdProductId",
+            "physicalInventoryLineId.inventoryItemIdLocatorId",
+            "physicalInventoryLineId.inventoryItemIdAttributeSetInstanceId",
     };
 
     public static final String[] propertyTypes = new String[] {
-            "String",
-            "String",
-            "String",
             "BigDecimal",
             "BigDecimal",
             "Boolean",
@@ -67,6 +64,8 @@ public final class PhysicalInventoryLineMvoFilteringProperties
             "Boolean",
             "String",
             "String",
+            "String",
+            "String",
             "Boolean",
             "Boolean",
             "String",
@@ -83,7 +82,8 @@ public final class PhysicalInventoryLineMvoFilteringProperties
             "String",
             "Date",
             "Boolean",
-            "Boolean",
+            "String",
+            "String",
             "String",
             "String",
     };
@@ -100,12 +100,6 @@ public final class PhysicalInventoryLineMvoFilteringProperties
     }
 
     private static  void initAliasMap() {
-        aliasMap.put("locatorId", "locatorId");
-        aliasMap.put("LocatorId", "locatorId");
-        aliasMap.put("productId", "productId");
-        aliasMap.put("ProductId", "productId");
-        aliasMap.put("attributeSetInstanceId", "attributeSetInstanceId");
-        aliasMap.put("AttributeSetInstanceId", "attributeSetInstanceId");
         aliasMap.put("bookQuantity", "bookQuantity");
         aliasMap.put("BookQuantity", "bookQuantity");
         aliasMap.put("countedQuantity", "countedQuantity");
@@ -134,6 +128,10 @@ public final class PhysicalInventoryLineMvoFilteringProperties
         aliasMap.put("PhysicalInventoryDocumentStatusId", "physicalInventoryDocumentStatusId");
         aliasMap.put("physicalInventoryWarehouseId", "physicalInventoryWarehouseId");
         aliasMap.put("PhysicalInventoryWarehouseId", "physicalInventoryWarehouseId");
+        aliasMap.put("physicalInventoryLocatorIdPattern", "physicalInventoryLocatorIdPattern");
+        aliasMap.put("PhysicalInventoryLocatorIdPattern", "physicalInventoryLocatorIdPattern");
+        aliasMap.put("physicalInventoryProductIdPattern", "physicalInventoryProductIdPattern");
+        aliasMap.put("PhysicalInventoryProductIdPattern", "physicalInventoryProductIdPattern");
         aliasMap.put("physicalInventoryPosted", "physicalInventoryPosted");
         aliasMap.put("PhysicalInventoryPosted", "physicalInventoryPosted");
         aliasMap.put("physicalInventoryProcessed", "physicalInventoryProcessed");
@@ -166,12 +164,20 @@ public final class PhysicalInventoryLineMvoFilteringProperties
         aliasMap.put("PhysicalInventoryUpdatedAt", "physicalInventoryUpdatedAt");
         aliasMap.put("physicalInventoryActive", "physicalInventoryActive");
         aliasMap.put("PhysicalInventoryActive", "physicalInventoryActive");
-        aliasMap.put("physicalInventoryDeleted", "physicalInventoryDeleted");
-        aliasMap.put("PhysicalInventoryDeleted", "physicalInventoryDeleted");
         aliasMap.put("physicalInventoryLineId.physicalInventoryDocumentNumber", "physicalInventoryLineId.physicalInventoryDocumentNumber");
         aliasMap.put("PhysicalInventoryLineId.PhysicalInventoryDocumentNumber", "physicalInventoryLineId.physicalInventoryDocumentNumber");
-        aliasMap.put("physicalInventoryLineId.lineNumber", "physicalInventoryLineId.lineNumber");
-        aliasMap.put("PhysicalInventoryLineId.LineNumber", "physicalInventoryLineId.lineNumber");
+        aliasMap.put("physicalInventoryLineId.inventoryItemIdProductId", "physicalInventoryLineId.inventoryItemIdProductId");
+        aliasMap.put("PhysicalInventoryLineId.InventoryItemIdProductId", "physicalInventoryLineId.inventoryItemIdProductId");
+        aliasMap.put("physicalInventoryLineId.inventoryItemId.productId", "physicalInventoryLineId.inventoryItemIdProductId");
+        aliasMap.put("PhysicalInventoryLineId.InventoryItemId.ProductId", "physicalInventoryLineId.inventoryItemIdProductId");
+        aliasMap.put("physicalInventoryLineId.inventoryItemIdLocatorId", "physicalInventoryLineId.inventoryItemIdLocatorId");
+        aliasMap.put("PhysicalInventoryLineId.InventoryItemIdLocatorId", "physicalInventoryLineId.inventoryItemIdLocatorId");
+        aliasMap.put("physicalInventoryLineId.inventoryItemId.locatorId", "physicalInventoryLineId.inventoryItemIdLocatorId");
+        aliasMap.put("PhysicalInventoryLineId.InventoryItemId.LocatorId", "physicalInventoryLineId.inventoryItemIdLocatorId");
+        aliasMap.put("physicalInventoryLineId.inventoryItemIdAttributeSetInstanceId", "physicalInventoryLineId.inventoryItemIdAttributeSetInstanceId");
+        aliasMap.put("PhysicalInventoryLineId.InventoryItemIdAttributeSetInstanceId", "physicalInventoryLineId.inventoryItemIdAttributeSetInstanceId");
+        aliasMap.put("physicalInventoryLineId.inventoryItemId.attributeSetInstanceId", "physicalInventoryLineId.inventoryItemIdAttributeSetInstanceId");
+        aliasMap.put("PhysicalInventoryLineId.InventoryItemId.AttributeSetInstanceId", "physicalInventoryLineId.inventoryItemIdAttributeSetInstanceId");
     }
 
     private static void initPropertyTypeMap() {

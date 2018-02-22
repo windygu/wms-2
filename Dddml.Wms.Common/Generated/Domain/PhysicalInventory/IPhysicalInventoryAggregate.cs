@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.PhysicalInventory
 {
@@ -23,8 +24,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 		void Create (ICreatePhysicalInventory c);
 
 		void MergePatch (IMergePatchPhysicalInventory c);
-
-		void Delete (IDeletePhysicalInventory c);
 
 		void DocumentAction(string value, long version, string commandId, string requesterId);
 

@@ -1,47 +1,12 @@
 package org.dddml.wms.domain.physicalinventory;
 
+import org.dddml.wms.domain.inventoryitem.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchPhysicalInventoryLineDto extends AbstractPhysicalInventoryLineCommandDto
 {
-    private String locatorId;
-
-    public String getLocatorId()
-    {
-        return this.locatorId;
-    }
-
-    public void setLocatorId(String locatorId)
-    {
-        this.locatorId = locatorId;
-    }
-
-    private String productId;
-
-    public String getProductId()
-    {
-        return this.productId;
-    }
-
-    public void setProductId(String productId)
-    {
-        this.productId = productId;
-    }
-
-    private String attributeSetInstanceId;
-
-    public String getAttributeSetInstanceId()
-    {
-        return this.attributeSetInstanceId;
-    }
-
-    public void setAttributeSetInstanceId(String attributeSetInstanceId)
-    {
-        this.attributeSetInstanceId = attributeSetInstanceId;
-    }
-
     private BigDecimal bookQuantity;
 
     public BigDecimal getBookQuantity()
@@ -112,42 +77,6 @@ public class CreateOrMergePatchPhysicalInventoryLineDto extends AbstractPhysical
     public void setActive(Boolean active)
     {
         this.active = active;
-    }
-
-    private Boolean isPropertyLocatorIdRemoved;
-
-    public Boolean getIsPropertyLocatorIdRemoved()
-    {
-        return this.isPropertyLocatorIdRemoved;
-    }
-
-    public void setIsPropertyLocatorIdRemoved(Boolean removed)
-    {
-        this.isPropertyLocatorIdRemoved = removed;
-    }
-
-    private Boolean isPropertyProductIdRemoved;
-
-    public Boolean getIsPropertyProductIdRemoved()
-    {
-        return this.isPropertyProductIdRemoved;
-    }
-
-    public void setIsPropertyProductIdRemoved(Boolean removed)
-    {
-        this.isPropertyProductIdRemoved = removed;
-    }
-
-    private Boolean isPropertyAttributeSetInstanceIdRemoved;
-
-    public Boolean getIsPropertyAttributeSetInstanceIdRemoved()
-    {
-        return this.isPropertyAttributeSetInstanceIdRemoved;
-    }
-
-    public void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed)
-    {
-        this.isPropertyAttributeSetInstanceIdRemoved = removed;
     }
 
     private Boolean isPropertyBookQuantityRemoved;
@@ -225,9 +154,6 @@ public class CreateOrMergePatchPhysicalInventoryLineDto extends AbstractPhysical
     public void copyTo(AbstractPhysicalInventoryLineCommand.AbstractCreateOrMergePatchPhysicalInventoryLine command)
     {
         ((AbstractPhysicalInventoryLineCommandDto) this).copyTo(command);
-        command.setLocatorId(this.getLocatorId());
-        command.setProductId(this.getProductId());
-        command.setAttributeSetInstanceId(this.getAttributeSetInstanceId());
         command.setBookQuantity(this.getBookQuantity());
         command.setCountedQuantity(this.getCountedQuantity());
         command.setProcessed(this.getProcessed());
@@ -263,9 +189,6 @@ public class CreateOrMergePatchPhysicalInventoryLineDto extends AbstractPhysical
     public void copyTo(AbstractPhysicalInventoryLineCommand.AbstractMergePatchPhysicalInventoryLine command)
     {
         copyTo((AbstractPhysicalInventoryLineCommand.AbstractCreateOrMergePatchPhysicalInventoryLine) command);
-        command.setIsPropertyLocatorIdRemoved(this.getIsPropertyLocatorIdRemoved());
-        command.setIsPropertyProductIdRemoved(this.getIsPropertyProductIdRemoved());
-        command.setIsPropertyAttributeSetInstanceIdRemoved(this.getIsPropertyAttributeSetInstanceIdRemoved());
         command.setIsPropertyBookQuantityRemoved(this.getIsPropertyBookQuantityRemoved());
         command.setIsPropertyCountedQuantityRemoved(this.getIsPropertyCountedQuantityRemoved());
         command.setIsPropertyProcessedRemoved(this.getIsPropertyProcessedRemoved());

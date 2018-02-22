@@ -28,8 +28,16 @@ public class PhysicalInventoryLineMvoStateEventIdFlattenedDtoFormatter extends A
             dto.setPhysicalInventoryLineIdPhysicalInventoryDocumentNumber((String) objVal);
             return;
         }
-        if ("physicalInventoryLineIdLineNumber".equals(fieldName)) {
-            dto.setPhysicalInventoryLineIdLineNumber((String) objVal);
+        if ("physicalInventoryLineIdInventoryItemIdProductId".equals(fieldName)) {
+            dto.setPhysicalInventoryLineIdInventoryItemIdProductId((String) objVal);
+            return;
+        }
+        if ("physicalInventoryLineIdInventoryItemIdLocatorId".equals(fieldName)) {
+            dto.setPhysicalInventoryLineIdInventoryItemIdLocatorId((String) objVal);
+            return;
+        }
+        if ("physicalInventoryLineIdInventoryItemIdAttributeSetInstanceId".equals(fieldName)) {
+            dto.setPhysicalInventoryLineIdInventoryItemIdAttributeSetInstanceId((String) objVal);
             return;
         }
         if ("physicalInventoryVersion".equals(fieldName)) {
@@ -46,8 +54,18 @@ public class PhysicalInventoryLineMvoStateEventIdFlattenedDtoFormatter extends A
             String strVal = ApplicationContext.current.getTypeConverter().convertToString(clazz, objVal);
             return strVal;
         }
-        if ("physicalInventoryLineIdLineNumber".equals(fieldName)) {
-            Object objVal = dto.getPhysicalInventoryLineIdLineNumber();
+        if ("physicalInventoryLineIdInventoryItemIdProductId".equals(fieldName)) {
+            Object objVal = dto.getPhysicalInventoryLineIdInventoryItemIdProductId();
+            String strVal = ApplicationContext.current.getTypeConverter().convertToString(clazz, objVal);
+            return strVal;
+        }
+        if ("physicalInventoryLineIdInventoryItemIdLocatorId".equals(fieldName)) {
+            Object objVal = dto.getPhysicalInventoryLineIdInventoryItemIdLocatorId();
+            String strVal = ApplicationContext.current.getTypeConverter().convertToString(clazz, objVal);
+            return strVal;
+        }
+        if ("physicalInventoryLineIdInventoryItemIdAttributeSetInstanceId".equals(fieldName)) {
+            Object objVal = dto.getPhysicalInventoryLineIdInventoryItemIdAttributeSetInstanceId();
             String strVal = ApplicationContext.current.getTypeConverter().convertToString(clazz, objVal);
             return strVal;
         }

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.PhysicalInventory
 {
@@ -15,7 +16,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 		IGlobalIdentity<string>, 
 		ICreated<string>, 
 		IUpdated<string>, 
-		IDeleted, 
 		IActive, 
 		IAggregateVersioned<long>,
 		IState
@@ -26,8 +26,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 		void When(IPhysicalInventoryStateCreated e);
 
 		void When(IPhysicalInventoryStateMergePatched e);
-
-		void When(IPhysicalInventoryStateDeleted e);
 
 		void Mutate(IEvent e);
 

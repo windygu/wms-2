@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 using Dddml.Wms.Specialization.NHibernate;
 using NHibernate;
 using NHibernate.Criterion;
@@ -28,7 +29,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory.NHibernate
 			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
-        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "DocumentNumber", "DocumentStatusId", "WarehouseId", "Posted", "Processed", "Processing", "DocumentTypeId", "MovementDate", "Description", "IsApproved", "ApprovalAmount", "IsQuantityUpdated", "ReversalDocumentNumber", "PhysicalInventoryLines", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
+        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "DocumentNumber", "DocumentStatusId", "WarehouseId", "LocatorIdPattern", "ProductIdPattern", "Posted", "Processed", "Processing", "DocumentTypeId", "MovementDate", "Description", "IsApproved", "ApprovalAmount", "IsQuantityUpdated", "ReversalDocumentNumber", "PhysicalInventoryLines", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
     
         public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
 

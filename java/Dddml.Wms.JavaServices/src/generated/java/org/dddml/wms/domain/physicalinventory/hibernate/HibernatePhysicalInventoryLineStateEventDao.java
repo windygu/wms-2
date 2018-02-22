@@ -1,5 +1,6 @@
 package org.dddml.wms.domain.physicalinventory.hibernate;
 
+import org.dddml.wms.domain.inventoryitem.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;

@@ -3,6 +3,7 @@ package org.dddml.wms.domain.physicalinventory;
 import java.util.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.AbstractCommand;
 
@@ -45,6 +46,30 @@ public abstract class AbstractPhysicalInventoryCommand extends AbstractCommand i
         public void setWarehouseId(String warehouseId)
         {
             this.warehouseId = warehouseId;
+        }
+
+        private String locatorIdPattern;
+
+        public String getLocatorIdPattern()
+        {
+            return this.locatorIdPattern;
+        }
+
+        public void setLocatorIdPattern(String locatorIdPattern)
+        {
+            this.locatorIdPattern = locatorIdPattern;
+        }
+
+        private String productIdPattern;
+
+        public String getProductIdPattern()
+        {
+            return this.productIdPattern;
+        }
+
+        public void setProductIdPattern(String productIdPattern)
+        {
+            this.productIdPattern = productIdPattern;
         }
 
         private Boolean posted;
@@ -238,6 +263,30 @@ public abstract class AbstractPhysicalInventoryCommand extends AbstractCommand i
         public void setIsPropertyWarehouseIdRemoved(Boolean removed)
         {
             this.isPropertyWarehouseIdRemoved = removed;
+        }
+
+        private Boolean isPropertyLocatorIdPatternRemoved;
+
+        public Boolean getIsPropertyLocatorIdPatternRemoved()
+        {
+            return this.isPropertyLocatorIdPatternRemoved;
+        }
+
+        public void setIsPropertyLocatorIdPatternRemoved(Boolean removed)
+        {
+            this.isPropertyLocatorIdPatternRemoved = removed;
+        }
+
+        private Boolean isPropertyProductIdPatternRemoved;
+
+        public Boolean getIsPropertyProductIdPatternRemoved()
+        {
+            return this.isPropertyProductIdPatternRemoved;
+        }
+
+        public void setIsPropertyProductIdPatternRemoved(Boolean removed)
+        {
+            this.isPropertyProductIdPatternRemoved = removed;
         }
 
         private Boolean isPropertyPostedRemoved;

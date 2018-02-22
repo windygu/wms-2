@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.PhysicalInventory
 {
@@ -32,13 +33,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             set { this.CommandId = value; }
         }
 
-		public virtual string LineNumber { get; set; }
-
-		public virtual string LocatorId { get; set; }
-
-		public virtual string ProductId { get; set; }
-
-		public virtual string AttributeSetInstanceId { get; set; }
+		public virtual InventoryItemIdDto InventoryItemId { get; set; }
 
 		public virtual decimal? BookQuantity { get; set; }
 
@@ -54,60 +49,16 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
 		public virtual string PhysicalInventoryDocumentNumber { get; set; }
 
-		public virtual bool? IsPropertyLocatorIdRemoved { get; set; }
 
-        bool IMergePatchPhysicalInventoryLine.IsPropertyLocatorIdRemoved
+        InventoryItemId IPhysicalInventoryLineCommand.InventoryItemId
         {
-            get
+            get 
             {
-                var b = this.IsPropertyLocatorIdRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return false;
+                return this.InventoryItemId.ToInventoryItemId();
             }
-            set
+            set 
             {
-                this.IsPropertyLocatorIdRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyProductIdRemoved { get; set; }
-
-        bool IMergePatchPhysicalInventoryLine.IsPropertyProductIdRemoved
-        {
-            get
-            {
-                var b = this.IsPropertyProductIdRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return false;
-            }
-            set
-            {
-                this.IsPropertyProductIdRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyAttributeSetInstanceIdRemoved { get; set; }
-
-        bool IMergePatchPhysicalInventoryLine.IsPropertyAttributeSetInstanceIdRemoved
-        {
-            get
-            {
-                var b = this.IsPropertyAttributeSetInstanceIdRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return false;
-            }
-            set
-            {
-                this.IsPropertyAttributeSetInstanceIdRemoved = value;
+                this.InventoryItemId = new InventoryItemIdDtoWrapper(value);
             }
         }
 

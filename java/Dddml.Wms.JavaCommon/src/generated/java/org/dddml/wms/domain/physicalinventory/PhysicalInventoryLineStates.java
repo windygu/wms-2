@@ -1,5 +1,6 @@
 package org.dddml.wms.domain.physicalinventory;
 
+import org.dddml.wms.domain.inventoryitem.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
@@ -7,11 +8,11 @@ import org.dddml.wms.specialization.Saveable;
 
 public interface PhysicalInventoryLineStates extends Iterable<PhysicalInventoryLineState>, Saveable
 {
-    PhysicalInventoryLineState get(String lineNumber);
+    PhysicalInventoryLineState get(InventoryItemId inventoryItemId);
 
-    PhysicalInventoryLineState get(String lineNumber, boolean forCreation);
+    PhysicalInventoryLineState get(InventoryItemId inventoryItemId, boolean forCreation);
 
-    PhysicalInventoryLineState get(String lineNumber, boolean forCreation, boolean nullAllowed);
+    PhysicalInventoryLineState get(InventoryItemId inventoryItemId, boolean forCreation, boolean nullAllowed);
 
     void remove(PhysicalInventoryLineState state);
 

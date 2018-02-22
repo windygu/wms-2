@@ -3,6 +3,7 @@ package org.dddml.wms.domain.physicalinventory;
 import java.util.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.*;
 
 public abstract class AbstractPhysicalInventoryStateCommandConverter<TCreatePhysicalInventory extends PhysicalInventoryCommand.CreatePhysicalInventory, TMergePatchPhysicalInventory extends PhysicalInventoryCommand.MergePatchPhysicalInventory, TDeletePhysicalInventory extends PhysicalInventoryCommand.DeletePhysicalInventory, TCreatePhysicalInventoryLine extends PhysicalInventoryLineCommand.CreatePhysicalInventoryLine, TMergePatchPhysicalInventoryLine extends PhysicalInventoryLineCommand.MergePatchPhysicalInventoryLine, TRemovePhysicalInventoryLine extends PhysicalInventoryLineCommand.RemovePhysicalInventoryLine>
@@ -39,6 +40,8 @@ public abstract class AbstractPhysicalInventoryStateCommandConverter<TCreatePhys
 
         cmd.setDocumentNumber(state.getDocumentNumber());
         cmd.setWarehouseId(state.getWarehouseId());
+        cmd.setLocatorIdPattern(state.getLocatorIdPattern());
+        cmd.setProductIdPattern(state.getProductIdPattern());
         cmd.setPosted(state.getPosted());
         cmd.setProcessed(state.getProcessed());
         cmd.setProcessing(state.getProcessing());
@@ -52,6 +55,8 @@ public abstract class AbstractPhysicalInventoryStateCommandConverter<TCreatePhys
         cmd.setActive(state.getActive());
             
         if (state.getWarehouseId() == null) { cmd.setIsPropertyWarehouseIdRemoved(true); }
+        if (state.getLocatorIdPattern() == null) { cmd.setIsPropertyLocatorIdPatternRemoved(true); }
+        if (state.getProductIdPattern() == null) { cmd.setIsPropertyProductIdPatternRemoved(true); }
         if (state.getPosted() == null) { cmd.setIsPropertyPostedRemoved(true); }
         if (state.getProcessed() == null) { cmd.setIsPropertyProcessedRemoved(true); }
         if (state.getProcessing() == null) { cmd.setIsPropertyProcessingRemoved(true); }
@@ -78,6 +83,8 @@ public abstract class AbstractPhysicalInventoryStateCommandConverter<TCreatePhys
         cmd.setVersion(state.getVersion());
         cmd.setDocumentNumber(state.getDocumentNumber());
         cmd.setWarehouseId(state.getWarehouseId());
+        cmd.setLocatorIdPattern(state.getLocatorIdPattern());
+        cmd.setProductIdPattern(state.getProductIdPattern());
         cmd.setPosted(state.getPosted());
         cmd.setProcessed(state.getProcessed());
         cmd.setProcessing(state.getProcessing());

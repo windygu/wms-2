@@ -1,6 +1,7 @@
 package org.dddml.wms.domain.physicalinventory;
 
 import java.util.*;
+import org.dddml.wms.domain.inventoryitem.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
@@ -19,12 +20,12 @@ public abstract class AbstractPhysicalInventoryLineStateEvent extends AbstractSt
         this.stateEventId = stateEventId;
     }
     
-    public String getLineNumber() {
-        return getStateEventId().getLineNumber();
+    public InventoryItemId getInventoryItemId() {
+        return getStateEventId().getInventoryItemId();
     }
 
-    public void setLineNumber(String lineNumber) {
-        getStateEventId().setLineNumber(lineNumber);
+    public void setInventoryItemId(InventoryItemId inventoryItemId) {
+        getStateEventId().setInventoryItemId(inventoryItemId);
     }
 
     private boolean stateEventReadOnly;
@@ -43,42 +44,6 @@ public abstract class AbstractPhysicalInventoryLineStateEvent extends AbstractSt
     public void setVersion(Long version)
     {
         this.version = version;
-    }
-
-    private String locatorId;
-
-    public String getLocatorId()
-    {
-        return this.locatorId;
-    }
-
-    public void setLocatorId(String locatorId)
-    {
-        this.locatorId = locatorId;
-    }
-
-    private String productId;
-
-    public String getProductId()
-    {
-        return this.productId;
-    }
-
-    public void setProductId(String productId)
-    {
-        this.productId = productId;
-    }
-
-    private String attributeSetInstanceId;
-
-    public String getAttributeSetInstanceId()
-    {
-        return this.attributeSetInstanceId;
-    }
-
-    public void setAttributeSetInstanceId(String attributeSetInstanceId)
-    {
-        this.attributeSetInstanceId = attributeSetInstanceId;
     }
 
     private BigDecimal bookQuantity;
@@ -165,18 +130,6 @@ public abstract class AbstractPhysicalInventoryLineStateEvent extends AbstractSt
         this.createdAt = createdAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
 
     private String commandId;
 
@@ -230,36 +183,6 @@ public abstract class AbstractPhysicalInventoryLineStateEvent extends AbstractSt
             return StateEventType.MERGE_PATCHED;
         }
 
-        private Boolean isPropertyLocatorIdRemoved;
-
-        public Boolean getIsPropertyLocatorIdRemoved() {
-            return this.isPropertyLocatorIdRemoved;
-        }
-
-        public void setIsPropertyLocatorIdRemoved(Boolean removed) {
-            this.isPropertyLocatorIdRemoved = removed;
-        }
-
-        private Boolean isPropertyProductIdRemoved;
-
-        public Boolean getIsPropertyProductIdRemoved() {
-            return this.isPropertyProductIdRemoved;
-        }
-
-        public void setIsPropertyProductIdRemoved(Boolean removed) {
-            this.isPropertyProductIdRemoved = removed;
-        }
-
-        private Boolean isPropertyAttributeSetInstanceIdRemoved;
-
-        public Boolean getIsPropertyAttributeSetInstanceIdRemoved() {
-            return this.isPropertyAttributeSetInstanceIdRemoved;
-        }
-
-        public void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed) {
-            this.isPropertyAttributeSetInstanceIdRemoved = removed;
-        }
-
         private Boolean isPropertyBookQuantityRemoved;
 
         public Boolean getIsPropertyBookQuantityRemoved() {
@@ -308,16 +231,6 @@ public abstract class AbstractPhysicalInventoryLineStateEvent extends AbstractSt
 
         public void setIsPropertyDescriptionRemoved(Boolean removed) {
             this.isPropertyDescriptionRemoved = removed;
-        }
-
-        private Boolean isPropertyActiveRemoved;
-
-        public Boolean getIsPropertyActiveRemoved() {
-            return this.isPropertyActiveRemoved;
-        }
-
-        public void setIsPropertyActiveRemoved(Boolean removed) {
-            this.isPropertyActiveRemoved = removed;
         }
 
     }

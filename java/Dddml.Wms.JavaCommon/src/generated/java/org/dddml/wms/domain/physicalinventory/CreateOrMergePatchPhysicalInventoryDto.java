@@ -2,6 +2,7 @@ package org.dddml.wms.domain.physicalinventory;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchPhysicalInventoryDto extends AbstractPhysicalInventoryCommandDto
@@ -16,6 +17,30 @@ public class CreateOrMergePatchPhysicalInventoryDto extends AbstractPhysicalInve
     public void setWarehouseId(String warehouseId)
     {
         this.warehouseId = warehouseId;
+    }
+
+    private String locatorIdPattern;
+
+    public String getLocatorIdPattern()
+    {
+        return this.locatorIdPattern;
+    }
+
+    public void setLocatorIdPattern(String locatorIdPattern)
+    {
+        this.locatorIdPattern = locatorIdPattern;
+    }
+
+    private String productIdPattern;
+
+    public String getProductIdPattern()
+    {
+        return this.productIdPattern;
+    }
+
+    public void setProductIdPattern(String productIdPattern)
+    {
+        this.productIdPattern = productIdPattern;
     }
 
     private Boolean posted;
@@ -174,6 +199,30 @@ public class CreateOrMergePatchPhysicalInventoryDto extends AbstractPhysicalInve
         this.isPropertyWarehouseIdRemoved = removed;
     }
 
+    private Boolean isPropertyLocatorIdPatternRemoved;
+
+    public Boolean getIsPropertyLocatorIdPatternRemoved()
+    {
+        return this.isPropertyLocatorIdPatternRemoved;
+    }
+
+    public void setIsPropertyLocatorIdPatternRemoved(Boolean removed)
+    {
+        this.isPropertyLocatorIdPatternRemoved = removed;
+    }
+
+    private Boolean isPropertyProductIdPatternRemoved;
+
+    public Boolean getIsPropertyProductIdPatternRemoved()
+    {
+        return this.isPropertyProductIdPatternRemoved;
+    }
+
+    public void setIsPropertyProductIdPatternRemoved(Boolean removed)
+    {
+        this.isPropertyProductIdPatternRemoved = removed;
+    }
+
     private Boolean isPropertyPostedRemoved;
 
     public Boolean getIsPropertyPostedRemoved()
@@ -310,6 +359,8 @@ public class CreateOrMergePatchPhysicalInventoryDto extends AbstractPhysicalInve
     {
         ((AbstractPhysicalInventoryCommandDto) this).copyTo(command);
         command.setWarehouseId(this.getWarehouseId());
+        command.setLocatorIdPattern(this.getLocatorIdPattern());
+        command.setProductIdPattern(this.getProductIdPattern());
         command.setPosted(this.getPosted());
         command.setProcessed(this.getProcessed());
         command.setProcessing(this.getProcessing());
@@ -356,6 +407,8 @@ public class CreateOrMergePatchPhysicalInventoryDto extends AbstractPhysicalInve
     {
         copyTo((AbstractPhysicalInventoryCommand.AbstractCreateOrMergePatchPhysicalInventory) command);
         command.setIsPropertyWarehouseIdRemoved(this.getIsPropertyWarehouseIdRemoved());
+        command.setIsPropertyLocatorIdPatternRemoved(this.getIsPropertyLocatorIdPatternRemoved());
+        command.setIsPropertyProductIdPatternRemoved(this.getIsPropertyProductIdPatternRemoved());
         command.setIsPropertyPostedRemoved(this.getIsPropertyPostedRemoved());
         command.setIsPropertyProcessedRemoved(this.getIsPropertyProcessedRemoved());
         command.setIsPropertyProcessingRemoved(this.getIsPropertyProcessingRemoved());

@@ -108,18 +108,16 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 			var stateEventId = new PhysicalInventoryLineMvoStateEventId(c.PhysicalInventoryLineId, c.PhysicalInventoryVersion);
             IPhysicalInventoryLineMvoStateCreated e = NewPhysicalInventoryLineMvoStateCreated(stateEventId);
 		
-            e.LocatorId = c.LocatorId;
-            e.ProductId = c.ProductId;
-            e.AttributeSetInstanceId = c.AttributeSetInstanceId;
             e.BookQuantity = c.BookQuantity;
             e.CountedQuantity = c.CountedQuantity;
             e.Processed = c.Processed;
             e.ReversalLineNumber = c.ReversalLineNumber;
             e.Description = c.Description;
             e.Version = c.Version;
-            e.Active = c.Active;
             e.PhysicalInventoryDocumentStatusId = c.PhysicalInventoryDocumentStatusId;
             e.PhysicalInventoryWarehouseId = c.PhysicalInventoryWarehouseId;
+            e.PhysicalInventoryLocatorIdPattern = c.PhysicalInventoryLocatorIdPattern;
+            e.PhysicalInventoryProductIdPattern = c.PhysicalInventoryProductIdPattern;
             e.PhysicalInventoryPosted = c.PhysicalInventoryPosted;
             e.PhysicalInventoryProcessed = c.PhysicalInventoryProcessed;
             e.PhysicalInventoryProcessing = c.PhysicalInventoryProcessing;
@@ -135,7 +133,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             e.PhysicalInventoryUpdatedBy = c.PhysicalInventoryUpdatedBy;
             e.PhysicalInventoryUpdatedAt = c.PhysicalInventoryUpdatedAt;
             e.PhysicalInventoryActive = c.PhysicalInventoryActive;
-            e.PhysicalInventoryDeleted = c.PhysicalInventoryDeleted;
             e.CommandId = c.CommandId;
 
 
@@ -152,18 +149,16 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 			var stateEventId = new PhysicalInventoryLineMvoStateEventId(c.PhysicalInventoryLineId, c.PhysicalInventoryVersion);
             IPhysicalInventoryLineMvoStateMergePatched e = NewPhysicalInventoryLineMvoStateMergePatched(stateEventId);
 
-            e.LocatorId = c.LocatorId;
-            e.ProductId = c.ProductId;
-            e.AttributeSetInstanceId = c.AttributeSetInstanceId;
             e.BookQuantity = c.BookQuantity;
             e.CountedQuantity = c.CountedQuantity;
             e.Processed = c.Processed;
             e.ReversalLineNumber = c.ReversalLineNumber;
             e.Description = c.Description;
             e.Version = c.Version;
-            e.Active = c.Active;
             e.PhysicalInventoryDocumentStatusId = c.PhysicalInventoryDocumentStatusId;
             e.PhysicalInventoryWarehouseId = c.PhysicalInventoryWarehouseId;
+            e.PhysicalInventoryLocatorIdPattern = c.PhysicalInventoryLocatorIdPattern;
+            e.PhysicalInventoryProductIdPattern = c.PhysicalInventoryProductIdPattern;
             e.PhysicalInventoryPosted = c.PhysicalInventoryPosted;
             e.PhysicalInventoryProcessed = c.PhysicalInventoryProcessed;
             e.PhysicalInventoryProcessing = c.PhysicalInventoryProcessing;
@@ -179,19 +174,16 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             e.PhysicalInventoryUpdatedBy = c.PhysicalInventoryUpdatedBy;
             e.PhysicalInventoryUpdatedAt = c.PhysicalInventoryUpdatedAt;
             e.PhysicalInventoryActive = c.PhysicalInventoryActive;
-            e.PhysicalInventoryDeleted = c.PhysicalInventoryDeleted;
-            e.IsPropertyLocatorIdRemoved = c.IsPropertyLocatorIdRemoved;
-            e.IsPropertyProductIdRemoved = c.IsPropertyProductIdRemoved;
-            e.IsPropertyAttributeSetInstanceIdRemoved = c.IsPropertyAttributeSetInstanceIdRemoved;
             e.IsPropertyBookQuantityRemoved = c.IsPropertyBookQuantityRemoved;
             e.IsPropertyCountedQuantityRemoved = c.IsPropertyCountedQuantityRemoved;
             e.IsPropertyProcessedRemoved = c.IsPropertyProcessedRemoved;
             e.IsPropertyReversalLineNumberRemoved = c.IsPropertyReversalLineNumberRemoved;
             e.IsPropertyDescriptionRemoved = c.IsPropertyDescriptionRemoved;
             e.IsPropertyVersionRemoved = c.IsPropertyVersionRemoved;
-            e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
             e.IsPropertyPhysicalInventoryDocumentStatusIdRemoved = c.IsPropertyPhysicalInventoryDocumentStatusIdRemoved;
             e.IsPropertyPhysicalInventoryWarehouseIdRemoved = c.IsPropertyPhysicalInventoryWarehouseIdRemoved;
+            e.IsPropertyPhysicalInventoryLocatorIdPatternRemoved = c.IsPropertyPhysicalInventoryLocatorIdPatternRemoved;
+            e.IsPropertyPhysicalInventoryProductIdPatternRemoved = c.IsPropertyPhysicalInventoryProductIdPatternRemoved;
             e.IsPropertyPhysicalInventoryPostedRemoved = c.IsPropertyPhysicalInventoryPostedRemoved;
             e.IsPropertyPhysicalInventoryProcessedRemoved = c.IsPropertyPhysicalInventoryProcessedRemoved;
             e.IsPropertyPhysicalInventoryProcessingRemoved = c.IsPropertyPhysicalInventoryProcessingRemoved;
@@ -207,7 +199,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             e.IsPropertyPhysicalInventoryUpdatedByRemoved = c.IsPropertyPhysicalInventoryUpdatedByRemoved;
             e.IsPropertyPhysicalInventoryUpdatedAtRemoved = c.IsPropertyPhysicalInventoryUpdatedAtRemoved;
             e.IsPropertyPhysicalInventoryActiveRemoved = c.IsPropertyPhysicalInventoryActiveRemoved;
-            e.IsPropertyPhysicalInventoryDeletedRemoved = c.IsPropertyPhysicalInventoryDeletedRemoved;
 
             e.CommandId = c.CommandId;
 

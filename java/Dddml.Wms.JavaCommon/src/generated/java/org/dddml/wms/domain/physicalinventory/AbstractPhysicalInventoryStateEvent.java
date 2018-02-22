@@ -3,6 +3,7 @@ package org.dddml.wms.domain.physicalinventory;
 import java.util.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractStateEvent;
@@ -55,6 +56,30 @@ public abstract class AbstractPhysicalInventoryStateEvent extends AbstractStateE
     public void setWarehouseId(String warehouseId)
     {
         this.warehouseId = warehouseId;
+    }
+
+    private String locatorIdPattern;
+
+    public String getLocatorIdPattern()
+    {
+        return this.locatorIdPattern;
+    }
+
+    public void setLocatorIdPattern(String locatorIdPattern)
+    {
+        this.locatorIdPattern = locatorIdPattern;
+    }
+
+    private String productIdPattern;
+
+    public String getProductIdPattern()
+    {
+        return this.productIdPattern;
+    }
+
+    public void setProductIdPattern(String productIdPattern)
+    {
+        this.productIdPattern = productIdPattern;
     }
 
     private Boolean posted;
@@ -235,10 +260,10 @@ public abstract class AbstractPhysicalInventoryStateEvent extends AbstractStateE
         return (PhysicalInventoryLineStateEventDao)ApplicationContext.current.get("PhysicalInventoryLineStateEventDao");
     }
 
-    protected PhysicalInventoryLineStateEventId newPhysicalInventoryLineStateEventId(String lineNumber)
+    protected PhysicalInventoryLineStateEventId newPhysicalInventoryLineStateEventId(InventoryItemId inventoryItemId)
     {
         PhysicalInventoryLineStateEventId stateEventId = new PhysicalInventoryLineStateEventId(this.getStateEventId().getDocumentNumber(), 
-            lineNumber, 
+            inventoryItemId, 
             this.getStateEventId().getVersion());
         return stateEventId;
     }
@@ -257,16 +282,16 @@ public abstract class AbstractPhysicalInventoryStateEvent extends AbstractStateE
         }
     }
 
-    public PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateCreated newPhysicalInventoryLineStateCreated(String lineNumber) {
-        return new AbstractPhysicalInventoryLineStateEvent.SimplePhysicalInventoryLineStateCreated(newPhysicalInventoryLineStateEventId(lineNumber));
+    public PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateCreated newPhysicalInventoryLineStateCreated(InventoryItemId inventoryItemId) {
+        return new AbstractPhysicalInventoryLineStateEvent.SimplePhysicalInventoryLineStateCreated(newPhysicalInventoryLineStateEventId(inventoryItemId));
     }
 
-    public PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateMergePatched newPhysicalInventoryLineStateMergePatched(String lineNumber) {
-        return new AbstractPhysicalInventoryLineStateEvent.SimplePhysicalInventoryLineStateMergePatched(newPhysicalInventoryLineStateEventId(lineNumber));
+    public PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateMergePatched newPhysicalInventoryLineStateMergePatched(InventoryItemId inventoryItemId) {
+        return new AbstractPhysicalInventoryLineStateEvent.SimplePhysicalInventoryLineStateMergePatched(newPhysicalInventoryLineStateEventId(inventoryItemId));
     }
 
-    public PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateRemoved newPhysicalInventoryLineStateRemoved(String lineNumber) {
-        return new AbstractPhysicalInventoryLineStateEvent.SimplePhysicalInventoryLineStateRemoved(newPhysicalInventoryLineStateEventId(lineNumber));
+    public PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateRemoved newPhysicalInventoryLineStateRemoved(InventoryItemId inventoryItemId) {
+        return new AbstractPhysicalInventoryLineStateEvent.SimplePhysicalInventoryLineStateRemoved(newPhysicalInventoryLineStateEventId(inventoryItemId));
     }
 
 
@@ -370,6 +395,26 @@ public abstract class AbstractPhysicalInventoryStateEvent extends AbstractStateE
 
         public void setIsPropertyWarehouseIdRemoved(Boolean removed) {
             this.isPropertyWarehouseIdRemoved = removed;
+        }
+
+        private Boolean isPropertyLocatorIdPatternRemoved;
+
+        public Boolean getIsPropertyLocatorIdPatternRemoved() {
+            return this.isPropertyLocatorIdPatternRemoved;
+        }
+
+        public void setIsPropertyLocatorIdPatternRemoved(Boolean removed) {
+            this.isPropertyLocatorIdPatternRemoved = removed;
+        }
+
+        private Boolean isPropertyProductIdPatternRemoved;
+
+        public Boolean getIsPropertyProductIdPatternRemoved() {
+            return this.isPropertyProductIdPatternRemoved;
+        }
+
+        public void setIsPropertyProductIdPatternRemoved(Boolean removed) {
+            this.isPropertyProductIdPatternRemoved = removed;
         }
 
         private Boolean isPropertyPostedRemoved;
@@ -533,70 +578,6 @@ public abstract class AbstractPhysicalInventoryStateEvent extends AbstractStateE
     }
 
 
-    public static abstract class AbstractPhysicalInventoryStateDeleted extends AbstractPhysicalInventoryStateEvent implements PhysicalInventoryStateEvent.PhysicalInventoryStateDeleted, Saveable
-    {
-        public AbstractPhysicalInventoryStateDeleted() {
-            this(new PhysicalInventoryStateEventId());
-        }
-
-        public AbstractPhysicalInventoryStateDeleted(PhysicalInventoryStateEventId stateEventId) {
-            super(stateEventId);
-        }
-
-        public String getStateEventType() {
-            return StateEventType.DELETED;
-        }
-
-		
-        private Map<PhysicalInventoryLineStateEventId, PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateRemoved> physicalInventoryLineEvents = new HashMap<PhysicalInventoryLineStateEventId, PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateRemoved>();
-        
-        private Iterable<PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateRemoved> readOnlyPhysicalInventoryLineEvents;
-
-        public Iterable<PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateRemoved> getPhysicalInventoryLineEvents()
-        {
-            if (!getStateEventReadOnly())
-            {
-                return this.physicalInventoryLineEvents.values();
-            }
-            else
-            {
-                if (readOnlyPhysicalInventoryLineEvents != null) { return readOnlyPhysicalInventoryLineEvents; }
-                PhysicalInventoryLineStateEventDao eventDao = getPhysicalInventoryLineStateEventDao();
-                List<PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateRemoved> eL = new ArrayList<PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateRemoved>();
-                for (PhysicalInventoryLineStateEvent e : eventDao.findByPhysicalInventoryStateEventId(this.getStateEventId()))
-                {
-                    e.setStateEventReadOnly(true);
-                    eL.add((PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateRemoved)e);
-                }
-                return (readOnlyPhysicalInventoryLineEvents = eL);
-            }
-        }
-
-        public void setPhysicalInventoryLineEvents(Iterable<PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateRemoved> es)
-        {
-            if (es != null)
-            {
-                for (PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateRemoved e : es)
-                {
-                    addPhysicalInventoryLineEvent(e);
-                }
-            }
-            else { this.physicalInventoryLineEvents.clear(); }
-        }
-        
-        public void addPhysicalInventoryLineEvent(PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateRemoved e)
-        {
-            throwOnInconsistentEventIds(e);
-            this.physicalInventoryLineEvents.put(e.getStateEventId(), e);
-        }
-
-        public void save()
-        {
-            for (PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateRemoved e : this.getPhysicalInventoryLineEvents()) {
-                getPhysicalInventoryLineStateEventDao().save(e);
-            }
-        }
-    }
     public static class SimplePhysicalInventoryStateCreated extends AbstractPhysicalInventoryStateCreated
     {
         public SimplePhysicalInventoryStateCreated() {
@@ -613,16 +594,6 @@ public abstract class AbstractPhysicalInventoryStateEvent extends AbstractStateE
         }
 
         public SimplePhysicalInventoryStateMergePatched(PhysicalInventoryStateEventId stateEventId) {
-            super(stateEventId);
-        }
-    }
-
-    public static class SimplePhysicalInventoryStateDeleted extends AbstractPhysicalInventoryStateDeleted
-    {
-        public SimplePhysicalInventoryStateDeleted() {
-        }
-
-        public SimplePhysicalInventoryStateDeleted(PhysicalInventoryStateEventId stateEventId) {
             super(stateEventId);
         }
     }

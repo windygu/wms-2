@@ -68,90 +68,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             }
         }
 
-		public virtual string LocatorId
-		{
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("LocatorId"))
-                {
-                    return _state.LocatorId;
-                }
-                return null;
-            }
-            set
-            {
-                _state.LocatorId = value;
-            }
-        }
-
-        string IPhysicalInventoryLineMvoStateProperties.LocatorId
-        {
-            get 
-            {
-                return (this._state as IPhysicalInventoryLineMvoStateProperties).LocatorId;
-            }
-            set 
-            {
-                (this._state as IPhysicalInventoryLineMvoStateProperties).LocatorId = value;
-            }
-        }
-
-		public virtual string ProductId
-		{
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("ProductId"))
-                {
-                    return _state.ProductId;
-                }
-                return null;
-            }
-            set
-            {
-                _state.ProductId = value;
-            }
-        }
-
-        string IPhysicalInventoryLineMvoStateProperties.ProductId
-        {
-            get 
-            {
-                return (this._state as IPhysicalInventoryLineMvoStateProperties).ProductId;
-            }
-            set 
-            {
-                (this._state as IPhysicalInventoryLineMvoStateProperties).ProductId = value;
-            }
-        }
-
-		public virtual string AttributeSetInstanceId
-		{
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("AttributeSetInstanceId"))
-                {
-                    return _state.AttributeSetInstanceId;
-                }
-                return null;
-            }
-            set
-            {
-                _state.AttributeSetInstanceId = value;
-            }
-        }
-
-        string IPhysicalInventoryLineMvoStateProperties.AttributeSetInstanceId
-        {
-            get 
-            {
-                return (this._state as IPhysicalInventoryLineMvoStateProperties).AttributeSetInstanceId;
-            }
-            set 
-            {
-                (this._state as IPhysicalInventoryLineMvoStateProperties).AttributeSetInstanceId = value;
-            }
-        }
-
 		public virtual decimal? BookQuantity
         {
             get
@@ -335,37 +251,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             }
         }
 
-		public virtual bool? Active
-        {
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("Active"))
-                {
-                    return (this._state as IPhysicalInventoryLineMvoStateProperties).Active;
-                }
-                return null;
-            }
-            set
-            {
-                if (value != null && value.HasValue)
-                {
-                    (this._state as IPhysicalInventoryLineMvoStateProperties).Active = value.Value;
-                }
-            }
-        }
-
-        bool IPhysicalInventoryLineMvoStateProperties.Active
-        {
-            get 
-            {
-                return (this._state as IPhysicalInventoryLineMvoStateProperties).Active;
-            }
-            set 
-            {
-                (this._state as IPhysicalInventoryLineMvoStateProperties).Active = value;
-            }
-        }
-
 		public virtual string PhysicalInventoryDocumentStatusId
 		{
             get
@@ -419,6 +304,62 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             set 
             {
                 (this._state as IPhysicalInventoryLineMvoStateProperties).PhysicalInventoryWarehouseId = value;
+            }
+        }
+
+		public virtual string PhysicalInventoryLocatorIdPattern
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("PhysicalInventoryLocatorIdPattern"))
+                {
+                    return _state.PhysicalInventoryLocatorIdPattern;
+                }
+                return null;
+            }
+            set
+            {
+                _state.PhysicalInventoryLocatorIdPattern = value;
+            }
+        }
+
+        string IPhysicalInventoryLineMvoStateProperties.PhysicalInventoryLocatorIdPattern
+        {
+            get 
+            {
+                return (this._state as IPhysicalInventoryLineMvoStateProperties).PhysicalInventoryLocatorIdPattern;
+            }
+            set 
+            {
+                (this._state as IPhysicalInventoryLineMvoStateProperties).PhysicalInventoryLocatorIdPattern = value;
+            }
+        }
+
+		public virtual string PhysicalInventoryProductIdPattern
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("PhysicalInventoryProductIdPattern"))
+                {
+                    return _state.PhysicalInventoryProductIdPattern;
+                }
+                return null;
+            }
+            set
+            {
+                _state.PhysicalInventoryProductIdPattern = value;
+            }
+        }
+
+        string IPhysicalInventoryLineMvoStateProperties.PhysicalInventoryProductIdPattern
+        {
+            get 
+            {
+                return (this._state as IPhysicalInventoryLineMvoStateProperties).PhysicalInventoryProductIdPattern;
+            }
+            set 
+            {
+                (this._state as IPhysicalInventoryLineMvoStateProperties).PhysicalInventoryProductIdPattern = value;
             }
         }
 
@@ -866,37 +807,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             }
         }
 
-		public virtual bool? PhysicalInventoryDeleted
-        {
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("PhysicalInventoryDeleted"))
-                {
-                    return _state.PhysicalInventoryDeleted;
-                }
-                return null;
-            }
-            set
-            {
-                if (value != null && value.HasValue)
-                {
-                    _state.PhysicalInventoryDeleted = value.Value;
-                }
-            }
-        }
-
-        bool IPhysicalInventoryLineMvoStateProperties.PhysicalInventoryDeleted
-        {
-            get 
-            {
-                return (this._state as IPhysicalInventoryLineMvoStateProperties).PhysicalInventoryDeleted;
-            }
-            set 
-            {
-                (this._state as IPhysicalInventoryLineMvoStateProperties).PhysicalInventoryDeleted = value;
-            }
-        }
-
 		public virtual long? PhysicalInventoryVersion
         {
             get
@@ -1003,15 +913,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 		PhysicalInventoryLineId IGlobalIdentity<PhysicalInventoryLineId>.GlobalId
 		{
 			get { return (_state as IPhysicalInventoryLineMvoState).GlobalId; }
-		}
-
-		#endregion
-
-		#region IActive implementation
-
-		bool IActive.IsActive()
-		{
-            return (_state as IActive).IsActive();
 		}
 
 		#endregion

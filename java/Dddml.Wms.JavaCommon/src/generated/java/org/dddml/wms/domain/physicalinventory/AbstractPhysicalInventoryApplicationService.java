@@ -5,6 +5,7 @@ import java.util.function.Consumer;
 import org.dddml.support.criterion.Criterion;
 import java.math.BigDecimal;
 import java.util.Date;
+import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 
@@ -52,10 +53,6 @@ public abstract class AbstractPhysicalInventoryApplicationService implements Phy
 
     public void when(PhysicalInventoryCommand.MergePatchPhysicalInventory c) {
         update(c, ar -> ar.mergePatch(c));
-    }
-
-    public void when(PhysicalInventoryCommand.DeletePhysicalInventory c) {
-        update(c, ar -> ar.delete(c));
     }
 
     public void when(PhysicalInventoryCommands.DocumentAction c) {
@@ -107,8 +104,8 @@ public abstract class AbstractPhysicalInventoryApplicationService implements Phy
         return new AbstractPhysicalInventoryState.SimplePhysicalInventoryState(eventStream.getEvents());
     }
 
-    public PhysicalInventoryLineState getPhysicalInventoryLine(String physicalInventoryDocumentNumber, String lineNumber) {
-        return getStateQueryRepository().getPhysicalInventoryLine(physicalInventoryDocumentNumber, lineNumber);
+    public PhysicalInventoryLineState getPhysicalInventoryLine(String physicalInventoryDocumentNumber, InventoryItemId inventoryItemId) {
+        return getStateQueryRepository().getPhysicalInventoryLine(physicalInventoryDocumentNumber, inventoryItemId);
     }
 
 

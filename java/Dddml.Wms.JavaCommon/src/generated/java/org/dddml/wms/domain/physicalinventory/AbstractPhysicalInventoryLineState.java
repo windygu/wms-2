@@ -1,6 +1,7 @@
 package org.dddml.wms.domain.physicalinventory;
 
 import java.util.*;
+import org.dddml.wms.domain.inventoryitem.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
@@ -28,48 +29,12 @@ public abstract class AbstractPhysicalInventoryLineState implements PhysicalInve
         this.getPhysicalInventoryLineId().setPhysicalInventoryDocumentNumber(physicalInventoryDocumentNumber);
     }
 
-    public String getLineNumber() {
-        return this.getPhysicalInventoryLineId().getLineNumber();
+    public InventoryItemId getInventoryItemId() {
+        return this.getPhysicalInventoryLineId().getInventoryItemId();
     }
         
-    public void setLineNumber(String lineNumber) {
-        this.getPhysicalInventoryLineId().setLineNumber(lineNumber);
-    }
-
-    private String locatorId;
-
-    public String getLocatorId()
-    {
-        return this.locatorId;
-    }
-
-    public void setLocatorId(String locatorId)
-    {
-        this.locatorId = locatorId;
-    }
-
-    private String productId;
-
-    public String getProductId()
-    {
-        return this.productId;
-    }
-
-    public void setProductId(String productId)
-    {
-        this.productId = productId;
-    }
-
-    private String attributeSetInstanceId;
-
-    public String getAttributeSetInstanceId()
-    {
-        return this.attributeSetInstanceId;
-    }
-
-    public void setAttributeSetInstanceId(String attributeSetInstanceId)
-    {
-        this.attributeSetInstanceId = attributeSetInstanceId;
+    public void setInventoryItemId(InventoryItemId inventoryItemId) {
+        this.getPhysicalInventoryLineId().setInventoryItemId(inventoryItemId);
     }
 
     private BigDecimal bookQuantity;
@@ -192,18 +157,6 @@ public abstract class AbstractPhysicalInventoryLineState implements PhysicalInve
         this.updatedAt = updatedAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
     private Boolean deleted;
 
     public Boolean getDeleted()
@@ -269,15 +222,11 @@ public abstract class AbstractPhysicalInventoryLineState implements PhysicalInve
     {
         throwOnWrongEvent(e);
 
-        this.setLocatorId(e.getLocatorId());
-        this.setProductId(e.getProductId());
-        this.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
         this.setBookQuantity(e.getBookQuantity());
         this.setCountedQuantity(e.getCountedQuantity());
         this.setProcessed(e.getProcessed());
         this.setReversalLineNumber(e.getReversalLineNumber());
         this.setDescription(e.getDescription());
-        this.setActive(e.getActive());
 
         this.setDeleted(false);
 
@@ -290,39 +239,6 @@ public abstract class AbstractPhysicalInventoryLineState implements PhysicalInve
     {
         throwOnWrongEvent(e);
 
-        if (e.getLocatorId() == null)
-        {
-            if (e.getIsPropertyLocatorIdRemoved() != null && e.getIsPropertyLocatorIdRemoved())
-            {
-                this.setLocatorId(null);
-            }
-        }
-        else
-        {
-            this.setLocatorId(e.getLocatorId());
-        }
-        if (e.getProductId() == null)
-        {
-            if (e.getIsPropertyProductIdRemoved() != null && e.getIsPropertyProductIdRemoved())
-            {
-                this.setProductId(null);
-            }
-        }
-        else
-        {
-            this.setProductId(e.getProductId());
-        }
-        if (e.getAttributeSetInstanceId() == null)
-        {
-            if (e.getIsPropertyAttributeSetInstanceIdRemoved() != null && e.getIsPropertyAttributeSetInstanceIdRemoved())
-            {
-                this.setAttributeSetInstanceId(null);
-            }
-        }
-        else
-        {
-            this.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
-        }
         if (e.getBookQuantity() == null)
         {
             if (e.getIsPropertyBookQuantityRemoved() != null && e.getIsPropertyBookQuantityRemoved())
@@ -378,17 +294,6 @@ public abstract class AbstractPhysicalInventoryLineState implements PhysicalInve
         {
             this.setDescription(e.getDescription());
         }
-        if (e.getActive() == null)
-        {
-            if (e.getIsPropertyActiveRemoved() != null && e.getIsPropertyActiveRemoved())
-            {
-                this.setActive(null);
-            }
-        }
-        else
-        {
-            this.setActive(e.getActive());
-        }
 
         this.setUpdatedBy(e.getCreatedBy());
         this.setUpdatedAt(e.getCreatedAt());
@@ -418,11 +323,11 @@ public abstract class AbstractPhysicalInventoryLineState implements PhysicalInve
             throw DomainError.named("mutateWrongEntity", "Entity Id PhysicalInventoryDocumentNumber %1$s in state but entity id PhysicalInventoryDocumentNumber %2$s in event", stateEntityIdPhysicalInventoryDocumentNumber, eventEntityIdPhysicalInventoryDocumentNumber);
         }
 
-        String stateEntityIdLineNumber = this.getPhysicalInventoryLineId().getLineNumber();
-        String eventEntityIdLineNumber = stateEvent.getStateEventId().getLineNumber();
-        if (!stateEntityIdLineNumber.equals(eventEntityIdLineNumber))
+        InventoryItemId stateEntityIdInventoryItemId = this.getPhysicalInventoryLineId().getInventoryItemId();
+        InventoryItemId eventEntityIdInventoryItemId = stateEvent.getStateEventId().getInventoryItemId();
+        if (!stateEntityIdInventoryItemId.equals(eventEntityIdInventoryItemId))
         {
-            throw DomainError.named("mutateWrongEntity", "Entity Id LineNumber %1$s in state but entity id LineNumber %2$s in event", stateEntityIdLineNumber, eventEntityIdLineNumber);
+            throw DomainError.named("mutateWrongEntity", "Entity Id InventoryItemId %1$s in state but entity id InventoryItemId %2$s in event", stateEntityIdInventoryItemId, eventEntityIdInventoryItemId);
         }
 
         if (getForReapplying()) { return; }

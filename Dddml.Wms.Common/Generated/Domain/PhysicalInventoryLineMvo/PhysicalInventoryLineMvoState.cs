@@ -40,15 +40,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
 		#endregion
 
-		#region IActive implementation
-
-		bool IActive.IsActive()
-		{
-			return this.Active;
-		}
-
-		#endregion
-
 		#region IDeleted implementation
 
 		bool IDeleted.Deleted
@@ -175,12 +166,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 		public virtual void When(IPhysicalInventoryLineMvoStateCreated e)
 		{
 			ThrowOnWrongEvent(e);
-			this.LocatorId = e.LocatorId;
-
-			this.ProductId = e.ProductId;
-
-			this.AttributeSetInstanceId = e.AttributeSetInstanceId;
-
             this.BookQuantity = (e.BookQuantity != null && e.BookQuantity.HasValue) ? e.BookQuantity.Value : default(decimal);
 
             this.CountedQuantity = (e.CountedQuantity != null && e.CountedQuantity.HasValue) ? e.CountedQuantity.Value : default(decimal);
@@ -193,11 +178,13 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
             this.Version = (e.Version != null && e.Version.HasValue) ? e.Version.Value : default(long);
 
-            this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
-
 			this.PhysicalInventoryDocumentStatusId = e.PhysicalInventoryDocumentStatusId;
 
 			this.PhysicalInventoryWarehouseId = e.PhysicalInventoryWarehouseId;
+
+			this.PhysicalInventoryLocatorIdPattern = e.PhysicalInventoryLocatorIdPattern;
+
+			this.PhysicalInventoryProductIdPattern = e.PhysicalInventoryProductIdPattern;
 
             this.PhysicalInventoryPosted = (e.PhysicalInventoryPosted != null && e.PhysicalInventoryPosted.HasValue) ? e.PhysicalInventoryPosted.Value : default(bool);
 
@@ -229,8 +216,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
             this.PhysicalInventoryActive = (e.PhysicalInventoryActive != null && e.PhysicalInventoryActive.HasValue) ? e.PhysicalInventoryActive.Value : default(bool);
 
-            this.PhysicalInventoryDeleted = (e.PhysicalInventoryDeleted != null && e.PhysicalInventoryDeleted.HasValue) ? e.PhysicalInventoryDeleted.Value : default(bool);
-
 			this.Deleted = false;
 
 			this.CreatedBy = e.CreatedBy;
@@ -243,42 +228,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 		public virtual void When(IPhysicalInventoryLineMvoStateMergePatched e)
 		{
 			ThrowOnWrongEvent(e);
-
-			if (e.LocatorId == null)
-			{
-				if (e.IsPropertyLocatorIdRemoved)
-				{
-					this.LocatorId = default(string);
-				}
-			}
-			else
-			{
-				this.LocatorId = e.LocatorId;
-			}
-
-			if (e.ProductId == null)
-			{
-				if (e.IsPropertyProductIdRemoved)
-				{
-					this.ProductId = default(string);
-				}
-			}
-			else
-			{
-				this.ProductId = e.ProductId;
-			}
-
-			if (e.AttributeSetInstanceId == null)
-			{
-				if (e.IsPropertyAttributeSetInstanceIdRemoved)
-				{
-					this.AttributeSetInstanceId = default(string);
-				}
-			}
-			else
-			{
-				this.AttributeSetInstanceId = e.AttributeSetInstanceId;
-			}
 
 			if (e.BookQuantity == null)
 			{
@@ -352,18 +301,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 				this.Version = (e.Version != null && e.Version.HasValue) ? e.Version.Value : default(long);
 			}
 
-			if (e.Active == null)
-			{
-				if (e.IsPropertyActiveRemoved)
-				{
-					this.Active = default(bool);
-				}
-			}
-			else
-			{
-				this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
-			}
-
 			if (e.PhysicalInventoryDocumentStatusId == null)
 			{
 				if (e.IsPropertyPhysicalInventoryDocumentStatusIdRemoved)
@@ -386,6 +323,30 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 			else
 			{
 				this.PhysicalInventoryWarehouseId = e.PhysicalInventoryWarehouseId;
+			}
+
+			if (e.PhysicalInventoryLocatorIdPattern == null)
+			{
+				if (e.IsPropertyPhysicalInventoryLocatorIdPatternRemoved)
+				{
+					this.PhysicalInventoryLocatorIdPattern = default(string);
+				}
+			}
+			else
+			{
+				this.PhysicalInventoryLocatorIdPattern = e.PhysicalInventoryLocatorIdPattern;
+			}
+
+			if (e.PhysicalInventoryProductIdPattern == null)
+			{
+				if (e.IsPropertyPhysicalInventoryProductIdPatternRemoved)
+				{
+					this.PhysicalInventoryProductIdPattern = default(string);
+				}
+			}
+			else
+			{
+				this.PhysicalInventoryProductIdPattern = e.PhysicalInventoryProductIdPattern;
 			}
 
 			if (e.PhysicalInventoryPosted == null)
@@ -566,18 +527,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 			else
 			{
 				this.PhysicalInventoryActive = (e.PhysicalInventoryActive != null && e.PhysicalInventoryActive.HasValue) ? e.PhysicalInventoryActive.Value : default(bool);
-			}
-
-			if (e.PhysicalInventoryDeleted == null)
-			{
-				if (e.IsPropertyPhysicalInventoryDeletedRemoved)
-				{
-					this.PhysicalInventoryDeleted = default(bool);
-				}
-			}
-			else
-			{
-				this.PhysicalInventoryDeleted = (e.PhysicalInventoryDeleted != null && e.PhysicalInventoryDeleted.HasValue) ? e.PhysicalInventoryDeleted.Value : default(bool);
 			}
 
 

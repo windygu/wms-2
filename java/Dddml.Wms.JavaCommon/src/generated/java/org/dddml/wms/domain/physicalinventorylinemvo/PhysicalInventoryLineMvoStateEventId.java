@@ -41,14 +41,34 @@ public class PhysicalInventoryLineMvoStateEventId implements Serializable
         getPhysicalInventoryLineId().setPhysicalInventoryDocumentNumber(physicalInventoryLineIdPhysicalInventoryDocumentNumber);
     }
 
-    public String getPhysicalInventoryLineIdLineNumber()
+    public String getPhysicalInventoryLineIdInventoryItemIdProductId()
     {
-        return getPhysicalInventoryLineId().getLineNumber();
+        return getPhysicalInventoryLineId().getInventoryItemId().getProductId();
     }
 
-    public void setPhysicalInventoryLineIdLineNumber(String physicalInventoryLineIdLineNumber)
+    public void setPhysicalInventoryLineIdInventoryItemIdProductId(String physicalInventoryLineIdInventoryItemIdProductId)
     {
-        getPhysicalInventoryLineId().setLineNumber(physicalInventoryLineIdLineNumber);
+        getPhysicalInventoryLineId().getInventoryItemId().setProductId(physicalInventoryLineIdInventoryItemIdProductId);
+    }
+
+    public String getPhysicalInventoryLineIdInventoryItemIdLocatorId()
+    {
+        return getPhysicalInventoryLineId().getInventoryItemId().getLocatorId();
+    }
+
+    public void setPhysicalInventoryLineIdInventoryItemIdLocatorId(String physicalInventoryLineIdInventoryItemIdLocatorId)
+    {
+        getPhysicalInventoryLineId().getInventoryItemId().setLocatorId(physicalInventoryLineIdInventoryItemIdLocatorId);
+    }
+
+    public String getPhysicalInventoryLineIdInventoryItemIdAttributeSetInstanceId()
+    {
+        return getPhysicalInventoryLineId().getInventoryItemId().getAttributeSetInstanceId();
+    }
+
+    public void setPhysicalInventoryLineIdInventoryItemIdAttributeSetInstanceId(String physicalInventoryLineIdInventoryItemIdAttributeSetInstanceId)
+    {
+        getPhysicalInventoryLineId().getInventoryItemId().setAttributeSetInstanceId(physicalInventoryLineIdInventoryItemIdAttributeSetInstanceId);
     }
 
     public PhysicalInventoryLineMvoStateEventId()

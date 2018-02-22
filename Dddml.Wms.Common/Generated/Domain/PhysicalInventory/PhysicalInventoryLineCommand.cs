@@ -8,13 +8,14 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.PhysicalInventory
 {
 
 	public abstract class PhysicalInventoryLineCommandBase : IPhysicalInventoryLineCommand
 	{
-		public virtual string LineNumber { get; set; }
+		public virtual InventoryItemId InventoryItemId { get; set; }
 
 
 		public virtual string RequesterId { get; set; }
@@ -32,12 +33,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             get { return this.CommandId; }
             set { this.CommandId = value; }
         }
-
-		public virtual string LocatorId { get; set; }
-
-		public virtual string ProductId { get; set; }
-
-		public virtual string AttributeSetInstanceId { get; set; }
 
 		public virtual decimal? BookQuantity { get; set; }
 
@@ -86,12 +81,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
 	public class MergePatchPhysicalInventoryLine :PhysicalInventoryLineCommandBase, IMergePatchPhysicalInventoryLine
 	{
-
-		public virtual bool IsPropertyLocatorIdRemoved { get; set; }
-
-		public virtual bool IsPropertyProductIdRemoved { get; set; }
-
-		public virtual bool IsPropertyAttributeSetInstanceIdRemoved { get; set; }
 
 		public virtual bool IsPropertyBookQuantityRemoved { get; set; }
 

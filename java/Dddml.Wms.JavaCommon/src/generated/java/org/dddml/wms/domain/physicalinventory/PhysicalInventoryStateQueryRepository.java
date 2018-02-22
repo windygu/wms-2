@@ -5,6 +5,7 @@ import java.util.List;
 import org.dddml.support.criterion.Criterion;
 import java.math.BigDecimal;
 import java.util.Date;
+import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.*;
 
 public interface PhysicalInventoryStateQueryRepository
@@ -27,7 +28,7 @@ public interface PhysicalInventoryStateQueryRepository
 
     long getCount(Criterion filter);
 
-    PhysicalInventoryLineState getPhysicalInventoryLine(String physicalInventoryDocumentNumber, String lineNumber);
+    PhysicalInventoryLineState getPhysicalInventoryLine(String physicalInventoryDocumentNumber, InventoryItemId inventoryItemId);
 
 }
 

@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.PhysicalInventory
 {
@@ -80,19 +81,19 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             this._removedPhysicalInventoryLineStates.Add(state.GlobalId, state);
         }
 
-        public virtual IPhysicalInventoryLineState Get(string lineNumber)
+        public virtual IPhysicalInventoryLineState Get(InventoryItemId inventoryItemId)
 		{
-			return Get(lineNumber, false, false);
+			return Get(inventoryItemId, false, false);
 		}
 
-        public virtual IPhysicalInventoryLineState Get(string lineNumber, bool forCreation)
+        public virtual IPhysicalInventoryLineState Get(InventoryItemId inventoryItemId, bool forCreation)
         {
-			return Get(lineNumber, forCreation, false);
+			return Get(inventoryItemId, forCreation, false);
         }
 
-        public virtual IPhysicalInventoryLineState Get(string lineNumber, bool forCreation, bool nullAllowed)
+        public virtual IPhysicalInventoryLineState Get(InventoryItemId inventoryItemId, bool forCreation, bool nullAllowed)
         {
-            PhysicalInventoryLineId globalId = new PhysicalInventoryLineId(_physicalInventoryState.DocumentNumber, lineNumber);
+            PhysicalInventoryLineId globalId = new PhysicalInventoryLineId(_physicalInventoryState.DocumentNumber, inventoryItemId);
             if (_loadedPhysicalInventoryLineStates.ContainsKey(globalId)) {
                 return _loadedPhysicalInventoryLineStates[globalId];
             }

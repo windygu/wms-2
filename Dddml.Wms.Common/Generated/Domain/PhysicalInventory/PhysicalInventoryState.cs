@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.PhysicalInventory
 {
@@ -23,8 +24,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 		public virtual string UpdatedBy { get; set; }
 
 		public virtual DateTime UpdatedAt { get; set; }
-
-		public virtual bool Deleted { get; set; }
 
 
 		#region IIdentity implementation
@@ -48,17 +47,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
 		#endregion
 
-		#region IDeleted implementation
-
-		bool IDeleted.Deleted
-		{
-			get
-			{
-				return this.Deleted;
-			}
-		}
-
-		#endregion
 
 		#region ICreated implementation
 
@@ -207,6 +195,10 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
 			this.WarehouseId = e.WarehouseId;
 
+			this.LocatorIdPattern = e.LocatorIdPattern;
+
+			this.ProductIdPattern = e.ProductIdPattern;
+
             this.Posted = (e.Posted != null && e.Posted.HasValue) ? e.Posted.Value : default(bool);
 
             this.Processed = (e.Processed != null && e.Processed.HasValue) ? e.Processed.Value : default(bool);
@@ -229,13 +221,11 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 
-			this.Deleted = false;
-
 			this.CreatedBy = e.CreatedBy;
 			this.CreatedAt = e.CreatedAt;
 
 			foreach (IPhysicalInventoryLineStateCreated innerEvent in e.PhysicalInventoryLineEvents) {
-				IPhysicalInventoryLineState innerState = this.PhysicalInventoryLines.Get(innerEvent.GlobalId.LineNumber, true);
+				IPhysicalInventoryLineState innerState = this.PhysicalInventoryLines.Get(innerEvent.GlobalId.InventoryItemId, true);
 				innerState.Mutate (innerEvent);
 			}
 
@@ -268,6 +258,30 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 			else
 			{
 				this.WarehouseId = e.WarehouseId;
+			}
+
+			if (e.LocatorIdPattern == null)
+			{
+				if (e.IsPropertyLocatorIdPatternRemoved)
+				{
+					this.LocatorIdPattern = default(string);
+				}
+			}
+			else
+			{
+				this.LocatorIdPattern = e.LocatorIdPattern;
+			}
+
+			if (e.ProductIdPattern == null)
+			{
+				if (e.IsPropertyProductIdPatternRemoved)
+				{
+					this.ProductIdPattern = default(string);
+				}
+			}
+			else
+			{
+				this.ProductIdPattern = e.ProductIdPattern;
 			}
 
 			if (e.Posted == null)
@@ -409,7 +423,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
 			foreach (IPhysicalInventoryLineStateEvent innerEvent in e.PhysicalInventoryLineEvents)
             {
-                IPhysicalInventoryLineState innerState = this.PhysicalInventoryLines.Get(innerEvent.GlobalId.LineNumber);
+                IPhysicalInventoryLineState innerState = this.PhysicalInventoryLines.Get(innerEvent.GlobalId.InventoryItemId);
 
                 innerState.Mutate(innerEvent);
                 var removed = innerEvent as IPhysicalInventoryLineStateRemoved;
@@ -418,28 +432,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
                     this.PhysicalInventoryLines.Remove(innerState);
                 }
           
-            }
-
-		}
-
-		public virtual void When(IPhysicalInventoryStateDeleted e)
-		{
-			ThrowOnWrongEvent(e);
-
-			this.Deleted = true;
-			this.UpdatedBy = e.CreatedBy;
-			this.UpdatedAt = e.CreatedAt;
-
-            foreach (var innerState in this.PhysicalInventoryLines)
-            {
-                this.PhysicalInventoryLines.Remove(innerState);
-                
-                var innerE = e.NewPhysicalInventoryLineStateRemoved(innerState.LineNumber);
-                ((PhysicalInventoryLineStateEventBase)innerE).CreatedAt = e.CreatedAt;
-                ((PhysicalInventoryLineStateEventBase)innerE).CreatedBy = e.CreatedBy;
-                innerState.When(innerE);
-                //e.AddPhysicalInventoryLineEvent(innerE);
-
             }
 
 		}

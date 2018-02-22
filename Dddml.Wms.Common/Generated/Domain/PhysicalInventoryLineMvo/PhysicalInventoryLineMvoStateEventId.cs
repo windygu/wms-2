@@ -39,9 +39,19 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 			set { PhysicalInventoryLineId.PhysicalInventoryDocumentNumber = value; }
 		}
 
-		public virtual string PhysicalInventoryLineIdLineNumber {
-			get { return PhysicalInventoryLineId.LineNumber; }
-			set { PhysicalInventoryLineId.LineNumber = value; }
+		public virtual string PhysicalInventoryLineIdInventoryItemIdProductId {
+			get { return PhysicalInventoryLineId.InventoryItemId.ProductId; }
+			set { PhysicalInventoryLineId.InventoryItemId.ProductId = value; }
+		}
+
+		public virtual string PhysicalInventoryLineIdInventoryItemIdLocatorId {
+			get { return PhysicalInventoryLineId.InventoryItemId.LocatorId; }
+			set { PhysicalInventoryLineId.InventoryItemId.LocatorId = value; }
+		}
+
+		public virtual string PhysicalInventoryLineIdInventoryItemIdAttributeSetInstanceId {
+			get { return PhysicalInventoryLineId.InventoryItemId.AttributeSetInstanceId; }
+			set { PhysicalInventoryLineId.InventoryItemId.AttributeSetInstanceId = value; }
 		}
 
         #endregion

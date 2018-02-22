@@ -49,18 +49,16 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             cmd.PhysicalInventoryVersion = ((IPhysicalInventoryLineMvoStateProperties)state).PhysicalInventoryVersion;
 
             cmd.PhysicalInventoryLineId = state.PhysicalInventoryLineId;
-            cmd.LocatorId = state.LocatorId;
-            cmd.ProductId = state.ProductId;
-            cmd.AttributeSetInstanceId = state.AttributeSetInstanceId;
             cmd.BookQuantity = state.BookQuantity;
             cmd.CountedQuantity = state.CountedQuantity;
             cmd.Processed = state.Processed;
             cmd.ReversalLineNumber = state.ReversalLineNumber;
             cmd.Description = state.Description;
             cmd.Version = ((IPhysicalInventoryLineMvoStateProperties)state).Version;
-            cmd.Active = ((IPhysicalInventoryLineMvoStateProperties)state).Active;
             cmd.PhysicalInventoryDocumentStatusId = state.PhysicalInventoryDocumentStatusId;
             cmd.PhysicalInventoryWarehouseId = state.PhysicalInventoryWarehouseId;
+            cmd.PhysicalInventoryLocatorIdPattern = state.PhysicalInventoryLocatorIdPattern;
+            cmd.PhysicalInventoryProductIdPattern = state.PhysicalInventoryProductIdPattern;
             cmd.PhysicalInventoryPosted = state.PhysicalInventoryPosted;
             cmd.PhysicalInventoryProcessed = state.PhysicalInventoryProcessed;
             cmd.PhysicalInventoryProcessing = state.PhysicalInventoryProcessing;
@@ -76,14 +74,12 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             cmd.PhysicalInventoryUpdatedBy = state.PhysicalInventoryUpdatedBy;
             cmd.PhysicalInventoryUpdatedAt = state.PhysicalInventoryUpdatedAt;
             cmd.PhysicalInventoryActive = state.PhysicalInventoryActive;
-            cmd.PhysicalInventoryDeleted = state.PhysicalInventoryDeleted;
             
-            if (state.LocatorId == null) { cmd.IsPropertyLocatorIdRemoved = true; }
-            if (state.ProductId == null) { cmd.IsPropertyProductIdRemoved = true; }
-            if (state.AttributeSetInstanceId == null) { cmd.IsPropertyAttributeSetInstanceIdRemoved = true; }
             if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
             if (state.PhysicalInventoryDocumentStatusId == null) { cmd.IsPropertyPhysicalInventoryDocumentStatusIdRemoved = true; }
             if (state.PhysicalInventoryWarehouseId == null) { cmd.IsPropertyPhysicalInventoryWarehouseIdRemoved = true; }
+            if (state.PhysicalInventoryLocatorIdPattern == null) { cmd.IsPropertyPhysicalInventoryLocatorIdPatternRemoved = true; }
+            if (state.PhysicalInventoryProductIdPattern == null) { cmd.IsPropertyPhysicalInventoryProductIdPatternRemoved = true; }
             if (state.PhysicalInventoryProcessing == null) { cmd.IsPropertyPhysicalInventoryProcessingRemoved = true; }
             if (state.PhysicalInventoryDocumentTypeId == null) { cmd.IsPropertyPhysicalInventoryDocumentTypeIdRemoved = true; }
             if (state.PhysicalInventoryMovementDate == null) { cmd.IsPropertyPhysicalInventoryMovementDateRemoved = true; }
@@ -102,18 +98,16 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             cmd.PhysicalInventoryVersion = ((IPhysicalInventoryLineMvoStateProperties)state).PhysicalInventoryVersion;
 
             cmd.PhysicalInventoryLineId = state.PhysicalInventoryLineId;
-            cmd.LocatorId = state.LocatorId;
-            cmd.ProductId = state.ProductId;
-            cmd.AttributeSetInstanceId = state.AttributeSetInstanceId;
             cmd.BookQuantity = state.BookQuantity;
             cmd.CountedQuantity = state.CountedQuantity;
             cmd.Processed = state.Processed;
             cmd.ReversalLineNumber = state.ReversalLineNumber;
             cmd.Description = state.Description;
             cmd.Version = ((IPhysicalInventoryLineMvoStateProperties)state).Version;
-            cmd.Active = ((IPhysicalInventoryLineMvoStateProperties)state).Active;
             cmd.PhysicalInventoryDocumentStatusId = state.PhysicalInventoryDocumentStatusId;
             cmd.PhysicalInventoryWarehouseId = state.PhysicalInventoryWarehouseId;
+            cmd.PhysicalInventoryLocatorIdPattern = state.PhysicalInventoryLocatorIdPattern;
+            cmd.PhysicalInventoryProductIdPattern = state.PhysicalInventoryProductIdPattern;
             cmd.PhysicalInventoryPosted = state.PhysicalInventoryPosted;
             cmd.PhysicalInventoryProcessed = state.PhysicalInventoryProcessed;
             cmd.PhysicalInventoryProcessing = state.PhysicalInventoryProcessing;
@@ -129,7 +123,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             cmd.PhysicalInventoryUpdatedBy = state.PhysicalInventoryUpdatedBy;
             cmd.PhysicalInventoryUpdatedAt = state.PhysicalInventoryUpdatedAt;
             cmd.PhysicalInventoryActive = state.PhysicalInventoryActive;
-            cmd.PhysicalInventoryDeleted = state.PhysicalInventoryDeleted;
             return cmd;
         }
 		

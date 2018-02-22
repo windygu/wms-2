@@ -1,6 +1,7 @@
 package org.dddml.wms.domain.physicalinventory;
 
 import java.util.*;
+import org.dddml.wms.domain.inventoryitem.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
@@ -30,15 +31,11 @@ public class PhysicalInventoryLineStateEventDtoConverter {
         dto.setCreatedBy(e.getCreatedBy());
         dto.setVersion(e.getVersion());
         dto.setCommandId(e.getCommandId());
-        dto.setLocatorId(e.getLocatorId());
-        dto.setProductId(e.getProductId());
-        dto.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
         dto.setBookQuantity(e.getBookQuantity());
         dto.setCountedQuantity(e.getCountedQuantity());
         dto.setProcessed(e.getProcessed());
         dto.setReversalLineNumber(e.getReversalLineNumber());
         dto.setDescription(e.getDescription());
-        dto.setActive(e.getActive());
         return dto;
     }
 
@@ -49,24 +46,16 @@ public class PhysicalInventoryLineStateEventDtoConverter {
         dto.setCreatedBy(e.getCreatedBy());
         dto.setVersion(e.getVersion());
         dto.setCommandId(e.getCommandId());
-        dto.setLocatorId(e.getLocatorId());
-        dto.setProductId(e.getProductId());
-        dto.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
         dto.setBookQuantity(e.getBookQuantity());
         dto.setCountedQuantity(e.getCountedQuantity());
         dto.setProcessed(e.getProcessed());
         dto.setReversalLineNumber(e.getReversalLineNumber());
         dto.setDescription(e.getDescription());
-        dto.setActive(e.getActive());
-        dto.setIsPropertyLocatorIdRemoved(e.getIsPropertyLocatorIdRemoved());
-        dto.setIsPropertyProductIdRemoved(e.getIsPropertyProductIdRemoved());
-        dto.setIsPropertyAttributeSetInstanceIdRemoved(e.getIsPropertyAttributeSetInstanceIdRemoved());
         dto.setIsPropertyBookQuantityRemoved(e.getIsPropertyBookQuantityRemoved());
         dto.setIsPropertyCountedQuantityRemoved(e.getIsPropertyCountedQuantityRemoved());
         dto.setIsPropertyProcessedRemoved(e.getIsPropertyProcessedRemoved());
         dto.setIsPropertyReversalLineNumberRemoved(e.getIsPropertyReversalLineNumberRemoved());
         dto.setIsPropertyDescriptionRemoved(e.getIsPropertyDescriptionRemoved());
-        dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
         return dto;
     }
 

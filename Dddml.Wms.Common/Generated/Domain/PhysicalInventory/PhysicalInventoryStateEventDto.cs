@@ -8,11 +8,12 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.PhysicalInventory
 {
 
-	public abstract class PhysicalInventoryStateEventDtoBase : IStateEventDto, IPhysicalInventoryStateCreated, IPhysicalInventoryStateMergePatched, IPhysicalInventoryStateDeleted
+	public abstract class PhysicalInventoryStateEventDtoBase : IStateEventDto, IPhysicalInventoryStateCreated, IPhysicalInventoryStateMergePatched
 	{
 
         private PhysicalInventoryStateEventIdDto _stateEventId;
@@ -45,6 +46,10 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 		public virtual string DocumentStatusId { get; set; }
 
 		public virtual string WarehouseId { get; set; }
+
+		public virtual string LocatorIdPattern { get; set; }
+
+		public virtual string ProductIdPattern { get; set; }
 
 		public virtual bool? Posted { get; set; }
 
@@ -132,6 +137,44 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             set 
             {
                 this.IsPropertyWarehouseIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyLocatorIdPatternRemoved { get; set; }
+
+        bool IPhysicalInventoryStateMergePatched.IsPropertyLocatorIdPatternRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyLocatorIdPatternRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyLocatorIdPatternRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyProductIdPatternRemoved { get; set; }
+
+        bool IPhysicalInventoryStateMergePatched.IsPropertyProductIdPatternRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyProductIdPatternRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyProductIdPatternRemoved = value;
             }
         }
 
@@ -380,35 +423,35 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
 
 
-        private PhysicalInventoryLineStateEventIdDto NewPhysicalInventoryLineStateEventId(string lineNumber)
+        private PhysicalInventoryLineStateEventIdDto NewPhysicalInventoryLineStateEventId(InventoryItemId inventoryItemId)
         {
             var eId = new PhysicalInventoryLineStateEventIdDto();
             eId.PhysicalInventoryDocumentNumber = this.StateEventId.DocumentNumber;
-            eId.LineNumber = lineNumber;
+            eId.InventoryItemId = new InventoryItemIdDtoWrapper(inventoryItemId);
             eId.PhysicalInventoryVersion = this.StateEventId.Version;
             return eId;
         }
 
-        public virtual PhysicalInventoryLineStateCreatedDto NewPhysicalInventoryLineStateCreated(string lineNumber)
+        public virtual PhysicalInventoryLineStateCreatedDto NewPhysicalInventoryLineStateCreated(InventoryItemId inventoryItemId)
         {
             var e = new PhysicalInventoryLineStateCreatedDto();
-            var eId = NewPhysicalInventoryLineStateEventId(lineNumber);
+            var eId = NewPhysicalInventoryLineStateEventId(inventoryItemId);
             e.StateEventId = eId;
             return e;
         }
 
-        public virtual PhysicalInventoryLineStateMergePatchedDto NewPhysicalInventoryLineStateMergePatched(string lineNumber)
+        public virtual PhysicalInventoryLineStateMergePatchedDto NewPhysicalInventoryLineStateMergePatched(InventoryItemId inventoryItemId)
         {
             var e = new PhysicalInventoryLineStateMergePatchedDto();
-            var eId = NewPhysicalInventoryLineStateEventId(lineNumber);
+            var eId = NewPhysicalInventoryLineStateEventId(inventoryItemId);
             e.StateEventId = eId;
             return e;
         }
 
-        public virtual PhysicalInventoryLineStateRemovedDto NewPhysicalInventoryLineStateRemoved(string lineNumber)
+        public virtual PhysicalInventoryLineStateRemovedDto NewPhysicalInventoryLineStateRemoved(InventoryItemId inventoryItemId)
         {
             var e = new PhysicalInventoryLineStateRemovedDto();
-            var eId = NewPhysicalInventoryLineStateEventId(lineNumber);
+            var eId = NewPhysicalInventoryLineStateEventId(inventoryItemId);
             e.StateEventId = eId;
             return e;
         }
@@ -423,9 +466,9 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             this._physicalInventoryLineEvents.AddPhysicalInventoryLineEvent(e);
         }
 
-        IPhysicalInventoryLineStateCreated IPhysicalInventoryStateCreated.NewPhysicalInventoryLineStateCreated(string lineNumber)
+        IPhysicalInventoryLineStateCreated IPhysicalInventoryStateCreated.NewPhysicalInventoryLineStateCreated(InventoryItemId inventoryItemId)
         {
-            return NewPhysicalInventoryLineStateCreated(lineNumber);
+            return NewPhysicalInventoryLineStateCreated(inventoryItemId);
         }
 
         IEnumerable<IPhysicalInventoryLineStateEvent> IPhysicalInventoryStateMergePatched.PhysicalInventoryLineEvents
@@ -438,37 +481,20 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             this._physicalInventoryLineEvents.AddPhysicalInventoryLineEvent(e);
         }
 
-        IPhysicalInventoryLineStateCreated IPhysicalInventoryStateMergePatched.NewPhysicalInventoryLineStateCreated(string lineNumber)
+        IPhysicalInventoryLineStateCreated IPhysicalInventoryStateMergePatched.NewPhysicalInventoryLineStateCreated(InventoryItemId inventoryItemId)
         {
-            return NewPhysicalInventoryLineStateCreated(lineNumber);
+            return NewPhysicalInventoryLineStateCreated(inventoryItemId);
         }
 
-        IPhysicalInventoryLineStateMergePatched IPhysicalInventoryStateMergePatched.NewPhysicalInventoryLineStateMergePatched(string lineNumber)
+        IPhysicalInventoryLineStateMergePatched IPhysicalInventoryStateMergePatched.NewPhysicalInventoryLineStateMergePatched(InventoryItemId inventoryItemId)
         {
-            return NewPhysicalInventoryLineStateMergePatched(lineNumber);
+            return NewPhysicalInventoryLineStateMergePatched(inventoryItemId);
         }
 
-        IPhysicalInventoryLineStateRemoved IPhysicalInventoryStateMergePatched.NewPhysicalInventoryLineStateRemoved(string lineNumber)
+        IPhysicalInventoryLineStateRemoved IPhysicalInventoryStateMergePatched.NewPhysicalInventoryLineStateRemoved(InventoryItemId inventoryItemId)
         {
-            return NewPhysicalInventoryLineStateRemoved(lineNumber);
+            return NewPhysicalInventoryLineStateRemoved(inventoryItemId);
         }
-
-
-        IEnumerable<IPhysicalInventoryLineStateRemoved> IPhysicalInventoryStateDeleted.PhysicalInventoryLineEvents
-        {
-            get { return this._physicalInventoryLineEvents; }
-        }
-
-        void IPhysicalInventoryStateDeleted.AddPhysicalInventoryLineEvent(IPhysicalInventoryLineStateRemoved e)
-        {
-            this._physicalInventoryLineEvents.AddPhysicalInventoryLineEvent(e);
-        }
-
-        IPhysicalInventoryLineStateRemoved IPhysicalInventoryStateDeleted.NewPhysicalInventoryLineStateRemoved(string lineNumber)
-        {
-            return NewPhysicalInventoryLineStateRemoved(lineNumber);
-        }
-
 
 
         PhysicalInventoryStateEventId IPhysicalInventoryStateEvent.StateEventId
@@ -585,7 +611,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 	}
 
 
-    public partial class PhysicalInventoryStateCreatedOrMergePatchedOrDeletedDtos : IEnumerable<IPhysicalInventoryStateCreated>, IEnumerable<IPhysicalInventoryStateMergePatched>, IEnumerable<IPhysicalInventoryStateDeleted>
+    public partial class PhysicalInventoryStateCreatedOrMergePatchedOrDeletedDtos : IEnumerable<IPhysicalInventoryStateCreated>, IEnumerable<IPhysicalInventoryStateMergePatched>
     {
         private List<PhysicalInventoryStateCreatedOrMergePatchedOrDeletedDto> _innerStateEvents = new List<PhysicalInventoryStateCreatedOrMergePatchedOrDeletedDto>();
 
@@ -619,10 +645,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             return _innerStateEvents.GetEnumerator();
         }
 
-        IEnumerator<IPhysicalInventoryStateDeleted> IEnumerable<IPhysicalInventoryStateDeleted>.GetEnumerator()
-        {
-            return _innerStateEvents.GetEnumerator();
-        }
 
         public void AddPhysicalInventoryEvent(IPhysicalInventoryStateCreated e)
         {
@@ -634,10 +656,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             _innerStateEvents.Add((PhysicalInventoryStateCreatedOrMergePatchedOrDeletedDto)e);
         }
 
-        public void AddPhysicalInventoryEvent(IPhysicalInventoryStateDeleted e)
-        {
-            _innerStateEvents.Add((PhysicalInventoryStateDeletedDto)e);
-        }
 
     }
 

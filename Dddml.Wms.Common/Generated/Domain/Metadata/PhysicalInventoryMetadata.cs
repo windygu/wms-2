@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.Metadata
 {
@@ -75,6 +76,64 @@ namespace Dddml.Wms.Domain.Metadata
                 },
                 new PropertyMetadata {
                     Name = "WarehouseId",
+                    Type = typeof(string),
+                    TypeName = "string",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
+                    Name = "LocatorIdPattern",
+                    Type = typeof(string),
+                    TypeName = "string",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
+                    Name = "ProductIdPattern",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -641,6 +700,10 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("documentStatusId", "DocumentStatusId");
             d.Add("WarehouseId", "WarehouseId");
             d.Add("warehouseId", "WarehouseId");
+            d.Add("LocatorIdPattern", "LocatorIdPattern");
+            d.Add("locatorIdPattern", "LocatorIdPattern");
+            d.Add("ProductIdPattern", "ProductIdPattern");
+            d.Add("productIdPattern", "ProductIdPattern");
             d.Add("Posted", "Posted");
             d.Add("posted", "Posted");
             d.Add("Processed", "Processed");

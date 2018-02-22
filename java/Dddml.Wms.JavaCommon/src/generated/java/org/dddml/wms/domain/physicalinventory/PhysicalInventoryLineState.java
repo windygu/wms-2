@@ -1,6 +1,7 @@
 package org.dddml.wms.domain.physicalinventory;
 
 import java.util.Set;
+import org.dddml.wms.domain.inventoryitem.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
@@ -17,21 +18,9 @@ public interface PhysicalInventoryLineState
 
     void setPhysicalInventoryLineId(PhysicalInventoryLineId physicalInventoryLineId);
 
-    String getLineNumber();
+    InventoryItemId getInventoryItemId();
 
-    void setLineNumber(String lineNumber);
-
-    String getLocatorId();
-
-    void setLocatorId(String locatorId);
-
-    String getProductId();
-
-    void setProductId(String productId);
-
-    String getAttributeSetInstanceId();
-
-    void setAttributeSetInstanceId(String attributeSetInstanceId);
+    void setInventoryItemId(InventoryItemId inventoryItemId);
 
     BigDecimal getBookQuantity();
 
@@ -72,10 +61,6 @@ public interface PhysicalInventoryLineState
     Date getUpdatedAt();
 
     void setUpdatedAt(Date updatedAt);
-
-    Boolean getActive();
-
-    void setActive(Boolean active);
 
     Boolean getDeleted();
 

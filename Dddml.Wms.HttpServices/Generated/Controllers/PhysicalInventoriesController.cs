@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 using Dddml.Wms.Domain.Metadata;
 using Dddml.Wms.HttpServices.Filters;
 using System.Linq;
@@ -122,19 +123,6 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = PhysicalInventoriesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
-        [HttpDelete][SetRequesterId]
-        public void Delete(string id, string commandId, string version, string requesterId = default(string))
-        {
-          try {
-            var value = new DeletePhysicalInventoryDto();
-            value.CommandId = commandId;
-            value.RequesterId = requesterId;
-            value.Version = (long)Convert.ChangeType(version, typeof(long));
-            PhysicalInventoriesControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
-            _physicalInventoryApplicationService.When(value as IDeletePhysicalInventory);
-          } catch (Exception ex) { var response = PhysicalInventoriesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
-        }
-
         [Route("{id}/_commands/DocumentAction")]
         [HttpPut][SetRequesterId]
         public void DocumentAction(string id, [FromBody]PhysicalInventoryCommandDtos.DocumentActionRequestContent content)
@@ -207,12 +195,12 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = PhysicalInventoriesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
-        [Route("{physicalInventoryDocumentNumber}/PhysicalInventoryLines/{lineNumber}")]
+        [Route("{physicalInventoryDocumentNumber}/PhysicalInventoryLines/{inventoryItemId}")]
         [HttpGet]
-        public IPhysicalInventoryLineStateDto GetPhysicalInventoryLine(string physicalInventoryDocumentNumber, string lineNumber)
+        public IPhysicalInventoryLineStateDto GetPhysicalInventoryLine(string physicalInventoryDocumentNumber, string inventoryItemId)
         {
           try {
-            var state = (PhysicalInventoryLineState)_physicalInventoryApplicationService.GetPhysicalInventoryLine(physicalInventoryDocumentNumber, lineNumber);
+            var state = (PhysicalInventoryLineState)_physicalInventoryApplicationService.GetPhysicalInventoryLine(physicalInventoryDocumentNumber, (new InventoryItemIdFlattenedDtoFormatter().Parse(inventoryItemId)).ToInventoryItemId());
             if (state == null) { return null; }
             var stateDto = new PhysicalInventoryLineStateDtoWrapper(state);
             stateDto.AllFieldsReturned = true;

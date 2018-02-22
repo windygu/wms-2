@@ -16,7 +16,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 	public class PhysicalInventoryLineMvoStateEventIdFlattenedDto : IIdFlattenedDto
 	{
 
-        private static string[] _flattenedPropertyNames = new string[] { "PhysicalInventoryLineIdPhysicalInventoryDocumentNumber", "PhysicalInventoryLineIdLineNumber", "PhysicalInventoryVersion" };
+        private static string[] _flattenedPropertyNames = new string[] { "PhysicalInventoryLineIdPhysicalInventoryDocumentNumber", "PhysicalInventoryLineIdInventoryItemIdProductId", "PhysicalInventoryLineIdInventoryItemIdLocatorId", "PhysicalInventoryLineIdInventoryItemIdAttributeSetInstanceId", "PhysicalInventoryVersion" };
 
         string[] IIdFlattenedDto.FieldNames
         {
@@ -40,7 +40,17 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
                 return typeof(string);
             }
 
-            if (fieldName.Equals("PhysicalInventoryLineIdLineNumber", StringComparison.InvariantCultureIgnoreCase))
+            if (fieldName.Equals("PhysicalInventoryLineIdInventoryItemIdProductId", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return typeof(string);
+            }
+
+            if (fieldName.Equals("PhysicalInventoryLineIdInventoryItemIdLocatorId", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return typeof(string);
+            }
+
+            if (fieldName.Equals("PhysicalInventoryLineIdInventoryItemIdAttributeSetInstanceId", StringComparison.InvariantCultureIgnoreCase))
             {
                 return typeof(string);
             }
@@ -85,9 +95,19 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 			set { _value.PhysicalInventoryLineId.PhysicalInventoryDocumentNumber = value; }
 		}
 
-		public virtual string PhysicalInventoryLineIdLineNumber {
-			get { return _value.PhysicalInventoryLineId.LineNumber; }
-			set { _value.PhysicalInventoryLineId.LineNumber = value; }
+		public virtual string PhysicalInventoryLineIdInventoryItemIdProductId {
+			get { return _value.PhysicalInventoryLineId.InventoryItemId.ProductId; }
+			set { _value.PhysicalInventoryLineId.InventoryItemId.ProductId = value; }
+		}
+
+		public virtual string PhysicalInventoryLineIdInventoryItemIdLocatorId {
+			get { return _value.PhysicalInventoryLineId.InventoryItemId.LocatorId; }
+			set { _value.PhysicalInventoryLineId.InventoryItemId.LocatorId = value; }
+		}
+
+		public virtual string PhysicalInventoryLineIdInventoryItemIdAttributeSetInstanceId {
+			get { return _value.PhysicalInventoryLineId.InventoryItemId.AttributeSetInstanceId; }
+			set { _value.PhysicalInventoryLineId.InventoryItemId.AttributeSetInstanceId = value; }
 		}
 
 		public virtual long PhysicalInventoryVersion { 

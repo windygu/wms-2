@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.PhysicalInventory
 {
@@ -53,6 +54,8 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
             cmd.DocumentNumber = state.DocumentNumber;
             cmd.WarehouseId = state.WarehouseId;
+            cmd.LocatorIdPattern = state.LocatorIdPattern;
+            cmd.ProductIdPattern = state.ProductIdPattern;
             cmd.Posted = state.Posted;
             cmd.Processed = state.Processed;
             cmd.Processing = state.Processing;
@@ -66,6 +69,8 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             cmd.Active = ((IPhysicalInventoryStateProperties)state).Active;
             
             if (state.WarehouseId == null) { cmd.IsPropertyWarehouseIdRemoved = true; }
+            if (state.LocatorIdPattern == null) { cmd.IsPropertyLocatorIdPatternRemoved = true; }
+            if (state.ProductIdPattern == null) { cmd.IsPropertyProductIdPatternRemoved = true; }
             if (state.Processing == null) { cmd.IsPropertyProcessingRemoved = true; }
             if (state.DocumentTypeId == null) { cmd.IsPropertyDocumentTypeIdRemoved = true; }
             if (state.MovementDate == null) { cmd.IsPropertyMovementDateRemoved = true; }
@@ -89,6 +94,8 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
             cmd.DocumentNumber = state.DocumentNumber;
             cmd.WarehouseId = state.WarehouseId;
+            cmd.LocatorIdPattern = state.LocatorIdPattern;
+            cmd.ProductIdPattern = state.ProductIdPattern;
             cmd.Posted = state.Posted;
             cmd.Processed = state.Processed;
             cmd.Processing = state.Processing;

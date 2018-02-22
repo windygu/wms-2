@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.PhysicalInventory
 {
@@ -34,7 +35,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             where TRemovePhysicalInventoryLine : IRemovePhysicalInventoryLine, new()
         {
             var cmd = new TRemovePhysicalInventoryLine();
-            cmd.LineNumber = state.LineNumber;
+            cmd.InventoryItemId = state.InventoryItemId;
             return cmd;
         }
 
@@ -43,21 +44,14 @@ namespace Dddml.Wms.Domain.PhysicalInventory
         {
             var cmd = new TMergePatchPhysicalInventoryLine();
 
-            cmd.LineNumber = state.LineNumber;
-            cmd.LocatorId = state.LocatorId;
-            cmd.ProductId = state.ProductId;
-            cmd.AttributeSetInstanceId = state.AttributeSetInstanceId;
+            cmd.InventoryItemId = state.InventoryItemId;
             cmd.BookQuantity = state.BookQuantity;
             cmd.CountedQuantity = state.CountedQuantity;
             cmd.Processed = state.Processed;
             cmd.ReversalLineNumber = state.ReversalLineNumber;
             cmd.Description = state.Description;
-            cmd.Active = ((IPhysicalInventoryLineStateProperties)state).Active;
             cmd.PhysicalInventoryDocumentNumber = state.PhysicalInventoryDocumentNumber;
             
-            if (state.LocatorId == null) { cmd.IsPropertyLocatorIdRemoved = true; }
-            if (state.ProductId == null) { cmd.IsPropertyProductIdRemoved = true; }
-            if (state.AttributeSetInstanceId == null) { cmd.IsPropertyAttributeSetInstanceIdRemoved = true; }
             if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
             return cmd;
         }
@@ -67,16 +61,12 @@ namespace Dddml.Wms.Domain.PhysicalInventory
         {
             var cmd = new TCreatePhysicalInventoryLine();
 
-            cmd.LineNumber = state.LineNumber;
-            cmd.LocatorId = state.LocatorId;
-            cmd.ProductId = state.ProductId;
-            cmd.AttributeSetInstanceId = state.AttributeSetInstanceId;
+            cmd.InventoryItemId = state.InventoryItemId;
             cmd.BookQuantity = state.BookQuantity;
             cmd.CountedQuantity = state.CountedQuantity;
             cmd.Processed = state.Processed;
             cmd.ReversalLineNumber = state.ReversalLineNumber;
             cmd.Description = state.Description;
-            cmd.Active = ((IPhysicalInventoryLineStateProperties)state).Active;
             cmd.PhysicalInventoryDocumentNumber = state.PhysicalInventoryDocumentNumber;
             return cmd;
         }

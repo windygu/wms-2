@@ -9,31 +9,15 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.PhysicalInventory
 {
 
     public partial class PhysicalInventoryLineStateDto : IPhysicalInventoryLineStateDto
     {
-        public virtual string LineNumber
-        {
-            get;
-            set;
-        }
 
-        public virtual string LocatorId
-        {
-            get;
-            set;
-        }
-
-        public virtual string ProductId
-        {
-            get;
-            set;
-        }
-
-        public virtual string AttributeSetInstanceId
+        public virtual InventoryItemIdDto InventoryItemId
         {
             get;
             set;
@@ -64,12 +48,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
         }
 
         public virtual string Description
-        {
-            get;
-            set;
-        }
-
-        public virtual bool? Active
         {
             get;
             set;
@@ -114,16 +92,12 @@ namespace Dddml.Wms.Domain.PhysicalInventory
         public virtual IPhysicalInventoryLineState ToPhysicalInventoryLineState()
         {
             var state = new PhysicalInventoryLineState(true);
-            state.LineNumber = this.LineNumber;
-            state.LocatorId = this.LocatorId;
-            state.ProductId = this.ProductId;
-            state.AttributeSetInstanceId = this.AttributeSetInstanceId;
+            state.InventoryItemId = (this.InventoryItemId == null) ? null : this.InventoryItemId.ToInventoryItemId();
             if (this.BookQuantity != null && this.BookQuantity.HasValue) { state.BookQuantity = this.BookQuantity.Value; }
             if (this.CountedQuantity != null && this.CountedQuantity.HasValue) { state.CountedQuantity = this.CountedQuantity.Value; }
             if (this.Processed != null && this.Processed.HasValue) { state.Processed = this.Processed.Value; }
             if (this.ReversalLineNumber != null && this.ReversalLineNumber.HasValue) { state.ReversalLineNumber = this.ReversalLineNumber.Value; }
             state.Description = this.Description;
-            if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             state.PhysicalInventoryDocumentNumber = this.PhysicalInventoryDocumentNumber;
             state.CreatedBy = this.CreatedBy;

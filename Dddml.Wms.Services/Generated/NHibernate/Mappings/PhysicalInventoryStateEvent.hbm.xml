@@ -13,6 +13,8 @@
 
     <property name="DocumentStatusId" ></property>
     <property name="WarehouseId" ></property>
+    <property name="LocatorIdPattern" ></property>
+    <property name="ProductIdPattern" ><column name="ProductIdPattern" sql-type="VARCHAR(60)" /></property>
     <property name="Posted" ></property>
     <property name="Processed" ></property>
     <property name="Processing" ></property>
@@ -40,6 +42,10 @@
 
         <property name="IsPropertyWarehouseIdRemoved" column="IsPropertyWarehouseIdRemoved"/>
 
+        <property name="IsPropertyLocatorIdPatternRemoved" column="IsPropertyLocatorIdPatternRemoved"/>
+
+        <property name="IsPropertyProductIdPatternRemoved" column="IsPropertyProductIdPatternRemoved"/>
+
         <property name="IsPropertyPostedRemoved" column="IsPropertyPostedRemoved"/>
 
         <property name="IsPropertyProcessedRemoved" column="IsPropertyProcessedRemoved"/>
@@ -62,11 +68,6 @@
 
         <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
     </subclass>
-
-    <subclass name="PhysicalInventoryStateDeleted"  discriminator-value="Deleted">
-
-    </subclass>
-
 
 
   </class>

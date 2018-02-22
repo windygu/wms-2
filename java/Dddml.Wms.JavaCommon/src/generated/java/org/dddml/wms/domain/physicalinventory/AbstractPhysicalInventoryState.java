@@ -3,6 +3,7 @@ package org.dddml.wms.domain.physicalinventory;
 import java.util.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.physicalinventory.PhysicalInventoryStateEvent.*;
@@ -44,6 +45,30 @@ public abstract class AbstractPhysicalInventoryState implements PhysicalInventor
     public void setWarehouseId(String warehouseId)
     {
         this.warehouseId = warehouseId;
+    }
+
+    private String locatorIdPattern;
+
+    public String getLocatorIdPattern()
+    {
+        return this.locatorIdPattern;
+    }
+
+    public void setLocatorIdPattern(String locatorIdPattern)
+    {
+        this.locatorIdPattern = locatorIdPattern;
+    }
+
+    private String productIdPattern;
+
+    public String getProductIdPattern()
+    {
+        return this.productIdPattern;
+    }
+
+    public void setProductIdPattern(String productIdPattern)
+    {
+        this.productIdPattern = productIdPattern;
     }
 
     private Boolean posted;
@@ -238,18 +263,6 @@ public abstract class AbstractPhysicalInventoryState implements PhysicalInventor
         this.active = active;
     }
 
-    private Boolean deleted;
-
-    public Boolean getDeleted()
-    {
-        return this.deleted;
-    }
-
-    public void setDeleted(Boolean deleted)
-    {
-        this.deleted = deleted;
-    }
-
     public boolean isStateUnsaved() 
     {
         return this.getVersion() == null;
@@ -316,8 +329,6 @@ public abstract class AbstractPhysicalInventoryState implements PhysicalInventor
             when((PhysicalInventoryStateCreated) e);
         } else if (e instanceof PhysicalInventoryStateMergePatched) {
             when((PhysicalInventoryStateMergePatched) e);
-        } else if (e instanceof PhysicalInventoryStateDeleted) {
-            when((PhysicalInventoryStateDeleted) e);
         } else {
             throw new UnsupportedOperationException(String.format("Unsupported event type: %1$s", e.getClass().getName()));
         }
@@ -329,6 +340,8 @@ public abstract class AbstractPhysicalInventoryState implements PhysicalInventor
 
         this.setDocumentStatusId(e.getDocumentStatusId());
         this.setWarehouseId(e.getWarehouseId());
+        this.setLocatorIdPattern(e.getLocatorIdPattern());
+        this.setProductIdPattern(e.getProductIdPattern());
         this.setPosted(e.getPosted());
         this.setProcessed(e.getProcessed());
         this.setProcessing(e.getProcessing());
@@ -341,13 +354,11 @@ public abstract class AbstractPhysicalInventoryState implements PhysicalInventor
         this.setReversalDocumentNumber(e.getReversalDocumentNumber());
         this.setActive(e.getActive());
 
-        this.setDeleted(false);
-
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
         for (PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateCreated innerEvent : e.getPhysicalInventoryLineEvents()) {
-            PhysicalInventoryLineState innerState = this.getPhysicalInventoryLines().get(innerEvent.getStateEventId().getLineNumber());
+            PhysicalInventoryLineState innerState = this.getPhysicalInventoryLines().get(innerEvent.getStateEventId().getInventoryItemId());
             innerState.mutate(innerEvent);
         }
     }
@@ -377,6 +388,28 @@ public abstract class AbstractPhysicalInventoryState implements PhysicalInventor
         else
         {
             this.setWarehouseId(e.getWarehouseId());
+        }
+        if (e.getLocatorIdPattern() == null)
+        {
+            if (e.getIsPropertyLocatorIdPatternRemoved() != null && e.getIsPropertyLocatorIdPatternRemoved())
+            {
+                this.setLocatorIdPattern(null);
+            }
+        }
+        else
+        {
+            this.setLocatorIdPattern(e.getLocatorIdPattern());
+        }
+        if (e.getProductIdPattern() == null)
+        {
+            if (e.getIsPropertyProductIdPatternRemoved() != null && e.getIsPropertyProductIdPatternRemoved())
+            {
+                this.setProductIdPattern(null);
+            }
+        }
+        else
+        {
+            this.setProductIdPattern(e.getProductIdPattern());
         }
         if (e.getPosted() == null)
         {
@@ -504,33 +537,13 @@ public abstract class AbstractPhysicalInventoryState implements PhysicalInventor
         this.setUpdatedAt(e.getCreatedAt());
 
         for (PhysicalInventoryLineStateEvent innerEvent : e.getPhysicalInventoryLineEvents()) {
-            PhysicalInventoryLineState innerState = this.getPhysicalInventoryLines().get(innerEvent.getStateEventId().getLineNumber());
+            PhysicalInventoryLineState innerState = this.getPhysicalInventoryLines().get(innerEvent.getStateEventId().getInventoryItemId());
             innerState.mutate(innerEvent);
             if (innerEvent instanceof PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateRemoved)
             {
                 //PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateRemoved removed = (PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateRemoved)innerEvent;
                 this.getPhysicalInventoryLines().remove(innerState);
             }
-        }
-    }
-
-    public void when(PhysicalInventoryStateDeleted e)
-    {
-        throwOnWrongEvent(e);
-
-        this.setDeleted(true);
-        this.setUpdatedBy(e.getCreatedBy());
-        this.setUpdatedAt(e.getCreatedAt());
-
-        for (PhysicalInventoryLineState innerState : this.getPhysicalInventoryLines())
-        {
-            this.getPhysicalInventoryLines().remove(innerState);
-        
-            PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateRemoved innerE = e.newPhysicalInventoryLineStateRemoved(innerState.getLineNumber());
-            innerE.setCreatedAt(e.getCreatedAt());
-            innerE.setCreatedBy(e.getCreatedBy());
-            innerState.when(innerE);
-            //e.addPhysicalInventoryLineEvent(innerE);
         }
     }
 

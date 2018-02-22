@@ -18,18 +18,6 @@ public interface PhysicalInventoryLineMvoState
 
     void setPhysicalInventoryLineId(PhysicalInventoryLineId physicalInventoryLineId);
 
-    String getLocatorId();
-
-    void setLocatorId(String locatorId);
-
-    String getProductId();
-
-    void setProductId(String productId);
-
-    String getAttributeSetInstanceId();
-
-    void setAttributeSetInstanceId(String attributeSetInstanceId);
-
     BigDecimal getBookQuantity();
 
     void setBookQuantity(BigDecimal bookQuantity);
@@ -70,10 +58,6 @@ public interface PhysicalInventoryLineMvoState
 
     void setUpdatedAt(Date updatedAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     Boolean getDeleted();
 
     void setDeleted(Boolean deleted);
@@ -85,6 +69,14 @@ public interface PhysicalInventoryLineMvoState
     String getPhysicalInventoryWarehouseId();
 
     void setPhysicalInventoryWarehouseId(String physicalInventoryWarehouseId);
+
+    String getPhysicalInventoryLocatorIdPattern();
+
+    void setPhysicalInventoryLocatorIdPattern(String physicalInventoryLocatorIdPattern);
+
+    String getPhysicalInventoryProductIdPattern();
+
+    void setPhysicalInventoryProductIdPattern(String physicalInventoryProductIdPattern);
 
     Boolean getPhysicalInventoryPosted();
 
@@ -149,10 +141,6 @@ public interface PhysicalInventoryLineMvoState
     Boolean getPhysicalInventoryActive();
 
     void setPhysicalInventoryActive(Boolean physicalInventoryActive);
-
-    Boolean getPhysicalInventoryDeleted();
-
-    void setPhysicalInventoryDeleted(Boolean physicalInventoryDeleted);
 
 
     boolean isStateUnsaved();

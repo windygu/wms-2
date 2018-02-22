@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.PhysicalInventory
 {
 	public interface IPhysicalInventoryLineState : IPhysicalInventoryLineStateProperties, 
 		IGlobalIdentity<PhysicalInventoryLineId>, 
-		ILocalIdentity<string>, 
+		ILocalIdentity<InventoryItemId>, 
 		ICreated<string>, 
 		IUpdated<string>, 
 		IDeleted, 
-		IActive, 
 		IEntityVersioned<long>,
 		IState
 	{

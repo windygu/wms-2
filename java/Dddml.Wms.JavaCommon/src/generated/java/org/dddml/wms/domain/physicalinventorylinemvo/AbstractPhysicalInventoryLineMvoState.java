@@ -23,42 +23,6 @@ public abstract class AbstractPhysicalInventoryLineMvoState implements PhysicalI
         this.physicalInventoryLineId = physicalInventoryLineId;
     }
 
-    private String locatorId;
-
-    public String getLocatorId()
-    {
-        return this.locatorId;
-    }
-
-    public void setLocatorId(String locatorId)
-    {
-        this.locatorId = locatorId;
-    }
-
-    private String productId;
-
-    public String getProductId()
-    {
-        return this.productId;
-    }
-
-    public void setProductId(String productId)
-    {
-        this.productId = productId;
-    }
-
-    private String attributeSetInstanceId;
-
-    public String getAttributeSetInstanceId()
-    {
-        return this.attributeSetInstanceId;
-    }
-
-    public void setAttributeSetInstanceId(String attributeSetInstanceId)
-    {
-        this.attributeSetInstanceId = attributeSetInstanceId;
-    }
-
     private BigDecimal bookQuantity;
 
     public BigDecimal getBookQuantity()
@@ -179,18 +143,6 @@ public abstract class AbstractPhysicalInventoryLineMvoState implements PhysicalI
         this.updatedAt = updatedAt;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
     private Boolean deleted;
 
     public Boolean getDeleted()
@@ -225,6 +177,30 @@ public abstract class AbstractPhysicalInventoryLineMvoState implements PhysicalI
     public void setPhysicalInventoryWarehouseId(String physicalInventoryWarehouseId)
     {
         this.physicalInventoryWarehouseId = physicalInventoryWarehouseId;
+    }
+
+    private String physicalInventoryLocatorIdPattern;
+
+    public String getPhysicalInventoryLocatorIdPattern()
+    {
+        return this.physicalInventoryLocatorIdPattern;
+    }
+
+    public void setPhysicalInventoryLocatorIdPattern(String physicalInventoryLocatorIdPattern)
+    {
+        this.physicalInventoryLocatorIdPattern = physicalInventoryLocatorIdPattern;
+    }
+
+    private String physicalInventoryProductIdPattern;
+
+    public String getPhysicalInventoryProductIdPattern()
+    {
+        return this.physicalInventoryProductIdPattern;
+    }
+
+    public void setPhysicalInventoryProductIdPattern(String physicalInventoryProductIdPattern)
+    {
+        this.physicalInventoryProductIdPattern = physicalInventoryProductIdPattern;
     }
 
     private Boolean physicalInventoryPosted;
@@ -419,18 +395,6 @@ public abstract class AbstractPhysicalInventoryLineMvoState implements PhysicalI
         this.physicalInventoryActive = physicalInventoryActive;
     }
 
-    private Boolean physicalInventoryDeleted;
-
-    public Boolean getPhysicalInventoryDeleted()
-    {
-        return this.physicalInventoryDeleted;
-    }
-
-    public void setPhysicalInventoryDeleted(Boolean physicalInventoryDeleted)
-    {
-        this.physicalInventoryDeleted = physicalInventoryDeleted;
-    }
-
     public boolean isStateUnsaved() 
     {
         return this.getPhysicalInventoryVersion() == null;
@@ -495,18 +459,16 @@ public abstract class AbstractPhysicalInventoryLineMvoState implements PhysicalI
     {
         throwOnWrongEvent(e);
 
-        this.setLocatorId(e.getLocatorId());
-        this.setProductId(e.getProductId());
-        this.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
         this.setBookQuantity(e.getBookQuantity());
         this.setCountedQuantity(e.getCountedQuantity());
         this.setProcessed(e.getProcessed());
         this.setReversalLineNumber(e.getReversalLineNumber());
         this.setDescription(e.getDescription());
         this.setVersion(e.getVersion());
-        this.setActive(e.getActive());
         this.setPhysicalInventoryDocumentStatusId(e.getPhysicalInventoryDocumentStatusId());
         this.setPhysicalInventoryWarehouseId(e.getPhysicalInventoryWarehouseId());
+        this.setPhysicalInventoryLocatorIdPattern(e.getPhysicalInventoryLocatorIdPattern());
+        this.setPhysicalInventoryProductIdPattern(e.getPhysicalInventoryProductIdPattern());
         this.setPhysicalInventoryPosted(e.getPhysicalInventoryPosted());
         this.setPhysicalInventoryProcessed(e.getPhysicalInventoryProcessed());
         this.setPhysicalInventoryProcessing(e.getPhysicalInventoryProcessing());
@@ -522,7 +484,6 @@ public abstract class AbstractPhysicalInventoryLineMvoState implements PhysicalI
         this.setPhysicalInventoryUpdatedBy(e.getPhysicalInventoryUpdatedBy());
         this.setPhysicalInventoryUpdatedAt(e.getPhysicalInventoryUpdatedAt());
         this.setPhysicalInventoryActive(e.getPhysicalInventoryActive());
-        this.setPhysicalInventoryDeleted(e.getPhysicalInventoryDeleted());
 
         this.setDeleted(false);
 
@@ -535,39 +496,6 @@ public abstract class AbstractPhysicalInventoryLineMvoState implements PhysicalI
     {
         throwOnWrongEvent(e);
 
-        if (e.getLocatorId() == null)
-        {
-            if (e.getIsPropertyLocatorIdRemoved() != null && e.getIsPropertyLocatorIdRemoved())
-            {
-                this.setLocatorId(null);
-            }
-        }
-        else
-        {
-            this.setLocatorId(e.getLocatorId());
-        }
-        if (e.getProductId() == null)
-        {
-            if (e.getIsPropertyProductIdRemoved() != null && e.getIsPropertyProductIdRemoved())
-            {
-                this.setProductId(null);
-            }
-        }
-        else
-        {
-            this.setProductId(e.getProductId());
-        }
-        if (e.getAttributeSetInstanceId() == null)
-        {
-            if (e.getIsPropertyAttributeSetInstanceIdRemoved() != null && e.getIsPropertyAttributeSetInstanceIdRemoved())
-            {
-                this.setAttributeSetInstanceId(null);
-            }
-        }
-        else
-        {
-            this.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
-        }
         if (e.getBookQuantity() == null)
         {
             if (e.getIsPropertyBookQuantityRemoved() != null && e.getIsPropertyBookQuantityRemoved())
@@ -634,17 +562,6 @@ public abstract class AbstractPhysicalInventoryLineMvoState implements PhysicalI
         {
             this.setVersion(e.getVersion());
         }
-        if (e.getActive() == null)
-        {
-            if (e.getIsPropertyActiveRemoved() != null && e.getIsPropertyActiveRemoved())
-            {
-                this.setActive(null);
-            }
-        }
-        else
-        {
-            this.setActive(e.getActive());
-        }
         if (e.getPhysicalInventoryDocumentStatusId() == null)
         {
             if (e.getIsPropertyPhysicalInventoryDocumentStatusIdRemoved() != null && e.getIsPropertyPhysicalInventoryDocumentStatusIdRemoved())
@@ -666,6 +583,28 @@ public abstract class AbstractPhysicalInventoryLineMvoState implements PhysicalI
         else
         {
             this.setPhysicalInventoryWarehouseId(e.getPhysicalInventoryWarehouseId());
+        }
+        if (e.getPhysicalInventoryLocatorIdPattern() == null)
+        {
+            if (e.getIsPropertyPhysicalInventoryLocatorIdPatternRemoved() != null && e.getIsPropertyPhysicalInventoryLocatorIdPatternRemoved())
+            {
+                this.setPhysicalInventoryLocatorIdPattern(null);
+            }
+        }
+        else
+        {
+            this.setPhysicalInventoryLocatorIdPattern(e.getPhysicalInventoryLocatorIdPattern());
+        }
+        if (e.getPhysicalInventoryProductIdPattern() == null)
+        {
+            if (e.getIsPropertyPhysicalInventoryProductIdPatternRemoved() != null && e.getIsPropertyPhysicalInventoryProductIdPatternRemoved())
+            {
+                this.setPhysicalInventoryProductIdPattern(null);
+            }
+        }
+        else
+        {
+            this.setPhysicalInventoryProductIdPattern(e.getPhysicalInventoryProductIdPattern());
         }
         if (e.getPhysicalInventoryPosted() == null)
         {
@@ -831,17 +770,6 @@ public abstract class AbstractPhysicalInventoryLineMvoState implements PhysicalI
         else
         {
             this.setPhysicalInventoryActive(e.getPhysicalInventoryActive());
-        }
-        if (e.getPhysicalInventoryDeleted() == null)
-        {
-            if (e.getIsPropertyPhysicalInventoryDeletedRemoved() != null && e.getIsPropertyPhysicalInventoryDeletedRemoved())
-            {
-                this.setPhysicalInventoryDeleted(null);
-            }
-        }
-        else
-        {
-            this.setPhysicalInventoryDeleted(e.getPhysicalInventoryDeleted());
         }
 
         this.setUpdatedBy(e.getCreatedBy());

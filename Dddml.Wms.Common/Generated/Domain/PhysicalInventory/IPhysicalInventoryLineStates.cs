@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.PhysicalInventory
 {
@@ -15,11 +16,11 @@ namespace Dddml.Wms.Domain.PhysicalInventory
     public interface IPhysicalInventoryLineStates : IEnumerable<IPhysicalInventoryLineState>, ISaveable
     {
         
-        IPhysicalInventoryLineState Get(string lineNumber);
+        IPhysicalInventoryLineState Get(InventoryItemId inventoryItemId);
 
-        IPhysicalInventoryLineState Get(string lineNumber, bool forCreation);
+        IPhysicalInventoryLineState Get(InventoryItemId inventoryItemId, bool forCreation);
 
-        IPhysicalInventoryLineState Get(string lineNumber, bool forCreation, bool nullAllowed);
+        IPhysicalInventoryLineState Get(InventoryItemId inventoryItemId, bool forCreation, bool nullAllowed);
         
         void Remove(IPhysicalInventoryLineState state);
 

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -111,11 +112,6 @@ namespace Dddml.Wms.HttpServices.ClientProxies
         void IPhysicalInventoryApplicationService.When(IMergePatchPhysicalInventory c)
         {
             this.When((MergePatchPhysicalInventoryDto)c);
-        }
-
-        void IPhysicalInventoryApplicationService.When(IDeletePhysicalInventory c)
-        {
-            this.When((DeletePhysicalInventoryDto)c);
         }
 
         public void When(PhysicalInventoryCommands.DocumentAction c)
@@ -294,11 +290,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetHistoryStateAsync(documentNumber, version).GetAwaiter().GetResult();
         }
 
-        public async virtual Task<IPhysicalInventoryLineState> GetPhysicalInventoryLineAsync(string physicalInventoryDocumentNumber, string lineNumber)
+        public async virtual Task<IPhysicalInventoryLineState> GetPhysicalInventoryLineAsync(string physicalInventoryDocumentNumber, InventoryItemId inventoryItemId)
         {
             var uriParameters = new PhysicalInventoryLineUriParameters();
             uriParameters.PhysicalInventoryDocumentNumber = physicalInventoryDocumentNumber;
-            uriParameters.LineNumber = lineNumber;
+            uriParameters.InventoryItemId = (new InventoryItemIdFlattenedDtoFormatter()).ToString(new InventoryItemIdFlattenedDto(inventoryItemId));
 
             var req = new PhysicalInventoryLineGetRequest(uriParameters);
             var resp = await _ramlClient.PhysicalInventoryLine.Get(req);
@@ -306,9 +302,9 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return (resp.Content == null) ? null : resp.Content.ToPhysicalInventoryLineState();
         }
 
-        public virtual IPhysicalInventoryLineState GetPhysicalInventoryLine(string physicalInventoryDocumentNumber, string lineNumber)
+        public virtual IPhysicalInventoryLineState GetPhysicalInventoryLine(string physicalInventoryDocumentNumber, InventoryItemId inventoryItemId)
         {
-            return GetPhysicalInventoryLineAsync(physicalInventoryDocumentNumber, lineNumber).GetAwaiter().GetResult();
+            return GetPhysicalInventoryLineAsync(physicalInventoryDocumentNumber, inventoryItemId).GetAwaiter().GetResult();
         }
 
 

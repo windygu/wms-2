@@ -424,9 +424,8 @@ CREATE VIEW `OrderItem_RV` AS
 CREATE VIEW `PhysicalInventoryLine_RV` AS
     SELECT 
         `PhysicalInventoryLines`.`PhysicalInventoryLineIdPhysicalInventoryDocumentNumber`,
-        `PhysicalInventoryLines`.`PhysicalInventoryLineIdLineNumber`,
-        `PhysicalInventoryLines`.`LocatorId`,
         `PhysicalInventoryLines`.`ProductId`,
+        `PhysicalInventoryLines`.`LocatorId`,
         `PhysicalInventoryLines`.`AttributeSetInstanceId`,
         `PhysicalInventoryLines`.`BookQuantity`,
         `PhysicalInventoryLines`.`CountedQuantity`,
@@ -438,10 +437,11 @@ CREATE VIEW `PhysicalInventoryLine_RV` AS
         `PhysicalInventoryLines`.`CreatedAt`,
         `PhysicalInventoryLines`.`UpdatedBy`,
         `PhysicalInventoryLines`.`UpdatedAt`,
-        `PhysicalInventoryLines`.`Active`,
         `PhysicalInventoryLines`.`Deleted`,
         `PhysicalInventories`.`DocumentStatusId` AS `PhysicalInventoryDocumentStatusId`,
         `PhysicalInventories`.`WarehouseId` AS `PhysicalInventoryWarehouseId`,
+        `PhysicalInventories`.`LocatorIdPattern` AS `PhysicalInventoryLocatorIdPattern`,
+        `PhysicalInventories`.`ProductIdPattern` AS `PhysicalInventoryProductIdPattern`,
         `PhysicalInventories`.`Posted` AS `PhysicalInventoryPosted`,
         `PhysicalInventories`.`Processed` AS `PhysicalInventoryProcessed`,
         `PhysicalInventories`.`Processing` AS `PhysicalInventoryProcessing`,
@@ -457,8 +457,7 @@ CREATE VIEW `PhysicalInventoryLine_RV` AS
         `PhysicalInventories`.`CreatedAt` AS `PhysicalInventoryCreatedAt`,
         `PhysicalInventories`.`UpdatedBy` AS `PhysicalInventoryUpdatedBy`,
         `PhysicalInventories`.`UpdatedAt` AS `PhysicalInventoryUpdatedAt`,
-        `PhysicalInventories`.`Active` AS `PhysicalInventoryActive`,
-        `PhysicalInventories`.`Deleted` AS `PhysicalInventoryDeleted`
+        `PhysicalInventories`.`Active` AS `PhysicalInventoryActive`
     FROM
         (`PhysicalInventoryLines`
             JOIN `PhysicalInventories` ON ( 1=1 

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.PhysicalInventory
 {
@@ -19,6 +20,10 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 		string DocumentStatusId { get; set; }
 
 		string WarehouseId { get; set; }
+
+		string LocatorIdPattern { get; set; }
+
+		string ProductIdPattern { get; set; }
 
 		bool Posted { get; set; }
 

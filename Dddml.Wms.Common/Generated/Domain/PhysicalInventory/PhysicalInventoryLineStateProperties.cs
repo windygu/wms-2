@@ -8,19 +8,14 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.PhysicalInventory
 {
 
 	public abstract class PhysicalInventoryLineStateProperties : IPhysicalInventoryLineStateProperties
 	{
-		public virtual string LineNumber { get; set; }
-
-		public virtual string LocatorId { get; set; }
-
-		public virtual string ProductId { get; set; }
-
-		public virtual string AttributeSetInstanceId { get; set; }
+		public virtual InventoryItemId InventoryItemId { get; set; }
 
 		public virtual decimal BookQuantity { get; set; }
 
@@ -33,8 +28,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 		public virtual string Description { get; set; }
 
 		public virtual long Version { get; set; }
-
-		public virtual bool Active { get; set; }
 
 		// Outer Id:
 

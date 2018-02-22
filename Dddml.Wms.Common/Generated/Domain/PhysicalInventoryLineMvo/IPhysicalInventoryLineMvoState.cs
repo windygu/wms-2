@@ -17,7 +17,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 		ICreated<string>, 
 		IUpdated<string>, 
 		IDeleted, 
-		IActive, 
 		IAggregateVersioned<long>,
 		IState
 	{

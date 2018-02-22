@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.PhysicalInventory
 {
@@ -39,115 +40,31 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 			return this._state;
 		}
 
-		public virtual string LineNumber
-		{
+        public InventoryItemIdDto InventoryItemId
+        {
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("LineNumber"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("InventoryItemId"))
                 {
-                    return _state.LineNumber;
+					return (_state.InventoryItemId == null) ? null : new InventoryItemIdDtoWrapper(_state.InventoryItemId);
                 }
                 return null;
             }
             set
             {
-                _state.LineNumber = value;
+                _state.InventoryItemId = (value == null) ? null : value.ToInventoryItemId();
             }
         }
 
-        string IPhysicalInventoryLineStateProperties.LineNumber
+        InventoryItemId IPhysicalInventoryLineStateProperties.InventoryItemId
         {
             get 
             {
-                return (this._state as IPhysicalInventoryLineStateProperties).LineNumber;
+                return (this._state as IPhysicalInventoryLineStateProperties).InventoryItemId;
             }
             set 
             {
-                (this._state as IPhysicalInventoryLineStateProperties).LineNumber = value;
-            }
-        }
-
-		public virtual string LocatorId
-		{
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("LocatorId"))
-                {
-                    return _state.LocatorId;
-                }
-                return null;
-            }
-            set
-            {
-                _state.LocatorId = value;
-            }
-        }
-
-        string IPhysicalInventoryLineStateProperties.LocatorId
-        {
-            get 
-            {
-                return (this._state as IPhysicalInventoryLineStateProperties).LocatorId;
-            }
-            set 
-            {
-                (this._state as IPhysicalInventoryLineStateProperties).LocatorId = value;
-            }
-        }
-
-		public virtual string ProductId
-		{
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("ProductId"))
-                {
-                    return _state.ProductId;
-                }
-                return null;
-            }
-            set
-            {
-                _state.ProductId = value;
-            }
-        }
-
-        string IPhysicalInventoryLineStateProperties.ProductId
-        {
-            get 
-            {
-                return (this._state as IPhysicalInventoryLineStateProperties).ProductId;
-            }
-            set 
-            {
-                (this._state as IPhysicalInventoryLineStateProperties).ProductId = value;
-            }
-        }
-
-		public virtual string AttributeSetInstanceId
-		{
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("AttributeSetInstanceId"))
-                {
-                    return _state.AttributeSetInstanceId;
-                }
-                return null;
-            }
-            set
-            {
-                _state.AttributeSetInstanceId = value;
-            }
-        }
-
-        string IPhysicalInventoryLineStateProperties.AttributeSetInstanceId
-        {
-            get 
-            {
-                return (this._state as IPhysicalInventoryLineStateProperties).AttributeSetInstanceId;
-            }
-            set 
-            {
-                (this._state as IPhysicalInventoryLineStateProperties).AttributeSetInstanceId = value;
+                (this._state as IPhysicalInventoryLineStateProperties).InventoryItemId = value;
             }
         }
 
@@ -303,37 +220,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             }
         }
 
-		public virtual bool? Active
-        {
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("Active"))
-                {
-                    return (this._state as IPhysicalInventoryLineStateProperties).Active;
-                }
-                return null;
-            }
-            set
-            {
-                if (value != null && value.HasValue)
-                {
-                    (this._state as IPhysicalInventoryLineStateProperties).Active = value.Value;
-                }
-            }
-        }
-
-        bool IPhysicalInventoryLineStateProperties.Active
-        {
-            get 
-            {
-                return (this._state as IPhysicalInventoryLineStateProperties).Active;
-            }
-            set 
-            {
-                (this._state as IPhysicalInventoryLineStateProperties).Active = value;
-            }
-        }
-
 		public virtual long? Version
         {
             get
@@ -470,19 +356,10 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 			get { return (_state as IPhysicalInventoryLineState).GlobalId; }
 		}
 
-        string ILocalIdentity<string>.LocalId
+        InventoryItemId ILocalIdentity<InventoryItemId>.LocalId
         {
 			get { return (_state as IPhysicalInventoryLineState).LocalId; }
         }
-
-		#endregion
-
-		#region IActive implementation
-
-		bool IActive.IsActive()
-		{
-            return (_state as IActive).IsActive();
-		}
 
 		#endregion
 

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 using Dddml.Support.Criterion;
 
 namespace Dddml.Wms.Domain.PhysicalInventory
@@ -18,8 +19,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 		void When(ICreatePhysicalInventory c);
 
 		void When(IMergePatchPhysicalInventory c);
-
-		void When(IDeletePhysicalInventory c);
 
 		void When(PhysicalInventoryCommands.DocumentAction c);
 
@@ -41,7 +40,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
         IPhysicalInventoryState GetHistoryState(string documentNumber, long version);
 
-        IPhysicalInventoryLineState GetPhysicalInventoryLine(string physicalInventoryDocumentNumber, string lineNumber);
+        IPhysicalInventoryLineState GetPhysicalInventoryLine(string physicalInventoryDocumentNumber, InventoryItemId inventoryItemId);
 
 
 	}

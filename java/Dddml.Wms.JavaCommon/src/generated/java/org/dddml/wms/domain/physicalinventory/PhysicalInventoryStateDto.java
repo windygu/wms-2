@@ -3,6 +3,7 @@ package org.dddml.wms.domain.physicalinventory;
 import java.util.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 
@@ -44,6 +45,30 @@ public class PhysicalInventoryStateDto
     public void setWarehouseId(String warehouseId)
     {
         this.warehouseId = warehouseId;
+    }
+
+    private String locatorIdPattern;
+
+    public String getLocatorIdPattern()
+    {
+        return this.locatorIdPattern;
+    }
+
+    public void setLocatorIdPattern(String locatorIdPattern)
+    {
+        this.locatorIdPattern = locatorIdPattern;
+    }
+
+    private String productIdPattern;
+
+    public String getProductIdPattern()
+    {
+        return this.productIdPattern;
+    }
+
+    public void setProductIdPattern(String productIdPattern)
+    {
+        this.productIdPattern = productIdPattern;
     }
 
     private Boolean posted;
@@ -284,6 +309,12 @@ public class PhysicalInventoryStateDto
             }
             if (returnedFieldsContains("WarehouseId")) {
                 dto.setWarehouseId(state.getWarehouseId());
+            }
+            if (returnedFieldsContains("LocatorIdPattern")) {
+                dto.setLocatorIdPattern(state.getLocatorIdPattern());
+            }
+            if (returnedFieldsContains("ProductIdPattern")) {
+                dto.setProductIdPattern(state.getProductIdPattern());
             }
             if (returnedFieldsContains("Posted")) {
                 dto.setPosted(state.getPosted());

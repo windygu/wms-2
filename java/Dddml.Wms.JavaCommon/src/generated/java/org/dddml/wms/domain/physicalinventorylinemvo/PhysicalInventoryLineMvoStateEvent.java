@@ -15,18 +15,6 @@ public interface PhysicalInventoryLineMvoStateEvent extends Event
 
     void setStateEventReadOnly(boolean readOnly);
 
-    String getLocatorId();
-
-    void setLocatorId(String locatorId);
-
-    String getProductId();
-
-    void setProductId(String productId);
-
-    String getAttributeSetInstanceId();
-
-    void setAttributeSetInstanceId(String attributeSetInstanceId);
-
     BigDecimal getBookQuantity();
 
     void setBookQuantity(BigDecimal bookQuantity);
@@ -59,10 +47,6 @@ public interface PhysicalInventoryLineMvoStateEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getPhysicalInventoryDocumentStatusId();
 
     void setPhysicalInventoryDocumentStatusId(String physicalInventoryDocumentStatusId);
@@ -70,6 +54,14 @@ public interface PhysicalInventoryLineMvoStateEvent extends Event
     String getPhysicalInventoryWarehouseId();
 
     void setPhysicalInventoryWarehouseId(String physicalInventoryWarehouseId);
+
+    String getPhysicalInventoryLocatorIdPattern();
+
+    void setPhysicalInventoryLocatorIdPattern(String physicalInventoryLocatorIdPattern);
+
+    String getPhysicalInventoryProductIdPattern();
+
+    void setPhysicalInventoryProductIdPattern(String physicalInventoryProductIdPattern);
 
     Boolean getPhysicalInventoryPosted();
 
@@ -131,10 +123,6 @@ public interface PhysicalInventoryLineMvoStateEvent extends Event
 
     void setPhysicalInventoryActive(Boolean physicalInventoryActive);
 
-    Boolean getPhysicalInventoryDeleted();
-
-    void setPhysicalInventoryDeleted(Boolean physicalInventoryDeleted);
-
     String getCommandId();
 
     void setCommandId(String commandId);
@@ -147,18 +135,6 @@ public interface PhysicalInventoryLineMvoStateEvent extends Event
 
     interface PhysicalInventoryLineMvoStateMergePatched extends PhysicalInventoryLineMvoStateEvent
     {
-        Boolean getIsPropertyLocatorIdRemoved();
-
-        void setIsPropertyLocatorIdRemoved(Boolean removed);
-
-        Boolean getIsPropertyProductIdRemoved();
-
-        void setIsPropertyProductIdRemoved(Boolean removed);
-
-        Boolean getIsPropertyAttributeSetInstanceIdRemoved();
-
-        void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed);
-
         Boolean getIsPropertyBookQuantityRemoved();
 
         void setIsPropertyBookQuantityRemoved(Boolean removed);
@@ -183,10 +159,6 @@ public interface PhysicalInventoryLineMvoStateEvent extends Event
 
         void setIsPropertyVersionRemoved(Boolean removed);
 
-        Boolean getIsPropertyActiveRemoved();
-
-        void setIsPropertyActiveRemoved(Boolean removed);
-
         Boolean getIsPropertyPhysicalInventoryDocumentStatusIdRemoved();
 
         void setIsPropertyPhysicalInventoryDocumentStatusIdRemoved(Boolean removed);
@@ -194,6 +166,14 @@ public interface PhysicalInventoryLineMvoStateEvent extends Event
         Boolean getIsPropertyPhysicalInventoryWarehouseIdRemoved();
 
         void setIsPropertyPhysicalInventoryWarehouseIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyPhysicalInventoryLocatorIdPatternRemoved();
+
+        void setIsPropertyPhysicalInventoryLocatorIdPatternRemoved(Boolean removed);
+
+        Boolean getIsPropertyPhysicalInventoryProductIdPatternRemoved();
+
+        void setIsPropertyPhysicalInventoryProductIdPatternRemoved(Boolean removed);
 
         Boolean getIsPropertyPhysicalInventoryPostedRemoved();
 
@@ -254,10 +234,6 @@ public interface PhysicalInventoryLineMvoStateEvent extends Event
         Boolean getIsPropertyPhysicalInventoryActiveRemoved();
 
         void setIsPropertyPhysicalInventoryActiveRemoved(Boolean removed);
-
-        Boolean getIsPropertyPhysicalInventoryDeletedRemoved();
-
-        void setIsPropertyPhysicalInventoryDeletedRemoved(Boolean removed);
 
 
     }

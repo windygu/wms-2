@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.PhysicalInventory
 {
@@ -55,6 +56,10 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
 		public virtual string WarehouseId { get; set; }
 
+		public virtual string LocatorIdPattern { get; set; }
+
+		public virtual string ProductIdPattern { get; set; }
+
 		public virtual bool? Posted { get; set; }
 
 		public virtual bool? Processed { get; set; }
@@ -93,6 +98,44 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             set
             {
                 this.IsPropertyWarehouseIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyLocatorIdPatternRemoved { get; set; }
+
+        bool IMergePatchPhysicalInventory.IsPropertyLocatorIdPatternRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyLocatorIdPatternRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyLocatorIdPatternRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyProductIdPatternRemoved { get; set; }
+
+        bool IMergePatchPhysicalInventory.IsPropertyProductIdPatternRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyProductIdPatternRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyProductIdPatternRemoved = value;
             }
         }
 

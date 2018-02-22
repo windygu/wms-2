@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.PhysicalInventory
 {
@@ -63,10 +64,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
                 }
                 throw DomainError.Named("premature", "Can't do anything to unexistent aggregate");
             }
-            if (_state.Deleted)
-            {
-                throw DomainError.Named("zombie", "Can't do anything to deleted aggregate.");
-            }
             if (IsCommandCreate((IPhysicalInventoryCommand)c))
                 throw DomainError.Named("rebirth", "Can't create aggregate that already exists");
         }
@@ -95,12 +92,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             Apply(e);
         }
 
-        public virtual void Delete(IDeletePhysicalInventory c)
-        {
-            IPhysicalInventoryStateDeleted e = Map(c);
-            Apply(e);
-        }
-
 
         protected virtual IPhysicalInventoryStateCreated Map(ICreatePhysicalInventory c)
         {
@@ -109,6 +100,8 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 		
             NewPhysicalInventoryDocumentActionCommandAndExecute(c, _state, e);
             e.WarehouseId = c.WarehouseId;
+            e.LocatorIdPattern = c.LocatorIdPattern;
+            e.ProductIdPattern = c.ProductIdPattern;
             e.Posted = c.Posted;
             e.Processed = c.Processed;
             e.Processing = c.Processing;
@@ -145,6 +138,8 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             IPhysicalInventoryStateMergePatched e = NewPhysicalInventoryStateMergePatched(stateEventId);
 
             e.WarehouseId = c.WarehouseId;
+            e.LocatorIdPattern = c.LocatorIdPattern;
+            e.ProductIdPattern = c.ProductIdPattern;
             e.Posted = c.Posted;
             e.Processed = c.Processed;
             e.Processing = c.Processing;
@@ -157,6 +152,8 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             e.ReversalDocumentNumber = c.ReversalDocumentNumber;
             e.Active = c.Active;
             e.IsPropertyWarehouseIdRemoved = c.IsPropertyWarehouseIdRemoved;
+            e.IsPropertyLocatorIdPatternRemoved = c.IsPropertyLocatorIdPatternRemoved;
+            e.IsPropertyProductIdPatternRemoved = c.IsPropertyProductIdPatternRemoved;
             e.IsPropertyPostedRemoved = c.IsPropertyPostedRemoved;
             e.IsPropertyProcessedRemoved = c.IsPropertyProcessedRemoved;
             e.IsPropertyProcessingRemoved = c.IsPropertyProcessingRemoved;
@@ -184,21 +181,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
                 IPhysicalInventoryLineStateEvent innerEvent = Map(innerCommand, c, version, _state);
                 e.AddPhysicalInventoryLineEvent(innerEvent);
             }
-
-
-            return e;
-        }
-
-        protected virtual IPhysicalInventoryStateDeleted Map(IDeletePhysicalInventory c)
-        {
-			var stateEventId = new PhysicalInventoryStateEventId(c.DocumentNumber, c.Version);
-            IPhysicalInventoryStateDeleted e = NewPhysicalInventoryStateDeleted(stateEventId);
-			
-            e.CommandId = c.CommandId;
-
-
-            e.CreatedBy = (string)c.RequesterId;
-            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
 
             return e;
@@ -253,19 +235,15 @@ namespace Dddml.Wms.Domain.PhysicalInventory
         protected virtual IPhysicalInventoryLineStateCreated MapCreate(ICreatePhysicalInventoryLine c, IPhysicalInventoryCommand outerCommand, long version, IPhysicalInventoryState outerState)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new PhysicalInventoryLineStateEventId(c.PhysicalInventoryDocumentNumber, c.LineNumber, version);
+			var stateEventId = new PhysicalInventoryLineStateEventId(c.PhysicalInventoryDocumentNumber, c.InventoryItemId, version);
             IPhysicalInventoryLineStateCreated e = NewPhysicalInventoryLineStateCreated(stateEventId);
-            var s = outerState.PhysicalInventoryLines.Get(c.LineNumber, true);
+            var s = outerState.PhysicalInventoryLines.Get(c.InventoryItemId, true);
 
-            e.LocatorId = c.LocatorId;
-            e.ProductId = c.ProductId;
-            e.AttributeSetInstanceId = c.AttributeSetInstanceId;
             e.BookQuantity = c.BookQuantity;
             e.CountedQuantity = c.CountedQuantity;
             e.Processed = c.Processed;
             e.ReversalLineNumber = c.ReversalLineNumber;
             e.Description = c.Description;
-            e.Active = c.Active;
 
             e.CreatedBy = (string)c.RequesterId;
             e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
@@ -278,28 +256,20 @@ namespace Dddml.Wms.Domain.PhysicalInventory
         protected virtual IPhysicalInventoryLineStateMergePatched MapMergePatch(IMergePatchPhysicalInventoryLine c, IPhysicalInventoryCommand outerCommand, long version, IPhysicalInventoryState outerState)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new PhysicalInventoryLineStateEventId(c.PhysicalInventoryDocumentNumber, c.LineNumber, version);
+			var stateEventId = new PhysicalInventoryLineStateEventId(c.PhysicalInventoryDocumentNumber, c.InventoryItemId, version);
             IPhysicalInventoryLineStateMergePatched e = NewPhysicalInventoryLineStateMergePatched(stateEventId);
-            var s = outerState.PhysicalInventoryLines.Get(c.LineNumber);
+            var s = outerState.PhysicalInventoryLines.Get(c.InventoryItemId);
 
-            e.LocatorId = c.LocatorId;
-            e.ProductId = c.ProductId;
-            e.AttributeSetInstanceId = c.AttributeSetInstanceId;
             e.BookQuantity = c.BookQuantity;
             e.CountedQuantity = c.CountedQuantity;
             e.Processed = c.Processed;
             e.ReversalLineNumber = c.ReversalLineNumber;
             e.Description = c.Description;
-            e.Active = c.Active;
-            e.IsPropertyLocatorIdRemoved = c.IsPropertyLocatorIdRemoved;
-            e.IsPropertyProductIdRemoved = c.IsPropertyProductIdRemoved;
-            e.IsPropertyAttributeSetInstanceIdRemoved = c.IsPropertyAttributeSetInstanceIdRemoved;
             e.IsPropertyBookQuantityRemoved = c.IsPropertyBookQuantityRemoved;
             e.IsPropertyCountedQuantityRemoved = c.IsPropertyCountedQuantityRemoved;
             e.IsPropertyProcessedRemoved = c.IsPropertyProcessedRemoved;
             e.IsPropertyReversalLineNumberRemoved = c.IsPropertyReversalLineNumberRemoved;
             e.IsPropertyDescriptionRemoved = c.IsPropertyDescriptionRemoved;
-            e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
             e.CreatedBy = (string)c.RequesterId;
             e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
@@ -311,7 +281,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
         protected virtual IPhysicalInventoryLineStateRemoved MapRemove(IRemovePhysicalInventoryLine c, IPhysicalInventoryCommand outerCommand, long version)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new PhysicalInventoryLineStateEventId(c.PhysicalInventoryDocumentNumber, c.LineNumber, version);
+			var stateEventId = new PhysicalInventoryLineStateEventId(c.PhysicalInventoryDocumentNumber, c.InventoryItemId, version);
             IPhysicalInventoryLineStateRemoved e = NewPhysicalInventoryLineStateRemoved(stateEventId);
 
 
@@ -363,19 +333,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
         }
 
 
-        protected PhysicalInventoryStateDeleted NewPhysicalInventoryStateDeleted(long version, string commandId, string requesterId)
-        {
-            var stateEventId = new PhysicalInventoryStateEventId(_state.DocumentNumber, version);
-            var e = NewPhysicalInventoryStateDeleted(stateEventId);
-
-            e.CommandId = commandId;
-
-            e.CreatedBy = (string)requesterId;
-            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
-
-            return e;
-        }
-
 ////////////////////////
 
 		private PhysicalInventoryStateCreated NewPhysicalInventoryStateCreated(PhysicalInventoryStateEventId stateEventId)
@@ -388,10 +345,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 			return new PhysicalInventoryStateMergePatched(stateEventId);
 		}
 
-        private PhysicalInventoryStateDeleted NewPhysicalInventoryStateDeleted(PhysicalInventoryStateEventId stateEventId)
-		{
-			return new PhysicalInventoryStateDeleted(stateEventId);
-		}
 
 		private PhysicalInventoryLineStateCreated NewPhysicalInventoryLineStateCreated(PhysicalInventoryLineStateEventId stateEventId)
 		{

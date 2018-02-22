@@ -1,6 +1,7 @@
 package org.dddml.wms.domain.physicalinventory;
 
 import java.util.*;
+import org.dddml.wms.domain.inventoryitem.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
@@ -17,18 +18,6 @@ public interface PhysicalInventoryLineStateEvent extends Event
     Long getVersion();
 
     void setVersion(Long version);
-
-    String getLocatorId();
-
-    void setLocatorId(String locatorId);
-
-    String getProductId();
-
-    void setProductId(String productId);
-
-    String getAttributeSetInstanceId();
-
-    void setAttributeSetInstanceId(String attributeSetInstanceId);
 
     BigDecimal getBookQuantity();
 
@@ -58,10 +47,6 @@ public interface PhysicalInventoryLineStateEvent extends Event
 
     void setCreatedAt(Date createdAt);
 
-    Boolean getActive();
-
-    void setActive(Boolean active);
-
     String getCommandId();
 
     void setCommandId(String commandId);
@@ -74,18 +59,6 @@ public interface PhysicalInventoryLineStateEvent extends Event
 
     interface PhysicalInventoryLineStateMergePatched extends PhysicalInventoryLineStateEvent
     {
-        Boolean getIsPropertyLocatorIdRemoved();
-
-        void setIsPropertyLocatorIdRemoved(Boolean removed);
-
-        Boolean getIsPropertyProductIdRemoved();
-
-        void setIsPropertyProductIdRemoved(Boolean removed);
-
-        Boolean getIsPropertyAttributeSetInstanceIdRemoved();
-
-        void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed);
-
         Boolean getIsPropertyBookQuantityRemoved();
 
         void setIsPropertyBookQuantityRemoved(Boolean removed);
@@ -105,10 +78,6 @@ public interface PhysicalInventoryLineStateEvent extends Event
         Boolean getIsPropertyDescriptionRemoved();
 
         void setIsPropertyDescriptionRemoved(Boolean removed);
-
-        Boolean getIsPropertyActiveRemoved();
-
-        void setIsPropertyActiveRemoved(Boolean removed);
 
 
     }

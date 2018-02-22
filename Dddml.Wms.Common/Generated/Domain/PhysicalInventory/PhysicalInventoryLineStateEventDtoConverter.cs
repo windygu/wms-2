@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.PhysicalInventory
 {
@@ -43,15 +44,11 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;
             dto.CommandId = e.CommandId;
-            dto.LocatorId = e.LocatorId;
-            dto.ProductId = e.ProductId;
-            dto.AttributeSetInstanceId = e.AttributeSetInstanceId;
             dto.BookQuantity = e.BookQuantity;
             dto.CountedQuantity = e.CountedQuantity;
             dto.Processed = e.Processed;
             dto.ReversalLineNumber = e.ReversalLineNumber;
             dto.Description = e.Description;
-            dto.Active = e.Active;
             return dto;
         }
 
@@ -63,24 +60,16 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;
             dto.CommandId = e.CommandId;
-            dto.LocatorId = e.LocatorId;
-            dto.ProductId = e.ProductId;
-            dto.AttributeSetInstanceId = e.AttributeSetInstanceId;
             dto.BookQuantity = e.BookQuantity;
             dto.CountedQuantity = e.CountedQuantity;
             dto.Processed = e.Processed;
             dto.ReversalLineNumber = e.ReversalLineNumber;
             dto.Description = e.Description;
-            dto.Active = e.Active;
-            dto.IsPropertyLocatorIdRemoved = e.IsPropertyLocatorIdRemoved;
-            dto.IsPropertyProductIdRemoved = e.IsPropertyProductIdRemoved;
-            dto.IsPropertyAttributeSetInstanceIdRemoved = e.IsPropertyAttributeSetInstanceIdRemoved;
             dto.IsPropertyBookQuantityRemoved = e.IsPropertyBookQuantityRemoved;
             dto.IsPropertyCountedQuantityRemoved = e.IsPropertyCountedQuantityRemoved;
             dto.IsPropertyProcessedRemoved = e.IsPropertyProcessedRemoved;
             dto.IsPropertyReversalLineNumberRemoved = e.IsPropertyReversalLineNumberRemoved;
             dto.IsPropertyDescriptionRemoved = e.IsPropertyDescriptionRemoved;
-            dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;
 
             return dto;
         }

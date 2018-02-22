@@ -39,18 +39,16 @@ public abstract class AbstractPhysicalInventoryLineMvoStateCommandConverter<TCre
         cmd.setPhysicalInventoryVersion(state.getPhysicalInventoryVersion());
 
         cmd.setPhysicalInventoryLineId(state.getPhysicalInventoryLineId());
-        cmd.setLocatorId(state.getLocatorId());
-        cmd.setProductId(state.getProductId());
-        cmd.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
         cmd.setBookQuantity(state.getBookQuantity());
         cmd.setCountedQuantity(state.getCountedQuantity());
         cmd.setProcessed(state.getProcessed());
         cmd.setReversalLineNumber(state.getReversalLineNumber());
         cmd.setDescription(state.getDescription());
         cmd.setVersion(state.getVersion());
-        cmd.setActive(state.getActive());
         cmd.setPhysicalInventoryDocumentStatusId(state.getPhysicalInventoryDocumentStatusId());
         cmd.setPhysicalInventoryWarehouseId(state.getPhysicalInventoryWarehouseId());
+        cmd.setPhysicalInventoryLocatorIdPattern(state.getPhysicalInventoryLocatorIdPattern());
+        cmd.setPhysicalInventoryProductIdPattern(state.getPhysicalInventoryProductIdPattern());
         cmd.setPhysicalInventoryPosted(state.getPhysicalInventoryPosted());
         cmd.setPhysicalInventoryProcessed(state.getPhysicalInventoryProcessed());
         cmd.setPhysicalInventoryProcessing(state.getPhysicalInventoryProcessing());
@@ -66,20 +64,17 @@ public abstract class AbstractPhysicalInventoryLineMvoStateCommandConverter<TCre
         cmd.setPhysicalInventoryUpdatedBy(state.getPhysicalInventoryUpdatedBy());
         cmd.setPhysicalInventoryUpdatedAt(state.getPhysicalInventoryUpdatedAt());
         cmd.setPhysicalInventoryActive(state.getPhysicalInventoryActive());
-        cmd.setPhysicalInventoryDeleted(state.getPhysicalInventoryDeleted());
             
-        if (state.getLocatorId() == null) { cmd.setIsPropertyLocatorIdRemoved(true); }
-        if (state.getProductId() == null) { cmd.setIsPropertyProductIdRemoved(true); }
-        if (state.getAttributeSetInstanceId() == null) { cmd.setIsPropertyAttributeSetInstanceIdRemoved(true); }
         if (state.getBookQuantity() == null) { cmd.setIsPropertyBookQuantityRemoved(true); }
         if (state.getCountedQuantity() == null) { cmd.setIsPropertyCountedQuantityRemoved(true); }
         if (state.getProcessed() == null) { cmd.setIsPropertyProcessedRemoved(true); }
         if (state.getReversalLineNumber() == null) { cmd.setIsPropertyReversalLineNumberRemoved(true); }
         if (state.getDescription() == null) { cmd.setIsPropertyDescriptionRemoved(true); }
         if (state.getVersion() == null) { cmd.setIsPropertyVersionRemoved(true); }
-        if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
         if (state.getPhysicalInventoryDocumentStatusId() == null) { cmd.setIsPropertyPhysicalInventoryDocumentStatusIdRemoved(true); }
         if (state.getPhysicalInventoryWarehouseId() == null) { cmd.setIsPropertyPhysicalInventoryWarehouseIdRemoved(true); }
+        if (state.getPhysicalInventoryLocatorIdPattern() == null) { cmd.setIsPropertyPhysicalInventoryLocatorIdPatternRemoved(true); }
+        if (state.getPhysicalInventoryProductIdPattern() == null) { cmd.setIsPropertyPhysicalInventoryProductIdPatternRemoved(true); }
         if (state.getPhysicalInventoryPosted() == null) { cmd.setIsPropertyPhysicalInventoryPostedRemoved(true); }
         if (state.getPhysicalInventoryProcessed() == null) { cmd.setIsPropertyPhysicalInventoryProcessedRemoved(true); }
         if (state.getPhysicalInventoryProcessing() == null) { cmd.setIsPropertyPhysicalInventoryProcessingRemoved(true); }
@@ -95,7 +90,6 @@ public abstract class AbstractPhysicalInventoryLineMvoStateCommandConverter<TCre
         if (state.getPhysicalInventoryUpdatedBy() == null) { cmd.setIsPropertyPhysicalInventoryUpdatedByRemoved(true); }
         if (state.getPhysicalInventoryUpdatedAt() == null) { cmd.setIsPropertyPhysicalInventoryUpdatedAtRemoved(true); }
         if (state.getPhysicalInventoryActive() == null) { cmd.setIsPropertyPhysicalInventoryActiveRemoved(true); }
-        if (state.getPhysicalInventoryDeleted() == null) { cmd.setIsPropertyPhysicalInventoryDeletedRemoved(true); }
         return cmd;
     }
 
@@ -105,18 +99,16 @@ public abstract class AbstractPhysicalInventoryLineMvoStateCommandConverter<TCre
 
         cmd.setPhysicalInventoryVersion(state.getPhysicalInventoryVersion());
         cmd.setPhysicalInventoryLineId(state.getPhysicalInventoryLineId());
-        cmd.setLocatorId(state.getLocatorId());
-        cmd.setProductId(state.getProductId());
-        cmd.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
         cmd.setBookQuantity(state.getBookQuantity());
         cmd.setCountedQuantity(state.getCountedQuantity());
         cmd.setProcessed(state.getProcessed());
         cmd.setReversalLineNumber(state.getReversalLineNumber());
         cmd.setDescription(state.getDescription());
         cmd.setVersion(state.getVersion());
-        cmd.setActive(state.getActive());
         cmd.setPhysicalInventoryDocumentStatusId(state.getPhysicalInventoryDocumentStatusId());
         cmd.setPhysicalInventoryWarehouseId(state.getPhysicalInventoryWarehouseId());
+        cmd.setPhysicalInventoryLocatorIdPattern(state.getPhysicalInventoryLocatorIdPattern());
+        cmd.setPhysicalInventoryProductIdPattern(state.getPhysicalInventoryProductIdPattern());
         cmd.setPhysicalInventoryPosted(state.getPhysicalInventoryPosted());
         cmd.setPhysicalInventoryProcessed(state.getPhysicalInventoryProcessed());
         cmd.setPhysicalInventoryProcessing(state.getPhysicalInventoryProcessing());
@@ -132,7 +124,6 @@ public abstract class AbstractPhysicalInventoryLineMvoStateCommandConverter<TCre
         cmd.setPhysicalInventoryUpdatedBy(state.getPhysicalInventoryUpdatedBy());
         cmd.setPhysicalInventoryUpdatedAt(state.getPhysicalInventoryUpdatedAt());
         cmd.setPhysicalInventoryActive(state.getPhysicalInventoryActive());
-        cmd.setPhysicalInventoryDeleted(state.getPhysicalInventoryDeleted());
         return cmd;
     }
 

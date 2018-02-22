@@ -10066,7 +10066,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         public virtual async Task<Models.PhysicalInventoryLineGetResponse> Get(Models.PhysicalInventoryLineGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
         {
 
-            var url = "PhysicalInventories/{physicalInventoryDocumentNumber}/PhysicalInventoryLines/{lineNumber}";
+            var url = "PhysicalInventories/{physicalInventoryDocumentNumber}/PhysicalInventoryLines/{inventoryItemId}";
 			if(request.UriParameters == null)
 				throw new InvalidOperationException("Uri Parameters cannot be null");               
 
@@ -10075,10 +10075,10 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 
             url = url.Replace("{physicalInventoryDocumentNumber}", request.UriParameters.PhysicalInventoryDocumentNumber.ToString());
 
-			if(request.UriParameters.LineNumber == null)
-				throw new InvalidOperationException("Uri Parameter LineNumber cannot be null");
+			if(request.UriParameters.InventoryItemId == null)
+				throw new InvalidOperationException("Uri Parameter InventoryItemId cannot be null");
 
-            url = url.Replace("{lineNumber}", request.UriParameters.LineNumber.ToString());
+            url = url.Replace("{inventoryItemId}", request.UriParameters.InventoryItemId.ToString());
 
             url = url.Replace("?&", "?");
 
@@ -28503,15 +28503,15 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
-    /// Uri Parameters for resource /PhysicalInventories/{physicalInventoryDocumentNumber}/PhysicalInventoryLines/{lineNumber}
+    /// Uri Parameters for resource /PhysicalInventories/{physicalInventoryDocumentNumber}/PhysicalInventoryLines/{inventoryItemId}
     /// </summary>
     public partial class  PhysicalInventoryLineUriParameters 
     {
 		[JsonProperty("physicalInventoryDocumentNumber")]
         public string PhysicalInventoryDocumentNumber { get; set; }
 
-		[JsonProperty("lineNumber")]
-        public string LineNumber { get; set; }
+		[JsonProperty("inventoryItemId")]
+        public string InventoryItemId { get; set; }
 
 
     } // end class

@@ -10,13 +10,12 @@
 
 	<composite-id name="physicalInventoryLineId" class="org.dddml.wms.domain.physicalinventory.PhysicalInventoryLineId">
 		<key-property name="physicalInventoryDocumentNumber" ><column name="PhysicalInventoryLineIdPhysicalInventoryDocumentNumber" length="50" /></key-property>
-		<key-property name="lineNumber" ><column name="PhysicalInventoryLineIdLineNumber" length="50" /></key-property>
+		<key-property name="inventoryItemIdProductId" ><column name="ProductId" length="60" sql-type="VARCHAR(60)" /></key-property>
+		<key-property name="inventoryItemIdLocatorId" ><column name="LocatorId" length="50" /></key-property>
+		<key-property name="inventoryItemIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" length="50" /></key-property>
 	</composite-id>
 	<version name="version" column="Version" type="long" />
 
-	<property name="locatorId" ></property>
-	<property name="productId" ><column name="ProductId" sql-type="VARCHAR(60)" /></property>
-	<property name="attributeSetInstanceId" ></property>
 	<property name="bookQuantity" ></property>
 	<property name="countedQuantity" ></property>
 	<property name="processed" ></property>
@@ -24,7 +23,6 @@
 	<property name="description" ></property>
 	<property name="createdBy" ></property>
 	<property name="updatedBy" ></property>
-	<property name="active" ></property>
 	<property name="deleted" ></property>
 
     <property name="createdAt" column="CreatedAt" />

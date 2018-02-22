@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.PhysicalInventory
 {
@@ -23,7 +24,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
         {
             PhysicalInventoryLineStateEventId v = new PhysicalInventoryLineStateEventId();
             v.PhysicalInventoryDocumentNumber = this.PhysicalInventoryDocumentNumber;
-            v.LineNumber = this.LineNumber;
+            v.InventoryItemId = this.InventoryItemId.ToInventoryItemId();
             v.PhysicalInventoryVersion = this.PhysicalInventoryVersion;
             return v;
         }
@@ -33,9 +34,11 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 			set;
 		}
 
-		public virtual string LineNumber { 
-			get;
-			set;
+		private InventoryItemIdDto _inventoryItemId = new InventoryItemIdDto();
+
+		public virtual InventoryItemIdDto InventoryItemId { 
+			get { return this._inventoryItemId; } 
+			set { this._inventoryItemId = value; } 
 		}
 
 		public virtual long PhysicalInventoryVersion { 
@@ -57,7 +60,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
 			return true 
 				&& Object.Equals (this.PhysicalInventoryDocumentNumber, other.PhysicalInventoryDocumentNumber)
-				&& Object.Equals (this.LineNumber, other.LineNumber)
+				&& Object.Equals (this.InventoryItemId, other.InventoryItemId)
 				&& Object.Equals (this.PhysicalInventoryVersion, other.PhysicalInventoryVersion)
 				;
 		}
@@ -68,8 +71,8 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 			if (this.PhysicalInventoryDocumentNumber != null) {
 				hash += 13 * this.PhysicalInventoryDocumentNumber.GetHashCode ();
 			}
-			if (this.LineNumber != null) {
-				hash += 13 * this.LineNumber.GetHashCode ();
+			if (this.InventoryItemId != null) {
+				hash += 13 * this.InventoryItemId.GetHashCode ();
 			}
 			if (this.PhysicalInventoryVersion != null) {
 				hash += 13 * this.PhysicalInventoryVersion.GetHashCode ();

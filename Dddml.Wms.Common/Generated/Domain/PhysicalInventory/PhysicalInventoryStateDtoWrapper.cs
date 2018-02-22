@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.PhysicalInventory
 {
@@ -120,6 +121,62 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             set 
             {
                 (this._state as IPhysicalInventoryStateProperties).WarehouseId = value;
+            }
+        }
+
+		public virtual string LocatorIdPattern
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("LocatorIdPattern"))
+                {
+                    return _state.LocatorIdPattern;
+                }
+                return null;
+            }
+            set
+            {
+                _state.LocatorIdPattern = value;
+            }
+        }
+
+        string IPhysicalInventoryStateProperties.LocatorIdPattern
+        {
+            get 
+            {
+                return (this._state as IPhysicalInventoryStateProperties).LocatorIdPattern;
+            }
+            set 
+            {
+                (this._state as IPhysicalInventoryStateProperties).LocatorIdPattern = value;
+            }
+        }
+
+		public virtual string ProductIdPattern
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("ProductIdPattern"))
+                {
+                    return _state.ProductIdPattern;
+                }
+                return null;
+            }
+            set
+            {
+                _state.ProductIdPattern = value;
+            }
+        }
+
+        string IPhysicalInventoryStateProperties.ProductIdPattern
+        {
+            get 
+            {
+                return (this._state as IPhysicalInventoryStateProperties).ProductIdPattern;
+            }
+            set 
+            {
+                (this._state as IPhysicalInventoryStateProperties).ProductIdPattern = value;
             }
         }
 
@@ -568,15 +625,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
 		#endregion
 
-		#region IDeleted implementation
-
-		bool IDeleted.Deleted
-		{
-            get { return (_state as IDeleted).Deleted; }
-		}
-
-		#endregion
-
 		#region ICreated implementation
 
 		string ICreated<string>.CreatedBy
@@ -692,11 +740,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             throw new NotSupportedException();
 		}
 
-		void IPhysicalInventoryState.When(IPhysicalInventoryStateDeleted e)
-		{
-            throw new NotSupportedException();
-		}
-
 		void IPhysicalInventoryState.Mutate(IEvent e)
 		{
             throw new NotSupportedException();
@@ -734,17 +777,17 @@ namespace Dddml.Wms.Domain.PhysicalInventory
                 return _innerStates.GetEnumerator();
             }
 
-            public IPhysicalInventoryLineState Get(string lineNumber)
+            public IPhysicalInventoryLineState Get(InventoryItemId inventoryItemId)
             {
                 throw new NotSupportedException();
             }
 
-            public IPhysicalInventoryLineState Get(string lineNumber, bool forCreation)
+            public IPhysicalInventoryLineState Get(InventoryItemId inventoryItemId, bool forCreation)
             {
                 throw new NotSupportedException();
             }
 
-            public IPhysicalInventoryLineState Get(string lineNumber, bool forCreation, bool nullAllowed)
+            public IPhysicalInventoryLineState Get(InventoryItemId inventoryItemId, bool forCreation, bool nullAllowed)
             {
                 throw new NotSupportedException();
             }

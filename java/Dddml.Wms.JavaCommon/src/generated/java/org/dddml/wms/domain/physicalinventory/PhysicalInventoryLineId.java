@@ -1,6 +1,7 @@
 package org.dddml.wms.domain.physicalinventory;
 
 import java.io.Serializable;
+import org.dddml.wms.domain.inventoryitem.InventoryItemId;
 import org.dddml.wms.domain.*;
 
 public class PhysicalInventoryLineId implements Serializable
@@ -17,26 +18,56 @@ public class PhysicalInventoryLineId implements Serializable
         this.physicalInventoryDocumentNumber = physicalInventoryDocumentNumber;
     }
 
-    private String lineNumber;
+    private InventoryItemId inventoryItemId = new InventoryItemId();
 
-    public String getLineNumber()
+    public InventoryItemId getInventoryItemId()
     {
-        return this.lineNumber;
+        return this.inventoryItemId;
     }
 
-    public void setLineNumber(String lineNumber)
+    public void setInventoryItemId(InventoryItemId inventoryItemId)
     {
-        this.lineNumber = lineNumber;
+        this.inventoryItemId = inventoryItemId;
+    }
+
+    public String getInventoryItemIdProductId()
+    {
+        return getInventoryItemId().getProductId();
+    }
+
+    public void setInventoryItemIdProductId(String inventoryItemIdProductId)
+    {
+        getInventoryItemId().setProductId(inventoryItemIdProductId);
+    }
+
+    public String getInventoryItemIdLocatorId()
+    {
+        return getInventoryItemId().getLocatorId();
+    }
+
+    public void setInventoryItemIdLocatorId(String inventoryItemIdLocatorId)
+    {
+        getInventoryItemId().setLocatorId(inventoryItemIdLocatorId);
+    }
+
+    public String getInventoryItemIdAttributeSetInstanceId()
+    {
+        return getInventoryItemId().getAttributeSetInstanceId();
+    }
+
+    public void setInventoryItemIdAttributeSetInstanceId(String inventoryItemIdAttributeSetInstanceId)
+    {
+        getInventoryItemId().setAttributeSetInstanceId(inventoryItemIdAttributeSetInstanceId);
     }
 
     public PhysicalInventoryLineId()
     {
     }
 
-    public PhysicalInventoryLineId(String physicalInventoryDocumentNumber, String lineNumber)
+    public PhysicalInventoryLineId(String physicalInventoryDocumentNumber, InventoryItemId inventoryItemId)
     {
         this.physicalInventoryDocumentNumber = physicalInventoryDocumentNumber;
-        this.lineNumber = lineNumber;
+        this.inventoryItemId = inventoryItemId;
     }
 
     @Override
@@ -52,7 +83,7 @@ public class PhysicalInventoryLineId implements Serializable
         PhysicalInventoryLineId other = (PhysicalInventoryLineId)obj;
         return true 
             && (physicalInventoryDocumentNumber == other.physicalInventoryDocumentNumber || (physicalInventoryDocumentNumber != null && physicalInventoryDocumentNumber.equals(other.physicalInventoryDocumentNumber)))
-            && (lineNumber == other.lineNumber || (lineNumber != null && lineNumber.equals(other.lineNumber)))
+            && (inventoryItemId == other.inventoryItemId || (inventoryItemId != null && inventoryItemId.equals(other.inventoryItemId)))
             ;
     }
 
@@ -63,8 +94,8 @@ public class PhysicalInventoryLineId implements Serializable
         if (this.physicalInventoryDocumentNumber != null) {
             hash += 13 * this.physicalInventoryDocumentNumber.hashCode();
         }
-        if (this.lineNumber != null) {
-            hash += 13 * this.lineNumber.hashCode();
+        if (this.inventoryItemId != null) {
+            hash += 13 * this.inventoryItemId.hashCode();
         }
         return hash;
     }

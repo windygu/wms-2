@@ -3,6 +3,7 @@ package org.dddml.wms.domain.physicalinventory;
 import java.util.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
@@ -21,6 +22,14 @@ public interface PhysicalInventoryStateEvent extends Event
     String getWarehouseId();
 
     void setWarehouseId(String warehouseId);
+
+    String getLocatorIdPattern();
+
+    void setLocatorIdPattern(String locatorIdPattern);
+
+    String getProductIdPattern();
+
+    void setProductIdPattern(String productIdPattern);
 
     Boolean getPosted();
 
@@ -84,7 +93,7 @@ public interface PhysicalInventoryStateEvent extends Event
         
         void addPhysicalInventoryLineEvent(PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateCreated e);
 
-        PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateCreated newPhysicalInventoryLineStateCreated(String lineNumber);
+        PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateCreated newPhysicalInventoryLineStateCreated(InventoryItemId inventoryItemId);
 
     
     }
@@ -99,6 +108,14 @@ public interface PhysicalInventoryStateEvent extends Event
         Boolean getIsPropertyWarehouseIdRemoved();
 
         void setIsPropertyWarehouseIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyLocatorIdPatternRemoved();
+
+        void setIsPropertyLocatorIdPatternRemoved(Boolean removed);
+
+        Boolean getIsPropertyProductIdPatternRemoved();
+
+        void setIsPropertyProductIdPatternRemoved(Boolean removed);
 
         Boolean getIsPropertyPostedRemoved();
 
@@ -148,22 +165,12 @@ public interface PhysicalInventoryStateEvent extends Event
         
         void addPhysicalInventoryLineEvent(PhysicalInventoryLineStateEvent e);
 
-        PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateCreated newPhysicalInventoryLineStateCreated(String lineNumber);
+        PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateCreated newPhysicalInventoryLineStateCreated(InventoryItemId inventoryItemId);
 
-        PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateMergePatched newPhysicalInventoryLineStateMergePatched(String lineNumber);
+        PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateMergePatched newPhysicalInventoryLineStateMergePatched(InventoryItemId inventoryItemId);
 
-        PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateRemoved newPhysicalInventoryLineStateRemoved(String lineNumber);
+        PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateRemoved newPhysicalInventoryLineStateRemoved(InventoryItemId inventoryItemId);
 
-
-    }
-
-    interface PhysicalInventoryStateDeleted extends PhysicalInventoryStateEvent
-    {
-        Iterable<PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateRemoved> getPhysicalInventoryLineEvents();
-        
-        void addPhysicalInventoryLineEvent(PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateRemoved e);
-        
-        PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateRemoved newPhysicalInventoryLineStateRemoved(String lineNumber);
 
     }
 

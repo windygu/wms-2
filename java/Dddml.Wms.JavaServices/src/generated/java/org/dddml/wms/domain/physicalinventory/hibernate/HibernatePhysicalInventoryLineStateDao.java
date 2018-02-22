@@ -1,5 +1,6 @@
 package org.dddml.wms.domain.physicalinventory.hibernate;
 
+import org.dddml.wms.domain.inventoryitem.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
@@ -22,7 +23,7 @@ public class HibernatePhysicalInventoryLineStateDao implements PhysicalInventory
         return this.sessionFactory.getCurrentSession();
     }
 
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("LineNumber", "LocatorId", "ProductId", "AttributeSetInstanceId", "BookQuantity", "CountedQuantity", "Processed", "ReversalLineNumber", "Description", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "PhysicalInventoryDocumentNumber"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("InventoryItemId", "BookQuantity", "CountedQuantity", "Processed", "ReversalLineNumber", "Description", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "PhysicalInventoryDocumentNumber"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     

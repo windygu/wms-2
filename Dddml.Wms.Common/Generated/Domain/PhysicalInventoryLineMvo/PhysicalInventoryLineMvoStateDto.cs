@@ -23,24 +23,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             set;
         }
 
-        public virtual string LocatorId
-        {
-            get;
-            set;
-        }
-
-        public virtual string ProductId
-        {
-            get;
-            set;
-        }
-
-        public virtual string AttributeSetInstanceId
-        {
-            get;
-            set;
-        }
-
         public virtual decimal? BookQuantity
         {
             get;
@@ -77,12 +59,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             set;
         }
 
-        public virtual bool? Active
-        {
-            get;
-            set;
-        }
-
         public virtual string PhysicalInventoryDocumentStatusId
         {
             get;
@@ -90,6 +66,18 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
         }
 
         public virtual string PhysicalInventoryWarehouseId
+        {
+            get;
+            set;
+        }
+
+        public virtual string PhysicalInventoryLocatorIdPattern
+        {
+            get;
+            set;
+        }
+
+        public virtual string PhysicalInventoryProductIdPattern
         {
             get;
             set;
@@ -185,12 +173,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             set;
         }
 
-        public virtual bool? PhysicalInventoryDeleted
-        {
-            get;
-            set;
-        }
-
         public virtual long? PhysicalInventoryVersion
         {
             get;
@@ -225,18 +207,16 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
         {
             var state = new PhysicalInventoryLineMvoState(true);
             state.PhysicalInventoryLineId = (this.PhysicalInventoryLineId == null) ? null : this.PhysicalInventoryLineId.ToPhysicalInventoryLineId();
-            state.LocatorId = this.LocatorId;
-            state.ProductId = this.ProductId;
-            state.AttributeSetInstanceId = this.AttributeSetInstanceId;
             if (this.BookQuantity != null && this.BookQuantity.HasValue) { state.BookQuantity = this.BookQuantity.Value; }
             if (this.CountedQuantity != null && this.CountedQuantity.HasValue) { state.CountedQuantity = this.CountedQuantity.Value; }
             if (this.Processed != null && this.Processed.HasValue) { state.Processed = this.Processed.Value; }
             if (this.ReversalLineNumber != null && this.ReversalLineNumber.HasValue) { state.ReversalLineNumber = this.ReversalLineNumber.Value; }
             state.Description = this.Description;
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
-            if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             state.PhysicalInventoryDocumentStatusId = this.PhysicalInventoryDocumentStatusId;
             state.PhysicalInventoryWarehouseId = this.PhysicalInventoryWarehouseId;
+            state.PhysicalInventoryLocatorIdPattern = this.PhysicalInventoryLocatorIdPattern;
+            state.PhysicalInventoryProductIdPattern = this.PhysicalInventoryProductIdPattern;
             if (this.PhysicalInventoryPosted != null && this.PhysicalInventoryPosted.HasValue) { state.PhysicalInventoryPosted = this.PhysicalInventoryPosted.Value; }
             if (this.PhysicalInventoryProcessed != null && this.PhysicalInventoryProcessed.HasValue) { state.PhysicalInventoryProcessed = this.PhysicalInventoryProcessed.Value; }
             state.PhysicalInventoryProcessing = this.PhysicalInventoryProcessing;
@@ -252,7 +232,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             state.PhysicalInventoryUpdatedBy = this.PhysicalInventoryUpdatedBy;
             if (this.PhysicalInventoryUpdatedAt != null && this.PhysicalInventoryUpdatedAt.HasValue) { state.PhysicalInventoryUpdatedAt = this.PhysicalInventoryUpdatedAt.Value; }
             if (this.PhysicalInventoryActive != null && this.PhysicalInventoryActive.HasValue) { state.PhysicalInventoryActive = this.PhysicalInventoryActive.Value; }
-            if (this.PhysicalInventoryDeleted != null && this.PhysicalInventoryDeleted.HasValue) { state.PhysicalInventoryDeleted = this.PhysicalInventoryDeleted.Value; }
             if (this.PhysicalInventoryVersion != null && this.PhysicalInventoryVersion.HasValue) { state.PhysicalInventoryVersion = this.PhysicalInventoryVersion.Value; }
             state.CreatedBy = this.CreatedBy;
             if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }

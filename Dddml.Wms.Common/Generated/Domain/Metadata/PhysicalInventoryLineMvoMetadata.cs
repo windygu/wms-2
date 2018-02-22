@@ -46,93 +46,6 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = false,
                 },
                 new PropertyMetadata {
-                    Name = "LocatorId",
-                    Type = typeof(string),
-                    TypeName = "string",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 0,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = false,
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
-                new PropertyMetadata {
-                    Name = "ProductId",
-                    Type = typeof(string),
-                    TypeName = "string",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 0,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = false,
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
-                new PropertyMetadata {
-                    Name = "AttributeSetInstanceId",
-                    Type = typeof(string),
-                    TypeName = "string",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 0,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = false,
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
-                new PropertyMetadata {
                     Name = "BookQuantity",
                     Type = typeof(decimal),
                     TypeName = "decimal",
@@ -511,6 +424,64 @@ namespace Dddml.Wms.Domain.Metadata
                 },
                 new PropertyMetadata {
                     Name = "PhysicalInventoryWarehouseId",
+                    Type = typeof(string),
+                    TypeName = "string",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
+                    Name = "PhysicalInventoryLocatorIdPattern",
+                    Type = typeof(string),
+                    TypeName = "string",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
+                    Name = "PhysicalInventoryProductIdPattern",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -1028,35 +999,6 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "PhysicalInventoryDeleted",
-                    Type = typeof(bool),
-                    TypeName = "bool",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 0,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = false,
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
-                new PropertyMetadata {
                     Name = "PhysicalInventoryLineId.PhysicalInventoryDocumentNumber",
                     Type = typeof(string),
                     TypeName = "string",
@@ -1088,7 +1030,38 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "PhysicalInventoryLineId.LineNumber",
+                    Name = "PhysicalInventoryLineId.InventoryItemIdProductId",
+                    Type = typeof(string),
+                    TypeName = "string",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 60,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsReallyFlattened = true,
+                    SourceChainingName = "PhysicalInventoryLineId.InventoryItemId.ProductId",
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
+                    Name = "PhysicalInventoryLineId.InventoryItemIdLocatorId",
                     Type = typeof(string),
                     TypeName = "string",
                     IsSimpleValueObjectType = true,
@@ -1105,8 +1078,39 @@ namespace Dddml.Wms.Domain.Metadata
                     IsId = false,
                     IsGlobalId = false,
                     IsDerived = false,
-                    IsReallyFlattened = false,
-                    SourceChainingName = "PhysicalInventoryLineId.LineNumber",
+                    IsReallyFlattened = true,
+                    SourceChainingName = "PhysicalInventoryLineId.InventoryItemId.LocatorId",
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
+                    Name = "PhysicalInventoryLineId.InventoryItemIdAttributeSetInstanceId",
+                    Type = typeof(string),
+                    TypeName = "string",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 50,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsReallyFlattened = true,
+                    SourceChainingName = "PhysicalInventoryLineId.InventoryItemId.AttributeSetInstanceId",
                     IsDiscriminator = false,
                     IsReservedProperty = false,
                     IsReservedPropertyVersion = false,
@@ -1133,12 +1137,6 @@ namespace Dddml.Wms.Domain.Metadata
         private static void InitFilteringPropertyAliasDictionary()
         {
             var d = new Dictionary<string, string>();
-            d.Add("LocatorId", "LocatorId");
-            d.Add("locatorId", "LocatorId");
-            d.Add("ProductId", "ProductId");
-            d.Add("productId", "ProductId");
-            d.Add("AttributeSetInstanceId", "AttributeSetInstanceId");
-            d.Add("attributeSetInstanceId", "AttributeSetInstanceId");
             d.Add("BookQuantity", "BookQuantity");
             d.Add("bookQuantity", "BookQuantity");
             d.Add("CountedQuantity", "CountedQuantity");
@@ -1167,6 +1165,10 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("physicalInventoryDocumentStatusId", "PhysicalInventoryDocumentStatusId");
             d.Add("PhysicalInventoryWarehouseId", "PhysicalInventoryWarehouseId");
             d.Add("physicalInventoryWarehouseId", "PhysicalInventoryWarehouseId");
+            d.Add("PhysicalInventoryLocatorIdPattern", "PhysicalInventoryLocatorIdPattern");
+            d.Add("physicalInventoryLocatorIdPattern", "PhysicalInventoryLocatorIdPattern");
+            d.Add("PhysicalInventoryProductIdPattern", "PhysicalInventoryProductIdPattern");
+            d.Add("physicalInventoryProductIdPattern", "PhysicalInventoryProductIdPattern");
             d.Add("PhysicalInventoryPosted", "PhysicalInventoryPosted");
             d.Add("physicalInventoryPosted", "PhysicalInventoryPosted");
             d.Add("PhysicalInventoryProcessed", "PhysicalInventoryProcessed");
@@ -1199,12 +1201,20 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("physicalInventoryUpdatedAt", "PhysicalInventoryUpdatedAt");
             d.Add("PhysicalInventoryActive", "PhysicalInventoryActive");
             d.Add("physicalInventoryActive", "PhysicalInventoryActive");
-            d.Add("PhysicalInventoryDeleted", "PhysicalInventoryDeleted");
-            d.Add("physicalInventoryDeleted", "PhysicalInventoryDeleted");
             d.Add("PhysicalInventoryLineId.PhysicalInventoryDocumentNumber", "PhysicalInventoryLineId.PhysicalInventoryDocumentNumber");
             d.Add("physicalInventoryLineId.physicalInventoryDocumentNumber", "PhysicalInventoryLineId.PhysicalInventoryDocumentNumber");
-            d.Add("PhysicalInventoryLineId.LineNumber", "PhysicalInventoryLineId.LineNumber");
-            d.Add("physicalInventoryLineId.lineNumber", "PhysicalInventoryLineId.LineNumber");
+            d.Add("PhysicalInventoryLineId.InventoryItemIdProductId", "PhysicalInventoryLineId.InventoryItemIdProductId");
+            d.Add("physicalInventoryLineId.inventoryItemIdProductId", "PhysicalInventoryLineId.InventoryItemIdProductId");
+            d.Add("PhysicalInventoryLineId.InventoryItemId.ProductId", "PhysicalInventoryLineId.InventoryItemIdProductId");
+            d.Add("physicalInventoryLineId.inventoryItemId.productId", "PhysicalInventoryLineId.InventoryItemIdProductId");
+            d.Add("PhysicalInventoryLineId.InventoryItemIdLocatorId", "PhysicalInventoryLineId.InventoryItemIdLocatorId");
+            d.Add("physicalInventoryLineId.inventoryItemIdLocatorId", "PhysicalInventoryLineId.InventoryItemIdLocatorId");
+            d.Add("PhysicalInventoryLineId.InventoryItemId.LocatorId", "PhysicalInventoryLineId.InventoryItemIdLocatorId");
+            d.Add("physicalInventoryLineId.inventoryItemId.locatorId", "PhysicalInventoryLineId.InventoryItemIdLocatorId");
+            d.Add("PhysicalInventoryLineId.InventoryItemIdAttributeSetInstanceId", "PhysicalInventoryLineId.InventoryItemIdAttributeSetInstanceId");
+            d.Add("physicalInventoryLineId.inventoryItemIdAttributeSetInstanceId", "PhysicalInventoryLineId.InventoryItemIdAttributeSetInstanceId");
+            d.Add("PhysicalInventoryLineId.InventoryItemId.AttributeSetInstanceId", "PhysicalInventoryLineId.InventoryItemIdAttributeSetInstanceId");
+            d.Add("physicalInventoryLineId.inventoryItemId.attributeSetInstanceId", "PhysicalInventoryLineId.InventoryItemIdAttributeSetInstanceId");
             _filteringPropertyAliasDictionary = d;
         }
 

@@ -3,6 +3,7 @@ package org.dddml.wms.domain.physicalinventory;
 import java.util.Set;
 import java.math.BigDecimal;
 import java.util.Date;
+import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.*;
 
 public class PhysicalInventoryCommands

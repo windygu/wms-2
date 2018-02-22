@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.PhysicalInventory
 {
@@ -15,7 +16,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 	public class PhysicalInventoryLineStateEventIdFlattenedDto : IIdFlattenedDto
 	{
 
-        private static string[] _flattenedPropertyNames = new string[] { "PhysicalInventoryDocumentNumber", "LineNumber", "PhysicalInventoryVersion" };
+        private static string[] _flattenedPropertyNames = new string[] { "PhysicalInventoryDocumentNumber", "InventoryItemIdProductId", "InventoryItemIdLocatorId", "InventoryItemIdAttributeSetInstanceId", "PhysicalInventoryVersion" };
 
         string[] IIdFlattenedDto.FieldNames
         {
@@ -39,7 +40,17 @@ namespace Dddml.Wms.Domain.PhysicalInventory
                 return typeof(string);
             }
 
-            if (fieldName.Equals("LineNumber", StringComparison.InvariantCultureIgnoreCase))
+            if (fieldName.Equals("InventoryItemIdProductId", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return typeof(string);
+            }
+
+            if (fieldName.Equals("InventoryItemIdLocatorId", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return typeof(string);
+            }
+
+            if (fieldName.Equals("InventoryItemIdAttributeSetInstanceId", StringComparison.InvariantCultureIgnoreCase))
             {
                 return typeof(string);
             }
@@ -84,9 +95,19 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 			set { _value.PhysicalInventoryDocumentNumber = value; } 
 		}
 
-		public virtual string LineNumber { 
-			get { return _value.LineNumber; } 
-			set { _value.LineNumber = value; } 
+		public virtual string InventoryItemIdProductId {
+			get { return _value.InventoryItemId.ProductId; }
+			set { _value.InventoryItemId.ProductId = value; }
+		}
+
+		public virtual string InventoryItemIdLocatorId {
+			get { return _value.InventoryItemId.LocatorId; }
+			set { _value.InventoryItemId.LocatorId = value; }
+		}
+
+		public virtual string InventoryItemIdAttributeSetInstanceId {
+			get { return _value.InventoryItemId.AttributeSetInstanceId; }
+			set { _value.InventoryItemId.AttributeSetInstanceId = value; }
 		}
 
 		public virtual long PhysicalInventoryVersion { 

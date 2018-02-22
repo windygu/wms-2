@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.PhysicalInventory
 {
@@ -20,6 +21,10 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 		string DocumentStatusId { get; set; }
 
 		string WarehouseId { get; set; }
+
+		string LocatorIdPattern { get; set; }
+
+		string ProductIdPattern { get; set; }
 
 		bool? Posted { get; set; }
 
@@ -51,7 +56,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 		
 		void AddPhysicalInventoryLineEvent(IPhysicalInventoryLineStateCreated e);
 
-		IPhysicalInventoryLineStateCreated NewPhysicalInventoryLineStateCreated(string lineNumber);
+		IPhysicalInventoryLineStateCreated NewPhysicalInventoryLineStateCreated(InventoryItemId inventoryItemId);
 
 	
 	}
@@ -62,6 +67,10 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 		bool IsPropertyDocumentStatusIdRemoved { get; set; }
 
 		bool IsPropertyWarehouseIdRemoved { get; set; }
+
+		bool IsPropertyLocatorIdPatternRemoved { get; set; }
+
+		bool IsPropertyProductIdPatternRemoved { get; set; }
 
 		bool IsPropertyPostedRemoved { get; set; }
 
@@ -89,22 +98,12 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 		
 		void AddPhysicalInventoryLineEvent(IPhysicalInventoryLineStateEvent e);
 
-		IPhysicalInventoryLineStateCreated NewPhysicalInventoryLineStateCreated(string lineNumber);
+		IPhysicalInventoryLineStateCreated NewPhysicalInventoryLineStateCreated(InventoryItemId inventoryItemId);
 
-		IPhysicalInventoryLineStateMergePatched NewPhysicalInventoryLineStateMergePatched(string lineNumber);
+		IPhysicalInventoryLineStateMergePatched NewPhysicalInventoryLineStateMergePatched(InventoryItemId inventoryItemId);
 
-		IPhysicalInventoryLineStateRemoved NewPhysicalInventoryLineStateRemoved(string lineNumber);
+		IPhysicalInventoryLineStateRemoved NewPhysicalInventoryLineStateRemoved(InventoryItemId inventoryItemId);
 
-
-	}
-
-	public interface IPhysicalInventoryStateDeleted : IPhysicalInventoryStateEvent
-	{
-		IEnumerable<IPhysicalInventoryLineStateRemoved> PhysicalInventoryLineEvents { get; }
-		
-		void AddPhysicalInventoryLineEvent(IPhysicalInventoryLineStateRemoved e);
-		
-		IPhysicalInventoryLineStateRemoved NewPhysicalInventoryLineStateRemoved(string lineNumber);
 
 	}
 

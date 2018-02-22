@@ -7,42 +7,6 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysicalInventoryLineMvoCommandDto
 {
-    private String locatorId;
-
-    public String getLocatorId()
-    {
-        return this.locatorId;
-    }
-
-    public void setLocatorId(String locatorId)
-    {
-        this.locatorId = locatorId;
-    }
-
-    private String productId;
-
-    public String getProductId()
-    {
-        return this.productId;
-    }
-
-    public void setProductId(String productId)
-    {
-        this.productId = productId;
-    }
-
-    private String attributeSetInstanceId;
-
-    public String getAttributeSetInstanceId()
-    {
-        return this.attributeSetInstanceId;
-    }
-
-    public void setAttributeSetInstanceId(String attributeSetInstanceId)
-    {
-        this.attributeSetInstanceId = attributeSetInstanceId;
-    }
-
     private BigDecimal bookQuantity;
 
     public BigDecimal getBookQuantity()
@@ -149,6 +113,30 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
     public void setPhysicalInventoryWarehouseId(String physicalInventoryWarehouseId)
     {
         this.physicalInventoryWarehouseId = physicalInventoryWarehouseId;
+    }
+
+    private String physicalInventoryLocatorIdPattern;
+
+    public String getPhysicalInventoryLocatorIdPattern()
+    {
+        return this.physicalInventoryLocatorIdPattern;
+    }
+
+    public void setPhysicalInventoryLocatorIdPattern(String physicalInventoryLocatorIdPattern)
+    {
+        this.physicalInventoryLocatorIdPattern = physicalInventoryLocatorIdPattern;
+    }
+
+    private String physicalInventoryProductIdPattern;
+
+    public String getPhysicalInventoryProductIdPattern()
+    {
+        return this.physicalInventoryProductIdPattern;
+    }
+
+    public void setPhysicalInventoryProductIdPattern(String physicalInventoryProductIdPattern)
+    {
+        this.physicalInventoryProductIdPattern = physicalInventoryProductIdPattern;
     }
 
     private Boolean physicalInventoryPosted;
@@ -331,54 +319,6 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         this.physicalInventoryActive = physicalInventoryActive;
     }
 
-    private Boolean physicalInventoryDeleted;
-
-    public Boolean getPhysicalInventoryDeleted()
-    {
-        return this.physicalInventoryDeleted;
-    }
-
-    public void setPhysicalInventoryDeleted(Boolean physicalInventoryDeleted)
-    {
-        this.physicalInventoryDeleted = physicalInventoryDeleted;
-    }
-
-    private Boolean isPropertyLocatorIdRemoved;
-
-    public Boolean getIsPropertyLocatorIdRemoved()
-    {
-        return this.isPropertyLocatorIdRemoved;
-    }
-
-    public void setIsPropertyLocatorIdRemoved(Boolean removed)
-    {
-        this.isPropertyLocatorIdRemoved = removed;
-    }
-
-    private Boolean isPropertyProductIdRemoved;
-
-    public Boolean getIsPropertyProductIdRemoved()
-    {
-        return this.isPropertyProductIdRemoved;
-    }
-
-    public void setIsPropertyProductIdRemoved(Boolean removed)
-    {
-        this.isPropertyProductIdRemoved = removed;
-    }
-
-    private Boolean isPropertyAttributeSetInstanceIdRemoved;
-
-    public Boolean getIsPropertyAttributeSetInstanceIdRemoved()
-    {
-        return this.isPropertyAttributeSetInstanceIdRemoved;
-    }
-
-    public void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed)
-    {
-        this.isPropertyAttributeSetInstanceIdRemoved = removed;
-    }
-
     private Boolean isPropertyBookQuantityRemoved;
 
     public Boolean getIsPropertyBookQuantityRemoved()
@@ -485,6 +425,30 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
     public void setIsPropertyPhysicalInventoryWarehouseIdRemoved(Boolean removed)
     {
         this.isPropertyPhysicalInventoryWarehouseIdRemoved = removed;
+    }
+
+    private Boolean isPropertyPhysicalInventoryLocatorIdPatternRemoved;
+
+    public Boolean getIsPropertyPhysicalInventoryLocatorIdPatternRemoved()
+    {
+        return this.isPropertyPhysicalInventoryLocatorIdPatternRemoved;
+    }
+
+    public void setIsPropertyPhysicalInventoryLocatorIdPatternRemoved(Boolean removed)
+    {
+        this.isPropertyPhysicalInventoryLocatorIdPatternRemoved = removed;
+    }
+
+    private Boolean isPropertyPhysicalInventoryProductIdPatternRemoved;
+
+    public Boolean getIsPropertyPhysicalInventoryProductIdPatternRemoved()
+    {
+        return this.isPropertyPhysicalInventoryProductIdPatternRemoved;
+    }
+
+    public void setIsPropertyPhysicalInventoryProductIdPatternRemoved(Boolean removed)
+    {
+        this.isPropertyPhysicalInventoryProductIdPatternRemoved = removed;
     }
 
     private Boolean isPropertyPhysicalInventoryPostedRemoved;
@@ -667,24 +631,9 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         this.isPropertyPhysicalInventoryActiveRemoved = removed;
     }
 
-    private Boolean isPropertyPhysicalInventoryDeletedRemoved;
-
-    public Boolean getIsPropertyPhysicalInventoryDeletedRemoved()
-    {
-        return this.isPropertyPhysicalInventoryDeletedRemoved;
-    }
-
-    public void setIsPropertyPhysicalInventoryDeletedRemoved(Boolean removed)
-    {
-        this.isPropertyPhysicalInventoryDeletedRemoved = removed;
-    }
-
     public void copyTo(AbstractPhysicalInventoryLineMvoCommand.AbstractCreateOrMergePatchPhysicalInventoryLineMvo command)
     {
         ((AbstractPhysicalInventoryLineMvoCommandDto) this).copyTo(command);
-        command.setLocatorId(this.getLocatorId());
-        command.setProductId(this.getProductId());
-        command.setAttributeSetInstanceId(this.getAttributeSetInstanceId());
         command.setBookQuantity(this.getBookQuantity());
         command.setCountedQuantity(this.getCountedQuantity());
         command.setProcessed(this.getProcessed());
@@ -694,6 +643,8 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         command.setActive(this.getActive());
         command.setPhysicalInventoryDocumentStatusId(this.getPhysicalInventoryDocumentStatusId());
         command.setPhysicalInventoryWarehouseId(this.getPhysicalInventoryWarehouseId());
+        command.setPhysicalInventoryLocatorIdPattern(this.getPhysicalInventoryLocatorIdPattern());
+        command.setPhysicalInventoryProductIdPattern(this.getPhysicalInventoryProductIdPattern());
         command.setPhysicalInventoryPosted(this.getPhysicalInventoryPosted());
         command.setPhysicalInventoryProcessed(this.getPhysicalInventoryProcessed());
         command.setPhysicalInventoryProcessing(this.getPhysicalInventoryProcessing());
@@ -709,7 +660,6 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         command.setPhysicalInventoryUpdatedBy(this.getPhysicalInventoryUpdatedBy());
         command.setPhysicalInventoryUpdatedAt(this.getPhysicalInventoryUpdatedAt());
         command.setPhysicalInventoryActive(this.getPhysicalInventoryActive());
-        command.setPhysicalInventoryDeleted(this.getPhysicalInventoryDeleted());
     }
 
     public PhysicalInventoryLineMvoCommand toCommand()
@@ -734,9 +684,6 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
     public void copyTo(AbstractPhysicalInventoryLineMvoCommand.AbstractMergePatchPhysicalInventoryLineMvo command)
     {
         copyTo((AbstractPhysicalInventoryLineMvoCommand.AbstractCreateOrMergePatchPhysicalInventoryLineMvo) command);
-        command.setIsPropertyLocatorIdRemoved(this.getIsPropertyLocatorIdRemoved());
-        command.setIsPropertyProductIdRemoved(this.getIsPropertyProductIdRemoved());
-        command.setIsPropertyAttributeSetInstanceIdRemoved(this.getIsPropertyAttributeSetInstanceIdRemoved());
         command.setIsPropertyBookQuantityRemoved(this.getIsPropertyBookQuantityRemoved());
         command.setIsPropertyCountedQuantityRemoved(this.getIsPropertyCountedQuantityRemoved());
         command.setIsPropertyProcessedRemoved(this.getIsPropertyProcessedRemoved());
@@ -746,6 +693,8 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
         command.setIsPropertyPhysicalInventoryDocumentStatusIdRemoved(this.getIsPropertyPhysicalInventoryDocumentStatusIdRemoved());
         command.setIsPropertyPhysicalInventoryWarehouseIdRemoved(this.getIsPropertyPhysicalInventoryWarehouseIdRemoved());
+        command.setIsPropertyPhysicalInventoryLocatorIdPatternRemoved(this.getIsPropertyPhysicalInventoryLocatorIdPatternRemoved());
+        command.setIsPropertyPhysicalInventoryProductIdPatternRemoved(this.getIsPropertyPhysicalInventoryProductIdPatternRemoved());
         command.setIsPropertyPhysicalInventoryPostedRemoved(this.getIsPropertyPhysicalInventoryPostedRemoved());
         command.setIsPropertyPhysicalInventoryProcessedRemoved(this.getIsPropertyPhysicalInventoryProcessedRemoved());
         command.setIsPropertyPhysicalInventoryProcessingRemoved(this.getIsPropertyPhysicalInventoryProcessingRemoved());
@@ -761,7 +710,6 @@ public class CreateOrMergePatchPhysicalInventoryLineMvoDto extends AbstractPhysi
         command.setIsPropertyPhysicalInventoryUpdatedByRemoved(this.getIsPropertyPhysicalInventoryUpdatedByRemoved());
         command.setIsPropertyPhysicalInventoryUpdatedAtRemoved(this.getIsPropertyPhysicalInventoryUpdatedAtRemoved());
         command.setIsPropertyPhysicalInventoryActiveRemoved(this.getIsPropertyPhysicalInventoryActiveRemoved());
-        command.setIsPropertyPhysicalInventoryDeletedRemoved(this.getIsPropertyPhysicalInventoryDeletedRemoved());
     }
 
     public static class CreatePhysicalInventoryLineMvoDto extends CreateOrMergePatchPhysicalInventoryLineMvoDto

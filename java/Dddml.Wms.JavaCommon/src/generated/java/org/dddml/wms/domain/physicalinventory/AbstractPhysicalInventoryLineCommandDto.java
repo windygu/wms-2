@@ -1,5 +1,6 @@
 package org.dddml.wms.domain.physicalinventory;
 
+import org.dddml.wms.domain.inventoryitem.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
@@ -7,22 +8,22 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractPhysicalInventoryLineCommandDto extends AbstractCommand
 {
-    private String lineNumber;
+    private InventoryItemIdDto inventoryItemId;
 
-    public String getLineNumber()
+    public InventoryItemIdDto getInventoryItemId()
     {
-        return this.lineNumber;
+        return this.inventoryItemId;
     }
 
-    public void setLineNumber(String lineNumber)
+    public void setInventoryItemId(InventoryItemIdDto inventoryItemId)
     {
-        this.lineNumber = lineNumber;
+        this.inventoryItemId = inventoryItemId;
     }
 
 
     public void copyTo(AbstractPhysicalInventoryLineCommand command)
     {
-        command.setLineNumber(this.getLineNumber());
+        command.setInventoryItemId((this.getInventoryItemId() == null) ? null : this.getInventoryItemId().toInventoryItemId());
         
         command.setRequesterId(this.getRequesterId());
         command.setCommandId(this.getCommandId());

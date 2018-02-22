@@ -1,5 +1,6 @@
 package org.dddml.wms.domain.physicalinventory;
 
+import org.dddml.wms.domain.inventoryitem.InventoryItemIdDto;
 import org.dddml.wms.domain.*;
 import java.util.*;
 import org.dddml.wms.specialization.*;
@@ -26,8 +27,16 @@ public class PhysicalInventoryLineStateEventIdFlattenedDtoFormatter extends Abst
             dto.setPhysicalInventoryDocumentNumber((String) objVal);
             return;
         }
-        if ("lineNumber".equals(fieldName)) {
-            dto.setLineNumber((String) objVal);
+        if ("inventoryItemIdProductId".equals(fieldName)) {
+            dto.setInventoryItemIdProductId((String) objVal);
+            return;
+        }
+        if ("inventoryItemIdLocatorId".equals(fieldName)) {
+            dto.setInventoryItemIdLocatorId((String) objVal);
+            return;
+        }
+        if ("inventoryItemIdAttributeSetInstanceId".equals(fieldName)) {
+            dto.setInventoryItemIdAttributeSetInstanceId((String) objVal);
             return;
         }
         if ("physicalInventoryVersion".equals(fieldName)) {
@@ -44,8 +53,18 @@ public class PhysicalInventoryLineStateEventIdFlattenedDtoFormatter extends Abst
             String strVal = ApplicationContext.current.getTypeConverter().convertToString(clazz, objVal);
             return strVal;
         }
-        if ("lineNumber".equals(fieldName)) {
-            Object objVal = dto.getLineNumber();
+        if ("inventoryItemIdProductId".equals(fieldName)) {
+            Object objVal = dto.getInventoryItemIdProductId();
+            String strVal = ApplicationContext.current.getTypeConverter().convertToString(clazz, objVal);
+            return strVal;
+        }
+        if ("inventoryItemIdLocatorId".equals(fieldName)) {
+            Object objVal = dto.getInventoryItemIdLocatorId();
+            String strVal = ApplicationContext.current.getTypeConverter().convertToString(clazz, objVal);
+            return strVal;
+        }
+        if ("inventoryItemIdAttributeSetInstanceId".equals(fieldName)) {
+            Object objVal = dto.getInventoryItemIdAttributeSetInstanceId();
             String strVal = ApplicationContext.current.getTypeConverter().convertToString(clazz, objVal);
             return strVal;
         }

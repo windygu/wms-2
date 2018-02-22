@@ -3,6 +3,7 @@ package org.dddml.wms.domain.physicalinventory.hibernate;
 import java.util.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.*;
 import org.hibernate.Session;
 import org.hibernate.Criteria;
@@ -27,7 +28,7 @@ public class HibernatePhysicalInventoryStateQueryRepository implements PhysicalI
         return this.sessionFactory.getCurrentSession();
     }
     
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("DocumentNumber", "DocumentStatusId", "WarehouseId", "Posted", "Processed", "Processing", "DocumentTypeId", "MovementDate", "Description", "IsApproved", "ApprovalAmount", "IsQuantityUpdated", "ReversalDocumentNumber", "PhysicalInventoryLines", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("DocumentNumber", "DocumentStatusId", "WarehouseId", "LocatorIdPattern", "ProductIdPattern", "Posted", "Processed", "Processing", "DocumentTypeId", "MovementDate", "Description", "IsApproved", "ApprovalAmount", "IsQuantityUpdated", "ReversalDocumentNumber", "PhysicalInventoryLines", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     
@@ -134,15 +135,14 @@ public class HibernatePhysicalInventoryStateQueryRepository implements PhysicalI
     }
 
     @Transactional(readOnly = true)
-    public PhysicalInventoryLineState getPhysicalInventoryLine(String physicalInventoryDocumentNumber, String lineNumber)
+    public PhysicalInventoryLineState getPhysicalInventoryLine(String physicalInventoryDocumentNumber, InventoryItemId inventoryItemId)
     {
-        PhysicalInventoryLineId entityId = new PhysicalInventoryLineId(physicalInventoryDocumentNumber, lineNumber);
+        PhysicalInventoryLineId entityId = new PhysicalInventoryLineId(physicalInventoryDocumentNumber, inventoryItemId);
         return (PhysicalInventoryLineState) getCurrentSession().get(AbstractPhysicalInventoryLineState.SimplePhysicalInventoryLineState.class, entityId);
     }
 
 
     protected static void addNotDeletedRestriction(Criteria criteria) {
-        criteria.add(org.hibernate.criterion.Restrictions.eq("deleted", false));
     }
 
 }

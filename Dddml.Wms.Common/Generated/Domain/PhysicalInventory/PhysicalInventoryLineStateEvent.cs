@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.PhysicalInventory
 {
@@ -17,17 +18,11 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
 		public virtual PhysicalInventoryLineStateEventId StateEventId { get; set; }
 
-        public virtual string LineNumber
+        public virtual InventoryItemId InventoryItemId
         {
-            get { return StateEventId.LineNumber; }
-            set { StateEventId.LineNumber = value; }
+            get { return StateEventId.InventoryItemId; }
+            set { StateEventId.InventoryItemId = value; }
         }
-
-		public virtual string LocatorId { get; set; }
-
-		public virtual string ProductId { get; set; }
-
-		public virtual string AttributeSetInstanceId { get; set; }
 
 		public virtual decimal? BookQuantity { get; set; }
 
@@ -38,8 +33,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 		public virtual long? ReversalLineNumber { get; set; }
 
 		public virtual string Description { get; set; }
-
-		public virtual bool? Active { get; set; }
 
 		public virtual string CreatedBy { get; set; }
 
@@ -131,12 +124,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
 	public class PhysicalInventoryLineStateMergePatched : PhysicalInventoryLineStateEventBase, IPhysicalInventoryLineStateMergePatched
 	{
-		public virtual bool IsPropertyLocatorIdRemoved { get; set; }
-
-		public virtual bool IsPropertyProductIdRemoved { get; set; }
-
-		public virtual bool IsPropertyAttributeSetInstanceIdRemoved { get; set; }
-
 		public virtual bool IsPropertyBookQuantityRemoved { get; set; }
 
 		public virtual bool IsPropertyCountedQuantityRemoved { get; set; }
@@ -146,8 +133,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 		public virtual bool IsPropertyReversalLineNumberRemoved { get; set; }
 
 		public virtual bool IsPropertyDescriptionRemoved { get; set; }
-
-		public virtual bool IsPropertyActiveRemoved { get; set; }
 
 
 		public PhysicalInventoryLineStateMergePatched ()

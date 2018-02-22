@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.PhysicalInventory
 {
@@ -28,6 +29,18 @@ namespace Dddml.Wms.Domain.PhysicalInventory
         }
 
         public virtual string WarehouseId
+        {
+            get;
+            set;
+        }
+
+        public virtual string LocatorIdPattern
+        {
+            get;
+            set;
+        }
+
+        public virtual string ProductIdPattern
         {
             get;
             set;
@@ -147,6 +160,8 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             state.DocumentNumber = this.DocumentNumber;
             state.DocumentStatusId = this.DocumentStatusId;
             state.WarehouseId = this.WarehouseId;
+            state.LocatorIdPattern = this.LocatorIdPattern;
+            state.ProductIdPattern = this.ProductIdPattern;
             if (this.Posted != null && this.Posted.HasValue) { state.Posted = this.Posted.Value; }
             if (this.Processed != null && this.Processed.HasValue) { state.Processed = this.Processed.Value; }
             state.Processing = this.Processing;

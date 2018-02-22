@@ -7,23 +7,23 @@
 
     <composite-id name="StateEventId" class="Dddml.Wms.Domain.PhysicalInventoryLineMvo.PhysicalInventoryLineMvoStateEventId">
         <key-property name="PhysicalInventoryLineIdPhysicalInventoryDocumentNumber" ><column name="PhysicalInventoryLineIdPhysicalInventoryDocumentNumber" length="50" /></key-property>
-        <key-property name="PhysicalInventoryLineIdLineNumber" ><column name="PhysicalInventoryLineIdLineNumber" length="50" /></key-property>
+        <key-property name="PhysicalInventoryLineIdInventoryItemIdProductId" ><column name="ProductId" length="60" sql-type="VARCHAR(60)" /></key-property>
+        <key-property name="PhysicalInventoryLineIdInventoryItemIdLocatorId" ><column name="LocatorId" length="50" /></key-property>
+        <key-property name="PhysicalInventoryLineIdInventoryItemIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" length="50" /></key-property>
         <key-property name="PhysicalInventoryVersion" ></key-property>
     </composite-id>
     <discriminator column="StateEventType" type="String" />
 
-    <property name="LocatorId" ></property>
-    <property name="ProductId" ><column name="ProductId" sql-type="VARCHAR(60)" /></property>
-    <property name="AttributeSetInstanceId" ></property>
     <property name="BookQuantity" ></property>
     <property name="CountedQuantity" ></property>
     <property name="Processed" ></property>
     <property name="ReversalLineNumber" ></property>
     <property name="Description" ></property>
     <property name="Version" ></property>
-    <property name="Active" ></property>
     <property name="PhysicalInventoryDocumentStatusId" ></property>
     <property name="PhysicalInventoryWarehouseId" ></property>
+    <property name="PhysicalInventoryLocatorIdPattern" ></property>
+    <property name="PhysicalInventoryProductIdPattern" ><column name="PhysicalInventoryProductIdPattern" sql-type="VARCHAR(60)" /></property>
     <property name="PhysicalInventoryPosted" ></property>
     <property name="PhysicalInventoryProcessed" ></property>
     <property name="PhysicalInventoryProcessing" ></property>
@@ -39,7 +39,6 @@
     <property name="PhysicalInventoryUpdatedBy" ></property>
     <property name="PhysicalInventoryUpdatedAt" ><column name="PhysicalInventoryUpdatedAt" sql-type="DATETIME" /></property>
     <property name="PhysicalInventoryActive" ></property>
-    <property name="PhysicalInventoryDeleted" ></property>
 
     <property name="CreatedBy" column="CreatedBy"/>
 
@@ -51,12 +50,6 @@
 
     <subclass name="PhysicalInventoryLineMvoStateMergePatched"  discriminator-value="MergePatched">
 
-
-        <property name="IsPropertyLocatorIdRemoved" column="IsPropertyLocatorIdRemoved"/>
-
-        <property name="IsPropertyProductIdRemoved" column="IsPropertyProductIdRemoved"/>
-
-        <property name="IsPropertyAttributeSetInstanceIdRemoved" column="IsPropertyAttributeSetInstanceIdRemoved"/>
 
         <property name="IsPropertyBookQuantityRemoved" column="IsPropertyBookQuantityRemoved"/>
 
@@ -70,11 +63,13 @@
 
         <property name="IsPropertyVersionRemoved" column="IsPropertyVersionRemoved"/>
 
-        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
-
         <property name="IsPropertyPhysicalInventoryDocumentStatusIdRemoved" column="IsPropertyPhysicalInventoryDocumentStatusIdRemoved"/>
 
         <property name="IsPropertyPhysicalInventoryWarehouseIdRemoved" column="IsPropertyPhysicalInventoryWarehouseIdRemoved"/>
+
+        <property name="IsPropertyPhysicalInventoryLocatorIdPatternRemoved" column="IsPropertyPhysicalInventoryLocatorIdPatternRemoved"/>
+
+        <property name="IsPropertyPhysicalInventoryProductIdPatternRemoved" column="IsPropertyPhysicalInventoryProductIdPatternRemoved"/>
 
         <property name="IsPropertyPhysicalInventoryPostedRemoved" column="IsPropertyPhysicalInventoryPostedRemoved"/>
 
@@ -105,8 +100,6 @@
         <property name="IsPropertyPhysicalInventoryUpdatedAtRemoved" column="IsPropertyPhysicalInventoryUpdatedAtRemoved"/>
 
         <property name="IsPropertyPhysicalInventoryActiveRemoved" column="IsPropertyPhysicalInventoryActiveRemoved"/>
-
-        <property name="IsPropertyPhysicalInventoryDeletedRemoved" column="IsPropertyPhysicalInventoryDeletedRemoved"/>
     </subclass>
 
     <subclass name="PhysicalInventoryLineMvoStateDeleted"  discriminator-value="Deleted">

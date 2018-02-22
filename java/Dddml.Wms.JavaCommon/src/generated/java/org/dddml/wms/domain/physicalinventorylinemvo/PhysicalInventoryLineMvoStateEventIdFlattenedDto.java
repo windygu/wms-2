@@ -12,11 +12,15 @@ public class PhysicalInventoryLineMvoStateEventIdFlattenedDto
 
     public static final String[] propertyNames = new String[]{
             "physicalInventoryLineIdPhysicalInventoryDocumentNumber",
-            "physicalInventoryLineIdLineNumber",
+            "physicalInventoryLineIdInventoryItemIdProductId",
+            "physicalInventoryLineIdInventoryItemIdLocatorId",
+            "physicalInventoryLineIdInventoryItemIdAttributeSetInstanceId",
             "physicalInventoryVersion",
         };
 
     public static final String[] propertyTypes = new String[]{
+            "String",
+            "String",
             "String",
             "String",
             "Long",
@@ -63,14 +67,34 @@ public class PhysicalInventoryLineMvoStateEventIdFlattenedDto
         this.value.getPhysicalInventoryLineId().setPhysicalInventoryDocumentNumber(physicalInventoryLineIdPhysicalInventoryDocumentNumber);
     }
 
-    public String getPhysicalInventoryLineIdLineNumber()
+    public String getPhysicalInventoryLineIdInventoryItemIdProductId()
     {
-        return this.value.getPhysicalInventoryLineId().getLineNumber();
+        return this.value.getPhysicalInventoryLineId().getInventoryItemId().getProductId();
     }
 
-    public void setPhysicalInventoryLineIdLineNumber(String physicalInventoryLineIdLineNumber)
+    public void setPhysicalInventoryLineIdInventoryItemIdProductId(String physicalInventoryLineIdInventoryItemIdProductId)
     {
-        this.value.getPhysicalInventoryLineId().setLineNumber(physicalInventoryLineIdLineNumber);
+        this.value.getPhysicalInventoryLineId().getInventoryItemId().setProductId(physicalInventoryLineIdInventoryItemIdProductId);
+    }
+
+    public String getPhysicalInventoryLineIdInventoryItemIdLocatorId()
+    {
+        return this.value.getPhysicalInventoryLineId().getInventoryItemId().getLocatorId();
+    }
+
+    public void setPhysicalInventoryLineIdInventoryItemIdLocatorId(String physicalInventoryLineIdInventoryItemIdLocatorId)
+    {
+        this.value.getPhysicalInventoryLineId().getInventoryItemId().setLocatorId(physicalInventoryLineIdInventoryItemIdLocatorId);
+    }
+
+    public String getPhysicalInventoryLineIdInventoryItemIdAttributeSetInstanceId()
+    {
+        return this.value.getPhysicalInventoryLineId().getInventoryItemId().getAttributeSetInstanceId();
+    }
+
+    public void setPhysicalInventoryLineIdInventoryItemIdAttributeSetInstanceId(String physicalInventoryLineIdInventoryItemIdAttributeSetInstanceId)
+    {
+        this.value.getPhysicalInventoryLineId().getInventoryItemId().setAttributeSetInstanceId(physicalInventoryLineIdInventoryItemIdAttributeSetInstanceId);
     }
 
     public Long getPhysicalInventoryVersion()

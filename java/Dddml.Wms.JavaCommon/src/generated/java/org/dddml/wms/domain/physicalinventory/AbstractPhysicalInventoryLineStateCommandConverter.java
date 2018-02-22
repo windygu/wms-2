@@ -1,6 +1,7 @@
 package org.dddml.wms.domain.physicalinventory;
 
 import java.util.*;
+import org.dddml.wms.domain.inventoryitem.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
@@ -25,7 +26,7 @@ public abstract class AbstractPhysicalInventoryLineStateCommandConverter<TCreate
     public TRemovePhysicalInventoryLine toRemovePhysicalInventoryLine(PhysicalInventoryLineState state) //where TRemovePhysicalInventoryLine : IRemovePhysicalInventoryLine, new()
     {
         TRemovePhysicalInventoryLine cmd = newRemovePhysicalInventoryLine();
-        cmd.setLineNumber(state.getLineNumber());
+        cmd.setInventoryItemId(state.getInventoryItemId());
         return cmd;
     }
 
@@ -33,27 +34,19 @@ public abstract class AbstractPhysicalInventoryLineStateCommandConverter<TCreate
     {
         TMergePatchPhysicalInventoryLine cmd = newMergePatchPhysicalInventoryLine();
 
-        cmd.setLineNumber(state.getLineNumber());
-        cmd.setLocatorId(state.getLocatorId());
-        cmd.setProductId(state.getProductId());
-        cmd.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
+        cmd.setInventoryItemId(state.getInventoryItemId());
         cmd.setBookQuantity(state.getBookQuantity());
         cmd.setCountedQuantity(state.getCountedQuantity());
         cmd.setProcessed(state.getProcessed());
         cmd.setReversalLineNumber(state.getReversalLineNumber());
         cmd.setDescription(state.getDescription());
-        cmd.setActive(state.getActive());
         cmd.setPhysicalInventoryDocumentNumber(state.getPhysicalInventoryDocumentNumber());
             
-        if (state.getLocatorId() == null) { cmd.setIsPropertyLocatorIdRemoved(true); }
-        if (state.getProductId() == null) { cmd.setIsPropertyProductIdRemoved(true); }
-        if (state.getAttributeSetInstanceId() == null) { cmd.setIsPropertyAttributeSetInstanceIdRemoved(true); }
         if (state.getBookQuantity() == null) { cmd.setIsPropertyBookQuantityRemoved(true); }
         if (state.getCountedQuantity() == null) { cmd.setIsPropertyCountedQuantityRemoved(true); }
         if (state.getProcessed() == null) { cmd.setIsPropertyProcessedRemoved(true); }
         if (state.getReversalLineNumber() == null) { cmd.setIsPropertyReversalLineNumberRemoved(true); }
         if (state.getDescription() == null) { cmd.setIsPropertyDescriptionRemoved(true); }
-        if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
         return cmd;
     }
 
@@ -61,16 +54,12 @@ public abstract class AbstractPhysicalInventoryLineStateCommandConverter<TCreate
     {
         TCreatePhysicalInventoryLine cmd = newCreatePhysicalInventoryLine();
 
-        cmd.setLineNumber(state.getLineNumber());
-        cmd.setLocatorId(state.getLocatorId());
-        cmd.setProductId(state.getProductId());
-        cmd.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
+        cmd.setInventoryItemId(state.getInventoryItemId());
         cmd.setBookQuantity(state.getBookQuantity());
         cmd.setCountedQuantity(state.getCountedQuantity());
         cmd.setProcessed(state.getProcessed());
         cmd.setReversalLineNumber(state.getReversalLineNumber());
         cmd.setDescription(state.getDescription());
-        cmd.setActive(state.getActive());
         cmd.setPhysicalInventoryDocumentNumber(state.getPhysicalInventoryDocumentNumber());
         return cmd;
     }

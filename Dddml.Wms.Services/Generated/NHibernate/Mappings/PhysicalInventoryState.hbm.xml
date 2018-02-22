@@ -11,6 +11,8 @@
 
     <property name="DocumentStatusId" ></property>
     <property name="WarehouseId" ></property>
+    <property name="LocatorIdPattern" ></property>
+    <property name="ProductIdPattern" ><column name="ProductIdPattern" sql-type="VARCHAR(60)" /></property>
     <property name="Posted" ></property>
     <property name="Processed" ></property>
     <property name="Processing" ></property>
@@ -24,7 +26,6 @@
     <property name="CreatedBy" ></property>
     <property name="UpdatedBy" ></property>
     <property name="Active" ></property>
-    <property name="Deleted" ></property>
 
     <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
 

@@ -1,5 +1,6 @@
 package org.dddml.wms.domain.physicalinventory;
 
+import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.*;
 
 public class PhysicalInventoryLineIdDtoWrapper extends PhysicalInventoryLineIdDto
@@ -36,15 +37,15 @@ public class PhysicalInventoryLineIdDtoWrapper extends PhysicalInventoryLineIdDt
     }
 
     @Override
-    public String getLineNumber()
+    public InventoryItemIdDto getInventoryItemId()
     {
-        return this.value.getLineNumber();
+        return new InventoryItemIdDtoWrapper(this.value.getInventoryItemId());
     }
 
     @Override
-    public void setLineNumber(String lineNumber)
+    public void setInventoryItemId(InventoryItemIdDto inventoryItemId)
     {
-        this.value.setLineNumber(lineNumber);
+        this.value.setInventoryItemId(inventoryItemId.toInventoryItemId());
     }
 
 

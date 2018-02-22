@@ -7,20 +7,18 @@
 
     <composite-id name="StateEventId" class="Dddml.Wms.Domain.PhysicalInventory.PhysicalInventoryLineStateEventId">
         <key-property name="PhysicalInventoryDocumentNumber" ><column name="PhysicalInventoryLineIdPhysicalInventoryDocumentNumber" length="50" /></key-property>
-        <key-property name="LineNumber" ><column name="PhysicalInventoryLineIdLineNumber" length="50" /></key-property>
+        <key-property name="InventoryItemIdProductId" ><column name="ProductId" length="60" sql-type="VARCHAR(60)" /></key-property>
+        <key-property name="InventoryItemIdLocatorId" ><column name="LocatorId" length="50" /></key-property>
+        <key-property name="InventoryItemIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" length="50" /></key-property>
         <key-property name="PhysicalInventoryVersion" ></key-property>
     </composite-id>
     <discriminator column="StateEventType" type="String" />
 
-    <property name="LocatorId" ></property>
-    <property name="ProductId" ><column name="ProductId" sql-type="VARCHAR(60)" /></property>
-    <property name="AttributeSetInstanceId" ></property>
     <property name="BookQuantity" ></property>
     <property name="CountedQuantity" ></property>
     <property name="Processed" ></property>
     <property name="ReversalLineNumber" ></property>
     <property name="Description" ></property>
-    <property name="Active" ></property>
 
     <property name="CreatedBy" column="CreatedBy"/>
 
@@ -35,12 +33,6 @@
     <subclass name="PhysicalInventoryLineStateMergePatched"  discriminator-value="MergePatched">
 
 
-        <property name="IsPropertyLocatorIdRemoved" column="IsPropertyLocatorIdRemoved"/>
-
-        <property name="IsPropertyProductIdRemoved" column="IsPropertyProductIdRemoved"/>
-
-        <property name="IsPropertyAttributeSetInstanceIdRemoved" column="IsPropertyAttributeSetInstanceIdRemoved"/>
-
         <property name="IsPropertyBookQuantityRemoved" column="IsPropertyBookQuantityRemoved"/>
 
         <property name="IsPropertyCountedQuantityRemoved" column="IsPropertyCountedQuantityRemoved"/>
@@ -50,8 +42,6 @@
         <property name="IsPropertyReversalLineNumberRemoved" column="IsPropertyReversalLineNumberRemoved"/>
 
         <property name="IsPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
-
-        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
     </subclass>
 
     <subclass name="PhysicalInventoryLineStateRemoved"  discriminator-value="Removed">

@@ -17,12 +17,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 	{
 		public virtual PhysicalInventoryLineId PhysicalInventoryLineId { get; set; }
 
-		public virtual string LocatorId { get; set; }
-
-		public virtual string ProductId { get; set; }
-
-		public virtual string AttributeSetInstanceId { get; set; }
-
 		public virtual decimal BookQuantity { get; set; }
 
 		public virtual decimal CountedQuantity { get; set; }
@@ -35,11 +29,13 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
 		public virtual long Version { get; set; }
 
-		public virtual bool Active { get; set; }
-
 		public virtual string PhysicalInventoryDocumentStatusId { get; set; }
 
 		public virtual string PhysicalInventoryWarehouseId { get; set; }
+
+		public virtual string PhysicalInventoryLocatorIdPattern { get; set; }
+
+		public virtual string PhysicalInventoryProductIdPattern { get; set; }
 
 		public virtual bool PhysicalInventoryPosted { get; set; }
 
@@ -72,8 +68,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 		public virtual DateTime PhysicalInventoryUpdatedAt { get; set; }
 
 		public virtual bool PhysicalInventoryActive { get; set; }
-
-		public virtual bool PhysicalInventoryDeleted { get; set; }
 
         protected virtual void InitializeProperties()
         { 

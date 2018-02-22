@@ -1,6 +1,7 @@
 package org.dddml.wms.domain.physicalinventory;
 
 import java.util.*;
+import org.dddml.wms.domain.inventoryitem.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
@@ -57,16 +58,16 @@ public abstract class AbstractPhysicalInventoryLineStates implements PhysicalInv
         return getInnerIterable().iterator();
     }
 
-    public PhysicalInventoryLineState get(String lineNumber) {
-        return get(lineNumber, false, false);
+    public PhysicalInventoryLineState get(InventoryItemId inventoryItemId) {
+        return get(inventoryItemId, false, false);
     }
 
-    public PhysicalInventoryLineState get(String lineNumber, boolean forCreation) {
-        return get(lineNumber, forCreation, false);
+    public PhysicalInventoryLineState get(InventoryItemId inventoryItemId, boolean forCreation) {
+        return get(inventoryItemId, forCreation, false);
     }
 
-    public PhysicalInventoryLineState get(String lineNumber, boolean forCreation, boolean nullAllowed) {
-        PhysicalInventoryLineId globalId = new PhysicalInventoryLineId(physicalInventoryState.getDocumentNumber(), lineNumber);
+    public PhysicalInventoryLineState get(InventoryItemId inventoryItemId, boolean forCreation, boolean nullAllowed) {
+        PhysicalInventoryLineId globalId = new PhysicalInventoryLineId(physicalInventoryState.getDocumentNumber(), inventoryItemId);
         if (loadedPhysicalInventoryLineStates.containsKey(globalId)) {
             return loadedPhysicalInventoryLineStates.get(globalId);
         }

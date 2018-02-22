@@ -5,6 +5,7 @@ import java.util.List;
 import org.dddml.support.criterion.Criterion;
 import java.math.BigDecimal;
 import java.util.Date;
+import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 import org.dddml.wms.domain.Command;
@@ -14,8 +15,6 @@ public interface PhysicalInventoryApplicationService
     void when(PhysicalInventoryCommand.CreatePhysicalInventory c);
 
     void when(PhysicalInventoryCommand.MergePatchPhysicalInventory c);
-
-    void when(PhysicalInventoryCommand.DeletePhysicalInventory c);
 
     void when(PhysicalInventoryCommands.DocumentAction c);
 
@@ -37,7 +36,7 @@ public interface PhysicalInventoryApplicationService
 
     PhysicalInventoryState getHistoryState(String documentNumber, long version);
 
-    PhysicalInventoryLineState getPhysicalInventoryLine(String physicalInventoryDocumentNumber, String lineNumber);
+    PhysicalInventoryLineState getPhysicalInventoryLine(String physicalInventoryDocumentNumber, InventoryItemId inventoryItemId);
 
 }
 

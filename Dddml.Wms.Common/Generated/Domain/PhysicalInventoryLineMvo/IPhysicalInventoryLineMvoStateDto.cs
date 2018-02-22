@@ -22,24 +22,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             set;
         }
 
-        string LocatorId
-        {
-            get;
-            set;
-        }
-
-        string ProductId
-        {
-            get;
-            set;
-        }
-
-        string AttributeSetInstanceId
-        {
-            get;
-            set;
-        }
-
         decimal? BookQuantity
         {
             get;
@@ -76,12 +58,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             set;
         }
 
-        bool? Active
-        {
-            get;
-            set;
-        }
-
         string PhysicalInventoryDocumentStatusId
         {
             get;
@@ -89,6 +65,18 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
         }
 
         string PhysicalInventoryWarehouseId
+        {
+            get;
+            set;
+        }
+
+        string PhysicalInventoryLocatorIdPattern
+        {
+            get;
+            set;
+        }
+
+        string PhysicalInventoryProductIdPattern
         {
             get;
             set;
@@ -179,12 +167,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
         }
 
         bool? PhysicalInventoryActive
-        {
-            get;
-            set;
-        }
-
-        bool? PhysicalInventoryDeleted
         {
             get;
             set;

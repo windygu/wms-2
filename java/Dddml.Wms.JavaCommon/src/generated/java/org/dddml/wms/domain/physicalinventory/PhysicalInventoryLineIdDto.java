@@ -1,5 +1,6 @@
 package org.dddml.wms.domain.physicalinventory;
 
+import org.dddml.wms.domain.inventoryitem.InventoryItemIdDto;
 import org.dddml.wms.domain.*;
 
 public class PhysicalInventoryLineIdDto
@@ -13,7 +14,7 @@ public class PhysicalInventoryLineIdDto
     {
         PhysicalInventoryLineId v = new PhysicalInventoryLineId();
         v.setPhysicalInventoryDocumentNumber(this.getPhysicalInventoryDocumentNumber());
-        v.setLineNumber(this.getLineNumber());
+        v.setInventoryItemId(this.getInventoryItemId().toInventoryItemId());
         return v;
     }
 
@@ -29,16 +30,16 @@ public class PhysicalInventoryLineIdDto
         this.physicalInventoryDocumentNumber = physicalInventoryDocumentNumber;
     }
 
-    private String lineNumber;
+    private InventoryItemIdDto inventoryItemId = new InventoryItemIdDto();
 
-    public String getLineNumber()
+    public InventoryItemIdDto getInventoryItemId()
     {
-        return this.lineNumber;
+        return this.inventoryItemId;
     }
 
-    public void setLineNumber(String lineNumber)
+    public void setInventoryItemId(InventoryItemIdDto inventoryItemId)
     {
-        this.lineNumber = lineNumber;
+        this.inventoryItemId = inventoryItemId;
     }
 
 
@@ -55,7 +56,7 @@ public class PhysicalInventoryLineIdDto
         PhysicalInventoryLineIdDto other = (PhysicalInventoryLineIdDto)obj;
         return true 
             && (getPhysicalInventoryDocumentNumber() == other.getPhysicalInventoryDocumentNumber() || (getPhysicalInventoryDocumentNumber() != null && getPhysicalInventoryDocumentNumber().equals(other.getPhysicalInventoryDocumentNumber())))
-            && (getLineNumber() == other.getLineNumber() || (getLineNumber() != null && getLineNumber().equals(other.getLineNumber())))
+            && (getInventoryItemId() == other.getInventoryItemId() || (getInventoryItemId() != null && getInventoryItemId().equals(other.getInventoryItemId())))
             ;
 
     }
@@ -67,8 +68,8 @@ public class PhysicalInventoryLineIdDto
         if (this.getPhysicalInventoryDocumentNumber() != null) {
             hash += 13 * this.getPhysicalInventoryDocumentNumber().hashCode();
         }
-        if (this.getLineNumber() != null) {
-            hash += 13 * this.getLineNumber().hashCode();
+        if (this.getInventoryItemId() != null) {
+            hash += 13 * this.getInventoryItemId().hashCode();
         }
         return hash;
     }

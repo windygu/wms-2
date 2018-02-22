@@ -36,36 +36,6 @@ public class PhysicalInventoryLineMvoStateEventDto extends AbstractStateEvent
         getStateEventId().setPhysicalInventoryVersion(physicalInventoryVersion);
     }
 
-    private String locatorId;
-
-    public String getLocatorId() {
-        return this.locatorId;
-    }
-
-    public void setLocatorId(String locatorId) {
-        this.locatorId = locatorId;
-    }
-
-    private String productId;
-
-    public String getProductId() {
-        return this.productId;
-    }
-
-    public void setProductId(String productId) {
-        this.productId = productId;
-    }
-
-    private String attributeSetInstanceId;
-
-    public String getAttributeSetInstanceId() {
-        return this.attributeSetInstanceId;
-    }
-
-    public void setAttributeSetInstanceId(String attributeSetInstanceId) {
-        this.attributeSetInstanceId = attributeSetInstanceId;
-    }
-
     private BigDecimal bookQuantity;
 
     public BigDecimal getBookQuantity() {
@@ -126,16 +96,6 @@ public class PhysicalInventoryLineMvoStateEventDto extends AbstractStateEvent
         this.version = version;
     }
 
-    private Boolean active;
-
-    public Boolean getActive() {
-        return this.active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = active;
-    }
-
     private String physicalInventoryDocumentStatusId;
 
     public String getPhysicalInventoryDocumentStatusId() {
@@ -154,6 +114,26 @@ public class PhysicalInventoryLineMvoStateEventDto extends AbstractStateEvent
 
     public void setPhysicalInventoryWarehouseId(String physicalInventoryWarehouseId) {
         this.physicalInventoryWarehouseId = physicalInventoryWarehouseId;
+    }
+
+    private String physicalInventoryLocatorIdPattern;
+
+    public String getPhysicalInventoryLocatorIdPattern() {
+        return this.physicalInventoryLocatorIdPattern;
+    }
+
+    public void setPhysicalInventoryLocatorIdPattern(String physicalInventoryLocatorIdPattern) {
+        this.physicalInventoryLocatorIdPattern = physicalInventoryLocatorIdPattern;
+    }
+
+    private String physicalInventoryProductIdPattern;
+
+    public String getPhysicalInventoryProductIdPattern() {
+        return this.physicalInventoryProductIdPattern;
+    }
+
+    public void setPhysicalInventoryProductIdPattern(String physicalInventoryProductIdPattern) {
+        this.physicalInventoryProductIdPattern = physicalInventoryProductIdPattern;
     }
 
     private Boolean physicalInventoryPosted;
@@ -306,16 +286,6 @@ public class PhysicalInventoryLineMvoStateEventDto extends AbstractStateEvent
         this.physicalInventoryActive = physicalInventoryActive;
     }
 
-    private Boolean physicalInventoryDeleted;
-
-    public Boolean getPhysicalInventoryDeleted() {
-        return this.physicalInventoryDeleted;
-    }
-
-    public void setPhysicalInventoryDeleted(Boolean physicalInventoryDeleted) {
-        this.physicalInventoryDeleted = physicalInventoryDeleted;
-    }
-
     private String createdBy;
 
     public String getCreatedBy() {
@@ -334,36 +304,6 @@ public class PhysicalInventoryLineMvoStateEventDto extends AbstractStateEvent
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
-    }
-
-    private Boolean isPropertyLocatorIdRemoved;
-
-    public Boolean getIsPropertyLocatorIdRemoved() {
-        return this.isPropertyLocatorIdRemoved;
-    }
-
-    public void setIsPropertyLocatorIdRemoved(Boolean removed) {
-        this.isPropertyLocatorIdRemoved = removed;
-    }
-
-    private Boolean isPropertyProductIdRemoved;
-
-    public Boolean getIsPropertyProductIdRemoved() {
-        return this.isPropertyProductIdRemoved;
-    }
-
-    public void setIsPropertyProductIdRemoved(Boolean removed) {
-        this.isPropertyProductIdRemoved = removed;
-    }
-
-    private Boolean isPropertyAttributeSetInstanceIdRemoved;
-
-    public Boolean getIsPropertyAttributeSetInstanceIdRemoved() {
-        return this.isPropertyAttributeSetInstanceIdRemoved;
-    }
-
-    public void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed) {
-        this.isPropertyAttributeSetInstanceIdRemoved = removed;
     }
 
     private Boolean isPropertyBookQuantityRemoved;
@@ -426,16 +366,6 @@ public class PhysicalInventoryLineMvoStateEventDto extends AbstractStateEvent
         this.isPropertyVersionRemoved = removed;
     }
 
-    private Boolean isPropertyActiveRemoved;
-
-    public Boolean getIsPropertyActiveRemoved() {
-        return this.isPropertyActiveRemoved;
-    }
-
-    public void setIsPropertyActiveRemoved(Boolean removed) {
-        this.isPropertyActiveRemoved = removed;
-    }
-
     private Boolean isPropertyPhysicalInventoryDocumentStatusIdRemoved;
 
     public Boolean getIsPropertyPhysicalInventoryDocumentStatusIdRemoved() {
@@ -454,6 +384,26 @@ public class PhysicalInventoryLineMvoStateEventDto extends AbstractStateEvent
 
     public void setIsPropertyPhysicalInventoryWarehouseIdRemoved(Boolean removed) {
         this.isPropertyPhysicalInventoryWarehouseIdRemoved = removed;
+    }
+
+    private Boolean isPropertyPhysicalInventoryLocatorIdPatternRemoved;
+
+    public Boolean getIsPropertyPhysicalInventoryLocatorIdPatternRemoved() {
+        return this.isPropertyPhysicalInventoryLocatorIdPatternRemoved;
+    }
+
+    public void setIsPropertyPhysicalInventoryLocatorIdPatternRemoved(Boolean removed) {
+        this.isPropertyPhysicalInventoryLocatorIdPatternRemoved = removed;
+    }
+
+    private Boolean isPropertyPhysicalInventoryProductIdPatternRemoved;
+
+    public Boolean getIsPropertyPhysicalInventoryProductIdPatternRemoved() {
+        return this.isPropertyPhysicalInventoryProductIdPatternRemoved;
+    }
+
+    public void setIsPropertyPhysicalInventoryProductIdPatternRemoved(Boolean removed) {
+        this.isPropertyPhysicalInventoryProductIdPatternRemoved = removed;
     }
 
     private Boolean isPropertyPhysicalInventoryPostedRemoved;
@@ -604,16 +554,6 @@ public class PhysicalInventoryLineMvoStateEventDto extends AbstractStateEvent
 
     public void setIsPropertyPhysicalInventoryActiveRemoved(Boolean removed) {
         this.isPropertyPhysicalInventoryActiveRemoved = removed;
-    }
-
-    private Boolean isPropertyPhysicalInventoryDeletedRemoved;
-
-    public Boolean getIsPropertyPhysicalInventoryDeletedRemoved() {
-        return this.isPropertyPhysicalInventoryDeletedRemoved;
-    }
-
-    public void setIsPropertyPhysicalInventoryDeletedRemoved(Boolean removed) {
-        this.isPropertyPhysicalInventoryDeletedRemoved = removed;
     }
 
 

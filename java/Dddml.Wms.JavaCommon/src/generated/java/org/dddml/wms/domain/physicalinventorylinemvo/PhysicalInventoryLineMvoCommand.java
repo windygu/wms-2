@@ -42,18 +42,6 @@ public interface PhysicalInventoryLineMvoCommand extends Command
 
     interface CreateOrMergePatchPhysicalInventoryLineMvo extends PhysicalInventoryLineMvoCommand
     {
-        String getLocatorId();
-
-        void setLocatorId(String locatorId);
-
-        String getProductId();
-
-        void setProductId(String productId);
-
-        String getAttributeSetInstanceId();
-
-        void setAttributeSetInstanceId(String attributeSetInstanceId);
-
         BigDecimal getBookQuantity();
 
         void setBookQuantity(BigDecimal bookQuantity);
@@ -89,6 +77,14 @@ public interface PhysicalInventoryLineMvoCommand extends Command
         String getPhysicalInventoryWarehouseId();
 
         void setPhysicalInventoryWarehouseId(String physicalInventoryWarehouseId);
+
+        String getPhysicalInventoryLocatorIdPattern();
+
+        void setPhysicalInventoryLocatorIdPattern(String physicalInventoryLocatorIdPattern);
+
+        String getPhysicalInventoryProductIdPattern();
+
+        void setPhysicalInventoryProductIdPattern(String physicalInventoryProductIdPattern);
 
         Boolean getPhysicalInventoryPosted();
 
@@ -150,10 +146,6 @@ public interface PhysicalInventoryLineMvoCommand extends Command
 
         void setPhysicalInventoryActive(Boolean physicalInventoryActive);
 
-        Boolean getPhysicalInventoryDeleted();
-
-        void setPhysicalInventoryDeleted(Boolean physicalInventoryDeleted);
-
     }
 
     interface CreatePhysicalInventoryLineMvo extends CreateOrMergePatchPhysicalInventoryLineMvo
@@ -162,18 +154,6 @@ public interface PhysicalInventoryLineMvoCommand extends Command
 
     interface MergePatchPhysicalInventoryLineMvo extends CreateOrMergePatchPhysicalInventoryLineMvo
     {
-        Boolean getIsPropertyLocatorIdRemoved();
-
-        void setIsPropertyLocatorIdRemoved(Boolean removed);
-
-        Boolean getIsPropertyProductIdRemoved();
-
-        void setIsPropertyProductIdRemoved(Boolean removed);
-
-        Boolean getIsPropertyAttributeSetInstanceIdRemoved();
-
-        void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed);
-
         Boolean getIsPropertyBookQuantityRemoved();
 
         void setIsPropertyBookQuantityRemoved(Boolean removed);
@@ -209,6 +189,14 @@ public interface PhysicalInventoryLineMvoCommand extends Command
         Boolean getIsPropertyPhysicalInventoryWarehouseIdRemoved();
 
         void setIsPropertyPhysicalInventoryWarehouseIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyPhysicalInventoryLocatorIdPatternRemoved();
+
+        void setIsPropertyPhysicalInventoryLocatorIdPatternRemoved(Boolean removed);
+
+        Boolean getIsPropertyPhysicalInventoryProductIdPatternRemoved();
+
+        void setIsPropertyPhysicalInventoryProductIdPatternRemoved(Boolean removed);
 
         Boolean getIsPropertyPhysicalInventoryPostedRemoved();
 
@@ -269,10 +257,6 @@ public interface PhysicalInventoryLineMvoCommand extends Command
         Boolean getIsPropertyPhysicalInventoryActiveRemoved();
 
         void setIsPropertyPhysicalInventoryActiveRemoved(Boolean removed);
-
-        Boolean getIsPropertyPhysicalInventoryDeletedRemoved();
-
-        void setIsPropertyPhysicalInventoryDeletedRemoved(Boolean removed);
 
     }
 

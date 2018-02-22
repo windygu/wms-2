@@ -14,6 +14,8 @@ public final class PhysicalInventoryFilteringProperties
             "documentNumber",
             "documentStatusId",
             "warehouseId",
+            "locatorIdPattern",
+            "productIdPattern",
             "posted",
             "processed",
             "processing",
@@ -34,6 +36,8 @@ public final class PhysicalInventoryFilteringProperties
     };
 
     public static final String[] propertyTypes = new String[] {
+            "String",
+            "String",
             "String",
             "String",
             "String",
@@ -74,6 +78,10 @@ public final class PhysicalInventoryFilteringProperties
         aliasMap.put("DocumentStatusId", "documentStatusId");
         aliasMap.put("warehouseId", "warehouseId");
         aliasMap.put("WarehouseId", "warehouseId");
+        aliasMap.put("locatorIdPattern", "locatorIdPattern");
+        aliasMap.put("LocatorIdPattern", "locatorIdPattern");
+        aliasMap.put("productIdPattern", "productIdPattern");
+        aliasMap.put("ProductIdPattern", "productIdPattern");
         aliasMap.put("posted", "posted");
         aliasMap.put("Posted", "posted");
         aliasMap.put("processed", "processed");

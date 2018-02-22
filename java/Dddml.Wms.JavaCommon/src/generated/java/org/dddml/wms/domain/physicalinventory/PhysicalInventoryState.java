@@ -3,6 +3,7 @@ package org.dddml.wms.domain.physicalinventory;
 import java.util.Set;
 import java.math.BigDecimal;
 import java.util.Date;
+import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 import org.dddml.wms.domain.physicalinventory.PhysicalInventoryStateEvent.*;
@@ -24,6 +25,14 @@ public interface PhysicalInventoryState
     String getWarehouseId();
 
     void setWarehouseId(String warehouseId);
+
+    String getLocatorIdPattern();
+
+    void setLocatorIdPattern(String locatorIdPattern);
+
+    String getProductIdPattern();
+
+    void setProductIdPattern(String productIdPattern);
 
     Boolean getPosted();
 
@@ -89,10 +98,6 @@ public interface PhysicalInventoryState
 
     void setActive(Boolean active);
 
-    Boolean getDeleted();
-
-    void setDeleted(Boolean deleted);
-
 
     boolean isStateUnsaved();
 
@@ -107,7 +112,6 @@ public interface PhysicalInventoryState
 
     void when(PhysicalInventoryStateEvent.PhysicalInventoryStateMergePatched e);
 
-    void when(PhysicalInventoryStateEvent.PhysicalInventoryStateDeleted e);
     
 }
 

@@ -23,42 +23,6 @@ public class PhysicalInventoryLineMvoStateDto
         this.physicalInventoryLineId = physicalInventoryLineId;
     }
 
-    private String locatorId;
-
-    public String getLocatorId()
-    {
-        return this.locatorId;
-    }
-
-    public void setLocatorId(String locatorId)
-    {
-        this.locatorId = locatorId;
-    }
-
-    private String productId;
-
-    public String getProductId()
-    {
-        return this.productId;
-    }
-
-    public void setProductId(String productId)
-    {
-        this.productId = productId;
-    }
-
-    private String attributeSetInstanceId;
-
-    public String getAttributeSetInstanceId()
-    {
-        return this.attributeSetInstanceId;
-    }
-
-    public void setAttributeSetInstanceId(String attributeSetInstanceId)
-    {
-        this.attributeSetInstanceId = attributeSetInstanceId;
-    }
-
     private BigDecimal bookQuantity;
 
     public BigDecimal getBookQuantity()
@@ -131,18 +95,6 @@ public class PhysicalInventoryLineMvoStateDto
         this.version = version;
     }
 
-    private Boolean active;
-
-    public Boolean getActive()
-    {
-        return this.active;
-    }
-
-    public void setActive(Boolean active)
-    {
-        this.active = active;
-    }
-
     private String physicalInventoryDocumentStatusId;
 
     public String getPhysicalInventoryDocumentStatusId()
@@ -165,6 +117,30 @@ public class PhysicalInventoryLineMvoStateDto
     public void setPhysicalInventoryWarehouseId(String physicalInventoryWarehouseId)
     {
         this.physicalInventoryWarehouseId = physicalInventoryWarehouseId;
+    }
+
+    private String physicalInventoryLocatorIdPattern;
+
+    public String getPhysicalInventoryLocatorIdPattern()
+    {
+        return this.physicalInventoryLocatorIdPattern;
+    }
+
+    public void setPhysicalInventoryLocatorIdPattern(String physicalInventoryLocatorIdPattern)
+    {
+        this.physicalInventoryLocatorIdPattern = physicalInventoryLocatorIdPattern;
+    }
+
+    private String physicalInventoryProductIdPattern;
+
+    public String getPhysicalInventoryProductIdPattern()
+    {
+        return this.physicalInventoryProductIdPattern;
+    }
+
+    public void setPhysicalInventoryProductIdPattern(String physicalInventoryProductIdPattern)
+    {
+        this.physicalInventoryProductIdPattern = physicalInventoryProductIdPattern;
     }
 
     private Boolean physicalInventoryPosted;
@@ -347,18 +323,6 @@ public class PhysicalInventoryLineMvoStateDto
         this.physicalInventoryActive = physicalInventoryActive;
     }
 
-    private Boolean physicalInventoryDeleted;
-
-    public Boolean getPhysicalInventoryDeleted()
-    {
-        return this.physicalInventoryDeleted;
-    }
-
-    public void setPhysicalInventoryDeleted(Boolean physicalInventoryDeleted)
-    {
-        this.physicalInventoryDeleted = physicalInventoryDeleted;
-    }
-
     private Long physicalInventoryVersion;
 
     public Long getPhysicalInventoryVersion()
@@ -448,15 +412,6 @@ public class PhysicalInventoryLineMvoStateDto
             if (returnedFieldsContains("PhysicalInventoryLineId")) {
                 dto.setPhysicalInventoryLineId((state.getPhysicalInventoryLineId() == null) ? null : new PhysicalInventoryLineIdDtoWrapper(state.getPhysicalInventoryLineId()));
             }
-            if (returnedFieldsContains("LocatorId")) {
-                dto.setLocatorId(state.getLocatorId());
-            }
-            if (returnedFieldsContains("ProductId")) {
-                dto.setProductId(state.getProductId());
-            }
-            if (returnedFieldsContains("AttributeSetInstanceId")) {
-                dto.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
-            }
             if (returnedFieldsContains("BookQuantity")) {
                 dto.setBookQuantity(state.getBookQuantity());
             }
@@ -475,14 +430,17 @@ public class PhysicalInventoryLineMvoStateDto
             if (returnedFieldsContains("Version")) {
                 dto.setVersion(state.getVersion());
             }
-            if (returnedFieldsContains("Active")) {
-                dto.setActive(state.getActive());
-            }
             if (returnedFieldsContains("PhysicalInventoryDocumentStatusId")) {
                 dto.setPhysicalInventoryDocumentStatusId(state.getPhysicalInventoryDocumentStatusId());
             }
             if (returnedFieldsContains("PhysicalInventoryWarehouseId")) {
                 dto.setPhysicalInventoryWarehouseId(state.getPhysicalInventoryWarehouseId());
+            }
+            if (returnedFieldsContains("PhysicalInventoryLocatorIdPattern")) {
+                dto.setPhysicalInventoryLocatorIdPattern(state.getPhysicalInventoryLocatorIdPattern());
+            }
+            if (returnedFieldsContains("PhysicalInventoryProductIdPattern")) {
+                dto.setPhysicalInventoryProductIdPattern(state.getPhysicalInventoryProductIdPattern());
             }
             if (returnedFieldsContains("PhysicalInventoryPosted")) {
                 dto.setPhysicalInventoryPosted(state.getPhysicalInventoryPosted());
@@ -528,9 +486,6 @@ public class PhysicalInventoryLineMvoStateDto
             }
             if (returnedFieldsContains("PhysicalInventoryActive")) {
                 dto.setPhysicalInventoryActive(state.getPhysicalInventoryActive());
-            }
-            if (returnedFieldsContains("PhysicalInventoryDeleted")) {
-                dto.setPhysicalInventoryDeleted(state.getPhysicalInventoryDeleted());
             }
             if (returnedFieldsContains("PhysicalInventoryVersion")) {
                 dto.setPhysicalInventoryVersion(state.getPhysicalInventoryVersion());

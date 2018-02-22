@@ -17,6 +17,8 @@
 
 	<property name="documentStatusId" ></property>
 	<property name="warehouseId" ></property>
+	<property name="locatorIdPattern" ></property>
+	<property name="productIdPattern" ><column name="ProductIdPattern" sql-type="VARCHAR(60)" /></property>
 	<property name="posted" ></property>
 	<property name="processed" ></property>
 	<property name="processing" ></property>
@@ -45,6 +47,10 @@
 
         <property name="isPropertyWarehouseIdRemoved" column="IsPropertyWarehouseIdRemoved"/>
 
+        <property name="isPropertyLocatorIdPatternRemoved" column="IsPropertyLocatorIdPatternRemoved"/>
+
+        <property name="isPropertyProductIdPatternRemoved" column="IsPropertyProductIdPatternRemoved"/>
+
         <property name="isPropertyPostedRemoved" column="IsPropertyPostedRemoved"/>
 
         <property name="isPropertyProcessedRemoved" column="IsPropertyProcessedRemoved"/>
@@ -69,11 +75,6 @@
 
 
     </subclass>
-
-    <subclass name="AbstractPhysicalInventoryStateEvent$SimplePhysicalInventoryStateDeleted" discriminator-value="Deleted">
-
-    </subclass>
-
 
 
   </class>

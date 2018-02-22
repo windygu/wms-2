@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.PhysicalInventory
 {
@@ -30,17 +31,11 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             }
         }
 
-        public virtual string LineNumber
+        public virtual InventoryItemIdDto InventoryItemId
         {
-            get { return StateEventId.LineNumber; }
-            set { StateEventId.LineNumber = value; }
+            get { return StateEventId.InventoryItemId; }
+            set { StateEventId.InventoryItemId = value; }
         }
-
-		public virtual string LocatorId { get; set; }
-
-		public virtual string ProductId { get; set; }
-
-		public virtual string AttributeSetInstanceId { get; set; }
 
 		public virtual decimal? BookQuantity { get; set; }
 
@@ -51,8 +46,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 		public virtual long? ReversalLineNumber { get; set; }
 
 		public virtual string Description { get; set; }
-
-		public virtual bool? Active { get; set; }
 
 		public virtual string CreatedBy { get; set; }
 
@@ -84,63 +77,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
         }
 
 		public virtual long Version { get; set; }
-
-		public virtual bool? IsPropertyLocatorIdRemoved { get; set; }
-
-        bool IPhysicalInventoryLineStateMergePatched.IsPropertyLocatorIdRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyLocatorIdRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyLocatorIdRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyProductIdRemoved { get; set; }
-
-        bool IPhysicalInventoryLineStateMergePatched.IsPropertyProductIdRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyProductIdRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyProductIdRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyAttributeSetInstanceIdRemoved { get; set; }
-
-        bool IPhysicalInventoryLineStateMergePatched.IsPropertyAttributeSetInstanceIdRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyAttributeSetInstanceIdRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyAttributeSetInstanceIdRemoved = value;
-            }
-        }
 
 		public virtual bool? IsPropertyBookQuantityRemoved { get; set; }
 
@@ -234,25 +170,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             set 
             {
                 this.IsPropertyDescriptionRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyActiveRemoved { get; set; }
-
-        bool IPhysicalInventoryLineStateMergePatched.IsPropertyActiveRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyActiveRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyActiveRemoved = value;
             }
         }
 

@@ -54,12 +54,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
 		public virtual PhysicalInventoryLineIdDto PhysicalInventoryLineId { get; set; }
 
-		public virtual string LocatorId { get; set; }
-
-		public virtual string ProductId { get; set; }
-
-		public virtual string AttributeSetInstanceId { get; set; }
-
 		public virtual decimal? BookQuantity { get; set; }
 
 		public virtual decimal? CountedQuantity { get; set; }
@@ -77,6 +71,10 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 		public virtual string PhysicalInventoryDocumentStatusId { get; set; }
 
 		public virtual string PhysicalInventoryWarehouseId { get; set; }
+
+		public virtual string PhysicalInventoryLocatorIdPattern { get; set; }
+
+		public virtual string PhysicalInventoryProductIdPattern { get; set; }
 
 		public virtual bool? PhysicalInventoryPosted { get; set; }
 
@@ -108,8 +106,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
 		public virtual bool? PhysicalInventoryActive { get; set; }
 
-		public virtual bool? PhysicalInventoryDeleted { get; set; }
-
 
         PhysicalInventoryLineId IPhysicalInventoryLineMvoCommand.PhysicalInventoryLineId
         {
@@ -120,63 +116,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             set 
             {
                 this.PhysicalInventoryLineId = new PhysicalInventoryLineIdDtoWrapper(value);
-            }
-        }
-
-		public virtual bool? IsPropertyLocatorIdRemoved { get; set; }
-
-        bool IMergePatchPhysicalInventoryLineMvo.IsPropertyLocatorIdRemoved
-        {
-            get
-            {
-                var b = this.IsPropertyLocatorIdRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return false;
-            }
-            set
-            {
-                this.IsPropertyLocatorIdRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyProductIdRemoved { get; set; }
-
-        bool IMergePatchPhysicalInventoryLineMvo.IsPropertyProductIdRemoved
-        {
-            get
-            {
-                var b = this.IsPropertyProductIdRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return false;
-            }
-            set
-            {
-                this.IsPropertyProductIdRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyAttributeSetInstanceIdRemoved { get; set; }
-
-        bool IMergePatchPhysicalInventoryLineMvo.IsPropertyAttributeSetInstanceIdRemoved
-        {
-            get
-            {
-                var b = this.IsPropertyAttributeSetInstanceIdRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return false;
-            }
-            set
-            {
-                this.IsPropertyAttributeSetInstanceIdRemoved = value;
             }
         }
 
@@ -348,6 +287,44 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             set
             {
                 this.IsPropertyPhysicalInventoryWarehouseIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyPhysicalInventoryLocatorIdPatternRemoved { get; set; }
+
+        bool IMergePatchPhysicalInventoryLineMvo.IsPropertyPhysicalInventoryLocatorIdPatternRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyPhysicalInventoryLocatorIdPatternRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyPhysicalInventoryLocatorIdPatternRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyPhysicalInventoryProductIdPatternRemoved { get; set; }
+
+        bool IMergePatchPhysicalInventoryLineMvo.IsPropertyPhysicalInventoryProductIdPatternRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyPhysicalInventoryProductIdPatternRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyPhysicalInventoryProductIdPatternRemoved = value;
             }
         }
 
@@ -633,25 +610,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             set
             {
                 this.IsPropertyPhysicalInventoryActiveRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyPhysicalInventoryDeletedRemoved { get; set; }
-
-        bool IMergePatchPhysicalInventoryLineMvo.IsPropertyPhysicalInventoryDeletedRemoved
-        {
-            get
-            {
-                var b = this.IsPropertyPhysicalInventoryDeletedRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return false;
-            }
-            set
-            {
-                this.IsPropertyPhysicalInventoryDeletedRemoved = value;
             }
         }
 

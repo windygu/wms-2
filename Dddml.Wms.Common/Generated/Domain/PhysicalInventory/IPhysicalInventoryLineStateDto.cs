@@ -8,31 +8,15 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.PhysicalInventory
 {
 
     public interface IPhysicalInventoryLineStateDto
     {
-        string LineNumber
-        {
-            get;
-            set;
-        }
 
-        string LocatorId
-        {
-            get;
-            set;
-        }
-
-        string ProductId
-        {
-            get;
-            set;
-        }
-
-        string AttributeSetInstanceId
+        InventoryItemIdDto InventoryItemId
         {
             get;
             set;
@@ -63,12 +47,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
         }
 
         string Description
-        {
-            get;
-            set;
-        }
-
-        bool? Active
         {
             get;
             set;

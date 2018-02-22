@@ -1,5 +1,6 @@
 package org.dddml.wms.domain.physicalinventory;
 
+import org.dddml.wms.domain.inventoryitem.InventoryItemIdDto;
 import org.dddml.wms.domain.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,10 +11,14 @@ public class PhysicalInventoryLineIdFlattenedDto
 
     public static final String[] propertyNames = new String[]{
             "physicalInventoryDocumentNumber",
-            "lineNumber",
+            "inventoryItemIdProductId",
+            "inventoryItemIdLocatorId",
+            "inventoryItemIdAttributeSetInstanceId",
         };
 
     public static final String[] propertyTypes = new String[]{
+            "String",
+            "String",
             "String",
             "String",
         };
@@ -59,14 +64,34 @@ public class PhysicalInventoryLineIdFlattenedDto
         this.value.setPhysicalInventoryDocumentNumber(physicalInventoryDocumentNumber);
     }
 
-    public String getLineNumber()
+    public String getInventoryItemIdProductId()
     {
-        return this.value.getLineNumber();
+        return this.value.getInventoryItemId().getProductId();
     }
 
-    public void setLineNumber(String lineNumber)
+    public void setInventoryItemIdProductId(String inventoryItemIdProductId)
     {
-        this.value.setLineNumber(lineNumber);
+        this.value.getInventoryItemId().setProductId(inventoryItemIdProductId);
+    }
+
+    public String getInventoryItemIdLocatorId()
+    {
+        return this.value.getInventoryItemId().getLocatorId();
+    }
+
+    public void setInventoryItemIdLocatorId(String inventoryItemIdLocatorId)
+    {
+        this.value.getInventoryItemId().setLocatorId(inventoryItemIdLocatorId);
+    }
+
+    public String getInventoryItemIdAttributeSetInstanceId()
+    {
+        return this.value.getInventoryItemId().getAttributeSetInstanceId();
+    }
+
+    public void setInventoryItemIdAttributeSetInstanceId(String inventoryItemIdAttributeSetInstanceId)
+    {
+        this.value.getInventoryItemId().setAttributeSetInstanceId(inventoryItemIdAttributeSetInstanceId);
     }
 
 

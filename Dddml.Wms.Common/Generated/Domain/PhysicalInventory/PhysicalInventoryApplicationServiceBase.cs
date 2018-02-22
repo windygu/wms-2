@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 using Dddml.Support.Criterion;
 
 namespace Dddml.Wms.Domain.PhysicalInventory
@@ -100,11 +101,6 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 			Update(c, ar => ar.MergePatch(c));
 		}
 
-		public virtual void When(IDeletePhysicalInventory c)
-		{
-			Update(c, ar => ar.Delete(c));
-		}
-
 		public virtual void When(PhysicalInventoryCommands.DocumentAction c)
 		{
 			Update(c, ar => ar.DocumentAction(c.Value, c.Version, c.CommandId, c.RequesterId));
@@ -170,9 +166,9 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             return new PhysicalInventoryState(eventStream.Events);
         }
 
-        public virtual IPhysicalInventoryLineState GetPhysicalInventoryLine(string physicalInventoryDocumentNumber, string lineNumber)
+        public virtual IPhysicalInventoryLineState GetPhysicalInventoryLine(string physicalInventoryDocumentNumber, InventoryItemId inventoryItemId)
         {
-            return StateQueryRepository.GetPhysicalInventoryLine(physicalInventoryDocumentNumber, lineNumber);
+            return StateQueryRepository.GetPhysicalInventoryLine(physicalInventoryDocumentNumber, inventoryItemId);
         }
 
 

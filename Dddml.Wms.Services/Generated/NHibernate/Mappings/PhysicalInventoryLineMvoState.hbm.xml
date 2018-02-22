@@ -7,14 +7,13 @@
 
     <composite-id name="PhysicalInventoryLineId" class="Dddml.Wms.Domain.PhysicalInventory.PhysicalInventoryLineId">
         <key-property name="PhysicalInventoryDocumentNumber" ><column name="PhysicalInventoryLineIdPhysicalInventoryDocumentNumber" length="50" /></key-property>
-        <key-property name="LineNumber" ><column name="PhysicalInventoryLineIdLineNumber" length="50" /></key-property>
+        <key-property name="InventoryItemIdProductId" ><column name="ProductId" length="60" sql-type="VARCHAR(60)" /></key-property>
+        <key-property name="InventoryItemIdLocatorId" ><column name="LocatorId" length="50" /></key-property>
+        <key-property name="InventoryItemIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" length="50" /></key-property>
     </composite-id>
 
 	<version name="PhysicalInventoryVersion" column="PhysicalInventoryVersion" type="long" unsaved-value="0"/>
 
-    <property name="LocatorId" ></property>
-    <property name="ProductId" ><column name="ProductId" sql-type="VARCHAR(60)" /></property>
-    <property name="AttributeSetInstanceId" ></property>
     <property name="BookQuantity" ></property>
     <property name="CountedQuantity" ></property>
     <property name="Processed" ></property>
@@ -23,10 +22,11 @@
     <property name="Version" ></property>
     <property name="CreatedBy" ></property>
     <property name="UpdatedBy" ></property>
-    <property name="Active" ></property>
     <property name="Deleted" ></property>
     <property name="PhysicalInventoryDocumentStatusId" ></property>
     <property name="PhysicalInventoryWarehouseId" ></property>
+    <property name="PhysicalInventoryLocatorIdPattern" ></property>
+    <property name="PhysicalInventoryProductIdPattern" ><column name="PhysicalInventoryProductIdPattern" sql-type="VARCHAR(60)" /></property>
     <property name="PhysicalInventoryPosted" ></property>
     <property name="PhysicalInventoryProcessed" ></property>
     <property name="PhysicalInventoryProcessing" ></property>
@@ -42,7 +42,6 @@
     <property name="PhysicalInventoryUpdatedBy" ></property>
     <property name="PhysicalInventoryUpdatedAt" ><column name="PhysicalInventoryUpdatedAt" sql-type="DATETIME" /></property>
     <property name="PhysicalInventoryActive" ></property>
-    <property name="PhysicalInventoryDeleted" ></property>
 
     <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
 

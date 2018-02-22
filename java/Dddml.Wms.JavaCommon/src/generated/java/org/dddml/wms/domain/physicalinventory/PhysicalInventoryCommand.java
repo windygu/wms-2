@@ -3,6 +3,7 @@ package org.dddml.wms.domain.physicalinventory;
 import java.util.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.Command;
 import org.dddml.wms.specialization.DomainError;
@@ -26,10 +27,6 @@ public interface PhysicalInventoryCommand extends Command
             }
             throw DomainError.named("premature", "Can't do anything to unexistent aggregate");
         }
-        if (state.getDeleted())
-        {
-            throw DomainError.named("zombie", "Can't do anything to deleted aggregate.");
-        }
         if (isCommandCreate((PhysicalInventoryCommand)c))
             throw DomainError.named("rebirth", "Can't create aggregate that already exists");
     }
@@ -44,6 +41,14 @@ public interface PhysicalInventoryCommand extends Command
         String getWarehouseId();
 
         void setWarehouseId(String warehouseId);
+
+        String getLocatorIdPattern();
+
+        void setLocatorIdPattern(String locatorIdPattern);
+
+        String getProductIdPattern();
+
+        void setProductIdPattern(String productIdPattern);
 
         Boolean getPosted();
 
@@ -104,6 +109,14 @@ public interface PhysicalInventoryCommand extends Command
         Boolean getIsPropertyWarehouseIdRemoved();
 
         void setIsPropertyWarehouseIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyLocatorIdPatternRemoved();
+
+        void setIsPropertyLocatorIdPatternRemoved(Boolean removed);
+
+        Boolean getIsPropertyProductIdPatternRemoved();
+
+        void setIsPropertyProductIdPatternRemoved(Boolean removed);
 
         Boolean getIsPropertyPostedRemoved();
 

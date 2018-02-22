@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.PhysicalInventory;
+using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.PhysicalInventory
 {
@@ -37,9 +38,9 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 			set { _value.PhysicalInventoryDocumentNumber = value; } 
 		}
 
-		public override string LineNumber { 
-			get { return _value.LineNumber; } 
-			set { _value.LineNumber = value; } 
+		public override InventoryItemIdDto InventoryItemId { 
+			get { return new InventoryItemIdDtoWrapper(_value.InventoryItemId); } 
+			set { _value.InventoryItemId = value.ToInventoryItemId(); } 
 		}
 
 
