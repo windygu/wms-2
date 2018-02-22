@@ -25,20 +25,22 @@
         string projectFile = TransformationContext.Current.GetPropertyValue("MSBuildProjectFullPath");
 		string projectDir = System.IO.Path.GetDirectoryName(projectFile);
 
-		var excludedFiles = new List<string>();
-		excludedFiles.Add("Audience.yaml");
-		excludedFiles.Add("IdentityManagement.yaml");
-		excludedFiles.Add("AccessManagement.yaml");
+		//var excludedFiles = new List<string>();
+		//excludedFiles.Add("Audience.yaml");
+		//excludedFiles.Add("IdentityManagement.yaml");
+		//excludedFiles.Add("AccessManagement.yaml");
+		//
+		//string filePath1 = System.IO.Path.Combine(projectDir, "../Dddml.Wms.Metadata/AttributeSetInstanceDddml.yaml");
+		//string filePath2 = System.IO.Path.Combine(projectDir, "../Dddml.Wms.Metadata/AttributeSetInstanceExtensionFieldGroupDddml.yaml");
+		//var additionalFiles = new List<string>();
+		//additionalFiles.Add(filePath1);
+		//additionalFiles.Add(filePath2);
+		//
+		//var dddmlDir = System.IO.Path.Combine(projectDir, "..\\dddml");
+		//
+		//BoundedContext boundedContext = BoundedContextUtils.LoadFromDirectory(dddmlDir, "*.yaml", excludedFiles, additionalFiles);
 
-		string filePath1 = System.IO.Path.Combine(projectDir, "../Dddml.Wms.Metadata/AttributeSetInstanceDddml.yaml");
-		string filePath2 = System.IO.Path.Combine(projectDir, "../Dddml.Wms.Metadata/AttributeSetInstanceExtensionFieldGroupDddml.yaml");
-		var additionalFiles = new List<string>();
-		additionalFiles.Add(filePath1);
-		additionalFiles.Add(filePath2);
-
-		var dddmlDir = System.IO.Path.Combine(projectDir, "..\\dddml");
-
-		BoundedContext boundedContext = BoundedContextUtils.LoadFromDirectory(dddmlDir, "*.yaml", excludedFiles, additionalFiles);
+        BoundedContext boundedContext = BoundedContextUtils.LoadFromProjectFile(System.IO.Path.Combine(projectDir, "..\\dddml\\wms.project"));
 
         return boundedContext; 
     }

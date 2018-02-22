@@ -1,0 +1,17 @@
+
+project:
+    
+  files:
+    - "boundedContext.yaml"
+    - "Audience.yaml"
+    - "IdentityManagement.yaml"
+    - "AccessManagement.yaml"
+    
+    
+  # directories:
+    # - path: "."
+      # pattern: "*.yaml"
+      # fileExclusions:
+        # - "fileExclusion1.yaml"
+        # - "fileExclusion2.yaml"
+    

@@ -1,0 +1,16 @@
+
+project:
+
+  directories:
+    - path: "."
+      pattern: "*.yaml"
+      fileExclusions:
+        - "Audience.yaml"
+        - "IdentityManagement.yaml"
+        - "AccessManagement.yaml"
+    
+  files:
+    - "../Dddml.Wms.Metadata/AttributeSetInstanceDddml.yaml"
+    - "../Dddml.Wms.Metadata/AttributeSetInstanceExtensionFieldGroupDddml.yaml"
+    
+    

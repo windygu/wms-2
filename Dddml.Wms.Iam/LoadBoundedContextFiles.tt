@@ -25,14 +25,15 @@
         string projectFile = TransformationContext.Current.GetPropertyValue("MSBuildProjectFullPath");
 		string projectDir = System.IO.Path.GetDirectoryName(projectFile);
 
-		var files = new List<string>();
-		files.Add(System.IO.Path.Combine(projectDir,"..\\dddml\\boundedContext.yaml"));
+		//var files = new List<string>();
+		//files.Add(System.IO.Path.Combine(projectDir,"..\\dddml\\boundedContext.yaml"));
+		//files.Add(System.IO.Path.Combine(projectDir,"..\\dddml\\Audience.yaml"));
+		//files.Add(System.IO.Path.Combine(projectDir,"..\\dddml\\IdentityManagement.yaml"));
+		//files.Add(System.IO.Path.Combine(projectDir,"..\\dddml\\AccessManagement.yaml"));
+		//
+		//BoundedContext boundedContext = BoundedContextUtils.LoadFromFiles(files);
 
-		files.Add(System.IO.Path.Combine(projectDir,"..\\dddml\\Audience.yaml"));
-		files.Add(System.IO.Path.Combine(projectDir,"..\\dddml\\IdentityManagement.yaml"));
-		files.Add(System.IO.Path.Combine(projectDir,"..\\dddml\\AccessManagement.yaml"));
-		
-		BoundedContext boundedContext = BoundedContextUtils.LoadFromFiles(files);
+        BoundedContext boundedContext = BoundedContextUtils.LoadFromProjectFile(System.IO.Path.Combine(projectDir, "..\\dddml\\iam.project"));
 
         return boundedContext; 
     }
