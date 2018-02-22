@@ -12,13 +12,9 @@
 
     var boundedContext = LoadBoundedContextFiles();
 	boundedContext.Refresh();
-	ReplacePropertyTypesWithBaseTypes(boundedContext);
+	boundedContext.ReplacePropertyTypesWithBaseTypes();	
 #>
 <#+
-	private void ReplacePropertyTypesWithBaseTypes(BoundedContext boundedContext)
-	{
-		boundedContext.ReplacePropertyTypesWithBaseTypes();	
-	}
 
     private BoundedContext LoadBoundedContextFiles()
     {
