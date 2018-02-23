@@ -278,7 +278,34 @@ public abstract class AbstractPhysicalInventoryAggregate extends AbstractAggrega
         pCommandHandler.execute(pCmd);
     }
 
-    private PropertyCommandHandler<String, String> physicalInventoryDocumentActionCommandHandler;
+    public class SimplePhysicalInventoryDocumentActionCommandHandler implements PropertyCommandHandler<String, String> {
+
+        public void execute(PropertyCommand<String, String> command) {
+            if (Objects.equals(null, command.getStateGetter().get()) && Objects.equals(null, command.getContent())) {
+                command.getStateSetter().accept("Drafted");
+                return;
+            }
+            if (Objects.equals("Drafted", command.getStateGetter().get()) && Objects.equals("Complete", command.getContent())) {
+                command.getStateSetter().accept("Completed");
+                return;
+            }
+            if (Objects.equals("Drafted", command.getStateGetter().get()) && Objects.equals("Void", command.getContent())) {
+                command.getStateSetter().accept("Voided");
+                return;
+            }
+            if (Objects.equals("Completed", command.getStateGetter().get()) && Objects.equals("Close", command.getContent())) {
+                command.getStateSetter().accept("Closed");
+                return;
+            }
+            if (Objects.equals("Completed", command.getStateGetter().get()) && Objects.equals("Reverse", command.getContent())) {
+                command.getStateSetter().accept("Reversed");
+                return;
+            }
+            throw new IllegalArgumentException(String.format("State: %1$s, command: %2$s", command.getStateGetter().get(), command.getContent()));
+        }
+    }
+
+    private PropertyCommandHandler<String, String> physicalInventoryDocumentActionCommandHandler = new SimplePhysicalInventoryDocumentActionCommandHandler();
 
     public void setPhysicalInventoryDocumentActionCommandHandler(PropertyCommandHandler<String, String> h) {
         this.physicalInventoryDocumentActionCommandHandler = h;

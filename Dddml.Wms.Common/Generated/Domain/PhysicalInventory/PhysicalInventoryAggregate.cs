@@ -370,7 +370,40 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             pCommandHandler.Execute(pCmd);
         }
 
-        private IPropertyCommandHandler<string, string> _physicalInventoryDocumentActionCommandHandler;
+        public class SimplePhysicalInventoryDocumentActionCommandHandler : IPropertyCommandHandler<string, string>
+        {
+            public virtual void Execute(IPropertyCommand<string, string> command)
+            {
+                if (null == command.GetState() && null == command.Content)
+                {
+                    command.SetState("Drafted");
+                    return;
+                }
+                if ("Drafted" == command.GetState() && "Complete" == command.Content)
+                {
+                    command.SetState("Completed");
+                    return;
+                }
+                if ("Drafted" == command.GetState() && "Void" == command.Content)
+                {
+                    command.SetState("Voided");
+                    return;
+                }
+                if ("Completed" == command.GetState() && "Close" == command.Content)
+                {
+                    command.SetState("Closed");
+                    return;
+                }
+                if ("Completed" == command.GetState() && "Reverse" == command.Content)
+                {
+                    command.SetState("Reversed");
+                    return;
+                }
+                throw new ArgumentException(String.Format("State: {0}, command: {1}", command.GetState, command.Content));
+            }
+        }
+
+        private IPropertyCommandHandler<string, string> _physicalInventoryDocumentActionCommandHandler = new SimplePhysicalInventoryDocumentActionCommandHandler();
 
         protected IPropertyCommandHandler<string, string> PhysicalInventoryDocumentActionCommandHandler
         {

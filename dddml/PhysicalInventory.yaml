@@ -19,6 +19,34 @@ aggregates:
           type: string
           commandType: DocumentAction
           commandName: DocumentAction
+          
+          # -------------------------------------
+          # 单据状态的状态机
+          stateMachine:
+            # 转换
+            transitions:
+            
+            - sourceState: null
+              trigger: null
+              targetState: "Drafted"
+              
+            - sourceState: "Drafted"
+              trigger: "Complete"
+              targetState: "Completed"
+              
+            - sourceState: "Drafted"
+              trigger: "Void"
+              targetState: "Voided"
+              
+            - sourceState: "Completed"
+              trigger: "Close"
+              targetState: "Closed"
+              
+            - sourceState: "Completed"
+              trigger: "Reverse"
+              targetState: "Reversed"
+              
+          # -------------------------------------
 
         WarehouseId:
           type: string
