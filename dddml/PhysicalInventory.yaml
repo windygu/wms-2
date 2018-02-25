@@ -108,13 +108,6 @@ aggregates:
               
           properties:  
 
-            # LocatorId:
-              # type: string
-            # ProductId:
-              # type: id-long
-            # AttributeSetInstanceId:
-              # type: string
-
             BookQuantity: 
               type: decimal
 
@@ -135,5 +128,26 @@ aggregates:
 
           reservedProperties:
             noActive: true
-                
-                
+            
+      # --------------------------------                
+      methods:
+      
+        # --------------------------------                
+        # 清点一个项目
+        CountItem:
+        
+          parameters:
+          
+            LocatorId:
+              type: string
+            ProductId:
+              type: id-long
+            AttributeSetInstanceId:
+              type: string
+
+            CountedQuantity: 
+              type: decimal
+
+              
+              
+              

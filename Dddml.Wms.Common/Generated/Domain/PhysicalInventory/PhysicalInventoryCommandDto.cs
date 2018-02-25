@@ -511,6 +511,46 @@ namespace Dddml.Wms.Domain.PhysicalInventory
     public static partial class PhysicalInventoryCommandDtos
     {
 
+        public class CountItemRequestContent : ICommandDto
+        {
+
+            public string CommandType
+            {
+                get { return "CountItem"; }
+            }
+
+            public string LocatorId { get; set; }
+
+            public string ProductId { get; set; }
+
+            public string AttributeSetInstanceId { get; set; }
+
+            public decimal CountedQuantity { get; set; }
+
+            public string DocumentNumber { get; set; }
+
+            public long Version { get; set; }
+
+            public string CommandId { get; set; }
+
+            public string RequesterId { get; set; }
+
+            public PhysicalInventoryCommands.CountItem ToCountItem()
+            {
+                var cmd = new PhysicalInventoryCommands.CountItem();
+                cmd.LocatorId = this.LocatorId;
+                cmd.ProductId = this.ProductId;
+                cmd.AttributeSetInstanceId = this.AttributeSetInstanceId;
+                cmd.CountedQuantity = this.CountedQuantity;
+                cmd.DocumentNumber = this.DocumentNumber;
+                cmd.Version = this.Version;
+                cmd.CommandId = this.CommandId;
+                cmd.RequesterId = this.RequesterId;
+                return cmd;
+            }
+
+        }
+
         public class DocumentActionRequestContent : ICommandDto
         {
 

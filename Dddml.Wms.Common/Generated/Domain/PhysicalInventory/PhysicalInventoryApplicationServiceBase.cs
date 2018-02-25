@@ -101,6 +101,11 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 			Update(c, ar => ar.MergePatch(c));
 		}
 
+		public virtual void When(PhysicalInventoryCommands.CountItem c)
+		{
+			Update(c, ar => ar.CountItem(c.LocatorId, c.ProductId, c.AttributeSetInstanceId, c.CountedQuantity, c.Version, c.CommandId, c.RequesterId));
+		}
+
 		public virtual void When(PhysicalInventoryCommands.DocumentAction c)
 		{
 			Update(c, ar => ar.DocumentAction(c.Value, c.Version, c.CommandId, c.RequesterId));

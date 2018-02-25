@@ -20,6 +20,8 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
 		void When(IMergePatchPhysicalInventory c);
 
+		void When(PhysicalInventoryCommands.CountItem c);
+
 		void When(PhysicalInventoryCommands.DocumentAction c);
 
  		IPhysicalInventoryState Get(string documentNumber);

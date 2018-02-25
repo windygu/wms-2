@@ -16,6 +16,8 @@ public interface PhysicalInventoryApplicationService
 
     void when(PhysicalInventoryCommand.MergePatchPhysicalInventory c);
 
+    void when(PhysicalInventoryCommands.CountItem c);
+
     void when(PhysicalInventoryCommands.DocumentAction c);
 
     PhysicalInventoryState get(String id);

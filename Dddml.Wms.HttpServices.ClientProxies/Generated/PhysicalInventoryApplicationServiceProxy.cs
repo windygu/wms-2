@@ -114,6 +114,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             this.When((MergePatchPhysicalInventoryDto)c);
         }
 
+        public void When(PhysicalInventoryCommands.CountItem c)
+        {
+            throw new NotImplementedException();//todo
+        }
+
         public void When(PhysicalInventoryCommands.DocumentAction c)
         {
             throw new NotImplementedException();//todo

@@ -18,6 +18,8 @@ public interface PhysicalInventoryAggregate
 
     void mergePatch(PhysicalInventoryCommand.MergePatchPhysicalInventory c);
 
+    void countItem(String locatorId, String productId, String attributeSetInstanceId, BigDecimal countedQuantity, Long version, String commandId, String requesterId);
+
     void documentAction(String value, Long version, String commandId, String requesterId);
 
     void throwOnInvalidStateTransition(Command c);

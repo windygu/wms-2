@@ -308,6 +308,84 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
     public static partial class PhysicalInventoryCommands
     {
+        public class CountItem : IPhysicalInventoryCommand
+        {
+
+            public string CommandType
+            {
+                get { return "CountItem"; }
+            }
+
+            public string LocatorId { get; set; }
+
+            public string ProductId { get; set; }
+
+            public string AttributeSetInstanceId { get; set; }
+
+            public decimal CountedQuantity { get; set; }
+
+            public string DocumentNumber { get; set; }
+
+            public long Version { get; set; }
+
+            public string CommandId { get; set; }
+
+            public string RequesterId { get; set; }
+
+
+            string ICommand.CommandId
+            {
+                get
+                {
+                    return this.CommandId;
+                }
+                set
+                {
+                    this.CommandId = value;
+                }
+            }
+
+            object ICommand.RequesterId
+            {
+                get { return this.RequesterId; }
+                set { this.RequesterId = (string)value; }
+            }
+
+            string ICommandDto.CommandType
+            {
+                get { return this.CommandType; }
+            }
+
+            string IAggregateCommand<string, long>.AggregateId
+            {
+                get { return this.DocumentNumber; }
+            }
+
+            string IPhysicalInventoryCommand.DocumentNumber
+            {
+                get { return this.DocumentNumber; }
+                set { this.DocumentNumber = value; }
+            }
+
+            long IAggregateCommand<string, long>.AggregateVersion
+            {
+                get { return this.Version; }
+            }
+
+            long IPhysicalInventoryCommand.Version
+            {
+                get
+                {
+                    return this.Version;
+                }
+                set
+                {
+                    this.Version = value;
+                }
+            }
+
+        }
+
         public class DocumentAction : IPhysicalInventoryCommand
         {
 

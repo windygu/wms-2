@@ -25,6 +25,8 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
 		void MergePatch (IMergePatchPhysicalInventory c);
 
+		void CountItem(string locatorId, string productId, string attributeSetInstanceId, decimal countedQuantity, long version, string commandId, string requesterId);
+
 		void DocumentAction(string value, long version, string commandId, string requesterId);
 
 

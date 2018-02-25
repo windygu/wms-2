@@ -326,6 +326,11 @@ public abstract class AbstractPhysicalInventoryAggregate extends AbstractAggrega
         }
 
         @Override
+        public void countItem(String locatorId, String productId, String attributeSetInstanceId, BigDecimal countedQuantity, Long version, String commandId, String requesterId) {
+            throw new UnsupportedOperationException();
+        }
+
+        @Override
         public void documentAction(String value, Long version, String commandId, String requesterId) {
             PhysicalInventoryStateEvent.PhysicalInventoryStateMergePatched e = newPhysicalInventoryStateMergePatched(version, commandId, requesterId);
             doDocumentAction(value, s -> e.setDocumentStatusId(s));
