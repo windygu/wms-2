@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dddml.Wms.Domain.InventoryItem;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,8 +17,27 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
         public void CountItem(string locatorId, string productId, string attributeSetInstanceId, decimal countedQuantity, long version, string commandId, string requesterId)
         {
-            //todo???
-            throw new NotImplementedException();
+            var notNullAttrSetInstId = String.IsNullOrEmpty(attributeSetInstanceId) 
+                ? InventoryItemIds.EmptyAttributeSetInstanceId : attributeSetInstanceId;
+            var inventoryItemId = new InventoryItemId(productId, locatorId, notNullAttrSetInstId);
+            var lineState = State.PhysicalInventoryLines.Get(inventoryItemId, false, true);
+
+            var e = NewPhysicalInventoryStateMergePatched(version, commandId, requesterId);
+            if (lineState != null)
+            {
+                var lineE = e.NewPhysicalInventoryLineStateMergePatched(inventoryItemId);
+                lineE.CountedQuantity = countedQuantity;
+                e.AddPhysicalInventoryLineEvent(lineE);
+                Apply(e);
+            }
+            else
+            {
+                var lineE = e.NewPhysicalInventoryLineStateCreated(inventoryItemId);
+                lineE.CountedQuantity = countedQuantity;
+                lineE.BookQuantity = 0;
+                e.AddPhysicalInventoryLineEvent(lineE); 
+                Apply(e);
+            }
         }
     }
 }
