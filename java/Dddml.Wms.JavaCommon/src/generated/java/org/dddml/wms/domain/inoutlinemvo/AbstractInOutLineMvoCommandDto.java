@@ -8,14 +8,14 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractInOutLineMvoCommandDto extends AbstractCommand
 {
-    private InOutLineIdDto inOutLineId;
+    private InOutLineId inOutLineId;
 
-    public InOutLineIdDto getInOutLineId()
+    public InOutLineId getInOutLineId()
     {
         return this.inOutLineId;
     }
 
-    public void setInOutLineId(InOutLineIdDto inOutLineId)
+    public void setInOutLineId(InOutLineId inOutLineId)
     {
         this.inOutLineId = inOutLineId;
     }
@@ -35,7 +35,7 @@ public abstract class AbstractInOutLineMvoCommandDto extends AbstractCommand
 
     public void copyTo(AbstractInOutLineMvoCommand command)
     {
-        command.setInOutLineId((this.getInOutLineId() == null) ? null : this.getInOutLineId().toInOutLineId());
+        command.setInOutLineId(this.getInOutLineId());
         command.setInOutVersion(this.getInOutVersion());
         
         command.setRequesterId(this.getRequesterId());

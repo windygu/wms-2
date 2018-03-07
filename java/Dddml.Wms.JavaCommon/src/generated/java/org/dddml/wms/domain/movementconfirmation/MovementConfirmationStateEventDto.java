@@ -8,14 +8,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 public class MovementConfirmationStateEventDto extends AbstractStateEvent
 {
 
-    private MovementConfirmationStateEventIdDto stateEventId;
+    private MovementConfirmationStateEventId stateEventId;
 
-    MovementConfirmationStateEventIdDto getStateEventId() {
-        if (stateEventId == null) { stateEventId = new MovementConfirmationStateEventIdDto(); }
+    MovementConfirmationStateEventId getStateEventId() {
+        if (stateEventId == null) { stateEventId = new MovementConfirmationStateEventId(); }
         return this.stateEventId;
     }
 
-    void setStateEventId(MovementConfirmationStateEventIdDto stateEventId) {
+    void setStateEventId(MovementConfirmationStateEventId stateEventId) {
         this.stateEventId = stateEventId;
     }
 

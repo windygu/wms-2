@@ -9,14 +9,14 @@ import org.dddml.wms.specialization.*;
 public class ProductCategoryMemberStateDto
 {
 
-    private ProductCategoryMemberIdDto productCategoryMemberId;
+    private ProductCategoryMemberId productCategoryMemberId;
 
-    public ProductCategoryMemberIdDto getProductCategoryMemberId()
+    public ProductCategoryMemberId getProductCategoryMemberId()
     {
         return this.productCategoryMemberId;
     }
 
-    public void setProductCategoryMemberId(ProductCategoryMemberIdDto productCategoryMemberId)
+    public void setProductCategoryMemberId(ProductCategoryMemberId productCategoryMemberId)
     {
         this.productCategoryMemberId = productCategoryMemberId;
     }
@@ -168,7 +168,7 @@ public class ProductCategoryMemberStateDto
             }
             ProductCategoryMemberStateDto dto = new ProductCategoryMemberStateDto();
             if (returnedFieldsContains("ProductCategoryMemberId")) {
-                dto.setProductCategoryMemberId((state.getProductCategoryMemberId() == null) ? null : new ProductCategoryMemberIdDtoWrapper(state.getProductCategoryMemberId()));
+                dto.setProductCategoryMemberId(state.getProductCategoryMemberId());
             }
             if (returnedFieldsContains("ThruDate")) {
                 dto.setThruDate(state.getThruDate());

@@ -142,7 +142,12 @@ public class InventoryItemResource {
     public InventoryItemEntryStateDto getInventoryItemEntry(@PathParam("inventoryItemId") String inventoryItemId, @PathParam("entrySeqId") Long entrySeqId) {
         try {
 
-            InventoryItemEntryState state = inventoryItemApplicationService.getInventoryItemEntry((new InventoryItemIdFlattenedDtoFormatter().parse(inventoryItemId)).toInventoryItemId(), entrySeqId);
+            InventoryItemEntryState state = inventoryItemApplicationService.getInventoryItemEntry((new AbstractValueObjectTextFormatter<InventoryItemId>(InventoryItemId.class, ",") {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    }.parse(inventoryItemId)), entrySeqId);
             if (state == null) { return null; }
             InventoryItemEntryStateDto.DtoConverter dtoConverter = new InventoryItemEntryStateDto.DtoConverter();
             InventoryItemEntryStateDto stateDto = dtoConverter.toInventoryItemEntryStateDto(state);
@@ -206,9 +211,14 @@ public class InventoryItemResource {
     
 
         public static InventoryItemId parseIdString(String idString) {
-            InventoryItemIdFlattenedDtoFormatter formatter = new InventoryItemIdFlattenedDtoFormatter();
-            InventoryItemIdFlattenedDto idDto = formatter.parse(idString);
-            return idDto.toInventoryItemId();
+            TextFormatter<InventoryItemId> formatter =
+                    new AbstractValueObjectTextFormatter<InventoryItemId>(InventoryItemId.class) {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    };
+            return formatter.parse(idString);
         }
 
 
@@ -255,7 +265,7 @@ public class InventoryItemResource {
             List<InventoryItemStateDto> states = new ArrayList<>();
             ids.forEach(id -> {
                 InventoryItemStateDto dto = new InventoryItemStateDto();
-                dto.setInventoryItemId(new InventoryItemIdDtoWrapper(id));
+                dto.setInventoryItemId(id);
                 states.add(dto);
             });
             return states.toArray(new InventoryItemStateDto[0]);

@@ -103,5 +103,7 @@ public class InventoryItemSourceInfo implements Serializable
         return hash;
     }
 
+
+
 }
 

@@ -24,12 +24,12 @@ public class SellableInventoryItemEntryMvoStateEventDtoConverter {
 
     public SellableInventoryItemEntryMvoStateEventDto.SellableInventoryItemEntryMvoStateCreatedDto toSellableInventoryItemEntryMvoStateCreatedDto(SellableInventoryItemEntryMvoStateEvent.SellableInventoryItemEntryMvoStateCreated e) {
         SellableInventoryItemEntryMvoStateEventDto.SellableInventoryItemEntryMvoStateCreatedDto dto = new SellableInventoryItemEntryMvoStateEventDto.SellableInventoryItemEntryMvoStateCreatedDto();
-        dto.setStateEventId(new SellableInventoryItemEntryMvoStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
         dto.setSellableQuantity(e.getSellableQuantity());
-        dto.setSourceEventId((e.getSourceEventId() == null) ? null : new InventoryPRTriggeredIdDtoWrapper(e.getSourceEventId()));
+        dto.setSourceEventId(e.getSourceEventId());
         dto.setVersion(e.getVersion());
         dto.setSellableInventoryItemSellableQuantity(e.getSellableInventoryItemSellableQuantity());
         dto.setSellableInventoryItemCreatedBy(e.getSellableInventoryItemCreatedBy());
@@ -41,12 +41,12 @@ public class SellableInventoryItemEntryMvoStateEventDtoConverter {
 
     public SellableInventoryItemEntryMvoStateEventDto.SellableInventoryItemEntryMvoStateMergePatchedDto toSellableInventoryItemEntryMvoStateMergePatchedDto(SellableInventoryItemEntryMvoStateEvent.SellableInventoryItemEntryMvoStateMergePatched e) {
         SellableInventoryItemEntryMvoStateEventDto.SellableInventoryItemEntryMvoStateMergePatchedDto dto = new SellableInventoryItemEntryMvoStateEventDto.SellableInventoryItemEntryMvoStateMergePatchedDto();
-        dto.setStateEventId(new SellableInventoryItemEntryMvoStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
         dto.setSellableQuantity(e.getSellableQuantity());
-        dto.setSourceEventId((e.getSourceEventId() == null) ? null : new InventoryPRTriggeredIdDtoWrapper(e.getSourceEventId()));
+        dto.setSourceEventId(e.getSourceEventId());
         dto.setVersion(e.getVersion());
         dto.setSellableInventoryItemSellableQuantity(e.getSellableInventoryItemSellableQuantity());
         dto.setSellableInventoryItemCreatedBy(e.getSellableInventoryItemCreatedBy());

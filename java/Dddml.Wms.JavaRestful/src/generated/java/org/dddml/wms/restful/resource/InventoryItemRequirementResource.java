@@ -141,7 +141,12 @@ public class InventoryItemRequirementResource {
     public InventoryItemRequirementEntryStateDto getInventoryItemRequirementEntry(@PathParam("inventoryItemRequirementId") String inventoryItemRequirementId, @PathParam("entrySeqId") Long entrySeqId) {
         try {
 
-            InventoryItemRequirementEntryState state = inventoryItemRequirementApplicationService.getInventoryItemRequirementEntry((new InventoryItemIdFlattenedDtoFormatter().parse(inventoryItemRequirementId)).toInventoryItemId(), entrySeqId);
+            InventoryItemRequirementEntryState state = inventoryItemRequirementApplicationService.getInventoryItemRequirementEntry((new AbstractValueObjectTextFormatter<InventoryItemId>(InventoryItemId.class, ",") {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    }.parse(inventoryItemRequirementId)), entrySeqId);
             if (state == null) { return null; }
             InventoryItemRequirementEntryStateDto.DtoConverter dtoConverter = new InventoryItemRequirementEntryStateDto.DtoConverter();
             InventoryItemRequirementEntryStateDto stateDto = dtoConverter.toInventoryItemRequirementEntryStateDto(state);
@@ -205,9 +210,14 @@ public class InventoryItemRequirementResource {
     
 
         public static InventoryItemId parseIdString(String idString) {
-            InventoryItemIdFlattenedDtoFormatter formatter = new InventoryItemIdFlattenedDtoFormatter();
-            InventoryItemIdFlattenedDto idDto = formatter.parse(idString);
-            return idDto.toInventoryItemId();
+            TextFormatter<InventoryItemId> formatter =
+                    new AbstractValueObjectTextFormatter<InventoryItemId>(InventoryItemId.class) {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    };
+            return formatter.parse(idString);
         }
 
 
@@ -254,7 +264,7 @@ public class InventoryItemRequirementResource {
             List<InventoryItemRequirementStateDto> states = new ArrayList<>();
             ids.forEach(id -> {
                 InventoryItemRequirementStateDto dto = new InventoryItemRequirementStateDto();
-                dto.setInventoryItemRequirementId(new InventoryItemIdDtoWrapper(id));
+                dto.setInventoryItemRequirementId(id);
                 states.add(dto);
             });
             return states.toArray(new InventoryItemRequirementStateDto[0]);

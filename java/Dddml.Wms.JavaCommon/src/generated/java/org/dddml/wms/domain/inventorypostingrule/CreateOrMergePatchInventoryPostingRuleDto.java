@@ -6,26 +6,26 @@ import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchInventoryPostingRuleDto extends AbstractInventoryPostingRuleCommandDto
 {
-    private InventoryItemIdDto triggerInventoryItemId;
+    private InventoryItemId triggerInventoryItemId;
 
-    public InventoryItemIdDto getTriggerInventoryItemId()
+    public InventoryItemId getTriggerInventoryItemId()
     {
         return this.triggerInventoryItemId;
     }
 
-    public void setTriggerInventoryItemId(InventoryItemIdDto triggerInventoryItemId)
+    public void setTriggerInventoryItemId(InventoryItemId triggerInventoryItemId)
     {
         this.triggerInventoryItemId = triggerInventoryItemId;
     }
 
-    private InventoryItemIdDto outputInventoryItemId;
+    private InventoryItemId outputInventoryItemId;
 
-    public InventoryItemIdDto getOutputInventoryItemId()
+    public InventoryItemId getOutputInventoryItemId()
     {
         return this.outputInventoryItemId;
     }
 
-    public void setOutputInventoryItemId(InventoryItemIdDto outputInventoryItemId)
+    public void setOutputInventoryItemId(InventoryItemId outputInventoryItemId)
     {
         this.outputInventoryItemId = outputInventoryItemId;
     }
@@ -153,8 +153,8 @@ public class CreateOrMergePatchInventoryPostingRuleDto extends AbstractInventory
     public void copyTo(AbstractInventoryPostingRuleCommand.AbstractCreateOrMergePatchInventoryPostingRule command)
     {
         ((AbstractInventoryPostingRuleCommandDto) this).copyTo(command);
-        command.setTriggerInventoryItemId(this.getTriggerInventoryItemId() == null ? null : this.getTriggerInventoryItemId().toInventoryItemId());
-        command.setOutputInventoryItemId(this.getOutputInventoryItemId() == null ? null : this.getOutputInventoryItemId().toInventoryItemId());
+        command.setTriggerInventoryItemId(this.getTriggerInventoryItemId());
+        command.setOutputInventoryItemId(this.getOutputInventoryItemId());
         command.setTriggerAccountName(this.getTriggerAccountName());
         command.setOutputAccountName(this.getOutputAccountName());
         command.setIsOutputNegated(this.getIsOutputNegated());

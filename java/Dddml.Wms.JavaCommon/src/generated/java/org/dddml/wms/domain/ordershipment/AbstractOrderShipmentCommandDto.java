@@ -6,14 +6,14 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractOrderShipmentCommandDto extends AbstractCommand
 {
-    private OrderShipmentIdDto orderShipmentId;
+    private OrderShipmentId orderShipmentId;
 
-    public OrderShipmentIdDto getOrderShipmentId()
+    public OrderShipmentId getOrderShipmentId()
     {
         return this.orderShipmentId;
     }
 
-    public void setOrderShipmentId(OrderShipmentIdDto orderShipmentId)
+    public void setOrderShipmentId(OrderShipmentId orderShipmentId)
     {
         this.orderShipmentId = orderShipmentId;
     }
@@ -33,7 +33,7 @@ public abstract class AbstractOrderShipmentCommandDto extends AbstractCommand
 
     public void copyTo(AbstractOrderShipmentCommand command)
     {
-        command.setOrderShipmentId((this.getOrderShipmentId() == null) ? null : this.getOrderShipmentId().toOrderShipmentId());
+        command.setOrderShipmentId(this.getOrderShipmentId());
         command.setVersion(this.getVersion());
         
         command.setRequesterId(this.getRequesterId());

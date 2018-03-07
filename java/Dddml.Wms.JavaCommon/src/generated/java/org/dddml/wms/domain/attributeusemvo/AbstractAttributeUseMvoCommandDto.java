@@ -7,14 +7,14 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractAttributeUseMvoCommandDto extends AbstractCommand
 {
-    private AttributeSetAttributeUseIdDto attributeSetAttributeUseId;
+    private AttributeSetAttributeUseId attributeSetAttributeUseId;
 
-    public AttributeSetAttributeUseIdDto getAttributeSetAttributeUseId()
+    public AttributeSetAttributeUseId getAttributeSetAttributeUseId()
     {
         return this.attributeSetAttributeUseId;
     }
 
-    public void setAttributeSetAttributeUseId(AttributeSetAttributeUseIdDto attributeSetAttributeUseId)
+    public void setAttributeSetAttributeUseId(AttributeSetAttributeUseId attributeSetAttributeUseId)
     {
         this.attributeSetAttributeUseId = attributeSetAttributeUseId;
     }
@@ -34,7 +34,7 @@ public abstract class AbstractAttributeUseMvoCommandDto extends AbstractCommand
 
     public void copyTo(AbstractAttributeUseMvoCommand command)
     {
-        command.setAttributeSetAttributeUseId((this.getAttributeSetAttributeUseId() == null) ? null : this.getAttributeSetAttributeUseId().toAttributeSetAttributeUseId());
+        command.setAttributeSetAttributeUseId(this.getAttributeSetAttributeUseId());
         command.setAttributeSetVersion(this.getAttributeSetVersion());
         
         command.setRequesterId(this.getRequesterId());

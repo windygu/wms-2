@@ -8,14 +8,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 public class InventoryPostingRuleStateEventDto extends AbstractStateEvent
 {
 
-    private InventoryPostingRuleStateEventIdDto stateEventId;
+    private InventoryPostingRuleStateEventId stateEventId;
 
-    InventoryPostingRuleStateEventIdDto getStateEventId() {
-        if (stateEventId == null) { stateEventId = new InventoryPostingRuleStateEventIdDto(); }
+    InventoryPostingRuleStateEventId getStateEventId() {
+        if (stateEventId == null) { stateEventId = new InventoryPostingRuleStateEventId(); }
         return this.stateEventId;
     }
 
-    void setStateEventId(InventoryPostingRuleStateEventIdDto stateEventId) {
+    void setStateEventId(InventoryPostingRuleStateEventId stateEventId) {
         this.stateEventId = stateEventId;
     }
 
@@ -35,23 +35,23 @@ public class InventoryPostingRuleStateEventDto extends AbstractStateEvent
         getStateEventId().setVersion(version);
     }
 
-    private InventoryItemIdDto triggerInventoryItemId = new InventoryItemIdDto();
+    private InventoryItemId triggerInventoryItemId;
 
-    public InventoryItemIdDto getTriggerInventoryItemId() {
+    public InventoryItemId getTriggerInventoryItemId() {
         return this.triggerInventoryItemId;
     }
 
-    public void setTriggerInventoryItemId(InventoryItemIdDto triggerInventoryItemId) {
+    public void setTriggerInventoryItemId(InventoryItemId triggerInventoryItemId) {
         this.triggerInventoryItemId = triggerInventoryItemId;
     }
 
-    private InventoryItemIdDto outputInventoryItemId = new InventoryItemIdDto();
+    private InventoryItemId outputInventoryItemId;
 
-    public InventoryItemIdDto getOutputInventoryItemId() {
+    public InventoryItemId getOutputInventoryItemId() {
         return this.outputInventoryItemId;
     }
 
-    public void setOutputInventoryItemId(InventoryItemIdDto outputInventoryItemId) {
+    public void setOutputInventoryItemId(InventoryItemId outputInventoryItemId) {
         this.outputInventoryItemId = outputInventoryItemId;
     }
 

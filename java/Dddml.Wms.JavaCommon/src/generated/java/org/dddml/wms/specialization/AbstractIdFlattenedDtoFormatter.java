@@ -1,6 +1,6 @@
 package org.dddml.wms.specialization;
 
-public abstract class AbstractIdFlattenedDtoFormatter<TDto> {
+public abstract class AbstractIdFlattenedDtoFormatter<TDto> implements TextFormatter<TDto> {
 
     public TDto parse(String text) {
         String[] strValues = text.split(getFieldSeparator());

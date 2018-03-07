@@ -9,14 +9,14 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractSellableInventoryItemEntryMvoCommandDto extends AbstractCommand
 {
-    private SellableInventoryItemEntryIdDto sellableInventoryItemEntryId;
+    private SellableInventoryItemEntryId sellableInventoryItemEntryId;
 
-    public SellableInventoryItemEntryIdDto getSellableInventoryItemEntryId()
+    public SellableInventoryItemEntryId getSellableInventoryItemEntryId()
     {
         return this.sellableInventoryItemEntryId;
     }
 
-    public void setSellableInventoryItemEntryId(SellableInventoryItemEntryIdDto sellableInventoryItemEntryId)
+    public void setSellableInventoryItemEntryId(SellableInventoryItemEntryId sellableInventoryItemEntryId)
     {
         this.sellableInventoryItemEntryId = sellableInventoryItemEntryId;
     }
@@ -36,7 +36,7 @@ public abstract class AbstractSellableInventoryItemEntryMvoCommandDto extends Ab
 
     public void copyTo(AbstractSellableInventoryItemEntryMvoCommand command)
     {
-        command.setSellableInventoryItemEntryId((this.getSellableInventoryItemEntryId() == null) ? null : this.getSellableInventoryItemEntryId().toSellableInventoryItemEntryId());
+        command.setSellableInventoryItemEntryId(this.getSellableInventoryItemEntryId());
         command.setSellableInventoryItemVersion(this.getSellableInventoryItemVersion());
         
         command.setRequesterId(this.getRequesterId());

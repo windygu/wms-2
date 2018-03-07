@@ -10,14 +10,14 @@ import org.dddml.wms.specialization.*;
 public class AttributeValueMvoStateDto
 {
 
-    private AttributeValueIdDto attributeValueId;
+    private AttributeValueId attributeValueId;
 
-    public AttributeValueIdDto getAttributeValueId()
+    public AttributeValueId getAttributeValueId()
     {
         return this.attributeValueId;
     }
 
-    public void setAttributeValueId(AttributeValueIdDto attributeValueId)
+    public void setAttributeValueId(AttributeValueId attributeValueId)
     {
         this.attributeValueId = attributeValueId;
     }
@@ -349,7 +349,7 @@ public class AttributeValueMvoStateDto
             }
             AttributeValueMvoStateDto dto = new AttributeValueMvoStateDto();
             if (returnedFieldsContains("AttributeValueId")) {
-                dto.setAttributeValueId((state.getAttributeValueId() == null) ? null : new AttributeValueIdDtoWrapper(state.getAttributeValueId()));
+                dto.setAttributeValueId(state.getAttributeValueId());
             }
             if (returnedFieldsContains("AttributeValueName")) {
                 dto.setAttributeValueName(state.getAttributeValueName());

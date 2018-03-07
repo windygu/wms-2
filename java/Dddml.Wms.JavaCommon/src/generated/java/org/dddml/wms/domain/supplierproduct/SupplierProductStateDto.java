@@ -9,14 +9,14 @@ import org.dddml.wms.specialization.*;
 public class SupplierProductStateDto
 {
 
-    private SupplierProductIdDto supplierProductId;
+    private SupplierProductId supplierProductId;
 
-    public SupplierProductIdDto getSupplierProductId()
+    public SupplierProductId getSupplierProductId()
     {
         return this.supplierProductId;
     }
 
-    public void setSupplierProductId(SupplierProductIdDto supplierProductId)
+    public void setSupplierProductId(SupplierProductId supplierProductId)
     {
         this.supplierProductId = supplierProductId;
     }
@@ -276,7 +276,7 @@ public class SupplierProductStateDto
             }
             SupplierProductStateDto dto = new SupplierProductStateDto();
             if (returnedFieldsContains("SupplierProductId")) {
-                dto.setSupplierProductId((state.getSupplierProductId() == null) ? null : new SupplierProductIdDtoWrapper(state.getSupplierProductId()));
+                dto.setSupplierProductId(state.getSupplierProductId());
             }
             if (returnedFieldsContains("AvailableThruDate")) {
                 dto.setAvailableThruDate(state.getAvailableThruDate());

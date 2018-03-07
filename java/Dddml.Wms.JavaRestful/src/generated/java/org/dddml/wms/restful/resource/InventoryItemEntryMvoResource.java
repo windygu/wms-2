@@ -217,9 +217,14 @@ public class InventoryItemEntryMvoResource {
     
 
         public static InventoryItemEntryId parseIdString(String idString) {
-            InventoryItemEntryIdFlattenedDtoFormatter formatter = new InventoryItemEntryIdFlattenedDtoFormatter();
-            InventoryItemEntryIdFlattenedDto idDto = formatter.parse(idString);
-            return idDto.toInventoryItemEntryId();
+            TextFormatter<InventoryItemEntryId> formatter =
+                    new AbstractValueObjectTextFormatter<InventoryItemEntryId>(InventoryItemEntryId.class) {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    };
+            return formatter.parse(idString);
         }
 
 
@@ -266,7 +271,7 @@ public class InventoryItemEntryMvoResource {
             List<InventoryItemEntryMvoStateDto> states = new ArrayList<>();
             ids.forEach(id -> {
                 InventoryItemEntryMvoStateDto dto = new InventoryItemEntryMvoStateDto();
-                dto.setInventoryItemEntryId(new InventoryItemEntryIdDtoWrapper(id));
+                dto.setInventoryItemEntryId(id);
                 states.add(dto);
             });
             return states.toArray(new InventoryItemEntryMvoStateDto[0]);

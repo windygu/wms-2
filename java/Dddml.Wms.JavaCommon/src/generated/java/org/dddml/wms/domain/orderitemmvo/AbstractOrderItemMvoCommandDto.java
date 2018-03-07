@@ -7,14 +7,14 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractOrderItemMvoCommandDto extends AbstractCommand
 {
-    private OrderItemIdDto orderItemId;
+    private OrderItemId orderItemId;
 
-    public OrderItemIdDto getOrderItemId()
+    public OrderItemId getOrderItemId()
     {
         return this.orderItemId;
     }
 
-    public void setOrderItemId(OrderItemIdDto orderItemId)
+    public void setOrderItemId(OrderItemId orderItemId)
     {
         this.orderItemId = orderItemId;
     }
@@ -34,7 +34,7 @@ public abstract class AbstractOrderItemMvoCommandDto extends AbstractCommand
 
     public void copyTo(AbstractOrderItemMvoCommand command)
     {
-        command.setOrderItemId((this.getOrderItemId() == null) ? null : this.getOrderItemId().toOrderItemId());
+        command.setOrderItemId(this.getOrderItemId());
         command.setOrderVersion(this.getOrderVersion());
         
         command.setRequesterId(this.getRequesterId());

@@ -19,7 +19,7 @@ public class InventoryItemEntryStateEventDtoConverter {
 
     public InventoryItemEntryStateEventDto.InventoryItemEntryStateCreatedDto toInventoryItemEntryStateCreatedDto(InventoryItemEntryStateEvent.InventoryItemEntryStateCreated e) {
         InventoryItemEntryStateEventDto.InventoryItemEntryStateCreatedDto dto = new InventoryItemEntryStateEventDto.InventoryItemEntryStateCreatedDto();
-        dto.setStateEventId(new InventoryItemEntryStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setVersion(e.getVersion());
@@ -29,7 +29,7 @@ public class InventoryItemEntryStateEventDtoConverter {
         dto.setReservedQuantity(e.getReservedQuantity());
         dto.setOccupiedQuantity(e.getOccupiedQuantity());
         dto.setVirtualQuantity(e.getVirtualQuantity());
-        dto.setSource((e.getSource() == null) ? null : new InventoryItemSourceInfoDtoWrapper(e.getSource()));
+        dto.setSource(e.getSource());
         return dto;
     }
 

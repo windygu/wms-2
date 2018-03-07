@@ -33,7 +33,7 @@ public class PartyStateEventDtoConverter {
 
     public PartyStateEventDto.PartyStateCreatedDto toPartyStateCreatedDto(PartyStateEvent.PartyStateCreated e) {
         PartyStateEventDto.PartyStateCreatedDto dto = new PartyStateEventDto.PartyStateCreatedDto();
-        dto.setStateEventId(new PartyStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -44,7 +44,7 @@ public class PartyStateEventDtoConverter {
 
     public PartyStateEventDto.PartyStateMergePatchedDto toPartyStateMergePatchedDto(PartyStateEvent.PartyStateMergePatched e) {
         PartyStateEventDto.PartyStateMergePatchedDto dto = new PartyStateEventDto.PartyStateMergePatchedDto();
-        dto.setStateEventId(new PartyStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -58,7 +58,7 @@ public class PartyStateEventDtoConverter {
 
     public PartyStateEventDto.PartyStateDeletedDto toPartyStateDeletedDto(PartyStateEvent.PartyStateDeleted e) {
         PartyStateEventDto.PartyStateDeletedDto dto = new PartyStateEventDto.PartyStateDeletedDto();
-        dto.setStateEventId(new PartyStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -67,7 +67,7 @@ public class PartyStateEventDtoConverter {
 
     public PartyStateEventDto.PartyStateCreatedDto toPartyStateCreatedDto(OrganizationStateEvent.OrganizationStateCreated e) {
         PartyStateEventDto.PartyStateCreatedDto dto = new PartyStateEventDto.PartyStateCreatedDto();
-        dto.setStateEventId(new PartyStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -82,7 +82,7 @@ public class PartyStateEventDtoConverter {
 
     public PartyStateEventDto.PartyStateMergePatchedDto toPartyStateMergePatchedDto(OrganizationStateEvent.OrganizationStateMergePatched e) {
         PartyStateEventDto.PartyStateMergePatchedDto dto = new PartyStateEventDto.PartyStateMergePatchedDto();
-        dto.setStateEventId(new PartyStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -104,7 +104,7 @@ public class PartyStateEventDtoConverter {
 
     public PartyStateEventDto.PartyStateDeletedDto toPartyStateDeletedDto(OrganizationStateEvent.OrganizationStateDeleted e) {
         PartyStateEventDto.PartyStateDeletedDto dto = new PartyStateEventDto.PartyStateDeletedDto();
-        dto.setStateEventId(new PartyStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());

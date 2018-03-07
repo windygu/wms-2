@@ -24,12 +24,12 @@ public class InventoryItemRequirementEntryMvoStateEventDtoConverter {
 
     public InventoryItemRequirementEntryMvoStateEventDto.InventoryItemRequirementEntryMvoStateCreatedDto toInventoryItemRequirementEntryMvoStateCreatedDto(InventoryItemRequirementEntryMvoStateEvent.InventoryItemRequirementEntryMvoStateCreated e) {
         InventoryItemRequirementEntryMvoStateEventDto.InventoryItemRequirementEntryMvoStateCreatedDto dto = new InventoryItemRequirementEntryMvoStateEventDto.InventoryItemRequirementEntryMvoStateCreatedDto();
-        dto.setStateEventId(new InventoryItemRequirementEntryMvoStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
         dto.setQuantity(e.getQuantity());
-        dto.setSourceEventId((e.getSourceEventId() == null) ? null : new InventoryPRTriggeredIdDtoWrapper(e.getSourceEventId()));
+        dto.setSourceEventId(e.getSourceEventId());
         dto.setVersion(e.getVersion());
         dto.setInventoryItemRequirementQuantity(e.getInventoryItemRequirementQuantity());
         dto.setInventoryItemRequirementCreatedBy(e.getInventoryItemRequirementCreatedBy());
@@ -41,12 +41,12 @@ public class InventoryItemRequirementEntryMvoStateEventDtoConverter {
 
     public InventoryItemRequirementEntryMvoStateEventDto.InventoryItemRequirementEntryMvoStateMergePatchedDto toInventoryItemRequirementEntryMvoStateMergePatchedDto(InventoryItemRequirementEntryMvoStateEvent.InventoryItemRequirementEntryMvoStateMergePatched e) {
         InventoryItemRequirementEntryMvoStateEventDto.InventoryItemRequirementEntryMvoStateMergePatchedDto dto = new InventoryItemRequirementEntryMvoStateEventDto.InventoryItemRequirementEntryMvoStateMergePatchedDto();
-        dto.setStateEventId(new InventoryItemRequirementEntryMvoStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
         dto.setQuantity(e.getQuantity());
-        dto.setSourceEventId((e.getSourceEventId() == null) ? null : new InventoryPRTriggeredIdDtoWrapper(e.getSourceEventId()));
+        dto.setSourceEventId(e.getSourceEventId());
         dto.setVersion(e.getVersion());
         dto.setInventoryItemRequirementQuantity(e.getInventoryItemRequirementQuantity());
         dto.setInventoryItemRequirementCreatedBy(e.getInventoryItemRequirementCreatedBy());

@@ -24,7 +24,7 @@ public class AttributeValueStateEventDtoConverter {
 
     public AttributeValueStateEventDto.AttributeValueStateCreatedDto toAttributeValueStateCreatedDto(AttributeValueStateEvent.AttributeValueStateCreated e) {
         AttributeValueStateEventDto.AttributeValueStateCreatedDto dto = new AttributeValueStateEventDto.AttributeValueStateCreatedDto();
-        dto.setStateEventId(new AttributeValueStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setVersion(e.getVersion());
@@ -38,7 +38,7 @@ public class AttributeValueStateEventDtoConverter {
 
     public AttributeValueStateEventDto.AttributeValueStateMergePatchedDto toAttributeValueStateMergePatchedDto(AttributeValueStateEvent.AttributeValueStateMergePatched e) {
         AttributeValueStateEventDto.AttributeValueStateMergePatchedDto dto = new AttributeValueStateEventDto.AttributeValueStateMergePatchedDto();
-        dto.setStateEventId(new AttributeValueStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setVersion(e.getVersion());
@@ -57,7 +57,7 @@ public class AttributeValueStateEventDtoConverter {
 
     public AttributeValueStateEventDto.AttributeValueStateRemovedDto toAttributeValueStateRemovedDto(AttributeValueStateEvent.AttributeValueStateRemoved e) {
         AttributeValueStateEventDto.AttributeValueStateRemovedDto dto = new AttributeValueStateEventDto.AttributeValueStateRemovedDto();
-        dto.setStateEventId(new AttributeValueStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setVersion(e.getVersion());

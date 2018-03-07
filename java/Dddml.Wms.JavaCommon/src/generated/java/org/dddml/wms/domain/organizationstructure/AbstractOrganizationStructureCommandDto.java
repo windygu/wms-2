@@ -6,14 +6,14 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractOrganizationStructureCommandDto extends AbstractCommand
 {
-    private OrganizationStructureIdDto id;
+    private OrganizationStructureId id;
 
-    public OrganizationStructureIdDto getId()
+    public OrganizationStructureId getId()
     {
         return this.id;
     }
 
-    public void setId(OrganizationStructureIdDto id)
+    public void setId(OrganizationStructureId id)
     {
         this.id = id;
     }
@@ -33,7 +33,7 @@ public abstract class AbstractOrganizationStructureCommandDto extends AbstractCo
 
     public void copyTo(AbstractOrganizationStructureCommand command)
     {
-        command.setId((this.getId() == null) ? null : this.getId().toOrganizationStructureId());
+        command.setId(this.getId());
         command.setVersion(this.getVersion());
         
         command.setRequesterId(this.getRequesterId());

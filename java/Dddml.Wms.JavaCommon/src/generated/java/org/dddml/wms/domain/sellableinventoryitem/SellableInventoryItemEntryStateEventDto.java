@@ -10,14 +10,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 public class SellableInventoryItemEntryStateEventDto extends AbstractStateEvent
 {
 
-    private SellableInventoryItemEntryStateEventIdDto stateEventId;
+    private SellableInventoryItemEntryStateEventId stateEventId;
 
-    SellableInventoryItemEntryStateEventIdDto getStateEventId() {
-        if (stateEventId == null) { stateEventId = new SellableInventoryItemEntryStateEventIdDto(); }
+    SellableInventoryItemEntryStateEventId getStateEventId() {
+        if (stateEventId == null) { stateEventId = new SellableInventoryItemEntryStateEventId(); }
         return this.stateEventId;
     }
 
-    void setStateEventId(SellableInventoryItemEntryStateEventIdDto stateEventId) {
+    void setStateEventId(SellableInventoryItemEntryStateEventId stateEventId) {
         this.stateEventId = stateEventId;
     }
 
@@ -39,13 +39,13 @@ public class SellableInventoryItemEntryStateEventDto extends AbstractStateEvent
         this.sellableQuantity = sellableQuantity;
     }
 
-    private InventoryPRTriggeredIdDto sourceEventId = new InventoryPRTriggeredIdDto();
+    private InventoryPRTriggeredId sourceEventId;
 
-    public InventoryPRTriggeredIdDto getSourceEventId() {
+    public InventoryPRTriggeredId getSourceEventId() {
         return this.sourceEventId;
     }
 
-    public void setSourceEventId(InventoryPRTriggeredIdDto sourceEventId) {
+    public void setSourceEventId(InventoryPRTriggeredId sourceEventId) {
         this.sourceEventId = sourceEventId;
     }
 

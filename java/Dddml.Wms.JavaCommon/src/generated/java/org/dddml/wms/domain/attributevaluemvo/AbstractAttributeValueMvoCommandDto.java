@@ -7,14 +7,14 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractAttributeValueMvoCommandDto extends AbstractCommand
 {
-    private AttributeValueIdDto attributeValueId;
+    private AttributeValueId attributeValueId;
 
-    public AttributeValueIdDto getAttributeValueId()
+    public AttributeValueId getAttributeValueId()
     {
         return this.attributeValueId;
     }
 
-    public void setAttributeValueId(AttributeValueIdDto attributeValueId)
+    public void setAttributeValueId(AttributeValueId attributeValueId)
     {
         this.attributeValueId = attributeValueId;
     }
@@ -34,7 +34,7 @@ public abstract class AbstractAttributeValueMvoCommandDto extends AbstractComman
 
     public void copyTo(AbstractAttributeValueMvoCommand command)
     {
-        command.setAttributeValueId((this.getAttributeValueId() == null) ? null : this.getAttributeValueId().toAttributeValueId());
+        command.setAttributeValueId(this.getAttributeValueId());
         command.setAttributeVersion(this.getAttributeVersion());
         
         command.setRequesterId(this.getRequesterId());

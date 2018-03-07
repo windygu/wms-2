@@ -216,9 +216,14 @@ public class ShipmentReceiptMvoResource {
     
 
         public static ShipmentReceiptId parseIdString(String idString) {
-            ShipmentReceiptIdFlattenedDtoFormatter formatter = new ShipmentReceiptIdFlattenedDtoFormatter();
-            ShipmentReceiptIdFlattenedDto idDto = formatter.parse(idString);
-            return idDto.toShipmentReceiptId();
+            TextFormatter<ShipmentReceiptId> formatter =
+                    new AbstractValueObjectTextFormatter<ShipmentReceiptId>(ShipmentReceiptId.class) {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    };
+            return formatter.parse(idString);
         }
 
 
@@ -265,7 +270,7 @@ public class ShipmentReceiptMvoResource {
             List<ShipmentReceiptMvoStateDto> states = new ArrayList<>();
             ids.forEach(id -> {
                 ShipmentReceiptMvoStateDto dto = new ShipmentReceiptMvoStateDto();
-                dto.setShipmentReceiptId(new ShipmentReceiptIdDtoWrapper(id));
+                dto.setShipmentReceiptId(id);
                 states.add(dto);
             });
             return states.toArray(new ShipmentReceiptMvoStateDto[0]);

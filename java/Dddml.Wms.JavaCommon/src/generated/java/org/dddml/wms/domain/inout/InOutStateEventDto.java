@@ -8,14 +8,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 public class InOutStateEventDto extends AbstractStateEvent
 {
 
-    private InOutStateEventIdDto stateEventId;
+    private InOutStateEventId stateEventId;
 
-    InOutStateEventIdDto getStateEventId() {
-        if (stateEventId == null) { stateEventId = new InOutStateEventIdDto(); }
+    InOutStateEventId getStateEventId() {
+        if (stateEventId == null) { stateEventId = new InOutStateEventId(); }
         return this.stateEventId;
     }
 
-    void setStateEventId(InOutStateEventIdDto stateEventId) {
+    void setStateEventId(InOutStateEventId stateEventId) {
         this.stateEventId = stateEventId;
     }
 

@@ -7,14 +7,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 public class UomStateEventDto extends AbstractStateEvent
 {
 
-    private UomStateEventIdDto stateEventId;
+    private UomStateEventId stateEventId;
 
-    UomStateEventIdDto getStateEventId() {
-        if (stateEventId == null) { stateEventId = new UomStateEventIdDto(); }
+    UomStateEventId getStateEventId() {
+        if (stateEventId == null) { stateEventId = new UomStateEventId(); }
         return this.stateEventId;
     }
 
-    void setStateEventId(UomStateEventIdDto stateEventId) {
+    void setStateEventId(UomStateEventId stateEventId) {
         this.stateEventId = stateEventId;
     }
 

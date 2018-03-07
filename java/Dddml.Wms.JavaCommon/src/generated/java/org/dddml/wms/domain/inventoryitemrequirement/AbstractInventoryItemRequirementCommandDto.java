@@ -9,14 +9,14 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractInventoryItemRequirementCommandDto extends AbstractCommand
 {
-    private InventoryItemIdDto inventoryItemRequirementId;
+    private InventoryItemId inventoryItemRequirementId;
 
-    public InventoryItemIdDto getInventoryItemRequirementId()
+    public InventoryItemId getInventoryItemRequirementId()
     {
         return this.inventoryItemRequirementId;
     }
 
-    public void setInventoryItemRequirementId(InventoryItemIdDto inventoryItemRequirementId)
+    public void setInventoryItemRequirementId(InventoryItemId inventoryItemRequirementId)
     {
         this.inventoryItemRequirementId = inventoryItemRequirementId;
     }
@@ -36,7 +36,7 @@ public abstract class AbstractInventoryItemRequirementCommandDto extends Abstrac
 
     public void copyTo(AbstractInventoryItemRequirementCommand command)
     {
-        command.setInventoryItemRequirementId((this.getInventoryItemRequirementId() == null) ? null : this.getInventoryItemRequirementId().toInventoryItemId());
+        command.setInventoryItemRequirementId(this.getInventoryItemRequirementId());
         command.setVersion(this.getVersion());
         
         command.setRequesterId(this.getRequesterId());

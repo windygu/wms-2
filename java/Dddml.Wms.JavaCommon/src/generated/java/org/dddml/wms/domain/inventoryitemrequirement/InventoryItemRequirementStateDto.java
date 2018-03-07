@@ -12,14 +12,14 @@ import org.dddml.wms.specialization.*;
 public class InventoryItemRequirementStateDto
 {
 
-    private InventoryItemIdDto inventoryItemRequirementId;
+    private InventoryItemId inventoryItemRequirementId;
 
-    public InventoryItemIdDto getInventoryItemRequirementId()
+    public InventoryItemId getInventoryItemRequirementId()
     {
         return this.inventoryItemRequirementId;
     }
 
-    public void setInventoryItemRequirementId(InventoryItemIdDto inventoryItemRequirementId)
+    public void setInventoryItemRequirementId(InventoryItemId inventoryItemRequirementId)
     {
         this.inventoryItemRequirementId = inventoryItemRequirementId;
     }
@@ -135,7 +135,7 @@ public class InventoryItemRequirementStateDto
             }
             InventoryItemRequirementStateDto dto = new InventoryItemRequirementStateDto();
             if (returnedFieldsContains("InventoryItemRequirementId")) {
-                dto.setInventoryItemRequirementId((state.getInventoryItemRequirementId() == null) ? null : new InventoryItemIdDtoWrapper(state.getInventoryItemRequirementId()));
+                dto.setInventoryItemRequirementId(state.getInventoryItemRequirementId());
             }
             if (returnedFieldsContains("Quantity")) {
                 dto.setQuantity(state.getQuantity());

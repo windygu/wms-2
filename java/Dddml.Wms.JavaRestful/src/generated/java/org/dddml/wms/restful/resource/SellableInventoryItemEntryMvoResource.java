@@ -218,9 +218,14 @@ public class SellableInventoryItemEntryMvoResource {
     
 
         public static SellableInventoryItemEntryId parseIdString(String idString) {
-            SellableInventoryItemEntryIdFlattenedDtoFormatter formatter = new SellableInventoryItemEntryIdFlattenedDtoFormatter();
-            SellableInventoryItemEntryIdFlattenedDto idDto = formatter.parse(idString);
-            return idDto.toSellableInventoryItemEntryId();
+            TextFormatter<SellableInventoryItemEntryId> formatter =
+                    new AbstractValueObjectTextFormatter<SellableInventoryItemEntryId>(SellableInventoryItemEntryId.class) {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    };
+            return formatter.parse(idString);
         }
 
 
@@ -267,7 +272,7 @@ public class SellableInventoryItemEntryMvoResource {
             List<SellableInventoryItemEntryMvoStateDto> states = new ArrayList<>();
             ids.forEach(id -> {
                 SellableInventoryItemEntryMvoStateDto dto = new SellableInventoryItemEntryMvoStateDto();
-                dto.setSellableInventoryItemEntryId(new SellableInventoryItemEntryIdDtoWrapper(id));
+                dto.setSellableInventoryItemEntryId(id);
                 states.add(dto);
             });
             return states.toArray(new SellableInventoryItemEntryMvoStateDto[0]);

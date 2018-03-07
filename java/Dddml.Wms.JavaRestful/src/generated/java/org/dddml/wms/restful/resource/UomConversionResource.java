@@ -233,9 +233,14 @@ public class UomConversionResource {
     
 
         public static UomConversionId parseIdString(String idString) {
-            UomConversionIdFlattenedDtoFormatter formatter = new UomConversionIdFlattenedDtoFormatter();
-            UomConversionIdFlattenedDto idDto = formatter.parse(idString);
-            return idDto.toUomConversionId();
+            TextFormatter<UomConversionId> formatter =
+                    new AbstractValueObjectTextFormatter<UomConversionId>(UomConversionId.class) {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    };
+            return formatter.parse(idString);
         }
 
 
@@ -282,7 +287,7 @@ public class UomConversionResource {
             List<UomConversionStateDto> states = new ArrayList<>();
             ids.forEach(id -> {
                 UomConversionStateDto dto = new UomConversionStateDto();
-                dto.setUomConversionId(new UomConversionIdDtoWrapper(id));
+                dto.setUomConversionId(id);
                 states.add(dto);
             });
             return states.toArray(new UomConversionStateDto[0]);

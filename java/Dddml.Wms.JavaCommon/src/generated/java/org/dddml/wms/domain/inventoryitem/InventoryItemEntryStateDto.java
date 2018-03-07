@@ -82,14 +82,14 @@ public class InventoryItemEntryStateDto
         this.virtualQuantity = virtualQuantity;
     }
 
-    private InventoryItemSourceInfoDto source;
+    private InventoryItemSourceInfo source;
 
-    public InventoryItemSourceInfoDto getSource()
+    public InventoryItemSourceInfo getSource()
     {
         return this.source;
     }
 
-    public void setSource(InventoryItemSourceInfoDto source)
+    public void setSource(InventoryItemSourceInfo source)
     {
         this.source = source;
     }
@@ -106,14 +106,14 @@ public class InventoryItemEntryStateDto
         this.version = version;
     }
 
-    private InventoryItemIdDto inventoryItemId;
+    private InventoryItemId inventoryItemId;
 
-    public InventoryItemIdDto getInventoryItemId()
+    public InventoryItemId getInventoryItemId()
     {
         return this.inventoryItemId;
     }
 
-    public void setInventoryItemId(InventoryItemIdDto inventoryItemId)
+    public void setInventoryItemId(InventoryItemId inventoryItemId)
     {
         this.inventoryItemId = inventoryItemId;
     }
@@ -211,13 +211,13 @@ public class InventoryItemEntryStateDto
                 dto.setVirtualQuantity(state.getVirtualQuantity());
             }
             if (returnedFieldsContains("Source")) {
-                dto.setSource((state.getSource() == null) ? null : new InventoryItemSourceInfoDtoWrapper(state.getSource()));
+                dto.setSource(state.getSource());
             }
             if (returnedFieldsContains("Version")) {
                 dto.setVersion(state.getVersion());
             }
             if (returnedFieldsContains("InventoryItemId")) {
-                dto.setInventoryItemId((state.getInventoryItemId() == null) ? null : new InventoryItemIdDtoWrapper(state.getInventoryItemId()));
+                dto.setInventoryItemId(state.getInventoryItemId());
             }
             if (returnedFieldsContains("CreatedBy")) {
                 dto.setCreatedBy(state.getCreatedBy());

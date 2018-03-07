@@ -10,14 +10,14 @@ import org.dddml.wms.specialization.*;
 public class AttributeAliasMvoStateDto
 {
 
-    private AttributeAliasIdDto attributeAliasId;
+    private AttributeAliasId attributeAliasId;
 
-    public AttributeAliasIdDto getAttributeAliasId()
+    public AttributeAliasId getAttributeAliasId()
     {
         return this.attributeAliasId;
     }
 
-    public void setAttributeAliasId(AttributeAliasIdDto attributeAliasId)
+    public void setAttributeAliasId(AttributeAliasId attributeAliasId)
     {
         this.attributeAliasId = attributeAliasId;
     }
@@ -325,7 +325,7 @@ public class AttributeAliasMvoStateDto
             }
             AttributeAliasMvoStateDto dto = new AttributeAliasMvoStateDto();
             if (returnedFieldsContains("AttributeAliasId")) {
-                dto.setAttributeAliasId((state.getAttributeAliasId() == null) ? null : new AttributeAliasIdDtoWrapper(state.getAttributeAliasId()));
+                dto.setAttributeAliasId(state.getAttributeAliasId());
             }
             if (returnedFieldsContains("Name")) {
                 dto.setName(state.getName());

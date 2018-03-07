@@ -234,9 +234,14 @@ public class AttributeUseMvoResource {
     
 
         public static AttributeSetAttributeUseId parseIdString(String idString) {
-            AttributeSetAttributeUseIdFlattenedDtoFormatter formatter = new AttributeSetAttributeUseIdFlattenedDtoFormatter();
-            AttributeSetAttributeUseIdFlattenedDto idDto = formatter.parse(idString);
-            return idDto.toAttributeSetAttributeUseId();
+            TextFormatter<AttributeSetAttributeUseId> formatter =
+                    new AbstractValueObjectTextFormatter<AttributeSetAttributeUseId>(AttributeSetAttributeUseId.class) {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    };
+            return formatter.parse(idString);
         }
 
 
@@ -283,7 +288,7 @@ public class AttributeUseMvoResource {
             List<AttributeUseMvoStateDto> states = new ArrayList<>();
             ids.forEach(id -> {
                 AttributeUseMvoStateDto dto = new AttributeUseMvoStateDto();
-                dto.setAttributeSetAttributeUseId(new AttributeSetAttributeUseIdDtoWrapper(id));
+                dto.setAttributeSetAttributeUseId(id);
                 states.add(dto);
             });
             return states.toArray(new AttributeUseMvoStateDto[0]);

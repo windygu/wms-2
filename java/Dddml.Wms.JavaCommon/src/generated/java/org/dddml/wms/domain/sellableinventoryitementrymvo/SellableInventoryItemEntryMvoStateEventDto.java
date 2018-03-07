@@ -10,22 +10,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 public class SellableInventoryItemEntryMvoStateEventDto extends AbstractStateEvent
 {
 
-    private SellableInventoryItemEntryMvoStateEventIdDto stateEventId;
+    private SellableInventoryItemEntryMvoStateEventId stateEventId;
 
-    SellableInventoryItemEntryMvoStateEventIdDto getStateEventId() {
-        if (stateEventId == null) { stateEventId = new SellableInventoryItemEntryMvoStateEventIdDto(); }
+    SellableInventoryItemEntryMvoStateEventId getStateEventId() {
+        if (stateEventId == null) { stateEventId = new SellableInventoryItemEntryMvoStateEventId(); }
         return this.stateEventId;
     }
 
-    void setStateEventId(SellableInventoryItemEntryMvoStateEventIdDto stateEventId) {
+    void setStateEventId(SellableInventoryItemEntryMvoStateEventId stateEventId) {
         this.stateEventId = stateEventId;
     }
 
-    public SellableInventoryItemEntryIdDto getSellableInventoryItemEntryId() {
+    public SellableInventoryItemEntryId getSellableInventoryItemEntryId() {
         return getStateEventId().getSellableInventoryItemEntryId();
     }
 
-    public void setSellableInventoryItemEntryId(SellableInventoryItemEntryIdDto sellableInventoryItemEntryId) {
+    public void setSellableInventoryItemEntryId(SellableInventoryItemEntryId sellableInventoryItemEntryId) {
         getStateEventId().setSellableInventoryItemEntryId(sellableInventoryItemEntryId);
     }
 
@@ -47,13 +47,13 @@ public class SellableInventoryItemEntryMvoStateEventDto extends AbstractStateEve
         this.sellableQuantity = sellableQuantity;
     }
 
-    private InventoryPRTriggeredIdDto sourceEventId = new InventoryPRTriggeredIdDto();
+    private InventoryPRTriggeredId sourceEventId;
 
-    public InventoryPRTriggeredIdDto getSourceEventId() {
+    public InventoryPRTriggeredId getSourceEventId() {
         return this.sourceEventId;
     }
 
-    public void setSourceEventId(InventoryPRTriggeredIdDto sourceEventId) {
+    public void setSourceEventId(InventoryPRTriggeredId sourceEventId) {
         this.sourceEventId = sourceEventId;
     }
 

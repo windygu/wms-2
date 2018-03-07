@@ -9,14 +9,14 @@ import org.dddml.wms.specialization.*;
 public class UomConversionStateDto
 {
 
-    private UomConversionIdDto uomConversionId;
+    private UomConversionId uomConversionId;
 
-    public UomConversionIdDto getUomConversionId()
+    public UomConversionId getUomConversionId()
     {
         return this.uomConversionId;
     }
 
-    public void setUomConversionId(UomConversionIdDto uomConversionId)
+    public void setUomConversionId(UomConversionId uomConversionId)
     {
         this.uomConversionId = uomConversionId;
     }
@@ -168,7 +168,7 @@ public class UomConversionStateDto
             }
             UomConversionStateDto dto = new UomConversionStateDto();
             if (returnedFieldsContains("UomConversionId")) {
-                dto.setUomConversionId((state.getUomConversionId() == null) ? null : new UomConversionIdDtoWrapper(state.getUomConversionId()));
+                dto.setUomConversionId(state.getUomConversionId());
             }
             if (returnedFieldsContains("ConversionFactor")) {
                 dto.setConversionFactor(state.getConversionFactor());

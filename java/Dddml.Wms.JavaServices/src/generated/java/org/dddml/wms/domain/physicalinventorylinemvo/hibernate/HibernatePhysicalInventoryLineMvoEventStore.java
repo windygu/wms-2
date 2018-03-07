@@ -37,9 +37,9 @@ public class HibernatePhysicalInventoryLineMvoEventStore extends AbstractHiberna
         PhysicalInventoryLineId idObj = (PhysicalInventoryLineId) eventStoreAggregateId.getId();
         Criteria criteria = getCurrentSession().createCriteria(AbstractPhysicalInventoryLineMvoStateEvent.class);
         criteria.add(Restrictions.eq("stateEventId.physicalInventoryLineIdPhysicalInventoryDocumentNumber", idObj.getPhysicalInventoryDocumentNumber()));
-        criteria.add(Restrictions.eq("stateEventId.physicalInventoryLineIdInventoryItemIdProductId", idObj.getInventoryItemIdProductId()));
-        criteria.add(Restrictions.eq("stateEventId.physicalInventoryLineIdInventoryItemIdLocatorId", idObj.getInventoryItemIdLocatorId()));
-        criteria.add(Restrictions.eq("stateEventId.physicalInventoryLineIdInventoryItemIdAttributeSetInstanceId", idObj.getInventoryItemIdAttributeSetInstanceId()));
+        criteria.add(Restrictions.eq("stateEventId.physicalInventoryLineIdInventoryItemIdProductId", idObj.getInventoryItemId().getProductId()));
+        criteria.add(Restrictions.eq("stateEventId.physicalInventoryLineIdInventoryItemIdLocatorId", idObj.getInventoryItemId().getLocatorId()));
+        criteria.add(Restrictions.eq("stateEventId.physicalInventoryLineIdInventoryItemIdAttributeSetInstanceId", idObj.getInventoryItemId().getAttributeSetInstanceId()));
         criteria.add(Restrictions.le("stateEventId.physicalInventoryVersion", version));
         criteria.addOrder(Order.asc("stateEventId.physicalInventoryVersion"));
         List es = criteria.list();

@@ -6,14 +6,14 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractUomConversionCommandDto extends AbstractCommand
 {
-    private UomConversionIdDto uomConversionId;
+    private UomConversionId uomConversionId;
 
-    public UomConversionIdDto getUomConversionId()
+    public UomConversionId getUomConversionId()
     {
         return this.uomConversionId;
     }
 
-    public void setUomConversionId(UomConversionIdDto uomConversionId)
+    public void setUomConversionId(UomConversionId uomConversionId)
     {
         this.uomConversionId = uomConversionId;
     }
@@ -33,7 +33,7 @@ public abstract class AbstractUomConversionCommandDto extends AbstractCommand
 
     public void copyTo(AbstractUomConversionCommand command)
     {
-        command.setUomConversionId((this.getUomConversionId() == null) ? null : this.getUomConversionId().toUomConversionId());
+        command.setUomConversionId(this.getUomConversionId());
         command.setVersion(this.getVersion());
         
         command.setRequesterId(this.getRequesterId());

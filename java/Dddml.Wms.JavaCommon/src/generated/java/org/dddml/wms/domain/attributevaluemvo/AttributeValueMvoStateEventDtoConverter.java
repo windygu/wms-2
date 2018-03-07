@@ -25,7 +25,7 @@ public class AttributeValueMvoStateEventDtoConverter {
 
     public AttributeValueMvoStateEventDto.AttributeValueMvoStateCreatedDto toAttributeValueMvoStateCreatedDto(AttributeValueMvoStateEvent.AttributeValueMvoStateCreated e) {
         AttributeValueMvoStateEventDto.AttributeValueMvoStateCreatedDto dto = new AttributeValueMvoStateEventDto.AttributeValueMvoStateCreatedDto();
-        dto.setStateEventId(new AttributeValueMvoStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -54,7 +54,7 @@ public class AttributeValueMvoStateEventDtoConverter {
 
     public AttributeValueMvoStateEventDto.AttributeValueMvoStateMergePatchedDto toAttributeValueMvoStateMergePatchedDto(AttributeValueMvoStateEvent.AttributeValueMvoStateMergePatched e) {
         AttributeValueMvoStateEventDto.AttributeValueMvoStateMergePatchedDto dto = new AttributeValueMvoStateEventDto.AttributeValueMvoStateMergePatchedDto();
-        dto.setStateEventId(new AttributeValueMvoStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -104,7 +104,7 @@ public class AttributeValueMvoStateEventDtoConverter {
 
     public AttributeValueMvoStateEventDto.AttributeValueMvoStateDeletedDto toAttributeValueMvoStateDeletedDto(AttributeValueMvoStateEvent.AttributeValueMvoStateDeleted e) {
         AttributeValueMvoStateEventDto.AttributeValueMvoStateDeletedDto dto = new AttributeValueMvoStateEventDto.AttributeValueMvoStateDeletedDto();
-        dto.setStateEventId(new AttributeValueMvoStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());

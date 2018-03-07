@@ -21,13 +21,13 @@ public class InventoryItemRequirementEntryStateEventDtoConverter {
 
     public InventoryItemRequirementEntryStateEventDto.InventoryItemRequirementEntryStateCreatedDto toInventoryItemRequirementEntryStateCreatedDto(InventoryItemRequirementEntryStateEvent.InventoryItemRequirementEntryStateCreated e) {
         InventoryItemRequirementEntryStateEventDto.InventoryItemRequirementEntryStateCreatedDto dto = new InventoryItemRequirementEntryStateEventDto.InventoryItemRequirementEntryStateCreatedDto();
-        dto.setStateEventId(new InventoryItemRequirementEntryStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setVersion(e.getVersion());
         dto.setCommandId(e.getCommandId());
         dto.setQuantity(e.getQuantity());
-        dto.setSourceEventId((e.getSourceEventId() == null) ? null : new InventoryPRTriggeredIdDtoWrapper(e.getSourceEventId()));
+        dto.setSourceEventId(e.getSourceEventId());
         return dto;
     }
 

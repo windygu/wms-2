@@ -8,14 +8,14 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractMovementConfirmationLineMvoCommandDto extends AbstractCommand
 {
-    private MovementConfirmationLineIdDto movementConfirmationLineId;
+    private MovementConfirmationLineId movementConfirmationLineId;
 
-    public MovementConfirmationLineIdDto getMovementConfirmationLineId()
+    public MovementConfirmationLineId getMovementConfirmationLineId()
     {
         return this.movementConfirmationLineId;
     }
 
-    public void setMovementConfirmationLineId(MovementConfirmationLineIdDto movementConfirmationLineId)
+    public void setMovementConfirmationLineId(MovementConfirmationLineId movementConfirmationLineId)
     {
         this.movementConfirmationLineId = movementConfirmationLineId;
     }
@@ -35,7 +35,7 @@ public abstract class AbstractMovementConfirmationLineMvoCommandDto extends Abst
 
     public void copyTo(AbstractMovementConfirmationLineMvoCommand command)
     {
-        command.setMovementConfirmationLineId((this.getMovementConfirmationLineId() == null) ? null : this.getMovementConfirmationLineId().toMovementConfirmationLineId());
+        command.setMovementConfirmationLineId(this.getMovementConfirmationLineId());
         command.setMovementConfirmationVersion(this.getMovementConfirmationVersion());
         
         command.setRequesterId(this.getRequesterId());

@@ -10,14 +10,14 @@ import org.dddml.wms.specialization.*;
 public class OrderItemMvoStateDto
 {
 
-    private OrderItemIdDto orderItemId;
+    private OrderItemId orderItemId;
 
-    public OrderItemIdDto getOrderItemId()
+    public OrderItemId getOrderItemId()
     {
         return this.orderItemId;
     }
 
-    public void setOrderItemId(OrderItemIdDto orderItemId)
+    public void setOrderItemId(OrderItemId orderItemId)
     {
         this.orderItemId = orderItemId;
     }
@@ -901,7 +901,7 @@ public class OrderItemMvoStateDto
             }
             OrderItemMvoStateDto dto = new OrderItemMvoStateDto();
             if (returnedFieldsContains("OrderItemId")) {
-                dto.setOrderItemId((state.getOrderItemId() == null) ? null : new OrderItemIdDtoWrapper(state.getOrderItemId()));
+                dto.setOrderItemId(state.getOrderItemId());
             }
             if (returnedFieldsContains("ProductId")) {
                 dto.setProductId(state.getProductId());

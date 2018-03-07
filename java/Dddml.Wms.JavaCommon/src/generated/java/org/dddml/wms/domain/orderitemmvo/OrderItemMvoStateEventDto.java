@@ -8,22 +8,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 public class OrderItemMvoStateEventDto extends AbstractStateEvent
 {
 
-    private OrderItemMvoStateEventIdDto stateEventId;
+    private OrderItemMvoStateEventId stateEventId;
 
-    OrderItemMvoStateEventIdDto getStateEventId() {
-        if (stateEventId == null) { stateEventId = new OrderItemMvoStateEventIdDto(); }
+    OrderItemMvoStateEventId getStateEventId() {
+        if (stateEventId == null) { stateEventId = new OrderItemMvoStateEventId(); }
         return this.stateEventId;
     }
 
-    void setStateEventId(OrderItemMvoStateEventIdDto stateEventId) {
+    void setStateEventId(OrderItemMvoStateEventId stateEventId) {
         this.stateEventId = stateEventId;
     }
 
-    public OrderItemIdDto getOrderItemId() {
+    public OrderItemId getOrderItemId() {
         return getStateEventId().getOrderItemId();
     }
 
-    public void setOrderItemId(OrderItemIdDto orderItemId) {
+    public void setOrderItemId(OrderItemId orderItemId) {
         getStateEventId().setOrderItemId(orderItemId);
     }
 

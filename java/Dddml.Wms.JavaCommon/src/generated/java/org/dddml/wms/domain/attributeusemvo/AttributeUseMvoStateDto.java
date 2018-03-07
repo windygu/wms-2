@@ -10,14 +10,14 @@ import org.dddml.wms.specialization.*;
 public class AttributeUseMvoStateDto
 {
 
-    private AttributeSetAttributeUseIdDto attributeSetAttributeUseId;
+    private AttributeSetAttributeUseId attributeSetAttributeUseId;
 
-    public AttributeSetAttributeUseIdDto getAttributeSetAttributeUseId()
+    public AttributeSetAttributeUseId getAttributeSetAttributeUseId()
     {
         return this.attributeSetAttributeUseId;
     }
 
-    public void setAttributeSetAttributeUseId(AttributeSetAttributeUseIdDto attributeSetAttributeUseId)
+    public void setAttributeSetAttributeUseId(AttributeSetAttributeUseId attributeSetAttributeUseId)
     {
         this.attributeSetAttributeUseId = attributeSetAttributeUseId;
     }
@@ -289,7 +289,7 @@ public class AttributeUseMvoStateDto
             }
             AttributeUseMvoStateDto dto = new AttributeUseMvoStateDto();
             if (returnedFieldsContains("AttributeSetAttributeUseId")) {
-                dto.setAttributeSetAttributeUseId((state.getAttributeSetAttributeUseId() == null) ? null : new AttributeSetAttributeUseIdDtoWrapper(state.getAttributeSetAttributeUseId()));
+                dto.setAttributeSetAttributeUseId(state.getAttributeSetAttributeUseId());
             }
             if (returnedFieldsContains("SequenceNumber")) {
                 dto.setSequenceNumber(state.getSequenceNumber());

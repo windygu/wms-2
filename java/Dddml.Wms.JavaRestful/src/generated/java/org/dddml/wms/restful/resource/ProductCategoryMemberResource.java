@@ -215,9 +215,14 @@ public class ProductCategoryMemberResource {
     
 
         public static ProductCategoryMemberId parseIdString(String idString) {
-            ProductCategoryMemberIdFlattenedDtoFormatter formatter = new ProductCategoryMemberIdFlattenedDtoFormatter();
-            ProductCategoryMemberIdFlattenedDto idDto = formatter.parse(idString);
-            return idDto.toProductCategoryMemberId();
+            TextFormatter<ProductCategoryMemberId> formatter =
+                    new AbstractValueObjectTextFormatter<ProductCategoryMemberId>(ProductCategoryMemberId.class) {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    };
+            return formatter.parse(idString);
         }
 
 
@@ -264,7 +269,7 @@ public class ProductCategoryMemberResource {
             List<ProductCategoryMemberStateDto> states = new ArrayList<>();
             ids.forEach(id -> {
                 ProductCategoryMemberStateDto dto = new ProductCategoryMemberStateDto();
-                dto.setProductCategoryMemberId(new ProductCategoryMemberIdDtoWrapper(id));
+                dto.setProductCategoryMemberId(id);
                 states.add(dto);
             });
             return states.toArray(new ProductCategoryMemberStateDto[0]);

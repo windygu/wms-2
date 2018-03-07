@@ -10,14 +10,14 @@ import org.dddml.wms.specialization.*;
 public class InventoryItemStateDto
 {
 
-    private InventoryItemIdDto inventoryItemId;
+    private InventoryItemId inventoryItemId;
 
-    public InventoryItemIdDto getInventoryItemId()
+    public InventoryItemId getInventoryItemId()
     {
         return this.inventoryItemId;
     }
 
-    public void setInventoryItemId(InventoryItemIdDto inventoryItemId)
+    public void setInventoryItemId(InventoryItemId inventoryItemId)
     {
         this.inventoryItemId = inventoryItemId;
     }
@@ -181,7 +181,7 @@ public class InventoryItemStateDto
             }
             InventoryItemStateDto dto = new InventoryItemStateDto();
             if (returnedFieldsContains("InventoryItemId")) {
-                dto.setInventoryItemId((state.getInventoryItemId() == null) ? null : new InventoryItemIdDtoWrapper(state.getInventoryItemId()));
+                dto.setInventoryItemId(state.getInventoryItemId());
             }
             if (returnedFieldsContains("OnHandQuantity")) {
                 dto.setOnHandQuantity(state.getOnHandQuantity());

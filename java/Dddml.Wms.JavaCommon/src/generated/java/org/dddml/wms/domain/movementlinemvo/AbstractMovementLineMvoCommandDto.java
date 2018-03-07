@@ -8,14 +8,14 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractMovementLineMvoCommandDto extends AbstractCommand
 {
-    private MovementLineIdDto movementLineId;
+    private MovementLineId movementLineId;
 
-    public MovementLineIdDto getMovementLineId()
+    public MovementLineId getMovementLineId()
     {
         return this.movementLineId;
     }
 
-    public void setMovementLineId(MovementLineIdDto movementLineId)
+    public void setMovementLineId(MovementLineId movementLineId)
     {
         this.movementLineId = movementLineId;
     }
@@ -35,7 +35,7 @@ public abstract class AbstractMovementLineMvoCommandDto extends AbstractCommand
 
     public void copyTo(AbstractMovementLineMvoCommand command)
     {
-        command.setMovementLineId((this.getMovementLineId() == null) ? null : this.getMovementLineId().toMovementLineId());
+        command.setMovementLineId(this.getMovementLineId());
         command.setMovementVersion(this.getMovementVersion());
         
         command.setRequesterId(this.getRequesterId());

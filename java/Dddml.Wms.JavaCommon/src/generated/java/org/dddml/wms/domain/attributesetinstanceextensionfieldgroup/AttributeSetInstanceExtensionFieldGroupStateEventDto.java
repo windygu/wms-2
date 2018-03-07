@@ -7,14 +7,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 public class AttributeSetInstanceExtensionFieldGroupStateEventDto extends AbstractStateEvent
 {
 
-    private AttributeSetInstanceExtensionFieldGroupStateEventIdDto stateEventId;
+    private AttributeSetInstanceExtensionFieldGroupStateEventId stateEventId;
 
-    AttributeSetInstanceExtensionFieldGroupStateEventIdDto getStateEventId() {
-        if (stateEventId == null) { stateEventId = new AttributeSetInstanceExtensionFieldGroupStateEventIdDto(); }
+    AttributeSetInstanceExtensionFieldGroupStateEventId getStateEventId() {
+        if (stateEventId == null) { stateEventId = new AttributeSetInstanceExtensionFieldGroupStateEventId(); }
         return this.stateEventId;
     }
 
-    void setStateEventId(AttributeSetInstanceExtensionFieldGroupStateEventIdDto stateEventId) {
+    void setStateEventId(AttributeSetInstanceExtensionFieldGroupStateEventId stateEventId) {
         this.stateEventId = stateEventId;
     }
 

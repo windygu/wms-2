@@ -6,14 +6,14 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractProductCategoryMemberCommandDto extends AbstractCommand
 {
-    private ProductCategoryMemberIdDto productCategoryMemberId;
+    private ProductCategoryMemberId productCategoryMemberId;
 
-    public ProductCategoryMemberIdDto getProductCategoryMemberId()
+    public ProductCategoryMemberId getProductCategoryMemberId()
     {
         return this.productCategoryMemberId;
     }
 
-    public void setProductCategoryMemberId(ProductCategoryMemberIdDto productCategoryMemberId)
+    public void setProductCategoryMemberId(ProductCategoryMemberId productCategoryMemberId)
     {
         this.productCategoryMemberId = productCategoryMemberId;
     }
@@ -33,7 +33,7 @@ public abstract class AbstractProductCategoryMemberCommandDto extends AbstractCo
 
     public void copyTo(AbstractProductCategoryMemberCommand command)
     {
-        command.setProductCategoryMemberId((this.getProductCategoryMemberId() == null) ? null : this.getProductCategoryMemberId().toProductCategoryMemberId());
+        command.setProductCategoryMemberId(this.getProductCategoryMemberId());
         command.setVersion(this.getVersion());
         
         command.setRequesterId(this.getRequesterId());

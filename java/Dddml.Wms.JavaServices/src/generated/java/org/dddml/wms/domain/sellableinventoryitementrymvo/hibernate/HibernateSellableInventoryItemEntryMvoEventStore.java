@@ -37,9 +37,9 @@ public class HibernateSellableInventoryItemEntryMvoEventStore extends AbstractHi
         }
         SellableInventoryItemEntryId idObj = (SellableInventoryItemEntryId) eventStoreAggregateId.getId();
         Criteria criteria = getCurrentSession().createCriteria(AbstractSellableInventoryItemEntryMvoStateEvent.class);
-        criteria.add(Restrictions.eq("stateEventId.sellableInventoryItemEntryIdSellableInventoryItemIdProductId", idObj.getSellableInventoryItemIdProductId()));
-        criteria.add(Restrictions.eq("stateEventId.sellableInventoryItemEntryIdSellableInventoryItemIdLocatorId", idObj.getSellableInventoryItemIdLocatorId()));
-        criteria.add(Restrictions.eq("stateEventId.sellableInventoryItemEntryIdSellableInventoryItemIdAttributeSetInstanceId", idObj.getSellableInventoryItemIdAttributeSetInstanceId()));
+        criteria.add(Restrictions.eq("stateEventId.sellableInventoryItemEntryIdSellableInventoryItemIdProductId", idObj.getSellableInventoryItemId().getProductId()));
+        criteria.add(Restrictions.eq("stateEventId.sellableInventoryItemEntryIdSellableInventoryItemIdLocatorId", idObj.getSellableInventoryItemId().getLocatorId()));
+        criteria.add(Restrictions.eq("stateEventId.sellableInventoryItemEntryIdSellableInventoryItemIdAttributeSetInstanceId", idObj.getSellableInventoryItemId().getAttributeSetInstanceId()));
         criteria.add(Restrictions.eq("stateEventId.sellableInventoryItemEntryIdEntrySeqId", idObj.getEntrySeqId()));
         criteria.add(Restrictions.le("stateEventId.sellableInventoryItemVersion", version));
         criteria.addOrder(Order.asc("stateEventId.sellableInventoryItemVersion"));

@@ -6,14 +6,14 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractInventoryPRTriggeredCommandDto extends AbstractCommand
 {
-    private InventoryPRTriggeredIdDto inventoryPRTriggeredId;
+    private InventoryPRTriggeredId inventoryPRTriggeredId;
 
-    public InventoryPRTriggeredIdDto getInventoryPRTriggeredId()
+    public InventoryPRTriggeredId getInventoryPRTriggeredId()
     {
         return this.inventoryPRTriggeredId;
     }
 
-    public void setInventoryPRTriggeredId(InventoryPRTriggeredIdDto inventoryPRTriggeredId)
+    public void setInventoryPRTriggeredId(InventoryPRTriggeredId inventoryPRTriggeredId)
     {
         this.inventoryPRTriggeredId = inventoryPRTriggeredId;
     }
@@ -33,7 +33,7 @@ public abstract class AbstractInventoryPRTriggeredCommandDto extends AbstractCom
 
     public void copyTo(AbstractInventoryPRTriggeredCommand command)
     {
-        command.setInventoryPRTriggeredId((this.getInventoryPRTriggeredId() == null) ? null : this.getInventoryPRTriggeredId().toInventoryPRTriggeredId());
+        command.setInventoryPRTriggeredId(this.getInventoryPRTriggeredId());
         command.setVersion(this.getVersion());
         
         command.setRequesterId(this.getRequesterId());

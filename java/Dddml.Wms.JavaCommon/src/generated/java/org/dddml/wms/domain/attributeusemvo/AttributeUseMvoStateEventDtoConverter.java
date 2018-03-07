@@ -25,7 +25,7 @@ public class AttributeUseMvoStateEventDtoConverter {
 
     public AttributeUseMvoStateEventDto.AttributeUseMvoStateCreatedDto toAttributeUseMvoStateCreatedDto(AttributeUseMvoStateEvent.AttributeUseMvoStateCreated e) {
         AttributeUseMvoStateEventDto.AttributeUseMvoStateCreatedDto dto = new AttributeUseMvoStateEventDto.AttributeUseMvoStateCreatedDto();
-        dto.setStateEventId(new AttributeUseMvoStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -49,7 +49,7 @@ public class AttributeUseMvoStateEventDtoConverter {
 
     public AttributeUseMvoStateEventDto.AttributeUseMvoStateMergePatchedDto toAttributeUseMvoStateMergePatchedDto(AttributeUseMvoStateEvent.AttributeUseMvoStateMergePatched e) {
         AttributeUseMvoStateEventDto.AttributeUseMvoStateMergePatchedDto dto = new AttributeUseMvoStateEventDto.AttributeUseMvoStateMergePatchedDto();
-        dto.setStateEventId(new AttributeUseMvoStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -89,7 +89,7 @@ public class AttributeUseMvoStateEventDtoConverter {
 
     public AttributeUseMvoStateEventDto.AttributeUseMvoStateDeletedDto toAttributeUseMvoStateDeletedDto(AttributeUseMvoStateEvent.AttributeUseMvoStateDeleted e) {
         AttributeUseMvoStateEventDto.AttributeUseMvoStateDeletedDto dto = new AttributeUseMvoStateEventDto.AttributeUseMvoStateDeletedDto();
-        dto.setStateEventId(new AttributeUseMvoStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());

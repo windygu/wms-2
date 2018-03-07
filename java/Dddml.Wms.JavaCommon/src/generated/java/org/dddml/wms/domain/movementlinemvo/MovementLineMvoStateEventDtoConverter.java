@@ -26,7 +26,7 @@ public class MovementLineMvoStateEventDtoConverter {
 
     public MovementLineMvoStateEventDto.MovementLineMvoStateCreatedDto toMovementLineMvoStateCreatedDto(MovementLineMvoStateEvent.MovementLineMvoStateCreated e) {
         MovementLineMvoStateEventDto.MovementLineMvoStateCreatedDto dto = new MovementLineMvoStateEventDto.MovementLineMvoStateCreatedDto();
-        dto.setStateEventId(new MovementLineMvoStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -70,7 +70,7 @@ public class MovementLineMvoStateEventDtoConverter {
 
     public MovementLineMvoStateEventDto.MovementLineMvoStateMergePatchedDto toMovementLineMvoStateMergePatchedDto(MovementLineMvoStateEvent.MovementLineMvoStateMergePatched e) {
         MovementLineMvoStateEventDto.MovementLineMvoStateMergePatchedDto dto = new MovementLineMvoStateEventDto.MovementLineMvoStateMergePatchedDto();
-        dto.setStateEventId(new MovementLineMvoStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -150,7 +150,7 @@ public class MovementLineMvoStateEventDtoConverter {
 
     public MovementLineMvoStateEventDto.MovementLineMvoStateDeletedDto toMovementLineMvoStateDeletedDto(MovementLineMvoStateEvent.MovementLineMvoStateDeleted e) {
         MovementLineMvoStateEventDto.MovementLineMvoStateDeletedDto dto = new MovementLineMvoStateEventDto.MovementLineMvoStateDeletedDto();
-        dto.setStateEventId(new MovementLineMvoStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());

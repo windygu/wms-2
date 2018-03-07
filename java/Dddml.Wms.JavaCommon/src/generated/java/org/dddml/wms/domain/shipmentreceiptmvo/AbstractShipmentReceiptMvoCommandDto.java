@@ -7,14 +7,14 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractShipmentReceiptMvoCommandDto extends AbstractCommand
 {
-    private ShipmentReceiptIdDto shipmentReceiptId;
+    private ShipmentReceiptId shipmentReceiptId;
 
-    public ShipmentReceiptIdDto getShipmentReceiptId()
+    public ShipmentReceiptId getShipmentReceiptId()
     {
         return this.shipmentReceiptId;
     }
 
-    public void setShipmentReceiptId(ShipmentReceiptIdDto shipmentReceiptId)
+    public void setShipmentReceiptId(ShipmentReceiptId shipmentReceiptId)
     {
         this.shipmentReceiptId = shipmentReceiptId;
     }
@@ -34,7 +34,7 @@ public abstract class AbstractShipmentReceiptMvoCommandDto extends AbstractComma
 
     public void copyTo(AbstractShipmentReceiptMvoCommand command)
     {
-        command.setShipmentReceiptId((this.getShipmentReceiptId() == null) ? null : this.getShipmentReceiptId().toShipmentReceiptId());
+        command.setShipmentReceiptId(this.getShipmentReceiptId());
         command.setShipmentVersion(this.getShipmentVersion());
         
         command.setRequesterId(this.getRequesterId());

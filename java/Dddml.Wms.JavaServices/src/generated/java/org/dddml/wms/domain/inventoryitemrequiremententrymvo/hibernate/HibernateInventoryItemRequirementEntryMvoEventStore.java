@@ -37,9 +37,9 @@ public class HibernateInventoryItemRequirementEntryMvoEventStore extends Abstrac
         }
         InventoryItemRequirementEntryId idObj = (InventoryItemRequirementEntryId) eventStoreAggregateId.getId();
         Criteria criteria = getCurrentSession().createCriteria(AbstractInventoryItemRequirementEntryMvoStateEvent.class);
-        criteria.add(Restrictions.eq("stateEventId.inventoryItemRequirementEntryIdInventoryItemRequirementIdProductId", idObj.getInventoryItemRequirementIdProductId()));
-        criteria.add(Restrictions.eq("stateEventId.inventoryItemRequirementEntryIdInventoryItemRequirementIdLocatorId", idObj.getInventoryItemRequirementIdLocatorId()));
-        criteria.add(Restrictions.eq("stateEventId.inventoryItemRequirementEntryIdInventoryItemRequirementIdAttributeSetInstanceId", idObj.getInventoryItemRequirementIdAttributeSetInstanceId()));
+        criteria.add(Restrictions.eq("stateEventId.inventoryItemRequirementEntryIdInventoryItemRequirementIdProductId", idObj.getInventoryItemRequirementId().getProductId()));
+        criteria.add(Restrictions.eq("stateEventId.inventoryItemRequirementEntryIdInventoryItemRequirementIdLocatorId", idObj.getInventoryItemRequirementId().getLocatorId()));
+        criteria.add(Restrictions.eq("stateEventId.inventoryItemRequirementEntryIdInventoryItemRequirementIdAttributeSetInstanceId", idObj.getInventoryItemRequirementId().getAttributeSetInstanceId()));
         criteria.add(Restrictions.eq("stateEventId.inventoryItemRequirementEntryIdEntrySeqId", idObj.getEntrySeqId()));
         criteria.add(Restrictions.le("stateEventId.inventoryItemRequirementVersion", version));
         criteria.addOrder(Order.asc("stateEventId.inventoryItemRequirementVersion"));

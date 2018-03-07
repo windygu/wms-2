@@ -234,9 +234,14 @@ public class AttributeValueMvoResource {
     
 
         public static AttributeValueId parseIdString(String idString) {
-            AttributeValueIdFlattenedDtoFormatter formatter = new AttributeValueIdFlattenedDtoFormatter();
-            AttributeValueIdFlattenedDto idDto = formatter.parse(idString);
-            return idDto.toAttributeValueId();
+            TextFormatter<AttributeValueId> formatter =
+                    new AbstractValueObjectTextFormatter<AttributeValueId>(AttributeValueId.class) {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    };
+            return formatter.parse(idString);
         }
 
 
@@ -283,7 +288,7 @@ public class AttributeValueMvoResource {
             List<AttributeValueMvoStateDto> states = new ArrayList<>();
             ids.forEach(id -> {
                 AttributeValueMvoStateDto dto = new AttributeValueMvoStateDto();
-                dto.setAttributeValueId(new AttributeValueIdDtoWrapper(id));
+                dto.setAttributeValueId(id);
                 states.add(dto);
             });
             return states.toArray(new AttributeValueMvoStateDto[0]);

@@ -11,14 +11,14 @@ import org.dddml.wms.specialization.*;
 public class MovementConfirmationLineMvoStateDto
 {
 
-    private MovementConfirmationLineIdDto movementConfirmationLineId;
+    private MovementConfirmationLineId movementConfirmationLineId;
 
-    public MovementConfirmationLineIdDto getMovementConfirmationLineId()
+    public MovementConfirmationLineId getMovementConfirmationLineId()
     {
         return this.movementConfirmationLineId;
     }
 
-    public void setMovementConfirmationLineId(MovementConfirmationLineIdDto movementConfirmationLineId)
+    public void setMovementConfirmationLineId(MovementConfirmationLineId movementConfirmationLineId)
     {
         this.movementConfirmationLineId = movementConfirmationLineId;
     }
@@ -386,7 +386,7 @@ public class MovementConfirmationLineMvoStateDto
             }
             MovementConfirmationLineMvoStateDto dto = new MovementConfirmationLineMvoStateDto();
             if (returnedFieldsContains("MovementConfirmationLineId")) {
-                dto.setMovementConfirmationLineId((state.getMovementConfirmationLineId() == null) ? null : new MovementConfirmationLineIdDtoWrapper(state.getMovementConfirmationLineId()));
+                dto.setMovementConfirmationLineId(state.getMovementConfirmationLineId());
             }
             if (returnedFieldsContains("MovementLineNumber")) {
                 dto.setMovementLineNumber(state.getMovementLineNumber());

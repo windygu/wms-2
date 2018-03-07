@@ -11,14 +11,14 @@ import org.dddml.wms.specialization.*;
 public class InventoryItemEntryMvoStateDto
 {
 
-    private InventoryItemEntryIdDto inventoryItemEntryId;
+    private InventoryItemEntryId inventoryItemEntryId;
 
-    public InventoryItemEntryIdDto getInventoryItemEntryId()
+    public InventoryItemEntryId getInventoryItemEntryId()
     {
         return this.inventoryItemEntryId;
     }
 
-    public void setInventoryItemEntryId(InventoryItemEntryIdDto inventoryItemEntryId)
+    public void setInventoryItemEntryId(InventoryItemEntryId inventoryItemEntryId)
     {
         this.inventoryItemEntryId = inventoryItemEntryId;
     }
@@ -83,14 +83,14 @@ public class InventoryItemEntryMvoStateDto
         this.virtualQuantity = virtualQuantity;
     }
 
-    private InventoryItemSourceInfoDto source;
+    private InventoryItemSourceInfo source;
 
-    public InventoryItemSourceInfoDto getSource()
+    public InventoryItemSourceInfo getSource()
     {
         return this.source;
     }
 
-    public void setSource(InventoryItemSourceInfoDto source)
+    public void setSource(InventoryItemSourceInfo source)
     {
         this.source = source;
     }
@@ -302,7 +302,7 @@ public class InventoryItemEntryMvoStateDto
             }
             InventoryItemEntryMvoStateDto dto = new InventoryItemEntryMvoStateDto();
             if (returnedFieldsContains("InventoryItemEntryId")) {
-                dto.setInventoryItemEntryId((state.getInventoryItemEntryId() == null) ? null : new InventoryItemEntryIdDtoWrapper(state.getInventoryItemEntryId()));
+                dto.setInventoryItemEntryId(state.getInventoryItemEntryId());
             }
             if (returnedFieldsContains("OnHandQuantity")) {
                 dto.setOnHandQuantity(state.getOnHandQuantity());
@@ -320,7 +320,7 @@ public class InventoryItemEntryMvoStateDto
                 dto.setVirtualQuantity(state.getVirtualQuantity());
             }
             if (returnedFieldsContains("Source")) {
-                dto.setSource((state.getSource() == null) ? null : new InventoryItemSourceInfoDtoWrapper(state.getSource()));
+                dto.setSource(state.getSource());
             }
             if (returnedFieldsContains("Version")) {
                 dto.setVersion(state.getVersion());

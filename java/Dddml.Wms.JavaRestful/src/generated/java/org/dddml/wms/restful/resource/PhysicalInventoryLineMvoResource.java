@@ -235,9 +235,14 @@ public class PhysicalInventoryLineMvoResource {
     
 
         public static PhysicalInventoryLineId parseIdString(String idString) {
-            PhysicalInventoryLineIdFlattenedDtoFormatter formatter = new PhysicalInventoryLineIdFlattenedDtoFormatter();
-            PhysicalInventoryLineIdFlattenedDto idDto = formatter.parse(idString);
-            return idDto.toPhysicalInventoryLineId();
+            TextFormatter<PhysicalInventoryLineId> formatter =
+                    new AbstractValueObjectTextFormatter<PhysicalInventoryLineId>(PhysicalInventoryLineId.class) {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    };
+            return formatter.parse(idString);
         }
 
 
@@ -284,7 +289,7 @@ public class PhysicalInventoryLineMvoResource {
             List<PhysicalInventoryLineMvoStateDto> states = new ArrayList<>();
             ids.forEach(id -> {
                 PhysicalInventoryLineMvoStateDto dto = new PhysicalInventoryLineMvoStateDto();
-                dto.setPhysicalInventoryLineId(new PhysicalInventoryLineIdDtoWrapper(id));
+                dto.setPhysicalInventoryLineId(id);
                 states.add(dto);
             });
             return states.toArray(new PhysicalInventoryLineMvoStateDto[0]);

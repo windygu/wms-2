@@ -233,9 +233,14 @@ public class OrganizationStructureResource {
     
 
         public static OrganizationStructureId parseIdString(String idString) {
-            OrganizationStructureIdFlattenedDtoFormatter formatter = new OrganizationStructureIdFlattenedDtoFormatter();
-            OrganizationStructureIdFlattenedDto idDto = formatter.parse(idString);
-            return idDto.toOrganizationStructureId();
+            TextFormatter<OrganizationStructureId> formatter =
+                    new AbstractValueObjectTextFormatter<OrganizationStructureId>(OrganizationStructureId.class) {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    };
+            return formatter.parse(idString);
         }
 
 
@@ -282,7 +287,7 @@ public class OrganizationStructureResource {
             List<OrganizationStructureStateDto> states = new ArrayList<>();
             ids.forEach(id -> {
                 OrganizationStructureStateDto dto = new OrganizationStructureStateDto();
-                dto.setId(new OrganizationStructureIdDtoWrapper(id));
+                dto.setId(id);
                 states.add(dto);
             });
             return states.toArray(new OrganizationStructureStateDto[0]);

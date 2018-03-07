@@ -7,14 +7,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 public class RejectionReasonStateEventDto extends AbstractStateEvent
 {
 
-    private RejectionReasonStateEventIdDto stateEventId;
+    private RejectionReasonStateEventId stateEventId;
 
-    RejectionReasonStateEventIdDto getStateEventId() {
-        if (stateEventId == null) { stateEventId = new RejectionReasonStateEventIdDto(); }
+    RejectionReasonStateEventId getStateEventId() {
+        if (stateEventId == null) { stateEventId = new RejectionReasonStateEventId(); }
         return this.stateEventId;
     }
 
-    void setStateEventId(RejectionReasonStateEventIdDto stateEventId) {
+    void setStateEventId(RejectionReasonStateEventId stateEventId) {
         this.stateEventId = stateEventId;
     }
 

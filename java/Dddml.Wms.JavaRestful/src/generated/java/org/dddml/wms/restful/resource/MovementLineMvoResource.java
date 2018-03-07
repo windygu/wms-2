@@ -235,9 +235,14 @@ public class MovementLineMvoResource {
     
 
         public static MovementLineId parseIdString(String idString) {
-            MovementLineIdFlattenedDtoFormatter formatter = new MovementLineIdFlattenedDtoFormatter();
-            MovementLineIdFlattenedDto idDto = formatter.parse(idString);
-            return idDto.toMovementLineId();
+            TextFormatter<MovementLineId> formatter =
+                    new AbstractValueObjectTextFormatter<MovementLineId>(MovementLineId.class) {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    };
+            return formatter.parse(idString);
         }
 
 
@@ -284,7 +289,7 @@ public class MovementLineMvoResource {
             List<MovementLineMvoStateDto> states = new ArrayList<>();
             ids.forEach(id -> {
                 MovementLineMvoStateDto dto = new MovementLineMvoStateDto();
-                dto.setMovementLineId(new MovementLineIdDtoWrapper(id));
+                dto.setMovementLineId(id);
                 states.add(dto);
             });
             return states.toArray(new MovementLineMvoStateDto[0]);

@@ -188,9 +188,14 @@ public class InventoryPRTriggeredResource {
     
 
         public static InventoryPRTriggeredId parseIdString(String idString) {
-            InventoryPRTriggeredIdFlattenedDtoFormatter formatter = new InventoryPRTriggeredIdFlattenedDtoFormatter();
-            InventoryPRTriggeredIdFlattenedDto idDto = formatter.parse(idString);
-            return idDto.toInventoryPRTriggeredId();
+            TextFormatter<InventoryPRTriggeredId> formatter =
+                    new AbstractValueObjectTextFormatter<InventoryPRTriggeredId>(InventoryPRTriggeredId.class) {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    };
+            return formatter.parse(idString);
         }
 
 
@@ -237,7 +242,7 @@ public class InventoryPRTriggeredResource {
             List<InventoryPRTriggeredStateDto> states = new ArrayList<>();
             ids.forEach(id -> {
                 InventoryPRTriggeredStateDto dto = new InventoryPRTriggeredStateDto();
-                dto.setInventoryPRTriggeredId(new InventoryPRTriggeredIdDtoWrapper(id));
+                dto.setInventoryPRTriggeredId(id);
                 states.add(dto);
             });
             return states.toArray(new InventoryPRTriggeredStateDto[0]);

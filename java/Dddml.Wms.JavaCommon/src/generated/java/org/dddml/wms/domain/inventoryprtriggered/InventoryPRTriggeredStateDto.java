@@ -9,14 +9,14 @@ import org.dddml.wms.specialization.*;
 public class InventoryPRTriggeredStateDto
 {
 
-    private InventoryPRTriggeredIdDto inventoryPRTriggeredId;
+    private InventoryPRTriggeredId inventoryPRTriggeredId;
 
-    public InventoryPRTriggeredIdDto getInventoryPRTriggeredId()
+    public InventoryPRTriggeredId getInventoryPRTriggeredId()
     {
         return this.inventoryPRTriggeredId;
     }
 
-    public void setInventoryPRTriggeredId(InventoryPRTriggeredIdDto inventoryPRTriggeredId)
+    public void setInventoryPRTriggeredId(InventoryPRTriggeredId inventoryPRTriggeredId)
     {
         this.inventoryPRTriggeredId = inventoryPRTriggeredId;
     }
@@ -120,7 +120,7 @@ public class InventoryPRTriggeredStateDto
             }
             InventoryPRTriggeredStateDto dto = new InventoryPRTriggeredStateDto();
             if (returnedFieldsContains("InventoryPRTriggeredId")) {
-                dto.setInventoryPRTriggeredId((state.getInventoryPRTriggeredId() == null) ? null : new InventoryPRTriggeredIdDtoWrapper(state.getInventoryPRTriggeredId()));
+                dto.setInventoryPRTriggeredId(state.getInventoryPRTriggeredId());
             }
             if (returnedFieldsContains("IsProcessed")) {
                 dto.setIsProcessed(state.getIsProcessed());

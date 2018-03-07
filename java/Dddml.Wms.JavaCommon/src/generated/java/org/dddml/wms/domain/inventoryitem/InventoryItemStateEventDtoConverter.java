@@ -22,7 +22,7 @@ public class InventoryItemStateEventDtoConverter {
 
     public InventoryItemStateEventDto.InventoryItemStateCreatedDto toInventoryItemStateCreatedDto(InventoryItemStateEvent.InventoryItemStateCreated e) {
         InventoryItemStateEventDto.InventoryItemStateCreatedDto dto = new InventoryItemStateEventDto.InventoryItemStateCreatedDto();
-        dto.setStateEventId(new InventoryItemStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -43,7 +43,7 @@ public class InventoryItemStateEventDtoConverter {
 
     public InventoryItemStateEventDto.InventoryItemStateMergePatchedDto toInventoryItemStateMergePatchedDto(InventoryItemStateEvent.InventoryItemStateMergePatched e) {
         InventoryItemStateEventDto.InventoryItemStateMergePatchedDto dto = new InventoryItemStateEventDto.InventoryItemStateMergePatchedDto();
-        dto.setStateEventId(new InventoryItemStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());

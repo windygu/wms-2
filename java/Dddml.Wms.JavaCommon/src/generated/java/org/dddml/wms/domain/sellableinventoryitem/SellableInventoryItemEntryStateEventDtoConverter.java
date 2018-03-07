@@ -21,13 +21,13 @@ public class SellableInventoryItemEntryStateEventDtoConverter {
 
     public SellableInventoryItemEntryStateEventDto.SellableInventoryItemEntryStateCreatedDto toSellableInventoryItemEntryStateCreatedDto(SellableInventoryItemEntryStateEvent.SellableInventoryItemEntryStateCreated e) {
         SellableInventoryItemEntryStateEventDto.SellableInventoryItemEntryStateCreatedDto dto = new SellableInventoryItemEntryStateEventDto.SellableInventoryItemEntryStateCreatedDto();
-        dto.setStateEventId(new SellableInventoryItemEntryStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setVersion(e.getVersion());
         dto.setCommandId(e.getCommandId());
         dto.setSellableQuantity(e.getSellableQuantity());
-        dto.setSourceEventId((e.getSourceEventId() == null) ? null : new InventoryPRTriggeredIdDtoWrapper(e.getSourceEventId()));
+        dto.setSourceEventId(e.getSourceEventId());
         return dto;
     }
 

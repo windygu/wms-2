@@ -22,26 +22,26 @@ public class InventoryPostingRuleStateDto
         this.inventoryPostingRuleId = inventoryPostingRuleId;
     }
 
-    private InventoryItemIdDto triggerInventoryItemId;
+    private InventoryItemId triggerInventoryItemId;
 
-    public InventoryItemIdDto getTriggerInventoryItemId()
+    public InventoryItemId getTriggerInventoryItemId()
     {
         return this.triggerInventoryItemId;
     }
 
-    public void setTriggerInventoryItemId(InventoryItemIdDto triggerInventoryItemId)
+    public void setTriggerInventoryItemId(InventoryItemId triggerInventoryItemId)
     {
         this.triggerInventoryItemId = triggerInventoryItemId;
     }
 
-    private InventoryItemIdDto outputInventoryItemId;
+    private InventoryItemId outputInventoryItemId;
 
-    public InventoryItemIdDto getOutputInventoryItemId()
+    public InventoryItemId getOutputInventoryItemId()
     {
         return this.outputInventoryItemId;
     }
 
-    public void setOutputInventoryItemId(InventoryItemIdDto outputInventoryItemId)
+    public void setOutputInventoryItemId(InventoryItemId outputInventoryItemId)
     {
         this.outputInventoryItemId = outputInventoryItemId;
     }
@@ -184,10 +184,10 @@ public class InventoryPostingRuleStateDto
                 dto.setInventoryPostingRuleId(state.getInventoryPostingRuleId());
             }
             if (returnedFieldsContains("TriggerInventoryItemId")) {
-                dto.setTriggerInventoryItemId((state.getTriggerInventoryItemId() == null) ? null : new InventoryItemIdDtoWrapper(state.getTriggerInventoryItemId()));
+                dto.setTriggerInventoryItemId(state.getTriggerInventoryItemId());
             }
             if (returnedFieldsContains("OutputInventoryItemId")) {
-                dto.setOutputInventoryItemId((state.getOutputInventoryItemId() == null) ? null : new InventoryItemIdDtoWrapper(state.getOutputInventoryItemId()));
+                dto.setOutputInventoryItemId(state.getOutputInventoryItemId());
             }
             if (returnedFieldsContains("TriggerAccountName")) {
                 dto.setTriggerAccountName(state.getTriggerAccountName());

@@ -7,14 +7,14 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractAttributeAliasMvoCommandDto extends AbstractCommand
 {
-    private AttributeAliasIdDto attributeAliasId;
+    private AttributeAliasId attributeAliasId;
 
-    public AttributeAliasIdDto getAttributeAliasId()
+    public AttributeAliasId getAttributeAliasId()
     {
         return this.attributeAliasId;
     }
 
-    public void setAttributeAliasId(AttributeAliasIdDto attributeAliasId)
+    public void setAttributeAliasId(AttributeAliasId attributeAliasId)
     {
         this.attributeAliasId = attributeAliasId;
     }
@@ -34,7 +34,7 @@ public abstract class AbstractAttributeAliasMvoCommandDto extends AbstractComman
 
     public void copyTo(AbstractAttributeAliasMvoCommand command)
     {
-        command.setAttributeAliasId((this.getAttributeAliasId() == null) ? null : this.getAttributeAliasId().toAttributeAliasId());
+        command.setAttributeAliasId(this.getAttributeAliasId());
         command.setAttributeVersion(this.getAttributeVersion());
         
         command.setRequesterId(this.getRequesterId());

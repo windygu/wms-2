@@ -12,14 +12,14 @@ import org.dddml.wms.specialization.*;
 public class SellableInventoryItemStateDto
 {
 
-    private InventoryItemIdDto sellableInventoryItemId;
+    private InventoryItemId sellableInventoryItemId;
 
-    public InventoryItemIdDto getSellableInventoryItemId()
+    public InventoryItemId getSellableInventoryItemId()
     {
         return this.sellableInventoryItemId;
     }
 
-    public void setSellableInventoryItemId(InventoryItemIdDto sellableInventoryItemId)
+    public void setSellableInventoryItemId(InventoryItemId sellableInventoryItemId)
     {
         this.sellableInventoryItemId = sellableInventoryItemId;
     }
@@ -135,7 +135,7 @@ public class SellableInventoryItemStateDto
             }
             SellableInventoryItemStateDto dto = new SellableInventoryItemStateDto();
             if (returnedFieldsContains("SellableInventoryItemId")) {
-                dto.setSellableInventoryItemId((state.getSellableInventoryItemId() == null) ? null : new InventoryItemIdDtoWrapper(state.getSellableInventoryItemId()));
+                dto.setSellableInventoryItemId(state.getSellableInventoryItemId());
             }
             if (returnedFieldsContains("SellableQuantity")) {
                 dto.setSellableQuantity(state.getSellableQuantity());

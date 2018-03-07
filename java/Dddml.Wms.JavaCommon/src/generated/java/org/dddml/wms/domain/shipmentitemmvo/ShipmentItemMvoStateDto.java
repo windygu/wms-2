@@ -10,14 +10,14 @@ import org.dddml.wms.specialization.*;
 public class ShipmentItemMvoStateDto
 {
 
-    private ShipmentItemIdDto shipmentItemId;
+    private ShipmentItemId shipmentItemId;
 
-    public ShipmentItemIdDto getShipmentItemId()
+    public ShipmentItemId getShipmentItemId()
     {
         return this.shipmentItemId;
     }
 
-    public void setShipmentItemId(ShipmentItemIdDto shipmentItemId)
+    public void setShipmentItemId(ShipmentItemId shipmentItemId)
     {
         this.shipmentItemId = shipmentItemId;
     }
@@ -553,7 +553,7 @@ public class ShipmentItemMvoStateDto
             }
             ShipmentItemMvoStateDto dto = new ShipmentItemMvoStateDto();
             if (returnedFieldsContains("ShipmentItemId")) {
-                dto.setShipmentItemId((state.getShipmentItemId() == null) ? null : new ShipmentItemIdDtoWrapper(state.getShipmentItemId()));
+                dto.setShipmentItemId(state.getShipmentItemId());
             }
             if (returnedFieldsContains("ProductId")) {
                 dto.setProductId(state.getProductId());

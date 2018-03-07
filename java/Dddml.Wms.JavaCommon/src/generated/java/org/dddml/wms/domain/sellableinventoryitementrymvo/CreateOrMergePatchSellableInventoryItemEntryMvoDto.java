@@ -20,14 +20,14 @@ public class CreateOrMergePatchSellableInventoryItemEntryMvoDto extends Abstract
         this.sellableQuantity = sellableQuantity;
     }
 
-    private InventoryPRTriggeredIdDto sourceEventId;
+    private InventoryPRTriggeredId sourceEventId;
 
-    public InventoryPRTriggeredIdDto getSourceEventId()
+    public InventoryPRTriggeredId getSourceEventId()
     {
         return this.sourceEventId;
     }
 
-    public void setSourceEventId(InventoryPRTriggeredIdDto sourceEventId)
+    public void setSourceEventId(InventoryPRTriggeredId sourceEventId)
     {
         this.sourceEventId = sourceEventId;
     }
@@ -228,7 +228,7 @@ public class CreateOrMergePatchSellableInventoryItemEntryMvoDto extends Abstract
     {
         ((AbstractSellableInventoryItemEntryMvoCommandDto) this).copyTo(command);
         command.setSellableQuantity(this.getSellableQuantity());
-        command.setSourceEventId(this.getSourceEventId() == null ? null : this.getSourceEventId().toInventoryPRTriggeredId());
+        command.setSourceEventId(this.getSourceEventId());
         command.setVersion(this.getVersion());
         command.setActive(this.getActive());
         command.setSellableInventoryItemSellableQuantity(this.getSellableInventoryItemSellableQuantity());

@@ -25,7 +25,7 @@ public class MovementConfirmationStateEventDtoConverter {
 
     public MovementConfirmationStateEventDto.MovementConfirmationStateCreatedDto toMovementConfirmationStateCreatedDto(MovementConfirmationStateEvent.MovementConfirmationStateCreated e) {
         MovementConfirmationStateEventDto.MovementConfirmationStateCreatedDto dto = new MovementConfirmationStateEventDto.MovementConfirmationStateCreatedDto();
-        dto.setStateEventId(new MovementConfirmationStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -50,7 +50,7 @@ public class MovementConfirmationStateEventDtoConverter {
 
     public MovementConfirmationStateEventDto.MovementConfirmationStateMergePatchedDto toMovementConfirmationStateMergePatchedDto(MovementConfirmationStateEvent.MovementConfirmationStateMergePatched e) {
         MovementConfirmationStateEventDto.MovementConfirmationStateMergePatchedDto dto = new MovementConfirmationStateEventDto.MovementConfirmationStateMergePatchedDto();
-        dto.setStateEventId(new MovementConfirmationStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -85,7 +85,7 @@ public class MovementConfirmationStateEventDtoConverter {
 
     public MovementConfirmationStateEventDto.MovementConfirmationStateDeletedDto toMovementConfirmationStateDeletedDto(MovementConfirmationStateEvent.MovementConfirmationStateDeleted e) {
         MovementConfirmationStateEventDto.MovementConfirmationStateDeletedDto dto = new MovementConfirmationStateEventDto.MovementConfirmationStateDeletedDto();
-        dto.setStateEventId(new MovementConfirmationStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());

@@ -6,14 +6,14 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractSupplierProductCommandDto extends AbstractCommand
 {
-    private SupplierProductIdDto supplierProductId;
+    private SupplierProductId supplierProductId;
 
-    public SupplierProductIdDto getSupplierProductId()
+    public SupplierProductId getSupplierProductId()
     {
         return this.supplierProductId;
     }
 
-    public void setSupplierProductId(SupplierProductIdDto supplierProductId)
+    public void setSupplierProductId(SupplierProductId supplierProductId)
     {
         this.supplierProductId = supplierProductId;
     }
@@ -33,7 +33,7 @@ public abstract class AbstractSupplierProductCommandDto extends AbstractCommand
 
     public void copyTo(AbstractSupplierProductCommand command)
     {
-        command.setSupplierProductId((this.getSupplierProductId() == null) ? null : this.getSupplierProductId().toSupplierProductId());
+        command.setSupplierProductId(this.getSupplierProductId());
         command.setVersion(this.getVersion());
         
         command.setRequesterId(this.getRequesterId());

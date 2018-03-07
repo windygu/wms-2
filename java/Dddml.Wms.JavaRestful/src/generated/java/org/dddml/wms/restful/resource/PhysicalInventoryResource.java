@@ -201,7 +201,12 @@ public class PhysicalInventoryResource {
     public PhysicalInventoryLineStateDto getPhysicalInventoryLine(@PathParam("physicalInventoryDocumentNumber") String physicalInventoryDocumentNumber, @PathParam("inventoryItemId") String inventoryItemId) {
         try {
 
-            PhysicalInventoryLineState state = physicalInventoryApplicationService.getPhysicalInventoryLine(physicalInventoryDocumentNumber, (new InventoryItemIdFlattenedDtoFormatter().parse(inventoryItemId)).toInventoryItemId());
+            PhysicalInventoryLineState state = physicalInventoryApplicationService.getPhysicalInventoryLine(physicalInventoryDocumentNumber, (new AbstractValueObjectTextFormatter<InventoryItemId>(InventoryItemId.class, ",") {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    }.parse(inventoryItemId)));
             if (state == null) { return null; }
             PhysicalInventoryLineStateDto.DtoConverter dtoConverter = new PhysicalInventoryLineStateDto.DtoConverter();
             PhysicalInventoryLineStateDto stateDto = dtoConverter.toPhysicalInventoryLineStateDto(state);

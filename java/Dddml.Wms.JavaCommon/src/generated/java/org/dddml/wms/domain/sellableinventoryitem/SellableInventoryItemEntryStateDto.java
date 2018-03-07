@@ -36,14 +36,14 @@ public class SellableInventoryItemEntryStateDto
         this.sellableQuantity = sellableQuantity;
     }
 
-    private InventoryPRTriggeredIdDto sourceEventId;
+    private InventoryPRTriggeredId sourceEventId;
 
-    public InventoryPRTriggeredIdDto getSourceEventId()
+    public InventoryPRTriggeredId getSourceEventId()
     {
         return this.sourceEventId;
     }
 
-    public void setSourceEventId(InventoryPRTriggeredIdDto sourceEventId)
+    public void setSourceEventId(InventoryPRTriggeredId sourceEventId)
     {
         this.sourceEventId = sourceEventId;
     }
@@ -60,14 +60,14 @@ public class SellableInventoryItemEntryStateDto
         this.version = version;
     }
 
-    private InventoryItemIdDto sellableInventoryItemId;
+    private InventoryItemId sellableInventoryItemId;
 
-    public InventoryItemIdDto getSellableInventoryItemId()
+    public InventoryItemId getSellableInventoryItemId()
     {
         return this.sellableInventoryItemId;
     }
 
-    public void setSellableInventoryItemId(InventoryItemIdDto sellableInventoryItemId)
+    public void setSellableInventoryItemId(InventoryItemId sellableInventoryItemId)
     {
         this.sellableInventoryItemId = sellableInventoryItemId;
     }
@@ -153,13 +153,13 @@ public class SellableInventoryItemEntryStateDto
                 dto.setSellableQuantity(state.getSellableQuantity());
             }
             if (returnedFieldsContains("SourceEventId")) {
-                dto.setSourceEventId((state.getSourceEventId() == null) ? null : new InventoryPRTriggeredIdDtoWrapper(state.getSourceEventId()));
+                dto.setSourceEventId(state.getSourceEventId());
             }
             if (returnedFieldsContains("Version")) {
                 dto.setVersion(state.getVersion());
             }
             if (returnedFieldsContains("SellableInventoryItemId")) {
-                dto.setSellableInventoryItemId((state.getSellableInventoryItemId() == null) ? null : new InventoryItemIdDtoWrapper(state.getSellableInventoryItemId()));
+                dto.setSellableInventoryItemId(state.getSellableInventoryItemId());
             }
             if (returnedFieldsContains("CreatedBy")) {
                 dto.setCreatedBy(state.getCreatedBy());

@@ -12,14 +12,14 @@ import org.dddml.wms.specialization.*;
 public class InventoryItemRequirementEntryMvoStateDto
 {
 
-    private InventoryItemRequirementEntryIdDto inventoryItemRequirementEntryId;
+    private InventoryItemRequirementEntryId inventoryItemRequirementEntryId;
 
-    public InventoryItemRequirementEntryIdDto getInventoryItemRequirementEntryId()
+    public InventoryItemRequirementEntryId getInventoryItemRequirementEntryId()
     {
         return this.inventoryItemRequirementEntryId;
     }
 
-    public void setInventoryItemRequirementEntryId(InventoryItemRequirementEntryIdDto inventoryItemRequirementEntryId)
+    public void setInventoryItemRequirementEntryId(InventoryItemRequirementEntryId inventoryItemRequirementEntryId)
     {
         this.inventoryItemRequirementEntryId = inventoryItemRequirementEntryId;
     }
@@ -36,14 +36,14 @@ public class InventoryItemRequirementEntryMvoStateDto
         this.quantity = quantity;
     }
 
-    private InventoryPRTriggeredIdDto sourceEventId;
+    private InventoryPRTriggeredId sourceEventId;
 
-    public InventoryPRTriggeredIdDto getSourceEventId()
+    public InventoryPRTriggeredId getSourceEventId()
     {
         return this.sourceEventId;
     }
 
-    public void setSourceEventId(InventoryPRTriggeredIdDto sourceEventId)
+    public void setSourceEventId(InventoryPRTriggeredId sourceEventId)
     {
         this.sourceEventId = sourceEventId;
     }
@@ -207,13 +207,13 @@ public class InventoryItemRequirementEntryMvoStateDto
             }
             InventoryItemRequirementEntryMvoStateDto dto = new InventoryItemRequirementEntryMvoStateDto();
             if (returnedFieldsContains("InventoryItemRequirementEntryId")) {
-                dto.setInventoryItemRequirementEntryId((state.getInventoryItemRequirementEntryId() == null) ? null : new InventoryItemRequirementEntryIdDtoWrapper(state.getInventoryItemRequirementEntryId()));
+                dto.setInventoryItemRequirementEntryId(state.getInventoryItemRequirementEntryId());
             }
             if (returnedFieldsContains("Quantity")) {
                 dto.setQuantity(state.getQuantity());
             }
             if (returnedFieldsContains("SourceEventId")) {
-                dto.setSourceEventId((state.getSourceEventId() == null) ? null : new InventoryPRTriggeredIdDtoWrapper(state.getSourceEventId()));
+                dto.setSourceEventId(state.getSourceEventId());
             }
             if (returnedFieldsContains("Version")) {
                 dto.setVersion(state.getVersion());

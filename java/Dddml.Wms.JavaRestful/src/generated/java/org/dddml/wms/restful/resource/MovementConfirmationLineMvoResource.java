@@ -235,9 +235,14 @@ public class MovementConfirmationLineMvoResource {
     
 
         public static MovementConfirmationLineId parseIdString(String idString) {
-            MovementConfirmationLineIdFlattenedDtoFormatter formatter = new MovementConfirmationLineIdFlattenedDtoFormatter();
-            MovementConfirmationLineIdFlattenedDto idDto = formatter.parse(idString);
-            return idDto.toMovementConfirmationLineId();
+            TextFormatter<MovementConfirmationLineId> formatter =
+                    new AbstractValueObjectTextFormatter<MovementConfirmationLineId>(MovementConfirmationLineId.class) {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    };
+            return formatter.parse(idString);
         }
 
 
@@ -284,7 +289,7 @@ public class MovementConfirmationLineMvoResource {
             List<MovementConfirmationLineMvoStateDto> states = new ArrayList<>();
             ids.forEach(id -> {
                 MovementConfirmationLineMvoStateDto dto = new MovementConfirmationLineMvoStateDto();
-                dto.setMovementConfirmationLineId(new MovementConfirmationLineIdDtoWrapper(id));
+                dto.setMovementConfirmationLineId(id);
                 states.add(dto);
             });
             return states.toArray(new MovementConfirmationLineMvoStateDto[0]);

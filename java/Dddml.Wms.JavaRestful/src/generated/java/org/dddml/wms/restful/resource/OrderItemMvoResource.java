@@ -216,9 +216,14 @@ public class OrderItemMvoResource {
     
 
         public static OrderItemId parseIdString(String idString) {
-            OrderItemIdFlattenedDtoFormatter formatter = new OrderItemIdFlattenedDtoFormatter();
-            OrderItemIdFlattenedDto idDto = formatter.parse(idString);
-            return idDto.toOrderItemId();
+            TextFormatter<OrderItemId> formatter =
+                    new AbstractValueObjectTextFormatter<OrderItemId>(OrderItemId.class) {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    };
+            return formatter.parse(idString);
         }
 
 
@@ -265,7 +270,7 @@ public class OrderItemMvoResource {
             List<OrderItemMvoStateDto> states = new ArrayList<>();
             ids.forEach(id -> {
                 OrderItemMvoStateDto dto = new OrderItemMvoStateDto();
-                dto.setOrderItemId(new OrderItemIdDtoWrapper(id));
+                dto.setOrderItemId(id);
                 states.add(dto);
             });
             return states.toArray(new OrderItemMvoStateDto[0]);

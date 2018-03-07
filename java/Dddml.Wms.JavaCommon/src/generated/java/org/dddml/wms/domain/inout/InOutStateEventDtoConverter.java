@@ -22,7 +22,7 @@ public class InOutStateEventDtoConverter {
 
     public InOutStateEventDto.InOutStateCreatedDto toInOutStateCreatedDto(InOutStateEvent.InOutStateCreated e) {
         InOutStateEventDto.InOutStateCreatedDto dto = new InOutStateEventDto.InOutStateCreatedDto();
-        dto.setStateEventId(new InOutStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -69,7 +69,7 @@ public class InOutStateEventDtoConverter {
 
     public InOutStateEventDto.InOutStateMergePatchedDto toInOutStateMergePatchedDto(InOutStateEvent.InOutStateMergePatched e) {
         InOutStateEventDto.InOutStateMergePatchedDto dto = new InOutStateEventDto.InOutStateMergePatchedDto();
-        dto.setStateEventId(new InOutStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());

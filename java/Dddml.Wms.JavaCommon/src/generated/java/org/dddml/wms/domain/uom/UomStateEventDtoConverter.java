@@ -24,7 +24,7 @@ public class UomStateEventDtoConverter {
 
     public UomStateEventDto.UomStateCreatedDto toUomStateCreatedDto(UomStateEvent.UomStateCreated e) {
         UomStateEventDto.UomStateCreatedDto dto = new UomStateEventDto.UomStateCreatedDto();
-        dto.setStateEventId(new UomStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -37,7 +37,7 @@ public class UomStateEventDtoConverter {
 
     public UomStateEventDto.UomStateMergePatchedDto toUomStateMergePatchedDto(UomStateEvent.UomStateMergePatched e) {
         UomStateEventDto.UomStateMergePatchedDto dto = new UomStateEventDto.UomStateMergePatchedDto();
-        dto.setStateEventId(new UomStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -55,7 +55,7 @@ public class UomStateEventDtoConverter {
 
     public UomStateEventDto.UomStateDeletedDto toUomStateDeletedDto(UomStateEvent.UomStateDeleted e) {
         UomStateEventDto.UomStateDeletedDto dto = new UomStateEventDto.UomStateDeletedDto();
-        dto.setStateEventId(new UomStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());

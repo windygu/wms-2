@@ -11,14 +11,14 @@ import org.dddml.wms.specialization.*;
 public class InOutLineMvoStateDto
 {
 
-    private InOutLineIdDto inOutLineId;
+    private InOutLineId inOutLineId;
 
-    public InOutLineIdDto getInOutLineId()
+    public InOutLineId getInOutLineId()
     {
         return this.inOutLineId;
     }
 
-    public void setInOutLineId(InOutLineIdDto inOutLineId)
+    public void setInOutLineId(InOutLineId inOutLineId)
     {
         this.inOutLineId = inOutLineId;
     }
@@ -686,7 +686,7 @@ public class InOutLineMvoStateDto
             }
             InOutLineMvoStateDto dto = new InOutLineMvoStateDto();
             if (returnedFieldsContains("InOutLineId")) {
-                dto.setInOutLineId((state.getInOutLineId() == null) ? null : new InOutLineIdDtoWrapper(state.getInOutLineId()));
+                dto.setInOutLineId(state.getInOutLineId());
             }
             if (returnedFieldsContains("LocatorId")) {
                 dto.setLocatorId(state.getLocatorId());

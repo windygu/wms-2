@@ -36,14 +36,14 @@ public class InventoryItemRequirementEntryStateDto
         this.quantity = quantity;
     }
 
-    private InventoryPRTriggeredIdDto sourceEventId;
+    private InventoryPRTriggeredId sourceEventId;
 
-    public InventoryPRTriggeredIdDto getSourceEventId()
+    public InventoryPRTriggeredId getSourceEventId()
     {
         return this.sourceEventId;
     }
 
-    public void setSourceEventId(InventoryPRTriggeredIdDto sourceEventId)
+    public void setSourceEventId(InventoryPRTriggeredId sourceEventId)
     {
         this.sourceEventId = sourceEventId;
     }
@@ -60,14 +60,14 @@ public class InventoryItemRequirementEntryStateDto
         this.version = version;
     }
 
-    private InventoryItemIdDto inventoryItemRequirementId;
+    private InventoryItemId inventoryItemRequirementId;
 
-    public InventoryItemIdDto getInventoryItemRequirementId()
+    public InventoryItemId getInventoryItemRequirementId()
     {
         return this.inventoryItemRequirementId;
     }
 
-    public void setInventoryItemRequirementId(InventoryItemIdDto inventoryItemRequirementId)
+    public void setInventoryItemRequirementId(InventoryItemId inventoryItemRequirementId)
     {
         this.inventoryItemRequirementId = inventoryItemRequirementId;
     }
@@ -153,13 +153,13 @@ public class InventoryItemRequirementEntryStateDto
                 dto.setQuantity(state.getQuantity());
             }
             if (returnedFieldsContains("SourceEventId")) {
-                dto.setSourceEventId((state.getSourceEventId() == null) ? null : new InventoryPRTriggeredIdDtoWrapper(state.getSourceEventId()));
+                dto.setSourceEventId(state.getSourceEventId());
             }
             if (returnedFieldsContains("Version")) {
                 dto.setVersion(state.getVersion());
             }
             if (returnedFieldsContains("InventoryItemRequirementId")) {
-                dto.setInventoryItemRequirementId((state.getInventoryItemRequirementId() == null) ? null : new InventoryItemIdDtoWrapper(state.getInventoryItemRequirementId()));
+                dto.setInventoryItemRequirementId(state.getInventoryItemRequirementId());
             }
             if (returnedFieldsContains("CreatedBy")) {
                 dto.setCreatedBy(state.getCreatedBy());

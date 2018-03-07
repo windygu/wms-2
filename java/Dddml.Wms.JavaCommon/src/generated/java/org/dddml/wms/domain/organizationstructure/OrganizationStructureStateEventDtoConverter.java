@@ -24,7 +24,7 @@ public class OrganizationStructureStateEventDtoConverter {
 
     public OrganizationStructureStateEventDto.OrganizationStructureStateCreatedDto toOrganizationStructureStateCreatedDto(OrganizationStructureStateEvent.OrganizationStructureStateCreated e) {
         OrganizationStructureStateEventDto.OrganizationStructureStateCreatedDto dto = new OrganizationStructureStateEventDto.OrganizationStructureStateCreatedDto();
-        dto.setStateEventId(new OrganizationStructureStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -34,7 +34,7 @@ public class OrganizationStructureStateEventDtoConverter {
 
     public OrganizationStructureStateEventDto.OrganizationStructureStateMergePatchedDto toOrganizationStructureStateMergePatchedDto(OrganizationStructureStateEvent.OrganizationStructureStateMergePatched e) {
         OrganizationStructureStateEventDto.OrganizationStructureStateMergePatchedDto dto = new OrganizationStructureStateEventDto.OrganizationStructureStateMergePatchedDto();
-        dto.setStateEventId(new OrganizationStructureStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -46,7 +46,7 @@ public class OrganizationStructureStateEventDtoConverter {
 
     public OrganizationStructureStateEventDto.OrganizationStructureStateDeletedDto toOrganizationStructureStateDeletedDto(OrganizationStructureStateEvent.OrganizationStructureStateDeleted e) {
         OrganizationStructureStateEventDto.OrganizationStructureStateDeletedDto dto = new OrganizationStructureStateEventDto.OrganizationStructureStateDeletedDto();
-        dto.setStateEventId(new OrganizationStructureStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());

@@ -137,5 +137,7 @@ public class ImportingShipmentItem implements Serializable
         return hash;
     }
 
+
+
 }
 

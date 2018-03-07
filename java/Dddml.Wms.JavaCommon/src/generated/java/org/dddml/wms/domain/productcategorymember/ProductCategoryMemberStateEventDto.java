@@ -7,22 +7,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 public class ProductCategoryMemberStateEventDto extends AbstractStateEvent
 {
 
-    private ProductCategoryMemberStateEventIdDto stateEventId;
+    private ProductCategoryMemberStateEventId stateEventId;
 
-    ProductCategoryMemberStateEventIdDto getStateEventId() {
-        if (stateEventId == null) { stateEventId = new ProductCategoryMemberStateEventIdDto(); }
+    ProductCategoryMemberStateEventId getStateEventId() {
+        if (stateEventId == null) { stateEventId = new ProductCategoryMemberStateEventId(); }
         return this.stateEventId;
     }
 
-    void setStateEventId(ProductCategoryMemberStateEventIdDto stateEventId) {
+    void setStateEventId(ProductCategoryMemberStateEventId stateEventId) {
         this.stateEventId = stateEventId;
     }
 
-    public ProductCategoryMemberIdDto getProductCategoryMemberId() {
+    public ProductCategoryMemberId getProductCategoryMemberId() {
         return getStateEventId().getProductCategoryMemberId();
     }
 
-    public void setProductCategoryMemberId(ProductCategoryMemberIdDto productCategoryMemberId) {
+    public void setProductCategoryMemberId(ProductCategoryMemberId productCategoryMemberId) {
         getStateEventId().setProductCategoryMemberId(productCategoryMemberId);
     }
 

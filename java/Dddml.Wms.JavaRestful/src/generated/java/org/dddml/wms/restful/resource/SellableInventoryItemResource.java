@@ -141,7 +141,12 @@ public class SellableInventoryItemResource {
     public SellableInventoryItemEntryStateDto getSellableInventoryItemEntry(@PathParam("sellableInventoryItemId") String sellableInventoryItemId, @PathParam("entrySeqId") Long entrySeqId) {
         try {
 
-            SellableInventoryItemEntryState state = sellableInventoryItemApplicationService.getSellableInventoryItemEntry((new InventoryItemIdFlattenedDtoFormatter().parse(sellableInventoryItemId)).toInventoryItemId(), entrySeqId);
+            SellableInventoryItemEntryState state = sellableInventoryItemApplicationService.getSellableInventoryItemEntry((new AbstractValueObjectTextFormatter<InventoryItemId>(InventoryItemId.class, ",") {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    }.parse(sellableInventoryItemId)), entrySeqId);
             if (state == null) { return null; }
             SellableInventoryItemEntryStateDto.DtoConverter dtoConverter = new SellableInventoryItemEntryStateDto.DtoConverter();
             SellableInventoryItemEntryStateDto stateDto = dtoConverter.toSellableInventoryItemEntryStateDto(state);
@@ -205,9 +210,14 @@ public class SellableInventoryItemResource {
     
 
         public static InventoryItemId parseIdString(String idString) {
-            InventoryItemIdFlattenedDtoFormatter formatter = new InventoryItemIdFlattenedDtoFormatter();
-            InventoryItemIdFlattenedDto idDto = formatter.parse(idString);
-            return idDto.toInventoryItemId();
+            TextFormatter<InventoryItemId> formatter =
+                    new AbstractValueObjectTextFormatter<InventoryItemId>(InventoryItemId.class) {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    };
+            return formatter.parse(idString);
         }
 
 
@@ -254,7 +264,7 @@ public class SellableInventoryItemResource {
             List<SellableInventoryItemStateDto> states = new ArrayList<>();
             ids.forEach(id -> {
                 SellableInventoryItemStateDto dto = new SellableInventoryItemStateDto();
-                dto.setSellableInventoryItemId(new InventoryItemIdDtoWrapper(id));
+                dto.setSellableInventoryItemId(id);
                 states.add(dto);
             });
             return states.toArray(new SellableInventoryItemStateDto[0]);

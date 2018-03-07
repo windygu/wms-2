@@ -11,14 +11,14 @@ import org.dddml.wms.specialization.*;
 public class MovementLineMvoStateDto
 {
 
-    private MovementLineIdDto movementLineId;
+    private MovementLineId movementLineId;
 
-    public MovementLineIdDto getMovementLineId()
+    public MovementLineId getMovementLineId()
     {
         return this.movementLineId;
     }
 
-    public void setMovementLineId(MovementLineIdDto movementLineId)
+    public void setMovementLineId(MovementLineId movementLineId)
     {
         this.movementLineId = movementLineId;
     }
@@ -530,7 +530,7 @@ public class MovementLineMvoStateDto
             }
             MovementLineMvoStateDto dto = new MovementLineMvoStateDto();
             if (returnedFieldsContains("MovementLineId")) {
-                dto.setMovementLineId((state.getMovementLineId() == null) ? null : new MovementLineIdDtoWrapper(state.getMovementLineId()));
+                dto.setMovementLineId(state.getMovementLineId());
             }
             if (returnedFieldsContains("MovementQuantity")) {
                 dto.setMovementQuantity(state.getMovementQuantity());

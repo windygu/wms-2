@@ -234,9 +234,14 @@ public class AttributeAliasMvoResource {
     
 
         public static AttributeAliasId parseIdString(String idString) {
-            AttributeAliasIdFlattenedDtoFormatter formatter = new AttributeAliasIdFlattenedDtoFormatter();
-            AttributeAliasIdFlattenedDto idDto = formatter.parse(idString);
-            return idDto.toAttributeAliasId();
+            TextFormatter<AttributeAliasId> formatter =
+                    new AbstractValueObjectTextFormatter<AttributeAliasId>(AttributeAliasId.class) {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    };
+            return formatter.parse(idString);
         }
 
 
@@ -283,7 +288,7 @@ public class AttributeAliasMvoResource {
             List<AttributeAliasMvoStateDto> states = new ArrayList<>();
             ids.forEach(id -> {
                 AttributeAliasMvoStateDto dto = new AttributeAliasMvoStateDto();
-                dto.setAttributeAliasId(new AttributeAliasIdDtoWrapper(id));
+                dto.setAttributeAliasId(id);
                 states.add(dto);
             });
             return states.toArray(new AttributeAliasMvoStateDto[0]);

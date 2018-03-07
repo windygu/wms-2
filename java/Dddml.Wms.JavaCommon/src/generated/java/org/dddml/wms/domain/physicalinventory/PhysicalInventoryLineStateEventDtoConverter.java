@@ -26,7 +26,7 @@ public class PhysicalInventoryLineStateEventDtoConverter {
 
     public PhysicalInventoryLineStateEventDto.PhysicalInventoryLineStateCreatedDto toPhysicalInventoryLineStateCreatedDto(PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateCreated e) {
         PhysicalInventoryLineStateEventDto.PhysicalInventoryLineStateCreatedDto dto = new PhysicalInventoryLineStateEventDto.PhysicalInventoryLineStateCreatedDto();
-        dto.setStateEventId(new PhysicalInventoryLineStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setVersion(e.getVersion());
@@ -41,7 +41,7 @@ public class PhysicalInventoryLineStateEventDtoConverter {
 
     public PhysicalInventoryLineStateEventDto.PhysicalInventoryLineStateMergePatchedDto toPhysicalInventoryLineStateMergePatchedDto(PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateMergePatched e) {
         PhysicalInventoryLineStateEventDto.PhysicalInventoryLineStateMergePatchedDto dto = new PhysicalInventoryLineStateEventDto.PhysicalInventoryLineStateMergePatchedDto();
-        dto.setStateEventId(new PhysicalInventoryLineStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setVersion(e.getVersion());
@@ -62,7 +62,7 @@ public class PhysicalInventoryLineStateEventDtoConverter {
 
     public PhysicalInventoryLineStateEventDto.PhysicalInventoryLineStateRemovedDto toPhysicalInventoryLineStateRemovedDto(PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateRemoved e) {
         PhysicalInventoryLineStateEventDto.PhysicalInventoryLineStateRemovedDto dto = new PhysicalInventoryLineStateEventDto.PhysicalInventoryLineStateRemovedDto();
-        dto.setStateEventId(new PhysicalInventoryLineStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setVersion(e.getVersion());

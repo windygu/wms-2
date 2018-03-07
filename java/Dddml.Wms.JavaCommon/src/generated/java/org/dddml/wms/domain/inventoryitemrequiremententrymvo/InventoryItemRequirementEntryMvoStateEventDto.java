@@ -10,22 +10,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 public class InventoryItemRequirementEntryMvoStateEventDto extends AbstractStateEvent
 {
 
-    private InventoryItemRequirementEntryMvoStateEventIdDto stateEventId;
+    private InventoryItemRequirementEntryMvoStateEventId stateEventId;
 
-    InventoryItemRequirementEntryMvoStateEventIdDto getStateEventId() {
-        if (stateEventId == null) { stateEventId = new InventoryItemRequirementEntryMvoStateEventIdDto(); }
+    InventoryItemRequirementEntryMvoStateEventId getStateEventId() {
+        if (stateEventId == null) { stateEventId = new InventoryItemRequirementEntryMvoStateEventId(); }
         return this.stateEventId;
     }
 
-    void setStateEventId(InventoryItemRequirementEntryMvoStateEventIdDto stateEventId) {
+    void setStateEventId(InventoryItemRequirementEntryMvoStateEventId stateEventId) {
         this.stateEventId = stateEventId;
     }
 
-    public InventoryItemRequirementEntryIdDto getInventoryItemRequirementEntryId() {
+    public InventoryItemRequirementEntryId getInventoryItemRequirementEntryId() {
         return getStateEventId().getInventoryItemRequirementEntryId();
     }
 
-    public void setInventoryItemRequirementEntryId(InventoryItemRequirementEntryIdDto inventoryItemRequirementEntryId) {
+    public void setInventoryItemRequirementEntryId(InventoryItemRequirementEntryId inventoryItemRequirementEntryId) {
         getStateEventId().setInventoryItemRequirementEntryId(inventoryItemRequirementEntryId);
     }
 
@@ -47,13 +47,13 @@ public class InventoryItemRequirementEntryMvoStateEventDto extends AbstractState
         this.quantity = quantity;
     }
 
-    private InventoryPRTriggeredIdDto sourceEventId = new InventoryPRTriggeredIdDto();
+    private InventoryPRTriggeredId sourceEventId;
 
-    public InventoryPRTriggeredIdDto getSourceEventId() {
+    public InventoryPRTriggeredId getSourceEventId() {
         return this.sourceEventId;
     }
 
-    public void setSourceEventId(InventoryPRTriggeredIdDto sourceEventId) {
+    public void setSourceEventId(InventoryPRTriggeredId sourceEventId) {
         this.sourceEventId = sourceEventId;
     }
 

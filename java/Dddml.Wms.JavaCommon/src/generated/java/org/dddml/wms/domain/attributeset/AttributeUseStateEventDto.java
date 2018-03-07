@@ -7,14 +7,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 public class AttributeUseStateEventDto extends AbstractStateEvent
 {
 
-    private AttributeUseStateEventIdDto stateEventId;
+    private AttributeUseStateEventId stateEventId;
 
-    AttributeUseStateEventIdDto getStateEventId() {
-        if (stateEventId == null) { stateEventId = new AttributeUseStateEventIdDto(); }
+    AttributeUseStateEventId getStateEventId() {
+        if (stateEventId == null) { stateEventId = new AttributeUseStateEventId(); }
         return this.stateEventId;
     }
 
-    void setStateEventId(AttributeUseStateEventIdDto stateEventId) {
+    void setStateEventId(AttributeUseStateEventId stateEventId) {
         this.stateEventId = stateEventId;
     }
 

@@ -9,14 +9,14 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractInventoryItemRequirementEntryMvoCommandDto extends AbstractCommand
 {
-    private InventoryItemRequirementEntryIdDto inventoryItemRequirementEntryId;
+    private InventoryItemRequirementEntryId inventoryItemRequirementEntryId;
 
-    public InventoryItemRequirementEntryIdDto getInventoryItemRequirementEntryId()
+    public InventoryItemRequirementEntryId getInventoryItemRequirementEntryId()
     {
         return this.inventoryItemRequirementEntryId;
     }
 
-    public void setInventoryItemRequirementEntryId(InventoryItemRequirementEntryIdDto inventoryItemRequirementEntryId)
+    public void setInventoryItemRequirementEntryId(InventoryItemRequirementEntryId inventoryItemRequirementEntryId)
     {
         this.inventoryItemRequirementEntryId = inventoryItemRequirementEntryId;
     }
@@ -36,7 +36,7 @@ public abstract class AbstractInventoryItemRequirementEntryMvoCommandDto extends
 
     public void copyTo(AbstractInventoryItemRequirementEntryMvoCommand command)
     {
-        command.setInventoryItemRequirementEntryId((this.getInventoryItemRequirementEntryId() == null) ? null : this.getInventoryItemRequirementEntryId().toInventoryItemRequirementEntryId());
+        command.setInventoryItemRequirementEntryId(this.getInventoryItemRequirementEntryId());
         command.setInventoryItemRequirementVersion(this.getInventoryItemRequirementVersion());
         
         command.setRequesterId(this.getRequesterId());

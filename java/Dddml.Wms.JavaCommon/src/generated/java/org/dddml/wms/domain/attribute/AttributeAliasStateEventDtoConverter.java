@@ -24,7 +24,7 @@ public class AttributeAliasStateEventDtoConverter {
 
     public AttributeAliasStateEventDto.AttributeAliasStateCreatedDto toAttributeAliasStateCreatedDto(AttributeAliasStateEvent.AttributeAliasStateCreated e) {
         AttributeAliasStateEventDto.AttributeAliasStateCreatedDto dto = new AttributeAliasStateEventDto.AttributeAliasStateCreatedDto();
-        dto.setStateEventId(new AttributeAliasStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setVersion(e.getVersion());
@@ -36,7 +36,7 @@ public class AttributeAliasStateEventDtoConverter {
 
     public AttributeAliasStateEventDto.AttributeAliasStateMergePatchedDto toAttributeAliasStateMergePatchedDto(AttributeAliasStateEvent.AttributeAliasStateMergePatched e) {
         AttributeAliasStateEventDto.AttributeAliasStateMergePatchedDto dto = new AttributeAliasStateEventDto.AttributeAliasStateMergePatchedDto();
-        dto.setStateEventId(new AttributeAliasStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setVersion(e.getVersion());
@@ -51,7 +51,7 @@ public class AttributeAliasStateEventDtoConverter {
 
     public AttributeAliasStateEventDto.AttributeAliasStateRemovedDto toAttributeAliasStateRemovedDto(AttributeAliasStateEvent.AttributeAliasStateRemoved e) {
         AttributeAliasStateEventDto.AttributeAliasStateRemovedDto dto = new AttributeAliasStateEventDto.AttributeAliasStateRemovedDto();
-        dto.setStateEventId(new AttributeAliasStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setVersion(e.getVersion());

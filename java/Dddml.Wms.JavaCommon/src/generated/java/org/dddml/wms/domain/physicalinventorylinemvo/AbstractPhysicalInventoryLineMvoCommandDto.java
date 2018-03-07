@@ -8,14 +8,14 @@ import org.dddml.wms.domain.AbstractCommand;
 
 public abstract class AbstractPhysicalInventoryLineMvoCommandDto extends AbstractCommand
 {
-    private PhysicalInventoryLineIdDto physicalInventoryLineId;
+    private PhysicalInventoryLineId physicalInventoryLineId;
 
-    public PhysicalInventoryLineIdDto getPhysicalInventoryLineId()
+    public PhysicalInventoryLineId getPhysicalInventoryLineId()
     {
         return this.physicalInventoryLineId;
     }
 
-    public void setPhysicalInventoryLineId(PhysicalInventoryLineIdDto physicalInventoryLineId)
+    public void setPhysicalInventoryLineId(PhysicalInventoryLineId physicalInventoryLineId)
     {
         this.physicalInventoryLineId = physicalInventoryLineId;
     }
@@ -35,7 +35,7 @@ public abstract class AbstractPhysicalInventoryLineMvoCommandDto extends Abstrac
 
     public void copyTo(AbstractPhysicalInventoryLineMvoCommand command)
     {
-        command.setPhysicalInventoryLineId((this.getPhysicalInventoryLineId() == null) ? null : this.getPhysicalInventoryLineId().toPhysicalInventoryLineId());
+        command.setPhysicalInventoryLineId(this.getPhysicalInventoryLineId());
         command.setPhysicalInventoryVersion(this.getPhysicalInventoryVersion());
         
         command.setRequesterId(this.getRequesterId());

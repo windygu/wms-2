@@ -9,22 +9,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 public class InventoryItemEntryMvoStateEventDto extends AbstractStateEvent
 {
 
-    private InventoryItemEntryMvoStateEventIdDto stateEventId;
+    private InventoryItemEntryMvoStateEventId stateEventId;
 
-    InventoryItemEntryMvoStateEventIdDto getStateEventId() {
-        if (stateEventId == null) { stateEventId = new InventoryItemEntryMvoStateEventIdDto(); }
+    InventoryItemEntryMvoStateEventId getStateEventId() {
+        if (stateEventId == null) { stateEventId = new InventoryItemEntryMvoStateEventId(); }
         return this.stateEventId;
     }
 
-    void setStateEventId(InventoryItemEntryMvoStateEventIdDto stateEventId) {
+    void setStateEventId(InventoryItemEntryMvoStateEventId stateEventId) {
         this.stateEventId = stateEventId;
     }
 
-    public InventoryItemEntryIdDto getInventoryItemEntryId() {
+    public InventoryItemEntryId getInventoryItemEntryId() {
         return getStateEventId().getInventoryItemEntryId();
     }
 
-    public void setInventoryItemEntryId(InventoryItemEntryIdDto inventoryItemEntryId) {
+    public void setInventoryItemEntryId(InventoryItemEntryId inventoryItemEntryId) {
         getStateEventId().setInventoryItemEntryId(inventoryItemEntryId);
     }
 
@@ -86,13 +86,13 @@ public class InventoryItemEntryMvoStateEventDto extends AbstractStateEvent
         this.virtualQuantity = virtualQuantity;
     }
 
-    private InventoryItemSourceInfoDto source = new InventoryItemSourceInfoDto();
+    private InventoryItemSourceInfo source;
 
-    public InventoryItemSourceInfoDto getSource() {
+    public InventoryItemSourceInfo getSource() {
         return this.source;
     }
 
-    public void setSource(InventoryItemSourceInfoDto source) {
+    public void setSource(InventoryItemSourceInfo source) {
         this.source = source;
     }
 

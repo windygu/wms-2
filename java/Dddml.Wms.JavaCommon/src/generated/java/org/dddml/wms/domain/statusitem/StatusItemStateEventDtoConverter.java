@@ -21,7 +21,7 @@ public class StatusItemStateEventDtoConverter {
 
     public StatusItemStateEventDto.StatusItemStateCreatedDto toStatusItemStateCreatedDto(StatusItemStateEvent.StatusItemStateCreated e) {
         StatusItemStateEventDto.StatusItemStateCreatedDto dto = new StatusItemStateEventDto.StatusItemStateCreatedDto();
-        dto.setStateEventId(new StatusItemStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -35,7 +35,7 @@ public class StatusItemStateEventDtoConverter {
 
     public StatusItemStateEventDto.StatusItemStateMergePatchedDto toStatusItemStateMergePatchedDto(StatusItemStateEvent.StatusItemStateMergePatched e) {
         StatusItemStateEventDto.StatusItemStateMergePatchedDto dto = new StatusItemStateEventDto.StatusItemStateMergePatchedDto();
-        dto.setStateEventId(new StatusItemStateEventIdDtoWrapper(e.getStateEventId()));
+        dto.setStateEventId(e.getStateEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());

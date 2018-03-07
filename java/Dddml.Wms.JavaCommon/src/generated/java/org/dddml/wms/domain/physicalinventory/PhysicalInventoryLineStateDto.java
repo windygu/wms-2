@@ -11,14 +11,14 @@ import org.dddml.wms.specialization.*;
 public class PhysicalInventoryLineStateDto
 {
 
-    private InventoryItemIdDto inventoryItemId;
+    private InventoryItemId inventoryItemId;
 
-    public InventoryItemIdDto getInventoryItemId()
+    public InventoryItemId getInventoryItemId()
     {
         return this.inventoryItemId;
     }
 
-    public void setInventoryItemId(InventoryItemIdDto inventoryItemId)
+    public void setInventoryItemId(InventoryItemId inventoryItemId)
     {
         this.inventoryItemId = inventoryItemId;
     }
@@ -182,7 +182,7 @@ public class PhysicalInventoryLineStateDto
             }
             PhysicalInventoryLineStateDto dto = new PhysicalInventoryLineStateDto();
             if (returnedFieldsContains("InventoryItemId")) {
-                dto.setInventoryItemId((state.getInventoryItemId() == null) ? null : new InventoryItemIdDtoWrapper(state.getInventoryItemId()));
+                dto.setInventoryItemId(state.getInventoryItemId());
             }
             if (returnedFieldsContains("BookQuantity")) {
                 dto.setBookQuantity(state.getBookQuantity());

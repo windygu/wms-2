@@ -175,13 +175,13 @@ public class ShipmentCommandDtos
             this.addtlShippingChargeDesc = addtlShippingChargeDesc;
         }
 
-        private ImportingShipmentItemDto[] shipmentItems;
+        private ImportingShipmentItem[] shipmentItems;
 
-        public ImportingShipmentItemDto[] getShipmentItems() {
+        public ImportingShipmentItem[] getShipmentItems() {
             return this.shipmentItems;
         }
 
-        public void setShipmentItems(ImportingShipmentItemDto[] shipmentItems) {
+        public void setShipmentItems(ImportingShipmentItem[] shipmentItems) {
             this.shipmentItems = shipmentItems;
         }
 
@@ -243,7 +243,7 @@ public class ShipmentCommandDtos
             cmd.setPartyIdFrom(this.getPartyIdFrom());
             cmd.setAdditionalShippingCharge(this.getAdditionalShippingCharge());
             cmd.setAddtlShippingChargeDesc(this.getAddtlShippingChargeDesc());
-            cmd.setShipmentItems(this.getShipmentItems() == null ? null : java.util.Collections.unmodifiableSet(java.util.Arrays.stream(this.getShipmentItems()).map(p -> p.toImportingShipmentItem()).collect(java.util.stream.Collectors.toSet())));
+            cmd.setShipmentItems(this.getShipmentItems() == null ? null : java.util.Collections.unmodifiableSet(new java.util.HashSet<ImportingShipmentItem>(java.util.Arrays.asList(this.getShipmentItems()))));
             cmd.setShipmentId(this.getShipmentId());
             cmd.setVersion(this.getVersion());
             cmd.setCommandId(this.getCommandId());

@@ -215,9 +215,14 @@ public class SupplierProductResource {
     
 
         public static SupplierProductId parseIdString(String idString) {
-            SupplierProductIdFlattenedDtoFormatter formatter = new SupplierProductIdFlattenedDtoFormatter();
-            SupplierProductIdFlattenedDto idDto = formatter.parse(idString);
-            return idDto.toSupplierProductId();
+            TextFormatter<SupplierProductId> formatter =
+                    new AbstractValueObjectTextFormatter<SupplierProductId>(SupplierProductId.class) {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    };
+            return formatter.parse(idString);
         }
 
 
@@ -264,7 +269,7 @@ public class SupplierProductResource {
             List<SupplierProductStateDto> states = new ArrayList<>();
             ids.forEach(id -> {
                 SupplierProductStateDto dto = new SupplierProductStateDto();
-                dto.setSupplierProductId(new SupplierProductIdDtoWrapper(id));
+                dto.setSupplierProductId(id);
                 states.add(dto);
             });
             return states.toArray(new SupplierProductStateDto[0]);

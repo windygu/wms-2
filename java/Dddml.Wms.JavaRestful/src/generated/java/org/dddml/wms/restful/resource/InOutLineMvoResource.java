@@ -235,9 +235,14 @@ public class InOutLineMvoResource {
     
 
         public static InOutLineId parseIdString(String idString) {
-            InOutLineIdFlattenedDtoFormatter formatter = new InOutLineIdFlattenedDtoFormatter();
-            InOutLineIdFlattenedDto idDto = formatter.parse(idString);
-            return idDto.toInOutLineId();
+            TextFormatter<InOutLineId> formatter =
+                    new AbstractValueObjectTextFormatter<InOutLineId>(InOutLineId.class) {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    };
+            return formatter.parse(idString);
         }
 
 
@@ -284,7 +289,7 @@ public class InOutLineMvoResource {
             List<InOutLineMvoStateDto> states = new ArrayList<>();
             ids.forEach(id -> {
                 InOutLineMvoStateDto dto = new InOutLineMvoStateDto();
-                dto.setInOutLineId(new InOutLineIdDtoWrapper(id));
+                dto.setInOutLineId(id);
                 states.add(dto);
             });
             return states.toArray(new InOutLineMvoStateDto[0]);

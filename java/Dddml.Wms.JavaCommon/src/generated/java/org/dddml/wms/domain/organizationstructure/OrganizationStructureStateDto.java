@@ -9,14 +9,14 @@ import org.dddml.wms.specialization.*;
 public class OrganizationStructureStateDto
 {
 
-    private OrganizationStructureIdDto id;
+    private OrganizationStructureId id;
 
-    public OrganizationStructureIdDto getId()
+    public OrganizationStructureId getId()
     {
         return this.id;
     }
 
-    public void setId(OrganizationStructureIdDto id)
+    public void setId(OrganizationStructureId id)
     {
         this.id = id;
     }
@@ -120,7 +120,7 @@ public class OrganizationStructureStateDto
             }
             OrganizationStructureStateDto dto = new OrganizationStructureStateDto();
             if (returnedFieldsContains("Id")) {
-                dto.setId((state.getId() == null) ? null : new OrganizationStructureIdDtoWrapper(state.getId()));
+                dto.setId(state.getId());
             }
             if (returnedFieldsContains("Active")) {
                 dto.setActive(state.getActive());
