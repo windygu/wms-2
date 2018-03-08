@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.InOut
 	public abstract class InOutStateEventBase : IInOutStateEvent
 	{
 
-		public virtual InOutStateEventId StateEventId { get; set; }
+		public virtual InOutEventId StateEventId { get; set; }
 
         public virtual string DocumentNumber
         {
@@ -93,7 +93,7 @@ namespace Dddml.Wms.Domain.InOut
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		InOutStateEventId IGlobalIdentity<InOutStateEventId>.GlobalId {
+		InOutEventId IGlobalIdentity<InOutEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -137,7 +137,7 @@ namespace Dddml.Wms.Domain.InOut
         {
         }
 
-        protected InOutStateEventBase(InOutStateEventId stateEventId)
+        protected InOutStateEventBase(InOutEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -147,9 +147,9 @@ namespace Dddml.Wms.Domain.InOut
 			get { return ApplicationContext.Current["InOutLineStateEventDao"] as IInOutLineStateEventDao; }
 		}
 
-        protected InOutLineStateEventId NewInOutLineStateEventId(string lineNumber)
+        protected InOutLineEventId NewInOutLineEventId(string lineNumber)
         {
-            var stateEventId = new InOutLineStateEventId(this.StateEventId.DocumentNumber, lineNumber, this.StateEventId.Version);
+            var stateEventId = new InOutLineEventId(this.StateEventId.DocumentNumber, lineNumber, this.StateEventId.Version);
             return stateEventId;
         }
 
@@ -181,15 +181,15 @@ namespace Dddml.Wms.Domain.InOut
 
 	public class InOutStateCreated : InOutStateEventBase, IInOutStateCreated, ISaveable
 	{
-		public InOutStateCreated () : this(new InOutStateEventId())
+		public InOutStateCreated () : this(new InOutEventId())
 		{
 		}
 
-		public InOutStateCreated (InOutStateEventId stateEventId) : base(stateEventId)
+		public InOutStateCreated (InOutEventId stateEventId) : base(stateEventId)
 		{
 		}
 
-		private Dictionary<InOutLineStateEventId, IInOutLineStateCreated> _inOutLineEvents = new Dictionary<InOutLineStateEventId, IInOutLineStateCreated>();
+		private Dictionary<InOutLineEventId, IInOutLineStateCreated> _inOutLineEvents = new Dictionary<InOutLineEventId, IInOutLineStateCreated>();
         
         private IEnumerable<IInOutLineStateCreated> _readOnlyInOutLineEvents;
 
@@ -206,7 +206,7 @@ namespace Dddml.Wms.Domain.InOut
                     if (_readOnlyInOutLineEvents != null) { return _readOnlyInOutLineEvents; }
                     var eventDao = InOutLineStateEventDao;
                     var eL = new List<IInOutLineStateCreated>();
-                    foreach (var e in eventDao.FindByInOutStateEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByInOutEventId(this.StateEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IInOutLineStateCreated)e);
@@ -235,7 +235,7 @@ namespace Dddml.Wms.Domain.InOut
 
         public virtual IInOutLineStateCreated NewInOutLineStateCreated(string lineNumber)
         {
-            var stateEvent = new InOutLineStateCreated(NewInOutLineStateEventId(lineNumber));
+            var stateEvent = new InOutLineStateCreated(NewInOutLineEventId(lineNumber));
             return stateEvent;
         }
 
@@ -323,11 +323,11 @@ namespace Dddml.Wms.Domain.InOut
 		{
 		}
 
-		public InOutStateMergePatched (InOutStateEventId stateEventId) : base(stateEventId)
+		public InOutStateMergePatched (InOutEventId stateEventId) : base(stateEventId)
 		{
 		}
 
-		private Dictionary<InOutLineStateEventId, IInOutLineStateEvent> _inOutLineEvents = new Dictionary<InOutLineStateEventId, IInOutLineStateEvent>();
+		private Dictionary<InOutLineEventId, IInOutLineStateEvent> _inOutLineEvents = new Dictionary<InOutLineEventId, IInOutLineStateEvent>();
 
         private IEnumerable<IInOutLineStateEvent> _readOnlyInOutLineEvents;
         
@@ -344,7 +344,7 @@ namespace Dddml.Wms.Domain.InOut
                     if (_readOnlyInOutLineEvents != null) { return _readOnlyInOutLineEvents; }
                     var eventDao = InOutLineStateEventDao;
                     var eL = new List<IInOutLineStateEvent>();
-                    foreach (var e in eventDao.FindByInOutStateEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByInOutEventId(this.StateEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IInOutLineStateEvent)e);
@@ -373,19 +373,19 @@ namespace Dddml.Wms.Domain.InOut
 
         public virtual IInOutLineStateCreated NewInOutLineStateCreated(string lineNumber)
         {
-            var stateEvent = new InOutLineStateCreated(NewInOutLineStateEventId(lineNumber));
+            var stateEvent = new InOutLineStateCreated(NewInOutLineEventId(lineNumber));
             return stateEvent;
         }
 
         public virtual IInOutLineStateMergePatched NewInOutLineStateMergePatched(string lineNumber)
         {
-            var stateEvent = new InOutLineStateMergePatched(NewInOutLineStateEventId(lineNumber));
+            var stateEvent = new InOutLineStateMergePatched(NewInOutLineEventId(lineNumber));
             return stateEvent;
         }
 
         public virtual IInOutLineStateRemoved NewInOutLineStateRemoved(string lineNumber)
         {
-            var stateEvent = new InOutLineStateRemoved(NewInOutLineStateEventId(lineNumber));
+            var stateEvent = new InOutLineStateRemoved(NewInOutLineEventId(lineNumber));
             return stateEvent;
         }
 

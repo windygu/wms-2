@@ -18,7 +18,7 @@ public class HibernatePhysicalInventoryEventStore extends AbstractHibernateEvent
     @Override
     protected Serializable getEventId(EventStoreAggregateId eventStoreAggregateId, long version)
     {
-        return new PhysicalInventoryStateEventId((String) eventStoreAggregateId.getId(), version);
+        return new PhysicalInventoryEventId((String) eventStoreAggregateId.getId(), version);
     }
 
     @Override

@@ -52,7 +52,7 @@ public abstract class AbstractSellableInventoryItemAggregate extends AbstractAgg
     }
 
     protected SellableInventoryItemStateEvent map(SellableInventoryItemCommand.CreateSellableInventoryItem c) {
-        SellableInventoryItemStateEventId stateEventId = new SellableInventoryItemStateEventId(c.getSellableInventoryItemId(), c.getVersion());
+        SellableInventoryItemEventId stateEventId = new SellableInventoryItemEventId(c.getSellableInventoryItemId(), c.getVersion());
         SellableInventoryItemStateEvent.SellableInventoryItemStateCreated e = newSellableInventoryItemStateCreated(stateEventId);
         ((AbstractSellableInventoryItemStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
@@ -72,7 +72,7 @@ public abstract class AbstractSellableInventoryItemAggregate extends AbstractAgg
     }
 
     protected SellableInventoryItemStateEvent map(SellableInventoryItemCommand.MergePatchSellableInventoryItem c) {
-        SellableInventoryItemStateEventId stateEventId = new SellableInventoryItemStateEventId(c.getSellableInventoryItemId(), c.getVersion());
+        SellableInventoryItemEventId stateEventId = new SellableInventoryItemEventId(c.getSellableInventoryItemId(), c.getVersion());
         SellableInventoryItemStateEvent.SellableInventoryItemStateMergePatched e = newSellableInventoryItemStateMergePatched(stateEventId);
         ((AbstractSellableInventoryItemStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
@@ -110,7 +110,7 @@ public abstract class AbstractSellableInventoryItemAggregate extends AbstractAgg
     protected SellableInventoryItemEntryStateEvent.SellableInventoryItemEntryStateCreated mapCreate(SellableInventoryItemEntryCommand.CreateSellableInventoryItemEntry c, SellableInventoryItemCommand outerCommand, Long version, SellableInventoryItemState outerState)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
-        SellableInventoryItemEntryStateEventId stateEventId = new SellableInventoryItemEntryStateEventId(c.getSellableInventoryItemId(), c.getEntrySeqId(), version);
+        SellableInventoryItemEntryEventId stateEventId = new SellableInventoryItemEntryEventId(c.getSellableInventoryItemId(), c.getEntrySeqId(), version);
         SellableInventoryItemEntryStateEvent.SellableInventoryItemEntryStateCreated e = newSellableInventoryItemEntryStateCreated(stateEventId);
         SellableInventoryItemEntryState s = outerState.getEntries().get(c.getEntrySeqId());
 
@@ -145,7 +145,7 @@ public abstract class AbstractSellableInventoryItemAggregate extends AbstractAgg
     ////////////////////////
 
     protected SellableInventoryItemStateEvent.SellableInventoryItemStateCreated newSellableInventoryItemStateCreated(Long version, String commandId, String requesterId) {
-        SellableInventoryItemStateEventId stateEventId = new SellableInventoryItemStateEventId(this.state.getSellableInventoryItemId(), version);
+        SellableInventoryItemEventId stateEventId = new SellableInventoryItemEventId(this.state.getSellableInventoryItemId(), version);
         SellableInventoryItemStateEvent.SellableInventoryItemStateCreated e = newSellableInventoryItemStateCreated(stateEventId);
         ((AbstractSellableInventoryItemStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -154,7 +154,7 @@ public abstract class AbstractSellableInventoryItemAggregate extends AbstractAgg
     }
 
     protected SellableInventoryItemStateEvent.SellableInventoryItemStateMergePatched newSellableInventoryItemStateMergePatched(Long version, String commandId, String requesterId) {
-        SellableInventoryItemStateEventId stateEventId = new SellableInventoryItemStateEventId(this.state.getSellableInventoryItemId(), version);
+        SellableInventoryItemEventId stateEventId = new SellableInventoryItemEventId(this.state.getSellableInventoryItemId(), version);
         SellableInventoryItemStateEvent.SellableInventoryItemStateMergePatched e = newSellableInventoryItemStateMergePatched(stateEventId);
         ((AbstractSellableInventoryItemStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -162,15 +162,15 @@ public abstract class AbstractSellableInventoryItemAggregate extends AbstractAgg
         return e;
     }
 
-    protected SellableInventoryItemStateEvent.SellableInventoryItemStateCreated newSellableInventoryItemStateCreated(SellableInventoryItemStateEventId stateEventId) {
+    protected SellableInventoryItemStateEvent.SellableInventoryItemStateCreated newSellableInventoryItemStateCreated(SellableInventoryItemEventId stateEventId) {
         return new AbstractSellableInventoryItemStateEvent.SimpleSellableInventoryItemStateCreated(stateEventId);
     }
 
-    protected SellableInventoryItemStateEvent.SellableInventoryItemStateMergePatched newSellableInventoryItemStateMergePatched(SellableInventoryItemStateEventId stateEventId) {
+    protected SellableInventoryItemStateEvent.SellableInventoryItemStateMergePatched newSellableInventoryItemStateMergePatched(SellableInventoryItemEventId stateEventId) {
         return new AbstractSellableInventoryItemStateEvent.SimpleSellableInventoryItemStateMergePatched(stateEventId);
     }
 
-    protected SellableInventoryItemEntryStateEvent.SellableInventoryItemEntryStateCreated newSellableInventoryItemEntryStateCreated(SellableInventoryItemEntryStateEventId stateEventId) {
+    protected SellableInventoryItemEntryStateEvent.SellableInventoryItemEntryStateCreated newSellableInventoryItemEntryStateCreated(SellableInventoryItemEntryEventId stateEventId) {
         return new AbstractSellableInventoryItemEntryStateEvent.SimpleSellableInventoryItemEntryStateCreated(stateEventId);
     }
 

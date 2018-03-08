@@ -22,7 +22,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory.NHibernate
 	{
 		public override object GetEventId(IEventStoreAggregateId eventStoreAggregateId, long version)
 		{
-			return new PhysicalInventoryStateEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
+			return new PhysicalInventoryEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
 		public override Type GetSupportedStateEventType()

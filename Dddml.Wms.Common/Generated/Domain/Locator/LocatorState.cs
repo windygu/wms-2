@@ -361,7 +361,7 @@ namespace Dddml.Wms.Domain.Locator
             id.Append("[").Append("Locator|");
 
             var stateEntityId = this.LocatorId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.LocatorId; // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+            var eventEntityId = stateEvent.StateEventId.LocatorId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);

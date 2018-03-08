@@ -94,7 +94,7 @@ namespace Dddml.Wms.Domain.Product
 
         protected virtual IProductStateCreated Map(ICreateProduct c)
         {
-			var stateEventId = new ProductStateEventId(c.ProductId, c.Version);
+			var stateEventId = new ProductEventId(c.ProductId, c.Version);
             IProductStateCreated e = NewProductStateCreated(stateEventId);
 		
             e.ProductTypeId = c.ProductTypeId;
@@ -171,7 +171,7 @@ namespace Dddml.Wms.Domain.Product
 
         protected virtual IProductStateMergePatched Map(IMergePatchProduct c)
         {
-			var stateEventId = new ProductStateEventId(c.ProductId, c.Version);
+			var stateEventId = new ProductEventId(c.ProductId, c.Version);
             IProductStateMergePatched e = NewProductStateMergePatched(stateEventId);
 
             e.ProductTypeId = c.ProductTypeId;
@@ -325,7 +325,7 @@ namespace Dddml.Wms.Domain.Product
 
         protected ProductStateCreated NewProductStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new ProductStateEventId(_state.ProductId, version);
+            var stateEventId = new ProductEventId(_state.ProductId, version);
             var e = NewProductStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -338,7 +338,7 @@ namespace Dddml.Wms.Domain.Product
 
         protected ProductStateMergePatched NewProductStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new ProductStateEventId(_state.ProductId, version);
+            var stateEventId = new ProductEventId(_state.ProductId, version);
             var e = NewProductStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -352,12 +352,12 @@ namespace Dddml.Wms.Domain.Product
 
 ////////////////////////
 
-		private ProductStateCreated NewProductStateCreated(ProductStateEventId stateEventId)
+		private ProductStateCreated NewProductStateCreated(ProductEventId stateEventId)
 		{
 			return new ProductStateCreated(stateEventId);			
 		}
 
-        private ProductStateMergePatched NewProductStateMergePatched(ProductStateEventId stateEventId)
+        private ProductStateMergePatched NewProductStateMergePatched(ProductEventId stateEventId)
 		{
 			return new ProductStateMergePatched(stateEventId);
 		}

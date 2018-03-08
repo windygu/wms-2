@@ -94,7 +94,7 @@ namespace Dddml.Wms.Domain.InOut
 
         protected virtual IInOutStateCreated Map(ICreateInOut c)
         {
-			var stateEventId = new InOutStateEventId(c.DocumentNumber, c.Version);
+			var stateEventId = new InOutEventId(c.DocumentNumber, c.Version);
             IInOutStateCreated e = NewInOutStateCreated(stateEventId);
 		
             NewInOutDocumentActionCommandAndExecute(c, _state, e);
@@ -149,7 +149,7 @@ namespace Dddml.Wms.Domain.InOut
 
         protected virtual IInOutStateMergePatched Map(IMergePatchInOut c)
         {
-			var stateEventId = new InOutStateEventId(c.DocumentNumber, c.Version);
+			var stateEventId = new InOutEventId(c.DocumentNumber, c.Version);
             IInOutStateMergePatched e = NewInOutStateMergePatched(stateEventId);
 
             e.Posted = c.Posted;
@@ -282,7 +282,7 @@ namespace Dddml.Wms.Domain.InOut
         protected virtual IInOutLineStateCreated MapCreate(ICreateInOutLine c, IInOutCommand outerCommand, long version, IInOutState outerState)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new InOutLineStateEventId(c.InOutDocumentNumber, c.LineNumber, version);
+			var stateEventId = new InOutLineEventId(c.InOutDocumentNumber, c.LineNumber, version);
             IInOutLineStateCreated e = NewInOutLineStateCreated(stateEventId);
             var s = outerState.InOutLines.Get(c.LineNumber, true);
 
@@ -310,7 +310,7 @@ namespace Dddml.Wms.Domain.InOut
         protected virtual IInOutLineStateMergePatched MapMergePatch(IMergePatchInOutLine c, IInOutCommand outerCommand, long version, IInOutState outerState)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new InOutLineStateEventId(c.InOutDocumentNumber, c.LineNumber, version);
+			var stateEventId = new InOutLineEventId(c.InOutDocumentNumber, c.LineNumber, version);
             IInOutLineStateMergePatched e = NewInOutLineStateMergePatched(stateEventId);
             var s = outerState.InOutLines.Get(c.LineNumber);
 
@@ -349,7 +349,7 @@ namespace Dddml.Wms.Domain.InOut
         protected virtual IInOutLineStateRemoved MapRemove(IRemoveInOutLine c, IInOutCommand outerCommand, long version)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new InOutLineStateEventId(c.InOutDocumentNumber, c.LineNumber, version);
+			var stateEventId = new InOutLineEventId(c.InOutDocumentNumber, c.LineNumber, version);
             IInOutLineStateRemoved e = NewInOutLineStateRemoved(stateEventId);
 
 
@@ -376,7 +376,7 @@ namespace Dddml.Wms.Domain.InOut
 
         protected InOutStateCreated NewInOutStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new InOutStateEventId(_state.DocumentNumber, version);
+            var stateEventId = new InOutEventId(_state.DocumentNumber, version);
             var e = NewInOutStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -389,7 +389,7 @@ namespace Dddml.Wms.Domain.InOut
 
         protected InOutStateMergePatched NewInOutStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new InOutStateEventId(_state.DocumentNumber, version);
+            var stateEventId = new InOutEventId(_state.DocumentNumber, version);
             var e = NewInOutStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -403,28 +403,28 @@ namespace Dddml.Wms.Domain.InOut
 
 ////////////////////////
 
-		private InOutStateCreated NewInOutStateCreated(InOutStateEventId stateEventId)
+		private InOutStateCreated NewInOutStateCreated(InOutEventId stateEventId)
 		{
 			return new InOutStateCreated(stateEventId);			
 		}
 
-        private InOutStateMergePatched NewInOutStateMergePatched(InOutStateEventId stateEventId)
+        private InOutStateMergePatched NewInOutStateMergePatched(InOutEventId stateEventId)
 		{
 			return new InOutStateMergePatched(stateEventId);
 		}
 
 
-		private InOutLineStateCreated NewInOutLineStateCreated(InOutLineStateEventId stateEventId)
+		private InOutLineStateCreated NewInOutLineStateCreated(InOutLineEventId stateEventId)
 		{
 			return new InOutLineStateCreated(stateEventId);
 		}
 
-        private InOutLineStateMergePatched NewInOutLineStateMergePatched(InOutLineStateEventId stateEventId)
+        private InOutLineStateMergePatched NewInOutLineStateMergePatched(InOutLineEventId stateEventId)
 		{
 			return new InOutLineStateMergePatched(stateEventId);
 		}
 
-        private InOutLineStateRemoved NewInOutLineStateRemoved(InOutLineStateEventId stateEventId)
+        private InOutLineStateRemoved NewInOutLineStateRemoved(InOutLineEventId stateEventId)
 		{
 			return new InOutLineStateRemoved(stateEventId);
 		}

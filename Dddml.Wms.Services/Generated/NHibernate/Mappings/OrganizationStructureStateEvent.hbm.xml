@@ -5,7 +5,7 @@
   
   <class name="OrganizationStructureStateEventBase" table="OrganizationStructureStateEvents" mutable="false" abstract="true">
 
-    <composite-id name="StateEventId" class="Dddml.Wms.Domain.OrganizationStructure.OrganizationStructureStateEventId">
+    <composite-id name="StateEventId" class="Dddml.Wms.Domain.OrganizationStructure.OrganizationStructureEventId">
         <key-property name="IdOrganizationStructureTypeId" ></key-property>
         <key-property name="IdParentId" ></key-property>
         <key-property name="IdSubsidiaryId" ></key-property>

@@ -51,7 +51,7 @@ public abstract class AbstractInventoryItemEntryMvoAggregate extends AbstractAgg
     }
 
     protected InventoryItemEntryMvoStateEvent map(InventoryItemEntryMvoCommand.CreateInventoryItemEntryMvo c) {
-        InventoryItemEntryMvoStateEventId stateEventId = new InventoryItemEntryMvoStateEventId(c.getInventoryItemEntryId(), c.getInventoryItemVersion());
+        InventoryItemEntryMvoEventId stateEventId = new InventoryItemEntryMvoEventId(c.getInventoryItemEntryId(), c.getInventoryItemVersion());
         InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateCreated e = newInventoryItemEntryMvoStateCreated(stateEventId);
         e.setOnHandQuantity(c.getOnHandQuantity());
         e.setInTransitQuantity(c.getInTransitQuantity());
@@ -76,7 +76,7 @@ public abstract class AbstractInventoryItemEntryMvoAggregate extends AbstractAgg
     }
 
     protected InventoryItemEntryMvoStateEvent map(InventoryItemEntryMvoCommand.MergePatchInventoryItemEntryMvo c) {
-        InventoryItemEntryMvoStateEventId stateEventId = new InventoryItemEntryMvoStateEventId(c.getInventoryItemEntryId(), c.getInventoryItemVersion());
+        InventoryItemEntryMvoEventId stateEventId = new InventoryItemEntryMvoEventId(c.getInventoryItemEntryId(), c.getInventoryItemVersion());
         InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateMergePatched e = newInventoryItemEntryMvoStateMergePatched(stateEventId);
         e.setOnHandQuantity(c.getOnHandQuantity());
         e.setInTransitQuantity(c.getInTransitQuantity());
@@ -120,7 +120,7 @@ public abstract class AbstractInventoryItemEntryMvoAggregate extends AbstractAgg
     ////////////////////////
 
     protected InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateCreated newInventoryItemEntryMvoStateCreated(Long version, String commandId, String requesterId) {
-        InventoryItemEntryMvoStateEventId stateEventId = new InventoryItemEntryMvoStateEventId(this.state.getInventoryItemEntryId(), version);
+        InventoryItemEntryMvoEventId stateEventId = new InventoryItemEntryMvoEventId(this.state.getInventoryItemEntryId(), version);
         InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateCreated e = newInventoryItemEntryMvoStateCreated(stateEventId);
         ((AbstractInventoryItemEntryMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -129,7 +129,7 @@ public abstract class AbstractInventoryItemEntryMvoAggregate extends AbstractAgg
     }
 
     protected InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateMergePatched newInventoryItemEntryMvoStateMergePatched(Long version, String commandId, String requesterId) {
-        InventoryItemEntryMvoStateEventId stateEventId = new InventoryItemEntryMvoStateEventId(this.state.getInventoryItemEntryId(), version);
+        InventoryItemEntryMvoEventId stateEventId = new InventoryItemEntryMvoEventId(this.state.getInventoryItemEntryId(), version);
         InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateMergePatched e = newInventoryItemEntryMvoStateMergePatched(stateEventId);
         ((AbstractInventoryItemEntryMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -137,11 +137,11 @@ public abstract class AbstractInventoryItemEntryMvoAggregate extends AbstractAgg
         return e;
     }
 
-    protected InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateCreated newInventoryItemEntryMvoStateCreated(InventoryItemEntryMvoStateEventId stateEventId) {
+    protected InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateCreated newInventoryItemEntryMvoStateCreated(InventoryItemEntryMvoEventId stateEventId) {
         return new AbstractInventoryItemEntryMvoStateEvent.SimpleInventoryItemEntryMvoStateCreated(stateEventId);
     }
 
-    protected InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateMergePatched newInventoryItemEntryMvoStateMergePatched(InventoryItemEntryMvoStateEventId stateEventId) {
+    protected InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateMergePatched newInventoryItemEntryMvoStateMergePatched(InventoryItemEntryMvoEventId stateEventId) {
         return new AbstractInventoryItemEntryMvoStateEvent.SimpleInventoryItemEntryMvoStateMergePatched(stateEventId);
     }
 

@@ -16,7 +16,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 	{
 		void Save(IPhysicalInventoryLineStateEvent e);
 
-        IEnumerable<IPhysicalInventoryLineStateEvent> FindByPhysicalInventoryStateEventId(PhysicalInventoryStateEventId physicalInventoryStateEventId);
+        IEnumerable<IPhysicalInventoryLineStateEvent> FindByPhysicalInventoryEventId(PhysicalInventoryEventId physicalInventoryEventId);
 
 	}
 

@@ -8,14 +8,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractOrderShipmentStateEvent extends AbstractStateEvent implements OrderShipmentStateEvent 
 {
-    private OrderShipmentStateEventId stateEventId;
+    private OrderShipmentEventId stateEventId;
 
-    public OrderShipmentStateEventId getStateEventId() {
+    public OrderShipmentEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(OrderShipmentStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(OrderShipmentEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public OrderShipmentId getOrderShipmentId() {
@@ -94,8 +94,8 @@ public abstract class AbstractOrderShipmentStateEvent extends AbstractStateEvent
     protected AbstractOrderShipmentStateEvent() {
     }
 
-    protected AbstractOrderShipmentStateEvent(OrderShipmentStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractOrderShipmentStateEvent(OrderShipmentEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -105,11 +105,11 @@ public abstract class AbstractOrderShipmentStateEvent extends AbstractStateEvent
     public static abstract class AbstractOrderShipmentStateCreated extends AbstractOrderShipmentStateEvent implements OrderShipmentStateEvent.OrderShipmentStateCreated
     {
         public AbstractOrderShipmentStateCreated() {
-            this(new OrderShipmentStateEventId());
+            this(new OrderShipmentEventId());
         }
 
-        public AbstractOrderShipmentStateCreated(OrderShipmentStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractOrderShipmentStateCreated(OrderShipmentEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -122,11 +122,11 @@ public abstract class AbstractOrderShipmentStateEvent extends AbstractStateEvent
     public static abstract class AbstractOrderShipmentStateMergePatched extends AbstractOrderShipmentStateEvent implements OrderShipmentStateEvent.OrderShipmentStateMergePatched
     {
         public AbstractOrderShipmentStateMergePatched() {
-            this(new OrderShipmentStateEventId());
+            this(new OrderShipmentEventId());
         }
 
-        public AbstractOrderShipmentStateMergePatched(OrderShipmentStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractOrderShipmentStateMergePatched(OrderShipmentEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -161,8 +161,8 @@ public abstract class AbstractOrderShipmentStateEvent extends AbstractStateEvent
         public SimpleOrderShipmentStateCreated() {
         }
 
-        public SimpleOrderShipmentStateCreated(OrderShipmentStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleOrderShipmentStateCreated(OrderShipmentEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -171,8 +171,8 @@ public abstract class AbstractOrderShipmentStateEvent extends AbstractStateEvent
         public SimpleOrderShipmentStateMergePatched() {
         }
 
-        public SimpleOrderShipmentStateMergePatched(OrderShipmentStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleOrderShipmentStateMergePatched(OrderShipmentEventId eventId) {
+            super(eventId);
         }
     }
 

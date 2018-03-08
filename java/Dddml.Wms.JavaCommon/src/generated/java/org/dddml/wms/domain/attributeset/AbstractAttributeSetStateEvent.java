@@ -8,14 +8,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractAttributeSetStateEvent extends AbstractStateEvent implements AttributeSetStateEvent 
 {
-    private AttributeSetStateEventId stateEventId;
+    private AttributeSetEventId stateEventId;
 
-    public AttributeSetStateEventId getStateEventId() {
+    public AttributeSetEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(AttributeSetStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(AttributeSetEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public String getAttributeSetId() {
@@ -154,20 +154,20 @@ public abstract class AbstractAttributeSetStateEvent extends AbstractStateEvent 
     protected AbstractAttributeSetStateEvent() {
     }
 
-    protected AbstractAttributeSetStateEvent(AttributeSetStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractAttributeSetStateEvent(AttributeSetEventId eventId) {
+        this.stateEventId = eventId;
     }
 
     protected AttributeUseStateEventDao getAttributeUseStateEventDao() {
         return (AttributeUseStateEventDao)ApplicationContext.current.get("AttributeUseStateEventDao");
     }
 
-    protected AttributeUseStateEventId newAttributeUseStateEventId(String attributeId)
+    protected AttributeUseEventId newAttributeUseEventId(String attributeId)
     {
-        AttributeUseStateEventId stateEventId = new AttributeUseStateEventId(this.getStateEventId().getAttributeSetId(), 
+        AttributeUseEventId eventId = new AttributeUseEventId(this.getStateEventId().getAttributeSetId(), 
             attributeId, 
             this.getStateEventId().getVersion());
-        return stateEventId;
+        return eventId;
     }
 
     protected void throwOnInconsistentEventIds(AttributeUseStateEvent e)
@@ -185,15 +185,15 @@ public abstract class AbstractAttributeSetStateEvent extends AbstractStateEvent 
     }
 
     public AttributeUseStateEvent.AttributeUseStateCreated newAttributeUseStateCreated(String attributeId) {
-        return new AbstractAttributeUseStateEvent.SimpleAttributeUseStateCreated(newAttributeUseStateEventId(attributeId));
+        return new AbstractAttributeUseStateEvent.SimpleAttributeUseStateCreated(newAttributeUseEventId(attributeId));
     }
 
     public AttributeUseStateEvent.AttributeUseStateMergePatched newAttributeUseStateMergePatched(String attributeId) {
-        return new AbstractAttributeUseStateEvent.SimpleAttributeUseStateMergePatched(newAttributeUseStateEventId(attributeId));
+        return new AbstractAttributeUseStateEvent.SimpleAttributeUseStateMergePatched(newAttributeUseEventId(attributeId));
     }
 
     public AttributeUseStateEvent.AttributeUseStateRemoved newAttributeUseStateRemoved(String attributeId) {
-        return new AbstractAttributeUseStateEvent.SimpleAttributeUseStateRemoved(newAttributeUseStateEventId(attributeId));
+        return new AbstractAttributeUseStateEvent.SimpleAttributeUseStateRemoved(newAttributeUseEventId(attributeId));
     }
 
 
@@ -203,18 +203,18 @@ public abstract class AbstractAttributeSetStateEvent extends AbstractStateEvent 
     public static abstract class AbstractAttributeSetStateCreated extends AbstractAttributeSetStateEvent implements AttributeSetStateEvent.AttributeSetStateCreated, Saveable
     {
         public AbstractAttributeSetStateCreated() {
-            this(new AttributeSetStateEventId());
+            this(new AttributeSetEventId());
         }
 
-        public AbstractAttributeSetStateCreated(AttributeSetStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractAttributeSetStateCreated(AttributeSetEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
             return StateEventType.CREATED;
         }
 
-        private Map<AttributeUseStateEventId, AttributeUseStateEvent.AttributeUseStateCreated> attributeUseEvents = new HashMap<AttributeUseStateEventId, AttributeUseStateEvent.AttributeUseStateCreated>();
+        private Map<AttributeUseEventId, AttributeUseStateEvent.AttributeUseStateCreated> attributeUseEvents = new HashMap<AttributeUseEventId, AttributeUseStateEvent.AttributeUseStateCreated>();
         
         private Iterable<AttributeUseStateEvent.AttributeUseStateCreated> readOnlyAttributeUseEvents;
 
@@ -229,7 +229,7 @@ public abstract class AbstractAttributeSetStateEvent extends AbstractStateEvent 
                 if (readOnlyAttributeUseEvents != null) { return readOnlyAttributeUseEvents; }
                 AttributeUseStateEventDao eventDao = getAttributeUseStateEventDao();
                 List<AttributeUseStateEvent.AttributeUseStateCreated> eL = new ArrayList<AttributeUseStateEvent.AttributeUseStateCreated>();
-                for (AttributeUseStateEvent e : eventDao.findByAttributeSetStateEventId(this.getStateEventId()))
+                for (AttributeUseStateEvent e : eventDao.findByAttributeSetEventId(this.getStateEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((AttributeUseStateEvent.AttributeUseStateCreated)e);
@@ -268,11 +268,11 @@ public abstract class AbstractAttributeSetStateEvent extends AbstractStateEvent 
     public static abstract class AbstractAttributeSetStateMergePatched extends AbstractAttributeSetStateEvent implements AttributeSetStateEvent.AttributeSetStateMergePatched, Saveable
     {
         public AbstractAttributeSetStateMergePatched() {
-            this(new AttributeSetStateEventId());
+            this(new AttributeSetEventId());
         }
 
-        public AbstractAttributeSetStateMergePatched(AttributeSetStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractAttributeSetStateMergePatched(AttributeSetEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -349,7 +349,7 @@ public abstract class AbstractAttributeSetStateEvent extends AbstractStateEvent 
             this.isPropertyActiveRemoved = removed;
         }
 
-        private Map<AttributeUseStateEventId, AttributeUseStateEvent> attributeUseEvents = new HashMap<AttributeUseStateEventId, AttributeUseStateEvent>();
+        private Map<AttributeUseEventId, AttributeUseStateEvent> attributeUseEvents = new HashMap<AttributeUseEventId, AttributeUseStateEvent>();
         
         private Iterable<AttributeUseStateEvent> readOnlyAttributeUseEvents;
 
@@ -364,7 +364,7 @@ public abstract class AbstractAttributeSetStateEvent extends AbstractStateEvent 
                 if (readOnlyAttributeUseEvents != null) { return readOnlyAttributeUseEvents; }
                 AttributeUseStateEventDao eventDao = getAttributeUseStateEventDao();
                 List<AttributeUseStateEvent> eL = new ArrayList<AttributeUseStateEvent>();
-                for (AttributeUseStateEvent e : eventDao.findByAttributeSetStateEventId(this.getStateEventId()))
+                for (AttributeUseStateEvent e : eventDao.findByAttributeSetEventId(this.getStateEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((AttributeUseStateEvent)e);
@@ -403,11 +403,11 @@ public abstract class AbstractAttributeSetStateEvent extends AbstractStateEvent 
     public static abstract class AbstractAttributeSetStateDeleted extends AbstractAttributeSetStateEvent implements AttributeSetStateEvent.AttributeSetStateDeleted, Saveable
     {
         public AbstractAttributeSetStateDeleted() {
-            this(new AttributeSetStateEventId());
+            this(new AttributeSetEventId());
         }
 
-        public AbstractAttributeSetStateDeleted(AttributeSetStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractAttributeSetStateDeleted(AttributeSetEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -415,7 +415,7 @@ public abstract class AbstractAttributeSetStateEvent extends AbstractStateEvent 
         }
 
 		
-        private Map<AttributeUseStateEventId, AttributeUseStateEvent.AttributeUseStateRemoved> attributeUseEvents = new HashMap<AttributeUseStateEventId, AttributeUseStateEvent.AttributeUseStateRemoved>();
+        private Map<AttributeUseEventId, AttributeUseStateEvent.AttributeUseStateRemoved> attributeUseEvents = new HashMap<AttributeUseEventId, AttributeUseStateEvent.AttributeUseStateRemoved>();
         
         private Iterable<AttributeUseStateEvent.AttributeUseStateRemoved> readOnlyAttributeUseEvents;
 
@@ -430,7 +430,7 @@ public abstract class AbstractAttributeSetStateEvent extends AbstractStateEvent 
                 if (readOnlyAttributeUseEvents != null) { return readOnlyAttributeUseEvents; }
                 AttributeUseStateEventDao eventDao = getAttributeUseStateEventDao();
                 List<AttributeUseStateEvent.AttributeUseStateRemoved> eL = new ArrayList<AttributeUseStateEvent.AttributeUseStateRemoved>();
-                for (AttributeUseStateEvent e : eventDao.findByAttributeSetStateEventId(this.getStateEventId()))
+                for (AttributeUseStateEvent e : eventDao.findByAttributeSetEventId(this.getStateEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((AttributeUseStateEvent.AttributeUseStateRemoved)e);
@@ -469,8 +469,8 @@ public abstract class AbstractAttributeSetStateEvent extends AbstractStateEvent 
         public SimpleAttributeSetStateCreated() {
         }
 
-        public SimpleAttributeSetStateCreated(AttributeSetStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleAttributeSetStateCreated(AttributeSetEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -479,8 +479,8 @@ public abstract class AbstractAttributeSetStateEvent extends AbstractStateEvent 
         public SimpleAttributeSetStateMergePatched() {
         }
 
-        public SimpleAttributeSetStateMergePatched(AttributeSetStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleAttributeSetStateMergePatched(AttributeSetEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -489,8 +489,8 @@ public abstract class AbstractAttributeSetStateEvent extends AbstractStateEvent 
         public SimpleAttributeSetStateDeleted() {
         }
 
-        public SimpleAttributeSetStateDeleted(AttributeSetStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleAttributeSetStateDeleted(AttributeSetEventId eventId) {
+            super(eventId);
         }
     }
 

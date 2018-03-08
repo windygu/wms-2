@@ -809,7 +809,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             id.Append("[").Append("ShipmentReceiptMvo|");
 
             var stateEntityId = this.ShipmentReceiptId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.ShipmentReceiptId; // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+            var eventEntityId = stateEvent.StateEventId.ShipmentReceiptId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);

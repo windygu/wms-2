@@ -7,7 +7,7 @@ public interface ShipmentReceiptStateEventDao
 {
     void save(ShipmentReceiptStateEvent e);
 
-    Iterable<ShipmentReceiptStateEvent> findByShipmentStateEventId(ShipmentStateEventId shipmentStateEventId);
+    Iterable<ShipmentReceiptStateEvent> findByShipmentEventId(ShipmentEventId shipmentEventId);
 
 }
 

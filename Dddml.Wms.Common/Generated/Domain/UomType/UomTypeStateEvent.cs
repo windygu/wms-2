@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.UomType
 	public abstract class UomTypeStateEventBase : IUomTypeStateEvent
 	{
 
-		public virtual UomTypeStateEventId StateEventId { get; set; }
+		public virtual UomTypeEventId StateEventId { get; set; }
 
         public virtual string UomTypeId
         {
@@ -39,7 +39,7 @@ namespace Dddml.Wms.Domain.UomType
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		UomTypeStateEventId IGlobalIdentity<UomTypeStateEventId>.GlobalId {
+		UomTypeEventId IGlobalIdentity<UomTypeEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -83,7 +83,7 @@ namespace Dddml.Wms.Domain.UomType
         {
         }
 
-        protected UomTypeStateEventBase(UomTypeStateEventId stateEventId)
+        protected UomTypeStateEventBase(UomTypeEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -100,11 +100,11 @@ namespace Dddml.Wms.Domain.UomType
 
 	public class UomTypeStateCreated : UomTypeStateEventBase, IUomTypeStateCreated
 	{
-		public UomTypeStateCreated () : this(new UomTypeStateEventId())
+		public UomTypeStateCreated () : this(new UomTypeEventId())
 		{
 		}
 
-		public UomTypeStateCreated (UomTypeStateEventId stateEventId) : base(stateEventId)
+		public UomTypeStateCreated (UomTypeEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -132,7 +132,7 @@ namespace Dddml.Wms.Domain.UomType
 		{
 		}
 
-		public UomTypeStateMergePatched (UomTypeStateEventId stateEventId) : base(stateEventId)
+		public UomTypeStateMergePatched (UomTypeEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.UomType
 		{
 		}
 
-		public UomTypeStateDeleted (UomTypeStateEventId stateEventId) : base(stateEventId)
+		public UomTypeStateDeleted (UomTypeEventId stateEventId) : base(stateEventId)
 		{
 		}
 

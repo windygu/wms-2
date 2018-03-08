@@ -242,7 +242,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
             id.Append("[").Append("SellableInventoryItem|");
 
             var stateEntityId = this.SellableInventoryItemId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.SellableInventoryItemId; // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+            var eventEntityId = stateEvent.StateEventId.SellableInventoryItemId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);

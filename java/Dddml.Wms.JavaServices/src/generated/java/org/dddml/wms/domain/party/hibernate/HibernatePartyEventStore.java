@@ -16,7 +16,7 @@ public class HibernatePartyEventStore extends AbstractHibernateEventStore
     @Override
     protected Serializable getEventId(EventStoreAggregateId eventStoreAggregateId, long version)
     {
-        return new PartyStateEventId((String) eventStoreAggregateId.getId(), version);
+        return new PartyEventId((String) eventStoreAggregateId.getId(), version);
     }
 
     @Override

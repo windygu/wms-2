@@ -5,7 +5,7 @@
   
   <class name="AttributeValueMvoStateEventBase" table="AttributeValueMvoStateEvents" mutable="false" abstract="true">
 
-    <composite-id name="StateEventId" class="Dddml.Wms.Domain.AttributeValueMvo.AttributeValueMvoStateEventId">
+    <composite-id name="StateEventId" class="Dddml.Wms.Domain.AttributeValueMvo.AttributeValueMvoEventId">
         <key-property name="AttributeValueIdAttributeId" ><column name="AttributeValueIdAttributeId" length="50" /></key-property>
         <key-property name="AttributeValueIdValue" ><column name="AttributeValueIdValue" length="50" /></key-property>
         <key-property name="AttributeVersion" ></key-property>

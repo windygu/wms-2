@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.Uom
 	public abstract class UomStateEventDtoBase : IStateEventDto, IUomStateCreated, IUomStateMergePatched, IUomStateDeleted
 	{
 
-        private UomStateEventIdDto _stateEventId;
+        private UomEventIdDto _stateEventId;
 
-		protected internal virtual UomStateEventIdDto StateEventId 
+		protected internal virtual UomEventIdDto StateEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new UomStateEventIdDto(); }
+                if (_stateEventId == null) { _stateEventId = new UomEventIdDto(); }
                 return _stateEventId;
             }
             set
@@ -58,10 +58,10 @@ namespace Dddml.Wms.Domain.Uom
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		UomStateEventId IGlobalIdentity<UomStateEventId>.GlobalId {
+		UomEventId IGlobalIdentity<UomEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToUomStateEventId();
+				return this.StateEventId.ToUomEventId();
 			}
 		}
 
@@ -174,16 +174,16 @@ namespace Dddml.Wms.Domain.Uom
 		}
 
 
-        UomStateEventId IUomStateEvent.StateEventId
+        UomEventId IUomStateEvent.StateEventId
         {
-            get { return this.StateEventId.ToUomStateEventId(); }
+            get { return this.StateEventId.ToUomEventId(); }
         }
 
         protected UomStateEventDtoBase()
         {
         }
 
-        protected UomStateEventDtoBase(UomStateEventIdDto stateEventId)
+        protected UomStateEventDtoBase(UomEventIdDto stateEventId)
         {
             this.StateEventId = stateEventId;
         }

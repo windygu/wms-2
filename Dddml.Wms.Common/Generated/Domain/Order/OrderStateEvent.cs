@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.Order
 	public abstract class OrderStateEventBase : IOrderStateEvent
 	{
 
-		public virtual OrderStateEventId StateEventId { get; set; }
+		public virtual OrderEventId StateEventId { get; set; }
 
         public virtual string OrderId
         {
@@ -81,7 +81,7 @@ namespace Dddml.Wms.Domain.Order
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		OrderStateEventId IGlobalIdentity<OrderStateEventId>.GlobalId {
+		OrderEventId IGlobalIdentity<OrderEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -125,7 +125,7 @@ namespace Dddml.Wms.Domain.Order
         {
         }
 
-        protected OrderStateEventBase(OrderStateEventId stateEventId)
+        protected OrderStateEventBase(OrderEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -135,9 +135,9 @@ namespace Dddml.Wms.Domain.Order
 			get { return ApplicationContext.Current["OrderItemStateEventDao"] as IOrderItemStateEventDao; }
 		}
 
-        protected OrderItemStateEventId NewOrderItemStateEventId(string orderItemSeqId)
+        protected OrderItemEventId NewOrderItemEventId(string orderItemSeqId)
         {
-            var stateEventId = new OrderItemStateEventId(this.StateEventId.OrderId, orderItemSeqId, this.StateEventId.Version);
+            var stateEventId = new OrderItemEventId(this.StateEventId.OrderId, orderItemSeqId, this.StateEventId.Version);
             return stateEventId;
         }
 
@@ -169,15 +169,15 @@ namespace Dddml.Wms.Domain.Order
 
 	public class OrderStateCreated : OrderStateEventBase, IOrderStateCreated, ISaveable
 	{
-		public OrderStateCreated () : this(new OrderStateEventId())
+		public OrderStateCreated () : this(new OrderEventId())
 		{
 		}
 
-		public OrderStateCreated (OrderStateEventId stateEventId) : base(stateEventId)
+		public OrderStateCreated (OrderEventId stateEventId) : base(stateEventId)
 		{
 		}
 
-		private Dictionary<OrderItemStateEventId, IOrderItemStateCreated> _orderItemEvents = new Dictionary<OrderItemStateEventId, IOrderItemStateCreated>();
+		private Dictionary<OrderItemEventId, IOrderItemStateCreated> _orderItemEvents = new Dictionary<OrderItemEventId, IOrderItemStateCreated>();
         
         private IEnumerable<IOrderItemStateCreated> _readOnlyOrderItemEvents;
 
@@ -194,7 +194,7 @@ namespace Dddml.Wms.Domain.Order
                     if (_readOnlyOrderItemEvents != null) { return _readOnlyOrderItemEvents; }
                     var eventDao = OrderItemStateEventDao;
                     var eL = new List<IOrderItemStateCreated>();
-                    foreach (var e in eventDao.FindByOrderStateEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByOrderEventId(this.StateEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IOrderItemStateCreated)e);
@@ -223,7 +223,7 @@ namespace Dddml.Wms.Domain.Order
 
         public virtual IOrderItemStateCreated NewOrderItemStateCreated(string orderItemSeqId)
         {
-            var stateEvent = new OrderItemStateCreated(NewOrderItemStateEventId(orderItemSeqId));
+            var stateEvent = new OrderItemStateCreated(NewOrderItemEventId(orderItemSeqId));
             return stateEvent;
         }
 
@@ -299,11 +299,11 @@ namespace Dddml.Wms.Domain.Order
 		{
 		}
 
-		public OrderStateMergePatched (OrderStateEventId stateEventId) : base(stateEventId)
+		public OrderStateMergePatched (OrderEventId stateEventId) : base(stateEventId)
 		{
 		}
 
-		private Dictionary<OrderItemStateEventId, IOrderItemStateEvent> _orderItemEvents = new Dictionary<OrderItemStateEventId, IOrderItemStateEvent>();
+		private Dictionary<OrderItemEventId, IOrderItemStateEvent> _orderItemEvents = new Dictionary<OrderItemEventId, IOrderItemStateEvent>();
 
         private IEnumerable<IOrderItemStateEvent> _readOnlyOrderItemEvents;
         
@@ -320,7 +320,7 @@ namespace Dddml.Wms.Domain.Order
                     if (_readOnlyOrderItemEvents != null) { return _readOnlyOrderItemEvents; }
                     var eventDao = OrderItemStateEventDao;
                     var eL = new List<IOrderItemStateEvent>();
-                    foreach (var e in eventDao.FindByOrderStateEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByOrderEventId(this.StateEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IOrderItemStateEvent)e);
@@ -349,13 +349,13 @@ namespace Dddml.Wms.Domain.Order
 
         public virtual IOrderItemStateCreated NewOrderItemStateCreated(string orderItemSeqId)
         {
-            var stateEvent = new OrderItemStateCreated(NewOrderItemStateEventId(orderItemSeqId));
+            var stateEvent = new OrderItemStateCreated(NewOrderItemEventId(orderItemSeqId));
             return stateEvent;
         }
 
         public virtual IOrderItemStateMergePatched NewOrderItemStateMergePatched(string orderItemSeqId)
         {
-            var stateEvent = new OrderItemStateMergePatched(NewOrderItemStateEventId(orderItemSeqId));
+            var stateEvent = new OrderItemStateMergePatched(NewOrderItemEventId(orderItemSeqId));
             return stateEvent;
         }
 

@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.Movement
 	public abstract class MovementLineStateEventBase : IMovementLineStateEvent
 	{
 
-		public virtual MovementLineStateEventId StateEventId { get; set; }
+		public virtual MovementLineEventId StateEventId { get; set; }
 
         public virtual string LineNumber
         {
@@ -47,7 +47,7 @@ namespace Dddml.Wms.Domain.Movement
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		MovementLineStateEventId IGlobalIdentity<MovementLineStateEventId>.GlobalId {
+		MovementLineEventId IGlobalIdentity<MovementLineEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -93,7 +93,7 @@ namespace Dddml.Wms.Domain.Movement
         {
         }
 
-        protected MovementLineStateEventBase(MovementLineStateEventId stateEventId)
+        protected MovementLineStateEventBase(MovementLineEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -110,11 +110,11 @@ namespace Dddml.Wms.Domain.Movement
 
 	public class MovementLineStateCreated : MovementLineStateEventBase, IMovementLineStateCreated
 	{
-		public MovementLineStateCreated () : this(new MovementLineStateEventId())
+		public MovementLineStateCreated () : this(new MovementLineEventId())
 		{
 		}
 
-		public MovementLineStateCreated (MovementLineStateEventId stateEventId) : base(stateEventId)
+		public MovementLineStateCreated (MovementLineEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -150,7 +150,7 @@ namespace Dddml.Wms.Domain.Movement
 		{
 		}
 
-		public MovementLineStateMergePatched (MovementLineStateEventId stateEventId) : base(stateEventId)
+		public MovementLineStateMergePatched (MovementLineEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -169,7 +169,7 @@ namespace Dddml.Wms.Domain.Movement
 		{
 		}
 
-		public MovementLineStateRemoved (MovementLineStateEventId stateEventId) : base(stateEventId)
+		public MovementLineStateRemoved (MovementLineEventId stateEventId) : base(stateEventId)
 		{
 		}
 

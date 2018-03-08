@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.OrganizationStructure
 	public abstract class OrganizationStructureStateEventDtoBase : IStateEventDto, IOrganizationStructureStateCreated, IOrganizationStructureStateMergePatched, IOrganizationStructureStateDeleted
 	{
 
-        private OrganizationStructureStateEventIdDto _stateEventId;
+        private OrganizationStructureEventIdDto _stateEventId;
 
-		protected internal virtual OrganizationStructureStateEventIdDto StateEventId 
+		protected internal virtual OrganizationStructureEventIdDto StateEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new OrganizationStructureStateEventIdDto(); }
+                if (_stateEventId == null) { _stateEventId = new OrganizationStructureEventIdDto(); }
                 return _stateEventId;
             }
             set
@@ -52,10 +52,10 @@ namespace Dddml.Wms.Domain.OrganizationStructure
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		OrganizationStructureStateEventId IGlobalIdentity<OrganizationStructureStateEventId>.GlobalId {
+		OrganizationStructureEventId IGlobalIdentity<OrganizationStructureEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToOrganizationStructureStateEventId();
+				return this.StateEventId.ToOrganizationStructureEventId();
 			}
 		}
 
@@ -111,16 +111,16 @@ namespace Dddml.Wms.Domain.OrganizationStructure
 		}
 
 
-        OrganizationStructureStateEventId IOrganizationStructureStateEvent.StateEventId
+        OrganizationStructureEventId IOrganizationStructureStateEvent.StateEventId
         {
-            get { return this.StateEventId.ToOrganizationStructureStateEventId(); }
+            get { return this.StateEventId.ToOrganizationStructureEventId(); }
         }
 
         protected OrganizationStructureStateEventDtoBase()
         {
         }
 
-        protected OrganizationStructureStateEventDtoBase(OrganizationStructureStateEventIdDto stateEventId)
+        protected OrganizationStructureStateEventDtoBase(OrganizationStructureEventIdDto stateEventId)
         {
             this.StateEventId = stateEventId;
         }

@@ -9,14 +9,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractMovementStateEvent extends AbstractStateEvent implements MovementStateEvent 
 {
-    private MovementStateEventId stateEventId;
+    private MovementEventId stateEventId;
 
-    public MovementStateEventId getStateEventId() {
+    public MovementEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(MovementStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(MovementEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public String getDocumentNumber() {
@@ -323,20 +323,20 @@ public abstract class AbstractMovementStateEvent extends AbstractStateEvent impl
     protected AbstractMovementStateEvent() {
     }
 
-    protected AbstractMovementStateEvent(MovementStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractMovementStateEvent(MovementEventId eventId) {
+        this.stateEventId = eventId;
     }
 
     protected MovementLineStateEventDao getMovementLineStateEventDao() {
         return (MovementLineStateEventDao)ApplicationContext.current.get("MovementLineStateEventDao");
     }
 
-    protected MovementLineStateEventId newMovementLineStateEventId(String lineNumber)
+    protected MovementLineEventId newMovementLineEventId(String lineNumber)
     {
-        MovementLineStateEventId stateEventId = new MovementLineStateEventId(this.getStateEventId().getDocumentNumber(), 
+        MovementLineEventId eventId = new MovementLineEventId(this.getStateEventId().getDocumentNumber(), 
             lineNumber, 
             this.getStateEventId().getVersion());
-        return stateEventId;
+        return eventId;
     }
 
     protected void throwOnInconsistentEventIds(MovementLineStateEvent e)
@@ -354,15 +354,15 @@ public abstract class AbstractMovementStateEvent extends AbstractStateEvent impl
     }
 
     public MovementLineStateEvent.MovementLineStateCreated newMovementLineStateCreated(String lineNumber) {
-        return new AbstractMovementLineStateEvent.SimpleMovementLineStateCreated(newMovementLineStateEventId(lineNumber));
+        return new AbstractMovementLineStateEvent.SimpleMovementLineStateCreated(newMovementLineEventId(lineNumber));
     }
 
     public MovementLineStateEvent.MovementLineStateMergePatched newMovementLineStateMergePatched(String lineNumber) {
-        return new AbstractMovementLineStateEvent.SimpleMovementLineStateMergePatched(newMovementLineStateEventId(lineNumber));
+        return new AbstractMovementLineStateEvent.SimpleMovementLineStateMergePatched(newMovementLineEventId(lineNumber));
     }
 
     public MovementLineStateEvent.MovementLineStateRemoved newMovementLineStateRemoved(String lineNumber) {
-        return new AbstractMovementLineStateEvent.SimpleMovementLineStateRemoved(newMovementLineStateEventId(lineNumber));
+        return new AbstractMovementLineStateEvent.SimpleMovementLineStateRemoved(newMovementLineEventId(lineNumber));
     }
 
 
@@ -372,18 +372,18 @@ public abstract class AbstractMovementStateEvent extends AbstractStateEvent impl
     public static abstract class AbstractMovementStateCreated extends AbstractMovementStateEvent implements MovementStateEvent.MovementStateCreated, Saveable
     {
         public AbstractMovementStateCreated() {
-            this(new MovementStateEventId());
+            this(new MovementEventId());
         }
 
-        public AbstractMovementStateCreated(MovementStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractMovementStateCreated(MovementEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
             return StateEventType.CREATED;
         }
 
-        private Map<MovementLineStateEventId, MovementLineStateEvent.MovementLineStateCreated> movementLineEvents = new HashMap<MovementLineStateEventId, MovementLineStateEvent.MovementLineStateCreated>();
+        private Map<MovementLineEventId, MovementLineStateEvent.MovementLineStateCreated> movementLineEvents = new HashMap<MovementLineEventId, MovementLineStateEvent.MovementLineStateCreated>();
         
         private Iterable<MovementLineStateEvent.MovementLineStateCreated> readOnlyMovementLineEvents;
 
@@ -398,7 +398,7 @@ public abstract class AbstractMovementStateEvent extends AbstractStateEvent impl
                 if (readOnlyMovementLineEvents != null) { return readOnlyMovementLineEvents; }
                 MovementLineStateEventDao eventDao = getMovementLineStateEventDao();
                 List<MovementLineStateEvent.MovementLineStateCreated> eL = new ArrayList<MovementLineStateEvent.MovementLineStateCreated>();
-                for (MovementLineStateEvent e : eventDao.findByMovementStateEventId(this.getStateEventId()))
+                for (MovementLineStateEvent e : eventDao.findByMovementEventId(this.getStateEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((MovementLineStateEvent.MovementLineStateCreated)e);
@@ -437,11 +437,11 @@ public abstract class AbstractMovementStateEvent extends AbstractStateEvent impl
     public static abstract class AbstractMovementStateMergePatched extends AbstractMovementStateEvent implements MovementStateEvent.MovementStateMergePatched, Saveable
     {
         public AbstractMovementStateMergePatched() {
-            this(new MovementStateEventId());
+            this(new MovementEventId());
         }
 
-        public AbstractMovementStateMergePatched(MovementStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractMovementStateMergePatched(MovementEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -658,7 +658,7 @@ public abstract class AbstractMovementStateEvent extends AbstractStateEvent impl
             this.isPropertyActiveRemoved = removed;
         }
 
-        private Map<MovementLineStateEventId, MovementLineStateEvent> movementLineEvents = new HashMap<MovementLineStateEventId, MovementLineStateEvent>();
+        private Map<MovementLineEventId, MovementLineStateEvent> movementLineEvents = new HashMap<MovementLineEventId, MovementLineStateEvent>();
         
         private Iterable<MovementLineStateEvent> readOnlyMovementLineEvents;
 
@@ -673,7 +673,7 @@ public abstract class AbstractMovementStateEvent extends AbstractStateEvent impl
                 if (readOnlyMovementLineEvents != null) { return readOnlyMovementLineEvents; }
                 MovementLineStateEventDao eventDao = getMovementLineStateEventDao();
                 List<MovementLineStateEvent> eL = new ArrayList<MovementLineStateEvent>();
-                for (MovementLineStateEvent e : eventDao.findByMovementStateEventId(this.getStateEventId()))
+                for (MovementLineStateEvent e : eventDao.findByMovementEventId(this.getStateEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((MovementLineStateEvent)e);
@@ -712,11 +712,11 @@ public abstract class AbstractMovementStateEvent extends AbstractStateEvent impl
     public static abstract class AbstractMovementStateDeleted extends AbstractMovementStateEvent implements MovementStateEvent.MovementStateDeleted, Saveable
     {
         public AbstractMovementStateDeleted() {
-            this(new MovementStateEventId());
+            this(new MovementEventId());
         }
 
-        public AbstractMovementStateDeleted(MovementStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractMovementStateDeleted(MovementEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -724,7 +724,7 @@ public abstract class AbstractMovementStateEvent extends AbstractStateEvent impl
         }
 
 		
-        private Map<MovementLineStateEventId, MovementLineStateEvent.MovementLineStateRemoved> movementLineEvents = new HashMap<MovementLineStateEventId, MovementLineStateEvent.MovementLineStateRemoved>();
+        private Map<MovementLineEventId, MovementLineStateEvent.MovementLineStateRemoved> movementLineEvents = new HashMap<MovementLineEventId, MovementLineStateEvent.MovementLineStateRemoved>();
         
         private Iterable<MovementLineStateEvent.MovementLineStateRemoved> readOnlyMovementLineEvents;
 
@@ -739,7 +739,7 @@ public abstract class AbstractMovementStateEvent extends AbstractStateEvent impl
                 if (readOnlyMovementLineEvents != null) { return readOnlyMovementLineEvents; }
                 MovementLineStateEventDao eventDao = getMovementLineStateEventDao();
                 List<MovementLineStateEvent.MovementLineStateRemoved> eL = new ArrayList<MovementLineStateEvent.MovementLineStateRemoved>();
-                for (MovementLineStateEvent e : eventDao.findByMovementStateEventId(this.getStateEventId()))
+                for (MovementLineStateEvent e : eventDao.findByMovementEventId(this.getStateEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((MovementLineStateEvent.MovementLineStateRemoved)e);
@@ -778,8 +778,8 @@ public abstract class AbstractMovementStateEvent extends AbstractStateEvent impl
         public SimpleMovementStateCreated() {
         }
 
-        public SimpleMovementStateCreated(MovementStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleMovementStateCreated(MovementEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -788,8 +788,8 @@ public abstract class AbstractMovementStateEvent extends AbstractStateEvent impl
         public SimpleMovementStateMergePatched() {
         }
 
-        public SimpleMovementStateMergePatched(MovementStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleMovementStateMergePatched(MovementEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -798,8 +798,8 @@ public abstract class AbstractMovementStateEvent extends AbstractStateEvent impl
         public SimpleMovementStateDeleted() {
         }
 
-        public SimpleMovementStateDeleted(MovementStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleMovementStateDeleted(MovementEventId eventId) {
+            super(eventId);
         }
     }
 

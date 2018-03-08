@@ -104,7 +104,7 @@ namespace Dddml.Wms.Domain.User
 
         protected virtual IUserStateCreated Map(ICreateUser c)
         {
-			var stateEventId = new UserStateEventId(c.UserId, c.Version);
+			var stateEventId = new UserEventId(c.UserId, c.Version);
             IUserStateCreated e = NewUserStateCreated(stateEventId);
 		
             e.UserName = c.UserName;
@@ -164,7 +164,7 @@ namespace Dddml.Wms.Domain.User
 
         protected virtual IUserStateMergePatched Map(IMergePatchUser c)
         {
-			var stateEventId = new UserStateEventId(c.UserId, c.Version);
+			var stateEventId = new UserEventId(c.UserId, c.Version);
             IUserStateMergePatched e = NewUserStateMergePatched(stateEventId);
 
             e.UserName = c.UserName;
@@ -238,7 +238,7 @@ namespace Dddml.Wms.Domain.User
 
         protected virtual IUserStateDeleted Map(IDeleteUser c)
         {
-			var stateEventId = new UserStateEventId(c.UserId, c.Version);
+			var stateEventId = new UserEventId(c.UserId, c.Version);
             IUserStateDeleted e = NewUserStateDeleted(stateEventId);
 			
             e.CommandId = c.CommandId;
@@ -366,7 +366,7 @@ namespace Dddml.Wms.Domain.User
         protected virtual IUserRoleStateCreated MapCreate(ICreateUserRole c, IUserCommand outerCommand, long version, IUserState outerState)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new UserRoleStateEventId(c.UserId, c.RoleId, version);
+			var stateEventId = new UserRoleEventId(c.UserId, c.RoleId, version);
             IUserRoleStateCreated e = NewUserRoleStateCreated(stateEventId);
             var s = outerState.UserRoles.Get(c.RoleId, true);
 
@@ -383,7 +383,7 @@ namespace Dddml.Wms.Domain.User
         protected virtual IUserRoleStateMergePatched MapMergePatch(IMergePatchUserRole c, IUserCommand outerCommand, long version, IUserState outerState)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new UserRoleStateEventId(c.UserId, c.RoleId, version);
+			var stateEventId = new UserRoleEventId(c.UserId, c.RoleId, version);
             IUserRoleStateMergePatched e = NewUserRoleStateMergePatched(stateEventId);
             var s = outerState.UserRoles.Get(c.RoleId);
 
@@ -400,7 +400,7 @@ namespace Dddml.Wms.Domain.User
         protected virtual IUserRoleStateRemoved MapRemove(IRemoveUserRole c, IUserCommand outerCommand, long version)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new UserRoleStateEventId(c.UserId, c.RoleId, version);
+			var stateEventId = new UserRoleEventId(c.UserId, c.RoleId, version);
             IUserRoleStateRemoved e = NewUserRoleStateRemoved(stateEventId);
 
 
@@ -438,7 +438,7 @@ namespace Dddml.Wms.Domain.User
         protected virtual IUserClaimStateCreated MapCreate(ICreateUserClaim c, IUserCommand outerCommand, long version, IUserState outerState)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new UserClaimStateEventId(c.UserId, c.ClaimId, version);
+			var stateEventId = new UserClaimEventId(c.UserId, c.ClaimId, version);
             IUserClaimStateCreated e = NewUserClaimStateCreated(stateEventId);
             var s = outerState.UserClaims.Get(c.ClaimId, true);
 
@@ -457,7 +457,7 @@ namespace Dddml.Wms.Domain.User
         protected virtual IUserClaimStateMergePatched MapMergePatch(IMergePatchUserClaim c, IUserCommand outerCommand, long version, IUserState outerState)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new UserClaimStateEventId(c.UserId, c.ClaimId, version);
+			var stateEventId = new UserClaimEventId(c.UserId, c.ClaimId, version);
             IUserClaimStateMergePatched e = NewUserClaimStateMergePatched(stateEventId);
             var s = outerState.UserClaims.Get(c.ClaimId);
 
@@ -478,7 +478,7 @@ namespace Dddml.Wms.Domain.User
         protected virtual IUserClaimStateRemoved MapRemove(IRemoveUserClaim c, IUserCommand outerCommand, long version)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new UserClaimStateEventId(c.UserId, c.ClaimId, version);
+			var stateEventId = new UserClaimEventId(c.UserId, c.ClaimId, version);
             IUserClaimStateRemoved e = NewUserClaimStateRemoved(stateEventId);
 
 
@@ -516,7 +516,7 @@ namespace Dddml.Wms.Domain.User
         protected virtual IUserPermissionStateCreated MapCreate(ICreateUserPermission c, IUserCommand outerCommand, long version, IUserState outerState)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new UserPermissionStateEventId(c.UserId, c.PermissionId, version);
+			var stateEventId = new UserPermissionEventId(c.UserId, c.PermissionId, version);
             IUserPermissionStateCreated e = NewUserPermissionStateCreated(stateEventId);
             var s = outerState.UserPermissions.Get(c.PermissionId, true);
 
@@ -533,7 +533,7 @@ namespace Dddml.Wms.Domain.User
         protected virtual IUserPermissionStateMergePatched MapMergePatch(IMergePatchUserPermission c, IUserCommand outerCommand, long version, IUserState outerState)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new UserPermissionStateEventId(c.UserId, c.PermissionId, version);
+			var stateEventId = new UserPermissionEventId(c.UserId, c.PermissionId, version);
             IUserPermissionStateMergePatched e = NewUserPermissionStateMergePatched(stateEventId);
             var s = outerState.UserPermissions.Get(c.PermissionId);
 
@@ -550,7 +550,7 @@ namespace Dddml.Wms.Domain.User
         protected virtual IUserPermissionStateRemoved MapRemove(IRemoveUserPermission c, IUserCommand outerCommand, long version)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new UserPermissionStateEventId(c.UserId, c.PermissionId, version);
+			var stateEventId = new UserPermissionEventId(c.UserId, c.PermissionId, version);
             IUserPermissionStateRemoved e = NewUserPermissionStateRemoved(stateEventId);
 
 
@@ -588,7 +588,7 @@ namespace Dddml.Wms.Domain.User
         protected virtual IUserLoginStateCreated MapCreate(ICreateUserLogin c, IUserCommand outerCommand, long version, IUserState outerState)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new UserLoginStateEventId(c.UserId, c.LoginKey, version);
+			var stateEventId = new UserLoginEventId(c.UserId, c.LoginKey, version);
             IUserLoginStateCreated e = NewUserLoginStateCreated(stateEventId);
             var s = outerState.UserLogins.Get(c.LoginKey, true);
 
@@ -605,7 +605,7 @@ namespace Dddml.Wms.Domain.User
         protected virtual IUserLoginStateMergePatched MapMergePatch(IMergePatchUserLogin c, IUserCommand outerCommand, long version, IUserState outerState)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new UserLoginStateEventId(c.UserId, c.LoginKey, version);
+			var stateEventId = new UserLoginEventId(c.UserId, c.LoginKey, version);
             IUserLoginStateMergePatched e = NewUserLoginStateMergePatched(stateEventId);
             var s = outerState.UserLogins.Get(c.LoginKey);
 
@@ -622,7 +622,7 @@ namespace Dddml.Wms.Domain.User
         protected virtual IUserLoginStateRemoved MapRemove(IRemoveUserLogin c, IUserCommand outerCommand, long version)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new UserLoginStateEventId(c.UserId, c.LoginKey, version);
+			var stateEventId = new UserLoginEventId(c.UserId, c.LoginKey, version);
             IUserLoginStateRemoved e = NewUserLoginStateRemoved(stateEventId);
 
 
@@ -649,7 +649,7 @@ namespace Dddml.Wms.Domain.User
 
         protected UserStateCreated NewUserStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new UserStateEventId(_state.UserId, version);
+            var stateEventId = new UserEventId(_state.UserId, version);
             var e = NewUserStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -662,7 +662,7 @@ namespace Dddml.Wms.Domain.User
 
         protected UserStateMergePatched NewUserStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new UserStateEventId(_state.UserId, version);
+            var stateEventId = new UserEventId(_state.UserId, version);
             var e = NewUserStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -676,7 +676,7 @@ namespace Dddml.Wms.Domain.User
 
         protected UserStateDeleted NewUserStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new UserStateEventId(_state.UserId, version);
+            var stateEventId = new UserEventId(_state.UserId, version);
             var e = NewUserStateDeleted(stateEventId);
 
             e.CommandId = commandId;
@@ -689,80 +689,80 @@ namespace Dddml.Wms.Domain.User
 
 ////////////////////////
 
-		private UserStateCreated NewUserStateCreated(UserStateEventId stateEventId)
+		private UserStateCreated NewUserStateCreated(UserEventId stateEventId)
 		{
 			return new UserStateCreated(stateEventId);			
 		}
 
-        private UserStateMergePatched NewUserStateMergePatched(UserStateEventId stateEventId)
+        private UserStateMergePatched NewUserStateMergePatched(UserEventId stateEventId)
 		{
 			return new UserStateMergePatched(stateEventId);
 		}
 
-        private UserStateDeleted NewUserStateDeleted(UserStateEventId stateEventId)
+        private UserStateDeleted NewUserStateDeleted(UserEventId stateEventId)
 		{
 			return new UserStateDeleted(stateEventId);
 		}
 
-		private UserRoleStateCreated NewUserRoleStateCreated(UserRoleStateEventId stateEventId)
+		private UserRoleStateCreated NewUserRoleStateCreated(UserRoleEventId stateEventId)
 		{
 			return new UserRoleStateCreated(stateEventId);
 		}
 
-        private UserRoleStateMergePatched NewUserRoleStateMergePatched(UserRoleStateEventId stateEventId)
+        private UserRoleStateMergePatched NewUserRoleStateMergePatched(UserRoleEventId stateEventId)
 		{
 			return new UserRoleStateMergePatched(stateEventId);
 		}
 
-        private UserRoleStateRemoved NewUserRoleStateRemoved(UserRoleStateEventId stateEventId)
+        private UserRoleStateRemoved NewUserRoleStateRemoved(UserRoleEventId stateEventId)
 		{
 			return new UserRoleStateRemoved(stateEventId);
 		}
 
 
-		private UserClaimStateCreated NewUserClaimStateCreated(UserClaimStateEventId stateEventId)
+		private UserClaimStateCreated NewUserClaimStateCreated(UserClaimEventId stateEventId)
 		{
 			return new UserClaimStateCreated(stateEventId);
 		}
 
-        private UserClaimStateMergePatched NewUserClaimStateMergePatched(UserClaimStateEventId stateEventId)
+        private UserClaimStateMergePatched NewUserClaimStateMergePatched(UserClaimEventId stateEventId)
 		{
 			return new UserClaimStateMergePatched(stateEventId);
 		}
 
-        private UserClaimStateRemoved NewUserClaimStateRemoved(UserClaimStateEventId stateEventId)
+        private UserClaimStateRemoved NewUserClaimStateRemoved(UserClaimEventId stateEventId)
 		{
 			return new UserClaimStateRemoved(stateEventId);
 		}
 
 
-		private UserPermissionStateCreated NewUserPermissionStateCreated(UserPermissionStateEventId stateEventId)
+		private UserPermissionStateCreated NewUserPermissionStateCreated(UserPermissionEventId stateEventId)
 		{
 			return new UserPermissionStateCreated(stateEventId);
 		}
 
-        private UserPermissionStateMergePatched NewUserPermissionStateMergePatched(UserPermissionStateEventId stateEventId)
+        private UserPermissionStateMergePatched NewUserPermissionStateMergePatched(UserPermissionEventId stateEventId)
 		{
 			return new UserPermissionStateMergePatched(stateEventId);
 		}
 
-        private UserPermissionStateRemoved NewUserPermissionStateRemoved(UserPermissionStateEventId stateEventId)
+        private UserPermissionStateRemoved NewUserPermissionStateRemoved(UserPermissionEventId stateEventId)
 		{
 			return new UserPermissionStateRemoved(stateEventId);
 		}
 
 
-		private UserLoginStateCreated NewUserLoginStateCreated(UserLoginStateEventId stateEventId)
+		private UserLoginStateCreated NewUserLoginStateCreated(UserLoginEventId stateEventId)
 		{
 			return new UserLoginStateCreated(stateEventId);
 		}
 
-        private UserLoginStateMergePatched NewUserLoginStateMergePatched(UserLoginStateEventId stateEventId)
+        private UserLoginStateMergePatched NewUserLoginStateMergePatched(UserLoginEventId stateEventId)
 		{
 			return new UserLoginStateMergePatched(stateEventId);
 		}
 
-        private UserLoginStateRemoved NewUserLoginStateRemoved(UserLoginStateEventId stateEventId)
+        private UserLoginStateRemoved NewUserLoginStateRemoved(UserLoginEventId stateEventId)
 		{
 			return new UserLoginStateRemoved(stateEventId);
 		}

@@ -8,7 +8,7 @@
   
   <class name="AbstractShipmentReceiptMvoStateEvent" table="ShipmentReceiptMvoStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="stateEventId" class="org.dddml.wms.domain.shipmentreceiptmvo.ShipmentReceiptMvoStateEventId">
+	<composite-id name="stateEventId" class="org.dddml.wms.domain.shipmentreceiptmvo.ShipmentReceiptMvoEventId">
 		<key-property name="shipmentReceiptIdShipmentId" ><column name="ShipmentReceiptIdShipmentId" sql-type="VARCHAR(20)" /></key-property>
 		<key-property name="shipmentReceiptIdReceiptSeqId" ><column name="ShipmentReceiptIdReceiptSeqId" sql-type="VARCHAR(20)" /></key-property>
 		<key-property name="shipmentVersion" ></key-property>

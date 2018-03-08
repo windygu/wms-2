@@ -7,7 +7,7 @@ public interface OrderItemStateEventDao
 {
     void save(OrderItemStateEvent e);
 
-    Iterable<OrderItemStateEvent> findByOrderStateEventId(OrderStateEventId orderStateEventId);
+    Iterable<OrderItemStateEvent> findByOrderEventId(OrderEventId orderEventId);
 
 }
 

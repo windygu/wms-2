@@ -49,7 +49,7 @@ public abstract class AbstractProductCategoryMemberAggregate extends AbstractAgg
     }
 
     protected ProductCategoryMemberStateEvent map(ProductCategoryMemberCommand.CreateProductCategoryMember c) {
-        ProductCategoryMemberStateEventId stateEventId = new ProductCategoryMemberStateEventId(c.getProductCategoryMemberId(), c.getVersion());
+        ProductCategoryMemberEventId stateEventId = new ProductCategoryMemberEventId(c.getProductCategoryMemberId(), c.getVersion());
         ProductCategoryMemberStateEvent.ProductCategoryMemberStateCreated e = newProductCategoryMemberStateCreated(stateEventId);
         e.setThruDate(c.getThruDate());
         e.setComments(c.getComments());
@@ -63,7 +63,7 @@ public abstract class AbstractProductCategoryMemberAggregate extends AbstractAgg
     }
 
     protected ProductCategoryMemberStateEvent map(ProductCategoryMemberCommand.MergePatchProductCategoryMember c) {
-        ProductCategoryMemberStateEventId stateEventId = new ProductCategoryMemberStateEventId(c.getProductCategoryMemberId(), c.getVersion());
+        ProductCategoryMemberEventId stateEventId = new ProductCategoryMemberEventId(c.getProductCategoryMemberId(), c.getVersion());
         ProductCategoryMemberStateEvent.ProductCategoryMemberStateMergePatched e = newProductCategoryMemberStateMergePatched(stateEventId);
         e.setThruDate(c.getThruDate());
         e.setComments(c.getComments());
@@ -85,7 +85,7 @@ public abstract class AbstractProductCategoryMemberAggregate extends AbstractAgg
     ////////////////////////
 
     protected ProductCategoryMemberStateEvent.ProductCategoryMemberStateCreated newProductCategoryMemberStateCreated(Long version, String commandId, String requesterId) {
-        ProductCategoryMemberStateEventId stateEventId = new ProductCategoryMemberStateEventId(this.state.getProductCategoryMemberId(), version);
+        ProductCategoryMemberEventId stateEventId = new ProductCategoryMemberEventId(this.state.getProductCategoryMemberId(), version);
         ProductCategoryMemberStateEvent.ProductCategoryMemberStateCreated e = newProductCategoryMemberStateCreated(stateEventId);
         ((AbstractProductCategoryMemberStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -94,7 +94,7 @@ public abstract class AbstractProductCategoryMemberAggregate extends AbstractAgg
     }
 
     protected ProductCategoryMemberStateEvent.ProductCategoryMemberStateMergePatched newProductCategoryMemberStateMergePatched(Long version, String commandId, String requesterId) {
-        ProductCategoryMemberStateEventId stateEventId = new ProductCategoryMemberStateEventId(this.state.getProductCategoryMemberId(), version);
+        ProductCategoryMemberEventId stateEventId = new ProductCategoryMemberEventId(this.state.getProductCategoryMemberId(), version);
         ProductCategoryMemberStateEvent.ProductCategoryMemberStateMergePatched e = newProductCategoryMemberStateMergePatched(stateEventId);
         ((AbstractProductCategoryMemberStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -102,11 +102,11 @@ public abstract class AbstractProductCategoryMemberAggregate extends AbstractAgg
         return e;
     }
 
-    protected ProductCategoryMemberStateEvent.ProductCategoryMemberStateCreated newProductCategoryMemberStateCreated(ProductCategoryMemberStateEventId stateEventId) {
+    protected ProductCategoryMemberStateEvent.ProductCategoryMemberStateCreated newProductCategoryMemberStateCreated(ProductCategoryMemberEventId stateEventId) {
         return new AbstractProductCategoryMemberStateEvent.SimpleProductCategoryMemberStateCreated(stateEventId);
     }
 
-    protected ProductCategoryMemberStateEvent.ProductCategoryMemberStateMergePatched newProductCategoryMemberStateMergePatched(ProductCategoryMemberStateEventId stateEventId) {
+    protected ProductCategoryMemberStateEvent.ProductCategoryMemberStateMergePatched newProductCategoryMemberStateMergePatched(ProductCategoryMemberEventId stateEventId) {
         return new AbstractProductCategoryMemberStateEvent.SimpleProductCategoryMemberStateMergePatched(stateEventId);
     }
 

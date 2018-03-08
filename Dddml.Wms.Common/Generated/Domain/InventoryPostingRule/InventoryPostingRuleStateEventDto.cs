@@ -16,13 +16,13 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 	public abstract class InventoryPostingRuleStateEventDtoBase : IStateEventDto, IInventoryPostingRuleStateCreated, IInventoryPostingRuleStateMergePatched, IInventoryPostingRuleStateDeleted
 	{
 
-        private InventoryPostingRuleStateEventIdDto _stateEventId;
+        private InventoryPostingRuleEventIdDto _stateEventId;
 
-		protected internal virtual InventoryPostingRuleStateEventIdDto StateEventId 
+		protected internal virtual InventoryPostingRuleEventIdDto StateEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new InventoryPostingRuleStateEventIdDto(); }
+                if (_stateEventId == null) { _stateEventId = new InventoryPostingRuleEventIdDto(); }
                 return _stateEventId;
             }
             set
@@ -91,10 +91,10 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		InventoryPostingRuleStateEventId IGlobalIdentity<InventoryPostingRuleStateEventId>.GlobalId {
+		InventoryPostingRuleEventId IGlobalIdentity<InventoryPostingRuleEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToInventoryPostingRuleStateEventId();
+				return this.StateEventId.ToInventoryPostingRuleEventId();
 			}
 		}
 
@@ -245,16 +245,16 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 		}
 
 
-        InventoryPostingRuleStateEventId IInventoryPostingRuleStateEvent.StateEventId
+        InventoryPostingRuleEventId IInventoryPostingRuleStateEvent.StateEventId
         {
-            get { return this.StateEventId.ToInventoryPostingRuleStateEventId(); }
+            get { return this.StateEventId.ToInventoryPostingRuleEventId(); }
         }
 
         protected InventoryPostingRuleStateEventDtoBase()
         {
         }
 
-        protected InventoryPostingRuleStateEventDtoBase(InventoryPostingRuleStateEventIdDto stateEventId)
+        protected InventoryPostingRuleStateEventDtoBase(InventoryPostingRuleEventIdDto stateEventId)
         {
             this.StateEventId = stateEventId;
         }

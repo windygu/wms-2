@@ -12,9 +12,9 @@ using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.PhysicalInventory
 {
-	public interface IPhysicalInventoryLineStateEvent : IEvent, IStateEventDto, IGlobalIdentity<PhysicalInventoryLineStateEventId>, ICreated<string>
+	public interface IPhysicalInventoryLineStateEvent : IEvent, IStateEventDto, IGlobalIdentity<PhysicalInventoryLineEventId>, ICreated<string>
 	{
-		PhysicalInventoryLineStateEventId StateEventId { get; }
+		PhysicalInventoryLineEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

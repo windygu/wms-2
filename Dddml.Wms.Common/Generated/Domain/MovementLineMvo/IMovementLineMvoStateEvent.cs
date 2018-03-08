@@ -12,9 +12,9 @@ using Dddml.Wms.Domain.Movement;
 
 namespace Dddml.Wms.Domain.MovementLineMvo
 {
-	public interface IMovementLineMvoStateEvent : IEvent, IStateEventDto, IGlobalIdentity<MovementLineMvoStateEventId>, ICreated<string>
+	public interface IMovementLineMvoStateEvent : IEvent, IStateEventDto, IGlobalIdentity<MovementLineMvoEventId>, ICreated<string>
 	{
-		MovementLineMvoStateEventId StateEventId { get; }
+		MovementLineMvoEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

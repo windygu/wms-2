@@ -11,9 +11,9 @@ using Dddml.Wms.Domain.Party;
 
 namespace Dddml.Wms.Domain.Party
 {
-	public interface IPartyStateEvent : IEvent, IStateEventDto, IGlobalIdentity<PartyStateEventId>, ICreated<string>
+	public interface IPartyStateEvent : IEvent, IStateEventDto, IGlobalIdentity<PartyEventId>, ICreated<string>
 	{
-		PartyStateEventId StateEventId { get; }
+		PartyEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

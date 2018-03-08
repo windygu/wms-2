@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.Audience
 	public abstract class AudienceStateEventDtoBase : IStateEventDto, IAudienceStateCreated, IAudienceStateMergePatched, IAudienceStateDeleted
 	{
 
-        private AudienceStateEventIdDto _stateEventId;
+        private AudienceEventIdDto _stateEventId;
 
-		protected internal virtual AudienceStateEventIdDto StateEventId 
+		protected internal virtual AudienceEventIdDto StateEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new AudienceStateEventIdDto(); }
+                if (_stateEventId == null) { _stateEventId = new AudienceEventIdDto(); }
                 return _stateEventId;
             }
             set
@@ -56,10 +56,10 @@ namespace Dddml.Wms.Domain.Audience
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		AudienceStateEventId IGlobalIdentity<AudienceStateEventId>.GlobalId {
+		AudienceEventId IGlobalIdentity<AudienceEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToAudienceStateEventId();
+				return this.StateEventId.ToAudienceEventId();
 			}
 		}
 
@@ -153,16 +153,16 @@ namespace Dddml.Wms.Domain.Audience
 		}
 
 
-        AudienceStateEventId IAudienceStateEvent.StateEventId
+        AudienceEventId IAudienceStateEvent.StateEventId
         {
-            get { return this.StateEventId.ToAudienceStateEventId(); }
+            get { return this.StateEventId.ToAudienceEventId(); }
         }
 
         protected AudienceStateEventDtoBase()
         {
         }
 
-        protected AudienceStateEventDtoBase(AudienceStateEventIdDto stateEventId)
+        protected AudienceStateEventDtoBase(AudienceEventIdDto stateEventId)
         {
             this.StateEventId = stateEventId;
         }

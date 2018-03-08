@@ -104,7 +104,7 @@ namespace Dddml.Wms.Domain.Party
 
         protected virtual IPartyStateCreated Map(ICreateParty c)
         {
-			var stateEventId = new PartyStateEventId(c.PartyId, c.Version);
+			var stateEventId = new PartyEventId(c.PartyId, c.Version);
             IPartyStateCreated e = NewPartyStateCreated(stateEventId);
 		
             e.PartyTypeId = c.PartyTypeId;
@@ -126,7 +126,7 @@ namespace Dddml.Wms.Domain.Party
 
         protected virtual IPartyStateMergePatched Map(IMergePatchParty c)
         {
-			var stateEventId = new PartyStateEventId(c.PartyId, c.Version);
+			var stateEventId = new PartyEventId(c.PartyId, c.Version);
             IPartyStateMergePatched e = NewPartyStateMergePatched(stateEventId);
 
             e.PartyTypeId = c.PartyTypeId;
@@ -156,7 +156,7 @@ namespace Dddml.Wms.Domain.Party
 
         protected virtual IPartyStateDeleted Map(IDeleteParty c)
         {
-			var stateEventId = new PartyStateEventId(c.PartyId, c.Version);
+			var stateEventId = new PartyEventId(c.PartyId, c.Version);
             IPartyStateDeleted e = NewPartyStateDeleted(stateEventId);
 			
             e.CommandId = c.CommandId;
@@ -185,7 +185,7 @@ namespace Dddml.Wms.Domain.Party
 
         protected PartyStateCreated NewPartyStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new PartyStateEventId(_state.PartyId, version);
+            var stateEventId = new PartyEventId(_state.PartyId, version);
             var e = NewPartyStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -198,7 +198,7 @@ namespace Dddml.Wms.Domain.Party
 
         protected PartyStateMergePatched NewPartyStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new PartyStateEventId(_state.PartyId, version);
+            var stateEventId = new PartyEventId(_state.PartyId, version);
             var e = NewPartyStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -212,7 +212,7 @@ namespace Dddml.Wms.Domain.Party
 
         protected PartyStateDeleted NewPartyStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new PartyStateEventId(_state.PartyId, version);
+            var stateEventId = new PartyEventId(_state.PartyId, version);
             var e = NewPartyStateDeleted(stateEventId);
 
             e.CommandId = commandId;
@@ -225,17 +225,17 @@ namespace Dddml.Wms.Domain.Party
 
 ////////////////////////
 
-		private PartyStateCreated NewPartyStateCreated(PartyStateEventId stateEventId)
+		private PartyStateCreated NewPartyStateCreated(PartyEventId stateEventId)
 		{
 			return new PartyStateCreated(stateEventId);			
 		}
 
-        private PartyStateMergePatched NewPartyStateMergePatched(PartyStateEventId stateEventId)
+        private PartyStateMergePatched NewPartyStateMergePatched(PartyEventId stateEventId)
 		{
 			return new PartyStateMergePatched(stateEventId);
 		}
 
-        private PartyStateDeleted NewPartyStateDeleted(PartyStateEventId stateEventId)
+        private PartyStateDeleted NewPartyStateDeleted(PartyEventId stateEventId)
 		{
 			return new PartyStateDeleted(stateEventId);
 		}

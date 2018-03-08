@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.Audience
 	public abstract class AudienceStateEventBase : IAudienceStateEvent
 	{
 
-		public virtual AudienceStateEventId StateEventId { get; set; }
+		public virtual AudienceEventId StateEventId { get; set; }
 
         public virtual string ClientId
         {
@@ -37,7 +37,7 @@ namespace Dddml.Wms.Domain.Audience
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		AudienceStateEventId IGlobalIdentity<AudienceStateEventId>.GlobalId {
+		AudienceEventId IGlobalIdentity<AudienceEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -81,7 +81,7 @@ namespace Dddml.Wms.Domain.Audience
         {
         }
 
-        protected AudienceStateEventBase(AudienceStateEventId stateEventId)
+        protected AudienceStateEventBase(AudienceEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -98,11 +98,11 @@ namespace Dddml.Wms.Domain.Audience
 
 	public class AudienceStateCreated : AudienceStateEventBase, IAudienceStateCreated
 	{
-		public AudienceStateCreated () : this(new AudienceStateEventId())
+		public AudienceStateCreated () : this(new AudienceEventId())
 		{
 		}
 
-		public AudienceStateCreated (AudienceStateEventId stateEventId) : base(stateEventId)
+		public AudienceStateCreated (AudienceEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -128,7 +128,7 @@ namespace Dddml.Wms.Domain.Audience
 		{
 		}
 
-		public AudienceStateMergePatched (AudienceStateEventId stateEventId) : base(stateEventId)
+		public AudienceStateMergePatched (AudienceEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -147,7 +147,7 @@ namespace Dddml.Wms.Domain.Audience
 		{
 		}
 
-		public AudienceStateDeleted (AudienceStateEventId stateEventId) : base(stateEventId)
+		public AudienceStateDeleted (AudienceEventId stateEventId) : base(stateEventId)
 		{
 		}
 

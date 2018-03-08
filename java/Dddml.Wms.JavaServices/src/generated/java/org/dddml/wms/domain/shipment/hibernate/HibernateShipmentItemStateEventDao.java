@@ -34,12 +34,12 @@ public class HibernateShipmentItemStateEventDao implements ShipmentItemStateEven
 
     @Transactional(readOnly = true)
     @Override
-    public Iterable<ShipmentItemStateEvent> findByShipmentStateEventId(ShipmentStateEventId shipmentStateEventId)
+    public Iterable<ShipmentItemStateEvent> findByShipmentEventId(ShipmentEventId shipmentEventId)
     {
         Criteria criteria = getCurrentSession().createCriteria(AbstractShipmentItemStateEvent.class);
         Junction partIdCondition = Restrictions.conjunction()
-            .add(Restrictions.eq("stateEventId.shipmentId", shipmentStateEventId.getShipmentId()))
-            .add(Restrictions.eq("stateEventId.shipmentVersion", shipmentStateEventId.getVersion()))
+            .add(Restrictions.eq("stateEventId.shipmentId", shipmentEventId.getShipmentId()))
+            .add(Restrictions.eq("stateEventId.shipmentVersion", shipmentEventId.getVersion()))
             ;
         return criteria.add(partIdCondition).list();
     }

@@ -16,7 +16,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 	public abstract class MovementConfirmationLineMvoStateEventBase : IMovementConfirmationLineMvoStateEvent
 	{
 
-		public virtual MovementConfirmationLineMvoStateEventId StateEventId { get; set; }
+		public virtual MovementConfirmationLineMvoEventId StateEventId { get; set; }
 
         public virtual MovementConfirmationLineId MovementConfirmationLineId
         {
@@ -78,7 +78,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		MovementConfirmationLineMvoStateEventId IGlobalIdentity<MovementConfirmationLineMvoStateEventId>.GlobalId {
+		MovementConfirmationLineMvoEventId IGlobalIdentity<MovementConfirmationLineMvoEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -122,7 +122,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
         {
         }
 
-        protected MovementConfirmationLineMvoStateEventBase(MovementConfirmationLineMvoStateEventId stateEventId)
+        protected MovementConfirmationLineMvoStateEventBase(MovementConfirmationLineMvoEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -139,11 +139,11 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
 	public class MovementConfirmationLineMvoStateCreated : MovementConfirmationLineMvoStateEventBase, IMovementConfirmationLineMvoStateCreated
 	{
-		public MovementConfirmationLineMvoStateCreated () : this(new MovementConfirmationLineMvoStateEventId())
+		public MovementConfirmationLineMvoStateCreated () : this(new MovementConfirmationLineMvoEventId())
 		{
 		}
 
-		public MovementConfirmationLineMvoStateCreated (MovementConfirmationLineMvoStateEventId stateEventId) : base(stateEventId)
+		public MovementConfirmationLineMvoStateCreated (MovementConfirmationLineMvoEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -209,7 +209,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 		{
 		}
 
-		public MovementConfirmationLineMvoStateMergePatched (MovementConfirmationLineMvoStateEventId stateEventId) : base(stateEventId)
+		public MovementConfirmationLineMvoStateMergePatched (MovementConfirmationLineMvoEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -228,7 +228,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 		{
 		}
 
-		public MovementConfirmationLineMvoStateDeleted (MovementConfirmationLineMvoStateEventId stateEventId) : base(stateEventId)
+		public MovementConfirmationLineMvoStateDeleted (MovementConfirmationLineMvoEventId stateEventId) : base(stateEventId)
 		{
 		}
 

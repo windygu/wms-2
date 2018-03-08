@@ -17,7 +17,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 	public abstract class InventoryItemRequirementEntryMvoStateEventBase : IInventoryItemRequirementEntryMvoStateEvent
 	{
 
-		public virtual InventoryItemRequirementEntryMvoStateEventId StateEventId { get; set; }
+		public virtual InventoryItemRequirementEntryMvoEventId StateEventId { get; set; }
 
         public virtual InventoryItemRequirementEntryId InventoryItemRequirementEntryId
         {
@@ -49,7 +49,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		InventoryItemRequirementEntryMvoStateEventId IGlobalIdentity<InventoryItemRequirementEntryMvoStateEventId>.GlobalId {
+		InventoryItemRequirementEntryMvoEventId IGlobalIdentity<InventoryItemRequirementEntryMvoEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -93,7 +93,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
         {
         }
 
-        protected InventoryItemRequirementEntryMvoStateEventBase(InventoryItemRequirementEntryMvoStateEventId stateEventId)
+        protected InventoryItemRequirementEntryMvoStateEventBase(InventoryItemRequirementEntryMvoEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -110,11 +110,11 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 
 	public class InventoryItemRequirementEntryMvoStateCreated : InventoryItemRequirementEntryMvoStateEventBase, IInventoryItemRequirementEntryMvoStateCreated
 	{
-		public InventoryItemRequirementEntryMvoStateCreated () : this(new InventoryItemRequirementEntryMvoStateEventId())
+		public InventoryItemRequirementEntryMvoStateCreated () : this(new InventoryItemRequirementEntryMvoEventId())
 		{
 		}
 
-		public InventoryItemRequirementEntryMvoStateCreated (InventoryItemRequirementEntryMvoStateEventId stateEventId) : base(stateEventId)
+		public InventoryItemRequirementEntryMvoStateCreated (InventoryItemRequirementEntryMvoEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -150,7 +150,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 		{
 		}
 
-		public InventoryItemRequirementEntryMvoStateMergePatched (InventoryItemRequirementEntryMvoStateEventId stateEventId) : base(stateEventId)
+		public InventoryItemRequirementEntryMvoStateMergePatched (InventoryItemRequirementEntryMvoEventId stateEventId) : base(stateEventId)
 		{
 		}
 

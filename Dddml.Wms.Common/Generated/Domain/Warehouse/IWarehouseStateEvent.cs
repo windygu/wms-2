@@ -11,9 +11,9 @@ using Dddml.Wms.Domain.Warehouse;
 
 namespace Dddml.Wms.Domain.Warehouse
 {
-	public interface IWarehouseStateEvent : IEvent, IStateEventDto, IGlobalIdentity<WarehouseStateEventId>, ICreated<string>
+	public interface IWarehouseStateEvent : IEvent, IStateEventDto, IGlobalIdentity<WarehouseEventId>, ICreated<string>
 	{
-		WarehouseStateEventId StateEventId { get; }
+		WarehouseEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

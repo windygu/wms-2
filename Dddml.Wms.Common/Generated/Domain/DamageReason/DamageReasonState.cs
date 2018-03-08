@@ -259,7 +259,7 @@ namespace Dddml.Wms.Domain.DamageReason
             id.Append("[").Append("DamageReason|");
 
             var stateEntityId = this.DamageReasonId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.DamageReasonId; // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+            var eventEntityId = stateEvent.StateEventId.DamageReasonId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);

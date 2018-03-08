@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 	public abstract class AttributeSetInstanceExtensionFieldGroupStateEventDtoBase : IStateEventDto, IAttributeSetInstanceExtensionFieldGroupStateCreated, IAttributeSetInstanceExtensionFieldGroupStateMergePatched, IAttributeSetInstanceExtensionFieldGroupStateDeleted
 	{
 
-        private AttributeSetInstanceExtensionFieldGroupStateEventIdDto _stateEventId;
+        private AttributeSetInstanceExtensionFieldGroupEventIdDto _stateEventId;
 
-		protected internal virtual AttributeSetInstanceExtensionFieldGroupStateEventIdDto StateEventId 
+		protected internal virtual AttributeSetInstanceExtensionFieldGroupEventIdDto StateEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new AttributeSetInstanceExtensionFieldGroupStateEventIdDto(); }
+                if (_stateEventId == null) { _stateEventId = new AttributeSetInstanceExtensionFieldGroupEventIdDto(); }
                 return _stateEventId;
             }
             set
@@ -62,10 +62,10 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		AttributeSetInstanceExtensionFieldGroupStateEventId IGlobalIdentity<AttributeSetInstanceExtensionFieldGroupStateEventId>.GlobalId {
+		AttributeSetInstanceExtensionFieldGroupEventId IGlobalIdentity<AttributeSetInstanceExtensionFieldGroupEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToAttributeSetInstanceExtensionFieldGroupStateEventId();
+				return this.StateEventId.ToAttributeSetInstanceExtensionFieldGroupEventId();
 			}
 		}
 
@@ -216,16 +216,16 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 		}
 
 
-        AttributeSetInstanceExtensionFieldGroupStateEventId IAttributeSetInstanceExtensionFieldGroupStateEvent.StateEventId
+        AttributeSetInstanceExtensionFieldGroupEventId IAttributeSetInstanceExtensionFieldGroupStateEvent.StateEventId
         {
-            get { return this.StateEventId.ToAttributeSetInstanceExtensionFieldGroupStateEventId(); }
+            get { return this.StateEventId.ToAttributeSetInstanceExtensionFieldGroupEventId(); }
         }
 
         protected AttributeSetInstanceExtensionFieldGroupStateEventDtoBase()
         {
         }
 
-        protected AttributeSetInstanceExtensionFieldGroupStateEventDtoBase(AttributeSetInstanceExtensionFieldGroupStateEventIdDto stateEventId)
+        protected AttributeSetInstanceExtensionFieldGroupStateEventDtoBase(AttributeSetInstanceExtensionFieldGroupEventIdDto stateEventId)
         {
             this.StateEventId = stateEventId;
         }

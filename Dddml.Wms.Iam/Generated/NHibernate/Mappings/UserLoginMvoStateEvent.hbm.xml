@@ -5,7 +5,7 @@
   
   <class name="UserLoginMvoStateEventBase" table="UserLoginMvoStateEvents" mutable="false" abstract="true">
 
-    <composite-id name="StateEventId" class="Dddml.Wms.Domain.UserLoginMvo.UserLoginMvoStateEventId">
+    <composite-id name="StateEventId" class="Dddml.Wms.Domain.UserLoginMvo.UserLoginMvoEventId">
         <key-property name="UserLoginIdUserId" ><column name="UserLoginIdUserId" length="50" /></key-property>
         <key-property name="UserLoginIdLoginKeyLoginProvider" ></key-property>
         <key-property name="UserLoginIdLoginKeyProviderKey" ></key-property>

@@ -8,14 +8,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractLocatorStateEvent extends AbstractStateEvent implements LocatorStateEvent 
 {
-    private LocatorStateEventId stateEventId;
+    private LocatorEventId stateEventId;
 
-    public LocatorStateEventId getStateEventId() {
+    public LocatorEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(LocatorStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(LocatorEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public String getLocatorId() {
@@ -190,8 +190,8 @@ public abstract class AbstractLocatorStateEvent extends AbstractStateEvent imple
     protected AbstractLocatorStateEvent() {
     }
 
-    protected AbstractLocatorStateEvent(LocatorStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractLocatorStateEvent(LocatorEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -201,11 +201,11 @@ public abstract class AbstractLocatorStateEvent extends AbstractStateEvent imple
     public static abstract class AbstractLocatorStateCreated extends AbstractLocatorStateEvent implements LocatorStateEvent.LocatorStateCreated
     {
         public AbstractLocatorStateCreated() {
-            this(new LocatorStateEventId());
+            this(new LocatorEventId());
         }
 
-        public AbstractLocatorStateCreated(LocatorStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractLocatorStateCreated(LocatorEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -218,11 +218,11 @@ public abstract class AbstractLocatorStateEvent extends AbstractStateEvent imple
     public static abstract class AbstractLocatorStateMergePatched extends AbstractLocatorStateEvent implements LocatorStateEvent.LocatorStateMergePatched
     {
         public AbstractLocatorStateMergePatched() {
-            this(new LocatorStateEventId());
+            this(new LocatorEventId());
         }
 
-        public AbstractLocatorStateMergePatched(LocatorStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractLocatorStateMergePatched(LocatorEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -335,11 +335,11 @@ public abstract class AbstractLocatorStateEvent extends AbstractStateEvent imple
     public static abstract class AbstractLocatorStateDeleted extends AbstractLocatorStateEvent implements LocatorStateEvent.LocatorStateDeleted
     {
         public AbstractLocatorStateDeleted() {
-            this(new LocatorStateEventId());
+            this(new LocatorEventId());
         }
 
-        public AbstractLocatorStateDeleted(LocatorStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractLocatorStateDeleted(LocatorEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -352,8 +352,8 @@ public abstract class AbstractLocatorStateEvent extends AbstractStateEvent imple
         public SimpleLocatorStateCreated() {
         }
 
-        public SimpleLocatorStateCreated(LocatorStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleLocatorStateCreated(LocatorEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -362,8 +362,8 @@ public abstract class AbstractLocatorStateEvent extends AbstractStateEvent imple
         public SimpleLocatorStateMergePatched() {
         }
 
-        public SimpleLocatorStateMergePatched(LocatorStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleLocatorStateMergePatched(LocatorEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -372,8 +372,8 @@ public abstract class AbstractLocatorStateEvent extends AbstractStateEvent imple
         public SimpleLocatorStateDeleted() {
         }
 
-        public SimpleLocatorStateDeleted(LocatorStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleLocatorStateDeleted(LocatorEventId eventId) {
+            super(eventId);
         }
     }
 

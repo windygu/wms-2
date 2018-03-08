@@ -5,7 +5,7 @@
   
   <class name="AttributeSetStateEventBase" table="AttributeSetStateEvents" mutable="false" abstract="true">
 
-    <composite-id name="StateEventId" class="Dddml.Wms.Domain.AttributeSet.AttributeSetStateEventId">
+    <composite-id name="StateEventId" class="Dddml.Wms.Domain.AttributeSet.AttributeSetEventId">
         <key-property name="AttributeSetId" ><column name="AttributeSetId" length="50" /></key-property>
         <key-property name="Version" ></key-property>
     </composite-id>

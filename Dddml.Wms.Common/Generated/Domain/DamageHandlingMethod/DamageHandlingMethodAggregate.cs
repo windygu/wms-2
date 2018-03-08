@@ -104,7 +104,7 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 
         protected virtual IDamageHandlingMethodStateCreated Map(ICreateDamageHandlingMethod c)
         {
-			var stateEventId = new DamageHandlingMethodStateEventId(c.DamageHandlingMethodId, c.Version);
+			var stateEventId = new DamageHandlingMethodEventId(c.DamageHandlingMethodId, c.Version);
             IDamageHandlingMethodStateCreated e = NewDamageHandlingMethodStateCreated(stateEventId);
 		
             e.Description = c.Description;
@@ -123,7 +123,7 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 
         protected virtual IDamageHandlingMethodStateMergePatched Map(IMergePatchDamageHandlingMethod c)
         {
-			var stateEventId = new DamageHandlingMethodStateEventId(c.DamageHandlingMethodId, c.Version);
+			var stateEventId = new DamageHandlingMethodEventId(c.DamageHandlingMethodId, c.Version);
             IDamageHandlingMethodStateMergePatched e = NewDamageHandlingMethodStateMergePatched(stateEventId);
 
             e.Description = c.Description;
@@ -147,7 +147,7 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 
         protected virtual IDamageHandlingMethodStateDeleted Map(IDeleteDamageHandlingMethod c)
         {
-			var stateEventId = new DamageHandlingMethodStateEventId(c.DamageHandlingMethodId, c.Version);
+			var stateEventId = new DamageHandlingMethodEventId(c.DamageHandlingMethodId, c.Version);
             IDamageHandlingMethodStateDeleted e = NewDamageHandlingMethodStateDeleted(stateEventId);
 			
             e.CommandId = c.CommandId;
@@ -176,7 +176,7 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 
         protected DamageHandlingMethodStateCreated NewDamageHandlingMethodStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new DamageHandlingMethodStateEventId(_state.DamageHandlingMethodId, version);
+            var stateEventId = new DamageHandlingMethodEventId(_state.DamageHandlingMethodId, version);
             var e = NewDamageHandlingMethodStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -189,7 +189,7 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 
         protected DamageHandlingMethodStateMergePatched NewDamageHandlingMethodStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new DamageHandlingMethodStateEventId(_state.DamageHandlingMethodId, version);
+            var stateEventId = new DamageHandlingMethodEventId(_state.DamageHandlingMethodId, version);
             var e = NewDamageHandlingMethodStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -203,7 +203,7 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 
         protected DamageHandlingMethodStateDeleted NewDamageHandlingMethodStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new DamageHandlingMethodStateEventId(_state.DamageHandlingMethodId, version);
+            var stateEventId = new DamageHandlingMethodEventId(_state.DamageHandlingMethodId, version);
             var e = NewDamageHandlingMethodStateDeleted(stateEventId);
 
             e.CommandId = commandId;
@@ -216,17 +216,17 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 
 ////////////////////////
 
-		private DamageHandlingMethodStateCreated NewDamageHandlingMethodStateCreated(DamageHandlingMethodStateEventId stateEventId)
+		private DamageHandlingMethodStateCreated NewDamageHandlingMethodStateCreated(DamageHandlingMethodEventId stateEventId)
 		{
 			return new DamageHandlingMethodStateCreated(stateEventId);			
 		}
 
-        private DamageHandlingMethodStateMergePatched NewDamageHandlingMethodStateMergePatched(DamageHandlingMethodStateEventId stateEventId)
+        private DamageHandlingMethodStateMergePatched NewDamageHandlingMethodStateMergePatched(DamageHandlingMethodEventId stateEventId)
 		{
 			return new DamageHandlingMethodStateMergePatched(stateEventId);
 		}
 
-        private DamageHandlingMethodStateDeleted NewDamageHandlingMethodStateDeleted(DamageHandlingMethodStateEventId stateEventId)
+        private DamageHandlingMethodStateDeleted NewDamageHandlingMethodStateDeleted(DamageHandlingMethodEventId stateEventId)
 		{
 			return new DamageHandlingMethodStateDeleted(stateEventId);
 		}

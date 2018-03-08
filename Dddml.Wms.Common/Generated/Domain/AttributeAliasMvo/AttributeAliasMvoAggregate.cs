@@ -105,7 +105,7 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 
         protected virtual IAttributeAliasMvoStateCreated Map(ICreateAttributeAliasMvo c)
         {
-			var stateEventId = new AttributeAliasMvoStateEventId(c.AttributeAliasId, c.AttributeVersion);
+			var stateEventId = new AttributeAliasMvoEventId(c.AttributeAliasId, c.AttributeVersion);
             IAttributeAliasMvoStateCreated e = NewAttributeAliasMvoStateCreated(stateEventId);
 		
             e.Name = c.Name;
@@ -139,7 +139,7 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 
         protected virtual IAttributeAliasMvoStateMergePatched Map(IMergePatchAttributeAliasMvo c)
         {
-			var stateEventId = new AttributeAliasMvoStateEventId(c.AttributeAliasId, c.AttributeVersion);
+			var stateEventId = new AttributeAliasMvoEventId(c.AttributeAliasId, c.AttributeVersion);
             IAttributeAliasMvoStateMergePatched e = NewAttributeAliasMvoStateMergePatched(stateEventId);
 
             e.Name = c.Name;
@@ -193,7 +193,7 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 
         protected virtual IAttributeAliasMvoStateDeleted Map(IDeleteAttributeAliasMvo c)
         {
-			var stateEventId = new AttributeAliasMvoStateEventId(c.AttributeAliasId, c.AttributeVersion);
+			var stateEventId = new AttributeAliasMvoEventId(c.AttributeAliasId, c.AttributeVersion);
             IAttributeAliasMvoStateDeleted e = NewAttributeAliasMvoStateDeleted(stateEventId);
 			
             e.CommandId = c.CommandId;
@@ -222,7 +222,7 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 
         protected AttributeAliasMvoStateCreated NewAttributeAliasMvoStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new AttributeAliasMvoStateEventId(_state.AttributeAliasId, version);
+            var stateEventId = new AttributeAliasMvoEventId(_state.AttributeAliasId, version);
             var e = NewAttributeAliasMvoStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -235,7 +235,7 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 
         protected AttributeAliasMvoStateMergePatched NewAttributeAliasMvoStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new AttributeAliasMvoStateEventId(_state.AttributeAliasId, version);
+            var stateEventId = new AttributeAliasMvoEventId(_state.AttributeAliasId, version);
             var e = NewAttributeAliasMvoStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -249,7 +249,7 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 
         protected AttributeAliasMvoStateDeleted NewAttributeAliasMvoStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new AttributeAliasMvoStateEventId(_state.AttributeAliasId, version);
+            var stateEventId = new AttributeAliasMvoEventId(_state.AttributeAliasId, version);
             var e = NewAttributeAliasMvoStateDeleted(stateEventId);
 
             e.CommandId = commandId;
@@ -262,17 +262,17 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 
 ////////////////////////
 
-		private AttributeAliasMvoStateCreated NewAttributeAliasMvoStateCreated(AttributeAliasMvoStateEventId stateEventId)
+		private AttributeAliasMvoStateCreated NewAttributeAliasMvoStateCreated(AttributeAliasMvoEventId stateEventId)
 		{
 			return new AttributeAliasMvoStateCreated(stateEventId);			
 		}
 
-        private AttributeAliasMvoStateMergePatched NewAttributeAliasMvoStateMergePatched(AttributeAliasMvoStateEventId stateEventId)
+        private AttributeAliasMvoStateMergePatched NewAttributeAliasMvoStateMergePatched(AttributeAliasMvoEventId stateEventId)
 		{
 			return new AttributeAliasMvoStateMergePatched(stateEventId);
 		}
 
-        private AttributeAliasMvoStateDeleted NewAttributeAliasMvoStateDeleted(AttributeAliasMvoStateEventId stateEventId)
+        private AttributeAliasMvoStateDeleted NewAttributeAliasMvoStateDeleted(AttributeAliasMvoEventId stateEventId)
 		{
 			return new AttributeAliasMvoStateDeleted(stateEventId);
 		}

@@ -11,9 +11,9 @@ using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.InventoryItem
 {
-	public interface IInventoryItemEntryStateEvent : IEvent, IStateEventDto, IGlobalIdentity<InventoryItemEntryStateEventId>, ICreated<string>
+	public interface IInventoryItemEntryStateEvent : IEvent, IStateEventDto, IGlobalIdentity<InventoryItemEntryEventId>, ICreated<string>
 	{
-		InventoryItemEntryStateEventId StateEventId { get; }
+		InventoryItemEntryEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

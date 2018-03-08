@@ -105,7 +105,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
         protected virtual IMovementConfirmationLineMvoStateCreated Map(ICreateMovementConfirmationLineMvo c)
         {
-			var stateEventId = new MovementConfirmationLineMvoStateEventId(c.MovementConfirmationLineId, c.MovementConfirmationVersion);
+			var stateEventId = new MovementConfirmationLineMvoEventId(c.MovementConfirmationLineId, c.MovementConfirmationVersion);
             IMovementConfirmationLineMvoStateCreated e = NewMovementConfirmationLineMvoStateCreated(stateEventId);
 		
             e.MovementLineNumber = c.MovementLineNumber;
@@ -144,7 +144,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
         protected virtual IMovementConfirmationLineMvoStateMergePatched Map(IMergePatchMovementConfirmationLineMvo c)
         {
-			var stateEventId = new MovementConfirmationLineMvoStateEventId(c.MovementConfirmationLineId, c.MovementConfirmationVersion);
+			var stateEventId = new MovementConfirmationLineMvoEventId(c.MovementConfirmationLineId, c.MovementConfirmationVersion);
             IMovementConfirmationLineMvoStateMergePatched e = NewMovementConfirmationLineMvoStateMergePatched(stateEventId);
 
             e.MovementLineNumber = c.MovementLineNumber;
@@ -208,7 +208,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
         protected virtual IMovementConfirmationLineMvoStateDeleted Map(IDeleteMovementConfirmationLineMvo c)
         {
-			var stateEventId = new MovementConfirmationLineMvoStateEventId(c.MovementConfirmationLineId, c.MovementConfirmationVersion);
+			var stateEventId = new MovementConfirmationLineMvoEventId(c.MovementConfirmationLineId, c.MovementConfirmationVersion);
             IMovementConfirmationLineMvoStateDeleted e = NewMovementConfirmationLineMvoStateDeleted(stateEventId);
 			
             e.CommandId = c.CommandId;
@@ -237,7 +237,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
         protected MovementConfirmationLineMvoStateCreated NewMovementConfirmationLineMvoStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new MovementConfirmationLineMvoStateEventId(_state.MovementConfirmationLineId, version);
+            var stateEventId = new MovementConfirmationLineMvoEventId(_state.MovementConfirmationLineId, version);
             var e = NewMovementConfirmationLineMvoStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -250,7 +250,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
         protected MovementConfirmationLineMvoStateMergePatched NewMovementConfirmationLineMvoStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new MovementConfirmationLineMvoStateEventId(_state.MovementConfirmationLineId, version);
+            var stateEventId = new MovementConfirmationLineMvoEventId(_state.MovementConfirmationLineId, version);
             var e = NewMovementConfirmationLineMvoStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -264,7 +264,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
         protected MovementConfirmationLineMvoStateDeleted NewMovementConfirmationLineMvoStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new MovementConfirmationLineMvoStateEventId(_state.MovementConfirmationLineId, version);
+            var stateEventId = new MovementConfirmationLineMvoEventId(_state.MovementConfirmationLineId, version);
             var e = NewMovementConfirmationLineMvoStateDeleted(stateEventId);
 
             e.CommandId = commandId;
@@ -277,17 +277,17 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
 ////////////////////////
 
-		private MovementConfirmationLineMvoStateCreated NewMovementConfirmationLineMvoStateCreated(MovementConfirmationLineMvoStateEventId stateEventId)
+		private MovementConfirmationLineMvoStateCreated NewMovementConfirmationLineMvoStateCreated(MovementConfirmationLineMvoEventId stateEventId)
 		{
 			return new MovementConfirmationLineMvoStateCreated(stateEventId);			
 		}
 
-        private MovementConfirmationLineMvoStateMergePatched NewMovementConfirmationLineMvoStateMergePatched(MovementConfirmationLineMvoStateEventId stateEventId)
+        private MovementConfirmationLineMvoStateMergePatched NewMovementConfirmationLineMvoStateMergePatched(MovementConfirmationLineMvoEventId stateEventId)
 		{
 			return new MovementConfirmationLineMvoStateMergePatched(stateEventId);
 		}
 
-        private MovementConfirmationLineMvoStateDeleted NewMovementConfirmationLineMvoStateDeleted(MovementConfirmationLineMvoStateEventId stateEventId)
+        private MovementConfirmationLineMvoStateDeleted NewMovementConfirmationLineMvoStateDeleted(MovementConfirmationLineMvoEventId stateEventId)
 		{
 			return new MovementConfirmationLineMvoStateDeleted(stateEventId);
 		}

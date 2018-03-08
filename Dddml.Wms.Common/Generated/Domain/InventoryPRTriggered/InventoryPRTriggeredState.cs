@@ -200,7 +200,7 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
             id.Append("[").Append("InventoryPRTriggered|");
 
             var stateEntityId = this.InventoryPRTriggeredId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.InventoryPRTriggeredId; // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+            var eventEntityId = stateEvent.StateEventId.InventoryPRTriggeredId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);

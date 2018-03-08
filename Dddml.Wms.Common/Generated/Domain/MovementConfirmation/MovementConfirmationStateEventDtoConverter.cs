@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
         public virtual MovementConfirmationStateCreatedDto ToMovementConfirmationStateCreatedDto(IMovementConfirmationStateCreated e)
         {
             var dto = new MovementConfirmationStateCreatedDto();
-            dto.StateEventId = new MovementConfirmationStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new MovementConfirmationEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -65,7 +65,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
         public virtual MovementConfirmationStateMergePatchedDto ToMovementConfirmationStateMergePatchedDto(IMovementConfirmationStateMergePatched e)
         {
             var dto = new MovementConfirmationStateMergePatchedDto();
-            dto.StateEventId = new MovementConfirmationStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new MovementConfirmationEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -103,7 +103,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
         public virtual MovementConfirmationStateDeletedDto ToMovementConfirmationStateDeletedDto(IMovementConfirmationStateDeleted e)
         {
             var dto = new MovementConfirmationStateDeletedDto();
-            dto.StateEventId = new MovementConfirmationStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new MovementConfirmationEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

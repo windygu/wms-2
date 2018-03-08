@@ -52,7 +52,7 @@ public abstract class AbstractInventoryItemRequirementEntryMvoAggregate extends 
     }
 
     protected InventoryItemRequirementEntryMvoStateEvent map(InventoryItemRequirementEntryMvoCommand.CreateInventoryItemRequirementEntryMvo c) {
-        InventoryItemRequirementEntryMvoStateEventId stateEventId = new InventoryItemRequirementEntryMvoStateEventId(c.getInventoryItemRequirementEntryId(), c.getInventoryItemRequirementVersion());
+        InventoryItemRequirementEntryMvoEventId stateEventId = new InventoryItemRequirementEntryMvoEventId(c.getInventoryItemRequirementEntryId(), c.getInventoryItemRequirementVersion());
         InventoryItemRequirementEntryMvoStateEvent.InventoryItemRequirementEntryMvoStateCreated e = newInventoryItemRequirementEntryMvoStateCreated(stateEventId);
         e.setQuantity(c.getQuantity());
         e.setSourceEventId(c.getSourceEventId());
@@ -69,7 +69,7 @@ public abstract class AbstractInventoryItemRequirementEntryMvoAggregate extends 
     }
 
     protected InventoryItemRequirementEntryMvoStateEvent map(InventoryItemRequirementEntryMvoCommand.MergePatchInventoryItemRequirementEntryMvo c) {
-        InventoryItemRequirementEntryMvoStateEventId stateEventId = new InventoryItemRequirementEntryMvoStateEventId(c.getInventoryItemRequirementEntryId(), c.getInventoryItemRequirementVersion());
+        InventoryItemRequirementEntryMvoEventId stateEventId = new InventoryItemRequirementEntryMvoEventId(c.getInventoryItemRequirementEntryId(), c.getInventoryItemRequirementVersion());
         InventoryItemRequirementEntryMvoStateEvent.InventoryItemRequirementEntryMvoStateMergePatched e = newInventoryItemRequirementEntryMvoStateMergePatched(stateEventId);
         e.setQuantity(c.getQuantity());
         e.setSourceEventId(c.getSourceEventId());
@@ -97,7 +97,7 @@ public abstract class AbstractInventoryItemRequirementEntryMvoAggregate extends 
     ////////////////////////
 
     protected InventoryItemRequirementEntryMvoStateEvent.InventoryItemRequirementEntryMvoStateCreated newInventoryItemRequirementEntryMvoStateCreated(Long version, String commandId, String requesterId) {
-        InventoryItemRequirementEntryMvoStateEventId stateEventId = new InventoryItemRequirementEntryMvoStateEventId(this.state.getInventoryItemRequirementEntryId(), version);
+        InventoryItemRequirementEntryMvoEventId stateEventId = new InventoryItemRequirementEntryMvoEventId(this.state.getInventoryItemRequirementEntryId(), version);
         InventoryItemRequirementEntryMvoStateEvent.InventoryItemRequirementEntryMvoStateCreated e = newInventoryItemRequirementEntryMvoStateCreated(stateEventId);
         ((AbstractInventoryItemRequirementEntryMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -106,7 +106,7 @@ public abstract class AbstractInventoryItemRequirementEntryMvoAggregate extends 
     }
 
     protected InventoryItemRequirementEntryMvoStateEvent.InventoryItemRequirementEntryMvoStateMergePatched newInventoryItemRequirementEntryMvoStateMergePatched(Long version, String commandId, String requesterId) {
-        InventoryItemRequirementEntryMvoStateEventId stateEventId = new InventoryItemRequirementEntryMvoStateEventId(this.state.getInventoryItemRequirementEntryId(), version);
+        InventoryItemRequirementEntryMvoEventId stateEventId = new InventoryItemRequirementEntryMvoEventId(this.state.getInventoryItemRequirementEntryId(), version);
         InventoryItemRequirementEntryMvoStateEvent.InventoryItemRequirementEntryMvoStateMergePatched e = newInventoryItemRequirementEntryMvoStateMergePatched(stateEventId);
         ((AbstractInventoryItemRequirementEntryMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -114,11 +114,11 @@ public abstract class AbstractInventoryItemRequirementEntryMvoAggregate extends 
         return e;
     }
 
-    protected InventoryItemRequirementEntryMvoStateEvent.InventoryItemRequirementEntryMvoStateCreated newInventoryItemRequirementEntryMvoStateCreated(InventoryItemRequirementEntryMvoStateEventId stateEventId) {
+    protected InventoryItemRequirementEntryMvoStateEvent.InventoryItemRequirementEntryMvoStateCreated newInventoryItemRequirementEntryMvoStateCreated(InventoryItemRequirementEntryMvoEventId stateEventId) {
         return new AbstractInventoryItemRequirementEntryMvoStateEvent.SimpleInventoryItemRequirementEntryMvoStateCreated(stateEventId);
     }
 
-    protected InventoryItemRequirementEntryMvoStateEvent.InventoryItemRequirementEntryMvoStateMergePatched newInventoryItemRequirementEntryMvoStateMergePatched(InventoryItemRequirementEntryMvoStateEventId stateEventId) {
+    protected InventoryItemRequirementEntryMvoStateEvent.InventoryItemRequirementEntryMvoStateMergePatched newInventoryItemRequirementEntryMvoStateMergePatched(InventoryItemRequirementEntryMvoEventId stateEventId) {
         return new AbstractInventoryItemRequirementEntryMvoStateEvent.SimpleInventoryItemRequirementEntryMvoStateMergePatched(stateEventId);
     }
 

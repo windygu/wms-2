@@ -55,7 +55,7 @@ public abstract class AbstractWarehouseAggregate extends AbstractAggregate imple
     }
 
     protected WarehouseStateEvent map(WarehouseCommand.CreateWarehouse c) {
-        WarehouseStateEventId stateEventId = new WarehouseStateEventId(c.getWarehouseId(), c.getVersion());
+        WarehouseEventId stateEventId = new WarehouseEventId(c.getWarehouseId(), c.getVersion());
         WarehouseStateEvent.WarehouseStateCreated e = newWarehouseStateCreated(stateEventId);
         e.setWarehouseName(c.getWarehouseName());
         e.setDescription(c.getDescription());
@@ -68,7 +68,7 @@ public abstract class AbstractWarehouseAggregate extends AbstractAggregate imple
     }
 
     protected WarehouseStateEvent map(WarehouseCommand.MergePatchWarehouse c) {
-        WarehouseStateEventId stateEventId = new WarehouseStateEventId(c.getWarehouseId(), c.getVersion());
+        WarehouseEventId stateEventId = new WarehouseEventId(c.getWarehouseId(), c.getVersion());
         WarehouseStateEvent.WarehouseStateMergePatched e = newWarehouseStateMergePatched(stateEventId);
         e.setWarehouseName(c.getWarehouseName());
         e.setDescription(c.getDescription());
@@ -85,7 +85,7 @@ public abstract class AbstractWarehouseAggregate extends AbstractAggregate imple
     }
 
     protected WarehouseStateEvent map(WarehouseCommand.DeleteWarehouse c) {
-        WarehouseStateEventId stateEventId = new WarehouseStateEventId(c.getWarehouseId(), c.getVersion());
+        WarehouseEventId stateEventId = new WarehouseEventId(c.getWarehouseId(), c.getVersion());
         WarehouseStateEvent.WarehouseStateDeleted e = newWarehouseStateDeleted(stateEventId);
         ((AbstractWarehouseStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
@@ -97,7 +97,7 @@ public abstract class AbstractWarehouseAggregate extends AbstractAggregate imple
     ////////////////////////
 
     protected WarehouseStateEvent.WarehouseStateCreated newWarehouseStateCreated(Long version, String commandId, String requesterId) {
-        WarehouseStateEventId stateEventId = new WarehouseStateEventId(this.state.getWarehouseId(), version);
+        WarehouseEventId stateEventId = new WarehouseEventId(this.state.getWarehouseId(), version);
         WarehouseStateEvent.WarehouseStateCreated e = newWarehouseStateCreated(stateEventId);
         ((AbstractWarehouseStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -106,7 +106,7 @@ public abstract class AbstractWarehouseAggregate extends AbstractAggregate imple
     }
 
     protected WarehouseStateEvent.WarehouseStateMergePatched newWarehouseStateMergePatched(Long version, String commandId, String requesterId) {
-        WarehouseStateEventId stateEventId = new WarehouseStateEventId(this.state.getWarehouseId(), version);
+        WarehouseEventId stateEventId = new WarehouseEventId(this.state.getWarehouseId(), version);
         WarehouseStateEvent.WarehouseStateMergePatched e = newWarehouseStateMergePatched(stateEventId);
         ((AbstractWarehouseStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -115,7 +115,7 @@ public abstract class AbstractWarehouseAggregate extends AbstractAggregate imple
     }
 
     protected WarehouseStateEvent.WarehouseStateDeleted newWarehouseStateDeleted(Long version, String commandId, String requesterId) {
-        WarehouseStateEventId stateEventId = new WarehouseStateEventId(this.state.getWarehouseId(), version);
+        WarehouseEventId stateEventId = new WarehouseEventId(this.state.getWarehouseId(), version);
         WarehouseStateEvent.WarehouseStateDeleted e = newWarehouseStateDeleted(stateEventId);
         ((AbstractWarehouseStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -123,15 +123,15 @@ public abstract class AbstractWarehouseAggregate extends AbstractAggregate imple
         return e;
     }
 
-    protected WarehouseStateEvent.WarehouseStateCreated newWarehouseStateCreated(WarehouseStateEventId stateEventId) {
+    protected WarehouseStateEvent.WarehouseStateCreated newWarehouseStateCreated(WarehouseEventId stateEventId) {
         return new AbstractWarehouseStateEvent.SimpleWarehouseStateCreated(stateEventId);
     }
 
-    protected WarehouseStateEvent.WarehouseStateMergePatched newWarehouseStateMergePatched(WarehouseStateEventId stateEventId) {
+    protected WarehouseStateEvent.WarehouseStateMergePatched newWarehouseStateMergePatched(WarehouseEventId stateEventId) {
         return new AbstractWarehouseStateEvent.SimpleWarehouseStateMergePatched(stateEventId);
     }
 
-    protected WarehouseStateEvent.WarehouseStateDeleted newWarehouseStateDeleted(WarehouseStateEventId stateEventId)
+    protected WarehouseStateEvent.WarehouseStateDeleted newWarehouseStateDeleted(WarehouseEventId stateEventId)
     {
         return new AbstractWarehouseStateEvent.SimpleWarehouseStateDeleted(stateEventId);
     }

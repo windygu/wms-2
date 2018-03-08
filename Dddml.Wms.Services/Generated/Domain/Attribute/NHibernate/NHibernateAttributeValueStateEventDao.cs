@@ -39,12 +39,12 @@ namespace Dddml.Wms.Domain.Attribute.NHibernate
         }
 
         [Transaction(ReadOnly = true)]
-        public IEnumerable<IAttributeValueStateEvent> FindByAttributeStateEventId(AttributeStateEventId attributeStateEventId)
+        public IEnumerable<IAttributeValueStateEvent> FindByAttributeEventId(AttributeEventId attributeEventId)
         {
             var criteria = CurrentSession.CreateCriteria<AttributeValueStateEventBase>();
             var partIdCondition = Restrictions.Conjunction()
-                .Add(Restrictions.Eq("StateEventId.AttributeId", attributeStateEventId.AttributeId))
-                .Add(Restrictions.Eq("StateEventId.AttributeVersion", attributeStateEventId.Version))
+                .Add(Restrictions.Eq("StateEventId.AttributeId", attributeEventId.AttributeId))
+                .Add(Restrictions.Eq("StateEventId.AttributeVersion", attributeEventId.Version))
                 ;
 
             return criteria.Add(partIdCondition).List<AttributeValueStateEventBase>();

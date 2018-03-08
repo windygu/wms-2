@@ -302,7 +302,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             id.Append("[").Append("InventoryPostingRule|");
 
             var stateEntityId = this.InventoryPostingRuleId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.InventoryPostingRuleId; // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+            var eventEntityId = stateEvent.StateEventId.InventoryPostingRuleId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);

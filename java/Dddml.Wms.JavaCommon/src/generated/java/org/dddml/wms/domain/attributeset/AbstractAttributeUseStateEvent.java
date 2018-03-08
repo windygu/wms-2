@@ -8,14 +8,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractAttributeUseStateEvent extends AbstractStateEvent implements AttributeUseStateEvent 
 {
-    private AttributeUseStateEventId stateEventId;
+    private AttributeUseEventId stateEventId;
 
-    public AttributeUseStateEventId getStateEventId() {
+    public AttributeUseEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(AttributeUseStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(AttributeUseEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public String getAttributeId() {
@@ -106,8 +106,8 @@ public abstract class AbstractAttributeUseStateEvent extends AbstractStateEvent 
     protected AbstractAttributeUseStateEvent() {
     }
 
-    protected AbstractAttributeUseStateEvent(AttributeUseStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractAttributeUseStateEvent(AttributeUseEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -117,11 +117,11 @@ public abstract class AbstractAttributeUseStateEvent extends AbstractStateEvent 
     public static abstract class AbstractAttributeUseStateCreated extends AbstractAttributeUseStateEvent implements AttributeUseStateEvent.AttributeUseStateCreated
     {
         public AbstractAttributeUseStateCreated() {
-            this(new AttributeUseStateEventId());
+            this(new AttributeUseEventId());
         }
 
-        public AbstractAttributeUseStateCreated(AttributeUseStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractAttributeUseStateCreated(AttributeUseEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -134,11 +134,11 @@ public abstract class AbstractAttributeUseStateEvent extends AbstractStateEvent 
     public static abstract class AbstractAttributeUseStateMergePatched extends AbstractAttributeUseStateEvent implements AttributeUseStateEvent.AttributeUseStateMergePatched
     {
         public AbstractAttributeUseStateMergePatched() {
-            this(new AttributeUseStateEventId());
+            this(new AttributeUseEventId());
         }
 
-        public AbstractAttributeUseStateMergePatched(AttributeUseStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractAttributeUseStateMergePatched(AttributeUseEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -171,11 +171,11 @@ public abstract class AbstractAttributeUseStateEvent extends AbstractStateEvent 
     public static abstract class AbstractAttributeUseStateRemoved extends AbstractAttributeUseStateEvent implements AttributeUseStateEvent.AttributeUseStateRemoved
     {
         public AbstractAttributeUseStateRemoved() {
-            this(new AttributeUseStateEventId());
+            this(new AttributeUseEventId());
         }
 
-        public AbstractAttributeUseStateRemoved(AttributeUseStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractAttributeUseStateRemoved(AttributeUseEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -188,8 +188,8 @@ public abstract class AbstractAttributeUseStateEvent extends AbstractStateEvent 
         public SimpleAttributeUseStateCreated() {
         }
 
-        public SimpleAttributeUseStateCreated(AttributeUseStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleAttributeUseStateCreated(AttributeUseEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -198,8 +198,8 @@ public abstract class AbstractAttributeUseStateEvent extends AbstractStateEvent 
         public SimpleAttributeUseStateMergePatched() {
         }
 
-        public SimpleAttributeUseStateMergePatched(AttributeUseStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleAttributeUseStateMergePatched(AttributeUseEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -208,8 +208,8 @@ public abstract class AbstractAttributeUseStateEvent extends AbstractStateEvent 
         public SimpleAttributeUseStateRemoved() {
         }
 
-        public SimpleAttributeUseStateRemoved(AttributeUseStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleAttributeUseStateRemoved(AttributeUseEventId eventId) {
+            super(eventId);
         }
     }
 

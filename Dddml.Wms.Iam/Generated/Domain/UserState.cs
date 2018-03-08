@@ -587,7 +587,7 @@ namespace Dddml.Wms.Domain.User
             id.Append("[").Append("User|");
 
             var stateEntityId = this.UserId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.UserId; // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+            var eventEntityId = stateEvent.StateEventId.UserId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);

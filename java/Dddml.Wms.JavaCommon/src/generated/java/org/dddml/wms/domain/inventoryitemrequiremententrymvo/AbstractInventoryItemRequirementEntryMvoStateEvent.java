@@ -11,14 +11,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractInventoryItemRequirementEntryMvoStateEvent extends AbstractStateEvent implements InventoryItemRequirementEntryMvoStateEvent 
 {
-    private InventoryItemRequirementEntryMvoStateEventId stateEventId;
+    private InventoryItemRequirementEntryMvoEventId stateEventId;
 
-    public InventoryItemRequirementEntryMvoStateEventId getStateEventId() {
+    public InventoryItemRequirementEntryMvoEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(InventoryItemRequirementEntryMvoStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(InventoryItemRequirementEntryMvoEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public InventoryItemRequirementEntryId getInventoryItemRequirementEntryId() {
@@ -169,8 +169,8 @@ public abstract class AbstractInventoryItemRequirementEntryMvoStateEvent extends
     protected AbstractInventoryItemRequirementEntryMvoStateEvent() {
     }
 
-    protected AbstractInventoryItemRequirementEntryMvoStateEvent(InventoryItemRequirementEntryMvoStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractInventoryItemRequirementEntryMvoStateEvent(InventoryItemRequirementEntryMvoEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -180,11 +180,11 @@ public abstract class AbstractInventoryItemRequirementEntryMvoStateEvent extends
     public static abstract class AbstractInventoryItemRequirementEntryMvoStateCreated extends AbstractInventoryItemRequirementEntryMvoStateEvent implements InventoryItemRequirementEntryMvoStateEvent.InventoryItemRequirementEntryMvoStateCreated
     {
         public AbstractInventoryItemRequirementEntryMvoStateCreated() {
-            this(new InventoryItemRequirementEntryMvoStateEventId());
+            this(new InventoryItemRequirementEntryMvoEventId());
         }
 
-        public AbstractInventoryItemRequirementEntryMvoStateCreated(InventoryItemRequirementEntryMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractInventoryItemRequirementEntryMvoStateCreated(InventoryItemRequirementEntryMvoEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -197,11 +197,11 @@ public abstract class AbstractInventoryItemRequirementEntryMvoStateEvent extends
     public static abstract class AbstractInventoryItemRequirementEntryMvoStateMergePatched extends AbstractInventoryItemRequirementEntryMvoStateEvent implements InventoryItemRequirementEntryMvoStateEvent.InventoryItemRequirementEntryMvoStateMergePatched
     {
         public AbstractInventoryItemRequirementEntryMvoStateMergePatched() {
-            this(new InventoryItemRequirementEntryMvoStateEventId());
+            this(new InventoryItemRequirementEntryMvoEventId());
         }
 
-        public AbstractInventoryItemRequirementEntryMvoStateMergePatched(InventoryItemRequirementEntryMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractInventoryItemRequirementEntryMvoStateMergePatched(InventoryItemRequirementEntryMvoEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -296,8 +296,8 @@ public abstract class AbstractInventoryItemRequirementEntryMvoStateEvent extends
         public SimpleInventoryItemRequirementEntryMvoStateCreated() {
         }
 
-        public SimpleInventoryItemRequirementEntryMvoStateCreated(InventoryItemRequirementEntryMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleInventoryItemRequirementEntryMvoStateCreated(InventoryItemRequirementEntryMvoEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -306,8 +306,8 @@ public abstract class AbstractInventoryItemRequirementEntryMvoStateEvent extends
         public SimpleInventoryItemRequirementEntryMvoStateMergePatched() {
         }
 
-        public SimpleInventoryItemRequirementEntryMvoStateMergePatched(InventoryItemRequirementEntryMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleInventoryItemRequirementEntryMvoStateMergePatched(InventoryItemRequirementEntryMvoEventId eventId) {
+            super(eventId);
         }
     }
 

@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.Shipment
 	public abstract class ShipmentStateEventBase : IShipmentStateEvent
 	{
 
-		public virtual ShipmentStateEventId StateEventId { get; set; }
+		public virtual ShipmentEventId StateEventId { get; set; }
 
         public virtual string ShipmentId
         {
@@ -83,7 +83,7 @@ namespace Dddml.Wms.Domain.Shipment
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		ShipmentStateEventId IGlobalIdentity<ShipmentStateEventId>.GlobalId {
+		ShipmentEventId IGlobalIdentity<ShipmentEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -127,7 +127,7 @@ namespace Dddml.Wms.Domain.Shipment
         {
         }
 
-        protected ShipmentStateEventBase(ShipmentStateEventId stateEventId)
+        protected ShipmentStateEventBase(ShipmentEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -137,9 +137,9 @@ namespace Dddml.Wms.Domain.Shipment
 			get { return ApplicationContext.Current["ShipmentItemStateEventDao"] as IShipmentItemStateEventDao; }
 		}
 
-        protected ShipmentItemStateEventId NewShipmentItemStateEventId(string shipmentItemSeqId)
+        protected ShipmentItemEventId NewShipmentItemEventId(string shipmentItemSeqId)
         {
-            var stateEventId = new ShipmentItemStateEventId(this.StateEventId.ShipmentId, shipmentItemSeqId, this.StateEventId.Version);
+            var stateEventId = new ShipmentItemEventId(this.StateEventId.ShipmentId, shipmentItemSeqId, this.StateEventId.Version);
             return stateEventId;
         }
 
@@ -164,9 +164,9 @@ namespace Dddml.Wms.Domain.Shipment
 			get { return ApplicationContext.Current["ShipmentReceiptStateEventDao"] as IShipmentReceiptStateEventDao; }
 		}
 
-        protected ShipmentReceiptStateEventId NewShipmentReceiptStateEventId(string receiptSeqId)
+        protected ShipmentReceiptEventId NewShipmentReceiptEventId(string receiptSeqId)
         {
-            var stateEventId = new ShipmentReceiptStateEventId(this.StateEventId.ShipmentId, receiptSeqId, this.StateEventId.Version);
+            var stateEventId = new ShipmentReceiptEventId(this.StateEventId.ShipmentId, receiptSeqId, this.StateEventId.Version);
             return stateEventId;
         }
 
@@ -198,15 +198,15 @@ namespace Dddml.Wms.Domain.Shipment
 
 	public class ShipmentStateCreated : ShipmentStateEventBase, IShipmentStateCreated, ISaveable
 	{
-		public ShipmentStateCreated () : this(new ShipmentStateEventId())
+		public ShipmentStateCreated () : this(new ShipmentEventId())
 		{
 		}
 
-		public ShipmentStateCreated (ShipmentStateEventId stateEventId) : base(stateEventId)
+		public ShipmentStateCreated (ShipmentEventId stateEventId) : base(stateEventId)
 		{
 		}
 
-		private Dictionary<ShipmentItemStateEventId, IShipmentItemStateCreated> _shipmentItemEvents = new Dictionary<ShipmentItemStateEventId, IShipmentItemStateCreated>();
+		private Dictionary<ShipmentItemEventId, IShipmentItemStateCreated> _shipmentItemEvents = new Dictionary<ShipmentItemEventId, IShipmentItemStateCreated>();
         
         private IEnumerable<IShipmentItemStateCreated> _readOnlyShipmentItemEvents;
 
@@ -223,7 +223,7 @@ namespace Dddml.Wms.Domain.Shipment
                     if (_readOnlyShipmentItemEvents != null) { return _readOnlyShipmentItemEvents; }
                     var eventDao = ShipmentItemStateEventDao;
                     var eL = new List<IShipmentItemStateCreated>();
-                    foreach (var e in eventDao.FindByShipmentStateEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByShipmentEventId(this.StateEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IShipmentItemStateCreated)e);
@@ -252,11 +252,11 @@ namespace Dddml.Wms.Domain.Shipment
 
         public virtual IShipmentItemStateCreated NewShipmentItemStateCreated(string shipmentItemSeqId)
         {
-            var stateEvent = new ShipmentItemStateCreated(NewShipmentItemStateEventId(shipmentItemSeqId));
+            var stateEvent = new ShipmentItemStateCreated(NewShipmentItemEventId(shipmentItemSeqId));
             return stateEvent;
         }
 
-		private Dictionary<ShipmentReceiptStateEventId, IShipmentReceiptStateCreated> _shipmentReceiptEvents = new Dictionary<ShipmentReceiptStateEventId, IShipmentReceiptStateCreated>();
+		private Dictionary<ShipmentReceiptEventId, IShipmentReceiptStateCreated> _shipmentReceiptEvents = new Dictionary<ShipmentReceiptEventId, IShipmentReceiptStateCreated>();
         
         private IEnumerable<IShipmentReceiptStateCreated> _readOnlyShipmentReceiptEvents;
 
@@ -273,7 +273,7 @@ namespace Dddml.Wms.Domain.Shipment
                     if (_readOnlyShipmentReceiptEvents != null) { return _readOnlyShipmentReceiptEvents; }
                     var eventDao = ShipmentReceiptStateEventDao;
                     var eL = new List<IShipmentReceiptStateCreated>();
-                    foreach (var e in eventDao.FindByShipmentStateEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByShipmentEventId(this.StateEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IShipmentReceiptStateCreated)e);
@@ -302,7 +302,7 @@ namespace Dddml.Wms.Domain.Shipment
 
         public virtual IShipmentReceiptStateCreated NewShipmentReceiptStateCreated(string receiptSeqId)
         {
-            var stateEvent = new ShipmentReceiptStateCreated(NewShipmentReceiptStateEventId(receiptSeqId));
+            var stateEvent = new ShipmentReceiptStateCreated(NewShipmentReceiptEventId(receiptSeqId));
             return stateEvent;
         }
 
@@ -383,11 +383,11 @@ namespace Dddml.Wms.Domain.Shipment
 		{
 		}
 
-		public ShipmentStateMergePatched (ShipmentStateEventId stateEventId) : base(stateEventId)
+		public ShipmentStateMergePatched (ShipmentEventId stateEventId) : base(stateEventId)
 		{
 		}
 
-		private Dictionary<ShipmentItemStateEventId, IShipmentItemStateEvent> _shipmentItemEvents = new Dictionary<ShipmentItemStateEventId, IShipmentItemStateEvent>();
+		private Dictionary<ShipmentItemEventId, IShipmentItemStateEvent> _shipmentItemEvents = new Dictionary<ShipmentItemEventId, IShipmentItemStateEvent>();
 
         private IEnumerable<IShipmentItemStateEvent> _readOnlyShipmentItemEvents;
         
@@ -404,7 +404,7 @@ namespace Dddml.Wms.Domain.Shipment
                     if (_readOnlyShipmentItemEvents != null) { return _readOnlyShipmentItemEvents; }
                     var eventDao = ShipmentItemStateEventDao;
                     var eL = new List<IShipmentItemStateEvent>();
-                    foreach (var e in eventDao.FindByShipmentStateEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByShipmentEventId(this.StateEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IShipmentItemStateEvent)e);
@@ -433,17 +433,17 @@ namespace Dddml.Wms.Domain.Shipment
 
         public virtual IShipmentItemStateCreated NewShipmentItemStateCreated(string shipmentItemSeqId)
         {
-            var stateEvent = new ShipmentItemStateCreated(NewShipmentItemStateEventId(shipmentItemSeqId));
+            var stateEvent = new ShipmentItemStateCreated(NewShipmentItemEventId(shipmentItemSeqId));
             return stateEvent;
         }
 
         public virtual IShipmentItemStateMergePatched NewShipmentItemStateMergePatched(string shipmentItemSeqId)
         {
-            var stateEvent = new ShipmentItemStateMergePatched(NewShipmentItemStateEventId(shipmentItemSeqId));
+            var stateEvent = new ShipmentItemStateMergePatched(NewShipmentItemEventId(shipmentItemSeqId));
             return stateEvent;
         }
 
-		private Dictionary<ShipmentReceiptStateEventId, IShipmentReceiptStateEvent> _shipmentReceiptEvents = new Dictionary<ShipmentReceiptStateEventId, IShipmentReceiptStateEvent>();
+		private Dictionary<ShipmentReceiptEventId, IShipmentReceiptStateEvent> _shipmentReceiptEvents = new Dictionary<ShipmentReceiptEventId, IShipmentReceiptStateEvent>();
 
         private IEnumerable<IShipmentReceiptStateEvent> _readOnlyShipmentReceiptEvents;
         
@@ -460,7 +460,7 @@ namespace Dddml.Wms.Domain.Shipment
                     if (_readOnlyShipmentReceiptEvents != null) { return _readOnlyShipmentReceiptEvents; }
                     var eventDao = ShipmentReceiptStateEventDao;
                     var eL = new List<IShipmentReceiptStateEvent>();
-                    foreach (var e in eventDao.FindByShipmentStateEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByShipmentEventId(this.StateEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IShipmentReceiptStateEvent)e);
@@ -489,13 +489,13 @@ namespace Dddml.Wms.Domain.Shipment
 
         public virtual IShipmentReceiptStateCreated NewShipmentReceiptStateCreated(string receiptSeqId)
         {
-            var stateEvent = new ShipmentReceiptStateCreated(NewShipmentReceiptStateEventId(receiptSeqId));
+            var stateEvent = new ShipmentReceiptStateCreated(NewShipmentReceiptEventId(receiptSeqId));
             return stateEvent;
         }
 
         public virtual IShipmentReceiptStateMergePatched NewShipmentReceiptStateMergePatched(string receiptSeqId)
         {
-            var stateEvent = new ShipmentReceiptStateMergePatched(NewShipmentReceiptStateEventId(receiptSeqId));
+            var stateEvent = new ShipmentReceiptStateMergePatched(NewShipmentReceiptEventId(receiptSeqId));
             return stateEvent;
         }
 

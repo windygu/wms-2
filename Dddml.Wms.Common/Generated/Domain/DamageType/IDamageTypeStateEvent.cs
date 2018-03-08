@@ -11,9 +11,9 @@ using Dddml.Wms.Domain.DamageType;
 
 namespace Dddml.Wms.Domain.DamageType
 {
-	public interface IDamageTypeStateEvent : IEvent, IStateEventDto, IGlobalIdentity<DamageTypeStateEventId>, ICreated<string>
+	public interface IDamageTypeStateEvent : IEvent, IStateEventDto, IGlobalIdentity<DamageTypeEventId>, ICreated<string>
 	{
-		DamageTypeStateEventId StateEventId { get; }
+		DamageTypeEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

@@ -7,15 +7,15 @@ import org.dddml.wms.domain.AbstractStateEvent;
 public class LocatorStateEventDto extends AbstractStateEvent
 {
 
-    private LocatorStateEventId stateEventId;
+    private LocatorEventId stateEventId;
 
-    LocatorStateEventId getStateEventId() {
-        if (stateEventId == null) { stateEventId = new LocatorStateEventId(); }
-        return this.stateEventId;
+    LocatorEventId getStateEventId() {
+        if (stateEventId == null) { stateEventId = new LocatorEventId(); }
+        return stateEventId;
     }
 
-    void setStateEventId(LocatorStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    void setStateEventId(LocatorEventId eventId) {
+        this.stateEventId = eventId;
     }
 
     public String getLocatorId() {

@@ -8,7 +8,7 @@
   
   <class name="AbstractOrderItemMvoStateEvent" table="OrderItemMvoStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="stateEventId" class="org.dddml.wms.domain.orderitemmvo.OrderItemMvoStateEventId">
+	<composite-id name="stateEventId" class="org.dddml.wms.domain.orderitemmvo.OrderItemMvoEventId">
 		<key-property name="orderItemIdOrderId" ><column name="OrderItemIdOrderId" sql-type="VARCHAR(20)" /></key-property>
 		<key-property name="orderItemIdOrderItemSeqId" ><column name="OrderItemIdOrderItemSeqId" sql-type="VARCHAR(20)" /></key-property>
 		<key-property name="orderVersion" ></key-property>

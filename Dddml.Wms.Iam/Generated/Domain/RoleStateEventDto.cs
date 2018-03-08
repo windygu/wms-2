@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.Role
 	public abstract class RoleStateEventDtoBase : IStateEventDto, IRoleStateCreated, IRoleStateMergePatched, IRoleStateDeleted
 	{
 
-        private RoleStateEventIdDto _stateEventId;
+        private RoleEventIdDto _stateEventId;
 
-		protected internal virtual RoleStateEventIdDto StateEventId 
+		protected internal virtual RoleEventIdDto StateEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new RoleStateEventIdDto(); }
+                if (_stateEventId == null) { _stateEventId = new RoleEventIdDto(); }
                 return _stateEventId;
             }
             set
@@ -56,10 +56,10 @@ namespace Dddml.Wms.Domain.Role
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		RoleStateEventId IGlobalIdentity<RoleStateEventId>.GlobalId {
+		RoleEventId IGlobalIdentity<RoleEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToRoleStateEventId();
+				return this.StateEventId.ToRoleEventId();
 			}
 		}
 
@@ -153,16 +153,16 @@ namespace Dddml.Wms.Domain.Role
 		}
 
 
-        RoleStateEventId IRoleStateEvent.StateEventId
+        RoleEventId IRoleStateEvent.StateEventId
         {
-            get { return this.StateEventId.ToRoleStateEventId(); }
+            get { return this.StateEventId.ToRoleEventId(); }
         }
 
         protected RoleStateEventDtoBase()
         {
         }
 
-        protected RoleStateEventDtoBase(RoleStateEventIdDto stateEventId)
+        protected RoleStateEventDtoBase(RoleEventIdDto stateEventId)
         {
             this.StateEventId = stateEventId;
         }

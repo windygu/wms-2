@@ -10,14 +10,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractInOutLineMvoStateEvent extends AbstractStateEvent implements InOutLineMvoStateEvent 
 {
-    private InOutLineMvoStateEventId stateEventId;
+    private InOutLineMvoEventId stateEventId;
 
-    public InOutLineMvoStateEventId getStateEventId() {
+    public InOutLineMvoEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(InOutLineMvoStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(InOutLineMvoEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public InOutLineId getInOutLineId() {
@@ -648,8 +648,8 @@ public abstract class AbstractInOutLineMvoStateEvent extends AbstractStateEvent 
     protected AbstractInOutLineMvoStateEvent() {
     }
 
-    protected AbstractInOutLineMvoStateEvent(InOutLineMvoStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractInOutLineMvoStateEvent(InOutLineMvoEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -659,11 +659,11 @@ public abstract class AbstractInOutLineMvoStateEvent extends AbstractStateEvent 
     public static abstract class AbstractInOutLineMvoStateCreated extends AbstractInOutLineMvoStateEvent implements InOutLineMvoStateEvent.InOutLineMvoStateCreated
     {
         public AbstractInOutLineMvoStateCreated() {
-            this(new InOutLineMvoStateEventId());
+            this(new InOutLineMvoEventId());
         }
 
-        public AbstractInOutLineMvoStateCreated(InOutLineMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractInOutLineMvoStateCreated(InOutLineMvoEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -676,11 +676,11 @@ public abstract class AbstractInOutLineMvoStateEvent extends AbstractStateEvent 
     public static abstract class AbstractInOutLineMvoStateMergePatched extends AbstractInOutLineMvoStateEvent implements InOutLineMvoStateEvent.InOutLineMvoStateMergePatched
     {
         public AbstractInOutLineMvoStateMergePatched() {
-            this(new InOutLineMvoStateEventId());
+            this(new InOutLineMvoEventId());
         }
 
-        public AbstractInOutLineMvoStateMergePatched(InOutLineMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractInOutLineMvoStateMergePatched(InOutLineMvoEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -1173,11 +1173,11 @@ public abstract class AbstractInOutLineMvoStateEvent extends AbstractStateEvent 
     public static abstract class AbstractInOutLineMvoStateDeleted extends AbstractInOutLineMvoStateEvent implements InOutLineMvoStateEvent.InOutLineMvoStateDeleted
     {
         public AbstractInOutLineMvoStateDeleted() {
-            this(new InOutLineMvoStateEventId());
+            this(new InOutLineMvoEventId());
         }
 
-        public AbstractInOutLineMvoStateDeleted(InOutLineMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractInOutLineMvoStateDeleted(InOutLineMvoEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -1190,8 +1190,8 @@ public abstract class AbstractInOutLineMvoStateEvent extends AbstractStateEvent 
         public SimpleInOutLineMvoStateCreated() {
         }
 
-        public SimpleInOutLineMvoStateCreated(InOutLineMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleInOutLineMvoStateCreated(InOutLineMvoEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -1200,8 +1200,8 @@ public abstract class AbstractInOutLineMvoStateEvent extends AbstractStateEvent 
         public SimpleInOutLineMvoStateMergePatched() {
         }
 
-        public SimpleInOutLineMvoStateMergePatched(InOutLineMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleInOutLineMvoStateMergePatched(InOutLineMvoEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -1210,8 +1210,8 @@ public abstract class AbstractInOutLineMvoStateEvent extends AbstractStateEvent 
         public SimpleInOutLineMvoStateDeleted() {
         }
 
-        public SimpleInOutLineMvoStateDeleted(InOutLineMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleInOutLineMvoStateDeleted(InOutLineMvoEventId eventId) {
+            super(eventId);
         }
     }
 

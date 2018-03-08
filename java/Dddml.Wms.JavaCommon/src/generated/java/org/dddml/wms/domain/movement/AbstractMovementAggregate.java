@@ -56,7 +56,7 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
     }
 
     protected MovementStateEvent map(MovementCommand.CreateMovement c) {
-        MovementStateEventId stateEventId = new MovementStateEventId(c.getDocumentNumber(), c.getVersion());
+        MovementEventId stateEventId = new MovementEventId(c.getDocumentNumber(), c.getVersion());
         MovementStateEvent.MovementStateCreated e = newMovementStateCreated(stateEventId);
         newMovementDocumentActionCommandAndExecute(c, state, e);
         e.setMovementDate(c.getMovementDate());
@@ -94,7 +94,7 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
     }
 
     protected MovementStateEvent map(MovementCommand.MergePatchMovement c) {
-        MovementStateEventId stateEventId = new MovementStateEventId(c.getDocumentNumber(), c.getVersion());
+        MovementEventId stateEventId = new MovementEventId(c.getDocumentNumber(), c.getVersion());
         MovementStateEvent.MovementStateMergePatched e = newMovementStateMergePatched(stateEventId);
         e.setMovementDate(c.getMovementDate());
         e.setPosted(c.getPosted());
@@ -151,7 +151,7 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
     }
 
     protected MovementStateEvent map(MovementCommand.DeleteMovement c) {
-        MovementStateEventId stateEventId = new MovementStateEventId(c.getDocumentNumber(), c.getVersion());
+        MovementEventId stateEventId = new MovementEventId(c.getDocumentNumber(), c.getVersion());
         MovementStateEvent.MovementStateDeleted e = newMovementStateDeleted(stateEventId);
         ((AbstractMovementStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
@@ -185,7 +185,7 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
     protected MovementLineStateEvent.MovementLineStateCreated mapCreate(MovementLineCommand.CreateMovementLine c, MovementCommand outerCommand, Long version, MovementState outerState)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
-        MovementLineStateEventId stateEventId = new MovementLineStateEventId(c.getMovementDocumentNumber(), c.getLineNumber(), version);
+        MovementLineEventId stateEventId = new MovementLineEventId(c.getMovementDocumentNumber(), c.getLineNumber(), version);
         MovementLineStateEvent.MovementLineStateCreated e = newMovementLineStateCreated(stateEventId);
         MovementLineState s = outerState.getMovementLines().get(c.getLineNumber());
 
@@ -206,7 +206,7 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
     protected MovementLineStateEvent.MovementLineStateMergePatched mapMergePatch(MovementLineCommand.MergePatchMovementLine c, MovementCommand outerCommand, Long version, MovementState outerState)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
-        MovementLineStateEventId stateEventId = new MovementLineStateEventId(c.getMovementDocumentNumber(), c.getLineNumber(), version);
+        MovementLineEventId stateEventId = new MovementLineEventId(c.getMovementDocumentNumber(), c.getLineNumber(), version);
         MovementLineStateEvent.MovementLineStateMergePatched e = newMovementLineStateMergePatched(stateEventId);
         MovementLineState s = outerState.getMovementLines().get(c.getLineNumber());
 
@@ -235,7 +235,7 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
     protected MovementLineStateEvent.MovementLineStateRemoved mapRemove(MovementLineCommand.RemoveMovementLine c, MovementCommand outerCommand, Long version)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
-        MovementLineStateEventId stateEventId = new MovementLineStateEventId(c.getMovementDocumentNumber(), c.getLineNumber(), version);
+        MovementLineEventId stateEventId = new MovementLineEventId(c.getMovementDocumentNumber(), c.getLineNumber(), version);
         MovementLineStateEvent.MovementLineStateRemoved e = newMovementLineStateRemoved(stateEventId);
 
         e.setCreatedBy(c.getRequesterId());
@@ -268,7 +268,7 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
     ////////////////////////
 
     protected MovementStateEvent.MovementStateCreated newMovementStateCreated(Long version, String commandId, String requesterId) {
-        MovementStateEventId stateEventId = new MovementStateEventId(this.state.getDocumentNumber(), version);
+        MovementEventId stateEventId = new MovementEventId(this.state.getDocumentNumber(), version);
         MovementStateEvent.MovementStateCreated e = newMovementStateCreated(stateEventId);
         ((AbstractMovementStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -277,7 +277,7 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
     }
 
     protected MovementStateEvent.MovementStateMergePatched newMovementStateMergePatched(Long version, String commandId, String requesterId) {
-        MovementStateEventId stateEventId = new MovementStateEventId(this.state.getDocumentNumber(), version);
+        MovementEventId stateEventId = new MovementEventId(this.state.getDocumentNumber(), version);
         MovementStateEvent.MovementStateMergePatched e = newMovementStateMergePatched(stateEventId);
         ((AbstractMovementStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -286,7 +286,7 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
     }
 
     protected MovementStateEvent.MovementStateDeleted newMovementStateDeleted(Long version, String commandId, String requesterId) {
-        MovementStateEventId stateEventId = new MovementStateEventId(this.state.getDocumentNumber(), version);
+        MovementEventId stateEventId = new MovementEventId(this.state.getDocumentNumber(), version);
         MovementStateEvent.MovementStateDeleted e = newMovementStateDeleted(stateEventId);
         ((AbstractMovementStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -294,28 +294,28 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
         return e;
     }
 
-    protected MovementStateEvent.MovementStateCreated newMovementStateCreated(MovementStateEventId stateEventId) {
+    protected MovementStateEvent.MovementStateCreated newMovementStateCreated(MovementEventId stateEventId) {
         return new AbstractMovementStateEvent.SimpleMovementStateCreated(stateEventId);
     }
 
-    protected MovementStateEvent.MovementStateMergePatched newMovementStateMergePatched(MovementStateEventId stateEventId) {
+    protected MovementStateEvent.MovementStateMergePatched newMovementStateMergePatched(MovementEventId stateEventId) {
         return new AbstractMovementStateEvent.SimpleMovementStateMergePatched(stateEventId);
     }
 
-    protected MovementStateEvent.MovementStateDeleted newMovementStateDeleted(MovementStateEventId stateEventId)
+    protected MovementStateEvent.MovementStateDeleted newMovementStateDeleted(MovementEventId stateEventId)
     {
         return new AbstractMovementStateEvent.SimpleMovementStateDeleted(stateEventId);
     }
 
-    protected MovementLineStateEvent.MovementLineStateCreated newMovementLineStateCreated(MovementLineStateEventId stateEventId) {
+    protected MovementLineStateEvent.MovementLineStateCreated newMovementLineStateCreated(MovementLineEventId stateEventId) {
         return new AbstractMovementLineStateEvent.SimpleMovementLineStateCreated(stateEventId);
     }
 
-    protected MovementLineStateEvent.MovementLineStateMergePatched newMovementLineStateMergePatched(MovementLineStateEventId stateEventId) {
+    protected MovementLineStateEvent.MovementLineStateMergePatched newMovementLineStateMergePatched(MovementLineEventId stateEventId) {
         return new AbstractMovementLineStateEvent.SimpleMovementLineStateMergePatched(stateEventId);
     }
 
-    protected MovementLineStateEvent.MovementLineStateRemoved newMovementLineStateRemoved(MovementLineStateEventId stateEventId)
+    protected MovementLineStateEvent.MovementLineStateRemoved newMovementLineStateRemoved(MovementLineEventId stateEventId)
     {
         return new AbstractMovementLineStateEvent.SimpleMovementLineStateRemoved(stateEventId);
     }

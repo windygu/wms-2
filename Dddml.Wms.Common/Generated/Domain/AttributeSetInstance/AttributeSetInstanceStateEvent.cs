@@ -19,11 +19,11 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
         public virtual AttributeSetInstanceState AttributeSetInstanceState { get { return _state; } }
 
-        public virtual AttributeSetInstanceStateEventId StateEventId
+        public virtual AttributeSetInstanceEventId StateEventId
         {
             get
             {
-                AttributeSetInstanceStateEventId eventId = new AttributeSetInstanceStateEventId(_state.AttributeSetInstanceId, default(long));
+                AttributeSetInstanceEventId eventId = new AttributeSetInstanceEventId(_state.AttributeSetInstanceId, default(long));
                 return eventId;
             }
             set
@@ -182,7 +182,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		AttributeSetInstanceStateEventId IGlobalIdentity<AttributeSetInstanceStateEventId>.GlobalId {
+		AttributeSetInstanceEventId IGlobalIdentity<AttributeSetInstanceEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -226,7 +226,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
         {
         }
 
-        protected AttributeSetInstanceStateEventBase(AttributeSetInstanceStateEventId stateEventId) : this(new AttributeSetInstanceState())
+        protected AttributeSetInstanceStateEventBase(AttributeSetInstanceEventId stateEventId) : this(new AttributeSetInstanceState())
         {
             this.StateEventId = stateEventId;
         }
@@ -249,11 +249,11 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
 	public class AttributeSetInstanceStateCreated : AttributeSetInstanceStateEventBase, IAttributeSetInstanceStateCreated
 	{
-		public AttributeSetInstanceStateCreated () : this(new AttributeSetInstanceStateEventId())
+		public AttributeSetInstanceStateCreated () : this(new AttributeSetInstanceEventId())
 		{
 		}
 
-		public AttributeSetInstanceStateCreated (AttributeSetInstanceStateEventId stateEventId) : base(stateEventId)
+		public AttributeSetInstanceStateCreated (AttributeSetInstanceEventId stateEventId) : base(stateEventId)
 		{
 		}
 

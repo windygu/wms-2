@@ -49,7 +49,7 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
     }
 
     protected ShipmentStateEvent map(ShipmentCommand.CreateShipment c) {
-        ShipmentStateEventId stateEventId = new ShipmentStateEventId(c.getShipmentId(), c.getVersion());
+        ShipmentEventId stateEventId = new ShipmentEventId(c.getShipmentId(), c.getVersion());
         ShipmentStateEvent.ShipmentStateCreated e = newShipmentStateCreated(stateEventId);
         e.setShipmentTypeId(c.getShipmentTypeId());
         e.setStatusId(c.getStatusId());
@@ -99,7 +99,7 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
     }
 
     protected ShipmentStateEvent map(ShipmentCommand.MergePatchShipment c) {
-        ShipmentStateEventId stateEventId = new ShipmentStateEventId(c.getShipmentId(), c.getVersion());
+        ShipmentEventId stateEventId = new ShipmentEventId(c.getShipmentId(), c.getVersion());
         ShipmentStateEvent.ShipmentStateMergePatched e = newShipmentStateMergePatched(stateEventId);
         e.setShipmentTypeId(c.getShipmentTypeId());
         e.setStatusId(c.getStatusId());
@@ -195,7 +195,7 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
     protected ShipmentItemStateEvent.ShipmentItemStateCreated mapCreate(ShipmentItemCommand.CreateShipmentItem c, ShipmentCommand outerCommand, Long version, ShipmentState outerState)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
-        ShipmentItemStateEventId stateEventId = new ShipmentItemStateEventId(c.getShipmentId(), c.getShipmentItemSeqId(), version);
+        ShipmentItemEventId stateEventId = new ShipmentItemEventId(c.getShipmentId(), c.getShipmentItemSeqId(), version);
         ShipmentItemStateEvent.ShipmentItemStateCreated e = newShipmentItemStateCreated(stateEventId);
         ShipmentItemState s = outerState.getShipmentItems().get(c.getShipmentItemSeqId());
 
@@ -214,7 +214,7 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
     protected ShipmentItemStateEvent.ShipmentItemStateMergePatched mapMergePatch(ShipmentItemCommand.MergePatchShipmentItem c, ShipmentCommand outerCommand, Long version, ShipmentState outerState)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
-        ShipmentItemStateEventId stateEventId = new ShipmentItemStateEventId(c.getShipmentId(), c.getShipmentItemSeqId(), version);
+        ShipmentItemEventId stateEventId = new ShipmentItemEventId(c.getShipmentId(), c.getShipmentItemSeqId(), version);
         ShipmentItemStateEvent.ShipmentItemStateMergePatched e = newShipmentItemStateMergePatched(stateEventId);
         ShipmentItemState s = outerState.getShipmentItems().get(c.getShipmentItemSeqId());
 
@@ -257,7 +257,7 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
     protected ShipmentReceiptStateEvent.ShipmentReceiptStateCreated mapCreate(ShipmentReceiptCommand.CreateShipmentReceipt c, ShipmentCommand outerCommand, Long version, ShipmentState outerState)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
-        ShipmentReceiptStateEventId stateEventId = new ShipmentReceiptStateEventId(c.getShipmentId(), c.getReceiptSeqId(), version);
+        ShipmentReceiptEventId stateEventId = new ShipmentReceiptEventId(c.getShipmentId(), c.getReceiptSeqId(), version);
         ShipmentReceiptStateEvent.ShipmentReceiptStateCreated e = newShipmentReceiptStateCreated(stateEventId);
         ShipmentReceiptState s = outerState.getShipmentReceipts().get(c.getReceiptSeqId());
 
@@ -283,7 +283,7 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
     protected ShipmentReceiptStateEvent.ShipmentReceiptStateMergePatched mapMergePatch(ShipmentReceiptCommand.MergePatchShipmentReceipt c, ShipmentCommand outerCommand, Long version, ShipmentState outerState)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
-        ShipmentReceiptStateEventId stateEventId = new ShipmentReceiptStateEventId(c.getShipmentId(), c.getReceiptSeqId(), version);
+        ShipmentReceiptEventId stateEventId = new ShipmentReceiptEventId(c.getShipmentId(), c.getReceiptSeqId(), version);
         ShipmentReceiptStateEvent.ShipmentReceiptStateMergePatched e = newShipmentReceiptStateMergePatched(stateEventId);
         ShipmentReceiptState s = outerState.getShipmentReceipts().get(c.getReceiptSeqId());
 
@@ -361,7 +361,7 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
     ////////////////////////
 
     protected ShipmentStateEvent.ShipmentStateCreated newShipmentStateCreated(Long version, String commandId, String requesterId) {
-        ShipmentStateEventId stateEventId = new ShipmentStateEventId(this.state.getShipmentId(), version);
+        ShipmentEventId stateEventId = new ShipmentEventId(this.state.getShipmentId(), version);
         ShipmentStateEvent.ShipmentStateCreated e = newShipmentStateCreated(stateEventId);
         ((AbstractShipmentStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -370,7 +370,7 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
     }
 
     protected ShipmentStateEvent.ShipmentStateMergePatched newShipmentStateMergePatched(Long version, String commandId, String requesterId) {
-        ShipmentStateEventId stateEventId = new ShipmentStateEventId(this.state.getShipmentId(), version);
+        ShipmentEventId stateEventId = new ShipmentEventId(this.state.getShipmentId(), version);
         ShipmentStateEvent.ShipmentStateMergePatched e = newShipmentStateMergePatched(stateEventId);
         ((AbstractShipmentStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -378,27 +378,27 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         return e;
     }
 
-    protected ShipmentStateEvent.ShipmentStateCreated newShipmentStateCreated(ShipmentStateEventId stateEventId) {
+    protected ShipmentStateEvent.ShipmentStateCreated newShipmentStateCreated(ShipmentEventId stateEventId) {
         return new AbstractShipmentStateEvent.SimpleShipmentStateCreated(stateEventId);
     }
 
-    protected ShipmentStateEvent.ShipmentStateMergePatched newShipmentStateMergePatched(ShipmentStateEventId stateEventId) {
+    protected ShipmentStateEvent.ShipmentStateMergePatched newShipmentStateMergePatched(ShipmentEventId stateEventId) {
         return new AbstractShipmentStateEvent.SimpleShipmentStateMergePatched(stateEventId);
     }
 
-    protected ShipmentItemStateEvent.ShipmentItemStateCreated newShipmentItemStateCreated(ShipmentItemStateEventId stateEventId) {
+    protected ShipmentItemStateEvent.ShipmentItemStateCreated newShipmentItemStateCreated(ShipmentItemEventId stateEventId) {
         return new AbstractShipmentItemStateEvent.SimpleShipmentItemStateCreated(stateEventId);
     }
 
-    protected ShipmentItemStateEvent.ShipmentItemStateMergePatched newShipmentItemStateMergePatched(ShipmentItemStateEventId stateEventId) {
+    protected ShipmentItemStateEvent.ShipmentItemStateMergePatched newShipmentItemStateMergePatched(ShipmentItemEventId stateEventId) {
         return new AbstractShipmentItemStateEvent.SimpleShipmentItemStateMergePatched(stateEventId);
     }
 
-    protected ShipmentReceiptStateEvent.ShipmentReceiptStateCreated newShipmentReceiptStateCreated(ShipmentReceiptStateEventId stateEventId) {
+    protected ShipmentReceiptStateEvent.ShipmentReceiptStateCreated newShipmentReceiptStateCreated(ShipmentReceiptEventId stateEventId) {
         return new AbstractShipmentReceiptStateEvent.SimpleShipmentReceiptStateCreated(stateEventId);
     }
 
-    protected ShipmentReceiptStateEvent.ShipmentReceiptStateMergePatched newShipmentReceiptStateMergePatched(ShipmentReceiptStateEventId stateEventId) {
+    protected ShipmentReceiptStateEvent.ShipmentReceiptStateMergePatched newShipmentReceiptStateMergePatched(ShipmentReceiptEventId stateEventId) {
         return new AbstractShipmentReceiptStateEvent.SimpleShipmentReceiptStateMergePatched(stateEventId);
     }
 

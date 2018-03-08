@@ -7,15 +7,15 @@ import org.dddml.wms.domain.AbstractStateEvent;
 public class DamageReasonStateEventDto extends AbstractStateEvent
 {
 
-    private DamageReasonStateEventId stateEventId;
+    private DamageReasonEventId stateEventId;
 
-    DamageReasonStateEventId getStateEventId() {
-        if (stateEventId == null) { stateEventId = new DamageReasonStateEventId(); }
-        return this.stateEventId;
+    DamageReasonEventId getStateEventId() {
+        if (stateEventId == null) { stateEventId = new DamageReasonEventId(); }
+        return stateEventId;
     }
 
-    void setStateEventId(DamageReasonStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    void setStateEventId(DamageReasonEventId eventId) {
+        this.stateEventId = eventId;
     }
 
     public String getDamageReasonId() {

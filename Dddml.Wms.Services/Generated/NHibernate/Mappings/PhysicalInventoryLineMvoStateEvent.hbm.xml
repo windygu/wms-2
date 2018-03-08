@@ -5,7 +5,7 @@
   
   <class name="PhysicalInventoryLineMvoStateEventBase" table="PhysicalInventoryLineMvoStateEvents" mutable="false" abstract="true">
 
-    <composite-id name="StateEventId" class="Dddml.Wms.Domain.PhysicalInventoryLineMvo.PhysicalInventoryLineMvoStateEventId">
+    <composite-id name="StateEventId" class="Dddml.Wms.Domain.PhysicalInventoryLineMvo.PhysicalInventoryLineMvoEventId">
         <key-property name="PhysicalInventoryLineIdPhysicalInventoryDocumentNumber" ><column name="PhysicalInventoryLineIdPhysicalInventoryDocumentNumber" length="50" /></key-property>
         <key-property name="PhysicalInventoryLineIdInventoryItemIdProductId" ><column name="ProductId" length="60" sql-type="VARCHAR(60)" /></key-property>
         <key-property name="PhysicalInventoryLineIdInventoryItemIdLocatorId" ><column name="LocatorId" length="50" /></key-property>

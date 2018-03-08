@@ -55,7 +55,7 @@ public abstract class AbstractUomConversionAggregate extends AbstractAggregate i
     }
 
     protected UomConversionStateEvent map(UomConversionCommand.CreateUomConversion c) {
-        UomConversionStateEventId stateEventId = new UomConversionStateEventId(c.getUomConversionId(), c.getVersion());
+        UomConversionEventId stateEventId = new UomConversionEventId(c.getUomConversionId(), c.getVersion());
         UomConversionStateEvent.UomConversionStateCreated e = newUomConversionStateCreated(stateEventId);
         e.setConversionFactor(c.getConversionFactor());
         e.setCustomMethodId(c.getCustomMethodId());
@@ -69,7 +69,7 @@ public abstract class AbstractUomConversionAggregate extends AbstractAggregate i
     }
 
     protected UomConversionStateEvent map(UomConversionCommand.MergePatchUomConversion c) {
-        UomConversionStateEventId stateEventId = new UomConversionStateEventId(c.getUomConversionId(), c.getVersion());
+        UomConversionEventId stateEventId = new UomConversionEventId(c.getUomConversionId(), c.getVersion());
         UomConversionStateEvent.UomConversionStateMergePatched e = newUomConversionStateMergePatched(stateEventId);
         e.setConversionFactor(c.getConversionFactor());
         e.setCustomMethodId(c.getCustomMethodId());
@@ -88,7 +88,7 @@ public abstract class AbstractUomConversionAggregate extends AbstractAggregate i
     }
 
     protected UomConversionStateEvent map(UomConversionCommand.DeleteUomConversion c) {
-        UomConversionStateEventId stateEventId = new UomConversionStateEventId(c.getUomConversionId(), c.getVersion());
+        UomConversionEventId stateEventId = new UomConversionEventId(c.getUomConversionId(), c.getVersion());
         UomConversionStateEvent.UomConversionStateDeleted e = newUomConversionStateDeleted(stateEventId);
         ((AbstractUomConversionStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
@@ -100,7 +100,7 @@ public abstract class AbstractUomConversionAggregate extends AbstractAggregate i
     ////////////////////////
 
     protected UomConversionStateEvent.UomConversionStateCreated newUomConversionStateCreated(Long version, String commandId, String requesterId) {
-        UomConversionStateEventId stateEventId = new UomConversionStateEventId(this.state.getUomConversionId(), version);
+        UomConversionEventId stateEventId = new UomConversionEventId(this.state.getUomConversionId(), version);
         UomConversionStateEvent.UomConversionStateCreated e = newUomConversionStateCreated(stateEventId);
         ((AbstractUomConversionStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -109,7 +109,7 @@ public abstract class AbstractUomConversionAggregate extends AbstractAggregate i
     }
 
     protected UomConversionStateEvent.UomConversionStateMergePatched newUomConversionStateMergePatched(Long version, String commandId, String requesterId) {
-        UomConversionStateEventId stateEventId = new UomConversionStateEventId(this.state.getUomConversionId(), version);
+        UomConversionEventId stateEventId = new UomConversionEventId(this.state.getUomConversionId(), version);
         UomConversionStateEvent.UomConversionStateMergePatched e = newUomConversionStateMergePatched(stateEventId);
         ((AbstractUomConversionStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -118,7 +118,7 @@ public abstract class AbstractUomConversionAggregate extends AbstractAggregate i
     }
 
     protected UomConversionStateEvent.UomConversionStateDeleted newUomConversionStateDeleted(Long version, String commandId, String requesterId) {
-        UomConversionStateEventId stateEventId = new UomConversionStateEventId(this.state.getUomConversionId(), version);
+        UomConversionEventId stateEventId = new UomConversionEventId(this.state.getUomConversionId(), version);
         UomConversionStateEvent.UomConversionStateDeleted e = newUomConversionStateDeleted(stateEventId);
         ((AbstractUomConversionStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -126,15 +126,15 @@ public abstract class AbstractUomConversionAggregate extends AbstractAggregate i
         return e;
     }
 
-    protected UomConversionStateEvent.UomConversionStateCreated newUomConversionStateCreated(UomConversionStateEventId stateEventId) {
+    protected UomConversionStateEvent.UomConversionStateCreated newUomConversionStateCreated(UomConversionEventId stateEventId) {
         return new AbstractUomConversionStateEvent.SimpleUomConversionStateCreated(stateEventId);
     }
 
-    protected UomConversionStateEvent.UomConversionStateMergePatched newUomConversionStateMergePatched(UomConversionStateEventId stateEventId) {
+    protected UomConversionStateEvent.UomConversionStateMergePatched newUomConversionStateMergePatched(UomConversionEventId stateEventId) {
         return new AbstractUomConversionStateEvent.SimpleUomConversionStateMergePatched(stateEventId);
     }
 
-    protected UomConversionStateEvent.UomConversionStateDeleted newUomConversionStateDeleted(UomConversionStateEventId stateEventId)
+    protected UomConversionStateEvent.UomConversionStateDeleted newUomConversionStateDeleted(UomConversionEventId stateEventId)
     {
         return new AbstractUomConversionStateEvent.SimpleUomConversionStateDeleted(stateEventId);
     }

@@ -11,9 +11,9 @@ using Dddml.Wms.Domain.MovementType;
 
 namespace Dddml.Wms.Domain.MovementType
 {
-	public interface IMovementTypeStateEvent : IEvent, IStateEventDto, IGlobalIdentity<MovementTypeStateEventId>, ICreated<string>
+	public interface IMovementTypeStateEvent : IEvent, IStateEventDto, IGlobalIdentity<MovementTypeEventId>, ICreated<string>
 	{
-		MovementTypeStateEventId StateEventId { get; }
+		MovementTypeEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

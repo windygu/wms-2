@@ -105,7 +105,7 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 
         protected virtual IUserPermissionMvoStateCreated Map(ICreateUserPermissionMvo c)
         {
-			var stateEventId = new UserPermissionMvoStateEventId(c.UserPermissionId, c.UserVersion);
+			var stateEventId = new UserPermissionMvoEventId(c.UserPermissionId, c.UserVersion);
             IUserPermissionMvoStateCreated e = NewUserPermissionMvoStateCreated(stateEventId);
 		
             e.Version = c.Version;
@@ -140,7 +140,7 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 
         protected virtual IUserPermissionMvoStateMergePatched Map(IMergePatchUserPermissionMvo c)
         {
-			var stateEventId = new UserPermissionMvoStateEventId(c.UserPermissionId, c.UserVersion);
+			var stateEventId = new UserPermissionMvoEventId(c.UserPermissionId, c.UserVersion);
             IUserPermissionMvoStateMergePatched e = NewUserPermissionMvoStateMergePatched(stateEventId);
 
             e.Version = c.Version;
@@ -196,7 +196,7 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 
         protected virtual IUserPermissionMvoStateDeleted Map(IDeleteUserPermissionMvo c)
         {
-			var stateEventId = new UserPermissionMvoStateEventId(c.UserPermissionId, c.UserVersion);
+			var stateEventId = new UserPermissionMvoEventId(c.UserPermissionId, c.UserVersion);
             IUserPermissionMvoStateDeleted e = NewUserPermissionMvoStateDeleted(stateEventId);
 			
             e.CommandId = c.CommandId;
@@ -225,7 +225,7 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 
         protected UserPermissionMvoStateCreated NewUserPermissionMvoStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new UserPermissionMvoStateEventId(_state.UserPermissionId, version);
+            var stateEventId = new UserPermissionMvoEventId(_state.UserPermissionId, version);
             var e = NewUserPermissionMvoStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -238,7 +238,7 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 
         protected UserPermissionMvoStateMergePatched NewUserPermissionMvoStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new UserPermissionMvoStateEventId(_state.UserPermissionId, version);
+            var stateEventId = new UserPermissionMvoEventId(_state.UserPermissionId, version);
             var e = NewUserPermissionMvoStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -252,7 +252,7 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 
         protected UserPermissionMvoStateDeleted NewUserPermissionMvoStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new UserPermissionMvoStateEventId(_state.UserPermissionId, version);
+            var stateEventId = new UserPermissionMvoEventId(_state.UserPermissionId, version);
             var e = NewUserPermissionMvoStateDeleted(stateEventId);
 
             e.CommandId = commandId;
@@ -265,17 +265,17 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 
 ////////////////////////
 
-		private UserPermissionMvoStateCreated NewUserPermissionMvoStateCreated(UserPermissionMvoStateEventId stateEventId)
+		private UserPermissionMvoStateCreated NewUserPermissionMvoStateCreated(UserPermissionMvoEventId stateEventId)
 		{
 			return new UserPermissionMvoStateCreated(stateEventId);			
 		}
 
-        private UserPermissionMvoStateMergePatched NewUserPermissionMvoStateMergePatched(UserPermissionMvoStateEventId stateEventId)
+        private UserPermissionMvoStateMergePatched NewUserPermissionMvoStateMergePatched(UserPermissionMvoEventId stateEventId)
 		{
 			return new UserPermissionMvoStateMergePatched(stateEventId);
 		}
 
-        private UserPermissionMvoStateDeleted NewUserPermissionMvoStateDeleted(UserPermissionMvoStateEventId stateEventId)
+        private UserPermissionMvoStateDeleted NewUserPermissionMvoStateDeleted(UserPermissionMvoEventId stateEventId)
 		{
 			return new UserPermissionMvoStateDeleted(stateEventId);
 		}

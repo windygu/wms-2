@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.Lot
 	public abstract class LotStateEventDtoBase : IStateEventDto, ILotStateCreated, ILotStateMergePatched, ILotStateDeleted
 	{
 
-        private LotStateEventIdDto _stateEventId;
+        private LotEventIdDto _stateEventId;
 
-		protected internal virtual LotStateEventIdDto StateEventId 
+		protected internal virtual LotEventIdDto StateEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new LotStateEventIdDto(); }
+                if (_stateEventId == null) { _stateEventId = new LotEventIdDto(); }
                 return _stateEventId;
             }
             set
@@ -56,10 +56,10 @@ namespace Dddml.Wms.Domain.Lot
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		LotStateEventId IGlobalIdentity<LotStateEventId>.GlobalId {
+		LotEventId IGlobalIdentity<LotEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToLotStateEventId();
+				return this.StateEventId.ToLotEventId();
 			}
 		}
 
@@ -153,16 +153,16 @@ namespace Dddml.Wms.Domain.Lot
 		}
 
 
-        LotStateEventId ILotStateEvent.StateEventId
+        LotEventId ILotStateEvent.StateEventId
         {
-            get { return this.StateEventId.ToLotStateEventId(); }
+            get { return this.StateEventId.ToLotEventId(); }
         }
 
         protected LotStateEventDtoBase()
         {
         }
 
-        protected LotStateEventDtoBase(LotStateEventIdDto stateEventId)
+        protected LotStateEventDtoBase(LotEventIdDto stateEventId)
         {
             this.StateEventId = stateEventId;
         }

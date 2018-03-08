@@ -30,7 +30,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
         public virtual InventoryItemRequirementEntryStateCreatedDto ToInventoryItemRequirementEntryStateCreatedDto(IInventoryItemRequirementEntryStateCreated e)
         {
             var dto = new InventoryItemRequirementEntryStateCreatedDto();
-            dto.StateEventId = new InventoryItemRequirementEntryStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new InventoryItemRequirementEntryEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;

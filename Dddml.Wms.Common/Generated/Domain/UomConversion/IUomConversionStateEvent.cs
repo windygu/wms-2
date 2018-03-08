@@ -11,9 +11,9 @@ using Dddml.Wms.Domain.UomConversion;
 
 namespace Dddml.Wms.Domain.UomConversion
 {
-	public interface IUomConversionStateEvent : IEvent, IStateEventDto, IGlobalIdentity<UomConversionStateEventId>, ICreated<string>
+	public interface IUomConversionStateEvent : IEvent, IStateEventDto, IGlobalIdentity<UomConversionEventId>, ICreated<string>
 	{
-		UomConversionStateEventId StateEventId { get; }
+		UomConversionEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

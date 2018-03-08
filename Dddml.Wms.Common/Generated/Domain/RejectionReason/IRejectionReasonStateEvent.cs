@@ -11,9 +11,9 @@ using Dddml.Wms.Domain.RejectionReason;
 
 namespace Dddml.Wms.Domain.RejectionReason
 {
-	public interface IRejectionReasonStateEvent : IEvent, IStateEventDto, IGlobalIdentity<RejectionReasonStateEventId>, ICreated<string>
+	public interface IRejectionReasonStateEvent : IEvent, IStateEventDto, IGlobalIdentity<RejectionReasonEventId>, ICreated<string>
 	{
-		RejectionReasonStateEventId StateEventId { get; }
+		RejectionReasonEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

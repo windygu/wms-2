@@ -428,7 +428,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             id.Append("[").Append("AttributeUseMvo|");
 
             var stateEntityId = this.AttributeSetAttributeUseId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.AttributeSetAttributeUseId; // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+            var eventEntityId = stateEvent.StateEventId.AttributeSetAttributeUseId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);

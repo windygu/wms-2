@@ -10,14 +10,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractMovementLineMvoStateEvent extends AbstractStateEvent implements MovementLineMvoStateEvent 
 {
-    private MovementLineMvoStateEventId stateEventId;
+    private MovementLineMvoEventId stateEventId;
 
-    public MovementLineMvoStateEventId getStateEventId() {
+    public MovementLineMvoEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(MovementLineMvoStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(MovementLineMvoEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public MovementLineId getMovementLineId() {
@@ -492,8 +492,8 @@ public abstract class AbstractMovementLineMvoStateEvent extends AbstractStateEve
     protected AbstractMovementLineMvoStateEvent() {
     }
 
-    protected AbstractMovementLineMvoStateEvent(MovementLineMvoStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractMovementLineMvoStateEvent(MovementLineMvoEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -503,11 +503,11 @@ public abstract class AbstractMovementLineMvoStateEvent extends AbstractStateEve
     public static abstract class AbstractMovementLineMvoStateCreated extends AbstractMovementLineMvoStateEvent implements MovementLineMvoStateEvent.MovementLineMvoStateCreated
     {
         public AbstractMovementLineMvoStateCreated() {
-            this(new MovementLineMvoStateEventId());
+            this(new MovementLineMvoEventId());
         }
 
-        public AbstractMovementLineMvoStateCreated(MovementLineMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractMovementLineMvoStateCreated(MovementLineMvoEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -520,11 +520,11 @@ public abstract class AbstractMovementLineMvoStateEvent extends AbstractStateEve
     public static abstract class AbstractMovementLineMvoStateMergePatched extends AbstractMovementLineMvoStateEvent implements MovementLineMvoStateEvent.MovementLineMvoStateMergePatched
     {
         public AbstractMovementLineMvoStateMergePatched() {
-            this(new MovementLineMvoStateEventId());
+            this(new MovementLineMvoEventId());
         }
 
-        public AbstractMovementLineMvoStateMergePatched(MovementLineMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractMovementLineMvoStateMergePatched(MovementLineMvoEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -887,11 +887,11 @@ public abstract class AbstractMovementLineMvoStateEvent extends AbstractStateEve
     public static abstract class AbstractMovementLineMvoStateDeleted extends AbstractMovementLineMvoStateEvent implements MovementLineMvoStateEvent.MovementLineMvoStateDeleted
     {
         public AbstractMovementLineMvoStateDeleted() {
-            this(new MovementLineMvoStateEventId());
+            this(new MovementLineMvoEventId());
         }
 
-        public AbstractMovementLineMvoStateDeleted(MovementLineMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractMovementLineMvoStateDeleted(MovementLineMvoEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -904,8 +904,8 @@ public abstract class AbstractMovementLineMvoStateEvent extends AbstractStateEve
         public SimpleMovementLineMvoStateCreated() {
         }
 
-        public SimpleMovementLineMvoStateCreated(MovementLineMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleMovementLineMvoStateCreated(MovementLineMvoEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -914,8 +914,8 @@ public abstract class AbstractMovementLineMvoStateEvent extends AbstractStateEve
         public SimpleMovementLineMvoStateMergePatched() {
         }
 
-        public SimpleMovementLineMvoStateMergePatched(MovementLineMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleMovementLineMvoStateMergePatched(MovementLineMvoEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -924,8 +924,8 @@ public abstract class AbstractMovementLineMvoStateEvent extends AbstractStateEve
         public SimpleMovementLineMvoStateDeleted() {
         }
 
-        public SimpleMovementLineMvoStateDeleted(MovementLineMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleMovementLineMvoStateDeleted(MovementLineMvoEventId eventId) {
+            super(eventId);
         }
     }
 

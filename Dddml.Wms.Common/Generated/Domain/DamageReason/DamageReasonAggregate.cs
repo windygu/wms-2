@@ -104,7 +104,7 @@ namespace Dddml.Wms.Domain.DamageReason
 
         protected virtual IDamageReasonStateCreated Map(ICreateDamageReason c)
         {
-			var stateEventId = new DamageReasonStateEventId(c.DamageReasonId, c.Version);
+			var stateEventId = new DamageReasonEventId(c.DamageReasonId, c.Version);
             IDamageReasonStateCreated e = NewDamageReasonStateCreated(stateEventId);
 		
             e.Description = c.Description;
@@ -123,7 +123,7 @@ namespace Dddml.Wms.Domain.DamageReason
 
         protected virtual IDamageReasonStateMergePatched Map(IMergePatchDamageReason c)
         {
-			var stateEventId = new DamageReasonStateEventId(c.DamageReasonId, c.Version);
+			var stateEventId = new DamageReasonEventId(c.DamageReasonId, c.Version);
             IDamageReasonStateMergePatched e = NewDamageReasonStateMergePatched(stateEventId);
 
             e.Description = c.Description;
@@ -147,7 +147,7 @@ namespace Dddml.Wms.Domain.DamageReason
 
         protected virtual IDamageReasonStateDeleted Map(IDeleteDamageReason c)
         {
-			var stateEventId = new DamageReasonStateEventId(c.DamageReasonId, c.Version);
+			var stateEventId = new DamageReasonEventId(c.DamageReasonId, c.Version);
             IDamageReasonStateDeleted e = NewDamageReasonStateDeleted(stateEventId);
 			
             e.CommandId = c.CommandId;
@@ -176,7 +176,7 @@ namespace Dddml.Wms.Domain.DamageReason
 
         protected DamageReasonStateCreated NewDamageReasonStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new DamageReasonStateEventId(_state.DamageReasonId, version);
+            var stateEventId = new DamageReasonEventId(_state.DamageReasonId, version);
             var e = NewDamageReasonStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -189,7 +189,7 @@ namespace Dddml.Wms.Domain.DamageReason
 
         protected DamageReasonStateMergePatched NewDamageReasonStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new DamageReasonStateEventId(_state.DamageReasonId, version);
+            var stateEventId = new DamageReasonEventId(_state.DamageReasonId, version);
             var e = NewDamageReasonStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -203,7 +203,7 @@ namespace Dddml.Wms.Domain.DamageReason
 
         protected DamageReasonStateDeleted NewDamageReasonStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new DamageReasonStateEventId(_state.DamageReasonId, version);
+            var stateEventId = new DamageReasonEventId(_state.DamageReasonId, version);
             var e = NewDamageReasonStateDeleted(stateEventId);
 
             e.CommandId = commandId;
@@ -216,17 +216,17 @@ namespace Dddml.Wms.Domain.DamageReason
 
 ////////////////////////
 
-		private DamageReasonStateCreated NewDamageReasonStateCreated(DamageReasonStateEventId stateEventId)
+		private DamageReasonStateCreated NewDamageReasonStateCreated(DamageReasonEventId stateEventId)
 		{
 			return new DamageReasonStateCreated(stateEventId);			
 		}
 
-        private DamageReasonStateMergePatched NewDamageReasonStateMergePatched(DamageReasonStateEventId stateEventId)
+        private DamageReasonStateMergePatched NewDamageReasonStateMergePatched(DamageReasonEventId stateEventId)
 		{
 			return new DamageReasonStateMergePatched(stateEventId);
 		}
 
-        private DamageReasonStateDeleted NewDamageReasonStateDeleted(DamageReasonStateEventId stateEventId)
+        private DamageReasonStateDeleted NewDamageReasonStateDeleted(DamageReasonEventId stateEventId)
 		{
 			return new DamageReasonStateDeleted(stateEventId);
 		}

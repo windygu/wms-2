@@ -17,13 +17,13 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 	public abstract class InventoryItemRequirementEntryStateEventDtoBase : IStateEventDto, IInventoryItemRequirementEntryStateCreated
 	{
 
-        private InventoryItemRequirementEntryStateEventIdDto _stateEventId;
+        private InventoryItemRequirementEntryEventIdDto _stateEventId;
 
-		protected internal virtual InventoryItemRequirementEntryStateEventIdDto StateEventId 
+		protected internal virtual InventoryItemRequirementEntryEventIdDto StateEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new InventoryItemRequirementEntryStateEventIdDto(); }
+                if (_stateEventId == null) { _stateEventId = new InventoryItemRequirementEntryEventIdDto(); }
                 return _stateEventId;
             }
             set
@@ -64,10 +64,10 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		InventoryItemRequirementEntryStateEventId IGlobalIdentity<InventoryItemRequirementEntryStateEventId>.GlobalId {
+		InventoryItemRequirementEntryEventId IGlobalIdentity<InventoryItemRequirementEntryEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToInventoryItemRequirementEntryStateEventId();
+				return this.StateEventId.ToInventoryItemRequirementEntryEventId();
 			}
 		}
 
@@ -106,16 +106,16 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 		}
 
 
-        InventoryItemRequirementEntryStateEventId IInventoryItemRequirementEntryStateEvent.StateEventId
+        InventoryItemRequirementEntryEventId IInventoryItemRequirementEntryStateEvent.StateEventId
         {
-            get { return this.StateEventId.ToInventoryItemRequirementEntryStateEventId(); }
+            get { return this.StateEventId.ToInventoryItemRequirementEntryEventId(); }
         }
 
         protected InventoryItemRequirementEntryStateEventDtoBase()
         {
         }
 
-        protected InventoryItemRequirementEntryStateEventDtoBase(InventoryItemRequirementEntryStateEventIdDto stateEventId)
+        protected InventoryItemRequirementEntryStateEventDtoBase(InventoryItemRequirementEntryEventIdDto stateEventId)
         {
             this.StateEventId = stateEventId;
         }

@@ -21,7 +21,7 @@ namespace Dddml.Wms.Domain.Locator.NHibernate
 	{
 		public override object GetEventId(IEventStoreAggregateId eventStoreAggregateId, long version)
 		{
-			return new LocatorStateEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
+			return new LocatorEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
 		public override Type GetSupportedStateEventType()

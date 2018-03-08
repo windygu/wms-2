@@ -297,7 +297,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
             id.Append("[").Append("InventoryItemRequirementEntryMvo|");
 
             var stateEntityId = this.InventoryItemRequirementEntryId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.InventoryItemRequirementEntryId; // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+            var eventEntityId = stateEvent.StateEventId.InventoryItemRequirementEntryId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);

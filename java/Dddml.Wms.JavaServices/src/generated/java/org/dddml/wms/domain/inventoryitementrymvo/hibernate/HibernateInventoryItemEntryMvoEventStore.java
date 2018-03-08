@@ -18,7 +18,7 @@ public class HibernateInventoryItemEntryMvoEventStore extends AbstractHibernateE
     @Override
     protected Serializable getEventId(EventStoreAggregateId eventStoreAggregateId, long version)
     {
-        return new InventoryItemEntryMvoStateEventId((InventoryItemEntryId) eventStoreAggregateId.getId(), version);
+        return new InventoryItemEntryMvoEventId((InventoryItemEntryId) eventStoreAggregateId.getId(), version);
     }
 
     @Override

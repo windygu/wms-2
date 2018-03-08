@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.InventoryItem
 	public abstract class InventoryItemStateEventDtoBase : IStateEventDto, IInventoryItemStateCreated, IInventoryItemStateMergePatched
 	{
 
-        private InventoryItemStateEventIdDto _stateEventId;
+        private InventoryItemEventIdDto _stateEventId;
 
-		protected internal virtual InventoryItemStateEventIdDto StateEventId 
+		protected internal virtual InventoryItemEventIdDto StateEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new InventoryItemStateEventIdDto(); }
+                if (_stateEventId == null) { _stateEventId = new InventoryItemEventIdDto(); }
                 return _stateEventId;
             }
             set
@@ -60,10 +60,10 @@ namespace Dddml.Wms.Domain.InventoryItem
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		InventoryItemStateEventId IGlobalIdentity<InventoryItemStateEventId>.GlobalId {
+		InventoryItemEventId IGlobalIdentity<InventoryItemEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToInventoryItemStateEventId();
+				return this.StateEventId.ToInventoryItemEventId();
 			}
 		}
 
@@ -212,9 +212,9 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 
 
-        private InventoryItemEntryStateEventIdDto NewInventoryItemEntryStateEventId(long entrySeqId)
+        private InventoryItemEntryEventIdDto NewInventoryItemEntryEventId(long entrySeqId)
         {
-            var eId = new InventoryItemEntryStateEventIdDto();
+            var eId = new InventoryItemEntryEventIdDto();
             eId.InventoryItemId = this.StateEventId.InventoryItemId;
             eId.EntrySeqId = entrySeqId;
             eId.InventoryItemVersion = this.StateEventId.Version;
@@ -224,7 +224,7 @@ namespace Dddml.Wms.Domain.InventoryItem
         public virtual InventoryItemEntryStateCreatedDto NewInventoryItemEntryStateCreated(long entrySeqId)
         {
             var e = new InventoryItemEntryStateCreatedDto();
-            var eId = NewInventoryItemEntryStateEventId(entrySeqId);
+            var eId = NewInventoryItemEntryEventId(entrySeqId);
             e.StateEventId = eId;
             return e;
         }
@@ -260,16 +260,16 @@ namespace Dddml.Wms.Domain.InventoryItem
         }
 
 
-        InventoryItemStateEventId IInventoryItemStateEvent.StateEventId
+        InventoryItemEventId IInventoryItemStateEvent.StateEventId
         {
-            get { return this.StateEventId.ToInventoryItemStateEventId(); }
+            get { return this.StateEventId.ToInventoryItemEventId(); }
         }
 
         protected InventoryItemStateEventDtoBase()
         {
         }
 
-        protected InventoryItemStateEventDtoBase(InventoryItemStateEventIdDto stateEventId)
+        protected InventoryItemStateEventDtoBase(InventoryItemEventIdDto stateEventId)
         {
             this.StateEventId = stateEventId;
         }

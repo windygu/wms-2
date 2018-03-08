@@ -7,7 +7,7 @@ import org.dddml.wms.specialization.Event;
 
 public interface LotStateEvent extends Event
 {
-    LotStateEventId getStateEventId();
+    LotEventId getStateEventId();
 
     boolean getStateEventReadOnly();
 

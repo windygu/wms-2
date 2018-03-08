@@ -11,9 +11,9 @@ using Dddml.Wms.Domain.Lot;
 
 namespace Dddml.Wms.Domain.Lot
 {
-	public interface ILotStateEvent : IEvent, IStateEventDto, IGlobalIdentity<LotStateEventId>, ICreated<string>
+	public interface ILotStateEvent : IEvent, IStateEventDto, IGlobalIdentity<LotEventId>, ICreated<string>
 	{
-		LotStateEventId StateEventId { get; }
+		LotEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

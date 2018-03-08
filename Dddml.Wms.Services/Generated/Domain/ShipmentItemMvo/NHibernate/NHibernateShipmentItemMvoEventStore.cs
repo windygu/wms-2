@@ -22,7 +22,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo.NHibernate
 	{
 		public override object GetEventId(IEventStoreAggregateId eventStoreAggregateId, long version)
 		{
-			return new ShipmentItemMvoStateEventId((ShipmentItemId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
+			return new ShipmentItemMvoEventId((ShipmentItemId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
 		public override Type GetSupportedStateEventType()

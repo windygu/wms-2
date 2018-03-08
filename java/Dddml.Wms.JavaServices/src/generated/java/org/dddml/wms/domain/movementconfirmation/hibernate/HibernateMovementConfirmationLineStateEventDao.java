@@ -35,12 +35,12 @@ public class HibernateMovementConfirmationLineStateEventDao implements MovementC
 
     @Transactional(readOnly = true)
     @Override
-    public Iterable<MovementConfirmationLineStateEvent> findByMovementConfirmationStateEventId(MovementConfirmationStateEventId movementConfirmationStateEventId)
+    public Iterable<MovementConfirmationLineStateEvent> findByMovementConfirmationEventId(MovementConfirmationEventId movementConfirmationEventId)
     {
         Criteria criteria = getCurrentSession().createCriteria(AbstractMovementConfirmationLineStateEvent.class);
         Junction partIdCondition = Restrictions.conjunction()
-            .add(Restrictions.eq("stateEventId.movementConfirmationDocumentNumber", movementConfirmationStateEventId.getDocumentNumber()))
-            .add(Restrictions.eq("stateEventId.movementConfirmationVersion", movementConfirmationStateEventId.getVersion()))
+            .add(Restrictions.eq("stateEventId.movementConfirmationDocumentNumber", movementConfirmationEventId.getDocumentNumber()))
+            .add(Restrictions.eq("stateEventId.movementConfirmationVersion", movementConfirmationEventId.getVersion()))
             ;
         return criteria.add(partIdCondition).list();
     }

@@ -21,11 +21,11 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
         public virtual SellableInventoryItemEntryState SellableInventoryItemEntryState { get { return _state; } }
 
-        public virtual SellableInventoryItemEntryStateEventId StateEventId
+        public virtual SellableInventoryItemEntryEventId StateEventId
         {
             get
             {
-                SellableInventoryItemEntryStateEventId eventId = new SellableInventoryItemEntryStateEventId(_state.SellableInventoryItemId, _state.EntrySeqId, default(long));
+                SellableInventoryItemEntryEventId eventId = new SellableInventoryItemEntryEventId(_state.SellableInventoryItemId, _state.EntrySeqId, default(long));
                 return eventId;
             }
             set
@@ -53,7 +53,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		SellableInventoryItemEntryStateEventId IGlobalIdentity<SellableInventoryItemEntryStateEventId>.GlobalId {
+		SellableInventoryItemEntryEventId IGlobalIdentity<SellableInventoryItemEntryEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -99,7 +99,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
         {
         }
 
-        protected SellableInventoryItemEntryStateEventBase(SellableInventoryItemEntryStateEventId stateEventId) : this(new SellableInventoryItemEntryState())
+        protected SellableInventoryItemEntryStateEventBase(SellableInventoryItemEntryEventId stateEventId) : this(new SellableInventoryItemEntryState())
         {
             this.StateEventId = stateEventId;
         }
@@ -122,11 +122,11 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
 	public class SellableInventoryItemEntryStateCreated : SellableInventoryItemEntryStateEventBase, ISellableInventoryItemEntryStateCreated
 	{
-		public SellableInventoryItemEntryStateCreated () : this(new SellableInventoryItemEntryStateEventId())
+		public SellableInventoryItemEntryStateCreated () : this(new SellableInventoryItemEntryEventId())
 		{
 		}
 
-		public SellableInventoryItemEntryStateCreated (SellableInventoryItemEntryStateEventId stateEventId) : base(stateEventId)
+		public SellableInventoryItemEntryStateCreated (SellableInventoryItemEntryEventId stateEventId) : base(stateEventId)
 		{
 		}
 

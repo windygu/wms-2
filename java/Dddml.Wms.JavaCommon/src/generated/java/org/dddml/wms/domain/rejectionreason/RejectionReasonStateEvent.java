@@ -7,7 +7,7 @@ import org.dddml.wms.specialization.Event;
 
 public interface RejectionReasonStateEvent extends Event
 {
-    RejectionReasonStateEventId getStateEventId();
+    RejectionReasonEventId getStateEventId();
 
     boolean getStateEventReadOnly();
 

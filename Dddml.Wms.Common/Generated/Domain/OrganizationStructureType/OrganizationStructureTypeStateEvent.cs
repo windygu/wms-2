@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 	public abstract class OrganizationStructureTypeStateEventBase : IOrganizationStructureTypeStateEvent
 	{
 
-		public virtual OrganizationStructureTypeStateEventId StateEventId { get; set; }
+		public virtual OrganizationStructureTypeEventId StateEventId { get; set; }
 
         public virtual string Id
         {
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		OrganizationStructureTypeStateEventId IGlobalIdentity<OrganizationStructureTypeStateEventId>.GlobalId {
+		OrganizationStructureTypeEventId IGlobalIdentity<OrganizationStructureTypeEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -79,7 +79,7 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
         {
         }
 
-        protected OrganizationStructureTypeStateEventBase(OrganizationStructureTypeStateEventId stateEventId)
+        protected OrganizationStructureTypeStateEventBase(OrganizationStructureTypeEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -96,11 +96,11 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 
 	public class OrganizationStructureTypeStateCreated : OrganizationStructureTypeStateEventBase, IOrganizationStructureTypeStateCreated
 	{
-		public OrganizationStructureTypeStateCreated () : this(new OrganizationStructureTypeStateEventId())
+		public OrganizationStructureTypeStateCreated () : this(new OrganizationStructureTypeEventId())
 		{
 		}
 
-		public OrganizationStructureTypeStateCreated (OrganizationStructureTypeStateEventId stateEventId) : base(stateEventId)
+		public OrganizationStructureTypeStateCreated (OrganizationStructureTypeEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -124,7 +124,7 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 		{
 		}
 
-		public OrganizationStructureTypeStateMergePatched (OrganizationStructureTypeStateEventId stateEventId) : base(stateEventId)
+		public OrganizationStructureTypeStateMergePatched (OrganizationStructureTypeEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -143,7 +143,7 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 		{
 		}
 
-		public OrganizationStructureTypeStateDeleted (OrganizationStructureTypeStateEventId stateEventId) : base(stateEventId)
+		public OrganizationStructureTypeStateDeleted (OrganizationStructureTypeEventId stateEventId) : base(stateEventId)
 		{
 		}
 

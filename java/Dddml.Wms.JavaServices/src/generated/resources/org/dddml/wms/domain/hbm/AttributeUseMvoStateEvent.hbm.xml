@@ -8,7 +8,7 @@
   
   <class name="AbstractAttributeUseMvoStateEvent" table="AttributeUseMvoStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="stateEventId" class="org.dddml.wms.domain.attributeusemvo.AttributeUseMvoStateEventId">
+	<composite-id name="stateEventId" class="org.dddml.wms.domain.attributeusemvo.AttributeUseMvoEventId">
 		<key-property name="attributeSetAttributeUseIdAttributeSetId" ><column name="AttributeSetAttributeUseIdAttributeSetId" length="50" /></key-property>
 		<key-property name="attributeSetAttributeUseIdAttributeId" ><column name="AttributeSetAttributeUseIdAttributeId" length="50" /></key-property>
 		<key-property name="attributeSetVersion" ></key-property>

@@ -245,7 +245,7 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
             id.Append("[").Append("OrganizationStructureType|");
 
             var stateEntityId = this.Id; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.Id; // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+            var eventEntityId = stateEvent.StateEventId.Id;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);

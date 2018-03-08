@@ -17,7 +17,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 	public abstract class SellableInventoryItemEntryMvoStateEventBase : ISellableInventoryItemEntryMvoStateEvent
 	{
 
-		public virtual SellableInventoryItemEntryMvoStateEventId StateEventId { get; set; }
+		public virtual SellableInventoryItemEntryMvoEventId StateEventId { get; set; }
 
         public virtual SellableInventoryItemEntryId SellableInventoryItemEntryId
         {
@@ -49,7 +49,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		SellableInventoryItemEntryMvoStateEventId IGlobalIdentity<SellableInventoryItemEntryMvoStateEventId>.GlobalId {
+		SellableInventoryItemEntryMvoEventId IGlobalIdentity<SellableInventoryItemEntryMvoEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -93,7 +93,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
         {
         }
 
-        protected SellableInventoryItemEntryMvoStateEventBase(SellableInventoryItemEntryMvoStateEventId stateEventId)
+        protected SellableInventoryItemEntryMvoStateEventBase(SellableInventoryItemEntryMvoEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -110,11 +110,11 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 
 	public class SellableInventoryItemEntryMvoStateCreated : SellableInventoryItemEntryMvoStateEventBase, ISellableInventoryItemEntryMvoStateCreated
 	{
-		public SellableInventoryItemEntryMvoStateCreated () : this(new SellableInventoryItemEntryMvoStateEventId())
+		public SellableInventoryItemEntryMvoStateCreated () : this(new SellableInventoryItemEntryMvoEventId())
 		{
 		}
 
-		public SellableInventoryItemEntryMvoStateCreated (SellableInventoryItemEntryMvoStateEventId stateEventId) : base(stateEventId)
+		public SellableInventoryItemEntryMvoStateCreated (SellableInventoryItemEntryMvoEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -150,7 +150,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 		{
 		}
 
-		public SellableInventoryItemEntryMvoStateMergePatched (SellableInventoryItemEntryMvoStateEventId stateEventId) : base(stateEventId)
+		public SellableInventoryItemEntryMvoStateMergePatched (SellableInventoryItemEntryMvoEventId stateEventId) : base(stateEventId)
 		{
 		}
 

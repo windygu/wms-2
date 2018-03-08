@@ -17,7 +17,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 	public abstract class InventoryItemRequirementStateEventBase : IInventoryItemRequirementStateEvent
 	{
 
-		public virtual InventoryItemRequirementStateEventId StateEventId { get; set; }
+		public virtual InventoryItemRequirementEventId StateEventId { get; set; }
 
         public virtual InventoryItemId InventoryItemRequirementId
         {
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		InventoryItemRequirementStateEventId IGlobalIdentity<InventoryItemRequirementStateEventId>.GlobalId {
+		InventoryItemRequirementEventId IGlobalIdentity<InventoryItemRequirementEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -79,14 +79,14 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
         {
         }
 
-        protected InventoryItemRequirementStateEventBase(InventoryItemRequirementStateEventId stateEventId)
+        protected InventoryItemRequirementStateEventBase(InventoryItemRequirementEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
 
-        protected InventoryItemRequirementEntryStateEventId NewInventoryItemRequirementEntryStateEventId(long entrySeqId)
+        protected InventoryItemRequirementEntryEventId NewInventoryItemRequirementEntryEventId(long entrySeqId)
         {
-            var stateEventId = new InventoryItemRequirementEntryStateEventId(this.StateEventId.InventoryItemRequirementId, entrySeqId, this.StateEventId.Version);
+            var stateEventId = new InventoryItemRequirementEntryEventId(this.StateEventId.InventoryItemRequirementId, entrySeqId, this.StateEventId.Version);
             return stateEventId;
         }
 
@@ -118,15 +118,15 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 
 	public class InventoryItemRequirementStateCreated : InventoryItemRequirementStateEventBase, IInventoryItemRequirementStateCreated
 	{
-		public InventoryItemRequirementStateCreated () : this(new InventoryItemRequirementStateEventId())
+		public InventoryItemRequirementStateCreated () : this(new InventoryItemRequirementEventId())
 		{
 		}
 
-		public InventoryItemRequirementStateCreated (InventoryItemRequirementStateEventId stateEventId) : base(stateEventId)
+		public InventoryItemRequirementStateCreated (InventoryItemRequirementEventId stateEventId) : base(stateEventId)
 		{
 		}
 
-		private Dictionary<InventoryItemRequirementEntryStateEventId, IInventoryItemRequirementEntryStateCreated> _inventoryItemRequirementEntryEvents = new Dictionary<InventoryItemRequirementEntryStateEventId, IInventoryItemRequirementEntryStateCreated>();
+		private Dictionary<InventoryItemRequirementEntryEventId, IInventoryItemRequirementEntryStateCreated> _inventoryItemRequirementEntryEvents = new Dictionary<InventoryItemRequirementEntryEventId, IInventoryItemRequirementEntryStateCreated>();
         
         private IEnumerable<IInventoryItemRequirementEntryStateCreated> _readOnlyInventoryItemRequirementEntryEvents;
 
@@ -157,7 +157,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 
         public virtual IInventoryItemRequirementEntryStateCreated NewInventoryItemRequirementEntryStateCreated(long entrySeqId)
         {
-            var stateEvent = new InventoryItemRequirementEntryStateCreated(NewInventoryItemRequirementEntryStateEventId(entrySeqId));
+            var stateEvent = new InventoryItemRequirementEntryStateCreated(NewInventoryItemRequirementEntryEventId(entrySeqId));
             return stateEvent;
         }
 
@@ -179,11 +179,11 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 		{
 		}
 
-		public InventoryItemRequirementStateMergePatched (InventoryItemRequirementStateEventId stateEventId) : base(stateEventId)
+		public InventoryItemRequirementStateMergePatched (InventoryItemRequirementEventId stateEventId) : base(stateEventId)
 		{
 		}
 
-		private Dictionary<InventoryItemRequirementEntryStateEventId, IInventoryItemRequirementEntryStateEvent> _inventoryItemRequirementEntryEvents = new Dictionary<InventoryItemRequirementEntryStateEventId, IInventoryItemRequirementEntryStateEvent>();
+		private Dictionary<InventoryItemRequirementEntryEventId, IInventoryItemRequirementEntryStateEvent> _inventoryItemRequirementEntryEvents = new Dictionary<InventoryItemRequirementEntryEventId, IInventoryItemRequirementEntryStateEvent>();
 
         private IEnumerable<IInventoryItemRequirementEntryStateEvent> _readOnlyInventoryItemRequirementEntryEvents;
         
@@ -214,7 +214,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 
         public virtual IInventoryItemRequirementEntryStateCreated NewInventoryItemRequirementEntryStateCreated(long entrySeqId)
         {
-            var stateEvent = new InventoryItemRequirementEntryStateCreated(NewInventoryItemRequirementEntryStateEventId(entrySeqId));
+            var stateEvent = new InventoryItemRequirementEntryStateCreated(NewInventoryItemRequirementEntryEventId(entrySeqId));
             return stateEvent;
         }
 

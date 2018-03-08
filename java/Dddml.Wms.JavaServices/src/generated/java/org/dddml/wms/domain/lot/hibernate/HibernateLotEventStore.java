@@ -16,7 +16,7 @@ public class HibernateLotEventStore extends AbstractHibernateEventStore
     @Override
     protected Serializable getEventId(EventStoreAggregateId eventStoreAggregateId, long version)
     {
-        return new LotStateEventId((String) eventStoreAggregateId.getId(), version);
+        return new LotEventId((String) eventStoreAggregateId.getId(), version);
     }
 
     @Override

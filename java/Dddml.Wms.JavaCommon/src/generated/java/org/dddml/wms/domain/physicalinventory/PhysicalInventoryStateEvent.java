@@ -9,7 +9,7 @@ import org.dddml.wms.specialization.Event;
 
 public interface PhysicalInventoryStateEvent extends Event
 {
-    PhysicalInventoryStateEventId getStateEventId();
+    PhysicalInventoryEventId getStateEventId();
 
     boolean getStateEventReadOnly();
 

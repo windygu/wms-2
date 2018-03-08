@@ -10,14 +10,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractPhysicalInventoryStateEvent extends AbstractStateEvent implements PhysicalInventoryStateEvent 
 {
-    private PhysicalInventoryStateEventId stateEventId;
+    private PhysicalInventoryEventId stateEventId;
 
-    public PhysicalInventoryStateEventId getStateEventId() {
+    public PhysicalInventoryEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(PhysicalInventoryStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(PhysicalInventoryEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public String getDocumentNumber() {
@@ -252,20 +252,20 @@ public abstract class AbstractPhysicalInventoryStateEvent extends AbstractStateE
     protected AbstractPhysicalInventoryStateEvent() {
     }
 
-    protected AbstractPhysicalInventoryStateEvent(PhysicalInventoryStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractPhysicalInventoryStateEvent(PhysicalInventoryEventId eventId) {
+        this.stateEventId = eventId;
     }
 
     protected PhysicalInventoryLineStateEventDao getPhysicalInventoryLineStateEventDao() {
         return (PhysicalInventoryLineStateEventDao)ApplicationContext.current.get("PhysicalInventoryLineStateEventDao");
     }
 
-    protected PhysicalInventoryLineStateEventId newPhysicalInventoryLineStateEventId(InventoryItemId inventoryItemId)
+    protected PhysicalInventoryLineEventId newPhysicalInventoryLineEventId(InventoryItemId inventoryItemId)
     {
-        PhysicalInventoryLineStateEventId stateEventId = new PhysicalInventoryLineStateEventId(this.getStateEventId().getDocumentNumber(), 
+        PhysicalInventoryLineEventId eventId = new PhysicalInventoryLineEventId(this.getStateEventId().getDocumentNumber(), 
             inventoryItemId, 
             this.getStateEventId().getVersion());
-        return stateEventId;
+        return eventId;
     }
 
     protected void throwOnInconsistentEventIds(PhysicalInventoryLineStateEvent e)
@@ -283,15 +283,15 @@ public abstract class AbstractPhysicalInventoryStateEvent extends AbstractStateE
     }
 
     public PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateCreated newPhysicalInventoryLineStateCreated(InventoryItemId inventoryItemId) {
-        return new AbstractPhysicalInventoryLineStateEvent.SimplePhysicalInventoryLineStateCreated(newPhysicalInventoryLineStateEventId(inventoryItemId));
+        return new AbstractPhysicalInventoryLineStateEvent.SimplePhysicalInventoryLineStateCreated(newPhysicalInventoryLineEventId(inventoryItemId));
     }
 
     public PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateMergePatched newPhysicalInventoryLineStateMergePatched(InventoryItemId inventoryItemId) {
-        return new AbstractPhysicalInventoryLineStateEvent.SimplePhysicalInventoryLineStateMergePatched(newPhysicalInventoryLineStateEventId(inventoryItemId));
+        return new AbstractPhysicalInventoryLineStateEvent.SimplePhysicalInventoryLineStateMergePatched(newPhysicalInventoryLineEventId(inventoryItemId));
     }
 
     public PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateRemoved newPhysicalInventoryLineStateRemoved(InventoryItemId inventoryItemId) {
-        return new AbstractPhysicalInventoryLineStateEvent.SimplePhysicalInventoryLineStateRemoved(newPhysicalInventoryLineStateEventId(inventoryItemId));
+        return new AbstractPhysicalInventoryLineStateEvent.SimplePhysicalInventoryLineStateRemoved(newPhysicalInventoryLineEventId(inventoryItemId));
     }
 
 
@@ -301,18 +301,18 @@ public abstract class AbstractPhysicalInventoryStateEvent extends AbstractStateE
     public static abstract class AbstractPhysicalInventoryStateCreated extends AbstractPhysicalInventoryStateEvent implements PhysicalInventoryStateEvent.PhysicalInventoryStateCreated, Saveable
     {
         public AbstractPhysicalInventoryStateCreated() {
-            this(new PhysicalInventoryStateEventId());
+            this(new PhysicalInventoryEventId());
         }
 
-        public AbstractPhysicalInventoryStateCreated(PhysicalInventoryStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractPhysicalInventoryStateCreated(PhysicalInventoryEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
             return StateEventType.CREATED;
         }
 
-        private Map<PhysicalInventoryLineStateEventId, PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateCreated> physicalInventoryLineEvents = new HashMap<PhysicalInventoryLineStateEventId, PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateCreated>();
+        private Map<PhysicalInventoryLineEventId, PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateCreated> physicalInventoryLineEvents = new HashMap<PhysicalInventoryLineEventId, PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateCreated>();
         
         private Iterable<PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateCreated> readOnlyPhysicalInventoryLineEvents;
 
@@ -327,7 +327,7 @@ public abstract class AbstractPhysicalInventoryStateEvent extends AbstractStateE
                 if (readOnlyPhysicalInventoryLineEvents != null) { return readOnlyPhysicalInventoryLineEvents; }
                 PhysicalInventoryLineStateEventDao eventDao = getPhysicalInventoryLineStateEventDao();
                 List<PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateCreated> eL = new ArrayList<PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateCreated>();
-                for (PhysicalInventoryLineStateEvent e : eventDao.findByPhysicalInventoryStateEventId(this.getStateEventId()))
+                for (PhysicalInventoryLineStateEvent e : eventDao.findByPhysicalInventoryEventId(this.getStateEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateCreated)e);
@@ -366,11 +366,11 @@ public abstract class AbstractPhysicalInventoryStateEvent extends AbstractStateE
     public static abstract class AbstractPhysicalInventoryStateMergePatched extends AbstractPhysicalInventoryStateEvent implements PhysicalInventoryStateEvent.PhysicalInventoryStateMergePatched, Saveable
     {
         public AbstractPhysicalInventoryStateMergePatched() {
-            this(new PhysicalInventoryStateEventId());
+            this(new PhysicalInventoryEventId());
         }
 
-        public AbstractPhysicalInventoryStateMergePatched(PhysicalInventoryStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractPhysicalInventoryStateMergePatched(PhysicalInventoryEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -527,7 +527,7 @@ public abstract class AbstractPhysicalInventoryStateEvent extends AbstractStateE
             this.isPropertyActiveRemoved = removed;
         }
 
-        private Map<PhysicalInventoryLineStateEventId, PhysicalInventoryLineStateEvent> physicalInventoryLineEvents = new HashMap<PhysicalInventoryLineStateEventId, PhysicalInventoryLineStateEvent>();
+        private Map<PhysicalInventoryLineEventId, PhysicalInventoryLineStateEvent> physicalInventoryLineEvents = new HashMap<PhysicalInventoryLineEventId, PhysicalInventoryLineStateEvent>();
         
         private Iterable<PhysicalInventoryLineStateEvent> readOnlyPhysicalInventoryLineEvents;
 
@@ -542,7 +542,7 @@ public abstract class AbstractPhysicalInventoryStateEvent extends AbstractStateE
                 if (readOnlyPhysicalInventoryLineEvents != null) { return readOnlyPhysicalInventoryLineEvents; }
                 PhysicalInventoryLineStateEventDao eventDao = getPhysicalInventoryLineStateEventDao();
                 List<PhysicalInventoryLineStateEvent> eL = new ArrayList<PhysicalInventoryLineStateEvent>();
-                for (PhysicalInventoryLineStateEvent e : eventDao.findByPhysicalInventoryStateEventId(this.getStateEventId()))
+                for (PhysicalInventoryLineStateEvent e : eventDao.findByPhysicalInventoryEventId(this.getStateEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((PhysicalInventoryLineStateEvent)e);
@@ -583,8 +583,8 @@ public abstract class AbstractPhysicalInventoryStateEvent extends AbstractStateE
         public SimplePhysicalInventoryStateCreated() {
         }
 
-        public SimplePhysicalInventoryStateCreated(PhysicalInventoryStateEventId stateEventId) {
-            super(stateEventId);
+        public SimplePhysicalInventoryStateCreated(PhysicalInventoryEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -593,8 +593,8 @@ public abstract class AbstractPhysicalInventoryStateEvent extends AbstractStateE
         public SimplePhysicalInventoryStateMergePatched() {
         }
 
-        public SimplePhysicalInventoryStateMergePatched(PhysicalInventoryStateEventId stateEventId) {
-            super(stateEventId);
+        public SimplePhysicalInventoryStateMergePatched(PhysicalInventoryEventId eventId) {
+            super(eventId);
         }
     }
 

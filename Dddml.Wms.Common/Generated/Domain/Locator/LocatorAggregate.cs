@@ -104,7 +104,7 @@ namespace Dddml.Wms.Domain.Locator
 
         protected virtual ILocatorStateCreated Map(ICreateLocator c)
         {
-			var stateEventId = new LocatorStateEventId(c.LocatorId, c.Version);
+			var stateEventId = new LocatorEventId(c.LocatorId, c.Version);
             ILocatorStateCreated e = NewLocatorStateCreated(stateEventId);
 		
             e.WarehouseId = c.WarehouseId;
@@ -130,7 +130,7 @@ namespace Dddml.Wms.Domain.Locator
 
         protected virtual ILocatorStateMergePatched Map(IMergePatchLocator c)
         {
-			var stateEventId = new LocatorStateEventId(c.LocatorId, c.Version);
+			var stateEventId = new LocatorEventId(c.LocatorId, c.Version);
             ILocatorStateMergePatched e = NewLocatorStateMergePatched(stateEventId);
 
             e.WarehouseId = c.WarehouseId;
@@ -168,7 +168,7 @@ namespace Dddml.Wms.Domain.Locator
 
         protected virtual ILocatorStateDeleted Map(IDeleteLocator c)
         {
-			var stateEventId = new LocatorStateEventId(c.LocatorId, c.Version);
+			var stateEventId = new LocatorEventId(c.LocatorId, c.Version);
             ILocatorStateDeleted e = NewLocatorStateDeleted(stateEventId);
 			
             e.CommandId = c.CommandId;
@@ -197,7 +197,7 @@ namespace Dddml.Wms.Domain.Locator
 
         protected LocatorStateCreated NewLocatorStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new LocatorStateEventId(_state.LocatorId, version);
+            var stateEventId = new LocatorEventId(_state.LocatorId, version);
             var e = NewLocatorStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -210,7 +210,7 @@ namespace Dddml.Wms.Domain.Locator
 
         protected LocatorStateMergePatched NewLocatorStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new LocatorStateEventId(_state.LocatorId, version);
+            var stateEventId = new LocatorEventId(_state.LocatorId, version);
             var e = NewLocatorStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -224,7 +224,7 @@ namespace Dddml.Wms.Domain.Locator
 
         protected LocatorStateDeleted NewLocatorStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new LocatorStateEventId(_state.LocatorId, version);
+            var stateEventId = new LocatorEventId(_state.LocatorId, version);
             var e = NewLocatorStateDeleted(stateEventId);
 
             e.CommandId = commandId;
@@ -237,17 +237,17 @@ namespace Dddml.Wms.Domain.Locator
 
 ////////////////////////
 
-		private LocatorStateCreated NewLocatorStateCreated(LocatorStateEventId stateEventId)
+		private LocatorStateCreated NewLocatorStateCreated(LocatorEventId stateEventId)
 		{
 			return new LocatorStateCreated(stateEventId);			
 		}
 
-        private LocatorStateMergePatched NewLocatorStateMergePatched(LocatorStateEventId stateEventId)
+        private LocatorStateMergePatched NewLocatorStateMergePatched(LocatorEventId stateEventId)
 		{
 			return new LocatorStateMergePatched(stateEventId);
 		}
 
-        private LocatorStateDeleted NewLocatorStateDeleted(LocatorStateEventId stateEventId)
+        private LocatorStateDeleted NewLocatorStateDeleted(LocatorEventId stateEventId)
 		{
 			return new LocatorStateDeleted(stateEventId);
 		}

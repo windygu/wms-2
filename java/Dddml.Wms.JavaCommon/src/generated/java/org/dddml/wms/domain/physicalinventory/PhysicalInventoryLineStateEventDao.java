@@ -9,7 +9,7 @@ public interface PhysicalInventoryLineStateEventDao
 {
     void save(PhysicalInventoryLineStateEvent e);
 
-    Iterable<PhysicalInventoryLineStateEvent> findByPhysicalInventoryStateEventId(PhysicalInventoryStateEventId physicalInventoryStateEventId);
+    Iterable<PhysicalInventoryLineStateEvent> findByPhysicalInventoryEventId(PhysicalInventoryEventId physicalInventoryEventId);
 
 }
 

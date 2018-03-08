@@ -12,9 +12,9 @@ using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 {
-	public interface IInventoryItemEntryMvoStateEvent : IEvent, IStateEventDto, IGlobalIdentity<InventoryItemEntryMvoStateEventId>, ICreated<string>
+	public interface IInventoryItemEntryMvoStateEvent : IEvent, IStateEventDto, IGlobalIdentity<InventoryItemEntryMvoEventId>, ICreated<string>
 	{
-		InventoryItemEntryMvoStateEventId StateEventId { get; }
+		InventoryItemEntryMvoEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

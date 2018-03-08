@@ -8,7 +8,7 @@
   
   <class name="AbstractInOutStateEvent" table="InOutStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="stateEventId" class="org.dddml.wms.domain.inout.InOutStateEventId">
+	<composite-id name="stateEventId" class="org.dddml.wms.domain.inout.InOutEventId">
 		<key-property name="documentNumber" ><column name="DocumentNumber" length="50" /></key-property>
 		<key-property name="version" ></key-property>
 	</composite-id>

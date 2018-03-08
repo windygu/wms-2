@@ -8,7 +8,7 @@ import org.dddml.wms.specialization.Event;
 
 public interface ShipmentReceiptMvoStateEvent extends Event
 {
-    ShipmentReceiptMvoStateEventId getStateEventId();
+    ShipmentReceiptMvoEventId getStateEventId();
 
     boolean getStateEventReadOnly();
 

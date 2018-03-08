@@ -8,14 +8,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractInventoryPRTriggeredStateEvent extends AbstractStateEvent implements InventoryPRTriggeredStateEvent 
 {
-    private InventoryPRTriggeredStateEventId stateEventId;
+    private InventoryPRTriggeredEventId stateEventId;
 
-    public InventoryPRTriggeredStateEventId getStateEventId() {
+    public InventoryPRTriggeredEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(InventoryPRTriggeredStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(InventoryPRTriggeredEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public InventoryPRTriggeredId getInventoryPRTriggeredId() {
@@ -82,8 +82,8 @@ public abstract class AbstractInventoryPRTriggeredStateEvent extends AbstractSta
     protected AbstractInventoryPRTriggeredStateEvent() {
     }
 
-    protected AbstractInventoryPRTriggeredStateEvent(InventoryPRTriggeredStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractInventoryPRTriggeredStateEvent(InventoryPRTriggeredEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -93,11 +93,11 @@ public abstract class AbstractInventoryPRTriggeredStateEvent extends AbstractSta
     public static abstract class AbstractInventoryPRTriggeredStateCreated extends AbstractInventoryPRTriggeredStateEvent implements InventoryPRTriggeredStateEvent.InventoryPRTriggeredStateCreated
     {
         public AbstractInventoryPRTriggeredStateCreated() {
-            this(new InventoryPRTriggeredStateEventId());
+            this(new InventoryPRTriggeredEventId());
         }
 
-        public AbstractInventoryPRTriggeredStateCreated(InventoryPRTriggeredStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractInventoryPRTriggeredStateCreated(InventoryPRTriggeredEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -110,11 +110,11 @@ public abstract class AbstractInventoryPRTriggeredStateEvent extends AbstractSta
     public static abstract class AbstractInventoryPRTriggeredStateMergePatched extends AbstractInventoryPRTriggeredStateEvent implements InventoryPRTriggeredStateEvent.InventoryPRTriggeredStateMergePatched
     {
         public AbstractInventoryPRTriggeredStateMergePatched() {
-            this(new InventoryPRTriggeredStateEventId());
+            this(new InventoryPRTriggeredEventId());
         }
 
-        public AbstractInventoryPRTriggeredStateMergePatched(InventoryPRTriggeredStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractInventoryPRTriggeredStateMergePatched(InventoryPRTriggeredEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -139,8 +139,8 @@ public abstract class AbstractInventoryPRTriggeredStateEvent extends AbstractSta
         public SimpleInventoryPRTriggeredStateCreated() {
         }
 
-        public SimpleInventoryPRTriggeredStateCreated(InventoryPRTriggeredStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleInventoryPRTriggeredStateCreated(InventoryPRTriggeredEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -149,8 +149,8 @@ public abstract class AbstractInventoryPRTriggeredStateEvent extends AbstractSta
         public SimpleInventoryPRTriggeredStateMergePatched() {
         }
 
-        public SimpleInventoryPRTriggeredStateMergePatched(InventoryPRTriggeredStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleInventoryPRTriggeredStateMergePatched(InventoryPRTriggeredEventId eventId) {
+            super(eventId);
         }
     }
 

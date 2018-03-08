@@ -105,7 +105,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
         protected virtual IInOutLineMvoStateCreated Map(ICreateInOutLineMvo c)
         {
-			var stateEventId = new InOutLineMvoStateEventId(c.InOutLineId, c.InOutVersion);
+			var stateEventId = new InOutLineMvoEventId(c.InOutLineId, c.InOutVersion);
             IInOutLineMvoStateCreated e = NewInOutLineMvoStateCreated(stateEventId);
 		
             e.LocatorId = c.LocatorId;
@@ -169,7 +169,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
         protected virtual IInOutLineMvoStateMergePatched Map(IMergePatchInOutLineMvo c)
         {
-			var stateEventId = new InOutLineMvoStateEventId(c.InOutLineId, c.InOutVersion);
+			var stateEventId = new InOutLineMvoEventId(c.InOutLineId, c.InOutVersion);
             IInOutLineMvoStateMergePatched e = NewInOutLineMvoStateMergePatched(stateEventId);
 
             e.LocatorId = c.LocatorId;
@@ -283,7 +283,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
         protected virtual IInOutLineMvoStateDeleted Map(IDeleteInOutLineMvo c)
         {
-			var stateEventId = new InOutLineMvoStateEventId(c.InOutLineId, c.InOutVersion);
+			var stateEventId = new InOutLineMvoEventId(c.InOutLineId, c.InOutVersion);
             IInOutLineMvoStateDeleted e = NewInOutLineMvoStateDeleted(stateEventId);
 			
             e.CommandId = c.CommandId;
@@ -312,7 +312,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
         protected InOutLineMvoStateCreated NewInOutLineMvoStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new InOutLineMvoStateEventId(_state.InOutLineId, version);
+            var stateEventId = new InOutLineMvoEventId(_state.InOutLineId, version);
             var e = NewInOutLineMvoStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -325,7 +325,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
         protected InOutLineMvoStateMergePatched NewInOutLineMvoStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new InOutLineMvoStateEventId(_state.InOutLineId, version);
+            var stateEventId = new InOutLineMvoEventId(_state.InOutLineId, version);
             var e = NewInOutLineMvoStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -339,7 +339,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
         protected InOutLineMvoStateDeleted NewInOutLineMvoStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new InOutLineMvoStateEventId(_state.InOutLineId, version);
+            var stateEventId = new InOutLineMvoEventId(_state.InOutLineId, version);
             var e = NewInOutLineMvoStateDeleted(stateEventId);
 
             e.CommandId = commandId;
@@ -352,17 +352,17 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
 ////////////////////////
 
-		private InOutLineMvoStateCreated NewInOutLineMvoStateCreated(InOutLineMvoStateEventId stateEventId)
+		private InOutLineMvoStateCreated NewInOutLineMvoStateCreated(InOutLineMvoEventId stateEventId)
 		{
 			return new InOutLineMvoStateCreated(stateEventId);			
 		}
 
-        private InOutLineMvoStateMergePatched NewInOutLineMvoStateMergePatched(InOutLineMvoStateEventId stateEventId)
+        private InOutLineMvoStateMergePatched NewInOutLineMvoStateMergePatched(InOutLineMvoEventId stateEventId)
 		{
 			return new InOutLineMvoStateMergePatched(stateEventId);
 		}
 
-        private InOutLineMvoStateDeleted NewInOutLineMvoStateDeleted(InOutLineMvoStateEventId stateEventId)
+        private InOutLineMvoStateDeleted NewInOutLineMvoStateDeleted(InOutLineMvoEventId stateEventId)
 		{
 			return new InOutLineMvoStateDeleted(stateEventId);
 		}

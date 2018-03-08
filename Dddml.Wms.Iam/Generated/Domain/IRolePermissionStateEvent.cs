@@ -11,9 +11,9 @@ using Dddml.Wms.Domain.RolePermission;
 
 namespace Dddml.Wms.Domain.RolePermission
 {
-	public interface IRolePermissionStateEvent : IEvent, IStateEventDto, IGlobalIdentity<RolePermissionStateEventId>, ICreated<string>
+	public interface IRolePermissionStateEvent : IEvent, IStateEventDto, IGlobalIdentity<RolePermissionEventId>, ICreated<string>
 	{
-		RolePermissionStateEventId StateEventId { get; }
+		RolePermissionEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

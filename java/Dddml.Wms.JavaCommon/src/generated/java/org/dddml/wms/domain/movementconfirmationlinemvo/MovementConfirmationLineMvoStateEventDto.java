@@ -9,15 +9,15 @@ import org.dddml.wms.domain.AbstractStateEvent;
 public class MovementConfirmationLineMvoStateEventDto extends AbstractStateEvent
 {
 
-    private MovementConfirmationLineMvoStateEventId stateEventId;
+    private MovementConfirmationLineMvoEventId stateEventId;
 
-    MovementConfirmationLineMvoStateEventId getStateEventId() {
-        if (stateEventId == null) { stateEventId = new MovementConfirmationLineMvoStateEventId(); }
-        return this.stateEventId;
+    MovementConfirmationLineMvoEventId getStateEventId() {
+        if (stateEventId == null) { stateEventId = new MovementConfirmationLineMvoEventId(); }
+        return stateEventId;
     }
 
-    void setStateEventId(MovementConfirmationLineMvoStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    void setStateEventId(MovementConfirmationLineMvoEventId eventId) {
+        this.stateEventId = eventId;
     }
 
     public MovementConfirmationLineId getMovementConfirmationLineId() {

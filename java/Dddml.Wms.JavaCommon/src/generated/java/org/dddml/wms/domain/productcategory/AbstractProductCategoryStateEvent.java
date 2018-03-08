@@ -8,14 +8,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractProductCategoryStateEvent extends AbstractStateEvent implements ProductCategoryStateEvent 
 {
-    private ProductCategoryStateEventId stateEventId;
+    private ProductCategoryEventId stateEventId;
 
-    public ProductCategoryStateEventId getStateEventId() {
+    public ProductCategoryEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(ProductCategoryStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(ProductCategoryEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public String getProductCategoryId() {
@@ -178,8 +178,8 @@ public abstract class AbstractProductCategoryStateEvent extends AbstractStateEve
     protected AbstractProductCategoryStateEvent() {
     }
 
-    protected AbstractProductCategoryStateEvent(ProductCategoryStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractProductCategoryStateEvent(ProductCategoryEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -189,11 +189,11 @@ public abstract class AbstractProductCategoryStateEvent extends AbstractStateEve
     public static abstract class AbstractProductCategoryStateCreated extends AbstractProductCategoryStateEvent implements ProductCategoryStateEvent.ProductCategoryStateCreated
     {
         public AbstractProductCategoryStateCreated() {
-            this(new ProductCategoryStateEventId());
+            this(new ProductCategoryEventId());
         }
 
-        public AbstractProductCategoryStateCreated(ProductCategoryStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractProductCategoryStateCreated(ProductCategoryEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -206,11 +206,11 @@ public abstract class AbstractProductCategoryStateEvent extends AbstractStateEve
     public static abstract class AbstractProductCategoryStateMergePatched extends AbstractProductCategoryStateEvent implements ProductCategoryStateEvent.ProductCategoryStateMergePatched
     {
         public AbstractProductCategoryStateMergePatched() {
-            this(new ProductCategoryStateEventId());
+            this(new ProductCategoryEventId());
         }
 
-        public AbstractProductCategoryStateMergePatched(ProductCategoryStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractProductCategoryStateMergePatched(ProductCategoryEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -313,11 +313,11 @@ public abstract class AbstractProductCategoryStateEvent extends AbstractStateEve
     public static abstract class AbstractProductCategoryStateDeleted extends AbstractProductCategoryStateEvent implements ProductCategoryStateEvent.ProductCategoryStateDeleted
     {
         public AbstractProductCategoryStateDeleted() {
-            this(new ProductCategoryStateEventId());
+            this(new ProductCategoryEventId());
         }
 
-        public AbstractProductCategoryStateDeleted(ProductCategoryStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractProductCategoryStateDeleted(ProductCategoryEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -330,8 +330,8 @@ public abstract class AbstractProductCategoryStateEvent extends AbstractStateEve
         public SimpleProductCategoryStateCreated() {
         }
 
-        public SimpleProductCategoryStateCreated(ProductCategoryStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleProductCategoryStateCreated(ProductCategoryEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -340,8 +340,8 @@ public abstract class AbstractProductCategoryStateEvent extends AbstractStateEve
         public SimpleProductCategoryStateMergePatched() {
         }
 
-        public SimpleProductCategoryStateMergePatched(ProductCategoryStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleProductCategoryStateMergePatched(ProductCategoryEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -350,8 +350,8 @@ public abstract class AbstractProductCategoryStateEvent extends AbstractStateEve
         public SimpleProductCategoryStateDeleted() {
         }
 
-        public SimpleProductCategoryStateDeleted(ProductCategoryStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleProductCategoryStateDeleted(ProductCategoryEventId eventId) {
+            super(eventId);
         }
     }
 

@@ -104,7 +104,7 @@ namespace Dddml.Wms.Domain.DamageType
 
         protected virtual IDamageTypeStateCreated Map(ICreateDamageType c)
         {
-			var stateEventId = new DamageTypeStateEventId(c.DamageTypeId, c.Version);
+			var stateEventId = new DamageTypeEventId(c.DamageTypeId, c.Version);
             IDamageTypeStateCreated e = NewDamageTypeStateCreated(stateEventId);
 		
             e.Description = c.Description;
@@ -124,7 +124,7 @@ namespace Dddml.Wms.Domain.DamageType
 
         protected virtual IDamageTypeStateMergePatched Map(IMergePatchDamageType c)
         {
-			var stateEventId = new DamageTypeStateEventId(c.DamageTypeId, c.Version);
+			var stateEventId = new DamageTypeEventId(c.DamageTypeId, c.Version);
             IDamageTypeStateMergePatched e = NewDamageTypeStateMergePatched(stateEventId);
 
             e.Description = c.Description;
@@ -150,7 +150,7 @@ namespace Dddml.Wms.Domain.DamageType
 
         protected virtual IDamageTypeStateDeleted Map(IDeleteDamageType c)
         {
-			var stateEventId = new DamageTypeStateEventId(c.DamageTypeId, c.Version);
+			var stateEventId = new DamageTypeEventId(c.DamageTypeId, c.Version);
             IDamageTypeStateDeleted e = NewDamageTypeStateDeleted(stateEventId);
 			
             e.CommandId = c.CommandId;
@@ -179,7 +179,7 @@ namespace Dddml.Wms.Domain.DamageType
 
         protected DamageTypeStateCreated NewDamageTypeStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new DamageTypeStateEventId(_state.DamageTypeId, version);
+            var stateEventId = new DamageTypeEventId(_state.DamageTypeId, version);
             var e = NewDamageTypeStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -192,7 +192,7 @@ namespace Dddml.Wms.Domain.DamageType
 
         protected DamageTypeStateMergePatched NewDamageTypeStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new DamageTypeStateEventId(_state.DamageTypeId, version);
+            var stateEventId = new DamageTypeEventId(_state.DamageTypeId, version);
             var e = NewDamageTypeStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -206,7 +206,7 @@ namespace Dddml.Wms.Domain.DamageType
 
         protected DamageTypeStateDeleted NewDamageTypeStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new DamageTypeStateEventId(_state.DamageTypeId, version);
+            var stateEventId = new DamageTypeEventId(_state.DamageTypeId, version);
             var e = NewDamageTypeStateDeleted(stateEventId);
 
             e.CommandId = commandId;
@@ -219,17 +219,17 @@ namespace Dddml.Wms.Domain.DamageType
 
 ////////////////////////
 
-		private DamageTypeStateCreated NewDamageTypeStateCreated(DamageTypeStateEventId stateEventId)
+		private DamageTypeStateCreated NewDamageTypeStateCreated(DamageTypeEventId stateEventId)
 		{
 			return new DamageTypeStateCreated(stateEventId);			
 		}
 
-        private DamageTypeStateMergePatched NewDamageTypeStateMergePatched(DamageTypeStateEventId stateEventId)
+        private DamageTypeStateMergePatched NewDamageTypeStateMergePatched(DamageTypeEventId stateEventId)
 		{
 			return new DamageTypeStateMergePatched(stateEventId);
 		}
 
-        private DamageTypeStateDeleted NewDamageTypeStateDeleted(DamageTypeStateEventId stateEventId)
+        private DamageTypeStateDeleted NewDamageTypeStateDeleted(DamageTypeEventId stateEventId)
 		{
 			return new DamageTypeStateDeleted(stateEventId);
 		}

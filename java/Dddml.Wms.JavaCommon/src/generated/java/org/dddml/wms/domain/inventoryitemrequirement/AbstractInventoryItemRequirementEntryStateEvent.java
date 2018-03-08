@@ -17,14 +17,14 @@ public abstract class AbstractInventoryItemRequirementEntryStateEvent extends Ab
         return state;
     }
 
-    public InventoryItemRequirementEntryStateEventId getStateEventId() {
-        InventoryItemRequirementEntryStateEventId eventId = new InventoryItemRequirementEntryStateEventId(state.getInventoryItemRequirementId(), state.getEntrySeqId(), InventoryItemRequirementState.VERSION_NULL);
+    public InventoryItemRequirementEntryEventId getStateEventId() {
+        InventoryItemRequirementEntryEventId eventId = new InventoryItemRequirementEntryEventId(state.getInventoryItemRequirementId(), state.getEntrySeqId(), InventoryItemRequirementState.VERSION_NULL);
         return eventId;
     }
 
-    public void setStateEventId(InventoryItemRequirementEntryStateEventId stateEventId) {
-        this.state.setInventoryItemRequirementId(stateEventId.getInventoryItemRequirementId());
-        this.state.setEntrySeqId(stateEventId.getEntrySeqId());
+    public void setStateEventId(InventoryItemRequirementEntryEventId eventId) {
+        this.state.setInventoryItemRequirementId(eventId.getInventoryItemRequirementId());
+        this.state.setEntrySeqId(eventId.getEntrySeqId());
     }
 
     public Long getEntrySeqId() {
@@ -104,9 +104,9 @@ public abstract class AbstractInventoryItemRequirementEntryStateEvent extends Ab
         this(new AbstractInventoryItemRequirementEntryState.SimpleInventoryItemRequirementEntryState());
     }
 
-    protected AbstractInventoryItemRequirementEntryStateEvent(InventoryItemRequirementEntryStateEventId stateEventId) {
+    protected AbstractInventoryItemRequirementEntryStateEvent(InventoryItemRequirementEntryEventId eventId) {
         this(new AbstractInventoryItemRequirementEntryState.SimpleInventoryItemRequirementEntryState());
-        setStateEventId(stateEventId);
+        setStateEventId(eventId);
     }
 
     protected AbstractInventoryItemRequirementEntryStateEvent(InventoryItemRequirementEntryState s) {
@@ -121,11 +121,11 @@ public abstract class AbstractInventoryItemRequirementEntryStateEvent extends Ab
     public static abstract class AbstractInventoryItemRequirementEntryStateCreated extends AbstractInventoryItemRequirementEntryStateEvent implements InventoryItemRequirementEntryStateEvent.InventoryItemRequirementEntryStateCreated
     {
         public AbstractInventoryItemRequirementEntryStateCreated() {
-            this(new InventoryItemRequirementEntryStateEventId());
+            this(new InventoryItemRequirementEntryEventId());
         }
 
-        public AbstractInventoryItemRequirementEntryStateCreated(InventoryItemRequirementEntryStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractInventoryItemRequirementEntryStateCreated(InventoryItemRequirementEntryEventId eventId) {
+            super(eventId);
         }
 
         public AbstractInventoryItemRequirementEntryStateCreated(InventoryItemRequirementEntryState s) {
@@ -144,8 +144,8 @@ public abstract class AbstractInventoryItemRequirementEntryStateEvent extends Ab
         public SimpleInventoryItemRequirementEntryStateCreated() {
         }
 
-        public SimpleInventoryItemRequirementEntryStateCreated(InventoryItemRequirementEntryStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleInventoryItemRequirementEntryStateCreated(InventoryItemRequirementEntryEventId eventId) {
+            super(eventId);
         }
 
         public SimpleInventoryItemRequirementEntryStateCreated(InventoryItemRequirementEntryState s) {

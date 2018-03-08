@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.OrganizationStructure
         public virtual OrganizationStructureStateCreatedDto ToOrganizationStructureStateCreatedDto(IOrganizationStructureStateCreated e)
         {
             var dto = new OrganizationStructureStateCreatedDto();
-            dto.StateEventId = new OrganizationStructureStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new OrganizationStructureEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -49,7 +49,7 @@ namespace Dddml.Wms.Domain.OrganizationStructure
         public virtual OrganizationStructureStateMergePatchedDto ToOrganizationStructureStateMergePatchedDto(IOrganizationStructureStateMergePatched e)
         {
             var dto = new OrganizationStructureStateMergePatchedDto();
-            dto.StateEventId = new OrganizationStructureStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new OrganizationStructureEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -63,7 +63,7 @@ namespace Dddml.Wms.Domain.OrganizationStructure
         public virtual OrganizationStructureStateDeletedDto ToOrganizationStructureStateDeletedDto(IOrganizationStructureStateDeleted e)
         {
             var dto = new OrganizationStructureStateDeletedDto();
-            dto.StateEventId = new OrganizationStructureStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new OrganizationStructureEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

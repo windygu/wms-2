@@ -18,7 +18,7 @@ public class HibernateInOutLineMvoEventStore extends AbstractHibernateEventStore
     @Override
     protected Serializable getEventId(EventStoreAggregateId eventStoreAggregateId, long version)
     {
-        return new InOutLineMvoStateEventId((InOutLineId) eventStoreAggregateId.getId(), version);
+        return new InOutLineMvoEventId((InOutLineId) eventStoreAggregateId.getId(), version);
     }
 
     @Override

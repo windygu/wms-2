@@ -21,7 +21,7 @@ namespace Dddml.Wms.Domain.Role.NHibernate
 	{
 		public override object GetEventId(IEventStoreAggregateId eventStoreAggregateId, long version)
 		{
-			return new RoleStateEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
+			return new RoleEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
 		public override Type GetSupportedStateEventType()

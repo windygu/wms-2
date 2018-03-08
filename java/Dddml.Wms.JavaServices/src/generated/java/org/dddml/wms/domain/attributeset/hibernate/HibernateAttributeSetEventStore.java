@@ -16,7 +16,7 @@ public class HibernateAttributeSetEventStore extends AbstractHibernateEventStore
     @Override
     protected Serializable getEventId(EventStoreAggregateId eventStoreAggregateId, long version)
     {
-        return new AttributeSetStateEventId((String) eventStoreAggregateId.getId(), version);
+        return new AttributeSetEventId((String) eventStoreAggregateId.getId(), version);
     }
 
     @Override

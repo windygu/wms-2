@@ -8,14 +8,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractProductStateEvent extends AbstractStateEvent implements ProductStateEvent 
 {
-    private ProductStateEventId stateEventId;
+    private ProductEventId stateEventId;
 
-    public ProductStateEventId getStateEventId() {
+    public ProductEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(ProductStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(ProductEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public String getProductId() {
@@ -802,8 +802,8 @@ public abstract class AbstractProductStateEvent extends AbstractStateEvent imple
     protected AbstractProductStateEvent() {
     }
 
-    protected AbstractProductStateEvent(ProductStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractProductStateEvent(ProductEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -813,11 +813,11 @@ public abstract class AbstractProductStateEvent extends AbstractStateEvent imple
     public static abstract class AbstractProductStateCreated extends AbstractProductStateEvent implements ProductStateEvent.ProductStateCreated
     {
         public AbstractProductStateCreated() {
-            this(new ProductStateEventId());
+            this(new ProductEventId());
         }
 
-        public AbstractProductStateCreated(ProductStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractProductStateCreated(ProductEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -830,11 +830,11 @@ public abstract class AbstractProductStateEvent extends AbstractStateEvent imple
     public static abstract class AbstractProductStateMergePatched extends AbstractProductStateEvent implements ProductStateEvent.ProductStateMergePatched
     {
         public AbstractProductStateMergePatched() {
-            this(new ProductStateEventId());
+            this(new ProductEventId());
         }
 
-        public AbstractProductStateMergePatched(ProductStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractProductStateMergePatched(ProductEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -1459,8 +1459,8 @@ public abstract class AbstractProductStateEvent extends AbstractStateEvent imple
         public SimpleProductStateCreated() {
         }
 
-        public SimpleProductStateCreated(ProductStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleProductStateCreated(ProductEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -1469,8 +1469,8 @@ public abstract class AbstractProductStateEvent extends AbstractStateEvent imple
         public SimpleProductStateMergePatched() {
         }
 
-        public SimpleProductStateMergePatched(ProductStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleProductStateMergePatched(ProductEventId eventId) {
+            super(eventId);
         }
     }
 

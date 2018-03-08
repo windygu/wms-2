@@ -39,7 +39,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
         public virtual PhysicalInventoryLineMvoStateCreatedDto ToPhysicalInventoryLineMvoStateCreatedDto(IPhysicalInventoryLineMvoStateCreated e)
         {
             var dto = new PhysicalInventoryLineMvoStateCreatedDto();
-            dto.StateEventId = new PhysicalInventoryLineMvoStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new PhysicalInventoryLineMvoEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -74,7 +74,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
         public virtual PhysicalInventoryLineMvoStateMergePatchedDto ToPhysicalInventoryLineMvoStateMergePatchedDto(IPhysicalInventoryLineMvoStateMergePatched e)
         {
             var dto = new PhysicalInventoryLineMvoStateMergePatchedDto();
-            dto.StateEventId = new PhysicalInventoryLineMvoStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new PhysicalInventoryLineMvoEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -136,7 +136,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
         public virtual PhysicalInventoryLineMvoStateDeletedDto ToPhysicalInventoryLineMvoStateDeletedDto(IPhysicalInventoryLineMvoStateDeleted e)
         {
             var dto = new PhysicalInventoryLineMvoStateDeletedDto();
-            dto.StateEventId = new PhysicalInventoryLineMvoStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new PhysicalInventoryLineMvoEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

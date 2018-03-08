@@ -8,14 +8,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractSupplierProductStateEvent extends AbstractStateEvent implements SupplierProductStateEvent 
 {
-    private SupplierProductStateEventId stateEventId;
+    private SupplierProductEventId stateEventId;
 
-    public SupplierProductStateEventId getStateEventId() {
+    public SupplierProductEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(SupplierProductStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(SupplierProductEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public SupplierProductId getSupplierProductId() {
@@ -238,8 +238,8 @@ public abstract class AbstractSupplierProductStateEvent extends AbstractStateEve
     protected AbstractSupplierProductStateEvent() {
     }
 
-    protected AbstractSupplierProductStateEvent(SupplierProductStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractSupplierProductStateEvent(SupplierProductEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -249,11 +249,11 @@ public abstract class AbstractSupplierProductStateEvent extends AbstractStateEve
     public static abstract class AbstractSupplierProductStateCreated extends AbstractSupplierProductStateEvent implements SupplierProductStateEvent.SupplierProductStateCreated
     {
         public AbstractSupplierProductStateCreated() {
-            this(new SupplierProductStateEventId());
+            this(new SupplierProductEventId());
         }
 
-        public AbstractSupplierProductStateCreated(SupplierProductStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractSupplierProductStateCreated(SupplierProductEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -266,11 +266,11 @@ public abstract class AbstractSupplierProductStateEvent extends AbstractStateEve
     public static abstract class AbstractSupplierProductStateMergePatched extends AbstractSupplierProductStateEvent implements SupplierProductStateEvent.SupplierProductStateMergePatched
     {
         public AbstractSupplierProductStateMergePatched() {
-            this(new SupplierProductStateEventId());
+            this(new SupplierProductEventId());
         }
 
-        public AbstractSupplierProductStateMergePatched(SupplierProductStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractSupplierProductStateMergePatched(SupplierProductEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -425,8 +425,8 @@ public abstract class AbstractSupplierProductStateEvent extends AbstractStateEve
         public SimpleSupplierProductStateCreated() {
         }
 
-        public SimpleSupplierProductStateCreated(SupplierProductStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleSupplierProductStateCreated(SupplierProductEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -435,8 +435,8 @@ public abstract class AbstractSupplierProductStateEvent extends AbstractStateEve
         public SimpleSupplierProductStateMergePatched() {
         }
 
-        public SimpleSupplierProductStateMergePatched(SupplierProductStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleSupplierProductStateMergePatched(SupplierProductEventId eventId) {
+            super(eventId);
         }
     }
 

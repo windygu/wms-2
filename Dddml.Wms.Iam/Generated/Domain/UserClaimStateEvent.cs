@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.User
 	public abstract class UserClaimStateEventBase : IUserClaimStateEvent
 	{
 
-		public virtual UserClaimStateEventId StateEventId { get; set; }
+		public virtual UserClaimEventId StateEventId { get; set; }
 
         public virtual int ClaimId
         {
@@ -37,7 +37,7 @@ namespace Dddml.Wms.Domain.User
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		UserClaimStateEventId IGlobalIdentity<UserClaimStateEventId>.GlobalId {
+		UserClaimEventId IGlobalIdentity<UserClaimEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -83,7 +83,7 @@ namespace Dddml.Wms.Domain.User
         {
         }
 
-        protected UserClaimStateEventBase(UserClaimStateEventId stateEventId)
+        protected UserClaimStateEventBase(UserClaimEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -100,11 +100,11 @@ namespace Dddml.Wms.Domain.User
 
 	public class UserClaimStateCreated : UserClaimStateEventBase, IUserClaimStateCreated
 	{
-		public UserClaimStateCreated () : this(new UserClaimStateEventId())
+		public UserClaimStateCreated () : this(new UserClaimEventId())
 		{
 		}
 
-		public UserClaimStateCreated (UserClaimStateEventId stateEventId) : base(stateEventId)
+		public UserClaimStateCreated (UserClaimEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -130,7 +130,7 @@ namespace Dddml.Wms.Domain.User
 		{
 		}
 
-		public UserClaimStateMergePatched (UserClaimStateEventId stateEventId) : base(stateEventId)
+		public UserClaimStateMergePatched (UserClaimEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -149,7 +149,7 @@ namespace Dddml.Wms.Domain.User
 		{
 		}
 
-		public UserClaimStateRemoved (UserClaimStateEventId stateEventId) : base(stateEventId)
+		public UserClaimStateRemoved (UserClaimEventId stateEventId) : base(stateEventId)
 		{
 		}
 

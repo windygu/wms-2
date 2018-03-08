@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.User
 	public abstract class UserStateEventBase : IUserStateEvent
 	{
 
-		public virtual UserStateEventId StateEventId { get; set; }
+		public virtual UserEventId StateEventId { get; set; }
 
         public virtual string UserId
         {
@@ -55,7 +55,7 @@ namespace Dddml.Wms.Domain.User
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		UserStateEventId IGlobalIdentity<UserStateEventId>.GlobalId {
+		UserEventId IGlobalIdentity<UserEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -99,7 +99,7 @@ namespace Dddml.Wms.Domain.User
         {
         }
 
-        protected UserStateEventBase(UserStateEventId stateEventId)
+        protected UserStateEventBase(UserEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -109,9 +109,9 @@ namespace Dddml.Wms.Domain.User
 			get { return ApplicationContext.Current["UserRoleStateEventDao"] as IUserRoleStateEventDao; }
 		}
 
-        protected UserRoleStateEventId NewUserRoleStateEventId(string roleId)
+        protected UserRoleEventId NewUserRoleEventId(string roleId)
         {
-            var stateEventId = new UserRoleStateEventId(this.StateEventId.UserId, roleId, this.StateEventId.Version);
+            var stateEventId = new UserRoleEventId(this.StateEventId.UserId, roleId, this.StateEventId.Version);
             return stateEventId;
         }
 
@@ -136,9 +136,9 @@ namespace Dddml.Wms.Domain.User
 			get { return ApplicationContext.Current["UserClaimStateEventDao"] as IUserClaimStateEventDao; }
 		}
 
-        protected UserClaimStateEventId NewUserClaimStateEventId(int claimId)
+        protected UserClaimEventId NewUserClaimEventId(int claimId)
         {
-            var stateEventId = new UserClaimStateEventId(this.StateEventId.UserId, claimId, this.StateEventId.Version);
+            var stateEventId = new UserClaimEventId(this.StateEventId.UserId, claimId, this.StateEventId.Version);
             return stateEventId;
         }
 
@@ -163,9 +163,9 @@ namespace Dddml.Wms.Domain.User
 			get { return ApplicationContext.Current["UserPermissionStateEventDao"] as IUserPermissionStateEventDao; }
 		}
 
-        protected UserPermissionStateEventId NewUserPermissionStateEventId(string permissionId)
+        protected UserPermissionEventId NewUserPermissionEventId(string permissionId)
         {
-            var stateEventId = new UserPermissionStateEventId(this.StateEventId.UserId, permissionId, this.StateEventId.Version);
+            var stateEventId = new UserPermissionEventId(this.StateEventId.UserId, permissionId, this.StateEventId.Version);
             return stateEventId;
         }
 
@@ -190,9 +190,9 @@ namespace Dddml.Wms.Domain.User
 			get { return ApplicationContext.Current["UserLoginStateEventDao"] as IUserLoginStateEventDao; }
 		}
 
-        protected UserLoginStateEventId NewUserLoginStateEventId(LoginKey loginKey)
+        protected UserLoginEventId NewUserLoginEventId(LoginKey loginKey)
         {
-            var stateEventId = new UserLoginStateEventId(this.StateEventId.UserId, loginKey, this.StateEventId.Version);
+            var stateEventId = new UserLoginEventId(this.StateEventId.UserId, loginKey, this.StateEventId.Version);
             return stateEventId;
         }
 
@@ -224,15 +224,15 @@ namespace Dddml.Wms.Domain.User
 
 	public class UserStateCreated : UserStateEventBase, IUserStateCreated, ISaveable
 	{
-		public UserStateCreated () : this(new UserStateEventId())
+		public UserStateCreated () : this(new UserEventId())
 		{
 		}
 
-		public UserStateCreated (UserStateEventId stateEventId) : base(stateEventId)
+		public UserStateCreated (UserEventId stateEventId) : base(stateEventId)
 		{
 		}
 
-		private Dictionary<UserRoleStateEventId, IUserRoleStateCreated> _userRoleEvents = new Dictionary<UserRoleStateEventId, IUserRoleStateCreated>();
+		private Dictionary<UserRoleEventId, IUserRoleStateCreated> _userRoleEvents = new Dictionary<UserRoleEventId, IUserRoleStateCreated>();
         
         private IEnumerable<IUserRoleStateCreated> _readOnlyUserRoleEvents;
 
@@ -249,7 +249,7 @@ namespace Dddml.Wms.Domain.User
                     if (_readOnlyUserRoleEvents != null) { return _readOnlyUserRoleEvents; }
                     var eventDao = UserRoleStateEventDao;
                     var eL = new List<IUserRoleStateCreated>();
-                    foreach (var e in eventDao.FindByUserStateEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByUserEventId(this.StateEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IUserRoleStateCreated)e);
@@ -278,11 +278,11 @@ namespace Dddml.Wms.Domain.User
 
         public virtual IUserRoleStateCreated NewUserRoleStateCreated(string roleId)
         {
-            var stateEvent = new UserRoleStateCreated(NewUserRoleStateEventId(roleId));
+            var stateEvent = new UserRoleStateCreated(NewUserRoleEventId(roleId));
             return stateEvent;
         }
 
-		private Dictionary<UserClaimStateEventId, IUserClaimStateCreated> _userClaimEvents = new Dictionary<UserClaimStateEventId, IUserClaimStateCreated>();
+		private Dictionary<UserClaimEventId, IUserClaimStateCreated> _userClaimEvents = new Dictionary<UserClaimEventId, IUserClaimStateCreated>();
         
         private IEnumerable<IUserClaimStateCreated> _readOnlyUserClaimEvents;
 
@@ -299,7 +299,7 @@ namespace Dddml.Wms.Domain.User
                     if (_readOnlyUserClaimEvents != null) { return _readOnlyUserClaimEvents; }
                     var eventDao = UserClaimStateEventDao;
                     var eL = new List<IUserClaimStateCreated>();
-                    foreach (var e in eventDao.FindByUserStateEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByUserEventId(this.StateEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IUserClaimStateCreated)e);
@@ -328,11 +328,11 @@ namespace Dddml.Wms.Domain.User
 
         public virtual IUserClaimStateCreated NewUserClaimStateCreated(int claimId)
         {
-            var stateEvent = new UserClaimStateCreated(NewUserClaimStateEventId(claimId));
+            var stateEvent = new UserClaimStateCreated(NewUserClaimEventId(claimId));
             return stateEvent;
         }
 
-		private Dictionary<UserPermissionStateEventId, IUserPermissionStateCreated> _userPermissionEvents = new Dictionary<UserPermissionStateEventId, IUserPermissionStateCreated>();
+		private Dictionary<UserPermissionEventId, IUserPermissionStateCreated> _userPermissionEvents = new Dictionary<UserPermissionEventId, IUserPermissionStateCreated>();
         
         private IEnumerable<IUserPermissionStateCreated> _readOnlyUserPermissionEvents;
 
@@ -349,7 +349,7 @@ namespace Dddml.Wms.Domain.User
                     if (_readOnlyUserPermissionEvents != null) { return _readOnlyUserPermissionEvents; }
                     var eventDao = UserPermissionStateEventDao;
                     var eL = new List<IUserPermissionStateCreated>();
-                    foreach (var e in eventDao.FindByUserStateEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByUserEventId(this.StateEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IUserPermissionStateCreated)e);
@@ -378,11 +378,11 @@ namespace Dddml.Wms.Domain.User
 
         public virtual IUserPermissionStateCreated NewUserPermissionStateCreated(string permissionId)
         {
-            var stateEvent = new UserPermissionStateCreated(NewUserPermissionStateEventId(permissionId));
+            var stateEvent = new UserPermissionStateCreated(NewUserPermissionEventId(permissionId));
             return stateEvent;
         }
 
-		private Dictionary<UserLoginStateEventId, IUserLoginStateCreated> _userLoginEvents = new Dictionary<UserLoginStateEventId, IUserLoginStateCreated>();
+		private Dictionary<UserLoginEventId, IUserLoginStateCreated> _userLoginEvents = new Dictionary<UserLoginEventId, IUserLoginStateCreated>();
         
         private IEnumerable<IUserLoginStateCreated> _readOnlyUserLoginEvents;
 
@@ -399,7 +399,7 @@ namespace Dddml.Wms.Domain.User
                     if (_readOnlyUserLoginEvents != null) { return _readOnlyUserLoginEvents; }
                     var eventDao = UserLoginStateEventDao;
                     var eL = new List<IUserLoginStateCreated>();
-                    foreach (var e in eventDao.FindByUserStateEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByUserEventId(this.StateEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IUserLoginStateCreated)e);
@@ -428,7 +428,7 @@ namespace Dddml.Wms.Domain.User
 
         public virtual IUserLoginStateCreated NewUserLoginStateCreated(LoginKey loginKey)
         {
-            var stateEvent = new UserLoginStateCreated(NewUserLoginStateEventId(loginKey));
+            var stateEvent = new UserLoginStateCreated(NewUserLoginEventId(loginKey));
             return stateEvent;
         }
 
@@ -487,11 +487,11 @@ namespace Dddml.Wms.Domain.User
 		{
 		}
 
-		public UserStateMergePatched (UserStateEventId stateEventId) : base(stateEventId)
+		public UserStateMergePatched (UserEventId stateEventId) : base(stateEventId)
 		{
 		}
 
-		private Dictionary<UserRoleStateEventId, IUserRoleStateEvent> _userRoleEvents = new Dictionary<UserRoleStateEventId, IUserRoleStateEvent>();
+		private Dictionary<UserRoleEventId, IUserRoleStateEvent> _userRoleEvents = new Dictionary<UserRoleEventId, IUserRoleStateEvent>();
 
         private IEnumerable<IUserRoleStateEvent> _readOnlyUserRoleEvents;
         
@@ -508,7 +508,7 @@ namespace Dddml.Wms.Domain.User
                     if (_readOnlyUserRoleEvents != null) { return _readOnlyUserRoleEvents; }
                     var eventDao = UserRoleStateEventDao;
                     var eL = new List<IUserRoleStateEvent>();
-                    foreach (var e in eventDao.FindByUserStateEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByUserEventId(this.StateEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IUserRoleStateEvent)e);
@@ -537,23 +537,23 @@ namespace Dddml.Wms.Domain.User
 
         public virtual IUserRoleStateCreated NewUserRoleStateCreated(string roleId)
         {
-            var stateEvent = new UserRoleStateCreated(NewUserRoleStateEventId(roleId));
+            var stateEvent = new UserRoleStateCreated(NewUserRoleEventId(roleId));
             return stateEvent;
         }
 
         public virtual IUserRoleStateMergePatched NewUserRoleStateMergePatched(string roleId)
         {
-            var stateEvent = new UserRoleStateMergePatched(NewUserRoleStateEventId(roleId));
+            var stateEvent = new UserRoleStateMergePatched(NewUserRoleEventId(roleId));
             return stateEvent;
         }
 
         public virtual IUserRoleStateRemoved NewUserRoleStateRemoved(string roleId)
         {
-            var stateEvent = new UserRoleStateRemoved(NewUserRoleStateEventId(roleId));
+            var stateEvent = new UserRoleStateRemoved(NewUserRoleEventId(roleId));
             return stateEvent;
         }
 
-		private Dictionary<UserClaimStateEventId, IUserClaimStateEvent> _userClaimEvents = new Dictionary<UserClaimStateEventId, IUserClaimStateEvent>();
+		private Dictionary<UserClaimEventId, IUserClaimStateEvent> _userClaimEvents = new Dictionary<UserClaimEventId, IUserClaimStateEvent>();
 
         private IEnumerable<IUserClaimStateEvent> _readOnlyUserClaimEvents;
         
@@ -570,7 +570,7 @@ namespace Dddml.Wms.Domain.User
                     if (_readOnlyUserClaimEvents != null) { return _readOnlyUserClaimEvents; }
                     var eventDao = UserClaimStateEventDao;
                     var eL = new List<IUserClaimStateEvent>();
-                    foreach (var e in eventDao.FindByUserStateEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByUserEventId(this.StateEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IUserClaimStateEvent)e);
@@ -599,23 +599,23 @@ namespace Dddml.Wms.Domain.User
 
         public virtual IUserClaimStateCreated NewUserClaimStateCreated(int claimId)
         {
-            var stateEvent = new UserClaimStateCreated(NewUserClaimStateEventId(claimId));
+            var stateEvent = new UserClaimStateCreated(NewUserClaimEventId(claimId));
             return stateEvent;
         }
 
         public virtual IUserClaimStateMergePatched NewUserClaimStateMergePatched(int claimId)
         {
-            var stateEvent = new UserClaimStateMergePatched(NewUserClaimStateEventId(claimId));
+            var stateEvent = new UserClaimStateMergePatched(NewUserClaimEventId(claimId));
             return stateEvent;
         }
 
         public virtual IUserClaimStateRemoved NewUserClaimStateRemoved(int claimId)
         {
-            var stateEvent = new UserClaimStateRemoved(NewUserClaimStateEventId(claimId));
+            var stateEvent = new UserClaimStateRemoved(NewUserClaimEventId(claimId));
             return stateEvent;
         }
 
-		private Dictionary<UserPermissionStateEventId, IUserPermissionStateEvent> _userPermissionEvents = new Dictionary<UserPermissionStateEventId, IUserPermissionStateEvent>();
+		private Dictionary<UserPermissionEventId, IUserPermissionStateEvent> _userPermissionEvents = new Dictionary<UserPermissionEventId, IUserPermissionStateEvent>();
 
         private IEnumerable<IUserPermissionStateEvent> _readOnlyUserPermissionEvents;
         
@@ -632,7 +632,7 @@ namespace Dddml.Wms.Domain.User
                     if (_readOnlyUserPermissionEvents != null) { return _readOnlyUserPermissionEvents; }
                     var eventDao = UserPermissionStateEventDao;
                     var eL = new List<IUserPermissionStateEvent>();
-                    foreach (var e in eventDao.FindByUserStateEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByUserEventId(this.StateEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IUserPermissionStateEvent)e);
@@ -661,23 +661,23 @@ namespace Dddml.Wms.Domain.User
 
         public virtual IUserPermissionStateCreated NewUserPermissionStateCreated(string permissionId)
         {
-            var stateEvent = new UserPermissionStateCreated(NewUserPermissionStateEventId(permissionId));
+            var stateEvent = new UserPermissionStateCreated(NewUserPermissionEventId(permissionId));
             return stateEvent;
         }
 
         public virtual IUserPermissionStateMergePatched NewUserPermissionStateMergePatched(string permissionId)
         {
-            var stateEvent = new UserPermissionStateMergePatched(NewUserPermissionStateEventId(permissionId));
+            var stateEvent = new UserPermissionStateMergePatched(NewUserPermissionEventId(permissionId));
             return stateEvent;
         }
 
         public virtual IUserPermissionStateRemoved NewUserPermissionStateRemoved(string permissionId)
         {
-            var stateEvent = new UserPermissionStateRemoved(NewUserPermissionStateEventId(permissionId));
+            var stateEvent = new UserPermissionStateRemoved(NewUserPermissionEventId(permissionId));
             return stateEvent;
         }
 
-		private Dictionary<UserLoginStateEventId, IUserLoginStateEvent> _userLoginEvents = new Dictionary<UserLoginStateEventId, IUserLoginStateEvent>();
+		private Dictionary<UserLoginEventId, IUserLoginStateEvent> _userLoginEvents = new Dictionary<UserLoginEventId, IUserLoginStateEvent>();
 
         private IEnumerable<IUserLoginStateEvent> _readOnlyUserLoginEvents;
         
@@ -694,7 +694,7 @@ namespace Dddml.Wms.Domain.User
                     if (_readOnlyUserLoginEvents != null) { return _readOnlyUserLoginEvents; }
                     var eventDao = UserLoginStateEventDao;
                     var eL = new List<IUserLoginStateEvent>();
-                    foreach (var e in eventDao.FindByUserStateEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByUserEventId(this.StateEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IUserLoginStateEvent)e);
@@ -723,19 +723,19 @@ namespace Dddml.Wms.Domain.User
 
         public virtual IUserLoginStateCreated NewUserLoginStateCreated(LoginKey loginKey)
         {
-            var stateEvent = new UserLoginStateCreated(NewUserLoginStateEventId(loginKey));
+            var stateEvent = new UserLoginStateCreated(NewUserLoginEventId(loginKey));
             return stateEvent;
         }
 
         public virtual IUserLoginStateMergePatched NewUserLoginStateMergePatched(LoginKey loginKey)
         {
-            var stateEvent = new UserLoginStateMergePatched(NewUserLoginStateEventId(loginKey));
+            var stateEvent = new UserLoginStateMergePatched(NewUserLoginEventId(loginKey));
             return stateEvent;
         }
 
         public virtual IUserLoginStateRemoved NewUserLoginStateRemoved(LoginKey loginKey)
         {
-            var stateEvent = new UserLoginStateRemoved(NewUserLoginStateEventId(loginKey));
+            var stateEvent = new UserLoginStateRemoved(NewUserLoginEventId(loginKey));
             return stateEvent;
         }
 
@@ -769,7 +769,7 @@ namespace Dddml.Wms.Domain.User
 		{
 		}
 
-		public UserStateDeleted (UserStateEventId stateEventId) : base(stateEventId)
+		public UserStateDeleted (UserEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -778,7 +778,7 @@ namespace Dddml.Wms.Domain.User
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
 
-		private Dictionary<UserRoleStateEventId, IUserRoleStateRemoved> _userRoleEvents = new Dictionary<UserRoleStateEventId, IUserRoleStateRemoved>();
+		private Dictionary<UserRoleEventId, IUserRoleStateRemoved> _userRoleEvents = new Dictionary<UserRoleEventId, IUserRoleStateRemoved>();
 		
         private IEnumerable<IUserRoleStateRemoved> _readOnlyUserRoleEvents;
 
@@ -795,7 +795,7 @@ namespace Dddml.Wms.Domain.User
                     if (_readOnlyUserRoleEvents != null) { return _readOnlyUserRoleEvents; }
                     var eventDao = UserRoleStateEventDao;
                     var eL = new List<IUserRoleStateRemoved>();
-                    foreach (var e in eventDao.FindByUserStateEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByUserEventId(this.StateEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IUserRoleStateRemoved)e);
@@ -824,11 +824,11 @@ namespace Dddml.Wms.Domain.User
 
         public virtual IUserRoleStateRemoved NewUserRoleStateRemoved(string roleId)
         {
-            var stateEvent = new UserRoleStateRemoved(NewUserRoleStateEventId(roleId));
+            var stateEvent = new UserRoleStateRemoved(NewUserRoleEventId(roleId));
             return stateEvent;
         }
 
-		private Dictionary<UserClaimStateEventId, IUserClaimStateRemoved> _userClaimEvents = new Dictionary<UserClaimStateEventId, IUserClaimStateRemoved>();
+		private Dictionary<UserClaimEventId, IUserClaimStateRemoved> _userClaimEvents = new Dictionary<UserClaimEventId, IUserClaimStateRemoved>();
 		
         private IEnumerable<IUserClaimStateRemoved> _readOnlyUserClaimEvents;
 
@@ -845,7 +845,7 @@ namespace Dddml.Wms.Domain.User
                     if (_readOnlyUserClaimEvents != null) { return _readOnlyUserClaimEvents; }
                     var eventDao = UserClaimStateEventDao;
                     var eL = new List<IUserClaimStateRemoved>();
-                    foreach (var e in eventDao.FindByUserStateEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByUserEventId(this.StateEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IUserClaimStateRemoved)e);
@@ -874,11 +874,11 @@ namespace Dddml.Wms.Domain.User
 
         public virtual IUserClaimStateRemoved NewUserClaimStateRemoved(int claimId)
         {
-            var stateEvent = new UserClaimStateRemoved(NewUserClaimStateEventId(claimId));
+            var stateEvent = new UserClaimStateRemoved(NewUserClaimEventId(claimId));
             return stateEvent;
         }
 
-		private Dictionary<UserPermissionStateEventId, IUserPermissionStateRemoved> _userPermissionEvents = new Dictionary<UserPermissionStateEventId, IUserPermissionStateRemoved>();
+		private Dictionary<UserPermissionEventId, IUserPermissionStateRemoved> _userPermissionEvents = new Dictionary<UserPermissionEventId, IUserPermissionStateRemoved>();
 		
         private IEnumerable<IUserPermissionStateRemoved> _readOnlyUserPermissionEvents;
 
@@ -895,7 +895,7 @@ namespace Dddml.Wms.Domain.User
                     if (_readOnlyUserPermissionEvents != null) { return _readOnlyUserPermissionEvents; }
                     var eventDao = UserPermissionStateEventDao;
                     var eL = new List<IUserPermissionStateRemoved>();
-                    foreach (var e in eventDao.FindByUserStateEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByUserEventId(this.StateEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IUserPermissionStateRemoved)e);
@@ -924,11 +924,11 @@ namespace Dddml.Wms.Domain.User
 
         public virtual IUserPermissionStateRemoved NewUserPermissionStateRemoved(string permissionId)
         {
-            var stateEvent = new UserPermissionStateRemoved(NewUserPermissionStateEventId(permissionId));
+            var stateEvent = new UserPermissionStateRemoved(NewUserPermissionEventId(permissionId));
             return stateEvent;
         }
 
-		private Dictionary<UserLoginStateEventId, IUserLoginStateRemoved> _userLoginEvents = new Dictionary<UserLoginStateEventId, IUserLoginStateRemoved>();
+		private Dictionary<UserLoginEventId, IUserLoginStateRemoved> _userLoginEvents = new Dictionary<UserLoginEventId, IUserLoginStateRemoved>();
 		
         private IEnumerable<IUserLoginStateRemoved> _readOnlyUserLoginEvents;
 
@@ -945,7 +945,7 @@ namespace Dddml.Wms.Domain.User
                     if (_readOnlyUserLoginEvents != null) { return _readOnlyUserLoginEvents; }
                     var eventDao = UserLoginStateEventDao;
                     var eL = new List<IUserLoginStateRemoved>();
-                    foreach (var e in eventDao.FindByUserStateEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByUserEventId(this.StateEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IUserLoginStateRemoved)e);
@@ -974,7 +974,7 @@ namespace Dddml.Wms.Domain.User
 
         public virtual IUserLoginStateRemoved NewUserLoginStateRemoved(LoginKey loginKey)
         {
-            var stateEvent = new UserLoginStateRemoved(NewUserLoginStateEventId(loginKey));
+            var stateEvent = new UserLoginStateRemoved(NewUserLoginEventId(loginKey));
             return stateEvent;
         }
 

@@ -9,14 +9,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractAttributeAliasMvoStateEvent extends AbstractStateEvent implements AttributeAliasMvoStateEvent 
 {
-    private AttributeAliasMvoStateEventId stateEventId;
+    private AttributeAliasMvoEventId stateEventId;
 
-    public AttributeAliasMvoStateEventId getStateEventId() {
+    public AttributeAliasMvoEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(AttributeAliasMvoStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(AttributeAliasMvoEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public AttributeAliasId getAttributeAliasId() {
@@ -287,8 +287,8 @@ public abstract class AbstractAttributeAliasMvoStateEvent extends AbstractStateE
     protected AbstractAttributeAliasMvoStateEvent() {
     }
 
-    protected AbstractAttributeAliasMvoStateEvent(AttributeAliasMvoStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractAttributeAliasMvoStateEvent(AttributeAliasMvoEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -298,11 +298,11 @@ public abstract class AbstractAttributeAliasMvoStateEvent extends AbstractStateE
     public static abstract class AbstractAttributeAliasMvoStateCreated extends AbstractAttributeAliasMvoStateEvent implements AttributeAliasMvoStateEvent.AttributeAliasMvoStateCreated
     {
         public AbstractAttributeAliasMvoStateCreated() {
-            this(new AttributeAliasMvoStateEventId());
+            this(new AttributeAliasMvoEventId());
         }
 
-        public AbstractAttributeAliasMvoStateCreated(AttributeAliasMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractAttributeAliasMvoStateCreated(AttributeAliasMvoEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -315,11 +315,11 @@ public abstract class AbstractAttributeAliasMvoStateEvent extends AbstractStateE
     public static abstract class AbstractAttributeAliasMvoStateMergePatched extends AbstractAttributeAliasMvoStateEvent implements AttributeAliasMvoStateEvent.AttributeAliasMvoStateMergePatched
     {
         public AbstractAttributeAliasMvoStateMergePatched() {
-            this(new AttributeAliasMvoStateEventId());
+            this(new AttributeAliasMvoEventId());
         }
 
-        public AbstractAttributeAliasMvoStateMergePatched(AttributeAliasMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractAttributeAliasMvoStateMergePatched(AttributeAliasMvoEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -512,11 +512,11 @@ public abstract class AbstractAttributeAliasMvoStateEvent extends AbstractStateE
     public static abstract class AbstractAttributeAliasMvoStateDeleted extends AbstractAttributeAliasMvoStateEvent implements AttributeAliasMvoStateEvent.AttributeAliasMvoStateDeleted
     {
         public AbstractAttributeAliasMvoStateDeleted() {
-            this(new AttributeAliasMvoStateEventId());
+            this(new AttributeAliasMvoEventId());
         }
 
-        public AbstractAttributeAliasMvoStateDeleted(AttributeAliasMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractAttributeAliasMvoStateDeleted(AttributeAliasMvoEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -529,8 +529,8 @@ public abstract class AbstractAttributeAliasMvoStateEvent extends AbstractStateE
         public SimpleAttributeAliasMvoStateCreated() {
         }
 
-        public SimpleAttributeAliasMvoStateCreated(AttributeAliasMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleAttributeAliasMvoStateCreated(AttributeAliasMvoEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -539,8 +539,8 @@ public abstract class AbstractAttributeAliasMvoStateEvent extends AbstractStateE
         public SimpleAttributeAliasMvoStateMergePatched() {
         }
 
-        public SimpleAttributeAliasMvoStateMergePatched(AttributeAliasMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleAttributeAliasMvoStateMergePatched(AttributeAliasMvoEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -549,8 +549,8 @@ public abstract class AbstractAttributeAliasMvoStateEvent extends AbstractStateE
         public SimpleAttributeAliasMvoStateDeleted() {
         }
 
-        public SimpleAttributeAliasMvoStateDeleted(AttributeAliasMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleAttributeAliasMvoStateDeleted(AttributeAliasMvoEventId eventId) {
+            super(eventId);
         }
     }
 

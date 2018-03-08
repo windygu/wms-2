@@ -540,7 +540,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             id.Append("[").Append("MovementConfirmationLineMvo|");
 
             var stateEntityId = this.MovementConfirmationLineId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.MovementConfirmationLineId; // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+            var eventEntityId = stateEvent.StateEventId.MovementConfirmationLineId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);

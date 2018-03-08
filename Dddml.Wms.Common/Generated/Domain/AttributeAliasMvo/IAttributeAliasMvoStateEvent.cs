@@ -12,9 +12,9 @@ using Dddml.Wms.Domain.Attribute;
 
 namespace Dddml.Wms.Domain.AttributeAliasMvo
 {
-	public interface IAttributeAliasMvoStateEvent : IEvent, IStateEventDto, IGlobalIdentity<AttributeAliasMvoStateEventId>, ICreated<string>
+	public interface IAttributeAliasMvoStateEvent : IEvent, IStateEventDto, IGlobalIdentity<AttributeAliasMvoEventId>, ICreated<string>
 	{
-		AttributeAliasMvoStateEventId StateEventId { get; }
+		AttributeAliasMvoEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

@@ -11,9 +11,9 @@ using Dddml.Wms.Domain.Permission;
 
 namespace Dddml.Wms.Domain.Permission
 {
-	public interface IPermissionStateEvent : IEvent, IStateEventDto, IGlobalIdentity<PermissionStateEventId>, ICreated<string>
+	public interface IPermissionStateEvent : IEvent, IStateEventDto, IGlobalIdentity<PermissionEventId>, ICreated<string>
 	{
-		PermissionStateEventId StateEventId { get; }
+		PermissionEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

@@ -8,7 +8,7 @@ public interface MovementLineStateEventDao
 {
     void save(MovementLineStateEvent e);
 
-    Iterable<MovementLineStateEvent> findByMovementStateEventId(MovementStateEventId movementStateEventId);
+    Iterable<MovementLineStateEvent> findByMovementEventId(MovementEventId movementEventId);
 
 }
 

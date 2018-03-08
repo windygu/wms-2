@@ -21,7 +21,7 @@ namespace Dddml.Wms.Domain.Warehouse.NHibernate
 	{
 		public override object GetEventId(IEventStoreAggregateId eventStoreAggregateId, long version)
 		{
-			return new WarehouseStateEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
+			return new WarehouseEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
 		public override Type GetSupportedStateEventType()

@@ -5,7 +5,7 @@
   
   <class name="UserLoginStateEventBase" table="UserLoginStateEvents" mutable="false" abstract="true">
 
-    <composite-id name="StateEventId" class="Dddml.Wms.Domain.User.UserLoginStateEventId">
+    <composite-id name="StateEventId" class="Dddml.Wms.Domain.User.UserLoginEventId">
         <key-property name="UserId" ><column name="UserLoginIdUserId" length="50" /></key-property>
         <key-property name="LoginKeyLoginProvider" ><column name="UserLoginIdLoginKeyLoginProvider" /></key-property>
         <key-property name="LoginKeyProviderKey" ><column name="UserLoginIdLoginKeyProviderKey" /></key-property>

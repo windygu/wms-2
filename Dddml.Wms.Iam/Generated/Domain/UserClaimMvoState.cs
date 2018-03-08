@@ -512,7 +512,7 @@ namespace Dddml.Wms.Domain.UserClaimMvo
             id.Append("[").Append("UserClaimMvo|");
 
             var stateEntityId = this.UserClaimId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.UserClaimId; // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+            var eventEntityId = stateEvent.StateEventId.UserClaimId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);

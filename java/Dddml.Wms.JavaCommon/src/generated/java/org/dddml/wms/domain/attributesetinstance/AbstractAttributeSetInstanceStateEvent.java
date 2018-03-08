@@ -15,13 +15,13 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         return state;
     }
 
-    public AttributeSetInstanceStateEventId getStateEventId() {
-        AttributeSetInstanceStateEventId eventId = new AttributeSetInstanceStateEventId(state.getAttributeSetInstanceId(), AttributeSetInstanceState.VERSION_NULL);
+    public AttributeSetInstanceEventId getStateEventId() {
+        AttributeSetInstanceEventId eventId = new AttributeSetInstanceEventId(state.getAttributeSetInstanceId(), AttributeSetInstanceState.VERSION_NULL);
         return eventId;
     }
 
-    public void setStateEventId(AttributeSetInstanceStateEventId stateEventId) {
-        this.state.setAttributeSetInstanceId(stateEventId.getAttributeSetInstanceId());
+    public void setStateEventId(AttributeSetInstanceEventId eventId) {
+        this.state.setAttributeSetInstanceId(eventId.getAttributeSetInstanceId());
     }
 
     public String getAttributeSetInstanceId() {
@@ -751,9 +751,9 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         this(new AbstractAttributeSetInstanceState.SimpleAttributeSetInstanceState());
     }
 
-    protected AbstractAttributeSetInstanceStateEvent(AttributeSetInstanceStateEventId stateEventId) {
+    protected AbstractAttributeSetInstanceStateEvent(AttributeSetInstanceEventId eventId) {
         this(new AbstractAttributeSetInstanceState.SimpleAttributeSetInstanceState());
-        setStateEventId(stateEventId);
+        setStateEventId(eventId);
     }
 
     protected AbstractAttributeSetInstanceStateEvent(AttributeSetInstanceState s) {
@@ -768,11 +768,11 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
     public static abstract class AbstractAttributeSetInstanceStateCreated extends AbstractAttributeSetInstanceStateEvent implements AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated
     {
         public AbstractAttributeSetInstanceStateCreated() {
-            this(new AttributeSetInstanceStateEventId());
+            this(new AttributeSetInstanceEventId());
         }
 
-        public AbstractAttributeSetInstanceStateCreated(AttributeSetInstanceStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractAttributeSetInstanceStateCreated(AttributeSetInstanceEventId eventId) {
+            super(eventId);
         }
 
         public AbstractAttributeSetInstanceStateCreated(AttributeSetInstanceState s) {
@@ -791,8 +791,8 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         public SimpleAttributeSetInstanceStateCreated() {
         }
 
-        public SimpleAttributeSetInstanceStateCreated(AttributeSetInstanceStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleAttributeSetInstanceStateCreated(AttributeSetInstanceEventId eventId) {
+            super(eventId);
         }
 
         public SimpleAttributeSetInstanceStateCreated(AttributeSetInstanceState s) {

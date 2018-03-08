@@ -10,14 +10,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractPhysicalInventoryLineStateEvent extends AbstractStateEvent implements PhysicalInventoryLineStateEvent 
 {
-    private PhysicalInventoryLineStateEventId stateEventId;
+    private PhysicalInventoryLineEventId stateEventId;
 
-    public PhysicalInventoryLineStateEventId getStateEventId() {
+    public PhysicalInventoryLineEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(PhysicalInventoryLineStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(PhysicalInventoryLineEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public InventoryItemId getInventoryItemId() {
@@ -144,8 +144,8 @@ public abstract class AbstractPhysicalInventoryLineStateEvent extends AbstractSt
     protected AbstractPhysicalInventoryLineStateEvent() {
     }
 
-    protected AbstractPhysicalInventoryLineStateEvent(PhysicalInventoryLineStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractPhysicalInventoryLineStateEvent(PhysicalInventoryLineEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -155,11 +155,11 @@ public abstract class AbstractPhysicalInventoryLineStateEvent extends AbstractSt
     public static abstract class AbstractPhysicalInventoryLineStateCreated extends AbstractPhysicalInventoryLineStateEvent implements PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateCreated
     {
         public AbstractPhysicalInventoryLineStateCreated() {
-            this(new PhysicalInventoryLineStateEventId());
+            this(new PhysicalInventoryLineEventId());
         }
 
-        public AbstractPhysicalInventoryLineStateCreated(PhysicalInventoryLineStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractPhysicalInventoryLineStateCreated(PhysicalInventoryLineEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -172,11 +172,11 @@ public abstract class AbstractPhysicalInventoryLineStateEvent extends AbstractSt
     public static abstract class AbstractPhysicalInventoryLineStateMergePatched extends AbstractPhysicalInventoryLineStateEvent implements PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateMergePatched
     {
         public AbstractPhysicalInventoryLineStateMergePatched() {
-            this(new PhysicalInventoryLineStateEventId());
+            this(new PhysicalInventoryLineEventId());
         }
 
-        public AbstractPhysicalInventoryLineStateMergePatched(PhysicalInventoryLineStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractPhysicalInventoryLineStateMergePatched(PhysicalInventoryLineEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -239,11 +239,11 @@ public abstract class AbstractPhysicalInventoryLineStateEvent extends AbstractSt
     public static abstract class AbstractPhysicalInventoryLineStateRemoved extends AbstractPhysicalInventoryLineStateEvent implements PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateRemoved
     {
         public AbstractPhysicalInventoryLineStateRemoved() {
-            this(new PhysicalInventoryLineStateEventId());
+            this(new PhysicalInventoryLineEventId());
         }
 
-        public AbstractPhysicalInventoryLineStateRemoved(PhysicalInventoryLineStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractPhysicalInventoryLineStateRemoved(PhysicalInventoryLineEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -256,8 +256,8 @@ public abstract class AbstractPhysicalInventoryLineStateEvent extends AbstractSt
         public SimplePhysicalInventoryLineStateCreated() {
         }
 
-        public SimplePhysicalInventoryLineStateCreated(PhysicalInventoryLineStateEventId stateEventId) {
-            super(stateEventId);
+        public SimplePhysicalInventoryLineStateCreated(PhysicalInventoryLineEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -266,8 +266,8 @@ public abstract class AbstractPhysicalInventoryLineStateEvent extends AbstractSt
         public SimplePhysicalInventoryLineStateMergePatched() {
         }
 
-        public SimplePhysicalInventoryLineStateMergePatched(PhysicalInventoryLineStateEventId stateEventId) {
-            super(stateEventId);
+        public SimplePhysicalInventoryLineStateMergePatched(PhysicalInventoryLineEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -276,8 +276,8 @@ public abstract class AbstractPhysicalInventoryLineStateEvent extends AbstractSt
         public SimplePhysicalInventoryLineStateRemoved() {
         }
 
-        public SimplePhysicalInventoryLineStateRemoved(PhysicalInventoryLineStateEventId stateEventId) {
-            super(stateEventId);
+        public SimplePhysicalInventoryLineStateRemoved(PhysicalInventoryLineEventId eventId) {
+            super(eventId);
         }
     }
 

@@ -23,7 +23,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo.NHibernate
 	{
 		public override object GetEventId(IEventStoreAggregateId eventStoreAggregateId, long version)
 		{
-			return new SellableInventoryItemEntryMvoStateEventId((SellableInventoryItemEntryId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
+			return new SellableInventoryItemEntryMvoEventId((SellableInventoryItemEntryId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
 		public override Type GetSupportedStateEventType()

@@ -23,7 +23,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo.NHibernate
 	{
 		public override object GetEventId(IEventStoreAggregateId eventStoreAggregateId, long version)
 		{
-			return new InventoryItemRequirementEntryMvoStateEventId((InventoryItemRequirementEntryId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
+			return new InventoryItemRequirementEntryMvoEventId((InventoryItemRequirementEntryId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
 		public override Type GetSupportedStateEventType()

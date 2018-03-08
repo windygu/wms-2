@@ -9,14 +9,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractAttributeValueMvoStateEvent extends AbstractStateEvent implements AttributeValueMvoStateEvent 
 {
-    private AttributeValueMvoStateEventId stateEventId;
+    private AttributeValueMvoEventId stateEventId;
 
-    public AttributeValueMvoStateEventId getStateEventId() {
+    public AttributeValueMvoEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(AttributeValueMvoStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(AttributeValueMvoEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public AttributeValueId getAttributeValueId() {
@@ -311,8 +311,8 @@ public abstract class AbstractAttributeValueMvoStateEvent extends AbstractStateE
     protected AbstractAttributeValueMvoStateEvent() {
     }
 
-    protected AbstractAttributeValueMvoStateEvent(AttributeValueMvoStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractAttributeValueMvoStateEvent(AttributeValueMvoEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -322,11 +322,11 @@ public abstract class AbstractAttributeValueMvoStateEvent extends AbstractStateE
     public static abstract class AbstractAttributeValueMvoStateCreated extends AbstractAttributeValueMvoStateEvent implements AttributeValueMvoStateEvent.AttributeValueMvoStateCreated
     {
         public AbstractAttributeValueMvoStateCreated() {
-            this(new AttributeValueMvoStateEventId());
+            this(new AttributeValueMvoEventId());
         }
 
-        public AbstractAttributeValueMvoStateCreated(AttributeValueMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractAttributeValueMvoStateCreated(AttributeValueMvoEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -339,11 +339,11 @@ public abstract class AbstractAttributeValueMvoStateEvent extends AbstractStateE
     public static abstract class AbstractAttributeValueMvoStateMergePatched extends AbstractAttributeValueMvoStateEvent implements AttributeValueMvoStateEvent.AttributeValueMvoStateMergePatched
     {
         public AbstractAttributeValueMvoStateMergePatched() {
-            this(new AttributeValueMvoStateEventId());
+            this(new AttributeValueMvoEventId());
         }
 
-        public AbstractAttributeValueMvoStateMergePatched(AttributeValueMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractAttributeValueMvoStateMergePatched(AttributeValueMvoEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -556,11 +556,11 @@ public abstract class AbstractAttributeValueMvoStateEvent extends AbstractStateE
     public static abstract class AbstractAttributeValueMvoStateDeleted extends AbstractAttributeValueMvoStateEvent implements AttributeValueMvoStateEvent.AttributeValueMvoStateDeleted
     {
         public AbstractAttributeValueMvoStateDeleted() {
-            this(new AttributeValueMvoStateEventId());
+            this(new AttributeValueMvoEventId());
         }
 
-        public AbstractAttributeValueMvoStateDeleted(AttributeValueMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractAttributeValueMvoStateDeleted(AttributeValueMvoEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -573,8 +573,8 @@ public abstract class AbstractAttributeValueMvoStateEvent extends AbstractStateE
         public SimpleAttributeValueMvoStateCreated() {
         }
 
-        public SimpleAttributeValueMvoStateCreated(AttributeValueMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleAttributeValueMvoStateCreated(AttributeValueMvoEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -583,8 +583,8 @@ public abstract class AbstractAttributeValueMvoStateEvent extends AbstractStateE
         public SimpleAttributeValueMvoStateMergePatched() {
         }
 
-        public SimpleAttributeValueMvoStateMergePatched(AttributeValueMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleAttributeValueMvoStateMergePatched(AttributeValueMvoEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -593,8 +593,8 @@ public abstract class AbstractAttributeValueMvoStateEvent extends AbstractStateE
         public SimpleAttributeValueMvoStateDeleted() {
         }
 
-        public SimpleAttributeValueMvoStateDeleted(AttributeValueMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleAttributeValueMvoStateDeleted(AttributeValueMvoEventId eventId) {
+            super(eventId);
         }
     }
 

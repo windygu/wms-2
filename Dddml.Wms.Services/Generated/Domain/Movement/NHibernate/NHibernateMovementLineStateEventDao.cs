@@ -39,12 +39,12 @@ namespace Dddml.Wms.Domain.Movement.NHibernate
         }
 
         [Transaction(ReadOnly = true)]
-        public IEnumerable<IMovementLineStateEvent> FindByMovementStateEventId(MovementStateEventId movementStateEventId)
+        public IEnumerable<IMovementLineStateEvent> FindByMovementEventId(MovementEventId movementEventId)
         {
             var criteria = CurrentSession.CreateCriteria<MovementLineStateEventBase>();
             var partIdCondition = Restrictions.Conjunction()
-                .Add(Restrictions.Eq("StateEventId.MovementDocumentNumber", movementStateEventId.DocumentNumber))
-                .Add(Restrictions.Eq("StateEventId.MovementVersion", movementStateEventId.Version))
+                .Add(Restrictions.Eq("StateEventId.MovementDocumentNumber", movementEventId.DocumentNumber))
+                .Add(Restrictions.Eq("StateEventId.MovementVersion", movementEventId.Version))
                 ;
 
             return criteria.Add(partIdCondition).List<MovementLineStateEventBase>();

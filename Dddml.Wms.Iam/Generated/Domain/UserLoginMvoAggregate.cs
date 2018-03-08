@@ -105,7 +105,7 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 
         protected virtual IUserLoginMvoStateCreated Map(ICreateUserLoginMvo c)
         {
-			var stateEventId = new UserLoginMvoStateEventId(c.UserLoginId, c.UserVersion);
+			var stateEventId = new UserLoginMvoEventId(c.UserLoginId, c.UserVersion);
             IUserLoginMvoStateCreated e = NewUserLoginMvoStateCreated(stateEventId);
 		
             e.Version = c.Version;
@@ -140,7 +140,7 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 
         protected virtual IUserLoginMvoStateMergePatched Map(IMergePatchUserLoginMvo c)
         {
-			var stateEventId = new UserLoginMvoStateEventId(c.UserLoginId, c.UserVersion);
+			var stateEventId = new UserLoginMvoEventId(c.UserLoginId, c.UserVersion);
             IUserLoginMvoStateMergePatched e = NewUserLoginMvoStateMergePatched(stateEventId);
 
             e.Version = c.Version;
@@ -196,7 +196,7 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 
         protected virtual IUserLoginMvoStateDeleted Map(IDeleteUserLoginMvo c)
         {
-			var stateEventId = new UserLoginMvoStateEventId(c.UserLoginId, c.UserVersion);
+			var stateEventId = new UserLoginMvoEventId(c.UserLoginId, c.UserVersion);
             IUserLoginMvoStateDeleted e = NewUserLoginMvoStateDeleted(stateEventId);
 			
             e.CommandId = c.CommandId;
@@ -225,7 +225,7 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 
         protected UserLoginMvoStateCreated NewUserLoginMvoStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new UserLoginMvoStateEventId(_state.UserLoginId, version);
+            var stateEventId = new UserLoginMvoEventId(_state.UserLoginId, version);
             var e = NewUserLoginMvoStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -238,7 +238,7 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 
         protected UserLoginMvoStateMergePatched NewUserLoginMvoStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new UserLoginMvoStateEventId(_state.UserLoginId, version);
+            var stateEventId = new UserLoginMvoEventId(_state.UserLoginId, version);
             var e = NewUserLoginMvoStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -252,7 +252,7 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 
         protected UserLoginMvoStateDeleted NewUserLoginMvoStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new UserLoginMvoStateEventId(_state.UserLoginId, version);
+            var stateEventId = new UserLoginMvoEventId(_state.UserLoginId, version);
             var e = NewUserLoginMvoStateDeleted(stateEventId);
 
             e.CommandId = commandId;
@@ -265,17 +265,17 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 
 ////////////////////////
 
-		private UserLoginMvoStateCreated NewUserLoginMvoStateCreated(UserLoginMvoStateEventId stateEventId)
+		private UserLoginMvoStateCreated NewUserLoginMvoStateCreated(UserLoginMvoEventId stateEventId)
 		{
 			return new UserLoginMvoStateCreated(stateEventId);			
 		}
 
-        private UserLoginMvoStateMergePatched NewUserLoginMvoStateMergePatched(UserLoginMvoStateEventId stateEventId)
+        private UserLoginMvoStateMergePatched NewUserLoginMvoStateMergePatched(UserLoginMvoEventId stateEventId)
 		{
 			return new UserLoginMvoStateMergePatched(stateEventId);
 		}
 
-        private UserLoginMvoStateDeleted NewUserLoginMvoStateDeleted(UserLoginMvoStateEventId stateEventId)
+        private UserLoginMvoStateDeleted NewUserLoginMvoStateDeleted(UserLoginMvoEventId stateEventId)
 		{
 			return new UserLoginMvoStateDeleted(stateEventId);
 		}

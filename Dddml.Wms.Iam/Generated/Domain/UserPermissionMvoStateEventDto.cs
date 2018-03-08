@@ -16,13 +16,13 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 	public abstract class UserPermissionMvoStateEventDtoBase : IStateEventDto, IUserPermissionMvoStateCreated, IUserPermissionMvoStateMergePatched, IUserPermissionMvoStateDeleted
 	{
 
-        private UserPermissionMvoStateEventIdDto _stateEventId;
+        private UserPermissionMvoEventIdDto _stateEventId;
 
-		protected internal virtual UserPermissionMvoStateEventIdDto StateEventId 
+		protected internal virtual UserPermissionMvoEventIdDto StateEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new UserPermissionMvoStateEventIdDto(); }
+                if (_stateEventId == null) { _stateEventId = new UserPermissionMvoEventIdDto(); }
                 return _stateEventId;
             }
             set
@@ -89,10 +89,10 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		UserPermissionMvoStateEventId IGlobalIdentity<UserPermissionMvoStateEventId>.GlobalId {
+		UserPermissionMvoEventId IGlobalIdentity<UserPermissionMvoEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToUserPermissionMvoStateEventId();
+				return this.StateEventId.ToUserPermissionMvoEventId();
 			}
 		}
 
@@ -490,16 +490,16 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 		}
 
 
-        UserPermissionMvoStateEventId IUserPermissionMvoStateEvent.StateEventId
+        UserPermissionMvoEventId IUserPermissionMvoStateEvent.StateEventId
         {
-            get { return this.StateEventId.ToUserPermissionMvoStateEventId(); }
+            get { return this.StateEventId.ToUserPermissionMvoEventId(); }
         }
 
         protected UserPermissionMvoStateEventDtoBase()
         {
         }
 
-        protected UserPermissionMvoStateEventDtoBase(UserPermissionMvoStateEventIdDto stateEventId)
+        protected UserPermissionMvoStateEventDtoBase(UserPermissionMvoEventIdDto stateEventId)
         {
             this.StateEventId = stateEventId;
         }

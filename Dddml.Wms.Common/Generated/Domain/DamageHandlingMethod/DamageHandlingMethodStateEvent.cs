@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 	public abstract class DamageHandlingMethodStateEventBase : IDamageHandlingMethodStateEvent
 	{
 
-		public virtual DamageHandlingMethodStateEventId StateEventId { get; set; }
+		public virtual DamageHandlingMethodEventId StateEventId { get; set; }
 
         public virtual string DamageHandlingMethodId
         {
@@ -37,7 +37,7 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		DamageHandlingMethodStateEventId IGlobalIdentity<DamageHandlingMethodStateEventId>.GlobalId {
+		DamageHandlingMethodEventId IGlobalIdentity<DamageHandlingMethodEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -81,7 +81,7 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
         {
         }
 
-        protected DamageHandlingMethodStateEventBase(DamageHandlingMethodStateEventId stateEventId)
+        protected DamageHandlingMethodStateEventBase(DamageHandlingMethodEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -98,11 +98,11 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 
 	public class DamageHandlingMethodStateCreated : DamageHandlingMethodStateEventBase, IDamageHandlingMethodStateCreated
 	{
-		public DamageHandlingMethodStateCreated () : this(new DamageHandlingMethodStateEventId())
+		public DamageHandlingMethodStateCreated () : this(new DamageHandlingMethodEventId())
 		{
 		}
 
-		public DamageHandlingMethodStateCreated (DamageHandlingMethodStateEventId stateEventId) : base(stateEventId)
+		public DamageHandlingMethodStateCreated (DamageHandlingMethodEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -128,7 +128,7 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 		{
 		}
 
-		public DamageHandlingMethodStateMergePatched (DamageHandlingMethodStateEventId stateEventId) : base(stateEventId)
+		public DamageHandlingMethodStateMergePatched (DamageHandlingMethodEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -147,7 +147,7 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 		{
 		}
 
-		public DamageHandlingMethodStateDeleted (DamageHandlingMethodStateEventId stateEventId) : base(stateEventId)
+		public DamageHandlingMethodStateDeleted (DamageHandlingMethodEventId stateEventId) : base(stateEventId)
 		{
 		}
 

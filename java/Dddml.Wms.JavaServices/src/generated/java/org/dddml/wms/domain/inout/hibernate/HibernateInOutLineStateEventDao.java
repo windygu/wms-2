@@ -35,12 +35,12 @@ public class HibernateInOutLineStateEventDao implements InOutLineStateEventDao
 
     @Transactional(readOnly = true)
     @Override
-    public Iterable<InOutLineStateEvent> findByInOutStateEventId(InOutStateEventId inOutStateEventId)
+    public Iterable<InOutLineStateEvent> findByInOutEventId(InOutEventId inOutEventId)
     {
         Criteria criteria = getCurrentSession().createCriteria(AbstractInOutLineStateEvent.class);
         Junction partIdCondition = Restrictions.conjunction()
-            .add(Restrictions.eq("stateEventId.inOutDocumentNumber", inOutStateEventId.getDocumentNumber()))
-            .add(Restrictions.eq("stateEventId.inOutVersion", inOutStateEventId.getVersion()))
+            .add(Restrictions.eq("stateEventId.inOutDocumentNumber", inOutEventId.getDocumentNumber()))
+            .add(Restrictions.eq("stateEventId.inOutVersion", inOutEventId.getVersion()))
             ;
         return criteria.add(partIdCondition).list();
     }

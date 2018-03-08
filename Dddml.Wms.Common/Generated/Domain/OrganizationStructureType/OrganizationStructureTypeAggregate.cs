@@ -104,7 +104,7 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 
         protected virtual IOrganizationStructureTypeStateCreated Map(ICreateOrganizationStructureType c)
         {
-			var stateEventId = new OrganizationStructureTypeStateEventId(c.Id, c.Version);
+			var stateEventId = new OrganizationStructureTypeEventId(c.Id, c.Version);
             IOrganizationStructureTypeStateCreated e = NewOrganizationStructureTypeStateCreated(stateEventId);
 		
             e.Description = c.Description;
@@ -122,7 +122,7 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 
         protected virtual IOrganizationStructureTypeStateMergePatched Map(IMergePatchOrganizationStructureType c)
         {
-			var stateEventId = new OrganizationStructureTypeStateEventId(c.Id, c.Version);
+			var stateEventId = new OrganizationStructureTypeEventId(c.Id, c.Version);
             IOrganizationStructureTypeStateMergePatched e = NewOrganizationStructureTypeStateMergePatched(stateEventId);
 
             e.Description = c.Description;
@@ -144,7 +144,7 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 
         protected virtual IOrganizationStructureTypeStateDeleted Map(IDeleteOrganizationStructureType c)
         {
-			var stateEventId = new OrganizationStructureTypeStateEventId(c.Id, c.Version);
+			var stateEventId = new OrganizationStructureTypeEventId(c.Id, c.Version);
             IOrganizationStructureTypeStateDeleted e = NewOrganizationStructureTypeStateDeleted(stateEventId);
 			
             e.CommandId = c.CommandId;
@@ -173,7 +173,7 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 
         protected OrganizationStructureTypeStateCreated NewOrganizationStructureTypeStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new OrganizationStructureTypeStateEventId(_state.Id, version);
+            var stateEventId = new OrganizationStructureTypeEventId(_state.Id, version);
             var e = NewOrganizationStructureTypeStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -186,7 +186,7 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 
         protected OrganizationStructureTypeStateMergePatched NewOrganizationStructureTypeStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new OrganizationStructureTypeStateEventId(_state.Id, version);
+            var stateEventId = new OrganizationStructureTypeEventId(_state.Id, version);
             var e = NewOrganizationStructureTypeStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -200,7 +200,7 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 
         protected OrganizationStructureTypeStateDeleted NewOrganizationStructureTypeStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new OrganizationStructureTypeStateEventId(_state.Id, version);
+            var stateEventId = new OrganizationStructureTypeEventId(_state.Id, version);
             var e = NewOrganizationStructureTypeStateDeleted(stateEventId);
 
             e.CommandId = commandId;
@@ -213,17 +213,17 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 
 ////////////////////////
 
-		private OrganizationStructureTypeStateCreated NewOrganizationStructureTypeStateCreated(OrganizationStructureTypeStateEventId stateEventId)
+		private OrganizationStructureTypeStateCreated NewOrganizationStructureTypeStateCreated(OrganizationStructureTypeEventId stateEventId)
 		{
 			return new OrganizationStructureTypeStateCreated(stateEventId);			
 		}
 
-        private OrganizationStructureTypeStateMergePatched NewOrganizationStructureTypeStateMergePatched(OrganizationStructureTypeStateEventId stateEventId)
+        private OrganizationStructureTypeStateMergePatched NewOrganizationStructureTypeStateMergePatched(OrganizationStructureTypeEventId stateEventId)
 		{
 			return new OrganizationStructureTypeStateMergePatched(stateEventId);
 		}
 
-        private OrganizationStructureTypeStateDeleted NewOrganizationStructureTypeStateDeleted(OrganizationStructureTypeStateEventId stateEventId)
+        private OrganizationStructureTypeStateDeleted NewOrganizationStructureTypeStateDeleted(OrganizationStructureTypeEventId stateEventId)
 		{
 			return new OrganizationStructureTypeStateDeleted(stateEventId);
 		}

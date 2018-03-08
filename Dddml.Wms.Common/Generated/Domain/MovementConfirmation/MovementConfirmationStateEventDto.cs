@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 	public abstract class MovementConfirmationStateEventDtoBase : IStateEventDto, IMovementConfirmationStateCreated, IMovementConfirmationStateMergePatched, IMovementConfirmationStateDeleted
 	{
 
-        private MovementConfirmationStateEventIdDto _stateEventId;
+        private MovementConfirmationEventIdDto _stateEventId;
 
-		protected internal virtual MovementConfirmationStateEventIdDto StateEventId 
+		protected internal virtual MovementConfirmationEventIdDto StateEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new MovementConfirmationStateEventIdDto(); }
+                if (_stateEventId == null) { _stateEventId = new MovementConfirmationEventIdDto(); }
                 return _stateEventId;
             }
             set
@@ -68,10 +68,10 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		MovementConfirmationStateEventId IGlobalIdentity<MovementConfirmationStateEventId>.GlobalId {
+		MovementConfirmationEventId IGlobalIdentity<MovementConfirmationEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToMovementConfirmationStateEventId();
+				return this.StateEventId.ToMovementConfirmationEventId();
 			}
 		}
 
@@ -296,9 +296,9 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
 
 
-        private MovementConfirmationLineStateEventIdDto NewMovementConfirmationLineStateEventId(string lineNumber)
+        private MovementConfirmationLineEventIdDto NewMovementConfirmationLineEventId(string lineNumber)
         {
-            var eId = new MovementConfirmationLineStateEventIdDto();
+            var eId = new MovementConfirmationLineEventIdDto();
             eId.MovementConfirmationDocumentNumber = this.StateEventId.DocumentNumber;
             eId.LineNumber = lineNumber;
             eId.MovementConfirmationVersion = this.StateEventId.Version;
@@ -308,7 +308,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
         public virtual MovementConfirmationLineStateCreatedDto NewMovementConfirmationLineStateCreated(string lineNumber)
         {
             var e = new MovementConfirmationLineStateCreatedDto();
-            var eId = NewMovementConfirmationLineStateEventId(lineNumber);
+            var eId = NewMovementConfirmationLineEventId(lineNumber);
             e.StateEventId = eId;
             return e;
         }
@@ -316,7 +316,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
         public virtual MovementConfirmationLineStateMergePatchedDto NewMovementConfirmationLineStateMergePatched(string lineNumber)
         {
             var e = new MovementConfirmationLineStateMergePatchedDto();
-            var eId = NewMovementConfirmationLineStateEventId(lineNumber);
+            var eId = NewMovementConfirmationLineEventId(lineNumber);
             e.StateEventId = eId;
             return e;
         }
@@ -324,7 +324,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
         public virtual MovementConfirmationLineStateRemovedDto NewMovementConfirmationLineStateRemoved(string lineNumber)
         {
             var e = new MovementConfirmationLineStateRemovedDto();
-            var eId = NewMovementConfirmationLineStateEventId(lineNumber);
+            var eId = NewMovementConfirmationLineEventId(lineNumber);
             e.StateEventId = eId;
             return e;
         }
@@ -387,16 +387,16 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
 
 
-        MovementConfirmationStateEventId IMovementConfirmationStateEvent.StateEventId
+        MovementConfirmationEventId IMovementConfirmationStateEvent.StateEventId
         {
-            get { return this.StateEventId.ToMovementConfirmationStateEventId(); }
+            get { return this.StateEventId.ToMovementConfirmationEventId(); }
         }
 
         protected MovementConfirmationStateEventDtoBase()
         {
         }
 
-        protected MovementConfirmationStateEventDtoBase(MovementConfirmationStateEventIdDto stateEventId)
+        protected MovementConfirmationStateEventDtoBase(MovementConfirmationEventIdDto stateEventId)
         {
             this.StateEventId = stateEventId;
         }

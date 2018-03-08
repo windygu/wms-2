@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.Party
 	public abstract class PartyStateEventBase : IPartyStateEvent
 	{
 
-		public virtual PartyStateEventId StateEventId { get; set; }
+		public virtual PartyEventId StateEventId { get; set; }
 
         public virtual string PartyId
         {
@@ -43,7 +43,7 @@ namespace Dddml.Wms.Domain.Party
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		PartyStateEventId IGlobalIdentity<PartyStateEventId>.GlobalId {
+		PartyEventId IGlobalIdentity<PartyEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -87,7 +87,7 @@ namespace Dddml.Wms.Domain.Party
         {
         }
 
-        protected PartyStateEventBase(PartyStateEventId stateEventId)
+        protected PartyStateEventBase(PartyEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -104,11 +104,11 @@ namespace Dddml.Wms.Domain.Party
 
 	public class PartyStateCreated : PartyStateEventBase, IPartyStateCreated
 	{
-		public PartyStateCreated () : this(new PartyStateEventId())
+		public PartyStateCreated () : this(new PartyEventId())
 		{
 		}
 
-		public PartyStateCreated (PartyStateEventId stateEventId) : base(stateEventId)
+		public PartyStateCreated (PartyEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -140,7 +140,7 @@ namespace Dddml.Wms.Domain.Party
 		{
 		}
 
-		public PartyStateMergePatched (PartyStateEventId stateEventId) : base(stateEventId)
+		public PartyStateMergePatched (PartyEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -159,7 +159,7 @@ namespace Dddml.Wms.Domain.Party
 		{
 		}
 
-		public PartyStateDeleted (PartyStateEventId stateEventId) : base(stateEventId)
+		public PartyStateDeleted (PartyEventId stateEventId) : base(stateEventId)
 		{
 		}
 

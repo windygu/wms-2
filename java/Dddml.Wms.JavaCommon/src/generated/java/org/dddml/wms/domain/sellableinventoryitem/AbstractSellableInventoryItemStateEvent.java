@@ -11,14 +11,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractSellableInventoryItemStateEvent extends AbstractStateEvent implements SellableInventoryItemStateEvent 
 {
-    private SellableInventoryItemStateEventId stateEventId;
+    private SellableInventoryItemEventId stateEventId;
 
-    public SellableInventoryItemStateEventId getStateEventId() {
+    public SellableInventoryItemEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(SellableInventoryItemStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(SellableInventoryItemEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public InventoryItemId getSellableInventoryItemId() {
@@ -85,16 +85,16 @@ public abstract class AbstractSellableInventoryItemStateEvent extends AbstractSt
     protected AbstractSellableInventoryItemStateEvent() {
     }
 
-    protected AbstractSellableInventoryItemStateEvent(SellableInventoryItemStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractSellableInventoryItemStateEvent(SellableInventoryItemEventId eventId) {
+        this.stateEventId = eventId;
     }
 
-    protected SellableInventoryItemEntryStateEventId newSellableInventoryItemEntryStateEventId(Long entrySeqId)
+    protected SellableInventoryItemEntryEventId newSellableInventoryItemEntryEventId(Long entrySeqId)
     {
-        SellableInventoryItemEntryStateEventId stateEventId = new SellableInventoryItemEntryStateEventId(this.getStateEventId().getSellableInventoryItemId(), 
+        SellableInventoryItemEntryEventId eventId = new SellableInventoryItemEntryEventId(this.getStateEventId().getSellableInventoryItemId(), 
             entrySeqId, 
             this.getStateEventId().getVersion());
-        return stateEventId;
+        return eventId;
     }
 
     protected void throwOnInconsistentEventIds(SellableInventoryItemEntryStateEvent e)
@@ -112,7 +112,7 @@ public abstract class AbstractSellableInventoryItemStateEvent extends AbstractSt
     }
 
     public SellableInventoryItemEntryStateEvent.SellableInventoryItemEntryStateCreated newSellableInventoryItemEntryStateCreated(Long entrySeqId) {
-        return new AbstractSellableInventoryItemEntryStateEvent.SimpleSellableInventoryItemEntryStateCreated(newSellableInventoryItemEntryStateEventId(entrySeqId));
+        return new AbstractSellableInventoryItemEntryStateEvent.SimpleSellableInventoryItemEntryStateCreated(newSellableInventoryItemEntryEventId(entrySeqId));
     }
 
 
@@ -122,18 +122,18 @@ public abstract class AbstractSellableInventoryItemStateEvent extends AbstractSt
     public static abstract class AbstractSellableInventoryItemStateCreated extends AbstractSellableInventoryItemStateEvent implements SellableInventoryItemStateEvent.SellableInventoryItemStateCreated
     {
         public AbstractSellableInventoryItemStateCreated() {
-            this(new SellableInventoryItemStateEventId());
+            this(new SellableInventoryItemEventId());
         }
 
-        public AbstractSellableInventoryItemStateCreated(SellableInventoryItemStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractSellableInventoryItemStateCreated(SellableInventoryItemEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
             return StateEventType.CREATED;
         }
 
-        private Map<SellableInventoryItemEntryStateEventId, SellableInventoryItemEntryStateEvent.SellableInventoryItemEntryStateCreated> sellableInventoryItemEntryEvents = new HashMap<SellableInventoryItemEntryStateEventId, SellableInventoryItemEntryStateEvent.SellableInventoryItemEntryStateCreated>();
+        private Map<SellableInventoryItemEntryEventId, SellableInventoryItemEntryStateEvent.SellableInventoryItemEntryStateCreated> sellableInventoryItemEntryEvents = new HashMap<SellableInventoryItemEntryEventId, SellableInventoryItemEntryStateEvent.SellableInventoryItemEntryStateCreated>();
         
         private Iterable<SellableInventoryItemEntryStateEvent.SellableInventoryItemEntryStateCreated> readOnlySellableInventoryItemEntryEvents;
 
@@ -166,11 +166,11 @@ public abstract class AbstractSellableInventoryItemStateEvent extends AbstractSt
     public static abstract class AbstractSellableInventoryItemStateMergePatched extends AbstractSellableInventoryItemStateEvent implements SellableInventoryItemStateEvent.SellableInventoryItemStateMergePatched
     {
         public AbstractSellableInventoryItemStateMergePatched() {
-            this(new SellableInventoryItemStateEventId());
+            this(new SellableInventoryItemEventId());
         }
 
-        public AbstractSellableInventoryItemStateMergePatched(SellableInventoryItemStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractSellableInventoryItemStateMergePatched(SellableInventoryItemEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -187,7 +187,7 @@ public abstract class AbstractSellableInventoryItemStateEvent extends AbstractSt
             this.isPropertySellableQuantityRemoved = removed;
         }
 
-        private Map<SellableInventoryItemEntryStateEventId, SellableInventoryItemEntryStateEvent> sellableInventoryItemEntryEvents = new HashMap<SellableInventoryItemEntryStateEventId, SellableInventoryItemEntryStateEvent>();
+        private Map<SellableInventoryItemEntryEventId, SellableInventoryItemEntryStateEvent> sellableInventoryItemEntryEvents = new HashMap<SellableInventoryItemEntryEventId, SellableInventoryItemEntryStateEvent>();
         
         private Iterable<SellableInventoryItemEntryStateEvent> readOnlySellableInventoryItemEntryEvents;
 
@@ -222,8 +222,8 @@ public abstract class AbstractSellableInventoryItemStateEvent extends AbstractSt
         public SimpleSellableInventoryItemStateCreated() {
         }
 
-        public SimpleSellableInventoryItemStateCreated(SellableInventoryItemStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleSellableInventoryItemStateCreated(SellableInventoryItemEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -232,8 +232,8 @@ public abstract class AbstractSellableInventoryItemStateEvent extends AbstractSt
         public SimpleSellableInventoryItemStateMergePatched() {
         }
 
-        public SimpleSellableInventoryItemStateMergePatched(SellableInventoryItemStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleSellableInventoryItemStateMergePatched(SellableInventoryItemEventId eventId) {
+            super(eventId);
         }
     }
 

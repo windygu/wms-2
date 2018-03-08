@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.User
 	{
 		void Save(IUserPermissionStateEvent e);
 
-        IEnumerable<IUserPermissionStateEvent> FindByUserStateEventId(UserStateEventId userStateEventId);
+        IEnumerable<IUserPermissionStateEvent> FindByUserEventId(UserEventId userEventId);
 
 	}
 

@@ -259,7 +259,7 @@ namespace Dddml.Wms.Domain.Lot
             id.Append("[").Append("Lot|");
 
             var stateEntityId = this.LotId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.LotId; // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+            var eventEntityId = stateEvent.StateEventId.LotId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);

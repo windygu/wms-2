@@ -9,14 +9,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractInOutStateEvent extends AbstractStateEvent implements InOutStateEvent 
 {
-    private InOutStateEventId stateEventId;
+    private InOutEventId stateEventId;
 
-    public InOutStateEventId getStateEventId() {
+    public InOutEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(InOutStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(InOutEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public String getDocumentNumber() {
@@ -443,20 +443,20 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
     protected AbstractInOutStateEvent() {
     }
 
-    protected AbstractInOutStateEvent(InOutStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractInOutStateEvent(InOutEventId eventId) {
+        this.stateEventId = eventId;
     }
 
     protected InOutLineStateEventDao getInOutLineStateEventDao() {
         return (InOutLineStateEventDao)ApplicationContext.current.get("InOutLineStateEventDao");
     }
 
-    protected InOutLineStateEventId newInOutLineStateEventId(String lineNumber)
+    protected InOutLineEventId newInOutLineEventId(String lineNumber)
     {
-        InOutLineStateEventId stateEventId = new InOutLineStateEventId(this.getStateEventId().getDocumentNumber(), 
+        InOutLineEventId eventId = new InOutLineEventId(this.getStateEventId().getDocumentNumber(), 
             lineNumber, 
             this.getStateEventId().getVersion());
-        return stateEventId;
+        return eventId;
     }
 
     protected void throwOnInconsistentEventIds(InOutLineStateEvent e)
@@ -474,15 +474,15 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
     }
 
     public InOutLineStateEvent.InOutLineStateCreated newInOutLineStateCreated(String lineNumber) {
-        return new AbstractInOutLineStateEvent.SimpleInOutLineStateCreated(newInOutLineStateEventId(lineNumber));
+        return new AbstractInOutLineStateEvent.SimpleInOutLineStateCreated(newInOutLineEventId(lineNumber));
     }
 
     public InOutLineStateEvent.InOutLineStateMergePatched newInOutLineStateMergePatched(String lineNumber) {
-        return new AbstractInOutLineStateEvent.SimpleInOutLineStateMergePatched(newInOutLineStateEventId(lineNumber));
+        return new AbstractInOutLineStateEvent.SimpleInOutLineStateMergePatched(newInOutLineEventId(lineNumber));
     }
 
     public InOutLineStateEvent.InOutLineStateRemoved newInOutLineStateRemoved(String lineNumber) {
-        return new AbstractInOutLineStateEvent.SimpleInOutLineStateRemoved(newInOutLineStateEventId(lineNumber));
+        return new AbstractInOutLineStateEvent.SimpleInOutLineStateRemoved(newInOutLineEventId(lineNumber));
     }
 
 
@@ -492,18 +492,18 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
     public static abstract class AbstractInOutStateCreated extends AbstractInOutStateEvent implements InOutStateEvent.InOutStateCreated, Saveable
     {
         public AbstractInOutStateCreated() {
-            this(new InOutStateEventId());
+            this(new InOutEventId());
         }
 
-        public AbstractInOutStateCreated(InOutStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractInOutStateCreated(InOutEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
             return StateEventType.CREATED;
         }
 
-        private Map<InOutLineStateEventId, InOutLineStateEvent.InOutLineStateCreated> inOutLineEvents = new HashMap<InOutLineStateEventId, InOutLineStateEvent.InOutLineStateCreated>();
+        private Map<InOutLineEventId, InOutLineStateEvent.InOutLineStateCreated> inOutLineEvents = new HashMap<InOutLineEventId, InOutLineStateEvent.InOutLineStateCreated>();
         
         private Iterable<InOutLineStateEvent.InOutLineStateCreated> readOnlyInOutLineEvents;
 
@@ -518,7 +518,7 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
                 if (readOnlyInOutLineEvents != null) { return readOnlyInOutLineEvents; }
                 InOutLineStateEventDao eventDao = getInOutLineStateEventDao();
                 List<InOutLineStateEvent.InOutLineStateCreated> eL = new ArrayList<InOutLineStateEvent.InOutLineStateCreated>();
-                for (InOutLineStateEvent e : eventDao.findByInOutStateEventId(this.getStateEventId()))
+                for (InOutLineStateEvent e : eventDao.findByInOutEventId(this.getStateEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((InOutLineStateEvent.InOutLineStateCreated)e);
@@ -557,11 +557,11 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
     public static abstract class AbstractInOutStateMergePatched extends AbstractInOutStateEvent implements InOutStateEvent.InOutStateMergePatched, Saveable
     {
         public AbstractInOutStateMergePatched() {
-            this(new InOutStateEventId());
+            this(new InOutEventId());
         }
 
-        public AbstractInOutStateMergePatched(InOutStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractInOutStateMergePatched(InOutEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -878,7 +878,7 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
             this.isPropertyActiveRemoved = removed;
         }
 
-        private Map<InOutLineStateEventId, InOutLineStateEvent> inOutLineEvents = new HashMap<InOutLineStateEventId, InOutLineStateEvent>();
+        private Map<InOutLineEventId, InOutLineStateEvent> inOutLineEvents = new HashMap<InOutLineEventId, InOutLineStateEvent>();
         
         private Iterable<InOutLineStateEvent> readOnlyInOutLineEvents;
 
@@ -893,7 +893,7 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
                 if (readOnlyInOutLineEvents != null) { return readOnlyInOutLineEvents; }
                 InOutLineStateEventDao eventDao = getInOutLineStateEventDao();
                 List<InOutLineStateEvent> eL = new ArrayList<InOutLineStateEvent>();
-                for (InOutLineStateEvent e : eventDao.findByInOutStateEventId(this.getStateEventId()))
+                for (InOutLineStateEvent e : eventDao.findByInOutEventId(this.getStateEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((InOutLineStateEvent)e);
@@ -934,8 +934,8 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
         public SimpleInOutStateCreated() {
         }
 
-        public SimpleInOutStateCreated(InOutStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleInOutStateCreated(InOutEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -944,8 +944,8 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
         public SimpleInOutStateMergePatched() {
         }
 
-        public SimpleInOutStateMergePatched(InOutStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleInOutStateMergePatched(InOutEventId eventId) {
+            super(eventId);
         }
     }
 

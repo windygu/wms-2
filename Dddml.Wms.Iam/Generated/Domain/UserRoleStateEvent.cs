@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.User
 	public abstract class UserRoleStateEventBase : IUserRoleStateEvent
 	{
 
-		public virtual UserRoleStateEventId StateEventId { get; set; }
+		public virtual UserRoleEventId StateEventId { get; set; }
 
         public virtual string RoleId
         {
@@ -33,7 +33,7 @@ namespace Dddml.Wms.Domain.User
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		UserRoleStateEventId IGlobalIdentity<UserRoleStateEventId>.GlobalId {
+		UserRoleEventId IGlobalIdentity<UserRoleEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -79,7 +79,7 @@ namespace Dddml.Wms.Domain.User
         {
         }
 
-        protected UserRoleStateEventBase(UserRoleStateEventId stateEventId)
+        protected UserRoleStateEventBase(UserRoleEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -96,11 +96,11 @@ namespace Dddml.Wms.Domain.User
 
 	public class UserRoleStateCreated : UserRoleStateEventBase, IUserRoleStateCreated
 	{
-		public UserRoleStateCreated () : this(new UserRoleStateEventId())
+		public UserRoleStateCreated () : this(new UserRoleEventId())
 		{
 		}
 
-		public UserRoleStateCreated (UserRoleStateEventId stateEventId) : base(stateEventId)
+		public UserRoleStateCreated (UserRoleEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -122,7 +122,7 @@ namespace Dddml.Wms.Domain.User
 		{
 		}
 
-		public UserRoleStateMergePatched (UserRoleStateEventId stateEventId) : base(stateEventId)
+		public UserRoleStateMergePatched (UserRoleEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -141,7 +141,7 @@ namespace Dddml.Wms.Domain.User
 		{
 		}
 
-		public UserRoleStateRemoved (UserRoleStateEventId stateEventId) : base(stateEventId)
+		public UserRoleStateRemoved (UserRoleEventId stateEventId) : base(stateEventId)
 		{
 		}
 

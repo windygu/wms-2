@@ -17,7 +17,7 @@ public class HibernateInventoryItemEventStore extends AbstractHibernateEventStor
     @Override
     protected Serializable getEventId(EventStoreAggregateId eventStoreAggregateId, long version)
     {
-        return new InventoryItemStateEventId((InventoryItemId) eventStoreAggregateId.getId(), version);
+        return new InventoryItemEventId((InventoryItemId) eventStoreAggregateId.getId(), version);
     }
 
     @Override

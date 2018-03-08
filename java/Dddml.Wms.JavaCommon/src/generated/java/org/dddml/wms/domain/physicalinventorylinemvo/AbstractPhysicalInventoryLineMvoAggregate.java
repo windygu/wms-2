@@ -57,7 +57,7 @@ public abstract class AbstractPhysicalInventoryLineMvoAggregate extends Abstract
     }
 
     protected PhysicalInventoryLineMvoStateEvent map(PhysicalInventoryLineMvoCommand.CreatePhysicalInventoryLineMvo c) {
-        PhysicalInventoryLineMvoStateEventId stateEventId = new PhysicalInventoryLineMvoStateEventId(c.getPhysicalInventoryLineId(), c.getPhysicalInventoryVersion());
+        PhysicalInventoryLineMvoEventId stateEventId = new PhysicalInventoryLineMvoEventId(c.getPhysicalInventoryLineId(), c.getPhysicalInventoryVersion());
         PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateCreated e = newPhysicalInventoryLineMvoStateCreated(stateEventId);
         e.setBookQuantity(c.getBookQuantity());
         e.setCountedQuantity(c.getCountedQuantity());
@@ -91,7 +91,7 @@ public abstract class AbstractPhysicalInventoryLineMvoAggregate extends Abstract
     }
 
     protected PhysicalInventoryLineMvoStateEvent map(PhysicalInventoryLineMvoCommand.MergePatchPhysicalInventoryLineMvo c) {
-        PhysicalInventoryLineMvoStateEventId stateEventId = new PhysicalInventoryLineMvoStateEventId(c.getPhysicalInventoryLineId(), c.getPhysicalInventoryVersion());
+        PhysicalInventoryLineMvoEventId stateEventId = new PhysicalInventoryLineMvoEventId(c.getPhysicalInventoryLineId(), c.getPhysicalInventoryVersion());
         PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateMergePatched e = newPhysicalInventoryLineMvoStateMergePatched(stateEventId);
         e.setBookQuantity(c.getBookQuantity());
         e.setCountedQuantity(c.getCountedQuantity());
@@ -150,7 +150,7 @@ public abstract class AbstractPhysicalInventoryLineMvoAggregate extends Abstract
     }
 
     protected PhysicalInventoryLineMvoStateEvent map(PhysicalInventoryLineMvoCommand.DeletePhysicalInventoryLineMvo c) {
-        PhysicalInventoryLineMvoStateEventId stateEventId = new PhysicalInventoryLineMvoStateEventId(c.getPhysicalInventoryLineId(), c.getPhysicalInventoryVersion());
+        PhysicalInventoryLineMvoEventId stateEventId = new PhysicalInventoryLineMvoEventId(c.getPhysicalInventoryLineId(), c.getPhysicalInventoryVersion());
         PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateDeleted e = newPhysicalInventoryLineMvoStateDeleted(stateEventId);
         ((AbstractPhysicalInventoryLineMvoStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
@@ -162,7 +162,7 @@ public abstract class AbstractPhysicalInventoryLineMvoAggregate extends Abstract
     ////////////////////////
 
     protected PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateCreated newPhysicalInventoryLineMvoStateCreated(Long version, String commandId, String requesterId) {
-        PhysicalInventoryLineMvoStateEventId stateEventId = new PhysicalInventoryLineMvoStateEventId(this.state.getPhysicalInventoryLineId(), version);
+        PhysicalInventoryLineMvoEventId stateEventId = new PhysicalInventoryLineMvoEventId(this.state.getPhysicalInventoryLineId(), version);
         PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateCreated e = newPhysicalInventoryLineMvoStateCreated(stateEventId);
         ((AbstractPhysicalInventoryLineMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -171,7 +171,7 @@ public abstract class AbstractPhysicalInventoryLineMvoAggregate extends Abstract
     }
 
     protected PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateMergePatched newPhysicalInventoryLineMvoStateMergePatched(Long version, String commandId, String requesterId) {
-        PhysicalInventoryLineMvoStateEventId stateEventId = new PhysicalInventoryLineMvoStateEventId(this.state.getPhysicalInventoryLineId(), version);
+        PhysicalInventoryLineMvoEventId stateEventId = new PhysicalInventoryLineMvoEventId(this.state.getPhysicalInventoryLineId(), version);
         PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateMergePatched e = newPhysicalInventoryLineMvoStateMergePatched(stateEventId);
         ((AbstractPhysicalInventoryLineMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -180,7 +180,7 @@ public abstract class AbstractPhysicalInventoryLineMvoAggregate extends Abstract
     }
 
     protected PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateDeleted newPhysicalInventoryLineMvoStateDeleted(Long version, String commandId, String requesterId) {
-        PhysicalInventoryLineMvoStateEventId stateEventId = new PhysicalInventoryLineMvoStateEventId(this.state.getPhysicalInventoryLineId(), version);
+        PhysicalInventoryLineMvoEventId stateEventId = new PhysicalInventoryLineMvoEventId(this.state.getPhysicalInventoryLineId(), version);
         PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateDeleted e = newPhysicalInventoryLineMvoStateDeleted(stateEventId);
         ((AbstractPhysicalInventoryLineMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -188,15 +188,15 @@ public abstract class AbstractPhysicalInventoryLineMvoAggregate extends Abstract
         return e;
     }
 
-    protected PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateCreated newPhysicalInventoryLineMvoStateCreated(PhysicalInventoryLineMvoStateEventId stateEventId) {
+    protected PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateCreated newPhysicalInventoryLineMvoStateCreated(PhysicalInventoryLineMvoEventId stateEventId) {
         return new AbstractPhysicalInventoryLineMvoStateEvent.SimplePhysicalInventoryLineMvoStateCreated(stateEventId);
     }
 
-    protected PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateMergePatched newPhysicalInventoryLineMvoStateMergePatched(PhysicalInventoryLineMvoStateEventId stateEventId) {
+    protected PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateMergePatched newPhysicalInventoryLineMvoStateMergePatched(PhysicalInventoryLineMvoEventId stateEventId) {
         return new AbstractPhysicalInventoryLineMvoStateEvent.SimplePhysicalInventoryLineMvoStateMergePatched(stateEventId);
     }
 
-    protected PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateDeleted newPhysicalInventoryLineMvoStateDeleted(PhysicalInventoryLineMvoStateEventId stateEventId)
+    protected PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateDeleted newPhysicalInventoryLineMvoStateDeleted(PhysicalInventoryLineMvoEventId stateEventId)
     {
         return new AbstractPhysicalInventoryLineMvoStateEvent.SimplePhysicalInventoryLineMvoStateDeleted(stateEventId);
     }

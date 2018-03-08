@@ -39,12 +39,12 @@ namespace Dddml.Wms.Domain.InOut.NHibernate
         }
 
         [Transaction(ReadOnly = true)]
-        public IEnumerable<IInOutLineStateEvent> FindByInOutStateEventId(InOutStateEventId inOutStateEventId)
+        public IEnumerable<IInOutLineStateEvent> FindByInOutEventId(InOutEventId inOutEventId)
         {
             var criteria = CurrentSession.CreateCriteria<InOutLineStateEventBase>();
             var partIdCondition = Restrictions.Conjunction()
-                .Add(Restrictions.Eq("StateEventId.InOutDocumentNumber", inOutStateEventId.DocumentNumber))
-                .Add(Restrictions.Eq("StateEventId.InOutVersion", inOutStateEventId.Version))
+                .Add(Restrictions.Eq("StateEventId.InOutDocumentNumber", inOutEventId.DocumentNumber))
+                .Add(Restrictions.Eq("StateEventId.InOutVersion", inOutEventId.Version))
                 ;
 
             return criteria.Add(partIdCondition).List<InOutLineStateEventBase>();

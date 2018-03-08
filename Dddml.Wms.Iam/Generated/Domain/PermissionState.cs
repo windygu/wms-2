@@ -273,7 +273,7 @@ namespace Dddml.Wms.Domain.Permission
             id.Append("[").Append("Permission|");
 
             var stateEntityId = this.PermissionId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.PermissionId; // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+            var eventEntityId = stateEvent.StateEventId.PermissionId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);

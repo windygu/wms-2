@@ -9,14 +9,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractShipmentItemMvoStateEvent extends AbstractStateEvent implements ShipmentItemMvoStateEvent 
 {
-    private ShipmentItemMvoStateEventId stateEventId;
+    private ShipmentItemMvoEventId stateEventId;
 
-    public ShipmentItemMvoStateEventId getStateEventId() {
+    public ShipmentItemMvoEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(ShipmentItemMvoStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(ShipmentItemMvoEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public ShipmentItemId getShipmentItemId() {
@@ -515,8 +515,8 @@ public abstract class AbstractShipmentItemMvoStateEvent extends AbstractStateEve
     protected AbstractShipmentItemMvoStateEvent() {
     }
 
-    protected AbstractShipmentItemMvoStateEvent(ShipmentItemMvoStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractShipmentItemMvoStateEvent(ShipmentItemMvoEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -526,11 +526,11 @@ public abstract class AbstractShipmentItemMvoStateEvent extends AbstractStateEve
     public static abstract class AbstractShipmentItemMvoStateCreated extends AbstractShipmentItemMvoStateEvent implements ShipmentItemMvoStateEvent.ShipmentItemMvoStateCreated
     {
         public AbstractShipmentItemMvoStateCreated() {
-            this(new ShipmentItemMvoStateEventId());
+            this(new ShipmentItemMvoEventId());
         }
 
-        public AbstractShipmentItemMvoStateCreated(ShipmentItemMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractShipmentItemMvoStateCreated(ShipmentItemMvoEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -543,11 +543,11 @@ public abstract class AbstractShipmentItemMvoStateEvent extends AbstractStateEve
     public static abstract class AbstractShipmentItemMvoStateMergePatched extends AbstractShipmentItemMvoStateEvent implements ShipmentItemMvoStateEvent.ShipmentItemMvoStateMergePatched
     {
         public AbstractShipmentItemMvoStateMergePatched() {
-            this(new ShipmentItemMvoStateEventId());
+            this(new ShipmentItemMvoEventId());
         }
 
-        public AbstractShipmentItemMvoStateMergePatched(ShipmentItemMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractShipmentItemMvoStateMergePatched(ShipmentItemMvoEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -932,8 +932,8 @@ public abstract class AbstractShipmentItemMvoStateEvent extends AbstractStateEve
         public SimpleShipmentItemMvoStateCreated() {
         }
 
-        public SimpleShipmentItemMvoStateCreated(ShipmentItemMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleShipmentItemMvoStateCreated(ShipmentItemMvoEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -942,8 +942,8 @@ public abstract class AbstractShipmentItemMvoStateEvent extends AbstractStateEve
         public SimpleShipmentItemMvoStateMergePatched() {
         }
 
-        public SimpleShipmentItemMvoStateMergePatched(ShipmentItemMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleShipmentItemMvoStateMergePatched(ShipmentItemMvoEventId eventId) {
+            super(eventId);
         }
     }
 

@@ -21,7 +21,7 @@ namespace Dddml.Wms.Domain.RolePermission.NHibernate
 	{
 		public override object GetEventId(IEventStoreAggregateId eventStoreAggregateId, long version)
 		{
-			return new RolePermissionStateEventId((RolePermissionId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
+			return new RolePermissionEventId((RolePermissionId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
 		public override Type GetSupportedStateEventType()

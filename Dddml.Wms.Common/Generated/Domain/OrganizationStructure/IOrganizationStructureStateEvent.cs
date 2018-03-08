@@ -11,9 +11,9 @@ using Dddml.Wms.Domain.OrganizationStructure;
 
 namespace Dddml.Wms.Domain.OrganizationStructure
 {
-	public interface IOrganizationStructureStateEvent : IEvent, IStateEventDto, IGlobalIdentity<OrganizationStructureStateEventId>, ICreated<string>
+	public interface IOrganizationStructureStateEvent : IEvent, IStateEventDto, IGlobalIdentity<OrganizationStructureEventId>, ICreated<string>
 	{
-		OrganizationStructureStateEventId StateEventId { get; }
+		OrganizationStructureEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

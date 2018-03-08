@@ -16,7 +16,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 	public abstract class InventoryItemEntryMvoStateEventBase : IInventoryItemEntryMvoStateEvent
 	{
 
-		public virtual InventoryItemEntryMvoStateEventId StateEventId { get; set; }
+		public virtual InventoryItemEntryMvoEventId StateEventId { get; set; }
 
         public virtual InventoryItemEntryId InventoryItemEntryId
         {
@@ -64,7 +64,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		InventoryItemEntryMvoStateEventId IGlobalIdentity<InventoryItemEntryMvoStateEventId>.GlobalId {
+		InventoryItemEntryMvoEventId IGlobalIdentity<InventoryItemEntryMvoEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -108,7 +108,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
         {
         }
 
-        protected InventoryItemEntryMvoStateEventBase(InventoryItemEntryMvoStateEventId stateEventId)
+        protected InventoryItemEntryMvoStateEventBase(InventoryItemEntryMvoEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -125,11 +125,11 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
 	public class InventoryItemEntryMvoStateCreated : InventoryItemEntryMvoStateEventBase, IInventoryItemEntryMvoStateCreated
 	{
-		public InventoryItemEntryMvoStateCreated () : this(new InventoryItemEntryMvoStateEventId())
+		public InventoryItemEntryMvoStateCreated () : this(new InventoryItemEntryMvoEventId())
 		{
 		}
 
-		public InventoryItemEntryMvoStateCreated (InventoryItemEntryMvoStateEventId stateEventId) : base(stateEventId)
+		public InventoryItemEntryMvoStateCreated (InventoryItemEntryMvoEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -181,7 +181,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 		{
 		}
 
-		public InventoryItemEntryMvoStateMergePatched (InventoryItemEntryMvoStateEventId stateEventId) : base(stateEventId)
+		public InventoryItemEntryMvoStateMergePatched (InventoryItemEntryMvoEventId stateEventId) : base(stateEventId)
 		{
 		}
 

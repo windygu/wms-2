@@ -8,7 +8,7 @@
   
   <class name="AbstractLotStateEvent" table="LotStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="stateEventId" class="org.dddml.wms.domain.lot.LotStateEventId">
+	<composite-id name="stateEventId" class="org.dddml.wms.domain.lot.LotEventId">
 		<key-property name="lotId" ><column name="LotId" sql-type="VARCHAR(20)" /></key-property>
 		<key-property name="version" ></key-property>
 	</composite-id>

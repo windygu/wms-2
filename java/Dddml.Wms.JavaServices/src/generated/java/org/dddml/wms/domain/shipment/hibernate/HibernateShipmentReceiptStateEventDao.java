@@ -34,12 +34,12 @@ public class HibernateShipmentReceiptStateEventDao implements ShipmentReceiptSta
 
     @Transactional(readOnly = true)
     @Override
-    public Iterable<ShipmentReceiptStateEvent> findByShipmentStateEventId(ShipmentStateEventId shipmentStateEventId)
+    public Iterable<ShipmentReceiptStateEvent> findByShipmentEventId(ShipmentEventId shipmentEventId)
     {
         Criteria criteria = getCurrentSession().createCriteria(AbstractShipmentReceiptStateEvent.class);
         Junction partIdCondition = Restrictions.conjunction()
-            .add(Restrictions.eq("stateEventId.shipmentId", shipmentStateEventId.getShipmentId()))
-            .add(Restrictions.eq("stateEventId.shipmentVersion", shipmentStateEventId.getVersion()))
+            .add(Restrictions.eq("stateEventId.shipmentId", shipmentEventId.getShipmentId()))
+            .add(Restrictions.eq("stateEventId.shipmentVersion", shipmentEventId.getVersion()))
             ;
         return criteria.add(partIdCondition).list();
     }

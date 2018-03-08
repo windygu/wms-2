@@ -16,13 +16,13 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 	public abstract class MovementConfirmationLineMvoStateEventDtoBase : IStateEventDto, IMovementConfirmationLineMvoStateCreated, IMovementConfirmationLineMvoStateMergePatched, IMovementConfirmationLineMvoStateDeleted
 	{
 
-        private MovementConfirmationLineMvoStateEventIdDto _stateEventId;
+        private MovementConfirmationLineMvoEventIdDto _stateEventId;
 
-		protected internal virtual MovementConfirmationLineMvoStateEventIdDto StateEventId 
+		protected internal virtual MovementConfirmationLineMvoEventIdDto StateEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new MovementConfirmationLineMvoStateEventIdDto(); }
+                if (_stateEventId == null) { _stateEventId = new MovementConfirmationLineMvoEventIdDto(); }
                 return _stateEventId;
             }
             set
@@ -97,10 +97,10 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		MovementConfirmationLineMvoStateEventId IGlobalIdentity<MovementConfirmationLineMvoStateEventId>.GlobalId {
+		MovementConfirmationLineMvoEventId IGlobalIdentity<MovementConfirmationLineMvoEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToMovementConfirmationLineMvoStateEventId();
+				return this.StateEventId.ToMovementConfirmationLineMvoEventId();
 			}
 		}
 
@@ -574,16 +574,16 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 		}
 
 
-        MovementConfirmationLineMvoStateEventId IMovementConfirmationLineMvoStateEvent.StateEventId
+        MovementConfirmationLineMvoEventId IMovementConfirmationLineMvoStateEvent.StateEventId
         {
-            get { return this.StateEventId.ToMovementConfirmationLineMvoStateEventId(); }
+            get { return this.StateEventId.ToMovementConfirmationLineMvoEventId(); }
         }
 
         protected MovementConfirmationLineMvoStateEventDtoBase()
         {
         }
 
-        protected MovementConfirmationLineMvoStateEventDtoBase(MovementConfirmationLineMvoStateEventIdDto stateEventId)
+        protected MovementConfirmationLineMvoStateEventDtoBase(MovementConfirmationLineMvoEventIdDto stateEventId)
         {
             this.StateEventId = stateEventId;
         }

@@ -94,7 +94,7 @@ namespace Dddml.Wms.Domain.StatusItem
 
         protected virtual IStatusItemStateCreated Map(ICreateStatusItem c)
         {
-			var stateEventId = new StatusItemStateEventId(c.StatusId, c.Version);
+			var stateEventId = new StatusItemEventId(c.StatusId, c.Version);
             IStatusItemStateCreated e = NewStatusItemStateCreated(stateEventId);
 		
             e.StatusTypeId = c.StatusTypeId;
@@ -115,7 +115,7 @@ namespace Dddml.Wms.Domain.StatusItem
 
         protected virtual IStatusItemStateMergePatched Map(IMergePatchStatusItem c)
         {
-			var stateEventId = new StatusItemStateEventId(c.StatusId, c.Version);
+			var stateEventId = new StatusItemEventId(c.StatusId, c.Version);
             IStatusItemStateMergePatched e = NewStatusItemStateMergePatched(stateEventId);
 
             e.StatusTypeId = c.StatusTypeId;
@@ -157,7 +157,7 @@ namespace Dddml.Wms.Domain.StatusItem
 
         protected StatusItemStateCreated NewStatusItemStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new StatusItemStateEventId(_state.StatusId, version);
+            var stateEventId = new StatusItemEventId(_state.StatusId, version);
             var e = NewStatusItemStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -170,7 +170,7 @@ namespace Dddml.Wms.Domain.StatusItem
 
         protected StatusItemStateMergePatched NewStatusItemStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new StatusItemStateEventId(_state.StatusId, version);
+            var stateEventId = new StatusItemEventId(_state.StatusId, version);
             var e = NewStatusItemStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -184,12 +184,12 @@ namespace Dddml.Wms.Domain.StatusItem
 
 ////////////////////////
 
-		private StatusItemStateCreated NewStatusItemStateCreated(StatusItemStateEventId stateEventId)
+		private StatusItemStateCreated NewStatusItemStateCreated(StatusItemEventId stateEventId)
 		{
 			return new StatusItemStateCreated(stateEventId);			
 		}
 
-        private StatusItemStateMergePatched NewStatusItemStateMergePatched(StatusItemStateEventId stateEventId)
+        private StatusItemStateMergePatched NewStatusItemStateMergePatched(StatusItemEventId stateEventId)
 		{
 			return new StatusItemStateMergePatched(stateEventId);
 		}

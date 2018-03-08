@@ -49,7 +49,7 @@ public abstract class AbstractStatusItemAggregate extends AbstractAggregate impl
     }
 
     protected StatusItemStateEvent map(StatusItemCommand.CreateStatusItem c) {
-        StatusItemStateEventId stateEventId = new StatusItemStateEventId(c.getStatusId(), c.getVersion());
+        StatusItemEventId stateEventId = new StatusItemEventId(c.getStatusId(), c.getVersion());
         StatusItemStateEvent.StatusItemStateCreated e = newStatusItemStateCreated(stateEventId);
         e.setStatusTypeId(c.getStatusTypeId());
         e.setStatusCode(c.getStatusCode());
@@ -63,7 +63,7 @@ public abstract class AbstractStatusItemAggregate extends AbstractAggregate impl
     }
 
     protected StatusItemStateEvent map(StatusItemCommand.MergePatchStatusItem c) {
-        StatusItemStateEventId stateEventId = new StatusItemStateEventId(c.getStatusId(), c.getVersion());
+        StatusItemEventId stateEventId = new StatusItemEventId(c.getStatusId(), c.getVersion());
         StatusItemStateEvent.StatusItemStateMergePatched e = newStatusItemStateMergePatched(stateEventId);
         e.setStatusTypeId(c.getStatusTypeId());
         e.setStatusCode(c.getStatusCode());
@@ -85,7 +85,7 @@ public abstract class AbstractStatusItemAggregate extends AbstractAggregate impl
     ////////////////////////
 
     protected StatusItemStateEvent.StatusItemStateCreated newStatusItemStateCreated(Long version, String commandId, String requesterId) {
-        StatusItemStateEventId stateEventId = new StatusItemStateEventId(this.state.getStatusId(), version);
+        StatusItemEventId stateEventId = new StatusItemEventId(this.state.getStatusId(), version);
         StatusItemStateEvent.StatusItemStateCreated e = newStatusItemStateCreated(stateEventId);
         ((AbstractStatusItemStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -94,7 +94,7 @@ public abstract class AbstractStatusItemAggregate extends AbstractAggregate impl
     }
 
     protected StatusItemStateEvent.StatusItemStateMergePatched newStatusItemStateMergePatched(Long version, String commandId, String requesterId) {
-        StatusItemStateEventId stateEventId = new StatusItemStateEventId(this.state.getStatusId(), version);
+        StatusItemEventId stateEventId = new StatusItemEventId(this.state.getStatusId(), version);
         StatusItemStateEvent.StatusItemStateMergePatched e = newStatusItemStateMergePatched(stateEventId);
         ((AbstractStatusItemStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -102,11 +102,11 @@ public abstract class AbstractStatusItemAggregate extends AbstractAggregate impl
         return e;
     }
 
-    protected StatusItemStateEvent.StatusItemStateCreated newStatusItemStateCreated(StatusItemStateEventId stateEventId) {
+    protected StatusItemStateEvent.StatusItemStateCreated newStatusItemStateCreated(StatusItemEventId stateEventId) {
         return new AbstractStatusItemStateEvent.SimpleStatusItemStateCreated(stateEventId);
     }
 
-    protected StatusItemStateEvent.StatusItemStateMergePatched newStatusItemStateMergePatched(StatusItemStateEventId stateEventId) {
+    protected StatusItemStateEvent.StatusItemStateMergePatched newStatusItemStateMergePatched(StatusItemEventId stateEventId) {
         return new AbstractStatusItemStateEvent.SimpleStatusItemStateMergePatched(stateEventId);
     }
 

@@ -11,9 +11,9 @@ using Dddml.Wms.Domain.StatusItem;
 
 namespace Dddml.Wms.Domain.StatusItem
 {
-	public interface IStatusItemStateEvent : IEvent, IStateEventDto, IGlobalIdentity<StatusItemStateEventId>, ICreated<string>
+	public interface IStatusItemStateEvent : IEvent, IStateEventDto, IGlobalIdentity<StatusItemEventId>, ICreated<string>
 	{
-		StatusItemStateEventId StateEventId { get; }
+		StatusItemEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

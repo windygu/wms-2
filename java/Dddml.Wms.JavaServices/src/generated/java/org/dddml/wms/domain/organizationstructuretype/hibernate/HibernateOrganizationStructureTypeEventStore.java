@@ -16,7 +16,7 @@ public class HibernateOrganizationStructureTypeEventStore extends AbstractHibern
     @Override
     protected Serializable getEventId(EventStoreAggregateId eventStoreAggregateId, long version)
     {
-        return new OrganizationStructureTypeStateEventId((String) eventStoreAggregateId.getId(), version);
+        return new OrganizationStructureTypeEventId((String) eventStoreAggregateId.getId(), version);
     }
 
     @Override

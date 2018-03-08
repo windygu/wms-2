@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 	{
 		void Save(IMovementConfirmationLineStateEvent e);
 
-        IEnumerable<IMovementConfirmationLineStateEvent> FindByMovementConfirmationStateEventId(MovementConfirmationStateEventId movementConfirmationStateEventId);
+        IEnumerable<IMovementConfirmationLineStateEvent> FindByMovementConfirmationEventId(MovementConfirmationEventId movementConfirmationEventId);
 
 	}
 

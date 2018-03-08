@@ -16,13 +16,13 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 	public abstract class InventoryItemEntryMvoStateEventDtoBase : IStateEventDto, IInventoryItemEntryMvoStateCreated, IInventoryItemEntryMvoStateMergePatched
 	{
 
-        private InventoryItemEntryMvoStateEventIdDto _stateEventId;
+        private InventoryItemEntryMvoEventIdDto _stateEventId;
 
-		protected internal virtual InventoryItemEntryMvoStateEventIdDto StateEventId 
+		protected internal virtual InventoryItemEntryMvoEventIdDto StateEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new InventoryItemEntryMvoStateEventIdDto(); }
+                if (_stateEventId == null) { _stateEventId = new InventoryItemEntryMvoEventIdDto(); }
                 return _stateEventId;
             }
             set
@@ -97,10 +97,10 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		InventoryItemEntryMvoStateEventId IGlobalIdentity<InventoryItemEntryMvoStateEventId>.GlobalId {
+		InventoryItemEntryMvoEventId IGlobalIdentity<InventoryItemEntryMvoEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToInventoryItemEntryMvoStateEventId();
+				return this.StateEventId.ToInventoryItemEntryMvoEventId();
 			}
 		}
 
@@ -441,16 +441,16 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 		}
 
 
-        InventoryItemEntryMvoStateEventId IInventoryItemEntryMvoStateEvent.StateEventId
+        InventoryItemEntryMvoEventId IInventoryItemEntryMvoStateEvent.StateEventId
         {
-            get { return this.StateEventId.ToInventoryItemEntryMvoStateEventId(); }
+            get { return this.StateEventId.ToInventoryItemEntryMvoEventId(); }
         }
 
         protected InventoryItemEntryMvoStateEventDtoBase()
         {
         }
 
-        protected InventoryItemEntryMvoStateEventDtoBase(InventoryItemEntryMvoStateEventIdDto stateEventId)
+        protected InventoryItemEntryMvoStateEventDtoBase(InventoryItemEntryMvoEventIdDto stateEventId)
         {
             this.StateEventId = stateEventId;
         }

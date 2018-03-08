@@ -17,7 +17,7 @@ public class HibernateMovementConfirmationEventStore extends AbstractHibernateEv
     @Override
     protected Serializable getEventId(EventStoreAggregateId eventStoreAggregateId, long version)
     {
-        return new MovementConfirmationStateEventId((String) eventStoreAggregateId.getId(), version);
+        return new MovementConfirmationEventId((String) eventStoreAggregateId.getId(), version);
     }
 
     @Override

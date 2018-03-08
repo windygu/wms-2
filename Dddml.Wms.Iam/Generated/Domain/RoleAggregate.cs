@@ -104,7 +104,7 @@ namespace Dddml.Wms.Domain.Role
 
         protected virtual IRoleStateCreated Map(ICreateRole c)
         {
-			var stateEventId = new RoleStateEventId(c.RoleId, c.Version);
+			var stateEventId = new RoleEventId(c.RoleId, c.Version);
             IRoleStateCreated e = NewRoleStateCreated(stateEventId);
 		
             e.Name = c.Name;
@@ -123,7 +123,7 @@ namespace Dddml.Wms.Domain.Role
 
         protected virtual IRoleStateMergePatched Map(IMergePatchRole c)
         {
-			var stateEventId = new RoleStateEventId(c.RoleId, c.Version);
+			var stateEventId = new RoleEventId(c.RoleId, c.Version);
             IRoleStateMergePatched e = NewRoleStateMergePatched(stateEventId);
 
             e.Name = c.Name;
@@ -147,7 +147,7 @@ namespace Dddml.Wms.Domain.Role
 
         protected virtual IRoleStateDeleted Map(IDeleteRole c)
         {
-			var stateEventId = new RoleStateEventId(c.RoleId, c.Version);
+			var stateEventId = new RoleEventId(c.RoleId, c.Version);
             IRoleStateDeleted e = NewRoleStateDeleted(stateEventId);
 			
             e.CommandId = c.CommandId;
@@ -176,7 +176,7 @@ namespace Dddml.Wms.Domain.Role
 
         protected RoleStateCreated NewRoleStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new RoleStateEventId(_state.RoleId, version);
+            var stateEventId = new RoleEventId(_state.RoleId, version);
             var e = NewRoleStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -189,7 +189,7 @@ namespace Dddml.Wms.Domain.Role
 
         protected RoleStateMergePatched NewRoleStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new RoleStateEventId(_state.RoleId, version);
+            var stateEventId = new RoleEventId(_state.RoleId, version);
             var e = NewRoleStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -203,7 +203,7 @@ namespace Dddml.Wms.Domain.Role
 
         protected RoleStateDeleted NewRoleStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new RoleStateEventId(_state.RoleId, version);
+            var stateEventId = new RoleEventId(_state.RoleId, version);
             var e = NewRoleStateDeleted(stateEventId);
 
             e.CommandId = commandId;
@@ -216,17 +216,17 @@ namespace Dddml.Wms.Domain.Role
 
 ////////////////////////
 
-		private RoleStateCreated NewRoleStateCreated(RoleStateEventId stateEventId)
+		private RoleStateCreated NewRoleStateCreated(RoleEventId stateEventId)
 		{
 			return new RoleStateCreated(stateEventId);			
 		}
 
-        private RoleStateMergePatched NewRoleStateMergePatched(RoleStateEventId stateEventId)
+        private RoleStateMergePatched NewRoleStateMergePatched(RoleEventId stateEventId)
 		{
 			return new RoleStateMergePatched(stateEventId);
 		}
 
-        private RoleStateDeleted NewRoleStateDeleted(RoleStateEventId stateEventId)
+        private RoleStateDeleted NewRoleStateDeleted(RoleEventId stateEventId)
 		{
 			return new RoleStateDeleted(stateEventId);
 		}

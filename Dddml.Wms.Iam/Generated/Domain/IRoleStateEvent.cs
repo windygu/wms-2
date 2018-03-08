@@ -11,9 +11,9 @@ using Dddml.Wms.Domain.Role;
 
 namespace Dddml.Wms.Domain.Role
 {
-	public interface IRoleStateEvent : IEvent, IStateEventDto, IGlobalIdentity<RoleStateEventId>, ICreated<string>
+	public interface IRoleStateEvent : IEvent, IStateEventDto, IGlobalIdentity<RoleEventId>, ICreated<string>
 	{
-		RoleStateEventId StateEventId { get; }
+		RoleEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

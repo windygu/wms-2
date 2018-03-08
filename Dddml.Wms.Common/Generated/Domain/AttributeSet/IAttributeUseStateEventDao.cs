@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 	{
 		void Save(IAttributeUseStateEvent e);
 
-        IEnumerable<IAttributeUseStateEvent> FindByAttributeSetStateEventId(AttributeSetStateEventId attributeSetStateEventId);
+        IEnumerable<IAttributeUseStateEvent> FindByAttributeSetEventId(AttributeSetEventId attributeSetEventId);
 
 	}
 

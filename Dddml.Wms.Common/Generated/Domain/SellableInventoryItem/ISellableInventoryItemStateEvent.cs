@@ -13,9 +13,9 @@ using Dddml.Wms.Domain.InventoryPRTriggered;
 
 namespace Dddml.Wms.Domain.SellableInventoryItem
 {
-	public interface ISellableInventoryItemStateEvent : IEvent, IStateEventDto, IGlobalIdentity<SellableInventoryItemStateEventId>, ICreated<string>
+	public interface ISellableInventoryItemStateEvent : IEvent, IStateEventDto, IGlobalIdentity<SellableInventoryItemEventId>, ICreated<string>
 	{
-		SellableInventoryItemStateEventId StateEventId { get; }
+		SellableInventoryItemEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

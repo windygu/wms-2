@@ -16,13 +16,13 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 	public abstract class PhysicalInventoryLineStateEventDtoBase : IStateEventDto, IPhysicalInventoryLineStateCreated, IPhysicalInventoryLineStateMergePatched, IPhysicalInventoryLineStateRemoved
 	{
 
-        private PhysicalInventoryLineStateEventIdDto _stateEventId;
+        private PhysicalInventoryLineEventIdDto _stateEventId;
 
-		protected internal virtual PhysicalInventoryLineStateEventIdDto StateEventId 
+		protected internal virtual PhysicalInventoryLineEventIdDto StateEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new PhysicalInventoryLineStateEventIdDto(); }
+                if (_stateEventId == null) { _stateEventId = new PhysicalInventoryLineEventIdDto(); }
                 return _stateEventId;
             }
             set
@@ -55,10 +55,10 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		PhysicalInventoryLineStateEventId IGlobalIdentity<PhysicalInventoryLineStateEventId>.GlobalId {
+		PhysicalInventoryLineEventId IGlobalIdentity<PhysicalInventoryLineEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToPhysicalInventoryLineStateEventId();
+				return this.StateEventId.ToPhysicalInventoryLineEventId();
 			}
 		}
 
@@ -192,16 +192,16 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 		}
 
 
-        PhysicalInventoryLineStateEventId IPhysicalInventoryLineStateEvent.StateEventId
+        PhysicalInventoryLineEventId IPhysicalInventoryLineStateEvent.StateEventId
         {
-            get { return this.StateEventId.ToPhysicalInventoryLineStateEventId(); }
+            get { return this.StateEventId.ToPhysicalInventoryLineEventId(); }
         }
 
         protected PhysicalInventoryLineStateEventDtoBase()
         {
         }
 
-        protected PhysicalInventoryLineStateEventDtoBase(PhysicalInventoryLineStateEventIdDto stateEventId)
+        protected PhysicalInventoryLineStateEventDtoBase(PhysicalInventoryLineEventIdDto stateEventId)
         {
             this.StateEventId = stateEventId;
         }

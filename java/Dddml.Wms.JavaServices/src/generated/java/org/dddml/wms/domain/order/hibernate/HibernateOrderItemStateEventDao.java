@@ -34,12 +34,12 @@ public class HibernateOrderItemStateEventDao implements OrderItemStateEventDao
 
     @Transactional(readOnly = true)
     @Override
-    public Iterable<OrderItemStateEvent> findByOrderStateEventId(OrderStateEventId orderStateEventId)
+    public Iterable<OrderItemStateEvent> findByOrderEventId(OrderEventId orderEventId)
     {
         Criteria criteria = getCurrentSession().createCriteria(AbstractOrderItemStateEvent.class);
         Junction partIdCondition = Restrictions.conjunction()
-            .add(Restrictions.eq("stateEventId.orderId", orderStateEventId.getOrderId()))
-            .add(Restrictions.eq("stateEventId.orderVersion", orderStateEventId.getVersion()))
+            .add(Restrictions.eq("stateEventId.orderId", orderEventId.getOrderId()))
+            .add(Restrictions.eq("stateEventId.orderVersion", orderEventId.getVersion()))
             ;
         return criteria.add(partIdCondition).list();
     }

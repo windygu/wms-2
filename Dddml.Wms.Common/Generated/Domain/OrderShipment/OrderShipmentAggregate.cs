@@ -94,7 +94,7 @@ namespace Dddml.Wms.Domain.OrderShipment
 
         protected virtual IOrderShipmentStateCreated Map(ICreateOrderShipment c)
         {
-			var stateEventId = new OrderShipmentStateEventId(c.OrderShipmentId, c.Version);
+			var stateEventId = new OrderShipmentEventId(c.OrderShipmentId, c.Version);
             IOrderShipmentStateCreated e = NewOrderShipmentStateCreated(stateEventId);
 		
             e.Quantity = c.Quantity;
@@ -112,7 +112,7 @@ namespace Dddml.Wms.Domain.OrderShipment
 
         protected virtual IOrderShipmentStateMergePatched Map(IMergePatchOrderShipment c)
         {
-			var stateEventId = new OrderShipmentStateEventId(c.OrderShipmentId, c.Version);
+			var stateEventId = new OrderShipmentEventId(c.OrderShipmentId, c.Version);
             IOrderShipmentStateMergePatched e = NewOrderShipmentStateMergePatched(stateEventId);
 
             e.Quantity = c.Quantity;
@@ -148,7 +148,7 @@ namespace Dddml.Wms.Domain.OrderShipment
 
         protected OrderShipmentStateCreated NewOrderShipmentStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new OrderShipmentStateEventId(_state.OrderShipmentId, version);
+            var stateEventId = new OrderShipmentEventId(_state.OrderShipmentId, version);
             var e = NewOrderShipmentStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -161,7 +161,7 @@ namespace Dddml.Wms.Domain.OrderShipment
 
         protected OrderShipmentStateMergePatched NewOrderShipmentStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new OrderShipmentStateEventId(_state.OrderShipmentId, version);
+            var stateEventId = new OrderShipmentEventId(_state.OrderShipmentId, version);
             var e = NewOrderShipmentStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -175,12 +175,12 @@ namespace Dddml.Wms.Domain.OrderShipment
 
 ////////////////////////
 
-		private OrderShipmentStateCreated NewOrderShipmentStateCreated(OrderShipmentStateEventId stateEventId)
+		private OrderShipmentStateCreated NewOrderShipmentStateCreated(OrderShipmentEventId stateEventId)
 		{
 			return new OrderShipmentStateCreated(stateEventId);			
 		}
 
-        private OrderShipmentStateMergePatched NewOrderShipmentStateMergePatched(OrderShipmentStateEventId stateEventId)
+        private OrderShipmentStateMergePatched NewOrderShipmentStateMergePatched(OrderShipmentEventId stateEventId)
 		{
 			return new OrderShipmentStateMergePatched(stateEventId);
 		}

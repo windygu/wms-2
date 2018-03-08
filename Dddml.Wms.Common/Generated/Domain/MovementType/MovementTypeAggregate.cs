@@ -104,7 +104,7 @@ namespace Dddml.Wms.Domain.MovementType
 
         protected virtual IMovementTypeStateCreated Map(ICreateMovementType c)
         {
-			var stateEventId = new MovementTypeStateEventId(c.MovementTypeId, c.Version);
+			var stateEventId = new MovementTypeEventId(c.MovementTypeId, c.Version);
             IMovementTypeStateCreated e = NewMovementTypeStateCreated(stateEventId);
 		
             e.Description = c.Description;
@@ -122,7 +122,7 @@ namespace Dddml.Wms.Domain.MovementType
 
         protected virtual IMovementTypeStateMergePatched Map(IMergePatchMovementType c)
         {
-			var stateEventId = new MovementTypeStateEventId(c.MovementTypeId, c.Version);
+			var stateEventId = new MovementTypeEventId(c.MovementTypeId, c.Version);
             IMovementTypeStateMergePatched e = NewMovementTypeStateMergePatched(stateEventId);
 
             e.Description = c.Description;
@@ -144,7 +144,7 @@ namespace Dddml.Wms.Domain.MovementType
 
         protected virtual IMovementTypeStateDeleted Map(IDeleteMovementType c)
         {
-			var stateEventId = new MovementTypeStateEventId(c.MovementTypeId, c.Version);
+			var stateEventId = new MovementTypeEventId(c.MovementTypeId, c.Version);
             IMovementTypeStateDeleted e = NewMovementTypeStateDeleted(stateEventId);
 			
             e.CommandId = c.CommandId;
@@ -173,7 +173,7 @@ namespace Dddml.Wms.Domain.MovementType
 
         protected MovementTypeStateCreated NewMovementTypeStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new MovementTypeStateEventId(_state.MovementTypeId, version);
+            var stateEventId = new MovementTypeEventId(_state.MovementTypeId, version);
             var e = NewMovementTypeStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -186,7 +186,7 @@ namespace Dddml.Wms.Domain.MovementType
 
         protected MovementTypeStateMergePatched NewMovementTypeStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new MovementTypeStateEventId(_state.MovementTypeId, version);
+            var stateEventId = new MovementTypeEventId(_state.MovementTypeId, version);
             var e = NewMovementTypeStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -200,7 +200,7 @@ namespace Dddml.Wms.Domain.MovementType
 
         protected MovementTypeStateDeleted NewMovementTypeStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new MovementTypeStateEventId(_state.MovementTypeId, version);
+            var stateEventId = new MovementTypeEventId(_state.MovementTypeId, version);
             var e = NewMovementTypeStateDeleted(stateEventId);
 
             e.CommandId = commandId;
@@ -213,17 +213,17 @@ namespace Dddml.Wms.Domain.MovementType
 
 ////////////////////////
 
-		private MovementTypeStateCreated NewMovementTypeStateCreated(MovementTypeStateEventId stateEventId)
+		private MovementTypeStateCreated NewMovementTypeStateCreated(MovementTypeEventId stateEventId)
 		{
 			return new MovementTypeStateCreated(stateEventId);			
 		}
 
-        private MovementTypeStateMergePatched NewMovementTypeStateMergePatched(MovementTypeStateEventId stateEventId)
+        private MovementTypeStateMergePatched NewMovementTypeStateMergePatched(MovementTypeEventId stateEventId)
 		{
 			return new MovementTypeStateMergePatched(stateEventId);
 		}
 
-        private MovementTypeStateDeleted NewMovementTypeStateDeleted(MovementTypeStateEventId stateEventId)
+        private MovementTypeStateDeleted NewMovementTypeStateDeleted(MovementTypeEventId stateEventId)
 		{
 			return new MovementTypeStateDeleted(stateEventId);
 		}

@@ -11,9 +11,9 @@ using Dddml.Wms.Domain.Product;
 
 namespace Dddml.Wms.Domain.Product
 {
-	public interface IProductStateEvent : IEvent, IStateEventDto, IGlobalIdentity<ProductStateEventId>, ICreated<string>
+	public interface IProductStateEvent : IEvent, IStateEventDto, IGlobalIdentity<ProductEventId>, ICreated<string>
 	{
-		ProductStateEventId StateEventId { get; }
+		ProductEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

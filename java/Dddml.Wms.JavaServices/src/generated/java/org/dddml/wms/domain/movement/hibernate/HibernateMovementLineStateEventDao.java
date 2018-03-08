@@ -35,12 +35,12 @@ public class HibernateMovementLineStateEventDao implements MovementLineStateEven
 
     @Transactional(readOnly = true)
     @Override
-    public Iterable<MovementLineStateEvent> findByMovementStateEventId(MovementStateEventId movementStateEventId)
+    public Iterable<MovementLineStateEvent> findByMovementEventId(MovementEventId movementEventId)
     {
         Criteria criteria = getCurrentSession().createCriteria(AbstractMovementLineStateEvent.class);
         Junction partIdCondition = Restrictions.conjunction()
-            .add(Restrictions.eq("stateEventId.movementDocumentNumber", movementStateEventId.getDocumentNumber()))
-            .add(Restrictions.eq("stateEventId.movementVersion", movementStateEventId.getVersion()))
+            .add(Restrictions.eq("stateEventId.movementDocumentNumber", movementEventId.getDocumentNumber()))
+            .add(Restrictions.eq("stateEventId.movementVersion", movementEventId.getVersion()))
             ;
         return criteria.add(partIdCondition).list();
     }

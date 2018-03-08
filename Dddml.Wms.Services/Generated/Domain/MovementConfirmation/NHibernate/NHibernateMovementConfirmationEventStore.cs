@@ -21,7 +21,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation.NHibernate
 	{
 		public override object GetEventId(IEventStoreAggregateId eventStoreAggregateId, long version)
 		{
-			return new MovementConfirmationStateEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
+			return new MovementConfirmationEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
 		public override Type GetSupportedStateEventType()

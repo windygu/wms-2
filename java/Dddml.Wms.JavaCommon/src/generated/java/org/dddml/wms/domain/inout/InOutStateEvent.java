@@ -8,7 +8,7 @@ import org.dddml.wms.specialization.Event;
 
 public interface InOutStateEvent extends Event
 {
-    InOutStateEventId getStateEventId();
+    InOutEventId getStateEventId();
 
     boolean getStateEventReadOnly();
 

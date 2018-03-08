@@ -16,7 +16,7 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 	public abstract class UserPermissionMvoStateEventBase : IUserPermissionMvoStateEvent
 	{
 
-		public virtual UserPermissionMvoStateEventId StateEventId { get; set; }
+		public virtual UserPermissionMvoEventId StateEventId { get; set; }
 
         public virtual UserPermissionId UserPermissionId
         {
@@ -70,7 +70,7 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		UserPermissionMvoStateEventId IGlobalIdentity<UserPermissionMvoStateEventId>.GlobalId {
+		UserPermissionMvoEventId IGlobalIdentity<UserPermissionMvoEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -114,7 +114,7 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
         {
         }
 
-        protected UserPermissionMvoStateEventBase(UserPermissionMvoStateEventId stateEventId)
+        protected UserPermissionMvoStateEventBase(UserPermissionMvoEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -131,11 +131,11 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 
 	public class UserPermissionMvoStateCreated : UserPermissionMvoStateEventBase, IUserPermissionMvoStateCreated
 	{
-		public UserPermissionMvoStateCreated () : this(new UserPermissionMvoStateEventId())
+		public UserPermissionMvoStateCreated () : this(new UserPermissionMvoEventId())
 		{
 		}
 
-		public UserPermissionMvoStateCreated (UserPermissionMvoStateEventId stateEventId) : base(stateEventId)
+		public UserPermissionMvoStateCreated (UserPermissionMvoEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -193,7 +193,7 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 		{
 		}
 
-		public UserPermissionMvoStateMergePatched (UserPermissionMvoStateEventId stateEventId) : base(stateEventId)
+		public UserPermissionMvoStateMergePatched (UserPermissionMvoEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -212,7 +212,7 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 		{
 		}
 
-		public UserPermissionMvoStateDeleted (UserPermissionMvoStateEventId stateEventId) : base(stateEventId)
+		public UserPermissionMvoStateDeleted (UserPermissionMvoEventId stateEventId) : base(stateEventId)
 		{
 		}
 

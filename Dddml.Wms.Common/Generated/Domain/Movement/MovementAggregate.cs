@@ -104,7 +104,7 @@ namespace Dddml.Wms.Domain.Movement
 
         protected virtual IMovementStateCreated Map(ICreateMovement c)
         {
-			var stateEventId = new MovementStateEventId(c.DocumentNumber, c.Version);
+			var stateEventId = new MovementEventId(c.DocumentNumber, c.Version);
             IMovementStateCreated e = NewMovementStateCreated(stateEventId);
 		
             NewMovementDocumentActionCommandAndExecute(c, _state, e);
@@ -149,7 +149,7 @@ namespace Dddml.Wms.Domain.Movement
 
         protected virtual IMovementStateMergePatched Map(IMergePatchMovement c)
         {
-			var stateEventId = new MovementStateEventId(c.DocumentNumber, c.Version);
+			var stateEventId = new MovementEventId(c.DocumentNumber, c.Version);
             IMovementStateMergePatched e = NewMovementStateMergePatched(stateEventId);
 
             e.MovementDate = c.MovementDate;
@@ -215,7 +215,7 @@ namespace Dddml.Wms.Domain.Movement
 
         protected virtual IMovementStateDeleted Map(IDeleteMovement c)
         {
-			var stateEventId = new MovementStateEventId(c.DocumentNumber, c.Version);
+			var stateEventId = new MovementEventId(c.DocumentNumber, c.Version);
             IMovementStateDeleted e = NewMovementStateDeleted(stateEventId);
 			
             e.CommandId = c.CommandId;
@@ -277,7 +277,7 @@ namespace Dddml.Wms.Domain.Movement
         protected virtual IMovementLineStateCreated MapCreate(ICreateMovementLine c, IMovementCommand outerCommand, long version, IMovementState outerState)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new MovementLineStateEventId(c.MovementDocumentNumber, c.LineNumber, version);
+			var stateEventId = new MovementLineEventId(c.MovementDocumentNumber, c.LineNumber, version);
             IMovementLineStateCreated e = NewMovementLineStateCreated(stateEventId);
             var s = outerState.MovementLines.Get(c.LineNumber, true);
 
@@ -301,7 +301,7 @@ namespace Dddml.Wms.Domain.Movement
         protected virtual IMovementLineStateMergePatched MapMergePatch(IMergePatchMovementLine c, IMovementCommand outerCommand, long version, IMovementState outerState)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new MovementLineStateEventId(c.MovementDocumentNumber, c.LineNumber, version);
+			var stateEventId = new MovementLineEventId(c.MovementDocumentNumber, c.LineNumber, version);
             IMovementLineStateMergePatched e = NewMovementLineStateMergePatched(stateEventId);
             var s = outerState.MovementLines.Get(c.LineNumber);
 
@@ -332,7 +332,7 @@ namespace Dddml.Wms.Domain.Movement
         protected virtual IMovementLineStateRemoved MapRemove(IRemoveMovementLine c, IMovementCommand outerCommand, long version)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new MovementLineStateEventId(c.MovementDocumentNumber, c.LineNumber, version);
+			var stateEventId = new MovementLineEventId(c.MovementDocumentNumber, c.LineNumber, version);
             IMovementLineStateRemoved e = NewMovementLineStateRemoved(stateEventId);
 
 
@@ -359,7 +359,7 @@ namespace Dddml.Wms.Domain.Movement
 
         protected MovementStateCreated NewMovementStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new MovementStateEventId(_state.DocumentNumber, version);
+            var stateEventId = new MovementEventId(_state.DocumentNumber, version);
             var e = NewMovementStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -372,7 +372,7 @@ namespace Dddml.Wms.Domain.Movement
 
         protected MovementStateMergePatched NewMovementStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new MovementStateEventId(_state.DocumentNumber, version);
+            var stateEventId = new MovementEventId(_state.DocumentNumber, version);
             var e = NewMovementStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -386,7 +386,7 @@ namespace Dddml.Wms.Domain.Movement
 
         protected MovementStateDeleted NewMovementStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new MovementStateEventId(_state.DocumentNumber, version);
+            var stateEventId = new MovementEventId(_state.DocumentNumber, version);
             var e = NewMovementStateDeleted(stateEventId);
 
             e.CommandId = commandId;
@@ -399,32 +399,32 @@ namespace Dddml.Wms.Domain.Movement
 
 ////////////////////////
 
-		private MovementStateCreated NewMovementStateCreated(MovementStateEventId stateEventId)
+		private MovementStateCreated NewMovementStateCreated(MovementEventId stateEventId)
 		{
 			return new MovementStateCreated(stateEventId);			
 		}
 
-        private MovementStateMergePatched NewMovementStateMergePatched(MovementStateEventId stateEventId)
+        private MovementStateMergePatched NewMovementStateMergePatched(MovementEventId stateEventId)
 		{
 			return new MovementStateMergePatched(stateEventId);
 		}
 
-        private MovementStateDeleted NewMovementStateDeleted(MovementStateEventId stateEventId)
+        private MovementStateDeleted NewMovementStateDeleted(MovementEventId stateEventId)
 		{
 			return new MovementStateDeleted(stateEventId);
 		}
 
-		private MovementLineStateCreated NewMovementLineStateCreated(MovementLineStateEventId stateEventId)
+		private MovementLineStateCreated NewMovementLineStateCreated(MovementLineEventId stateEventId)
 		{
 			return new MovementLineStateCreated(stateEventId);
 		}
 
-        private MovementLineStateMergePatched NewMovementLineStateMergePatched(MovementLineStateEventId stateEventId)
+        private MovementLineStateMergePatched NewMovementLineStateMergePatched(MovementLineEventId stateEventId)
 		{
 			return new MovementLineStateMergePatched(stateEventId);
 		}
 
-        private MovementLineStateRemoved NewMovementLineStateRemoved(MovementLineStateEventId stateEventId)
+        private MovementLineStateRemoved NewMovementLineStateRemoved(MovementLineEventId stateEventId)
 		{
 			return new MovementLineStateRemoved(stateEventId);
 		}

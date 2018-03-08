@@ -11,9 +11,9 @@ using Dddml.Wms.Domain.Uom;
 
 namespace Dddml.Wms.Domain.Uom
 {
-	public interface IUomStateEvent : IEvent, IStateEventDto, IGlobalIdentity<UomStateEventId>, ICreated<string>
+	public interface IUomStateEvent : IEvent, IStateEventDto, IGlobalIdentity<UomEventId>, ICreated<string>
 	{
-		UomStateEventId StateEventId { get; }
+		UomEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

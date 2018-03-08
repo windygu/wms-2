@@ -484,7 +484,7 @@ namespace Dddml.Wms.Domain.UserRoleMvo
             id.Append("[").Append("UserRoleMvo|");
 
             var stateEntityId = this.UserRoleId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.UserRoleId; // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+            var eventEntityId = stateEvent.StateEventId.UserRoleId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);

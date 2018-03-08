@@ -94,7 +94,7 @@ namespace Dddml.Wms.Domain.ShipmentType
 
         protected virtual IShipmentTypeStateCreated Map(ICreateShipmentType c)
         {
-			var stateEventId = new ShipmentTypeStateEventId(c.ShipmentTypeId, c.Version);
+			var stateEventId = new ShipmentTypeEventId(c.ShipmentTypeId, c.Version);
             IShipmentTypeStateCreated e = NewShipmentTypeStateCreated(stateEventId);
 		
             e.ParentTypeId = c.ParentTypeId;
@@ -114,7 +114,7 @@ namespace Dddml.Wms.Domain.ShipmentType
 
         protected virtual IShipmentTypeStateMergePatched Map(IMergePatchShipmentType c)
         {
-			var stateEventId = new ShipmentTypeStateEventId(c.ShipmentTypeId, c.Version);
+			var stateEventId = new ShipmentTypeEventId(c.ShipmentTypeId, c.Version);
             IShipmentTypeStateMergePatched e = NewShipmentTypeStateMergePatched(stateEventId);
 
             e.ParentTypeId = c.ParentTypeId;
@@ -154,7 +154,7 @@ namespace Dddml.Wms.Domain.ShipmentType
 
         protected ShipmentTypeStateCreated NewShipmentTypeStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new ShipmentTypeStateEventId(_state.ShipmentTypeId, version);
+            var stateEventId = new ShipmentTypeEventId(_state.ShipmentTypeId, version);
             var e = NewShipmentTypeStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -167,7 +167,7 @@ namespace Dddml.Wms.Domain.ShipmentType
 
         protected ShipmentTypeStateMergePatched NewShipmentTypeStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new ShipmentTypeStateEventId(_state.ShipmentTypeId, version);
+            var stateEventId = new ShipmentTypeEventId(_state.ShipmentTypeId, version);
             var e = NewShipmentTypeStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -181,12 +181,12 @@ namespace Dddml.Wms.Domain.ShipmentType
 
 ////////////////////////
 
-		private ShipmentTypeStateCreated NewShipmentTypeStateCreated(ShipmentTypeStateEventId stateEventId)
+		private ShipmentTypeStateCreated NewShipmentTypeStateCreated(ShipmentTypeEventId stateEventId)
 		{
 			return new ShipmentTypeStateCreated(stateEventId);			
 		}
 
-        private ShipmentTypeStateMergePatched NewShipmentTypeStateMergePatched(ShipmentTypeStateEventId stateEventId)
+        private ShipmentTypeStateMergePatched NewShipmentTypeStateMergePatched(ShipmentTypeEventId stateEventId)
 		{
 			return new ShipmentTypeStateMergePatched(stateEventId);
 		}

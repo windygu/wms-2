@@ -8,7 +8,7 @@ import org.dddml.wms.specialization.Event;
 
 public interface MovementLineStateEvent extends Event
 {
-    MovementLineStateEventId getStateEventId();
+    MovementLineEventId getStateEventId();
 
     boolean getStateEventReadOnly();
 

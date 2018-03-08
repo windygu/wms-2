@@ -94,7 +94,7 @@ namespace Dddml.Wms.Domain.Order
 
         protected virtual IOrderStateCreated Map(ICreateOrder c)
         {
-			var stateEventId = new OrderStateEventId(c.OrderId, c.Version);
+			var stateEventId = new OrderEventId(c.OrderId, c.Version);
             IOrderStateCreated e = NewOrderStateCreated(stateEventId);
 		
             e.OrderTypeId = c.OrderTypeId;
@@ -143,7 +143,7 @@ namespace Dddml.Wms.Domain.Order
 
         protected virtual IOrderStateMergePatched Map(IMergePatchOrder c)
         {
-			var stateEventId = new OrderStateEventId(c.OrderId, c.Version);
+			var stateEventId = new OrderEventId(c.OrderId, c.Version);
             IOrderStateMergePatched e = NewOrderStateMergePatched(stateEventId);
 
             e.OrderTypeId = c.OrderTypeId;
@@ -261,7 +261,7 @@ namespace Dddml.Wms.Domain.Order
         protected virtual IOrderItemStateCreated MapCreate(ICreateOrderItem c, IOrderCommand outerCommand, long version, IOrderState outerState)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new OrderItemStateEventId(c.OrderId, c.OrderItemSeqId, version);
+			var stateEventId = new OrderItemEventId(c.OrderId, c.OrderItemSeqId, version);
             IOrderItemStateCreated e = NewOrderItemStateCreated(stateEventId);
             var s = outerState.OrderItems.Get(c.OrderItemSeqId, true);
 
@@ -313,7 +313,7 @@ namespace Dddml.Wms.Domain.Order
         protected virtual IOrderItemStateMergePatched MapMergePatch(IMergePatchOrderItem c, IOrderCommand outerCommand, long version, IOrderState outerState)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new OrderItemStateEventId(c.OrderId, c.OrderItemSeqId, version);
+			var stateEventId = new OrderItemEventId(c.OrderId, c.OrderItemSeqId, version);
             IOrderItemStateMergePatched e = NewOrderItemStateMergePatched(stateEventId);
             var s = outerState.OrderItems.Get(c.OrderItemSeqId);
 
@@ -413,7 +413,7 @@ namespace Dddml.Wms.Domain.Order
 
         protected OrderStateCreated NewOrderStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new OrderStateEventId(_state.OrderId, version);
+            var stateEventId = new OrderEventId(_state.OrderId, version);
             var e = NewOrderStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -426,7 +426,7 @@ namespace Dddml.Wms.Domain.Order
 
         protected OrderStateMergePatched NewOrderStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new OrderStateEventId(_state.OrderId, version);
+            var stateEventId = new OrderEventId(_state.OrderId, version);
             var e = NewOrderStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -440,23 +440,23 @@ namespace Dddml.Wms.Domain.Order
 
 ////////////////////////
 
-		private OrderStateCreated NewOrderStateCreated(OrderStateEventId stateEventId)
+		private OrderStateCreated NewOrderStateCreated(OrderEventId stateEventId)
 		{
 			return new OrderStateCreated(stateEventId);			
 		}
 
-        private OrderStateMergePatched NewOrderStateMergePatched(OrderStateEventId stateEventId)
+        private OrderStateMergePatched NewOrderStateMergePatched(OrderEventId stateEventId)
 		{
 			return new OrderStateMergePatched(stateEventId);
 		}
 
 
-		private OrderItemStateCreated NewOrderItemStateCreated(OrderItemStateEventId stateEventId)
+		private OrderItemStateCreated NewOrderItemStateCreated(OrderItemEventId stateEventId)
 		{
 			return new OrderItemStateCreated(stateEventId);
 		}
 
-        private OrderItemStateMergePatched NewOrderItemStateMergePatched(OrderItemStateEventId stateEventId)
+        private OrderItemStateMergePatched NewOrderItemStateMergePatched(OrderItemEventId stateEventId)
 		{
 			return new OrderItemStateMergePatched(stateEventId);
 		}

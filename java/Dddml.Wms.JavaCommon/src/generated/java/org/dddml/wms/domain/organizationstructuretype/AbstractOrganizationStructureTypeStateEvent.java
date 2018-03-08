@@ -8,14 +8,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractOrganizationStructureTypeStateEvent extends AbstractStateEvent implements OrganizationStructureTypeStateEvent 
 {
-    private OrganizationStructureTypeStateEventId stateEventId;
+    private OrganizationStructureTypeEventId stateEventId;
 
-    public OrganizationStructureTypeStateEventId getStateEventId() {
+    public OrganizationStructureTypeEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(OrganizationStructureTypeStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(OrganizationStructureTypeEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public String getId() {
@@ -94,8 +94,8 @@ public abstract class AbstractOrganizationStructureTypeStateEvent extends Abstra
     protected AbstractOrganizationStructureTypeStateEvent() {
     }
 
-    protected AbstractOrganizationStructureTypeStateEvent(OrganizationStructureTypeStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractOrganizationStructureTypeStateEvent(OrganizationStructureTypeEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -105,11 +105,11 @@ public abstract class AbstractOrganizationStructureTypeStateEvent extends Abstra
     public static abstract class AbstractOrganizationStructureTypeStateCreated extends AbstractOrganizationStructureTypeStateEvent implements OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateCreated
     {
         public AbstractOrganizationStructureTypeStateCreated() {
-            this(new OrganizationStructureTypeStateEventId());
+            this(new OrganizationStructureTypeEventId());
         }
 
-        public AbstractOrganizationStructureTypeStateCreated(OrganizationStructureTypeStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractOrganizationStructureTypeStateCreated(OrganizationStructureTypeEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -122,11 +122,11 @@ public abstract class AbstractOrganizationStructureTypeStateEvent extends Abstra
     public static abstract class AbstractOrganizationStructureTypeStateMergePatched extends AbstractOrganizationStructureTypeStateEvent implements OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateMergePatched
     {
         public AbstractOrganizationStructureTypeStateMergePatched() {
-            this(new OrganizationStructureTypeStateEventId());
+            this(new OrganizationStructureTypeEventId());
         }
 
-        public AbstractOrganizationStructureTypeStateMergePatched(OrganizationStructureTypeStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractOrganizationStructureTypeStateMergePatched(OrganizationStructureTypeEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -159,11 +159,11 @@ public abstract class AbstractOrganizationStructureTypeStateEvent extends Abstra
     public static abstract class AbstractOrganizationStructureTypeStateDeleted extends AbstractOrganizationStructureTypeStateEvent implements OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateDeleted
     {
         public AbstractOrganizationStructureTypeStateDeleted() {
-            this(new OrganizationStructureTypeStateEventId());
+            this(new OrganizationStructureTypeEventId());
         }
 
-        public AbstractOrganizationStructureTypeStateDeleted(OrganizationStructureTypeStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractOrganizationStructureTypeStateDeleted(OrganizationStructureTypeEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -176,8 +176,8 @@ public abstract class AbstractOrganizationStructureTypeStateEvent extends Abstra
         public SimpleOrganizationStructureTypeStateCreated() {
         }
 
-        public SimpleOrganizationStructureTypeStateCreated(OrganizationStructureTypeStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleOrganizationStructureTypeStateCreated(OrganizationStructureTypeEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -186,8 +186,8 @@ public abstract class AbstractOrganizationStructureTypeStateEvent extends Abstra
         public SimpleOrganizationStructureTypeStateMergePatched() {
         }
 
-        public SimpleOrganizationStructureTypeStateMergePatched(OrganizationStructureTypeStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleOrganizationStructureTypeStateMergePatched(OrganizationStructureTypeEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -196,8 +196,8 @@ public abstract class AbstractOrganizationStructureTypeStateEvent extends Abstra
         public SimpleOrganizationStructureTypeStateDeleted() {
         }
 
-        public SimpleOrganizationStructureTypeStateDeleted(OrganizationStructureTypeStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleOrganizationStructureTypeStateDeleted(OrganizationStructureTypeEventId eventId) {
+            super(eventId);
         }
     }
 

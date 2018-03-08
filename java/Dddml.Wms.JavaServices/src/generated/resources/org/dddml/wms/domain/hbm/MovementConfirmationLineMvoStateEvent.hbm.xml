@@ -8,7 +8,7 @@
   
   <class name="AbstractMovementConfirmationLineMvoStateEvent" table="MovementConfirmationLineMvoStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="stateEventId" class="org.dddml.wms.domain.movementconfirmationlinemvo.MovementConfirmationLineMvoStateEventId">
+	<composite-id name="stateEventId" class="org.dddml.wms.domain.movementconfirmationlinemvo.MovementConfirmationLineMvoEventId">
 		<key-property name="movementConfirmationLineIdMovementConfirmationDocumentNumber" ><column name="MovementConfirmationLineIdMovementConfirmationDocumentNumber" length="50" /></key-property>
 		<key-property name="movementConfirmationLineIdLineNumber" ><column name="MovementConfirmationLineIdLineNumber" length="50" /></key-property>
 		<key-property name="movementConfirmationVersion" ></key-property>

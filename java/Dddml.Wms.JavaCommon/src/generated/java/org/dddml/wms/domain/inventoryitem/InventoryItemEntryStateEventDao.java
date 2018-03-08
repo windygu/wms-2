@@ -8,7 +8,7 @@ public interface InventoryItemEntryStateEventDao
 {
     void save(InventoryItemEntryStateEvent e);
 
-    Iterable<InventoryItemEntryStateEvent> findByInventoryItemStateEventId(InventoryItemStateEventId inventoryItemStateEventId);
+    Iterable<InventoryItemEntryStateEvent> findByInventoryItemEventId(InventoryItemEventId inventoryItemEventId);
 
 }
 

@@ -9,14 +9,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractInventoryItemStateEvent extends AbstractStateEvent implements InventoryItemStateEvent 
 {
-    private InventoryItemStateEventId stateEventId;
+    private InventoryItemEventId stateEventId;
 
-    public InventoryItemStateEventId getStateEventId() {
+    public InventoryItemEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(InventoryItemStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(InventoryItemEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public InventoryItemId getInventoryItemId() {
@@ -131,20 +131,20 @@ public abstract class AbstractInventoryItemStateEvent extends AbstractStateEvent
     protected AbstractInventoryItemStateEvent() {
     }
 
-    protected AbstractInventoryItemStateEvent(InventoryItemStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractInventoryItemStateEvent(InventoryItemEventId eventId) {
+        this.stateEventId = eventId;
     }
 
     protected InventoryItemEntryStateEventDao getInventoryItemEntryStateEventDao() {
         return (InventoryItemEntryStateEventDao)ApplicationContext.current.get("InventoryItemEntryStateEventDao");
     }
 
-    protected InventoryItemEntryStateEventId newInventoryItemEntryStateEventId(Long entrySeqId)
+    protected InventoryItemEntryEventId newInventoryItemEntryEventId(Long entrySeqId)
     {
-        InventoryItemEntryStateEventId stateEventId = new InventoryItemEntryStateEventId(this.getStateEventId().getInventoryItemId(), 
+        InventoryItemEntryEventId eventId = new InventoryItemEntryEventId(this.getStateEventId().getInventoryItemId(), 
             entrySeqId, 
             this.getStateEventId().getVersion());
-        return stateEventId;
+        return eventId;
     }
 
     protected void throwOnInconsistentEventIds(InventoryItemEntryStateEvent e)
@@ -162,7 +162,7 @@ public abstract class AbstractInventoryItemStateEvent extends AbstractStateEvent
     }
 
     public InventoryItemEntryStateEvent.InventoryItemEntryStateCreated newInventoryItemEntryStateCreated(Long entrySeqId) {
-        return new AbstractInventoryItemEntryStateEvent.SimpleInventoryItemEntryStateCreated(newInventoryItemEntryStateEventId(entrySeqId));
+        return new AbstractInventoryItemEntryStateEvent.SimpleInventoryItemEntryStateCreated(newInventoryItemEntryEventId(entrySeqId));
     }
 
 
@@ -172,18 +172,18 @@ public abstract class AbstractInventoryItemStateEvent extends AbstractStateEvent
     public static abstract class AbstractInventoryItemStateCreated extends AbstractInventoryItemStateEvent implements InventoryItemStateEvent.InventoryItemStateCreated, Saveable
     {
         public AbstractInventoryItemStateCreated() {
-            this(new InventoryItemStateEventId());
+            this(new InventoryItemEventId());
         }
 
-        public AbstractInventoryItemStateCreated(InventoryItemStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractInventoryItemStateCreated(InventoryItemEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
             return StateEventType.CREATED;
         }
 
-        private Map<InventoryItemEntryStateEventId, InventoryItemEntryStateEvent.InventoryItemEntryStateCreated> inventoryItemEntryEvents = new HashMap<InventoryItemEntryStateEventId, InventoryItemEntryStateEvent.InventoryItemEntryStateCreated>();
+        private Map<InventoryItemEntryEventId, InventoryItemEntryStateEvent.InventoryItemEntryStateCreated> inventoryItemEntryEvents = new HashMap<InventoryItemEntryEventId, InventoryItemEntryStateEvent.InventoryItemEntryStateCreated>();
         
         private Iterable<InventoryItemEntryStateEvent.InventoryItemEntryStateCreated> readOnlyInventoryItemEntryEvents;
 
@@ -198,7 +198,7 @@ public abstract class AbstractInventoryItemStateEvent extends AbstractStateEvent
                 if (readOnlyInventoryItemEntryEvents != null) { return readOnlyInventoryItemEntryEvents; }
                 InventoryItemEntryStateEventDao eventDao = getInventoryItemEntryStateEventDao();
                 List<InventoryItemEntryStateEvent.InventoryItemEntryStateCreated> eL = new ArrayList<InventoryItemEntryStateEvent.InventoryItemEntryStateCreated>();
-                for (InventoryItemEntryStateEvent e : eventDao.findByInventoryItemStateEventId(this.getStateEventId()))
+                for (InventoryItemEntryStateEvent e : eventDao.findByInventoryItemEventId(this.getStateEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((InventoryItemEntryStateEvent.InventoryItemEntryStateCreated)e);
@@ -237,11 +237,11 @@ public abstract class AbstractInventoryItemStateEvent extends AbstractStateEvent
     public static abstract class AbstractInventoryItemStateMergePatched extends AbstractInventoryItemStateEvent implements InventoryItemStateEvent.InventoryItemStateMergePatched, Saveable
     {
         public AbstractInventoryItemStateMergePatched() {
-            this(new InventoryItemStateEventId());
+            this(new InventoryItemEventId());
         }
 
-        public AbstractInventoryItemStateMergePatched(InventoryItemStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractInventoryItemStateMergePatched(InventoryItemEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -298,7 +298,7 @@ public abstract class AbstractInventoryItemStateEvent extends AbstractStateEvent
             this.isPropertyVirtualQuantityRemoved = removed;
         }
 
-        private Map<InventoryItemEntryStateEventId, InventoryItemEntryStateEvent> inventoryItemEntryEvents = new HashMap<InventoryItemEntryStateEventId, InventoryItemEntryStateEvent>();
+        private Map<InventoryItemEntryEventId, InventoryItemEntryStateEvent> inventoryItemEntryEvents = new HashMap<InventoryItemEntryEventId, InventoryItemEntryStateEvent>();
         
         private Iterable<InventoryItemEntryStateEvent> readOnlyInventoryItemEntryEvents;
 
@@ -313,7 +313,7 @@ public abstract class AbstractInventoryItemStateEvent extends AbstractStateEvent
                 if (readOnlyInventoryItemEntryEvents != null) { return readOnlyInventoryItemEntryEvents; }
                 InventoryItemEntryStateEventDao eventDao = getInventoryItemEntryStateEventDao();
                 List<InventoryItemEntryStateEvent> eL = new ArrayList<InventoryItemEntryStateEvent>();
-                for (InventoryItemEntryStateEvent e : eventDao.findByInventoryItemStateEventId(this.getStateEventId()))
+                for (InventoryItemEntryStateEvent e : eventDao.findByInventoryItemEventId(this.getStateEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((InventoryItemEntryStateEvent)e);
@@ -354,8 +354,8 @@ public abstract class AbstractInventoryItemStateEvent extends AbstractStateEvent
         public SimpleInventoryItemStateCreated() {
         }
 
-        public SimpleInventoryItemStateCreated(InventoryItemStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleInventoryItemStateCreated(InventoryItemEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -364,8 +364,8 @@ public abstract class AbstractInventoryItemStateEvent extends AbstractStateEvent
         public SimpleInventoryItemStateMergePatched() {
         }
 
-        public SimpleInventoryItemStateMergePatched(InventoryItemStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleInventoryItemStateMergePatched(InventoryItemEventId eventId) {
+            super(eventId);
         }
     }
 

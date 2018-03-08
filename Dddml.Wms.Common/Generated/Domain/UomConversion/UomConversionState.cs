@@ -287,7 +287,7 @@ namespace Dddml.Wms.Domain.UomConversion
             id.Append("[").Append("UomConversion|");
 
             var stateEntityId = this.UomConversionId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.UomConversionId; // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+            var eventEntityId = stateEvent.StateEventId.UomConversionId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);

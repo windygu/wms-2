@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.InOut
 	public abstract class InOutLineStateEventBase : IInOutLineStateEvent
 	{
 
-		public virtual InOutLineStateEventId StateEventId { get; set; }
+		public virtual InOutLineEventId StateEventId { get; set; }
 
         public virtual string LineNumber
         {
@@ -55,7 +55,7 @@ namespace Dddml.Wms.Domain.InOut
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		InOutLineStateEventId IGlobalIdentity<InOutLineStateEventId>.GlobalId {
+		InOutLineEventId IGlobalIdentity<InOutLineEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -101,7 +101,7 @@ namespace Dddml.Wms.Domain.InOut
         {
         }
 
-        protected InOutLineStateEventBase(InOutLineStateEventId stateEventId)
+        protected InOutLineStateEventBase(InOutLineEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -118,11 +118,11 @@ namespace Dddml.Wms.Domain.InOut
 
 	public class InOutLineStateCreated : InOutLineStateEventBase, IInOutLineStateCreated
 	{
-		public InOutLineStateCreated () : this(new InOutLineStateEventId())
+		public InOutLineStateCreated () : this(new InOutLineEventId())
 		{
 		}
 
-		public InOutLineStateCreated (InOutLineStateEventId stateEventId) : base(stateEventId)
+		public InOutLineStateCreated (InOutLineEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -166,7 +166,7 @@ namespace Dddml.Wms.Domain.InOut
 		{
 		}
 
-		public InOutLineStateMergePatched (InOutLineStateEventId stateEventId) : base(stateEventId)
+		public InOutLineStateMergePatched (InOutLineEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -185,7 +185,7 @@ namespace Dddml.Wms.Domain.InOut
 		{
 		}
 
-		public InOutLineStateRemoved (InOutLineStateEventId stateEventId) : base(stateEventId)
+		public InOutLineStateRemoved (InOutLineEventId stateEventId) : base(stateEventId)
 		{
 		}
 

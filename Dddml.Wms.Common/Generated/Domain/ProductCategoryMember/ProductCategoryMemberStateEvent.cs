@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 	public abstract class ProductCategoryMemberStateEventBase : IProductCategoryMemberStateEvent
 	{
 
-		public virtual ProductCategoryMemberStateEventId StateEventId { get; set; }
+		public virtual ProductCategoryMemberEventId StateEventId { get; set; }
 
         public virtual ProductCategoryMemberId ProductCategoryMemberId
         {
@@ -41,7 +41,7 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		ProductCategoryMemberStateEventId IGlobalIdentity<ProductCategoryMemberStateEventId>.GlobalId {
+		ProductCategoryMemberEventId IGlobalIdentity<ProductCategoryMemberEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -85,7 +85,7 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
         {
         }
 
-        protected ProductCategoryMemberStateEventBase(ProductCategoryMemberStateEventId stateEventId)
+        protected ProductCategoryMemberStateEventBase(ProductCategoryMemberEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -102,11 +102,11 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 
 	public class ProductCategoryMemberStateCreated : ProductCategoryMemberStateEventBase, IProductCategoryMemberStateCreated
 	{
-		public ProductCategoryMemberStateCreated () : this(new ProductCategoryMemberStateEventId())
+		public ProductCategoryMemberStateCreated () : this(new ProductCategoryMemberEventId())
 		{
 		}
 
-		public ProductCategoryMemberStateCreated (ProductCategoryMemberStateEventId stateEventId) : base(stateEventId)
+		public ProductCategoryMemberStateCreated (ProductCategoryMemberEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -136,7 +136,7 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 		{
 		}
 
-		public ProductCategoryMemberStateMergePatched (ProductCategoryMemberStateEventId stateEventId) : base(stateEventId)
+		public ProductCategoryMemberStateMergePatched (ProductCategoryMemberEventId stateEventId) : base(stateEventId)
 		{
 		}
 

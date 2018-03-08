@@ -50,7 +50,7 @@ public abstract class AbstractShipmentItemMvoAggregate extends AbstractAggregate
     }
 
     protected ShipmentItemMvoStateEvent map(ShipmentItemMvoCommand.CreateShipmentItemMvo c) {
-        ShipmentItemMvoStateEventId stateEventId = new ShipmentItemMvoStateEventId(c.getShipmentItemId(), c.getShipmentVersion());
+        ShipmentItemMvoEventId stateEventId = new ShipmentItemMvoEventId(c.getShipmentItemId(), c.getShipmentVersion());
         ShipmentItemMvoStateEvent.ShipmentItemMvoStateCreated e = newShipmentItemMvoStateCreated(stateEventId);
         e.setProductId(c.getProductId());
         e.setAttributeSetInstanceId(c.getAttributeSetInstanceId());
@@ -96,7 +96,7 @@ public abstract class AbstractShipmentItemMvoAggregate extends AbstractAggregate
     }
 
     protected ShipmentItemMvoStateEvent map(ShipmentItemMvoCommand.MergePatchShipmentItemMvo c) {
-        ShipmentItemMvoStateEventId stateEventId = new ShipmentItemMvoStateEventId(c.getShipmentItemId(), c.getShipmentVersion());
+        ShipmentItemMvoEventId stateEventId = new ShipmentItemMvoEventId(c.getShipmentItemId(), c.getShipmentVersion());
         ShipmentItemMvoStateEvent.ShipmentItemMvoStateMergePatched e = newShipmentItemMvoStateMergePatched(stateEventId);
         e.setProductId(c.getProductId());
         e.setAttributeSetInstanceId(c.getAttributeSetInstanceId());
@@ -182,7 +182,7 @@ public abstract class AbstractShipmentItemMvoAggregate extends AbstractAggregate
     ////////////////////////
 
     protected ShipmentItemMvoStateEvent.ShipmentItemMvoStateCreated newShipmentItemMvoStateCreated(Long version, String commandId, String requesterId) {
-        ShipmentItemMvoStateEventId stateEventId = new ShipmentItemMvoStateEventId(this.state.getShipmentItemId(), version);
+        ShipmentItemMvoEventId stateEventId = new ShipmentItemMvoEventId(this.state.getShipmentItemId(), version);
         ShipmentItemMvoStateEvent.ShipmentItemMvoStateCreated e = newShipmentItemMvoStateCreated(stateEventId);
         ((AbstractShipmentItemMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -191,7 +191,7 @@ public abstract class AbstractShipmentItemMvoAggregate extends AbstractAggregate
     }
 
     protected ShipmentItemMvoStateEvent.ShipmentItemMvoStateMergePatched newShipmentItemMvoStateMergePatched(Long version, String commandId, String requesterId) {
-        ShipmentItemMvoStateEventId stateEventId = new ShipmentItemMvoStateEventId(this.state.getShipmentItemId(), version);
+        ShipmentItemMvoEventId stateEventId = new ShipmentItemMvoEventId(this.state.getShipmentItemId(), version);
         ShipmentItemMvoStateEvent.ShipmentItemMvoStateMergePatched e = newShipmentItemMvoStateMergePatched(stateEventId);
         ((AbstractShipmentItemMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -199,11 +199,11 @@ public abstract class AbstractShipmentItemMvoAggregate extends AbstractAggregate
         return e;
     }
 
-    protected ShipmentItemMvoStateEvent.ShipmentItemMvoStateCreated newShipmentItemMvoStateCreated(ShipmentItemMvoStateEventId stateEventId) {
+    protected ShipmentItemMvoStateEvent.ShipmentItemMvoStateCreated newShipmentItemMvoStateCreated(ShipmentItemMvoEventId stateEventId) {
         return new AbstractShipmentItemMvoStateEvent.SimpleShipmentItemMvoStateCreated(stateEventId);
     }
 
-    protected ShipmentItemMvoStateEvent.ShipmentItemMvoStateMergePatched newShipmentItemMvoStateMergePatched(ShipmentItemMvoStateEventId stateEventId) {
+    protected ShipmentItemMvoStateEvent.ShipmentItemMvoStateMergePatched newShipmentItemMvoStateMergePatched(ShipmentItemMvoEventId stateEventId) {
         return new AbstractShipmentItemMvoStateEvent.SimpleShipmentItemMvoStateMergePatched(stateEventId);
     }
 

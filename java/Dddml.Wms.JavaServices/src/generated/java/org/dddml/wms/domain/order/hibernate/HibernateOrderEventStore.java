@@ -16,7 +16,7 @@ public class HibernateOrderEventStore extends AbstractHibernateEventStore
     @Override
     protected Serializable getEventId(EventStoreAggregateId eventStoreAggregateId, long version)
     {
-        return new OrderStateEventId((String) eventStoreAggregateId.getId(), version);
+        return new OrderEventId((String) eventStoreAggregateId.getId(), version);
     }
 
     @Override

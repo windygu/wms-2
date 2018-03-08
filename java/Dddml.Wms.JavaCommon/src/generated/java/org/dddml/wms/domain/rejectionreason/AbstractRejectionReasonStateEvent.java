@@ -8,14 +8,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractRejectionReasonStateEvent extends AbstractStateEvent implements RejectionReasonStateEvent 
 {
-    private RejectionReasonStateEventId stateEventId;
+    private RejectionReasonEventId stateEventId;
 
-    public RejectionReasonStateEventId getStateEventId() {
+    public RejectionReasonEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(RejectionReasonStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(RejectionReasonEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public String getRejectionReasonId() {
@@ -94,8 +94,8 @@ public abstract class AbstractRejectionReasonStateEvent extends AbstractStateEve
     protected AbstractRejectionReasonStateEvent() {
     }
 
-    protected AbstractRejectionReasonStateEvent(RejectionReasonStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractRejectionReasonStateEvent(RejectionReasonEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -105,11 +105,11 @@ public abstract class AbstractRejectionReasonStateEvent extends AbstractStateEve
     public static abstract class AbstractRejectionReasonStateCreated extends AbstractRejectionReasonStateEvent implements RejectionReasonStateEvent.RejectionReasonStateCreated
     {
         public AbstractRejectionReasonStateCreated() {
-            this(new RejectionReasonStateEventId());
+            this(new RejectionReasonEventId());
         }
 
-        public AbstractRejectionReasonStateCreated(RejectionReasonStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractRejectionReasonStateCreated(RejectionReasonEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -122,11 +122,11 @@ public abstract class AbstractRejectionReasonStateEvent extends AbstractStateEve
     public static abstract class AbstractRejectionReasonStateMergePatched extends AbstractRejectionReasonStateEvent implements RejectionReasonStateEvent.RejectionReasonStateMergePatched
     {
         public AbstractRejectionReasonStateMergePatched() {
-            this(new RejectionReasonStateEventId());
+            this(new RejectionReasonEventId());
         }
 
-        public AbstractRejectionReasonStateMergePatched(RejectionReasonStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractRejectionReasonStateMergePatched(RejectionReasonEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -159,11 +159,11 @@ public abstract class AbstractRejectionReasonStateEvent extends AbstractStateEve
     public static abstract class AbstractRejectionReasonStateDeleted extends AbstractRejectionReasonStateEvent implements RejectionReasonStateEvent.RejectionReasonStateDeleted
     {
         public AbstractRejectionReasonStateDeleted() {
-            this(new RejectionReasonStateEventId());
+            this(new RejectionReasonEventId());
         }
 
-        public AbstractRejectionReasonStateDeleted(RejectionReasonStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractRejectionReasonStateDeleted(RejectionReasonEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -176,8 +176,8 @@ public abstract class AbstractRejectionReasonStateEvent extends AbstractStateEve
         public SimpleRejectionReasonStateCreated() {
         }
 
-        public SimpleRejectionReasonStateCreated(RejectionReasonStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleRejectionReasonStateCreated(RejectionReasonEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -186,8 +186,8 @@ public abstract class AbstractRejectionReasonStateEvent extends AbstractStateEve
         public SimpleRejectionReasonStateMergePatched() {
         }
 
-        public SimpleRejectionReasonStateMergePatched(RejectionReasonStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleRejectionReasonStateMergePatched(RejectionReasonEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -196,8 +196,8 @@ public abstract class AbstractRejectionReasonStateEvent extends AbstractStateEve
         public SimpleRejectionReasonStateDeleted() {
         }
 
-        public SimpleRejectionReasonStateDeleted(RejectionReasonStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleRejectionReasonStateDeleted(RejectionReasonEventId eventId) {
+            super(eventId);
         }
     }
 

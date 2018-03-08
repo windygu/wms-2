@@ -9,14 +9,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractAttributeUseMvoStateEvent extends AbstractStateEvent implements AttributeUseMvoStateEvent 
 {
-    private AttributeUseMvoStateEventId stateEventId;
+    private AttributeUseMvoEventId stateEventId;
 
-    public AttributeUseMvoStateEventId getStateEventId() {
+    public AttributeUseMvoEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(AttributeUseMvoStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(AttributeUseMvoEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public AttributeSetAttributeUseId getAttributeSetAttributeUseId() {
@@ -251,8 +251,8 @@ public abstract class AbstractAttributeUseMvoStateEvent extends AbstractStateEve
     protected AbstractAttributeUseMvoStateEvent() {
     }
 
-    protected AbstractAttributeUseMvoStateEvent(AttributeUseMvoStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractAttributeUseMvoStateEvent(AttributeUseMvoEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -262,11 +262,11 @@ public abstract class AbstractAttributeUseMvoStateEvent extends AbstractStateEve
     public static abstract class AbstractAttributeUseMvoStateCreated extends AbstractAttributeUseMvoStateEvent implements AttributeUseMvoStateEvent.AttributeUseMvoStateCreated
     {
         public AbstractAttributeUseMvoStateCreated() {
-            this(new AttributeUseMvoStateEventId());
+            this(new AttributeUseMvoEventId());
         }
 
-        public AbstractAttributeUseMvoStateCreated(AttributeUseMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractAttributeUseMvoStateCreated(AttributeUseMvoEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -279,11 +279,11 @@ public abstract class AbstractAttributeUseMvoStateEvent extends AbstractStateEve
     public static abstract class AbstractAttributeUseMvoStateMergePatched extends AbstractAttributeUseMvoStateEvent implements AttributeUseMvoStateEvent.AttributeUseMvoStateMergePatched
     {
         public AbstractAttributeUseMvoStateMergePatched() {
-            this(new AttributeUseMvoStateEventId());
+            this(new AttributeUseMvoEventId());
         }
 
-        public AbstractAttributeUseMvoStateMergePatched(AttributeUseMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractAttributeUseMvoStateMergePatched(AttributeUseMvoEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -446,11 +446,11 @@ public abstract class AbstractAttributeUseMvoStateEvent extends AbstractStateEve
     public static abstract class AbstractAttributeUseMvoStateDeleted extends AbstractAttributeUseMvoStateEvent implements AttributeUseMvoStateEvent.AttributeUseMvoStateDeleted
     {
         public AbstractAttributeUseMvoStateDeleted() {
-            this(new AttributeUseMvoStateEventId());
+            this(new AttributeUseMvoEventId());
         }
 
-        public AbstractAttributeUseMvoStateDeleted(AttributeUseMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractAttributeUseMvoStateDeleted(AttributeUseMvoEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -463,8 +463,8 @@ public abstract class AbstractAttributeUseMvoStateEvent extends AbstractStateEve
         public SimpleAttributeUseMvoStateCreated() {
         }
 
-        public SimpleAttributeUseMvoStateCreated(AttributeUseMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleAttributeUseMvoStateCreated(AttributeUseMvoEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -473,8 +473,8 @@ public abstract class AbstractAttributeUseMvoStateEvent extends AbstractStateEve
         public SimpleAttributeUseMvoStateMergePatched() {
         }
 
-        public SimpleAttributeUseMvoStateMergePatched(AttributeUseMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleAttributeUseMvoStateMergePatched(AttributeUseMvoEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -483,8 +483,8 @@ public abstract class AbstractAttributeUseMvoStateEvent extends AbstractStateEve
         public SimpleAttributeUseMvoStateDeleted() {
         }
 
-        public SimpleAttributeUseMvoStateDeleted(AttributeUseMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleAttributeUseMvoStateDeleted(AttributeUseMvoEventId eventId) {
+            super(eventId);
         }
     }
 

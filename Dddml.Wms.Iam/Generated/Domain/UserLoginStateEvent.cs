@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.User
 	public abstract class UserLoginStateEventBase : IUserLoginStateEvent
 	{
 
-		public virtual UserLoginStateEventId StateEventId { get; set; }
+		public virtual UserLoginEventId StateEventId { get; set; }
 
         public virtual LoginKey LoginKey
         {
@@ -33,7 +33,7 @@ namespace Dddml.Wms.Domain.User
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		UserLoginStateEventId IGlobalIdentity<UserLoginStateEventId>.GlobalId {
+		UserLoginEventId IGlobalIdentity<UserLoginEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -79,7 +79,7 @@ namespace Dddml.Wms.Domain.User
         {
         }
 
-        protected UserLoginStateEventBase(UserLoginStateEventId stateEventId)
+        protected UserLoginStateEventBase(UserLoginEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -96,11 +96,11 @@ namespace Dddml.Wms.Domain.User
 
 	public class UserLoginStateCreated : UserLoginStateEventBase, IUserLoginStateCreated
 	{
-		public UserLoginStateCreated () : this(new UserLoginStateEventId())
+		public UserLoginStateCreated () : this(new UserLoginEventId())
 		{
 		}
 
-		public UserLoginStateCreated (UserLoginStateEventId stateEventId) : base(stateEventId)
+		public UserLoginStateCreated (UserLoginEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -122,7 +122,7 @@ namespace Dddml.Wms.Domain.User
 		{
 		}
 
-		public UserLoginStateMergePatched (UserLoginStateEventId stateEventId) : base(stateEventId)
+		public UserLoginStateMergePatched (UserLoginEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -141,7 +141,7 @@ namespace Dddml.Wms.Domain.User
 		{
 		}
 
-		public UserLoginStateRemoved (UserLoginStateEventId stateEventId) : base(stateEventId)
+		public UserLoginStateRemoved (UserLoginEventId stateEventId) : base(stateEventId)
 		{
 		}
 

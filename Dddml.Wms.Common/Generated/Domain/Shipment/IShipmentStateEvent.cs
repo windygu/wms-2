@@ -11,9 +11,9 @@ using Dddml.Wms.Domain.Shipment;
 
 namespace Dddml.Wms.Domain.Shipment
 {
-	public interface IShipmentStateEvent : IEvent, IStateEventDto, IGlobalIdentity<ShipmentStateEventId>, ICreated<string>
+	public interface IShipmentStateEvent : IEvent, IStateEventDto, IGlobalIdentity<ShipmentEventId>, ICreated<string>
 	{
-		ShipmentStateEventId StateEventId { get; }
+		ShipmentEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

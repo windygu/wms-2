@@ -104,7 +104,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 
         protected virtual IAttributeSetInstanceExtensionFieldGroupStateCreated Map(ICreateAttributeSetInstanceExtensionFieldGroup c)
         {
-			var stateEventId = new AttributeSetInstanceExtensionFieldGroupStateEventId(c.Id, c.Version);
+			var stateEventId = new AttributeSetInstanceExtensionFieldGroupEventId(c.Id, c.Version);
             IAttributeSetInstanceExtensionFieldGroupStateCreated e = NewAttributeSetInstanceExtensionFieldGroupStateCreated(stateEventId);
 		
             e.FieldType = c.FieldType;
@@ -126,7 +126,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 
         protected virtual IAttributeSetInstanceExtensionFieldGroupStateMergePatched Map(IMergePatchAttributeSetInstanceExtensionFieldGroup c)
         {
-			var stateEventId = new AttributeSetInstanceExtensionFieldGroupStateEventId(c.Id, c.Version);
+			var stateEventId = new AttributeSetInstanceExtensionFieldGroupEventId(c.Id, c.Version);
             IAttributeSetInstanceExtensionFieldGroupStateMergePatched e = NewAttributeSetInstanceExtensionFieldGroupStateMergePatched(stateEventId);
 
             e.FieldType = c.FieldType;
@@ -156,7 +156,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 
         protected virtual IAttributeSetInstanceExtensionFieldGroupStateDeleted Map(IDeleteAttributeSetInstanceExtensionFieldGroup c)
         {
-			var stateEventId = new AttributeSetInstanceExtensionFieldGroupStateEventId(c.Id, c.Version);
+			var stateEventId = new AttributeSetInstanceExtensionFieldGroupEventId(c.Id, c.Version);
             IAttributeSetInstanceExtensionFieldGroupStateDeleted e = NewAttributeSetInstanceExtensionFieldGroupStateDeleted(stateEventId);
 			
             e.CommandId = c.CommandId;
@@ -185,7 +185,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 
         protected AttributeSetInstanceExtensionFieldGroupStateCreated NewAttributeSetInstanceExtensionFieldGroupStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new AttributeSetInstanceExtensionFieldGroupStateEventId(_state.Id, version);
+            var stateEventId = new AttributeSetInstanceExtensionFieldGroupEventId(_state.Id, version);
             var e = NewAttributeSetInstanceExtensionFieldGroupStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -198,7 +198,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 
         protected AttributeSetInstanceExtensionFieldGroupStateMergePatched NewAttributeSetInstanceExtensionFieldGroupStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new AttributeSetInstanceExtensionFieldGroupStateEventId(_state.Id, version);
+            var stateEventId = new AttributeSetInstanceExtensionFieldGroupEventId(_state.Id, version);
             var e = NewAttributeSetInstanceExtensionFieldGroupStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -212,7 +212,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 
         protected AttributeSetInstanceExtensionFieldGroupStateDeleted NewAttributeSetInstanceExtensionFieldGroupStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new AttributeSetInstanceExtensionFieldGroupStateEventId(_state.Id, version);
+            var stateEventId = new AttributeSetInstanceExtensionFieldGroupEventId(_state.Id, version);
             var e = NewAttributeSetInstanceExtensionFieldGroupStateDeleted(stateEventId);
 
             e.CommandId = commandId;
@@ -225,17 +225,17 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 
 ////////////////////////
 
-		private AttributeSetInstanceExtensionFieldGroupStateCreated NewAttributeSetInstanceExtensionFieldGroupStateCreated(AttributeSetInstanceExtensionFieldGroupStateEventId stateEventId)
+		private AttributeSetInstanceExtensionFieldGroupStateCreated NewAttributeSetInstanceExtensionFieldGroupStateCreated(AttributeSetInstanceExtensionFieldGroupEventId stateEventId)
 		{
 			return new AttributeSetInstanceExtensionFieldGroupStateCreated(stateEventId);			
 		}
 
-        private AttributeSetInstanceExtensionFieldGroupStateMergePatched NewAttributeSetInstanceExtensionFieldGroupStateMergePatched(AttributeSetInstanceExtensionFieldGroupStateEventId stateEventId)
+        private AttributeSetInstanceExtensionFieldGroupStateMergePatched NewAttributeSetInstanceExtensionFieldGroupStateMergePatched(AttributeSetInstanceExtensionFieldGroupEventId stateEventId)
 		{
 			return new AttributeSetInstanceExtensionFieldGroupStateMergePatched(stateEventId);
 		}
 
-        private AttributeSetInstanceExtensionFieldGroupStateDeleted NewAttributeSetInstanceExtensionFieldGroupStateDeleted(AttributeSetInstanceExtensionFieldGroupStateEventId stateEventId)
+        private AttributeSetInstanceExtensionFieldGroupStateDeleted NewAttributeSetInstanceExtensionFieldGroupStateDeleted(AttributeSetInstanceExtensionFieldGroupEventId stateEventId)
 		{
 			return new AttributeSetInstanceExtensionFieldGroupStateDeleted(stateEventId);
 		}

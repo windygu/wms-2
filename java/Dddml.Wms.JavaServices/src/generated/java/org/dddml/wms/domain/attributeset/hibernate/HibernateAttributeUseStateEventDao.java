@@ -34,12 +34,12 @@ public class HibernateAttributeUseStateEventDao implements AttributeUseStateEven
 
     @Transactional(readOnly = true)
     @Override
-    public Iterable<AttributeUseStateEvent> findByAttributeSetStateEventId(AttributeSetStateEventId attributeSetStateEventId)
+    public Iterable<AttributeUseStateEvent> findByAttributeSetEventId(AttributeSetEventId attributeSetEventId)
     {
         Criteria criteria = getCurrentSession().createCriteria(AbstractAttributeUseStateEvent.class);
         Junction partIdCondition = Restrictions.conjunction()
-            .add(Restrictions.eq("stateEventId.attributeSetId", attributeSetStateEventId.getAttributeSetId()))
-            .add(Restrictions.eq("stateEventId.attributeSetVersion", attributeSetStateEventId.getVersion()))
+            .add(Restrictions.eq("stateEventId.attributeSetId", attributeSetEventId.getAttributeSetId()))
+            .add(Restrictions.eq("stateEventId.attributeSetVersion", attributeSetEventId.getVersion()))
             ;
         return criteria.add(partIdCondition).list();
     }

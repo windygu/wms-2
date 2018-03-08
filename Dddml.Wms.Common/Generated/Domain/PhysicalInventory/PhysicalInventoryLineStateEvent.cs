@@ -16,7 +16,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 	public abstract class PhysicalInventoryLineStateEventBase : IPhysicalInventoryLineStateEvent
 	{
 
-		public virtual PhysicalInventoryLineStateEventId StateEventId { get; set; }
+		public virtual PhysicalInventoryLineEventId StateEventId { get; set; }
 
         public virtual InventoryItemId InventoryItemId
         {
@@ -42,7 +42,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		PhysicalInventoryLineStateEventId IGlobalIdentity<PhysicalInventoryLineStateEventId>.GlobalId {
+		PhysicalInventoryLineEventId IGlobalIdentity<PhysicalInventoryLineEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -88,7 +88,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
         {
         }
 
-        protected PhysicalInventoryLineStateEventBase(PhysicalInventoryLineStateEventId stateEventId)
+        protected PhysicalInventoryLineStateEventBase(PhysicalInventoryLineEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -105,11 +105,11 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
 	public class PhysicalInventoryLineStateCreated : PhysicalInventoryLineStateEventBase, IPhysicalInventoryLineStateCreated
 	{
-		public PhysicalInventoryLineStateCreated () : this(new PhysicalInventoryLineStateEventId())
+		public PhysicalInventoryLineStateCreated () : this(new PhysicalInventoryLineEventId())
 		{
 		}
 
-		public PhysicalInventoryLineStateCreated (PhysicalInventoryLineStateEventId stateEventId) : base(stateEventId)
+		public PhysicalInventoryLineStateCreated (PhysicalInventoryLineEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -139,7 +139,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 		{
 		}
 
-		public PhysicalInventoryLineStateMergePatched (PhysicalInventoryLineStateEventId stateEventId) : base(stateEventId)
+		public PhysicalInventoryLineStateMergePatched (PhysicalInventoryLineEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -158,7 +158,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 		{
 		}
 
-		public PhysicalInventoryLineStateRemoved (PhysicalInventoryLineStateEventId stateEventId) : base(stateEventId)
+		public PhysicalInventoryLineStateRemoved (PhysicalInventoryLineEventId stateEventId) : base(stateEventId)
 		{
 		}
 

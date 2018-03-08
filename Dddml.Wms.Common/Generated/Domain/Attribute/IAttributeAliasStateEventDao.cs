@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.Attribute
 	{
 		void Save(IAttributeAliasStateEvent e);
 
-        IEnumerable<IAttributeAliasStateEvent> FindByAttributeStateEventId(AttributeStateEventId attributeStateEventId);
+        IEnumerable<IAttributeAliasStateEvent> FindByAttributeEventId(AttributeEventId attributeEventId);
 
 	}
 

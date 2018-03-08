@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
         public virtual AttributeSetInstanceExtensionFieldGroupStateCreatedDto ToAttributeSetInstanceExtensionFieldGroupStateCreatedDto(IAttributeSetInstanceExtensionFieldGroupStateCreated e)
         {
             var dto = new AttributeSetInstanceExtensionFieldGroupStateCreatedDto();
-            dto.StateEventId = new AttributeSetInstanceExtensionFieldGroupStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new AttributeSetInstanceExtensionFieldGroupEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -54,7 +54,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
         public virtual AttributeSetInstanceExtensionFieldGroupStateMergePatchedDto ToAttributeSetInstanceExtensionFieldGroupStateMergePatchedDto(IAttributeSetInstanceExtensionFieldGroupStateMergePatched e)
         {
             var dto = new AttributeSetInstanceExtensionFieldGroupStateMergePatchedDto();
-            dto.StateEventId = new AttributeSetInstanceExtensionFieldGroupStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new AttributeSetInstanceExtensionFieldGroupEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -78,7 +78,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
         public virtual AttributeSetInstanceExtensionFieldGroupStateDeletedDto ToAttributeSetInstanceExtensionFieldGroupStateDeletedDto(IAttributeSetInstanceExtensionFieldGroupStateDeleted e)
         {
             var dto = new AttributeSetInstanceExtensionFieldGroupStateDeletedDto();
-            dto.StateEventId = new AttributeSetInstanceExtensionFieldGroupStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new AttributeSetInstanceExtensionFieldGroupEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

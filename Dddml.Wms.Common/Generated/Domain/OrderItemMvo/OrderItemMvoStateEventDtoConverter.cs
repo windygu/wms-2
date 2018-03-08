@@ -34,7 +34,7 @@ namespace Dddml.Wms.Domain.OrderItemMvo
         public virtual OrderItemMvoStateCreatedDto ToOrderItemMvoStateCreatedDto(IOrderItemMvoStateCreated e)
         {
             var dto = new OrderItemMvoStateCreatedDto();
-            dto.StateEventId = new OrderItemMvoStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new OrderItemMvoEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -110,7 +110,7 @@ namespace Dddml.Wms.Domain.OrderItemMvo
         public virtual OrderItemMvoStateMergePatchedDto ToOrderItemMvoStateMergePatchedDto(IOrderItemMvoStateMergePatched e)
         {
             var dto = new OrderItemMvoStateMergePatchedDto();
-            dto.StateEventId = new OrderItemMvoStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new OrderItemMvoEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

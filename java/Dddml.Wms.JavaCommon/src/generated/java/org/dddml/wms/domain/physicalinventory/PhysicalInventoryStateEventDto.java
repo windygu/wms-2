@@ -9,15 +9,15 @@ import org.dddml.wms.domain.AbstractStateEvent;
 public class PhysicalInventoryStateEventDto extends AbstractStateEvent
 {
 
-    private PhysicalInventoryStateEventId stateEventId;
+    private PhysicalInventoryEventId stateEventId;
 
-    PhysicalInventoryStateEventId getStateEventId() {
-        if (stateEventId == null) { stateEventId = new PhysicalInventoryStateEventId(); }
-        return this.stateEventId;
+    PhysicalInventoryEventId getStateEventId() {
+        if (stateEventId == null) { stateEventId = new PhysicalInventoryEventId(); }
+        return stateEventId;
     }
 
-    void setStateEventId(PhysicalInventoryStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    void setStateEventId(PhysicalInventoryEventId eventId) {
+        this.stateEventId = eventId;
     }
 
     public String getDocumentNumber() {

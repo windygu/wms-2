@@ -7,7 +7,7 @@ import org.dddml.wms.specialization.Event;
 
 public interface InventoryPRTriggeredStateEvent extends Event
 {
-    InventoryPRTriggeredStateEventId getStateEventId();
+    InventoryPRTriggeredEventId getStateEventId();
 
     boolean getStateEventReadOnly();
 

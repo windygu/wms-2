@@ -16,7 +16,7 @@ public class HibernateUomConversionEventStore extends AbstractHibernateEventStor
     @Override
     protected Serializable getEventId(EventStoreAggregateId eventStoreAggregateId, long version)
     {
-        return new UomConversionStateEventId((UomConversionId) eventStoreAggregateId.getId(), version);
+        return new UomConversionEventId((UomConversionId) eventStoreAggregateId.getId(), version);
     }
 
     @Override

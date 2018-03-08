@@ -8,14 +8,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractStatusItemStateEvent extends AbstractStateEvent implements StatusItemStateEvent 
 {
-    private StatusItemStateEventId stateEventId;
+    private StatusItemEventId stateEventId;
 
-    public StatusItemStateEventId getStateEventId() {
+    public StatusItemEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(StatusItemStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(StatusItemEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public String getStatusId() {
@@ -130,8 +130,8 @@ public abstract class AbstractStatusItemStateEvent extends AbstractStateEvent im
     protected AbstractStatusItemStateEvent() {
     }
 
-    protected AbstractStatusItemStateEvent(StatusItemStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractStatusItemStateEvent(StatusItemEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -141,11 +141,11 @@ public abstract class AbstractStatusItemStateEvent extends AbstractStateEvent im
     public static abstract class AbstractStatusItemStateCreated extends AbstractStatusItemStateEvent implements StatusItemStateEvent.StatusItemStateCreated
     {
         public AbstractStatusItemStateCreated() {
-            this(new StatusItemStateEventId());
+            this(new StatusItemEventId());
         }
 
-        public AbstractStatusItemStateCreated(StatusItemStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractStatusItemStateCreated(StatusItemEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -158,11 +158,11 @@ public abstract class AbstractStatusItemStateEvent extends AbstractStateEvent im
     public static abstract class AbstractStatusItemStateMergePatched extends AbstractStatusItemStateEvent implements StatusItemStateEvent.StatusItemStateMergePatched
     {
         public AbstractStatusItemStateMergePatched() {
-            this(new StatusItemStateEventId());
+            this(new StatusItemEventId());
         }
 
-        public AbstractStatusItemStateMergePatched(StatusItemStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractStatusItemStateMergePatched(StatusItemEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -227,8 +227,8 @@ public abstract class AbstractStatusItemStateEvent extends AbstractStateEvent im
         public SimpleStatusItemStateCreated() {
         }
 
-        public SimpleStatusItemStateCreated(StatusItemStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleStatusItemStateCreated(StatusItemEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -237,8 +237,8 @@ public abstract class AbstractStatusItemStateEvent extends AbstractStateEvent im
         public SimpleStatusItemStateMergePatched() {
         }
 
-        public SimpleStatusItemStateMergePatched(StatusItemStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleStatusItemStateMergePatched(StatusItemEventId eventId) {
+            super(eventId);
         }
     }
 

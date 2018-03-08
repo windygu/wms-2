@@ -8,7 +8,7 @@ public interface MovementConfirmationLineStateEventDao
 {
     void save(MovementConfirmationLineStateEvent e);
 
-    Iterable<MovementConfirmationLineStateEvent> findByMovementConfirmationStateEventId(MovementConfirmationStateEventId movementConfirmationStateEventId);
+    Iterable<MovementConfirmationLineStateEvent> findByMovementConfirmationEventId(MovementConfirmationEventId movementConfirmationEventId);
 
 }
 

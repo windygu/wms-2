@@ -5,7 +5,7 @@
   
   <class name="SellableInventoryItemEntryMvoStateEventBase" table="SellableInventoryItemEntryMvoStateEvents" mutable="false" abstract="true">
 
-    <composite-id name="StateEventId" class="Dddml.Wms.Domain.SellableInventoryItemEntryMvo.SellableInventoryItemEntryMvoStateEventId">
+    <composite-id name="StateEventId" class="Dddml.Wms.Domain.SellableInventoryItemEntryMvo.SellableInventoryItemEntryMvoEventId">
         <key-property name="SellableInventoryItemEntryIdSellableInventoryItemIdProductId" ><column name="ProductId" length="60" sql-type="VARCHAR(60)" /></key-property>
         <key-property name="SellableInventoryItemEntryIdSellableInventoryItemIdLocatorId" ><column name="LocatorId" length="50" /></key-property>
         <key-property name="SellableInventoryItemEntryIdSellableInventoryItemIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" length="50" /></key-property>

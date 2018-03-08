@@ -8,7 +8,7 @@
   
   <class name="AbstractAttributeSetInstanceExtensionFieldStateEvent" table="AttributeSetInstanceExtensionFieldStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="stateEventId" class="org.dddml.wms.domain.attributesetinstanceextensionfield.AttributeSetInstanceExtensionFieldStateEventId">
+	<composite-id name="stateEventId" class="org.dddml.wms.domain.attributesetinstanceextensionfield.AttributeSetInstanceExtensionFieldEventId">
 		<key-property name="name" ><column name="Name" length="50" /></key-property>
 		<key-property name="version" ></key-property>
 	</composite-id>

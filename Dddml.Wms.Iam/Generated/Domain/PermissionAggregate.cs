@@ -104,7 +104,7 @@ namespace Dddml.Wms.Domain.Permission
 
         protected virtual IPermissionStateCreated Map(ICreatePermission c)
         {
-			var stateEventId = new PermissionStateEventId(c.PermissionId, c.Version);
+			var stateEventId = new PermissionEventId(c.PermissionId, c.Version);
             IPermissionStateCreated e = NewPermissionStateCreated(stateEventId);
 		
             e.Name = c.Name;
@@ -124,7 +124,7 @@ namespace Dddml.Wms.Domain.Permission
 
         protected virtual IPermissionStateMergePatched Map(IMergePatchPermission c)
         {
-			var stateEventId = new PermissionStateEventId(c.PermissionId, c.Version);
+			var stateEventId = new PermissionEventId(c.PermissionId, c.Version);
             IPermissionStateMergePatched e = NewPermissionStateMergePatched(stateEventId);
 
             e.Name = c.Name;
@@ -150,7 +150,7 @@ namespace Dddml.Wms.Domain.Permission
 
         protected virtual IPermissionStateDeleted Map(IDeletePermission c)
         {
-			var stateEventId = new PermissionStateEventId(c.PermissionId, c.Version);
+			var stateEventId = new PermissionEventId(c.PermissionId, c.Version);
             IPermissionStateDeleted e = NewPermissionStateDeleted(stateEventId);
 			
             e.CommandId = c.CommandId;
@@ -179,7 +179,7 @@ namespace Dddml.Wms.Domain.Permission
 
         protected PermissionStateCreated NewPermissionStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new PermissionStateEventId(_state.PermissionId, version);
+            var stateEventId = new PermissionEventId(_state.PermissionId, version);
             var e = NewPermissionStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -192,7 +192,7 @@ namespace Dddml.Wms.Domain.Permission
 
         protected PermissionStateMergePatched NewPermissionStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new PermissionStateEventId(_state.PermissionId, version);
+            var stateEventId = new PermissionEventId(_state.PermissionId, version);
             var e = NewPermissionStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -206,7 +206,7 @@ namespace Dddml.Wms.Domain.Permission
 
         protected PermissionStateDeleted NewPermissionStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new PermissionStateEventId(_state.PermissionId, version);
+            var stateEventId = new PermissionEventId(_state.PermissionId, version);
             var e = NewPermissionStateDeleted(stateEventId);
 
             e.CommandId = commandId;
@@ -219,17 +219,17 @@ namespace Dddml.Wms.Domain.Permission
 
 ////////////////////////
 
-		private PermissionStateCreated NewPermissionStateCreated(PermissionStateEventId stateEventId)
+		private PermissionStateCreated NewPermissionStateCreated(PermissionEventId stateEventId)
 		{
 			return new PermissionStateCreated(stateEventId);			
 		}
 
-        private PermissionStateMergePatched NewPermissionStateMergePatched(PermissionStateEventId stateEventId)
+        private PermissionStateMergePatched NewPermissionStateMergePatched(PermissionEventId stateEventId)
 		{
 			return new PermissionStateMergePatched(stateEventId);
 		}
 
-        private PermissionStateDeleted NewPermissionStateDeleted(PermissionStateEventId stateEventId)
+        private PermissionStateDeleted NewPermissionStateDeleted(PermissionEventId stateEventId)
 		{
 			return new PermissionStateDeleted(stateEventId);
 		}

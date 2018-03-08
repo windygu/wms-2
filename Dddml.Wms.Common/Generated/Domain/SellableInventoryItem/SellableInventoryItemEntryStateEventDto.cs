@@ -17,13 +17,13 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 	public abstract class SellableInventoryItemEntryStateEventDtoBase : IStateEventDto, ISellableInventoryItemEntryStateCreated
 	{
 
-        private SellableInventoryItemEntryStateEventIdDto _stateEventId;
+        private SellableInventoryItemEntryEventIdDto _stateEventId;
 
-		protected internal virtual SellableInventoryItemEntryStateEventIdDto StateEventId 
+		protected internal virtual SellableInventoryItemEntryEventIdDto StateEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new SellableInventoryItemEntryStateEventIdDto(); }
+                if (_stateEventId == null) { _stateEventId = new SellableInventoryItemEntryEventIdDto(); }
                 return _stateEventId;
             }
             set
@@ -64,10 +64,10 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		SellableInventoryItemEntryStateEventId IGlobalIdentity<SellableInventoryItemEntryStateEventId>.GlobalId {
+		SellableInventoryItemEntryEventId IGlobalIdentity<SellableInventoryItemEntryEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToSellableInventoryItemEntryStateEventId();
+				return this.StateEventId.ToSellableInventoryItemEntryEventId();
 			}
 		}
 
@@ -106,16 +106,16 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 		}
 
 
-        SellableInventoryItemEntryStateEventId ISellableInventoryItemEntryStateEvent.StateEventId
+        SellableInventoryItemEntryEventId ISellableInventoryItemEntryStateEvent.StateEventId
         {
-            get { return this.StateEventId.ToSellableInventoryItemEntryStateEventId(); }
+            get { return this.StateEventId.ToSellableInventoryItemEntryEventId(); }
         }
 
         protected SellableInventoryItemEntryStateEventDtoBase()
         {
         }
 
-        protected SellableInventoryItemEntryStateEventDtoBase(SellableInventoryItemEntryStateEventIdDto stateEventId)
+        protected SellableInventoryItemEntryStateEventDtoBase(SellableInventoryItemEntryEventIdDto stateEventId)
         {
             this.StateEventId = stateEventId;
         }

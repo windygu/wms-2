@@ -498,7 +498,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
             id.Append("[").Append("AttributeValueMvo|");
 
             var stateEntityId = this.AttributeValueId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.AttributeValueId; // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+            var eventEntityId = stateEvent.StateEventId.AttributeValueId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);

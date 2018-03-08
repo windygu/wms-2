@@ -96,7 +96,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 
         protected virtual ISellableInventoryItemEntryMvoStateCreated Map(ICreateSellableInventoryItemEntryMvo c)
         {
-			var stateEventId = new SellableInventoryItemEntryMvoStateEventId(c.SellableInventoryItemEntryId, c.SellableInventoryItemVersion);
+			var stateEventId = new SellableInventoryItemEntryMvoEventId(c.SellableInventoryItemEntryId, c.SellableInventoryItemVersion);
             ISellableInventoryItemEntryMvoStateCreated e = NewSellableInventoryItemEntryMvoStateCreated(stateEventId);
 		
             e.SellableQuantity = c.SellableQuantity;
@@ -120,7 +120,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 
         protected virtual ISellableInventoryItemEntryMvoStateMergePatched Map(IMergePatchSellableInventoryItemEntryMvo c)
         {
-			var stateEventId = new SellableInventoryItemEntryMvoStateEventId(c.SellableInventoryItemEntryId, c.SellableInventoryItemVersion);
+			var stateEventId = new SellableInventoryItemEntryMvoEventId(c.SellableInventoryItemEntryId, c.SellableInventoryItemVersion);
             ISellableInventoryItemEntryMvoStateMergePatched e = NewSellableInventoryItemEntryMvoStateMergePatched(stateEventId);
 
             e.SellableQuantity = c.SellableQuantity;
@@ -168,7 +168,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 
         protected SellableInventoryItemEntryMvoStateCreated NewSellableInventoryItemEntryMvoStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new SellableInventoryItemEntryMvoStateEventId(_state.SellableInventoryItemEntryId, version);
+            var stateEventId = new SellableInventoryItemEntryMvoEventId(_state.SellableInventoryItemEntryId, version);
             var e = NewSellableInventoryItemEntryMvoStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -181,7 +181,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 
         protected SellableInventoryItemEntryMvoStateMergePatched NewSellableInventoryItemEntryMvoStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new SellableInventoryItemEntryMvoStateEventId(_state.SellableInventoryItemEntryId, version);
+            var stateEventId = new SellableInventoryItemEntryMvoEventId(_state.SellableInventoryItemEntryId, version);
             var e = NewSellableInventoryItemEntryMvoStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -195,12 +195,12 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 
 ////////////////////////
 
-		private SellableInventoryItemEntryMvoStateCreated NewSellableInventoryItemEntryMvoStateCreated(SellableInventoryItemEntryMvoStateEventId stateEventId)
+		private SellableInventoryItemEntryMvoStateCreated NewSellableInventoryItemEntryMvoStateCreated(SellableInventoryItemEntryMvoEventId stateEventId)
 		{
 			return new SellableInventoryItemEntryMvoStateCreated(stateEventId);			
 		}
 
-        private SellableInventoryItemEntryMvoStateMergePatched NewSellableInventoryItemEntryMvoStateMergePatched(SellableInventoryItemEntryMvoStateEventId stateEventId)
+        private SellableInventoryItemEntryMvoStateMergePatched NewSellableInventoryItemEntryMvoStateMergePatched(SellableInventoryItemEntryMvoEventId stateEventId)
 		{
 			return new SellableInventoryItemEntryMvoStateMergePatched(stateEventId);
 		}

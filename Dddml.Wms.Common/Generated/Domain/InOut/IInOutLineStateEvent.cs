@@ -11,9 +11,9 @@ using Dddml.Wms.Domain.InOut;
 
 namespace Dddml.Wms.Domain.InOut
 {
-	public interface IInOutLineStateEvent : IEvent, IStateEventDto, IGlobalIdentity<InOutLineStateEventId>, ICreated<string>
+	public interface IInOutLineStateEvent : IEvent, IStateEventDto, IGlobalIdentity<InOutLineEventId>, ICreated<string>
 	{
-		InOutLineStateEventId StateEventId { get; }
+		InOutLineEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

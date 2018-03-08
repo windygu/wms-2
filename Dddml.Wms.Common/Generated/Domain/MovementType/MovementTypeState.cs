@@ -247,7 +247,7 @@ namespace Dddml.Wms.Domain.MovementType
             id.Append("[").Append("MovementType|");
 
             var stateEntityId = this.MovementTypeId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.MovementTypeId; // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+            var eventEntityId = stateEvent.StateEventId.MovementTypeId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);

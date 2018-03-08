@@ -8,7 +8,7 @@ public interface InOutLineStateEventDao
 {
     void save(InOutLineStateEvent e);
 
-    Iterable<InOutLineStateEvent> findByInOutStateEventId(InOutStateEventId inOutStateEventId);
+    Iterable<InOutLineStateEvent> findByInOutEventId(InOutEventId inOutEventId);
 
 }
 

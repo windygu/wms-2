@@ -21,7 +21,7 @@ namespace Dddml.Wms.Domain.AttributeSet.NHibernate
 	{
 		public override object GetEventId(IEventStoreAggregateId eventStoreAggregateId, long version)
 		{
-			return new AttributeSetStateEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
+			return new AttributeSetEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
 		public override Type GetSupportedStateEventType()

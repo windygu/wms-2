@@ -8,14 +8,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractOrderItemStateEvent extends AbstractStateEvent implements OrderItemStateEvent 
 {
-    private OrderItemStateEventId stateEventId;
+    private OrderItemEventId stateEventId;
 
-    public OrderItemStateEventId getStateEventId() {
+    public OrderItemEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(OrderItemStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(OrderItemEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public String getOrderItemSeqId() {
@@ -514,8 +514,8 @@ public abstract class AbstractOrderItemStateEvent extends AbstractStateEvent imp
     protected AbstractOrderItemStateEvent() {
     }
 
-    protected AbstractOrderItemStateEvent(OrderItemStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractOrderItemStateEvent(OrderItemEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -525,11 +525,11 @@ public abstract class AbstractOrderItemStateEvent extends AbstractStateEvent imp
     public static abstract class AbstractOrderItemStateCreated extends AbstractOrderItemStateEvent implements OrderItemStateEvent.OrderItemStateCreated
     {
         public AbstractOrderItemStateCreated() {
-            this(new OrderItemStateEventId());
+            this(new OrderItemEventId());
         }
 
-        public AbstractOrderItemStateCreated(OrderItemStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractOrderItemStateCreated(OrderItemEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -542,11 +542,11 @@ public abstract class AbstractOrderItemStateEvent extends AbstractStateEvent imp
     public static abstract class AbstractOrderItemStateMergePatched extends AbstractOrderItemStateEvent implements OrderItemStateEvent.OrderItemStateMergePatched
     {
         public AbstractOrderItemStateMergePatched() {
-            this(new OrderItemStateEventId());
+            this(new OrderItemEventId());
         }
 
-        public AbstractOrderItemStateMergePatched(OrderItemStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractOrderItemStateMergePatched(OrderItemEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -921,8 +921,8 @@ public abstract class AbstractOrderItemStateEvent extends AbstractStateEvent imp
         public SimpleOrderItemStateCreated() {
         }
 
-        public SimpleOrderItemStateCreated(OrderItemStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleOrderItemStateCreated(OrderItemEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -931,8 +931,8 @@ public abstract class AbstractOrderItemStateEvent extends AbstractStateEvent imp
         public SimpleOrderItemStateMergePatched() {
         }
 
-        public SimpleOrderItemStateMergePatched(OrderItemStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleOrderItemStateMergePatched(OrderItemEventId eventId) {
+            super(eventId);
         }
     }
 

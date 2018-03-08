@@ -16,13 +16,13 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 	public abstract class UserLoginMvoStateEventDtoBase : IStateEventDto, IUserLoginMvoStateCreated, IUserLoginMvoStateMergePatched, IUserLoginMvoStateDeleted
 	{
 
-        private UserLoginMvoStateEventIdDto _stateEventId;
+        private UserLoginMvoEventIdDto _stateEventId;
 
-		protected internal virtual UserLoginMvoStateEventIdDto StateEventId 
+		protected internal virtual UserLoginMvoEventIdDto StateEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new UserLoginMvoStateEventIdDto(); }
+                if (_stateEventId == null) { _stateEventId = new UserLoginMvoEventIdDto(); }
                 return _stateEventId;
             }
             set
@@ -89,10 +89,10 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		UserLoginMvoStateEventId IGlobalIdentity<UserLoginMvoStateEventId>.GlobalId {
+		UserLoginMvoEventId IGlobalIdentity<UserLoginMvoEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToUserLoginMvoStateEventId();
+				return this.StateEventId.ToUserLoginMvoEventId();
 			}
 		}
 
@@ -490,16 +490,16 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 		}
 
 
-        UserLoginMvoStateEventId IUserLoginMvoStateEvent.StateEventId
+        UserLoginMvoEventId IUserLoginMvoStateEvent.StateEventId
         {
-            get { return this.StateEventId.ToUserLoginMvoStateEventId(); }
+            get { return this.StateEventId.ToUserLoginMvoEventId(); }
         }
 
         protected UserLoginMvoStateEventDtoBase()
         {
         }
 
-        protected UserLoginMvoStateEventDtoBase(UserLoginMvoStateEventIdDto stateEventId)
+        protected UserLoginMvoStateEventDtoBase(UserLoginMvoEventIdDto stateEventId)
         {
             this.StateEventId = stateEventId;
         }

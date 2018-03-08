@@ -16,13 +16,13 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 	public abstract class InventoryPRTriggeredStateEventDtoBase : IStateEventDto, IInventoryPRTriggeredStateCreated, IInventoryPRTriggeredStateMergePatched
 	{
 
-        private InventoryPRTriggeredStateEventIdDto _stateEventId;
+        private InventoryPRTriggeredEventIdDto _stateEventId;
 
-		protected internal virtual InventoryPRTriggeredStateEventIdDto StateEventId 
+		protected internal virtual InventoryPRTriggeredEventIdDto StateEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new InventoryPRTriggeredStateEventIdDto(); }
+                if (_stateEventId == null) { _stateEventId = new InventoryPRTriggeredEventIdDto(); }
                 return _stateEventId;
             }
             set
@@ -53,10 +53,10 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		InventoryPRTriggeredStateEventId IGlobalIdentity<InventoryPRTriggeredStateEventId>.GlobalId {
+		InventoryPRTriggeredEventId IGlobalIdentity<InventoryPRTriggeredEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToInventoryPRTriggeredStateEventId();
+				return this.StateEventId.ToInventoryPRTriggeredEventId();
 			}
 		}
 
@@ -112,16 +112,16 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 		}
 
 
-        InventoryPRTriggeredStateEventId IInventoryPRTriggeredStateEvent.StateEventId
+        InventoryPRTriggeredEventId IInventoryPRTriggeredStateEvent.StateEventId
         {
-            get { return this.StateEventId.ToInventoryPRTriggeredStateEventId(); }
+            get { return this.StateEventId.ToInventoryPRTriggeredEventId(); }
         }
 
         protected InventoryPRTriggeredStateEventDtoBase()
         {
         }
 
-        protected InventoryPRTriggeredStateEventDtoBase(InventoryPRTriggeredStateEventIdDto stateEventId)
+        protected InventoryPRTriggeredStateEventDtoBase(InventoryPRTriggeredEventIdDto stateEventId)
         {
             this.StateEventId = stateEventId;
         }

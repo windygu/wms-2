@@ -21,7 +21,7 @@ namespace Dddml.Wms.Domain.User.NHibernate
 	{
 		public override object GetEventId(IEventStoreAggregateId eventStoreAggregateId, long version)
 		{
-			return new UserStateEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
+			return new UserEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
 		public override Type GetSupportedStateEventType()

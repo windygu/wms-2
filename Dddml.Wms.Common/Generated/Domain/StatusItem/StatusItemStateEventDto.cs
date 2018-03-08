@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.StatusItem
 	public abstract class StatusItemStateEventDtoBase : IStateEventDto, IStatusItemStateCreated, IStatusItemStateMergePatched
 	{
 
-        private StatusItemStateEventIdDto _stateEventId;
+        private StatusItemEventIdDto _stateEventId;
 
-		protected internal virtual StatusItemStateEventIdDto StateEventId 
+		protected internal virtual StatusItemEventIdDto StateEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new StatusItemStateEventIdDto(); }
+                if (_stateEventId == null) { _stateEventId = new StatusItemEventIdDto(); }
                 return _stateEventId;
             }
             set
@@ -60,10 +60,10 @@ namespace Dddml.Wms.Domain.StatusItem
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		StatusItemStateEventId IGlobalIdentity<StatusItemStateEventId>.GlobalId {
+		StatusItemEventId IGlobalIdentity<StatusItemEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToStatusItemStateEventId();
+				return this.StateEventId.ToStatusItemEventId();
 			}
 		}
 
@@ -195,16 +195,16 @@ namespace Dddml.Wms.Domain.StatusItem
 		}
 
 
-        StatusItemStateEventId IStatusItemStateEvent.StateEventId
+        StatusItemEventId IStatusItemStateEvent.StateEventId
         {
-            get { return this.StateEventId.ToStatusItemStateEventId(); }
+            get { return this.StateEventId.ToStatusItemEventId(); }
         }
 
         protected StatusItemStateEventDtoBase()
         {
         }
 
-        protected StatusItemStateEventDtoBase(StatusItemStateEventIdDto stateEventId)
+        protected StatusItemStateEventDtoBase(StatusItemEventIdDto stateEventId)
         {
             this.StateEventId = stateEventId;
         }

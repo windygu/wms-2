@@ -9,14 +9,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractMovementConfirmationStateEvent extends AbstractStateEvent implements MovementConfirmationStateEvent 
 {
-    private MovementConfirmationStateEventId stateEventId;
+    private MovementConfirmationEventId stateEventId;
 
-    public MovementConfirmationStateEventId getStateEventId() {
+    public MovementConfirmationEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(MovementConfirmationStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(MovementConfirmationEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public String getDocumentNumber() {
@@ -179,20 +179,20 @@ public abstract class AbstractMovementConfirmationStateEvent extends AbstractSta
     protected AbstractMovementConfirmationStateEvent() {
     }
 
-    protected AbstractMovementConfirmationStateEvent(MovementConfirmationStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractMovementConfirmationStateEvent(MovementConfirmationEventId eventId) {
+        this.stateEventId = eventId;
     }
 
     protected MovementConfirmationLineStateEventDao getMovementConfirmationLineStateEventDao() {
         return (MovementConfirmationLineStateEventDao)ApplicationContext.current.get("MovementConfirmationLineStateEventDao");
     }
 
-    protected MovementConfirmationLineStateEventId newMovementConfirmationLineStateEventId(String lineNumber)
+    protected MovementConfirmationLineEventId newMovementConfirmationLineEventId(String lineNumber)
     {
-        MovementConfirmationLineStateEventId stateEventId = new MovementConfirmationLineStateEventId(this.getStateEventId().getDocumentNumber(), 
+        MovementConfirmationLineEventId eventId = new MovementConfirmationLineEventId(this.getStateEventId().getDocumentNumber(), 
             lineNumber, 
             this.getStateEventId().getVersion());
-        return stateEventId;
+        return eventId;
     }
 
     protected void throwOnInconsistentEventIds(MovementConfirmationLineStateEvent e)
@@ -210,15 +210,15 @@ public abstract class AbstractMovementConfirmationStateEvent extends AbstractSta
     }
 
     public MovementConfirmationLineStateEvent.MovementConfirmationLineStateCreated newMovementConfirmationLineStateCreated(String lineNumber) {
-        return new AbstractMovementConfirmationLineStateEvent.SimpleMovementConfirmationLineStateCreated(newMovementConfirmationLineStateEventId(lineNumber));
+        return new AbstractMovementConfirmationLineStateEvent.SimpleMovementConfirmationLineStateCreated(newMovementConfirmationLineEventId(lineNumber));
     }
 
     public MovementConfirmationLineStateEvent.MovementConfirmationLineStateMergePatched newMovementConfirmationLineStateMergePatched(String lineNumber) {
-        return new AbstractMovementConfirmationLineStateEvent.SimpleMovementConfirmationLineStateMergePatched(newMovementConfirmationLineStateEventId(lineNumber));
+        return new AbstractMovementConfirmationLineStateEvent.SimpleMovementConfirmationLineStateMergePatched(newMovementConfirmationLineEventId(lineNumber));
     }
 
     public MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved newMovementConfirmationLineStateRemoved(String lineNumber) {
-        return new AbstractMovementConfirmationLineStateEvent.SimpleMovementConfirmationLineStateRemoved(newMovementConfirmationLineStateEventId(lineNumber));
+        return new AbstractMovementConfirmationLineStateEvent.SimpleMovementConfirmationLineStateRemoved(newMovementConfirmationLineEventId(lineNumber));
     }
 
 
@@ -228,18 +228,18 @@ public abstract class AbstractMovementConfirmationStateEvent extends AbstractSta
     public static abstract class AbstractMovementConfirmationStateCreated extends AbstractMovementConfirmationStateEvent implements MovementConfirmationStateEvent.MovementConfirmationStateCreated, Saveable
     {
         public AbstractMovementConfirmationStateCreated() {
-            this(new MovementConfirmationStateEventId());
+            this(new MovementConfirmationEventId());
         }
 
-        public AbstractMovementConfirmationStateCreated(MovementConfirmationStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractMovementConfirmationStateCreated(MovementConfirmationEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
             return StateEventType.CREATED;
         }
 
-        private Map<MovementConfirmationLineStateEventId, MovementConfirmationLineStateEvent.MovementConfirmationLineStateCreated> movementConfirmationLineEvents = new HashMap<MovementConfirmationLineStateEventId, MovementConfirmationLineStateEvent.MovementConfirmationLineStateCreated>();
+        private Map<MovementConfirmationLineEventId, MovementConfirmationLineStateEvent.MovementConfirmationLineStateCreated> movementConfirmationLineEvents = new HashMap<MovementConfirmationLineEventId, MovementConfirmationLineStateEvent.MovementConfirmationLineStateCreated>();
         
         private Iterable<MovementConfirmationLineStateEvent.MovementConfirmationLineStateCreated> readOnlyMovementConfirmationLineEvents;
 
@@ -254,7 +254,7 @@ public abstract class AbstractMovementConfirmationStateEvent extends AbstractSta
                 if (readOnlyMovementConfirmationLineEvents != null) { return readOnlyMovementConfirmationLineEvents; }
                 MovementConfirmationLineStateEventDao eventDao = getMovementConfirmationLineStateEventDao();
                 List<MovementConfirmationLineStateEvent.MovementConfirmationLineStateCreated> eL = new ArrayList<MovementConfirmationLineStateEvent.MovementConfirmationLineStateCreated>();
-                for (MovementConfirmationLineStateEvent e : eventDao.findByMovementConfirmationStateEventId(this.getStateEventId()))
+                for (MovementConfirmationLineStateEvent e : eventDao.findByMovementConfirmationEventId(this.getStateEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((MovementConfirmationLineStateEvent.MovementConfirmationLineStateCreated)e);
@@ -293,11 +293,11 @@ public abstract class AbstractMovementConfirmationStateEvent extends AbstractSta
     public static abstract class AbstractMovementConfirmationStateMergePatched extends AbstractMovementConfirmationStateEvent implements MovementConfirmationStateEvent.MovementConfirmationStateMergePatched, Saveable
     {
         public AbstractMovementConfirmationStateMergePatched() {
-            this(new MovementConfirmationStateEventId());
+            this(new MovementConfirmationEventId());
         }
 
-        public AbstractMovementConfirmationStateMergePatched(MovementConfirmationStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractMovementConfirmationStateMergePatched(MovementConfirmationEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -394,7 +394,7 @@ public abstract class AbstractMovementConfirmationStateEvent extends AbstractSta
             this.isPropertyActiveRemoved = removed;
         }
 
-        private Map<MovementConfirmationLineStateEventId, MovementConfirmationLineStateEvent> movementConfirmationLineEvents = new HashMap<MovementConfirmationLineStateEventId, MovementConfirmationLineStateEvent>();
+        private Map<MovementConfirmationLineEventId, MovementConfirmationLineStateEvent> movementConfirmationLineEvents = new HashMap<MovementConfirmationLineEventId, MovementConfirmationLineStateEvent>();
         
         private Iterable<MovementConfirmationLineStateEvent> readOnlyMovementConfirmationLineEvents;
 
@@ -409,7 +409,7 @@ public abstract class AbstractMovementConfirmationStateEvent extends AbstractSta
                 if (readOnlyMovementConfirmationLineEvents != null) { return readOnlyMovementConfirmationLineEvents; }
                 MovementConfirmationLineStateEventDao eventDao = getMovementConfirmationLineStateEventDao();
                 List<MovementConfirmationLineStateEvent> eL = new ArrayList<MovementConfirmationLineStateEvent>();
-                for (MovementConfirmationLineStateEvent e : eventDao.findByMovementConfirmationStateEventId(this.getStateEventId()))
+                for (MovementConfirmationLineStateEvent e : eventDao.findByMovementConfirmationEventId(this.getStateEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((MovementConfirmationLineStateEvent)e);
@@ -448,11 +448,11 @@ public abstract class AbstractMovementConfirmationStateEvent extends AbstractSta
     public static abstract class AbstractMovementConfirmationStateDeleted extends AbstractMovementConfirmationStateEvent implements MovementConfirmationStateEvent.MovementConfirmationStateDeleted, Saveable
     {
         public AbstractMovementConfirmationStateDeleted() {
-            this(new MovementConfirmationStateEventId());
+            this(new MovementConfirmationEventId());
         }
 
-        public AbstractMovementConfirmationStateDeleted(MovementConfirmationStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractMovementConfirmationStateDeleted(MovementConfirmationEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -460,7 +460,7 @@ public abstract class AbstractMovementConfirmationStateEvent extends AbstractSta
         }
 
 		
-        private Map<MovementConfirmationLineStateEventId, MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved> movementConfirmationLineEvents = new HashMap<MovementConfirmationLineStateEventId, MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved>();
+        private Map<MovementConfirmationLineEventId, MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved> movementConfirmationLineEvents = new HashMap<MovementConfirmationLineEventId, MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved>();
         
         private Iterable<MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved> readOnlyMovementConfirmationLineEvents;
 
@@ -475,7 +475,7 @@ public abstract class AbstractMovementConfirmationStateEvent extends AbstractSta
                 if (readOnlyMovementConfirmationLineEvents != null) { return readOnlyMovementConfirmationLineEvents; }
                 MovementConfirmationLineStateEventDao eventDao = getMovementConfirmationLineStateEventDao();
                 List<MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved> eL = new ArrayList<MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved>();
-                for (MovementConfirmationLineStateEvent e : eventDao.findByMovementConfirmationStateEventId(this.getStateEventId()))
+                for (MovementConfirmationLineStateEvent e : eventDao.findByMovementConfirmationEventId(this.getStateEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved)e);
@@ -514,8 +514,8 @@ public abstract class AbstractMovementConfirmationStateEvent extends AbstractSta
         public SimpleMovementConfirmationStateCreated() {
         }
 
-        public SimpleMovementConfirmationStateCreated(MovementConfirmationStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleMovementConfirmationStateCreated(MovementConfirmationEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -524,8 +524,8 @@ public abstract class AbstractMovementConfirmationStateEvent extends AbstractSta
         public SimpleMovementConfirmationStateMergePatched() {
         }
 
-        public SimpleMovementConfirmationStateMergePatched(MovementConfirmationStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleMovementConfirmationStateMergePatched(MovementConfirmationEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -534,8 +534,8 @@ public abstract class AbstractMovementConfirmationStateEvent extends AbstractSta
         public SimpleMovementConfirmationStateDeleted() {
         }
 
-        public SimpleMovementConfirmationStateDeleted(MovementConfirmationStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleMovementConfirmationStateDeleted(MovementConfirmationEventId eventId) {
+            super(eventId);
         }
     }
 

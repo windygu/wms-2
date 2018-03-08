@@ -59,19 +59,19 @@ public abstract class AbstractOrganizationStateEvent extends AbstractPartyStateE
     protected AbstractOrganizationStateEvent() {
     }
 
-    protected AbstractOrganizationStateEvent(PartyStateEventId stateEventId) {
-        super(stateEventId);
+    protected AbstractOrganizationStateEvent(PartyEventId eventId) {
+        super(eventId);
     }
 
 
     public static abstract class AbstractOrganizationStateCreated extends AbstractOrganizationStateEvent implements OrganizationStateEvent.OrganizationStateCreated
     {
         public AbstractOrganizationStateCreated() {
-            this(new PartyStateEventId());
+            this(new PartyEventId());
         }
 
-        public AbstractOrganizationStateCreated(PartyStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractOrganizationStateCreated(PartyEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -84,11 +84,11 @@ public abstract class AbstractOrganizationStateEvent extends AbstractPartyStateE
     public static abstract class AbstractOrganizationStateMergePatched extends AbstractOrganizationStateEvent implements OrganizationStateEvent.OrganizationStateMergePatched
     {
         public AbstractOrganizationStateMergePatched() {
-            this(new PartyStateEventId());
+            this(new PartyEventId());
         }
 
-        public AbstractOrganizationStateMergePatched(PartyStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractOrganizationStateMergePatched(PartyEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -161,11 +161,11 @@ public abstract class AbstractOrganizationStateEvent extends AbstractPartyStateE
     public static abstract class AbstractOrganizationStateDeleted extends AbstractOrganizationStateEvent implements OrganizationStateEvent.OrganizationStateDeleted
     {
         public AbstractOrganizationStateDeleted() {
-            this(new PartyStateEventId());
+            this(new PartyEventId());
         }
 
-        public AbstractOrganizationStateDeleted(PartyStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractOrganizationStateDeleted(PartyEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -178,8 +178,8 @@ public abstract class AbstractOrganizationStateEvent extends AbstractPartyStateE
         public SimpleOrganizationStateCreated() {
         }
 
-        public SimpleOrganizationStateCreated(PartyStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleOrganizationStateCreated(PartyEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -188,8 +188,8 @@ public abstract class AbstractOrganizationStateEvent extends AbstractPartyStateE
         public SimpleOrganizationStateMergePatched() {
         }
 
-        public SimpleOrganizationStateMergePatched(PartyStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleOrganizationStateMergePatched(PartyEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -198,8 +198,8 @@ public abstract class AbstractOrganizationStateEvent extends AbstractPartyStateE
         public SimpleOrganizationStateDeleted() {
         }
 
-        public SimpleOrganizationStateDeleted(PartyStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleOrganizationStateDeleted(PartyEventId eventId) {
+            super(eventId);
         }
     }
 

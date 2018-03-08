@@ -16,7 +16,7 @@ public class HibernateDamageReasonEventStore extends AbstractHibernateEventStore
     @Override
     protected Serializable getEventId(EventStoreAggregateId eventStoreAggregateId, long version)
     {
-        return new DamageReasonStateEventId((String) eventStoreAggregateId.getId(), version);
+        return new DamageReasonEventId((String) eventStoreAggregateId.getId(), version);
     }
 
     @Override

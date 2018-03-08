@@ -94,7 +94,7 @@ namespace Dddml.Wms.Domain.Shipment
 
         protected virtual IShipmentStateCreated Map(ICreateShipment c)
         {
-			var stateEventId = new ShipmentStateEventId(c.ShipmentId, c.Version);
+			var stateEventId = new ShipmentEventId(c.ShipmentId, c.Version);
             IShipmentStateCreated e = NewShipmentStateCreated(stateEventId);
 		
             e.ShipmentTypeId = c.ShipmentTypeId;
@@ -152,7 +152,7 @@ namespace Dddml.Wms.Domain.Shipment
 
         protected virtual IShipmentStateMergePatched Map(IMergePatchShipment c)
         {
-			var stateEventId = new ShipmentStateEventId(c.ShipmentId, c.Version);
+			var stateEventId = new ShipmentEventId(c.ShipmentId, c.Version);
             IShipmentStateMergePatched e = NewShipmentStateMergePatched(stateEventId);
 
             e.ShipmentTypeId = c.ShipmentTypeId;
@@ -302,7 +302,7 @@ namespace Dddml.Wms.Domain.Shipment
         protected virtual IShipmentItemStateCreated MapCreate(ICreateShipmentItem c, IShipmentCommand outerCommand, long version, IShipmentState outerState)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new ShipmentItemStateEventId(c.ShipmentId, c.ShipmentItemSeqId, version);
+			var stateEventId = new ShipmentItemEventId(c.ShipmentId, c.ShipmentItemSeqId, version);
             IShipmentItemStateCreated e = NewShipmentItemStateCreated(stateEventId);
             var s = outerState.ShipmentItems.Get(c.ShipmentItemSeqId, true);
 
@@ -324,7 +324,7 @@ namespace Dddml.Wms.Domain.Shipment
         protected virtual IShipmentItemStateMergePatched MapMergePatch(IMergePatchShipmentItem c, IShipmentCommand outerCommand, long version, IShipmentState outerState)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new ShipmentItemStateEventId(c.ShipmentId, c.ShipmentItemSeqId, version);
+			var stateEventId = new ShipmentItemEventId(c.ShipmentId, c.ShipmentItemSeqId, version);
             IShipmentItemStateMergePatched e = NewShipmentItemStateMergePatched(stateEventId);
             var s = outerState.ShipmentItems.Get(c.ShipmentItemSeqId);
 
@@ -370,7 +370,7 @@ namespace Dddml.Wms.Domain.Shipment
         protected virtual IShipmentReceiptStateCreated MapCreate(ICreateShipmentReceipt c, IShipmentCommand outerCommand, long version, IShipmentState outerState)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new ShipmentReceiptStateEventId(c.ShipmentId, c.ReceiptSeqId, version);
+			var stateEventId = new ShipmentReceiptEventId(c.ShipmentId, c.ReceiptSeqId, version);
             IShipmentReceiptStateCreated e = NewShipmentReceiptStateCreated(stateEventId);
             var s = outerState.ShipmentReceipts.Get(c.ReceiptSeqId, true);
 
@@ -399,7 +399,7 @@ namespace Dddml.Wms.Domain.Shipment
         protected virtual IShipmentReceiptStateMergePatched MapMergePatch(IMergePatchShipmentReceipt c, IShipmentCommand outerCommand, long version, IShipmentState outerState)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new ShipmentReceiptStateEventId(c.ShipmentId, c.ReceiptSeqId, version);
+			var stateEventId = new ShipmentReceiptEventId(c.ShipmentId, c.ReceiptSeqId, version);
             IShipmentReceiptStateMergePatched e = NewShipmentReceiptStateMergePatched(stateEventId);
             var s = outerState.ShipmentReceipts.Get(c.ReceiptSeqId);
 
@@ -453,7 +453,7 @@ namespace Dddml.Wms.Domain.Shipment
 
         protected ShipmentStateCreated NewShipmentStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new ShipmentStateEventId(_state.ShipmentId, version);
+            var stateEventId = new ShipmentEventId(_state.ShipmentId, version);
             var e = NewShipmentStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -466,7 +466,7 @@ namespace Dddml.Wms.Domain.Shipment
 
         protected ShipmentStateMergePatched NewShipmentStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new ShipmentStateEventId(_state.ShipmentId, version);
+            var stateEventId = new ShipmentEventId(_state.ShipmentId, version);
             var e = NewShipmentStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -480,34 +480,34 @@ namespace Dddml.Wms.Domain.Shipment
 
 ////////////////////////
 
-		private ShipmentStateCreated NewShipmentStateCreated(ShipmentStateEventId stateEventId)
+		private ShipmentStateCreated NewShipmentStateCreated(ShipmentEventId stateEventId)
 		{
 			return new ShipmentStateCreated(stateEventId);			
 		}
 
-        private ShipmentStateMergePatched NewShipmentStateMergePatched(ShipmentStateEventId stateEventId)
+        private ShipmentStateMergePatched NewShipmentStateMergePatched(ShipmentEventId stateEventId)
 		{
 			return new ShipmentStateMergePatched(stateEventId);
 		}
 
 
-		private ShipmentItemStateCreated NewShipmentItemStateCreated(ShipmentItemStateEventId stateEventId)
+		private ShipmentItemStateCreated NewShipmentItemStateCreated(ShipmentItemEventId stateEventId)
 		{
 			return new ShipmentItemStateCreated(stateEventId);
 		}
 
-        private ShipmentItemStateMergePatched NewShipmentItemStateMergePatched(ShipmentItemStateEventId stateEventId)
+        private ShipmentItemStateMergePatched NewShipmentItemStateMergePatched(ShipmentItemEventId stateEventId)
 		{
 			return new ShipmentItemStateMergePatched(stateEventId);
 		}
 
 
-		private ShipmentReceiptStateCreated NewShipmentReceiptStateCreated(ShipmentReceiptStateEventId stateEventId)
+		private ShipmentReceiptStateCreated NewShipmentReceiptStateCreated(ShipmentReceiptEventId stateEventId)
 		{
 			return new ShipmentReceiptStateCreated(stateEventId);
 		}
 
-        private ShipmentReceiptStateMergePatched NewShipmentReceiptStateMergePatched(ShipmentReceiptStateEventId stateEventId)
+        private ShipmentReceiptStateMergePatched NewShipmentReceiptStateMergePatched(ShipmentReceiptEventId stateEventId)
 		{
 			return new ShipmentReceiptStateMergePatched(stateEventId);
 		}

@@ -21,7 +21,7 @@ namespace Dddml.Wms.Domain.OrganizationStructureType.NHibernate
 	{
 		public override object GetEventId(IEventStoreAggregateId eventStoreAggregateId, long version)
 		{
-			return new OrganizationStructureTypeStateEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
+			return new OrganizationStructureTypeEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
 		public override Type GetSupportedStateEventType()

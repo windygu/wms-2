@@ -8,14 +8,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractAttributeAliasStateEvent extends AbstractStateEvent implements AttributeAliasStateEvent 
 {
-    private AttributeAliasStateEventId stateEventId;
+    private AttributeAliasEventId stateEventId;
 
-    public AttributeAliasStateEventId getStateEventId() {
+    public AttributeAliasEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(AttributeAliasStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(AttributeAliasEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public String getCode() {
@@ -106,8 +106,8 @@ public abstract class AbstractAttributeAliasStateEvent extends AbstractStateEven
     protected AbstractAttributeAliasStateEvent() {
     }
 
-    protected AbstractAttributeAliasStateEvent(AttributeAliasStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractAttributeAliasStateEvent(AttributeAliasEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -117,11 +117,11 @@ public abstract class AbstractAttributeAliasStateEvent extends AbstractStateEven
     public static abstract class AbstractAttributeAliasStateCreated extends AbstractAttributeAliasStateEvent implements AttributeAliasStateEvent.AttributeAliasStateCreated
     {
         public AbstractAttributeAliasStateCreated() {
-            this(new AttributeAliasStateEventId());
+            this(new AttributeAliasEventId());
         }
 
-        public AbstractAttributeAliasStateCreated(AttributeAliasStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractAttributeAliasStateCreated(AttributeAliasEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -134,11 +134,11 @@ public abstract class AbstractAttributeAliasStateEvent extends AbstractStateEven
     public static abstract class AbstractAttributeAliasStateMergePatched extends AbstractAttributeAliasStateEvent implements AttributeAliasStateEvent.AttributeAliasStateMergePatched
     {
         public AbstractAttributeAliasStateMergePatched() {
-            this(new AttributeAliasStateEventId());
+            this(new AttributeAliasEventId());
         }
 
-        public AbstractAttributeAliasStateMergePatched(AttributeAliasStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractAttributeAliasStateMergePatched(AttributeAliasEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -171,11 +171,11 @@ public abstract class AbstractAttributeAliasStateEvent extends AbstractStateEven
     public static abstract class AbstractAttributeAliasStateRemoved extends AbstractAttributeAliasStateEvent implements AttributeAliasStateEvent.AttributeAliasStateRemoved
     {
         public AbstractAttributeAliasStateRemoved() {
-            this(new AttributeAliasStateEventId());
+            this(new AttributeAliasEventId());
         }
 
-        public AbstractAttributeAliasStateRemoved(AttributeAliasStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractAttributeAliasStateRemoved(AttributeAliasEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -188,8 +188,8 @@ public abstract class AbstractAttributeAliasStateEvent extends AbstractStateEven
         public SimpleAttributeAliasStateCreated() {
         }
 
-        public SimpleAttributeAliasStateCreated(AttributeAliasStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleAttributeAliasStateCreated(AttributeAliasEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -198,8 +198,8 @@ public abstract class AbstractAttributeAliasStateEvent extends AbstractStateEven
         public SimpleAttributeAliasStateMergePatched() {
         }
 
-        public SimpleAttributeAliasStateMergePatched(AttributeAliasStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleAttributeAliasStateMergePatched(AttributeAliasEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -208,8 +208,8 @@ public abstract class AbstractAttributeAliasStateEvent extends AbstractStateEven
         public SimpleAttributeAliasStateRemoved() {
         }
 
-        public SimpleAttributeAliasStateRemoved(AttributeAliasStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleAttributeAliasStateRemoved(AttributeAliasEventId eventId) {
+            super(eventId);
         }
     }
 

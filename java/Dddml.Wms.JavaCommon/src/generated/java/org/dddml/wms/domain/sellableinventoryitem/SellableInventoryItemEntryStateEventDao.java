@@ -10,7 +10,7 @@ public interface SellableInventoryItemEntryStateEventDao
 {
     void save(SellableInventoryItemEntryStateEvent e);
 
-    Iterable<SellableInventoryItemEntryStateEvent> findBySellableInventoryItemStateEventId(SellableInventoryItemStateEventId sellableInventoryItemStateEventId);
+    Iterable<SellableInventoryItemEntryStateEvent> findBySellableInventoryItemEventId(SellableInventoryItemEventId sellableInventoryItemEventId);
 
 }
 

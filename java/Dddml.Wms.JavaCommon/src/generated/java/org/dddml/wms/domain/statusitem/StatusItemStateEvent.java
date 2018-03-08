@@ -7,7 +7,7 @@ import org.dddml.wms.specialization.Event;
 
 public interface StatusItemStateEvent extends Event
 {
-    StatusItemStateEventId getStateEventId();
+    StatusItemEventId getStateEventId();
 
     boolean getStateEventReadOnly();
 

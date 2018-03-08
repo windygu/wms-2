@@ -273,7 +273,7 @@ namespace Dddml.Wms.Domain.Warehouse
             id.Append("[").Append("Warehouse|");
 
             var stateEntityId = this.WarehouseId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.WarehouseId; // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+            var eventEntityId = stateEvent.StateEventId.WarehouseId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);

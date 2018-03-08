@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.User
         public virtual UserLoginStateCreatedDto ToUserLoginStateCreatedDto(IUserLoginStateCreated e)
         {
             var dto = new UserLoginStateCreatedDto();
-            dto.StateEventId = new UserLoginStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new UserLoginEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;
@@ -50,7 +50,7 @@ namespace Dddml.Wms.Domain.User
         public virtual UserLoginStateMergePatchedDto ToUserLoginStateMergePatchedDto(IUserLoginStateMergePatched e)
         {
             var dto = new UserLoginStateMergePatchedDto();
-            dto.StateEventId = new UserLoginStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new UserLoginEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;
@@ -65,7 +65,7 @@ namespace Dddml.Wms.Domain.User
         public virtual UserLoginStateRemovedDto ToUserLoginStateRemovedDto(IUserLoginStateRemoved e)
         {
             var dto = new UserLoginStateRemovedDto();
-            dto.StateEventId = new UserLoginStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new UserLoginEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;

@@ -11,9 +11,9 @@ using Dddml.Wms.Domain.AttributeSetInstanceExtensionField;
 
 namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionField
 {
-	public interface IAttributeSetInstanceExtensionFieldStateEvent : IEvent, IStateEventDto, IGlobalIdentity<AttributeSetInstanceExtensionFieldStateEventId>, ICreated<string>
+	public interface IAttributeSetInstanceExtensionFieldStateEvent : IEvent, IStateEventDto, IGlobalIdentity<AttributeSetInstanceExtensionFieldEventId>, ICreated<string>
 	{
-		AttributeSetInstanceExtensionFieldStateEventId StateEventId { get; }
+		AttributeSetInstanceExtensionFieldEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

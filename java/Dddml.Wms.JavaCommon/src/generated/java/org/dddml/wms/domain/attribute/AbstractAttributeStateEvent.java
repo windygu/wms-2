@@ -8,14 +8,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractAttributeStateEvent extends AbstractStateEvent implements AttributeStateEvent 
 {
-    private AttributeStateEventId stateEventId;
+    private AttributeEventId stateEventId;
 
-    public AttributeStateEventId getStateEventId() {
+    public AttributeEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(AttributeStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(AttributeEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public String getAttributeId() {
@@ -190,20 +190,20 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
     protected AbstractAttributeStateEvent() {
     }
 
-    protected AbstractAttributeStateEvent(AttributeStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractAttributeStateEvent(AttributeEventId eventId) {
+        this.stateEventId = eventId;
     }
 
     protected AttributeValueStateEventDao getAttributeValueStateEventDao() {
         return (AttributeValueStateEventDao)ApplicationContext.current.get("AttributeValueStateEventDao");
     }
 
-    protected AttributeValueStateEventId newAttributeValueStateEventId(String value)
+    protected AttributeValueEventId newAttributeValueEventId(String value)
     {
-        AttributeValueStateEventId stateEventId = new AttributeValueStateEventId(this.getStateEventId().getAttributeId(), 
+        AttributeValueEventId eventId = new AttributeValueEventId(this.getStateEventId().getAttributeId(), 
             value, 
             this.getStateEventId().getVersion());
-        return stateEventId;
+        return eventId;
     }
 
     protected void throwOnInconsistentEventIds(AttributeValueStateEvent e)
@@ -224,12 +224,12 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
         return (AttributeAliasStateEventDao)ApplicationContext.current.get("AttributeAliasStateEventDao");
     }
 
-    protected AttributeAliasStateEventId newAttributeAliasStateEventId(String code)
+    protected AttributeAliasEventId newAttributeAliasEventId(String code)
     {
-        AttributeAliasStateEventId stateEventId = new AttributeAliasStateEventId(this.getStateEventId().getAttributeId(), 
+        AttributeAliasEventId eventId = new AttributeAliasEventId(this.getStateEventId().getAttributeId(), 
             code, 
             this.getStateEventId().getVersion());
-        return stateEventId;
+        return eventId;
     }
 
     protected void throwOnInconsistentEventIds(AttributeAliasStateEvent e)
@@ -247,27 +247,27 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
     }
 
     public AttributeValueStateEvent.AttributeValueStateCreated newAttributeValueStateCreated(String value) {
-        return new AbstractAttributeValueStateEvent.SimpleAttributeValueStateCreated(newAttributeValueStateEventId(value));
+        return new AbstractAttributeValueStateEvent.SimpleAttributeValueStateCreated(newAttributeValueEventId(value));
     }
 
     public AttributeValueStateEvent.AttributeValueStateMergePatched newAttributeValueStateMergePatched(String value) {
-        return new AbstractAttributeValueStateEvent.SimpleAttributeValueStateMergePatched(newAttributeValueStateEventId(value));
+        return new AbstractAttributeValueStateEvent.SimpleAttributeValueStateMergePatched(newAttributeValueEventId(value));
     }
 
     public AttributeValueStateEvent.AttributeValueStateRemoved newAttributeValueStateRemoved(String value) {
-        return new AbstractAttributeValueStateEvent.SimpleAttributeValueStateRemoved(newAttributeValueStateEventId(value));
+        return new AbstractAttributeValueStateEvent.SimpleAttributeValueStateRemoved(newAttributeValueEventId(value));
     }
 
     public AttributeAliasStateEvent.AttributeAliasStateCreated newAttributeAliasStateCreated(String code) {
-        return new AbstractAttributeAliasStateEvent.SimpleAttributeAliasStateCreated(newAttributeAliasStateEventId(code));
+        return new AbstractAttributeAliasStateEvent.SimpleAttributeAliasStateCreated(newAttributeAliasEventId(code));
     }
 
     public AttributeAliasStateEvent.AttributeAliasStateMergePatched newAttributeAliasStateMergePatched(String code) {
-        return new AbstractAttributeAliasStateEvent.SimpleAttributeAliasStateMergePatched(newAttributeAliasStateEventId(code));
+        return new AbstractAttributeAliasStateEvent.SimpleAttributeAliasStateMergePatched(newAttributeAliasEventId(code));
     }
 
     public AttributeAliasStateEvent.AttributeAliasStateRemoved newAttributeAliasStateRemoved(String code) {
-        return new AbstractAttributeAliasStateEvent.SimpleAttributeAliasStateRemoved(newAttributeAliasStateEventId(code));
+        return new AbstractAttributeAliasStateEvent.SimpleAttributeAliasStateRemoved(newAttributeAliasEventId(code));
     }
 
 
@@ -277,18 +277,18 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
     public static abstract class AbstractAttributeStateCreated extends AbstractAttributeStateEvent implements AttributeStateEvent.AttributeStateCreated, Saveable
     {
         public AbstractAttributeStateCreated() {
-            this(new AttributeStateEventId());
+            this(new AttributeEventId());
         }
 
-        public AbstractAttributeStateCreated(AttributeStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractAttributeStateCreated(AttributeEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
             return StateEventType.CREATED;
         }
 
-        private Map<AttributeValueStateEventId, AttributeValueStateEvent.AttributeValueStateCreated> attributeValueEvents = new HashMap<AttributeValueStateEventId, AttributeValueStateEvent.AttributeValueStateCreated>();
+        private Map<AttributeValueEventId, AttributeValueStateEvent.AttributeValueStateCreated> attributeValueEvents = new HashMap<AttributeValueEventId, AttributeValueStateEvent.AttributeValueStateCreated>();
         
         private Iterable<AttributeValueStateEvent.AttributeValueStateCreated> readOnlyAttributeValueEvents;
 
@@ -303,7 +303,7 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
                 if (readOnlyAttributeValueEvents != null) { return readOnlyAttributeValueEvents; }
                 AttributeValueStateEventDao eventDao = getAttributeValueStateEventDao();
                 List<AttributeValueStateEvent.AttributeValueStateCreated> eL = new ArrayList<AttributeValueStateEvent.AttributeValueStateCreated>();
-                for (AttributeValueStateEvent e : eventDao.findByAttributeStateEventId(this.getStateEventId()))
+                for (AttributeValueStateEvent e : eventDao.findByAttributeEventId(this.getStateEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((AttributeValueStateEvent.AttributeValueStateCreated)e);
@@ -330,7 +330,7 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
             this.attributeValueEvents.put(e.getStateEventId(), e);
         }
 
-        private Map<AttributeAliasStateEventId, AttributeAliasStateEvent.AttributeAliasStateCreated> attributeAliasEvents = new HashMap<AttributeAliasStateEventId, AttributeAliasStateEvent.AttributeAliasStateCreated>();
+        private Map<AttributeAliasEventId, AttributeAliasStateEvent.AttributeAliasStateCreated> attributeAliasEvents = new HashMap<AttributeAliasEventId, AttributeAliasStateEvent.AttributeAliasStateCreated>();
         
         private Iterable<AttributeAliasStateEvent.AttributeAliasStateCreated> readOnlyAttributeAliasEvents;
 
@@ -345,7 +345,7 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
                 if (readOnlyAttributeAliasEvents != null) { return readOnlyAttributeAliasEvents; }
                 AttributeAliasStateEventDao eventDao = getAttributeAliasStateEventDao();
                 List<AttributeAliasStateEvent.AttributeAliasStateCreated> eL = new ArrayList<AttributeAliasStateEvent.AttributeAliasStateCreated>();
-                for (AttributeAliasStateEvent e : eventDao.findByAttributeStateEventId(this.getStateEventId()))
+                for (AttributeAliasStateEvent e : eventDao.findByAttributeEventId(this.getStateEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((AttributeAliasStateEvent.AttributeAliasStateCreated)e);
@@ -387,11 +387,11 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
     public static abstract class AbstractAttributeStateMergePatched extends AbstractAttributeStateEvent implements AttributeStateEvent.AttributeStateMergePatched, Saveable
     {
         public AbstractAttributeStateMergePatched() {
-            this(new AttributeStateEventId());
+            this(new AttributeEventId());
         }
 
-        public AbstractAttributeStateMergePatched(AttributeStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractAttributeStateMergePatched(AttributeEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -498,7 +498,7 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
             this.isPropertyActiveRemoved = removed;
         }
 
-        private Map<AttributeValueStateEventId, AttributeValueStateEvent> attributeValueEvents = new HashMap<AttributeValueStateEventId, AttributeValueStateEvent>();
+        private Map<AttributeValueEventId, AttributeValueStateEvent> attributeValueEvents = new HashMap<AttributeValueEventId, AttributeValueStateEvent>();
         
         private Iterable<AttributeValueStateEvent> readOnlyAttributeValueEvents;
 
@@ -513,7 +513,7 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
                 if (readOnlyAttributeValueEvents != null) { return readOnlyAttributeValueEvents; }
                 AttributeValueStateEventDao eventDao = getAttributeValueStateEventDao();
                 List<AttributeValueStateEvent> eL = new ArrayList<AttributeValueStateEvent>();
-                for (AttributeValueStateEvent e : eventDao.findByAttributeStateEventId(this.getStateEventId()))
+                for (AttributeValueStateEvent e : eventDao.findByAttributeEventId(this.getStateEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((AttributeValueStateEvent)e);
@@ -540,7 +540,7 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
             this.attributeValueEvents.put(e.getStateEventId(), e);
         }
 
-        private Map<AttributeAliasStateEventId, AttributeAliasStateEvent> attributeAliasEvents = new HashMap<AttributeAliasStateEventId, AttributeAliasStateEvent>();
+        private Map<AttributeAliasEventId, AttributeAliasStateEvent> attributeAliasEvents = new HashMap<AttributeAliasEventId, AttributeAliasStateEvent>();
         
         private Iterable<AttributeAliasStateEvent> readOnlyAttributeAliasEvents;
 
@@ -555,7 +555,7 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
                 if (readOnlyAttributeAliasEvents != null) { return readOnlyAttributeAliasEvents; }
                 AttributeAliasStateEventDao eventDao = getAttributeAliasStateEventDao();
                 List<AttributeAliasStateEvent> eL = new ArrayList<AttributeAliasStateEvent>();
-                for (AttributeAliasStateEvent e : eventDao.findByAttributeStateEventId(this.getStateEventId()))
+                for (AttributeAliasStateEvent e : eventDao.findByAttributeEventId(this.getStateEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((AttributeAliasStateEvent)e);
@@ -597,11 +597,11 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
     public static abstract class AbstractAttributeStateDeleted extends AbstractAttributeStateEvent implements AttributeStateEvent.AttributeStateDeleted, Saveable
     {
         public AbstractAttributeStateDeleted() {
-            this(new AttributeStateEventId());
+            this(new AttributeEventId());
         }
 
-        public AbstractAttributeStateDeleted(AttributeStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractAttributeStateDeleted(AttributeEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -609,7 +609,7 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
         }
 
 		
-        private Map<AttributeValueStateEventId, AttributeValueStateEvent.AttributeValueStateRemoved> attributeValueEvents = new HashMap<AttributeValueStateEventId, AttributeValueStateEvent.AttributeValueStateRemoved>();
+        private Map<AttributeValueEventId, AttributeValueStateEvent.AttributeValueStateRemoved> attributeValueEvents = new HashMap<AttributeValueEventId, AttributeValueStateEvent.AttributeValueStateRemoved>();
         
         private Iterable<AttributeValueStateEvent.AttributeValueStateRemoved> readOnlyAttributeValueEvents;
 
@@ -624,7 +624,7 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
                 if (readOnlyAttributeValueEvents != null) { return readOnlyAttributeValueEvents; }
                 AttributeValueStateEventDao eventDao = getAttributeValueStateEventDao();
                 List<AttributeValueStateEvent.AttributeValueStateRemoved> eL = new ArrayList<AttributeValueStateEvent.AttributeValueStateRemoved>();
-                for (AttributeValueStateEvent e : eventDao.findByAttributeStateEventId(this.getStateEventId()))
+                for (AttributeValueStateEvent e : eventDao.findByAttributeEventId(this.getStateEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((AttributeValueStateEvent.AttributeValueStateRemoved)e);
@@ -652,7 +652,7 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
         }
 
 		
-        private Map<AttributeAliasStateEventId, AttributeAliasStateEvent.AttributeAliasStateRemoved> attributeAliasEvents = new HashMap<AttributeAliasStateEventId, AttributeAliasStateEvent.AttributeAliasStateRemoved>();
+        private Map<AttributeAliasEventId, AttributeAliasStateEvent.AttributeAliasStateRemoved> attributeAliasEvents = new HashMap<AttributeAliasEventId, AttributeAliasStateEvent.AttributeAliasStateRemoved>();
         
         private Iterable<AttributeAliasStateEvent.AttributeAliasStateRemoved> readOnlyAttributeAliasEvents;
 
@@ -667,7 +667,7 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
                 if (readOnlyAttributeAliasEvents != null) { return readOnlyAttributeAliasEvents; }
                 AttributeAliasStateEventDao eventDao = getAttributeAliasStateEventDao();
                 List<AttributeAliasStateEvent.AttributeAliasStateRemoved> eL = new ArrayList<AttributeAliasStateEvent.AttributeAliasStateRemoved>();
-                for (AttributeAliasStateEvent e : eventDao.findByAttributeStateEventId(this.getStateEventId()))
+                for (AttributeAliasStateEvent e : eventDao.findByAttributeEventId(this.getStateEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((AttributeAliasStateEvent.AttributeAliasStateRemoved)e);
@@ -709,8 +709,8 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
         public SimpleAttributeStateCreated() {
         }
 
-        public SimpleAttributeStateCreated(AttributeStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleAttributeStateCreated(AttributeEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -719,8 +719,8 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
         public SimpleAttributeStateMergePatched() {
         }
 
-        public SimpleAttributeStateMergePatched(AttributeStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleAttributeStateMergePatched(AttributeEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -729,8 +729,8 @@ public abstract class AbstractAttributeStateEvent extends AbstractStateEvent imp
         public SimpleAttributeStateDeleted() {
         }
 
-        public SimpleAttributeStateDeleted(AttributeStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleAttributeStateDeleted(AttributeEventId eventId) {
+            super(eventId);
         }
     }
 

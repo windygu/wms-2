@@ -49,7 +49,7 @@ public abstract class AbstractInventoryPRTriggeredAggregate extends AbstractAggr
     }
 
     protected InventoryPRTriggeredStateEvent map(InventoryPRTriggeredCommand.CreateInventoryPRTriggered c) {
-        InventoryPRTriggeredStateEventId stateEventId = new InventoryPRTriggeredStateEventId(c.getInventoryPRTriggeredId(), c.getVersion());
+        InventoryPRTriggeredEventId stateEventId = new InventoryPRTriggeredEventId(c.getInventoryPRTriggeredId(), c.getVersion());
         InventoryPRTriggeredStateEvent.InventoryPRTriggeredStateCreated e = newInventoryPRTriggeredStateCreated(stateEventId);
         e.setIsProcessed(c.getIsProcessed());
         ((AbstractInventoryPRTriggeredStateEvent)e).setCommandId(c.getCommandId());
@@ -59,7 +59,7 @@ public abstract class AbstractInventoryPRTriggeredAggregate extends AbstractAggr
     }
 
     protected InventoryPRTriggeredStateEvent map(InventoryPRTriggeredCommand.MergePatchInventoryPRTriggered c) {
-        InventoryPRTriggeredStateEventId stateEventId = new InventoryPRTriggeredStateEventId(c.getInventoryPRTriggeredId(), c.getVersion());
+        InventoryPRTriggeredEventId stateEventId = new InventoryPRTriggeredEventId(c.getInventoryPRTriggeredId(), c.getVersion());
         InventoryPRTriggeredStateEvent.InventoryPRTriggeredStateMergePatched e = newInventoryPRTriggeredStateMergePatched(stateEventId);
         e.setIsProcessed(c.getIsProcessed());
         e.setIsPropertyIsProcessedRemoved(c.getIsPropertyIsProcessedRemoved());
@@ -73,7 +73,7 @@ public abstract class AbstractInventoryPRTriggeredAggregate extends AbstractAggr
     ////////////////////////
 
     protected InventoryPRTriggeredStateEvent.InventoryPRTriggeredStateCreated newInventoryPRTriggeredStateCreated(Long version, String commandId, String requesterId) {
-        InventoryPRTriggeredStateEventId stateEventId = new InventoryPRTriggeredStateEventId(this.state.getInventoryPRTriggeredId(), version);
+        InventoryPRTriggeredEventId stateEventId = new InventoryPRTriggeredEventId(this.state.getInventoryPRTriggeredId(), version);
         InventoryPRTriggeredStateEvent.InventoryPRTriggeredStateCreated e = newInventoryPRTriggeredStateCreated(stateEventId);
         ((AbstractInventoryPRTriggeredStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -82,7 +82,7 @@ public abstract class AbstractInventoryPRTriggeredAggregate extends AbstractAggr
     }
 
     protected InventoryPRTriggeredStateEvent.InventoryPRTriggeredStateMergePatched newInventoryPRTriggeredStateMergePatched(Long version, String commandId, String requesterId) {
-        InventoryPRTriggeredStateEventId stateEventId = new InventoryPRTriggeredStateEventId(this.state.getInventoryPRTriggeredId(), version);
+        InventoryPRTriggeredEventId stateEventId = new InventoryPRTriggeredEventId(this.state.getInventoryPRTriggeredId(), version);
         InventoryPRTriggeredStateEvent.InventoryPRTriggeredStateMergePatched e = newInventoryPRTriggeredStateMergePatched(stateEventId);
         ((AbstractInventoryPRTriggeredStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -90,11 +90,11 @@ public abstract class AbstractInventoryPRTriggeredAggregate extends AbstractAggr
         return e;
     }
 
-    protected InventoryPRTriggeredStateEvent.InventoryPRTriggeredStateCreated newInventoryPRTriggeredStateCreated(InventoryPRTriggeredStateEventId stateEventId) {
+    protected InventoryPRTriggeredStateEvent.InventoryPRTriggeredStateCreated newInventoryPRTriggeredStateCreated(InventoryPRTriggeredEventId stateEventId) {
         return new AbstractInventoryPRTriggeredStateEvent.SimpleInventoryPRTriggeredStateCreated(stateEventId);
     }
 
-    protected InventoryPRTriggeredStateEvent.InventoryPRTriggeredStateMergePatched newInventoryPRTriggeredStateMergePatched(InventoryPRTriggeredStateEventId stateEventId) {
+    protected InventoryPRTriggeredStateEvent.InventoryPRTriggeredStateMergePatched newInventoryPRTriggeredStateMergePatched(InventoryPRTriggeredEventId stateEventId) {
         return new AbstractInventoryPRTriggeredStateEvent.SimpleInventoryPRTriggeredStateMergePatched(stateEventId);
     }
 

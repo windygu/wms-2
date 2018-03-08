@@ -17,7 +17,7 @@ public class HibernateAttributeAliasMvoEventStore extends AbstractHibernateEvent
     @Override
     protected Serializable getEventId(EventStoreAggregateId eventStoreAggregateId, long version)
     {
-        return new AttributeAliasMvoStateEventId((AttributeAliasId) eventStoreAggregateId.getId(), version);
+        return new AttributeAliasMvoEventId((AttributeAliasId) eventStoreAggregateId.getId(), version);
     }
 
     @Override

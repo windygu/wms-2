@@ -17,7 +17,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 	{
 		void Save(IInventoryItemRequirementEntryStateEvent e);
 
-        IEnumerable<IInventoryItemRequirementEntryStateEvent> FindByInventoryItemRequirementStateEventId(InventoryItemRequirementStateEventId inventoryItemRequirementStateEventId);
+        IEnumerable<IInventoryItemRequirementEntryStateEvent> FindByInventoryItemRequirementEventId(InventoryItemRequirementEventId inventoryItemRequirementEventId);
 
 	}
 

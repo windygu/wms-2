@@ -49,7 +49,7 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
     }
 
     protected OrderStateEvent map(OrderCommand.CreateOrder c) {
-        OrderStateEventId stateEventId = new OrderStateEventId(c.getOrderId(), c.getVersion());
+        OrderEventId stateEventId = new OrderEventId(c.getOrderId(), c.getVersion());
         OrderStateEvent.OrderStateCreated e = newOrderStateCreated(stateEventId);
         e.setOrderTypeId(c.getOrderTypeId());
         e.setOrderName(c.getOrderName());
@@ -91,7 +91,7 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
     }
 
     protected OrderStateEvent map(OrderCommand.MergePatchOrder c) {
-        OrderStateEventId stateEventId = new OrderStateEventId(c.getOrderId(), c.getVersion());
+        OrderEventId stateEventId = new OrderEventId(c.getOrderId(), c.getVersion());
         OrderStateEvent.OrderStateMergePatched e = newOrderStateMergePatched(stateEventId);
         e.setOrderTypeId(c.getOrderTypeId());
         e.setOrderName(c.getOrderName());
@@ -178,7 +178,7 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
     protected OrderItemStateEvent.OrderItemStateCreated mapCreate(OrderItemCommand.CreateOrderItem c, OrderCommand outerCommand, Long version, OrderState outerState)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
-        OrderItemStateEventId stateEventId = new OrderItemStateEventId(c.getOrderId(), c.getOrderItemSeqId(), version);
+        OrderItemEventId stateEventId = new OrderItemEventId(c.getOrderId(), c.getOrderItemSeqId(), version);
         OrderItemStateEvent.OrderItemStateCreated e = newOrderItemStateCreated(stateEventId);
         OrderItemState s = outerState.getOrderItems().get(c.getOrderItemSeqId());
 
@@ -227,7 +227,7 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
     protected OrderItemStateEvent.OrderItemStateMergePatched mapMergePatch(OrderItemCommand.MergePatchOrderItem c, OrderCommand outerCommand, Long version, OrderState outerState)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
-        OrderItemStateEventId stateEventId = new OrderItemStateEventId(c.getOrderId(), c.getOrderItemSeqId(), version);
+        OrderItemEventId stateEventId = new OrderItemEventId(c.getOrderId(), c.getOrderItemSeqId(), version);
         OrderItemStateEvent.OrderItemStateMergePatched e = newOrderItemStateMergePatched(stateEventId);
         OrderItemState s = outerState.getOrderItems().get(c.getOrderItemSeqId());
 
@@ -332,7 +332,7 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
     ////////////////////////
 
     protected OrderStateEvent.OrderStateCreated newOrderStateCreated(Long version, String commandId, String requesterId) {
-        OrderStateEventId stateEventId = new OrderStateEventId(this.state.getOrderId(), version);
+        OrderEventId stateEventId = new OrderEventId(this.state.getOrderId(), version);
         OrderStateEvent.OrderStateCreated e = newOrderStateCreated(stateEventId);
         ((AbstractOrderStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -341,7 +341,7 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
     }
 
     protected OrderStateEvent.OrderStateMergePatched newOrderStateMergePatched(Long version, String commandId, String requesterId) {
-        OrderStateEventId stateEventId = new OrderStateEventId(this.state.getOrderId(), version);
+        OrderEventId stateEventId = new OrderEventId(this.state.getOrderId(), version);
         OrderStateEvent.OrderStateMergePatched e = newOrderStateMergePatched(stateEventId);
         ((AbstractOrderStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -349,19 +349,19 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         return e;
     }
 
-    protected OrderStateEvent.OrderStateCreated newOrderStateCreated(OrderStateEventId stateEventId) {
+    protected OrderStateEvent.OrderStateCreated newOrderStateCreated(OrderEventId stateEventId) {
         return new AbstractOrderStateEvent.SimpleOrderStateCreated(stateEventId);
     }
 
-    protected OrderStateEvent.OrderStateMergePatched newOrderStateMergePatched(OrderStateEventId stateEventId) {
+    protected OrderStateEvent.OrderStateMergePatched newOrderStateMergePatched(OrderEventId stateEventId) {
         return new AbstractOrderStateEvent.SimpleOrderStateMergePatched(stateEventId);
     }
 
-    protected OrderItemStateEvent.OrderItemStateCreated newOrderItemStateCreated(OrderItemStateEventId stateEventId) {
+    protected OrderItemStateEvent.OrderItemStateCreated newOrderItemStateCreated(OrderItemEventId stateEventId) {
         return new AbstractOrderItemStateEvent.SimpleOrderItemStateCreated(stateEventId);
     }
 
-    protected OrderItemStateEvent.OrderItemStateMergePatched newOrderItemStateMergePatched(OrderItemStateEventId stateEventId) {
+    protected OrderItemStateEvent.OrderItemStateMergePatched newOrderItemStateMergePatched(OrderItemEventId stateEventId) {
         return new AbstractOrderItemStateEvent.SimpleOrderItemStateMergePatched(stateEventId);
     }
 

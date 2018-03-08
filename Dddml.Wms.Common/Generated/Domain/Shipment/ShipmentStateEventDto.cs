@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.Shipment
 	public abstract class ShipmentStateEventDtoBase : IStateEventDto, IShipmentStateCreated, IShipmentStateMergePatched
 	{
 
-        private ShipmentStateEventIdDto _stateEventId;
+        private ShipmentEventIdDto _stateEventId;
 
-		protected internal virtual ShipmentStateEventIdDto StateEventId 
+		protected internal virtual ShipmentEventIdDto StateEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new ShipmentStateEventIdDto(); }
+                if (_stateEventId == null) { _stateEventId = new ShipmentEventIdDto(); }
                 return _stateEventId;
             }
             set
@@ -102,10 +102,10 @@ namespace Dddml.Wms.Domain.Shipment
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		ShipmentStateEventId IGlobalIdentity<ShipmentStateEventId>.GlobalId {
+		ShipmentEventId IGlobalIdentity<ShipmentEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToShipmentStateEventId();
+				return this.StateEventId.ToShipmentEventId();
 			}
 		}
 
@@ -653,9 +653,9 @@ namespace Dddml.Wms.Domain.Shipment
 
 
 
-        private ShipmentItemStateEventIdDto NewShipmentItemStateEventId(string shipmentItemSeqId)
+        private ShipmentItemEventIdDto NewShipmentItemEventId(string shipmentItemSeqId)
         {
-            var eId = new ShipmentItemStateEventIdDto();
+            var eId = new ShipmentItemEventIdDto();
             eId.ShipmentId = this.StateEventId.ShipmentId;
             eId.ShipmentItemSeqId = shipmentItemSeqId;
             eId.ShipmentVersion = this.StateEventId.Version;
@@ -665,7 +665,7 @@ namespace Dddml.Wms.Domain.Shipment
         public virtual ShipmentItemStateCreatedDto NewShipmentItemStateCreated(string shipmentItemSeqId)
         {
             var e = new ShipmentItemStateCreatedDto();
-            var eId = NewShipmentItemStateEventId(shipmentItemSeqId);
+            var eId = NewShipmentItemEventId(shipmentItemSeqId);
             e.StateEventId = eId;
             return e;
         }
@@ -673,7 +673,7 @@ namespace Dddml.Wms.Domain.Shipment
         public virtual ShipmentItemStateMergePatchedDto NewShipmentItemStateMergePatched(string shipmentItemSeqId)
         {
             var e = new ShipmentItemStateMergePatchedDto();
-            var eId = NewShipmentItemStateEventId(shipmentItemSeqId);
+            var eId = NewShipmentItemEventId(shipmentItemSeqId);
             e.StateEventId = eId;
             return e;
         }
@@ -731,9 +731,9 @@ namespace Dddml.Wms.Domain.Shipment
 
 
 
-        private ShipmentReceiptStateEventIdDto NewShipmentReceiptStateEventId(string receiptSeqId)
+        private ShipmentReceiptEventIdDto NewShipmentReceiptEventId(string receiptSeqId)
         {
-            var eId = new ShipmentReceiptStateEventIdDto();
+            var eId = new ShipmentReceiptEventIdDto();
             eId.ShipmentId = this.StateEventId.ShipmentId;
             eId.ReceiptSeqId = receiptSeqId;
             eId.ShipmentVersion = this.StateEventId.Version;
@@ -743,7 +743,7 @@ namespace Dddml.Wms.Domain.Shipment
         public virtual ShipmentReceiptStateCreatedDto NewShipmentReceiptStateCreated(string receiptSeqId)
         {
             var e = new ShipmentReceiptStateCreatedDto();
-            var eId = NewShipmentReceiptStateEventId(receiptSeqId);
+            var eId = NewShipmentReceiptEventId(receiptSeqId);
             e.StateEventId = eId;
             return e;
         }
@@ -751,7 +751,7 @@ namespace Dddml.Wms.Domain.Shipment
         public virtual ShipmentReceiptStateMergePatchedDto NewShipmentReceiptStateMergePatched(string receiptSeqId)
         {
             var e = new ShipmentReceiptStateMergePatchedDto();
-            var eId = NewShipmentReceiptStateEventId(receiptSeqId);
+            var eId = NewShipmentReceiptEventId(receiptSeqId);
             e.StateEventId = eId;
             return e;
         }
@@ -792,16 +792,16 @@ namespace Dddml.Wms.Domain.Shipment
         }
 
 
-        ShipmentStateEventId IShipmentStateEvent.StateEventId
+        ShipmentEventId IShipmentStateEvent.StateEventId
         {
-            get { return this.StateEventId.ToShipmentStateEventId(); }
+            get { return this.StateEventId.ToShipmentEventId(); }
         }
 
         protected ShipmentStateEventDtoBase()
         {
         }
 
-        protected ShipmentStateEventDtoBase(ShipmentStateEventIdDto stateEventId)
+        protected ShipmentStateEventDtoBase(ShipmentEventIdDto stateEventId)
         {
             this.StateEventId = stateEventId;
         }

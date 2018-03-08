@@ -8,14 +8,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateEvent extends AbstractStateEvent implements AttributeSetInstanceExtensionFieldGroupStateEvent 
 {
-    private AttributeSetInstanceExtensionFieldGroupStateEventId stateEventId;
+    private AttributeSetInstanceExtensionFieldGroupEventId stateEventId;
 
-    public AttributeSetInstanceExtensionFieldGroupStateEventId getStateEventId() {
+    public AttributeSetInstanceExtensionFieldGroupEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(AttributeSetInstanceExtensionFieldGroupStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(AttributeSetInstanceExtensionFieldGroupEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public String getId() {
@@ -142,8 +142,8 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateEvent 
     protected AbstractAttributeSetInstanceExtensionFieldGroupStateEvent() {
     }
 
-    protected AbstractAttributeSetInstanceExtensionFieldGroupStateEvent(AttributeSetInstanceExtensionFieldGroupStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractAttributeSetInstanceExtensionFieldGroupStateEvent(AttributeSetInstanceExtensionFieldGroupEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -153,11 +153,11 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateEvent 
     public static abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateCreated extends AbstractAttributeSetInstanceExtensionFieldGroupStateEvent implements AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateCreated
     {
         public AbstractAttributeSetInstanceExtensionFieldGroupStateCreated() {
-            this(new AttributeSetInstanceExtensionFieldGroupStateEventId());
+            this(new AttributeSetInstanceExtensionFieldGroupEventId());
         }
 
-        public AbstractAttributeSetInstanceExtensionFieldGroupStateCreated(AttributeSetInstanceExtensionFieldGroupStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractAttributeSetInstanceExtensionFieldGroupStateCreated(AttributeSetInstanceExtensionFieldGroupEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -170,11 +170,11 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateEvent 
     public static abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateMergePatched extends AbstractAttributeSetInstanceExtensionFieldGroupStateEvent implements AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateMergePatched
     {
         public AbstractAttributeSetInstanceExtensionFieldGroupStateMergePatched() {
-            this(new AttributeSetInstanceExtensionFieldGroupStateEventId());
+            this(new AttributeSetInstanceExtensionFieldGroupEventId());
         }
 
-        public AbstractAttributeSetInstanceExtensionFieldGroupStateMergePatched(AttributeSetInstanceExtensionFieldGroupStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractAttributeSetInstanceExtensionFieldGroupStateMergePatched(AttributeSetInstanceExtensionFieldGroupEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -247,11 +247,11 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateEvent 
     public static abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateDeleted extends AbstractAttributeSetInstanceExtensionFieldGroupStateEvent implements AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateDeleted
     {
         public AbstractAttributeSetInstanceExtensionFieldGroupStateDeleted() {
-            this(new AttributeSetInstanceExtensionFieldGroupStateEventId());
+            this(new AttributeSetInstanceExtensionFieldGroupEventId());
         }
 
-        public AbstractAttributeSetInstanceExtensionFieldGroupStateDeleted(AttributeSetInstanceExtensionFieldGroupStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractAttributeSetInstanceExtensionFieldGroupStateDeleted(AttributeSetInstanceExtensionFieldGroupEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -264,8 +264,8 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateEvent 
         public SimpleAttributeSetInstanceExtensionFieldGroupStateCreated() {
         }
 
-        public SimpleAttributeSetInstanceExtensionFieldGroupStateCreated(AttributeSetInstanceExtensionFieldGroupStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleAttributeSetInstanceExtensionFieldGroupStateCreated(AttributeSetInstanceExtensionFieldGroupEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -274,8 +274,8 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateEvent 
         public SimpleAttributeSetInstanceExtensionFieldGroupStateMergePatched() {
         }
 
-        public SimpleAttributeSetInstanceExtensionFieldGroupStateMergePatched(AttributeSetInstanceExtensionFieldGroupStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleAttributeSetInstanceExtensionFieldGroupStateMergePatched(AttributeSetInstanceExtensionFieldGroupEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -284,8 +284,8 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateEvent 
         public SimpleAttributeSetInstanceExtensionFieldGroupStateDeleted() {
         }
 
-        public SimpleAttributeSetInstanceExtensionFieldGroupStateDeleted(AttributeSetInstanceExtensionFieldGroupStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleAttributeSetInstanceExtensionFieldGroupStateDeleted(AttributeSetInstanceExtensionFieldGroupEventId eventId) {
+            super(eventId);
         }
     }
 

@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.InOut
 	public abstract class InOutStateEventDtoBase : IStateEventDto, IInOutStateCreated, IInOutStateMergePatched
 	{
 
-        private InOutStateEventIdDto _stateEventId;
+        private InOutEventIdDto _stateEventId;
 
-		protected internal virtual InOutStateEventIdDto StateEventId 
+		protected internal virtual InOutEventIdDto StateEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new InOutStateEventIdDto(); }
+                if (_stateEventId == null) { _stateEventId = new InOutEventIdDto(); }
                 return _stateEventId;
             }
             set
@@ -112,10 +112,10 @@ namespace Dddml.Wms.Domain.InOut
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		InOutStateEventId IGlobalIdentity<InOutStateEventId>.GlobalId {
+		InOutEventId IGlobalIdentity<InOutEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToInOutStateEventId();
+				return this.StateEventId.ToInOutEventId();
 			}
 		}
 
@@ -758,9 +758,9 @@ namespace Dddml.Wms.Domain.InOut
 
 
 
-        private InOutLineStateEventIdDto NewInOutLineStateEventId(string lineNumber)
+        private InOutLineEventIdDto NewInOutLineEventId(string lineNumber)
         {
-            var eId = new InOutLineStateEventIdDto();
+            var eId = new InOutLineEventIdDto();
             eId.InOutDocumentNumber = this.StateEventId.DocumentNumber;
             eId.LineNumber = lineNumber;
             eId.InOutVersion = this.StateEventId.Version;
@@ -770,7 +770,7 @@ namespace Dddml.Wms.Domain.InOut
         public virtual InOutLineStateCreatedDto NewInOutLineStateCreated(string lineNumber)
         {
             var e = new InOutLineStateCreatedDto();
-            var eId = NewInOutLineStateEventId(lineNumber);
+            var eId = NewInOutLineEventId(lineNumber);
             e.StateEventId = eId;
             return e;
         }
@@ -778,7 +778,7 @@ namespace Dddml.Wms.Domain.InOut
         public virtual InOutLineStateMergePatchedDto NewInOutLineStateMergePatched(string lineNumber)
         {
             var e = new InOutLineStateMergePatchedDto();
-            var eId = NewInOutLineStateEventId(lineNumber);
+            var eId = NewInOutLineEventId(lineNumber);
             e.StateEventId = eId;
             return e;
         }
@@ -786,7 +786,7 @@ namespace Dddml.Wms.Domain.InOut
         public virtual InOutLineStateRemovedDto NewInOutLineStateRemoved(string lineNumber)
         {
             var e = new InOutLineStateRemovedDto();
-            var eId = NewInOutLineStateEventId(lineNumber);
+            var eId = NewInOutLineEventId(lineNumber);
             e.StateEventId = eId;
             return e;
         }
@@ -832,16 +832,16 @@ namespace Dddml.Wms.Domain.InOut
         }
 
 
-        InOutStateEventId IInOutStateEvent.StateEventId
+        InOutEventId IInOutStateEvent.StateEventId
         {
-            get { return this.StateEventId.ToInOutStateEventId(); }
+            get { return this.StateEventId.ToInOutEventId(); }
         }
 
         protected InOutStateEventDtoBase()
         {
         }
 
-        protected InOutStateEventDtoBase(InOutStateEventIdDto stateEventId)
+        protected InOutStateEventDtoBase(InOutEventIdDto stateEventId)
         {
             this.StateEventId = stateEventId;
         }

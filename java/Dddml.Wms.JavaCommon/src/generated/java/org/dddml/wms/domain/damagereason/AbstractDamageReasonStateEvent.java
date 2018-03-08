@@ -8,14 +8,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractDamageReasonStateEvent extends AbstractStateEvent implements DamageReasonStateEvent 
 {
-    private DamageReasonStateEventId stateEventId;
+    private DamageReasonEventId stateEventId;
 
-    public DamageReasonStateEventId getStateEventId() {
+    public DamageReasonEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(DamageReasonStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(DamageReasonEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public String getDamageReasonId() {
@@ -106,8 +106,8 @@ public abstract class AbstractDamageReasonStateEvent extends AbstractStateEvent 
     protected AbstractDamageReasonStateEvent() {
     }
 
-    protected AbstractDamageReasonStateEvent(DamageReasonStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractDamageReasonStateEvent(DamageReasonEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -117,11 +117,11 @@ public abstract class AbstractDamageReasonStateEvent extends AbstractStateEvent 
     public static abstract class AbstractDamageReasonStateCreated extends AbstractDamageReasonStateEvent implements DamageReasonStateEvent.DamageReasonStateCreated
     {
         public AbstractDamageReasonStateCreated() {
-            this(new DamageReasonStateEventId());
+            this(new DamageReasonEventId());
         }
 
-        public AbstractDamageReasonStateCreated(DamageReasonStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractDamageReasonStateCreated(DamageReasonEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -134,11 +134,11 @@ public abstract class AbstractDamageReasonStateEvent extends AbstractStateEvent 
     public static abstract class AbstractDamageReasonStateMergePatched extends AbstractDamageReasonStateEvent implements DamageReasonStateEvent.DamageReasonStateMergePatched
     {
         public AbstractDamageReasonStateMergePatched() {
-            this(new DamageReasonStateEventId());
+            this(new DamageReasonEventId());
         }
 
-        public AbstractDamageReasonStateMergePatched(DamageReasonStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractDamageReasonStateMergePatched(DamageReasonEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -181,11 +181,11 @@ public abstract class AbstractDamageReasonStateEvent extends AbstractStateEvent 
     public static abstract class AbstractDamageReasonStateDeleted extends AbstractDamageReasonStateEvent implements DamageReasonStateEvent.DamageReasonStateDeleted
     {
         public AbstractDamageReasonStateDeleted() {
-            this(new DamageReasonStateEventId());
+            this(new DamageReasonEventId());
         }
 
-        public AbstractDamageReasonStateDeleted(DamageReasonStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractDamageReasonStateDeleted(DamageReasonEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -198,8 +198,8 @@ public abstract class AbstractDamageReasonStateEvent extends AbstractStateEvent 
         public SimpleDamageReasonStateCreated() {
         }
 
-        public SimpleDamageReasonStateCreated(DamageReasonStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleDamageReasonStateCreated(DamageReasonEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -208,8 +208,8 @@ public abstract class AbstractDamageReasonStateEvent extends AbstractStateEvent 
         public SimpleDamageReasonStateMergePatched() {
         }
 
-        public SimpleDamageReasonStateMergePatched(DamageReasonStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleDamageReasonStateMergePatched(DamageReasonEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -218,8 +218,8 @@ public abstract class AbstractDamageReasonStateEvent extends AbstractStateEvent 
         public SimpleDamageReasonStateDeleted() {
         }
 
-        public SimpleDamageReasonStateDeleted(DamageReasonStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleDamageReasonStateDeleted(DamageReasonEventId eventId) {
+            super(eventId);
         }
     }
 

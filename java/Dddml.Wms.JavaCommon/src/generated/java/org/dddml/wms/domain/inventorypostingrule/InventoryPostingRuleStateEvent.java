@@ -8,7 +8,7 @@ import org.dddml.wms.specialization.Event;
 
 public interface InventoryPostingRuleStateEvent extends Event
 {
-    InventoryPostingRuleStateEventId getStateEventId();
+    InventoryPostingRuleEventId getStateEventId();
 
     boolean getStateEventReadOnly();
 

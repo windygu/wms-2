@@ -16,7 +16,7 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 	public abstract class InventoryPRTriggeredStateEventBase : IInventoryPRTriggeredStateEvent
 	{
 
-		public virtual InventoryPRTriggeredStateEventId StateEventId { get; set; }
+		public virtual InventoryPRTriggeredEventId StateEventId { get; set; }
 
         public virtual InventoryPRTriggeredId InventoryPRTriggeredId
         {
@@ -34,7 +34,7 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		InventoryPRTriggeredStateEventId IGlobalIdentity<InventoryPRTriggeredStateEventId>.GlobalId {
+		InventoryPRTriggeredEventId IGlobalIdentity<InventoryPRTriggeredEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -78,7 +78,7 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
         {
         }
 
-        protected InventoryPRTriggeredStateEventBase(InventoryPRTriggeredStateEventId stateEventId)
+        protected InventoryPRTriggeredStateEventBase(InventoryPRTriggeredEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -95,11 +95,11 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 
 	public class InventoryPRTriggeredStateCreated : InventoryPRTriggeredStateEventBase, IInventoryPRTriggeredStateCreated
 	{
-		public InventoryPRTriggeredStateCreated () : this(new InventoryPRTriggeredStateEventId())
+		public InventoryPRTriggeredStateCreated () : this(new InventoryPRTriggeredEventId())
 		{
 		}
 
-		public InventoryPRTriggeredStateCreated (InventoryPRTriggeredStateEventId stateEventId) : base(stateEventId)
+		public InventoryPRTriggeredStateCreated (InventoryPRTriggeredEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -121,7 +121,7 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 		{
 		}
 
-		public InventoryPRTriggeredStateMergePatched (InventoryPRTriggeredStateEventId stateEventId) : base(stateEventId)
+		public InventoryPRTriggeredStateMergePatched (InventoryPRTriggeredEventId stateEventId) : base(stateEventId)
 		{
 		}
 

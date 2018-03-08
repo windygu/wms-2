@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.DocumentType
 	public abstract class DocumentTypeStateEventBase : IDocumentTypeStateEvent
 	{
 
-		public virtual DocumentTypeStateEventId StateEventId { get; set; }
+		public virtual DocumentTypeEventId StateEventId { get; set; }
 
         public virtual string DocumentTypeId
         {
@@ -37,7 +37,7 @@ namespace Dddml.Wms.Domain.DocumentType
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		DocumentTypeStateEventId IGlobalIdentity<DocumentTypeStateEventId>.GlobalId {
+		DocumentTypeEventId IGlobalIdentity<DocumentTypeEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -81,7 +81,7 @@ namespace Dddml.Wms.Domain.DocumentType
         {
         }
 
-        protected DocumentTypeStateEventBase(DocumentTypeStateEventId stateEventId)
+        protected DocumentTypeStateEventBase(DocumentTypeEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -98,11 +98,11 @@ namespace Dddml.Wms.Domain.DocumentType
 
 	public class DocumentTypeStateCreated : DocumentTypeStateEventBase, IDocumentTypeStateCreated
 	{
-		public DocumentTypeStateCreated () : this(new DocumentTypeStateEventId())
+		public DocumentTypeStateCreated () : this(new DocumentTypeEventId())
 		{
 		}
 
-		public DocumentTypeStateCreated (DocumentTypeStateEventId stateEventId) : base(stateEventId)
+		public DocumentTypeStateCreated (DocumentTypeEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -128,7 +128,7 @@ namespace Dddml.Wms.Domain.DocumentType
 		{
 		}
 
-		public DocumentTypeStateMergePatched (DocumentTypeStateEventId stateEventId) : base(stateEventId)
+		public DocumentTypeStateMergePatched (DocumentTypeEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -147,7 +147,7 @@ namespace Dddml.Wms.Domain.DocumentType
 		{
 		}
 
-		public DocumentTypeStateDeleted (DocumentTypeStateEventId stateEventId) : base(stateEventId)
+		public DocumentTypeStateDeleted (DocumentTypeEventId stateEventId) : base(stateEventId)
 		{
 		}
 

@@ -9,14 +9,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractInventoryPostingRuleStateEvent extends AbstractStateEvent implements InventoryPostingRuleStateEvent 
 {
-    private InventoryPostingRuleStateEventId stateEventId;
+    private InventoryPostingRuleEventId stateEventId;
 
-    public InventoryPostingRuleStateEventId getStateEventId() {
+    public InventoryPostingRuleEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(InventoryPostingRuleStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(InventoryPostingRuleEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public String getInventoryPostingRuleId() {
@@ -143,8 +143,8 @@ public abstract class AbstractInventoryPostingRuleStateEvent extends AbstractSta
     protected AbstractInventoryPostingRuleStateEvent() {
     }
 
-    protected AbstractInventoryPostingRuleStateEvent(InventoryPostingRuleStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractInventoryPostingRuleStateEvent(InventoryPostingRuleEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -154,11 +154,11 @@ public abstract class AbstractInventoryPostingRuleStateEvent extends AbstractSta
     public static abstract class AbstractInventoryPostingRuleStateCreated extends AbstractInventoryPostingRuleStateEvent implements InventoryPostingRuleStateEvent.InventoryPostingRuleStateCreated
     {
         public AbstractInventoryPostingRuleStateCreated() {
-            this(new InventoryPostingRuleStateEventId());
+            this(new InventoryPostingRuleEventId());
         }
 
-        public AbstractInventoryPostingRuleStateCreated(InventoryPostingRuleStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractInventoryPostingRuleStateCreated(InventoryPostingRuleEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -171,11 +171,11 @@ public abstract class AbstractInventoryPostingRuleStateEvent extends AbstractSta
     public static abstract class AbstractInventoryPostingRuleStateMergePatched extends AbstractInventoryPostingRuleStateEvent implements InventoryPostingRuleStateEvent.InventoryPostingRuleStateMergePatched
     {
         public AbstractInventoryPostingRuleStateMergePatched() {
-            this(new InventoryPostingRuleStateEventId());
+            this(new InventoryPostingRuleEventId());
         }
 
-        public AbstractInventoryPostingRuleStateMergePatched(InventoryPostingRuleStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractInventoryPostingRuleStateMergePatched(InventoryPostingRuleEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -248,11 +248,11 @@ public abstract class AbstractInventoryPostingRuleStateEvent extends AbstractSta
     public static abstract class AbstractInventoryPostingRuleStateDeleted extends AbstractInventoryPostingRuleStateEvent implements InventoryPostingRuleStateEvent.InventoryPostingRuleStateDeleted
     {
         public AbstractInventoryPostingRuleStateDeleted() {
-            this(new InventoryPostingRuleStateEventId());
+            this(new InventoryPostingRuleEventId());
         }
 
-        public AbstractInventoryPostingRuleStateDeleted(InventoryPostingRuleStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractInventoryPostingRuleStateDeleted(InventoryPostingRuleEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -265,8 +265,8 @@ public abstract class AbstractInventoryPostingRuleStateEvent extends AbstractSta
         public SimpleInventoryPostingRuleStateCreated() {
         }
 
-        public SimpleInventoryPostingRuleStateCreated(InventoryPostingRuleStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleInventoryPostingRuleStateCreated(InventoryPostingRuleEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -275,8 +275,8 @@ public abstract class AbstractInventoryPostingRuleStateEvent extends AbstractSta
         public SimpleInventoryPostingRuleStateMergePatched() {
         }
 
-        public SimpleInventoryPostingRuleStateMergePatched(InventoryPostingRuleStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleInventoryPostingRuleStateMergePatched(InventoryPostingRuleEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -285,8 +285,8 @@ public abstract class AbstractInventoryPostingRuleStateEvent extends AbstractSta
         public SimpleInventoryPostingRuleStateDeleted() {
         }
 
-        public SimpleInventoryPostingRuleStateDeleted(InventoryPostingRuleStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleInventoryPostingRuleStateDeleted(InventoryPostingRuleEventId eventId) {
+            super(eventId);
         }
     }
 

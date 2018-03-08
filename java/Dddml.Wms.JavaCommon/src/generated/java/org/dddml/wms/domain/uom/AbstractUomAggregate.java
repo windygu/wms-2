@@ -55,7 +55,7 @@ public abstract class AbstractUomAggregate extends AbstractAggregate implements 
     }
 
     protected UomStateEvent map(UomCommand.CreateUom c) {
-        UomStateEventId stateEventId = new UomStateEventId(c.getUomId(), c.getVersion());
+        UomEventId stateEventId = new UomEventId(c.getUomId(), c.getVersion());
         UomStateEvent.UomStateCreated e = newUomStateCreated(stateEventId);
         e.setUomTypeId(c.getUomTypeId());
         e.setAbbreviation(c.getAbbreviation());
@@ -68,7 +68,7 @@ public abstract class AbstractUomAggregate extends AbstractAggregate implements 
     }
 
     protected UomStateEvent map(UomCommand.MergePatchUom c) {
-        UomStateEventId stateEventId = new UomStateEventId(c.getUomId(), c.getVersion());
+        UomEventId stateEventId = new UomEventId(c.getUomId(), c.getVersion());
         UomStateEvent.UomStateMergePatched e = newUomStateMergePatched(stateEventId);
         e.setUomTypeId(c.getUomTypeId());
         e.setAbbreviation(c.getAbbreviation());
@@ -85,7 +85,7 @@ public abstract class AbstractUomAggregate extends AbstractAggregate implements 
     }
 
     protected UomStateEvent map(UomCommand.DeleteUom c) {
-        UomStateEventId stateEventId = new UomStateEventId(c.getUomId(), c.getVersion());
+        UomEventId stateEventId = new UomEventId(c.getUomId(), c.getVersion());
         UomStateEvent.UomStateDeleted e = newUomStateDeleted(stateEventId);
         ((AbstractUomStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
@@ -97,7 +97,7 @@ public abstract class AbstractUomAggregate extends AbstractAggregate implements 
     ////////////////////////
 
     protected UomStateEvent.UomStateCreated newUomStateCreated(Long version, String commandId, String requesterId) {
-        UomStateEventId stateEventId = new UomStateEventId(this.state.getUomId(), version);
+        UomEventId stateEventId = new UomEventId(this.state.getUomId(), version);
         UomStateEvent.UomStateCreated e = newUomStateCreated(stateEventId);
         ((AbstractUomStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -106,7 +106,7 @@ public abstract class AbstractUomAggregate extends AbstractAggregate implements 
     }
 
     protected UomStateEvent.UomStateMergePatched newUomStateMergePatched(Long version, String commandId, String requesterId) {
-        UomStateEventId stateEventId = new UomStateEventId(this.state.getUomId(), version);
+        UomEventId stateEventId = new UomEventId(this.state.getUomId(), version);
         UomStateEvent.UomStateMergePatched e = newUomStateMergePatched(stateEventId);
         ((AbstractUomStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -115,7 +115,7 @@ public abstract class AbstractUomAggregate extends AbstractAggregate implements 
     }
 
     protected UomStateEvent.UomStateDeleted newUomStateDeleted(Long version, String commandId, String requesterId) {
-        UomStateEventId stateEventId = new UomStateEventId(this.state.getUomId(), version);
+        UomEventId stateEventId = new UomEventId(this.state.getUomId(), version);
         UomStateEvent.UomStateDeleted e = newUomStateDeleted(stateEventId);
         ((AbstractUomStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -123,15 +123,15 @@ public abstract class AbstractUomAggregate extends AbstractAggregate implements 
         return e;
     }
 
-    protected UomStateEvent.UomStateCreated newUomStateCreated(UomStateEventId stateEventId) {
+    protected UomStateEvent.UomStateCreated newUomStateCreated(UomEventId stateEventId) {
         return new AbstractUomStateEvent.SimpleUomStateCreated(stateEventId);
     }
 
-    protected UomStateEvent.UomStateMergePatched newUomStateMergePatched(UomStateEventId stateEventId) {
+    protected UomStateEvent.UomStateMergePatched newUomStateMergePatched(UomEventId stateEventId) {
         return new AbstractUomStateEvent.SimpleUomStateMergePatched(stateEventId);
     }
 
-    protected UomStateEvent.UomStateDeleted newUomStateDeleted(UomStateEventId stateEventId)
+    protected UomStateEvent.UomStateDeleted newUomStateDeleted(UomEventId stateEventId)
     {
         return new AbstractUomStateEvent.SimpleUomStateDeleted(stateEventId);
     }

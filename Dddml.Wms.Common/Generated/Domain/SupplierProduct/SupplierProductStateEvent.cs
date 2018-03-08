@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.SupplierProduct
 	public abstract class SupplierProductStateEventBase : ISupplierProductStateEvent
 	{
 
-		public virtual SupplierProductStateEventId StateEventId { get; set; }
+		public virtual SupplierProductEventId StateEventId { get; set; }
 
         public virtual SupplierProductId SupplierProductId
         {
@@ -59,7 +59,7 @@ namespace Dddml.Wms.Domain.SupplierProduct
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		SupplierProductStateEventId IGlobalIdentity<SupplierProductStateEventId>.GlobalId {
+		SupplierProductEventId IGlobalIdentity<SupplierProductEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -103,7 +103,7 @@ namespace Dddml.Wms.Domain.SupplierProduct
         {
         }
 
-        protected SupplierProductStateEventBase(SupplierProductStateEventId stateEventId)
+        protected SupplierProductStateEventBase(SupplierProductEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -120,11 +120,11 @@ namespace Dddml.Wms.Domain.SupplierProduct
 
 	public class SupplierProductStateCreated : SupplierProductStateEventBase, ISupplierProductStateCreated
 	{
-		public SupplierProductStateCreated () : this(new SupplierProductStateEventId())
+		public SupplierProductStateCreated () : this(new SupplierProductEventId())
 		{
 		}
 
-		public SupplierProductStateCreated (SupplierProductStateEventId stateEventId) : base(stateEventId)
+		public SupplierProductStateCreated (SupplierProductEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -172,7 +172,7 @@ namespace Dddml.Wms.Domain.SupplierProduct
 		{
 		}
 
-		public SupplierProductStateMergePatched (SupplierProductStateEventId stateEventId) : base(stateEventId)
+		public SupplierProductStateMergePatched (SupplierProductEventId stateEventId) : base(stateEventId)
 		{
 		}
 

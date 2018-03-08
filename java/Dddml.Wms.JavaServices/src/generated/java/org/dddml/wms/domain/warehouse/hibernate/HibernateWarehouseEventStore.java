@@ -16,7 +16,7 @@ public class HibernateWarehouseEventStore extends AbstractHibernateEventStore
     @Override
     protected Serializable getEventId(EventStoreAggregateId eventStoreAggregateId, long version)
     {
-        return new WarehouseStateEventId((String) eventStoreAggregateId.getId(), version);
+        return new WarehouseEventId((String) eventStoreAggregateId.getId(), version);
     }
 
     @Override

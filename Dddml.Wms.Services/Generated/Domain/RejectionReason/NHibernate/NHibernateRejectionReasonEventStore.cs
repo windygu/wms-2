@@ -21,7 +21,7 @@ namespace Dddml.Wms.Domain.RejectionReason.NHibernate
 	{
 		public override object GetEventId(IEventStoreAggregateId eventStoreAggregateId, long version)
 		{
-			return new RejectionReasonStateEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
+			return new RejectionReasonEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
 		public override Type GetSupportedStateEventType()

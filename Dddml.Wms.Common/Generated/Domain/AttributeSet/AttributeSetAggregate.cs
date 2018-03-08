@@ -104,7 +104,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 
         protected virtual IAttributeSetStateCreated Map(ICreateAttributeSet c)
         {
-			var stateEventId = new AttributeSetStateEventId(c.AttributeSetId, c.Version);
+			var stateEventId = new AttributeSetEventId(c.AttributeSetId, c.Version);
             IAttributeSetStateCreated e = NewAttributeSetStateCreated(stateEventId);
 		
             e.AttributeSetName = c.AttributeSetName;
@@ -135,7 +135,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 
         protected virtual IAttributeSetStateMergePatched Map(IMergePatchAttributeSet c)
         {
-			var stateEventId = new AttributeSetStateEventId(c.AttributeSetId, c.Version);
+			var stateEventId = new AttributeSetEventId(c.AttributeSetId, c.Version);
             IAttributeSetStateMergePatched e = NewAttributeSetStateMergePatched(stateEventId);
 
             e.AttributeSetName = c.AttributeSetName;
@@ -175,7 +175,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 
         protected virtual IAttributeSetStateDeleted Map(IDeleteAttributeSet c)
         {
-			var stateEventId = new AttributeSetStateEventId(c.AttributeSetId, c.Version);
+			var stateEventId = new AttributeSetEventId(c.AttributeSetId, c.Version);
             IAttributeSetStateDeleted e = NewAttributeSetStateDeleted(stateEventId);
 			
             e.CommandId = c.CommandId;
@@ -237,7 +237,7 @@ namespace Dddml.Wms.Domain.AttributeSet
         protected virtual IAttributeUseStateCreated MapCreate(ICreateAttributeUse c, IAttributeSetCommand outerCommand, long version, IAttributeSetState outerState)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new AttributeUseStateEventId(c.AttributeSetId, c.AttributeId, version);
+			var stateEventId = new AttributeUseEventId(c.AttributeSetId, c.AttributeId, version);
             IAttributeUseStateCreated e = NewAttributeUseStateCreated(stateEventId);
             var s = outerState.AttributeUses.Get(c.AttributeId, true);
 
@@ -255,7 +255,7 @@ namespace Dddml.Wms.Domain.AttributeSet
         protected virtual IAttributeUseStateMergePatched MapMergePatch(IMergePatchAttributeUse c, IAttributeSetCommand outerCommand, long version, IAttributeSetState outerState)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new AttributeUseStateEventId(c.AttributeSetId, c.AttributeId, version);
+			var stateEventId = new AttributeUseEventId(c.AttributeSetId, c.AttributeId, version);
             IAttributeUseStateMergePatched e = NewAttributeUseStateMergePatched(stateEventId);
             var s = outerState.AttributeUses.Get(c.AttributeId);
 
@@ -274,7 +274,7 @@ namespace Dddml.Wms.Domain.AttributeSet
         protected virtual IAttributeUseStateRemoved MapRemove(IRemoveAttributeUse c, IAttributeSetCommand outerCommand, long version)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new AttributeUseStateEventId(c.AttributeSetId, c.AttributeId, version);
+			var stateEventId = new AttributeUseEventId(c.AttributeSetId, c.AttributeId, version);
             IAttributeUseStateRemoved e = NewAttributeUseStateRemoved(stateEventId);
 
 
@@ -301,7 +301,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 
         protected AttributeSetStateCreated NewAttributeSetStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new AttributeSetStateEventId(_state.AttributeSetId, version);
+            var stateEventId = new AttributeSetEventId(_state.AttributeSetId, version);
             var e = NewAttributeSetStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -314,7 +314,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 
         protected AttributeSetStateMergePatched NewAttributeSetStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new AttributeSetStateEventId(_state.AttributeSetId, version);
+            var stateEventId = new AttributeSetEventId(_state.AttributeSetId, version);
             var e = NewAttributeSetStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -328,7 +328,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 
         protected AttributeSetStateDeleted NewAttributeSetStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new AttributeSetStateEventId(_state.AttributeSetId, version);
+            var stateEventId = new AttributeSetEventId(_state.AttributeSetId, version);
             var e = NewAttributeSetStateDeleted(stateEventId);
 
             e.CommandId = commandId;
@@ -341,32 +341,32 @@ namespace Dddml.Wms.Domain.AttributeSet
 
 ////////////////////////
 
-		private AttributeSetStateCreated NewAttributeSetStateCreated(AttributeSetStateEventId stateEventId)
+		private AttributeSetStateCreated NewAttributeSetStateCreated(AttributeSetEventId stateEventId)
 		{
 			return new AttributeSetStateCreated(stateEventId);			
 		}
 
-        private AttributeSetStateMergePatched NewAttributeSetStateMergePatched(AttributeSetStateEventId stateEventId)
+        private AttributeSetStateMergePatched NewAttributeSetStateMergePatched(AttributeSetEventId stateEventId)
 		{
 			return new AttributeSetStateMergePatched(stateEventId);
 		}
 
-        private AttributeSetStateDeleted NewAttributeSetStateDeleted(AttributeSetStateEventId stateEventId)
+        private AttributeSetStateDeleted NewAttributeSetStateDeleted(AttributeSetEventId stateEventId)
 		{
 			return new AttributeSetStateDeleted(stateEventId);
 		}
 
-		private AttributeUseStateCreated NewAttributeUseStateCreated(AttributeUseStateEventId stateEventId)
+		private AttributeUseStateCreated NewAttributeUseStateCreated(AttributeUseEventId stateEventId)
 		{
 			return new AttributeUseStateCreated(stateEventId);
 		}
 
-        private AttributeUseStateMergePatched NewAttributeUseStateMergePatched(AttributeUseStateEventId stateEventId)
+        private AttributeUseStateMergePatched NewAttributeUseStateMergePatched(AttributeUseEventId stateEventId)
 		{
 			return new AttributeUseStateMergePatched(stateEventId);
 		}
 
-        private AttributeUseStateRemoved NewAttributeUseStateRemoved(AttributeUseStateEventId stateEventId)
+        private AttributeUseStateRemoved NewAttributeUseStateRemoved(AttributeUseEventId stateEventId)
 		{
 			return new AttributeUseStateRemoved(stateEventId);
 		}

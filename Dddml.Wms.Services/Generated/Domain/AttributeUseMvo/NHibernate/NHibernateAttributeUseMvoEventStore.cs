@@ -22,7 +22,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo.NHibernate
 	{
 		public override object GetEventId(IEventStoreAggregateId eventStoreAggregateId, long version)
 		{
-			return new AttributeUseMvoStateEventId((AttributeSetAttributeUseId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
+			return new AttributeUseMvoEventId((AttributeSetAttributeUseId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
 		public override Type GetSupportedStateEventType()

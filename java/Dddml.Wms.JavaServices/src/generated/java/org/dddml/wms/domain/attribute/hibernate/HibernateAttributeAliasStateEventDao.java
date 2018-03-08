@@ -34,12 +34,12 @@ public class HibernateAttributeAliasStateEventDao implements AttributeAliasState
 
     @Transactional(readOnly = true)
     @Override
-    public Iterable<AttributeAliasStateEvent> findByAttributeStateEventId(AttributeStateEventId attributeStateEventId)
+    public Iterable<AttributeAliasStateEvent> findByAttributeEventId(AttributeEventId attributeEventId)
     {
         Criteria criteria = getCurrentSession().createCriteria(AbstractAttributeAliasStateEvent.class);
         Junction partIdCondition = Restrictions.conjunction()
-            .add(Restrictions.eq("stateEventId.attributeId", attributeStateEventId.getAttributeId()))
-            .add(Restrictions.eq("stateEventId.attributeVersion", attributeStateEventId.getVersion()))
+            .add(Restrictions.eq("stateEventId.attributeId", attributeEventId.getAttributeId()))
+            .add(Restrictions.eq("stateEventId.attributeVersion", attributeEventId.getVersion()))
             ;
         return criteria.add(partIdCondition).list();
     }

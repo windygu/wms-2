@@ -19,7 +19,7 @@ public class HibernateSellableInventoryItemEntryMvoEventStore extends AbstractHi
     @Override
     protected Serializable getEventId(EventStoreAggregateId eventStoreAggregateId, long version)
     {
-        return new SellableInventoryItemEntryMvoStateEventId((SellableInventoryItemEntryId) eventStoreAggregateId.getId(), version);
+        return new SellableInventoryItemEntryMvoEventId((SellableInventoryItemEntryId) eventStoreAggregateId.getId(), version);
     }
 
     @Override

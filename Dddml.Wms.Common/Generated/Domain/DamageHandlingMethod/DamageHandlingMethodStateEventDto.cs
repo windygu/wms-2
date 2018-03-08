@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 	public abstract class DamageHandlingMethodStateEventDtoBase : IStateEventDto, IDamageHandlingMethodStateCreated, IDamageHandlingMethodStateMergePatched, IDamageHandlingMethodStateDeleted
 	{
 
-        private DamageHandlingMethodStateEventIdDto _stateEventId;
+        private DamageHandlingMethodEventIdDto _stateEventId;
 
-		protected internal virtual DamageHandlingMethodStateEventIdDto StateEventId 
+		protected internal virtual DamageHandlingMethodEventIdDto StateEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new DamageHandlingMethodStateEventIdDto(); }
+                if (_stateEventId == null) { _stateEventId = new DamageHandlingMethodEventIdDto(); }
                 return _stateEventId;
             }
             set
@@ -56,10 +56,10 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		DamageHandlingMethodStateEventId IGlobalIdentity<DamageHandlingMethodStateEventId>.GlobalId {
+		DamageHandlingMethodEventId IGlobalIdentity<DamageHandlingMethodEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToDamageHandlingMethodStateEventId();
+				return this.StateEventId.ToDamageHandlingMethodEventId();
 			}
 		}
 
@@ -153,16 +153,16 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 		}
 
 
-        DamageHandlingMethodStateEventId IDamageHandlingMethodStateEvent.StateEventId
+        DamageHandlingMethodEventId IDamageHandlingMethodStateEvent.StateEventId
         {
-            get { return this.StateEventId.ToDamageHandlingMethodStateEventId(); }
+            get { return this.StateEventId.ToDamageHandlingMethodEventId(); }
         }
 
         protected DamageHandlingMethodStateEventDtoBase()
         {
         }
 
-        protected DamageHandlingMethodStateEventDtoBase(DamageHandlingMethodStateEventIdDto stateEventId)
+        protected DamageHandlingMethodStateEventDtoBase(DamageHandlingMethodEventIdDto stateEventId)
         {
             this.StateEventId = stateEventId;
         }

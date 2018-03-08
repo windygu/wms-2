@@ -19,11 +19,11 @@ namespace Dddml.Wms.Domain.InventoryItem
 
         public virtual InventoryItemEntryState InventoryItemEntryState { get { return _state; } }
 
-        public virtual InventoryItemEntryStateEventId StateEventId
+        public virtual InventoryItemEntryEventId StateEventId
         {
             get
             {
-                InventoryItemEntryStateEventId eventId = new InventoryItemEntryStateEventId(_state.InventoryItemId, _state.EntrySeqId, default(long));
+                InventoryItemEntryEventId eventId = new InventoryItemEntryEventId(_state.InventoryItemId, _state.EntrySeqId, default(long));
                 return eventId;
             }
             set
@@ -59,7 +59,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		InventoryItemEntryStateEventId IGlobalIdentity<InventoryItemEntryStateEventId>.GlobalId {
+		InventoryItemEntryEventId IGlobalIdentity<InventoryItemEntryEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -105,7 +105,7 @@ namespace Dddml.Wms.Domain.InventoryItem
         {
         }
 
-        protected InventoryItemEntryStateEventBase(InventoryItemEntryStateEventId stateEventId) : this(new InventoryItemEntryState())
+        protected InventoryItemEntryStateEventBase(InventoryItemEntryEventId stateEventId) : this(new InventoryItemEntryState())
         {
             this.StateEventId = stateEventId;
         }
@@ -128,11 +128,11 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 	public class InventoryItemEntryStateCreated : InventoryItemEntryStateEventBase, IInventoryItemEntryStateCreated
 	{
-		public InventoryItemEntryStateCreated () : this(new InventoryItemEntryStateEventId())
+		public InventoryItemEntryStateCreated () : this(new InventoryItemEntryEventId())
 		{
 		}
 
-		public InventoryItemEntryStateCreated (InventoryItemEntryStateEventId stateEventId) : base(stateEventId)
+		public InventoryItemEntryStateCreated (InventoryItemEntryEventId stateEventId) : base(stateEventId)
 		{
 		}
 

@@ -7,7 +7,7 @@ public interface AttributeAliasStateEventDao
 {
     void save(AttributeAliasStateEvent e);
 
-    Iterable<AttributeAliasStateEvent> findByAttributeStateEventId(AttributeStateEventId attributeStateEventId);
+    Iterable<AttributeAliasStateEvent> findByAttributeEventId(AttributeEventId attributeEventId);
 
 }
 

@@ -55,7 +55,7 @@ public abstract class AbstractRejectionReasonAggregate extends AbstractAggregate
     }
 
     protected RejectionReasonStateEvent map(RejectionReasonCommand.CreateRejectionReason c) {
-        RejectionReasonStateEventId stateEventId = new RejectionReasonStateEventId(c.getRejectionReasonId(), c.getVersion());
+        RejectionReasonEventId stateEventId = new RejectionReasonEventId(c.getRejectionReasonId(), c.getVersion());
         RejectionReasonStateEvent.RejectionReasonStateCreated e = newRejectionReasonStateCreated(stateEventId);
         e.setDescription(c.getDescription());
         e.setActive(c.getActive());
@@ -66,7 +66,7 @@ public abstract class AbstractRejectionReasonAggregate extends AbstractAggregate
     }
 
     protected RejectionReasonStateEvent map(RejectionReasonCommand.MergePatchRejectionReason c) {
-        RejectionReasonStateEventId stateEventId = new RejectionReasonStateEventId(c.getRejectionReasonId(), c.getVersion());
+        RejectionReasonEventId stateEventId = new RejectionReasonEventId(c.getRejectionReasonId(), c.getVersion());
         RejectionReasonStateEvent.RejectionReasonStateMergePatched e = newRejectionReasonStateMergePatched(stateEventId);
         e.setDescription(c.getDescription());
         e.setActive(c.getActive());
@@ -79,7 +79,7 @@ public abstract class AbstractRejectionReasonAggregate extends AbstractAggregate
     }
 
     protected RejectionReasonStateEvent map(RejectionReasonCommand.DeleteRejectionReason c) {
-        RejectionReasonStateEventId stateEventId = new RejectionReasonStateEventId(c.getRejectionReasonId(), c.getVersion());
+        RejectionReasonEventId stateEventId = new RejectionReasonEventId(c.getRejectionReasonId(), c.getVersion());
         RejectionReasonStateEvent.RejectionReasonStateDeleted e = newRejectionReasonStateDeleted(stateEventId);
         ((AbstractRejectionReasonStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
@@ -91,7 +91,7 @@ public abstract class AbstractRejectionReasonAggregate extends AbstractAggregate
     ////////////////////////
 
     protected RejectionReasonStateEvent.RejectionReasonStateCreated newRejectionReasonStateCreated(Long version, String commandId, String requesterId) {
-        RejectionReasonStateEventId stateEventId = new RejectionReasonStateEventId(this.state.getRejectionReasonId(), version);
+        RejectionReasonEventId stateEventId = new RejectionReasonEventId(this.state.getRejectionReasonId(), version);
         RejectionReasonStateEvent.RejectionReasonStateCreated e = newRejectionReasonStateCreated(stateEventId);
         ((AbstractRejectionReasonStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -100,7 +100,7 @@ public abstract class AbstractRejectionReasonAggregate extends AbstractAggregate
     }
 
     protected RejectionReasonStateEvent.RejectionReasonStateMergePatched newRejectionReasonStateMergePatched(Long version, String commandId, String requesterId) {
-        RejectionReasonStateEventId stateEventId = new RejectionReasonStateEventId(this.state.getRejectionReasonId(), version);
+        RejectionReasonEventId stateEventId = new RejectionReasonEventId(this.state.getRejectionReasonId(), version);
         RejectionReasonStateEvent.RejectionReasonStateMergePatched e = newRejectionReasonStateMergePatched(stateEventId);
         ((AbstractRejectionReasonStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -109,7 +109,7 @@ public abstract class AbstractRejectionReasonAggregate extends AbstractAggregate
     }
 
     protected RejectionReasonStateEvent.RejectionReasonStateDeleted newRejectionReasonStateDeleted(Long version, String commandId, String requesterId) {
-        RejectionReasonStateEventId stateEventId = new RejectionReasonStateEventId(this.state.getRejectionReasonId(), version);
+        RejectionReasonEventId stateEventId = new RejectionReasonEventId(this.state.getRejectionReasonId(), version);
         RejectionReasonStateEvent.RejectionReasonStateDeleted e = newRejectionReasonStateDeleted(stateEventId);
         ((AbstractRejectionReasonStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -117,15 +117,15 @@ public abstract class AbstractRejectionReasonAggregate extends AbstractAggregate
         return e;
     }
 
-    protected RejectionReasonStateEvent.RejectionReasonStateCreated newRejectionReasonStateCreated(RejectionReasonStateEventId stateEventId) {
+    protected RejectionReasonStateEvent.RejectionReasonStateCreated newRejectionReasonStateCreated(RejectionReasonEventId stateEventId) {
         return new AbstractRejectionReasonStateEvent.SimpleRejectionReasonStateCreated(stateEventId);
     }
 
-    protected RejectionReasonStateEvent.RejectionReasonStateMergePatched newRejectionReasonStateMergePatched(RejectionReasonStateEventId stateEventId) {
+    protected RejectionReasonStateEvent.RejectionReasonStateMergePatched newRejectionReasonStateMergePatched(RejectionReasonEventId stateEventId) {
         return new AbstractRejectionReasonStateEvent.SimpleRejectionReasonStateMergePatched(stateEventId);
     }
 
-    protected RejectionReasonStateEvent.RejectionReasonStateDeleted newRejectionReasonStateDeleted(RejectionReasonStateEventId stateEventId)
+    protected RejectionReasonStateEvent.RejectionReasonStateDeleted newRejectionReasonStateDeleted(RejectionReasonEventId stateEventId)
     {
         return new AbstractRejectionReasonStateEvent.SimpleRejectionReasonStateDeleted(stateEventId);
     }

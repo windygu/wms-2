@@ -12,9 +12,9 @@ using Dddml.Wms.Domain.Order;
 
 namespace Dddml.Wms.Domain.OrderItemMvo
 {
-	public interface IOrderItemMvoStateEvent : IEvent, IStateEventDto, IGlobalIdentity<OrderItemMvoStateEventId>, ICreated<string>
+	public interface IOrderItemMvoStateEvent : IEvent, IStateEventDto, IGlobalIdentity<OrderItemMvoEventId>, ICreated<string>
 	{
-		OrderItemMvoStateEventId StateEventId { get; }
+		OrderItemMvoEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

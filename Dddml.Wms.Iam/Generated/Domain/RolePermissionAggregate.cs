@@ -104,7 +104,7 @@ namespace Dddml.Wms.Domain.RolePermission
 
         protected virtual IRolePermissionStateCreated Map(ICreateRolePermission c)
         {
-			var stateEventId = new RolePermissionStateEventId(c.Id, c.Version);
+			var stateEventId = new RolePermissionEventId(c.Id, c.Version);
             IRolePermissionStateCreated e = NewRolePermissionStateCreated(stateEventId);
 		
             e.Active = c.Active;
@@ -121,7 +121,7 @@ namespace Dddml.Wms.Domain.RolePermission
 
         protected virtual IRolePermissionStateMergePatched Map(IMergePatchRolePermission c)
         {
-			var stateEventId = new RolePermissionStateEventId(c.Id, c.Version);
+			var stateEventId = new RolePermissionEventId(c.Id, c.Version);
             IRolePermissionStateMergePatched e = NewRolePermissionStateMergePatched(stateEventId);
 
             e.Active = c.Active;
@@ -141,7 +141,7 @@ namespace Dddml.Wms.Domain.RolePermission
 
         protected virtual IRolePermissionStateDeleted Map(IDeleteRolePermission c)
         {
-			var stateEventId = new RolePermissionStateEventId(c.Id, c.Version);
+			var stateEventId = new RolePermissionEventId(c.Id, c.Version);
             IRolePermissionStateDeleted e = NewRolePermissionStateDeleted(stateEventId);
 			
             e.CommandId = c.CommandId;
@@ -170,7 +170,7 @@ namespace Dddml.Wms.Domain.RolePermission
 
         protected RolePermissionStateCreated NewRolePermissionStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new RolePermissionStateEventId(_state.Id, version);
+            var stateEventId = new RolePermissionEventId(_state.Id, version);
             var e = NewRolePermissionStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -183,7 +183,7 @@ namespace Dddml.Wms.Domain.RolePermission
 
         protected RolePermissionStateMergePatched NewRolePermissionStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new RolePermissionStateEventId(_state.Id, version);
+            var stateEventId = new RolePermissionEventId(_state.Id, version);
             var e = NewRolePermissionStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -197,7 +197,7 @@ namespace Dddml.Wms.Domain.RolePermission
 
         protected RolePermissionStateDeleted NewRolePermissionStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new RolePermissionStateEventId(_state.Id, version);
+            var stateEventId = new RolePermissionEventId(_state.Id, version);
             var e = NewRolePermissionStateDeleted(stateEventId);
 
             e.CommandId = commandId;
@@ -210,17 +210,17 @@ namespace Dddml.Wms.Domain.RolePermission
 
 ////////////////////////
 
-		private RolePermissionStateCreated NewRolePermissionStateCreated(RolePermissionStateEventId stateEventId)
+		private RolePermissionStateCreated NewRolePermissionStateCreated(RolePermissionEventId stateEventId)
 		{
 			return new RolePermissionStateCreated(stateEventId);			
 		}
 
-        private RolePermissionStateMergePatched NewRolePermissionStateMergePatched(RolePermissionStateEventId stateEventId)
+        private RolePermissionStateMergePatched NewRolePermissionStateMergePatched(RolePermissionEventId stateEventId)
 		{
 			return new RolePermissionStateMergePatched(stateEventId);
 		}
 
-        private RolePermissionStateDeleted NewRolePermissionStateDeleted(RolePermissionStateEventId stateEventId)
+        private RolePermissionStateDeleted NewRolePermissionStateDeleted(RolePermissionEventId stateEventId)
 		{
 			return new RolePermissionStateDeleted(stateEventId);
 		}

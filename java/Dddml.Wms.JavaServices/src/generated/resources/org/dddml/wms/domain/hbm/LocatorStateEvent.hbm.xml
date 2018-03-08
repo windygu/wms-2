@@ -8,7 +8,7 @@
   
   <class name="AbstractLocatorStateEvent" table="LocatorStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="stateEventId" class="org.dddml.wms.domain.locator.LocatorStateEventId">
+	<composite-id name="stateEventId" class="org.dddml.wms.domain.locator.LocatorEventId">
 		<key-property name="locatorId" ><column name="LocatorId" length="50" /></key-property>
 		<key-property name="version" ></key-property>
 	</composite-id>

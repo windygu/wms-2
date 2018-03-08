@@ -16,7 +16,7 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 	public abstract class OrderItemMvoStateEventBase : IOrderItemMvoStateEvent
 	{
 
-		public virtual OrderItemMvoStateEventId StateEventId { get; set; }
+		public virtual OrderItemMvoEventId StateEventId { get; set; }
 
         public virtual OrderItemId OrderItemId
         {
@@ -164,7 +164,7 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		OrderItemMvoStateEventId IGlobalIdentity<OrderItemMvoStateEventId>.GlobalId {
+		OrderItemMvoEventId IGlobalIdentity<OrderItemMvoEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -208,7 +208,7 @@ namespace Dddml.Wms.Domain.OrderItemMvo
         {
         }
 
-        protected OrderItemMvoStateEventBase(OrderItemMvoStateEventId stateEventId)
+        protected OrderItemMvoStateEventBase(OrderItemMvoEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -225,11 +225,11 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 
 	public class OrderItemMvoStateCreated : OrderItemMvoStateEventBase, IOrderItemMvoStateCreated
 	{
-		public OrderItemMvoStateCreated () : this(new OrderItemMvoStateEventId())
+		public OrderItemMvoStateCreated () : this(new OrderItemMvoEventId())
 		{
 		}
 
-		public OrderItemMvoStateCreated (OrderItemMvoStateEventId stateEventId) : base(stateEventId)
+		public OrderItemMvoStateCreated (OrderItemMvoEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -381,7 +381,7 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 		{
 		}
 
-		public OrderItemMvoStateMergePatched (OrderItemMvoStateEventId stateEventId) : base(stateEventId)
+		public OrderItemMvoStateMergePatched (OrderItemMvoEventId stateEventId) : base(stateEventId)
 		{
 		}
 

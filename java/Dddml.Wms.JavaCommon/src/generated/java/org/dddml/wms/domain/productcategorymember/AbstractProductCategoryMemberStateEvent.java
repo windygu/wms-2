@@ -8,14 +8,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractProductCategoryMemberStateEvent extends AbstractStateEvent implements ProductCategoryMemberStateEvent 
 {
-    private ProductCategoryMemberStateEventId stateEventId;
+    private ProductCategoryMemberEventId stateEventId;
 
-    public ProductCategoryMemberStateEventId getStateEventId() {
+    public ProductCategoryMemberEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(ProductCategoryMemberStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(ProductCategoryMemberEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public ProductCategoryMemberId getProductCategoryMemberId() {
@@ -130,8 +130,8 @@ public abstract class AbstractProductCategoryMemberStateEvent extends AbstractSt
     protected AbstractProductCategoryMemberStateEvent() {
     }
 
-    protected AbstractProductCategoryMemberStateEvent(ProductCategoryMemberStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractProductCategoryMemberStateEvent(ProductCategoryMemberEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -141,11 +141,11 @@ public abstract class AbstractProductCategoryMemberStateEvent extends AbstractSt
     public static abstract class AbstractProductCategoryMemberStateCreated extends AbstractProductCategoryMemberStateEvent implements ProductCategoryMemberStateEvent.ProductCategoryMemberStateCreated
     {
         public AbstractProductCategoryMemberStateCreated() {
-            this(new ProductCategoryMemberStateEventId());
+            this(new ProductCategoryMemberEventId());
         }
 
-        public AbstractProductCategoryMemberStateCreated(ProductCategoryMemberStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractProductCategoryMemberStateCreated(ProductCategoryMemberEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -158,11 +158,11 @@ public abstract class AbstractProductCategoryMemberStateEvent extends AbstractSt
     public static abstract class AbstractProductCategoryMemberStateMergePatched extends AbstractProductCategoryMemberStateEvent implements ProductCategoryMemberStateEvent.ProductCategoryMemberStateMergePatched
     {
         public AbstractProductCategoryMemberStateMergePatched() {
-            this(new ProductCategoryMemberStateEventId());
+            this(new ProductCategoryMemberEventId());
         }
 
-        public AbstractProductCategoryMemberStateMergePatched(ProductCategoryMemberStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractProductCategoryMemberStateMergePatched(ProductCategoryMemberEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -227,8 +227,8 @@ public abstract class AbstractProductCategoryMemberStateEvent extends AbstractSt
         public SimpleProductCategoryMemberStateCreated() {
         }
 
-        public SimpleProductCategoryMemberStateCreated(ProductCategoryMemberStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleProductCategoryMemberStateCreated(ProductCategoryMemberEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -237,8 +237,8 @@ public abstract class AbstractProductCategoryMemberStateEvent extends AbstractSt
         public SimpleProductCategoryMemberStateMergePatched() {
         }
 
-        public SimpleProductCategoryMemberStateMergePatched(ProductCategoryMemberStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleProductCategoryMemberStateMergePatched(ProductCategoryMemberEventId eventId) {
+            super(eventId);
         }
     }
 

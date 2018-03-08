@@ -104,7 +104,7 @@ namespace Dddml.Wms.Domain.Attribute
 
         protected virtual IAttributeStateCreated Map(ICreateAttribute c)
         {
-			var stateEventId = new AttributeStateEventId(c.AttributeId, c.Version);
+			var stateEventId = new AttributeEventId(c.AttributeId, c.Version);
             IAttributeStateCreated e = NewAttributeStateCreated(stateEventId);
 		
             e.AttributeName = c.AttributeName;
@@ -146,7 +146,7 @@ namespace Dddml.Wms.Domain.Attribute
 
         protected virtual IAttributeStateMergePatched Map(IMergePatchAttribute c)
         {
-			var stateEventId = new AttributeStateEventId(c.AttributeId, c.Version);
+			var stateEventId = new AttributeEventId(c.AttributeId, c.Version);
             IAttributeStateMergePatched e = NewAttributeStateMergePatched(stateEventId);
 
             e.AttributeName = c.AttributeName;
@@ -200,7 +200,7 @@ namespace Dddml.Wms.Domain.Attribute
 
         protected virtual IAttributeStateDeleted Map(IDeleteAttribute c)
         {
-			var stateEventId = new AttributeStateEventId(c.AttributeId, c.Version);
+			var stateEventId = new AttributeEventId(c.AttributeId, c.Version);
             IAttributeStateDeleted e = NewAttributeStateDeleted(stateEventId);
 			
             e.CommandId = c.CommandId;
@@ -284,7 +284,7 @@ namespace Dddml.Wms.Domain.Attribute
         protected virtual IAttributeValueStateCreated MapCreate(ICreateAttributeValue c, IAttributeCommand outerCommand, long version, IAttributeState outerState)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new AttributeValueStateEventId(c.AttributeId, c.Value, version);
+			var stateEventId = new AttributeValueEventId(c.AttributeId, c.Value, version);
             IAttributeValueStateCreated e = NewAttributeValueStateCreated(stateEventId);
             var s = outerState.AttributeValues.Get(c.Value, true);
 
@@ -304,7 +304,7 @@ namespace Dddml.Wms.Domain.Attribute
         protected virtual IAttributeValueStateMergePatched MapMergePatch(IMergePatchAttributeValue c, IAttributeCommand outerCommand, long version, IAttributeState outerState)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new AttributeValueStateEventId(c.AttributeId, c.Value, version);
+			var stateEventId = new AttributeValueEventId(c.AttributeId, c.Value, version);
             IAttributeValueStateMergePatched e = NewAttributeValueStateMergePatched(stateEventId);
             var s = outerState.AttributeValues.Get(c.Value);
 
@@ -327,7 +327,7 @@ namespace Dddml.Wms.Domain.Attribute
         protected virtual IAttributeValueStateRemoved MapRemove(IRemoveAttributeValue c, IAttributeCommand outerCommand, long version)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new AttributeValueStateEventId(c.AttributeId, c.Value, version);
+			var stateEventId = new AttributeValueEventId(c.AttributeId, c.Value, version);
             IAttributeValueStateRemoved e = NewAttributeValueStateRemoved(stateEventId);
 
 
@@ -365,7 +365,7 @@ namespace Dddml.Wms.Domain.Attribute
         protected virtual IAttributeAliasStateCreated MapCreate(ICreateAttributeAlias c, IAttributeCommand outerCommand, long version, IAttributeState outerState)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new AttributeAliasStateEventId(c.AttributeId, c.Code, version);
+			var stateEventId = new AttributeAliasEventId(c.AttributeId, c.Code, version);
             IAttributeAliasStateCreated e = NewAttributeAliasStateCreated(stateEventId);
             var s = outerState.Aliases.Get(c.Code, true);
 
@@ -383,7 +383,7 @@ namespace Dddml.Wms.Domain.Attribute
         protected virtual IAttributeAliasStateMergePatched MapMergePatch(IMergePatchAttributeAlias c, IAttributeCommand outerCommand, long version, IAttributeState outerState)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new AttributeAliasStateEventId(c.AttributeId, c.Code, version);
+			var stateEventId = new AttributeAliasEventId(c.AttributeId, c.Code, version);
             IAttributeAliasStateMergePatched e = NewAttributeAliasStateMergePatched(stateEventId);
             var s = outerState.Aliases.Get(c.Code);
 
@@ -402,7 +402,7 @@ namespace Dddml.Wms.Domain.Attribute
         protected virtual IAttributeAliasStateRemoved MapRemove(IRemoveAttributeAlias c, IAttributeCommand outerCommand, long version)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new AttributeAliasStateEventId(c.AttributeId, c.Code, version);
+			var stateEventId = new AttributeAliasEventId(c.AttributeId, c.Code, version);
             IAttributeAliasStateRemoved e = NewAttributeAliasStateRemoved(stateEventId);
 
 
@@ -429,7 +429,7 @@ namespace Dddml.Wms.Domain.Attribute
 
         protected AttributeStateCreated NewAttributeStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new AttributeStateEventId(_state.AttributeId, version);
+            var stateEventId = new AttributeEventId(_state.AttributeId, version);
             var e = NewAttributeStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -442,7 +442,7 @@ namespace Dddml.Wms.Domain.Attribute
 
         protected AttributeStateMergePatched NewAttributeStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new AttributeStateEventId(_state.AttributeId, version);
+            var stateEventId = new AttributeEventId(_state.AttributeId, version);
             var e = NewAttributeStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -456,7 +456,7 @@ namespace Dddml.Wms.Domain.Attribute
 
         protected AttributeStateDeleted NewAttributeStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new AttributeStateEventId(_state.AttributeId, version);
+            var stateEventId = new AttributeEventId(_state.AttributeId, version);
             var e = NewAttributeStateDeleted(stateEventId);
 
             e.CommandId = commandId;
@@ -469,48 +469,48 @@ namespace Dddml.Wms.Domain.Attribute
 
 ////////////////////////
 
-		private AttributeStateCreated NewAttributeStateCreated(AttributeStateEventId stateEventId)
+		private AttributeStateCreated NewAttributeStateCreated(AttributeEventId stateEventId)
 		{
 			return new AttributeStateCreated(stateEventId);			
 		}
 
-        private AttributeStateMergePatched NewAttributeStateMergePatched(AttributeStateEventId stateEventId)
+        private AttributeStateMergePatched NewAttributeStateMergePatched(AttributeEventId stateEventId)
 		{
 			return new AttributeStateMergePatched(stateEventId);
 		}
 
-        private AttributeStateDeleted NewAttributeStateDeleted(AttributeStateEventId stateEventId)
+        private AttributeStateDeleted NewAttributeStateDeleted(AttributeEventId stateEventId)
 		{
 			return new AttributeStateDeleted(stateEventId);
 		}
 
-		private AttributeValueStateCreated NewAttributeValueStateCreated(AttributeValueStateEventId stateEventId)
+		private AttributeValueStateCreated NewAttributeValueStateCreated(AttributeValueEventId stateEventId)
 		{
 			return new AttributeValueStateCreated(stateEventId);
 		}
 
-        private AttributeValueStateMergePatched NewAttributeValueStateMergePatched(AttributeValueStateEventId stateEventId)
+        private AttributeValueStateMergePatched NewAttributeValueStateMergePatched(AttributeValueEventId stateEventId)
 		{
 			return new AttributeValueStateMergePatched(stateEventId);
 		}
 
-        private AttributeValueStateRemoved NewAttributeValueStateRemoved(AttributeValueStateEventId stateEventId)
+        private AttributeValueStateRemoved NewAttributeValueStateRemoved(AttributeValueEventId stateEventId)
 		{
 			return new AttributeValueStateRemoved(stateEventId);
 		}
 
 
-		private AttributeAliasStateCreated NewAttributeAliasStateCreated(AttributeAliasStateEventId stateEventId)
+		private AttributeAliasStateCreated NewAttributeAliasStateCreated(AttributeAliasEventId stateEventId)
 		{
 			return new AttributeAliasStateCreated(stateEventId);
 		}
 
-        private AttributeAliasStateMergePatched NewAttributeAliasStateMergePatched(AttributeAliasStateEventId stateEventId)
+        private AttributeAliasStateMergePatched NewAttributeAliasStateMergePatched(AttributeAliasEventId stateEventId)
 		{
 			return new AttributeAliasStateMergePatched(stateEventId);
 		}
 
-        private AttributeAliasStateRemoved NewAttributeAliasStateRemoved(AttributeAliasStateEventId stateEventId)
+        private AttributeAliasStateRemoved NewAttributeAliasStateRemoved(AttributeAliasEventId stateEventId)
 		{
 			return new AttributeAliasStateRemoved(stateEventId);
 		}

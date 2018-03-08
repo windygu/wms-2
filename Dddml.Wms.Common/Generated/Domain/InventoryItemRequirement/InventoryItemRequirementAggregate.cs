@@ -96,7 +96,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 
         protected virtual IInventoryItemRequirementStateCreated Map(ICreateInventoryItemRequirement c)
         {
-			var stateEventId = new InventoryItemRequirementStateEventId(c.InventoryItemRequirementId, c.Version);
+			var stateEventId = new InventoryItemRequirementEventId(c.InventoryItemRequirementId, c.Version);
             IInventoryItemRequirementStateCreated e = NewInventoryItemRequirementStateCreated(stateEventId);
 		
             e.CommandId = c.CommandId;
@@ -123,7 +123,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 
         protected virtual IInventoryItemRequirementStateMergePatched Map(IMergePatchInventoryItemRequirement c)
         {
-			var stateEventId = new InventoryItemRequirementStateEventId(c.InventoryItemRequirementId, c.Version);
+			var stateEventId = new InventoryItemRequirementEventId(c.InventoryItemRequirementId, c.Version);
             IInventoryItemRequirementStateMergePatched e = NewInventoryItemRequirementStateMergePatched(stateEventId);
 
 
@@ -192,7 +192,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
         protected virtual IInventoryItemRequirementEntryStateCreated MapCreate(ICreateInventoryItemRequirementEntry c, IInventoryItemRequirementCommand outerCommand, long version, IInventoryItemRequirementState outerState)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new InventoryItemRequirementEntryStateEventId(c.InventoryItemRequirementId, c.EntrySeqId, version);
+			var stateEventId = new InventoryItemRequirementEntryEventId(c.InventoryItemRequirementId, c.EntrySeqId, version);
             IInventoryItemRequirementEntryStateCreated e = NewInventoryItemRequirementEntryStateCreated(stateEventId);
             var s = outerState.Entries.Get(c.EntrySeqId, true);
 
@@ -223,7 +223,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 
         protected InventoryItemRequirementStateCreated NewInventoryItemRequirementStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new InventoryItemRequirementStateEventId(_state.InventoryItemRequirementId, version);
+            var stateEventId = new InventoryItemRequirementEventId(_state.InventoryItemRequirementId, version);
             var e = NewInventoryItemRequirementStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -236,7 +236,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 
         protected InventoryItemRequirementStateMergePatched NewInventoryItemRequirementStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new InventoryItemRequirementStateEventId(_state.InventoryItemRequirementId, version);
+            var stateEventId = new InventoryItemRequirementEventId(_state.InventoryItemRequirementId, version);
             var e = NewInventoryItemRequirementStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -250,18 +250,18 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 
 ////////////////////////
 
-		private InventoryItemRequirementStateCreated NewInventoryItemRequirementStateCreated(InventoryItemRequirementStateEventId stateEventId)
+		private InventoryItemRequirementStateCreated NewInventoryItemRequirementStateCreated(InventoryItemRequirementEventId stateEventId)
 		{
 			return new InventoryItemRequirementStateCreated(stateEventId);			
 		}
 
-        private InventoryItemRequirementStateMergePatched NewInventoryItemRequirementStateMergePatched(InventoryItemRequirementStateEventId stateEventId)
+        private InventoryItemRequirementStateMergePatched NewInventoryItemRequirementStateMergePatched(InventoryItemRequirementEventId stateEventId)
 		{
 			return new InventoryItemRequirementStateMergePatched(stateEventId);
 		}
 
 
-		private InventoryItemRequirementEntryStateCreated NewInventoryItemRequirementEntryStateCreated(InventoryItemRequirementEntryStateEventId stateEventId)
+		private InventoryItemRequirementEntryStateCreated NewInventoryItemRequirementEntryStateCreated(InventoryItemRequirementEntryEventId stateEventId)
 		{
 			return new InventoryItemRequirementEntryStateCreated(stateEventId);
 		}

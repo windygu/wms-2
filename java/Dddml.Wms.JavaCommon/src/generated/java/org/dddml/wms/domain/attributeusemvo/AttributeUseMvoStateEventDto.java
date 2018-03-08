@@ -8,15 +8,15 @@ import org.dddml.wms.domain.AbstractStateEvent;
 public class AttributeUseMvoStateEventDto extends AbstractStateEvent
 {
 
-    private AttributeUseMvoStateEventId stateEventId;
+    private AttributeUseMvoEventId stateEventId;
 
-    AttributeUseMvoStateEventId getStateEventId() {
-        if (stateEventId == null) { stateEventId = new AttributeUseMvoStateEventId(); }
-        return this.stateEventId;
+    AttributeUseMvoEventId getStateEventId() {
+        if (stateEventId == null) { stateEventId = new AttributeUseMvoEventId(); }
+        return stateEventId;
     }
 
-    void setStateEventId(AttributeUseMvoStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    void setStateEventId(AttributeUseMvoEventId eventId) {
+        this.stateEventId = eventId;
     }
 
     public AttributeSetAttributeUseId getAttributeSetAttributeUseId() {

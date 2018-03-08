@@ -39,7 +39,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
         public virtual InventoryPostingRuleStateCreatedDto ToInventoryPostingRuleStateCreatedDto(IInventoryPostingRuleStateCreated e)
         {
             var dto = new InventoryPostingRuleStateCreatedDto();
-            dto.StateEventId = new InventoryPostingRuleStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new InventoryPostingRuleEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -55,7 +55,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
         public virtual InventoryPostingRuleStateMergePatchedDto ToInventoryPostingRuleStateMergePatchedDto(IInventoryPostingRuleStateMergePatched e)
         {
             var dto = new InventoryPostingRuleStateMergePatchedDto();
-            dto.StateEventId = new InventoryPostingRuleStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new InventoryPostingRuleEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -79,7 +79,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
         public virtual InventoryPostingRuleStateDeletedDto ToInventoryPostingRuleStateDeletedDto(IInventoryPostingRuleStateDeleted e)
         {
             var dto = new InventoryPostingRuleStateDeletedDto();
-            dto.StateEventId = new InventoryPostingRuleStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new InventoryPostingRuleEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

@@ -33,7 +33,7 @@ namespace Dddml.Wms.Domain.Shipment
         public virtual ShipmentStateCreatedDto ToShipmentStateCreatedDto(IShipmentStateCreated e)
         {
             var dto = new ShipmentStateCreatedDto();
-            dto.StateEventId = new ShipmentStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new ShipmentEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -85,7 +85,7 @@ namespace Dddml.Wms.Domain.Shipment
         public virtual ShipmentStateMergePatchedDto ToShipmentStateMergePatchedDto(IShipmentStateMergePatched e)
         {
             var dto = new ShipmentStateMergePatchedDto();
-            dto.StateEventId = new ShipmentStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new ShipmentEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

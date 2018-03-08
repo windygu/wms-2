@@ -8,7 +8,7 @@
   
   <class name="AbstractInOutLineMvoStateEvent" table="InOutLineMvoStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="stateEventId" class="org.dddml.wms.domain.inoutlinemvo.InOutLineMvoStateEventId">
+	<composite-id name="stateEventId" class="org.dddml.wms.domain.inoutlinemvo.InOutLineMvoEventId">
 		<key-property name="inOutLineIdInOutDocumentNumber" ><column name="InOutLineIdInOutDocumentNumber" length="50" /></key-property>
 		<key-property name="inOutLineIdLineNumber" ><column name="InOutLineIdLineNumber" length="50" /></key-property>
 		<key-property name="inOutVersion" ></key-property>

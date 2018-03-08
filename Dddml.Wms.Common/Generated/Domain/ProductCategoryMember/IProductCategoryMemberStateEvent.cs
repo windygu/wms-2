@@ -11,9 +11,9 @@ using Dddml.Wms.Domain.ProductCategoryMember;
 
 namespace Dddml.Wms.Domain.ProductCategoryMember
 {
-	public interface IProductCategoryMemberStateEvent : IEvent, IStateEventDto, IGlobalIdentity<ProductCategoryMemberStateEventId>, ICreated<string>
+	public interface IProductCategoryMemberStateEvent : IEvent, IStateEventDto, IGlobalIdentity<ProductCategoryMemberEventId>, ICreated<string>
 	{
-		ProductCategoryMemberStateEventId StateEventId { get; }
+		ProductCategoryMemberEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

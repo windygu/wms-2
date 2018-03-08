@@ -95,7 +95,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 
         protected virtual IShipmentItemMvoStateCreated Map(ICreateShipmentItemMvo c)
         {
-			var stateEventId = new ShipmentItemMvoStateEventId(c.ShipmentItemId, c.ShipmentVersion);
+			var stateEventId = new ShipmentItemMvoEventId(c.ShipmentItemId, c.ShipmentVersion);
             IShipmentItemMvoStateCreated e = NewShipmentItemMvoStateCreated(stateEventId);
 		
             e.ProductId = c.ProductId;
@@ -148,7 +148,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 
         protected virtual IShipmentItemMvoStateMergePatched Map(IMergePatchShipmentItemMvo c)
         {
-			var stateEventId = new ShipmentItemMvoStateEventId(c.ShipmentItemId, c.ShipmentVersion);
+			var stateEventId = new ShipmentItemMvoEventId(c.ShipmentItemId, c.ShipmentVersion);
             IShipmentItemMvoStateMergePatched e = NewShipmentItemMvoStateMergePatched(stateEventId);
 
             e.ProductId = c.ProductId;
@@ -254,7 +254,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 
         protected ShipmentItemMvoStateCreated NewShipmentItemMvoStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new ShipmentItemMvoStateEventId(_state.ShipmentItemId, version);
+            var stateEventId = new ShipmentItemMvoEventId(_state.ShipmentItemId, version);
             var e = NewShipmentItemMvoStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -267,7 +267,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 
         protected ShipmentItemMvoStateMergePatched NewShipmentItemMvoStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new ShipmentItemMvoStateEventId(_state.ShipmentItemId, version);
+            var stateEventId = new ShipmentItemMvoEventId(_state.ShipmentItemId, version);
             var e = NewShipmentItemMvoStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -281,12 +281,12 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 
 ////////////////////////
 
-		private ShipmentItemMvoStateCreated NewShipmentItemMvoStateCreated(ShipmentItemMvoStateEventId stateEventId)
+		private ShipmentItemMvoStateCreated NewShipmentItemMvoStateCreated(ShipmentItemMvoEventId stateEventId)
 		{
 			return new ShipmentItemMvoStateCreated(stateEventId);			
 		}
 
-        private ShipmentItemMvoStateMergePatched NewShipmentItemMvoStateMergePatched(ShipmentItemMvoStateEventId stateEventId)
+        private ShipmentItemMvoStateMergePatched NewShipmentItemMvoStateMergePatched(ShipmentItemMvoEventId stateEventId)
 		{
 			return new ShipmentItemMvoStateMergePatched(stateEventId);
 		}

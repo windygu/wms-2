@@ -8,14 +8,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractLotStateEvent extends AbstractStateEvent implements LotStateEvent 
 {
-    private LotStateEventId stateEventId;
+    private LotEventId stateEventId;
 
-    public LotStateEventId getStateEventId() {
+    public LotEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(LotStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(LotEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public String getLotId() {
@@ -106,8 +106,8 @@ public abstract class AbstractLotStateEvent extends AbstractStateEvent implement
     protected AbstractLotStateEvent() {
     }
 
-    protected AbstractLotStateEvent(LotStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractLotStateEvent(LotEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -117,11 +117,11 @@ public abstract class AbstractLotStateEvent extends AbstractStateEvent implement
     public static abstract class AbstractLotStateCreated extends AbstractLotStateEvent implements LotStateEvent.LotStateCreated
     {
         public AbstractLotStateCreated() {
-            this(new LotStateEventId());
+            this(new LotEventId());
         }
 
-        public AbstractLotStateCreated(LotStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractLotStateCreated(LotEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -134,11 +134,11 @@ public abstract class AbstractLotStateEvent extends AbstractStateEvent implement
     public static abstract class AbstractLotStateMergePatched extends AbstractLotStateEvent implements LotStateEvent.LotStateMergePatched
     {
         public AbstractLotStateMergePatched() {
-            this(new LotStateEventId());
+            this(new LotEventId());
         }
 
-        public AbstractLotStateMergePatched(LotStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractLotStateMergePatched(LotEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -181,11 +181,11 @@ public abstract class AbstractLotStateEvent extends AbstractStateEvent implement
     public static abstract class AbstractLotStateDeleted extends AbstractLotStateEvent implements LotStateEvent.LotStateDeleted
     {
         public AbstractLotStateDeleted() {
-            this(new LotStateEventId());
+            this(new LotEventId());
         }
 
-        public AbstractLotStateDeleted(LotStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractLotStateDeleted(LotEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -198,8 +198,8 @@ public abstract class AbstractLotStateEvent extends AbstractStateEvent implement
         public SimpleLotStateCreated() {
         }
 
-        public SimpleLotStateCreated(LotStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleLotStateCreated(LotEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -208,8 +208,8 @@ public abstract class AbstractLotStateEvent extends AbstractStateEvent implement
         public SimpleLotStateMergePatched() {
         }
 
-        public SimpleLotStateMergePatched(LotStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleLotStateMergePatched(LotEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -218,8 +218,8 @@ public abstract class AbstractLotStateEvent extends AbstractStateEvent implement
         public SimpleLotStateDeleted() {
         }
 
-        public SimpleLotStateDeleted(LotStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleLotStateDeleted(LotEventId eventId) {
+            super(eventId);
         }
     }
 

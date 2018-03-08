@@ -9,14 +9,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractInOutLineStateEvent extends AbstractStateEvent implements InOutLineStateEvent 
 {
-    private InOutLineStateEventId stateEventId;
+    private InOutLineEventId stateEventId;
 
-    public InOutLineStateEventId getStateEventId() {
+    public InOutLineEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(InOutLineStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(InOutLineEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public String getLineNumber() {
@@ -227,8 +227,8 @@ public abstract class AbstractInOutLineStateEvent extends AbstractStateEvent imp
     protected AbstractInOutLineStateEvent() {
     }
 
-    protected AbstractInOutLineStateEvent(InOutLineStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractInOutLineStateEvent(InOutLineEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -238,11 +238,11 @@ public abstract class AbstractInOutLineStateEvent extends AbstractStateEvent imp
     public static abstract class AbstractInOutLineStateCreated extends AbstractInOutLineStateEvent implements InOutLineStateEvent.InOutLineStateCreated
     {
         public AbstractInOutLineStateCreated() {
-            this(new InOutLineStateEventId());
+            this(new InOutLineEventId());
         }
 
-        public AbstractInOutLineStateCreated(InOutLineStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractInOutLineStateCreated(InOutLineEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -255,11 +255,11 @@ public abstract class AbstractInOutLineStateEvent extends AbstractStateEvent imp
     public static abstract class AbstractInOutLineStateMergePatched extends AbstractInOutLineStateEvent implements InOutLineStateEvent.InOutLineStateMergePatched
     {
         public AbstractInOutLineStateMergePatched() {
-            this(new InOutLineStateEventId());
+            this(new InOutLineEventId());
         }
 
-        public AbstractInOutLineStateMergePatched(InOutLineStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractInOutLineStateMergePatched(InOutLineEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -392,11 +392,11 @@ public abstract class AbstractInOutLineStateEvent extends AbstractStateEvent imp
     public static abstract class AbstractInOutLineStateRemoved extends AbstractInOutLineStateEvent implements InOutLineStateEvent.InOutLineStateRemoved
     {
         public AbstractInOutLineStateRemoved() {
-            this(new InOutLineStateEventId());
+            this(new InOutLineEventId());
         }
 
-        public AbstractInOutLineStateRemoved(InOutLineStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractInOutLineStateRemoved(InOutLineEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -409,8 +409,8 @@ public abstract class AbstractInOutLineStateEvent extends AbstractStateEvent imp
         public SimpleInOutLineStateCreated() {
         }
 
-        public SimpleInOutLineStateCreated(InOutLineStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleInOutLineStateCreated(InOutLineEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -419,8 +419,8 @@ public abstract class AbstractInOutLineStateEvent extends AbstractStateEvent imp
         public SimpleInOutLineStateMergePatched() {
         }
 
-        public SimpleInOutLineStateMergePatched(InOutLineStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleInOutLineStateMergePatched(InOutLineEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -429,8 +429,8 @@ public abstract class AbstractInOutLineStateEvent extends AbstractStateEvent imp
         public SimpleInOutLineStateRemoved() {
         }
 
-        public SimpleInOutLineStateRemoved(InOutLineStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleInOutLineStateRemoved(InOutLineEventId eventId) {
+            super(eventId);
         }
     }
 

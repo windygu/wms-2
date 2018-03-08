@@ -57,7 +57,7 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
     }
 
     protected InOutLineMvoStateEvent map(InOutLineMvoCommand.CreateInOutLineMvo c) {
-        InOutLineMvoStateEventId stateEventId = new InOutLineMvoStateEventId(c.getInOutLineId(), c.getInOutVersion());
+        InOutLineMvoEventId stateEventId = new InOutLineMvoEventId(c.getInOutLineId(), c.getInOutVersion());
         InOutLineMvoStateEvent.InOutLineMvoStateCreated e = newInOutLineMvoStateCreated(stateEventId);
         e.setLocatorId(c.getLocatorId());
         e.setProductId(c.getProductId());
@@ -114,7 +114,7 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
     }
 
     protected InOutLineMvoStateEvent map(InOutLineMvoCommand.MergePatchInOutLineMvo c) {
-        InOutLineMvoStateEventId stateEventId = new InOutLineMvoStateEventId(c.getInOutLineId(), c.getInOutVersion());
+        InOutLineMvoEventId stateEventId = new InOutLineMvoEventId(c.getInOutLineId(), c.getInOutVersion());
         InOutLineMvoStateEvent.InOutLineMvoStateMergePatched e = newInOutLineMvoStateMergePatched(stateEventId);
         e.setLocatorId(c.getLocatorId());
         e.setProductId(c.getProductId());
@@ -219,7 +219,7 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
     }
 
     protected InOutLineMvoStateEvent map(InOutLineMvoCommand.DeleteInOutLineMvo c) {
-        InOutLineMvoStateEventId stateEventId = new InOutLineMvoStateEventId(c.getInOutLineId(), c.getInOutVersion());
+        InOutLineMvoEventId stateEventId = new InOutLineMvoEventId(c.getInOutLineId(), c.getInOutVersion());
         InOutLineMvoStateEvent.InOutLineMvoStateDeleted e = newInOutLineMvoStateDeleted(stateEventId);
         ((AbstractInOutLineMvoStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
@@ -231,7 +231,7 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
     ////////////////////////
 
     protected InOutLineMvoStateEvent.InOutLineMvoStateCreated newInOutLineMvoStateCreated(Long version, String commandId, String requesterId) {
-        InOutLineMvoStateEventId stateEventId = new InOutLineMvoStateEventId(this.state.getInOutLineId(), version);
+        InOutLineMvoEventId stateEventId = new InOutLineMvoEventId(this.state.getInOutLineId(), version);
         InOutLineMvoStateEvent.InOutLineMvoStateCreated e = newInOutLineMvoStateCreated(stateEventId);
         ((AbstractInOutLineMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -240,7 +240,7 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
     }
 
     protected InOutLineMvoStateEvent.InOutLineMvoStateMergePatched newInOutLineMvoStateMergePatched(Long version, String commandId, String requesterId) {
-        InOutLineMvoStateEventId stateEventId = new InOutLineMvoStateEventId(this.state.getInOutLineId(), version);
+        InOutLineMvoEventId stateEventId = new InOutLineMvoEventId(this.state.getInOutLineId(), version);
         InOutLineMvoStateEvent.InOutLineMvoStateMergePatched e = newInOutLineMvoStateMergePatched(stateEventId);
         ((AbstractInOutLineMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -249,7 +249,7 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
     }
 
     protected InOutLineMvoStateEvent.InOutLineMvoStateDeleted newInOutLineMvoStateDeleted(Long version, String commandId, String requesterId) {
-        InOutLineMvoStateEventId stateEventId = new InOutLineMvoStateEventId(this.state.getInOutLineId(), version);
+        InOutLineMvoEventId stateEventId = new InOutLineMvoEventId(this.state.getInOutLineId(), version);
         InOutLineMvoStateEvent.InOutLineMvoStateDeleted e = newInOutLineMvoStateDeleted(stateEventId);
         ((AbstractInOutLineMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -257,15 +257,15 @@ public abstract class AbstractInOutLineMvoAggregate extends AbstractAggregate im
         return e;
     }
 
-    protected InOutLineMvoStateEvent.InOutLineMvoStateCreated newInOutLineMvoStateCreated(InOutLineMvoStateEventId stateEventId) {
+    protected InOutLineMvoStateEvent.InOutLineMvoStateCreated newInOutLineMvoStateCreated(InOutLineMvoEventId stateEventId) {
         return new AbstractInOutLineMvoStateEvent.SimpleInOutLineMvoStateCreated(stateEventId);
     }
 
-    protected InOutLineMvoStateEvent.InOutLineMvoStateMergePatched newInOutLineMvoStateMergePatched(InOutLineMvoStateEventId stateEventId) {
+    protected InOutLineMvoStateEvent.InOutLineMvoStateMergePatched newInOutLineMvoStateMergePatched(InOutLineMvoEventId stateEventId) {
         return new AbstractInOutLineMvoStateEvent.SimpleInOutLineMvoStateMergePatched(stateEventId);
     }
 
-    protected InOutLineMvoStateEvent.InOutLineMvoStateDeleted newInOutLineMvoStateDeleted(InOutLineMvoStateEventId stateEventId)
+    protected InOutLineMvoStateEvent.InOutLineMvoStateDeleted newInOutLineMvoStateDeleted(InOutLineMvoEventId stateEventId)
     {
         return new AbstractInOutLineMvoStateEvent.SimpleInOutLineMvoStateDeleted(stateEventId);
     }

@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.Permission
 	public abstract class PermissionStateEventBase : IPermissionStateEvent
 	{
 
-		public virtual PermissionStateEventId StateEventId { get; set; }
+		public virtual PermissionEventId StateEventId { get; set; }
 
         public virtual string PermissionId
         {
@@ -39,7 +39,7 @@ namespace Dddml.Wms.Domain.Permission
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		PermissionStateEventId IGlobalIdentity<PermissionStateEventId>.GlobalId {
+		PermissionEventId IGlobalIdentity<PermissionEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -83,7 +83,7 @@ namespace Dddml.Wms.Domain.Permission
         {
         }
 
-        protected PermissionStateEventBase(PermissionStateEventId stateEventId)
+        protected PermissionStateEventBase(PermissionEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -100,11 +100,11 @@ namespace Dddml.Wms.Domain.Permission
 
 	public class PermissionStateCreated : PermissionStateEventBase, IPermissionStateCreated
 	{
-		public PermissionStateCreated () : this(new PermissionStateEventId())
+		public PermissionStateCreated () : this(new PermissionEventId())
 		{
 		}
 
-		public PermissionStateCreated (PermissionStateEventId stateEventId) : base(stateEventId)
+		public PermissionStateCreated (PermissionEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -132,7 +132,7 @@ namespace Dddml.Wms.Domain.Permission
 		{
 		}
 
-		public PermissionStateMergePatched (PermissionStateEventId stateEventId) : base(stateEventId)
+		public PermissionStateMergePatched (PermissionEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.Permission
 		{
 		}
 
-		public PermissionStateDeleted (PermissionStateEventId stateEventId) : base(stateEventId)
+		public PermissionStateDeleted (PermissionEventId stateEventId) : base(stateEventId)
 		{
 		}
 

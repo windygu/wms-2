@@ -8,14 +8,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractAttributeValueStateEvent extends AbstractStateEvent implements AttributeValueStateEvent 
 {
-    private AttributeValueStateEventId stateEventId;
+    private AttributeValueEventId stateEventId;
 
-    public AttributeValueStateEventId getStateEventId() {
+    public AttributeValueEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(AttributeValueStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(AttributeValueEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public String getValue() {
@@ -130,8 +130,8 @@ public abstract class AbstractAttributeValueStateEvent extends AbstractStateEven
     protected AbstractAttributeValueStateEvent() {
     }
 
-    protected AbstractAttributeValueStateEvent(AttributeValueStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractAttributeValueStateEvent(AttributeValueEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -141,11 +141,11 @@ public abstract class AbstractAttributeValueStateEvent extends AbstractStateEven
     public static abstract class AbstractAttributeValueStateCreated extends AbstractAttributeValueStateEvent implements AttributeValueStateEvent.AttributeValueStateCreated
     {
         public AbstractAttributeValueStateCreated() {
-            this(new AttributeValueStateEventId());
+            this(new AttributeValueEventId());
         }
 
-        public AbstractAttributeValueStateCreated(AttributeValueStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractAttributeValueStateCreated(AttributeValueEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -158,11 +158,11 @@ public abstract class AbstractAttributeValueStateEvent extends AbstractStateEven
     public static abstract class AbstractAttributeValueStateMergePatched extends AbstractAttributeValueStateEvent implements AttributeValueStateEvent.AttributeValueStateMergePatched
     {
         public AbstractAttributeValueStateMergePatched() {
-            this(new AttributeValueStateEventId());
+            this(new AttributeValueEventId());
         }
 
-        public AbstractAttributeValueStateMergePatched(AttributeValueStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractAttributeValueStateMergePatched(AttributeValueEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -215,11 +215,11 @@ public abstract class AbstractAttributeValueStateEvent extends AbstractStateEven
     public static abstract class AbstractAttributeValueStateRemoved extends AbstractAttributeValueStateEvent implements AttributeValueStateEvent.AttributeValueStateRemoved
     {
         public AbstractAttributeValueStateRemoved() {
-            this(new AttributeValueStateEventId());
+            this(new AttributeValueEventId());
         }
 
-        public AbstractAttributeValueStateRemoved(AttributeValueStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractAttributeValueStateRemoved(AttributeValueEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -232,8 +232,8 @@ public abstract class AbstractAttributeValueStateEvent extends AbstractStateEven
         public SimpleAttributeValueStateCreated() {
         }
 
-        public SimpleAttributeValueStateCreated(AttributeValueStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleAttributeValueStateCreated(AttributeValueEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -242,8 +242,8 @@ public abstract class AbstractAttributeValueStateEvent extends AbstractStateEven
         public SimpleAttributeValueStateMergePatched() {
         }
 
-        public SimpleAttributeValueStateMergePatched(AttributeValueStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleAttributeValueStateMergePatched(AttributeValueEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -252,8 +252,8 @@ public abstract class AbstractAttributeValueStateEvent extends AbstractStateEven
         public SimpleAttributeValueStateRemoved() {
         }
 
-        public SimpleAttributeValueStateRemoved(AttributeValueStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleAttributeValueStateRemoved(AttributeValueEventId eventId) {
+            super(eventId);
         }
     }
 

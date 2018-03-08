@@ -55,7 +55,7 @@ public abstract class AbstractLocatorAggregate extends AbstractAggregate impleme
     }
 
     protected LocatorStateEvent map(LocatorCommand.CreateLocator c) {
-        LocatorStateEventId stateEventId = new LocatorStateEventId(c.getLocatorId(), c.getVersion());
+        LocatorEventId stateEventId = new LocatorEventId(c.getLocatorId(), c.getVersion());
         LocatorStateEvent.LocatorStateCreated e = newLocatorStateCreated(stateEventId);
         e.setWarehouseId(c.getWarehouseId());
         e.setParentLocatorId(c.getParentLocatorId());
@@ -74,7 +74,7 @@ public abstract class AbstractLocatorAggregate extends AbstractAggregate impleme
     }
 
     protected LocatorStateEvent map(LocatorCommand.MergePatchLocator c) {
-        LocatorStateEventId stateEventId = new LocatorStateEventId(c.getLocatorId(), c.getVersion());
+        LocatorEventId stateEventId = new LocatorEventId(c.getLocatorId(), c.getVersion());
         LocatorStateEvent.LocatorStateMergePatched e = newLocatorStateMergePatched(stateEventId);
         e.setWarehouseId(c.getWarehouseId());
         e.setParentLocatorId(c.getParentLocatorId());
@@ -103,7 +103,7 @@ public abstract class AbstractLocatorAggregate extends AbstractAggregate impleme
     }
 
     protected LocatorStateEvent map(LocatorCommand.DeleteLocator c) {
-        LocatorStateEventId stateEventId = new LocatorStateEventId(c.getLocatorId(), c.getVersion());
+        LocatorEventId stateEventId = new LocatorEventId(c.getLocatorId(), c.getVersion());
         LocatorStateEvent.LocatorStateDeleted e = newLocatorStateDeleted(stateEventId);
         ((AbstractLocatorStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
@@ -115,7 +115,7 @@ public abstract class AbstractLocatorAggregate extends AbstractAggregate impleme
     ////////////////////////
 
     protected LocatorStateEvent.LocatorStateCreated newLocatorStateCreated(Long version, String commandId, String requesterId) {
-        LocatorStateEventId stateEventId = new LocatorStateEventId(this.state.getLocatorId(), version);
+        LocatorEventId stateEventId = new LocatorEventId(this.state.getLocatorId(), version);
         LocatorStateEvent.LocatorStateCreated e = newLocatorStateCreated(stateEventId);
         ((AbstractLocatorStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -124,7 +124,7 @@ public abstract class AbstractLocatorAggregate extends AbstractAggregate impleme
     }
 
     protected LocatorStateEvent.LocatorStateMergePatched newLocatorStateMergePatched(Long version, String commandId, String requesterId) {
-        LocatorStateEventId stateEventId = new LocatorStateEventId(this.state.getLocatorId(), version);
+        LocatorEventId stateEventId = new LocatorEventId(this.state.getLocatorId(), version);
         LocatorStateEvent.LocatorStateMergePatched e = newLocatorStateMergePatched(stateEventId);
         ((AbstractLocatorStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -133,7 +133,7 @@ public abstract class AbstractLocatorAggregate extends AbstractAggregate impleme
     }
 
     protected LocatorStateEvent.LocatorStateDeleted newLocatorStateDeleted(Long version, String commandId, String requesterId) {
-        LocatorStateEventId stateEventId = new LocatorStateEventId(this.state.getLocatorId(), version);
+        LocatorEventId stateEventId = new LocatorEventId(this.state.getLocatorId(), version);
         LocatorStateEvent.LocatorStateDeleted e = newLocatorStateDeleted(stateEventId);
         ((AbstractLocatorStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -141,15 +141,15 @@ public abstract class AbstractLocatorAggregate extends AbstractAggregate impleme
         return e;
     }
 
-    protected LocatorStateEvent.LocatorStateCreated newLocatorStateCreated(LocatorStateEventId stateEventId) {
+    protected LocatorStateEvent.LocatorStateCreated newLocatorStateCreated(LocatorEventId stateEventId) {
         return new AbstractLocatorStateEvent.SimpleLocatorStateCreated(stateEventId);
     }
 
-    protected LocatorStateEvent.LocatorStateMergePatched newLocatorStateMergePatched(LocatorStateEventId stateEventId) {
+    protected LocatorStateEvent.LocatorStateMergePatched newLocatorStateMergePatched(LocatorEventId stateEventId) {
         return new AbstractLocatorStateEvent.SimpleLocatorStateMergePatched(stateEventId);
     }
 
-    protected LocatorStateEvent.LocatorStateDeleted newLocatorStateDeleted(LocatorStateEventId stateEventId)
+    protected LocatorStateEvent.LocatorStateDeleted newLocatorStateDeleted(LocatorEventId stateEventId)
     {
         return new AbstractLocatorStateEvent.SimpleLocatorStateDeleted(stateEventId);
     }

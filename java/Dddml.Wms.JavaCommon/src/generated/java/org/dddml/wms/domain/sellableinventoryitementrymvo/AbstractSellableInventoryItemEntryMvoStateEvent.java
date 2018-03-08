@@ -11,14 +11,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractSellableInventoryItemEntryMvoStateEvent extends AbstractStateEvent implements SellableInventoryItemEntryMvoStateEvent 
 {
-    private SellableInventoryItemEntryMvoStateEventId stateEventId;
+    private SellableInventoryItemEntryMvoEventId stateEventId;
 
-    public SellableInventoryItemEntryMvoStateEventId getStateEventId() {
+    public SellableInventoryItemEntryMvoEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(SellableInventoryItemEntryMvoStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(SellableInventoryItemEntryMvoEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public SellableInventoryItemEntryId getSellableInventoryItemEntryId() {
@@ -169,8 +169,8 @@ public abstract class AbstractSellableInventoryItemEntryMvoStateEvent extends Ab
     protected AbstractSellableInventoryItemEntryMvoStateEvent() {
     }
 
-    protected AbstractSellableInventoryItemEntryMvoStateEvent(SellableInventoryItemEntryMvoStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractSellableInventoryItemEntryMvoStateEvent(SellableInventoryItemEntryMvoEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -180,11 +180,11 @@ public abstract class AbstractSellableInventoryItemEntryMvoStateEvent extends Ab
     public static abstract class AbstractSellableInventoryItemEntryMvoStateCreated extends AbstractSellableInventoryItemEntryMvoStateEvent implements SellableInventoryItemEntryMvoStateEvent.SellableInventoryItemEntryMvoStateCreated
     {
         public AbstractSellableInventoryItemEntryMvoStateCreated() {
-            this(new SellableInventoryItemEntryMvoStateEventId());
+            this(new SellableInventoryItemEntryMvoEventId());
         }
 
-        public AbstractSellableInventoryItemEntryMvoStateCreated(SellableInventoryItemEntryMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractSellableInventoryItemEntryMvoStateCreated(SellableInventoryItemEntryMvoEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -197,11 +197,11 @@ public abstract class AbstractSellableInventoryItemEntryMvoStateEvent extends Ab
     public static abstract class AbstractSellableInventoryItemEntryMvoStateMergePatched extends AbstractSellableInventoryItemEntryMvoStateEvent implements SellableInventoryItemEntryMvoStateEvent.SellableInventoryItemEntryMvoStateMergePatched
     {
         public AbstractSellableInventoryItemEntryMvoStateMergePatched() {
-            this(new SellableInventoryItemEntryMvoStateEventId());
+            this(new SellableInventoryItemEntryMvoEventId());
         }
 
-        public AbstractSellableInventoryItemEntryMvoStateMergePatched(SellableInventoryItemEntryMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractSellableInventoryItemEntryMvoStateMergePatched(SellableInventoryItemEntryMvoEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -296,8 +296,8 @@ public abstract class AbstractSellableInventoryItemEntryMvoStateEvent extends Ab
         public SimpleSellableInventoryItemEntryMvoStateCreated() {
         }
 
-        public SimpleSellableInventoryItemEntryMvoStateCreated(SellableInventoryItemEntryMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleSellableInventoryItemEntryMvoStateCreated(SellableInventoryItemEntryMvoEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -306,8 +306,8 @@ public abstract class AbstractSellableInventoryItemEntryMvoStateEvent extends Ab
         public SimpleSellableInventoryItemEntryMvoStateMergePatched() {
         }
 
-        public SimpleSellableInventoryItemEntryMvoStateMergePatched(SellableInventoryItemEntryMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleSellableInventoryItemEntryMvoStateMergePatched(SellableInventoryItemEntryMvoEventId eventId) {
+            super(eventId);
         }
     }
 

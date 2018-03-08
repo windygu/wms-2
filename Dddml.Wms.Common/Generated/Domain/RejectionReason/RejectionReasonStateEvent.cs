@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.RejectionReason
 	public abstract class RejectionReasonStateEventBase : IRejectionReasonStateEvent
 	{
 
-		public virtual RejectionReasonStateEventId StateEventId { get; set; }
+		public virtual RejectionReasonEventId StateEventId { get; set; }
 
         public virtual string RejectionReasonId
         {
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.RejectionReason
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		RejectionReasonStateEventId IGlobalIdentity<RejectionReasonStateEventId>.GlobalId {
+		RejectionReasonEventId IGlobalIdentity<RejectionReasonEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -79,7 +79,7 @@ namespace Dddml.Wms.Domain.RejectionReason
         {
         }
 
-        protected RejectionReasonStateEventBase(RejectionReasonStateEventId stateEventId)
+        protected RejectionReasonStateEventBase(RejectionReasonEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -96,11 +96,11 @@ namespace Dddml.Wms.Domain.RejectionReason
 
 	public class RejectionReasonStateCreated : RejectionReasonStateEventBase, IRejectionReasonStateCreated
 	{
-		public RejectionReasonStateCreated () : this(new RejectionReasonStateEventId())
+		public RejectionReasonStateCreated () : this(new RejectionReasonEventId())
 		{
 		}
 
-		public RejectionReasonStateCreated (RejectionReasonStateEventId stateEventId) : base(stateEventId)
+		public RejectionReasonStateCreated (RejectionReasonEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -124,7 +124,7 @@ namespace Dddml.Wms.Domain.RejectionReason
 		{
 		}
 
-		public RejectionReasonStateMergePatched (RejectionReasonStateEventId stateEventId) : base(stateEventId)
+		public RejectionReasonStateMergePatched (RejectionReasonEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -143,7 +143,7 @@ namespace Dddml.Wms.Domain.RejectionReason
 		{
 		}
 
-		public RejectionReasonStateDeleted (RejectionReasonStateEventId stateEventId) : base(stateEventId)
+		public RejectionReasonStateDeleted (RejectionReasonEventId stateEventId) : base(stateEventId)
 		{
 		}
 

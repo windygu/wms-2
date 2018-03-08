@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.Warehouse
 	public abstract class WarehouseStateEventBase : IWarehouseStateEvent
 	{
 
-		public virtual WarehouseStateEventId StateEventId { get; set; }
+		public virtual WarehouseEventId StateEventId { get; set; }
 
         public virtual string WarehouseId
         {
@@ -39,7 +39,7 @@ namespace Dddml.Wms.Domain.Warehouse
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		WarehouseStateEventId IGlobalIdentity<WarehouseStateEventId>.GlobalId {
+		WarehouseEventId IGlobalIdentity<WarehouseEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -83,7 +83,7 @@ namespace Dddml.Wms.Domain.Warehouse
         {
         }
 
-        protected WarehouseStateEventBase(WarehouseStateEventId stateEventId)
+        protected WarehouseStateEventBase(WarehouseEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -100,11 +100,11 @@ namespace Dddml.Wms.Domain.Warehouse
 
 	public class WarehouseStateCreated : WarehouseStateEventBase, IWarehouseStateCreated
 	{
-		public WarehouseStateCreated () : this(new WarehouseStateEventId())
+		public WarehouseStateCreated () : this(new WarehouseEventId())
 		{
 		}
 
-		public WarehouseStateCreated (WarehouseStateEventId stateEventId) : base(stateEventId)
+		public WarehouseStateCreated (WarehouseEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -132,7 +132,7 @@ namespace Dddml.Wms.Domain.Warehouse
 		{
 		}
 
-		public WarehouseStateMergePatched (WarehouseStateEventId stateEventId) : base(stateEventId)
+		public WarehouseStateMergePatched (WarehouseEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.Warehouse
 		{
 		}
 
-		public WarehouseStateDeleted (WarehouseStateEventId stateEventId) : base(stateEventId)
+		public WarehouseStateDeleted (WarehouseEventId stateEventId) : base(stateEventId)
 		{
 		}
 

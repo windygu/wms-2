@@ -95,7 +95,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
         protected virtual IShipmentReceiptMvoStateCreated Map(ICreateShipmentReceiptMvo c)
         {
-			var stateEventId = new ShipmentReceiptMvoStateEventId(c.ShipmentReceiptId, c.ShipmentVersion);
+			var stateEventId = new ShipmentReceiptMvoEventId(c.ShipmentReceiptId, c.ShipmentVersion);
             IShipmentReceiptMvoStateCreated e = NewShipmentReceiptMvoStateCreated(stateEventId);
 		
             e.ProductId = c.ProductId;
@@ -155,7 +155,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
         protected virtual IShipmentReceiptMvoStateMergePatched Map(IMergePatchShipmentReceiptMvo c)
         {
-			var stateEventId = new ShipmentReceiptMvoStateEventId(c.ShipmentReceiptId, c.ShipmentVersion);
+			var stateEventId = new ShipmentReceiptMvoEventId(c.ShipmentReceiptId, c.ShipmentVersion);
             IShipmentReceiptMvoStateMergePatched e = NewShipmentReceiptMvoStateMergePatched(stateEventId);
 
             e.ProductId = c.ProductId;
@@ -275,7 +275,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
         protected ShipmentReceiptMvoStateCreated NewShipmentReceiptMvoStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new ShipmentReceiptMvoStateEventId(_state.ShipmentReceiptId, version);
+            var stateEventId = new ShipmentReceiptMvoEventId(_state.ShipmentReceiptId, version);
             var e = NewShipmentReceiptMvoStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -288,7 +288,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
         protected ShipmentReceiptMvoStateMergePatched NewShipmentReceiptMvoStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new ShipmentReceiptMvoStateEventId(_state.ShipmentReceiptId, version);
+            var stateEventId = new ShipmentReceiptMvoEventId(_state.ShipmentReceiptId, version);
             var e = NewShipmentReceiptMvoStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -302,12 +302,12 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
 ////////////////////////
 
-		private ShipmentReceiptMvoStateCreated NewShipmentReceiptMvoStateCreated(ShipmentReceiptMvoStateEventId stateEventId)
+		private ShipmentReceiptMvoStateCreated NewShipmentReceiptMvoStateCreated(ShipmentReceiptMvoEventId stateEventId)
 		{
 			return new ShipmentReceiptMvoStateCreated(stateEventId);			
 		}
 
-        private ShipmentReceiptMvoStateMergePatched NewShipmentReceiptMvoStateMergePatched(ShipmentReceiptMvoStateEventId stateEventId)
+        private ShipmentReceiptMvoStateMergePatched NewShipmentReceiptMvoStateMergePatched(ShipmentReceiptMvoEventId stateEventId)
 		{
 			return new ShipmentReceiptMvoStateMergePatched(stateEventId);
 		}

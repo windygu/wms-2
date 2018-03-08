@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.Lot
 	public abstract class LotStateEventBase : ILotStateEvent
 	{
 
-		public virtual LotStateEventId StateEventId { get; set; }
+		public virtual LotEventId StateEventId { get; set; }
 
         public virtual string LotId
         {
@@ -37,7 +37,7 @@ namespace Dddml.Wms.Domain.Lot
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		LotStateEventId IGlobalIdentity<LotStateEventId>.GlobalId {
+		LotEventId IGlobalIdentity<LotEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -81,7 +81,7 @@ namespace Dddml.Wms.Domain.Lot
         {
         }
 
-        protected LotStateEventBase(LotStateEventId stateEventId)
+        protected LotStateEventBase(LotEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -98,11 +98,11 @@ namespace Dddml.Wms.Domain.Lot
 
 	public class LotStateCreated : LotStateEventBase, ILotStateCreated
 	{
-		public LotStateCreated () : this(new LotStateEventId())
+		public LotStateCreated () : this(new LotEventId())
 		{
 		}
 
-		public LotStateCreated (LotStateEventId stateEventId) : base(stateEventId)
+		public LotStateCreated (LotEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -128,7 +128,7 @@ namespace Dddml.Wms.Domain.Lot
 		{
 		}
 
-		public LotStateMergePatched (LotStateEventId stateEventId) : base(stateEventId)
+		public LotStateMergePatched (LotEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -147,7 +147,7 @@ namespace Dddml.Wms.Domain.Lot
 		{
 		}
 
-		public LotStateDeleted (LotStateEventId stateEventId) : base(stateEventId)
+		public LotStateDeleted (LotEventId stateEventId) : base(stateEventId)
 		{
 		}
 

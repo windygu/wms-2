@@ -13,9 +13,9 @@ using Dddml.Wms.Domain.InventoryPRTriggered;
 
 namespace Dddml.Wms.Domain.InventoryItemRequirement
 {
-	public interface IInventoryItemRequirementStateEvent : IEvent, IStateEventDto, IGlobalIdentity<InventoryItemRequirementStateEventId>, ICreated<string>
+	public interface IInventoryItemRequirementStateEvent : IEvent, IStateEventDto, IGlobalIdentity<InventoryItemRequirementEventId>, ICreated<string>
 	{
-		InventoryItemRequirementStateEventId StateEventId { get; }
+		InventoryItemRequirementEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

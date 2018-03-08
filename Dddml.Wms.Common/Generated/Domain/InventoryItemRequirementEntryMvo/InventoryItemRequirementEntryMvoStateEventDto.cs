@@ -17,13 +17,13 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 	public abstract class InventoryItemRequirementEntryMvoStateEventDtoBase : IStateEventDto, IInventoryItemRequirementEntryMvoStateCreated, IInventoryItemRequirementEntryMvoStateMergePatched
 	{
 
-        private InventoryItemRequirementEntryMvoStateEventIdDto _stateEventId;
+        private InventoryItemRequirementEntryMvoEventIdDto _stateEventId;
 
-		protected internal virtual InventoryItemRequirementEntryMvoStateEventIdDto StateEventId 
+		protected internal virtual InventoryItemRequirementEntryMvoEventIdDto StateEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new InventoryItemRequirementEntryMvoStateEventIdDto(); }
+                if (_stateEventId == null) { _stateEventId = new InventoryItemRequirementEntryMvoEventIdDto(); }
                 return _stateEventId;
             }
             set
@@ -82,10 +82,10 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		InventoryItemRequirementEntryMvoStateEventId IGlobalIdentity<InventoryItemRequirementEntryMvoStateEventId>.GlobalId {
+		InventoryItemRequirementEntryMvoEventId IGlobalIdentity<InventoryItemRequirementEntryMvoEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToInventoryItemRequirementEntryMvoStateEventId();
+				return this.StateEventId.ToInventoryItemRequirementEntryMvoEventId();
 			}
 		}
 
@@ -274,16 +274,16 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 		}
 
 
-        InventoryItemRequirementEntryMvoStateEventId IInventoryItemRequirementEntryMvoStateEvent.StateEventId
+        InventoryItemRequirementEntryMvoEventId IInventoryItemRequirementEntryMvoStateEvent.StateEventId
         {
-            get { return this.StateEventId.ToInventoryItemRequirementEntryMvoStateEventId(); }
+            get { return this.StateEventId.ToInventoryItemRequirementEntryMvoEventId(); }
         }
 
         protected InventoryItemRequirementEntryMvoStateEventDtoBase()
         {
         }
 
-        protected InventoryItemRequirementEntryMvoStateEventDtoBase(InventoryItemRequirementEntryMvoStateEventIdDto stateEventId)
+        protected InventoryItemRequirementEntryMvoStateEventDtoBase(InventoryItemRequirementEntryMvoEventIdDto stateEventId)
         {
             this.StateEventId = stateEventId;
         }

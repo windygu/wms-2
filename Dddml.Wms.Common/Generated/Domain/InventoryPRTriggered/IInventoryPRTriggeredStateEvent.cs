@@ -12,9 +12,9 @@ using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.InventoryPRTriggered
 {
-	public interface IInventoryPRTriggeredStateEvent : IEvent, IStateEventDto, IGlobalIdentity<InventoryPRTriggeredStateEventId>, ICreated<string>
+	public interface IInventoryPRTriggeredStateEvent : IEvent, IStateEventDto, IGlobalIdentity<InventoryPRTriggeredEventId>, ICreated<string>
 	{
-		InventoryPRTriggeredStateEventId StateEventId { get; }
+		InventoryPRTriggeredEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

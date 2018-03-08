@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.StatusItem
 	public abstract class StatusItemStateEventBase : IStatusItemStateEvent
 	{
 
-		public virtual StatusItemStateEventId StateEventId { get; set; }
+		public virtual StatusItemEventId StateEventId { get; set; }
 
         public virtual string StatusId
         {
@@ -41,7 +41,7 @@ namespace Dddml.Wms.Domain.StatusItem
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		StatusItemStateEventId IGlobalIdentity<StatusItemStateEventId>.GlobalId {
+		StatusItemEventId IGlobalIdentity<StatusItemEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -85,7 +85,7 @@ namespace Dddml.Wms.Domain.StatusItem
         {
         }
 
-        protected StatusItemStateEventBase(StatusItemStateEventId stateEventId)
+        protected StatusItemStateEventBase(StatusItemEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -102,11 +102,11 @@ namespace Dddml.Wms.Domain.StatusItem
 
 	public class StatusItemStateCreated : StatusItemStateEventBase, IStatusItemStateCreated
 	{
-		public StatusItemStateCreated () : this(new StatusItemStateEventId())
+		public StatusItemStateCreated () : this(new StatusItemEventId())
 		{
 		}
 
-		public StatusItemStateCreated (StatusItemStateEventId stateEventId) : base(stateEventId)
+		public StatusItemStateCreated (StatusItemEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -136,7 +136,7 @@ namespace Dddml.Wms.Domain.StatusItem
 		{
 		}
 
-		public StatusItemStateMergePatched (StatusItemStateEventId stateEventId) : base(stateEventId)
+		public StatusItemStateMergePatched (StatusItemEventId stateEventId) : base(stateEventId)
 		{
 		}
 

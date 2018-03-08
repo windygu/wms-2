@@ -16,7 +16,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 	public abstract class InventoryPostingRuleStateEventBase : IInventoryPostingRuleStateEvent
 	{
 
-		public virtual InventoryPostingRuleStateEventId StateEventId { get; set; }
+		public virtual InventoryPostingRuleEventId StateEventId { get; set; }
 
         public virtual string InventoryPostingRuleId
         {
@@ -44,7 +44,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		InventoryPostingRuleStateEventId IGlobalIdentity<InventoryPostingRuleStateEventId>.GlobalId {
+		InventoryPostingRuleEventId IGlobalIdentity<InventoryPostingRuleEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -88,7 +88,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
         {
         }
 
-        protected InventoryPostingRuleStateEventBase(InventoryPostingRuleStateEventId stateEventId)
+        protected InventoryPostingRuleStateEventBase(InventoryPostingRuleEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -105,11 +105,11 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 
 	public class InventoryPostingRuleStateCreated : InventoryPostingRuleStateEventBase, IInventoryPostingRuleStateCreated
 	{
-		public InventoryPostingRuleStateCreated () : this(new InventoryPostingRuleStateEventId())
+		public InventoryPostingRuleStateCreated () : this(new InventoryPostingRuleEventId())
 		{
 		}
 
-		public InventoryPostingRuleStateCreated (InventoryPostingRuleStateEventId stateEventId) : base(stateEventId)
+		public InventoryPostingRuleStateCreated (InventoryPostingRuleEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -141,7 +141,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 		{
 		}
 
-		public InventoryPostingRuleStateMergePatched (InventoryPostingRuleStateEventId stateEventId) : base(stateEventId)
+		public InventoryPostingRuleStateMergePatched (InventoryPostingRuleEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -160,7 +160,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 		{
 		}
 
-		public InventoryPostingRuleStateDeleted (InventoryPostingRuleStateEventId stateEventId) : base(stateEventId)
+		public InventoryPostingRuleStateDeleted (InventoryPostingRuleEventId stateEventId) : base(stateEventId)
 		{
 		}
 

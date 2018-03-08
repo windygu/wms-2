@@ -39,12 +39,12 @@ namespace Dddml.Wms.Domain.User.NHibernate
         }
 
         [Transaction(ReadOnly = true)]
-        public IEnumerable<IUserClaimStateEvent> FindByUserStateEventId(UserStateEventId userStateEventId)
+        public IEnumerable<IUserClaimStateEvent> FindByUserEventId(UserEventId userEventId)
         {
             var criteria = CurrentSession.CreateCriteria<UserClaimStateEventBase>();
             var partIdCondition = Restrictions.Conjunction()
-                .Add(Restrictions.Eq("StateEventId.UserId", userStateEventId.UserId))
-                .Add(Restrictions.Eq("StateEventId.UserVersion", userStateEventId.Version))
+                .Add(Restrictions.Eq("StateEventId.UserId", userEventId.UserId))
+                .Add(Restrictions.Eq("StateEventId.UserVersion", userEventId.Version))
                 ;
 
             return criteria.Add(partIdCondition).List<UserClaimStateEventBase>();

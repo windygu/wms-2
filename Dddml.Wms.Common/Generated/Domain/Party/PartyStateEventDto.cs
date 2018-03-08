@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.Party
 	public abstract class PartyStateEventDtoBase : IStateEventDto, IPartyStateCreated, IPartyStateMergePatched, IPartyStateDeleted
 	{
 
-        private PartyStateEventIdDto _stateEventId;
+        private PartyEventIdDto _stateEventId;
 
-		protected internal virtual PartyStateEventIdDto StateEventId 
+		protected internal virtual PartyEventIdDto StateEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new PartyStateEventIdDto(); }
+                if (_stateEventId == null) { _stateEventId = new PartyEventIdDto(); }
                 return _stateEventId;
             }
             set
@@ -62,10 +62,10 @@ namespace Dddml.Wms.Domain.Party
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		PartyStateEventId IGlobalIdentity<PartyStateEventId>.GlobalId {
+		PartyEventId IGlobalIdentity<PartyEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToPartyStateEventId();
+				return this.StateEventId.ToPartyEventId();
 			}
 		}
 
@@ -216,16 +216,16 @@ namespace Dddml.Wms.Domain.Party
 		}
 
 
-        PartyStateEventId IPartyStateEvent.StateEventId
+        PartyEventId IPartyStateEvent.StateEventId
         {
-            get { return this.StateEventId.ToPartyStateEventId(); }
+            get { return this.StateEventId.ToPartyEventId(); }
         }
 
         protected PartyStateEventDtoBase()
         {
         }
 
-        protected PartyStateEventDtoBase(PartyStateEventIdDto stateEventId)
+        protected PartyStateEventDtoBase(PartyEventIdDto stateEventId)
         {
             this.StateEventId = stateEventId;
         }

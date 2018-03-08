@@ -17,7 +17,7 @@ public class HibernateAttributeValueMvoEventStore extends AbstractHibernateEvent
     @Override
     protected Serializable getEventId(EventStoreAggregateId eventStoreAggregateId, long version)
     {
-        return new AttributeValueMvoStateEventId((AttributeValueId) eventStoreAggregateId.getId(), version);
+        return new AttributeValueMvoEventId((AttributeValueId) eventStoreAggregateId.getId(), version);
     }
 
     @Override

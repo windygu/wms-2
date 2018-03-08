@@ -11,9 +11,9 @@ using Dddml.Wms.Domain.AttributeSet;
 
 namespace Dddml.Wms.Domain.AttributeSet
 {
-	public interface IAttributeUseStateEvent : IEvent, IStateEventDto, IGlobalIdentity<AttributeUseStateEventId>, ICreated<string>
+	public interface IAttributeUseStateEvent : IEvent, IStateEventDto, IGlobalIdentity<AttributeUseEventId>, ICreated<string>
 	{
-		AttributeUseStateEventId StateEventId { get; }
+		AttributeUseEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

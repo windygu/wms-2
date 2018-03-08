@@ -11,9 +11,9 @@ using Dddml.Wms.Domain.User;
 
 namespace Dddml.Wms.Domain.User
 {
-	public interface IUserLoginStateEvent : IEvent, IStateEventDto, IGlobalIdentity<UserLoginStateEventId>, ICreated<string>
+	public interface IUserLoginStateEvent : IEvent, IStateEventDto, IGlobalIdentity<UserLoginEventId>, ICreated<string>
 	{
-		UserLoginStateEventId StateEventId { get; }
+		UserLoginEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

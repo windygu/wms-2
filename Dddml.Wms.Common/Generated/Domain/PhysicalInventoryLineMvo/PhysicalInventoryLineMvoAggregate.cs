@@ -105,7 +105,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
         protected virtual IPhysicalInventoryLineMvoStateCreated Map(ICreatePhysicalInventoryLineMvo c)
         {
-			var stateEventId = new PhysicalInventoryLineMvoStateEventId(c.PhysicalInventoryLineId, c.PhysicalInventoryVersion);
+			var stateEventId = new PhysicalInventoryLineMvoEventId(c.PhysicalInventoryLineId, c.PhysicalInventoryVersion);
             IPhysicalInventoryLineMvoStateCreated e = NewPhysicalInventoryLineMvoStateCreated(stateEventId);
 		
             e.BookQuantity = c.BookQuantity;
@@ -146,7 +146,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
         protected virtual IPhysicalInventoryLineMvoStateMergePatched Map(IMergePatchPhysicalInventoryLineMvo c)
         {
-			var stateEventId = new PhysicalInventoryLineMvoStateEventId(c.PhysicalInventoryLineId, c.PhysicalInventoryVersion);
+			var stateEventId = new PhysicalInventoryLineMvoEventId(c.PhysicalInventoryLineId, c.PhysicalInventoryVersion);
             IPhysicalInventoryLineMvoStateMergePatched e = NewPhysicalInventoryLineMvoStateMergePatched(stateEventId);
 
             e.BookQuantity = c.BookQuantity;
@@ -214,7 +214,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
         protected virtual IPhysicalInventoryLineMvoStateDeleted Map(IDeletePhysicalInventoryLineMvo c)
         {
-			var stateEventId = new PhysicalInventoryLineMvoStateEventId(c.PhysicalInventoryLineId, c.PhysicalInventoryVersion);
+			var stateEventId = new PhysicalInventoryLineMvoEventId(c.PhysicalInventoryLineId, c.PhysicalInventoryVersion);
             IPhysicalInventoryLineMvoStateDeleted e = NewPhysicalInventoryLineMvoStateDeleted(stateEventId);
 			
             e.CommandId = c.CommandId;
@@ -243,7 +243,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
         protected PhysicalInventoryLineMvoStateCreated NewPhysicalInventoryLineMvoStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new PhysicalInventoryLineMvoStateEventId(_state.PhysicalInventoryLineId, version);
+            var stateEventId = new PhysicalInventoryLineMvoEventId(_state.PhysicalInventoryLineId, version);
             var e = NewPhysicalInventoryLineMvoStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -256,7 +256,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
         protected PhysicalInventoryLineMvoStateMergePatched NewPhysicalInventoryLineMvoStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new PhysicalInventoryLineMvoStateEventId(_state.PhysicalInventoryLineId, version);
+            var stateEventId = new PhysicalInventoryLineMvoEventId(_state.PhysicalInventoryLineId, version);
             var e = NewPhysicalInventoryLineMvoStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -270,7 +270,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
         protected PhysicalInventoryLineMvoStateDeleted NewPhysicalInventoryLineMvoStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new PhysicalInventoryLineMvoStateEventId(_state.PhysicalInventoryLineId, version);
+            var stateEventId = new PhysicalInventoryLineMvoEventId(_state.PhysicalInventoryLineId, version);
             var e = NewPhysicalInventoryLineMvoStateDeleted(stateEventId);
 
             e.CommandId = commandId;
@@ -283,17 +283,17 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
 ////////////////////////
 
-		private PhysicalInventoryLineMvoStateCreated NewPhysicalInventoryLineMvoStateCreated(PhysicalInventoryLineMvoStateEventId stateEventId)
+		private PhysicalInventoryLineMvoStateCreated NewPhysicalInventoryLineMvoStateCreated(PhysicalInventoryLineMvoEventId stateEventId)
 		{
 			return new PhysicalInventoryLineMvoStateCreated(stateEventId);			
 		}
 
-        private PhysicalInventoryLineMvoStateMergePatched NewPhysicalInventoryLineMvoStateMergePatched(PhysicalInventoryLineMvoStateEventId stateEventId)
+        private PhysicalInventoryLineMvoStateMergePatched NewPhysicalInventoryLineMvoStateMergePatched(PhysicalInventoryLineMvoEventId stateEventId)
 		{
 			return new PhysicalInventoryLineMvoStateMergePatched(stateEventId);
 		}
 
-        private PhysicalInventoryLineMvoStateDeleted NewPhysicalInventoryLineMvoStateDeleted(PhysicalInventoryLineMvoStateEventId stateEventId)
+        private PhysicalInventoryLineMvoStateDeleted NewPhysicalInventoryLineMvoStateDeleted(PhysicalInventoryLineMvoEventId stateEventId)
 		{
 			return new PhysicalInventoryLineMvoStateDeleted(stateEventId);
 		}

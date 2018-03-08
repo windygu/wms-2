@@ -8,7 +8,7 @@
   
   <class name="AbstractInventoryItemEntryMvoStateEvent" table="InventoryItemEntryMvoStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="stateEventId" class="org.dddml.wms.domain.inventoryitementrymvo.InventoryItemEntryMvoStateEventId">
+	<composite-id name="stateEventId" class="org.dddml.wms.domain.inventoryitementrymvo.InventoryItemEntryMvoEventId">
 		<key-property name="inventoryItemEntryIdInventoryItemIdProductId" ><column name="ProductId" length="60" sql-type="VARCHAR(60)" /></key-property>
 		<key-property name="inventoryItemEntryIdInventoryItemIdLocatorId" ><column name="LocatorId" length="50" /></key-property>
 		<key-property name="inventoryItemEntryIdInventoryItemIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" length="50" /></key-property>

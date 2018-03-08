@@ -51,7 +51,7 @@ public abstract class AbstractPhysicalInventoryAggregate extends AbstractAggrega
     }
 
     protected PhysicalInventoryStateEvent map(PhysicalInventoryCommand.CreatePhysicalInventory c) {
-        PhysicalInventoryStateEventId stateEventId = new PhysicalInventoryStateEventId(c.getDocumentNumber(), c.getVersion());
+        PhysicalInventoryEventId stateEventId = new PhysicalInventoryEventId(c.getDocumentNumber(), c.getVersion());
         PhysicalInventoryStateEvent.PhysicalInventoryStateCreated e = newPhysicalInventoryStateCreated(stateEventId);
         newPhysicalInventoryDocumentActionCommandAndExecute(c, state, e);
         e.setWarehouseId(c.getWarehouseId());
@@ -83,7 +83,7 @@ public abstract class AbstractPhysicalInventoryAggregate extends AbstractAggrega
     }
 
     protected PhysicalInventoryStateEvent map(PhysicalInventoryCommand.MergePatchPhysicalInventory c) {
-        PhysicalInventoryStateEventId stateEventId = new PhysicalInventoryStateEventId(c.getDocumentNumber(), c.getVersion());
+        PhysicalInventoryEventId stateEventId = new PhysicalInventoryEventId(c.getDocumentNumber(), c.getVersion());
         PhysicalInventoryStateEvent.PhysicalInventoryStateMergePatched e = newPhysicalInventoryStateMergePatched(stateEventId);
         e.setWarehouseId(c.getWarehouseId());
         e.setLocatorIdPattern(c.getLocatorIdPattern());
@@ -153,7 +153,7 @@ public abstract class AbstractPhysicalInventoryAggregate extends AbstractAggrega
     protected PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateCreated mapCreate(PhysicalInventoryLineCommand.CreatePhysicalInventoryLine c, PhysicalInventoryCommand outerCommand, Long version, PhysicalInventoryState outerState)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
-        PhysicalInventoryLineStateEventId stateEventId = new PhysicalInventoryLineStateEventId(c.getPhysicalInventoryDocumentNumber(), c.getInventoryItemId(), version);
+        PhysicalInventoryLineEventId stateEventId = new PhysicalInventoryLineEventId(c.getPhysicalInventoryDocumentNumber(), c.getInventoryItemId(), version);
         PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateCreated e = newPhysicalInventoryLineStateCreated(stateEventId);
         PhysicalInventoryLineState s = outerState.getPhysicalInventoryLines().get(c.getInventoryItemId());
 
@@ -171,7 +171,7 @@ public abstract class AbstractPhysicalInventoryAggregate extends AbstractAggrega
     protected PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateMergePatched mapMergePatch(PhysicalInventoryLineCommand.MergePatchPhysicalInventoryLine c, PhysicalInventoryCommand outerCommand, Long version, PhysicalInventoryState outerState)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
-        PhysicalInventoryLineStateEventId stateEventId = new PhysicalInventoryLineStateEventId(c.getPhysicalInventoryDocumentNumber(), c.getInventoryItemId(), version);
+        PhysicalInventoryLineEventId stateEventId = new PhysicalInventoryLineEventId(c.getPhysicalInventoryDocumentNumber(), c.getInventoryItemId(), version);
         PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateMergePatched e = newPhysicalInventoryLineStateMergePatched(stateEventId);
         PhysicalInventoryLineState s = outerState.getPhysicalInventoryLines().get(c.getInventoryItemId());
 
@@ -194,7 +194,7 @@ public abstract class AbstractPhysicalInventoryAggregate extends AbstractAggrega
     protected PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateRemoved mapRemove(PhysicalInventoryLineCommand.RemovePhysicalInventoryLine c, PhysicalInventoryCommand outerCommand, Long version)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
-        PhysicalInventoryLineStateEventId stateEventId = new PhysicalInventoryLineStateEventId(c.getPhysicalInventoryDocumentNumber(), c.getInventoryItemId(), version);
+        PhysicalInventoryLineEventId stateEventId = new PhysicalInventoryLineEventId(c.getPhysicalInventoryDocumentNumber(), c.getInventoryItemId(), version);
         PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateRemoved e = newPhysicalInventoryLineStateRemoved(stateEventId);
 
         e.setCreatedBy(c.getRequesterId());
@@ -227,7 +227,7 @@ public abstract class AbstractPhysicalInventoryAggregate extends AbstractAggrega
     ////////////////////////
 
     protected PhysicalInventoryStateEvent.PhysicalInventoryStateCreated newPhysicalInventoryStateCreated(Long version, String commandId, String requesterId) {
-        PhysicalInventoryStateEventId stateEventId = new PhysicalInventoryStateEventId(this.state.getDocumentNumber(), version);
+        PhysicalInventoryEventId stateEventId = new PhysicalInventoryEventId(this.state.getDocumentNumber(), version);
         PhysicalInventoryStateEvent.PhysicalInventoryStateCreated e = newPhysicalInventoryStateCreated(stateEventId);
         ((AbstractPhysicalInventoryStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -236,7 +236,7 @@ public abstract class AbstractPhysicalInventoryAggregate extends AbstractAggrega
     }
 
     protected PhysicalInventoryStateEvent.PhysicalInventoryStateMergePatched newPhysicalInventoryStateMergePatched(Long version, String commandId, String requesterId) {
-        PhysicalInventoryStateEventId stateEventId = new PhysicalInventoryStateEventId(this.state.getDocumentNumber(), version);
+        PhysicalInventoryEventId stateEventId = new PhysicalInventoryEventId(this.state.getDocumentNumber(), version);
         PhysicalInventoryStateEvent.PhysicalInventoryStateMergePatched e = newPhysicalInventoryStateMergePatched(stateEventId);
         ((AbstractPhysicalInventoryStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -244,23 +244,23 @@ public abstract class AbstractPhysicalInventoryAggregate extends AbstractAggrega
         return e;
     }
 
-    protected PhysicalInventoryStateEvent.PhysicalInventoryStateCreated newPhysicalInventoryStateCreated(PhysicalInventoryStateEventId stateEventId) {
+    protected PhysicalInventoryStateEvent.PhysicalInventoryStateCreated newPhysicalInventoryStateCreated(PhysicalInventoryEventId stateEventId) {
         return new AbstractPhysicalInventoryStateEvent.SimplePhysicalInventoryStateCreated(stateEventId);
     }
 
-    protected PhysicalInventoryStateEvent.PhysicalInventoryStateMergePatched newPhysicalInventoryStateMergePatched(PhysicalInventoryStateEventId stateEventId) {
+    protected PhysicalInventoryStateEvent.PhysicalInventoryStateMergePatched newPhysicalInventoryStateMergePatched(PhysicalInventoryEventId stateEventId) {
         return new AbstractPhysicalInventoryStateEvent.SimplePhysicalInventoryStateMergePatched(stateEventId);
     }
 
-    protected PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateCreated newPhysicalInventoryLineStateCreated(PhysicalInventoryLineStateEventId stateEventId) {
+    protected PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateCreated newPhysicalInventoryLineStateCreated(PhysicalInventoryLineEventId stateEventId) {
         return new AbstractPhysicalInventoryLineStateEvent.SimplePhysicalInventoryLineStateCreated(stateEventId);
     }
 
-    protected PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateMergePatched newPhysicalInventoryLineStateMergePatched(PhysicalInventoryLineStateEventId stateEventId) {
+    protected PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateMergePatched newPhysicalInventoryLineStateMergePatched(PhysicalInventoryLineEventId stateEventId) {
         return new AbstractPhysicalInventoryLineStateEvent.SimplePhysicalInventoryLineStateMergePatched(stateEventId);
     }
 
-    protected PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateRemoved newPhysicalInventoryLineStateRemoved(PhysicalInventoryLineStateEventId stateEventId)
+    protected PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateRemoved newPhysicalInventoryLineStateRemoved(PhysicalInventoryLineEventId stateEventId)
     {
         return new AbstractPhysicalInventoryLineStateEvent.SimplePhysicalInventoryLineStateRemoved(stateEventId);
     }

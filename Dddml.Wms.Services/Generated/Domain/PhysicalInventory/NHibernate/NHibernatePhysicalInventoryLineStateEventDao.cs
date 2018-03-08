@@ -40,12 +40,12 @@ namespace Dddml.Wms.Domain.PhysicalInventory.NHibernate
         }
 
         [Transaction(ReadOnly = true)]
-        public IEnumerable<IPhysicalInventoryLineStateEvent> FindByPhysicalInventoryStateEventId(PhysicalInventoryStateEventId physicalInventoryStateEventId)
+        public IEnumerable<IPhysicalInventoryLineStateEvent> FindByPhysicalInventoryEventId(PhysicalInventoryEventId physicalInventoryEventId)
         {
             var criteria = CurrentSession.CreateCriteria<PhysicalInventoryLineStateEventBase>();
             var partIdCondition = Restrictions.Conjunction()
-                .Add(Restrictions.Eq("StateEventId.PhysicalInventoryDocumentNumber", physicalInventoryStateEventId.DocumentNumber))
-                .Add(Restrictions.Eq("StateEventId.PhysicalInventoryVersion", physicalInventoryStateEventId.Version))
+                .Add(Restrictions.Eq("StateEventId.PhysicalInventoryDocumentNumber", physicalInventoryEventId.DocumentNumber))
+                .Add(Restrictions.Eq("StateEventId.PhysicalInventoryVersion", physicalInventoryEventId.Version))
                 ;
 
             return criteria.Add(partIdCondition).List<PhysicalInventoryLineStateEventBase>();

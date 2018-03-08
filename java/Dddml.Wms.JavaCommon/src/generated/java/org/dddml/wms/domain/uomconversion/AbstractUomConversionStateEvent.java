@@ -8,14 +8,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractUomConversionStateEvent extends AbstractStateEvent implements UomConversionStateEvent 
 {
-    private UomConversionStateEventId stateEventId;
+    private UomConversionEventId stateEventId;
 
-    public UomConversionStateEventId getStateEventId() {
+    public UomConversionEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(UomConversionStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(UomConversionEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public UomConversionId getUomConversionId() {
@@ -130,8 +130,8 @@ public abstract class AbstractUomConversionStateEvent extends AbstractStateEvent
     protected AbstractUomConversionStateEvent() {
     }
 
-    protected AbstractUomConversionStateEvent(UomConversionStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractUomConversionStateEvent(UomConversionEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -141,11 +141,11 @@ public abstract class AbstractUomConversionStateEvent extends AbstractStateEvent
     public static abstract class AbstractUomConversionStateCreated extends AbstractUomConversionStateEvent implements UomConversionStateEvent.UomConversionStateCreated
     {
         public AbstractUomConversionStateCreated() {
-            this(new UomConversionStateEventId());
+            this(new UomConversionEventId());
         }
 
-        public AbstractUomConversionStateCreated(UomConversionStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractUomConversionStateCreated(UomConversionEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -158,11 +158,11 @@ public abstract class AbstractUomConversionStateEvent extends AbstractStateEvent
     public static abstract class AbstractUomConversionStateMergePatched extends AbstractUomConversionStateEvent implements UomConversionStateEvent.UomConversionStateMergePatched
     {
         public AbstractUomConversionStateMergePatched() {
-            this(new UomConversionStateEventId());
+            this(new UomConversionEventId());
         }
 
-        public AbstractUomConversionStateMergePatched(UomConversionStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractUomConversionStateMergePatched(UomConversionEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -225,11 +225,11 @@ public abstract class AbstractUomConversionStateEvent extends AbstractStateEvent
     public static abstract class AbstractUomConversionStateDeleted extends AbstractUomConversionStateEvent implements UomConversionStateEvent.UomConversionStateDeleted
     {
         public AbstractUomConversionStateDeleted() {
-            this(new UomConversionStateEventId());
+            this(new UomConversionEventId());
         }
 
-        public AbstractUomConversionStateDeleted(UomConversionStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractUomConversionStateDeleted(UomConversionEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -242,8 +242,8 @@ public abstract class AbstractUomConversionStateEvent extends AbstractStateEvent
         public SimpleUomConversionStateCreated() {
         }
 
-        public SimpleUomConversionStateCreated(UomConversionStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleUomConversionStateCreated(UomConversionEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -252,8 +252,8 @@ public abstract class AbstractUomConversionStateEvent extends AbstractStateEvent
         public SimpleUomConversionStateMergePatched() {
         }
 
-        public SimpleUomConversionStateMergePatched(UomConversionStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleUomConversionStateMergePatched(UomConversionEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -262,8 +262,8 @@ public abstract class AbstractUomConversionStateEvent extends AbstractStateEvent
         public SimpleUomConversionStateDeleted() {
         }
 
-        public SimpleUomConversionStateDeleted(UomConversionStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleUomConversionStateDeleted(UomConversionEventId eventId) {
+            super(eventId);
         }
     }
 

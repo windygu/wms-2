@@ -7,7 +7,7 @@ public interface ShipmentItemStateEventDao
 {
     void save(ShipmentItemStateEvent e);
 
-    Iterable<ShipmentItemStateEvent> findByShipmentStateEventId(ShipmentStateEventId shipmentStateEventId);
+    Iterable<ShipmentItemStateEvent> findByShipmentEventId(ShipmentEventId shipmentEventId);
 
 }
 

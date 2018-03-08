@@ -21,7 +21,7 @@ namespace Dddml.Wms.Domain.OrderShipment.NHibernate
 	{
 		public override object GetEventId(IEventStoreAggregateId eventStoreAggregateId, long version)
 		{
-			return new OrderShipmentStateEventId((OrderShipmentId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
+			return new OrderShipmentEventId((OrderShipmentId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
 		public override Type GetSupportedStateEventType()

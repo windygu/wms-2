@@ -708,7 +708,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
             id.Append("[").Append("MovementLineMvo|");
 
             var stateEntityId = this.MovementLineId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.MovementLineId; // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+            var eventEntityId = stateEvent.StateEventId.MovementLineId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);

@@ -12,9 +12,9 @@ using Dddml.Wms.Domain.InventoryItem;
 
 namespace Dddml.Wms.Domain.InventoryPostingRule
 {
-	public interface IInventoryPostingRuleStateEvent : IEvent, IStateEventDto, IGlobalIdentity<InventoryPostingRuleStateEventId>, ICreated<string>
+	public interface IInventoryPostingRuleStateEvent : IEvent, IStateEventDto, IGlobalIdentity<InventoryPostingRuleEventId>, ICreated<string>
 	{
-		InventoryPostingRuleStateEventId StateEventId { get; }
+		InventoryPostingRuleEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

@@ -8,14 +8,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractPartyStateEvent extends AbstractStateEvent implements PartyStateEvent 
 {
-    private PartyStateEventId stateEventId;
+    private PartyEventId stateEventId;
 
-    public PartyStateEventId getStateEventId() {
+    public PartyEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(PartyStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(PartyEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public String getPartyId() {
@@ -94,8 +94,8 @@ public abstract class AbstractPartyStateEvent extends AbstractStateEvent impleme
     protected AbstractPartyStateEvent() {
     }
 
-    protected AbstractPartyStateEvent(PartyStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractPartyStateEvent(PartyEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -105,11 +105,11 @@ public abstract class AbstractPartyStateEvent extends AbstractStateEvent impleme
     public static abstract class AbstractPartyStateCreated extends AbstractPartyStateEvent implements PartyStateEvent.PartyStateCreated
     {
         public AbstractPartyStateCreated() {
-            this(new PartyStateEventId());
+            this(new PartyEventId());
         }
 
-        public AbstractPartyStateCreated(PartyStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractPartyStateCreated(PartyEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -122,11 +122,11 @@ public abstract class AbstractPartyStateEvent extends AbstractStateEvent impleme
     public static abstract class AbstractPartyStateMergePatched extends AbstractPartyStateEvent implements PartyStateEvent.PartyStateMergePatched
     {
         public AbstractPartyStateMergePatched() {
-            this(new PartyStateEventId());
+            this(new PartyEventId());
         }
 
-        public AbstractPartyStateMergePatched(PartyStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractPartyStateMergePatched(PartyEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -159,11 +159,11 @@ public abstract class AbstractPartyStateEvent extends AbstractStateEvent impleme
     public static abstract class AbstractPartyStateDeleted extends AbstractPartyStateEvent implements PartyStateEvent.PartyStateDeleted
     {
         public AbstractPartyStateDeleted() {
-            this(new PartyStateEventId());
+            this(new PartyEventId());
         }
 
-        public AbstractPartyStateDeleted(PartyStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractPartyStateDeleted(PartyEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -176,8 +176,8 @@ public abstract class AbstractPartyStateEvent extends AbstractStateEvent impleme
         public SimplePartyStateCreated() {
         }
 
-        public SimplePartyStateCreated(PartyStateEventId stateEventId) {
-            super(stateEventId);
+        public SimplePartyStateCreated(PartyEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -186,8 +186,8 @@ public abstract class AbstractPartyStateEvent extends AbstractStateEvent impleme
         public SimplePartyStateMergePatched() {
         }
 
-        public SimplePartyStateMergePatched(PartyStateEventId stateEventId) {
-            super(stateEventId);
+        public SimplePartyStateMergePatched(PartyEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -196,8 +196,8 @@ public abstract class AbstractPartyStateEvent extends AbstractStateEvent impleme
         public SimplePartyStateDeleted() {
         }
 
-        public SimplePartyStateDeleted(PartyStateEventId stateEventId) {
-            super(stateEventId);
+        public SimplePartyStateDeleted(PartyEventId eventId) {
+            super(eventId);
         }
     }
 

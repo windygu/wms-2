@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.Shipment
 	public abstract class ShipmentItemStateEventDtoBase : IStateEventDto, IShipmentItemStateCreated, IShipmentItemStateMergePatched
 	{
 
-        private ShipmentItemStateEventIdDto _stateEventId;
+        private ShipmentItemEventIdDto _stateEventId;
 
-		protected internal virtual ShipmentItemStateEventIdDto StateEventId 
+		protected internal virtual ShipmentItemEventIdDto StateEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new ShipmentItemStateEventIdDto(); }
+                if (_stateEventId == null) { _stateEventId = new ShipmentItemEventIdDto(); }
                 return _stateEventId;
             }
             set
@@ -56,10 +56,10 @@ namespace Dddml.Wms.Domain.Shipment
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		ShipmentItemStateEventId IGlobalIdentity<ShipmentItemStateEventId>.GlobalId {
+		ShipmentItemEventId IGlobalIdentity<ShipmentItemEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToShipmentItemStateEventId();
+				return this.StateEventId.ToShipmentItemEventId();
 			}
 		}
 
@@ -212,16 +212,16 @@ namespace Dddml.Wms.Domain.Shipment
 		}
 
 
-        ShipmentItemStateEventId IShipmentItemStateEvent.StateEventId
+        ShipmentItemEventId IShipmentItemStateEvent.StateEventId
         {
-            get { return this.StateEventId.ToShipmentItemStateEventId(); }
+            get { return this.StateEventId.ToShipmentItemEventId(); }
         }
 
         protected ShipmentItemStateEventDtoBase()
         {
         }
 
-        protected ShipmentItemStateEventDtoBase(ShipmentItemStateEventIdDto stateEventId)
+        protected ShipmentItemStateEventDtoBase(ShipmentItemEventIdDto stateEventId)
         {
             this.StateEventId = stateEventId;
         }

@@ -52,7 +52,7 @@ public abstract class AbstractSellableInventoryItemEntryMvoAggregate extends Abs
     }
 
     protected SellableInventoryItemEntryMvoStateEvent map(SellableInventoryItemEntryMvoCommand.CreateSellableInventoryItemEntryMvo c) {
-        SellableInventoryItemEntryMvoStateEventId stateEventId = new SellableInventoryItemEntryMvoStateEventId(c.getSellableInventoryItemEntryId(), c.getSellableInventoryItemVersion());
+        SellableInventoryItemEntryMvoEventId stateEventId = new SellableInventoryItemEntryMvoEventId(c.getSellableInventoryItemEntryId(), c.getSellableInventoryItemVersion());
         SellableInventoryItemEntryMvoStateEvent.SellableInventoryItemEntryMvoStateCreated e = newSellableInventoryItemEntryMvoStateCreated(stateEventId);
         e.setSellableQuantity(c.getSellableQuantity());
         e.setSourceEventId(c.getSourceEventId());
@@ -69,7 +69,7 @@ public abstract class AbstractSellableInventoryItemEntryMvoAggregate extends Abs
     }
 
     protected SellableInventoryItemEntryMvoStateEvent map(SellableInventoryItemEntryMvoCommand.MergePatchSellableInventoryItemEntryMvo c) {
-        SellableInventoryItemEntryMvoStateEventId stateEventId = new SellableInventoryItemEntryMvoStateEventId(c.getSellableInventoryItemEntryId(), c.getSellableInventoryItemVersion());
+        SellableInventoryItemEntryMvoEventId stateEventId = new SellableInventoryItemEntryMvoEventId(c.getSellableInventoryItemEntryId(), c.getSellableInventoryItemVersion());
         SellableInventoryItemEntryMvoStateEvent.SellableInventoryItemEntryMvoStateMergePatched e = newSellableInventoryItemEntryMvoStateMergePatched(stateEventId);
         e.setSellableQuantity(c.getSellableQuantity());
         e.setSourceEventId(c.getSourceEventId());
@@ -97,7 +97,7 @@ public abstract class AbstractSellableInventoryItemEntryMvoAggregate extends Abs
     ////////////////////////
 
     protected SellableInventoryItemEntryMvoStateEvent.SellableInventoryItemEntryMvoStateCreated newSellableInventoryItemEntryMvoStateCreated(Long version, String commandId, String requesterId) {
-        SellableInventoryItemEntryMvoStateEventId stateEventId = new SellableInventoryItemEntryMvoStateEventId(this.state.getSellableInventoryItemEntryId(), version);
+        SellableInventoryItemEntryMvoEventId stateEventId = new SellableInventoryItemEntryMvoEventId(this.state.getSellableInventoryItemEntryId(), version);
         SellableInventoryItemEntryMvoStateEvent.SellableInventoryItemEntryMvoStateCreated e = newSellableInventoryItemEntryMvoStateCreated(stateEventId);
         ((AbstractSellableInventoryItemEntryMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -106,7 +106,7 @@ public abstract class AbstractSellableInventoryItemEntryMvoAggregate extends Abs
     }
 
     protected SellableInventoryItemEntryMvoStateEvent.SellableInventoryItemEntryMvoStateMergePatched newSellableInventoryItemEntryMvoStateMergePatched(Long version, String commandId, String requesterId) {
-        SellableInventoryItemEntryMvoStateEventId stateEventId = new SellableInventoryItemEntryMvoStateEventId(this.state.getSellableInventoryItemEntryId(), version);
+        SellableInventoryItemEntryMvoEventId stateEventId = new SellableInventoryItemEntryMvoEventId(this.state.getSellableInventoryItemEntryId(), version);
         SellableInventoryItemEntryMvoStateEvent.SellableInventoryItemEntryMvoStateMergePatched e = newSellableInventoryItemEntryMvoStateMergePatched(stateEventId);
         ((AbstractSellableInventoryItemEntryMvoStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -114,11 +114,11 @@ public abstract class AbstractSellableInventoryItemEntryMvoAggregate extends Abs
         return e;
     }
 
-    protected SellableInventoryItemEntryMvoStateEvent.SellableInventoryItemEntryMvoStateCreated newSellableInventoryItemEntryMvoStateCreated(SellableInventoryItemEntryMvoStateEventId stateEventId) {
+    protected SellableInventoryItemEntryMvoStateEvent.SellableInventoryItemEntryMvoStateCreated newSellableInventoryItemEntryMvoStateCreated(SellableInventoryItemEntryMvoEventId stateEventId) {
         return new AbstractSellableInventoryItemEntryMvoStateEvent.SimpleSellableInventoryItemEntryMvoStateCreated(stateEventId);
     }
 
-    protected SellableInventoryItemEntryMvoStateEvent.SellableInventoryItemEntryMvoStateMergePatched newSellableInventoryItemEntryMvoStateMergePatched(SellableInventoryItemEntryMvoStateEventId stateEventId) {
+    protected SellableInventoryItemEntryMvoStateEvent.SellableInventoryItemEntryMvoStateMergePatched newSellableInventoryItemEntryMvoStateMergePatched(SellableInventoryItemEntryMvoEventId stateEventId) {
         return new AbstractSellableInventoryItemEntryMvoStateEvent.SimpleSellableInventoryItemEntryMvoStateMergePatched(stateEventId);
     }
 

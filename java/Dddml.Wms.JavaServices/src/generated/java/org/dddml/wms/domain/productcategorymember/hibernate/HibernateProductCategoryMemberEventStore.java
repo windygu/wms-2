@@ -16,7 +16,7 @@ public class HibernateProductCategoryMemberEventStore extends AbstractHibernateE
     @Override
     protected Serializable getEventId(EventStoreAggregateId eventStoreAggregateId, long version)
     {
-        return new ProductCategoryMemberStateEventId((ProductCategoryMemberId) eventStoreAggregateId.getId(), version);
+        return new ProductCategoryMemberEventId((ProductCategoryMemberId) eventStoreAggregateId.getId(), version);
     }
 
     @Override

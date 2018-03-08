@@ -105,7 +105,7 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 
         protected virtual IUserRoleMvoStateCreated Map(ICreateUserRoleMvo c)
         {
-			var stateEventId = new UserRoleMvoStateEventId(c.UserRoleId, c.UserVersion);
+			var stateEventId = new UserRoleMvoEventId(c.UserRoleId, c.UserVersion);
             IUserRoleMvoStateCreated e = NewUserRoleMvoStateCreated(stateEventId);
 		
             e.Version = c.Version;
@@ -140,7 +140,7 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 
         protected virtual IUserRoleMvoStateMergePatched Map(IMergePatchUserRoleMvo c)
         {
-			var stateEventId = new UserRoleMvoStateEventId(c.UserRoleId, c.UserVersion);
+			var stateEventId = new UserRoleMvoEventId(c.UserRoleId, c.UserVersion);
             IUserRoleMvoStateMergePatched e = NewUserRoleMvoStateMergePatched(stateEventId);
 
             e.Version = c.Version;
@@ -196,7 +196,7 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 
         protected virtual IUserRoleMvoStateDeleted Map(IDeleteUserRoleMvo c)
         {
-			var stateEventId = new UserRoleMvoStateEventId(c.UserRoleId, c.UserVersion);
+			var stateEventId = new UserRoleMvoEventId(c.UserRoleId, c.UserVersion);
             IUserRoleMvoStateDeleted e = NewUserRoleMvoStateDeleted(stateEventId);
 			
             e.CommandId = c.CommandId;
@@ -225,7 +225,7 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 
         protected UserRoleMvoStateCreated NewUserRoleMvoStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new UserRoleMvoStateEventId(_state.UserRoleId, version);
+            var stateEventId = new UserRoleMvoEventId(_state.UserRoleId, version);
             var e = NewUserRoleMvoStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -238,7 +238,7 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 
         protected UserRoleMvoStateMergePatched NewUserRoleMvoStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new UserRoleMvoStateEventId(_state.UserRoleId, version);
+            var stateEventId = new UserRoleMvoEventId(_state.UserRoleId, version);
             var e = NewUserRoleMvoStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -252,7 +252,7 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 
         protected UserRoleMvoStateDeleted NewUserRoleMvoStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new UserRoleMvoStateEventId(_state.UserRoleId, version);
+            var stateEventId = new UserRoleMvoEventId(_state.UserRoleId, version);
             var e = NewUserRoleMvoStateDeleted(stateEventId);
 
             e.CommandId = commandId;
@@ -265,17 +265,17 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 
 ////////////////////////
 
-		private UserRoleMvoStateCreated NewUserRoleMvoStateCreated(UserRoleMvoStateEventId stateEventId)
+		private UserRoleMvoStateCreated NewUserRoleMvoStateCreated(UserRoleMvoEventId stateEventId)
 		{
 			return new UserRoleMvoStateCreated(stateEventId);			
 		}
 
-        private UserRoleMvoStateMergePatched NewUserRoleMvoStateMergePatched(UserRoleMvoStateEventId stateEventId)
+        private UserRoleMvoStateMergePatched NewUserRoleMvoStateMergePatched(UserRoleMvoEventId stateEventId)
 		{
 			return new UserRoleMvoStateMergePatched(stateEventId);
 		}
 
-        private UserRoleMvoStateDeleted NewUserRoleMvoStateDeleted(UserRoleMvoStateEventId stateEventId)
+        private UserRoleMvoStateDeleted NewUserRoleMvoStateDeleted(UserRoleMvoEventId stateEventId)
 		{
 			return new UserRoleMvoStateDeleted(stateEventId);
 		}

@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.RolePermission
 	public abstract class RolePermissionStateEventBase : IRolePermissionStateEvent
 	{
 
-		public virtual RolePermissionStateEventId StateEventId { get; set; }
+		public virtual RolePermissionEventId StateEventId { get; set; }
 
         public virtual RolePermissionId Id
         {
@@ -33,7 +33,7 @@ namespace Dddml.Wms.Domain.RolePermission
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		RolePermissionStateEventId IGlobalIdentity<RolePermissionStateEventId>.GlobalId {
+		RolePermissionEventId IGlobalIdentity<RolePermissionEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -77,7 +77,7 @@ namespace Dddml.Wms.Domain.RolePermission
         {
         }
 
-        protected RolePermissionStateEventBase(RolePermissionStateEventId stateEventId)
+        protected RolePermissionStateEventBase(RolePermissionEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -94,11 +94,11 @@ namespace Dddml.Wms.Domain.RolePermission
 
 	public class RolePermissionStateCreated : RolePermissionStateEventBase, IRolePermissionStateCreated
 	{
-		public RolePermissionStateCreated () : this(new RolePermissionStateEventId())
+		public RolePermissionStateCreated () : this(new RolePermissionEventId())
 		{
 		}
 
-		public RolePermissionStateCreated (RolePermissionStateEventId stateEventId) : base(stateEventId)
+		public RolePermissionStateCreated (RolePermissionEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -120,7 +120,7 @@ namespace Dddml.Wms.Domain.RolePermission
 		{
 		}
 
-		public RolePermissionStateMergePatched (RolePermissionStateEventId stateEventId) : base(stateEventId)
+		public RolePermissionStateMergePatched (RolePermissionEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -139,7 +139,7 @@ namespace Dddml.Wms.Domain.RolePermission
 		{
 		}
 
-		public RolePermissionStateDeleted (RolePermissionStateEventId stateEventId) : base(stateEventId)
+		public RolePermissionStateDeleted (RolePermissionEventId stateEventId) : base(stateEventId)
 		{
 		}
 

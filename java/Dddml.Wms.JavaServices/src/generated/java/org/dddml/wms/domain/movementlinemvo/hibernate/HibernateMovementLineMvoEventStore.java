@@ -18,7 +18,7 @@ public class HibernateMovementLineMvoEventStore extends AbstractHibernateEventSt
     @Override
     protected Serializable getEventId(EventStoreAggregateId eventStoreAggregateId, long version)
     {
-        return new MovementLineMvoStateEventId((MovementLineId) eventStoreAggregateId.getId(), version);
+        return new MovementLineMvoEventId((MovementLineId) eventStoreAggregateId.getId(), version);
     }
 
     @Override

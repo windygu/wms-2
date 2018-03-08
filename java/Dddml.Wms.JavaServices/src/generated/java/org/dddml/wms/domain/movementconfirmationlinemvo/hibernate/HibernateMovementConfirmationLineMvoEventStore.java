@@ -18,7 +18,7 @@ public class HibernateMovementConfirmationLineMvoEventStore extends AbstractHibe
     @Override
     protected Serializable getEventId(EventStoreAggregateId eventStoreAggregateId, long version)
     {
-        return new MovementConfirmationLineMvoStateEventId((MovementConfirmationLineId) eventStoreAggregateId.getId(), version);
+        return new MovementConfirmationLineMvoEventId((MovementConfirmationLineId) eventStoreAggregateId.getId(), version);
     }
 
     @Override

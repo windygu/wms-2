@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.AttributeSet
 	public abstract class AttributeUseStateEventDtoBase : IStateEventDto, IAttributeUseStateCreated, IAttributeUseStateMergePatched, IAttributeUseStateRemoved
 	{
 
-        private AttributeUseStateEventIdDto _stateEventId;
+        private AttributeUseEventIdDto _stateEventId;
 
-		protected internal virtual AttributeUseStateEventIdDto StateEventId 
+		protected internal virtual AttributeUseEventIdDto StateEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new AttributeUseStateEventIdDto(); }
+                if (_stateEventId == null) { _stateEventId = new AttributeUseEventIdDto(); }
                 return _stateEventId;
             }
             set
@@ -48,10 +48,10 @@ namespace Dddml.Wms.Domain.AttributeSet
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		AttributeUseStateEventId IGlobalIdentity<AttributeUseStateEventId>.GlobalId {
+		AttributeUseEventId IGlobalIdentity<AttributeUseEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToAttributeUseStateEventId();
+				return this.StateEventId.ToAttributeUseEventId();
 			}
 		}
 
@@ -128,16 +128,16 @@ namespace Dddml.Wms.Domain.AttributeSet
 		}
 
 
-        AttributeUseStateEventId IAttributeUseStateEvent.StateEventId
+        AttributeUseEventId IAttributeUseStateEvent.StateEventId
         {
-            get { return this.StateEventId.ToAttributeUseStateEventId(); }
+            get { return this.StateEventId.ToAttributeUseEventId(); }
         }
 
         protected AttributeUseStateEventDtoBase()
         {
         }
 
-        protected AttributeUseStateEventDtoBase(AttributeUseStateEventIdDto stateEventId)
+        protected AttributeUseStateEventDtoBase(AttributeUseEventIdDto stateEventId)
         {
             this.StateEventId = stateEventId;
         }

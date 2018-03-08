@@ -711,7 +711,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             id.Append("[").Append("ShipmentItemMvo|");
 
             var stateEntityId = this.ShipmentItemId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.ShipmentItemId; // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+            var eventEntityId = stateEvent.StateEventId.ShipmentItemId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);

@@ -95,7 +95,7 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 
         protected virtual IOrderItemMvoStateCreated Map(ICreateOrderItemMvo c)
         {
-			var stateEventId = new OrderItemMvoStateEventId(c.OrderItemId, c.OrderVersion);
+			var stateEventId = new OrderItemMvoEventId(c.OrderItemId, c.OrderVersion);
             IOrderItemMvoStateCreated e = NewOrderItemMvoStateCreated(stateEventId);
 		
             e.ProductId = c.ProductId;
@@ -177,7 +177,7 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 
         protected virtual IOrderItemMvoStateMergePatched Map(IMergePatchOrderItemMvo c)
         {
-			var stateEventId = new OrderItemMvoStateEventId(c.OrderItemId, c.OrderVersion);
+			var stateEventId = new OrderItemMvoEventId(c.OrderItemId, c.OrderVersion);
             IOrderItemMvoStateMergePatched e = NewOrderItemMvoStateMergePatched(stateEventId);
 
             e.ProductId = c.ProductId;
@@ -341,7 +341,7 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 
         protected OrderItemMvoStateCreated NewOrderItemMvoStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new OrderItemMvoStateEventId(_state.OrderItemId, version);
+            var stateEventId = new OrderItemMvoEventId(_state.OrderItemId, version);
             var e = NewOrderItemMvoStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -354,7 +354,7 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 
         protected OrderItemMvoStateMergePatched NewOrderItemMvoStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new OrderItemMvoStateEventId(_state.OrderItemId, version);
+            var stateEventId = new OrderItemMvoEventId(_state.OrderItemId, version);
             var e = NewOrderItemMvoStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -368,12 +368,12 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 
 ////////////////////////
 
-		private OrderItemMvoStateCreated NewOrderItemMvoStateCreated(OrderItemMvoStateEventId stateEventId)
+		private OrderItemMvoStateCreated NewOrderItemMvoStateCreated(OrderItemMvoEventId stateEventId)
 		{
 			return new OrderItemMvoStateCreated(stateEventId);			
 		}
 
-        private OrderItemMvoStateMergePatched NewOrderItemMvoStateMergePatched(OrderItemMvoStateEventId stateEventId)
+        private OrderItemMvoStateMergePatched NewOrderItemMvoStateMergePatched(OrderItemMvoEventId stateEventId)
 		{
 			return new OrderItemMvoStateMergePatched(stateEventId);
 		}

@@ -5,7 +5,7 @@
   
   <class name="UserRoleMvoStateEventBase" table="UserRoleMvoStateEvents" mutable="false" abstract="true">
 
-    <composite-id name="StateEventId" class="Dddml.Wms.Domain.UserRoleMvo.UserRoleMvoStateEventId">
+    <composite-id name="StateEventId" class="Dddml.Wms.Domain.UserRoleMvo.UserRoleMvoEventId">
         <key-property name="UserRoleIdUserId" ><column name="UserRoleIdUserId" length="50" /></key-property>
         <key-property name="UserRoleIdRoleId" ><column name="UserRoleIdRoleId" length="50" /></key-property>
         <key-property name="UserVersion" ></key-property>

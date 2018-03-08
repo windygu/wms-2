@@ -17,7 +17,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 	{
 		void Save(ISellableInventoryItemEntryStateEvent e);
 
-        IEnumerable<ISellableInventoryItemEntryStateEvent> FindBySellableInventoryItemStateEventId(SellableInventoryItemStateEventId sellableInventoryItemStateEventId);
+        IEnumerable<ISellableInventoryItemEntryStateEvent> FindBySellableInventoryItemEventId(SellableInventoryItemEventId sellableInventoryItemEventId);
 
 	}
 

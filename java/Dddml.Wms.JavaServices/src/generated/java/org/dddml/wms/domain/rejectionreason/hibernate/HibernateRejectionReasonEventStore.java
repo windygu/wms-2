@@ -16,7 +16,7 @@ public class HibernateRejectionReasonEventStore extends AbstractHibernateEventSt
     @Override
     protected Serializable getEventId(EventStoreAggregateId eventStoreAggregateId, long version)
     {
-        return new RejectionReasonStateEventId((String) eventStoreAggregateId.getId(), version);
+        return new RejectionReasonEventId((String) eventStoreAggregateId.getId(), version);
     }
 
     @Override

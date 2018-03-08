@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.RejectionReason
         public virtual RejectionReasonStateCreatedDto ToRejectionReasonStateCreatedDto(IRejectionReasonStateCreated e)
         {
             var dto = new RejectionReasonStateCreatedDto();
-            dto.StateEventId = new RejectionReasonStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new RejectionReasonEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -50,7 +50,7 @@ namespace Dddml.Wms.Domain.RejectionReason
         public virtual RejectionReasonStateMergePatchedDto ToRejectionReasonStateMergePatchedDto(IRejectionReasonStateMergePatched e)
         {
             var dto = new RejectionReasonStateMergePatchedDto();
-            dto.StateEventId = new RejectionReasonStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new RejectionReasonEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -66,7 +66,7 @@ namespace Dddml.Wms.Domain.RejectionReason
         public virtual RejectionReasonStateDeletedDto ToRejectionReasonStateDeletedDto(IRejectionReasonStateDeleted e)
         {
             var dto = new RejectionReasonStateDeletedDto();
-            dto.StateEventId = new RejectionReasonStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new RejectionReasonEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

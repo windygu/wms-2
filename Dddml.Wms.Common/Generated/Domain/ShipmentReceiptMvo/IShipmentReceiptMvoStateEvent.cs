@@ -12,9 +12,9 @@ using Dddml.Wms.Domain.Shipment;
 
 namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 {
-	public interface IShipmentReceiptMvoStateEvent : IEvent, IStateEventDto, IGlobalIdentity<ShipmentReceiptMvoStateEventId>, ICreated<string>
+	public interface IShipmentReceiptMvoStateEvent : IEvent, IStateEventDto, IGlobalIdentity<ShipmentReceiptMvoEventId>, ICreated<string>
 	{
-		ShipmentReceiptMvoStateEventId StateEventId { get; }
+		ShipmentReceiptMvoEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

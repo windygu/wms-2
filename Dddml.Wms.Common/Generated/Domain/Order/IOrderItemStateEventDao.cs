@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.Order
 	{
 		void Save(IOrderItemStateEvent e);
 
-        IEnumerable<IOrderItemStateEvent> FindByOrderStateEventId(OrderStateEventId orderStateEventId);
+        IEnumerable<IOrderItemStateEvent> FindByOrderEventId(OrderEventId orderEventId);
 
 	}
 

@@ -5,7 +5,7 @@
   
   <class name="LotStateEventBase" table="LotStateEvents" mutable="false" abstract="true">
 
-    <composite-id name="StateEventId" class="Dddml.Wms.Domain.Lot.LotStateEventId">
+    <composite-id name="StateEventId" class="Dddml.Wms.Domain.Lot.LotEventId">
         <key-property name="LotId" ><column name="LotId" sql-type="VARCHAR(20)" /></key-property>
         <key-property name="Version" ></key-property>
     </composite-id>

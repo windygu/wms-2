@@ -17,7 +17,7 @@ public class HibernateInOutEventStore extends AbstractHibernateEventStore
     @Override
     protected Serializable getEventId(EventStoreAggregateId eventStoreAggregateId, long version)
     {
-        return new InOutStateEventId((String) eventStoreAggregateId.getId(), version);
+        return new InOutEventId((String) eventStoreAggregateId.getId(), version);
     }
 
     @Override

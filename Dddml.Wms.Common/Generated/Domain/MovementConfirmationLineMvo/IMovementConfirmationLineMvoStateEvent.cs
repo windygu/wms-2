@@ -12,9 +12,9 @@ using Dddml.Wms.Domain.MovementConfirmation;
 
 namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 {
-	public interface IMovementConfirmationLineMvoStateEvent : IEvent, IStateEventDto, IGlobalIdentity<MovementConfirmationLineMvoStateEventId>, ICreated<string>
+	public interface IMovementConfirmationLineMvoStateEvent : IEvent, IStateEventDto, IGlobalIdentity<MovementConfirmationLineMvoEventId>, ICreated<string>
 	{
-		MovementConfirmationLineMvoStateEventId StateEventId { get; }
+		MovementConfirmationLineMvoEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

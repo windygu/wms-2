@@ -33,7 +33,7 @@ namespace Dddml.Wms.Domain.Order
         public virtual OrderItemStateCreatedDto ToOrderItemStateCreatedDto(IOrderItemStateCreated e)
         {
             var dto = new OrderItemStateCreatedDto();
-            dto.StateEventId = new OrderItemStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new OrderItemEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;
@@ -80,7 +80,7 @@ namespace Dddml.Wms.Domain.Order
         public virtual OrderItemStateMergePatchedDto ToOrderItemStateMergePatchedDto(IOrderItemStateMergePatched e)
         {
             var dto = new OrderItemStateMergePatchedDto();
-            dto.StateEventId = new OrderItemStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new OrderItemEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;

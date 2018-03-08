@@ -8,14 +8,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractWarehouseStateEvent extends AbstractStateEvent implements WarehouseStateEvent 
 {
-    private WarehouseStateEventId stateEventId;
+    private WarehouseEventId stateEventId;
 
-    public WarehouseStateEventId getStateEventId() {
+    public WarehouseEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(WarehouseStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(WarehouseEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public String getWarehouseId() {
@@ -118,8 +118,8 @@ public abstract class AbstractWarehouseStateEvent extends AbstractStateEvent imp
     protected AbstractWarehouseStateEvent() {
     }
 
-    protected AbstractWarehouseStateEvent(WarehouseStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractWarehouseStateEvent(WarehouseEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -129,11 +129,11 @@ public abstract class AbstractWarehouseStateEvent extends AbstractStateEvent imp
     public static abstract class AbstractWarehouseStateCreated extends AbstractWarehouseStateEvent implements WarehouseStateEvent.WarehouseStateCreated
     {
         public AbstractWarehouseStateCreated() {
-            this(new WarehouseStateEventId());
+            this(new WarehouseEventId());
         }
 
-        public AbstractWarehouseStateCreated(WarehouseStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractWarehouseStateCreated(WarehouseEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -146,11 +146,11 @@ public abstract class AbstractWarehouseStateEvent extends AbstractStateEvent imp
     public static abstract class AbstractWarehouseStateMergePatched extends AbstractWarehouseStateEvent implements WarehouseStateEvent.WarehouseStateMergePatched
     {
         public AbstractWarehouseStateMergePatched() {
-            this(new WarehouseStateEventId());
+            this(new WarehouseEventId());
         }
 
-        public AbstractWarehouseStateMergePatched(WarehouseStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractWarehouseStateMergePatched(WarehouseEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -203,11 +203,11 @@ public abstract class AbstractWarehouseStateEvent extends AbstractStateEvent imp
     public static abstract class AbstractWarehouseStateDeleted extends AbstractWarehouseStateEvent implements WarehouseStateEvent.WarehouseStateDeleted
     {
         public AbstractWarehouseStateDeleted() {
-            this(new WarehouseStateEventId());
+            this(new WarehouseEventId());
         }
 
-        public AbstractWarehouseStateDeleted(WarehouseStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractWarehouseStateDeleted(WarehouseEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -220,8 +220,8 @@ public abstract class AbstractWarehouseStateEvent extends AbstractStateEvent imp
         public SimpleWarehouseStateCreated() {
         }
 
-        public SimpleWarehouseStateCreated(WarehouseStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleWarehouseStateCreated(WarehouseEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -230,8 +230,8 @@ public abstract class AbstractWarehouseStateEvent extends AbstractStateEvent imp
         public SimpleWarehouseStateMergePatched() {
         }
 
-        public SimpleWarehouseStateMergePatched(WarehouseStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleWarehouseStateMergePatched(WarehouseEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -240,8 +240,8 @@ public abstract class AbstractWarehouseStateEvent extends AbstractStateEvent imp
         public SimpleWarehouseStateDeleted() {
         }
 
-        public SimpleWarehouseStateDeleted(WarehouseStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleWarehouseStateDeleted(WarehouseEventId eventId) {
+            super(eventId);
         }
     }
 

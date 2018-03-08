@@ -16,7 +16,7 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 	public abstract class UserLoginMvoStateEventBase : IUserLoginMvoStateEvent
 	{
 
-		public virtual UserLoginMvoStateEventId StateEventId { get; set; }
+		public virtual UserLoginMvoEventId StateEventId { get; set; }
 
         public virtual UserLoginId UserLoginId
         {
@@ -70,7 +70,7 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		UserLoginMvoStateEventId IGlobalIdentity<UserLoginMvoStateEventId>.GlobalId {
+		UserLoginMvoEventId IGlobalIdentity<UserLoginMvoEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -114,7 +114,7 @@ namespace Dddml.Wms.Domain.UserLoginMvo
         {
         }
 
-        protected UserLoginMvoStateEventBase(UserLoginMvoStateEventId stateEventId)
+        protected UserLoginMvoStateEventBase(UserLoginMvoEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -131,11 +131,11 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 
 	public class UserLoginMvoStateCreated : UserLoginMvoStateEventBase, IUserLoginMvoStateCreated
 	{
-		public UserLoginMvoStateCreated () : this(new UserLoginMvoStateEventId())
+		public UserLoginMvoStateCreated () : this(new UserLoginMvoEventId())
 		{
 		}
 
-		public UserLoginMvoStateCreated (UserLoginMvoStateEventId stateEventId) : base(stateEventId)
+		public UserLoginMvoStateCreated (UserLoginMvoEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -193,7 +193,7 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 		{
 		}
 
-		public UserLoginMvoStateMergePatched (UserLoginMvoStateEventId stateEventId) : base(stateEventId)
+		public UserLoginMvoStateMergePatched (UserLoginMvoEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -212,7 +212,7 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 		{
 		}
 
-		public UserLoginMvoStateDeleted (UserLoginMvoStateEventId stateEventId) : base(stateEventId)
+		public UserLoginMvoStateDeleted (UserLoginMvoEventId stateEventId) : base(stateEventId)
 		{
 		}
 

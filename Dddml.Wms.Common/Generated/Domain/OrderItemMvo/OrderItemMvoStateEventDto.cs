@@ -16,13 +16,13 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 	public abstract class OrderItemMvoStateEventDtoBase : IStateEventDto, IOrderItemMvoStateCreated, IOrderItemMvoStateMergePatched
 	{
 
-        private OrderItemMvoStateEventIdDto _stateEventId;
+        private OrderItemMvoEventIdDto _stateEventId;
 
-		protected internal virtual OrderItemMvoStateEventIdDto StateEventId 
+		protected internal virtual OrderItemMvoEventIdDto StateEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new OrderItemMvoStateEventIdDto(); }
+                if (_stateEventId == null) { _stateEventId = new OrderItemMvoEventIdDto(); }
                 return _stateEventId;
             }
             set
@@ -183,10 +183,10 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		OrderItemMvoStateEventId IGlobalIdentity<OrderItemMvoStateEventId>.GlobalId {
+		OrderItemMvoEventId IGlobalIdentity<OrderItemMvoEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToOrderItemMvoStateEventId();
+				return this.StateEventId.ToOrderItemMvoEventId();
 			}
 		}
 
@@ -1477,16 +1477,16 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 		}
 
 
-        OrderItemMvoStateEventId IOrderItemMvoStateEvent.StateEventId
+        OrderItemMvoEventId IOrderItemMvoStateEvent.StateEventId
         {
-            get { return this.StateEventId.ToOrderItemMvoStateEventId(); }
+            get { return this.StateEventId.ToOrderItemMvoEventId(); }
         }
 
         protected OrderItemMvoStateEventDtoBase()
         {
         }
 
-        protected OrderItemMvoStateEventDtoBase(OrderItemMvoStateEventIdDto stateEventId)
+        protected OrderItemMvoStateEventDtoBase(OrderItemMvoEventIdDto stateEventId)
         {
             this.StateEventId = stateEventId;
         }

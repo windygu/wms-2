@@ -21,7 +21,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup.NHibernate
 	{
 		public override object GetEventId(IEventStoreAggregateId eventStoreAggregateId, long version)
 		{
-			return new AttributeSetInstanceExtensionFieldGroupStateEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
+			return new AttributeSetInstanceExtensionFieldGroupEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
 		public override Type GetSupportedStateEventType()

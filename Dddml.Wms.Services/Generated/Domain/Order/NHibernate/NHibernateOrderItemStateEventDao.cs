@@ -39,12 +39,12 @@ namespace Dddml.Wms.Domain.Order.NHibernate
         }
 
         [Transaction(ReadOnly = true)]
-        public IEnumerable<IOrderItemStateEvent> FindByOrderStateEventId(OrderStateEventId orderStateEventId)
+        public IEnumerable<IOrderItemStateEvent> FindByOrderEventId(OrderEventId orderEventId)
         {
             var criteria = CurrentSession.CreateCriteria<OrderItemStateEventBase>();
             var partIdCondition = Restrictions.Conjunction()
-                .Add(Restrictions.Eq("StateEventId.OrderId", orderStateEventId.OrderId))
-                .Add(Restrictions.Eq("StateEventId.OrderVersion", orderStateEventId.Version))
+                .Add(Restrictions.Eq("StateEventId.OrderId", orderEventId.OrderId))
+                .Add(Restrictions.Eq("StateEventId.OrderVersion", orderEventId.Version))
                 ;
 
             return criteria.Add(partIdCondition).List<OrderItemStateEventBase>();

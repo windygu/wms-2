@@ -39,7 +39,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
         public virtual AttributeValueMvoStateCreatedDto ToAttributeValueMvoStateCreatedDto(IAttributeValueMvoStateCreated e)
         {
             var dto = new AttributeValueMvoStateCreatedDto();
-            dto.StateEventId = new AttributeValueMvoStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new AttributeValueMvoEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -69,7 +69,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
         public virtual AttributeValueMvoStateMergePatchedDto ToAttributeValueMvoStateMergePatchedDto(IAttributeValueMvoStateMergePatched e)
         {
             var dto = new AttributeValueMvoStateMergePatchedDto();
-            dto.StateEventId = new AttributeValueMvoStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new AttributeValueMvoEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -121,7 +121,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
         public virtual AttributeValueMvoStateDeletedDto ToAttributeValueMvoStateDeletedDto(IAttributeValueMvoStateDeleted e)
         {
             var dto = new AttributeValueMvoStateDeletedDto();
-            dto.StateEventId = new AttributeValueMvoStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new AttributeValueMvoEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

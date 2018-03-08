@@ -19,7 +19,7 @@ public class HibernateInventoryItemRequirementEntryMvoEventStore extends Abstrac
     @Override
     protected Serializable getEventId(EventStoreAggregateId eventStoreAggregateId, long version)
     {
-        return new InventoryItemRequirementEntryMvoStateEventId((InventoryItemRequirementEntryId) eventStoreAggregateId.getId(), version);
+        return new InventoryItemRequirementEntryMvoEventId((InventoryItemRequirementEntryId) eventStoreAggregateId.getId(), version);
     }
 
     @Override

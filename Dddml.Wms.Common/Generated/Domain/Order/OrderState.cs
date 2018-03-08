@@ -583,7 +583,7 @@ namespace Dddml.Wms.Domain.Order
             id.Append("[").Append("Order|");
 
             var stateEntityId = this.OrderId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.OrderId; // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+            var eventEntityId = stateEvent.StateEventId.OrderId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);

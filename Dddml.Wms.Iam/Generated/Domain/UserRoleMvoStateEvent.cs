@@ -16,7 +16,7 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 	public abstract class UserRoleMvoStateEventBase : IUserRoleMvoStateEvent
 	{
 
-		public virtual UserRoleMvoStateEventId StateEventId { get; set; }
+		public virtual UserRoleMvoEventId StateEventId { get; set; }
 
         public virtual UserRoleId UserRoleId
         {
@@ -70,7 +70,7 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		UserRoleMvoStateEventId IGlobalIdentity<UserRoleMvoStateEventId>.GlobalId {
+		UserRoleMvoEventId IGlobalIdentity<UserRoleMvoEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -114,7 +114,7 @@ namespace Dddml.Wms.Domain.UserRoleMvo
         {
         }
 
-        protected UserRoleMvoStateEventBase(UserRoleMvoStateEventId stateEventId)
+        protected UserRoleMvoStateEventBase(UserRoleMvoEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -131,11 +131,11 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 
 	public class UserRoleMvoStateCreated : UserRoleMvoStateEventBase, IUserRoleMvoStateCreated
 	{
-		public UserRoleMvoStateCreated () : this(new UserRoleMvoStateEventId())
+		public UserRoleMvoStateCreated () : this(new UserRoleMvoEventId())
 		{
 		}
 
-		public UserRoleMvoStateCreated (UserRoleMvoStateEventId stateEventId) : base(stateEventId)
+		public UserRoleMvoStateCreated (UserRoleMvoEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -193,7 +193,7 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 		{
 		}
 
-		public UserRoleMvoStateMergePatched (UserRoleMvoStateEventId stateEventId) : base(stateEventId)
+		public UserRoleMvoStateMergePatched (UserRoleMvoEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -212,7 +212,7 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 		{
 		}
 
-		public UserRoleMvoStateDeleted (UserRoleMvoStateEventId stateEventId) : base(stateEventId)
+		public UserRoleMvoStateDeleted (UserRoleMvoEventId stateEventId) : base(stateEventId)
 		{
 		}
 

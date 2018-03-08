@@ -5,7 +5,7 @@
   
   <class name="InventoryItemEntryMvoStateEventBase" table="InventoryItemEntryMvoStateEvents" mutable="false" abstract="true">
 
-    <composite-id name="StateEventId" class="Dddml.Wms.Domain.InventoryItemEntryMvo.InventoryItemEntryMvoStateEventId">
+    <composite-id name="StateEventId" class="Dddml.Wms.Domain.InventoryItemEntryMvo.InventoryItemEntryMvoEventId">
         <key-property name="InventoryItemEntryIdInventoryItemIdProductId" ><column name="ProductId" length="60" sql-type="VARCHAR(60)" /></key-property>
         <key-property name="InventoryItemEntryIdInventoryItemIdLocatorId" ><column name="LocatorId" length="50" /></key-property>
         <key-property name="InventoryItemEntryIdInventoryItemIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" length="50" /></key-property>

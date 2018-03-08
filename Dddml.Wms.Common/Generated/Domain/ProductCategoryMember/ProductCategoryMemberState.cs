@@ -262,7 +262,7 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
             id.Append("[").Append("ProductCategoryMember|");
 
             var stateEntityId = this.ProductCategoryMemberId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.ProductCategoryMemberId; // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+            var eventEntityId = stateEvent.StateEventId.ProductCategoryMemberId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);

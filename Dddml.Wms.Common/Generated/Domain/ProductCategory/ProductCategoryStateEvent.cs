@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.ProductCategory
 	public abstract class ProductCategoryStateEventBase : IProductCategoryStateEvent
 	{
 
-		public virtual ProductCategoryStateEventId StateEventId { get; set; }
+		public virtual ProductCategoryEventId StateEventId { get; set; }
 
         public virtual string ProductCategoryId
         {
@@ -49,7 +49,7 @@ namespace Dddml.Wms.Domain.ProductCategory
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		ProductCategoryStateEventId IGlobalIdentity<ProductCategoryStateEventId>.GlobalId {
+		ProductCategoryEventId IGlobalIdentity<ProductCategoryEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -93,7 +93,7 @@ namespace Dddml.Wms.Domain.ProductCategory
         {
         }
 
-        protected ProductCategoryStateEventBase(ProductCategoryStateEventId stateEventId)
+        protected ProductCategoryStateEventBase(ProductCategoryEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -110,11 +110,11 @@ namespace Dddml.Wms.Domain.ProductCategory
 
 	public class ProductCategoryStateCreated : ProductCategoryStateEventBase, IProductCategoryStateCreated
 	{
-		public ProductCategoryStateCreated () : this(new ProductCategoryStateEventId())
+		public ProductCategoryStateCreated () : this(new ProductCategoryEventId())
 		{
 		}
 
-		public ProductCategoryStateCreated (ProductCategoryStateEventId stateEventId) : base(stateEventId)
+		public ProductCategoryStateCreated (ProductCategoryEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -152,7 +152,7 @@ namespace Dddml.Wms.Domain.ProductCategory
 		{
 		}
 
-		public ProductCategoryStateMergePatched (ProductCategoryStateEventId stateEventId) : base(stateEventId)
+		public ProductCategoryStateMergePatched (ProductCategoryEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -171,7 +171,7 @@ namespace Dddml.Wms.Domain.ProductCategory
 		{
 		}
 
-		public ProductCategoryStateDeleted (ProductCategoryStateEventId stateEventId) : base(stateEventId)
+		public ProductCategoryStateDeleted (ProductCategoryEventId stateEventId) : base(stateEventId)
 		{
 		}
 

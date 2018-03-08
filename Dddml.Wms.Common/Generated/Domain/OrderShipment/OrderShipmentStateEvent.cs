@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.OrderShipment
 	public abstract class OrderShipmentStateEventBase : IOrderShipmentStateEvent
 	{
 
-		public virtual OrderShipmentStateEventId StateEventId { get; set; }
+		public virtual OrderShipmentEventId StateEventId { get; set; }
 
         public virtual OrderShipmentId OrderShipmentId
         {
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.OrderShipment
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		OrderShipmentStateEventId IGlobalIdentity<OrderShipmentStateEventId>.GlobalId {
+		OrderShipmentEventId IGlobalIdentity<OrderShipmentEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -79,7 +79,7 @@ namespace Dddml.Wms.Domain.OrderShipment
         {
         }
 
-        protected OrderShipmentStateEventBase(OrderShipmentStateEventId stateEventId)
+        protected OrderShipmentStateEventBase(OrderShipmentEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -96,11 +96,11 @@ namespace Dddml.Wms.Domain.OrderShipment
 
 	public class OrderShipmentStateCreated : OrderShipmentStateEventBase, IOrderShipmentStateCreated
 	{
-		public OrderShipmentStateCreated () : this(new OrderShipmentStateEventId())
+		public OrderShipmentStateCreated () : this(new OrderShipmentEventId())
 		{
 		}
 
-		public OrderShipmentStateCreated (OrderShipmentStateEventId stateEventId) : base(stateEventId)
+		public OrderShipmentStateCreated (OrderShipmentEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -124,7 +124,7 @@ namespace Dddml.Wms.Domain.OrderShipment
 		{
 		}
 
-		public OrderShipmentStateMergePatched (OrderShipmentStateEventId stateEventId) : base(stateEventId)
+		public OrderShipmentStateMergePatched (OrderShipmentEventId stateEventId) : base(stateEventId)
 		{
 		}
 

@@ -9,14 +9,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractShipmentReceiptMvoStateEvent extends AbstractStateEvent implements ShipmentReceiptMvoStateEvent 
 {
-    private ShipmentReceiptMvoStateEventId stateEventId;
+    private ShipmentReceiptMvoEventId stateEventId;
 
-    public ShipmentReceiptMvoStateEventId getStateEventId() {
+    public ShipmentReceiptMvoEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(ShipmentReceiptMvoStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(ShipmentReceiptMvoEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public ShipmentReceiptId getShipmentReceiptId() {
@@ -599,8 +599,8 @@ public abstract class AbstractShipmentReceiptMvoStateEvent extends AbstractState
     protected AbstractShipmentReceiptMvoStateEvent() {
     }
 
-    protected AbstractShipmentReceiptMvoStateEvent(ShipmentReceiptMvoStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractShipmentReceiptMvoStateEvent(ShipmentReceiptMvoEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -610,11 +610,11 @@ public abstract class AbstractShipmentReceiptMvoStateEvent extends AbstractState
     public static abstract class AbstractShipmentReceiptMvoStateCreated extends AbstractShipmentReceiptMvoStateEvent implements ShipmentReceiptMvoStateEvent.ShipmentReceiptMvoStateCreated
     {
         public AbstractShipmentReceiptMvoStateCreated() {
-            this(new ShipmentReceiptMvoStateEventId());
+            this(new ShipmentReceiptMvoEventId());
         }
 
-        public AbstractShipmentReceiptMvoStateCreated(ShipmentReceiptMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractShipmentReceiptMvoStateCreated(ShipmentReceiptMvoEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -627,11 +627,11 @@ public abstract class AbstractShipmentReceiptMvoStateEvent extends AbstractState
     public static abstract class AbstractShipmentReceiptMvoStateMergePatched extends AbstractShipmentReceiptMvoStateEvent implements ShipmentReceiptMvoStateEvent.ShipmentReceiptMvoStateMergePatched
     {
         public AbstractShipmentReceiptMvoStateMergePatched() {
-            this(new ShipmentReceiptMvoStateEventId());
+            this(new ShipmentReceiptMvoEventId());
         }
 
-        public AbstractShipmentReceiptMvoStateMergePatched(ShipmentReceiptMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractShipmentReceiptMvoStateMergePatched(ShipmentReceiptMvoEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -1086,8 +1086,8 @@ public abstract class AbstractShipmentReceiptMvoStateEvent extends AbstractState
         public SimpleShipmentReceiptMvoStateCreated() {
         }
 
-        public SimpleShipmentReceiptMvoStateCreated(ShipmentReceiptMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleShipmentReceiptMvoStateCreated(ShipmentReceiptMvoEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -1096,8 +1096,8 @@ public abstract class AbstractShipmentReceiptMvoStateEvent extends AbstractState
         public SimpleShipmentReceiptMvoStateMergePatched() {
         }
 
-        public SimpleShipmentReceiptMvoStateMergePatched(ShipmentReceiptMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleShipmentReceiptMvoStateMergePatched(ShipmentReceiptMvoEventId eventId) {
+            super(eventId);
         }
     }
 

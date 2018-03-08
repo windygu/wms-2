@@ -17,7 +17,7 @@ public class HibernateShipmentReceiptMvoEventStore extends AbstractHibernateEven
     @Override
     protected Serializable getEventId(EventStoreAggregateId eventStoreAggregateId, long version)
     {
-        return new ShipmentReceiptMvoStateEventId((ShipmentReceiptId) eventStoreAggregateId.getId(), version);
+        return new ShipmentReceiptMvoEventId((ShipmentReceiptId) eventStoreAggregateId.getId(), version);
     }
 
     @Override

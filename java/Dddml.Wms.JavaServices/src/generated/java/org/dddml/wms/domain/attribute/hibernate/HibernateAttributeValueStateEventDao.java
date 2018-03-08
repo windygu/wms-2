@@ -34,12 +34,12 @@ public class HibernateAttributeValueStateEventDao implements AttributeValueState
 
     @Transactional(readOnly = true)
     @Override
-    public Iterable<AttributeValueStateEvent> findByAttributeStateEventId(AttributeStateEventId attributeStateEventId)
+    public Iterable<AttributeValueStateEvent> findByAttributeEventId(AttributeEventId attributeEventId)
     {
         Criteria criteria = getCurrentSession().createCriteria(AbstractAttributeValueStateEvent.class);
         Junction partIdCondition = Restrictions.conjunction()
-            .add(Restrictions.eq("stateEventId.attributeId", attributeStateEventId.getAttributeId()))
-            .add(Restrictions.eq("stateEventId.attributeVersion", attributeStateEventId.getVersion()))
+            .add(Restrictions.eq("stateEventId.attributeId", attributeEventId.getAttributeId()))
+            .add(Restrictions.eq("stateEventId.attributeVersion", attributeEventId.getVersion()))
             ;
         return criteria.add(partIdCondition).list();
     }

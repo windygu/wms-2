@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.UomConversion
 	public abstract class UomConversionStateEventDtoBase : IStateEventDto, IUomConversionStateCreated, IUomConversionStateMergePatched, IUomConversionStateDeleted
 	{
 
-        private UomConversionStateEventIdDto _stateEventId;
+        private UomConversionEventIdDto _stateEventId;
 
-		protected internal virtual UomConversionStateEventIdDto StateEventId 
+		protected internal virtual UomConversionEventIdDto StateEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new UomConversionStateEventIdDto(); }
+                if (_stateEventId == null) { _stateEventId = new UomConversionEventIdDto(); }
                 return _stateEventId;
             }
             set
@@ -60,10 +60,10 @@ namespace Dddml.Wms.Domain.UomConversion
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		UomConversionStateEventId IGlobalIdentity<UomConversionStateEventId>.GlobalId {
+		UomConversionEventId IGlobalIdentity<UomConversionEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToUomConversionStateEventId();
+				return this.StateEventId.ToUomConversionEventId();
 			}
 		}
 
@@ -195,16 +195,16 @@ namespace Dddml.Wms.Domain.UomConversion
 		}
 
 
-        UomConversionStateEventId IUomConversionStateEvent.StateEventId
+        UomConversionEventId IUomConversionStateEvent.StateEventId
         {
-            get { return this.StateEventId.ToUomConversionStateEventId(); }
+            get { return this.StateEventId.ToUomConversionEventId(); }
         }
 
         protected UomConversionStateEventDtoBase()
         {
         }
 
-        protected UomConversionStateEventDtoBase(UomConversionStateEventIdDto stateEventId)
+        protected UomConversionStateEventDtoBase(UomConversionEventIdDto stateEventId)
         {
             this.StateEventId = stateEventId;
         }

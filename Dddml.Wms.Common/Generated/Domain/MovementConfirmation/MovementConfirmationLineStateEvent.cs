@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 	public abstract class MovementConfirmationLineStateEventBase : IMovementConfirmationLineStateEvent
 	{
 
-		public virtual MovementConfirmationLineStateEventId StateEventId { get; set; }
+		public virtual MovementConfirmationLineEventId StateEventId { get; set; }
 
         public virtual string LineNumber
         {
@@ -47,7 +47,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		MovementConfirmationLineStateEventId IGlobalIdentity<MovementConfirmationLineStateEventId>.GlobalId {
+		MovementConfirmationLineEventId IGlobalIdentity<MovementConfirmationLineEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -93,7 +93,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
         {
         }
 
-        protected MovementConfirmationLineStateEventBase(MovementConfirmationLineStateEventId stateEventId)
+        protected MovementConfirmationLineStateEventBase(MovementConfirmationLineEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -110,11 +110,11 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
 	public class MovementConfirmationLineStateCreated : MovementConfirmationLineStateEventBase, IMovementConfirmationLineStateCreated
 	{
-		public MovementConfirmationLineStateCreated () : this(new MovementConfirmationLineStateEventId())
+		public MovementConfirmationLineStateCreated () : this(new MovementConfirmationLineEventId())
 		{
 		}
 
-		public MovementConfirmationLineStateCreated (MovementConfirmationLineStateEventId stateEventId) : base(stateEventId)
+		public MovementConfirmationLineStateCreated (MovementConfirmationLineEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -150,7 +150,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 		{
 		}
 
-		public MovementConfirmationLineStateMergePatched (MovementConfirmationLineStateEventId stateEventId) : base(stateEventId)
+		public MovementConfirmationLineStateMergePatched (MovementConfirmationLineEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -169,7 +169,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 		{
 		}
 
-		public MovementConfirmationLineStateRemoved (MovementConfirmationLineStateEventId stateEventId) : base(stateEventId)
+		public MovementConfirmationLineStateRemoved (MovementConfirmationLineEventId stateEventId) : base(stateEventId)
 		{
 		}
 

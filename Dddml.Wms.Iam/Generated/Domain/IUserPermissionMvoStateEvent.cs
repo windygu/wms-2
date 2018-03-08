@@ -12,9 +12,9 @@ using Dddml.Wms.Domain.User;
 
 namespace Dddml.Wms.Domain.UserPermissionMvo
 {
-	public interface IUserPermissionMvoStateEvent : IEvent, IStateEventDto, IGlobalIdentity<UserPermissionMvoStateEventId>, ICreated<string>
+	public interface IUserPermissionMvoStateEvent : IEvent, IStateEventDto, IGlobalIdentity<UserPermissionMvoEventId>, ICreated<string>
 	{
-		UserPermissionMvoStateEventId StateEventId { get; }
+		UserPermissionMvoEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

@@ -39,12 +39,12 @@ namespace Dddml.Wms.Domain.MovementConfirmation.NHibernate
         }
 
         [Transaction(ReadOnly = true)]
-        public IEnumerable<IMovementConfirmationLineStateEvent> FindByMovementConfirmationStateEventId(MovementConfirmationStateEventId movementConfirmationStateEventId)
+        public IEnumerable<IMovementConfirmationLineStateEvent> FindByMovementConfirmationEventId(MovementConfirmationEventId movementConfirmationEventId)
         {
             var criteria = CurrentSession.CreateCriteria<MovementConfirmationLineStateEventBase>();
             var partIdCondition = Restrictions.Conjunction()
-                .Add(Restrictions.Eq("StateEventId.MovementConfirmationDocumentNumber", movementConfirmationStateEventId.DocumentNumber))
-                .Add(Restrictions.Eq("StateEventId.MovementConfirmationVersion", movementConfirmationStateEventId.Version))
+                .Add(Restrictions.Eq("StateEventId.MovementConfirmationDocumentNumber", movementConfirmationEventId.DocumentNumber))
+                .Add(Restrictions.Eq("StateEventId.MovementConfirmationVersion", movementConfirmationEventId.Version))
                 ;
 
             return criteria.Add(partIdCondition).List<MovementConfirmationLineStateEventBase>();

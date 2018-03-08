@@ -22,7 +22,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo.NHibernate
 	{
 		public override object GetEventId(IEventStoreAggregateId eventStoreAggregateId, long version)
 		{
-			return new InOutLineMvoStateEventId((InOutLineId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
+			return new InOutLineMvoEventId((InOutLineId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
 		public override Type GetSupportedStateEventType()

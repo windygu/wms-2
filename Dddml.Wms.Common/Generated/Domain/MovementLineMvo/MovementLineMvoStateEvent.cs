@@ -16,7 +16,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 	public abstract class MovementLineMvoStateEventBase : IMovementLineMvoStateEvent
 	{
 
-		public virtual MovementLineMvoStateEventId StateEventId { get; set; }
+		public virtual MovementLineMvoEventId StateEventId { get; set; }
 
         public virtual MovementLineId MovementLineId
         {
@@ -102,7 +102,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		MovementLineMvoStateEventId IGlobalIdentity<MovementLineMvoStateEventId>.GlobalId {
+		MovementLineMvoEventId IGlobalIdentity<MovementLineMvoEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -146,7 +146,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
         {
         }
 
-        protected MovementLineMvoStateEventBase(MovementLineMvoStateEventId stateEventId)
+        protected MovementLineMvoStateEventBase(MovementLineMvoEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -163,11 +163,11 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
 	public class MovementLineMvoStateCreated : MovementLineMvoStateEventBase, IMovementLineMvoStateCreated
 	{
-		public MovementLineMvoStateCreated () : this(new MovementLineMvoStateEventId())
+		public MovementLineMvoStateCreated () : this(new MovementLineMvoEventId())
 		{
 		}
 
-		public MovementLineMvoStateCreated (MovementLineMvoStateEventId stateEventId) : base(stateEventId)
+		public MovementLineMvoStateCreated (MovementLineMvoEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -257,7 +257,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 		{
 		}
 
-		public MovementLineMvoStateMergePatched (MovementLineMvoStateEventId stateEventId) : base(stateEventId)
+		public MovementLineMvoStateMergePatched (MovementLineMvoEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -276,7 +276,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 		{
 		}
 
-		public MovementLineMvoStateDeleted (MovementLineMvoStateEventId stateEventId) : base(stateEventId)
+		public MovementLineMvoStateDeleted (MovementLineMvoEventId stateEventId) : base(stateEventId)
 		{
 		}
 

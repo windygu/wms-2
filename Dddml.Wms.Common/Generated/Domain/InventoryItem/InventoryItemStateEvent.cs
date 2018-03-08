@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 	public abstract class InventoryItemStateEventBase : IInventoryItemStateEvent
 	{
 
-		public virtual InventoryItemStateEventId StateEventId { get; set; }
+		public virtual InventoryItemEventId StateEventId { get; set; }
 
         public virtual InventoryItemId InventoryItemId
         {
@@ -41,7 +41,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		InventoryItemStateEventId IGlobalIdentity<InventoryItemStateEventId>.GlobalId {
+		InventoryItemEventId IGlobalIdentity<InventoryItemEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -85,7 +85,7 @@ namespace Dddml.Wms.Domain.InventoryItem
         {
         }
 
-        protected InventoryItemStateEventBase(InventoryItemStateEventId stateEventId)
+        protected InventoryItemStateEventBase(InventoryItemEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -95,9 +95,9 @@ namespace Dddml.Wms.Domain.InventoryItem
 			get { return ApplicationContext.Current["InventoryItemEntryStateEventDao"] as IInventoryItemEntryStateEventDao; }
 		}
 
-        protected InventoryItemEntryStateEventId NewInventoryItemEntryStateEventId(long entrySeqId)
+        protected InventoryItemEntryEventId NewInventoryItemEntryEventId(long entrySeqId)
         {
-            var stateEventId = new InventoryItemEntryStateEventId(this.StateEventId.InventoryItemId, entrySeqId, this.StateEventId.Version);
+            var stateEventId = new InventoryItemEntryEventId(this.StateEventId.InventoryItemId, entrySeqId, this.StateEventId.Version);
             return stateEventId;
         }
 
@@ -129,15 +129,15 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 	public class InventoryItemStateCreated : InventoryItemStateEventBase, IInventoryItemStateCreated, ISaveable
 	{
-		public InventoryItemStateCreated () : this(new InventoryItemStateEventId())
+		public InventoryItemStateCreated () : this(new InventoryItemEventId())
 		{
 		}
 
-		public InventoryItemStateCreated (InventoryItemStateEventId stateEventId) : base(stateEventId)
+		public InventoryItemStateCreated (InventoryItemEventId stateEventId) : base(stateEventId)
 		{
 		}
 
-		private Dictionary<InventoryItemEntryStateEventId, IInventoryItemEntryStateCreated> _inventoryItemEntryEvents = new Dictionary<InventoryItemEntryStateEventId, IInventoryItemEntryStateCreated>();
+		private Dictionary<InventoryItemEntryEventId, IInventoryItemEntryStateCreated> _inventoryItemEntryEvents = new Dictionary<InventoryItemEntryEventId, IInventoryItemEntryStateCreated>();
         
         private IEnumerable<IInventoryItemEntryStateCreated> _readOnlyInventoryItemEntryEvents;
 
@@ -154,7 +154,7 @@ namespace Dddml.Wms.Domain.InventoryItem
                     if (_readOnlyInventoryItemEntryEvents != null) { return _readOnlyInventoryItemEntryEvents; }
                     var eventDao = InventoryItemEntryStateEventDao;
                     var eL = new List<IInventoryItemEntryStateCreated>();
-                    foreach (var e in eventDao.FindByInventoryItemStateEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByInventoryItemEventId(this.StateEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IInventoryItemEntryStateCreated)e);
@@ -183,7 +183,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 
         public virtual IInventoryItemEntryStateCreated NewInventoryItemEntryStateCreated(long entrySeqId)
         {
-            var stateEvent = new InventoryItemEntryStateCreated(NewInventoryItemEntryStateEventId(entrySeqId));
+            var stateEvent = new InventoryItemEntryStateCreated(NewInventoryItemEntryEventId(entrySeqId));
             return stateEvent;
         }
 
@@ -219,11 +219,11 @@ namespace Dddml.Wms.Domain.InventoryItem
 		{
 		}
 
-		public InventoryItemStateMergePatched (InventoryItemStateEventId stateEventId) : base(stateEventId)
+		public InventoryItemStateMergePatched (InventoryItemEventId stateEventId) : base(stateEventId)
 		{
 		}
 
-		private Dictionary<InventoryItemEntryStateEventId, IInventoryItemEntryStateEvent> _inventoryItemEntryEvents = new Dictionary<InventoryItemEntryStateEventId, IInventoryItemEntryStateEvent>();
+		private Dictionary<InventoryItemEntryEventId, IInventoryItemEntryStateEvent> _inventoryItemEntryEvents = new Dictionary<InventoryItemEntryEventId, IInventoryItemEntryStateEvent>();
 
         private IEnumerable<IInventoryItemEntryStateEvent> _readOnlyInventoryItemEntryEvents;
         
@@ -240,7 +240,7 @@ namespace Dddml.Wms.Domain.InventoryItem
                     if (_readOnlyInventoryItemEntryEvents != null) { return _readOnlyInventoryItemEntryEvents; }
                     var eventDao = InventoryItemEntryStateEventDao;
                     var eL = new List<IInventoryItemEntryStateEvent>();
-                    foreach (var e in eventDao.FindByInventoryItemStateEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByInventoryItemEventId(this.StateEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IInventoryItemEntryStateEvent)e);
@@ -269,7 +269,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 
         public virtual IInventoryItemEntryStateCreated NewInventoryItemEntryStateCreated(long entrySeqId)
         {
-            var stateEvent = new InventoryItemEntryStateCreated(NewInventoryItemEntryStateEventId(entrySeqId));
+            var stateEvent = new InventoryItemEntryStateCreated(NewInventoryItemEntryEventId(entrySeqId));
             return stateEvent;
         }
 

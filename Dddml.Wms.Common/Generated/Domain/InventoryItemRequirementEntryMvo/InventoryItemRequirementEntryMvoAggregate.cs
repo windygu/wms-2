@@ -96,7 +96,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 
         protected virtual IInventoryItemRequirementEntryMvoStateCreated Map(ICreateInventoryItemRequirementEntryMvo c)
         {
-			var stateEventId = new InventoryItemRequirementEntryMvoStateEventId(c.InventoryItemRequirementEntryId, c.InventoryItemRequirementVersion);
+			var stateEventId = new InventoryItemRequirementEntryMvoEventId(c.InventoryItemRequirementEntryId, c.InventoryItemRequirementVersion);
             IInventoryItemRequirementEntryMvoStateCreated e = NewInventoryItemRequirementEntryMvoStateCreated(stateEventId);
 		
             e.Quantity = c.Quantity;
@@ -120,7 +120,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 
         protected virtual IInventoryItemRequirementEntryMvoStateMergePatched Map(IMergePatchInventoryItemRequirementEntryMvo c)
         {
-			var stateEventId = new InventoryItemRequirementEntryMvoStateEventId(c.InventoryItemRequirementEntryId, c.InventoryItemRequirementVersion);
+			var stateEventId = new InventoryItemRequirementEntryMvoEventId(c.InventoryItemRequirementEntryId, c.InventoryItemRequirementVersion);
             IInventoryItemRequirementEntryMvoStateMergePatched e = NewInventoryItemRequirementEntryMvoStateMergePatched(stateEventId);
 
             e.Quantity = c.Quantity;
@@ -168,7 +168,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 
         protected InventoryItemRequirementEntryMvoStateCreated NewInventoryItemRequirementEntryMvoStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new InventoryItemRequirementEntryMvoStateEventId(_state.InventoryItemRequirementEntryId, version);
+            var stateEventId = new InventoryItemRequirementEntryMvoEventId(_state.InventoryItemRequirementEntryId, version);
             var e = NewInventoryItemRequirementEntryMvoStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -181,7 +181,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 
         protected InventoryItemRequirementEntryMvoStateMergePatched NewInventoryItemRequirementEntryMvoStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new InventoryItemRequirementEntryMvoStateEventId(_state.InventoryItemRequirementEntryId, version);
+            var stateEventId = new InventoryItemRequirementEntryMvoEventId(_state.InventoryItemRequirementEntryId, version);
             var e = NewInventoryItemRequirementEntryMvoStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -195,12 +195,12 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 
 ////////////////////////
 
-		private InventoryItemRequirementEntryMvoStateCreated NewInventoryItemRequirementEntryMvoStateCreated(InventoryItemRequirementEntryMvoStateEventId stateEventId)
+		private InventoryItemRequirementEntryMvoStateCreated NewInventoryItemRequirementEntryMvoStateCreated(InventoryItemRequirementEntryMvoEventId stateEventId)
 		{
 			return new InventoryItemRequirementEntryMvoStateCreated(stateEventId);			
 		}
 
-        private InventoryItemRequirementEntryMvoStateMergePatched NewInventoryItemRequirementEntryMvoStateMergePatched(InventoryItemRequirementEntryMvoStateEventId stateEventId)
+        private InventoryItemRequirementEntryMvoStateMergePatched NewInventoryItemRequirementEntryMvoStateMergePatched(InventoryItemRequirementEntryMvoEventId stateEventId)
 		{
 			return new InventoryItemRequirementEntryMvoStateMergePatched(stateEventId);
 		}

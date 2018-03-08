@@ -8,7 +8,7 @@
   
   <class name="AbstractOrderShipmentStateEvent" table="OrderShipmentStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="stateEventId" class="org.dddml.wms.domain.ordershipment.OrderShipmentStateEventId">
+	<composite-id name="stateEventId" class="org.dddml.wms.domain.ordershipment.OrderShipmentEventId">
 		<key-property name="orderShipmentIdOrderId" ><column name="OrderShipmentIdOrderId" sql-type="VARCHAR(20)" /></key-property>
 		<key-property name="orderShipmentIdOrderItemSeqId" ><column name="OrderShipmentIdOrderItemSeqId" sql-type="VARCHAR(20)" /></key-property>
 		<key-property name="orderShipmentIdShipmentId" ><column name="OrderShipmentIdShipmentId" sql-type="VARCHAR(20)" /></key-property>

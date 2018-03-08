@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.Locator
 	public abstract class LocatorStateEventBase : ILocatorStateEvent
 	{
 
-		public virtual LocatorStateEventId StateEventId { get; set; }
+		public virtual LocatorEventId StateEventId { get; set; }
 
         public virtual string LocatorId
         {
@@ -51,7 +51,7 @@ namespace Dddml.Wms.Domain.Locator
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		LocatorStateEventId IGlobalIdentity<LocatorStateEventId>.GlobalId {
+		LocatorEventId IGlobalIdentity<LocatorEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -95,7 +95,7 @@ namespace Dddml.Wms.Domain.Locator
         {
         }
 
-        protected LocatorStateEventBase(LocatorStateEventId stateEventId)
+        protected LocatorStateEventBase(LocatorEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -112,11 +112,11 @@ namespace Dddml.Wms.Domain.Locator
 
 	public class LocatorStateCreated : LocatorStateEventBase, ILocatorStateCreated
 	{
-		public LocatorStateCreated () : this(new LocatorStateEventId())
+		public LocatorStateCreated () : this(new LocatorEventId())
 		{
 		}
 
-		public LocatorStateCreated (LocatorStateEventId stateEventId) : base(stateEventId)
+		public LocatorStateCreated (LocatorEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -156,7 +156,7 @@ namespace Dddml.Wms.Domain.Locator
 		{
 		}
 
-		public LocatorStateMergePatched (LocatorStateEventId stateEventId) : base(stateEventId)
+		public LocatorStateMergePatched (LocatorEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -175,7 +175,7 @@ namespace Dddml.Wms.Domain.Locator
 		{
 		}
 
-		public LocatorStateDeleted (LocatorStateEventId stateEventId) : base(stateEventId)
+		public LocatorStateDeleted (LocatorEventId stateEventId) : base(stateEventId)
 		{
 		}
 

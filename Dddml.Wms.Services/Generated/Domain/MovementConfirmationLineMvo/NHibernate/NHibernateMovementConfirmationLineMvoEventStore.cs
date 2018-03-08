@@ -22,7 +22,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo.NHibernate
 	{
 		public override object GetEventId(IEventStoreAggregateId eventStoreAggregateId, long version)
 		{
-			return new MovementConfirmationLineMvoStateEventId((MovementConfirmationLineId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
+			return new MovementConfirmationLineMvoEventId((MovementConfirmationLineId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
 		public override Type GetSupportedStateEventType()

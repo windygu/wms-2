@@ -104,7 +104,7 @@ namespace Dddml.Wms.Domain.Audience
 
         protected virtual IAudienceStateCreated Map(ICreateAudience c)
         {
-			var stateEventId = new AudienceStateEventId(c.ClientId, c.Version);
+			var stateEventId = new AudienceEventId(c.ClientId, c.Version);
             IAudienceStateCreated e = NewAudienceStateCreated(stateEventId);
 		
             e.Name = c.Name;
@@ -123,7 +123,7 @@ namespace Dddml.Wms.Domain.Audience
 
         protected virtual IAudienceStateMergePatched Map(IMergePatchAudience c)
         {
-			var stateEventId = new AudienceStateEventId(c.ClientId, c.Version);
+			var stateEventId = new AudienceEventId(c.ClientId, c.Version);
             IAudienceStateMergePatched e = NewAudienceStateMergePatched(stateEventId);
 
             e.Name = c.Name;
@@ -147,7 +147,7 @@ namespace Dddml.Wms.Domain.Audience
 
         protected virtual IAudienceStateDeleted Map(IDeleteAudience c)
         {
-			var stateEventId = new AudienceStateEventId(c.ClientId, c.Version);
+			var stateEventId = new AudienceEventId(c.ClientId, c.Version);
             IAudienceStateDeleted e = NewAudienceStateDeleted(stateEventId);
 			
             e.CommandId = c.CommandId;
@@ -176,7 +176,7 @@ namespace Dddml.Wms.Domain.Audience
 
         protected AudienceStateCreated NewAudienceStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new AudienceStateEventId(_state.ClientId, version);
+            var stateEventId = new AudienceEventId(_state.ClientId, version);
             var e = NewAudienceStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -189,7 +189,7 @@ namespace Dddml.Wms.Domain.Audience
 
         protected AudienceStateMergePatched NewAudienceStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new AudienceStateEventId(_state.ClientId, version);
+            var stateEventId = new AudienceEventId(_state.ClientId, version);
             var e = NewAudienceStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -203,7 +203,7 @@ namespace Dddml.Wms.Domain.Audience
 
         protected AudienceStateDeleted NewAudienceStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new AudienceStateEventId(_state.ClientId, version);
+            var stateEventId = new AudienceEventId(_state.ClientId, version);
             var e = NewAudienceStateDeleted(stateEventId);
 
             e.CommandId = commandId;
@@ -216,17 +216,17 @@ namespace Dddml.Wms.Domain.Audience
 
 ////////////////////////
 
-		private AudienceStateCreated NewAudienceStateCreated(AudienceStateEventId stateEventId)
+		private AudienceStateCreated NewAudienceStateCreated(AudienceEventId stateEventId)
 		{
 			return new AudienceStateCreated(stateEventId);			
 		}
 
-        private AudienceStateMergePatched NewAudienceStateMergePatched(AudienceStateEventId stateEventId)
+        private AudienceStateMergePatched NewAudienceStateMergePatched(AudienceEventId stateEventId)
 		{
 			return new AudienceStateMergePatched(stateEventId);
 		}
 
-        private AudienceStateDeleted NewAudienceStateDeleted(AudienceStateEventId stateEventId)
+        private AudienceStateDeleted NewAudienceStateDeleted(AudienceEventId stateEventId)
 		{
 			return new AudienceStateDeleted(stateEventId);
 		}

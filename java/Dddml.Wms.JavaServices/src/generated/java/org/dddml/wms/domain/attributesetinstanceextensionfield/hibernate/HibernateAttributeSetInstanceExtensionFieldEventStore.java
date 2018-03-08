@@ -16,7 +16,7 @@ public class HibernateAttributeSetInstanceExtensionFieldEventStore extends Abstr
     @Override
     protected Serializable getEventId(EventStoreAggregateId eventStoreAggregateId, long version)
     {
-        return new AttributeSetInstanceExtensionFieldStateEventId((String) eventStoreAggregateId.getId(), version);
+        return new AttributeSetInstanceExtensionFieldEventId((String) eventStoreAggregateId.getId(), version);
     }
 
     @Override

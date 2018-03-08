@@ -104,7 +104,7 @@ namespace Dddml.Wms.Domain.RejectionReason
 
         protected virtual IRejectionReasonStateCreated Map(ICreateRejectionReason c)
         {
-			var stateEventId = new RejectionReasonStateEventId(c.RejectionReasonId, c.Version);
+			var stateEventId = new RejectionReasonEventId(c.RejectionReasonId, c.Version);
             IRejectionReasonStateCreated e = NewRejectionReasonStateCreated(stateEventId);
 		
             e.Description = c.Description;
@@ -122,7 +122,7 @@ namespace Dddml.Wms.Domain.RejectionReason
 
         protected virtual IRejectionReasonStateMergePatched Map(IMergePatchRejectionReason c)
         {
-			var stateEventId = new RejectionReasonStateEventId(c.RejectionReasonId, c.Version);
+			var stateEventId = new RejectionReasonEventId(c.RejectionReasonId, c.Version);
             IRejectionReasonStateMergePatched e = NewRejectionReasonStateMergePatched(stateEventId);
 
             e.Description = c.Description;
@@ -144,7 +144,7 @@ namespace Dddml.Wms.Domain.RejectionReason
 
         protected virtual IRejectionReasonStateDeleted Map(IDeleteRejectionReason c)
         {
-			var stateEventId = new RejectionReasonStateEventId(c.RejectionReasonId, c.Version);
+			var stateEventId = new RejectionReasonEventId(c.RejectionReasonId, c.Version);
             IRejectionReasonStateDeleted e = NewRejectionReasonStateDeleted(stateEventId);
 			
             e.CommandId = c.CommandId;
@@ -173,7 +173,7 @@ namespace Dddml.Wms.Domain.RejectionReason
 
         protected RejectionReasonStateCreated NewRejectionReasonStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new RejectionReasonStateEventId(_state.RejectionReasonId, version);
+            var stateEventId = new RejectionReasonEventId(_state.RejectionReasonId, version);
             var e = NewRejectionReasonStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -186,7 +186,7 @@ namespace Dddml.Wms.Domain.RejectionReason
 
         protected RejectionReasonStateMergePatched NewRejectionReasonStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new RejectionReasonStateEventId(_state.RejectionReasonId, version);
+            var stateEventId = new RejectionReasonEventId(_state.RejectionReasonId, version);
             var e = NewRejectionReasonStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -200,7 +200,7 @@ namespace Dddml.Wms.Domain.RejectionReason
 
         protected RejectionReasonStateDeleted NewRejectionReasonStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new RejectionReasonStateEventId(_state.RejectionReasonId, version);
+            var stateEventId = new RejectionReasonEventId(_state.RejectionReasonId, version);
             var e = NewRejectionReasonStateDeleted(stateEventId);
 
             e.CommandId = commandId;
@@ -213,17 +213,17 @@ namespace Dddml.Wms.Domain.RejectionReason
 
 ////////////////////////
 
-		private RejectionReasonStateCreated NewRejectionReasonStateCreated(RejectionReasonStateEventId stateEventId)
+		private RejectionReasonStateCreated NewRejectionReasonStateCreated(RejectionReasonEventId stateEventId)
 		{
 			return new RejectionReasonStateCreated(stateEventId);			
 		}
 
-        private RejectionReasonStateMergePatched NewRejectionReasonStateMergePatched(RejectionReasonStateEventId stateEventId)
+        private RejectionReasonStateMergePatched NewRejectionReasonStateMergePatched(RejectionReasonEventId stateEventId)
 		{
 			return new RejectionReasonStateMergePatched(stateEventId);
 		}
 
-        private RejectionReasonStateDeleted NewRejectionReasonStateDeleted(RejectionReasonStateEventId stateEventId)
+        private RejectionReasonStateDeleted NewRejectionReasonStateDeleted(RejectionReasonEventId stateEventId)
 		{
 			return new RejectionReasonStateDeleted(stateEventId);
 		}

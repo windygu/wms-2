@@ -94,7 +94,7 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 
         protected virtual IProductCategoryMemberStateCreated Map(ICreateProductCategoryMember c)
         {
-			var stateEventId = new ProductCategoryMemberStateEventId(c.ProductCategoryMemberId, c.Version);
+			var stateEventId = new ProductCategoryMemberEventId(c.ProductCategoryMemberId, c.Version);
             IProductCategoryMemberStateCreated e = NewProductCategoryMemberStateCreated(stateEventId);
 		
             e.ThruDate = c.ThruDate;
@@ -115,7 +115,7 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 
         protected virtual IProductCategoryMemberStateMergePatched Map(IMergePatchProductCategoryMember c)
         {
-			var stateEventId = new ProductCategoryMemberStateEventId(c.ProductCategoryMemberId, c.Version);
+			var stateEventId = new ProductCategoryMemberEventId(c.ProductCategoryMemberId, c.Version);
             IProductCategoryMemberStateMergePatched e = NewProductCategoryMemberStateMergePatched(stateEventId);
 
             e.ThruDate = c.ThruDate;
@@ -157,7 +157,7 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 
         protected ProductCategoryMemberStateCreated NewProductCategoryMemberStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new ProductCategoryMemberStateEventId(_state.ProductCategoryMemberId, version);
+            var stateEventId = new ProductCategoryMemberEventId(_state.ProductCategoryMemberId, version);
             var e = NewProductCategoryMemberStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -170,7 +170,7 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 
         protected ProductCategoryMemberStateMergePatched NewProductCategoryMemberStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new ProductCategoryMemberStateEventId(_state.ProductCategoryMemberId, version);
+            var stateEventId = new ProductCategoryMemberEventId(_state.ProductCategoryMemberId, version);
             var e = NewProductCategoryMemberStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -184,12 +184,12 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 
 ////////////////////////
 
-		private ProductCategoryMemberStateCreated NewProductCategoryMemberStateCreated(ProductCategoryMemberStateEventId stateEventId)
+		private ProductCategoryMemberStateCreated NewProductCategoryMemberStateCreated(ProductCategoryMemberEventId stateEventId)
 		{
 			return new ProductCategoryMemberStateCreated(stateEventId);			
 		}
 
-        private ProductCategoryMemberStateMergePatched NewProductCategoryMemberStateMergePatched(ProductCategoryMemberStateEventId stateEventId)
+        private ProductCategoryMemberStateMergePatched NewProductCategoryMemberStateMergePatched(ProductCategoryMemberEventId stateEventId)
 		{
 			return new ProductCategoryMemberStateMergePatched(stateEventId);
 		}

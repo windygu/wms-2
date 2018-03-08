@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
         public virtual InventoryItemRequirementStateCreatedDto ToInventoryItemRequirementStateCreatedDto(IInventoryItemRequirementStateCreated e)
         {
             var dto = new InventoryItemRequirementStateCreatedDto();
-            dto.StateEventId = new InventoryItemRequirementStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new InventoryItemRequirementEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -54,7 +54,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
         public virtual InventoryItemRequirementStateMergePatchedDto ToInventoryItemRequirementStateMergePatchedDto(IInventoryItemRequirementStateMergePatched e)
         {
             var dto = new InventoryItemRequirementStateMergePatchedDto();
-            dto.StateEventId = new InventoryItemRequirementStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new InventoryItemRequirementEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

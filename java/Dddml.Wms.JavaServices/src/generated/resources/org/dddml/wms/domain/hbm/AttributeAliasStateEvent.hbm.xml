@@ -8,7 +8,7 @@
   
   <class name="AbstractAttributeAliasStateEvent" table="AttributeAliasStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="stateEventId" class="org.dddml.wms.domain.attribute.AttributeAliasStateEventId">
+	<composite-id name="stateEventId" class="org.dddml.wms.domain.attribute.AttributeAliasEventId">
 		<key-property name="attributeId" ><column name="AttributeAliasIdAttributeId" length="50" /></key-property>
 		<key-property name="code" ><column name="AttributeAliasIdCode" length="50" /></key-property>
 		<key-property name="attributeVersion" ></key-property>

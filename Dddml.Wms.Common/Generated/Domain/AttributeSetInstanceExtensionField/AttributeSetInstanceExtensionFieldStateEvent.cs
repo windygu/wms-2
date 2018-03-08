@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionField
 	public abstract class AttributeSetInstanceExtensionFieldStateEventBase : IAttributeSetInstanceExtensionFieldStateEvent
 	{
 
-		public virtual AttributeSetInstanceExtensionFieldStateEventId StateEventId { get; set; }
+		public virtual AttributeSetInstanceExtensionFieldEventId StateEventId { get; set; }
 
         public virtual string Name
         {
@@ -43,7 +43,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionField
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		AttributeSetInstanceExtensionFieldStateEventId IGlobalIdentity<AttributeSetInstanceExtensionFieldStateEventId>.GlobalId {
+		AttributeSetInstanceExtensionFieldEventId IGlobalIdentity<AttributeSetInstanceExtensionFieldEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -87,7 +87,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionField
         {
         }
 
-        protected AttributeSetInstanceExtensionFieldStateEventBase(AttributeSetInstanceExtensionFieldStateEventId stateEventId)
+        protected AttributeSetInstanceExtensionFieldStateEventBase(AttributeSetInstanceExtensionFieldEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -104,11 +104,11 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionField
 
 	public class AttributeSetInstanceExtensionFieldStateCreated : AttributeSetInstanceExtensionFieldStateEventBase, IAttributeSetInstanceExtensionFieldStateCreated
 	{
-		public AttributeSetInstanceExtensionFieldStateCreated () : this(new AttributeSetInstanceExtensionFieldStateEventId())
+		public AttributeSetInstanceExtensionFieldStateCreated () : this(new AttributeSetInstanceExtensionFieldEventId())
 		{
 		}
 
-		public AttributeSetInstanceExtensionFieldStateCreated (AttributeSetInstanceExtensionFieldStateEventId stateEventId) : base(stateEventId)
+		public AttributeSetInstanceExtensionFieldStateCreated (AttributeSetInstanceExtensionFieldEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -140,7 +140,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionField
 		{
 		}
 
-		public AttributeSetInstanceExtensionFieldStateMergePatched (AttributeSetInstanceExtensionFieldStateEventId stateEventId) : base(stateEventId)
+		public AttributeSetInstanceExtensionFieldStateMergePatched (AttributeSetInstanceExtensionFieldEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -159,7 +159,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionField
 		{
 		}
 
-		public AttributeSetInstanceExtensionFieldStateDeleted (AttributeSetInstanceExtensionFieldStateEventId stateEventId) : base(stateEventId)
+		public AttributeSetInstanceExtensionFieldStateDeleted (AttributeSetInstanceExtensionFieldEventId stateEventId) : base(stateEventId)
 		{
 		}
 

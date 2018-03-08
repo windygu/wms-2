@@ -334,7 +334,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
             id.Append("[").Append("AttributeSetInstance|");
 
             var stateEntityId = this.AttributeSetInstanceId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.AttributeSetInstanceId; // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+            var eventEntityId = stateEvent.StateEventId.AttributeSetInstanceId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);

@@ -7,15 +7,15 @@ import org.dddml.wms.domain.AbstractStateEvent;
 public class OrderShipmentStateEventDto extends AbstractStateEvent
 {
 
-    private OrderShipmentStateEventId stateEventId;
+    private OrderShipmentEventId stateEventId;
 
-    OrderShipmentStateEventId getStateEventId() {
-        if (stateEventId == null) { stateEventId = new OrderShipmentStateEventId(); }
-        return this.stateEventId;
+    OrderShipmentEventId getStateEventId() {
+        if (stateEventId == null) { stateEventId = new OrderShipmentEventId(); }
+        return stateEventId;
     }
 
-    void setStateEventId(OrderShipmentStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    void setStateEventId(OrderShipmentEventId eventId) {
+        this.stateEventId = eventId;
     }
 
     public OrderShipmentId getOrderShipmentId() {

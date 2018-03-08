@@ -17,7 +17,7 @@ public class HibernateInventoryPostingRuleEventStore extends AbstractHibernateEv
     @Override
     protected Serializable getEventId(EventStoreAggregateId eventStoreAggregateId, long version)
     {
-        return new InventoryPostingRuleStateEventId((String) eventStoreAggregateId.getId(), version);
+        return new InventoryPostingRuleEventId((String) eventStoreAggregateId.getId(), version);
     }
 
     @Override

@@ -11,9 +11,9 @@ using Dddml.Wms.Domain.Order;
 
 namespace Dddml.Wms.Domain.Order
 {
-	public interface IOrderItemStateEvent : IEvent, IStateEventDto, IGlobalIdentity<OrderItemStateEventId>, ICreated<string>
+	public interface IOrderItemStateEvent : IEvent, IStateEventDto, IGlobalIdentity<OrderItemEventId>, ICreated<string>
 	{
-		OrderItemStateEventId StateEventId { get; }
+		OrderItemEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

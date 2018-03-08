@@ -8,15 +8,15 @@ import org.dddml.wms.domain.AbstractStateEvent;
 public class MovementConfirmationLineStateEventDto extends AbstractStateEvent
 {
 
-    private MovementConfirmationLineStateEventId stateEventId;
+    private MovementConfirmationLineEventId stateEventId;
 
-    MovementConfirmationLineStateEventId getStateEventId() {
-        if (stateEventId == null) { stateEventId = new MovementConfirmationLineStateEventId(); }
-        return this.stateEventId;
+    MovementConfirmationLineEventId getStateEventId() {
+        if (stateEventId == null) { stateEventId = new MovementConfirmationLineEventId(); }
+        return stateEventId;
     }
 
-    void setStateEventId(MovementConfirmationLineStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    void setStateEventId(MovementConfirmationLineEventId eventId) {
+        this.stateEventId = eventId;
     }
 
     public String getLineNumber() {

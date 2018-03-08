@@ -16,7 +16,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 	public abstract class PhysicalInventoryStateEventBase : IPhysicalInventoryStateEvent
 	{
 
-		public virtual PhysicalInventoryStateEventId StateEventId { get; set; }
+		public virtual PhysicalInventoryEventId StateEventId { get; set; }
 
         public virtual string DocumentNumber
         {
@@ -62,7 +62,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		PhysicalInventoryStateEventId IGlobalIdentity<PhysicalInventoryStateEventId>.GlobalId {
+		PhysicalInventoryEventId IGlobalIdentity<PhysicalInventoryEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -106,7 +106,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
         {
         }
 
-        protected PhysicalInventoryStateEventBase(PhysicalInventoryStateEventId stateEventId)
+        protected PhysicalInventoryStateEventBase(PhysicalInventoryEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -116,9 +116,9 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 			get { return ApplicationContext.Current["PhysicalInventoryLineStateEventDao"] as IPhysicalInventoryLineStateEventDao; }
 		}
 
-        protected PhysicalInventoryLineStateEventId NewPhysicalInventoryLineStateEventId(InventoryItemId inventoryItemId)
+        protected PhysicalInventoryLineEventId NewPhysicalInventoryLineEventId(InventoryItemId inventoryItemId)
         {
-            var stateEventId = new PhysicalInventoryLineStateEventId(this.StateEventId.DocumentNumber, inventoryItemId, this.StateEventId.Version);
+            var stateEventId = new PhysicalInventoryLineEventId(this.StateEventId.DocumentNumber, inventoryItemId, this.StateEventId.Version);
             return stateEventId;
         }
 
@@ -150,15 +150,15 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
 	public class PhysicalInventoryStateCreated : PhysicalInventoryStateEventBase, IPhysicalInventoryStateCreated, ISaveable
 	{
-		public PhysicalInventoryStateCreated () : this(new PhysicalInventoryStateEventId())
+		public PhysicalInventoryStateCreated () : this(new PhysicalInventoryEventId())
 		{
 		}
 
-		public PhysicalInventoryStateCreated (PhysicalInventoryStateEventId stateEventId) : base(stateEventId)
+		public PhysicalInventoryStateCreated (PhysicalInventoryEventId stateEventId) : base(stateEventId)
 		{
 		}
 
-		private Dictionary<PhysicalInventoryLineStateEventId, IPhysicalInventoryLineStateCreated> _physicalInventoryLineEvents = new Dictionary<PhysicalInventoryLineStateEventId, IPhysicalInventoryLineStateCreated>();
+		private Dictionary<PhysicalInventoryLineEventId, IPhysicalInventoryLineStateCreated> _physicalInventoryLineEvents = new Dictionary<PhysicalInventoryLineEventId, IPhysicalInventoryLineStateCreated>();
         
         private IEnumerable<IPhysicalInventoryLineStateCreated> _readOnlyPhysicalInventoryLineEvents;
 
@@ -175,7 +175,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
                     if (_readOnlyPhysicalInventoryLineEvents != null) { return _readOnlyPhysicalInventoryLineEvents; }
                     var eventDao = PhysicalInventoryLineStateEventDao;
                     var eL = new List<IPhysicalInventoryLineStateCreated>();
-                    foreach (var e in eventDao.FindByPhysicalInventoryStateEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByPhysicalInventoryEventId(this.StateEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IPhysicalInventoryLineStateCreated)e);
@@ -204,7 +204,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
         public virtual IPhysicalInventoryLineStateCreated NewPhysicalInventoryLineStateCreated(InventoryItemId inventoryItemId)
         {
-            var stateEvent = new PhysicalInventoryLineStateCreated(NewPhysicalInventoryLineStateEventId(inventoryItemId));
+            var stateEvent = new PhysicalInventoryLineStateCreated(NewPhysicalInventoryLineEventId(inventoryItemId));
             return stateEvent;
         }
 
@@ -260,11 +260,11 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 		{
 		}
 
-		public PhysicalInventoryStateMergePatched (PhysicalInventoryStateEventId stateEventId) : base(stateEventId)
+		public PhysicalInventoryStateMergePatched (PhysicalInventoryEventId stateEventId) : base(stateEventId)
 		{
 		}
 
-		private Dictionary<PhysicalInventoryLineStateEventId, IPhysicalInventoryLineStateEvent> _physicalInventoryLineEvents = new Dictionary<PhysicalInventoryLineStateEventId, IPhysicalInventoryLineStateEvent>();
+		private Dictionary<PhysicalInventoryLineEventId, IPhysicalInventoryLineStateEvent> _physicalInventoryLineEvents = new Dictionary<PhysicalInventoryLineEventId, IPhysicalInventoryLineStateEvent>();
 
         private IEnumerable<IPhysicalInventoryLineStateEvent> _readOnlyPhysicalInventoryLineEvents;
         
@@ -281,7 +281,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
                     if (_readOnlyPhysicalInventoryLineEvents != null) { return _readOnlyPhysicalInventoryLineEvents; }
                     var eventDao = PhysicalInventoryLineStateEventDao;
                     var eL = new List<IPhysicalInventoryLineStateEvent>();
-                    foreach (var e in eventDao.FindByPhysicalInventoryStateEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByPhysicalInventoryEventId(this.StateEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IPhysicalInventoryLineStateEvent)e);
@@ -310,19 +310,19 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
         public virtual IPhysicalInventoryLineStateCreated NewPhysicalInventoryLineStateCreated(InventoryItemId inventoryItemId)
         {
-            var stateEvent = new PhysicalInventoryLineStateCreated(NewPhysicalInventoryLineStateEventId(inventoryItemId));
+            var stateEvent = new PhysicalInventoryLineStateCreated(NewPhysicalInventoryLineEventId(inventoryItemId));
             return stateEvent;
         }
 
         public virtual IPhysicalInventoryLineStateMergePatched NewPhysicalInventoryLineStateMergePatched(InventoryItemId inventoryItemId)
         {
-            var stateEvent = new PhysicalInventoryLineStateMergePatched(NewPhysicalInventoryLineStateEventId(inventoryItemId));
+            var stateEvent = new PhysicalInventoryLineStateMergePatched(NewPhysicalInventoryLineEventId(inventoryItemId));
             return stateEvent;
         }
 
         public virtual IPhysicalInventoryLineStateRemoved NewPhysicalInventoryLineStateRemoved(InventoryItemId inventoryItemId)
         {
-            var stateEvent = new PhysicalInventoryLineStateRemoved(NewPhysicalInventoryLineStateEventId(inventoryItemId));
+            var stateEvent = new PhysicalInventoryLineStateRemoved(NewPhysicalInventoryLineEventId(inventoryItemId));
             return stateEvent;
         }
 

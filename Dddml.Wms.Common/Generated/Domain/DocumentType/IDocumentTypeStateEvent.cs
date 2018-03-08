@@ -11,9 +11,9 @@ using Dddml.Wms.Domain.DocumentType;
 
 namespace Dddml.Wms.Domain.DocumentType
 {
-	public interface IDocumentTypeStateEvent : IEvent, IStateEventDto, IGlobalIdentity<DocumentTypeStateEventId>, ICreated<string>
+	public interface IDocumentTypeStateEvent : IEvent, IStateEventDto, IGlobalIdentity<DocumentTypeEventId>, ICreated<string>
 	{
-		DocumentTypeStateEventId StateEventId { get; }
+		DocumentTypeEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

@@ -50,7 +50,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
     }
 
     protected InOutStateEvent map(InOutCommand.CreateInOut c) {
-        InOutStateEventId stateEventId = new InOutStateEventId(c.getDocumentNumber(), c.getVersion());
+        InOutEventId stateEventId = new InOutEventId(c.getDocumentNumber(), c.getVersion());
         InOutStateEvent.InOutStateCreated e = newInOutStateCreated(stateEventId);
         newInOutDocumentActionCommandAndExecute(c, state, e);
         e.setPosted(c.getPosted());
@@ -98,7 +98,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
     }
 
     protected InOutStateEvent map(InOutCommand.MergePatchInOut c) {
-        InOutStateEventId stateEventId = new InOutStateEventId(c.getDocumentNumber(), c.getVersion());
+        InOutEventId stateEventId = new InOutEventId(c.getDocumentNumber(), c.getVersion());
         InOutStateEvent.InOutStateMergePatched e = newInOutStateMergePatched(stateEventId);
         e.setPosted(c.getPosted());
         e.setProcessed(c.getProcessed());
@@ -200,7 +200,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
     protected InOutLineStateEvent.InOutLineStateCreated mapCreate(InOutLineCommand.CreateInOutLine c, InOutCommand outerCommand, Long version, InOutState outerState)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
-        InOutLineStateEventId stateEventId = new InOutLineStateEventId(c.getInOutDocumentNumber(), c.getLineNumber(), version);
+        InOutLineEventId stateEventId = new InOutLineEventId(c.getInOutDocumentNumber(), c.getLineNumber(), version);
         InOutLineStateEvent.InOutLineStateCreated e = newInOutLineStateCreated(stateEventId);
         InOutLineState s = outerState.getInOutLines().get(c.getLineNumber());
 
@@ -225,7 +225,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
     protected InOutLineStateEvent.InOutLineStateMergePatched mapMergePatch(InOutLineCommand.MergePatchInOutLine c, InOutCommand outerCommand, Long version, InOutState outerState)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
-        InOutLineStateEventId stateEventId = new InOutLineStateEventId(c.getInOutDocumentNumber(), c.getLineNumber(), version);
+        InOutLineEventId stateEventId = new InOutLineEventId(c.getInOutDocumentNumber(), c.getLineNumber(), version);
         InOutLineStateEvent.InOutLineStateMergePatched e = newInOutLineStateMergePatched(stateEventId);
         InOutLineState s = outerState.getInOutLines().get(c.getLineNumber());
 
@@ -262,7 +262,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
     protected InOutLineStateEvent.InOutLineStateRemoved mapRemove(InOutLineCommand.RemoveInOutLine c, InOutCommand outerCommand, Long version)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
-        InOutLineStateEventId stateEventId = new InOutLineStateEventId(c.getInOutDocumentNumber(), c.getLineNumber(), version);
+        InOutLineEventId stateEventId = new InOutLineEventId(c.getInOutDocumentNumber(), c.getLineNumber(), version);
         InOutLineStateEvent.InOutLineStateRemoved e = newInOutLineStateRemoved(stateEventId);
 
         e.setCreatedBy(c.getRequesterId());
@@ -295,7 +295,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
     ////////////////////////
 
     protected InOutStateEvent.InOutStateCreated newInOutStateCreated(Long version, String commandId, String requesterId) {
-        InOutStateEventId stateEventId = new InOutStateEventId(this.state.getDocumentNumber(), version);
+        InOutEventId stateEventId = new InOutEventId(this.state.getDocumentNumber(), version);
         InOutStateEvent.InOutStateCreated e = newInOutStateCreated(stateEventId);
         ((AbstractInOutStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -304,7 +304,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
     }
 
     protected InOutStateEvent.InOutStateMergePatched newInOutStateMergePatched(Long version, String commandId, String requesterId) {
-        InOutStateEventId stateEventId = new InOutStateEventId(this.state.getDocumentNumber(), version);
+        InOutEventId stateEventId = new InOutEventId(this.state.getDocumentNumber(), version);
         InOutStateEvent.InOutStateMergePatched e = newInOutStateMergePatched(stateEventId);
         ((AbstractInOutStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -312,23 +312,23 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         return e;
     }
 
-    protected InOutStateEvent.InOutStateCreated newInOutStateCreated(InOutStateEventId stateEventId) {
+    protected InOutStateEvent.InOutStateCreated newInOutStateCreated(InOutEventId stateEventId) {
         return new AbstractInOutStateEvent.SimpleInOutStateCreated(stateEventId);
     }
 
-    protected InOutStateEvent.InOutStateMergePatched newInOutStateMergePatched(InOutStateEventId stateEventId) {
+    protected InOutStateEvent.InOutStateMergePatched newInOutStateMergePatched(InOutEventId stateEventId) {
         return new AbstractInOutStateEvent.SimpleInOutStateMergePatched(stateEventId);
     }
 
-    protected InOutLineStateEvent.InOutLineStateCreated newInOutLineStateCreated(InOutLineStateEventId stateEventId) {
+    protected InOutLineStateEvent.InOutLineStateCreated newInOutLineStateCreated(InOutLineEventId stateEventId) {
         return new AbstractInOutLineStateEvent.SimpleInOutLineStateCreated(stateEventId);
     }
 
-    protected InOutLineStateEvent.InOutLineStateMergePatched newInOutLineStateMergePatched(InOutLineStateEventId stateEventId) {
+    protected InOutLineStateEvent.InOutLineStateMergePatched newInOutLineStateMergePatched(InOutLineEventId stateEventId) {
         return new AbstractInOutLineStateEvent.SimpleInOutLineStateMergePatched(stateEventId);
     }
 
-    protected InOutLineStateEvent.InOutLineStateRemoved newInOutLineStateRemoved(InOutLineStateEventId stateEventId)
+    protected InOutLineStateEvent.InOutLineStateRemoved newInOutLineStateRemoved(InOutLineEventId stateEventId)
     {
         return new AbstractInOutLineStateEvent.SimpleInOutLineStateRemoved(stateEventId);
     }

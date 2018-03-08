@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.InOut
 	{
 		void Save(IInOutLineStateEvent e);
 
-        IEnumerable<IInOutLineStateEvent> FindByInOutStateEventId(InOutStateEventId inOutStateEventId);
+        IEnumerable<IInOutLineStateEvent> FindByInOutEventId(InOutEventId inOutEventId);
 
 	}
 

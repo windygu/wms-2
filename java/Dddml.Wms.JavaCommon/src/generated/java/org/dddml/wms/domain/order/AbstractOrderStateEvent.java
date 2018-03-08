@@ -8,14 +8,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractOrderStateEvent extends AbstractStateEvent implements OrderStateEvent 
 {
-    private OrderStateEventId stateEventId;
+    private OrderEventId stateEventId;
 
-    public OrderStateEventId getStateEventId() {
+    public OrderEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(OrderStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(OrderEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public String getOrderId() {
@@ -370,20 +370,20 @@ public abstract class AbstractOrderStateEvent extends AbstractStateEvent impleme
     protected AbstractOrderStateEvent() {
     }
 
-    protected AbstractOrderStateEvent(OrderStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractOrderStateEvent(OrderEventId eventId) {
+        this.stateEventId = eventId;
     }
 
     protected OrderItemStateEventDao getOrderItemStateEventDao() {
         return (OrderItemStateEventDao)ApplicationContext.current.get("OrderItemStateEventDao");
     }
 
-    protected OrderItemStateEventId newOrderItemStateEventId(String orderItemSeqId)
+    protected OrderItemEventId newOrderItemEventId(String orderItemSeqId)
     {
-        OrderItemStateEventId stateEventId = new OrderItemStateEventId(this.getStateEventId().getOrderId(), 
+        OrderItemEventId eventId = new OrderItemEventId(this.getStateEventId().getOrderId(), 
             orderItemSeqId, 
             this.getStateEventId().getVersion());
-        return stateEventId;
+        return eventId;
     }
 
     protected void throwOnInconsistentEventIds(OrderItemStateEvent e)
@@ -401,11 +401,11 @@ public abstract class AbstractOrderStateEvent extends AbstractStateEvent impleme
     }
 
     public OrderItemStateEvent.OrderItemStateCreated newOrderItemStateCreated(String orderItemSeqId) {
-        return new AbstractOrderItemStateEvent.SimpleOrderItemStateCreated(newOrderItemStateEventId(orderItemSeqId));
+        return new AbstractOrderItemStateEvent.SimpleOrderItemStateCreated(newOrderItemEventId(orderItemSeqId));
     }
 
     public OrderItemStateEvent.OrderItemStateMergePatched newOrderItemStateMergePatched(String orderItemSeqId) {
-        return new AbstractOrderItemStateEvent.SimpleOrderItemStateMergePatched(newOrderItemStateEventId(orderItemSeqId));
+        return new AbstractOrderItemStateEvent.SimpleOrderItemStateMergePatched(newOrderItemEventId(orderItemSeqId));
     }
 
 
@@ -415,18 +415,18 @@ public abstract class AbstractOrderStateEvent extends AbstractStateEvent impleme
     public static abstract class AbstractOrderStateCreated extends AbstractOrderStateEvent implements OrderStateEvent.OrderStateCreated, Saveable
     {
         public AbstractOrderStateCreated() {
-            this(new OrderStateEventId());
+            this(new OrderEventId());
         }
 
-        public AbstractOrderStateCreated(OrderStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractOrderStateCreated(OrderEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
             return StateEventType.CREATED;
         }
 
-        private Map<OrderItemStateEventId, OrderItemStateEvent.OrderItemStateCreated> orderItemEvents = new HashMap<OrderItemStateEventId, OrderItemStateEvent.OrderItemStateCreated>();
+        private Map<OrderItemEventId, OrderItemStateEvent.OrderItemStateCreated> orderItemEvents = new HashMap<OrderItemEventId, OrderItemStateEvent.OrderItemStateCreated>();
         
         private Iterable<OrderItemStateEvent.OrderItemStateCreated> readOnlyOrderItemEvents;
 
@@ -441,7 +441,7 @@ public abstract class AbstractOrderStateEvent extends AbstractStateEvent impleme
                 if (readOnlyOrderItemEvents != null) { return readOnlyOrderItemEvents; }
                 OrderItemStateEventDao eventDao = getOrderItemStateEventDao();
                 List<OrderItemStateEvent.OrderItemStateCreated> eL = new ArrayList<OrderItemStateEvent.OrderItemStateCreated>();
-                for (OrderItemStateEvent e : eventDao.findByOrderStateEventId(this.getStateEventId()))
+                for (OrderItemStateEvent e : eventDao.findByOrderEventId(this.getStateEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((OrderItemStateEvent.OrderItemStateCreated)e);
@@ -480,11 +480,11 @@ public abstract class AbstractOrderStateEvent extends AbstractStateEvent impleme
     public static abstract class AbstractOrderStateMergePatched extends AbstractOrderStateEvent implements OrderStateEvent.OrderStateMergePatched, Saveable
     {
         public AbstractOrderStateMergePatched() {
-            this(new OrderStateEventId());
+            this(new OrderEventId());
         }
 
-        public AbstractOrderStateMergePatched(OrderStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractOrderStateMergePatched(OrderEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -741,7 +741,7 @@ public abstract class AbstractOrderStateEvent extends AbstractStateEvent impleme
             this.isPropertyActiveRemoved = removed;
         }
 
-        private Map<OrderItemStateEventId, OrderItemStateEvent> orderItemEvents = new HashMap<OrderItemStateEventId, OrderItemStateEvent>();
+        private Map<OrderItemEventId, OrderItemStateEvent> orderItemEvents = new HashMap<OrderItemEventId, OrderItemStateEvent>();
         
         private Iterable<OrderItemStateEvent> readOnlyOrderItemEvents;
 
@@ -756,7 +756,7 @@ public abstract class AbstractOrderStateEvent extends AbstractStateEvent impleme
                 if (readOnlyOrderItemEvents != null) { return readOnlyOrderItemEvents; }
                 OrderItemStateEventDao eventDao = getOrderItemStateEventDao();
                 List<OrderItemStateEvent> eL = new ArrayList<OrderItemStateEvent>();
-                for (OrderItemStateEvent e : eventDao.findByOrderStateEventId(this.getStateEventId()))
+                for (OrderItemStateEvent e : eventDao.findByOrderEventId(this.getStateEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((OrderItemStateEvent)e);
@@ -797,8 +797,8 @@ public abstract class AbstractOrderStateEvent extends AbstractStateEvent impleme
         public SimpleOrderStateCreated() {
         }
 
-        public SimpleOrderStateCreated(OrderStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleOrderStateCreated(OrderEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -807,8 +807,8 @@ public abstract class AbstractOrderStateEvent extends AbstractStateEvent impleme
         public SimpleOrderStateMergePatched() {
         }
 
-        public SimpleOrderStateMergePatched(OrderStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleOrderStateMergePatched(OrderEventId eventId) {
+            super(eventId);
         }
     }
 

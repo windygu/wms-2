@@ -16,7 +16,7 @@ public class HibernateLocatorEventStore extends AbstractHibernateEventStore
     @Override
     protected Serializable getEventId(EventStoreAggregateId eventStoreAggregateId, long version)
     {
-        return new LocatorStateEventId((String) eventStoreAggregateId.getId(), version);
+        return new LocatorEventId((String) eventStoreAggregateId.getId(), version);
     }
 
     @Override

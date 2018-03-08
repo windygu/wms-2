@@ -55,7 +55,7 @@ public abstract class AbstractDamageReasonAggregate extends AbstractAggregate im
     }
 
     protected DamageReasonStateEvent map(DamageReasonCommand.CreateDamageReason c) {
-        DamageReasonStateEventId stateEventId = new DamageReasonStateEventId(c.getDamageReasonId(), c.getVersion());
+        DamageReasonEventId stateEventId = new DamageReasonEventId(c.getDamageReasonId(), c.getVersion());
         DamageReasonStateEvent.DamageReasonStateCreated e = newDamageReasonStateCreated(stateEventId);
         e.setDescription(c.getDescription());
         e.setSequenceId(c.getSequenceId());
@@ -67,7 +67,7 @@ public abstract class AbstractDamageReasonAggregate extends AbstractAggregate im
     }
 
     protected DamageReasonStateEvent map(DamageReasonCommand.MergePatchDamageReason c) {
-        DamageReasonStateEventId stateEventId = new DamageReasonStateEventId(c.getDamageReasonId(), c.getVersion());
+        DamageReasonEventId stateEventId = new DamageReasonEventId(c.getDamageReasonId(), c.getVersion());
         DamageReasonStateEvent.DamageReasonStateMergePatched e = newDamageReasonStateMergePatched(stateEventId);
         e.setDescription(c.getDescription());
         e.setSequenceId(c.getSequenceId());
@@ -82,7 +82,7 @@ public abstract class AbstractDamageReasonAggregate extends AbstractAggregate im
     }
 
     protected DamageReasonStateEvent map(DamageReasonCommand.DeleteDamageReason c) {
-        DamageReasonStateEventId stateEventId = new DamageReasonStateEventId(c.getDamageReasonId(), c.getVersion());
+        DamageReasonEventId stateEventId = new DamageReasonEventId(c.getDamageReasonId(), c.getVersion());
         DamageReasonStateEvent.DamageReasonStateDeleted e = newDamageReasonStateDeleted(stateEventId);
         ((AbstractDamageReasonStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
@@ -94,7 +94,7 @@ public abstract class AbstractDamageReasonAggregate extends AbstractAggregate im
     ////////////////////////
 
     protected DamageReasonStateEvent.DamageReasonStateCreated newDamageReasonStateCreated(Long version, String commandId, String requesterId) {
-        DamageReasonStateEventId stateEventId = new DamageReasonStateEventId(this.state.getDamageReasonId(), version);
+        DamageReasonEventId stateEventId = new DamageReasonEventId(this.state.getDamageReasonId(), version);
         DamageReasonStateEvent.DamageReasonStateCreated e = newDamageReasonStateCreated(stateEventId);
         ((AbstractDamageReasonStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -103,7 +103,7 @@ public abstract class AbstractDamageReasonAggregate extends AbstractAggregate im
     }
 
     protected DamageReasonStateEvent.DamageReasonStateMergePatched newDamageReasonStateMergePatched(Long version, String commandId, String requesterId) {
-        DamageReasonStateEventId stateEventId = new DamageReasonStateEventId(this.state.getDamageReasonId(), version);
+        DamageReasonEventId stateEventId = new DamageReasonEventId(this.state.getDamageReasonId(), version);
         DamageReasonStateEvent.DamageReasonStateMergePatched e = newDamageReasonStateMergePatched(stateEventId);
         ((AbstractDamageReasonStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -112,7 +112,7 @@ public abstract class AbstractDamageReasonAggregate extends AbstractAggregate im
     }
 
     protected DamageReasonStateEvent.DamageReasonStateDeleted newDamageReasonStateDeleted(Long version, String commandId, String requesterId) {
-        DamageReasonStateEventId stateEventId = new DamageReasonStateEventId(this.state.getDamageReasonId(), version);
+        DamageReasonEventId stateEventId = new DamageReasonEventId(this.state.getDamageReasonId(), version);
         DamageReasonStateEvent.DamageReasonStateDeleted e = newDamageReasonStateDeleted(stateEventId);
         ((AbstractDamageReasonStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -120,15 +120,15 @@ public abstract class AbstractDamageReasonAggregate extends AbstractAggregate im
         return e;
     }
 
-    protected DamageReasonStateEvent.DamageReasonStateCreated newDamageReasonStateCreated(DamageReasonStateEventId stateEventId) {
+    protected DamageReasonStateEvent.DamageReasonStateCreated newDamageReasonStateCreated(DamageReasonEventId stateEventId) {
         return new AbstractDamageReasonStateEvent.SimpleDamageReasonStateCreated(stateEventId);
     }
 
-    protected DamageReasonStateEvent.DamageReasonStateMergePatched newDamageReasonStateMergePatched(DamageReasonStateEventId stateEventId) {
+    protected DamageReasonStateEvent.DamageReasonStateMergePatched newDamageReasonStateMergePatched(DamageReasonEventId stateEventId) {
         return new AbstractDamageReasonStateEvent.SimpleDamageReasonStateMergePatched(stateEventId);
     }
 
-    protected DamageReasonStateEvent.DamageReasonStateDeleted newDamageReasonStateDeleted(DamageReasonStateEventId stateEventId)
+    protected DamageReasonStateEvent.DamageReasonStateDeleted newDamageReasonStateDeleted(DamageReasonEventId stateEventId)
     {
         return new AbstractDamageReasonStateEvent.SimpleDamageReasonStateDeleted(stateEventId);
     }

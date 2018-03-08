@@ -10,7 +10,7 @@ public interface InventoryItemRequirementEntryStateEventDao
 {
     void save(InventoryItemRequirementEntryStateEvent e);
 
-    Iterable<InventoryItemRequirementEntryStateEvent> findByInventoryItemRequirementStateEventId(InventoryItemRequirementStateEventId inventoryItemRequirementStateEventId);
+    Iterable<InventoryItemRequirementEntryStateEvent> findByInventoryItemRequirementEventId(InventoryItemRequirementEventId inventoryItemRequirementEventId);
 
 }
 

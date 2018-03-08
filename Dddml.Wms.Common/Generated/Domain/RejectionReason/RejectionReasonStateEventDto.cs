@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.RejectionReason
 	public abstract class RejectionReasonStateEventDtoBase : IStateEventDto, IRejectionReasonStateCreated, IRejectionReasonStateMergePatched, IRejectionReasonStateDeleted
 	{
 
-        private RejectionReasonStateEventIdDto _stateEventId;
+        private RejectionReasonEventIdDto _stateEventId;
 
-		protected internal virtual RejectionReasonStateEventIdDto StateEventId 
+		protected internal virtual RejectionReasonEventIdDto StateEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new RejectionReasonStateEventIdDto(); }
+                if (_stateEventId == null) { _stateEventId = new RejectionReasonEventIdDto(); }
                 return _stateEventId;
             }
             set
@@ -54,10 +54,10 @@ namespace Dddml.Wms.Domain.RejectionReason
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		RejectionReasonStateEventId IGlobalIdentity<RejectionReasonStateEventId>.GlobalId {
+		RejectionReasonEventId IGlobalIdentity<RejectionReasonEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToRejectionReasonStateEventId();
+				return this.StateEventId.ToRejectionReasonEventId();
 			}
 		}
 
@@ -132,16 +132,16 @@ namespace Dddml.Wms.Domain.RejectionReason
 		}
 
 
-        RejectionReasonStateEventId IRejectionReasonStateEvent.StateEventId
+        RejectionReasonEventId IRejectionReasonStateEvent.StateEventId
         {
-            get { return this.StateEventId.ToRejectionReasonStateEventId(); }
+            get { return this.StateEventId.ToRejectionReasonEventId(); }
         }
 
         protected RejectionReasonStateEventDtoBase()
         {
         }
 
-        protected RejectionReasonStateEventDtoBase(RejectionReasonStateEventIdDto stateEventId)
+        protected RejectionReasonStateEventDtoBase(RejectionReasonEventIdDto stateEventId)
         {
             this.StateEventId = stateEventId;
         }

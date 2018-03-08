@@ -264,7 +264,7 @@ namespace Dddml.Wms.Domain.StatusItem
             id.Append("[").Append("StatusItem|");
 
             var stateEntityId = this.StatusId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.StatusId; // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+            var eventEntityId = stateEvent.StateEventId.StatusId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);

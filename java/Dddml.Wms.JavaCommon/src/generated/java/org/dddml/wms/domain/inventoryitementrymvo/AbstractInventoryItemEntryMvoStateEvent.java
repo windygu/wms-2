@@ -10,14 +10,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractInventoryItemEntryMvoStateEvent extends AbstractStateEvent implements InventoryItemEntryMvoStateEvent 
 {
-    private InventoryItemEntryMvoStateEventId stateEventId;
+    private InventoryItemEntryMvoEventId stateEventId;
 
-    public InventoryItemEntryMvoStateEventId getStateEventId() {
+    public InventoryItemEntryMvoEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(InventoryItemEntryMvoStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(InventoryItemEntryMvoEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public InventoryItemEntryId getInventoryItemEntryId() {
@@ -264,8 +264,8 @@ public abstract class AbstractInventoryItemEntryMvoStateEvent extends AbstractSt
     protected AbstractInventoryItemEntryMvoStateEvent() {
     }
 
-    protected AbstractInventoryItemEntryMvoStateEvent(InventoryItemEntryMvoStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractInventoryItemEntryMvoStateEvent(InventoryItemEntryMvoEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -275,11 +275,11 @@ public abstract class AbstractInventoryItemEntryMvoStateEvent extends AbstractSt
     public static abstract class AbstractInventoryItemEntryMvoStateCreated extends AbstractInventoryItemEntryMvoStateEvent implements InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateCreated
     {
         public AbstractInventoryItemEntryMvoStateCreated() {
-            this(new InventoryItemEntryMvoStateEventId());
+            this(new InventoryItemEntryMvoEventId());
         }
 
-        public AbstractInventoryItemEntryMvoStateCreated(InventoryItemEntryMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractInventoryItemEntryMvoStateCreated(InventoryItemEntryMvoEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -292,11 +292,11 @@ public abstract class AbstractInventoryItemEntryMvoStateEvent extends AbstractSt
     public static abstract class AbstractInventoryItemEntryMvoStateMergePatched extends AbstractInventoryItemEntryMvoStateEvent implements InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateMergePatched
     {
         public AbstractInventoryItemEntryMvoStateMergePatched() {
-            this(new InventoryItemEntryMvoStateEventId());
+            this(new InventoryItemEntryMvoEventId());
         }
 
-        public AbstractInventoryItemEntryMvoStateMergePatched(InventoryItemEntryMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractInventoryItemEntryMvoStateMergePatched(InventoryItemEntryMvoEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -471,8 +471,8 @@ public abstract class AbstractInventoryItemEntryMvoStateEvent extends AbstractSt
         public SimpleInventoryItemEntryMvoStateCreated() {
         }
 
-        public SimpleInventoryItemEntryMvoStateCreated(InventoryItemEntryMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleInventoryItemEntryMvoStateCreated(InventoryItemEntryMvoEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -481,8 +481,8 @@ public abstract class AbstractInventoryItemEntryMvoStateEvent extends AbstractSt
         public SimpleInventoryItemEntryMvoStateMergePatched() {
         }
 
-        public SimpleInventoryItemEntryMvoStateMergePatched(InventoryItemEntryMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleInventoryItemEntryMvoStateMergePatched(InventoryItemEntryMvoEventId eventId) {
+            super(eventId);
         }
     }
 

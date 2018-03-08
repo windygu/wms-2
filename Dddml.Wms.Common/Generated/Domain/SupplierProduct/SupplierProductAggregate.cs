@@ -94,7 +94,7 @@ namespace Dddml.Wms.Domain.SupplierProduct
 
         protected virtual ISupplierProductStateCreated Map(ICreateSupplierProduct c)
         {
-			var stateEventId = new SupplierProductStateEventId(c.SupplierProductId, c.Version);
+			var stateEventId = new SupplierProductEventId(c.SupplierProductId, c.Version);
             ISupplierProductStateCreated e = NewSupplierProductStateCreated(stateEventId);
 		
             e.AvailableThruDate = c.AvailableThruDate;
@@ -124,7 +124,7 @@ namespace Dddml.Wms.Domain.SupplierProduct
 
         protected virtual ISupplierProductStateMergePatched Map(IMergePatchSupplierProduct c)
         {
-			var stateEventId = new SupplierProductStateEventId(c.SupplierProductId, c.Version);
+			var stateEventId = new SupplierProductEventId(c.SupplierProductId, c.Version);
             ISupplierProductStateMergePatched e = NewSupplierProductStateMergePatched(stateEventId);
 
             e.AvailableThruDate = c.AvailableThruDate;
@@ -184,7 +184,7 @@ namespace Dddml.Wms.Domain.SupplierProduct
 
         protected SupplierProductStateCreated NewSupplierProductStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new SupplierProductStateEventId(_state.SupplierProductId, version);
+            var stateEventId = new SupplierProductEventId(_state.SupplierProductId, version);
             var e = NewSupplierProductStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -197,7 +197,7 @@ namespace Dddml.Wms.Domain.SupplierProduct
 
         protected SupplierProductStateMergePatched NewSupplierProductStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new SupplierProductStateEventId(_state.SupplierProductId, version);
+            var stateEventId = new SupplierProductEventId(_state.SupplierProductId, version);
             var e = NewSupplierProductStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -211,12 +211,12 @@ namespace Dddml.Wms.Domain.SupplierProduct
 
 ////////////////////////
 
-		private SupplierProductStateCreated NewSupplierProductStateCreated(SupplierProductStateEventId stateEventId)
+		private SupplierProductStateCreated NewSupplierProductStateCreated(SupplierProductEventId stateEventId)
 		{
 			return new SupplierProductStateCreated(stateEventId);			
 		}
 
-        private SupplierProductStateMergePatched NewSupplierProductStateMergePatched(SupplierProductStateEventId stateEventId)
+        private SupplierProductStateMergePatched NewSupplierProductStateMergePatched(SupplierProductEventId stateEventId)
 		{
 			return new SupplierProductStateMergePatched(stateEventId);
 		}

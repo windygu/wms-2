@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.InventoryItem
 	public abstract class InventoryItemEntryStateEventDtoBase : IStateEventDto, IInventoryItemEntryStateCreated
 	{
 
-        private InventoryItemEntryStateEventIdDto _stateEventId;
+        private InventoryItemEntryEventIdDto _stateEventId;
 
-		protected internal virtual InventoryItemEntryStateEventIdDto StateEventId 
+		protected internal virtual InventoryItemEntryEventIdDto StateEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new InventoryItemEntryStateEventIdDto(); }
+                if (_stateEventId == null) { _stateEventId = new InventoryItemEntryEventIdDto(); }
                 return _stateEventId;
             }
             set
@@ -70,10 +70,10 @@ namespace Dddml.Wms.Domain.InventoryItem
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		InventoryItemEntryStateEventId IGlobalIdentity<InventoryItemEntryStateEventId>.GlobalId {
+		InventoryItemEntryEventId IGlobalIdentity<InventoryItemEntryEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToInventoryItemEntryStateEventId();
+				return this.StateEventId.ToInventoryItemEntryEventId();
 			}
 		}
 
@@ -112,16 +112,16 @@ namespace Dddml.Wms.Domain.InventoryItem
 		}
 
 
-        InventoryItemEntryStateEventId IInventoryItemEntryStateEvent.StateEventId
+        InventoryItemEntryEventId IInventoryItemEntryStateEvent.StateEventId
         {
-            get { return this.StateEventId.ToInventoryItemEntryStateEventId(); }
+            get { return this.StateEventId.ToInventoryItemEntryEventId(); }
         }
 
         protected InventoryItemEntryStateEventDtoBase()
         {
         }
 
-        protected InventoryItemEntryStateEventDtoBase(InventoryItemEntryStateEventIdDto stateEventId)
+        protected InventoryItemEntryStateEventDtoBase(InventoryItemEntryEventIdDto stateEventId)
         {
             this.StateEventId = stateEventId;
         }

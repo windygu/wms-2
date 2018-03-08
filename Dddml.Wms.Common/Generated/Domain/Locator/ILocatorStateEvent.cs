@@ -11,9 +11,9 @@ using Dddml.Wms.Domain.Locator;
 
 namespace Dddml.Wms.Domain.Locator
 {
-	public interface ILocatorStateEvent : IEvent, IStateEventDto, IGlobalIdentity<LocatorStateEventId>, ICreated<string>
+	public interface ILocatorStateEvent : IEvent, IStateEventDto, IGlobalIdentity<LocatorEventId>, ICreated<string>
 	{
-		LocatorStateEventId StateEventId { get; }
+		LocatorEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

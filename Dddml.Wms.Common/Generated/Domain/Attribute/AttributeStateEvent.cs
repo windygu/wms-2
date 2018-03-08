@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.Attribute
 	public abstract class AttributeStateEventBase : IAttributeStateEvent
 	{
 
-		public virtual AttributeStateEventId StateEventId { get; set; }
+		public virtual AttributeEventId StateEventId { get; set; }
 
         public virtual string AttributeId
         {
@@ -51,7 +51,7 @@ namespace Dddml.Wms.Domain.Attribute
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		AttributeStateEventId IGlobalIdentity<AttributeStateEventId>.GlobalId {
+		AttributeEventId IGlobalIdentity<AttributeEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -95,7 +95,7 @@ namespace Dddml.Wms.Domain.Attribute
         {
         }
 
-        protected AttributeStateEventBase(AttributeStateEventId stateEventId)
+        protected AttributeStateEventBase(AttributeEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -105,9 +105,9 @@ namespace Dddml.Wms.Domain.Attribute
 			get { return ApplicationContext.Current["AttributeValueStateEventDao"] as IAttributeValueStateEventDao; }
 		}
 
-        protected AttributeValueStateEventId NewAttributeValueStateEventId(string value)
+        protected AttributeValueEventId NewAttributeValueEventId(string value)
         {
-            var stateEventId = new AttributeValueStateEventId(this.StateEventId.AttributeId, value, this.StateEventId.Version);
+            var stateEventId = new AttributeValueEventId(this.StateEventId.AttributeId, value, this.StateEventId.Version);
             return stateEventId;
         }
 
@@ -132,9 +132,9 @@ namespace Dddml.Wms.Domain.Attribute
 			get { return ApplicationContext.Current["AttributeAliasStateEventDao"] as IAttributeAliasStateEventDao; }
 		}
 
-        protected AttributeAliasStateEventId NewAttributeAliasStateEventId(string code)
+        protected AttributeAliasEventId NewAttributeAliasEventId(string code)
         {
-            var stateEventId = new AttributeAliasStateEventId(this.StateEventId.AttributeId, code, this.StateEventId.Version);
+            var stateEventId = new AttributeAliasEventId(this.StateEventId.AttributeId, code, this.StateEventId.Version);
             return stateEventId;
         }
 
@@ -166,15 +166,15 @@ namespace Dddml.Wms.Domain.Attribute
 
 	public class AttributeStateCreated : AttributeStateEventBase, IAttributeStateCreated, ISaveable
 	{
-		public AttributeStateCreated () : this(new AttributeStateEventId())
+		public AttributeStateCreated () : this(new AttributeEventId())
 		{
 		}
 
-		public AttributeStateCreated (AttributeStateEventId stateEventId) : base(stateEventId)
+		public AttributeStateCreated (AttributeEventId stateEventId) : base(stateEventId)
 		{
 		}
 
-		private Dictionary<AttributeValueStateEventId, IAttributeValueStateCreated> _attributeValueEvents = new Dictionary<AttributeValueStateEventId, IAttributeValueStateCreated>();
+		private Dictionary<AttributeValueEventId, IAttributeValueStateCreated> _attributeValueEvents = new Dictionary<AttributeValueEventId, IAttributeValueStateCreated>();
         
         private IEnumerable<IAttributeValueStateCreated> _readOnlyAttributeValueEvents;
 
@@ -191,7 +191,7 @@ namespace Dddml.Wms.Domain.Attribute
                     if (_readOnlyAttributeValueEvents != null) { return _readOnlyAttributeValueEvents; }
                     var eventDao = AttributeValueStateEventDao;
                     var eL = new List<IAttributeValueStateCreated>();
-                    foreach (var e in eventDao.FindByAttributeStateEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByAttributeEventId(this.StateEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IAttributeValueStateCreated)e);
@@ -220,11 +220,11 @@ namespace Dddml.Wms.Domain.Attribute
 
         public virtual IAttributeValueStateCreated NewAttributeValueStateCreated(string value)
         {
-            var stateEvent = new AttributeValueStateCreated(NewAttributeValueStateEventId(value));
+            var stateEvent = new AttributeValueStateCreated(NewAttributeValueEventId(value));
             return stateEvent;
         }
 
-		private Dictionary<AttributeAliasStateEventId, IAttributeAliasStateCreated> _attributeAliasEvents = new Dictionary<AttributeAliasStateEventId, IAttributeAliasStateCreated>();
+		private Dictionary<AttributeAliasEventId, IAttributeAliasStateCreated> _attributeAliasEvents = new Dictionary<AttributeAliasEventId, IAttributeAliasStateCreated>();
         
         private IEnumerable<IAttributeAliasStateCreated> _readOnlyAttributeAliasEvents;
 
@@ -241,7 +241,7 @@ namespace Dddml.Wms.Domain.Attribute
                     if (_readOnlyAttributeAliasEvents != null) { return _readOnlyAttributeAliasEvents; }
                     var eventDao = AttributeAliasStateEventDao;
                     var eL = new List<IAttributeAliasStateCreated>();
-                    foreach (var e in eventDao.FindByAttributeStateEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByAttributeEventId(this.StateEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IAttributeAliasStateCreated)e);
@@ -270,7 +270,7 @@ namespace Dddml.Wms.Domain.Attribute
 
         public virtual IAttributeAliasStateCreated NewAttributeAliasStateCreated(string code)
         {
-            var stateEvent = new AttributeAliasStateCreated(NewAttributeAliasStateEventId(code));
+            var stateEvent = new AttributeAliasStateCreated(NewAttributeAliasEventId(code));
             return stateEvent;
         }
 
@@ -319,11 +319,11 @@ namespace Dddml.Wms.Domain.Attribute
 		{
 		}
 
-		public AttributeStateMergePatched (AttributeStateEventId stateEventId) : base(stateEventId)
+		public AttributeStateMergePatched (AttributeEventId stateEventId) : base(stateEventId)
 		{
 		}
 
-		private Dictionary<AttributeValueStateEventId, IAttributeValueStateEvent> _attributeValueEvents = new Dictionary<AttributeValueStateEventId, IAttributeValueStateEvent>();
+		private Dictionary<AttributeValueEventId, IAttributeValueStateEvent> _attributeValueEvents = new Dictionary<AttributeValueEventId, IAttributeValueStateEvent>();
 
         private IEnumerable<IAttributeValueStateEvent> _readOnlyAttributeValueEvents;
         
@@ -340,7 +340,7 @@ namespace Dddml.Wms.Domain.Attribute
                     if (_readOnlyAttributeValueEvents != null) { return _readOnlyAttributeValueEvents; }
                     var eventDao = AttributeValueStateEventDao;
                     var eL = new List<IAttributeValueStateEvent>();
-                    foreach (var e in eventDao.FindByAttributeStateEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByAttributeEventId(this.StateEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IAttributeValueStateEvent)e);
@@ -369,23 +369,23 @@ namespace Dddml.Wms.Domain.Attribute
 
         public virtual IAttributeValueStateCreated NewAttributeValueStateCreated(string value)
         {
-            var stateEvent = new AttributeValueStateCreated(NewAttributeValueStateEventId(value));
+            var stateEvent = new AttributeValueStateCreated(NewAttributeValueEventId(value));
             return stateEvent;
         }
 
         public virtual IAttributeValueStateMergePatched NewAttributeValueStateMergePatched(string value)
         {
-            var stateEvent = new AttributeValueStateMergePatched(NewAttributeValueStateEventId(value));
+            var stateEvent = new AttributeValueStateMergePatched(NewAttributeValueEventId(value));
             return stateEvent;
         }
 
         public virtual IAttributeValueStateRemoved NewAttributeValueStateRemoved(string value)
         {
-            var stateEvent = new AttributeValueStateRemoved(NewAttributeValueStateEventId(value));
+            var stateEvent = new AttributeValueStateRemoved(NewAttributeValueEventId(value));
             return stateEvent;
         }
 
-		private Dictionary<AttributeAliasStateEventId, IAttributeAliasStateEvent> _attributeAliasEvents = new Dictionary<AttributeAliasStateEventId, IAttributeAliasStateEvent>();
+		private Dictionary<AttributeAliasEventId, IAttributeAliasStateEvent> _attributeAliasEvents = new Dictionary<AttributeAliasEventId, IAttributeAliasStateEvent>();
 
         private IEnumerable<IAttributeAliasStateEvent> _readOnlyAttributeAliasEvents;
         
@@ -402,7 +402,7 @@ namespace Dddml.Wms.Domain.Attribute
                     if (_readOnlyAttributeAliasEvents != null) { return _readOnlyAttributeAliasEvents; }
                     var eventDao = AttributeAliasStateEventDao;
                     var eL = new List<IAttributeAliasStateEvent>();
-                    foreach (var e in eventDao.FindByAttributeStateEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByAttributeEventId(this.StateEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IAttributeAliasStateEvent)e);
@@ -431,19 +431,19 @@ namespace Dddml.Wms.Domain.Attribute
 
         public virtual IAttributeAliasStateCreated NewAttributeAliasStateCreated(string code)
         {
-            var stateEvent = new AttributeAliasStateCreated(NewAttributeAliasStateEventId(code));
+            var stateEvent = new AttributeAliasStateCreated(NewAttributeAliasEventId(code));
             return stateEvent;
         }
 
         public virtual IAttributeAliasStateMergePatched NewAttributeAliasStateMergePatched(string code)
         {
-            var stateEvent = new AttributeAliasStateMergePatched(NewAttributeAliasStateEventId(code));
+            var stateEvent = new AttributeAliasStateMergePatched(NewAttributeAliasEventId(code));
             return stateEvent;
         }
 
         public virtual IAttributeAliasStateRemoved NewAttributeAliasStateRemoved(string code)
         {
-            var stateEvent = new AttributeAliasStateRemoved(NewAttributeAliasStateEventId(code));
+            var stateEvent = new AttributeAliasStateRemoved(NewAttributeAliasEventId(code));
             return stateEvent;
         }
 
@@ -471,7 +471,7 @@ namespace Dddml.Wms.Domain.Attribute
 		{
 		}
 
-		public AttributeStateDeleted (AttributeStateEventId stateEventId) : base(stateEventId)
+		public AttributeStateDeleted (AttributeEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -480,7 +480,7 @@ namespace Dddml.Wms.Domain.Attribute
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
 
-		private Dictionary<AttributeValueStateEventId, IAttributeValueStateRemoved> _attributeValueEvents = new Dictionary<AttributeValueStateEventId, IAttributeValueStateRemoved>();
+		private Dictionary<AttributeValueEventId, IAttributeValueStateRemoved> _attributeValueEvents = new Dictionary<AttributeValueEventId, IAttributeValueStateRemoved>();
 		
         private IEnumerable<IAttributeValueStateRemoved> _readOnlyAttributeValueEvents;
 
@@ -497,7 +497,7 @@ namespace Dddml.Wms.Domain.Attribute
                     if (_readOnlyAttributeValueEvents != null) { return _readOnlyAttributeValueEvents; }
                     var eventDao = AttributeValueStateEventDao;
                     var eL = new List<IAttributeValueStateRemoved>();
-                    foreach (var e in eventDao.FindByAttributeStateEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByAttributeEventId(this.StateEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IAttributeValueStateRemoved)e);
@@ -526,11 +526,11 @@ namespace Dddml.Wms.Domain.Attribute
 
         public virtual IAttributeValueStateRemoved NewAttributeValueStateRemoved(string value)
         {
-            var stateEvent = new AttributeValueStateRemoved(NewAttributeValueStateEventId(value));
+            var stateEvent = new AttributeValueStateRemoved(NewAttributeValueEventId(value));
             return stateEvent;
         }
 
-		private Dictionary<AttributeAliasStateEventId, IAttributeAliasStateRemoved> _attributeAliasEvents = new Dictionary<AttributeAliasStateEventId, IAttributeAliasStateRemoved>();
+		private Dictionary<AttributeAliasEventId, IAttributeAliasStateRemoved> _attributeAliasEvents = new Dictionary<AttributeAliasEventId, IAttributeAliasStateRemoved>();
 		
         private IEnumerable<IAttributeAliasStateRemoved> _readOnlyAttributeAliasEvents;
 
@@ -547,7 +547,7 @@ namespace Dddml.Wms.Domain.Attribute
                     if (_readOnlyAttributeAliasEvents != null) { return _readOnlyAttributeAliasEvents; }
                     var eventDao = AttributeAliasStateEventDao;
                     var eL = new List<IAttributeAliasStateRemoved>();
-                    foreach (var e in eventDao.FindByAttributeStateEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByAttributeEventId(this.StateEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IAttributeAliasStateRemoved)e);
@@ -576,7 +576,7 @@ namespace Dddml.Wms.Domain.Attribute
 
         public virtual IAttributeAliasStateRemoved NewAttributeAliasStateRemoved(string code)
         {
-            var stateEvent = new AttributeAliasStateRemoved(NewAttributeAliasStateEventId(code));
+            var stateEvent = new AttributeAliasStateRemoved(NewAttributeAliasEventId(code));
             return stateEvent;
         }
 

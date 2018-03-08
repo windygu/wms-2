@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.Shipment
 	{
 		void Save(IShipmentReceiptStateEvent e);
 
-        IEnumerable<IShipmentReceiptStateEvent> FindByShipmentStateEventId(ShipmentStateEventId shipmentStateEventId);
+        IEnumerable<IShipmentReceiptStateEvent> FindByShipmentEventId(ShipmentEventId shipmentEventId);
 
 	}
 

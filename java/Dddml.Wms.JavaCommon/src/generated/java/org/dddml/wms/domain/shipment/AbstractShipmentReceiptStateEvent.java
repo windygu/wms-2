@@ -8,14 +8,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractShipmentReceiptStateEvent extends AbstractStateEvent implements ShipmentReceiptStateEvent 
 {
-    private ShipmentReceiptStateEventId stateEventId;
+    private ShipmentReceiptEventId stateEventId;
 
-    public ShipmentReceiptStateEventId getStateEventId() {
+    public ShipmentReceiptEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(ShipmentReceiptStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(ShipmentReceiptEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public String getReceiptSeqId() {
@@ -238,8 +238,8 @@ public abstract class AbstractShipmentReceiptStateEvent extends AbstractStateEve
     protected AbstractShipmentReceiptStateEvent() {
     }
 
-    protected AbstractShipmentReceiptStateEvent(ShipmentReceiptStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractShipmentReceiptStateEvent(ShipmentReceiptEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -249,11 +249,11 @@ public abstract class AbstractShipmentReceiptStateEvent extends AbstractStateEve
     public static abstract class AbstractShipmentReceiptStateCreated extends AbstractShipmentReceiptStateEvent implements ShipmentReceiptStateEvent.ShipmentReceiptStateCreated
     {
         public AbstractShipmentReceiptStateCreated() {
-            this(new ShipmentReceiptStateEventId());
+            this(new ShipmentReceiptEventId());
         }
 
-        public AbstractShipmentReceiptStateCreated(ShipmentReceiptStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractShipmentReceiptStateCreated(ShipmentReceiptEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -266,11 +266,11 @@ public abstract class AbstractShipmentReceiptStateEvent extends AbstractStateEve
     public static abstract class AbstractShipmentReceiptStateMergePatched extends AbstractShipmentReceiptStateEvent implements ShipmentReceiptStateEvent.ShipmentReceiptStateMergePatched
     {
         public AbstractShipmentReceiptStateMergePatched() {
-            this(new ShipmentReceiptStateEventId());
+            this(new ShipmentReceiptEventId());
         }
 
-        public AbstractShipmentReceiptStateMergePatched(ShipmentReceiptStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractShipmentReceiptStateMergePatched(ShipmentReceiptEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -415,8 +415,8 @@ public abstract class AbstractShipmentReceiptStateEvent extends AbstractStateEve
         public SimpleShipmentReceiptStateCreated() {
         }
 
-        public SimpleShipmentReceiptStateCreated(ShipmentReceiptStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleShipmentReceiptStateCreated(ShipmentReceiptEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -425,8 +425,8 @@ public abstract class AbstractShipmentReceiptStateEvent extends AbstractStateEve
         public SimpleShipmentReceiptStateMergePatched() {
         }
 
-        public SimpleShipmentReceiptStateMergePatched(ShipmentReceiptStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleShipmentReceiptStateMergePatched(ShipmentReceiptEventId eventId) {
+            super(eventId);
         }
     }
 

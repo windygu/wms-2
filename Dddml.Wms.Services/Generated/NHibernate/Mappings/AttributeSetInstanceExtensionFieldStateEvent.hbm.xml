@@ -5,7 +5,7 @@
   
   <class name="AttributeSetInstanceExtensionFieldStateEventBase" table="AttributeSetInstanceExtensionFieldStateEvents" mutable="false" abstract="true">
 
-    <composite-id name="StateEventId" class="Dddml.Wms.Domain.AttributeSetInstanceExtensionField.AttributeSetInstanceExtensionFieldStateEventId">
+    <composite-id name="StateEventId" class="Dddml.Wms.Domain.AttributeSetInstanceExtensionField.AttributeSetInstanceExtensionFieldEventId">
         <key-property name="Name" ><column name="Name" length="50" /></key-property>
         <key-property name="Version" ></key-property>
     </composite-id>

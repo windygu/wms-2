@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.Warehouse
 	public abstract class WarehouseStateEventDtoBase : IStateEventDto, IWarehouseStateCreated, IWarehouseStateMergePatched, IWarehouseStateDeleted
 	{
 
-        private WarehouseStateEventIdDto _stateEventId;
+        private WarehouseEventIdDto _stateEventId;
 
-		protected internal virtual WarehouseStateEventIdDto StateEventId 
+		protected internal virtual WarehouseEventIdDto StateEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new WarehouseStateEventIdDto(); }
+                if (_stateEventId == null) { _stateEventId = new WarehouseEventIdDto(); }
                 return _stateEventId;
             }
             set
@@ -58,10 +58,10 @@ namespace Dddml.Wms.Domain.Warehouse
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		WarehouseStateEventId IGlobalIdentity<WarehouseStateEventId>.GlobalId {
+		WarehouseEventId IGlobalIdentity<WarehouseEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToWarehouseStateEventId();
+				return this.StateEventId.ToWarehouseEventId();
 			}
 		}
 
@@ -174,16 +174,16 @@ namespace Dddml.Wms.Domain.Warehouse
 		}
 
 
-        WarehouseStateEventId IWarehouseStateEvent.StateEventId
+        WarehouseEventId IWarehouseStateEvent.StateEventId
         {
-            get { return this.StateEventId.ToWarehouseStateEventId(); }
+            get { return this.StateEventId.ToWarehouseEventId(); }
         }
 
         protected WarehouseStateEventDtoBase()
         {
         }
 
-        protected WarehouseStateEventDtoBase(WarehouseStateEventIdDto stateEventId)
+        protected WarehouseStateEventDtoBase(WarehouseEventIdDto stateEventId)
         {
             this.StateEventId = stateEventId;
         }

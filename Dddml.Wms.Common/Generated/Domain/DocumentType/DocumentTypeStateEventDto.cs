@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.DocumentType
 	public abstract class DocumentTypeStateEventDtoBase : IStateEventDto, IDocumentTypeStateCreated, IDocumentTypeStateMergePatched, IDocumentTypeStateDeleted
 	{
 
-        private DocumentTypeStateEventIdDto _stateEventId;
+        private DocumentTypeEventIdDto _stateEventId;
 
-		protected internal virtual DocumentTypeStateEventIdDto StateEventId 
+		protected internal virtual DocumentTypeEventIdDto StateEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new DocumentTypeStateEventIdDto(); }
+                if (_stateEventId == null) { _stateEventId = new DocumentTypeEventIdDto(); }
                 return _stateEventId;
             }
             set
@@ -56,10 +56,10 @@ namespace Dddml.Wms.Domain.DocumentType
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		DocumentTypeStateEventId IGlobalIdentity<DocumentTypeStateEventId>.GlobalId {
+		DocumentTypeEventId IGlobalIdentity<DocumentTypeEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToDocumentTypeStateEventId();
+				return this.StateEventId.ToDocumentTypeEventId();
 			}
 		}
 
@@ -153,16 +153,16 @@ namespace Dddml.Wms.Domain.DocumentType
 		}
 
 
-        DocumentTypeStateEventId IDocumentTypeStateEvent.StateEventId
+        DocumentTypeEventId IDocumentTypeStateEvent.StateEventId
         {
-            get { return this.StateEventId.ToDocumentTypeStateEventId(); }
+            get { return this.StateEventId.ToDocumentTypeEventId(); }
         }
 
         protected DocumentTypeStateEventDtoBase()
         {
         }
 
-        protected DocumentTypeStateEventDtoBase(DocumentTypeStateEventIdDto stateEventId)
+        protected DocumentTypeStateEventDtoBase(DocumentTypeEventIdDto stateEventId)
         {
             this.StateEventId = stateEventId;
         }

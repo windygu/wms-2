@@ -16,13 +16,13 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 	public abstract class MovementLineMvoStateEventDtoBase : IStateEventDto, IMovementLineMvoStateCreated, IMovementLineMvoStateMergePatched, IMovementLineMvoStateDeleted
 	{
 
-        private MovementLineMvoStateEventIdDto _stateEventId;
+        private MovementLineMvoEventIdDto _stateEventId;
 
-		protected internal virtual MovementLineMvoStateEventIdDto StateEventId 
+		protected internal virtual MovementLineMvoEventIdDto StateEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new MovementLineMvoStateEventIdDto(); }
+                if (_stateEventId == null) { _stateEventId = new MovementLineMvoEventIdDto(); }
                 return _stateEventId;
             }
             set
@@ -121,10 +121,10 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		MovementLineMvoStateEventId IGlobalIdentity<MovementLineMvoStateEventId>.GlobalId {
+		MovementLineMvoEventId IGlobalIdentity<MovementLineMvoEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToMovementLineMvoStateEventId();
+				return this.StateEventId.ToMovementLineMvoEventId();
 			}
 		}
 
@@ -826,16 +826,16 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 		}
 
 
-        MovementLineMvoStateEventId IMovementLineMvoStateEvent.StateEventId
+        MovementLineMvoEventId IMovementLineMvoStateEvent.StateEventId
         {
-            get { return this.StateEventId.ToMovementLineMvoStateEventId(); }
+            get { return this.StateEventId.ToMovementLineMvoEventId(); }
         }
 
         protected MovementLineMvoStateEventDtoBase()
         {
         }
 
-        protected MovementLineMvoStateEventDtoBase(MovementLineMvoStateEventIdDto stateEventId)
+        protected MovementLineMvoStateEventDtoBase(MovementLineMvoEventIdDto stateEventId)
         {
             this.StateEventId = stateEventId;
         }

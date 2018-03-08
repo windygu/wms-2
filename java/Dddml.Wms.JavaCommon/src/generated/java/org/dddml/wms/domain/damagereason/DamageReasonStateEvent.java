@@ -7,7 +7,7 @@ import org.dddml.wms.specialization.Event;
 
 public interface DamageReasonStateEvent extends Event
 {
-    DamageReasonStateEventId getStateEventId();
+    DamageReasonEventId getStateEventId();
 
     boolean getStateEventReadOnly();
 

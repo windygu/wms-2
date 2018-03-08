@@ -11,9 +11,9 @@ using Dddml.Wms.Domain.DamageHandlingMethod;
 
 namespace Dddml.Wms.Domain.DamageHandlingMethod
 {
-	public interface IDamageHandlingMethodStateEvent : IEvent, IStateEventDto, IGlobalIdentity<DamageHandlingMethodStateEventId>, ICreated<string>
+	public interface IDamageHandlingMethodStateEvent : IEvent, IStateEventDto, IGlobalIdentity<DamageHandlingMethodEventId>, ICreated<string>
 	{
-		DamageHandlingMethodStateEventId StateEventId { get; }
+		DamageHandlingMethodEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

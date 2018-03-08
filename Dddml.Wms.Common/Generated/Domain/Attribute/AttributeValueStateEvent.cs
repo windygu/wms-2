@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.Attribute
 	public abstract class AttributeValueStateEventBase : IAttributeValueStateEvent
 	{
 
-		public virtual AttributeValueStateEventId StateEventId { get; set; }
+		public virtual AttributeValueEventId StateEventId { get; set; }
 
         public virtual string Value
         {
@@ -39,7 +39,7 @@ namespace Dddml.Wms.Domain.Attribute
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		AttributeValueStateEventId IGlobalIdentity<AttributeValueStateEventId>.GlobalId {
+		AttributeValueEventId IGlobalIdentity<AttributeValueEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -85,7 +85,7 @@ namespace Dddml.Wms.Domain.Attribute
         {
         }
 
-        protected AttributeValueStateEventBase(AttributeValueStateEventId stateEventId)
+        protected AttributeValueStateEventBase(AttributeValueEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -102,11 +102,11 @@ namespace Dddml.Wms.Domain.Attribute
 
 	public class AttributeValueStateCreated : AttributeValueStateEventBase, IAttributeValueStateCreated
 	{
-		public AttributeValueStateCreated () : this(new AttributeValueStateEventId())
+		public AttributeValueStateCreated () : this(new AttributeValueEventId())
 		{
 		}
 
-		public AttributeValueStateCreated (AttributeValueStateEventId stateEventId) : base(stateEventId)
+		public AttributeValueStateCreated (AttributeValueEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -134,7 +134,7 @@ namespace Dddml.Wms.Domain.Attribute
 		{
 		}
 
-		public AttributeValueStateMergePatched (AttributeValueStateEventId stateEventId) : base(stateEventId)
+		public AttributeValueStateMergePatched (AttributeValueEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -153,7 +153,7 @@ namespace Dddml.Wms.Domain.Attribute
 		{
 		}
 
-		public AttributeValueStateRemoved (AttributeValueStateEventId stateEventId) : base(stateEventId)
+		public AttributeValueStateRemoved (AttributeValueEventId stateEventId) : base(stateEventId)
 		{
 		}
 

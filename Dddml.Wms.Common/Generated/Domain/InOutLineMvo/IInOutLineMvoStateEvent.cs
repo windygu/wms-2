@@ -12,9 +12,9 @@ using Dddml.Wms.Domain.InOut;
 
 namespace Dddml.Wms.Domain.InOutLineMvo
 {
-	public interface IInOutLineMvoStateEvent : IEvent, IStateEventDto, IGlobalIdentity<InOutLineMvoStateEventId>, ICreated<string>
+	public interface IInOutLineMvoStateEvent : IEvent, IStateEventDto, IGlobalIdentity<InOutLineMvoEventId>, ICreated<string>
 	{
-		InOutLineMvoStateEventId StateEventId { get; }
+		InOutLineMvoEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

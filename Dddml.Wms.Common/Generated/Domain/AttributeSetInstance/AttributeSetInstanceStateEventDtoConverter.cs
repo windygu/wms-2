@@ -28,7 +28,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
         public virtual AttributeSetInstanceStateCreatedDto ToAttributeSetInstanceStateCreatedDto(IAttributeSetInstanceStateCreated e)
         {
             var dto = new AttributeSetInstanceStateCreatedDto();
-            dto.StateEventId = new AttributeSetInstanceStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new AttributeSetInstanceEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

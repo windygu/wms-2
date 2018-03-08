@@ -44,7 +44,7 @@ public abstract class AbstractAttributeSetInstanceAggregate extends AbstractAggr
     }
 
     protected AttributeSetInstanceStateEvent map(AttributeSetInstanceCommand.CreateAttributeSetInstance c) {
-        AttributeSetInstanceStateEventId stateEventId = new AttributeSetInstanceStateEventId(c.getAttributeSetInstanceId(), c.getVersion());
+        AttributeSetInstanceEventId stateEventId = new AttributeSetInstanceEventId(c.getAttributeSetInstanceId(), c.getVersion());
         AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated e = newAttributeSetInstanceStateCreated(stateEventId);
         e.setAttributeSetId(c.getAttributeSetId());
         e.setOrganizationId(c.getOrganizationId());
@@ -124,7 +124,7 @@ public abstract class AbstractAttributeSetInstanceAggregate extends AbstractAggr
     ////////////////////////
 
     protected AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated newAttributeSetInstanceStateCreated(Long version, String commandId, String requesterId) {
-        AttributeSetInstanceStateEventId stateEventId = new AttributeSetInstanceStateEventId(this.state.getAttributeSetInstanceId(), version);
+        AttributeSetInstanceEventId stateEventId = new AttributeSetInstanceEventId(this.state.getAttributeSetInstanceId(), version);
         AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated e = newAttributeSetInstanceStateCreated(stateEventId);
         ((AbstractAttributeSetInstanceStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -132,7 +132,7 @@ public abstract class AbstractAttributeSetInstanceAggregate extends AbstractAggr
         return e;
     }
 
-    protected AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated newAttributeSetInstanceStateCreated(AttributeSetInstanceStateEventId stateEventId) {
+    protected AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated newAttributeSetInstanceStateCreated(AttributeSetInstanceEventId stateEventId) {
         return new AbstractAttributeSetInstanceStateEvent.SimpleAttributeSetInstanceStateCreated(stateEventId);
     }
 

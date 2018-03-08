@@ -22,7 +22,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule.NHibernate
 	{
 		public override object GetEventId(IEventStoreAggregateId eventStoreAggregateId, long version)
 		{
-			return new InventoryPostingRuleStateEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
+			return new InventoryPostingRuleEventId((string)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
 		public override Type GetSupportedStateEventType()

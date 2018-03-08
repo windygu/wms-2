@@ -16,7 +16,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 	public abstract class AttributeUseMvoStateEventBase : IAttributeUseMvoStateEvent
 	{
 
-		public virtual AttributeUseMvoStateEventId StateEventId { get; set; }
+		public virtual AttributeUseMvoEventId StateEventId { get; set; }
 
         public virtual AttributeSetAttributeUseId AttributeSetAttributeUseId
         {
@@ -62,7 +62,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		AttributeUseMvoStateEventId IGlobalIdentity<AttributeUseMvoStateEventId>.GlobalId {
+		AttributeUseMvoEventId IGlobalIdentity<AttributeUseMvoEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -106,7 +106,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
         {
         }
 
-        protected AttributeUseMvoStateEventBase(AttributeUseMvoStateEventId stateEventId)
+        protected AttributeUseMvoStateEventBase(AttributeUseMvoEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -123,11 +123,11 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
 	public class AttributeUseMvoStateCreated : AttributeUseMvoStateEventBase, IAttributeUseMvoStateCreated
 	{
-		public AttributeUseMvoStateCreated () : this(new AttributeUseMvoStateEventId())
+		public AttributeUseMvoStateCreated () : this(new AttributeUseMvoEventId())
 		{
 		}
 
-		public AttributeUseMvoStateCreated (AttributeUseMvoStateEventId stateEventId) : base(stateEventId)
+		public AttributeUseMvoStateCreated (AttributeUseMvoEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -177,7 +177,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 		{
 		}
 
-		public AttributeUseMvoStateMergePatched (AttributeUseMvoStateEventId stateEventId) : base(stateEventId)
+		public AttributeUseMvoStateMergePatched (AttributeUseMvoEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -196,7 +196,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 		{
 		}
 
-		public AttributeUseMvoStateDeleted (AttributeUseMvoStateEventId stateEventId) : base(stateEventId)
+		public AttributeUseMvoStateDeleted (AttributeUseMvoEventId stateEventId) : base(stateEventId)
 		{
 		}
 

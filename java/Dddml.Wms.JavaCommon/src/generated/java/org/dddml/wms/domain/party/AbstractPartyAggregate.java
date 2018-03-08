@@ -65,7 +65,7 @@ public abstract class AbstractPartyAggregate extends AbstractAggregate implement
     }
 
     protected PartyStateEvent mapToPartyEvent(PartyCommand.CreateParty c) {
-        PartyStateEventId stateEventId = new PartyStateEventId(c.getPartyId(), c.getVersion());
+        PartyEventId stateEventId = new PartyEventId(c.getPartyId(), c.getVersion());
         PartyStateEvent.PartyStateCreated e = newPartyStateCreated(stateEventId);
         e.setPartyTypeId(c.getPartyTypeId());
         e.setActive(c.getActive());
@@ -76,7 +76,7 @@ public abstract class AbstractPartyAggregate extends AbstractAggregate implement
     }
 
     protected OrganizationStateEvent mapToOrganizationEvent(PartyCommand.CreateParty c) {
-        PartyStateEventId stateEventId = new PartyStateEventId(c.getPartyId(), c.getVersion());
+        PartyEventId stateEventId = new PartyEventId(c.getPartyId(), c.getVersion());
         OrganizationStateEvent.OrganizationStateCreated e = newOrganizationStateCreated(stateEventId);
         e.setPartyTypeId(c.getPartyTypeId());
         e.setActive(c.getActive());
@@ -101,7 +101,7 @@ public abstract class AbstractPartyAggregate extends AbstractAggregate implement
     }
 
     protected PartyStateEvent mapToPartyEvent(PartyCommand.MergePatchParty c) {
-        PartyStateEventId stateEventId = new PartyStateEventId(c.getPartyId(), c.getVersion());
+        PartyEventId stateEventId = new PartyEventId(c.getPartyId(), c.getVersion());
         PartyStateEvent.PartyStateMergePatched e = newPartyStateMergePatched(stateEventId);
         e.setPartyTypeId(c.getPartyTypeId());
         e.setActive(c.getActive());
@@ -114,7 +114,7 @@ public abstract class AbstractPartyAggregate extends AbstractAggregate implement
     }
 
     protected OrganizationStateEvent mapToOrganizationEvent(PartyCommand.MergePatchParty c) {
-        PartyStateEventId stateEventId = new PartyStateEventId(c.getPartyId(), c.getVersion());
+        PartyEventId stateEventId = new PartyEventId(c.getPartyId(), c.getVersion());
         OrganizationStateEvent.OrganizationStateMergePatched e = newOrganizationStateMergePatched(stateEventId);
         e.setPartyTypeId(c.getPartyTypeId());
         e.setActive(c.getActive());
@@ -145,7 +145,7 @@ public abstract class AbstractPartyAggregate extends AbstractAggregate implement
     }
 
     protected PartyStateEvent mapToPartyEvent(PartyCommand.DeleteParty c) {
-        PartyStateEventId stateEventId = new PartyStateEventId(c.getPartyId(), c.getVersion());
+        PartyEventId stateEventId = new PartyEventId(c.getPartyId(), c.getVersion());
         PartyStateEvent.PartyStateDeleted e = newPartyStateDeleted(stateEventId);
         ((AbstractPartyStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
@@ -154,7 +154,7 @@ public abstract class AbstractPartyAggregate extends AbstractAggregate implement
     }
 
     protected OrganizationStateEvent mapToOrganizationEvent(PartyCommand.DeleteParty c) {
-        PartyStateEventId stateEventId = new PartyStateEventId(c.getPartyId(), c.getVersion());
+        PartyEventId stateEventId = new PartyEventId(c.getPartyId(), c.getVersion());
         OrganizationStateEvent.OrganizationStateDeleted e = newOrganizationStateDeleted(stateEventId);
         ((AbstractOrganizationStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
@@ -166,7 +166,7 @@ public abstract class AbstractPartyAggregate extends AbstractAggregate implement
     ////////////////////////
 
     protected PartyStateEvent.PartyStateCreated newPartyStateCreated(Long version, String commandId, String requesterId) {
-        PartyStateEventId stateEventId = new PartyStateEventId(this.state.getPartyId(), version);
+        PartyEventId stateEventId = new PartyEventId(this.state.getPartyId(), version);
         PartyStateEvent.PartyStateCreated e = newPartyStateCreated(stateEventId);
         ((AbstractPartyStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -175,7 +175,7 @@ public abstract class AbstractPartyAggregate extends AbstractAggregate implement
     }
 
     protected PartyStateEvent.PartyStateMergePatched newPartyStateMergePatched(Long version, String commandId, String requesterId) {
-        PartyStateEventId stateEventId = new PartyStateEventId(this.state.getPartyId(), version);
+        PartyEventId stateEventId = new PartyEventId(this.state.getPartyId(), version);
         PartyStateEvent.PartyStateMergePatched e = newPartyStateMergePatched(stateEventId);
         ((AbstractPartyStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -184,7 +184,7 @@ public abstract class AbstractPartyAggregate extends AbstractAggregate implement
     }
 
     protected PartyStateEvent.PartyStateDeleted newPartyStateDeleted(Long version, String commandId, String requesterId) {
-        PartyStateEventId stateEventId = new PartyStateEventId(this.state.getPartyId(), version);
+        PartyEventId stateEventId = new PartyEventId(this.state.getPartyId(), version);
         PartyStateEvent.PartyStateDeleted e = newPartyStateDeleted(stateEventId);
         ((AbstractPartyStateEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
@@ -192,28 +192,28 @@ public abstract class AbstractPartyAggregate extends AbstractAggregate implement
         return e;
     }
 
-    protected PartyStateEvent.PartyStateCreated newPartyStateCreated(PartyStateEventId stateEventId) {
+    protected PartyStateEvent.PartyStateCreated newPartyStateCreated(PartyEventId stateEventId) {
         return new AbstractPartyStateEvent.SimplePartyStateCreated(stateEventId);
     }
 
-    protected PartyStateEvent.PartyStateMergePatched newPartyStateMergePatched(PartyStateEventId stateEventId) {
+    protected PartyStateEvent.PartyStateMergePatched newPartyStateMergePatched(PartyEventId stateEventId) {
         return new AbstractPartyStateEvent.SimplePartyStateMergePatched(stateEventId);
     }
 
-    protected OrganizationStateEvent.OrganizationStateCreated newOrganizationStateCreated(PartyStateEventId stateEventId) {
+    protected OrganizationStateEvent.OrganizationStateCreated newOrganizationStateCreated(PartyEventId stateEventId) {
         return new AbstractOrganizationStateEvent.SimpleOrganizationStateCreated(stateEventId);
     }
 
-    protected OrganizationStateEvent.OrganizationStateMergePatched newOrganizationStateMergePatched(PartyStateEventId stateEventId) {
+    protected OrganizationStateEvent.OrganizationStateMergePatched newOrganizationStateMergePatched(PartyEventId stateEventId) {
         return new AbstractOrganizationStateEvent.SimpleOrganizationStateMergePatched(stateEventId);
     }
 
-    protected PartyStateEvent.PartyStateDeleted newPartyStateDeleted(PartyStateEventId stateEventId)
+    protected PartyStateEvent.PartyStateDeleted newPartyStateDeleted(PartyEventId stateEventId)
     {
         return new AbstractPartyStateEvent.SimplePartyStateDeleted(stateEventId);
     }
 
-    protected OrganizationStateEvent.OrganizationStateDeleted newOrganizationStateDeleted(PartyStateEventId stateEventId)
+    protected OrganizationStateEvent.OrganizationStateDeleted newOrganizationStateDeleted(PartyEventId stateEventId)
     {
         return new AbstractOrganizationStateEvent.SimpleOrganizationStateDeleted(stateEventId);
     }

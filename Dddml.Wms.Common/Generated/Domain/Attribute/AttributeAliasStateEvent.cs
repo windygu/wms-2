@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.Attribute
 	public abstract class AttributeAliasStateEventBase : IAttributeAliasStateEvent
 	{
 
-		public virtual AttributeAliasStateEventId StateEventId { get; set; }
+		public virtual AttributeAliasEventId StateEventId { get; set; }
 
         public virtual string Code
         {
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.Attribute
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		AttributeAliasStateEventId IGlobalIdentity<AttributeAliasStateEventId>.GlobalId {
+		AttributeAliasEventId IGlobalIdentity<AttributeAliasEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -81,7 +81,7 @@ namespace Dddml.Wms.Domain.Attribute
         {
         }
 
-        protected AttributeAliasStateEventBase(AttributeAliasStateEventId stateEventId)
+        protected AttributeAliasStateEventBase(AttributeAliasEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -98,11 +98,11 @@ namespace Dddml.Wms.Domain.Attribute
 
 	public class AttributeAliasStateCreated : AttributeAliasStateEventBase, IAttributeAliasStateCreated
 	{
-		public AttributeAliasStateCreated () : this(new AttributeAliasStateEventId())
+		public AttributeAliasStateCreated () : this(new AttributeAliasEventId())
 		{
 		}
 
-		public AttributeAliasStateCreated (AttributeAliasStateEventId stateEventId) : base(stateEventId)
+		public AttributeAliasStateCreated (AttributeAliasEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -126,7 +126,7 @@ namespace Dddml.Wms.Domain.Attribute
 		{
 		}
 
-		public AttributeAliasStateMergePatched (AttributeAliasStateEventId stateEventId) : base(stateEventId)
+		public AttributeAliasStateMergePatched (AttributeAliasEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -145,7 +145,7 @@ namespace Dddml.Wms.Domain.Attribute
 		{
 		}
 
-		public AttributeAliasStateRemoved (AttributeAliasStateEventId stateEventId) : base(stateEventId)
+		public AttributeAliasStateRemoved (AttributeAliasEventId stateEventId) : base(stateEventId)
 		{
 		}
 

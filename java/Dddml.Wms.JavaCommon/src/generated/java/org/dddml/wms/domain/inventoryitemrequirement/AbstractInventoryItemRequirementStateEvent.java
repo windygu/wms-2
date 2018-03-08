@@ -11,14 +11,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractInventoryItemRequirementStateEvent extends AbstractStateEvent implements InventoryItemRequirementStateEvent 
 {
-    private InventoryItemRequirementStateEventId stateEventId;
+    private InventoryItemRequirementEventId stateEventId;
 
-    public InventoryItemRequirementStateEventId getStateEventId() {
+    public InventoryItemRequirementEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(InventoryItemRequirementStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(InventoryItemRequirementEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public InventoryItemId getInventoryItemRequirementId() {
@@ -85,16 +85,16 @@ public abstract class AbstractInventoryItemRequirementStateEvent extends Abstrac
     protected AbstractInventoryItemRequirementStateEvent() {
     }
 
-    protected AbstractInventoryItemRequirementStateEvent(InventoryItemRequirementStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractInventoryItemRequirementStateEvent(InventoryItemRequirementEventId eventId) {
+        this.stateEventId = eventId;
     }
 
-    protected InventoryItemRequirementEntryStateEventId newInventoryItemRequirementEntryStateEventId(Long entrySeqId)
+    protected InventoryItemRequirementEntryEventId newInventoryItemRequirementEntryEventId(Long entrySeqId)
     {
-        InventoryItemRequirementEntryStateEventId stateEventId = new InventoryItemRequirementEntryStateEventId(this.getStateEventId().getInventoryItemRequirementId(), 
+        InventoryItemRequirementEntryEventId eventId = new InventoryItemRequirementEntryEventId(this.getStateEventId().getInventoryItemRequirementId(), 
             entrySeqId, 
             this.getStateEventId().getVersion());
-        return stateEventId;
+        return eventId;
     }
 
     protected void throwOnInconsistentEventIds(InventoryItemRequirementEntryStateEvent e)
@@ -112,7 +112,7 @@ public abstract class AbstractInventoryItemRequirementStateEvent extends Abstrac
     }
 
     public InventoryItemRequirementEntryStateEvent.InventoryItemRequirementEntryStateCreated newInventoryItemRequirementEntryStateCreated(Long entrySeqId) {
-        return new AbstractInventoryItemRequirementEntryStateEvent.SimpleInventoryItemRequirementEntryStateCreated(newInventoryItemRequirementEntryStateEventId(entrySeqId));
+        return new AbstractInventoryItemRequirementEntryStateEvent.SimpleInventoryItemRequirementEntryStateCreated(newInventoryItemRequirementEntryEventId(entrySeqId));
     }
 
 
@@ -122,18 +122,18 @@ public abstract class AbstractInventoryItemRequirementStateEvent extends Abstrac
     public static abstract class AbstractInventoryItemRequirementStateCreated extends AbstractInventoryItemRequirementStateEvent implements InventoryItemRequirementStateEvent.InventoryItemRequirementStateCreated
     {
         public AbstractInventoryItemRequirementStateCreated() {
-            this(new InventoryItemRequirementStateEventId());
+            this(new InventoryItemRequirementEventId());
         }
 
-        public AbstractInventoryItemRequirementStateCreated(InventoryItemRequirementStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractInventoryItemRequirementStateCreated(InventoryItemRequirementEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
             return StateEventType.CREATED;
         }
 
-        private Map<InventoryItemRequirementEntryStateEventId, InventoryItemRequirementEntryStateEvent.InventoryItemRequirementEntryStateCreated> inventoryItemRequirementEntryEvents = new HashMap<InventoryItemRequirementEntryStateEventId, InventoryItemRequirementEntryStateEvent.InventoryItemRequirementEntryStateCreated>();
+        private Map<InventoryItemRequirementEntryEventId, InventoryItemRequirementEntryStateEvent.InventoryItemRequirementEntryStateCreated> inventoryItemRequirementEntryEvents = new HashMap<InventoryItemRequirementEntryEventId, InventoryItemRequirementEntryStateEvent.InventoryItemRequirementEntryStateCreated>();
         
         private Iterable<InventoryItemRequirementEntryStateEvent.InventoryItemRequirementEntryStateCreated> readOnlyInventoryItemRequirementEntryEvents;
 
@@ -166,11 +166,11 @@ public abstract class AbstractInventoryItemRequirementStateEvent extends Abstrac
     public static abstract class AbstractInventoryItemRequirementStateMergePatched extends AbstractInventoryItemRequirementStateEvent implements InventoryItemRequirementStateEvent.InventoryItemRequirementStateMergePatched
     {
         public AbstractInventoryItemRequirementStateMergePatched() {
-            this(new InventoryItemRequirementStateEventId());
+            this(new InventoryItemRequirementEventId());
         }
 
-        public AbstractInventoryItemRequirementStateMergePatched(InventoryItemRequirementStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractInventoryItemRequirementStateMergePatched(InventoryItemRequirementEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -187,7 +187,7 @@ public abstract class AbstractInventoryItemRequirementStateEvent extends Abstrac
             this.isPropertyQuantityRemoved = removed;
         }
 
-        private Map<InventoryItemRequirementEntryStateEventId, InventoryItemRequirementEntryStateEvent> inventoryItemRequirementEntryEvents = new HashMap<InventoryItemRequirementEntryStateEventId, InventoryItemRequirementEntryStateEvent>();
+        private Map<InventoryItemRequirementEntryEventId, InventoryItemRequirementEntryStateEvent> inventoryItemRequirementEntryEvents = new HashMap<InventoryItemRequirementEntryEventId, InventoryItemRequirementEntryStateEvent>();
         
         private Iterable<InventoryItemRequirementEntryStateEvent> readOnlyInventoryItemRequirementEntryEvents;
 
@@ -222,8 +222,8 @@ public abstract class AbstractInventoryItemRequirementStateEvent extends Abstrac
         public SimpleInventoryItemRequirementStateCreated() {
         }
 
-        public SimpleInventoryItemRequirementStateCreated(InventoryItemRequirementStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleInventoryItemRequirementStateCreated(InventoryItemRequirementEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -232,8 +232,8 @@ public abstract class AbstractInventoryItemRequirementStateEvent extends Abstrac
         public SimpleInventoryItemRequirementStateMergePatched() {
         }
 
-        public SimpleInventoryItemRequirementStateMergePatched(InventoryItemRequirementStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleInventoryItemRequirementStateMergePatched(InventoryItemRequirementEventId eventId) {
+            super(eventId);
         }
     }
 

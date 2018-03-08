@@ -17,7 +17,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 	public abstract class SellableInventoryItemStateEventBase : ISellableInventoryItemStateEvent
 	{
 
-		public virtual SellableInventoryItemStateEventId StateEventId { get; set; }
+		public virtual SellableInventoryItemEventId StateEventId { get; set; }
 
         public virtual InventoryItemId SellableInventoryItemId
         {
@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		SellableInventoryItemStateEventId IGlobalIdentity<SellableInventoryItemStateEventId>.GlobalId {
+		SellableInventoryItemEventId IGlobalIdentity<SellableInventoryItemEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -79,14 +79,14 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
         {
         }
 
-        protected SellableInventoryItemStateEventBase(SellableInventoryItemStateEventId stateEventId)
+        protected SellableInventoryItemStateEventBase(SellableInventoryItemEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
 
-        protected SellableInventoryItemEntryStateEventId NewSellableInventoryItemEntryStateEventId(long entrySeqId)
+        protected SellableInventoryItemEntryEventId NewSellableInventoryItemEntryEventId(long entrySeqId)
         {
-            var stateEventId = new SellableInventoryItemEntryStateEventId(this.StateEventId.SellableInventoryItemId, entrySeqId, this.StateEventId.Version);
+            var stateEventId = new SellableInventoryItemEntryEventId(this.StateEventId.SellableInventoryItemId, entrySeqId, this.StateEventId.Version);
             return stateEventId;
         }
 
@@ -118,15 +118,15 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
 	public class SellableInventoryItemStateCreated : SellableInventoryItemStateEventBase, ISellableInventoryItemStateCreated
 	{
-		public SellableInventoryItemStateCreated () : this(new SellableInventoryItemStateEventId())
+		public SellableInventoryItemStateCreated () : this(new SellableInventoryItemEventId())
 		{
 		}
 
-		public SellableInventoryItemStateCreated (SellableInventoryItemStateEventId stateEventId) : base(stateEventId)
+		public SellableInventoryItemStateCreated (SellableInventoryItemEventId stateEventId) : base(stateEventId)
 		{
 		}
 
-		private Dictionary<SellableInventoryItemEntryStateEventId, ISellableInventoryItemEntryStateCreated> _sellableInventoryItemEntryEvents = new Dictionary<SellableInventoryItemEntryStateEventId, ISellableInventoryItemEntryStateCreated>();
+		private Dictionary<SellableInventoryItemEntryEventId, ISellableInventoryItemEntryStateCreated> _sellableInventoryItemEntryEvents = new Dictionary<SellableInventoryItemEntryEventId, ISellableInventoryItemEntryStateCreated>();
         
         private IEnumerable<ISellableInventoryItemEntryStateCreated> _readOnlySellableInventoryItemEntryEvents;
 
@@ -157,7 +157,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
         public virtual ISellableInventoryItemEntryStateCreated NewSellableInventoryItemEntryStateCreated(long entrySeqId)
         {
-            var stateEvent = new SellableInventoryItemEntryStateCreated(NewSellableInventoryItemEntryStateEventId(entrySeqId));
+            var stateEvent = new SellableInventoryItemEntryStateCreated(NewSellableInventoryItemEntryEventId(entrySeqId));
             return stateEvent;
         }
 
@@ -179,11 +179,11 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 		{
 		}
 
-		public SellableInventoryItemStateMergePatched (SellableInventoryItemStateEventId stateEventId) : base(stateEventId)
+		public SellableInventoryItemStateMergePatched (SellableInventoryItemEventId stateEventId) : base(stateEventId)
 		{
 		}
 
-		private Dictionary<SellableInventoryItemEntryStateEventId, ISellableInventoryItemEntryStateEvent> _sellableInventoryItemEntryEvents = new Dictionary<SellableInventoryItemEntryStateEventId, ISellableInventoryItemEntryStateEvent>();
+		private Dictionary<SellableInventoryItemEntryEventId, ISellableInventoryItemEntryStateEvent> _sellableInventoryItemEntryEvents = new Dictionary<SellableInventoryItemEntryEventId, ISellableInventoryItemEntryStateEvent>();
 
         private IEnumerable<ISellableInventoryItemEntryStateEvent> _readOnlySellableInventoryItemEntryEvents;
         
@@ -214,7 +214,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
         public virtual ISellableInventoryItemEntryStateCreated NewSellableInventoryItemEntryStateCreated(long entrySeqId)
         {
-            var stateEvent = new SellableInventoryItemEntryStateCreated(NewSellableInventoryItemEntryStateEventId(entrySeqId));
+            var stateEvent = new SellableInventoryItemEntryStateCreated(NewSellableInventoryItemEntryEventId(entrySeqId));
             return stateEvent;
         }
 

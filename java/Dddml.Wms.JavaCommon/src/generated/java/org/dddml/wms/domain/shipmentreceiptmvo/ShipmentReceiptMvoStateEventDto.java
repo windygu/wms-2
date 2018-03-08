@@ -8,15 +8,15 @@ import org.dddml.wms.domain.AbstractStateEvent;
 public class ShipmentReceiptMvoStateEventDto extends AbstractStateEvent
 {
 
-    private ShipmentReceiptMvoStateEventId stateEventId;
+    private ShipmentReceiptMvoEventId stateEventId;
 
-    ShipmentReceiptMvoStateEventId getStateEventId() {
-        if (stateEventId == null) { stateEventId = new ShipmentReceiptMvoStateEventId(); }
-        return this.stateEventId;
+    ShipmentReceiptMvoEventId getStateEventId() {
+        if (stateEventId == null) { stateEventId = new ShipmentReceiptMvoEventId(); }
+        return stateEventId;
     }
 
-    void setStateEventId(ShipmentReceiptMvoStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    void setStateEventId(ShipmentReceiptMvoEventId eventId) {
+        this.stateEventId = eventId;
     }
 
     public ShipmentReceiptId getShipmentReceiptId() {

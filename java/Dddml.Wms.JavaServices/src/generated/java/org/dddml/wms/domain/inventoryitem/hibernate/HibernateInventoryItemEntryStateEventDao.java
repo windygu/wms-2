@@ -35,13 +35,13 @@ public class HibernateInventoryItemEntryStateEventDao implements InventoryItemEn
 
     @Transactional(readOnly = true)
     @Override
-    public Iterable<InventoryItemEntryStateEvent> findByInventoryItemStateEventId(InventoryItemStateEventId inventoryItemStateEventId)
+    public Iterable<InventoryItemEntryStateEvent> findByInventoryItemEventId(InventoryItemEventId inventoryItemEventId)
     {
         Criteria criteria = getCurrentSession().createCriteria(AbstractInventoryItemEntryState.class);
         Junction partIdCondition = Restrictions.conjunction()
-            .add(Restrictions.eq("inventoryItemEntryId.inventoryItemIdProductId", inventoryItemStateEventId.getInventoryItemId().getProductId()))
-            .add(Restrictions.eq("inventoryItemEntryId.inventoryItemIdLocatorId", inventoryItemStateEventId.getInventoryItemId().getLocatorId()))
-            .add(Restrictions.eq("inventoryItemEntryId.inventoryItemIdAttributeSetInstanceId", inventoryItemStateEventId.getInventoryItemId().getAttributeSetInstanceId()))
+            .add(Restrictions.eq("inventoryItemEntryId.inventoryItemIdProductId", inventoryItemEventId.getInventoryItemId().getProductId()))
+            .add(Restrictions.eq("inventoryItemEntryId.inventoryItemIdLocatorId", inventoryItemEventId.getInventoryItemId().getLocatorId()))
+            .add(Restrictions.eq("inventoryItemEntryId.inventoryItemIdAttributeSetInstanceId", inventoryItemEventId.getInventoryItemId().getAttributeSetInstanceId()))
             ;
         return (Iterable<InventoryItemEntryStateEvent>) criteria.add(partIdCondition).list()
                 .stream().map(s -> new AbstractInventoryItemEntryStateEvent.SimpleInventoryItemEntryStateCreated((InventoryItemEntryState)s)).collect(java.util.stream.Collectors.toList());

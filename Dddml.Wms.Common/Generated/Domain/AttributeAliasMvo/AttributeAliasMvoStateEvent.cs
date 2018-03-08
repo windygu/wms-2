@@ -16,7 +16,7 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 	public abstract class AttributeAliasMvoStateEventBase : IAttributeAliasMvoStateEvent
 	{
 
-		public virtual AttributeAliasMvoStateEventId StateEventId { get; set; }
+		public virtual AttributeAliasMvoEventId StateEventId { get; set; }
 
         public virtual AttributeAliasId AttributeAliasId
         {
@@ -68,7 +68,7 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		AttributeAliasMvoStateEventId IGlobalIdentity<AttributeAliasMvoStateEventId>.GlobalId {
+		AttributeAliasMvoEventId IGlobalIdentity<AttributeAliasMvoEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -112,7 +112,7 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
         {
         }
 
-        protected AttributeAliasMvoStateEventBase(AttributeAliasMvoStateEventId stateEventId)
+        protected AttributeAliasMvoStateEventBase(AttributeAliasMvoEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -129,11 +129,11 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 
 	public class AttributeAliasMvoStateCreated : AttributeAliasMvoStateEventBase, IAttributeAliasMvoStateCreated
 	{
-		public AttributeAliasMvoStateCreated () : this(new AttributeAliasMvoStateEventId())
+		public AttributeAliasMvoStateCreated () : this(new AttributeAliasMvoEventId())
 		{
 		}
 
-		public AttributeAliasMvoStateCreated (AttributeAliasMvoStateEventId stateEventId) : base(stateEventId)
+		public AttributeAliasMvoStateCreated (AttributeAliasMvoEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -189,7 +189,7 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 		{
 		}
 
-		public AttributeAliasMvoStateMergePatched (AttributeAliasMvoStateEventId stateEventId) : base(stateEventId)
+		public AttributeAliasMvoStateMergePatched (AttributeAliasMvoEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -208,7 +208,7 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 		{
 		}
 
-		public AttributeAliasMvoStateDeleted (AttributeAliasMvoStateEventId stateEventId) : base(stateEventId)
+		public AttributeAliasMvoStateDeleted (AttributeAliasMvoEventId stateEventId) : base(stateEventId)
 		{
 		}
 

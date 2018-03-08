@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.Shipment
 	public abstract class ShipmentItemStateEventBase : IShipmentItemStateEvent
 	{
 
-		public virtual ShipmentItemStateEventId StateEventId { get; set; }
+		public virtual ShipmentItemEventId StateEventId { get; set; }
 
         public virtual string ShipmentItemSeqId
         {
@@ -43,7 +43,7 @@ namespace Dddml.Wms.Domain.Shipment
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		ShipmentItemStateEventId IGlobalIdentity<ShipmentItemStateEventId>.GlobalId {
+		ShipmentItemEventId IGlobalIdentity<ShipmentItemEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -89,7 +89,7 @@ namespace Dddml.Wms.Domain.Shipment
         {
         }
 
-        protected ShipmentItemStateEventBase(ShipmentItemStateEventId stateEventId)
+        protected ShipmentItemStateEventBase(ShipmentItemEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -106,11 +106,11 @@ namespace Dddml.Wms.Domain.Shipment
 
 	public class ShipmentItemStateCreated : ShipmentItemStateEventBase, IShipmentItemStateCreated
 	{
-		public ShipmentItemStateCreated () : this(new ShipmentItemStateEventId())
+		public ShipmentItemStateCreated () : this(new ShipmentItemEventId())
 		{
 		}
 
-		public ShipmentItemStateCreated (ShipmentItemStateEventId stateEventId) : base(stateEventId)
+		public ShipmentItemStateCreated (ShipmentItemEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -142,7 +142,7 @@ namespace Dddml.Wms.Domain.Shipment
 		{
 		}
 
-		public ShipmentItemStateMergePatched (ShipmentItemStateEventId stateEventId) : base(stateEventId)
+		public ShipmentItemStateMergePatched (ShipmentItemEventId stateEventId) : base(stateEventId)
 		{
 		}
 

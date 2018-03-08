@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.Movement
 	{
 		void Save(IMovementLineStateEvent e);
 
-        IEnumerable<IMovementLineStateEvent> FindByMovementStateEventId(MovementStateEventId movementStateEventId);
+        IEnumerable<IMovementLineStateEvent> FindByMovementEventId(MovementEventId movementEventId);
 
 	}
 

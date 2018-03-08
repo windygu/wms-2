@@ -5,7 +5,7 @@
   
   <class name="LocatorStateEventBase" table="LocatorStateEvents" mutable="false" abstract="true">
 
-    <composite-id name="StateEventId" class="Dddml.Wms.Domain.Locator.LocatorStateEventId">
+    <composite-id name="StateEventId" class="Dddml.Wms.Domain.Locator.LocatorEventId">
         <key-property name="LocatorId" ><column name="LocatorId" length="50" /></key-property>
         <key-property name="Version" ></key-property>
     </composite-id>

@@ -104,7 +104,7 @@ namespace Dddml.Wms.Domain.Lot
 
         protected virtual ILotStateCreated Map(ICreateLot c)
         {
-			var stateEventId = new LotStateEventId(c.LotId, c.Version);
+			var stateEventId = new LotEventId(c.LotId, c.Version);
             ILotStateCreated e = NewLotStateCreated(stateEventId);
 		
             e.Quantity = c.Quantity;
@@ -123,7 +123,7 @@ namespace Dddml.Wms.Domain.Lot
 
         protected virtual ILotStateMergePatched Map(IMergePatchLot c)
         {
-			var stateEventId = new LotStateEventId(c.LotId, c.Version);
+			var stateEventId = new LotEventId(c.LotId, c.Version);
             ILotStateMergePatched e = NewLotStateMergePatched(stateEventId);
 
             e.Quantity = c.Quantity;
@@ -147,7 +147,7 @@ namespace Dddml.Wms.Domain.Lot
 
         protected virtual ILotStateDeleted Map(IDeleteLot c)
         {
-			var stateEventId = new LotStateEventId(c.LotId, c.Version);
+			var stateEventId = new LotEventId(c.LotId, c.Version);
             ILotStateDeleted e = NewLotStateDeleted(stateEventId);
 			
             e.CommandId = c.CommandId;
@@ -176,7 +176,7 @@ namespace Dddml.Wms.Domain.Lot
 
         protected LotStateCreated NewLotStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new LotStateEventId(_state.LotId, version);
+            var stateEventId = new LotEventId(_state.LotId, version);
             var e = NewLotStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -189,7 +189,7 @@ namespace Dddml.Wms.Domain.Lot
 
         protected LotStateMergePatched NewLotStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new LotStateEventId(_state.LotId, version);
+            var stateEventId = new LotEventId(_state.LotId, version);
             var e = NewLotStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -203,7 +203,7 @@ namespace Dddml.Wms.Domain.Lot
 
         protected LotStateDeleted NewLotStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new LotStateEventId(_state.LotId, version);
+            var stateEventId = new LotEventId(_state.LotId, version);
             var e = NewLotStateDeleted(stateEventId);
 
             e.CommandId = commandId;
@@ -216,17 +216,17 @@ namespace Dddml.Wms.Domain.Lot
 
 ////////////////////////
 
-		private LotStateCreated NewLotStateCreated(LotStateEventId stateEventId)
+		private LotStateCreated NewLotStateCreated(LotEventId stateEventId)
 		{
 			return new LotStateCreated(stateEventId);			
 		}
 
-        private LotStateMergePatched NewLotStateMergePatched(LotStateEventId stateEventId)
+        private LotStateMergePatched NewLotStateMergePatched(LotEventId stateEventId)
 		{
 			return new LotStateMergePatched(stateEventId);
 		}
 
-        private LotStateDeleted NewLotStateDeleted(LotStateEventId stateEventId)
+        private LotStateDeleted NewLotStateDeleted(LotEventId stateEventId)
 		{
 			return new LotStateDeleted(stateEventId);
 		}

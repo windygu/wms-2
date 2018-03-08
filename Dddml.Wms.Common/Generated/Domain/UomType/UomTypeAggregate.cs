@@ -104,7 +104,7 @@ namespace Dddml.Wms.Domain.UomType
 
         protected virtual IUomTypeStateCreated Map(ICreateUomType c)
         {
-			var stateEventId = new UomTypeStateEventId(c.UomTypeId, c.Version);
+			var stateEventId = new UomTypeEventId(c.UomTypeId, c.Version);
             IUomTypeStateCreated e = NewUomTypeStateCreated(stateEventId);
 		
             e.ParentTypeId = c.ParentTypeId;
@@ -124,7 +124,7 @@ namespace Dddml.Wms.Domain.UomType
 
         protected virtual IUomTypeStateMergePatched Map(IMergePatchUomType c)
         {
-			var stateEventId = new UomTypeStateEventId(c.UomTypeId, c.Version);
+			var stateEventId = new UomTypeEventId(c.UomTypeId, c.Version);
             IUomTypeStateMergePatched e = NewUomTypeStateMergePatched(stateEventId);
 
             e.ParentTypeId = c.ParentTypeId;
@@ -150,7 +150,7 @@ namespace Dddml.Wms.Domain.UomType
 
         protected virtual IUomTypeStateDeleted Map(IDeleteUomType c)
         {
-			var stateEventId = new UomTypeStateEventId(c.UomTypeId, c.Version);
+			var stateEventId = new UomTypeEventId(c.UomTypeId, c.Version);
             IUomTypeStateDeleted e = NewUomTypeStateDeleted(stateEventId);
 			
             e.CommandId = c.CommandId;
@@ -179,7 +179,7 @@ namespace Dddml.Wms.Domain.UomType
 
         protected UomTypeStateCreated NewUomTypeStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new UomTypeStateEventId(_state.UomTypeId, version);
+            var stateEventId = new UomTypeEventId(_state.UomTypeId, version);
             var e = NewUomTypeStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -192,7 +192,7 @@ namespace Dddml.Wms.Domain.UomType
 
         protected UomTypeStateMergePatched NewUomTypeStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new UomTypeStateEventId(_state.UomTypeId, version);
+            var stateEventId = new UomTypeEventId(_state.UomTypeId, version);
             var e = NewUomTypeStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -206,7 +206,7 @@ namespace Dddml.Wms.Domain.UomType
 
         protected UomTypeStateDeleted NewUomTypeStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new UomTypeStateEventId(_state.UomTypeId, version);
+            var stateEventId = new UomTypeEventId(_state.UomTypeId, version);
             var e = NewUomTypeStateDeleted(stateEventId);
 
             e.CommandId = commandId;
@@ -219,17 +219,17 @@ namespace Dddml.Wms.Domain.UomType
 
 ////////////////////////
 
-		private UomTypeStateCreated NewUomTypeStateCreated(UomTypeStateEventId stateEventId)
+		private UomTypeStateCreated NewUomTypeStateCreated(UomTypeEventId stateEventId)
 		{
 			return new UomTypeStateCreated(stateEventId);			
 		}
 
-        private UomTypeStateMergePatched NewUomTypeStateMergePatched(UomTypeStateEventId stateEventId)
+        private UomTypeStateMergePatched NewUomTypeStateMergePatched(UomTypeEventId stateEventId)
 		{
 			return new UomTypeStateMergePatched(stateEventId);
 		}
 
-        private UomTypeStateDeleted NewUomTypeStateDeleted(UomTypeStateEventId stateEventId)
+        private UomTypeStateDeleted NewUomTypeStateDeleted(UomTypeEventId stateEventId)
 		{
 			return new UomTypeStateDeleted(stateEventId);
 		}

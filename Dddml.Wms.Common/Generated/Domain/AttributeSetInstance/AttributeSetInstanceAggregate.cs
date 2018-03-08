@@ -92,7 +92,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
         protected virtual IAttributeSetInstanceStateCreated Map(ICreateAttributeSetInstance c)
         {
-			var stateEventId = new AttributeSetInstanceStateEventId(c.AttributeSetInstanceId, c.Version);
+			var stateEventId = new AttributeSetInstanceEventId(c.AttributeSetInstanceId, c.Version);
             IAttributeSetInstanceStateCreated e = NewAttributeSetInstanceStateCreated(stateEventId);
 		
             e.AttributeSetId = c.AttributeSetId;
@@ -190,7 +190,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
         protected AttributeSetInstanceStateCreated NewAttributeSetInstanceStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new AttributeSetInstanceStateEventId(_state.AttributeSetInstanceId, version);
+            var stateEventId = new AttributeSetInstanceEventId(_state.AttributeSetInstanceId, version);
             var e = NewAttributeSetInstanceStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -203,7 +203,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
 ////////////////////////
 
-		private AttributeSetInstanceStateCreated NewAttributeSetInstanceStateCreated(AttributeSetInstanceStateEventId stateEventId)
+		private AttributeSetInstanceStateCreated NewAttributeSetInstanceStateCreated(AttributeSetInstanceEventId stateEventId)
 		{
 			return new AttributeSetInstanceStateCreated(stateEventId);			
 		}

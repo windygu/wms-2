@@ -21,7 +21,7 @@ namespace Dddml.Wms.Domain.UomConversion.NHibernate
 	{
 		public override object GetEventId(IEventStoreAggregateId eventStoreAggregateId, long version)
 		{
-			return new UomConversionStateEventId((UomConversionId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
+			return new UomConversionEventId((UomConversionId)(eventStoreAggregateId as EventStoreAggregateId).Id, (long)version);
 		}
 
 		public override Type GetSupportedStateEventType()

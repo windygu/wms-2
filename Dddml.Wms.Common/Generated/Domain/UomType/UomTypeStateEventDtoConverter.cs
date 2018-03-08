@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.UomType
         public virtual UomTypeStateCreatedDto ToUomTypeStateCreatedDto(IUomTypeStateCreated e)
         {
             var dto = new UomTypeStateCreatedDto();
-            dto.StateEventId = new UomTypeStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new UomTypeEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -52,7 +52,7 @@ namespace Dddml.Wms.Domain.UomType
         public virtual UomTypeStateMergePatchedDto ToUomTypeStateMergePatchedDto(IUomTypeStateMergePatched e)
         {
             var dto = new UomTypeStateMergePatchedDto();
-            dto.StateEventId = new UomTypeStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new UomTypeEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -72,7 +72,7 @@ namespace Dddml.Wms.Domain.UomType
         public virtual UomTypeStateDeletedDto ToUomTypeStateDeletedDto(IUomTypeStateDeleted e)
         {
             var dto = new UomTypeStateDeletedDto();
-            dto.StateEventId = new UomTypeStateEventIdDtoWrapper(e.StateEventId);
+            dto.StateEventId = new UomTypeEventIdDtoWrapper(e.StateEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

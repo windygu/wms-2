@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.UomConversion
 	public abstract class UomConversionStateEventBase : IUomConversionStateEvent
 	{
 
-		public virtual UomConversionStateEventId StateEventId { get; set; }
+		public virtual UomConversionEventId StateEventId { get; set; }
 
         public virtual UomConversionId UomConversionId
         {
@@ -41,7 +41,7 @@ namespace Dddml.Wms.Domain.UomConversion
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		UomConversionStateEventId IGlobalIdentity<UomConversionStateEventId>.GlobalId {
+		UomConversionEventId IGlobalIdentity<UomConversionEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -85,7 +85,7 @@ namespace Dddml.Wms.Domain.UomConversion
         {
         }
 
-        protected UomConversionStateEventBase(UomConversionStateEventId stateEventId)
+        protected UomConversionStateEventBase(UomConversionEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -102,11 +102,11 @@ namespace Dddml.Wms.Domain.UomConversion
 
 	public class UomConversionStateCreated : UomConversionStateEventBase, IUomConversionStateCreated
 	{
-		public UomConversionStateCreated () : this(new UomConversionStateEventId())
+		public UomConversionStateCreated () : this(new UomConversionEventId())
 		{
 		}
 
-		public UomConversionStateCreated (UomConversionStateEventId stateEventId) : base(stateEventId)
+		public UomConversionStateCreated (UomConversionEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -136,7 +136,7 @@ namespace Dddml.Wms.Domain.UomConversion
 		{
 		}
 
-		public UomConversionStateMergePatched (UomConversionStateEventId stateEventId) : base(stateEventId)
+		public UomConversionStateMergePatched (UomConversionEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -155,7 +155,7 @@ namespace Dddml.Wms.Domain.UomConversion
 		{
 		}
 
-		public UomConversionStateDeleted (UomConversionStateEventId stateEventId) : base(stateEventId)
+		public UomConversionStateDeleted (UomConversionEventId stateEventId) : base(stateEventId)
 		{
 		}
 

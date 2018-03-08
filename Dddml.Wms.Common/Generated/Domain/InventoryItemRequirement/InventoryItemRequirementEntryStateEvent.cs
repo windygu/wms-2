@@ -21,11 +21,11 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 
         public virtual InventoryItemRequirementEntryState InventoryItemRequirementEntryState { get { return _state; } }
 
-        public virtual InventoryItemRequirementEntryStateEventId StateEventId
+        public virtual InventoryItemRequirementEntryEventId StateEventId
         {
             get
             {
-                InventoryItemRequirementEntryStateEventId eventId = new InventoryItemRequirementEntryStateEventId(_state.InventoryItemRequirementId, _state.EntrySeqId, default(long));
+                InventoryItemRequirementEntryEventId eventId = new InventoryItemRequirementEntryEventId(_state.InventoryItemRequirementId, _state.EntrySeqId, default(long));
                 return eventId;
             }
             set
@@ -53,7 +53,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		InventoryItemRequirementEntryStateEventId IGlobalIdentity<InventoryItemRequirementEntryStateEventId>.GlobalId {
+		InventoryItemRequirementEntryEventId IGlobalIdentity<InventoryItemRequirementEntryEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -99,7 +99,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
         {
         }
 
-        protected InventoryItemRequirementEntryStateEventBase(InventoryItemRequirementEntryStateEventId stateEventId) : this(new InventoryItemRequirementEntryState())
+        protected InventoryItemRequirementEntryStateEventBase(InventoryItemRequirementEntryEventId stateEventId) : this(new InventoryItemRequirementEntryState())
         {
             this.StateEventId = stateEventId;
         }
@@ -122,11 +122,11 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 
 	public class InventoryItemRequirementEntryStateCreated : InventoryItemRequirementEntryStateEventBase, IInventoryItemRequirementEntryStateCreated
 	{
-		public InventoryItemRequirementEntryStateCreated () : this(new InventoryItemRequirementEntryStateEventId())
+		public InventoryItemRequirementEntryStateCreated () : this(new InventoryItemRequirementEntryEventId())
 		{
 		}
 
-		public InventoryItemRequirementEntryStateCreated (InventoryItemRequirementEntryStateEventId stateEventId) : base(stateEventId)
+		public InventoryItemRequirementEntryStateCreated (InventoryItemRequirementEntryEventId stateEventId) : base(stateEventId)
 		{
 		}
 

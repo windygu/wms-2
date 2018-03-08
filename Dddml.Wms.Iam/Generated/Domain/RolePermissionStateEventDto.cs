@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.RolePermission
 	public abstract class RolePermissionStateEventDtoBase : IStateEventDto, IRolePermissionStateCreated, IRolePermissionStateMergePatched, IRolePermissionStateDeleted
 	{
 
-        private RolePermissionStateEventIdDto _stateEventId;
+        private RolePermissionEventIdDto _stateEventId;
 
-		protected internal virtual RolePermissionStateEventIdDto StateEventId 
+		protected internal virtual RolePermissionEventIdDto StateEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new RolePermissionStateEventIdDto(); }
+                if (_stateEventId == null) { _stateEventId = new RolePermissionEventIdDto(); }
                 return _stateEventId;
             }
             set
@@ -52,10 +52,10 @@ namespace Dddml.Wms.Domain.RolePermission
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		RolePermissionStateEventId IGlobalIdentity<RolePermissionStateEventId>.GlobalId {
+		RolePermissionEventId IGlobalIdentity<RolePermissionEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToRolePermissionStateEventId();
+				return this.StateEventId.ToRolePermissionEventId();
 			}
 		}
 
@@ -111,16 +111,16 @@ namespace Dddml.Wms.Domain.RolePermission
 		}
 
 
-        RolePermissionStateEventId IRolePermissionStateEvent.StateEventId
+        RolePermissionEventId IRolePermissionStateEvent.StateEventId
         {
-            get { return this.StateEventId.ToRolePermissionStateEventId(); }
+            get { return this.StateEventId.ToRolePermissionEventId(); }
         }
 
         protected RolePermissionStateEventDtoBase()
         {
         }
 
-        protected RolePermissionStateEventDtoBase(RolePermissionStateEventIdDto stateEventId)
+        protected RolePermissionStateEventDtoBase(RolePermissionEventIdDto stateEventId)
         {
             this.StateEventId = stateEventId;
         }

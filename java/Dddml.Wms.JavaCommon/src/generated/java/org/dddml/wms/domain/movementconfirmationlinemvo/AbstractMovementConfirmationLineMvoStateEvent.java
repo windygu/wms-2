@@ -10,14 +10,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractMovementConfirmationLineMvoStateEvent extends AbstractStateEvent implements MovementConfirmationLineMvoStateEvent 
 {
-    private MovementConfirmationLineMvoStateEventId stateEventId;
+    private MovementConfirmationLineMvoEventId stateEventId;
 
-    public MovementConfirmationLineMvoStateEventId getStateEventId() {
+    public MovementConfirmationLineMvoEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(MovementConfirmationLineMvoStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(MovementConfirmationLineMvoEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public MovementConfirmationLineId getMovementConfirmationLineId() {
@@ -348,8 +348,8 @@ public abstract class AbstractMovementConfirmationLineMvoStateEvent extends Abst
     protected AbstractMovementConfirmationLineMvoStateEvent() {
     }
 
-    protected AbstractMovementConfirmationLineMvoStateEvent(MovementConfirmationLineMvoStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractMovementConfirmationLineMvoStateEvent(MovementConfirmationLineMvoEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -359,11 +359,11 @@ public abstract class AbstractMovementConfirmationLineMvoStateEvent extends Abst
     public static abstract class AbstractMovementConfirmationLineMvoStateCreated extends AbstractMovementConfirmationLineMvoStateEvent implements MovementConfirmationLineMvoStateEvent.MovementConfirmationLineMvoStateCreated
     {
         public AbstractMovementConfirmationLineMvoStateCreated() {
-            this(new MovementConfirmationLineMvoStateEventId());
+            this(new MovementConfirmationLineMvoEventId());
         }
 
-        public AbstractMovementConfirmationLineMvoStateCreated(MovementConfirmationLineMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractMovementConfirmationLineMvoStateCreated(MovementConfirmationLineMvoEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -376,11 +376,11 @@ public abstract class AbstractMovementConfirmationLineMvoStateEvent extends Abst
     public static abstract class AbstractMovementConfirmationLineMvoStateMergePatched extends AbstractMovementConfirmationLineMvoStateEvent implements MovementConfirmationLineMvoStateEvent.MovementConfirmationLineMvoStateMergePatched
     {
         public AbstractMovementConfirmationLineMvoStateMergePatched() {
-            this(new MovementConfirmationLineMvoStateEventId());
+            this(new MovementConfirmationLineMvoEventId());
         }
 
-        public AbstractMovementConfirmationLineMvoStateMergePatched(MovementConfirmationLineMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractMovementConfirmationLineMvoStateMergePatched(MovementConfirmationLineMvoEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -623,11 +623,11 @@ public abstract class AbstractMovementConfirmationLineMvoStateEvent extends Abst
     public static abstract class AbstractMovementConfirmationLineMvoStateDeleted extends AbstractMovementConfirmationLineMvoStateEvent implements MovementConfirmationLineMvoStateEvent.MovementConfirmationLineMvoStateDeleted
     {
         public AbstractMovementConfirmationLineMvoStateDeleted() {
-            this(new MovementConfirmationLineMvoStateEventId());
+            this(new MovementConfirmationLineMvoEventId());
         }
 
-        public AbstractMovementConfirmationLineMvoStateDeleted(MovementConfirmationLineMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractMovementConfirmationLineMvoStateDeleted(MovementConfirmationLineMvoEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -640,8 +640,8 @@ public abstract class AbstractMovementConfirmationLineMvoStateEvent extends Abst
         public SimpleMovementConfirmationLineMvoStateCreated() {
         }
 
-        public SimpleMovementConfirmationLineMvoStateCreated(MovementConfirmationLineMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleMovementConfirmationLineMvoStateCreated(MovementConfirmationLineMvoEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -650,8 +650,8 @@ public abstract class AbstractMovementConfirmationLineMvoStateEvent extends Abst
         public SimpleMovementConfirmationLineMvoStateMergePatched() {
         }
 
-        public SimpleMovementConfirmationLineMvoStateMergePatched(MovementConfirmationLineMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleMovementConfirmationLineMvoStateMergePatched(MovementConfirmationLineMvoEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -660,8 +660,8 @@ public abstract class AbstractMovementConfirmationLineMvoStateEvent extends Abst
         public SimpleMovementConfirmationLineMvoStateDeleted() {
         }
 
-        public SimpleMovementConfirmationLineMvoStateDeleted(MovementConfirmationLineMvoStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleMovementConfirmationLineMvoStateDeleted(MovementConfirmationLineMvoEventId eventId) {
+            super(eventId);
         }
     }
 

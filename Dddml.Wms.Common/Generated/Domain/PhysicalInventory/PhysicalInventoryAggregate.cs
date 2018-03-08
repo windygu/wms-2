@@ -95,7 +95,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
         protected virtual IPhysicalInventoryStateCreated Map(ICreatePhysicalInventory c)
         {
-			var stateEventId = new PhysicalInventoryStateEventId(c.DocumentNumber, c.Version);
+			var stateEventId = new PhysicalInventoryEventId(c.DocumentNumber, c.Version);
             IPhysicalInventoryStateCreated e = NewPhysicalInventoryStateCreated(stateEventId);
 		
             NewPhysicalInventoryDocumentActionCommandAndExecute(c, _state, e);
@@ -134,7 +134,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
         protected virtual IPhysicalInventoryStateMergePatched Map(IMergePatchPhysicalInventory c)
         {
-			var stateEventId = new PhysicalInventoryStateEventId(c.DocumentNumber, c.Version);
+			var stateEventId = new PhysicalInventoryEventId(c.DocumentNumber, c.Version);
             IPhysicalInventoryStateMergePatched e = NewPhysicalInventoryStateMergePatched(stateEventId);
 
             e.WarehouseId = c.WarehouseId;
@@ -235,7 +235,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
         protected virtual IPhysicalInventoryLineStateCreated MapCreate(ICreatePhysicalInventoryLine c, IPhysicalInventoryCommand outerCommand, long version, IPhysicalInventoryState outerState)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new PhysicalInventoryLineStateEventId(c.PhysicalInventoryDocumentNumber, c.InventoryItemId, version);
+			var stateEventId = new PhysicalInventoryLineEventId(c.PhysicalInventoryDocumentNumber, c.InventoryItemId, version);
             IPhysicalInventoryLineStateCreated e = NewPhysicalInventoryLineStateCreated(stateEventId);
             var s = outerState.PhysicalInventoryLines.Get(c.InventoryItemId, true);
 
@@ -256,7 +256,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
         protected virtual IPhysicalInventoryLineStateMergePatched MapMergePatch(IMergePatchPhysicalInventoryLine c, IPhysicalInventoryCommand outerCommand, long version, IPhysicalInventoryState outerState)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new PhysicalInventoryLineStateEventId(c.PhysicalInventoryDocumentNumber, c.InventoryItemId, version);
+			var stateEventId = new PhysicalInventoryLineEventId(c.PhysicalInventoryDocumentNumber, c.InventoryItemId, version);
             IPhysicalInventoryLineStateMergePatched e = NewPhysicalInventoryLineStateMergePatched(stateEventId);
             var s = outerState.PhysicalInventoryLines.Get(c.InventoryItemId);
 
@@ -281,7 +281,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
         protected virtual IPhysicalInventoryLineStateRemoved MapRemove(IRemovePhysicalInventoryLine c, IPhysicalInventoryCommand outerCommand, long version)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new PhysicalInventoryLineStateEventId(c.PhysicalInventoryDocumentNumber, c.InventoryItemId, version);
+			var stateEventId = new PhysicalInventoryLineEventId(c.PhysicalInventoryDocumentNumber, c.InventoryItemId, version);
             IPhysicalInventoryLineStateRemoved e = NewPhysicalInventoryLineStateRemoved(stateEventId);
 
 
@@ -308,7 +308,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
         protected PhysicalInventoryStateCreated NewPhysicalInventoryStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new PhysicalInventoryStateEventId(_state.DocumentNumber, version);
+            var stateEventId = new PhysicalInventoryEventId(_state.DocumentNumber, version);
             var e = NewPhysicalInventoryStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -321,7 +321,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
         protected PhysicalInventoryStateMergePatched NewPhysicalInventoryStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new PhysicalInventoryStateEventId(_state.DocumentNumber, version);
+            var stateEventId = new PhysicalInventoryEventId(_state.DocumentNumber, version);
             var e = NewPhysicalInventoryStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -335,28 +335,28 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
 ////////////////////////
 
-		private PhysicalInventoryStateCreated NewPhysicalInventoryStateCreated(PhysicalInventoryStateEventId stateEventId)
+		private PhysicalInventoryStateCreated NewPhysicalInventoryStateCreated(PhysicalInventoryEventId stateEventId)
 		{
 			return new PhysicalInventoryStateCreated(stateEventId);			
 		}
 
-        private PhysicalInventoryStateMergePatched NewPhysicalInventoryStateMergePatched(PhysicalInventoryStateEventId stateEventId)
+        private PhysicalInventoryStateMergePatched NewPhysicalInventoryStateMergePatched(PhysicalInventoryEventId stateEventId)
 		{
 			return new PhysicalInventoryStateMergePatched(stateEventId);
 		}
 
 
-		private PhysicalInventoryLineStateCreated NewPhysicalInventoryLineStateCreated(PhysicalInventoryLineStateEventId stateEventId)
+		private PhysicalInventoryLineStateCreated NewPhysicalInventoryLineStateCreated(PhysicalInventoryLineEventId stateEventId)
 		{
 			return new PhysicalInventoryLineStateCreated(stateEventId);
 		}
 
-        private PhysicalInventoryLineStateMergePatched NewPhysicalInventoryLineStateMergePatched(PhysicalInventoryLineStateEventId stateEventId)
+        private PhysicalInventoryLineStateMergePatched NewPhysicalInventoryLineStateMergePatched(PhysicalInventoryLineEventId stateEventId)
 		{
 			return new PhysicalInventoryLineStateMergePatched(stateEventId);
 		}
 
-        private PhysicalInventoryLineStateRemoved NewPhysicalInventoryLineStateRemoved(PhysicalInventoryLineStateEventId stateEventId)
+        private PhysicalInventoryLineStateRemoved NewPhysicalInventoryLineStateRemoved(PhysicalInventoryLineEventId stateEventId)
 		{
 			return new PhysicalInventoryLineStateRemoved(stateEventId);
 		}

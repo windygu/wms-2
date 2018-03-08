@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 	public abstract class AttributeSetStateEventBase : IAttributeSetStateEvent
 	{
 
-		public virtual AttributeSetStateEventId StateEventId { get; set; }
+		public virtual AttributeSetEventId StateEventId { get; set; }
 
         public virtual string AttributeSetId
         {
@@ -45,7 +45,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		AttributeSetStateEventId IGlobalIdentity<AttributeSetStateEventId>.GlobalId {
+		AttributeSetEventId IGlobalIdentity<AttributeSetEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -89,7 +89,7 @@ namespace Dddml.Wms.Domain.AttributeSet
         {
         }
 
-        protected AttributeSetStateEventBase(AttributeSetStateEventId stateEventId)
+        protected AttributeSetStateEventBase(AttributeSetEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -99,9 +99,9 @@ namespace Dddml.Wms.Domain.AttributeSet
 			get { return ApplicationContext.Current["AttributeUseStateEventDao"] as IAttributeUseStateEventDao; }
 		}
 
-        protected AttributeUseStateEventId NewAttributeUseStateEventId(string attributeId)
+        protected AttributeUseEventId NewAttributeUseEventId(string attributeId)
         {
-            var stateEventId = new AttributeUseStateEventId(this.StateEventId.AttributeSetId, attributeId, this.StateEventId.Version);
+            var stateEventId = new AttributeUseEventId(this.StateEventId.AttributeSetId, attributeId, this.StateEventId.Version);
             return stateEventId;
         }
 
@@ -133,15 +133,15 @@ namespace Dddml.Wms.Domain.AttributeSet
 
 	public class AttributeSetStateCreated : AttributeSetStateEventBase, IAttributeSetStateCreated, ISaveable
 	{
-		public AttributeSetStateCreated () : this(new AttributeSetStateEventId())
+		public AttributeSetStateCreated () : this(new AttributeSetEventId())
 		{
 		}
 
-		public AttributeSetStateCreated (AttributeSetStateEventId stateEventId) : base(stateEventId)
+		public AttributeSetStateCreated (AttributeSetEventId stateEventId) : base(stateEventId)
 		{
 		}
 
-		private Dictionary<AttributeUseStateEventId, IAttributeUseStateCreated> _attributeUseEvents = new Dictionary<AttributeUseStateEventId, IAttributeUseStateCreated>();
+		private Dictionary<AttributeUseEventId, IAttributeUseStateCreated> _attributeUseEvents = new Dictionary<AttributeUseEventId, IAttributeUseStateCreated>();
         
         private IEnumerable<IAttributeUseStateCreated> _readOnlyAttributeUseEvents;
 
@@ -158,7 +158,7 @@ namespace Dddml.Wms.Domain.AttributeSet
                     if (_readOnlyAttributeUseEvents != null) { return _readOnlyAttributeUseEvents; }
                     var eventDao = AttributeUseStateEventDao;
                     var eL = new List<IAttributeUseStateCreated>();
-                    foreach (var e in eventDao.FindByAttributeSetStateEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByAttributeSetEventId(this.StateEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IAttributeUseStateCreated)e);
@@ -187,7 +187,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 
         public virtual IAttributeUseStateCreated NewAttributeUseStateCreated(string attributeId)
         {
-            var stateEvent = new AttributeUseStateCreated(NewAttributeUseStateEventId(attributeId));
+            var stateEvent = new AttributeUseStateCreated(NewAttributeUseEventId(attributeId));
             return stateEvent;
         }
 
@@ -227,11 +227,11 @@ namespace Dddml.Wms.Domain.AttributeSet
 		{
 		}
 
-		public AttributeSetStateMergePatched (AttributeSetStateEventId stateEventId) : base(stateEventId)
+		public AttributeSetStateMergePatched (AttributeSetEventId stateEventId) : base(stateEventId)
 		{
 		}
 
-		private Dictionary<AttributeUseStateEventId, IAttributeUseStateEvent> _attributeUseEvents = new Dictionary<AttributeUseStateEventId, IAttributeUseStateEvent>();
+		private Dictionary<AttributeUseEventId, IAttributeUseStateEvent> _attributeUseEvents = new Dictionary<AttributeUseEventId, IAttributeUseStateEvent>();
 
         private IEnumerable<IAttributeUseStateEvent> _readOnlyAttributeUseEvents;
         
@@ -248,7 +248,7 @@ namespace Dddml.Wms.Domain.AttributeSet
                     if (_readOnlyAttributeUseEvents != null) { return _readOnlyAttributeUseEvents; }
                     var eventDao = AttributeUseStateEventDao;
                     var eL = new List<IAttributeUseStateEvent>();
-                    foreach (var e in eventDao.FindByAttributeSetStateEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByAttributeSetEventId(this.StateEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IAttributeUseStateEvent)e);
@@ -277,19 +277,19 @@ namespace Dddml.Wms.Domain.AttributeSet
 
         public virtual IAttributeUseStateCreated NewAttributeUseStateCreated(string attributeId)
         {
-            var stateEvent = new AttributeUseStateCreated(NewAttributeUseStateEventId(attributeId));
+            var stateEvent = new AttributeUseStateCreated(NewAttributeUseEventId(attributeId));
             return stateEvent;
         }
 
         public virtual IAttributeUseStateMergePatched NewAttributeUseStateMergePatched(string attributeId)
         {
-            var stateEvent = new AttributeUseStateMergePatched(NewAttributeUseStateEventId(attributeId));
+            var stateEvent = new AttributeUseStateMergePatched(NewAttributeUseEventId(attributeId));
             return stateEvent;
         }
 
         public virtual IAttributeUseStateRemoved NewAttributeUseStateRemoved(string attributeId)
         {
-            var stateEvent = new AttributeUseStateRemoved(NewAttributeUseStateEventId(attributeId));
+            var stateEvent = new AttributeUseStateRemoved(NewAttributeUseEventId(attributeId));
             return stateEvent;
         }
 
@@ -314,7 +314,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 		{
 		}
 
-		public AttributeSetStateDeleted (AttributeSetStateEventId stateEventId) : base(stateEventId)
+		public AttributeSetStateDeleted (AttributeSetEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -323,7 +323,7 @@ namespace Dddml.Wms.Domain.AttributeSet
             return Dddml.Wms.Specialization.StateEventType.Deleted;
         }
 
-		private Dictionary<AttributeUseStateEventId, IAttributeUseStateRemoved> _attributeUseEvents = new Dictionary<AttributeUseStateEventId, IAttributeUseStateRemoved>();
+		private Dictionary<AttributeUseEventId, IAttributeUseStateRemoved> _attributeUseEvents = new Dictionary<AttributeUseEventId, IAttributeUseStateRemoved>();
 		
         private IEnumerable<IAttributeUseStateRemoved> _readOnlyAttributeUseEvents;
 
@@ -340,7 +340,7 @@ namespace Dddml.Wms.Domain.AttributeSet
                     if (_readOnlyAttributeUseEvents != null) { return _readOnlyAttributeUseEvents; }
                     var eventDao = AttributeUseStateEventDao;
                     var eL = new List<IAttributeUseStateRemoved>();
-                    foreach (var e in eventDao.FindByAttributeSetStateEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByAttributeSetEventId(this.StateEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IAttributeUseStateRemoved)e);
@@ -369,7 +369,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 
         public virtual IAttributeUseStateRemoved NewAttributeUseStateRemoved(string attributeId)
         {
-            var stateEvent = new AttributeUseStateRemoved(NewAttributeUseStateEventId(attributeId));
+            var stateEvent = new AttributeUseStateRemoved(NewAttributeUseEventId(attributeId));
             return stateEvent;
         }
 

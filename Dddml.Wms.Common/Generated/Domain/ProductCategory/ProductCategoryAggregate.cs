@@ -104,7 +104,7 @@ namespace Dddml.Wms.Domain.ProductCategory
 
         protected virtual IProductCategoryStateCreated Map(ICreateProductCategory c)
         {
-			var stateEventId = new ProductCategoryStateEventId(c.ProductCategoryId, c.Version);
+			var stateEventId = new ProductCategoryEventId(c.ProductCategoryId, c.Version);
             IProductCategoryStateCreated e = NewProductCategoryStateCreated(stateEventId);
 		
             e.ProductCategoryTypeId = c.ProductCategoryTypeId;
@@ -129,7 +129,7 @@ namespace Dddml.Wms.Domain.ProductCategory
 
         protected virtual IProductCategoryStateMergePatched Map(IMergePatchProductCategory c)
         {
-			var stateEventId = new ProductCategoryStateEventId(c.ProductCategoryId, c.Version);
+			var stateEventId = new ProductCategoryEventId(c.ProductCategoryId, c.Version);
             IProductCategoryStateMergePatched e = NewProductCategoryStateMergePatched(stateEventId);
 
             e.ProductCategoryTypeId = c.ProductCategoryTypeId;
@@ -165,7 +165,7 @@ namespace Dddml.Wms.Domain.ProductCategory
 
         protected virtual IProductCategoryStateDeleted Map(IDeleteProductCategory c)
         {
-			var stateEventId = new ProductCategoryStateEventId(c.ProductCategoryId, c.Version);
+			var stateEventId = new ProductCategoryEventId(c.ProductCategoryId, c.Version);
             IProductCategoryStateDeleted e = NewProductCategoryStateDeleted(stateEventId);
 			
             e.CommandId = c.CommandId;
@@ -194,7 +194,7 @@ namespace Dddml.Wms.Domain.ProductCategory
 
         protected ProductCategoryStateCreated NewProductCategoryStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new ProductCategoryStateEventId(_state.ProductCategoryId, version);
+            var stateEventId = new ProductCategoryEventId(_state.ProductCategoryId, version);
             var e = NewProductCategoryStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -207,7 +207,7 @@ namespace Dddml.Wms.Domain.ProductCategory
 
         protected ProductCategoryStateMergePatched NewProductCategoryStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new ProductCategoryStateEventId(_state.ProductCategoryId, version);
+            var stateEventId = new ProductCategoryEventId(_state.ProductCategoryId, version);
             var e = NewProductCategoryStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -221,7 +221,7 @@ namespace Dddml.Wms.Domain.ProductCategory
 
         protected ProductCategoryStateDeleted NewProductCategoryStateDeleted(long version, string commandId, string requesterId)
         {
-            var stateEventId = new ProductCategoryStateEventId(_state.ProductCategoryId, version);
+            var stateEventId = new ProductCategoryEventId(_state.ProductCategoryId, version);
             var e = NewProductCategoryStateDeleted(stateEventId);
 
             e.CommandId = commandId;
@@ -234,17 +234,17 @@ namespace Dddml.Wms.Domain.ProductCategory
 
 ////////////////////////
 
-		private ProductCategoryStateCreated NewProductCategoryStateCreated(ProductCategoryStateEventId stateEventId)
+		private ProductCategoryStateCreated NewProductCategoryStateCreated(ProductCategoryEventId stateEventId)
 		{
 			return new ProductCategoryStateCreated(stateEventId);			
 		}
 
-        private ProductCategoryStateMergePatched NewProductCategoryStateMergePatched(ProductCategoryStateEventId stateEventId)
+        private ProductCategoryStateMergePatched NewProductCategoryStateMergePatched(ProductCategoryEventId stateEventId)
 		{
 			return new ProductCategoryStateMergePatched(stateEventId);
 		}
 
-        private ProductCategoryStateDeleted NewProductCategoryStateDeleted(ProductCategoryStateEventId stateEventId)
+        private ProductCategoryStateDeleted NewProductCategoryStateDeleted(ProductCategoryEventId stateEventId)
 		{
 			return new ProductCategoryStateDeleted(stateEventId);
 		}

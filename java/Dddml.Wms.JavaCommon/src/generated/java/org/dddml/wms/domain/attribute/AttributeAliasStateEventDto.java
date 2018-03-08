@@ -7,15 +7,15 @@ import org.dddml.wms.domain.AbstractStateEvent;
 public class AttributeAliasStateEventDto extends AbstractStateEvent
 {
 
-    private AttributeAliasStateEventId stateEventId;
+    private AttributeAliasEventId stateEventId;
 
-    AttributeAliasStateEventId getStateEventId() {
-        if (stateEventId == null) { stateEventId = new AttributeAliasStateEventId(); }
-        return this.stateEventId;
+    AttributeAliasEventId getStateEventId() {
+        if (stateEventId == null) { stateEventId = new AttributeAliasEventId(); }
+        return stateEventId;
     }
 
-    void setStateEventId(AttributeAliasStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    void setStateEventId(AttributeAliasEventId eventId) {
+        this.stateEventId = eventId;
     }
 
     public String getCode() {

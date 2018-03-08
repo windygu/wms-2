@@ -11,9 +11,9 @@ using Dddml.Wms.Domain.Audience;
 
 namespace Dddml.Wms.Domain.Audience
 {
-	public interface IAudienceStateEvent : IEvent, IStateEventDto, IGlobalIdentity<AudienceStateEventId>, ICreated<string>
+	public interface IAudienceStateEvent : IEvent, IStateEventDto, IGlobalIdentity<AudienceEventId>, ICreated<string>
 	{
-		AudienceStateEventId StateEventId { get; }
+		AudienceEventId StateEventId { get; }
 
         bool ReadOnly { get; set; }
 

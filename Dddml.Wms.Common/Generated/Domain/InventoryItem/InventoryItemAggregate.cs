@@ -94,7 +94,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 
         protected virtual IInventoryItemStateCreated Map(ICreateInventoryItem c)
         {
-			var stateEventId = new InventoryItemStateEventId(c.InventoryItemId, c.Version);
+			var stateEventId = new InventoryItemEventId(c.InventoryItemId, c.Version);
             IInventoryItemStateCreated e = NewInventoryItemStateCreated(stateEventId);
 		
             e.CommandId = c.CommandId;
@@ -133,7 +133,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 
         protected virtual IInventoryItemStateMergePatched Map(IMergePatchInventoryItem c)
         {
-			var stateEventId = new InventoryItemStateEventId(c.InventoryItemId, c.Version);
+			var stateEventId = new InventoryItemEventId(c.InventoryItemId, c.Version);
             IInventoryItemStateMergePatched e = NewInventoryItemStateMergePatched(stateEventId);
 
 
@@ -214,7 +214,7 @@ namespace Dddml.Wms.Domain.InventoryItem
         protected virtual IInventoryItemEntryStateCreated MapCreate(ICreateInventoryItemEntry c, IInventoryItemCommand outerCommand, long version, IInventoryItemState outerState)
         {
             c.RequesterId = outerCommand.RequesterId;
-			var stateEventId = new InventoryItemEntryStateEventId(c.InventoryItemId, c.EntrySeqId, version);
+			var stateEventId = new InventoryItemEntryEventId(c.InventoryItemId, c.EntrySeqId, version);
             IInventoryItemEntryStateCreated e = NewInventoryItemEntryStateCreated(stateEventId);
             var s = outerState.Entries.Get(c.EntrySeqId, true);
 
@@ -249,7 +249,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 
         protected InventoryItemStateCreated NewInventoryItemStateCreated(long version, string commandId, string requesterId)
         {
-            var stateEventId = new InventoryItemStateEventId(_state.InventoryItemId, version);
+            var stateEventId = new InventoryItemEventId(_state.InventoryItemId, version);
             var e = NewInventoryItemStateCreated(stateEventId);
 
             e.CommandId = commandId;
@@ -262,7 +262,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 
         protected InventoryItemStateMergePatched NewInventoryItemStateMergePatched(long version, string commandId, string requesterId)
         {
-            var stateEventId = new InventoryItemStateEventId(_state.InventoryItemId, version);
+            var stateEventId = new InventoryItemEventId(_state.InventoryItemId, version);
             var e = NewInventoryItemStateMergePatched(stateEventId);
 
             e.CommandId = commandId;
@@ -276,18 +276,18 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 ////////////////////////
 
-		private InventoryItemStateCreated NewInventoryItemStateCreated(InventoryItemStateEventId stateEventId)
+		private InventoryItemStateCreated NewInventoryItemStateCreated(InventoryItemEventId stateEventId)
 		{
 			return new InventoryItemStateCreated(stateEventId);			
 		}
 
-        private InventoryItemStateMergePatched NewInventoryItemStateMergePatched(InventoryItemStateEventId stateEventId)
+        private InventoryItemStateMergePatched NewInventoryItemStateMergePatched(InventoryItemEventId stateEventId)
 		{
 			return new InventoryItemStateMergePatched(stateEventId);
 		}
 
 
-		private InventoryItemEntryStateCreated NewInventoryItemEntryStateCreated(InventoryItemEntryStateEventId stateEventId)
+		private InventoryItemEntryStateCreated NewInventoryItemEntryStateCreated(InventoryItemEntryEventId stateEventId)
 		{
 			return new InventoryItemEntryStateCreated(stateEventId);
 		}

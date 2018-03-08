@@ -8,14 +8,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractShipmentItemStateEvent extends AbstractStateEvent implements ShipmentItemStateEvent 
 {
-    private ShipmentItemStateEventId stateEventId;
+    private ShipmentItemEventId stateEventId;
 
-    public ShipmentItemStateEventId getStateEventId() {
+    public ShipmentItemEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(ShipmentItemStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(ShipmentItemEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public String getShipmentItemSeqId() {
@@ -154,8 +154,8 @@ public abstract class AbstractShipmentItemStateEvent extends AbstractStateEvent 
     protected AbstractShipmentItemStateEvent() {
     }
 
-    protected AbstractShipmentItemStateEvent(ShipmentItemStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractShipmentItemStateEvent(ShipmentItemEventId eventId) {
+        this.stateEventId = eventId;
     }
 
 
@@ -165,11 +165,11 @@ public abstract class AbstractShipmentItemStateEvent extends AbstractStateEvent 
     public static abstract class AbstractShipmentItemStateCreated extends AbstractShipmentItemStateEvent implements ShipmentItemStateEvent.ShipmentItemStateCreated
     {
         public AbstractShipmentItemStateCreated() {
-            this(new ShipmentItemStateEventId());
+            this(new ShipmentItemEventId());
         }
 
-        public AbstractShipmentItemStateCreated(ShipmentItemStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractShipmentItemStateCreated(ShipmentItemEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -182,11 +182,11 @@ public abstract class AbstractShipmentItemStateEvent extends AbstractStateEvent 
     public static abstract class AbstractShipmentItemStateMergePatched extends AbstractShipmentItemStateEvent implements ShipmentItemStateEvent.ShipmentItemStateMergePatched
     {
         public AbstractShipmentItemStateMergePatched() {
-            this(new ShipmentItemStateEventId());
+            this(new ShipmentItemEventId());
         }
 
-        public AbstractShipmentItemStateMergePatched(ShipmentItemStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractShipmentItemStateMergePatched(ShipmentItemEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -261,8 +261,8 @@ public abstract class AbstractShipmentItemStateEvent extends AbstractStateEvent 
         public SimpleShipmentItemStateCreated() {
         }
 
-        public SimpleShipmentItemStateCreated(ShipmentItemStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleShipmentItemStateCreated(ShipmentItemEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -271,8 +271,8 @@ public abstract class AbstractShipmentItemStateEvent extends AbstractStateEvent 
         public SimpleShipmentItemStateMergePatched() {
         }
 
-        public SimpleShipmentItemStateMergePatched(ShipmentItemStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleShipmentItemStateMergePatched(ShipmentItemEventId eventId) {
+            super(eventId);
         }
     }
 

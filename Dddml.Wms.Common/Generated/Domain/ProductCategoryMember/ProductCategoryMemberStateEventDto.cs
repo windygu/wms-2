@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 	public abstract class ProductCategoryMemberStateEventDtoBase : IStateEventDto, IProductCategoryMemberStateCreated, IProductCategoryMemberStateMergePatched
 	{
 
-        private ProductCategoryMemberStateEventIdDto _stateEventId;
+        private ProductCategoryMemberEventIdDto _stateEventId;
 
-		protected internal virtual ProductCategoryMemberStateEventIdDto StateEventId 
+		protected internal virtual ProductCategoryMemberEventIdDto StateEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new ProductCategoryMemberStateEventIdDto(); }
+                if (_stateEventId == null) { _stateEventId = new ProductCategoryMemberEventIdDto(); }
                 return _stateEventId;
             }
             set
@@ -60,10 +60,10 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		ProductCategoryMemberStateEventId IGlobalIdentity<ProductCategoryMemberStateEventId>.GlobalId {
+		ProductCategoryMemberEventId IGlobalIdentity<ProductCategoryMemberEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToProductCategoryMemberStateEventId();
+				return this.StateEventId.ToProductCategoryMemberEventId();
 			}
 		}
 
@@ -195,16 +195,16 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 		}
 
 
-        ProductCategoryMemberStateEventId IProductCategoryMemberStateEvent.StateEventId
+        ProductCategoryMemberEventId IProductCategoryMemberStateEvent.StateEventId
         {
-            get { return this.StateEventId.ToProductCategoryMemberStateEventId(); }
+            get { return this.StateEventId.ToProductCategoryMemberEventId(); }
         }
 
         protected ProductCategoryMemberStateEventDtoBase()
         {
         }
 
-        protected ProductCategoryMemberStateEventDtoBase(ProductCategoryMemberStateEventIdDto stateEventId)
+        protected ProductCategoryMemberStateEventDtoBase(ProductCategoryMemberEventIdDto stateEventId)
         {
             this.StateEventId = stateEventId;
         }

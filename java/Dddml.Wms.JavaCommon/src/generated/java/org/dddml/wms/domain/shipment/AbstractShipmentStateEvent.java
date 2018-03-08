@@ -8,14 +8,14 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractShipmentStateEvent extends AbstractStateEvent implements ShipmentStateEvent 
 {
-    private ShipmentStateEventId stateEventId;
+    private ShipmentEventId stateEventId;
 
-    public ShipmentStateEventId getStateEventId() {
+    public ShipmentEventId getStateEventId() {
         return this.stateEventId;
     }
 
-    public void setStateEventId(ShipmentStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    public void setStateEventId(ShipmentEventId eventId) {
+        this.stateEventId = eventId;
     }
     
     public String getShipmentId() {
@@ -382,20 +382,20 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
     protected AbstractShipmentStateEvent() {
     }
 
-    protected AbstractShipmentStateEvent(ShipmentStateEventId stateEventId) {
-        this.stateEventId = stateEventId;
+    protected AbstractShipmentStateEvent(ShipmentEventId eventId) {
+        this.stateEventId = eventId;
     }
 
     protected ShipmentItemStateEventDao getShipmentItemStateEventDao() {
         return (ShipmentItemStateEventDao)ApplicationContext.current.get("ShipmentItemStateEventDao");
     }
 
-    protected ShipmentItemStateEventId newShipmentItemStateEventId(String shipmentItemSeqId)
+    protected ShipmentItemEventId newShipmentItemEventId(String shipmentItemSeqId)
     {
-        ShipmentItemStateEventId stateEventId = new ShipmentItemStateEventId(this.getStateEventId().getShipmentId(), 
+        ShipmentItemEventId eventId = new ShipmentItemEventId(this.getStateEventId().getShipmentId(), 
             shipmentItemSeqId, 
             this.getStateEventId().getVersion());
-        return stateEventId;
+        return eventId;
     }
 
     protected void throwOnInconsistentEventIds(ShipmentItemStateEvent e)
@@ -416,12 +416,12 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
         return (ShipmentReceiptStateEventDao)ApplicationContext.current.get("ShipmentReceiptStateEventDao");
     }
 
-    protected ShipmentReceiptStateEventId newShipmentReceiptStateEventId(String receiptSeqId)
+    protected ShipmentReceiptEventId newShipmentReceiptEventId(String receiptSeqId)
     {
-        ShipmentReceiptStateEventId stateEventId = new ShipmentReceiptStateEventId(this.getStateEventId().getShipmentId(), 
+        ShipmentReceiptEventId eventId = new ShipmentReceiptEventId(this.getStateEventId().getShipmentId(), 
             receiptSeqId, 
             this.getStateEventId().getVersion());
-        return stateEventId;
+        return eventId;
     }
 
     protected void throwOnInconsistentEventIds(ShipmentReceiptStateEvent e)
@@ -439,19 +439,19 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
     }
 
     public ShipmentItemStateEvent.ShipmentItemStateCreated newShipmentItemStateCreated(String shipmentItemSeqId) {
-        return new AbstractShipmentItemStateEvent.SimpleShipmentItemStateCreated(newShipmentItemStateEventId(shipmentItemSeqId));
+        return new AbstractShipmentItemStateEvent.SimpleShipmentItemStateCreated(newShipmentItemEventId(shipmentItemSeqId));
     }
 
     public ShipmentItemStateEvent.ShipmentItemStateMergePatched newShipmentItemStateMergePatched(String shipmentItemSeqId) {
-        return new AbstractShipmentItemStateEvent.SimpleShipmentItemStateMergePatched(newShipmentItemStateEventId(shipmentItemSeqId));
+        return new AbstractShipmentItemStateEvent.SimpleShipmentItemStateMergePatched(newShipmentItemEventId(shipmentItemSeqId));
     }
 
     public ShipmentReceiptStateEvent.ShipmentReceiptStateCreated newShipmentReceiptStateCreated(String receiptSeqId) {
-        return new AbstractShipmentReceiptStateEvent.SimpleShipmentReceiptStateCreated(newShipmentReceiptStateEventId(receiptSeqId));
+        return new AbstractShipmentReceiptStateEvent.SimpleShipmentReceiptStateCreated(newShipmentReceiptEventId(receiptSeqId));
     }
 
     public ShipmentReceiptStateEvent.ShipmentReceiptStateMergePatched newShipmentReceiptStateMergePatched(String receiptSeqId) {
-        return new AbstractShipmentReceiptStateEvent.SimpleShipmentReceiptStateMergePatched(newShipmentReceiptStateEventId(receiptSeqId));
+        return new AbstractShipmentReceiptStateEvent.SimpleShipmentReceiptStateMergePatched(newShipmentReceiptEventId(receiptSeqId));
     }
 
 
@@ -461,18 +461,18 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
     public static abstract class AbstractShipmentStateCreated extends AbstractShipmentStateEvent implements ShipmentStateEvent.ShipmentStateCreated, Saveable
     {
         public AbstractShipmentStateCreated() {
-            this(new ShipmentStateEventId());
+            this(new ShipmentEventId());
         }
 
-        public AbstractShipmentStateCreated(ShipmentStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractShipmentStateCreated(ShipmentEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
             return StateEventType.CREATED;
         }
 
-        private Map<ShipmentItemStateEventId, ShipmentItemStateEvent.ShipmentItemStateCreated> shipmentItemEvents = new HashMap<ShipmentItemStateEventId, ShipmentItemStateEvent.ShipmentItemStateCreated>();
+        private Map<ShipmentItemEventId, ShipmentItemStateEvent.ShipmentItemStateCreated> shipmentItemEvents = new HashMap<ShipmentItemEventId, ShipmentItemStateEvent.ShipmentItemStateCreated>();
         
         private Iterable<ShipmentItemStateEvent.ShipmentItemStateCreated> readOnlyShipmentItemEvents;
 
@@ -487,7 +487,7 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
                 if (readOnlyShipmentItemEvents != null) { return readOnlyShipmentItemEvents; }
                 ShipmentItemStateEventDao eventDao = getShipmentItemStateEventDao();
                 List<ShipmentItemStateEvent.ShipmentItemStateCreated> eL = new ArrayList<ShipmentItemStateEvent.ShipmentItemStateCreated>();
-                for (ShipmentItemStateEvent e : eventDao.findByShipmentStateEventId(this.getStateEventId()))
+                for (ShipmentItemStateEvent e : eventDao.findByShipmentEventId(this.getStateEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((ShipmentItemStateEvent.ShipmentItemStateCreated)e);
@@ -514,7 +514,7 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
             this.shipmentItemEvents.put(e.getStateEventId(), e);
         }
 
-        private Map<ShipmentReceiptStateEventId, ShipmentReceiptStateEvent.ShipmentReceiptStateCreated> shipmentReceiptEvents = new HashMap<ShipmentReceiptStateEventId, ShipmentReceiptStateEvent.ShipmentReceiptStateCreated>();
+        private Map<ShipmentReceiptEventId, ShipmentReceiptStateEvent.ShipmentReceiptStateCreated> shipmentReceiptEvents = new HashMap<ShipmentReceiptEventId, ShipmentReceiptStateEvent.ShipmentReceiptStateCreated>();
         
         private Iterable<ShipmentReceiptStateEvent.ShipmentReceiptStateCreated> readOnlyShipmentReceiptEvents;
 
@@ -529,7 +529,7 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
                 if (readOnlyShipmentReceiptEvents != null) { return readOnlyShipmentReceiptEvents; }
                 ShipmentReceiptStateEventDao eventDao = getShipmentReceiptStateEventDao();
                 List<ShipmentReceiptStateEvent.ShipmentReceiptStateCreated> eL = new ArrayList<ShipmentReceiptStateEvent.ShipmentReceiptStateCreated>();
-                for (ShipmentReceiptStateEvent e : eventDao.findByShipmentStateEventId(this.getStateEventId()))
+                for (ShipmentReceiptStateEvent e : eventDao.findByShipmentEventId(this.getStateEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((ShipmentReceiptStateEvent.ShipmentReceiptStateCreated)e);
@@ -571,11 +571,11 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
     public static abstract class AbstractShipmentStateMergePatched extends AbstractShipmentStateEvent implements ShipmentStateEvent.ShipmentStateMergePatched, Saveable
     {
         public AbstractShipmentStateMergePatched() {
-            this(new ShipmentStateEventId());
+            this(new ShipmentEventId());
         }
 
-        public AbstractShipmentStateMergePatched(ShipmentStateEventId stateEventId) {
-            super(stateEventId);
+        public AbstractShipmentStateMergePatched(ShipmentEventId eventId) {
+            super(eventId);
         }
 
         public String getStateEventType() {
@@ -842,7 +842,7 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
             this.isPropertyActiveRemoved = removed;
         }
 
-        private Map<ShipmentItemStateEventId, ShipmentItemStateEvent> shipmentItemEvents = new HashMap<ShipmentItemStateEventId, ShipmentItemStateEvent>();
+        private Map<ShipmentItemEventId, ShipmentItemStateEvent> shipmentItemEvents = new HashMap<ShipmentItemEventId, ShipmentItemStateEvent>();
         
         private Iterable<ShipmentItemStateEvent> readOnlyShipmentItemEvents;
 
@@ -857,7 +857,7 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
                 if (readOnlyShipmentItemEvents != null) { return readOnlyShipmentItemEvents; }
                 ShipmentItemStateEventDao eventDao = getShipmentItemStateEventDao();
                 List<ShipmentItemStateEvent> eL = new ArrayList<ShipmentItemStateEvent>();
-                for (ShipmentItemStateEvent e : eventDao.findByShipmentStateEventId(this.getStateEventId()))
+                for (ShipmentItemStateEvent e : eventDao.findByShipmentEventId(this.getStateEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((ShipmentItemStateEvent)e);
@@ -884,7 +884,7 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
             this.shipmentItemEvents.put(e.getStateEventId(), e);
         }
 
-        private Map<ShipmentReceiptStateEventId, ShipmentReceiptStateEvent> shipmentReceiptEvents = new HashMap<ShipmentReceiptStateEventId, ShipmentReceiptStateEvent>();
+        private Map<ShipmentReceiptEventId, ShipmentReceiptStateEvent> shipmentReceiptEvents = new HashMap<ShipmentReceiptEventId, ShipmentReceiptStateEvent>();
         
         private Iterable<ShipmentReceiptStateEvent> readOnlyShipmentReceiptEvents;
 
@@ -899,7 +899,7 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
                 if (readOnlyShipmentReceiptEvents != null) { return readOnlyShipmentReceiptEvents; }
                 ShipmentReceiptStateEventDao eventDao = getShipmentReceiptStateEventDao();
                 List<ShipmentReceiptStateEvent> eL = new ArrayList<ShipmentReceiptStateEvent>();
-                for (ShipmentReceiptStateEvent e : eventDao.findByShipmentStateEventId(this.getStateEventId()))
+                for (ShipmentReceiptStateEvent e : eventDao.findByShipmentEventId(this.getStateEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((ShipmentReceiptStateEvent)e);
@@ -943,8 +943,8 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
         public SimpleShipmentStateCreated() {
         }
 
-        public SimpleShipmentStateCreated(ShipmentStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleShipmentStateCreated(ShipmentEventId eventId) {
+            super(eventId);
         }
     }
 
@@ -953,8 +953,8 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
         public SimpleShipmentStateMergePatched() {
         }
 
-        public SimpleShipmentStateMergePatched(ShipmentStateEventId stateEventId) {
-            super(stateEventId);
+        public SimpleShipmentStateMergePatched(ShipmentEventId eventId) {
+            super(eventId);
         }
     }
 

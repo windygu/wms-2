@@ -18,7 +18,7 @@ public class HibernatePhysicalInventoryLineMvoEventStore extends AbstractHiberna
     @Override
     protected Serializable getEventId(EventStoreAggregateId eventStoreAggregateId, long version)
     {
-        return new PhysicalInventoryLineMvoStateEventId((PhysicalInventoryLineId) eventStoreAggregateId.getId(), version);
+        return new PhysicalInventoryLineMvoEventId((PhysicalInventoryLineId) eventStoreAggregateId.getId(), version);
     }
 
     @Override

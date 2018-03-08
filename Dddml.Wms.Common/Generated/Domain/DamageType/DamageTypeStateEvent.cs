@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.DamageType
 	public abstract class DamageTypeStateEventBase : IDamageTypeStateEvent
 	{
 
-		public virtual DamageTypeStateEventId StateEventId { get; set; }
+		public virtual DamageTypeEventId StateEventId { get; set; }
 
         public virtual string DamageTypeId
         {
@@ -39,7 +39,7 @@ namespace Dddml.Wms.Domain.DamageType
 
         string IEvent.CommandId { get { return this.CommandId; } set { this.CommandId = value; } }
 
-		DamageTypeStateEventId IGlobalIdentity<DamageTypeStateEventId>.GlobalId {
+		DamageTypeEventId IGlobalIdentity<DamageTypeEventId>.GlobalId {
 			get
 			{
 				return this.StateEventId;
@@ -83,7 +83,7 @@ namespace Dddml.Wms.Domain.DamageType
         {
         }
 
-        protected DamageTypeStateEventBase(DamageTypeStateEventId stateEventId)
+        protected DamageTypeStateEventBase(DamageTypeEventId stateEventId)
         {
             this.StateEventId = stateEventId;
         }
@@ -100,11 +100,11 @@ namespace Dddml.Wms.Domain.DamageType
 
 	public class DamageTypeStateCreated : DamageTypeStateEventBase, IDamageTypeStateCreated
 	{
-		public DamageTypeStateCreated () : this(new DamageTypeStateEventId())
+		public DamageTypeStateCreated () : this(new DamageTypeEventId())
 		{
 		}
 
-		public DamageTypeStateCreated (DamageTypeStateEventId stateEventId) : base(stateEventId)
+		public DamageTypeStateCreated (DamageTypeEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -132,7 +132,7 @@ namespace Dddml.Wms.Domain.DamageType
 		{
 		}
 
-		public DamageTypeStateMergePatched (DamageTypeStateEventId stateEventId) : base(stateEventId)
+		public DamageTypeStateMergePatched (DamageTypeEventId stateEventId) : base(stateEventId)
 		{
 		}
 
@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.DamageType
 		{
 		}
 
-		public DamageTypeStateDeleted (DamageTypeStateEventId stateEventId) : base(stateEventId)
+		public DamageTypeStateDeleted (DamageTypeEventId stateEventId) : base(stateEventId)
 		{
 		}
 
