@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.Product
 	public abstract class ProductStateEventBase : IProductStateEvent
 	{
 
-		public virtual ProductEventId StateEventId { get; set; }
+		public virtual ProductEventId ProductEventId { get; set; }
 
         public virtual string ProductId
         {
-            get { return StateEventId.ProductId; }
-            set { StateEventId.ProductId = value; }
+            get { return ProductEventId.ProductId; }
+            set { ProductEventId.ProductId = value; }
         }
 
 		public virtual string ProductTypeId { get; set; }
@@ -156,7 +156,7 @@ namespace Dddml.Wms.Domain.Product
 		ProductEventId IGlobalIdentity<ProductEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.ProductEventId;
 			}
 		}
 
@@ -199,7 +199,7 @@ namespace Dddml.Wms.Domain.Product
 
         protected ProductStateEventBase(ProductEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.ProductEventId = stateEventId;
         }
 
 

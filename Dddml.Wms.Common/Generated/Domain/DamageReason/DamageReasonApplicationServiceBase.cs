@@ -59,7 +59,7 @@ namespace Dddml.Wms.Domain.DamageReason
 
         public virtual void Initialize(IDamageReasonStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.DamageReasonId;
+            var aggregateId = stateCreated.DamageReasonEventId.DamageReasonId;
             var state = new DamageReasonState();
             state.DamageReasonId = aggregateId;
             var aggregate = (DamageReasonAggregate)GetDamageReasonAggregate(state);

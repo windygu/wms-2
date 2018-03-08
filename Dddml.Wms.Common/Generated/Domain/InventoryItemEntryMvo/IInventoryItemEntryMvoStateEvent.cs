@@ -14,7 +14,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 {
 	public interface IInventoryItemEntryMvoStateEvent : IEvent, IStateEventDto, IGlobalIdentity<InventoryItemEntryMvoEventId>, ICreated<string>
 	{
-		InventoryItemEntryMvoEventId StateEventId { get; }
+		InventoryItemEntryMvoEventId InventoryItemEntryMvoEventId { get; }
 
         bool ReadOnly { get; set; }
 

@@ -15,31 +15,31 @@ namespace Dddml.Wms.Domain.Movement
 	public abstract class MovementStateEventDtoBase : IStateEventDto, IMovementStateCreated, IMovementStateMergePatched, IMovementStateDeleted
 	{
 
-        private MovementEventIdDto _stateEventId;
+        private MovementEventIdDto _movementEventId;
 
-		protected internal virtual MovementEventIdDto StateEventId 
+		protected internal virtual MovementEventIdDto MovementEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new MovementEventIdDto(); }
-                return _stateEventId;
+                if (_movementEventId == null) { _movementEventId = new MovementEventIdDto(); }
+                return _movementEventId;
             }
             set
             {
-                _stateEventId = value;
+                _movementEventId = value;
             }
         }
 
         public virtual string DocumentNumber
         {
-            get { return StateEventId.DocumentNumber; }
-            set { StateEventId.DocumentNumber = value; }
+            get { return MovementEventId.DocumentNumber; }
+            set { MovementEventId.DocumentNumber = value; }
         }
 
         public virtual long Version
         {
-            get { return StateEventId.Version; }
-            set { StateEventId.Version = value; }
+            get { return MovementEventId.Version; }
+            set { MovementEventId.Version = value; }
         }
 
 		public virtual string DocumentStatusId { get; set; }
@@ -95,7 +95,7 @@ namespace Dddml.Wms.Domain.Movement
 		MovementEventId IGlobalIdentity<MovementEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToMovementEventId();
+				return this.MovementEventId.ToMovementEventId();
 			}
 		}
 
@@ -551,9 +551,9 @@ namespace Dddml.Wms.Domain.Movement
         private MovementLineEventIdDto NewMovementLineEventId(string lineNumber)
         {
             var eId = new MovementLineEventIdDto();
-            eId.MovementDocumentNumber = this.StateEventId.DocumentNumber;
+            eId.MovementDocumentNumber = this.MovementEventId.DocumentNumber;
             eId.LineNumber = lineNumber;
-            eId.MovementVersion = this.StateEventId.Version;
+            eId.MovementVersion = this.MovementEventId.Version;
             return eId;
         }
 
@@ -561,7 +561,7 @@ namespace Dddml.Wms.Domain.Movement
         {
             var e = new MovementLineStateCreatedDto();
             var eId = NewMovementLineEventId(lineNumber);
-            e.StateEventId = eId;
+            e.MovementLineEventId = eId;
             return e;
         }
 
@@ -569,7 +569,7 @@ namespace Dddml.Wms.Domain.Movement
         {
             var e = new MovementLineStateMergePatchedDto();
             var eId = NewMovementLineEventId(lineNumber);
-            e.StateEventId = eId;
+            e.MovementLineEventId = eId;
             return e;
         }
 
@@ -577,7 +577,7 @@ namespace Dddml.Wms.Domain.Movement
         {
             var e = new MovementLineStateRemovedDto();
             var eId = NewMovementLineEventId(lineNumber);
-            e.StateEventId = eId;
+            e.MovementLineEventId = eId;
             return e;
         }
 
@@ -639,9 +639,9 @@ namespace Dddml.Wms.Domain.Movement
 
 
 
-        MovementEventId IMovementStateEvent.StateEventId
+        MovementEventId IMovementStateEvent.MovementEventId
         {
-            get { return this.StateEventId.ToMovementEventId(); }
+            get { return this.MovementEventId.ToMovementEventId(); }
         }
 
         protected MovementStateEventDtoBase()
@@ -650,7 +650,7 @@ namespace Dddml.Wms.Domain.Movement
 
         protected MovementStateEventDtoBase(MovementEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.MovementEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

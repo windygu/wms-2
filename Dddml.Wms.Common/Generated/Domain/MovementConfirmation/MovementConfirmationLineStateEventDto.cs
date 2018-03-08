@@ -15,25 +15,25 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 	public abstract class MovementConfirmationLineStateEventDtoBase : IStateEventDto, IMovementConfirmationLineStateCreated, IMovementConfirmationLineStateMergePatched, IMovementConfirmationLineStateRemoved
 	{
 
-        private MovementConfirmationLineEventIdDto _stateEventId;
+        private MovementConfirmationLineEventIdDto _movementConfirmationLineEventId;
 
-		protected internal virtual MovementConfirmationLineEventIdDto StateEventId 
+		protected internal virtual MovementConfirmationLineEventIdDto MovementConfirmationLineEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new MovementConfirmationLineEventIdDto(); }
-                return _stateEventId;
+                if (_movementConfirmationLineEventId == null) { _movementConfirmationLineEventId = new MovementConfirmationLineEventIdDto(); }
+                return _movementConfirmationLineEventId;
             }
             set
             {
-                _stateEventId = value;
+                _movementConfirmationLineEventId = value;
             }
         }
 
         public virtual string LineNumber
         {
-            get { return StateEventId.LineNumber; }
-            set { StateEventId.LineNumber = value; }
+            get { return MovementConfirmationLineEventId.LineNumber; }
+            set { MovementConfirmationLineEventId.LineNumber = value; }
         }
 
 		public virtual string MovementLineNumber { get; set; }
@@ -63,7 +63,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 		MovementConfirmationLineEventId IGlobalIdentity<MovementConfirmationLineEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToMovementConfirmationLineEventId();
+				return this.MovementConfirmationLineEventId.ToMovementConfirmationLineEventId();
 			}
 		}
 
@@ -254,9 +254,9 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 		}
 
 
-        MovementConfirmationLineEventId IMovementConfirmationLineStateEvent.StateEventId
+        MovementConfirmationLineEventId IMovementConfirmationLineStateEvent.MovementConfirmationLineEventId
         {
-            get { return this.StateEventId.ToMovementConfirmationLineEventId(); }
+            get { return this.MovementConfirmationLineEventId.ToMovementConfirmationLineEventId(); }
         }
 
         protected MovementConfirmationLineStateEventDtoBase()
@@ -265,7 +265,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
         protected MovementConfirmationLineStateEventDtoBase(MovementConfirmationLineEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.MovementConfirmationLineEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

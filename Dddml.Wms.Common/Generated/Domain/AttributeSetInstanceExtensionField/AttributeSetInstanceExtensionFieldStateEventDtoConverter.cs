@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionField
         public virtual AttributeSetInstanceExtensionFieldStateCreatedDto ToAttributeSetInstanceExtensionFieldStateCreatedDto(IAttributeSetInstanceExtensionFieldStateCreated e)
         {
             var dto = new AttributeSetInstanceExtensionFieldStateCreatedDto();
-            dto.StateEventId = new AttributeSetInstanceExtensionFieldEventIdDtoWrapper(e.StateEventId);
+            dto.AttributeSetInstanceExtensionFieldEventId = new AttributeSetInstanceExtensionFieldEventIdDtoWrapper(e.AttributeSetInstanceExtensionFieldEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -54,7 +54,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionField
         public virtual AttributeSetInstanceExtensionFieldStateMergePatchedDto ToAttributeSetInstanceExtensionFieldStateMergePatchedDto(IAttributeSetInstanceExtensionFieldStateMergePatched e)
         {
             var dto = new AttributeSetInstanceExtensionFieldStateMergePatchedDto();
-            dto.StateEventId = new AttributeSetInstanceExtensionFieldEventIdDtoWrapper(e.StateEventId);
+            dto.AttributeSetInstanceExtensionFieldEventId = new AttributeSetInstanceExtensionFieldEventIdDtoWrapper(e.AttributeSetInstanceExtensionFieldEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -78,7 +78,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionField
         public virtual AttributeSetInstanceExtensionFieldStateDeletedDto ToAttributeSetInstanceExtensionFieldStateDeletedDto(IAttributeSetInstanceExtensionFieldStateDeleted e)
         {
             var dto = new AttributeSetInstanceExtensionFieldStateDeletedDto();
-            dto.StateEventId = new AttributeSetInstanceExtensionFieldEventIdDtoWrapper(e.StateEventId);
+            dto.AttributeSetInstanceExtensionFieldEventId = new AttributeSetInstanceExtensionFieldEventIdDtoWrapper(e.AttributeSetInstanceExtensionFieldEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

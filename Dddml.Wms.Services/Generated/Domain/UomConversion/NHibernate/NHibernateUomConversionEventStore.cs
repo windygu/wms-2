@@ -39,10 +39,10 @@ namespace Dddml.Wms.Domain.UomConversion.NHibernate
             }
             UomConversionId idObj = (UomConversionId)(eventStoreAggregateId as EventStoreAggregateId).Id;
             var criteria = CurrentSession.CreateCriteria<UomConversionStateEventBase>();
-            criteria.Add(Restrictions.Eq("StateEventId.UomConversionIdUomId", idObj.UomId));
-            criteria.Add(Restrictions.Eq("StateEventId.UomConversionIdUomIdTo", idObj.UomIdTo));
-            criteria.Add(Restrictions.Le("StateEventId.Version", version));
-            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.Version"));
+            criteria.Add(Restrictions.Eq("UomConversionEventId.UomConversionIdUomId", idObj.UomId));
+            criteria.Add(Restrictions.Eq("UomConversionEventId.UomConversionIdUomIdTo", idObj.UomIdTo));
+            criteria.Add(Restrictions.Le("UomConversionEventId.Version", version));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("UomConversionEventId.Version"));
             var es = criteria.List<IEvent>();
             foreach (UomConversionStateEventBase e in es)
             {
@@ -50,7 +50,7 @@ namespace Dddml.Wms.Domain.UomConversion.NHibernate
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((UomConversionStateEventBase)es.Last()).StateEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((UomConversionStateEventBase)es.Last()).UomConversionEventId.Version : default(long),
                 Events = es
             };
         }

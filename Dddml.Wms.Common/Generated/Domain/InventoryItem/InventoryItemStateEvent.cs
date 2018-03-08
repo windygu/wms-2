@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.InventoryItem
 	public abstract class InventoryItemStateEventBase : IInventoryItemStateEvent
 	{
 
-		public virtual InventoryItemEventId StateEventId { get; set; }
+		public virtual InventoryItemEventId InventoryItemEventId { get; set; }
 
         public virtual InventoryItemId InventoryItemId
         {
-            get { return StateEventId.InventoryItemId; }
-            set { StateEventId.InventoryItemId = value; }
+            get { return InventoryItemEventId.InventoryItemId; }
+            set { InventoryItemEventId.InventoryItemId = value; }
         }
 
 		public virtual decimal? OnHandQuantity { get; set; }
@@ -44,7 +44,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 		InventoryItemEventId IGlobalIdentity<InventoryItemEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.InventoryItemEventId;
 			}
 		}
 
@@ -87,7 +87,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 
         protected InventoryItemStateEventBase(InventoryItemEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.InventoryItemEventId = stateEventId;
         }
 
 		protected IInventoryItemEntryStateEventDao InventoryItemEntryStateEventDao
@@ -97,7 +97,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 
         protected InventoryItemEntryEventId NewInventoryItemEntryEventId(long entrySeqId)
         {
-            var stateEventId = new InventoryItemEntryEventId(this.StateEventId.InventoryItemId, entrySeqId, this.StateEventId.Version);
+            var stateEventId = new InventoryItemEntryEventId(this.InventoryItemEventId.InventoryItemId, entrySeqId, this.InventoryItemEventId.Version);
             return stateEventId;
         }
 
@@ -109,10 +109,10 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 		public static void ThrowOnInconsistentEventIds(IInventoryItemStateEvent oe, IInventoryItemEntryStateEvent e)
 		{
-			if (!oe.StateEventId.InventoryItemId.Equals(e.StateEventId.InventoryItemId))
+			if (!oe.InventoryItemEventId.InventoryItemId.Equals(e.InventoryItemEntryEventId.InventoryItemId))
 			{ 
 				throw DomainError.Named("inconsistentEventIds", "Outer Id InventoryItemId {0} but inner id InventoryItemId {1}", 
-					oe.StateEventId.InventoryItemId, e.StateEventId.InventoryItemId);
+					oe.InventoryItemEventId.InventoryItemId, e.InventoryItemEntryEventId.InventoryItemId);
 			}
 		}
 
@@ -154,7 +154,7 @@ namespace Dddml.Wms.Domain.InventoryItem
                     if (_readOnlyInventoryItemEntryEvents != null) { return _readOnlyInventoryItemEntryEvents; }
                     var eventDao = InventoryItemEntryStateEventDao;
                     var eL = new List<IInventoryItemEntryStateCreated>();
-                    foreach (var e in eventDao.FindByInventoryItemEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByInventoryItemEventId(this.InventoryItemEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IInventoryItemEntryStateCreated)e);
@@ -178,7 +178,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 		public virtual void AddInventoryItemEntryEvent(IInventoryItemEntryStateCreated e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._inventoryItemEntryEvents[e.StateEventId] = e;
+			this._inventoryItemEntryEvents[e.InventoryItemEntryEventId] = e;
 		}
 
         public virtual IInventoryItemEntryStateCreated NewInventoryItemEntryStateCreated(long entrySeqId)
@@ -240,7 +240,7 @@ namespace Dddml.Wms.Domain.InventoryItem
                     if (_readOnlyInventoryItemEntryEvents != null) { return _readOnlyInventoryItemEntryEvents; }
                     var eventDao = InventoryItemEntryStateEventDao;
                     var eL = new List<IInventoryItemEntryStateEvent>();
-                    foreach (var e in eventDao.FindByInventoryItemEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByInventoryItemEventId(this.InventoryItemEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IInventoryItemEntryStateEvent)e);
@@ -264,7 +264,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 		public virtual void AddInventoryItemEntryEvent(IInventoryItemEntryStateEvent e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._inventoryItemEntryEvents[e.StateEventId] = e;
+			this._inventoryItemEntryEvents[e.InventoryItemEntryEventId] = e;
 		}
 
         public virtual IInventoryItemEntryStateCreated NewInventoryItemEntryStateCreated(long entrySeqId)

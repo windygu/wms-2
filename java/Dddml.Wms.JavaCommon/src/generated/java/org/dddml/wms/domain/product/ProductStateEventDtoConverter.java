@@ -21,7 +21,7 @@ public class ProductStateEventDtoConverter {
 
     public ProductStateEventDto.ProductStateCreatedDto toProductStateCreatedDto(ProductStateEvent.ProductStateCreated e) {
         ProductStateEventDto.ProductStateCreatedDto dto = new ProductStateEventDto.ProductStateCreatedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setProductEventId(e.getProductEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -91,7 +91,7 @@ public class ProductStateEventDtoConverter {
 
     public ProductStateEventDto.ProductStateMergePatchedDto toProductStateMergePatchedDto(ProductStateEvent.ProductStateMergePatched e) {
         ProductStateEventDto.ProductStateMergePatchedDto dto = new ProductStateEventDto.ProductStateMergePatchedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setProductEventId(e.getProductEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());

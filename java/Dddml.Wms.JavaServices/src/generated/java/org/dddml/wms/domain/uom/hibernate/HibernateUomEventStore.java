@@ -34,16 +34,16 @@ public class HibernateUomEventStore extends AbstractHibernateEventStore
         }
         String idObj = (String) eventStoreAggregateId.getId();
         Criteria criteria = getCurrentSession().createCriteria(AbstractUomStateEvent.class);
-        criteria.add(Restrictions.eq("stateEventId.uomId", idObj));
-        criteria.add(Restrictions.le("stateEventId.version", version));
-        criteria.addOrder(Order.asc("stateEventId.version"));
+        criteria.add(Restrictions.eq("uomEventId.uomId", idObj));
+        criteria.add(Restrictions.le("uomEventId.version", version));
+        criteria.addOrder(Order.asc("uomEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
             ((AbstractUomStateEvent) e).setStateEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractUomStateEvent) es.get(es.size() - 1)).getStateEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractUomStateEvent) es.get(es.size() - 1)).getUomEventId().getVersion());
         } else {
             //todo?
         }

@@ -15,31 +15,31 @@ namespace Dddml.Wms.Domain.OrganizationStructure
 	public abstract class OrganizationStructureStateEventDtoBase : IStateEventDto, IOrganizationStructureStateCreated, IOrganizationStructureStateMergePatched, IOrganizationStructureStateDeleted
 	{
 
-        private OrganizationStructureEventIdDto _stateEventId;
+        private OrganizationStructureEventIdDto _organizationStructureEventId;
 
-		protected internal virtual OrganizationStructureEventIdDto StateEventId 
+		protected internal virtual OrganizationStructureEventIdDto OrganizationStructureEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new OrganizationStructureEventIdDto(); }
-                return _stateEventId;
+                if (_organizationStructureEventId == null) { _organizationStructureEventId = new OrganizationStructureEventIdDto(); }
+                return _organizationStructureEventId;
             }
             set
             {
-                _stateEventId = value;
+                _organizationStructureEventId = value;
             }
         }
 
         public virtual OrganizationStructureIdDto Id
         {
-            get { return StateEventId.Id; }
-            set { StateEventId.Id = value; }
+            get { return OrganizationStructureEventId.Id; }
+            set { OrganizationStructureEventId.Id = value; }
         }
 
         public virtual long Version
         {
-            get { return StateEventId.Version; }
-            set { StateEventId.Version = value; }
+            get { return OrganizationStructureEventId.Version; }
+            set { OrganizationStructureEventId.Version = value; }
         }
 
 		public virtual bool? Active { get; set; }
@@ -55,7 +55,7 @@ namespace Dddml.Wms.Domain.OrganizationStructure
 		OrganizationStructureEventId IGlobalIdentity<OrganizationStructureEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToOrganizationStructureEventId();
+				return this.OrganizationStructureEventId.ToOrganizationStructureEventId();
 			}
 		}
 
@@ -111,9 +111,9 @@ namespace Dddml.Wms.Domain.OrganizationStructure
 		}
 
 
-        OrganizationStructureEventId IOrganizationStructureStateEvent.StateEventId
+        OrganizationStructureEventId IOrganizationStructureStateEvent.OrganizationStructureEventId
         {
-            get { return this.StateEventId.ToOrganizationStructureEventId(); }
+            get { return this.OrganizationStructureEventId.ToOrganizationStructureEventId(); }
         }
 
         protected OrganizationStructureStateEventDtoBase()
@@ -122,7 +122,7 @@ namespace Dddml.Wms.Domain.OrganizationStructure
 
         protected OrganizationStructureStateEventDtoBase(OrganizationStructureEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.OrganizationStructureEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

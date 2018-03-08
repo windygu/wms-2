@@ -59,7 +59,7 @@ namespace Dddml.Wms.Domain.SupplierProduct
 
         public virtual void Initialize(ISupplierProductStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.SupplierProductId;
+            var aggregateId = stateCreated.SupplierProductEventId.SupplierProductId;
             var state = new SupplierProductState();
             state.SupplierProductId = aggregateId;
             var aggregate = (SupplierProductAggregate)GetSupplierProductAggregate(state);

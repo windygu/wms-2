@@ -39,9 +39,9 @@ namespace Dddml.Wms.Domain.RejectionReason.NHibernate
             }
             string idObj = (string)(eventStoreAggregateId as EventStoreAggregateId).Id;
             var criteria = CurrentSession.CreateCriteria<RejectionReasonStateEventBase>();
-            criteria.Add(Restrictions.Eq("StateEventId.RejectionReasonId", idObj));
-            criteria.Add(Restrictions.Le("StateEventId.Version", version));
-            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.Version"));
+            criteria.Add(Restrictions.Eq("RejectionReasonEventId.RejectionReasonId", idObj));
+            criteria.Add(Restrictions.Le("RejectionReasonEventId.Version", version));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("RejectionReasonEventId.Version"));
             var es = criteria.List<IEvent>();
             foreach (RejectionReasonStateEventBase e in es)
             {
@@ -49,7 +49,7 @@ namespace Dddml.Wms.Domain.RejectionReason.NHibernate
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((RejectionReasonStateEventBase)es.Last()).StateEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((RejectionReasonStateEventBase)es.Last()).RejectionReasonEventId.Version : default(long),
                 Events = es
             };
         }

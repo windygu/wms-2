@@ -21,7 +21,7 @@ public class InventoryPRTriggeredStateEventDtoConverter {
 
     public InventoryPRTriggeredStateEventDto.InventoryPRTriggeredStateCreatedDto toInventoryPRTriggeredStateCreatedDto(InventoryPRTriggeredStateEvent.InventoryPRTriggeredStateCreated e) {
         InventoryPRTriggeredStateEventDto.InventoryPRTriggeredStateCreatedDto dto = new InventoryPRTriggeredStateEventDto.InventoryPRTriggeredStateCreatedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setInventoryPRTriggeredEventId(e.getInventoryPRTriggeredEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -31,7 +31,7 @@ public class InventoryPRTriggeredStateEventDtoConverter {
 
     public InventoryPRTriggeredStateEventDto.InventoryPRTriggeredStateMergePatchedDto toInventoryPRTriggeredStateMergePatchedDto(InventoryPRTriggeredStateEvent.InventoryPRTriggeredStateMergePatched e) {
         InventoryPRTriggeredStateEventDto.InventoryPRTriggeredStateMergePatchedDto dto = new InventoryPRTriggeredStateEventDto.InventoryPRTriggeredStateMergePatchedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setInventoryPRTriggeredEventId(e.getInventoryPRTriggeredEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());

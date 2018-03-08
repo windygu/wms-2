@@ -108,7 +108,7 @@ public abstract class AbstractInventoryPRTriggeredApplicationService implements 
     }
 
     public void initialize(InventoryPRTriggeredStateEvent.InventoryPRTriggeredStateCreated stateCreated) {
-        InventoryPRTriggeredId aggregateId = stateCreated.getStateEventId().getInventoryPRTriggeredId();
+        InventoryPRTriggeredId aggregateId = stateCreated.getInventoryPRTriggeredEventId().getInventoryPRTriggeredId();
         InventoryPRTriggeredState state = new AbstractInventoryPRTriggeredState.SimpleInventoryPRTriggeredState();
         state.setInventoryPRTriggeredId(aggregateId);
 
@@ -116,7 +116,7 @@ public abstract class AbstractInventoryPRTriggeredApplicationService implements 
         ((AbstractInventoryPRTriggeredAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getStateEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, stateCreated.getInventoryPRTriggeredEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(InventoryPRTriggeredCommand command, EventStoreAggregateId eventStoreAggregateId, InventoryPRTriggeredState state)

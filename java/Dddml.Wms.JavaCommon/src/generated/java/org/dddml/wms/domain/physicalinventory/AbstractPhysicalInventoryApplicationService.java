@@ -148,7 +148,7 @@ public abstract class AbstractPhysicalInventoryApplicationService implements Phy
     }
 
     public void initialize(PhysicalInventoryStateEvent.PhysicalInventoryStateCreated stateCreated) {
-        String aggregateId = stateCreated.getStateEventId().getDocumentNumber();
+        String aggregateId = stateCreated.getPhysicalInventoryEventId().getDocumentNumber();
         PhysicalInventoryState state = new AbstractPhysicalInventoryState.SimplePhysicalInventoryState();
         state.setDocumentNumber(aggregateId);
 
@@ -156,7 +156,7 @@ public abstract class AbstractPhysicalInventoryApplicationService implements Phy
         ((AbstractPhysicalInventoryAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getStateEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, stateCreated.getPhysicalInventoryEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(PhysicalInventoryCommand command, EventStoreAggregateId eventStoreAggregateId, PhysicalInventoryState state)

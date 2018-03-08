@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.DamageReason
 	public abstract class DamageReasonStateEventBase : IDamageReasonStateEvent
 	{
 
-		public virtual DamageReasonEventId StateEventId { get; set; }
+		public virtual DamageReasonEventId DamageReasonEventId { get; set; }
 
         public virtual string DamageReasonId
         {
-            get { return StateEventId.DamageReasonId; }
-            set { StateEventId.DamageReasonId = value; }
+            get { return DamageReasonEventId.DamageReasonId; }
+            set { DamageReasonEventId.DamageReasonId = value; }
         }
 
 		public virtual string Description { get; set; }
@@ -40,7 +40,7 @@ namespace Dddml.Wms.Domain.DamageReason
 		DamageReasonEventId IGlobalIdentity<DamageReasonEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.DamageReasonEventId;
 			}
 		}
 
@@ -83,7 +83,7 @@ namespace Dddml.Wms.Domain.DamageReason
 
         protected DamageReasonStateEventBase(DamageReasonEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.DamageReasonEventId = stateEventId;
         }
 
 

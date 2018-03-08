@@ -273,7 +273,7 @@ public abstract class AbstractSupplierProductState implements SupplierProductSta
     public AbstractSupplierProductState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setSupplierProductId(((SupplierProductStateEvent) events.get(0)).getStateEventId().getSupplierProductId());
+            this.setSupplierProductId(((SupplierProductStateEvent) events.get(0)).getSupplierProductEventId().getSupplierProductId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -502,16 +502,16 @@ public abstract class AbstractSupplierProductState implements SupplierProductSta
     protected void throwOnWrongEvent(SupplierProductStateEvent stateEvent)
     {
         SupplierProductId stateEntityId = this.getSupplierProductId(); // Aggregate Id
-        SupplierProductId eventEntityId = stateEvent.getStateEventId().getSupplierProductId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        SupplierProductId eventEntityId = stateEvent.getSupplierProductEventId().getSupplierProductId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getStateEventId().getVersion();// Aggregate Version
+        Long eventVersion = stateEvent.getSupplierProductEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getStateEventId().getVersion() == null");
+            throw new NullPointerException("stateEvent.getSupplierProductEventId().getVersion() == null");
         }
         if (!(stateVersion == null && eventVersion.equals(SupplierProductState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
         {

@@ -134,7 +134,7 @@ public abstract class AbstractProductCategoryMemberApplicationService implements
     }
 
     public void initialize(ProductCategoryMemberStateEvent.ProductCategoryMemberStateCreated stateCreated) {
-        ProductCategoryMemberId aggregateId = stateCreated.getStateEventId().getProductCategoryMemberId();
+        ProductCategoryMemberId aggregateId = stateCreated.getProductCategoryMemberEventId().getProductCategoryMemberId();
         ProductCategoryMemberState state = new AbstractProductCategoryMemberState.SimpleProductCategoryMemberState();
         state.setProductCategoryMemberId(aggregateId);
 
@@ -142,7 +142,7 @@ public abstract class AbstractProductCategoryMemberApplicationService implements
         ((AbstractProductCategoryMemberAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getStateEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, stateCreated.getProductCategoryMemberEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(ProductCategoryMemberCommand command, EventStoreAggregateId eventStoreAggregateId, ProductCategoryMemberState state)

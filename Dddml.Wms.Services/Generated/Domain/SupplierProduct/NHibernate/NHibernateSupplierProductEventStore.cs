@@ -39,12 +39,12 @@ namespace Dddml.Wms.Domain.SupplierProduct.NHibernate
             }
             SupplierProductId idObj = (SupplierProductId)(eventStoreAggregateId as EventStoreAggregateId).Id;
             var criteria = CurrentSession.CreateCriteria<SupplierProductStateEventBase>();
-            criteria.Add(Restrictions.Eq("StateEventId.SupplierProductIdProductId", idObj.ProductId));
-            criteria.Add(Restrictions.Eq("StateEventId.SupplierProductIdPartyId", idObj.PartyId));
-            criteria.Add(Restrictions.Eq("StateEventId.SupplierProductIdCurrencyUomId", idObj.CurrencyUomId));
-            criteria.Add(Restrictions.Eq("StateEventId.SupplierProductIdMinimumOrderQuantity", idObj.MinimumOrderQuantity));
-            criteria.Add(Restrictions.Le("StateEventId.Version", version));
-            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.Version"));
+            criteria.Add(Restrictions.Eq("SupplierProductEventId.SupplierProductIdProductId", idObj.ProductId));
+            criteria.Add(Restrictions.Eq("SupplierProductEventId.SupplierProductIdPartyId", idObj.PartyId));
+            criteria.Add(Restrictions.Eq("SupplierProductEventId.SupplierProductIdCurrencyUomId", idObj.CurrencyUomId));
+            criteria.Add(Restrictions.Eq("SupplierProductEventId.SupplierProductIdMinimumOrderQuantity", idObj.MinimumOrderQuantity));
+            criteria.Add(Restrictions.Le("SupplierProductEventId.Version", version));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("SupplierProductEventId.Version"));
             var es = criteria.List<IEvent>();
             foreach (SupplierProductStateEventBase e in es)
             {
@@ -52,7 +52,7 @@ namespace Dddml.Wms.Domain.SupplierProduct.NHibernate
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((SupplierProductStateEventBase)es.Last()).StateEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((SupplierProductStateEventBase)es.Last()).SupplierProductEventId.Version : default(long),
                 Events = es
             };
         }

@@ -9,22 +9,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractInOutLineStateEvent extends AbstractStateEvent implements InOutLineStateEvent 
 {
-    private InOutLineEventId stateEventId;
+    private InOutLineEventId inOutLineEventId;
 
-    public InOutLineEventId getStateEventId() {
-        return this.stateEventId;
+    public InOutLineEventId getInOutLineEventId() {
+        return this.inOutLineEventId;
     }
 
-    public void setStateEventId(InOutLineEventId eventId) {
-        this.stateEventId = eventId;
+    public void setInOutLineEventId(InOutLineEventId eventId) {
+        this.inOutLineEventId = eventId;
     }
     
     public String getLineNumber() {
-        return getStateEventId().getLineNumber();
+        return getInOutLineEventId().getLineNumber();
     }
 
     public void setLineNumber(String lineNumber) {
-        getStateEventId().setLineNumber(lineNumber);
+        getInOutLineEventId().setLineNumber(lineNumber);
     }
 
     private boolean stateEventReadOnly;
@@ -228,7 +228,7 @@ public abstract class AbstractInOutLineStateEvent extends AbstractStateEvent imp
     }
 
     protected AbstractInOutLineStateEvent(InOutLineEventId eventId) {
-        this.stateEventId = eventId;
+        this.inOutLineEventId = eventId;
     }
 
 

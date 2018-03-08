@@ -9,22 +9,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractInventoryPostingRuleStateEvent extends AbstractStateEvent implements InventoryPostingRuleStateEvent 
 {
-    private InventoryPostingRuleEventId stateEventId;
+    private InventoryPostingRuleEventId inventoryPostingRuleEventId;
 
-    public InventoryPostingRuleEventId getStateEventId() {
-        return this.stateEventId;
+    public InventoryPostingRuleEventId getInventoryPostingRuleEventId() {
+        return this.inventoryPostingRuleEventId;
     }
 
-    public void setStateEventId(InventoryPostingRuleEventId eventId) {
-        this.stateEventId = eventId;
+    public void setInventoryPostingRuleEventId(InventoryPostingRuleEventId eventId) {
+        this.inventoryPostingRuleEventId = eventId;
     }
     
     public String getInventoryPostingRuleId() {
-        return getStateEventId().getInventoryPostingRuleId();
+        return getInventoryPostingRuleEventId().getInventoryPostingRuleId();
     }
 
     public void setInventoryPostingRuleId(String inventoryPostingRuleId) {
-        getStateEventId().setInventoryPostingRuleId(inventoryPostingRuleId);
+        getInventoryPostingRuleEventId().setInventoryPostingRuleId(inventoryPostingRuleId);
     }
 
     private boolean stateEventReadOnly;
@@ -144,7 +144,7 @@ public abstract class AbstractInventoryPostingRuleStateEvent extends AbstractSta
     }
 
     protected AbstractInventoryPostingRuleStateEvent(InventoryPostingRuleEventId eventId) {
-        this.stateEventId = eventId;
+        this.inventoryPostingRuleEventId = eventId;
     }
 
 

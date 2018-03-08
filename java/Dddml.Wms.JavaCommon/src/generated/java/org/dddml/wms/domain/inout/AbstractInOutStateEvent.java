@@ -9,22 +9,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractInOutStateEvent extends AbstractStateEvent implements InOutStateEvent 
 {
-    private InOutEventId stateEventId;
+    private InOutEventId inOutEventId;
 
-    public InOutEventId getStateEventId() {
-        return this.stateEventId;
+    public InOutEventId getInOutEventId() {
+        return this.inOutEventId;
     }
 
-    public void setStateEventId(InOutEventId eventId) {
-        this.stateEventId = eventId;
+    public void setInOutEventId(InOutEventId eventId) {
+        this.inOutEventId = eventId;
     }
     
     public String getDocumentNumber() {
-        return getStateEventId().getDocumentNumber();
+        return getInOutEventId().getDocumentNumber();
     }
 
     public void setDocumentNumber(String documentNumber) {
-        getStateEventId().setDocumentNumber(documentNumber);
+        getInOutEventId().setDocumentNumber(documentNumber);
     }
 
     private boolean stateEventReadOnly;
@@ -444,7 +444,7 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
     }
 
     protected AbstractInOutStateEvent(InOutEventId eventId) {
-        this.stateEventId = eventId;
+        this.inOutEventId = eventId;
     }
 
     protected InOutLineStateEventDao getInOutLineStateEventDao() {
@@ -453,9 +453,9 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
 
     protected InOutLineEventId newInOutLineEventId(String lineNumber)
     {
-        InOutLineEventId eventId = new InOutLineEventId(this.getStateEventId().getDocumentNumber(), 
+        InOutLineEventId eventId = new InOutLineEventId(this.getInOutEventId().getDocumentNumber(), 
             lineNumber, 
-            this.getStateEventId().getVersion());
+            this.getInOutEventId().getVersion());
         return eventId;
     }
 
@@ -466,10 +466,10 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
 
     public static void throwOnInconsistentEventIds(InOutStateEvent oe, InOutLineStateEvent e)
     {
-        if (!oe.getStateEventId().getDocumentNumber().equals(e.getStateEventId().getInOutDocumentNumber()))
+        if (!oe.getInOutEventId().getDocumentNumber().equals(e.getInOutLineEventId().getInOutDocumentNumber()))
         { 
             throw DomainError.named("inconsistentEventIds", "Outer Id DocumentNumber %1$s but inner id InOutDocumentNumber %2$s", 
-                oe.getStateEventId().getDocumentNumber(), e.getStateEventId().getInOutDocumentNumber());
+                oe.getInOutEventId().getDocumentNumber(), e.getInOutLineEventId().getInOutDocumentNumber());
         }
     }
 
@@ -518,7 +518,7 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
                 if (readOnlyInOutLineEvents != null) { return readOnlyInOutLineEvents; }
                 InOutLineStateEventDao eventDao = getInOutLineStateEventDao();
                 List<InOutLineStateEvent.InOutLineStateCreated> eL = new ArrayList<InOutLineStateEvent.InOutLineStateCreated>();
-                for (InOutLineStateEvent e : eventDao.findByInOutEventId(this.getStateEventId()))
+                for (InOutLineStateEvent e : eventDao.findByInOutEventId(this.getInOutEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((InOutLineStateEvent.InOutLineStateCreated)e);
@@ -542,7 +542,7 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
         public void addInOutLineEvent(InOutLineStateEvent.InOutLineStateCreated e)
         {
             throwOnInconsistentEventIds(e);
-            this.inOutLineEvents.put(e.getStateEventId(), e);
+            this.inOutLineEvents.put(e.getInOutLineEventId(), e);
         }
 
         public void save()
@@ -893,7 +893,7 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
                 if (readOnlyInOutLineEvents != null) { return readOnlyInOutLineEvents; }
                 InOutLineStateEventDao eventDao = getInOutLineStateEventDao();
                 List<InOutLineStateEvent> eL = new ArrayList<InOutLineStateEvent>();
-                for (InOutLineStateEvent e : eventDao.findByInOutEventId(this.getStateEventId()))
+                for (InOutLineStateEvent e : eventDao.findByInOutEventId(this.getInOutEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((InOutLineStateEvent)e);
@@ -917,7 +917,7 @@ public abstract class AbstractInOutStateEvent extends AbstractStateEvent impleme
         public void addInOutLineEvent(InOutLineStateEvent e)
         {
             throwOnInconsistentEventIds(e);
-            this.inOutLineEvents.put(e.getStateEventId(), e);
+            this.inOutLineEvents.put(e.getInOutLineEventId(), e);
         }
 
         public void save()

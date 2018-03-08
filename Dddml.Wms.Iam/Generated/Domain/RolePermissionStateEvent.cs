@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.RolePermission
 	public abstract class RolePermissionStateEventBase : IRolePermissionStateEvent
 	{
 
-		public virtual RolePermissionEventId StateEventId { get; set; }
+		public virtual RolePermissionEventId RolePermissionEventId { get; set; }
 
         public virtual RolePermissionId Id
         {
-            get { return StateEventId.Id; }
-            set { StateEventId.Id = value; }
+            get { return RolePermissionEventId.Id; }
+            set { RolePermissionEventId.Id = value; }
         }
 
 		public virtual bool? Active { get; set; }
@@ -36,7 +36,7 @@ namespace Dddml.Wms.Domain.RolePermission
 		RolePermissionEventId IGlobalIdentity<RolePermissionEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.RolePermissionEventId;
 			}
 		}
 
@@ -79,7 +79,7 @@ namespace Dddml.Wms.Domain.RolePermission
 
         protected RolePermissionStateEventBase(RolePermissionEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.RolePermissionEventId = stateEventId;
         }
 
 

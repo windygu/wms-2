@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.UomConversion
         public virtual UomConversionStateCreatedDto ToUomConversionStateCreatedDto(IUomConversionStateCreated e)
         {
             var dto = new UomConversionStateCreatedDto();
-            dto.StateEventId = new UomConversionEventIdDtoWrapper(e.StateEventId);
+            dto.UomConversionEventId = new UomConversionEventIdDtoWrapper(e.UomConversionEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -53,7 +53,7 @@ namespace Dddml.Wms.Domain.UomConversion
         public virtual UomConversionStateMergePatchedDto ToUomConversionStateMergePatchedDto(IUomConversionStateMergePatched e)
         {
             var dto = new UomConversionStateMergePatchedDto();
-            dto.StateEventId = new UomConversionEventIdDtoWrapper(e.StateEventId);
+            dto.UomConversionEventId = new UomConversionEventIdDtoWrapper(e.UomConversionEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -75,7 +75,7 @@ namespace Dddml.Wms.Domain.UomConversion
         public virtual UomConversionStateDeletedDto ToUomConversionStateDeletedDto(IUomConversionStateDeleted e)
         {
             var dto = new UomConversionStateDeletedDto();
-            dto.StateEventId = new UomConversionEventIdDtoWrapper(e.StateEventId);
+            dto.UomConversionEventId = new UomConversionEventIdDtoWrapper(e.UomConversionEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

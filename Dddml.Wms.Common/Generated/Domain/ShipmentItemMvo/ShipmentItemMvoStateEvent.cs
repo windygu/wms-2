@@ -16,12 +16,12 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 	public abstract class ShipmentItemMvoStateEventBase : IShipmentItemMvoStateEvent
 	{
 
-		public virtual ShipmentItemMvoEventId StateEventId { get; set; }
+		public virtual ShipmentItemMvoEventId ShipmentItemMvoEventId { get; set; }
 
         public virtual ShipmentItemId ShipmentItemId
         {
-            get { return StateEventId.ShipmentItemId; }
-            set { StateEventId.ShipmentItemId = value; }
+            get { return ShipmentItemMvoEventId.ShipmentItemId; }
+            set { ShipmentItemMvoEventId.ShipmentItemId = value; }
         }
 
 		public virtual string ProductId { get; set; }
@@ -109,7 +109,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 		ShipmentItemMvoEventId IGlobalIdentity<ShipmentItemMvoEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.ShipmentItemMvoEventId;
 			}
 		}
 
@@ -152,7 +152,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 
         protected ShipmentItemMvoStateEventBase(ShipmentItemMvoEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.ShipmentItemMvoEventId = stateEventId;
         }
 
 

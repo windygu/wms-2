@@ -40,12 +40,12 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo.NHibernate
             }
             PhysicalInventoryLineId idObj = (PhysicalInventoryLineId)(eventStoreAggregateId as EventStoreAggregateId).Id;
             var criteria = CurrentSession.CreateCriteria<PhysicalInventoryLineMvoStateEventBase>();
-            criteria.Add(Restrictions.Eq("StateEventId.PhysicalInventoryLineIdPhysicalInventoryDocumentNumber", idObj.PhysicalInventoryDocumentNumber));
-            criteria.Add(Restrictions.Eq("StateEventId.PhysicalInventoryLineIdInventoryItemIdProductId", idObj.InventoryItemIdProductId));
-            criteria.Add(Restrictions.Eq("StateEventId.PhysicalInventoryLineIdInventoryItemIdLocatorId", idObj.InventoryItemIdLocatorId));
-            criteria.Add(Restrictions.Eq("StateEventId.PhysicalInventoryLineIdInventoryItemIdAttributeSetInstanceId", idObj.InventoryItemIdAttributeSetInstanceId));
-            criteria.Add(Restrictions.Le("StateEventId.PhysicalInventoryVersion", version));
-            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.PhysicalInventoryVersion"));
+            criteria.Add(Restrictions.Eq("PhysicalInventoryLineMvoEventId.PhysicalInventoryLineIdPhysicalInventoryDocumentNumber", idObj.PhysicalInventoryDocumentNumber));
+            criteria.Add(Restrictions.Eq("PhysicalInventoryLineMvoEventId.PhysicalInventoryLineIdInventoryItemIdProductId", idObj.InventoryItemIdProductId));
+            criteria.Add(Restrictions.Eq("PhysicalInventoryLineMvoEventId.PhysicalInventoryLineIdInventoryItemIdLocatorId", idObj.InventoryItemIdLocatorId));
+            criteria.Add(Restrictions.Eq("PhysicalInventoryLineMvoEventId.PhysicalInventoryLineIdInventoryItemIdAttributeSetInstanceId", idObj.InventoryItemIdAttributeSetInstanceId));
+            criteria.Add(Restrictions.Le("PhysicalInventoryLineMvoEventId.PhysicalInventoryVersion", version));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("PhysicalInventoryLineMvoEventId.PhysicalInventoryVersion"));
             var es = criteria.List<IEvent>();
             foreach (PhysicalInventoryLineMvoStateEventBase e in es)
             {
@@ -53,7 +53,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo.NHibernate
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((PhysicalInventoryLineMvoStateEventBase)es.Last()).StateEventId.PhysicalInventoryVersion : default(long),
+                SteamVersion = es.Count > 0 ? ((PhysicalInventoryLineMvoStateEventBase)es.Last()).PhysicalInventoryLineMvoEventId.PhysicalInventoryVersion : default(long),
                 Events = es
             };
         }

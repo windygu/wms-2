@@ -59,7 +59,7 @@ namespace Dddml.Wms.Domain.Attribute
 
         public virtual void Initialize(IAttributeStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.AttributeId;
+            var aggregateId = stateCreated.AttributeEventId.AttributeId;
             var state = new AttributeState();
             state.AttributeId = aggregateId;
             var aggregate = (AttributeAggregate)GetAttributeAggregate(state);

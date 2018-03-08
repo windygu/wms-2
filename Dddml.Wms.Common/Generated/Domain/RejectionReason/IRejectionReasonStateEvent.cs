@@ -13,7 +13,7 @@ namespace Dddml.Wms.Domain.RejectionReason
 {
 	public interface IRejectionReasonStateEvent : IEvent, IStateEventDto, IGlobalIdentity<RejectionReasonEventId>, ICreated<string>
 	{
-		RejectionReasonEventId StateEventId { get; }
+		RejectionReasonEventId RejectionReasonEventId { get; }
 
         bool ReadOnly { get; set; }
 

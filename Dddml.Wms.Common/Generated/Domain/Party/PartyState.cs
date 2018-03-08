@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.Party
         {
             if (events != null && events.Count() > 0)
             {
-                this.PartyId = ((IPartyStateEvent)events.First()).StateEventId.PartyId;
+                this.PartyId = ((IPartyStateEvent)events.First()).PartyEventId.PartyId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -301,7 +301,7 @@ namespace Dddml.Wms.Domain.Party
             id.Append("[").Append("Party|");
 
             var stateEntityId = this.PartyId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.PartyId;
+            var eventEntityId = stateEvent.PartyEventId.PartyId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -311,7 +311,7 @@ namespace Dddml.Wms.Domain.Party
             id.Append("]");
 
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.StateEventId.Version;
+            var eventVersion = stateEvent.PartyEventId.Version;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

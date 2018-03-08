@@ -60,7 +60,7 @@ namespace Dddml.Wms.Domain.Party
 
         public virtual void Initialize(IPartyStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.PartyId;
+            var aggregateId = stateCreated.PartyEventId.PartyId;
             var state = new PartyState();
             state.PartyId = aggregateId;
             var aggregate = (PartyAggregate)GetPartyAggregate(state);

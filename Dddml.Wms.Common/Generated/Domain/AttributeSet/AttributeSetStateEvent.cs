@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.AttributeSet
 	public abstract class AttributeSetStateEventBase : IAttributeSetStateEvent
 	{
 
-		public virtual AttributeSetEventId StateEventId { get; set; }
+		public virtual AttributeSetEventId AttributeSetEventId { get; set; }
 
         public virtual string AttributeSetId
         {
-            get { return StateEventId.AttributeSetId; }
-            set { StateEventId.AttributeSetId = value; }
+            get { return AttributeSetEventId.AttributeSetId; }
+            set { AttributeSetEventId.AttributeSetId = value; }
         }
 
 		public virtual string AttributeSetName { get; set; }
@@ -48,7 +48,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 		AttributeSetEventId IGlobalIdentity<AttributeSetEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.AttributeSetEventId;
 			}
 		}
 
@@ -91,7 +91,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 
         protected AttributeSetStateEventBase(AttributeSetEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.AttributeSetEventId = stateEventId;
         }
 
 		protected IAttributeUseStateEventDao AttributeUseStateEventDao
@@ -101,7 +101,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 
         protected AttributeUseEventId NewAttributeUseEventId(string attributeId)
         {
-            var stateEventId = new AttributeUseEventId(this.StateEventId.AttributeSetId, attributeId, this.StateEventId.Version);
+            var stateEventId = new AttributeUseEventId(this.AttributeSetEventId.AttributeSetId, attributeId, this.AttributeSetEventId.Version);
             return stateEventId;
         }
 
@@ -113,10 +113,10 @@ namespace Dddml.Wms.Domain.AttributeSet
 
 		public static void ThrowOnInconsistentEventIds(IAttributeSetStateEvent oe, IAttributeUseStateEvent e)
 		{
-			if (!oe.StateEventId.AttributeSetId.Equals(e.StateEventId.AttributeSetId))
+			if (!oe.AttributeSetEventId.AttributeSetId.Equals(e.AttributeUseEventId.AttributeSetId))
 			{ 
 				throw DomainError.Named("inconsistentEventIds", "Outer Id AttributeSetId {0} but inner id AttributeSetId {1}", 
-					oe.StateEventId.AttributeSetId, e.StateEventId.AttributeSetId);
+					oe.AttributeSetEventId.AttributeSetId, e.AttributeUseEventId.AttributeSetId);
 			}
 		}
 
@@ -158,7 +158,7 @@ namespace Dddml.Wms.Domain.AttributeSet
                     if (_readOnlyAttributeUseEvents != null) { return _readOnlyAttributeUseEvents; }
                     var eventDao = AttributeUseStateEventDao;
                     var eL = new List<IAttributeUseStateCreated>();
-                    foreach (var e in eventDao.FindByAttributeSetEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByAttributeSetEventId(this.AttributeSetEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IAttributeUseStateCreated)e);
@@ -182,7 +182,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 		public virtual void AddAttributeUseEvent(IAttributeUseStateCreated e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._attributeUseEvents[e.StateEventId] = e;
+			this._attributeUseEvents[e.AttributeUseEventId] = e;
 		}
 
         public virtual IAttributeUseStateCreated NewAttributeUseStateCreated(string attributeId)
@@ -248,7 +248,7 @@ namespace Dddml.Wms.Domain.AttributeSet
                     if (_readOnlyAttributeUseEvents != null) { return _readOnlyAttributeUseEvents; }
                     var eventDao = AttributeUseStateEventDao;
                     var eL = new List<IAttributeUseStateEvent>();
-                    foreach (var e in eventDao.FindByAttributeSetEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByAttributeSetEventId(this.AttributeSetEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IAttributeUseStateEvent)e);
@@ -272,7 +272,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 		public virtual void AddAttributeUseEvent(IAttributeUseStateEvent e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._attributeUseEvents[e.StateEventId] = e;
+			this._attributeUseEvents[e.AttributeUseEventId] = e;
 		}
 
         public virtual IAttributeUseStateCreated NewAttributeUseStateCreated(string attributeId)
@@ -340,7 +340,7 @@ namespace Dddml.Wms.Domain.AttributeSet
                     if (_readOnlyAttributeUseEvents != null) { return _readOnlyAttributeUseEvents; }
                     var eventDao = AttributeUseStateEventDao;
                     var eL = new List<IAttributeUseStateRemoved>();
-                    foreach (var e in eventDao.FindByAttributeSetEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByAttributeSetEventId(this.AttributeSetEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IAttributeUseStateRemoved)e);
@@ -364,7 +364,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 		public virtual void AddAttributeUseEvent(IAttributeUseStateRemoved e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._attributeUseEvents[e.StateEventId] = e;
+			this._attributeUseEvents[e.AttributeUseEventId] = e;
 		}
 
         public virtual IAttributeUseStateRemoved NewAttributeUseStateRemoved(string attributeId)

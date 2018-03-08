@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.User
 	public abstract class UserLoginStateEventBase : IUserLoginStateEvent
 	{
 
-		public virtual UserLoginEventId StateEventId { get; set; }
+		public virtual UserLoginEventId UserLoginEventId { get; set; }
 
         public virtual LoginKey LoginKey
         {
-            get { return StateEventId.LoginKey; }
-            set { StateEventId.LoginKey = value; }
+            get { return UserLoginEventId.LoginKey; }
+            set { UserLoginEventId.LoginKey = value; }
         }
 
 		public virtual bool? Active { get; set; }
@@ -36,7 +36,7 @@ namespace Dddml.Wms.Domain.User
 		UserLoginEventId IGlobalIdentity<UserLoginEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.UserLoginEventId;
 			}
 		}
 
@@ -81,7 +81,7 @@ namespace Dddml.Wms.Domain.User
 
         protected UserLoginStateEventBase(UserLoginEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.UserLoginEventId = stateEventId;
         }
 
 

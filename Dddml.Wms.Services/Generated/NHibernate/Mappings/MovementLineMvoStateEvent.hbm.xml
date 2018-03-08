@@ -5,7 +5,7 @@
   
   <class name="MovementLineMvoStateEventBase" table="MovementLineMvoStateEvents" mutable="false" abstract="true">
 
-    <composite-id name="StateEventId" class="Dddml.Wms.Domain.MovementLineMvo.MovementLineMvoEventId">
+    <composite-id name="MovementLineMvoEventId" class="Dddml.Wms.Domain.MovementLineMvo.MovementLineMvoEventId">
         <key-property name="MovementLineIdMovementDocumentNumber" ><column name="MovementLineIdMovementDocumentNumber" length="50" /></key-property>
         <key-property name="MovementLineIdLineNumber" ><column name="MovementLineIdLineNumber" length="50" /></key-property>
         <key-property name="MovementVersion" ></key-property>

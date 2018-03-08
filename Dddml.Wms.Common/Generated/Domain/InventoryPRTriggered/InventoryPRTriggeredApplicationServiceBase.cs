@@ -58,7 +58,7 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 
         public virtual void Initialize(IInventoryPRTriggeredStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.InventoryPRTriggeredId;
+            var aggregateId = stateCreated.InventoryPRTriggeredEventId.InventoryPRTriggeredId;
             var state = new InventoryPRTriggeredState();
             state.InventoryPRTriggeredId = aggregateId;
             var aggregate = (InventoryPRTriggeredAggregate)GetInventoryPRTriggeredAggregate(state);

@@ -34,16 +34,16 @@ public class HibernateAttributeSetInstanceExtensionFieldEventStore extends Abstr
         }
         String idObj = (String) eventStoreAggregateId.getId();
         Criteria criteria = getCurrentSession().createCriteria(AbstractAttributeSetInstanceExtensionFieldStateEvent.class);
-        criteria.add(Restrictions.eq("stateEventId.name", idObj));
-        criteria.add(Restrictions.le("stateEventId.version", version));
-        criteria.addOrder(Order.asc("stateEventId.version"));
+        criteria.add(Restrictions.eq("attributeSetInstanceExtensionFieldEventId.name", idObj));
+        criteria.add(Restrictions.le("attributeSetInstanceExtensionFieldEventId.version", version));
+        criteria.addOrder(Order.asc("attributeSetInstanceExtensionFieldEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
             ((AbstractAttributeSetInstanceExtensionFieldStateEvent) e).setStateEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractAttributeSetInstanceExtensionFieldStateEvent) es.get(es.size() - 1)).getStateEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractAttributeSetInstanceExtensionFieldStateEvent) es.get(es.size() - 1)).getAttributeSetInstanceExtensionFieldEventId().getVersion());
         } else {
             //todo?
         }

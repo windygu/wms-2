@@ -15,31 +15,31 @@ namespace Dddml.Wms.Domain.RolePermission
 	public abstract class RolePermissionStateEventDtoBase : IStateEventDto, IRolePermissionStateCreated, IRolePermissionStateMergePatched, IRolePermissionStateDeleted
 	{
 
-        private RolePermissionEventIdDto _stateEventId;
+        private RolePermissionEventIdDto _rolePermissionEventId;
 
-		protected internal virtual RolePermissionEventIdDto StateEventId 
+		protected internal virtual RolePermissionEventIdDto RolePermissionEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new RolePermissionEventIdDto(); }
-                return _stateEventId;
+                if (_rolePermissionEventId == null) { _rolePermissionEventId = new RolePermissionEventIdDto(); }
+                return _rolePermissionEventId;
             }
             set
             {
-                _stateEventId = value;
+                _rolePermissionEventId = value;
             }
         }
 
         public virtual RolePermissionIdDto Id
         {
-            get { return StateEventId.Id; }
-            set { StateEventId.Id = value; }
+            get { return RolePermissionEventId.Id; }
+            set { RolePermissionEventId.Id = value; }
         }
 
         public virtual long Version
         {
-            get { return StateEventId.Version; }
-            set { StateEventId.Version = value; }
+            get { return RolePermissionEventId.Version; }
+            set { RolePermissionEventId.Version = value; }
         }
 
 		public virtual bool? Active { get; set; }
@@ -55,7 +55,7 @@ namespace Dddml.Wms.Domain.RolePermission
 		RolePermissionEventId IGlobalIdentity<RolePermissionEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToRolePermissionEventId();
+				return this.RolePermissionEventId.ToRolePermissionEventId();
 			}
 		}
 
@@ -111,9 +111,9 @@ namespace Dddml.Wms.Domain.RolePermission
 		}
 
 
-        RolePermissionEventId IRolePermissionStateEvent.StateEventId
+        RolePermissionEventId IRolePermissionStateEvent.RolePermissionEventId
         {
-            get { return this.StateEventId.ToRolePermissionEventId(); }
+            get { return this.RolePermissionEventId.ToRolePermissionEventId(); }
         }
 
         protected RolePermissionStateEventDtoBase()
@@ -122,7 +122,7 @@ namespace Dddml.Wms.Domain.RolePermission
 
         protected RolePermissionStateEventDtoBase(RolePermissionEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.RolePermissionEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

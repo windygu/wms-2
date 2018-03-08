@@ -76,8 +76,8 @@ namespace Dddml.Wms.Services.Tests
             var propType = targetObject.GetType().GetProperty(propName);
             if (propType == null)
             {
-                string stateEventIdPropFormat = "StateEventId.{0}Id.{1}";
-                propName = String.Format(stateEventIdPropFormat, entityName, propName);
+                string stateEventIdPropFormat = "{0}EventId.{1}Id.{2}";
+                propName = String.Format(stateEventIdPropFormat, entityName, entityName, propName);
             }
             return propName;
         }

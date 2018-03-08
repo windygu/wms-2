@@ -60,7 +60,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
         public virtual void Initialize(IPhysicalInventoryStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.DocumentNumber;
+            var aggregateId = stateCreated.PhysicalInventoryEventId.DocumentNumber;
             var state = new PhysicalInventoryState();
             state.DocumentNumber = aggregateId;
             var aggregate = (PhysicalInventoryAggregate)GetPhysicalInventoryAggregate(state);

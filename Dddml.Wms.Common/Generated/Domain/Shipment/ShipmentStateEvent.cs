@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.Shipment
 	public abstract class ShipmentStateEventBase : IShipmentStateEvent
 	{
 
-		public virtual ShipmentEventId StateEventId { get; set; }
+		public virtual ShipmentEventId ShipmentEventId { get; set; }
 
         public virtual string ShipmentId
         {
-            get { return StateEventId.ShipmentId; }
-            set { StateEventId.ShipmentId = value; }
+            get { return ShipmentEventId.ShipmentId; }
+            set { ShipmentEventId.ShipmentId = value; }
         }
 
 		public virtual string ShipmentTypeId { get; set; }
@@ -86,7 +86,7 @@ namespace Dddml.Wms.Domain.Shipment
 		ShipmentEventId IGlobalIdentity<ShipmentEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.ShipmentEventId;
 			}
 		}
 
@@ -129,7 +129,7 @@ namespace Dddml.Wms.Domain.Shipment
 
         protected ShipmentStateEventBase(ShipmentEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.ShipmentEventId = stateEventId;
         }
 
 		protected IShipmentItemStateEventDao ShipmentItemStateEventDao
@@ -139,7 +139,7 @@ namespace Dddml.Wms.Domain.Shipment
 
         protected ShipmentItemEventId NewShipmentItemEventId(string shipmentItemSeqId)
         {
-            var stateEventId = new ShipmentItemEventId(this.StateEventId.ShipmentId, shipmentItemSeqId, this.StateEventId.Version);
+            var stateEventId = new ShipmentItemEventId(this.ShipmentEventId.ShipmentId, shipmentItemSeqId, this.ShipmentEventId.Version);
             return stateEventId;
         }
 
@@ -151,10 +151,10 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public static void ThrowOnInconsistentEventIds(IShipmentStateEvent oe, IShipmentItemStateEvent e)
 		{
-			if (!oe.StateEventId.ShipmentId.Equals(e.StateEventId.ShipmentId))
+			if (!oe.ShipmentEventId.ShipmentId.Equals(e.ShipmentItemEventId.ShipmentId))
 			{ 
 				throw DomainError.Named("inconsistentEventIds", "Outer Id ShipmentId {0} but inner id ShipmentId {1}", 
-					oe.StateEventId.ShipmentId, e.StateEventId.ShipmentId);
+					oe.ShipmentEventId.ShipmentId, e.ShipmentItemEventId.ShipmentId);
 			}
 		}
 
@@ -166,7 +166,7 @@ namespace Dddml.Wms.Domain.Shipment
 
         protected ShipmentReceiptEventId NewShipmentReceiptEventId(string receiptSeqId)
         {
-            var stateEventId = new ShipmentReceiptEventId(this.StateEventId.ShipmentId, receiptSeqId, this.StateEventId.Version);
+            var stateEventId = new ShipmentReceiptEventId(this.ShipmentEventId.ShipmentId, receiptSeqId, this.ShipmentEventId.Version);
             return stateEventId;
         }
 
@@ -178,10 +178,10 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public static void ThrowOnInconsistentEventIds(IShipmentStateEvent oe, IShipmentReceiptStateEvent e)
 		{
-			if (!oe.StateEventId.ShipmentId.Equals(e.StateEventId.ShipmentId))
+			if (!oe.ShipmentEventId.ShipmentId.Equals(e.ShipmentReceiptEventId.ShipmentId))
 			{ 
 				throw DomainError.Named("inconsistentEventIds", "Outer Id ShipmentId {0} but inner id ShipmentId {1}", 
-					oe.StateEventId.ShipmentId, e.StateEventId.ShipmentId);
+					oe.ShipmentEventId.ShipmentId, e.ShipmentReceiptEventId.ShipmentId);
 			}
 		}
 
@@ -223,7 +223,7 @@ namespace Dddml.Wms.Domain.Shipment
                     if (_readOnlyShipmentItemEvents != null) { return _readOnlyShipmentItemEvents; }
                     var eventDao = ShipmentItemStateEventDao;
                     var eL = new List<IShipmentItemStateCreated>();
-                    foreach (var e in eventDao.FindByShipmentEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByShipmentEventId(this.ShipmentEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IShipmentItemStateCreated)e);
@@ -247,7 +247,7 @@ namespace Dddml.Wms.Domain.Shipment
 		public virtual void AddShipmentItemEvent(IShipmentItemStateCreated e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._shipmentItemEvents[e.StateEventId] = e;
+			this._shipmentItemEvents[e.ShipmentItemEventId] = e;
 		}
 
         public virtual IShipmentItemStateCreated NewShipmentItemStateCreated(string shipmentItemSeqId)
@@ -273,7 +273,7 @@ namespace Dddml.Wms.Domain.Shipment
                     if (_readOnlyShipmentReceiptEvents != null) { return _readOnlyShipmentReceiptEvents; }
                     var eventDao = ShipmentReceiptStateEventDao;
                     var eL = new List<IShipmentReceiptStateCreated>();
-                    foreach (var e in eventDao.FindByShipmentEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByShipmentEventId(this.ShipmentEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IShipmentReceiptStateCreated)e);
@@ -297,7 +297,7 @@ namespace Dddml.Wms.Domain.Shipment
 		public virtual void AddShipmentReceiptEvent(IShipmentReceiptStateCreated e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._shipmentReceiptEvents[e.StateEventId] = e;
+			this._shipmentReceiptEvents[e.ShipmentReceiptEventId] = e;
 		}
 
         public virtual IShipmentReceiptStateCreated NewShipmentReceiptStateCreated(string receiptSeqId)
@@ -404,7 +404,7 @@ namespace Dddml.Wms.Domain.Shipment
                     if (_readOnlyShipmentItemEvents != null) { return _readOnlyShipmentItemEvents; }
                     var eventDao = ShipmentItemStateEventDao;
                     var eL = new List<IShipmentItemStateEvent>();
-                    foreach (var e in eventDao.FindByShipmentEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByShipmentEventId(this.ShipmentEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IShipmentItemStateEvent)e);
@@ -428,7 +428,7 @@ namespace Dddml.Wms.Domain.Shipment
 		public virtual void AddShipmentItemEvent(IShipmentItemStateEvent e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._shipmentItemEvents[e.StateEventId] = e;
+			this._shipmentItemEvents[e.ShipmentItemEventId] = e;
 		}
 
         public virtual IShipmentItemStateCreated NewShipmentItemStateCreated(string shipmentItemSeqId)
@@ -460,7 +460,7 @@ namespace Dddml.Wms.Domain.Shipment
                     if (_readOnlyShipmentReceiptEvents != null) { return _readOnlyShipmentReceiptEvents; }
                     var eventDao = ShipmentReceiptStateEventDao;
                     var eL = new List<IShipmentReceiptStateEvent>();
-                    foreach (var e in eventDao.FindByShipmentEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByShipmentEventId(this.ShipmentEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IShipmentReceiptStateEvent)e);
@@ -484,7 +484,7 @@ namespace Dddml.Wms.Domain.Shipment
 		public virtual void AddShipmentReceiptEvent(IShipmentReceiptStateEvent e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._shipmentReceiptEvents[e.StateEventId] = e;
+			this._shipmentReceiptEvents[e.ShipmentReceiptEventId] = e;
 		}
 
         public virtual IShipmentReceiptStateCreated NewShipmentReceiptStateCreated(string receiptSeqId)

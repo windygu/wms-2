@@ -8,22 +8,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractAttributeAliasStateEvent extends AbstractStateEvent implements AttributeAliasStateEvent 
 {
-    private AttributeAliasEventId stateEventId;
+    private AttributeAliasEventId attributeAliasEventId;
 
-    public AttributeAliasEventId getStateEventId() {
-        return this.stateEventId;
+    public AttributeAliasEventId getAttributeAliasEventId() {
+        return this.attributeAliasEventId;
     }
 
-    public void setStateEventId(AttributeAliasEventId eventId) {
-        this.stateEventId = eventId;
+    public void setAttributeAliasEventId(AttributeAliasEventId eventId) {
+        this.attributeAliasEventId = eventId;
     }
     
     public String getCode() {
-        return getStateEventId().getCode();
+        return getAttributeAliasEventId().getCode();
     }
 
     public void setCode(String code) {
-        getStateEventId().setCode(code);
+        getAttributeAliasEventId().setCode(code);
     }
 
     private boolean stateEventReadOnly;
@@ -107,7 +107,7 @@ public abstract class AbstractAttributeAliasStateEvent extends AbstractStateEven
     }
 
     protected AbstractAttributeAliasStateEvent(AttributeAliasEventId eventId) {
-        this.stateEventId = eventId;
+        this.attributeAliasEventId = eventId;
     }
 
 

@@ -38,8 +38,8 @@ public class HibernateAttributeUseStateEventDao implements AttributeUseStateEven
     {
         Criteria criteria = getCurrentSession().createCriteria(AbstractAttributeUseStateEvent.class);
         Junction partIdCondition = Restrictions.conjunction()
-            .add(Restrictions.eq("stateEventId.attributeSetId", attributeSetEventId.getAttributeSetId()))
-            .add(Restrictions.eq("stateEventId.attributeSetVersion", attributeSetEventId.getVersion()))
+            .add(Restrictions.eq("attributeUseEventId.attributeSetId", attributeSetEventId.getAttributeSetId()))
+            .add(Restrictions.eq("attributeUseEventId.attributeSetVersion", attributeSetEventId.getVersion()))
             ;
         return criteria.add(partIdCondition).list();
     }

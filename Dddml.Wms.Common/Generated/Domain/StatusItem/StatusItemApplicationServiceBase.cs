@@ -57,7 +57,7 @@ namespace Dddml.Wms.Domain.StatusItem
 
         public virtual void Initialize(IStatusItemStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.StatusId;
+            var aggregateId = stateCreated.StatusItemEventId.StatusId;
             var state = new StatusItemState();
             state.StatusId = aggregateId;
             var aggregate = (StatusItemAggregate)GetStatusItemAggregate(state);

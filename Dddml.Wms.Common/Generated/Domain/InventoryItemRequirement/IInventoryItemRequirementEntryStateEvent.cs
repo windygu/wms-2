@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 {
 	public interface IInventoryItemRequirementEntryStateEvent : IEvent, IStateEventDto, IGlobalIdentity<InventoryItemRequirementEntryEventId>, ICreated<string>
 	{
-		InventoryItemRequirementEntryEventId StateEventId { get; }
+		InventoryItemRequirementEntryEventId InventoryItemRequirementEntryEventId { get; }
 
         bool ReadOnly { get; set; }
 

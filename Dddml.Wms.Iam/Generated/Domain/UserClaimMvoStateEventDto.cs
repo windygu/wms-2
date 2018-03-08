@@ -16,31 +16,31 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 	public abstract class UserClaimMvoStateEventDtoBase : IStateEventDto, IUserClaimMvoStateCreated, IUserClaimMvoStateMergePatched, IUserClaimMvoStateDeleted
 	{
 
-        private UserClaimMvoEventIdDto _stateEventId;
+        private UserClaimMvoEventIdDto _userClaimMvoEventId;
 
-		protected internal virtual UserClaimMvoEventIdDto StateEventId 
+		protected internal virtual UserClaimMvoEventIdDto UserClaimMvoEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new UserClaimMvoEventIdDto(); }
-                return _stateEventId;
+                if (_userClaimMvoEventId == null) { _userClaimMvoEventId = new UserClaimMvoEventIdDto(); }
+                return _userClaimMvoEventId;
             }
             set
             {
-                _stateEventId = value;
+                _userClaimMvoEventId = value;
             }
         }
 
         public virtual UserClaimIdDto UserClaimId
         {
-            get { return StateEventId.UserClaimId; }
-            set { StateEventId.UserClaimId = value; }
+            get { return UserClaimMvoEventId.UserClaimId; }
+            set { UserClaimMvoEventId.UserClaimId = value; }
         }
 
         public virtual long UserVersion
         {
-            get { return StateEventId.UserVersion; }
-            set { StateEventId.UserVersion = value; }
+            get { return UserClaimMvoEventId.UserVersion; }
+            set { UserClaimMvoEventId.UserVersion = value; }
         }
 
 		public virtual string ClaimType { get; set; }
@@ -96,7 +96,7 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 		UserClaimMvoEventId IGlobalIdentity<UserClaimMvoEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToUserClaimMvoEventId();
+				return this.UserClaimMvoEventId.ToUserClaimMvoEventId();
 			}
 		}
 
@@ -532,9 +532,9 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 		}
 
 
-        UserClaimMvoEventId IUserClaimMvoStateEvent.StateEventId
+        UserClaimMvoEventId IUserClaimMvoStateEvent.UserClaimMvoEventId
         {
-            get { return this.StateEventId.ToUserClaimMvoEventId(); }
+            get { return this.UserClaimMvoEventId.ToUserClaimMvoEventId(); }
         }
 
         protected UserClaimMvoStateEventDtoBase()
@@ -543,7 +543,7 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 
         protected UserClaimMvoStateEventDtoBase(UserClaimMvoEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.UserClaimMvoEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

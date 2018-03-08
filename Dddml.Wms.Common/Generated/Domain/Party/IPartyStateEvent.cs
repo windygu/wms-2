@@ -13,7 +13,7 @@ namespace Dddml.Wms.Domain.Party
 {
 	public interface IPartyStateEvent : IEvent, IStateEventDto, IGlobalIdentity<PartyEventId>, ICreated<string>
 	{
-		PartyEventId StateEventId { get; }
+		PartyEventId PartyEventId { get; }
 
         bool ReadOnly { get; set; }
 

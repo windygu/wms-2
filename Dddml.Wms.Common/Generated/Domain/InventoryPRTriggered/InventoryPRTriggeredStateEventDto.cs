@@ -16,31 +16,31 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 	public abstract class InventoryPRTriggeredStateEventDtoBase : IStateEventDto, IInventoryPRTriggeredStateCreated, IInventoryPRTriggeredStateMergePatched
 	{
 
-        private InventoryPRTriggeredEventIdDto _stateEventId;
+        private InventoryPRTriggeredEventIdDto _inventoryPRTriggeredEventId;
 
-		protected internal virtual InventoryPRTriggeredEventIdDto StateEventId 
+		protected internal virtual InventoryPRTriggeredEventIdDto InventoryPRTriggeredEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new InventoryPRTriggeredEventIdDto(); }
-                return _stateEventId;
+                if (_inventoryPRTriggeredEventId == null) { _inventoryPRTriggeredEventId = new InventoryPRTriggeredEventIdDto(); }
+                return _inventoryPRTriggeredEventId;
             }
             set
             {
-                _stateEventId = value;
+                _inventoryPRTriggeredEventId = value;
             }
         }
 
         public virtual InventoryPRTriggeredIdDto InventoryPRTriggeredId
         {
-            get { return StateEventId.InventoryPRTriggeredId; }
-            set { StateEventId.InventoryPRTriggeredId = value; }
+            get { return InventoryPRTriggeredEventId.InventoryPRTriggeredId; }
+            set { InventoryPRTriggeredEventId.InventoryPRTriggeredId = value; }
         }
 
         public virtual long Version
         {
-            get { return StateEventId.Version; }
-            set { StateEventId.Version = value; }
+            get { return InventoryPRTriggeredEventId.Version; }
+            set { InventoryPRTriggeredEventId.Version = value; }
         }
 
 		public virtual bool? IsProcessed { get; set; }
@@ -56,7 +56,7 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 		InventoryPRTriggeredEventId IGlobalIdentity<InventoryPRTriggeredEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToInventoryPRTriggeredEventId();
+				return this.InventoryPRTriggeredEventId.ToInventoryPRTriggeredEventId();
 			}
 		}
 
@@ -112,9 +112,9 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 		}
 
 
-        InventoryPRTriggeredEventId IInventoryPRTriggeredStateEvent.StateEventId
+        InventoryPRTriggeredEventId IInventoryPRTriggeredStateEvent.InventoryPRTriggeredEventId
         {
-            get { return this.StateEventId.ToInventoryPRTriggeredEventId(); }
+            get { return this.InventoryPRTriggeredEventId.ToInventoryPRTriggeredEventId(); }
         }
 
         protected InventoryPRTriggeredStateEventDtoBase()
@@ -123,7 +123,7 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 
         protected InventoryPRTriggeredStateEventDtoBase(InventoryPRTriggeredEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.InventoryPRTriggeredEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

@@ -60,7 +60,7 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 
         public virtual void Initialize(IOrderItemMvoStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.OrderItemId;
+            var aggregateId = stateCreated.OrderItemMvoEventId.OrderItemId;
             var state = new OrderItemMvoState();
             state.OrderItemId = aggregateId;
             var aggregate = (OrderItemMvoAggregate)GetOrderItemMvoAggregate(state);

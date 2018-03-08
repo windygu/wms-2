@@ -39,11 +39,11 @@ namespace Dddml.Wms.Domain.InventoryItem.NHibernate
             }
             InventoryItemId idObj = (InventoryItemId)(eventStoreAggregateId as EventStoreAggregateId).Id;
             var criteria = CurrentSession.CreateCriteria<InventoryItemStateEventBase>();
-            criteria.Add(Restrictions.Eq("StateEventId.InventoryItemIdProductId", idObj.ProductId));
-            criteria.Add(Restrictions.Eq("StateEventId.InventoryItemIdLocatorId", idObj.LocatorId));
-            criteria.Add(Restrictions.Eq("StateEventId.InventoryItemIdAttributeSetInstanceId", idObj.AttributeSetInstanceId));
-            criteria.Add(Restrictions.Le("StateEventId.Version", version));
-            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.Version"));
+            criteria.Add(Restrictions.Eq("InventoryItemEventId.InventoryItemIdProductId", idObj.ProductId));
+            criteria.Add(Restrictions.Eq("InventoryItemEventId.InventoryItemIdLocatorId", idObj.LocatorId));
+            criteria.Add(Restrictions.Eq("InventoryItemEventId.InventoryItemIdAttributeSetInstanceId", idObj.AttributeSetInstanceId));
+            criteria.Add(Restrictions.Le("InventoryItemEventId.Version", version));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("InventoryItemEventId.Version"));
             var es = criteria.List<IEvent>();
             foreach (InventoryItemStateEventBase e in es)
             {
@@ -51,7 +51,7 @@ namespace Dddml.Wms.Domain.InventoryItem.NHibernate
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((InventoryItemStateEventBase)es.Last()).StateEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((InventoryItemStateEventBase)es.Last()).InventoryItemEventId.Version : default(long),
                 Events = es
             };
         }

@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 	public abstract class MovementConfirmationStateEventBase : IMovementConfirmationStateEvent
 	{
 
-		public virtual MovementConfirmationEventId StateEventId { get; set; }
+		public virtual MovementConfirmationEventId MovementConfirmationEventId { get; set; }
 
         public virtual string DocumentNumber
         {
-            get { return StateEventId.DocumentNumber; }
-            set { StateEventId.DocumentNumber = value; }
+            get { return MovementConfirmationEventId.DocumentNumber; }
+            set { MovementConfirmationEventId.DocumentNumber = value; }
         }
 
 		public virtual string DocumentStatusId { get; set; }
@@ -52,7 +52,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 		MovementConfirmationEventId IGlobalIdentity<MovementConfirmationEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.MovementConfirmationEventId;
 			}
 		}
 
@@ -95,7 +95,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
         protected MovementConfirmationStateEventBase(MovementConfirmationEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.MovementConfirmationEventId = stateEventId;
         }
 
 		protected IMovementConfirmationLineStateEventDao MovementConfirmationLineStateEventDao
@@ -105,7 +105,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
         protected MovementConfirmationLineEventId NewMovementConfirmationLineEventId(string lineNumber)
         {
-            var stateEventId = new MovementConfirmationLineEventId(this.StateEventId.DocumentNumber, lineNumber, this.StateEventId.Version);
+            var stateEventId = new MovementConfirmationLineEventId(this.MovementConfirmationEventId.DocumentNumber, lineNumber, this.MovementConfirmationEventId.Version);
             return stateEventId;
         }
 
@@ -117,10 +117,10 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
 		public static void ThrowOnInconsistentEventIds(IMovementConfirmationStateEvent oe, IMovementConfirmationLineStateEvent e)
 		{
-			if (!oe.StateEventId.DocumentNumber.Equals(e.StateEventId.MovementConfirmationDocumentNumber))
+			if (!oe.MovementConfirmationEventId.DocumentNumber.Equals(e.MovementConfirmationLineEventId.MovementConfirmationDocumentNumber))
 			{ 
 				throw DomainError.Named("inconsistentEventIds", "Outer Id DocumentNumber {0} but inner id MovementConfirmationDocumentNumber {1}", 
-					oe.StateEventId.DocumentNumber, e.StateEventId.MovementConfirmationDocumentNumber);
+					oe.MovementConfirmationEventId.DocumentNumber, e.MovementConfirmationLineEventId.MovementConfirmationDocumentNumber);
 			}
 		}
 
@@ -162,7 +162,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
                     if (_readOnlyMovementConfirmationLineEvents != null) { return _readOnlyMovementConfirmationLineEvents; }
                     var eventDao = MovementConfirmationLineStateEventDao;
                     var eL = new List<IMovementConfirmationLineStateCreated>();
-                    foreach (var e in eventDao.FindByMovementConfirmationEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByMovementConfirmationEventId(this.MovementConfirmationEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IMovementConfirmationLineStateCreated)e);
@@ -186,7 +186,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 		public virtual void AddMovementConfirmationLineEvent(IMovementConfirmationLineStateCreated e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._movementConfirmationLineEvents[e.StateEventId] = e;
+			this._movementConfirmationLineEvents[e.MovementConfirmationLineEventId] = e;
 		}
 
         public virtual IMovementConfirmationLineStateCreated NewMovementConfirmationLineStateCreated(string lineNumber)
@@ -256,7 +256,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
                     if (_readOnlyMovementConfirmationLineEvents != null) { return _readOnlyMovementConfirmationLineEvents; }
                     var eventDao = MovementConfirmationLineStateEventDao;
                     var eL = new List<IMovementConfirmationLineStateEvent>();
-                    foreach (var e in eventDao.FindByMovementConfirmationEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByMovementConfirmationEventId(this.MovementConfirmationEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IMovementConfirmationLineStateEvent)e);
@@ -280,7 +280,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 		public virtual void AddMovementConfirmationLineEvent(IMovementConfirmationLineStateEvent e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._movementConfirmationLineEvents[e.StateEventId] = e;
+			this._movementConfirmationLineEvents[e.MovementConfirmationLineEventId] = e;
 		}
 
         public virtual IMovementConfirmationLineStateCreated NewMovementConfirmationLineStateCreated(string lineNumber)
@@ -348,7 +348,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
                     if (_readOnlyMovementConfirmationLineEvents != null) { return _readOnlyMovementConfirmationLineEvents; }
                     var eventDao = MovementConfirmationLineStateEventDao;
                     var eL = new List<IMovementConfirmationLineStateRemoved>();
-                    foreach (var e in eventDao.FindByMovementConfirmationEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByMovementConfirmationEventId(this.MovementConfirmationEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IMovementConfirmationLineStateRemoved)e);
@@ -372,7 +372,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 		public virtual void AddMovementConfirmationLineEvent(IMovementConfirmationLineStateRemoved e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._movementConfirmationLineEvents[e.StateEventId] = e;
+			this._movementConfirmationLineEvents[e.MovementConfirmationLineEventId] = e;
 		}
 
         public virtual IMovementConfirmationLineStateRemoved NewMovementConfirmationLineStateRemoved(string lineNumber)

@@ -15,31 +15,31 @@ namespace Dddml.Wms.Domain.DocumentType
 	public abstract class DocumentTypeStateEventDtoBase : IStateEventDto, IDocumentTypeStateCreated, IDocumentTypeStateMergePatched, IDocumentTypeStateDeleted
 	{
 
-        private DocumentTypeEventIdDto _stateEventId;
+        private DocumentTypeEventIdDto _documentTypeEventId;
 
-		protected internal virtual DocumentTypeEventIdDto StateEventId 
+		protected internal virtual DocumentTypeEventIdDto DocumentTypeEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new DocumentTypeEventIdDto(); }
-                return _stateEventId;
+                if (_documentTypeEventId == null) { _documentTypeEventId = new DocumentTypeEventIdDto(); }
+                return _documentTypeEventId;
             }
             set
             {
-                _stateEventId = value;
+                _documentTypeEventId = value;
             }
         }
 
         public virtual string DocumentTypeId
         {
-            get { return StateEventId.DocumentTypeId; }
-            set { StateEventId.DocumentTypeId = value; }
+            get { return DocumentTypeEventId.DocumentTypeId; }
+            set { DocumentTypeEventId.DocumentTypeId = value; }
         }
 
         public virtual long Version
         {
-            get { return StateEventId.Version; }
-            set { StateEventId.Version = value; }
+            get { return DocumentTypeEventId.Version; }
+            set { DocumentTypeEventId.Version = value; }
         }
 
 		public virtual string Description { get; set; }
@@ -59,7 +59,7 @@ namespace Dddml.Wms.Domain.DocumentType
 		DocumentTypeEventId IGlobalIdentity<DocumentTypeEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToDocumentTypeEventId();
+				return this.DocumentTypeEventId.ToDocumentTypeEventId();
 			}
 		}
 
@@ -153,9 +153,9 @@ namespace Dddml.Wms.Domain.DocumentType
 		}
 
 
-        DocumentTypeEventId IDocumentTypeStateEvent.StateEventId
+        DocumentTypeEventId IDocumentTypeStateEvent.DocumentTypeEventId
         {
-            get { return this.StateEventId.ToDocumentTypeEventId(); }
+            get { return this.DocumentTypeEventId.ToDocumentTypeEventId(); }
         }
 
         protected DocumentTypeStateEventDtoBase()
@@ -164,7 +164,7 @@ namespace Dddml.Wms.Domain.DocumentType
 
         protected DocumentTypeStateEventDtoBase(DocumentTypeEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.DocumentTypeEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

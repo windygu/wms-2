@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.Attribute
 	public abstract class AttributeAliasStateEventBase : IAttributeAliasStateEvent
 	{
 
-		public virtual AttributeAliasEventId StateEventId { get; set; }
+		public virtual AttributeAliasEventId AttributeAliasEventId { get; set; }
 
         public virtual string Code
         {
-            get { return StateEventId.Code; }
-            set { StateEventId.Code = value; }
+            get { return AttributeAliasEventId.Code; }
+            set { AttributeAliasEventId.Code = value; }
         }
 
 		public virtual string Name { get; set; }
@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.Attribute
 		AttributeAliasEventId IGlobalIdentity<AttributeAliasEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.AttributeAliasEventId;
 			}
 		}
 
@@ -83,7 +83,7 @@ namespace Dddml.Wms.Domain.Attribute
 
         protected AttributeAliasStateEventBase(AttributeAliasEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.AttributeAliasEventId = stateEventId;
         }
 
 

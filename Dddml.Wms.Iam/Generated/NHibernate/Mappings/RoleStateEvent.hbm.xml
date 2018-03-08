@@ -5,7 +5,7 @@
   
   <class name="RoleStateEventBase" table="RoleStateEvents" mutable="false" abstract="true">
 
-    <composite-id name="StateEventId" class="Dddml.Wms.Domain.Role.RoleEventId">
+    <composite-id name="RoleEventId" class="Dddml.Wms.Domain.Role.RoleEventId">
         <key-property name="RoleId" ><column name="RoleId" length="50" /></key-property>
         <key-property name="Version" ></key-property>
     </composite-id>

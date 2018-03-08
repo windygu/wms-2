@@ -138,7 +138,7 @@ public abstract class AbstractDamageReasonApplicationService implements DamageRe
     }
 
     public void initialize(DamageReasonStateEvent.DamageReasonStateCreated stateCreated) {
-        String aggregateId = stateCreated.getStateEventId().getDamageReasonId();
+        String aggregateId = stateCreated.getDamageReasonEventId().getDamageReasonId();
         DamageReasonState state = new AbstractDamageReasonState.SimpleDamageReasonState();
         state.setDamageReasonId(aggregateId);
 
@@ -146,7 +146,7 @@ public abstract class AbstractDamageReasonApplicationService implements DamageRe
         ((AbstractDamageReasonAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getStateEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, stateCreated.getDamageReasonEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(DamageReasonCommand command, EventStoreAggregateId eventStoreAggregateId, DamageReasonState state)

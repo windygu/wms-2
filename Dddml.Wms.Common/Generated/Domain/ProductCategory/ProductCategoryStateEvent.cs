@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.ProductCategory
 	public abstract class ProductCategoryStateEventBase : IProductCategoryStateEvent
 	{
 
-		public virtual ProductCategoryEventId StateEventId { get; set; }
+		public virtual ProductCategoryEventId ProductCategoryEventId { get; set; }
 
         public virtual string ProductCategoryId
         {
-            get { return StateEventId.ProductCategoryId; }
-            set { StateEventId.ProductCategoryId = value; }
+            get { return ProductCategoryEventId.ProductCategoryId; }
+            set { ProductCategoryEventId.ProductCategoryId = value; }
         }
 
 		public virtual string ProductCategoryTypeId { get; set; }
@@ -52,7 +52,7 @@ namespace Dddml.Wms.Domain.ProductCategory
 		ProductCategoryEventId IGlobalIdentity<ProductCategoryEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.ProductCategoryEventId;
 			}
 		}
 
@@ -95,7 +95,7 @@ namespace Dddml.Wms.Domain.ProductCategory
 
         protected ProductCategoryStateEventBase(ProductCategoryEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.ProductCategoryEventId = stateEventId;
         }
 
 

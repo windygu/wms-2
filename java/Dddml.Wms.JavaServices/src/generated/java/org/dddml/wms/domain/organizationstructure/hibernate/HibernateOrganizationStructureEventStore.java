@@ -34,18 +34,18 @@ public class HibernateOrganizationStructureEventStore extends AbstractHibernateE
         }
         OrganizationStructureId idObj = (OrganizationStructureId) eventStoreAggregateId.getId();
         Criteria criteria = getCurrentSession().createCriteria(AbstractOrganizationStructureStateEvent.class);
-        criteria.add(Restrictions.eq("stateEventId.idOrganizationStructureTypeId", idObj.getOrganizationStructureTypeId()));
-        criteria.add(Restrictions.eq("stateEventId.idParentId", idObj.getParentId()));
-        criteria.add(Restrictions.eq("stateEventId.idSubsidiaryId", idObj.getSubsidiaryId()));
-        criteria.add(Restrictions.le("stateEventId.version", version));
-        criteria.addOrder(Order.asc("stateEventId.version"));
+        criteria.add(Restrictions.eq("organizationStructureEventId.idOrganizationStructureTypeId", idObj.getOrganizationStructureTypeId()));
+        criteria.add(Restrictions.eq("organizationStructureEventId.idParentId", idObj.getParentId()));
+        criteria.add(Restrictions.eq("organizationStructureEventId.idSubsidiaryId", idObj.getSubsidiaryId()));
+        criteria.add(Restrictions.le("organizationStructureEventId.version", version));
+        criteria.addOrder(Order.asc("organizationStructureEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
             ((AbstractOrganizationStructureStateEvent) e).setStateEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractOrganizationStructureStateEvent) es.get(es.size() - 1)).getStateEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractOrganizationStructureStateEvent) es.get(es.size() - 1)).getOrganizationStructureEventId().getVersion());
         } else {
             //todo?
         }

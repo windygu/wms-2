@@ -59,7 +59,7 @@ namespace Dddml.Wms.Domain.Movement
 
         public virtual void Initialize(IMovementStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.DocumentNumber;
+            var aggregateId = stateCreated.MovementEventId.DocumentNumber;
             var state = new MovementState();
             state.DocumentNumber = aggregateId;
             var aggregate = (MovementAggregate)GetMovementAggregate(state);

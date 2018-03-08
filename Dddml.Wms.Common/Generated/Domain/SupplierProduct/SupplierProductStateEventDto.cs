@@ -15,31 +15,31 @@ namespace Dddml.Wms.Domain.SupplierProduct
 	public abstract class SupplierProductStateEventDtoBase : IStateEventDto, ISupplierProductStateCreated, ISupplierProductStateMergePatched
 	{
 
-        private SupplierProductEventIdDto _stateEventId;
+        private SupplierProductEventIdDto _supplierProductEventId;
 
-		protected internal virtual SupplierProductEventIdDto StateEventId 
+		protected internal virtual SupplierProductEventIdDto SupplierProductEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new SupplierProductEventIdDto(); }
-                return _stateEventId;
+                if (_supplierProductEventId == null) { _supplierProductEventId = new SupplierProductEventIdDto(); }
+                return _supplierProductEventId;
             }
             set
             {
-                _stateEventId = value;
+                _supplierProductEventId = value;
             }
         }
 
         public virtual SupplierProductIdDto SupplierProductId
         {
-            get { return StateEventId.SupplierProductId; }
-            set { StateEventId.SupplierProductId = value; }
+            get { return SupplierProductEventId.SupplierProductId; }
+            set { SupplierProductEventId.SupplierProductId = value; }
         }
 
         public virtual long Version
         {
-            get { return StateEventId.Version; }
-            set { StateEventId.Version = value; }
+            get { return SupplierProductEventId.Version; }
+            set { SupplierProductEventId.Version = value; }
         }
 
 		public virtual DateTime? AvailableThruDate { get; set; }
@@ -81,7 +81,7 @@ namespace Dddml.Wms.Domain.SupplierProduct
 		SupplierProductEventId IGlobalIdentity<SupplierProductEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToSupplierProductEventId();
+				return this.SupplierProductEventId.ToSupplierProductEventId();
 			}
 		}
 
@@ -384,9 +384,9 @@ namespace Dddml.Wms.Domain.SupplierProduct
 		}
 
 
-        SupplierProductEventId ISupplierProductStateEvent.StateEventId
+        SupplierProductEventId ISupplierProductStateEvent.SupplierProductEventId
         {
-            get { return this.StateEventId.ToSupplierProductEventId(); }
+            get { return this.SupplierProductEventId.ToSupplierProductEventId(); }
         }
 
         protected SupplierProductStateEventDtoBase()
@@ -395,7 +395,7 @@ namespace Dddml.Wms.Domain.SupplierProduct
 
         protected SupplierProductStateEventDtoBase(SupplierProductEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.SupplierProductEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

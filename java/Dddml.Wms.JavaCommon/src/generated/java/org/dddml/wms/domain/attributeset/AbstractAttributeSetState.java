@@ -213,7 +213,7 @@ public abstract class AbstractAttributeSetState implements AttributeSetState, Sa
     public AbstractAttributeSetState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setAttributeSetId(((AttributeSetStateEvent) events.get(0)).getStateEventId().getAttributeSetId());
+            this.setAttributeSetId(((AttributeSetStateEvent) events.get(0)).getAttributeSetEventId().getAttributeSetId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -268,7 +268,7 @@ public abstract class AbstractAttributeSetState implements AttributeSetState, Sa
         this.setCreatedAt(e.getCreatedAt());
 
         for (AttributeUseStateEvent.AttributeUseStateCreated innerEvent : e.getAttributeUseEvents()) {
-            AttributeUseState innerState = this.getAttributeUses().get(innerEvent.getStateEventId().getAttributeId());
+            AttributeUseState innerState = this.getAttributeUses().get(innerEvent.getAttributeUseEventId().getAttributeId());
             innerState.mutate(innerEvent);
         }
     }
@@ -359,7 +359,7 @@ public abstract class AbstractAttributeSetState implements AttributeSetState, Sa
         this.setUpdatedAt(e.getCreatedAt());
 
         for (AttributeUseStateEvent innerEvent : e.getAttributeUseEvents()) {
-            AttributeUseState innerState = this.getAttributeUses().get(innerEvent.getStateEventId().getAttributeId());
+            AttributeUseState innerState = this.getAttributeUses().get(innerEvent.getAttributeUseEventId().getAttributeId());
             innerState.mutate(innerEvent);
             if (innerEvent instanceof AttributeUseStateEvent.AttributeUseStateRemoved)
             {
@@ -398,16 +398,16 @@ public abstract class AbstractAttributeSetState implements AttributeSetState, Sa
     protected void throwOnWrongEvent(AttributeSetStateEvent stateEvent)
     {
         String stateEntityId = this.getAttributeSetId(); // Aggregate Id
-        String eventEntityId = stateEvent.getStateEventId().getAttributeSetId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        String eventEntityId = stateEvent.getAttributeSetEventId().getAttributeSetId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getStateEventId().getVersion();// Aggregate Version
+        Long eventVersion = stateEvent.getAttributeSetEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getStateEventId().getVersion() == null");
+            throw new NullPointerException("stateEvent.getAttributeSetEventId().getVersion() == null");
         }
         if (!(stateVersion == null && eventVersion.equals(AttributeSetState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
         {

@@ -34,19 +34,19 @@ public class HibernateSupplierProductEventStore extends AbstractHibernateEventSt
         }
         SupplierProductId idObj = (SupplierProductId) eventStoreAggregateId.getId();
         Criteria criteria = getCurrentSession().createCriteria(AbstractSupplierProductStateEvent.class);
-        criteria.add(Restrictions.eq("stateEventId.supplierProductIdProductId", idObj.getProductId()));
-        criteria.add(Restrictions.eq("stateEventId.supplierProductIdPartyId", idObj.getPartyId()));
-        criteria.add(Restrictions.eq("stateEventId.supplierProductIdCurrencyUomId", idObj.getCurrencyUomId()));
-        criteria.add(Restrictions.eq("stateEventId.supplierProductIdMinimumOrderQuantity", idObj.getMinimumOrderQuantity()));
-        criteria.add(Restrictions.le("stateEventId.version", version));
-        criteria.addOrder(Order.asc("stateEventId.version"));
+        criteria.add(Restrictions.eq("supplierProductEventId.supplierProductIdProductId", idObj.getProductId()));
+        criteria.add(Restrictions.eq("supplierProductEventId.supplierProductIdPartyId", idObj.getPartyId()));
+        criteria.add(Restrictions.eq("supplierProductEventId.supplierProductIdCurrencyUomId", idObj.getCurrencyUomId()));
+        criteria.add(Restrictions.eq("supplierProductEventId.supplierProductIdMinimumOrderQuantity", idObj.getMinimumOrderQuantity()));
+        criteria.add(Restrictions.le("supplierProductEventId.version", version));
+        criteria.addOrder(Order.asc("supplierProductEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
             ((AbstractSupplierProductStateEvent) e).setStateEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractSupplierProductStateEvent) es.get(es.size() - 1)).getStateEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractSupplierProductStateEvent) es.get(es.size() - 1)).getSupplierProductEventId().getVersion());
         } else {
             //todo?
         }

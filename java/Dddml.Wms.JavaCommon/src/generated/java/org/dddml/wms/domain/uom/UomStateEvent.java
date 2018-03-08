@@ -7,7 +7,7 @@ import org.dddml.wms.specialization.Event;
 
 public interface UomStateEvent extends Event
 {
-    UomEventId getStateEventId();
+    UomEventId getUomEventId();
 
     boolean getStateEventReadOnly();
 

@@ -57,7 +57,7 @@ namespace Dddml.Wms.Domain.DocumentType
 
         public virtual void Initialize(IDocumentTypeStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.DocumentTypeId;
+            var aggregateId = stateCreated.DocumentTypeEventId.DocumentTypeId;
             var state = new DocumentTypeState();
             state.DocumentTypeId = aggregateId;
             var aggregate = (DocumentTypeAggregate)GetDocumentTypeAggregate(state);

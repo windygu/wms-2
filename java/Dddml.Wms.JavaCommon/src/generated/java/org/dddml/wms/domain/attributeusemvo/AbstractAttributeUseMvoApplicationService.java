@@ -139,7 +139,7 @@ public abstract class AbstractAttributeUseMvoApplicationService implements Attri
     }
 
     public void initialize(AttributeUseMvoStateEvent.AttributeUseMvoStateCreated stateCreated) {
-        AttributeSetAttributeUseId aggregateId = stateCreated.getStateEventId().getAttributeSetAttributeUseId();
+        AttributeSetAttributeUseId aggregateId = stateCreated.getAttributeUseMvoEventId().getAttributeSetAttributeUseId();
         AttributeUseMvoState state = new AbstractAttributeUseMvoState.SimpleAttributeUseMvoState();
         state.setAttributeSetAttributeUseId(aggregateId);
 
@@ -147,7 +147,7 @@ public abstract class AbstractAttributeUseMvoApplicationService implements Attri
         ((AbstractAttributeUseMvoAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getStateEventId().getAttributeSetVersion(), aggregate, state);
+        persist(eventStoreAggregateId, stateCreated.getAttributeUseMvoEventId().getAttributeSetVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(AttributeUseMvoCommand command, EventStoreAggregateId eventStoreAggregateId, AttributeUseMvoState state)

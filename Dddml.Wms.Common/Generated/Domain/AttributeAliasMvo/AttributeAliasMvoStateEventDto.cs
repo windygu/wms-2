@@ -16,31 +16,31 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 	public abstract class AttributeAliasMvoStateEventDtoBase : IStateEventDto, IAttributeAliasMvoStateCreated, IAttributeAliasMvoStateMergePatched, IAttributeAliasMvoStateDeleted
 	{
 
-        private AttributeAliasMvoEventIdDto _stateEventId;
+        private AttributeAliasMvoEventIdDto _attributeAliasMvoEventId;
 
-		protected internal virtual AttributeAliasMvoEventIdDto StateEventId 
+		protected internal virtual AttributeAliasMvoEventIdDto AttributeAliasMvoEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new AttributeAliasMvoEventIdDto(); }
-                return _stateEventId;
+                if (_attributeAliasMvoEventId == null) { _attributeAliasMvoEventId = new AttributeAliasMvoEventIdDto(); }
+                return _attributeAliasMvoEventId;
             }
             set
             {
-                _stateEventId = value;
+                _attributeAliasMvoEventId = value;
             }
         }
 
         public virtual AttributeAliasIdDto AttributeAliasId
         {
-            get { return StateEventId.AttributeAliasId; }
-            set { StateEventId.AttributeAliasId = value; }
+            get { return AttributeAliasMvoEventId.AttributeAliasId; }
+            set { AttributeAliasMvoEventId.AttributeAliasId = value; }
         }
 
         public virtual long AttributeVersion
         {
-            get { return StateEventId.AttributeVersion; }
-            set { StateEventId.AttributeVersion = value; }
+            get { return AttributeAliasMvoEventId.AttributeVersion; }
+            set { AttributeAliasMvoEventId.AttributeVersion = value; }
         }
 
 		public virtual string Name { get; set; }
@@ -90,7 +90,7 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 		AttributeAliasMvoEventId IGlobalIdentity<AttributeAliasMvoEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToAttributeAliasMvoEventId();
+				return this.AttributeAliasMvoEventId.ToAttributeAliasMvoEventId();
 			}
 		}
 
@@ -469,9 +469,9 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 		}
 
 
-        AttributeAliasMvoEventId IAttributeAliasMvoStateEvent.StateEventId
+        AttributeAliasMvoEventId IAttributeAliasMvoStateEvent.AttributeAliasMvoEventId
         {
-            get { return this.StateEventId.ToAttributeAliasMvoEventId(); }
+            get { return this.AttributeAliasMvoEventId.ToAttributeAliasMvoEventId(); }
         }
 
         protected AttributeAliasMvoStateEventDtoBase()
@@ -480,7 +480,7 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 
         protected AttributeAliasMvoStateEventDtoBase(AttributeAliasMvoEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.AttributeAliasMvoEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

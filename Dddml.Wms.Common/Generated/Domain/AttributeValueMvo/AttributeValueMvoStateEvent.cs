@@ -16,12 +16,12 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 	public abstract class AttributeValueMvoStateEventBase : IAttributeValueMvoStateEvent
 	{
 
-		public virtual AttributeValueMvoEventId StateEventId { get; set; }
+		public virtual AttributeValueMvoEventId AttributeValueMvoEventId { get; set; }
 
         public virtual AttributeValueId AttributeValueId
         {
-            get { return StateEventId.AttributeValueId; }
-            set { StateEventId.AttributeValueId = value; }
+            get { return AttributeValueMvoEventId.AttributeValueId; }
+            set { AttributeValueMvoEventId.AttributeValueId = value; }
         }
 
 		public virtual string AttributeValueName { get; set; }
@@ -75,7 +75,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 		AttributeValueMvoEventId IGlobalIdentity<AttributeValueMvoEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.AttributeValueMvoEventId;
 			}
 		}
 
@@ -118,7 +118,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 
         protected AttributeValueMvoStateEventBase(AttributeValueMvoEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.AttributeValueMvoEventId = stateEventId;
         }
 
 

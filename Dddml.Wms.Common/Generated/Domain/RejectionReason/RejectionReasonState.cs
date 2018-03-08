@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.RejectionReason
         {
             if (events != null && events.Count() > 0)
             {
-                this.RejectionReasonId = ((IRejectionReasonStateEvent)events.First()).StateEventId.RejectionReasonId;
+                this.RejectionReasonId = ((IRejectionReasonStateEvent)events.First()).RejectionReasonEventId.RejectionReasonId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -245,7 +245,7 @@ namespace Dddml.Wms.Domain.RejectionReason
             id.Append("[").Append("RejectionReason|");
 
             var stateEntityId = this.RejectionReasonId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.RejectionReasonId;
+            var eventEntityId = stateEvent.RejectionReasonEventId.RejectionReasonId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -255,7 +255,7 @@ namespace Dddml.Wms.Domain.RejectionReason
             id.Append("]");
 
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.StateEventId.Version;
+            var eventVersion = stateEvent.RejectionReasonEventId.Version;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

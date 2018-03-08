@@ -13,7 +13,7 @@ namespace Dddml.Wms.Domain.Lot
 {
 	public interface ILotStateEvent : IEvent, IStateEventDto, IGlobalIdentity<LotEventId>, ICreated<string>
 	{
-		LotEventId StateEventId { get; }
+		LotEventId LotEventId { get; }
 
         bool ReadOnly { get; set; }
 

@@ -153,7 +153,7 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
         {
             if (events != null && events.Count() > 0)
             {
-                this.DamageHandlingMethodId = ((IDamageHandlingMethodStateEvent)events.First()).StateEventId.DamageHandlingMethodId;
+                this.DamageHandlingMethodId = ((IDamageHandlingMethodStateEvent)events.First()).DamageHandlingMethodEventId.DamageHandlingMethodId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -261,7 +261,7 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
             id.Append("[").Append("DamageHandlingMethod|");
 
             var stateEntityId = this.DamageHandlingMethodId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.DamageHandlingMethodId;
+            var eventEntityId = stateEvent.DamageHandlingMethodEventId.DamageHandlingMethodId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -271,7 +271,7 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
             id.Append("]");
 
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.StateEventId.Version;
+            var eventVersion = stateEvent.DamageHandlingMethodEventId.Version;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

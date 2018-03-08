@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.StatusItem
 	public abstract class StatusItemStateEventBase : IStatusItemStateEvent
 	{
 
-		public virtual StatusItemEventId StateEventId { get; set; }
+		public virtual StatusItemEventId StatusItemEventId { get; set; }
 
         public virtual string StatusId
         {
-            get { return StateEventId.StatusId; }
-            set { StateEventId.StatusId = value; }
+            get { return StatusItemEventId.StatusId; }
+            set { StatusItemEventId.StatusId = value; }
         }
 
 		public virtual string StatusTypeId { get; set; }
@@ -44,7 +44,7 @@ namespace Dddml.Wms.Domain.StatusItem
 		StatusItemEventId IGlobalIdentity<StatusItemEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.StatusItemEventId;
 			}
 		}
 
@@ -87,7 +87,7 @@ namespace Dddml.Wms.Domain.StatusItem
 
         protected StatusItemStateEventBase(StatusItemEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.StatusItemEventId = stateEventId;
         }
 
 

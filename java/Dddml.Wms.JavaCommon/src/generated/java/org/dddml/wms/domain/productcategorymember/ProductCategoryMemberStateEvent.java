@@ -7,7 +7,7 @@ import org.dddml.wms.specialization.Event;
 
 public interface ProductCategoryMemberStateEvent extends Event
 {
-    ProductCategoryMemberEventId getStateEventId();
+    ProductCategoryMemberEventId getProductCategoryMemberEventId();
 
     boolean getStateEventReadOnly();
 

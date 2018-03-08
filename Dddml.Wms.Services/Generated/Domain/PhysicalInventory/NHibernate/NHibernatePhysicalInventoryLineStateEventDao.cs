@@ -44,8 +44,8 @@ namespace Dddml.Wms.Domain.PhysicalInventory.NHibernate
         {
             var criteria = CurrentSession.CreateCriteria<PhysicalInventoryLineStateEventBase>();
             var partIdCondition = Restrictions.Conjunction()
-                .Add(Restrictions.Eq("StateEventId.PhysicalInventoryDocumentNumber", physicalInventoryEventId.DocumentNumber))
-                .Add(Restrictions.Eq("StateEventId.PhysicalInventoryVersion", physicalInventoryEventId.Version))
+                .Add(Restrictions.Eq("PhysicalInventoryLineEventId.PhysicalInventoryDocumentNumber", physicalInventoryEventId.DocumentNumber))
+                .Add(Restrictions.Eq("PhysicalInventoryLineEventId.PhysicalInventoryVersion", physicalInventoryEventId.Version))
                 ;
 
             return criteria.Add(partIdCondition).List<PhysicalInventoryLineStateEventBase>();

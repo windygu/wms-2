@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.Audience
         {
             if (events != null && events.Count() > 0)
             {
-                this.ClientId = ((IAudienceStateEvent)events.First()).StateEventId.ClientId;
+                this.ClientId = ((IAudienceStateEvent)events.First()).AudienceEventId.ClientId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -259,7 +259,7 @@ namespace Dddml.Wms.Domain.Audience
             id.Append("[").Append("Audience|");
 
             var stateEntityId = this.ClientId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.ClientId;
+            var eventEntityId = stateEvent.AudienceEventId.ClientId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -269,7 +269,7 @@ namespace Dddml.Wms.Domain.Audience
             id.Append("]");
 
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.StateEventId.Version;
+            var eventVersion = stateEvent.AudienceEventId.Version;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

@@ -38,8 +38,8 @@ public class HibernateAttributeAliasStateEventDao implements AttributeAliasState
     {
         Criteria criteria = getCurrentSession().createCriteria(AbstractAttributeAliasStateEvent.class);
         Junction partIdCondition = Restrictions.conjunction()
-            .add(Restrictions.eq("stateEventId.attributeId", attributeEventId.getAttributeId()))
-            .add(Restrictions.eq("stateEventId.attributeVersion", attributeEventId.getVersion()))
+            .add(Restrictions.eq("attributeAliasEventId.attributeId", attributeEventId.getAttributeId()))
+            .add(Restrictions.eq("attributeAliasEventId.attributeVersion", attributeEventId.getVersion()))
             ;
         return criteria.add(partIdCondition).list();
     }

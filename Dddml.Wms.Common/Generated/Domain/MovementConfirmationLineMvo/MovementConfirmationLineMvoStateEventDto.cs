@@ -16,31 +16,31 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 	public abstract class MovementConfirmationLineMvoStateEventDtoBase : IStateEventDto, IMovementConfirmationLineMvoStateCreated, IMovementConfirmationLineMvoStateMergePatched, IMovementConfirmationLineMvoStateDeleted
 	{
 
-        private MovementConfirmationLineMvoEventIdDto _stateEventId;
+        private MovementConfirmationLineMvoEventIdDto _movementConfirmationLineMvoEventId;
 
-		protected internal virtual MovementConfirmationLineMvoEventIdDto StateEventId 
+		protected internal virtual MovementConfirmationLineMvoEventIdDto MovementConfirmationLineMvoEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new MovementConfirmationLineMvoEventIdDto(); }
-                return _stateEventId;
+                if (_movementConfirmationLineMvoEventId == null) { _movementConfirmationLineMvoEventId = new MovementConfirmationLineMvoEventIdDto(); }
+                return _movementConfirmationLineMvoEventId;
             }
             set
             {
-                _stateEventId = value;
+                _movementConfirmationLineMvoEventId = value;
             }
         }
 
         public virtual MovementConfirmationLineIdDto MovementConfirmationLineId
         {
-            get { return StateEventId.MovementConfirmationLineId; }
-            set { StateEventId.MovementConfirmationLineId = value; }
+            get { return MovementConfirmationLineMvoEventId.MovementConfirmationLineId; }
+            set { MovementConfirmationLineMvoEventId.MovementConfirmationLineId = value; }
         }
 
         public virtual long MovementConfirmationVersion
         {
-            get { return StateEventId.MovementConfirmationVersion; }
-            set { StateEventId.MovementConfirmationVersion = value; }
+            get { return MovementConfirmationLineMvoEventId.MovementConfirmationVersion; }
+            set { MovementConfirmationLineMvoEventId.MovementConfirmationVersion = value; }
         }
 
 		public virtual string MovementLineNumber { get; set; }
@@ -100,7 +100,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 		MovementConfirmationLineMvoEventId IGlobalIdentity<MovementConfirmationLineMvoEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToMovementConfirmationLineMvoEventId();
+				return this.MovementConfirmationLineMvoEventId.ToMovementConfirmationLineMvoEventId();
 			}
 		}
 
@@ -574,9 +574,9 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 		}
 
 
-        MovementConfirmationLineMvoEventId IMovementConfirmationLineMvoStateEvent.StateEventId
+        MovementConfirmationLineMvoEventId IMovementConfirmationLineMvoStateEvent.MovementConfirmationLineMvoEventId
         {
-            get { return this.StateEventId.ToMovementConfirmationLineMvoEventId(); }
+            get { return this.MovementConfirmationLineMvoEventId.ToMovementConfirmationLineMvoEventId(); }
         }
 
         protected MovementConfirmationLineMvoStateEventDtoBase()
@@ -585,7 +585,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
         protected MovementConfirmationLineMvoStateEventDtoBase(MovementConfirmationLineMvoEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.MovementConfirmationLineMvoEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

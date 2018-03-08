@@ -13,7 +13,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 {
 	public interface IAttributeSetInstanceExtensionFieldGroupStateEvent : IEvent, IStateEventDto, IGlobalIdentity<AttributeSetInstanceExtensionFieldGroupEventId>, ICreated<string>
 	{
-		AttributeSetInstanceExtensionFieldGroupEventId StateEventId { get; }
+		AttributeSetInstanceExtensionFieldGroupEventId AttributeSetInstanceExtensionFieldGroupEventId { get; }
 
         bool ReadOnly { get; set; }
 

@@ -395,7 +395,7 @@ public abstract class AbstractMovementConfirmationLineMvoState implements Moveme
     public AbstractMovementConfirmationLineMvoState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setMovementConfirmationLineId(((MovementConfirmationLineMvoStateEvent) events.get(0)).getStateEventId().getMovementConfirmationLineId());
+            this.setMovementConfirmationLineId(((MovementConfirmationLineMvoStateEvent) events.get(0)).getMovementConfirmationLineMvoEventId().getMovementConfirmationLineId());
             for (Event e : events) {
                 mutate(e);
                 this.setMovementConfirmationVersion(this.getMovementConfirmationVersion() + 1);
@@ -746,16 +746,16 @@ public abstract class AbstractMovementConfirmationLineMvoState implements Moveme
     protected void throwOnWrongEvent(MovementConfirmationLineMvoStateEvent stateEvent)
     {
         MovementConfirmationLineId stateEntityId = this.getMovementConfirmationLineId(); // Aggregate Id
-        MovementConfirmationLineId eventEntityId = stateEvent.getStateEventId().getMovementConfirmationLineId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        MovementConfirmationLineId eventEntityId = stateEvent.getMovementConfirmationLineMvoEventId().getMovementConfirmationLineId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getMovementConfirmationVersion();
-        Long eventVersion = stateEvent.getStateEventId().getMovementConfirmationVersion();// Aggregate Version
+        Long eventVersion = stateEvent.getMovementConfirmationLineMvoEventId().getMovementConfirmationVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getStateEventId().getMovementConfirmationVersion() == null");
+            throw new NullPointerException("stateEvent.getMovementConfirmationLineMvoEventId().getMovementConfirmationVersion() == null");
         }
         if (!(stateVersion == null && eventVersion.equals(MovementConfirmationLineMvoState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
         {

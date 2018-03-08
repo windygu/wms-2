@@ -60,7 +60,7 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 
         public virtual void Initialize(IAttributeAliasMvoStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.AttributeAliasId;
+            var aggregateId = stateCreated.AttributeAliasMvoEventId.AttributeAliasId;
             var state = new AttributeAliasMvoState();
             state.AttributeAliasId = aggregateId;
             var aggregate = (AttributeAliasMvoAggregate)GetAttributeAliasMvoAggregate(state);

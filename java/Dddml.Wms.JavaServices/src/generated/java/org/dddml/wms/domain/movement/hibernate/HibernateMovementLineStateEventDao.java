@@ -39,8 +39,8 @@ public class HibernateMovementLineStateEventDao implements MovementLineStateEven
     {
         Criteria criteria = getCurrentSession().createCriteria(AbstractMovementLineStateEvent.class);
         Junction partIdCondition = Restrictions.conjunction()
-            .add(Restrictions.eq("stateEventId.movementDocumentNumber", movementEventId.getDocumentNumber()))
-            .add(Restrictions.eq("stateEventId.movementVersion", movementEventId.getVersion()))
+            .add(Restrictions.eq("movementLineEventId.movementDocumentNumber", movementEventId.getDocumentNumber()))
+            .add(Restrictions.eq("movementLineEventId.movementVersion", movementEventId.getVersion()))
             ;
         return criteria.add(partIdCondition).list();
     }

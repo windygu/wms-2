@@ -15,31 +15,31 @@ namespace Dddml.Wms.Domain.Party
 	public abstract class PartyStateEventDtoBase : IStateEventDto, IPartyStateCreated, IPartyStateMergePatched, IPartyStateDeleted
 	{
 
-        private PartyEventIdDto _stateEventId;
+        private PartyEventIdDto _partyEventId;
 
-		protected internal virtual PartyEventIdDto StateEventId 
+		protected internal virtual PartyEventIdDto PartyEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new PartyEventIdDto(); }
-                return _stateEventId;
+                if (_partyEventId == null) { _partyEventId = new PartyEventIdDto(); }
+                return _partyEventId;
             }
             set
             {
-                _stateEventId = value;
+                _partyEventId = value;
             }
         }
 
         public virtual string PartyId
         {
-            get { return StateEventId.PartyId; }
-            set { StateEventId.PartyId = value; }
+            get { return PartyEventId.PartyId; }
+            set { PartyEventId.PartyId = value; }
         }
 
         public virtual long Version
         {
-            get { return StateEventId.Version; }
-            set { StateEventId.Version = value; }
+            get { return PartyEventId.Version; }
+            set { PartyEventId.Version = value; }
         }
 
 		public virtual string PartyTypeId { get; set; }
@@ -65,7 +65,7 @@ namespace Dddml.Wms.Domain.Party
 		PartyEventId IGlobalIdentity<PartyEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToPartyEventId();
+				return this.PartyEventId.ToPartyEventId();
 			}
 		}
 
@@ -216,9 +216,9 @@ namespace Dddml.Wms.Domain.Party
 		}
 
 
-        PartyEventId IPartyStateEvent.StateEventId
+        PartyEventId IPartyStateEvent.PartyEventId
         {
-            get { return this.StateEventId.ToPartyEventId(); }
+            get { return this.PartyEventId.ToPartyEventId(); }
         }
 
         protected PartyStateEventDtoBase()
@@ -227,7 +227,7 @@ namespace Dddml.Wms.Domain.Party
 
         protected PartyStateEventDtoBase(PartyEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.PartyEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

@@ -15,25 +15,25 @@ namespace Dddml.Wms.Domain.AttributeSet
 	public abstract class AttributeUseStateEventDtoBase : IStateEventDto, IAttributeUseStateCreated, IAttributeUseStateMergePatched, IAttributeUseStateRemoved
 	{
 
-        private AttributeUseEventIdDto _stateEventId;
+        private AttributeUseEventIdDto _attributeUseEventId;
 
-		protected internal virtual AttributeUseEventIdDto StateEventId 
+		protected internal virtual AttributeUseEventIdDto AttributeUseEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new AttributeUseEventIdDto(); }
-                return _stateEventId;
+                if (_attributeUseEventId == null) { _attributeUseEventId = new AttributeUseEventIdDto(); }
+                return _attributeUseEventId;
             }
             set
             {
-                _stateEventId = value;
+                _attributeUseEventId = value;
             }
         }
 
         public virtual string AttributeId
         {
-            get { return StateEventId.AttributeId; }
-            set { StateEventId.AttributeId = value; }
+            get { return AttributeUseEventId.AttributeId; }
+            set { AttributeUseEventId.AttributeId = value; }
         }
 
 		public virtual int? SequenceNumber { get; set; }
@@ -51,7 +51,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 		AttributeUseEventId IGlobalIdentity<AttributeUseEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToAttributeUseEventId();
+				return this.AttributeUseEventId.ToAttributeUseEventId();
 			}
 		}
 
@@ -128,9 +128,9 @@ namespace Dddml.Wms.Domain.AttributeSet
 		}
 
 
-        AttributeUseEventId IAttributeUseStateEvent.StateEventId
+        AttributeUseEventId IAttributeUseStateEvent.AttributeUseEventId
         {
-            get { return this.StateEventId.ToAttributeUseEventId(); }
+            get { return this.AttributeUseEventId.ToAttributeUseEventId(); }
         }
 
         protected AttributeUseStateEventDtoBase()
@@ -139,7 +139,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 
         protected AttributeUseStateEventDtoBase(AttributeUseEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.AttributeUseEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

@@ -25,7 +25,7 @@ public class InventoryPostingRuleStateEventDtoConverter {
 
     public InventoryPostingRuleStateEventDto.InventoryPostingRuleStateCreatedDto toInventoryPostingRuleStateCreatedDto(InventoryPostingRuleStateEvent.InventoryPostingRuleStateCreated e) {
         InventoryPostingRuleStateEventDto.InventoryPostingRuleStateCreatedDto dto = new InventoryPostingRuleStateEventDto.InventoryPostingRuleStateCreatedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setInventoryPostingRuleEventId(e.getInventoryPostingRuleEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -40,7 +40,7 @@ public class InventoryPostingRuleStateEventDtoConverter {
 
     public InventoryPostingRuleStateEventDto.InventoryPostingRuleStateMergePatchedDto toInventoryPostingRuleStateMergePatchedDto(InventoryPostingRuleStateEvent.InventoryPostingRuleStateMergePatched e) {
         InventoryPostingRuleStateEventDto.InventoryPostingRuleStateMergePatchedDto dto = new InventoryPostingRuleStateEventDto.InventoryPostingRuleStateMergePatchedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setInventoryPostingRuleEventId(e.getInventoryPostingRuleEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -62,7 +62,7 @@ public class InventoryPostingRuleStateEventDtoConverter {
 
     public InventoryPostingRuleStateEventDto.InventoryPostingRuleStateDeletedDto toInventoryPostingRuleStateDeletedDto(InventoryPostingRuleStateEvent.InventoryPostingRuleStateDeleted e) {
         InventoryPostingRuleStateEventDto.InventoryPostingRuleStateDeletedDto dto = new InventoryPostingRuleStateEventDto.InventoryPostingRuleStateDeletedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setInventoryPostingRuleEventId(e.getInventoryPostingRuleEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());

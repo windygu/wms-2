@@ -13,7 +13,7 @@ namespace Dddml.Wms.Domain.DamageType
 {
 	public interface IDamageTypeStateEvent : IEvent, IStateEventDto, IGlobalIdentity<DamageTypeEventId>, ICreated<string>
 	{
-		DamageTypeEventId StateEventId { get; }
+		DamageTypeEventId DamageTypeEventId { get; }
 
         bool ReadOnly { get; set; }
 

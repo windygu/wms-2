@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.Attribute
         public virtual AttributeAliasStateCreatedDto ToAttributeAliasStateCreatedDto(IAttributeAliasStateCreated e)
         {
             var dto = new AttributeAliasStateCreatedDto();
-            dto.StateEventId = new AttributeAliasEventIdDtoWrapper(e.StateEventId);
+            dto.AttributeAliasEventId = new AttributeAliasEventIdDtoWrapper(e.AttributeAliasEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;
@@ -51,7 +51,7 @@ namespace Dddml.Wms.Domain.Attribute
         public virtual AttributeAliasStateMergePatchedDto ToAttributeAliasStateMergePatchedDto(IAttributeAliasStateMergePatched e)
         {
             var dto = new AttributeAliasStateMergePatchedDto();
-            dto.StateEventId = new AttributeAliasEventIdDtoWrapper(e.StateEventId);
+            dto.AttributeAliasEventId = new AttributeAliasEventIdDtoWrapper(e.AttributeAliasEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;
@@ -68,7 +68,7 @@ namespace Dddml.Wms.Domain.Attribute
         public virtual AttributeAliasStateRemovedDto ToAttributeAliasStateRemovedDto(IAttributeAliasStateRemoved e)
         {
             var dto = new AttributeAliasStateRemovedDto();
-            dto.StateEventId = new AttributeAliasEventIdDtoWrapper(e.StateEventId);
+            dto.AttributeAliasEventId = new AttributeAliasEventIdDtoWrapper(e.AttributeAliasEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;

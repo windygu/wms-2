@@ -10,22 +10,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractMovementConfirmationLineMvoStateEvent extends AbstractStateEvent implements MovementConfirmationLineMvoStateEvent 
 {
-    private MovementConfirmationLineMvoEventId stateEventId;
+    private MovementConfirmationLineMvoEventId movementConfirmationLineMvoEventId;
 
-    public MovementConfirmationLineMvoEventId getStateEventId() {
-        return this.stateEventId;
+    public MovementConfirmationLineMvoEventId getMovementConfirmationLineMvoEventId() {
+        return this.movementConfirmationLineMvoEventId;
     }
 
-    public void setStateEventId(MovementConfirmationLineMvoEventId eventId) {
-        this.stateEventId = eventId;
+    public void setMovementConfirmationLineMvoEventId(MovementConfirmationLineMvoEventId eventId) {
+        this.movementConfirmationLineMvoEventId = eventId;
     }
     
     public MovementConfirmationLineId getMovementConfirmationLineId() {
-        return getStateEventId().getMovementConfirmationLineId();
+        return getMovementConfirmationLineMvoEventId().getMovementConfirmationLineId();
     }
 
     public void setMovementConfirmationLineId(MovementConfirmationLineId movementConfirmationLineId) {
-        getStateEventId().setMovementConfirmationLineId(movementConfirmationLineId);
+        getMovementConfirmationLineMvoEventId().setMovementConfirmationLineId(movementConfirmationLineId);
     }
 
     private boolean stateEventReadOnly;
@@ -349,7 +349,7 @@ public abstract class AbstractMovementConfirmationLineMvoStateEvent extends Abst
     }
 
     protected AbstractMovementConfirmationLineMvoStateEvent(MovementConfirmationLineMvoEventId eventId) {
-        this.stateEventId = eventId;
+        this.movementConfirmationLineMvoEventId = eventId;
     }
 
 

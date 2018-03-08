@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.DamageReason
         {
             if (events != null && events.Count() > 0)
             {
-                this.DamageReasonId = ((IDamageReasonStateEvent)events.First()).StateEventId.DamageReasonId;
+                this.DamageReasonId = ((IDamageReasonStateEvent)events.First()).DamageReasonEventId.DamageReasonId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -259,7 +259,7 @@ namespace Dddml.Wms.Domain.DamageReason
             id.Append("[").Append("DamageReason|");
 
             var stateEntityId = this.DamageReasonId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.DamageReasonId;
+            var eventEntityId = stateEvent.DamageReasonEventId.DamageReasonId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -269,7 +269,7 @@ namespace Dddml.Wms.Domain.DamageReason
             id.Append("]");
 
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.StateEventId.Version;
+            var eventVersion = stateEvent.DamageReasonEventId.Version;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

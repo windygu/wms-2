@@ -13,7 +13,7 @@ namespace Dddml.Wms.Domain.Warehouse
 {
 	public interface IWarehouseStateEvent : IEvent, IStateEventDto, IGlobalIdentity<WarehouseEventId>, ICreated<string>
 	{
-		WarehouseEventId StateEventId { get; }
+		WarehouseEventId WarehouseEventId { get; }
 
         bool ReadOnly { get; set; }
 

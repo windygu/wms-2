@@ -40,8 +40,8 @@ public class HibernatePhysicalInventoryLineStateEventDao implements PhysicalInve
     {
         Criteria criteria = getCurrentSession().createCriteria(AbstractPhysicalInventoryLineStateEvent.class);
         Junction partIdCondition = Restrictions.conjunction()
-            .add(Restrictions.eq("stateEventId.physicalInventoryDocumentNumber", physicalInventoryEventId.getDocumentNumber()))
-            .add(Restrictions.eq("stateEventId.physicalInventoryVersion", physicalInventoryEventId.getVersion()))
+            .add(Restrictions.eq("physicalInventoryLineEventId.physicalInventoryDocumentNumber", physicalInventoryEventId.getDocumentNumber()))
+            .add(Restrictions.eq("physicalInventoryLineEventId.physicalInventoryVersion", physicalInventoryEventId.getVersion()))
             ;
         return criteria.add(partIdCondition).list();
     }

@@ -14,7 +14,7 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 {
 	public interface IAttributeAliasMvoStateEvent : IEvent, IStateEventDto, IGlobalIdentity<AttributeAliasMvoEventId>, ICreated<string>
 	{
-		AttributeAliasMvoEventId StateEventId { get; }
+		AttributeAliasMvoEventId AttributeAliasMvoEventId { get; }
 
         bool ReadOnly { get; set; }
 

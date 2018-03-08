@@ -59,7 +59,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionField
 
         public virtual void Initialize(IAttributeSetInstanceExtensionFieldStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.Name;
+            var aggregateId = stateCreated.AttributeSetInstanceExtensionFieldEventId.Name;
             var state = new AttributeSetInstanceExtensionFieldState();
             state.Name = aggregateId;
             var aggregate = (AttributeSetInstanceExtensionFieldAggregate)GetAttributeSetInstanceExtensionFieldAggregate(state);

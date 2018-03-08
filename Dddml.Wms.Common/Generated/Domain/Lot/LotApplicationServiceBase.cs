@@ -59,7 +59,7 @@ namespace Dddml.Wms.Domain.Lot
 
         public virtual void Initialize(ILotStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.LotId;
+            var aggregateId = stateCreated.LotEventId.LotId;
             var state = new LotState();
             state.LotId = aggregateId;
             var aggregate = (LotAggregate)GetLotAggregate(state);

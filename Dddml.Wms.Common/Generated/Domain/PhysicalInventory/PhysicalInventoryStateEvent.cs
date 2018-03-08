@@ -16,12 +16,12 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 	public abstract class PhysicalInventoryStateEventBase : IPhysicalInventoryStateEvent
 	{
 
-		public virtual PhysicalInventoryEventId StateEventId { get; set; }
+		public virtual PhysicalInventoryEventId PhysicalInventoryEventId { get; set; }
 
         public virtual string DocumentNumber
         {
-            get { return StateEventId.DocumentNumber; }
-            set { StateEventId.DocumentNumber = value; }
+            get { return PhysicalInventoryEventId.DocumentNumber; }
+            set { PhysicalInventoryEventId.DocumentNumber = value; }
         }
 
 		public virtual string DocumentStatusId { get; set; }
@@ -65,7 +65,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 		PhysicalInventoryEventId IGlobalIdentity<PhysicalInventoryEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.PhysicalInventoryEventId;
 			}
 		}
 
@@ -108,7 +108,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
         protected PhysicalInventoryStateEventBase(PhysicalInventoryEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.PhysicalInventoryEventId = stateEventId;
         }
 
 		protected IPhysicalInventoryLineStateEventDao PhysicalInventoryLineStateEventDao
@@ -118,7 +118,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
         protected PhysicalInventoryLineEventId NewPhysicalInventoryLineEventId(InventoryItemId inventoryItemId)
         {
-            var stateEventId = new PhysicalInventoryLineEventId(this.StateEventId.DocumentNumber, inventoryItemId, this.StateEventId.Version);
+            var stateEventId = new PhysicalInventoryLineEventId(this.PhysicalInventoryEventId.DocumentNumber, inventoryItemId, this.PhysicalInventoryEventId.Version);
             return stateEventId;
         }
 
@@ -130,10 +130,10 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
 		public static void ThrowOnInconsistentEventIds(IPhysicalInventoryStateEvent oe, IPhysicalInventoryLineStateEvent e)
 		{
-			if (!oe.StateEventId.DocumentNumber.Equals(e.StateEventId.PhysicalInventoryDocumentNumber))
+			if (!oe.PhysicalInventoryEventId.DocumentNumber.Equals(e.PhysicalInventoryLineEventId.PhysicalInventoryDocumentNumber))
 			{ 
 				throw DomainError.Named("inconsistentEventIds", "Outer Id DocumentNumber {0} but inner id PhysicalInventoryDocumentNumber {1}", 
-					oe.StateEventId.DocumentNumber, e.StateEventId.PhysicalInventoryDocumentNumber);
+					oe.PhysicalInventoryEventId.DocumentNumber, e.PhysicalInventoryLineEventId.PhysicalInventoryDocumentNumber);
 			}
 		}
 
@@ -175,7 +175,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
                     if (_readOnlyPhysicalInventoryLineEvents != null) { return _readOnlyPhysicalInventoryLineEvents; }
                     var eventDao = PhysicalInventoryLineStateEventDao;
                     var eL = new List<IPhysicalInventoryLineStateCreated>();
-                    foreach (var e in eventDao.FindByPhysicalInventoryEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByPhysicalInventoryEventId(this.PhysicalInventoryEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IPhysicalInventoryLineStateCreated)e);
@@ -199,7 +199,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 		public virtual void AddPhysicalInventoryLineEvent(IPhysicalInventoryLineStateCreated e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._physicalInventoryLineEvents[e.StateEventId] = e;
+			this._physicalInventoryLineEvents[e.PhysicalInventoryLineEventId] = e;
 		}
 
         public virtual IPhysicalInventoryLineStateCreated NewPhysicalInventoryLineStateCreated(InventoryItemId inventoryItemId)
@@ -281,7 +281,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
                     if (_readOnlyPhysicalInventoryLineEvents != null) { return _readOnlyPhysicalInventoryLineEvents; }
                     var eventDao = PhysicalInventoryLineStateEventDao;
                     var eL = new List<IPhysicalInventoryLineStateEvent>();
-                    foreach (var e in eventDao.FindByPhysicalInventoryEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByPhysicalInventoryEventId(this.PhysicalInventoryEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IPhysicalInventoryLineStateEvent)e);
@@ -305,7 +305,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 		public virtual void AddPhysicalInventoryLineEvent(IPhysicalInventoryLineStateEvent e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._physicalInventoryLineEvents[e.StateEventId] = e;
+			this._physicalInventoryLineEvents[e.PhysicalInventoryLineEventId] = e;
 		}
 
         public virtual IPhysicalInventoryLineStateCreated NewPhysicalInventoryLineStateCreated(InventoryItemId inventoryItemId)

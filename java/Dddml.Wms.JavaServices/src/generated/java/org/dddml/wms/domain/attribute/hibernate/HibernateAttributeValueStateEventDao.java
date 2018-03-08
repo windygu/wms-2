@@ -38,8 +38,8 @@ public class HibernateAttributeValueStateEventDao implements AttributeValueState
     {
         Criteria criteria = getCurrentSession().createCriteria(AbstractAttributeValueStateEvent.class);
         Junction partIdCondition = Restrictions.conjunction()
-            .add(Restrictions.eq("stateEventId.attributeId", attributeEventId.getAttributeId()))
-            .add(Restrictions.eq("stateEventId.attributeVersion", attributeEventId.getVersion()))
+            .add(Restrictions.eq("attributeValueEventId.attributeId", attributeEventId.getAttributeId()))
+            .add(Restrictions.eq("attributeValueEventId.attributeVersion", attributeEventId.getVersion()))
             ;
         return criteria.add(partIdCondition).list();
     }

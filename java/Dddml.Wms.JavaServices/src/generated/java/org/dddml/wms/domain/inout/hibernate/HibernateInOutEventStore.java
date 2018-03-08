@@ -35,16 +35,16 @@ public class HibernateInOutEventStore extends AbstractHibernateEventStore
         }
         String idObj = (String) eventStoreAggregateId.getId();
         Criteria criteria = getCurrentSession().createCriteria(AbstractInOutStateEvent.class);
-        criteria.add(Restrictions.eq("stateEventId.documentNumber", idObj));
-        criteria.add(Restrictions.le("stateEventId.version", version));
-        criteria.addOrder(Order.asc("stateEventId.version"));
+        criteria.add(Restrictions.eq("inOutEventId.documentNumber", idObj));
+        criteria.add(Restrictions.le("inOutEventId.version", version));
+        criteria.addOrder(Order.asc("inOutEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
             ((AbstractInOutStateEvent) e).setStateEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractInOutStateEvent) es.get(es.size() - 1)).getStateEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractInOutStateEvent) es.get(es.size() - 1)).getInOutEventId().getVersion());
         } else {
             //todo?
         }

@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.RejectionReason
 	public abstract class RejectionReasonStateEventBase : IRejectionReasonStateEvent
 	{
 
-		public virtual RejectionReasonEventId StateEventId { get; set; }
+		public virtual RejectionReasonEventId RejectionReasonEventId { get; set; }
 
         public virtual string RejectionReasonId
         {
-            get { return StateEventId.RejectionReasonId; }
-            set { StateEventId.RejectionReasonId = value; }
+            get { return RejectionReasonEventId.RejectionReasonId; }
+            set { RejectionReasonEventId.RejectionReasonId = value; }
         }
 
 		public virtual string Description { get; set; }
@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.RejectionReason
 		RejectionReasonEventId IGlobalIdentity<RejectionReasonEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.RejectionReasonEventId;
 			}
 		}
 
@@ -81,7 +81,7 @@ namespace Dddml.Wms.Domain.RejectionReason
 
         protected RejectionReasonStateEventBase(RejectionReasonEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.RejectionReasonEventId = stateEventId;
         }
 
 

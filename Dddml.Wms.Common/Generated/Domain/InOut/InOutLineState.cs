@@ -405,7 +405,7 @@ namespace Dddml.Wms.Domain.InOut
             id.Append("[").Append("InOutLine|");
 
             var stateEntityIdInOutDocumentNumber = (this as IGlobalIdentity<InOutLineId>).GlobalId.InOutDocumentNumber;
-            var eventEntityIdInOutDocumentNumber = stateEvent.StateEventId.InOutDocumentNumber;
+            var eventEntityIdInOutDocumentNumber = stateEvent.InOutLineEventId.InOutDocumentNumber;
             if (stateEntityIdInOutDocumentNumber != eventEntityIdInOutDocumentNumber)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id InOutDocumentNumber {0} in state but entity id InOutDocumentNumber {1} in event", stateEntityIdInOutDocumentNumber, eventEntityIdInOutDocumentNumber);
@@ -413,7 +413,7 @@ namespace Dddml.Wms.Domain.InOut
             id.Append(stateEntityIdInOutDocumentNumber).Append(",");
 
             var stateEntityIdLineNumber = (this as IGlobalIdentity<InOutLineId>).GlobalId.LineNumber;
-            var eventEntityIdLineNumber = stateEvent.StateEventId.LineNumber;
+            var eventEntityIdLineNumber = stateEvent.InOutLineEventId.LineNumber;
             if (stateEntityIdLineNumber != eventEntityIdLineNumber)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id LineNumber {0} in state but entity id LineNumber {1} in event", stateEntityIdLineNumber, eventEntityIdLineNumber);

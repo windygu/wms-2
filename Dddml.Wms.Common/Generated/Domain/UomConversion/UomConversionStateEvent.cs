@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.UomConversion
 	public abstract class UomConversionStateEventBase : IUomConversionStateEvent
 	{
 
-		public virtual UomConversionEventId StateEventId { get; set; }
+		public virtual UomConversionEventId UomConversionEventId { get; set; }
 
         public virtual UomConversionId UomConversionId
         {
-            get { return StateEventId.UomConversionId; }
-            set { StateEventId.UomConversionId = value; }
+            get { return UomConversionEventId.UomConversionId; }
+            set { UomConversionEventId.UomConversionId = value; }
         }
 
 		public virtual double? ConversionFactor { get; set; }
@@ -44,7 +44,7 @@ namespace Dddml.Wms.Domain.UomConversion
 		UomConversionEventId IGlobalIdentity<UomConversionEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.UomConversionEventId;
 			}
 		}
 
@@ -87,7 +87,7 @@ namespace Dddml.Wms.Domain.UomConversion
 
         protected UomConversionStateEventBase(UomConversionEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.UomConversionEventId = stateEventId;
         }
 
 

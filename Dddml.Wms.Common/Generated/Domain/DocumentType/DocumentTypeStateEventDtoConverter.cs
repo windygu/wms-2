@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.DocumentType
         public virtual DocumentTypeStateCreatedDto ToDocumentTypeStateCreatedDto(IDocumentTypeStateCreated e)
         {
             var dto = new DocumentTypeStateCreatedDto();
-            dto.StateEventId = new DocumentTypeEventIdDtoWrapper(e.StateEventId);
+            dto.DocumentTypeEventId = new DocumentTypeEventIdDtoWrapper(e.DocumentTypeEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -51,7 +51,7 @@ namespace Dddml.Wms.Domain.DocumentType
         public virtual DocumentTypeStateMergePatchedDto ToDocumentTypeStateMergePatchedDto(IDocumentTypeStateMergePatched e)
         {
             var dto = new DocumentTypeStateMergePatchedDto();
-            dto.StateEventId = new DocumentTypeEventIdDtoWrapper(e.StateEventId);
+            dto.DocumentTypeEventId = new DocumentTypeEventIdDtoWrapper(e.DocumentTypeEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -69,7 +69,7 @@ namespace Dddml.Wms.Domain.DocumentType
         public virtual DocumentTypeStateDeletedDto ToDocumentTypeStateDeletedDto(IDocumentTypeStateDeleted e)
         {
             var dto = new DocumentTypeStateDeletedDto();
-            dto.StateEventId = new DocumentTypeEventIdDtoWrapper(e.StateEventId);
+            dto.DocumentTypeEventId = new DocumentTypeEventIdDtoWrapper(e.DocumentTypeEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

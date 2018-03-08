@@ -24,7 +24,7 @@ public class LotStateEventDtoConverter {
 
     public LotStateEventDto.LotStateCreatedDto toLotStateCreatedDto(LotStateEvent.LotStateCreated e) {
         LotStateEventDto.LotStateCreatedDto dto = new LotStateEventDto.LotStateCreatedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setLotEventId(e.getLotEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -36,7 +36,7 @@ public class LotStateEventDtoConverter {
 
     public LotStateEventDto.LotStateMergePatchedDto toLotStateMergePatchedDto(LotStateEvent.LotStateMergePatched e) {
         LotStateEventDto.LotStateMergePatchedDto dto = new LotStateEventDto.LotStateMergePatchedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setLotEventId(e.getLotEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -52,7 +52,7 @@ public class LotStateEventDtoConverter {
 
     public LotStateEventDto.LotStateDeletedDto toLotStateDeletedDto(LotStateEvent.LotStateDeleted e) {
         LotStateEventDto.LotStateDeletedDto dto = new LotStateEventDto.LotStateDeletedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setLotEventId(e.getLotEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());

@@ -10,22 +10,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractInventoryItemEntryMvoStateEvent extends AbstractStateEvent implements InventoryItemEntryMvoStateEvent 
 {
-    private InventoryItemEntryMvoEventId stateEventId;
+    private InventoryItemEntryMvoEventId inventoryItemEntryMvoEventId;
 
-    public InventoryItemEntryMvoEventId getStateEventId() {
-        return this.stateEventId;
+    public InventoryItemEntryMvoEventId getInventoryItemEntryMvoEventId() {
+        return this.inventoryItemEntryMvoEventId;
     }
 
-    public void setStateEventId(InventoryItemEntryMvoEventId eventId) {
-        this.stateEventId = eventId;
+    public void setInventoryItemEntryMvoEventId(InventoryItemEntryMvoEventId eventId) {
+        this.inventoryItemEntryMvoEventId = eventId;
     }
     
     public InventoryItemEntryId getInventoryItemEntryId() {
-        return getStateEventId().getInventoryItemEntryId();
+        return getInventoryItemEntryMvoEventId().getInventoryItemEntryId();
     }
 
     public void setInventoryItemEntryId(InventoryItemEntryId inventoryItemEntryId) {
-        getStateEventId().setInventoryItemEntryId(inventoryItemEntryId);
+        getInventoryItemEntryMvoEventId().setInventoryItemEntryId(inventoryItemEntryId);
     }
 
     private boolean stateEventReadOnly;
@@ -265,7 +265,7 @@ public abstract class AbstractInventoryItemEntryMvoStateEvent extends AbstractSt
     }
 
     protected AbstractInventoryItemEntryMvoStateEvent(InventoryItemEntryMvoEventId eventId) {
-        this.stateEventId = eventId;
+        this.inventoryItemEntryMvoEventId = eventId;
     }
 
 

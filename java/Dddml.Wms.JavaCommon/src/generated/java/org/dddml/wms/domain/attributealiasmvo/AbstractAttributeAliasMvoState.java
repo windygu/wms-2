@@ -334,7 +334,7 @@ public abstract class AbstractAttributeAliasMvoState implements AttributeAliasMv
     public AbstractAttributeAliasMvoState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setAttributeAliasId(((AttributeAliasMvoStateEvent) events.get(0)).getStateEventId().getAttributeAliasId());
+            this.setAttributeAliasId(((AttributeAliasMvoStateEvent) events.get(0)).getAttributeAliasMvoEventId().getAttributeAliasId());
             for (Event e : events) {
                 mutate(e);
                 this.setAttributeVersion(this.getAttributeVersion() + 1);
@@ -625,16 +625,16 @@ public abstract class AbstractAttributeAliasMvoState implements AttributeAliasMv
     protected void throwOnWrongEvent(AttributeAliasMvoStateEvent stateEvent)
     {
         AttributeAliasId stateEntityId = this.getAttributeAliasId(); // Aggregate Id
-        AttributeAliasId eventEntityId = stateEvent.getStateEventId().getAttributeAliasId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        AttributeAliasId eventEntityId = stateEvent.getAttributeAliasMvoEventId().getAttributeAliasId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getAttributeVersion();
-        Long eventVersion = stateEvent.getStateEventId().getAttributeVersion();// Aggregate Version
+        Long eventVersion = stateEvent.getAttributeAliasMvoEventId().getAttributeVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getStateEventId().getAttributeVersion() == null");
+            throw new NullPointerException("stateEvent.getAttributeAliasMvoEventId().getAttributeVersion() == null");
         }
         if (!(stateVersion == null && eventVersion.equals(AttributeAliasMvoState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
         {

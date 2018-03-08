@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.User
         public virtual UserClaimStateCreatedDto ToUserClaimStateCreatedDto(IUserClaimStateCreated e)
         {
             var dto = new UserClaimStateCreatedDto();
-            dto.StateEventId = new UserClaimEventIdDtoWrapper(e.StateEventId);
+            dto.UserClaimEventId = new UserClaimEventIdDtoWrapper(e.UserClaimEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;
@@ -52,7 +52,7 @@ namespace Dddml.Wms.Domain.User
         public virtual UserClaimStateMergePatchedDto ToUserClaimStateMergePatchedDto(IUserClaimStateMergePatched e)
         {
             var dto = new UserClaimStateMergePatchedDto();
-            dto.StateEventId = new UserClaimEventIdDtoWrapper(e.StateEventId);
+            dto.UserClaimEventId = new UserClaimEventIdDtoWrapper(e.UserClaimEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;
@@ -71,7 +71,7 @@ namespace Dddml.Wms.Domain.User
         public virtual UserClaimStateRemovedDto ToUserClaimStateRemovedDto(IUserClaimStateRemoved e)
         {
             var dto = new UserClaimStateRemovedDto();
-            dto.StateEventId = new UserClaimEventIdDtoWrapper(e.StateEventId);
+            dto.UserClaimEventId = new UserClaimEventIdDtoWrapper(e.UserClaimEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;

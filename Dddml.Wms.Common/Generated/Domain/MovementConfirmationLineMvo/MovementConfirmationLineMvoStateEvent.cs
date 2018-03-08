@@ -16,12 +16,12 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 	public abstract class MovementConfirmationLineMvoStateEventBase : IMovementConfirmationLineMvoStateEvent
 	{
 
-		public virtual MovementConfirmationLineMvoEventId StateEventId { get; set; }
+		public virtual MovementConfirmationLineMvoEventId MovementConfirmationLineMvoEventId { get; set; }
 
         public virtual MovementConfirmationLineId MovementConfirmationLineId
         {
-            get { return StateEventId.MovementConfirmationLineId; }
-            set { StateEventId.MovementConfirmationLineId = value; }
+            get { return MovementConfirmationLineMvoEventId.MovementConfirmationLineId; }
+            set { MovementConfirmationLineMvoEventId.MovementConfirmationLineId = value; }
         }
 
 		public virtual string MovementLineNumber { get; set; }
@@ -81,7 +81,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 		MovementConfirmationLineMvoEventId IGlobalIdentity<MovementConfirmationLineMvoEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.MovementConfirmationLineMvoEventId;
 			}
 		}
 
@@ -124,7 +124,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
         protected MovementConfirmationLineMvoStateEventBase(MovementConfirmationLineMvoEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.MovementConfirmationLineMvoEventId = stateEventId;
         }
 
 

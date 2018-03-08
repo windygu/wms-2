@@ -59,7 +59,7 @@ namespace Dddml.Wms.Domain.RolePermission
 
         public virtual void Initialize(IRolePermissionStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.Id;
+            var aggregateId = stateCreated.RolePermissionEventId.Id;
             var state = new RolePermissionState();
             state.Id = aggregateId;
             var aggregate = (RolePermissionAggregate)GetRolePermissionAggregate(state);

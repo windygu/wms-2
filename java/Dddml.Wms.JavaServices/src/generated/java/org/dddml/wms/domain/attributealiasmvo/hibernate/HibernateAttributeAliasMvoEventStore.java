@@ -35,17 +35,17 @@ public class HibernateAttributeAliasMvoEventStore extends AbstractHibernateEvent
         }
         AttributeAliasId idObj = (AttributeAliasId) eventStoreAggregateId.getId();
         Criteria criteria = getCurrentSession().createCriteria(AbstractAttributeAliasMvoStateEvent.class);
-        criteria.add(Restrictions.eq("stateEventId.attributeAliasIdAttributeId", idObj.getAttributeId()));
-        criteria.add(Restrictions.eq("stateEventId.attributeAliasIdCode", idObj.getCode()));
-        criteria.add(Restrictions.le("stateEventId.attributeVersion", version));
-        criteria.addOrder(Order.asc("stateEventId.attributeVersion"));
+        criteria.add(Restrictions.eq("attributeAliasMvoEventId.attributeAliasIdAttributeId", idObj.getAttributeId()));
+        criteria.add(Restrictions.eq("attributeAliasMvoEventId.attributeAliasIdCode", idObj.getCode()));
+        criteria.add(Restrictions.le("attributeAliasMvoEventId.attributeVersion", version));
+        criteria.addOrder(Order.asc("attributeAliasMvoEventId.attributeVersion"));
         List es = criteria.list();
         for (Object e : es) {
             ((AbstractAttributeAliasMvoStateEvent) e).setStateEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractAttributeAliasMvoStateEvent) es.get(es.size() - 1)).getStateEventId().getAttributeVersion());
+            eventStream.setSteamVersion(((AbstractAttributeAliasMvoStateEvent) es.get(es.size() - 1)).getAttributeAliasMvoEventId().getAttributeVersion());
         } else {
             //todo?
         }

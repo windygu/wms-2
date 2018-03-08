@@ -16,12 +16,12 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 	public abstract class UserClaimMvoStateEventBase : IUserClaimMvoStateEvent
 	{
 
-		public virtual UserClaimMvoEventId StateEventId { get; set; }
+		public virtual UserClaimMvoEventId UserClaimMvoEventId { get; set; }
 
         public virtual UserClaimId UserClaimId
         {
-            get { return StateEventId.UserClaimId; }
-            set { StateEventId.UserClaimId = value; }
+            get { return UserClaimMvoEventId.UserClaimId; }
+            set { UserClaimMvoEventId.UserClaimId = value; }
         }
 
 		public virtual string ClaimType { get; set; }
@@ -77,7 +77,7 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 		UserClaimMvoEventId IGlobalIdentity<UserClaimMvoEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.UserClaimMvoEventId;
 			}
 		}
 
@@ -120,7 +120,7 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 
         protected UserClaimMvoStateEventBase(UserClaimMvoEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.UserClaimMvoEventId = stateEventId;
         }
 
 

@@ -10,7 +10,7 @@ import org.dddml.wms.specialization.Event;
 
 public interface InventoryItemRequirementEntryStateEvent extends Event
 {
-    InventoryItemRequirementEntryEventId getStateEventId();
+    InventoryItemRequirementEntryEventId getInventoryItemRequirementEntryEventId();
 
     boolean getStateEventReadOnly();
 

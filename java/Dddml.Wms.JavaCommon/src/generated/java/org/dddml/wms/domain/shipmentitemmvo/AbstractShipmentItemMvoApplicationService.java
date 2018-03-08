@@ -135,7 +135,7 @@ public abstract class AbstractShipmentItemMvoApplicationService implements Shipm
     }
 
     public void initialize(ShipmentItemMvoStateEvent.ShipmentItemMvoStateCreated stateCreated) {
-        ShipmentItemId aggregateId = stateCreated.getStateEventId().getShipmentItemId();
+        ShipmentItemId aggregateId = stateCreated.getShipmentItemMvoEventId().getShipmentItemId();
         ShipmentItemMvoState state = new AbstractShipmentItemMvoState.SimpleShipmentItemMvoState();
         state.setShipmentItemId(aggregateId);
 
@@ -143,7 +143,7 @@ public abstract class AbstractShipmentItemMvoApplicationService implements Shipm
         ((AbstractShipmentItemMvoAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getStateEventId().getShipmentVersion(), aggregate, state);
+        persist(eventStoreAggregateId, stateCreated.getShipmentItemMvoEventId().getShipmentVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(ShipmentItemMvoCommand command, EventStoreAggregateId eventStoreAggregateId, ShipmentItemMvoState state)

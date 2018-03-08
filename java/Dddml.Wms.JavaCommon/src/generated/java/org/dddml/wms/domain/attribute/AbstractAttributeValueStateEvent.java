@@ -8,22 +8,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractAttributeValueStateEvent extends AbstractStateEvent implements AttributeValueStateEvent 
 {
-    private AttributeValueEventId stateEventId;
+    private AttributeValueEventId attributeValueEventId;
 
-    public AttributeValueEventId getStateEventId() {
-        return this.stateEventId;
+    public AttributeValueEventId getAttributeValueEventId() {
+        return this.attributeValueEventId;
     }
 
-    public void setStateEventId(AttributeValueEventId eventId) {
-        this.stateEventId = eventId;
+    public void setAttributeValueEventId(AttributeValueEventId eventId) {
+        this.attributeValueEventId = eventId;
     }
     
     public String getValue() {
-        return getStateEventId().getValue();
+        return getAttributeValueEventId().getValue();
     }
 
     public void setValue(String value) {
-        getStateEventId().setValue(value);
+        getAttributeValueEventId().setValue(value);
     }
 
     private boolean stateEventReadOnly;
@@ -131,7 +131,7 @@ public abstract class AbstractAttributeValueStateEvent extends AbstractStateEven
     }
 
     protected AbstractAttributeValueStateEvent(AttributeValueEventId eventId) {
-        this.stateEventId = eventId;
+        this.attributeValueEventId = eventId;
     }
 
 

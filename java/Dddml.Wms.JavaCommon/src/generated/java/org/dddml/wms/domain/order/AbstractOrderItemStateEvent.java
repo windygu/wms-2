@@ -8,22 +8,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractOrderItemStateEvent extends AbstractStateEvent implements OrderItemStateEvent 
 {
-    private OrderItemEventId stateEventId;
+    private OrderItemEventId orderItemEventId;
 
-    public OrderItemEventId getStateEventId() {
-        return this.stateEventId;
+    public OrderItemEventId getOrderItemEventId() {
+        return this.orderItemEventId;
     }
 
-    public void setStateEventId(OrderItemEventId eventId) {
-        this.stateEventId = eventId;
+    public void setOrderItemEventId(OrderItemEventId eventId) {
+        this.orderItemEventId = eventId;
     }
     
     public String getOrderItemSeqId() {
-        return getStateEventId().getOrderItemSeqId();
+        return getOrderItemEventId().getOrderItemSeqId();
     }
 
     public void setOrderItemSeqId(String orderItemSeqId) {
-        getStateEventId().setOrderItemSeqId(orderItemSeqId);
+        getOrderItemEventId().setOrderItemSeqId(orderItemSeqId);
     }
 
     private boolean stateEventReadOnly;
@@ -515,7 +515,7 @@ public abstract class AbstractOrderItemStateEvent extends AbstractStateEvent imp
     }
 
     protected AbstractOrderItemStateEvent(OrderItemEventId eventId) {
-        this.stateEventId = eventId;
+        this.orderItemEventId = eventId;
     }
 
 

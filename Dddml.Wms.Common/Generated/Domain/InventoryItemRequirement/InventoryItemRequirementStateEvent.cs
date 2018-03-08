@@ -17,12 +17,12 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 	public abstract class InventoryItemRequirementStateEventBase : IInventoryItemRequirementStateEvent
 	{
 
-		public virtual InventoryItemRequirementEventId StateEventId { get; set; }
+		public virtual InventoryItemRequirementEventId InventoryItemRequirementEventId { get; set; }
 
         public virtual InventoryItemId InventoryItemRequirementId
         {
-            get { return StateEventId.InventoryItemRequirementId; }
-            set { StateEventId.InventoryItemRequirementId = value; }
+            get { return InventoryItemRequirementEventId.InventoryItemRequirementId; }
+            set { InventoryItemRequirementEventId.InventoryItemRequirementId = value; }
         }
 
 		public virtual decimal? Quantity { get; set; }
@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 		InventoryItemRequirementEventId IGlobalIdentity<InventoryItemRequirementEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.InventoryItemRequirementEventId;
 			}
 		}
 
@@ -81,12 +81,12 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 
         protected InventoryItemRequirementStateEventBase(InventoryItemRequirementEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.InventoryItemRequirementEventId = stateEventId;
         }
 
         protected InventoryItemRequirementEntryEventId NewInventoryItemRequirementEntryEventId(long entrySeqId)
         {
-            var stateEventId = new InventoryItemRequirementEntryEventId(this.StateEventId.InventoryItemRequirementId, entrySeqId, this.StateEventId.Version);
+            var stateEventId = new InventoryItemRequirementEntryEventId(this.InventoryItemRequirementEventId.InventoryItemRequirementId, entrySeqId, this.InventoryItemRequirementEventId.Version);
             return stateEventId;
         }
 
@@ -98,10 +98,10 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 
 		public static void ThrowOnInconsistentEventIds(IInventoryItemRequirementStateEvent oe, IInventoryItemRequirementEntryStateEvent e)
 		{
-			if (!oe.StateEventId.InventoryItemRequirementId.Equals(e.StateEventId.InventoryItemRequirementId))
+			if (!oe.InventoryItemRequirementEventId.InventoryItemRequirementId.Equals(e.InventoryItemRequirementEntryEventId.InventoryItemRequirementId))
 			{ 
 				throw DomainError.Named("inconsistentEventIds", "Outer Id InventoryItemRequirementId {0} but inner id InventoryItemRequirementId {1}", 
-					oe.StateEventId.InventoryItemRequirementId, e.StateEventId.InventoryItemRequirementId);
+					oe.InventoryItemRequirementEventId.InventoryItemRequirementId, e.InventoryItemRequirementEntryEventId.InventoryItemRequirementId);
 			}
 		}
 
@@ -152,7 +152,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 		public virtual void AddInventoryItemRequirementEntryEvent(IInventoryItemRequirementEntryStateCreated e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._inventoryItemRequirementEntryEvents[e.StateEventId] = e;
+			this._inventoryItemRequirementEntryEvents[e.InventoryItemRequirementEntryEventId] = e;
 		}
 
         public virtual IInventoryItemRequirementEntryStateCreated NewInventoryItemRequirementEntryStateCreated(long entrySeqId)
@@ -209,7 +209,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 		public virtual void AddInventoryItemRequirementEntryEvent(IInventoryItemRequirementEntryStateEvent e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._inventoryItemRequirementEntryEvents[e.StateEventId] = e;
+			this._inventoryItemRequirementEntryEvents[e.InventoryItemRequirementEntryEventId] = e;
 		}
 
         public virtual IInventoryItemRequirementEntryStateCreated NewInventoryItemRequirementEntryStateCreated(long entrySeqId)

@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.User
 	public abstract class UserPermissionStateEventBase : IUserPermissionStateEvent
 	{
 
-		public virtual UserPermissionEventId StateEventId { get; set; }
+		public virtual UserPermissionEventId UserPermissionEventId { get; set; }
 
         public virtual string PermissionId
         {
-            get { return StateEventId.PermissionId; }
-            set { StateEventId.PermissionId = value; }
+            get { return UserPermissionEventId.PermissionId; }
+            set { UserPermissionEventId.PermissionId = value; }
         }
 
 		public virtual bool? Active { get; set; }
@@ -36,7 +36,7 @@ namespace Dddml.Wms.Domain.User
 		UserPermissionEventId IGlobalIdentity<UserPermissionEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.UserPermissionEventId;
 			}
 		}
 
@@ -81,7 +81,7 @@ namespace Dddml.Wms.Domain.User
 
         protected UserPermissionStateEventBase(UserPermissionEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.UserPermissionEventId = stateEventId;
         }
 
 

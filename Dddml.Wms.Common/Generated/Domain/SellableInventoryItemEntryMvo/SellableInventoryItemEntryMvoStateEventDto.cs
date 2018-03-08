@@ -17,31 +17,31 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 	public abstract class SellableInventoryItemEntryMvoStateEventDtoBase : IStateEventDto, ISellableInventoryItemEntryMvoStateCreated, ISellableInventoryItemEntryMvoStateMergePatched
 	{
 
-        private SellableInventoryItemEntryMvoEventIdDto _stateEventId;
+        private SellableInventoryItemEntryMvoEventIdDto _sellableInventoryItemEntryMvoEventId;
 
-		protected internal virtual SellableInventoryItemEntryMvoEventIdDto StateEventId 
+		protected internal virtual SellableInventoryItemEntryMvoEventIdDto SellableInventoryItemEntryMvoEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new SellableInventoryItemEntryMvoEventIdDto(); }
-                return _stateEventId;
+                if (_sellableInventoryItemEntryMvoEventId == null) { _sellableInventoryItemEntryMvoEventId = new SellableInventoryItemEntryMvoEventIdDto(); }
+                return _sellableInventoryItemEntryMvoEventId;
             }
             set
             {
-                _stateEventId = value;
+                _sellableInventoryItemEntryMvoEventId = value;
             }
         }
 
         public virtual SellableInventoryItemEntryIdDto SellableInventoryItemEntryId
         {
-            get { return StateEventId.SellableInventoryItemEntryId; }
-            set { StateEventId.SellableInventoryItemEntryId = value; }
+            get { return SellableInventoryItemEntryMvoEventId.SellableInventoryItemEntryId; }
+            set { SellableInventoryItemEntryMvoEventId.SellableInventoryItemEntryId = value; }
         }
 
         public virtual long SellableInventoryItemVersion
         {
-            get { return StateEventId.SellableInventoryItemVersion; }
-            set { StateEventId.SellableInventoryItemVersion = value; }
+            get { return SellableInventoryItemEntryMvoEventId.SellableInventoryItemVersion; }
+            set { SellableInventoryItemEntryMvoEventId.SellableInventoryItemVersion = value; }
         }
 
 		public virtual decimal? SellableQuantity { get; set; }
@@ -85,7 +85,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 		SellableInventoryItemEntryMvoEventId IGlobalIdentity<SellableInventoryItemEntryMvoEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToSellableInventoryItemEntryMvoEventId();
+				return this.SellableInventoryItemEntryMvoEventId.ToSellableInventoryItemEntryMvoEventId();
 			}
 		}
 
@@ -274,9 +274,9 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 		}
 
 
-        SellableInventoryItemEntryMvoEventId ISellableInventoryItemEntryMvoStateEvent.StateEventId
+        SellableInventoryItemEntryMvoEventId ISellableInventoryItemEntryMvoStateEvent.SellableInventoryItemEntryMvoEventId
         {
-            get { return this.StateEventId.ToSellableInventoryItemEntryMvoEventId(); }
+            get { return this.SellableInventoryItemEntryMvoEventId.ToSellableInventoryItemEntryMvoEventId(); }
         }
 
         protected SellableInventoryItemEntryMvoStateEventDtoBase()
@@ -285,7 +285,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 
         protected SellableInventoryItemEntryMvoStateEventDtoBase(SellableInventoryItemEntryMvoEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.SellableInventoryItemEntryMvoEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

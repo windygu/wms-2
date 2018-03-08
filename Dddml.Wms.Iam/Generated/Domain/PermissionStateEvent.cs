@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.Permission
 	public abstract class PermissionStateEventBase : IPermissionStateEvent
 	{
 
-		public virtual PermissionEventId StateEventId { get; set; }
+		public virtual PermissionEventId PermissionEventId { get; set; }
 
         public virtual string PermissionId
         {
-            get { return StateEventId.PermissionId; }
-            set { StateEventId.PermissionId = value; }
+            get { return PermissionEventId.PermissionId; }
+            set { PermissionEventId.PermissionId = value; }
         }
 
 		public virtual string Name { get; set; }
@@ -42,7 +42,7 @@ namespace Dddml.Wms.Domain.Permission
 		PermissionEventId IGlobalIdentity<PermissionEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.PermissionEventId;
 			}
 		}
 
@@ -85,7 +85,7 @@ namespace Dddml.Wms.Domain.Permission
 
         protected PermissionStateEventBase(PermissionEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.PermissionEventId = stateEventId;
         }
 
 

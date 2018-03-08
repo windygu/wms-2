@@ -13,7 +13,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 {
 	public interface IInventoryItemEntryStateEvent : IEvent, IStateEventDto, IGlobalIdentity<InventoryItemEntryEventId>, ICreated<string>
 	{
-		InventoryItemEntryEventId StateEventId { get; }
+		InventoryItemEntryEventId InventoryItemEntryEventId { get; }
 
         bool ReadOnly { get; set; }
 

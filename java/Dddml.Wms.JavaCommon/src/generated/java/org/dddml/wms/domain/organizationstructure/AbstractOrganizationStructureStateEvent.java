@@ -8,22 +8,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractOrganizationStructureStateEvent extends AbstractStateEvent implements OrganizationStructureStateEvent 
 {
-    private OrganizationStructureEventId stateEventId;
+    private OrganizationStructureEventId organizationStructureEventId;
 
-    public OrganizationStructureEventId getStateEventId() {
-        return this.stateEventId;
+    public OrganizationStructureEventId getOrganizationStructureEventId() {
+        return this.organizationStructureEventId;
     }
 
-    public void setStateEventId(OrganizationStructureEventId eventId) {
-        this.stateEventId = eventId;
+    public void setOrganizationStructureEventId(OrganizationStructureEventId eventId) {
+        this.organizationStructureEventId = eventId;
     }
     
     public OrganizationStructureId getId() {
-        return getStateEventId().getId();
+        return getOrganizationStructureEventId().getId();
     }
 
     public void setId(OrganizationStructureId id) {
-        getStateEventId().setId(id);
+        getOrganizationStructureEventId().setId(id);
     }
 
     private boolean stateEventReadOnly;
@@ -83,7 +83,7 @@ public abstract class AbstractOrganizationStructureStateEvent extends AbstractSt
     }
 
     protected AbstractOrganizationStructureStateEvent(OrganizationStructureEventId eventId) {
-        this.stateEventId = eventId;
+        this.organizationStructureEventId = eventId;
     }
 
 

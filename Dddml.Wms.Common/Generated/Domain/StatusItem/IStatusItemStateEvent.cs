@@ -13,7 +13,7 @@ namespace Dddml.Wms.Domain.StatusItem
 {
 	public interface IStatusItemStateEvent : IEvent, IStateEventDto, IGlobalIdentity<StatusItemEventId>, ICreated<string>
 	{
-		StatusItemEventId StateEventId { get; }
+		StatusItemEventId StatusItemEventId { get; }
 
         bool ReadOnly { get; set; }
 

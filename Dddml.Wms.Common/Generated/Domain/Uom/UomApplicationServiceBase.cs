@@ -59,7 +59,7 @@ namespace Dddml.Wms.Domain.Uom
 
         public virtual void Initialize(IUomStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.UomId;
+            var aggregateId = stateCreated.UomEventId.UomId;
             var state = new UomState();
             state.UomId = aggregateId;
             var aggregate = (UomAggregate)GetUomAggregate(state);

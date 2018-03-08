@@ -318,7 +318,7 @@ public class XmlEntityDataTool {
             });
             if (propertyDescriptor.getName().equalsIgnoreCase(entityName + "Id")) {
                 addPropertyPropertySetter(setterMap, propertyDescriptor);
-            } else if (propertyDescriptor.getName().equalsIgnoreCase("stateEventId")) {
+            } else if (propertyDescriptor.getName().equalsIgnoreCase(entityName + "EventId")) {
                 addPropertyPropertySetter(setterMap, propertyDescriptor);
             }
         }

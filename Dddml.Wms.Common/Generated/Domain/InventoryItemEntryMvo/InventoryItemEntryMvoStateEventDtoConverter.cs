@@ -34,7 +34,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
         public virtual InventoryItemEntryMvoStateCreatedDto ToInventoryItemEntryMvoStateCreatedDto(IInventoryItemEntryMvoStateCreated e)
         {
             var dto = new InventoryItemEntryMvoStateCreatedDto();
-            dto.StateEventId = new InventoryItemEntryMvoEventIdDtoWrapper(e.StateEventId);
+            dto.InventoryItemEntryMvoEventId = new InventoryItemEntryMvoEventIdDtoWrapper(e.InventoryItemEntryMvoEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -60,7 +60,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
         public virtual InventoryItemEntryMvoStateMergePatchedDto ToInventoryItemEntryMvoStateMergePatchedDto(IInventoryItemEntryMvoStateMergePatched e)
         {
             var dto = new InventoryItemEntryMvoStateMergePatchedDto();
-            dto.StateEventId = new InventoryItemEntryMvoEventIdDtoWrapper(e.StateEventId);
+            dto.InventoryItemEntryMvoEventId = new InventoryItemEntryMvoEventIdDtoWrapper(e.InventoryItemEntryMvoEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

@@ -5,7 +5,7 @@
   
   <class name="ShipmentReceiptMvoStateEventBase" table="ShipmentReceiptMvoStateEvents" mutable="false" abstract="true">
 
-    <composite-id name="StateEventId" class="Dddml.Wms.Domain.ShipmentReceiptMvo.ShipmentReceiptMvoEventId">
+    <composite-id name="ShipmentReceiptMvoEventId" class="Dddml.Wms.Domain.ShipmentReceiptMvo.ShipmentReceiptMvoEventId">
         <key-property name="ShipmentReceiptIdShipmentId" ><column name="ShipmentReceiptIdShipmentId" sql-type="VARCHAR(20)" /></key-property>
         <key-property name="ShipmentReceiptIdReceiptSeqId" ><column name="ShipmentReceiptIdReceiptSeqId" sql-type="VARCHAR(20)" /></key-property>
         <key-property name="ShipmentVersion" ></key-property>

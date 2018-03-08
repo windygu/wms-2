@@ -178,7 +178,7 @@ public abstract class AbstractInventoryItemState implements InventoryItemState, 
     public AbstractInventoryItemState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setInventoryItemId(((InventoryItemStateEvent) events.get(0)).getStateEventId().getInventoryItemId());
+            this.setInventoryItemId(((InventoryItemStateEvent) events.get(0)).getInventoryItemEventId().getInventoryItemId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -227,7 +227,7 @@ public abstract class AbstractInventoryItemState implements InventoryItemState, 
         this.setCreatedAt(e.getCreatedAt());
 
         for (InventoryItemEntryStateEvent.InventoryItemEntryStateCreated innerEvent : e.getInventoryItemEntryEvents()) {
-            InventoryItemEntryState innerState = this.getEntries().get(innerEvent.getStateEventId().getEntrySeqId());
+            InventoryItemEntryState innerState = this.getEntries().get(innerEvent.getInventoryItemEntryEventId().getEntrySeqId());
             innerState.mutate(innerEvent);
         }
     }
@@ -296,7 +296,7 @@ public abstract class AbstractInventoryItemState implements InventoryItemState, 
         this.setUpdatedAt(e.getCreatedAt());
 
         for (InventoryItemEntryStateEvent innerEvent : e.getInventoryItemEntryEvents()) {
-            InventoryItemEntryState innerState = this.getEntries().get(innerEvent.getStateEventId().getEntrySeqId());
+            InventoryItemEntryState innerState = this.getEntries().get(innerEvent.getInventoryItemEntryEventId().getEntrySeqId());
             innerState.mutate(innerEvent);
         }
     }
@@ -310,16 +310,16 @@ public abstract class AbstractInventoryItemState implements InventoryItemState, 
     protected void throwOnWrongEvent(InventoryItemStateEvent stateEvent)
     {
         InventoryItemId stateEntityId = this.getInventoryItemId(); // Aggregate Id
-        InventoryItemId eventEntityId = stateEvent.getStateEventId().getInventoryItemId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        InventoryItemId eventEntityId = stateEvent.getInventoryItemEventId().getInventoryItemId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getStateEventId().getVersion();// Aggregate Version
+        Long eventVersion = stateEvent.getInventoryItemEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getStateEventId().getVersion() == null");
+            throw new NullPointerException("stateEvent.getInventoryItemEventId().getVersion() == null");
         }
         if (!(stateVersion == null && eventVersion.equals(InventoryItemState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
         {

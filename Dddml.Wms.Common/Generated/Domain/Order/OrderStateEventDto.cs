@@ -15,31 +15,31 @@ namespace Dddml.Wms.Domain.Order
 	public abstract class OrderStateEventDtoBase : IStateEventDto, IOrderStateCreated, IOrderStateMergePatched
 	{
 
-        private OrderEventIdDto _stateEventId;
+        private OrderEventIdDto _orderEventId;
 
-		protected internal virtual OrderEventIdDto StateEventId 
+		protected internal virtual OrderEventIdDto OrderEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new OrderEventIdDto(); }
-                return _stateEventId;
+                if (_orderEventId == null) { _orderEventId = new OrderEventIdDto(); }
+                return _orderEventId;
             }
             set
             {
-                _stateEventId = value;
+                _orderEventId = value;
             }
         }
 
         public virtual string OrderId
         {
-            get { return StateEventId.OrderId; }
-            set { StateEventId.OrderId = value; }
+            get { return OrderEventId.OrderId; }
+            set { OrderEventId.OrderId = value; }
         }
 
         public virtual long Version
         {
-            get { return StateEventId.Version; }
-            set { StateEventId.Version = value; }
+            get { return OrderEventId.Version; }
+            set { OrderEventId.Version = value; }
         }
 
 		public virtual string OrderTypeId { get; set; }
@@ -103,7 +103,7 @@ namespace Dddml.Wms.Domain.Order
 		OrderEventId IGlobalIdentity<OrderEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToOrderEventId();
+				return this.OrderEventId.ToOrderEventId();
 			}
 		}
 
@@ -635,9 +635,9 @@ namespace Dddml.Wms.Domain.Order
         private OrderItemEventIdDto NewOrderItemEventId(string orderItemSeqId)
         {
             var eId = new OrderItemEventIdDto();
-            eId.OrderId = this.StateEventId.OrderId;
+            eId.OrderId = this.OrderEventId.OrderId;
             eId.OrderItemSeqId = orderItemSeqId;
-            eId.OrderVersion = this.StateEventId.Version;
+            eId.OrderVersion = this.OrderEventId.Version;
             return eId;
         }
 
@@ -645,7 +645,7 @@ namespace Dddml.Wms.Domain.Order
         {
             var e = new OrderItemStateCreatedDto();
             var eId = NewOrderItemEventId(orderItemSeqId);
-            e.StateEventId = eId;
+            e.OrderItemEventId = eId;
             return e;
         }
 
@@ -653,7 +653,7 @@ namespace Dddml.Wms.Domain.Order
         {
             var e = new OrderItemStateMergePatchedDto();
             var eId = NewOrderItemEventId(orderItemSeqId);
-            e.StateEventId = eId;
+            e.OrderItemEventId = eId;
             return e;
         }
 
@@ -693,9 +693,9 @@ namespace Dddml.Wms.Domain.Order
         }
 
 
-        OrderEventId IOrderStateEvent.StateEventId
+        OrderEventId IOrderStateEvent.OrderEventId
         {
-            get { return this.StateEventId.ToOrderEventId(); }
+            get { return this.OrderEventId.ToOrderEventId(); }
         }
 
         protected OrderStateEventDtoBase()
@@ -704,7 +704,7 @@ namespace Dddml.Wms.Domain.Order
 
         protected OrderStateEventDtoBase(OrderEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.OrderEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

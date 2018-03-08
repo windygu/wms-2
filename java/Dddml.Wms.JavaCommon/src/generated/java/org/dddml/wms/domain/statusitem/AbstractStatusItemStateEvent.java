@@ -8,22 +8,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractStatusItemStateEvent extends AbstractStateEvent implements StatusItemStateEvent 
 {
-    private StatusItemEventId stateEventId;
+    private StatusItemEventId statusItemEventId;
 
-    public StatusItemEventId getStateEventId() {
-        return this.stateEventId;
+    public StatusItemEventId getStatusItemEventId() {
+        return this.statusItemEventId;
     }
 
-    public void setStateEventId(StatusItemEventId eventId) {
-        this.stateEventId = eventId;
+    public void setStatusItemEventId(StatusItemEventId eventId) {
+        this.statusItemEventId = eventId;
     }
     
     public String getStatusId() {
-        return getStateEventId().getStatusId();
+        return getStatusItemEventId().getStatusId();
     }
 
     public void setStatusId(String statusId) {
-        getStateEventId().setStatusId(statusId);
+        getStatusItemEventId().setStatusId(statusId);
     }
 
     private boolean stateEventReadOnly;
@@ -131,7 +131,7 @@ public abstract class AbstractStatusItemStateEvent extends AbstractStateEvent im
     }
 
     protected AbstractStatusItemStateEvent(StatusItemEventId eventId) {
-        this.stateEventId = eventId;
+        this.statusItemEventId = eventId;
     }
 
 

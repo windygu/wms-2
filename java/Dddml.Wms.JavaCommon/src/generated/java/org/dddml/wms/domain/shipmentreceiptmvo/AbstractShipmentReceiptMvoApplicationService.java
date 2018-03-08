@@ -135,7 +135,7 @@ public abstract class AbstractShipmentReceiptMvoApplicationService implements Sh
     }
 
     public void initialize(ShipmentReceiptMvoStateEvent.ShipmentReceiptMvoStateCreated stateCreated) {
-        ShipmentReceiptId aggregateId = stateCreated.getStateEventId().getShipmentReceiptId();
+        ShipmentReceiptId aggregateId = stateCreated.getShipmentReceiptMvoEventId().getShipmentReceiptId();
         ShipmentReceiptMvoState state = new AbstractShipmentReceiptMvoState.SimpleShipmentReceiptMvoState();
         state.setShipmentReceiptId(aggregateId);
 
@@ -143,7 +143,7 @@ public abstract class AbstractShipmentReceiptMvoApplicationService implements Sh
         ((AbstractShipmentReceiptMvoAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getStateEventId().getShipmentVersion(), aggregate, state);
+        persist(eventStoreAggregateId, stateCreated.getShipmentReceiptMvoEventId().getShipmentVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(ShipmentReceiptMvoCommand command, EventStoreAggregateId eventStoreAggregateId, ShipmentReceiptMvoState state)

@@ -16,31 +16,31 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 	public abstract class InOutLineMvoStateEventDtoBase : IStateEventDto, IInOutLineMvoStateCreated, IInOutLineMvoStateMergePatched, IInOutLineMvoStateDeleted
 	{
 
-        private InOutLineMvoEventIdDto _stateEventId;
+        private InOutLineMvoEventIdDto _inOutLineMvoEventId;
 
-		protected internal virtual InOutLineMvoEventIdDto StateEventId 
+		protected internal virtual InOutLineMvoEventIdDto InOutLineMvoEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new InOutLineMvoEventIdDto(); }
-                return _stateEventId;
+                if (_inOutLineMvoEventId == null) { _inOutLineMvoEventId = new InOutLineMvoEventIdDto(); }
+                return _inOutLineMvoEventId;
             }
             set
             {
-                _stateEventId = value;
+                _inOutLineMvoEventId = value;
             }
         }
 
         public virtual InOutLineIdDto InOutLineId
         {
-            get { return StateEventId.InOutLineId; }
-            set { StateEventId.InOutLineId = value; }
+            get { return InOutLineMvoEventId.InOutLineId; }
+            set { InOutLineMvoEventId.InOutLineId = value; }
         }
 
         public virtual long InOutVersion
         {
-            get { return StateEventId.InOutVersion; }
-            set { StateEventId.InOutVersion = value; }
+            get { return InOutLineMvoEventId.InOutVersion; }
+            set { InOutLineMvoEventId.InOutVersion = value; }
         }
 
 		public virtual string LocatorId { get; set; }
@@ -150,7 +150,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 		InOutLineMvoEventId IGlobalIdentity<InOutLineMvoEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToInOutLineMvoEventId();
+				return this.InOutLineMvoEventId.ToInOutLineMvoEventId();
 			}
 		}
 
@@ -1099,9 +1099,9 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 		}
 
 
-        InOutLineMvoEventId IInOutLineMvoStateEvent.StateEventId
+        InOutLineMvoEventId IInOutLineMvoStateEvent.InOutLineMvoEventId
         {
-            get { return this.StateEventId.ToInOutLineMvoEventId(); }
+            get { return this.InOutLineMvoEventId.ToInOutLineMvoEventId(); }
         }
 
         protected InOutLineMvoStateEventDtoBase()
@@ -1110,7 +1110,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
         protected InOutLineMvoStateEventDtoBase(InOutLineMvoEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.InOutLineMvoEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

@@ -72,7 +72,7 @@ namespace Dddml.Wms.Domain.Listeners
             }
             foreach (var iie in itemEntriesCreated)
             {
-                foreach (var pr in GetPostingRules(iie.StateEventId.InventoryItemId))
+                foreach (var pr in GetPostingRules(iie.InventoryItemEntryEventId.InventoryItemId))
                 {
                     var outputQuantity = GetOutputQuantity(pr, iie);
                     if (outputQuantity.Equals(0))
@@ -81,7 +81,7 @@ namespace Dddml.Wms.Domain.Listeners
                     }
                     var tid = GetOrCreateInventoryPRTriggered(pr, iie);
 
-                    var outputItemId = GetOutputInventoryItemId(pr, iie.StateEventId.InventoryItemId);
+                    var outputItemId = GetOutputInventoryItemId(pr, iie.InventoryItemEntryEventId.InventoryItemId);
                     //_log.Debug(outputItemId.ProductId + ", " + outputItemId.LocatorId + ", " + outputItemId.AttributeSetInstanceId);
 
                     CreateOrUpdateOutputAccount(pr.OutputAccountName, outputQuantity, tid, outputItemId);
@@ -185,7 +185,7 @@ namespace Dddml.Wms.Domain.Listeners
         private InventoryPRTriggeredId GetOrCreateInventoryPRTriggered(IInventoryPostingRuleState pr, IInventoryItemEntryStateCreated iie)
         {
             var createTriggered = new CreateInventoryPRTriggered();
-            var sourceEntryId = new InventoryItemEntryId(iie.StateEventId.InventoryItemId, iie.StateEventId.EntrySeqId);
+            var sourceEntryId = new InventoryItemEntryId(iie.InventoryItemEntryEventId.InventoryItemId, iie.InventoryItemEntryEventId.EntrySeqId);
             string postingRuleId = pr.InventoryPostingRuleId;
             var tid = new InventoryPRTriggeredId(sourceEntryId, postingRuleId);
             createTriggered.InventoryPRTriggeredId = tid;

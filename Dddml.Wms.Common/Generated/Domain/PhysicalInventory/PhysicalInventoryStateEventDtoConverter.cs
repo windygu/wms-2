@@ -34,7 +34,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
         public virtual PhysicalInventoryStateCreatedDto ToPhysicalInventoryStateCreatedDto(IPhysicalInventoryStateCreated e)
         {
             var dto = new PhysicalInventoryStateCreatedDto();
-            dto.StateEventId = new PhysicalInventoryEventIdDtoWrapper(e.StateEventId);
+            dto.PhysicalInventoryEventId = new PhysicalInventoryEventIdDtoWrapper(e.PhysicalInventoryEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -67,7 +67,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
         public virtual PhysicalInventoryStateMergePatchedDto ToPhysicalInventoryStateMergePatchedDto(IPhysicalInventoryStateMergePatched e)
         {
             var dto = new PhysicalInventoryStateMergePatchedDto();
-            dto.StateEventId = new PhysicalInventoryEventIdDtoWrapper(e.StateEventId);
+            dto.PhysicalInventoryEventId = new PhysicalInventoryEventIdDtoWrapper(e.PhysicalInventoryEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

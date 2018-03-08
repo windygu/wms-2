@@ -221,7 +221,7 @@ namespace Dddml.Wms.Domain.InventoryItem
             id.Append("[").Append("InventoryItemEntry|");
 
             var stateEntityIdInventoryItemId = (this as IGlobalIdentity<InventoryItemEntryId>).GlobalId.InventoryItemId;
-            var eventEntityIdInventoryItemId = stateEvent.StateEventId.InventoryItemId;
+            var eventEntityIdInventoryItemId = stateEvent.InventoryItemEntryEventId.InventoryItemId;
             if (stateEntityIdInventoryItemId != eventEntityIdInventoryItemId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id InventoryItemId {0} in state but entity id InventoryItemId {1} in event", stateEntityIdInventoryItemId, eventEntityIdInventoryItemId);
@@ -229,7 +229,7 @@ namespace Dddml.Wms.Domain.InventoryItem
             id.Append(stateEntityIdInventoryItemId).Append(",");
 
             var stateEntityIdEntrySeqId = (this as IGlobalIdentity<InventoryItemEntryId>).GlobalId.EntrySeqId;
-            var eventEntityIdEntrySeqId = stateEvent.StateEventId.EntrySeqId;
+            var eventEntityIdEntrySeqId = stateEvent.InventoryItemEntryEventId.EntrySeqId;
             if (stateEntityIdEntrySeqId != eventEntityIdEntrySeqId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id EntrySeqId {0} in state but entity id EntrySeqId {1} in event", stateEntityIdEntrySeqId, eventEntityIdEntrySeqId);

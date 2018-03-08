@@ -19,7 +19,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 
         public virtual InventoryItemEntryState InventoryItemEntryState { get { return _state; } }
 
-        public virtual InventoryItemEntryEventId StateEventId
+        public virtual InventoryItemEntryEventId InventoryItemEntryEventId
         {
             get
             {
@@ -35,8 +35,8 @@ namespace Dddml.Wms.Domain.InventoryItem
 
         public virtual long EntrySeqId
         {
-            get { return StateEventId.EntrySeqId; }
-            set { StateEventId.EntrySeqId = value; }
+            get { return InventoryItemEntryEventId.EntrySeqId; }
+            set { InventoryItemEntryEventId.EntrySeqId = value; }
         }
 
         public virtual decimal? OnHandQuantity { get { return _state.OnHandQuantity; } set { _state.OnHandQuantity = (value != null && value.HasValue) ? value.Value : default(decimal); } }
@@ -62,7 +62,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 		InventoryItemEntryEventId IGlobalIdentity<InventoryItemEntryEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.InventoryItemEntryEventId;
 			}
 		}
 
@@ -107,7 +107,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 
         protected InventoryItemEntryStateEventBase(InventoryItemEntryEventId stateEventId) : this(new InventoryItemEntryState())
         {
-            this.StateEventId = stateEventId;
+            this.InventoryItemEntryEventId = stateEventId;
         }
 
         protected InventoryItemEntryStateEventBase(InventoryItemEntryState state)

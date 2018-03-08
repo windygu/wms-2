@@ -15,25 +15,25 @@ namespace Dddml.Wms.Domain.User
 	public abstract class UserRoleStateEventDtoBase : IStateEventDto, IUserRoleStateCreated, IUserRoleStateMergePatched, IUserRoleStateRemoved
 	{
 
-        private UserRoleEventIdDto _stateEventId;
+        private UserRoleEventIdDto _userRoleEventId;
 
-		protected internal virtual UserRoleEventIdDto StateEventId 
+		protected internal virtual UserRoleEventIdDto UserRoleEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new UserRoleEventIdDto(); }
-                return _stateEventId;
+                if (_userRoleEventId == null) { _userRoleEventId = new UserRoleEventIdDto(); }
+                return _userRoleEventId;
             }
             set
             {
-                _stateEventId = value;
+                _userRoleEventId = value;
             }
         }
 
         public virtual string RoleId
         {
-            get { return StateEventId.RoleId; }
-            set { StateEventId.RoleId = value; }
+            get { return UserRoleEventId.RoleId; }
+            set { UserRoleEventId.RoleId = value; }
         }
 
 		public virtual bool? Active { get; set; }
@@ -49,7 +49,7 @@ namespace Dddml.Wms.Domain.User
 		UserRoleEventId IGlobalIdentity<UserRoleEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToUserRoleEventId();
+				return this.UserRoleEventId.ToUserRoleEventId();
 			}
 		}
 
@@ -107,9 +107,9 @@ namespace Dddml.Wms.Domain.User
 		}
 
 
-        UserRoleEventId IUserRoleStateEvent.StateEventId
+        UserRoleEventId IUserRoleStateEvent.UserRoleEventId
         {
-            get { return this.StateEventId.ToUserRoleEventId(); }
+            get { return this.UserRoleEventId.ToUserRoleEventId(); }
         }
 
         protected UserRoleStateEventDtoBase()
@@ -118,7 +118,7 @@ namespace Dddml.Wms.Domain.User
 
         protected UserRoleStateEventDtoBase(UserRoleEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.UserRoleEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

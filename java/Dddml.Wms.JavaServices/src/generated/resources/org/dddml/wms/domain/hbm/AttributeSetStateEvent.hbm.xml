@@ -8,7 +8,7 @@
   
   <class name="AbstractAttributeSetStateEvent" table="AttributeSetStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="stateEventId" class="org.dddml.wms.domain.attributeset.AttributeSetEventId">
+	<composite-id name="attributeSetEventId" class="org.dddml.wms.domain.attributeset.AttributeSetEventId">
 		<key-property name="attributeSetId" ><column name="AttributeSetId" length="50" /></key-property>
 		<key-property name="version" ></key-property>
 	</composite-id>

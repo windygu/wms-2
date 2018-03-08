@@ -24,7 +24,7 @@ public class DamageReasonStateEventDtoConverter {
 
     public DamageReasonStateEventDto.DamageReasonStateCreatedDto toDamageReasonStateCreatedDto(DamageReasonStateEvent.DamageReasonStateCreated e) {
         DamageReasonStateEventDto.DamageReasonStateCreatedDto dto = new DamageReasonStateEventDto.DamageReasonStateCreatedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setDamageReasonEventId(e.getDamageReasonEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -36,7 +36,7 @@ public class DamageReasonStateEventDtoConverter {
 
     public DamageReasonStateEventDto.DamageReasonStateMergePatchedDto toDamageReasonStateMergePatchedDto(DamageReasonStateEvent.DamageReasonStateMergePatched e) {
         DamageReasonStateEventDto.DamageReasonStateMergePatchedDto dto = new DamageReasonStateEventDto.DamageReasonStateMergePatchedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setDamageReasonEventId(e.getDamageReasonEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -52,7 +52,7 @@ public class DamageReasonStateEventDtoConverter {
 
     public DamageReasonStateEventDto.DamageReasonStateDeletedDto toDamageReasonStateDeletedDto(DamageReasonStateEvent.DamageReasonStateDeleted e) {
         DamageReasonStateEventDto.DamageReasonStateDeletedDto dto = new DamageReasonStateEventDto.DamageReasonStateDeletedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setDamageReasonEventId(e.getDamageReasonEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());

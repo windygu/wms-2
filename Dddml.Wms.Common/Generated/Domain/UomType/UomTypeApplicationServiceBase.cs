@@ -57,7 +57,7 @@ namespace Dddml.Wms.Domain.UomType
 
         public virtual void Initialize(IUomTypeStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.UomTypeId;
+            var aggregateId = stateCreated.UomTypeEventId.UomTypeId;
             var state = new UomTypeState();
             state.UomTypeId = aggregateId;
             var aggregate = (UomTypeAggregate)GetUomTypeAggregate(state);

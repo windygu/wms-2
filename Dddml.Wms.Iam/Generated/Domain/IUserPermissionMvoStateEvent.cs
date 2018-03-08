@@ -14,7 +14,7 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 {
 	public interface IUserPermissionMvoStateEvent : IEvent, IStateEventDto, IGlobalIdentity<UserPermissionMvoEventId>, ICreated<string>
 	{
-		UserPermissionMvoEventId StateEventId { get; }
+		UserPermissionMvoEventId UserPermissionMvoEventId { get; }
 
         bool ReadOnly { get; set; }
 

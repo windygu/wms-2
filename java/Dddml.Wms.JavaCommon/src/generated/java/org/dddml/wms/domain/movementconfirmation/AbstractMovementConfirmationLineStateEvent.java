@@ -9,22 +9,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractMovementConfirmationLineStateEvent extends AbstractStateEvent implements MovementConfirmationLineStateEvent 
 {
-    private MovementConfirmationLineEventId stateEventId;
+    private MovementConfirmationLineEventId movementConfirmationLineEventId;
 
-    public MovementConfirmationLineEventId getStateEventId() {
-        return this.stateEventId;
+    public MovementConfirmationLineEventId getMovementConfirmationLineEventId() {
+        return this.movementConfirmationLineEventId;
     }
 
-    public void setStateEventId(MovementConfirmationLineEventId eventId) {
-        this.stateEventId = eventId;
+    public void setMovementConfirmationLineEventId(MovementConfirmationLineEventId eventId) {
+        this.movementConfirmationLineEventId = eventId;
     }
     
     public String getLineNumber() {
-        return getStateEventId().getLineNumber();
+        return getMovementConfirmationLineEventId().getLineNumber();
     }
 
     public void setLineNumber(String lineNumber) {
-        getStateEventId().setLineNumber(lineNumber);
+        getMovementConfirmationLineEventId().setLineNumber(lineNumber);
     }
 
     private boolean stateEventReadOnly;
@@ -180,7 +180,7 @@ public abstract class AbstractMovementConfirmationLineStateEvent extends Abstrac
     }
 
     protected AbstractMovementConfirmationLineStateEvent(MovementConfirmationLineEventId eventId) {
-        this.stateEventId = eventId;
+        this.movementConfirmationLineEventId = eventId;
     }
 
 

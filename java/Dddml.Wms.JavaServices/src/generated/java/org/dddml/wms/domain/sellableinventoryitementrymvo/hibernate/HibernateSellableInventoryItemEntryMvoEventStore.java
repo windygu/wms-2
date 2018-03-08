@@ -37,19 +37,19 @@ public class HibernateSellableInventoryItemEntryMvoEventStore extends AbstractHi
         }
         SellableInventoryItemEntryId idObj = (SellableInventoryItemEntryId) eventStoreAggregateId.getId();
         Criteria criteria = getCurrentSession().createCriteria(AbstractSellableInventoryItemEntryMvoStateEvent.class);
-        criteria.add(Restrictions.eq("stateEventId.sellableInventoryItemEntryIdSellableInventoryItemIdProductId", idObj.getSellableInventoryItemId().getProductId()));
-        criteria.add(Restrictions.eq("stateEventId.sellableInventoryItemEntryIdSellableInventoryItemIdLocatorId", idObj.getSellableInventoryItemId().getLocatorId()));
-        criteria.add(Restrictions.eq("stateEventId.sellableInventoryItemEntryIdSellableInventoryItemIdAttributeSetInstanceId", idObj.getSellableInventoryItemId().getAttributeSetInstanceId()));
-        criteria.add(Restrictions.eq("stateEventId.sellableInventoryItemEntryIdEntrySeqId", idObj.getEntrySeqId()));
-        criteria.add(Restrictions.le("stateEventId.sellableInventoryItemVersion", version));
-        criteria.addOrder(Order.asc("stateEventId.sellableInventoryItemVersion"));
+        criteria.add(Restrictions.eq("sellableInventoryItemEntryMvoEventId.sellableInventoryItemEntryIdSellableInventoryItemIdProductId", idObj.getSellableInventoryItemId().getProductId()));
+        criteria.add(Restrictions.eq("sellableInventoryItemEntryMvoEventId.sellableInventoryItemEntryIdSellableInventoryItemIdLocatorId", idObj.getSellableInventoryItemId().getLocatorId()));
+        criteria.add(Restrictions.eq("sellableInventoryItemEntryMvoEventId.sellableInventoryItemEntryIdSellableInventoryItemIdAttributeSetInstanceId", idObj.getSellableInventoryItemId().getAttributeSetInstanceId()));
+        criteria.add(Restrictions.eq("sellableInventoryItemEntryMvoEventId.sellableInventoryItemEntryIdEntrySeqId", idObj.getEntrySeqId()));
+        criteria.add(Restrictions.le("sellableInventoryItemEntryMvoEventId.sellableInventoryItemVersion", version));
+        criteria.addOrder(Order.asc("sellableInventoryItemEntryMvoEventId.sellableInventoryItemVersion"));
         List es = criteria.list();
         for (Object e : es) {
             ((AbstractSellableInventoryItemEntryMvoStateEvent) e).setStateEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractSellableInventoryItemEntryMvoStateEvent) es.get(es.size() - 1)).getStateEventId().getSellableInventoryItemVersion());
+            eventStream.setSteamVersion(((AbstractSellableInventoryItemEntryMvoStateEvent) es.get(es.size() - 1)).getSellableInventoryItemEntryMvoEventId().getSellableInventoryItemVersion());
         } else {
             //todo?
         }

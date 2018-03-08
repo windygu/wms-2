@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.Audience
 	public abstract class AudienceStateEventBase : IAudienceStateEvent
 	{
 
-		public virtual AudienceEventId StateEventId { get; set; }
+		public virtual AudienceEventId AudienceEventId { get; set; }
 
         public virtual string ClientId
         {
-            get { return StateEventId.ClientId; }
-            set { StateEventId.ClientId = value; }
+            get { return AudienceEventId.ClientId; }
+            set { AudienceEventId.ClientId = value; }
         }
 
 		public virtual string Name { get; set; }
@@ -40,7 +40,7 @@ namespace Dddml.Wms.Domain.Audience
 		AudienceEventId IGlobalIdentity<AudienceEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.AudienceEventId;
 			}
 		}
 
@@ -83,7 +83,7 @@ namespace Dddml.Wms.Domain.Audience
 
         protected AudienceStateEventBase(AudienceEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.AudienceEventId = stateEventId;
         }
 
 

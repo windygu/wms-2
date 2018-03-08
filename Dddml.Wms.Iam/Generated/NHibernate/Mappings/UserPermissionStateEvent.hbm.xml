@@ -5,7 +5,7 @@
   
   <class name="UserPermissionStateEventBase" table="UserPermissionStateEvents" mutable="false" abstract="true">
 
-    <composite-id name="StateEventId" class="Dddml.Wms.Domain.User.UserPermissionEventId">
+    <composite-id name="UserPermissionEventId" class="Dddml.Wms.Domain.User.UserPermissionEventId">
         <key-property name="UserId" ><column name="UserPermissionIdUserId" length="50" /></key-property>
         <key-property name="PermissionId" ><column name="UserPermissionIdPermissionId" length="50" /></key-property>
         <key-property name="UserVersion" ></key-property>

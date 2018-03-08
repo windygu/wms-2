@@ -8,22 +8,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractShipmentItemStateEvent extends AbstractStateEvent implements ShipmentItemStateEvent 
 {
-    private ShipmentItemEventId stateEventId;
+    private ShipmentItemEventId shipmentItemEventId;
 
-    public ShipmentItemEventId getStateEventId() {
-        return this.stateEventId;
+    public ShipmentItemEventId getShipmentItemEventId() {
+        return this.shipmentItemEventId;
     }
 
-    public void setStateEventId(ShipmentItemEventId eventId) {
-        this.stateEventId = eventId;
+    public void setShipmentItemEventId(ShipmentItemEventId eventId) {
+        this.shipmentItemEventId = eventId;
     }
     
     public String getShipmentItemSeqId() {
-        return getStateEventId().getShipmentItemSeqId();
+        return getShipmentItemEventId().getShipmentItemSeqId();
     }
 
     public void setShipmentItemSeqId(String shipmentItemSeqId) {
-        getStateEventId().setShipmentItemSeqId(shipmentItemSeqId);
+        getShipmentItemEventId().setShipmentItemSeqId(shipmentItemSeqId);
     }
 
     private boolean stateEventReadOnly;
@@ -155,7 +155,7 @@ public abstract class AbstractShipmentItemStateEvent extends AbstractStateEvent 
     }
 
     protected AbstractShipmentItemStateEvent(ShipmentItemEventId eventId) {
-        this.stateEventId = eventId;
+        this.shipmentItemEventId = eventId;
     }
 
 

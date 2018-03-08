@@ -34,16 +34,16 @@ public class HibernateShipmentEventStore extends AbstractHibernateEventStore
         }
         String idObj = (String) eventStoreAggregateId.getId();
         Criteria criteria = getCurrentSession().createCriteria(AbstractShipmentStateEvent.class);
-        criteria.add(Restrictions.eq("stateEventId.shipmentId", idObj));
-        criteria.add(Restrictions.le("stateEventId.version", version));
-        criteria.addOrder(Order.asc("stateEventId.version"));
+        criteria.add(Restrictions.eq("shipmentEventId.shipmentId", idObj));
+        criteria.add(Restrictions.le("shipmentEventId.version", version));
+        criteria.addOrder(Order.asc("shipmentEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
             ((AbstractShipmentStateEvent) e).setStateEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractShipmentStateEvent) es.get(es.size() - 1)).getStateEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractShipmentStateEvent) es.get(es.size() - 1)).getShipmentEventId().getVersion());
         } else {
             //todo?
         }

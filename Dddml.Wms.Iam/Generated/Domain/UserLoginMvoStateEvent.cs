@@ -16,12 +16,12 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 	public abstract class UserLoginMvoStateEventBase : IUserLoginMvoStateEvent
 	{
 
-		public virtual UserLoginMvoEventId StateEventId { get; set; }
+		public virtual UserLoginMvoEventId UserLoginMvoEventId { get; set; }
 
         public virtual UserLoginId UserLoginId
         {
-            get { return StateEventId.UserLoginId; }
-            set { StateEventId.UserLoginId = value; }
+            get { return UserLoginMvoEventId.UserLoginId; }
+            set { UserLoginMvoEventId.UserLoginId = value; }
         }
 
 		public virtual long? Version { get; set; }
@@ -73,7 +73,7 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 		UserLoginMvoEventId IGlobalIdentity<UserLoginMvoEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.UserLoginMvoEventId;
 			}
 		}
 
@@ -116,7 +116,7 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 
         protected UserLoginMvoStateEventBase(UserLoginMvoEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.UserLoginMvoEventId = stateEventId;
         }
 
 

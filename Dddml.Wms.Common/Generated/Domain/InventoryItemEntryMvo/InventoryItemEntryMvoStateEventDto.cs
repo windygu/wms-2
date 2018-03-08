@@ -16,31 +16,31 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 	public abstract class InventoryItemEntryMvoStateEventDtoBase : IStateEventDto, IInventoryItemEntryMvoStateCreated, IInventoryItemEntryMvoStateMergePatched
 	{
 
-        private InventoryItemEntryMvoEventIdDto _stateEventId;
+        private InventoryItemEntryMvoEventIdDto _inventoryItemEntryMvoEventId;
 
-		protected internal virtual InventoryItemEntryMvoEventIdDto StateEventId 
+		protected internal virtual InventoryItemEntryMvoEventIdDto InventoryItemEntryMvoEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new InventoryItemEntryMvoEventIdDto(); }
-                return _stateEventId;
+                if (_inventoryItemEntryMvoEventId == null) { _inventoryItemEntryMvoEventId = new InventoryItemEntryMvoEventIdDto(); }
+                return _inventoryItemEntryMvoEventId;
             }
             set
             {
-                _stateEventId = value;
+                _inventoryItemEntryMvoEventId = value;
             }
         }
 
         public virtual InventoryItemEntryIdDto InventoryItemEntryId
         {
-            get { return StateEventId.InventoryItemEntryId; }
-            set { StateEventId.InventoryItemEntryId = value; }
+            get { return InventoryItemEntryMvoEventId.InventoryItemEntryId; }
+            set { InventoryItemEntryMvoEventId.InventoryItemEntryId = value; }
         }
 
         public virtual long InventoryItemVersion
         {
-            get { return StateEventId.InventoryItemVersion; }
-            set { StateEventId.InventoryItemVersion = value; }
+            get { return InventoryItemEntryMvoEventId.InventoryItemVersion; }
+            set { InventoryItemEntryMvoEventId.InventoryItemVersion = value; }
         }
 
 		public virtual decimal? OnHandQuantity { get; set; }
@@ -100,7 +100,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 		InventoryItemEntryMvoEventId IGlobalIdentity<InventoryItemEntryMvoEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToInventoryItemEntryMvoEventId();
+				return this.InventoryItemEntryMvoEventId.ToInventoryItemEntryMvoEventId();
 			}
 		}
 
@@ -441,9 +441,9 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 		}
 
 
-        InventoryItemEntryMvoEventId IInventoryItemEntryMvoStateEvent.StateEventId
+        InventoryItemEntryMvoEventId IInventoryItemEntryMvoStateEvent.InventoryItemEntryMvoEventId
         {
-            get { return this.StateEventId.ToInventoryItemEntryMvoEventId(); }
+            get { return this.InventoryItemEntryMvoEventId.ToInventoryItemEntryMvoEventId(); }
         }
 
         protected InventoryItemEntryMvoStateEventDtoBase()
@@ -452,7 +452,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
         protected InventoryItemEntryMvoStateEventDtoBase(InventoryItemEntryMvoEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.InventoryItemEntryMvoEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

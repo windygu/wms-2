@@ -8,15 +8,15 @@ import org.dddml.wms.domain.AbstractStateEvent;
 public class InOutLineStateEventDto extends AbstractStateEvent
 {
 
-    private InOutLineEventId stateEventId;
+    private InOutLineEventId inOutLineEventId;
 
     InOutLineEventId getStateEventId() {
-        if (stateEventId == null) { stateEventId = new InOutLineEventId(); }
-        return stateEventId;
+        if (inOutLineEventId == null) { inOutLineEventId = new InOutLineEventId(); }
+        return inOutLineEventId;
     }
 
-    void setStateEventId(InOutLineEventId eventId) {
-        this.stateEventId = eventId;
+    void setInOutLineEventId(InOutLineEventId eventId) {
+        this.inOutLineEventId = eventId;
     }
 
     public String getLineNumber() {

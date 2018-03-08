@@ -34,17 +34,17 @@ public class HibernateProductCategoryMemberEventStore extends AbstractHibernateE
         }
         ProductCategoryMemberId idObj = (ProductCategoryMemberId) eventStoreAggregateId.getId();
         Criteria criteria = getCurrentSession().createCriteria(AbstractProductCategoryMemberStateEvent.class);
-        criteria.add(Restrictions.eq("stateEventId.productCategoryMemberIdProductCategoryId", idObj.getProductCategoryId()));
-        criteria.add(Restrictions.eq("stateEventId.productCategoryMemberIdProductId", idObj.getProductId()));
-        criteria.add(Restrictions.le("stateEventId.version", version));
-        criteria.addOrder(Order.asc("stateEventId.version"));
+        criteria.add(Restrictions.eq("productCategoryMemberEventId.productCategoryMemberIdProductCategoryId", idObj.getProductCategoryId()));
+        criteria.add(Restrictions.eq("productCategoryMemberEventId.productCategoryMemberIdProductId", idObj.getProductId()));
+        criteria.add(Restrictions.le("productCategoryMemberEventId.version", version));
+        criteria.addOrder(Order.asc("productCategoryMemberEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
             ((AbstractProductCategoryMemberStateEvent) e).setStateEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractProductCategoryMemberStateEvent) es.get(es.size() - 1)).getStateEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractProductCategoryMemberStateEvent) es.get(es.size() - 1)).getProductCategoryMemberEventId().getVersion());
         } else {
             //todo?
         }

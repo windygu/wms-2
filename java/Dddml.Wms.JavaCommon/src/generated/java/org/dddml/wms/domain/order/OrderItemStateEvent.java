@@ -7,7 +7,7 @@ import org.dddml.wms.specialization.Event;
 
 public interface OrderItemStateEvent extends Event
 {
-    OrderItemEventId getStateEventId();
+    OrderItemEventId getOrderItemEventId();
 
     boolean getStateEventReadOnly();
 

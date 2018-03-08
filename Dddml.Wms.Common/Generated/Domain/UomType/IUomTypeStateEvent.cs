@@ -13,7 +13,7 @@ namespace Dddml.Wms.Domain.UomType
 {
 	public interface IUomTypeStateEvent : IEvent, IStateEventDto, IGlobalIdentity<UomTypeEventId>, ICreated<string>
 	{
-		UomTypeEventId StateEventId { get; }
+		UomTypeEventId UomTypeEventId { get; }
 
         bool ReadOnly { get; set; }
 

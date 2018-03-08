@@ -13,7 +13,7 @@ namespace Dddml.Wms.Domain.UomConversion
 {
 	public interface IUomConversionStateEvent : IEvent, IStateEventDto, IGlobalIdentity<UomConversionEventId>, ICreated<string>
 	{
-		UomConversionEventId StateEventId { get; }
+		UomConversionEventId UomConversionEventId { get; }
 
         bool ReadOnly { get; set; }
 

@@ -22,7 +22,7 @@ public class ShipmentItemMvoStateEventDtoConverter {
 
     public ShipmentItemMvoStateEventDto.ShipmentItemMvoStateCreatedDto toShipmentItemMvoStateCreatedDto(ShipmentItemMvoStateEvent.ShipmentItemMvoStateCreated e) {
         ShipmentItemMvoStateEventDto.ShipmentItemMvoStateCreatedDto dto = new ShipmentItemMvoStateEventDto.ShipmentItemMvoStateCreatedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setShipmentItemMvoEventId(e.getShipmentItemMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -68,7 +68,7 @@ public class ShipmentItemMvoStateEventDtoConverter {
 
     public ShipmentItemMvoStateEventDto.ShipmentItemMvoStateMergePatchedDto toShipmentItemMvoStateMergePatchedDto(ShipmentItemMvoStateEvent.ShipmentItemMvoStateMergePatched e) {
         ShipmentItemMvoStateEventDto.ShipmentItemMvoStateMergePatchedDto dto = new ShipmentItemMvoStateEventDto.ShipmentItemMvoStateMergePatchedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setShipmentItemMvoEventId(e.getShipmentItemMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());

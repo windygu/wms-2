@@ -634,7 +634,7 @@ public abstract class AbstractShipmentReceiptMvoState implements ShipmentReceipt
     public AbstractShipmentReceiptMvoState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setShipmentReceiptId(((ShipmentReceiptMvoStateEvent) events.get(0)).getStateEventId().getShipmentReceiptId());
+            this.setShipmentReceiptId(((ShipmentReceiptMvoStateEvent) events.get(0)).getShipmentReceiptMvoEventId().getShipmentReceiptId());
             for (Event e : events) {
                 mutate(e);
                 this.setShipmentVersion(this.getShipmentVersion() + 1);
@@ -1223,16 +1223,16 @@ public abstract class AbstractShipmentReceiptMvoState implements ShipmentReceipt
     protected void throwOnWrongEvent(ShipmentReceiptMvoStateEvent stateEvent)
     {
         ShipmentReceiptId stateEntityId = this.getShipmentReceiptId(); // Aggregate Id
-        ShipmentReceiptId eventEntityId = stateEvent.getStateEventId().getShipmentReceiptId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        ShipmentReceiptId eventEntityId = stateEvent.getShipmentReceiptMvoEventId().getShipmentReceiptId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getShipmentVersion();
-        Long eventVersion = stateEvent.getStateEventId().getShipmentVersion();// Aggregate Version
+        Long eventVersion = stateEvent.getShipmentReceiptMvoEventId().getShipmentVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getStateEventId().getShipmentVersion() == null");
+            throw new NullPointerException("stateEvent.getShipmentReceiptMvoEventId().getShipmentVersion() == null");
         }
         if (!(stateVersion == null && eventVersion.equals(ShipmentReceiptMvoState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
         {

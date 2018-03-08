@@ -8,7 +8,7 @@
   
   <class name="AbstractInventoryItemRequirementEntryMvoStateEvent" table="InventoryItemRequirementEntryMvoStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="stateEventId" class="org.dddml.wms.domain.inventoryitemrequiremententrymvo.InventoryItemRequirementEntryMvoEventId">
+	<composite-id name="inventoryItemRequirementEntryMvoEventId" class="org.dddml.wms.domain.inventoryitemrequiremententrymvo.InventoryItemRequirementEntryMvoEventId">
 		<key-property name="inventoryItemRequirementEntryIdInventoryItemRequirementIdProductId" ><column name="ProductId" length="60" sql-type="VARCHAR(60)" /></key-property>
 		<key-property name="inventoryItemRequirementEntryIdInventoryItemRequirementIdLocatorId" ><column name="LocatorId" length="50" /></key-property>
 		<key-property name="inventoryItemRequirementEntryIdInventoryItemRequirementIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" length="50" /></key-property>

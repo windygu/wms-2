@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.RolePermission
         {
             if (events != null && events.Count() > 0)
             {
-                this.Id = ((IRolePermissionStateEvent)events.First()).StateEventId.Id;
+                this.Id = ((IRolePermissionStateEvent)events.First()).RolePermissionEventId.Id;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -231,7 +231,7 @@ namespace Dddml.Wms.Domain.RolePermission
             id.Append("[").Append("RolePermission|");
 
             var stateEntityId = this.Id; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.Id;
+            var eventEntityId = stateEvent.RolePermissionEventId.Id;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -241,7 +241,7 @@ namespace Dddml.Wms.Domain.RolePermission
             id.Append("]");
 
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.StateEventId.Version;
+            var eventVersion = stateEvent.RolePermissionEventId.Version;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

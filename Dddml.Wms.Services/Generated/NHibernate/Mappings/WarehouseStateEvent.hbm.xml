@@ -5,7 +5,7 @@
   
   <class name="WarehouseStateEventBase" table="WarehouseStateEvents" mutable="false" abstract="true">
 
-    <composite-id name="StateEventId" class="Dddml.Wms.Domain.Warehouse.WarehouseEventId">
+    <composite-id name="WarehouseEventId" class="Dddml.Wms.Domain.Warehouse.WarehouseEventId">
         <key-property name="WarehouseId" ><column name="WarehouseId" length="50" /></key-property>
         <key-property name="Version" ></key-property>
     </composite-id>

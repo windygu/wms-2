@@ -14,7 +14,7 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 {
 	public interface IUserRoleMvoStateEvent : IEvent, IStateEventDto, IGlobalIdentity<UserRoleMvoEventId>, ICreated<string>
 	{
-		UserRoleMvoEventId StateEventId { get; }
+		UserRoleMvoEventId UserRoleMvoEventId { get; }
 
         bool ReadOnly { get; set; }
 

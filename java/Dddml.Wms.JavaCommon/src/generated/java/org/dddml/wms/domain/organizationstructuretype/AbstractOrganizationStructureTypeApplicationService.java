@@ -138,7 +138,7 @@ public abstract class AbstractOrganizationStructureTypeApplicationService implem
     }
 
     public void initialize(OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateCreated stateCreated) {
-        String aggregateId = stateCreated.getStateEventId().getId();
+        String aggregateId = stateCreated.getOrganizationStructureTypeEventId().getId();
         OrganizationStructureTypeState state = new AbstractOrganizationStructureTypeState.SimpleOrganizationStructureTypeState();
         state.setId(aggregateId);
 
@@ -146,7 +146,7 @@ public abstract class AbstractOrganizationStructureTypeApplicationService implem
         ((AbstractOrganizationStructureTypeAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getStateEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, stateCreated.getOrganizationStructureTypeEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(OrganizationStructureTypeCommand command, EventStoreAggregateId eventStoreAggregateId, OrganizationStructureTypeState state)

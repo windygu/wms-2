@@ -13,7 +13,7 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 {
 	public interface IOrganizationStructureTypeStateEvent : IEvent, IStateEventDto, IGlobalIdentity<OrganizationStructureTypeEventId>, ICreated<string>
 	{
-		OrganizationStructureTypeEventId StateEventId { get; }
+		OrganizationStructureTypeEventId OrganizationStructureTypeEventId { get; }
 
         bool ReadOnly { get; set; }
 

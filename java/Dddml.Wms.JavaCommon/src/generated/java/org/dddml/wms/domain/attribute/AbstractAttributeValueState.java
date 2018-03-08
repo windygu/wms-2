@@ -291,14 +291,14 @@ public abstract class AbstractAttributeValueState implements AttributeValueState
     protected void throwOnWrongEvent(AttributeValueStateEvent stateEvent)
     {
         String stateEntityIdAttributeId = this.getAttributeValueId().getAttributeId();
-        String eventEntityIdAttributeId = stateEvent.getStateEventId().getAttributeId();
+        String eventEntityIdAttributeId = stateEvent.getAttributeValueEventId().getAttributeId();
         if (!stateEntityIdAttributeId.equals(eventEntityIdAttributeId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id AttributeId %1$s in state but entity id AttributeId %2$s in event", stateEntityIdAttributeId, eventEntityIdAttributeId);
         }
 
         String stateEntityIdValue = this.getAttributeValueId().getValue();
-        String eventEntityIdValue = stateEvent.getStateEventId().getValue();
+        String eventEntityIdValue = stateEvent.getAttributeValueEventId().getValue();
         if (!stateEntityIdValue.equals(eventEntityIdValue))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id Value %1$s in state but entity id Value %2$s in event", stateEntityIdValue, eventEntityIdValue);

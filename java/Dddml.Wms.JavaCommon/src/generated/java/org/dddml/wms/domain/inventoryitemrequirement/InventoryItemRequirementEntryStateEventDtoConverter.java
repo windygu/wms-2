@@ -21,7 +21,7 @@ public class InventoryItemRequirementEntryStateEventDtoConverter {
 
     public InventoryItemRequirementEntryStateEventDto.InventoryItemRequirementEntryStateCreatedDto toInventoryItemRequirementEntryStateCreatedDto(InventoryItemRequirementEntryStateEvent.InventoryItemRequirementEntryStateCreated e) {
         InventoryItemRequirementEntryStateEventDto.InventoryItemRequirementEntryStateCreatedDto dto = new InventoryItemRequirementEntryStateEventDto.InventoryItemRequirementEntryStateCreatedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setInventoryItemRequirementEntryEventId(e.getInventoryItemRequirementEntryEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setVersion(e.getVersion());

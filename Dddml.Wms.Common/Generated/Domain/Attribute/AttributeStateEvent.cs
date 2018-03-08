@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.Attribute
 	public abstract class AttributeStateEventBase : IAttributeStateEvent
 	{
 
-		public virtual AttributeEventId StateEventId { get; set; }
+		public virtual AttributeEventId AttributeEventId { get; set; }
 
         public virtual string AttributeId
         {
-            get { return StateEventId.AttributeId; }
-            set { StateEventId.AttributeId = value; }
+            get { return AttributeEventId.AttributeId; }
+            set { AttributeEventId.AttributeId = value; }
         }
 
 		public virtual string AttributeName { get; set; }
@@ -54,7 +54,7 @@ namespace Dddml.Wms.Domain.Attribute
 		AttributeEventId IGlobalIdentity<AttributeEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.AttributeEventId;
 			}
 		}
 
@@ -97,7 +97,7 @@ namespace Dddml.Wms.Domain.Attribute
 
         protected AttributeStateEventBase(AttributeEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.AttributeEventId = stateEventId;
         }
 
 		protected IAttributeValueStateEventDao AttributeValueStateEventDao
@@ -107,7 +107,7 @@ namespace Dddml.Wms.Domain.Attribute
 
         protected AttributeValueEventId NewAttributeValueEventId(string value)
         {
-            var stateEventId = new AttributeValueEventId(this.StateEventId.AttributeId, value, this.StateEventId.Version);
+            var stateEventId = new AttributeValueEventId(this.AttributeEventId.AttributeId, value, this.AttributeEventId.Version);
             return stateEventId;
         }
 
@@ -119,10 +119,10 @@ namespace Dddml.Wms.Domain.Attribute
 
 		public static void ThrowOnInconsistentEventIds(IAttributeStateEvent oe, IAttributeValueStateEvent e)
 		{
-			if (!oe.StateEventId.AttributeId.Equals(e.StateEventId.AttributeId))
+			if (!oe.AttributeEventId.AttributeId.Equals(e.AttributeValueEventId.AttributeId))
 			{ 
 				throw DomainError.Named("inconsistentEventIds", "Outer Id AttributeId {0} but inner id AttributeId {1}", 
-					oe.StateEventId.AttributeId, e.StateEventId.AttributeId);
+					oe.AttributeEventId.AttributeId, e.AttributeValueEventId.AttributeId);
 			}
 		}
 
@@ -134,7 +134,7 @@ namespace Dddml.Wms.Domain.Attribute
 
         protected AttributeAliasEventId NewAttributeAliasEventId(string code)
         {
-            var stateEventId = new AttributeAliasEventId(this.StateEventId.AttributeId, code, this.StateEventId.Version);
+            var stateEventId = new AttributeAliasEventId(this.AttributeEventId.AttributeId, code, this.AttributeEventId.Version);
             return stateEventId;
         }
 
@@ -146,10 +146,10 @@ namespace Dddml.Wms.Domain.Attribute
 
 		public static void ThrowOnInconsistentEventIds(IAttributeStateEvent oe, IAttributeAliasStateEvent e)
 		{
-			if (!oe.StateEventId.AttributeId.Equals(e.StateEventId.AttributeId))
+			if (!oe.AttributeEventId.AttributeId.Equals(e.AttributeAliasEventId.AttributeId))
 			{ 
 				throw DomainError.Named("inconsistentEventIds", "Outer Id AttributeId {0} but inner id AttributeId {1}", 
-					oe.StateEventId.AttributeId, e.StateEventId.AttributeId);
+					oe.AttributeEventId.AttributeId, e.AttributeAliasEventId.AttributeId);
 			}
 		}
 
@@ -191,7 +191,7 @@ namespace Dddml.Wms.Domain.Attribute
                     if (_readOnlyAttributeValueEvents != null) { return _readOnlyAttributeValueEvents; }
                     var eventDao = AttributeValueStateEventDao;
                     var eL = new List<IAttributeValueStateCreated>();
-                    foreach (var e in eventDao.FindByAttributeEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByAttributeEventId(this.AttributeEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IAttributeValueStateCreated)e);
@@ -215,7 +215,7 @@ namespace Dddml.Wms.Domain.Attribute
 		public virtual void AddAttributeValueEvent(IAttributeValueStateCreated e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._attributeValueEvents[e.StateEventId] = e;
+			this._attributeValueEvents[e.AttributeValueEventId] = e;
 		}
 
         public virtual IAttributeValueStateCreated NewAttributeValueStateCreated(string value)
@@ -241,7 +241,7 @@ namespace Dddml.Wms.Domain.Attribute
                     if (_readOnlyAttributeAliasEvents != null) { return _readOnlyAttributeAliasEvents; }
                     var eventDao = AttributeAliasStateEventDao;
                     var eL = new List<IAttributeAliasStateCreated>();
-                    foreach (var e in eventDao.FindByAttributeEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByAttributeEventId(this.AttributeEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IAttributeAliasStateCreated)e);
@@ -265,7 +265,7 @@ namespace Dddml.Wms.Domain.Attribute
 		public virtual void AddAttributeAliasEvent(IAttributeAliasStateCreated e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._attributeAliasEvents[e.StateEventId] = e;
+			this._attributeAliasEvents[e.AttributeAliasEventId] = e;
 		}
 
         public virtual IAttributeAliasStateCreated NewAttributeAliasStateCreated(string code)
@@ -340,7 +340,7 @@ namespace Dddml.Wms.Domain.Attribute
                     if (_readOnlyAttributeValueEvents != null) { return _readOnlyAttributeValueEvents; }
                     var eventDao = AttributeValueStateEventDao;
                     var eL = new List<IAttributeValueStateEvent>();
-                    foreach (var e in eventDao.FindByAttributeEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByAttributeEventId(this.AttributeEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IAttributeValueStateEvent)e);
@@ -364,7 +364,7 @@ namespace Dddml.Wms.Domain.Attribute
 		public virtual void AddAttributeValueEvent(IAttributeValueStateEvent e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._attributeValueEvents[e.StateEventId] = e;
+			this._attributeValueEvents[e.AttributeValueEventId] = e;
 		}
 
         public virtual IAttributeValueStateCreated NewAttributeValueStateCreated(string value)
@@ -402,7 +402,7 @@ namespace Dddml.Wms.Domain.Attribute
                     if (_readOnlyAttributeAliasEvents != null) { return _readOnlyAttributeAliasEvents; }
                     var eventDao = AttributeAliasStateEventDao;
                     var eL = new List<IAttributeAliasStateEvent>();
-                    foreach (var e in eventDao.FindByAttributeEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByAttributeEventId(this.AttributeEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IAttributeAliasStateEvent)e);
@@ -426,7 +426,7 @@ namespace Dddml.Wms.Domain.Attribute
 		public virtual void AddAttributeAliasEvent(IAttributeAliasStateEvent e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._attributeAliasEvents[e.StateEventId] = e;
+			this._attributeAliasEvents[e.AttributeAliasEventId] = e;
 		}
 
         public virtual IAttributeAliasStateCreated NewAttributeAliasStateCreated(string code)
@@ -497,7 +497,7 @@ namespace Dddml.Wms.Domain.Attribute
                     if (_readOnlyAttributeValueEvents != null) { return _readOnlyAttributeValueEvents; }
                     var eventDao = AttributeValueStateEventDao;
                     var eL = new List<IAttributeValueStateRemoved>();
-                    foreach (var e in eventDao.FindByAttributeEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByAttributeEventId(this.AttributeEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IAttributeValueStateRemoved)e);
@@ -521,7 +521,7 @@ namespace Dddml.Wms.Domain.Attribute
 		public virtual void AddAttributeValueEvent(IAttributeValueStateRemoved e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._attributeValueEvents[e.StateEventId] = e;
+			this._attributeValueEvents[e.AttributeValueEventId] = e;
 		}
 
         public virtual IAttributeValueStateRemoved NewAttributeValueStateRemoved(string value)
@@ -547,7 +547,7 @@ namespace Dddml.Wms.Domain.Attribute
                     if (_readOnlyAttributeAliasEvents != null) { return _readOnlyAttributeAliasEvents; }
                     var eventDao = AttributeAliasStateEventDao;
                     var eL = new List<IAttributeAliasStateRemoved>();
-                    foreach (var e in eventDao.FindByAttributeEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByAttributeEventId(this.AttributeEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IAttributeAliasStateRemoved)e);
@@ -571,7 +571,7 @@ namespace Dddml.Wms.Domain.Attribute
 		public virtual void AddAttributeAliasEvent(IAttributeAliasStateRemoved e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._attributeAliasEvents[e.StateEventId] = e;
+			this._attributeAliasEvents[e.AttributeAliasEventId] = e;
 		}
 
         public virtual IAttributeAliasStateRemoved NewAttributeAliasStateRemoved(string code)

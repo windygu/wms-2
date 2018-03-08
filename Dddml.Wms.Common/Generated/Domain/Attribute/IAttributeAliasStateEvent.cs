@@ -13,7 +13,7 @@ namespace Dddml.Wms.Domain.Attribute
 {
 	public interface IAttributeAliasStateEvent : IEvent, IStateEventDto, IGlobalIdentity<AttributeAliasEventId>, ICreated<string>
 	{
-		AttributeAliasEventId StateEventId { get; }
+		AttributeAliasEventId AttributeAliasEventId { get; }
 
         bool ReadOnly { get; set; }
 

@@ -59,7 +59,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
         public virtual void Initialize(IMovementConfirmationStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.DocumentNumber;
+            var aggregateId = stateCreated.MovementConfirmationEventId.DocumentNumber;
             var state = new MovementConfirmationState();
             state.DocumentNumber = aggregateId;
             var aggregate = (MovementConfirmationAggregate)GetMovementConfirmationAggregate(state);

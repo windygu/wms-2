@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionField
         {
             if (events != null && events.Count() > 0)
             {
-                this.Name = ((IAttributeSetInstanceExtensionFieldStateEvent)events.First()).StateEventId.Name;
+                this.Name = ((IAttributeSetInstanceExtensionFieldStateEvent)events.First()).AttributeSetInstanceExtensionFieldEventId.Name;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -301,7 +301,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionField
             id.Append("[").Append("AttributeSetInstanceExtensionField|");
 
             var stateEntityId = this.Name; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.Name;
+            var eventEntityId = stateEvent.AttributeSetInstanceExtensionFieldEventId.Name;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -311,7 +311,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionField
             id.Append("]");
 
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.StateEventId.Version;
+            var eventVersion = stateEvent.AttributeSetInstanceExtensionFieldEventId.Version;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

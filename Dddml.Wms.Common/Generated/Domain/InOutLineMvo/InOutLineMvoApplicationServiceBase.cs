@@ -60,7 +60,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
         public virtual void Initialize(IInOutLineMvoStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.InOutLineId;
+            var aggregateId = stateCreated.InOutLineMvoEventId.InOutLineId;
             var state = new InOutLineMvoState();
             state.InOutLineId = aggregateId;
             var aggregate = (InOutLineMvoAggregate)GetInOutLineMvoAggregate(state);

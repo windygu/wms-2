@@ -317,14 +317,14 @@ public abstract class AbstractPhysicalInventoryLineState implements PhysicalInve
     protected void throwOnWrongEvent(PhysicalInventoryLineStateEvent stateEvent)
     {
         String stateEntityIdPhysicalInventoryDocumentNumber = this.getPhysicalInventoryLineId().getPhysicalInventoryDocumentNumber();
-        String eventEntityIdPhysicalInventoryDocumentNumber = stateEvent.getStateEventId().getPhysicalInventoryDocumentNumber();
+        String eventEntityIdPhysicalInventoryDocumentNumber = stateEvent.getPhysicalInventoryLineEventId().getPhysicalInventoryDocumentNumber();
         if (!stateEntityIdPhysicalInventoryDocumentNumber.equals(eventEntityIdPhysicalInventoryDocumentNumber))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id PhysicalInventoryDocumentNumber %1$s in state but entity id PhysicalInventoryDocumentNumber %2$s in event", stateEntityIdPhysicalInventoryDocumentNumber, eventEntityIdPhysicalInventoryDocumentNumber);
         }
 
         InventoryItemId stateEntityIdInventoryItemId = this.getPhysicalInventoryLineId().getInventoryItemId();
-        InventoryItemId eventEntityIdInventoryItemId = stateEvent.getStateEventId().getInventoryItemId();
+        InventoryItemId eventEntityIdInventoryItemId = stateEvent.getPhysicalInventoryLineEventId().getInventoryItemId();
         if (!stateEntityIdInventoryItemId.equals(eventEntityIdInventoryItemId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id InventoryItemId %1$s in state but entity id InventoryItemId %2$s in event", stateEntityIdInventoryItemId, eventEntityIdInventoryItemId);

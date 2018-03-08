@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.User
 	public abstract class UserClaimStateEventBase : IUserClaimStateEvent
 	{
 
-		public virtual UserClaimEventId StateEventId { get; set; }
+		public virtual UserClaimEventId UserClaimEventId { get; set; }
 
         public virtual int ClaimId
         {
-            get { return StateEventId.ClaimId; }
-            set { StateEventId.ClaimId = value; }
+            get { return UserClaimEventId.ClaimId; }
+            set { UserClaimEventId.ClaimId = value; }
         }
 
 		public virtual string ClaimType { get; set; }
@@ -40,7 +40,7 @@ namespace Dddml.Wms.Domain.User
 		UserClaimEventId IGlobalIdentity<UserClaimEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.UserClaimEventId;
 			}
 		}
 
@@ -85,7 +85,7 @@ namespace Dddml.Wms.Domain.User
 
         protected UserClaimStateEventBase(UserClaimEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.UserClaimEventId = stateEventId;
         }
 
 

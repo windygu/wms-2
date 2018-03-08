@@ -417,7 +417,7 @@ public abstract class AbstractOrderState implements OrderState, Saveable
     public AbstractOrderState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setOrderId(((OrderStateEvent) events.get(0)).getStateEventId().getOrderId());
+            this.setOrderId(((OrderStateEvent) events.get(0)).getOrderEventId().getOrderId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -486,7 +486,7 @@ public abstract class AbstractOrderState implements OrderState, Saveable
         this.setCreatedAt(e.getCreatedAt());
 
         for (OrderItemStateEvent.OrderItemStateCreated innerEvent : e.getOrderItemEvents()) {
-            OrderItemState innerState = this.getOrderItems().get(innerEvent.getStateEventId().getOrderItemSeqId());
+            OrderItemState innerState = this.getOrderItems().get(innerEvent.getOrderItemEventId().getOrderItemSeqId());
             innerState.mutate(innerEvent);
         }
     }
@@ -775,7 +775,7 @@ public abstract class AbstractOrderState implements OrderState, Saveable
         this.setUpdatedAt(e.getCreatedAt());
 
         for (OrderItemStateEvent innerEvent : e.getOrderItemEvents()) {
-            OrderItemState innerState = this.getOrderItems().get(innerEvent.getStateEventId().getOrderItemSeqId());
+            OrderItemState innerState = this.getOrderItems().get(innerEvent.getOrderItemEventId().getOrderItemSeqId());
             innerState.mutate(innerEvent);
         }
     }
@@ -789,16 +789,16 @@ public abstract class AbstractOrderState implements OrderState, Saveable
     protected void throwOnWrongEvent(OrderStateEvent stateEvent)
     {
         String stateEntityId = this.getOrderId(); // Aggregate Id
-        String eventEntityId = stateEvent.getStateEventId().getOrderId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        String eventEntityId = stateEvent.getOrderEventId().getOrderId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getStateEventId().getVersion();// Aggregate Version
+        Long eventVersion = stateEvent.getOrderEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getStateEventId().getVersion() == null");
+            throw new NullPointerException("stateEvent.getOrderEventId().getVersion() == null");
         }
         if (!(stateVersion == null && eventVersion.equals(OrderState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
         {

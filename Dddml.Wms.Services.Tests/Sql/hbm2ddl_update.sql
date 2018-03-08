@@ -1,6 +1,4 @@
 
-    alter table AttributeSetInstances 
-        add column Deleted TINYINT(1);
     create table AttributeValue_RV (
         AttributeValueIdAttributeId VARCHAR(50) not null,
        AttributeValueIdValue VARCHAR(50) not null,
@@ -89,24 +87,6 @@
        UpdatedAt DATETIME,
        primary key (AttributeSetAttributeUseIdAttributeSetId, AttributeSetAttributeUseIdAttributeId)
     );
-    alter table InventoryItemEntries 
-        add column Deleted TINYINT(1);
-    alter table InventoryItemRequirementEntries 
-        add column Deleted TINYINT(1);
-    alter table PhysicalInventories 
-        add column LocatorIdPattern VARCHAR(255);
-    alter table PhysicalInventories 
-        add column ProductIdPattern VARCHAR(60);
-    alter table PhysicalInventoryStateEvents 
-        add column LocatorIdPattern VARCHAR(255);
-    alter table PhysicalInventoryStateEvents 
-        add column ProductIdPattern VARCHAR(60);
-    alter table PhysicalInventoryStateEvents 
-        add column IsPropertyLocatorIdPatternRemoved TINYINT(1);
-    alter table PhysicalInventoryStateEvents 
-        add column IsPropertyProductIdPatternRemoved TINYINT(1);
-    alter table SellableInventoryItemEntries 
-        add column Deleted TINYINT(1);
     create table InOutLine_RV (
         InOutLineIdInOutDocumentNumber VARCHAR(50) not null,
        InOutLineIdLineNumber VARCHAR(50) not null,
@@ -417,14 +397,6 @@
        UpdatedAt DATETIME,
        primary key (PhysicalInventoryLineIdPhysicalInventoryDocumentNumber, ProductId, LocatorId, AttributeSetInstanceId)
     );
-    alter table PhysicalInventoryLineMvoStateEvents 
-        add column PhysicalInventoryLocatorIdPattern VARCHAR(255);
-    alter table PhysicalInventoryLineMvoStateEvents 
-        add column PhysicalInventoryProductIdPattern VARCHAR(60);
-    alter table PhysicalInventoryLineMvoStateEvents 
-        add column IsPropertyPhysicalInventoryLocatorIdPatternRemoved TINYINT(1);
-    alter table PhysicalInventoryLineMvoStateEvents 
-        add column IsPropertyPhysicalInventoryProductIdPatternRemoved TINYINT(1);
     create table SellableInventoryItemEntry_RV (
         ProductId VARCHAR(60) not null,
        LocatorId VARCHAR(50) not null,

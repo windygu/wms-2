@@ -39,9 +39,9 @@ namespace Dddml.Wms.Domain.Role.NHibernate
             }
             string idObj = (string)(eventStoreAggregateId as EventStoreAggregateId).Id;
             var criteria = CurrentSession.CreateCriteria<RoleStateEventBase>();
-            criteria.Add(Restrictions.Eq("StateEventId.RoleId", idObj));
-            criteria.Add(Restrictions.Le("StateEventId.Version", version));
-            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.Version"));
+            criteria.Add(Restrictions.Eq("RoleEventId.RoleId", idObj));
+            criteria.Add(Restrictions.Le("RoleEventId.Version", version));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("RoleEventId.Version"));
             var es = criteria.List<IEvent>();
             foreach (RoleStateEventBase e in es)
             {
@@ -49,7 +49,7 @@ namespace Dddml.Wms.Domain.Role.NHibernate
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((RoleStateEventBase)es.Last()).StateEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((RoleStateEventBase)es.Last()).RoleEventId.Version : default(long),
                 Events = es
             };
         }

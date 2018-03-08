@@ -24,7 +24,7 @@ public class OrganizationStructureTypeStateEventDtoConverter {
 
     public OrganizationStructureTypeStateEventDto.OrganizationStructureTypeStateCreatedDto toOrganizationStructureTypeStateCreatedDto(OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateCreated e) {
         OrganizationStructureTypeStateEventDto.OrganizationStructureTypeStateCreatedDto dto = new OrganizationStructureTypeStateEventDto.OrganizationStructureTypeStateCreatedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setOrganizationStructureTypeEventId(e.getOrganizationStructureTypeEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -35,7 +35,7 @@ public class OrganizationStructureTypeStateEventDtoConverter {
 
     public OrganizationStructureTypeStateEventDto.OrganizationStructureTypeStateMergePatchedDto toOrganizationStructureTypeStateMergePatchedDto(OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateMergePatched e) {
         OrganizationStructureTypeStateEventDto.OrganizationStructureTypeStateMergePatchedDto dto = new OrganizationStructureTypeStateEventDto.OrganizationStructureTypeStateMergePatchedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setOrganizationStructureTypeEventId(e.getOrganizationStructureTypeEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -49,7 +49,7 @@ public class OrganizationStructureTypeStateEventDtoConverter {
 
     public OrganizationStructureTypeStateEventDto.OrganizationStructureTypeStateDeletedDto toOrganizationStructureTypeStateDeletedDto(OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateDeleted e) {
         OrganizationStructureTypeStateEventDto.OrganizationStructureTypeStateDeletedDto dto = new OrganizationStructureTypeStateEventDto.OrganizationStructureTypeStateDeletedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setOrganizationStructureTypeEventId(e.getOrganizationStructureTypeEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());

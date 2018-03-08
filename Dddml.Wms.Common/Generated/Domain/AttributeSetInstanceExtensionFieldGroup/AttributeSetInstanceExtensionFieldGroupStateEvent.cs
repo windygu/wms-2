@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 	public abstract class AttributeSetInstanceExtensionFieldGroupStateEventBase : IAttributeSetInstanceExtensionFieldGroupStateEvent
 	{
 
-		public virtual AttributeSetInstanceExtensionFieldGroupEventId StateEventId { get; set; }
+		public virtual AttributeSetInstanceExtensionFieldGroupEventId AttributeSetInstanceExtensionFieldGroupEventId { get; set; }
 
         public virtual string Id
         {
-            get { return StateEventId.Id; }
-            set { StateEventId.Id = value; }
+            get { return AttributeSetInstanceExtensionFieldGroupEventId.Id; }
+            set { AttributeSetInstanceExtensionFieldGroupEventId.Id = value; }
         }
 
 		public virtual string FieldType { get; set; }
@@ -46,7 +46,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 		AttributeSetInstanceExtensionFieldGroupEventId IGlobalIdentity<AttributeSetInstanceExtensionFieldGroupEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.AttributeSetInstanceExtensionFieldGroupEventId;
 			}
 		}
 
@@ -89,7 +89,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 
         protected AttributeSetInstanceExtensionFieldGroupStateEventBase(AttributeSetInstanceExtensionFieldGroupEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.AttributeSetInstanceExtensionFieldGroupEventId = stateEventId;
         }
 
 

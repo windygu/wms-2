@@ -8,22 +8,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractProductCategoryStateEvent extends AbstractStateEvent implements ProductCategoryStateEvent 
 {
-    private ProductCategoryEventId stateEventId;
+    private ProductCategoryEventId productCategoryEventId;
 
-    public ProductCategoryEventId getStateEventId() {
-        return this.stateEventId;
+    public ProductCategoryEventId getProductCategoryEventId() {
+        return this.productCategoryEventId;
     }
 
-    public void setStateEventId(ProductCategoryEventId eventId) {
-        this.stateEventId = eventId;
+    public void setProductCategoryEventId(ProductCategoryEventId eventId) {
+        this.productCategoryEventId = eventId;
     }
     
     public String getProductCategoryId() {
-        return getStateEventId().getProductCategoryId();
+        return getProductCategoryEventId().getProductCategoryId();
     }
 
     public void setProductCategoryId(String productCategoryId) {
-        getStateEventId().setProductCategoryId(productCategoryId);
+        getProductCategoryEventId().setProductCategoryId(productCategoryId);
     }
 
     private boolean stateEventReadOnly;
@@ -179,7 +179,7 @@ public abstract class AbstractProductCategoryStateEvent extends AbstractStateEve
     }
 
     protected AbstractProductCategoryStateEvent(ProductCategoryEventId eventId) {
-        this.stateEventId = eventId;
+        this.productCategoryEventId = eventId;
     }
 
 

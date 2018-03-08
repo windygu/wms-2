@@ -5,7 +5,7 @@
   
   <class name="UserStateEventBase" table="UserStateEvents" mutable="false" abstract="true">
 
-    <composite-id name="StateEventId" class="Dddml.Wms.Domain.User.UserEventId">
+    <composite-id name="UserEventId" class="Dddml.Wms.Domain.User.UserEventId">
         <key-property name="UserId" ><column name="UserId" length="50" /></key-property>
         <key-property name="Version" ></key-property>
     </composite-id>

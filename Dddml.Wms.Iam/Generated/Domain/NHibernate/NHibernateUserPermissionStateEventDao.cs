@@ -43,8 +43,8 @@ namespace Dddml.Wms.Domain.User.NHibernate
         {
             var criteria = CurrentSession.CreateCriteria<UserPermissionStateEventBase>();
             var partIdCondition = Restrictions.Conjunction()
-                .Add(Restrictions.Eq("StateEventId.UserId", userEventId.UserId))
-                .Add(Restrictions.Eq("StateEventId.UserVersion", userEventId.Version))
+                .Add(Restrictions.Eq("UserPermissionEventId.UserId", userEventId.UserId))
+                .Add(Restrictions.Eq("UserPermissionEventId.UserVersion", userEventId.Version))
                 ;
 
             return criteria.Add(partIdCondition).List<UserPermissionStateEventBase>();

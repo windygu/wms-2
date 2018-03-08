@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.User
 	public abstract class UserStateEventBase : IUserStateEvent
 	{
 
-		public virtual UserEventId StateEventId { get; set; }
+		public virtual UserEventId UserEventId { get; set; }
 
         public virtual string UserId
         {
-            get { return StateEventId.UserId; }
-            set { StateEventId.UserId = value; }
+            get { return UserEventId.UserId; }
+            set { UserEventId.UserId = value; }
         }
 
 		public virtual string UserName { get; set; }
@@ -58,7 +58,7 @@ namespace Dddml.Wms.Domain.User
 		UserEventId IGlobalIdentity<UserEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.UserEventId;
 			}
 		}
 
@@ -101,7 +101,7 @@ namespace Dddml.Wms.Domain.User
 
         protected UserStateEventBase(UserEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.UserEventId = stateEventId;
         }
 
 		protected IUserRoleStateEventDao UserRoleStateEventDao
@@ -111,7 +111,7 @@ namespace Dddml.Wms.Domain.User
 
         protected UserRoleEventId NewUserRoleEventId(string roleId)
         {
-            var stateEventId = new UserRoleEventId(this.StateEventId.UserId, roleId, this.StateEventId.Version);
+            var stateEventId = new UserRoleEventId(this.UserEventId.UserId, roleId, this.UserEventId.Version);
             return stateEventId;
         }
 
@@ -123,10 +123,10 @@ namespace Dddml.Wms.Domain.User
 
 		public static void ThrowOnInconsistentEventIds(IUserStateEvent oe, IUserRoleStateEvent e)
 		{
-			if (!oe.StateEventId.UserId.Equals(e.StateEventId.UserId))
+			if (!oe.UserEventId.UserId.Equals(e.UserRoleEventId.UserId))
 			{ 
 				throw DomainError.Named("inconsistentEventIds", "Outer Id UserId {0} but inner id UserId {1}", 
-					oe.StateEventId.UserId, e.StateEventId.UserId);
+					oe.UserEventId.UserId, e.UserRoleEventId.UserId);
 			}
 		}
 
@@ -138,7 +138,7 @@ namespace Dddml.Wms.Domain.User
 
         protected UserClaimEventId NewUserClaimEventId(int claimId)
         {
-            var stateEventId = new UserClaimEventId(this.StateEventId.UserId, claimId, this.StateEventId.Version);
+            var stateEventId = new UserClaimEventId(this.UserEventId.UserId, claimId, this.UserEventId.Version);
             return stateEventId;
         }
 
@@ -150,10 +150,10 @@ namespace Dddml.Wms.Domain.User
 
 		public static void ThrowOnInconsistentEventIds(IUserStateEvent oe, IUserClaimStateEvent e)
 		{
-			if (!oe.StateEventId.UserId.Equals(e.StateEventId.UserId))
+			if (!oe.UserEventId.UserId.Equals(e.UserClaimEventId.UserId))
 			{ 
 				throw DomainError.Named("inconsistentEventIds", "Outer Id UserId {0} but inner id UserId {1}", 
-					oe.StateEventId.UserId, e.StateEventId.UserId);
+					oe.UserEventId.UserId, e.UserClaimEventId.UserId);
 			}
 		}
 
@@ -165,7 +165,7 @@ namespace Dddml.Wms.Domain.User
 
         protected UserPermissionEventId NewUserPermissionEventId(string permissionId)
         {
-            var stateEventId = new UserPermissionEventId(this.StateEventId.UserId, permissionId, this.StateEventId.Version);
+            var stateEventId = new UserPermissionEventId(this.UserEventId.UserId, permissionId, this.UserEventId.Version);
             return stateEventId;
         }
 
@@ -177,10 +177,10 @@ namespace Dddml.Wms.Domain.User
 
 		public static void ThrowOnInconsistentEventIds(IUserStateEvent oe, IUserPermissionStateEvent e)
 		{
-			if (!oe.StateEventId.UserId.Equals(e.StateEventId.UserId))
+			if (!oe.UserEventId.UserId.Equals(e.UserPermissionEventId.UserId))
 			{ 
 				throw DomainError.Named("inconsistentEventIds", "Outer Id UserId {0} but inner id UserId {1}", 
-					oe.StateEventId.UserId, e.StateEventId.UserId);
+					oe.UserEventId.UserId, e.UserPermissionEventId.UserId);
 			}
 		}
 
@@ -192,7 +192,7 @@ namespace Dddml.Wms.Domain.User
 
         protected UserLoginEventId NewUserLoginEventId(LoginKey loginKey)
         {
-            var stateEventId = new UserLoginEventId(this.StateEventId.UserId, loginKey, this.StateEventId.Version);
+            var stateEventId = new UserLoginEventId(this.UserEventId.UserId, loginKey, this.UserEventId.Version);
             return stateEventId;
         }
 
@@ -204,10 +204,10 @@ namespace Dddml.Wms.Domain.User
 
 		public static void ThrowOnInconsistentEventIds(IUserStateEvent oe, IUserLoginStateEvent e)
 		{
-			if (!oe.StateEventId.UserId.Equals(e.StateEventId.UserId))
+			if (!oe.UserEventId.UserId.Equals(e.UserLoginEventId.UserId))
 			{ 
 				throw DomainError.Named("inconsistentEventIds", "Outer Id UserId {0} but inner id UserId {1}", 
-					oe.StateEventId.UserId, e.StateEventId.UserId);
+					oe.UserEventId.UserId, e.UserLoginEventId.UserId);
 			}
 		}
 
@@ -249,7 +249,7 @@ namespace Dddml.Wms.Domain.User
                     if (_readOnlyUserRoleEvents != null) { return _readOnlyUserRoleEvents; }
                     var eventDao = UserRoleStateEventDao;
                     var eL = new List<IUserRoleStateCreated>();
-                    foreach (var e in eventDao.FindByUserEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByUserEventId(this.UserEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IUserRoleStateCreated)e);
@@ -273,7 +273,7 @@ namespace Dddml.Wms.Domain.User
 		public virtual void AddUserRoleEvent(IUserRoleStateCreated e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._userRoleEvents[e.StateEventId] = e;
+			this._userRoleEvents[e.UserRoleEventId] = e;
 		}
 
         public virtual IUserRoleStateCreated NewUserRoleStateCreated(string roleId)
@@ -299,7 +299,7 @@ namespace Dddml.Wms.Domain.User
                     if (_readOnlyUserClaimEvents != null) { return _readOnlyUserClaimEvents; }
                     var eventDao = UserClaimStateEventDao;
                     var eL = new List<IUserClaimStateCreated>();
-                    foreach (var e in eventDao.FindByUserEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByUserEventId(this.UserEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IUserClaimStateCreated)e);
@@ -323,7 +323,7 @@ namespace Dddml.Wms.Domain.User
 		public virtual void AddUserClaimEvent(IUserClaimStateCreated e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._userClaimEvents[e.StateEventId] = e;
+			this._userClaimEvents[e.UserClaimEventId] = e;
 		}
 
         public virtual IUserClaimStateCreated NewUserClaimStateCreated(int claimId)
@@ -349,7 +349,7 @@ namespace Dddml.Wms.Domain.User
                     if (_readOnlyUserPermissionEvents != null) { return _readOnlyUserPermissionEvents; }
                     var eventDao = UserPermissionStateEventDao;
                     var eL = new List<IUserPermissionStateCreated>();
-                    foreach (var e in eventDao.FindByUserEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByUserEventId(this.UserEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IUserPermissionStateCreated)e);
@@ -373,7 +373,7 @@ namespace Dddml.Wms.Domain.User
 		public virtual void AddUserPermissionEvent(IUserPermissionStateCreated e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._userPermissionEvents[e.StateEventId] = e;
+			this._userPermissionEvents[e.UserPermissionEventId] = e;
 		}
 
         public virtual IUserPermissionStateCreated NewUserPermissionStateCreated(string permissionId)
@@ -399,7 +399,7 @@ namespace Dddml.Wms.Domain.User
                     if (_readOnlyUserLoginEvents != null) { return _readOnlyUserLoginEvents; }
                     var eventDao = UserLoginStateEventDao;
                     var eL = new List<IUserLoginStateCreated>();
-                    foreach (var e in eventDao.FindByUserEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByUserEventId(this.UserEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IUserLoginStateCreated)e);
@@ -423,7 +423,7 @@ namespace Dddml.Wms.Domain.User
 		public virtual void AddUserLoginEvent(IUserLoginStateCreated e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._userLoginEvents[e.StateEventId] = e;
+			this._userLoginEvents[e.UserLoginEventId] = e;
 		}
 
         public virtual IUserLoginStateCreated NewUserLoginStateCreated(LoginKey loginKey)
@@ -508,7 +508,7 @@ namespace Dddml.Wms.Domain.User
                     if (_readOnlyUserRoleEvents != null) { return _readOnlyUserRoleEvents; }
                     var eventDao = UserRoleStateEventDao;
                     var eL = new List<IUserRoleStateEvent>();
-                    foreach (var e in eventDao.FindByUserEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByUserEventId(this.UserEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IUserRoleStateEvent)e);
@@ -532,7 +532,7 @@ namespace Dddml.Wms.Domain.User
 		public virtual void AddUserRoleEvent(IUserRoleStateEvent e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._userRoleEvents[e.StateEventId] = e;
+			this._userRoleEvents[e.UserRoleEventId] = e;
 		}
 
         public virtual IUserRoleStateCreated NewUserRoleStateCreated(string roleId)
@@ -570,7 +570,7 @@ namespace Dddml.Wms.Domain.User
                     if (_readOnlyUserClaimEvents != null) { return _readOnlyUserClaimEvents; }
                     var eventDao = UserClaimStateEventDao;
                     var eL = new List<IUserClaimStateEvent>();
-                    foreach (var e in eventDao.FindByUserEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByUserEventId(this.UserEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IUserClaimStateEvent)e);
@@ -594,7 +594,7 @@ namespace Dddml.Wms.Domain.User
 		public virtual void AddUserClaimEvent(IUserClaimStateEvent e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._userClaimEvents[e.StateEventId] = e;
+			this._userClaimEvents[e.UserClaimEventId] = e;
 		}
 
         public virtual IUserClaimStateCreated NewUserClaimStateCreated(int claimId)
@@ -632,7 +632,7 @@ namespace Dddml.Wms.Domain.User
                     if (_readOnlyUserPermissionEvents != null) { return _readOnlyUserPermissionEvents; }
                     var eventDao = UserPermissionStateEventDao;
                     var eL = new List<IUserPermissionStateEvent>();
-                    foreach (var e in eventDao.FindByUserEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByUserEventId(this.UserEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IUserPermissionStateEvent)e);
@@ -656,7 +656,7 @@ namespace Dddml.Wms.Domain.User
 		public virtual void AddUserPermissionEvent(IUserPermissionStateEvent e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._userPermissionEvents[e.StateEventId] = e;
+			this._userPermissionEvents[e.UserPermissionEventId] = e;
 		}
 
         public virtual IUserPermissionStateCreated NewUserPermissionStateCreated(string permissionId)
@@ -694,7 +694,7 @@ namespace Dddml.Wms.Domain.User
                     if (_readOnlyUserLoginEvents != null) { return _readOnlyUserLoginEvents; }
                     var eventDao = UserLoginStateEventDao;
                     var eL = new List<IUserLoginStateEvent>();
-                    foreach (var e in eventDao.FindByUserEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByUserEventId(this.UserEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IUserLoginStateEvent)e);
@@ -718,7 +718,7 @@ namespace Dddml.Wms.Domain.User
 		public virtual void AddUserLoginEvent(IUserLoginStateEvent e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._userLoginEvents[e.StateEventId] = e;
+			this._userLoginEvents[e.UserLoginEventId] = e;
 		}
 
         public virtual IUserLoginStateCreated NewUserLoginStateCreated(LoginKey loginKey)
@@ -795,7 +795,7 @@ namespace Dddml.Wms.Domain.User
                     if (_readOnlyUserRoleEvents != null) { return _readOnlyUserRoleEvents; }
                     var eventDao = UserRoleStateEventDao;
                     var eL = new List<IUserRoleStateRemoved>();
-                    foreach (var e in eventDao.FindByUserEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByUserEventId(this.UserEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IUserRoleStateRemoved)e);
@@ -819,7 +819,7 @@ namespace Dddml.Wms.Domain.User
 		public virtual void AddUserRoleEvent(IUserRoleStateRemoved e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._userRoleEvents[e.StateEventId] = e;
+			this._userRoleEvents[e.UserRoleEventId] = e;
 		}
 
         public virtual IUserRoleStateRemoved NewUserRoleStateRemoved(string roleId)
@@ -845,7 +845,7 @@ namespace Dddml.Wms.Domain.User
                     if (_readOnlyUserClaimEvents != null) { return _readOnlyUserClaimEvents; }
                     var eventDao = UserClaimStateEventDao;
                     var eL = new List<IUserClaimStateRemoved>();
-                    foreach (var e in eventDao.FindByUserEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByUserEventId(this.UserEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IUserClaimStateRemoved)e);
@@ -869,7 +869,7 @@ namespace Dddml.Wms.Domain.User
 		public virtual void AddUserClaimEvent(IUserClaimStateRemoved e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._userClaimEvents[e.StateEventId] = e;
+			this._userClaimEvents[e.UserClaimEventId] = e;
 		}
 
         public virtual IUserClaimStateRemoved NewUserClaimStateRemoved(int claimId)
@@ -895,7 +895,7 @@ namespace Dddml.Wms.Domain.User
                     if (_readOnlyUserPermissionEvents != null) { return _readOnlyUserPermissionEvents; }
                     var eventDao = UserPermissionStateEventDao;
                     var eL = new List<IUserPermissionStateRemoved>();
-                    foreach (var e in eventDao.FindByUserEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByUserEventId(this.UserEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IUserPermissionStateRemoved)e);
@@ -919,7 +919,7 @@ namespace Dddml.Wms.Domain.User
 		public virtual void AddUserPermissionEvent(IUserPermissionStateRemoved e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._userPermissionEvents[e.StateEventId] = e;
+			this._userPermissionEvents[e.UserPermissionEventId] = e;
 		}
 
         public virtual IUserPermissionStateRemoved NewUserPermissionStateRemoved(string permissionId)
@@ -945,7 +945,7 @@ namespace Dddml.Wms.Domain.User
                     if (_readOnlyUserLoginEvents != null) { return _readOnlyUserLoginEvents; }
                     var eventDao = UserLoginStateEventDao;
                     var eL = new List<IUserLoginStateRemoved>();
-                    foreach (var e in eventDao.FindByUserEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByUserEventId(this.UserEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IUserLoginStateRemoved)e);
@@ -969,7 +969,7 @@ namespace Dddml.Wms.Domain.User
 		public virtual void AddUserLoginEvent(IUserLoginStateRemoved e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._userLoginEvents[e.StateEventId] = e;
+			this._userLoginEvents[e.UserLoginEventId] = e;
 		}
 
         public virtual IUserLoginStateRemoved NewUserLoginStateRemoved(LoginKey loginKey)

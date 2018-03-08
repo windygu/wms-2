@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.Locator
 	public abstract class LocatorStateEventBase : ILocatorStateEvent
 	{
 
-		public virtual LocatorEventId StateEventId { get; set; }
+		public virtual LocatorEventId LocatorEventId { get; set; }
 
         public virtual string LocatorId
         {
-            get { return StateEventId.LocatorId; }
-            set { StateEventId.LocatorId = value; }
+            get { return LocatorEventId.LocatorId; }
+            set { LocatorEventId.LocatorId = value; }
         }
 
 		public virtual string WarehouseId { get; set; }
@@ -54,7 +54,7 @@ namespace Dddml.Wms.Domain.Locator
 		LocatorEventId IGlobalIdentity<LocatorEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.LocatorEventId;
 			}
 		}
 
@@ -97,7 +97,7 @@ namespace Dddml.Wms.Domain.Locator
 
         protected LocatorStateEventBase(LocatorEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.LocatorEventId = stateEventId;
         }
 
 

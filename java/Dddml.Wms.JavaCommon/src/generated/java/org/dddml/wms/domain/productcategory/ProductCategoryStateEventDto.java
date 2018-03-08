@@ -7,15 +7,15 @@ import org.dddml.wms.domain.AbstractStateEvent;
 public class ProductCategoryStateEventDto extends AbstractStateEvent
 {
 
-    private ProductCategoryEventId stateEventId;
+    private ProductCategoryEventId productCategoryEventId;
 
     ProductCategoryEventId getStateEventId() {
-        if (stateEventId == null) { stateEventId = new ProductCategoryEventId(); }
-        return stateEventId;
+        if (productCategoryEventId == null) { productCategoryEventId = new ProductCategoryEventId(); }
+        return productCategoryEventId;
     }
 
-    void setStateEventId(ProductCategoryEventId eventId) {
-        this.stateEventId = eventId;
+    void setProductCategoryEventId(ProductCategoryEventId eventId) {
+        this.productCategoryEventId = eventId;
     }
 
     public String getProductCategoryId() {

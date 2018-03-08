@@ -41,12 +41,12 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo.NHibernate
             }
             SellableInventoryItemEntryId idObj = (SellableInventoryItemEntryId)(eventStoreAggregateId as EventStoreAggregateId).Id;
             var criteria = CurrentSession.CreateCriteria<SellableInventoryItemEntryMvoStateEventBase>();
-            criteria.Add(Restrictions.Eq("StateEventId.SellableInventoryItemEntryIdSellableInventoryItemIdProductId", idObj.SellableInventoryItemIdProductId));
-            criteria.Add(Restrictions.Eq("StateEventId.SellableInventoryItemEntryIdSellableInventoryItemIdLocatorId", idObj.SellableInventoryItemIdLocatorId));
-            criteria.Add(Restrictions.Eq("StateEventId.SellableInventoryItemEntryIdSellableInventoryItemIdAttributeSetInstanceId", idObj.SellableInventoryItemIdAttributeSetInstanceId));
-            criteria.Add(Restrictions.Eq("StateEventId.SellableInventoryItemEntryIdEntrySeqId", idObj.EntrySeqId));
-            criteria.Add(Restrictions.Le("StateEventId.SellableInventoryItemVersion", version));
-            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.SellableInventoryItemVersion"));
+            criteria.Add(Restrictions.Eq("SellableInventoryItemEntryMvoEventId.SellableInventoryItemEntryIdSellableInventoryItemIdProductId", idObj.SellableInventoryItemIdProductId));
+            criteria.Add(Restrictions.Eq("SellableInventoryItemEntryMvoEventId.SellableInventoryItemEntryIdSellableInventoryItemIdLocatorId", idObj.SellableInventoryItemIdLocatorId));
+            criteria.Add(Restrictions.Eq("SellableInventoryItemEntryMvoEventId.SellableInventoryItemEntryIdSellableInventoryItemIdAttributeSetInstanceId", idObj.SellableInventoryItemIdAttributeSetInstanceId));
+            criteria.Add(Restrictions.Eq("SellableInventoryItemEntryMvoEventId.SellableInventoryItemEntryIdEntrySeqId", idObj.EntrySeqId));
+            criteria.Add(Restrictions.Le("SellableInventoryItemEntryMvoEventId.SellableInventoryItemVersion", version));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("SellableInventoryItemEntryMvoEventId.SellableInventoryItemVersion"));
             var es = criteria.List<IEvent>();
             foreach (SellableInventoryItemEntryMvoStateEventBase e in es)
             {
@@ -54,7 +54,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo.NHibernate
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((SellableInventoryItemEntryMvoStateEventBase)es.Last()).StateEventId.SellableInventoryItemVersion : default(long),
+                SteamVersion = es.Count > 0 ? ((SellableInventoryItemEntryMvoStateEventBase)es.Last()).SellableInventoryItemEntryMvoEventId.SellableInventoryItemVersion : default(long),
                 Events = es
             };
         }

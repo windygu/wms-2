@@ -16,31 +16,31 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 	public abstract class UserLoginMvoStateEventDtoBase : IStateEventDto, IUserLoginMvoStateCreated, IUserLoginMvoStateMergePatched, IUserLoginMvoStateDeleted
 	{
 
-        private UserLoginMvoEventIdDto _stateEventId;
+        private UserLoginMvoEventIdDto _userLoginMvoEventId;
 
-		protected internal virtual UserLoginMvoEventIdDto StateEventId 
+		protected internal virtual UserLoginMvoEventIdDto UserLoginMvoEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new UserLoginMvoEventIdDto(); }
-                return _stateEventId;
+                if (_userLoginMvoEventId == null) { _userLoginMvoEventId = new UserLoginMvoEventIdDto(); }
+                return _userLoginMvoEventId;
             }
             set
             {
-                _stateEventId = value;
+                _userLoginMvoEventId = value;
             }
         }
 
         public virtual UserLoginIdDto UserLoginId
         {
-            get { return StateEventId.UserLoginId; }
-            set { StateEventId.UserLoginId = value; }
+            get { return UserLoginMvoEventId.UserLoginId; }
+            set { UserLoginMvoEventId.UserLoginId = value; }
         }
 
         public virtual long UserVersion
         {
-            get { return StateEventId.UserVersion; }
-            set { StateEventId.UserVersion = value; }
+            get { return UserLoginMvoEventId.UserVersion; }
+            set { UserLoginMvoEventId.UserVersion = value; }
         }
 
 		public virtual long? Version { get; set; }
@@ -92,7 +92,7 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 		UserLoginMvoEventId IGlobalIdentity<UserLoginMvoEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToUserLoginMvoEventId();
+				return this.UserLoginMvoEventId.ToUserLoginMvoEventId();
 			}
 		}
 
@@ -490,9 +490,9 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 		}
 
 
-        UserLoginMvoEventId IUserLoginMvoStateEvent.StateEventId
+        UserLoginMvoEventId IUserLoginMvoStateEvent.UserLoginMvoEventId
         {
-            get { return this.StateEventId.ToUserLoginMvoEventId(); }
+            get { return this.UserLoginMvoEventId.ToUserLoginMvoEventId(); }
         }
 
         protected UserLoginMvoStateEventDtoBase()
@@ -501,7 +501,7 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 
         protected UserLoginMvoStateEventDtoBase(UserLoginMvoEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.UserLoginMvoEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

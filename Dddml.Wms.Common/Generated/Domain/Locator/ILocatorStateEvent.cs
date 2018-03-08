@@ -13,7 +13,7 @@ namespace Dddml.Wms.Domain.Locator
 {
 	public interface ILocatorStateEvent : IEvent, IStateEventDto, IGlobalIdentity<LocatorEventId>, ICreated<string>
 	{
-		LocatorEventId StateEventId { get; }
+		LocatorEventId LocatorEventId { get; }
 
         bool ReadOnly { get; set; }
 

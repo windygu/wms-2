@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
         {
             if (events != null && events.Count() > 0)
             {
-                this.Id = ((IOrganizationStructureTypeStateEvent)events.First()).StateEventId.Id;
+                this.Id = ((IOrganizationStructureTypeStateEvent)events.First()).OrganizationStructureTypeEventId.Id;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -245,7 +245,7 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
             id.Append("[").Append("OrganizationStructureType|");
 
             var stateEntityId = this.Id; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.Id;
+            var eventEntityId = stateEvent.OrganizationStructureTypeEventId.Id;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -255,7 +255,7 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
             id.Append("]");
 
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.StateEventId.Version;
+            var eventVersion = stateEvent.OrganizationStructureTypeEventId.Version;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

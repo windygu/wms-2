@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.Movement
 	public abstract class MovementLineStateEventBase : IMovementLineStateEvent
 	{
 
-		public virtual MovementLineEventId StateEventId { get; set; }
+		public virtual MovementLineEventId MovementLineEventId { get; set; }
 
         public virtual string LineNumber
         {
-            get { return StateEventId.LineNumber; }
-            set { StateEventId.LineNumber = value; }
+            get { return MovementLineEventId.LineNumber; }
+            set { MovementLineEventId.LineNumber = value; }
         }
 
 		public virtual decimal? MovementQuantity { get; set; }
@@ -50,7 +50,7 @@ namespace Dddml.Wms.Domain.Movement
 		MovementLineEventId IGlobalIdentity<MovementLineEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.MovementLineEventId;
 			}
 		}
 
@@ -95,7 +95,7 @@ namespace Dddml.Wms.Domain.Movement
 
         protected MovementLineStateEventBase(MovementLineEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.MovementLineEventId = stateEventId;
         }
 
 

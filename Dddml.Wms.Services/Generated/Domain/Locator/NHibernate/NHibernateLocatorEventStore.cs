@@ -39,9 +39,9 @@ namespace Dddml.Wms.Domain.Locator.NHibernate
             }
             string idObj = (string)(eventStoreAggregateId as EventStoreAggregateId).Id;
             var criteria = CurrentSession.CreateCriteria<LocatorStateEventBase>();
-            criteria.Add(Restrictions.Eq("StateEventId.LocatorId", idObj));
-            criteria.Add(Restrictions.Le("StateEventId.Version", version));
-            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.Version"));
+            criteria.Add(Restrictions.Eq("LocatorEventId.LocatorId", idObj));
+            criteria.Add(Restrictions.Le("LocatorEventId.Version", version));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("LocatorEventId.Version"));
             var es = criteria.List<IEvent>();
             foreach (LocatorStateEventBase e in es)
             {
@@ -49,7 +49,7 @@ namespace Dddml.Wms.Domain.Locator.NHibernate
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((LocatorStateEventBase)es.Last()).StateEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((LocatorStateEventBase)es.Last()).LocatorEventId.Version : default(long),
                 Events = es
             };
         }

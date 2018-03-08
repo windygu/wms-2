@@ -152,7 +152,7 @@ namespace Dddml.Wms.Domain.UserClaimMvo
         {
             if (events != null && events.Count() > 0)
             {
-                this.UserClaimId = ((IUserClaimMvoStateEvent)events.First()).StateEventId.UserClaimId;
+                this.UserClaimId = ((IUserClaimMvoStateEvent)events.First()).UserClaimMvoEventId.UserClaimId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -512,7 +512,7 @@ namespace Dddml.Wms.Domain.UserClaimMvo
             id.Append("[").Append("UserClaimMvo|");
 
             var stateEntityId = this.UserClaimId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.UserClaimId;
+            var eventEntityId = stateEvent.UserClaimMvoEventId.UserClaimId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -522,7 +522,7 @@ namespace Dddml.Wms.Domain.UserClaimMvo
             id.Append("]");
 
             var stateVersion = this.UserVersion;
-            var eventVersion = stateEvent.StateEventId.UserVersion;
+            var eventVersion = stateEvent.UserClaimMvoEventId.UserVersion;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.AttributeSet
 	public abstract class AttributeUseStateEventBase : IAttributeUseStateEvent
 	{
 
-		public virtual AttributeUseEventId StateEventId { get; set; }
+		public virtual AttributeUseEventId AttributeUseEventId { get; set; }
 
         public virtual string AttributeId
         {
-            get { return StateEventId.AttributeId; }
-            set { StateEventId.AttributeId = value; }
+            get { return AttributeUseEventId.AttributeId; }
+            set { AttributeUseEventId.AttributeId = value; }
         }
 
 		public virtual int? SequenceNumber { get; set; }
@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 		AttributeUseEventId IGlobalIdentity<AttributeUseEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.AttributeUseEventId;
 			}
 		}
 
@@ -83,7 +83,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 
         protected AttributeUseStateEventBase(AttributeUseEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.AttributeUseEventId = stateEventId;
         }
 
 

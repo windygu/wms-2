@@ -7,7 +7,7 @@ import org.dddml.wms.specialization.Event;
 
 public interface LocatorStateEvent extends Event
 {
-    LocatorEventId getStateEventId();
+    LocatorEventId getLocatorEventId();
 
     boolean getStateEventReadOnly();
 

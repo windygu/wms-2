@@ -10,22 +10,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractPhysicalInventoryStateEvent extends AbstractStateEvent implements PhysicalInventoryStateEvent 
 {
-    private PhysicalInventoryEventId stateEventId;
+    private PhysicalInventoryEventId physicalInventoryEventId;
 
-    public PhysicalInventoryEventId getStateEventId() {
-        return this.stateEventId;
+    public PhysicalInventoryEventId getPhysicalInventoryEventId() {
+        return this.physicalInventoryEventId;
     }
 
-    public void setStateEventId(PhysicalInventoryEventId eventId) {
-        this.stateEventId = eventId;
+    public void setPhysicalInventoryEventId(PhysicalInventoryEventId eventId) {
+        this.physicalInventoryEventId = eventId;
     }
     
     public String getDocumentNumber() {
-        return getStateEventId().getDocumentNumber();
+        return getPhysicalInventoryEventId().getDocumentNumber();
     }
 
     public void setDocumentNumber(String documentNumber) {
-        getStateEventId().setDocumentNumber(documentNumber);
+        getPhysicalInventoryEventId().setDocumentNumber(documentNumber);
     }
 
     private boolean stateEventReadOnly;
@@ -253,7 +253,7 @@ public abstract class AbstractPhysicalInventoryStateEvent extends AbstractStateE
     }
 
     protected AbstractPhysicalInventoryStateEvent(PhysicalInventoryEventId eventId) {
-        this.stateEventId = eventId;
+        this.physicalInventoryEventId = eventId;
     }
 
     protected PhysicalInventoryLineStateEventDao getPhysicalInventoryLineStateEventDao() {
@@ -262,9 +262,9 @@ public abstract class AbstractPhysicalInventoryStateEvent extends AbstractStateE
 
     protected PhysicalInventoryLineEventId newPhysicalInventoryLineEventId(InventoryItemId inventoryItemId)
     {
-        PhysicalInventoryLineEventId eventId = new PhysicalInventoryLineEventId(this.getStateEventId().getDocumentNumber(), 
+        PhysicalInventoryLineEventId eventId = new PhysicalInventoryLineEventId(this.getPhysicalInventoryEventId().getDocumentNumber(), 
             inventoryItemId, 
-            this.getStateEventId().getVersion());
+            this.getPhysicalInventoryEventId().getVersion());
         return eventId;
     }
 
@@ -275,10 +275,10 @@ public abstract class AbstractPhysicalInventoryStateEvent extends AbstractStateE
 
     public static void throwOnInconsistentEventIds(PhysicalInventoryStateEvent oe, PhysicalInventoryLineStateEvent e)
     {
-        if (!oe.getStateEventId().getDocumentNumber().equals(e.getStateEventId().getPhysicalInventoryDocumentNumber()))
+        if (!oe.getPhysicalInventoryEventId().getDocumentNumber().equals(e.getPhysicalInventoryLineEventId().getPhysicalInventoryDocumentNumber()))
         { 
             throw DomainError.named("inconsistentEventIds", "Outer Id DocumentNumber %1$s but inner id PhysicalInventoryDocumentNumber %2$s", 
-                oe.getStateEventId().getDocumentNumber(), e.getStateEventId().getPhysicalInventoryDocumentNumber());
+                oe.getPhysicalInventoryEventId().getDocumentNumber(), e.getPhysicalInventoryLineEventId().getPhysicalInventoryDocumentNumber());
         }
     }
 
@@ -327,7 +327,7 @@ public abstract class AbstractPhysicalInventoryStateEvent extends AbstractStateE
                 if (readOnlyPhysicalInventoryLineEvents != null) { return readOnlyPhysicalInventoryLineEvents; }
                 PhysicalInventoryLineStateEventDao eventDao = getPhysicalInventoryLineStateEventDao();
                 List<PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateCreated> eL = new ArrayList<PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateCreated>();
-                for (PhysicalInventoryLineStateEvent e : eventDao.findByPhysicalInventoryEventId(this.getStateEventId()))
+                for (PhysicalInventoryLineStateEvent e : eventDao.findByPhysicalInventoryEventId(this.getPhysicalInventoryEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateCreated)e);
@@ -351,7 +351,7 @@ public abstract class AbstractPhysicalInventoryStateEvent extends AbstractStateE
         public void addPhysicalInventoryLineEvent(PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateCreated e)
         {
             throwOnInconsistentEventIds(e);
-            this.physicalInventoryLineEvents.put(e.getStateEventId(), e);
+            this.physicalInventoryLineEvents.put(e.getPhysicalInventoryLineEventId(), e);
         }
 
         public void save()
@@ -542,7 +542,7 @@ public abstract class AbstractPhysicalInventoryStateEvent extends AbstractStateE
                 if (readOnlyPhysicalInventoryLineEvents != null) { return readOnlyPhysicalInventoryLineEvents; }
                 PhysicalInventoryLineStateEventDao eventDao = getPhysicalInventoryLineStateEventDao();
                 List<PhysicalInventoryLineStateEvent> eL = new ArrayList<PhysicalInventoryLineStateEvent>();
-                for (PhysicalInventoryLineStateEvent e : eventDao.findByPhysicalInventoryEventId(this.getStateEventId()))
+                for (PhysicalInventoryLineStateEvent e : eventDao.findByPhysicalInventoryEventId(this.getPhysicalInventoryEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((PhysicalInventoryLineStateEvent)e);
@@ -566,7 +566,7 @@ public abstract class AbstractPhysicalInventoryStateEvent extends AbstractStateE
         public void addPhysicalInventoryLineEvent(PhysicalInventoryLineStateEvent e)
         {
             throwOnInconsistentEventIds(e);
-            this.physicalInventoryLineEvents.put(e.getStateEventId(), e);
+            this.physicalInventoryLineEvents.put(e.getPhysicalInventoryLineEventId(), e);
         }
 
         public void save()

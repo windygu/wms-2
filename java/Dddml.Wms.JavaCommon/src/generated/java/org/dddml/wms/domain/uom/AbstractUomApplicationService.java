@@ -138,7 +138,7 @@ public abstract class AbstractUomApplicationService implements UomApplicationSer
     }
 
     public void initialize(UomStateEvent.UomStateCreated stateCreated) {
-        String aggregateId = stateCreated.getStateEventId().getUomId();
+        String aggregateId = stateCreated.getUomEventId().getUomId();
         UomState state = new AbstractUomState.SimpleUomState();
         state.setUomId(aggregateId);
 
@@ -146,7 +146,7 @@ public abstract class AbstractUomApplicationService implements UomApplicationSer
         ((AbstractUomAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getStateEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, stateCreated.getUomEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(UomCommand command, EventStoreAggregateId eventStoreAggregateId, UomState state)

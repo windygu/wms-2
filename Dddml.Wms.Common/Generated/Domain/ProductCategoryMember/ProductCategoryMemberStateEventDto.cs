@@ -15,31 +15,31 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 	public abstract class ProductCategoryMemberStateEventDtoBase : IStateEventDto, IProductCategoryMemberStateCreated, IProductCategoryMemberStateMergePatched
 	{
 
-        private ProductCategoryMemberEventIdDto _stateEventId;
+        private ProductCategoryMemberEventIdDto _productCategoryMemberEventId;
 
-		protected internal virtual ProductCategoryMemberEventIdDto StateEventId 
+		protected internal virtual ProductCategoryMemberEventIdDto ProductCategoryMemberEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new ProductCategoryMemberEventIdDto(); }
-                return _stateEventId;
+                if (_productCategoryMemberEventId == null) { _productCategoryMemberEventId = new ProductCategoryMemberEventIdDto(); }
+                return _productCategoryMemberEventId;
             }
             set
             {
-                _stateEventId = value;
+                _productCategoryMemberEventId = value;
             }
         }
 
         public virtual ProductCategoryMemberIdDto ProductCategoryMemberId
         {
-            get { return StateEventId.ProductCategoryMemberId; }
-            set { StateEventId.ProductCategoryMemberId = value; }
+            get { return ProductCategoryMemberEventId.ProductCategoryMemberId; }
+            set { ProductCategoryMemberEventId.ProductCategoryMemberId = value; }
         }
 
         public virtual long Version
         {
-            get { return StateEventId.Version; }
-            set { StateEventId.Version = value; }
+            get { return ProductCategoryMemberEventId.Version; }
+            set { ProductCategoryMemberEventId.Version = value; }
         }
 
 		public virtual DateTime? ThruDate { get; set; }
@@ -63,7 +63,7 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 		ProductCategoryMemberEventId IGlobalIdentity<ProductCategoryMemberEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToProductCategoryMemberEventId();
+				return this.ProductCategoryMemberEventId.ToProductCategoryMemberEventId();
 			}
 		}
 
@@ -195,9 +195,9 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 		}
 
 
-        ProductCategoryMemberEventId IProductCategoryMemberStateEvent.StateEventId
+        ProductCategoryMemberEventId IProductCategoryMemberStateEvent.ProductCategoryMemberEventId
         {
-            get { return this.StateEventId.ToProductCategoryMemberEventId(); }
+            get { return this.ProductCategoryMemberEventId.ToProductCategoryMemberEventId(); }
         }
 
         protected ProductCategoryMemberStateEventDtoBase()
@@ -206,7 +206,7 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 
         protected ProductCategoryMemberStateEventDtoBase(ProductCategoryMemberEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.ProductCategoryMemberEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

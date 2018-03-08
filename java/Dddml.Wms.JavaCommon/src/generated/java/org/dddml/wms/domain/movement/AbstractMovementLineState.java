@@ -388,14 +388,14 @@ public abstract class AbstractMovementLineState implements MovementLineState
     protected void throwOnWrongEvent(MovementLineStateEvent stateEvent)
     {
         String stateEntityIdMovementDocumentNumber = this.getMovementLineId().getMovementDocumentNumber();
-        String eventEntityIdMovementDocumentNumber = stateEvent.getStateEventId().getMovementDocumentNumber();
+        String eventEntityIdMovementDocumentNumber = stateEvent.getMovementLineEventId().getMovementDocumentNumber();
         if (!stateEntityIdMovementDocumentNumber.equals(eventEntityIdMovementDocumentNumber))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id MovementDocumentNumber %1$s in state but entity id MovementDocumentNumber %2$s in event", stateEntityIdMovementDocumentNumber, eventEntityIdMovementDocumentNumber);
         }
 
         String stateEntityIdLineNumber = this.getMovementLineId().getLineNumber();
-        String eventEntityIdLineNumber = stateEvent.getStateEventId().getLineNumber();
+        String eventEntityIdLineNumber = stateEvent.getMovementLineEventId().getLineNumber();
         if (!stateEntityIdLineNumber.equals(eventEntityIdLineNumber))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id LineNumber %1$s in state but entity id LineNumber %2$s in event", stateEntityIdLineNumber, eventEntityIdLineNumber);

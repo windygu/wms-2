@@ -8,7 +8,7 @@ import org.dddml.wms.specialization.Event;
 
 public interface AttributeValueMvoStateEvent extends Event
 {
-    AttributeValueMvoEventId getStateEventId();
+    AttributeValueMvoEventId getAttributeValueMvoEventId();
 
     boolean getStateEventReadOnly();
 

@@ -163,7 +163,7 @@ public abstract class AbstractInOutApplicationService implements InOutApplicatio
     }
 
     public void initialize(InOutStateEvent.InOutStateCreated stateCreated) {
-        String aggregateId = stateCreated.getStateEventId().getDocumentNumber();
+        String aggregateId = stateCreated.getInOutEventId().getDocumentNumber();
         InOutState state = new AbstractInOutState.SimpleInOutState();
         state.setDocumentNumber(aggregateId);
 
@@ -171,7 +171,7 @@ public abstract class AbstractInOutApplicationService implements InOutApplicatio
         ((AbstractInOutAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getStateEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, stateCreated.getInOutEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(InOutCommand command, EventStoreAggregateId eventStoreAggregateId, InOutState state)

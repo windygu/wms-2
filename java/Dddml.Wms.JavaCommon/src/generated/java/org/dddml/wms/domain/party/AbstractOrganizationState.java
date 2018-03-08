@@ -60,7 +60,7 @@ public abstract class AbstractOrganizationState extends AbstractPartyState imple
     public AbstractOrganizationState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setPartyId(((OrganizationStateEvent) events.get(0)).getStateEventId().getPartyId());
+            this.setPartyId(((OrganizationStateEvent) events.get(0)).getPartyEventId().getPartyId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);

@@ -8,7 +8,7 @@
   
   <class name="AbstractInventoryPostingRuleStateEvent" table="InventoryPostingRuleStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="stateEventId" class="org.dddml.wms.domain.inventorypostingrule.InventoryPostingRuleEventId">
+	<composite-id name="inventoryPostingRuleEventId" class="org.dddml.wms.domain.inventorypostingrule.InventoryPostingRuleEventId">
 		<key-property name="inventoryPostingRuleId" ><column name="InventoryPostingRuleId" length="50" /></key-property>
 		<key-property name="version" ></key-property>
 	</composite-id>

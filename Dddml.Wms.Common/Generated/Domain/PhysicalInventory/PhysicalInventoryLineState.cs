@@ -299,7 +299,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             id.Append("[").Append("PhysicalInventoryLine|");
 
             var stateEntityIdPhysicalInventoryDocumentNumber = (this as IGlobalIdentity<PhysicalInventoryLineId>).GlobalId.PhysicalInventoryDocumentNumber;
-            var eventEntityIdPhysicalInventoryDocumentNumber = stateEvent.StateEventId.PhysicalInventoryDocumentNumber;
+            var eventEntityIdPhysicalInventoryDocumentNumber = stateEvent.PhysicalInventoryLineEventId.PhysicalInventoryDocumentNumber;
             if (stateEntityIdPhysicalInventoryDocumentNumber != eventEntityIdPhysicalInventoryDocumentNumber)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id PhysicalInventoryDocumentNumber {0} in state but entity id PhysicalInventoryDocumentNumber {1} in event", stateEntityIdPhysicalInventoryDocumentNumber, eventEntityIdPhysicalInventoryDocumentNumber);
@@ -307,7 +307,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             id.Append(stateEntityIdPhysicalInventoryDocumentNumber).Append(",");
 
             var stateEntityIdInventoryItemId = (this as IGlobalIdentity<PhysicalInventoryLineId>).GlobalId.InventoryItemId;
-            var eventEntityIdInventoryItemId = stateEvent.StateEventId.InventoryItemId;
+            var eventEntityIdInventoryItemId = stateEvent.PhysicalInventoryLineEventId.InventoryItemId;
             if (stateEntityIdInventoryItemId != eventEntityIdInventoryItemId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id InventoryItemId {0} in state but entity id InventoryItemId {1} in event", stateEntityIdInventoryItemId, eventEntityIdInventoryItemId);

@@ -13,7 +13,7 @@ namespace Dddml.Wms.Domain.DamageReason
 {
 	public interface IDamageReasonStateEvent : IEvent, IStateEventDto, IGlobalIdentity<DamageReasonEventId>, ICreated<string>
 	{
-		DamageReasonEventId StateEventId { get; }
+		DamageReasonEventId DamageReasonEventId { get; }
 
         bool ReadOnly { get; set; }
 

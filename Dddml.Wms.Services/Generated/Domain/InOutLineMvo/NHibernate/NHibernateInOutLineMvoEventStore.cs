@@ -40,10 +40,10 @@ namespace Dddml.Wms.Domain.InOutLineMvo.NHibernate
             }
             InOutLineId idObj = (InOutLineId)(eventStoreAggregateId as EventStoreAggregateId).Id;
             var criteria = CurrentSession.CreateCriteria<InOutLineMvoStateEventBase>();
-            criteria.Add(Restrictions.Eq("StateEventId.InOutLineIdInOutDocumentNumber", idObj.InOutDocumentNumber));
-            criteria.Add(Restrictions.Eq("StateEventId.InOutLineIdLineNumber", idObj.LineNumber));
-            criteria.Add(Restrictions.Le("StateEventId.InOutVersion", version));
-            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.InOutVersion"));
+            criteria.Add(Restrictions.Eq("InOutLineMvoEventId.InOutLineIdInOutDocumentNumber", idObj.InOutDocumentNumber));
+            criteria.Add(Restrictions.Eq("InOutLineMvoEventId.InOutLineIdLineNumber", idObj.LineNumber));
+            criteria.Add(Restrictions.Le("InOutLineMvoEventId.InOutVersion", version));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("InOutLineMvoEventId.InOutVersion"));
             var es = criteria.List<IEvent>();
             foreach (InOutLineMvoStateEventBase e in es)
             {
@@ -51,7 +51,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo.NHibernate
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((InOutLineMvoStateEventBase)es.Last()).StateEventId.InOutVersion : default(long),
+                SteamVersion = es.Count > 0 ? ((InOutLineMvoStateEventBase)es.Last()).InOutLineMvoEventId.InOutVersion : default(long),
                 Events = es
             };
         }

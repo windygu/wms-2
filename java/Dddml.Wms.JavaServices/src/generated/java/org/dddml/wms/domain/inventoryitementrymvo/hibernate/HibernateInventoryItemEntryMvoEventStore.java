@@ -36,19 +36,19 @@ public class HibernateInventoryItemEntryMvoEventStore extends AbstractHibernateE
         }
         InventoryItemEntryId idObj = (InventoryItemEntryId) eventStoreAggregateId.getId();
         Criteria criteria = getCurrentSession().createCriteria(AbstractInventoryItemEntryMvoStateEvent.class);
-        criteria.add(Restrictions.eq("stateEventId.inventoryItemEntryIdInventoryItemIdProductId", idObj.getInventoryItemId().getProductId()));
-        criteria.add(Restrictions.eq("stateEventId.inventoryItemEntryIdInventoryItemIdLocatorId", idObj.getInventoryItemId().getLocatorId()));
-        criteria.add(Restrictions.eq("stateEventId.inventoryItemEntryIdInventoryItemIdAttributeSetInstanceId", idObj.getInventoryItemId().getAttributeSetInstanceId()));
-        criteria.add(Restrictions.eq("stateEventId.inventoryItemEntryIdEntrySeqId", idObj.getEntrySeqId()));
-        criteria.add(Restrictions.le("stateEventId.inventoryItemVersion", version));
-        criteria.addOrder(Order.asc("stateEventId.inventoryItemVersion"));
+        criteria.add(Restrictions.eq("inventoryItemEntryMvoEventId.inventoryItemEntryIdInventoryItemIdProductId", idObj.getInventoryItemId().getProductId()));
+        criteria.add(Restrictions.eq("inventoryItemEntryMvoEventId.inventoryItemEntryIdInventoryItemIdLocatorId", idObj.getInventoryItemId().getLocatorId()));
+        criteria.add(Restrictions.eq("inventoryItemEntryMvoEventId.inventoryItemEntryIdInventoryItemIdAttributeSetInstanceId", idObj.getInventoryItemId().getAttributeSetInstanceId()));
+        criteria.add(Restrictions.eq("inventoryItemEntryMvoEventId.inventoryItemEntryIdEntrySeqId", idObj.getEntrySeqId()));
+        criteria.add(Restrictions.le("inventoryItemEntryMvoEventId.inventoryItemVersion", version));
+        criteria.addOrder(Order.asc("inventoryItemEntryMvoEventId.inventoryItemVersion"));
         List es = criteria.list();
         for (Object e : es) {
             ((AbstractInventoryItemEntryMvoStateEvent) e).setStateEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractInventoryItemEntryMvoStateEvent) es.get(es.size() - 1)).getStateEventId().getInventoryItemVersion());
+            eventStream.setSteamVersion(((AbstractInventoryItemEntryMvoStateEvent) es.get(es.size() - 1)).getInventoryItemEntryMvoEventId().getInventoryItemVersion());
         } else {
             //todo?
         }

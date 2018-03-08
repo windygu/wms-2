@@ -15,21 +15,21 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
         return state;
     }
 
-    public AttributeSetInstanceEventId getStateEventId() {
+    public AttributeSetInstanceEventId getAttributeSetInstanceEventId() {
         AttributeSetInstanceEventId eventId = new AttributeSetInstanceEventId(state.getAttributeSetInstanceId(), AttributeSetInstanceState.VERSION_NULL);
         return eventId;
     }
 
-    public void setStateEventId(AttributeSetInstanceEventId eventId) {
+    public void setAttributeSetInstanceEventId(AttributeSetInstanceEventId eventId) {
         this.state.setAttributeSetInstanceId(eventId.getAttributeSetInstanceId());
     }
 
     public String getAttributeSetInstanceId() {
-        return getStateEventId().getAttributeSetInstanceId();
+        return getAttributeSetInstanceEventId().getAttributeSetInstanceId();
     }
 
     public void setAttributeSetInstanceId(String attributeSetInstanceId) {
-        getStateEventId().setAttributeSetInstanceId(attributeSetInstanceId);
+        getAttributeSetInstanceEventId().setAttributeSetInstanceId(attributeSetInstanceId);
     }
 
     private boolean stateEventReadOnly;
@@ -753,7 +753,7 @@ public abstract class AbstractAttributeSetInstanceStateEvent extends AbstractSta
 
     protected AbstractAttributeSetInstanceStateEvent(AttributeSetInstanceEventId eventId) {
         this(new AbstractAttributeSetInstanceState.SimpleAttributeSetInstanceState());
-        setStateEventId(eventId);
+        setAttributeSetInstanceEventId(eventId);
     }
 
     protected AbstractAttributeSetInstanceStateEvent(AttributeSetInstanceState s) {

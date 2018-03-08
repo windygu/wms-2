@@ -15,31 +15,31 @@ namespace Dddml.Wms.Domain.OrderShipment
 	public abstract class OrderShipmentStateEventDtoBase : IStateEventDto, IOrderShipmentStateCreated, IOrderShipmentStateMergePatched
 	{
 
-        private OrderShipmentEventIdDto _stateEventId;
+        private OrderShipmentEventIdDto _orderShipmentEventId;
 
-		protected internal virtual OrderShipmentEventIdDto StateEventId 
+		protected internal virtual OrderShipmentEventIdDto OrderShipmentEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new OrderShipmentEventIdDto(); }
-                return _stateEventId;
+                if (_orderShipmentEventId == null) { _orderShipmentEventId = new OrderShipmentEventIdDto(); }
+                return _orderShipmentEventId;
             }
             set
             {
-                _stateEventId = value;
+                _orderShipmentEventId = value;
             }
         }
 
         public virtual OrderShipmentIdDto OrderShipmentId
         {
-            get { return StateEventId.OrderShipmentId; }
-            set { StateEventId.OrderShipmentId = value; }
+            get { return OrderShipmentEventId.OrderShipmentId; }
+            set { OrderShipmentEventId.OrderShipmentId = value; }
         }
 
         public virtual long Version
         {
-            get { return StateEventId.Version; }
-            set { StateEventId.Version = value; }
+            get { return OrderShipmentEventId.Version; }
+            set { OrderShipmentEventId.Version = value; }
         }
 
 		public virtual decimal? Quantity { get; set; }
@@ -57,7 +57,7 @@ namespace Dddml.Wms.Domain.OrderShipment
 		OrderShipmentEventId IGlobalIdentity<OrderShipmentEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToOrderShipmentEventId();
+				return this.OrderShipmentEventId.ToOrderShipmentEventId();
 			}
 		}
 
@@ -132,9 +132,9 @@ namespace Dddml.Wms.Domain.OrderShipment
 		}
 
 
-        OrderShipmentEventId IOrderShipmentStateEvent.StateEventId
+        OrderShipmentEventId IOrderShipmentStateEvent.OrderShipmentEventId
         {
-            get { return this.StateEventId.ToOrderShipmentEventId(); }
+            get { return this.OrderShipmentEventId.ToOrderShipmentEventId(); }
         }
 
         protected OrderShipmentStateEventDtoBase()
@@ -143,7 +143,7 @@ namespace Dddml.Wms.Domain.OrderShipment
 
         protected OrderShipmentStateEventDtoBase(OrderShipmentEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.OrderShipmentEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

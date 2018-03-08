@@ -24,7 +24,7 @@ public class LocatorStateEventDtoConverter {
 
     public LocatorStateEventDto.LocatorStateCreatedDto toLocatorStateCreatedDto(LocatorStateEvent.LocatorStateCreated e) {
         LocatorStateEventDto.LocatorStateCreatedDto dto = new LocatorStateEventDto.LocatorStateCreatedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setLocatorEventId(e.getLocatorEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -43,7 +43,7 @@ public class LocatorStateEventDtoConverter {
 
     public LocatorStateEventDto.LocatorStateMergePatchedDto toLocatorStateMergePatchedDto(LocatorStateEvent.LocatorStateMergePatched e) {
         LocatorStateEventDto.LocatorStateMergePatchedDto dto = new LocatorStateEventDto.LocatorStateMergePatchedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setLocatorEventId(e.getLocatorEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -73,7 +73,7 @@ public class LocatorStateEventDtoConverter {
 
     public LocatorStateEventDto.LocatorStateDeletedDto toLocatorStateDeletedDto(LocatorStateEvent.LocatorStateDeleted e) {
         LocatorStateEventDto.LocatorStateDeletedDto dto = new LocatorStateEventDto.LocatorStateDeletedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setLocatorEventId(e.getLocatorEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());

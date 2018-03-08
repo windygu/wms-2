@@ -152,7 +152,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
         {
             if (events != null && events.Count() > 0)
             {
-                this.InOutLineId = ((IInOutLineMvoStateEvent)events.First()).StateEventId.InOutLineId;
+                this.InOutLineId = ((IInOutLineMvoStateEvent)events.First()).InOutLineMvoEventId.InOutLineId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -890,7 +890,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             id.Append("[").Append("InOutLineMvo|");
 
             var stateEntityId = this.InOutLineId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.InOutLineId;
+            var eventEntityId = stateEvent.InOutLineMvoEventId.InOutLineId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -900,7 +900,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             id.Append("]");
 
             var stateVersion = this.InOutVersion;
-            var eventVersion = stateEvent.StateEventId.InOutVersion;
+            var eventVersion = stateEvent.InOutLineMvoEventId.InOutVersion;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

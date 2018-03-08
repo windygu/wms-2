@@ -16,31 +16,31 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 	public abstract class InventoryPostingRuleStateEventDtoBase : IStateEventDto, IInventoryPostingRuleStateCreated, IInventoryPostingRuleStateMergePatched, IInventoryPostingRuleStateDeleted
 	{
 
-        private InventoryPostingRuleEventIdDto _stateEventId;
+        private InventoryPostingRuleEventIdDto _inventoryPostingRuleEventId;
 
-		protected internal virtual InventoryPostingRuleEventIdDto StateEventId 
+		protected internal virtual InventoryPostingRuleEventIdDto InventoryPostingRuleEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new InventoryPostingRuleEventIdDto(); }
-                return _stateEventId;
+                if (_inventoryPostingRuleEventId == null) { _inventoryPostingRuleEventId = new InventoryPostingRuleEventIdDto(); }
+                return _inventoryPostingRuleEventId;
             }
             set
             {
-                _stateEventId = value;
+                _inventoryPostingRuleEventId = value;
             }
         }
 
         public virtual string InventoryPostingRuleId
         {
-            get { return StateEventId.InventoryPostingRuleId; }
-            set { StateEventId.InventoryPostingRuleId = value; }
+            get { return InventoryPostingRuleEventId.InventoryPostingRuleId; }
+            set { InventoryPostingRuleEventId.InventoryPostingRuleId = value; }
         }
 
         public virtual long Version
         {
-            get { return StateEventId.Version; }
-            set { StateEventId.Version = value; }
+            get { return InventoryPostingRuleEventId.Version; }
+            set { InventoryPostingRuleEventId.Version = value; }
         }
 
 		private InventoryItemIdDto _triggerInventoryItemId = new InventoryItemIdDto();
@@ -94,7 +94,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 		InventoryPostingRuleEventId IGlobalIdentity<InventoryPostingRuleEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToInventoryPostingRuleEventId();
+				return this.InventoryPostingRuleEventId.ToInventoryPostingRuleEventId();
 			}
 		}
 
@@ -245,9 +245,9 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 		}
 
 
-        InventoryPostingRuleEventId IInventoryPostingRuleStateEvent.StateEventId
+        InventoryPostingRuleEventId IInventoryPostingRuleStateEvent.InventoryPostingRuleEventId
         {
-            get { return this.StateEventId.ToInventoryPostingRuleEventId(); }
+            get { return this.InventoryPostingRuleEventId.ToInventoryPostingRuleEventId(); }
         }
 
         protected InventoryPostingRuleStateEventDtoBase()
@@ -256,7 +256,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 
         protected InventoryPostingRuleStateEventDtoBase(InventoryPostingRuleEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.InventoryPostingRuleEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

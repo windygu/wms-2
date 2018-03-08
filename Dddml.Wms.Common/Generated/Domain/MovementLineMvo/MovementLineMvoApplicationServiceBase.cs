@@ -60,7 +60,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
         public virtual void Initialize(IMovementLineMvoStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.MovementLineId;
+            var aggregateId = stateCreated.MovementLineMvoEventId.MovementLineId;
             var state = new MovementLineMvoState();
             state.MovementLineId = aggregateId;
             var aggregate = (MovementLineMvoAggregate)GetMovementLineMvoAggregate(state);

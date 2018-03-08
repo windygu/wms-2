@@ -13,7 +13,7 @@ namespace Dddml.Wms.Domain.RolePermission
 {
 	public interface IRolePermissionStateEvent : IEvent, IStateEventDto, IGlobalIdentity<RolePermissionEventId>, ICreated<string>
 	{
-		RolePermissionEventId StateEventId { get; }
+		RolePermissionEventId RolePermissionEventId { get; }
 
         bool ReadOnly { get; set; }
 

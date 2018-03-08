@@ -24,7 +24,7 @@ public class RejectionReasonStateEventDtoConverter {
 
     public RejectionReasonStateEventDto.RejectionReasonStateCreatedDto toRejectionReasonStateCreatedDto(RejectionReasonStateEvent.RejectionReasonStateCreated e) {
         RejectionReasonStateEventDto.RejectionReasonStateCreatedDto dto = new RejectionReasonStateEventDto.RejectionReasonStateCreatedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setRejectionReasonEventId(e.getRejectionReasonEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -35,7 +35,7 @@ public class RejectionReasonStateEventDtoConverter {
 
     public RejectionReasonStateEventDto.RejectionReasonStateMergePatchedDto toRejectionReasonStateMergePatchedDto(RejectionReasonStateEvent.RejectionReasonStateMergePatched e) {
         RejectionReasonStateEventDto.RejectionReasonStateMergePatchedDto dto = new RejectionReasonStateEventDto.RejectionReasonStateMergePatchedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setRejectionReasonEventId(e.getRejectionReasonEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -49,7 +49,7 @@ public class RejectionReasonStateEventDtoConverter {
 
     public RejectionReasonStateEventDto.RejectionReasonStateDeletedDto toRejectionReasonStateDeletedDto(RejectionReasonStateEvent.RejectionReasonStateDeleted e) {
         RejectionReasonStateEventDto.RejectionReasonStateDeletedDto dto = new RejectionReasonStateEventDto.RejectionReasonStateDeletedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setRejectionReasonEventId(e.getRejectionReasonEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());

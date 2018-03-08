@@ -265,7 +265,7 @@ namespace Dddml.Wms.Domain.AttributeSet
             id.Append("[").Append("AttributeUse|");
 
             var stateEntityIdAttributeSetId = (this as IGlobalIdentity<AttributeSetAttributeUseId>).GlobalId.AttributeSetId;
-            var eventEntityIdAttributeSetId = stateEvent.StateEventId.AttributeSetId;
+            var eventEntityIdAttributeSetId = stateEvent.AttributeUseEventId.AttributeSetId;
             if (stateEntityIdAttributeSetId != eventEntityIdAttributeSetId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id AttributeSetId {0} in state but entity id AttributeSetId {1} in event", stateEntityIdAttributeSetId, eventEntityIdAttributeSetId);
@@ -273,7 +273,7 @@ namespace Dddml.Wms.Domain.AttributeSet
             id.Append(stateEntityIdAttributeSetId).Append(",");
 
             var stateEntityIdAttributeId = (this as IGlobalIdentity<AttributeSetAttributeUseId>).GlobalId.AttributeId;
-            var eventEntityIdAttributeId = stateEvent.StateEventId.AttributeId;
+            var eventEntityIdAttributeId = stateEvent.AttributeUseEventId.AttributeId;
             if (stateEntityIdAttributeId != eventEntityIdAttributeId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id AttributeId {0} in state but entity id AttributeId {1} in event", stateEntityIdAttributeId, eventEntityIdAttributeId);

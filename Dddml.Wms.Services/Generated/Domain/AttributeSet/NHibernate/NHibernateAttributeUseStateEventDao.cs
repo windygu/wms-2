@@ -43,8 +43,8 @@ namespace Dddml.Wms.Domain.AttributeSet.NHibernate
         {
             var criteria = CurrentSession.CreateCriteria<AttributeUseStateEventBase>();
             var partIdCondition = Restrictions.Conjunction()
-                .Add(Restrictions.Eq("StateEventId.AttributeSetId", attributeSetEventId.AttributeSetId))
-                .Add(Restrictions.Eq("StateEventId.AttributeSetVersion", attributeSetEventId.Version))
+                .Add(Restrictions.Eq("AttributeUseEventId.AttributeSetId", attributeSetEventId.AttributeSetId))
+                .Add(Restrictions.Eq("AttributeUseEventId.AttributeSetVersion", attributeSetEventId.Version))
                 ;
 
             return criteria.Add(partIdCondition).List<AttributeUseStateEventBase>();

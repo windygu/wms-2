@@ -57,7 +57,7 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 
         public virtual void Initialize(IDamageHandlingMethodStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.DamageHandlingMethodId;
+            var aggregateId = stateCreated.DamageHandlingMethodEventId.DamageHandlingMethodId;
             var state = new DamageHandlingMethodState();
             state.DamageHandlingMethodId = aggregateId;
             var aggregate = (DamageHandlingMethodAggregate)GetDamageHandlingMethodAggregate(state);

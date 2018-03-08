@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.Shipment
 	public abstract class ShipmentReceiptStateEventBase : IShipmentReceiptStateEvent
 	{
 
-		public virtual ShipmentReceiptEventId StateEventId { get; set; }
+		public virtual ShipmentReceiptEventId ShipmentReceiptEventId { get; set; }
 
         public virtual string ReceiptSeqId
         {
-            get { return StateEventId.ReceiptSeqId; }
-            set { StateEventId.ReceiptSeqId = value; }
+            get { return ShipmentReceiptEventId.ReceiptSeqId; }
+            set { ShipmentReceiptEventId.ReceiptSeqId = value; }
         }
 
 		public virtual string ProductId { get; set; }
@@ -60,7 +60,7 @@ namespace Dddml.Wms.Domain.Shipment
 		ShipmentReceiptEventId IGlobalIdentity<ShipmentReceiptEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.ShipmentReceiptEventId;
 			}
 		}
 
@@ -105,7 +105,7 @@ namespace Dddml.Wms.Domain.Shipment
 
         protected ShipmentReceiptStateEventBase(ShipmentReceiptEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.ShipmentReceiptEventId = stateEventId;
         }
 
 

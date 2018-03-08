@@ -25,7 +25,7 @@ public class AttributeAliasMvoStateEventDtoConverter {
 
     public AttributeAliasMvoStateEventDto.AttributeAliasMvoStateCreatedDto toAttributeAliasMvoStateCreatedDto(AttributeAliasMvoStateEvent.AttributeAliasMvoStateCreated e) {
         AttributeAliasMvoStateEventDto.AttributeAliasMvoStateCreatedDto dto = new AttributeAliasMvoStateEventDto.AttributeAliasMvoStateCreatedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setAttributeAliasMvoEventId(e.getAttributeAliasMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -52,7 +52,7 @@ public class AttributeAliasMvoStateEventDtoConverter {
 
     public AttributeAliasMvoStateEventDto.AttributeAliasMvoStateMergePatchedDto toAttributeAliasMvoStateMergePatchedDto(AttributeAliasMvoStateEvent.AttributeAliasMvoStateMergePatched e) {
         AttributeAliasMvoStateEventDto.AttributeAliasMvoStateMergePatchedDto dto = new AttributeAliasMvoStateEventDto.AttributeAliasMvoStateMergePatchedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setAttributeAliasMvoEventId(e.getAttributeAliasMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -98,7 +98,7 @@ public class AttributeAliasMvoStateEventDtoConverter {
 
     public AttributeAliasMvoStateEventDto.AttributeAliasMvoStateDeletedDto toAttributeAliasMvoStateDeletedDto(AttributeAliasMvoStateEvent.AttributeAliasMvoStateDeleted e) {
         AttributeAliasMvoStateEventDto.AttributeAliasMvoStateDeletedDto dto = new AttributeAliasMvoStateEventDto.AttributeAliasMvoStateDeletedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setAttributeAliasMvoEventId(e.getAttributeAliasMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());

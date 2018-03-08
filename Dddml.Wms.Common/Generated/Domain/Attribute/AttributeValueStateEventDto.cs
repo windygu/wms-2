@@ -15,25 +15,25 @@ namespace Dddml.Wms.Domain.Attribute
 	public abstract class AttributeValueStateEventDtoBase : IStateEventDto, IAttributeValueStateCreated, IAttributeValueStateMergePatched, IAttributeValueStateRemoved
 	{
 
-        private AttributeValueEventIdDto _stateEventId;
+        private AttributeValueEventIdDto _attributeValueEventId;
 
-		protected internal virtual AttributeValueEventIdDto StateEventId 
+		protected internal virtual AttributeValueEventIdDto AttributeValueEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new AttributeValueEventIdDto(); }
-                return _stateEventId;
+                if (_attributeValueEventId == null) { _attributeValueEventId = new AttributeValueEventIdDto(); }
+                return _attributeValueEventId;
             }
             set
             {
-                _stateEventId = value;
+                _attributeValueEventId = value;
             }
         }
 
         public virtual string Value
         {
-            get { return StateEventId.Value; }
-            set { StateEventId.Value = value; }
+            get { return AttributeValueEventId.Value; }
+            set { AttributeValueEventId.Value = value; }
         }
 
 		public virtual string AttributeValueName { get; set; }
@@ -55,7 +55,7 @@ namespace Dddml.Wms.Domain.Attribute
 		AttributeValueEventId IGlobalIdentity<AttributeValueEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToAttributeValueEventId();
+				return this.AttributeValueEventId.ToAttributeValueEventId();
 			}
 		}
 
@@ -170,9 +170,9 @@ namespace Dddml.Wms.Domain.Attribute
 		}
 
 
-        AttributeValueEventId IAttributeValueStateEvent.StateEventId
+        AttributeValueEventId IAttributeValueStateEvent.AttributeValueEventId
         {
-            get { return this.StateEventId.ToAttributeValueEventId(); }
+            get { return this.AttributeValueEventId.ToAttributeValueEventId(); }
         }
 
         protected AttributeValueStateEventDtoBase()
@@ -181,7 +181,7 @@ namespace Dddml.Wms.Domain.Attribute
 
         protected AttributeValueStateEventDtoBase(AttributeValueEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.AttributeValueEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

@@ -40,10 +40,10 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo.NHibernate
             }
             ShipmentReceiptId idObj = (ShipmentReceiptId)(eventStoreAggregateId as EventStoreAggregateId).Id;
             var criteria = CurrentSession.CreateCriteria<ShipmentReceiptMvoStateEventBase>();
-            criteria.Add(Restrictions.Eq("StateEventId.ShipmentReceiptIdShipmentId", idObj.ShipmentId));
-            criteria.Add(Restrictions.Eq("StateEventId.ShipmentReceiptIdReceiptSeqId", idObj.ReceiptSeqId));
-            criteria.Add(Restrictions.Le("StateEventId.ShipmentVersion", version));
-            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.ShipmentVersion"));
+            criteria.Add(Restrictions.Eq("ShipmentReceiptMvoEventId.ShipmentReceiptIdShipmentId", idObj.ShipmentId));
+            criteria.Add(Restrictions.Eq("ShipmentReceiptMvoEventId.ShipmentReceiptIdReceiptSeqId", idObj.ReceiptSeqId));
+            criteria.Add(Restrictions.Le("ShipmentReceiptMvoEventId.ShipmentVersion", version));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("ShipmentReceiptMvoEventId.ShipmentVersion"));
             var es = criteria.List<IEvent>();
             foreach (ShipmentReceiptMvoStateEventBase e in es)
             {
@@ -51,7 +51,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo.NHibernate
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((ShipmentReceiptMvoStateEventBase)es.Last()).StateEventId.ShipmentVersion : default(long),
+                SteamVersion = es.Count > 0 ? ((ShipmentReceiptMvoStateEventBase)es.Last()).ShipmentReceiptMvoEventId.ShipmentVersion : default(long),
                 Events = es
             };
         }

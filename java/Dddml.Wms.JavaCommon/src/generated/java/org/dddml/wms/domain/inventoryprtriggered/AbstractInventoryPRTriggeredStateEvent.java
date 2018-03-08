@@ -8,22 +8,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractInventoryPRTriggeredStateEvent extends AbstractStateEvent implements InventoryPRTriggeredStateEvent 
 {
-    private InventoryPRTriggeredEventId stateEventId;
+    private InventoryPRTriggeredEventId inventoryPRTriggeredEventId;
 
-    public InventoryPRTriggeredEventId getStateEventId() {
-        return this.stateEventId;
+    public InventoryPRTriggeredEventId getInventoryPRTriggeredEventId() {
+        return this.inventoryPRTriggeredEventId;
     }
 
-    public void setStateEventId(InventoryPRTriggeredEventId eventId) {
-        this.stateEventId = eventId;
+    public void setInventoryPRTriggeredEventId(InventoryPRTriggeredEventId eventId) {
+        this.inventoryPRTriggeredEventId = eventId;
     }
     
     public InventoryPRTriggeredId getInventoryPRTriggeredId() {
-        return getStateEventId().getInventoryPRTriggeredId();
+        return getInventoryPRTriggeredEventId().getInventoryPRTriggeredId();
     }
 
     public void setInventoryPRTriggeredId(InventoryPRTriggeredId inventoryPRTriggeredId) {
-        getStateEventId().setInventoryPRTriggeredId(inventoryPRTriggeredId);
+        getInventoryPRTriggeredEventId().setInventoryPRTriggeredId(inventoryPRTriggeredId);
     }
 
     private boolean stateEventReadOnly;
@@ -83,7 +83,7 @@ public abstract class AbstractInventoryPRTriggeredStateEvent extends AbstractSta
     }
 
     protected AbstractInventoryPRTriggeredStateEvent(InventoryPRTriggeredEventId eventId) {
-        this.stateEventId = eventId;
+        this.inventoryPRTriggeredEventId = eventId;
     }
 
 

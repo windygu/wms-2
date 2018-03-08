@@ -13,7 +13,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 {
 	public interface IMovementConfirmationStateEvent : IEvent, IStateEventDto, IGlobalIdentity<MovementConfirmationEventId>, ICreated<string>
 	{
-		MovementConfirmationEventId StateEventId { get; }
+		MovementConfirmationEventId MovementConfirmationEventId { get; }
 
         bool ReadOnly { get; set; }
 

@@ -13,7 +13,7 @@ namespace Dddml.Wms.Domain.Audience
 {
 	public interface IAudienceStateEvent : IEvent, IStateEventDto, IGlobalIdentity<AudienceEventId>, ICreated<string>
 	{
-		AudienceEventId StateEventId { get; }
+		AudienceEventId AudienceEventId { get; }
 
         bool ReadOnly { get; set; }
 

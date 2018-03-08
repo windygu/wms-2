@@ -15,31 +15,31 @@ namespace Dddml.Wms.Domain.RejectionReason
 	public abstract class RejectionReasonStateEventDtoBase : IStateEventDto, IRejectionReasonStateCreated, IRejectionReasonStateMergePatched, IRejectionReasonStateDeleted
 	{
 
-        private RejectionReasonEventIdDto _stateEventId;
+        private RejectionReasonEventIdDto _rejectionReasonEventId;
 
-		protected internal virtual RejectionReasonEventIdDto StateEventId 
+		protected internal virtual RejectionReasonEventIdDto RejectionReasonEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new RejectionReasonEventIdDto(); }
-                return _stateEventId;
+                if (_rejectionReasonEventId == null) { _rejectionReasonEventId = new RejectionReasonEventIdDto(); }
+                return _rejectionReasonEventId;
             }
             set
             {
-                _stateEventId = value;
+                _rejectionReasonEventId = value;
             }
         }
 
         public virtual string RejectionReasonId
         {
-            get { return StateEventId.RejectionReasonId; }
-            set { StateEventId.RejectionReasonId = value; }
+            get { return RejectionReasonEventId.RejectionReasonId; }
+            set { RejectionReasonEventId.RejectionReasonId = value; }
         }
 
         public virtual long Version
         {
-            get { return StateEventId.Version; }
-            set { StateEventId.Version = value; }
+            get { return RejectionReasonEventId.Version; }
+            set { RejectionReasonEventId.Version = value; }
         }
 
 		public virtual string Description { get; set; }
@@ -57,7 +57,7 @@ namespace Dddml.Wms.Domain.RejectionReason
 		RejectionReasonEventId IGlobalIdentity<RejectionReasonEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToRejectionReasonEventId();
+				return this.RejectionReasonEventId.ToRejectionReasonEventId();
 			}
 		}
 
@@ -132,9 +132,9 @@ namespace Dddml.Wms.Domain.RejectionReason
 		}
 
 
-        RejectionReasonEventId IRejectionReasonStateEvent.StateEventId
+        RejectionReasonEventId IRejectionReasonStateEvent.RejectionReasonEventId
         {
-            get { return this.StateEventId.ToRejectionReasonEventId(); }
+            get { return this.RejectionReasonEventId.ToRejectionReasonEventId(); }
         }
 
         protected RejectionReasonStateEventDtoBase()
@@ -143,7 +143,7 @@ namespace Dddml.Wms.Domain.RejectionReason
 
         protected RejectionReasonStateEventDtoBase(RejectionReasonEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.RejectionReasonEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

@@ -7,7 +7,7 @@ import org.dddml.wms.specialization.Event;
 
 public interface OrganizationStructureTypeStateEvent extends Event
 {
-    OrganizationStructureTypeEventId getStateEventId();
+    OrganizationStructureTypeEventId getOrganizationStructureTypeEventId();
 
     boolean getStateEventReadOnly();
 

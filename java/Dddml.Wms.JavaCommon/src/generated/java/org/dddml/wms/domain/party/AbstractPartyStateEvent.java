@@ -8,22 +8,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractPartyStateEvent extends AbstractStateEvent implements PartyStateEvent 
 {
-    private PartyEventId stateEventId;
+    private PartyEventId partyEventId;
 
-    public PartyEventId getStateEventId() {
-        return this.stateEventId;
+    public PartyEventId getPartyEventId() {
+        return this.partyEventId;
     }
 
-    public void setStateEventId(PartyEventId eventId) {
-        this.stateEventId = eventId;
+    public void setPartyEventId(PartyEventId eventId) {
+        this.partyEventId = eventId;
     }
     
     public String getPartyId() {
-        return getStateEventId().getPartyId();
+        return getPartyEventId().getPartyId();
     }
 
     public void setPartyId(String partyId) {
-        getStateEventId().setPartyId(partyId);
+        getPartyEventId().setPartyId(partyId);
     }
 
     private boolean stateEventReadOnly;
@@ -95,7 +95,7 @@ public abstract class AbstractPartyStateEvent extends AbstractStateEvent impleme
     }
 
     protected AbstractPartyStateEvent(PartyEventId eventId) {
-        this.stateEventId = eventId;
+        this.partyEventId = eventId;
     }
 
 

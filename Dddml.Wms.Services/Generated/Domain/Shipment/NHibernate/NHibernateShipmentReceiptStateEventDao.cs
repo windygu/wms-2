@@ -43,8 +43,8 @@ namespace Dddml.Wms.Domain.Shipment.NHibernate
         {
             var criteria = CurrentSession.CreateCriteria<ShipmentReceiptStateEventBase>();
             var partIdCondition = Restrictions.Conjunction()
-                .Add(Restrictions.Eq("StateEventId.ShipmentId", shipmentEventId.ShipmentId))
-                .Add(Restrictions.Eq("StateEventId.ShipmentVersion", shipmentEventId.Version))
+                .Add(Restrictions.Eq("ShipmentReceiptEventId.ShipmentId", shipmentEventId.ShipmentId))
+                .Add(Restrictions.Eq("ShipmentReceiptEventId.ShipmentVersion", shipmentEventId.Version))
                 ;
 
             return criteria.Add(partIdCondition).List<ShipmentReceiptStateEventBase>();

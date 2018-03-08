@@ -59,7 +59,7 @@ namespace Dddml.Wms.Domain.Audience
 
         public virtual void Initialize(IAudienceStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.ClientId;
+            var aggregateId = stateCreated.AudienceEventId.ClientId;
             var state = new AudienceState();
             state.ClientId = aggregateId;
             var aggregate = (AudienceAggregate)GetAudienceAggregate(state);

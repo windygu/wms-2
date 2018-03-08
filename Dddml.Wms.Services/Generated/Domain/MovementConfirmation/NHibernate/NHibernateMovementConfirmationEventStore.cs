@@ -39,9 +39,9 @@ namespace Dddml.Wms.Domain.MovementConfirmation.NHibernate
             }
             string idObj = (string)(eventStoreAggregateId as EventStoreAggregateId).Id;
             var criteria = CurrentSession.CreateCriteria<MovementConfirmationStateEventBase>();
-            criteria.Add(Restrictions.Eq("StateEventId.DocumentNumber", idObj));
-            criteria.Add(Restrictions.Le("StateEventId.Version", version));
-            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.Version"));
+            criteria.Add(Restrictions.Eq("MovementConfirmationEventId.DocumentNumber", idObj));
+            criteria.Add(Restrictions.Le("MovementConfirmationEventId.Version", version));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("MovementConfirmationEventId.Version"));
             var es = criteria.List<IEvent>();
             foreach (MovementConfirmationStateEventBase e in es)
             {
@@ -49,7 +49,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation.NHibernate
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((MovementConfirmationStateEventBase)es.Last()).StateEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((MovementConfirmationStateEventBase)es.Last()).MovementConfirmationEventId.Version : default(long),
                 Events = es
             };
         }

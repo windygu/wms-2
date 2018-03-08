@@ -7,15 +7,15 @@ import org.dddml.wms.domain.AbstractStateEvent;
 public class UomConversionStateEventDto extends AbstractStateEvent
 {
 
-    private UomConversionEventId stateEventId;
+    private UomConversionEventId uomConversionEventId;
 
     UomConversionEventId getStateEventId() {
-        if (stateEventId == null) { stateEventId = new UomConversionEventId(); }
-        return stateEventId;
+        if (uomConversionEventId == null) { uomConversionEventId = new UomConversionEventId(); }
+        return uomConversionEventId;
     }
 
-    void setStateEventId(UomConversionEventId eventId) {
-        this.stateEventId = eventId;
+    void setUomConversionEventId(UomConversionEventId eventId) {
+        this.uomConversionEventId = eventId;
     }
 
     public UomConversionId getUomConversionId() {

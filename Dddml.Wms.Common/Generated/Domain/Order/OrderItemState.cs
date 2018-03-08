@@ -716,7 +716,7 @@ namespace Dddml.Wms.Domain.Order
             id.Append("[").Append("OrderItem|");
 
             var stateEntityIdOrderId = (this as IGlobalIdentity<OrderItemId>).GlobalId.OrderId;
-            var eventEntityIdOrderId = stateEvent.StateEventId.OrderId;
+            var eventEntityIdOrderId = stateEvent.OrderItemEventId.OrderId;
             if (stateEntityIdOrderId != eventEntityIdOrderId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id OrderId {0} in state but entity id OrderId {1} in event", stateEntityIdOrderId, eventEntityIdOrderId);
@@ -724,7 +724,7 @@ namespace Dddml.Wms.Domain.Order
             id.Append(stateEntityIdOrderId).Append(",");
 
             var stateEntityIdOrderItemSeqId = (this as IGlobalIdentity<OrderItemId>).GlobalId.OrderItemSeqId;
-            var eventEntityIdOrderItemSeqId = stateEvent.StateEventId.OrderItemSeqId;
+            var eventEntityIdOrderItemSeqId = stateEvent.OrderItemEventId.OrderItemSeqId;
             if (stateEntityIdOrderItemSeqId != eventEntityIdOrderItemSeqId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id OrderItemSeqId {0} in state but entity id OrderItemSeqId {1} in event", stateEntityIdOrderItemSeqId, eventEntityIdOrderItemSeqId);

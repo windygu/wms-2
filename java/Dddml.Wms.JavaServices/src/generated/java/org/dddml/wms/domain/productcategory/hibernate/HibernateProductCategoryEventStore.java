@@ -34,16 +34,16 @@ public class HibernateProductCategoryEventStore extends AbstractHibernateEventSt
         }
         String idObj = (String) eventStoreAggregateId.getId();
         Criteria criteria = getCurrentSession().createCriteria(AbstractProductCategoryStateEvent.class);
-        criteria.add(Restrictions.eq("stateEventId.productCategoryId", idObj));
-        criteria.add(Restrictions.le("stateEventId.version", version));
-        criteria.addOrder(Order.asc("stateEventId.version"));
+        criteria.add(Restrictions.eq("productCategoryEventId.productCategoryId", idObj));
+        criteria.add(Restrictions.le("productCategoryEventId.version", version));
+        criteria.addOrder(Order.asc("productCategoryEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
             ((AbstractProductCategoryStateEvent) e).setStateEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractProductCategoryStateEvent) es.get(es.size() - 1)).getStateEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractProductCategoryStateEvent) es.get(es.size() - 1)).getProductCategoryEventId().getVersion());
         } else {
             //todo?
         }

@@ -8,22 +8,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractLocatorStateEvent extends AbstractStateEvent implements LocatorStateEvent 
 {
-    private LocatorEventId stateEventId;
+    private LocatorEventId locatorEventId;
 
-    public LocatorEventId getStateEventId() {
-        return this.stateEventId;
+    public LocatorEventId getLocatorEventId() {
+        return this.locatorEventId;
     }
 
-    public void setStateEventId(LocatorEventId eventId) {
-        this.stateEventId = eventId;
+    public void setLocatorEventId(LocatorEventId eventId) {
+        this.locatorEventId = eventId;
     }
     
     public String getLocatorId() {
-        return getStateEventId().getLocatorId();
+        return getLocatorEventId().getLocatorId();
     }
 
     public void setLocatorId(String locatorId) {
-        getStateEventId().setLocatorId(locatorId);
+        getLocatorEventId().setLocatorId(locatorId);
     }
 
     private boolean stateEventReadOnly;
@@ -191,7 +191,7 @@ public abstract class AbstractLocatorStateEvent extends AbstractStateEvent imple
     }
 
     protected AbstractLocatorStateEvent(LocatorEventId eventId) {
-        this.stateEventId = eventId;
+        this.locatorEventId = eventId;
     }
 
 

@@ -16,31 +16,31 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 	public abstract class UserPermissionMvoStateEventDtoBase : IStateEventDto, IUserPermissionMvoStateCreated, IUserPermissionMvoStateMergePatched, IUserPermissionMvoStateDeleted
 	{
 
-        private UserPermissionMvoEventIdDto _stateEventId;
+        private UserPermissionMvoEventIdDto _userPermissionMvoEventId;
 
-		protected internal virtual UserPermissionMvoEventIdDto StateEventId 
+		protected internal virtual UserPermissionMvoEventIdDto UserPermissionMvoEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new UserPermissionMvoEventIdDto(); }
-                return _stateEventId;
+                if (_userPermissionMvoEventId == null) { _userPermissionMvoEventId = new UserPermissionMvoEventIdDto(); }
+                return _userPermissionMvoEventId;
             }
             set
             {
-                _stateEventId = value;
+                _userPermissionMvoEventId = value;
             }
         }
 
         public virtual UserPermissionIdDto UserPermissionId
         {
-            get { return StateEventId.UserPermissionId; }
-            set { StateEventId.UserPermissionId = value; }
+            get { return UserPermissionMvoEventId.UserPermissionId; }
+            set { UserPermissionMvoEventId.UserPermissionId = value; }
         }
 
         public virtual long UserVersion
         {
-            get { return StateEventId.UserVersion; }
-            set { StateEventId.UserVersion = value; }
+            get { return UserPermissionMvoEventId.UserVersion; }
+            set { UserPermissionMvoEventId.UserVersion = value; }
         }
 
 		public virtual long? Version { get; set; }
@@ -92,7 +92,7 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 		UserPermissionMvoEventId IGlobalIdentity<UserPermissionMvoEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToUserPermissionMvoEventId();
+				return this.UserPermissionMvoEventId.ToUserPermissionMvoEventId();
 			}
 		}
 
@@ -490,9 +490,9 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 		}
 
 
-        UserPermissionMvoEventId IUserPermissionMvoStateEvent.StateEventId
+        UserPermissionMvoEventId IUserPermissionMvoStateEvent.UserPermissionMvoEventId
         {
-            get { return this.StateEventId.ToUserPermissionMvoEventId(); }
+            get { return this.UserPermissionMvoEventId.ToUserPermissionMvoEventId(); }
         }
 
         protected UserPermissionMvoStateEventDtoBase()
@@ -501,7 +501,7 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 
         protected UserPermissionMvoStateEventDtoBase(UserPermissionMvoEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.UserPermissionMvoEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

@@ -141,7 +141,7 @@ public abstract class AbstractPartyState implements PartyState
     public AbstractPartyState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setPartyId(((PartyStateEvent) events.get(0)).getStateEventId().getPartyId());
+            this.setPartyId(((PartyStateEvent) events.get(0)).getPartyEventId().getPartyId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -240,16 +240,16 @@ public abstract class AbstractPartyState implements PartyState
     protected void throwOnWrongEvent(PartyStateEvent stateEvent)
     {
         String stateEntityId = this.getPartyId(); // Aggregate Id
-        String eventEntityId = stateEvent.getStateEventId().getPartyId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        String eventEntityId = stateEvent.getPartyEventId().getPartyId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getStateEventId().getVersion();// Aggregate Version
+        Long eventVersion = stateEvent.getPartyEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getStateEventId().getVersion() == null");
+            throw new NullPointerException("stateEvent.getPartyEventId().getVersion() == null");
         }
         if (!(stateVersion == null && eventVersion.equals(PartyState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
         {

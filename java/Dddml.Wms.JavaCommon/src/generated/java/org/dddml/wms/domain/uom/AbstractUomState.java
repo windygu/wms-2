@@ -165,7 +165,7 @@ public abstract class AbstractUomState implements UomState
     public AbstractUomState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setUomId(((UomStateEvent) events.get(0)).getStateEventId().getUomId());
+            this.setUomId(((UomStateEvent) events.get(0)).getUomEventId().getUomId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -288,16 +288,16 @@ public abstract class AbstractUomState implements UomState
     protected void throwOnWrongEvent(UomStateEvent stateEvent)
     {
         String stateEntityId = this.getUomId(); // Aggregate Id
-        String eventEntityId = stateEvent.getStateEventId().getUomId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        String eventEntityId = stateEvent.getUomEventId().getUomId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getStateEventId().getVersion();// Aggregate Version
+        Long eventVersion = stateEvent.getUomEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getStateEventId().getVersion() == null");
+            throw new NullPointerException("stateEvent.getUomEventId().getVersion() == null");
         }
         if (!(stateVersion == null && eventVersion.equals(UomState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
         {

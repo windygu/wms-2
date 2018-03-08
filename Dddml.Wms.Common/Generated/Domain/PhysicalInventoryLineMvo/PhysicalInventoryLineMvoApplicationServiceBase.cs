@@ -60,7 +60,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
         public virtual void Initialize(IPhysicalInventoryLineMvoStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.PhysicalInventoryLineId;
+            var aggregateId = stateCreated.PhysicalInventoryLineMvoEventId.PhysicalInventoryLineId;
             var state = new PhysicalInventoryLineMvoState();
             state.PhysicalInventoryLineId = aggregateId;
             var aggregate = (PhysicalInventoryLineMvoAggregate)GetPhysicalInventoryLineMvoAggregate(state);

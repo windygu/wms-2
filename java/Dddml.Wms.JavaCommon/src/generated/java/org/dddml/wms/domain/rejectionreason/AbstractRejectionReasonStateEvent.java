@@ -8,22 +8,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractRejectionReasonStateEvent extends AbstractStateEvent implements RejectionReasonStateEvent 
 {
-    private RejectionReasonEventId stateEventId;
+    private RejectionReasonEventId rejectionReasonEventId;
 
-    public RejectionReasonEventId getStateEventId() {
-        return this.stateEventId;
+    public RejectionReasonEventId getRejectionReasonEventId() {
+        return this.rejectionReasonEventId;
     }
 
-    public void setStateEventId(RejectionReasonEventId eventId) {
-        this.stateEventId = eventId;
+    public void setRejectionReasonEventId(RejectionReasonEventId eventId) {
+        this.rejectionReasonEventId = eventId;
     }
     
     public String getRejectionReasonId() {
-        return getStateEventId().getRejectionReasonId();
+        return getRejectionReasonEventId().getRejectionReasonId();
     }
 
     public void setRejectionReasonId(String rejectionReasonId) {
-        getStateEventId().setRejectionReasonId(rejectionReasonId);
+        getRejectionReasonEventId().setRejectionReasonId(rejectionReasonId);
     }
 
     private boolean stateEventReadOnly;
@@ -95,7 +95,7 @@ public abstract class AbstractRejectionReasonStateEvent extends AbstractStateEve
     }
 
     protected AbstractRejectionReasonStateEvent(RejectionReasonEventId eventId) {
-        this.stateEventId = eventId;
+        this.rejectionReasonEventId = eventId;
     }
 
 

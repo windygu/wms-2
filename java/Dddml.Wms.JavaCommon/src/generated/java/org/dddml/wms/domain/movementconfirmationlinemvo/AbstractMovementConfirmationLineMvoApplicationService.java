@@ -140,7 +140,7 @@ public abstract class AbstractMovementConfirmationLineMvoApplicationService impl
     }
 
     public void initialize(MovementConfirmationLineMvoStateEvent.MovementConfirmationLineMvoStateCreated stateCreated) {
-        MovementConfirmationLineId aggregateId = stateCreated.getStateEventId().getMovementConfirmationLineId();
+        MovementConfirmationLineId aggregateId = stateCreated.getMovementConfirmationLineMvoEventId().getMovementConfirmationLineId();
         MovementConfirmationLineMvoState state = new AbstractMovementConfirmationLineMvoState.SimpleMovementConfirmationLineMvoState();
         state.setMovementConfirmationLineId(aggregateId);
 
@@ -148,7 +148,7 @@ public abstract class AbstractMovementConfirmationLineMvoApplicationService impl
         ((AbstractMovementConfirmationLineMvoAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getStateEventId().getMovementConfirmationVersion(), aggregate, state);
+        persist(eventStoreAggregateId, stateCreated.getMovementConfirmationLineMvoEventId().getMovementConfirmationVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(MovementConfirmationLineMvoCommand command, EventStoreAggregateId eventStoreAggregateId, MovementConfirmationLineMvoState state)

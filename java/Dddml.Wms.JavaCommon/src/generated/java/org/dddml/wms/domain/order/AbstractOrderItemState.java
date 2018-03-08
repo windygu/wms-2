@@ -1033,14 +1033,14 @@ public abstract class AbstractOrderItemState implements OrderItemState
     protected void throwOnWrongEvent(OrderItemStateEvent stateEvent)
     {
         String stateEntityIdOrderId = this.getOrderItemId().getOrderId();
-        String eventEntityIdOrderId = stateEvent.getStateEventId().getOrderId();
+        String eventEntityIdOrderId = stateEvent.getOrderItemEventId().getOrderId();
         if (!stateEntityIdOrderId.equals(eventEntityIdOrderId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id OrderId %1$s in state but entity id OrderId %2$s in event", stateEntityIdOrderId, eventEntityIdOrderId);
         }
 
         String stateEntityIdOrderItemSeqId = this.getOrderItemId().getOrderItemSeqId();
-        String eventEntityIdOrderItemSeqId = stateEvent.getStateEventId().getOrderItemSeqId();
+        String eventEntityIdOrderItemSeqId = stateEvent.getOrderItemEventId().getOrderItemSeqId();
         if (!stateEntityIdOrderItemSeqId.equals(eventEntityIdOrderItemSeqId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id OrderItemSeqId %1$s in state but entity id OrderItemSeqId %2$s in event", stateEntityIdOrderItemSeqId, eventEntityIdOrderItemSeqId);

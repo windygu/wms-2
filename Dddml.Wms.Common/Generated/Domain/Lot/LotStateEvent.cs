@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.Lot
 	public abstract class LotStateEventBase : ILotStateEvent
 	{
 
-		public virtual LotEventId StateEventId { get; set; }
+		public virtual LotEventId LotEventId { get; set; }
 
         public virtual string LotId
         {
-            get { return StateEventId.LotId; }
-            set { StateEventId.LotId = value; }
+            get { return LotEventId.LotId; }
+            set { LotEventId.LotId = value; }
         }
 
 		public virtual decimal? Quantity { get; set; }
@@ -40,7 +40,7 @@ namespace Dddml.Wms.Domain.Lot
 		LotEventId IGlobalIdentity<LotEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.LotEventId;
 			}
 		}
 
@@ -83,7 +83,7 @@ namespace Dddml.Wms.Domain.Lot
 
         protected LotStateEventBase(LotEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.LotEventId = stateEventId;
         }
 
 

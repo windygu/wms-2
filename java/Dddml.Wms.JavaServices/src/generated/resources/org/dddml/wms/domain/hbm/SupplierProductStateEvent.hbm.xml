@@ -8,7 +8,7 @@
   
   <class name="AbstractSupplierProductStateEvent" table="SupplierProductStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="stateEventId" class="org.dddml.wms.domain.supplierproduct.SupplierProductEventId">
+	<composite-id name="supplierProductEventId" class="org.dddml.wms.domain.supplierproduct.SupplierProductEventId">
 		<key-property name="supplierProductIdProductId" ><column name="SupplierProductIdProductId" sql-type="VARCHAR(60)" /></key-property>
 		<key-property name="supplierProductIdPartyId" ><column name="SupplierProductIdPartyId" sql-type="VARCHAR(20)" /></key-property>
 		<key-property name="supplierProductIdCurrencyUomId" ><column name="SupplierProductIdCurrencyUomId" sql-type="VARCHAR(20)" /></key-property>

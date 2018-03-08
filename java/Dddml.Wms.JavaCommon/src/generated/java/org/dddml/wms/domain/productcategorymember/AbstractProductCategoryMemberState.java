@@ -165,7 +165,7 @@ public abstract class AbstractProductCategoryMemberState implements ProductCateg
     public AbstractProductCategoryMemberState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setProductCategoryMemberId(((ProductCategoryMemberStateEvent) events.get(0)).getStateEventId().getProductCategoryMemberId());
+            this.setProductCategoryMemberId(((ProductCategoryMemberStateEvent) events.get(0)).getProductCategoryMemberEventId().getProductCategoryMemberId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -286,16 +286,16 @@ public abstract class AbstractProductCategoryMemberState implements ProductCateg
     protected void throwOnWrongEvent(ProductCategoryMemberStateEvent stateEvent)
     {
         ProductCategoryMemberId stateEntityId = this.getProductCategoryMemberId(); // Aggregate Id
-        ProductCategoryMemberId eventEntityId = stateEvent.getStateEventId().getProductCategoryMemberId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        ProductCategoryMemberId eventEntityId = stateEvent.getProductCategoryMemberEventId().getProductCategoryMemberId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getStateEventId().getVersion();// Aggregate Version
+        Long eventVersion = stateEvent.getProductCategoryMemberEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getStateEventId().getVersion() == null");
+            throw new NullPointerException("stateEvent.getProductCategoryMemberEventId().getVersion() == null");
         }
         if (!(stateVersion == null && eventVersion.equals(ProductCategoryMemberState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
         {

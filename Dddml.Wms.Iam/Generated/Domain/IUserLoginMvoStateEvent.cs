@@ -14,7 +14,7 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 {
 	public interface IUserLoginMvoStateEvent : IEvent, IStateEventDto, IGlobalIdentity<UserLoginMvoEventId>, ICreated<string>
 	{
-		UserLoginMvoEventId StateEventId { get; }
+		UserLoginMvoEventId UserLoginMvoEventId { get; }
 
         bool ReadOnly { get; set; }
 

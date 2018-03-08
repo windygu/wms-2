@@ -5,7 +5,7 @@
   
   <class name="ProductCategoryStateEventBase" table="ProductCategoryStateEvents" mutable="false" abstract="true">
 
-    <composite-id name="StateEventId" class="Dddml.Wms.Domain.ProductCategory.ProductCategoryEventId">
+    <composite-id name="ProductCategoryEventId" class="Dddml.Wms.Domain.ProductCategory.ProductCategoryEventId">
         <key-property name="ProductCategoryId" ><column name="ProductCategoryId" sql-type="VARCHAR(20)" /></key-property>
         <key-property name="Version" ></key-property>
     </composite-id>

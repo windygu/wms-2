@@ -8,15 +8,15 @@ import org.dddml.wms.domain.AbstractStateEvent;
 public class InventoryItemStateEventDto extends AbstractStateEvent
 {
 
-    private InventoryItemEventId stateEventId;
+    private InventoryItemEventId inventoryItemEventId;
 
     InventoryItemEventId getStateEventId() {
-        if (stateEventId == null) { stateEventId = new InventoryItemEventId(); }
-        return stateEventId;
+        if (inventoryItemEventId == null) { inventoryItemEventId = new InventoryItemEventId(); }
+        return inventoryItemEventId;
     }
 
-    void setStateEventId(InventoryItemEventId eventId) {
-        this.stateEventId = eventId;
+    void setInventoryItemEventId(InventoryItemEventId eventId) {
+        this.inventoryItemEventId = eventId;
     }
 
     public InventoryItemId getInventoryItemId() {

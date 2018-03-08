@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.MovementType
 	public abstract class MovementTypeStateEventBase : IMovementTypeStateEvent
 	{
 
-		public virtual MovementTypeEventId StateEventId { get; set; }
+		public virtual MovementTypeEventId MovementTypeEventId { get; set; }
 
         public virtual string MovementTypeId
         {
-            get { return StateEventId.MovementTypeId; }
-            set { StateEventId.MovementTypeId = value; }
+            get { return MovementTypeEventId.MovementTypeId; }
+            set { MovementTypeEventId.MovementTypeId = value; }
         }
 
 		public virtual string Description { get; set; }
@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.MovementType
 		MovementTypeEventId IGlobalIdentity<MovementTypeEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.MovementTypeEventId;
 			}
 		}
 
@@ -81,7 +81,7 @@ namespace Dddml.Wms.Domain.MovementType
 
         protected MovementTypeStateEventBase(MovementTypeEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.MovementTypeEventId = stateEventId;
         }
 
 

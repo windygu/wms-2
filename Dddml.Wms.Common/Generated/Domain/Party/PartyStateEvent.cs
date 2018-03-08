@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.Party
 	public abstract class PartyStateEventBase : IPartyStateEvent
 	{
 
-		public virtual PartyEventId StateEventId { get; set; }
+		public virtual PartyEventId PartyEventId { get; set; }
 
         public virtual string PartyId
         {
-            get { return StateEventId.PartyId; }
-            set { StateEventId.PartyId = value; }
+            get { return PartyEventId.PartyId; }
+            set { PartyEventId.PartyId = value; }
         }
 
 		public virtual string PartyTypeId { get; set; }
@@ -46,7 +46,7 @@ namespace Dddml.Wms.Domain.Party
 		PartyEventId IGlobalIdentity<PartyEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.PartyEventId;
 			}
 		}
 
@@ -89,7 +89,7 @@ namespace Dddml.Wms.Domain.Party
 
         protected PartyStateEventBase(PartyEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.PartyEventId = stateEventId;
         }
 
 

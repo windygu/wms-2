@@ -115,7 +115,7 @@ public abstract class AbstractSellableInventoryItemApplicationService implements
     }
 
     public void initialize(SellableInventoryItemStateEvent.SellableInventoryItemStateCreated stateCreated) {
-        InventoryItemId aggregateId = stateCreated.getStateEventId().getSellableInventoryItemId();
+        InventoryItemId aggregateId = stateCreated.getSellableInventoryItemEventId().getSellableInventoryItemId();
         SellableInventoryItemState state = new AbstractSellableInventoryItemState.SimpleSellableInventoryItemState();
         state.setSellableInventoryItemId(aggregateId);
 
@@ -123,7 +123,7 @@ public abstract class AbstractSellableInventoryItemApplicationService implements
         ((AbstractSellableInventoryItemAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getStateEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, stateCreated.getSellableInventoryItemEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(SellableInventoryItemCommand command, EventStoreAggregateId eventStoreAggregateId, SellableInventoryItemState state)

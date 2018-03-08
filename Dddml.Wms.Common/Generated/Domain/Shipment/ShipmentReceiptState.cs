@@ -394,7 +394,7 @@ namespace Dddml.Wms.Domain.Shipment
             id.Append("[").Append("ShipmentReceipt|");
 
             var stateEntityIdShipmentId = (this as IGlobalIdentity<ShipmentReceiptId>).GlobalId.ShipmentId;
-            var eventEntityIdShipmentId = stateEvent.StateEventId.ShipmentId;
+            var eventEntityIdShipmentId = stateEvent.ShipmentReceiptEventId.ShipmentId;
             if (stateEntityIdShipmentId != eventEntityIdShipmentId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id ShipmentId {0} in state but entity id ShipmentId {1} in event", stateEntityIdShipmentId, eventEntityIdShipmentId);
@@ -402,7 +402,7 @@ namespace Dddml.Wms.Domain.Shipment
             id.Append(stateEntityIdShipmentId).Append(",");
 
             var stateEntityIdReceiptSeqId = (this as IGlobalIdentity<ShipmentReceiptId>).GlobalId.ReceiptSeqId;
-            var eventEntityIdReceiptSeqId = stateEvent.StateEventId.ReceiptSeqId;
+            var eventEntityIdReceiptSeqId = stateEvent.ShipmentReceiptEventId.ReceiptSeqId;
             if (stateEntityIdReceiptSeqId != eventEntityIdReceiptSeqId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id ReceiptSeqId {0} in state but entity id ReceiptSeqId {1} in event", stateEntityIdReceiptSeqId, eventEntityIdReceiptSeqId);

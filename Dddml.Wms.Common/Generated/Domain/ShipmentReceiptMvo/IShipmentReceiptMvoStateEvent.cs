@@ -14,7 +14,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 {
 	public interface IShipmentReceiptMvoStateEvent : IEvent, IStateEventDto, IGlobalIdentity<ShipmentReceiptMvoEventId>, ICreated<string>
 	{
-		ShipmentReceiptMvoEventId StateEventId { get; }
+		ShipmentReceiptMvoEventId ShipmentReceiptMvoEventId { get; }
 
         bool ReadOnly { get; set; }
 

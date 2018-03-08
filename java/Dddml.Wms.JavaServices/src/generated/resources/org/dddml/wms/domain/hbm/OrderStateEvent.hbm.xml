@@ -8,7 +8,7 @@
   
   <class name="AbstractOrderStateEvent" table="OrderStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="stateEventId" class="org.dddml.wms.domain.order.OrderEventId">
+	<composite-id name="orderEventId" class="org.dddml.wms.domain.order.OrderEventId">
 		<key-property name="orderId" ><column name="OrderId" sql-type="VARCHAR(20)" /></key-property>
 		<key-property name="version" ></key-property>
 	</composite-id>

@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 	public abstract class OrganizationStructureTypeStateEventBase : IOrganizationStructureTypeStateEvent
 	{
 
-		public virtual OrganizationStructureTypeEventId StateEventId { get; set; }
+		public virtual OrganizationStructureTypeEventId OrganizationStructureTypeEventId { get; set; }
 
         public virtual string Id
         {
-            get { return StateEventId.Id; }
-            set { StateEventId.Id = value; }
+            get { return OrganizationStructureTypeEventId.Id; }
+            set { OrganizationStructureTypeEventId.Id = value; }
         }
 
 		public virtual string Description { get; set; }
@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 		OrganizationStructureTypeEventId IGlobalIdentity<OrganizationStructureTypeEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.OrganizationStructureTypeEventId;
 			}
 		}
 
@@ -81,7 +81,7 @@ namespace Dddml.Wms.Domain.OrganizationStructureType
 
         protected OrganizationStructureTypeStateEventBase(OrganizationStructureTypeEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.OrganizationStructureTypeEventId = stateEventId;
         }
 
 

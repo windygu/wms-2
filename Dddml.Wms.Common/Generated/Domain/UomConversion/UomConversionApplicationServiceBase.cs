@@ -59,7 +59,7 @@ namespace Dddml.Wms.Domain.UomConversion
 
         public virtual void Initialize(IUomConversionStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.UomConversionId;
+            var aggregateId = stateCreated.UomConversionEventId.UomConversionId;
             var state = new UomConversionState();
             state.UomConversionId = aggregateId;
             var aggregate = (UomConversionAggregate)GetUomConversionAggregate(state);

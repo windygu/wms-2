@@ -17,12 +17,12 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 	public abstract class InventoryItemRequirementEntryMvoStateEventBase : IInventoryItemRequirementEntryMvoStateEvent
 	{
 
-		public virtual InventoryItemRequirementEntryMvoEventId StateEventId { get; set; }
+		public virtual InventoryItemRequirementEntryMvoEventId InventoryItemRequirementEntryMvoEventId { get; set; }
 
         public virtual InventoryItemRequirementEntryId InventoryItemRequirementEntryId
         {
-            get { return StateEventId.InventoryItemRequirementEntryId; }
-            set { StateEventId.InventoryItemRequirementEntryId = value; }
+            get { return InventoryItemRequirementEntryMvoEventId.InventoryItemRequirementEntryId; }
+            set { InventoryItemRequirementEntryMvoEventId.InventoryItemRequirementEntryId = value; }
         }
 
 		public virtual decimal? Quantity { get; set; }
@@ -52,7 +52,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 		InventoryItemRequirementEntryMvoEventId IGlobalIdentity<InventoryItemRequirementEntryMvoEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.InventoryItemRequirementEntryMvoEventId;
 			}
 		}
 
@@ -95,7 +95,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 
         protected InventoryItemRequirementEntryMvoStateEventBase(InventoryItemRequirementEntryMvoEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.InventoryItemRequirementEntryMvoEventId = stateEventId;
         }
 
 

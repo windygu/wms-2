@@ -60,7 +60,7 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 
         public virtual void Initialize(IUserRoleMvoStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.UserRoleId;
+            var aggregateId = stateCreated.UserRoleMvoEventId.UserRoleId;
             var state = new UserRoleMvoState();
             state.UserRoleId = aggregateId;
             var aggregate = (UserRoleMvoAggregate)GetUserRoleMvoAggregate(state);

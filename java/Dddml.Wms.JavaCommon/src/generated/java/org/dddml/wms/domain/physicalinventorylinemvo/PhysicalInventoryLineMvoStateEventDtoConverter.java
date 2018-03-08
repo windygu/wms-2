@@ -26,7 +26,7 @@ public class PhysicalInventoryLineMvoStateEventDtoConverter {
 
     public PhysicalInventoryLineMvoStateEventDto.PhysicalInventoryLineMvoStateCreatedDto toPhysicalInventoryLineMvoStateCreatedDto(PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateCreated e) {
         PhysicalInventoryLineMvoStateEventDto.PhysicalInventoryLineMvoStateCreatedDto dto = new PhysicalInventoryLineMvoStateEventDto.PhysicalInventoryLineMvoStateCreatedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setPhysicalInventoryLineMvoEventId(e.getPhysicalInventoryLineMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -60,7 +60,7 @@ public class PhysicalInventoryLineMvoStateEventDtoConverter {
 
     public PhysicalInventoryLineMvoStateEventDto.PhysicalInventoryLineMvoStateMergePatchedDto toPhysicalInventoryLineMvoStateMergePatchedDto(PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateMergePatched e) {
         PhysicalInventoryLineMvoStateEventDto.PhysicalInventoryLineMvoStateMergePatchedDto dto = new PhysicalInventoryLineMvoStateEventDto.PhysicalInventoryLineMvoStateMergePatchedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setPhysicalInventoryLineMvoEventId(e.getPhysicalInventoryLineMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -120,7 +120,7 @@ public class PhysicalInventoryLineMvoStateEventDtoConverter {
 
     public PhysicalInventoryLineMvoStateEventDto.PhysicalInventoryLineMvoStateDeletedDto toPhysicalInventoryLineMvoStateDeletedDto(PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateDeleted e) {
         PhysicalInventoryLineMvoStateEventDto.PhysicalInventoryLineMvoStateDeletedDto dto = new PhysicalInventoryLineMvoStateEventDto.PhysicalInventoryLineMvoStateDeletedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setPhysicalInventoryLineMvoEventId(e.getPhysicalInventoryLineMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());

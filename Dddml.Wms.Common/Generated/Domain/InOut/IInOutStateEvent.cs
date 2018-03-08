@@ -13,7 +13,7 @@ namespace Dddml.Wms.Domain.InOut
 {
 	public interface IInOutStateEvent : IEvent, IStateEventDto, IGlobalIdentity<InOutEventId>, ICreated<string>
 	{
-		InOutEventId StateEventId { get; }
+		InOutEventId InOutEventId { get; }
 
         bool ReadOnly { get; set; }
 

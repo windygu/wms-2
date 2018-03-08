@@ -166,7 +166,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
         {
             if (events != null && events.Count() > 0)
             {
-                this.DocumentNumber = ((IMovementConfirmationStateEvent)events.First()).StateEventId.DocumentNumber;
+                this.DocumentNumber = ((IMovementConfirmationStateEvent)events.First()).MovementConfirmationEventId.DocumentNumber;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -401,7 +401,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             id.Append("[").Append("MovementConfirmation|");
 
             var stateEntityId = this.DocumentNumber; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.DocumentNumber;
+            var eventEntityId = stateEvent.MovementConfirmationEventId.DocumentNumber;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -411,7 +411,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             id.Append("]");
 
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.StateEventId.Version;
+            var eventVersion = stateEvent.MovementConfirmationEventId.Version;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

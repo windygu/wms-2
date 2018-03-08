@@ -13,7 +13,7 @@ namespace Dddml.Wms.Domain.Role
 {
 	public interface IRoleStateEvent : IEvent, IStateEventDto, IGlobalIdentity<RoleEventId>, ICreated<string>
 	{
-		RoleEventId StateEventId { get; }
+		RoleEventId RoleEventId { get; }
 
         bool ReadOnly { get; set; }
 

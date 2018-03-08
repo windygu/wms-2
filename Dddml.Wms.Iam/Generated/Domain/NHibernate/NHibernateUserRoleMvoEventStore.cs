@@ -40,10 +40,10 @@ namespace Dddml.Wms.Domain.UserRoleMvo.NHibernate
             }
             UserRoleId idObj = (UserRoleId)(eventStoreAggregateId as EventStoreAggregateId).Id;
             var criteria = CurrentSession.CreateCriteria<UserRoleMvoStateEventBase>();
-            criteria.Add(Restrictions.Eq("StateEventId.UserRoleIdUserId", idObj.UserId));
-            criteria.Add(Restrictions.Eq("StateEventId.UserRoleIdRoleId", idObj.RoleId));
-            criteria.Add(Restrictions.Le("StateEventId.UserVersion", version));
-            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.UserVersion"));
+            criteria.Add(Restrictions.Eq("UserRoleMvoEventId.UserRoleIdUserId", idObj.UserId));
+            criteria.Add(Restrictions.Eq("UserRoleMvoEventId.UserRoleIdRoleId", idObj.RoleId));
+            criteria.Add(Restrictions.Le("UserRoleMvoEventId.UserVersion", version));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("UserRoleMvoEventId.UserVersion"));
             var es = criteria.List<IEvent>();
             foreach (UserRoleMvoStateEventBase e in es)
             {
@@ -51,7 +51,7 @@ namespace Dddml.Wms.Domain.UserRoleMvo.NHibernate
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((UserRoleMvoStateEventBase)es.Last()).StateEventId.UserVersion : default(long),
+                SteamVersion = es.Count > 0 ? ((UserRoleMvoStateEventBase)es.Last()).UserRoleMvoEventId.UserVersion : default(long),
                 Events = es
             };
         }

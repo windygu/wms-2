@@ -38,8 +38,8 @@ public class HibernateShipmentReceiptStateEventDao implements ShipmentReceiptSta
     {
         Criteria criteria = getCurrentSession().createCriteria(AbstractShipmentReceiptStateEvent.class);
         Junction partIdCondition = Restrictions.conjunction()
-            .add(Restrictions.eq("stateEventId.shipmentId", shipmentEventId.getShipmentId()))
-            .add(Restrictions.eq("stateEventId.shipmentVersion", shipmentEventId.getVersion()))
+            .add(Restrictions.eq("shipmentReceiptEventId.shipmentId", shipmentEventId.getShipmentId()))
+            .add(Restrictions.eq("shipmentReceiptEventId.shipmentVersion", shipmentEventId.getVersion()))
             ;
         return criteria.add(partIdCondition).list();
     }

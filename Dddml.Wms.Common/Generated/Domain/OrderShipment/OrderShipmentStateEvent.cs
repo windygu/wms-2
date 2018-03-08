@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.OrderShipment
 	public abstract class OrderShipmentStateEventBase : IOrderShipmentStateEvent
 	{
 
-		public virtual OrderShipmentEventId StateEventId { get; set; }
+		public virtual OrderShipmentEventId OrderShipmentEventId { get; set; }
 
         public virtual OrderShipmentId OrderShipmentId
         {
-            get { return StateEventId.OrderShipmentId; }
-            set { StateEventId.OrderShipmentId = value; }
+            get { return OrderShipmentEventId.OrderShipmentId; }
+            set { OrderShipmentEventId.OrderShipmentId = value; }
         }
 
 		public virtual decimal? Quantity { get; set; }
@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.OrderShipment
 		OrderShipmentEventId IGlobalIdentity<OrderShipmentEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.OrderShipmentEventId;
 			}
 		}
 
@@ -81,7 +81,7 @@ namespace Dddml.Wms.Domain.OrderShipment
 
         protected OrderShipmentStateEventBase(OrderShipmentEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.OrderShipmentEventId = stateEventId;
         }
 
 

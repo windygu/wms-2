@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.Locator
         {
             if (events != null && events.Count() > 0)
             {
-                this.LocatorId = ((ILocatorStateEvent)events.First()).StateEventId.LocatorId;
+                this.LocatorId = ((ILocatorStateEvent)events.First()).LocatorEventId.LocatorId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -361,7 +361,7 @@ namespace Dddml.Wms.Domain.Locator
             id.Append("[").Append("Locator|");
 
             var stateEntityId = this.LocatorId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.LocatorId;
+            var eventEntityId = stateEvent.LocatorEventId.LocatorId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -371,7 +371,7 @@ namespace Dddml.Wms.Domain.Locator
             id.Append("]");
 
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.StateEventId.Version;
+            var eventVersion = stateEvent.LocatorEventId.Version;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

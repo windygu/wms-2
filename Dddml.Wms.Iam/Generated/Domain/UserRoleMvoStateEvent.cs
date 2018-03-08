@@ -16,12 +16,12 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 	public abstract class UserRoleMvoStateEventBase : IUserRoleMvoStateEvent
 	{
 
-		public virtual UserRoleMvoEventId StateEventId { get; set; }
+		public virtual UserRoleMvoEventId UserRoleMvoEventId { get; set; }
 
         public virtual UserRoleId UserRoleId
         {
-            get { return StateEventId.UserRoleId; }
-            set { StateEventId.UserRoleId = value; }
+            get { return UserRoleMvoEventId.UserRoleId; }
+            set { UserRoleMvoEventId.UserRoleId = value; }
         }
 
 		public virtual long? Version { get; set; }
@@ -73,7 +73,7 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 		UserRoleMvoEventId IGlobalIdentity<UserRoleMvoEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.UserRoleMvoEventId;
 			}
 		}
 
@@ -116,7 +116,7 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 
         protected UserRoleMvoStateEventBase(UserRoleMvoEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.UserRoleMvoEventId = stateEventId;
         }
 
 

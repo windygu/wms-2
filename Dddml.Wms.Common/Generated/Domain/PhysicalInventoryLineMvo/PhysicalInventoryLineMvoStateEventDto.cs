@@ -16,31 +16,31 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 	public abstract class PhysicalInventoryLineMvoStateEventDtoBase : IStateEventDto, IPhysicalInventoryLineMvoStateCreated, IPhysicalInventoryLineMvoStateMergePatched, IPhysicalInventoryLineMvoStateDeleted
 	{
 
-        private PhysicalInventoryLineMvoEventIdDto _stateEventId;
+        private PhysicalInventoryLineMvoEventIdDto _physicalInventoryLineMvoEventId;
 
-		protected internal virtual PhysicalInventoryLineMvoEventIdDto StateEventId 
+		protected internal virtual PhysicalInventoryLineMvoEventIdDto PhysicalInventoryLineMvoEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new PhysicalInventoryLineMvoEventIdDto(); }
-                return _stateEventId;
+                if (_physicalInventoryLineMvoEventId == null) { _physicalInventoryLineMvoEventId = new PhysicalInventoryLineMvoEventIdDto(); }
+                return _physicalInventoryLineMvoEventId;
             }
             set
             {
-                _stateEventId = value;
+                _physicalInventoryLineMvoEventId = value;
             }
         }
 
         public virtual PhysicalInventoryLineIdDto PhysicalInventoryLineId
         {
-            get { return StateEventId.PhysicalInventoryLineId; }
-            set { StateEventId.PhysicalInventoryLineId = value; }
+            get { return PhysicalInventoryLineMvoEventId.PhysicalInventoryLineId; }
+            set { PhysicalInventoryLineMvoEventId.PhysicalInventoryLineId = value; }
         }
 
         public virtual long PhysicalInventoryVersion
         {
-            get { return StateEventId.PhysicalInventoryVersion; }
-            set { StateEventId.PhysicalInventoryVersion = value; }
+            get { return PhysicalInventoryLineMvoEventId.PhysicalInventoryVersion; }
+            set { PhysicalInventoryLineMvoEventId.PhysicalInventoryVersion = value; }
         }
 
 		public virtual decimal? BookQuantity { get; set; }
@@ -104,7 +104,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 		PhysicalInventoryLineMvoEventId IGlobalIdentity<PhysicalInventoryLineMvoEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToPhysicalInventoryLineMvoEventId();
+				return this.PhysicalInventoryLineMvoEventId.ToPhysicalInventoryLineMvoEventId();
 			}
 		}
 
@@ -616,9 +616,9 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 		}
 
 
-        PhysicalInventoryLineMvoEventId IPhysicalInventoryLineMvoStateEvent.StateEventId
+        PhysicalInventoryLineMvoEventId IPhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoEventId
         {
-            get { return this.StateEventId.ToPhysicalInventoryLineMvoEventId(); }
+            get { return this.PhysicalInventoryLineMvoEventId.ToPhysicalInventoryLineMvoEventId(); }
         }
 
         protected PhysicalInventoryLineMvoStateEventDtoBase()
@@ -627,7 +627,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
         protected PhysicalInventoryLineMvoStateEventDtoBase(PhysicalInventoryLineMvoEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.PhysicalInventoryLineMvoEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

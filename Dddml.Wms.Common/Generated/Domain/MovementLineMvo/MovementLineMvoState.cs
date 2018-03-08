@@ -152,7 +152,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
         {
             if (events != null && events.Count() > 0)
             {
-                this.MovementLineId = ((IMovementLineMvoStateEvent)events.First()).StateEventId.MovementLineId;
+                this.MovementLineId = ((IMovementLineMvoStateEvent)events.First()).MovementLineMvoEventId.MovementLineId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -708,7 +708,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
             id.Append("[").Append("MovementLineMvo|");
 
             var stateEntityId = this.MovementLineId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.MovementLineId;
+            var eventEntityId = stateEvent.MovementLineMvoEventId.MovementLineId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -718,7 +718,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
             id.Append("]");
 
             var stateVersion = this.MovementVersion;
-            var eventVersion = stateEvent.StateEventId.MovementVersion;
+            var eventVersion = stateEvent.MovementLineMvoEventId.MovementVersion;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

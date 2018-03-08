@@ -13,7 +13,7 @@ namespace Dddml.Wms.Domain.MovementType
 {
 	public interface IMovementTypeStateEvent : IEvent, IStateEventDto, IGlobalIdentity<MovementTypeEventId>, ICreated<string>
 	{
-		MovementTypeEventId StateEventId { get; }
+		MovementTypeEventId MovementTypeEventId { get; }
 
         bool ReadOnly { get; set; }
 

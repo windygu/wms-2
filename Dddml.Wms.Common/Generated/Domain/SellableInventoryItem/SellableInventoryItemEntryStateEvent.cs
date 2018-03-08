@@ -21,7 +21,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
         public virtual SellableInventoryItemEntryState SellableInventoryItemEntryState { get { return _state; } }
 
-        public virtual SellableInventoryItemEntryEventId StateEventId
+        public virtual SellableInventoryItemEntryEventId SellableInventoryItemEntryEventId
         {
             get
             {
@@ -37,8 +37,8 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
         public virtual long EntrySeqId
         {
-            get { return StateEventId.EntrySeqId; }
-            set { StateEventId.EntrySeqId = value; }
+            get { return SellableInventoryItemEntryEventId.EntrySeqId; }
+            set { SellableInventoryItemEntryEventId.EntrySeqId = value; }
         }
 
         public virtual decimal? SellableQuantity { get { return _state.SellableQuantity; } set { _state.SellableQuantity = (value != null && value.HasValue) ? value.Value : default(decimal); } }
@@ -56,7 +56,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 		SellableInventoryItemEntryEventId IGlobalIdentity<SellableInventoryItemEntryEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.SellableInventoryItemEntryEventId;
 			}
 		}
 
@@ -101,7 +101,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
         protected SellableInventoryItemEntryStateEventBase(SellableInventoryItemEntryEventId stateEventId) : this(new SellableInventoryItemEntryState())
         {
-            this.StateEventId = stateEventId;
+            this.SellableInventoryItemEntryEventId = stateEventId;
         }
 
         protected SellableInventoryItemEntryStateEventBase(SellableInventoryItemEntryState state)

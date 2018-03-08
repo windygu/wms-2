@@ -17,25 +17,25 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 	public abstract class SellableInventoryItemEntryStateEventDtoBase : IStateEventDto, ISellableInventoryItemEntryStateCreated
 	{
 
-        private SellableInventoryItemEntryEventIdDto _stateEventId;
+        private SellableInventoryItemEntryEventIdDto _sellableInventoryItemEntryEventId;
 
-		protected internal virtual SellableInventoryItemEntryEventIdDto StateEventId 
+		protected internal virtual SellableInventoryItemEntryEventIdDto SellableInventoryItemEntryEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new SellableInventoryItemEntryEventIdDto(); }
-                return _stateEventId;
+                if (_sellableInventoryItemEntryEventId == null) { _sellableInventoryItemEntryEventId = new SellableInventoryItemEntryEventIdDto(); }
+                return _sellableInventoryItemEntryEventId;
             }
             set
             {
-                _stateEventId = value;
+                _sellableInventoryItemEntryEventId = value;
             }
         }
 
         public virtual long EntrySeqId
         {
-            get { return StateEventId.EntrySeqId; }
-            set { StateEventId.EntrySeqId = value; }
+            get { return SellableInventoryItemEntryEventId.EntrySeqId; }
+            set { SellableInventoryItemEntryEventId.EntrySeqId = value; }
         }
 
 		public virtual decimal? SellableQuantity { get; set; }
@@ -67,7 +67,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 		SellableInventoryItemEntryEventId IGlobalIdentity<SellableInventoryItemEntryEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToSellableInventoryItemEntryEventId();
+				return this.SellableInventoryItemEntryEventId.ToSellableInventoryItemEntryEventId();
 			}
 		}
 
@@ -106,9 +106,9 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 		}
 
 
-        SellableInventoryItemEntryEventId ISellableInventoryItemEntryStateEvent.StateEventId
+        SellableInventoryItemEntryEventId ISellableInventoryItemEntryStateEvent.SellableInventoryItemEntryEventId
         {
-            get { return this.StateEventId.ToSellableInventoryItemEntryEventId(); }
+            get { return this.SellableInventoryItemEntryEventId.ToSellableInventoryItemEntryEventId(); }
         }
 
         protected SellableInventoryItemEntryStateEventDtoBase()
@@ -117,7 +117,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
         protected SellableInventoryItemEntryStateEventDtoBase(SellableInventoryItemEntryEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.SellableInventoryItemEntryEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

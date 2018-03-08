@@ -139,7 +139,7 @@ public abstract class AbstractAttributeValueMvoApplicationService implements Att
     }
 
     public void initialize(AttributeValueMvoStateEvent.AttributeValueMvoStateCreated stateCreated) {
-        AttributeValueId aggregateId = stateCreated.getStateEventId().getAttributeValueId();
+        AttributeValueId aggregateId = stateCreated.getAttributeValueMvoEventId().getAttributeValueId();
         AttributeValueMvoState state = new AbstractAttributeValueMvoState.SimpleAttributeValueMvoState();
         state.setAttributeValueId(aggregateId);
 
@@ -147,7 +147,7 @@ public abstract class AbstractAttributeValueMvoApplicationService implements Att
         ((AbstractAttributeValueMvoAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getStateEventId().getAttributeVersion(), aggregate, state);
+        persist(eventStoreAggregateId, stateCreated.getAttributeValueMvoEventId().getAttributeVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(AttributeValueMvoCommand command, EventStoreAggregateId eventStoreAggregateId, AttributeValueMvoState state)

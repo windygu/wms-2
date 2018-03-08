@@ -13,7 +13,7 @@ namespace Dddml.Wms.Domain.OrderShipment
 {
 	public interface IOrderShipmentStateEvent : IEvent, IStateEventDto, IGlobalIdentity<OrderShipmentEventId>, ICreated<string>
 	{
-		OrderShipmentEventId StateEventId { get; }
+		OrderShipmentEventId OrderShipmentEventId { get; }
 
         bool ReadOnly { get; set; }
 

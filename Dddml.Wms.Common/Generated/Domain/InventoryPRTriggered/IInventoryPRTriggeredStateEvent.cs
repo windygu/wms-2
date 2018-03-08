@@ -14,7 +14,7 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 {
 	public interface IInventoryPRTriggeredStateEvent : IEvent, IStateEventDto, IGlobalIdentity<InventoryPRTriggeredEventId>, ICreated<string>
 	{
-		InventoryPRTriggeredEventId StateEventId { get; }
+		InventoryPRTriggeredEventId InventoryPRTriggeredEventId { get; }
 
         bool ReadOnly { get; set; }
 

@@ -36,16 +36,16 @@ public class HibernatePhysicalInventoryEventStore extends AbstractHibernateEvent
         }
         String idObj = (String) eventStoreAggregateId.getId();
         Criteria criteria = getCurrentSession().createCriteria(AbstractPhysicalInventoryStateEvent.class);
-        criteria.add(Restrictions.eq("stateEventId.documentNumber", idObj));
-        criteria.add(Restrictions.le("stateEventId.version", version));
-        criteria.addOrder(Order.asc("stateEventId.version"));
+        criteria.add(Restrictions.eq("physicalInventoryEventId.documentNumber", idObj));
+        criteria.add(Restrictions.le("physicalInventoryEventId.version", version));
+        criteria.addOrder(Order.asc("physicalInventoryEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
             ((AbstractPhysicalInventoryStateEvent) e).setStateEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractPhysicalInventoryStateEvent) es.get(es.size() - 1)).getStateEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractPhysicalInventoryStateEvent) es.get(es.size() - 1)).getPhysicalInventoryEventId().getVersion());
         } else {
             //todo?
         }

@@ -15,25 +15,25 @@ namespace Dddml.Wms.Domain.User
 	public abstract class UserPermissionStateEventDtoBase : IStateEventDto, IUserPermissionStateCreated, IUserPermissionStateMergePatched, IUserPermissionStateRemoved
 	{
 
-        private UserPermissionEventIdDto _stateEventId;
+        private UserPermissionEventIdDto _userPermissionEventId;
 
-		protected internal virtual UserPermissionEventIdDto StateEventId 
+		protected internal virtual UserPermissionEventIdDto UserPermissionEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new UserPermissionEventIdDto(); }
-                return _stateEventId;
+                if (_userPermissionEventId == null) { _userPermissionEventId = new UserPermissionEventIdDto(); }
+                return _userPermissionEventId;
             }
             set
             {
-                _stateEventId = value;
+                _userPermissionEventId = value;
             }
         }
 
         public virtual string PermissionId
         {
-            get { return StateEventId.PermissionId; }
-            set { StateEventId.PermissionId = value; }
+            get { return UserPermissionEventId.PermissionId; }
+            set { UserPermissionEventId.PermissionId = value; }
         }
 
 		public virtual bool? Active { get; set; }
@@ -49,7 +49,7 @@ namespace Dddml.Wms.Domain.User
 		UserPermissionEventId IGlobalIdentity<UserPermissionEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToUserPermissionEventId();
+				return this.UserPermissionEventId.ToUserPermissionEventId();
 			}
 		}
 
@@ -107,9 +107,9 @@ namespace Dddml.Wms.Domain.User
 		}
 
 
-        UserPermissionEventId IUserPermissionStateEvent.StateEventId
+        UserPermissionEventId IUserPermissionStateEvent.UserPermissionEventId
         {
-            get { return this.StateEventId.ToUserPermissionEventId(); }
+            get { return this.UserPermissionEventId.ToUserPermissionEventId(); }
         }
 
         protected UserPermissionStateEventDtoBase()
@@ -118,7 +118,7 @@ namespace Dddml.Wms.Domain.User
 
         protected UserPermissionStateEventDtoBase(UserPermissionEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.UserPermissionEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

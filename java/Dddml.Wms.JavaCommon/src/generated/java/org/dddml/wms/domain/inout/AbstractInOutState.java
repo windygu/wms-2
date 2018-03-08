@@ -490,7 +490,7 @@ public abstract class AbstractInOutState implements InOutState, Saveable
     public AbstractInOutState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setDocumentNumber(((InOutStateEvent) events.get(0)).getStateEventId().getDocumentNumber());
+            this.setDocumentNumber(((InOutStateEvent) events.get(0)).getInOutEventId().getDocumentNumber());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -565,7 +565,7 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         this.setCreatedAt(e.getCreatedAt());
 
         for (InOutLineStateEvent.InOutLineStateCreated innerEvent : e.getInOutLineEvents()) {
-            InOutLineState innerState = this.getInOutLines().get(innerEvent.getStateEventId().getLineNumber());
+            InOutLineState innerState = this.getInOutLines().get(innerEvent.getInOutLineEventId().getLineNumber());
             innerState.mutate(innerEvent);
         }
     }
@@ -920,7 +920,7 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         this.setUpdatedAt(e.getCreatedAt());
 
         for (InOutLineStateEvent innerEvent : e.getInOutLineEvents()) {
-            InOutLineState innerState = this.getInOutLines().get(innerEvent.getStateEventId().getLineNumber());
+            InOutLineState innerState = this.getInOutLines().get(innerEvent.getInOutLineEventId().getLineNumber());
             innerState.mutate(innerEvent);
             if (innerEvent instanceof InOutLineStateEvent.InOutLineStateRemoved)
             {
@@ -939,16 +939,16 @@ public abstract class AbstractInOutState implements InOutState, Saveable
     protected void throwOnWrongEvent(InOutStateEvent stateEvent)
     {
         String stateEntityId = this.getDocumentNumber(); // Aggregate Id
-        String eventEntityId = stateEvent.getStateEventId().getDocumentNumber(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        String eventEntityId = stateEvent.getInOutEventId().getDocumentNumber(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getStateEventId().getVersion();// Aggregate Version
+        Long eventVersion = stateEvent.getInOutEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getStateEventId().getVersion() == null");
+            throw new NullPointerException("stateEvent.getInOutEventId().getVersion() == null");
         }
         if (!(stateVersion == null && eventVersion.equals(InOutState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
         {

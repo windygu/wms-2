@@ -16,31 +16,31 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 	public abstract class UserRoleMvoStateEventDtoBase : IStateEventDto, IUserRoleMvoStateCreated, IUserRoleMvoStateMergePatched, IUserRoleMvoStateDeleted
 	{
 
-        private UserRoleMvoEventIdDto _stateEventId;
+        private UserRoleMvoEventIdDto _userRoleMvoEventId;
 
-		protected internal virtual UserRoleMvoEventIdDto StateEventId 
+		protected internal virtual UserRoleMvoEventIdDto UserRoleMvoEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new UserRoleMvoEventIdDto(); }
-                return _stateEventId;
+                if (_userRoleMvoEventId == null) { _userRoleMvoEventId = new UserRoleMvoEventIdDto(); }
+                return _userRoleMvoEventId;
             }
             set
             {
-                _stateEventId = value;
+                _userRoleMvoEventId = value;
             }
         }
 
         public virtual UserRoleIdDto UserRoleId
         {
-            get { return StateEventId.UserRoleId; }
-            set { StateEventId.UserRoleId = value; }
+            get { return UserRoleMvoEventId.UserRoleId; }
+            set { UserRoleMvoEventId.UserRoleId = value; }
         }
 
         public virtual long UserVersion
         {
-            get { return StateEventId.UserVersion; }
-            set { StateEventId.UserVersion = value; }
+            get { return UserRoleMvoEventId.UserVersion; }
+            set { UserRoleMvoEventId.UserVersion = value; }
         }
 
 		public virtual long? Version { get; set; }
@@ -92,7 +92,7 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 		UserRoleMvoEventId IGlobalIdentity<UserRoleMvoEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToUserRoleMvoEventId();
+				return this.UserRoleMvoEventId.ToUserRoleMvoEventId();
 			}
 		}
 
@@ -490,9 +490,9 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 		}
 
 
-        UserRoleMvoEventId IUserRoleMvoStateEvent.StateEventId
+        UserRoleMvoEventId IUserRoleMvoStateEvent.UserRoleMvoEventId
         {
-            get { return this.StateEventId.ToUserRoleMvoEventId(); }
+            get { return this.UserRoleMvoEventId.ToUserRoleMvoEventId(); }
         }
 
         protected UserRoleMvoStateEventDtoBase()
@@ -501,7 +501,7 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 
         protected UserRoleMvoStateEventDtoBase(UserRoleMvoEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.UserRoleMvoEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

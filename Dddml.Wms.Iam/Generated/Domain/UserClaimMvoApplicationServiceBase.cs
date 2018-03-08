@@ -60,7 +60,7 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 
         public virtual void Initialize(IUserClaimMvoStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.UserClaimId;
+            var aggregateId = stateCreated.UserClaimMvoEventId.UserClaimId;
             var state = new UserClaimMvoState();
             state.UserClaimId = aggregateId;
             var aggregate = (UserClaimMvoAggregate)GetUserClaimMvoAggregate(state);

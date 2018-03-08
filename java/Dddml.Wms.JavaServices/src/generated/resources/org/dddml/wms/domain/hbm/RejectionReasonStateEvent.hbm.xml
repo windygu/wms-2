@@ -8,7 +8,7 @@
   
   <class name="AbstractRejectionReasonStateEvent" table="RejectionReasonStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="stateEventId" class="org.dddml.wms.domain.rejectionreason.RejectionReasonEventId">
+	<composite-id name="rejectionReasonEventId" class="org.dddml.wms.domain.rejectionreason.RejectionReasonEventId">
 		<key-property name="rejectionReasonId" ><column name="RejectionReasonId" sql-type="VARCHAR(60)" /></key-property>
 		<key-property name="version" ></key-property>
 	</composite-id>

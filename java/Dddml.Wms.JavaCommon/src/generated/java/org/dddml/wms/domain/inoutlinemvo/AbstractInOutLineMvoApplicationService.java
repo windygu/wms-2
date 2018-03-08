@@ -140,7 +140,7 @@ public abstract class AbstractInOutLineMvoApplicationService implements InOutLin
     }
 
     public void initialize(InOutLineMvoStateEvent.InOutLineMvoStateCreated stateCreated) {
-        InOutLineId aggregateId = stateCreated.getStateEventId().getInOutLineId();
+        InOutLineId aggregateId = stateCreated.getInOutLineMvoEventId().getInOutLineId();
         InOutLineMvoState state = new AbstractInOutLineMvoState.SimpleInOutLineMvoState();
         state.setInOutLineId(aggregateId);
 
@@ -148,7 +148,7 @@ public abstract class AbstractInOutLineMvoApplicationService implements InOutLin
         ((AbstractInOutLineMvoAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getStateEventId().getInOutVersion(), aggregate, state);
+        persist(eventStoreAggregateId, stateCreated.getInOutLineMvoEventId().getInOutVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(InOutLineMvoCommand command, EventStoreAggregateId eventStoreAggregateId, InOutLineMvoState state)

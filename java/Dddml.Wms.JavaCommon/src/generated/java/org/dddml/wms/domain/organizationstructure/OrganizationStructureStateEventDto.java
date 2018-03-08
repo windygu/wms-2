@@ -7,15 +7,15 @@ import org.dddml.wms.domain.AbstractStateEvent;
 public class OrganizationStructureStateEventDto extends AbstractStateEvent
 {
 
-    private OrganizationStructureEventId stateEventId;
+    private OrganizationStructureEventId organizationStructureEventId;
 
     OrganizationStructureEventId getStateEventId() {
-        if (stateEventId == null) { stateEventId = new OrganizationStructureEventId(); }
-        return stateEventId;
+        if (organizationStructureEventId == null) { organizationStructureEventId = new OrganizationStructureEventId(); }
+        return organizationStructureEventId;
     }
 
-    void setStateEventId(OrganizationStructureEventId eventId) {
-        this.stateEventId = eventId;
+    void setOrganizationStructureEventId(OrganizationStructureEventId eventId) {
+        this.organizationStructureEventId = eventId;
     }
 
     public OrganizationStructureId getId() {

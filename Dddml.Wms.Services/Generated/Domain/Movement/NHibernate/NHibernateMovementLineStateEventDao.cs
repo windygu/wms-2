@@ -43,8 +43,8 @@ namespace Dddml.Wms.Domain.Movement.NHibernate
         {
             var criteria = CurrentSession.CreateCriteria<MovementLineStateEventBase>();
             var partIdCondition = Restrictions.Conjunction()
-                .Add(Restrictions.Eq("StateEventId.MovementDocumentNumber", movementEventId.DocumentNumber))
-                .Add(Restrictions.Eq("StateEventId.MovementVersion", movementEventId.Version))
+                .Add(Restrictions.Eq("MovementLineEventId.MovementDocumentNumber", movementEventId.DocumentNumber))
+                .Add(Restrictions.Eq("MovementLineEventId.MovementVersion", movementEventId.Version))
                 ;
 
             return criteria.Add(partIdCondition).List<MovementLineStateEventBase>();

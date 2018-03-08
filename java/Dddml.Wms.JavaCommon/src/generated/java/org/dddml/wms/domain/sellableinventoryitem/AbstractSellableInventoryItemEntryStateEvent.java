@@ -17,22 +17,22 @@ public abstract class AbstractSellableInventoryItemEntryStateEvent extends Abstr
         return state;
     }
 
-    public SellableInventoryItemEntryEventId getStateEventId() {
+    public SellableInventoryItemEntryEventId getSellableInventoryItemEntryEventId() {
         SellableInventoryItemEntryEventId eventId = new SellableInventoryItemEntryEventId(state.getSellableInventoryItemId(), state.getEntrySeqId(), SellableInventoryItemState.VERSION_NULL);
         return eventId;
     }
 
-    public void setStateEventId(SellableInventoryItemEntryEventId eventId) {
+    public void setSellableInventoryItemEntryEventId(SellableInventoryItemEntryEventId eventId) {
         this.state.setSellableInventoryItemId(eventId.getSellableInventoryItemId());
         this.state.setEntrySeqId(eventId.getEntrySeqId());
     }
 
     public Long getEntrySeqId() {
-        return getStateEventId().getEntrySeqId();
+        return getSellableInventoryItemEntryEventId().getEntrySeqId();
     }
 
     public void setEntrySeqId(Long entrySeqId) {
-        getStateEventId().setEntrySeqId(entrySeqId);
+        getSellableInventoryItemEntryEventId().setEntrySeqId(entrySeqId);
     }
 
     private boolean stateEventReadOnly;
@@ -106,7 +106,7 @@ public abstract class AbstractSellableInventoryItemEntryStateEvent extends Abstr
 
     protected AbstractSellableInventoryItemEntryStateEvent(SellableInventoryItemEntryEventId eventId) {
         this(new AbstractSellableInventoryItemEntryState.SimpleSellableInventoryItemEntryState());
-        setStateEventId(eventId);
+        setSellableInventoryItemEntryEventId(eventId);
     }
 
     protected AbstractSellableInventoryItemEntryStateEvent(SellableInventoryItemEntryState s) {

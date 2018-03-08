@@ -39,9 +39,9 @@ namespace Dddml.Wms.Domain.Permission.NHibernate
             }
             string idObj = (string)(eventStoreAggregateId as EventStoreAggregateId).Id;
             var criteria = CurrentSession.CreateCriteria<PermissionStateEventBase>();
-            criteria.Add(Restrictions.Eq("StateEventId.PermissionId", idObj));
-            criteria.Add(Restrictions.Le("StateEventId.Version", version));
-            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.Version"));
+            criteria.Add(Restrictions.Eq("PermissionEventId.PermissionId", idObj));
+            criteria.Add(Restrictions.Le("PermissionEventId.Version", version));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("PermissionEventId.Version"));
             var es = criteria.List<IEvent>();
             foreach (PermissionStateEventBase e in es)
             {
@@ -49,7 +49,7 @@ namespace Dddml.Wms.Domain.Permission.NHibernate
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((PermissionStateEventBase)es.Last()).StateEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((PermissionStateEventBase)es.Last()).PermissionEventId.Version : default(long),
                 Events = es
             };
         }

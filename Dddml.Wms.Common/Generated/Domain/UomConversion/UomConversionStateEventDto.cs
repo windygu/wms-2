@@ -15,31 +15,31 @@ namespace Dddml.Wms.Domain.UomConversion
 	public abstract class UomConversionStateEventDtoBase : IStateEventDto, IUomConversionStateCreated, IUomConversionStateMergePatched, IUomConversionStateDeleted
 	{
 
-        private UomConversionEventIdDto _stateEventId;
+        private UomConversionEventIdDto _uomConversionEventId;
 
-		protected internal virtual UomConversionEventIdDto StateEventId 
+		protected internal virtual UomConversionEventIdDto UomConversionEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new UomConversionEventIdDto(); }
-                return _stateEventId;
+                if (_uomConversionEventId == null) { _uomConversionEventId = new UomConversionEventIdDto(); }
+                return _uomConversionEventId;
             }
             set
             {
-                _stateEventId = value;
+                _uomConversionEventId = value;
             }
         }
 
         public virtual UomConversionIdDto UomConversionId
         {
-            get { return StateEventId.UomConversionId; }
-            set { StateEventId.UomConversionId = value; }
+            get { return UomConversionEventId.UomConversionId; }
+            set { UomConversionEventId.UomConversionId = value; }
         }
 
         public virtual long Version
         {
-            get { return StateEventId.Version; }
-            set { StateEventId.Version = value; }
+            get { return UomConversionEventId.Version; }
+            set { UomConversionEventId.Version = value; }
         }
 
 		public virtual double? ConversionFactor { get; set; }
@@ -63,7 +63,7 @@ namespace Dddml.Wms.Domain.UomConversion
 		UomConversionEventId IGlobalIdentity<UomConversionEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToUomConversionEventId();
+				return this.UomConversionEventId.ToUomConversionEventId();
 			}
 		}
 
@@ -195,9 +195,9 @@ namespace Dddml.Wms.Domain.UomConversion
 		}
 
 
-        UomConversionEventId IUomConversionStateEvent.StateEventId
+        UomConversionEventId IUomConversionStateEvent.UomConversionEventId
         {
-            get { return this.StateEventId.ToUomConversionEventId(); }
+            get { return this.UomConversionEventId.ToUomConversionEventId(); }
         }
 
         protected UomConversionStateEventDtoBase()
@@ -206,7 +206,7 @@ namespace Dddml.Wms.Domain.UomConversion
 
         protected UomConversionStateEventDtoBase(UomConversionEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.UomConversionEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

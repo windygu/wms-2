@@ -7,7 +7,7 @@ import org.dddml.wms.specialization.Event;
 
 public interface AttributeSetInstanceExtensionFieldGroupStateEvent extends Event
 {
-    AttributeSetInstanceExtensionFieldGroupEventId getStateEventId();
+    AttributeSetInstanceExtensionFieldGroupEventId getAttributeSetInstanceExtensionFieldGroupEventId();
 
     boolean getStateEventReadOnly();
 

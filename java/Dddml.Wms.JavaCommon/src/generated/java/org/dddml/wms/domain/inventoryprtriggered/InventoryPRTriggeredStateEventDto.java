@@ -7,15 +7,15 @@ import org.dddml.wms.domain.AbstractStateEvent;
 public class InventoryPRTriggeredStateEventDto extends AbstractStateEvent
 {
 
-    private InventoryPRTriggeredEventId stateEventId;
+    private InventoryPRTriggeredEventId inventoryPRTriggeredEventId;
 
     InventoryPRTriggeredEventId getStateEventId() {
-        if (stateEventId == null) { stateEventId = new InventoryPRTriggeredEventId(); }
-        return stateEventId;
+        if (inventoryPRTriggeredEventId == null) { inventoryPRTriggeredEventId = new InventoryPRTriggeredEventId(); }
+        return inventoryPRTriggeredEventId;
     }
 
-    void setStateEventId(InventoryPRTriggeredEventId eventId) {
-        this.stateEventId = eventId;
+    void setInventoryPRTriggeredEventId(InventoryPRTriggeredEventId eventId) {
+        this.inventoryPRTriggeredEventId = eventId;
     }
 
     public InventoryPRTriggeredId getInventoryPRTriggeredId() {

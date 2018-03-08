@@ -152,7 +152,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
         {
             if (events != null && events.Count() > 0)
             {
-                this.AttributeValueId = ((IAttributeValueMvoStateEvent)events.First()).StateEventId.AttributeValueId;
+                this.AttributeValueId = ((IAttributeValueMvoStateEvent)events.First()).AttributeValueMvoEventId.AttributeValueId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -498,7 +498,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
             id.Append("[").Append("AttributeValueMvo|");
 
             var stateEntityId = this.AttributeValueId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.AttributeValueId;
+            var eventEntityId = stateEvent.AttributeValueMvoEventId.AttributeValueId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -508,7 +508,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
             id.Append("]");
 
             var stateVersion = this.AttributeVersion;
-            var eventVersion = stateEvent.StateEventId.AttributeVersion;
+            var eventVersion = stateEvent.AttributeValueMvoEventId.AttributeVersion;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

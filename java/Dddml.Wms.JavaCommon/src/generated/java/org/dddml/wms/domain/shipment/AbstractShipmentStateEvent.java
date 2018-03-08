@@ -8,22 +8,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractShipmentStateEvent extends AbstractStateEvent implements ShipmentStateEvent 
 {
-    private ShipmentEventId stateEventId;
+    private ShipmentEventId shipmentEventId;
 
-    public ShipmentEventId getStateEventId() {
-        return this.stateEventId;
+    public ShipmentEventId getShipmentEventId() {
+        return this.shipmentEventId;
     }
 
-    public void setStateEventId(ShipmentEventId eventId) {
-        this.stateEventId = eventId;
+    public void setShipmentEventId(ShipmentEventId eventId) {
+        this.shipmentEventId = eventId;
     }
     
     public String getShipmentId() {
-        return getStateEventId().getShipmentId();
+        return getShipmentEventId().getShipmentId();
     }
 
     public void setShipmentId(String shipmentId) {
-        getStateEventId().setShipmentId(shipmentId);
+        getShipmentEventId().setShipmentId(shipmentId);
     }
 
     private boolean stateEventReadOnly;
@@ -383,7 +383,7 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
     }
 
     protected AbstractShipmentStateEvent(ShipmentEventId eventId) {
-        this.stateEventId = eventId;
+        this.shipmentEventId = eventId;
     }
 
     protected ShipmentItemStateEventDao getShipmentItemStateEventDao() {
@@ -392,9 +392,9 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
 
     protected ShipmentItemEventId newShipmentItemEventId(String shipmentItemSeqId)
     {
-        ShipmentItemEventId eventId = new ShipmentItemEventId(this.getStateEventId().getShipmentId(), 
+        ShipmentItemEventId eventId = new ShipmentItemEventId(this.getShipmentEventId().getShipmentId(), 
             shipmentItemSeqId, 
-            this.getStateEventId().getVersion());
+            this.getShipmentEventId().getVersion());
         return eventId;
     }
 
@@ -405,10 +405,10 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
 
     public static void throwOnInconsistentEventIds(ShipmentStateEvent oe, ShipmentItemStateEvent e)
     {
-        if (!oe.getStateEventId().getShipmentId().equals(e.getStateEventId().getShipmentId()))
+        if (!oe.getShipmentEventId().getShipmentId().equals(e.getShipmentItemEventId().getShipmentId()))
         { 
             throw DomainError.named("inconsistentEventIds", "Outer Id ShipmentId %1$s but inner id ShipmentId %2$s", 
-                oe.getStateEventId().getShipmentId(), e.getStateEventId().getShipmentId());
+                oe.getShipmentEventId().getShipmentId(), e.getShipmentItemEventId().getShipmentId());
         }
     }
 
@@ -418,9 +418,9 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
 
     protected ShipmentReceiptEventId newShipmentReceiptEventId(String receiptSeqId)
     {
-        ShipmentReceiptEventId eventId = new ShipmentReceiptEventId(this.getStateEventId().getShipmentId(), 
+        ShipmentReceiptEventId eventId = new ShipmentReceiptEventId(this.getShipmentEventId().getShipmentId(), 
             receiptSeqId, 
-            this.getStateEventId().getVersion());
+            this.getShipmentEventId().getVersion());
         return eventId;
     }
 
@@ -431,10 +431,10 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
 
     public static void throwOnInconsistentEventIds(ShipmentStateEvent oe, ShipmentReceiptStateEvent e)
     {
-        if (!oe.getStateEventId().getShipmentId().equals(e.getStateEventId().getShipmentId()))
+        if (!oe.getShipmentEventId().getShipmentId().equals(e.getShipmentReceiptEventId().getShipmentId()))
         { 
             throw DomainError.named("inconsistentEventIds", "Outer Id ShipmentId %1$s but inner id ShipmentId %2$s", 
-                oe.getStateEventId().getShipmentId(), e.getStateEventId().getShipmentId());
+                oe.getShipmentEventId().getShipmentId(), e.getShipmentReceiptEventId().getShipmentId());
         }
     }
 
@@ -487,7 +487,7 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
                 if (readOnlyShipmentItemEvents != null) { return readOnlyShipmentItemEvents; }
                 ShipmentItemStateEventDao eventDao = getShipmentItemStateEventDao();
                 List<ShipmentItemStateEvent.ShipmentItemStateCreated> eL = new ArrayList<ShipmentItemStateEvent.ShipmentItemStateCreated>();
-                for (ShipmentItemStateEvent e : eventDao.findByShipmentEventId(this.getStateEventId()))
+                for (ShipmentItemStateEvent e : eventDao.findByShipmentEventId(this.getShipmentEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((ShipmentItemStateEvent.ShipmentItemStateCreated)e);
@@ -511,7 +511,7 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
         public void addShipmentItemEvent(ShipmentItemStateEvent.ShipmentItemStateCreated e)
         {
             throwOnInconsistentEventIds(e);
-            this.shipmentItemEvents.put(e.getStateEventId(), e);
+            this.shipmentItemEvents.put(e.getShipmentItemEventId(), e);
         }
 
         private Map<ShipmentReceiptEventId, ShipmentReceiptStateEvent.ShipmentReceiptStateCreated> shipmentReceiptEvents = new HashMap<ShipmentReceiptEventId, ShipmentReceiptStateEvent.ShipmentReceiptStateCreated>();
@@ -529,7 +529,7 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
                 if (readOnlyShipmentReceiptEvents != null) { return readOnlyShipmentReceiptEvents; }
                 ShipmentReceiptStateEventDao eventDao = getShipmentReceiptStateEventDao();
                 List<ShipmentReceiptStateEvent.ShipmentReceiptStateCreated> eL = new ArrayList<ShipmentReceiptStateEvent.ShipmentReceiptStateCreated>();
-                for (ShipmentReceiptStateEvent e : eventDao.findByShipmentEventId(this.getStateEventId()))
+                for (ShipmentReceiptStateEvent e : eventDao.findByShipmentEventId(this.getShipmentEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((ShipmentReceiptStateEvent.ShipmentReceiptStateCreated)e);
@@ -553,7 +553,7 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
         public void addShipmentReceiptEvent(ShipmentReceiptStateEvent.ShipmentReceiptStateCreated e)
         {
             throwOnInconsistentEventIds(e);
-            this.shipmentReceiptEvents.put(e.getStateEventId(), e);
+            this.shipmentReceiptEvents.put(e.getShipmentReceiptEventId(), e);
         }
 
         public void save()
@@ -857,7 +857,7 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
                 if (readOnlyShipmentItemEvents != null) { return readOnlyShipmentItemEvents; }
                 ShipmentItemStateEventDao eventDao = getShipmentItemStateEventDao();
                 List<ShipmentItemStateEvent> eL = new ArrayList<ShipmentItemStateEvent>();
-                for (ShipmentItemStateEvent e : eventDao.findByShipmentEventId(this.getStateEventId()))
+                for (ShipmentItemStateEvent e : eventDao.findByShipmentEventId(this.getShipmentEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((ShipmentItemStateEvent)e);
@@ -881,7 +881,7 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
         public void addShipmentItemEvent(ShipmentItemStateEvent e)
         {
             throwOnInconsistentEventIds(e);
-            this.shipmentItemEvents.put(e.getStateEventId(), e);
+            this.shipmentItemEvents.put(e.getShipmentItemEventId(), e);
         }
 
         private Map<ShipmentReceiptEventId, ShipmentReceiptStateEvent> shipmentReceiptEvents = new HashMap<ShipmentReceiptEventId, ShipmentReceiptStateEvent>();
@@ -899,7 +899,7 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
                 if (readOnlyShipmentReceiptEvents != null) { return readOnlyShipmentReceiptEvents; }
                 ShipmentReceiptStateEventDao eventDao = getShipmentReceiptStateEventDao();
                 List<ShipmentReceiptStateEvent> eL = new ArrayList<ShipmentReceiptStateEvent>();
-                for (ShipmentReceiptStateEvent e : eventDao.findByShipmentEventId(this.getStateEventId()))
+                for (ShipmentReceiptStateEvent e : eventDao.findByShipmentEventId(this.getShipmentEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((ShipmentReceiptStateEvent)e);
@@ -923,7 +923,7 @@ public abstract class AbstractShipmentStateEvent extends AbstractStateEvent impl
         public void addShipmentReceiptEvent(ShipmentReceiptStateEvent e)
         {
             throwOnInconsistentEventIds(e);
-            this.shipmentReceiptEvents.put(e.getStateEventId(), e);
+            this.shipmentReceiptEvents.put(e.getShipmentReceiptEventId(), e);
         }
 
         public void save()

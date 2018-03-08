@@ -34,16 +34,16 @@ public class HibernateDamageReasonEventStore extends AbstractHibernateEventStore
         }
         String idObj = (String) eventStoreAggregateId.getId();
         Criteria criteria = getCurrentSession().createCriteria(AbstractDamageReasonStateEvent.class);
-        criteria.add(Restrictions.eq("stateEventId.damageReasonId", idObj));
-        criteria.add(Restrictions.le("stateEventId.version", version));
-        criteria.addOrder(Order.asc("stateEventId.version"));
+        criteria.add(Restrictions.eq("damageReasonEventId.damageReasonId", idObj));
+        criteria.add(Restrictions.le("damageReasonEventId.version", version));
+        criteria.addOrder(Order.asc("damageReasonEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
             ((AbstractDamageReasonStateEvent) e).setStateEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractDamageReasonStateEvent) es.get(es.size() - 1)).getStateEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractDamageReasonStateEvent) es.get(es.size() - 1)).getDamageReasonEventId().getVersion());
         } else {
             //todo?
         }

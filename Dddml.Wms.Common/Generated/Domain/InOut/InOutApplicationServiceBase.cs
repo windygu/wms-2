@@ -59,7 +59,7 @@ namespace Dddml.Wms.Domain.InOut
 
         public virtual void Initialize(IInOutStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.DocumentNumber;
+            var aggregateId = stateCreated.InOutEventId.DocumentNumber;
             var state = new InOutState();
             state.DocumentNumber = aggregateId;
             var aggregate = (InOutAggregate)GetInOutAggregate(state);

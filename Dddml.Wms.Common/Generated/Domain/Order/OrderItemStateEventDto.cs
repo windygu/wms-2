@@ -15,25 +15,25 @@ namespace Dddml.Wms.Domain.Order
 	public abstract class OrderItemStateEventDtoBase : IStateEventDto, IOrderItemStateCreated, IOrderItemStateMergePatched
 	{
 
-        private OrderItemEventIdDto _stateEventId;
+        private OrderItemEventIdDto _orderItemEventId;
 
-		protected internal virtual OrderItemEventIdDto StateEventId 
+		protected internal virtual OrderItemEventIdDto OrderItemEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new OrderItemEventIdDto(); }
-                return _stateEventId;
+                if (_orderItemEventId == null) { _orderItemEventId = new OrderItemEventIdDto(); }
+                return _orderItemEventId;
             }
             set
             {
-                _stateEventId = value;
+                _orderItemEventId = value;
             }
         }
 
         public virtual string OrderItemSeqId
         {
-            get { return StateEventId.OrderItemSeqId; }
-            set { StateEventId.OrderItemSeqId = value; }
+            get { return OrderItemEventId.OrderItemSeqId; }
+            set { OrderItemEventId.OrderItemSeqId = value; }
         }
 
 		public virtual string ProductId { get; set; }
@@ -119,7 +119,7 @@ namespace Dddml.Wms.Domain.Order
 		OrderItemEventId IGlobalIdentity<OrderItemEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToOrderItemEventId();
+				return this.OrderItemEventId.ToOrderItemEventId();
 			}
 		}
 
@@ -842,9 +842,9 @@ namespace Dddml.Wms.Domain.Order
 		}
 
 
-        OrderItemEventId IOrderItemStateEvent.StateEventId
+        OrderItemEventId IOrderItemStateEvent.OrderItemEventId
         {
-            get { return this.StateEventId.ToOrderItemEventId(); }
+            get { return this.OrderItemEventId.ToOrderItemEventId(); }
         }
 
         protected OrderItemStateEventDtoBase()
@@ -853,7 +853,7 @@ namespace Dddml.Wms.Domain.Order
 
         protected OrderItemStateEventDtoBase(OrderItemEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.OrderItemEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

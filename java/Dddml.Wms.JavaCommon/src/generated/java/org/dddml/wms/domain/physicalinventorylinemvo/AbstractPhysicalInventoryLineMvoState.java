@@ -419,7 +419,7 @@ public abstract class AbstractPhysicalInventoryLineMvoState implements PhysicalI
     public AbstractPhysicalInventoryLineMvoState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setPhysicalInventoryLineId(((PhysicalInventoryLineMvoStateEvent) events.get(0)).getStateEventId().getPhysicalInventoryLineId());
+            this.setPhysicalInventoryLineId(((PhysicalInventoryLineMvoStateEvent) events.get(0)).getPhysicalInventoryLineMvoEventId().getPhysicalInventoryLineId());
             for (Event e : events) {
                 mutate(e);
                 this.setPhysicalInventoryVersion(this.getPhysicalInventoryVersion() + 1);
@@ -794,16 +794,16 @@ public abstract class AbstractPhysicalInventoryLineMvoState implements PhysicalI
     protected void throwOnWrongEvent(PhysicalInventoryLineMvoStateEvent stateEvent)
     {
         PhysicalInventoryLineId stateEntityId = this.getPhysicalInventoryLineId(); // Aggregate Id
-        PhysicalInventoryLineId eventEntityId = stateEvent.getStateEventId().getPhysicalInventoryLineId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        PhysicalInventoryLineId eventEntityId = stateEvent.getPhysicalInventoryLineMvoEventId().getPhysicalInventoryLineId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getPhysicalInventoryVersion();
-        Long eventVersion = stateEvent.getStateEventId().getPhysicalInventoryVersion();// Aggregate Version
+        Long eventVersion = stateEvent.getPhysicalInventoryLineMvoEventId().getPhysicalInventoryVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getStateEventId().getPhysicalInventoryVersion() == null");
+            throw new NullPointerException("stateEvent.getPhysicalInventoryLineMvoEventId().getPhysicalInventoryVersion() == null");
         }
         if (!(stateVersion == null && eventVersion.equals(PhysicalInventoryLineMvoState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
         {

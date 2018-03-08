@@ -59,7 +59,7 @@ namespace Dddml.Wms.Domain.Warehouse
 
         public virtual void Initialize(IWarehouseStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.WarehouseId;
+            var aggregateId = stateCreated.WarehouseEventId.WarehouseId;
             var state = new WarehouseState();
             state.WarehouseId = aggregateId;
             var aggregate = (WarehouseAggregate)GetWarehouseAggregate(state);

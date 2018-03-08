@@ -15,31 +15,31 @@ namespace Dddml.Wms.Domain.DamageType
 	public abstract class DamageTypeStateEventDtoBase : IStateEventDto, IDamageTypeStateCreated, IDamageTypeStateMergePatched, IDamageTypeStateDeleted
 	{
 
-        private DamageTypeEventIdDto _stateEventId;
+        private DamageTypeEventIdDto _damageTypeEventId;
 
-		protected internal virtual DamageTypeEventIdDto StateEventId 
+		protected internal virtual DamageTypeEventIdDto DamageTypeEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new DamageTypeEventIdDto(); }
-                return _stateEventId;
+                if (_damageTypeEventId == null) { _damageTypeEventId = new DamageTypeEventIdDto(); }
+                return _damageTypeEventId;
             }
             set
             {
-                _stateEventId = value;
+                _damageTypeEventId = value;
             }
         }
 
         public virtual string DamageTypeId
         {
-            get { return StateEventId.DamageTypeId; }
-            set { StateEventId.DamageTypeId = value; }
+            get { return DamageTypeEventId.DamageTypeId; }
+            set { DamageTypeEventId.DamageTypeId = value; }
         }
 
         public virtual long Version
         {
-            get { return StateEventId.Version; }
-            set { StateEventId.Version = value; }
+            get { return DamageTypeEventId.Version; }
+            set { DamageTypeEventId.Version = value; }
         }
 
 		public virtual string Description { get; set; }
@@ -61,7 +61,7 @@ namespace Dddml.Wms.Domain.DamageType
 		DamageTypeEventId IGlobalIdentity<DamageTypeEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToDamageTypeEventId();
+				return this.DamageTypeEventId.ToDamageTypeEventId();
 			}
 		}
 
@@ -174,9 +174,9 @@ namespace Dddml.Wms.Domain.DamageType
 		}
 
 
-        DamageTypeEventId IDamageTypeStateEvent.StateEventId
+        DamageTypeEventId IDamageTypeStateEvent.DamageTypeEventId
         {
-            get { return this.StateEventId.ToDamageTypeEventId(); }
+            get { return this.DamageTypeEventId.ToDamageTypeEventId(); }
         }
 
         protected DamageTypeStateEventDtoBase()
@@ -185,7 +185,7 @@ namespace Dddml.Wms.Domain.DamageType
 
         protected DamageTypeStateEventDtoBase(DamageTypeEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.DamageTypeEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

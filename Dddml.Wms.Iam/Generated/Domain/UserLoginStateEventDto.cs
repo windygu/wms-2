@@ -15,25 +15,25 @@ namespace Dddml.Wms.Domain.User
 	public abstract class UserLoginStateEventDtoBase : IStateEventDto, IUserLoginStateCreated, IUserLoginStateMergePatched, IUserLoginStateRemoved
 	{
 
-        private UserLoginEventIdDto _stateEventId;
+        private UserLoginEventIdDto _userLoginEventId;
 
-		protected internal virtual UserLoginEventIdDto StateEventId 
+		protected internal virtual UserLoginEventIdDto UserLoginEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new UserLoginEventIdDto(); }
-                return _stateEventId;
+                if (_userLoginEventId == null) { _userLoginEventId = new UserLoginEventIdDto(); }
+                return _userLoginEventId;
             }
             set
             {
-                _stateEventId = value;
+                _userLoginEventId = value;
             }
         }
 
         public virtual LoginKeyDto LoginKey
         {
-            get { return StateEventId.LoginKey; }
-            set { StateEventId.LoginKey = value; }
+            get { return UserLoginEventId.LoginKey; }
+            set { UserLoginEventId.LoginKey = value; }
         }
 
 		public virtual bool? Active { get; set; }
@@ -49,7 +49,7 @@ namespace Dddml.Wms.Domain.User
 		UserLoginEventId IGlobalIdentity<UserLoginEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToUserLoginEventId();
+				return this.UserLoginEventId.ToUserLoginEventId();
 			}
 		}
 
@@ -107,9 +107,9 @@ namespace Dddml.Wms.Domain.User
 		}
 
 
-        UserLoginEventId IUserLoginStateEvent.StateEventId
+        UserLoginEventId IUserLoginStateEvent.UserLoginEventId
         {
-            get { return this.StateEventId.ToUserLoginEventId(); }
+            get { return this.UserLoginEventId.ToUserLoginEventId(); }
         }
 
         protected UserLoginStateEventDtoBase()
@@ -118,7 +118,7 @@ namespace Dddml.Wms.Domain.User
 
         protected UserLoginStateEventDtoBase(UserLoginEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.UserLoginEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

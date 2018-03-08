@@ -8,22 +8,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractOrderStateEvent extends AbstractStateEvent implements OrderStateEvent 
 {
-    private OrderEventId stateEventId;
+    private OrderEventId orderEventId;
 
-    public OrderEventId getStateEventId() {
-        return this.stateEventId;
+    public OrderEventId getOrderEventId() {
+        return this.orderEventId;
     }
 
-    public void setStateEventId(OrderEventId eventId) {
-        this.stateEventId = eventId;
+    public void setOrderEventId(OrderEventId eventId) {
+        this.orderEventId = eventId;
     }
     
     public String getOrderId() {
-        return getStateEventId().getOrderId();
+        return getOrderEventId().getOrderId();
     }
 
     public void setOrderId(String orderId) {
-        getStateEventId().setOrderId(orderId);
+        getOrderEventId().setOrderId(orderId);
     }
 
     private boolean stateEventReadOnly;
@@ -371,7 +371,7 @@ public abstract class AbstractOrderStateEvent extends AbstractStateEvent impleme
     }
 
     protected AbstractOrderStateEvent(OrderEventId eventId) {
-        this.stateEventId = eventId;
+        this.orderEventId = eventId;
     }
 
     protected OrderItemStateEventDao getOrderItemStateEventDao() {
@@ -380,9 +380,9 @@ public abstract class AbstractOrderStateEvent extends AbstractStateEvent impleme
 
     protected OrderItemEventId newOrderItemEventId(String orderItemSeqId)
     {
-        OrderItemEventId eventId = new OrderItemEventId(this.getStateEventId().getOrderId(), 
+        OrderItemEventId eventId = new OrderItemEventId(this.getOrderEventId().getOrderId(), 
             orderItemSeqId, 
-            this.getStateEventId().getVersion());
+            this.getOrderEventId().getVersion());
         return eventId;
     }
 
@@ -393,10 +393,10 @@ public abstract class AbstractOrderStateEvent extends AbstractStateEvent impleme
 
     public static void throwOnInconsistentEventIds(OrderStateEvent oe, OrderItemStateEvent e)
     {
-        if (!oe.getStateEventId().getOrderId().equals(e.getStateEventId().getOrderId()))
+        if (!oe.getOrderEventId().getOrderId().equals(e.getOrderItemEventId().getOrderId()))
         { 
             throw DomainError.named("inconsistentEventIds", "Outer Id OrderId %1$s but inner id OrderId %2$s", 
-                oe.getStateEventId().getOrderId(), e.getStateEventId().getOrderId());
+                oe.getOrderEventId().getOrderId(), e.getOrderItemEventId().getOrderId());
         }
     }
 
@@ -441,7 +441,7 @@ public abstract class AbstractOrderStateEvent extends AbstractStateEvent impleme
                 if (readOnlyOrderItemEvents != null) { return readOnlyOrderItemEvents; }
                 OrderItemStateEventDao eventDao = getOrderItemStateEventDao();
                 List<OrderItemStateEvent.OrderItemStateCreated> eL = new ArrayList<OrderItemStateEvent.OrderItemStateCreated>();
-                for (OrderItemStateEvent e : eventDao.findByOrderEventId(this.getStateEventId()))
+                for (OrderItemStateEvent e : eventDao.findByOrderEventId(this.getOrderEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((OrderItemStateEvent.OrderItemStateCreated)e);
@@ -465,7 +465,7 @@ public abstract class AbstractOrderStateEvent extends AbstractStateEvent impleme
         public void addOrderItemEvent(OrderItemStateEvent.OrderItemStateCreated e)
         {
             throwOnInconsistentEventIds(e);
-            this.orderItemEvents.put(e.getStateEventId(), e);
+            this.orderItemEvents.put(e.getOrderItemEventId(), e);
         }
 
         public void save()
@@ -756,7 +756,7 @@ public abstract class AbstractOrderStateEvent extends AbstractStateEvent impleme
                 if (readOnlyOrderItemEvents != null) { return readOnlyOrderItemEvents; }
                 OrderItemStateEventDao eventDao = getOrderItemStateEventDao();
                 List<OrderItemStateEvent> eL = new ArrayList<OrderItemStateEvent>();
-                for (OrderItemStateEvent e : eventDao.findByOrderEventId(this.getStateEventId()))
+                for (OrderItemStateEvent e : eventDao.findByOrderEventId(this.getOrderEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((OrderItemStateEvent)e);
@@ -780,7 +780,7 @@ public abstract class AbstractOrderStateEvent extends AbstractStateEvent impleme
         public void addOrderItemEvent(OrderItemStateEvent e)
         {
             throwOnInconsistentEventIds(e);
-            this.orderItemEvents.put(e.getStateEventId(), e);
+            this.orderItemEvents.put(e.getOrderItemEventId(), e);
         }
 
         public void save()

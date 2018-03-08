@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.Role
 	public abstract class RoleStateEventBase : IRoleStateEvent
 	{
 
-		public virtual RoleEventId StateEventId { get; set; }
+		public virtual RoleEventId RoleEventId { get; set; }
 
         public virtual string RoleId
         {
-            get { return StateEventId.RoleId; }
-            set { StateEventId.RoleId = value; }
+            get { return RoleEventId.RoleId; }
+            set { RoleEventId.RoleId = value; }
         }
 
 		public virtual string Name { get; set; }
@@ -40,7 +40,7 @@ namespace Dddml.Wms.Domain.Role
 		RoleEventId IGlobalIdentity<RoleEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.RoleEventId;
 			}
 		}
 
@@ -83,7 +83,7 @@ namespace Dddml.Wms.Domain.Role
 
         protected RoleStateEventBase(RoleEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.RoleEventId = stateEventId;
         }
 
 

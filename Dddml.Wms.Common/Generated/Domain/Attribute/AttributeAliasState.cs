@@ -265,7 +265,7 @@ namespace Dddml.Wms.Domain.Attribute
             id.Append("[").Append("AttributeAlias|");
 
             var stateEntityIdAttributeId = (this as IGlobalIdentity<AttributeAliasId>).GlobalId.AttributeId;
-            var eventEntityIdAttributeId = stateEvent.StateEventId.AttributeId;
+            var eventEntityIdAttributeId = stateEvent.AttributeAliasEventId.AttributeId;
             if (stateEntityIdAttributeId != eventEntityIdAttributeId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id AttributeId {0} in state but entity id AttributeId {1} in event", stateEntityIdAttributeId, eventEntityIdAttributeId);
@@ -273,7 +273,7 @@ namespace Dddml.Wms.Domain.Attribute
             id.Append(stateEntityIdAttributeId).Append(",");
 
             var stateEntityIdCode = (this as IGlobalIdentity<AttributeAliasId>).GlobalId.Code;
-            var eventEntityIdCode = stateEvent.StateEventId.Code;
+            var eventEntityIdCode = stateEvent.AttributeAliasEventId.Code;
             if (stateEntityIdCode != eventEntityIdCode)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id Code {0} in state but entity id Code {1} in event", stateEntityIdCode, eventEntityIdCode);

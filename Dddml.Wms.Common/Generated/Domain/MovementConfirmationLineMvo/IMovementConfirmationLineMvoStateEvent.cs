@@ -14,7 +14,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 {
 	public interface IMovementConfirmationLineMvoStateEvent : IEvent, IStateEventDto, IGlobalIdentity<MovementConfirmationLineMvoEventId>, ICreated<string>
 	{
-		MovementConfirmationLineMvoEventId StateEventId { get; }
+		MovementConfirmationLineMvoEventId MovementConfirmationLineMvoEventId { get; }
 
         bool ReadOnly { get; set; }
 

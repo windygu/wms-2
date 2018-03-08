@@ -16,12 +16,12 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 	public abstract class InventoryPostingRuleStateEventBase : IInventoryPostingRuleStateEvent
 	{
 
-		public virtual InventoryPostingRuleEventId StateEventId { get; set; }
+		public virtual InventoryPostingRuleEventId InventoryPostingRuleEventId { get; set; }
 
         public virtual string InventoryPostingRuleId
         {
-            get { return StateEventId.InventoryPostingRuleId; }
-            set { StateEventId.InventoryPostingRuleId = value; }
+            get { return InventoryPostingRuleEventId.InventoryPostingRuleId; }
+            set { InventoryPostingRuleEventId.InventoryPostingRuleId = value; }
         }
 
 		public virtual InventoryItemId TriggerInventoryItemId { get; set; }
@@ -47,7 +47,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 		InventoryPostingRuleEventId IGlobalIdentity<InventoryPostingRuleEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.InventoryPostingRuleEventId;
 			}
 		}
 
@@ -90,7 +90,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 
         protected InventoryPostingRuleStateEventBase(InventoryPostingRuleEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.InventoryPostingRuleEventId = stateEventId;
         }
 
 

@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.Order
 	public abstract class OrderStateEventBase : IOrderStateEvent
 	{
 
-		public virtual OrderEventId StateEventId { get; set; }
+		public virtual OrderEventId OrderEventId { get; set; }
 
         public virtual string OrderId
         {
-            get { return StateEventId.OrderId; }
-            set { StateEventId.OrderId = value; }
+            get { return OrderEventId.OrderId; }
+            set { OrderEventId.OrderId = value; }
         }
 
 		public virtual string OrderTypeId { get; set; }
@@ -84,7 +84,7 @@ namespace Dddml.Wms.Domain.Order
 		OrderEventId IGlobalIdentity<OrderEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.OrderEventId;
 			}
 		}
 
@@ -127,7 +127,7 @@ namespace Dddml.Wms.Domain.Order
 
         protected OrderStateEventBase(OrderEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.OrderEventId = stateEventId;
         }
 
 		protected IOrderItemStateEventDao OrderItemStateEventDao
@@ -137,7 +137,7 @@ namespace Dddml.Wms.Domain.Order
 
         protected OrderItemEventId NewOrderItemEventId(string orderItemSeqId)
         {
-            var stateEventId = new OrderItemEventId(this.StateEventId.OrderId, orderItemSeqId, this.StateEventId.Version);
+            var stateEventId = new OrderItemEventId(this.OrderEventId.OrderId, orderItemSeqId, this.OrderEventId.Version);
             return stateEventId;
         }
 
@@ -149,10 +149,10 @@ namespace Dddml.Wms.Domain.Order
 
 		public static void ThrowOnInconsistentEventIds(IOrderStateEvent oe, IOrderItemStateEvent e)
 		{
-			if (!oe.StateEventId.OrderId.Equals(e.StateEventId.OrderId))
+			if (!oe.OrderEventId.OrderId.Equals(e.OrderItemEventId.OrderId))
 			{ 
 				throw DomainError.Named("inconsistentEventIds", "Outer Id OrderId {0} but inner id OrderId {1}", 
-					oe.StateEventId.OrderId, e.StateEventId.OrderId);
+					oe.OrderEventId.OrderId, e.OrderItemEventId.OrderId);
 			}
 		}
 
@@ -194,7 +194,7 @@ namespace Dddml.Wms.Domain.Order
                     if (_readOnlyOrderItemEvents != null) { return _readOnlyOrderItemEvents; }
                     var eventDao = OrderItemStateEventDao;
                     var eL = new List<IOrderItemStateCreated>();
-                    foreach (var e in eventDao.FindByOrderEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByOrderEventId(this.OrderEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IOrderItemStateCreated)e);
@@ -218,7 +218,7 @@ namespace Dddml.Wms.Domain.Order
 		public virtual void AddOrderItemEvent(IOrderItemStateCreated e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._orderItemEvents[e.StateEventId] = e;
+			this._orderItemEvents[e.OrderItemEventId] = e;
 		}
 
         public virtual IOrderItemStateCreated NewOrderItemStateCreated(string orderItemSeqId)
@@ -320,7 +320,7 @@ namespace Dddml.Wms.Domain.Order
                     if (_readOnlyOrderItemEvents != null) { return _readOnlyOrderItemEvents; }
                     var eventDao = OrderItemStateEventDao;
                     var eL = new List<IOrderItemStateEvent>();
-                    foreach (var e in eventDao.FindByOrderEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByOrderEventId(this.OrderEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IOrderItemStateEvent)e);
@@ -344,7 +344,7 @@ namespace Dddml.Wms.Domain.Order
 		public virtual void AddOrderItemEvent(IOrderItemStateEvent e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._orderItemEvents[e.StateEventId] = e;
+			this._orderItemEvents[e.OrderItemEventId] = e;
 		}
 
         public virtual IOrderItemStateCreated NewOrderItemStateCreated(string orderItemSeqId)

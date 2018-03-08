@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.DocumentType
 	public abstract class DocumentTypeStateEventBase : IDocumentTypeStateEvent
 	{
 
-		public virtual DocumentTypeEventId StateEventId { get; set; }
+		public virtual DocumentTypeEventId DocumentTypeEventId { get; set; }
 
         public virtual string DocumentTypeId
         {
-            get { return StateEventId.DocumentTypeId; }
-            set { StateEventId.DocumentTypeId = value; }
+            get { return DocumentTypeEventId.DocumentTypeId; }
+            set { DocumentTypeEventId.DocumentTypeId = value; }
         }
 
 		public virtual string Description { get; set; }
@@ -40,7 +40,7 @@ namespace Dddml.Wms.Domain.DocumentType
 		DocumentTypeEventId IGlobalIdentity<DocumentTypeEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.DocumentTypeEventId;
 			}
 		}
 
@@ -83,7 +83,7 @@ namespace Dddml.Wms.Domain.DocumentType
 
         protected DocumentTypeStateEventBase(DocumentTypeEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.DocumentTypeEventId = stateEventId;
         }
 
 

@@ -40,10 +40,10 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo.NHibernate
             }
             MovementConfirmationLineId idObj = (MovementConfirmationLineId)(eventStoreAggregateId as EventStoreAggregateId).Id;
             var criteria = CurrentSession.CreateCriteria<MovementConfirmationLineMvoStateEventBase>();
-            criteria.Add(Restrictions.Eq("StateEventId.MovementConfirmationLineIdMovementConfirmationDocumentNumber", idObj.MovementConfirmationDocumentNumber));
-            criteria.Add(Restrictions.Eq("StateEventId.MovementConfirmationLineIdLineNumber", idObj.LineNumber));
-            criteria.Add(Restrictions.Le("StateEventId.MovementConfirmationVersion", version));
-            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.MovementConfirmationVersion"));
+            criteria.Add(Restrictions.Eq("MovementConfirmationLineMvoEventId.MovementConfirmationLineIdMovementConfirmationDocumentNumber", idObj.MovementConfirmationDocumentNumber));
+            criteria.Add(Restrictions.Eq("MovementConfirmationLineMvoEventId.MovementConfirmationLineIdLineNumber", idObj.LineNumber));
+            criteria.Add(Restrictions.Le("MovementConfirmationLineMvoEventId.MovementConfirmationVersion", version));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("MovementConfirmationLineMvoEventId.MovementConfirmationVersion"));
             var es = criteria.List<IEvent>();
             foreach (MovementConfirmationLineMvoStateEventBase e in es)
             {
@@ -51,7 +51,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo.NHibernate
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((MovementConfirmationLineMvoStateEventBase)es.Last()).StateEventId.MovementConfirmationVersion : default(long),
+                SteamVersion = es.Count > 0 ? ((MovementConfirmationLineMvoStateEventBase)es.Last()).MovementConfirmationLineMvoEventId.MovementConfirmationVersion : default(long),
                 Events = es
             };
         }

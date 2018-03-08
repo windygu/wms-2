@@ -36,17 +36,17 @@ public class HibernateMovementLineMvoEventStore extends AbstractHibernateEventSt
         }
         MovementLineId idObj = (MovementLineId) eventStoreAggregateId.getId();
         Criteria criteria = getCurrentSession().createCriteria(AbstractMovementLineMvoStateEvent.class);
-        criteria.add(Restrictions.eq("stateEventId.movementLineIdMovementDocumentNumber", idObj.getMovementDocumentNumber()));
-        criteria.add(Restrictions.eq("stateEventId.movementLineIdLineNumber", idObj.getLineNumber()));
-        criteria.add(Restrictions.le("stateEventId.movementVersion", version));
-        criteria.addOrder(Order.asc("stateEventId.movementVersion"));
+        criteria.add(Restrictions.eq("movementLineMvoEventId.movementLineIdMovementDocumentNumber", idObj.getMovementDocumentNumber()));
+        criteria.add(Restrictions.eq("movementLineMvoEventId.movementLineIdLineNumber", idObj.getLineNumber()));
+        criteria.add(Restrictions.le("movementLineMvoEventId.movementVersion", version));
+        criteria.addOrder(Order.asc("movementLineMvoEventId.movementVersion"));
         List es = criteria.list();
         for (Object e : es) {
             ((AbstractMovementLineMvoStateEvent) e).setStateEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractMovementLineMvoStateEvent) es.get(es.size() - 1)).getStateEventId().getMovementVersion());
+            eventStream.setSteamVersion(((AbstractMovementLineMvoStateEvent) es.get(es.size() - 1)).getMovementLineMvoEventId().getMovementVersion());
         } else {
             //todo?
         }

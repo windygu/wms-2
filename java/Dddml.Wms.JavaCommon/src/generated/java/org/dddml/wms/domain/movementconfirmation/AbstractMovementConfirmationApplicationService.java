@@ -147,7 +147,7 @@ public abstract class AbstractMovementConfirmationApplicationService implements 
     }
 
     public void initialize(MovementConfirmationStateEvent.MovementConfirmationStateCreated stateCreated) {
-        String aggregateId = stateCreated.getStateEventId().getDocumentNumber();
+        String aggregateId = stateCreated.getMovementConfirmationEventId().getDocumentNumber();
         MovementConfirmationState state = new AbstractMovementConfirmationState.SimpleMovementConfirmationState();
         state.setDocumentNumber(aggregateId);
 
@@ -155,7 +155,7 @@ public abstract class AbstractMovementConfirmationApplicationService implements 
         ((AbstractMovementConfirmationAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getStateEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, stateCreated.getMovementConfirmationEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(MovementConfirmationCommand command, EventStoreAggregateId eventStoreAggregateId, MovementConfirmationState state)

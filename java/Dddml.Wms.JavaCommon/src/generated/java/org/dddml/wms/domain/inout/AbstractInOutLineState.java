@@ -484,14 +484,14 @@ public abstract class AbstractInOutLineState implements InOutLineState
     protected void throwOnWrongEvent(InOutLineStateEvent stateEvent)
     {
         String stateEntityIdInOutDocumentNumber = this.getInOutLineId().getInOutDocumentNumber();
-        String eventEntityIdInOutDocumentNumber = stateEvent.getStateEventId().getInOutDocumentNumber();
+        String eventEntityIdInOutDocumentNumber = stateEvent.getInOutLineEventId().getInOutDocumentNumber();
         if (!stateEntityIdInOutDocumentNumber.equals(eventEntityIdInOutDocumentNumber))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id InOutDocumentNumber %1$s in state but entity id InOutDocumentNumber %2$s in event", stateEntityIdInOutDocumentNumber, eventEntityIdInOutDocumentNumber);
         }
 
         String stateEntityIdLineNumber = this.getInOutLineId().getLineNumber();
-        String eventEntityIdLineNumber = stateEvent.getStateEventId().getLineNumber();
+        String eventEntityIdLineNumber = stateEvent.getInOutLineEventId().getLineNumber();
         if (!stateEntityIdLineNumber.equals(eventEntityIdLineNumber))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id LineNumber %1$s in state but entity id LineNumber %2$s in event", stateEntityIdLineNumber, eventEntityIdLineNumber);

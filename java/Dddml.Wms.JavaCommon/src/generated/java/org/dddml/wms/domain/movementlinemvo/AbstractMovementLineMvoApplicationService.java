@@ -140,7 +140,7 @@ public abstract class AbstractMovementLineMvoApplicationService implements Movem
     }
 
     public void initialize(MovementLineMvoStateEvent.MovementLineMvoStateCreated stateCreated) {
-        MovementLineId aggregateId = stateCreated.getStateEventId().getMovementLineId();
+        MovementLineId aggregateId = stateCreated.getMovementLineMvoEventId().getMovementLineId();
         MovementLineMvoState state = new AbstractMovementLineMvoState.SimpleMovementLineMvoState();
         state.setMovementLineId(aggregateId);
 
@@ -148,7 +148,7 @@ public abstract class AbstractMovementLineMvoApplicationService implements Movem
         ((AbstractMovementLineMvoAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getStateEventId().getMovementVersion(), aggregate, state);
+        persist(eventStoreAggregateId, stateCreated.getMovementLineMvoEventId().getMovementVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(MovementLineMvoCommand command, EventStoreAggregateId eventStoreAggregateId, MovementLineMvoState state)

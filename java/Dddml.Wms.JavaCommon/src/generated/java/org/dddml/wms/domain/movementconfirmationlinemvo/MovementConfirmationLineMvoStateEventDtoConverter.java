@@ -26,7 +26,7 @@ public class MovementConfirmationLineMvoStateEventDtoConverter {
 
     public MovementConfirmationLineMvoStateEventDto.MovementConfirmationLineMvoStateCreatedDto toMovementConfirmationLineMvoStateCreatedDto(MovementConfirmationLineMvoStateEvent.MovementConfirmationLineMvoStateCreated e) {
         MovementConfirmationLineMvoStateEventDto.MovementConfirmationLineMvoStateCreatedDto dto = new MovementConfirmationLineMvoStateEventDto.MovementConfirmationLineMvoStateCreatedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setMovementConfirmationLineMvoEventId(e.getMovementConfirmationLineMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -58,7 +58,7 @@ public class MovementConfirmationLineMvoStateEventDtoConverter {
 
     public MovementConfirmationLineMvoStateEventDto.MovementConfirmationLineMvoStateMergePatchedDto toMovementConfirmationLineMvoStateMergePatchedDto(MovementConfirmationLineMvoStateEvent.MovementConfirmationLineMvoStateMergePatched e) {
         MovementConfirmationLineMvoStateEventDto.MovementConfirmationLineMvoStateMergePatchedDto dto = new MovementConfirmationLineMvoStateEventDto.MovementConfirmationLineMvoStateMergePatchedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setMovementConfirmationLineMvoEventId(e.getMovementConfirmationLineMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -114,7 +114,7 @@ public class MovementConfirmationLineMvoStateEventDtoConverter {
 
     public MovementConfirmationLineMvoStateEventDto.MovementConfirmationLineMvoStateDeletedDto toMovementConfirmationLineMvoStateDeletedDto(MovementConfirmationLineMvoStateEvent.MovementConfirmationLineMvoStateDeleted e) {
         MovementConfirmationLineMvoStateEventDto.MovementConfirmationLineMvoStateDeletedDto dto = new MovementConfirmationLineMvoStateEventDto.MovementConfirmationLineMvoStateDeletedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setMovementConfirmationLineMvoEventId(e.getMovementConfirmationLineMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());

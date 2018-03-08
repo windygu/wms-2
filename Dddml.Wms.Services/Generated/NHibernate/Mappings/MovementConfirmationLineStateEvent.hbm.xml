@@ -5,7 +5,7 @@
   
   <class name="MovementConfirmationLineStateEventBase" table="MovementConfirmationLineStateEvents" mutable="false" abstract="true">
 
-    <composite-id name="StateEventId" class="Dddml.Wms.Domain.MovementConfirmation.MovementConfirmationLineEventId">
+    <composite-id name="MovementConfirmationLineEventId" class="Dddml.Wms.Domain.MovementConfirmation.MovementConfirmationLineEventId">
         <key-property name="MovementConfirmationDocumentNumber" ><column name="MovementConfirmationLineIdMovementConfirmationDocumentNumber" length="50" /></key-property>
         <key-property name="LineNumber" ><column name="MovementConfirmationLineIdLineNumber" length="50" /></key-property>
         <key-property name="MovementConfirmationVersion" ></key-property>

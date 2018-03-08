@@ -39,11 +39,11 @@ namespace Dddml.Wms.Domain.OrganizationStructure.NHibernate
             }
             OrganizationStructureId idObj = (OrganizationStructureId)(eventStoreAggregateId as EventStoreAggregateId).Id;
             var criteria = CurrentSession.CreateCriteria<OrganizationStructureStateEventBase>();
-            criteria.Add(Restrictions.Eq("StateEventId.IdOrganizationStructureTypeId", idObj.OrganizationStructureTypeId));
-            criteria.Add(Restrictions.Eq("StateEventId.IdParentId", idObj.ParentId));
-            criteria.Add(Restrictions.Eq("StateEventId.IdSubsidiaryId", idObj.SubsidiaryId));
-            criteria.Add(Restrictions.Le("StateEventId.Version", version));
-            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.Version"));
+            criteria.Add(Restrictions.Eq("OrganizationStructureEventId.IdOrganizationStructureTypeId", idObj.OrganizationStructureTypeId));
+            criteria.Add(Restrictions.Eq("OrganizationStructureEventId.IdParentId", idObj.ParentId));
+            criteria.Add(Restrictions.Eq("OrganizationStructureEventId.IdSubsidiaryId", idObj.SubsidiaryId));
+            criteria.Add(Restrictions.Le("OrganizationStructureEventId.Version", version));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("OrganizationStructureEventId.Version"));
             var es = criteria.List<IEvent>();
             foreach (OrganizationStructureStateEventBase e in es)
             {
@@ -51,7 +51,7 @@ namespace Dddml.Wms.Domain.OrganizationStructure.NHibernate
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((OrganizationStructureStateEventBase)es.Last()).StateEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((OrganizationStructureStateEventBase)es.Last()).OrganizationStructureEventId.Version : default(long),
                 Events = es
             };
         }

@@ -138,7 +138,7 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
         {
             if (events != null && events.Count() > 0)
             {
-                this.ProductCategoryMemberId = ((IProductCategoryMemberStateEvent)events.First()).StateEventId.ProductCategoryMemberId;
+                this.ProductCategoryMemberId = ((IProductCategoryMemberStateEvent)events.First()).ProductCategoryMemberEventId.ProductCategoryMemberId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -262,7 +262,7 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
             id.Append("[").Append("ProductCategoryMember|");
 
             var stateEntityId = this.ProductCategoryMemberId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.ProductCategoryMemberId;
+            var eventEntityId = stateEvent.ProductCategoryMemberEventId.ProductCategoryMemberId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -272,7 +272,7 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
             id.Append("]");
 
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.StateEventId.Version;
+            var eventVersion = stateEvent.ProductCategoryMemberEventId.Version;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

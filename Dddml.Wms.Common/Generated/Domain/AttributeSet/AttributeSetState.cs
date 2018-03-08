@@ -166,7 +166,7 @@ namespace Dddml.Wms.Domain.AttributeSet
         {
             if (events != null && events.Count() > 0)
             {
-                this.AttributeSetId = ((IAttributeSetStateEvent)events.First()).StateEventId.AttributeSetId;
+                this.AttributeSetId = ((IAttributeSetStateEvent)events.First()).AttributeSetEventId.AttributeSetId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -373,7 +373,7 @@ namespace Dddml.Wms.Domain.AttributeSet
             id.Append("[").Append("AttributeSet|");
 
             var stateEntityId = this.AttributeSetId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.AttributeSetId;
+            var eventEntityId = stateEvent.AttributeSetEventId.AttributeSetId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -383,7 +383,7 @@ namespace Dddml.Wms.Domain.AttributeSet
             id.Append("]");
 
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.StateEventId.Version;
+            var eventVersion = stateEvent.AttributeSetEventId.Version;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

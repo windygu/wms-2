@@ -189,7 +189,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupState imple
     public AbstractAttributeSetInstanceExtensionFieldGroupState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setId(((AttributeSetInstanceExtensionFieldGroupStateEvent) events.get(0)).getStateEventId().getId());
+            this.setId(((AttributeSetInstanceExtensionFieldGroupStateEvent) events.get(0)).getAttributeSetInstanceExtensionFieldGroupEventId().getId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -336,16 +336,16 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupState imple
     protected void throwOnWrongEvent(AttributeSetInstanceExtensionFieldGroupStateEvent stateEvent)
     {
         String stateEntityId = this.getId(); // Aggregate Id
-        String eventEntityId = stateEvent.getStateEventId().getId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        String eventEntityId = stateEvent.getAttributeSetInstanceExtensionFieldGroupEventId().getId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getStateEventId().getVersion();// Aggregate Version
+        Long eventVersion = stateEvent.getAttributeSetInstanceExtensionFieldGroupEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getStateEventId().getVersion() == null");
+            throw new NullPointerException("stateEvent.getAttributeSetInstanceExtensionFieldGroupEventId().getVersion() == null");
         }
         if (!(stateVersion == null && eventVersion.equals(AttributeSetInstanceExtensionFieldGroupState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
         {

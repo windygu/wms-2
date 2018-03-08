@@ -60,7 +60,7 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 
         public virtual void Initialize(IUserPermissionMvoStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.UserPermissionId;
+            var aggregateId = stateCreated.UserPermissionMvoEventId.UserPermissionId;
             var state = new UserPermissionMvoState();
             state.UserPermissionId = aggregateId;
             var aggregate = (UserPermissionMvoAggregate)GetUserPermissionMvoAggregate(state);

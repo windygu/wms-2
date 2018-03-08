@@ -59,7 +59,7 @@ namespace Dddml.Wms.Domain.Permission
 
         public virtual void Initialize(IPermissionStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.PermissionId;
+            var aggregateId = stateCreated.PermissionEventId.PermissionId;
             var state = new PermissionState();
             state.PermissionId = aggregateId;
             var aggregate = (PermissionAggregate)GetPermissionAggregate(state);

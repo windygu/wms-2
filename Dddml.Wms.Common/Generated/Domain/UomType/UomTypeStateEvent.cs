@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.UomType
 	public abstract class UomTypeStateEventBase : IUomTypeStateEvent
 	{
 
-		public virtual UomTypeEventId StateEventId { get; set; }
+		public virtual UomTypeEventId UomTypeEventId { get; set; }
 
         public virtual string UomTypeId
         {
-            get { return StateEventId.UomTypeId; }
-            set { StateEventId.UomTypeId = value; }
+            get { return UomTypeEventId.UomTypeId; }
+            set { UomTypeEventId.UomTypeId = value; }
         }
 
 		public virtual string ParentTypeId { get; set; }
@@ -42,7 +42,7 @@ namespace Dddml.Wms.Domain.UomType
 		UomTypeEventId IGlobalIdentity<UomTypeEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.UomTypeEventId;
 			}
 		}
 
@@ -85,7 +85,7 @@ namespace Dddml.Wms.Domain.UomType
 
         protected UomTypeStateEventBase(UomTypeEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.UomTypeEventId = stateEventId;
         }
 
 

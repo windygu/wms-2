@@ -251,7 +251,7 @@ namespace Dddml.Wms.Domain.User
             id.Append("[").Append("UserPermission|");
 
             var stateEntityIdUserId = (this as IGlobalIdentity<UserPermissionId>).GlobalId.UserId;
-            var eventEntityIdUserId = stateEvent.StateEventId.UserId;
+            var eventEntityIdUserId = stateEvent.UserPermissionEventId.UserId;
             if (stateEntityIdUserId != eventEntityIdUserId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id UserId {0} in state but entity id UserId {1} in event", stateEntityIdUserId, eventEntityIdUserId);
@@ -259,7 +259,7 @@ namespace Dddml.Wms.Domain.User
             id.Append(stateEntityIdUserId).Append(",");
 
             var stateEntityIdPermissionId = (this as IGlobalIdentity<UserPermissionId>).GlobalId.PermissionId;
-            var eventEntityIdPermissionId = stateEvent.StateEventId.PermissionId;
+            var eventEntityIdPermissionId = stateEvent.UserPermissionEventId.PermissionId;
             if (stateEntityIdPermissionId != eventEntityIdPermissionId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id PermissionId {0} in state but entity id PermissionId {1} in event", stateEntityIdPermissionId, eventEntityIdPermissionId);

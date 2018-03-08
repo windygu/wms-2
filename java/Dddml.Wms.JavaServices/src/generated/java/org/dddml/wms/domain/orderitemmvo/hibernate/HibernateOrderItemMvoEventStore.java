@@ -35,17 +35,17 @@ public class HibernateOrderItemMvoEventStore extends AbstractHibernateEventStore
         }
         OrderItemId idObj = (OrderItemId) eventStoreAggregateId.getId();
         Criteria criteria = getCurrentSession().createCriteria(AbstractOrderItemMvoStateEvent.class);
-        criteria.add(Restrictions.eq("stateEventId.orderItemIdOrderId", idObj.getOrderId()));
-        criteria.add(Restrictions.eq("stateEventId.orderItemIdOrderItemSeqId", idObj.getOrderItemSeqId()));
-        criteria.add(Restrictions.le("stateEventId.orderVersion", version));
-        criteria.addOrder(Order.asc("stateEventId.orderVersion"));
+        criteria.add(Restrictions.eq("orderItemMvoEventId.orderItemIdOrderId", idObj.getOrderId()));
+        criteria.add(Restrictions.eq("orderItemMvoEventId.orderItemIdOrderItemSeqId", idObj.getOrderItemSeqId()));
+        criteria.add(Restrictions.le("orderItemMvoEventId.orderVersion", version));
+        criteria.addOrder(Order.asc("orderItemMvoEventId.orderVersion"));
         List es = criteria.list();
         for (Object e : es) {
             ((AbstractOrderItemMvoStateEvent) e).setStateEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractOrderItemMvoStateEvent) es.get(es.size() - 1)).getStateEventId().getOrderVersion());
+            eventStream.setSteamVersion(((AbstractOrderItemMvoStateEvent) es.get(es.size() - 1)).getOrderItemMvoEventId().getOrderVersion());
         } else {
             //todo?
         }

@@ -349,7 +349,7 @@ namespace Dddml.Wms.Domain.Movement
             id.Append("[").Append("MovementLine|");
 
             var stateEntityIdMovementDocumentNumber = (this as IGlobalIdentity<MovementLineId>).GlobalId.MovementDocumentNumber;
-            var eventEntityIdMovementDocumentNumber = stateEvent.StateEventId.MovementDocumentNumber;
+            var eventEntityIdMovementDocumentNumber = stateEvent.MovementLineEventId.MovementDocumentNumber;
             if (stateEntityIdMovementDocumentNumber != eventEntityIdMovementDocumentNumber)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id MovementDocumentNumber {0} in state but entity id MovementDocumentNumber {1} in event", stateEntityIdMovementDocumentNumber, eventEntityIdMovementDocumentNumber);
@@ -357,7 +357,7 @@ namespace Dddml.Wms.Domain.Movement
             id.Append(stateEntityIdMovementDocumentNumber).Append(",");
 
             var stateEntityIdLineNumber = (this as IGlobalIdentity<MovementLineId>).GlobalId.LineNumber;
-            var eventEntityIdLineNumber = stateEvent.StateEventId.LineNumber;
+            var eventEntityIdLineNumber = stateEvent.MovementLineEventId.LineNumber;
             if (stateEntityIdLineNumber != eventEntityIdLineNumber)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id LineNumber {0} in state but entity id LineNumber {1} in event", stateEntityIdLineNumber, eventEntityIdLineNumber);

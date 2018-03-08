@@ -14,7 +14,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 {
 	public interface IAttributeUseMvoStateEvent : IEvent, IStateEventDto, IGlobalIdentity<AttributeUseMvoEventId>, ICreated<string>
 	{
-		AttributeUseMvoEventId StateEventId { get; }
+		AttributeUseMvoEventId AttributeUseMvoEventId { get; }
 
         bool ReadOnly { get; set; }
 

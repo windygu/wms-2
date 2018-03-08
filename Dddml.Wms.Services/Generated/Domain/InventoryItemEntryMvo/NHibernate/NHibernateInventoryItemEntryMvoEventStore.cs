@@ -40,12 +40,12 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo.NHibernate
             }
             InventoryItemEntryId idObj = (InventoryItemEntryId)(eventStoreAggregateId as EventStoreAggregateId).Id;
             var criteria = CurrentSession.CreateCriteria<InventoryItemEntryMvoStateEventBase>();
-            criteria.Add(Restrictions.Eq("StateEventId.InventoryItemEntryIdInventoryItemIdProductId", idObj.InventoryItemIdProductId));
-            criteria.Add(Restrictions.Eq("StateEventId.InventoryItemEntryIdInventoryItemIdLocatorId", idObj.InventoryItemIdLocatorId));
-            criteria.Add(Restrictions.Eq("StateEventId.InventoryItemEntryIdInventoryItemIdAttributeSetInstanceId", idObj.InventoryItemIdAttributeSetInstanceId));
-            criteria.Add(Restrictions.Eq("StateEventId.InventoryItemEntryIdEntrySeqId", idObj.EntrySeqId));
-            criteria.Add(Restrictions.Le("StateEventId.InventoryItemVersion", version));
-            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.InventoryItemVersion"));
+            criteria.Add(Restrictions.Eq("InventoryItemEntryMvoEventId.InventoryItemEntryIdInventoryItemIdProductId", idObj.InventoryItemIdProductId));
+            criteria.Add(Restrictions.Eq("InventoryItemEntryMvoEventId.InventoryItemEntryIdInventoryItemIdLocatorId", idObj.InventoryItemIdLocatorId));
+            criteria.Add(Restrictions.Eq("InventoryItemEntryMvoEventId.InventoryItemEntryIdInventoryItemIdAttributeSetInstanceId", idObj.InventoryItemIdAttributeSetInstanceId));
+            criteria.Add(Restrictions.Eq("InventoryItemEntryMvoEventId.InventoryItemEntryIdEntrySeqId", idObj.EntrySeqId));
+            criteria.Add(Restrictions.Le("InventoryItemEntryMvoEventId.InventoryItemVersion", version));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("InventoryItemEntryMvoEventId.InventoryItemVersion"));
             var es = criteria.List<IEvent>();
             foreach (InventoryItemEntryMvoStateEventBase e in es)
             {
@@ -53,7 +53,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo.NHibernate
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((InventoryItemEntryMvoStateEventBase)es.Last()).StateEventId.InventoryItemVersion : default(long),
+                SteamVersion = es.Count > 0 ? ((InventoryItemEntryMvoStateEventBase)es.Last()).InventoryItemEntryMvoEventId.InventoryItemVersion : default(long),
                 Events = es
             };
         }

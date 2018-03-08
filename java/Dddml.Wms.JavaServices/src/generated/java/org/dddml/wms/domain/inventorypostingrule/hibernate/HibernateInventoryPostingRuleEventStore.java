@@ -35,16 +35,16 @@ public class HibernateInventoryPostingRuleEventStore extends AbstractHibernateEv
         }
         String idObj = (String) eventStoreAggregateId.getId();
         Criteria criteria = getCurrentSession().createCriteria(AbstractInventoryPostingRuleStateEvent.class);
-        criteria.add(Restrictions.eq("stateEventId.inventoryPostingRuleId", idObj));
-        criteria.add(Restrictions.le("stateEventId.version", version));
-        criteria.addOrder(Order.asc("stateEventId.version"));
+        criteria.add(Restrictions.eq("inventoryPostingRuleEventId.inventoryPostingRuleId", idObj));
+        criteria.add(Restrictions.le("inventoryPostingRuleEventId.version", version));
+        criteria.addOrder(Order.asc("inventoryPostingRuleEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
             ((AbstractInventoryPostingRuleStateEvent) e).setStateEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractInventoryPostingRuleStateEvent) es.get(es.size() - 1)).getStateEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractInventoryPostingRuleStateEvent) es.get(es.size() - 1)).getInventoryPostingRuleEventId().getVersion());
         } else {
             //todo?
         }

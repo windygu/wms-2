@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.SupplierProduct
 	public abstract class SupplierProductStateEventBase : ISupplierProductStateEvent
 	{
 
-		public virtual SupplierProductEventId StateEventId { get; set; }
+		public virtual SupplierProductEventId SupplierProductEventId { get; set; }
 
         public virtual SupplierProductId SupplierProductId
         {
-            get { return StateEventId.SupplierProductId; }
-            set { StateEventId.SupplierProductId = value; }
+            get { return SupplierProductEventId.SupplierProductId; }
+            set { SupplierProductEventId.SupplierProductId = value; }
         }
 
 		public virtual DateTime? AvailableThruDate { get; set; }
@@ -62,7 +62,7 @@ namespace Dddml.Wms.Domain.SupplierProduct
 		SupplierProductEventId IGlobalIdentity<SupplierProductEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.SupplierProductEventId;
 			}
 		}
 
@@ -105,7 +105,7 @@ namespace Dddml.Wms.Domain.SupplierProduct
 
         protected SupplierProductStateEventBase(SupplierProductEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.SupplierProductEventId = stateEventId;
         }
 
 

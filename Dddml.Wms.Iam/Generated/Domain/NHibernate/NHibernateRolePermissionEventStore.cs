@@ -39,10 +39,10 @@ namespace Dddml.Wms.Domain.RolePermission.NHibernate
             }
             RolePermissionId idObj = (RolePermissionId)(eventStoreAggregateId as EventStoreAggregateId).Id;
             var criteria = CurrentSession.CreateCriteria<RolePermissionStateEventBase>();
-            criteria.Add(Restrictions.Eq("StateEventId.IdRoleId", idObj.RoleId));
-            criteria.Add(Restrictions.Eq("StateEventId.IdPermissionId", idObj.PermissionId));
-            criteria.Add(Restrictions.Le("StateEventId.Version", version));
-            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.Version"));
+            criteria.Add(Restrictions.Eq("RolePermissionEventId.IdRoleId", idObj.RoleId));
+            criteria.Add(Restrictions.Eq("RolePermissionEventId.IdPermissionId", idObj.PermissionId));
+            criteria.Add(Restrictions.Le("RolePermissionEventId.Version", version));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("RolePermissionEventId.Version"));
             var es = criteria.List<IEvent>();
             foreach (RolePermissionStateEventBase e in es)
             {
@@ -50,7 +50,7 @@ namespace Dddml.Wms.Domain.RolePermission.NHibernate
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((RolePermissionStateEventBase)es.Last()).StateEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((RolePermissionStateEventBase)es.Last()).RolePermissionEventId.Version : default(long),
                 Events = es
             };
         }

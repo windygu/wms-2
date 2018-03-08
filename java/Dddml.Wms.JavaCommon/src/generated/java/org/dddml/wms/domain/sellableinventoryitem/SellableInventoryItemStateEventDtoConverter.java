@@ -24,7 +24,7 @@ public class SellableInventoryItemStateEventDtoConverter {
 
     public SellableInventoryItemStateEventDto.SellableInventoryItemStateCreatedDto toSellableInventoryItemStateCreatedDto(SellableInventoryItemStateEvent.SellableInventoryItemStateCreated e) {
         SellableInventoryItemStateEventDto.SellableInventoryItemStateCreatedDto dto = new SellableInventoryItemStateEventDto.SellableInventoryItemStateCreatedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setSellableInventoryItemEventId(e.getSellableInventoryItemEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -41,7 +41,7 @@ public class SellableInventoryItemStateEventDtoConverter {
 
     public SellableInventoryItemStateEventDto.SellableInventoryItemStateMergePatchedDto toSellableInventoryItemStateMergePatchedDto(SellableInventoryItemStateEvent.SellableInventoryItemStateMergePatched e) {
         SellableInventoryItemStateEventDto.SellableInventoryItemStateMergePatchedDto dto = new SellableInventoryItemStateEventDto.SellableInventoryItemStateMergePatchedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setSellableInventoryItemEventId(e.getSellableInventoryItemEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());

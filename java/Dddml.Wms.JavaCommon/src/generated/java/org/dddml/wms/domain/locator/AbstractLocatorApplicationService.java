@@ -138,7 +138,7 @@ public abstract class AbstractLocatorApplicationService implements LocatorApplic
     }
 
     public void initialize(LocatorStateEvent.LocatorStateCreated stateCreated) {
-        String aggregateId = stateCreated.getStateEventId().getLocatorId();
+        String aggregateId = stateCreated.getLocatorEventId().getLocatorId();
         LocatorState state = new AbstractLocatorState.SimpleLocatorState();
         state.setLocatorId(aggregateId);
 
@@ -146,7 +146,7 @@ public abstract class AbstractLocatorApplicationService implements LocatorApplic
         ((AbstractLocatorAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getStateEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, stateCreated.getLocatorEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(LocatorCommand command, EventStoreAggregateId eventStoreAggregateId, LocatorState state)

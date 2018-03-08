@@ -134,7 +134,7 @@ public abstract class AbstractSupplierProductApplicationService implements Suppl
     }
 
     public void initialize(SupplierProductStateEvent.SupplierProductStateCreated stateCreated) {
-        SupplierProductId aggregateId = stateCreated.getStateEventId().getSupplierProductId();
+        SupplierProductId aggregateId = stateCreated.getSupplierProductEventId().getSupplierProductId();
         SupplierProductState state = new AbstractSupplierProductState.SimpleSupplierProductState();
         state.setSupplierProductId(aggregateId);
 
@@ -142,7 +142,7 @@ public abstract class AbstractSupplierProductApplicationService implements Suppl
         ((AbstractSupplierProductAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getStateEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, stateCreated.getSupplierProductEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(SupplierProductCommand command, EventStoreAggregateId eventStoreAggregateId, SupplierProductState state)

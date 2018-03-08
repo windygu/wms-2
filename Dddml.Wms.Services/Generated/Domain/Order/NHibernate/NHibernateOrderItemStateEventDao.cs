@@ -43,8 +43,8 @@ namespace Dddml.Wms.Domain.Order.NHibernate
         {
             var criteria = CurrentSession.CreateCriteria<OrderItemStateEventBase>();
             var partIdCondition = Restrictions.Conjunction()
-                .Add(Restrictions.Eq("StateEventId.OrderId", orderEventId.OrderId))
-                .Add(Restrictions.Eq("StateEventId.OrderVersion", orderEventId.Version))
+                .Add(Restrictions.Eq("OrderItemEventId.OrderId", orderEventId.OrderId))
+                .Add(Restrictions.Eq("OrderItemEventId.OrderVersion", orderEventId.Version))
                 ;
 
             return criteria.Add(partIdCondition).List<OrderItemStateEventBase>();

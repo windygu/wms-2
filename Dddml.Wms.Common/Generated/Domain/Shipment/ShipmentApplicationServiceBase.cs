@@ -59,7 +59,7 @@ namespace Dddml.Wms.Domain.Shipment
 
         public virtual void Initialize(IShipmentStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.ShipmentId;
+            var aggregateId = stateCreated.ShipmentEventId.ShipmentId;
             var state = new ShipmentState();
             state.ShipmentId = aggregateId;
             var aggregate = (ShipmentAggregate)GetShipmentAggregate(state);

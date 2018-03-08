@@ -59,7 +59,7 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 
         public virtual void Initialize(IProductCategoryMemberStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.ProductCategoryMemberId;
+            var aggregateId = stateCreated.ProductCategoryMemberEventId.ProductCategoryMemberId;
             var state = new ProductCategoryMemberState();
             state.ProductCategoryMemberId = aggregateId;
             var aggregate = (ProductCategoryMemberAggregate)GetProductCategoryMemberAggregate(state);

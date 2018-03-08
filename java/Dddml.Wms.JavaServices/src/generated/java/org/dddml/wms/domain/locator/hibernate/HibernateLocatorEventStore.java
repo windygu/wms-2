@@ -34,16 +34,16 @@ public class HibernateLocatorEventStore extends AbstractHibernateEventStore
         }
         String idObj = (String) eventStoreAggregateId.getId();
         Criteria criteria = getCurrentSession().createCriteria(AbstractLocatorStateEvent.class);
-        criteria.add(Restrictions.eq("stateEventId.locatorId", idObj));
-        criteria.add(Restrictions.le("stateEventId.version", version));
-        criteria.addOrder(Order.asc("stateEventId.version"));
+        criteria.add(Restrictions.eq("locatorEventId.locatorId", idObj));
+        criteria.add(Restrictions.le("locatorEventId.version", version));
+        criteria.addOrder(Order.asc("locatorEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
             ((AbstractLocatorStateEvent) e).setStateEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractLocatorStateEvent) es.get(es.size() - 1)).getStateEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractLocatorStateEvent) es.get(es.size() - 1)).getLocatorEventId().getVersion());
         } else {
             //todo?
         }

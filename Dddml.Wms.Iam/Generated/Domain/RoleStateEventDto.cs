@@ -15,31 +15,31 @@ namespace Dddml.Wms.Domain.Role
 	public abstract class RoleStateEventDtoBase : IStateEventDto, IRoleStateCreated, IRoleStateMergePatched, IRoleStateDeleted
 	{
 
-        private RoleEventIdDto _stateEventId;
+        private RoleEventIdDto _roleEventId;
 
-		protected internal virtual RoleEventIdDto StateEventId 
+		protected internal virtual RoleEventIdDto RoleEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new RoleEventIdDto(); }
-                return _stateEventId;
+                if (_roleEventId == null) { _roleEventId = new RoleEventIdDto(); }
+                return _roleEventId;
             }
             set
             {
-                _stateEventId = value;
+                _roleEventId = value;
             }
         }
 
         public virtual string RoleId
         {
-            get { return StateEventId.RoleId; }
-            set { StateEventId.RoleId = value; }
+            get { return RoleEventId.RoleId; }
+            set { RoleEventId.RoleId = value; }
         }
 
         public virtual long Version
         {
-            get { return StateEventId.Version; }
-            set { StateEventId.Version = value; }
+            get { return RoleEventId.Version; }
+            set { RoleEventId.Version = value; }
         }
 
 		public virtual string Name { get; set; }
@@ -59,7 +59,7 @@ namespace Dddml.Wms.Domain.Role
 		RoleEventId IGlobalIdentity<RoleEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToRoleEventId();
+				return this.RoleEventId.ToRoleEventId();
 			}
 		}
 
@@ -153,9 +153,9 @@ namespace Dddml.Wms.Domain.Role
 		}
 
 
-        RoleEventId IRoleStateEvent.StateEventId
+        RoleEventId IRoleStateEvent.RoleEventId
         {
-            get { return this.StateEventId.ToRoleEventId(); }
+            get { return this.RoleEventId.ToRoleEventId(); }
         }
 
         protected RoleStateEventDtoBase()
@@ -164,7 +164,7 @@ namespace Dddml.Wms.Domain.Role
 
         protected RoleStateEventDtoBase(RoleEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.RoleEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

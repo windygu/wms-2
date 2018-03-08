@@ -15,25 +15,25 @@ namespace Dddml.Wms.Domain.Attribute
 	public abstract class AttributeAliasStateEventDtoBase : IStateEventDto, IAttributeAliasStateCreated, IAttributeAliasStateMergePatched, IAttributeAliasStateRemoved
 	{
 
-        private AttributeAliasEventIdDto _stateEventId;
+        private AttributeAliasEventIdDto _attributeAliasEventId;
 
-		protected internal virtual AttributeAliasEventIdDto StateEventId 
+		protected internal virtual AttributeAliasEventIdDto AttributeAliasEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new AttributeAliasEventIdDto(); }
-                return _stateEventId;
+                if (_attributeAliasEventId == null) { _attributeAliasEventId = new AttributeAliasEventIdDto(); }
+                return _attributeAliasEventId;
             }
             set
             {
-                _stateEventId = value;
+                _attributeAliasEventId = value;
             }
         }
 
         public virtual string Code
         {
-            get { return StateEventId.Code; }
-            set { StateEventId.Code = value; }
+            get { return AttributeAliasEventId.Code; }
+            set { AttributeAliasEventId.Code = value; }
         }
 
 		public virtual string Name { get; set; }
@@ -51,7 +51,7 @@ namespace Dddml.Wms.Domain.Attribute
 		AttributeAliasEventId IGlobalIdentity<AttributeAliasEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToAttributeAliasEventId();
+				return this.AttributeAliasEventId.ToAttributeAliasEventId();
 			}
 		}
 
@@ -128,9 +128,9 @@ namespace Dddml.Wms.Domain.Attribute
 		}
 
 
-        AttributeAliasEventId IAttributeAliasStateEvent.StateEventId
+        AttributeAliasEventId IAttributeAliasStateEvent.AttributeAliasEventId
         {
-            get { return this.StateEventId.ToAttributeAliasEventId(); }
+            get { return this.AttributeAliasEventId.ToAttributeAliasEventId(); }
         }
 
         protected AttributeAliasStateEventDtoBase()
@@ -139,7 +139,7 @@ namespace Dddml.Wms.Domain.Attribute
 
         protected AttributeAliasStateEventDtoBase(AttributeAliasEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.AttributeAliasEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

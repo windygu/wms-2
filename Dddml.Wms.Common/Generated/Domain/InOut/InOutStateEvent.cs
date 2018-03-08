@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.InOut
 	public abstract class InOutStateEventBase : IInOutStateEvent
 	{
 
-		public virtual InOutEventId StateEventId { get; set; }
+		public virtual InOutEventId InOutEventId { get; set; }
 
         public virtual string DocumentNumber
         {
-            get { return StateEventId.DocumentNumber; }
-            set { StateEventId.DocumentNumber = value; }
+            get { return InOutEventId.DocumentNumber; }
+            set { InOutEventId.DocumentNumber = value; }
         }
 
 		public virtual string DocumentStatusId { get; set; }
@@ -96,7 +96,7 @@ namespace Dddml.Wms.Domain.InOut
 		InOutEventId IGlobalIdentity<InOutEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.InOutEventId;
 			}
 		}
 
@@ -139,7 +139,7 @@ namespace Dddml.Wms.Domain.InOut
 
         protected InOutStateEventBase(InOutEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.InOutEventId = stateEventId;
         }
 
 		protected IInOutLineStateEventDao InOutLineStateEventDao
@@ -149,7 +149,7 @@ namespace Dddml.Wms.Domain.InOut
 
         protected InOutLineEventId NewInOutLineEventId(string lineNumber)
         {
-            var stateEventId = new InOutLineEventId(this.StateEventId.DocumentNumber, lineNumber, this.StateEventId.Version);
+            var stateEventId = new InOutLineEventId(this.InOutEventId.DocumentNumber, lineNumber, this.InOutEventId.Version);
             return stateEventId;
         }
 
@@ -161,10 +161,10 @@ namespace Dddml.Wms.Domain.InOut
 
 		public static void ThrowOnInconsistentEventIds(IInOutStateEvent oe, IInOutLineStateEvent e)
 		{
-			if (!oe.StateEventId.DocumentNumber.Equals(e.StateEventId.InOutDocumentNumber))
+			if (!oe.InOutEventId.DocumentNumber.Equals(e.InOutLineEventId.InOutDocumentNumber))
 			{ 
 				throw DomainError.Named("inconsistentEventIds", "Outer Id DocumentNumber {0} but inner id InOutDocumentNumber {1}", 
-					oe.StateEventId.DocumentNumber, e.StateEventId.InOutDocumentNumber);
+					oe.InOutEventId.DocumentNumber, e.InOutLineEventId.InOutDocumentNumber);
 			}
 		}
 
@@ -206,7 +206,7 @@ namespace Dddml.Wms.Domain.InOut
                     if (_readOnlyInOutLineEvents != null) { return _readOnlyInOutLineEvents; }
                     var eventDao = InOutLineStateEventDao;
                     var eL = new List<IInOutLineStateCreated>();
-                    foreach (var e in eventDao.FindByInOutEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByInOutEventId(this.InOutEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IInOutLineStateCreated)e);
@@ -230,7 +230,7 @@ namespace Dddml.Wms.Domain.InOut
 		public virtual void AddInOutLineEvent(IInOutLineStateCreated e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._inOutLineEvents[e.StateEventId] = e;
+			this._inOutLineEvents[e.InOutLineEventId] = e;
 		}
 
         public virtual IInOutLineStateCreated NewInOutLineStateCreated(string lineNumber)
@@ -344,7 +344,7 @@ namespace Dddml.Wms.Domain.InOut
                     if (_readOnlyInOutLineEvents != null) { return _readOnlyInOutLineEvents; }
                     var eventDao = InOutLineStateEventDao;
                     var eL = new List<IInOutLineStateEvent>();
-                    foreach (var e in eventDao.FindByInOutEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByInOutEventId(this.InOutEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IInOutLineStateEvent)e);
@@ -368,7 +368,7 @@ namespace Dddml.Wms.Domain.InOut
 		public virtual void AddInOutLineEvent(IInOutLineStateEvent e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._inOutLineEvents[e.StateEventId] = e;
+			this._inOutLineEvents[e.InOutLineEventId] = e;
 		}
 
         public virtual IInOutLineStateCreated NewInOutLineStateCreated(string lineNumber)

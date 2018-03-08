@@ -14,7 +14,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 {
 	public interface IPhysicalInventoryLineMvoStateEvent : IEvent, IStateEventDto, IGlobalIdentity<PhysicalInventoryLineMvoEventId>, ICreated<string>
 	{
-		PhysicalInventoryLineMvoEventId StateEventId { get; }
+		PhysicalInventoryLineMvoEventId PhysicalInventoryLineMvoEventId { get; }
 
         bool ReadOnly { get; set; }
 

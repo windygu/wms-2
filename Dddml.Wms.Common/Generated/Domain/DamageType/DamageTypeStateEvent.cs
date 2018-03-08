@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.DamageType
 	public abstract class DamageTypeStateEventBase : IDamageTypeStateEvent
 	{
 
-		public virtual DamageTypeEventId StateEventId { get; set; }
+		public virtual DamageTypeEventId DamageTypeEventId { get; set; }
 
         public virtual string DamageTypeId
         {
-            get { return StateEventId.DamageTypeId; }
-            set { StateEventId.DamageTypeId = value; }
+            get { return DamageTypeEventId.DamageTypeId; }
+            set { DamageTypeEventId.DamageTypeId = value; }
         }
 
 		public virtual string Description { get; set; }
@@ -42,7 +42,7 @@ namespace Dddml.Wms.Domain.DamageType
 		DamageTypeEventId IGlobalIdentity<DamageTypeEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.DamageTypeEventId;
 			}
 		}
 
@@ -85,7 +85,7 @@ namespace Dddml.Wms.Domain.DamageType
 
         protected DamageTypeStateEventBase(DamageTypeEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.DamageTypeEventId = stateEventId;
         }
 
 

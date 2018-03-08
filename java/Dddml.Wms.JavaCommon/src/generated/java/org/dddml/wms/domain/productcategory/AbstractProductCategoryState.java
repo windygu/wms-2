@@ -225,7 +225,7 @@ public abstract class AbstractProductCategoryState implements ProductCategorySta
     public AbstractProductCategoryState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setProductCategoryId(((ProductCategoryStateEvent) events.get(0)).getStateEventId().getProductCategoryId());
+            this.setProductCategoryId(((ProductCategoryStateEvent) events.get(0)).getProductCategoryEventId().getProductCategoryId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -408,16 +408,16 @@ public abstract class AbstractProductCategoryState implements ProductCategorySta
     protected void throwOnWrongEvent(ProductCategoryStateEvent stateEvent)
     {
         String stateEntityId = this.getProductCategoryId(); // Aggregate Id
-        String eventEntityId = stateEvent.getStateEventId().getProductCategoryId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        String eventEntityId = stateEvent.getProductCategoryEventId().getProductCategoryId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getStateEventId().getVersion();// Aggregate Version
+        Long eventVersion = stateEvent.getProductCategoryEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getStateEventId().getVersion() == null");
+            throw new NullPointerException("stateEvent.getProductCategoryEventId().getVersion() == null");
         }
         if (!(stateVersion == null && eventVersion.equals(ProductCategoryState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
         {

@@ -140,7 +140,7 @@ public abstract class AbstractPhysicalInventoryLineMvoApplicationService impleme
     }
 
     public void initialize(PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateCreated stateCreated) {
-        PhysicalInventoryLineId aggregateId = stateCreated.getStateEventId().getPhysicalInventoryLineId();
+        PhysicalInventoryLineId aggregateId = stateCreated.getPhysicalInventoryLineMvoEventId().getPhysicalInventoryLineId();
         PhysicalInventoryLineMvoState state = new AbstractPhysicalInventoryLineMvoState.SimplePhysicalInventoryLineMvoState();
         state.setPhysicalInventoryLineId(aggregateId);
 
@@ -148,7 +148,7 @@ public abstract class AbstractPhysicalInventoryLineMvoApplicationService impleme
         ((AbstractPhysicalInventoryLineMvoAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getStateEventId().getPhysicalInventoryVersion(), aggregate, state);
+        persist(eventStoreAggregateId, stateCreated.getPhysicalInventoryLineMvoEventId().getPhysicalInventoryVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(PhysicalInventoryLineMvoCommand command, EventStoreAggregateId eventStoreAggregateId, PhysicalInventoryLineMvoState state)

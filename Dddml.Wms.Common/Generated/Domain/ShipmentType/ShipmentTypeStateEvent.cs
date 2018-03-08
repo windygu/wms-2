@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.ShipmentType
 	public abstract class ShipmentTypeStateEventBase : IShipmentTypeStateEvent
 	{
 
-		public virtual ShipmentTypeEventId StateEventId { get; set; }
+		public virtual ShipmentTypeEventId ShipmentTypeEventId { get; set; }
 
         public virtual string ShipmentTypeId
         {
-            get { return StateEventId.ShipmentTypeId; }
-            set { StateEventId.ShipmentTypeId = value; }
+            get { return ShipmentTypeEventId.ShipmentTypeId; }
+            set { ShipmentTypeEventId.ShipmentTypeId = value; }
         }
 
 		public virtual string ParentTypeId { get; set; }
@@ -42,7 +42,7 @@ namespace Dddml.Wms.Domain.ShipmentType
 		ShipmentTypeEventId IGlobalIdentity<ShipmentTypeEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.ShipmentTypeEventId;
 			}
 		}
 
@@ -85,7 +85,7 @@ namespace Dddml.Wms.Domain.ShipmentType
 
         protected ShipmentTypeStateEventBase(ShipmentTypeEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.ShipmentTypeEventId = stateEventId;
         }
 
 

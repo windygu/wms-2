@@ -298,7 +298,7 @@ public abstract class AbstractAttributeUseMvoState implements AttributeUseMvoSta
     public AbstractAttributeUseMvoState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setAttributeSetAttributeUseId(((AttributeUseMvoStateEvent) events.get(0)).getStateEventId().getAttributeSetAttributeUseId());
+            this.setAttributeSetAttributeUseId(((AttributeUseMvoStateEvent) events.get(0)).getAttributeUseMvoEventId().getAttributeSetAttributeUseId());
             for (Event e : events) {
                 mutate(e);
                 this.setAttributeSetVersion(this.getAttributeSetVersion() + 1);
@@ -553,16 +553,16 @@ public abstract class AbstractAttributeUseMvoState implements AttributeUseMvoSta
     protected void throwOnWrongEvent(AttributeUseMvoStateEvent stateEvent)
     {
         AttributeSetAttributeUseId stateEntityId = this.getAttributeSetAttributeUseId(); // Aggregate Id
-        AttributeSetAttributeUseId eventEntityId = stateEvent.getStateEventId().getAttributeSetAttributeUseId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        AttributeSetAttributeUseId eventEntityId = stateEvent.getAttributeUseMvoEventId().getAttributeSetAttributeUseId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getAttributeSetVersion();
-        Long eventVersion = stateEvent.getStateEventId().getAttributeSetVersion();// Aggregate Version
+        Long eventVersion = stateEvent.getAttributeUseMvoEventId().getAttributeSetVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getStateEventId().getAttributeSetVersion() == null");
+            throw new NullPointerException("stateEvent.getAttributeUseMvoEventId().getAttributeSetVersion() == null");
         }
         if (!(stateVersion == null && eventVersion.equals(AttributeUseMvoState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
         {

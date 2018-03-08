@@ -8,7 +8,7 @@
   
   <class name="AbstractAttributeValueMvoStateEvent" table="AttributeValueMvoStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="stateEventId" class="org.dddml.wms.domain.attributevaluemvo.AttributeValueMvoEventId">
+	<composite-id name="attributeValueMvoEventId" class="org.dddml.wms.domain.attributevaluemvo.AttributeValueMvoEventId">
 		<key-property name="attributeValueIdAttributeId" ><column name="AttributeValueIdAttributeId" length="50" /></key-property>
 		<key-property name="attributeValueIdValue" ><column name="AttributeValueIdValue" length="50" /></key-property>
 		<key-property name="attributeVersion" ></key-property>

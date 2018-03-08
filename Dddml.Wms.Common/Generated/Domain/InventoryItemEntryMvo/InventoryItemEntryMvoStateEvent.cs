@@ -16,12 +16,12 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 	public abstract class InventoryItemEntryMvoStateEventBase : IInventoryItemEntryMvoStateEvent
 	{
 
-		public virtual InventoryItemEntryMvoEventId StateEventId { get; set; }
+		public virtual InventoryItemEntryMvoEventId InventoryItemEntryMvoEventId { get; set; }
 
         public virtual InventoryItemEntryId InventoryItemEntryId
         {
-            get { return StateEventId.InventoryItemEntryId; }
-            set { StateEventId.InventoryItemEntryId = value; }
+            get { return InventoryItemEntryMvoEventId.InventoryItemEntryId; }
+            set { InventoryItemEntryMvoEventId.InventoryItemEntryId = value; }
         }
 
 		public virtual decimal? OnHandQuantity { get; set; }
@@ -67,7 +67,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 		InventoryItemEntryMvoEventId IGlobalIdentity<InventoryItemEntryMvoEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.InventoryItemEntryMvoEventId;
 			}
 		}
 
@@ -110,7 +110,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
         protected InventoryItemEntryMvoStateEventBase(InventoryItemEntryMvoEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.InventoryItemEntryMvoEventId = stateEventId;
         }
 
 

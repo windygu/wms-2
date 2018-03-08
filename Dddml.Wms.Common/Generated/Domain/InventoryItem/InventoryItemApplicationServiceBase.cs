@@ -59,7 +59,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 
         public virtual void Initialize(IInventoryItemStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.InventoryItemId;
+            var aggregateId = stateCreated.InventoryItemEventId.InventoryItemId;
             var state = new InventoryItemState();
             state.InventoryItemId = aggregateId;
             var aggregate = (InventoryItemAggregate)GetInventoryItemAggregate(state);

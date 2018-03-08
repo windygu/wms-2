@@ -8,22 +8,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractWarehouseStateEvent extends AbstractStateEvent implements WarehouseStateEvent 
 {
-    private WarehouseEventId stateEventId;
+    private WarehouseEventId warehouseEventId;
 
-    public WarehouseEventId getStateEventId() {
-        return this.stateEventId;
+    public WarehouseEventId getWarehouseEventId() {
+        return this.warehouseEventId;
     }
 
-    public void setStateEventId(WarehouseEventId eventId) {
-        this.stateEventId = eventId;
+    public void setWarehouseEventId(WarehouseEventId eventId) {
+        this.warehouseEventId = eventId;
     }
     
     public String getWarehouseId() {
-        return getStateEventId().getWarehouseId();
+        return getWarehouseEventId().getWarehouseId();
     }
 
     public void setWarehouseId(String warehouseId) {
-        getStateEventId().setWarehouseId(warehouseId);
+        getWarehouseEventId().setWarehouseId(warehouseId);
     }
 
     private boolean stateEventReadOnly;
@@ -119,7 +119,7 @@ public abstract class AbstractWarehouseStateEvent extends AbstractStateEvent imp
     }
 
     protected AbstractWarehouseStateEvent(WarehouseEventId eventId) {
-        this.stateEventId = eventId;
+        this.warehouseEventId = eventId;
     }
 
 

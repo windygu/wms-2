@@ -36,17 +36,17 @@ public class HibernateInOutLineMvoEventStore extends AbstractHibernateEventStore
         }
         InOutLineId idObj = (InOutLineId) eventStoreAggregateId.getId();
         Criteria criteria = getCurrentSession().createCriteria(AbstractInOutLineMvoStateEvent.class);
-        criteria.add(Restrictions.eq("stateEventId.inOutLineIdInOutDocumentNumber", idObj.getInOutDocumentNumber()));
-        criteria.add(Restrictions.eq("stateEventId.inOutLineIdLineNumber", idObj.getLineNumber()));
-        criteria.add(Restrictions.le("stateEventId.inOutVersion", version));
-        criteria.addOrder(Order.asc("stateEventId.inOutVersion"));
+        criteria.add(Restrictions.eq("inOutLineMvoEventId.inOutLineIdInOutDocumentNumber", idObj.getInOutDocumentNumber()));
+        criteria.add(Restrictions.eq("inOutLineMvoEventId.inOutLineIdLineNumber", idObj.getLineNumber()));
+        criteria.add(Restrictions.le("inOutLineMvoEventId.inOutVersion", version));
+        criteria.addOrder(Order.asc("inOutLineMvoEventId.inOutVersion"));
         List es = criteria.list();
         for (Object e : es) {
             ((AbstractInOutLineMvoStateEvent) e).setStateEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractInOutLineMvoStateEvent) es.get(es.size() - 1)).getStateEventId().getInOutVersion());
+            eventStream.setSteamVersion(((AbstractInOutLineMvoStateEvent) es.get(es.size() - 1)).getInOutLineMvoEventId().getInOutVersion());
         } else {
             //todo?
         }

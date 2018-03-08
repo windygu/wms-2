@@ -16,12 +16,12 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 	public abstract class PhysicalInventoryLineStateEventBase : IPhysicalInventoryLineStateEvent
 	{
 
-		public virtual PhysicalInventoryLineEventId StateEventId { get; set; }
+		public virtual PhysicalInventoryLineEventId PhysicalInventoryLineEventId { get; set; }
 
         public virtual InventoryItemId InventoryItemId
         {
-            get { return StateEventId.InventoryItemId; }
-            set { StateEventId.InventoryItemId = value; }
+            get { return PhysicalInventoryLineEventId.InventoryItemId; }
+            set { PhysicalInventoryLineEventId.InventoryItemId = value; }
         }
 
 		public virtual decimal? BookQuantity { get; set; }
@@ -45,7 +45,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 		PhysicalInventoryLineEventId IGlobalIdentity<PhysicalInventoryLineEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.PhysicalInventoryLineEventId;
 			}
 		}
 
@@ -90,7 +90,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
         protected PhysicalInventoryLineStateEventBase(PhysicalInventoryLineEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.PhysicalInventoryLineEventId = stateEventId;
         }
 
 

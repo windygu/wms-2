@@ -19,7 +19,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
         public virtual AttributeSetInstanceState AttributeSetInstanceState { get { return _state; } }
 
-        public virtual AttributeSetInstanceEventId StateEventId
+        public virtual AttributeSetInstanceEventId AttributeSetInstanceEventId
         {
             get
             {
@@ -34,8 +34,8 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
         public virtual string AttributeSetInstanceId
         {
-            get { return StateEventId.AttributeSetInstanceId; }
-            set { StateEventId.AttributeSetInstanceId = value; }
+            get { return AttributeSetInstanceEventId.AttributeSetInstanceId; }
+            set { AttributeSetInstanceEventId.AttributeSetInstanceId = value; }
         }
 
         public virtual string AttributeSetId { get { return _state.AttributeSetId; } set { _state.AttributeSetId = value; } }
@@ -185,7 +185,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 		AttributeSetInstanceEventId IGlobalIdentity<AttributeSetInstanceEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.AttributeSetInstanceEventId;
 			}
 		}
 
@@ -228,7 +228,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
         protected AttributeSetInstanceStateEventBase(AttributeSetInstanceEventId stateEventId) : this(new AttributeSetInstanceState())
         {
-            this.StateEventId = stateEventId;
+            this.AttributeSetInstanceEventId = stateEventId;
         }
 
         protected AttributeSetInstanceStateEventBase(AttributeSetInstanceState state)

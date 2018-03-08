@@ -39,8 +39,8 @@ public class HibernateInOutLineStateEventDao implements InOutLineStateEventDao
     {
         Criteria criteria = getCurrentSession().createCriteria(AbstractInOutLineStateEvent.class);
         Junction partIdCondition = Restrictions.conjunction()
-            .add(Restrictions.eq("stateEventId.inOutDocumentNumber", inOutEventId.getDocumentNumber()))
-            .add(Restrictions.eq("stateEventId.inOutVersion", inOutEventId.getVersion()))
+            .add(Restrictions.eq("inOutLineEventId.inOutDocumentNumber", inOutEventId.getDocumentNumber()))
+            .add(Restrictions.eq("inOutLineEventId.inOutVersion", inOutEventId.getVersion()))
             ;
         return criteria.add(partIdCondition).list();
     }

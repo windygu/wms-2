@@ -34,16 +34,16 @@ public class HibernateLotEventStore extends AbstractHibernateEventStore
         }
         String idObj = (String) eventStoreAggregateId.getId();
         Criteria criteria = getCurrentSession().createCriteria(AbstractLotStateEvent.class);
-        criteria.add(Restrictions.eq("stateEventId.lotId", idObj));
-        criteria.add(Restrictions.le("stateEventId.version", version));
-        criteria.addOrder(Order.asc("stateEventId.version"));
+        criteria.add(Restrictions.eq("lotEventId.lotId", idObj));
+        criteria.add(Restrictions.le("lotEventId.version", version));
+        criteria.addOrder(Order.asc("lotEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
             ((AbstractLotStateEvent) e).setStateEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractLotStateEvent) es.get(es.size() - 1)).getStateEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractLotStateEvent) es.get(es.size() - 1)).getLotEventId().getVersion());
         } else {
             //todo?
         }

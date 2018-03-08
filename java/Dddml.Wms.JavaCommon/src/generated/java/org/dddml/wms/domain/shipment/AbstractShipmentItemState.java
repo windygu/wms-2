@@ -313,14 +313,14 @@ public abstract class AbstractShipmentItemState implements ShipmentItemState
     protected void throwOnWrongEvent(ShipmentItemStateEvent stateEvent)
     {
         String stateEntityIdShipmentId = this.getShipmentItemId().getShipmentId();
-        String eventEntityIdShipmentId = stateEvent.getStateEventId().getShipmentId();
+        String eventEntityIdShipmentId = stateEvent.getShipmentItemEventId().getShipmentId();
         if (!stateEntityIdShipmentId.equals(eventEntityIdShipmentId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id ShipmentId %1$s in state but entity id ShipmentId %2$s in event", stateEntityIdShipmentId, eventEntityIdShipmentId);
         }
 
         String stateEntityIdShipmentItemSeqId = this.getShipmentItemId().getShipmentItemSeqId();
-        String eventEntityIdShipmentItemSeqId = stateEvent.getStateEventId().getShipmentItemSeqId();
+        String eventEntityIdShipmentItemSeqId = stateEvent.getShipmentItemEventId().getShipmentItemSeqId();
         if (!stateEntityIdShipmentItemSeqId.equals(eventEntityIdShipmentItemSeqId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id ShipmentItemSeqId %1$s in state but entity id ShipmentItemSeqId %2$s in event", stateEntityIdShipmentItemSeqId, eventEntityIdShipmentItemSeqId);

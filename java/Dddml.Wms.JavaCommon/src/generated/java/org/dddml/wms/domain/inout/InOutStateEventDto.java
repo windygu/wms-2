@@ -8,15 +8,15 @@ import org.dddml.wms.domain.AbstractStateEvent;
 public class InOutStateEventDto extends AbstractStateEvent
 {
 
-    private InOutEventId stateEventId;
+    private InOutEventId inOutEventId;
 
     InOutEventId getStateEventId() {
-        if (stateEventId == null) { stateEventId = new InOutEventId(); }
-        return stateEventId;
+        if (inOutEventId == null) { inOutEventId = new InOutEventId(); }
+        return inOutEventId;
     }
 
-    void setStateEventId(InOutEventId eventId) {
-        this.stateEventId = eventId;
+    void setInOutEventId(InOutEventId eventId) {
+        this.inOutEventId = eventId;
     }
 
     public String getDocumentNumber() {

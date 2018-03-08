@@ -5,7 +5,7 @@
   
   <class name="UserClaimStateEventBase" table="UserClaimStateEvents" mutable="false" abstract="true">
 
-    <composite-id name="StateEventId" class="Dddml.Wms.Domain.User.UserClaimEventId">
+    <composite-id name="UserClaimEventId" class="Dddml.Wms.Domain.User.UserClaimEventId">
         <key-property name="UserId" ><column name="UserClaimIdUserId" length="50" /></key-property>
         <key-property name="ClaimId" ><column name="UserClaimIdClaimId" /></key-property>
         <key-property name="UserVersion" ></key-property>

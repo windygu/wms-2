@@ -15,25 +15,25 @@ namespace Dddml.Wms.Domain.User
 	public abstract class UserClaimStateEventDtoBase : IStateEventDto, IUserClaimStateCreated, IUserClaimStateMergePatched, IUserClaimStateRemoved
 	{
 
-        private UserClaimEventIdDto _stateEventId;
+        private UserClaimEventIdDto _userClaimEventId;
 
-		protected internal virtual UserClaimEventIdDto StateEventId 
+		protected internal virtual UserClaimEventIdDto UserClaimEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new UserClaimEventIdDto(); }
-                return _stateEventId;
+                if (_userClaimEventId == null) { _userClaimEventId = new UserClaimEventIdDto(); }
+                return _userClaimEventId;
             }
             set
             {
-                _stateEventId = value;
+                _userClaimEventId = value;
             }
         }
 
         public virtual int ClaimId
         {
-            get { return StateEventId.ClaimId; }
-            set { StateEventId.ClaimId = value; }
+            get { return UserClaimEventId.ClaimId; }
+            set { UserClaimEventId.ClaimId = value; }
         }
 
 		public virtual string ClaimType { get; set; }
@@ -53,7 +53,7 @@ namespace Dddml.Wms.Domain.User
 		UserClaimEventId IGlobalIdentity<UserClaimEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToUserClaimEventId();
+				return this.UserClaimEventId.ToUserClaimEventId();
 			}
 		}
 
@@ -149,9 +149,9 @@ namespace Dddml.Wms.Domain.User
 		}
 
 
-        UserClaimEventId IUserClaimStateEvent.StateEventId
+        UserClaimEventId IUserClaimStateEvent.UserClaimEventId
         {
-            get { return this.StateEventId.ToUserClaimEventId(); }
+            get { return this.UserClaimEventId.ToUserClaimEventId(); }
         }
 
         protected UserClaimStateEventDtoBase()
@@ -160,7 +160,7 @@ namespace Dddml.Wms.Domain.User
 
         protected UserClaimStateEventDtoBase(UserClaimEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.UserClaimEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

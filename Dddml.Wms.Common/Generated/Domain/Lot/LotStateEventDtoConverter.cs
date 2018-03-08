@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.Lot
         public virtual LotStateCreatedDto ToLotStateCreatedDto(ILotStateCreated e)
         {
             var dto = new LotStateCreatedDto();
-            dto.StateEventId = new LotEventIdDtoWrapper(e.StateEventId);
+            dto.LotEventId = new LotEventIdDtoWrapper(e.LotEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -51,7 +51,7 @@ namespace Dddml.Wms.Domain.Lot
         public virtual LotStateMergePatchedDto ToLotStateMergePatchedDto(ILotStateMergePatched e)
         {
             var dto = new LotStateMergePatchedDto();
-            dto.StateEventId = new LotEventIdDtoWrapper(e.StateEventId);
+            dto.LotEventId = new LotEventIdDtoWrapper(e.LotEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -69,7 +69,7 @@ namespace Dddml.Wms.Domain.Lot
         public virtual LotStateDeletedDto ToLotStateDeletedDto(ILotStateDeleted e)
         {
             var dto = new LotStateDeletedDto();
-            dto.StateEventId = new LotEventIdDtoWrapper(e.StateEventId);
+            dto.LotEventId = new LotEventIdDtoWrapper(e.LotEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

@@ -39,7 +39,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
         public virtual MovementLineMvoStateCreatedDto ToMovementLineMvoStateCreatedDto(IMovementLineMvoStateCreated e)
         {
             var dto = new MovementLineMvoStateCreatedDto();
-            dto.StateEventId = new MovementLineMvoEventIdDtoWrapper(e.StateEventId);
+            dto.MovementLineMvoEventId = new MovementLineMvoEventIdDtoWrapper(e.MovementLineMvoEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -84,7 +84,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
         public virtual MovementLineMvoStateMergePatchedDto ToMovementLineMvoStateMergePatchedDto(IMovementLineMvoStateMergePatched e)
         {
             var dto = new MovementLineMvoStateMergePatchedDto();
-            dto.StateEventId = new MovementLineMvoEventIdDtoWrapper(e.StateEventId);
+            dto.MovementLineMvoEventId = new MovementLineMvoEventIdDtoWrapper(e.MovementLineMvoEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -166,7 +166,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
         public virtual MovementLineMvoStateDeletedDto ToMovementLineMvoStateDeletedDto(IMovementLineMvoStateDeleted e)
         {
             var dto = new MovementLineMvoStateDeletedDto();
-            dto.StateEventId = new MovementLineMvoEventIdDtoWrapper(e.StateEventId);
+            dto.MovementLineMvoEventId = new MovementLineMvoEventIdDtoWrapper(e.MovementLineMvoEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

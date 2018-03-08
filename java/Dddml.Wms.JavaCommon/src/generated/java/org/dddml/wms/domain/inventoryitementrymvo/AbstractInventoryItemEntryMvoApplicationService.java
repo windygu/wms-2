@@ -136,7 +136,7 @@ public abstract class AbstractInventoryItemEntryMvoApplicationService implements
     }
 
     public void initialize(InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateCreated stateCreated) {
-        InventoryItemEntryId aggregateId = stateCreated.getStateEventId().getInventoryItemEntryId();
+        InventoryItemEntryId aggregateId = stateCreated.getInventoryItemEntryMvoEventId().getInventoryItemEntryId();
         InventoryItemEntryMvoState state = new AbstractInventoryItemEntryMvoState.SimpleInventoryItemEntryMvoState();
         state.setInventoryItemEntryId(aggregateId);
 
@@ -144,7 +144,7 @@ public abstract class AbstractInventoryItemEntryMvoApplicationService implements
         ((AbstractInventoryItemEntryMvoAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getStateEventId().getInventoryItemVersion(), aggregate, state);
+        persist(eventStoreAggregateId, stateCreated.getInventoryItemEntryMvoEventId().getInventoryItemVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(InventoryItemEntryMvoCommand command, EventStoreAggregateId eventStoreAggregateId, InventoryItemEntryMvoState state)

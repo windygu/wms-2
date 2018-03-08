@@ -14,7 +14,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 {
 	public interface IInventoryPostingRuleStateEvent : IEvent, IStateEventDto, IGlobalIdentity<InventoryPostingRuleEventId>, ICreated<string>
 	{
-		InventoryPostingRuleEventId StateEventId { get; }
+		InventoryPostingRuleEventId InventoryPostingRuleEventId { get; }
 
         bool ReadOnly { get; set; }
 

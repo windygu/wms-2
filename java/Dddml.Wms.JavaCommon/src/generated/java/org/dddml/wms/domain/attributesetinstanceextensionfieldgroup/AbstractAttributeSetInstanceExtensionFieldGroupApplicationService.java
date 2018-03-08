@@ -138,7 +138,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupApplication
     }
 
     public void initialize(AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateCreated stateCreated) {
-        String aggregateId = stateCreated.getStateEventId().getId();
+        String aggregateId = stateCreated.getAttributeSetInstanceExtensionFieldGroupEventId().getId();
         AttributeSetInstanceExtensionFieldGroupState state = new AbstractAttributeSetInstanceExtensionFieldGroupState.SimpleAttributeSetInstanceExtensionFieldGroupState();
         state.setId(aggregateId);
 
@@ -146,7 +146,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupApplication
         ((AbstractAttributeSetInstanceExtensionFieldGroupAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getStateEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, stateCreated.getAttributeSetInstanceExtensionFieldGroupEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(AttributeSetInstanceExtensionFieldGroupCommand command, EventStoreAggregateId eventStoreAggregateId, AttributeSetInstanceExtensionFieldGroupState state)

@@ -35,16 +35,16 @@ public class HibernateMovementConfirmationEventStore extends AbstractHibernateEv
         }
         String idObj = (String) eventStoreAggregateId.getId();
         Criteria criteria = getCurrentSession().createCriteria(AbstractMovementConfirmationStateEvent.class);
-        criteria.add(Restrictions.eq("stateEventId.documentNumber", idObj));
-        criteria.add(Restrictions.le("stateEventId.version", version));
-        criteria.addOrder(Order.asc("stateEventId.version"));
+        criteria.add(Restrictions.eq("movementConfirmationEventId.documentNumber", idObj));
+        criteria.add(Restrictions.le("movementConfirmationEventId.version", version));
+        criteria.addOrder(Order.asc("movementConfirmationEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
             ((AbstractMovementConfirmationStateEvent) e).setStateEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractMovementConfirmationStateEvent) es.get(es.size() - 1)).getStateEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractMovementConfirmationStateEvent) es.get(es.size() - 1)).getMovementConfirmationEventId().getVersion());
         } else {
             //todo?
         }

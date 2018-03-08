@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.Locator
         public virtual LocatorStateCreatedDto ToLocatorStateCreatedDto(ILocatorStateCreated e)
         {
             var dto = new LocatorStateCreatedDto();
-            dto.StateEventId = new LocatorEventIdDtoWrapper(e.StateEventId);
+            dto.LocatorEventId = new LocatorEventIdDtoWrapper(e.LocatorEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -58,7 +58,7 @@ namespace Dddml.Wms.Domain.Locator
         public virtual LocatorStateMergePatchedDto ToLocatorStateMergePatchedDto(ILocatorStateMergePatched e)
         {
             var dto = new LocatorStateMergePatchedDto();
-            dto.StateEventId = new LocatorEventIdDtoWrapper(e.StateEventId);
+            dto.LocatorEventId = new LocatorEventIdDtoWrapper(e.LocatorEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -90,7 +90,7 @@ namespace Dddml.Wms.Domain.Locator
         public virtual LocatorStateDeletedDto ToLocatorStateDeletedDto(ILocatorStateDeleted e)
         {
             var dto = new LocatorStateDeletedDto();
-            dto.StateEventId = new LocatorEventIdDtoWrapper(e.StateEventId);
+            dto.LocatorEventId = new LocatorEventIdDtoWrapper(e.LocatorEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

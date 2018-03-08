@@ -13,7 +13,7 @@ namespace Dddml.Wms.Domain.DocumentType
 {
 	public interface IDocumentTypeStateEvent : IEvent, IStateEventDto, IGlobalIdentity<DocumentTypeEventId>, ICreated<string>
 	{
-		DocumentTypeEventId StateEventId { get; }
+		DocumentTypeEventId DocumentTypeEventId { get; }
 
         bool ReadOnly { get; set; }
 

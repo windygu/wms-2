@@ -11,22 +11,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractInventoryItemRequirementStateEvent extends AbstractStateEvent implements InventoryItemRequirementStateEvent 
 {
-    private InventoryItemRequirementEventId stateEventId;
+    private InventoryItemRequirementEventId inventoryItemRequirementEventId;
 
-    public InventoryItemRequirementEventId getStateEventId() {
-        return this.stateEventId;
+    public InventoryItemRequirementEventId getInventoryItemRequirementEventId() {
+        return this.inventoryItemRequirementEventId;
     }
 
-    public void setStateEventId(InventoryItemRequirementEventId eventId) {
-        this.stateEventId = eventId;
+    public void setInventoryItemRequirementEventId(InventoryItemRequirementEventId eventId) {
+        this.inventoryItemRequirementEventId = eventId;
     }
     
     public InventoryItemId getInventoryItemRequirementId() {
-        return getStateEventId().getInventoryItemRequirementId();
+        return getInventoryItemRequirementEventId().getInventoryItemRequirementId();
     }
 
     public void setInventoryItemRequirementId(InventoryItemId inventoryItemRequirementId) {
-        getStateEventId().setInventoryItemRequirementId(inventoryItemRequirementId);
+        getInventoryItemRequirementEventId().setInventoryItemRequirementId(inventoryItemRequirementId);
     }
 
     private boolean stateEventReadOnly;
@@ -86,14 +86,14 @@ public abstract class AbstractInventoryItemRequirementStateEvent extends Abstrac
     }
 
     protected AbstractInventoryItemRequirementStateEvent(InventoryItemRequirementEventId eventId) {
-        this.stateEventId = eventId;
+        this.inventoryItemRequirementEventId = eventId;
     }
 
     protected InventoryItemRequirementEntryEventId newInventoryItemRequirementEntryEventId(Long entrySeqId)
     {
-        InventoryItemRequirementEntryEventId eventId = new InventoryItemRequirementEntryEventId(this.getStateEventId().getInventoryItemRequirementId(), 
+        InventoryItemRequirementEntryEventId eventId = new InventoryItemRequirementEntryEventId(this.getInventoryItemRequirementEventId().getInventoryItemRequirementId(), 
             entrySeqId, 
-            this.getStateEventId().getVersion());
+            this.getInventoryItemRequirementEventId().getVersion());
         return eventId;
     }
 
@@ -104,10 +104,10 @@ public abstract class AbstractInventoryItemRequirementStateEvent extends Abstrac
 
     public static void throwOnInconsistentEventIds(InventoryItemRequirementStateEvent oe, InventoryItemRequirementEntryStateEvent e)
     {
-        if (!oe.getStateEventId().getInventoryItemRequirementId().equals(e.getStateEventId().getInventoryItemRequirementId()))
+        if (!oe.getInventoryItemRequirementEventId().getInventoryItemRequirementId().equals(e.getInventoryItemRequirementEntryEventId().getInventoryItemRequirementId()))
         { 
             throw DomainError.named("inconsistentEventIds", "Outer Id InventoryItemRequirementId %1$s but inner id InventoryItemRequirementId %2$s", 
-                oe.getStateEventId().getInventoryItemRequirementId(), e.getStateEventId().getInventoryItemRequirementId());
+                oe.getInventoryItemRequirementEventId().getInventoryItemRequirementId(), e.getInventoryItemRequirementEntryEventId().getInventoryItemRequirementId());
         }
     }
 
@@ -157,7 +157,7 @@ public abstract class AbstractInventoryItemRequirementStateEvent extends Abstrac
         public void addInventoryItemRequirementEntryEvent(InventoryItemRequirementEntryStateEvent.InventoryItemRequirementEntryStateCreated e)
         {
             throwOnInconsistentEventIds(e);
-            this.inventoryItemRequirementEntryEvents.put(e.getStateEventId(), e);
+            this.inventoryItemRequirementEntryEvents.put(e.getInventoryItemRequirementEntryEventId(), e);
         }
 
     }
@@ -211,7 +211,7 @@ public abstract class AbstractInventoryItemRequirementStateEvent extends Abstrac
         public void addInventoryItemRequirementEntryEvent(InventoryItemRequirementEntryStateEvent e)
         {
             throwOnInconsistentEventIds(e);
-            this.inventoryItemRequirementEntryEvents.put(e.getStateEventId(), e);
+            this.inventoryItemRequirementEntryEvents.put(e.getInventoryItemRequirementEntryEventId(), e);
         }
 
     }

@@ -130,7 +130,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
         {
             if (events != null && events.Count() > 0)
             {
-                this.InventoryItemEntryId = ((IInventoryItemEntryMvoStateEvent)events.First()).StateEventId.InventoryItemEntryId;
+                this.InventoryItemEntryId = ((IInventoryItemEntryMvoStateEvent)events.First()).InventoryItemEntryMvoEventId.InventoryItemEntryId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -408,7 +408,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             id.Append("[").Append("InventoryItemEntryMvo|");
 
             var stateEntityId = this.InventoryItemEntryId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.InventoryItemEntryId;
+            var eventEntityId = stateEvent.InventoryItemEntryMvoEventId.InventoryItemEntryId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -418,7 +418,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             id.Append("]");
 
             var stateVersion = this.InventoryItemVersion;
-            var eventVersion = stateEvent.StateEventId.InventoryItemVersion;
+            var eventVersion = stateEvent.InventoryItemEntryMvoEventId.InventoryItemVersion;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

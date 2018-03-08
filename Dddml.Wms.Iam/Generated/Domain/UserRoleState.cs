@@ -251,7 +251,7 @@ namespace Dddml.Wms.Domain.User
             id.Append("[").Append("UserRole|");
 
             var stateEntityIdUserId = (this as IGlobalIdentity<UserRoleId>).GlobalId.UserId;
-            var eventEntityIdUserId = stateEvent.StateEventId.UserId;
+            var eventEntityIdUserId = stateEvent.UserRoleEventId.UserId;
             if (stateEntityIdUserId != eventEntityIdUserId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id UserId {0} in state but entity id UserId {1} in event", stateEntityIdUserId, eventEntityIdUserId);
@@ -259,7 +259,7 @@ namespace Dddml.Wms.Domain.User
             id.Append(stateEntityIdUserId).Append(",");
 
             var stateEntityIdRoleId = (this as IGlobalIdentity<UserRoleId>).GlobalId.RoleId;
-            var eventEntityIdRoleId = stateEvent.StateEventId.RoleId;
+            var eventEntityIdRoleId = stateEvent.UserRoleEventId.RoleId;
             if (stateEntityIdRoleId != eventEntityIdRoleId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id RoleId {0} in state but entity id RoleId {1} in event", stateEntityIdRoleId, eventEntityIdRoleId);

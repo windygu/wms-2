@@ -14,7 +14,7 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 {
 	public interface IOrderItemMvoStateEvent : IEvent, IStateEventDto, IGlobalIdentity<OrderItemMvoEventId>, ICreated<string>
 	{
-		OrderItemMvoEventId StateEventId { get; }
+		OrderItemMvoEventId OrderItemMvoEventId { get; }
 
         bool ReadOnly { get; set; }
 

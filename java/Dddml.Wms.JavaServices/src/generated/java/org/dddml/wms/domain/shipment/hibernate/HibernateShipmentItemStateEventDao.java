@@ -38,8 +38,8 @@ public class HibernateShipmentItemStateEventDao implements ShipmentItemStateEven
     {
         Criteria criteria = getCurrentSession().createCriteria(AbstractShipmentItemStateEvent.class);
         Junction partIdCondition = Restrictions.conjunction()
-            .add(Restrictions.eq("stateEventId.shipmentId", shipmentEventId.getShipmentId()))
-            .add(Restrictions.eq("stateEventId.shipmentVersion", shipmentEventId.getVersion()))
+            .add(Restrictions.eq("shipmentItemEventId.shipmentId", shipmentEventId.getShipmentId()))
+            .add(Restrictions.eq("shipmentItemEventId.shipmentVersion", shipmentEventId.getVersion()))
             ;
         return criteria.add(partIdCondition).list();
     }

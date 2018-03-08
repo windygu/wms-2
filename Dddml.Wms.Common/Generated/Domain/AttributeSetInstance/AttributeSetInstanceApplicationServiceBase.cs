@@ -87,7 +87,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
         public virtual void Initialize(IAttributeSetInstanceStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.AttributeSetInstanceId;
+            var aggregateId = stateCreated.AttributeSetInstanceEventId.AttributeSetInstanceId;
             var state = new AttributeSetInstanceState();
             state.AttributeSetInstanceId = aggregateId;
             var aggregate = (AttributeSetInstanceAggregate)GetAttributeSetInstanceAggregate(state);

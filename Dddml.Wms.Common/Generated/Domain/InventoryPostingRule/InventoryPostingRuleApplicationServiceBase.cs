@@ -60,7 +60,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 
         public virtual void Initialize(IInventoryPostingRuleStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.InventoryPostingRuleId;
+            var aggregateId = stateCreated.InventoryPostingRuleEventId.InventoryPostingRuleId;
             var state = new InventoryPostingRuleState();
             state.InventoryPostingRuleId = aggregateId;
             var aggregate = (InventoryPostingRuleAggregate)GetInventoryPostingRuleAggregate(state);

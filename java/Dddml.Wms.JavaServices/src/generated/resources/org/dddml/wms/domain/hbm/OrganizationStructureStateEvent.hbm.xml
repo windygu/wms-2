@@ -8,7 +8,7 @@
   
   <class name="AbstractOrganizationStructureStateEvent" table="OrganizationStructureStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="stateEventId" class="org.dddml.wms.domain.organizationstructure.OrganizationStructureEventId">
+	<composite-id name="organizationStructureEventId" class="org.dddml.wms.domain.organizationstructure.OrganizationStructureEventId">
 		<key-property name="idOrganizationStructureTypeId" ></key-property>
 		<key-property name="idParentId" ></key-property>
 		<key-property name="idSubsidiaryId" ></key-property>

@@ -24,7 +24,7 @@ public class ProductCategoryStateEventDtoConverter {
 
     public ProductCategoryStateEventDto.ProductCategoryStateCreatedDto toProductCategoryStateCreatedDto(ProductCategoryStateEvent.ProductCategoryStateCreated e) {
         ProductCategoryStateEventDto.ProductCategoryStateCreatedDto dto = new ProductCategoryStateEventDto.ProductCategoryStateCreatedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setProductCategoryEventId(e.getProductCategoryEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -42,7 +42,7 @@ public class ProductCategoryStateEventDtoConverter {
 
     public ProductCategoryStateEventDto.ProductCategoryStateMergePatchedDto toProductCategoryStateMergePatchedDto(ProductCategoryStateEvent.ProductCategoryStateMergePatched e) {
         ProductCategoryStateEventDto.ProductCategoryStateMergePatchedDto dto = new ProductCategoryStateEventDto.ProductCategoryStateMergePatchedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setProductCategoryEventId(e.getProductCategoryEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -70,7 +70,7 @@ public class ProductCategoryStateEventDtoConverter {
 
     public ProductCategoryStateEventDto.ProductCategoryStateDeletedDto toProductCategoryStateDeletedDto(ProductCategoryStateEvent.ProductCategoryStateDeleted e) {
         ProductCategoryStateEventDto.ProductCategoryStateDeletedDto dto = new ProductCategoryStateEventDto.ProductCategoryStateDeletedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setProductCategoryEventId(e.getProductCategoryEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());

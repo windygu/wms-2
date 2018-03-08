@@ -8,22 +8,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractProductCategoryMemberStateEvent extends AbstractStateEvent implements ProductCategoryMemberStateEvent 
 {
-    private ProductCategoryMemberEventId stateEventId;
+    private ProductCategoryMemberEventId productCategoryMemberEventId;
 
-    public ProductCategoryMemberEventId getStateEventId() {
-        return this.stateEventId;
+    public ProductCategoryMemberEventId getProductCategoryMemberEventId() {
+        return this.productCategoryMemberEventId;
     }
 
-    public void setStateEventId(ProductCategoryMemberEventId eventId) {
-        this.stateEventId = eventId;
+    public void setProductCategoryMemberEventId(ProductCategoryMemberEventId eventId) {
+        this.productCategoryMemberEventId = eventId;
     }
     
     public ProductCategoryMemberId getProductCategoryMemberId() {
-        return getStateEventId().getProductCategoryMemberId();
+        return getProductCategoryMemberEventId().getProductCategoryMemberId();
     }
 
     public void setProductCategoryMemberId(ProductCategoryMemberId productCategoryMemberId) {
-        getStateEventId().setProductCategoryMemberId(productCategoryMemberId);
+        getProductCategoryMemberEventId().setProductCategoryMemberId(productCategoryMemberId);
     }
 
     private boolean stateEventReadOnly;
@@ -131,7 +131,7 @@ public abstract class AbstractProductCategoryMemberStateEvent extends AbstractSt
     }
 
     protected AbstractProductCategoryMemberStateEvent(ProductCategoryMemberEventId eventId) {
-        this.stateEventId = eventId;
+        this.productCategoryMemberEventId = eventId;
     }
 
 

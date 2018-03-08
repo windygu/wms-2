@@ -441,7 +441,7 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
     public AbstractShipmentState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setShipmentId(((ShipmentStateEvent) events.get(0)).getStateEventId().getShipmentId());
+            this.setShipmentId(((ShipmentStateEvent) events.get(0)).getShipmentEventId().getShipmentId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -512,11 +512,11 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
         this.setCreatedAt(e.getCreatedAt());
 
         for (ShipmentItemStateEvent.ShipmentItemStateCreated innerEvent : e.getShipmentItemEvents()) {
-            ShipmentItemState innerState = this.getShipmentItems().get(innerEvent.getStateEventId().getShipmentItemSeqId());
+            ShipmentItemState innerState = this.getShipmentItems().get(innerEvent.getShipmentItemEventId().getShipmentItemSeqId());
             innerState.mutate(innerEvent);
         }
         for (ShipmentReceiptStateEvent.ShipmentReceiptStateCreated innerEvent : e.getShipmentReceiptEvents()) {
-            ShipmentReceiptState innerState = this.getShipmentReceipts().get(innerEvent.getStateEventId().getReceiptSeqId());
+            ShipmentReceiptState innerState = this.getShipmentReceipts().get(innerEvent.getShipmentReceiptEventId().getReceiptSeqId());
             innerState.mutate(innerEvent);
         }
     }
@@ -816,11 +816,11 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
         this.setUpdatedAt(e.getCreatedAt());
 
         for (ShipmentItemStateEvent innerEvent : e.getShipmentItemEvents()) {
-            ShipmentItemState innerState = this.getShipmentItems().get(innerEvent.getStateEventId().getShipmentItemSeqId());
+            ShipmentItemState innerState = this.getShipmentItems().get(innerEvent.getShipmentItemEventId().getShipmentItemSeqId());
             innerState.mutate(innerEvent);
         }
         for (ShipmentReceiptStateEvent innerEvent : e.getShipmentReceiptEvents()) {
-            ShipmentReceiptState innerState = this.getShipmentReceipts().get(innerEvent.getStateEventId().getReceiptSeqId());
+            ShipmentReceiptState innerState = this.getShipmentReceipts().get(innerEvent.getShipmentReceiptEventId().getReceiptSeqId());
             innerState.mutate(innerEvent);
         }
     }
@@ -836,16 +836,16 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
     protected void throwOnWrongEvent(ShipmentStateEvent stateEvent)
     {
         String stateEntityId = this.getShipmentId(); // Aggregate Id
-        String eventEntityId = stateEvent.getStateEventId().getShipmentId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        String eventEntityId = stateEvent.getShipmentEventId().getShipmentId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getStateEventId().getVersion();// Aggregate Version
+        Long eventVersion = stateEvent.getShipmentEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getStateEventId().getVersion() == null");
+            throw new NullPointerException("stateEvent.getShipmentEventId().getVersion() == null");
         }
         if (!(stateVersion == null && eventVersion.equals(ShipmentState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
         {

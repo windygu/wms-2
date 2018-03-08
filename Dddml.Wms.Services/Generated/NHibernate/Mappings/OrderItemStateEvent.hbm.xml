@@ -5,7 +5,7 @@
   
   <class name="OrderItemStateEventBase" table="OrderItemStateEvents" mutable="false" abstract="true">
 
-    <composite-id name="StateEventId" class="Dddml.Wms.Domain.Order.OrderItemEventId">
+    <composite-id name="OrderItemEventId" class="Dddml.Wms.Domain.Order.OrderItemEventId">
         <key-property name="OrderId" ><column name="OrderItemIdOrderId" sql-type="VARCHAR(20)" /></key-property>
         <key-property name="OrderItemSeqId" ><column name="OrderItemIdOrderItemSeqId" sql-type="VARCHAR(20)" /></key-property>
         <key-property name="OrderVersion" ></key-property>

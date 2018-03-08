@@ -14,7 +14,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 {
 	public interface IInOutLineMvoStateEvent : IEvent, IStateEventDto, IGlobalIdentity<InOutLineMvoEventId>, ICreated<string>
 	{
-		InOutLineMvoEventId StateEventId { get; }
+		InOutLineMvoEventId InOutLineMvoEventId { get; }
 
         bool ReadOnly { get; set; }
 

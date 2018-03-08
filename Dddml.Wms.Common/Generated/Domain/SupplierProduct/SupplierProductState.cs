@@ -138,7 +138,7 @@ namespace Dddml.Wms.Domain.SupplierProduct
         {
             if (events != null && events.Count() > 0)
             {
-                this.SupplierProductId = ((ISupplierProductStateEvent)events.First()).StateEventId.SupplierProductId;
+                this.SupplierProductId = ((ISupplierProductStateEvent)events.First()).SupplierProductEventId.SupplierProductId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -388,7 +388,7 @@ namespace Dddml.Wms.Domain.SupplierProduct
             id.Append("[").Append("SupplierProduct|");
 
             var stateEntityId = this.SupplierProductId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.SupplierProductId;
+            var eventEntityId = stateEvent.SupplierProductEventId.SupplierProductId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -398,7 +398,7 @@ namespace Dddml.Wms.Domain.SupplierProduct
             id.Append("]");
 
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.StateEventId.Version;
+            var eventVersion = stateEvent.SupplierProductEventId.Version;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

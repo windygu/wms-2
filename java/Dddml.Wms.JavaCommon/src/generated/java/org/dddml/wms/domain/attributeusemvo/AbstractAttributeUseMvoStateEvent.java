@@ -9,22 +9,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractAttributeUseMvoStateEvent extends AbstractStateEvent implements AttributeUseMvoStateEvent 
 {
-    private AttributeUseMvoEventId stateEventId;
+    private AttributeUseMvoEventId attributeUseMvoEventId;
 
-    public AttributeUseMvoEventId getStateEventId() {
-        return this.stateEventId;
+    public AttributeUseMvoEventId getAttributeUseMvoEventId() {
+        return this.attributeUseMvoEventId;
     }
 
-    public void setStateEventId(AttributeUseMvoEventId eventId) {
-        this.stateEventId = eventId;
+    public void setAttributeUseMvoEventId(AttributeUseMvoEventId eventId) {
+        this.attributeUseMvoEventId = eventId;
     }
     
     public AttributeSetAttributeUseId getAttributeSetAttributeUseId() {
-        return getStateEventId().getAttributeSetAttributeUseId();
+        return getAttributeUseMvoEventId().getAttributeSetAttributeUseId();
     }
 
     public void setAttributeSetAttributeUseId(AttributeSetAttributeUseId attributeSetAttributeUseId) {
-        getStateEventId().setAttributeSetAttributeUseId(attributeSetAttributeUseId);
+        getAttributeUseMvoEventId().setAttributeSetAttributeUseId(attributeSetAttributeUseId);
     }
 
     private boolean stateEventReadOnly;
@@ -252,7 +252,7 @@ public abstract class AbstractAttributeUseMvoStateEvent extends AbstractStateEve
     }
 
     protected AbstractAttributeUseMvoStateEvent(AttributeUseMvoEventId eventId) {
-        this.stateEventId = eventId;
+        this.attributeUseMvoEventId = eventId;
     }
 
 

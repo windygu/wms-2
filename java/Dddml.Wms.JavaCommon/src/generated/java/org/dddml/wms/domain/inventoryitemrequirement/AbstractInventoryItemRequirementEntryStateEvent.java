@@ -17,22 +17,22 @@ public abstract class AbstractInventoryItemRequirementEntryStateEvent extends Ab
         return state;
     }
 
-    public InventoryItemRequirementEntryEventId getStateEventId() {
+    public InventoryItemRequirementEntryEventId getInventoryItemRequirementEntryEventId() {
         InventoryItemRequirementEntryEventId eventId = new InventoryItemRequirementEntryEventId(state.getInventoryItemRequirementId(), state.getEntrySeqId(), InventoryItemRequirementState.VERSION_NULL);
         return eventId;
     }
 
-    public void setStateEventId(InventoryItemRequirementEntryEventId eventId) {
+    public void setInventoryItemRequirementEntryEventId(InventoryItemRequirementEntryEventId eventId) {
         this.state.setInventoryItemRequirementId(eventId.getInventoryItemRequirementId());
         this.state.setEntrySeqId(eventId.getEntrySeqId());
     }
 
     public Long getEntrySeqId() {
-        return getStateEventId().getEntrySeqId();
+        return getInventoryItemRequirementEntryEventId().getEntrySeqId();
     }
 
     public void setEntrySeqId(Long entrySeqId) {
-        getStateEventId().setEntrySeqId(entrySeqId);
+        getInventoryItemRequirementEntryEventId().setEntrySeqId(entrySeqId);
     }
 
     private boolean stateEventReadOnly;
@@ -106,7 +106,7 @@ public abstract class AbstractInventoryItemRequirementEntryStateEvent extends Ab
 
     protected AbstractInventoryItemRequirementEntryStateEvent(InventoryItemRequirementEntryEventId eventId) {
         this(new AbstractInventoryItemRequirementEntryState.SimpleInventoryItemRequirementEntryState());
-        setStateEventId(eventId);
+        setInventoryItemRequirementEntryEventId(eventId);
     }
 
     protected AbstractInventoryItemRequirementEntryStateEvent(InventoryItemRequirementEntryState s) {

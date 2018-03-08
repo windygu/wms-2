@@ -261,7 +261,7 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
     public AbstractAttributeState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setAttributeId(((AttributeStateEvent) events.get(0)).getStateEventId().getAttributeId());
+            this.setAttributeId(((AttributeStateEvent) events.get(0)).getAttributeEventId().getAttributeId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -320,11 +320,11 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
         this.setCreatedAt(e.getCreatedAt());
 
         for (AttributeValueStateEvent.AttributeValueStateCreated innerEvent : e.getAttributeValueEvents()) {
-            AttributeValueState innerState = this.getAttributeValues().get(innerEvent.getStateEventId().getValue());
+            AttributeValueState innerState = this.getAttributeValues().get(innerEvent.getAttributeValueEventId().getValue());
             innerState.mutate(innerEvent);
         }
         for (AttributeAliasStateEvent.AttributeAliasStateCreated innerEvent : e.getAttributeAliasEvents()) {
-            AttributeAliasState innerState = this.getAliases().get(innerEvent.getStateEventId().getCode());
+            AttributeAliasState innerState = this.getAliases().get(innerEvent.getAttributeAliasEventId().getCode());
             innerState.mutate(innerEvent);
         }
     }
@@ -448,7 +448,7 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
         this.setUpdatedAt(e.getCreatedAt());
 
         for (AttributeValueStateEvent innerEvent : e.getAttributeValueEvents()) {
-            AttributeValueState innerState = this.getAttributeValues().get(innerEvent.getStateEventId().getValue());
+            AttributeValueState innerState = this.getAttributeValues().get(innerEvent.getAttributeValueEventId().getValue());
             innerState.mutate(innerEvent);
             if (innerEvent instanceof AttributeValueStateEvent.AttributeValueStateRemoved)
             {
@@ -457,7 +457,7 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
             }
         }
         for (AttributeAliasStateEvent innerEvent : e.getAttributeAliasEvents()) {
-            AttributeAliasState innerState = this.getAliases().get(innerEvent.getStateEventId().getCode());
+            AttributeAliasState innerState = this.getAliases().get(innerEvent.getAttributeAliasEventId().getCode());
             innerState.mutate(innerEvent);
             if (innerEvent instanceof AttributeAliasStateEvent.AttributeAliasStateRemoved)
             {
@@ -508,16 +508,16 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
     protected void throwOnWrongEvent(AttributeStateEvent stateEvent)
     {
         String stateEntityId = this.getAttributeId(); // Aggregate Id
-        String eventEntityId = stateEvent.getStateEventId().getAttributeId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        String eventEntityId = stateEvent.getAttributeEventId().getAttributeId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getStateEventId().getVersion();// Aggregate Version
+        Long eventVersion = stateEvent.getAttributeEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getStateEventId().getVersion() == null");
+            throw new NullPointerException("stateEvent.getAttributeEventId().getVersion() == null");
         }
         if (!(stateVersion == null && eventVersion.equals(AttributeState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
         {

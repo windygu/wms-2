@@ -61,7 +61,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 
         public virtual void Initialize(ISellableInventoryItemEntryMvoStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.SellableInventoryItemEntryId;
+            var aggregateId = stateCreated.SellableInventoryItemEntryMvoEventId.SellableInventoryItemEntryId;
             var state = new SellableInventoryItemEntryMvoState();
             state.SellableInventoryItemEntryId = aggregateId;
             var aggregate = (SellableInventoryItemEntryMvoAggregate)GetSellableInventoryItemEntryMvoAggregate(state);

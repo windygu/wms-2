@@ -7,15 +7,15 @@ import org.dddml.wms.domain.AbstractStateEvent;
 public class ShipmentItemStateEventDto extends AbstractStateEvent
 {
 
-    private ShipmentItemEventId stateEventId;
+    private ShipmentItemEventId shipmentItemEventId;
 
     ShipmentItemEventId getStateEventId() {
-        if (stateEventId == null) { stateEventId = new ShipmentItemEventId(); }
-        return stateEventId;
+        if (shipmentItemEventId == null) { shipmentItemEventId = new ShipmentItemEventId(); }
+        return shipmentItemEventId;
     }
 
-    void setStateEventId(ShipmentItemEventId eventId) {
-        this.stateEventId = eventId;
+    void setShipmentItemEventId(ShipmentItemEventId eventId) {
+        this.shipmentItemEventId = eventId;
     }
 
     public String getShipmentItemSeqId() {

@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.Attribute
 	public abstract class AttributeValueStateEventBase : IAttributeValueStateEvent
 	{
 
-		public virtual AttributeValueEventId StateEventId { get; set; }
+		public virtual AttributeValueEventId AttributeValueEventId { get; set; }
 
         public virtual string Value
         {
-            get { return StateEventId.Value; }
-            set { StateEventId.Value = value; }
+            get { return AttributeValueEventId.Value; }
+            set { AttributeValueEventId.Value = value; }
         }
 
 		public virtual string AttributeValueName { get; set; }
@@ -42,7 +42,7 @@ namespace Dddml.Wms.Domain.Attribute
 		AttributeValueEventId IGlobalIdentity<AttributeValueEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.AttributeValueEventId;
 			}
 		}
 
@@ -87,7 +87,7 @@ namespace Dddml.Wms.Domain.Attribute
 
         protected AttributeValueStateEventBase(AttributeValueEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.AttributeValueEventId = stateEventId;
         }
 
 

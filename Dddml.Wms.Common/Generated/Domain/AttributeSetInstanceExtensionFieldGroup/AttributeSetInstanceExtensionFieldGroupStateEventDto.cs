@@ -15,31 +15,31 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 	public abstract class AttributeSetInstanceExtensionFieldGroupStateEventDtoBase : IStateEventDto, IAttributeSetInstanceExtensionFieldGroupStateCreated, IAttributeSetInstanceExtensionFieldGroupStateMergePatched, IAttributeSetInstanceExtensionFieldGroupStateDeleted
 	{
 
-        private AttributeSetInstanceExtensionFieldGroupEventIdDto _stateEventId;
+        private AttributeSetInstanceExtensionFieldGroupEventIdDto _attributeSetInstanceExtensionFieldGroupEventId;
 
-		protected internal virtual AttributeSetInstanceExtensionFieldGroupEventIdDto StateEventId 
+		protected internal virtual AttributeSetInstanceExtensionFieldGroupEventIdDto AttributeSetInstanceExtensionFieldGroupEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new AttributeSetInstanceExtensionFieldGroupEventIdDto(); }
-                return _stateEventId;
+                if (_attributeSetInstanceExtensionFieldGroupEventId == null) { _attributeSetInstanceExtensionFieldGroupEventId = new AttributeSetInstanceExtensionFieldGroupEventIdDto(); }
+                return _attributeSetInstanceExtensionFieldGroupEventId;
             }
             set
             {
-                _stateEventId = value;
+                _attributeSetInstanceExtensionFieldGroupEventId = value;
             }
         }
 
         public virtual string Id
         {
-            get { return StateEventId.Id; }
-            set { StateEventId.Id = value; }
+            get { return AttributeSetInstanceExtensionFieldGroupEventId.Id; }
+            set { AttributeSetInstanceExtensionFieldGroupEventId.Id = value; }
         }
 
         public virtual long Version
         {
-            get { return StateEventId.Version; }
-            set { StateEventId.Version = value; }
+            get { return AttributeSetInstanceExtensionFieldGroupEventId.Version; }
+            set { AttributeSetInstanceExtensionFieldGroupEventId.Version = value; }
         }
 
 		public virtual string FieldType { get; set; }
@@ -65,7 +65,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 		AttributeSetInstanceExtensionFieldGroupEventId IGlobalIdentity<AttributeSetInstanceExtensionFieldGroupEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToAttributeSetInstanceExtensionFieldGroupEventId();
+				return this.AttributeSetInstanceExtensionFieldGroupEventId.ToAttributeSetInstanceExtensionFieldGroupEventId();
 			}
 		}
 
@@ -216,9 +216,9 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 		}
 
 
-        AttributeSetInstanceExtensionFieldGroupEventId IAttributeSetInstanceExtensionFieldGroupStateEvent.StateEventId
+        AttributeSetInstanceExtensionFieldGroupEventId IAttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupEventId
         {
-            get { return this.StateEventId.ToAttributeSetInstanceExtensionFieldGroupEventId(); }
+            get { return this.AttributeSetInstanceExtensionFieldGroupEventId.ToAttributeSetInstanceExtensionFieldGroupEventId(); }
         }
 
         protected AttributeSetInstanceExtensionFieldGroupStateEventDtoBase()
@@ -227,7 +227,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 
         protected AttributeSetInstanceExtensionFieldGroupStateEventDtoBase(AttributeSetInstanceExtensionFieldGroupEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.AttributeSetInstanceExtensionFieldGroupEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

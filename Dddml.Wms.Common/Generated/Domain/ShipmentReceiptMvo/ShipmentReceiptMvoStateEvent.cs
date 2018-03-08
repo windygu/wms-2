@@ -16,12 +16,12 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 	public abstract class ShipmentReceiptMvoStateEventBase : IShipmentReceiptMvoStateEvent
 	{
 
-		public virtual ShipmentReceiptMvoEventId StateEventId { get; set; }
+		public virtual ShipmentReceiptMvoEventId ShipmentReceiptMvoEventId { get; set; }
 
         public virtual ShipmentReceiptId ShipmentReceiptId
         {
-            get { return StateEventId.ShipmentReceiptId; }
-            set { StateEventId.ShipmentReceiptId = value; }
+            get { return ShipmentReceiptMvoEventId.ShipmentReceiptId; }
+            set { ShipmentReceiptMvoEventId.ShipmentReceiptId = value; }
         }
 
 		public virtual string ProductId { get; set; }
@@ -123,7 +123,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 		ShipmentReceiptMvoEventId IGlobalIdentity<ShipmentReceiptMvoEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.ShipmentReceiptMvoEventId;
 			}
 		}
 
@@ -166,7 +166,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
         protected ShipmentReceiptMvoStateEventBase(ShipmentReceiptMvoEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.ShipmentReceiptMvoEventId = stateEventId;
         }
 
 

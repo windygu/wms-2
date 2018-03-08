@@ -135,7 +135,7 @@ public abstract class AbstractOrderItemMvoApplicationService implements OrderIte
     }
 
     public void initialize(OrderItemMvoStateEvent.OrderItemMvoStateCreated stateCreated) {
-        OrderItemId aggregateId = stateCreated.getStateEventId().getOrderItemId();
+        OrderItemId aggregateId = stateCreated.getOrderItemMvoEventId().getOrderItemId();
         OrderItemMvoState state = new AbstractOrderItemMvoState.SimpleOrderItemMvoState();
         state.setOrderItemId(aggregateId);
 
@@ -143,7 +143,7 @@ public abstract class AbstractOrderItemMvoApplicationService implements OrderIte
         ((AbstractOrderItemMvoAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getStateEventId().getOrderVersion(), aggregate, state);
+        persist(eventStoreAggregateId, stateCreated.getOrderItemMvoEventId().getOrderVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(OrderItemMvoCommand command, EventStoreAggregateId eventStoreAggregateId, OrderItemMvoState state)

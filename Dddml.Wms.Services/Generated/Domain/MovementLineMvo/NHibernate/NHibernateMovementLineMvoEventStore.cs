@@ -40,10 +40,10 @@ namespace Dddml.Wms.Domain.MovementLineMvo.NHibernate
             }
             MovementLineId idObj = (MovementLineId)(eventStoreAggregateId as EventStoreAggregateId).Id;
             var criteria = CurrentSession.CreateCriteria<MovementLineMvoStateEventBase>();
-            criteria.Add(Restrictions.Eq("StateEventId.MovementLineIdMovementDocumentNumber", idObj.MovementDocumentNumber));
-            criteria.Add(Restrictions.Eq("StateEventId.MovementLineIdLineNumber", idObj.LineNumber));
-            criteria.Add(Restrictions.Le("StateEventId.MovementVersion", version));
-            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.MovementVersion"));
+            criteria.Add(Restrictions.Eq("MovementLineMvoEventId.MovementLineIdMovementDocumentNumber", idObj.MovementDocumentNumber));
+            criteria.Add(Restrictions.Eq("MovementLineMvoEventId.MovementLineIdLineNumber", idObj.LineNumber));
+            criteria.Add(Restrictions.Le("MovementLineMvoEventId.MovementVersion", version));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("MovementLineMvoEventId.MovementVersion"));
             var es = criteria.List<IEvent>();
             foreach (MovementLineMvoStateEventBase e in es)
             {
@@ -51,7 +51,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo.NHibernate
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((MovementLineMvoStateEventBase)es.Last()).StateEventId.MovementVersion : default(long),
+                SteamVersion = es.Count > 0 ? ((MovementLineMvoStateEventBase)es.Last()).MovementLineMvoEventId.MovementVersion : default(long),
                 Events = es
             };
         }

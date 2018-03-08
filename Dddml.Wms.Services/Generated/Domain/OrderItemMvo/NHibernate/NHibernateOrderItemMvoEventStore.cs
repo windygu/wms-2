@@ -40,10 +40,10 @@ namespace Dddml.Wms.Domain.OrderItemMvo.NHibernate
             }
             OrderItemId idObj = (OrderItemId)(eventStoreAggregateId as EventStoreAggregateId).Id;
             var criteria = CurrentSession.CreateCriteria<OrderItemMvoStateEventBase>();
-            criteria.Add(Restrictions.Eq("StateEventId.OrderItemIdOrderId", idObj.OrderId));
-            criteria.Add(Restrictions.Eq("StateEventId.OrderItemIdOrderItemSeqId", idObj.OrderItemSeqId));
-            criteria.Add(Restrictions.Le("StateEventId.OrderVersion", version));
-            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.OrderVersion"));
+            criteria.Add(Restrictions.Eq("OrderItemMvoEventId.OrderItemIdOrderId", idObj.OrderId));
+            criteria.Add(Restrictions.Eq("OrderItemMvoEventId.OrderItemIdOrderItemSeqId", idObj.OrderItemSeqId));
+            criteria.Add(Restrictions.Le("OrderItemMvoEventId.OrderVersion", version));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("OrderItemMvoEventId.OrderVersion"));
             var es = criteria.List<IEvent>();
             foreach (OrderItemMvoStateEventBase e in es)
             {
@@ -51,7 +51,7 @@ namespace Dddml.Wms.Domain.OrderItemMvo.NHibernate
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((OrderItemMvoStateEventBase)es.Last()).StateEventId.OrderVersion : default(long),
+                SteamVersion = es.Count > 0 ? ((OrderItemMvoStateEventBase)es.Last()).OrderItemMvoEventId.OrderVersion : default(long),
                 Events = es
             };
         }

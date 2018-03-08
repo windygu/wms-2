@@ -5,7 +5,7 @@
   
   <class name="PartyStateEventBase" table="PartyStateEvents" mutable="false" abstract="true">
 
-    <composite-id name="StateEventId" class="Dddml.Wms.Domain.Party.PartyEventId">
+    <composite-id name="PartyEventId" class="Dddml.Wms.Domain.Party.PartyEventId">
         <key-property name="PartyId" ><column name="PartyId" length="50" /></key-property>
         <key-property name="Version" ></key-property>
     </composite-id>

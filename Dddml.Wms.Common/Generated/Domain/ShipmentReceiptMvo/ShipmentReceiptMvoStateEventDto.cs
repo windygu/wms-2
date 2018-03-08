@@ -16,31 +16,31 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 	public abstract class ShipmentReceiptMvoStateEventDtoBase : IStateEventDto, IShipmentReceiptMvoStateCreated, IShipmentReceiptMvoStateMergePatched
 	{
 
-        private ShipmentReceiptMvoEventIdDto _stateEventId;
+        private ShipmentReceiptMvoEventIdDto _shipmentReceiptMvoEventId;
 
-		protected internal virtual ShipmentReceiptMvoEventIdDto StateEventId 
+		protected internal virtual ShipmentReceiptMvoEventIdDto ShipmentReceiptMvoEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new ShipmentReceiptMvoEventIdDto(); }
-                return _stateEventId;
+                if (_shipmentReceiptMvoEventId == null) { _shipmentReceiptMvoEventId = new ShipmentReceiptMvoEventIdDto(); }
+                return _shipmentReceiptMvoEventId;
             }
             set
             {
-                _stateEventId = value;
+                _shipmentReceiptMvoEventId = value;
             }
         }
 
         public virtual ShipmentReceiptIdDto ShipmentReceiptId
         {
-            get { return StateEventId.ShipmentReceiptId; }
-            set { StateEventId.ShipmentReceiptId = value; }
+            get { return ShipmentReceiptMvoEventId.ShipmentReceiptId; }
+            set { ShipmentReceiptMvoEventId.ShipmentReceiptId = value; }
         }
 
         public virtual long ShipmentVersion
         {
-            get { return StateEventId.ShipmentVersion; }
-            set { StateEventId.ShipmentVersion = value; }
+            get { return ShipmentReceiptMvoEventId.ShipmentVersion; }
+            set { ShipmentReceiptMvoEventId.ShipmentVersion = value; }
         }
 
 		public virtual string ProductId { get; set; }
@@ -142,7 +142,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 		ShipmentReceiptMvoEventId IGlobalIdentity<ShipmentReceiptMvoEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToShipmentReceiptMvoEventId();
+				return this.ShipmentReceiptMvoEventId.ToShipmentReceiptMvoEventId();
 			}
 		}
 
@@ -1015,9 +1015,9 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 		}
 
 
-        ShipmentReceiptMvoEventId IShipmentReceiptMvoStateEvent.StateEventId
+        ShipmentReceiptMvoEventId IShipmentReceiptMvoStateEvent.ShipmentReceiptMvoEventId
         {
-            get { return this.StateEventId.ToShipmentReceiptMvoEventId(); }
+            get { return this.ShipmentReceiptMvoEventId.ToShipmentReceiptMvoEventId(); }
         }
 
         protected ShipmentReceiptMvoStateEventDtoBase()
@@ -1026,7 +1026,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
         protected ShipmentReceiptMvoStateEventDtoBase(ShipmentReceiptMvoEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.ShipmentReceiptMvoEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

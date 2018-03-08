@@ -34,16 +34,16 @@ public class HibernateRejectionReasonEventStore extends AbstractHibernateEventSt
         }
         String idObj = (String) eventStoreAggregateId.getId();
         Criteria criteria = getCurrentSession().createCriteria(AbstractRejectionReasonStateEvent.class);
-        criteria.add(Restrictions.eq("stateEventId.rejectionReasonId", idObj));
-        criteria.add(Restrictions.le("stateEventId.version", version));
-        criteria.addOrder(Order.asc("stateEventId.version"));
+        criteria.add(Restrictions.eq("rejectionReasonEventId.rejectionReasonId", idObj));
+        criteria.add(Restrictions.le("rejectionReasonEventId.version", version));
+        criteria.addOrder(Order.asc("rejectionReasonEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
             ((AbstractRejectionReasonStateEvent) e).setStateEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractRejectionReasonStateEvent) es.get(es.size() - 1)).getStateEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractRejectionReasonStateEvent) es.get(es.size() - 1)).getRejectionReasonEventId().getVersion());
         } else {
             //todo?
         }

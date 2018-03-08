@@ -15,31 +15,31 @@ namespace Dddml.Wms.Domain.Uom
 	public abstract class UomStateEventDtoBase : IStateEventDto, IUomStateCreated, IUomStateMergePatched, IUomStateDeleted
 	{
 
-        private UomEventIdDto _stateEventId;
+        private UomEventIdDto _uomEventId;
 
-		protected internal virtual UomEventIdDto StateEventId 
+		protected internal virtual UomEventIdDto UomEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new UomEventIdDto(); }
-                return _stateEventId;
+                if (_uomEventId == null) { _uomEventId = new UomEventIdDto(); }
+                return _uomEventId;
             }
             set
             {
-                _stateEventId = value;
+                _uomEventId = value;
             }
         }
 
         public virtual string UomId
         {
-            get { return StateEventId.UomId; }
-            set { StateEventId.UomId = value; }
+            get { return UomEventId.UomId; }
+            set { UomEventId.UomId = value; }
         }
 
         public virtual long Version
         {
-            get { return StateEventId.Version; }
-            set { StateEventId.Version = value; }
+            get { return UomEventId.Version; }
+            set { UomEventId.Version = value; }
         }
 
 		public virtual string UomTypeId { get; set; }
@@ -61,7 +61,7 @@ namespace Dddml.Wms.Domain.Uom
 		UomEventId IGlobalIdentity<UomEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToUomEventId();
+				return this.UomEventId.ToUomEventId();
 			}
 		}
 
@@ -174,9 +174,9 @@ namespace Dddml.Wms.Domain.Uom
 		}
 
 
-        UomEventId IUomStateEvent.StateEventId
+        UomEventId IUomStateEvent.UomEventId
         {
-            get { return this.StateEventId.ToUomEventId(); }
+            get { return this.UomEventId.ToUomEventId(); }
         }
 
         protected UomStateEventDtoBase()
@@ -185,7 +185,7 @@ namespace Dddml.Wms.Domain.Uom
 
         protected UomStateEventDtoBase(UomEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.UomEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

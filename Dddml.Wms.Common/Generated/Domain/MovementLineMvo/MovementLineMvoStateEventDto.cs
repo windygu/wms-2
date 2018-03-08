@@ -16,31 +16,31 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 	public abstract class MovementLineMvoStateEventDtoBase : IStateEventDto, IMovementLineMvoStateCreated, IMovementLineMvoStateMergePatched, IMovementLineMvoStateDeleted
 	{
 
-        private MovementLineMvoEventIdDto _stateEventId;
+        private MovementLineMvoEventIdDto _movementLineMvoEventId;
 
-		protected internal virtual MovementLineMvoEventIdDto StateEventId 
+		protected internal virtual MovementLineMvoEventIdDto MovementLineMvoEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new MovementLineMvoEventIdDto(); }
-                return _stateEventId;
+                if (_movementLineMvoEventId == null) { _movementLineMvoEventId = new MovementLineMvoEventIdDto(); }
+                return _movementLineMvoEventId;
             }
             set
             {
-                _stateEventId = value;
+                _movementLineMvoEventId = value;
             }
         }
 
         public virtual MovementLineIdDto MovementLineId
         {
-            get { return StateEventId.MovementLineId; }
-            set { StateEventId.MovementLineId = value; }
+            get { return MovementLineMvoEventId.MovementLineId; }
+            set { MovementLineMvoEventId.MovementLineId = value; }
         }
 
         public virtual long MovementVersion
         {
-            get { return StateEventId.MovementVersion; }
-            set { StateEventId.MovementVersion = value; }
+            get { return MovementLineMvoEventId.MovementVersion; }
+            set { MovementLineMvoEventId.MovementVersion = value; }
         }
 
 		public virtual decimal? MovementQuantity { get; set; }
@@ -124,7 +124,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 		MovementLineMvoEventId IGlobalIdentity<MovementLineMvoEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToMovementLineMvoEventId();
+				return this.MovementLineMvoEventId.ToMovementLineMvoEventId();
 			}
 		}
 
@@ -826,9 +826,9 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 		}
 
 
-        MovementLineMvoEventId IMovementLineMvoStateEvent.StateEventId
+        MovementLineMvoEventId IMovementLineMvoStateEvent.MovementLineMvoEventId
         {
-            get { return this.StateEventId.ToMovementLineMvoEventId(); }
+            get { return this.MovementLineMvoEventId.ToMovementLineMvoEventId(); }
         }
 
         protected MovementLineMvoStateEventDtoBase()
@@ -837,7 +837,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
         protected MovementLineMvoStateEventDtoBase(MovementLineMvoEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.MovementLineMvoEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

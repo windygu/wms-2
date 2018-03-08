@@ -35,16 +35,16 @@ public class HibernateMovementEventStore extends AbstractHibernateEventStore
         }
         String idObj = (String) eventStoreAggregateId.getId();
         Criteria criteria = getCurrentSession().createCriteria(AbstractMovementStateEvent.class);
-        criteria.add(Restrictions.eq("stateEventId.documentNumber", idObj));
-        criteria.add(Restrictions.le("stateEventId.version", version));
-        criteria.addOrder(Order.asc("stateEventId.version"));
+        criteria.add(Restrictions.eq("movementEventId.documentNumber", idObj));
+        criteria.add(Restrictions.le("movementEventId.version", version));
+        criteria.addOrder(Order.asc("movementEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
             ((AbstractMovementStateEvent) e).setStateEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractMovementStateEvent) es.get(es.size() - 1)).getStateEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractMovementStateEvent) es.get(es.size() - 1)).getMovementEventId().getVersion());
         } else {
             //todo?
         }

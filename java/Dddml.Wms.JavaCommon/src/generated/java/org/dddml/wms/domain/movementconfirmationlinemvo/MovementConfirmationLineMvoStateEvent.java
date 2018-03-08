@@ -9,7 +9,7 @@ import org.dddml.wms.specialization.Event;
 
 public interface MovementConfirmationLineMvoStateEvent extends Event
 {
-    MovementConfirmationLineMvoEventId getStateEventId();
+    MovementConfirmationLineMvoEventId getMovementConfirmationLineMvoEventId();
 
     boolean getStateEventReadOnly();
 

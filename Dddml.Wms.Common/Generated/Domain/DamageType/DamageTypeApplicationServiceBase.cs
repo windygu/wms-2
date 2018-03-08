@@ -57,7 +57,7 @@ namespace Dddml.Wms.Domain.DamageType
 
         public virtual void Initialize(IDamageTypeStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.DamageTypeId;
+            var aggregateId = stateCreated.DamageTypeEventId.DamageTypeId;
             var state = new DamageTypeState();
             state.DamageTypeId = aggregateId;
             var aggregate = (DamageTypeAggregate)GetDamageTypeAggregate(state);

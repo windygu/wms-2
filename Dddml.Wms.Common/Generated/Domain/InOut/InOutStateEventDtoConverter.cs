@@ -33,7 +33,7 @@ namespace Dddml.Wms.Domain.InOut
         public virtual InOutStateCreatedDto ToInOutStateCreatedDto(IInOutStateCreated e)
         {
             var dto = new InOutStateCreatedDto();
-            dto.StateEventId = new InOutEventIdDtoWrapper(e.StateEventId);
+            dto.InOutEventId = new InOutEventIdDtoWrapper(e.InOutEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -82,7 +82,7 @@ namespace Dddml.Wms.Domain.InOut
         public virtual InOutStateMergePatchedDto ToInOutStateMergePatchedDto(IInOutStateMergePatched e)
         {
             var dto = new InOutStateMergePatchedDto();
-            dto.StateEventId = new InOutEventIdDtoWrapper(e.StateEventId);
+            dto.InOutEventId = new InOutEventIdDtoWrapper(e.InOutEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

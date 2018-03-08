@@ -127,7 +127,7 @@ public abstract class AbstractInventoryPRTriggeredState implements InventoryPRTr
     public AbstractInventoryPRTriggeredState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setInventoryPRTriggeredId(((InventoryPRTriggeredStateEvent) events.get(0)).getStateEventId().getInventoryPRTriggeredId());
+            this.setInventoryPRTriggeredId(((InventoryPRTriggeredStateEvent) events.get(0)).getInventoryPRTriggeredEventId().getInventoryPRTriggeredId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -200,16 +200,16 @@ public abstract class AbstractInventoryPRTriggeredState implements InventoryPRTr
     protected void throwOnWrongEvent(InventoryPRTriggeredStateEvent stateEvent)
     {
         InventoryPRTriggeredId stateEntityId = this.getInventoryPRTriggeredId(); // Aggregate Id
-        InventoryPRTriggeredId eventEntityId = stateEvent.getStateEventId().getInventoryPRTriggeredId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        InventoryPRTriggeredId eventEntityId = stateEvent.getInventoryPRTriggeredEventId().getInventoryPRTriggeredId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getStateEventId().getVersion();// Aggregate Version
+        Long eventVersion = stateEvent.getInventoryPRTriggeredEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getStateEventId().getVersion() == null");
+            throw new NullPointerException("stateEvent.getInventoryPRTriggeredEventId().getVersion() == null");
         }
         if (!(stateVersion == null && eventVersion.equals(InventoryPRTriggeredState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
         {

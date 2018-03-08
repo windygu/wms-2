@@ -24,7 +24,7 @@ public class WarehouseStateEventDtoConverter {
 
     public WarehouseStateEventDto.WarehouseStateCreatedDto toWarehouseStateCreatedDto(WarehouseStateEvent.WarehouseStateCreated e) {
         WarehouseStateEventDto.WarehouseStateCreatedDto dto = new WarehouseStateEventDto.WarehouseStateCreatedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setWarehouseEventId(e.getWarehouseEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -37,7 +37,7 @@ public class WarehouseStateEventDtoConverter {
 
     public WarehouseStateEventDto.WarehouseStateMergePatchedDto toWarehouseStateMergePatchedDto(WarehouseStateEvent.WarehouseStateMergePatched e) {
         WarehouseStateEventDto.WarehouseStateMergePatchedDto dto = new WarehouseStateEventDto.WarehouseStateMergePatchedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setWarehouseEventId(e.getWarehouseEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -55,7 +55,7 @@ public class WarehouseStateEventDtoConverter {
 
     public WarehouseStateEventDto.WarehouseStateDeletedDto toWarehouseStateDeletedDto(WarehouseStateEvent.WarehouseStateDeleted e) {
         WarehouseStateEventDto.WarehouseStateDeletedDto dto = new WarehouseStateEventDto.WarehouseStateDeletedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setWarehouseEventId(e.getWarehouseEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());

@@ -60,7 +60,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
         public virtual void Initialize(IAttributeUseMvoStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.AttributeSetAttributeUseId;
+            var aggregateId = stateCreated.AttributeUseMvoEventId.AttributeSetAttributeUseId;
             var state = new AttributeUseMvoState();
             state.AttributeSetAttributeUseId = aggregateId;
             var aggregate = (AttributeUseMvoAggregate)GetAttributeUseMvoAggregate(state);

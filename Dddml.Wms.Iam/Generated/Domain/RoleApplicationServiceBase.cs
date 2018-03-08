@@ -59,7 +59,7 @@ namespace Dddml.Wms.Domain.Role
 
         public virtual void Initialize(IRoleStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.RoleId;
+            var aggregateId = stateCreated.RoleEventId.RoleId;
             var state = new RoleState();
             state.RoleId = aggregateId;
             var aggregate = (RoleAggregate)GetRoleAggregate(state);

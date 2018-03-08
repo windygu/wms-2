@@ -15,31 +15,31 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 	public abstract class AttributeSetInstanceStateEventDtoBase : IStateEventDto, IAttributeSetInstanceStateCreated
 	{
 
-        private AttributeSetInstanceEventIdDto _stateEventId;
+        private AttributeSetInstanceEventIdDto _attributeSetInstanceEventId;
 
-		protected internal virtual AttributeSetInstanceEventIdDto StateEventId 
+		protected internal virtual AttributeSetInstanceEventIdDto AttributeSetInstanceEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new AttributeSetInstanceEventIdDto(); }
-                return _stateEventId;
+                if (_attributeSetInstanceEventId == null) { _attributeSetInstanceEventId = new AttributeSetInstanceEventIdDto(); }
+                return _attributeSetInstanceEventId;
             }
             set
             {
-                _stateEventId = value;
+                _attributeSetInstanceEventId = value;
             }
         }
 
         public virtual string AttributeSetInstanceId
         {
-            get { return StateEventId.AttributeSetInstanceId; }
-            set { StateEventId.AttributeSetInstanceId = value; }
+            get { return AttributeSetInstanceEventId.AttributeSetInstanceId; }
+            set { AttributeSetInstanceEventId.AttributeSetInstanceId = value; }
         }
 
         public virtual long Version
         {
-            get { return StateEventId.Version; }
-            set { StateEventId.Version = value; }
+            get { return AttributeSetInstanceEventId.Version; }
+            set { AttributeSetInstanceEventId.Version = value; }
         }
 
 		public virtual string AttributeSetId { get; set; }
@@ -189,7 +189,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 		AttributeSetInstanceEventId IGlobalIdentity<AttributeSetInstanceEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToAttributeSetInstanceEventId();
+				return this.AttributeSetInstanceEventId.ToAttributeSetInstanceEventId();
 			}
 		}
 
@@ -226,9 +226,9 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 		}
 
 
-        AttributeSetInstanceEventId IAttributeSetInstanceStateEvent.StateEventId
+        AttributeSetInstanceEventId IAttributeSetInstanceStateEvent.AttributeSetInstanceEventId
         {
-            get { return this.StateEventId.ToAttributeSetInstanceEventId(); }
+            get { return this.AttributeSetInstanceEventId.ToAttributeSetInstanceEventId(); }
         }
 
         protected AttributeSetInstanceStateEventDtoBase()
@@ -237,7 +237,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
         protected AttributeSetInstanceStateEventDtoBase(AttributeSetInstanceEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.AttributeSetInstanceEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

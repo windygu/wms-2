@@ -7,15 +7,15 @@ import org.dddml.wms.domain.AbstractStateEvent;
 public class SupplierProductStateEventDto extends AbstractStateEvent
 {
 
-    private SupplierProductEventId stateEventId;
+    private SupplierProductEventId supplierProductEventId;
 
     SupplierProductEventId getStateEventId() {
-        if (stateEventId == null) { stateEventId = new SupplierProductEventId(); }
-        return stateEventId;
+        if (supplierProductEventId == null) { supplierProductEventId = new SupplierProductEventId(); }
+        return supplierProductEventId;
     }
 
-    void setStateEventId(SupplierProductEventId eventId) {
-        this.stateEventId = eventId;
+    void setSupplierProductEventId(SupplierProductEventId eventId) {
+        this.supplierProductEventId = eventId;
     }
 
     public SupplierProductId getSupplierProductId() {

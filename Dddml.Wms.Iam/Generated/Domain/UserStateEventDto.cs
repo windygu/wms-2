@@ -15,31 +15,31 @@ namespace Dddml.Wms.Domain.User
 	public abstract class UserStateEventDtoBase : IStateEventDto, IUserStateCreated, IUserStateMergePatched, IUserStateDeleted
 	{
 
-        private UserEventIdDto _stateEventId;
+        private UserEventIdDto _userEventId;
 
-		protected internal virtual UserEventIdDto StateEventId 
+		protected internal virtual UserEventIdDto UserEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new UserEventIdDto(); }
-                return _stateEventId;
+                if (_userEventId == null) { _userEventId = new UserEventIdDto(); }
+                return _userEventId;
             }
             set
             {
-                _stateEventId = value;
+                _userEventId = value;
             }
         }
 
         public virtual string UserId
         {
-            get { return StateEventId.UserId; }
-            set { StateEventId.UserId = value; }
+            get { return UserEventId.UserId; }
+            set { UserEventId.UserId = value; }
         }
 
         public virtual long Version
         {
-            get { return StateEventId.Version; }
-            set { StateEventId.Version = value; }
+            get { return UserEventId.Version; }
+            set { UserEventId.Version = value; }
         }
 
 		public virtual string UserName { get; set; }
@@ -77,7 +77,7 @@ namespace Dddml.Wms.Domain.User
 		UserEventId IGlobalIdentity<UserEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToUserEventId();
+				return this.UserEventId.ToUserEventId();
 			}
 		}
 
@@ -362,9 +362,9 @@ namespace Dddml.Wms.Domain.User
         private UserRoleEventIdDto NewUserRoleEventId(string roleId)
         {
             var eId = new UserRoleEventIdDto();
-            eId.UserId = this.StateEventId.UserId;
+            eId.UserId = this.UserEventId.UserId;
             eId.RoleId = roleId;
-            eId.UserVersion = this.StateEventId.Version;
+            eId.UserVersion = this.UserEventId.Version;
             return eId;
         }
 
@@ -372,7 +372,7 @@ namespace Dddml.Wms.Domain.User
         {
             var e = new UserRoleStateCreatedDto();
             var eId = NewUserRoleEventId(roleId);
-            e.StateEventId = eId;
+            e.UserRoleEventId = eId;
             return e;
         }
 
@@ -380,7 +380,7 @@ namespace Dddml.Wms.Domain.User
         {
             var e = new UserRoleStateMergePatchedDto();
             var eId = NewUserRoleEventId(roleId);
-            e.StateEventId = eId;
+            e.UserRoleEventId = eId;
             return e;
         }
 
@@ -388,7 +388,7 @@ namespace Dddml.Wms.Domain.User
         {
             var e = new UserRoleStateRemovedDto();
             var eId = NewUserRoleEventId(roleId);
-            e.StateEventId = eId;
+            e.UserRoleEventId = eId;
             return e;
         }
 
@@ -470,9 +470,9 @@ namespace Dddml.Wms.Domain.User
         private UserClaimEventIdDto NewUserClaimEventId(int claimId)
         {
             var eId = new UserClaimEventIdDto();
-            eId.UserId = this.StateEventId.UserId;
+            eId.UserId = this.UserEventId.UserId;
             eId.ClaimId = claimId;
-            eId.UserVersion = this.StateEventId.Version;
+            eId.UserVersion = this.UserEventId.Version;
             return eId;
         }
 
@@ -480,7 +480,7 @@ namespace Dddml.Wms.Domain.User
         {
             var e = new UserClaimStateCreatedDto();
             var eId = NewUserClaimEventId(claimId);
-            e.StateEventId = eId;
+            e.UserClaimEventId = eId;
             return e;
         }
 
@@ -488,7 +488,7 @@ namespace Dddml.Wms.Domain.User
         {
             var e = new UserClaimStateMergePatchedDto();
             var eId = NewUserClaimEventId(claimId);
-            e.StateEventId = eId;
+            e.UserClaimEventId = eId;
             return e;
         }
 
@@ -496,7 +496,7 @@ namespace Dddml.Wms.Domain.User
         {
             var e = new UserClaimStateRemovedDto();
             var eId = NewUserClaimEventId(claimId);
-            e.StateEventId = eId;
+            e.UserClaimEventId = eId;
             return e;
         }
 
@@ -578,9 +578,9 @@ namespace Dddml.Wms.Domain.User
         private UserPermissionEventIdDto NewUserPermissionEventId(string permissionId)
         {
             var eId = new UserPermissionEventIdDto();
-            eId.UserId = this.StateEventId.UserId;
+            eId.UserId = this.UserEventId.UserId;
             eId.PermissionId = permissionId;
-            eId.UserVersion = this.StateEventId.Version;
+            eId.UserVersion = this.UserEventId.Version;
             return eId;
         }
 
@@ -588,7 +588,7 @@ namespace Dddml.Wms.Domain.User
         {
             var e = new UserPermissionStateCreatedDto();
             var eId = NewUserPermissionEventId(permissionId);
-            e.StateEventId = eId;
+            e.UserPermissionEventId = eId;
             return e;
         }
 
@@ -596,7 +596,7 @@ namespace Dddml.Wms.Domain.User
         {
             var e = new UserPermissionStateMergePatchedDto();
             var eId = NewUserPermissionEventId(permissionId);
-            e.StateEventId = eId;
+            e.UserPermissionEventId = eId;
             return e;
         }
 
@@ -604,7 +604,7 @@ namespace Dddml.Wms.Domain.User
         {
             var e = new UserPermissionStateRemovedDto();
             var eId = NewUserPermissionEventId(permissionId);
-            e.StateEventId = eId;
+            e.UserPermissionEventId = eId;
             return e;
         }
 
@@ -686,9 +686,9 @@ namespace Dddml.Wms.Domain.User
         private UserLoginEventIdDto NewUserLoginEventId(LoginKey loginKey)
         {
             var eId = new UserLoginEventIdDto();
-            eId.UserId = this.StateEventId.UserId;
+            eId.UserId = this.UserEventId.UserId;
             eId.LoginKey = new LoginKeyDtoWrapper(loginKey);
-            eId.UserVersion = this.StateEventId.Version;
+            eId.UserVersion = this.UserEventId.Version;
             return eId;
         }
 
@@ -696,7 +696,7 @@ namespace Dddml.Wms.Domain.User
         {
             var e = new UserLoginStateCreatedDto();
             var eId = NewUserLoginEventId(loginKey);
-            e.StateEventId = eId;
+            e.UserLoginEventId = eId;
             return e;
         }
 
@@ -704,7 +704,7 @@ namespace Dddml.Wms.Domain.User
         {
             var e = new UserLoginStateMergePatchedDto();
             var eId = NewUserLoginEventId(loginKey);
-            e.StateEventId = eId;
+            e.UserLoginEventId = eId;
             return e;
         }
 
@@ -712,7 +712,7 @@ namespace Dddml.Wms.Domain.User
         {
             var e = new UserLoginStateRemovedDto();
             var eId = NewUserLoginEventId(loginKey);
-            e.StateEventId = eId;
+            e.UserLoginEventId = eId;
             return e;
         }
 
@@ -774,9 +774,9 @@ namespace Dddml.Wms.Domain.User
 
 
 
-        UserEventId IUserStateEvent.StateEventId
+        UserEventId IUserStateEvent.UserEventId
         {
-            get { return this.StateEventId.ToUserEventId(); }
+            get { return this.UserEventId.ToUserEventId(); }
         }
 
         protected UserStateEventDtoBase()
@@ -785,7 +785,7 @@ namespace Dddml.Wms.Domain.User
 
         protected UserStateEventDtoBase(UserEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.UserEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.Movement
 	public abstract class MovementStateEventBase : IMovementStateEvent
 	{
 
-		public virtual MovementEventId StateEventId { get; set; }
+		public virtual MovementEventId MovementEventId { get; set; }
 
         public virtual string DocumentNumber
         {
-            get { return StateEventId.DocumentNumber; }
-            set { StateEventId.DocumentNumber = value; }
+            get { return MovementEventId.DocumentNumber; }
+            set { MovementEventId.DocumentNumber = value; }
         }
 
 		public virtual string DocumentStatusId { get; set; }
@@ -76,7 +76,7 @@ namespace Dddml.Wms.Domain.Movement
 		MovementEventId IGlobalIdentity<MovementEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.MovementEventId;
 			}
 		}
 
@@ -119,7 +119,7 @@ namespace Dddml.Wms.Domain.Movement
 
         protected MovementStateEventBase(MovementEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.MovementEventId = stateEventId;
         }
 
 		protected IMovementLineStateEventDao MovementLineStateEventDao
@@ -129,7 +129,7 @@ namespace Dddml.Wms.Domain.Movement
 
         protected MovementLineEventId NewMovementLineEventId(string lineNumber)
         {
-            var stateEventId = new MovementLineEventId(this.StateEventId.DocumentNumber, lineNumber, this.StateEventId.Version);
+            var stateEventId = new MovementLineEventId(this.MovementEventId.DocumentNumber, lineNumber, this.MovementEventId.Version);
             return stateEventId;
         }
 
@@ -141,10 +141,10 @@ namespace Dddml.Wms.Domain.Movement
 
 		public static void ThrowOnInconsistentEventIds(IMovementStateEvent oe, IMovementLineStateEvent e)
 		{
-			if (!oe.StateEventId.DocumentNumber.Equals(e.StateEventId.MovementDocumentNumber))
+			if (!oe.MovementEventId.DocumentNumber.Equals(e.MovementLineEventId.MovementDocumentNumber))
 			{ 
 				throw DomainError.Named("inconsistentEventIds", "Outer Id DocumentNumber {0} but inner id MovementDocumentNumber {1}", 
-					oe.StateEventId.DocumentNumber, e.StateEventId.MovementDocumentNumber);
+					oe.MovementEventId.DocumentNumber, e.MovementLineEventId.MovementDocumentNumber);
 			}
 		}
 
@@ -186,7 +186,7 @@ namespace Dddml.Wms.Domain.Movement
                     if (_readOnlyMovementLineEvents != null) { return _readOnlyMovementLineEvents; }
                     var eventDao = MovementLineStateEventDao;
                     var eL = new List<IMovementLineStateCreated>();
-                    foreach (var e in eventDao.FindByMovementEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByMovementEventId(this.MovementEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IMovementLineStateCreated)e);
@@ -210,7 +210,7 @@ namespace Dddml.Wms.Domain.Movement
 		public virtual void AddMovementLineEvent(IMovementLineStateCreated e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._movementLineEvents[e.StateEventId] = e;
+			this._movementLineEvents[e.MovementLineEventId] = e;
 		}
 
         public virtual IMovementLineStateCreated NewMovementLineStateCreated(string lineNumber)
@@ -304,7 +304,7 @@ namespace Dddml.Wms.Domain.Movement
                     if (_readOnlyMovementLineEvents != null) { return _readOnlyMovementLineEvents; }
                     var eventDao = MovementLineStateEventDao;
                     var eL = new List<IMovementLineStateEvent>();
-                    foreach (var e in eventDao.FindByMovementEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByMovementEventId(this.MovementEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IMovementLineStateEvent)e);
@@ -328,7 +328,7 @@ namespace Dddml.Wms.Domain.Movement
 		public virtual void AddMovementLineEvent(IMovementLineStateEvent e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._movementLineEvents[e.StateEventId] = e;
+			this._movementLineEvents[e.MovementLineEventId] = e;
 		}
 
         public virtual IMovementLineStateCreated NewMovementLineStateCreated(string lineNumber)
@@ -396,7 +396,7 @@ namespace Dddml.Wms.Domain.Movement
                     if (_readOnlyMovementLineEvents != null) { return _readOnlyMovementLineEvents; }
                     var eventDao = MovementLineStateEventDao;
                     var eL = new List<IMovementLineStateRemoved>();
-                    foreach (var e in eventDao.FindByMovementEventId(this.StateEventId))
+                    foreach (var e in eventDao.FindByMovementEventId(this.MovementEventId))
                     {
                         e.ReadOnly = true;
                         eL.Add((IMovementLineStateRemoved)e);
@@ -420,7 +420,7 @@ namespace Dddml.Wms.Domain.Movement
 		public virtual void AddMovementLineEvent(IMovementLineStateRemoved e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._movementLineEvents[e.StateEventId] = e;
+			this._movementLineEvents[e.MovementLineEventId] = e;
 		}
 
         public virtual IMovementLineStateRemoved NewMovementLineStateRemoved(string lineNumber)

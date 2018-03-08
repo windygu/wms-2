@@ -37,19 +37,19 @@ public class HibernateInventoryItemRequirementEntryMvoEventStore extends Abstrac
         }
         InventoryItemRequirementEntryId idObj = (InventoryItemRequirementEntryId) eventStoreAggregateId.getId();
         Criteria criteria = getCurrentSession().createCriteria(AbstractInventoryItemRequirementEntryMvoStateEvent.class);
-        criteria.add(Restrictions.eq("stateEventId.inventoryItemRequirementEntryIdInventoryItemRequirementIdProductId", idObj.getInventoryItemRequirementId().getProductId()));
-        criteria.add(Restrictions.eq("stateEventId.inventoryItemRequirementEntryIdInventoryItemRequirementIdLocatorId", idObj.getInventoryItemRequirementId().getLocatorId()));
-        criteria.add(Restrictions.eq("stateEventId.inventoryItemRequirementEntryIdInventoryItemRequirementIdAttributeSetInstanceId", idObj.getInventoryItemRequirementId().getAttributeSetInstanceId()));
-        criteria.add(Restrictions.eq("stateEventId.inventoryItemRequirementEntryIdEntrySeqId", idObj.getEntrySeqId()));
-        criteria.add(Restrictions.le("stateEventId.inventoryItemRequirementVersion", version));
-        criteria.addOrder(Order.asc("stateEventId.inventoryItemRequirementVersion"));
+        criteria.add(Restrictions.eq("inventoryItemRequirementEntryMvoEventId.inventoryItemRequirementEntryIdInventoryItemRequirementIdProductId", idObj.getInventoryItemRequirementId().getProductId()));
+        criteria.add(Restrictions.eq("inventoryItemRequirementEntryMvoEventId.inventoryItemRequirementEntryIdInventoryItemRequirementIdLocatorId", idObj.getInventoryItemRequirementId().getLocatorId()));
+        criteria.add(Restrictions.eq("inventoryItemRequirementEntryMvoEventId.inventoryItemRequirementEntryIdInventoryItemRequirementIdAttributeSetInstanceId", idObj.getInventoryItemRequirementId().getAttributeSetInstanceId()));
+        criteria.add(Restrictions.eq("inventoryItemRequirementEntryMvoEventId.inventoryItemRequirementEntryIdEntrySeqId", idObj.getEntrySeqId()));
+        criteria.add(Restrictions.le("inventoryItemRequirementEntryMvoEventId.inventoryItemRequirementVersion", version));
+        criteria.addOrder(Order.asc("inventoryItemRequirementEntryMvoEventId.inventoryItemRequirementVersion"));
         List es = criteria.list();
         for (Object e : es) {
             ((AbstractInventoryItemRequirementEntryMvoStateEvent) e).setStateEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractInventoryItemRequirementEntryMvoStateEvent) es.get(es.size() - 1)).getStateEventId().getInventoryItemRequirementVersion());
+            eventStream.setSteamVersion(((AbstractInventoryItemRequirementEntryMvoStateEvent) es.get(es.size() - 1)).getInventoryItemRequirementEntryMvoEventId().getInventoryItemRequirementVersion());
         } else {
             //todo?
         }

@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 {
 	public interface ISellableInventoryItemEntryStateEvent : IEvent, IStateEventDto, IGlobalIdentity<SellableInventoryItemEntryEventId>, ICreated<string>
 	{
-		SellableInventoryItemEntryEventId StateEventId { get; }
+		SellableInventoryItemEntryEventId SellableInventoryItemEntryEventId { get; }
 
         bool ReadOnly { get; set; }
 

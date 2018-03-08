@@ -13,7 +13,7 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 {
 	public interface IDamageHandlingMethodStateEvent : IEvent, IStateEventDto, IGlobalIdentity<DamageHandlingMethodEventId>, ICreated<string>
 	{
-		DamageHandlingMethodEventId StateEventId { get; }
+		DamageHandlingMethodEventId DamageHandlingMethodEventId { get; }
 
         bool ReadOnly { get; set; }
 

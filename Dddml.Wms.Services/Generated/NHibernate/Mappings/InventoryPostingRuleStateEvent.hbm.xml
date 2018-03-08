@@ -5,7 +5,7 @@
   
   <class name="InventoryPostingRuleStateEventBase" table="InventoryPostingRuleStateEvents" mutable="false" abstract="true">
 
-    <composite-id name="StateEventId" class="Dddml.Wms.Domain.InventoryPostingRule.InventoryPostingRuleEventId">
+    <composite-id name="InventoryPostingRuleEventId" class="Dddml.Wms.Domain.InventoryPostingRule.InventoryPostingRuleEventId">
         <key-property name="InventoryPostingRuleId" ><column name="InventoryPostingRuleId" length="50" /></key-property>
         <key-property name="Version" ></key-property>
     </composite-id>

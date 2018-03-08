@@ -57,7 +57,7 @@ namespace Dddml.Wms.Domain.MovementType
 
         public virtual void Initialize(IMovementTypeStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.MovementTypeId;
+            var aggregateId = stateCreated.MovementTypeEventId.MovementTypeId;
             var state = new MovementTypeState();
             state.MovementTypeId = aggregateId;
             var aggregate = (MovementTypeAggregate)GetMovementTypeAggregate(state);

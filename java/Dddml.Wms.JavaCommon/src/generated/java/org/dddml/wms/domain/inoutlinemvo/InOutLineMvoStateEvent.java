@@ -9,7 +9,7 @@ import org.dddml.wms.specialization.Event;
 
 public interface InOutLineMvoStateEvent extends Event
 {
-    InOutLineMvoEventId getStateEventId();
+    InOutLineMvoEventId getInOutLineMvoEventId();
 
     boolean getStateEventReadOnly();
 

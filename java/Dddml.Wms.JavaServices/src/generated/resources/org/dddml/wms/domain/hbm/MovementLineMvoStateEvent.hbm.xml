@@ -8,7 +8,7 @@
   
   <class name="AbstractMovementLineMvoStateEvent" table="MovementLineMvoStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="stateEventId" class="org.dddml.wms.domain.movementlinemvo.MovementLineMvoEventId">
+	<composite-id name="movementLineMvoEventId" class="org.dddml.wms.domain.movementlinemvo.MovementLineMvoEventId">
 		<key-property name="movementLineIdMovementDocumentNumber" ><column name="MovementLineIdMovementDocumentNumber" length="50" /></key-property>
 		<key-property name="movementLineIdLineNumber" ><column name="MovementLineIdLineNumber" length="50" /></key-property>
 		<key-property name="movementVersion" ></key-property>

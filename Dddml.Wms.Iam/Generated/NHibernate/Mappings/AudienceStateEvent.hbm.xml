@@ -5,7 +5,7 @@
   
   <class name="AudienceStateEventBase" table="AudienceStateEvents" mutable="false" abstract="true">
 
-    <composite-id name="StateEventId" class="Dddml.Wms.Domain.Audience.AudienceEventId">
+    <composite-id name="AudienceEventId" class="Dddml.Wms.Domain.Audience.AudienceEventId">
         <key-property name="ClientId" ><column name="ClientId" length="50" /></key-property>
         <key-property name="Version" ></key-property>
     </composite-id>

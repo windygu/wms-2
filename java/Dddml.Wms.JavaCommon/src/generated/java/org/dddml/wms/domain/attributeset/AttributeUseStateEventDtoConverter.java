@@ -24,7 +24,7 @@ public class AttributeUseStateEventDtoConverter {
 
     public AttributeUseStateEventDto.AttributeUseStateCreatedDto toAttributeUseStateCreatedDto(AttributeUseStateEvent.AttributeUseStateCreated e) {
         AttributeUseStateEventDto.AttributeUseStateCreatedDto dto = new AttributeUseStateEventDto.AttributeUseStateCreatedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setAttributeUseEventId(e.getAttributeUseEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setVersion(e.getVersion());
@@ -36,7 +36,7 @@ public class AttributeUseStateEventDtoConverter {
 
     public AttributeUseStateEventDto.AttributeUseStateMergePatchedDto toAttributeUseStateMergePatchedDto(AttributeUseStateEvent.AttributeUseStateMergePatched e) {
         AttributeUseStateEventDto.AttributeUseStateMergePatchedDto dto = new AttributeUseStateEventDto.AttributeUseStateMergePatchedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setAttributeUseEventId(e.getAttributeUseEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setVersion(e.getVersion());
@@ -51,7 +51,7 @@ public class AttributeUseStateEventDtoConverter {
 
     public AttributeUseStateEventDto.AttributeUseStateRemovedDto toAttributeUseStateRemovedDto(AttributeUseStateEvent.AttributeUseStateRemoved e) {
         AttributeUseStateEventDto.AttributeUseStateRemovedDto dto = new AttributeUseStateEventDto.AttributeUseStateRemovedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setAttributeUseEventId(e.getAttributeUseEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setVersion(e.getVersion());

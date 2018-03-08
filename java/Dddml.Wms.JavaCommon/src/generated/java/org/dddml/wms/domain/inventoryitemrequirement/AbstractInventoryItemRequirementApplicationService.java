@@ -115,7 +115,7 @@ public abstract class AbstractInventoryItemRequirementApplicationService impleme
     }
 
     public void initialize(InventoryItemRequirementStateEvent.InventoryItemRequirementStateCreated stateCreated) {
-        InventoryItemId aggregateId = stateCreated.getStateEventId().getInventoryItemRequirementId();
+        InventoryItemId aggregateId = stateCreated.getInventoryItemRequirementEventId().getInventoryItemRequirementId();
         InventoryItemRequirementState state = new AbstractInventoryItemRequirementState.SimpleInventoryItemRequirementState();
         state.setInventoryItemRequirementId(aggregateId);
 
@@ -123,7 +123,7 @@ public abstract class AbstractInventoryItemRequirementApplicationService impleme
         ((AbstractInventoryItemRequirementAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getStateEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, stateCreated.getInventoryItemRequirementEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(InventoryItemRequirementCommand command, EventStoreAggregateId eventStoreAggregateId, InventoryItemRequirementState state)

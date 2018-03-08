@@ -16,12 +16,12 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 	public abstract class AttributeAliasMvoStateEventBase : IAttributeAliasMvoStateEvent
 	{
 
-		public virtual AttributeAliasMvoEventId StateEventId { get; set; }
+		public virtual AttributeAliasMvoEventId AttributeAliasMvoEventId { get; set; }
 
         public virtual AttributeAliasId AttributeAliasId
         {
-            get { return StateEventId.AttributeAliasId; }
-            set { StateEventId.AttributeAliasId = value; }
+            get { return AttributeAliasMvoEventId.AttributeAliasId; }
+            set { AttributeAliasMvoEventId.AttributeAliasId = value; }
         }
 
 		public virtual string Name { get; set; }
@@ -71,7 +71,7 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 		AttributeAliasMvoEventId IGlobalIdentity<AttributeAliasMvoEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.AttributeAliasMvoEventId;
 			}
 		}
 
@@ -114,7 +114,7 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 
         protected AttributeAliasMvoStateEventBase(AttributeAliasMvoEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.AttributeAliasMvoEventId = stateEventId;
         }
 
 

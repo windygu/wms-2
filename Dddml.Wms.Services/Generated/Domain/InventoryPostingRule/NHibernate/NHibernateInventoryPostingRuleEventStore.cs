@@ -40,9 +40,9 @@ namespace Dddml.Wms.Domain.InventoryPostingRule.NHibernate
             }
             string idObj = (string)(eventStoreAggregateId as EventStoreAggregateId).Id;
             var criteria = CurrentSession.CreateCriteria<InventoryPostingRuleStateEventBase>();
-            criteria.Add(Restrictions.Eq("StateEventId.InventoryPostingRuleId", idObj));
-            criteria.Add(Restrictions.Le("StateEventId.Version", version));
-            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.Version"));
+            criteria.Add(Restrictions.Eq("InventoryPostingRuleEventId.InventoryPostingRuleId", idObj));
+            criteria.Add(Restrictions.Le("InventoryPostingRuleEventId.Version", version));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("InventoryPostingRuleEventId.Version"));
             var es = criteria.List<IEvent>();
             foreach (InventoryPostingRuleStateEventBase e in es)
             {
@@ -50,7 +50,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule.NHibernate
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((InventoryPostingRuleStateEventBase)es.Last()).StateEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((InventoryPostingRuleStateEventBase)es.Last()).InventoryPostingRuleEventId.Version : default(long),
                 Events = es
             };
         }

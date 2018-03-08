@@ -15,31 +15,31 @@ namespace Dddml.Wms.Domain.Lot
 	public abstract class LotStateEventDtoBase : IStateEventDto, ILotStateCreated, ILotStateMergePatched, ILotStateDeleted
 	{
 
-        private LotEventIdDto _stateEventId;
+        private LotEventIdDto _lotEventId;
 
-		protected internal virtual LotEventIdDto StateEventId 
+		protected internal virtual LotEventIdDto LotEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new LotEventIdDto(); }
-                return _stateEventId;
+                if (_lotEventId == null) { _lotEventId = new LotEventIdDto(); }
+                return _lotEventId;
             }
             set
             {
-                _stateEventId = value;
+                _lotEventId = value;
             }
         }
 
         public virtual string LotId
         {
-            get { return StateEventId.LotId; }
-            set { StateEventId.LotId = value; }
+            get { return LotEventId.LotId; }
+            set { LotEventId.LotId = value; }
         }
 
         public virtual long Version
         {
-            get { return StateEventId.Version; }
-            set { StateEventId.Version = value; }
+            get { return LotEventId.Version; }
+            set { LotEventId.Version = value; }
         }
 
 		public virtual decimal? Quantity { get; set; }
@@ -59,7 +59,7 @@ namespace Dddml.Wms.Domain.Lot
 		LotEventId IGlobalIdentity<LotEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToLotEventId();
+				return this.LotEventId.ToLotEventId();
 			}
 		}
 
@@ -153,9 +153,9 @@ namespace Dddml.Wms.Domain.Lot
 		}
 
 
-        LotEventId ILotStateEvent.StateEventId
+        LotEventId ILotStateEvent.LotEventId
         {
-            get { return this.StateEventId.ToLotEventId(); }
+            get { return this.LotEventId.ToLotEventId(); }
         }
 
         protected LotStateEventDtoBase()
@@ -164,7 +164,7 @@ namespace Dddml.Wms.Domain.Lot
 
         protected LotStateEventDtoBase(LotEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.LotEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

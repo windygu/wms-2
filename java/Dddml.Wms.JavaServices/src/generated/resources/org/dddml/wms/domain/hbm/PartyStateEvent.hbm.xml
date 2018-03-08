@@ -8,7 +8,7 @@
   
   <class name="AbstractPartyStateEvent" table="PartyStateEvents" mutable="false" abstract="true">
 
-	<composite-id name="stateEventId" class="org.dddml.wms.domain.party.PartyEventId">
+	<composite-id name="partyEventId" class="org.dddml.wms.domain.party.PartyEventId">
 		<key-property name="partyId" ><column name="PartyId" length="50" /></key-property>
 		<key-property name="version" ></key-property>
 	</composite-id>

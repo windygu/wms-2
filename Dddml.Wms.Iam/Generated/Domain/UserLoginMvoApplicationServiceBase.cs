@@ -60,7 +60,7 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 
         public virtual void Initialize(IUserLoginMvoStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.UserLoginId;
+            var aggregateId = stateCreated.UserLoginMvoEventId.UserLoginId;
             var state = new UserLoginMvoState();
             state.UserLoginId = aggregateId;
             var aggregate = (UserLoginMvoAggregate)GetUserLoginMvoAggregate(state);

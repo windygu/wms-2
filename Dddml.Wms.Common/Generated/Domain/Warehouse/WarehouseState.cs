@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.Warehouse
         {
             if (events != null && events.Count() > 0)
             {
-                this.WarehouseId = ((IWarehouseStateEvent)events.First()).StateEventId.WarehouseId;
+                this.WarehouseId = ((IWarehouseStateEvent)events.First()).WarehouseEventId.WarehouseId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -273,7 +273,7 @@ namespace Dddml.Wms.Domain.Warehouse
             id.Append("[").Append("Warehouse|");
 
             var stateEntityId = this.WarehouseId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.WarehouseId;
+            var eventEntityId = stateEvent.WarehouseEventId.WarehouseId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -283,7 +283,7 @@ namespace Dddml.Wms.Domain.Warehouse
             id.Append("]");
 
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.StateEventId.Version;
+            var eventVersion = stateEvent.WarehouseEventId.Version;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

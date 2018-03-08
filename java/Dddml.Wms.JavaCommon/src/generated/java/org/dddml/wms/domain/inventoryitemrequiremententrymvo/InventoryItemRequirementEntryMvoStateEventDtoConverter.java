@@ -24,7 +24,7 @@ public class InventoryItemRequirementEntryMvoStateEventDtoConverter {
 
     public InventoryItemRequirementEntryMvoStateEventDto.InventoryItemRequirementEntryMvoStateCreatedDto toInventoryItemRequirementEntryMvoStateCreatedDto(InventoryItemRequirementEntryMvoStateEvent.InventoryItemRequirementEntryMvoStateCreated e) {
         InventoryItemRequirementEntryMvoStateEventDto.InventoryItemRequirementEntryMvoStateCreatedDto dto = new InventoryItemRequirementEntryMvoStateEventDto.InventoryItemRequirementEntryMvoStateCreatedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setInventoryItemRequirementEntryMvoEventId(e.getInventoryItemRequirementEntryMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -41,7 +41,7 @@ public class InventoryItemRequirementEntryMvoStateEventDtoConverter {
 
     public InventoryItemRequirementEntryMvoStateEventDto.InventoryItemRequirementEntryMvoStateMergePatchedDto toInventoryItemRequirementEntryMvoStateMergePatchedDto(InventoryItemRequirementEntryMvoStateEvent.InventoryItemRequirementEntryMvoStateMergePatched e) {
         InventoryItemRequirementEntryMvoStateEventDto.InventoryItemRequirementEntryMvoStateMergePatchedDto dto = new InventoryItemRequirementEntryMvoStateEventDto.InventoryItemRequirementEntryMvoStateMergePatchedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setInventoryItemRequirementEntryMvoEventId(e.getInventoryItemRequirementEntryMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());

@@ -39,9 +39,9 @@ namespace Dddml.Wms.Domain.Party.NHibernate
             }
             string idObj = (string)(eventStoreAggregateId as EventStoreAggregateId).Id;
             var criteria = CurrentSession.CreateCriteria<PartyStateEventBase>();
-            criteria.Add(Restrictions.Eq("StateEventId.PartyId", idObj));
-            criteria.Add(Restrictions.Le("StateEventId.Version", version));
-            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.Version"));
+            criteria.Add(Restrictions.Eq("PartyEventId.PartyId", idObj));
+            criteria.Add(Restrictions.Le("PartyEventId.Version", version));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("PartyEventId.Version"));
             var es = criteria.List<IEvent>();
             foreach (PartyStateEventBase e in es)
             {
@@ -49,7 +49,7 @@ namespace Dddml.Wms.Domain.Party.NHibernate
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((PartyStateEventBase)es.Last()).StateEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((PartyStateEventBase)es.Last()).PartyEventId.Version : default(long),
                 Events = es
             };
         }

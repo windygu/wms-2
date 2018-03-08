@@ -40,10 +40,10 @@ namespace Dddml.Wms.Domain.AttributeUseMvo.NHibernate
             }
             AttributeSetAttributeUseId idObj = (AttributeSetAttributeUseId)(eventStoreAggregateId as EventStoreAggregateId).Id;
             var criteria = CurrentSession.CreateCriteria<AttributeUseMvoStateEventBase>();
-            criteria.Add(Restrictions.Eq("StateEventId.AttributeSetAttributeUseIdAttributeSetId", idObj.AttributeSetId));
-            criteria.Add(Restrictions.Eq("StateEventId.AttributeSetAttributeUseIdAttributeId", idObj.AttributeId));
-            criteria.Add(Restrictions.Le("StateEventId.AttributeSetVersion", version));
-            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.AttributeSetVersion"));
+            criteria.Add(Restrictions.Eq("AttributeUseMvoEventId.AttributeSetAttributeUseIdAttributeSetId", idObj.AttributeSetId));
+            criteria.Add(Restrictions.Eq("AttributeUseMvoEventId.AttributeSetAttributeUseIdAttributeId", idObj.AttributeId));
+            criteria.Add(Restrictions.Le("AttributeUseMvoEventId.AttributeSetVersion", version));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("AttributeUseMvoEventId.AttributeSetVersion"));
             var es = criteria.List<IEvent>();
             foreach (AttributeUseMvoStateEventBase e in es)
             {
@@ -51,7 +51,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo.NHibernate
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((AttributeUseMvoStateEventBase)es.Last()).StateEventId.AttributeSetVersion : default(long),
+                SteamVersion = es.Count > 0 ? ((AttributeUseMvoStateEventBase)es.Last()).AttributeUseMvoEventId.AttributeSetVersion : default(long),
                 Events = es
             };
         }

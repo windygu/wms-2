@@ -15,31 +15,31 @@ namespace Dddml.Wms.Domain.Attribute
 	public abstract class AttributeStateEventDtoBase : IStateEventDto, IAttributeStateCreated, IAttributeStateMergePatched, IAttributeStateDeleted
 	{
 
-        private AttributeEventIdDto _stateEventId;
+        private AttributeEventIdDto _attributeEventId;
 
-		protected internal virtual AttributeEventIdDto StateEventId 
+		protected internal virtual AttributeEventIdDto AttributeEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new AttributeEventIdDto(); }
-                return _stateEventId;
+                if (_attributeEventId == null) { _attributeEventId = new AttributeEventIdDto(); }
+                return _attributeEventId;
             }
             set
             {
-                _stateEventId = value;
+                _attributeEventId = value;
             }
         }
 
         public virtual string AttributeId
         {
-            get { return StateEventId.AttributeId; }
-            set { StateEventId.AttributeId = value; }
+            get { return AttributeEventId.AttributeId; }
+            set { AttributeEventId.AttributeId = value; }
         }
 
         public virtual long Version
         {
-            get { return StateEventId.Version; }
-            set { StateEventId.Version = value; }
+            get { return AttributeEventId.Version; }
+            set { AttributeEventId.Version = value; }
         }
 
 		public virtual string AttributeName { get; set; }
@@ -73,7 +73,7 @@ namespace Dddml.Wms.Domain.Attribute
 		AttributeEventId IGlobalIdentity<AttributeEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToAttributeEventId();
+				return this.AttributeEventId.ToAttributeEventId();
 			}
 		}
 
@@ -320,9 +320,9 @@ namespace Dddml.Wms.Domain.Attribute
         private AttributeValueEventIdDto NewAttributeValueEventId(string value)
         {
             var eId = new AttributeValueEventIdDto();
-            eId.AttributeId = this.StateEventId.AttributeId;
+            eId.AttributeId = this.AttributeEventId.AttributeId;
             eId.Value = value;
-            eId.AttributeVersion = this.StateEventId.Version;
+            eId.AttributeVersion = this.AttributeEventId.Version;
             return eId;
         }
 
@@ -330,7 +330,7 @@ namespace Dddml.Wms.Domain.Attribute
         {
             var e = new AttributeValueStateCreatedDto();
             var eId = NewAttributeValueEventId(value);
-            e.StateEventId = eId;
+            e.AttributeValueEventId = eId;
             return e;
         }
 
@@ -338,7 +338,7 @@ namespace Dddml.Wms.Domain.Attribute
         {
             var e = new AttributeValueStateMergePatchedDto();
             var eId = NewAttributeValueEventId(value);
-            e.StateEventId = eId;
+            e.AttributeValueEventId = eId;
             return e;
         }
 
@@ -346,7 +346,7 @@ namespace Dddml.Wms.Domain.Attribute
         {
             var e = new AttributeValueStateRemovedDto();
             var eId = NewAttributeValueEventId(value);
-            e.StateEventId = eId;
+            e.AttributeValueEventId = eId;
             return e;
         }
 
@@ -428,9 +428,9 @@ namespace Dddml.Wms.Domain.Attribute
         private AttributeAliasEventIdDto NewAttributeAliasEventId(string code)
         {
             var eId = new AttributeAliasEventIdDto();
-            eId.AttributeId = this.StateEventId.AttributeId;
+            eId.AttributeId = this.AttributeEventId.AttributeId;
             eId.Code = code;
-            eId.AttributeVersion = this.StateEventId.Version;
+            eId.AttributeVersion = this.AttributeEventId.Version;
             return eId;
         }
 
@@ -438,7 +438,7 @@ namespace Dddml.Wms.Domain.Attribute
         {
             var e = new AttributeAliasStateCreatedDto();
             var eId = NewAttributeAliasEventId(code);
-            e.StateEventId = eId;
+            e.AttributeAliasEventId = eId;
             return e;
         }
 
@@ -446,7 +446,7 @@ namespace Dddml.Wms.Domain.Attribute
         {
             var e = new AttributeAliasStateMergePatchedDto();
             var eId = NewAttributeAliasEventId(code);
-            e.StateEventId = eId;
+            e.AttributeAliasEventId = eId;
             return e;
         }
 
@@ -454,7 +454,7 @@ namespace Dddml.Wms.Domain.Attribute
         {
             var e = new AttributeAliasStateRemovedDto();
             var eId = NewAttributeAliasEventId(code);
-            e.StateEventId = eId;
+            e.AttributeAliasEventId = eId;
             return e;
         }
 
@@ -516,9 +516,9 @@ namespace Dddml.Wms.Domain.Attribute
 
 
 
-        AttributeEventId IAttributeStateEvent.StateEventId
+        AttributeEventId IAttributeStateEvent.AttributeEventId
         {
-            get { return this.StateEventId.ToAttributeEventId(); }
+            get { return this.AttributeEventId.ToAttributeEventId(); }
         }
 
         protected AttributeStateEventDtoBase()
@@ -527,7 +527,7 @@ namespace Dddml.Wms.Domain.Attribute
 
         protected AttributeStateEventDtoBase(AttributeEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.AttributeEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

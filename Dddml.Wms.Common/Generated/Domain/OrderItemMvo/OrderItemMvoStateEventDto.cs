@@ -16,31 +16,31 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 	public abstract class OrderItemMvoStateEventDtoBase : IStateEventDto, IOrderItemMvoStateCreated, IOrderItemMvoStateMergePatched
 	{
 
-        private OrderItemMvoEventIdDto _stateEventId;
+        private OrderItemMvoEventIdDto _orderItemMvoEventId;
 
-		protected internal virtual OrderItemMvoEventIdDto StateEventId 
+		protected internal virtual OrderItemMvoEventIdDto OrderItemMvoEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new OrderItemMvoEventIdDto(); }
-                return _stateEventId;
+                if (_orderItemMvoEventId == null) { _orderItemMvoEventId = new OrderItemMvoEventIdDto(); }
+                return _orderItemMvoEventId;
             }
             set
             {
-                _stateEventId = value;
+                _orderItemMvoEventId = value;
             }
         }
 
         public virtual OrderItemIdDto OrderItemId
         {
-            get { return StateEventId.OrderItemId; }
-            set { StateEventId.OrderItemId = value; }
+            get { return OrderItemMvoEventId.OrderItemId; }
+            set { OrderItemMvoEventId.OrderItemId = value; }
         }
 
         public virtual long OrderVersion
         {
-            get { return StateEventId.OrderVersion; }
-            set { StateEventId.OrderVersion = value; }
+            get { return OrderItemMvoEventId.OrderVersion; }
+            set { OrderItemMvoEventId.OrderVersion = value; }
         }
 
 		public virtual string ProductId { get; set; }
@@ -186,7 +186,7 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 		OrderItemMvoEventId IGlobalIdentity<OrderItemMvoEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToOrderItemMvoEventId();
+				return this.OrderItemMvoEventId.ToOrderItemMvoEventId();
 			}
 		}
 
@@ -1477,9 +1477,9 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 		}
 
 
-        OrderItemMvoEventId IOrderItemMvoStateEvent.StateEventId
+        OrderItemMvoEventId IOrderItemMvoStateEvent.OrderItemMvoEventId
         {
-            get { return this.StateEventId.ToOrderItemMvoEventId(); }
+            get { return this.OrderItemMvoEventId.ToOrderItemMvoEventId(); }
         }
 
         protected OrderItemMvoStateEventDtoBase()
@@ -1488,7 +1488,7 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 
         protected OrderItemMvoStateEventDtoBase(OrderItemMvoEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.OrderItemMvoEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

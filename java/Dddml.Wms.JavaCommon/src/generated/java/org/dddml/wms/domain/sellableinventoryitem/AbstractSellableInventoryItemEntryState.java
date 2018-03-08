@@ -196,14 +196,14 @@ public abstract class AbstractSellableInventoryItemEntryState implements Sellabl
     protected void throwOnWrongEvent(SellableInventoryItemEntryStateEvent stateEvent)
     {
         InventoryItemId stateEntityIdSellableInventoryItemId = this.getSellableInventoryItemEntryId().getSellableInventoryItemId();
-        InventoryItemId eventEntityIdSellableInventoryItemId = stateEvent.getStateEventId().getSellableInventoryItemId();
+        InventoryItemId eventEntityIdSellableInventoryItemId = stateEvent.getSellableInventoryItemEntryEventId().getSellableInventoryItemId();
         if (!stateEntityIdSellableInventoryItemId.equals(eventEntityIdSellableInventoryItemId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id SellableInventoryItemId %1$s in state but entity id SellableInventoryItemId %2$s in event", stateEntityIdSellableInventoryItemId, eventEntityIdSellableInventoryItemId);
         }
 
         Long stateEntityIdEntrySeqId = this.getSellableInventoryItemEntryId().getEntrySeqId();
-        Long eventEntityIdEntrySeqId = stateEvent.getStateEventId().getEntrySeqId();
+        Long eventEntityIdEntrySeqId = stateEvent.getSellableInventoryItemEntryEventId().getEntrySeqId();
         if (!stateEntityIdEntrySeqId.equals(eventEntityIdEntrySeqId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id EntrySeqId %1$s in state but entity id EntrySeqId %2$s in event", stateEntityIdEntrySeqId, eventEntityIdEntrySeqId);

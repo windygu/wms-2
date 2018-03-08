@@ -16,12 +16,12 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 	public abstract class AttributeUseMvoStateEventBase : IAttributeUseMvoStateEvent
 	{
 
-		public virtual AttributeUseMvoEventId StateEventId { get; set; }
+		public virtual AttributeUseMvoEventId AttributeUseMvoEventId { get; set; }
 
         public virtual AttributeSetAttributeUseId AttributeSetAttributeUseId
         {
-            get { return StateEventId.AttributeSetAttributeUseId; }
-            set { StateEventId.AttributeSetAttributeUseId = value; }
+            get { return AttributeUseMvoEventId.AttributeSetAttributeUseId; }
+            set { AttributeUseMvoEventId.AttributeSetAttributeUseId = value; }
         }
 
 		public virtual int? SequenceNumber { get; set; }
@@ -65,7 +65,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 		AttributeUseMvoEventId IGlobalIdentity<AttributeUseMvoEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.AttributeUseMvoEventId;
 			}
 		}
 
@@ -108,7 +108,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
         protected AttributeUseMvoStateEventBase(AttributeUseMvoEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.AttributeUseMvoEventId = stateEventId;
         }
 
 

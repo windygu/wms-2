@@ -279,7 +279,7 @@ namespace Dddml.Wms.Domain.User
             id.Append("[").Append("UserClaim|");
 
             var stateEntityIdUserId = (this as IGlobalIdentity<UserClaimId>).GlobalId.UserId;
-            var eventEntityIdUserId = stateEvent.StateEventId.UserId;
+            var eventEntityIdUserId = stateEvent.UserClaimEventId.UserId;
             if (stateEntityIdUserId != eventEntityIdUserId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id UserId {0} in state but entity id UserId {1} in event", stateEntityIdUserId, eventEntityIdUserId);
@@ -287,7 +287,7 @@ namespace Dddml.Wms.Domain.User
             id.Append(stateEntityIdUserId).Append(",");
 
             var stateEntityIdClaimId = (this as IGlobalIdentity<UserClaimId>).GlobalId.ClaimId;
-            var eventEntityIdClaimId = stateEvent.StateEventId.ClaimId;
+            var eventEntityIdClaimId = stateEvent.UserClaimEventId.ClaimId;
             if (stateEntityIdClaimId != eventEntityIdClaimId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id ClaimId {0} in state but entity id ClaimId {1} in event", stateEntityIdClaimId, eventEntityIdClaimId);

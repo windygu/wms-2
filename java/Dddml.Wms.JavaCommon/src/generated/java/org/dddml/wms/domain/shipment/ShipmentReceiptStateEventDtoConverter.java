@@ -21,7 +21,7 @@ public class ShipmentReceiptStateEventDtoConverter {
 
     public ShipmentReceiptStateEventDto.ShipmentReceiptStateCreatedDto toShipmentReceiptStateCreatedDto(ShipmentReceiptStateEvent.ShipmentReceiptStateCreated e) {
         ShipmentReceiptStateEventDto.ShipmentReceiptStateCreatedDto dto = new ShipmentReceiptStateEventDto.ShipmentReceiptStateCreatedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setShipmentReceiptEventId(e.getShipmentReceiptEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setVersion(e.getVersion());
@@ -44,7 +44,7 @@ public class ShipmentReceiptStateEventDtoConverter {
 
     public ShipmentReceiptStateEventDto.ShipmentReceiptStateMergePatchedDto toShipmentReceiptStateMergePatchedDto(ShipmentReceiptStateEvent.ShipmentReceiptStateMergePatched e) {
         ShipmentReceiptStateEventDto.ShipmentReceiptStateMergePatchedDto dto = new ShipmentReceiptStateEventDto.ShipmentReceiptStateMergePatchedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setShipmentReceiptEventId(e.getShipmentReceiptEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setVersion(e.getVersion());

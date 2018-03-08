@@ -34,17 +34,17 @@ public class HibernateUomConversionEventStore extends AbstractHibernateEventStor
         }
         UomConversionId idObj = (UomConversionId) eventStoreAggregateId.getId();
         Criteria criteria = getCurrentSession().createCriteria(AbstractUomConversionStateEvent.class);
-        criteria.add(Restrictions.eq("stateEventId.uomConversionIdUomId", idObj.getUomId()));
-        criteria.add(Restrictions.eq("stateEventId.uomConversionIdUomIdTo", idObj.getUomIdTo()));
-        criteria.add(Restrictions.le("stateEventId.version", version));
-        criteria.addOrder(Order.asc("stateEventId.version"));
+        criteria.add(Restrictions.eq("uomConversionEventId.uomConversionIdUomId", idObj.getUomId()));
+        criteria.add(Restrictions.eq("uomConversionEventId.uomConversionIdUomIdTo", idObj.getUomIdTo()));
+        criteria.add(Restrictions.le("uomConversionEventId.version", version));
+        criteria.addOrder(Order.asc("uomConversionEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
             ((AbstractUomConversionStateEvent) e).setStateEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractUomConversionStateEvent) es.get(es.size() - 1)).getStateEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractUomConversionStateEvent) es.get(es.size() - 1)).getUomConversionEventId().getVersion());
         } else {
             //todo?
         }

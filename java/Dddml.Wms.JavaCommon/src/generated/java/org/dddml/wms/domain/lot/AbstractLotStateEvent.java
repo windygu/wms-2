@@ -8,22 +8,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractLotStateEvent extends AbstractStateEvent implements LotStateEvent 
 {
-    private LotEventId stateEventId;
+    private LotEventId lotEventId;
 
-    public LotEventId getStateEventId() {
-        return this.stateEventId;
+    public LotEventId getLotEventId() {
+        return this.lotEventId;
     }
 
-    public void setStateEventId(LotEventId eventId) {
-        this.stateEventId = eventId;
+    public void setLotEventId(LotEventId eventId) {
+        this.lotEventId = eventId;
     }
     
     public String getLotId() {
-        return getStateEventId().getLotId();
+        return getLotEventId().getLotId();
     }
 
     public void setLotId(String lotId) {
-        getStateEventId().setLotId(lotId);
+        getLotEventId().setLotId(lotId);
     }
 
     private boolean stateEventReadOnly;
@@ -107,7 +107,7 @@ public abstract class AbstractLotStateEvent extends AbstractStateEvent implement
     }
 
     protected AbstractLotStateEvent(LotEventId eventId) {
-        this.stateEventId = eventId;
+        this.lotEventId = eventId;
     }
 
 

@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 	public abstract class MovementConfirmationLineStateEventBase : IMovementConfirmationLineStateEvent
 	{
 
-		public virtual MovementConfirmationLineEventId StateEventId { get; set; }
+		public virtual MovementConfirmationLineEventId MovementConfirmationLineEventId { get; set; }
 
         public virtual string LineNumber
         {
-            get { return StateEventId.LineNumber; }
-            set { StateEventId.LineNumber = value; }
+            get { return MovementConfirmationLineEventId.LineNumber; }
+            set { MovementConfirmationLineEventId.LineNumber = value; }
         }
 
 		public virtual string MovementLineNumber { get; set; }
@@ -50,7 +50,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 		MovementConfirmationLineEventId IGlobalIdentity<MovementConfirmationLineEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.MovementConfirmationLineEventId;
 			}
 		}
 
@@ -95,7 +95,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
         protected MovementConfirmationLineStateEventBase(MovementConfirmationLineEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.MovementConfirmationLineEventId = stateEventId;
         }
 
 

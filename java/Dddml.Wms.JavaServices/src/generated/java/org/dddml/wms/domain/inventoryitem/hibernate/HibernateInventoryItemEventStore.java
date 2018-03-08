@@ -35,18 +35,18 @@ public class HibernateInventoryItemEventStore extends AbstractHibernateEventStor
         }
         InventoryItemId idObj = (InventoryItemId) eventStoreAggregateId.getId();
         Criteria criteria = getCurrentSession().createCriteria(AbstractInventoryItemStateEvent.class);
-        criteria.add(Restrictions.eq("stateEventId.inventoryItemIdProductId", idObj.getProductId()));
-        criteria.add(Restrictions.eq("stateEventId.inventoryItemIdLocatorId", idObj.getLocatorId()));
-        criteria.add(Restrictions.eq("stateEventId.inventoryItemIdAttributeSetInstanceId", idObj.getAttributeSetInstanceId()));
-        criteria.add(Restrictions.le("stateEventId.version", version));
-        criteria.addOrder(Order.asc("stateEventId.version"));
+        criteria.add(Restrictions.eq("inventoryItemEventId.inventoryItemIdProductId", idObj.getProductId()));
+        criteria.add(Restrictions.eq("inventoryItemEventId.inventoryItemIdLocatorId", idObj.getLocatorId()));
+        criteria.add(Restrictions.eq("inventoryItemEventId.inventoryItemIdAttributeSetInstanceId", idObj.getAttributeSetInstanceId()));
+        criteria.add(Restrictions.le("inventoryItemEventId.version", version));
+        criteria.addOrder(Order.asc("inventoryItemEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
             ((AbstractInventoryItemStateEvent) e).setStateEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractInventoryItemStateEvent) es.get(es.size() - 1)).getStateEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractInventoryItemStateEvent) es.get(es.size() - 1)).getInventoryItemEventId().getVersion());
         } else {
             //todo?
         }

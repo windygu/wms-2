@@ -59,7 +59,7 @@ namespace Dddml.Wms.Domain.OrganizationStructure
 
         public virtual void Initialize(IOrganizationStructureStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.Id;
+            var aggregateId = stateCreated.OrganizationStructureEventId.Id;
             var state = new OrganizationStructureState();
             state.Id = aggregateId;
             var aggregate = (OrganizationStructureAggregate)GetOrganizationStructureAggregate(state);

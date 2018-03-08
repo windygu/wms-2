@@ -177,7 +177,7 @@ public abstract class AbstractUomConversionState implements UomConversionState
     public AbstractUomConversionState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setUomConversionId(((UomConversionStateEvent) events.get(0)).getStateEventId().getUomConversionId());
+            this.setUomConversionId(((UomConversionStateEvent) events.get(0)).getUomConversionEventId().getUomConversionId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -312,16 +312,16 @@ public abstract class AbstractUomConversionState implements UomConversionState
     protected void throwOnWrongEvent(UomConversionStateEvent stateEvent)
     {
         UomConversionId stateEntityId = this.getUomConversionId(); // Aggregate Id
-        UomConversionId eventEntityId = stateEvent.getStateEventId().getUomConversionId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        UomConversionId eventEntityId = stateEvent.getUomConversionEventId().getUomConversionId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getStateEventId().getVersion();// Aggregate Version
+        Long eventVersion = stateEvent.getUomConversionEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getStateEventId().getVersion() == null");
+            throw new NullPointerException("stateEvent.getUomConversionEventId().getVersion() == null");
         }
         if (!(stateVersion == null && eventVersion.equals(UomConversionState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
         {

@@ -7,7 +7,7 @@ import org.dddml.wms.specialization.Event;
 
 public interface PartyStateEvent extends Event
 {
-    PartyEventId getStateEventId();
+    PartyEventId getPartyEventId();
 
     boolean getStateEventReadOnly();
 

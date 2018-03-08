@@ -15,25 +15,25 @@ namespace Dddml.Wms.Domain.InOut
 	public abstract class InOutLineStateEventDtoBase : IStateEventDto, IInOutLineStateCreated, IInOutLineStateMergePatched, IInOutLineStateRemoved
 	{
 
-        private InOutLineEventIdDto _stateEventId;
+        private InOutLineEventIdDto _inOutLineEventId;
 
-		protected internal virtual InOutLineEventIdDto StateEventId 
+		protected internal virtual InOutLineEventIdDto InOutLineEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new InOutLineEventIdDto(); }
-                return _stateEventId;
+                if (_inOutLineEventId == null) { _inOutLineEventId = new InOutLineEventIdDto(); }
+                return _inOutLineEventId;
             }
             set
             {
-                _stateEventId = value;
+                _inOutLineEventId = value;
             }
         }
 
         public virtual string LineNumber
         {
-            get { return StateEventId.LineNumber; }
-            set { StateEventId.LineNumber = value; }
+            get { return InOutLineEventId.LineNumber; }
+            set { InOutLineEventId.LineNumber = value; }
         }
 
 		public virtual string LocatorId { get; set; }
@@ -71,7 +71,7 @@ namespace Dddml.Wms.Domain.InOut
 		InOutLineEventId IGlobalIdentity<InOutLineEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToInOutLineEventId();
+				return this.InOutLineEventId.ToInOutLineEventId();
 			}
 		}
 
@@ -338,9 +338,9 @@ namespace Dddml.Wms.Domain.InOut
 		}
 
 
-        InOutLineEventId IInOutLineStateEvent.StateEventId
+        InOutLineEventId IInOutLineStateEvent.InOutLineEventId
         {
-            get { return this.StateEventId.ToInOutLineEventId(); }
+            get { return this.InOutLineEventId.ToInOutLineEventId(); }
         }
 
         protected InOutLineStateEventDtoBase()
@@ -349,7 +349,7 @@ namespace Dddml.Wms.Domain.InOut
 
         protected InOutLineStateEventDtoBase(InOutLineEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.InOutLineEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

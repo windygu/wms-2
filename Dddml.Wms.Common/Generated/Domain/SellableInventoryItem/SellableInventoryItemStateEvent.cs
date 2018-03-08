@@ -17,12 +17,12 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 	public abstract class SellableInventoryItemStateEventBase : ISellableInventoryItemStateEvent
 	{
 
-		public virtual SellableInventoryItemEventId StateEventId { get; set; }
+		public virtual SellableInventoryItemEventId SellableInventoryItemEventId { get; set; }
 
         public virtual InventoryItemId SellableInventoryItemId
         {
-            get { return StateEventId.SellableInventoryItemId; }
-            set { StateEventId.SellableInventoryItemId = value; }
+            get { return SellableInventoryItemEventId.SellableInventoryItemId; }
+            set { SellableInventoryItemEventId.SellableInventoryItemId = value; }
         }
 
 		public virtual decimal? SellableQuantity { get; set; }
@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 		SellableInventoryItemEventId IGlobalIdentity<SellableInventoryItemEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.SellableInventoryItemEventId;
 			}
 		}
 
@@ -81,12 +81,12 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
         protected SellableInventoryItemStateEventBase(SellableInventoryItemEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.SellableInventoryItemEventId = stateEventId;
         }
 
         protected SellableInventoryItemEntryEventId NewSellableInventoryItemEntryEventId(long entrySeqId)
         {
-            var stateEventId = new SellableInventoryItemEntryEventId(this.StateEventId.SellableInventoryItemId, entrySeqId, this.StateEventId.Version);
+            var stateEventId = new SellableInventoryItemEntryEventId(this.SellableInventoryItemEventId.SellableInventoryItemId, entrySeqId, this.SellableInventoryItemEventId.Version);
             return stateEventId;
         }
 
@@ -98,10 +98,10 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
 		public static void ThrowOnInconsistentEventIds(ISellableInventoryItemStateEvent oe, ISellableInventoryItemEntryStateEvent e)
 		{
-			if (!oe.StateEventId.SellableInventoryItemId.Equals(e.StateEventId.SellableInventoryItemId))
+			if (!oe.SellableInventoryItemEventId.SellableInventoryItemId.Equals(e.SellableInventoryItemEntryEventId.SellableInventoryItemId))
 			{ 
 				throw DomainError.Named("inconsistentEventIds", "Outer Id SellableInventoryItemId {0} but inner id SellableInventoryItemId {1}", 
-					oe.StateEventId.SellableInventoryItemId, e.StateEventId.SellableInventoryItemId);
+					oe.SellableInventoryItemEventId.SellableInventoryItemId, e.SellableInventoryItemEntryEventId.SellableInventoryItemId);
 			}
 		}
 
@@ -152,7 +152,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 		public virtual void AddSellableInventoryItemEntryEvent(ISellableInventoryItemEntryStateCreated e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._sellableInventoryItemEntryEvents[e.StateEventId] = e;
+			this._sellableInventoryItemEntryEvents[e.SellableInventoryItemEntryEventId] = e;
 		}
 
         public virtual ISellableInventoryItemEntryStateCreated NewSellableInventoryItemEntryStateCreated(long entrySeqId)
@@ -209,7 +209,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 		public virtual void AddSellableInventoryItemEntryEvent(ISellableInventoryItemEntryStateEvent e)
 		{
 			ThrowOnInconsistentEventIds(e);
-			this._sellableInventoryItemEntryEvents[e.StateEventId] = e;
+			this._sellableInventoryItemEntryEvents[e.SellableInventoryItemEntryEventId] = e;
 		}
 
         public virtual ISellableInventoryItemEntryStateCreated NewSellableInventoryItemEntryStateCreated(long entrySeqId)

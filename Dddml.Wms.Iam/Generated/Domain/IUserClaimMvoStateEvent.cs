@@ -14,7 +14,7 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 {
 	public interface IUserClaimMvoStateEvent : IEvent, IStateEventDto, IGlobalIdentity<UserClaimMvoEventId>, ICreated<string>
 	{
-		UserClaimMvoEventId StateEventId { get; }
+		UserClaimMvoEventId UserClaimMvoEventId { get; }
 
         bool ReadOnly { get; set; }
 

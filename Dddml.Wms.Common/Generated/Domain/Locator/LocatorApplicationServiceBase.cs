@@ -59,7 +59,7 @@ namespace Dddml.Wms.Domain.Locator
 
         public virtual void Initialize(ILocatorStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.LocatorId;
+            var aggregateId = stateCreated.LocatorEventId.LocatorId;
             var state = new LocatorState();
             state.LocatorId = aggregateId;
             var aggregate = (LocatorAggregate)GetLocatorAggregate(state);

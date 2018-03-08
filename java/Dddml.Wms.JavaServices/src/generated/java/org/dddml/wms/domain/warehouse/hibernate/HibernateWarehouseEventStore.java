@@ -34,16 +34,16 @@ public class HibernateWarehouseEventStore extends AbstractHibernateEventStore
         }
         String idObj = (String) eventStoreAggregateId.getId();
         Criteria criteria = getCurrentSession().createCriteria(AbstractWarehouseStateEvent.class);
-        criteria.add(Restrictions.eq("stateEventId.warehouseId", idObj));
-        criteria.add(Restrictions.le("stateEventId.version", version));
-        criteria.addOrder(Order.asc("stateEventId.version"));
+        criteria.add(Restrictions.eq("warehouseEventId.warehouseId", idObj));
+        criteria.add(Restrictions.le("warehouseEventId.version", version));
+        criteria.addOrder(Order.asc("warehouseEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
             ((AbstractWarehouseStateEvent) e).setStateEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractWarehouseStateEvent) es.get(es.size() - 1)).getStateEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractWarehouseStateEvent) es.get(es.size() - 1)).getWarehouseEventId().getVersion());
         } else {
             //todo?
         }

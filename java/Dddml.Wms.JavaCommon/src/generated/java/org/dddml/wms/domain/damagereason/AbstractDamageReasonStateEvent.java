@@ -8,22 +8,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractDamageReasonStateEvent extends AbstractStateEvent implements DamageReasonStateEvent 
 {
-    private DamageReasonEventId stateEventId;
+    private DamageReasonEventId damageReasonEventId;
 
-    public DamageReasonEventId getStateEventId() {
-        return this.stateEventId;
+    public DamageReasonEventId getDamageReasonEventId() {
+        return this.damageReasonEventId;
     }
 
-    public void setStateEventId(DamageReasonEventId eventId) {
-        this.stateEventId = eventId;
+    public void setDamageReasonEventId(DamageReasonEventId eventId) {
+        this.damageReasonEventId = eventId;
     }
     
     public String getDamageReasonId() {
-        return getStateEventId().getDamageReasonId();
+        return getDamageReasonEventId().getDamageReasonId();
     }
 
     public void setDamageReasonId(String damageReasonId) {
-        getStateEventId().setDamageReasonId(damageReasonId);
+        getDamageReasonEventId().setDamageReasonId(damageReasonId);
     }
 
     private boolean stateEventReadOnly;
@@ -107,7 +107,7 @@ public abstract class AbstractDamageReasonStateEvent extends AbstractStateEvent 
     }
 
     protected AbstractDamageReasonStateEvent(DamageReasonEventId eventId) {
-        this.stateEventId = eventId;
+        this.damageReasonEventId = eventId;
     }
 
 

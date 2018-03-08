@@ -8,22 +8,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractAttributeSetStateEvent extends AbstractStateEvent implements AttributeSetStateEvent 
 {
-    private AttributeSetEventId stateEventId;
+    private AttributeSetEventId attributeSetEventId;
 
-    public AttributeSetEventId getStateEventId() {
-        return this.stateEventId;
+    public AttributeSetEventId getAttributeSetEventId() {
+        return this.attributeSetEventId;
     }
 
-    public void setStateEventId(AttributeSetEventId eventId) {
-        this.stateEventId = eventId;
+    public void setAttributeSetEventId(AttributeSetEventId eventId) {
+        this.attributeSetEventId = eventId;
     }
     
     public String getAttributeSetId() {
-        return getStateEventId().getAttributeSetId();
+        return getAttributeSetEventId().getAttributeSetId();
     }
 
     public void setAttributeSetId(String attributeSetId) {
-        getStateEventId().setAttributeSetId(attributeSetId);
+        getAttributeSetEventId().setAttributeSetId(attributeSetId);
     }
 
     private boolean stateEventReadOnly;
@@ -155,7 +155,7 @@ public abstract class AbstractAttributeSetStateEvent extends AbstractStateEvent 
     }
 
     protected AbstractAttributeSetStateEvent(AttributeSetEventId eventId) {
-        this.stateEventId = eventId;
+        this.attributeSetEventId = eventId;
     }
 
     protected AttributeUseStateEventDao getAttributeUseStateEventDao() {
@@ -164,9 +164,9 @@ public abstract class AbstractAttributeSetStateEvent extends AbstractStateEvent 
 
     protected AttributeUseEventId newAttributeUseEventId(String attributeId)
     {
-        AttributeUseEventId eventId = new AttributeUseEventId(this.getStateEventId().getAttributeSetId(), 
+        AttributeUseEventId eventId = new AttributeUseEventId(this.getAttributeSetEventId().getAttributeSetId(), 
             attributeId, 
-            this.getStateEventId().getVersion());
+            this.getAttributeSetEventId().getVersion());
         return eventId;
     }
 
@@ -177,10 +177,10 @@ public abstract class AbstractAttributeSetStateEvent extends AbstractStateEvent 
 
     public static void throwOnInconsistentEventIds(AttributeSetStateEvent oe, AttributeUseStateEvent e)
     {
-        if (!oe.getStateEventId().getAttributeSetId().equals(e.getStateEventId().getAttributeSetId()))
+        if (!oe.getAttributeSetEventId().getAttributeSetId().equals(e.getAttributeUseEventId().getAttributeSetId()))
         { 
             throw DomainError.named("inconsistentEventIds", "Outer Id AttributeSetId %1$s but inner id AttributeSetId %2$s", 
-                oe.getStateEventId().getAttributeSetId(), e.getStateEventId().getAttributeSetId());
+                oe.getAttributeSetEventId().getAttributeSetId(), e.getAttributeUseEventId().getAttributeSetId());
         }
     }
 
@@ -229,7 +229,7 @@ public abstract class AbstractAttributeSetStateEvent extends AbstractStateEvent 
                 if (readOnlyAttributeUseEvents != null) { return readOnlyAttributeUseEvents; }
                 AttributeUseStateEventDao eventDao = getAttributeUseStateEventDao();
                 List<AttributeUseStateEvent.AttributeUseStateCreated> eL = new ArrayList<AttributeUseStateEvent.AttributeUseStateCreated>();
-                for (AttributeUseStateEvent e : eventDao.findByAttributeSetEventId(this.getStateEventId()))
+                for (AttributeUseStateEvent e : eventDao.findByAttributeSetEventId(this.getAttributeSetEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((AttributeUseStateEvent.AttributeUseStateCreated)e);
@@ -253,7 +253,7 @@ public abstract class AbstractAttributeSetStateEvent extends AbstractStateEvent 
         public void addAttributeUseEvent(AttributeUseStateEvent.AttributeUseStateCreated e)
         {
             throwOnInconsistentEventIds(e);
-            this.attributeUseEvents.put(e.getStateEventId(), e);
+            this.attributeUseEvents.put(e.getAttributeUseEventId(), e);
         }
 
         public void save()
@@ -364,7 +364,7 @@ public abstract class AbstractAttributeSetStateEvent extends AbstractStateEvent 
                 if (readOnlyAttributeUseEvents != null) { return readOnlyAttributeUseEvents; }
                 AttributeUseStateEventDao eventDao = getAttributeUseStateEventDao();
                 List<AttributeUseStateEvent> eL = new ArrayList<AttributeUseStateEvent>();
-                for (AttributeUseStateEvent e : eventDao.findByAttributeSetEventId(this.getStateEventId()))
+                for (AttributeUseStateEvent e : eventDao.findByAttributeSetEventId(this.getAttributeSetEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((AttributeUseStateEvent)e);
@@ -388,7 +388,7 @@ public abstract class AbstractAttributeSetStateEvent extends AbstractStateEvent 
         public void addAttributeUseEvent(AttributeUseStateEvent e)
         {
             throwOnInconsistentEventIds(e);
-            this.attributeUseEvents.put(e.getStateEventId(), e);
+            this.attributeUseEvents.put(e.getAttributeUseEventId(), e);
         }
 
         public void save()
@@ -430,7 +430,7 @@ public abstract class AbstractAttributeSetStateEvent extends AbstractStateEvent 
                 if (readOnlyAttributeUseEvents != null) { return readOnlyAttributeUseEvents; }
                 AttributeUseStateEventDao eventDao = getAttributeUseStateEventDao();
                 List<AttributeUseStateEvent.AttributeUseStateRemoved> eL = new ArrayList<AttributeUseStateEvent.AttributeUseStateRemoved>();
-                for (AttributeUseStateEvent e : eventDao.findByAttributeSetEventId(this.getStateEventId()))
+                for (AttributeUseStateEvent e : eventDao.findByAttributeSetEventId(this.getAttributeSetEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((AttributeUseStateEvent.AttributeUseStateRemoved)e);
@@ -454,7 +454,7 @@ public abstract class AbstractAttributeSetStateEvent extends AbstractStateEvent 
         public void addAttributeUseEvent(AttributeUseStateEvent.AttributeUseStateRemoved e)
         {
             throwOnInconsistentEventIds(e);
-            this.attributeUseEvents.put(e.getStateEventId(), e);
+            this.attributeUseEvents.put(e.getAttributeUseEventId(), e);
         }
 
         public void save()

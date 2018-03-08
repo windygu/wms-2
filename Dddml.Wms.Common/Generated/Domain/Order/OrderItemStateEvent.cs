@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.Order
 	public abstract class OrderItemStateEventBase : IOrderItemStateEvent
 	{
 
-		public virtual OrderItemEventId StateEventId { get; set; }
+		public virtual OrderItemEventId OrderItemEventId { get; set; }
 
         public virtual string OrderItemSeqId
         {
-            get { return StateEventId.OrderItemSeqId; }
-            set { StateEventId.OrderItemSeqId = value; }
+            get { return OrderItemEventId.OrderItemSeqId; }
+            set { OrderItemEventId.OrderItemSeqId = value; }
         }
 
 		public virtual string ProductId { get; set; }
@@ -106,7 +106,7 @@ namespace Dddml.Wms.Domain.Order
 		OrderItemEventId IGlobalIdentity<OrderItemEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.OrderItemEventId;
 			}
 		}
 
@@ -151,7 +151,7 @@ namespace Dddml.Wms.Domain.Order
 
         protected OrderItemStateEventBase(OrderItemEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.OrderItemEventId = stateEventId;
         }
 
 

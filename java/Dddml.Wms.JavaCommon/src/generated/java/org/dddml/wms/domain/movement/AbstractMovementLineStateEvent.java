@@ -9,22 +9,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractMovementLineStateEvent extends AbstractStateEvent implements MovementLineStateEvent 
 {
-    private MovementLineEventId stateEventId;
+    private MovementLineEventId movementLineEventId;
 
-    public MovementLineEventId getStateEventId() {
-        return this.stateEventId;
+    public MovementLineEventId getMovementLineEventId() {
+        return this.movementLineEventId;
     }
 
-    public void setStateEventId(MovementLineEventId eventId) {
-        this.stateEventId = eventId;
+    public void setMovementLineEventId(MovementLineEventId eventId) {
+        this.movementLineEventId = eventId;
     }
     
     public String getLineNumber() {
-        return getStateEventId().getLineNumber();
+        return getMovementLineEventId().getLineNumber();
     }
 
     public void setLineNumber(String lineNumber) {
-        getStateEventId().setLineNumber(lineNumber);
+        getMovementLineEventId().setLineNumber(lineNumber);
     }
 
     private boolean stateEventReadOnly;
@@ -180,7 +180,7 @@ public abstract class AbstractMovementLineStateEvent extends AbstractStateEvent 
     }
 
     protected AbstractMovementLineStateEvent(MovementLineEventId eventId) {
-        this.stateEventId = eventId;
+        this.movementLineEventId = eventId;
     }
 
 

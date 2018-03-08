@@ -30,7 +30,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
         public virtual SellableInventoryItemEntryStateCreatedDto ToSellableInventoryItemEntryStateCreatedDto(ISellableInventoryItemEntryStateCreated e)
         {
             var dto = new SellableInventoryItemEntryStateCreatedDto();
-            dto.StateEventId = new SellableInventoryItemEntryEventIdDtoWrapper(e.StateEventId);
+            dto.SellableInventoryItemEntryEventId = new SellableInventoryItemEntryEventIdDtoWrapper(e.SellableInventoryItemEntryEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;

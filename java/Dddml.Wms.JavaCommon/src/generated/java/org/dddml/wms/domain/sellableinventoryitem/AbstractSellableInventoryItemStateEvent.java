@@ -11,22 +11,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractSellableInventoryItemStateEvent extends AbstractStateEvent implements SellableInventoryItemStateEvent 
 {
-    private SellableInventoryItemEventId stateEventId;
+    private SellableInventoryItemEventId sellableInventoryItemEventId;
 
-    public SellableInventoryItemEventId getStateEventId() {
-        return this.stateEventId;
+    public SellableInventoryItemEventId getSellableInventoryItemEventId() {
+        return this.sellableInventoryItemEventId;
     }
 
-    public void setStateEventId(SellableInventoryItemEventId eventId) {
-        this.stateEventId = eventId;
+    public void setSellableInventoryItemEventId(SellableInventoryItemEventId eventId) {
+        this.sellableInventoryItemEventId = eventId;
     }
     
     public InventoryItemId getSellableInventoryItemId() {
-        return getStateEventId().getSellableInventoryItemId();
+        return getSellableInventoryItemEventId().getSellableInventoryItemId();
     }
 
     public void setSellableInventoryItemId(InventoryItemId sellableInventoryItemId) {
-        getStateEventId().setSellableInventoryItemId(sellableInventoryItemId);
+        getSellableInventoryItemEventId().setSellableInventoryItemId(sellableInventoryItemId);
     }
 
     private boolean stateEventReadOnly;
@@ -86,14 +86,14 @@ public abstract class AbstractSellableInventoryItemStateEvent extends AbstractSt
     }
 
     protected AbstractSellableInventoryItemStateEvent(SellableInventoryItemEventId eventId) {
-        this.stateEventId = eventId;
+        this.sellableInventoryItemEventId = eventId;
     }
 
     protected SellableInventoryItemEntryEventId newSellableInventoryItemEntryEventId(Long entrySeqId)
     {
-        SellableInventoryItemEntryEventId eventId = new SellableInventoryItemEntryEventId(this.getStateEventId().getSellableInventoryItemId(), 
+        SellableInventoryItemEntryEventId eventId = new SellableInventoryItemEntryEventId(this.getSellableInventoryItemEventId().getSellableInventoryItemId(), 
             entrySeqId, 
-            this.getStateEventId().getVersion());
+            this.getSellableInventoryItemEventId().getVersion());
         return eventId;
     }
 
@@ -104,10 +104,10 @@ public abstract class AbstractSellableInventoryItemStateEvent extends AbstractSt
 
     public static void throwOnInconsistentEventIds(SellableInventoryItemStateEvent oe, SellableInventoryItemEntryStateEvent e)
     {
-        if (!oe.getStateEventId().getSellableInventoryItemId().equals(e.getStateEventId().getSellableInventoryItemId()))
+        if (!oe.getSellableInventoryItemEventId().getSellableInventoryItemId().equals(e.getSellableInventoryItemEntryEventId().getSellableInventoryItemId()))
         { 
             throw DomainError.named("inconsistentEventIds", "Outer Id SellableInventoryItemId %1$s but inner id SellableInventoryItemId %2$s", 
-                oe.getStateEventId().getSellableInventoryItemId(), e.getStateEventId().getSellableInventoryItemId());
+                oe.getSellableInventoryItemEventId().getSellableInventoryItemId(), e.getSellableInventoryItemEntryEventId().getSellableInventoryItemId());
         }
     }
 
@@ -157,7 +157,7 @@ public abstract class AbstractSellableInventoryItemStateEvent extends AbstractSt
         public void addSellableInventoryItemEntryEvent(SellableInventoryItemEntryStateEvent.SellableInventoryItemEntryStateCreated e)
         {
             throwOnInconsistentEventIds(e);
-            this.sellableInventoryItemEntryEvents.put(e.getStateEventId(), e);
+            this.sellableInventoryItemEntryEvents.put(e.getSellableInventoryItemEntryEventId(), e);
         }
 
     }
@@ -211,7 +211,7 @@ public abstract class AbstractSellableInventoryItemStateEvent extends AbstractSt
         public void addSellableInventoryItemEntryEvent(SellableInventoryItemEntryStateEvent e)
         {
             throwOnInconsistentEventIds(e);
-            this.sellableInventoryItemEntryEvents.put(e.getStateEventId(), e);
+            this.sellableInventoryItemEntryEvents.put(e.getSellableInventoryItemEntryEventId(), e);
         }
 
     }

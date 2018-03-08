@@ -8,22 +8,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractUomStateEvent extends AbstractStateEvent implements UomStateEvent 
 {
-    private UomEventId stateEventId;
+    private UomEventId uomEventId;
 
-    public UomEventId getStateEventId() {
-        return this.stateEventId;
+    public UomEventId getUomEventId() {
+        return this.uomEventId;
     }
 
-    public void setStateEventId(UomEventId eventId) {
-        this.stateEventId = eventId;
+    public void setUomEventId(UomEventId eventId) {
+        this.uomEventId = eventId;
     }
     
     public String getUomId() {
-        return getStateEventId().getUomId();
+        return getUomEventId().getUomId();
     }
 
     public void setUomId(String uomId) {
-        getStateEventId().setUomId(uomId);
+        getUomEventId().setUomId(uomId);
     }
 
     private boolean stateEventReadOnly;
@@ -119,7 +119,7 @@ public abstract class AbstractUomStateEvent extends AbstractStateEvent implement
     }
 
     protected AbstractUomStateEvent(UomEventId eventId) {
-        this.stateEventId = eventId;
+        this.uomEventId = eventId;
     }
 
 

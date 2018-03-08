@@ -898,7 +898,7 @@ public abstract class AbstractOrderItemMvoState implements OrderItemMvoState
     public AbstractOrderItemMvoState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setOrderItemId(((OrderItemMvoStateEvent) events.get(0)).getStateEventId().getOrderItemId());
+            this.setOrderItemId(((OrderItemMvoStateEvent) events.get(0)).getOrderItemMvoEventId().getOrderItemId());
             for (Event e : events) {
                 mutate(e);
                 this.setOrderVersion(this.getOrderVersion() + 1);
@@ -1751,16 +1751,16 @@ public abstract class AbstractOrderItemMvoState implements OrderItemMvoState
     protected void throwOnWrongEvent(OrderItemMvoStateEvent stateEvent)
     {
         OrderItemId stateEntityId = this.getOrderItemId(); // Aggregate Id
-        OrderItemId eventEntityId = stateEvent.getStateEventId().getOrderItemId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        OrderItemId eventEntityId = stateEvent.getOrderItemMvoEventId().getOrderItemId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getOrderVersion();
-        Long eventVersion = stateEvent.getStateEventId().getOrderVersion();// Aggregate Version
+        Long eventVersion = stateEvent.getOrderItemMvoEventId().getOrderVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getStateEventId().getOrderVersion() == null");
+            throw new NullPointerException("stateEvent.getOrderItemMvoEventId().getOrderVersion() == null");
         }
         if (!(stateVersion == null && eventVersion.equals(OrderItemMvoState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
         {

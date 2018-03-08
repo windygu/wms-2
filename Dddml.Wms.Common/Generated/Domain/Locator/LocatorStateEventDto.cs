@@ -15,31 +15,31 @@ namespace Dddml.Wms.Domain.Locator
 	public abstract class LocatorStateEventDtoBase : IStateEventDto, ILocatorStateCreated, ILocatorStateMergePatched, ILocatorStateDeleted
 	{
 
-        private LocatorEventIdDto _stateEventId;
+        private LocatorEventIdDto _locatorEventId;
 
-		protected internal virtual LocatorEventIdDto StateEventId 
+		protected internal virtual LocatorEventIdDto LocatorEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new LocatorEventIdDto(); }
-                return _stateEventId;
+                if (_locatorEventId == null) { _locatorEventId = new LocatorEventIdDto(); }
+                return _locatorEventId;
             }
             set
             {
-                _stateEventId = value;
+                _locatorEventId = value;
             }
         }
 
         public virtual string LocatorId
         {
-            get { return StateEventId.LocatorId; }
-            set { StateEventId.LocatorId = value; }
+            get { return LocatorEventId.LocatorId; }
+            set { LocatorEventId.LocatorId = value; }
         }
 
         public virtual long Version
         {
-            get { return StateEventId.Version; }
-            set { StateEventId.Version = value; }
+            get { return LocatorEventId.Version; }
+            set { LocatorEventId.Version = value; }
         }
 
 		public virtual string WarehouseId { get; set; }
@@ -73,7 +73,7 @@ namespace Dddml.Wms.Domain.Locator
 		LocatorEventId IGlobalIdentity<LocatorEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToLocatorEventId();
+				return this.LocatorEventId.ToLocatorEventId();
 			}
 		}
 
@@ -300,9 +300,9 @@ namespace Dddml.Wms.Domain.Locator
 		}
 
 
-        LocatorEventId ILocatorStateEvent.StateEventId
+        LocatorEventId ILocatorStateEvent.LocatorEventId
         {
-            get { return this.StateEventId.ToLocatorEventId(); }
+            get { return this.LocatorEventId.ToLocatorEventId(); }
         }
 
         protected LocatorStateEventDtoBase()
@@ -311,7 +311,7 @@ namespace Dddml.Wms.Domain.Locator
 
         protected LocatorStateEventDtoBase(LocatorEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.LocatorEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

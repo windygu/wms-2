@@ -39,12 +39,12 @@ namespace Dddml.Wms.Domain.OrderShipment.NHibernate
             }
             OrderShipmentId idObj = (OrderShipmentId)(eventStoreAggregateId as EventStoreAggregateId).Id;
             var criteria = CurrentSession.CreateCriteria<OrderShipmentStateEventBase>();
-            criteria.Add(Restrictions.Eq("StateEventId.OrderShipmentIdOrderId", idObj.OrderId));
-            criteria.Add(Restrictions.Eq("StateEventId.OrderShipmentIdOrderItemSeqId", idObj.OrderItemSeqId));
-            criteria.Add(Restrictions.Eq("StateEventId.OrderShipmentIdShipmentId", idObj.ShipmentId));
-            criteria.Add(Restrictions.Eq("StateEventId.OrderShipmentIdShipmentItemSeqId", idObj.ShipmentItemSeqId));
-            criteria.Add(Restrictions.Le("StateEventId.Version", version));
-            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("StateEventId.Version"));
+            criteria.Add(Restrictions.Eq("OrderShipmentEventId.OrderShipmentIdOrderId", idObj.OrderId));
+            criteria.Add(Restrictions.Eq("OrderShipmentEventId.OrderShipmentIdOrderItemSeqId", idObj.OrderItemSeqId));
+            criteria.Add(Restrictions.Eq("OrderShipmentEventId.OrderShipmentIdShipmentId", idObj.ShipmentId));
+            criteria.Add(Restrictions.Eq("OrderShipmentEventId.OrderShipmentIdShipmentItemSeqId", idObj.ShipmentItemSeqId));
+            criteria.Add(Restrictions.Le("OrderShipmentEventId.Version", version));
+            criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("OrderShipmentEventId.Version"));
             var es = criteria.List<IEvent>();
             foreach (OrderShipmentStateEventBase e in es)
             {
@@ -52,7 +52,7 @@ namespace Dddml.Wms.Domain.OrderShipment.NHibernate
             }
             return new EventStream()
             {
-                SteamVersion = es.Count > 0 ? ((OrderShipmentStateEventBase)es.Last()).StateEventId.Version : default(long),
+                SteamVersion = es.Count > 0 ? ((OrderShipmentStateEventBase)es.Last()).OrderShipmentEventId.Version : default(long),
                 Events = es
             };
         }

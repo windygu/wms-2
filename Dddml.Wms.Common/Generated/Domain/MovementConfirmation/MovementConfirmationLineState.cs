@@ -357,7 +357,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             id.Append("[").Append("MovementConfirmationLine|");
 
             var stateEntityIdMovementConfirmationDocumentNumber = (this as IGlobalIdentity<MovementConfirmationLineId>).GlobalId.MovementConfirmationDocumentNumber;
-            var eventEntityIdMovementConfirmationDocumentNumber = stateEvent.StateEventId.MovementConfirmationDocumentNumber;
+            var eventEntityIdMovementConfirmationDocumentNumber = stateEvent.MovementConfirmationLineEventId.MovementConfirmationDocumentNumber;
             if (stateEntityIdMovementConfirmationDocumentNumber != eventEntityIdMovementConfirmationDocumentNumber)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id MovementConfirmationDocumentNumber {0} in state but entity id MovementConfirmationDocumentNumber {1} in event", stateEntityIdMovementConfirmationDocumentNumber, eventEntityIdMovementConfirmationDocumentNumber);
@@ -365,7 +365,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             id.Append(stateEntityIdMovementConfirmationDocumentNumber).Append(",");
 
             var stateEntityIdLineNumber = (this as IGlobalIdentity<MovementConfirmationLineId>).GlobalId.LineNumber;
-            var eventEntityIdLineNumber = stateEvent.StateEventId.LineNumber;
+            var eventEntityIdLineNumber = stateEvent.MovementConfirmationLineEventId.LineNumber;
             if (stateEntityIdLineNumber != eventEntityIdLineNumber)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id LineNumber {0} in state but entity id LineNumber {1} in event", stateEntityIdLineNumber, eventEntityIdLineNumber);

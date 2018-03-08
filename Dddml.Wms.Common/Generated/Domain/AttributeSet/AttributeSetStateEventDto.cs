@@ -15,31 +15,31 @@ namespace Dddml.Wms.Domain.AttributeSet
 	public abstract class AttributeSetStateEventDtoBase : IStateEventDto, IAttributeSetStateCreated, IAttributeSetStateMergePatched, IAttributeSetStateDeleted
 	{
 
-        private AttributeSetEventIdDto _stateEventId;
+        private AttributeSetEventIdDto _attributeSetEventId;
 
-		protected internal virtual AttributeSetEventIdDto StateEventId 
+		protected internal virtual AttributeSetEventIdDto AttributeSetEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new AttributeSetEventIdDto(); }
-                return _stateEventId;
+                if (_attributeSetEventId == null) { _attributeSetEventId = new AttributeSetEventIdDto(); }
+                return _attributeSetEventId;
             }
             set
             {
-                _stateEventId = value;
+                _attributeSetEventId = value;
             }
         }
 
         public virtual string AttributeSetId
         {
-            get { return StateEventId.AttributeSetId; }
-            set { StateEventId.AttributeSetId = value; }
+            get { return AttributeSetEventId.AttributeSetId; }
+            set { AttributeSetEventId.AttributeSetId = value; }
         }
 
         public virtual long Version
         {
-            get { return StateEventId.Version; }
-            set { StateEventId.Version = value; }
+            get { return AttributeSetEventId.Version; }
+            set { AttributeSetEventId.Version = value; }
         }
 
 		public virtual string AttributeSetName { get; set; }
@@ -67,7 +67,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 		AttributeSetEventId IGlobalIdentity<AttributeSetEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToAttributeSetEventId();
+				return this.AttributeSetEventId.ToAttributeSetEventId();
 			}
 		}
 
@@ -257,9 +257,9 @@ namespace Dddml.Wms.Domain.AttributeSet
         private AttributeUseEventIdDto NewAttributeUseEventId(string attributeId)
         {
             var eId = new AttributeUseEventIdDto();
-            eId.AttributeSetId = this.StateEventId.AttributeSetId;
+            eId.AttributeSetId = this.AttributeSetEventId.AttributeSetId;
             eId.AttributeId = attributeId;
-            eId.AttributeSetVersion = this.StateEventId.Version;
+            eId.AttributeSetVersion = this.AttributeSetEventId.Version;
             return eId;
         }
 
@@ -267,7 +267,7 @@ namespace Dddml.Wms.Domain.AttributeSet
         {
             var e = new AttributeUseStateCreatedDto();
             var eId = NewAttributeUseEventId(attributeId);
-            e.StateEventId = eId;
+            e.AttributeUseEventId = eId;
             return e;
         }
 
@@ -275,7 +275,7 @@ namespace Dddml.Wms.Domain.AttributeSet
         {
             var e = new AttributeUseStateMergePatchedDto();
             var eId = NewAttributeUseEventId(attributeId);
-            e.StateEventId = eId;
+            e.AttributeUseEventId = eId;
             return e;
         }
 
@@ -283,7 +283,7 @@ namespace Dddml.Wms.Domain.AttributeSet
         {
             var e = new AttributeUseStateRemovedDto();
             var eId = NewAttributeUseEventId(attributeId);
-            e.StateEventId = eId;
+            e.AttributeUseEventId = eId;
             return e;
         }
 
@@ -345,9 +345,9 @@ namespace Dddml.Wms.Domain.AttributeSet
 
 
 
-        AttributeSetEventId IAttributeSetStateEvent.StateEventId
+        AttributeSetEventId IAttributeSetStateEvent.AttributeSetEventId
         {
-            get { return this.StateEventId.ToAttributeSetEventId(); }
+            get { return this.AttributeSetEventId.ToAttributeSetEventId(); }
         }
 
         protected AttributeSetStateEventDtoBase()
@@ -356,7 +356,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 
         protected AttributeSetStateEventDtoBase(AttributeSetEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.AttributeSetEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

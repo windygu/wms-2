@@ -16,12 +16,12 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 	public abstract class InventoryPRTriggeredStateEventBase : IInventoryPRTriggeredStateEvent
 	{
 
-		public virtual InventoryPRTriggeredEventId StateEventId { get; set; }
+		public virtual InventoryPRTriggeredEventId InventoryPRTriggeredEventId { get; set; }
 
         public virtual InventoryPRTriggeredId InventoryPRTriggeredId
         {
-            get { return StateEventId.InventoryPRTriggeredId; }
-            set { StateEventId.InventoryPRTriggeredId = value; }
+            get { return InventoryPRTriggeredEventId.InventoryPRTriggeredId; }
+            set { InventoryPRTriggeredEventId.InventoryPRTriggeredId = value; }
         }
 
 		public virtual bool? IsProcessed { get; set; }
@@ -37,7 +37,7 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 		InventoryPRTriggeredEventId IGlobalIdentity<InventoryPRTriggeredEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.InventoryPRTriggeredEventId;
 			}
 		}
 
@@ -80,7 +80,7 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 
         protected InventoryPRTriggeredStateEventBase(InventoryPRTriggeredEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.InventoryPRTriggeredEventId = stateEventId;
         }
 
 

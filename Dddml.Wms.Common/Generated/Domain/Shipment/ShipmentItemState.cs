@@ -296,7 +296,7 @@ namespace Dddml.Wms.Domain.Shipment
             id.Append("[").Append("ShipmentItem|");
 
             var stateEntityIdShipmentId = (this as IGlobalIdentity<ShipmentItemId>).GlobalId.ShipmentId;
-            var eventEntityIdShipmentId = stateEvent.StateEventId.ShipmentId;
+            var eventEntityIdShipmentId = stateEvent.ShipmentItemEventId.ShipmentId;
             if (stateEntityIdShipmentId != eventEntityIdShipmentId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id ShipmentId {0} in state but entity id ShipmentId {1} in event", stateEntityIdShipmentId, eventEntityIdShipmentId);
@@ -304,7 +304,7 @@ namespace Dddml.Wms.Domain.Shipment
             id.Append(stateEntityIdShipmentId).Append(",");
 
             var stateEntityIdShipmentItemSeqId = (this as IGlobalIdentity<ShipmentItemId>).GlobalId.ShipmentItemSeqId;
-            var eventEntityIdShipmentItemSeqId = stateEvent.StateEventId.ShipmentItemSeqId;
+            var eventEntityIdShipmentItemSeqId = stateEvent.ShipmentItemEventId.ShipmentItemSeqId;
             if (stateEntityIdShipmentItemSeqId != eventEntityIdShipmentItemSeqId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id ShipmentItemSeqId {0} in state but entity id ShipmentItemSeqId {1} in event", stateEntityIdShipmentItemSeqId, eventEntityIdShipmentItemSeqId);

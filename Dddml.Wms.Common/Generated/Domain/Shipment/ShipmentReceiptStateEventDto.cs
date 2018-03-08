@@ -15,25 +15,25 @@ namespace Dddml.Wms.Domain.Shipment
 	public abstract class ShipmentReceiptStateEventDtoBase : IStateEventDto, IShipmentReceiptStateCreated, IShipmentReceiptStateMergePatched
 	{
 
-        private ShipmentReceiptEventIdDto _stateEventId;
+        private ShipmentReceiptEventIdDto _shipmentReceiptEventId;
 
-		protected internal virtual ShipmentReceiptEventIdDto StateEventId 
+		protected internal virtual ShipmentReceiptEventIdDto ShipmentReceiptEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new ShipmentReceiptEventIdDto(); }
-                return _stateEventId;
+                if (_shipmentReceiptEventId == null) { _shipmentReceiptEventId = new ShipmentReceiptEventIdDto(); }
+                return _shipmentReceiptEventId;
             }
             set
             {
-                _stateEventId = value;
+                _shipmentReceiptEventId = value;
             }
         }
 
         public virtual string ReceiptSeqId
         {
-            get { return StateEventId.ReceiptSeqId; }
-            set { StateEventId.ReceiptSeqId = value; }
+            get { return ShipmentReceiptEventId.ReceiptSeqId; }
+            set { ShipmentReceiptEventId.ReceiptSeqId = value; }
         }
 
 		public virtual string ProductId { get; set; }
@@ -73,7 +73,7 @@ namespace Dddml.Wms.Domain.Shipment
 		ShipmentReceiptEventId IGlobalIdentity<ShipmentReceiptEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToShipmentReceiptEventId();
+				return this.ShipmentReceiptEventId.ToShipmentReceiptEventId();
 			}
 		}
 
@@ -359,9 +359,9 @@ namespace Dddml.Wms.Domain.Shipment
 		}
 
 
-        ShipmentReceiptEventId IShipmentReceiptStateEvent.StateEventId
+        ShipmentReceiptEventId IShipmentReceiptStateEvent.ShipmentReceiptEventId
         {
-            get { return this.StateEventId.ToShipmentReceiptEventId(); }
+            get { return this.ShipmentReceiptEventId.ToShipmentReceiptEventId(); }
         }
 
         protected ShipmentReceiptStateEventDtoBase()
@@ -370,7 +370,7 @@ namespace Dddml.Wms.Domain.Shipment
 
         protected ShipmentReceiptStateEventDtoBase(ShipmentReceiptEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.ShipmentReceiptEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

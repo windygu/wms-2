@@ -16,12 +16,12 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 	public abstract class UserPermissionMvoStateEventBase : IUserPermissionMvoStateEvent
 	{
 
-		public virtual UserPermissionMvoEventId StateEventId { get; set; }
+		public virtual UserPermissionMvoEventId UserPermissionMvoEventId { get; set; }
 
         public virtual UserPermissionId UserPermissionId
         {
-            get { return StateEventId.UserPermissionId; }
-            set { StateEventId.UserPermissionId = value; }
+            get { return UserPermissionMvoEventId.UserPermissionId; }
+            set { UserPermissionMvoEventId.UserPermissionId = value; }
         }
 
 		public virtual long? Version { get; set; }
@@ -73,7 +73,7 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 		UserPermissionMvoEventId IGlobalIdentity<UserPermissionMvoEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.UserPermissionMvoEventId;
 			}
 		}
 
@@ -116,7 +116,7 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 
         protected UserPermissionMvoStateEventBase(UserPermissionMvoEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.UserPermissionMvoEventId = stateEventId;
         }
 
 

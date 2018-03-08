@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 	public abstract class ProductCategoryMemberStateEventBase : IProductCategoryMemberStateEvent
 	{
 
-		public virtual ProductCategoryMemberEventId StateEventId { get; set; }
+		public virtual ProductCategoryMemberEventId ProductCategoryMemberEventId { get; set; }
 
         public virtual ProductCategoryMemberId ProductCategoryMemberId
         {
-            get { return StateEventId.ProductCategoryMemberId; }
-            set { StateEventId.ProductCategoryMemberId = value; }
+            get { return ProductCategoryMemberEventId.ProductCategoryMemberId; }
+            set { ProductCategoryMemberEventId.ProductCategoryMemberId = value; }
         }
 
 		public virtual DateTime? ThruDate { get; set; }
@@ -44,7 +44,7 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 		ProductCategoryMemberEventId IGlobalIdentity<ProductCategoryMemberEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.ProductCategoryMemberEventId;
 			}
 		}
 
@@ -87,7 +87,7 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 
         protected ProductCategoryMemberStateEventBase(ProductCategoryMemberEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.ProductCategoryMemberEventId = stateEventId;
         }
 
 

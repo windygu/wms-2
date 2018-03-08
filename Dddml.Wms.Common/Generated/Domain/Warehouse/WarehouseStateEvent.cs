@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.Warehouse
 	public abstract class WarehouseStateEventBase : IWarehouseStateEvent
 	{
 
-		public virtual WarehouseEventId StateEventId { get; set; }
+		public virtual WarehouseEventId WarehouseEventId { get; set; }
 
         public virtual string WarehouseId
         {
-            get { return StateEventId.WarehouseId; }
-            set { StateEventId.WarehouseId = value; }
+            get { return WarehouseEventId.WarehouseId; }
+            set { WarehouseEventId.WarehouseId = value; }
         }
 
 		public virtual string WarehouseName { get; set; }
@@ -42,7 +42,7 @@ namespace Dddml.Wms.Domain.Warehouse
 		WarehouseEventId IGlobalIdentity<WarehouseEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.WarehouseEventId;
 			}
 		}
 
@@ -85,7 +85,7 @@ namespace Dddml.Wms.Domain.Warehouse
 
         protected WarehouseStateEventBase(WarehouseEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.WarehouseEventId = stateEventId;
         }
 
 

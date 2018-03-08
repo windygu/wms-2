@@ -299,7 +299,7 @@ public abstract class AbstractInventoryItemEntryMvoState implements InventoryIte
     public AbstractInventoryItemEntryMvoState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setInventoryItemEntryId(((InventoryItemEntryMvoStateEvent) events.get(0)).getStateEventId().getInventoryItemEntryId());
+            this.setInventoryItemEntryId(((InventoryItemEntryMvoStateEvent) events.get(0)).getInventoryItemEntryMvoEventId().getInventoryItemEntryId());
             for (Event e : events) {
                 mutate(e);
                 this.setInventoryItemVersion(this.getInventoryItemVersion() + 1);
@@ -552,16 +552,16 @@ public abstract class AbstractInventoryItemEntryMvoState implements InventoryIte
     protected void throwOnWrongEvent(InventoryItemEntryMvoStateEvent stateEvent)
     {
         InventoryItemEntryId stateEntityId = this.getInventoryItemEntryId(); // Aggregate Id
-        InventoryItemEntryId eventEntityId = stateEvent.getStateEventId().getInventoryItemEntryId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        InventoryItemEntryId eventEntityId = stateEvent.getInventoryItemEntryMvoEventId().getInventoryItemEntryId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getInventoryItemVersion();
-        Long eventVersion = stateEvent.getStateEventId().getInventoryItemVersion();// Aggregate Version
+        Long eventVersion = stateEvent.getInventoryItemEntryMvoEventId().getInventoryItemVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getStateEventId().getInventoryItemVersion() == null");
+            throw new NullPointerException("stateEvent.getInventoryItemEntryMvoEventId().getInventoryItemVersion() == null");
         }
         if (!(stateVersion == null && eventVersion.equals(InventoryItemEntryMvoState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
         {

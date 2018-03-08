@@ -13,7 +13,7 @@ namespace Dddml.Wms.Domain.User
 {
 	public interface IUserStateEvent : IEvent, IStateEventDto, IGlobalIdentity<UserEventId>, ICreated<string>
 	{
-		UserEventId StateEventId { get; }
+		UserEventId UserEventId { get; }
 
         bool ReadOnly { get; set; }
 

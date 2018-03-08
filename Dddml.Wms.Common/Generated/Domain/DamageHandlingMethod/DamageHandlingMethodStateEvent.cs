@@ -15,12 +15,12 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 	public abstract class DamageHandlingMethodStateEventBase : IDamageHandlingMethodStateEvent
 	{
 
-		public virtual DamageHandlingMethodEventId StateEventId { get; set; }
+		public virtual DamageHandlingMethodEventId DamageHandlingMethodEventId { get; set; }
 
         public virtual string DamageHandlingMethodId
         {
-            get { return StateEventId.DamageHandlingMethodId; }
-            set { StateEventId.DamageHandlingMethodId = value; }
+            get { return DamageHandlingMethodEventId.DamageHandlingMethodId; }
+            set { DamageHandlingMethodEventId.DamageHandlingMethodId = value; }
         }
 
 		public virtual string Description { get; set; }
@@ -40,7 +40,7 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 		DamageHandlingMethodEventId IGlobalIdentity<DamageHandlingMethodEventId>.GlobalId {
 			get
 			{
-				return this.StateEventId;
+				return this.DamageHandlingMethodEventId;
 			}
 		}
 
@@ -83,7 +83,7 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 
         protected DamageHandlingMethodStateEventBase(DamageHandlingMethodEventId stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.DamageHandlingMethodEventId = stateEventId;
         }
 
 

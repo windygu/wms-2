@@ -35,17 +35,17 @@ public class HibernateShipmentReceiptMvoEventStore extends AbstractHibernateEven
         }
         ShipmentReceiptId idObj = (ShipmentReceiptId) eventStoreAggregateId.getId();
         Criteria criteria = getCurrentSession().createCriteria(AbstractShipmentReceiptMvoStateEvent.class);
-        criteria.add(Restrictions.eq("stateEventId.shipmentReceiptIdShipmentId", idObj.getShipmentId()));
-        criteria.add(Restrictions.eq("stateEventId.shipmentReceiptIdReceiptSeqId", idObj.getReceiptSeqId()));
-        criteria.add(Restrictions.le("stateEventId.shipmentVersion", version));
-        criteria.addOrder(Order.asc("stateEventId.shipmentVersion"));
+        criteria.add(Restrictions.eq("shipmentReceiptMvoEventId.shipmentReceiptIdShipmentId", idObj.getShipmentId()));
+        criteria.add(Restrictions.eq("shipmentReceiptMvoEventId.shipmentReceiptIdReceiptSeqId", idObj.getReceiptSeqId()));
+        criteria.add(Restrictions.le("shipmentReceiptMvoEventId.shipmentVersion", version));
+        criteria.addOrder(Order.asc("shipmentReceiptMvoEventId.shipmentVersion"));
         List es = criteria.list();
         for (Object e : es) {
             ((AbstractShipmentReceiptMvoStateEvent) e).setStateEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractShipmentReceiptMvoStateEvent) es.get(es.size() - 1)).getStateEventId().getShipmentVersion());
+            eventStream.setSteamVersion(((AbstractShipmentReceiptMvoStateEvent) es.get(es.size() - 1)).getShipmentReceiptMvoEventId().getShipmentVersion());
         } else {
             //todo?
         }

@@ -10,22 +10,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractPhysicalInventoryLineStateEvent extends AbstractStateEvent implements PhysicalInventoryLineStateEvent 
 {
-    private PhysicalInventoryLineEventId stateEventId;
+    private PhysicalInventoryLineEventId physicalInventoryLineEventId;
 
-    public PhysicalInventoryLineEventId getStateEventId() {
-        return this.stateEventId;
+    public PhysicalInventoryLineEventId getPhysicalInventoryLineEventId() {
+        return this.physicalInventoryLineEventId;
     }
 
-    public void setStateEventId(PhysicalInventoryLineEventId eventId) {
-        this.stateEventId = eventId;
+    public void setPhysicalInventoryLineEventId(PhysicalInventoryLineEventId eventId) {
+        this.physicalInventoryLineEventId = eventId;
     }
     
     public InventoryItemId getInventoryItemId() {
-        return getStateEventId().getInventoryItemId();
+        return getPhysicalInventoryLineEventId().getInventoryItemId();
     }
 
     public void setInventoryItemId(InventoryItemId inventoryItemId) {
-        getStateEventId().setInventoryItemId(inventoryItemId);
+        getPhysicalInventoryLineEventId().setInventoryItemId(inventoryItemId);
     }
 
     private boolean stateEventReadOnly;
@@ -145,7 +145,7 @@ public abstract class AbstractPhysicalInventoryLineStateEvent extends AbstractSt
     }
 
     protected AbstractPhysicalInventoryLineStateEvent(PhysicalInventoryLineEventId eventId) {
-        this.stateEventId = eventId;
+        this.physicalInventoryLineEventId = eventId;
     }
 
 

@@ -15,31 +15,31 @@ namespace Dddml.Wms.Domain.Product
 	public abstract class ProductStateEventDtoBase : IStateEventDto, IProductStateCreated, IProductStateMergePatched
 	{
 
-        private ProductEventIdDto _stateEventId;
+        private ProductEventIdDto _productEventId;
 
-		protected internal virtual ProductEventIdDto StateEventId 
+		protected internal virtual ProductEventIdDto ProductEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new ProductEventIdDto(); }
-                return _stateEventId;
+                if (_productEventId == null) { _productEventId = new ProductEventIdDto(); }
+                return _productEventId;
             }
             set
             {
-                _stateEventId = value;
+                _productEventId = value;
             }
         }
 
         public virtual string ProductId
         {
-            get { return StateEventId.ProductId; }
-            set { StateEventId.ProductId = value; }
+            get { return ProductEventId.ProductId; }
+            set { ProductEventId.ProductId = value; }
         }
 
         public virtual long Version
         {
-            get { return StateEventId.Version; }
-            set { StateEventId.Version = value; }
+            get { return ProductEventId.Version; }
+            set { ProductEventId.Version = value; }
         }
 
 		public virtual string ProductTypeId { get; set; }
@@ -175,7 +175,7 @@ namespace Dddml.Wms.Domain.Product
 		ProductEventId IGlobalIdentity<ProductEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToProductEventId();
+				return this.ProductEventId.ToProductEventId();
 			}
 		}
 
@@ -1371,9 +1371,9 @@ namespace Dddml.Wms.Domain.Product
 		}
 
 
-        ProductEventId IProductStateEvent.StateEventId
+        ProductEventId IProductStateEvent.ProductEventId
         {
-            get { return this.StateEventId.ToProductEventId(); }
+            get { return this.ProductEventId.ToProductEventId(); }
         }
 
         protected ProductStateEventDtoBase()
@@ -1382,7 +1382,7 @@ namespace Dddml.Wms.Domain.Product
 
         protected ProductStateEventDtoBase(ProductEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.ProductEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

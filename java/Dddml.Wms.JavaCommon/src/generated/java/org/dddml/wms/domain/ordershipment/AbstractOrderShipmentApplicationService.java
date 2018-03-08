@@ -134,7 +134,7 @@ public abstract class AbstractOrderShipmentApplicationService implements OrderSh
     }
 
     public void initialize(OrderShipmentStateEvent.OrderShipmentStateCreated stateCreated) {
-        OrderShipmentId aggregateId = stateCreated.getStateEventId().getOrderShipmentId();
+        OrderShipmentId aggregateId = stateCreated.getOrderShipmentEventId().getOrderShipmentId();
         OrderShipmentState state = new AbstractOrderShipmentState.SimpleOrderShipmentState();
         state.setOrderShipmentId(aggregateId);
 
@@ -142,7 +142,7 @@ public abstract class AbstractOrderShipmentApplicationService implements OrderSh
         ((AbstractOrderShipmentAggregate) aggregate).apply(stateCreated);
 
         EventStoreAggregateId eventStoreAggregateId = toEventStoreAggregateId(aggregateId);
-        persist(eventStoreAggregateId, stateCreated.getStateEventId().getVersion(), aggregate, state);
+        persist(eventStoreAggregateId, stateCreated.getOrderShipmentEventId().getVersion(), aggregate, state);
     }
 
     protected boolean isRepeatedCommand(OrderShipmentCommand command, EventStoreAggregateId eventStoreAggregateId, OrderShipmentState state)

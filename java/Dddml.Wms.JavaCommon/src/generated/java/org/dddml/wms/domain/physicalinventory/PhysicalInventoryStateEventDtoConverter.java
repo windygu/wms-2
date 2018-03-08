@@ -23,7 +23,7 @@ public class PhysicalInventoryStateEventDtoConverter {
 
     public PhysicalInventoryStateEventDto.PhysicalInventoryStateCreatedDto toPhysicalInventoryStateCreatedDto(PhysicalInventoryStateEvent.PhysicalInventoryStateCreated e) {
         PhysicalInventoryStateEventDto.PhysicalInventoryStateCreatedDto dto = new PhysicalInventoryStateEventDto.PhysicalInventoryStateCreatedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setPhysicalInventoryEventId(e.getPhysicalInventoryEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
@@ -54,7 +54,7 @@ public class PhysicalInventoryStateEventDtoConverter {
 
     public PhysicalInventoryStateEventDto.PhysicalInventoryStateMergePatchedDto toPhysicalInventoryStateMergePatchedDto(PhysicalInventoryStateEvent.PhysicalInventoryStateMergePatched e) {
         PhysicalInventoryStateEventDto.PhysicalInventoryStateMergePatchedDto dto = new PhysicalInventoryStateEventDto.PhysicalInventoryStateMergePatchedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setPhysicalInventoryEventId(e.getPhysicalInventoryEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());

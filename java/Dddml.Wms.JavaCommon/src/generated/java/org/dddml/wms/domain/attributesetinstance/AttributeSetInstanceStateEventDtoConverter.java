@@ -19,7 +19,7 @@ public class AttributeSetInstanceStateEventDtoConverter {
 
     public AttributeSetInstanceStateEventDto.AttributeSetInstanceStateCreatedDto toAttributeSetInstanceStateCreatedDto(AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated e) {
         AttributeSetInstanceStateEventDto.AttributeSetInstanceStateCreatedDto dto = new AttributeSetInstanceStateEventDto.AttributeSetInstanceStateCreatedDto();
-        dto.setStateEventId(e.getStateEventId());
+        dto.setAttributeSetInstanceEventId(e.getAttributeSetInstanceEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());

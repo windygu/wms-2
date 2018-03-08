@@ -13,7 +13,7 @@ namespace Dddml.Wms.Domain.Product
 {
 	public interface IProductStateEvent : IEvent, IStateEventDto, IGlobalIdentity<ProductEventId>, ICreated<string>
 	{
-		ProductEventId StateEventId { get; }
+		ProductEventId ProductEventId { get; }
 
         bool ReadOnly { get; set; }
 

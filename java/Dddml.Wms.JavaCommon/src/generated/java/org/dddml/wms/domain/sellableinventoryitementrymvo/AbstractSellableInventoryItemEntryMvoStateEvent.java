@@ -11,22 +11,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractSellableInventoryItemEntryMvoStateEvent extends AbstractStateEvent implements SellableInventoryItemEntryMvoStateEvent 
 {
-    private SellableInventoryItemEntryMvoEventId stateEventId;
+    private SellableInventoryItemEntryMvoEventId sellableInventoryItemEntryMvoEventId;
 
-    public SellableInventoryItemEntryMvoEventId getStateEventId() {
-        return this.stateEventId;
+    public SellableInventoryItemEntryMvoEventId getSellableInventoryItemEntryMvoEventId() {
+        return this.sellableInventoryItemEntryMvoEventId;
     }
 
-    public void setStateEventId(SellableInventoryItemEntryMvoEventId eventId) {
-        this.stateEventId = eventId;
+    public void setSellableInventoryItemEntryMvoEventId(SellableInventoryItemEntryMvoEventId eventId) {
+        this.sellableInventoryItemEntryMvoEventId = eventId;
     }
     
     public SellableInventoryItemEntryId getSellableInventoryItemEntryId() {
-        return getStateEventId().getSellableInventoryItemEntryId();
+        return getSellableInventoryItemEntryMvoEventId().getSellableInventoryItemEntryId();
     }
 
     public void setSellableInventoryItemEntryId(SellableInventoryItemEntryId sellableInventoryItemEntryId) {
-        getStateEventId().setSellableInventoryItemEntryId(sellableInventoryItemEntryId);
+        getSellableInventoryItemEntryMvoEventId().setSellableInventoryItemEntryId(sellableInventoryItemEntryId);
     }
 
     private boolean stateEventReadOnly;
@@ -170,7 +170,7 @@ public abstract class AbstractSellableInventoryItemEntryMvoStateEvent extends Ab
     }
 
     protected AbstractSellableInventoryItemEntryMvoStateEvent(SellableInventoryItemEntryMvoEventId eventId) {
-        this.stateEventId = eventId;
+        this.sellableInventoryItemEntryMvoEventId = eventId;
     }
 
 

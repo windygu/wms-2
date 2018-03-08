@@ -39,8 +39,8 @@ public class HibernateMovementConfirmationLineStateEventDao implements MovementC
     {
         Criteria criteria = getCurrentSession().createCriteria(AbstractMovementConfirmationLineStateEvent.class);
         Junction partIdCondition = Restrictions.conjunction()
-            .add(Restrictions.eq("stateEventId.movementConfirmationDocumentNumber", movementConfirmationEventId.getDocumentNumber()))
-            .add(Restrictions.eq("stateEventId.movementConfirmationVersion", movementConfirmationEventId.getVersion()))
+            .add(Restrictions.eq("movementConfirmationLineEventId.movementConfirmationDocumentNumber", movementConfirmationEventId.getDocumentNumber()))
+            .add(Restrictions.eq("movementConfirmationLineEventId.movementConfirmationVersion", movementConfirmationEventId.getVersion()))
             ;
         return criteria.add(partIdCondition).list();
     }

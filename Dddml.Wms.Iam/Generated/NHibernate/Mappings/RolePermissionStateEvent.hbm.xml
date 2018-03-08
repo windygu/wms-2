@@ -5,7 +5,7 @@
   
   <class name="RolePermissionStateEventBase" table="RolePermissionStateEvents" mutable="false" abstract="true">
 
-    <composite-id name="StateEventId" class="Dddml.Wms.Domain.RolePermission.RolePermissionEventId">
+    <composite-id name="RolePermissionEventId" class="Dddml.Wms.Domain.RolePermission.RolePermissionEventId">
         <key-property name="IdRoleId" ></key-property>
         <key-property name="IdPermissionId" ></key-property>
         <key-property name="Version" ></key-property>

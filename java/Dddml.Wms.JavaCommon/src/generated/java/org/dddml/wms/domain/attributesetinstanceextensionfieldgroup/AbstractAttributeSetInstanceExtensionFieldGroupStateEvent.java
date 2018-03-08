@@ -8,22 +8,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateEvent extends AbstractStateEvent implements AttributeSetInstanceExtensionFieldGroupStateEvent 
 {
-    private AttributeSetInstanceExtensionFieldGroupEventId stateEventId;
+    private AttributeSetInstanceExtensionFieldGroupEventId attributeSetInstanceExtensionFieldGroupEventId;
 
-    public AttributeSetInstanceExtensionFieldGroupEventId getStateEventId() {
-        return this.stateEventId;
+    public AttributeSetInstanceExtensionFieldGroupEventId getAttributeSetInstanceExtensionFieldGroupEventId() {
+        return this.attributeSetInstanceExtensionFieldGroupEventId;
     }
 
-    public void setStateEventId(AttributeSetInstanceExtensionFieldGroupEventId eventId) {
-        this.stateEventId = eventId;
+    public void setAttributeSetInstanceExtensionFieldGroupEventId(AttributeSetInstanceExtensionFieldGroupEventId eventId) {
+        this.attributeSetInstanceExtensionFieldGroupEventId = eventId;
     }
     
     public String getId() {
-        return getStateEventId().getId();
+        return getAttributeSetInstanceExtensionFieldGroupEventId().getId();
     }
 
     public void setId(String id) {
-        getStateEventId().setId(id);
+        getAttributeSetInstanceExtensionFieldGroupEventId().setId(id);
     }
 
     private boolean stateEventReadOnly;
@@ -143,7 +143,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupStateEvent 
     }
 
     protected AbstractAttributeSetInstanceExtensionFieldGroupStateEvent(AttributeSetInstanceExtensionFieldGroupEventId eventId) {
-        this.stateEventId = eventId;
+        this.attributeSetInstanceExtensionFieldGroupEventId = eventId;
     }
 
 

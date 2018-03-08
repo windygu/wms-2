@@ -59,7 +59,7 @@ namespace Dddml.Wms.Domain.RejectionReason
 
         public virtual void Initialize(IRejectionReasonStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.RejectionReasonId;
+            var aggregateId = stateCreated.RejectionReasonEventId.RejectionReasonId;
             var state = new RejectionReasonState();
             state.RejectionReasonId = aggregateId;
             var aggregate = (RejectionReasonAggregate)GetRejectionReasonAggregate(state);

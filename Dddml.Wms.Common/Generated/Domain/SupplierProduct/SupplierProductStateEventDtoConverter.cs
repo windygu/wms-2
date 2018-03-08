@@ -33,7 +33,7 @@ namespace Dddml.Wms.Domain.SupplierProduct
         public virtual SupplierProductStateCreatedDto ToSupplierProductStateCreatedDto(ISupplierProductStateCreated e)
         {
             var dto = new SupplierProductStateCreatedDto();
-            dto.StateEventId = new SupplierProductEventIdDtoWrapper(e.StateEventId);
+            dto.SupplierProductEventId = new SupplierProductEventIdDtoWrapper(e.SupplierProductEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -57,7 +57,7 @@ namespace Dddml.Wms.Domain.SupplierProduct
         public virtual SupplierProductStateMergePatchedDto ToSupplierProductStateMergePatchedDto(ISupplierProductStateMergePatched e)
         {
             var dto = new SupplierProductStateMergePatchedDto();
-            dto.StateEventId = new SupplierProductEventIdDtoWrapper(e.StateEventId);
+            dto.SupplierProductEventId = new SupplierProductEventIdDtoWrapper(e.SupplierProductEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

@@ -33,7 +33,7 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
         public virtual ProductCategoryMemberStateCreatedDto ToProductCategoryMemberStateCreatedDto(IProductCategoryMemberStateCreated e)
         {
             var dto = new ProductCategoryMemberStateCreatedDto();
-            dto.StateEventId = new ProductCategoryMemberEventIdDtoWrapper(e.StateEventId);
+            dto.ProductCategoryMemberEventId = new ProductCategoryMemberEventIdDtoWrapper(e.ProductCategoryMemberEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -48,7 +48,7 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
         public virtual ProductCategoryMemberStateMergePatchedDto ToProductCategoryMemberStateMergePatchedDto(IProductCategoryMemberStateMergePatched e)
         {
             var dto = new ProductCategoryMemberStateMergePatchedDto();
-            dto.StateEventId = new ProductCategoryMemberEventIdDtoWrapper(e.StateEventId);
+            dto.ProductCategoryMemberEventId = new ProductCategoryMemberEventIdDtoWrapper(e.ProductCategoryMemberEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

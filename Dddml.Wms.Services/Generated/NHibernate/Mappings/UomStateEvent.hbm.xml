@@ -5,7 +5,7 @@
   
   <class name="UomStateEventBase" table="UomStateEvents" mutable="false" abstract="true">
 
-    <composite-id name="StateEventId" class="Dddml.Wms.Domain.Uom.UomEventId">
+    <composite-id name="UomEventId" class="Dddml.Wms.Domain.Uom.UomEventId">
         <key-property name="UomId" ><column name="UomId" sql-type="VARCHAR(20)" /></key-property>
         <key-property name="Version" ></key-property>
     </composite-id>

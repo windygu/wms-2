@@ -17,31 +17,31 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 	public abstract class SellableInventoryItemStateEventDtoBase : IStateEventDto, ISellableInventoryItemStateCreated, ISellableInventoryItemStateMergePatched
 	{
 
-        private SellableInventoryItemEventIdDto _stateEventId;
+        private SellableInventoryItemEventIdDto _sellableInventoryItemEventId;
 
-		protected internal virtual SellableInventoryItemEventIdDto StateEventId 
+		protected internal virtual SellableInventoryItemEventIdDto SellableInventoryItemEventId 
         {
             get 
             {
-                if (_stateEventId == null) { _stateEventId = new SellableInventoryItemEventIdDto(); }
-                return _stateEventId;
+                if (_sellableInventoryItemEventId == null) { _sellableInventoryItemEventId = new SellableInventoryItemEventIdDto(); }
+                return _sellableInventoryItemEventId;
             }
             set
             {
-                _stateEventId = value;
+                _sellableInventoryItemEventId = value;
             }
         }
 
         public virtual InventoryItemIdDto SellableInventoryItemId
         {
-            get { return StateEventId.SellableInventoryItemId; }
-            set { StateEventId.SellableInventoryItemId = value; }
+            get { return SellableInventoryItemEventId.SellableInventoryItemId; }
+            set { SellableInventoryItemEventId.SellableInventoryItemId = value; }
         }
 
         public virtual long Version
         {
-            get { return StateEventId.Version; }
-            set { StateEventId.Version = value; }
+            get { return SellableInventoryItemEventId.Version; }
+            set { SellableInventoryItemEventId.Version = value; }
         }
 
 		public virtual decimal? SellableQuantity { get; set; }
@@ -57,7 +57,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 		SellableInventoryItemEventId IGlobalIdentity<SellableInventoryItemEventId>.GlobalId {
 			get 
 			{
-				return this.StateEventId.ToSellableInventoryItemEventId();
+				return this.SellableInventoryItemEventId.ToSellableInventoryItemEventId();
 			}
 		}
 
@@ -133,9 +133,9 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
         private SellableInventoryItemEntryEventIdDto NewSellableInventoryItemEntryEventId(long entrySeqId)
         {
             var eId = new SellableInventoryItemEntryEventIdDto();
-            eId.SellableInventoryItemId = this.StateEventId.SellableInventoryItemId;
+            eId.SellableInventoryItemId = this.SellableInventoryItemEventId.SellableInventoryItemId;
             eId.EntrySeqId = entrySeqId;
-            eId.SellableInventoryItemVersion = this.StateEventId.Version;
+            eId.SellableInventoryItemVersion = this.SellableInventoryItemEventId.Version;
             return eId;
         }
 
@@ -143,7 +143,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
         {
             var e = new SellableInventoryItemEntryStateCreatedDto();
             var eId = NewSellableInventoryItemEntryEventId(entrySeqId);
-            e.StateEventId = eId;
+            e.SellableInventoryItemEntryEventId = eId;
             return e;
         }
 
@@ -178,9 +178,9 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
         }
 
 
-        SellableInventoryItemEventId ISellableInventoryItemStateEvent.StateEventId
+        SellableInventoryItemEventId ISellableInventoryItemStateEvent.SellableInventoryItemEventId
         {
-            get { return this.StateEventId.ToSellableInventoryItemEventId(); }
+            get { return this.SellableInventoryItemEventId.ToSellableInventoryItemEventId(); }
         }
 
         protected SellableInventoryItemStateEventDtoBase()
@@ -189,7 +189,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
         protected SellableInventoryItemStateEventDtoBase(SellableInventoryItemEventIdDto stateEventId)
         {
-            this.StateEventId = stateEventId;
+            this.SellableInventoryItemEventId = stateEventId;
         }
 
         // //////////////////////////////////////////////////

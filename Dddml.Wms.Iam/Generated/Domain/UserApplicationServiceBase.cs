@@ -59,7 +59,7 @@ namespace Dddml.Wms.Domain.User
 
         public virtual void Initialize(IUserStateCreated stateCreated)
         {
-            var aggregateId = stateCreated.StateEventId.UserId;
+            var aggregateId = stateCreated.UserEventId.UserId;
             var state = new UserState();
             state.UserId = aggregateId;
             var aggregate = (UserAggregate)GetUserAggregate(state);

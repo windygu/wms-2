@@ -132,7 +132,7 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
         {
             if (events != null && events.Count() > 0)
             {
-                this.InventoryPRTriggeredId = ((IInventoryPRTriggeredStateEvent)events.First()).StateEventId.InventoryPRTriggeredId;
+                this.InventoryPRTriggeredId = ((IInventoryPRTriggeredStateEvent)events.First()).InventoryPRTriggeredEventId.InventoryPRTriggeredId;
                 foreach (var e in events)
                 {
                     Mutate(e);
@@ -200,7 +200,7 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
             id.Append("[").Append("InventoryPRTriggered|");
 
             var stateEntityId = this.InventoryPRTriggeredId; // Aggregate Id
-            var eventEntityId = stateEvent.StateEventId.InventoryPRTriggeredId;
+            var eventEntityId = stateEvent.InventoryPRTriggeredEventId.InventoryPRTriggeredId;
             if (stateEntityId != eventEntityId)
             {
                 throw DomainError.Named("mutateWrongEntity", "Entity Id {0} in state but entity id {1} in event", stateEntityId, eventEntityId);
@@ -210,7 +210,7 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
             id.Append("]");
 
             var stateVersion = this.Version;
-            var eventVersion = stateEvent.StateEventId.Version;
+            var eventVersion = stateEvent.InventoryPRTriggeredEventId.Version;
             if (stateVersion != eventVersion)
             {
                 throw OptimisticConcurrencyException.Create(stateVersion, eventVersion, id.ToString());

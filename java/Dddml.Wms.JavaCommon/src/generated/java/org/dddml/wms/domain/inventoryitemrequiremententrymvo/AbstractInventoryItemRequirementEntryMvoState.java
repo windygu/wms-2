@@ -204,7 +204,7 @@ public abstract class AbstractInventoryItemRequirementEntryMvoState implements I
     public AbstractInventoryItemRequirementEntryMvoState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setInventoryItemRequirementEntryId(((InventoryItemRequirementEntryMvoStateEvent) events.get(0)).getStateEventId().getInventoryItemRequirementEntryId());
+            this.setInventoryItemRequirementEntryId(((InventoryItemRequirementEntryMvoStateEvent) events.get(0)).getInventoryItemRequirementEntryMvoEventId().getInventoryItemRequirementEntryId());
             for (Event e : events) {
                 mutate(e);
                 this.setInventoryItemRequirementVersion(this.getInventoryItemRequirementVersion() + 1);
@@ -361,16 +361,16 @@ public abstract class AbstractInventoryItemRequirementEntryMvoState implements I
     protected void throwOnWrongEvent(InventoryItemRequirementEntryMvoStateEvent stateEvent)
     {
         InventoryItemRequirementEntryId stateEntityId = this.getInventoryItemRequirementEntryId(); // Aggregate Id
-        InventoryItemRequirementEntryId eventEntityId = stateEvent.getStateEventId().getInventoryItemRequirementEntryId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        InventoryItemRequirementEntryId eventEntityId = stateEvent.getInventoryItemRequirementEntryMvoEventId().getInventoryItemRequirementEntryId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getInventoryItemRequirementVersion();
-        Long eventVersion = stateEvent.getStateEventId().getInventoryItemRequirementVersion();// Aggregate Version
+        Long eventVersion = stateEvent.getInventoryItemRequirementEntryMvoEventId().getInventoryItemRequirementVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getStateEventId().getInventoryItemRequirementVersion() == null");
+            throw new NullPointerException("stateEvent.getInventoryItemRequirementEntryMvoEventId().getInventoryItemRequirementVersion() == null");
         }
         if (!(stateVersion == null && eventVersion.equals(InventoryItemRequirementEntryMvoState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
         {

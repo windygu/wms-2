@@ -28,7 +28,7 @@ namespace Dddml.Wms.Domain.InventoryItem
         public virtual InventoryItemEntryStateCreatedDto ToInventoryItemEntryStateCreatedDto(IInventoryItemEntryStateCreated e)
         {
             var dto = new InventoryItemEntryStateCreatedDto();
-            dto.StateEventId = new InventoryItemEntryEventIdDtoWrapper(e.StateEventId);
+            dto.InventoryItemEntryEventId = new InventoryItemEntryEventIdDtoWrapper(e.InventoryItemEntryEventId);
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;

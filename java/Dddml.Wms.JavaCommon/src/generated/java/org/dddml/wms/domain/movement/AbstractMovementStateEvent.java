@@ -9,22 +9,22 @@ import org.dddml.wms.domain.AbstractStateEvent;
 
 public abstract class AbstractMovementStateEvent extends AbstractStateEvent implements MovementStateEvent 
 {
-    private MovementEventId stateEventId;
+    private MovementEventId movementEventId;
 
-    public MovementEventId getStateEventId() {
-        return this.stateEventId;
+    public MovementEventId getMovementEventId() {
+        return this.movementEventId;
     }
 
-    public void setStateEventId(MovementEventId eventId) {
-        this.stateEventId = eventId;
+    public void setMovementEventId(MovementEventId eventId) {
+        this.movementEventId = eventId;
     }
     
     public String getDocumentNumber() {
-        return getStateEventId().getDocumentNumber();
+        return getMovementEventId().getDocumentNumber();
     }
 
     public void setDocumentNumber(String documentNumber) {
-        getStateEventId().setDocumentNumber(documentNumber);
+        getMovementEventId().setDocumentNumber(documentNumber);
     }
 
     private boolean stateEventReadOnly;
@@ -324,7 +324,7 @@ public abstract class AbstractMovementStateEvent extends AbstractStateEvent impl
     }
 
     protected AbstractMovementStateEvent(MovementEventId eventId) {
-        this.stateEventId = eventId;
+        this.movementEventId = eventId;
     }
 
     protected MovementLineStateEventDao getMovementLineStateEventDao() {
@@ -333,9 +333,9 @@ public abstract class AbstractMovementStateEvent extends AbstractStateEvent impl
 
     protected MovementLineEventId newMovementLineEventId(String lineNumber)
     {
-        MovementLineEventId eventId = new MovementLineEventId(this.getStateEventId().getDocumentNumber(), 
+        MovementLineEventId eventId = new MovementLineEventId(this.getMovementEventId().getDocumentNumber(), 
             lineNumber, 
-            this.getStateEventId().getVersion());
+            this.getMovementEventId().getVersion());
         return eventId;
     }
 
@@ -346,10 +346,10 @@ public abstract class AbstractMovementStateEvent extends AbstractStateEvent impl
 
     public static void throwOnInconsistentEventIds(MovementStateEvent oe, MovementLineStateEvent e)
     {
-        if (!oe.getStateEventId().getDocumentNumber().equals(e.getStateEventId().getMovementDocumentNumber()))
+        if (!oe.getMovementEventId().getDocumentNumber().equals(e.getMovementLineEventId().getMovementDocumentNumber()))
         { 
             throw DomainError.named("inconsistentEventIds", "Outer Id DocumentNumber %1$s but inner id MovementDocumentNumber %2$s", 
-                oe.getStateEventId().getDocumentNumber(), e.getStateEventId().getMovementDocumentNumber());
+                oe.getMovementEventId().getDocumentNumber(), e.getMovementLineEventId().getMovementDocumentNumber());
         }
     }
 
@@ -398,7 +398,7 @@ public abstract class AbstractMovementStateEvent extends AbstractStateEvent impl
                 if (readOnlyMovementLineEvents != null) { return readOnlyMovementLineEvents; }
                 MovementLineStateEventDao eventDao = getMovementLineStateEventDao();
                 List<MovementLineStateEvent.MovementLineStateCreated> eL = new ArrayList<MovementLineStateEvent.MovementLineStateCreated>();
-                for (MovementLineStateEvent e : eventDao.findByMovementEventId(this.getStateEventId()))
+                for (MovementLineStateEvent e : eventDao.findByMovementEventId(this.getMovementEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((MovementLineStateEvent.MovementLineStateCreated)e);
@@ -422,7 +422,7 @@ public abstract class AbstractMovementStateEvent extends AbstractStateEvent impl
         public void addMovementLineEvent(MovementLineStateEvent.MovementLineStateCreated e)
         {
             throwOnInconsistentEventIds(e);
-            this.movementLineEvents.put(e.getStateEventId(), e);
+            this.movementLineEvents.put(e.getMovementLineEventId(), e);
         }
 
         public void save()
@@ -673,7 +673,7 @@ public abstract class AbstractMovementStateEvent extends AbstractStateEvent impl
                 if (readOnlyMovementLineEvents != null) { return readOnlyMovementLineEvents; }
                 MovementLineStateEventDao eventDao = getMovementLineStateEventDao();
                 List<MovementLineStateEvent> eL = new ArrayList<MovementLineStateEvent>();
-                for (MovementLineStateEvent e : eventDao.findByMovementEventId(this.getStateEventId()))
+                for (MovementLineStateEvent e : eventDao.findByMovementEventId(this.getMovementEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((MovementLineStateEvent)e);
@@ -697,7 +697,7 @@ public abstract class AbstractMovementStateEvent extends AbstractStateEvent impl
         public void addMovementLineEvent(MovementLineStateEvent e)
         {
             throwOnInconsistentEventIds(e);
-            this.movementLineEvents.put(e.getStateEventId(), e);
+            this.movementLineEvents.put(e.getMovementLineEventId(), e);
         }
 
         public void save()
@@ -739,7 +739,7 @@ public abstract class AbstractMovementStateEvent extends AbstractStateEvent impl
                 if (readOnlyMovementLineEvents != null) { return readOnlyMovementLineEvents; }
                 MovementLineStateEventDao eventDao = getMovementLineStateEventDao();
                 List<MovementLineStateEvent.MovementLineStateRemoved> eL = new ArrayList<MovementLineStateEvent.MovementLineStateRemoved>();
-                for (MovementLineStateEvent e : eventDao.findByMovementEventId(this.getStateEventId()))
+                for (MovementLineStateEvent e : eventDao.findByMovementEventId(this.getMovementEventId()))
                 {
                     e.setStateEventReadOnly(true);
                     eL.add((MovementLineStateEvent.MovementLineStateRemoved)e);
@@ -763,7 +763,7 @@ public abstract class AbstractMovementStateEvent extends AbstractStateEvent impl
         public void addMovementLineEvent(MovementLineStateEvent.MovementLineStateRemoved e)
         {
             throwOnInconsistentEventIds(e);
-            this.movementLineEvents.put(e.getStateEventId(), e);
+            this.movementLineEvents.put(e.getMovementLineEventId(), e);
         }
 
         public void save()

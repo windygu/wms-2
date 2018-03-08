@@ -5,7 +5,7 @@
   
   <class name="InOutStateEventBase" table="InOutStateEvents" mutable="false" abstract="true">
 
-    <composite-id name="StateEventId" class="Dddml.Wms.Domain.InOut.InOutEventId">
+    <composite-id name="InOutEventId" class="Dddml.Wms.Domain.InOut.InOutEventId">
         <key-property name="DocumentNumber" ><column name="DocumentNumber" length="50" /></key-property>
         <key-property name="Version" ></key-property>
     </composite-id>

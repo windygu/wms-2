@@ -932,7 +932,7 @@ public abstract class AbstractAttributeSetInstanceState implements AttributeSetI
     public AbstractAttributeSetInstanceState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setAttributeSetInstanceId(((AttributeSetInstanceStateEvent) events.get(0)).getStateEventId().getAttributeSetInstanceId());
+            this.setAttributeSetInstanceId(((AttributeSetInstanceStateEvent) events.get(0)).getAttributeSetInstanceEventId().getAttributeSetInstanceId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -1049,16 +1049,16 @@ public abstract class AbstractAttributeSetInstanceState implements AttributeSetI
     protected void throwOnWrongEvent(AttributeSetInstanceStateEvent stateEvent)
     {
         String stateEntityId = this.getAttributeSetInstanceId(); // Aggregate Id
-        String eventEntityId = stateEvent.getStateEventId().getAttributeSetInstanceId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        String eventEntityId = stateEvent.getAttributeSetInstanceEventId().getAttributeSetInstanceId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);
         }
 
         Long stateVersion = this.getVersion();
-        Long eventVersion = stateEvent.getStateEventId().getVersion();// Aggregate Version
+        Long eventVersion = stateEvent.getAttributeSetInstanceEventId().getVersion();// Aggregate Version
         if (eventVersion == null) {
-            throw new NullPointerException("stateEvent.getStateEventId().getVersion() == null");
+            throw new NullPointerException("stateEvent.getAttributeSetInstanceEventId().getVersion() == null");
         }
         if (!(stateVersion == null && eventVersion.equals(AttributeSetInstanceState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
         {

@@ -9,15 +9,15 @@ import org.dddml.wms.domain.AbstractStateEvent;
 public class InOutLineMvoStateEventDto extends AbstractStateEvent
 {
 
-    private InOutLineMvoEventId stateEventId;
+    private InOutLineMvoEventId inOutLineMvoEventId;
 
     InOutLineMvoEventId getStateEventId() {
-        if (stateEventId == null) { stateEventId = new InOutLineMvoEventId(); }
-        return stateEventId;
+        if (inOutLineMvoEventId == null) { inOutLineMvoEventId = new InOutLineMvoEventId(); }
+        return inOutLineMvoEventId;
     }
 
-    void setStateEventId(InOutLineMvoEventId eventId) {
-        this.stateEventId = eventId;
+    void setInOutLineMvoEventId(InOutLineMvoEventId eventId) {
+        this.inOutLineMvoEventId = eventId;
     }
 
     public InOutLineId getInOutLineId() {
