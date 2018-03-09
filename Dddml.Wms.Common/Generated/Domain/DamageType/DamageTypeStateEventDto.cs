@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.DamageType
 	public abstract class DamageTypeStateEventDtoBase : IStateEventDto, IDamageTypeStateCreated, IDamageTypeStateMergePatched, IDamageTypeStateDeleted
 	{
 
-        private DamageTypeEventIdDto _damageTypeEventId;
+        private DamageTypeEventId _damageTypeEventId;
 
-		protected internal virtual DamageTypeEventIdDto DamageTypeEventId 
+		protected internal virtual DamageTypeEventId DamageTypeEventId 
         {
             get 
             {
-                if (_damageTypeEventId == null) { _damageTypeEventId = new DamageTypeEventIdDto(); }
+                if (_damageTypeEventId == null) { _damageTypeEventId = new DamageTypeEventId(); }
                 return _damageTypeEventId;
             }
             set
@@ -61,7 +61,7 @@ namespace Dddml.Wms.Domain.DamageType
 		DamageTypeEventId IGlobalIdentity<DamageTypeEventId>.GlobalId {
 			get 
 			{
-				return this.DamageTypeEventId.ToDamageTypeEventId();
+				return this.DamageTypeEventId;
 			}
 		}
 
@@ -176,14 +176,14 @@ namespace Dddml.Wms.Domain.DamageType
 
         DamageTypeEventId IDamageTypeStateEvent.DamageTypeEventId
         {
-            get { return this.DamageTypeEventId.ToDamageTypeEventId(); }
+            get { return this.DamageTypeEventId; }
         }
 
         protected DamageTypeStateEventDtoBase()
         {
         }
 
-        protected DamageTypeStateEventDtoBase(DamageTypeEventIdDto stateEventId)
+        protected DamageTypeStateEventDtoBase(DamageTypeEventId stateEventId)
         {
             this.DamageTypeEventId = stateEventId;
         }

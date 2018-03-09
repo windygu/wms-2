@@ -40,19 +40,19 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 			return this._state;
 		}
 
-        public UserPermissionIdDto UserPermissionId
-        {
+		public virtual UserPermissionId UserPermissionId
+		{
             get
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("UserPermissionId"))
                 {
-					return (_state.UserPermissionId == null) ? null : new UserPermissionIdDtoWrapper(_state.UserPermissionId);
+                    return _state.UserPermissionId;
                 }
                 return null;
             }
             set
             {
-                _state.UserPermissionId = (value == null) ? null : value.ToUserPermissionId();
+                _state.UserPermissionId = value;
             }
         }
 

@@ -261,7 +261,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = ParseIdString(id.IsNormalized() ? id : id.Normalize());
             if (value.ShipmentItemId == null)
             {
-                value.ShipmentItemId = new ShipmentItemIdDtoWrapper(idObj);
+                value.ShipmentItemId = idObj;
             }
             else if (!((ICreateOrMergePatchOrDeleteShipmentItemMvo)value).ShipmentItemId.Equals(idObj))
             {
@@ -271,10 +271,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static ShipmentItemId ParseIdString(string idString)
         {
-            var formatter = new ShipmentItemIdFlattenedDtoFormatter();
-            var idDto = formatter.Parse(idString);
-            var rId = idDto.ToShipmentItemId();
-            return rId;
+            var formatter = new ValueObjectTextFormatter<ShipmentItemId>();
+            return formatter.Parse(idString);
         }
 
         public static string GetFilterPropertyName(string fieldName)
@@ -339,7 +337,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             foreach (var id in ids)
             {
                 var dto = new ShipmentItemMvoStateDtoWrapper();
-                dto.ShipmentItemId = new ShipmentItemIdDtoWrapper(id);
+                dto.ShipmentItemId = id;
                 states.Add(dto);
             }
             return states;

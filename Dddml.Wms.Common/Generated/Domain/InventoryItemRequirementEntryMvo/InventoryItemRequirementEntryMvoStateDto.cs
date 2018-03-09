@@ -17,8 +17,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 
     public partial class InventoryItemRequirementEntryMvoStateDto : IInventoryItemRequirementEntryMvoStateDto
     {
-
-        public virtual InventoryItemRequirementEntryIdDto InventoryItemRequirementEntryId
+        public virtual InventoryItemRequirementEntryId InventoryItemRequirementEntryId
         {
             get;
             set;
@@ -30,8 +29,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
             set;
         }
 
-
-        public virtual InventoryPRTriggeredIdDto SourceEventId
+        public virtual InventoryPRTriggeredId SourceEventId
         {
             get;
             set;
@@ -106,9 +104,9 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
         public virtual IInventoryItemRequirementEntryMvoState ToInventoryItemRequirementEntryMvoState()
         {
             var state = new InventoryItemRequirementEntryMvoState(true);
-            state.InventoryItemRequirementEntryId = (this.InventoryItemRequirementEntryId == null) ? null : this.InventoryItemRequirementEntryId.ToInventoryItemRequirementEntryId();
+            state.InventoryItemRequirementEntryId = this.InventoryItemRequirementEntryId;
             if (this.Quantity != null && this.Quantity.HasValue) { state.Quantity = this.Quantity.Value; }
-            state.SourceEventId = (this.SourceEventId == null) ? null : this.SourceEventId.ToInventoryPRTriggeredId();
+            state.SourceEventId = this.SourceEventId;
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             if (this.InventoryItemRequirementQuantity != null && this.InventoryItemRequirementQuantity.HasValue) { state.InventoryItemRequirementQuantity = this.InventoryItemRequirementQuantity.Value; }
             state.InventoryItemRequirementCreatedBy = this.InventoryItemRequirementCreatedBy;

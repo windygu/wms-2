@@ -375,9 +375,8 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 
         public static string ToIdString(AttributeAliasId id)
         {
-            var formatter = new AttributeAliasIdFlattenedDtoFormatter();
-            var idDto = new AttributeAliasIdFlattenedDto(id);
-            var idStr = formatter.ToString(idDto);
+            var formatter = (new ValueObjectTextFormatter<AttributeAliasId>());
+            var idStr = formatter.ToString(id);
             return idStr;
         }
 

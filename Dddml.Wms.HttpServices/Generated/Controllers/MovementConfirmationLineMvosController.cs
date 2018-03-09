@@ -274,7 +274,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = ParseIdString(id.IsNormalized() ? id : id.Normalize());
             if (value.MovementConfirmationLineId == null)
             {
-                value.MovementConfirmationLineId = new MovementConfirmationLineIdDtoWrapper(idObj);
+                value.MovementConfirmationLineId = idObj;
             }
             else if (!((ICreateOrMergePatchOrDeleteMovementConfirmationLineMvo)value).MovementConfirmationLineId.Equals(idObj))
             {
@@ -284,10 +284,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static MovementConfirmationLineId ParseIdString(string idString)
         {
-            var formatter = new MovementConfirmationLineIdFlattenedDtoFormatter();
-            var idDto = formatter.Parse(idString);
-            var rId = idDto.ToMovementConfirmationLineId();
-            return rId;
+            var formatter = new ValueObjectTextFormatter<MovementConfirmationLineId>();
+            return formatter.Parse(idString);
         }
 
         public static string GetFilterPropertyName(string fieldName)
@@ -352,7 +350,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             foreach (var id in ids)
             {
                 var dto = new MovementConfirmationLineMvoStateDtoWrapper();
-                dto.MovementConfirmationLineId = new MovementConfirmationLineIdDtoWrapper(id);
+                dto.MovementConfirmationLineId = id;
                 states.Add(dto);
             }
             return states;

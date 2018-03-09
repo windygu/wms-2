@@ -16,8 +16,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
     public partial class AttributeUseMvoStateDto : IAttributeUseMvoStateDto
     {
-
-        public virtual AttributeSetAttributeUseIdDto AttributeSetAttributeUseId
+        public virtual AttributeSetAttributeUseId AttributeSetAttributeUseId
         {
             get;
             set;
@@ -146,7 +145,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
         public virtual IAttributeUseMvoState ToAttributeUseMvoState()
         {
             var state = new AttributeUseMvoState(true);
-            state.AttributeSetAttributeUseId = (this.AttributeSetAttributeUseId == null) ? null : this.AttributeSetAttributeUseId.ToAttributeSetAttributeUseId();
+            state.AttributeSetAttributeUseId = this.AttributeSetAttributeUseId;
             if (this.SequenceNumber != null && this.SequenceNumber.HasValue) { state.SequenceNumber = this.SequenceNumber.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }

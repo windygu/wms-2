@@ -16,13 +16,13 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 	public abstract class UserPermissionMvoStateEventDtoBase : IStateEventDto, IUserPermissionMvoStateCreated, IUserPermissionMvoStateMergePatched, IUserPermissionMvoStateDeleted
 	{
 
-        private UserPermissionMvoEventIdDto _userPermissionMvoEventId;
+        private UserPermissionMvoEventId _userPermissionMvoEventId;
 
-		protected internal virtual UserPermissionMvoEventIdDto UserPermissionMvoEventId 
+		protected internal virtual UserPermissionMvoEventId UserPermissionMvoEventId 
         {
             get 
             {
-                if (_userPermissionMvoEventId == null) { _userPermissionMvoEventId = new UserPermissionMvoEventIdDto(); }
+                if (_userPermissionMvoEventId == null) { _userPermissionMvoEventId = new UserPermissionMvoEventId(); }
                 return _userPermissionMvoEventId;
             }
             set
@@ -31,7 +31,7 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
             }
         }
 
-        public virtual UserPermissionIdDto UserPermissionId
+        public virtual UserPermissionId UserPermissionId
         {
             get { return UserPermissionMvoEventId.UserPermissionId; }
             set { UserPermissionMvoEventId.UserPermissionId = value; }
@@ -92,7 +92,7 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 		UserPermissionMvoEventId IGlobalIdentity<UserPermissionMvoEventId>.GlobalId {
 			get 
 			{
-				return this.UserPermissionMvoEventId.ToUserPermissionMvoEventId();
+				return this.UserPermissionMvoEventId;
 			}
 		}
 
@@ -492,14 +492,14 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 
         UserPermissionMvoEventId IUserPermissionMvoStateEvent.UserPermissionMvoEventId
         {
-            get { return this.UserPermissionMvoEventId.ToUserPermissionMvoEventId(); }
+            get { return this.UserPermissionMvoEventId; }
         }
 
         protected UserPermissionMvoStateEventDtoBase()
         {
         }
 
-        protected UserPermissionMvoStateEventDtoBase(UserPermissionMvoEventIdDto stateEventId)
+        protected UserPermissionMvoStateEventDtoBase(UserPermissionMvoEventId stateEventId)
         {
             this.UserPermissionMvoEventId = stateEventId;
         }

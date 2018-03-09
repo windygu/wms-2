@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.UomType
 	public abstract class UomTypeStateEventDtoBase : IStateEventDto, IUomTypeStateCreated, IUomTypeStateMergePatched, IUomTypeStateDeleted
 	{
 
-        private UomTypeEventIdDto _uomTypeEventId;
+        private UomTypeEventId _uomTypeEventId;
 
-		protected internal virtual UomTypeEventIdDto UomTypeEventId 
+		protected internal virtual UomTypeEventId UomTypeEventId 
         {
             get 
             {
-                if (_uomTypeEventId == null) { _uomTypeEventId = new UomTypeEventIdDto(); }
+                if (_uomTypeEventId == null) { _uomTypeEventId = new UomTypeEventId(); }
                 return _uomTypeEventId;
             }
             set
@@ -61,7 +61,7 @@ namespace Dddml.Wms.Domain.UomType
 		UomTypeEventId IGlobalIdentity<UomTypeEventId>.GlobalId {
 			get 
 			{
-				return this.UomTypeEventId.ToUomTypeEventId();
+				return this.UomTypeEventId;
 			}
 		}
 
@@ -176,14 +176,14 @@ namespace Dddml.Wms.Domain.UomType
 
         UomTypeEventId IUomTypeStateEvent.UomTypeEventId
         {
-            get { return this.UomTypeEventId.ToUomTypeEventId(); }
+            get { return this.UomTypeEventId; }
         }
 
         protected UomTypeStateEventDtoBase()
         {
         }
 
-        protected UomTypeStateEventDtoBase(UomTypeEventIdDto stateEventId)
+        protected UomTypeStateEventDtoBase(UomTypeEventId stateEventId)
         {
             this.UomTypeEventId = stateEventId;
         }

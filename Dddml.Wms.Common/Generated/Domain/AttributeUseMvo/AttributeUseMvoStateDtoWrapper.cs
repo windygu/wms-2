@@ -40,19 +40,19 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 			return this._state;
 		}
 
-        public AttributeSetAttributeUseIdDto AttributeSetAttributeUseId
-        {
+		public virtual AttributeSetAttributeUseId AttributeSetAttributeUseId
+		{
             get
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("AttributeSetAttributeUseId"))
                 {
-					return (_state.AttributeSetAttributeUseId == null) ? null : new AttributeSetAttributeUseIdDtoWrapper(_state.AttributeSetAttributeUseId);
+                    return _state.AttributeSetAttributeUseId;
                 }
                 return null;
             }
             set
             {
-                _state.AttributeSetAttributeUseId = (value == null) ? null : value.ToAttributeSetAttributeUseId();
+                _state.AttributeSetAttributeUseId = value;
             }
         }
 

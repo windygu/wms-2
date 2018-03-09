@@ -52,7 +52,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             set { this.CommandId = value; }
         }
 
-		public virtual InOutLineIdDto InOutLineId { get; set; }
+		public virtual InOutLineId InOutLineId { get; set; }
 
 		public virtual string LocatorId { get; set; }
 
@@ -149,19 +149,6 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 		public virtual DateTime? InOutUpdatedAt { get; set; }
 
 		public virtual bool? InOutActive { get; set; }
-
-
-        InOutLineId IInOutLineMvoCommand.InOutLineId
-        {
-            get 
-            {
-                return this.InOutLineId.ToInOutLineId();
-            }
-            set 
-            {
-                this.InOutLineId = new InOutLineIdDtoWrapper(value);
-            }
-        }
 
 		public virtual bool? IsPropertyLocatorIdRemoved { get; set; }
 

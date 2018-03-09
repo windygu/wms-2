@@ -289,7 +289,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
         public async virtual Task<IInventoryItemRequirementEntryState> GetInventoryItemRequirementEntryAsync(InventoryItemId inventoryItemRequirementId, long entrySeqId)
         {
             var uriParameters = new InventoryItemRequirementEntryUriParameters();
-            uriParameters.InventoryItemRequirementId = (new InventoryItemIdFlattenedDtoFormatter()).ToString(new InventoryItemIdFlattenedDto(inventoryItemRequirementId));
+            uriParameters.InventoryItemRequirementId = ((new ValueObjectTextFormatter<InventoryItemId>())).ToString(inventoryItemRequirementId);
             uriParameters.EntrySeqId = entrySeqId;
 
             var req = new InventoryItemRequirementEntryGetRequest(uriParameters);
@@ -388,9 +388,8 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 
         public static string ToIdString(InventoryItemId id)
         {
-            var formatter = new InventoryItemIdFlattenedDtoFormatter();
-            var idDto = new InventoryItemIdFlattenedDto(id);
-            var idStr = formatter.ToString(idDto);
+            var formatter = (new ValueObjectTextFormatter<InventoryItemId>());
+            var idStr = formatter.ToString(id);
             return idStr;
         }
 

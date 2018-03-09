@@ -52,7 +52,7 @@ namespace Dddml.Wms.Domain.OrderItemMvo
             set { this.CommandId = value; }
         }
 
-		public virtual OrderItemIdDto OrderItemId { get; set; }
+		public virtual OrderItemId OrderItemId { get; set; }
 
 		public virtual string ProductId { get; set; }
 
@@ -185,19 +185,6 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 		public virtual DateTime? OrderUpdatedAt { get; set; }
 
 		public virtual bool? OrderActive { get; set; }
-
-
-        OrderItemId IOrderItemMvoCommand.OrderItemId
-        {
-            get 
-            {
-                return this.OrderItemId.ToOrderItemId();
-            }
-            set 
-            {
-                this.OrderItemId = new OrderItemIdDtoWrapper(value);
-            }
-        }
 
 		public virtual bool? IsPropertyProductIdRemoved { get; set; }
 

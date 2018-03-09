@@ -16,8 +16,7 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 
     public partial class AttributeAliasMvoStateDto : IAttributeAliasMvoStateDto
     {
-
-        public virtual AttributeAliasIdDto AttributeAliasId
+        public virtual AttributeAliasId AttributeAliasId
         {
             get;
             set;
@@ -164,7 +163,7 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
         public virtual IAttributeAliasMvoState ToAttributeAliasMvoState()
         {
             var state = new AttributeAliasMvoState(true);
-            state.AttributeAliasId = (this.AttributeAliasId == null) ? null : this.AttributeAliasId.ToAttributeAliasId();
+            state.AttributeAliasId = this.AttributeAliasId;
             state.Name = this.Name;
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }

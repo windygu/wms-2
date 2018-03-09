@@ -34,12 +34,12 @@ namespace Dddml.Wms.Domain.UserRoleMvo
         #region  Flattened Properties
 
 
-		public virtual string UserRoleIdUserId {
+		protected internal virtual string UserRoleIdUserId {
 			get { return UserRoleId.UserId; }
 			set { UserRoleId.UserId = value; }
 		}
 
-		public virtual string UserRoleIdRoleId {
+		protected internal virtual string UserRoleIdRoleId {
 			get { return UserRoleId.RoleId; }
 			set { UserRoleId.RoleId = value; }
 		}
@@ -103,6 +103,46 @@ namespace Dddml.Wms.Domain.UserRoleMvo
                 + "UserRoleId: " + this.UserRoleId + ", "
                 + "UserVersion: " + this.UserVersion + ", "
                 ;
+        }
+
+        protected internal static readonly string[] FlattenedPropertyNames = new string[] { "UserRoleIdUserId", "UserRoleIdRoleId", "UserVersion" };
+
+        protected internal static readonly Type[] FlattenedPropertyTypes = new Type[] { typeof(string), typeof(string), typeof(long) };
+
+        protected internal static readonly IDictionary<string, Type> FlattenedPropertyTypeDictionary;
+
+        static UserRoleMvoEventId()
+        {
+            var dict = new Dictionary<string, Type>();
+            for (int i = 0; i < FlattenedPropertyNames.Length; i++)
+            {
+                dict.Add(FlattenedPropertyNames[i], FlattenedPropertyTypes[i]);
+            }
+            FlattenedPropertyTypeDictionary = dict;
+        }
+
+        protected internal void ForEachFlattenedProperty(Action<string, object> act)
+        {
+            for (int i = 0; i < FlattenedPropertyNames.Length; i++)
+            {
+                string pn = FlattenedPropertyNames[i];
+                if (Char.IsLower(pn[0])) { pn = Char.ToUpper(pn[0]) + pn.Substring(1); }
+                var m = this.GetType().GetProperty(pn, System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                object pv = m.GetValue(this);
+                act(pn, pv);
+            }
+        }
+
+        protected internal void SetFlattenedPropertyValues(params object[] values)
+        {
+            for (int i = 0; i < FlattenedPropertyNames.Length; i++)
+            {
+                string pn = FlattenedPropertyNames[i];
+                if (Char.IsLower(pn[0])) { pn = Char.ToUpper(pn[0]) + pn.Substring(1); }
+                var v = values[i];
+                var m = this.GetType().GetProperty(pn, System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                m.SetValue(this, v);
+            }
         }
 	}
 

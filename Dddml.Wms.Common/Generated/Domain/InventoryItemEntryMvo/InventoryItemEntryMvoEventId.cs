@@ -34,22 +34,22 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
         #region  Flattened Properties
 
 
-		public virtual string InventoryItemEntryIdInventoryItemIdProductId {
+		protected internal virtual string InventoryItemEntryIdInventoryItemIdProductId {
 			get { return InventoryItemEntryId.InventoryItemId.ProductId; }
 			set { InventoryItemEntryId.InventoryItemId.ProductId = value; }
 		}
 
-		public virtual string InventoryItemEntryIdInventoryItemIdLocatorId {
+		protected internal virtual string InventoryItemEntryIdInventoryItemIdLocatorId {
 			get { return InventoryItemEntryId.InventoryItemId.LocatorId; }
 			set { InventoryItemEntryId.InventoryItemId.LocatorId = value; }
 		}
 
-		public virtual string InventoryItemEntryIdInventoryItemIdAttributeSetInstanceId {
+		protected internal virtual string InventoryItemEntryIdInventoryItemIdAttributeSetInstanceId {
 			get { return InventoryItemEntryId.InventoryItemId.AttributeSetInstanceId; }
 			set { InventoryItemEntryId.InventoryItemId.AttributeSetInstanceId = value; }
 		}
 
-		public virtual long InventoryItemEntryIdEntrySeqId {
+		protected internal virtual long InventoryItemEntryIdEntrySeqId {
 			get { return InventoryItemEntryId.EntrySeqId; }
 			set { InventoryItemEntryId.EntrySeqId = value; }
 		}
@@ -113,6 +113,46 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
                 + "InventoryItemEntryId: " + this.InventoryItemEntryId + ", "
                 + "InventoryItemVersion: " + this.InventoryItemVersion + ", "
                 ;
+        }
+
+        protected internal static readonly string[] FlattenedPropertyNames = new string[] { "InventoryItemEntryIdInventoryItemIdProductId", "InventoryItemEntryIdInventoryItemIdLocatorId", "InventoryItemEntryIdInventoryItemIdAttributeSetInstanceId", "InventoryItemEntryIdEntrySeqId", "InventoryItemVersion" };
+
+        protected internal static readonly Type[] FlattenedPropertyTypes = new Type[] { typeof(string), typeof(string), typeof(string), typeof(long), typeof(long) };
+
+        protected internal static readonly IDictionary<string, Type> FlattenedPropertyTypeDictionary;
+
+        static InventoryItemEntryMvoEventId()
+        {
+            var dict = new Dictionary<string, Type>();
+            for (int i = 0; i < FlattenedPropertyNames.Length; i++)
+            {
+                dict.Add(FlattenedPropertyNames[i], FlattenedPropertyTypes[i]);
+            }
+            FlattenedPropertyTypeDictionary = dict;
+        }
+
+        protected internal void ForEachFlattenedProperty(Action<string, object> act)
+        {
+            for (int i = 0; i < FlattenedPropertyNames.Length; i++)
+            {
+                string pn = FlattenedPropertyNames[i];
+                if (Char.IsLower(pn[0])) { pn = Char.ToUpper(pn[0]) + pn.Substring(1); }
+                var m = this.GetType().GetProperty(pn, System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                object pv = m.GetValue(this);
+                act(pn, pv);
+            }
+        }
+
+        protected internal void SetFlattenedPropertyValues(params object[] values)
+        {
+            for (int i = 0; i < FlattenedPropertyNames.Length; i++)
+            {
+                string pn = FlattenedPropertyNames[i];
+                if (Char.IsLower(pn[0])) { pn = Char.ToUpper(pn[0]) + pn.Substring(1); }
+                var v = values[i];
+                var m = this.GetType().GetProperty(pn, System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                m.SetValue(this, v);
+            }
         }
 	}
 

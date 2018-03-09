@@ -52,7 +52,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
             set { this.CommandId = value; }
         }
 
-		public virtual AttributeValueIdDto AttributeValueId { get; set; }
+		public virtual AttributeValueId AttributeValueId { get; set; }
 
 		public virtual string AttributeValueName { get; set; }
 
@@ -93,19 +93,6 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 		public virtual bool? AttributeActive { get; set; }
 
 		public virtual bool? AttributeDeleted { get; set; }
-
-
-        AttributeValueId IAttributeValueMvoCommand.AttributeValueId
-        {
-            get 
-            {
-                return this.AttributeValueId.ToAttributeValueId();
-            }
-            set 
-            {
-                this.AttributeValueId = new AttributeValueIdDtoWrapper(value);
-            }
-        }
 
 		public virtual bool? IsPropertyAttributeValueNameRemoved { get; set; }
 

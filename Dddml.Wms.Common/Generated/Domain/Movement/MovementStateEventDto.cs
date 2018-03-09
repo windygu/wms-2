@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.Movement
 	public abstract class MovementStateEventDtoBase : IStateEventDto, IMovementStateCreated, IMovementStateMergePatched, IMovementStateDeleted
 	{
 
-        private MovementEventIdDto _movementEventId;
+        private MovementEventId _movementEventId;
 
-		protected internal virtual MovementEventIdDto MovementEventId 
+		protected internal virtual MovementEventId MovementEventId 
         {
             get 
             {
-                if (_movementEventId == null) { _movementEventId = new MovementEventIdDto(); }
+                if (_movementEventId == null) { _movementEventId = new MovementEventId(); }
                 return _movementEventId;
             }
             set
@@ -95,7 +95,7 @@ namespace Dddml.Wms.Domain.Movement
 		MovementEventId IGlobalIdentity<MovementEventId>.GlobalId {
 			get 
 			{
-				return this.MovementEventId.ToMovementEventId();
+				return this.MovementEventId;
 			}
 		}
 
@@ -548,9 +548,9 @@ namespace Dddml.Wms.Domain.Movement
 
 
 
-        private MovementLineEventIdDto NewMovementLineEventId(string lineNumber)
+        private MovementLineEventId NewMovementLineEventId(string lineNumber)
         {
-            var eId = new MovementLineEventIdDto();
+            var eId = new MovementLineEventId();
             eId.MovementDocumentNumber = this.MovementEventId.DocumentNumber;
             eId.LineNumber = lineNumber;
             eId.MovementVersion = this.MovementEventId.Version;
@@ -641,14 +641,14 @@ namespace Dddml.Wms.Domain.Movement
 
         MovementEventId IMovementStateEvent.MovementEventId
         {
-            get { return this.MovementEventId.ToMovementEventId(); }
+            get { return this.MovementEventId; }
         }
 
         protected MovementStateEventDtoBase()
         {
         }
 
-        protected MovementStateEventDtoBase(MovementEventIdDto stateEventId)
+        protected MovementStateEventDtoBase(MovementEventId stateEventId)
         {
             this.MovementEventId = stateEventId;
         }

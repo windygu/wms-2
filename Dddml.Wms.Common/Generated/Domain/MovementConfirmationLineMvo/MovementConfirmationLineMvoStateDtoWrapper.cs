@@ -40,19 +40,19 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 			return this._state;
 		}
 
-        public MovementConfirmationLineIdDto MovementConfirmationLineId
-        {
+		public virtual MovementConfirmationLineId MovementConfirmationLineId
+		{
             get
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementConfirmationLineId"))
                 {
-					return (_state.MovementConfirmationLineId == null) ? null : new MovementConfirmationLineIdDtoWrapper(_state.MovementConfirmationLineId);
+                    return _state.MovementConfirmationLineId;
                 }
                 return null;
             }
             set
             {
-                _state.MovementConfirmationLineId = (value == null) ? null : value.ToMovementConfirmationLineId();
+                _state.MovementConfirmationLineId = value;
             }
         }
 

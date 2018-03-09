@@ -44,37 +44,11 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 		public virtual decimal? VirtualQuantity { get; set; }
 
-
-		public virtual InventoryItemSourceInfoDto Source { get; set; }
-
-        InventoryItemSourceInfo ICreateOrMergePatchOrRemoveInventoryItemEntry.Source
-        {
-            get 
-            {
-                return (this.Source == null) ? null : this.Source.ToInventoryItemSourceInfo();
-            }
-            set 
-            {
-                this.Source = (value == null) ? null : new InventoryItemSourceInfoDtoWrapper(value);
-            }
-        }
+		public virtual InventoryItemSourceInfo Source { get; set; }
 
 		public virtual bool? Active { get; set; }
 
-
-		public virtual InventoryItemIdDto InventoryItemId { get; set; }
-
-        InventoryItemId IInventoryItemEntryCommand.InventoryItemId
-        {
-            get 
-            {
-                return (this.InventoryItemId == null) ? null : this.InventoryItemId.ToInventoryItemId();
-            }
-            set 
-            {
-                this.InventoryItemId = (value == null) ? null : new InventoryItemIdDtoWrapper(value);
-            }
-        }
+		public virtual InventoryItemId InventoryItemId { get; set; }
 
 
         string ICommandDto.CommandType 

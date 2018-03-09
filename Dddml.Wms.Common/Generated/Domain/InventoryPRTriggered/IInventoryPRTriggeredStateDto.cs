@@ -15,8 +15,7 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 
     public interface IInventoryPRTriggeredStateDto
     {
-
-        InventoryPRTriggeredIdDto InventoryPRTriggeredId
+        InventoryPRTriggeredId InventoryPRTriggeredId
         {
             get;
             set;

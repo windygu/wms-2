@@ -14,8 +14,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 
     public interface IInventoryItemStateDto
     {
-
-        InventoryItemIdDto InventoryItemId
+        InventoryItemId InventoryItemId
         {
             get;
             set;

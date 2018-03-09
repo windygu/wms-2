@@ -17,8 +17,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
     public partial class SellableInventoryItemStateDto : ISellableInventoryItemStateDto
     {
-
-        public virtual InventoryItemIdDto SellableInventoryItemId
+        public virtual InventoryItemId SellableInventoryItemId
         {
             get;
             set;
@@ -75,7 +74,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
         public virtual ISellableInventoryItemState ToSellableInventoryItemState()
         {
             var state = new SellableInventoryItemState(true);
-            state.SellableInventoryItemId = (this.SellableInventoryItemId == null) ? null : this.SellableInventoryItemId.ToInventoryItemId();
+            state.SellableInventoryItemId = this.SellableInventoryItemId;
             if (this.SellableQuantity != null && this.SellableQuantity.HasValue) { state.SellableQuantity = this.SellableQuantity.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             state.CreatedBy = this.CreatedBy;

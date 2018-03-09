@@ -15,8 +15,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 
     public interface IAttributeValueMvoStateDto
     {
-
-        AttributeValueIdDto AttributeValueId
+        AttributeValueId AttributeValueId
         {
             get;
             set;

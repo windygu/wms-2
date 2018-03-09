@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 	public abstract class DamageHandlingMethodStateEventDtoBase : IStateEventDto, IDamageHandlingMethodStateCreated, IDamageHandlingMethodStateMergePatched, IDamageHandlingMethodStateDeleted
 	{
 
-        private DamageHandlingMethodEventIdDto _damageHandlingMethodEventId;
+        private DamageHandlingMethodEventId _damageHandlingMethodEventId;
 
-		protected internal virtual DamageHandlingMethodEventIdDto DamageHandlingMethodEventId 
+		protected internal virtual DamageHandlingMethodEventId DamageHandlingMethodEventId 
         {
             get 
             {
-                if (_damageHandlingMethodEventId == null) { _damageHandlingMethodEventId = new DamageHandlingMethodEventIdDto(); }
+                if (_damageHandlingMethodEventId == null) { _damageHandlingMethodEventId = new DamageHandlingMethodEventId(); }
                 return _damageHandlingMethodEventId;
             }
             set
@@ -59,7 +59,7 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 		DamageHandlingMethodEventId IGlobalIdentity<DamageHandlingMethodEventId>.GlobalId {
 			get 
 			{
-				return this.DamageHandlingMethodEventId.ToDamageHandlingMethodEventId();
+				return this.DamageHandlingMethodEventId;
 			}
 		}
 
@@ -155,14 +155,14 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
 
         DamageHandlingMethodEventId IDamageHandlingMethodStateEvent.DamageHandlingMethodEventId
         {
-            get { return this.DamageHandlingMethodEventId.ToDamageHandlingMethodEventId(); }
+            get { return this.DamageHandlingMethodEventId; }
         }
 
         protected DamageHandlingMethodStateEventDtoBase()
         {
         }
 
-        protected DamageHandlingMethodStateEventDtoBase(DamageHandlingMethodEventIdDto stateEventId)
+        protected DamageHandlingMethodStateEventDtoBase(DamageHandlingMethodEventId stateEventId)
         {
             this.DamageHandlingMethodEventId = stateEventId;
         }

@@ -16,8 +16,7 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 
     public partial class UserRoleMvoStateDto : IUserRoleMvoStateDto
     {
-
-        public virtual UserRoleIdDto UserRoleId
+        public virtual UserRoleId UserRoleId
         {
             get;
             set;
@@ -170,7 +169,7 @@ namespace Dddml.Wms.Domain.UserRoleMvo
         public virtual IUserRoleMvoState ToUserRoleMvoState()
         {
             var state = new UserRoleMvoState(true);
-            state.UserRoleId = (this.UserRoleId == null) ? null : this.UserRoleId.ToUserRoleId();
+            state.UserRoleId = this.UserRoleId;
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             state.UserUserName = this.UserUserName;

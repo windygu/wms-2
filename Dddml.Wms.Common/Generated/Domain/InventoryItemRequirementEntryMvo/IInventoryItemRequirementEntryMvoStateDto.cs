@@ -16,8 +16,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 
     public interface IInventoryItemRequirementEntryMvoStateDto
     {
-
-        InventoryItemRequirementEntryIdDto InventoryItemRequirementEntryId
+        InventoryItemRequirementEntryId InventoryItemRequirementEntryId
         {
             get;
             set;
@@ -29,8 +28,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
             set;
         }
 
-
-        InventoryPRTriggeredIdDto SourceEventId
+        InventoryPRTriggeredId SourceEventId
         {
             get;
             set;

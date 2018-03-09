@@ -149,7 +149,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         public ISellableInventoryItemEntryStateDto GetSellableInventoryItemEntry(string sellableInventoryItemId, long entrySeqId)
         {
           try {
-            var state = (SellableInventoryItemEntryState)_sellableInventoryItemApplicationService.GetSellableInventoryItemEntry((new InventoryItemIdFlattenedDtoFormatter().Parse(sellableInventoryItemId)).ToInventoryItemId(), entrySeqId);
+            var state = (SellableInventoryItemEntryState)_sellableInventoryItemApplicationService.GetSellableInventoryItemEntry(((new ValueObjectTextFormatter<InventoryItemId>()).Parse(sellableInventoryItemId)), entrySeqId);
             if (state == null) { return null; }
             var stateDto = new SellableInventoryItemEntryStateDtoWrapper(state);
             stateDto.AllFieldsReturned = true;
@@ -242,7 +242,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = ParseIdString(id.IsNormalized() ? id : id.Normalize());
             if (value.SellableInventoryItemId == null)
             {
-                value.SellableInventoryItemId = new InventoryItemIdDtoWrapper(idObj);
+                value.SellableInventoryItemId = idObj;
             }
             else if (!((ICreateOrMergePatchOrDeleteSellableInventoryItem)value).SellableInventoryItemId.Equals(idObj))
             {
@@ -252,10 +252,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static InventoryItemId ParseIdString(string idString)
         {
-            var formatter = new InventoryItemIdFlattenedDtoFormatter();
-            var idDto = formatter.Parse(idString);
-            var rId = idDto.ToInventoryItemId();
-            return rId;
+            var formatter = new ValueObjectTextFormatter<InventoryItemId>();
+            return formatter.Parse(idString);
         }
 
         public static string GetFilterPropertyName(string fieldName)
@@ -320,7 +318,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             foreach (var id in ids)
             {
                 var dto = new SellableInventoryItemStateDtoWrapper();
-                dto.SellableInventoryItemId = new InventoryItemIdDtoWrapper(id);
+                dto.SellableInventoryItemId = id;
                 states.Add(dto);
             }
             return states;

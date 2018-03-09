@@ -53,22 +53,9 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
             set { this.CommandId = value; }
         }
 
-		public virtual InventoryItemIdDto InventoryItemRequirementId { get; set; }
+		public virtual InventoryItemId InventoryItemRequirementId { get; set; }
 
 		public virtual bool? Active { get; set; }
-
-
-        InventoryItemId IInventoryItemRequirementCommand.InventoryItemRequirementId
-        {
-            get 
-            {
-                return this.InventoryItemRequirementId.ToInventoryItemId();
-            }
-            set 
-            {
-                this.InventoryItemRequirementId = new InventoryItemIdDtoWrapper(value);
-            }
-        }
 
 		public virtual bool? IsPropertyActiveRemoved { get; set; }
 

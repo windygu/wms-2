@@ -370,9 +370,8 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 
         public static string ToIdString(InventoryPRTriggeredId id)
         {
-            var formatter = new InventoryPRTriggeredIdFlattenedDtoFormatter();
-            var idDto = new InventoryPRTriggeredIdFlattenedDto(id);
-            var idStr = formatter.ToString(idDto);
+            var formatter = (new ValueObjectTextFormatter<InventoryPRTriggeredId>());
+            var idStr = formatter.ToString(id);
             return idStr;
         }
 

@@ -38,37 +38,11 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 
 		public virtual decimal? Quantity { get; set; }
 
-
-		public virtual InventoryPRTriggeredIdDto SourceEventId { get; set; }
-
-        InventoryPRTriggeredId ICreateOrMergePatchOrRemoveInventoryItemRequirementEntry.SourceEventId
-        {
-            get 
-            {
-                return (this.SourceEventId == null) ? null : this.SourceEventId.ToInventoryPRTriggeredId();
-            }
-            set 
-            {
-                this.SourceEventId = (value == null) ? null : new InventoryPRTriggeredIdDtoWrapper(value);
-            }
-        }
+		public virtual InventoryPRTriggeredId SourceEventId { get; set; }
 
 		public virtual bool? Active { get; set; }
 
-
-		public virtual InventoryItemIdDto InventoryItemRequirementId { get; set; }
-
-        InventoryItemId IInventoryItemRequirementEntryCommand.InventoryItemRequirementId
-        {
-            get 
-            {
-                return (this.InventoryItemRequirementId == null) ? null : this.InventoryItemRequirementId.ToInventoryItemId();
-            }
-            set 
-            {
-                this.InventoryItemRequirementId = (value == null) ? null : new InventoryItemIdDtoWrapper(value);
-            }
-        }
+		public virtual InventoryItemId InventoryItemRequirementId { get; set; }
 
 
         string ICommandDto.CommandType 

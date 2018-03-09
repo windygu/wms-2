@@ -21,15 +21,13 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             set;
         }
 
-
-        InventoryItemIdDto TriggerInventoryItemId
+        InventoryItemId TriggerInventoryItemId
         {
             get;
             set;
         }
 
-
-        InventoryItemIdDto OutputInventoryItemId
+        InventoryItemId OutputInventoryItemId
         {
             get;
             set;

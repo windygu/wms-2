@@ -16,13 +16,13 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 	public abstract class AttributeUseMvoStateEventDtoBase : IStateEventDto, IAttributeUseMvoStateCreated, IAttributeUseMvoStateMergePatched, IAttributeUseMvoStateDeleted
 	{
 
-        private AttributeUseMvoEventIdDto _attributeUseMvoEventId;
+        private AttributeUseMvoEventId _attributeUseMvoEventId;
 
-		protected internal virtual AttributeUseMvoEventIdDto AttributeUseMvoEventId 
+		protected internal virtual AttributeUseMvoEventId AttributeUseMvoEventId 
         {
             get 
             {
-                if (_attributeUseMvoEventId == null) { _attributeUseMvoEventId = new AttributeUseMvoEventIdDto(); }
+                if (_attributeUseMvoEventId == null) { _attributeUseMvoEventId = new AttributeUseMvoEventId(); }
                 return _attributeUseMvoEventId;
             }
             set
@@ -31,7 +31,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             }
         }
 
-        public virtual AttributeSetAttributeUseIdDto AttributeSetAttributeUseId
+        public virtual AttributeSetAttributeUseId AttributeSetAttributeUseId
         {
             get { return AttributeUseMvoEventId.AttributeSetAttributeUseId; }
             set { AttributeUseMvoEventId.AttributeSetAttributeUseId = value; }
@@ -84,7 +84,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 		AttributeUseMvoEventId IGlobalIdentity<AttributeUseMvoEventId>.GlobalId {
 			get 
 			{
-				return this.AttributeUseMvoEventId.ToAttributeUseMvoEventId();
+				return this.AttributeUseMvoEventId;
 			}
 		}
 
@@ -408,14 +408,14 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
         AttributeUseMvoEventId IAttributeUseMvoStateEvent.AttributeUseMvoEventId
         {
-            get { return this.AttributeUseMvoEventId.ToAttributeUseMvoEventId(); }
+            get { return this.AttributeUseMvoEventId; }
         }
 
         protected AttributeUseMvoStateEventDtoBase()
         {
         }
 
-        protected AttributeUseMvoStateEventDtoBase(AttributeUseMvoEventIdDto stateEventId)
+        protected AttributeUseMvoStateEventDtoBase(AttributeUseMvoEventId stateEventId)
         {
             this.AttributeUseMvoEventId = stateEventId;
         }

@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.Order
 	public abstract class OrderStateEventDtoBase : IStateEventDto, IOrderStateCreated, IOrderStateMergePatched
 	{
 
-        private OrderEventIdDto _orderEventId;
+        private OrderEventId _orderEventId;
 
-		protected internal virtual OrderEventIdDto OrderEventId 
+		protected internal virtual OrderEventId OrderEventId 
         {
             get 
             {
-                if (_orderEventId == null) { _orderEventId = new OrderEventIdDto(); }
+                if (_orderEventId == null) { _orderEventId = new OrderEventId(); }
                 return _orderEventId;
             }
             set
@@ -103,7 +103,7 @@ namespace Dddml.Wms.Domain.Order
 		OrderEventId IGlobalIdentity<OrderEventId>.GlobalId {
 			get 
 			{
-				return this.OrderEventId.ToOrderEventId();
+				return this.OrderEventId;
 			}
 		}
 
@@ -632,9 +632,9 @@ namespace Dddml.Wms.Domain.Order
 
 
 
-        private OrderItemEventIdDto NewOrderItemEventId(string orderItemSeqId)
+        private OrderItemEventId NewOrderItemEventId(string orderItemSeqId)
         {
-            var eId = new OrderItemEventIdDto();
+            var eId = new OrderItemEventId();
             eId.OrderId = this.OrderEventId.OrderId;
             eId.OrderItemSeqId = orderItemSeqId;
             eId.OrderVersion = this.OrderEventId.Version;
@@ -695,14 +695,14 @@ namespace Dddml.Wms.Domain.Order
 
         OrderEventId IOrderStateEvent.OrderEventId
         {
-            get { return this.OrderEventId.ToOrderEventId(); }
+            get { return this.OrderEventId; }
         }
 
         protected OrderStateEventDtoBase()
         {
         }
 
-        protected OrderStateEventDtoBase(OrderEventIdDto stateEventId)
+        protected OrderStateEventDtoBase(OrderEventId stateEventId)
         {
             this.OrderEventId = stateEventId;
         }

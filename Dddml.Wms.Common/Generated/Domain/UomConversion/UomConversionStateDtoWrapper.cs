@@ -39,19 +39,19 @@ namespace Dddml.Wms.Domain.UomConversion
 			return this._state;
 		}
 
-        public UomConversionIdDto UomConversionId
-        {
+		public virtual UomConversionId UomConversionId
+		{
             get
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("UomConversionId"))
                 {
-					return (_state.UomConversionId == null) ? null : new UomConversionIdDtoWrapper(_state.UomConversionId);
+                    return _state.UomConversionId;
                 }
                 return null;
             }
             set
             {
-                _state.UomConversionId = (value == null) ? null : value.ToUomConversionId();
+                _state.UomConversionId = value;
             }
         }
 

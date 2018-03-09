@@ -15,8 +15,7 @@ namespace Dddml.Wms.Domain.OrderShipment
 
     public partial class OrderShipmentStateDto : IOrderShipmentStateDto
     {
-
-        public virtual OrderShipmentIdDto OrderShipmentId
+        public virtual OrderShipmentId OrderShipmentId
         {
             get;
             set;
@@ -67,7 +66,7 @@ namespace Dddml.Wms.Domain.OrderShipment
         public virtual IOrderShipmentState ToOrderShipmentState()
         {
             var state = new OrderShipmentState(true);
-            state.OrderShipmentId = (this.OrderShipmentId == null) ? null : this.OrderShipmentId.ToOrderShipmentId();
+            state.OrderShipmentId = this.OrderShipmentId;
             state.Quantity = this.Quantity;
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }

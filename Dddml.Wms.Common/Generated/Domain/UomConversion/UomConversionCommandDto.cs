@@ -51,7 +51,7 @@ namespace Dddml.Wms.Domain.UomConversion
             set { this.CommandId = value; }
         }
 
-		public virtual UomConversionIdDto UomConversionId { get; set; }
+		public virtual UomConversionId UomConversionId { get; set; }
 
 		public virtual double? ConversionFactor { get; set; }
 
@@ -62,19 +62,6 @@ namespace Dddml.Wms.Domain.UomConversion
 		public virtual string RoundingMode { get; set; }
 
 		public virtual bool? Active { get; set; }
-
-
-        UomConversionId IUomConversionCommand.UomConversionId
-        {
-            get 
-            {
-                return this.UomConversionId.ToUomConversionId();
-            }
-            set 
-            {
-                this.UomConversionId = new UomConversionIdDtoWrapper(value);
-            }
-        }
 
 		public virtual bool? IsPropertyConversionFactorRemoved { get; set; }
 

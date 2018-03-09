@@ -68,7 +68,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Tests
             var rollId_2 = "H00000000A";
             var shipItem_2 = NewImportingShipmentItem(prdId, rollId_2);
 
-            shipImport.ShipmentItems = new ImportingShipmentItemDto[] {
+            shipImport.ShipmentItems = new ImportingShipmentItem[] {
                     shipItem_1,
                     shipItem_2,
                 };
@@ -106,9 +106,9 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Tests
             get { return (decimal)761.125; }
         }
 
-        private static ImportingShipmentItemDto NewImportingShipmentItem(string productId, string rollId)
+        private static ImportingShipmentItem NewImportingShipmentItem(string productId, string rollId)
         {
-            var shipItem_1 = new ImportingShipmentItemDto();
+            var shipItem_1 = new ImportingShipmentItem();
             shipItem_1.ProductId = productId;
             shipItem_1.Quantity = 1;
             var attrSetInst_1 = new Dictionary<string, object>();

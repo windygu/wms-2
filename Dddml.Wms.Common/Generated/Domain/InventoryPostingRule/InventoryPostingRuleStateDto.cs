@@ -22,15 +22,13 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             set;
         }
 
-
-        public virtual InventoryItemIdDto TriggerInventoryItemId
+        public virtual InventoryItemId TriggerInventoryItemId
         {
             get;
             set;
         }
 
-
-        public virtual InventoryItemIdDto OutputInventoryItemId
+        public virtual InventoryItemId OutputInventoryItemId
         {
             get;
             set;
@@ -94,8 +92,8 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
         {
             var state = new InventoryPostingRuleState(true);
             state.InventoryPostingRuleId = this.InventoryPostingRuleId;
-            state.TriggerInventoryItemId = (this.TriggerInventoryItemId == null) ? null : this.TriggerInventoryItemId.ToInventoryItemId();
-            state.OutputInventoryItemId = (this.OutputInventoryItemId == null) ? null : this.OutputInventoryItemId.ToInventoryItemId();
+            state.TriggerInventoryItemId = this.TriggerInventoryItemId;
+            state.OutputInventoryItemId = this.OutputInventoryItemId;
             state.TriggerAccountName = this.TriggerAccountName;
             state.OutputAccountName = this.OutputAccountName;
             if (this.IsOutputNegated != null && this.IsOutputNegated.HasValue) { state.IsOutputNegated = this.IsOutputNegated.Value; }

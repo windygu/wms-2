@@ -274,7 +274,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = ParseIdString(id.IsNormalized() ? id : id.Normalize());
             if (value.MovementLineId == null)
             {
-                value.MovementLineId = new MovementLineIdDtoWrapper(idObj);
+                value.MovementLineId = idObj;
             }
             else if (!((ICreateOrMergePatchOrDeleteMovementLineMvo)value).MovementLineId.Equals(idObj))
             {
@@ -284,10 +284,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static MovementLineId ParseIdString(string idString)
         {
-            var formatter = new MovementLineIdFlattenedDtoFormatter();
-            var idDto = formatter.Parse(idString);
-            var rId = idDto.ToMovementLineId();
-            return rId;
+            var formatter = new ValueObjectTextFormatter<MovementLineId>();
+            return formatter.Parse(idString);
         }
 
         public static string GetFilterPropertyName(string fieldName)
@@ -352,7 +350,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             foreach (var id in ids)
             {
                 var dto = new MovementLineMvoStateDtoWrapper();
-                dto.MovementLineId = new MovementLineIdDtoWrapper(id);
+                dto.MovementLineId = id;
                 states.Add(dto);
             }
             return states;

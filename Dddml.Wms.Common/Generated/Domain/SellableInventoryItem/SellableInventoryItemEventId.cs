@@ -35,17 +35,17 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
         #region  Flattened Properties
 
 
-		public virtual string SellableInventoryItemIdProductId {
+		protected internal virtual string SellableInventoryItemIdProductId {
 			get { return SellableInventoryItemId.ProductId; }
 			set { SellableInventoryItemId.ProductId = value; }
 		}
 
-		public virtual string SellableInventoryItemIdLocatorId {
+		protected internal virtual string SellableInventoryItemIdLocatorId {
 			get { return SellableInventoryItemId.LocatorId; }
 			set { SellableInventoryItemId.LocatorId = value; }
 		}
 
-		public virtual string SellableInventoryItemIdAttributeSetInstanceId {
+		protected internal virtual string SellableInventoryItemIdAttributeSetInstanceId {
 			get { return SellableInventoryItemId.AttributeSetInstanceId; }
 			set { SellableInventoryItemId.AttributeSetInstanceId = value; }
 		}
@@ -109,6 +109,46 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
                 + "SellableInventoryItemId: " + this.SellableInventoryItemId + ", "
                 + "Version: " + this.Version + ", "
                 ;
+        }
+
+        protected internal static readonly string[] FlattenedPropertyNames = new string[] { "SellableInventoryItemIdProductId", "SellableInventoryItemIdLocatorId", "SellableInventoryItemIdAttributeSetInstanceId", "Version" };
+
+        protected internal static readonly Type[] FlattenedPropertyTypes = new Type[] { typeof(string), typeof(string), typeof(string), typeof(long) };
+
+        protected internal static readonly IDictionary<string, Type> FlattenedPropertyTypeDictionary;
+
+        static SellableInventoryItemEventId()
+        {
+            var dict = new Dictionary<string, Type>();
+            for (int i = 0; i < FlattenedPropertyNames.Length; i++)
+            {
+                dict.Add(FlattenedPropertyNames[i], FlattenedPropertyTypes[i]);
+            }
+            FlattenedPropertyTypeDictionary = dict;
+        }
+
+        protected internal void ForEachFlattenedProperty(Action<string, object> act)
+        {
+            for (int i = 0; i < FlattenedPropertyNames.Length; i++)
+            {
+                string pn = FlattenedPropertyNames[i];
+                if (Char.IsLower(pn[0])) { pn = Char.ToUpper(pn[0]) + pn.Substring(1); }
+                var m = this.GetType().GetProperty(pn, System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                object pv = m.GetValue(this);
+                act(pn, pv);
+            }
+        }
+
+        protected internal void SetFlattenedPropertyValues(params object[] values)
+        {
+            for (int i = 0; i < FlattenedPropertyNames.Length; i++)
+            {
+                string pn = FlattenedPropertyNames[i];
+                if (Char.IsLower(pn[0])) { pn = Char.ToUpper(pn[0]) + pn.Substring(1); }
+                var v = values[i];
+                var m = this.GetType().GetProperty(pn, System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                m.SetValue(this, v);
+            }
         }
 	}
 

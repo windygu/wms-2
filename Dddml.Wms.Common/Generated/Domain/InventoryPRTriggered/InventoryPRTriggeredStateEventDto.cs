@@ -16,13 +16,13 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 	public abstract class InventoryPRTriggeredStateEventDtoBase : IStateEventDto, IInventoryPRTriggeredStateCreated, IInventoryPRTriggeredStateMergePatched
 	{
 
-        private InventoryPRTriggeredEventIdDto _inventoryPRTriggeredEventId;
+        private InventoryPRTriggeredEventId _inventoryPRTriggeredEventId;
 
-		protected internal virtual InventoryPRTriggeredEventIdDto InventoryPRTriggeredEventId 
+		protected internal virtual InventoryPRTriggeredEventId InventoryPRTriggeredEventId 
         {
             get 
             {
-                if (_inventoryPRTriggeredEventId == null) { _inventoryPRTriggeredEventId = new InventoryPRTriggeredEventIdDto(); }
+                if (_inventoryPRTriggeredEventId == null) { _inventoryPRTriggeredEventId = new InventoryPRTriggeredEventId(); }
                 return _inventoryPRTriggeredEventId;
             }
             set
@@ -31,7 +31,7 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
             }
         }
 
-        public virtual InventoryPRTriggeredIdDto InventoryPRTriggeredId
+        public virtual InventoryPRTriggeredId InventoryPRTriggeredId
         {
             get { return InventoryPRTriggeredEventId.InventoryPRTriggeredId; }
             set { InventoryPRTriggeredEventId.InventoryPRTriggeredId = value; }
@@ -56,7 +56,7 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 		InventoryPRTriggeredEventId IGlobalIdentity<InventoryPRTriggeredEventId>.GlobalId {
 			get 
 			{
-				return this.InventoryPRTriggeredEventId.ToInventoryPRTriggeredEventId();
+				return this.InventoryPRTriggeredEventId;
 			}
 		}
 
@@ -114,14 +114,14 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 
         InventoryPRTriggeredEventId IInventoryPRTriggeredStateEvent.InventoryPRTriggeredEventId
         {
-            get { return this.InventoryPRTriggeredEventId.ToInventoryPRTriggeredEventId(); }
+            get { return this.InventoryPRTriggeredEventId; }
         }
 
         protected InventoryPRTriggeredStateEventDtoBase()
         {
         }
 
-        protected InventoryPRTriggeredStateEventDtoBase(InventoryPRTriggeredEventIdDto stateEventId)
+        protected InventoryPRTriggeredStateEventDtoBase(InventoryPRTriggeredEventId stateEventId)
         {
             this.InventoryPRTriggeredEventId = stateEventId;
         }

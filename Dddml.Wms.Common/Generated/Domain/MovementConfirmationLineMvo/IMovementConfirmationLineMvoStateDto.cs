@@ -15,8 +15,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
     public interface IMovementConfirmationLineMvoStateDto
     {
-
-        MovementConfirmationLineIdDto MovementConfirmationLineId
+        MovementConfirmationLineId MovementConfirmationLineId
         {
             get;
             set;

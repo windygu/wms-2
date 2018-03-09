@@ -40,19 +40,19 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 			return this._state;
 		}
 
-        public ShipmentReceiptIdDto ShipmentReceiptId
-        {
+		public virtual ShipmentReceiptId ShipmentReceiptId
+		{
             get
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("ShipmentReceiptId"))
                 {
-					return (_state.ShipmentReceiptId == null) ? null : new ShipmentReceiptIdDtoWrapper(_state.ShipmentReceiptId);
+                    return _state.ShipmentReceiptId;
                 }
                 return null;
             }
             set
             {
-                _state.ShipmentReceiptId = (value == null) ? null : value.ToShipmentReceiptId();
+                _state.ShipmentReceiptId = value;
             }
         }
 

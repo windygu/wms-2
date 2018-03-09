@@ -17,8 +17,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 
     public partial class InventoryItemRequirementStateDto : IInventoryItemRequirementStateDto
     {
-
-        public virtual InventoryItemIdDto InventoryItemRequirementId
+        public virtual InventoryItemId InventoryItemRequirementId
         {
             get;
             set;
@@ -75,7 +74,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
         public virtual IInventoryItemRequirementState ToInventoryItemRequirementState()
         {
             var state = new InventoryItemRequirementState(true);
-            state.InventoryItemRequirementId = (this.InventoryItemRequirementId == null) ? null : this.InventoryItemRequirementId.ToInventoryItemId();
+            state.InventoryItemRequirementId = this.InventoryItemRequirementId;
             if (this.Quantity != null && this.Quantity.HasValue) { state.Quantity = this.Quantity.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             state.CreatedBy = this.CreatedBy;

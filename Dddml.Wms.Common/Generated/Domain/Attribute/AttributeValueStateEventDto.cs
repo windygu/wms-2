@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.Attribute
 	public abstract class AttributeValueStateEventDtoBase : IStateEventDto, IAttributeValueStateCreated, IAttributeValueStateMergePatched, IAttributeValueStateRemoved
 	{
 
-        private AttributeValueEventIdDto _attributeValueEventId;
+        private AttributeValueEventId _attributeValueEventId;
 
-		protected internal virtual AttributeValueEventIdDto AttributeValueEventId 
+		protected internal virtual AttributeValueEventId AttributeValueEventId 
         {
             get 
             {
-                if (_attributeValueEventId == null) { _attributeValueEventId = new AttributeValueEventIdDto(); }
+                if (_attributeValueEventId == null) { _attributeValueEventId = new AttributeValueEventId(); }
                 return _attributeValueEventId;
             }
             set
@@ -55,7 +55,7 @@ namespace Dddml.Wms.Domain.Attribute
 		AttributeValueEventId IGlobalIdentity<AttributeValueEventId>.GlobalId {
 			get 
 			{
-				return this.AttributeValueEventId.ToAttributeValueEventId();
+				return this.AttributeValueEventId;
 			}
 		}
 
@@ -172,14 +172,14 @@ namespace Dddml.Wms.Domain.Attribute
 
         AttributeValueEventId IAttributeValueStateEvent.AttributeValueEventId
         {
-            get { return this.AttributeValueEventId.ToAttributeValueEventId(); }
+            get { return this.AttributeValueEventId; }
         }
 
         protected AttributeValueStateEventDtoBase()
         {
         }
 
-        protected AttributeValueStateEventDtoBase(AttributeValueEventIdDto stateEventId)
+        protected AttributeValueStateEventDtoBase(AttributeValueEventId stateEventId)
         {
             this.AttributeValueEventId = stateEventId;
         }

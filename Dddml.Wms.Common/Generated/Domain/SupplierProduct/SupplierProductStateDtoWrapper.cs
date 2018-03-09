@@ -39,19 +39,19 @@ namespace Dddml.Wms.Domain.SupplierProduct
 			return this._state;
 		}
 
-        public SupplierProductIdDto SupplierProductId
-        {
+		public virtual SupplierProductId SupplierProductId
+		{
             get
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("SupplierProductId"))
                 {
-					return (_state.SupplierProductId == null) ? null : new SupplierProductIdDtoWrapper(_state.SupplierProductId);
+                    return _state.SupplierProductId;
                 }
                 return null;
             }
             set
             {
-                _state.SupplierProductId = (value == null) ? null : value.ToSupplierProductId();
+                _state.SupplierProductId = value;
             }
         }
 

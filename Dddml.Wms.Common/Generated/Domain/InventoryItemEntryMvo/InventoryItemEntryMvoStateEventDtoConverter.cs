@@ -34,7 +34,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
         public virtual InventoryItemEntryMvoStateCreatedDto ToInventoryItemEntryMvoStateCreatedDto(IInventoryItemEntryMvoStateCreated e)
         {
             var dto = new InventoryItemEntryMvoStateCreatedDto();
-            dto.InventoryItemEntryMvoEventId = new InventoryItemEntryMvoEventIdDtoWrapper(e.InventoryItemEntryMvoEventId);
+            dto.InventoryItemEntryMvoEventId = e.InventoryItemEntryMvoEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -43,7 +43,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             dto.ReservedQuantity = e.ReservedQuantity;
             dto.OccupiedQuantity = e.OccupiedQuantity;
             dto.VirtualQuantity = e.VirtualQuantity;
-            dto.Source = (e.Source == null) ? null : new InventoryItemSourceInfoDtoWrapper(e.Source);
+            dto.Source = e.Source;
             dto.Version = e.Version;
             dto.InventoryItemOnHandQuantity = e.InventoryItemOnHandQuantity;
             dto.InventoryItemInTransitQuantity = e.InventoryItemInTransitQuantity;
@@ -60,7 +60,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
         public virtual InventoryItemEntryMvoStateMergePatchedDto ToInventoryItemEntryMvoStateMergePatchedDto(IInventoryItemEntryMvoStateMergePatched e)
         {
             var dto = new InventoryItemEntryMvoStateMergePatchedDto();
-            dto.InventoryItemEntryMvoEventId = new InventoryItemEntryMvoEventIdDtoWrapper(e.InventoryItemEntryMvoEventId);
+            dto.InventoryItemEntryMvoEventId = e.InventoryItemEntryMvoEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -69,7 +69,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             dto.ReservedQuantity = e.ReservedQuantity;
             dto.OccupiedQuantity = e.OccupiedQuantity;
             dto.VirtualQuantity = e.VirtualQuantity;
-            dto.Source = (e.Source == null) ? null : new InventoryItemSourceInfoDtoWrapper(e.Source);
+            dto.Source = e.Source;
             dto.Version = e.Version;
             dto.InventoryItemOnHandQuantity = e.InventoryItemOnHandQuantity;
             dto.InventoryItemInTransitQuantity = e.InventoryItemInTransitQuantity;

@@ -39,19 +39,19 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 			return this._state;
 		}
 
-        public ProductCategoryMemberIdDto ProductCategoryMemberId
-        {
+		public virtual ProductCategoryMemberId ProductCategoryMemberId
+		{
             get
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("ProductCategoryMemberId"))
                 {
-					return (_state.ProductCategoryMemberId == null) ? null : new ProductCategoryMemberIdDtoWrapper(_state.ProductCategoryMemberId);
+                    return _state.ProductCategoryMemberId;
                 }
                 return null;
             }
             set
             {
-                _state.ProductCategoryMemberId = (value == null) ? null : value.ToProductCategoryMemberId();
+                _state.ProductCategoryMemberId = value;
             }
         }
 

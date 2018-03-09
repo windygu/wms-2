@@ -39,19 +39,19 @@ namespace Dddml.Wms.Domain.OrderShipment
 			return this._state;
 		}
 
-        public OrderShipmentIdDto OrderShipmentId
-        {
+		public virtual OrderShipmentId OrderShipmentId
+		{
             get
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("OrderShipmentId"))
                 {
-					return (_state.OrderShipmentId == null) ? null : new OrderShipmentIdDtoWrapper(_state.OrderShipmentId);
+                    return _state.OrderShipmentId;
                 }
                 return null;
             }
             set
             {
-                _state.OrderShipmentId = (value == null) ? null : value.ToOrderShipmentId();
+                _state.OrderShipmentId = value;
             }
         }
 

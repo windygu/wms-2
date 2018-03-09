@@ -15,8 +15,7 @@ namespace Dddml.Wms.Domain.OrganizationStructure
 
     public partial class OrganizationStructureStateDto : IOrganizationStructureStateDto
     {
-
-        public virtual OrganizationStructureIdDto Id
+        public virtual OrganizationStructureId Id
         {
             get;
             set;
@@ -61,7 +60,7 @@ namespace Dddml.Wms.Domain.OrganizationStructure
         public virtual IOrganizationStructureState ToOrganizationStructureState()
         {
             var state = new OrganizationStructureState(true);
-            state.Id = (this.Id == null) ? null : this.Id.ToOrganizationStructureId();
+            state.Id = this.Id;
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             state.CreatedBy = this.CreatedBy;

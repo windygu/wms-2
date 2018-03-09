@@ -52,24 +52,11 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
             set { this.CommandId = value; }
         }
 
-		public virtual InventoryPRTriggeredIdDto InventoryPRTriggeredId { get; set; }
+		public virtual InventoryPRTriggeredId InventoryPRTriggeredId { get; set; }
 
 		public virtual bool? IsProcessed { get; set; }
 
 		public virtual bool? Active { get; set; }
-
-
-        InventoryPRTriggeredId IInventoryPRTriggeredCommand.InventoryPRTriggeredId
-        {
-            get 
-            {
-                return this.InventoryPRTriggeredId.ToInventoryPRTriggeredId();
-            }
-            set 
-            {
-                this.InventoryPRTriggeredId = new InventoryPRTriggeredIdDtoWrapper(value);
-            }
-        }
 
 		public virtual bool? IsPropertyIsProcessedRemoved { get; set; }
 

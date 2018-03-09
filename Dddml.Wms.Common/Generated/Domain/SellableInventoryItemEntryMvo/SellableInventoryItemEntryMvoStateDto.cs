@@ -17,8 +17,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 
     public partial class SellableInventoryItemEntryMvoStateDto : ISellableInventoryItemEntryMvoStateDto
     {
-
-        public virtual SellableInventoryItemEntryIdDto SellableInventoryItemEntryId
+        public virtual SellableInventoryItemEntryId SellableInventoryItemEntryId
         {
             get;
             set;
@@ -30,8 +29,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
             set;
         }
 
-
-        public virtual InventoryPRTriggeredIdDto SourceEventId
+        public virtual InventoryPRTriggeredId SourceEventId
         {
             get;
             set;
@@ -106,9 +104,9 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
         public virtual ISellableInventoryItemEntryMvoState ToSellableInventoryItemEntryMvoState()
         {
             var state = new SellableInventoryItemEntryMvoState(true);
-            state.SellableInventoryItemEntryId = (this.SellableInventoryItemEntryId == null) ? null : this.SellableInventoryItemEntryId.ToSellableInventoryItemEntryId();
+            state.SellableInventoryItemEntryId = this.SellableInventoryItemEntryId;
             if (this.SellableQuantity != null && this.SellableQuantity.HasValue) { state.SellableQuantity = this.SellableQuantity.Value; }
-            state.SourceEventId = (this.SourceEventId == null) ? null : this.SourceEventId.ToInventoryPRTriggeredId();
+            state.SourceEventId = this.SourceEventId;
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             if (this.SellableInventoryItemSellableQuantity != null && this.SellableInventoryItemSellableQuantity.HasValue) { state.SellableInventoryItemSellableQuantity = this.SellableInventoryItemSellableQuantity.Value; }
             state.SellableInventoryItemCreatedBy = this.SellableInventoryItemCreatedBy;

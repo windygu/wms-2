@@ -15,8 +15,7 @@ namespace Dddml.Wms.Domain.SupplierProduct
 
     public partial class SupplierProductStateDto : ISupplierProductStateDto
     {
-
-        public virtual SupplierProductIdDto SupplierProductId
+        public virtual SupplierProductId SupplierProductId
         {
             get;
             set;
@@ -139,7 +138,7 @@ namespace Dddml.Wms.Domain.SupplierProduct
         public virtual ISupplierProductState ToSupplierProductState()
         {
             var state = new SupplierProductState(true);
-            state.SupplierProductId = (this.SupplierProductId == null) ? null : this.SupplierProductId.ToSupplierProductId();
+            state.SupplierProductId = this.SupplierProductId;
             state.AvailableThruDate = this.AvailableThruDate;
             state.SupplierPrefOrderId = this.SupplierPrefOrderId;
             state.SupplierRatingTypeId = this.SupplierRatingTypeId;

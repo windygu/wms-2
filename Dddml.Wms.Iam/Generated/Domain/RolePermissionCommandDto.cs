@@ -51,22 +51,9 @@ namespace Dddml.Wms.Domain.RolePermission
             set { this.CommandId = value; }
         }
 
-		public virtual RolePermissionIdDto Id { get; set; }
+		public virtual RolePermissionId Id { get; set; }
 
 		public virtual bool? Active { get; set; }
-
-
-        RolePermissionId IRolePermissionCommand.Id
-        {
-            get 
-            {
-                return this.Id.ToRolePermissionId();
-            }
-            set 
-            {
-                this.Id = new RolePermissionIdDtoWrapper(value);
-            }
-        }
 
 		public virtual bool? IsPropertyActiveRemoved { get; set; }
 

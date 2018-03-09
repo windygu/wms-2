@@ -16,8 +16,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
     public partial class MovementLineMvoStateDto : IMovementLineMvoStateDto
     {
-
-        public virtual MovementLineIdDto MovementLineId
+        public virtual MovementLineId MovementLineId
         {
             get;
             set;
@@ -266,7 +265,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
         public virtual IMovementLineMvoState ToMovementLineMvoState()
         {
             var state = new MovementLineMvoState(true);
-            state.MovementLineId = (this.MovementLineId == null) ? null : this.MovementLineId.ToMovementLineId();
+            state.MovementLineId = this.MovementLineId;
             if (this.MovementQuantity != null && this.MovementQuantity.HasValue) { state.MovementQuantity = this.MovementQuantity.Value; }
             state.ProductId = this.ProductId;
             state.LocatorIdFrom = this.LocatorIdFrom;

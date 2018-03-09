@@ -16,8 +16,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
     public interface ISellableInventoryItemStateDto
     {
-
-        InventoryItemIdDto SellableInventoryItemId
+        InventoryItemId SellableInventoryItemId
         {
             get;
             set;

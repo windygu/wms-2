@@ -15,8 +15,7 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 
     public interface IUserPermissionMvoStateDto
     {
-
-        UserPermissionIdDto UserPermissionId
+        UserPermissionId UserPermissionId
         {
             get;
             set;

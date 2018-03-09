@@ -35,12 +35,12 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
         public virtual SellableInventoryItemEntryMvoStateCreatedDto ToSellableInventoryItemEntryMvoStateCreatedDto(ISellableInventoryItemEntryMvoStateCreated e)
         {
             var dto = new SellableInventoryItemEntryMvoStateCreatedDto();
-            dto.SellableInventoryItemEntryMvoEventId = new SellableInventoryItemEntryMvoEventIdDtoWrapper(e.SellableInventoryItemEntryMvoEventId);
+            dto.SellableInventoryItemEntryMvoEventId = e.SellableInventoryItemEntryMvoEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
             dto.SellableQuantity = e.SellableQuantity;
-            dto.SourceEventId = (e.SourceEventId == null) ? null : new InventoryPRTriggeredIdDtoWrapper(e.SourceEventId);
+            dto.SourceEventId = e.SourceEventId;
             dto.Version = e.Version;
             dto.SellableInventoryItemSellableQuantity = e.SellableInventoryItemSellableQuantity;
             dto.SellableInventoryItemCreatedBy = e.SellableInventoryItemCreatedBy;
@@ -53,12 +53,12 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
         public virtual SellableInventoryItemEntryMvoStateMergePatchedDto ToSellableInventoryItemEntryMvoStateMergePatchedDto(ISellableInventoryItemEntryMvoStateMergePatched e)
         {
             var dto = new SellableInventoryItemEntryMvoStateMergePatchedDto();
-            dto.SellableInventoryItemEntryMvoEventId = new SellableInventoryItemEntryMvoEventIdDtoWrapper(e.SellableInventoryItemEntryMvoEventId);
+            dto.SellableInventoryItemEntryMvoEventId = e.SellableInventoryItemEntryMvoEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
             dto.SellableQuantity = e.SellableQuantity;
-            dto.SourceEventId = (e.SourceEventId == null) ? null : new InventoryPRTriggeredIdDtoWrapper(e.SourceEventId);
+            dto.SourceEventId = e.SourceEventId;
             dto.Version = e.Version;
             dto.SellableInventoryItemSellableQuantity = e.SellableInventoryItemSellableQuantity;
             dto.SellableInventoryItemCreatedBy = e.SellableInventoryItemCreatedBy;

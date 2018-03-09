@@ -33,7 +33,7 @@ namespace Dddml.Wms.Domain.StatusItem
         public virtual StatusItemStateCreatedDto ToStatusItemStateCreatedDto(IStatusItemStateCreated e)
         {
             var dto = new StatusItemStateCreatedDto();
-            dto.StatusItemEventId = new StatusItemEventIdDtoWrapper(e.StatusItemEventId);
+            dto.StatusItemEventId = e.StatusItemEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -48,7 +48,7 @@ namespace Dddml.Wms.Domain.StatusItem
         public virtual StatusItemStateMergePatchedDto ToStatusItemStateMergePatchedDto(IStatusItemStateMergePatched e)
         {
             var dto = new StatusItemStateMergePatchedDto();
-            dto.StatusItemEventId = new StatusItemEventIdDtoWrapper(e.StatusItemEventId);
+            dto.StatusItemEventId = e.StatusItemEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

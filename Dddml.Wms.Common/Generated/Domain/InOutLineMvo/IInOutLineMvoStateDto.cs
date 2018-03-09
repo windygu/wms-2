@@ -15,8 +15,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
     public interface IInOutLineMvoStateDto
     {
-
-        InOutLineIdDto InOutLineId
+        InOutLineId InOutLineId
         {
             get;
             set;

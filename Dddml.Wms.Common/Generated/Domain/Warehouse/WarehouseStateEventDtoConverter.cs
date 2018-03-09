@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.Warehouse
         public virtual WarehouseStateCreatedDto ToWarehouseStateCreatedDto(IWarehouseStateCreated e)
         {
             var dto = new WarehouseStateCreatedDto();
-            dto.WarehouseEventId = new WarehouseEventIdDtoWrapper(e.WarehouseEventId);
+            dto.WarehouseEventId = e.WarehouseEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -52,7 +52,7 @@ namespace Dddml.Wms.Domain.Warehouse
         public virtual WarehouseStateMergePatchedDto ToWarehouseStateMergePatchedDto(IWarehouseStateMergePatched e)
         {
             var dto = new WarehouseStateMergePatchedDto();
-            dto.WarehouseEventId = new WarehouseEventIdDtoWrapper(e.WarehouseEventId);
+            dto.WarehouseEventId = e.WarehouseEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -72,7 +72,7 @@ namespace Dddml.Wms.Domain.Warehouse
         public virtual WarehouseStateDeletedDto ToWarehouseStateDeletedDto(IWarehouseStateDeleted e)
         {
             var dto = new WarehouseStateDeletedDto();
-            dto.WarehouseEventId = new WarehouseEventIdDtoWrapper(e.WarehouseEventId);
+            dto.WarehouseEventId = e.WarehouseEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

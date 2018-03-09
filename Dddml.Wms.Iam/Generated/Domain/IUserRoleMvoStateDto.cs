@@ -15,8 +15,7 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 
     public interface IUserRoleMvoStateDto
     {
-
-        UserRoleIdDto UserRoleId
+        UserRoleId UserRoleId
         {
             get;
             set;

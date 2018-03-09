@@ -40,19 +40,19 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 			return this._state;
 		}
 
-        public UserClaimIdDto UserClaimId
-        {
+		public virtual UserClaimId UserClaimId
+		{
             get
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("UserClaimId"))
                 {
-					return (_state.UserClaimId == null) ? null : new UserClaimIdDtoWrapper(_state.UserClaimId);
+                    return _state.UserClaimId;
                 }
                 return null;
             }
             set
             {
-                _state.UserClaimId = (value == null) ? null : value.ToUserClaimId();
+                _state.UserClaimId = value;
             }
         }
 

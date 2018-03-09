@@ -149,7 +149,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         public IInventoryItemRequirementEntryStateDto GetInventoryItemRequirementEntry(string inventoryItemRequirementId, long entrySeqId)
         {
           try {
-            var state = (InventoryItemRequirementEntryState)_inventoryItemRequirementApplicationService.GetInventoryItemRequirementEntry((new InventoryItemIdFlattenedDtoFormatter().Parse(inventoryItemRequirementId)).ToInventoryItemId(), entrySeqId);
+            var state = (InventoryItemRequirementEntryState)_inventoryItemRequirementApplicationService.GetInventoryItemRequirementEntry(((new ValueObjectTextFormatter<InventoryItemId>()).Parse(inventoryItemRequirementId)), entrySeqId);
             if (state == null) { return null; }
             var stateDto = new InventoryItemRequirementEntryStateDtoWrapper(state);
             stateDto.AllFieldsReturned = true;
@@ -242,7 +242,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = ParseIdString(id.IsNormalized() ? id : id.Normalize());
             if (value.InventoryItemRequirementId == null)
             {
-                value.InventoryItemRequirementId = new InventoryItemIdDtoWrapper(idObj);
+                value.InventoryItemRequirementId = idObj;
             }
             else if (!((ICreateOrMergePatchOrDeleteInventoryItemRequirement)value).InventoryItemRequirementId.Equals(idObj))
             {
@@ -252,10 +252,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static InventoryItemId ParseIdString(string idString)
         {
-            var formatter = new InventoryItemIdFlattenedDtoFormatter();
-            var idDto = formatter.Parse(idString);
-            var rId = idDto.ToInventoryItemId();
-            return rId;
+            var formatter = new ValueObjectTextFormatter<InventoryItemId>();
+            return formatter.Parse(idString);
         }
 
         public static string GetFilterPropertyName(string fieldName)
@@ -320,7 +318,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             foreach (var id in ids)
             {
                 var dto = new InventoryItemRequirementStateDtoWrapper();
-                dto.InventoryItemRequirementId = new InventoryItemIdDtoWrapper(id);
+                dto.InventoryItemRequirementId = id;
                 states.Add(dto);
             }
             return states;

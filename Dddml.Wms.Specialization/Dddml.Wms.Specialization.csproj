@@ -77,6 +77,7 @@
     <Compile Include="Specialization\IState.cs" />
     <Compile Include="Specialization\IStateDtoWrapper.cs" />
     <Compile Include="Specialization\IStateEventDto.cs" />
+    <Compile Include="Specialization\ITextFormatter.cs" />
     <Compile Include="Specialization\ITimestampService.cs" />
     <Compile Include="Specialization\ITreeNode.cs" />
     <Compile Include="Specialization\ITreeRepository.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="Specialization\StateDtoCollectionBase.cs" />
     <Compile Include="Specialization\StateDtoWrapperCollectionBase.cs" />
     <Compile Include="Specialization\StateEventType.cs" />
+    <Compile Include="Specialization\ValueObjectTextFormatter.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\dddml-dotnet-tools\Dddml.Support.Criterion\Dddml.Support.Criterion.csproj">

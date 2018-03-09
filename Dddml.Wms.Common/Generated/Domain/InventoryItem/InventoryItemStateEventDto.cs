@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.InventoryItem
 	public abstract class InventoryItemStateEventDtoBase : IStateEventDto, IInventoryItemStateCreated, IInventoryItemStateMergePatched
 	{
 
-        private InventoryItemEventIdDto _inventoryItemEventId;
+        private InventoryItemEventId _inventoryItemEventId;
 
-		protected internal virtual InventoryItemEventIdDto InventoryItemEventId 
+		protected internal virtual InventoryItemEventId InventoryItemEventId 
         {
             get 
             {
-                if (_inventoryItemEventId == null) { _inventoryItemEventId = new InventoryItemEventIdDto(); }
+                if (_inventoryItemEventId == null) { _inventoryItemEventId = new InventoryItemEventId(); }
                 return _inventoryItemEventId;
             }
             set
@@ -30,7 +30,7 @@ namespace Dddml.Wms.Domain.InventoryItem
             }
         }
 
-        public virtual InventoryItemIdDto InventoryItemId
+        public virtual InventoryItemId InventoryItemId
         {
             get { return InventoryItemEventId.InventoryItemId; }
             set { InventoryItemEventId.InventoryItemId = value; }
@@ -63,7 +63,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 		InventoryItemEventId IGlobalIdentity<InventoryItemEventId>.GlobalId {
 			get 
 			{
-				return this.InventoryItemEventId.ToInventoryItemEventId();
+				return this.InventoryItemEventId;
 			}
 		}
 
@@ -212,9 +212,9 @@ namespace Dddml.Wms.Domain.InventoryItem
 
 
 
-        private InventoryItemEntryEventIdDto NewInventoryItemEntryEventId(long entrySeqId)
+        private InventoryItemEntryEventId NewInventoryItemEntryEventId(long entrySeqId)
         {
-            var eId = new InventoryItemEntryEventIdDto();
+            var eId = new InventoryItemEntryEventId();
             eId.InventoryItemId = this.InventoryItemEventId.InventoryItemId;
             eId.EntrySeqId = entrySeqId;
             eId.InventoryItemVersion = this.InventoryItemEventId.Version;
@@ -262,14 +262,14 @@ namespace Dddml.Wms.Domain.InventoryItem
 
         InventoryItemEventId IInventoryItemStateEvent.InventoryItemEventId
         {
-            get { return this.InventoryItemEventId.ToInventoryItemEventId(); }
+            get { return this.InventoryItemEventId; }
         }
 
         protected InventoryItemStateEventDtoBase()
         {
         }
 
-        protected InventoryItemStateEventDtoBase(InventoryItemEventIdDto stateEventId)
+        protected InventoryItemStateEventDtoBase(InventoryItemEventId stateEventId)
         {
             this.InventoryItemEventId = stateEventId;
         }

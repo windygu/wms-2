@@ -16,13 +16,13 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 	public abstract class UserRoleMvoStateEventDtoBase : IStateEventDto, IUserRoleMvoStateCreated, IUserRoleMvoStateMergePatched, IUserRoleMvoStateDeleted
 	{
 
-        private UserRoleMvoEventIdDto _userRoleMvoEventId;
+        private UserRoleMvoEventId _userRoleMvoEventId;
 
-		protected internal virtual UserRoleMvoEventIdDto UserRoleMvoEventId 
+		protected internal virtual UserRoleMvoEventId UserRoleMvoEventId 
         {
             get 
             {
-                if (_userRoleMvoEventId == null) { _userRoleMvoEventId = new UserRoleMvoEventIdDto(); }
+                if (_userRoleMvoEventId == null) { _userRoleMvoEventId = new UserRoleMvoEventId(); }
                 return _userRoleMvoEventId;
             }
             set
@@ -31,7 +31,7 @@ namespace Dddml.Wms.Domain.UserRoleMvo
             }
         }
 
-        public virtual UserRoleIdDto UserRoleId
+        public virtual UserRoleId UserRoleId
         {
             get { return UserRoleMvoEventId.UserRoleId; }
             set { UserRoleMvoEventId.UserRoleId = value; }
@@ -92,7 +92,7 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 		UserRoleMvoEventId IGlobalIdentity<UserRoleMvoEventId>.GlobalId {
 			get 
 			{
-				return this.UserRoleMvoEventId.ToUserRoleMvoEventId();
+				return this.UserRoleMvoEventId;
 			}
 		}
 
@@ -492,14 +492,14 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 
         UserRoleMvoEventId IUserRoleMvoStateEvent.UserRoleMvoEventId
         {
-            get { return this.UserRoleMvoEventId.ToUserRoleMvoEventId(); }
+            get { return this.UserRoleMvoEventId; }
         }
 
         protected UserRoleMvoStateEventDtoBase()
         {
         }
 
-        protected UserRoleMvoStateEventDtoBase(UserRoleMvoEventIdDto stateEventId)
+        protected UserRoleMvoStateEventDtoBase(UserRoleMvoEventId stateEventId)
         {
             this.UserRoleMvoEventId = stateEventId;
         }

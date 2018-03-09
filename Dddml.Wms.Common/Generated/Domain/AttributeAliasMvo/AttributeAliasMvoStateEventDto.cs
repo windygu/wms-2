@@ -16,13 +16,13 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 	public abstract class AttributeAliasMvoStateEventDtoBase : IStateEventDto, IAttributeAliasMvoStateCreated, IAttributeAliasMvoStateMergePatched, IAttributeAliasMvoStateDeleted
 	{
 
-        private AttributeAliasMvoEventIdDto _attributeAliasMvoEventId;
+        private AttributeAliasMvoEventId _attributeAliasMvoEventId;
 
-		protected internal virtual AttributeAliasMvoEventIdDto AttributeAliasMvoEventId 
+		protected internal virtual AttributeAliasMvoEventId AttributeAliasMvoEventId 
         {
             get 
             {
-                if (_attributeAliasMvoEventId == null) { _attributeAliasMvoEventId = new AttributeAliasMvoEventIdDto(); }
+                if (_attributeAliasMvoEventId == null) { _attributeAliasMvoEventId = new AttributeAliasMvoEventId(); }
                 return _attributeAliasMvoEventId;
             }
             set
@@ -31,7 +31,7 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
             }
         }
 
-        public virtual AttributeAliasIdDto AttributeAliasId
+        public virtual AttributeAliasId AttributeAliasId
         {
             get { return AttributeAliasMvoEventId.AttributeAliasId; }
             set { AttributeAliasMvoEventId.AttributeAliasId = value; }
@@ -90,7 +90,7 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 		AttributeAliasMvoEventId IGlobalIdentity<AttributeAliasMvoEventId>.GlobalId {
 			get 
 			{
-				return this.AttributeAliasMvoEventId.ToAttributeAliasMvoEventId();
+				return this.AttributeAliasMvoEventId;
 			}
 		}
 
@@ -471,14 +471,14 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 
         AttributeAliasMvoEventId IAttributeAliasMvoStateEvent.AttributeAliasMvoEventId
         {
-            get { return this.AttributeAliasMvoEventId.ToAttributeAliasMvoEventId(); }
+            get { return this.AttributeAliasMvoEventId; }
         }
 
         protected AttributeAliasMvoStateEventDtoBase()
         {
         }
 
-        protected AttributeAliasMvoStateEventDtoBase(AttributeAliasMvoEventIdDto stateEventId)
+        protected AttributeAliasMvoStateEventDtoBase(AttributeAliasMvoEventId stateEventId)
         {
             this.AttributeAliasMvoEventId = stateEventId;
         }

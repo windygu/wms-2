@@ -28,8 +28,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
             set;
         }
 
-
-        InventoryPRTriggeredIdDto SourceEventId
+        InventoryPRTriggeredId SourceEventId
         {
             get;
             set;
@@ -41,8 +40,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
             set;
         }
 
-
-        InventoryItemIdDto InventoryItemRequirementId
+        InventoryItemId InventoryItemRequirementId
         {
             get;
             set;

@@ -15,8 +15,7 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 
     public partial class ProductCategoryMemberStateDto : IProductCategoryMemberStateDto
     {
-
-        public virtual ProductCategoryMemberIdDto ProductCategoryMemberId
+        public virtual ProductCategoryMemberId ProductCategoryMemberId
         {
             get;
             set;
@@ -85,7 +84,7 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
         public virtual IProductCategoryMemberState ToProductCategoryMemberState()
         {
             var state = new ProductCategoryMemberState(true);
-            state.ProductCategoryMemberId = (this.ProductCategoryMemberId == null) ? null : this.ProductCategoryMemberId.ToProductCategoryMemberId();
+            state.ProductCategoryMemberId = this.ProductCategoryMemberId;
             state.ThruDate = this.ThruDate;
             state.Comments = this.Comments;
             state.SequenceNum = this.SequenceNum;

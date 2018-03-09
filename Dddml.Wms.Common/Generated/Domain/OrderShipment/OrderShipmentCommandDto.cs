@@ -51,24 +51,11 @@ namespace Dddml.Wms.Domain.OrderShipment
             set { this.CommandId = value; }
         }
 
-		public virtual OrderShipmentIdDto OrderShipmentId { get; set; }
+		public virtual OrderShipmentId OrderShipmentId { get; set; }
 
 		public virtual decimal? Quantity { get; set; }
 
 		public virtual bool? Active { get; set; }
-
-
-        OrderShipmentId IOrderShipmentCommand.OrderShipmentId
-        {
-            get 
-            {
-                return this.OrderShipmentId.ToOrderShipmentId();
-            }
-            set 
-            {
-                this.OrderShipmentId = new OrderShipmentIdDtoWrapper(value);
-            }
-        }
 
 		public virtual bool? IsPropertyQuantityRemoved { get; set; }
 

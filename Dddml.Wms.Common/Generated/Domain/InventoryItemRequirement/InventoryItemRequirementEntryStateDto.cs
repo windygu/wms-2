@@ -29,8 +29,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
             set;
         }
 
-
-        public virtual InventoryPRTriggeredIdDto SourceEventId
+        public virtual InventoryPRTriggeredId SourceEventId
         {
             get;
             set;
@@ -42,8 +41,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
             set;
         }
 
-
-        public virtual InventoryItemIdDto InventoryItemRequirementId
+        public virtual InventoryItemId InventoryItemRequirementId
         {
             get;
             set;
@@ -78,9 +76,9 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
             var state = new InventoryItemRequirementEntryState(true);
             if (this.EntrySeqId != null && this.EntrySeqId.HasValue) { state.EntrySeqId = this.EntrySeqId.Value; }
             if (this.Quantity != null && this.Quantity.HasValue) { state.Quantity = this.Quantity.Value; }
-            state.SourceEventId = (this.SourceEventId == null) ? null : this.SourceEventId.ToInventoryPRTriggeredId();
+            state.SourceEventId = this.SourceEventId;
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
-            state.InventoryItemRequirementId = (this.InventoryItemRequirementId == null) ? null : this.InventoryItemRequirementId.ToInventoryItemId();
+            state.InventoryItemRequirementId = this.InventoryItemRequirementId;
             state.CreatedBy = this.CreatedBy;
             if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }
             state.UpdatedBy = this.UpdatedBy;

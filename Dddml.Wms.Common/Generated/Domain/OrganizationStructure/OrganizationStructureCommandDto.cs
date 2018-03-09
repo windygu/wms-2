@@ -51,22 +51,9 @@ namespace Dddml.Wms.Domain.OrganizationStructure
             set { this.CommandId = value; }
         }
 
-		public virtual OrganizationStructureIdDto Id { get; set; }
+		public virtual OrganizationStructureId Id { get; set; }
 
 		public virtual bool? Active { get; set; }
-
-
-        OrganizationStructureId IOrganizationStructureCommand.Id
-        {
-            get 
-            {
-                return this.Id.ToOrganizationStructureId();
-            }
-            set 
-            {
-                this.Id = new OrganizationStructureIdDtoWrapper(value);
-            }
-        }
 
 		public virtual bool? IsPropertyActiveRemoved { get; set; }
 

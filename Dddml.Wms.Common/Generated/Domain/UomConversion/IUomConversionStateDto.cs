@@ -14,8 +14,7 @@ namespace Dddml.Wms.Domain.UomConversion
 
     public interface IUomConversionStateDto
     {
-
-        UomConversionIdDto UomConversionId
+        UomConversionId UomConversionId
         {
             get;
             set;

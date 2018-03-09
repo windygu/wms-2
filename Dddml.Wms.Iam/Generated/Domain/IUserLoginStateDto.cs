@@ -14,8 +14,7 @@ namespace Dddml.Wms.Domain.User
 
     public interface IUserLoginStateDto
     {
-
-        LoginKeyDto LoginKey
+        LoginKey LoginKey
         {
             get;
             set;

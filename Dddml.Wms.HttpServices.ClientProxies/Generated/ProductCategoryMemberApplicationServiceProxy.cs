@@ -369,9 +369,8 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 
         public static string ToIdString(ProductCategoryMemberId id)
         {
-            var formatter = new ProductCategoryMemberIdFlattenedDtoFormatter();
-            var idDto = new ProductCategoryMemberIdFlattenedDto(id);
-            var idStr = formatter.ToString(idDto);
+            var formatter = (new ValueObjectTextFormatter<ProductCategoryMemberId>());
+            var idStr = formatter.ToString(id);
             return idStr;
         }
 

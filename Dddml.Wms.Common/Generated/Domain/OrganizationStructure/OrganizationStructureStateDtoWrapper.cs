@@ -39,19 +39,19 @@ namespace Dddml.Wms.Domain.OrganizationStructure
 			return this._state;
 		}
 
-        public OrganizationStructureIdDto Id
-        {
+		public virtual OrganizationStructureId Id
+		{
             get
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Id"))
                 {
-					return (_state.Id == null) ? null : new OrganizationStructureIdDtoWrapper(_state.Id);
+                    return _state.Id;
                 }
                 return null;
             }
             set
             {
-                _state.Id = (value == null) ? null : value.ToOrganizationStructureId();
+                _state.Id = value;
             }
         }
 

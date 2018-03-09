@@ -35,7 +35,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
         public virtual SellableInventoryItemStateCreatedDto ToSellableInventoryItemStateCreatedDto(ISellableInventoryItemStateCreated e)
         {
             var dto = new SellableInventoryItemStateCreatedDto();
-            dto.SellableInventoryItemEventId = new SellableInventoryItemEventIdDtoWrapper(e.SellableInventoryItemEventId);
+            dto.SellableInventoryItemEventId = e.SellableInventoryItemEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -54,7 +54,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
         public virtual SellableInventoryItemStateMergePatchedDto ToSellableInventoryItemStateMergePatchedDto(ISellableInventoryItemStateMergePatched e)
         {
             var dto = new SellableInventoryItemStateMergePatchedDto();
-            dto.SellableInventoryItemEventId = new SellableInventoryItemEventIdDtoWrapper(e.SellableInventoryItemEventId);
+            dto.SellableInventoryItemEventId = e.SellableInventoryItemEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

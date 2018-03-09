@@ -16,8 +16,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 
     public partial class ShipmentItemMvoStateDto : IShipmentItemMvoStateDto
     {
-
-        public virtual ShipmentItemIdDto ShipmentItemId
+        public virtual ShipmentItemId ShipmentItemId
         {
             get;
             set;
@@ -278,7 +277,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
         public virtual IShipmentItemMvoState ToShipmentItemMvoState()
         {
             var state = new ShipmentItemMvoState(true);
-            state.ShipmentItemId = (this.ShipmentItemId == null) ? null : this.ShipmentItemId.ToShipmentItemId();
+            state.ShipmentItemId = this.ShipmentItemId;
             state.ProductId = this.ProductId;
             state.AttributeSetInstanceId = this.AttributeSetInstanceId;
             state.Quantity = this.Quantity;

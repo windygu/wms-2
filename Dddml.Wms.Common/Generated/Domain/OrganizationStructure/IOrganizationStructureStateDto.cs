@@ -14,8 +14,7 @@ namespace Dddml.Wms.Domain.OrganizationStructure
 
     public interface IOrganizationStructureStateDto
     {
-
-        OrganizationStructureIdDto Id
+        OrganizationStructureId Id
         {
             get;
             set;

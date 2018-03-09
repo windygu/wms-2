@@ -39,7 +39,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
         public virtual InOutLineMvoStateCreatedDto ToInOutLineMvoStateCreatedDto(IInOutLineMvoStateCreated e)
         {
             var dto = new InOutLineMvoStateCreatedDto();
-            dto.InOutLineMvoEventId = new InOutLineMvoEventIdDtoWrapper(e.InOutLineMvoEventId);
+            dto.InOutLineMvoEventId = e.InOutLineMvoEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -97,7 +97,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
         public virtual InOutLineMvoStateMergePatchedDto ToInOutLineMvoStateMergePatchedDto(IInOutLineMvoStateMergePatched e)
         {
             var dto = new InOutLineMvoStateMergePatchedDto();
-            dto.InOutLineMvoEventId = new InOutLineMvoEventIdDtoWrapper(e.InOutLineMvoEventId);
+            dto.InOutLineMvoEventId = e.InOutLineMvoEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -205,7 +205,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
         public virtual InOutLineMvoStateDeletedDto ToInOutLineMvoStateDeletedDto(IInOutLineMvoStateDeleted e)
         {
             var dto = new InOutLineMvoStateDeletedDto();
-            dto.InOutLineMvoEventId = new InOutLineMvoEventIdDtoWrapper(e.InOutLineMvoEventId);
+            dto.InOutLineMvoEventId = e.InOutLineMvoEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

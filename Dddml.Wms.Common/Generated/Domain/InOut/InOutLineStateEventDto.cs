@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.InOut
 	public abstract class InOutLineStateEventDtoBase : IStateEventDto, IInOutLineStateCreated, IInOutLineStateMergePatched, IInOutLineStateRemoved
 	{
 
-        private InOutLineEventIdDto _inOutLineEventId;
+        private InOutLineEventId _inOutLineEventId;
 
-		protected internal virtual InOutLineEventIdDto InOutLineEventId 
+		protected internal virtual InOutLineEventId InOutLineEventId 
         {
             get 
             {
-                if (_inOutLineEventId == null) { _inOutLineEventId = new InOutLineEventIdDto(); }
+                if (_inOutLineEventId == null) { _inOutLineEventId = new InOutLineEventId(); }
                 return _inOutLineEventId;
             }
             set
@@ -71,7 +71,7 @@ namespace Dddml.Wms.Domain.InOut
 		InOutLineEventId IGlobalIdentity<InOutLineEventId>.GlobalId {
 			get 
 			{
-				return this.InOutLineEventId.ToInOutLineEventId();
+				return this.InOutLineEventId;
 			}
 		}
 
@@ -340,14 +340,14 @@ namespace Dddml.Wms.Domain.InOut
 
         InOutLineEventId IInOutLineStateEvent.InOutLineEventId
         {
-            get { return this.InOutLineEventId.ToInOutLineEventId(); }
+            get { return this.InOutLineEventId; }
         }
 
         protected InOutLineStateEventDtoBase()
         {
         }
 
-        protected InOutLineStateEventDtoBase(InOutLineEventIdDto stateEventId)
+        protected InOutLineStateEventDtoBase(InOutLineEventId stateEventId)
         {
             this.InOutLineEventId = stateEventId;
         }

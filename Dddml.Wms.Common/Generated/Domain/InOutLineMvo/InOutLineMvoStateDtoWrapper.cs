@@ -40,19 +40,19 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 			return this._state;
 		}
 
-        public InOutLineIdDto InOutLineId
-        {
+		public virtual InOutLineId InOutLineId
+		{
             get
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("InOutLineId"))
                 {
-					return (_state.InOutLineId == null) ? null : new InOutLineIdDtoWrapper(_state.InOutLineId);
+                    return _state.InOutLineId;
                 }
                 return null;
             }
             set
             {
-                _state.InOutLineId = (value == null) ? null : value.ToInOutLineId();
+                _state.InOutLineId = value;
             }
         }
 

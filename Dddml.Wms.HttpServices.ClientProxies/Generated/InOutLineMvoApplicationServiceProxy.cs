@@ -375,9 +375,8 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 
         public static string ToIdString(InOutLineId id)
         {
-            var formatter = new InOutLineIdFlattenedDtoFormatter();
-            var idDto = new InOutLineIdFlattenedDto(id);
-            var idStr = formatter.ToString(idDto);
+            var formatter = (new ValueObjectTextFormatter<InOutLineId>());
+            var idStr = formatter.ToString(id);
             return idStr;
         }
 

@@ -15,8 +15,7 @@ namespace Dddml.Wms.Domain.UomConversion
 
     public partial class UomConversionStateDto : IUomConversionStateDto
     {
-
-        public virtual UomConversionIdDto UomConversionId
+        public virtual UomConversionId UomConversionId
         {
             get;
             set;
@@ -85,7 +84,7 @@ namespace Dddml.Wms.Domain.UomConversion
         public virtual IUomConversionState ToUomConversionState()
         {
             var state = new UomConversionState(true);
-            state.UomConversionId = (this.UomConversionId == null) ? null : this.UomConversionId.ToUomConversionId();
+            state.UomConversionId = this.UomConversionId;
             state.ConversionFactor = this.ConversionFactor;
             state.CustomMethodId = this.CustomMethodId;
             state.DecimalScale = this.DecimalScale;

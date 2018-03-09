@@ -41,9 +41,9 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo.NHibernate
             }
             SellableInventoryItemEntryId idObj = (SellableInventoryItemEntryId)(eventStoreAggregateId as EventStoreAggregateId).Id;
             var criteria = CurrentSession.CreateCriteria<SellableInventoryItemEntryMvoStateEventBase>();
-            criteria.Add(Restrictions.Eq("SellableInventoryItemEntryMvoEventId.SellableInventoryItemEntryIdSellableInventoryItemIdProductId", idObj.SellableInventoryItemIdProductId));
-            criteria.Add(Restrictions.Eq("SellableInventoryItemEntryMvoEventId.SellableInventoryItemEntryIdSellableInventoryItemIdLocatorId", idObj.SellableInventoryItemIdLocatorId));
-            criteria.Add(Restrictions.Eq("SellableInventoryItemEntryMvoEventId.SellableInventoryItemEntryIdSellableInventoryItemIdAttributeSetInstanceId", idObj.SellableInventoryItemIdAttributeSetInstanceId));
+            criteria.Add(Restrictions.Eq("SellableInventoryItemEntryMvoEventId.SellableInventoryItemEntryIdSellableInventoryItemIdProductId", idObj.SellableInventoryItemId.ProductId));
+            criteria.Add(Restrictions.Eq("SellableInventoryItemEntryMvoEventId.SellableInventoryItemEntryIdSellableInventoryItemIdLocatorId", idObj.SellableInventoryItemId.LocatorId));
+            criteria.Add(Restrictions.Eq("SellableInventoryItemEntryMvoEventId.SellableInventoryItemEntryIdSellableInventoryItemIdAttributeSetInstanceId", idObj.SellableInventoryItemId.AttributeSetInstanceId));
             criteria.Add(Restrictions.Eq("SellableInventoryItemEntryMvoEventId.SellableInventoryItemEntryIdEntrySeqId", idObj.EntrySeqId));
             criteria.Add(Restrictions.Le("SellableInventoryItemEntryMvoEventId.SellableInventoryItemVersion", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("SellableInventoryItemEntryMvoEventId.SellableInventoryItemVersion"));

@@ -52,7 +52,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
             set { this.CommandId = value; }
         }
 
-		public virtual AttributeSetAttributeUseIdDto AttributeSetAttributeUseId { get; set; }
+		public virtual AttributeSetAttributeUseId AttributeSetAttributeUseId { get; set; }
 
 		public virtual int? SequenceNumber { get; set; }
 
@@ -83,19 +83,6 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 		public virtual bool? AttributeSetActive { get; set; }
 
 		public virtual bool? AttributeSetDeleted { get; set; }
-
-
-        AttributeSetAttributeUseId IAttributeUseMvoCommand.AttributeSetAttributeUseId
-        {
-            get 
-            {
-                return this.AttributeSetAttributeUseId.ToAttributeSetAttributeUseId();
-            }
-            set 
-            {
-                this.AttributeSetAttributeUseId = new AttributeSetAttributeUseIdDtoWrapper(value);
-            }
-        }
 
 		public virtual bool? IsPropertySequenceNumberRemoved { get; set; }
 

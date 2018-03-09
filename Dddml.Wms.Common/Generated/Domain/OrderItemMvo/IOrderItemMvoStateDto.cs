@@ -15,8 +15,7 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 
     public interface IOrderItemMvoStateDto
     {
-
-        OrderItemIdDto OrderItemId
+        OrderItemId OrderItemId
         {
             get;
             set;

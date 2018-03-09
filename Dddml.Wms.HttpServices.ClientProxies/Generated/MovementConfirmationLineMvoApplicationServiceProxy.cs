@@ -375,9 +375,8 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 
         public static string ToIdString(MovementConfirmationLineId id)
         {
-            var formatter = new MovementConfirmationLineIdFlattenedDtoFormatter();
-            var idDto = new MovementConfirmationLineIdFlattenedDto(id);
-            var idStr = formatter.ToString(idDto);
+            var formatter = (new ValueObjectTextFormatter<MovementConfirmationLineId>());
+            var idStr = formatter.ToString(id);
             return idStr;
         }
 

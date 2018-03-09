@@ -16,8 +16,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
     public partial class InventoryItemEntryMvoStateDto : IInventoryItemEntryMvoStateDto
     {
-
-        public virtual InventoryItemEntryIdDto InventoryItemEntryId
+        public virtual InventoryItemEntryId InventoryItemEntryId
         {
             get;
             set;
@@ -53,8 +52,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             set;
         }
 
-
-        public virtual InventoryItemSourceInfoDto Source
+        public virtual InventoryItemSourceInfo Source
         {
             get;
             set;
@@ -153,13 +151,13 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
         public virtual IInventoryItemEntryMvoState ToInventoryItemEntryMvoState()
         {
             var state = new InventoryItemEntryMvoState(true);
-            state.InventoryItemEntryId = (this.InventoryItemEntryId == null) ? null : this.InventoryItemEntryId.ToInventoryItemEntryId();
+            state.InventoryItemEntryId = this.InventoryItemEntryId;
             if (this.OnHandQuantity != null && this.OnHandQuantity.HasValue) { state.OnHandQuantity = this.OnHandQuantity.Value; }
             if (this.InTransitQuantity != null && this.InTransitQuantity.HasValue) { state.InTransitQuantity = this.InTransitQuantity.Value; }
             if (this.ReservedQuantity != null && this.ReservedQuantity.HasValue) { state.ReservedQuantity = this.ReservedQuantity.Value; }
             if (this.OccupiedQuantity != null && this.OccupiedQuantity.HasValue) { state.OccupiedQuantity = this.OccupiedQuantity.Value; }
             if (this.VirtualQuantity != null && this.VirtualQuantity.HasValue) { state.VirtualQuantity = this.VirtualQuantity.Value; }
-            state.Source = (this.Source == null) ? null : this.Source.ToInventoryItemSourceInfo();
+            state.Source = this.Source;
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             if (this.InventoryItemOnHandQuantity != null && this.InventoryItemOnHandQuantity.HasValue) { state.InventoryItemOnHandQuantity = this.InventoryItemOnHandQuantity.Value; }
             if (this.InventoryItemInTransitQuantity != null && this.InventoryItemInTransitQuantity.HasValue) { state.InventoryItemInTransitQuantity = this.InventoryItemInTransitQuantity.Value; }

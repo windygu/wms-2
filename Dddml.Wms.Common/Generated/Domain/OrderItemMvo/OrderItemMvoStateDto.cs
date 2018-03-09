@@ -16,8 +16,7 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 
     public partial class OrderItemMvoStateDto : IOrderItemMvoStateDto
     {
-
-        public virtual OrderItemIdDto OrderItemId
+        public virtual OrderItemId OrderItemId
         {
             get;
             set;
@@ -452,7 +451,7 @@ namespace Dddml.Wms.Domain.OrderItemMvo
         public virtual IOrderItemMvoState ToOrderItemMvoState()
         {
             var state = new OrderItemMvoState(true);
-            state.OrderItemId = (this.OrderItemId == null) ? null : this.OrderItemId.ToOrderItemId();
+            state.OrderItemId = this.OrderItemId;
             state.ProductId = this.ProductId;
             state.ExternalProductId = this.ExternalProductId;
             state.Quantity = this.Quantity;

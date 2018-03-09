@@ -50,8 +50,7 @@ namespace Dddml.Wms.Domain.InventoryItem
             set;
         }
 
-
-        InventoryItemSourceInfoDto Source
+        InventoryItemSourceInfo Source
         {
             get;
             set;
@@ -63,8 +62,7 @@ namespace Dddml.Wms.Domain.InventoryItem
             set;
         }
 
-
-        InventoryItemIdDto InventoryItemId
+        InventoryItemId InventoryItemId
         {
             get;
             set;

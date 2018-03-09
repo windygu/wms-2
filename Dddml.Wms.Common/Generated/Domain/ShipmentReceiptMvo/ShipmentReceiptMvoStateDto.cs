@@ -16,8 +16,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
     public partial class ShipmentReceiptMvoStateDto : IShipmentReceiptMvoStateDto
     {
-
-        public virtual ShipmentReceiptIdDto ShipmentReceiptId
+        public virtual ShipmentReceiptId ShipmentReceiptId
         {
             get;
             set;
@@ -320,7 +319,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
         public virtual IShipmentReceiptMvoState ToShipmentReceiptMvoState()
         {
             var state = new ShipmentReceiptMvoState(true);
-            state.ShipmentReceiptId = (this.ShipmentReceiptId == null) ? null : this.ShipmentReceiptId.ToShipmentReceiptId();
+            state.ShipmentReceiptId = this.ShipmentReceiptId;
             state.ProductId = this.ProductId;
             state.AttributeSetInstanceId = this.AttributeSetInstanceId;
             state.ShipmentItemSeqId = this.ShipmentItemSeqId;

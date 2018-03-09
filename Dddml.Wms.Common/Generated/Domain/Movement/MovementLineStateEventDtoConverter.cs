@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.Movement
         public virtual MovementLineStateCreatedDto ToMovementLineStateCreatedDto(IMovementLineStateCreated e)
         {
             var dto = new MovementLineStateCreatedDto();
-            dto.MovementLineEventId = new MovementLineEventIdDtoWrapper(e.MovementLineEventId);
+            dto.MovementLineEventId = e.MovementLineEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;
@@ -57,7 +57,7 @@ namespace Dddml.Wms.Domain.Movement
         public virtual MovementLineStateMergePatchedDto ToMovementLineStateMergePatchedDto(IMovementLineStateMergePatched e)
         {
             var dto = new MovementLineStateMergePatchedDto();
-            dto.MovementLineEventId = new MovementLineEventIdDtoWrapper(e.MovementLineEventId);
+            dto.MovementLineEventId = e.MovementLineEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;
@@ -86,7 +86,7 @@ namespace Dddml.Wms.Domain.Movement
         public virtual MovementLineStateRemovedDto ToMovementLineStateRemovedDto(IMovementLineStateRemoved e)
         {
             var dto = new MovementLineStateRemovedDto();
-            dto.MovementLineEventId = new MovementLineEventIdDtoWrapper(e.MovementLineEventId);
+            dto.MovementLineEventId = e.MovementLineEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;

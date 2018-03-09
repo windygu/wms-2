@@ -54,35 +54,9 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 
 		public virtual string InventoryPostingRuleId { get; set; }
 
+		public virtual InventoryItemId TriggerInventoryItemId { get; set; }
 
-		public virtual InventoryItemIdDto TriggerInventoryItemId { get; set; }
-
-        InventoryItemId ICreateOrMergePatchOrDeleteInventoryPostingRule.TriggerInventoryItemId
-        {
-            get 
-            {
-                return (this.TriggerInventoryItemId == null) ? null : this.TriggerInventoryItemId.ToInventoryItemId();
-            }
-            set 
-            {
-                this.TriggerInventoryItemId = (value == null) ? null : new InventoryItemIdDtoWrapper(value);
-            }
-        }
-
-
-		public virtual InventoryItemIdDto OutputInventoryItemId { get; set; }
-
-        InventoryItemId ICreateOrMergePatchOrDeleteInventoryPostingRule.OutputInventoryItemId
-        {
-            get 
-            {
-                return (this.OutputInventoryItemId == null) ? null : this.OutputInventoryItemId.ToInventoryItemId();
-            }
-            set 
-            {
-                this.OutputInventoryItemId = (value == null) ? null : new InventoryItemIdDtoWrapper(value);
-            }
-        }
+		public virtual InventoryItemId OutputInventoryItemId { get; set; }
 
 		public virtual string TriggerAccountName { get; set; }
 

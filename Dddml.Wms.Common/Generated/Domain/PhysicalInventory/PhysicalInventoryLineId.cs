@@ -34,17 +34,17 @@ namespace Dddml.Wms.Domain.PhysicalInventory
         #region  Flattened Properties
 
 
-		public virtual string InventoryItemIdProductId {
+		protected internal virtual string InventoryItemIdProductId {
 			get { return InventoryItemId.ProductId; }
 			set { InventoryItemId.ProductId = value; }
 		}
 
-		public virtual string InventoryItemIdLocatorId {
+		protected internal virtual string InventoryItemIdLocatorId {
 			get { return InventoryItemId.LocatorId; }
 			set { InventoryItemId.LocatorId = value; }
 		}
 
-		public virtual string InventoryItemIdAttributeSetInstanceId {
+		protected internal virtual string InventoryItemIdAttributeSetInstanceId {
 			get { return InventoryItemId.AttributeSetInstanceId; }
 			set { InventoryItemId.AttributeSetInstanceId = value; }
 		}
@@ -108,6 +108,46 @@ namespace Dddml.Wms.Domain.PhysicalInventory
                 + "PhysicalInventoryDocumentNumber: " + this.PhysicalInventoryDocumentNumber + ", "
                 + "InventoryItemId: " + this.InventoryItemId + ", "
                 ;
+        }
+
+        protected internal static readonly string[] FlattenedPropertyNames = new string[] { "PhysicalInventoryDocumentNumber", "InventoryItemIdProductId", "InventoryItemIdLocatorId", "InventoryItemIdAttributeSetInstanceId" };
+
+        protected internal static readonly Type[] FlattenedPropertyTypes = new Type[] { typeof(string), typeof(string), typeof(string), typeof(string) };
+
+        protected internal static readonly IDictionary<string, Type> FlattenedPropertyTypeDictionary;
+
+        static PhysicalInventoryLineId()
+        {
+            var dict = new Dictionary<string, Type>();
+            for (int i = 0; i < FlattenedPropertyNames.Length; i++)
+            {
+                dict.Add(FlattenedPropertyNames[i], FlattenedPropertyTypes[i]);
+            }
+            FlattenedPropertyTypeDictionary = dict;
+        }
+
+        protected internal void ForEachFlattenedProperty(Action<string, object> act)
+        {
+            for (int i = 0; i < FlattenedPropertyNames.Length; i++)
+            {
+                string pn = FlattenedPropertyNames[i];
+                if (Char.IsLower(pn[0])) { pn = Char.ToUpper(pn[0]) + pn.Substring(1); }
+                var m = this.GetType().GetProperty(pn, System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                object pv = m.GetValue(this);
+                act(pn, pv);
+            }
+        }
+
+        protected internal void SetFlattenedPropertyValues(params object[] values)
+        {
+            for (int i = 0; i < FlattenedPropertyNames.Length; i++)
+            {
+                string pn = FlattenedPropertyNames[i];
+                if (Char.IsLower(pn[0])) { pn = Char.ToUpper(pn[0]) + pn.Substring(1); }
+                var v = values[i];
+                var m = this.GetType().GetProperty(pn, System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                m.SetValue(this, v);
+            }
         }
 	}
 

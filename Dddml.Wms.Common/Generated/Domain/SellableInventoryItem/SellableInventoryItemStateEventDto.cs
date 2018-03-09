@@ -17,13 +17,13 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 	public abstract class SellableInventoryItemStateEventDtoBase : IStateEventDto, ISellableInventoryItemStateCreated, ISellableInventoryItemStateMergePatched
 	{
 
-        private SellableInventoryItemEventIdDto _sellableInventoryItemEventId;
+        private SellableInventoryItemEventId _sellableInventoryItemEventId;
 
-		protected internal virtual SellableInventoryItemEventIdDto SellableInventoryItemEventId 
+		protected internal virtual SellableInventoryItemEventId SellableInventoryItemEventId 
         {
             get 
             {
-                if (_sellableInventoryItemEventId == null) { _sellableInventoryItemEventId = new SellableInventoryItemEventIdDto(); }
+                if (_sellableInventoryItemEventId == null) { _sellableInventoryItemEventId = new SellableInventoryItemEventId(); }
                 return _sellableInventoryItemEventId;
             }
             set
@@ -32,7 +32,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
             }
         }
 
-        public virtual InventoryItemIdDto SellableInventoryItemId
+        public virtual InventoryItemId SellableInventoryItemId
         {
             get { return SellableInventoryItemEventId.SellableInventoryItemId; }
             set { SellableInventoryItemEventId.SellableInventoryItemId = value; }
@@ -57,7 +57,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 		SellableInventoryItemEventId IGlobalIdentity<SellableInventoryItemEventId>.GlobalId {
 			get 
 			{
-				return this.SellableInventoryItemEventId.ToSellableInventoryItemEventId();
+				return this.SellableInventoryItemEventId;
 			}
 		}
 
@@ -130,9 +130,9 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
 
 
-        private SellableInventoryItemEntryEventIdDto NewSellableInventoryItemEntryEventId(long entrySeqId)
+        private SellableInventoryItemEntryEventId NewSellableInventoryItemEntryEventId(long entrySeqId)
         {
-            var eId = new SellableInventoryItemEntryEventIdDto();
+            var eId = new SellableInventoryItemEntryEventId();
             eId.SellableInventoryItemId = this.SellableInventoryItemEventId.SellableInventoryItemId;
             eId.EntrySeqId = entrySeqId;
             eId.SellableInventoryItemVersion = this.SellableInventoryItemEventId.Version;
@@ -180,14 +180,14 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
         SellableInventoryItemEventId ISellableInventoryItemStateEvent.SellableInventoryItemEventId
         {
-            get { return this.SellableInventoryItemEventId.ToSellableInventoryItemEventId(); }
+            get { return this.SellableInventoryItemEventId; }
         }
 
         protected SellableInventoryItemStateEventDtoBase()
         {
         }
 
-        protected SellableInventoryItemStateEventDtoBase(SellableInventoryItemEventIdDto stateEventId)
+        protected SellableInventoryItemStateEventDtoBase(SellableInventoryItemEventId stateEventId)
         {
             this.SellableInventoryItemEventId = stateEventId;
         }

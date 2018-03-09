@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.User
 	public abstract class UserClaimStateEventDtoBase : IStateEventDto, IUserClaimStateCreated, IUserClaimStateMergePatched, IUserClaimStateRemoved
 	{
 
-        private UserClaimEventIdDto _userClaimEventId;
+        private UserClaimEventId _userClaimEventId;
 
-		protected internal virtual UserClaimEventIdDto UserClaimEventId 
+		protected internal virtual UserClaimEventId UserClaimEventId 
         {
             get 
             {
-                if (_userClaimEventId == null) { _userClaimEventId = new UserClaimEventIdDto(); }
+                if (_userClaimEventId == null) { _userClaimEventId = new UserClaimEventId(); }
                 return _userClaimEventId;
             }
             set
@@ -53,7 +53,7 @@ namespace Dddml.Wms.Domain.User
 		UserClaimEventId IGlobalIdentity<UserClaimEventId>.GlobalId {
 			get 
 			{
-				return this.UserClaimEventId.ToUserClaimEventId();
+				return this.UserClaimEventId;
 			}
 		}
 
@@ -151,14 +151,14 @@ namespace Dddml.Wms.Domain.User
 
         UserClaimEventId IUserClaimStateEvent.UserClaimEventId
         {
-            get { return this.UserClaimEventId.ToUserClaimEventId(); }
+            get { return this.UserClaimEventId; }
         }
 
         protected UserClaimStateEventDtoBase()
         {
         }
 
-        protected UserClaimStateEventDtoBase(UserClaimEventIdDto stateEventId)
+        protected UserClaimStateEventDtoBase(UserClaimEventId stateEventId)
         {
             this.UserClaimEventId = stateEventId;
         }

@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.Product
 	public abstract class ProductStateEventDtoBase : IStateEventDto, IProductStateCreated, IProductStateMergePatched
 	{
 
-        private ProductEventIdDto _productEventId;
+        private ProductEventId _productEventId;
 
-		protected internal virtual ProductEventIdDto ProductEventId 
+		protected internal virtual ProductEventId ProductEventId 
         {
             get 
             {
-                if (_productEventId == null) { _productEventId = new ProductEventIdDto(); }
+                if (_productEventId == null) { _productEventId = new ProductEventId(); }
                 return _productEventId;
             }
             set
@@ -175,7 +175,7 @@ namespace Dddml.Wms.Domain.Product
 		ProductEventId IGlobalIdentity<ProductEventId>.GlobalId {
 			get 
 			{
-				return this.ProductEventId.ToProductEventId();
+				return this.ProductEventId;
 			}
 		}
 
@@ -1373,14 +1373,14 @@ namespace Dddml.Wms.Domain.Product
 
         ProductEventId IProductStateEvent.ProductEventId
         {
-            get { return this.ProductEventId.ToProductEventId(); }
+            get { return this.ProductEventId; }
         }
 
         protected ProductStateEventDtoBase()
         {
         }
 
-        protected ProductStateEventDtoBase(ProductEventIdDto stateEventId)
+        protected ProductStateEventDtoBase(ProductEventId stateEventId)
         {
             this.ProductEventId = stateEventId;
         }

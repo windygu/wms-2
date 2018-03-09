@@ -35,22 +35,22 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
         #region  Flattened Properties
 
 
-		public virtual string InventoryItemRequirementEntryIdInventoryItemRequirementIdProductId {
+		protected internal virtual string InventoryItemRequirementEntryIdInventoryItemRequirementIdProductId {
 			get { return InventoryItemRequirementEntryId.InventoryItemRequirementId.ProductId; }
 			set { InventoryItemRequirementEntryId.InventoryItemRequirementId.ProductId = value; }
 		}
 
-		public virtual string InventoryItemRequirementEntryIdInventoryItemRequirementIdLocatorId {
+		protected internal virtual string InventoryItemRequirementEntryIdInventoryItemRequirementIdLocatorId {
 			get { return InventoryItemRequirementEntryId.InventoryItemRequirementId.LocatorId; }
 			set { InventoryItemRequirementEntryId.InventoryItemRequirementId.LocatorId = value; }
 		}
 
-		public virtual string InventoryItemRequirementEntryIdInventoryItemRequirementIdAttributeSetInstanceId {
+		protected internal virtual string InventoryItemRequirementEntryIdInventoryItemRequirementIdAttributeSetInstanceId {
 			get { return InventoryItemRequirementEntryId.InventoryItemRequirementId.AttributeSetInstanceId; }
 			set { InventoryItemRequirementEntryId.InventoryItemRequirementId.AttributeSetInstanceId = value; }
 		}
 
-		public virtual long InventoryItemRequirementEntryIdEntrySeqId {
+		protected internal virtual long InventoryItemRequirementEntryIdEntrySeqId {
 			get { return InventoryItemRequirementEntryId.EntrySeqId; }
 			set { InventoryItemRequirementEntryId.EntrySeqId = value; }
 		}
@@ -114,6 +114,46 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
                 + "InventoryItemRequirementEntryId: " + this.InventoryItemRequirementEntryId + ", "
                 + "InventoryItemRequirementVersion: " + this.InventoryItemRequirementVersion + ", "
                 ;
+        }
+
+        protected internal static readonly string[] FlattenedPropertyNames = new string[] { "InventoryItemRequirementEntryIdInventoryItemRequirementIdProductId", "InventoryItemRequirementEntryIdInventoryItemRequirementIdLocatorId", "InventoryItemRequirementEntryIdInventoryItemRequirementIdAttributeSetInstanceId", "InventoryItemRequirementEntryIdEntrySeqId", "InventoryItemRequirementVersion" };
+
+        protected internal static readonly Type[] FlattenedPropertyTypes = new Type[] { typeof(string), typeof(string), typeof(string), typeof(long), typeof(long) };
+
+        protected internal static readonly IDictionary<string, Type> FlattenedPropertyTypeDictionary;
+
+        static InventoryItemRequirementEntryMvoEventId()
+        {
+            var dict = new Dictionary<string, Type>();
+            for (int i = 0; i < FlattenedPropertyNames.Length; i++)
+            {
+                dict.Add(FlattenedPropertyNames[i], FlattenedPropertyTypes[i]);
+            }
+            FlattenedPropertyTypeDictionary = dict;
+        }
+
+        protected internal void ForEachFlattenedProperty(Action<string, object> act)
+        {
+            for (int i = 0; i < FlattenedPropertyNames.Length; i++)
+            {
+                string pn = FlattenedPropertyNames[i];
+                if (Char.IsLower(pn[0])) { pn = Char.ToUpper(pn[0]) + pn.Substring(1); }
+                var m = this.GetType().GetProperty(pn, System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                object pv = m.GetValue(this);
+                act(pn, pv);
+            }
+        }
+
+        protected internal void SetFlattenedPropertyValues(params object[] values)
+        {
+            for (int i = 0; i < FlattenedPropertyNames.Length; i++)
+            {
+                string pn = FlattenedPropertyNames[i];
+                if (Char.IsLower(pn[0])) { pn = Char.ToUpper(pn[0]) + pn.Substring(1); }
+                var v = values[i];
+                var m = this.GetType().GetProperty(pn, System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                m.SetValue(this, v);
+            }
         }
 	}
 

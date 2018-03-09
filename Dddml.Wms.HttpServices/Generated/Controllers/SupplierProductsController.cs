@@ -260,7 +260,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = ParseIdString(id.IsNormalized() ? id : id.Normalize());
             if (value.SupplierProductId == null)
             {
-                value.SupplierProductId = new SupplierProductIdDtoWrapper(idObj);
+                value.SupplierProductId = idObj;
             }
             else if (!((ICreateOrMergePatchOrDeleteSupplierProduct)value).SupplierProductId.Equals(idObj))
             {
@@ -270,10 +270,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static SupplierProductId ParseIdString(string idString)
         {
-            var formatter = new SupplierProductIdFlattenedDtoFormatter();
-            var idDto = formatter.Parse(idString);
-            var rId = idDto.ToSupplierProductId();
-            return rId;
+            var formatter = new ValueObjectTextFormatter<SupplierProductId>();
+            return formatter.Parse(idString);
         }
 
         public static string GetFilterPropertyName(string fieldName)
@@ -338,7 +336,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             foreach (var id in ids)
             {
                 var dto = new SupplierProductStateDtoWrapper();
-                dto.SupplierProductId = new SupplierProductIdDtoWrapper(id);
+                dto.SupplierProductId = id;
                 states.Add(dto);
             }
             return states;

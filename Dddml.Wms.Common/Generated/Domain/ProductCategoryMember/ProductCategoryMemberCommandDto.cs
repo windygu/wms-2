@@ -51,7 +51,7 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
             set { this.CommandId = value; }
         }
 
-		public virtual ProductCategoryMemberIdDto ProductCategoryMemberId { get; set; }
+		public virtual ProductCategoryMemberId ProductCategoryMemberId { get; set; }
 
 		public virtual DateTime? ThruDate { get; set; }
 
@@ -62,19 +62,6 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 		public virtual decimal? Quantity { get; set; }
 
 		public virtual bool? Active { get; set; }
-
-
-        ProductCategoryMemberId IProductCategoryMemberCommand.ProductCategoryMemberId
-        {
-            get 
-            {
-                return this.ProductCategoryMemberId.ToProductCategoryMemberId();
-            }
-            set 
-            {
-                this.ProductCategoryMemberId = new ProductCategoryMemberIdDtoWrapper(value);
-            }
-        }
 
 		public virtual bool? IsPropertyThruDateRemoved { get; set; }
 

@@ -14,8 +14,7 @@ namespace Dddml.Wms.Domain.OrderShipment
 
     public interface IOrderShipmentStateDto
     {
-
-        OrderShipmentIdDto OrderShipmentId
+        OrderShipmentId OrderShipmentId
         {
             get;
             set;

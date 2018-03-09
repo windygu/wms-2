@@ -39,19 +39,19 @@ namespace Dddml.Wms.Domain.RolePermission
 			return this._state;
 		}
 
-        public RolePermissionIdDto Id
-        {
+		public virtual RolePermissionId Id
+		{
             get
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Id"))
                 {
-					return (_state.Id == null) ? null : new RolePermissionIdDtoWrapper(_state.Id);
+                    return _state.Id;
                 }
                 return null;
             }
             set
             {
-                _state.Id = (value == null) ? null : value.ToRolePermissionId();
+                _state.Id = value;
             }
         }
 

@@ -16,8 +16,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
     public partial class PhysicalInventoryLineStateDto : IPhysicalInventoryLineStateDto
     {
-
-        public virtual InventoryItemIdDto InventoryItemId
+        public virtual InventoryItemId InventoryItemId
         {
             get;
             set;
@@ -92,7 +91,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
         public virtual IPhysicalInventoryLineState ToPhysicalInventoryLineState()
         {
             var state = new PhysicalInventoryLineState(true);
-            state.InventoryItemId = (this.InventoryItemId == null) ? null : this.InventoryItemId.ToInventoryItemId();
+            state.InventoryItemId = this.InventoryItemId;
             if (this.BookQuantity != null && this.BookQuantity.HasValue) { state.BookQuantity = this.BookQuantity.Value; }
             if (this.CountedQuantity != null && this.CountedQuantity.HasValue) { state.CountedQuantity = this.CountedQuantity.Value; }
             if (this.Processed != null && this.Processed.HasValue) { state.Processed = this.Processed.Value; }

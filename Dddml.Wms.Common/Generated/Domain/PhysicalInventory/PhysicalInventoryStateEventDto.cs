@@ -16,13 +16,13 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 	public abstract class PhysicalInventoryStateEventDtoBase : IStateEventDto, IPhysicalInventoryStateCreated, IPhysicalInventoryStateMergePatched
 	{
 
-        private PhysicalInventoryEventIdDto _physicalInventoryEventId;
+        private PhysicalInventoryEventId _physicalInventoryEventId;
 
-		protected internal virtual PhysicalInventoryEventIdDto PhysicalInventoryEventId 
+		protected internal virtual PhysicalInventoryEventId PhysicalInventoryEventId 
         {
             get 
             {
-                if (_physicalInventoryEventId == null) { _physicalInventoryEventId = new PhysicalInventoryEventIdDto(); }
+                if (_physicalInventoryEventId == null) { _physicalInventoryEventId = new PhysicalInventoryEventId(); }
                 return _physicalInventoryEventId;
             }
             set
@@ -84,7 +84,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 		PhysicalInventoryEventId IGlobalIdentity<PhysicalInventoryEventId>.GlobalId {
 			get 
 			{
-				return this.PhysicalInventoryEventId.ToPhysicalInventoryEventId();
+				return this.PhysicalInventoryEventId;
 			}
 		}
 
@@ -423,11 +423,11 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
 
 
-        private PhysicalInventoryLineEventIdDto NewPhysicalInventoryLineEventId(InventoryItemId inventoryItemId)
+        private PhysicalInventoryLineEventId NewPhysicalInventoryLineEventId(InventoryItemId inventoryItemId)
         {
-            var eId = new PhysicalInventoryLineEventIdDto();
+            var eId = new PhysicalInventoryLineEventId();
             eId.PhysicalInventoryDocumentNumber = this.PhysicalInventoryEventId.DocumentNumber;
-            eId.InventoryItemId = new InventoryItemIdDtoWrapper(inventoryItemId);
+            eId.InventoryItemId = inventoryItemId;
             eId.PhysicalInventoryVersion = this.PhysicalInventoryEventId.Version;
             return eId;
         }
@@ -499,14 +499,14 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
         PhysicalInventoryEventId IPhysicalInventoryStateEvent.PhysicalInventoryEventId
         {
-            get { return this.PhysicalInventoryEventId.ToPhysicalInventoryEventId(); }
+            get { return this.PhysicalInventoryEventId; }
         }
 
         protected PhysicalInventoryStateEventDtoBase()
         {
         }
 
-        protected PhysicalInventoryStateEventDtoBase(PhysicalInventoryEventIdDto stateEventId)
+        protected PhysicalInventoryStateEventDtoBase(PhysicalInventoryEventId stateEventId)
         {
             this.PhysicalInventoryEventId = stateEventId;
         }

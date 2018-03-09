@@ -162,7 +162,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         public IInventoryItemEntryStateDto GetInventoryItemEntry(string inventoryItemId, long entrySeqId)
         {
           try {
-            var state = (InventoryItemEntryState)_inventoryItemApplicationService.GetInventoryItemEntry((new InventoryItemIdFlattenedDtoFormatter().Parse(inventoryItemId)).ToInventoryItemId(), entrySeqId);
+            var state = (InventoryItemEntryState)_inventoryItemApplicationService.GetInventoryItemEntry(((new ValueObjectTextFormatter<InventoryItemId>()).Parse(inventoryItemId)), entrySeqId);
             if (state == null) { return null; }
             var stateDto = new InventoryItemEntryStateDtoWrapper(state);
             stateDto.AllFieldsReturned = true;
@@ -255,7 +255,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = ParseIdString(id.IsNormalized() ? id : id.Normalize());
             if (value.InventoryItemId == null)
             {
-                value.InventoryItemId = new InventoryItemIdDtoWrapper(idObj);
+                value.InventoryItemId = idObj;
             }
             else if (!((ICreateOrMergePatchOrDeleteInventoryItem)value).InventoryItemId.Equals(idObj))
             {
@@ -265,10 +265,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static InventoryItemId ParseIdString(string idString)
         {
-            var formatter = new InventoryItemIdFlattenedDtoFormatter();
-            var idDto = formatter.Parse(idString);
-            var rId = idDto.ToInventoryItemId();
-            return rId;
+            var formatter = new ValueObjectTextFormatter<InventoryItemId>();
+            return formatter.Parse(idString);
         }
 
         public static string GetFilterPropertyName(string fieldName)
@@ -333,7 +331,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             foreach (var id in ids)
             {
                 var dto = new InventoryItemStateDtoWrapper();
-                dto.InventoryItemId = new InventoryItemIdDtoWrapper(id);
+                dto.InventoryItemId = id;
                 states.Add(dto);
             }
             return states;

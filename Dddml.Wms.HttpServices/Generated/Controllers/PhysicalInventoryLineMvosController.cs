@@ -274,7 +274,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = ParseIdString(id.IsNormalized() ? id : id.Normalize());
             if (value.PhysicalInventoryLineId == null)
             {
-                value.PhysicalInventoryLineId = new PhysicalInventoryLineIdDtoWrapper(idObj);
+                value.PhysicalInventoryLineId = idObj;
             }
             else if (!((ICreateOrMergePatchOrDeletePhysicalInventoryLineMvo)value).PhysicalInventoryLineId.Equals(idObj))
             {
@@ -284,10 +284,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static PhysicalInventoryLineId ParseIdString(string idString)
         {
-            var formatter = new PhysicalInventoryLineIdFlattenedDtoFormatter();
-            var idDto = formatter.Parse(idString);
-            var rId = idDto.ToPhysicalInventoryLineId();
-            return rId;
+            var formatter = new ValueObjectTextFormatter<PhysicalInventoryLineId>();
+            return formatter.Parse(idString);
         }
 
         public static string GetFilterPropertyName(string fieldName)
@@ -352,7 +350,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             foreach (var id in ids)
             {
                 var dto = new PhysicalInventoryLineMvoStateDtoWrapper();
-                dto.PhysicalInventoryLineId = new PhysicalInventoryLineIdDtoWrapper(id);
+                dto.PhysicalInventoryLineId = id;
                 states.Add(dto);
             }
             return states;

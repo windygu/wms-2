@@ -40,19 +40,19 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 			return this._state;
 		}
 
-        public PhysicalInventoryLineIdDto PhysicalInventoryLineId
-        {
+		public virtual PhysicalInventoryLineId PhysicalInventoryLineId
+		{
             get
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("PhysicalInventoryLineId"))
                 {
-					return (_state.PhysicalInventoryLineId == null) ? null : new PhysicalInventoryLineIdDtoWrapper(_state.PhysicalInventoryLineId);
+                    return _state.PhysicalInventoryLineId;
                 }
                 return null;
             }
             set
             {
-                _state.PhysicalInventoryLineId = (value == null) ? null : value.ToPhysicalInventoryLineId();
+                _state.PhysicalInventoryLineId = value;
             }
         }
 

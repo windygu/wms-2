@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.User
         public virtual UserPermissionStateCreatedDto ToUserPermissionStateCreatedDto(IUserPermissionStateCreated e)
         {
             var dto = new UserPermissionStateCreatedDto();
-            dto.UserPermissionEventId = new UserPermissionEventIdDtoWrapper(e.UserPermissionEventId);
+            dto.UserPermissionEventId = e.UserPermissionEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;
@@ -50,7 +50,7 @@ namespace Dddml.Wms.Domain.User
         public virtual UserPermissionStateMergePatchedDto ToUserPermissionStateMergePatchedDto(IUserPermissionStateMergePatched e)
         {
             var dto = new UserPermissionStateMergePatchedDto();
-            dto.UserPermissionEventId = new UserPermissionEventIdDtoWrapper(e.UserPermissionEventId);
+            dto.UserPermissionEventId = e.UserPermissionEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;
@@ -65,7 +65,7 @@ namespace Dddml.Wms.Domain.User
         public virtual UserPermissionStateRemovedDto ToUserPermissionStateRemovedDto(IUserPermissionStateRemoved e)
         {
             var dto = new UserPermissionStateRemovedDto();
-            dto.UserPermissionEventId = new UserPermissionEventIdDtoWrapper(e.UserPermissionEventId);
+            dto.UserPermissionEventId = e.UserPermissionEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;

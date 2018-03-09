@@ -14,8 +14,7 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 
     public interface IProductCategoryMemberStateDto
     {
-
-        ProductCategoryMemberIdDto ProductCategoryMemberId
+        ProductCategoryMemberId ProductCategoryMemberId
         {
             get;
             set;

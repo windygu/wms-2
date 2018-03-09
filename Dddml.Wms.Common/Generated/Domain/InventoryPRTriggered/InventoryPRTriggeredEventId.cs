@@ -34,27 +34,27 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
         #region  Flattened Properties
 
 
-		public virtual string InventoryPRTriggeredIdSourceEntryIdInventoryItemIdProductId {
+		protected internal virtual string InventoryPRTriggeredIdSourceEntryIdInventoryItemIdProductId {
 			get { return InventoryPRTriggeredId.SourceEntryId.InventoryItemId.ProductId; }
 			set { InventoryPRTriggeredId.SourceEntryId.InventoryItemId.ProductId = value; }
 		}
 
-		public virtual string InventoryPRTriggeredIdSourceEntryIdInventoryItemIdLocatorId {
+		protected internal virtual string InventoryPRTriggeredIdSourceEntryIdInventoryItemIdLocatorId {
 			get { return InventoryPRTriggeredId.SourceEntryId.InventoryItemId.LocatorId; }
 			set { InventoryPRTriggeredId.SourceEntryId.InventoryItemId.LocatorId = value; }
 		}
 
-		public virtual string InventoryPRTriggeredIdSourceEntryIdInventoryItemIdAttributeSetInstanceId {
+		protected internal virtual string InventoryPRTriggeredIdSourceEntryIdInventoryItemIdAttributeSetInstanceId {
 			get { return InventoryPRTriggeredId.SourceEntryId.InventoryItemId.AttributeSetInstanceId; }
 			set { InventoryPRTriggeredId.SourceEntryId.InventoryItemId.AttributeSetInstanceId = value; }
 		}
 
-		public virtual long InventoryPRTriggeredIdSourceEntryIdEntrySeqId {
+		protected internal virtual long InventoryPRTriggeredIdSourceEntryIdEntrySeqId {
 			get { return InventoryPRTriggeredId.SourceEntryId.EntrySeqId; }
 			set { InventoryPRTriggeredId.SourceEntryId.EntrySeqId = value; }
 		}
 
-		public virtual string InventoryPRTriggeredIdInventoryPostingRuleId {
+		protected internal virtual string InventoryPRTriggeredIdInventoryPostingRuleId {
 			get { return InventoryPRTriggeredId.InventoryPostingRuleId; }
 			set { InventoryPRTriggeredId.InventoryPostingRuleId = value; }
 		}
@@ -118,6 +118,46 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
                 + "InventoryPRTriggeredId: " + this.InventoryPRTriggeredId + ", "
                 + "Version: " + this.Version + ", "
                 ;
+        }
+
+        protected internal static readonly string[] FlattenedPropertyNames = new string[] { "InventoryPRTriggeredIdSourceEntryIdInventoryItemIdProductId", "InventoryPRTriggeredIdSourceEntryIdInventoryItemIdLocatorId", "InventoryPRTriggeredIdSourceEntryIdInventoryItemIdAttributeSetInstanceId", "InventoryPRTriggeredIdSourceEntryIdEntrySeqId", "InventoryPRTriggeredIdInventoryPostingRuleId", "Version" };
+
+        protected internal static readonly Type[] FlattenedPropertyTypes = new Type[] { typeof(string), typeof(string), typeof(string), typeof(long), typeof(string), typeof(long) };
+
+        protected internal static readonly IDictionary<string, Type> FlattenedPropertyTypeDictionary;
+
+        static InventoryPRTriggeredEventId()
+        {
+            var dict = new Dictionary<string, Type>();
+            for (int i = 0; i < FlattenedPropertyNames.Length; i++)
+            {
+                dict.Add(FlattenedPropertyNames[i], FlattenedPropertyTypes[i]);
+            }
+            FlattenedPropertyTypeDictionary = dict;
+        }
+
+        protected internal void ForEachFlattenedProperty(Action<string, object> act)
+        {
+            for (int i = 0; i < FlattenedPropertyNames.Length; i++)
+            {
+                string pn = FlattenedPropertyNames[i];
+                if (Char.IsLower(pn[0])) { pn = Char.ToUpper(pn[0]) + pn.Substring(1); }
+                var m = this.GetType().GetProperty(pn, System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                object pv = m.GetValue(this);
+                act(pn, pv);
+            }
+        }
+
+        protected internal void SetFlattenedPropertyValues(params object[] values)
+        {
+            for (int i = 0; i < FlattenedPropertyNames.Length; i++)
+            {
+                string pn = FlattenedPropertyNames[i];
+                if (Char.IsLower(pn[0])) { pn = Char.ToUpper(pn[0]) + pn.Substring(1); }
+                var v = values[i];
+                var m = this.GetType().GetProperty(pn, System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                m.SetValue(this, v);
+            }
         }
 	}
 

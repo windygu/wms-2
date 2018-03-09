@@ -17,13 +17,13 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 	public abstract class InventoryItemRequirementEntryStateEventDtoBase : IStateEventDto, IInventoryItemRequirementEntryStateCreated
 	{
 
-        private InventoryItemRequirementEntryEventIdDto _inventoryItemRequirementEntryEventId;
+        private InventoryItemRequirementEntryEventId _inventoryItemRequirementEntryEventId;
 
-		protected internal virtual InventoryItemRequirementEntryEventIdDto InventoryItemRequirementEntryEventId 
+		protected internal virtual InventoryItemRequirementEntryEventId InventoryItemRequirementEntryEventId 
         {
             get 
             {
-                if (_inventoryItemRequirementEntryEventId == null) { _inventoryItemRequirementEntryEventId = new InventoryItemRequirementEntryEventIdDto(); }
+                if (_inventoryItemRequirementEntryEventId == null) { _inventoryItemRequirementEntryEventId = new InventoryItemRequirementEntryEventId(); }
                 return _inventoryItemRequirementEntryEventId;
             }
             set
@@ -40,21 +40,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 
 		public virtual decimal? Quantity { get; set; }
 
-		private InventoryPRTriggeredIdDto _sourceEventId = new InventoryPRTriggeredIdDto();
-
-		public virtual InventoryPRTriggeredIdDto SourceEventId { get { return _sourceEventId; } set { _sourceEventId = value; } }
-
-		InventoryPRTriggeredId IInventoryItemRequirementEntryStateEvent.SourceEventId
-		{ 
-			get 
-			{
-				return this.SourceEventId == null ? null : this.SourceEventId.ToInventoryPRTriggeredId(); 
-			} 
-			set
-			{
-				if (value == null) { SourceEventId = null; } else { SourceEventId = new InventoryPRTriggeredIdDtoWrapper(value); }
-			} 
-		}
+		public virtual InventoryPRTriggeredId SourceEventId { get; set; }
 
 		public virtual string CreatedBy { get; set; }
 
@@ -67,7 +53,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 		InventoryItemRequirementEntryEventId IGlobalIdentity<InventoryItemRequirementEntryEventId>.GlobalId {
 			get 
 			{
-				return this.InventoryItemRequirementEntryEventId.ToInventoryItemRequirementEntryEventId();
+				return this.InventoryItemRequirementEntryEventId;
 			}
 		}
 
@@ -108,14 +94,14 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 
         InventoryItemRequirementEntryEventId IInventoryItemRequirementEntryStateEvent.InventoryItemRequirementEntryEventId
         {
-            get { return this.InventoryItemRequirementEntryEventId.ToInventoryItemRequirementEntryEventId(); }
+            get { return this.InventoryItemRequirementEntryEventId; }
         }
 
         protected InventoryItemRequirementEntryStateEventDtoBase()
         {
         }
 
-        protected InventoryItemRequirementEntryStateEventDtoBase(InventoryItemRequirementEntryEventIdDto stateEventId)
+        protected InventoryItemRequirementEntryStateEventDtoBase(InventoryItemRequirementEntryEventId stateEventId)
         {
             this.InventoryItemRequirementEntryEventId = stateEventId;
         }

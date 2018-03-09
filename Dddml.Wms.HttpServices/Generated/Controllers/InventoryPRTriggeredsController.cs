@@ -228,7 +228,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = ParseIdString(id.IsNormalized() ? id : id.Normalize());
             if (value.InventoryPRTriggeredId == null)
             {
-                value.InventoryPRTriggeredId = new InventoryPRTriggeredIdDtoWrapper(idObj);
+                value.InventoryPRTriggeredId = idObj;
             }
             else if (!((ICreateOrMergePatchOrDeleteInventoryPRTriggered)value).InventoryPRTriggeredId.Equals(idObj))
             {
@@ -238,10 +238,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static InventoryPRTriggeredId ParseIdString(string idString)
         {
-            var formatter = new InventoryPRTriggeredIdFlattenedDtoFormatter();
-            var idDto = formatter.Parse(idString);
-            var rId = idDto.ToInventoryPRTriggeredId();
-            return rId;
+            var formatter = new ValueObjectTextFormatter<InventoryPRTriggeredId>();
+            return formatter.Parse(idString);
         }
 
         public static string GetFilterPropertyName(string fieldName)
@@ -306,7 +304,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             foreach (var id in ids)
             {
                 var dto = new InventoryPRTriggeredStateDtoWrapper();
-                dto.InventoryPRTriggeredId = new InventoryPRTriggeredIdDtoWrapper(id);
+                dto.InventoryPRTriggeredId = id;
                 states.Add(dto);
             }
             return states;

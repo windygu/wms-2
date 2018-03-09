@@ -41,8 +41,8 @@ namespace Dddml.Wms.Domain.UserLoginMvo.NHibernate
             UserLoginId idObj = (UserLoginId)(eventStoreAggregateId as EventStoreAggregateId).Id;
             var criteria = CurrentSession.CreateCriteria<UserLoginMvoStateEventBase>();
             criteria.Add(Restrictions.Eq("UserLoginMvoEventId.UserLoginIdUserId", idObj.UserId));
-            criteria.Add(Restrictions.Eq("UserLoginMvoEventId.UserLoginIdLoginKeyLoginProvider", idObj.LoginKeyLoginProvider));
-            criteria.Add(Restrictions.Eq("UserLoginMvoEventId.UserLoginIdLoginKeyProviderKey", idObj.LoginKeyProviderKey));
+            criteria.Add(Restrictions.Eq("UserLoginMvoEventId.UserLoginIdLoginKeyLoginProvider", idObj.LoginKey.LoginProvider));
+            criteria.Add(Restrictions.Eq("UserLoginMvoEventId.UserLoginIdLoginKeyProviderKey", idObj.LoginKey.ProviderKey));
             criteria.Add(Restrictions.Le("UserLoginMvoEventId.UserVersion", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("UserLoginMvoEventId.UserVersion"));
             var es = criteria.List<IEvent>();

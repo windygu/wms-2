@@ -30,13 +30,13 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
         public virtual SellableInventoryItemEntryStateCreatedDto ToSellableInventoryItemEntryStateCreatedDto(ISellableInventoryItemEntryStateCreated e)
         {
             var dto = new SellableInventoryItemEntryStateCreatedDto();
-            dto.SellableInventoryItemEntryEventId = new SellableInventoryItemEntryEventIdDtoWrapper(e.SellableInventoryItemEntryEventId);
+            dto.SellableInventoryItemEntryEventId = e.SellableInventoryItemEntryEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;
             dto.CommandId = e.CommandId;
             dto.SellableQuantity = e.SellableQuantity;
-            dto.SourceEventId = (e.SourceEventId == null) ? null : new InventoryPRTriggeredIdDtoWrapper(e.SourceEventId);
+            dto.SourceEventId = e.SourceEventId;
             return dto;
         }
 

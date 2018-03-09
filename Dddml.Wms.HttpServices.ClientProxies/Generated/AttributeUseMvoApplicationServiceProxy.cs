@@ -375,9 +375,8 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 
         public static string ToIdString(AttributeSetAttributeUseId id)
         {
-            var formatter = new AttributeSetAttributeUseIdFlattenedDtoFormatter();
-            var idDto = new AttributeSetAttributeUseIdFlattenedDto(id);
-            var idStr = formatter.ToString(idDto);
+            var formatter = (new ValueObjectTextFormatter<AttributeSetAttributeUseId>());
+            var idStr = formatter.ToString(id);
             return idStr;
         }
 

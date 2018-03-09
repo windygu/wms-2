@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.UomConversion
 	public abstract class UomConversionStateEventDtoBase : IStateEventDto, IUomConversionStateCreated, IUomConversionStateMergePatched, IUomConversionStateDeleted
 	{
 
-        private UomConversionEventIdDto _uomConversionEventId;
+        private UomConversionEventId _uomConversionEventId;
 
-		protected internal virtual UomConversionEventIdDto UomConversionEventId 
+		protected internal virtual UomConversionEventId UomConversionEventId 
         {
             get 
             {
-                if (_uomConversionEventId == null) { _uomConversionEventId = new UomConversionEventIdDto(); }
+                if (_uomConversionEventId == null) { _uomConversionEventId = new UomConversionEventId(); }
                 return _uomConversionEventId;
             }
             set
@@ -30,7 +30,7 @@ namespace Dddml.Wms.Domain.UomConversion
             }
         }
 
-        public virtual UomConversionIdDto UomConversionId
+        public virtual UomConversionId UomConversionId
         {
             get { return UomConversionEventId.UomConversionId; }
             set { UomConversionEventId.UomConversionId = value; }
@@ -63,7 +63,7 @@ namespace Dddml.Wms.Domain.UomConversion
 		UomConversionEventId IGlobalIdentity<UomConversionEventId>.GlobalId {
 			get 
 			{
-				return this.UomConversionEventId.ToUomConversionEventId();
+				return this.UomConversionEventId;
 			}
 		}
 
@@ -197,14 +197,14 @@ namespace Dddml.Wms.Domain.UomConversion
 
         UomConversionEventId IUomConversionStateEvent.UomConversionEventId
         {
-            get { return this.UomConversionEventId.ToUomConversionEventId(); }
+            get { return this.UomConversionEventId; }
         }
 
         protected UomConversionStateEventDtoBase()
         {
         }
 
-        protected UomConversionStateEventDtoBase(UomConversionEventIdDto stateEventId)
+        protected UomConversionStateEventDtoBase(UomConversionEventId stateEventId)
         {
             this.UomConversionEventId = stateEventId;
         }

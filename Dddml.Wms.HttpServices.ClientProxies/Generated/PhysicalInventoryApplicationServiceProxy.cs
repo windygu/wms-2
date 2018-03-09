@@ -299,7 +299,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies
         {
             var uriParameters = new PhysicalInventoryLineUriParameters();
             uriParameters.PhysicalInventoryDocumentNumber = physicalInventoryDocumentNumber;
-            uriParameters.InventoryItemId = (new InventoryItemIdFlattenedDtoFormatter()).ToString(new InventoryItemIdFlattenedDto(inventoryItemId));
+            uriParameters.InventoryItemId = ((new ValueObjectTextFormatter<InventoryItemId>())).ToString(inventoryItemId);
 
             var req = new PhysicalInventoryLineGetRequest(uriParameters);
             var resp = await _ramlClient.PhysicalInventoryLine.Get(req);

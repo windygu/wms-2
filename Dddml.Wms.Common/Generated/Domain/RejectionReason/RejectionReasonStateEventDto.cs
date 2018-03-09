@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.RejectionReason
 	public abstract class RejectionReasonStateEventDtoBase : IStateEventDto, IRejectionReasonStateCreated, IRejectionReasonStateMergePatched, IRejectionReasonStateDeleted
 	{
 
-        private RejectionReasonEventIdDto _rejectionReasonEventId;
+        private RejectionReasonEventId _rejectionReasonEventId;
 
-		protected internal virtual RejectionReasonEventIdDto RejectionReasonEventId 
+		protected internal virtual RejectionReasonEventId RejectionReasonEventId 
         {
             get 
             {
-                if (_rejectionReasonEventId == null) { _rejectionReasonEventId = new RejectionReasonEventIdDto(); }
+                if (_rejectionReasonEventId == null) { _rejectionReasonEventId = new RejectionReasonEventId(); }
                 return _rejectionReasonEventId;
             }
             set
@@ -57,7 +57,7 @@ namespace Dddml.Wms.Domain.RejectionReason
 		RejectionReasonEventId IGlobalIdentity<RejectionReasonEventId>.GlobalId {
 			get 
 			{
-				return this.RejectionReasonEventId.ToRejectionReasonEventId();
+				return this.RejectionReasonEventId;
 			}
 		}
 
@@ -134,14 +134,14 @@ namespace Dddml.Wms.Domain.RejectionReason
 
         RejectionReasonEventId IRejectionReasonStateEvent.RejectionReasonEventId
         {
-            get { return this.RejectionReasonEventId.ToRejectionReasonEventId(); }
+            get { return this.RejectionReasonEventId; }
         }
 
         protected RejectionReasonStateEventDtoBase()
         {
         }
 
-        protected RejectionReasonStateEventDtoBase(RejectionReasonEventIdDto stateEventId)
+        protected RejectionReasonStateEventDtoBase(RejectionReasonEventId stateEventId)
         {
             this.RejectionReasonEventId = stateEventId;
         }

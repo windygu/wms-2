@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.RolePermission
 	public abstract class RolePermissionStateEventDtoBase : IStateEventDto, IRolePermissionStateCreated, IRolePermissionStateMergePatched, IRolePermissionStateDeleted
 	{
 
-        private RolePermissionEventIdDto _rolePermissionEventId;
+        private RolePermissionEventId _rolePermissionEventId;
 
-		protected internal virtual RolePermissionEventIdDto RolePermissionEventId 
+		protected internal virtual RolePermissionEventId RolePermissionEventId 
         {
             get 
             {
-                if (_rolePermissionEventId == null) { _rolePermissionEventId = new RolePermissionEventIdDto(); }
+                if (_rolePermissionEventId == null) { _rolePermissionEventId = new RolePermissionEventId(); }
                 return _rolePermissionEventId;
             }
             set
@@ -30,7 +30,7 @@ namespace Dddml.Wms.Domain.RolePermission
             }
         }
 
-        public virtual RolePermissionIdDto Id
+        public virtual RolePermissionId Id
         {
             get { return RolePermissionEventId.Id; }
             set { RolePermissionEventId.Id = value; }
@@ -55,7 +55,7 @@ namespace Dddml.Wms.Domain.RolePermission
 		RolePermissionEventId IGlobalIdentity<RolePermissionEventId>.GlobalId {
 			get 
 			{
-				return this.RolePermissionEventId.ToRolePermissionEventId();
+				return this.RolePermissionEventId;
 			}
 		}
 
@@ -113,14 +113,14 @@ namespace Dddml.Wms.Domain.RolePermission
 
         RolePermissionEventId IRolePermissionStateEvent.RolePermissionEventId
         {
-            get { return this.RolePermissionEventId.ToRolePermissionEventId(); }
+            get { return this.RolePermissionEventId; }
         }
 
         protected RolePermissionStateEventDtoBase()
         {
         }
 
-        protected RolePermissionStateEventDtoBase(RolePermissionEventIdDto stateEventId)
+        protected RolePermissionStateEventDtoBase(RolePermissionEventId stateEventId)
         {
             this.RolePermissionEventId = stateEventId;
         }

@@ -51,7 +51,7 @@ namespace Dddml.Wms.Domain.SupplierProduct
             set { this.CommandId = value; }
         }
 
-		public virtual SupplierProductIdDto SupplierProductId { get; set; }
+		public virtual SupplierProductId SupplierProductId { get; set; }
 
 		public virtual DateTime? AvailableThruDate { get; set; }
 
@@ -80,19 +80,6 @@ namespace Dddml.Wms.Domain.SupplierProduct
 		public virtual string Comments { get; set; }
 
 		public virtual bool? Active { get; set; }
-
-
-        SupplierProductId ISupplierProductCommand.SupplierProductId
-        {
-            get 
-            {
-                return this.SupplierProductId.ToSupplierProductId();
-            }
-            set 
-            {
-                this.SupplierProductId = new SupplierProductIdDtoWrapper(value);
-            }
-        }
 
 		public virtual bool? IsPropertyAvailableThruDateRemoved { get; set; }
 

@@ -39,19 +39,19 @@ namespace Dddml.Wms.Domain.User
 			return this._state;
 		}
 
-        public LoginKeyDto LoginKey
-        {
+		public virtual LoginKey LoginKey
+		{
             get
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("LoginKey"))
                 {
-					return (_state.LoginKey == null) ? null : new LoginKeyDtoWrapper(_state.LoginKey);
+                    return _state.LoginKey;
                 }
                 return null;
             }
             set
             {
-                _state.LoginKey = (value == null) ? null : value.ToLoginKey();
+                _state.LoginKey = value;
             }
         }
 

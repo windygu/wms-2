@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.InOut
         public virtual InOutLineStateCreatedDto ToInOutLineStateCreatedDto(IInOutLineStateCreated e)
         {
             var dto = new InOutLineStateCreatedDto();
-            dto.InOutLineEventId = new InOutLineEventIdDtoWrapper(e.InOutLineEventId);
+            dto.InOutLineEventId = e.InOutLineEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;
@@ -61,7 +61,7 @@ namespace Dddml.Wms.Domain.InOut
         public virtual InOutLineStateMergePatchedDto ToInOutLineStateMergePatchedDto(IInOutLineStateMergePatched e)
         {
             var dto = new InOutLineStateMergePatchedDto();
-            dto.InOutLineEventId = new InOutLineEventIdDtoWrapper(e.InOutLineEventId);
+            dto.InOutLineEventId = e.InOutLineEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;
@@ -98,7 +98,7 @@ namespace Dddml.Wms.Domain.InOut
         public virtual InOutLineStateRemovedDto ToInOutLineStateRemovedDto(IInOutLineStateRemoved e)
         {
             var dto = new InOutLineStateRemovedDto();
-            dto.InOutLineEventId = new InOutLineEventIdDtoWrapper(e.InOutLineEventId);
+            dto.InOutLineEventId = e.InOutLineEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;

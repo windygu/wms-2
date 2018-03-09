@@ -273,7 +273,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = ParseIdString(id.IsNormalized() ? id : id.Normalize());
             if (value.UomConversionId == null)
             {
-                value.UomConversionId = new UomConversionIdDtoWrapper(idObj);
+                value.UomConversionId = idObj;
             }
             else if (!((ICreateOrMergePatchOrDeleteUomConversion)value).UomConversionId.Equals(idObj))
             {
@@ -283,10 +283,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static UomConversionId ParseIdString(string idString)
         {
-            var formatter = new UomConversionIdFlattenedDtoFormatter();
-            var idDto = formatter.Parse(idString);
-            var rId = idDto.ToUomConversionId();
-            return rId;
+            var formatter = new ValueObjectTextFormatter<UomConversionId>();
+            return formatter.Parse(idString);
         }
 
         public static string GetFilterPropertyName(string fieldName)
@@ -351,7 +349,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             foreach (var id in ids)
             {
                 var dto = new UomConversionStateDtoWrapper();
-                dto.UomConversionId = new UomConversionIdDtoWrapper(id);
+                dto.UomConversionId = id;
                 states.Add(dto);
             }
             return states;

@@ -52,7 +52,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             set { this.CommandId = value; }
         }
 
-		public virtual PhysicalInventoryLineIdDto PhysicalInventoryLineId { get; set; }
+		public virtual PhysicalInventoryLineId PhysicalInventoryLineId { get; set; }
 
 		public virtual decimal? BookQuantity { get; set; }
 
@@ -105,19 +105,6 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 		public virtual DateTime? PhysicalInventoryUpdatedAt { get; set; }
 
 		public virtual bool? PhysicalInventoryActive { get; set; }
-
-
-        PhysicalInventoryLineId IPhysicalInventoryLineMvoCommand.PhysicalInventoryLineId
-        {
-            get 
-            {
-                return this.PhysicalInventoryLineId.ToPhysicalInventoryLineId();
-            }
-            set 
-            {
-                this.PhysicalInventoryLineId = new PhysicalInventoryLineIdDtoWrapper(value);
-            }
-        }
 
 		public virtual bool? IsPropertyBookQuantityRemoved { get; set; }
 

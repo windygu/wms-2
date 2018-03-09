@@ -41,9 +41,9 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo.NHibernate
             PhysicalInventoryLineId idObj = (PhysicalInventoryLineId)(eventStoreAggregateId as EventStoreAggregateId).Id;
             var criteria = CurrentSession.CreateCriteria<PhysicalInventoryLineMvoStateEventBase>();
             criteria.Add(Restrictions.Eq("PhysicalInventoryLineMvoEventId.PhysicalInventoryLineIdPhysicalInventoryDocumentNumber", idObj.PhysicalInventoryDocumentNumber));
-            criteria.Add(Restrictions.Eq("PhysicalInventoryLineMvoEventId.PhysicalInventoryLineIdInventoryItemIdProductId", idObj.InventoryItemIdProductId));
-            criteria.Add(Restrictions.Eq("PhysicalInventoryLineMvoEventId.PhysicalInventoryLineIdInventoryItemIdLocatorId", idObj.InventoryItemIdLocatorId));
-            criteria.Add(Restrictions.Eq("PhysicalInventoryLineMvoEventId.PhysicalInventoryLineIdInventoryItemIdAttributeSetInstanceId", idObj.InventoryItemIdAttributeSetInstanceId));
+            criteria.Add(Restrictions.Eq("PhysicalInventoryLineMvoEventId.PhysicalInventoryLineIdInventoryItemIdProductId", idObj.InventoryItemId.ProductId));
+            criteria.Add(Restrictions.Eq("PhysicalInventoryLineMvoEventId.PhysicalInventoryLineIdInventoryItemIdLocatorId", idObj.InventoryItemId.LocatorId));
+            criteria.Add(Restrictions.Eq("PhysicalInventoryLineMvoEventId.PhysicalInventoryLineIdInventoryItemIdAttributeSetInstanceId", idObj.InventoryItemId.AttributeSetInstanceId));
             criteria.Add(Restrictions.Le("PhysicalInventoryLineMvoEventId.PhysicalInventoryVersion", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("PhysicalInventoryLineMvoEventId.PhysicalInventoryVersion"));
             var es = criteria.List<IEvent>();

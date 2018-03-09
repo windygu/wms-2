@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.Party
         public virtual PartyStateCreatedDto ToPartyStateCreatedDto(IPartyStateCreated e)
         {
             var dto = new PartyStateCreatedDto();
-            dto.PartyEventId = new PartyEventIdDtoWrapper(e.PartyEventId);
+            dto.PartyEventId = e.PartyEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -54,7 +54,7 @@ namespace Dddml.Wms.Domain.Party
         public virtual PartyStateMergePatchedDto ToPartyStateMergePatchedDto(IPartyStateMergePatched e)
         {
             var dto = new PartyStateMergePatchedDto();
-            dto.PartyEventId = new PartyEventIdDtoWrapper(e.PartyEventId);
+            dto.PartyEventId = e.PartyEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -78,7 +78,7 @@ namespace Dddml.Wms.Domain.Party
         public virtual PartyStateDeletedDto ToPartyStateDeletedDto(IPartyStateDeleted e)
         {
             var dto = new PartyStateDeletedDto();
-            dto.PartyEventId = new PartyEventIdDtoWrapper(e.PartyEventId);
+            dto.PartyEventId = e.PartyEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

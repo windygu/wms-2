@@ -103,19 +103,19 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
             }
         }
 
-        public InventoryPRTriggeredIdDto SourceEventId
-        {
+		public virtual InventoryPRTriggeredId SourceEventId
+		{
             get
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("SourceEventId"))
                 {
-					return (_state.SourceEventId == null) ? null : new InventoryPRTriggeredIdDtoWrapper(_state.SourceEventId);
+                    return _state.SourceEventId;
                 }
                 return null;
             }
             set
             {
-                _state.SourceEventId = (value == null) ? null : value.ToInventoryPRTriggeredId();
+                _state.SourceEventId = value;
             }
         }
 
@@ -162,19 +162,19 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
             }
         }
 
-        public InventoryItemIdDto SellableInventoryItemId
-        {
+		public virtual InventoryItemId SellableInventoryItemId
+		{
             get
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("SellableInventoryItemId"))
                 {
-					return (_state.SellableInventoryItemId == null) ? null : new InventoryItemIdDtoWrapper(_state.SellableInventoryItemId);
+                    return _state.SellableInventoryItemId;
                 }
                 return null;
             }
             set
             {
-                _state.SellableInventoryItemId = (value == null) ? null : value.ToInventoryItemId();
+                _state.SellableInventoryItemId = value;
             }
         }
 

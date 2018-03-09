@@ -52,7 +52,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             set { this.CommandId = value; }
         }
 
-		public virtual InventoryItemEntryIdDto InventoryItemEntryId { get; set; }
+		public virtual InventoryItemEntryId InventoryItemEntryId { get; set; }
 
 		public virtual decimal? OnHandQuantity { get; set; }
 
@@ -64,20 +64,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
 		public virtual decimal? VirtualQuantity { get; set; }
 
-
-		public virtual InventoryItemSourceInfoDto Source { get; set; }
-
-        InventoryItemSourceInfo ICreateOrMergePatchOrDeleteInventoryItemEntryMvo.Source
-        {
-            get 
-            {
-                return (this.Source == null) ? null : this.Source.ToInventoryItemSourceInfo();
-            }
-            set 
-            {
-                this.Source = (value == null) ? null : new InventoryItemSourceInfoDtoWrapper(value);
-            }
-        }
+		public virtual InventoryItemSourceInfo Source { get; set; }
 
 		public virtual long? Version { get; set; }
 
@@ -100,19 +87,6 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 		public virtual string InventoryItemUpdatedBy { get; set; }
 
 		public virtual DateTime? InventoryItemUpdatedAt { get; set; }
-
-
-        InventoryItemEntryId IInventoryItemEntryMvoCommand.InventoryItemEntryId
-        {
-            get 
-            {
-                return this.InventoryItemEntryId.ToInventoryItemEntryId();
-            }
-            set 
-            {
-                this.InventoryItemEntryId = new InventoryItemEntryIdDtoWrapper(value);
-            }
-        }
 
 		public virtual bool? IsPropertyOnHandQuantityRemoved { get; set; }
 

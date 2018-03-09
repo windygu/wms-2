@@ -16,13 +16,13 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 	public abstract class InOutLineMvoStateEventDtoBase : IStateEventDto, IInOutLineMvoStateCreated, IInOutLineMvoStateMergePatched, IInOutLineMvoStateDeleted
 	{
 
-        private InOutLineMvoEventIdDto _inOutLineMvoEventId;
+        private InOutLineMvoEventId _inOutLineMvoEventId;
 
-		protected internal virtual InOutLineMvoEventIdDto InOutLineMvoEventId 
+		protected internal virtual InOutLineMvoEventId InOutLineMvoEventId 
         {
             get 
             {
-                if (_inOutLineMvoEventId == null) { _inOutLineMvoEventId = new InOutLineMvoEventIdDto(); }
+                if (_inOutLineMvoEventId == null) { _inOutLineMvoEventId = new InOutLineMvoEventId(); }
                 return _inOutLineMvoEventId;
             }
             set
@@ -31,7 +31,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
             }
         }
 
-        public virtual InOutLineIdDto InOutLineId
+        public virtual InOutLineId InOutLineId
         {
             get { return InOutLineMvoEventId.InOutLineId; }
             set { InOutLineMvoEventId.InOutLineId = value; }
@@ -150,7 +150,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 		InOutLineMvoEventId IGlobalIdentity<InOutLineMvoEventId>.GlobalId {
 			get 
 			{
-				return this.InOutLineMvoEventId.ToInOutLineMvoEventId();
+				return this.InOutLineMvoEventId;
 			}
 		}
 
@@ -1101,14 +1101,14 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
         InOutLineMvoEventId IInOutLineMvoStateEvent.InOutLineMvoEventId
         {
-            get { return this.InOutLineMvoEventId.ToInOutLineMvoEventId(); }
+            get { return this.InOutLineMvoEventId; }
         }
 
         protected InOutLineMvoStateEventDtoBase()
         {
         }
 
-        protected InOutLineMvoStateEventDtoBase(InOutLineMvoEventIdDto stateEventId)
+        protected InOutLineMvoStateEventDtoBase(InOutLineMvoEventId stateEventId)
         {
             this.InOutLineMvoEventId = stateEventId;
         }

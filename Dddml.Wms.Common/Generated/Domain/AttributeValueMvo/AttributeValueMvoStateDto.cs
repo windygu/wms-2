@@ -16,8 +16,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
 
     public partial class AttributeValueMvoStateDto : IAttributeValueMvoStateDto
     {
-
-        public virtual AttributeValueIdDto AttributeValueId
+        public virtual AttributeValueId AttributeValueId
         {
             get;
             set;
@@ -176,7 +175,7 @@ namespace Dddml.Wms.Domain.AttributeValueMvo
         public virtual IAttributeValueMvoState ToAttributeValueMvoState()
         {
             var state = new AttributeValueMvoState(true);
-            state.AttributeValueId = (this.AttributeValueId == null) ? null : this.AttributeValueId.ToAttributeValueId();
+            state.AttributeValueId = this.AttributeValueId;
             state.AttributeValueName = this.AttributeValueName;
             state.Description = this.Description;
             state.ReferenceId = this.ReferenceId;

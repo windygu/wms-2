@@ -262,7 +262,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = ParseIdString(id.IsNormalized() ? id : id.Normalize());
             if (value.InventoryItemRequirementEntryId == null)
             {
-                value.InventoryItemRequirementEntryId = new InventoryItemRequirementEntryIdDtoWrapper(idObj);
+                value.InventoryItemRequirementEntryId = idObj;
             }
             else if (!((ICreateOrMergePatchOrDeleteInventoryItemRequirementEntryMvo)value).InventoryItemRequirementEntryId.Equals(idObj))
             {
@@ -272,10 +272,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static InventoryItemRequirementEntryId ParseIdString(string idString)
         {
-            var formatter = new InventoryItemRequirementEntryIdFlattenedDtoFormatter();
-            var idDto = formatter.Parse(idString);
-            var rId = idDto.ToInventoryItemRequirementEntryId();
-            return rId;
+            var formatter = new ValueObjectTextFormatter<InventoryItemRequirementEntryId>();
+            return formatter.Parse(idString);
         }
 
         public static string GetFilterPropertyName(string fieldName)
@@ -340,7 +338,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             foreach (var id in ids)
             {
                 var dto = new InventoryItemRequirementEntryMvoStateDtoWrapper();
-                dto.InventoryItemRequirementEntryId = new InventoryItemRequirementEntryIdDtoWrapper(id);
+                dto.InventoryItemRequirementEntryId = id;
                 states.Add(dto);
             }
             return states;

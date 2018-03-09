@@ -16,8 +16,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
 
     public partial class InOutLineMvoStateDto : IInOutLineMvoStateDto
     {
-
-        public virtual InOutLineIdDto InOutLineId
+        public virtual InOutLineId InOutLineId
         {
             get;
             set;
@@ -344,7 +343,7 @@ namespace Dddml.Wms.Domain.InOutLineMvo
         public virtual IInOutLineMvoState ToInOutLineMvoState()
         {
             var state = new InOutLineMvoState(true);
-            state.InOutLineId = (this.InOutLineId == null) ? null : this.InOutLineId.ToInOutLineId();
+            state.InOutLineId = this.InOutLineId;
             state.LocatorId = this.LocatorId;
             state.ProductId = this.ProductId;
             state.AttributeSetInstanceId = this.AttributeSetInstanceId;

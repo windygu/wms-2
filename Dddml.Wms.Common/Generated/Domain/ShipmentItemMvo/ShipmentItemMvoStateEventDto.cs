@@ -16,13 +16,13 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 	public abstract class ShipmentItemMvoStateEventDtoBase : IStateEventDto, IShipmentItemMvoStateCreated, IShipmentItemMvoStateMergePatched
 	{
 
-        private ShipmentItemMvoEventIdDto _shipmentItemMvoEventId;
+        private ShipmentItemMvoEventId _shipmentItemMvoEventId;
 
-		protected internal virtual ShipmentItemMvoEventIdDto ShipmentItemMvoEventId 
+		protected internal virtual ShipmentItemMvoEventId ShipmentItemMvoEventId 
         {
             get 
             {
-                if (_shipmentItemMvoEventId == null) { _shipmentItemMvoEventId = new ShipmentItemMvoEventIdDto(); }
+                if (_shipmentItemMvoEventId == null) { _shipmentItemMvoEventId = new ShipmentItemMvoEventId(); }
                 return _shipmentItemMvoEventId;
             }
             set
@@ -31,7 +31,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             }
         }
 
-        public virtual ShipmentItemIdDto ShipmentItemId
+        public virtual ShipmentItemId ShipmentItemId
         {
             get { return ShipmentItemMvoEventId.ShipmentItemId; }
             set { ShipmentItemMvoEventId.ShipmentItemId = value; }
@@ -128,7 +128,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 		ShipmentItemMvoEventId IGlobalIdentity<ShipmentItemMvoEventId>.GlobalId {
 			get 
 			{
-				return this.ShipmentItemMvoEventId.ToShipmentItemMvoEventId();
+				return this.ShipmentItemMvoEventId;
 			}
 		}
 
@@ -870,14 +870,14 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 
         ShipmentItemMvoEventId IShipmentItemMvoStateEvent.ShipmentItemMvoEventId
         {
-            get { return this.ShipmentItemMvoEventId.ToShipmentItemMvoEventId(); }
+            get { return this.ShipmentItemMvoEventId; }
         }
 
         protected ShipmentItemMvoStateEventDtoBase()
         {
         }
 
-        protected ShipmentItemMvoStateEventDtoBase(ShipmentItemMvoEventIdDto stateEventId)
+        protected ShipmentItemMvoStateEventDtoBase(ShipmentItemMvoEventId stateEventId)
         {
             this.ShipmentItemMvoEventId = stateEventId;
         }

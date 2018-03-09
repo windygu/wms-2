@@ -262,7 +262,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = ParseIdString(id.IsNormalized() ? id : id.Normalize());
             if (value.SellableInventoryItemEntryId == null)
             {
-                value.SellableInventoryItemEntryId = new SellableInventoryItemEntryIdDtoWrapper(idObj);
+                value.SellableInventoryItemEntryId = idObj;
             }
             else if (!((ICreateOrMergePatchOrDeleteSellableInventoryItemEntryMvo)value).SellableInventoryItemEntryId.Equals(idObj))
             {
@@ -272,10 +272,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static SellableInventoryItemEntryId ParseIdString(string idString)
         {
-            var formatter = new SellableInventoryItemEntryIdFlattenedDtoFormatter();
-            var idDto = formatter.Parse(idString);
-            var rId = idDto.ToSellableInventoryItemEntryId();
-            return rId;
+            var formatter = new ValueObjectTextFormatter<SellableInventoryItemEntryId>();
+            return formatter.Parse(idString);
         }
 
         public static string GetFilterPropertyName(string fieldName)
@@ -340,7 +338,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             foreach (var id in ids)
             {
                 var dto = new SellableInventoryItemEntryMvoStateDtoWrapper();
-                dto.SellableInventoryItemEntryId = new SellableInventoryItemEntryIdDtoWrapper(id);
+                dto.SellableInventoryItemEntryId = id;
                 states.Add(dto);
             }
             return states;

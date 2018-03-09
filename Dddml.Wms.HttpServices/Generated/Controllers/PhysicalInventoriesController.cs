@@ -219,7 +219,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         public IPhysicalInventoryLineStateDto GetPhysicalInventoryLine(string physicalInventoryDocumentNumber, string inventoryItemId)
         {
           try {
-            var state = (PhysicalInventoryLineState)_physicalInventoryApplicationService.GetPhysicalInventoryLine(physicalInventoryDocumentNumber, (new InventoryItemIdFlattenedDtoFormatter().Parse(inventoryItemId)).ToInventoryItemId());
+            var state = (PhysicalInventoryLineState)_physicalInventoryApplicationService.GetPhysicalInventoryLine(physicalInventoryDocumentNumber, ((new ValueObjectTextFormatter<InventoryItemId>()).Parse(inventoryItemId)));
             if (state == null) { return null; }
             var stateDto = new PhysicalInventoryLineStateDtoWrapper(state);
             stateDto.AllFieldsReturned = true;

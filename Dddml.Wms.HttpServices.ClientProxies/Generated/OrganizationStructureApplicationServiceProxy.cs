@@ -374,9 +374,8 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 
         public static string ToIdString(OrganizationStructureId id)
         {
-            var formatter = new OrganizationStructureIdFlattenedDtoFormatter();
-            var idDto = new OrganizationStructureIdFlattenedDto(id);
-            var idStr = formatter.ToString(idDto);
+            var formatter = (new ValueObjectTextFormatter<OrganizationStructureId>());
+            var idStr = formatter.ToString(id);
             return idStr;
         }
 

@@ -39,7 +39,7 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
         public virtual UserPermissionMvoStateCreatedDto ToUserPermissionMvoStateCreatedDto(IUserPermissionMvoStateCreated e)
         {
             var dto = new UserPermissionMvoStateCreatedDto();
-            dto.UserPermissionMvoEventId = new UserPermissionMvoEventIdDtoWrapper(e.UserPermissionMvoEventId);
+            dto.UserPermissionMvoEventId = e.UserPermissionMvoEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -68,7 +68,7 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
         public virtual UserPermissionMvoStateMergePatchedDto ToUserPermissionMvoStateMergePatchedDto(IUserPermissionMvoStateMergePatched e)
         {
             var dto = new UserPermissionMvoStateMergePatchedDto();
-            dto.UserPermissionMvoEventId = new UserPermissionMvoEventIdDtoWrapper(e.UserPermissionMvoEventId);
+            dto.UserPermissionMvoEventId = e.UserPermissionMvoEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -118,7 +118,7 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
         public virtual UserPermissionMvoStateDeletedDto ToUserPermissionMvoStateDeletedDto(IUserPermissionMvoStateDeleted e)
         {
             var dto = new UserPermissionMvoStateDeletedDto();
-            dto.UserPermissionMvoEventId = new UserPermissionMvoEventIdDtoWrapper(e.UserPermissionMvoEventId);
+            dto.UserPermissionMvoEventId = e.UserPermissionMvoEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

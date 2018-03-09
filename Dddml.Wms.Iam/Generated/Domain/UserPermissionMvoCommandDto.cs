@@ -52,7 +52,7 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
             set { this.CommandId = value; }
         }
 
-		public virtual UserPermissionIdDto UserPermissionId { get; set; }
+		public virtual UserPermissionId UserPermissionId { get; set; }
 
 		public virtual long? Version { get; set; }
 
@@ -91,19 +91,6 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 		public virtual bool? UserActive { get; set; }
 
 		public virtual bool? UserDeleted { get; set; }
-
-
-        UserPermissionId IUserPermissionMvoCommand.UserPermissionId
-        {
-            get 
-            {
-                return this.UserPermissionId.ToUserPermissionId();
-            }
-            set 
-            {
-                this.UserPermissionId = new UserPermissionIdDtoWrapper(value);
-            }
-        }
 
 		public virtual bool? IsPropertyVersionRemoved { get; set; }
 

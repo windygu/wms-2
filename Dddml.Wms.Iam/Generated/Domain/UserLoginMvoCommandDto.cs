@@ -52,7 +52,7 @@ namespace Dddml.Wms.Domain.UserLoginMvo
             set { this.CommandId = value; }
         }
 
-		public virtual UserLoginIdDto UserLoginId { get; set; }
+		public virtual UserLoginId UserLoginId { get; set; }
 
 		public virtual long? Version { get; set; }
 
@@ -91,19 +91,6 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 		public virtual bool? UserActive { get; set; }
 
 		public virtual bool? UserDeleted { get; set; }
-
-
-        UserLoginId IUserLoginMvoCommand.UserLoginId
-        {
-            get 
-            {
-                return this.UserLoginId.ToUserLoginId();
-            }
-            set 
-            {
-                this.UserLoginId = new UserLoginIdDtoWrapper(value);
-            }
-        }
 
 		public virtual bool? IsPropertyVersionRemoved { get; set; }
 

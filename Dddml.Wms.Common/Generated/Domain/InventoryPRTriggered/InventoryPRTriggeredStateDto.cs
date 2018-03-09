@@ -16,8 +16,7 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 
     public partial class InventoryPRTriggeredStateDto : IInventoryPRTriggeredStateDto
     {
-
-        public virtual InventoryPRTriggeredIdDto InventoryPRTriggeredId
+        public virtual InventoryPRTriggeredId InventoryPRTriggeredId
         {
             get;
             set;
@@ -62,7 +61,7 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
         public virtual IInventoryPRTriggeredState ToInventoryPRTriggeredState()
         {
             var state = new InventoryPRTriggeredState(true);
-            state.InventoryPRTriggeredId = (this.InventoryPRTriggeredId == null) ? null : this.InventoryPRTriggeredId.ToInventoryPRTriggeredId();
+            state.InventoryPRTriggeredId = this.InventoryPRTriggeredId;
             if (this.IsProcessed != null && this.IsProcessed.HasValue) { state.IsProcessed = this.IsProcessed.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             state.CreatedBy = this.CreatedBy;

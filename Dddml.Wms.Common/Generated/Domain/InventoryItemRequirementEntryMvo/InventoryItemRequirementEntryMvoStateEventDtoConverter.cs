@@ -35,12 +35,12 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
         public virtual InventoryItemRequirementEntryMvoStateCreatedDto ToInventoryItemRequirementEntryMvoStateCreatedDto(IInventoryItemRequirementEntryMvoStateCreated e)
         {
             var dto = new InventoryItemRequirementEntryMvoStateCreatedDto();
-            dto.InventoryItemRequirementEntryMvoEventId = new InventoryItemRequirementEntryMvoEventIdDtoWrapper(e.InventoryItemRequirementEntryMvoEventId);
+            dto.InventoryItemRequirementEntryMvoEventId = e.InventoryItemRequirementEntryMvoEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
             dto.Quantity = e.Quantity;
-            dto.SourceEventId = (e.SourceEventId == null) ? null : new InventoryPRTriggeredIdDtoWrapper(e.SourceEventId);
+            dto.SourceEventId = e.SourceEventId;
             dto.Version = e.Version;
             dto.InventoryItemRequirementQuantity = e.InventoryItemRequirementQuantity;
             dto.InventoryItemRequirementCreatedBy = e.InventoryItemRequirementCreatedBy;
@@ -53,12 +53,12 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
         public virtual InventoryItemRequirementEntryMvoStateMergePatchedDto ToInventoryItemRequirementEntryMvoStateMergePatchedDto(IInventoryItemRequirementEntryMvoStateMergePatched e)
         {
             var dto = new InventoryItemRequirementEntryMvoStateMergePatchedDto();
-            dto.InventoryItemRequirementEntryMvoEventId = new InventoryItemRequirementEntryMvoEventIdDtoWrapper(e.InventoryItemRequirementEntryMvoEventId);
+            dto.InventoryItemRequirementEntryMvoEventId = e.InventoryItemRequirementEntryMvoEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
             dto.Quantity = e.Quantity;
-            dto.SourceEventId = (e.SourceEventId == null) ? null : new InventoryPRTriggeredIdDtoWrapper(e.SourceEventId);
+            dto.SourceEventId = e.SourceEventId;
             dto.Version = e.Version;
             dto.InventoryItemRequirementQuantity = e.InventoryItemRequirementQuantity;
             dto.InventoryItemRequirementCreatedBy = e.InventoryItemRequirementCreatedBy;

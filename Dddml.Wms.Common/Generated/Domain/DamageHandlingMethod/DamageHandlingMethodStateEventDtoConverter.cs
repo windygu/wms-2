@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
         public virtual DamageHandlingMethodStateCreatedDto ToDamageHandlingMethodStateCreatedDto(IDamageHandlingMethodStateCreated e)
         {
             var dto = new DamageHandlingMethodStateCreatedDto();
-            dto.DamageHandlingMethodEventId = new DamageHandlingMethodEventIdDtoWrapper(e.DamageHandlingMethodEventId);
+            dto.DamageHandlingMethodEventId = e.DamageHandlingMethodEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -51,7 +51,7 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
         public virtual DamageHandlingMethodStateMergePatchedDto ToDamageHandlingMethodStateMergePatchedDto(IDamageHandlingMethodStateMergePatched e)
         {
             var dto = new DamageHandlingMethodStateMergePatchedDto();
-            dto.DamageHandlingMethodEventId = new DamageHandlingMethodEventIdDtoWrapper(e.DamageHandlingMethodEventId);
+            dto.DamageHandlingMethodEventId = e.DamageHandlingMethodEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -69,7 +69,7 @@ namespace Dddml.Wms.Domain.DamageHandlingMethod
         public virtual DamageHandlingMethodStateDeletedDto ToDamageHandlingMethodStateDeletedDto(IDamageHandlingMethodStateDeleted e)
         {
             var dto = new DamageHandlingMethodStateDeletedDto();
-            dto.DamageHandlingMethodEventId = new DamageHandlingMethodEventIdDtoWrapper(e.DamageHandlingMethodEventId);
+            dto.DamageHandlingMethodEventId = e.DamageHandlingMethodEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

@@ -14,8 +14,7 @@ namespace Dddml.Wms.Domain.SupplierProduct
 
     public interface ISupplierProductStateDto
     {
-
-        SupplierProductIdDto SupplierProductId
+        SupplierProductId SupplierProductId
         {
             get;
             set;

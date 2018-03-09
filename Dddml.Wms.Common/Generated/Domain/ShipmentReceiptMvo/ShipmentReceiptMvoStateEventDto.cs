@@ -16,13 +16,13 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 	public abstract class ShipmentReceiptMvoStateEventDtoBase : IStateEventDto, IShipmentReceiptMvoStateCreated, IShipmentReceiptMvoStateMergePatched
 	{
 
-        private ShipmentReceiptMvoEventIdDto _shipmentReceiptMvoEventId;
+        private ShipmentReceiptMvoEventId _shipmentReceiptMvoEventId;
 
-		protected internal virtual ShipmentReceiptMvoEventIdDto ShipmentReceiptMvoEventId 
+		protected internal virtual ShipmentReceiptMvoEventId ShipmentReceiptMvoEventId 
         {
             get 
             {
-                if (_shipmentReceiptMvoEventId == null) { _shipmentReceiptMvoEventId = new ShipmentReceiptMvoEventIdDto(); }
+                if (_shipmentReceiptMvoEventId == null) { _shipmentReceiptMvoEventId = new ShipmentReceiptMvoEventId(); }
                 return _shipmentReceiptMvoEventId;
             }
             set
@@ -31,7 +31,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             }
         }
 
-        public virtual ShipmentReceiptIdDto ShipmentReceiptId
+        public virtual ShipmentReceiptId ShipmentReceiptId
         {
             get { return ShipmentReceiptMvoEventId.ShipmentReceiptId; }
             set { ShipmentReceiptMvoEventId.ShipmentReceiptId = value; }
@@ -142,7 +142,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 		ShipmentReceiptMvoEventId IGlobalIdentity<ShipmentReceiptMvoEventId>.GlobalId {
 			get 
 			{
-				return this.ShipmentReceiptMvoEventId.ToShipmentReceiptMvoEventId();
+				return this.ShipmentReceiptMvoEventId;
 			}
 		}
 
@@ -1017,14 +1017,14 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
         ShipmentReceiptMvoEventId IShipmentReceiptMvoStateEvent.ShipmentReceiptMvoEventId
         {
-            get { return this.ShipmentReceiptMvoEventId.ToShipmentReceiptMvoEventId(); }
+            get { return this.ShipmentReceiptMvoEventId; }
         }
 
         protected ShipmentReceiptMvoStateEventDtoBase()
         {
         }
 
-        protected ShipmentReceiptMvoStateEventDtoBase(ShipmentReceiptMvoEventIdDto stateEventId)
+        protected ShipmentReceiptMvoStateEventDtoBase(ShipmentReceiptMvoEventId stateEventId)
         {
             this.ShipmentReceiptMvoEventId = stateEventId;
         }

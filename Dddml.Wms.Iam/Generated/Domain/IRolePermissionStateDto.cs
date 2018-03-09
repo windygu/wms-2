@@ -14,8 +14,7 @@ namespace Dddml.Wms.Domain.RolePermission
 
     public interface IRolePermissionStateDto
     {
-
-        RolePermissionIdDto Id
+        RolePermissionId Id
         {
             get;
             set;

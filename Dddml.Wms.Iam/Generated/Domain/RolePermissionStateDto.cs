@@ -15,8 +15,7 @@ namespace Dddml.Wms.Domain.RolePermission
 
     public partial class RolePermissionStateDto : IRolePermissionStateDto
     {
-
-        public virtual RolePermissionIdDto Id
+        public virtual RolePermissionId Id
         {
             get;
             set;
@@ -61,7 +60,7 @@ namespace Dddml.Wms.Domain.RolePermission
         public virtual IRolePermissionState ToRolePermissionState()
         {
             var state = new RolePermissionState(true);
-            state.Id = (this.Id == null) ? null : this.Id.ToRolePermissionId();
+            state.Id = this.Id;
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             state.CreatedBy = this.CreatedBy;

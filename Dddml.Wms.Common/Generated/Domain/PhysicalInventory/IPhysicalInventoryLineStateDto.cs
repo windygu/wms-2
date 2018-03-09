@@ -15,8 +15,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
     public interface IPhysicalInventoryLineStateDto
     {
-
-        InventoryItemIdDto InventoryItemId
+        InventoryItemId InventoryItemId
         {
             get;
             set;

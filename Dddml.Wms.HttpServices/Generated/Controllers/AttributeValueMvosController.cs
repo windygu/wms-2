@@ -274,7 +274,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = ParseIdString(id.IsNormalized() ? id : id.Normalize());
             if (value.AttributeValueId == null)
             {
-                value.AttributeValueId = new AttributeValueIdDtoWrapper(idObj);
+                value.AttributeValueId = idObj;
             }
             else if (!((ICreateOrMergePatchOrDeleteAttributeValueMvo)value).AttributeValueId.Equals(idObj))
             {
@@ -284,10 +284,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static AttributeValueId ParseIdString(string idString)
         {
-            var formatter = new AttributeValueIdFlattenedDtoFormatter();
-            var idDto = formatter.Parse(idString);
-            var rId = idDto.ToAttributeValueId();
-            return rId;
+            var formatter = new ValueObjectTextFormatter<AttributeValueId>();
+            return formatter.Parse(idString);
         }
 
         public static string GetFilterPropertyName(string fieldName)
@@ -352,7 +350,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             foreach (var id in ids)
             {
                 var dto = new AttributeValueMvoStateDtoWrapper();
-                dto.AttributeValueId = new AttributeValueIdDtoWrapper(id);
+                dto.AttributeValueId = id;
                 states.Add(dto);
             }
             return states;

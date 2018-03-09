@@ -51,8 +51,7 @@ namespace Dddml.Wms.Domain.InventoryItem
             set;
         }
 
-
-        public virtual InventoryItemSourceInfoDto Source
+        public virtual InventoryItemSourceInfo Source
         {
             get;
             set;
@@ -64,8 +63,7 @@ namespace Dddml.Wms.Domain.InventoryItem
             set;
         }
 
-
-        public virtual InventoryItemIdDto InventoryItemId
+        public virtual InventoryItemId InventoryItemId
         {
             get;
             set;
@@ -104,9 +102,9 @@ namespace Dddml.Wms.Domain.InventoryItem
             if (this.ReservedQuantity != null && this.ReservedQuantity.HasValue) { state.ReservedQuantity = this.ReservedQuantity.Value; }
             if (this.OccupiedQuantity != null && this.OccupiedQuantity.HasValue) { state.OccupiedQuantity = this.OccupiedQuantity.Value; }
             if (this.VirtualQuantity != null && this.VirtualQuantity.HasValue) { state.VirtualQuantity = this.VirtualQuantity.Value; }
-            state.Source = (this.Source == null) ? null : this.Source.ToInventoryItemSourceInfo();
+            state.Source = this.Source;
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
-            state.InventoryItemId = (this.InventoryItemId == null) ? null : this.InventoryItemId.ToInventoryItemId();
+            state.InventoryItemId = this.InventoryItemId;
             state.CreatedBy = this.CreatedBy;
             if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }
             state.UpdatedBy = this.UpdatedBy;

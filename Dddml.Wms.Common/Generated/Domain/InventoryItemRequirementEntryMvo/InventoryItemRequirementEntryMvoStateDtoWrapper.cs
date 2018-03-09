@@ -41,19 +41,19 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 			return this._state;
 		}
 
-        public InventoryItemRequirementEntryIdDto InventoryItemRequirementEntryId
-        {
+		public virtual InventoryItemRequirementEntryId InventoryItemRequirementEntryId
+		{
             get
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("InventoryItemRequirementEntryId"))
                 {
-					return (_state.InventoryItemRequirementEntryId == null) ? null : new InventoryItemRequirementEntryIdDtoWrapper(_state.InventoryItemRequirementEntryId);
+                    return _state.InventoryItemRequirementEntryId;
                 }
                 return null;
             }
             set
             {
-                _state.InventoryItemRequirementEntryId = (value == null) ? null : value.ToInventoryItemRequirementEntryId();
+                _state.InventoryItemRequirementEntryId = value;
             }
         }
 
@@ -100,19 +100,19 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
             }
         }
 
-        public InventoryPRTriggeredIdDto SourceEventId
-        {
+		public virtual InventoryPRTriggeredId SourceEventId
+		{
             get
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("SourceEventId"))
                 {
-					return (_state.SourceEventId == null) ? null : new InventoryPRTriggeredIdDtoWrapper(_state.SourceEventId);
+                    return _state.SourceEventId;
                 }
                 return null;
             }
             set
             {
-                _state.SourceEventId = (value == null) ? null : value.ToInventoryPRTriggeredId();
+                _state.SourceEventId = value;
             }
         }
 

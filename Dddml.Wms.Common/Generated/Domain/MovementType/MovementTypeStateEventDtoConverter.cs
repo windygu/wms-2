@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.MovementType
         public virtual MovementTypeStateCreatedDto ToMovementTypeStateCreatedDto(IMovementTypeStateCreated e)
         {
             var dto = new MovementTypeStateCreatedDto();
-            dto.MovementTypeEventId = new MovementTypeEventIdDtoWrapper(e.MovementTypeEventId);
+            dto.MovementTypeEventId = e.MovementTypeEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -50,7 +50,7 @@ namespace Dddml.Wms.Domain.MovementType
         public virtual MovementTypeStateMergePatchedDto ToMovementTypeStateMergePatchedDto(IMovementTypeStateMergePatched e)
         {
             var dto = new MovementTypeStateMergePatchedDto();
-            dto.MovementTypeEventId = new MovementTypeEventIdDtoWrapper(e.MovementTypeEventId);
+            dto.MovementTypeEventId = e.MovementTypeEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -66,7 +66,7 @@ namespace Dddml.Wms.Domain.MovementType
         public virtual MovementTypeStateDeletedDto ToMovementTypeStateDeletedDto(IMovementTypeStateDeleted e)
         {
             var dto = new MovementTypeStateDeletedDto();
-            dto.MovementTypeEventId = new MovementTypeEventIdDtoWrapper(e.MovementTypeEventId);
+            dto.MovementTypeEventId = e.MovementTypeEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

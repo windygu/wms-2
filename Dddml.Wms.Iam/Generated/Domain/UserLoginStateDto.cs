@@ -15,8 +15,7 @@ namespace Dddml.Wms.Domain.User
 
     public partial class UserLoginStateDto : IUserLoginStateDto
     {
-
-        public virtual LoginKeyDto LoginKey
+        public virtual LoginKey LoginKey
         {
             get;
             set;
@@ -67,7 +66,7 @@ namespace Dddml.Wms.Domain.User
         public virtual IUserLoginState ToUserLoginState()
         {
             var state = new UserLoginState(true);
-            state.LoginKey = (this.LoginKey == null) ? null : this.LoginKey.ToLoginKey();
+            state.LoginKey = this.LoginKey;
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             state.UserId = this.UserId;

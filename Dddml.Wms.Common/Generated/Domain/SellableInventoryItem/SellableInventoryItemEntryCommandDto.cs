@@ -38,37 +38,11 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
 		public virtual decimal? SellableQuantity { get; set; }
 
-
-		public virtual InventoryPRTriggeredIdDto SourceEventId { get; set; }
-
-        InventoryPRTriggeredId ICreateOrMergePatchOrRemoveSellableInventoryItemEntry.SourceEventId
-        {
-            get 
-            {
-                return (this.SourceEventId == null) ? null : this.SourceEventId.ToInventoryPRTriggeredId();
-            }
-            set 
-            {
-                this.SourceEventId = (value == null) ? null : new InventoryPRTriggeredIdDtoWrapper(value);
-            }
-        }
+		public virtual InventoryPRTriggeredId SourceEventId { get; set; }
 
 		public virtual bool? Active { get; set; }
 
-
-		public virtual InventoryItemIdDto SellableInventoryItemId { get; set; }
-
-        InventoryItemId ISellableInventoryItemEntryCommand.SellableInventoryItemId
-        {
-            get 
-            {
-                return (this.SellableInventoryItemId == null) ? null : this.SellableInventoryItemId.ToInventoryItemId();
-            }
-            set 
-            {
-                this.SellableInventoryItemId = (value == null) ? null : new InventoryItemIdDtoWrapper(value);
-            }
-        }
+		public virtual InventoryItemId SellableInventoryItemId { get; set; }
 
 
         string ICommandDto.CommandType 

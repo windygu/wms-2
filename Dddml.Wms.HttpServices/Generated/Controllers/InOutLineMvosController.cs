@@ -274,7 +274,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = ParseIdString(id.IsNormalized() ? id : id.Normalize());
             if (value.InOutLineId == null)
             {
-                value.InOutLineId = new InOutLineIdDtoWrapper(idObj);
+                value.InOutLineId = idObj;
             }
             else if (!((ICreateOrMergePatchOrDeleteInOutLineMvo)value).InOutLineId.Equals(idObj))
             {
@@ -284,10 +284,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static InOutLineId ParseIdString(string idString)
         {
-            var formatter = new InOutLineIdFlattenedDtoFormatter();
-            var idDto = formatter.Parse(idString);
-            var rId = idDto.ToInOutLineId();
-            return rId;
+            var formatter = new ValueObjectTextFormatter<InOutLineId>();
+            return formatter.Parse(idString);
         }
 
         public static string GetFilterPropertyName(string fieldName)
@@ -352,7 +350,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             foreach (var id in ids)
             {
                 var dto = new InOutLineMvoStateDtoWrapper();
-                dto.InOutLineId = new InOutLineIdDtoWrapper(id);
+                dto.InOutLineId = id;
                 states.Add(dto);
             }
             return states;

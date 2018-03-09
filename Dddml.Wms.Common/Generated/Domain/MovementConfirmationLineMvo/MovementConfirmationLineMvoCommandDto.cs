@@ -52,7 +52,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
             set { this.CommandId = value; }
         }
 
-		public virtual MovementConfirmationLineIdDto MovementConfirmationLineId { get; set; }
+		public virtual MovementConfirmationLineId MovementConfirmationLineId { get; set; }
 
 		public virtual string MovementLineNumber { get; set; }
 
@@ -99,19 +99,6 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 		public virtual bool? MovementConfirmationActive { get; set; }
 
 		public virtual bool? MovementConfirmationDeleted { get; set; }
-
-
-        MovementConfirmationLineId IMovementConfirmationLineMvoCommand.MovementConfirmationLineId
-        {
-            get 
-            {
-                return this.MovementConfirmationLineId.ToMovementConfirmationLineId();
-            }
-            set 
-            {
-                this.MovementConfirmationLineId = new MovementConfirmationLineIdDtoWrapper(value);
-            }
-        }
 
 		public virtual bool? IsPropertyMovementLineNumberRemoved { get; set; }
 

@@ -16,13 +16,13 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 	public abstract class InventoryPostingRuleStateEventDtoBase : IStateEventDto, IInventoryPostingRuleStateCreated, IInventoryPostingRuleStateMergePatched, IInventoryPostingRuleStateDeleted
 	{
 
-        private InventoryPostingRuleEventIdDto _inventoryPostingRuleEventId;
+        private InventoryPostingRuleEventId _inventoryPostingRuleEventId;
 
-		protected internal virtual InventoryPostingRuleEventIdDto InventoryPostingRuleEventId 
+		protected internal virtual InventoryPostingRuleEventId InventoryPostingRuleEventId 
         {
             get 
             {
-                if (_inventoryPostingRuleEventId == null) { _inventoryPostingRuleEventId = new InventoryPostingRuleEventIdDto(); }
+                if (_inventoryPostingRuleEventId == null) { _inventoryPostingRuleEventId = new InventoryPostingRuleEventId(); }
                 return _inventoryPostingRuleEventId;
             }
             set
@@ -43,37 +43,9 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
             set { InventoryPostingRuleEventId.Version = value; }
         }
 
-		private InventoryItemIdDto _triggerInventoryItemId = new InventoryItemIdDto();
+		public virtual InventoryItemId TriggerInventoryItemId { get; set; }
 
-		public virtual InventoryItemIdDto TriggerInventoryItemId { get { return _triggerInventoryItemId; } set { _triggerInventoryItemId = value; } }
-
-		InventoryItemId IInventoryPostingRuleStateEvent.TriggerInventoryItemId
-		{ 
-			get 
-			{
-				return this.TriggerInventoryItemId == null ? null : this.TriggerInventoryItemId.ToInventoryItemId(); 
-			} 
-			set
-			{
-				if (value == null) { TriggerInventoryItemId = null; } else { TriggerInventoryItemId = new InventoryItemIdDtoWrapper(value); }
-			} 
-		}
-
-		private InventoryItemIdDto _outputInventoryItemId = new InventoryItemIdDto();
-
-		public virtual InventoryItemIdDto OutputInventoryItemId { get { return _outputInventoryItemId; } set { _outputInventoryItemId = value; } }
-
-		InventoryItemId IInventoryPostingRuleStateEvent.OutputInventoryItemId
-		{ 
-			get 
-			{
-				return this.OutputInventoryItemId == null ? null : this.OutputInventoryItemId.ToInventoryItemId(); 
-			} 
-			set
-			{
-				if (value == null) { OutputInventoryItemId = null; } else { OutputInventoryItemId = new InventoryItemIdDtoWrapper(value); }
-			} 
-		}
+		public virtual InventoryItemId OutputInventoryItemId { get; set; }
 
 		public virtual string TriggerAccountName { get; set; }
 
@@ -94,7 +66,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 		InventoryPostingRuleEventId IGlobalIdentity<InventoryPostingRuleEventId>.GlobalId {
 			get 
 			{
-				return this.InventoryPostingRuleEventId.ToInventoryPostingRuleEventId();
+				return this.InventoryPostingRuleEventId;
 			}
 		}
 
@@ -247,14 +219,14 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
 
         InventoryPostingRuleEventId IInventoryPostingRuleStateEvent.InventoryPostingRuleEventId
         {
-            get { return this.InventoryPostingRuleEventId.ToInventoryPostingRuleEventId(); }
+            get { return this.InventoryPostingRuleEventId; }
         }
 
         protected InventoryPostingRuleStateEventDtoBase()
         {
         }
 
-        protected InventoryPostingRuleStateEventDtoBase(InventoryPostingRuleEventIdDto stateEventId)
+        protected InventoryPostingRuleStateEventDtoBase(InventoryPostingRuleEventId stateEventId)
         {
             this.InventoryPostingRuleEventId = stateEventId;
         }

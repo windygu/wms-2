@@ -28,7 +28,7 @@ namespace Dddml.Wms.Domain.InventoryItem
         public virtual InventoryItemEntryStateCreatedDto ToInventoryItemEntryStateCreatedDto(IInventoryItemEntryStateCreated e)
         {
             var dto = new InventoryItemEntryStateCreatedDto();
-            dto.InventoryItemEntryEventId = new InventoryItemEntryEventIdDtoWrapper(e.InventoryItemEntryEventId);
+            dto.InventoryItemEntryEventId = e.InventoryItemEntryEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;
@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.InventoryItem
             dto.ReservedQuantity = e.ReservedQuantity;
             dto.OccupiedQuantity = e.OccupiedQuantity;
             dto.VirtualQuantity = e.VirtualQuantity;
-            dto.Source = (e.Source == null) ? null : new InventoryItemSourceInfoDtoWrapper(e.Source);
+            dto.Source = e.Source;
             return dto;
         }
 

@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.Attribute
 	public abstract class AttributeStateEventDtoBase : IStateEventDto, IAttributeStateCreated, IAttributeStateMergePatched, IAttributeStateDeleted
 	{
 
-        private AttributeEventIdDto _attributeEventId;
+        private AttributeEventId _attributeEventId;
 
-		protected internal virtual AttributeEventIdDto AttributeEventId 
+		protected internal virtual AttributeEventId AttributeEventId 
         {
             get 
             {
-                if (_attributeEventId == null) { _attributeEventId = new AttributeEventIdDto(); }
+                if (_attributeEventId == null) { _attributeEventId = new AttributeEventId(); }
                 return _attributeEventId;
             }
             set
@@ -73,7 +73,7 @@ namespace Dddml.Wms.Domain.Attribute
 		AttributeEventId IGlobalIdentity<AttributeEventId>.GlobalId {
 			get 
 			{
-				return this.AttributeEventId.ToAttributeEventId();
+				return this.AttributeEventId;
 			}
 		}
 
@@ -317,9 +317,9 @@ namespace Dddml.Wms.Domain.Attribute
 
 
 
-        private AttributeValueEventIdDto NewAttributeValueEventId(string value)
+        private AttributeValueEventId NewAttributeValueEventId(string value)
         {
-            var eId = new AttributeValueEventIdDto();
+            var eId = new AttributeValueEventId();
             eId.AttributeId = this.AttributeEventId.AttributeId;
             eId.Value = value;
             eId.AttributeVersion = this.AttributeEventId.Version;
@@ -425,9 +425,9 @@ namespace Dddml.Wms.Domain.Attribute
 
 
 
-        private AttributeAliasEventIdDto NewAttributeAliasEventId(string code)
+        private AttributeAliasEventId NewAttributeAliasEventId(string code)
         {
-            var eId = new AttributeAliasEventIdDto();
+            var eId = new AttributeAliasEventId();
             eId.AttributeId = this.AttributeEventId.AttributeId;
             eId.Code = code;
             eId.AttributeVersion = this.AttributeEventId.Version;
@@ -518,14 +518,14 @@ namespace Dddml.Wms.Domain.Attribute
 
         AttributeEventId IAttributeStateEvent.AttributeEventId
         {
-            get { return this.AttributeEventId.ToAttributeEventId(); }
+            get { return this.AttributeEventId; }
         }
 
         protected AttributeStateEventDtoBase()
         {
         }
 
-        protected AttributeStateEventDtoBase(AttributeEventIdDto stateEventId)
+        protected AttributeStateEventDtoBase(AttributeEventId stateEventId)
         {
             this.AttributeEventId = stateEventId;
         }

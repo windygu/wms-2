@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.User
 	public abstract class UserLoginStateEventDtoBase : IStateEventDto, IUserLoginStateCreated, IUserLoginStateMergePatched, IUserLoginStateRemoved
 	{
 
-        private UserLoginEventIdDto _userLoginEventId;
+        private UserLoginEventId _userLoginEventId;
 
-		protected internal virtual UserLoginEventIdDto UserLoginEventId 
+		protected internal virtual UserLoginEventId UserLoginEventId 
         {
             get 
             {
-                if (_userLoginEventId == null) { _userLoginEventId = new UserLoginEventIdDto(); }
+                if (_userLoginEventId == null) { _userLoginEventId = new UserLoginEventId(); }
                 return _userLoginEventId;
             }
             set
@@ -30,7 +30,7 @@ namespace Dddml.Wms.Domain.User
             }
         }
 
-        public virtual LoginKeyDto LoginKey
+        public virtual LoginKey LoginKey
         {
             get { return UserLoginEventId.LoginKey; }
             set { UserLoginEventId.LoginKey = value; }
@@ -49,7 +49,7 @@ namespace Dddml.Wms.Domain.User
 		UserLoginEventId IGlobalIdentity<UserLoginEventId>.GlobalId {
 			get 
 			{
-				return this.UserLoginEventId.ToUserLoginEventId();
+				return this.UserLoginEventId;
 			}
 		}
 
@@ -109,14 +109,14 @@ namespace Dddml.Wms.Domain.User
 
         UserLoginEventId IUserLoginStateEvent.UserLoginEventId
         {
-            get { return this.UserLoginEventId.ToUserLoginEventId(); }
+            get { return this.UserLoginEventId; }
         }
 
         protected UserLoginStateEventDtoBase()
         {
         }
 
-        protected UserLoginStateEventDtoBase(UserLoginEventIdDto stateEventId)
+        protected UserLoginStateEventDtoBase(UserLoginEventId stateEventId)
         {
             this.UserLoginEventId = stateEventId;
         }

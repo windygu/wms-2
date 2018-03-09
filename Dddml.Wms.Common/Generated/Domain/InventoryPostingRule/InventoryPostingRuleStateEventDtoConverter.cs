@@ -39,12 +39,12 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
         public virtual InventoryPostingRuleStateCreatedDto ToInventoryPostingRuleStateCreatedDto(IInventoryPostingRuleStateCreated e)
         {
             var dto = new InventoryPostingRuleStateCreatedDto();
-            dto.InventoryPostingRuleEventId = new InventoryPostingRuleEventIdDtoWrapper(e.InventoryPostingRuleEventId);
+            dto.InventoryPostingRuleEventId = e.InventoryPostingRuleEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
-            dto.TriggerInventoryItemId = (e.TriggerInventoryItemId == null) ? null : new InventoryItemIdDtoWrapper(e.TriggerInventoryItemId);
-            dto.OutputInventoryItemId = (e.OutputInventoryItemId == null) ? null : new InventoryItemIdDtoWrapper(e.OutputInventoryItemId);
+            dto.TriggerInventoryItemId = e.TriggerInventoryItemId;
+            dto.OutputInventoryItemId = e.OutputInventoryItemId;
             dto.TriggerAccountName = e.TriggerAccountName;
             dto.OutputAccountName = e.OutputAccountName;
             dto.IsOutputNegated = e.IsOutputNegated;
@@ -55,12 +55,12 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
         public virtual InventoryPostingRuleStateMergePatchedDto ToInventoryPostingRuleStateMergePatchedDto(IInventoryPostingRuleStateMergePatched e)
         {
             var dto = new InventoryPostingRuleStateMergePatchedDto();
-            dto.InventoryPostingRuleEventId = new InventoryPostingRuleEventIdDtoWrapper(e.InventoryPostingRuleEventId);
+            dto.InventoryPostingRuleEventId = e.InventoryPostingRuleEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
-            dto.TriggerInventoryItemId = (e.TriggerInventoryItemId == null) ? null : new InventoryItemIdDtoWrapper(e.TriggerInventoryItemId);
-            dto.OutputInventoryItemId = (e.OutputInventoryItemId == null) ? null : new InventoryItemIdDtoWrapper(e.OutputInventoryItemId);
+            dto.TriggerInventoryItemId = e.TriggerInventoryItemId;
+            dto.OutputInventoryItemId = e.OutputInventoryItemId;
             dto.TriggerAccountName = e.TriggerAccountName;
             dto.OutputAccountName = e.OutputAccountName;
             dto.IsOutputNegated = e.IsOutputNegated;
@@ -79,7 +79,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule
         public virtual InventoryPostingRuleStateDeletedDto ToInventoryPostingRuleStateDeletedDto(IInventoryPostingRuleStateDeleted e)
         {
             var dto = new InventoryPostingRuleStateDeletedDto();
-            dto.InventoryPostingRuleEventId = new InventoryPostingRuleEventIdDtoWrapper(e.InventoryPostingRuleEventId);
+            dto.InventoryPostingRuleEventId = e.InventoryPostingRuleEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

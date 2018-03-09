@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.SupplierProduct
 	public abstract class SupplierProductStateEventDtoBase : IStateEventDto, ISupplierProductStateCreated, ISupplierProductStateMergePatched
 	{
 
-        private SupplierProductEventIdDto _supplierProductEventId;
+        private SupplierProductEventId _supplierProductEventId;
 
-		protected internal virtual SupplierProductEventIdDto SupplierProductEventId 
+		protected internal virtual SupplierProductEventId SupplierProductEventId 
         {
             get 
             {
-                if (_supplierProductEventId == null) { _supplierProductEventId = new SupplierProductEventIdDto(); }
+                if (_supplierProductEventId == null) { _supplierProductEventId = new SupplierProductEventId(); }
                 return _supplierProductEventId;
             }
             set
@@ -30,7 +30,7 @@ namespace Dddml.Wms.Domain.SupplierProduct
             }
         }
 
-        public virtual SupplierProductIdDto SupplierProductId
+        public virtual SupplierProductId SupplierProductId
         {
             get { return SupplierProductEventId.SupplierProductId; }
             set { SupplierProductEventId.SupplierProductId = value; }
@@ -81,7 +81,7 @@ namespace Dddml.Wms.Domain.SupplierProduct
 		SupplierProductEventId IGlobalIdentity<SupplierProductEventId>.GlobalId {
 			get 
 			{
-				return this.SupplierProductEventId.ToSupplierProductEventId();
+				return this.SupplierProductEventId;
 			}
 		}
 
@@ -386,14 +386,14 @@ namespace Dddml.Wms.Domain.SupplierProduct
 
         SupplierProductEventId ISupplierProductStateEvent.SupplierProductEventId
         {
-            get { return this.SupplierProductEventId.ToSupplierProductEventId(); }
+            get { return this.SupplierProductEventId; }
         }
 
         protected SupplierProductStateEventDtoBase()
         {
         }
 
-        protected SupplierProductStateEventDtoBase(SupplierProductEventIdDto stateEventId)
+        protected SupplierProductStateEventDtoBase(SupplierProductEventId stateEventId)
         {
             this.SupplierProductEventId = stateEventId;
         }

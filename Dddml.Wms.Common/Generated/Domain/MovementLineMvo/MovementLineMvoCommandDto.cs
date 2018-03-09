@@ -52,7 +52,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
             set { this.CommandId = value; }
         }
 
-		public virtual MovementLineIdDto MovementLineId { get; set; }
+		public virtual MovementLineId MovementLineId { get; set; }
 
 		public virtual decimal? MovementQuantity { get; set; }
 
@@ -123,19 +123,6 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 		public virtual bool? MovementActive { get; set; }
 
 		public virtual bool? MovementDeleted { get; set; }
-
-
-        MovementLineId IMovementLineMvoCommand.MovementLineId
-        {
-            get 
-            {
-                return this.MovementLineId.ToMovementLineId();
-            }
-            set 
-            {
-                this.MovementLineId = new MovementLineIdDtoWrapper(value);
-            }
-        }
 
 		public virtual bool? IsPropertyMovementQuantityRemoved { get; set; }
 

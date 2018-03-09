@@ -40,19 +40,19 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 			return this._state;
 		}
 
-        public InventoryItemEntryIdDto InventoryItemEntryId
-        {
+		public virtual InventoryItemEntryId InventoryItemEntryId
+		{
             get
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("InventoryItemEntryId"))
                 {
-					return (_state.InventoryItemEntryId == null) ? null : new InventoryItemEntryIdDtoWrapper(_state.InventoryItemEntryId);
+                    return _state.InventoryItemEntryId;
                 }
                 return null;
             }
             set
             {
-                _state.InventoryItemEntryId = (value == null) ? null : value.ToInventoryItemEntryId();
+                _state.InventoryItemEntryId = value;
             }
         }
 
@@ -223,19 +223,19 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             }
         }
 
-        public InventoryItemSourceInfoDto Source
-        {
+		public virtual InventoryItemSourceInfo Source
+		{
             get
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("Source"))
                 {
-					return (_state.Source == null) ? null : new InventoryItemSourceInfoDtoWrapper(_state.Source);
+                    return _state.Source;
                 }
                 return null;
             }
             set
             {
-                _state.Source = (value == null) ? null : value.ToInventoryItemSourceInfo();
+                _state.Source = value;
             }
         }
 

@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.OrderShipment
 	public abstract class OrderShipmentStateEventDtoBase : IStateEventDto, IOrderShipmentStateCreated, IOrderShipmentStateMergePatched
 	{
 
-        private OrderShipmentEventIdDto _orderShipmentEventId;
+        private OrderShipmentEventId _orderShipmentEventId;
 
-		protected internal virtual OrderShipmentEventIdDto OrderShipmentEventId 
+		protected internal virtual OrderShipmentEventId OrderShipmentEventId 
         {
             get 
             {
-                if (_orderShipmentEventId == null) { _orderShipmentEventId = new OrderShipmentEventIdDto(); }
+                if (_orderShipmentEventId == null) { _orderShipmentEventId = new OrderShipmentEventId(); }
                 return _orderShipmentEventId;
             }
             set
@@ -30,7 +30,7 @@ namespace Dddml.Wms.Domain.OrderShipment
             }
         }
 
-        public virtual OrderShipmentIdDto OrderShipmentId
+        public virtual OrderShipmentId OrderShipmentId
         {
             get { return OrderShipmentEventId.OrderShipmentId; }
             set { OrderShipmentEventId.OrderShipmentId = value; }
@@ -57,7 +57,7 @@ namespace Dddml.Wms.Domain.OrderShipment
 		OrderShipmentEventId IGlobalIdentity<OrderShipmentEventId>.GlobalId {
 			get 
 			{
-				return this.OrderShipmentEventId.ToOrderShipmentEventId();
+				return this.OrderShipmentEventId;
 			}
 		}
 
@@ -134,14 +134,14 @@ namespace Dddml.Wms.Domain.OrderShipment
 
         OrderShipmentEventId IOrderShipmentStateEvent.OrderShipmentEventId
         {
-            get { return this.OrderShipmentEventId.ToOrderShipmentEventId(); }
+            get { return this.OrderShipmentEventId; }
         }
 
         protected OrderShipmentStateEventDtoBase()
         {
         }
 
-        protected OrderShipmentStateEventDtoBase(OrderShipmentEventIdDto stateEventId)
+        protected OrderShipmentStateEventDtoBase(OrderShipmentEventId stateEventId)
         {
             this.OrderShipmentEventId = stateEventId;
         }

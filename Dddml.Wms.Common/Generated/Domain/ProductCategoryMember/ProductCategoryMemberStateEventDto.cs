@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 	public abstract class ProductCategoryMemberStateEventDtoBase : IStateEventDto, IProductCategoryMemberStateCreated, IProductCategoryMemberStateMergePatched
 	{
 
-        private ProductCategoryMemberEventIdDto _productCategoryMemberEventId;
+        private ProductCategoryMemberEventId _productCategoryMemberEventId;
 
-		protected internal virtual ProductCategoryMemberEventIdDto ProductCategoryMemberEventId 
+		protected internal virtual ProductCategoryMemberEventId ProductCategoryMemberEventId 
         {
             get 
             {
-                if (_productCategoryMemberEventId == null) { _productCategoryMemberEventId = new ProductCategoryMemberEventIdDto(); }
+                if (_productCategoryMemberEventId == null) { _productCategoryMemberEventId = new ProductCategoryMemberEventId(); }
                 return _productCategoryMemberEventId;
             }
             set
@@ -30,7 +30,7 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
             }
         }
 
-        public virtual ProductCategoryMemberIdDto ProductCategoryMemberId
+        public virtual ProductCategoryMemberId ProductCategoryMemberId
         {
             get { return ProductCategoryMemberEventId.ProductCategoryMemberId; }
             set { ProductCategoryMemberEventId.ProductCategoryMemberId = value; }
@@ -63,7 +63,7 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 		ProductCategoryMemberEventId IGlobalIdentity<ProductCategoryMemberEventId>.GlobalId {
 			get 
 			{
-				return this.ProductCategoryMemberEventId.ToProductCategoryMemberEventId();
+				return this.ProductCategoryMemberEventId;
 			}
 		}
 
@@ -197,14 +197,14 @@ namespace Dddml.Wms.Domain.ProductCategoryMember
 
         ProductCategoryMemberEventId IProductCategoryMemberStateEvent.ProductCategoryMemberEventId
         {
-            get { return this.ProductCategoryMemberEventId.ToProductCategoryMemberEventId(); }
+            get { return this.ProductCategoryMemberEventId; }
         }
 
         protected ProductCategoryMemberStateEventDtoBase()
         {
         }
 
-        protected ProductCategoryMemberStateEventDtoBase(ProductCategoryMemberEventIdDto stateEventId)
+        protected ProductCategoryMemberStateEventDtoBase(ProductCategoryMemberEventId stateEventId)
         {
             this.ProductCategoryMemberEventId = stateEventId;
         }

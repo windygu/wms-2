@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.AttributeSet
 	public abstract class AttributeSetStateEventDtoBase : IStateEventDto, IAttributeSetStateCreated, IAttributeSetStateMergePatched, IAttributeSetStateDeleted
 	{
 
-        private AttributeSetEventIdDto _attributeSetEventId;
+        private AttributeSetEventId _attributeSetEventId;
 
-		protected internal virtual AttributeSetEventIdDto AttributeSetEventId 
+		protected internal virtual AttributeSetEventId AttributeSetEventId 
         {
             get 
             {
-                if (_attributeSetEventId == null) { _attributeSetEventId = new AttributeSetEventIdDto(); }
+                if (_attributeSetEventId == null) { _attributeSetEventId = new AttributeSetEventId(); }
                 return _attributeSetEventId;
             }
             set
@@ -67,7 +67,7 @@ namespace Dddml.Wms.Domain.AttributeSet
 		AttributeSetEventId IGlobalIdentity<AttributeSetEventId>.GlobalId {
 			get 
 			{
-				return this.AttributeSetEventId.ToAttributeSetEventId();
+				return this.AttributeSetEventId;
 			}
 		}
 
@@ -254,9 +254,9 @@ namespace Dddml.Wms.Domain.AttributeSet
 
 
 
-        private AttributeUseEventIdDto NewAttributeUseEventId(string attributeId)
+        private AttributeUseEventId NewAttributeUseEventId(string attributeId)
         {
-            var eId = new AttributeUseEventIdDto();
+            var eId = new AttributeUseEventId();
             eId.AttributeSetId = this.AttributeSetEventId.AttributeSetId;
             eId.AttributeId = attributeId;
             eId.AttributeSetVersion = this.AttributeSetEventId.Version;
@@ -347,14 +347,14 @@ namespace Dddml.Wms.Domain.AttributeSet
 
         AttributeSetEventId IAttributeSetStateEvent.AttributeSetEventId
         {
-            get { return this.AttributeSetEventId.ToAttributeSetEventId(); }
+            get { return this.AttributeSetEventId; }
         }
 
         protected AttributeSetStateEventDtoBase()
         {
         }
 
-        protected AttributeSetStateEventDtoBase(AttributeSetEventIdDto stateEventId)
+        protected AttributeSetStateEventDtoBase(AttributeSetEventId stateEventId)
         {
             this.AttributeSetEventId = stateEventId;
         }

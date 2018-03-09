@@ -16,8 +16,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
 
     public partial class MovementConfirmationLineMvoStateDto : IMovementConfirmationLineMvoStateDto
     {
-
-        public virtual MovementConfirmationLineIdDto MovementConfirmationLineId
+        public virtual MovementConfirmationLineId MovementConfirmationLineId
         {
             get;
             set;
@@ -194,7 +193,7 @@ namespace Dddml.Wms.Domain.MovementConfirmationLineMvo
         public virtual IMovementConfirmationLineMvoState ToMovementConfirmationLineMvoState()
         {
             var state = new MovementConfirmationLineMvoState(true);
-            state.MovementConfirmationLineId = (this.MovementConfirmationLineId == null) ? null : this.MovementConfirmationLineId.ToMovementConfirmationLineId();
+            state.MovementConfirmationLineId = this.MovementConfirmationLineId;
             state.MovementLineNumber = this.MovementLineNumber;
             if (this.TargetQuantity != null && this.TargetQuantity.HasValue) { state.TargetQuantity = this.TargetQuantity.Value; }
             if (this.ConfirmedQuantity != null && this.ConfirmedQuantity.HasValue) { state.ConfirmedQuantity = this.ConfirmedQuantity.Value; }

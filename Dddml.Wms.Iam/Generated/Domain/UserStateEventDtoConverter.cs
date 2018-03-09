@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.User
         public virtual UserStateCreatedDto ToUserStateCreatedDto(IUserStateCreated e)
         {
             var dto = new UserStateCreatedDto();
-            dto.UserEventId = new UserEventIdDtoWrapper(e.UserEventId);
+            dto.UserEventId = e.UserEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -92,7 +92,7 @@ namespace Dddml.Wms.Domain.User
         public virtual UserStateMergePatchedDto ToUserStateMergePatchedDto(IUserStateMergePatched e)
         {
             var dto = new UserStateMergePatchedDto();
-            dto.UserEventId = new UserEventIdDtoWrapper(e.UserEventId);
+            dto.UserEventId = e.UserEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -160,7 +160,7 @@ namespace Dddml.Wms.Domain.User
         public virtual UserStateDeletedDto ToUserStateDeletedDto(IUserStateDeleted e)
         {
             var dto = new UserStateDeletedDto();
-            dto.UserEventId = new UserEventIdDtoWrapper(e.UserEventId);
+            dto.UserEventId = e.UserEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

@@ -260,7 +260,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = ParseIdString(id.IsNormalized() ? id : id.Normalize());
             if (value.ProductCategoryMemberId == null)
             {
-                value.ProductCategoryMemberId = new ProductCategoryMemberIdDtoWrapper(idObj);
+                value.ProductCategoryMemberId = idObj;
             }
             else if (!((ICreateOrMergePatchOrDeleteProductCategoryMember)value).ProductCategoryMemberId.Equals(idObj))
             {
@@ -270,10 +270,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static ProductCategoryMemberId ParseIdString(string idString)
         {
-            var formatter = new ProductCategoryMemberIdFlattenedDtoFormatter();
-            var idDto = formatter.Parse(idString);
-            var rId = idDto.ToProductCategoryMemberId();
-            return rId;
+            var formatter = new ValueObjectTextFormatter<ProductCategoryMemberId>();
+            return formatter.Parse(idString);
         }
 
         public static string GetFilterPropertyName(string fieldName)
@@ -338,7 +336,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             foreach (var id in ids)
             {
                 var dto = new ProductCategoryMemberStateDtoWrapper();
-                dto.ProductCategoryMemberId = new ProductCategoryMemberIdDtoWrapper(id);
+                dto.ProductCategoryMemberId = id;
                 states.Add(dto);
             }
             return states;

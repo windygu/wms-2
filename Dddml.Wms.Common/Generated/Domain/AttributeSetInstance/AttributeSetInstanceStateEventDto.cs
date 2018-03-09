@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 	public abstract class AttributeSetInstanceStateEventDtoBase : IStateEventDto, IAttributeSetInstanceStateCreated
 	{
 
-        private AttributeSetInstanceEventIdDto _attributeSetInstanceEventId;
+        private AttributeSetInstanceEventId _attributeSetInstanceEventId;
 
-		protected internal virtual AttributeSetInstanceEventIdDto AttributeSetInstanceEventId 
+		protected internal virtual AttributeSetInstanceEventId AttributeSetInstanceEventId 
         {
             get 
             {
-                if (_attributeSetInstanceEventId == null) { _attributeSetInstanceEventId = new AttributeSetInstanceEventIdDto(); }
+                if (_attributeSetInstanceEventId == null) { _attributeSetInstanceEventId = new AttributeSetInstanceEventId(); }
                 return _attributeSetInstanceEventId;
             }
             set
@@ -189,7 +189,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 		AttributeSetInstanceEventId IGlobalIdentity<AttributeSetInstanceEventId>.GlobalId {
 			get 
 			{
-				return this.AttributeSetInstanceEventId.ToAttributeSetInstanceEventId();
+				return this.AttributeSetInstanceEventId;
 			}
 		}
 
@@ -228,14 +228,14 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 
         AttributeSetInstanceEventId IAttributeSetInstanceStateEvent.AttributeSetInstanceEventId
         {
-            get { return this.AttributeSetInstanceEventId.ToAttributeSetInstanceEventId(); }
+            get { return this.AttributeSetInstanceEventId; }
         }
 
         protected AttributeSetInstanceStateEventDtoBase()
         {
         }
 
-        protected AttributeSetInstanceStateEventDtoBase(AttributeSetInstanceEventIdDto stateEventId)
+        protected AttributeSetInstanceStateEventDtoBase(AttributeSetInstanceEventId stateEventId)
         {
             this.AttributeSetInstanceEventId = stateEventId;
         }

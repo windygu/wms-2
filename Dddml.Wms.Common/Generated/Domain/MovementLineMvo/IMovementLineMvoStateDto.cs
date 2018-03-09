@@ -15,8 +15,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
     public interface IMovementLineMvoStateDto
     {
-
-        MovementLineIdDto MovementLineId
+        MovementLineId MovementLineId
         {
             get;
             set;

@@ -32,24 +32,11 @@ namespace Dddml.Wms.Domain.User
             set { this.CommandId = value; }
         }
 
-		public virtual LoginKeyDto LoginKey { get; set; }
+		public virtual LoginKey LoginKey { get; set; }
 
 		public virtual bool? Active { get; set; }
 
 		public virtual string UserId { get; set; }
-
-
-        LoginKey IUserLoginCommand.LoginKey
-        {
-            get 
-            {
-                return this.LoginKey.ToLoginKey();
-            }
-            set 
-            {
-                this.LoginKey = new LoginKeyDtoWrapper(value);
-            }
-        }
 
 		public virtual bool? IsPropertyActiveRemoved { get; set; }
 

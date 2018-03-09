@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.DamageReason
 	public abstract class DamageReasonStateEventDtoBase : IStateEventDto, IDamageReasonStateCreated, IDamageReasonStateMergePatched, IDamageReasonStateDeleted
 	{
 
-        private DamageReasonEventIdDto _damageReasonEventId;
+        private DamageReasonEventId _damageReasonEventId;
 
-		protected internal virtual DamageReasonEventIdDto DamageReasonEventId 
+		protected internal virtual DamageReasonEventId DamageReasonEventId 
         {
             get 
             {
-                if (_damageReasonEventId == null) { _damageReasonEventId = new DamageReasonEventIdDto(); }
+                if (_damageReasonEventId == null) { _damageReasonEventId = new DamageReasonEventId(); }
                 return _damageReasonEventId;
             }
             set
@@ -59,7 +59,7 @@ namespace Dddml.Wms.Domain.DamageReason
 		DamageReasonEventId IGlobalIdentity<DamageReasonEventId>.GlobalId {
 			get 
 			{
-				return this.DamageReasonEventId.ToDamageReasonEventId();
+				return this.DamageReasonEventId;
 			}
 		}
 
@@ -155,14 +155,14 @@ namespace Dddml.Wms.Domain.DamageReason
 
         DamageReasonEventId IDamageReasonStateEvent.DamageReasonEventId
         {
-            get { return this.DamageReasonEventId.ToDamageReasonEventId(); }
+            get { return this.DamageReasonEventId; }
         }
 
         protected DamageReasonStateEventDtoBase()
         {
         }
 
-        protected DamageReasonStateEventDtoBase(DamageReasonEventIdDto stateEventId)
+        protected DamageReasonStateEventDtoBase(DamageReasonEventId stateEventId)
         {
             this.DamageReasonEventId = stateEventId;
         }

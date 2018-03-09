@@ -40,19 +40,19 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 			return this._state;
 		}
 
-        public AttributeAliasIdDto AttributeAliasId
-        {
+		public virtual AttributeAliasId AttributeAliasId
+		{
             get
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("AttributeAliasId"))
                 {
-					return (_state.AttributeAliasId == null) ? null : new AttributeAliasIdDtoWrapper(_state.AttributeAliasId);
+                    return _state.AttributeAliasId;
                 }
                 return null;
             }
             set
             {
-                _state.AttributeAliasId = (value == null) ? null : value.ToAttributeAliasId();
+                _state.AttributeAliasId = value;
             }
         }
 

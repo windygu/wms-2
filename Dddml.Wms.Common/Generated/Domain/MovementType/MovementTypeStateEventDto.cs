@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.MovementType
 	public abstract class MovementTypeStateEventDtoBase : IStateEventDto, IMovementTypeStateCreated, IMovementTypeStateMergePatched, IMovementTypeStateDeleted
 	{
 
-        private MovementTypeEventIdDto _movementTypeEventId;
+        private MovementTypeEventId _movementTypeEventId;
 
-		protected internal virtual MovementTypeEventIdDto MovementTypeEventId 
+		protected internal virtual MovementTypeEventId MovementTypeEventId 
         {
             get 
             {
-                if (_movementTypeEventId == null) { _movementTypeEventId = new MovementTypeEventIdDto(); }
+                if (_movementTypeEventId == null) { _movementTypeEventId = new MovementTypeEventId(); }
                 return _movementTypeEventId;
             }
             set
@@ -57,7 +57,7 @@ namespace Dddml.Wms.Domain.MovementType
 		MovementTypeEventId IGlobalIdentity<MovementTypeEventId>.GlobalId {
 			get 
 			{
-				return this.MovementTypeEventId.ToMovementTypeEventId();
+				return this.MovementTypeEventId;
 			}
 		}
 
@@ -134,14 +134,14 @@ namespace Dddml.Wms.Domain.MovementType
 
         MovementTypeEventId IMovementTypeStateEvent.MovementTypeEventId
         {
-            get { return this.MovementTypeEventId.ToMovementTypeEventId(); }
+            get { return this.MovementTypeEventId; }
         }
 
         protected MovementTypeStateEventDtoBase()
         {
         }
 
-        protected MovementTypeStateEventDtoBase(MovementTypeEventIdDto stateEventId)
+        protected MovementTypeStateEventDtoBase(MovementTypeEventId stateEventId)
         {
             this.MovementTypeEventId = stateEventId;
         }

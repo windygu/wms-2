@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.RolePermission
         public virtual RolePermissionStateCreatedDto ToRolePermissionStateCreatedDto(IRolePermissionStateCreated e)
         {
             var dto = new RolePermissionStateCreatedDto();
-            dto.RolePermissionEventId = new RolePermissionEventIdDtoWrapper(e.RolePermissionEventId);
+            dto.RolePermissionEventId = e.RolePermissionEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -49,7 +49,7 @@ namespace Dddml.Wms.Domain.RolePermission
         public virtual RolePermissionStateMergePatchedDto ToRolePermissionStateMergePatchedDto(IRolePermissionStateMergePatched e)
         {
             var dto = new RolePermissionStateMergePatchedDto();
-            dto.RolePermissionEventId = new RolePermissionEventIdDtoWrapper(e.RolePermissionEventId);
+            dto.RolePermissionEventId = e.RolePermissionEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -63,7 +63,7 @@ namespace Dddml.Wms.Domain.RolePermission
         public virtual RolePermissionStateDeletedDto ToRolePermissionStateDeletedDto(IRolePermissionStateDeleted e)
         {
             var dto = new RolePermissionStateDeletedDto();
-            dto.RolePermissionEventId = new RolePermissionEventIdDtoWrapper(e.RolePermissionEventId);
+            dto.RolePermissionEventId = e.RolePermissionEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

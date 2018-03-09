@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.User
 	public abstract class UserRoleStateEventDtoBase : IStateEventDto, IUserRoleStateCreated, IUserRoleStateMergePatched, IUserRoleStateRemoved
 	{
 
-        private UserRoleEventIdDto _userRoleEventId;
+        private UserRoleEventId _userRoleEventId;
 
-		protected internal virtual UserRoleEventIdDto UserRoleEventId 
+		protected internal virtual UserRoleEventId UserRoleEventId 
         {
             get 
             {
-                if (_userRoleEventId == null) { _userRoleEventId = new UserRoleEventIdDto(); }
+                if (_userRoleEventId == null) { _userRoleEventId = new UserRoleEventId(); }
                 return _userRoleEventId;
             }
             set
@@ -49,7 +49,7 @@ namespace Dddml.Wms.Domain.User
 		UserRoleEventId IGlobalIdentity<UserRoleEventId>.GlobalId {
 			get 
 			{
-				return this.UserRoleEventId.ToUserRoleEventId();
+				return this.UserRoleEventId;
 			}
 		}
 
@@ -109,14 +109,14 @@ namespace Dddml.Wms.Domain.User
 
         UserRoleEventId IUserRoleStateEvent.UserRoleEventId
         {
-            get { return this.UserRoleEventId.ToUserRoleEventId(); }
+            get { return this.UserRoleEventId; }
         }
 
         protected UserRoleStateEventDtoBase()
         {
         }
 
-        protected UserRoleStateEventDtoBase(UserRoleEventIdDto stateEventId)
+        protected UserRoleStateEventDtoBase(UserRoleEventId stateEventId)
         {
             this.UserRoleEventId = stateEventId;
         }

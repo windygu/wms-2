@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.Locator
 	public abstract class LocatorStateEventDtoBase : IStateEventDto, ILocatorStateCreated, ILocatorStateMergePatched, ILocatorStateDeleted
 	{
 
-        private LocatorEventIdDto _locatorEventId;
+        private LocatorEventId _locatorEventId;
 
-		protected internal virtual LocatorEventIdDto LocatorEventId 
+		protected internal virtual LocatorEventId LocatorEventId 
         {
             get 
             {
-                if (_locatorEventId == null) { _locatorEventId = new LocatorEventIdDto(); }
+                if (_locatorEventId == null) { _locatorEventId = new LocatorEventId(); }
                 return _locatorEventId;
             }
             set
@@ -73,7 +73,7 @@ namespace Dddml.Wms.Domain.Locator
 		LocatorEventId IGlobalIdentity<LocatorEventId>.GlobalId {
 			get 
 			{
-				return this.LocatorEventId.ToLocatorEventId();
+				return this.LocatorEventId;
 			}
 		}
 
@@ -302,14 +302,14 @@ namespace Dddml.Wms.Domain.Locator
 
         LocatorEventId ILocatorStateEvent.LocatorEventId
         {
-            get { return this.LocatorEventId.ToLocatorEventId(); }
+            get { return this.LocatorEventId; }
         }
 
         protected LocatorStateEventDtoBase()
         {
         }
 
-        protected LocatorStateEventDtoBase(LocatorEventIdDto stateEventId)
+        protected LocatorStateEventDtoBase(LocatorEventId stateEventId)
         {
             this.LocatorEventId = stateEventId;
         }

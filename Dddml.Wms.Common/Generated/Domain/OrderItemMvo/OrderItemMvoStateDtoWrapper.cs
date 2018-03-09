@@ -40,19 +40,19 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 			return this._state;
 		}
 
-        public OrderItemIdDto OrderItemId
-        {
+		public virtual OrderItemId OrderItemId
+		{
             get
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("OrderItemId"))
                 {
-					return (_state.OrderItemId == null) ? null : new OrderItemIdDtoWrapper(_state.OrderItemId);
+                    return _state.OrderItemId;
                 }
                 return null;
             }
             set
             {
-                _state.OrderItemId = (value == null) ? null : value.ToOrderItemId();
+                _state.OrderItemId = value;
             }
         }
 

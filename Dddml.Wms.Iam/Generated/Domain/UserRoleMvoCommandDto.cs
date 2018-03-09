@@ -52,7 +52,7 @@ namespace Dddml.Wms.Domain.UserRoleMvo
             set { this.CommandId = value; }
         }
 
-		public virtual UserRoleIdDto UserRoleId { get; set; }
+		public virtual UserRoleId UserRoleId { get; set; }
 
 		public virtual long? Version { get; set; }
 
@@ -91,19 +91,6 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 		public virtual bool? UserActive { get; set; }
 
 		public virtual bool? UserDeleted { get; set; }
-
-
-        UserRoleId IUserRoleMvoCommand.UserRoleId
-        {
-            get 
-            {
-                return this.UserRoleId.ToUserRoleId();
-            }
-            set 
-            {
-                this.UserRoleId = new UserRoleIdDtoWrapper(value);
-            }
-        }
 
 		public virtual bool? IsPropertyVersionRemoved { get; set; }
 

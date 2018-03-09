@@ -15,8 +15,7 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 
     public interface IAttributeAliasMvoStateDto
     {
-
-        AttributeAliasIdDto AttributeAliasId
+        AttributeAliasId AttributeAliasId
         {
             get;
             set;

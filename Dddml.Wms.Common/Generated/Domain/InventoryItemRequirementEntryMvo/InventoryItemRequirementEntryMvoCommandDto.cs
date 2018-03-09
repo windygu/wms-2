@@ -53,24 +53,11 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
             set { this.CommandId = value; }
         }
 
-		public virtual InventoryItemRequirementEntryIdDto InventoryItemRequirementEntryId { get; set; }
+		public virtual InventoryItemRequirementEntryId InventoryItemRequirementEntryId { get; set; }
 
 		public virtual decimal? Quantity { get; set; }
 
-
-		public virtual InventoryPRTriggeredIdDto SourceEventId { get; set; }
-
-        InventoryPRTriggeredId ICreateOrMergePatchOrDeleteInventoryItemRequirementEntryMvo.SourceEventId
-        {
-            get 
-            {
-                return (this.SourceEventId == null) ? null : this.SourceEventId.ToInventoryPRTriggeredId();
-            }
-            set 
-            {
-                this.SourceEventId = (value == null) ? null : new InventoryPRTriggeredIdDtoWrapper(value);
-            }
-        }
+		public virtual InventoryPRTriggeredId SourceEventId { get; set; }
 
 		public virtual long? Version { get; set; }
 
@@ -85,19 +72,6 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo
 		public virtual string InventoryItemRequirementUpdatedBy { get; set; }
 
 		public virtual DateTime? InventoryItemRequirementUpdatedAt { get; set; }
-
-
-        InventoryItemRequirementEntryId IInventoryItemRequirementEntryMvoCommand.InventoryItemRequirementEntryId
-        {
-            get 
-            {
-                return this.InventoryItemRequirementEntryId.ToInventoryItemRequirementEntryId();
-            }
-            set 
-            {
-                this.InventoryItemRequirementEntryId = new InventoryItemRequirementEntryIdDtoWrapper(value);
-            }
-        }
 
 		public virtual bool? IsPropertyQuantityRemoved { get; set; }
 

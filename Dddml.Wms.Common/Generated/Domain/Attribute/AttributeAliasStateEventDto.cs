@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.Attribute
 	public abstract class AttributeAliasStateEventDtoBase : IStateEventDto, IAttributeAliasStateCreated, IAttributeAliasStateMergePatched, IAttributeAliasStateRemoved
 	{
 
-        private AttributeAliasEventIdDto _attributeAliasEventId;
+        private AttributeAliasEventId _attributeAliasEventId;
 
-		protected internal virtual AttributeAliasEventIdDto AttributeAliasEventId 
+		protected internal virtual AttributeAliasEventId AttributeAliasEventId 
         {
             get 
             {
-                if (_attributeAliasEventId == null) { _attributeAliasEventId = new AttributeAliasEventIdDto(); }
+                if (_attributeAliasEventId == null) { _attributeAliasEventId = new AttributeAliasEventId(); }
                 return _attributeAliasEventId;
             }
             set
@@ -51,7 +51,7 @@ namespace Dddml.Wms.Domain.Attribute
 		AttributeAliasEventId IGlobalIdentity<AttributeAliasEventId>.GlobalId {
 			get 
 			{
-				return this.AttributeAliasEventId.ToAttributeAliasEventId();
+				return this.AttributeAliasEventId;
 			}
 		}
 
@@ -130,14 +130,14 @@ namespace Dddml.Wms.Domain.Attribute
 
         AttributeAliasEventId IAttributeAliasStateEvent.AttributeAliasEventId
         {
-            get { return this.AttributeAliasEventId.ToAttributeAliasEventId(); }
+            get { return this.AttributeAliasEventId; }
         }
 
         protected AttributeAliasStateEventDtoBase()
         {
         }
 
-        protected AttributeAliasStateEventDtoBase(AttributeAliasEventIdDto stateEventId)
+        protected AttributeAliasStateEventDtoBase(AttributeAliasEventId stateEventId)
         {
             this.AttributeAliasEventId = stateEventId;
         }

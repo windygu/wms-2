@@ -28,8 +28,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
             set;
         }
 
-
-        InventoryPRTriggeredIdDto SourceEventId
+        InventoryPRTriggeredId SourceEventId
         {
             get;
             set;
@@ -41,8 +40,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
             set;
         }
 
-
-        InventoryItemIdDto SellableInventoryItemId
+        InventoryItemId SellableInventoryItemId
         {
             get;
             set;

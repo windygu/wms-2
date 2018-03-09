@@ -15,8 +15,7 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 
     public interface IUserClaimMvoStateDto
     {
-
-        UserClaimIdDto UserClaimId
+        UserClaimId UserClaimId
         {
             get;
             set;

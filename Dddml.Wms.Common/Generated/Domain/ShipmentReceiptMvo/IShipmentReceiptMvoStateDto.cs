@@ -15,8 +15,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
     public interface IShipmentReceiptMvoStateDto
     {
-
-        ShipmentReceiptIdDto ShipmentReceiptId
+        ShipmentReceiptId ShipmentReceiptId
         {
             get;
             set;

@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.ProductCategory
 	public abstract class ProductCategoryStateEventDtoBase : IStateEventDto, IProductCategoryStateCreated, IProductCategoryStateMergePatched, IProductCategoryStateDeleted
 	{
 
-        private ProductCategoryEventIdDto _productCategoryEventId;
+        private ProductCategoryEventId _productCategoryEventId;
 
-		protected internal virtual ProductCategoryEventIdDto ProductCategoryEventId 
+		protected internal virtual ProductCategoryEventId ProductCategoryEventId 
         {
             get 
             {
-                if (_productCategoryEventId == null) { _productCategoryEventId = new ProductCategoryEventIdDto(); }
+                if (_productCategoryEventId == null) { _productCategoryEventId = new ProductCategoryEventId(); }
                 return _productCategoryEventId;
             }
             set
@@ -71,7 +71,7 @@ namespace Dddml.Wms.Domain.ProductCategory
 		ProductCategoryEventId IGlobalIdentity<ProductCategoryEventId>.GlobalId {
 			get 
 			{
-				return this.ProductCategoryEventId.ToProductCategoryEventId();
+				return this.ProductCategoryEventId;
 			}
 		}
 
@@ -281,14 +281,14 @@ namespace Dddml.Wms.Domain.ProductCategory
 
         ProductCategoryEventId IProductCategoryStateEvent.ProductCategoryEventId
         {
-            get { return this.ProductCategoryEventId.ToProductCategoryEventId(); }
+            get { return this.ProductCategoryEventId; }
         }
 
         protected ProductCategoryStateEventDtoBase()
         {
         }
 
-        protected ProductCategoryStateEventDtoBase(ProductCategoryEventIdDto stateEventId)
+        protected ProductCategoryStateEventDtoBase(ProductCategoryEventId stateEventId)
         {
             this.ProductCategoryEventId = stateEventId;
         }

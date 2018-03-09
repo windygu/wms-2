@@ -15,8 +15,7 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 
     public interface IUserLoginMvoStateDto
     {
-
-        UserLoginIdDto UserLoginId
+        UserLoginId UserLoginId
         {
             get;
             set;

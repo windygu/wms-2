@@ -53,24 +53,11 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
             set { this.CommandId = value; }
         }
 
-		public virtual SellableInventoryItemEntryIdDto SellableInventoryItemEntryId { get; set; }
+		public virtual SellableInventoryItemEntryId SellableInventoryItemEntryId { get; set; }
 
 		public virtual decimal? SellableQuantity { get; set; }
 
-
-		public virtual InventoryPRTriggeredIdDto SourceEventId { get; set; }
-
-        InventoryPRTriggeredId ICreateOrMergePatchOrDeleteSellableInventoryItemEntryMvo.SourceEventId
-        {
-            get 
-            {
-                return (this.SourceEventId == null) ? null : this.SourceEventId.ToInventoryPRTriggeredId();
-            }
-            set 
-            {
-                this.SourceEventId = (value == null) ? null : new InventoryPRTriggeredIdDtoWrapper(value);
-            }
-        }
+		public virtual InventoryPRTriggeredId SourceEventId { get; set; }
 
 		public virtual long? Version { get; set; }
 
@@ -85,19 +72,6 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 		public virtual string SellableInventoryItemUpdatedBy { get; set; }
 
 		public virtual DateTime? SellableInventoryItemUpdatedAt { get; set; }
-
-
-        SellableInventoryItemEntryId ISellableInventoryItemEntryMvoCommand.SellableInventoryItemEntryId
-        {
-            get 
-            {
-                return this.SellableInventoryItemEntryId.ToSellableInventoryItemEntryId();
-            }
-            set 
-            {
-                this.SellableInventoryItemEntryId = new SellableInventoryItemEntryIdDtoWrapper(value);
-            }
-        }
 
 		public virtual bool? IsPropertySellableQuantityRemoved { get; set; }
 

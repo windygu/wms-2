@@ -274,7 +274,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = ParseIdString(id.IsNormalized() ? id : id.Normalize());
             if (value.AttributeAliasId == null)
             {
-                value.AttributeAliasId = new AttributeAliasIdDtoWrapper(idObj);
+                value.AttributeAliasId = idObj;
             }
             else if (!((ICreateOrMergePatchOrDeleteAttributeAliasMvo)value).AttributeAliasId.Equals(idObj))
             {
@@ -284,10 +284,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static AttributeAliasId ParseIdString(string idString)
         {
-            var formatter = new AttributeAliasIdFlattenedDtoFormatter();
-            var idDto = formatter.Parse(idString);
-            var rId = idDto.ToAttributeAliasId();
-            return rId;
+            var formatter = new ValueObjectTextFormatter<AttributeAliasId>();
+            return formatter.Parse(idString);
         }
 
         public static string GetFilterPropertyName(string fieldName)
@@ -352,7 +350,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             foreach (var id in ids)
             {
                 var dto = new AttributeAliasMvoStateDtoWrapper();
-                dto.AttributeAliasId = new AttributeAliasIdDtoWrapper(id);
+                dto.AttributeAliasId = id;
                 states.Add(dto);
             }
             return states;

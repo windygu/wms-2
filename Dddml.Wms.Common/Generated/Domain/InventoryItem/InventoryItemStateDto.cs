@@ -15,8 +15,7 @@ namespace Dddml.Wms.Domain.InventoryItem
 
     public partial class InventoryItemStateDto : IInventoryItemStateDto
     {
-
-        public virtual InventoryItemIdDto InventoryItemId
+        public virtual InventoryItemId InventoryItemId
         {
             get;
             set;
@@ -97,7 +96,7 @@ namespace Dddml.Wms.Domain.InventoryItem
         public virtual IInventoryItemState ToInventoryItemState()
         {
             var state = new InventoryItemState(true);
-            state.InventoryItemId = (this.InventoryItemId == null) ? null : this.InventoryItemId.ToInventoryItemId();
+            state.InventoryItemId = this.InventoryItemId;
             if (this.OnHandQuantity != null && this.OnHandQuantity.HasValue) { state.OnHandQuantity = this.OnHandQuantity.Value; }
             if (this.InTransitQuantity != null && this.InTransitQuantity.HasValue) { state.InTransitQuantity = this.InTransitQuantity.Value; }
             if (this.ReservedQuantity != null && this.ReservedQuantity.HasValue) { state.ReservedQuantity = this.ReservedQuantity.Value; }

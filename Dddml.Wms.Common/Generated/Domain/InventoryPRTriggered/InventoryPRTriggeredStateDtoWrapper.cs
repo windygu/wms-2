@@ -40,19 +40,19 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
 			return this._state;
 		}
 
-        public InventoryPRTriggeredIdDto InventoryPRTriggeredId
-        {
+		public virtual InventoryPRTriggeredId InventoryPRTriggeredId
+		{
             get
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("InventoryPRTriggeredId"))
                 {
-					return (_state.InventoryPRTriggeredId == null) ? null : new InventoryPRTriggeredIdDtoWrapper(_state.InventoryPRTriggeredId);
+                    return _state.InventoryPRTriggeredId;
                 }
                 return null;
             }
             set
             {
-                _state.InventoryPRTriggeredId = (value == null) ? null : value.ToInventoryPRTriggeredId();
+                _state.InventoryPRTriggeredId = value;
             }
         }
 

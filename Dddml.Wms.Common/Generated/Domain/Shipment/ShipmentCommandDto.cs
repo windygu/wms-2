@@ -877,7 +877,7 @@ namespace Dddml.Wms.Domain.Shipment
 
             public string AddtlShippingChargeDesc { get; set; }
 
-            public ImportingShipmentItemDto[] ShipmentItems { get; set; }
+            public ImportingShipmentItem[] ShipmentItems { get; set; }
 
             public string ShipmentId { get; set; }
 
@@ -906,7 +906,7 @@ namespace Dddml.Wms.Domain.Shipment
                 cmd.PartyIdFrom = this.PartyIdFrom;
                 cmd.AdditionalShippingCharge = this.AdditionalShippingCharge;
                 cmd.AddtlShippingChargeDesc = this.AddtlShippingChargeDesc;
-                cmd.ShipmentItems = this.ShipmentItems == null ? null : new HashSet<ImportingShipmentItem>(this.ShipmentItems.Select(p => p.ToImportingShipmentItem()));
+                cmd.ShipmentItems = this.ShipmentItems == null ? null : new HashSet<ImportingShipmentItem>(this.ShipmentItems);
                 cmd.ShipmentId = this.ShipmentId;
                 cmd.Version = this.Version;
                 cmd.CommandId = this.CommandId;

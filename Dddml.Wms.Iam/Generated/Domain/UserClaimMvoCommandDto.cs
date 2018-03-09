@@ -52,7 +52,7 @@ namespace Dddml.Wms.Domain.UserClaimMvo
             set { this.CommandId = value; }
         }
 
-		public virtual UserClaimIdDto UserClaimId { get; set; }
+		public virtual UserClaimId UserClaimId { get; set; }
 
 		public virtual string ClaimType { get; set; }
 
@@ -95,19 +95,6 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 		public virtual bool? UserActive { get; set; }
 
 		public virtual bool? UserDeleted { get; set; }
-
-
-        UserClaimId IUserClaimMvoCommand.UserClaimId
-        {
-            get 
-            {
-                return this.UserClaimId.ToUserClaimId();
-            }
-            set 
-            {
-                this.UserClaimId = new UserClaimIdDtoWrapper(value);
-            }
-        }
 
 		public virtual bool? IsPropertyClaimTypeRemoved { get; set; }
 

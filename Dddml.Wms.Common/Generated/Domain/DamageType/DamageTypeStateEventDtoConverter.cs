@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.DamageType
         public virtual DamageTypeStateCreatedDto ToDamageTypeStateCreatedDto(IDamageTypeStateCreated e)
         {
             var dto = new DamageTypeStateCreatedDto();
-            dto.DamageTypeEventId = new DamageTypeEventIdDtoWrapper(e.DamageTypeEventId);
+            dto.DamageTypeEventId = e.DamageTypeEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -52,7 +52,7 @@ namespace Dddml.Wms.Domain.DamageType
         public virtual DamageTypeStateMergePatchedDto ToDamageTypeStateMergePatchedDto(IDamageTypeStateMergePatched e)
         {
             var dto = new DamageTypeStateMergePatchedDto();
-            dto.DamageTypeEventId = new DamageTypeEventIdDtoWrapper(e.DamageTypeEventId);
+            dto.DamageTypeEventId = e.DamageTypeEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -72,7 +72,7 @@ namespace Dddml.Wms.Domain.DamageType
         public virtual DamageTypeStateDeletedDto ToDamageTypeStateDeletedDto(IDamageTypeStateDeleted e)
         {
             var dto = new DamageTypeStateDeletedDto();
-            dto.DamageTypeEventId = new DamageTypeEventIdDtoWrapper(e.DamageTypeEventId);
+            dto.DamageTypeEventId = e.DamageTypeEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

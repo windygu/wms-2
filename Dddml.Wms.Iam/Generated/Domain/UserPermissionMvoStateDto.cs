@@ -16,8 +16,7 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
 
     public partial class UserPermissionMvoStateDto : IUserPermissionMvoStateDto
     {
-
-        public virtual UserPermissionIdDto UserPermissionId
+        public virtual UserPermissionId UserPermissionId
         {
             get;
             set;
@@ -170,7 +169,7 @@ namespace Dddml.Wms.Domain.UserPermissionMvo
         public virtual IUserPermissionMvoState ToUserPermissionMvoState()
         {
             var state = new UserPermissionMvoState(true);
-            state.UserPermissionId = (this.UserPermissionId == null) ? null : this.UserPermissionId.ToUserPermissionId();
+            state.UserPermissionId = this.UserPermissionId;
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             state.UserUserName = this.UserUserName;

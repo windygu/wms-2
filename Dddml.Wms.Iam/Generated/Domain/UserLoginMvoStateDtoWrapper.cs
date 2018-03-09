@@ -40,19 +40,19 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 			return this._state;
 		}
 
-        public UserLoginIdDto UserLoginId
-        {
+		public virtual UserLoginId UserLoginId
+		{
             get
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("UserLoginId"))
                 {
-					return (_state.UserLoginId == null) ? null : new UserLoginIdDtoWrapper(_state.UserLoginId);
+                    return _state.UserLoginId;
                 }
                 return null;
             }
             set
             {
-                _state.UserLoginId = (value == null) ? null : value.ToUserLoginId();
+                _state.UserLoginId = value;
             }
         }
 

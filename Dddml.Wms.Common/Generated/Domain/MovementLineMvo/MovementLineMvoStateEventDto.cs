@@ -16,13 +16,13 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 	public abstract class MovementLineMvoStateEventDtoBase : IStateEventDto, IMovementLineMvoStateCreated, IMovementLineMvoStateMergePatched, IMovementLineMvoStateDeleted
 	{
 
-        private MovementLineMvoEventIdDto _movementLineMvoEventId;
+        private MovementLineMvoEventId _movementLineMvoEventId;
 
-		protected internal virtual MovementLineMvoEventIdDto MovementLineMvoEventId 
+		protected internal virtual MovementLineMvoEventId MovementLineMvoEventId 
         {
             get 
             {
-                if (_movementLineMvoEventId == null) { _movementLineMvoEventId = new MovementLineMvoEventIdDto(); }
+                if (_movementLineMvoEventId == null) { _movementLineMvoEventId = new MovementLineMvoEventId(); }
                 return _movementLineMvoEventId;
             }
             set
@@ -31,7 +31,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
             }
         }
 
-        public virtual MovementLineIdDto MovementLineId
+        public virtual MovementLineId MovementLineId
         {
             get { return MovementLineMvoEventId.MovementLineId; }
             set { MovementLineMvoEventId.MovementLineId = value; }
@@ -124,7 +124,7 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 		MovementLineMvoEventId IGlobalIdentity<MovementLineMvoEventId>.GlobalId {
 			get 
 			{
-				return this.MovementLineMvoEventId.ToMovementLineMvoEventId();
+				return this.MovementLineMvoEventId;
 			}
 		}
 
@@ -828,14 +828,14 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 
         MovementLineMvoEventId IMovementLineMvoStateEvent.MovementLineMvoEventId
         {
-            get { return this.MovementLineMvoEventId.ToMovementLineMvoEventId(); }
+            get { return this.MovementLineMvoEventId; }
         }
 
         protected MovementLineMvoStateEventDtoBase()
         {
         }
 
-        protected MovementLineMvoStateEventDtoBase(MovementLineMvoEventIdDto stateEventId)
+        protected MovementLineMvoStateEventDtoBase(MovementLineMvoEventId stateEventId)
         {
             this.MovementLineMvoEventId = stateEventId;
         }

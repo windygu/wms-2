@@ -41,9 +41,9 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo.NHibernate
             }
             InventoryItemRequirementEntryId idObj = (InventoryItemRequirementEntryId)(eventStoreAggregateId as EventStoreAggregateId).Id;
             var criteria = CurrentSession.CreateCriteria<InventoryItemRequirementEntryMvoStateEventBase>();
-            criteria.Add(Restrictions.Eq("InventoryItemRequirementEntryMvoEventId.InventoryItemRequirementEntryIdInventoryItemRequirementIdProductId", idObj.InventoryItemRequirementIdProductId));
-            criteria.Add(Restrictions.Eq("InventoryItemRequirementEntryMvoEventId.InventoryItemRequirementEntryIdInventoryItemRequirementIdLocatorId", idObj.InventoryItemRequirementIdLocatorId));
-            criteria.Add(Restrictions.Eq("InventoryItemRequirementEntryMvoEventId.InventoryItemRequirementEntryIdInventoryItemRequirementIdAttributeSetInstanceId", idObj.InventoryItemRequirementIdAttributeSetInstanceId));
+            criteria.Add(Restrictions.Eq("InventoryItemRequirementEntryMvoEventId.InventoryItemRequirementEntryIdInventoryItemRequirementIdProductId", idObj.InventoryItemRequirementId.ProductId));
+            criteria.Add(Restrictions.Eq("InventoryItemRequirementEntryMvoEventId.InventoryItemRequirementEntryIdInventoryItemRequirementIdLocatorId", idObj.InventoryItemRequirementId.LocatorId));
+            criteria.Add(Restrictions.Eq("InventoryItemRequirementEntryMvoEventId.InventoryItemRequirementEntryIdInventoryItemRequirementIdAttributeSetInstanceId", idObj.InventoryItemRequirementId.AttributeSetInstanceId));
             criteria.Add(Restrictions.Eq("InventoryItemRequirementEntryMvoEventId.InventoryItemRequirementEntryIdEntrySeqId", idObj.EntrySeqId));
             criteria.Add(Restrictions.Le("InventoryItemRequirementEntryMvoEventId.InventoryItemRequirementVersion", version));
             criteria.AddOrder(global::NHibernate.Criterion.Order.Asc("InventoryItemRequirementEntryMvoEventId.InventoryItemRequirementVersion"));

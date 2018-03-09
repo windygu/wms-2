@@ -93,15 +93,6 @@
     <Compile Include="Generated\Domain\AttributeAliasMvo\AttributeAliasMvoEventId.cs">
       <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeAliasMvo\AttributeAliasMvoEventIdDto.cs">
-      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeAliasMvo\AttributeAliasMvoEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeAliasMvo\AttributeAliasMvoEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\AttributeAliasMvo\AttributeAliasMvoState.cs">
       <DependentUpon>GenerateAttributeAliasMvoDomain.tt</DependentUpon>
     </Compile>
@@ -178,15 +169,6 @@
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\AttributeSetInstanceExtensionFieldGroupEventId.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\AttributeSetInstanceExtensionFieldGroupEventIdDto.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\AttributeSetInstanceExtensionFieldGroupEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\AttributeSetInstanceExtensionFieldGroupEventIdFlattenedDto.cs">
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldGroupDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\AttributeSetInstanceExtensionFieldGroup\AttributeSetInstanceExtensionFieldGroupState.cs">
@@ -267,15 +249,6 @@
     <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\AttributeSetInstanceExtensionFieldEventId.cs">
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\AttributeSetInstanceExtensionFieldEventIdDto.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\AttributeSetInstanceExtensionFieldEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\AttributeSetInstanceExtensionFieldEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\AttributeSetInstanceExtensionField\AttributeSetInstanceExtensionFieldState.cs">
       <DependentUpon>GenerateAttributeSetInstanceExtensionFieldDomain.tt</DependentUpon>
     </Compile>
@@ -354,15 +327,6 @@
     <Compile Include="Generated\Domain\AttributeSetInstance\AttributeSetInstanceEventId.cs">
       <DependentUpon>GenerateAttributeSetInstanceDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstance\AttributeSetInstanceEventIdDto.cs">
-      <DependentUpon>GenerateAttributeSetInstanceDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstance\AttributeSetInstanceEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateAttributeSetInstanceDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSetInstance\AttributeSetInstanceEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateAttributeSetInstanceDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\AttributeSetInstance\AttributeSetInstanceIdGeneratorBase.cs">
       <DependentUpon>GenerateAttributeSetInstanceDomain.tt</DependentUpon>
     </Compile>
@@ -438,15 +402,6 @@
     <Compile Include="Generated\Domain\AttributeSet\AttributeSetAttributeUseId.cs">
       <DependentUpon>GenerateAttributeSetDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeSet\AttributeSetAttributeUseIdDto.cs">
-      <DependentUpon>GenerateAttributeSetDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSet\AttributeSetAttributeUseIdDtoWrapper.cs">
-      <DependentUpon>GenerateAttributeSetDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSet\AttributeSetAttributeUseIdFlattenedDto.cs">
-      <DependentUpon>GenerateAttributeSetDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\AttributeSet\AttributeSetCommand.cs">
       <DependentUpon>GenerateAttributeSetDomain.tt</DependentUpon>
     </Compile>
@@ -454,15 +409,6 @@
       <DependentUpon>GenerateAttributeSetDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\AttributeSet\AttributeSetEventId.cs">
-      <DependentUpon>GenerateAttributeSetDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSet\AttributeSetEventIdDto.cs">
-      <DependentUpon>GenerateAttributeSetDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSet\AttributeSetEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateAttributeSetDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSet\AttributeSetEventIdFlattenedDto.cs">
       <DependentUpon>GenerateAttributeSetDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\AttributeSet\AttributeSetState.cs">
@@ -502,15 +448,6 @@
       <DependentUpon>GenerateAttributeSetDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\AttributeSet\AttributeUseEventId.cs">
-      <DependentUpon>GenerateAttributeSetDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSet\AttributeUseEventIdDto.cs">
-      <DependentUpon>GenerateAttributeSetDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSet\AttributeUseEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateAttributeSetDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeSet\AttributeUseEventIdFlattenedDto.cs">
       <DependentUpon>GenerateAttributeSetDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\AttributeSet\AttributeUseState.cs">
@@ -618,15 +555,6 @@
     <Compile Include="Generated\Domain\AttributeUseMvo\AttributeUseMvoEventId.cs">
       <DependentUpon>GenerateAttributeUseMvoDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeUseMvo\AttributeUseMvoEventIdDto.cs">
-      <DependentUpon>GenerateAttributeUseMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeUseMvo\AttributeUseMvoEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateAttributeUseMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeUseMvo\AttributeUseMvoEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateAttributeUseMvoDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\AttributeUseMvo\AttributeUseMvoState.cs">
       <DependentUpon>GenerateAttributeUseMvoDomain.tt</DependentUpon>
     </Compile>
@@ -705,15 +633,6 @@
     <Compile Include="Generated\Domain\AttributeValueMvo\AttributeValueMvoEventId.cs">
       <DependentUpon>GenerateAttributeValueMvoDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AttributeValueMvo\AttributeValueMvoEventIdDto.cs">
-      <DependentUpon>GenerateAttributeValueMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeValueMvo\AttributeValueMvoEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateAttributeValueMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AttributeValueMvo\AttributeValueMvoEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateAttributeValueMvoDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\AttributeValueMvo\AttributeValueMvoState.cs">
       <DependentUpon>GenerateAttributeValueMvoDomain.tt</DependentUpon>
     </Compile>
@@ -786,25 +705,7 @@
     <Compile Include="Generated\Domain\Attribute\AttributeAliasEventId.cs">
       <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Attribute\AttributeAliasEventIdDto.cs">
-      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Attribute\AttributeAliasEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Attribute\AttributeAliasEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\Attribute\AttributeAliasId.cs">
-      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Attribute\AttributeAliasIdDto.cs">
-      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Attribute\AttributeAliasIdDtoWrapper.cs">
-      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Attribute\AttributeAliasIdFlattenedDto.cs">
       <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Attribute\AttributeAliasState.cs">
@@ -855,15 +756,6 @@
     <Compile Include="Generated\Domain\Attribute\AttributeEventId.cs">
       <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Attribute\AttributeEventIdDto.cs">
-      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Attribute\AttributeEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Attribute\AttributeEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\Attribute\AttributeState.cs">
       <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
     </Compile>
@@ -903,25 +795,7 @@
     <Compile Include="Generated\Domain\Attribute\AttributeValueEventId.cs">
       <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Attribute\AttributeValueEventIdDto.cs">
-      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Attribute\AttributeValueEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Attribute\AttributeValueEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\Attribute\AttributeValueId.cs">
-      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Attribute\AttributeValueIdDto.cs">
-      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Attribute\AttributeValueIdDtoWrapper.cs">
-      <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Attribute\AttributeValueIdFlattenedDto.cs">
       <DependentUpon>GenerateAttributeDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Attribute\AttributeValueState.cs">
@@ -1053,15 +927,6 @@
     <Compile Include="Generated\Domain\DamageHandlingMethod\DamageHandlingMethodEventId.cs">
       <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\DamageHandlingMethod\DamageHandlingMethodEventIdDto.cs">
-      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\DamageHandlingMethod\DamageHandlingMethodEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\DamageHandlingMethod\DamageHandlingMethodEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\DamageHandlingMethod\DamageHandlingMethodState.cs">
       <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
     </Compile>
@@ -1140,15 +1005,6 @@
     <Compile Include="Generated\Domain\DamageReason\DamageReasonEventId.cs">
       <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\DamageReason\DamageReasonEventIdDto.cs">
-      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\DamageReason\DamageReasonEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\DamageReason\DamageReasonEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\DamageReason\DamageReasonState.cs">
       <DependentUpon>GenerateDamageReasonDomain.tt</DependentUpon>
     </Compile>
@@ -1225,15 +1081,6 @@
       <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\DamageType\DamageTypeEventId.cs">
-      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\DamageType\DamageTypeEventIdDto.cs">
-      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\DamageType\DamageTypeEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\DamageType\DamageTypeEventIdFlattenedDto.cs">
       <DependentUpon>GenerateDamageTypeDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\DamageType\DamageTypeState.cs">
@@ -1315,15 +1162,6 @@
       <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\DocumentType\DocumentTypeEventId.cs">
-      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\DocumentType\DocumentTypeEventIdDto.cs">
-      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\DocumentType\DocumentTypeEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\DocumentType\DocumentTypeEventIdFlattenedDto.cs">
       <DependentUpon>GenerateDocumentTypeDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\DocumentType\DocumentTypeState.cs">
@@ -1437,15 +1275,6 @@
     <Compile Include="Generated\Domain\InOutLineMvo\InOutLineMvoEventId.cs">
       <DependentUpon>GenerateInOutLineMvoDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\InOutLineMvo\InOutLineMvoEventIdDto.cs">
-      <DependentUpon>GenerateInOutLineMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InOutLineMvo\InOutLineMvoEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateInOutLineMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InOutLineMvo\InOutLineMvoEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateInOutLineMvoDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\InOutLineMvo\InOutLineMvoState.cs">
       <DependentUpon>GenerateInOutLineMvoDomain.tt</DependentUpon>
     </Compile>
@@ -1548,15 +1377,6 @@
     <Compile Include="Generated\Domain\InOut\InOutEventId.cs">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\InOut\InOutEventIdDto.cs">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InOut\InOutEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InOut\InOutEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\InOut\InOutLineCommand.cs">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Compile>
@@ -1566,25 +1386,7 @@
     <Compile Include="Generated\Domain\InOut\InOutLineEventId.cs">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\InOut\InOutLineEventIdDto.cs">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InOut\InOutLineEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InOut\InOutLineEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\InOut\InOutLineId.cs">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InOut\InOutLineIdDto.cs">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InOut\InOutLineIdDtoWrapper.cs">
-      <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InOut\InOutLineIdFlattenedDto.cs">
       <DependentUpon>GenerateInOutDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\InOut\InOutLineState.cs">
@@ -1698,15 +1500,6 @@
     <Compile Include="Generated\Domain\InventoryItemEntryMvo\InventoryItemEntryMvoEventId.cs">
       <DependentUpon>GenerateInventoryItemEntryMvoDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\InventoryItemEntryMvo\InventoryItemEntryMvoEventIdDto.cs">
-      <DependentUpon>GenerateInventoryItemEntryMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryItemEntryMvo\InventoryItemEntryMvoEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateInventoryItemEntryMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryItemEntryMvo\InventoryItemEntryMvoEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateInventoryItemEntryMvoDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\InventoryItemEntryMvo\InventoryItemEntryMvoState.cs">
       <DependentUpon>GenerateInventoryItemEntryMvoDomain.tt</DependentUpon>
     </Compile>
@@ -1783,15 +1576,6 @@
       <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\InventoryItemRequirementEntryMvoEventId.cs">
-      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\InventoryItemRequirementEntryMvoEventIdDto.cs">
-      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\InventoryItemRequirementEntryMvoEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\InventoryItemRequirementEntryMvoEventIdFlattenedDto.cs">
       <DependentUpon>GenerateInventoryItemRequirementEntryMvoDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\InventoryItemRequirementEntryMvo\InventoryItemRequirementEntryMvoState.cs">
@@ -1902,25 +1686,7 @@
     <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementEntryEventId.cs">
       <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementEntryEventIdDto.cs">
-      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementEntryEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementEntryEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementEntryId.cs">
-      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementEntryIdDto.cs">
-      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementEntryIdDtoWrapper.cs">
-      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementEntryIdFlattenedDto.cs">
       <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementEntryState.cs">
@@ -1957,15 +1723,6 @@
       <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementEventId.cs">
-      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementEventIdDto.cs">
-      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementEventIdFlattenedDto.cs">
       <DependentUpon>GenerateInventoryItemRequirementDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\InventoryItemRequirement\InventoryItemRequirementState.cs">
@@ -2076,25 +1833,7 @@
     <Compile Include="Generated\Domain\InventoryItem\InventoryItemEntryEventId.cs">
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\InventoryItem\InventoryItemEntryEventIdDto.cs">
-      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryItem\InventoryItemEntryEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryItem\InventoryItemEntryEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\InventoryItem\InventoryItemEntryId.cs">
-      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryItem\InventoryItemEntryIdDto.cs">
-      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryItem\InventoryItemEntryIdDtoWrapper.cs">
-      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryItem\InventoryItemEntryIdFlattenedDto.cs">
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\InventoryItem\InventoryItemEntryState.cs">
@@ -2133,34 +1872,10 @@
     <Compile Include="Generated\Domain\InventoryItem\InventoryItemEventId.cs">
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\InventoryItem\InventoryItemEventIdDto.cs">
-      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryItem\InventoryItemEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryItem\InventoryItemEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\InventoryItem\InventoryItemId.cs">
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\InventoryItem\InventoryItemIdDto.cs">
-      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryItem\InventoryItemIdDtoWrapper.cs">
-      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryItem\InventoryItemIdFlattenedDto.cs">
-      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\InventoryItem\InventoryItemSourceInfo.cs">
-      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryItem\InventoryItemSourceInfoDto.cs">
-      <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryItem\InventoryItemSourceInfoDtoWrapper.cs">
       <DependentUpon>GenerateInventoryItemDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\InventoryItem\InventoryItemState.cs">
@@ -2241,15 +1956,6 @@
     <Compile Include="Generated\Domain\InventoryPostingRule\InventoryPostingRuleEventId.cs">
       <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\InventoryPostingRule\InventoryPostingRuleEventIdDto.cs">
-      <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryPostingRule\InventoryPostingRuleEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryPostingRule\InventoryPostingRuleEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\InventoryPostingRule\InventoryPostingRuleState.cs">
       <DependentUpon>GenerateInventoryPostingRuleDomain.tt</DependentUpon>
     </Compile>
@@ -2328,25 +2034,7 @@
     <Compile Include="Generated\Domain\InventoryPRTriggered\InventoryPRTriggeredEventId.cs">
       <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\InventoryPRTriggered\InventoryPRTriggeredEventIdDto.cs">
-      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryPRTriggered\InventoryPRTriggeredEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryPRTriggered\InventoryPRTriggeredEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\InventoryPRTriggered\InventoryPRTriggeredId.cs">
-      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryPRTriggered\InventoryPRTriggeredIdDto.cs">
-      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryPRTriggered\InventoryPRTriggeredIdDtoWrapper.cs">
-      <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\InventoryPRTriggered\InventoryPRTriggeredIdFlattenedDto.cs">
       <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\InventoryPRTriggered\InventoryPRTriggeredState.cs">
@@ -2439,15 +2127,6 @@
     <Compile Include="Generated\Domain\Locator\LocatorEventId.cs">
       <DependentUpon>GenerateLocatorDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Locator\LocatorEventIdDto.cs">
-      <DependentUpon>GenerateLocatorDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Locator\LocatorEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateLocatorDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Locator\LocatorEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateLocatorDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\Locator\LocatorState.cs">
       <DependentUpon>GenerateLocatorDomain.tt</DependentUpon>
     </Compile>
@@ -2524,15 +2203,6 @@
       <DependentUpon>GenerateLotDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Lot\LotEventId.cs">
-      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Lot\LotEventIdDto.cs">
-      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Lot\LotEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateLotDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Lot\LotEventIdFlattenedDto.cs">
       <DependentUpon>GenerateLotDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Lot\LotState.cs">
@@ -2808,15 +2478,6 @@
     <Compile Include="Generated\Domain\MovementConfirmationLineMvo\MovementConfirmationLineMvoEventId.cs">
       <DependentUpon>GenerateMovementConfirmationLineMvoDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\MovementConfirmationLineMvo\MovementConfirmationLineMvoEventIdDto.cs">
-      <DependentUpon>GenerateMovementConfirmationLineMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\MovementConfirmationLineMvo\MovementConfirmationLineMvoEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateMovementConfirmationLineMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\MovementConfirmationLineMvo\MovementConfirmationLineMvoEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateMovementConfirmationLineMvoDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\MovementConfirmationLineMvo\MovementConfirmationLineMvoState.cs">
       <DependentUpon>GenerateMovementConfirmationLineMvoDomain.tt</DependentUpon>
     </Compile>
@@ -2919,15 +2580,6 @@
     <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationEventId.cs">
       <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationEventIdDto.cs">
-      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationLineCommand.cs">
       <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
     </Compile>
@@ -2937,25 +2589,7 @@
     <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationLineEventId.cs">
       <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationLineEventIdDto.cs">
-      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationLineEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationLineEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationLineId.cs">
-      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationLineIdDto.cs">
-      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationLineIdDtoWrapper.cs">
-      <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationLineIdFlattenedDto.cs">
       <DependentUpon>GenerateMovementConfirmationDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\MovementConfirmation\MovementConfirmationLineState.cs">
@@ -3069,15 +2703,6 @@
     <Compile Include="Generated\Domain\MovementLineMvo\MovementLineMvoEventId.cs">
       <DependentUpon>GenerateMovementLineMvoDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\MovementLineMvo\MovementLineMvoEventIdDto.cs">
-      <DependentUpon>GenerateMovementLineMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\MovementLineMvo\MovementLineMvoEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateMovementLineMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\MovementLineMvo\MovementLineMvoEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateMovementLineMvoDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\MovementLineMvo\MovementLineMvoState.cs">
       <DependentUpon>GenerateMovementLineMvoDomain.tt</DependentUpon>
     </Compile>
@@ -3154,15 +2779,6 @@
       <DependentUpon>GenerateMovementTypeDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\MovementType\MovementTypeEventId.cs">
-      <DependentUpon>GenerateMovementTypeDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\MovementType\MovementTypeEventIdDto.cs">
-      <DependentUpon>GenerateMovementTypeDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\MovementType\MovementTypeEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateMovementTypeDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\MovementType\MovementTypeEventIdFlattenedDto.cs">
       <DependentUpon>GenerateMovementTypeDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\MovementType\MovementTypeState.cs">
@@ -3267,15 +2883,6 @@
     <Compile Include="Generated\Domain\Movement\MovementEventId.cs">
       <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Movement\MovementEventIdDto.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\MovementEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\MovementEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\Movement\MovementLineCommand.cs">
       <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
     </Compile>
@@ -3285,25 +2892,7 @@
     <Compile Include="Generated\Domain\Movement\MovementLineEventId.cs">
       <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Movement\MovementLineEventIdDto.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\MovementLineEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\MovementLineEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\Movement\MovementLineId.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\MovementLineIdDto.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\MovementLineIdDtoWrapper.cs">
-      <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Movement\MovementLineIdFlattenedDto.cs">
       <DependentUpon>GenerateMovementDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Movement\MovementLineState.cs">
@@ -3417,15 +3006,6 @@
     <Compile Include="Generated\Domain\OrderItemMvo\OrderItemMvoEventId.cs">
       <DependentUpon>GenerateOrderItemMvoDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\OrderItemMvo\OrderItemMvoEventIdDto.cs">
-      <DependentUpon>GenerateOrderItemMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\OrderItemMvo\OrderItemMvoEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateOrderItemMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\OrderItemMvo\OrderItemMvoEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateOrderItemMvoDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\OrderItemMvo\OrderItemMvoState.cs">
       <DependentUpon>GenerateOrderItemMvoDomain.tt</DependentUpon>
     </Compile>
@@ -3504,25 +3084,7 @@
     <Compile Include="Generated\Domain\OrderShipment\OrderShipmentEventId.cs">
       <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\OrderShipment\OrderShipmentEventIdDto.cs">
-      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\OrderShipment\OrderShipmentEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\OrderShipment\OrderShipmentEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\OrderShipment\OrderShipmentId.cs">
-      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\OrderShipment\OrderShipmentIdDto.cs">
-      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\OrderShipment\OrderShipmentIdDtoWrapper.cs">
-      <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\OrderShipment\OrderShipmentIdFlattenedDto.cs">
       <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\OrderShipment\OrderShipmentState.cs">
@@ -3627,15 +3189,6 @@
     <Compile Include="Generated\Domain\Order\OrderEventId.cs">
       <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Order\OrderEventIdDto.cs">
-      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Order\OrderEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Order\OrderEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\Order\OrderItemCommand.cs">
       <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
     </Compile>
@@ -3645,25 +3198,7 @@
     <Compile Include="Generated\Domain\Order\OrderItemEventId.cs">
       <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Order\OrderItemEventIdDto.cs">
-      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Order\OrderItemEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Order\OrderItemEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\Order\OrderItemId.cs">
-      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Order\OrderItemIdDto.cs">
-      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Order\OrderItemIdDtoWrapper.cs">
-      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Order\OrderItemIdFlattenedDto.cs">
       <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Order\OrderItemState.cs">
@@ -3777,15 +3312,6 @@
     <Compile Include="Generated\Domain\OrganizationStructureType\OrganizationStructureTypeEventId.cs">
       <DependentUpon>GenerateOrganizationStructureTypeDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\OrganizationStructureType\OrganizationStructureTypeEventIdDto.cs">
-      <DependentUpon>GenerateOrganizationStructureTypeDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\OrganizationStructureType\OrganizationStructureTypeEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateOrganizationStructureTypeDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\OrganizationStructureType\OrganizationStructureTypeEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateOrganizationStructureTypeDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\OrganizationStructureType\OrganizationStructureTypeState.cs">
       <DependentUpon>GenerateOrganizationStructureTypeDomain.tt</DependentUpon>
     </Compile>
@@ -3867,25 +3393,7 @@
     <Compile Include="Generated\Domain\OrganizationStructure\OrganizationStructureEventId.cs">
       <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\OrganizationStructure\OrganizationStructureEventIdDto.cs">
-      <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\OrganizationStructure\OrganizationStructureEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\OrganizationStructure\OrganizationStructureEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\OrganizationStructure\OrganizationStructureId.cs">
-      <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\OrganizationStructure\OrganizationStructureIdDto.cs">
-      <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\OrganizationStructure\OrganizationStructureIdDtoWrapper.cs">
-      <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\OrganizationStructure\OrganizationStructureIdFlattenedDto.cs">
       <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\OrganizationStructure\OrganizationStructureState.cs">
@@ -3978,15 +3486,6 @@
     <Compile Include="Generated\Domain\Party\PartyEventId.cs">
       <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Party\PartyEventIdDto.cs">
-      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Party\PartyEventIdDtoWrapper.cs">
-      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Party\PartyEventIdFlattenedDto.cs">
-      <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\Party\PartyState.cs">
       <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
     </Compile>
@@ -4066,15 +3565,6 @@
       <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\PhysicalInventoryLineMvoEventId.cs">
-      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\PhysicalInventoryLineMvoEventIdDto.cs">
-      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\PhysicalInventoryLineMvoEventIdDtoWrapper.cs">
-      <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\PhysicalInventoryLineMvoEventIdFlattenedDto.cs">
       <DependentUpon>GeneratePhysicalInventoryLineMvoDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\PhysicalInventoryLineMvo\PhysicalInventoryLineMvoState.cs">
@@ -4179,15 +3669,6 @@
     <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryEventId.cs">
       <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryEventIdDto.cs">
-      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryEventIdDtoWrapper.cs">
-      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryEventIdFlattenedDto.cs">
-      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryLineCommand.cs">
       <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
     </Compile>
@@ -4197,25 +3678,7 @@
     <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryLineEventId.cs">
       <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryLineEventIdDto.cs">
-      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryLineEventIdDtoWrapper.cs">
-      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryLineEventIdFlattenedDto.cs">
-      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryLineId.cs">
-      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryLineIdDto.cs">
-      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryLineIdDtoWrapper.cs">
-      <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryLineIdFlattenedDto.cs">
       <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\PhysicalInventory\PhysicalInventoryLineState.cs">
@@ -4329,25 +3792,7 @@
     <Compile Include="Generated\Domain\ProductCategoryMember\ProductCategoryMemberEventId.cs">
       <DependentUpon>GenerateProductCategoryMemberDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\ProductCategoryMember\ProductCategoryMemberEventIdDto.cs">
-      <DependentUpon>GenerateProductCategoryMemberDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\ProductCategoryMember\ProductCategoryMemberEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateProductCategoryMemberDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\ProductCategoryMember\ProductCategoryMemberEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateProductCategoryMemberDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\ProductCategoryMember\ProductCategoryMemberId.cs">
-      <DependentUpon>GenerateProductCategoryMemberDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\ProductCategoryMember\ProductCategoryMemberIdDto.cs">
-      <DependentUpon>GenerateProductCategoryMemberDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\ProductCategoryMember\ProductCategoryMemberIdDtoWrapper.cs">
-      <DependentUpon>GenerateProductCategoryMemberDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\ProductCategoryMember\ProductCategoryMemberIdFlattenedDto.cs">
       <DependentUpon>GenerateProductCategoryMemberDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\ProductCategoryMember\ProductCategoryMemberState.cs">
@@ -4428,15 +3873,6 @@
     <Compile Include="Generated\Domain\ProductCategory\ProductCategoryEventId.cs">
       <DependentUpon>GenerateProductCategoryDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\ProductCategory\ProductCategoryEventIdDto.cs">
-      <DependentUpon>GenerateProductCategoryDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\ProductCategory\ProductCategoryEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateProductCategoryDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\ProductCategory\ProductCategoryEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateProductCategoryDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\ProductCategory\ProductCategoryState.cs">
       <DependentUpon>GenerateProductCategoryDomain.tt</DependentUpon>
     </Compile>
@@ -4513,15 +3949,6 @@
       <DependentUpon>GenerateProductDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Product\ProductEventId.cs">
-      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Product\ProductEventIdDto.cs">
-      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Product\ProductEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateProductDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Product\ProductEventIdFlattenedDto.cs">
       <DependentUpon>GenerateProductDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Product\ProductState.cs">
@@ -4602,15 +4029,6 @@
     <Compile Include="Generated\Domain\RejectionReason\RejectionReasonEventId.cs">
       <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\RejectionReason\RejectionReasonEventIdDto.cs">
-      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\RejectionReason\RejectionReasonEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\RejectionReason\RejectionReasonEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\RejectionReason\RejectionReasonState.cs">
       <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
     </Compile>
@@ -4687,15 +4105,6 @@
       <DependentUpon>GenerateSellableInventoryItemEntryMvoDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\SellableInventoryItemEntryMvo\SellableInventoryItemEntryMvoEventId.cs">
-      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\SellableInventoryItemEntryMvo\SellableInventoryItemEntryMvoEventIdDto.cs">
-      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\SellableInventoryItemEntryMvo\SellableInventoryItemEntryMvoEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateSellableInventoryItemEntryMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\SellableInventoryItemEntryMvo\SellableInventoryItemEntryMvoEventIdFlattenedDto.cs">
       <DependentUpon>GenerateSellableInventoryItemEntryMvoDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\SellableInventoryItemEntryMvo\SellableInventoryItemEntryMvoState.cs">
@@ -4806,25 +4215,7 @@
     <Compile Include="Generated\Domain\SellableInventoryItem\SellableInventoryItemEntryEventId.cs">
       <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\SellableInventoryItem\SellableInventoryItemEntryEventIdDto.cs">
-      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\SellableInventoryItem\SellableInventoryItemEntryEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\SellableInventoryItem\SellableInventoryItemEntryEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\SellableInventoryItem\SellableInventoryItemEntryId.cs">
-      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\SellableInventoryItem\SellableInventoryItemEntryIdDto.cs">
-      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\SellableInventoryItem\SellableInventoryItemEntryIdDtoWrapper.cs">
-      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\SellableInventoryItem\SellableInventoryItemEntryIdFlattenedDto.cs">
       <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\SellableInventoryItem\SellableInventoryItemEntryState.cs">
@@ -4861,15 +4252,6 @@
       <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\SellableInventoryItem\SellableInventoryItemEventId.cs">
-      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\SellableInventoryItem\SellableInventoryItemEventIdDto.cs">
-      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\SellableInventoryItem\SellableInventoryItemEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\SellableInventoryItem\SellableInventoryItemEventIdFlattenedDto.cs">
       <DependentUpon>GenerateSellableInventoryItemDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\SellableInventoryItem\SellableInventoryItemState.cs">
@@ -4950,15 +4332,6 @@
     <Compile Include="Generated\Domain\ShipmentItemMvo\ShipmentItemMvoEventId.cs">
       <DependentUpon>GenerateShipmentItemMvoDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\ShipmentItemMvo\ShipmentItemMvoEventIdDto.cs">
-      <DependentUpon>GenerateShipmentItemMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\ShipmentItemMvo\ShipmentItemMvoEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateShipmentItemMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\ShipmentItemMvo\ShipmentItemMvoEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateShipmentItemMvoDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\ShipmentItemMvo\ShipmentItemMvoState.cs">
       <DependentUpon>GenerateShipmentItemMvoDomain.tt</DependentUpon>
     </Compile>
@@ -5035,15 +4408,6 @@
       <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\ShipmentReceiptMvo\ShipmentReceiptMvoEventId.cs">
-      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\ShipmentReceiptMvo\ShipmentReceiptMvoEventIdDto.cs">
-      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\ShipmentReceiptMvo\ShipmentReceiptMvoEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\ShipmentReceiptMvo\ShipmentReceiptMvoEventIdFlattenedDto.cs">
       <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\ShipmentReceiptMvo\ShipmentReceiptMvoState.cs">
@@ -5124,15 +4488,6 @@
     <Compile Include="Generated\Domain\ShipmentType\ShipmentTypeEventId.cs">
       <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\ShipmentType\ShipmentTypeEventIdDto.cs">
-      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\ShipmentType\ShipmentTypeEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\ShipmentType\ShipmentTypeEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\ShipmentType\ShipmentTypeState.cs">
       <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
     </Compile>
@@ -5164,12 +4519,6 @@
       <DependentUpon>GenerateShipmentTypeDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Shipment\ImportingShipmentItem.cs">
-      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Shipment\ImportingShipmentItemDto.cs">
-      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Shipment\ImportingShipmentItemDtoWrapper.cs">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Shipment\IShipmentAggregate.cs">
@@ -5268,15 +4617,6 @@
     <Compile Include="Generated\Domain\Shipment\ShipmentEventId.cs">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Shipment\ShipmentEventIdDto.cs">
-      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Shipment\ShipmentEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Shipment\ShipmentEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\Shipment\ShipmentItemCommand.cs">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Compile>
@@ -5286,25 +4626,7 @@
     <Compile Include="Generated\Domain\Shipment\ShipmentItemEventId.cs">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Shipment\ShipmentItemEventIdDto.cs">
-      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Shipment\ShipmentItemEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Shipment\ShipmentItemEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\Shipment\ShipmentItemId.cs">
-      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Shipment\ShipmentItemIdDto.cs">
-      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Shipment\ShipmentItemIdDtoWrapper.cs">
-      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Shipment\ShipmentItemIdFlattenedDto.cs">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Shipment\ShipmentItemState.cs">
@@ -5349,25 +4671,7 @@
     <Compile Include="Generated\Domain\Shipment\ShipmentReceiptEventId.cs">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptEventIdDto.cs">
-      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\Shipment\ShipmentReceiptId.cs">
-      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptIdDto.cs">
-      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptIdDtoWrapper.cs">
-      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Shipment\ShipmentReceiptIdFlattenedDto.cs">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Shipment\ShipmentReceiptState.cs">
@@ -5481,15 +4785,6 @@
     <Compile Include="Generated\Domain\StatusItem\StatusItemEventId.cs">
       <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\StatusItem\StatusItemEventIdDto.cs">
-      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\StatusItem\StatusItemEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\StatusItem\StatusItemEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateStatusItemDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\StatusItem\StatusItemIds.cs">
       <DependentUpon>GenerateStatusItemOfbizDataConstObjects.tt</DependentUpon>
     </Compile>
@@ -5571,25 +4866,7 @@
     <Compile Include="Generated\Domain\SupplierProduct\SupplierProductEventId.cs">
       <DependentUpon>GenerateSupplierProductDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\SupplierProduct\SupplierProductEventIdDto.cs">
-      <DependentUpon>GenerateSupplierProductDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\SupplierProduct\SupplierProductEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateSupplierProductDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\SupplierProduct\SupplierProductEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateSupplierProductDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\SupplierProduct\SupplierProductId.cs">
-      <DependentUpon>GenerateSupplierProductDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\SupplierProduct\SupplierProductIdDto.cs">
-      <DependentUpon>GenerateSupplierProductDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\SupplierProduct\SupplierProductIdDtoWrapper.cs">
-      <DependentUpon>GenerateSupplierProductDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\SupplierProduct\SupplierProductIdFlattenedDto.cs">
       <DependentUpon>GenerateSupplierProductDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\SupplierProduct\SupplierProductState.cs">
@@ -5670,25 +4947,7 @@
     <Compile Include="Generated\Domain\UomConversion\UomConversionEventId.cs">
       <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\UomConversion\UomConversionEventIdDto.cs">
-      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UomConversion\UomConversionEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UomConversion\UomConversionEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\UomConversion\UomConversionId.cs">
-      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UomConversion\UomConversionIdDto.cs">
-      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UomConversion\UomConversionIdDtoWrapper.cs">
-      <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UomConversion\UomConversionIdFlattenedDto.cs">
       <DependentUpon>GenerateUomConversionDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\UomConversion\UomConversionState.cs">
@@ -5767,15 +5026,6 @@
       <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\UomType\UomTypeEventId.cs">
-      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UomType\UomTypeEventIdDto.cs">
-      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UomType\UomTypeEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UomType\UomTypeEventIdFlattenedDto.cs">
       <DependentUpon>GenerateUomTypeDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\UomType\UomTypeIds.cs">
@@ -5859,15 +5109,6 @@
     <Compile Include="Generated\Domain\Uom\UomEventId.cs">
       <DependentUpon>GenerateUomDomain.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\Uom\UomEventIdDto.cs">
-      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Uom\UomEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Uom\UomEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateUomDomain.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\Uom\UomIds.cs">
       <DependentUpon>GenerateUomOfbizDataConstObjects.tt</DependentUpon>
     </Compile>
@@ -5947,15 +5188,6 @@
       <DependentUpon>GenerateWarehouseDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Warehouse\WarehouseEventId.cs">
-      <DependentUpon>GenerateWarehouseDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Warehouse\WarehouseEventIdDto.cs">
-      <DependentUpon>GenerateWarehouseDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Warehouse\WarehouseEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateWarehouseDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\Warehouse\WarehouseEventIdFlattenedDto.cs">
       <DependentUpon>GenerateWarehouseDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Warehouse\WarehouseState.cs">
@@ -6382,19 +5614,10 @@
 .\InOutCommand.cs
 .\InOutCommandDto.cs
 .\InOutEventId.cs
-.\InOutEventIdDto.cs
-.\InOutEventIdDtoWrapper.cs
-.\InOutEventIdFlattenedDto.cs
 .\InOutLineCommand.cs
 .\InOutLineCommandDto.cs
 .\InOutLineEventId.cs
-.\InOutLineEventIdDto.cs
-.\InOutLineEventIdDtoWrapper.cs
-.\InOutLineEventIdFlattenedDto.cs
 .\InOutLineId.cs
-.\InOutLineIdDto.cs
-.\InOutLineIdDtoWrapper.cs
-.\InOutLineIdFlattenedDto.cs
 .\InOutLineState.cs
 .\InOutLineStateDto.cs
 .\InOutLineStateDtoExtension.cs
@@ -6439,9 +5662,6 @@
 .\OrganizationStructureTypeCommand.cs
 .\OrganizationStructureTypeCommandDto.cs
 .\OrganizationStructureTypeEventId.cs
-.\OrganizationStructureTypeEventIdDto.cs
-.\OrganizationStructureTypeEventIdDtoWrapper.cs
-.\OrganizationStructureTypeEventIdFlattenedDto.cs
 .\OrganizationStructureTypeState.cs
 .\OrganizationStructureTypeStateDto.cs
 .\OrganizationStructureTypeStateDtoExtension.cs
@@ -6476,13 +5696,7 @@
 .\OrganizationStructureCommand.cs
 .\OrganizationStructureCommandDto.cs
 .\OrganizationStructureEventId.cs
-.\OrganizationStructureEventIdDto.cs
-.\OrganizationStructureEventIdDtoWrapper.cs
-.\OrganizationStructureEventIdFlattenedDto.cs
 .\OrganizationStructureId.cs
-.\OrganizationStructureIdDto.cs
-.\OrganizationStructureIdDtoWrapper.cs
-.\OrganizationStructureIdFlattenedDto.cs
 .\OrganizationStructureState.cs
 .\OrganizationStructureStateDto.cs
 .\OrganizationStructureStateDtoExtension.cs
@@ -6516,9 +5730,6 @@
 .\WarehouseCommand.cs
 .\WarehouseCommandDto.cs
 .\WarehouseEventId.cs
-.\WarehouseEventIdDto.cs
-.\WarehouseEventIdDtoWrapper.cs
-.\WarehouseEventIdFlattenedDto.cs
 .\WarehouseState.cs
 .\WarehouseStateDto.cs
 .\WarehouseStateDtoExtension.cs
@@ -6553,9 +5764,6 @@
 .\LocatorCommand.cs
 .\LocatorCommandDto.cs
 .\LocatorEventId.cs
-.\LocatorEventIdDto.cs
-.\LocatorEventIdDtoWrapper.cs
-.\LocatorEventIdFlattenedDto.cs
 .\LocatorState.cs
 .\LocatorStateDto.cs
 .\LocatorStateDtoExtension.cs
@@ -6578,9 +5786,6 @@
 .\AttributeSetInstanceCommand.cs
 .\AttributeSetInstanceCommandDto.cs
 .\AttributeSetInstanceEventId.cs
-.\AttributeSetInstanceEventIdDto.cs
-.\AttributeSetInstanceEventIdDtoWrapper.cs
-.\AttributeSetInstanceEventIdFlattenedDto.cs
 .\AttributeSetInstanceIdGeneratorBase.cs
 .\AttributeSetInstanceState.cs
 .\AttributeSetInstanceStateDto.cs
@@ -6615,9 +5820,6 @@
 .\AttributeSetInstanceExtensionFieldGroupCommand.cs
 .\AttributeSetInstanceExtensionFieldGroupCommandDto.cs
 .\AttributeSetInstanceExtensionFieldGroupEventId.cs
-.\AttributeSetInstanceExtensionFieldGroupEventIdDto.cs
-.\AttributeSetInstanceExtensionFieldGroupEventIdDtoWrapper.cs
-.\AttributeSetInstanceExtensionFieldGroupEventIdFlattenedDto.cs
 .\AttributeSetInstanceExtensionFieldGroupState.cs
 .\AttributeSetInstanceExtensionFieldGroupStateDto.cs
 .\AttributeSetInstanceExtensionFieldGroupStateDtoExtension.cs
@@ -6649,13 +5851,7 @@
 .\AttributeAliasCommand.cs
 .\AttributeAliasCommandDto.cs
 .\AttributeAliasEventId.cs
-.\AttributeAliasEventIdDto.cs
-.\AttributeAliasEventIdDtoWrapper.cs
-.\AttributeAliasEventIdFlattenedDto.cs
 .\AttributeAliasId.cs
-.\AttributeAliasIdDto.cs
-.\AttributeAliasIdDtoWrapper.cs
-.\AttributeAliasIdFlattenedDto.cs
 .\AttributeAliasState.cs
 .\AttributeAliasStateDto.cs
 .\AttributeAliasStateDtoExtension.cs
@@ -6672,9 +5868,6 @@
 .\AttributeCommand.cs
 .\AttributeCommandDto.cs
 .\AttributeEventId.cs
-.\AttributeEventIdDto.cs
-.\AttributeEventIdDtoWrapper.cs
-.\AttributeEventIdFlattenedDto.cs
 .\AttributeState.cs
 .\AttributeStateDto.cs
 .\AttributeStateDtoExtension.cs
@@ -6688,13 +5881,7 @@
 .\AttributeValueCommand.cs
 .\AttributeValueCommandDto.cs
 .\AttributeValueEventId.cs
-.\AttributeValueEventIdDto.cs
-.\AttributeValueEventIdDtoWrapper.cs
-.\AttributeValueEventIdFlattenedDto.cs
 .\AttributeValueId.cs
-.\AttributeValueIdDto.cs
-.\AttributeValueIdDtoWrapper.cs
-.\AttributeValueIdFlattenedDto.cs
 .\AttributeValueState.cs
 .\AttributeValueStateDto.cs
 .\AttributeValueStateDtoExtension.cs
@@ -6743,15 +5930,9 @@
 .\AttributeSetApplicationServiceBase.cs
 .\AttributeSetApplicationServiceFactory.cs
 .\AttributeSetAttributeUseId.cs
-.\AttributeSetAttributeUseIdDto.cs
-.\AttributeSetAttributeUseIdDtoWrapper.cs
-.\AttributeSetAttributeUseIdFlattenedDto.cs
 .\AttributeSetCommand.cs
 .\AttributeSetCommandDto.cs
 .\AttributeSetEventId.cs
-.\AttributeSetEventIdDto.cs
-.\AttributeSetEventIdDtoWrapper.cs
-.\AttributeSetEventIdFlattenedDto.cs
 .\AttributeSetState.cs
 .\AttributeSetStateDto.cs
 .\AttributeSetStateDtoExtension.cs
@@ -6765,9 +5946,6 @@
 .\AttributeUseCommand.cs
 .\AttributeUseCommandDto.cs
 .\AttributeUseEventId.cs
-.\AttributeUseEventIdDto.cs
-.\AttributeUseEventIdDtoWrapper.cs
-.\AttributeUseEventIdFlattenedDto.cs
 .\AttributeUseState.cs
 .\AttributeUseStateDto.cs
 .\AttributeUseStateDtoExtension.cs
@@ -6810,9 +5988,6 @@
 .\AttributeValueMvoCommand.cs
 .\AttributeValueMvoCommandDto.cs
 .\AttributeValueMvoEventId.cs
-.\AttributeValueMvoEventIdDto.cs
-.\AttributeValueMvoEventIdDtoWrapper.cs
-.\AttributeValueMvoEventIdFlattenedDto.cs
 .\AttributeValueMvoState.cs
 .\AttributeValueMvoStateDto.cs
 .\AttributeValueMvoStateDtoExtension.cs
@@ -6846,9 +6021,6 @@
 .\AttributeUseMvoCommand.cs
 .\AttributeUseMvoCommandDto.cs
 .\AttributeUseMvoEventId.cs
-.\AttributeUseMvoEventIdDto.cs
-.\AttributeUseMvoEventIdDtoWrapper.cs
-.\AttributeUseMvoEventIdFlattenedDto.cs
 .\AttributeUseMvoState.cs
 .\AttributeUseMvoStateDto.cs
 .\AttributeUseMvoStateDtoExtension.cs
@@ -6893,9 +6065,6 @@
 .\InOutLineMvoCommand.cs
 .\InOutLineMvoCommandDto.cs
 .\InOutLineMvoEventId.cs
-.\InOutLineMvoEventIdDto.cs
-.\InOutLineMvoEventIdDtoWrapper.cs
-.\InOutLineMvoEventIdFlattenedDto.cs
 .\InOutLineMvoState.cs
 .\InOutLineMvoStateDto.cs
 .\InOutLineMvoStateDtoExtension.cs
@@ -6939,13 +6108,7 @@
 .\InventoryItemEntryCommand.cs
 .\InventoryItemEntryCommandDto.cs
 .\InventoryItemEntryEventId.cs
-.\InventoryItemEntryEventIdDto.cs
-.\InventoryItemEntryEventIdDtoWrapper.cs
-.\InventoryItemEntryEventIdFlattenedDto.cs
 .\InventoryItemEntryId.cs
-.\InventoryItemEntryIdDto.cs
-.\InventoryItemEntryIdDtoWrapper.cs
-.\InventoryItemEntryIdFlattenedDto.cs
 .\InventoryItemEntryState.cs
 .\InventoryItemEntryStateDto.cs
 .\InventoryItemEntryStateDtoExtension.cs
@@ -6958,16 +6121,8 @@
 .\InventoryItemEntryStateProperties.cs
 .\InventoryItemEntryStates.cs
 .\InventoryItemEventId.cs
-.\InventoryItemEventIdDto.cs
-.\InventoryItemEventIdDtoWrapper.cs
-.\InventoryItemEventIdFlattenedDto.cs
 .\InventoryItemId.cs
-.\InventoryItemIdDto.cs
-.\InventoryItemIdDtoWrapper.cs
-.\InventoryItemIdFlattenedDto.cs
 .\InventoryItemSourceInfo.cs
-.\InventoryItemSourceInfoDto.cs
-.\InventoryItemSourceInfoDtoWrapper.cs
 .\InventoryItemState.cs
 .\InventoryItemStateDto.cs
 .\InventoryItemStateDtoExtension.cs
@@ -7001,9 +6156,6 @@
 .\InventoryItemEntryMvoCommand.cs
 .\InventoryItemEntryMvoCommandDto.cs
 .\InventoryItemEntryMvoEventId.cs
-.\InventoryItemEntryMvoEventIdDto.cs
-.\InventoryItemEntryMvoEventIdDtoWrapper.cs
-.\InventoryItemEntryMvoEventIdFlattenedDto.cs
 .\InventoryItemEntryMvoState.cs
 .\InventoryItemEntryMvoStateDto.cs
 .\InventoryItemEntryMvoStateDtoExtension.cs
@@ -7047,13 +6199,7 @@
 .\SellableInventoryItemEntryCommand.cs
 .\SellableInventoryItemEntryCommandDto.cs
 .\SellableInventoryItemEntryEventId.cs
-.\SellableInventoryItemEntryEventIdDto.cs
-.\SellableInventoryItemEntryEventIdDtoWrapper.cs
-.\SellableInventoryItemEntryEventIdFlattenedDto.cs
 .\SellableInventoryItemEntryId.cs
-.\SellableInventoryItemEntryIdDto.cs
-.\SellableInventoryItemEntryIdDtoWrapper.cs
-.\SellableInventoryItemEntryIdFlattenedDto.cs
 .\SellableInventoryItemEntryState.cs
 .\SellableInventoryItemEntryStateDto.cs
 .\SellableInventoryItemEntryStateDtoExtension.cs
@@ -7066,9 +6212,6 @@
 .\SellableInventoryItemEntryStateProperties.cs
 .\SellableInventoryItemEntryStates.cs
 .\SellableInventoryItemEventId.cs
-.\SellableInventoryItemEventIdDto.cs
-.\SellableInventoryItemEventIdDtoWrapper.cs
-.\SellableInventoryItemEventIdFlattenedDto.cs
 .\SellableInventoryItemState.cs
 .\SellableInventoryItemStateDto.cs
 .\SellableInventoryItemStateDtoExtension.cs
@@ -7102,9 +6245,6 @@
 .\InventoryPostingRuleCommand.cs
 .\InventoryPostingRuleCommandDto.cs
 .\InventoryPostingRuleEventId.cs
-.\InventoryPostingRuleEventIdDto.cs
-.\InventoryPostingRuleEventIdDtoWrapper.cs
-.\InventoryPostingRuleEventIdFlattenedDto.cs
 .\InventoryPostingRuleState.cs
 .\InventoryPostingRuleStateDto.cs
 .\InventoryPostingRuleStateDtoExtension.cs
@@ -7138,13 +6278,7 @@
 .\InventoryPRTriggeredCommand.cs
 .\InventoryPRTriggeredCommandDto.cs
 .\InventoryPRTriggeredEventId.cs
-.\InventoryPRTriggeredEventIdDto.cs
-.\InventoryPRTriggeredEventIdDtoWrapper.cs
-.\InventoryPRTriggeredEventIdFlattenedDto.cs
 .\InventoryPRTriggeredId.cs
-.\InventoryPRTriggeredIdDto.cs
-.\InventoryPRTriggeredIdDtoWrapper.cs
-.\InventoryPRTriggeredIdFlattenedDto.cs
 .\InventoryPRTriggeredState.cs
 .\InventoryPRTriggeredStateDto.cs
 .\InventoryPRTriggeredStateDtoExtension.cs
@@ -7178,9 +6312,6 @@
 .\SellableInventoryItemEntryMvoCommand.cs
 .\SellableInventoryItemEntryMvoCommandDto.cs
 .\SellableInventoryItemEntryMvoEventId.cs
-.\SellableInventoryItemEntryMvoEventIdDto.cs
-.\SellableInventoryItemEntryMvoEventIdDtoWrapper.cs
-.\SellableInventoryItemEntryMvoEventIdFlattenedDto.cs
 .\SellableInventoryItemEntryMvoState.cs
 .\SellableInventoryItemEntryMvoStateDto.cs
 .\SellableInventoryItemEntryMvoStateDtoExtension.cs
@@ -7203,9 +6334,6 @@
 .\DocumentTypeCommand.cs
 .\DocumentTypeCommandDto.cs
 .\DocumentTypeEventId.cs
-.\DocumentTypeEventIdDto.cs
-.\DocumentTypeEventIdDtoWrapper.cs
-.\DocumentTypeEventIdFlattenedDto.cs
 .\DocumentTypeState.cs
 .\DocumentTypeStateDto.cs
 .\DocumentTypeStateDtoExtension.cs
@@ -7250,9 +6378,6 @@
 .\MovementTypeCommand.cs
 .\MovementTypeCommandDto.cs
 .\MovementTypeEventId.cs
-.\MovementTypeEventIdDto.cs
-.\MovementTypeEventIdDtoWrapper.cs
-.\MovementTypeEventIdFlattenedDto.cs
 .\MovementTypeState.cs
 .\MovementTypeStateDto.cs
 .\MovementTypeStateDtoExtension.cs
@@ -7286,9 +6411,6 @@
 .\ProductCommand.cs
 .\ProductCommandDto.cs
 .\ProductEventId.cs
-.\ProductEventIdDto.cs
-.\ProductEventIdDtoWrapper.cs
-.\ProductEventIdFlattenedDto.cs
 .\ProductState.cs
 .\ProductStateDto.cs
 .\ProductStateDtoExtension.cs
@@ -7322,9 +6444,6 @@
 .\ProductCategoryCommand.cs
 .\ProductCategoryCommandDto.cs
 .\ProductCategoryEventId.cs
-.\ProductCategoryEventIdDto.cs
-.\ProductCategoryEventIdDtoWrapper.cs
-.\ProductCategoryEventIdFlattenedDto.cs
 .\ProductCategoryState.cs
 .\ProductCategoryStateDto.cs
 .\ProductCategoryStateDtoExtension.cs
@@ -7358,13 +6477,7 @@
 .\SupplierProductCommand.cs
 .\SupplierProductCommandDto.cs
 .\SupplierProductEventId.cs
-.\SupplierProductEventIdDto.cs
-.\SupplierProductEventIdDtoWrapper.cs
-.\SupplierProductEventIdFlattenedDto.cs
 .\SupplierProductId.cs
-.\SupplierProductIdDto.cs
-.\SupplierProductIdDtoWrapper.cs
-.\SupplierProductIdFlattenedDto.cs
 .\SupplierProductState.cs
 .\SupplierProductStateDto.cs
 .\SupplierProductStateDtoExtension.cs
@@ -7398,13 +6511,7 @@
 .\OrderShipmentCommand.cs
 .\OrderShipmentCommandDto.cs
 .\OrderShipmentEventId.cs
-.\OrderShipmentEventIdDto.cs
-.\OrderShipmentEventIdDtoWrapper.cs
-.\OrderShipmentEventIdFlattenedDto.cs
 .\OrderShipmentId.cs
-.\OrderShipmentIdDto.cs
-.\OrderShipmentIdDtoWrapper.cs
-.\OrderShipmentIdFlattenedDto.cs
 .\OrderShipmentState.cs
 .\OrderShipmentStateDto.cs
 .\OrderShipmentStateDtoExtension.cs
@@ -7423,8 +6530,6 @@
       <LastOutputs>
 .\GenerateShipmentDomain.txt
 .\ImportingShipmentItem.cs
-.\ImportingShipmentItemDto.cs
-.\ImportingShipmentItemDtoWrapper.cs
 .\IShipmentAggregate.cs
 .\IShipmentApplicationService.cs
 .\IShipmentApplicationServiceFactory.cs
@@ -7457,19 +6562,10 @@
 .\ShipmentCommand.cs
 .\ShipmentCommandDto.cs
 .\ShipmentEventId.cs
-.\ShipmentEventIdDto.cs
-.\ShipmentEventIdDtoWrapper.cs
-.\ShipmentEventIdFlattenedDto.cs
 .\ShipmentItemCommand.cs
 .\ShipmentItemCommandDto.cs
 .\ShipmentItemEventId.cs
-.\ShipmentItemEventIdDto.cs
-.\ShipmentItemEventIdDtoWrapper.cs
-.\ShipmentItemEventIdFlattenedDto.cs
 .\ShipmentItemId.cs
-.\ShipmentItemIdDto.cs
-.\ShipmentItemIdDtoWrapper.cs
-.\ShipmentItemIdFlattenedDto.cs
 .\ShipmentItemState.cs
 .\ShipmentItemStateDto.cs
 .\ShipmentItemStateDtoExtension.cs
@@ -7484,13 +6580,7 @@
 .\ShipmentReceiptCommand.cs
 .\ShipmentReceiptCommandDto.cs
 .\ShipmentReceiptEventId.cs
-.\ShipmentReceiptEventIdDto.cs
-.\ShipmentReceiptEventIdDtoWrapper.cs
-.\ShipmentReceiptEventIdFlattenedDto.cs
 .\ShipmentReceiptId.cs
-.\ShipmentReceiptIdDto.cs
-.\ShipmentReceiptIdDtoWrapper.cs
-.\ShipmentReceiptIdFlattenedDto.cs
 .\ShipmentReceiptState.cs
 .\ShipmentReceiptStateDto.cs
 .\ShipmentReceiptStateDtoExtension.cs
@@ -7535,9 +6625,6 @@
 .\StatusItemCommand.cs
 .\StatusItemCommandDto.cs
 .\StatusItemEventId.cs
-.\StatusItemEventIdDto.cs
-.\StatusItemEventIdDtoWrapper.cs
-.\StatusItemEventIdFlattenedDto.cs
 .\StatusItemState.cs
 .\StatusItemStateDto.cs
 .\StatusItemStateDtoExtension.cs
@@ -7571,9 +6658,6 @@
 .\ShipmentTypeCommand.cs
 .\ShipmentTypeCommandDto.cs
 .\ShipmentTypeEventId.cs
-.\ShipmentTypeEventIdDto.cs
-.\ShipmentTypeEventIdDtoWrapper.cs
-.\ShipmentTypeEventIdFlattenedDto.cs
 .\ShipmentTypeState.cs
 .\ShipmentTypeStateDto.cs
 .\ShipmentTypeStateDtoExtension.cs
@@ -7615,19 +6699,10 @@
 .\OrderCommand.cs
 .\OrderCommandDto.cs
 .\OrderEventId.cs
-.\OrderEventIdDto.cs
-.\OrderEventIdDtoWrapper.cs
-.\OrderEventIdFlattenedDto.cs
 .\OrderItemCommand.cs
 .\OrderItemCommandDto.cs
 .\OrderItemEventId.cs
-.\OrderItemEventIdDto.cs
-.\OrderItemEventIdDtoWrapper.cs
-.\OrderItemEventIdFlattenedDto.cs
 .\OrderItemId.cs
-.\OrderItemIdDto.cs
-.\OrderItemIdDtoWrapper.cs
-.\OrderItemIdFlattenedDto.cs
 .\OrderItemState.cs
 .\OrderItemStateDto.cs
 .\OrderItemStateDtoExtension.cs
@@ -7672,13 +6747,7 @@
 .\ProductCategoryMemberCommand.cs
 .\ProductCategoryMemberCommandDto.cs
 .\ProductCategoryMemberEventId.cs
-.\ProductCategoryMemberEventIdDto.cs
-.\ProductCategoryMemberEventIdDtoWrapper.cs
-.\ProductCategoryMemberEventIdFlattenedDto.cs
 .\ProductCategoryMemberId.cs
-.\ProductCategoryMemberIdDto.cs
-.\ProductCategoryMemberIdDtoWrapper.cs
-.\ProductCategoryMemberIdFlattenedDto.cs
 .\ProductCategoryMemberState.cs
 .\ProductCategoryMemberStateDto.cs
 .\ProductCategoryMemberStateDtoExtension.cs
@@ -7712,9 +6781,6 @@
 .\OrderItemMvoCommand.cs
 .\OrderItemMvoCommandDto.cs
 .\OrderItemMvoEventId.cs
-.\OrderItemMvoEventIdDto.cs
-.\OrderItemMvoEventIdDtoWrapper.cs
-.\OrderItemMvoEventIdFlattenedDto.cs
 .\OrderItemMvoState.cs
 .\OrderItemMvoStateDto.cs
 .\OrderItemMvoStateDtoExtension.cs
@@ -7748,9 +6814,6 @@
 .\ShipmentItemMvoCommand.cs
 .\ShipmentItemMvoCommandDto.cs
 .\ShipmentItemMvoEventId.cs
-.\ShipmentItemMvoEventIdDto.cs
-.\ShipmentItemMvoEventIdDtoWrapper.cs
-.\ShipmentItemMvoEventIdFlattenedDto.cs
 .\ShipmentItemMvoState.cs
 .\ShipmentItemMvoStateDto.cs
 .\ShipmentItemMvoStateDtoExtension.cs
@@ -7794,13 +6857,7 @@
 .\InventoryItemRequirementEntryCommand.cs
 .\InventoryItemRequirementEntryCommandDto.cs
 .\InventoryItemRequirementEntryEventId.cs
-.\InventoryItemRequirementEntryEventIdDto.cs
-.\InventoryItemRequirementEntryEventIdDtoWrapper.cs
-.\InventoryItemRequirementEntryEventIdFlattenedDto.cs
 .\InventoryItemRequirementEntryId.cs
-.\InventoryItemRequirementEntryIdDto.cs
-.\InventoryItemRequirementEntryIdDtoWrapper.cs
-.\InventoryItemRequirementEntryIdFlattenedDto.cs
 .\InventoryItemRequirementEntryState.cs
 .\InventoryItemRequirementEntryStateDto.cs
 .\InventoryItemRequirementEntryStateDtoExtension.cs
@@ -7813,9 +6870,6 @@
 .\InventoryItemRequirementEntryStateProperties.cs
 .\InventoryItemRequirementEntryStates.cs
 .\InventoryItemRequirementEventId.cs
-.\InventoryItemRequirementEventIdDto.cs
-.\InventoryItemRequirementEventIdDtoWrapper.cs
-.\InventoryItemRequirementEventIdFlattenedDto.cs
 .\InventoryItemRequirementState.cs
 .\InventoryItemRequirementStateDto.cs
 .\InventoryItemRequirementStateDtoExtension.cs
@@ -7849,9 +6903,6 @@
 .\InventoryItemRequirementEntryMvoCommand.cs
 .\InventoryItemRequirementEntryMvoCommandDto.cs
 .\InventoryItemRequirementEntryMvoEventId.cs
-.\InventoryItemRequirementEntryMvoEventIdDto.cs
-.\InventoryItemRequirementEntryMvoEventIdDtoWrapper.cs
-.\InventoryItemRequirementEntryMvoEventIdFlattenedDto.cs
 .\InventoryItemRequirementEntryMvoState.cs
 .\InventoryItemRequirementEntryMvoStateDto.cs
 .\InventoryItemRequirementEntryMvoStateDtoExtension.cs
@@ -7893,19 +6944,10 @@
 .\MovementCommand.cs
 .\MovementCommandDto.cs
 .\MovementEventId.cs
-.\MovementEventIdDto.cs
-.\MovementEventIdDtoWrapper.cs
-.\MovementEventIdFlattenedDto.cs
 .\MovementLineCommand.cs
 .\MovementLineCommandDto.cs
 .\MovementLineEventId.cs
-.\MovementLineEventIdDto.cs
-.\MovementLineEventIdDtoWrapper.cs
-.\MovementLineEventIdFlattenedDto.cs
 .\MovementLineId.cs
-.\MovementLineIdDto.cs
-.\MovementLineIdDtoWrapper.cs
-.\MovementLineIdFlattenedDto.cs
 .\MovementLineState.cs
 .\MovementLineStateDto.cs
 .\MovementLineStateDtoExtension.cs
@@ -7950,9 +6992,6 @@
 .\MovementLineMvoCommand.cs
 .\MovementLineMvoCommandDto.cs
 .\MovementLineMvoEventId.cs
-.\MovementLineMvoEventIdDto.cs
-.\MovementLineMvoEventIdDtoWrapper.cs
-.\MovementLineMvoEventIdFlattenedDto.cs
 .\MovementLineMvoState.cs
 .\MovementLineMvoStateDto.cs
 .\MovementLineMvoStateDtoExtension.cs
@@ -7986,9 +7025,6 @@
 .\MovementConfirmationLineMvoCommand.cs
 .\MovementConfirmationLineMvoCommandDto.cs
 .\MovementConfirmationLineMvoEventId.cs
-.\MovementConfirmationLineMvoEventIdDto.cs
-.\MovementConfirmationLineMvoEventIdDtoWrapper.cs
-.\MovementConfirmationLineMvoEventIdFlattenedDto.cs
 .\MovementConfirmationLineMvoState.cs
 .\MovementConfirmationLineMvoStateDto.cs
 .\MovementConfirmationLineMvoStateDtoExtension.cs
@@ -8030,19 +7066,10 @@
 .\MovementConfirmationCommand.cs
 .\MovementConfirmationCommandDto.cs
 .\MovementConfirmationEventId.cs
-.\MovementConfirmationEventIdDto.cs
-.\MovementConfirmationEventIdDtoWrapper.cs
-.\MovementConfirmationEventIdFlattenedDto.cs
 .\MovementConfirmationLineCommand.cs
 .\MovementConfirmationLineCommandDto.cs
 .\MovementConfirmationLineEventId.cs
-.\MovementConfirmationLineEventIdDto.cs
-.\MovementConfirmationLineEventIdDtoWrapper.cs
-.\MovementConfirmationLineEventIdFlattenedDto.cs
 .\MovementConfirmationLineId.cs
-.\MovementConfirmationLineIdDto.cs
-.\MovementConfirmationLineIdDtoWrapper.cs
-.\MovementConfirmationLineIdFlattenedDto.cs
 .\MovementConfirmationLineState.cs
 .\MovementConfirmationLineStateDto.cs
 .\MovementConfirmationLineStateDtoExtension.cs
@@ -8095,19 +7122,10 @@
 .\PhysicalInventoryCommand.cs
 .\PhysicalInventoryCommandDto.cs
 .\PhysicalInventoryEventId.cs
-.\PhysicalInventoryEventIdDto.cs
-.\PhysicalInventoryEventIdDtoWrapper.cs
-.\PhysicalInventoryEventIdFlattenedDto.cs
 .\PhysicalInventoryLineCommand.cs
 .\PhysicalInventoryLineCommandDto.cs
 .\PhysicalInventoryLineEventId.cs
-.\PhysicalInventoryLineEventIdDto.cs
-.\PhysicalInventoryLineEventIdDtoWrapper.cs
-.\PhysicalInventoryLineEventIdFlattenedDto.cs
 .\PhysicalInventoryLineId.cs
-.\PhysicalInventoryLineIdDto.cs
-.\PhysicalInventoryLineIdDtoWrapper.cs
-.\PhysicalInventoryLineIdFlattenedDto.cs
 .\PhysicalInventoryLineState.cs
 .\PhysicalInventoryLineStateDto.cs
 .\PhysicalInventoryLineStateDtoExtension.cs
@@ -8152,9 +7170,6 @@
 .\PhysicalInventoryLineMvoCommand.cs
 .\PhysicalInventoryLineMvoCommandDto.cs
 .\PhysicalInventoryLineMvoEventId.cs
-.\PhysicalInventoryLineMvoEventIdDto.cs
-.\PhysicalInventoryLineMvoEventIdDtoWrapper.cs
-.\PhysicalInventoryLineMvoEventIdFlattenedDto.cs
 .\PhysicalInventoryLineMvoState.cs
 .\PhysicalInventoryLineMvoStateDto.cs
 .\PhysicalInventoryLineMvoStateDtoExtension.cs
@@ -8177,9 +7192,6 @@
 .\AttributeSetInstanceExtensionFieldCommand.cs
 .\AttributeSetInstanceExtensionFieldCommandDto.cs
 .\AttributeSetInstanceExtensionFieldEventId.cs
-.\AttributeSetInstanceExtensionFieldEventIdDto.cs
-.\AttributeSetInstanceExtensionFieldEventIdDtoWrapper.cs
-.\AttributeSetInstanceExtensionFieldEventIdFlattenedDto.cs
 .\AttributeSetInstanceExtensionFieldState.cs
 .\AttributeSetInstanceExtensionFieldStateDto.cs
 .\AttributeSetInstanceExtensionFieldStateDtoExtension.cs
@@ -8213,9 +7225,6 @@
 .\AttributeAliasMvoCommand.cs
 .\AttributeAliasMvoCommandDto.cs
 .\AttributeAliasMvoEventId.cs
-.\AttributeAliasMvoEventIdDto.cs
-.\AttributeAliasMvoEventIdDtoWrapper.cs
-.\AttributeAliasMvoEventIdFlattenedDto.cs
 .\AttributeAliasMvoState.cs
 .\AttributeAliasMvoStateDto.cs
 .\AttributeAliasMvoStateDtoExtension.cs
@@ -8260,9 +7269,6 @@
 .\UomCommand.cs
 .\UomCommandDto.cs
 .\UomEventId.cs
-.\UomEventIdDto.cs
-.\UomEventIdDtoWrapper.cs
-.\UomEventIdFlattenedDto.cs
 .\UomState.cs
 .\UomStateDto.cs
 .\UomStateDtoExtension.cs
@@ -8296,13 +7302,7 @@
 .\UomConversionCommand.cs
 .\UomConversionCommandDto.cs
 .\UomConversionEventId.cs
-.\UomConversionEventIdDto.cs
-.\UomConversionEventIdDtoWrapper.cs
-.\UomConversionEventIdFlattenedDto.cs
 .\UomConversionId.cs
-.\UomConversionIdDto.cs
-.\UomConversionIdDtoWrapper.cs
-.\UomConversionIdFlattenedDto.cs
 .\UomConversionState.cs
 .\UomConversionStateDto.cs
 .\UomConversionStateDtoExtension.cs
@@ -8336,9 +7336,6 @@
 .\UomTypeCommand.cs
 .\UomTypeCommandDto.cs
 .\UomTypeEventId.cs
-.\UomTypeEventIdDto.cs
-.\UomTypeEventIdDtoWrapper.cs
-.\UomTypeEventIdFlattenedDto.cs
 .\UomTypeState.cs
 .\UomTypeStateDto.cs
 .\UomTypeStateDtoExtension.cs
@@ -8372,9 +7369,6 @@
 .\LotCommand.cs
 .\LotCommandDto.cs
 .\LotEventId.cs
-.\LotEventIdDto.cs
-.\LotEventIdDtoWrapper.cs
-.\LotEventIdFlattenedDto.cs
 .\LotState.cs
 .\LotStateDto.cs
 .\LotStateDtoExtension.cs
@@ -8408,9 +7402,6 @@
 .\ShipmentReceiptMvoCommand.cs
 .\ShipmentReceiptMvoCommandDto.cs
 .\ShipmentReceiptMvoEventId.cs
-.\ShipmentReceiptMvoEventIdDto.cs
-.\ShipmentReceiptMvoEventIdDtoWrapper.cs
-.\ShipmentReceiptMvoEventIdFlattenedDto.cs
 .\ShipmentReceiptMvoState.cs
 .\ShipmentReceiptMvoStateDto.cs
 .\ShipmentReceiptMvoStateDtoExtension.cs
@@ -8433,9 +7424,6 @@
 .\DamageReasonCommand.cs
 .\DamageReasonCommandDto.cs
 .\DamageReasonEventId.cs
-.\DamageReasonEventIdDto.cs
-.\DamageReasonEventIdDtoWrapper.cs
-.\DamageReasonEventIdFlattenedDto.cs
 .\DamageReasonState.cs
 .\DamageReasonStateDto.cs
 .\DamageReasonStateDtoExtension.cs
@@ -8480,9 +7468,6 @@
 .\RejectionReasonCommand.cs
 .\RejectionReasonCommandDto.cs
 .\RejectionReasonEventId.cs
-.\RejectionReasonEventIdDto.cs
-.\RejectionReasonEventIdDtoWrapper.cs
-.\RejectionReasonEventIdFlattenedDto.cs
 .\RejectionReasonState.cs
 .\RejectionReasonStateDto.cs
 .\RejectionReasonStateDtoExtension.cs
@@ -8505,9 +7490,6 @@
 .\DamageTypeCommand.cs
 .\DamageTypeCommandDto.cs
 .\DamageTypeEventId.cs
-.\DamageTypeEventIdDto.cs
-.\DamageTypeEventIdDtoWrapper.cs
-.\DamageTypeEventIdFlattenedDto.cs
 .\DamageTypeState.cs
 .\DamageTypeStateDto.cs
 .\DamageTypeStateDtoExtension.cs
@@ -8541,9 +7523,6 @@
 .\DamageHandlingMethodCommand.cs
 .\DamageHandlingMethodCommandDto.cs
 .\DamageHandlingMethodEventId.cs
-.\DamageHandlingMethodEventIdDto.cs
-.\DamageHandlingMethodEventIdDtoWrapper.cs
-.\DamageHandlingMethodEventIdFlattenedDto.cs
 .\DamageHandlingMethodState.cs
 .\DamageHandlingMethodStateDto.cs
 .\DamageHandlingMethodStateDtoExtension.cs
@@ -8590,9 +7569,6 @@
 .\PartyCommand.cs
 .\PartyCommandDto.cs
 .\PartyEventId.cs
-.\PartyEventIdDto.cs
-.\PartyEventIdDtoWrapper.cs
-.\PartyEventIdFlattenedDto.cs
 .\PartyState.cs
 .\PartyStateDto.cs
 .\PartyStateDtoExtension.cs

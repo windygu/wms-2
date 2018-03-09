@@ -40,19 +40,19 @@ namespace Dddml.Wms.Domain.UserRoleMvo
 			return this._state;
 		}
 
-        public UserRoleIdDto UserRoleId
-        {
+		public virtual UserRoleId UserRoleId
+		{
             get
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("UserRoleId"))
                 {
-					return (_state.UserRoleId == null) ? null : new UserRoleIdDtoWrapper(_state.UserRoleId);
+                    return _state.UserRoleId;
                 }
                 return null;
             }
             set
             {
-                _state.UserRoleId = (value == null) ? null : value.ToUserRoleId();
+                _state.UserRoleId = value;
             }
         }
 

@@ -273,7 +273,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var idObj = ParseIdString(id.IsNormalized() ? id : id.Normalize());
             if (value.Id == null)
             {
-                value.Id = new OrganizationStructureIdDtoWrapper(idObj);
+                value.Id = idObj;
             }
             else if (!((ICreateOrMergePatchOrDeleteOrganizationStructure)value).Id.Equals(idObj))
             {
@@ -283,10 +283,8 @@ namespace Dddml.Wms.HttpServices.ApiControllers
 
         public static OrganizationStructureId ParseIdString(string idString)
         {
-            var formatter = new OrganizationStructureIdFlattenedDtoFormatter();
-            var idDto = formatter.Parse(idString);
-            var rId = idDto.ToOrganizationStructureId();
-            return rId;
+            var formatter = new ValueObjectTextFormatter<OrganizationStructureId>();
+            return formatter.Parse(idString);
         }
 
         public static string GetFilterPropertyName(string fieldName)
@@ -351,7 +349,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             foreach (var id in ids)
             {
                 var dto = new OrganizationStructureStateDtoWrapper();
-                dto.Id = new OrganizationStructureIdDtoWrapper(id);
+                dto.Id = id;
                 states.Add(dto);
             }
             return states;

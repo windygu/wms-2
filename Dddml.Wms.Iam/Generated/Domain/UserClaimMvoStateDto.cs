@@ -16,8 +16,7 @@ namespace Dddml.Wms.Domain.UserClaimMvo
 
     public partial class UserClaimMvoStateDto : IUserClaimMvoStateDto
     {
-
-        public virtual UserClaimIdDto UserClaimId
+        public virtual UserClaimId UserClaimId
         {
             get;
             set;
@@ -182,7 +181,7 @@ namespace Dddml.Wms.Domain.UserClaimMvo
         public virtual IUserClaimMvoState ToUserClaimMvoState()
         {
             var state = new UserClaimMvoState(true);
-            state.UserClaimId = (this.UserClaimId == null) ? null : this.UserClaimId.ToUserClaimId();
+            state.UserClaimId = this.UserClaimId;
             state.ClaimType = this.ClaimType;
             state.ClaimValue = this.ClaimValue;
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }

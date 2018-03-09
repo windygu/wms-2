@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.Permission
 	public abstract class PermissionStateEventDtoBase : IStateEventDto, IPermissionStateCreated, IPermissionStateMergePatched, IPermissionStateDeleted
 	{
 
-        private PermissionEventIdDto _permissionEventId;
+        private PermissionEventId _permissionEventId;
 
-		protected internal virtual PermissionEventIdDto PermissionEventId 
+		protected internal virtual PermissionEventId PermissionEventId 
         {
             get 
             {
-                if (_permissionEventId == null) { _permissionEventId = new PermissionEventIdDto(); }
+                if (_permissionEventId == null) { _permissionEventId = new PermissionEventId(); }
                 return _permissionEventId;
             }
             set
@@ -61,7 +61,7 @@ namespace Dddml.Wms.Domain.Permission
 		PermissionEventId IGlobalIdentity<PermissionEventId>.GlobalId {
 			get 
 			{
-				return this.PermissionEventId.ToPermissionEventId();
+				return this.PermissionEventId;
 			}
 		}
 
@@ -176,14 +176,14 @@ namespace Dddml.Wms.Domain.Permission
 
         PermissionEventId IPermissionStateEvent.PermissionEventId
         {
-            get { return this.PermissionEventId.ToPermissionEventId(); }
+            get { return this.PermissionEventId; }
         }
 
         protected PermissionStateEventDtoBase()
         {
         }
 
-        protected PermissionStateEventDtoBase(PermissionEventIdDto stateEventId)
+        protected PermissionStateEventDtoBase(PermissionEventId stateEventId)
         {
             this.PermissionEventId = stateEventId;
         }

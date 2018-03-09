@@ -52,7 +52,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             set { this.CommandId = value; }
         }
 
-		public virtual ShipmentItemIdDto ShipmentItemId { get; set; }
+		public virtual ShipmentItemId ShipmentItemId { get; set; }
 
 		public virtual string ProductId { get; set; }
 
@@ -127,19 +127,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 		public virtual DateTime? ShipmentUpdatedAt { get; set; }
 
 		public virtual bool? ShipmentActive { get; set; }
-
-
-        ShipmentItemId IShipmentItemMvoCommand.ShipmentItemId
-        {
-            get 
-            {
-                return this.ShipmentItemId.ToShipmentItemId();
-            }
-            set 
-            {
-                this.ShipmentItemId = new ShipmentItemIdDtoWrapper(value);
-            }
-        }
 
 		public virtual bool? IsPropertyProductIdRemoved { get; set; }
 

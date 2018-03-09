@@ -16,8 +16,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
 
     public interface ISellableInventoryItemEntryMvoStateDto
     {
-
-        SellableInventoryItemEntryIdDto SellableInventoryItemEntryId
+        SellableInventoryItemEntryId SellableInventoryItemEntryId
         {
             get;
             set;
@@ -29,8 +28,7 @@ namespace Dddml.Wms.Domain.SellableInventoryItemEntryMvo
             set;
         }
 
-
-        InventoryPRTriggeredIdDto SourceEventId
+        InventoryPRTriggeredId SourceEventId
         {
             get;
             set;

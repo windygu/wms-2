@@ -41,19 +41,19 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 			return this._state;
 		}
 
-        public InventoryItemIdDto SellableInventoryItemId
-        {
+		public virtual InventoryItemId SellableInventoryItemId
+		{
             get
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("SellableInventoryItemId"))
                 {
-					return (_state.SellableInventoryItemId == null) ? null : new InventoryItemIdDtoWrapper(_state.SellableInventoryItemId);
+                    return _state.SellableInventoryItemId;
                 }
                 return null;
             }
             set
             {
-                _state.SellableInventoryItemId = (value == null) ? null : value.ToInventoryItemId();
+                _state.SellableInventoryItemId = value;
             }
         }
 

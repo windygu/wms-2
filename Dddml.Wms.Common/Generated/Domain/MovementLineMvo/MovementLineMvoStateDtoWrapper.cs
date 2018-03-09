@@ -40,19 +40,19 @@ namespace Dddml.Wms.Domain.MovementLineMvo
 			return this._state;
 		}
 
-        public MovementLineIdDto MovementLineId
-        {
+		public virtual MovementLineId MovementLineId
+		{
             get
             {
                 if ((this as IStateDtoWrapper).ReturnedFieldsContains("MovementLineId"))
                 {
-					return (_state.MovementLineId == null) ? null : new MovementLineIdDtoWrapper(_state.MovementLineId);
+                    return _state.MovementLineId;
                 }
                 return null;
             }
             set
             {
-                _state.MovementLineId = (value == null) ? null : value.ToMovementLineId();
+                _state.MovementLineId = value;
             }
         }
 

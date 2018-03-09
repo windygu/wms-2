@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.ShipmentType
 	public abstract class ShipmentTypeStateEventDtoBase : IStateEventDto, IShipmentTypeStateCreated, IShipmentTypeStateMergePatched
 	{
 
-        private ShipmentTypeEventIdDto _shipmentTypeEventId;
+        private ShipmentTypeEventId _shipmentTypeEventId;
 
-		protected internal virtual ShipmentTypeEventIdDto ShipmentTypeEventId 
+		protected internal virtual ShipmentTypeEventId ShipmentTypeEventId 
         {
             get 
             {
-                if (_shipmentTypeEventId == null) { _shipmentTypeEventId = new ShipmentTypeEventIdDto(); }
+                if (_shipmentTypeEventId == null) { _shipmentTypeEventId = new ShipmentTypeEventId(); }
                 return _shipmentTypeEventId;
             }
             set
@@ -61,7 +61,7 @@ namespace Dddml.Wms.Domain.ShipmentType
 		ShipmentTypeEventId IGlobalIdentity<ShipmentTypeEventId>.GlobalId {
 			get 
 			{
-				return this.ShipmentTypeEventId.ToShipmentTypeEventId();
+				return this.ShipmentTypeEventId;
 			}
 		}
 
@@ -176,14 +176,14 @@ namespace Dddml.Wms.Domain.ShipmentType
 
         ShipmentTypeEventId IShipmentTypeStateEvent.ShipmentTypeEventId
         {
-            get { return this.ShipmentTypeEventId.ToShipmentTypeEventId(); }
+            get { return this.ShipmentTypeEventId; }
         }
 
         protected ShipmentTypeStateEventDtoBase()
         {
         }
 
-        protected ShipmentTypeStateEventDtoBase(ShipmentTypeEventIdDto stateEventId)
+        protected ShipmentTypeStateEventDtoBase(ShipmentTypeEventId stateEventId)
         {
             this.ShipmentTypeEventId = stateEventId;
         }

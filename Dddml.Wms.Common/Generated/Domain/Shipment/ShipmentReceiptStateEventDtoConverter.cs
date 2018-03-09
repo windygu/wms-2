@@ -33,7 +33,7 @@ namespace Dddml.Wms.Domain.Shipment
         public virtual ShipmentReceiptStateCreatedDto ToShipmentReceiptStateCreatedDto(IShipmentReceiptStateCreated e)
         {
             var dto = new ShipmentReceiptStateCreatedDto();
-            dto.ShipmentReceiptEventId = new ShipmentReceiptEventIdDtoWrapper(e.ShipmentReceiptEventId);
+            dto.ShipmentReceiptEventId = e.ShipmentReceiptEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;
@@ -57,7 +57,7 @@ namespace Dddml.Wms.Domain.Shipment
         public virtual ShipmentReceiptStateMergePatchedDto ToShipmentReceiptStateMergePatchedDto(IShipmentReceiptStateMergePatched e)
         {
             var dto = new ShipmentReceiptStateMergePatchedDto();
-            dto.ShipmentReceiptEventId = new ShipmentReceiptEventIdDtoWrapper(e.ShipmentReceiptEventId);
+            dto.ShipmentReceiptEventId = e.ShipmentReceiptEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;

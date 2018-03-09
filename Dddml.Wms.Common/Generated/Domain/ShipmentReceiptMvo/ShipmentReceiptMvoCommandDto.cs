@@ -52,7 +52,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             set { this.CommandId = value; }
         }
 
-		public virtual ShipmentReceiptIdDto ShipmentReceiptId { get; set; }
+		public virtual ShipmentReceiptId ShipmentReceiptId { get; set; }
 
 		public virtual string ProductId { get; set; }
 
@@ -141,19 +141,6 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 		public virtual DateTime? ShipmentUpdatedAt { get; set; }
 
 		public virtual bool? ShipmentActive { get; set; }
-
-
-        ShipmentReceiptId IShipmentReceiptMvoCommand.ShipmentReceiptId
-        {
-            get 
-            {
-                return this.ShipmentReceiptId.ToShipmentReceiptId();
-            }
-            set 
-            {
-                this.ShipmentReceiptId = new ShipmentReceiptIdDtoWrapper(value);
-            }
-        }
 
 		public virtual bool? IsPropertyProductIdRemoved { get; set; }
 

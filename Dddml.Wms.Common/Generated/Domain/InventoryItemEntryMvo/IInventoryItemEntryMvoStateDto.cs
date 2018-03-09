@@ -15,8 +15,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
 
     public interface IInventoryItemEntryMvoStateDto
     {
-
-        InventoryItemEntryIdDto InventoryItemEntryId
+        InventoryItemEntryId InventoryItemEntryId
         {
             get;
             set;
@@ -52,8 +51,7 @@ namespace Dddml.Wms.Domain.InventoryItemEntryMvo
             set;
         }
 
-
-        InventoryItemSourceInfoDto Source
+        InventoryItemSourceInfo Source
         {
             get;
             set;

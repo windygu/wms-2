@@ -15,8 +15,7 @@ namespace Dddml.Wms.Domain.AttributeUseMvo
 
     public interface IAttributeUseMvoStateDto
     {
-
-        AttributeSetAttributeUseIdDto AttributeSetAttributeUseId
+        AttributeSetAttributeUseId AttributeSetAttributeUseId
         {
             get;
             set;

@@ -15,13 +15,13 @@ namespace Dddml.Wms.Domain.Shipment
 	public abstract class ShipmentReceiptStateEventDtoBase : IStateEventDto, IShipmentReceiptStateCreated, IShipmentReceiptStateMergePatched
 	{
 
-        private ShipmentReceiptEventIdDto _shipmentReceiptEventId;
+        private ShipmentReceiptEventId _shipmentReceiptEventId;
 
-		protected internal virtual ShipmentReceiptEventIdDto ShipmentReceiptEventId 
+		protected internal virtual ShipmentReceiptEventId ShipmentReceiptEventId 
         {
             get 
             {
-                if (_shipmentReceiptEventId == null) { _shipmentReceiptEventId = new ShipmentReceiptEventIdDto(); }
+                if (_shipmentReceiptEventId == null) { _shipmentReceiptEventId = new ShipmentReceiptEventId(); }
                 return _shipmentReceiptEventId;
             }
             set
@@ -73,7 +73,7 @@ namespace Dddml.Wms.Domain.Shipment
 		ShipmentReceiptEventId IGlobalIdentity<ShipmentReceiptEventId>.GlobalId {
 			get 
 			{
-				return this.ShipmentReceiptEventId.ToShipmentReceiptEventId();
+				return this.ShipmentReceiptEventId;
 			}
 		}
 
@@ -361,14 +361,14 @@ namespace Dddml.Wms.Domain.Shipment
 
         ShipmentReceiptEventId IShipmentReceiptStateEvent.ShipmentReceiptEventId
         {
-            get { return this.ShipmentReceiptEventId.ToShipmentReceiptEventId(); }
+            get { return this.ShipmentReceiptEventId; }
         }
 
         protected ShipmentReceiptStateEventDtoBase()
         {
         }
 
-        protected ShipmentReceiptStateEventDtoBase(ShipmentReceiptEventIdDto stateEventId)
+        protected ShipmentReceiptStateEventDtoBase(ShipmentReceiptEventId stateEventId)
         {
             this.ShipmentReceiptEventId = stateEventId;
         }

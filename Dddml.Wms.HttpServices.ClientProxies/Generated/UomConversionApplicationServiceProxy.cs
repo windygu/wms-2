@@ -374,9 +374,8 @@ namespace Dddml.Wms.HttpServices.ClientProxies
 
         public static string ToIdString(UomConversionId id)
         {
-            var formatter = new UomConversionIdFlattenedDtoFormatter();
-            var idDto = new UomConversionIdFlattenedDto(id);
-            var idStr = formatter.ToString(idDto);
+            var formatter = (new ValueObjectTextFormatter<UomConversionId>());
+            var idStr = formatter.ToString(id);
             return idStr;
         }
 

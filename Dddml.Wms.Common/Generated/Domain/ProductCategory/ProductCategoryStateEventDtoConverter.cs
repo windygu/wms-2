@@ -38,7 +38,7 @@ namespace Dddml.Wms.Domain.ProductCategory
         public virtual ProductCategoryStateCreatedDto ToProductCategoryStateCreatedDto(IProductCategoryStateCreated e)
         {
             var dto = new ProductCategoryStateCreatedDto();
-            dto.ProductCategoryEventId = new ProductCategoryEventIdDtoWrapper(e.ProductCategoryEventId);
+            dto.ProductCategoryEventId = e.ProductCategoryEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -57,7 +57,7 @@ namespace Dddml.Wms.Domain.ProductCategory
         public virtual ProductCategoryStateMergePatchedDto ToProductCategoryStateMergePatchedDto(IProductCategoryStateMergePatched e)
         {
             var dto = new ProductCategoryStateMergePatchedDto();
-            dto.ProductCategoryEventId = new ProductCategoryEventIdDtoWrapper(e.ProductCategoryEventId);
+            dto.ProductCategoryEventId = e.ProductCategoryEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -87,7 +87,7 @@ namespace Dddml.Wms.Domain.ProductCategory
         public virtual ProductCategoryStateDeletedDto ToProductCategoryStateDeletedDto(IProductCategoryStateDeleted e)
         {
             var dto = new ProductCategoryStateDeletedDto();
-            dto.ProductCategoryEventId = new ProductCategoryEventIdDtoWrapper(e.ProductCategoryEventId);
+            dto.ProductCategoryEventId = e.ProductCategoryEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

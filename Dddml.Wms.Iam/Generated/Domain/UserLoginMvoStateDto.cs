@@ -16,8 +16,7 @@ namespace Dddml.Wms.Domain.UserLoginMvo
 
     public partial class UserLoginMvoStateDto : IUserLoginMvoStateDto
     {
-
-        public virtual UserLoginIdDto UserLoginId
+        public virtual UserLoginId UserLoginId
         {
             get;
             set;
@@ -170,7 +169,7 @@ namespace Dddml.Wms.Domain.UserLoginMvo
         public virtual IUserLoginMvoState ToUserLoginMvoState()
         {
             var state = new UserLoginMvoState(true);
-            state.UserLoginId = (this.UserLoginId == null) ? null : this.UserLoginId.ToUserLoginId();
+            state.UserLoginId = this.UserLoginId;
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             state.UserUserName = this.UserUserName;

@@ -110,15 +110,6 @@
     <Compile Include="Generated\Domain\AudienceEventId.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\AudienceEventIdDto.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AudienceEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\AudienceEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\AudienceState.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
@@ -524,15 +515,6 @@
     <Compile Include="Generated\Domain\LoginKey.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\LoginKeyDto.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\LoginKeyDtoWrapper.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\LoginKeyFlattenedDto.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\Metadata\AudienceMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
@@ -728,15 +710,6 @@
     <Compile Include="Generated\Domain\PermissionEventId.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\PermissionEventIdDto.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\PermissionEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\PermissionEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\PermissionState.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
@@ -794,15 +767,6 @@
     <Compile Include="Generated\Domain\RoleEventId.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\RoleEventIdDto.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\RoleEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\RoleEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\RolePermissionAggregate.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
@@ -821,25 +785,7 @@
     <Compile Include="Generated\Domain\RolePermissionEventId.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\RolePermissionEventIdDto.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\RolePermissionEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\RolePermissionEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\RolePermissionId.cs">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\RolePermissionIdDto.cs">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\RolePermissionIdDtoWrapper.cs">
-      <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\RolePermissionIdFlattenedDto.cs">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\RolePermissionState.cs">
@@ -920,25 +866,7 @@
     <Compile Include="Generated\Domain\UserClaimEventId.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\UserClaimEventIdDto.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UserClaimEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UserClaimEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\UserClaimId.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UserClaimIdDto.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UserClaimIdDtoWrapper.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UserClaimIdFlattenedDto.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\UserClaimMvoAggregate.cs">
@@ -957,15 +885,6 @@
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\UserClaimMvoEventId.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UserClaimMvoEventIdDto.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UserClaimMvoEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UserClaimMvoEventIdFlattenedDto.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\UserClaimMvoState.cs">
@@ -1040,15 +959,6 @@
     <Compile Include="Generated\Domain\UserEventId.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\UserEventIdDto.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UserEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UserEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\UserLoginCommand.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
@@ -1058,25 +968,7 @@
     <Compile Include="Generated\Domain\UserLoginEventId.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\UserLoginEventIdDto.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UserLoginEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UserLoginEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\UserLoginId.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UserLoginIdDto.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UserLoginIdDtoWrapper.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UserLoginIdFlattenedDto.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\UserLoginMvoAggregate.cs">
@@ -1095,15 +987,6 @@
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\UserLoginMvoEventId.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UserLoginMvoEventIdDto.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UserLoginMvoEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UserLoginMvoEventIdFlattenedDto.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\UserLoginMvoState.cs">
@@ -1178,25 +1061,7 @@
     <Compile Include="Generated\Domain\UserPermissionEventId.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\UserPermissionEventIdDto.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UserPermissionEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UserPermissionEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\UserPermissionId.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UserPermissionIdDto.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UserPermissionIdDtoWrapper.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UserPermissionIdFlattenedDto.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\UserPermissionMvoAggregate.cs">
@@ -1215,15 +1080,6 @@
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\UserPermissionMvoEventId.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UserPermissionMvoEventIdDto.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UserPermissionMvoEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UserPermissionMvoEventIdFlattenedDto.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\UserPermissionMvoState.cs">
@@ -1298,25 +1154,7 @@
     <Compile Include="Generated\Domain\UserRoleEventId.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generated\Domain\UserRoleEventIdDto.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UserRoleEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UserRoleEventIdFlattenedDto.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
     <Compile Include="Generated\Domain\UserRoleId.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UserRoleIdDto.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UserRoleIdDtoWrapper.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UserRoleIdFlattenedDto.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\UserRoleMvoAggregate.cs">
@@ -1335,15 +1173,6 @@
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\UserRoleMvoEventId.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UserRoleMvoEventIdDto.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UserRoleMvoEventIdDtoWrapper.cs">
-      <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Generated\Domain\UserRoleMvoEventIdFlattenedDto.cs">
       <DependentUpon>GenerateBoundedContextDomainAggregates.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\UserRoleMvoState.cs">
@@ -1502,9 +1331,6 @@
 .\PermissionTreeInterfaces.cs
 .\PermissionTreeNode.cs
 .\RolePermissionId.cs
-.\RolePermissionIdDto.cs
-.\RolePermissionIdDtoWrapper.cs
-.\RolePermissionIdFlattenedDto.cs
 </LastOutputs>
     </Content>
     <Content Include="Generated\Domain\GenerateBoundedContextDomain.txt">
@@ -1522,9 +1348,6 @@
 .\AudienceCommand.cs
 .\AudienceCommandDto.cs
 .\AudienceEventId.cs
-.\AudienceEventIdDto.cs
-.\AudienceEventIdDtoWrapper.cs
-.\AudienceEventIdFlattenedDto.cs
 .\AudienceState.cs
 .\AudienceStateDto.cs
 .\AudienceStateDtoExtension.cs
@@ -1660,18 +1483,12 @@
 .\IUserStateQueryRepository.cs
 .\IUserStateRepository.cs
 .\LoginKey.cs
-.\LoginKeyDto.cs
-.\LoginKeyDtoWrapper.cs
-.\LoginKeyFlattenedDto.cs
 .\PermissionAggregate.cs
 .\PermissionApplicationServiceBase.cs
 .\PermissionApplicationServiceFactory.cs
 .\PermissionCommand.cs
 .\PermissionCommandDto.cs
 .\PermissionEventId.cs
-.\PermissionEventIdDto.cs
-.\PermissionEventIdDtoWrapper.cs
-.\PermissionEventIdFlattenedDto.cs
 .\PermissionState.cs
 .\PermissionStateDto.cs
 .\PermissionStateDtoExtension.cs
@@ -1688,18 +1505,12 @@
 .\RoleCommand.cs
 .\RoleCommandDto.cs
 .\RoleEventId.cs
-.\RoleEventIdDto.cs
-.\RoleEventIdDtoWrapper.cs
-.\RoleEventIdFlattenedDto.cs
 .\RolePermissionAggregate.cs
 .\RolePermissionApplicationServiceBase.cs
 .\RolePermissionApplicationServiceFactory.cs
 .\RolePermissionCommand.cs
 .\RolePermissionCommandDto.cs
 .\RolePermissionEventId.cs
-.\RolePermissionEventIdDto.cs
-.\RolePermissionEventIdDtoWrapper.cs
-.\RolePermissionEventIdFlattenedDto.cs
 .\RolePermissionState.cs
 .\RolePermissionStateDto.cs
 .\RolePermissionStateDtoExtension.cs
@@ -1726,22 +1537,13 @@
 .\UserClaimCommand.cs
 .\UserClaimCommandDto.cs
 .\UserClaimEventId.cs
-.\UserClaimEventIdDto.cs
-.\UserClaimEventIdDtoWrapper.cs
-.\UserClaimEventIdFlattenedDto.cs
 .\UserClaimId.cs
-.\UserClaimIdDto.cs
-.\UserClaimIdDtoWrapper.cs
-.\UserClaimIdFlattenedDto.cs
 .\UserClaimMvoAggregate.cs
 .\UserClaimMvoApplicationServiceBase.cs
 .\UserClaimMvoApplicationServiceFactory.cs
 .\UserClaimMvoCommand.cs
 .\UserClaimMvoCommandDto.cs
 .\UserClaimMvoEventId.cs
-.\UserClaimMvoEventIdDto.cs
-.\UserClaimMvoEventIdDtoWrapper.cs
-.\UserClaimMvoEventIdFlattenedDto.cs
 .\UserClaimMvoState.cs
 .\UserClaimMvoStateDto.cs
 .\UserClaimMvoStateDtoExtension.cs
@@ -1766,28 +1568,16 @@
 .\UserCommand.cs
 .\UserCommandDto.cs
 .\UserEventId.cs
-.\UserEventIdDto.cs
-.\UserEventIdDtoWrapper.cs
-.\UserEventIdFlattenedDto.cs
 .\UserLoginCommand.cs
 .\UserLoginCommandDto.cs
 .\UserLoginEventId.cs
-.\UserLoginEventIdDto.cs
-.\UserLoginEventIdDtoWrapper.cs
-.\UserLoginEventIdFlattenedDto.cs
 .\UserLoginId.cs
-.\UserLoginIdDto.cs
-.\UserLoginIdDtoWrapper.cs
-.\UserLoginIdFlattenedDto.cs
 .\UserLoginMvoAggregate.cs
 .\UserLoginMvoApplicationServiceBase.cs
 .\UserLoginMvoApplicationServiceFactory.cs
 .\UserLoginMvoCommand.cs
 .\UserLoginMvoCommandDto.cs
 .\UserLoginMvoEventId.cs
-.\UserLoginMvoEventIdDto.cs
-.\UserLoginMvoEventIdDtoWrapper.cs
-.\UserLoginMvoEventIdFlattenedDto.cs
 .\UserLoginMvoState.cs
 .\UserLoginMvoStateDto.cs
 .\UserLoginMvoStateDtoExtension.cs
@@ -1812,22 +1602,13 @@
 .\UserPermissionCommand.cs
 .\UserPermissionCommandDto.cs
 .\UserPermissionEventId.cs
-.\UserPermissionEventIdDto.cs
-.\UserPermissionEventIdDtoWrapper.cs
-.\UserPermissionEventIdFlattenedDto.cs
 .\UserPermissionId.cs
-.\UserPermissionIdDto.cs
-.\UserPermissionIdDtoWrapper.cs
-.\UserPermissionIdFlattenedDto.cs
 .\UserPermissionMvoAggregate.cs
 .\UserPermissionMvoApplicationServiceBase.cs
 .\UserPermissionMvoApplicationServiceFactory.cs
 .\UserPermissionMvoCommand.cs
 .\UserPermissionMvoCommandDto.cs
 .\UserPermissionMvoEventId.cs
-.\UserPermissionMvoEventIdDto.cs
-.\UserPermissionMvoEventIdDtoWrapper.cs
-.\UserPermissionMvoEventIdFlattenedDto.cs
 .\UserPermissionMvoState.cs
 .\UserPermissionMvoStateDto.cs
 .\UserPermissionMvoStateDtoExtension.cs
@@ -1852,22 +1633,13 @@
 .\UserRoleCommand.cs
 .\UserRoleCommandDto.cs
 .\UserRoleEventId.cs
-.\UserRoleEventIdDto.cs
-.\UserRoleEventIdDtoWrapper.cs
-.\UserRoleEventIdFlattenedDto.cs
 .\UserRoleId.cs
-.\UserRoleIdDto.cs
-.\UserRoleIdDtoWrapper.cs
-.\UserRoleIdFlattenedDto.cs
 .\UserRoleMvoAggregate.cs
 .\UserRoleMvoApplicationServiceBase.cs
 .\UserRoleMvoApplicationServiceFactory.cs
 .\UserRoleMvoCommand.cs
 .\UserRoleMvoCommandDto.cs
 .\UserRoleMvoEventId.cs
-.\UserRoleMvoEventIdDto.cs
-.\UserRoleMvoEventIdDtoWrapper.cs
-.\UserRoleMvoEventIdFlattenedDto.cs
 .\UserRoleMvoState.cs
 .\UserRoleMvoStateDto.cs
 .\UserRoleMvoStateDtoExtension.cs

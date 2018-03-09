@@ -34,7 +34,7 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
         public virtual InventoryPRTriggeredStateCreatedDto ToInventoryPRTriggeredStateCreatedDto(IInventoryPRTriggeredStateCreated e)
         {
             var dto = new InventoryPRTriggeredStateCreatedDto();
-            dto.InventoryPRTriggeredEventId = new InventoryPRTriggeredEventIdDtoWrapper(e.InventoryPRTriggeredEventId);
+            dto.InventoryPRTriggeredEventId = e.InventoryPRTriggeredEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
@@ -45,7 +45,7 @@ namespace Dddml.Wms.Domain.InventoryPRTriggered
         public virtual InventoryPRTriggeredStateMergePatchedDto ToInventoryPRTriggeredStateMergePatchedDto(IInventoryPRTriggeredStateMergePatched e)
         {
             var dto = new InventoryPRTriggeredStateMergePatchedDto();
-            dto.InventoryPRTriggeredEventId = new InventoryPRTriggeredEventIdDtoWrapper(e.InventoryPRTriggeredEventId);
+            dto.InventoryPRTriggeredEventId = e.InventoryPRTriggeredEventId;
             dto.CreatedAt = e.CreatedAt;
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;

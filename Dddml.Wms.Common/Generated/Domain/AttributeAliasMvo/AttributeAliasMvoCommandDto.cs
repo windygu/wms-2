@@ -52,7 +52,7 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
             set { this.CommandId = value; }
         }
 
-		public virtual AttributeAliasIdDto AttributeAliasId { get; set; }
+		public virtual AttributeAliasId AttributeAliasId { get; set; }
 
 		public virtual string Name { get; set; }
 
@@ -89,19 +89,6 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo
 		public virtual bool? AttributeActive { get; set; }
 
 		public virtual bool? AttributeDeleted { get; set; }
-
-
-        AttributeAliasId IAttributeAliasMvoCommand.AttributeAliasId
-        {
-            get 
-            {
-                return this.AttributeAliasId.ToAttributeAliasId();
-            }
-            set 
-            {
-                this.AttributeAliasId = new AttributeAliasIdDtoWrapper(value);
-            }
-        }
 
 		public virtual bool? IsPropertyNameRemoved { get; set; }
 
