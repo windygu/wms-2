@@ -59,6 +59,18 @@ public class PhysicalInventoryLineMvoStateDto
         this.processed = processed;
     }
 
+    private String lineNumber;
+
+    public String getLineNumber()
+    {
+        return this.lineNumber;
+    }
+
+    public void setLineNumber(String lineNumber)
+    {
+        this.lineNumber = lineNumber;
+    }
+
     private Long reversalLineNumber;
 
     public Long getReversalLineNumber()
@@ -420,6 +432,9 @@ public class PhysicalInventoryLineMvoStateDto
             }
             if (returnedFieldsContains("Processed")) {
                 dto.setProcessed(state.getProcessed());
+            }
+            if (returnedFieldsContains("LineNumber")) {
+                dto.setLineNumber(state.getLineNumber());
             }
             if (returnedFieldsContains("ReversalLineNumber")) {
                 dto.setReversalLineNumber(state.getReversalLineNumber());

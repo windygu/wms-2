@@ -52,6 +52,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             cmd.BookQuantity = state.BookQuantity;
             cmd.CountedQuantity = state.CountedQuantity;
             cmd.Processed = state.Processed;
+            cmd.LineNumber = state.LineNumber;
             cmd.ReversalLineNumber = state.ReversalLineNumber;
             cmd.Description = state.Description;
             cmd.Version = ((IPhysicalInventoryLineMvoStateProperties)state).Version;
@@ -75,6 +76,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             cmd.PhysicalInventoryUpdatedAt = state.PhysicalInventoryUpdatedAt;
             cmd.PhysicalInventoryActive = state.PhysicalInventoryActive;
             
+            if (state.LineNumber == null) { cmd.IsPropertyLineNumberRemoved = true; }
             if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
             if (state.PhysicalInventoryDocumentStatusId == null) { cmd.IsPropertyPhysicalInventoryDocumentStatusIdRemoved = true; }
             if (state.PhysicalInventoryWarehouseId == null) { cmd.IsPropertyPhysicalInventoryWarehouseIdRemoved = true; }
@@ -101,6 +103,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             cmd.BookQuantity = state.BookQuantity;
             cmd.CountedQuantity = state.CountedQuantity;
             cmd.Processed = state.Processed;
+            cmd.LineNumber = state.LineNumber;
             cmd.ReversalLineNumber = state.ReversalLineNumber;
             cmd.Description = state.Description;
             cmd.Version = ((IPhysicalInventoryLineMvoStateProperties)state).Version;

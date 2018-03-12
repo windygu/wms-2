@@ -172,6 +172,8 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
             this.Processed = (e.Processed != null && e.Processed.HasValue) ? e.Processed.Value : default(bool);
 
+			this.LineNumber = e.LineNumber;
+
             this.ReversalLineNumber = (e.ReversalLineNumber != null && e.ReversalLineNumber.HasValue) ? e.ReversalLineNumber.Value : default(long);
 
 			this.Description = e.Description;
@@ -263,6 +265,18 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 			else
 			{
 				this.Processed = (e.Processed != null && e.Processed.HasValue) ? e.Processed.Value : default(bool);
+			}
+
+			if (e.LineNumber == null)
+			{
+				if (e.IsPropertyLineNumberRemoved)
+				{
+					this.LineNumber = default(string);
+				}
+			}
+			else
+			{
+				this.LineNumber = e.LineNumber;
 			}
 
 			if (e.ReversalLineNumber == null)

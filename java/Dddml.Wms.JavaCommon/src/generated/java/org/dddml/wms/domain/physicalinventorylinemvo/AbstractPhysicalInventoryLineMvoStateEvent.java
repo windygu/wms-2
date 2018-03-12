@@ -70,6 +70,18 @@ public abstract class AbstractPhysicalInventoryLineMvoStateEvent extends Abstrac
         this.processed = processed;
     }
 
+    private String lineNumber;
+
+    public String getLineNumber()
+    {
+        return this.lineNumber;
+    }
+
+    public void setLineNumber(String lineNumber)
+    {
+        this.lineNumber = lineNumber;
+    }
+
     private Long reversalLineNumber;
 
     public Long getReversalLineNumber()
@@ -439,6 +451,16 @@ public abstract class AbstractPhysicalInventoryLineMvoStateEvent extends Abstrac
 
         public void setIsPropertyProcessedRemoved(Boolean removed) {
             this.isPropertyProcessedRemoved = removed;
+        }
+
+        private Boolean isPropertyLineNumberRemoved;
+
+        public Boolean getIsPropertyLineNumberRemoved() {
+            return this.isPropertyLineNumberRemoved;
+        }
+
+        public void setIsPropertyLineNumberRemoved(Boolean removed) {
+            this.isPropertyLineNumberRemoved = removed;
         }
 
         private Boolean isPropertyReversalLineNumberRemoved;

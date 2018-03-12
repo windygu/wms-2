@@ -48,10 +48,12 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             cmd.BookQuantity = state.BookQuantity;
             cmd.CountedQuantity = state.CountedQuantity;
             cmd.Processed = state.Processed;
+            cmd.LineNumber = state.LineNumber;
             cmd.ReversalLineNumber = state.ReversalLineNumber;
             cmd.Description = state.Description;
             cmd.PhysicalInventoryDocumentNumber = state.PhysicalInventoryDocumentNumber;
             
+            if (state.LineNumber == null) { cmd.IsPropertyLineNumberRemoved = true; }
             if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
             return cmd;
         }
@@ -65,6 +67,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             cmd.BookQuantity = state.BookQuantity;
             cmd.CountedQuantity = state.CountedQuantity;
             cmd.Processed = state.Processed;
+            cmd.LineNumber = state.LineNumber;
             cmd.ReversalLineNumber = state.ReversalLineNumber;
             cmd.Description = state.Description;
             cmd.PhysicalInventoryDocumentNumber = state.PhysicalInventoryDocumentNumber;

@@ -133,6 +133,35 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
+                    Name = "LineNumber",
+                    Type = typeof(string),
+                    TypeName = "string",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 50,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
                     Name = "ReversalLineNumber",
                     Type = typeof(long),
                     TypeName = "long",
@@ -1143,6 +1172,8 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("countedQuantity", "CountedQuantity");
             d.Add("Processed", "Processed");
             d.Add("processed", "Processed");
+            d.Add("LineNumber", "LineNumber");
+            d.Add("lineNumber", "LineNumber");
             d.Add("ReversalLineNumber", "ReversalLineNumber");
             d.Add("reversalLineNumber", "ReversalLineNumber");
             d.Add("Description", "Description");

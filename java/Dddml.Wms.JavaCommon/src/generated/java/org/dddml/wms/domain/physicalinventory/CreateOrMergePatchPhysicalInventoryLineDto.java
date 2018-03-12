@@ -43,6 +43,18 @@ public class CreateOrMergePatchPhysicalInventoryLineDto extends AbstractPhysical
         this.processed = processed;
     }
 
+    private String lineNumber;
+
+    public String getLineNumber()
+    {
+        return this.lineNumber;
+    }
+
+    public void setLineNumber(String lineNumber)
+    {
+        this.lineNumber = lineNumber;
+    }
+
     private Long reversalLineNumber;
 
     public Long getReversalLineNumber()
@@ -115,6 +127,18 @@ public class CreateOrMergePatchPhysicalInventoryLineDto extends AbstractPhysical
         this.isPropertyProcessedRemoved = removed;
     }
 
+    private Boolean isPropertyLineNumberRemoved;
+
+    public Boolean getIsPropertyLineNumberRemoved()
+    {
+        return this.isPropertyLineNumberRemoved;
+    }
+
+    public void setIsPropertyLineNumberRemoved(Boolean removed)
+    {
+        this.isPropertyLineNumberRemoved = removed;
+    }
+
     private Boolean isPropertyReversalLineNumberRemoved;
 
     public Boolean getIsPropertyReversalLineNumberRemoved()
@@ -157,6 +181,7 @@ public class CreateOrMergePatchPhysicalInventoryLineDto extends AbstractPhysical
         command.setBookQuantity(this.getBookQuantity());
         command.setCountedQuantity(this.getCountedQuantity());
         command.setProcessed(this.getProcessed());
+        command.setLineNumber(this.getLineNumber());
         command.setReversalLineNumber(this.getReversalLineNumber());
         command.setDescription(this.getDescription());
         command.setActive(this.getActive());
@@ -192,6 +217,7 @@ public class CreateOrMergePatchPhysicalInventoryLineDto extends AbstractPhysical
         command.setIsPropertyBookQuantityRemoved(this.getIsPropertyBookQuantityRemoved());
         command.setIsPropertyCountedQuantityRemoved(this.getIsPropertyCountedQuantityRemoved());
         command.setIsPropertyProcessedRemoved(this.getIsPropertyProcessedRemoved());
+        command.setIsPropertyLineNumberRemoved(this.getIsPropertyLineNumberRemoved());
         command.setIsPropertyReversalLineNumberRemoved(this.getIsPropertyReversalLineNumberRemoved());
         command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());

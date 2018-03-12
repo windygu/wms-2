@@ -30,6 +30,8 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
 		public virtual bool? Processed { get; set; }
 
+		public virtual string LineNumber { get; set; }
+
 		public virtual long? ReversalLineNumber { get; set; }
 
 		public virtual string Description { get; set; }
@@ -167,6 +169,8 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 		public virtual bool IsPropertyCountedQuantityRemoved { get; set; }
 
 		public virtual bool IsPropertyProcessedRemoved { get; set; }
+
+		public virtual bool IsPropertyLineNumberRemoved { get; set; }
 
 		public virtual bool IsPropertyReversalLineNumberRemoved { get; set; }
 

@@ -31,6 +31,10 @@ public interface PhysicalInventoryLineStateEvent extends Event
 
     void setProcessed(Boolean processed);
 
+    String getLineNumber();
+
+    void setLineNumber(String lineNumber);
+
     Long getReversalLineNumber();
 
     void setReversalLineNumber(Long reversalLineNumber);
@@ -70,6 +74,10 @@ public interface PhysicalInventoryLineStateEvent extends Event
         Boolean getIsPropertyProcessedRemoved();
 
         void setIsPropertyProcessedRemoved(Boolean removed);
+
+        Boolean getIsPropertyLineNumberRemoved();
+
+        void setIsPropertyLineNumberRemoved(Boolean removed);
 
         Boolean getIsPropertyReversalLineNumberRemoved();
 

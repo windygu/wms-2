@@ -54,6 +54,10 @@ public interface PhysicalInventoryLineMvoCommand extends Command
 
         void setProcessed(Boolean processed);
 
+        String getLineNumber();
+
+        void setLineNumber(String lineNumber);
+
         Long getReversalLineNumber();
 
         void setReversalLineNumber(Long reversalLineNumber);
@@ -165,6 +169,10 @@ public interface PhysicalInventoryLineMvoCommand extends Command
         Boolean getIsPropertyProcessedRemoved();
 
         void setIsPropertyProcessedRemoved(Boolean removed);
+
+        Boolean getIsPropertyLineNumberRemoved();
+
+        void setIsPropertyLineNumberRemoved(Boolean removed);
 
         Boolean getIsPropertyReversalLineNumberRemoved();
 

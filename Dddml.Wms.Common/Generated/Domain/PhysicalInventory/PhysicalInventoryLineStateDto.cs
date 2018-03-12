@@ -40,6 +40,12 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             set;
         }
 
+        public virtual string LineNumber
+        {
+            get;
+            set;
+        }
+
         public virtual long? ReversalLineNumber
         {
             get;
@@ -95,6 +101,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             if (this.BookQuantity != null && this.BookQuantity.HasValue) { state.BookQuantity = this.BookQuantity.Value; }
             if (this.CountedQuantity != null && this.CountedQuantity.HasValue) { state.CountedQuantity = this.CountedQuantity.Value; }
             if (this.Processed != null && this.Processed.HasValue) { state.Processed = this.Processed.Value; }
+            state.LineNumber = this.LineNumber;
             if (this.ReversalLineNumber != null && this.ReversalLineNumber.HasValue) { state.ReversalLineNumber = this.ReversalLineNumber.Value; }
             state.Description = this.Description;
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }

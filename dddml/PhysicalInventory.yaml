@@ -119,6 +119,11 @@ aggregates:
 
             # QuantityInternalUse: 
               # type: decimal
+            
+            LineNumber:
+              type: string
+              length: 50
+              notNull: true
 
             ReversalLineNumber:
               type: long
@@ -128,6 +133,12 @@ aggregates:
 
           reservedProperties:
             noActive: true
+            
+          # ------------------------------
+          # 唯一约束
+          uniqueConstraints:
+            UniqueLineNumber: [LineNumber]
+            
             
       # --------------------------------                
       methods:

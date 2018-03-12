@@ -242,6 +242,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             e.BookQuantity = c.BookQuantity;
             e.CountedQuantity = c.CountedQuantity;
             e.Processed = c.Processed;
+            e.LineNumber = c.LineNumber;
             e.ReversalLineNumber = c.ReversalLineNumber;
             e.Description = c.Description;
 
@@ -263,11 +264,13 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             e.BookQuantity = c.BookQuantity;
             e.CountedQuantity = c.CountedQuantity;
             e.Processed = c.Processed;
+            e.LineNumber = c.LineNumber;
             e.ReversalLineNumber = c.ReversalLineNumber;
             e.Description = c.Description;
             e.IsPropertyBookQuantityRemoved = c.IsPropertyBookQuantityRemoved;
             e.IsPropertyCountedQuantityRemoved = c.IsPropertyCountedQuantityRemoved;
             e.IsPropertyProcessedRemoved = c.IsPropertyProcessedRemoved;
+            e.IsPropertyLineNumberRemoved = c.IsPropertyLineNumberRemoved;
             e.IsPropertyReversalLineNumberRemoved = c.IsPropertyReversalLineNumberRemoved;
             e.IsPropertyDescriptionRemoved = c.IsPropertyDescriptionRemoved;
 

@@ -160,6 +160,7 @@ public abstract class AbstractPhysicalInventoryAggregate extends AbstractAggrega
         e.setBookQuantity(c.getBookQuantity());
         e.setCountedQuantity(c.getCountedQuantity());
         e.setProcessed(c.getProcessed());
+        e.setLineNumber(c.getLineNumber());
         e.setReversalLineNumber(c.getReversalLineNumber());
         e.setDescription(c.getDescription());
         e.setCreatedBy(c.getRequesterId());
@@ -178,11 +179,13 @@ public abstract class AbstractPhysicalInventoryAggregate extends AbstractAggrega
         e.setBookQuantity(c.getBookQuantity());
         e.setCountedQuantity(c.getCountedQuantity());
         e.setProcessed(c.getProcessed());
+        e.setLineNumber(c.getLineNumber());
         e.setReversalLineNumber(c.getReversalLineNumber());
         e.setDescription(c.getDescription());
         e.setIsPropertyBookQuantityRemoved(c.getIsPropertyBookQuantityRemoved());
         e.setIsPropertyCountedQuantityRemoved(c.getIsPropertyCountedQuantityRemoved());
         e.setIsPropertyProcessedRemoved(c.getIsPropertyProcessedRemoved());
+        e.setIsPropertyLineNumberRemoved(c.getIsPropertyLineNumberRemoved());
         e.setIsPropertyReversalLineNumberRemoved(c.getIsPropertyReversalLineNumberRemoved());
         e.setIsPropertyDescriptionRemoved(c.getIsPropertyDescriptionRemoved());
         e.setCreatedBy(c.getRequesterId());

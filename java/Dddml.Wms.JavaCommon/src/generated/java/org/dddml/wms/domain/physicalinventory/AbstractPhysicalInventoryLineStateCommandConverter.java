@@ -38,6 +38,7 @@ public abstract class AbstractPhysicalInventoryLineStateCommandConverter<TCreate
         cmd.setBookQuantity(state.getBookQuantity());
         cmd.setCountedQuantity(state.getCountedQuantity());
         cmd.setProcessed(state.getProcessed());
+        cmd.setLineNumber(state.getLineNumber());
         cmd.setReversalLineNumber(state.getReversalLineNumber());
         cmd.setDescription(state.getDescription());
         cmd.setPhysicalInventoryDocumentNumber(state.getPhysicalInventoryDocumentNumber());
@@ -45,6 +46,7 @@ public abstract class AbstractPhysicalInventoryLineStateCommandConverter<TCreate
         if (state.getBookQuantity() == null) { cmd.setIsPropertyBookQuantityRemoved(true); }
         if (state.getCountedQuantity() == null) { cmd.setIsPropertyCountedQuantityRemoved(true); }
         if (state.getProcessed() == null) { cmd.setIsPropertyProcessedRemoved(true); }
+        if (state.getLineNumber() == null) { cmd.setIsPropertyLineNumberRemoved(true); }
         if (state.getReversalLineNumber() == null) { cmd.setIsPropertyReversalLineNumberRemoved(true); }
         if (state.getDescription() == null) { cmd.setIsPropertyDescriptionRemoved(true); }
         return cmd;
@@ -58,6 +60,7 @@ public abstract class AbstractPhysicalInventoryLineStateCommandConverter<TCreate
         cmd.setBookQuantity(state.getBookQuantity());
         cmd.setCountedQuantity(state.getCountedQuantity());
         cmd.setProcessed(state.getProcessed());
+        cmd.setLineNumber(state.getLineNumber());
         cmd.setReversalLineNumber(state.getReversalLineNumber());
         cmd.setDescription(state.getDescription());
         cmd.setPhysicalInventoryDocumentNumber(state.getPhysicalInventoryDocumentNumber());

@@ -111,6 +111,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             e.BookQuantity = c.BookQuantity;
             e.CountedQuantity = c.CountedQuantity;
             e.Processed = c.Processed;
+            e.LineNumber = c.LineNumber;
             e.ReversalLineNumber = c.ReversalLineNumber;
             e.Description = c.Description;
             e.Version = c.Version;
@@ -152,6 +153,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             e.BookQuantity = c.BookQuantity;
             e.CountedQuantity = c.CountedQuantity;
             e.Processed = c.Processed;
+            e.LineNumber = c.LineNumber;
             e.ReversalLineNumber = c.ReversalLineNumber;
             e.Description = c.Description;
             e.Version = c.Version;
@@ -177,6 +179,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             e.IsPropertyBookQuantityRemoved = c.IsPropertyBookQuantityRemoved;
             e.IsPropertyCountedQuantityRemoved = c.IsPropertyCountedQuantityRemoved;
             e.IsPropertyProcessedRemoved = c.IsPropertyProcessedRemoved;
+            e.IsPropertyLineNumberRemoved = c.IsPropertyLineNumberRemoved;
             e.IsPropertyReversalLineNumberRemoved = c.IsPropertyReversalLineNumberRemoved;
             e.IsPropertyDescriptionRemoved = c.IsPropertyDescriptionRemoved;
             e.IsPropertyVersionRemoved = c.IsPropertyVersionRemoved;

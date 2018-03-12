@@ -59,6 +59,18 @@ public abstract class AbstractPhysicalInventoryLineMvoState implements PhysicalI
         this.processed = processed;
     }
 
+    private String lineNumber;
+
+    public String getLineNumber()
+    {
+        return this.lineNumber;
+    }
+
+    public void setLineNumber(String lineNumber)
+    {
+        this.lineNumber = lineNumber;
+    }
+
     private Long reversalLineNumber;
 
     public Long getReversalLineNumber()
@@ -462,6 +474,7 @@ public abstract class AbstractPhysicalInventoryLineMvoState implements PhysicalI
         this.setBookQuantity(e.getBookQuantity());
         this.setCountedQuantity(e.getCountedQuantity());
         this.setProcessed(e.getProcessed());
+        this.setLineNumber(e.getLineNumber());
         this.setReversalLineNumber(e.getReversalLineNumber());
         this.setDescription(e.getDescription());
         this.setVersion(e.getVersion());
@@ -528,6 +541,17 @@ public abstract class AbstractPhysicalInventoryLineMvoState implements PhysicalI
         else
         {
             this.setProcessed(e.getProcessed());
+        }
+        if (e.getLineNumber() == null)
+        {
+            if (e.getIsPropertyLineNumberRemoved() != null && e.getIsPropertyLineNumberRemoved())
+            {
+                this.setLineNumber(null);
+            }
+        }
+        else
+        {
+            this.setLineNumber(e.getLineNumber());
         }
         if (e.getReversalLineNumber() == null)
         {

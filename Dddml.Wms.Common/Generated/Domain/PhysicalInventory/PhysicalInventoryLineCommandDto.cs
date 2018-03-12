@@ -41,6 +41,8 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
 		public virtual bool? Processed { get; set; }
 
+		public virtual string LineNumber { get; set; }
+
 		public virtual long? ReversalLineNumber { get; set; }
 
 		public virtual string Description { get; set; }
@@ -103,6 +105,25 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             set
             {
                 this.IsPropertyProcessedRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyLineNumberRemoved { get; set; }
+
+        bool IMergePatchPhysicalInventoryLine.IsPropertyLineNumberRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyLineNumberRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyLineNumberRemoved = value;
             }
         }
 

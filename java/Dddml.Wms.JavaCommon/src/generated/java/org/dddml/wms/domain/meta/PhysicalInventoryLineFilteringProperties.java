@@ -14,6 +14,7 @@ public final class PhysicalInventoryLineFilteringProperties
             "bookQuantity",
             "countedQuantity",
             "processed",
+            "lineNumber",
             "reversalLineNumber",
             "description",
             "version",
@@ -37,6 +38,7 @@ public final class PhysicalInventoryLineFilteringProperties
             "BigDecimal",
             "BigDecimal",
             "Boolean",
+            "String",
             "Long",
             "String",
             "Long",
@@ -74,6 +76,8 @@ public final class PhysicalInventoryLineFilteringProperties
         aliasMap.put("CountedQuantity", "countedQuantity");
         aliasMap.put("processed", "processed");
         aliasMap.put("Processed", "processed");
+        aliasMap.put("lineNumber", "lineNumber");
+        aliasMap.put("LineNumber", "lineNumber");
         aliasMap.put("reversalLineNumber", "reversalLineNumber");
         aliasMap.put("ReversalLineNumber", "reversalLineNumber");
         aliasMap.put("description", "description");

@@ -34,6 +34,7 @@ public class PhysicalInventoryLineStateEventDtoConverter {
         dto.setBookQuantity(e.getBookQuantity());
         dto.setCountedQuantity(e.getCountedQuantity());
         dto.setProcessed(e.getProcessed());
+        dto.setLineNumber(e.getLineNumber());
         dto.setReversalLineNumber(e.getReversalLineNumber());
         dto.setDescription(e.getDescription());
         return dto;
@@ -49,11 +50,13 @@ public class PhysicalInventoryLineStateEventDtoConverter {
         dto.setBookQuantity(e.getBookQuantity());
         dto.setCountedQuantity(e.getCountedQuantity());
         dto.setProcessed(e.getProcessed());
+        dto.setLineNumber(e.getLineNumber());
         dto.setReversalLineNumber(e.getReversalLineNumber());
         dto.setDescription(e.getDescription());
         dto.setIsPropertyBookQuantityRemoved(e.getIsPropertyBookQuantityRemoved());
         dto.setIsPropertyCountedQuantityRemoved(e.getIsPropertyCountedQuantityRemoved());
         dto.setIsPropertyProcessedRemoved(e.getIsPropertyProcessedRemoved());
+        dto.setIsPropertyLineNumberRemoved(e.getIsPropertyLineNumberRemoved());
         dto.setIsPropertyReversalLineNumberRemoved(e.getIsPropertyReversalLineNumberRemoved());
         dto.setIsPropertyDescriptionRemoved(e.getIsPropertyDescriptionRemoved());
         return dto;

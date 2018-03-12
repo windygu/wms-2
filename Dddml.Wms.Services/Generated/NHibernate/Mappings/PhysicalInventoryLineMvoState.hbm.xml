@@ -17,6 +17,7 @@
     <property name="BookQuantity" ></property>
     <property name="CountedQuantity" ></property>
     <property name="Processed" ></property>
+    <property name="LineNumber" ><column name="LineNumber" length="50" unique-key="UniqueLineNumber" not-null="true" /></property>
     <property name="ReversalLineNumber" ></property>
     <property name="Description" ></property>
     <property name="Version" ></property>

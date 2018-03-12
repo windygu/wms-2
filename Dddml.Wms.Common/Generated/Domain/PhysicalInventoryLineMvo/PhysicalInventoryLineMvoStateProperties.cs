@@ -23,6 +23,8 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
 
 		public virtual bool Processed { get; set; }
 
+		public virtual string LineNumber { get; set; }
+
 		public virtual long ReversalLineNumber { get; set; }
 
 		public virtual string Description { get; set; }

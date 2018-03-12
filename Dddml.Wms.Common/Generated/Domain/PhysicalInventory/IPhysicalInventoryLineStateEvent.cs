@@ -26,6 +26,8 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
 		bool? Processed { get; set; }
 
+		string LineNumber { get; set; }
+
 		long? ReversalLineNumber { get; set; }
 
 		string Description { get; set; }
@@ -48,6 +50,8 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 		bool IsPropertyCountedQuantityRemoved { get; set; }
 
 		bool IsPropertyProcessedRemoved { get; set; }
+
+		bool IsPropertyLineNumberRemoved { get; set; }
 
 		bool IsPropertyReversalLineNumberRemoved { get; set; }
 

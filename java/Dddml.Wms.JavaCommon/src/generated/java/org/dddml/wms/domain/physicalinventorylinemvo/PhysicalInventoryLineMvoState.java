@@ -30,6 +30,10 @@ public interface PhysicalInventoryLineMvoState
 
     void setProcessed(Boolean processed);
 
+    String getLineNumber();
+
+    void setLineNumber(String lineNumber);
+
     Long getReversalLineNumber();
 
     void setReversalLineNumber(Long reversalLineNumber);

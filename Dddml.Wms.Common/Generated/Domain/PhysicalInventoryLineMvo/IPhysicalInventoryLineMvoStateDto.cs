@@ -39,6 +39,12 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo
             set;
         }
 
+        string LineNumber
+        {
+            get;
+            set;
+        }
+
         long? ReversalLineNumber
         {
             get;

@@ -17,6 +17,7 @@
     <property name="BookQuantity" ></property>
     <property name="CountedQuantity" ></property>
     <property name="Processed" ></property>
+    <property name="LineNumber" ><column name="LineNumber" length="50" unique-key="UniqueLineNumber" /></property>
     <property name="ReversalLineNumber" ></property>
     <property name="Description" ></property>
     <property name="Version" ></property>
@@ -56,6 +57,8 @@
         <property name="IsPropertyCountedQuantityRemoved" column="IsPropertyCountedQuantityRemoved"/>
 
         <property name="IsPropertyProcessedRemoved" column="IsPropertyProcessedRemoved"/>
+
+        <property name="IsPropertyLineNumberRemoved" column="IsPropertyLineNumberRemoved"/>
 
         <property name="IsPropertyReversalLineNumberRemoved" column="IsPropertyReversalLineNumberRemoved"/>
 

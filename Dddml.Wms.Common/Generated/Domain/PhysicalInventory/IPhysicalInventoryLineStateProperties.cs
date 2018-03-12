@@ -23,6 +23,8 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
 		bool Processed { get; set; }
 
+		string LineNumber { get; set; }
+
 		long ReversalLineNumber { get; set; }
 
 		string Description { get; set; }

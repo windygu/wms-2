@@ -430,6 +430,7 @@ CREATE VIEW `PhysicalInventoryLine_RV` AS
         `PhysicalInventoryLines`.`BookQuantity`,
         `PhysicalInventoryLines`.`CountedQuantity`,
         `PhysicalInventoryLines`.`Processed`,
+        `PhysicalInventoryLines`.`LineNumber`,
         `PhysicalInventoryLines`.`ReversalLineNumber`,
         `PhysicalInventoryLines`.`Description`,
         `PhysicalInventoryLines`.`Version`,

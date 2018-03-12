@@ -161,6 +161,34 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             }
         }
 
+		public virtual string LineNumber
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("LineNumber"))
+                {
+                    return _state.LineNumber;
+                }
+                return null;
+            }
+            set
+            {
+                _state.LineNumber = value;
+            }
+        }
+
+        string IPhysicalInventoryLineStateProperties.LineNumber
+        {
+            get 
+            {
+                return (this._state as IPhysicalInventoryLineStateProperties).LineNumber;
+            }
+            set 
+            {
+                (this._state as IPhysicalInventoryLineStateProperties).LineNumber = value;
+            }
+        }
+
 		public virtual long? ReversalLineNumber
         {
             get

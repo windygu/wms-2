@@ -62,6 +62,7 @@ public abstract class AbstractPhysicalInventoryLineMvoAggregate extends Abstract
         e.setBookQuantity(c.getBookQuantity());
         e.setCountedQuantity(c.getCountedQuantity());
         e.setProcessed(c.getProcessed());
+        e.setLineNumber(c.getLineNumber());
         e.setReversalLineNumber(c.getReversalLineNumber());
         e.setDescription(c.getDescription());
         e.setVersion(c.getVersion());
@@ -96,6 +97,7 @@ public abstract class AbstractPhysicalInventoryLineMvoAggregate extends Abstract
         e.setBookQuantity(c.getBookQuantity());
         e.setCountedQuantity(c.getCountedQuantity());
         e.setProcessed(c.getProcessed());
+        e.setLineNumber(c.getLineNumber());
         e.setReversalLineNumber(c.getReversalLineNumber());
         e.setDescription(c.getDescription());
         e.setVersion(c.getVersion());
@@ -121,6 +123,7 @@ public abstract class AbstractPhysicalInventoryLineMvoAggregate extends Abstract
         e.setIsPropertyBookQuantityRemoved(c.getIsPropertyBookQuantityRemoved());
         e.setIsPropertyCountedQuantityRemoved(c.getIsPropertyCountedQuantityRemoved());
         e.setIsPropertyProcessedRemoved(c.getIsPropertyProcessedRemoved());
+        e.setIsPropertyLineNumberRemoved(c.getIsPropertyLineNumberRemoved());
         e.setIsPropertyReversalLineNumberRemoved(c.getIsPropertyReversalLineNumberRemoved());
         e.setIsPropertyDescriptionRemoved(c.getIsPropertyDescriptionRemoved());
         e.setIsPropertyVersionRemoved(c.getIsPropertyVersionRemoved());
