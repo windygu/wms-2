@@ -76,8 +76,6 @@ public class TestMain {
     //        TestIntf1 testIntf1 = (TestIntf1) generator.createProxy(new TestClass1(), new Class[]{TestIntf1.class}, "getStateReadOnly", TestClass1.readOnlyPropertyNames);
     //        testIntf1.setF2("testTestTest2");
     //        testIntf1.setF1("testTestTest1");
-    //testSet();
-    //if (true) return;
 
 
     private static void testTableIdGenerator() {
@@ -88,9 +86,11 @@ public class TestMain {
     }
 
     // /////////////////////////////////////////////////////////////
-    // 事实上库存单元的应用服务的创建方法应该只是一个内部服务，不应该通过 RESTful API（外部）可访问
-    // 有一个生成选项，把它从 RESTful API 中去掉。
-    // 直接创建库存单元是不对的。
+    // 注意：直接创建库存单元是不对的。
+    // 事实上库存单元的应用服务的创建方法应该只是一个内部服务，
+    // 不应该通过 RESTful API（外部）可访问。
+    // 有一个生成选项，可以把它从 RESTful API 中去掉。
+    //
     // so this method is only for test!!!
     // /////////////////////////////////////////////////////////////
     private static void testInventoryItemApplicationService(){

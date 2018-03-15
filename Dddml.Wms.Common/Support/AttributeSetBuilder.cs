@@ -501,7 +501,7 @@ namespace Dddml.Wms.Support
         {
             TAttributeSet attributeSet = new TAttributeSet();
             attributeSet.AttributeSetName = GetAttributeName(entityType);
-            attributeSet.Description = entityType.Name;
+            attributeSet.Description = attributeSet.AttributeSetName;
             attributeSet.Active = true;
             attributeSet.AttributeSetId = this._theIdGenerator.GenerateAttributeSetId(attributeSet);
             return attributeSet;
