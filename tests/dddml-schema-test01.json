@@ -1,0 +1,88 @@
+{
+    "$schema": "file:///C:\\Users\\yangjiefeng\\Documents\\GitHub\\dddml-spec\\schemas\\dddml-schema.json",
+    "valueObjects": {
+        "TestVO": {
+            "properties": {
+                "Name": {
+                    "type": "string"
+                },
+                "Description": {
+                    "type": "string"
+                }
+            }
+        }
+
+    },
+    "aggregates": {
+        "Attribute": {
+            "id": {
+                "name": "AttributeId",
+                "type": "string",
+                "arbitrary": true
+            },
+            "properties": {
+                "Description": {
+                    "type": "string"                                       
+                },
+                "IsList": {
+                    "type": "boolean"
+                }
+            },
+            "entities": {
+                "AttributeValue": {
+                    "id": {
+                        "name": "Value",
+                        "type": "string",
+                        "arbitrary": false
+                    },
+                    "properties": {
+                        "Description": {
+                            "type": "string",
+                            "isDerived": false
+                        }
+                    }
+                }
+            },
+            "methods": {
+                "Haha": {
+                    "parameters": {
+                        "TestParma1": {
+                            "type": "string"
+                        },
+                        "TestParma2": {
+                            "itemType": "string"
+                        }
+                    }
+                }
+            }
+        
+            
+        }
+    },
+
+    "services": {
+        "TestService1": {
+            "methods": {
+                "Foo": {
+                    "parameters": {
+                        "TestM1_Param1": {
+                            "type": "string"
+                        },
+                        "TestM1_Param2": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "Bar": {
+                    "parameters": {
+                        "TestM2_Param1": {
+                            "type": "long"
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+}
