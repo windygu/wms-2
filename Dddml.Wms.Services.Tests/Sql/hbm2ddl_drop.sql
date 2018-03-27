@@ -315,4 +315,12 @@
 
     drop table if exists OrderItemShipGrpInvReservationStateEvents;
 
+    drop table if exists LocatorTypes;
+
+    drop table if exists LocatorTypeStateEvents;
+
+    drop table if exists Pickwaves;
+
+    drop table if exists PickwaveStateEvents;
+
     drop table if exists nhibernate_hilo_table;

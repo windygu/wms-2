@@ -44,6 +44,7 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNames.Add("InventoryPostingRule");
             _aggregateNames.Add("InventoryPRTriggered");
             _aggregateNames.Add("Locator");
+            _aggregateNames.Add("LocatorType");
             _aggregateNames.Add("Lot");
             _aggregateNames.Add("Movement");
             _aggregateNames.Add("MovementConfirmation");
@@ -58,6 +59,7 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNames.Add("PhysicalInventory");
             _aggregateNames.Add("Picklist");
             _aggregateNames.Add("PicklistBin");
+            _aggregateNames.Add("Pickwave");
             _aggregateNames.Add("Product");
             _aggregateNames.Add("ProductCategory");
             _aggregateNames.Add("ProductCategoryMember");
@@ -112,6 +114,7 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNamespaces.Add("InventoryPostingRule", "Dddml.Wms.Domain.InventoryPostingRule");
             _aggregateNamespaces.Add("InventoryPRTriggered", "Dddml.Wms.Domain.InventoryPRTriggered");
             _aggregateNamespaces.Add("Locator", "Dddml.Wms.Domain.Locator");
+            _aggregateNamespaces.Add("LocatorType", "Dddml.Wms.Domain.LocatorType");
             _aggregateNamespaces.Add("Lot", "Dddml.Wms.Domain.Lot");
             _aggregateNamespaces.Add("Movement", "Dddml.Wms.Domain.Movement");
             _aggregateNamespaces.Add("MovementConfirmation", "Dddml.Wms.Domain.MovementConfirmation");
@@ -126,6 +129,7 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNamespaces.Add("PhysicalInventory", "Dddml.Wms.Domain.PhysicalInventory");
             _aggregateNamespaces.Add("Picklist", "Dddml.Wms.Domain.Picklist");
             _aggregateNamespaces.Add("PicklistBin", "Dddml.Wms.Domain.PicklistBin");
+            _aggregateNamespaces.Add("Pickwave", "Dddml.Wms.Domain.Pickwave");
             _aggregateNamespaces.Add("Product", "Dddml.Wms.Domain.Product");
             _aggregateNamespaces.Add("ProductCategory", "Dddml.Wms.Domain.ProductCategory");
             _aggregateNamespaces.Add("ProductCategoryMember", "Dddml.Wms.Domain.ProductCategoryMember");

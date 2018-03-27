@@ -28,6 +28,8 @@ namespace Dddml.Wms.Domain.Picklist
 
 		DateTime? PicklistDate { get; set; }
 
+		long? PickwaveId { get; set; }
+
 		bool? Active { get; set; }
 
 	}
@@ -55,6 +57,8 @@ namespace Dddml.Wms.Domain.Picklist
 		bool IsPropertyStatusIdRemoved { get; set; }
 
 		bool IsPropertyPicklistDateRemoved { get; set; }
+
+		bool IsPropertyPickwaveIdRemoved { get; set; }
 
 		bool IsPropertyActiveRemoved { get; set; }
 

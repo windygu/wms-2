@@ -95,6 +95,34 @@ namespace Dddml.Wms.Domain.Party
             }
         }
 
+		public virtual string PrimaryRoleTypeId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("PrimaryRoleTypeId"))
+                {
+                    return _state.PrimaryRoleTypeId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.PrimaryRoleTypeId = value;
+            }
+        }
+
+        string IPartyStateProperties.PrimaryRoleTypeId
+        {
+            get 
+            {
+                return (this._state as IPartyStateProperties).PrimaryRoleTypeId;
+            }
+            set 
+            {
+                (this._state as IPartyStateProperties).PrimaryRoleTypeId = value;
+            }
+        }
+
 		public virtual string OrganizationName
 		{
             get

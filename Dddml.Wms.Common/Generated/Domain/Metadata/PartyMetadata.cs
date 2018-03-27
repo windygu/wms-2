@@ -74,6 +74,35 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
+                    Name = "PrimaryRoleTypeId",
+                    Type = typeof(string),
+                    TypeName = "string",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "RoleType",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
                     Name = "OrganizationName",
                     Type = typeof(string),
                     TypeName = "string",
@@ -411,6 +440,8 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("partyId", "PartyId");
             d.Add("PartyTypeId", "PartyTypeId");
             d.Add("partyTypeId", "PartyTypeId");
+            d.Add("PrimaryRoleTypeId", "PrimaryRoleTypeId");
+            d.Add("primaryRoleTypeId", "PrimaryRoleTypeId");
             d.Add("OrganizationName", "OrganizationName");
             d.Add("organizationName", "OrganizationName");
             d.Add("Description", "Description");

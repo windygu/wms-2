@@ -29,6 +29,18 @@ public class OrderShipmentId implements Serializable
         this.orderItemSeqId = orderItemSeqId;
     }
 
+    private Long shipGroupSeqId;
+
+    public Long getShipGroupSeqId()
+    {
+        return this.shipGroupSeqId;
+    }
+
+    public void setShipGroupSeqId(Long shipGroupSeqId)
+    {
+        this.shipGroupSeqId = shipGroupSeqId;
+    }
+
     private String shipmentId;
 
     public String getShipmentId()
@@ -57,10 +69,11 @@ public class OrderShipmentId implements Serializable
     {
     }
 
-    public OrderShipmentId(String orderId, String orderItemSeqId, String shipmentId, String shipmentItemSeqId)
+    public OrderShipmentId(String orderId, String orderItemSeqId, Long shipGroupSeqId, String shipmentId, String shipmentItemSeqId)
     {
         this.orderId = orderId;
         this.orderItemSeqId = orderItemSeqId;
+        this.shipGroupSeqId = shipGroupSeqId;
         this.shipmentId = shipmentId;
         this.shipmentItemSeqId = shipmentItemSeqId;
     }
@@ -79,6 +92,7 @@ public class OrderShipmentId implements Serializable
         return true 
             && (orderId == other.orderId || (orderId != null && orderId.equals(other.orderId)))
             && (orderItemSeqId == other.orderItemSeqId || (orderItemSeqId != null && orderItemSeqId.equals(other.orderItemSeqId)))
+            && (shipGroupSeqId == other.shipGroupSeqId || (shipGroupSeqId != null && shipGroupSeqId.equals(other.shipGroupSeqId)))
             && (shipmentId == other.shipmentId || (shipmentId != null && shipmentId.equals(other.shipmentId)))
             && (shipmentItemSeqId == other.shipmentItemSeqId || (shipmentItemSeqId != null && shipmentItemSeqId.equals(other.shipmentItemSeqId)))
             ;
@@ -94,6 +108,9 @@ public class OrderShipmentId implements Serializable
         if (this.orderItemSeqId != null) {
             hash += 13 * this.orderItemSeqId.hashCode();
         }
+        if (this.shipGroupSeqId != null) {
+            hash += 13 * this.shipGroupSeqId.hashCode();
+        }
         if (this.shipmentId != null) {
             hash += 13 * this.shipmentId.hashCode();
         }
@@ -107,6 +124,7 @@ public class OrderShipmentId implements Serializable
     protected static final String[] FLATTENED_PROPERTY_NAMES = new String[]{
             "orderId",
             "orderItemSeqId",
+            "shipGroupSeqId",
             "shipmentId",
             "shipmentItemSeqId",
     };
@@ -114,6 +132,7 @@ public class OrderShipmentId implements Serializable
     protected static final String[] FLATTENED_PROPERTY_TYPES = new String[]{
             "String",
             "String",
+            "Long",
             "String",
             "String",
     };

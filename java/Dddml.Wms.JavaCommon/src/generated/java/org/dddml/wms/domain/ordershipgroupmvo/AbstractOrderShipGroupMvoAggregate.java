@@ -75,6 +75,7 @@ public abstract class AbstractOrderShipGroupMvoAggregate extends AbstractAggrega
         e.setShipByDate(c.getShipByDate());
         e.setEstimatedShipDate(c.getEstimatedShipDate());
         e.setEstimatedDeliveryDate(c.getEstimatedDeliveryDate());
+        e.setPickwaveId(c.getPickwaveId());
         e.setVersion(c.getVersion());
         e.setActive(c.getActive());
         e.setOrderOrderTypeId(c.getOrderOrderTypeId());
@@ -132,6 +133,7 @@ public abstract class AbstractOrderShipGroupMvoAggregate extends AbstractAggrega
         e.setShipByDate(c.getShipByDate());
         e.setEstimatedShipDate(c.getEstimatedShipDate());
         e.setEstimatedDeliveryDate(c.getEstimatedDeliveryDate());
+        e.setPickwaveId(c.getPickwaveId());
         e.setVersion(c.getVersion());
         e.setActive(c.getActive());
         e.setOrderOrderTypeId(c.getOrderOrderTypeId());
@@ -180,6 +182,7 @@ public abstract class AbstractOrderShipGroupMvoAggregate extends AbstractAggrega
         e.setIsPropertyShipByDateRemoved(c.getIsPropertyShipByDateRemoved());
         e.setIsPropertyEstimatedShipDateRemoved(c.getIsPropertyEstimatedShipDateRemoved());
         e.setIsPropertyEstimatedDeliveryDateRemoved(c.getIsPropertyEstimatedDeliveryDateRemoved());
+        e.setIsPropertyPickwaveIdRemoved(c.getIsPropertyPickwaveIdRemoved());
         e.setIsPropertyVersionRemoved(c.getIsPropertyVersionRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         e.setIsPropertyOrderOrderTypeIdRemoved(c.getIsPropertyOrderOrderTypeIdRemoved());

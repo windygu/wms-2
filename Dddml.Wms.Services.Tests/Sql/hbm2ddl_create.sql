@@ -315,6 +315,14 @@
 
     drop table if exists OrderItemShipGrpInvReservationStateEvents;
 
+    drop table if exists LocatorTypes;
+
+    drop table if exists LocatorTypeStateEvents;
+
+    drop table if exists Pickwaves;
+
+    drop table if exists PickwaveStateEvents;
+
     drop table if exists nhibernate_hilo_table;
 
     create table Hello (
@@ -1977,6 +1985,7 @@
     create table OrderShipments (
         OrderShipmentIdOrderId VARCHAR(20) not null,
        OrderShipmentIdOrderItemSeqId VARCHAR(20) not null,
+       OrderShipmentIdShipGroupSeqId DECIMAL(20,0) not null,
        OrderShipmentIdShipmentId VARCHAR(20) not null,
        OrderShipmentIdShipmentItemSeqId VARCHAR(20) not null,
        Version BIGINT not null,
@@ -1986,12 +1995,13 @@
        Active TINYINT(1),
        CreatedAt DATETIME,
        UpdatedAt DATETIME,
-       primary key (OrderShipmentIdOrderId, OrderShipmentIdOrderItemSeqId, OrderShipmentIdShipmentId, OrderShipmentIdShipmentItemSeqId)
+       primary key (OrderShipmentIdOrderId, OrderShipmentIdOrderItemSeqId, OrderShipmentIdShipGroupSeqId, OrderShipmentIdShipmentId, OrderShipmentIdShipmentItemSeqId)
     );
 
     create table OrderShipmentStateEvents (
         OrderShipmentIdOrderId VARCHAR(20) not null,
        OrderShipmentIdOrderItemSeqId VARCHAR(20) not null,
+       OrderShipmentIdShipGroupSeqId DECIMAL(20,0) not null,
        OrderShipmentIdShipmentId VARCHAR(20) not null,
        OrderShipmentIdShipmentItemSeqId VARCHAR(20) not null,
        Version BIGINT not null,
@@ -2003,7 +2013,7 @@
        CommandId VARCHAR(255),
        IsPropertyQuantityRemoved TINYINT(1),
        IsPropertyActiveRemoved TINYINT(1),
-       primary key (OrderShipmentIdOrderId, OrderShipmentIdOrderItemSeqId, OrderShipmentIdShipmentId, OrderShipmentIdShipmentItemSeqId, Version)
+       primary key (OrderShipmentIdOrderId, OrderShipmentIdOrderItemSeqId, OrderShipmentIdShipGroupSeqId, OrderShipmentIdShipmentId, OrderShipmentIdShipmentItemSeqId, Version)
     );
 
     create table OrganizationStructures (
@@ -2064,6 +2074,7 @@
     create table Parties (
         PartyId VARCHAR(50) not null,
        Version BIGINT not null,
+       PrimaryRoleTypeId VARCHAR(20),
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
        Active TINYINT(1),
@@ -2076,6 +2087,7 @@
     create table Organizations (
         PartyId VARCHAR(50) not null,
        Version BIGINT not null,
+       PrimaryRoleTypeId VARCHAR(20),
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
        Active TINYINT(1),
@@ -2094,6 +2106,7 @@
        Version BIGINT not null,
        StateEventType VARCHAR(255) not null,
        PartyTypeId VARCHAR(20),
+       PrimaryRoleTypeId VARCHAR(20),
        OrganizationName VARCHAR(255),
        Description VARCHAR(255),
        Type VARCHAR(255),
@@ -2103,6 +2116,7 @@
        CreatedAt DATETIME,
        CommandId VARCHAR(255),
        IsPropertyPartyTypeIdRemoved TINYINT(1),
+       IsPropertyPrimaryRoleTypeIdRemoved TINYINT(1),
        IsPropertyOrganizationNameRemoved TINYINT(1),
        IsPropertyDescriptionRemoved TINYINT(1),
        IsPropertyTypeRemoved TINYINT(1),
@@ -2236,6 +2250,7 @@
        Y VARCHAR(255),
        Z VARCHAR(255),
        Description VARCHAR(255),
+       LocatorTypeId VARCHAR(255),
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
        Active TINYINT(1),
@@ -2258,6 +2273,7 @@
        Y VARCHAR(255),
        Z VARCHAR(255),
        Description VARCHAR(255),
+       LocatorTypeId VARCHAR(255),
        Active TINYINT(1),
        CreatedBy VARCHAR(255),
        CreatedAt DATETIME,
@@ -2271,6 +2287,7 @@
        IsPropertyYRemoved TINYINT(1),
        IsPropertyZRemoved TINYINT(1),
        IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertyLocatorTypeIdRemoved TINYINT(1),
        IsPropertyActiveRemoved TINYINT(1),
        primary key (LocatorId, Version)
     );
@@ -2325,6 +2342,7 @@
        ShipByDate DATETIME,
        EstimatedShipDate DATETIME,
        EstimatedDeliveryDate DATETIME,
+       PickwaveId DECIMAL(20,0),
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
        Active TINYINT(1),
@@ -2356,6 +2374,7 @@
        ShipByDate DATETIME,
        EstimatedShipDate DATETIME,
        EstimatedDeliveryDate DATETIME,
+       PickwaveId DECIMAL(20,0),
        Active TINYINT(1),
        CreatedBy VARCHAR(255),
        CreatedAt DATETIME,
@@ -2378,6 +2397,7 @@
        IsPropertyShipByDateRemoved TINYINT(1),
        IsPropertyEstimatedShipDateRemoved TINYINT(1),
        IsPropertyEstimatedDeliveryDateRemoved TINYINT(1),
+       IsPropertyPickwaveIdRemoved TINYINT(1),
        IsPropertyActiveRemoved TINYINT(1),
        primary key (OrderShipGroupIdOrderId, OrderShipGroupIdShipGroupSeqId, OrderVersion)
     );
@@ -2418,6 +2438,7 @@
        PicklistDate DATETIME,
        CreatedByUserLogin VARCHAR(250),
        LastModifiedByUserLogin VARCHAR(250),
+       PickwaveId DECIMAL(20,0),
        Active TINYINT(1),
        Deleted TINYINT(1),
        CreatedAt DATETIME,
@@ -2434,6 +2455,7 @@
        ShipmentMethodTypeId VARCHAR(20),
        StatusId VARCHAR(20),
        PicklistDate DATETIME,
+       PickwaveId DECIMAL(20,0),
        Active TINYINT(1),
        CreatedByUserLogin VARCHAR(255),
        CreatedAt DATETIME,
@@ -2443,6 +2465,7 @@
        IsPropertyShipmentMethodTypeIdRemoved TINYINT(1),
        IsPropertyStatusIdRemoved TINYINT(1),
        IsPropertyPicklistDateRemoved TINYINT(1),
+       IsPropertyPickwaveIdRemoved TINYINT(1),
        IsPropertyActiveRemoved TINYINT(1),
        primary key (PicklistId, Version)
     );
@@ -4447,6 +4470,7 @@
        ShipByDate DATETIME,
        EstimatedShipDate DATETIME,
        EstimatedDeliveryDate DATETIME,
+       PickwaveId DECIMAL(20,0),
        Version BIGINT,
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
@@ -4508,6 +4532,7 @@
        ShipByDate DATETIME,
        EstimatedShipDate DATETIME,
        EstimatedDeliveryDate DATETIME,
+       PickwaveId DECIMAL(20,0),
        Version BIGINT,
        Active TINYINT(1),
        OrderOrderTypeId VARCHAR(20),
@@ -4559,6 +4584,7 @@
        IsPropertyShipByDateRemoved TINYINT(1),
        IsPropertyEstimatedShipDateRemoved TINYINT(1),
        IsPropertyEstimatedDeliveryDateRemoved TINYINT(1),
+       IsPropertyPickwaveIdRemoved TINYINT(1),
        IsPropertyVersionRemoved TINYINT(1),
        IsPropertyActiveRemoved TINYINT(1),
        IsPropertyOrderOrderTypeIdRemoved TINYINT(1),
@@ -4717,6 +4743,7 @@
        PicklistPicklistDate DATETIME,
        PicklistCreatedByUserLogin VARCHAR(250),
        PicklistLastModifiedByUserLogin VARCHAR(250),
+       PicklistPickwaveId DECIMAL(20,0),
        PicklistCreatedAt DATETIME,
        PicklistUpdatedAt DATETIME,
        PicklistActive TINYINT(1),
@@ -4741,6 +4768,7 @@
        PicklistPicklistDate DATETIME,
        PicklistCreatedByUserLogin VARCHAR(250),
        PicklistLastModifiedByUserLogin VARCHAR(250),
+       PicklistPickwaveId DECIMAL(20,0),
        PicklistCreatedAt DATETIME,
        PicklistUpdatedAt DATETIME,
        PicklistActive TINYINT(1),
@@ -4757,6 +4785,7 @@
        IsPropertyPicklistPicklistDateRemoved TINYINT(1),
        IsPropertyPicklistCreatedByUserLoginRemoved TINYINT(1),
        IsPropertyPicklistLastModifiedByUserLoginRemoved TINYINT(1),
+       IsPropertyPicklistPickwaveIdRemoved TINYINT(1),
        IsPropertyPicklistCreatedAtRemoved TINYINT(1),
        IsPropertyPicklistUpdatedAtRemoved TINYINT(1),
        IsPropertyPicklistActiveRemoved TINYINT(1),
@@ -5505,6 +5534,63 @@
        IsPropertyOldPickStartDateRemoved TINYINT(1),
        IsPropertyActiveRemoved TINYINT(1),
        primary key (OrderItemShipGrpInvResIdOrderId, OrderItemShipGrpInvResIdShipGroupSeqId, OrderItemShipGrpInvResIdOrderItemSeqId, OrderItemShipGrpInvResIdProductId, OrderItemShipGrpInvResIdLocatorId, OrderItemShipGrpInvResIdAttributeSetInstanceId, Version)
+    );
+
+    create table LocatorTypes (
+        LocatorTypeId VARCHAR(50) not null,
+       Version BIGINT not null,
+       Description VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (LocatorTypeId)
+    );
+
+    create table LocatorTypeStateEvents (
+        LocatorTypeId VARCHAR(50) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       Description VARCHAR(255),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (LocatorTypeId, Version)
+    );
+
+    create table Pickwaves (
+        PickwaveId BIGINT not null,
+       Version BIGINT not null,
+       StatusId VARCHAR(20),
+       Description VARCHAR(255),
+       CreatedBy VARCHAR(255),
+       UpdatedBy VARCHAR(255),
+       Active TINYINT(1),
+       Deleted TINYINT(1),
+       CreatedAt DATETIME,
+       UpdatedAt DATETIME,
+       primary key (PickwaveId)
+    );
+
+    create table PickwaveStateEvents (
+        PickwaveId DECIMAL(20,0) not null,
+       Version BIGINT not null,
+       StateEventType VARCHAR(255) not null,
+       StatusId VARCHAR(20),
+       Description VARCHAR(255),
+       Active TINYINT(1),
+       CreatedBy VARCHAR(255),
+       CreatedAt DATETIME,
+       CommandId VARCHAR(255),
+       IsPropertyStatusIdRemoved TINYINT(1),
+       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (PickwaveId, Version)
     );
 
     create table nhibernate_hilo_table (

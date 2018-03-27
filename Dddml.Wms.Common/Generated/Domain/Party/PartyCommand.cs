@@ -54,6 +54,8 @@ namespace Dddml.Wms.Domain.Party
 
 		public virtual string PartyTypeId { get; set; }
 
+		public virtual string PrimaryRoleTypeId { get; set; }
+
 		public virtual string OrganizationName { get; set; }
 
 		public virtual string Description { get; set; }
@@ -97,6 +99,8 @@ namespace Dddml.Wms.Domain.Party
 	{
 
 		public virtual bool IsPropertyPartyTypeIdRemoved { get; set; }
+
+		public virtual bool IsPropertyPrimaryRoleTypeIdRemoved { get; set; }
 
 		public virtual bool IsPropertyOrganizationNameRemoved { get; set; }
 

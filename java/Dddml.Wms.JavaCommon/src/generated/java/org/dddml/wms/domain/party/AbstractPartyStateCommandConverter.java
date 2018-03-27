@@ -38,9 +38,11 @@ public abstract class AbstractPartyStateCommandConverter<TCreateParty extends Pa
 
         cmd.setPartyId(state.getPartyId());
         cmd.setPartyTypeId(state.getPartyTypeId());
+        cmd.setPrimaryRoleTypeId(state.getPrimaryRoleTypeId());
         cmd.setActive(state.getActive());
             
         if (state.getPartyTypeId() == null) { cmd.setIsPropertyPartyTypeIdRemoved(true); }
+        if (state.getPrimaryRoleTypeId() == null) { cmd.setIsPropertyPrimaryRoleTypeIdRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
         return cmd;
     }
@@ -52,6 +54,7 @@ public abstract class AbstractPartyStateCommandConverter<TCreateParty extends Pa
         cmd.setVersion(state.getVersion());
         cmd.setPartyId(state.getPartyId());
         cmd.setPartyTypeId(state.getPartyTypeId());
+        cmd.setPrimaryRoleTypeId(state.getPrimaryRoleTypeId());
         cmd.setActive(state.getActive());
         return cmd;
     }

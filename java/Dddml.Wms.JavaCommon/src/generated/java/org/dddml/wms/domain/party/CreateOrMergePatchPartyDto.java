@@ -17,6 +17,18 @@ public class CreateOrMergePatchPartyDto extends AbstractPartyCommandDto
         this.partyTypeId = partyTypeId;
     }
 
+    private String primaryRoleTypeId;
+
+    public String getPrimaryRoleTypeId()
+    {
+        return this.primaryRoleTypeId;
+    }
+
+    public void setPrimaryRoleTypeId(String primaryRoleTypeId)
+    {
+        this.primaryRoleTypeId = primaryRoleTypeId;
+    }
+
     private String organizationName;
 
     public String getOrganizationName()
@@ -89,6 +101,18 @@ public class CreateOrMergePatchPartyDto extends AbstractPartyCommandDto
         this.isPropertyPartyTypeIdRemoved = removed;
     }
 
+    private Boolean isPropertyPrimaryRoleTypeIdRemoved;
+
+    public Boolean getIsPropertyPrimaryRoleTypeIdRemoved()
+    {
+        return this.isPropertyPrimaryRoleTypeIdRemoved;
+    }
+
+    public void setIsPropertyPrimaryRoleTypeIdRemoved(Boolean removed)
+    {
+        this.isPropertyPrimaryRoleTypeIdRemoved = removed;
+    }
+
     private Boolean isPropertyOrganizationNameRemoved;
 
     public Boolean getIsPropertyOrganizationNameRemoved()
@@ -153,6 +177,7 @@ public class CreateOrMergePatchPartyDto extends AbstractPartyCommandDto
     {
         ((AbstractPartyCommandDto) this).copyTo(command);
         command.setPartyTypeId(this.getPartyTypeId());
+        command.setPrimaryRoleTypeId(this.getPrimaryRoleTypeId());
         command.setOrganizationName(this.getOrganizationName());
         command.setDescription(this.getDescription());
         command.setType(this.getType());
@@ -183,6 +208,7 @@ public class CreateOrMergePatchPartyDto extends AbstractPartyCommandDto
     {
         copyTo((AbstractPartyCommand.AbstractCreateOrMergePatchParty) command);
         command.setIsPropertyPartyTypeIdRemoved(this.getIsPropertyPartyTypeIdRemoved());
+        command.setIsPropertyPrimaryRoleTypeIdRemoved(this.getIsPropertyPrimaryRoleTypeIdRemoved());
         command.setIsPropertyOrganizationNameRemoved(this.getIsPropertyOrganizationNameRemoved());
         command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
         command.setIsPropertyTypeRemoved(this.getIsPropertyTypeRemoved());

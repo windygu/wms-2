@@ -36,6 +36,8 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
 
 		string PicklistLastModifiedByUserLogin { get; set; }
 
+		long? PicklistPickwaveId { get; set; }
+
 		DateTime? PicklistCreatedAt { get; set; }
 
 		DateTime? PicklistUpdatedAt { get; set; }
@@ -71,6 +73,8 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
 		bool IsPropertyPicklistCreatedByUserLoginRemoved { get; set; }
 
 		bool IsPropertyPicklistLastModifiedByUserLoginRemoved { get; set; }
+
+		bool IsPropertyPicklistPickwaveIdRemoved { get; set; }
 
 		bool IsPropertyPicklistCreatedAtRemoved { get; set; }
 

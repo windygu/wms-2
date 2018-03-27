@@ -75,6 +75,12 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
             set;
         }
 
+        long? PicklistPickwaveId
+        {
+            get;
+            set;
+        }
+
         DateTime? PicklistCreatedAt
         {
             get;

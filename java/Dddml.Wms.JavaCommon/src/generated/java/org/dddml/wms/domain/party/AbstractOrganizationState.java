@@ -104,6 +104,7 @@ public abstract class AbstractOrganizationState extends AbstractPartyState imple
         throwOnWrongEvent(e);
 
         this.setPartyTypeId(e.getPartyTypeId());
+        this.setPrimaryRoleTypeId(e.getPrimaryRoleTypeId());
         this.setActive(e.getActive());
         this.setOrganizationName(e.getOrganizationName());
         this.setDescription(e.getDescription());
@@ -131,6 +132,17 @@ public abstract class AbstractOrganizationState extends AbstractPartyState imple
         else
         {
             this.setPartyTypeId(e.getPartyTypeId());
+        }
+        if (e.getPrimaryRoleTypeId() == null)
+        {
+            if (e.getIsPropertyPrimaryRoleTypeIdRemoved() != null && e.getIsPropertyPrimaryRoleTypeIdRemoved())
+            {
+                this.setPrimaryRoleTypeId(null);
+            }
+        }
+        else
+        {
+            this.setPrimaryRoleTypeId(e.getPrimaryRoleTypeId());
         }
         if (e.getActive() == null)
         {

@@ -28,6 +28,7 @@ public final class OrderShipGroupMvoFilteringProperties
             "shipByDate",
             "estimatedShipDate",
             "estimatedDeliveryDate",
+            "pickwaveId",
             "version",
             "createdBy",
             "createdAt",
@@ -87,6 +88,7 @@ public final class OrderShipGroupMvoFilteringProperties
             "java.sql.Timestamp",
             "java.sql.Timestamp",
             "java.sql.Timestamp",
+            "Long",
             "Long",
             "String",
             "Date",
@@ -174,6 +176,8 @@ public final class OrderShipGroupMvoFilteringProperties
         aliasMap.put("EstimatedShipDate", "estimatedShipDate");
         aliasMap.put("estimatedDeliveryDate", "estimatedDeliveryDate");
         aliasMap.put("EstimatedDeliveryDate", "estimatedDeliveryDate");
+        aliasMap.put("pickwaveId", "pickwaveId");
+        aliasMap.put("PickwaveId", "pickwaveId");
         aliasMap.put("version", "version");
         aliasMap.put("Version", "version");
         aliasMap.put("createdBy", "createdBy");

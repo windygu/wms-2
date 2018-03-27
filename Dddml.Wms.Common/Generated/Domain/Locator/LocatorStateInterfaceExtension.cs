@@ -57,6 +57,7 @@ namespace Dddml.Wms.Domain.Locator
             cmd.Y = state.Y;
             cmd.Z = state.Z;
             cmd.Description = state.Description;
+            cmd.LocatorTypeId = state.LocatorTypeId;
             cmd.Active = ((ILocatorStateProperties)state).Active;
             
             if (state.WarehouseId == null) { cmd.IsPropertyWarehouseIdRemoved = true; }
@@ -67,6 +68,7 @@ namespace Dddml.Wms.Domain.Locator
             if (state.Y == null) { cmd.IsPropertyYRemoved = true; }
             if (state.Z == null) { cmd.IsPropertyZRemoved = true; }
             if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
+            if (state.LocatorTypeId == null) { cmd.IsPropertyLocatorTypeIdRemoved = true; }
             return cmd;
         }
 
@@ -87,6 +89,7 @@ namespace Dddml.Wms.Domain.Locator
             cmd.Y = state.Y;
             cmd.Z = state.Z;
             cmd.Description = state.Description;
+            cmd.LocatorTypeId = state.LocatorTypeId;
             cmd.Active = ((ILocatorStateProperties)state).Active;
             return cmd;
         }

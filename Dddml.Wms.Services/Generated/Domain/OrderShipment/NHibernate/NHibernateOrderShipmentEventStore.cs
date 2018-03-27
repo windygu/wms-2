@@ -41,6 +41,7 @@ namespace Dddml.Wms.Domain.OrderShipment.NHibernate
             var criteria = CurrentSession.CreateCriteria<OrderShipmentStateEventBase>();
             criteria.Add(Restrictions.Eq("OrderShipmentEventId.OrderShipmentIdOrderId", idObj.OrderId));
             criteria.Add(Restrictions.Eq("OrderShipmentEventId.OrderShipmentIdOrderItemSeqId", idObj.OrderItemSeqId));
+            criteria.Add(Restrictions.Eq("OrderShipmentEventId.OrderShipmentIdShipGroupSeqId", idObj.ShipGroupSeqId));
             criteria.Add(Restrictions.Eq("OrderShipmentEventId.OrderShipmentIdShipmentId", idObj.ShipmentId));
             criteria.Add(Restrictions.Eq("OrderShipmentEventId.OrderShipmentIdShipmentItemSeqId", idObj.ShipmentItemSeqId));
             criteria.Add(Restrictions.Le("OrderShipmentEventId.Version", version));

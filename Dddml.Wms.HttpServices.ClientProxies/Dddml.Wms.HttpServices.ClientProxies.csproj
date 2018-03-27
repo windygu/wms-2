@@ -149,6 +149,9 @@
     <Compile Include="Generated\LocatorTreeApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\LocatorTypeApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\LotApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
@@ -216,6 +219,9 @@
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\PicklistRoleMvoApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\PickwaveApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\ProductApplicationServiceProxy.cs">
@@ -312,6 +318,7 @@
 .\ItemIssuanceMvoApplicationServiceProxy.cs
 .\LocatorApplicationServiceProxy.cs
 .\LocatorTreeApplicationServiceProxy.cs
+.\LocatorTypeApplicationServiceProxy.cs
 .\LotApplicationServiceProxy.cs
 .\MovementApplicationServiceProxy.cs
 .\MovementConfirmationApplicationServiceProxy.cs
@@ -335,6 +342,7 @@
 .\PicklistBinApplicationServiceProxy.cs
 .\PicklistItemMvoApplicationServiceProxy.cs
 .\PicklistRoleMvoApplicationServiceProxy.cs
+.\PickwaveApplicationServiceProxy.cs
 .\ProductApplicationServiceProxy.cs
 .\ProductCategoryApplicationServiceProxy.cs
 .\ProductCategoryMemberApplicationServiceProxy.cs

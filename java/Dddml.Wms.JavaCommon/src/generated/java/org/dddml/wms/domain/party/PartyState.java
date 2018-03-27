@@ -20,6 +20,10 @@ public interface PartyState
 
     void setPartyTypeId(String partyTypeId);
 
+    String getPrimaryRoleTypeId();
+
+    void setPrimaryRoleTypeId(String primaryRoleTypeId);
+
     Long getVersion();
 
     void setVersion(Long version);

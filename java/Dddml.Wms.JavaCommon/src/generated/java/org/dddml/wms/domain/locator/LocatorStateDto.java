@@ -129,6 +129,18 @@ public class LocatorStateDto
         this.description = description;
     }
 
+    private String locatorTypeId;
+
+    public String getLocatorTypeId()
+    {
+        return this.locatorTypeId;
+    }
+
+    public void setLocatorTypeId(String locatorTypeId)
+    {
+        this.locatorTypeId = locatorTypeId;
+    }
+
     private Boolean active;
 
     public Boolean getActive()
@@ -256,6 +268,9 @@ public class LocatorStateDto
             }
             if (returnedFieldsContains("Description")) {
                 dto.setDescription(state.getDescription());
+            }
+            if (returnedFieldsContains("LocatorTypeId")) {
+                dto.setLocatorTypeId(state.getLocatorTypeId());
             }
             if (returnedFieldsContains("Active")) {
                 dto.setActive(state.getActive());

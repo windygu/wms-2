@@ -76,6 +76,10 @@ public interface LocatorCommand extends Command
 
         void setDescription(String description);
 
+        String getLocatorTypeId();
+
+        void setLocatorTypeId(String locatorTypeId);
+
         Boolean getActive();
 
         void setActive(Boolean active);
@@ -123,6 +127,10 @@ public interface LocatorCommand extends Command
         Boolean getIsPropertyDescriptionRemoved();
 
         void setIsPropertyDescriptionRemoved(Boolean removed);
+
+        Boolean getIsPropertyLocatorTypeIdRemoved();
+
+        void setIsPropertyLocatorTypeIdRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

@@ -17,6 +17,10 @@ public interface PartyStateEvent extends Event
 
     void setPartyTypeId(String partyTypeId);
 
+    String getPrimaryRoleTypeId();
+
+    void setPrimaryRoleTypeId(String primaryRoleTypeId);
+
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -44,6 +48,10 @@ public interface PartyStateEvent extends Event
         Boolean getIsPropertyPartyTypeIdRemoved();
 
         void setIsPropertyPartyTypeIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyPrimaryRoleTypeIdRemoved();
+
+        void setIsPropertyPrimaryRoleTypeIdRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

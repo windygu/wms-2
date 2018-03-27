@@ -13,6 +13,7 @@ public final class PartyFilteringProperties
     public static final String[] propertyNames = new String[] {
             "partyId",
             "partyTypeId",
+            "primaryRoleTypeId",
             "organizationName",
             "description",
             "type",
@@ -27,6 +28,7 @@ public final class PartyFilteringProperties
     };
 
     public static final String[] propertyTypes = new String[] {
+            "String",
             "String",
             "String",
             "String",
@@ -58,6 +60,8 @@ public final class PartyFilteringProperties
         aliasMap.put("PartyId", "partyId");
         aliasMap.put("partyTypeId", "partyTypeId");
         aliasMap.put("PartyTypeId", "partyTypeId");
+        aliasMap.put("primaryRoleTypeId", "primaryRoleTypeId");
+        aliasMap.put("PrimaryRoleTypeId", "primaryRoleTypeId");
         aliasMap.put("organizationName", "organizationName");
         aliasMap.put("OrganizationName", "organizationName");
         aliasMap.put("description", "description");

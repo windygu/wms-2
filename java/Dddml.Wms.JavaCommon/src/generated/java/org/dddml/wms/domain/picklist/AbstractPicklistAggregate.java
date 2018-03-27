@@ -63,6 +63,7 @@ public abstract class AbstractPicklistAggregate extends AbstractAggregate implem
         e.setShipmentMethodTypeId(c.getShipmentMethodTypeId());
         e.setStatusId(c.getStatusId());
         e.setPicklistDate(c.getPicklistDate());
+        e.setPickwaveId(c.getPickwaveId());
         e.setActive(c.getActive());
         ((AbstractPicklistStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedByUserLogin(c.getRequesterId());
@@ -86,12 +87,14 @@ public abstract class AbstractPicklistAggregate extends AbstractAggregate implem
         e.setShipmentMethodTypeId(c.getShipmentMethodTypeId());
         e.setStatusId(c.getStatusId());
         e.setPicklistDate(c.getPicklistDate());
+        e.setPickwaveId(c.getPickwaveId());
         e.setActive(c.getActive());
         e.setIsPropertyDescriptionRemoved(c.getIsPropertyDescriptionRemoved());
         e.setIsPropertyFacilityIdRemoved(c.getIsPropertyFacilityIdRemoved());
         e.setIsPropertyShipmentMethodTypeIdRemoved(c.getIsPropertyShipmentMethodTypeIdRemoved());
         e.setIsPropertyStatusIdRemoved(c.getIsPropertyStatusIdRemoved());
         e.setIsPropertyPicklistDateRemoved(c.getIsPropertyPicklistDateRemoved());
+        e.setIsPropertyPickwaveIdRemoved(c.getIsPropertyPickwaveIdRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         ((AbstractPicklistStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedByUserLogin(c.getRequesterId());

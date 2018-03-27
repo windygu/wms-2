@@ -29,6 +29,13 @@ namespace Dddml.Wms.Domain.OrderShipment
 			set { _orderItemSeqId = value; } 
 		}
 
+		private long? _shipGroupSeqId;
+
+		public virtual long? ShipGroupSeqId { 
+			get { return this._shipGroupSeqId; } 
+			set { _shipGroupSeqId = value; } 
+		}
+
 		private string _shipmentId;
 
 		public virtual string ShipmentId { 
@@ -53,10 +60,11 @@ namespace Dddml.Wms.Domain.OrderShipment
 		{
 		}
 
-		public OrderShipmentId (string orderId, string orderItemSeqId, string shipmentId, string shipmentItemSeqId)
+		public OrderShipmentId (string orderId, string orderItemSeqId, long? shipGroupSeqId, string shipmentId, string shipmentItemSeqId)
 		{
 			this._orderId = orderId;
 			this._orderItemSeqId = orderItemSeqId;
+			this._shipGroupSeqId = shipGroupSeqId;
 			this._shipmentId = shipmentId;
 			this._shipmentItemSeqId = shipmentItemSeqId;
 
@@ -77,6 +85,7 @@ namespace Dddml.Wms.Domain.OrderShipment
 			return true 
 				&& Object.Equals (this.OrderId, other.OrderId)
 				&& Object.Equals (this.OrderItemSeqId, other.OrderItemSeqId)
+				&& Object.Equals (this.ShipGroupSeqId, other.ShipGroupSeqId)
 				&& Object.Equals (this.ShipmentId, other.ShipmentId)
 				&& Object.Equals (this.ShipmentItemSeqId, other.ShipmentItemSeqId)
 				;
@@ -90,6 +99,9 @@ namespace Dddml.Wms.Domain.OrderShipment
 			}
 			if (this.OrderItemSeqId != null) {
 				hash += 13 * this.OrderItemSeqId.GetHashCode ();
+			}
+			if (this.ShipGroupSeqId != null) {
+				hash += 13 * this.ShipGroupSeqId.GetHashCode ();
 			}
 			if (this.ShipmentId != null) {
 				hash += 13 * this.ShipmentId.GetHashCode ();
@@ -115,14 +127,15 @@ namespace Dddml.Wms.Domain.OrderShipment
             return String.Empty
                 + "OrderId: " + this.OrderId + ", "
                 + "OrderItemSeqId: " + this.OrderItemSeqId + ", "
+                + "ShipGroupSeqId: " + this.ShipGroupSeqId + ", "
                 + "ShipmentId: " + this.ShipmentId + ", "
                 + "ShipmentItemSeqId: " + this.ShipmentItemSeqId + ", "
                 ;
         }
 
-        protected internal static readonly string[] FlattenedPropertyNames = new string[] { "OrderId", "OrderItemSeqId", "ShipmentId", "ShipmentItemSeqId" };
+        protected internal static readonly string[] FlattenedPropertyNames = new string[] { "OrderId", "OrderItemSeqId", "ShipGroupSeqId", "ShipmentId", "ShipmentItemSeqId" };
 
-        protected internal static readonly Type[] FlattenedPropertyTypes = new Type[] { typeof(string), typeof(string), typeof(string), typeof(string) };
+        protected internal static readonly Type[] FlattenedPropertyTypes = new Type[] { typeof(string), typeof(string), typeof(long?), typeof(string), typeof(string) };
 
         protected internal static readonly IDictionary<string, Type> FlattenedPropertyTypeDictionary;
 

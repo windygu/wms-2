@@ -73,6 +73,10 @@ public interface PicklistRoleMvoState
 
     void setPicklistLastModifiedByUserLogin(String picklistLastModifiedByUserLogin);
 
+    Long getPicklistPickwaveId();
+
+    void setPicklistPickwaveId(Long picklistPickwaveId);
+
     Long getPicklistVersion();
 
     void setPicklistVersion(Long picklistVersion);

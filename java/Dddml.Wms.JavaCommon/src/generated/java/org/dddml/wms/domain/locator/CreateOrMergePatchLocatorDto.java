@@ -113,6 +113,18 @@ public class CreateOrMergePatchLocatorDto extends AbstractLocatorCommandDto
         this.description = description;
     }
 
+    private String locatorTypeId;
+
+    public String getLocatorTypeId()
+    {
+        return this.locatorTypeId;
+    }
+
+    public void setLocatorTypeId(String locatorTypeId)
+    {
+        this.locatorTypeId = locatorTypeId;
+    }
+
     private Boolean active;
 
     public Boolean getActive()
@@ -233,6 +245,18 @@ public class CreateOrMergePatchLocatorDto extends AbstractLocatorCommandDto
         this.isPropertyDescriptionRemoved = removed;
     }
 
+    private Boolean isPropertyLocatorTypeIdRemoved;
+
+    public Boolean getIsPropertyLocatorTypeIdRemoved()
+    {
+        return this.isPropertyLocatorTypeIdRemoved;
+    }
+
+    public void setIsPropertyLocatorTypeIdRemoved(Boolean removed)
+    {
+        this.isPropertyLocatorTypeIdRemoved = removed;
+    }
+
     private Boolean isPropertyActiveRemoved;
 
     public Boolean getIsPropertyActiveRemoved()
@@ -257,6 +281,7 @@ public class CreateOrMergePatchLocatorDto extends AbstractLocatorCommandDto
         command.setY(this.getY());
         command.setZ(this.getZ());
         command.setDescription(this.getDescription());
+        command.setLocatorTypeId(this.getLocatorTypeId());
         command.setActive(this.getActive());
     }
 
@@ -291,6 +316,7 @@ public class CreateOrMergePatchLocatorDto extends AbstractLocatorCommandDto
         command.setIsPropertyYRemoved(this.getIsPropertyYRemoved());
         command.setIsPropertyZRemoved(this.getIsPropertyZRemoved());
         command.setIsPropertyDescriptionRemoved(this.getIsPropertyDescriptionRemoved());
+        command.setIsPropertyLocatorTypeIdRemoved(this.getIsPropertyLocatorTypeIdRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
     }
 

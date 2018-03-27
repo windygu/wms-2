@@ -193,6 +193,8 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
 
 			this.PicklistLastModifiedByUserLogin = e.PicklistLastModifiedByUserLogin;
 
+			this.PicklistPickwaveId = e.PicklistPickwaveId;
+
             this.PicklistCreatedAt = (e.PicklistCreatedAt != null && e.PicklistCreatedAt.HasValue) ? e.PicklistCreatedAt.Value : default(DateTime);
 
             this.PicklistUpdatedAt = (e.PicklistUpdatedAt != null && e.PicklistUpdatedAt.HasValue) ? e.PicklistUpdatedAt.Value : default(DateTime);
@@ -320,6 +322,18 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
 			else
 			{
 				this.PicklistLastModifiedByUserLogin = e.PicklistLastModifiedByUserLogin;
+			}
+
+			if (e.PicklistPickwaveId == null)
+			{
+				if (e.IsPropertyPicklistPickwaveIdRemoved)
+				{
+					this.PicklistPickwaveId = default(long?);
+				}
+			}
+			else
+			{
+				this.PicklistPickwaveId = e.PicklistPickwaveId;
 			}
 
 			if (e.PicklistCreatedAt == null)

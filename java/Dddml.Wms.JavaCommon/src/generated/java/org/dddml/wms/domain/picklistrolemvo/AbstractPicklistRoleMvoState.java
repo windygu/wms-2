@@ -190,6 +190,18 @@ public abstract class AbstractPicklistRoleMvoState implements PicklistRoleMvoSta
         this.picklistLastModifiedByUserLogin = picklistLastModifiedByUserLogin;
     }
 
+    private Long picklistPickwaveId;
+
+    public Long getPicklistPickwaveId()
+    {
+        return this.picklistPickwaveId;
+    }
+
+    public void setPicklistPickwaveId(Long picklistPickwaveId)
+    {
+        this.picklistPickwaveId = picklistPickwaveId;
+    }
+
     private Long picklistVersion;
 
     public Long getPicklistVersion()
@@ -323,6 +335,7 @@ public abstract class AbstractPicklistRoleMvoState implements PicklistRoleMvoSta
         this.setPicklistPicklistDate(e.getPicklistPicklistDate());
         this.setPicklistCreatedByUserLogin(e.getPicklistCreatedByUserLogin());
         this.setPicklistLastModifiedByUserLogin(e.getPicklistLastModifiedByUserLogin());
+        this.setPicklistPickwaveId(e.getPicklistPickwaveId());
         this.setPicklistCreatedAt(e.getPicklistCreatedAt());
         this.setPicklistUpdatedAt(e.getPicklistUpdatedAt());
         this.setPicklistActive(e.getPicklistActive());
@@ -437,6 +450,17 @@ public abstract class AbstractPicklistRoleMvoState implements PicklistRoleMvoSta
         else
         {
             this.setPicklistLastModifiedByUserLogin(e.getPicklistLastModifiedByUserLogin());
+        }
+        if (e.getPicklistPickwaveId() == null)
+        {
+            if (e.getIsPropertyPicklistPickwaveIdRemoved() != null && e.getIsPropertyPicklistPickwaveIdRemoved())
+            {
+                this.setPicklistPickwaveId(null);
+            }
+        }
+        else
+        {
+            this.setPicklistPickwaveId(e.getPicklistPickwaveId());
         }
         if (e.getPicklistCreatedAt() == null)
         {

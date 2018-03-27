@@ -52,6 +52,12 @@ namespace Dddml.Wms.Domain.Picklist
             set;
         }
 
+        public virtual long? PickwaveId
+        {
+            get;
+            set;
+        }
+
         public virtual bool? Active
         {
             get;
@@ -109,6 +115,7 @@ namespace Dddml.Wms.Domain.Picklist
             state.ShipmentMethodTypeId = this.ShipmentMethodTypeId;
             state.StatusId = this.StatusId;
             state.PicklistDate = this.PicklistDate;
+            state.PickwaveId = this.PickwaveId;
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             state.CreatedByUserLogin = this.CreatedByUserLogin;

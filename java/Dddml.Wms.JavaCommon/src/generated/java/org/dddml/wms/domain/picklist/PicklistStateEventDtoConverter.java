@@ -34,6 +34,7 @@ public class PicklistStateEventDtoConverter {
         dto.setShipmentMethodTypeId(e.getShipmentMethodTypeId());
         dto.setStatusId(e.getStatusId());
         dto.setPicklistDate(e.getPicklistDate());
+        dto.setPickwaveId(e.getPickwaveId());
         dto.setActive(e.getActive());
         List<PicklistRoleStateEventDto.PicklistRoleStateCreatedDto> picklistRoleEvents = new ArrayList<>();
         for (PicklistRoleStateEvent.PicklistRoleStateCreated ee : e.getPicklistRoleEvents()) {
@@ -56,12 +57,14 @@ public class PicklistStateEventDtoConverter {
         dto.setShipmentMethodTypeId(e.getShipmentMethodTypeId());
         dto.setStatusId(e.getStatusId());
         dto.setPicklistDate(e.getPicklistDate());
+        dto.setPickwaveId(e.getPickwaveId());
         dto.setActive(e.getActive());
         dto.setIsPropertyDescriptionRemoved(e.getIsPropertyDescriptionRemoved());
         dto.setIsPropertyFacilityIdRemoved(e.getIsPropertyFacilityIdRemoved());
         dto.setIsPropertyShipmentMethodTypeIdRemoved(e.getIsPropertyShipmentMethodTypeIdRemoved());
         dto.setIsPropertyStatusIdRemoved(e.getIsPropertyStatusIdRemoved());
         dto.setIsPropertyPicklistDateRemoved(e.getIsPropertyPicklistDateRemoved());
+        dto.setIsPropertyPickwaveIdRemoved(e.getIsPropertyPickwaveIdRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
         List<PicklistRoleStateEventDto> picklistRoleEvents = new ArrayList<>();
         for (PicklistRoleStateEvent ee : e.getPicklistRoleEvents()) {

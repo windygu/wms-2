@@ -50,6 +50,7 @@ public abstract class AbstractOrderShipGroupStateCommandConverter<TCreateOrderSh
         cmd.setShipByDate(state.getShipByDate());
         cmd.setEstimatedShipDate(state.getEstimatedShipDate());
         cmd.setEstimatedDeliveryDate(state.getEstimatedDeliveryDate());
+        cmd.setPickwaveId(state.getPickwaveId());
         cmd.setActive(state.getActive());
         cmd.setOrderId(state.getOrderId());
             
@@ -70,6 +71,7 @@ public abstract class AbstractOrderShipGroupStateCommandConverter<TCreateOrderSh
         if (state.getShipByDate() == null) { cmd.setIsPropertyShipByDateRemoved(true); }
         if (state.getEstimatedShipDate() == null) { cmd.setIsPropertyEstimatedShipDateRemoved(true); }
         if (state.getEstimatedDeliveryDate() == null) { cmd.setIsPropertyEstimatedDeliveryDateRemoved(true); }
+        if (state.getPickwaveId() == null) { cmd.setIsPropertyPickwaveIdRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
         return cmd;
     }
@@ -96,6 +98,7 @@ public abstract class AbstractOrderShipGroupStateCommandConverter<TCreateOrderSh
         cmd.setShipByDate(state.getShipByDate());
         cmd.setEstimatedShipDate(state.getEstimatedShipDate());
         cmd.setEstimatedDeliveryDate(state.getEstimatedDeliveryDate());
+        cmd.setPickwaveId(state.getPickwaveId());
         cmd.setActive(state.getActive());
         cmd.setOrderId(state.getOrderId());
         return cmd;

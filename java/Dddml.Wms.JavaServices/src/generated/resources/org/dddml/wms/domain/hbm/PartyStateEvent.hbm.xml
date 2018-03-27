@@ -16,6 +16,7 @@
     <discriminator column="StateEventType" type="string" />
 
 	<property name="partyTypeId" ><column name="PartyTypeId" sql-type="VARCHAR(20)" /></property>
+	<property name="primaryRoleTypeId" ><column name="PrimaryRoleTypeId" sql-type="VARCHAR(20)" /></property>
 	<property name="active" ></property>
 
     <property name="createdBy" column="CreatedBy"/>
@@ -31,6 +32,8 @@
     <subclass name="AbstractPartyStateEvent$SimplePartyStateMergePatched" discriminator-value="MergePatched">
 
         <property name="isPropertyPartyTypeIdRemoved" column="IsPropertyPartyTypeIdRemoved"/>
+
+        <property name="isPropertyPrimaryRoleTypeIdRemoved" column="IsPropertyPrimaryRoleTypeIdRemoved"/>
 
         <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 
@@ -63,6 +66,8 @@
         <property name="isPropertyIsSummaryRemoved" column="IsPropertyIsSummaryRemoved"/>
 
         <property name="isPropertyPartyTypeIdRemoved" column="IsPropertyPartyTypeIdRemoved"/>
+
+        <property name="isPropertyPrimaryRoleTypeIdRemoved" column="IsPropertyPrimaryRoleTypeIdRemoved"/>
 
         <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 

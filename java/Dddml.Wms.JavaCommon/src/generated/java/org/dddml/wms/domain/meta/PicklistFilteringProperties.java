@@ -19,6 +19,7 @@ public final class PicklistFilteringProperties
             "picklistDate",
             "createdByUserLogin",
             "lastModifiedByUserLogin",
+            "pickwaveId",
             "version",
             "createdAt",
             "updatedAt",
@@ -35,6 +36,7 @@ public final class PicklistFilteringProperties
             "java.sql.Timestamp",
             "String",
             "String",
+            "Long",
             "Long",
             "Date",
             "Date",
@@ -70,6 +72,8 @@ public final class PicklistFilteringProperties
         aliasMap.put("CreatedByUserLogin", "createdByUserLogin");
         aliasMap.put("lastModifiedByUserLogin", "lastModifiedByUserLogin");
         aliasMap.put("LastModifiedByUserLogin", "lastModifiedByUserLogin");
+        aliasMap.put("pickwaveId", "pickwaveId");
+        aliasMap.put("PickwaveId", "pickwaveId");
         aliasMap.put("version", "version");
         aliasMap.put("Version", "version");
         aliasMap.put("createdAt", "createdAt");

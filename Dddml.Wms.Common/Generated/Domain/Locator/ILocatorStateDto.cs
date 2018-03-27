@@ -74,6 +74,12 @@ namespace Dddml.Wms.Domain.Locator
             set;
         }
 
+        string LocatorTypeId
+        {
+            get;
+            set;
+        }
+
         bool? Active
         {
             get;

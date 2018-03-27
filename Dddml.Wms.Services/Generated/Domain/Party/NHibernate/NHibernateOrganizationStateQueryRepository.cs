@@ -28,7 +28,7 @@ namespace Dddml.Wms.Domain.Party.NHibernate
 			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
-        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "PartyId", "PartyTypeId", "OrganizationName", "Description", "Type", "IsSummary", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
+        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "PartyId", "PartyTypeId", "PrimaryRoleTypeId", "OrganizationName", "Description", "Type", "IsSummary", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
     
         public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
 

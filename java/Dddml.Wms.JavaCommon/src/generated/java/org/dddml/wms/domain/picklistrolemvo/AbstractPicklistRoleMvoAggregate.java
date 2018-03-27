@@ -67,6 +67,7 @@ public abstract class AbstractPicklistRoleMvoAggregate extends AbstractAggregate
         e.setPicklistPicklistDate(c.getPicklistPicklistDate());
         e.setPicklistCreatedByUserLogin(c.getPicklistCreatedByUserLogin());
         e.setPicklistLastModifiedByUserLogin(c.getPicklistLastModifiedByUserLogin());
+        e.setPicklistPickwaveId(c.getPicklistPickwaveId());
         e.setPicklistCreatedAt(c.getPicklistCreatedAt());
         e.setPicklistUpdatedAt(c.getPicklistUpdatedAt());
         e.setPicklistActive(c.getPicklistActive());
@@ -89,6 +90,7 @@ public abstract class AbstractPicklistRoleMvoAggregate extends AbstractAggregate
         e.setPicklistPicklistDate(c.getPicklistPicklistDate());
         e.setPicklistCreatedByUserLogin(c.getPicklistCreatedByUserLogin());
         e.setPicklistLastModifiedByUserLogin(c.getPicklistLastModifiedByUserLogin());
+        e.setPicklistPickwaveId(c.getPicklistPickwaveId());
         e.setPicklistCreatedAt(c.getPicklistCreatedAt());
         e.setPicklistUpdatedAt(c.getPicklistUpdatedAt());
         e.setPicklistActive(c.getPicklistActive());
@@ -102,6 +104,7 @@ public abstract class AbstractPicklistRoleMvoAggregate extends AbstractAggregate
         e.setIsPropertyPicklistPicklistDateRemoved(c.getIsPropertyPicklistPicklistDateRemoved());
         e.setIsPropertyPicklistCreatedByUserLoginRemoved(c.getIsPropertyPicklistCreatedByUserLoginRemoved());
         e.setIsPropertyPicklistLastModifiedByUserLoginRemoved(c.getIsPropertyPicklistLastModifiedByUserLoginRemoved());
+        e.setIsPropertyPicklistPickwaveIdRemoved(c.getIsPropertyPicklistPickwaveIdRemoved());
         e.setIsPropertyPicklistCreatedAtRemoved(c.getIsPropertyPicklistCreatedAtRemoved());
         e.setIsPropertyPicklistUpdatedAtRemoved(c.getIsPropertyPicklistUpdatedAtRemoved());
         e.setIsPropertyPicklistActiveRemoved(c.getIsPropertyPicklistActiveRemoved());

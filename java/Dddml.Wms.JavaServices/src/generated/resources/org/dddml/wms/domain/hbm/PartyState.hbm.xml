@@ -11,6 +11,7 @@
 	<id name="partyId" length="50" column="PartyId"><generator class="assigned"/></id>
 	<version name="version" column="Version" type="long" />
 
+	<property name="primaryRoleTypeId" ><column name="PrimaryRoleTypeId" sql-type="VARCHAR(20)" /></property>
 	<property name="createdBy" ></property>
 	<property name="updatedBy" ></property>
 	<property name="active" ></property>

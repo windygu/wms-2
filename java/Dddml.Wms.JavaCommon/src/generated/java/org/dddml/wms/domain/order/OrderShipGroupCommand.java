@@ -86,6 +86,10 @@ public interface OrderShipGroupCommand extends Command
 
         void setEstimatedDeliveryDate(java.sql.Timestamp estimatedDeliveryDate);
 
+        Long getPickwaveId();
+
+        void setPickwaveId(Long pickwaveId);
+
         Boolean getActive();
 
         void setActive(Boolean active);
@@ -165,6 +169,10 @@ public interface OrderShipGroupCommand extends Command
         Boolean getIsPropertyEstimatedDeliveryDateRemoved();
 
         void setIsPropertyEstimatedDeliveryDateRemoved(Boolean removed);
+
+        Boolean getIsPropertyPickwaveIdRemoved();
+
+        void setIsPropertyPickwaveIdRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

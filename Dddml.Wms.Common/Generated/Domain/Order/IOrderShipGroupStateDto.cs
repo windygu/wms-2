@@ -123,6 +123,12 @@ namespace Dddml.Wms.Domain.Order
             set;
         }
 
+        long? PickwaveId
+        {
+            get;
+            set;
+        }
+
         bool? Active
         {
             get;

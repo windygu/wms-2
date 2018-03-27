@@ -17,6 +17,9 @@ aggregates:
       PartyTypeId:
         type: id-ne
 
+      PrimaryRoleTypeId:
+        referenceType: RoleType
+        
     discriminator: PartyTypeId
     # ---------------------
     inheritanceMappingStrategy: tpcc

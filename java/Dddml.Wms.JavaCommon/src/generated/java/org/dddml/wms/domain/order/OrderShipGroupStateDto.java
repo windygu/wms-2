@@ -225,6 +225,18 @@ public class OrderShipGroupStateDto
         this.estimatedDeliveryDate = estimatedDeliveryDate;
     }
 
+    private Long pickwaveId;
+
+    public Long getPickwaveId()
+    {
+        return this.pickwaveId;
+    }
+
+    public void setPickwaveId(Long pickwaveId)
+    {
+        this.pickwaveId = pickwaveId;
+    }
+
     private Boolean active;
 
     public Boolean getActive()
@@ -388,6 +400,9 @@ public class OrderShipGroupStateDto
             }
             if (returnedFieldsContains("EstimatedDeliveryDate")) {
                 dto.setEstimatedDeliveryDate(state.getEstimatedDeliveryDate());
+            }
+            if (returnedFieldsContains("PickwaveId")) {
+                dto.setPickwaveId(state.getPickwaveId());
             }
             if (returnedFieldsContains("Active")) {
                 dto.setActive(state.getActive());

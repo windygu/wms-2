@@ -33,6 +33,18 @@ public class PartyStateDto
         this.partyTypeId = partyTypeId;
     }
 
+    private String primaryRoleTypeId;
+
+    public String getPrimaryRoleTypeId()
+    {
+        return this.primaryRoleTypeId;
+    }
+
+    public void setPrimaryRoleTypeId(String primaryRoleTypeId)
+    {
+        this.primaryRoleTypeId = primaryRoleTypeId;
+    }
+
     private String organizationName;
 
     public String getOrganizationName()
@@ -184,6 +196,9 @@ public class PartyStateDto
             }
             if (returnedFieldsContains("PartyTypeId")) {
                 dto.setPartyTypeId(state.getPartyTypeId());
+            }
+            if (returnedFieldsContains("PrimaryRoleTypeId")) {
+                dto.setPrimaryRoleTypeId(state.getPrimaryRoleTypeId());
             }
             if (returnedFieldsContains("Active")) {
                 dto.setActive(state.getActive());

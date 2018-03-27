@@ -27,6 +27,8 @@ namespace Dddml.Wms.Domain.Picklist
 
 		DateTime? PicklistDate { get; set; }
 
+		long? PickwaveId { get; set; }
+
 		long Version { get; set; }
 
 		bool Active { get; set; }

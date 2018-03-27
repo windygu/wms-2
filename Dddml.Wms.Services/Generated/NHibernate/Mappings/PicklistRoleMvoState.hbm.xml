@@ -25,6 +25,7 @@
     <property name="PicklistPicklistDate" ><column name="PicklistPicklistDate" sql-type="DATETIME" /></property>
     <property name="PicklistCreatedByUserLogin" ><column name="PicklistCreatedByUserLogin" sql-type="VARCHAR(250)" /></property>
     <property name="PicklistLastModifiedByUserLogin" ><column name="PicklistLastModifiedByUserLogin" sql-type="VARCHAR(250)" /></property>
+    <property name="PicklistPickwaveId" ><column name="PicklistPickwaveId" sql-type="DECIMAL(20,0)" /></property>
     <property name="PicklistCreatedAt" ><column name="PicklistCreatedAt" sql-type="DATETIME" /></property>
     <property name="PicklistUpdatedAt" ><column name="PicklistUpdatedAt" sql-type="DATETIME" /></property>
     <property name="PicklistActive" ></property>

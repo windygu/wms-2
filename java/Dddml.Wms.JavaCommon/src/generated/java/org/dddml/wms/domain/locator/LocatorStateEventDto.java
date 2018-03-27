@@ -124,6 +124,16 @@ public class LocatorStateEventDto extends AbstractStateEvent
         this.description = description;
     }
 
+    private String locatorTypeId;
+
+    public String getLocatorTypeId() {
+        return this.locatorTypeId;
+    }
+
+    public void setLocatorTypeId(String locatorTypeId) {
+        this.locatorTypeId = locatorTypeId;
+    }
+
     private Boolean active;
 
     public Boolean getActive() {
@@ -242,6 +252,16 @@ public class LocatorStateEventDto extends AbstractStateEvent
 
     public void setIsPropertyDescriptionRemoved(Boolean removed) {
         this.isPropertyDescriptionRemoved = removed;
+    }
+
+    private Boolean isPropertyLocatorTypeIdRemoved;
+
+    public Boolean getIsPropertyLocatorTypeIdRemoved() {
+        return this.isPropertyLocatorTypeIdRemoved;
+    }
+
+    public void setIsPropertyLocatorTypeIdRemoved(Boolean removed) {
+        this.isPropertyLocatorTypeIdRemoved = removed;
     }
 
     private Boolean isPropertyActiveRemoved;

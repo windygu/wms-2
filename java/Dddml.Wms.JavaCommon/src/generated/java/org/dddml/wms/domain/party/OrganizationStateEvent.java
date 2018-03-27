@@ -51,6 +51,10 @@ public interface OrganizationStateEvent extends PartyStateEvent
 
         void setIsPropertyPartyTypeIdRemoved(Boolean removed);
 
+        Boolean getIsPropertyPrimaryRoleTypeIdRemoved();
+
+        void setIsPropertyPrimaryRoleTypeIdRemoved(Boolean removed);
+
         Boolean getIsPropertyActiveRemoved();
 
         void setIsPropertyActiveRemoved(Boolean removed);

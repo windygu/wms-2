@@ -34,6 +34,8 @@ namespace Dddml.Wms.Domain.Picklist
 
 		public virtual DateTime? PicklistDate { get; set; }
 
+		public virtual long? PickwaveId { get; set; }
+
 		public virtual bool? Active { get; set; }
 
 		public virtual string CreatedByUserLogin { get; set; }
@@ -216,6 +218,8 @@ namespace Dddml.Wms.Domain.Picklist
 		public virtual bool IsPropertyStatusIdRemoved { get; set; }
 
 		public virtual bool IsPropertyPicklistDateRemoved { get; set; }
+
+		public virtual bool IsPropertyPickwaveIdRemoved { get; set; }
 
 		public virtual bool IsPropertyActiveRemoved { get; set; }
 

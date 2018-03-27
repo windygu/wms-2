@@ -140,6 +140,18 @@ public abstract class AbstractLocatorStateEvent extends AbstractStateEvent imple
         this.description = description;
     }
 
+    private String locatorTypeId;
+
+    public String getLocatorTypeId()
+    {
+        return this.locatorTypeId;
+    }
+
+    public void setLocatorTypeId(String locatorTypeId)
+    {
+        this.locatorTypeId = locatorTypeId;
+    }
+
     private String createdBy;
 
     public String getCreatedBy()
@@ -317,6 +329,16 @@ public abstract class AbstractLocatorStateEvent extends AbstractStateEvent imple
 
         public void setIsPropertyDescriptionRemoved(Boolean removed) {
             this.isPropertyDescriptionRemoved = removed;
+        }
+
+        private Boolean isPropertyLocatorTypeIdRemoved;
+
+        public Boolean getIsPropertyLocatorTypeIdRemoved() {
+            return this.isPropertyLocatorTypeIdRemoved;
+        }
+
+        public void setIsPropertyLocatorTypeIdRemoved(Boolean removed) {
+            this.isPropertyLocatorTypeIdRemoved = removed;
         }
 
         private Boolean isPropertyActiveRemoved;

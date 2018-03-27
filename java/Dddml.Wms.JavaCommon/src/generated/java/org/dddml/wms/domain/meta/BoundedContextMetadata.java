@@ -44,6 +44,7 @@ public class BoundedContextMetadata {
         typeToAggMap.put("InventoryPostingRule", "InventoryPostingRule");
         typeToAggMap.put("InventoryPRTriggered", "InventoryPRTriggered");
         typeToAggMap.put("Locator", "Locator");
+        typeToAggMap.put("LocatorType", "LocatorType");
         typeToAggMap.put("Lot", "Lot");
         typeToAggMap.put("Movement", "Movement");
         typeToAggMap.put("MovementLine", "Movement");
@@ -67,6 +68,7 @@ public class BoundedContextMetadata {
         typeToAggMap.put("PicklistRole", "Picklist");
         typeToAggMap.put("PicklistBin", "PicklistBin");
         typeToAggMap.put("PicklistItem", "PicklistBin");
+        typeToAggMap.put("Pickwave", "Pickwave");
         typeToAggMap.put("Product", "Product");
         typeToAggMap.put("ProductCategory", "ProductCategory");
         typeToAggMap.put("ProductCategoryMember", "ProductCategoryMember");

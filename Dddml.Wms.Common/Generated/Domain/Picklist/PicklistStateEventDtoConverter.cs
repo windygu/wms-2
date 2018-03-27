@@ -48,6 +48,7 @@ namespace Dddml.Wms.Domain.Picklist
             dto.ShipmentMethodTypeId = e.ShipmentMethodTypeId;
             dto.StatusId = e.StatusId;
             dto.PicklistDate = e.PicklistDate;
+            dto.PickwaveId = e.PickwaveId;
             dto.Active = e.Active;
             var picklistRoleEvents = new List<PicklistRoleStateCreatedDto>();
             foreach (var ee in e.PicklistRoleEvents)
@@ -72,12 +73,14 @@ namespace Dddml.Wms.Domain.Picklist
             dto.ShipmentMethodTypeId = e.ShipmentMethodTypeId;
             dto.StatusId = e.StatusId;
             dto.PicklistDate = e.PicklistDate;
+            dto.PickwaveId = e.PickwaveId;
             dto.Active = e.Active;
             dto.IsPropertyDescriptionRemoved = e.IsPropertyDescriptionRemoved;
             dto.IsPropertyFacilityIdRemoved = e.IsPropertyFacilityIdRemoved;
             dto.IsPropertyShipmentMethodTypeIdRemoved = e.IsPropertyShipmentMethodTypeIdRemoved;
             dto.IsPropertyStatusIdRemoved = e.IsPropertyStatusIdRemoved;
             dto.IsPropertyPicklistDateRemoved = e.IsPropertyPicklistDateRemoved;
+            dto.IsPropertyPickwaveIdRemoved = e.IsPropertyPickwaveIdRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;
             var picklistRoleEvents = new List<PicklistRoleStateCreatedOrMergePatchedOrRemovedDto>();
             foreach (var ee in e.PicklistRoleEvents)

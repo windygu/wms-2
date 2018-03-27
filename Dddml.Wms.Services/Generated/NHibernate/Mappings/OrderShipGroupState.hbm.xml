@@ -29,6 +29,7 @@
     <property name="ShipByDate" ><column name="ShipByDate" sql-type="DATETIME" /></property>
     <property name="EstimatedShipDate" ><column name="EstimatedShipDate" sql-type="DATETIME" /></property>
     <property name="EstimatedDeliveryDate" ><column name="EstimatedDeliveryDate" sql-type="DATETIME" /></property>
+    <property name="PickwaveId" ><column name="PickwaveId" sql-type="DECIMAL(20,0)" /></property>
     <property name="CreatedBy" ></property>
     <property name="UpdatedBy" ></property>
     <property name="Active" ></property>

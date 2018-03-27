@@ -36,6 +36,7 @@ public class HibernateOrderShipmentEventStore extends AbstractHibernateEventStor
         Criteria criteria = getCurrentSession().createCriteria(AbstractOrderShipmentStateEvent.class);
         criteria.add(Restrictions.eq("orderShipmentEventId.orderShipmentIdOrderId", idObj.getOrderId()));
         criteria.add(Restrictions.eq("orderShipmentEventId.orderShipmentIdOrderItemSeqId", idObj.getOrderItemSeqId()));
+        criteria.add(Restrictions.eq("orderShipmentEventId.orderShipmentIdShipGroupSeqId", idObj.getShipGroupSeqId()));
         criteria.add(Restrictions.eq("orderShipmentEventId.orderShipmentIdShipmentId", idObj.getShipmentId()));
         criteria.add(Restrictions.eq("orderShipmentEventId.orderShipmentIdShipmentItemSeqId", idObj.getShipmentItemSeqId()));
         criteria.add(Restrictions.le("orderShipmentEventId.version", version));

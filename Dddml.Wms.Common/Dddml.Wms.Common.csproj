@@ -2313,6 +2313,84 @@
     <Compile Include="Generated\Domain\LocatorTreeNode.cs">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\LocatorType\ILocatorTypeAggregate.cs">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\LocatorType\ILocatorTypeApplicationService.cs">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\LocatorType\ILocatorTypeApplicationServiceFactory.cs">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\LocatorType\ILocatorTypeCommand.cs">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\LocatorType\ILocatorTypeState.cs">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\LocatorType\ILocatorTypeStateDto.cs">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\LocatorType\ILocatorTypeStateEvent.cs">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\LocatorType\ILocatorTypeStateProperties.cs">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\LocatorType\ILocatorTypeStateQueryRepository.cs">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\LocatorType\ILocatorTypeStateRepository.cs">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\LocatorType\LocatorTypeAggregate.cs">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\LocatorType\LocatorTypeApplicationServiceBase.cs">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\LocatorType\LocatorTypeApplicationServiceFactory.cs">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\LocatorType\LocatorTypeCommand.cs">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\LocatorType\LocatorTypeCommandDto.cs">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\LocatorType\LocatorTypeEventId.cs">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\LocatorType\LocatorTypeState.cs">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\LocatorType\LocatorTypeStateDto.cs">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\LocatorType\LocatorTypeStateDtoExtension.cs">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\LocatorType\LocatorTypeStateDtoWrapper.cs">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\LocatorType\LocatorTypeStateEvent.cs">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\LocatorType\LocatorTypeStateEventDto.cs">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\LocatorType\LocatorTypeStateEventDtoConverter.cs">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\LocatorType\LocatorTypeStateExtension.cs">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\LocatorType\LocatorTypeStateInterfaceExtension.cs">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\LocatorType\LocatorTypeStateProperties.cs">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\Locator\ILocatorAggregate.cs">
       <DependentUpon>GenerateLocatorDomain.tt</DependentUpon>
     </Compile>
@@ -2568,6 +2646,9 @@
     <Compile Include="Generated\Domain\Metadata\LocatorMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\Metadata\LocatorTypeMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\Metadata\LotMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
@@ -2656,6 +2737,9 @@
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Metadata\PicklistRoleMvoMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Metadata\PickwaveMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Metadata\ProductCategoryMemberMetadata.cs">
@@ -4953,6 +5037,84 @@
     <Compile Include="Generated\Domain\Picklist\PicklistStateProperties.cs">
       <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\Pickwave\IPickwaveAggregate.cs">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Pickwave\IPickwaveApplicationService.cs">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Pickwave\IPickwaveApplicationServiceFactory.cs">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Pickwave\IPickwaveCommand.cs">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Pickwave\IPickwaveState.cs">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Pickwave\IPickwaveStateDto.cs">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Pickwave\IPickwaveStateEvent.cs">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Pickwave\IPickwaveStateProperties.cs">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Pickwave\IPickwaveStateQueryRepository.cs">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Pickwave\IPickwaveStateRepository.cs">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Pickwave\PickwaveAggregate.cs">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Pickwave\PickwaveApplicationServiceBase.cs">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Pickwave\PickwaveApplicationServiceFactory.cs">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Pickwave\PickwaveCommand.cs">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Pickwave\PickwaveCommandDto.cs">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Pickwave\PickwaveEventId.cs">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Pickwave\PickwaveState.cs">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Pickwave\PickwaveStateDto.cs">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Pickwave\PickwaveStateDtoExtension.cs">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Pickwave\PickwaveStateDtoWrapper.cs">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Pickwave\PickwaveStateEvent.cs">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Pickwave\PickwaveStateEventDto.cs">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Pickwave\PickwaveStateEventDtoConverter.cs">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Pickwave\PickwaveStateExtension.cs">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Pickwave\PickwaveStateInterfaceExtension.cs">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Pickwave\PickwaveStateProperties.cs">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\ProductCategoryMember\IProductCategoryMemberAggregate.cs">
       <DependentUpon>GenerateProductCategoryMemberDomain.tt</DependentUpon>
     </Compile>
@@ -7007,6 +7169,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateItemIssuanceMvoDomain.tt</DependentUpon>
     </Content>
+    <Content Include="Generated\Domain\LocatorType\GenerateLocatorTypeDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Content>
     <Content Include="Generated\Domain\Locator\GenerateLocatorDomain.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -7121,6 +7288,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\Pickwave\GeneratePickwaveDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
     </Content>
     <Content Include="Generated\Domain\ProductCategoryMember\GenerateProductCategoryMemberDomain.txt">
       <AutoGen>True</AutoGen>
@@ -9957,6 +10129,72 @@
 .\OrderItemShipGrpInvResId.cs
 </LastOutputs>
     </Content>
+    <Content Include="Generated\Domain\LocatorType\GenerateLocatorTypeDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateLocatorTypeDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateLocatorTypeDomain.txt
+.\ILocatorTypeAggregate.cs
+.\ILocatorTypeApplicationService.cs
+.\ILocatorTypeApplicationServiceFactory.cs
+.\ILocatorTypeCommand.cs
+.\ILocatorTypeState.cs
+.\ILocatorTypeStateDto.cs
+.\ILocatorTypeStateEvent.cs
+.\ILocatorTypeStateProperties.cs
+.\ILocatorTypeStateQueryRepository.cs
+.\ILocatorTypeStateRepository.cs
+.\LocatorTypeAggregate.cs
+.\LocatorTypeApplicationServiceBase.cs
+.\LocatorTypeApplicationServiceFactory.cs
+.\LocatorTypeCommand.cs
+.\LocatorTypeCommandDto.cs
+.\LocatorTypeEventId.cs
+.\LocatorTypeState.cs
+.\LocatorTypeStateDto.cs
+.\LocatorTypeStateDtoExtension.cs
+.\LocatorTypeStateDtoWrapper.cs
+.\LocatorTypeStateEvent.cs
+.\LocatorTypeStateEventDto.cs
+.\LocatorTypeStateEventDtoConverter.cs
+.\LocatorTypeStateExtension.cs
+.\LocatorTypeStateInterfaceExtension.cs
+.\LocatorTypeStateProperties.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\Pickwave\GeneratePickwaveDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GeneratePickwaveDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\GeneratePickwaveDomain.txt
+.\IPickwaveAggregate.cs
+.\IPickwaveApplicationService.cs
+.\IPickwaveApplicationServiceFactory.cs
+.\IPickwaveCommand.cs
+.\IPickwaveState.cs
+.\IPickwaveStateDto.cs
+.\IPickwaveStateEvent.cs
+.\IPickwaveStateProperties.cs
+.\IPickwaveStateQueryRepository.cs
+.\IPickwaveStateRepository.cs
+.\PickwaveAggregate.cs
+.\PickwaveApplicationServiceBase.cs
+.\PickwaveApplicationServiceFactory.cs
+.\PickwaveCommand.cs
+.\PickwaveCommandDto.cs
+.\PickwaveEventId.cs
+.\PickwaveState.cs
+.\PickwaveStateDto.cs
+.\PickwaveStateDtoExtension.cs
+.\PickwaveStateDtoWrapper.cs
+.\PickwaveStateEvent.cs
+.\PickwaveStateEventDto.cs
+.\PickwaveStateEventDtoConverter.cs
+.\PickwaveStateExtension.cs
+.\PickwaveStateInterfaceExtension.cs
+.\PickwaveStateProperties.cs
+</LastOutputs>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Generated\Domain\GenerateBoundedContextDomainAggregates.tt">
@@ -10025,6 +10263,7 @@
 .\ItemIssuanceMetadata.cs
 .\ItemIssuanceMvoMetadata.cs
 .\LocatorMetadata.cs
+.\LocatorTypeMetadata.cs
 .\LotMetadata.cs
 .\MovementConfirmationLineMetadata.cs
 .\MovementConfirmationLineMvoMetadata.cs
@@ -10055,6 +10294,7 @@
 .\PicklistMetadata.cs
 .\PicklistRoleMetadata.cs
 .\PicklistRoleMvoMetadata.cs
+.\PickwaveMetadata.cs
 .\ProductCategoryMemberMetadata.cs
 .\ProductCategoryMetadata.cs
 .\ProductMetadata.cs

@@ -58,6 +58,8 @@ namespace Dddml.Wms.Domain.Order
 
 		public virtual DateTime? EstimatedDeliveryDate { get; set; }
 
+		public virtual long? PickwaveId { get; set; }
+
 		public virtual bool? Active { get; set; }
 
 		public virtual string CreatedBy { get; set; }
@@ -183,6 +185,8 @@ namespace Dddml.Wms.Domain.Order
 		public virtual bool IsPropertyEstimatedShipDateRemoved { get; set; }
 
 		public virtual bool IsPropertyEstimatedDeliveryDateRemoved { get; set; }
+
+		public virtual bool IsPropertyPickwaveIdRemoved { get; set; }
 
 		public virtual bool IsPropertyActiveRemoved { get; set; }
 

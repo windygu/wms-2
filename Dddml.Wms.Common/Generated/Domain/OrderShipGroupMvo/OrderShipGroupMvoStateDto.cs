@@ -124,6 +124,12 @@ namespace Dddml.Wms.Domain.OrderShipGroupMvo
             set;
         }
 
+        public virtual long? PickwaveId
+        {
+            get;
+            set;
+        }
+
         public virtual long? Version
         {
             get;
@@ -361,6 +367,7 @@ namespace Dddml.Wms.Domain.OrderShipGroupMvo
             state.ShipByDate = this.ShipByDate;
             state.EstimatedShipDate = this.EstimatedShipDate;
             state.EstimatedDeliveryDate = this.EstimatedDeliveryDate;
+            state.PickwaveId = this.PickwaveId;
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             state.OrderOrderTypeId = this.OrderOrderTypeId;

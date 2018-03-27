@@ -238,6 +238,18 @@ public abstract class AbstractOrderShipGroupCommand extends AbstractCommand impl
             this.estimatedDeliveryDate = estimatedDeliveryDate;
         }
 
+        private Long pickwaveId;
+
+        public Long getPickwaveId()
+        {
+            return this.pickwaveId;
+        }
+
+        public void setPickwaveId(Long pickwaveId)
+        {
+            this.pickwaveId = pickwaveId;
+        }
+
         private Boolean active;
 
         public Boolean getActive()
@@ -470,6 +482,18 @@ public abstract class AbstractOrderShipGroupCommand extends AbstractCommand impl
         public void setIsPropertyEstimatedDeliveryDateRemoved(Boolean removed)
         {
             this.isPropertyEstimatedDeliveryDateRemoved = removed;
+        }
+
+        private Boolean isPropertyPickwaveIdRemoved;
+
+        public Boolean getIsPropertyPickwaveIdRemoved()
+        {
+            return this.isPropertyPickwaveIdRemoved;
+        }
+
+        public void setIsPropertyPickwaveIdRemoved(Boolean removed)
+        {
+            this.isPropertyPickwaveIdRemoved = removed;
         }
 
         private Boolean isPropertyActiveRemoved;

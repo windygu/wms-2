@@ -66,6 +66,18 @@ public class CreateOrMergePatchPicklistDto extends AbstractPicklistCommandDto
         this.picklistDate = picklistDate;
     }
 
+    private Long pickwaveId;
+
+    public Long getPickwaveId()
+    {
+        return this.pickwaveId;
+    }
+
+    public void setPickwaveId(Long pickwaveId)
+    {
+        this.pickwaveId = pickwaveId;
+    }
+
     private Boolean active;
 
     public Boolean getActive()
@@ -150,6 +162,18 @@ public class CreateOrMergePatchPicklistDto extends AbstractPicklistCommandDto
         this.isPropertyPicklistDateRemoved = removed;
     }
 
+    private Boolean isPropertyPickwaveIdRemoved;
+
+    public Boolean getIsPropertyPickwaveIdRemoved()
+    {
+        return this.isPropertyPickwaveIdRemoved;
+    }
+
+    public void setIsPropertyPickwaveIdRemoved(Boolean removed)
+    {
+        this.isPropertyPickwaveIdRemoved = removed;
+    }
+
     private Boolean isPropertyActiveRemoved;
 
     public Boolean getIsPropertyActiveRemoved()
@@ -170,6 +194,7 @@ public class CreateOrMergePatchPicklistDto extends AbstractPicklistCommandDto
         command.setShipmentMethodTypeId(this.getShipmentMethodTypeId());
         command.setStatusId(this.getStatusId());
         command.setPicklistDate(this.getPicklistDate());
+        command.setPickwaveId(this.getPickwaveId());
         command.setActive(this.getActive());
     }
 
@@ -210,6 +235,7 @@ public class CreateOrMergePatchPicklistDto extends AbstractPicklistCommandDto
         command.setIsPropertyShipmentMethodTypeIdRemoved(this.getIsPropertyShipmentMethodTypeIdRemoved());
         command.setIsPropertyStatusIdRemoved(this.getIsPropertyStatusIdRemoved());
         command.setIsPropertyPicklistDateRemoved(this.getIsPropertyPicklistDateRemoved());
+        command.setIsPropertyPickwaveIdRemoved(this.getIsPropertyPickwaveIdRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
     }
 

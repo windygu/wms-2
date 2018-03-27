@@ -125,6 +125,16 @@ public class PicklistRoleMvoStateEventDto extends AbstractStateEvent
         this.picklistLastModifiedByUserLogin = picklistLastModifiedByUserLogin;
     }
 
+    private Long picklistPickwaveId;
+
+    public Long getPicklistPickwaveId() {
+        return this.picklistPickwaveId;
+    }
+
+    public void setPicklistPickwaveId(Long picklistPickwaveId) {
+        this.picklistPickwaveId = picklistPickwaveId;
+    }
+
     private Date picklistCreatedAt;
 
     public Date getPicklistCreatedAt() {
@@ -273,6 +283,16 @@ public class PicklistRoleMvoStateEventDto extends AbstractStateEvent
 
     public void setIsPropertyPicklistLastModifiedByUserLoginRemoved(Boolean removed) {
         this.isPropertyPicklistLastModifiedByUserLoginRemoved = removed;
+    }
+
+    private Boolean isPropertyPicklistPickwaveIdRemoved;
+
+    public Boolean getIsPropertyPicklistPickwaveIdRemoved() {
+        return this.isPropertyPicklistPickwaveIdRemoved;
+    }
+
+    public void setIsPropertyPicklistPickwaveIdRemoved(Boolean removed) {
+        this.isPropertyPicklistPickwaveIdRemoved = removed;
     }
 
     private Boolean isPropertyPicklistCreatedAtRemoved;

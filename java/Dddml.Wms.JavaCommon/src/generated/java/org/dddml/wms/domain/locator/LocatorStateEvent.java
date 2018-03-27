@@ -49,6 +49,10 @@ public interface LocatorStateEvent extends Event
 
     void setDescription(String description);
 
+    String getLocatorTypeId();
+
+    void setLocatorTypeId(String locatorTypeId);
+
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -108,6 +112,10 @@ public interface LocatorStateEvent extends Event
         Boolean getIsPropertyDescriptionRemoved();
 
         void setIsPropertyDescriptionRemoved(Boolean removed);
+
+        Boolean getIsPropertyLocatorTypeIdRemoved();
+
+        void setIsPropertyLocatorTypeIdRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

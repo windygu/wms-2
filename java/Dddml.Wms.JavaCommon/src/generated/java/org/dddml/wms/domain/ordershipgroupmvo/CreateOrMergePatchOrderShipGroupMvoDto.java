@@ -210,6 +210,18 @@ public class CreateOrMergePatchOrderShipGroupMvoDto extends AbstractOrderShipGro
         this.estimatedDeliveryDate = estimatedDeliveryDate;
     }
 
+    private Long pickwaveId;
+
+    public Long getPickwaveId()
+    {
+        return this.pickwaveId;
+    }
+
+    public void setPickwaveId(Long pickwaveId)
+    {
+        this.pickwaveId = pickwaveId;
+    }
+
     private Long version;
 
     public Long getVersion()
@@ -786,6 +798,18 @@ public class CreateOrMergePatchOrderShipGroupMvoDto extends AbstractOrderShipGro
         this.isPropertyEstimatedDeliveryDateRemoved = removed;
     }
 
+    private Boolean isPropertyPickwaveIdRemoved;
+
+    public Boolean getIsPropertyPickwaveIdRemoved()
+    {
+        return this.isPropertyPickwaveIdRemoved;
+    }
+
+    public void setIsPropertyPickwaveIdRemoved(Boolean removed)
+    {
+        this.isPropertyPickwaveIdRemoved = removed;
+    }
+
     private Boolean isPropertyVersionRemoved;
 
     public Boolean getIsPropertyVersionRemoved()
@@ -1178,6 +1202,7 @@ public class CreateOrMergePatchOrderShipGroupMvoDto extends AbstractOrderShipGro
         command.setShipByDate(this.getShipByDate());
         command.setEstimatedShipDate(this.getEstimatedShipDate());
         command.setEstimatedDeliveryDate(this.getEstimatedDeliveryDate());
+        command.setPickwaveId(this.getPickwaveId());
         command.setVersion(this.getVersion());
         command.setActive(this.getActive());
         command.setOrderOrderTypeId(this.getOrderOrderTypeId());
@@ -1250,6 +1275,7 @@ public class CreateOrMergePatchOrderShipGroupMvoDto extends AbstractOrderShipGro
         command.setIsPropertyShipByDateRemoved(this.getIsPropertyShipByDateRemoved());
         command.setIsPropertyEstimatedShipDateRemoved(this.getIsPropertyEstimatedShipDateRemoved());
         command.setIsPropertyEstimatedDeliveryDateRemoved(this.getIsPropertyEstimatedDeliveryDateRemoved());
+        command.setIsPropertyPickwaveIdRemoved(this.getIsPropertyPickwaveIdRemoved());
         command.setIsPropertyVersionRemoved(this.getIsPropertyVersionRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
         command.setIsPropertyOrderOrderTypeIdRemoved(this.getIsPropertyOrderOrderTypeIdRemoved());

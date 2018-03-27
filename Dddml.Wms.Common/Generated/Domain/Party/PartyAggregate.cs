@@ -108,6 +108,7 @@ namespace Dddml.Wms.Domain.Party
             IPartyStateCreated e = NewPartyStateCreated(stateEventId);
 		
             e.PartyTypeId = c.PartyTypeId;
+            e.PrimaryRoleTypeId = c.PrimaryRoleTypeId;
             e.OrganizationName = c.OrganizationName;
             e.Description = c.Description;
             e.Type = c.Type;
@@ -130,12 +131,14 @@ namespace Dddml.Wms.Domain.Party
             IPartyStateMergePatched e = NewPartyStateMergePatched(stateEventId);
 
             e.PartyTypeId = c.PartyTypeId;
+            e.PrimaryRoleTypeId = c.PrimaryRoleTypeId;
             e.OrganizationName = c.OrganizationName;
             e.Description = c.Description;
             e.Type = c.Type;
             e.IsSummary = c.IsSummary;
             e.Active = c.Active;
             e.IsPropertyPartyTypeIdRemoved = c.IsPropertyPartyTypeIdRemoved;
+            e.IsPropertyPrimaryRoleTypeIdRemoved = c.IsPropertyPrimaryRoleTypeIdRemoved;
             e.IsPropertyOrganizationNameRemoved = c.IsPropertyOrganizationNameRemoved;
             e.IsPropertyDescriptionRemoved = c.IsPropertyDescriptionRemoved;
             e.IsPropertyTypeRemoved = c.IsPropertyTypeRemoved;

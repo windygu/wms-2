@@ -25,6 +25,7 @@ public final class PicklistRoleMvoFilteringProperties
             "picklistPicklistDate",
             "picklistCreatedByUserLogin",
             "picklistLastModifiedByUserLogin",
+            "picklistPickwaveId",
             "picklistVersion",
             "picklistCreatedAt",
             "picklistUpdatedAt",
@@ -50,6 +51,7 @@ public final class PicklistRoleMvoFilteringProperties
             "java.sql.Timestamp",
             "String",
             "String",
+            "Long",
             "Long",
             "Date",
             "Date",
@@ -100,6 +102,8 @@ public final class PicklistRoleMvoFilteringProperties
         aliasMap.put("PicklistCreatedByUserLogin", "picklistCreatedByUserLogin");
         aliasMap.put("picklistLastModifiedByUserLogin", "picklistLastModifiedByUserLogin");
         aliasMap.put("PicklistLastModifiedByUserLogin", "picklistLastModifiedByUserLogin");
+        aliasMap.put("picklistPickwaveId", "picklistPickwaveId");
+        aliasMap.put("PicklistPickwaveId", "picklistPickwaveId");
         aliasMap.put("picklistVersion", "picklistVersion");
         aliasMap.put("PicklistVersion", "picklistVersion");
         aliasMap.put("picklistCreatedAt", "picklistCreatedAt");

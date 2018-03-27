@@ -58,6 +58,7 @@ namespace Dddml.Wms.Domain.Picklist
             cmd.ShipmentMethodTypeId = state.ShipmentMethodTypeId;
             cmd.StatusId = state.StatusId;
             cmd.PicklistDate = state.PicklistDate;
+            cmd.PickwaveId = state.PickwaveId;
             cmd.Active = ((IPicklistStateProperties)state).Active;
             
             if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
@@ -65,6 +66,7 @@ namespace Dddml.Wms.Domain.Picklist
             if (state.ShipmentMethodTypeId == null) { cmd.IsPropertyShipmentMethodTypeIdRemoved = true; }
             if (state.StatusId == null) { cmd.IsPropertyStatusIdRemoved = true; }
             if (state.PicklistDate == null) { cmd.IsPropertyPicklistDateRemoved = true; }
+            if (state.PickwaveId == null) { cmd.IsPropertyPickwaveIdRemoved = true; }
             foreach (var d in state.PicklistRoles)
             {
                 var c = d.ToCreateOrMergePatchPicklistRole<TCreatePicklistRole, TMergePatchPicklistRole>();
@@ -87,6 +89,7 @@ namespace Dddml.Wms.Domain.Picklist
             cmd.ShipmentMethodTypeId = state.ShipmentMethodTypeId;
             cmd.StatusId = state.StatusId;
             cmd.PicklistDate = state.PicklistDate;
+            cmd.PickwaveId = state.PickwaveId;
             cmd.Active = ((IPicklistStateProperties)state).Active;
             foreach (var d in state.PicklistRoles)
             {

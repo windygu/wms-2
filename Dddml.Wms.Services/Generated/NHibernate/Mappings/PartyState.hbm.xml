@@ -9,6 +9,7 @@
 
 	<version name="Version" column="Version" type="long" unsaved-value="0"/>
 
+    <property name="PrimaryRoleTypeId" ><column name="PrimaryRoleTypeId" sql-type="VARCHAR(20)" /></property>
     <property name="CreatedBy" ></property>
     <property name="UpdatedBy" ></property>
     <property name="Active" ></property>

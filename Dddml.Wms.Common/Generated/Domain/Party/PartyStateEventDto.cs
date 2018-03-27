@@ -44,6 +44,8 @@ namespace Dddml.Wms.Domain.Party
 
 		public virtual string PartyTypeId { get; set; }
 
+		public virtual string PrimaryRoleTypeId { get; set; }
+
 		public virtual string OrganizationName { get; set; }
 
 		public virtual string Description { get; set; }
@@ -99,6 +101,25 @@ namespace Dddml.Wms.Domain.Party
             set 
             {
                 this.IsPropertyPartyTypeIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyPrimaryRoleTypeIdRemoved { get; set; }
+
+        bool IPartyStateMergePatched.IsPropertyPrimaryRoleTypeIdRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyPrimaryRoleTypeIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyPrimaryRoleTypeIdRemoved = value;
             }
         }
 

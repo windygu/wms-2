@@ -347,6 +347,9 @@
     <Compile Include="Generated\Controllers\LocatorTreesController.cs">
       <DependentUpon>GenerateTreeControllers.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Controllers\LocatorTypesController.cs">
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Controllers\LotsController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
@@ -417,6 +420,9 @@
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\PicklistsController.cs">
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Controllers\PickwavesController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Controllers\ProductCategoriesController.cs">
@@ -558,6 +564,7 @@
 .\InventoryPRTriggeredsController.cs
 .\ItemIssuanceMvosController.cs
 .\LocatorsController.cs
+.\LocatorTypesController.cs
 .\LotsController.cs
 .\MovementConfirmationLineMvosController.cs
 .\MovementConfirmationsController.cs
@@ -581,6 +588,7 @@
 .\PicklistItemMvosController.cs
 .\PicklistRoleMvosController.cs
 .\PicklistsController.cs
+.\PickwavesController.cs
 .\ProductCategoriesController.cs
 .\ProductCategoryMembersController.cs
 .\ProductsController.cs

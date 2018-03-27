@@ -114,6 +114,18 @@ public class CreateOrMergePatchPicklistRoleMvoDto extends AbstractPicklistRoleMv
         this.picklistLastModifiedByUserLogin = picklistLastModifiedByUserLogin;
     }
 
+    private Long picklistPickwaveId;
+
+    public Long getPicklistPickwaveId()
+    {
+        return this.picklistPickwaveId;
+    }
+
+    public void setPicklistPickwaveId(Long picklistPickwaveId)
+    {
+        this.picklistPickwaveId = picklistPickwaveId;
+    }
+
     private Date picklistCreatedAt;
 
     public Date getPicklistCreatedAt()
@@ -270,6 +282,18 @@ public class CreateOrMergePatchPicklistRoleMvoDto extends AbstractPicklistRoleMv
         this.isPropertyPicklistLastModifiedByUserLoginRemoved = removed;
     }
 
+    private Boolean isPropertyPicklistPickwaveIdRemoved;
+
+    public Boolean getIsPropertyPicklistPickwaveIdRemoved()
+    {
+        return this.isPropertyPicklistPickwaveIdRemoved;
+    }
+
+    public void setIsPropertyPicklistPickwaveIdRemoved(Boolean removed)
+    {
+        this.isPropertyPicklistPickwaveIdRemoved = removed;
+    }
+
     private Boolean isPropertyPicklistCreatedAtRemoved;
 
     public Boolean getIsPropertyPicklistCreatedAtRemoved()
@@ -330,6 +354,7 @@ public class CreateOrMergePatchPicklistRoleMvoDto extends AbstractPicklistRoleMv
         command.setPicklistPicklistDate(this.getPicklistPicklistDate());
         command.setPicklistCreatedByUserLogin(this.getPicklistCreatedByUserLogin());
         command.setPicklistLastModifiedByUserLogin(this.getPicklistLastModifiedByUserLogin());
+        command.setPicklistPickwaveId(this.getPicklistPickwaveId());
         command.setPicklistCreatedAt(this.getPicklistCreatedAt());
         command.setPicklistUpdatedAt(this.getPicklistUpdatedAt());
         command.setPicklistActive(this.getPicklistActive());
@@ -367,6 +392,7 @@ public class CreateOrMergePatchPicklistRoleMvoDto extends AbstractPicklistRoleMv
         command.setIsPropertyPicklistPicklistDateRemoved(this.getIsPropertyPicklistPicklistDateRemoved());
         command.setIsPropertyPicklistCreatedByUserLoginRemoved(this.getIsPropertyPicklistCreatedByUserLoginRemoved());
         command.setIsPropertyPicklistLastModifiedByUserLoginRemoved(this.getIsPropertyPicklistLastModifiedByUserLoginRemoved());
+        command.setIsPropertyPicklistPickwaveIdRemoved(this.getIsPropertyPicklistPickwaveIdRemoved());
         command.setIsPropertyPicklistCreatedAtRemoved(this.getIsPropertyPicklistCreatedAtRemoved());
         command.setIsPropertyPicklistUpdatedAtRemoved(this.getIsPropertyPicklistUpdatedAtRemoved());
         command.setIsPropertyPicklistActiveRemoved(this.getIsPropertyPicklistActiveRemoved());

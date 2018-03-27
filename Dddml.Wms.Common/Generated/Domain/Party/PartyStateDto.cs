@@ -27,6 +27,12 @@ namespace Dddml.Wms.Domain.Party
             set;
         }
 
+        public virtual string PrimaryRoleTypeId
+        {
+            get;
+            set;
+        }
+
         public virtual string OrganizationName
         {
             get;
@@ -92,6 +98,7 @@ namespace Dddml.Wms.Domain.Party
             var state = new PartyState(true);
             state.PartyId = this.PartyId;
             state.PartyTypeId = this.PartyTypeId;
+            state.PrimaryRoleTypeId = this.PrimaryRoleTypeId;
             state.OrganizationName = this.OrganizationName;
             state.Description = this.Description;
             state.Type = this.Type;
@@ -111,6 +118,7 @@ namespace Dddml.Wms.Domain.Party
             var state = new OrganizationState(true);
             state.PartyId = this.PartyId;
             state.PartyTypeId = this.PartyTypeId;
+            state.PrimaryRoleTypeId = this.PrimaryRoleTypeId;
             state.OrganizationName = this.OrganizationName;
             state.Description = this.Description;
             state.Type = this.Type;

@@ -450,6 +450,7 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         e.setShipByDate(c.getShipByDate());
         e.setEstimatedShipDate(c.getEstimatedShipDate());
         e.setEstimatedDeliveryDate(c.getEstimatedDeliveryDate());
+        e.setPickwaveId(c.getPickwaveId());
         e.setActive(c.getActive());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
@@ -481,6 +482,7 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         e.setShipByDate(c.getShipByDate());
         e.setEstimatedShipDate(c.getEstimatedShipDate());
         e.setEstimatedDeliveryDate(c.getEstimatedDeliveryDate());
+        e.setPickwaveId(c.getPickwaveId());
         e.setActive(c.getActive());
         e.setIsPropertyShipmentMethodTypeIdRemoved(c.getIsPropertyShipmentMethodTypeIdRemoved());
         e.setIsPropertySupplierPartyIdRemoved(c.getIsPropertySupplierPartyIdRemoved());
@@ -499,6 +501,7 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         e.setIsPropertyShipByDateRemoved(c.getIsPropertyShipByDateRemoved());
         e.setIsPropertyEstimatedShipDateRemoved(c.getIsPropertyEstimatedShipDateRemoved());
         e.setIsPropertyEstimatedDeliveryDateRemoved(c.getIsPropertyEstimatedDeliveryDateRemoved());
+        e.setIsPropertyPickwaveIdRemoved(c.getIsPropertyPickwaveIdRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));

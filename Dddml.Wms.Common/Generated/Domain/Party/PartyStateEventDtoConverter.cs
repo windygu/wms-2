@@ -43,6 +43,7 @@ namespace Dddml.Wms.Domain.Party
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
             dto.PartyTypeId = e.PartyTypeId;
+            dto.PrimaryRoleTypeId = e.PrimaryRoleTypeId;
             dto.OrganizationName = e.OrganizationName;
             dto.Description = e.Description;
             dto.Type = e.Type;
@@ -59,12 +60,14 @@ namespace Dddml.Wms.Domain.Party
             dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
             dto.PartyTypeId = e.PartyTypeId;
+            dto.PrimaryRoleTypeId = e.PrimaryRoleTypeId;
             dto.OrganizationName = e.OrganizationName;
             dto.Description = e.Description;
             dto.Type = e.Type;
             dto.IsSummary = e.IsSummary;
             dto.Active = e.Active;
             dto.IsPropertyPartyTypeIdRemoved = e.IsPropertyPartyTypeIdRemoved;
+            dto.IsPropertyPrimaryRoleTypeIdRemoved = e.IsPropertyPrimaryRoleTypeIdRemoved;
             dto.IsPropertyOrganizationNameRemoved = e.IsPropertyOrganizationNameRemoved;
             dto.IsPropertyDescriptionRemoved = e.IsPropertyDescriptionRemoved;
             dto.IsPropertyTypeRemoved = e.IsPropertyTypeRemoved;

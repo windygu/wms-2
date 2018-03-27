@@ -82,6 +82,10 @@ public interface OrderShipGroupMvoStateEvent extends Event
 
     void setEstimatedDeliveryDate(java.sql.Timestamp estimatedDeliveryDate);
 
+    Long getPickwaveId();
+
+    void setPickwaveId(Long pickwaveId);
+
     Long getVersion();
 
     void setVersion(Long version);
@@ -293,6 +297,10 @@ public interface OrderShipGroupMvoStateEvent extends Event
         Boolean getIsPropertyEstimatedDeliveryDateRemoved();
 
         void setIsPropertyEstimatedDeliveryDateRemoved(Boolean removed);
+
+        Boolean getIsPropertyPickwaveIdRemoved();
+
+        void setIsPropertyPickwaveIdRemoved(Boolean removed);
 
         Boolean getIsPropertyVersionRemoved();
 

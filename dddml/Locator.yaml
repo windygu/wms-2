@@ -42,6 +42,9 @@ aggregates:
 
         Description:
           type: string
+        
+        LocatorTypeId:
+          referenceType: LocatorType
           
       # ------------------------------------------
       constraints:

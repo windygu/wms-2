@@ -62,6 +62,7 @@ namespace Dddml.Wms.Domain.Order
             cmd.ShipByDate = state.ShipByDate;
             cmd.EstimatedShipDate = state.EstimatedShipDate;
             cmd.EstimatedDeliveryDate = state.EstimatedDeliveryDate;
+            cmd.PickwaveId = state.PickwaveId;
             cmd.Active = ((IOrderShipGroupStateProperties)state).Active;
             cmd.OrderId = state.OrderId;
             
@@ -82,6 +83,7 @@ namespace Dddml.Wms.Domain.Order
             if (state.ShipByDate == null) { cmd.IsPropertyShipByDateRemoved = true; }
             if (state.EstimatedShipDate == null) { cmd.IsPropertyEstimatedShipDateRemoved = true; }
             if (state.EstimatedDeliveryDate == null) { cmd.IsPropertyEstimatedDeliveryDateRemoved = true; }
+            if (state.PickwaveId == null) { cmd.IsPropertyPickwaveIdRemoved = true; }
             return cmd;
         }
 
@@ -108,6 +110,7 @@ namespace Dddml.Wms.Domain.Order
             cmd.ShipByDate = state.ShipByDate;
             cmd.EstimatedShipDate = state.EstimatedShipDate;
             cmd.EstimatedDeliveryDate = state.EstimatedDeliveryDate;
+            cmd.PickwaveId = state.PickwaveId;
             cmd.Active = ((IOrderShipGroupStateProperties)state).Active;
             cmd.OrderId = state.OrderId;
             return cmd;

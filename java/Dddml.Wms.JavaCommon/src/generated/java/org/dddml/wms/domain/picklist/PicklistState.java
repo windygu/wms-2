@@ -45,6 +45,10 @@ public interface PicklistState
 
     void setLastModifiedByUserLogin(String lastModifiedByUserLogin);
 
+    Long getPickwaveId();
+
+    void setPickwaveId(Long pickwaveId);
+
     Long getVersion();
 
     void setVersion(Long version);

@@ -37,6 +37,7 @@ public class LocatorStateEventDtoConverter {
         dto.setY(e.getY());
         dto.setZ(e.getZ());
         dto.setDescription(e.getDescription());
+        dto.setLocatorTypeId(e.getLocatorTypeId());
         dto.setActive(e.getActive());
         return dto;
     }
@@ -56,6 +57,7 @@ public class LocatorStateEventDtoConverter {
         dto.setY(e.getY());
         dto.setZ(e.getZ());
         dto.setDescription(e.getDescription());
+        dto.setLocatorTypeId(e.getLocatorTypeId());
         dto.setActive(e.getActive());
         dto.setIsPropertyWarehouseIdRemoved(e.getIsPropertyWarehouseIdRemoved());
         dto.setIsPropertyParentLocatorIdRemoved(e.getIsPropertyParentLocatorIdRemoved());
@@ -66,6 +68,7 @@ public class LocatorStateEventDtoConverter {
         dto.setIsPropertyYRemoved(e.getIsPropertyYRemoved());
         dto.setIsPropertyZRemoved(e.getIsPropertyZRemoved());
         dto.setIsPropertyDescriptionRemoved(e.getIsPropertyDescriptionRemoved());
+        dto.setIsPropertyLocatorTypeIdRemoved(e.getIsPropertyLocatorTypeIdRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
         return dto;
     }

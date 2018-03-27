@@ -106,6 +106,18 @@ public abstract class AbstractPicklistState implements PicklistState, Saveable
         this.lastModifiedByUserLogin = lastModifiedByUserLogin;
     }
 
+    private Long pickwaveId;
+
+    public Long getPickwaveId()
+    {
+        return this.pickwaveId;
+    }
+
+    public void setPickwaveId(Long pickwaveId)
+    {
+        this.pickwaveId = pickwaveId;
+    }
+
     private Long version;
 
     public Long getVersion()
@@ -248,6 +260,7 @@ public abstract class AbstractPicklistState implements PicklistState, Saveable
         this.setShipmentMethodTypeId(e.getShipmentMethodTypeId());
         this.setStatusId(e.getStatusId());
         this.setPicklistDate(e.getPicklistDate());
+        this.setPickwaveId(e.getPickwaveId());
         this.setActive(e.getActive());
 
         this.setDeleted(false);
@@ -319,6 +332,17 @@ public abstract class AbstractPicklistState implements PicklistState, Saveable
         else
         {
             this.setPicklistDate(e.getPicklistDate());
+        }
+        if (e.getPickwaveId() == null)
+        {
+            if (e.getIsPropertyPickwaveIdRemoved() != null && e.getIsPropertyPickwaveIdRemoved())
+            {
+                this.setPickwaveId(null);
+            }
+        }
+        else
+        {
+            this.setPickwaveId(e.getPickwaveId());
         }
         if (e.getActive() == null)
         {

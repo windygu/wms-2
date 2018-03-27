@@ -38,6 +38,7 @@ public class PartyStateEventDtoConverter {
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
         dto.setPartyTypeId(e.getPartyTypeId());
+        dto.setPrimaryRoleTypeId(e.getPrimaryRoleTypeId());
         dto.setActive(e.getActive());
         return dto;
     }
@@ -49,8 +50,10 @@ public class PartyStateEventDtoConverter {
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
         dto.setPartyTypeId(e.getPartyTypeId());
+        dto.setPrimaryRoleTypeId(e.getPrimaryRoleTypeId());
         dto.setActive(e.getActive());
         dto.setIsPropertyPartyTypeIdRemoved(e.getIsPropertyPartyTypeIdRemoved());
+        dto.setIsPropertyPrimaryRoleTypeIdRemoved(e.getIsPropertyPrimaryRoleTypeIdRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
         return dto;
     }
@@ -72,6 +75,7 @@ public class PartyStateEventDtoConverter {
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
         dto.setPartyTypeId(e.getPartyTypeId());
+        dto.setPrimaryRoleTypeId(e.getPrimaryRoleTypeId());
         dto.setActive(e.getActive());
         dto.setOrganizationName(e.getOrganizationName());
         dto.setDescription(e.getDescription());
@@ -87,12 +91,14 @@ public class PartyStateEventDtoConverter {
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
         dto.setPartyTypeId(e.getPartyTypeId());
+        dto.setPrimaryRoleTypeId(e.getPrimaryRoleTypeId());
         dto.setActive(e.getActive());
         dto.setOrganizationName(e.getOrganizationName());
         dto.setDescription(e.getDescription());
         dto.setType(e.getType());
         dto.setIsSummary(e.getIsSummary());
         dto.setIsPropertyPartyTypeIdRemoved(e.getIsPropertyPartyTypeIdRemoved());
+        dto.setIsPropertyPrimaryRoleTypeIdRemoved(e.getIsPropertyPrimaryRoleTypeIdRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
         dto.setIsPropertyOrganizationNameRemoved(e.getIsPropertyOrganizationNameRemoved());
         dto.setIsPropertyDescriptionRemoved(e.getIsPropertyDescriptionRemoved());

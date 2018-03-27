@@ -55,6 +55,8 @@
         <mapping resource="org/dddml/wms/domain/hbm/InventoryPRTriggeredState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/LocatorState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/LocatorStateEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/LocatorTypeState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/LocatorTypeStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/LotState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/LotStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/MovementState.hbm.xml"/>
@@ -98,6 +100,8 @@
         <mapping resource="org/dddml/wms/domain/hbm/PicklistBinStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/PicklistItemState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/PicklistItemStateEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/PickwaveState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/PickwaveStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ProductState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ProductStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/ProductCategoryState.hbm.xml"/>

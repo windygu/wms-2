@@ -145,6 +145,16 @@ public abstract class AbstractOrganizationStateEvent extends AbstractPartyStateE
             this.isPropertyPartyTypeIdRemoved = removed;
         }
 
+        private Boolean isPropertyPrimaryRoleTypeIdRemoved;
+
+        public Boolean getIsPropertyPrimaryRoleTypeIdRemoved() {
+            return this.isPropertyPrimaryRoleTypeIdRemoved;
+        }
+
+        public void setIsPropertyPrimaryRoleTypeIdRemoved(Boolean removed) {
+            this.isPropertyPrimaryRoleTypeIdRemoved = removed;
+        }
+
         private Boolean isPropertyActiveRemoved;
 
         public Boolean getIsPropertyActiveRemoved() {

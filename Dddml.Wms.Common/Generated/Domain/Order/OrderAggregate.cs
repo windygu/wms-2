@@ -594,6 +594,7 @@ namespace Dddml.Wms.Domain.Order
             e.ShipByDate = c.ShipByDate;
             e.EstimatedShipDate = c.EstimatedShipDate;
             e.EstimatedDeliveryDate = c.EstimatedDeliveryDate;
+            e.PickwaveId = c.PickwaveId;
             e.Active = c.Active;
 
             e.CreatedBy = (string)c.RequesterId;
@@ -628,6 +629,7 @@ namespace Dddml.Wms.Domain.Order
             e.ShipByDate = c.ShipByDate;
             e.EstimatedShipDate = c.EstimatedShipDate;
             e.EstimatedDeliveryDate = c.EstimatedDeliveryDate;
+            e.PickwaveId = c.PickwaveId;
             e.Active = c.Active;
             e.IsPropertyShipmentMethodTypeIdRemoved = c.IsPropertyShipmentMethodTypeIdRemoved;
             e.IsPropertySupplierPartyIdRemoved = c.IsPropertySupplierPartyIdRemoved;
@@ -646,6 +648,7 @@ namespace Dddml.Wms.Domain.Order
             e.IsPropertyShipByDateRemoved = c.IsPropertyShipByDateRemoved;
             e.IsPropertyEstimatedShipDateRemoved = c.IsPropertyEstimatedShipDateRemoved;
             e.IsPropertyEstimatedDeliveryDateRemoved = c.IsPropertyEstimatedDeliveryDateRemoved;
+            e.IsPropertyPickwaveIdRemoved = c.IsPropertyPickwaveIdRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
             e.CreatedBy = (string)c.RequesterId;

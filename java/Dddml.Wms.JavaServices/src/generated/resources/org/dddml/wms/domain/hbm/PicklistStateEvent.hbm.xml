@@ -20,6 +20,7 @@
 	<property name="shipmentMethodTypeId" ><column name="ShipmentMethodTypeId" sql-type="VARCHAR(20)" /></property>
 	<property name="statusId" ><column name="StatusId" sql-type="VARCHAR(20)" /></property>
 	<property name="picklistDate" ><column name="PicklistDate" sql-type="DATETIME" /></property>
+	<property name="pickwaveId" ><column name="PickwaveId" sql-type="DECIMAL(20,0)" /></property>
 	<property name="active" ></property>
 
     <property name="createdByUserLogin" column="CreatedByUserLogin"/>
@@ -43,6 +44,8 @@
         <property name="isPropertyStatusIdRemoved" column="IsPropertyStatusIdRemoved"/>
 
         <property name="isPropertyPicklistDateRemoved" column="IsPropertyPicklistDateRemoved"/>
+
+        <property name="isPropertyPickwaveIdRemoved" column="IsPropertyPickwaveIdRemoved"/>
 
         <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 

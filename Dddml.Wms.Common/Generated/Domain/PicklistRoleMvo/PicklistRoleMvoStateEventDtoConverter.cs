@@ -52,6 +52,7 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
             dto.PicklistPicklistDate = e.PicklistPicklistDate;
             dto.PicklistCreatedByUserLogin = e.PicklistCreatedByUserLogin;
             dto.PicklistLastModifiedByUserLogin = e.PicklistLastModifiedByUserLogin;
+            dto.PicklistPickwaveId = e.PicklistPickwaveId;
             dto.PicklistCreatedAt = e.PicklistCreatedAt;
             dto.PicklistUpdatedAt = e.PicklistUpdatedAt;
             dto.PicklistActive = e.PicklistActive;
@@ -75,6 +76,7 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
             dto.PicklistPicklistDate = e.PicklistPicklistDate;
             dto.PicklistCreatedByUserLogin = e.PicklistCreatedByUserLogin;
             dto.PicklistLastModifiedByUserLogin = e.PicklistLastModifiedByUserLogin;
+            dto.PicklistPickwaveId = e.PicklistPickwaveId;
             dto.PicklistCreatedAt = e.PicklistCreatedAt;
             dto.PicklistUpdatedAt = e.PicklistUpdatedAt;
             dto.PicklistActive = e.PicklistActive;
@@ -88,6 +90,7 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
             dto.IsPropertyPicklistPicklistDateRemoved = e.IsPropertyPicklistPicklistDateRemoved;
             dto.IsPropertyPicklistCreatedByUserLoginRemoved = e.IsPropertyPicklistCreatedByUserLoginRemoved;
             dto.IsPropertyPicklistLastModifiedByUserLoginRemoved = e.IsPropertyPicklistLastModifiedByUserLoginRemoved;
+            dto.IsPropertyPicklistPickwaveIdRemoved = e.IsPropertyPicklistPickwaveIdRemoved;
             dto.IsPropertyPicklistCreatedAtRemoved = e.IsPropertyPicklistCreatedAtRemoved;
             dto.IsPropertyPicklistUpdatedAtRemoved = e.IsPropertyPicklistUpdatedAtRemoved;
             dto.IsPropertyPicklistActiveRemoved = e.IsPropertyPicklistActiveRemoved;

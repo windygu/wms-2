@@ -61,6 +61,10 @@ public interface PicklistCommand extends Command
 
         void setPicklistDate(java.sql.Timestamp picklistDate);
 
+        Long getPickwaveId();
+
+        void setPickwaveId(Long pickwaveId);
+
         Boolean getActive();
 
         void setActive(Boolean active);
@@ -96,6 +100,10 @@ public interface PicklistCommand extends Command
         Boolean getIsPropertyPicklistDateRemoved();
 
         void setIsPropertyPicklistDateRemoved(Boolean removed);
+
+        Boolean getIsPropertyPickwaveIdRemoved();
+
+        void setIsPropertyPickwaveIdRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

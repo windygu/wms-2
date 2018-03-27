@@ -43,6 +43,7 @@ public abstract class AbstractPicklistStateCommandConverter<TCreatePicklist exte
         cmd.setShipmentMethodTypeId(state.getShipmentMethodTypeId());
         cmd.setStatusId(state.getStatusId());
         cmd.setPicklistDate(state.getPicklistDate());
+        cmd.setPickwaveId(state.getPickwaveId());
         cmd.setActive(state.getActive());
             
         if (state.getDescription() == null) { cmd.setIsPropertyDescriptionRemoved(true); }
@@ -50,6 +51,7 @@ public abstract class AbstractPicklistStateCommandConverter<TCreatePicklist exte
         if (state.getShipmentMethodTypeId() == null) { cmd.setIsPropertyShipmentMethodTypeIdRemoved(true); }
         if (state.getStatusId() == null) { cmd.setIsPropertyStatusIdRemoved(true); }
         if (state.getPicklistDate() == null) { cmd.setIsPropertyPicklistDateRemoved(true); }
+        if (state.getPickwaveId() == null) { cmd.setIsPropertyPickwaveIdRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
         for (PicklistRoleState d : state.getPicklistRoles())
         {
@@ -70,6 +72,7 @@ public abstract class AbstractPicklistStateCommandConverter<TCreatePicklist exte
         cmd.setShipmentMethodTypeId(state.getShipmentMethodTypeId());
         cmd.setStatusId(state.getStatusId());
         cmd.setPicklistDate(state.getPicklistDate());
+        cmd.setPickwaveId(state.getPickwaveId());
         cmd.setActive(state.getActive());
         for (PicklistRoleState d : state.getPicklistRoles())
         {

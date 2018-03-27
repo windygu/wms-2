@@ -208,6 +208,34 @@ namespace Dddml.Wms.Domain.Picklist
             }
         }
 
+		public virtual long? PickwaveId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("PickwaveId"))
+                {
+                    return _state.PickwaveId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.PickwaveId = value;
+            }
+        }
+
+        long? IPicklistStateProperties.PickwaveId
+        {
+            get 
+            {
+                return (this._state as IPicklistStateProperties).PickwaveId;
+            }
+            set 
+            {
+                (this._state as IPicklistStateProperties).PickwaveId = value;
+            }
+        }
+
 		public virtual bool? Active
         {
             get

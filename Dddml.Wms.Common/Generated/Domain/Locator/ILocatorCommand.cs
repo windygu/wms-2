@@ -41,6 +41,8 @@ namespace Dddml.Wms.Domain.Locator
 
 		string Description { get; set; }
 
+		string LocatorTypeId { get; set; }
+
 		bool? Active { get; set; }
 
 
@@ -70,6 +72,8 @@ namespace Dddml.Wms.Domain.Locator
 		bool IsPropertyZRemoved { get; set; }
 
 		bool IsPropertyDescriptionRemoved { get; set; }
+
+		bool IsPropertyLocatorTypeIdRemoved { get; set; }
 
 		bool IsPropertyActiveRemoved { get; set; }
 

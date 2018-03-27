@@ -326,6 +326,27 @@
   </bean>
 
 
+  <bean id="locatorTypeStateRepository" class="org.dddml.wms.domain.locatortype.hibernate.HibernateLocatorTypeStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="locatorTypeStateQueryRepository" class="org.dddml.wms.domain.locatortype.hibernate.HibernateLocatorTypeStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="locatorTypeEventStore" class="org.dddml.wms.domain.locatortype.hibernate.HibernateLocatorTypeEventStore">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="locatorTypeApplicationService" class="org.dddml.wms.domain.locatortype.AbstractLocatorTypeApplicationService$SimpleLocatorTypeApplicationService">
+    <constructor-arg ref="locatorTypeEventStore"/>
+    <constructor-arg ref="locatorTypeStateRepository"/>
+    <constructor-arg ref="locatorTypeStateQueryRepository"/>
+  </bean>
+
+
   <bean id="lotStateRepository" class="org.dddml.wms.domain.lot.hibernate.HibernateLotStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
@@ -689,6 +710,27 @@
     <constructor-arg ref="picklistBinEventStore"/>
     <constructor-arg ref="picklistBinStateRepository"/>
     <constructor-arg ref="picklistBinStateQueryRepository"/>
+  </bean>
+
+
+  <bean id="pickwaveStateRepository" class="org.dddml.wms.domain.pickwave.hibernate.HibernatePickwaveStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="pickwaveStateQueryRepository" class="org.dddml.wms.domain.pickwave.hibernate.HibernatePickwaveStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="pickwaveEventStore" class="org.dddml.wms.domain.pickwave.hibernate.HibernatePickwaveEventStore">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="pickwaveApplicationService" class="org.dddml.wms.domain.pickwave.AbstractPickwaveApplicationService$SimplePickwaveApplicationService">
+    <constructor-arg ref="pickwaveEventStore"/>
+    <constructor-arg ref="pickwaveStateRepository"/>
+    <constructor-arg ref="pickwaveStateQueryRepository"/>
   </bean>
 
 

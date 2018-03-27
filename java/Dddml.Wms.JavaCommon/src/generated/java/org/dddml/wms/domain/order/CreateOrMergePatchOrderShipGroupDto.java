@@ -209,6 +209,18 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         this.estimatedDeliveryDate = estimatedDeliveryDate;
     }
 
+    private Long pickwaveId;
+
+    public Long getPickwaveId()
+    {
+        return this.pickwaveId;
+    }
+
+    public void setPickwaveId(Long pickwaveId)
+    {
+        this.pickwaveId = pickwaveId;
+    }
+
     private Boolean active;
 
     public Boolean getActive()
@@ -425,6 +437,18 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         this.isPropertyEstimatedDeliveryDateRemoved = removed;
     }
 
+    private Boolean isPropertyPickwaveIdRemoved;
+
+    public Boolean getIsPropertyPickwaveIdRemoved()
+    {
+        return this.isPropertyPickwaveIdRemoved;
+    }
+
+    public void setIsPropertyPickwaveIdRemoved(Boolean removed)
+    {
+        this.isPropertyPickwaveIdRemoved = removed;
+    }
+
     private Boolean isPropertyActiveRemoved;
 
     public Boolean getIsPropertyActiveRemoved()
@@ -457,6 +481,7 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         command.setShipByDate(this.getShipByDate());
         command.setEstimatedShipDate(this.getEstimatedShipDate());
         command.setEstimatedDeliveryDate(this.getEstimatedDeliveryDate());
+        command.setPickwaveId(this.getPickwaveId());
         command.setActive(this.getActive());
     }
 
@@ -504,6 +529,7 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         command.setIsPropertyShipByDateRemoved(this.getIsPropertyShipByDateRemoved());
         command.setIsPropertyEstimatedShipDateRemoved(this.getIsPropertyEstimatedShipDateRemoved());
         command.setIsPropertyEstimatedDeliveryDateRemoved(this.getIsPropertyEstimatedDeliveryDateRemoved());
+        command.setIsPropertyPickwaveIdRemoved(this.getIsPropertyPickwaveIdRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
     }
 

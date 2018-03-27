@@ -226,6 +226,18 @@ public abstract class AbstractOrderShipGroupMvoState implements OrderShipGroupMv
         this.estimatedDeliveryDate = estimatedDeliveryDate;
     }
 
+    private Long pickwaveId;
+
+    public Long getPickwaveId()
+    {
+        return this.pickwaveId;
+    }
+
+    public void setPickwaveId(Long pickwaveId)
+    {
+        this.pickwaveId = pickwaveId;
+    }
+
     private Long version;
 
     public Long getVersion()
@@ -751,6 +763,7 @@ public abstract class AbstractOrderShipGroupMvoState implements OrderShipGroupMv
         this.setShipByDate(e.getShipByDate());
         this.setEstimatedShipDate(e.getEstimatedShipDate());
         this.setEstimatedDeliveryDate(e.getEstimatedDeliveryDate());
+        this.setPickwaveId(e.getPickwaveId());
         this.setVersion(e.getVersion());
         this.setActive(e.getActive());
         this.setOrderOrderTypeId(e.getOrderOrderTypeId());
@@ -980,6 +993,17 @@ public abstract class AbstractOrderShipGroupMvoState implements OrderShipGroupMv
         else
         {
             this.setEstimatedDeliveryDate(e.getEstimatedDeliveryDate());
+        }
+        if (e.getPickwaveId() == null)
+        {
+            if (e.getIsPropertyPickwaveIdRemoved() != null && e.getIsPropertyPickwaveIdRemoved())
+            {
+                this.setPickwaveId(null);
+            }
+        }
+        else
+        {
+            this.setPickwaveId(e.getPickwaveId());
         }
         if (e.getVersion() == null)
         {

@@ -129,6 +129,18 @@ public abstract class AbstractLocatorState implements LocatorState
         this.description = description;
     }
 
+    private String locatorTypeId;
+
+    public String getLocatorTypeId()
+    {
+        return this.locatorTypeId;
+    }
+
+    public void setLocatorTypeId(String locatorTypeId)
+    {
+        this.locatorTypeId = locatorTypeId;
+    }
+
     private Long version;
 
     public Long getVersion()
@@ -289,6 +301,7 @@ public abstract class AbstractLocatorState implements LocatorState
         this.setY(e.getY());
         this.setZ(e.getZ());
         this.setDescription(e.getDescription());
+        this.setLocatorTypeId(e.getLocatorTypeId());
         this.setActive(e.getActive());
 
         this.setDeleted(false);
@@ -400,6 +413,17 @@ public abstract class AbstractLocatorState implements LocatorState
         else
         {
             this.setDescription(e.getDescription());
+        }
+        if (e.getLocatorTypeId() == null)
+        {
+            if (e.getIsPropertyLocatorTypeIdRemoved() != null && e.getIsPropertyLocatorTypeIdRemoved())
+            {
+                this.setLocatorTypeId(null);
+            }
+        }
+        else
+        {
+            this.setLocatorTypeId(e.getLocatorTypeId());
         }
         if (e.getActive() == null)
         {

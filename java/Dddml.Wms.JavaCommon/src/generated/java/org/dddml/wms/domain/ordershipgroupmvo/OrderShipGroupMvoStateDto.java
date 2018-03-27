@@ -226,6 +226,18 @@ public class OrderShipGroupMvoStateDto
         this.estimatedDeliveryDate = estimatedDeliveryDate;
     }
 
+    private Long pickwaveId;
+
+    public Long getPickwaveId()
+    {
+        return this.pickwaveId;
+    }
+
+    public void setPickwaveId(Long pickwaveId)
+    {
+        this.pickwaveId = pickwaveId;
+    }
+
     private Long version;
 
     public Long getVersion()
@@ -737,6 +749,9 @@ public class OrderShipGroupMvoStateDto
             }
             if (returnedFieldsContains("EstimatedDeliveryDate")) {
                 dto.setEstimatedDeliveryDate(state.getEstimatedDeliveryDate());
+            }
+            if (returnedFieldsContains("PickwaveId")) {
+                dto.setPickwaveId(state.getPickwaveId());
             }
             if (returnedFieldsContains("Version")) {
                 dto.setVersion(state.getVersion());

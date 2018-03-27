@@ -12,6 +12,7 @@
     <discriminator column="StateEventType" type="String" />
 
     <property name="PartyTypeId" ><column name="PartyTypeId" sql-type="VARCHAR(20)" /></property>
+    <property name="PrimaryRoleTypeId" ><column name="PrimaryRoleTypeId" sql-type="VARCHAR(20)" /></property>
     <property name="OrganizationName" ></property>
     <property name="Description" ></property>
     <property name="Type" ></property>
@@ -30,6 +31,8 @@
 
 
         <property name="IsPropertyPartyTypeIdRemoved" column="IsPropertyPartyTypeIdRemoved"/>
+
+        <property name="IsPropertyPrimaryRoleTypeIdRemoved" column="IsPropertyPrimaryRoleTypeIdRemoved"/>
 
         <property name="IsPropertyOrganizationNameRemoved" column="IsPropertyOrganizationNameRemoved"/>
 

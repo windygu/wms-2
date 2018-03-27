@@ -60,6 +60,8 @@ namespace Dddml.Wms.Domain.Locator
 
 		public virtual string Description { get; set; }
 
+		public virtual string LocatorTypeId { get; set; }
+
 		public virtual bool? Active { get; set; }
 
 		public virtual string CreatedBy { get; set; }
@@ -259,6 +261,25 @@ namespace Dddml.Wms.Domain.Locator
             set 
             {
                 this.IsPropertyDescriptionRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyLocatorTypeIdRemoved { get; set; }
+
+        bool ILocatorStateMergePatched.IsPropertyLocatorTypeIdRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyLocatorTypeIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyLocatorTypeIdRemoved = value;
             }
         }
 

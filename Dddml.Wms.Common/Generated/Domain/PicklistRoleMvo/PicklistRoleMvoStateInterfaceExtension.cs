@@ -58,6 +58,7 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
             cmd.PicklistPicklistDate = state.PicklistPicklistDate;
             cmd.PicklistCreatedByUserLogin = state.PicklistCreatedByUserLogin;
             cmd.PicklistLastModifiedByUserLogin = state.PicklistLastModifiedByUserLogin;
+            cmd.PicklistPickwaveId = state.PicklistPickwaveId;
             cmd.PicklistCreatedAt = state.PicklistCreatedAt;
             cmd.PicklistUpdatedAt = state.PicklistUpdatedAt;
             cmd.PicklistActive = state.PicklistActive;
@@ -70,6 +71,7 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
             if (state.PicklistPicklistDate == null) { cmd.IsPropertyPicklistPicklistDateRemoved = true; }
             if (state.PicklistCreatedByUserLogin == null) { cmd.IsPropertyPicklistCreatedByUserLoginRemoved = true; }
             if (state.PicklistLastModifiedByUserLogin == null) { cmd.IsPropertyPicklistLastModifiedByUserLoginRemoved = true; }
+            if (state.PicklistPickwaveId == null) { cmd.IsPropertyPicklistPickwaveIdRemoved = true; }
             return cmd;
         }
 
@@ -90,6 +92,7 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
             cmd.PicklistPicklistDate = state.PicklistPicklistDate;
             cmd.PicklistCreatedByUserLogin = state.PicklistCreatedByUserLogin;
             cmd.PicklistLastModifiedByUserLogin = state.PicklistLastModifiedByUserLogin;
+            cmd.PicklistPickwaveId = state.PicklistPickwaveId;
             cmd.PicklistCreatedAt = state.PicklistCreatedAt;
             cmd.PicklistUpdatedAt = state.PicklistUpdatedAt;
             cmd.PicklistActive = state.PicklistActive;

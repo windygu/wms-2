@@ -18,6 +18,8 @@ namespace Dddml.Wms.Domain.Party
 
 		public virtual string PartyTypeId { get; set; }
 
+		public virtual string PrimaryRoleTypeId { get; set; }
+
 		public virtual string OrganizationName { get; set; }
 
 		public virtual string Description { get; set; }

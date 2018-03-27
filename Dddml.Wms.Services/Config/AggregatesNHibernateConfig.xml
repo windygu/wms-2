@@ -337,6 +337,28 @@
 
 
 
+  <object id="locatorTypeStateRepository" type="Dddml.Wms.Domain.LocatorType.NHibernate.NHibernateLocatorTypeStateRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="locatorTypeStateQueryRepository" type="Dddml.Wms.Domain.LocatorType.NHibernate.NHibernateLocatorTypeStateQueryRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="locatorTypeEventStore" type="Dddml.Wms.Domain.LocatorType.NHibernate.NHibernateLocatorTypeEventStore, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
+  <object id="locatorTypeApplicationService" type="Dddml.Wms.Domain.LocatorType.NHibernate.LocatorTypeApplicationService, Dddml.Wms.Services">
+    <constructor-arg ref="locatorTypeEventStore"/>
+    <constructor-arg ref="locatorTypeStateRepository"/>
+    <constructor-arg ref="locatorTypeStateQueryRepository"/>
+  </object>
+
+
+
   <object id="lotStateRepository" type="Dddml.Wms.Domain.Lot.NHibernate.NHibernateLotStateRepository, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
     <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
@@ -713,6 +735,28 @@
     <constructor-arg ref="picklistBinEventStore"/>
     <constructor-arg ref="picklistBinStateRepository"/>
     <constructor-arg ref="picklistBinStateQueryRepository"/>
+  </object>
+
+
+
+  <object id="pickwaveStateRepository" type="Dddml.Wms.Domain.Pickwave.NHibernate.NHibernatePickwaveStateRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="pickwaveStateQueryRepository" type="Dddml.Wms.Domain.Pickwave.NHibernate.NHibernatePickwaveStateQueryRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="pickwaveEventStore" type="Dddml.Wms.Domain.Pickwave.NHibernate.NHibernatePickwaveEventStore, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
+  <object id="pickwaveApplicationService" type="Dddml.Wms.Domain.Pickwave.NHibernate.PickwaveApplicationService, Dddml.Wms.Services">
+    <constructor-arg ref="pickwaveEventStore"/>
+    <constructor-arg ref="pickwaveStateRepository"/>
+    <constructor-arg ref="pickwaveStateQueryRepository"/>
   </object>
 
 

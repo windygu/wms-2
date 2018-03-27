@@ -1,0 +1,20 @@
+#%DDDML 0.1
+
+---
+
+# ------------------------------
+aggregates:
+
+  # --------------- aggregate ---------------
+  # 货位类型
+  LocatorType:
+
+    id:
+      name: LocatorTypeId
+      type: string
+
+    properties:
+
+      Description:
+        type: string
+          

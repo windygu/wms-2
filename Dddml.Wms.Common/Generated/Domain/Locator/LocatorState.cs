@@ -192,6 +192,8 @@ namespace Dddml.Wms.Domain.Locator
 
 			this.Description = e.Description;
 
+			this.LocatorTypeId = e.LocatorTypeId;
+
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 
 			this.Deleted = false;
@@ -313,6 +315,18 @@ namespace Dddml.Wms.Domain.Locator
 			else
 			{
 				this.Description = e.Description;
+			}
+
+			if (e.LocatorTypeId == null)
+			{
+				if (e.IsPropertyLocatorTypeIdRemoved)
+				{
+					this.LocatorTypeId = default(string);
+				}
+			}
+			else
+			{
+				this.LocatorTypeId = e.LocatorTypeId;
 			}
 
 			if (e.Active == null)

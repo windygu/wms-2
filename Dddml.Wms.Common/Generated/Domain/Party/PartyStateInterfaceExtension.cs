@@ -49,6 +49,7 @@ namespace Dddml.Wms.Domain.Party
 
             cmd.PartyId = state.PartyId;
             cmd.PartyTypeId = state.PartyTypeId;
+            cmd.PrimaryRoleTypeId = state.PrimaryRoleTypeId;
             cmd.OrganizationName = state.OrganizationName;
             cmd.Description = state.Description;
             cmd.Type = state.Type;
@@ -56,6 +57,7 @@ namespace Dddml.Wms.Domain.Party
             cmd.Active = ((IPartyStateProperties)state).Active;
             
             if (state.PartyTypeId == null) { cmd.IsPropertyPartyTypeIdRemoved = true; }
+            if (state.PrimaryRoleTypeId == null) { cmd.IsPropertyPrimaryRoleTypeIdRemoved = true; }
             if (state.OrganizationName == null) { cmd.IsPropertyOrganizationNameRemoved = true; }
             if (state.Description == null) { cmd.IsPropertyDescriptionRemoved = true; }
             if (state.Type == null) { cmd.IsPropertyTypeRemoved = true; }
@@ -71,6 +73,7 @@ namespace Dddml.Wms.Domain.Party
 
             cmd.PartyId = state.PartyId;
             cmd.PartyTypeId = state.PartyTypeId;
+            cmd.PrimaryRoleTypeId = state.PrimaryRoleTypeId;
             cmd.OrganizationName = state.OrganizationName;
             cmd.Description = state.Description;
             cmd.Type = state.Type;

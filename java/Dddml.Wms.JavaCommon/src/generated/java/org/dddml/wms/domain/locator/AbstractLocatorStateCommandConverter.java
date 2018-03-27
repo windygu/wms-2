@@ -46,6 +46,7 @@ public abstract class AbstractLocatorStateCommandConverter<TCreateLocator extend
         cmd.setY(state.getY());
         cmd.setZ(state.getZ());
         cmd.setDescription(state.getDescription());
+        cmd.setLocatorTypeId(state.getLocatorTypeId());
         cmd.setActive(state.getActive());
             
         if (state.getWarehouseId() == null) { cmd.setIsPropertyWarehouseIdRemoved(true); }
@@ -57,6 +58,7 @@ public abstract class AbstractLocatorStateCommandConverter<TCreateLocator extend
         if (state.getY() == null) { cmd.setIsPropertyYRemoved(true); }
         if (state.getZ() == null) { cmd.setIsPropertyZRemoved(true); }
         if (state.getDescription() == null) { cmd.setIsPropertyDescriptionRemoved(true); }
+        if (state.getLocatorTypeId() == null) { cmd.setIsPropertyLocatorTypeIdRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
         return cmd;
     }
@@ -76,6 +78,7 @@ public abstract class AbstractLocatorStateCommandConverter<TCreateLocator extend
         cmd.setY(state.getY());
         cmd.setZ(state.getZ());
         cmd.setDescription(state.getDescription());
+        cmd.setLocatorTypeId(state.getLocatorTypeId());
         cmd.setActive(state.getActive());
         return cmd;
     }

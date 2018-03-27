@@ -18,6 +18,7 @@
     <property name="Y" ></property>
     <property name="Z" ></property>
     <property name="Description" ></property>
+    <property name="LocatorTypeId" ></property>
     <property name="CreatedBy" ></property>
     <property name="UpdatedBy" ></property>
     <property name="Active" ></property>

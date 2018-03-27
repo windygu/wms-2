@@ -82,6 +82,18 @@ public class PicklistStateDto
         this.picklistDate = picklistDate;
     }
 
+    private Long pickwaveId;
+
+    public Long getPickwaveId()
+    {
+        return this.pickwaveId;
+    }
+
+    public void setPickwaveId(Long pickwaveId)
+    {
+        this.pickwaveId = pickwaveId;
+    }
+
     private Boolean active;
 
     public Boolean getActive()
@@ -209,6 +221,9 @@ public class PicklistStateDto
             }
             if (returnedFieldsContains("PicklistDate")) {
                 dto.setPicklistDate(state.getPicklistDate());
+            }
+            if (returnedFieldsContains("PickwaveId")) {
+                dto.setPickwaveId(state.getPickwaveId());
             }
             if (returnedFieldsContains("Active")) {
                 dto.setActive(state.getActive());

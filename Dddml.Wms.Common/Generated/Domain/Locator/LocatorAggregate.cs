@@ -116,6 +116,7 @@ namespace Dddml.Wms.Domain.Locator
             e.Y = c.Y;
             e.Z = c.Z;
             e.Description = c.Description;
+            e.LocatorTypeId = c.LocatorTypeId;
             e.Active = c.Active;
             e.CommandId = c.CommandId;
 
@@ -142,6 +143,7 @@ namespace Dddml.Wms.Domain.Locator
             e.Y = c.Y;
             e.Z = c.Z;
             e.Description = c.Description;
+            e.LocatorTypeId = c.LocatorTypeId;
             e.Active = c.Active;
             e.IsPropertyWarehouseIdRemoved = c.IsPropertyWarehouseIdRemoved;
             e.IsPropertyParentLocatorIdRemoved = c.IsPropertyParentLocatorIdRemoved;
@@ -152,6 +154,7 @@ namespace Dddml.Wms.Domain.Locator
             e.IsPropertyYRemoved = c.IsPropertyYRemoved;
             e.IsPropertyZRemoved = c.IsPropertyZRemoved;
             e.IsPropertyDescriptionRemoved = c.IsPropertyDescriptionRemoved;
+            e.IsPropertyLocatorTypeIdRemoved = c.IsPropertyLocatorTypeIdRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
             e.CommandId = c.CommandId;

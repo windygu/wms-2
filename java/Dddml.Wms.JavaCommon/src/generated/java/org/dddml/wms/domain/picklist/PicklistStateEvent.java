@@ -38,6 +38,10 @@ public interface PicklistStateEvent extends Event
 
     void setCreatedByUserLogin(String createdByUserLogin);
 
+    Long getPickwaveId();
+
+    void setPickwaveId(Long pickwaveId);
+
     Date getCreatedAt();
 
     void setCreatedAt(Date createdAt);
@@ -83,6 +87,10 @@ public interface PicklistStateEvent extends Event
         Boolean getIsPropertyPicklistDateRemoved();
 
         void setIsPropertyPicklistDateRemoved(Boolean removed);
+
+        Boolean getIsPropertyPickwaveIdRemoved();
+
+        void setIsPropertyPickwaveIdRemoved(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

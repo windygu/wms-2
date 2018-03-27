@@ -47,6 +47,7 @@ public abstract class AbstractPicklistRoleMvoStateCommandConverter<TCreatePickli
         cmd.setPicklistPicklistDate(state.getPicklistPicklistDate());
         cmd.setPicklistCreatedByUserLogin(state.getPicklistCreatedByUserLogin());
         cmd.setPicklistLastModifiedByUserLogin(state.getPicklistLastModifiedByUserLogin());
+        cmd.setPicklistPickwaveId(state.getPicklistPickwaveId());
         cmd.setPicklistCreatedAt(state.getPicklistCreatedAt());
         cmd.setPicklistUpdatedAt(state.getPicklistUpdatedAt());
         cmd.setPicklistActive(state.getPicklistActive());
@@ -61,6 +62,7 @@ public abstract class AbstractPicklistRoleMvoStateCommandConverter<TCreatePickli
         if (state.getPicklistPicklistDate() == null) { cmd.setIsPropertyPicklistPicklistDateRemoved(true); }
         if (state.getPicklistCreatedByUserLogin() == null) { cmd.setIsPropertyPicklistCreatedByUserLoginRemoved(true); }
         if (state.getPicklistLastModifiedByUserLogin() == null) { cmd.setIsPropertyPicklistLastModifiedByUserLoginRemoved(true); }
+        if (state.getPicklistPickwaveId() == null) { cmd.setIsPropertyPicklistPickwaveIdRemoved(true); }
         if (state.getPicklistCreatedAt() == null) { cmd.setIsPropertyPicklistCreatedAtRemoved(true); }
         if (state.getPicklistUpdatedAt() == null) { cmd.setIsPropertyPicklistUpdatedAtRemoved(true); }
         if (state.getPicklistActive() == null) { cmd.setIsPropertyPicklistActiveRemoved(true); }
@@ -83,6 +85,7 @@ public abstract class AbstractPicklistRoleMvoStateCommandConverter<TCreatePickli
         cmd.setPicklistPicklistDate(state.getPicklistPicklistDate());
         cmd.setPicklistCreatedByUserLogin(state.getPicklistCreatedByUserLogin());
         cmd.setPicklistLastModifiedByUserLogin(state.getPicklistLastModifiedByUserLogin());
+        cmd.setPicklistPickwaveId(state.getPicklistPickwaveId());
         cmd.setPicklistCreatedAt(state.getPicklistCreatedAt());
         cmd.setPicklistUpdatedAt(state.getPicklistUpdatedAt());
         cmd.setPicklistActive(state.getPicklistActive());

@@ -123,6 +123,12 @@ namespace Dddml.Wms.Domain.OrderShipGroupMvo
             set;
         }
 
+        long? PickwaveId
+        {
+            get;
+            set;
+        }
+
         long? Version
         {
             get;

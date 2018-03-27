@@ -51,6 +51,8 @@ namespace Dddml.Wms.Domain.Order
 
 		public virtual DateTime? EstimatedDeliveryDate { get; set; }
 
+		public virtual long? PickwaveId { get; set; }
+
 		public virtual long Version { get; set; }
 
 		public virtual bool Active { get; set; }

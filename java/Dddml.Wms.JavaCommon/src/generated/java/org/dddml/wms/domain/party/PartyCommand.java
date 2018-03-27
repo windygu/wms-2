@@ -44,6 +44,10 @@ public interface PartyCommand extends Command
 
         void setPartyTypeId(String partyTypeId);
 
+        String getPrimaryRoleTypeId();
+
+        void setPrimaryRoleTypeId(String primaryRoleTypeId);
+
         String getOrganizationName();
 
         void setOrganizationName(String organizationName);
@@ -75,6 +79,10 @@ public interface PartyCommand extends Command
         Boolean getIsPropertyPartyTypeIdRemoved();
 
         void setIsPropertyPartyTypeIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyPrimaryRoleTypeIdRemoved();
+
+        void setIsPropertyPrimaryRoleTypeIdRemoved(Boolean removed);
 
         Boolean getIsPropertyOrganizationNameRemoved();
 

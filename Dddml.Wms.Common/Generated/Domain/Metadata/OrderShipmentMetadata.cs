@@ -339,6 +339,37 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
+                    Name = "OrderShipmentId.ShipGroupSeqId",
+                    Type = typeof(long),
+                    TypeName = "long",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsReallyFlattened = false,
+                    SourceChainingName = "OrderShipmentId.ShipGroupSeqId",
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
                     Name = "OrderShipmentId.ShipmentId",
                     Type = typeof(string),
                     TypeName = "string",
@@ -435,6 +466,8 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("orderShipmentId.orderId", "OrderShipmentId.OrderId");
             d.Add("OrderShipmentId.OrderItemSeqId", "OrderShipmentId.OrderItemSeqId");
             d.Add("orderShipmentId.orderItemSeqId", "OrderShipmentId.OrderItemSeqId");
+            d.Add("OrderShipmentId.ShipGroupSeqId", "OrderShipmentId.ShipGroupSeqId");
+            d.Add("orderShipmentId.shipGroupSeqId", "OrderShipmentId.ShipGroupSeqId");
             d.Add("OrderShipmentId.ShipmentId", "OrderShipmentId.ShipmentId");
             d.Add("orderShipmentId.shipmentId", "OrderShipmentId.ShipmentId");
             d.Add("OrderShipmentId.ShipmentItemSeqId", "OrderShipmentId.ShipmentItemSeqId");

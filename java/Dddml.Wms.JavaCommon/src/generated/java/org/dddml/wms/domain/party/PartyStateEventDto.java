@@ -44,6 +44,16 @@ public class PartyStateEventDto extends AbstractStateEvent
         this.partyTypeId = partyTypeId;
     }
 
+    private String primaryRoleTypeId;
+
+    public String getPrimaryRoleTypeId() {
+        return this.primaryRoleTypeId;
+    }
+
+    public void setPrimaryRoleTypeId(String primaryRoleTypeId) {
+        this.primaryRoleTypeId = primaryRoleTypeId;
+    }
+
     private String organizationName;
 
     public String getOrganizationName() {
@@ -122,6 +132,16 @@ public class PartyStateEventDto extends AbstractStateEvent
 
     public void setIsPropertyPartyTypeIdRemoved(Boolean removed) {
         this.isPropertyPartyTypeIdRemoved = removed;
+    }
+
+    private Boolean isPropertyPrimaryRoleTypeIdRemoved;
+
+    public Boolean getIsPropertyPrimaryRoleTypeIdRemoved() {
+        return this.isPropertyPrimaryRoleTypeIdRemoved;
+    }
+
+    public void setIsPropertyPrimaryRoleTypeIdRemoved(Boolean removed) {
+        this.isPropertyPrimaryRoleTypeIdRemoved = removed;
     }
 
     private Boolean isPropertyOrganizationNameRemoved;

@@ -1134,6 +1134,71 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\itemissuancemvo\ItemIssuanceMvoStateRepository.java">
       <DependentUpon>GenerateItemIssuanceMvoDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\locatortype\AbstractLocatorTypeAggregate.java">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\locatortype\AbstractLocatorTypeApplicationService.java">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\locatortype\AbstractLocatorTypeCommand.java">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\locatortype\AbstractLocatorTypeCommandDto.java">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\locatortype\AbstractLocatorTypeState.java">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\locatortype\AbstractLocatorTypeStateCommandConverter.java">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\locatortype\AbstractLocatorTypeStateEvent.java">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\locatortype\CreateOrMergePatchLocatorTypeDto.java">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\locatortype\DeleteLocatorTypeDto.java">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\locatortype\GenerateLocatorTypeDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\locatortype\LocatorTypeAggregate.java">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\locatortype\LocatorTypeApplicationService.java">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\locatortype\LocatorTypeCommand.java">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\locatortype\LocatorTypeEventId.java">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\locatortype\LocatorTypeState.java">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\locatortype\LocatorTypeStateDto.java">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\locatortype\LocatorTypeStateEvent.java">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\locatortype\LocatorTypeStateEventDto.java">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\locatortype\LocatorTypeStateEventDtoConverter.java">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\locatortype\LocatorTypeStateQueryRepository.java">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\locatortype\LocatorTypeStateRepository.java">
+      <DependentUpon>GenerateLocatorTypeDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\locator\LocatorEventId.java">
       <DependentUpon>GenerateLocatorDomain.tt</DependentUpon>
     </Content>
@@ -1162,6 +1227,12 @@
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\ItemIssuanceMvoMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\LocatorTypeFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\LocatorTypeMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrderItemShipGrpInvReservationFilteringProperties.java">
@@ -1234,6 +1305,12 @@
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\PicklistRoleMvoMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\PickwaveFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\PickwaveMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\RoleTypeFilteringProperties.java">
@@ -2070,6 +2147,71 @@
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\picklist\RemovePicklistRoleDto.java">
       <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\pickwave\AbstractPickwaveAggregate.java">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\pickwave\AbstractPickwaveApplicationService.java">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\pickwave\AbstractPickwaveCommand.java">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\pickwave\AbstractPickwaveCommandDto.java">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\pickwave\AbstractPickwaveState.java">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\pickwave\AbstractPickwaveStateCommandConverter.java">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\pickwave\AbstractPickwaveStateEvent.java">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\pickwave\CreateOrMergePatchPickwaveDto.java">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\pickwave\DeletePickwaveDto.java">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\pickwave\GeneratePickwaveDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\pickwave\PickwaveAggregate.java">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\pickwave\PickwaveApplicationService.java">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\pickwave\PickwaveCommand.java">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\pickwave\PickwaveEventId.java">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\pickwave\PickwaveState.java">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\pickwave\PickwaveStateDto.java">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\pickwave\PickwaveStateEvent.java">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\pickwave\PickwaveStateEventDto.java">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\pickwave\PickwaveStateEventDtoConverter.java">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\pickwave\PickwaveStateQueryRepository.java">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\pickwave\PickwaveStateRepository.java">
+      <DependentUpon>GeneratePickwaveDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\productcategorymember\ProductCategoryMemberEventId.java">
       <DependentUpon>GenerateProductCategoryMemberDomain.tt</DependentUpon>
@@ -3546,6 +3688,8 @@
 .\ItemIssuanceMvoMetadata.java
 .\LocatorFilteringProperties.java
 .\LocatorMetadata.java
+.\LocatorTypeFilteringProperties.java
+.\LocatorTypeMetadata.java
 .\LotFilteringProperties.java
 .\LotMetadata.java
 .\MovementConfirmationFilteringProperties.java
@@ -3606,6 +3750,8 @@
 .\PicklistRoleMetadata.java
 .\PicklistRoleMvoFilteringProperties.java
 .\PicklistRoleMvoMetadata.java
+.\PickwaveFilteringProperties.java
+.\PickwaveMetadata.java
 .\ProductCategoryFilteringProperties.java
 .\ProductCategoryMemberFilteringProperties.java
 .\ProductCategoryMemberMetadata.java
@@ -8314,6 +8460,60 @@
 .\OrderItemShipGrpInvReservationStateQueryRepository.java
 .\OrderItemShipGrpInvReservationStateRepository.java
 .\OrderItemShipGrpInvResId.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\locatortype\GenerateLocatorTypeDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateLocatorTypeDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractLocatorTypeAggregate.java
+.\AbstractLocatorTypeApplicationService.java
+.\AbstractLocatorTypeCommand.java
+.\AbstractLocatorTypeCommandDto.java
+.\AbstractLocatorTypeState.java
+.\AbstractLocatorTypeStateCommandConverter.java
+.\AbstractLocatorTypeStateEvent.java
+.\CreateOrMergePatchLocatorTypeDto.java
+.\DeleteLocatorTypeDto.java
+.\GenerateLocatorTypeDomain.txt
+.\LocatorTypeAggregate.java
+.\LocatorTypeApplicationService.java
+.\LocatorTypeCommand.java
+.\LocatorTypeEventId.java
+.\LocatorTypeState.java
+.\LocatorTypeStateDto.java
+.\LocatorTypeStateEvent.java
+.\LocatorTypeStateEventDto.java
+.\LocatorTypeStateEventDtoConverter.java
+.\LocatorTypeStateQueryRepository.java
+.\LocatorTypeStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\pickwave\GeneratePickwaveDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GeneratePickwaveDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractPickwaveAggregate.java
+.\AbstractPickwaveApplicationService.java
+.\AbstractPickwaveCommand.java
+.\AbstractPickwaveCommandDto.java
+.\AbstractPickwaveState.java
+.\AbstractPickwaveStateCommandConverter.java
+.\AbstractPickwaveStateEvent.java
+.\CreateOrMergePatchPickwaveDto.java
+.\DeletePickwaveDto.java
+.\GeneratePickwaveDomain.txt
+.\PickwaveAggregate.java
+.\PickwaveApplicationService.java
+.\PickwaveCommand.java
+.\PickwaveEventId.java
+.\PickwaveState.java
+.\PickwaveStateDto.java
+.\PickwaveStateEvent.java
+.\PickwaveStateEventDto.java
+.\PickwaveStateEventDtoConverter.java
+.\PickwaveStateQueryRepository.java
+.\PickwaveStateRepository.java
 </LastOutputs>
     </Content>
   </ItemGroup>

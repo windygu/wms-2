@@ -45,6 +45,7 @@ using Dddml.Wms.Domain.InventoryPostingRule;
 using Dddml.Wms.Domain.InventoryPRTriggered;
 using Dddml.Wms.Domain.ItemIssuanceMvo;
 using Dddml.Wms.Domain.Locator;
+using Dddml.Wms.Domain.LocatorType;
 using Dddml.Wms.Domain.Lot;
 using Dddml.Wms.Domain.Movement;
 using Dddml.Wms.Domain.MovementConfirmation;
@@ -67,6 +68,7 @@ using Dddml.Wms.Domain.Picklist;
 using Dddml.Wms.Domain.PicklistBin;
 using Dddml.Wms.Domain.PicklistItemMvo;
 using Dddml.Wms.Domain.PicklistRoleMvo;
+using Dddml.Wms.Domain.Pickwave;
 using Dddml.Wms.Domain.Product;
 using Dddml.Wms.Domain.ProductCategory;
 using Dddml.Wms.Domain.ProductCategoryMember;
@@ -6445,6 +6447,434 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 				
             }
             return new Models.LocatorHistoryStateGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class LocatorType
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal LocatorType(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.LocatorTypeGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.LocatorTypeGetResponse> Get(Models.LocatorTypeGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "LocatorTypes/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.Fields != null)
+                    url += "&fields=" + request.Query.Fields;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.LocatorTypeGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+
+        		/// <param name="request">Models.LocatorTypePutRequest</param>
+        public virtual async Task<ApiResponse> Put(Models.LocatorTypePutRequest request)
+        {
+
+            var url = "LocatorTypes/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Put, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+            if(request.Formatter == null)
+                request.Formatter = proxy.GetJsonMediaTypeFormatter();
+            req.Content = new ObjectContent(typeof(CreateLocatorTypeDto), request.Content , request.Formatter);                           
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+
+        		/// <param name="request">Models.LocatorTypePatchRequest</param>
+        public virtual async Task<ApiResponse> Patch(Models.LocatorTypePatchRequest request)
+        {
+
+            var url = "LocatorTypes/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(new HttpMethod("PATCH"), url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+            if(request.Formatter == null)
+                request.Formatter = proxy.GetJsonMediaTypeFormatter();
+            req.Content = new ObjectContent(typeof(MergePatchLocatorTypeDto), request.Content , request.Formatter);                           
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+
+        		/// <param name="request">Models.LocatorTypeDeleteRequest</param>
+        public virtual async Task<ApiResponse> Delete(Models.LocatorTypeDeleteRequest request)
+        {
+
+            var url = "LocatorTypes/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.CommandId != null)
+                    url += "&commandId=" + request.Query.CommandId;
+                if(request.Query.Version != null)
+                    url += "&version=" + request.Query.Version;
+                if(request.Query.RequesterId != null)
+                    url += "&requesterId=" + request.Query.RequesterId;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Delete, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class LocatorTypes
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal LocatorTypes(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.LocatorTypesGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.LocatorTypesGetResponse> Get(Models.LocatorTypesGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "LocatorTypes";
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.FirstResult != null)
+                    url += "&firstResult=" + request.Query.FirstResult;
+                if(request.Query.MaxResults != null)
+                    url += "&maxResults=" + request.Query.MaxResults;
+                if(request.Query.Sort != null)
+                    url += "&sort=" + request.Query.Sort;
+                if(request.Query.Fields != null)
+                    url += "&fields=" + request.Query.Fields;
+                if(request.Query.Filter != null)
+                    url += "&filter=" + request.Query.Filter;
+                if(request.Query.FilterTag != null)
+                    url += "&filterTag=" + request.Query.FilterTag;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.LocatorTypesGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class LocatorTypesCount
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal LocatorTypesCount(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.LocatorTypesCountGetRequest</param>
+        public virtual async Task<ApiResponse> Get(Models.LocatorTypesCountGetRequest request)
+        {
+
+            var url = "LocatorTypes/_count";
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.Filter != null)
+                    url += "&filter=" + request.Query.Filter;
+                if(request.Query.FilterTag != null)
+                    url += "&filterTag=" + request.Query.FilterTag;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class LocatorTypeStateEvent
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal LocatorTypeStateEvent(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.LocatorTypeStateEventGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.LocatorTypeStateEventGetResponse> Get(Models.LocatorTypeStateEventGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "LocatorTypes/{id}/_stateEvents/{version}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+			if(request.UriParameters.Version == null)
+				throw new InvalidOperationException("Uri Parameter Version cannot be null");
+
+            url = url.Replace("{version}", request.UriParameters.Version.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.LocatorTypeStateEventGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class LocatorTypeHistoryState
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal LocatorTypeHistoryState(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.LocatorTypeHistoryStateGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.LocatorTypeHistoryStateGetResponse> Get(Models.LocatorTypeHistoryStateGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "LocatorTypes/{id}/_historyStates/{version}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+			if(request.UriParameters.Version == null)
+				throw new InvalidOperationException("Uri Parameter Version cannot be null");
+
+            url = url.Replace("{version}", request.UriParameters.Version.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.LocatorTypeHistoryStateGetResponse  
                                             {
                                                 RawContent = response.Content,
                                                 RawHeaders = response.Headers,
@@ -12933,6 +13363,434 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 				
             }
             return new Models.PicklistItemGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class Pickwave
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal Pickwave(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.PickwaveGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.PickwaveGetResponse> Get(Models.PickwaveGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "Pickwaves/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.Fields != null)
+                    url += "&fields=" + request.Query.Fields;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.PickwaveGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+
+        		/// <param name="request">Models.PickwavePutRequest</param>
+        public virtual async Task<ApiResponse> Put(Models.PickwavePutRequest request)
+        {
+
+            var url = "Pickwaves/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Put, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+            if(request.Formatter == null)
+                request.Formatter = proxy.GetJsonMediaTypeFormatter();
+            req.Content = new ObjectContent(typeof(CreatePickwaveDto), request.Content , request.Formatter);                           
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+
+        		/// <param name="request">Models.PickwavePatchRequest</param>
+        public virtual async Task<ApiResponse> Patch(Models.PickwavePatchRequest request)
+        {
+
+            var url = "Pickwaves/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(new HttpMethod("PATCH"), url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+            if(request.Formatter == null)
+                request.Formatter = proxy.GetJsonMediaTypeFormatter();
+            req.Content = new ObjectContent(typeof(MergePatchPickwaveDto), request.Content , request.Formatter);                           
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+
+        		/// <param name="request">Models.PickwaveDeleteRequest</param>
+        public virtual async Task<ApiResponse> Delete(Models.PickwaveDeleteRequest request)
+        {
+
+            var url = "Pickwaves/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.CommandId != null)
+                    url += "&commandId=" + request.Query.CommandId;
+                if(request.Query.Version != null)
+                    url += "&version=" + request.Query.Version;
+                if(request.Query.RequesterId != null)
+                    url += "&requesterId=" + request.Query.RequesterId;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Delete, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class Pickwaves
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal Pickwaves(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.PickwavesGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.PickwavesGetResponse> Get(Models.PickwavesGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "Pickwaves";
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.FirstResult != null)
+                    url += "&firstResult=" + request.Query.FirstResult;
+                if(request.Query.MaxResults != null)
+                    url += "&maxResults=" + request.Query.MaxResults;
+                if(request.Query.Sort != null)
+                    url += "&sort=" + request.Query.Sort;
+                if(request.Query.Fields != null)
+                    url += "&fields=" + request.Query.Fields;
+                if(request.Query.Filter != null)
+                    url += "&filter=" + request.Query.Filter;
+                if(request.Query.FilterTag != null)
+                    url += "&filterTag=" + request.Query.FilterTag;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.PickwavesGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class PickwavesCount
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal PickwavesCount(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.PickwavesCountGetRequest</param>
+        public virtual async Task<ApiResponse> Get(Models.PickwavesCountGetRequest request)
+        {
+
+            var url = "Pickwaves/_count";
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.Filter != null)
+                    url += "&filter=" + request.Query.Filter;
+                if(request.Query.FilterTag != null)
+                    url += "&filterTag=" + request.Query.FilterTag;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class PickwaveStateEvent
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal PickwaveStateEvent(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.PickwaveStateEventGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.PickwaveStateEventGetResponse> Get(Models.PickwaveStateEventGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "Pickwaves/{id}/_stateEvents/{version}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+			if(request.UriParameters.Version == null)
+				throw new InvalidOperationException("Uri Parameter Version cannot be null");
+
+            url = url.Replace("{version}", request.UriParameters.Version.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.PickwaveStateEventGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class PickwaveHistoryState
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal PickwaveHistoryState(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.PickwaveHistoryStateGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.PickwaveHistoryStateGetResponse> Get(Models.PickwaveHistoryStateGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "Pickwaves/{id}/_historyStates/{version}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+			if(request.UriParameters.Version == null)
+				throw new InvalidOperationException("Uri Parameter Version cannot be null");
+
+            url = url.Replace("{version}", request.UriParameters.Version.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.PickwaveHistoryStateGetResponse  
                                             {
                                                 RawContent = response.Content,
                                                 RawHeaders = response.Headers,
@@ -29855,6 +30713,12 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
+        public virtual LocatorType LocatorType
+        {
+            get { return new LocatorType(this); }
+        }
+                
+
         public virtual Lot Lot
         {
             get { return new Lot(this); }
@@ -29936,6 +30800,12 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         public virtual PicklistBin PicklistBin
         {
             get { return new PicklistBin(this); }
+        }
+                
+
+        public virtual Pickwave Pickwave
+        {
+            get { return new Pickwave(this); }
         }
                 
 
@@ -30251,6 +31121,12 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
+        public virtual LocatorTypes LocatorTypes
+        {
+            get { return new LocatorTypes(this); }
+        }
+                
+
         public virtual Lots Lots
         {
             get { return new Lots(this); }
@@ -30332,6 +31208,12 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         public virtual PicklistBins PicklistBins
         {
             get { return new PicklistBins(this); }
+        }
+                
+
+        public virtual Pickwaves Pickwaves
+        {
+            get { return new Pickwaves(this); }
         }
                 
 
@@ -30647,6 +31529,12 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
+        public virtual LocatorTypesCount LocatorTypesCount
+        {
+            get { return new LocatorTypesCount(this); }
+        }
+                
+
         public virtual LotsCount LotsCount
         {
             get { return new LotsCount(this); }
@@ -30728,6 +31616,12 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         public virtual PicklistBinsCount PicklistBinsCount
         {
             get { return new PicklistBinsCount(this); }
+        }
+                
+
+        public virtual PickwavesCount PickwavesCount
+        {
+            get { return new PickwavesCount(this); }
         }
                 
 
@@ -31043,6 +31937,12 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
+        public virtual LocatorTypeStateEvent LocatorTypeStateEvent
+        {
+            get { return new LocatorTypeStateEvent(this); }
+        }
+                
+
         public virtual LotStateEvent LotStateEvent
         {
             get { return new LotStateEvent(this); }
@@ -31124,6 +32024,12 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         public virtual PicklistBinStateEvent PicklistBinStateEvent
         {
             get { return new PicklistBinStateEvent(this); }
+        }
+                
+
+        public virtual PickwaveStateEvent PickwaveStateEvent
+        {
+            get { return new PickwaveStateEvent(this); }
         }
                 
 
@@ -31439,6 +32345,12 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
+        public virtual LocatorTypeHistoryState LocatorTypeHistoryState
+        {
+            get { return new LocatorTypeHistoryState(this); }
+        }
+                
+
         public virtual LotHistoryState LotHistoryState
         {
             get { return new LotHistoryState(this); }
@@ -31520,6 +32432,12 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         public virtual PicklistBinHistoryState PicklistBinHistoryState
         {
             get { return new PicklistBinHistoryState(this); }
+        }
+                
+
+        public virtual PickwaveHistoryState PickwaveHistoryState
+        {
+            get { return new PickwaveHistoryState(this); }
         }
                 
 
@@ -32687,6 +33605,62 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
 
     } // end class
 
+    public partial class  LocatorTypeGetQuery 
+    {
+		[JsonProperty("fields")]
+        public string Fields { get; set; }
+
+
+    } // end class
+
+    public partial class  LocatorTypeDeleteQuery 
+    {
+		[JsonProperty("commandId")]
+        public string CommandId { get; set; }
+
+		[JsonProperty("version")]
+        public string Version { get; set; }
+
+		[JsonProperty("requesterId")]
+        public string RequesterId { get; set; }
+
+
+    } // end class
+
+    public partial class  LocatorTypesGetQuery 
+    {
+		[JsonProperty("firstResult")]
+        public int? FirstResult { get; set; }
+
+		[JsonProperty("maxResults")]
+        public int? MaxResults { get; set; }
+
+		[JsonProperty("sort")]
+        public string Sort { get; set; }
+
+		[JsonProperty("fields")]
+        public string Fields { get; set; }
+
+		[JsonProperty("filter")]
+        public string Filter { get; set; }
+
+		[JsonProperty("filterTag")]
+        public string FilterTag { get; set; }
+
+
+    } // end class
+
+    public partial class  LocatorTypesCountGetQuery 
+    {
+		[JsonProperty("filter")]
+        public string Filter { get; set; }
+
+		[JsonProperty("filterTag")]
+        public string FilterTag { get; set; }
+
+
+    } // end class
+
     public partial class  LotGetQuery 
     {
 		[JsonProperty("fields")]
@@ -33461,6 +34435,62 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     public partial class  PicklistBinsCountGetQuery 
+    {
+		[JsonProperty("filter")]
+        public string Filter { get; set; }
+
+		[JsonProperty("filterTag")]
+        public string FilterTag { get; set; }
+
+
+    } // end class
+
+    public partial class  PickwaveGetQuery 
+    {
+		[JsonProperty("fields")]
+        public string Fields { get; set; }
+
+
+    } // end class
+
+    public partial class  PickwaveDeleteQuery 
+    {
+		[JsonProperty("commandId")]
+        public string CommandId { get; set; }
+
+		[JsonProperty("version")]
+        public string Version { get; set; }
+
+		[JsonProperty("requesterId")]
+        public string RequesterId { get; set; }
+
+
+    } // end class
+
+    public partial class  PickwavesGetQuery 
+    {
+		[JsonProperty("firstResult")]
+        public int? FirstResult { get; set; }
+
+		[JsonProperty("maxResults")]
+        public int? MaxResults { get; set; }
+
+		[JsonProperty("sort")]
+        public string Sort { get; set; }
+
+		[JsonProperty("fields")]
+        public string Fields { get; set; }
+
+		[JsonProperty("filter")]
+        public string Filter { get; set; }
+
+		[JsonProperty("filterTag")]
+        public string FilterTag { get; set; }
+
+
+    } // end class
+
+    public partial class  PickwavesCountGetQuery 
     {
 		[JsonProperty("filter")]
         public string Filter { get; set; }
@@ -36282,6 +37312,45 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
+    /// Uri Parameters for resource /LocatorTypes/{id}
+    /// </summary>
+    public partial class  LocatorTypeUriParameters 
+    {
+		[JsonProperty("id")]
+        public string Id { get; set; }
+
+
+    } // end class
+
+    /// <summary>
+    /// Uri Parameters for resource /LocatorTypes/{id}/_stateEvents/{version}
+    /// </summary>
+    public partial class  LocatorTypeStateEventUriParameters 
+    {
+		[JsonProperty("id")]
+        public string Id { get; set; }
+
+		[JsonProperty("version")]
+        public string Version { get; set; }
+
+
+    } // end class
+
+    /// <summary>
+    /// Uri Parameters for resource /LocatorTypes/{id}/_historyStates/{version}
+    /// </summary>
+    public partial class  LocatorTypeHistoryStateUriParameters 
+    {
+		[JsonProperty("id")]
+        public string Id { get; set; }
+
+		[JsonProperty("version")]
+        public string Version { get; set; }
+
+
+    } // end class
+
+    /// <summary>
     /// Uri Parameters for resource /Lots/{id}
     /// </summary>
     public partial class  LotUriParameters 
@@ -36935,6 +38004,45 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
 
 		[JsonProperty("picklistItemOrderShipGrpInvId")]
         public string PicklistItemOrderShipGrpInvId { get; set; }
+
+
+    } // end class
+
+    /// <summary>
+    /// Uri Parameters for resource /Pickwaves/{id}
+    /// </summary>
+    public partial class  PickwaveUriParameters 
+    {
+		[JsonProperty("id")]
+        public long? Id { get; set; }
+
+
+    } // end class
+
+    /// <summary>
+    /// Uri Parameters for resource /Pickwaves/{id}/_stateEvents/{version}
+    /// </summary>
+    public partial class  PickwaveStateEventUriParameters 
+    {
+		[JsonProperty("id")]
+        public long? Id { get; set; }
+
+		[JsonProperty("version")]
+        public string Version { get; set; }
+
+
+    } // end class
+
+    /// <summary>
+    /// Uri Parameters for resource /Pickwaves/{id}/_historyStates/{version}
+    /// </summary>
+    public partial class  PickwaveHistoryStateUriParameters 
+    {
+		[JsonProperty("id")]
+        public long? Id { get; set; }
+
+		[JsonProperty("version")]
+        public string Version { get; set; }
 
 
     } // end class
@@ -40918,6 +42026,172 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
+    /// Request object for method Get of class LocatorType
+    /// </summary>
+    public partial class LocatorTypeGetRequest : ApiRequest
+    {
+        public LocatorTypeGetRequest(LocatorTypeUriParameters UriParameters, LocatorTypeGetQuery Query = null)
+        {
+            this.Query = Query;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public LocatorTypeGetQuery Query { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public LocatorTypeUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Put of class LocatorType
+    /// </summary>
+    public partial class LocatorTypePutRequest : ApiRequest
+    {
+        public LocatorTypePutRequest(LocatorTypeUriParameters UriParameters, CreateLocatorTypeDto Content = null, MediaTypeFormatter Formatter = null)
+        {
+            this.Content = Content;
+            this.Formatter = Formatter;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request content
+        /// </summary>
+        public CreateLocatorTypeDto Content { get; set; }
+        /// <summary>
+        /// Request formatter
+        /// </summary>
+        public MediaTypeFormatter Formatter { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public LocatorTypeUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Patch of class LocatorType
+    /// </summary>
+    public partial class LocatorTypePatchRequest : ApiRequest
+    {
+        public LocatorTypePatchRequest(LocatorTypeUriParameters UriParameters, MergePatchLocatorTypeDto Content = null, MediaTypeFormatter Formatter = null)
+        {
+            this.Content = Content;
+            this.Formatter = Formatter;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request content
+        /// </summary>
+        public MergePatchLocatorTypeDto Content { get; set; }
+        /// <summary>
+        /// Request formatter
+        /// </summary>
+        public MediaTypeFormatter Formatter { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public LocatorTypeUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Delete of class LocatorType
+    /// </summary>
+    public partial class LocatorTypeDeleteRequest : ApiRequest
+    {
+        public LocatorTypeDeleteRequest(LocatorTypeUriParameters UriParameters, LocatorTypeDeleteQuery Query = null)
+        {
+            this.Query = Query;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public LocatorTypeDeleteQuery Query { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public LocatorTypeUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class LocatorTypes
+    /// </summary>
+    public partial class LocatorTypesGetRequest : ApiRequest
+    {
+        public LocatorTypesGetRequest(LocatorTypesGetQuery Query = null)
+        {
+            this.Query = Query;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public LocatorTypesGetQuery Query { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class LocatorTypesCount
+    /// </summary>
+    public partial class LocatorTypesCountGetRequest : ApiRequest
+    {
+        public LocatorTypesCountGetRequest(LocatorTypesCountGetQuery Query = null)
+        {
+            this.Query = Query;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public LocatorTypesCountGetQuery Query { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class LocatorTypeStateEvent
+    /// </summary>
+    public partial class LocatorTypeStateEventGetRequest : ApiRequest
+    {
+        public LocatorTypeStateEventGetRequest(LocatorTypeStateEventUriParameters UriParameters)
+        {
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public LocatorTypeStateEventUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class LocatorTypeHistoryState
+    /// </summary>
+    public partial class LocatorTypeHistoryStateGetRequest : ApiRequest
+    {
+        public LocatorTypeHistoryStateGetRequest(LocatorTypeHistoryStateUriParameters UriParameters)
+        {
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public LocatorTypeHistoryStateUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
     /// Request object for method Get of class Lot
     /// </summary>
     public partial class LotGetRequest : ApiRequest
@@ -43374,6 +44648,172 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// Request Uri Parameters
         /// </summary>
         public PicklistItemUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class Pickwave
+    /// </summary>
+    public partial class PickwaveGetRequest : ApiRequest
+    {
+        public PickwaveGetRequest(PickwaveUriParameters UriParameters, PickwaveGetQuery Query = null)
+        {
+            this.Query = Query;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public PickwaveGetQuery Query { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public PickwaveUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Put of class Pickwave
+    /// </summary>
+    public partial class PickwavePutRequest : ApiRequest
+    {
+        public PickwavePutRequest(PickwaveUriParameters UriParameters, CreatePickwaveDto Content = null, MediaTypeFormatter Formatter = null)
+        {
+            this.Content = Content;
+            this.Formatter = Formatter;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request content
+        /// </summary>
+        public CreatePickwaveDto Content { get; set; }
+        /// <summary>
+        /// Request formatter
+        /// </summary>
+        public MediaTypeFormatter Formatter { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public PickwaveUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Patch of class Pickwave
+    /// </summary>
+    public partial class PickwavePatchRequest : ApiRequest
+    {
+        public PickwavePatchRequest(PickwaveUriParameters UriParameters, MergePatchPickwaveDto Content = null, MediaTypeFormatter Formatter = null)
+        {
+            this.Content = Content;
+            this.Formatter = Formatter;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request content
+        /// </summary>
+        public MergePatchPickwaveDto Content { get; set; }
+        /// <summary>
+        /// Request formatter
+        /// </summary>
+        public MediaTypeFormatter Formatter { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public PickwaveUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Delete of class Pickwave
+    /// </summary>
+    public partial class PickwaveDeleteRequest : ApiRequest
+    {
+        public PickwaveDeleteRequest(PickwaveUriParameters UriParameters, PickwaveDeleteQuery Query = null)
+        {
+            this.Query = Query;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public PickwaveDeleteQuery Query { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public PickwaveUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class Pickwaves
+    /// </summary>
+    public partial class PickwavesGetRequest : ApiRequest
+    {
+        public PickwavesGetRequest(PickwavesGetQuery Query = null)
+        {
+            this.Query = Query;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public PickwavesGetQuery Query { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class PickwavesCount
+    /// </summary>
+    public partial class PickwavesCountGetRequest : ApiRequest
+    {
+        public PickwavesCountGetRequest(PickwavesCountGetQuery Query = null)
+        {
+            this.Query = Query;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public PickwavesCountGetQuery Query { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class PickwaveStateEvent
+    /// </summary>
+    public partial class PickwaveStateEventGetRequest : ApiRequest
+    {
+        public PickwaveStateEventGetRequest(PickwaveStateEventUriParameters UriParameters)
+        {
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public PickwaveStateEventUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class PickwaveHistoryState
+    /// </summary>
+    public partial class PickwaveHistoryStateGetRequest : ApiRequest
+    {
+        public PickwaveHistoryStateGetRequest(PickwaveHistoryStateUriParameters UriParameters)
+        {
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public PickwaveHistoryStateUriParameters UriParameters { get; set; }
 
     } // end class
 
@@ -52865,6 +54305,202 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
+    /// Response object for method Get of class LocatorType
+    /// </summary>
+
+    public partial class LocatorTypeGetResponse : ApiResponse
+    {
+
+
+	    private LocatorTypeStateDto typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public LocatorTypeStateDto Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (LocatorTypeStateDto)new XmlSerializer(typeof(LocatorTypeStateDto)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<LocatorTypeStateDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<LocatorTypeStateDto>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class LocatorTypes
+    /// </summary>
+
+    public partial class LocatorTypesGetResponse : ApiResponse
+    {
+
+
+	    private IList<LocatorTypeStateDto> typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public IList<LocatorTypeStateDto> Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (IList<LocatorTypeStateDto>)new XmlSerializer(typeof(IList<LocatorTypeStateDto>)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<IList<LocatorTypeStateDto>>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<IList<LocatorTypeStateDto>>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class LocatorTypeStateEvent
+    /// </summary>
+
+    public partial class LocatorTypeStateEventGetResponse : ApiResponse
+    {
+
+
+	    private LocatorTypeStateCreatedOrMergePatchedOrDeletedDto typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public LocatorTypeStateCreatedOrMergePatchedOrDeletedDto Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (LocatorTypeStateCreatedOrMergePatchedOrDeletedDto)new XmlSerializer(typeof(LocatorTypeStateCreatedOrMergePatchedOrDeletedDto)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<LocatorTypeStateCreatedOrMergePatchedOrDeletedDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<LocatorTypeStateCreatedOrMergePatchedOrDeletedDto>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class LocatorTypeHistoryState
+    /// </summary>
+
+    public partial class LocatorTypeHistoryStateGetResponse : ApiResponse
+    {
+
+
+	    private LocatorTypeStateDto typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public LocatorTypeStateDto Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (LocatorTypeStateDto)new XmlSerializer(typeof(LocatorTypeStateDto)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<LocatorTypeStateDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<LocatorTypeStateDto>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
     /// Response object for method Get of class Lot
     /// </summary>
 
@@ -55987,6 +57623,202 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
                     var task =  Formatters != null && Formatters.Any() 
                                 ? RawContent.ReadAsAsync<PicklistItemStateDto>(Formatters).ConfigureAwait(false)
                                 : RawContent.ReadAsAsync<PicklistItemStateDto>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class Pickwave
+    /// </summary>
+
+    public partial class PickwaveGetResponse : ApiResponse
+    {
+
+
+	    private PickwaveStateDto typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public PickwaveStateDto Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (PickwaveStateDto)new XmlSerializer(typeof(PickwaveStateDto)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<PickwaveStateDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<PickwaveStateDto>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class Pickwaves
+    /// </summary>
+
+    public partial class PickwavesGetResponse : ApiResponse
+    {
+
+
+	    private IList<PickwaveStateDto> typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public IList<PickwaveStateDto> Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (IList<PickwaveStateDto>)new XmlSerializer(typeof(IList<PickwaveStateDto>)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<IList<PickwaveStateDto>>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<IList<PickwaveStateDto>>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class PickwaveStateEvent
+    /// </summary>
+
+    public partial class PickwaveStateEventGetResponse : ApiResponse
+    {
+
+
+	    private PickwaveStateCreatedOrMergePatchedOrDeletedDto typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public PickwaveStateCreatedOrMergePatchedOrDeletedDto Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (PickwaveStateCreatedOrMergePatchedOrDeletedDto)new XmlSerializer(typeof(PickwaveStateCreatedOrMergePatchedOrDeletedDto)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<PickwaveStateCreatedOrMergePatchedOrDeletedDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<PickwaveStateCreatedOrMergePatchedOrDeletedDto>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class PickwaveHistoryState
+    /// </summary>
+
+    public partial class PickwaveHistoryStateGetResponse : ApiResponse
+    {
+
+
+	    private PickwaveStateDto typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public PickwaveStateDto Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (PickwaveStateDto)new XmlSerializer(typeof(PickwaveStateDto)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<PickwaveStateDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<PickwaveStateDto>().ConfigureAwait(false);
 		        
 		            typedContent = task.GetAwaiter().GetResult();
                 }

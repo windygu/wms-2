@@ -176,6 +176,8 @@ namespace Dddml.Wms.Domain.Party
 			ThrowOnWrongEvent(e);
 			this.PartyTypeId = e.PartyTypeId;
 
+			this.PrimaryRoleTypeId = e.PrimaryRoleTypeId;
+
 			this.OrganizationName = e.OrganizationName;
 
 			this.Description = e.Description;
@@ -209,6 +211,18 @@ namespace Dddml.Wms.Domain.Party
 			else
 			{
 				this.PartyTypeId = e.PartyTypeId;
+			}
+
+			if (e.PrimaryRoleTypeId == null)
+			{
+				if (e.IsPropertyPrimaryRoleTypeIdRemoved)
+				{
+					this.PrimaryRoleTypeId = default(string);
+				}
+			}
+			else
+			{
+				this.PrimaryRoleTypeId = e.PrimaryRoleTypeId;
 			}
 
 			if (e.OrganizationName == null)

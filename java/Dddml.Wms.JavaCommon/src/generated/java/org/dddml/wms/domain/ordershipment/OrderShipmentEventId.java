@@ -49,6 +49,16 @@ public class OrderShipmentEventId implements Serializable
         getOrderShipmentId().setOrderItemSeqId(orderShipmentIdOrderItemSeqId);
     }
 
+    protected Long getOrderShipmentIdShipGroupSeqId()
+    {
+        return getOrderShipmentId().getShipGroupSeqId();
+    }
+
+    protected void setOrderShipmentIdShipGroupSeqId(Long orderShipmentIdShipGroupSeqId)
+    {
+        getOrderShipmentId().setShipGroupSeqId(orderShipmentIdShipGroupSeqId);
+    }
+
     protected String getOrderShipmentIdShipmentId()
     {
         return getOrderShipmentId().getShipmentId();
@@ -113,6 +123,7 @@ public class OrderShipmentEventId implements Serializable
     protected static final String[] FLATTENED_PROPERTY_NAMES = new String[]{
             "orderShipmentIdOrderId",
             "orderShipmentIdOrderItemSeqId",
+            "orderShipmentIdShipGroupSeqId",
             "orderShipmentIdShipmentId",
             "orderShipmentIdShipmentItemSeqId",
             "version",
@@ -121,6 +132,7 @@ public class OrderShipmentEventId implements Serializable
     protected static final String[] FLATTENED_PROPERTY_TYPES = new String[]{
             "String",
             "String",
+            "Long",
             "String",
             "String",
             "Long",

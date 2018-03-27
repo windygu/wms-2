@@ -395,6 +395,18 @@
     <Compile Include="Generated\Domain\LocatorTreeApplicationService.cs">
       <DependentUpon>GenerateBoundedContextTreeApplicationServices.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\LocatorType\NHibernate\LocatorTypeApplicationService.cs">
+      <DependentUpon>GenerateLocatorTypeDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\LocatorType\NHibernate\NHibernateLocatorTypeEventStore.cs">
+      <DependentUpon>GenerateLocatorTypeDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\LocatorType\NHibernate\NHibernateLocatorTypeStateQueryRepository.cs">
+      <DependentUpon>GenerateLocatorTypeDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\LocatorType\NHibernate\NHibernateLocatorTypeStateRepository.cs">
+      <DependentUpon>GenerateLocatorTypeDomainNHibernate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\Locator\NHibernate\LocatorApplicationService.cs">
       <DependentUpon>GenerateLocatorDomainNHibernate.tt</DependentUpon>
     </Compile>
@@ -733,6 +745,18 @@
     </Compile>
     <Compile Include="Generated\Domain\Picklist\NHibernate\PicklistApplicationService.cs">
       <DependentUpon>GeneratePicklistDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Pickwave\NHibernate\NHibernatePickwaveEventStore.cs">
+      <DependentUpon>GeneratePickwaveDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Pickwave\NHibernate\NHibernatePickwaveStateQueryRepository.cs">
+      <DependentUpon>GeneratePickwaveDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Pickwave\NHibernate\NHibernatePickwaveStateRepository.cs">
+      <DependentUpon>GeneratePickwaveDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Pickwave\NHibernate\PickwaveApplicationService.cs">
+      <DependentUpon>GeneratePickwaveDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\ProductCategoryMember\NHibernate\NHibernateProductCategoryMemberEventStore.cs">
       <DependentUpon>GenerateProductCategoryMemberDomainNHibernate.tt</DependentUpon>
@@ -1165,6 +1189,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateItemIssuanceMvoDomainNHibernate.tt</DependentUpon>
     </Content>
+    <Content Include="Generated\Domain\LocatorType\NHibernate\GenerateLocatorTypeDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateLocatorTypeDomainNHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="Generated\Domain\Locator\NHibernate\GenerateLocatorDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1293,6 +1322,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GeneratePicklistDomainNHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="Generated\Domain\Pickwave\NHibernate\GeneratePickwaveDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GeneratePickwaveDomainNHibernate.tt</DependentUpon>
     </Content>
     <Content Include="Generated\Domain\ProductCategoryMember\NHibernate\GenerateProductCategoryMemberDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
@@ -1546,6 +1580,8 @@
 .\ItemIssuanceStateEvent.hbm.xml
 .\LocatorState.hbm.xml
 .\LocatorStateEvent.hbm.xml
+.\LocatorTypeState.hbm.xml
+.\LocatorTypeStateEvent.hbm.xml
 .\LotState.hbm.xml
 .\LotStateEvent.hbm.xml
 .\MovementConfirmationLineMvoState.hbm.xml
@@ -1605,6 +1641,8 @@
 .\PicklistRoleStateEvent.hbm.xml
 .\PicklistState.hbm.xml
 .\PicklistStateEvent.hbm.xml
+.\PickwaveState.hbm.xml
+.\PickwaveStateEvent.hbm.xml
 .\ProductCategoryMemberState.hbm.xml
 .\ProductCategoryMemberStateEvent.hbm.xml
 .\ProductCategoryState.hbm.xml
@@ -2042,6 +2080,18 @@
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Generated\NHibernate\Mappings\OrderItemShipGrpInvReservationStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\LocatorTypeState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\LocatorTypeStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\PickwaveState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\PickwaveStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <Content Include="LoadBoundedContext.tt">
@@ -2830,6 +2880,28 @@
 .\NHibernateOrderItemShipGrpInvReservationStateQueryRepository.cs
 .\NHibernateOrderItemShipGrpInvReservationStateRepository.cs
 .\OrderItemShipGrpInvReservationApplicationService.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\LocatorType\NHibernate\GenerateLocatorTypeDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateLocatorTypeDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateLocatorTypeDomainNHibernate.txt
+.\LocatorTypeApplicationService.cs
+.\NHibernateLocatorTypeEventStore.cs
+.\NHibernateLocatorTypeStateQueryRepository.cs
+.\NHibernateLocatorTypeStateRepository.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\Pickwave\NHibernate\GeneratePickwaveDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GeneratePickwaveDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GeneratePickwaveDomainNHibernate.txt
+.\NHibernatePickwaveEventStore.cs
+.\NHibernatePickwaveStateQueryRepository.cs
+.\NHibernatePickwaveStateRepository.cs
+.\PickwaveApplicationService.cs
 </LastOutputs>
     </Content>
   </ItemGroup>

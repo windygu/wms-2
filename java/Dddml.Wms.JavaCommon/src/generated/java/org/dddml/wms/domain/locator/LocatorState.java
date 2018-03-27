@@ -52,6 +52,10 @@ public interface LocatorState
 
     void setDescription(String description);
 
+    String getLocatorTypeId();
+
+    void setLocatorTypeId(String locatorTypeId);
+
     Long getVersion();
 
     void setVersion(Long version);

@@ -54,6 +54,8 @@ namespace Dddml.Wms.Domain.Order
 
 		DateTime? EstimatedDeliveryDate { get; set; }
 
+		long? PickwaveId { get; set; }
+
 		bool? Active { get; set; }
 
 		// Outer Id:
@@ -102,6 +104,8 @@ namespace Dddml.Wms.Domain.Order
 		bool IsPropertyEstimatedShipDateRemoved { get; set; }
 
 		bool IsPropertyEstimatedDeliveryDateRemoved { get; set; }
+
+		bool IsPropertyPickwaveIdRemoved { get; set; }
 
 		bool IsPropertyActiveRemoved { get; set; }
 

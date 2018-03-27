@@ -544,6 +544,34 @@ namespace Dddml.Wms.Domain.Order
             }
         }
 
+		public virtual long? PickwaveId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("PickwaveId"))
+                {
+                    return _state.PickwaveId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.PickwaveId = value;
+            }
+        }
+
+        long? IOrderShipGroupStateProperties.PickwaveId
+        {
+            get 
+            {
+                return (this._state as IOrderShipGroupStateProperties).PickwaveId;
+            }
+            set 
+            {
+                (this._state as IOrderShipGroupStateProperties).PickwaveId = value;
+            }
+        }
+
 		public virtual bool? Active
         {
             get

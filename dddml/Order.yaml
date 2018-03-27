@@ -338,6 +338,11 @@ aggregates:
             
           EstimatedDeliveryDate:
             type: date-time
+
+          # -------------------------
+          PickwaveId:
+            referenceType: Pickwave
+          # -------------------------
             
         # references:
           # Facility:

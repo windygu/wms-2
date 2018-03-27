@@ -113,6 +113,7 @@ namespace Dddml.Wms.Domain.Picklist
             e.ShipmentMethodTypeId = c.ShipmentMethodTypeId;
             e.StatusId = c.StatusId;
             e.PicklistDate = c.PicklistDate;
+            e.PickwaveId = c.PickwaveId;
             e.Active = c.Active;
             e.CommandId = c.CommandId;
 
@@ -143,12 +144,14 @@ namespace Dddml.Wms.Domain.Picklist
             e.ShipmentMethodTypeId = c.ShipmentMethodTypeId;
             e.StatusId = c.StatusId;
             e.PicklistDate = c.PicklistDate;
+            e.PickwaveId = c.PickwaveId;
             e.Active = c.Active;
             e.IsPropertyDescriptionRemoved = c.IsPropertyDescriptionRemoved;
             e.IsPropertyFacilityIdRemoved = c.IsPropertyFacilityIdRemoved;
             e.IsPropertyShipmentMethodTypeIdRemoved = c.IsPropertyShipmentMethodTypeIdRemoved;
             e.IsPropertyStatusIdRemoved = c.IsPropertyStatusIdRemoved;
             e.IsPropertyPicklistDateRemoved = c.IsPropertyPicklistDateRemoved;
+            e.IsPropertyPickwaveIdRemoved = c.IsPropertyPickwaveIdRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
             e.CommandId = c.CommandId;

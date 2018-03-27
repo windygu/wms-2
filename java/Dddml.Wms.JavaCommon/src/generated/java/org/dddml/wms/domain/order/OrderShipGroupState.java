@@ -88,6 +88,10 @@ public interface OrderShipGroupState
 
     void setEstimatedDeliveryDate(java.sql.Timestamp estimatedDeliveryDate);
 
+    Long getPickwaveId();
+
+    void setPickwaveId(Long pickwaveId);
+
     Long getVersion();
 
     void setVersion(Long version);

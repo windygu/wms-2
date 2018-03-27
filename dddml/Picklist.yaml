@@ -23,7 +23,12 @@ aggregates:
         type: id-vlong
       LastModifiedByUserLogin:
         type: id-vlong
-        
+      
+      # -------------------------
+      PickwaveId:
+        referenceType: Pickwave
+      # -------------------------
+      
       PicklistRoles:
         itemType: PicklistRole
         

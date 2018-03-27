@@ -41,6 +41,9 @@ public class OrganizationStateDto extends PartyStateDto
             if (returnedFieldsContains("PartyTypeId")) {
                 dto.setPartyTypeId(state.getPartyTypeId());
             }
+            if (returnedFieldsContains("PrimaryRoleTypeId")) {
+                dto.setPrimaryRoleTypeId(state.getPrimaryRoleTypeId());
+            }
             if (returnedFieldsContains("Active")) {
                 dto.setActive(state.getActive());
             }

@@ -113,6 +113,7 @@
 .\InventoryPRTriggeredResource.java
 .\ItemIssuanceMvoResource.java
 .\LocatorResource.java
+.\LocatorTypeResource.java
 .\LotResource.java
 .\MovementConfirmationLineMvoResource.java
 .\MovementConfirmationResource.java
@@ -136,6 +137,7 @@
 .\PicklistItemMvoResource.java
 .\PicklistResource.java
 .\PicklistRoleMvoResource.java
+.\PickwaveResource.java
 .\ProductCategoryMemberResource.java
 .\ProductCategoryResource.java
 .\ProductResource.java
@@ -185,6 +187,9 @@
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\ItemIssuanceMvoResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\LocatorTypeResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\OrderItemShipGrpInvReservationResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
@@ -207,6 +212,9 @@
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\PicklistRoleMvoResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\PickwaveResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\RoleTypeResource.java">

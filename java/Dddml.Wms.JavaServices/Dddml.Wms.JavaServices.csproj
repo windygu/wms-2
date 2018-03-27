@@ -412,6 +412,20 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\itemissuancemvo\hibernate\HibernateItemIssuanceMvoStateRepository.java">
       <DependentUpon>GenerateItemIssuanceMvoDomainHibernate.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\locatortype\hibernate\GenerateLocatorTypeDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateLocatorTypeDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\locatortype\hibernate\HibernateLocatorTypeEventStore.java">
+      <DependentUpon>GenerateLocatorTypeDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\locatortype\hibernate\HibernateLocatorTypeStateQueryRepository.java">
+      <DependentUpon>GenerateLocatorTypeDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\locatortype\hibernate\HibernateLocatorTypeStateRepository.java">
+      <DependentUpon>GenerateLocatorTypeDomainHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\locator\hibernate\GenerateLocatorDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -787,6 +801,20 @@
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\picklist\hibernate\HibernatePicklistStateRepository.java">
       <DependentUpon>GeneratePicklistDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\pickwave\hibernate\GeneratePickwaveDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GeneratePickwaveDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\pickwave\hibernate\HibernatePickwaveEventStore.java">
+      <DependentUpon>GeneratePickwaveDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\pickwave\hibernate\HibernatePickwaveStateQueryRepository.java">
+      <DependentUpon>GeneratePickwaveDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\pickwave\hibernate\HibernatePickwaveStateRepository.java">
+      <DependentUpon>GeneratePickwaveDomainHibernate.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\productcategorymember\hibernate\GenerateProductCategoryMemberDomainHibernate.txt">
       <AutoGen>True</AutoGen>
@@ -1562,6 +1590,18 @@
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentPackageContentMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\LocatorTypeState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\LocatorTypeStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PickwaveState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PickwaveStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
     <Content Include="src\generated\resources\script\AddStateIdForeignKeyConstraints.sql">
       <DependentUpon>GenerateStateIdForeignKeyConstraints.tt</DependentUpon>
     </Content>
@@ -1697,6 +1737,8 @@
 .\ItemIssuanceStateEvent.hbm.xml
 .\LocatorState.hbm.xml
 .\LocatorStateEvent.hbm.xml
+.\LocatorTypeState.hbm.xml
+.\LocatorTypeStateEvent.hbm.xml
 .\LotState.hbm.xml
 .\LotStateEvent.hbm.xml
 .\MovementConfirmationLineMvoState.hbm.xml
@@ -1756,6 +1798,8 @@
 .\PicklistRoleStateEvent.hbm.xml
 .\PicklistState.hbm.xml
 .\PicklistStateEvent.hbm.xml
+.\PickwaveState.hbm.xml
+.\PickwaveStateEvent.hbm.xml
 .\ProductCategoryMemberState.hbm.xml
 .\ProductCategoryMemberStateEvent.hbm.xml
 .\ProductCategoryState.hbm.xml
@@ -2493,6 +2537,26 @@
 .\HibernateOrderItemShipGrpInvReservationEventStore.java
 .\HibernateOrderItemShipGrpInvReservationStateQueryRepository.java
 .\HibernateOrderItemShipGrpInvReservationStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\locatortype\hibernate\GenerateLocatorTypeDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateLocatorTypeDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateLocatorTypeDomainHibernate.txt
+.\HibernateLocatorTypeEventStore.java
+.\HibernateLocatorTypeStateQueryRepository.java
+.\HibernateLocatorTypeStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\pickwave\hibernate\GeneratePickwaveDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GeneratePickwaveDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GeneratePickwaveDomainHibernate.txt
+.\HibernatePickwaveEventStore.java
+.\HibernatePickwaveStateQueryRepository.java
+.\HibernatePickwaveStateRepository.java
 </LastOutputs>
     </Content>
   </ItemGroup>

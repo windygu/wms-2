@@ -46,6 +46,7 @@ public class OrderShipGroupMvoStateEventDtoConverter {
         dto.setShipByDate(e.getShipByDate());
         dto.setEstimatedShipDate(e.getEstimatedShipDate());
         dto.setEstimatedDeliveryDate(e.getEstimatedDeliveryDate());
+        dto.setPickwaveId(e.getPickwaveId());
         dto.setVersion(e.getVersion());
         dto.setActive(e.getActive());
         dto.setOrderOrderTypeId(e.getOrderOrderTypeId());
@@ -103,6 +104,7 @@ public class OrderShipGroupMvoStateEventDtoConverter {
         dto.setShipByDate(e.getShipByDate());
         dto.setEstimatedShipDate(e.getEstimatedShipDate());
         dto.setEstimatedDeliveryDate(e.getEstimatedDeliveryDate());
+        dto.setPickwaveId(e.getPickwaveId());
         dto.setVersion(e.getVersion());
         dto.setActive(e.getActive());
         dto.setOrderOrderTypeId(e.getOrderOrderTypeId());
@@ -151,6 +153,7 @@ public class OrderShipGroupMvoStateEventDtoConverter {
         dto.setIsPropertyShipByDateRemoved(e.getIsPropertyShipByDateRemoved());
         dto.setIsPropertyEstimatedShipDateRemoved(e.getIsPropertyEstimatedShipDateRemoved());
         dto.setIsPropertyEstimatedDeliveryDateRemoved(e.getIsPropertyEstimatedDeliveryDateRemoved());
+        dto.setIsPropertyPickwaveIdRemoved(e.getIsPropertyPickwaveIdRemoved());
         dto.setIsPropertyVersionRemoved(e.getIsPropertyVersionRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
         dto.setIsPropertyOrderOrderTypeIdRemoved(e.getIsPropertyOrderOrderTypeIdRemoved());

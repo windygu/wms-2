@@ -26,7 +26,7 @@ public class HibernatePartyStateRepository implements PartyStateRepository
         return this.sessionFactory.getCurrentSession();
     }
     
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("PartyId", "PartyTypeId", "OrganizationName", "Description", "Type", "IsSummary", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("PartyId", "PartyTypeId", "PrimaryRoleTypeId", "OrganizationName", "Description", "Type", "IsSummary", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     

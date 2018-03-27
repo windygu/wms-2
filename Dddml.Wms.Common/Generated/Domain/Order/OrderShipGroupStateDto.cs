@@ -124,6 +124,12 @@ namespace Dddml.Wms.Domain.Order
             set;
         }
 
+        public virtual long? PickwaveId
+        {
+            get;
+            set;
+        }
+
         public virtual bool? Active
         {
             get;
@@ -187,6 +193,7 @@ namespace Dddml.Wms.Domain.Order
             state.ShipByDate = this.ShipByDate;
             state.EstimatedShipDate = this.EstimatedShipDate;
             state.EstimatedDeliveryDate = this.EstimatedDeliveryDate;
+            state.PickwaveId = this.PickwaveId;
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             state.OrderId = this.OrderId;

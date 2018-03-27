@@ -209,6 +209,8 @@ namespace Dddml.Wms.Domain.OrderShipGroupMvo
 
 			this.EstimatedDeliveryDate = e.EstimatedDeliveryDate;
 
+			this.PickwaveId = e.PickwaveId;
+
             this.Version = (e.Version != null && e.Version.HasValue) ? e.Version.Value : default(long);
 
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
@@ -486,6 +488,18 @@ namespace Dddml.Wms.Domain.OrderShipGroupMvo
 			else
 			{
 				this.EstimatedDeliveryDate = e.EstimatedDeliveryDate;
+			}
+
+			if (e.PickwaveId == null)
+			{
+				if (e.IsPropertyPickwaveIdRemoved)
+				{
+					this.PickwaveId = default(long?);
+				}
+			}
+			else
+			{
+				this.PickwaveId = e.PickwaveId;
 			}
 
 			if (e.Version == null)

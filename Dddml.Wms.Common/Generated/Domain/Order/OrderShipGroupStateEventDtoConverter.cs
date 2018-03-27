@@ -61,6 +61,7 @@ namespace Dddml.Wms.Domain.Order
             dto.ShipByDate = e.ShipByDate;
             dto.EstimatedShipDate = e.EstimatedShipDate;
             dto.EstimatedDeliveryDate = e.EstimatedDeliveryDate;
+            dto.PickwaveId = e.PickwaveId;
             dto.Active = e.Active;
             return dto;
         }
@@ -90,6 +91,7 @@ namespace Dddml.Wms.Domain.Order
             dto.ShipByDate = e.ShipByDate;
             dto.EstimatedShipDate = e.EstimatedShipDate;
             dto.EstimatedDeliveryDate = e.EstimatedDeliveryDate;
+            dto.PickwaveId = e.PickwaveId;
             dto.Active = e.Active;
             dto.IsPropertyShipmentMethodTypeIdRemoved = e.IsPropertyShipmentMethodTypeIdRemoved;
             dto.IsPropertySupplierPartyIdRemoved = e.IsPropertySupplierPartyIdRemoved;
@@ -108,6 +110,7 @@ namespace Dddml.Wms.Domain.Order
             dto.IsPropertyShipByDateRemoved = e.IsPropertyShipByDateRemoved;
             dto.IsPropertyEstimatedShipDateRemoved = e.IsPropertyEstimatedShipDateRemoved;
             dto.IsPropertyEstimatedDeliveryDateRemoved = e.IsPropertyEstimatedDeliveryDateRemoved;
+            dto.IsPropertyPickwaveIdRemoved = e.IsPropertyPickwaveIdRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;
 
             return dto;

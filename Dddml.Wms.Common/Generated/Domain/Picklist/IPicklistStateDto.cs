@@ -51,6 +51,12 @@ namespace Dddml.Wms.Domain.Picklist
             set;
         }
 
+        long? PickwaveId
+        {
+            get;
+            set;
+        }
+
         bool? Active
         {
             get;

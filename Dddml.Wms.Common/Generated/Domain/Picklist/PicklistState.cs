@@ -214,6 +214,8 @@ namespace Dddml.Wms.Domain.Picklist
 
 			this.PicklistDate = e.PicklistDate;
 
+			this.PickwaveId = e.PickwaveId;
+
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 
 			this.Deleted = false;
@@ -291,6 +293,18 @@ namespace Dddml.Wms.Domain.Picklist
 			else
 			{
 				this.PicklistDate = e.PicklistDate;
+			}
+
+			if (e.PickwaveId == null)
+			{
+				if (e.IsPropertyPickwaveIdRemoved)
+				{
+					this.PickwaveId = default(long?);
+				}
+			}
+			else
+			{
+				this.PickwaveId = e.PickwaveId;
 			}
 
 			if (e.Active == null)

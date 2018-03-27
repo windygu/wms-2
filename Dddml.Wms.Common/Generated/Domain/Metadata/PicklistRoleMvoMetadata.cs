@@ -452,6 +452,35 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
+                    Name = "PicklistPickwaveId",
+                    Type = typeof(long),
+                    TypeName = "long",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
                     Name = "PicklistPicklistRoles",
                     DisplayName = "",
                     Description = "",
@@ -757,6 +786,8 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("picklistCreatedByUserLogin", "PicklistCreatedByUserLogin");
             d.Add("PicklistLastModifiedByUserLogin", "PicklistLastModifiedByUserLogin");
             d.Add("picklistLastModifiedByUserLogin", "PicklistLastModifiedByUserLogin");
+            d.Add("PicklistPickwaveId", "PicklistPickwaveId");
+            d.Add("picklistPickwaveId", "PicklistPickwaveId");
             d.Add("PicklistVersion", "PicklistVersion");
             d.Add("picklistVersion", "PicklistVersion");
             d.Add("PicklistCreatedAt", "PicklistCreatedAt");

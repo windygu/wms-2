@@ -249,6 +249,35 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
+                    Name = "PickwaveId",
+                    Type = typeof(long),
+                    TypeName = "long",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "Pickwave",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
                     Name = "PicklistRoles",
                     DisplayName = "",
                     Description = "",
@@ -449,6 +478,8 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("createdByUserLogin", "CreatedByUserLogin");
             d.Add("LastModifiedByUserLogin", "LastModifiedByUserLogin");
             d.Add("lastModifiedByUserLogin", "LastModifiedByUserLogin");
+            d.Add("PickwaveId", "PickwaveId");
+            d.Add("pickwaveId", "PickwaveId");
             d.Add("Version", "Version");
             d.Add("version", "Version");
             d.Add("CreatedAt", "CreatedAt");

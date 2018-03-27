@@ -130,6 +130,18 @@ public class PicklistRoleMvoStateDto
         this.picklistLastModifiedByUserLogin = picklistLastModifiedByUserLogin;
     }
 
+    private Long picklistPickwaveId;
+
+    public Long getPicklistPickwaveId()
+    {
+        return this.picklistPickwaveId;
+    }
+
+    public void setPicklistPickwaveId(Long picklistPickwaveId)
+    {
+        this.picklistPickwaveId = picklistPickwaveId;
+    }
+
     private Date picklistCreatedAt;
 
     public Date getPicklistCreatedAt()
@@ -293,6 +305,9 @@ public class PicklistRoleMvoStateDto
             }
             if (returnedFieldsContains("PicklistLastModifiedByUserLogin")) {
                 dto.setPicklistLastModifiedByUserLogin(state.getPicklistLastModifiedByUserLogin());
+            }
+            if (returnedFieldsContains("PicklistPickwaveId")) {
+                dto.setPicklistPickwaveId(state.getPicklistPickwaveId());
             }
             if (returnedFieldsContains("PicklistCreatedAt")) {
                 dto.setPicklistCreatedAt(state.getPicklistCreatedAt());

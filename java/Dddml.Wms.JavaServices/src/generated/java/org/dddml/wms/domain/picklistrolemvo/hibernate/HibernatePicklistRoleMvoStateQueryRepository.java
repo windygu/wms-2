@@ -27,7 +27,7 @@ public class HibernatePicklistRoleMvoStateQueryRepository implements PicklistRol
         return this.sessionFactory.getCurrentSession();
     }
     
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("PicklistRoleId", "CreatedByUserLogin", "LastModifiedByUserLogin", "Version", "CreatedAt", "UpdatedAt", "Active", "Deleted", "PicklistDescription", "PicklistFacilityId", "PicklistShipmentMethodTypeId", "PicklistStatusId", "PicklistPicklistDate", "PicklistCreatedByUserLogin", "PicklistLastModifiedByUserLogin", "PicklistPicklistRoles", "PicklistVersion", "PicklistCreatedAt", "PicklistUpdatedAt", "PicklistActive", "PicklistDeleted"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("PicklistRoleId", "CreatedByUserLogin", "LastModifiedByUserLogin", "Version", "CreatedAt", "UpdatedAt", "Active", "Deleted", "PicklistDescription", "PicklistFacilityId", "PicklistShipmentMethodTypeId", "PicklistStatusId", "PicklistPicklistDate", "PicklistCreatedByUserLogin", "PicklistLastModifiedByUserLogin", "PicklistPickwaveId", "PicklistPicklistRoles", "PicklistVersion", "PicklistCreatedAt", "PicklistUpdatedAt", "PicklistActive", "PicklistDeleted"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     

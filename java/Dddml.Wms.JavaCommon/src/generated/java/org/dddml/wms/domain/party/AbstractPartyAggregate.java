@@ -68,6 +68,7 @@ public abstract class AbstractPartyAggregate extends AbstractAggregate implement
         PartyEventId stateEventId = new PartyEventId(c.getPartyId(), c.getVersion());
         PartyStateEvent.PartyStateCreated e = newPartyStateCreated(stateEventId);
         e.setPartyTypeId(c.getPartyTypeId());
+        e.setPrimaryRoleTypeId(c.getPrimaryRoleTypeId());
         e.setActive(c.getActive());
         ((AbstractPartyStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
@@ -79,6 +80,7 @@ public abstract class AbstractPartyAggregate extends AbstractAggregate implement
         PartyEventId stateEventId = new PartyEventId(c.getPartyId(), c.getVersion());
         OrganizationStateEvent.OrganizationStateCreated e = newOrganizationStateCreated(stateEventId);
         e.setPartyTypeId(c.getPartyTypeId());
+        e.setPrimaryRoleTypeId(c.getPrimaryRoleTypeId());
         e.setActive(c.getActive());
         e.setOrganizationName(c.getOrganizationName());
         e.setDescription(c.getDescription());
@@ -104,8 +106,10 @@ public abstract class AbstractPartyAggregate extends AbstractAggregate implement
         PartyEventId stateEventId = new PartyEventId(c.getPartyId(), c.getVersion());
         PartyStateEvent.PartyStateMergePatched e = newPartyStateMergePatched(stateEventId);
         e.setPartyTypeId(c.getPartyTypeId());
+        e.setPrimaryRoleTypeId(c.getPrimaryRoleTypeId());
         e.setActive(c.getActive());
         e.setIsPropertyPartyTypeIdRemoved(c.getIsPropertyPartyTypeIdRemoved());
+        e.setIsPropertyPrimaryRoleTypeIdRemoved(c.getIsPropertyPrimaryRoleTypeIdRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         ((AbstractPartyStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
@@ -117,6 +121,7 @@ public abstract class AbstractPartyAggregate extends AbstractAggregate implement
         PartyEventId stateEventId = new PartyEventId(c.getPartyId(), c.getVersion());
         OrganizationStateEvent.OrganizationStateMergePatched e = newOrganizationStateMergePatched(stateEventId);
         e.setPartyTypeId(c.getPartyTypeId());
+        e.setPrimaryRoleTypeId(c.getPrimaryRoleTypeId());
         e.setActive(c.getActive());
         e.setOrganizationName(c.getOrganizationName());
         e.setDescription(c.getDescription());
@@ -127,6 +132,7 @@ public abstract class AbstractPartyAggregate extends AbstractAggregate implement
         e.setIsPropertyTypeRemoved(c.getIsPropertyTypeRemoved());
         e.setIsPropertyIsSummaryRemoved(c.getIsPropertyIsSummaryRemoved());
         e.setIsPropertyPartyTypeIdRemoved(c.getIsPropertyPartyTypeIdRemoved());
+        e.setIsPropertyPrimaryRoleTypeIdRemoved(c.getIsPropertyPrimaryRoleTypeIdRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         ((AbstractOrganizationStateEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());

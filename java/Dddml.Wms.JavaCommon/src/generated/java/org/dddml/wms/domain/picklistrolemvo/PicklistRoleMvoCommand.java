@@ -77,6 +77,10 @@ public interface PicklistRoleMvoCommand extends Command
 
         void setPicklistLastModifiedByUserLogin(String picklistLastModifiedByUserLogin);
 
+        Long getPicklistPickwaveId();
+
+        void setPicklistPickwaveId(Long picklistPickwaveId);
+
         Date getPicklistCreatedAt();
 
         void setPicklistCreatedAt(Date picklistCreatedAt);
@@ -136,6 +140,10 @@ public interface PicklistRoleMvoCommand extends Command
         Boolean getIsPropertyPicklistLastModifiedByUserLoginRemoved();
 
         void setIsPropertyPicklistLastModifiedByUserLoginRemoved(Boolean removed);
+
+        Boolean getIsPropertyPicklistPickwaveIdRemoved();
+
+        void setIsPropertyPicklistPickwaveIdRemoved(Boolean removed);
 
         Boolean getIsPropertyPicklistCreatedAtRemoved();
 

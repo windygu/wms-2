@@ -35,6 +35,8 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
 
 		string PicklistLastModifiedByUserLogin { get; set; }
 
+		long? PicklistPickwaveId { get; set; }
+
 		long PicklistVersion { get; set; }
 
 		DateTime PicklistCreatedAt { get; set; }

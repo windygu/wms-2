@@ -29,6 +29,7 @@
     <property name="ShipByDate" ><column name="ShipByDate" sql-type="DATETIME" /></property>
     <property name="EstimatedShipDate" ><column name="EstimatedShipDate" sql-type="DATETIME" /></property>
     <property name="EstimatedDeliveryDate" ><column name="EstimatedDeliveryDate" sql-type="DATETIME" /></property>
+    <property name="PickwaveId" ><column name="PickwaveId" sql-type="DECIMAL(20,0)" /></property>
     <property name="Version" ></property>
     <property name="Active" ></property>
     <property name="OrderOrderTypeId" ><column name="OrderOrderTypeId" sql-type="VARCHAR(20)" /></property>
@@ -105,6 +106,8 @@
         <property name="IsPropertyEstimatedShipDateRemoved" column="IsPropertyEstimatedShipDateRemoved"/>
 
         <property name="IsPropertyEstimatedDeliveryDateRemoved" column="IsPropertyEstimatedDeliveryDateRemoved"/>
+
+        <property name="IsPropertyPickwaveIdRemoved" column="IsPropertyPickwaveIdRemoved"/>
 
         <property name="IsPropertyVersionRemoved" column="IsPropertyVersionRemoved"/>
 

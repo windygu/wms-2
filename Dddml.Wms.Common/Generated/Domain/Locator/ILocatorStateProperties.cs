@@ -34,6 +34,8 @@ namespace Dddml.Wms.Domain.Locator
 
 		string Description { get; set; }
 
+		string LocatorTypeId { get; set; }
+
 		long Version { get; set; }
 
 		bool Active { get; set; }

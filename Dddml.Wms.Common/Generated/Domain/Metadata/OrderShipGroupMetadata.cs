@@ -541,6 +541,35 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
+                    Name = "PickwaveId",
+                    Type = typeof(long),
+                    TypeName = "long",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "Pickwave",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
                     Name = "Version",
                     Type = typeof(long),
                     TypeName = "long",
@@ -916,6 +945,8 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("estimatedShipDate", "EstimatedShipDate");
             d.Add("EstimatedDeliveryDate", "EstimatedDeliveryDate");
             d.Add("estimatedDeliveryDate", "EstimatedDeliveryDate");
+            d.Add("PickwaveId", "PickwaveId");
+            d.Add("pickwaveId", "PickwaveId");
             d.Add("Version", "Version");
             d.Add("version", "Version");
             d.Add("CreatedBy", "CreatedBy");

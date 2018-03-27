@@ -322,6 +322,34 @@ namespace Dddml.Wms.Domain.Locator
             }
         }
 
+		public virtual string LocatorTypeId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("LocatorTypeId"))
+                {
+                    return _state.LocatorTypeId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.LocatorTypeId = value;
+            }
+        }
+
+        string ILocatorStateProperties.LocatorTypeId
+        {
+            get 
+            {
+                return (this._state as ILocatorStateProperties).LocatorTypeId;
+            }
+            set 
+            {
+                (this._state as ILocatorStateProperties).LocatorTypeId = value;
+            }
+        }
+
 		public virtual bool? Active
         {
             get

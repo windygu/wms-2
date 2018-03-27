@@ -105,6 +105,18 @@ public abstract class AbstractPicklistStateEvent extends AbstractStateEvent impl
         this.createdByUserLogin = createdByUserLogin;
     }
 
+    private Long pickwaveId;
+
+    public Long getPickwaveId()
+    {
+        return this.pickwaveId;
+    }
+
+    public void setPickwaveId(Long pickwaveId)
+    {
+        this.pickwaveId = pickwaveId;
+    }
+
     private Date createdAt;
 
     public Date getCreatedAt()
@@ -316,6 +328,16 @@ public abstract class AbstractPicklistStateEvent extends AbstractStateEvent impl
 
         public void setIsPropertyPicklistDateRemoved(Boolean removed) {
             this.isPropertyPicklistDateRemoved = removed;
+        }
+
+        private Boolean isPropertyPickwaveIdRemoved;
+
+        public Boolean getIsPropertyPickwaveIdRemoved() {
+            return this.isPropertyPickwaveIdRemoved;
+        }
+
+        public void setIsPropertyPickwaveIdRemoved(Boolean removed) {
+            this.isPropertyPickwaveIdRemoved = removed;
         }
 
         private Boolean isPropertyActiveRemoved;

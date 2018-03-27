@@ -24,6 +24,7 @@
 	<property name="y" ></property>
 	<property name="z" ></property>
 	<property name="description" ></property>
+	<property name="locatorTypeId" ></property>
 	<property name="active" ></property>
 
     <property name="createdBy" column="CreatedBy"/>
@@ -55,6 +56,8 @@
         <property name="isPropertyZRemoved" column="IsPropertyZRemoved"/>
 
         <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
+
+        <property name="isPropertyLocatorTypeIdRemoved" column="IsPropertyLocatorTypeIdRemoved"/>
 
         <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 

@@ -72,6 +72,8 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
 
 		public virtual string PicklistLastModifiedByUserLogin { get; set; }
 
+		public virtual long? PicklistPickwaveId { get; set; }
+
 		public virtual DateTime? PicklistCreatedAt { get; set; }
 
 		public virtual DateTime? PicklistUpdatedAt { get; set; }
@@ -248,6 +250,25 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
             set
             {
                 this.IsPropertyPicklistLastModifiedByUserLoginRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyPicklistPickwaveIdRemoved { get; set; }
+
+        bool IMergePatchPicklistRoleMvo.IsPropertyPicklistPickwaveIdRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyPicklistPickwaveIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyPicklistPickwaveIdRemoved = value;
             }
         }
 

@@ -19,6 +19,8 @@ namespace Dddml.Wms.Domain.Party
 
 		string PartyTypeId { get; set; }
 
+		string PrimaryRoleTypeId { get; set; }
+
 		string OrganizationName { get; set; }
 
 		string Description { get; set; }
@@ -40,6 +42,8 @@ namespace Dddml.Wms.Domain.Party
 	public interface IPartyStateMergePatched : IPartyStateEvent//, IPartyStateProperties
 	{
 		bool IsPropertyPartyTypeIdRemoved { get; set; }
+
+		bool IsPropertyPrimaryRoleTypeIdRemoved { get; set; }
 
 		bool IsPropertyOrganizationNameRemoved { get; set; }
 

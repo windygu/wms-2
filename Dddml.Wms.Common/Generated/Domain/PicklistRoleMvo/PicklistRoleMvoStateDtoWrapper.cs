@@ -326,6 +326,34 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
             }
         }
 
+		public virtual long? PicklistPickwaveId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("PicklistPickwaveId"))
+                {
+                    return _state.PicklistPickwaveId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.PicklistPickwaveId = value;
+            }
+        }
+
+        long? IPicklistRoleMvoStateProperties.PicklistPickwaveId
+        {
+            get 
+            {
+                return (this._state as IPicklistRoleMvoStateProperties).PicklistPickwaveId;
+            }
+            set 
+            {
+                (this._state as IPicklistRoleMvoStateProperties).PicklistPickwaveId = value;
+            }
+        }
+
 		public virtual DateTime? PicklistCreatedAt
         {
             get

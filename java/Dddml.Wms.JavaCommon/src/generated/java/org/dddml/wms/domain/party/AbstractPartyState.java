@@ -33,6 +33,18 @@ public abstract class AbstractPartyState implements PartyState
         this.partyTypeId = partyTypeId;
     }
 
+    private String primaryRoleTypeId;
+
+    public String getPrimaryRoleTypeId()
+    {
+        return this.primaryRoleTypeId;
+    }
+
+    public void setPrimaryRoleTypeId(String primaryRoleTypeId)
+    {
+        this.primaryRoleTypeId = primaryRoleTypeId;
+    }
+
     private Long version;
 
     public Long getVersion()
@@ -182,6 +194,7 @@ public abstract class AbstractPartyState implements PartyState
         throwOnWrongEvent(e);
 
         this.setPartyTypeId(e.getPartyTypeId());
+        this.setPrimaryRoleTypeId(e.getPrimaryRoleTypeId());
         this.setActive(e.getActive());
 
         this.setDeleted(false);
@@ -205,6 +218,17 @@ public abstract class AbstractPartyState implements PartyState
         else
         {
             this.setPartyTypeId(e.getPartyTypeId());
+        }
+        if (e.getPrimaryRoleTypeId() == null)
+        {
+            if (e.getIsPropertyPrimaryRoleTypeIdRemoved() != null && e.getIsPropertyPrimaryRoleTypeIdRemoved())
+            {
+                this.setPrimaryRoleTypeId(null);
+            }
+        }
+        else
+        {
+            this.setPrimaryRoleTypeId(e.getPrimaryRoleTypeId());
         }
         if (e.getActive() == null)
         {

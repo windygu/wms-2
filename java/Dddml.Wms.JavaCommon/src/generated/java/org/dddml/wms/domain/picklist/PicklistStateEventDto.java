@@ -85,6 +85,16 @@ public class PicklistStateEventDto extends AbstractStateEvent
         this.picklistDate = picklistDate;
     }
 
+    private Long pickwaveId;
+
+    public Long getPickwaveId() {
+        return this.pickwaveId;
+    }
+
+    public void setPickwaveId(Long pickwaveId) {
+        this.pickwaveId = pickwaveId;
+    }
+
     private Boolean active;
 
     public Boolean getActive() {
@@ -163,6 +173,16 @@ public class PicklistStateEventDto extends AbstractStateEvent
 
     public void setIsPropertyPicklistDateRemoved(Boolean removed) {
         this.isPropertyPicklistDateRemoved = removed;
+    }
+
+    private Boolean isPropertyPickwaveIdRemoved;
+
+    public Boolean getIsPropertyPickwaveIdRemoved() {
+        return this.isPropertyPickwaveIdRemoved;
+    }
+
+    public void setIsPropertyPickwaveIdRemoved(Boolean removed) {
+        this.isPropertyPickwaveIdRemoved = removed;
     }
 
     private Boolean isPropertyActiveRemoved;

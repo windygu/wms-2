@@ -52,6 +52,8 @@ namespace Dddml.Wms.Domain.OrderShipGroupMvo
 
 		DateTime? EstimatedDeliveryDate { get; set; }
 
+		long? PickwaveId { get; set; }
+
 		long? Version { get; set; }
 
 		bool? Active { get; set; }
@@ -157,6 +159,8 @@ namespace Dddml.Wms.Domain.OrderShipGroupMvo
 		bool IsPropertyEstimatedShipDateRemoved { get; set; }
 
 		bool IsPropertyEstimatedDeliveryDateRemoved { get; set; }
+
+		bool IsPropertyPickwaveIdRemoved { get; set; }
 
 		bool IsPropertyVersionRemoved { get; set; }
 

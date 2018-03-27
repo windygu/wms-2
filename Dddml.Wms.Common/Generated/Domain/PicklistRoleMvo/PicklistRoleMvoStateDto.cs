@@ -76,6 +76,12 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
             set;
         }
 
+        public virtual long? PicklistPickwaveId
+        {
+            get;
+            set;
+        }
+
         public virtual DateTime? PicklistCreatedAt
         {
             get;
@@ -143,6 +149,7 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
             state.PicklistPicklistDate = this.PicklistPicklistDate;
             state.PicklistCreatedByUserLogin = this.PicklistCreatedByUserLogin;
             state.PicklistLastModifiedByUserLogin = this.PicklistLastModifiedByUserLogin;
+            state.PicklistPickwaveId = this.PicklistPickwaveId;
             if (this.PicklistCreatedAt != null && this.PicklistCreatedAt.HasValue) { state.PicklistCreatedAt = this.PicklistCreatedAt.Value; }
             if (this.PicklistUpdatedAt != null && this.PicklistUpdatedAt.HasValue) { state.PicklistUpdatedAt = this.PicklistUpdatedAt.Value; }
             if (this.PicklistActive != null && this.PicklistActive.HasValue) { state.PicklistActive = this.PicklistActive.Value; }

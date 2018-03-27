@@ -26,6 +26,12 @@ namespace Dddml.Wms.Domain.Party
             set;
         }
 
+        string PrimaryRoleTypeId
+        {
+            get;
+            set;
+        }
+
         string OrganizationName
         {
             get;

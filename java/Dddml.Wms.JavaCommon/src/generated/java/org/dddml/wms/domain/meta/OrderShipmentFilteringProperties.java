@@ -21,6 +21,7 @@ public final class OrderShipmentFilteringProperties
             "deleted",
             "orderShipmentId.orderId",
             "orderShipmentId.orderItemSeqId",
+            "orderShipmentId.shipGroupSeqId",
             "orderShipmentId.shipmentId",
             "orderShipmentId.shipmentItemSeqId",
     };
@@ -36,6 +37,7 @@ public final class OrderShipmentFilteringProperties
             "Boolean",
             "String",
             "String",
+            "Long",
             "String",
             "String",
     };
@@ -72,6 +74,8 @@ public final class OrderShipmentFilteringProperties
         aliasMap.put("OrderShipmentId.OrderId", "orderShipmentId.orderId");
         aliasMap.put("orderShipmentId.orderItemSeqId", "orderShipmentId.orderItemSeqId");
         aliasMap.put("OrderShipmentId.OrderItemSeqId", "orderShipmentId.orderItemSeqId");
+        aliasMap.put("orderShipmentId.shipGroupSeqId", "orderShipmentId.shipGroupSeqId");
+        aliasMap.put("OrderShipmentId.ShipGroupSeqId", "orderShipmentId.shipGroupSeqId");
         aliasMap.put("orderShipmentId.shipmentId", "orderShipmentId.shipmentId");
         aliasMap.put("OrderShipmentId.ShipmentId", "orderShipmentId.shipmentId");
         aliasMap.put("orderShipmentId.shipmentItemSeqId", "orderShipmentId.shipmentItemSeqId");
