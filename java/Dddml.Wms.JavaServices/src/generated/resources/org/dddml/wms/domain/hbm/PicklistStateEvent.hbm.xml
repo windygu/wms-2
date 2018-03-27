@@ -1,0 +1,60 @@
+﻿<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.picklist">
+  
+  <class name="AbstractPicklistStateEvent" table="PicklistStateEvents" mutable="false" abstract="true">
+
+	<composite-id name="picklistEventId" class="org.dddml.wms.domain.picklist.PicklistEventId">
+		<key-property name="picklistId" ><column name="PicklistId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="version" ></key-property>
+	</composite-id>
+
+    <discriminator column="StateEventType" type="string" />
+
+	<property name="description" ><column name="Description" sql-type="VARCHAR(255)" /></property>
+	<property name="facilityId" ><column name="FacilityId" sql-type="VARCHAR(20)" /></property>
+	<property name="shipmentMethodTypeId" ><column name="ShipmentMethodTypeId" sql-type="VARCHAR(20)" /></property>
+	<property name="statusId" ><column name="StatusId" sql-type="VARCHAR(20)" /></property>
+	<property name="picklistDate" ><column name="PicklistDate" sql-type="DATETIME" /></property>
+	<property name="active" ></property>
+
+    <property name="createdByUserLogin" column="CreatedByUserLogin"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+    <subclass name="AbstractPicklistStateEvent$SimplePicklistStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="AbstractPicklistStateEvent$SimplePicklistStateMergePatched" discriminator-value="MergePatched">
+
+        <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
+
+        <property name="isPropertyFacilityIdRemoved" column="IsPropertyFacilityIdRemoved"/>
+
+        <property name="isPropertyShipmentMethodTypeIdRemoved" column="IsPropertyShipmentMethodTypeIdRemoved"/>
+
+        <property name="isPropertyStatusIdRemoved" column="IsPropertyStatusIdRemoved"/>
+
+        <property name="isPropertyPicklistDateRemoved" column="IsPropertyPicklistDateRemoved"/>
+
+        <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+
+
+    </subclass>
+
+    <subclass name="AbstractPicklistStateEvent$SimplePicklistStateDeleted" discriminator-value="Deleted">
+
+    </subclass>
+
+
+
+  </class>
+  
+</hibernate-mapping>

@@ -55,7 +55,6 @@ public abstract class AbstractShipmentItemMvoAggregate extends AbstractAggregate
         e.setProductId(c.getProductId());
         e.setAttributeSetInstanceId(c.getAttributeSetInstanceId());
         e.setQuantity(c.getQuantity());
-        e.setTargetQuantity(c.getTargetQuantity());
         e.setShipmentContentDescription(c.getShipmentContentDescription());
         e.setVersion(c.getVersion());
         e.setActive(c.getActive());
@@ -63,6 +62,7 @@ public abstract class AbstractShipmentItemMvoAggregate extends AbstractAggregate
         e.setShipmentStatusId(c.getShipmentStatusId());
         e.setShipmentPrimaryOrderId(c.getShipmentPrimaryOrderId());
         e.setShipmentPrimaryReturnId(c.getShipmentPrimaryReturnId());
+        e.setShipmentPrimaryShipGroupSeqId(c.getShipmentPrimaryShipGroupSeqId());
         e.setShipmentPicklistBinId(c.getShipmentPicklistBinId());
         e.setShipmentEstimatedReadyDate(c.getShipmentEstimatedReadyDate());
         e.setShipmentEstimatedShipDate(c.getShipmentEstimatedShipDate());
@@ -83,7 +83,6 @@ public abstract class AbstractShipmentItemMvoAggregate extends AbstractAggregate
         e.setShipmentPartyIdFrom(c.getShipmentPartyIdFrom());
         e.setShipmentAdditionalShippingCharge(c.getShipmentAdditionalShippingCharge());
         e.setShipmentAddtlShippingChargeDesc(c.getShipmentAddtlShippingChargeDesc());
-        e.setShipmentShipperId(c.getShipmentShipperId());
         e.setShipmentCreatedBy(c.getShipmentCreatedBy());
         e.setShipmentCreatedAt(c.getShipmentCreatedAt());
         e.setShipmentUpdatedBy(c.getShipmentUpdatedBy());
@@ -101,7 +100,6 @@ public abstract class AbstractShipmentItemMvoAggregate extends AbstractAggregate
         e.setProductId(c.getProductId());
         e.setAttributeSetInstanceId(c.getAttributeSetInstanceId());
         e.setQuantity(c.getQuantity());
-        e.setTargetQuantity(c.getTargetQuantity());
         e.setShipmentContentDescription(c.getShipmentContentDescription());
         e.setVersion(c.getVersion());
         e.setActive(c.getActive());
@@ -109,6 +107,7 @@ public abstract class AbstractShipmentItemMvoAggregate extends AbstractAggregate
         e.setShipmentStatusId(c.getShipmentStatusId());
         e.setShipmentPrimaryOrderId(c.getShipmentPrimaryOrderId());
         e.setShipmentPrimaryReturnId(c.getShipmentPrimaryReturnId());
+        e.setShipmentPrimaryShipGroupSeqId(c.getShipmentPrimaryShipGroupSeqId());
         e.setShipmentPicklistBinId(c.getShipmentPicklistBinId());
         e.setShipmentEstimatedReadyDate(c.getShipmentEstimatedReadyDate());
         e.setShipmentEstimatedShipDate(c.getShipmentEstimatedShipDate());
@@ -129,7 +128,6 @@ public abstract class AbstractShipmentItemMvoAggregate extends AbstractAggregate
         e.setShipmentPartyIdFrom(c.getShipmentPartyIdFrom());
         e.setShipmentAdditionalShippingCharge(c.getShipmentAdditionalShippingCharge());
         e.setShipmentAddtlShippingChargeDesc(c.getShipmentAddtlShippingChargeDesc());
-        e.setShipmentShipperId(c.getShipmentShipperId());
         e.setShipmentCreatedBy(c.getShipmentCreatedBy());
         e.setShipmentCreatedAt(c.getShipmentCreatedAt());
         e.setShipmentUpdatedBy(c.getShipmentUpdatedBy());
@@ -138,7 +136,6 @@ public abstract class AbstractShipmentItemMvoAggregate extends AbstractAggregate
         e.setIsPropertyProductIdRemoved(c.getIsPropertyProductIdRemoved());
         e.setIsPropertyAttributeSetInstanceIdRemoved(c.getIsPropertyAttributeSetInstanceIdRemoved());
         e.setIsPropertyQuantityRemoved(c.getIsPropertyQuantityRemoved());
-        e.setIsPropertyTargetQuantityRemoved(c.getIsPropertyTargetQuantityRemoved());
         e.setIsPropertyShipmentContentDescriptionRemoved(c.getIsPropertyShipmentContentDescriptionRemoved());
         e.setIsPropertyVersionRemoved(c.getIsPropertyVersionRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
@@ -146,6 +143,7 @@ public abstract class AbstractShipmentItemMvoAggregate extends AbstractAggregate
         e.setIsPropertyShipmentStatusIdRemoved(c.getIsPropertyShipmentStatusIdRemoved());
         e.setIsPropertyShipmentPrimaryOrderIdRemoved(c.getIsPropertyShipmentPrimaryOrderIdRemoved());
         e.setIsPropertyShipmentPrimaryReturnIdRemoved(c.getIsPropertyShipmentPrimaryReturnIdRemoved());
+        e.setIsPropertyShipmentPrimaryShipGroupSeqIdRemoved(c.getIsPropertyShipmentPrimaryShipGroupSeqIdRemoved());
         e.setIsPropertyShipmentPicklistBinIdRemoved(c.getIsPropertyShipmentPicklistBinIdRemoved());
         e.setIsPropertyShipmentEstimatedReadyDateRemoved(c.getIsPropertyShipmentEstimatedReadyDateRemoved());
         e.setIsPropertyShipmentEstimatedShipDateRemoved(c.getIsPropertyShipmentEstimatedShipDateRemoved());
@@ -166,7 +164,6 @@ public abstract class AbstractShipmentItemMvoAggregate extends AbstractAggregate
         e.setIsPropertyShipmentPartyIdFromRemoved(c.getIsPropertyShipmentPartyIdFromRemoved());
         e.setIsPropertyShipmentAdditionalShippingChargeRemoved(c.getIsPropertyShipmentAdditionalShippingChargeRemoved());
         e.setIsPropertyShipmentAddtlShippingChargeDescRemoved(c.getIsPropertyShipmentAddtlShippingChargeDescRemoved());
-        e.setIsPropertyShipmentShipperIdRemoved(c.getIsPropertyShipmentShipperIdRemoved());
         e.setIsPropertyShipmentCreatedByRemoved(c.getIsPropertyShipmentCreatedByRemoved());
         e.setIsPropertyShipmentCreatedAtRemoved(c.getIsPropertyShipmentCreatedAtRemoved());
         e.setIsPropertyShipmentUpdatedByRemoved(c.getIsPropertyShipmentUpdatedByRemoved());

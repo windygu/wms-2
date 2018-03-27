@@ -19,6 +19,7 @@
 	<property name="statusId" ><column name="StatusId" sql-type="VARCHAR(20)" /></property>
 	<property name="primaryOrderId" ><column name="PrimaryOrderId" sql-type="VARCHAR(20)" /></property>
 	<property name="primaryReturnId" ><column name="PrimaryReturnId" sql-type="VARCHAR(20)" /></property>
+	<property name="primaryShipGroupSeqId" ><column name="PrimaryShipGroupSeqId" sql-type="DECIMAL(20,0)" /></property>
 	<property name="picklistBinId" ><column name="PicklistBinId" sql-type="VARCHAR(20)" /></property>
 	<property name="estimatedReadyDate" ><column name="EstimatedReadyDate" sql-type="DATETIME" /></property>
 	<property name="estimatedShipDate" ><column name="EstimatedShipDate" sql-type="DATETIME" /></property>
@@ -39,7 +40,6 @@
 	<property name="partyIdFrom" ><column name="PartyIdFrom" sql-type="VARCHAR(20)" /></property>
 	<property name="additionalShippingCharge" ><column name="AdditionalShippingCharge" sql-type="DECIMAL(18,2)" /></property>
 	<property name="addtlShippingChargeDesc" ><column name="AddtlShippingChargeDesc" sql-type="VARCHAR(255)" /></property>
-	<property name="shipperId" ><column name="ShipperId" sql-type="VARCHAR(20)" /></property>
 	<property name="active" ></property>
 
     <property name="createdBy" column="CreatedBy"/>
@@ -61,6 +61,8 @@
         <property name="isPropertyPrimaryOrderIdRemoved" column="IsPropertyPrimaryOrderIdRemoved"/>
 
         <property name="isPropertyPrimaryReturnIdRemoved" column="IsPropertyPrimaryReturnIdRemoved"/>
+
+        <property name="isPropertyPrimaryShipGroupSeqIdRemoved" column="IsPropertyPrimaryShipGroupSeqIdRemoved"/>
 
         <property name="isPropertyPicklistBinIdRemoved" column="IsPropertyPicklistBinIdRemoved"/>
 
@@ -101,8 +103,6 @@
         <property name="isPropertyAdditionalShippingChargeRemoved" column="IsPropertyAdditionalShippingChargeRemoved"/>
 
         <property name="isPropertyAddtlShippingChargeDescRemoved" column="IsPropertyAddtlShippingChargeDescRemoved"/>
-
-        <property name="isPropertyShipperIdRemoved" column="IsPropertyShipperIdRemoved"/>
 
         <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 

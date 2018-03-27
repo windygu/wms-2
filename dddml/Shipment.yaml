@@ -25,8 +25,8 @@ aggregates:
         type: id
       PrimaryReturnId:
         type: id
-      # PrimaryShipGroupSeqId:
-        # type: id
+      PrimaryShipGroupSeqId:
+        type: numeric
       PicklistBinId:
         type: id
       EstimatedReadyDate:
@@ -76,15 +76,18 @@ aggregates:
       # LastModifiedByUserLogin:
         # type: id-vlong
         
-      # --------------------------------
-      # 运输商 Id.
-      ShipperId:
-        type: id
+      # 运输商 Id. ???
+      # ShipperId:
+        # type: id
       
       ShipmentItems:
         itemType: ShipmentItem
+        
       ShipmentReceipts:
         itemType: ShipmentReceipt
+        
+      ItemIssuances:
+        itemType: ItemIssuance
         
     references: {}
     
@@ -124,10 +127,10 @@ aggregates:
             type: fixed-point
             notNull: true
           
-          # 目标数量
-          TargetQuantity:
-            type: fixed-point
-            description: The Quantity which should be shipped.
+          # # 目标数量
+          # TargetQuantity:
+            # type: fixed-point
+            # description: The Quantity which should be shipped.
             
           ShipmentContentDescription:
             type: description
@@ -167,27 +170,34 @@ aggregates:
           ProductId:
             type: id-long
             
+          # InventoryItemId:
+            # type: id
+
           AttributeSetInstanceId:
             type: string
+            
+          LocatorId:
+            referenceType: Locator
+          
+          # ShipmentId:
+            # type: id
             
           # 装运项（行）序列 Id.
           ShipmentItemSeqId:
             type: id
             
-          # InventoryItemId:
-            # type: id
-          # ShipmentId:
-            # type: id
-          # ShipmentPackageSeqId:
-            # type: id
-          # OrderId:
-            # type: id
-          # OrderItemSeqId:
-            # type: id
-          # ReturnId:
-            # type: id
-          # ReturnItemSeqId:
-            # type: id
+          ShipmentPackageSeqId:
+            type: id
+            
+          OrderId:
+            type: id
+          OrderItemSeqId:
+            type: id
+            
+          ReturnId:
+            type: id
+          ReturnItemSeqId:
+            type: id
           
           # -----------------------------------
           # 拒收原因 Id.
@@ -236,6 +246,76 @@ aggregates:
           
         # metadata:
           # StateEventDatabaseTableName: SHIPMENT_RECEIPT_STATE_EVENT
+
+      # ------------------------------------------
+      # （装运）项目发货记录
+      ItemIssuance:
+        id:
+          name: ItemIssuanceSeqId
+          type: id
+          
+        properties:
+        
+          OrderId:
+            type: id-ne
+          OrderItemSeqId:
+            type: id-ne
+            
+          ShipGroupSeqId:
+            type: numeric
+            
+          # InventoryItemId:
+            # type: id
+          # 产品 Id
+          ProductId:
+            type: id-long
+            length: 60
+          # 货位 Id.
+          LocatorId: 
+            type: string
+            referenceType: Locator
+            length: 50
+          # 属性集实例 Id.
+          AttributeSetInstanceId:
+            type: string
+            length: 50
+            
+          # ShipmentId:
+            # type: id
+            
+          ShipmentItemSeqId:
+            type: id
+            
+          FixedAssetId:
+            type: id
+            
+          MaintHistSeqId:
+            type: id
+            
+          IssuedDateTime:
+            type: date-time
+          IssuedByUserLoginId:
+            type: id-vlong
+            
+          Quantity:
+            type: fixed-point
+          CancelQuantity:
+            type: fixed-point
+            
+        # references:
+          # OrderItemShipGrpInvRes:
+            # name: OrderItemShipGrpInvRes
+            # displayName: OrderItemShipGrpInvRes
+            # type: OrderItemShipGrpInvRes
+            # properties:
+            # - OrderId
+            # - OrderItemSeqId
+            # - ShipGroupSeqId
+            # - InventoryItemId
+            
+        # reservedProperties: {}
+        
+          
           
     # ---------------------------------
     methods:
@@ -341,9 +421,9 @@ aggregates:
             type: id-long
           Quantity:
             type: fixed-point
-          TargetQuantity:
-            type: fixed-point
-            description: The Quantity which should be shipped.
+          # TargetQuantity:
+            # type: fixed-point
+            # description: The Quantity which should be shipped.
           ShipmentContentDescription:
             type: description
           # --------------------------------

@@ -88,6 +88,17 @@ deallocate prepare stmt;
 
 set @var=if((SELECT true FROM information_schema.TABLE_CONSTRAINTS WHERE
             CONSTRAINT_SCHEMA = DATABASE() AND
+            TABLE_NAME        = 'OrderRoles' AND
+            CONSTRAINT_NAME   = 'FK_OrderRole_Order_StateId' AND
+            CONSTRAINT_TYPE   = 'FOREIGN KEY') = true,'ALTER TABLE OrderRoles
+            drop foreign key FK_OrderRole_Order_StateId','select 1');
+
+prepare stmt from @var;
+execute stmt;
+deallocate prepare stmt;
+
+set @var=if((SELECT true FROM information_schema.TABLE_CONSTRAINTS WHERE
+            CONSTRAINT_SCHEMA = DATABASE() AND
             TABLE_NAME        = 'OrderItems' AND
             CONSTRAINT_NAME   = 'FK_OrderItem_Order_StateId' AND
             CONSTRAINT_TYPE   = 'FOREIGN KEY') = true,'ALTER TABLE OrderItems
@@ -99,10 +110,43 @@ deallocate prepare stmt;
 
 set @var=if((SELECT true FROM information_schema.TABLE_CONSTRAINTS WHERE
             CONSTRAINT_SCHEMA = DATABASE() AND
+            TABLE_NAME        = 'OrderShipGroups' AND
+            CONSTRAINT_NAME   = 'FK_OrderShipGroup_Order_StateId' AND
+            CONSTRAINT_TYPE   = 'FOREIGN KEY') = true,'ALTER TABLE OrderShipGroups
+            drop foreign key FK_OrderShipGroup_Order_StateId','select 1');
+
+prepare stmt from @var;
+execute stmt;
+deallocate prepare stmt;
+
+set @var=if((SELECT true FROM information_schema.TABLE_CONSTRAINTS WHERE
+            CONSTRAINT_SCHEMA = DATABASE() AND
             TABLE_NAME        = 'PhysicalInventoryLines' AND
             CONSTRAINT_NAME   = 'FK_PhysicalInventoryLine_PhysicalInventory_StateId' AND
             CONSTRAINT_TYPE   = 'FOREIGN KEY') = true,'ALTER TABLE PhysicalInventoryLines
             drop foreign key FK_PhysicalInventoryLine_PhysicalInventory_StateId','select 1');
+
+prepare stmt from @var;
+execute stmt;
+deallocate prepare stmt;
+
+set @var=if((SELECT true FROM information_schema.TABLE_CONSTRAINTS WHERE
+            CONSTRAINT_SCHEMA = DATABASE() AND
+            TABLE_NAME        = 'PicklistRoles' AND
+            CONSTRAINT_NAME   = 'FK_PicklistRole_Picklist_StateId' AND
+            CONSTRAINT_TYPE   = 'FOREIGN KEY') = true,'ALTER TABLE PicklistRoles
+            drop foreign key FK_PicklistRole_Picklist_StateId','select 1');
+
+prepare stmt from @var;
+execute stmt;
+deallocate prepare stmt;
+
+set @var=if((SELECT true FROM information_schema.TABLE_CONSTRAINTS WHERE
+            CONSTRAINT_SCHEMA = DATABASE() AND
+            TABLE_NAME        = 'PicklistItems' AND
+            CONSTRAINT_NAME   = 'FK_PicklistItem_PicklistBin_StateId' AND
+            CONSTRAINT_TYPE   = 'FOREIGN KEY') = true,'ALTER TABLE PicklistItems
+            drop foreign key FK_PicklistItem_PicklistBin_StateId','select 1');
 
 prepare stmt from @var;
 execute stmt;
@@ -136,6 +180,28 @@ set @var=if((SELECT true FROM information_schema.TABLE_CONSTRAINTS WHERE
             CONSTRAINT_NAME   = 'FK_ShipmentReceipt_Shipment_StateId' AND
             CONSTRAINT_TYPE   = 'FOREIGN KEY') = true,'ALTER TABLE ShipmentReceipts
             drop foreign key FK_ShipmentReceipt_Shipment_StateId','select 1');
+
+prepare stmt from @var;
+execute stmt;
+deallocate prepare stmt;
+
+set @var=if((SELECT true FROM information_schema.TABLE_CONSTRAINTS WHERE
+            CONSTRAINT_SCHEMA = DATABASE() AND
+            TABLE_NAME        = 'ItemIssuances' AND
+            CONSTRAINT_NAME   = 'FK_ItemIssuance_Shipment_StateId' AND
+            CONSTRAINT_TYPE   = 'FOREIGN KEY') = true,'ALTER TABLE ItemIssuances
+            drop foreign key FK_ItemIssuance_Shipment_StateId','select 1');
+
+prepare stmt from @var;
+execute stmt;
+deallocate prepare stmt;
+
+set @var=if((SELECT true FROM information_schema.TABLE_CONSTRAINTS WHERE
+            CONSTRAINT_SCHEMA = DATABASE() AND
+            TABLE_NAME        = 'ShipmentPackageContents' AND
+            CONSTRAINT_NAME   = 'FK_ShipmentPackageContent_ShipmentPackage_StateId' AND
+            CONSTRAINT_TYPE   = 'FOREIGN KEY') = true,'ALTER TABLE ShipmentPackageContents
+            drop foreign key FK_ShipmentPackageContent_ShipmentPackage_StateId','select 1');
 
 prepare stmt from @var;
 execute stmt;

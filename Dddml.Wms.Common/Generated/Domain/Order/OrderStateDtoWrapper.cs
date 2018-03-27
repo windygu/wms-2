@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.Order;
+using Dddml.Wms.Domain.PartyRole;
 
 namespace Dddml.Wms.Domain.Order
 {
@@ -15,7 +16,7 @@ namespace Dddml.Wms.Domain.Order
 	public partial class OrderStateDtoWrapper : StateDtoWrapperBase, IOrderStateDto, IOrderState
 	{
 
-        internal static IList<string> _collectionFieldNames = new string[] { "OrderItems" };
+        internal static IList<string> _collectionFieldNames = new string[] { "OrderRoles", "OrderItems", "OrderShipGroups" };
 
         protected override bool IsCollectionField(string fieldName)
         {
@@ -935,6 +936,52 @@ namespace Dddml.Wms.Domain.Order
             get { return this.Version == OrderState.VersionZero; }
         }
 
+        public virtual IOrderRoleStateDto[] OrderRoles
+        {
+            get 
+            {
+                if (!(this as IStateDtoWrapper).ReturnedFieldsContains("OrderRoles"))
+                {
+                    return null;
+                }
+                var dtos = new List<IOrderRoleStateDto>();
+                if (this._state.OrderRoles != null)
+                {
+                    foreach (var s in this._state.OrderRoles)
+                    {
+                        var dto = new OrderRoleStateDtoWrapper((OrderRoleState)s);
+                        var returnFS = CollectionUtils.DictionaryGetValueIgnoringCase(ReturnedFields, "OrderRoles");
+                        if (!String.IsNullOrWhiteSpace(returnFS))
+                        {
+                            (dto as IStateDtoWrapper).ReturnedFieldsString = returnFS;
+                        }
+                        else
+                        {
+                            (dto as IStateDtoWrapper).AllFieldsReturned = this.AllFieldsReturned;
+                        }
+                        dtos.Add(dto);
+                    }
+                }
+                return dtos.ToArray();
+            }
+            set 
+            {
+                if (value == null) { value = new OrderRoleStateDtoWrapper[0]; }
+                var states = new List<IOrderRoleState>();
+                foreach (var s in value)
+                {
+                    states.Add(s.ToOrderRoleState());
+                }
+                this._state.OrderRoles = new DtoOrderRoleStates(this._state, states);
+            }
+        }
+
+        IOrderRoleStates IOrderState.OrderRoles
+        {
+            get { return _state.OrderRoles; }
+            set { _state.OrderRoles = value; }
+        }
+
         public virtual IOrderItemStateDto[] OrderItems
         {
             get 
@@ -981,6 +1028,52 @@ namespace Dddml.Wms.Domain.Order
             set { _state.OrderItems = value; }
         }
 
+        public virtual IOrderShipGroupStateDto[] OrderShipGroups
+        {
+            get 
+            {
+                if (!(this as IStateDtoWrapper).ReturnedFieldsContains("OrderShipGroups"))
+                {
+                    return null;
+                }
+                var dtos = new List<IOrderShipGroupStateDto>();
+                if (this._state.OrderShipGroups != null)
+                {
+                    foreach (var s in this._state.OrderShipGroups)
+                    {
+                        var dto = new OrderShipGroupStateDtoWrapper((OrderShipGroupState)s);
+                        var returnFS = CollectionUtils.DictionaryGetValueIgnoringCase(ReturnedFields, "OrderShipGroups");
+                        if (!String.IsNullOrWhiteSpace(returnFS))
+                        {
+                            (dto as IStateDtoWrapper).ReturnedFieldsString = returnFS;
+                        }
+                        else
+                        {
+                            (dto as IStateDtoWrapper).AllFieldsReturned = this.AllFieldsReturned;
+                        }
+                        dtos.Add(dto);
+                    }
+                }
+                return dtos.ToArray();
+            }
+            set 
+            {
+                if (value == null) { value = new OrderShipGroupStateDtoWrapper[0]; }
+                var states = new List<IOrderShipGroupState>();
+                foreach (var s in value)
+                {
+                    states.Add(s.ToOrderShipGroupState());
+                }
+                this._state.OrderShipGroups = new DtoOrderShipGroupStates(this._state, states);
+            }
+        }
+
+        IOrderShipGroupStates IOrderState.OrderShipGroups
+        {
+            get { return _state.OrderShipGroups; }
+            set { _state.OrderShipGroups = value; }
+        }
+
 		void IOrderState.When(IOrderStateCreated e)
 		{
             throw new NotSupportedException();
@@ -1010,6 +1103,67 @@ namespace Dddml.Wms.Domain.Order
 		}
 
         // //////////////////////////////////////////////////////////////
+
+        public class DtoOrderRoleStates : IOrderRoleStates
+        {
+
+            private IOrderState _outerState;
+
+            private IEnumerable<IOrderRoleState> _innerStates;
+
+            public DtoOrderRoleStates(IOrderState outerState, IEnumerable<IOrderRoleState> innerStates)
+            {
+                this._outerState = outerState;
+                if (innerStates == null)
+                {
+                    this._innerStates = new IOrderRoleState[] { };
+                }
+                else
+                {
+                    this._innerStates = innerStates;
+                }
+            }
+
+            public IEnumerator<IOrderRoleState> GetEnumerator()
+            {
+                return _innerStates.GetEnumerator();
+            }
+
+            System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+            {
+                return _innerStates.GetEnumerator();
+            }
+
+            public IOrderRoleState Get(PartyRoleId partyRoleId)
+            {
+                throw new NotSupportedException();
+            }
+
+            public IOrderRoleState Get(PartyRoleId partyRoleId, bool forCreation)
+            {
+                throw new NotSupportedException();
+            }
+
+            public IOrderRoleState Get(PartyRoleId partyRoleId, bool forCreation, bool nullAllowed)
+            {
+                throw new NotSupportedException();
+            }
+
+            public void Remove(IOrderRoleState state)
+            {
+                throw new NotSupportedException();
+            }
+
+            public void AddToSave(IOrderRoleState state)
+            {
+                throw new NotSupportedException();
+            }
+
+            public void Save()
+            {
+                throw new NotSupportedException();
+            }
+        }
 
         public class DtoOrderItemStates : IOrderItemStates
         {
@@ -1062,6 +1216,67 @@ namespace Dddml.Wms.Domain.Order
             }
 
             public void AddToSave(IOrderItemState state)
+            {
+                throw new NotSupportedException();
+            }
+
+            public void Save()
+            {
+                throw new NotSupportedException();
+            }
+        }
+
+        public class DtoOrderShipGroupStates : IOrderShipGroupStates
+        {
+
+            private IOrderState _outerState;
+
+            private IEnumerable<IOrderShipGroupState> _innerStates;
+
+            public DtoOrderShipGroupStates(IOrderState outerState, IEnumerable<IOrderShipGroupState> innerStates)
+            {
+                this._outerState = outerState;
+                if (innerStates == null)
+                {
+                    this._innerStates = new IOrderShipGroupState[] { };
+                }
+                else
+                {
+                    this._innerStates = innerStates;
+                }
+            }
+
+            public IEnumerator<IOrderShipGroupState> GetEnumerator()
+            {
+                return _innerStates.GetEnumerator();
+            }
+
+            System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+            {
+                return _innerStates.GetEnumerator();
+            }
+
+            public IOrderShipGroupState Get(long? shipGroupSeqId)
+            {
+                throw new NotSupportedException();
+            }
+
+            public IOrderShipGroupState Get(long? shipGroupSeqId, bool forCreation)
+            {
+                throw new NotSupportedException();
+            }
+
+            public IOrderShipGroupState Get(long? shipGroupSeqId, bool forCreation, bool nullAllowed)
+            {
+                throw new NotSupportedException();
+            }
+
+            public void Remove(IOrderShipGroupState state)
+            {
+                throw new NotSupportedException();
+            }
+
+            public void AddToSave(IOrderShipGroupState state)
             {
                 throw new NotSupportedException();
             }

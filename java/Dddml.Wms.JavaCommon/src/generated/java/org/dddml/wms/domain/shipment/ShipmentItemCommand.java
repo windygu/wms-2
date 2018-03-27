@@ -30,10 +30,6 @@ public interface ShipmentItemCommand extends Command
 
         void setQuantity(java.math.BigDecimal quantity);
 
-        java.math.BigDecimal getTargetQuantity();
-
-        void setTargetQuantity(java.math.BigDecimal targetQuantity);
-
         String getShipmentContentDescription();
 
         void setShipmentContentDescription(String shipmentContentDescription);
@@ -61,10 +57,6 @@ public interface ShipmentItemCommand extends Command
         Boolean getIsPropertyQuantityRemoved();
 
         void setIsPropertyQuantityRemoved(Boolean removed);
-
-        Boolean getIsPropertyTargetQuantityRemoved();
-
-        void setIsPropertyTargetQuantityRemoved(Boolean removed);
 
         Boolean getIsPropertyShipmentContentDescriptionRemoved();
 

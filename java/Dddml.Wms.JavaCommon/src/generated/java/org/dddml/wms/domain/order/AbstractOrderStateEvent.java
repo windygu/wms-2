@@ -2,6 +2,7 @@ package org.dddml.wms.domain.order;
 
 import java.util.*;
 import java.util.Date;
+import org.dddml.wms.domain.partyrole.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.AbstractStateEvent;
@@ -374,6 +375,32 @@ public abstract class AbstractOrderStateEvent extends AbstractStateEvent impleme
         this.orderEventId = eventId;
     }
 
+    protected OrderRoleStateEventDao getOrderRoleStateEventDao() {
+        return (OrderRoleStateEventDao)ApplicationContext.current.get("OrderRoleStateEventDao");
+    }
+
+    protected OrderRoleEventId newOrderRoleEventId(PartyRoleId partyRoleId)
+    {
+        OrderRoleEventId eventId = new OrderRoleEventId(this.getOrderEventId().getOrderId(), 
+            partyRoleId, 
+            this.getOrderEventId().getVersion());
+        return eventId;
+    }
+
+    protected void throwOnInconsistentEventIds(OrderRoleStateEvent e)
+    {
+        throwOnInconsistentEventIds(this, e);
+    }
+
+    public static void throwOnInconsistentEventIds(OrderStateEvent oe, OrderRoleStateEvent e)
+    {
+        if (!oe.getOrderEventId().getOrderId().equals(e.getOrderRoleEventId().getOrderId()))
+        { 
+            throw DomainError.named("inconsistentEventIds", "Outer Id OrderId %1$s but inner id OrderId %2$s", 
+                oe.getOrderEventId().getOrderId(), e.getOrderRoleEventId().getOrderId());
+        }
+    }
+
     protected OrderItemStateEventDao getOrderItemStateEventDao() {
         return (OrderItemStateEventDao)ApplicationContext.current.get("OrderItemStateEventDao");
     }
@@ -400,12 +427,62 @@ public abstract class AbstractOrderStateEvent extends AbstractStateEvent impleme
         }
     }
 
+    protected OrderShipGroupStateEventDao getOrderShipGroupStateEventDao() {
+        return (OrderShipGroupStateEventDao)ApplicationContext.current.get("OrderShipGroupStateEventDao");
+    }
+
+    protected OrderShipGroupEventId newOrderShipGroupEventId(Long shipGroupSeqId)
+    {
+        OrderShipGroupEventId eventId = new OrderShipGroupEventId(this.getOrderEventId().getOrderId(), 
+            shipGroupSeqId, 
+            this.getOrderEventId().getVersion());
+        return eventId;
+    }
+
+    protected void throwOnInconsistentEventIds(OrderShipGroupStateEvent e)
+    {
+        throwOnInconsistentEventIds(this, e);
+    }
+
+    public static void throwOnInconsistentEventIds(OrderStateEvent oe, OrderShipGroupStateEvent e)
+    {
+        if (!oe.getOrderEventId().getOrderId().equals(e.getOrderShipGroupEventId().getOrderId()))
+        { 
+            throw DomainError.named("inconsistentEventIds", "Outer Id OrderId %1$s but inner id OrderId %2$s", 
+                oe.getOrderEventId().getOrderId(), e.getOrderShipGroupEventId().getOrderId());
+        }
+    }
+
+    public OrderRoleStateEvent.OrderRoleStateCreated newOrderRoleStateCreated(PartyRoleId partyRoleId) {
+        return new AbstractOrderRoleStateEvent.SimpleOrderRoleStateCreated(newOrderRoleEventId(partyRoleId));
+    }
+
+    public OrderRoleStateEvent.OrderRoleStateMergePatched newOrderRoleStateMergePatched(PartyRoleId partyRoleId) {
+        return new AbstractOrderRoleStateEvent.SimpleOrderRoleStateMergePatched(newOrderRoleEventId(partyRoleId));
+    }
+
+    public OrderRoleStateEvent.OrderRoleStateRemoved newOrderRoleStateRemoved(PartyRoleId partyRoleId) {
+        return new AbstractOrderRoleStateEvent.SimpleOrderRoleStateRemoved(newOrderRoleEventId(partyRoleId));
+    }
+
     public OrderItemStateEvent.OrderItemStateCreated newOrderItemStateCreated(String orderItemSeqId) {
         return new AbstractOrderItemStateEvent.SimpleOrderItemStateCreated(newOrderItemEventId(orderItemSeqId));
     }
 
     public OrderItemStateEvent.OrderItemStateMergePatched newOrderItemStateMergePatched(String orderItemSeqId) {
         return new AbstractOrderItemStateEvent.SimpleOrderItemStateMergePatched(newOrderItemEventId(orderItemSeqId));
+    }
+
+    public OrderShipGroupStateEvent.OrderShipGroupStateCreated newOrderShipGroupStateCreated(Long shipGroupSeqId) {
+        return new AbstractOrderShipGroupStateEvent.SimpleOrderShipGroupStateCreated(newOrderShipGroupEventId(shipGroupSeqId));
+    }
+
+    public OrderShipGroupStateEvent.OrderShipGroupStateMergePatched newOrderShipGroupStateMergePatched(Long shipGroupSeqId) {
+        return new AbstractOrderShipGroupStateEvent.SimpleOrderShipGroupStateMergePatched(newOrderShipGroupEventId(shipGroupSeqId));
+    }
+
+    public OrderShipGroupStateEvent.OrderShipGroupStateRemoved newOrderShipGroupStateRemoved(Long shipGroupSeqId) {
+        return new AbstractOrderShipGroupStateEvent.SimpleOrderShipGroupStateRemoved(newOrderShipGroupEventId(shipGroupSeqId));
     }
 
 
@@ -424,6 +501,48 @@ public abstract class AbstractOrderStateEvent extends AbstractStateEvent impleme
 
         public String getStateEventType() {
             return StateEventType.CREATED;
+        }
+
+        private Map<OrderRoleEventId, OrderRoleStateEvent.OrderRoleStateCreated> orderRoleEvents = new HashMap<OrderRoleEventId, OrderRoleStateEvent.OrderRoleStateCreated>();
+        
+        private Iterable<OrderRoleStateEvent.OrderRoleStateCreated> readOnlyOrderRoleEvents;
+
+        public Iterable<OrderRoleStateEvent.OrderRoleStateCreated> getOrderRoleEvents()
+        {
+            if (!getStateEventReadOnly())
+            {
+                return this.orderRoleEvents.values();
+            }
+            else
+            {
+                if (readOnlyOrderRoleEvents != null) { return readOnlyOrderRoleEvents; }
+                OrderRoleStateEventDao eventDao = getOrderRoleStateEventDao();
+                List<OrderRoleStateEvent.OrderRoleStateCreated> eL = new ArrayList<OrderRoleStateEvent.OrderRoleStateCreated>();
+                for (OrderRoleStateEvent e : eventDao.findByOrderEventId(this.getOrderEventId()))
+                {
+                    e.setStateEventReadOnly(true);
+                    eL.add((OrderRoleStateEvent.OrderRoleStateCreated)e);
+                }
+                return (readOnlyOrderRoleEvents = eL);
+            }
+        }
+
+        public void setOrderRoleEvents(Iterable<OrderRoleStateEvent.OrderRoleStateCreated> es)
+        {
+            if (es != null)
+            {
+                for (OrderRoleStateEvent.OrderRoleStateCreated e : es)
+                {
+                    addOrderRoleEvent(e);
+                }
+            }
+            else { this.orderRoleEvents.clear(); }
+        }
+        
+        public void addOrderRoleEvent(OrderRoleStateEvent.OrderRoleStateCreated e)
+        {
+            throwOnInconsistentEventIds(e);
+            this.orderRoleEvents.put(e.getOrderRoleEventId(), e);
         }
 
         private Map<OrderItemEventId, OrderItemStateEvent.OrderItemStateCreated> orderItemEvents = new HashMap<OrderItemEventId, OrderItemStateEvent.OrderItemStateCreated>();
@@ -468,10 +587,58 @@ public abstract class AbstractOrderStateEvent extends AbstractStateEvent impleme
             this.orderItemEvents.put(e.getOrderItemEventId(), e);
         }
 
+        private Map<OrderShipGroupEventId, OrderShipGroupStateEvent.OrderShipGroupStateCreated> orderShipGroupEvents = new HashMap<OrderShipGroupEventId, OrderShipGroupStateEvent.OrderShipGroupStateCreated>();
+        
+        private Iterable<OrderShipGroupStateEvent.OrderShipGroupStateCreated> readOnlyOrderShipGroupEvents;
+
+        public Iterable<OrderShipGroupStateEvent.OrderShipGroupStateCreated> getOrderShipGroupEvents()
+        {
+            if (!getStateEventReadOnly())
+            {
+                return this.orderShipGroupEvents.values();
+            }
+            else
+            {
+                if (readOnlyOrderShipGroupEvents != null) { return readOnlyOrderShipGroupEvents; }
+                OrderShipGroupStateEventDao eventDao = getOrderShipGroupStateEventDao();
+                List<OrderShipGroupStateEvent.OrderShipGroupStateCreated> eL = new ArrayList<OrderShipGroupStateEvent.OrderShipGroupStateCreated>();
+                for (OrderShipGroupStateEvent e : eventDao.findByOrderEventId(this.getOrderEventId()))
+                {
+                    e.setStateEventReadOnly(true);
+                    eL.add((OrderShipGroupStateEvent.OrderShipGroupStateCreated)e);
+                }
+                return (readOnlyOrderShipGroupEvents = eL);
+            }
+        }
+
+        public void setOrderShipGroupEvents(Iterable<OrderShipGroupStateEvent.OrderShipGroupStateCreated> es)
+        {
+            if (es != null)
+            {
+                for (OrderShipGroupStateEvent.OrderShipGroupStateCreated e : es)
+                {
+                    addOrderShipGroupEvent(e);
+                }
+            }
+            else { this.orderShipGroupEvents.clear(); }
+        }
+        
+        public void addOrderShipGroupEvent(OrderShipGroupStateEvent.OrderShipGroupStateCreated e)
+        {
+            throwOnInconsistentEventIds(e);
+            this.orderShipGroupEvents.put(e.getOrderShipGroupEventId(), e);
+        }
+
         public void save()
         {
+            for (OrderRoleStateEvent.OrderRoleStateCreated e : this.getOrderRoleEvents()) {
+                getOrderRoleStateEventDao().save(e);
+            }
             for (OrderItemStateEvent.OrderItemStateCreated e : this.getOrderItemEvents()) {
                 getOrderItemStateEventDao().save(e);
+            }
+            for (OrderShipGroupStateEvent.OrderShipGroupStateCreated e : this.getOrderShipGroupEvents()) {
+                getOrderShipGroupStateEventDao().save(e);
             }
         }
     }
@@ -741,6 +908,48 @@ public abstract class AbstractOrderStateEvent extends AbstractStateEvent impleme
             this.isPropertyActiveRemoved = removed;
         }
 
+        private Map<OrderRoleEventId, OrderRoleStateEvent> orderRoleEvents = new HashMap<OrderRoleEventId, OrderRoleStateEvent>();
+        
+        private Iterable<OrderRoleStateEvent> readOnlyOrderRoleEvents;
+
+        public Iterable<OrderRoleStateEvent> getOrderRoleEvents()
+        {
+            if (!getStateEventReadOnly())
+            {
+                return this.orderRoleEvents.values();
+            }
+            else
+            {
+                if (readOnlyOrderRoleEvents != null) { return readOnlyOrderRoleEvents; }
+                OrderRoleStateEventDao eventDao = getOrderRoleStateEventDao();
+                List<OrderRoleStateEvent> eL = new ArrayList<OrderRoleStateEvent>();
+                for (OrderRoleStateEvent e : eventDao.findByOrderEventId(this.getOrderEventId()))
+                {
+                    e.setStateEventReadOnly(true);
+                    eL.add((OrderRoleStateEvent)e);
+                }
+                return (readOnlyOrderRoleEvents = eL);
+            }
+        }
+
+        public void setOrderRoleEvents(Iterable<OrderRoleStateEvent> es)
+        {
+            if (es != null)
+            {
+                for (OrderRoleStateEvent e : es)
+                {
+                    addOrderRoleEvent(e);
+                }
+            }
+            else { this.orderRoleEvents.clear(); }
+        }
+        
+        public void addOrderRoleEvent(OrderRoleStateEvent e)
+        {
+            throwOnInconsistentEventIds(e);
+            this.orderRoleEvents.put(e.getOrderRoleEventId(), e);
+        }
+
         private Map<OrderItemEventId, OrderItemStateEvent> orderItemEvents = new HashMap<OrderItemEventId, OrderItemStateEvent>();
         
         private Iterable<OrderItemStateEvent> readOnlyOrderItemEvents;
@@ -783,10 +992,58 @@ public abstract class AbstractOrderStateEvent extends AbstractStateEvent impleme
             this.orderItemEvents.put(e.getOrderItemEventId(), e);
         }
 
+        private Map<OrderShipGroupEventId, OrderShipGroupStateEvent> orderShipGroupEvents = new HashMap<OrderShipGroupEventId, OrderShipGroupStateEvent>();
+        
+        private Iterable<OrderShipGroupStateEvent> readOnlyOrderShipGroupEvents;
+
+        public Iterable<OrderShipGroupStateEvent> getOrderShipGroupEvents()
+        {
+            if (!getStateEventReadOnly())
+            {
+                return this.orderShipGroupEvents.values();
+            }
+            else
+            {
+                if (readOnlyOrderShipGroupEvents != null) { return readOnlyOrderShipGroupEvents; }
+                OrderShipGroupStateEventDao eventDao = getOrderShipGroupStateEventDao();
+                List<OrderShipGroupStateEvent> eL = new ArrayList<OrderShipGroupStateEvent>();
+                for (OrderShipGroupStateEvent e : eventDao.findByOrderEventId(this.getOrderEventId()))
+                {
+                    e.setStateEventReadOnly(true);
+                    eL.add((OrderShipGroupStateEvent)e);
+                }
+                return (readOnlyOrderShipGroupEvents = eL);
+            }
+        }
+
+        public void setOrderShipGroupEvents(Iterable<OrderShipGroupStateEvent> es)
+        {
+            if (es != null)
+            {
+                for (OrderShipGroupStateEvent e : es)
+                {
+                    addOrderShipGroupEvent(e);
+                }
+            }
+            else { this.orderShipGroupEvents.clear(); }
+        }
+        
+        public void addOrderShipGroupEvent(OrderShipGroupStateEvent e)
+        {
+            throwOnInconsistentEventIds(e);
+            this.orderShipGroupEvents.put(e.getOrderShipGroupEventId(), e);
+        }
+
         public void save()
         {
+            for (OrderRoleStateEvent e : this.getOrderRoleEvents()) {
+                getOrderRoleStateEventDao().save(e);
+            }
             for (OrderItemStateEvent e : this.getOrderItemEvents()) {
                 getOrderItemStateEventDao().save(e);
+            }
+            for (OrderShipGroupStateEvent e : this.getOrderShipGroupEvents()) {
+                getOrderShipGroupStateEventDao().save(e);
             }
         }
     }

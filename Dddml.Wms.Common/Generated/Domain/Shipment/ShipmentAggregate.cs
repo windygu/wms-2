@@ -101,6 +101,7 @@ namespace Dddml.Wms.Domain.Shipment
             e.StatusId = c.StatusId;
             e.PrimaryOrderId = c.PrimaryOrderId;
             e.PrimaryReturnId = c.PrimaryReturnId;
+            e.PrimaryShipGroupSeqId = c.PrimaryShipGroupSeqId;
             e.PicklistBinId = c.PicklistBinId;
             e.EstimatedReadyDate = c.EstimatedReadyDate;
             e.EstimatedShipDate = c.EstimatedShipDate;
@@ -121,7 +122,6 @@ namespace Dddml.Wms.Domain.Shipment
             e.PartyIdFrom = c.PartyIdFrom;
             e.AdditionalShippingCharge = c.AdditionalShippingCharge;
             e.AddtlShippingChargeDesc = c.AddtlShippingChargeDesc;
-            e.ShipperId = c.ShipperId;
             e.Active = c.Active;
             e.CommandId = c.CommandId;
 
@@ -146,6 +146,14 @@ namespace Dddml.Wms.Domain.Shipment
                 e.AddShipmentReceiptEvent(innerEvent);
             }
 
+            foreach (ICreateItemIssuance innerCommand in c.ItemIssuances)
+            {
+                ThrowOnInconsistentCommands(c, innerCommand);
+
+                IItemIssuanceStateCreated innerEvent = MapCreate(innerCommand, c, version, _state);
+                e.AddItemIssuanceEvent(innerEvent);
+            }
+
 
             return e;
         }
@@ -159,6 +167,7 @@ namespace Dddml.Wms.Domain.Shipment
             e.StatusId = c.StatusId;
             e.PrimaryOrderId = c.PrimaryOrderId;
             e.PrimaryReturnId = c.PrimaryReturnId;
+            e.PrimaryShipGroupSeqId = c.PrimaryShipGroupSeqId;
             e.PicklistBinId = c.PicklistBinId;
             e.EstimatedReadyDate = c.EstimatedReadyDate;
             e.EstimatedShipDate = c.EstimatedShipDate;
@@ -179,12 +188,12 @@ namespace Dddml.Wms.Domain.Shipment
             e.PartyIdFrom = c.PartyIdFrom;
             e.AdditionalShippingCharge = c.AdditionalShippingCharge;
             e.AddtlShippingChargeDesc = c.AddtlShippingChargeDesc;
-            e.ShipperId = c.ShipperId;
             e.Active = c.Active;
             e.IsPropertyShipmentTypeIdRemoved = c.IsPropertyShipmentTypeIdRemoved;
             e.IsPropertyStatusIdRemoved = c.IsPropertyStatusIdRemoved;
             e.IsPropertyPrimaryOrderIdRemoved = c.IsPropertyPrimaryOrderIdRemoved;
             e.IsPropertyPrimaryReturnIdRemoved = c.IsPropertyPrimaryReturnIdRemoved;
+            e.IsPropertyPrimaryShipGroupSeqIdRemoved = c.IsPropertyPrimaryShipGroupSeqIdRemoved;
             e.IsPropertyPicklistBinIdRemoved = c.IsPropertyPicklistBinIdRemoved;
             e.IsPropertyEstimatedReadyDateRemoved = c.IsPropertyEstimatedReadyDateRemoved;
             e.IsPropertyEstimatedShipDateRemoved = c.IsPropertyEstimatedShipDateRemoved;
@@ -205,7 +214,6 @@ namespace Dddml.Wms.Domain.Shipment
             e.IsPropertyPartyIdFromRemoved = c.IsPropertyPartyIdFromRemoved;
             e.IsPropertyAdditionalShippingChargeRemoved = c.IsPropertyAdditionalShippingChargeRemoved;
             e.IsPropertyAddtlShippingChargeDescRemoved = c.IsPropertyAddtlShippingChargeDescRemoved;
-            e.IsPropertyShipperIdRemoved = c.IsPropertyShipperIdRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
             e.CommandId = c.CommandId;
@@ -230,6 +238,14 @@ namespace Dddml.Wms.Domain.Shipment
 
                 IShipmentReceiptStateEvent innerEvent = Map(innerCommand, c, version, _state);
                 e.AddShipmentReceiptEvent(innerEvent);
+            }
+
+            foreach (IItemIssuanceCommand innerCommand in c.ItemIssuanceCommands)
+            {
+                ThrowOnInconsistentCommands(c, innerCommand);
+
+                IItemIssuanceStateEvent innerEvent = Map(innerCommand, c, version, _state);
+                e.AddItemIssuanceEvent(innerEvent);
             }
 
 
@@ -281,6 +297,28 @@ namespace Dddml.Wms.Domain.Shipment
         }// END ThrowOnInconsistentCommands /////////////////////
 
 
+        protected void ThrowOnInconsistentCommands(IShipmentCommand command, IItemIssuanceCommand innerCommand)
+        {
+
+            var properties =  command as ICreateOrMergePatchOrDeleteShipment;
+            var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveItemIssuance;
+            if (properties == null || innerProperties == null) { return; }
+            if (innerProperties.ShipmentId == default(string))
+            {
+                innerProperties.ShipmentId = properties.ShipmentId;
+            }
+            else
+            {
+                var outerShipmentIdName = "ShipmentId";
+                var outerShipmentIdValue = properties.ShipmentId;
+                var innerShipmentIdName = "ShipmentId";
+                var innerShipmentIdValue = innerProperties.ShipmentId;
+                ThrowOnInconsistentIds(innerProperties, innerShipmentIdName, innerShipmentIdValue, outerShipmentIdName, outerShipmentIdValue);
+            }
+
+        }// END ThrowOnInconsistentCommands /////////////////////
+
+
         protected virtual IShipmentItemStateEvent Map(IShipmentItemCommand c, IShipmentCommand outerCommand, long version, IShipmentState outerState)
         {
             var create = (c.CommandType == CommandType.Create) ? (c as ICreateShipmentItem) : null;
@@ -309,7 +347,6 @@ namespace Dddml.Wms.Domain.Shipment
             e.ProductId = c.ProductId;
             e.AttributeSetInstanceId = c.AttributeSetInstanceId;
             e.Quantity = c.Quantity;
-            e.TargetQuantity = c.TargetQuantity;
             e.ShipmentContentDescription = c.ShipmentContentDescription;
             e.Active = c.Active;
 
@@ -331,13 +368,11 @@ namespace Dddml.Wms.Domain.Shipment
             e.ProductId = c.ProductId;
             e.AttributeSetInstanceId = c.AttributeSetInstanceId;
             e.Quantity = c.Quantity;
-            e.TargetQuantity = c.TargetQuantity;
             e.ShipmentContentDescription = c.ShipmentContentDescription;
             e.Active = c.Active;
             e.IsPropertyProductIdRemoved = c.IsPropertyProductIdRemoved;
             e.IsPropertyAttributeSetInstanceIdRemoved = c.IsPropertyAttributeSetInstanceIdRemoved;
             e.IsPropertyQuantityRemoved = c.IsPropertyQuantityRemoved;
-            e.IsPropertyTargetQuantityRemoved = c.IsPropertyTargetQuantityRemoved;
             e.IsPropertyShipmentContentDescriptionRemoved = c.IsPropertyShipmentContentDescriptionRemoved;
             e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
 
@@ -376,7 +411,13 @@ namespace Dddml.Wms.Domain.Shipment
 
             e.ProductId = c.ProductId;
             e.AttributeSetInstanceId = c.AttributeSetInstanceId;
+            e.LocatorId = c.LocatorId;
             e.ShipmentItemSeqId = c.ShipmentItemSeqId;
+            e.ShipmentPackageSeqId = c.ShipmentPackageSeqId;
+            e.OrderId = c.OrderId;
+            e.OrderItemSeqId = c.OrderItemSeqId;
+            e.ReturnId = c.ReturnId;
+            e.ReturnItemSeqId = c.ReturnItemSeqId;
             e.RejectionReasonId = c.RejectionReasonId;
             e.DamageStatusId = c.DamageStatusId;
             e.DamageReasonId = c.DamageReasonId;
@@ -405,7 +446,13 @@ namespace Dddml.Wms.Domain.Shipment
 
             e.ProductId = c.ProductId;
             e.AttributeSetInstanceId = c.AttributeSetInstanceId;
+            e.LocatorId = c.LocatorId;
             e.ShipmentItemSeqId = c.ShipmentItemSeqId;
+            e.ShipmentPackageSeqId = c.ShipmentPackageSeqId;
+            e.OrderId = c.OrderId;
+            e.OrderItemSeqId = c.OrderItemSeqId;
+            e.ReturnId = c.ReturnId;
+            e.ReturnItemSeqId = c.ReturnItemSeqId;
             e.RejectionReasonId = c.RejectionReasonId;
             e.DamageStatusId = c.DamageStatusId;
             e.DamageReasonId = c.DamageReasonId;
@@ -418,7 +465,13 @@ namespace Dddml.Wms.Domain.Shipment
             e.Active = c.Active;
             e.IsPropertyProductIdRemoved = c.IsPropertyProductIdRemoved;
             e.IsPropertyAttributeSetInstanceIdRemoved = c.IsPropertyAttributeSetInstanceIdRemoved;
+            e.IsPropertyLocatorIdRemoved = c.IsPropertyLocatorIdRemoved;
             e.IsPropertyShipmentItemSeqIdRemoved = c.IsPropertyShipmentItemSeqIdRemoved;
+            e.IsPropertyShipmentPackageSeqIdRemoved = c.IsPropertyShipmentPackageSeqIdRemoved;
+            e.IsPropertyOrderIdRemoved = c.IsPropertyOrderIdRemoved;
+            e.IsPropertyOrderItemSeqIdRemoved = c.IsPropertyOrderItemSeqIdRemoved;
+            e.IsPropertyReturnIdRemoved = c.IsPropertyReturnIdRemoved;
+            e.IsPropertyReturnItemSeqIdRemoved = c.IsPropertyReturnItemSeqIdRemoved;
             e.IsPropertyRejectionReasonIdRemoved = c.IsPropertyRejectionReasonIdRemoved;
             e.IsPropertyDamageStatusIdRemoved = c.IsPropertyDamageStatusIdRemoved;
             e.IsPropertyDamageReasonIdRemoved = c.IsPropertyDamageReasonIdRemoved;
@@ -436,6 +489,117 @@ namespace Dddml.Wms.Domain.Shipment
 
         }// END Map(IMergePatch... ////////////////////////////
 
+
+
+        protected virtual IItemIssuanceStateEvent Map(IItemIssuanceCommand c, IShipmentCommand outerCommand, long version, IShipmentState outerState)
+        {
+            var create = (c.CommandType == CommandType.Create) ? (c as ICreateItemIssuance) : null;
+            if(create != null)
+            {
+                return MapCreate(create, outerCommand, version, outerState);
+            }
+
+            var merge = (c.CommandType == CommandType.MergePatch) ? (c as IMergePatchItemIssuance) : null;
+            if(merge != null)
+            {
+                return MapMergePatch(merge, outerCommand, version, outerState);
+            }
+
+            var remove = (c.CommandType == CommandType.Remove) ? (c as IRemoveItemIssuance) : null;
+            if (remove != null)
+            {
+                return MapRemove(remove, outerCommand, version);
+            }
+            throw new NotSupportedException();
+        }
+
+
+        protected virtual IItemIssuanceStateCreated MapCreate(ICreateItemIssuance c, IShipmentCommand outerCommand, long version, IShipmentState outerState)
+        {
+            c.RequesterId = outerCommand.RequesterId;
+			var stateEventId = new ItemIssuanceEventId(c.ShipmentId, c.ItemIssuanceSeqId, version);
+            IItemIssuanceStateCreated e = NewItemIssuanceStateCreated(stateEventId);
+            var s = outerState.ItemIssuances.Get(c.ItemIssuanceSeqId, true);
+
+            e.OrderId = c.OrderId;
+            e.OrderItemSeqId = c.OrderItemSeqId;
+            e.ShipGroupSeqId = c.ShipGroupSeqId;
+            e.ProductId = c.ProductId;
+            e.LocatorId = c.LocatorId;
+            e.AttributeSetInstanceId = c.AttributeSetInstanceId;
+            e.ShipmentItemSeqId = c.ShipmentItemSeqId;
+            e.FixedAssetId = c.FixedAssetId;
+            e.MaintHistSeqId = c.MaintHistSeqId;
+            e.IssuedDateTime = c.IssuedDateTime;
+            e.IssuedByUserLoginId = c.IssuedByUserLoginId;
+            e.Quantity = c.Quantity;
+            e.CancelQuantity = c.CancelQuantity;
+            e.Active = c.Active;
+
+            e.CreatedBy = (string)c.RequesterId;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+            return e;
+
+        }// END Map(ICreate... ////////////////////////////
+
+
+
+        protected virtual IItemIssuanceStateMergePatched MapMergePatch(IMergePatchItemIssuance c, IShipmentCommand outerCommand, long version, IShipmentState outerState)
+        {
+            c.RequesterId = outerCommand.RequesterId;
+			var stateEventId = new ItemIssuanceEventId(c.ShipmentId, c.ItemIssuanceSeqId, version);
+            IItemIssuanceStateMergePatched e = NewItemIssuanceStateMergePatched(stateEventId);
+            var s = outerState.ItemIssuances.Get(c.ItemIssuanceSeqId);
+
+            e.OrderId = c.OrderId;
+            e.OrderItemSeqId = c.OrderItemSeqId;
+            e.ShipGroupSeqId = c.ShipGroupSeqId;
+            e.ProductId = c.ProductId;
+            e.LocatorId = c.LocatorId;
+            e.AttributeSetInstanceId = c.AttributeSetInstanceId;
+            e.ShipmentItemSeqId = c.ShipmentItemSeqId;
+            e.FixedAssetId = c.FixedAssetId;
+            e.MaintHistSeqId = c.MaintHistSeqId;
+            e.IssuedDateTime = c.IssuedDateTime;
+            e.IssuedByUserLoginId = c.IssuedByUserLoginId;
+            e.Quantity = c.Quantity;
+            e.CancelQuantity = c.CancelQuantity;
+            e.Active = c.Active;
+            e.IsPropertyOrderIdRemoved = c.IsPropertyOrderIdRemoved;
+            e.IsPropertyOrderItemSeqIdRemoved = c.IsPropertyOrderItemSeqIdRemoved;
+            e.IsPropertyShipGroupSeqIdRemoved = c.IsPropertyShipGroupSeqIdRemoved;
+            e.IsPropertyProductIdRemoved = c.IsPropertyProductIdRemoved;
+            e.IsPropertyLocatorIdRemoved = c.IsPropertyLocatorIdRemoved;
+            e.IsPropertyAttributeSetInstanceIdRemoved = c.IsPropertyAttributeSetInstanceIdRemoved;
+            e.IsPropertyShipmentItemSeqIdRemoved = c.IsPropertyShipmentItemSeqIdRemoved;
+            e.IsPropertyFixedAssetIdRemoved = c.IsPropertyFixedAssetIdRemoved;
+            e.IsPropertyMaintHistSeqIdRemoved = c.IsPropertyMaintHistSeqIdRemoved;
+            e.IsPropertyIssuedDateTimeRemoved = c.IsPropertyIssuedDateTimeRemoved;
+            e.IsPropertyIssuedByUserLoginIdRemoved = c.IsPropertyIssuedByUserLoginIdRemoved;
+            e.IsPropertyQuantityRemoved = c.IsPropertyQuantityRemoved;
+            e.IsPropertyCancelQuantityRemoved = c.IsPropertyCancelQuantityRemoved;
+            e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
+
+            e.CreatedBy = (string)c.RequesterId;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+            return e;
+
+        }// END Map(IMergePatch... ////////////////////////////
+
+
+        protected virtual IItemIssuanceStateRemoved MapRemove(IRemoveItemIssuance c, IShipmentCommand outerCommand, long version)
+        {
+            c.RequesterId = outerCommand.RequesterId;
+			var stateEventId = new ItemIssuanceEventId(c.ShipmentId, c.ItemIssuanceSeqId, version);
+            IItemIssuanceStateRemoved e = NewItemIssuanceStateRemoved(stateEventId);
+
+
+            e.CreatedBy = (string)c.RequesterId;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+
+            return e;
+
+        }// END Map(IRemove... ////////////////////////////
 
         private void ThrowOnInconsistentIds(object innerObject, string innerIdName, object innerIdValue, string outerIdName, object outerIdValue)
         {
@@ -510,6 +674,22 @@ namespace Dddml.Wms.Domain.Shipment
         private ShipmentReceiptStateMergePatched NewShipmentReceiptStateMergePatched(ShipmentReceiptEventId stateEventId)
 		{
 			return new ShipmentReceiptStateMergePatched(stateEventId);
+		}
+
+
+		private ItemIssuanceStateCreated NewItemIssuanceStateCreated(ItemIssuanceEventId stateEventId)
+		{
+			return new ItemIssuanceStateCreated(stateEventId);
+		}
+
+        private ItemIssuanceStateMergePatched NewItemIssuanceStateMergePatched(ItemIssuanceEventId stateEventId)
+		{
+			return new ItemIssuanceStateMergePatched(stateEventId);
+		}
+
+        private ItemIssuanceStateRemoved NewItemIssuanceStateRemoved(ItemIssuanceEventId stateEventId)
+		{
+			return new ItemIssuanceStateRemoved(stateEventId);
 		}
 
     }

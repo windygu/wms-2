@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.itemissuancemvo">
+  
+  <class name="org.dddml.wms.domain.itemissuancemvo.AbstractItemIssuanceMvoState$SimpleItemIssuanceMvoState" table="ItemIssuance_RV">
+
+	<composite-id name="shipmentItemIssuanceId" class="org.dddml.wms.domain.shipment.ShipmentItemIssuanceId">
+		<key-property name="shipmentId" ><column name="ShipmentItemIssuanceIdShipmentId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="itemIssuanceSeqId" ><column name="ShipmentItemIssuanceIdItemIssuanceSeqId" sql-type="VARCHAR(20)" /></key-property>
+	</composite-id>
+	<version name="shipmentVersion" column="ShipmentVersion" type="long" />
+
+	<property name="orderId" ><column name="OrderId" sql-type="VARCHAR(20)" /></property>
+	<property name="orderItemSeqId" ><column name="OrderItemSeqId" sql-type="VARCHAR(20)" /></property>
+	<property name="shipGroupSeqId" ><column name="ShipGroupSeqId" sql-type="DECIMAL(20,0)" /></property>
+	<property name="productId" ><column name="ProductId" length="60" sql-type="VARCHAR(60)" /></property>
+	<property name="locatorId" ><column name="LocatorId" length="50" /></property>
+	<property name="attributeSetInstanceId" ><column name="AttributeSetInstanceId" length="50" /></property>
+	<property name="shipmentItemSeqId" ><column name="ShipmentItemSeqId" sql-type="VARCHAR(20)" /></property>
+	<property name="fixedAssetId" ><column name="FixedAssetId" sql-type="VARCHAR(20)" /></property>
+	<property name="maintHistSeqId" ><column name="MaintHistSeqId" sql-type="VARCHAR(20)" /></property>
+	<property name="issuedDateTime" ><column name="IssuedDateTime" sql-type="DATETIME" /></property>
+	<property name="issuedByUserLoginId" ><column name="IssuedByUserLoginId" sql-type="VARCHAR(250)" /></property>
+	<property name="quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>
+	<property name="cancelQuantity" ><column name="CancelQuantity" sql-type="DECIMAL(18,6)" /></property>
+	<property name="version" ></property>
+	<property name="createdBy" ></property>
+	<property name="updatedBy" ></property>
+	<property name="active" ></property>
+	<property name="deleted" ></property>
+	<property name="shipmentShipmentTypeId" ><column name="ShipmentShipmentTypeId" sql-type="VARCHAR(20)" /></property>
+	<property name="shipmentStatusId" ><column name="ShipmentStatusId" sql-type="VARCHAR(20)" /></property>
+	<property name="shipmentPrimaryOrderId" ><column name="ShipmentPrimaryOrderId" sql-type="VARCHAR(20)" /></property>
+	<property name="shipmentPrimaryReturnId" ><column name="ShipmentPrimaryReturnId" sql-type="VARCHAR(20)" /></property>
+	<property name="shipmentPrimaryShipGroupSeqId" ><column name="ShipmentPrimaryShipGroupSeqId" sql-type="DECIMAL(20,0)" /></property>
+	<property name="shipmentPicklistBinId" ><column name="ShipmentPicklistBinId" sql-type="VARCHAR(20)" /></property>
+	<property name="shipmentEstimatedReadyDate" ><column name="ShipmentEstimatedReadyDate" sql-type="DATETIME" /></property>
+	<property name="shipmentEstimatedShipDate" ><column name="ShipmentEstimatedShipDate" sql-type="DATETIME" /></property>
+	<property name="shipmentEstimatedShipWorkEffId" ><column name="ShipmentEstimatedShipWorkEffId" sql-type="VARCHAR(20)" /></property>
+	<property name="shipmentEstimatedArrivalDate" ><column name="ShipmentEstimatedArrivalDate" sql-type="DATETIME" /></property>
+	<property name="shipmentEstimatedArrivalWorkEffId" ><column name="ShipmentEstimatedArrivalWorkEffId" sql-type="VARCHAR(20)" /></property>
+	<property name="shipmentLatestCancelDate" ><column name="ShipmentLatestCancelDate" sql-type="DATETIME" /></property>
+	<property name="shipmentEstimatedShipCost" ><column name="ShipmentEstimatedShipCost" sql-type="DECIMAL(18,2)" /></property>
+	<property name="shipmentCurrencyUomId" ><column name="ShipmentCurrencyUomId" sql-type="VARCHAR(20)" /></property>
+	<property name="shipmentHandlingInstructions" ><column name="ShipmentHandlingInstructions" sql-type="VARCHAR(255)" /></property>
+	<property name="shipmentOriginFacilityId" ><column name="ShipmentOriginFacilityId" sql-type="VARCHAR(20)" /></property>
+	<property name="shipmentDestinationFacilityId" ><column name="ShipmentDestinationFacilityId" sql-type="VARCHAR(20)" /></property>
+	<property name="shipmentOriginContactMechId" ><column name="ShipmentOriginContactMechId" sql-type="VARCHAR(20)" /></property>
+	<property name="shipmentOriginTelecomNumberId" ><column name="ShipmentOriginTelecomNumberId" sql-type="VARCHAR(20)" /></property>
+	<property name="shipmentDestinationContactMechId" ><column name="ShipmentDestinationContactMechId" sql-type="VARCHAR(20)" /></property>
+	<property name="shipmentDestinationTelecomNumberId" ><column name="ShipmentDestinationTelecomNumberId" sql-type="VARCHAR(20)" /></property>
+	<property name="shipmentPartyIdTo" ><column name="ShipmentPartyIdTo" sql-type="VARCHAR(20)" /></property>
+	<property name="shipmentPartyIdFrom" ><column name="ShipmentPartyIdFrom" sql-type="VARCHAR(20)" /></property>
+	<property name="shipmentAdditionalShippingCharge" ><column name="ShipmentAdditionalShippingCharge" sql-type="DECIMAL(18,2)" /></property>
+	<property name="shipmentAddtlShippingChargeDesc" ><column name="ShipmentAddtlShippingChargeDesc" sql-type="VARCHAR(255)" /></property>
+	<property name="shipmentCreatedBy" ></property>
+	<property name="shipmentCreatedAt" type="timestamp"><column name="ShipmentCreatedAt" sql-type="DATETIME" /></property>
+	<property name="shipmentUpdatedBy" ></property>
+	<property name="shipmentUpdatedAt" type="timestamp"><column name="ShipmentUpdatedAt" sql-type="DATETIME" /></property>
+	<property name="shipmentActive" ></property>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="updatedAt" column="UpdatedAt" />
+
+
+  </class>
+  
+</hibernate-mapping>
+

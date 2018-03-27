@@ -66,6 +66,9 @@
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\AttributeValueMvoResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\ContactMechResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\DamageHandlingMethodResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
@@ -76,6 +79,9 @@
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\DocumentTypeResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\FacilityResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\GenerateAggregatesResources.tt">
@@ -90,10 +96,12 @@
 .\AttributeSetResource.java
 .\AttributeUseMvoResource.java
 .\AttributeValueMvoResource.java
+.\ContactMechResource.java
 .\DamageHandlingMethodResource.java
 .\DamageReasonResource.java
 .\DamageTypeResource.java
 .\DocumentTypeResource.java
+.\FacilityResource.java
 .\GenerateAggregatesResources.txt
 .\InOutLineMvoResource.java
 .\InOutResource.java
@@ -103,6 +111,7 @@
 .\InventoryItemResource.java
 .\InventoryPostingRuleResource.java
 .\InventoryPRTriggeredResource.java
+.\ItemIssuanceMvoResource.java
 .\LocatorResource.java
 .\LotResource.java
 .\MovementConfirmationLineMvoResource.java
@@ -111,21 +120,33 @@
 .\MovementResource.java
 .\MovementTypeResource.java
 .\OrderItemMvoResource.java
+.\OrderItemShipGrpInvReservationResource.java
 .\OrderResource.java
+.\OrderRoleMvoResource.java
+.\OrderShipGroupMvoResource.java
 .\OrderShipmentResource.java
 .\OrganizationResource.java
 .\OrganizationStructureResource.java
 .\OrganizationStructureTypeResource.java
 .\PartyResource.java
+.\PartyRoleResource.java
 .\PhysicalInventoryLineMvoResource.java
 .\PhysicalInventoryResource.java
+.\PicklistBinResource.java
+.\PicklistItemMvoResource.java
+.\PicklistResource.java
+.\PicklistRoleMvoResource.java
 .\ProductCategoryMemberResource.java
 .\ProductCategoryResource.java
 .\ProductResource.java
 .\RejectionReasonResource.java
+.\RoleTypeResource.java
 .\SellableInventoryItemEntryMvoResource.java
 .\SellableInventoryItemResource.java
 .\ShipmentItemMvoResource.java
+.\ShipmentMethodTypeResource.java
+.\ShipmentPackageContentMvoResource.java
+.\ShipmentPackageResource.java
 .\ShipmentReceiptMvoResource.java
 .\ShipmentResource.java
 .\ShipmentTypeResource.java
@@ -160,6 +181,45 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateTreeResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\ItemIssuanceMvoResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\OrderItemShipGrpInvReservationResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\OrderRoleMvoResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\OrderShipGroupMvoResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\PartyRoleResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\PicklistBinResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\PicklistItemMvoResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\PicklistResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\PicklistRoleMvoResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\RoleTypeResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\ShipmentMethodTypeResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\ShipmentPackageContentMvoResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\ShipmentPackageResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\main\java\org\dddml\wms\restful\resource\IndexResource.java" />
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\InOutLineMvoResource.java">

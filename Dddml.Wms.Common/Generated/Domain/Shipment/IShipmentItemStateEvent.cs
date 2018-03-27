@@ -25,8 +25,6 @@ namespace Dddml.Wms.Domain.Shipment
 
 		decimal? Quantity { get; set; }
 
-		decimal? TargetQuantity { get; set; }
-
 		string ShipmentContentDescription { get; set; }
 
 		bool? Active { get; set; }
@@ -49,8 +47,6 @@ namespace Dddml.Wms.Domain.Shipment
 		bool IsPropertyAttributeSetInstanceIdRemoved { get; set; }
 
 		bool IsPropertyQuantityRemoved { get; set; }
-
-		bool IsPropertyTargetQuantityRemoved { get; set; }
 
 		bool IsPropertyShipmentContentDescriptionRemoved { get; set; }
 

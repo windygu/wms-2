@@ -57,7 +57,19 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
 		public virtual string AttributeSetInstanceId { get; set; }
 
+		public virtual string LocatorId { get; set; }
+
 		public virtual string ShipmentItemSeqId { get; set; }
+
+		public virtual string ShipmentPackageSeqId { get; set; }
+
+		public virtual string OrderId { get; set; }
+
+		public virtual string OrderItemSeqId { get; set; }
+
+		public virtual string ReturnId { get; set; }
+
+		public virtual string ReturnItemSeqId { get; set; }
 
 		public virtual string RejectionReasonId { get; set; }
 
@@ -88,6 +100,8 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 		public virtual string ShipmentPrimaryOrderId { get; set; }
 
 		public virtual string ShipmentPrimaryReturnId { get; set; }
+
+		public virtual long? ShipmentPrimaryShipGroupSeqId { get; set; }
 
 		public virtual string ShipmentPicklistBinId { get; set; }
 
@@ -128,8 +142,6 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 		public virtual decimal? ShipmentAdditionalShippingCharge { get; set; }
 
 		public virtual string ShipmentAddtlShippingChargeDesc { get; set; }
-
-		public virtual string ShipmentShipperId { get; set; }
 
 		public virtual string ShipmentCreatedBy { get; set; }
 
@@ -177,7 +189,19 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
 		public virtual bool IsPropertyAttributeSetInstanceIdRemoved { get; set; }
 
+		public virtual bool IsPropertyLocatorIdRemoved { get; set; }
+
 		public virtual bool IsPropertyShipmentItemSeqIdRemoved { get; set; }
+
+		public virtual bool IsPropertyShipmentPackageSeqIdRemoved { get; set; }
+
+		public virtual bool IsPropertyOrderIdRemoved { get; set; }
+
+		public virtual bool IsPropertyOrderItemSeqIdRemoved { get; set; }
+
+		public virtual bool IsPropertyReturnIdRemoved { get; set; }
+
+		public virtual bool IsPropertyReturnItemSeqIdRemoved { get; set; }
 
 		public virtual bool IsPropertyRejectionReasonIdRemoved { get; set; }
 
@@ -208,6 +232,8 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 		public virtual bool IsPropertyShipmentPrimaryOrderIdRemoved { get; set; }
 
 		public virtual bool IsPropertyShipmentPrimaryReturnIdRemoved { get; set; }
+
+		public virtual bool IsPropertyShipmentPrimaryShipGroupSeqIdRemoved { get; set; }
 
 		public virtual bool IsPropertyShipmentPicklistBinIdRemoved { get; set; }
 
@@ -248,8 +274,6 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 		public virtual bool IsPropertyShipmentAdditionalShippingChargeRemoved { get; set; }
 
 		public virtual bool IsPropertyShipmentAddtlShippingChargeDescRemoved { get; set; }
-
-		public virtual bool IsPropertyShipmentShipperIdRemoved { get; set; }
 
 		public virtual bool IsPropertyShipmentCreatedByRemoved { get; set; }
 

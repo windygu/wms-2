@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+                   assembly="Dddml.Wms.Common" 
+                   namespace="Dddml.Wms.Domain.Order">
+  
+  <class name="OrderRoleStateEventBase" table="OrderRoleStateEvents" mutable="false" abstract="true">
+
+    <composite-id name="OrderRoleEventId" class="Dddml.Wms.Domain.Order.OrderRoleEventId">
+        <key-property name="OrderId" ><column name="OrderRoleIdOrderId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="PartyRoleIdPartyId" ><column name="OrderRoleIdPartyRoleIdPartyId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="PartyRoleIdRoleTypeId" ><column name="OrderRoleIdPartyRoleIdRoleTypeId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="OrderVersion" ></key-property>
+    </composite-id>
+    <discriminator column="StateEventType" type="String" />
+
+    <property name="Active" ></property>
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+    <property name="Version" column="Version" not-null="true" />
+
+    <subclass name="OrderRoleStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="OrderRoleStateMergePatched"  discriminator-value="MergePatched">
+
+
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+    </subclass>
+
+    <subclass name="OrderRoleStateRemoved"  discriminator-value="Removed">
+
+    </subclass>
+
+
+
+  </class>
+  
+</hibernate-mapping>

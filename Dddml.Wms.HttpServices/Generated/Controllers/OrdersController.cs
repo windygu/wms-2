@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.Order;
+using Dddml.Wms.Domain.PartyRole;
 using Dddml.Wms.Domain.Metadata;
 using Dddml.Wms.HttpServices.Filters;
 using System.Linq;
@@ -175,6 +176,19 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = OrdersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{orderId}/OrderRoles/{partyRoleId}")]
+        [HttpGet]
+        public IOrderRoleStateDto GetOrderRole(string orderId, string partyRoleId)
+        {
+          try {
+            var state = (OrderRoleState)_orderApplicationService.GetOrderRole(orderId, ((new ValueObjectTextFormatter<PartyRoleId>()).Parse(partyRoleId)));
+            if (state == null) { return null; }
+            var stateDto = new OrderRoleStateDtoWrapper(state);
+            stateDto.AllFieldsReturned = true;
+            return stateDto;
+          } catch (Exception ex) { var response = OrdersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
         [Route("{orderId}/OrderItems/{orderItemSeqId}")]
         [HttpGet]
         public IOrderItemStateDto GetOrderItem(string orderId, string orderItemSeqId)
@@ -183,6 +197,19 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var state = (OrderItemState)_orderApplicationService.GetOrderItem(orderId, orderItemSeqId);
             if (state == null) { return null; }
             var stateDto = new OrderItemStateDtoWrapper(state);
+            stateDto.AllFieldsReturned = true;
+            return stateDto;
+          } catch (Exception ex) { var response = OrdersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
+        [Route("{orderId}/OrderShipGroups/{shipGroupSeqId}")]
+        [HttpGet]
+        public IOrderShipGroupStateDto GetOrderShipGroup(string orderId, long? shipGroupSeqId)
+        {
+          try {
+            var state = (OrderShipGroupState)_orderApplicationService.GetOrderShipGroup(orderId, shipGroupSeqId);
+            if (state == null) { return null; }
+            var stateDto = new OrderShipGroupStateDtoWrapper(state);
             stateDto.AllFieldsReturned = true;
             return stateDto;
           } catch (Exception ex) { var response = OrdersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }

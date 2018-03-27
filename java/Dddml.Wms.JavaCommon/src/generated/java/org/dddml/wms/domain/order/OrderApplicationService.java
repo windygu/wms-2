@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.List;
 import org.dddml.support.criterion.Criterion;
 import java.util.Date;
+import org.dddml.wms.domain.partyrole.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 import org.dddml.wms.domain.Command;
@@ -32,7 +33,11 @@ public interface OrderApplicationService
 
     OrderState getHistoryState(String orderId, long version);
 
+    OrderRoleState getOrderRole(String orderId, PartyRoleId partyRoleId);
+
     OrderItemState getOrderItem(String orderId, String orderItemSeqId);
+
+    OrderShipGroupState getOrderShipGroup(String orderId, Long shipGroupSeqId);
 
 }
 

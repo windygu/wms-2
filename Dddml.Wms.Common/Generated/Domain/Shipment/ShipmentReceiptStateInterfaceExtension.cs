@@ -46,7 +46,13 @@ namespace Dddml.Wms.Domain.Shipment
             cmd.ReceiptSeqId = state.ReceiptSeqId;
             cmd.ProductId = state.ProductId;
             cmd.AttributeSetInstanceId = state.AttributeSetInstanceId;
+            cmd.LocatorId = state.LocatorId;
             cmd.ShipmentItemSeqId = state.ShipmentItemSeqId;
+            cmd.ShipmentPackageSeqId = state.ShipmentPackageSeqId;
+            cmd.OrderId = state.OrderId;
+            cmd.OrderItemSeqId = state.OrderItemSeqId;
+            cmd.ReturnId = state.ReturnId;
+            cmd.ReturnItemSeqId = state.ReturnItemSeqId;
             cmd.RejectionReasonId = state.RejectionReasonId;
             cmd.DamageStatusId = state.DamageStatusId;
             cmd.DamageReasonId = state.DamageReasonId;
@@ -61,7 +67,13 @@ namespace Dddml.Wms.Domain.Shipment
             
             if (state.ProductId == null) { cmd.IsPropertyProductIdRemoved = true; }
             if (state.AttributeSetInstanceId == null) { cmd.IsPropertyAttributeSetInstanceIdRemoved = true; }
+            if (state.LocatorId == null) { cmd.IsPropertyLocatorIdRemoved = true; }
             if (state.ShipmentItemSeqId == null) { cmd.IsPropertyShipmentItemSeqIdRemoved = true; }
+            if (state.ShipmentPackageSeqId == null) { cmd.IsPropertyShipmentPackageSeqIdRemoved = true; }
+            if (state.OrderId == null) { cmd.IsPropertyOrderIdRemoved = true; }
+            if (state.OrderItemSeqId == null) { cmd.IsPropertyOrderItemSeqIdRemoved = true; }
+            if (state.ReturnId == null) { cmd.IsPropertyReturnIdRemoved = true; }
+            if (state.ReturnItemSeqId == null) { cmd.IsPropertyReturnItemSeqIdRemoved = true; }
             if (state.RejectionReasonId == null) { cmd.IsPropertyRejectionReasonIdRemoved = true; }
             if (state.DamageStatusId == null) { cmd.IsPropertyDamageStatusIdRemoved = true; }
             if (state.DamageReasonId == null) { cmd.IsPropertyDamageReasonIdRemoved = true; }
@@ -82,7 +94,13 @@ namespace Dddml.Wms.Domain.Shipment
             cmd.ReceiptSeqId = state.ReceiptSeqId;
             cmd.ProductId = state.ProductId;
             cmd.AttributeSetInstanceId = state.AttributeSetInstanceId;
+            cmd.LocatorId = state.LocatorId;
             cmd.ShipmentItemSeqId = state.ShipmentItemSeqId;
+            cmd.ShipmentPackageSeqId = state.ShipmentPackageSeqId;
+            cmd.OrderId = state.OrderId;
+            cmd.OrderItemSeqId = state.OrderItemSeqId;
+            cmd.ReturnId = state.ReturnId;
+            cmd.ReturnItemSeqId = state.ReturnItemSeqId;
             cmd.RejectionReasonId = state.RejectionReasonId;
             cmd.DamageStatusId = state.DamageStatusId;
             cmd.DamageReasonId = state.DamageReasonId;

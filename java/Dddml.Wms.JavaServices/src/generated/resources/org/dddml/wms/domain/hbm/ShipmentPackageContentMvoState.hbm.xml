@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.shipmentpackagecontentmvo">
+  
+  <class name="org.dddml.wms.domain.shipmentpackagecontentmvo.AbstractShipmentPackageContentMvoState$SimpleShipmentPackageContentMvoState" table="ShipmentPackageContent_RV">
+
+	<composite-id name="shipmentPackageContentId" class="org.dddml.wms.domain.shipmentpackage.ShipmentPackageContentId">
+		<key-property name="shipmentPackageIdShipmentId" ><column name="ShipmentPackageContentIdShipmentPackageIdShipmentId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="shipmentPackageIdShipmentPackageSeqId" ><column name="ShipmentPackageContentIdShipmentPackageIdShipmentPackageSeqId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="shipmentItemSeqId" ><column name="ShipmentPackageContentIdShipmentItemSeqId" sql-type="VARCHAR(20)" /></key-property>
+	</composite-id>
+	<version name="shipmentPackageVersion" column="ShipmentPackageVersion" type="long" />
+
+	<property name="quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>
+	<property name="subProductId" ><column name="SubProductId" sql-type="VARCHAR(20)" /></property>
+	<property name="subProductQuantity" ><column name="SubProductQuantity" sql-type="DECIMAL(18,6)" /></property>
+	<property name="version" ></property>
+	<property name="createdBy" ></property>
+	<property name="updatedBy" ></property>
+	<property name="active" ></property>
+	<property name="deleted" ></property>
+	<property name="shipmentPackageShipmentBoxTypeId" ><column name="ShipmentPackageShipmentBoxTypeId" sql-type="VARCHAR(20)" /></property>
+	<property name="shipmentPackageDateCreated" ><column name="ShipmentPackageDateCreated" sql-type="DATETIME" /></property>
+	<property name="shipmentPackageBoxLength" ><column name="ShipmentPackageBoxLength" sql-type="DECIMAL(18,6)" /></property>
+	<property name="shipmentPackageBoxHeight" ><column name="ShipmentPackageBoxHeight" sql-type="DECIMAL(18,6)" /></property>
+	<property name="shipmentPackageBoxWidth" ><column name="ShipmentPackageBoxWidth" sql-type="DECIMAL(18,6)" /></property>
+	<property name="shipmentPackageDimensionUomId" ><column name="ShipmentPackageDimensionUomId" sql-type="VARCHAR(20)" /></property>
+	<property name="shipmentPackageWeight" ><column name="ShipmentPackageWeight" sql-type="DECIMAL(18,6)" /></property>
+	<property name="shipmentPackageWeightUomId" ><column name="ShipmentPackageWeightUomId" sql-type="VARCHAR(20)" /></property>
+	<property name="shipmentPackageInsuredValue" ><column name="ShipmentPackageInsuredValue" sql-type="DECIMAL(18,2)" /></property>
+	<property name="shipmentPackageCreatedBy" ></property>
+	<property name="shipmentPackageCreatedAt" type="timestamp"><column name="ShipmentPackageCreatedAt" sql-type="DATETIME" /></property>
+	<property name="shipmentPackageUpdatedBy" ></property>
+	<property name="shipmentPackageUpdatedAt" type="timestamp"><column name="ShipmentPackageUpdatedAt" sql-type="DATETIME" /></property>
+	<property name="shipmentPackageActive" ></property>
+	<property name="shipmentPackageDeleted" ></property>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="updatedAt" column="UpdatedAt" />
+
+
+  </class>
+  
+</hibernate-mapping>
+

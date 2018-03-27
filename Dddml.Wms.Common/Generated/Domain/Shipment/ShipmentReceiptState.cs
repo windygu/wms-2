@@ -185,7 +185,19 @@ namespace Dddml.Wms.Domain.Shipment
 
 			this.AttributeSetInstanceId = e.AttributeSetInstanceId;
 
+			this.LocatorId = e.LocatorId;
+
 			this.ShipmentItemSeqId = e.ShipmentItemSeqId;
+
+			this.ShipmentPackageSeqId = e.ShipmentPackageSeqId;
+
+			this.OrderId = e.OrderId;
+
+			this.OrderItemSeqId = e.OrderItemSeqId;
+
+			this.ReturnId = e.ReturnId;
+
+			this.ReturnItemSeqId = e.ReturnItemSeqId;
 
 			this.RejectionReasonId = e.RejectionReasonId;
 
@@ -242,6 +254,18 @@ namespace Dddml.Wms.Domain.Shipment
 				this.AttributeSetInstanceId = e.AttributeSetInstanceId;
 			}
 
+			if (e.LocatorId == null)
+			{
+				if (e.IsPropertyLocatorIdRemoved)
+				{
+					this.LocatorId = default(string);
+				}
+			}
+			else
+			{
+				this.LocatorId = e.LocatorId;
+			}
+
 			if (e.ShipmentItemSeqId == null)
 			{
 				if (e.IsPropertyShipmentItemSeqIdRemoved)
@@ -252,6 +276,66 @@ namespace Dddml.Wms.Domain.Shipment
 			else
 			{
 				this.ShipmentItemSeqId = e.ShipmentItemSeqId;
+			}
+
+			if (e.ShipmentPackageSeqId == null)
+			{
+				if (e.IsPropertyShipmentPackageSeqIdRemoved)
+				{
+					this.ShipmentPackageSeqId = default(string);
+				}
+			}
+			else
+			{
+				this.ShipmentPackageSeqId = e.ShipmentPackageSeqId;
+			}
+
+			if (e.OrderId == null)
+			{
+				if (e.IsPropertyOrderIdRemoved)
+				{
+					this.OrderId = default(string);
+				}
+			}
+			else
+			{
+				this.OrderId = e.OrderId;
+			}
+
+			if (e.OrderItemSeqId == null)
+			{
+				if (e.IsPropertyOrderItemSeqIdRemoved)
+				{
+					this.OrderItemSeqId = default(string);
+				}
+			}
+			else
+			{
+				this.OrderItemSeqId = e.OrderItemSeqId;
+			}
+
+			if (e.ReturnId == null)
+			{
+				if (e.IsPropertyReturnIdRemoved)
+				{
+					this.ReturnId = default(string);
+				}
+			}
+			else
+			{
+				this.ReturnId = e.ReturnId;
+			}
+
+			if (e.ReturnItemSeqId == null)
+			{
+				if (e.IsPropertyReturnItemSeqIdRemoved)
+				{
+					this.ReturnItemSeqId = default(string);
+				}
+			}
+			else
+			{
+				this.ReturnItemSeqId = e.ReturnItemSeqId;
 			}
 
 			if (e.RejectionReasonId == null)

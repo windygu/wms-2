@@ -52,6 +52,10 @@ public interface ShipmentCommand extends Command
 
         void setPrimaryReturnId(String primaryReturnId);
 
+        Long getPrimaryShipGroupSeqId();
+
+        void setPrimaryShipGroupSeqId(Long primaryShipGroupSeqId);
+
         String getPicklistBinId();
 
         void setPicklistBinId(String picklistBinId);
@@ -132,10 +136,6 @@ public interface ShipmentCommand extends Command
 
         void setAddtlShippingChargeDesc(String addtlShippingChargeDesc);
 
-        String getShipperId();
-
-        void setShipperId(String shipperId);
-
         Boolean getActive();
 
         void setActive(Boolean active);
@@ -151,6 +151,10 @@ public interface ShipmentCommand extends Command
         CreateShipmentReceiptCommands getShipmentReceipts();
 
         ShipmentReceiptCommand.CreateShipmentReceipt newCreateShipmentReceipt();
+
+        CreateItemIssuanceCommands getItemIssuances();
+
+        ItemIssuanceCommand.CreateItemIssuance newCreateItemIssuance();
 
     }
 
@@ -171,6 +175,10 @@ public interface ShipmentCommand extends Command
         Boolean getIsPropertyPrimaryReturnIdRemoved();
 
         void setIsPropertyPrimaryReturnIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyPrimaryShipGroupSeqIdRemoved();
+
+        void setIsPropertyPrimaryShipGroupSeqIdRemoved(Boolean removed);
 
         Boolean getIsPropertyPicklistBinIdRemoved();
 
@@ -252,10 +260,6 @@ public interface ShipmentCommand extends Command
 
         void setIsPropertyAddtlShippingChargeDescRemoved(Boolean removed);
 
-        Boolean getIsPropertyShipperIdRemoved();
-
-        void setIsPropertyShipperIdRemoved(Boolean removed);
-
         Boolean getIsPropertyActiveRemoved();
 
         void setIsPropertyActiveRemoved(Boolean removed);
@@ -275,6 +279,14 @@ public interface ShipmentCommand extends Command
         ShipmentReceiptCommand.MergePatchShipmentReceipt newMergePatchShipmentReceipt();
 
         ShipmentReceiptCommand.RemoveShipmentReceipt newRemoveShipmentReceipt();
+
+        ItemIssuanceCommands getItemIssuanceCommands();
+
+        ItemIssuanceCommand.CreateItemIssuance newCreateItemIssuance();
+
+        ItemIssuanceCommand.MergePatchItemIssuance newMergePatchItemIssuance();
+
+        ItemIssuanceCommand.RemoveItemIssuance newRemoveItemIssuance();
 
     }
 
@@ -314,6 +326,24 @@ public interface ShipmentCommand extends Command
         void add(ShipmentReceiptCommand c);
 
         void remove(ShipmentReceiptCommand c);
+
+        void clear();
+    }
+
+    interface CreateItemIssuanceCommands extends Iterable<ItemIssuanceCommand.CreateItemIssuance>
+    {
+        void add(ItemIssuanceCommand.CreateItemIssuance c);
+
+        void remove(ItemIssuanceCommand.CreateItemIssuance c);
+
+        void clear();
+    }
+
+    interface ItemIssuanceCommands extends Iterable<ItemIssuanceCommand>
+    {
+        void add(ItemIssuanceCommand c);
+
+        void remove(ItemIssuanceCommand c);
 
         void clear();
     }

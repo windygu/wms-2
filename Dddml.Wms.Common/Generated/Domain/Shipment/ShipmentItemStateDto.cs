@@ -39,12 +39,6 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
-        public virtual decimal? TargetQuantity
-        {
-            get;
-            set;
-        }
-
         public virtual string ShipmentContentDescription
         {
             get;
@@ -100,7 +94,6 @@ namespace Dddml.Wms.Domain.Shipment
             state.ProductId = this.ProductId;
             state.AttributeSetInstanceId = this.AttributeSetInstanceId;
             state.Quantity = this.Quantity;
-            state.TargetQuantity = this.TargetQuantity;
             state.ShipmentContentDescription = this.ShipmentContentDescription;
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }

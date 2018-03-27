@@ -24,6 +24,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual string PrimaryReturnId { get; set; }
 
+		public virtual long? PrimaryShipGroupSeqId { get; set; }
+
 		public virtual string PicklistBinId { get; set; }
 
 		public virtual DateTime? EstimatedReadyDate { get; set; }
@@ -63,8 +65,6 @@ namespace Dddml.Wms.Domain.Shipment
 		public virtual decimal? AdditionalShippingCharge { get; set; }
 
 		public virtual string AddtlShippingChargeDesc { get; set; }
-
-		public virtual string ShipperId { get; set; }
 
 		public virtual long Version { get; set; }
 

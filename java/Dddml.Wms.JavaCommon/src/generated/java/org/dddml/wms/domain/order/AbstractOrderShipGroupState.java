@@ -1,0 +1,672 @@
+package org.dddml.wms.domain.order;
+
+import java.util.*;
+import java.util.Date;
+import org.dddml.wms.domain.*;
+import org.dddml.wms.specialization.*;
+import org.dddml.wms.domain.order.OrderShipGroupStateEvent.*;
+
+public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
+{
+
+    private OrderShipGroupId orderShipGroupId = new OrderShipGroupId();
+
+    public OrderShipGroupId getOrderShipGroupId() {
+        return this.orderShipGroupId;
+    }
+
+    public void setOrderShipGroupId(OrderShipGroupId orderShipGroupId) {
+        this.orderShipGroupId = orderShipGroupId;
+    }
+
+    public String getOrderId() {
+        return this.getOrderShipGroupId().getOrderId();
+    }
+        
+    public void setOrderId(String orderId) {
+        this.getOrderShipGroupId().setOrderId(orderId);
+    }
+
+    public Long getShipGroupSeqId() {
+        return this.getOrderShipGroupId().getShipGroupSeqId();
+    }
+        
+    public void setShipGroupSeqId(Long shipGroupSeqId) {
+        this.getOrderShipGroupId().setShipGroupSeqId(shipGroupSeqId);
+    }
+
+    private String shipmentMethodTypeId;
+
+    public String getShipmentMethodTypeId()
+    {
+        return this.shipmentMethodTypeId;
+    }
+
+    public void setShipmentMethodTypeId(String shipmentMethodTypeId)
+    {
+        this.shipmentMethodTypeId = shipmentMethodTypeId;
+    }
+
+    private String supplierPartyId;
+
+    public String getSupplierPartyId()
+    {
+        return this.supplierPartyId;
+    }
+
+    public void setSupplierPartyId(String supplierPartyId)
+    {
+        this.supplierPartyId = supplierPartyId;
+    }
+
+    private String vendorPartyId;
+
+    public String getVendorPartyId()
+    {
+        return this.vendorPartyId;
+    }
+
+    public void setVendorPartyId(String vendorPartyId)
+    {
+        this.vendorPartyId = vendorPartyId;
+    }
+
+    private String carrierPartyId;
+
+    public String getCarrierPartyId()
+    {
+        return this.carrierPartyId;
+    }
+
+    public void setCarrierPartyId(String carrierPartyId)
+    {
+        this.carrierPartyId = carrierPartyId;
+    }
+
+    private String carrierRoleTypeId;
+
+    public String getCarrierRoleTypeId()
+    {
+        return this.carrierRoleTypeId;
+    }
+
+    public void setCarrierRoleTypeId(String carrierRoleTypeId)
+    {
+        this.carrierRoleTypeId = carrierRoleTypeId;
+    }
+
+    private String facilityId;
+
+    public String getFacilityId()
+    {
+        return this.facilityId;
+    }
+
+    public void setFacilityId(String facilityId)
+    {
+        this.facilityId = facilityId;
+    }
+
+    private String contactMechId;
+
+    public String getContactMechId()
+    {
+        return this.contactMechId;
+    }
+
+    public void setContactMechId(String contactMechId)
+    {
+        this.contactMechId = contactMechId;
+    }
+
+    private String telecomContactMechId;
+
+    public String getTelecomContactMechId()
+    {
+        return this.telecomContactMechId;
+    }
+
+    public void setTelecomContactMechId(String telecomContactMechId)
+    {
+        this.telecomContactMechId = telecomContactMechId;
+    }
+
+    private String trackingNumber;
+
+    public String getTrackingNumber()
+    {
+        return this.trackingNumber;
+    }
+
+    public void setTrackingNumber(String trackingNumber)
+    {
+        this.trackingNumber = trackingNumber;
+    }
+
+    private String shippingInstructions;
+
+    public String getShippingInstructions()
+    {
+        return this.shippingInstructions;
+    }
+
+    public void setShippingInstructions(String shippingInstructions)
+    {
+        this.shippingInstructions = shippingInstructions;
+    }
+
+    private String maySplit;
+
+    public String getMaySplit()
+    {
+        return this.maySplit;
+    }
+
+    public void setMaySplit(String maySplit)
+    {
+        this.maySplit = maySplit;
+    }
+
+    private String giftMessage;
+
+    public String getGiftMessage()
+    {
+        return this.giftMessage;
+    }
+
+    public void setGiftMessage(String giftMessage)
+    {
+        this.giftMessage = giftMessage;
+    }
+
+    private String isGift;
+
+    public String getIsGift()
+    {
+        return this.isGift;
+    }
+
+    public void setIsGift(String isGift)
+    {
+        this.isGift = isGift;
+    }
+
+    private java.sql.Timestamp shipAfterDate;
+
+    public java.sql.Timestamp getShipAfterDate()
+    {
+        return this.shipAfterDate;
+    }
+
+    public void setShipAfterDate(java.sql.Timestamp shipAfterDate)
+    {
+        this.shipAfterDate = shipAfterDate;
+    }
+
+    private java.sql.Timestamp shipByDate;
+
+    public java.sql.Timestamp getShipByDate()
+    {
+        return this.shipByDate;
+    }
+
+    public void setShipByDate(java.sql.Timestamp shipByDate)
+    {
+        this.shipByDate = shipByDate;
+    }
+
+    private java.sql.Timestamp estimatedShipDate;
+
+    public java.sql.Timestamp getEstimatedShipDate()
+    {
+        return this.estimatedShipDate;
+    }
+
+    public void setEstimatedShipDate(java.sql.Timestamp estimatedShipDate)
+    {
+        this.estimatedShipDate = estimatedShipDate;
+    }
+
+    private java.sql.Timestamp estimatedDeliveryDate;
+
+    public java.sql.Timestamp getEstimatedDeliveryDate()
+    {
+        return this.estimatedDeliveryDate;
+    }
+
+    public void setEstimatedDeliveryDate(java.sql.Timestamp estimatedDeliveryDate)
+    {
+        this.estimatedDeliveryDate = estimatedDeliveryDate;
+    }
+
+    private Long version;
+
+    public Long getVersion()
+    {
+        return this.version;
+    }
+
+    public void setVersion(Long version)
+    {
+        this.version = version;
+    }
+
+    private String createdBy;
+
+    public String getCreatedBy()
+    {
+        return this.createdBy;
+    }
+
+    public void setCreatedBy(String createdBy)
+    {
+        this.createdBy = createdBy;
+    }
+
+    private Date createdAt;
+
+    public Date getCreatedAt()
+    {
+        return this.createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt)
+    {
+        this.createdAt = createdAt;
+    }
+
+    private String updatedBy;
+
+    public String getUpdatedBy()
+    {
+        return this.updatedBy;
+    }
+
+    public void setUpdatedBy(String updatedBy)
+    {
+        this.updatedBy = updatedBy;
+    }
+
+    private Date updatedAt;
+
+    public Date getUpdatedAt()
+    {
+        return this.updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt)
+    {
+        this.updatedAt = updatedAt;
+    }
+
+    private Boolean active;
+
+    public Boolean getActive()
+    {
+        return this.active;
+    }
+
+    public void setActive(Boolean active)
+    {
+        this.active = active;
+    }
+
+    private Boolean deleted;
+
+    public Boolean getDeleted()
+    {
+        return this.deleted;
+    }
+
+    public void setDeleted(Boolean deleted)
+    {
+        this.deleted = deleted;
+    }
+
+    public boolean isStateUnsaved() 
+    {
+        return this.getVersion() == null;
+    }
+
+    private Boolean stateReadOnly;
+
+    public Boolean getStateReadOnly() { return this.stateReadOnly; }
+
+    public void setStateReadOnly(Boolean readOnly) { this.stateReadOnly = readOnly; }
+
+    private boolean forReapplying;
+
+    public boolean getForReapplying() {
+        return forReapplying;
+    }
+
+    public void setForReapplying(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+    }
+
+
+    public AbstractOrderShipGroupState() {
+        this(false);
+    }
+
+    public AbstractOrderShipGroupState(boolean forReapplying) {
+        this.forReapplying = forReapplying;
+
+        initializeProperties();
+    }
+    
+    protected void initializeProperties() {
+    }
+
+
+    public void mutate(Event e) {
+        setStateReadOnly(false);
+        if (e instanceof OrderShipGroupStateCreated) {
+            when((OrderShipGroupStateCreated) e);
+        } else if (e instanceof OrderShipGroupStateMergePatched) {
+            when((OrderShipGroupStateMergePatched) e);
+        } else if (e instanceof OrderShipGroupStateRemoved) {
+            when((OrderShipGroupStateRemoved) e);
+        } else {
+            throw new UnsupportedOperationException(String.format("Unsupported event type: %1$s", e.getClass().getName()));
+        }
+    }
+
+    public void when(OrderShipGroupStateCreated e)
+    {
+        throwOnWrongEvent(e);
+
+        this.setShipmentMethodTypeId(e.getShipmentMethodTypeId());
+        this.setSupplierPartyId(e.getSupplierPartyId());
+        this.setVendorPartyId(e.getVendorPartyId());
+        this.setCarrierPartyId(e.getCarrierPartyId());
+        this.setCarrierRoleTypeId(e.getCarrierRoleTypeId());
+        this.setFacilityId(e.getFacilityId());
+        this.setContactMechId(e.getContactMechId());
+        this.setTelecomContactMechId(e.getTelecomContactMechId());
+        this.setTrackingNumber(e.getTrackingNumber());
+        this.setShippingInstructions(e.getShippingInstructions());
+        this.setMaySplit(e.getMaySplit());
+        this.setGiftMessage(e.getGiftMessage());
+        this.setIsGift(e.getIsGift());
+        this.setShipAfterDate(e.getShipAfterDate());
+        this.setShipByDate(e.getShipByDate());
+        this.setEstimatedShipDate(e.getEstimatedShipDate());
+        this.setEstimatedDeliveryDate(e.getEstimatedDeliveryDate());
+        this.setActive(e.getActive());
+
+        this.setDeleted(false);
+
+        this.setCreatedBy(e.getCreatedBy());
+        this.setCreatedAt(e.getCreatedAt());
+
+    }
+
+    public void when(OrderShipGroupStateMergePatched e)
+    {
+        throwOnWrongEvent(e);
+
+        if (e.getShipmentMethodTypeId() == null)
+        {
+            if (e.getIsPropertyShipmentMethodTypeIdRemoved() != null && e.getIsPropertyShipmentMethodTypeIdRemoved())
+            {
+                this.setShipmentMethodTypeId(null);
+            }
+        }
+        else
+        {
+            this.setShipmentMethodTypeId(e.getShipmentMethodTypeId());
+        }
+        if (e.getSupplierPartyId() == null)
+        {
+            if (e.getIsPropertySupplierPartyIdRemoved() != null && e.getIsPropertySupplierPartyIdRemoved())
+            {
+                this.setSupplierPartyId(null);
+            }
+        }
+        else
+        {
+            this.setSupplierPartyId(e.getSupplierPartyId());
+        }
+        if (e.getVendorPartyId() == null)
+        {
+            if (e.getIsPropertyVendorPartyIdRemoved() != null && e.getIsPropertyVendorPartyIdRemoved())
+            {
+                this.setVendorPartyId(null);
+            }
+        }
+        else
+        {
+            this.setVendorPartyId(e.getVendorPartyId());
+        }
+        if (e.getCarrierPartyId() == null)
+        {
+            if (e.getIsPropertyCarrierPartyIdRemoved() != null && e.getIsPropertyCarrierPartyIdRemoved())
+            {
+                this.setCarrierPartyId(null);
+            }
+        }
+        else
+        {
+            this.setCarrierPartyId(e.getCarrierPartyId());
+        }
+        if (e.getCarrierRoleTypeId() == null)
+        {
+            if (e.getIsPropertyCarrierRoleTypeIdRemoved() != null && e.getIsPropertyCarrierRoleTypeIdRemoved())
+            {
+                this.setCarrierRoleTypeId(null);
+            }
+        }
+        else
+        {
+            this.setCarrierRoleTypeId(e.getCarrierRoleTypeId());
+        }
+        if (e.getFacilityId() == null)
+        {
+            if (e.getIsPropertyFacilityIdRemoved() != null && e.getIsPropertyFacilityIdRemoved())
+            {
+                this.setFacilityId(null);
+            }
+        }
+        else
+        {
+            this.setFacilityId(e.getFacilityId());
+        }
+        if (e.getContactMechId() == null)
+        {
+            if (e.getIsPropertyContactMechIdRemoved() != null && e.getIsPropertyContactMechIdRemoved())
+            {
+                this.setContactMechId(null);
+            }
+        }
+        else
+        {
+            this.setContactMechId(e.getContactMechId());
+        }
+        if (e.getTelecomContactMechId() == null)
+        {
+            if (e.getIsPropertyTelecomContactMechIdRemoved() != null && e.getIsPropertyTelecomContactMechIdRemoved())
+            {
+                this.setTelecomContactMechId(null);
+            }
+        }
+        else
+        {
+            this.setTelecomContactMechId(e.getTelecomContactMechId());
+        }
+        if (e.getTrackingNumber() == null)
+        {
+            if (e.getIsPropertyTrackingNumberRemoved() != null && e.getIsPropertyTrackingNumberRemoved())
+            {
+                this.setTrackingNumber(null);
+            }
+        }
+        else
+        {
+            this.setTrackingNumber(e.getTrackingNumber());
+        }
+        if (e.getShippingInstructions() == null)
+        {
+            if (e.getIsPropertyShippingInstructionsRemoved() != null && e.getIsPropertyShippingInstructionsRemoved())
+            {
+                this.setShippingInstructions(null);
+            }
+        }
+        else
+        {
+            this.setShippingInstructions(e.getShippingInstructions());
+        }
+        if (e.getMaySplit() == null)
+        {
+            if (e.getIsPropertyMaySplitRemoved() != null && e.getIsPropertyMaySplitRemoved())
+            {
+                this.setMaySplit(null);
+            }
+        }
+        else
+        {
+            this.setMaySplit(e.getMaySplit());
+        }
+        if (e.getGiftMessage() == null)
+        {
+            if (e.getIsPropertyGiftMessageRemoved() != null && e.getIsPropertyGiftMessageRemoved())
+            {
+                this.setGiftMessage(null);
+            }
+        }
+        else
+        {
+            this.setGiftMessage(e.getGiftMessage());
+        }
+        if (e.getIsGift() == null)
+        {
+            if (e.getIsPropertyIsGiftRemoved() != null && e.getIsPropertyIsGiftRemoved())
+            {
+                this.setIsGift(null);
+            }
+        }
+        else
+        {
+            this.setIsGift(e.getIsGift());
+        }
+        if (e.getShipAfterDate() == null)
+        {
+            if (e.getIsPropertyShipAfterDateRemoved() != null && e.getIsPropertyShipAfterDateRemoved())
+            {
+                this.setShipAfterDate(null);
+            }
+        }
+        else
+        {
+            this.setShipAfterDate(e.getShipAfterDate());
+        }
+        if (e.getShipByDate() == null)
+        {
+            if (e.getIsPropertyShipByDateRemoved() != null && e.getIsPropertyShipByDateRemoved())
+            {
+                this.setShipByDate(null);
+            }
+        }
+        else
+        {
+            this.setShipByDate(e.getShipByDate());
+        }
+        if (e.getEstimatedShipDate() == null)
+        {
+            if (e.getIsPropertyEstimatedShipDateRemoved() != null && e.getIsPropertyEstimatedShipDateRemoved())
+            {
+                this.setEstimatedShipDate(null);
+            }
+        }
+        else
+        {
+            this.setEstimatedShipDate(e.getEstimatedShipDate());
+        }
+        if (e.getEstimatedDeliveryDate() == null)
+        {
+            if (e.getIsPropertyEstimatedDeliveryDateRemoved() != null && e.getIsPropertyEstimatedDeliveryDateRemoved())
+            {
+                this.setEstimatedDeliveryDate(null);
+            }
+        }
+        else
+        {
+            this.setEstimatedDeliveryDate(e.getEstimatedDeliveryDate());
+        }
+        if (e.getActive() == null)
+        {
+            if (e.getIsPropertyActiveRemoved() != null && e.getIsPropertyActiveRemoved())
+            {
+                this.setActive(null);
+            }
+        }
+        else
+        {
+            this.setActive(e.getActive());
+        }
+
+        this.setUpdatedBy(e.getCreatedBy());
+        this.setUpdatedAt(e.getCreatedAt());
+
+    }
+
+    public void when(OrderShipGroupStateRemoved e)
+    {
+        throwOnWrongEvent(e);
+
+        this.setDeleted(true);
+        this.setUpdatedBy(e.getCreatedBy());
+        this.setUpdatedAt(e.getCreatedAt());
+
+    }
+
+    public void save()
+    {
+    }
+
+    protected void throwOnWrongEvent(OrderShipGroupStateEvent stateEvent)
+    {
+        String stateEntityIdOrderId = this.getOrderShipGroupId().getOrderId();
+        String eventEntityIdOrderId = stateEvent.getOrderShipGroupEventId().getOrderId();
+        if (!stateEntityIdOrderId.equals(eventEntityIdOrderId))
+        {
+            throw DomainError.named("mutateWrongEntity", "Entity Id OrderId %1$s in state but entity id OrderId %2$s in event", stateEntityIdOrderId, eventEntityIdOrderId);
+        }
+
+        Long stateEntityIdShipGroupSeqId = this.getOrderShipGroupId().getShipGroupSeqId();
+        Long eventEntityIdShipGroupSeqId = stateEvent.getOrderShipGroupEventId().getShipGroupSeqId();
+        if (!stateEntityIdShipGroupSeqId.equals(eventEntityIdShipGroupSeqId))
+        {
+            throw DomainError.named("mutateWrongEntity", "Entity Id ShipGroupSeqId %1$s in state but entity id ShipGroupSeqId %2$s in event", stateEntityIdShipGroupSeqId, eventEntityIdShipGroupSeqId);
+        }
+
+        if (getForReapplying()) { return; }
+
+        Long stateVersion = this.getVersion();
+        Long eventVersion = stateEvent.getVersion();
+        if (eventVersion == null) {
+            eventVersion = stateVersion == null ? OrderShipGroupState.VERSION_NULL : stateVersion;
+            stateEvent.setVersion(eventVersion);
+        }
+        if (!(stateVersion == null && eventVersion.equals(OrderShipGroupState.VERSION_NULL)) && !eventVersion.equals(stateVersion))//(eventVersion.compareTo(stateVersion) >= 0)
+        {
+            throw DomainError.named("concurrencyConflict", "Conflict between state version (%1$s) and event version (%2$s)", stateVersion, eventVersion);
+        }
+
+    }
+
+    public static class SimpleOrderShipGroupState extends AbstractOrderShipGroupState
+    {
+
+        public SimpleOrderShipGroupState() {
+        }
+
+        public SimpleOrderShipGroupState(boolean forReapplying) {
+            super(forReapplying);
+        }
+
+    }
+
+
+}
+

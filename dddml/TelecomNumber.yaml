@@ -1,0 +1,46 @@
+﻿#%DDDML 0.1
+
+---
+aggregates:
+
+  # -------------------------------
+  # 电话号码
+  TelecomNumber:
+    # ---------------------------------
+    inheritedFrom: ContactMech
+    discriminatorValue: "TelecomNumber"
+    # ---------------------------------
+    id:
+      name: ContactMechId
+      columnName: CONTACT_MECH_ID
+      type: id-ne
+      
+    properties:
+    
+      # 国家代码
+      CountryCode:
+        type: very-short
+        
+      # 区号
+      AreaCode:
+        type: very-short
+      
+      # 电话号码
+      ContactNumber:
+        type: short-varchar
+      
+      
+      AskForName:
+        type: name
+        
+    # references:
+      # ContactMech:
+        # name: ContactMech
+        # displayName: ContactMech
+        # type: ContactMech
+        # properties:
+        # - ContactMechId
+        # foreignKeyName: TEL_NUM_CMECH
+        
+    reservedProperties: {}
+    

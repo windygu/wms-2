@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.Order;
+using Dddml.Wms.Domain.PartyRole;
 
 namespace Dddml.Wms.Domain.Order
 {
@@ -17,7 +18,7 @@ namespace Dddml.Wms.Domain.Order
 
         public static IOrderCommand ToCreateOrMergePatchOrder(this OrderStateDtoWrapper state)
         {
-            return state.ToCreateOrMergePatchOrder<CreateOrderDto, MergePatchOrderDto, CreateOrderItemDto, MergePatchOrderItemDto>();
+            return state.ToCreateOrMergePatchOrder<CreateOrderDto, MergePatchOrderDto, CreateOrderRoleDto, MergePatchOrderRoleDto, CreateOrderItemDto, MergePatchOrderItemDto, CreateOrderShipGroupDto, MergePatchOrderShipGroupDto>();
         }
 
         public static DeleteOrderDto ToDeleteOrder(this OrderStateDtoWrapper state)
@@ -27,12 +28,12 @@ namespace Dddml.Wms.Domain.Order
 
         public static MergePatchOrderDto ToMergePatchOrder(this OrderStateDtoWrapper state)
         {
-            return state.ToMergePatchOrder<MergePatchOrderDto, CreateOrderItemDto, MergePatchOrderItemDto>();
+            return state.ToMergePatchOrder<MergePatchOrderDto, CreateOrderRoleDto, MergePatchOrderRoleDto, CreateOrderItemDto, MergePatchOrderItemDto, CreateOrderShipGroupDto, MergePatchOrderShipGroupDto>();
         }
 
         public static CreateOrderDto ToCreateOrder(this OrderStateDtoWrapper state)
         {
-            return state.ToCreateOrder<CreateOrderDto, CreateOrderItemDto>();
+            return state.ToCreateOrder<CreateOrderDto, CreateOrderRoleDto, CreateOrderItemDto, CreateOrderShipGroupDto>();
         }
 		
 

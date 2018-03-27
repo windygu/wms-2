@@ -60,6 +60,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual string PrimaryReturnId { get; set; }
 
+		public virtual long? PrimaryShipGroupSeqId { get; set; }
+
 		public virtual string PicklistBinId { get; set; }
 
 		public virtual DateTime? EstimatedReadyDate { get; set; }
@@ -99,8 +101,6 @@ namespace Dddml.Wms.Domain.Shipment
 		public virtual decimal? AdditionalShippingCharge { get; set; }
 
 		public virtual string AddtlShippingChargeDesc { get; set; }
-
-		public virtual string ShipperId { get; set; }
 
 		public virtual bool? Active { get; set; }
 
@@ -176,6 +176,31 @@ namespace Dddml.Wms.Domain.Shipment
 
 
 
+        private CreateItemIssuanceCommands _itemIssuances = new CreateItemIssuanceCommands();
+
+        public ICreateItemIssuanceCommands ItemIssuances
+        {
+            get
+            {
+                return this._itemIssuances;
+            }
+        }
+
+        public CreateItemIssuance NewCreateItemIssuance()
+        {
+            var c = new CreateItemIssuance();
+            c.ShipmentId = this.ShipmentId;
+
+            return c;
+        }
+
+        ICreateItemIssuance ICreateShipment.NewCreateItemIssuance()
+        {
+            return this.NewCreateItemIssuance();
+        }
+
+
+
         protected override string GetCommandType()
         {
             return Dddml.Wms.Specialization.CommandType.Create;
@@ -193,6 +218,8 @@ namespace Dddml.Wms.Domain.Shipment
 		public virtual bool IsPropertyPrimaryOrderIdRemoved { get; set; }
 
 		public virtual bool IsPropertyPrimaryReturnIdRemoved { get; set; }
+
+		public virtual bool IsPropertyPrimaryShipGroupSeqIdRemoved { get; set; }
 
 		public virtual bool IsPropertyPicklistBinIdRemoved { get; set; }
 
@@ -233,8 +260,6 @@ namespace Dddml.Wms.Domain.Shipment
 		public virtual bool IsPropertyAdditionalShippingChargeRemoved { get; set; }
 
 		public virtual bool IsPropertyAddtlShippingChargeDescRemoved { get; set; }
-
-		public virtual bool IsPropertyShipperIdRemoved { get; set; }
 
 		public virtual bool IsPropertyActiveRemoved { get; set; }
 
@@ -344,6 +369,58 @@ namespace Dddml.Wms.Domain.Shipment
         IRemoveShipmentReceipt IMergePatchShipment.NewRemoveShipmentReceipt()
         {
             return this.NewRemoveShipmentReceipt();
+        }
+
+
+        private ItemIssuanceCommands _itemIssuanceCommands = new ItemIssuanceCommands();
+
+        public IItemIssuanceCommands ItemIssuanceCommands
+        {
+            get
+            {
+                return this._itemIssuanceCommands;
+            }
+        }
+
+
+        public CreateItemIssuance NewCreateItemIssuance()
+        {
+            var c = new CreateItemIssuance();
+            c.ShipmentId = this.ShipmentId;
+
+            return c;
+        }
+
+        ICreateItemIssuance IMergePatchShipment.NewCreateItemIssuance()
+        {
+            return this.NewCreateItemIssuance();
+        }
+
+        public MergePatchItemIssuance NewMergePatchItemIssuance()
+        {
+            var c = new MergePatchItemIssuance();
+            c.ShipmentId = this.ShipmentId;
+
+            return c;
+        }
+
+        IMergePatchItemIssuance IMergePatchShipment.NewMergePatchItemIssuance()
+        {
+            return this.NewMergePatchItemIssuance();
+        }
+
+
+        public RemoveItemIssuance NewRemoveItemIssuance()
+        {
+            var c = new RemoveItemIssuance();
+            c.ShipmentId = this.ShipmentId;
+
+            return c;
+        }
+
+        IRemoveItemIssuance IMergePatchShipment.NewRemoveItemIssuance()
+        {
+            return this.NewRemoveItemIssuance();
         }
 
 
@@ -482,6 +559,69 @@ namespace Dddml.Wms.Domain.Shipment
         }
 
         public IEnumerator<IShipmentReceiptCommand> GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+    }
+
+
+    public class CreateItemIssuanceCommands : ICreateItemIssuanceCommands
+    {
+        private List<ICreateItemIssuance> _innerCommands = new List<ICreateItemIssuance>();
+
+        public void Add(ICreateItemIssuance c)
+        {
+            _innerCommands.Add(c);
+        }
+
+        public void Remove(ICreateItemIssuance c)
+        {
+            _innerCommands.Remove(c);
+        }
+
+        public void Clear()
+        {
+            _innerCommands.Clear();
+        }
+
+        public IEnumerator<ICreateItemIssuance> GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+    }
+
+    public class ItemIssuanceCommands : IItemIssuanceCommands
+    {
+        private List<IItemIssuanceCommand> _innerCommands = new List<IItemIssuanceCommand>();
+
+        public void Add(IItemIssuanceCommand c)
+        {
+            _innerCommands.Add(c);
+        }
+
+        public void Remove(IItemIssuanceCommand c)
+        {
+            _innerCommands.Remove(c);
+        }
+
+        public void Clear()
+        {
+            _innerCommands.Clear();
+        }
+
+        public IEnumerator<IItemIssuanceCommand> GetEnumerator()
         {
             return _innerCommands.GetEnumerator();
         }

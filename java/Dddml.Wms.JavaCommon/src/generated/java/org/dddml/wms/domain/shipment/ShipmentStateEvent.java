@@ -29,6 +29,10 @@ public interface ShipmentStateEvent extends Event
 
     void setPrimaryReturnId(String primaryReturnId);
 
+    Long getPrimaryShipGroupSeqId();
+
+    void setPrimaryShipGroupSeqId(Long primaryShipGroupSeqId);
+
     String getPicklistBinId();
 
     void setPicklistBinId(String picklistBinId);
@@ -109,10 +113,6 @@ public interface ShipmentStateEvent extends Event
 
     void setAddtlShippingChargeDesc(String addtlShippingChargeDesc);
 
-    String getShipperId();
-
-    void setShipperId(String shipperId);
-
     String getCreatedBy();
 
     void setCreatedBy(String createdBy);
@@ -143,6 +143,12 @@ public interface ShipmentStateEvent extends Event
 
         ShipmentReceiptStateEvent.ShipmentReceiptStateCreated newShipmentReceiptStateCreated(String receiptSeqId);
 
+        Iterable<ItemIssuanceStateEvent.ItemIssuanceStateCreated> getItemIssuanceEvents();
+        
+        void addItemIssuanceEvent(ItemIssuanceStateEvent.ItemIssuanceStateCreated e);
+
+        ItemIssuanceStateEvent.ItemIssuanceStateCreated newItemIssuanceStateCreated(String itemIssuanceSeqId);
+
     
     }
 
@@ -164,6 +170,10 @@ public interface ShipmentStateEvent extends Event
         Boolean getIsPropertyPrimaryReturnIdRemoved();
 
         void setIsPropertyPrimaryReturnIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyPrimaryShipGroupSeqIdRemoved();
+
+        void setIsPropertyPrimaryShipGroupSeqIdRemoved(Boolean removed);
 
         Boolean getIsPropertyPicklistBinIdRemoved();
 
@@ -245,10 +255,6 @@ public interface ShipmentStateEvent extends Event
 
         void setIsPropertyAddtlShippingChargeDescRemoved(Boolean removed);
 
-        Boolean getIsPropertyShipperIdRemoved();
-
-        void setIsPropertyShipperIdRemoved(Boolean removed);
-
         Boolean getIsPropertyActiveRemoved();
 
         void setIsPropertyActiveRemoved(Boolean removed);
@@ -268,6 +274,16 @@ public interface ShipmentStateEvent extends Event
         ShipmentReceiptStateEvent.ShipmentReceiptStateCreated newShipmentReceiptStateCreated(String receiptSeqId);
 
         ShipmentReceiptStateEvent.ShipmentReceiptStateMergePatched newShipmentReceiptStateMergePatched(String receiptSeqId);
+
+        Iterable<ItemIssuanceStateEvent> getItemIssuanceEvents();
+        
+        void addItemIssuanceEvent(ItemIssuanceStateEvent e);
+
+        ItemIssuanceStateEvent.ItemIssuanceStateCreated newItemIssuanceStateCreated(String itemIssuanceSeqId);
+
+        ItemIssuanceStateEvent.ItemIssuanceStateMergePatched newItemIssuanceStateMergePatched(String itemIssuanceSeqId);
+
+        ItemIssuanceStateEvent.ItemIssuanceStateRemoved newItemIssuanceStateRemoved(String itemIssuanceSeqId);
 
 
     }

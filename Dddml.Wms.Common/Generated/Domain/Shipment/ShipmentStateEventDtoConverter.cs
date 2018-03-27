@@ -41,6 +41,7 @@ namespace Dddml.Wms.Domain.Shipment
             dto.StatusId = e.StatusId;
             dto.PrimaryOrderId = e.PrimaryOrderId;
             dto.PrimaryReturnId = e.PrimaryReturnId;
+            dto.PrimaryShipGroupSeqId = e.PrimaryShipGroupSeqId;
             dto.PicklistBinId = e.PicklistBinId;
             dto.EstimatedReadyDate = e.EstimatedReadyDate;
             dto.EstimatedShipDate = e.EstimatedShipDate;
@@ -61,7 +62,6 @@ namespace Dddml.Wms.Domain.Shipment
             dto.PartyIdFrom = e.PartyIdFrom;
             dto.AdditionalShippingCharge = e.AdditionalShippingCharge;
             dto.AddtlShippingChargeDesc = e.AddtlShippingChargeDesc;
-            dto.ShipperId = e.ShipperId;
             dto.Active = e.Active;
             var shipmentItemEvents = new List<ShipmentItemStateCreatedDto>();
             foreach (var ee in e.ShipmentItemEvents)
@@ -79,6 +79,14 @@ namespace Dddml.Wms.Domain.Shipment
             }
             dto.ShipmentReceiptEvents = shipmentReceiptEvents.ToArray();
 
+            var itemIssuanceEvents = new List<ItemIssuanceStateCreatedDto>();
+            foreach (var ee in e.ItemIssuanceEvents)
+            {
+                ItemIssuanceStateCreatedDto eeDto = ItemIssuanceStateEventDtoConverter.ToItemIssuanceStateCreatedDto(ee);
+                itemIssuanceEvents.Add(eeDto);
+            }
+            dto.ItemIssuanceEvents = itemIssuanceEvents.ToArray();
+
             return dto;
         }
 
@@ -93,6 +101,7 @@ namespace Dddml.Wms.Domain.Shipment
             dto.StatusId = e.StatusId;
             dto.PrimaryOrderId = e.PrimaryOrderId;
             dto.PrimaryReturnId = e.PrimaryReturnId;
+            dto.PrimaryShipGroupSeqId = e.PrimaryShipGroupSeqId;
             dto.PicklistBinId = e.PicklistBinId;
             dto.EstimatedReadyDate = e.EstimatedReadyDate;
             dto.EstimatedShipDate = e.EstimatedShipDate;
@@ -113,12 +122,12 @@ namespace Dddml.Wms.Domain.Shipment
             dto.PartyIdFrom = e.PartyIdFrom;
             dto.AdditionalShippingCharge = e.AdditionalShippingCharge;
             dto.AddtlShippingChargeDesc = e.AddtlShippingChargeDesc;
-            dto.ShipperId = e.ShipperId;
             dto.Active = e.Active;
             dto.IsPropertyShipmentTypeIdRemoved = e.IsPropertyShipmentTypeIdRemoved;
             dto.IsPropertyStatusIdRemoved = e.IsPropertyStatusIdRemoved;
             dto.IsPropertyPrimaryOrderIdRemoved = e.IsPropertyPrimaryOrderIdRemoved;
             dto.IsPropertyPrimaryReturnIdRemoved = e.IsPropertyPrimaryReturnIdRemoved;
+            dto.IsPropertyPrimaryShipGroupSeqIdRemoved = e.IsPropertyPrimaryShipGroupSeqIdRemoved;
             dto.IsPropertyPicklistBinIdRemoved = e.IsPropertyPicklistBinIdRemoved;
             dto.IsPropertyEstimatedReadyDateRemoved = e.IsPropertyEstimatedReadyDateRemoved;
             dto.IsPropertyEstimatedShipDateRemoved = e.IsPropertyEstimatedShipDateRemoved;
@@ -139,7 +148,6 @@ namespace Dddml.Wms.Domain.Shipment
             dto.IsPropertyPartyIdFromRemoved = e.IsPropertyPartyIdFromRemoved;
             dto.IsPropertyAdditionalShippingChargeRemoved = e.IsPropertyAdditionalShippingChargeRemoved;
             dto.IsPropertyAddtlShippingChargeDescRemoved = e.IsPropertyAddtlShippingChargeDescRemoved;
-            dto.IsPropertyShipperIdRemoved = e.IsPropertyShipperIdRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;
             var shipmentItemEvents = new List<ShipmentItemStateCreatedOrMergePatchedOrRemovedDto>();
             foreach (var ee in e.ShipmentItemEvents)
@@ -156,6 +164,14 @@ namespace Dddml.Wms.Domain.Shipment
                 shipmentReceiptEvents.Add(eeDto);
             }
             dto.ShipmentReceiptEvents = shipmentReceiptEvents.ToArray();
+
+            var itemIssuanceEvents = new List<ItemIssuanceStateCreatedOrMergePatchedOrRemovedDto>();
+            foreach (var ee in e.ItemIssuanceEvents)
+            {
+                ItemIssuanceStateCreatedOrMergePatchedOrRemovedDto eeDto = ItemIssuanceStateEventDtoConverter.ToItemIssuanceStateEventDto(ee);
+                itemIssuanceEvents.Add(eeDto);
+            }
+            dto.ItemIssuanceEvents = itemIssuanceEvents.ToArray();
 
 
             return dto;
@@ -175,6 +191,14 @@ namespace Dddml.Wms.Domain.Shipment
             get
             {
                 return new ShipmentReceiptStateEventDtoConverter();
+            }
+        }
+
+        protected virtual ItemIssuanceStateEventDtoConverter ItemIssuanceStateEventDtoConverter
+        {
+            get
+            {
+                return new ItemIssuanceStateEventDtoConverter();
             }
         }
 

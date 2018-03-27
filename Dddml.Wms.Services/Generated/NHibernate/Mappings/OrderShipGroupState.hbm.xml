@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+				   assembly="Dddml.Wms.Common" 
+				   namespace="Dddml.Wms.Domain.Order">
+  
+  <class name="Dddml.Wms.Domain.Order.OrderShipGroupState" table="OrderShipGroups">
+
+    <composite-id name="OrderShipGroupId" class="Dddml.Wms.Domain.Order.OrderShipGroupId">
+        <key-property name="OrderId" ><column name="OrderShipGroupIdOrderId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="ShipGroupSeqId" ><column name="OrderShipGroupIdShipGroupSeqId" sql-type="DECIMAL(20,0)" /></key-property>
+    </composite-id>
+
+	<version name="Version" column="Version" type="long" unsaved-value="0"/>
+
+    <property name="ShipmentMethodTypeId" ><column name="ShipmentMethodTypeId" sql-type="VARCHAR(20)" /></property>
+    <property name="SupplierPartyId" ><column name="SupplierPartyId" sql-type="VARCHAR(20)" /></property>
+    <property name="VendorPartyId" ><column name="VendorPartyId" sql-type="VARCHAR(20)" /></property>
+    <property name="CarrierPartyId" ><column name="CarrierPartyId" sql-type="VARCHAR(20)" /></property>
+    <property name="CarrierRoleTypeId" ><column name="CarrierRoleTypeId" sql-type="VARCHAR(20)" /></property>
+    <property name="FacilityId" ><column name="FacilityId" sql-type="VARCHAR(20)" /></property>
+    <property name="ContactMechId" ><column name="ContactMechId" sql-type="VARCHAR(20)" /></property>
+    <property name="TelecomContactMechId" ><column name="TelecomContactMechId" sql-type="VARCHAR(20)" /></property>
+    <property name="TrackingNumber" ><column name="TrackingNumber" sql-type="VARCHAR(60)" /></property>
+    <property name="ShippingInstructions" ><column name="ShippingInstructions" sql-type="VARCHAR(255)" /></property>
+    <property name="MaySplit" ><column name="MaySplit" sql-type="CHAR(1)" /></property>
+    <property name="GiftMessage" ><column name="GiftMessage" sql-type="VARCHAR(255)" /></property>
+    <property name="IsGift" ><column name="IsGift" sql-type="CHAR(1)" /></property>
+    <property name="ShipAfterDate" ><column name="ShipAfterDate" sql-type="DATETIME" /></property>
+    <property name="ShipByDate" ><column name="ShipByDate" sql-type="DATETIME" /></property>
+    <property name="EstimatedShipDate" ><column name="EstimatedShipDate" sql-type="DATETIME" /></property>
+    <property name="EstimatedDeliveryDate" ><column name="EstimatedDeliveryDate" sql-type="DATETIME" /></property>
+    <property name="CreatedBy" ></property>
+    <property name="UpdatedBy" ></property>
+    <property name="Active" ></property>
+    <property name="Deleted" ></property>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+
+    <property name="UpdatedAt" column="UpdatedAt" type="DateTimeUtc"/>
+
+
+  </class>
+  
+</hibernate-mapping>
+

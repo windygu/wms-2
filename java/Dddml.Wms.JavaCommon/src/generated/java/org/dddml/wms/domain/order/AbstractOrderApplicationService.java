@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.function.Consumer;
 import org.dddml.support.criterion.Criterion;
 import java.util.Date;
+import org.dddml.wms.domain.partyrole.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 
@@ -98,8 +99,16 @@ public abstract class AbstractOrderApplicationService implements OrderApplicatio
         return new AbstractOrderState.SimpleOrderState(eventStream.getEvents());
     }
 
+    public OrderRoleState getOrderRole(String orderId, PartyRoleId partyRoleId) {
+        return getStateQueryRepository().getOrderRole(orderId, partyRoleId);
+    }
+
     public OrderItemState getOrderItem(String orderId, String orderItemSeqId) {
         return getStateQueryRepository().getOrderItem(orderId, orderItemSeqId);
+    }
+
+    public OrderShipGroupState getOrderShipGroup(String orderId, Long shipGroupSeqId) {
+        return getStateQueryRepository().getOrderShipGroup(orderId, shipGroupSeqId);
     }
 
 

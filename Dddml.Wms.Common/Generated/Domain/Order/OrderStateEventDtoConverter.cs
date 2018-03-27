@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.Order;
+using Dddml.Wms.Domain.PartyRole;
 
 namespace Dddml.Wms.Domain.Order
 {
@@ -62,6 +63,14 @@ namespace Dddml.Wms.Domain.Order
             dto.GrandTotal = e.GrandTotal;
             dto.InvoicePerShipment = e.InvoicePerShipment;
             dto.Active = e.Active;
+            var orderRoleEvents = new List<OrderRoleStateCreatedDto>();
+            foreach (var ee in e.OrderRoleEvents)
+            {
+                OrderRoleStateCreatedDto eeDto = OrderRoleStateEventDtoConverter.ToOrderRoleStateCreatedDto(ee);
+                orderRoleEvents.Add(eeDto);
+            }
+            dto.OrderRoleEvents = orderRoleEvents.ToArray();
+
             var orderItemEvents = new List<OrderItemStateCreatedDto>();
             foreach (var ee in e.OrderItemEvents)
             {
@@ -69,6 +78,14 @@ namespace Dddml.Wms.Domain.Order
                 orderItemEvents.Add(eeDto);
             }
             dto.OrderItemEvents = orderItemEvents.ToArray();
+
+            var orderShipGroupEvents = new List<OrderShipGroupStateCreatedDto>();
+            foreach (var ee in e.OrderShipGroupEvents)
+            {
+                OrderShipGroupStateCreatedDto eeDto = OrderShipGroupStateEventDtoConverter.ToOrderShipGroupStateCreatedDto(ee);
+                orderShipGroupEvents.Add(eeDto);
+            }
+            dto.OrderShipGroupEvents = orderShipGroupEvents.ToArray();
 
             return dto;
         }
@@ -130,6 +147,14 @@ namespace Dddml.Wms.Domain.Order
             dto.IsPropertyGrandTotalRemoved = e.IsPropertyGrandTotalRemoved;
             dto.IsPropertyInvoicePerShipmentRemoved = e.IsPropertyInvoicePerShipmentRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;
+            var orderRoleEvents = new List<OrderRoleStateCreatedOrMergePatchedOrRemovedDto>();
+            foreach (var ee in e.OrderRoleEvents)
+            {
+                OrderRoleStateCreatedOrMergePatchedOrRemovedDto eeDto = OrderRoleStateEventDtoConverter.ToOrderRoleStateEventDto(ee);
+                orderRoleEvents.Add(eeDto);
+            }
+            dto.OrderRoleEvents = orderRoleEvents.ToArray();
+
             var orderItemEvents = new List<OrderItemStateCreatedOrMergePatchedOrRemovedDto>();
             foreach (var ee in e.OrderItemEvents)
             {
@@ -138,16 +163,40 @@ namespace Dddml.Wms.Domain.Order
             }
             dto.OrderItemEvents = orderItemEvents.ToArray();
 
+            var orderShipGroupEvents = new List<OrderShipGroupStateCreatedOrMergePatchedOrRemovedDto>();
+            foreach (var ee in e.OrderShipGroupEvents)
+            {
+                OrderShipGroupStateCreatedOrMergePatchedOrRemovedDto eeDto = OrderShipGroupStateEventDtoConverter.ToOrderShipGroupStateEventDto(ee);
+                orderShipGroupEvents.Add(eeDto);
+            }
+            dto.OrderShipGroupEvents = orderShipGroupEvents.ToArray();
+
 
             return dto;
         }
 
+
+        protected virtual OrderRoleStateEventDtoConverter OrderRoleStateEventDtoConverter
+        {
+            get
+            {
+                return new OrderRoleStateEventDtoConverter();
+            }
+        }
 
         protected virtual OrderItemStateEventDtoConverter OrderItemStateEventDtoConverter
         {
             get
             {
                 return new OrderItemStateEventDtoConverter();
+            }
+        }
+
+        protected virtual OrderShipGroupStateEventDtoConverter OrderShipGroupStateEventDtoConverter
+        {
+            get
+            {
+                return new OrderShipGroupStateEventDtoConverter();
             }
         }
 

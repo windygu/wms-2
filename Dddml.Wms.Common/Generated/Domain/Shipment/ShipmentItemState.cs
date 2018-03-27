@@ -187,8 +187,6 @@ namespace Dddml.Wms.Domain.Shipment
 
 			this.Quantity = e.Quantity;
 
-			this.TargetQuantity = e.TargetQuantity;
-
 			this.ShipmentContentDescription = e.ShipmentContentDescription;
 
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
@@ -238,18 +236,6 @@ namespace Dddml.Wms.Domain.Shipment
 			else
 			{
 				this.Quantity = e.Quantity;
-			}
-
-			if (e.TargetQuantity == null)
-			{
-				if (e.IsPropertyTargetQuantityRemoved)
-				{
-					this.TargetQuantity = default(decimal?);
-				}
-			}
-			else
-			{
-				this.TargetQuantity = e.TargetQuantity;
 			}
 
 			if (e.ShipmentContentDescription == null)

@@ -1,0 +1,61 @@
+﻿#%DDDML 0.1
+
+---
+aggregates:
+
+  # 设施
+  Facility:
+    id:
+      name: FacilityId
+      type: id-ne
+      
+    properties:
+      FacilityTypeId:
+        type: id
+      ParentFacilityId:
+        type: id
+      OwnerPartyId:
+        type: id-ne
+      DefaultInventoryItemTypeId:
+        type: id
+      FacilityName:
+        type: name
+      PrimaryFacilityGroupId:
+        type: id
+      OldSquareFootage:
+        type: numeric
+      FacilitySize:
+        type: fixed-point
+      FacilitySizeUomId:
+        type: id
+      ProductStoreId:
+        type: id
+      DefaultDaysToShip:
+        description: In the absence of a product specific days to ship in ProductFacility, this will be used
+        type: numeric
+      OpenedDate:
+        type: date-time
+      ClosedDate:
+        type: date-time
+      Description:
+        type: description
+      DefaultDimensionUomId:
+        description: This field store the unit of measurement of dimension (length, width and height)
+        type: id
+      DefaultWeightUomId:
+        type: id
+      GeoPointId:
+        type: id
+    # references:
+      # ParentFacilityId:
+        # name: ParentFacilityId
+        # displayName: PARENT-FACILITY-ID
+        # description: Parent
+        # type: Facility
+        # properties:
+        # - ParentFacilityId
+        # foreignKeyName: FACILITY_PARENT
+        
+    reservedProperties: {}
+    
+    # discriminator: FacilityTypeId

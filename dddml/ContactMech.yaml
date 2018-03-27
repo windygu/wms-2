@@ -1,0 +1,37 @@
+﻿#%DDDML 0.1
+
+---
+aggregates:
+
+  # ---------------------------
+  # 联系方式
+  ContactMech:
+    displayName: Contact Mechanism
+    id:
+      name: ContactMechId
+      type: id-ne
+      
+    properties:
+    
+      ContactMechTypeId:
+        type: id
+      InfoString:
+        type: long-varchar
+        
+    # references:
+      # ContactMechType:
+        # name: ContactMechType
+        # displayName: ContactMechType
+        # type: ContactMechType
+        # properties:
+        # - ContactMechTypeId
+        # foreignKeyName: CONT_MECH_TYPE
+        
+    reservedProperties: {}
+    
+    discriminator: ContactMechTypeId
+    # ---------------------
+    discriminatorValue: "ContactMech"
+    inheritanceMappingStrategy: tph
+    # ---------------------
+    

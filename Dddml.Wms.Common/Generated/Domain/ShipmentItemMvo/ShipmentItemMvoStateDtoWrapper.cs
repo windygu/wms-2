@@ -152,34 +152,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             }
         }
 
-		public virtual decimal? TargetQuantity
-		{
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("TargetQuantity"))
-                {
-                    return _state.TargetQuantity;
-                }
-                return null;
-            }
-            set
-            {
-                _state.TargetQuantity = value;
-            }
-        }
-
-        decimal? IShipmentItemMvoStateProperties.TargetQuantity
-        {
-            get 
-            {
-                return (this._state as IShipmentItemMvoStateProperties).TargetQuantity;
-            }
-            set 
-            {
-                (this._state as IShipmentItemMvoStateProperties).TargetQuantity = value;
-            }
-        }
-
 		public virtual string ShipmentContentDescription
 		{
             get
@@ -379,6 +351,34 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             set 
             {
                 (this._state as IShipmentItemMvoStateProperties).ShipmentPrimaryReturnId = value;
+            }
+        }
+
+		public virtual long? ShipmentPrimaryShipGroupSeqId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("ShipmentPrimaryShipGroupSeqId"))
+                {
+                    return _state.ShipmentPrimaryShipGroupSeqId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.ShipmentPrimaryShipGroupSeqId = value;
+            }
+        }
+
+        long? IShipmentItemMvoStateProperties.ShipmentPrimaryShipGroupSeqId
+        {
+            get 
+            {
+                return (this._state as IShipmentItemMvoStateProperties).ShipmentPrimaryShipGroupSeqId;
+            }
+            set 
+            {
+                (this._state as IShipmentItemMvoStateProperties).ShipmentPrimaryShipGroupSeqId = value;
             }
         }
 
@@ -939,34 +939,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             set 
             {
                 (this._state as IShipmentItemMvoStateProperties).ShipmentAddtlShippingChargeDesc = value;
-            }
-        }
-
-		public virtual string ShipmentShipperId
-		{
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("ShipmentShipperId"))
-                {
-                    return _state.ShipmentShipperId;
-                }
-                return null;
-            }
-            set
-            {
-                _state.ShipmentShipperId = value;
-            }
-        }
-
-        string IShipmentItemMvoStateProperties.ShipmentShipperId
-        {
-            get 
-            {
-                return (this._state as IShipmentItemMvoStateProperties).ShipmentShipperId;
-            }
-            set 
-            {
-                (this._state as IShipmentItemMvoStateProperties).ShipmentShipperId = value;
             }
         }
 

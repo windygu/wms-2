@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+
+    <!-- C:\svn\ofbiz.15.12\applications\accounting\data\AccountingTypeData.xml -->
+    <!-- <RoleType description="Fixed Asset Maint Assignee" hasTable="N" roleTypeId="FAM_ASSIGNEE" /> -->
+    <!-- <RoleType description="Maintenance Supplier or Service" hasTable="N" parentTypeId="FAM_ASSIGNEE" roleTypeId="FAM_SUPPLIER" /> -->
+    <!-- <RoleType description="Maintenance Manager or Supervisor" hasTable="N" parentTypeId="FAM_ASSIGNEE" roleTypeId="FAM_MANAGER" /> -->
+    <!-- <RoleType description="Maintenance Worker" hasTable="N" parentTypeId="FAM_ASSIGNEE" roleTypeId="FAM_WORKER" /> -->
+
+    <!-- C:\svn\ofbiz.15.12\applications\content\data\CompDocData.xml -->
+    <!-- <RoleType roleTypeId="APPROVER" description="Approver" /> -->
+    <!-- <RoleType roleTypeId="REVIEWER" description="Reviewer" /> -->
+
+    <!-- C:\svn\ofbiz.15.12\applications\content\data\ContentTypeData.xml -->
+    <!-- <RoleType description="Logged In" hasTable="N" parentTypeId="" roleTypeId="LOGGEDIN" /> -->
+    <!-- <RoleType roleTypeId="CONTENT" hasTable="N" description="Content Member" /> -->
+    <!-- <RoleType roleTypeId="CONTENT_ADMIN" parentTypeId="CONTENT" hasTable="N" description="Content Administrator" /> -->
+    <!-- <RoleType roleTypeId="CONTENT_PUBLISHER" parentTypeId="CONTENT" hasTable="N" description="Content Publisher" /> -->
+    <!-- <RoleType roleTypeId="CONTENT_EDITOR" parentTypeId="CONTENT" hasTable="N" description="Content Editor" /> -->
+    <!-- <RoleType roleTypeId="CONTENT_AUTHOR" parentTypeId="CONTENT" hasTable="N" description="Content Author" /> -->
+    <!-- <RoleType roleTypeId="CONTENT_USER" parentTypeId="CONTENT" hasTable="N" description="Content User" /> -->
+    <!-- <RoleType roleTypeId="CONTENT_GUEST" parentTypeId="CONTENT" hasTable="N" description="Content Guest" /> -->
+
+    <!-- C:\svn\ofbiz.15.12\applications\party\data\PartyTypeData.xml -->
+    <RoleType description="Main Role" hasTable="N" parentTypeId="" roleTypeId="MAIN_ROLE" />
+    <RoleType description="Account Lead" hasTable="N" parentTypeId="" roleTypeId="ACCOUNT_LEAD" />
+    <RoleType description="Administrator" hasTable="N" parentTypeId="" roleTypeId="ADMIN" />
+    <RoleType description="Agent" hasTable="N" parentTypeId="" roleTypeId="AGENT" />
+    <RoleType description="Automated Agent" hasTable="N" parentTypeId="" roleTypeId="AUTOMATED_AGENT_ROLE" />
+    <RoleType description="Calendar" hasTable="N" parentTypeId="" roleTypeId="CALENDAR_ROLE" />
+    <RoleType description="Client" hasTable="N" parentTypeId="" roleTypeId="CLIENT" />
+    <RoleType description="Communication Participant" hasTable="N" parentTypeId="" roleTypeId="COMMEVENT_ROLE" />
+    <RoleType description="Consumer" hasTable="N" parentTypeId="" roleTypeId="CONSUMER" />
+    <RoleType description="Contractor" hasTable="N" parentTypeId="" roleTypeId="CONTRACTOR" />
+    <RoleType description="Customer" hasTable="N" parentTypeId="" roleTypeId="CUSTOMER" />
+    <RoleType description="Distribution Channel" hasTable="N" parentTypeId="" roleTypeId="DISTRIBUTION_CHANNEL" />
+    <RoleType description="ISP" hasTable="N" parentTypeId="" roleTypeId="ISP" />
+    <RoleType description="Hosting Server" hasTable="N" parentTypeId="" roleTypeId="HOSTING_SERVER" />
+    <RoleType description="Manufacturer" hasTable="N" parentTypeId="" roleTypeId="MANUFACTURER" />
+    <RoleType description="Not Applicable" hasTable="N" parentTypeId="" roleTypeId="_NA_" />
+    <RoleType description="Organization" hasTable="N" parentTypeId="MAIN_ROLE" roleTypeId="ORGANIZATION_ROLE" />
+    <RoleType description="Owner" hasTable="N" parentTypeId="" roleTypeId="OWNER" />
+    <RoleType description="Prospect" hasTable="N" parentTypeId="" roleTypeId="PROSPECT" />
+    <RoleType description="Person" hasTable="N" parentTypeId="" roleTypeId="PERSON_ROLE" />
+    <RoleType description="Referrer" hasTable="N" parentTypeId="" roleTypeId="REFERRER" />
+    <RoleType description="Request Role" hasTable="N" parentTypeId="" roleTypeId="REQUEST_ROLE" />
+    <RoleType description="Request Manager" hasTable="N" parentTypeId="REQUEST_ROLE" roleTypeId="REQ_MANAGER" />
+    <RoleType description="Requesting Party" hasTable="N" parentTypeId="REQUEST_ROLE" roleTypeId="REQ_REQUESTER" />
+    <RoleType description="Request Taker" hasTable="N" parentTypeId="REQUEST_ROLE" roleTypeId="REQ_TAKER" />
+    <RoleType description="Request Respondent" hasTable="N" parentTypeId="REQUEST_ROLE" roleTypeId="REQ_RESPOND" />
+    <RoleType description="Sales Force Autm." hasTable="N" parentTypeId="MAIN_ROLE" roleTypeId="SFA_ROLE" />
+    <RoleType description="Shareholder" hasTable="N" parentTypeId="" roleTypeId="SHAREHOLDER" />
+    <RoleType description="Subscriber" hasTable="N" parentTypeId="" roleTypeId="SUBSCRIBER" />
+    <RoleType description="Vendor" hasTable="N" parentTypeId="" roleTypeId="VENDOR" />
+    <RoleType description="Visitor" hasTable="N" parentTypeId="" roleTypeId="VISITOR" />
+    <RoleType description="Web Master" hasTable="N" parentTypeId="" roleTypeId="WEB_MASTER" />
+    <RoleType description="Workflow" hasTable="N" parentTypeId="" roleTypeId="WORKFLOW_ROLE" />
+    <RoleType description="Accountant" hasTable="N" parentTypeId="" roleTypeId="ACCOUNTANT" />
+    <RoleType description="Account" hasTable="N" parentTypeId="SFA_ROLE" roleTypeId="ACCOUNT" />
+    <RoleType description="Addressee" hasTable="N" parentTypeId="COMMEVENT_ROLE" roleTypeId="ADDRESSEE" />
+    <RoleType description="Association" hasTable="N" parentTypeId="ORGANIZATION_ROLE" roleTypeId="ASSOCIATION" />
+    <RoleType description="Bill-From Vendor" hasTable="N" parentTypeId="VENDOR" roleTypeId="BILL_FROM_VENDOR" />
+    <RoleType description="Bill-To Customer" hasTable="N" parentTypeId="CUSTOMER" roleTypeId="s_TO_CUSTOMER" />
+    <RoleType description="Blind Copy" hasTable="N" parentTypeId="COMMEVENT_ROLE" roleTypeId="BCC" />
+    <RoleType description="Bulk Customer" hasTable="N" parentTypeId="CUSTOMER" roleTypeId="BULK_CUSTOMER" />
+    <RoleType description="Calendar Attendee" hasTable="N" parentTypeId="CALENDAR_ROLE" roleTypeId="CAL_ATTENDEE" />
+    <RoleType description="Calendar Delegate" hasTable="N" parentTypeId="CALENDAR_ROLE" roleTypeId="CAL_DELEGATE" />
+    <RoleType description="Calendar Host" hasTable="N" parentTypeId="CALENDAR_ROLE" roleTypeId="CAL_HOST" />
+    <RoleType description="Calendar Organizer" hasTable="N" parentTypeId="CALENDAR_ROLE" roleTypeId="CAL_ORGANIZER" />
+    <RoleType description="Calendar Owner" hasTable="N" parentTypeId="CALENDAR_ROLE" roleTypeId="CAL_OWNER" />
+    <RoleType description="Carrier" hasTable="N" parentTypeId="ORGANIZATION_ROLE" roleTypeId="CARRIER" />
+    <RoleType description="Competitor" hasTable="N" parentTypeId="ORGANIZATION_ROLE" roleTypeId="COMPETITOR" />
+    <RoleType description="Contact" hasTable="N" parentTypeId="SFA_ROLE" roleTypeId="CONTACT" />
+    <RoleType description="Carbon Copy" hasTable="N" parentTypeId="COMMEVENT_ROLE" roleTypeId="CC" />
+    <RoleType description="Originator" hasTable="N" parentTypeId="COMMEVENT_ROLE" roleTypeId="ORIGINATOR" />
+    <RoleType description="Distributor" hasTable="N" parentTypeId="DISTRIBUTION_CHANNEL" roleTypeId="DISTRIBUTOR" />
+    <RoleType description="Employee" hasTable="N" parentTypeId="PERSON_ROLE" roleTypeId="EMPLOYEE" />
+    <RoleType description="End-User Customer" hasTable="N" parentTypeId="CUSTOMER" roleTypeId="END_USER_CUSTOMER" />
+    <RoleType description="Household" hasTable="N" parentTypeId="ORGANIZATION_ROLE" roleTypeId="HOUSEHOLD" />
+    <RoleType description="Internal Organization" hasTable="Y" parentTypeId="ORGANIZATION_ROLE" roleTypeId="INTERNAL_ORGANIZATIO" />
+    <RoleType description="Lead" hasTable="N" parentTypeId="SFA_ROLE" roleTypeId="LEAD" />
+    <RoleType description="Limited Administrator" hasTable="N" parentTypeId="ADMIN" roleTypeId="LTD_ADMIN" />
+    <RoleType description="Organization Unit" hasTable="N" parentTypeId="ORGANIZATION_ROLE" roleTypeId="ORGANIZATION_UNIT" />
+    <RoleType description="Partner" hasTable="N" parentTypeId="ORGANIZATION_ROLE" roleTypeId="PARTNER" />
+    <RoleType description="Placing Customer" hasTable="N" parentTypeId="CUSTOMER" roleTypeId="PLACING_CUSTOMER" />
+    <RoleType description="Regulatory Agency" hasTable="N" parentTypeId="ORGANIZATION_ROLE" roleTypeId="REGULATORY_AGENCY" />
+    <RoleType description="Sales Representative" hasTable="N" parentTypeId="PERSON_ROLE" roleTypeId="SALES_REP" />
+    <RoleType description="Ship-From Vendor" hasTable="N" parentTypeId="VENDOR" roleTypeId="SHIP_FROM_VENDOR" />
+    <RoleType description="Ship-To Customer" hasTable="N" parentTypeId="CUSTOMER" roleTypeId="SHIP_TO_CUSTOMER" />
+    <RoleType description="Sponsor" hasTable="N" parentTypeId="PERSON_ROLE" roleTypeId="SPONSOR" />
+    <RoleType description="Spouse" hasTable="N" parentTypeId="PERSON_ROLE" roleTypeId="SPOUSE" />
+    <RoleType description="Supplier Agent" hasTable="N" parentTypeId="PERSON_ROLE" roleTypeId="SUPPLIER_AGENT" />
+    <RoleType description="Supplier" hasTable="N" parentTypeId="ORGANIZATION_ROLE" roleTypeId="SUPPLIER" />
+    <RoleType description="Tax Authority" hasTable="N" parentTypeId="ORGANIZATION_ROLE" roleTypeId="TAX_AUTHORITY" />
+    <RoleType description="Union" hasTable="N" parentTypeId="ORGANIZATION_ROLE" roleTypeId="UNION" />
+    <RoleType description="Workflow Owner" hasTable="N" parentTypeId="WORKFLOW_ROLE" roleTypeId="WF_OWNER" />
+    <RoleType description="Affiliate" hasTable="N" parentTypeId="SALES_REP" roleTypeId="AFFILIATE" />
+    <RoleType description="Buyer" hasTable="N" parentTypeId="EMPLOYEE" roleTypeId="BUYER" />
+    <RoleType description="Cashier" hasTable="N" parentTypeId="EMPLOYEE" roleTypeId="CASHIER" />
+    <RoleType description="Department" hasTable="N" parentTypeId="ORGANIZATION_UNIT" roleTypeId="DEPARTMENT" />
+    <RoleType description="Division" hasTable="N" parentTypeId="ORGANIZATION_UNIT" roleTypeId="DIVISION" />
+    <RoleType description="Family Member" hasTable="N" parentTypeId="PERSON_ROLE" roleTypeId="FAMILY_MEMBER" />
+    <RoleType description="Manager" hasTable="N" parentTypeId="EMPLOYEE" roleTypeId="MANAGER" />
+    <RoleType description="Order Clerk" hasTable="N" parentTypeId="EMPLOYEE" roleTypeId="ORDER_CLERK" />
+    <RoleType description="Other Internal" hasTable="N" parentTypeId="INTERNAL_ORGANIZATIO" roleTypeId="OTHER_INTERNAL_ORGAN" />
+    <RoleType description="Other Organization Unit" hasTable="N" parentTypeId="ORGANIZATION_UNIT" roleTypeId="OTHER_ORGANIZATION_U" />
+    <RoleType description="Parent Organization" hasTable="N" parentTypeId="ORGANIZATION_UNIT" roleTypeId="PARENT_ORGANIZATION" />
+    <RoleType description="Packer" hasTable="N" parentTypeId="EMPLOYEE" roleTypeId="PACKER" />
+    <RoleType description="Picker" hasTable="N" parentTypeId="EMPLOYEE" roleTypeId="PICKER" />
+    <RoleType description="Receiver" hasTable="N" parentTypeId="EMPLOYEE" roleTypeId="RECEIVER" />
+    <RoleType description="Shipment Clerk" hasTable="N" parentTypeId="EMPLOYEE" roleTypeId="SHIPMENT_CLERK" />
+    <RoleType description="Stocker" hasTable="N" parentTypeId="EMPLOYEE" roleTypeId="STOCKER" />
+    <RoleType description="Subsidiary" hasTable="N" parentTypeId="ORGANIZATION_UNIT" roleTypeId="SUBSIDIARY" />
+    <RoleType description="Worker" hasTable="N" parentTypeId="EMPLOYEE" roleTypeId="WORKER" />
+    <RoleType description="Email Administrator" hasTable="N" parentTypeId="PERSON_ROLE" roleTypeId="EMAIL_ADMIN" />
+
+    <!-- C:\svn\ofbiz.15.12\applications\product\data\ProductTypeData.xml -->
+    <RoleType roleTypeId="IMAGEAPPROVER" hasTable="N" description="Image Approver" />
+
+    <!-- C:\svn\ofbiz.15.12\applications\workeffort\data\WorkEffortTypeData.xml -->
+    <RoleType description="Calendar Member" hasTable="N" parentTypeId="CALENDAR_ROLE" roleTypeId="ICAL_MEMBER" />
+
+    <!-- C:\svn\ofbiz.15.12\specialpurpose\ebaystore\data\EbayStoreTypeData.xml -->
+    <!-- <RoleType roleTypeId="EBAY_ACCOUNT" hasTable="N" description="eBay Account" /> -->
+    <!-- <RoleType roleTypeId="COMMENTATOR" hasTable="N" description="Commentator" /> -->
+
+    <!-- C:\svn\ofbiz.15.12\specialpurpose\projectmgr\data\ProjectMgrTypeData.xml -->
+    <!-- <RoleType description="Project Team" hasTable="N" parentTypeId="" roleTypeId="PROJECT_TEAM" /> -->
+    <!-- <RoleType description="Client Manager" hasTable="N" parentTypeId="PROJECT_TEAM" roleTypeId="CLIENT_MANAGER" /> -->
+    <!-- <RoleType description="Client Analyst" hasTable="N" parentTypeId="PROJECT_TEAM" roleTypeId="CLIENT_ANALYST" /> -->
+    <!-- <RoleType description="Client Billing" hasTable="N" parentTypeId="PROJECT_TEAM" roleTypeId="CLIENT_BILLING" /> -->
+    <!-- <RoleType description="Provider Manager" hasTable="N" parentTypeId="PROJECT_TEAM" roleTypeId="PROVIDER_MANAGER" /> -->
+    <!-- <RoleType description="Provider Accounting" hasTable="N" parentTypeId="PROJECT_TEAM" roleTypeId="PROVIDER_ACCOUNTING" /> -->
+    <!-- <RoleType description="Provider Analyst" hasTable="N" parentTypeId="PROJECT_TEAM" roleTypeId="PROVIDER_ANALYST" /> -->
+    <!-- <RoleType description="Provider Validator" hasTable="N" parentTypeId="PROJECT_TEAM" roleTypeId="PROVIDER_VALIDATOR" /> -->
+    <!-- <RoleType description="Provider Func. Impl" hasTable="N" parentTypeId="PROJECT_TEAM" roleTypeId="PROVIDER_FUNCTIONAL" /> -->
+    <!-- <RoleType description="Provider Tester" hasTable="N" parentTypeId="PROJECT_TEAM" roleTypeId="PROVIDER_TESTER" /> -->
+
+    <!-- C:\svn\ofbiz.15.12\specialpurpose\scrum\data\scrumTypeData.xml -->
+    <!-- <RoleType roleTypeId="SCRUM_MEMBER" hasTable="N" description="Scrum Member" /> -->
+    <!-- <RoleType roleTypeId="PRODUCT_OWNER" parentTypeId="SCRUM_MEMBER" hasTable="N" description="Product Owner" /> -->
+    <!-- <RoleType roleTypeId="SCRUM_MASTER" parentTypeId="SCRUM_MEMBER" hasTable="N" description="SCRUM Master" /> -->
+    <!-- <RoleType roleTypeId="SCRUM_TEAM" parentTypeId="SCRUM_MEMBER" hasTable="N" description="SCRUM Team" /> -->
+    <!-- <RoleType roleTypeId="PRODUCT_OWNER_COMP" parentTypeId="SCRUM_MEMBER" hasTable="N" description="Product Owner Company" /> -->
+    <!-- <RoleType roleTypeId="STAKEHOLDER" parentTypeId="SCRUM_MEMBER" hasTable="N" description="Stakeholder" /> -->
+
+</entity-engine-xml>

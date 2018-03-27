@@ -19,7 +19,6 @@
 	<property name="productId" ><column name="ProductId" sql-type="VARCHAR(60)" /></property>
 	<property name="attributeSetInstanceId" ></property>
 	<property name="quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>
-	<property name="targetQuantity" ><column name="TargetQuantity" sql-type="DECIMAL(18,6)" /></property>
 	<property name="shipmentContentDescription" ><column name="ShipmentContentDescription" sql-type="VARCHAR(255)" /></property>
 	<property name="version" ></property>
 	<property name="active" ></property>
@@ -27,6 +26,7 @@
 	<property name="shipmentStatusId" ><column name="ShipmentStatusId" sql-type="VARCHAR(20)" /></property>
 	<property name="shipmentPrimaryOrderId" ><column name="ShipmentPrimaryOrderId" sql-type="VARCHAR(20)" /></property>
 	<property name="shipmentPrimaryReturnId" ><column name="ShipmentPrimaryReturnId" sql-type="VARCHAR(20)" /></property>
+	<property name="shipmentPrimaryShipGroupSeqId" ><column name="ShipmentPrimaryShipGroupSeqId" sql-type="DECIMAL(20,0)" /></property>
 	<property name="shipmentPicklistBinId" ><column name="ShipmentPicklistBinId" sql-type="VARCHAR(20)" /></property>
 	<property name="shipmentEstimatedReadyDate" ><column name="ShipmentEstimatedReadyDate" sql-type="DATETIME" /></property>
 	<property name="shipmentEstimatedShipDate" ><column name="ShipmentEstimatedShipDate" sql-type="DATETIME" /></property>
@@ -47,7 +47,6 @@
 	<property name="shipmentPartyIdFrom" ><column name="ShipmentPartyIdFrom" sql-type="VARCHAR(20)" /></property>
 	<property name="shipmentAdditionalShippingCharge" ><column name="ShipmentAdditionalShippingCharge" sql-type="DECIMAL(18,2)" /></property>
 	<property name="shipmentAddtlShippingChargeDesc" ><column name="ShipmentAddtlShippingChargeDesc" sql-type="VARCHAR(255)" /></property>
-	<property name="shipmentShipperId" ><column name="ShipmentShipperId" sql-type="VARCHAR(20)" /></property>
 	<property name="shipmentCreatedBy" ></property>
 	<property name="shipmentCreatedAt" type="timestamp"><column name="ShipmentCreatedAt" sql-type="DATETIME" /></property>
 	<property name="shipmentUpdatedBy" ></property>
@@ -72,8 +71,6 @@
 
         <property name="isPropertyQuantityRemoved" column="IsPropertyQuantityRemoved"/>
 
-        <property name="isPropertyTargetQuantityRemoved" column="IsPropertyTargetQuantityRemoved"/>
-
         <property name="isPropertyShipmentContentDescriptionRemoved" column="IsPropertyShipmentContentDescriptionRemoved"/>
 
         <property name="isPropertyVersionRemoved" column="IsPropertyVersionRemoved"/>
@@ -87,6 +84,8 @@
         <property name="isPropertyShipmentPrimaryOrderIdRemoved" column="IsPropertyShipmentPrimaryOrderIdRemoved"/>
 
         <property name="isPropertyShipmentPrimaryReturnIdRemoved" column="IsPropertyShipmentPrimaryReturnIdRemoved"/>
+
+        <property name="isPropertyShipmentPrimaryShipGroupSeqIdRemoved" column="IsPropertyShipmentPrimaryShipGroupSeqIdRemoved"/>
 
         <property name="isPropertyShipmentPicklistBinIdRemoved" column="IsPropertyShipmentPicklistBinIdRemoved"/>
 
@@ -127,8 +126,6 @@
         <property name="isPropertyShipmentAdditionalShippingChargeRemoved" column="IsPropertyShipmentAdditionalShippingChargeRemoved"/>
 
         <property name="isPropertyShipmentAddtlShippingChargeDescRemoved" column="IsPropertyShipmentAddtlShippingChargeDescRemoved"/>
-
-        <property name="isPropertyShipmentShipperIdRemoved" column="IsPropertyShipmentShipperIdRemoved"/>
 
         <property name="isPropertyShipmentCreatedByRemoved" column="IsPropertyShipmentCreatedByRemoved"/>
 

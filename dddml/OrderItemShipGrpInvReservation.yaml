@@ -1,0 +1,72 @@
+﻿#%DDDML 0.1
+
+---
+aggregates:
+
+  OrderItemShipGrpInvReservation:
+    id:
+      name: OrderItemShipGrpInvResId
+      type: OrderItemShipGrpInvResId
+      
+    properties:
+      ReserveOrderEnumId:
+        type: id-ne
+      Quantity:
+        type: fixed-point
+      QuantityNotAvailable:
+        type: fixed-point
+      ReservedDatetime:
+        type: date-time
+      CreatedDatetime:
+        type: date-time
+      PromisedDatetime:
+        type: date-time
+      CurrentPromisedDate:
+        type: date-time
+      Priority:
+        description: Sets priority for Inventory Reservation
+        type: indicator
+      SequenceId:
+        type: numeric
+      OldPickStartDate:
+        type: date-time
+        
+    # references:
+      # OrderItemShipGroup:
+        # name: OrderItemShipGroup
+        # displayName: OrderItemShipGroup
+        # type: OrderItemShipGroup
+        # properties:
+        # - OrderItemShipGrpInvResId.OrderId
+        # - OrderItemShipGrpInvResId.ShipGroupSeqId
+        
+    # reservedProperties: {}
+    
+    valueObjects:
+    
+      OrderItemShipGrpInvResId:
+      
+        properties:
+          OrderId:
+            type: id-ne
+          ShipGroupSeqId:
+            type: numeric
+          OrderItemSeqId:
+            type: id-ne
+          # InventoryItemId:
+            # type: id-ne
+          # 产品 Id
+          ProductId:
+            type: id-long
+            length: 60
+          # 货位 Id.
+          LocatorId: 
+            type: string
+            length: 50
+          # 属性集实例 Id.
+          AttributeSetInstanceId:
+            type: string
+            length: 50
+            
+
+            

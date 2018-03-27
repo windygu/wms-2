@@ -45,6 +45,12 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
+        public virtual long? PrimaryShipGroupSeqId
+        {
+            get;
+            set;
+        }
+
         public virtual string PicklistBinId
         {
             get;
@@ -165,12 +171,6 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
-        public virtual string ShipperId
-        {
-            get;
-            set;
-        }
-
         public virtual bool? Active
         {
             get;
@@ -231,6 +231,18 @@ namespace Dddml.Wms.Domain.Shipment
             set { this.ShipmentReceipts = value.Select(e => ((ShipmentReceiptStateDto)e)).ToArray(); }
         }
 
+        public virtual ItemIssuanceStateDto[] ItemIssuances
+        {
+            get;
+            set;
+        }
+
+        IItemIssuanceStateDto[] IShipmentStateDto.ItemIssuances
+        {
+            get { return this.ItemIssuances; }
+            set { this.ItemIssuances = value.Select(e => ((ItemIssuanceStateDto)e)).ToArray(); }
+        }
+
         public virtual IShipmentState ToShipmentState()
         {
             var state = new ShipmentState(true);
@@ -239,6 +251,7 @@ namespace Dddml.Wms.Domain.Shipment
             state.StatusId = this.StatusId;
             state.PrimaryOrderId = this.PrimaryOrderId;
             state.PrimaryReturnId = this.PrimaryReturnId;
+            state.PrimaryShipGroupSeqId = this.PrimaryShipGroupSeqId;
             state.PicklistBinId = this.PicklistBinId;
             state.EstimatedReadyDate = this.EstimatedReadyDate;
             state.EstimatedShipDate = this.EstimatedShipDate;
@@ -259,7 +272,6 @@ namespace Dddml.Wms.Domain.Shipment
             state.PartyIdFrom = this.PartyIdFrom;
             state.AdditionalShippingCharge = this.AdditionalShippingCharge;
             state.AddtlShippingChargeDesc = this.AddtlShippingChargeDesc;
-            state.ShipperId = this.ShipperId;
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             state.CreatedBy = this.CreatedBy;
@@ -268,6 +280,7 @@ namespace Dddml.Wms.Domain.Shipment
             if (this.UpdatedAt != null && this.UpdatedAt.HasValue) { state.UpdatedAt = this.UpdatedAt.Value; }
             if (this.ShipmentItems != null) { foreach (var s in this.ShipmentItems) { state.ShipmentItems.AddToSave(s.ToShipmentItemState()); } };
             if (this.ShipmentReceipts != null) { foreach (var s in this.ShipmentReceipts) { state.ShipmentReceipts.AddToSave(s.ToShipmentReceiptState()); } };
+            if (this.ItemIssuances != null) { foreach (var s in this.ItemIssuances) { state.ItemIssuances.AddToSave(s.ToItemIssuanceState()); } };
 
             return state;
         }

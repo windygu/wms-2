@@ -58,18 +58,6 @@ public class ShipmentItemMvoStateDto
         this.quantity = quantity;
     }
 
-    private java.math.BigDecimal targetQuantity;
-
-    public java.math.BigDecimal getTargetQuantity()
-    {
-        return this.targetQuantity;
-    }
-
-    public void setTargetQuantity(java.math.BigDecimal targetQuantity)
-    {
-        this.targetQuantity = targetQuantity;
-    }
-
     private String shipmentContentDescription;
 
     public String getShipmentContentDescription()
@@ -152,6 +140,18 @@ public class ShipmentItemMvoStateDto
     public void setShipmentPrimaryReturnId(String shipmentPrimaryReturnId)
     {
         this.shipmentPrimaryReturnId = shipmentPrimaryReturnId;
+    }
+
+    private Long shipmentPrimaryShipGroupSeqId;
+
+    public Long getShipmentPrimaryShipGroupSeqId()
+    {
+        return this.shipmentPrimaryShipGroupSeqId;
+    }
+
+    public void setShipmentPrimaryShipGroupSeqId(Long shipmentPrimaryShipGroupSeqId)
+    {
+        this.shipmentPrimaryShipGroupSeqId = shipmentPrimaryShipGroupSeqId;
     }
 
     private String shipmentPicklistBinId;
@@ -394,18 +394,6 @@ public class ShipmentItemMvoStateDto
         this.shipmentAddtlShippingChargeDesc = shipmentAddtlShippingChargeDesc;
     }
 
-    private String shipmentShipperId;
-
-    public String getShipmentShipperId()
-    {
-        return this.shipmentShipperId;
-    }
-
-    public void setShipmentShipperId(String shipmentShipperId)
-    {
-        this.shipmentShipperId = shipmentShipperId;
-    }
-
     private String shipmentCreatedBy;
 
     public String getShipmentCreatedBy()
@@ -564,9 +552,6 @@ public class ShipmentItemMvoStateDto
             if (returnedFieldsContains("Quantity")) {
                 dto.setQuantity(state.getQuantity());
             }
-            if (returnedFieldsContains("TargetQuantity")) {
-                dto.setTargetQuantity(state.getTargetQuantity());
-            }
             if (returnedFieldsContains("ShipmentContentDescription")) {
                 dto.setShipmentContentDescription(state.getShipmentContentDescription());
             }
@@ -587,6 +572,9 @@ public class ShipmentItemMvoStateDto
             }
             if (returnedFieldsContains("ShipmentPrimaryReturnId")) {
                 dto.setShipmentPrimaryReturnId(state.getShipmentPrimaryReturnId());
+            }
+            if (returnedFieldsContains("ShipmentPrimaryShipGroupSeqId")) {
+                dto.setShipmentPrimaryShipGroupSeqId(state.getShipmentPrimaryShipGroupSeqId());
             }
             if (returnedFieldsContains("ShipmentPicklistBinId")) {
                 dto.setShipmentPicklistBinId(state.getShipmentPicklistBinId());
@@ -647,9 +635,6 @@ public class ShipmentItemMvoStateDto
             }
             if (returnedFieldsContains("ShipmentAddtlShippingChargeDesc")) {
                 dto.setShipmentAddtlShippingChargeDesc(state.getShipmentAddtlShippingChargeDesc());
-            }
-            if (returnedFieldsContains("ShipmentShipperId")) {
-                dto.setShipmentShipperId(state.getShipmentShipperId());
             }
             if (returnedFieldsContains("ShipmentCreatedBy")) {
                 dto.setShipmentCreatedBy(state.getShipmentCreatedBy());

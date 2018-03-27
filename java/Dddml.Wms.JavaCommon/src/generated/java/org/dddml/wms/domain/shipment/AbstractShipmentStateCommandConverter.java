@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 
-public abstract class AbstractShipmentStateCommandConverter<TCreateShipment extends ShipmentCommand.CreateShipment, TMergePatchShipment extends ShipmentCommand.MergePatchShipment, TDeleteShipment extends ShipmentCommand.DeleteShipment, TCreateShipmentItem extends ShipmentItemCommand.CreateShipmentItem, TMergePatchShipmentItem extends ShipmentItemCommand.MergePatchShipmentItem, TRemoveShipmentItem extends ShipmentItemCommand.RemoveShipmentItem, TCreateShipmentReceipt extends ShipmentReceiptCommand.CreateShipmentReceipt, TMergePatchShipmentReceipt extends ShipmentReceiptCommand.MergePatchShipmentReceipt, TRemoveShipmentReceipt extends ShipmentReceiptCommand.RemoveShipmentReceipt>
+public abstract class AbstractShipmentStateCommandConverter<TCreateShipment extends ShipmentCommand.CreateShipment, TMergePatchShipment extends ShipmentCommand.MergePatchShipment, TDeleteShipment extends ShipmentCommand.DeleteShipment, TCreateShipmentItem extends ShipmentItemCommand.CreateShipmentItem, TMergePatchShipmentItem extends ShipmentItemCommand.MergePatchShipmentItem, TRemoveShipmentItem extends ShipmentItemCommand.RemoveShipmentItem, TCreateShipmentReceipt extends ShipmentReceiptCommand.CreateShipmentReceipt, TMergePatchShipmentReceipt extends ShipmentReceiptCommand.MergePatchShipmentReceipt, TRemoveShipmentReceipt extends ShipmentReceiptCommand.RemoveShipmentReceipt, TCreateItemIssuance extends ItemIssuanceCommand.CreateItemIssuance, TMergePatchItemIssuance extends ItemIssuanceCommand.MergePatchItemIssuance, TRemoveItemIssuance extends ItemIssuanceCommand.RemoveItemIssuance>
 {
     public ShipmentCommand toCreateOrMergePatchShipment(ShipmentState state)
     {
@@ -41,6 +41,7 @@ public abstract class AbstractShipmentStateCommandConverter<TCreateShipment exte
         cmd.setStatusId(state.getStatusId());
         cmd.setPrimaryOrderId(state.getPrimaryOrderId());
         cmd.setPrimaryReturnId(state.getPrimaryReturnId());
+        cmd.setPrimaryShipGroupSeqId(state.getPrimaryShipGroupSeqId());
         cmd.setPicklistBinId(state.getPicklistBinId());
         cmd.setEstimatedReadyDate(state.getEstimatedReadyDate());
         cmd.setEstimatedShipDate(state.getEstimatedShipDate());
@@ -61,13 +62,13 @@ public abstract class AbstractShipmentStateCommandConverter<TCreateShipment exte
         cmd.setPartyIdFrom(state.getPartyIdFrom());
         cmd.setAdditionalShippingCharge(state.getAdditionalShippingCharge());
         cmd.setAddtlShippingChargeDesc(state.getAddtlShippingChargeDesc());
-        cmd.setShipperId(state.getShipperId());
         cmd.setActive(state.getActive());
             
         if (state.getShipmentTypeId() == null) { cmd.setIsPropertyShipmentTypeIdRemoved(true); }
         if (state.getStatusId() == null) { cmd.setIsPropertyStatusIdRemoved(true); }
         if (state.getPrimaryOrderId() == null) { cmd.setIsPropertyPrimaryOrderIdRemoved(true); }
         if (state.getPrimaryReturnId() == null) { cmd.setIsPropertyPrimaryReturnIdRemoved(true); }
+        if (state.getPrimaryShipGroupSeqId() == null) { cmd.setIsPropertyPrimaryShipGroupSeqIdRemoved(true); }
         if (state.getPicklistBinId() == null) { cmd.setIsPropertyPicklistBinIdRemoved(true); }
         if (state.getEstimatedReadyDate() == null) { cmd.setIsPropertyEstimatedReadyDateRemoved(true); }
         if (state.getEstimatedShipDate() == null) { cmd.setIsPropertyEstimatedShipDateRemoved(true); }
@@ -88,7 +89,6 @@ public abstract class AbstractShipmentStateCommandConverter<TCreateShipment exte
         if (state.getPartyIdFrom() == null) { cmd.setIsPropertyPartyIdFromRemoved(true); }
         if (state.getAdditionalShippingCharge() == null) { cmd.setIsPropertyAdditionalShippingChargeRemoved(true); }
         if (state.getAddtlShippingChargeDesc() == null) { cmd.setIsPropertyAddtlShippingChargeDescRemoved(true); }
-        if (state.getShipperId() == null) { cmd.setIsPropertyShipperIdRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
         for (ShipmentItemState d : state.getShipmentItems())
         {
@@ -99,6 +99,11 @@ public abstract class AbstractShipmentStateCommandConverter<TCreateShipment exte
         {
             ShipmentReceiptCommand c = getShipmentReceiptStateCommandConverter().toCreateOrMergePatchShipmentReceipt(d);
             cmd.getShipmentReceiptCommands().add(c);
+        }
+        for (ItemIssuanceState d : state.getItemIssuances())
+        {
+            ItemIssuanceCommand c = getItemIssuanceStateCommandConverter().toCreateOrMergePatchItemIssuance(d);
+            cmd.getItemIssuanceCommands().add(c);
         }
         return cmd;
     }
@@ -113,6 +118,7 @@ public abstract class AbstractShipmentStateCommandConverter<TCreateShipment exte
         cmd.setStatusId(state.getStatusId());
         cmd.setPrimaryOrderId(state.getPrimaryOrderId());
         cmd.setPrimaryReturnId(state.getPrimaryReturnId());
+        cmd.setPrimaryShipGroupSeqId(state.getPrimaryShipGroupSeqId());
         cmd.setPicklistBinId(state.getPicklistBinId());
         cmd.setEstimatedReadyDate(state.getEstimatedReadyDate());
         cmd.setEstimatedShipDate(state.getEstimatedShipDate());
@@ -133,7 +139,6 @@ public abstract class AbstractShipmentStateCommandConverter<TCreateShipment exte
         cmd.setPartyIdFrom(state.getPartyIdFrom());
         cmd.setAdditionalShippingCharge(state.getAdditionalShippingCharge());
         cmd.setAddtlShippingChargeDesc(state.getAddtlShippingChargeDesc());
-        cmd.setShipperId(state.getShipperId());
         cmd.setActive(state.getActive());
         for (ShipmentItemState d : state.getShipmentItems())
         {
@@ -145,6 +150,11 @@ public abstract class AbstractShipmentStateCommandConverter<TCreateShipment exte
             ShipmentReceiptCommand.CreateShipmentReceipt c = getShipmentReceiptStateCommandConverter().toCreateShipmentReceipt(d);
             cmd.getShipmentReceipts().add(c);
         }
+        for (ItemIssuanceState d : state.getItemIssuances())
+        {
+            ItemIssuanceCommand.CreateItemIssuance c = getItemIssuanceStateCommandConverter().toCreateItemIssuance(d);
+            cmd.getItemIssuances().add(c);
+        }
         return cmd;
     }
 
@@ -154,13 +164,16 @@ public abstract class AbstractShipmentStateCommandConverter<TCreateShipment exte
     protected abstract AbstractShipmentReceiptStateCommandConverter<TCreateShipmentReceipt, TMergePatchShipmentReceipt, TRemoveShipmentReceipt>
         getShipmentReceiptStateCommandConverter();
 
+    protected abstract AbstractItemIssuanceStateCommandConverter<TCreateItemIssuance, TMergePatchItemIssuance, TRemoveItemIssuance>
+        getItemIssuanceStateCommandConverter();
+
     protected abstract TCreateShipment newCreateShipment();
 
     protected abstract TMergePatchShipment newMergePatchShipment(); 
 
     protected abstract TDeleteShipment newDeleteShipment();
 
-    public static class SimpleShipmentStateCommandConverter extends AbstractShipmentStateCommandConverter<AbstractShipmentCommand.SimpleCreateShipment, AbstractShipmentCommand.SimpleMergePatchShipment, AbstractShipmentCommand.SimpleDeleteShipment, AbstractShipmentItemCommand.SimpleCreateShipmentItem, AbstractShipmentItemCommand.SimpleMergePatchShipmentItem, AbstractShipmentItemCommand.SimpleRemoveShipmentItem, AbstractShipmentReceiptCommand.SimpleCreateShipmentReceipt, AbstractShipmentReceiptCommand.SimpleMergePatchShipmentReceipt, AbstractShipmentReceiptCommand.SimpleRemoveShipmentReceipt>
+    public static class SimpleShipmentStateCommandConverter extends AbstractShipmentStateCommandConverter<AbstractShipmentCommand.SimpleCreateShipment, AbstractShipmentCommand.SimpleMergePatchShipment, AbstractShipmentCommand.SimpleDeleteShipment, AbstractShipmentItemCommand.SimpleCreateShipmentItem, AbstractShipmentItemCommand.SimpleMergePatchShipmentItem, AbstractShipmentItemCommand.SimpleRemoveShipmentItem, AbstractShipmentReceiptCommand.SimpleCreateShipmentReceipt, AbstractShipmentReceiptCommand.SimpleMergePatchShipmentReceipt, AbstractShipmentReceiptCommand.SimpleRemoveShipmentReceipt, AbstractItemIssuanceCommand.SimpleCreateItemIssuance, AbstractItemIssuanceCommand.SimpleMergePatchItemIssuance, AbstractItemIssuanceCommand.SimpleRemoveItemIssuance>
     {
         @Override
         protected AbstractShipmentCommand.SimpleCreateShipment newCreateShipment() {
@@ -187,6 +200,12 @@ public abstract class AbstractShipmentStateCommandConverter<TCreateShipment exte
         protected AbstractShipmentReceiptStateCommandConverter<AbstractShipmentReceiptCommand.SimpleCreateShipmentReceipt, AbstractShipmentReceiptCommand.SimpleMergePatchShipmentReceipt, AbstractShipmentReceiptCommand.SimpleRemoveShipmentReceipt> getShipmentReceiptStateCommandConverter()
         {
             return new AbstractShipmentReceiptStateCommandConverter.SimpleShipmentReceiptStateCommandConverter();
+        }
+
+        @Override
+        protected AbstractItemIssuanceStateCommandConverter<AbstractItemIssuanceCommand.SimpleCreateItemIssuance, AbstractItemIssuanceCommand.SimpleMergePatchItemIssuance, AbstractItemIssuanceCommand.SimpleRemoveItemIssuance> getItemIssuanceStateCommandConverter()
+        {
+            return new AbstractItemIssuanceStateCommandConverter.SimpleItemIssuanceStateCommandConverter();
         }
 
 

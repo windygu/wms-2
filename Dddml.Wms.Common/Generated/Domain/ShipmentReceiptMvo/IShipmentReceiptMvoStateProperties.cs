@@ -21,7 +21,19 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
 		string AttributeSetInstanceId { get; set; }
 
+		string LocatorId { get; set; }
+
 		string ShipmentItemSeqId { get; set; }
+
+		string ShipmentPackageSeqId { get; set; }
+
+		string OrderId { get; set; }
+
+		string OrderItemSeqId { get; set; }
+
+		string ReturnId { get; set; }
+
+		string ReturnItemSeqId { get; set; }
 
 		string RejectionReasonId { get; set; }
 
@@ -52,6 +64,8 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 		string ShipmentPrimaryOrderId { get; set; }
 
 		string ShipmentPrimaryReturnId { get; set; }
+
+		long? ShipmentPrimaryShipGroupSeqId { get; set; }
 
 		string ShipmentPicklistBinId { get; set; }
 
@@ -92,8 +106,6 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 		decimal? ShipmentAdditionalShippingCharge { get; set; }
 
 		string ShipmentAddtlShippingChargeDesc { get; set; }
-
-		string ShipmentShipperId { get; set; }
 
 		long ShipmentVersion { get; set; }
 

@@ -44,6 +44,12 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
+        long? PrimaryShipGroupSeqId
+        {
+            get;
+            set;
+        }
+
         string PicklistBinId
         {
             get;
@@ -164,12 +170,6 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
-        string ShipperId
-        {
-            get;
-            set;
-        }
-
         bool? Active
         {
             get;
@@ -213,6 +213,12 @@ namespace Dddml.Wms.Domain.Shipment
         }
 
         IShipmentReceiptStateDto[] ShipmentReceipts
+        {
+            get;
+            set;
+        }
+
+        IItemIssuanceStateDto[] ItemIssuances
         {
             get;
             set;

@@ -34,7 +34,43 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             set;
         }
 
+        public virtual string LocatorId
+        {
+            get;
+            set;
+        }
+
         public virtual string ShipmentItemSeqId
+        {
+            get;
+            set;
+        }
+
+        public virtual string ShipmentPackageSeqId
+        {
+            get;
+            set;
+        }
+
+        public virtual string OrderId
+        {
+            get;
+            set;
+        }
+
+        public virtual string OrderItemSeqId
+        {
+            get;
+            set;
+        }
+
+        public virtual string ReturnId
+        {
+            get;
+            set;
+        }
+
+        public virtual string ReturnItemSeqId
         {
             get;
             set;
@@ -125,6 +161,12 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
         }
 
         public virtual string ShipmentPrimaryReturnId
+        {
+            get;
+            set;
+        }
+
+        public virtual long? ShipmentPrimaryShipGroupSeqId
         {
             get;
             set;
@@ -250,12 +292,6 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             set;
         }
 
-        public virtual string ShipmentShipperId
-        {
-            get;
-            set;
-        }
-
         public virtual string ShipmentCreatedBy
         {
             get;
@@ -322,7 +358,13 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             state.ShipmentReceiptId = this.ShipmentReceiptId;
             state.ProductId = this.ProductId;
             state.AttributeSetInstanceId = this.AttributeSetInstanceId;
+            state.LocatorId = this.LocatorId;
             state.ShipmentItemSeqId = this.ShipmentItemSeqId;
+            state.ShipmentPackageSeqId = this.ShipmentPackageSeqId;
+            state.OrderId = this.OrderId;
+            state.OrderItemSeqId = this.OrderItemSeqId;
+            state.ReturnId = this.ReturnId;
+            state.ReturnItemSeqId = this.ReturnItemSeqId;
             state.RejectionReasonId = this.RejectionReasonId;
             state.DamageStatusId = this.DamageStatusId;
             state.DamageReasonId = this.DamageReasonId;
@@ -338,6 +380,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             state.ShipmentStatusId = this.ShipmentStatusId;
             state.ShipmentPrimaryOrderId = this.ShipmentPrimaryOrderId;
             state.ShipmentPrimaryReturnId = this.ShipmentPrimaryReturnId;
+            state.ShipmentPrimaryShipGroupSeqId = this.ShipmentPrimaryShipGroupSeqId;
             state.ShipmentPicklistBinId = this.ShipmentPicklistBinId;
             state.ShipmentEstimatedReadyDate = this.ShipmentEstimatedReadyDate;
             state.ShipmentEstimatedShipDate = this.ShipmentEstimatedShipDate;
@@ -358,7 +401,6 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             state.ShipmentPartyIdFrom = this.ShipmentPartyIdFrom;
             state.ShipmentAdditionalShippingCharge = this.ShipmentAdditionalShippingCharge;
             state.ShipmentAddtlShippingChargeDesc = this.ShipmentAddtlShippingChargeDesc;
-            state.ShipmentShipperId = this.ShipmentShipperId;
             state.ShipmentCreatedBy = this.ShipmentCreatedBy;
             if (this.ShipmentCreatedAt != null && this.ShipmentCreatedAt.HasValue) { state.ShipmentCreatedAt = this.ShipmentCreatedAt.Value; }
             state.ShipmentUpdatedBy = this.ShipmentUpdatedBy;

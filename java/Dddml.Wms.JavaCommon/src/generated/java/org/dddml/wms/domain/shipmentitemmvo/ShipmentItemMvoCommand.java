@@ -49,10 +49,6 @@ public interface ShipmentItemMvoCommand extends Command
 
         void setQuantity(java.math.BigDecimal quantity);
 
-        java.math.BigDecimal getTargetQuantity();
-
-        void setTargetQuantity(java.math.BigDecimal targetQuantity);
-
         String getShipmentContentDescription();
 
         void setShipmentContentDescription(String shipmentContentDescription);
@@ -80,6 +76,10 @@ public interface ShipmentItemMvoCommand extends Command
         String getShipmentPrimaryReturnId();
 
         void setShipmentPrimaryReturnId(String shipmentPrimaryReturnId);
+
+        Long getShipmentPrimaryShipGroupSeqId();
+
+        void setShipmentPrimaryShipGroupSeqId(Long shipmentPrimaryShipGroupSeqId);
 
         String getShipmentPicklistBinId();
 
@@ -161,10 +161,6 @@ public interface ShipmentItemMvoCommand extends Command
 
         void setShipmentAddtlShippingChargeDesc(String shipmentAddtlShippingChargeDesc);
 
-        String getShipmentShipperId();
-
-        void setShipmentShipperId(String shipmentShipperId);
-
         String getShipmentCreatedBy();
 
         void setShipmentCreatedBy(String shipmentCreatedBy);
@@ -205,10 +201,6 @@ public interface ShipmentItemMvoCommand extends Command
 
         void setIsPropertyQuantityRemoved(Boolean removed);
 
-        Boolean getIsPropertyTargetQuantityRemoved();
-
-        void setIsPropertyTargetQuantityRemoved(Boolean removed);
-
         Boolean getIsPropertyShipmentContentDescriptionRemoved();
 
         void setIsPropertyShipmentContentDescriptionRemoved(Boolean removed);
@@ -236,6 +228,10 @@ public interface ShipmentItemMvoCommand extends Command
         Boolean getIsPropertyShipmentPrimaryReturnIdRemoved();
 
         void setIsPropertyShipmentPrimaryReturnIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyShipmentPrimaryShipGroupSeqIdRemoved();
+
+        void setIsPropertyShipmentPrimaryShipGroupSeqIdRemoved(Boolean removed);
 
         Boolean getIsPropertyShipmentPicklistBinIdRemoved();
 
@@ -316,10 +312,6 @@ public interface ShipmentItemMvoCommand extends Command
         Boolean getIsPropertyShipmentAddtlShippingChargeDescRemoved();
 
         void setIsPropertyShipmentAddtlShippingChargeDescRemoved(Boolean removed);
-
-        Boolean getIsPropertyShipmentShipperIdRemoved();
-
-        void setIsPropertyShipmentShipperIdRemoved(Boolean removed);
 
         Boolean getIsPropertyShipmentCreatedByRemoved();
 

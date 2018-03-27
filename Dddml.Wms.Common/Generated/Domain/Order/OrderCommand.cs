@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.Order;
+using Dddml.Wms.Domain.PartyRole;
 
 namespace Dddml.Wms.Domain.Order
 {
@@ -124,6 +125,31 @@ namespace Dddml.Wms.Domain.Order
 		}
 
 
+        private CreateOrderRoleCommands _orderRoles = new CreateOrderRoleCommands();
+
+        public ICreateOrderRoleCommands OrderRoles
+        {
+            get
+            {
+                return this._orderRoles;
+            }
+        }
+
+        public CreateOrderRole NewCreateOrderRole()
+        {
+            var c = new CreateOrderRole();
+            c.OrderId = this.OrderId;
+
+            return c;
+        }
+
+        ICreateOrderRole ICreateOrder.NewCreateOrderRole()
+        {
+            return this.NewCreateOrderRole();
+        }
+
+
+
         private CreateOrderItemCommands _orderItems = new CreateOrderItemCommands();
 
         public ICreateOrderItemCommands OrderItems
@@ -145,6 +171,31 @@ namespace Dddml.Wms.Domain.Order
         ICreateOrderItem ICreateOrder.NewCreateOrderItem()
         {
             return this.NewCreateOrderItem();
+        }
+
+
+
+        private CreateOrderShipGroupCommands _orderShipGroups = new CreateOrderShipGroupCommands();
+
+        public ICreateOrderShipGroupCommands OrderShipGroups
+        {
+            get
+            {
+                return this._orderShipGroups;
+            }
+        }
+
+        public CreateOrderShipGroup NewCreateOrderShipGroup()
+        {
+            var c = new CreateOrderShipGroup();
+            c.OrderId = this.OrderId;
+
+            return c;
+        }
+
+        ICreateOrderShipGroup ICreateOrder.NewCreateOrderShipGroup()
+        {
+            return this.NewCreateOrderShipGroup();
         }
 
 
@@ -214,6 +265,58 @@ namespace Dddml.Wms.Domain.Order
 		{
 		}
 
+        private OrderRoleCommands _orderRoleCommands = new OrderRoleCommands();
+
+        public IOrderRoleCommands OrderRoleCommands
+        {
+            get
+            {
+                return this._orderRoleCommands;
+            }
+        }
+
+
+        public CreateOrderRole NewCreateOrderRole()
+        {
+            var c = new CreateOrderRole();
+            c.OrderId = this.OrderId;
+
+            return c;
+        }
+
+        ICreateOrderRole IMergePatchOrder.NewCreateOrderRole()
+        {
+            return this.NewCreateOrderRole();
+        }
+
+        public MergePatchOrderRole NewMergePatchOrderRole()
+        {
+            var c = new MergePatchOrderRole();
+            c.OrderId = this.OrderId;
+
+            return c;
+        }
+
+        IMergePatchOrderRole IMergePatchOrder.NewMergePatchOrderRole()
+        {
+            return this.NewMergePatchOrderRole();
+        }
+
+
+        public RemoveOrderRole NewRemoveOrderRole()
+        {
+            var c = new RemoveOrderRole();
+            c.OrderId = this.OrderId;
+
+            return c;
+        }
+
+        IRemoveOrderRole IMergePatchOrder.NewRemoveOrderRole()
+        {
+            return this.NewRemoveOrderRole();
+        }
+
+
         private OrderItemCommands _orderItemCommands = new OrderItemCommands();
 
         public IOrderItemCommands OrderItemCommands
@@ -266,6 +369,58 @@ namespace Dddml.Wms.Domain.Order
         }
 
 
+        private OrderShipGroupCommands _orderShipGroupCommands = new OrderShipGroupCommands();
+
+        public IOrderShipGroupCommands OrderShipGroupCommands
+        {
+            get
+            {
+                return this._orderShipGroupCommands;
+            }
+        }
+
+
+        public CreateOrderShipGroup NewCreateOrderShipGroup()
+        {
+            var c = new CreateOrderShipGroup();
+            c.OrderId = this.OrderId;
+
+            return c;
+        }
+
+        ICreateOrderShipGroup IMergePatchOrder.NewCreateOrderShipGroup()
+        {
+            return this.NewCreateOrderShipGroup();
+        }
+
+        public MergePatchOrderShipGroup NewMergePatchOrderShipGroup()
+        {
+            var c = new MergePatchOrderShipGroup();
+            c.OrderId = this.OrderId;
+
+            return c;
+        }
+
+        IMergePatchOrderShipGroup IMergePatchOrder.NewMergePatchOrderShipGroup()
+        {
+            return this.NewMergePatchOrderShipGroup();
+        }
+
+
+        public RemoveOrderShipGroup NewRemoveOrderShipGroup()
+        {
+            var c = new RemoveOrderShipGroup();
+            c.OrderId = this.OrderId;
+
+            return c;
+        }
+
+        IRemoveOrderShipGroup IMergePatchOrder.NewRemoveOrderShipGroup()
+        {
+            return this.NewRemoveOrderShipGroup();
+        }
+
+
         protected override string GetCommandType()
         {
             return Dddml.Wms.Specialization.CommandType.MergePatch;
@@ -285,6 +440,69 @@ namespace Dddml.Wms.Domain.Order
         }
 
 	}
+
+
+    public class CreateOrderRoleCommands : ICreateOrderRoleCommands
+    {
+        private List<ICreateOrderRole> _innerCommands = new List<ICreateOrderRole>();
+
+        public void Add(ICreateOrderRole c)
+        {
+            _innerCommands.Add(c);
+        }
+
+        public void Remove(ICreateOrderRole c)
+        {
+            _innerCommands.Remove(c);
+        }
+
+        public void Clear()
+        {
+            _innerCommands.Clear();
+        }
+
+        public IEnumerator<ICreateOrderRole> GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+    }
+
+    public class OrderRoleCommands : IOrderRoleCommands
+    {
+        private List<IOrderRoleCommand> _innerCommands = new List<IOrderRoleCommand>();
+
+        public void Add(IOrderRoleCommand c)
+        {
+            _innerCommands.Add(c);
+        }
+
+        public void Remove(IOrderRoleCommand c)
+        {
+            _innerCommands.Remove(c);
+        }
+
+        public void Clear()
+        {
+            _innerCommands.Clear();
+        }
+
+        public IEnumerator<IOrderRoleCommand> GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+    }
 
 
     public class CreateOrderItemCommands : ICreateOrderItemCommands
@@ -338,6 +556,69 @@ namespace Dddml.Wms.Domain.Order
         }
 
         public IEnumerator<IOrderItemCommand> GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+    }
+
+
+    public class CreateOrderShipGroupCommands : ICreateOrderShipGroupCommands
+    {
+        private List<ICreateOrderShipGroup> _innerCommands = new List<ICreateOrderShipGroup>();
+
+        public void Add(ICreateOrderShipGroup c)
+        {
+            _innerCommands.Add(c);
+        }
+
+        public void Remove(ICreateOrderShipGroup c)
+        {
+            _innerCommands.Remove(c);
+        }
+
+        public void Clear()
+        {
+            _innerCommands.Clear();
+        }
+
+        public IEnumerator<ICreateOrderShipGroup> GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+    }
+
+    public class OrderShipGroupCommands : IOrderShipGroupCommands
+    {
+        private List<IOrderShipGroupCommand> _innerCommands = new List<IOrderShipGroupCommand>();
+
+        public void Add(IOrderShipGroupCommand c)
+        {
+            _innerCommands.Add(c);
+        }
+
+        public void Remove(IOrderShipGroupCommand c)
+        {
+            _innerCommands.Remove(c);
+        }
+
+        public void Clear()
+        {
+            _innerCommands.Clear();
+        }
+
+        public IEnumerator<IOrderShipGroupCommand> GetEnumerator()
         {
             return _innerCommands.GetEnumerator();
         }

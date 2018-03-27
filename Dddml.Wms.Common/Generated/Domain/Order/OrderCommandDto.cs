@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.Order;
+using Dddml.Wms.Domain.PartyRole;
 
 namespace Dddml.Wms.Domain.Order
 {
@@ -578,6 +579,81 @@ namespace Dddml.Wms.Domain.Order
             }
         }
 
+        ICreateOrderRoleCommands ICreateOrder.OrderRoles
+        {
+            get
+            {
+                return this._orderRoles;
+            }
+        }
+
+        IOrderRoleCommands IMergePatchOrder.OrderRoleCommands
+        {
+            get
+            {
+                return this._orderRoles;
+            }
+        }
+
+        public virtual CreateOrderRoleDto NewCreateOrderRole()
+        {
+            var c = new CreateOrderRoleDto();
+            c.OrderId = this.OrderId;
+
+            return c;
+        }
+
+        ICreateOrderRole ICreateOrder.NewCreateOrderRole()
+        {
+            return this.NewCreateOrderRole();
+        }
+
+        ICreateOrderRole IMergePatchOrder.NewCreateOrderRole()
+        {
+            return this.NewCreateOrderRole();
+        }
+
+        public virtual MergePatchOrderRoleDto NewMergePatchOrderRole()
+        {
+            var c = new MergePatchOrderRoleDto();
+            c.OrderId = this.OrderId;
+
+            return c;
+        }
+
+        IMergePatchOrderRole IMergePatchOrder.NewMergePatchOrderRole()
+        {
+            return this.NewMergePatchOrderRole();
+        }
+
+        public virtual RemoveOrderRoleDto NewRemoveOrderRole()
+        {
+            var c = new RemoveOrderRoleDto();
+            c.OrderId = this.OrderId;
+
+            return c;
+        }
+
+        IRemoveOrderRole IMergePatchOrder.NewRemoveOrderRole()
+        {
+            return this.NewRemoveOrderRole();
+        }
+
+        private CreateOrMergePatchOrRemoveOrderRoleDtos _orderRoles = new CreateOrMergePatchOrRemoveOrderRoleDtos();
+
+        public virtual CreateOrMergePatchOrRemoveOrderRoleDto[] OrderRoles
+        {
+            get
+            {
+                return _orderRoles.ToArray();
+            }
+            set
+            {
+                _orderRoles.Clear();
+                _orderRoles.AddRange(value);
+            }
+        }
+
         ICreateOrderItemCommands ICreateOrder.OrderItems
         {
             get
@@ -650,6 +726,81 @@ namespace Dddml.Wms.Domain.Order
             {
                 _orderItems.Clear();
                 _orderItems.AddRange(value);
+            }
+        }
+
+        ICreateOrderShipGroupCommands ICreateOrder.OrderShipGroups
+        {
+            get
+            {
+                return this._orderShipGroups;
+            }
+        }
+
+        IOrderShipGroupCommands IMergePatchOrder.OrderShipGroupCommands
+        {
+            get
+            {
+                return this._orderShipGroups;
+            }
+        }
+
+        public virtual CreateOrderShipGroupDto NewCreateOrderShipGroup()
+        {
+            var c = new CreateOrderShipGroupDto();
+            c.OrderId = this.OrderId;
+
+            return c;
+        }
+
+        ICreateOrderShipGroup ICreateOrder.NewCreateOrderShipGroup()
+        {
+            return this.NewCreateOrderShipGroup();
+        }
+
+        ICreateOrderShipGroup IMergePatchOrder.NewCreateOrderShipGroup()
+        {
+            return this.NewCreateOrderShipGroup();
+        }
+
+        public virtual MergePatchOrderShipGroupDto NewMergePatchOrderShipGroup()
+        {
+            var c = new MergePatchOrderShipGroupDto();
+            c.OrderId = this.OrderId;
+
+            return c;
+        }
+
+        IMergePatchOrderShipGroup IMergePatchOrder.NewMergePatchOrderShipGroup()
+        {
+            return this.NewMergePatchOrderShipGroup();
+        }
+
+        public virtual RemoveOrderShipGroupDto NewRemoveOrderShipGroup()
+        {
+            var c = new RemoveOrderShipGroupDto();
+            c.OrderId = this.OrderId;
+
+            return c;
+        }
+
+        IRemoveOrderShipGroup IMergePatchOrder.NewRemoveOrderShipGroup()
+        {
+            return this.NewRemoveOrderShipGroup();
+        }
+
+        private CreateOrMergePatchOrRemoveOrderShipGroupDtos _orderShipGroups = new CreateOrMergePatchOrRemoveOrderShipGroupDtos();
+
+        public virtual CreateOrMergePatchOrRemoveOrderShipGroupDto[] OrderShipGroups
+        {
+            get
+            {
+                return _orderShipGroups.ToArray();
+            }
+            set
+            {
+                _orderShipGroups.Clear();
+                _orderShipGroups.AddRange(value);
             }
         }
 

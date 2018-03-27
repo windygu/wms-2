@@ -59,6 +59,18 @@ public abstract class AbstractShipmentReceiptMvoCommand extends AbstractCommand 
             this.attributeSetInstanceId = attributeSetInstanceId;
         }
 
+        private String locatorId;
+
+        public String getLocatorId()
+        {
+            return this.locatorId;
+        }
+
+        public void setLocatorId(String locatorId)
+        {
+            this.locatorId = locatorId;
+        }
+
         private String shipmentItemSeqId;
 
         public String getShipmentItemSeqId()
@@ -69,6 +81,66 @@ public abstract class AbstractShipmentReceiptMvoCommand extends AbstractCommand 
         public void setShipmentItemSeqId(String shipmentItemSeqId)
         {
             this.shipmentItemSeqId = shipmentItemSeqId;
+        }
+
+        private String shipmentPackageSeqId;
+
+        public String getShipmentPackageSeqId()
+        {
+            return this.shipmentPackageSeqId;
+        }
+
+        public void setShipmentPackageSeqId(String shipmentPackageSeqId)
+        {
+            this.shipmentPackageSeqId = shipmentPackageSeqId;
+        }
+
+        private String orderId;
+
+        public String getOrderId()
+        {
+            return this.orderId;
+        }
+
+        public void setOrderId(String orderId)
+        {
+            this.orderId = orderId;
+        }
+
+        private String orderItemSeqId;
+
+        public String getOrderItemSeqId()
+        {
+            return this.orderItemSeqId;
+        }
+
+        public void setOrderItemSeqId(String orderItemSeqId)
+        {
+            this.orderItemSeqId = orderItemSeqId;
+        }
+
+        private String returnId;
+
+        public String getReturnId()
+        {
+            return this.returnId;
+        }
+
+        public void setReturnId(String returnId)
+        {
+            this.returnId = returnId;
+        }
+
+        private String returnItemSeqId;
+
+        public String getReturnItemSeqId()
+        {
+            return this.returnItemSeqId;
+        }
+
+        public void setReturnItemSeqId(String returnItemSeqId)
+        {
+            this.returnItemSeqId = returnItemSeqId;
         }
 
         private String rejectionReasonId;
@@ -249,6 +321,18 @@ public abstract class AbstractShipmentReceiptMvoCommand extends AbstractCommand 
         public void setShipmentPrimaryReturnId(String shipmentPrimaryReturnId)
         {
             this.shipmentPrimaryReturnId = shipmentPrimaryReturnId;
+        }
+
+        private Long shipmentPrimaryShipGroupSeqId;
+
+        public Long getShipmentPrimaryShipGroupSeqId()
+        {
+            return this.shipmentPrimaryShipGroupSeqId;
+        }
+
+        public void setShipmentPrimaryShipGroupSeqId(Long shipmentPrimaryShipGroupSeqId)
+        {
+            this.shipmentPrimaryShipGroupSeqId = shipmentPrimaryShipGroupSeqId;
         }
 
         private String shipmentPicklistBinId;
@@ -491,18 +575,6 @@ public abstract class AbstractShipmentReceiptMvoCommand extends AbstractCommand 
             this.shipmentAddtlShippingChargeDesc = shipmentAddtlShippingChargeDesc;
         }
 
-        private String shipmentShipperId;
-
-        public String getShipmentShipperId()
-        {
-            return this.shipmentShipperId;
-        }
-
-        public void setShipmentShipperId(String shipmentShipperId)
-        {
-            this.shipmentShipperId = shipmentShipperId;
-        }
-
         private String shipmentCreatedBy;
 
         public String getShipmentCreatedBy()
@@ -605,6 +677,18 @@ public abstract class AbstractShipmentReceiptMvoCommand extends AbstractCommand 
             this.isPropertyAttributeSetInstanceIdRemoved = removed;
         }
 
+        private Boolean isPropertyLocatorIdRemoved;
+
+        public Boolean getIsPropertyLocatorIdRemoved()
+        {
+            return this.isPropertyLocatorIdRemoved;
+        }
+
+        public void setIsPropertyLocatorIdRemoved(Boolean removed)
+        {
+            this.isPropertyLocatorIdRemoved = removed;
+        }
+
         private Boolean isPropertyShipmentItemSeqIdRemoved;
 
         public Boolean getIsPropertyShipmentItemSeqIdRemoved()
@@ -615,6 +699,66 @@ public abstract class AbstractShipmentReceiptMvoCommand extends AbstractCommand 
         public void setIsPropertyShipmentItemSeqIdRemoved(Boolean removed)
         {
             this.isPropertyShipmentItemSeqIdRemoved = removed;
+        }
+
+        private Boolean isPropertyShipmentPackageSeqIdRemoved;
+
+        public Boolean getIsPropertyShipmentPackageSeqIdRemoved()
+        {
+            return this.isPropertyShipmentPackageSeqIdRemoved;
+        }
+
+        public void setIsPropertyShipmentPackageSeqIdRemoved(Boolean removed)
+        {
+            this.isPropertyShipmentPackageSeqIdRemoved = removed;
+        }
+
+        private Boolean isPropertyOrderIdRemoved;
+
+        public Boolean getIsPropertyOrderIdRemoved()
+        {
+            return this.isPropertyOrderIdRemoved;
+        }
+
+        public void setIsPropertyOrderIdRemoved(Boolean removed)
+        {
+            this.isPropertyOrderIdRemoved = removed;
+        }
+
+        private Boolean isPropertyOrderItemSeqIdRemoved;
+
+        public Boolean getIsPropertyOrderItemSeqIdRemoved()
+        {
+            return this.isPropertyOrderItemSeqIdRemoved;
+        }
+
+        public void setIsPropertyOrderItemSeqIdRemoved(Boolean removed)
+        {
+            this.isPropertyOrderItemSeqIdRemoved = removed;
+        }
+
+        private Boolean isPropertyReturnIdRemoved;
+
+        public Boolean getIsPropertyReturnIdRemoved()
+        {
+            return this.isPropertyReturnIdRemoved;
+        }
+
+        public void setIsPropertyReturnIdRemoved(Boolean removed)
+        {
+            this.isPropertyReturnIdRemoved = removed;
+        }
+
+        private Boolean isPropertyReturnItemSeqIdRemoved;
+
+        public Boolean getIsPropertyReturnItemSeqIdRemoved()
+        {
+            return this.isPropertyReturnItemSeqIdRemoved;
+        }
+
+        public void setIsPropertyReturnItemSeqIdRemoved(Boolean removed)
+        {
+            this.isPropertyReturnItemSeqIdRemoved = removed;
         }
 
         private Boolean isPropertyRejectionReasonIdRemoved;
@@ -795,6 +939,18 @@ public abstract class AbstractShipmentReceiptMvoCommand extends AbstractCommand 
         public void setIsPropertyShipmentPrimaryReturnIdRemoved(Boolean removed)
         {
             this.isPropertyShipmentPrimaryReturnIdRemoved = removed;
+        }
+
+        private Boolean isPropertyShipmentPrimaryShipGroupSeqIdRemoved;
+
+        public Boolean getIsPropertyShipmentPrimaryShipGroupSeqIdRemoved()
+        {
+            return this.isPropertyShipmentPrimaryShipGroupSeqIdRemoved;
+        }
+
+        public void setIsPropertyShipmentPrimaryShipGroupSeqIdRemoved(Boolean removed)
+        {
+            this.isPropertyShipmentPrimaryShipGroupSeqIdRemoved = removed;
         }
 
         private Boolean isPropertyShipmentPicklistBinIdRemoved;
@@ -1035,18 +1191,6 @@ public abstract class AbstractShipmentReceiptMvoCommand extends AbstractCommand 
         public void setIsPropertyShipmentAddtlShippingChargeDescRemoved(Boolean removed)
         {
             this.isPropertyShipmentAddtlShippingChargeDescRemoved = removed;
-        }
-
-        private Boolean isPropertyShipmentShipperIdRemoved;
-
-        public Boolean getIsPropertyShipmentShipperIdRemoved()
-        {
-            return this.isPropertyShipmentShipperIdRemoved;
-        }
-
-        public void setIsPropertyShipmentShipperIdRemoved(Boolean removed)
-        {
-            this.isPropertyShipmentShipperIdRemoved = removed;
         }
 
         private Boolean isPropertyShipmentCreatedByRemoved;

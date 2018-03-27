@@ -36,13 +36,6 @@ namespace Dddml.Wms.Domain.Shipment
 			set { _quantity = value; } 
 		}
 
-		private decimal? _targetQuantity;
-
-		public virtual decimal? TargetQuantity { 
-			get { return this._targetQuantity; } 
-			set { _targetQuantity = value; } 
-		}
-
 		private string _shipmentContentDescription;
 
 		public virtual string ShipmentContentDescription { 
@@ -67,12 +60,11 @@ namespace Dddml.Wms.Domain.Shipment
 		{
 		}
 
-		public ImportingShipmentItem (string shipmentItemSeqId, string productId, decimal? quantity, decimal? targetQuantity, string shipmentContentDescription, IDictionary<string, object> attributeSetInstance)
+		public ImportingShipmentItem (string shipmentItemSeqId, string productId, decimal? quantity, string shipmentContentDescription, IDictionary<string, object> attributeSetInstance)
 		{
 			this._shipmentItemSeqId = shipmentItemSeqId;
 			this._productId = productId;
 			this._quantity = quantity;
-			this._targetQuantity = targetQuantity;
 			this._shipmentContentDescription = shipmentContentDescription;
 			this._attributeSetInstance = attributeSetInstance;
 
@@ -94,7 +86,6 @@ namespace Dddml.Wms.Domain.Shipment
 				&& Object.Equals (this.ShipmentItemSeqId, other.ShipmentItemSeqId)
 				&& Object.Equals (this.ProductId, other.ProductId)
 				&& Object.Equals (this.Quantity, other.Quantity)
-				&& Object.Equals (this.TargetQuantity, other.TargetQuantity)
 				&& Object.Equals (this.ShipmentContentDescription, other.ShipmentContentDescription)
 				&& Object.Equals (this.AttributeSetInstance, other.AttributeSetInstance)
 				;
@@ -111,9 +102,6 @@ namespace Dddml.Wms.Domain.Shipment
 			}
 			if (this.Quantity != null) {
 				hash += 13 * this.Quantity.GetHashCode ();
-			}
-			if (this.TargetQuantity != null) {
-				hash += 13 * this.TargetQuantity.GetHashCode ();
 			}
 			if (this.ShipmentContentDescription != null) {
 				hash += 13 * this.ShipmentContentDescription.GetHashCode ();
@@ -140,7 +128,6 @@ namespace Dddml.Wms.Domain.Shipment
                 + "ShipmentItemSeqId: " + this.ShipmentItemSeqId + ", "
                 + "ProductId: " + this.ProductId + ", "
                 + "Quantity: " + this.Quantity + ", "
-                + "TargetQuantity: " + this.TargetQuantity + ", "
                 + "ShipmentContentDescription: " + this.ShipmentContentDescription + ", "
                 + "AttributeSetInstance: " + this.AttributeSetInstance + ", "
                 ;

@@ -76,6 +76,12 @@ aggregates:
       
       OrderItems:
         itemType: OrderItem
+        
+      OrderRoles:
+        itemType: OrderRole
+      
+      OrderShipGroups:
+        itemType: OrderShipGroup
       
     references: {}
     
@@ -86,7 +92,39 @@ aggregates:
       # StateEventDatabaseTableName: ORDER_HEADER_STATE_EVENT
 
     entities:
-    
+      OrderRole:
+        id:
+          name: PartyRoleId
+          type: PartyRoleId
+          
+        properties: {}
+        
+        # references:
+          # RoleType:
+            # name: RoleType
+            # displayName: RoleType
+            # type: RoleType
+            # properties:
+            # - OrderRoleId.RoleTypeId
+        # reservedProperties: {}
+        # valueObjects:
+          # OrderRoleId:
+            # name: OrderRoleId
+            # properties:
+              # OrderId:
+                # name: OrderId
+                # columnName: ORDER_ID
+                # type: id-ne
+              # PartyId:
+                # name: PartyId
+                # columnName: PARTY_ID
+                # type: id-ne
+              # RoleTypeId:
+                # name: RoleTypeId
+                # columnName: ROLE_TYPE_ID
+                # type: id-ne
+
+                
       # -----------------------------------------
       OrderItem:
         id:
@@ -242,5 +280,110 @@ aggregates:
         # metadata: 
           # StateEventDatabaseTableName: ORDER_ITEM_STATE_EVENT
 
+
+      OrderShipGroup:
+        # old_name: OrderItemShipGroup
+        id:
+          # name: OrderItemShipGroupId
+          # type: OrderItemShipGroupId
+          name: ShipGroupSeqId
+          type: numeric
+          
+        properties:
+          ShipmentMethodTypeId:
+            type: id
+          SupplierPartyId:
+            type: id
+          VendorPartyId:
+            description: For use with multi-vendor stores, order will be split so that each ship group is associated with only one vendor (only if applicable)
+            type: id
+            
+          CarrierPartyId:
+            type: id
+            
+          CarrierRoleTypeId:
+            type: id
+            
+          FacilityId:
+            type: id
+          ContactMechId:
+            type: id
+            
+          TelecomContactMechId:
+            type: id
+            
+          TrackingNumber:
+            type: short-varchar
+            
+          ShippingInstructions:
+            type: long-varchar
+            
+          MaySplit:
+            type: indicator
+            
+          GiftMessage:
+            type: long-varchar
+            
+          IsGift:
+            type: indicator
+            
+          ShipAfterDate:
+            type: date-time
+            
+          ShipByDate:
+            type: date-time
+            
+          EstimatedShipDate:
+            type: date-time
+            
+          EstimatedDeliveryDate:
+            type: date-time
+            
+        # references:
+          # Facility:
+            # name: Facility
+            # displayName: Facility
+            # type: Facility
+            # properties:
+            # - FacilityId
+            # foreignKeyName: ORDER_ITSG_FAC
+          # ShipmentMethodType:
+            # name: ShipmentMethodType
+            # displayName: ShipmentMethodType
+            # type: ShipmentMethodType
+            # properties:
+            # - ShipmentMethodTypeId
+            # foreignKeyName: ORDER_ITSG_SHMTP
+          # ContactMechId:
+            # name: ContactMechId
+            # displayName: CONTACT-MECH-ID
+            # type: ContactMech
+            # properties:
+            # - ContactMechId
+            # foreignKeyName: ORDER_ITSG_CNTM
+          # TelecomContactMechId:
+            # name: TelecomContactMechId
+            # displayName: TELECOM-CONTACT-MECH-ID
+            # description: Telecom
+            # type: ContactMech
+            # properties:
+            # - TelecomContactMechId
+            # foreignKeyName: ORDER_ITSG_TCNT
+            
+        # reservedProperties: {}
+        
+        # valueObjects:
+          # OrderItemShipGroupId:
+            # name: OrderItemShipGroupId
+            # properties:
+              # OrderId:
+                # name: OrderId
+                # columnName: ORDER_ID
+                # type: id-ne
+              # ShipGroupSeqId:
+                # name: ShipGroupSeqId
+                # columnName: SHIP_GROUP_SEQ_ID
+                # type: id-ne
+                
           
       

@@ -14,7 +14,6 @@ public final class ShipmentItemMvoFilteringProperties
             "productId",
             "attributeSetInstanceId",
             "quantity",
-            "targetQuantity",
             "shipmentContentDescription",
             "version",
             "createdBy",
@@ -27,6 +26,7 @@ public final class ShipmentItemMvoFilteringProperties
             "shipmentStatusId",
             "shipmentPrimaryOrderId",
             "shipmentPrimaryReturnId",
+            "shipmentPrimaryShipGroupSeqId",
             "shipmentPicklistBinId",
             "shipmentEstimatedReadyDate",
             "shipmentEstimatedShipDate",
@@ -47,7 +47,6 @@ public final class ShipmentItemMvoFilteringProperties
             "shipmentPartyIdFrom",
             "shipmentAdditionalShippingCharge",
             "shipmentAddtlShippingChargeDesc",
-            "shipmentShipperId",
             "shipmentVersion",
             "shipmentCreatedBy",
             "shipmentCreatedAt",
@@ -62,7 +61,6 @@ public final class ShipmentItemMvoFilteringProperties
             "String",
             "String",
             "java.math.BigDecimal",
-            "java.math.BigDecimal",
             "String",
             "Long",
             "String",
@@ -75,6 +73,7 @@ public final class ShipmentItemMvoFilteringProperties
             "String",
             "String",
             "String",
+            "Long",
             "String",
             "java.sql.Timestamp",
             "java.sql.Timestamp",
@@ -94,7 +93,6 @@ public final class ShipmentItemMvoFilteringProperties
             "String",
             "String",
             "java.math.BigDecimal",
-            "String",
             "String",
             "Long",
             "String",
@@ -124,8 +122,6 @@ public final class ShipmentItemMvoFilteringProperties
         aliasMap.put("AttributeSetInstanceId", "attributeSetInstanceId");
         aliasMap.put("quantity", "quantity");
         aliasMap.put("Quantity", "quantity");
-        aliasMap.put("targetQuantity", "targetQuantity");
-        aliasMap.put("TargetQuantity", "targetQuantity");
         aliasMap.put("shipmentContentDescription", "shipmentContentDescription");
         aliasMap.put("ShipmentContentDescription", "shipmentContentDescription");
         aliasMap.put("version", "version");
@@ -150,6 +146,8 @@ public final class ShipmentItemMvoFilteringProperties
         aliasMap.put("ShipmentPrimaryOrderId", "shipmentPrimaryOrderId");
         aliasMap.put("shipmentPrimaryReturnId", "shipmentPrimaryReturnId");
         aliasMap.put("ShipmentPrimaryReturnId", "shipmentPrimaryReturnId");
+        aliasMap.put("shipmentPrimaryShipGroupSeqId", "shipmentPrimaryShipGroupSeqId");
+        aliasMap.put("ShipmentPrimaryShipGroupSeqId", "shipmentPrimaryShipGroupSeqId");
         aliasMap.put("shipmentPicklistBinId", "shipmentPicklistBinId");
         aliasMap.put("ShipmentPicklistBinId", "shipmentPicklistBinId");
         aliasMap.put("shipmentEstimatedReadyDate", "shipmentEstimatedReadyDate");
@@ -190,8 +188,6 @@ public final class ShipmentItemMvoFilteringProperties
         aliasMap.put("ShipmentAdditionalShippingCharge", "shipmentAdditionalShippingCharge");
         aliasMap.put("shipmentAddtlShippingChargeDesc", "shipmentAddtlShippingChargeDesc");
         aliasMap.put("ShipmentAddtlShippingChargeDesc", "shipmentAddtlShippingChargeDesc");
-        aliasMap.put("shipmentShipperId", "shipmentShipperId");
-        aliasMap.put("ShipmentShipperId", "shipmentShipperId");
         aliasMap.put("shipmentVersion", "shipmentVersion");
         aliasMap.put("ShipmentVersion", "shipmentVersion");
         aliasMap.put("shipmentCreatedBy", "shipmentCreatedBy");

@@ -16,7 +16,13 @@
 
 	<property name="productId" ><column name="ProductId" sql-type="VARCHAR(60)" /></property>
 	<property name="attributeSetInstanceId" ></property>
+	<property name="locatorId" ></property>
 	<property name="shipmentItemSeqId" ><column name="ShipmentItemSeqId" sql-type="VARCHAR(20)" /></property>
+	<property name="shipmentPackageSeqId" ><column name="ShipmentPackageSeqId" sql-type="VARCHAR(20)" /></property>
+	<property name="orderId" ><column name="OrderId" sql-type="VARCHAR(20)" /></property>
+	<property name="orderItemSeqId" ><column name="OrderItemSeqId" sql-type="VARCHAR(20)" /></property>
+	<property name="returnId" ><column name="ReturnId" sql-type="VARCHAR(20)" /></property>
+	<property name="returnItemSeqId" ><column name="ReturnItemSeqId" sql-type="VARCHAR(20)" /></property>
 	<property name="rejectionReasonId" ><column name="RejectionReasonId" sql-type="VARCHAR(60)" /></property>
 	<property name="damageStatusId" ><column name="DamageStatusId" sql-type="VARCHAR(20)" /></property>
 	<property name="damageReasonId" ><column name="DamageReasonId" sql-type="VARCHAR(60)" /></property>

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+				   assembly="Dddml.Wms.Common" 
+				   namespace="Dddml.Wms.Domain.ContactMech">
+  
+  <class name="Dddml.Wms.Domain.ContactMech.ContactMechState" table="ContactMeches">
+
+	<id name="ContactMechId" length="20" column="ContactMechId"><generator class="assigned"/></id>
+
+	<version name="Version" column="Version" type="long" unsaved-value="0"/>
+
+    <property name="ContactMechTypeId" ><column name="ContactMechTypeId" sql-type="VARCHAR(20)" /></property>
+    <property name="InfoString" ><column name="InfoString" sql-type="VARCHAR(255)" /></property>
+    <property name="ToName" ><column name="ToName" sql-type="VARCHAR(100)" /></property>
+    <property name="AttnName" ><column name="AttnName" sql-type="VARCHAR(100)" /></property>
+    <property name="Address1" ><column name="Address1" sql-type="VARCHAR(255)" /></property>
+    <property name="Address2" ><column name="Address2" sql-type="VARCHAR(255)" /></property>
+    <property name="Directions" ><column name="Directions" sql-type="VARCHAR(255)" /></property>
+    <property name="City" ><column name="City" sql-type="VARCHAR(100)" /></property>
+    <property name="PostalCode" ><column name="PostalCode" sql-type="VARCHAR(60)" /></property>
+    <property name="PostalCodeExt" ><column name="PostalCodeExt" sql-type="VARCHAR(60)" /></property>
+    <property name="CountryGeoId" ><column name="CountryGeoId" sql-type="VARCHAR(20)" /></property>
+    <property name="StateProvinceGeoId" ><column name="StateProvinceGeoId" sql-type="VARCHAR(20)" /></property>
+    <property name="CountyGeoId" ><column name="CountyGeoId" sql-type="VARCHAR(20)" /></property>
+    <property name="PostalCodeGeoId" ><column name="PostalCodeGeoId" sql-type="VARCHAR(20)" /></property>
+    <property name="GeoPointId" ><column name="GeoPointId" sql-type="VARCHAR(20)" /></property>
+    <property name="CountryCode" ><column name="CountryCode" sql-type="VARCHAR(10)" /></property>
+    <property name="AreaCode" ><column name="AreaCode" sql-type="VARCHAR(10)" /></property>
+    <property name="ContactNumber" ><column name="ContactNumber" sql-type="VARCHAR(60)" /></property>
+    <property name="AskForName" ><column name="AskForName" sql-type="VARCHAR(100)" /></property>
+    <property name="CreatedBy" ></property>
+    <property name="UpdatedBy" ></property>
+    <property name="Active" ></property>
+    <property name="Deleted" ></property>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+
+    <property name="UpdatedAt" column="UpdatedAt" type="DateTimeUtc"/>
+
+
+  </class>
+  
+</hibernate-mapping>
+

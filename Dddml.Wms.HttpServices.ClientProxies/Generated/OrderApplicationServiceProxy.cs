@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.Order;
+using Dddml.Wms.Domain.PartyRole;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -284,6 +285,23 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetHistoryStateAsync(orderId, version).GetAwaiter().GetResult();
         }
 
+        public async virtual Task<IOrderRoleState> GetOrderRoleAsync(string orderId, PartyRoleId partyRoleId)
+        {
+            var uriParameters = new OrderRoleUriParameters();
+            uriParameters.OrderId = orderId;
+            uriParameters.PartyRoleId = ((new ValueObjectTextFormatter<PartyRoleId>())).ToString(partyRoleId);
+
+            var req = new OrderRoleGetRequest(uriParameters);
+            var resp = await _ramlClient.OrderRole.Get(req);
+            OrderProxyUtils.ThrowOnHttpResponseError(resp);
+            return (resp.Content == null) ? null : resp.Content.ToOrderRoleState();
+        }
+
+        public virtual IOrderRoleState GetOrderRole(string orderId, PartyRoleId partyRoleId)
+        {
+            return GetOrderRoleAsync(orderId, partyRoleId).GetAwaiter().GetResult();
+        }
+
         public async virtual Task<IOrderItemState> GetOrderItemAsync(string orderId, string orderItemSeqId)
         {
             var uriParameters = new OrderItemUriParameters();
@@ -299,6 +317,23 @@ namespace Dddml.Wms.HttpServices.ClientProxies
         public virtual IOrderItemState GetOrderItem(string orderId, string orderItemSeqId)
         {
             return GetOrderItemAsync(orderId, orderItemSeqId).GetAwaiter().GetResult();
+        }
+
+        public async virtual Task<IOrderShipGroupState> GetOrderShipGroupAsync(string orderId, long? shipGroupSeqId)
+        {
+            var uriParameters = new OrderShipGroupUriParameters();
+            uriParameters.OrderId = orderId;
+            uriParameters.ShipGroupSeqId = shipGroupSeqId;
+
+            var req = new OrderShipGroupGetRequest(uriParameters);
+            var resp = await _ramlClient.OrderShipGroup.Get(req);
+            OrderProxyUtils.ThrowOnHttpResponseError(resp);
+            return (resp.Content == null) ? null : resp.Content.ToOrderShipGroupState();
+        }
+
+        public virtual IOrderShipGroupState GetOrderShipGroup(string orderId, long? shipGroupSeqId)
+        {
+            return GetOrderShipGroupAsync(orderId, shipGroupSeqId).GetAwaiter().GetResult();
         }
 
 

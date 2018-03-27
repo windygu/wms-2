@@ -148,6 +148,21 @@ namespace Dddml.Wms.Domain.Shipment
         }
 
 
+        private IItemIssuanceStates _itemIssuances;
+      
+        public virtual IItemIssuanceStates ItemIssuances
+        {
+            get
+            {
+                return this._itemIssuances;
+            }
+            set
+            {
+                this._itemIssuances = value;
+            }
+        }
+
+
         public virtual bool StateReadOnly { get; set; }
 
         bool IState.ReadOnly
@@ -188,6 +203,8 @@ namespace Dddml.Wms.Domain.Shipment
 
             _shipmentReceipts = new ShipmentReceiptStates(this);
 
+            _itemIssuances = new ItemIssuanceStates(this);
+
             InitializeProperties();
         }
 
@@ -199,6 +216,8 @@ namespace Dddml.Wms.Domain.Shipment
             _shipmentItems.Save();
 
             _shipmentReceipts.Save();
+
+            _itemIssuances.Save();
 
         }
 
@@ -216,6 +235,8 @@ namespace Dddml.Wms.Domain.Shipment
 			this.PrimaryOrderId = e.PrimaryOrderId;
 
 			this.PrimaryReturnId = e.PrimaryReturnId;
+
+			this.PrimaryShipGroupSeqId = e.PrimaryShipGroupSeqId;
 
 			this.PicklistBinId = e.PicklistBinId;
 
@@ -257,8 +278,6 @@ namespace Dddml.Wms.Domain.Shipment
 
 			this.AddtlShippingChargeDesc = e.AddtlShippingChargeDesc;
 
-			this.ShipperId = e.ShipperId;
-
             this.Active = (e.Active != null && e.Active.HasValue) ? e.Active.Value : default(bool);
 
 			this.CreatedBy = e.CreatedBy;
@@ -270,6 +289,10 @@ namespace Dddml.Wms.Domain.Shipment
 			}
 			foreach (IShipmentReceiptStateCreated innerEvent in e.ShipmentReceiptEvents) {
 				IShipmentReceiptState innerState = this.ShipmentReceipts.Get(innerEvent.GlobalId.ReceiptSeqId, true);
+				innerState.Mutate (innerEvent);
+			}
+			foreach (IItemIssuanceStateCreated innerEvent in e.ItemIssuanceEvents) {
+				IItemIssuanceState innerState = this.ItemIssuances.Get(innerEvent.GlobalId.ItemIssuanceSeqId, true);
 				innerState.Mutate (innerEvent);
 			}
 
@@ -326,6 +349,18 @@ namespace Dddml.Wms.Domain.Shipment
 			else
 			{
 				this.PrimaryReturnId = e.PrimaryReturnId;
+			}
+
+			if (e.PrimaryShipGroupSeqId == null)
+			{
+				if (e.IsPropertyPrimaryShipGroupSeqIdRemoved)
+				{
+					this.PrimaryShipGroupSeqId = default(long?);
+				}
+			}
+			else
+			{
+				this.PrimaryShipGroupSeqId = e.PrimaryShipGroupSeqId;
 			}
 
 			if (e.PicklistBinId == null)
@@ -568,18 +603,6 @@ namespace Dddml.Wms.Domain.Shipment
 				this.AddtlShippingChargeDesc = e.AddtlShippingChargeDesc;
 			}
 
-			if (e.ShipperId == null)
-			{
-				if (e.IsPropertyShipperIdRemoved)
-				{
-					this.ShipperId = default(string);
-				}
-			}
-			else
-			{
-				this.ShipperId = e.ShipperId;
-			}
-
 			if (e.Active == null)
 			{
 				if (e.IsPropertyActiveRemoved)
@@ -610,6 +633,19 @@ namespace Dddml.Wms.Domain.Shipment
                 IShipmentReceiptState innerState = this.ShipmentReceipts.Get(innerEvent.GlobalId.ReceiptSeqId);
 
                 innerState.Mutate(innerEvent);
+          
+            }
+
+			foreach (IItemIssuanceStateEvent innerEvent in e.ItemIssuanceEvents)
+            {
+                IItemIssuanceState innerState = this.ItemIssuances.Get(innerEvent.GlobalId.ItemIssuanceSeqId);
+
+                innerState.Mutate(innerEvent);
+                var removed = innerEvent as IItemIssuanceStateRemoved;
+                if (removed != null)
+                {
+                    this.ItemIssuances.Remove(innerState);
+                }
           
             }
 

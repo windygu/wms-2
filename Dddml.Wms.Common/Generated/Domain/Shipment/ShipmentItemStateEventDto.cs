@@ -42,8 +42,6 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual decimal? Quantity { get; set; }
 
-		public virtual decimal? TargetQuantity { get; set; }
-
 		public virtual string ShipmentContentDescription { get; set; }
 
 		public virtual bool? Active { get; set; }
@@ -133,25 +131,6 @@ namespace Dddml.Wms.Domain.Shipment
             set 
             {
                 this.IsPropertyQuantityRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyTargetQuantityRemoved { get; set; }
-
-        bool IShipmentItemStateMergePatched.IsPropertyTargetQuantityRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyTargetQuantityRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyTargetQuantityRemoved = value;
             }
         }
 

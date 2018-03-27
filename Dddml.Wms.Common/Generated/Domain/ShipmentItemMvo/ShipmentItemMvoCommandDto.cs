@@ -60,8 +60,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 
 		public virtual decimal? Quantity { get; set; }
 
-		public virtual decimal? TargetQuantity { get; set; }
-
 		public virtual string ShipmentContentDescription { get; set; }
 
 		public virtual long? Version { get; set; }
@@ -75,6 +73,8 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 		public virtual string ShipmentPrimaryOrderId { get; set; }
 
 		public virtual string ShipmentPrimaryReturnId { get; set; }
+
+		public virtual long? ShipmentPrimaryShipGroupSeqId { get; set; }
 
 		public virtual string ShipmentPicklistBinId { get; set; }
 
@@ -115,8 +115,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 		public virtual decimal? ShipmentAdditionalShippingCharge { get; set; }
 
 		public virtual string ShipmentAddtlShippingChargeDesc { get; set; }
-
-		public virtual string ShipmentShipperId { get; set; }
 
 		public virtual string ShipmentCreatedBy { get; set; }
 
@@ -182,25 +180,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             set
             {
                 this.IsPropertyQuantityRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyTargetQuantityRemoved { get; set; }
-
-        bool IMergePatchShipmentItemMvo.IsPropertyTargetQuantityRemoved
-        {
-            get
-            {
-                var b = this.IsPropertyTargetQuantityRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return false;
-            }
-            set
-            {
-                this.IsPropertyTargetQuantityRemoved = value;
             }
         }
 
@@ -334,6 +313,25 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             set
             {
                 this.IsPropertyShipmentPrimaryReturnIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyShipmentPrimaryShipGroupSeqIdRemoved { get; set; }
+
+        bool IMergePatchShipmentItemMvo.IsPropertyShipmentPrimaryShipGroupSeqIdRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyShipmentPrimaryShipGroupSeqIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyShipmentPrimaryShipGroupSeqIdRemoved = value;
             }
         }
 
@@ -714,25 +712,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             set
             {
                 this.IsPropertyShipmentAddtlShippingChargeDescRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyShipmentShipperIdRemoved { get; set; }
-
-        bool IMergePatchShipmentItemMvo.IsPropertyShipmentShipperIdRemoved
-        {
-            get
-            {
-                var b = this.IsPropertyShipmentShipperIdRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return false;
-            }
-            set
-            {
-                this.IsPropertyShipmentShipperIdRemoved = value;
             }
         }
 

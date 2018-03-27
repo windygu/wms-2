@@ -338,6 +338,56 @@ CREATE VIEW `MovementConfirmationLine_RV` AS
         );
 
 
+CREATE VIEW `OrderRole_RV` AS
+    SELECT 
+        `OrderRoles`.`OrderRoleIdOrderId`,
+        `OrderRoles`.`OrderRoleIdPartyRoleIdPartyId`,
+        `OrderRoles`.`OrderRoleIdPartyRoleIdRoleTypeId`,
+        `OrderRoles`.`Version`,
+        `OrderRoles`.`CreatedBy`,
+        `OrderRoles`.`CreatedAt`,
+        `OrderRoles`.`UpdatedBy`,
+        `OrderRoles`.`UpdatedAt`,
+        `OrderRoles`.`Active`,
+        `OrderRoles`.`Deleted`,
+        `Orders`.`OrderTypeId` AS `OrderOrderTypeId`,
+        `Orders`.`OrderName` AS `OrderOrderName`,
+        `Orders`.`ExternalId` AS `OrderExternalId`,
+        `Orders`.`SalesChannelEnumId` AS `OrderSalesChannelEnumId`,
+        `Orders`.`OrderDate` AS `OrderOrderDate`,
+        `Orders`.`Priority` AS `OrderPriority`,
+        `Orders`.`EntryDate` AS `OrderEntryDate`,
+        `Orders`.`PickSheetPrintedDate` AS `OrderPickSheetPrintedDate`,
+        `Orders`.`StatusId` AS `OrderStatusId`,
+        `Orders`.`CurrencyUom` AS `OrderCurrencyUom`,
+        `Orders`.`SyncStatusId` AS `OrderSyncStatusId`,
+        `Orders`.`BillingAccountId` AS `OrderBillingAccountId`,
+        `Orders`.`OriginFacilityId` AS `OrderOriginFacilityId`,
+        `Orders`.`WebSiteId` AS `OrderWebSiteId`,
+        `Orders`.`ProductStoreId` AS `OrderProductStoreId`,
+        `Orders`.`TerminalId` AS `OrderTerminalId`,
+        `Orders`.`TransactionId` AS `OrderTransactionId`,
+        `Orders`.`AutoOrderShoppingListId` AS `OrderAutoOrderShoppingListId`,
+        `Orders`.`NeedsInventoryIssuance` AS `OrderNeedsInventoryIssuance`,
+        `Orders`.`IsRushOrder` AS `OrderIsRushOrder`,
+        `Orders`.`InternalCode` AS `OrderInternalCode`,
+        `Orders`.`RemainingSubTotal` AS `OrderRemainingSubTotal`,
+        `Orders`.`GrandTotal` AS `OrderGrandTotal`,
+        `Orders`.`InvoicePerShipment` AS `OrderInvoicePerShipment`,
+        `Orders`.`Version` AS `OrderVersion`,
+        `Orders`.`CreatedBy` AS `OrderCreatedBy`,
+        `Orders`.`CreatedAt` AS `OrderCreatedAt`,
+        `Orders`.`UpdatedBy` AS `OrderUpdatedBy`,
+        `Orders`.`UpdatedAt` AS `OrderUpdatedAt`,
+        `Orders`.`Active` AS `OrderActive`
+    FROM
+        (`OrderRoles`
+            JOIN `Orders` ON ( 1=1 
+                and (`OrderRoles`.`OrderRoleIdOrderId` = `Orders`.`OrderId`)
+            )
+        );
+
+
 CREATE VIEW `OrderItem_RV` AS
     SELECT 
         `OrderItems`.`OrderItemIdOrderId`,
@@ -421,6 +471,72 @@ CREATE VIEW `OrderItem_RV` AS
         );
 
 
+CREATE VIEW `OrderShipGroup_RV` AS
+    SELECT 
+        `OrderShipGroups`.`OrderShipGroupIdOrderId`,
+        `OrderShipGroups`.`OrderShipGroupIdShipGroupSeqId`,
+        `OrderShipGroups`.`ShipmentMethodTypeId`,
+        `OrderShipGroups`.`SupplierPartyId`,
+        `OrderShipGroups`.`VendorPartyId`,
+        `OrderShipGroups`.`CarrierPartyId`,
+        `OrderShipGroups`.`CarrierRoleTypeId`,
+        `OrderShipGroups`.`FacilityId`,
+        `OrderShipGroups`.`ContactMechId`,
+        `OrderShipGroups`.`TelecomContactMechId`,
+        `OrderShipGroups`.`TrackingNumber`,
+        `OrderShipGroups`.`ShippingInstructions`,
+        `OrderShipGroups`.`MaySplit`,
+        `OrderShipGroups`.`GiftMessage`,
+        `OrderShipGroups`.`IsGift`,
+        `OrderShipGroups`.`ShipAfterDate`,
+        `OrderShipGroups`.`ShipByDate`,
+        `OrderShipGroups`.`EstimatedShipDate`,
+        `OrderShipGroups`.`EstimatedDeliveryDate`,
+        `OrderShipGroups`.`Version`,
+        `OrderShipGroups`.`CreatedBy`,
+        `OrderShipGroups`.`CreatedAt`,
+        `OrderShipGroups`.`UpdatedBy`,
+        `OrderShipGroups`.`UpdatedAt`,
+        `OrderShipGroups`.`Active`,
+        `OrderShipGroups`.`Deleted`,
+        `Orders`.`OrderTypeId` AS `OrderOrderTypeId`,
+        `Orders`.`OrderName` AS `OrderOrderName`,
+        `Orders`.`ExternalId` AS `OrderExternalId`,
+        `Orders`.`SalesChannelEnumId` AS `OrderSalesChannelEnumId`,
+        `Orders`.`OrderDate` AS `OrderOrderDate`,
+        `Orders`.`Priority` AS `OrderPriority`,
+        `Orders`.`EntryDate` AS `OrderEntryDate`,
+        `Orders`.`PickSheetPrintedDate` AS `OrderPickSheetPrintedDate`,
+        `Orders`.`StatusId` AS `OrderStatusId`,
+        `Orders`.`CurrencyUom` AS `OrderCurrencyUom`,
+        `Orders`.`SyncStatusId` AS `OrderSyncStatusId`,
+        `Orders`.`BillingAccountId` AS `OrderBillingAccountId`,
+        `Orders`.`OriginFacilityId` AS `OrderOriginFacilityId`,
+        `Orders`.`WebSiteId` AS `OrderWebSiteId`,
+        `Orders`.`ProductStoreId` AS `OrderProductStoreId`,
+        `Orders`.`TerminalId` AS `OrderTerminalId`,
+        `Orders`.`TransactionId` AS `OrderTransactionId`,
+        `Orders`.`AutoOrderShoppingListId` AS `OrderAutoOrderShoppingListId`,
+        `Orders`.`NeedsInventoryIssuance` AS `OrderNeedsInventoryIssuance`,
+        `Orders`.`IsRushOrder` AS `OrderIsRushOrder`,
+        `Orders`.`InternalCode` AS `OrderInternalCode`,
+        `Orders`.`RemainingSubTotal` AS `OrderRemainingSubTotal`,
+        `Orders`.`GrandTotal` AS `OrderGrandTotal`,
+        `Orders`.`InvoicePerShipment` AS `OrderInvoicePerShipment`,
+        `Orders`.`Version` AS `OrderVersion`,
+        `Orders`.`CreatedBy` AS `OrderCreatedBy`,
+        `Orders`.`CreatedAt` AS `OrderCreatedAt`,
+        `Orders`.`UpdatedBy` AS `OrderUpdatedBy`,
+        `Orders`.`UpdatedAt` AS `OrderUpdatedAt`,
+        `Orders`.`Active` AS `OrderActive`
+    FROM
+        (`OrderShipGroups`
+            JOIN `Orders` ON ( 1=1 
+                and (`OrderShipGroups`.`OrderShipGroupIdOrderId` = `Orders`.`OrderId`)
+            )
+        );
+
+
 CREATE VIEW `PhysicalInventoryLine_RV` AS
     SELECT 
         `PhysicalInventoryLines`.`PhysicalInventoryLineIdPhysicalInventoryDocumentNumber`,
@@ -467,6 +583,75 @@ CREATE VIEW `PhysicalInventoryLine_RV` AS
         );
 
 
+CREATE VIEW `PicklistRole_RV` AS
+    SELECT 
+        `PicklistRoles`.`PicklistRoleIdPicklistId`,
+        `PicklistRoles`.`PicklistRoleIdPartyRoleIdPartyId`,
+        `PicklistRoles`.`PicklistRoleIdPartyRoleIdRoleTypeId`,
+        `PicklistRoles`.`CreatedByUserLogin`,
+        `PicklistRoles`.`LastModifiedByUserLogin`,
+        `PicklistRoles`.`Version`,
+        `PicklistRoles`.`CreatedAt`,
+        `PicklistRoles`.`UpdatedAt`,
+        `PicklistRoles`.`Active`,
+        `PicklistRoles`.`Deleted`,
+        `Picklists`.`Description` AS `PicklistDescription`,
+        `Picklists`.`FacilityId` AS `PicklistFacilityId`,
+        `Picklists`.`ShipmentMethodTypeId` AS `PicklistShipmentMethodTypeId`,
+        `Picklists`.`StatusId` AS `PicklistStatusId`,
+        `Picklists`.`PicklistDate` AS `PicklistPicklistDate`,
+        `Picklists`.`CreatedByUserLogin` AS `PicklistCreatedByUserLogin`,
+        `Picklists`.`LastModifiedByUserLogin` AS `PicklistLastModifiedByUserLogin`,
+        `Picklists`.`Version` AS `PicklistVersion`,
+        `Picklists`.`CreatedAt` AS `PicklistCreatedAt`,
+        `Picklists`.`UpdatedAt` AS `PicklistUpdatedAt`,
+        `Picklists`.`Active` AS `PicklistActive`,
+        `Picklists`.`Deleted` AS `PicklistDeleted`
+    FROM
+        (`PicklistRoles`
+            JOIN `Picklists` ON ( 1=1 
+                and (`PicklistRoles`.`PicklistRoleIdPicklistId` = `Picklists`.`PicklistId`)
+            )
+        );
+
+
+CREATE VIEW `PicklistItem_RV` AS
+    SELECT 
+        `PicklistItems`.`PicklistBinId`,
+        `PicklistItems`.`OrderId`,
+        `PicklistItems`.`OrderItemSeqId`,
+        `PicklistItems`.`ShipGroupSeqId`,
+        `PicklistItems`.`ProductId`,
+        `PicklistItems`.`LocatorId`,
+        `PicklistItems`.`AttributeSetInstanceId`,
+        `PicklistItems`.`ItemStatusId`,
+        `PicklistItems`.`Quantity`,
+        `PicklistItems`.`Version`,
+        `PicklistItems`.`CreatedBy`,
+        `PicklistItems`.`CreatedAt`,
+        `PicklistItems`.`UpdatedBy`,
+        `PicklistItems`.`UpdatedAt`,
+        `PicklistItems`.`Active`,
+        `PicklistItems`.`Deleted`,
+        `PicklistBins`.`PicklistId` AS `PicklistBinPicklistId`,
+        `PicklistBins`.`BinLocationNumber` AS `PicklistBinBinLocationNumber`,
+        `PicklistBins`.`PrimaryOrderId` AS `PicklistBinPrimaryOrderId`,
+        `PicklistBins`.`PrimaryShipGroupSeqId` AS `PicklistBinPrimaryShipGroupSeqId`,
+        `PicklistBins`.`Version` AS `PicklistBinVersion`,
+        `PicklistBins`.`CreatedBy` AS `PicklistBinCreatedBy`,
+        `PicklistBins`.`CreatedAt` AS `PicklistBinCreatedAt`,
+        `PicklistBins`.`UpdatedBy` AS `PicklistBinUpdatedBy`,
+        `PicklistBins`.`UpdatedAt` AS `PicklistBinUpdatedAt`,
+        `PicklistBins`.`Active` AS `PicklistBinActive`,
+        `PicklistBins`.`Deleted` AS `PicklistBinDeleted`
+    FROM
+        (`PicklistItems`
+            JOIN `PicklistBins` ON ( 1=1 
+                and (`PicklistItems`.`PicklistBinId` = `PicklistBins`.`PicklistBinId`)
+            )
+        );
+
+
 CREATE VIEW `SellableInventoryItemEntry_RV` AS
     SELECT 
         `SellableInventoryItemEntries`.`ProductId`,
@@ -507,7 +692,6 @@ CREATE VIEW `ShipmentItem_RV` AS
         `ShipmentItems`.`ProductId`,
         `ShipmentItems`.`AttributeSetInstanceId`,
         `ShipmentItems`.`Quantity`,
-        `ShipmentItems`.`TargetQuantity`,
         `ShipmentItems`.`ShipmentContentDescription`,
         `ShipmentItems`.`Version`,
         `ShipmentItems`.`CreatedBy`,
@@ -519,6 +703,7 @@ CREATE VIEW `ShipmentItem_RV` AS
         `Shipments`.`StatusId` AS `ShipmentStatusId`,
         `Shipments`.`PrimaryOrderId` AS `ShipmentPrimaryOrderId`,
         `Shipments`.`PrimaryReturnId` AS `ShipmentPrimaryReturnId`,
+        `Shipments`.`PrimaryShipGroupSeqId` AS `ShipmentPrimaryShipGroupSeqId`,
         `Shipments`.`PicklistBinId` AS `ShipmentPicklistBinId`,
         `Shipments`.`EstimatedReadyDate` AS `ShipmentEstimatedReadyDate`,
         `Shipments`.`EstimatedShipDate` AS `ShipmentEstimatedShipDate`,
@@ -539,7 +724,6 @@ CREATE VIEW `ShipmentItem_RV` AS
         `Shipments`.`PartyIdFrom` AS `ShipmentPartyIdFrom`,
         `Shipments`.`AdditionalShippingCharge` AS `ShipmentAdditionalShippingCharge`,
         `Shipments`.`AddtlShippingChargeDesc` AS `ShipmentAddtlShippingChargeDesc`,
-        `Shipments`.`ShipperId` AS `ShipmentShipperId`,
         `Shipments`.`Version` AS `ShipmentVersion`,
         `Shipments`.`CreatedBy` AS `ShipmentCreatedBy`,
         `Shipments`.`CreatedAt` AS `ShipmentCreatedAt`,
@@ -560,7 +744,13 @@ CREATE VIEW `ShipmentReceipt_RV` AS
         `ShipmentReceipts`.`ShipmentReceiptIdReceiptSeqId`,
         `ShipmentReceipts`.`ProductId`,
         `ShipmentReceipts`.`AttributeSetInstanceId`,
+        `ShipmentReceipts`.`LocatorId`,
         `ShipmentReceipts`.`ShipmentItemSeqId`,
+        `ShipmentReceipts`.`ShipmentPackageSeqId`,
+        `ShipmentReceipts`.`OrderId`,
+        `ShipmentReceipts`.`OrderItemSeqId`,
+        `ShipmentReceipts`.`ReturnId`,
+        `ShipmentReceipts`.`ReturnItemSeqId`,
         `ShipmentReceipts`.`RejectionReasonId`,
         `ShipmentReceipts`.`DamageStatusId`,
         `ShipmentReceipts`.`DamageReasonId`,
@@ -580,6 +770,7 @@ CREATE VIEW `ShipmentReceipt_RV` AS
         `Shipments`.`StatusId` AS `ShipmentStatusId`,
         `Shipments`.`PrimaryOrderId` AS `ShipmentPrimaryOrderId`,
         `Shipments`.`PrimaryReturnId` AS `ShipmentPrimaryReturnId`,
+        `Shipments`.`PrimaryShipGroupSeqId` AS `ShipmentPrimaryShipGroupSeqId`,
         `Shipments`.`PicklistBinId` AS `ShipmentPicklistBinId`,
         `Shipments`.`EstimatedReadyDate` AS `ShipmentEstimatedReadyDate`,
         `Shipments`.`EstimatedShipDate` AS `ShipmentEstimatedShipDate`,
@@ -600,7 +791,6 @@ CREATE VIEW `ShipmentReceipt_RV` AS
         `Shipments`.`PartyIdFrom` AS `ShipmentPartyIdFrom`,
         `Shipments`.`AdditionalShippingCharge` AS `ShipmentAdditionalShippingCharge`,
         `Shipments`.`AddtlShippingChargeDesc` AS `ShipmentAddtlShippingChargeDesc`,
-        `Shipments`.`ShipperId` AS `ShipmentShipperId`,
         `Shipments`.`Version` AS `ShipmentVersion`,
         `Shipments`.`CreatedBy` AS `ShipmentCreatedBy`,
         `Shipments`.`CreatedAt` AS `ShipmentCreatedAt`,
@@ -611,6 +801,109 @@ CREATE VIEW `ShipmentReceipt_RV` AS
         (`ShipmentReceipts`
             JOIN `Shipments` ON ( 1=1 
                 and (`ShipmentReceipts`.`ShipmentReceiptIdShipmentId` = `Shipments`.`ShipmentId`)
+            )
+        );
+
+
+CREATE VIEW `ItemIssuance_RV` AS
+    SELECT 
+        `ItemIssuances`.`ShipmentItemIssuanceIdShipmentId`,
+        `ItemIssuances`.`ShipmentItemIssuanceIdItemIssuanceSeqId`,
+        `ItemIssuances`.`OrderId`,
+        `ItemIssuances`.`OrderItemSeqId`,
+        `ItemIssuances`.`ShipGroupSeqId`,
+        `ItemIssuances`.`ProductId`,
+        `ItemIssuances`.`LocatorId`,
+        `ItemIssuances`.`AttributeSetInstanceId`,
+        `ItemIssuances`.`ShipmentItemSeqId`,
+        `ItemIssuances`.`FixedAssetId`,
+        `ItemIssuances`.`MaintHistSeqId`,
+        `ItemIssuances`.`IssuedDateTime`,
+        `ItemIssuances`.`IssuedByUserLoginId`,
+        `ItemIssuances`.`Quantity`,
+        `ItemIssuances`.`CancelQuantity`,
+        `ItemIssuances`.`Version`,
+        `ItemIssuances`.`CreatedBy`,
+        `ItemIssuances`.`CreatedAt`,
+        `ItemIssuances`.`UpdatedBy`,
+        `ItemIssuances`.`UpdatedAt`,
+        `ItemIssuances`.`Active`,
+        `ItemIssuances`.`Deleted`,
+        `Shipments`.`ShipmentTypeId` AS `ShipmentShipmentTypeId`,
+        `Shipments`.`StatusId` AS `ShipmentStatusId`,
+        `Shipments`.`PrimaryOrderId` AS `ShipmentPrimaryOrderId`,
+        `Shipments`.`PrimaryReturnId` AS `ShipmentPrimaryReturnId`,
+        `Shipments`.`PrimaryShipGroupSeqId` AS `ShipmentPrimaryShipGroupSeqId`,
+        `Shipments`.`PicklistBinId` AS `ShipmentPicklistBinId`,
+        `Shipments`.`EstimatedReadyDate` AS `ShipmentEstimatedReadyDate`,
+        `Shipments`.`EstimatedShipDate` AS `ShipmentEstimatedShipDate`,
+        `Shipments`.`EstimatedShipWorkEffId` AS `ShipmentEstimatedShipWorkEffId`,
+        `Shipments`.`EstimatedArrivalDate` AS `ShipmentEstimatedArrivalDate`,
+        `Shipments`.`EstimatedArrivalWorkEffId` AS `ShipmentEstimatedArrivalWorkEffId`,
+        `Shipments`.`LatestCancelDate` AS `ShipmentLatestCancelDate`,
+        `Shipments`.`EstimatedShipCost` AS `ShipmentEstimatedShipCost`,
+        `Shipments`.`CurrencyUomId` AS `ShipmentCurrencyUomId`,
+        `Shipments`.`HandlingInstructions` AS `ShipmentHandlingInstructions`,
+        `Shipments`.`OriginFacilityId` AS `ShipmentOriginFacilityId`,
+        `Shipments`.`DestinationFacilityId` AS `ShipmentDestinationFacilityId`,
+        `Shipments`.`OriginContactMechId` AS `ShipmentOriginContactMechId`,
+        `Shipments`.`OriginTelecomNumberId` AS `ShipmentOriginTelecomNumberId`,
+        `Shipments`.`DestinationContactMechId` AS `ShipmentDestinationContactMechId`,
+        `Shipments`.`DestinationTelecomNumberId` AS `ShipmentDestinationTelecomNumberId`,
+        `Shipments`.`PartyIdTo` AS `ShipmentPartyIdTo`,
+        `Shipments`.`PartyIdFrom` AS `ShipmentPartyIdFrom`,
+        `Shipments`.`AdditionalShippingCharge` AS `ShipmentAdditionalShippingCharge`,
+        `Shipments`.`AddtlShippingChargeDesc` AS `ShipmentAddtlShippingChargeDesc`,
+        `Shipments`.`Version` AS `ShipmentVersion`,
+        `Shipments`.`CreatedBy` AS `ShipmentCreatedBy`,
+        `Shipments`.`CreatedAt` AS `ShipmentCreatedAt`,
+        `Shipments`.`UpdatedBy` AS `ShipmentUpdatedBy`,
+        `Shipments`.`UpdatedAt` AS `ShipmentUpdatedAt`,
+        `Shipments`.`Active` AS `ShipmentActive`
+    FROM
+        (`ItemIssuances`
+            JOIN `Shipments` ON ( 1=1 
+                and (`ItemIssuances`.`ShipmentItemIssuanceIdShipmentId` = `Shipments`.`ShipmentId`)
+            )
+        );
+
+
+CREATE VIEW `ShipmentPackageContent_RV` AS
+    SELECT 
+        `ShipmentPackageContents`.`ShipmentPackageContentIdShipmentPackageIdShipmentId`,
+        `ShipmentPackageContents`.`ShipmentPackageContentIdShipmentPackageIdShipmentPackageSeqId`,
+        `ShipmentPackageContents`.`ShipmentPackageContentIdShipmentItemSeqId`,
+        `ShipmentPackageContents`.`Quantity`,
+        `ShipmentPackageContents`.`SubProductId`,
+        `ShipmentPackageContents`.`SubProductQuantity`,
+        `ShipmentPackageContents`.`Version`,
+        `ShipmentPackageContents`.`CreatedBy`,
+        `ShipmentPackageContents`.`CreatedAt`,
+        `ShipmentPackageContents`.`UpdatedBy`,
+        `ShipmentPackageContents`.`UpdatedAt`,
+        `ShipmentPackageContents`.`Active`,
+        `ShipmentPackageContents`.`Deleted`,
+        `ShipmentPackages`.`ShipmentBoxTypeId` AS `ShipmentPackageShipmentBoxTypeId`,
+        `ShipmentPackages`.`DateCreated` AS `ShipmentPackageDateCreated`,
+        `ShipmentPackages`.`BoxLength` AS `ShipmentPackageBoxLength`,
+        `ShipmentPackages`.`BoxHeight` AS `ShipmentPackageBoxHeight`,
+        `ShipmentPackages`.`BoxWidth` AS `ShipmentPackageBoxWidth`,
+        `ShipmentPackages`.`DimensionUomId` AS `ShipmentPackageDimensionUomId`,
+        `ShipmentPackages`.`Weight` AS `ShipmentPackageWeight`,
+        `ShipmentPackages`.`WeightUomId` AS `ShipmentPackageWeightUomId`,
+        `ShipmentPackages`.`InsuredValue` AS `ShipmentPackageInsuredValue`,
+        `ShipmentPackages`.`Version` AS `ShipmentPackageVersion`,
+        `ShipmentPackages`.`CreatedBy` AS `ShipmentPackageCreatedBy`,
+        `ShipmentPackages`.`CreatedAt` AS `ShipmentPackageCreatedAt`,
+        `ShipmentPackages`.`UpdatedBy` AS `ShipmentPackageUpdatedBy`,
+        `ShipmentPackages`.`UpdatedAt` AS `ShipmentPackageUpdatedAt`,
+        `ShipmentPackages`.`Active` AS `ShipmentPackageActive`,
+        `ShipmentPackages`.`Deleted` AS `ShipmentPackageDeleted`
+    FROM
+        (`ShipmentPackageContents`
+            JOIN `ShipmentPackages` ON ( 1=1 
+                and (`ShipmentPackageContents`.`ShipmentPackageContentIdShipmentPackageIdShipmentId` = `ShipmentPackages`.`ShipmentPackageIdShipmentId`)
+                and (`ShipmentPackageContents`.`ShipmentPackageContentIdShipmentPackageIdShipmentPackageSeqId` = `ShipmentPackages`.`ShipmentPackageIdShipmentPackageSeqId`)
             )
         );
 

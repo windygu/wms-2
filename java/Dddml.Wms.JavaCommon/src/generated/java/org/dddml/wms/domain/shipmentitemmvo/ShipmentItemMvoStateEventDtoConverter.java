@@ -29,7 +29,6 @@ public class ShipmentItemMvoStateEventDtoConverter {
         dto.setProductId(e.getProductId());
         dto.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
         dto.setQuantity(e.getQuantity());
-        dto.setTargetQuantity(e.getTargetQuantity());
         dto.setShipmentContentDescription(e.getShipmentContentDescription());
         dto.setVersion(e.getVersion());
         dto.setActive(e.getActive());
@@ -37,6 +36,7 @@ public class ShipmentItemMvoStateEventDtoConverter {
         dto.setShipmentStatusId(e.getShipmentStatusId());
         dto.setShipmentPrimaryOrderId(e.getShipmentPrimaryOrderId());
         dto.setShipmentPrimaryReturnId(e.getShipmentPrimaryReturnId());
+        dto.setShipmentPrimaryShipGroupSeqId(e.getShipmentPrimaryShipGroupSeqId());
         dto.setShipmentPicklistBinId(e.getShipmentPicklistBinId());
         dto.setShipmentEstimatedReadyDate(e.getShipmentEstimatedReadyDate());
         dto.setShipmentEstimatedShipDate(e.getShipmentEstimatedShipDate());
@@ -57,7 +57,6 @@ public class ShipmentItemMvoStateEventDtoConverter {
         dto.setShipmentPartyIdFrom(e.getShipmentPartyIdFrom());
         dto.setShipmentAdditionalShippingCharge(e.getShipmentAdditionalShippingCharge());
         dto.setShipmentAddtlShippingChargeDesc(e.getShipmentAddtlShippingChargeDesc());
-        dto.setShipmentShipperId(e.getShipmentShipperId());
         dto.setShipmentCreatedBy(e.getShipmentCreatedBy());
         dto.setShipmentCreatedAt(e.getShipmentCreatedAt());
         dto.setShipmentUpdatedBy(e.getShipmentUpdatedBy());
@@ -75,7 +74,6 @@ public class ShipmentItemMvoStateEventDtoConverter {
         dto.setProductId(e.getProductId());
         dto.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
         dto.setQuantity(e.getQuantity());
-        dto.setTargetQuantity(e.getTargetQuantity());
         dto.setShipmentContentDescription(e.getShipmentContentDescription());
         dto.setVersion(e.getVersion());
         dto.setActive(e.getActive());
@@ -83,6 +81,7 @@ public class ShipmentItemMvoStateEventDtoConverter {
         dto.setShipmentStatusId(e.getShipmentStatusId());
         dto.setShipmentPrimaryOrderId(e.getShipmentPrimaryOrderId());
         dto.setShipmentPrimaryReturnId(e.getShipmentPrimaryReturnId());
+        dto.setShipmentPrimaryShipGroupSeqId(e.getShipmentPrimaryShipGroupSeqId());
         dto.setShipmentPicklistBinId(e.getShipmentPicklistBinId());
         dto.setShipmentEstimatedReadyDate(e.getShipmentEstimatedReadyDate());
         dto.setShipmentEstimatedShipDate(e.getShipmentEstimatedShipDate());
@@ -103,7 +102,6 @@ public class ShipmentItemMvoStateEventDtoConverter {
         dto.setShipmentPartyIdFrom(e.getShipmentPartyIdFrom());
         dto.setShipmentAdditionalShippingCharge(e.getShipmentAdditionalShippingCharge());
         dto.setShipmentAddtlShippingChargeDesc(e.getShipmentAddtlShippingChargeDesc());
-        dto.setShipmentShipperId(e.getShipmentShipperId());
         dto.setShipmentCreatedBy(e.getShipmentCreatedBy());
         dto.setShipmentCreatedAt(e.getShipmentCreatedAt());
         dto.setShipmentUpdatedBy(e.getShipmentUpdatedBy());
@@ -112,7 +110,6 @@ public class ShipmentItemMvoStateEventDtoConverter {
         dto.setIsPropertyProductIdRemoved(e.getIsPropertyProductIdRemoved());
         dto.setIsPropertyAttributeSetInstanceIdRemoved(e.getIsPropertyAttributeSetInstanceIdRemoved());
         dto.setIsPropertyQuantityRemoved(e.getIsPropertyQuantityRemoved());
-        dto.setIsPropertyTargetQuantityRemoved(e.getIsPropertyTargetQuantityRemoved());
         dto.setIsPropertyShipmentContentDescriptionRemoved(e.getIsPropertyShipmentContentDescriptionRemoved());
         dto.setIsPropertyVersionRemoved(e.getIsPropertyVersionRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
@@ -120,6 +117,7 @@ public class ShipmentItemMvoStateEventDtoConverter {
         dto.setIsPropertyShipmentStatusIdRemoved(e.getIsPropertyShipmentStatusIdRemoved());
         dto.setIsPropertyShipmentPrimaryOrderIdRemoved(e.getIsPropertyShipmentPrimaryOrderIdRemoved());
         dto.setIsPropertyShipmentPrimaryReturnIdRemoved(e.getIsPropertyShipmentPrimaryReturnIdRemoved());
+        dto.setIsPropertyShipmentPrimaryShipGroupSeqIdRemoved(e.getIsPropertyShipmentPrimaryShipGroupSeqIdRemoved());
         dto.setIsPropertyShipmentPicklistBinIdRemoved(e.getIsPropertyShipmentPicklistBinIdRemoved());
         dto.setIsPropertyShipmentEstimatedReadyDateRemoved(e.getIsPropertyShipmentEstimatedReadyDateRemoved());
         dto.setIsPropertyShipmentEstimatedShipDateRemoved(e.getIsPropertyShipmentEstimatedShipDateRemoved());
@@ -140,7 +138,6 @@ public class ShipmentItemMvoStateEventDtoConverter {
         dto.setIsPropertyShipmentPartyIdFromRemoved(e.getIsPropertyShipmentPartyIdFromRemoved());
         dto.setIsPropertyShipmentAdditionalShippingChargeRemoved(e.getIsPropertyShipmentAdditionalShippingChargeRemoved());
         dto.setIsPropertyShipmentAddtlShippingChargeDescRemoved(e.getIsPropertyShipmentAddtlShippingChargeDescRemoved());
-        dto.setIsPropertyShipmentShipperIdRemoved(e.getIsPropertyShipmentShipperIdRemoved());
         dto.setIsPropertyShipmentCreatedByRemoved(e.getIsPropertyShipmentCreatedByRemoved());
         dto.setIsPropertyShipmentCreatedAtRemoved(e.getIsPropertyShipmentCreatedAtRemoved());
         dto.setIsPropertyShipmentUpdatedByRemoved(e.getIsPropertyShipmentUpdatedByRemoved());

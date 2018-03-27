@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+                   assembly="Dddml.Wms.Common" 
+                   namespace="Dddml.Wms.Domain.PicklistItemMvo">
+  
+  <class name="PicklistItemMvoStateEventBase" table="PicklistItemMvoStateEvents" mutable="false" abstract="true">
+
+    <composite-id name="PicklistItemMvoEventId" class="Dddml.Wms.Domain.PicklistItemMvo.PicklistItemMvoEventId">
+        <key-property name="PicklistBinPicklistItemIdPicklistBinId" ><column name="PicklistBinId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="PicklistBinPicklistItemIdPicklistItemOrderShipGrpInvIdOrderId" ><column name="OrderId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="PicklistBinPicklistItemIdPicklistItemOrderShipGrpInvIdOrderItemSeqId" ><column name="OrderItemSeqId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="PicklistBinPicklistItemIdPicklistItemOrderShipGrpInvIdShipGroupSeqId" ><column name="ShipGroupSeqId" sql-type="DECIMAL(20,0)" /></key-property>
+        <key-property name="PicklistBinPicklistItemIdPicklistItemOrderShipGrpInvIdProductId" ><column name="ProductId" length="60" sql-type="VARCHAR(60)" /></key-property>
+        <key-property name="PicklistBinPicklistItemIdPicklistItemOrderShipGrpInvIdLocatorId" ><column name="LocatorId" length="50" /></key-property>
+        <key-property name="PicklistBinPicklistItemIdPicklistItemOrderShipGrpInvIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" length="50" /></key-property>
+        <key-property name="PicklistBinVersion" ></key-property>
+    </composite-id>
+    <discriminator column="StateEventType" type="String" />
+
+    <property name="ItemStatusId" ><column name="ItemStatusId" sql-type="VARCHAR(20)" /></property>
+    <property name="Quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>
+    <property name="Version" ></property>
+    <property name="Active" ></property>
+    <property name="PicklistBinPicklistId" ><column name="PicklistBinPicklistId" sql-type="VARCHAR(20)" /></property>
+    <property name="PicklistBinBinLocationNumber" ><column name="PicklistBinBinLocationNumber" sql-type="DECIMAL(20,0)" /></property>
+    <property name="PicklistBinPrimaryOrderId" ><column name="PicklistBinPrimaryOrderId" sql-type="VARCHAR(20)" /></property>
+    <property name="PicklistBinPrimaryShipGroupSeqId" ><column name="PicklistBinPrimaryShipGroupSeqId" sql-type="DECIMAL(20,0)" /></property>
+    <property name="PicklistBinCreatedBy" ></property>
+    <property name="PicklistBinCreatedAt" ><column name="PicklistBinCreatedAt" sql-type="DATETIME" /></property>
+    <property name="PicklistBinUpdatedBy" ></property>
+    <property name="PicklistBinUpdatedAt" ><column name="PicklistBinUpdatedAt" sql-type="DATETIME" /></property>
+    <property name="PicklistBinActive" ></property>
+    <property name="PicklistBinDeleted" ></property>
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+    <subclass name="PicklistItemMvoStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="PicklistItemMvoStateMergePatched"  discriminator-value="MergePatched">
+
+
+        <property name="IsPropertyItemStatusIdRemoved" column="IsPropertyItemStatusIdRemoved"/>
+
+        <property name="IsPropertyQuantityRemoved" column="IsPropertyQuantityRemoved"/>
+
+        <property name="IsPropertyVersionRemoved" column="IsPropertyVersionRemoved"/>
+
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+
+        <property name="IsPropertyPicklistBinPicklistIdRemoved" column="IsPropertyPicklistBinPicklistIdRemoved"/>
+
+        <property name="IsPropertyPicklistBinBinLocationNumberRemoved" column="IsPropertyPicklistBinBinLocationNumberRemoved"/>
+
+        <property name="IsPropertyPicklistBinPrimaryOrderIdRemoved" column="IsPropertyPicklistBinPrimaryOrderIdRemoved"/>
+
+        <property name="IsPropertyPicklistBinPrimaryShipGroupSeqIdRemoved" column="IsPropertyPicklistBinPrimaryShipGroupSeqIdRemoved"/>
+
+        <property name="IsPropertyPicklistBinCreatedByRemoved" column="IsPropertyPicklistBinCreatedByRemoved"/>
+
+        <property name="IsPropertyPicklistBinCreatedAtRemoved" column="IsPropertyPicklistBinCreatedAtRemoved"/>
+
+        <property name="IsPropertyPicklistBinUpdatedByRemoved" column="IsPropertyPicklistBinUpdatedByRemoved"/>
+
+        <property name="IsPropertyPicklistBinUpdatedAtRemoved" column="IsPropertyPicklistBinUpdatedAtRemoved"/>
+
+        <property name="IsPropertyPicklistBinActiveRemoved" column="IsPropertyPicklistBinActiveRemoved"/>
+
+        <property name="IsPropertyPicklistBinDeletedRemoved" column="IsPropertyPicklistBinDeletedRemoved"/>
+    </subclass>
+
+    <subclass name="PicklistItemMvoStateDeleted"  discriminator-value="Deleted">
+
+    </subclass>
+
+
+
+  </class>
+  
+</hibernate-mapping>

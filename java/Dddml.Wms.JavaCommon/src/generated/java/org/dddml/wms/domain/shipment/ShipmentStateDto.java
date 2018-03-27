@@ -69,6 +69,18 @@ public class ShipmentStateDto
         this.primaryReturnId = primaryReturnId;
     }
 
+    private Long primaryShipGroupSeqId;
+
+    public Long getPrimaryShipGroupSeqId()
+    {
+        return this.primaryShipGroupSeqId;
+    }
+
+    public void setPrimaryShipGroupSeqId(Long primaryShipGroupSeqId)
+    {
+        this.primaryShipGroupSeqId = primaryShipGroupSeqId;
+    }
+
     private String picklistBinId;
 
     public String getPicklistBinId()
@@ -309,18 +321,6 @@ public class ShipmentStateDto
         this.addtlShippingChargeDesc = addtlShippingChargeDesc;
     }
 
-    private String shipperId;
-
-    public String getShipperId()
-    {
-        return this.shipperId;
-    }
-
-    public void setShipperId(String shipperId)
-    {
-        this.shipperId = shipperId;
-    }
-
     private Boolean active;
 
     public Boolean getActive()
@@ -417,10 +417,22 @@ public class ShipmentStateDto
         this.shipmentReceipts = shipmentReceipts;
     }
 
+    private ItemIssuanceStateDto[] itemIssuances;
+
+    public ItemIssuanceStateDto[] getItemIssuances()
+    {
+        return this.itemIssuances;
+    }	
+
+    public void setItemIssuances(ItemIssuanceStateDto[] itemIssuances)
+    {
+        this.itemIssuances = itemIssuances;
+    }
+
 
     public static class DtoConverter extends AbstractStateDtoConverter
     {
-        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{"ShipmentItems", "ShipmentReceipts"});
+        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{"ShipmentItems", "ShipmentReceipts", "ItemIssuances"});
 
         @Override
         protected boolean isCollectionField(String fieldName) {
@@ -457,6 +469,9 @@ public class ShipmentStateDto
             }
             if (returnedFieldsContains("PrimaryReturnId")) {
                 dto.setPrimaryReturnId(state.getPrimaryReturnId());
+            }
+            if (returnedFieldsContains("PrimaryShipGroupSeqId")) {
+                dto.setPrimaryShipGroupSeqId(state.getPrimaryShipGroupSeqId());
             }
             if (returnedFieldsContains("PicklistBinId")) {
                 dto.setPicklistBinId(state.getPicklistBinId());
@@ -518,9 +533,6 @@ public class ShipmentStateDto
             if (returnedFieldsContains("AddtlShippingChargeDesc")) {
                 dto.setAddtlShippingChargeDesc(state.getAddtlShippingChargeDesc());
             }
-            if (returnedFieldsContains("ShipperId")) {
-                dto.setShipperId(state.getShipperId());
-            }
             if (returnedFieldsContains("Active")) {
                 dto.setActive(state.getActive());
             }
@@ -562,6 +574,18 @@ public class ShipmentStateDto
                     }
                 }
                 dto.setShipmentReceipts(arrayList.toArray(new ShipmentReceiptStateDto[0]));
+            }
+            if (returnedFieldsContains("ItemIssuances")) {
+                ArrayList<ItemIssuanceStateDto> arrayList = new ArrayList();
+                if (state.getItemIssuances() != null) {
+                    ItemIssuanceStateDto.DtoConverter conv = new ItemIssuanceStateDto.DtoConverter();
+                    String returnFS = CollectionUtils.mapGetValueIgnoringCase(getReturnedFields(), "ItemIssuances");
+                    if(returnFS != null) { conv.setReturnedFieldsString(returnFS); } else { conv.setAllFieldsReturned(this.getAllFieldsReturned()); }
+                    for (ItemIssuanceState s : state.getItemIssuances()) {
+                        arrayList.add(conv.toItemIssuanceStateDto(s));
+                    }
+                }
+                dto.setItemIssuances(arrayList.toArray(new ItemIssuanceStateDto[0]));
             }
             return dto;
         }

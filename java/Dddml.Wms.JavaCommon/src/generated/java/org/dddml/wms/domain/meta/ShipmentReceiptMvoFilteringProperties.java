@@ -13,7 +13,13 @@ public final class ShipmentReceiptMvoFilteringProperties
     public static final String[] propertyNames = new String[] {
             "productId",
             "attributeSetInstanceId",
+            "locatorId",
             "shipmentItemSeqId",
+            "shipmentPackageSeqId",
+            "orderId",
+            "orderItemSeqId",
+            "returnId",
+            "returnItemSeqId",
             "rejectionReasonId",
             "damageStatusId",
             "damageReasonId",
@@ -34,6 +40,7 @@ public final class ShipmentReceiptMvoFilteringProperties
             "shipmentStatusId",
             "shipmentPrimaryOrderId",
             "shipmentPrimaryReturnId",
+            "shipmentPrimaryShipGroupSeqId",
             "shipmentPicklistBinId",
             "shipmentEstimatedReadyDate",
             "shipmentEstimatedShipDate",
@@ -54,7 +61,6 @@ public final class ShipmentReceiptMvoFilteringProperties
             "shipmentPartyIdFrom",
             "shipmentAdditionalShippingCharge",
             "shipmentAddtlShippingChargeDesc",
-            "shipmentShipperId",
             "shipmentVersion",
             "shipmentCreatedBy",
             "shipmentCreatedAt",
@@ -66,6 +72,12 @@ public final class ShipmentReceiptMvoFilteringProperties
     };
 
     public static final String[] propertyTypes = new String[] {
+            "String",
+            "String",
+            "String",
+            "String",
+            "String",
+            "String",
             "String",
             "String",
             "String",
@@ -89,6 +101,7 @@ public final class ShipmentReceiptMvoFilteringProperties
             "String",
             "String",
             "String",
+            "Long",
             "String",
             "java.sql.Timestamp",
             "java.sql.Timestamp",
@@ -108,7 +121,6 @@ public final class ShipmentReceiptMvoFilteringProperties
             "String",
             "String",
             "java.math.BigDecimal",
-            "String",
             "String",
             "Long",
             "String",
@@ -136,8 +148,20 @@ public final class ShipmentReceiptMvoFilteringProperties
         aliasMap.put("ProductId", "productId");
         aliasMap.put("attributeSetInstanceId", "attributeSetInstanceId");
         aliasMap.put("AttributeSetInstanceId", "attributeSetInstanceId");
+        aliasMap.put("locatorId", "locatorId");
+        aliasMap.put("LocatorId", "locatorId");
         aliasMap.put("shipmentItemSeqId", "shipmentItemSeqId");
         aliasMap.put("ShipmentItemSeqId", "shipmentItemSeqId");
+        aliasMap.put("shipmentPackageSeqId", "shipmentPackageSeqId");
+        aliasMap.put("ShipmentPackageSeqId", "shipmentPackageSeqId");
+        aliasMap.put("orderId", "orderId");
+        aliasMap.put("OrderId", "orderId");
+        aliasMap.put("orderItemSeqId", "orderItemSeqId");
+        aliasMap.put("OrderItemSeqId", "orderItemSeqId");
+        aliasMap.put("returnId", "returnId");
+        aliasMap.put("ReturnId", "returnId");
+        aliasMap.put("returnItemSeqId", "returnItemSeqId");
+        aliasMap.put("ReturnItemSeqId", "returnItemSeqId");
         aliasMap.put("rejectionReasonId", "rejectionReasonId");
         aliasMap.put("RejectionReasonId", "rejectionReasonId");
         aliasMap.put("damageStatusId", "damageStatusId");
@@ -178,6 +202,8 @@ public final class ShipmentReceiptMvoFilteringProperties
         aliasMap.put("ShipmentPrimaryOrderId", "shipmentPrimaryOrderId");
         aliasMap.put("shipmentPrimaryReturnId", "shipmentPrimaryReturnId");
         aliasMap.put("ShipmentPrimaryReturnId", "shipmentPrimaryReturnId");
+        aliasMap.put("shipmentPrimaryShipGroupSeqId", "shipmentPrimaryShipGroupSeqId");
+        aliasMap.put("ShipmentPrimaryShipGroupSeqId", "shipmentPrimaryShipGroupSeqId");
         aliasMap.put("shipmentPicklistBinId", "shipmentPicklistBinId");
         aliasMap.put("ShipmentPicklistBinId", "shipmentPicklistBinId");
         aliasMap.put("shipmentEstimatedReadyDate", "shipmentEstimatedReadyDate");
@@ -218,8 +244,6 @@ public final class ShipmentReceiptMvoFilteringProperties
         aliasMap.put("ShipmentAdditionalShippingCharge", "shipmentAdditionalShippingCharge");
         aliasMap.put("shipmentAddtlShippingChargeDesc", "shipmentAddtlShippingChargeDesc");
         aliasMap.put("ShipmentAddtlShippingChargeDesc", "shipmentAddtlShippingChargeDesc");
-        aliasMap.put("shipmentShipperId", "shipmentShipperId");
-        aliasMap.put("ShipmentShipperId", "shipmentShipperId");
         aliasMap.put("shipmentVersion", "shipmentVersion");
         aliasMap.put("ShipmentVersion", "shipmentVersion");
         aliasMap.put("shipmentCreatedBy", "shipmentCreatedBy");

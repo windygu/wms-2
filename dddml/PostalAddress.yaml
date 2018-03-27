@@ -1,0 +1,67 @@
+﻿#%DDDML 0.1
+
+---
+aggregates:
+
+  # --------------------------、
+  # 邮政地址
+  PostalAddress:
+    # ---------------------------------
+    inheritedFrom: ContactMech
+    discriminatorValue: "PostalAddress"
+    # ---------------------------------
+    id:
+      name: ContactMechId
+      type: id-ne
+      
+    properties:
+      ToName:
+        type: name
+      AttnName:
+        type: name
+      Address1:
+        type: long-varchar
+      Address2:
+        type: long-varchar
+      Directions:
+        type: long-varchar
+        
+      #城市
+      City:
+        type: name
+        
+      # 邮政编码
+      PostalCode:
+        type: short-varchar
+        
+      PostalCodeExt:
+        type: short-varchar
+        
+      # 国家 Id  
+      CountryGeoId:
+        type: id
+        
+      # 省/州 Id
+      StateProvinceGeoId:
+        type: id
+        
+      # 区/县 Id
+      CountyGeoId:
+        type: id
+        
+      PostalCodeGeoId:
+        type: id
+      GeoPointId:
+        type: id
+        
+    # references:
+      # ContactMech:
+        # name: ContactMech
+        # displayName: ContactMech
+        # type: ContactMech
+        # properties:
+        # - ContactMechId
+        # foreignKeyName: POST_ADDR_CMECH
+        
+    reservedProperties: {}
+    

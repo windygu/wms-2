@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+				   assembly="Dddml.Wms.Common" 
+				   namespace="Dddml.Wms.Domain.PicklistItemMvo">
+  
+  <class name="Dddml.Wms.Domain.PicklistItemMvo.PicklistItemMvoState" table="PicklistItem_RV">
+
+    <composite-id name="PicklistBinPicklistItemId" class="Dddml.Wms.Domain.PicklistBin.PicklistBinPicklistItemId">
+        <key-property name="PicklistBinId" ><column name="PicklistBinId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="PicklistItemOrderShipGrpInvIdOrderId" ><column name="OrderId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="PicklistItemOrderShipGrpInvIdOrderItemSeqId" ><column name="OrderItemSeqId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="PicklistItemOrderShipGrpInvIdShipGroupSeqId" ><column name="ShipGroupSeqId" sql-type="DECIMAL(20,0)" /></key-property>
+        <key-property name="PicklistItemOrderShipGrpInvIdProductId" ><column name="ProductId" length="60" sql-type="VARCHAR(60)" /></key-property>
+        <key-property name="PicklistItemOrderShipGrpInvIdLocatorId" ><column name="LocatorId" length="50" /></key-property>
+        <key-property name="PicklistItemOrderShipGrpInvIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" length="50" /></key-property>
+    </composite-id>
+
+	<version name="PicklistBinVersion" column="PicklistBinVersion" type="long" unsaved-value="0"/>
+
+    <property name="ItemStatusId" ><column name="ItemStatusId" sql-type="VARCHAR(20)" /></property>
+    <property name="Quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>
+    <property name="Version" ></property>
+    <property name="CreatedBy" ></property>
+    <property name="UpdatedBy" ></property>
+    <property name="Active" ></property>
+    <property name="Deleted" ></property>
+    <property name="PicklistBinPicklistId" ><column name="PicklistBinPicklistId" sql-type="VARCHAR(20)" /></property>
+    <property name="PicklistBinBinLocationNumber" ><column name="PicklistBinBinLocationNumber" sql-type="DECIMAL(20,0)" /></property>
+    <property name="PicklistBinPrimaryOrderId" ><column name="PicklistBinPrimaryOrderId" sql-type="VARCHAR(20)" /></property>
+    <property name="PicklistBinPrimaryShipGroupSeqId" ><column name="PicklistBinPrimaryShipGroupSeqId" sql-type="DECIMAL(20,0)" /></property>
+    <property name="PicklistBinCreatedBy" ></property>
+    <property name="PicklistBinCreatedAt" ><column name="PicklistBinCreatedAt" sql-type="DATETIME" /></property>
+    <property name="PicklistBinUpdatedBy" ></property>
+    <property name="PicklistBinUpdatedAt" ><column name="PicklistBinUpdatedAt" sql-type="DATETIME" /></property>
+    <property name="PicklistBinActive" ></property>
+    <property name="PicklistBinDeleted" ></property>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+
+    <property name="UpdatedAt" column="UpdatedAt" type="DateTimeUtc"/>
+
+
+  </class>
+  
+</hibernate-mapping>
+

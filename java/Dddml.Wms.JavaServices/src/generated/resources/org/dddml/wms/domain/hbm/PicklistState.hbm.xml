@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.picklist">
+  
+  <class name="org.dddml.wms.domain.picklist.AbstractPicklistState$SimplePicklistState" table="Picklists">
+
+	<id name="picklistId" length="20" column="PicklistId"><generator class="assigned"/></id>
+	<version name="version" column="Version" type="long" />
+
+	<property name="description" ><column name="Description" sql-type="VARCHAR(255)" /></property>
+	<property name="facilityId" ><column name="FacilityId" sql-type="VARCHAR(20)" /></property>
+	<property name="shipmentMethodTypeId" ><column name="ShipmentMethodTypeId" sql-type="VARCHAR(20)" /></property>
+	<property name="statusId" ><column name="StatusId" sql-type="VARCHAR(20)" /></property>
+	<property name="picklistDate" ><column name="PicklistDate" sql-type="DATETIME" /></property>
+	<property name="createdByUserLogin" ><column name="CreatedByUserLogin" sql-type="VARCHAR(250)" /></property>
+	<property name="lastModifiedByUserLogin" ><column name="LastModifiedByUserLogin" sql-type="VARCHAR(250)" /></property>
+	<property name="active" ></property>
+	<property name="deleted" ></property>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="updatedAt" column="UpdatedAt" />
+
+
+  </class>
+  
+</hibernate-mapping>
+

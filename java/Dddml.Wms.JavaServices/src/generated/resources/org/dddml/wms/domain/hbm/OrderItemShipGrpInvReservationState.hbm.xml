@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.orderitemshipgrpinvreservation">
+  
+  <class name="org.dddml.wms.domain.orderitemshipgrpinvreservation.AbstractOrderItemShipGrpInvReservationState$SimpleOrderItemShipGrpInvReservationState" table="OrderItemShipGrpInvReservations">
+
+	<composite-id name="orderItemShipGrpInvResId" class="org.dddml.wms.domain.orderitemshipgrpinvreservation.OrderItemShipGrpInvResId">
+		<key-property name="orderId" ><column name="OrderItemShipGrpInvResIdOrderId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="shipGroupSeqId" ><column name="OrderItemShipGrpInvResIdShipGroupSeqId" sql-type="DECIMAL(20,0)" /></key-property>
+		<key-property name="orderItemSeqId" ><column name="OrderItemShipGrpInvResIdOrderItemSeqId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="productId" ><column name="OrderItemShipGrpInvResIdProductId" length="60" sql-type="VARCHAR(60)" /></key-property>
+		<key-property name="locatorId" ><column name="OrderItemShipGrpInvResIdLocatorId" length="50" /></key-property>
+		<key-property name="attributeSetInstanceId" ><column name="OrderItemShipGrpInvResIdAttributeSetInstanceId" length="50" /></key-property>
+	</composite-id>
+	<version name="version" column="Version" type="long" />
+
+	<property name="reserveOrderEnumId" ><column name="ReserveOrderEnumId" sql-type="VARCHAR(20)" /></property>
+	<property name="quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>
+	<property name="quantityNotAvailable" ><column name="QuantityNotAvailable" sql-type="DECIMAL(18,6)" /></property>
+	<property name="reservedDatetime" ><column name="ReservedDatetime" sql-type="DATETIME" /></property>
+	<property name="createdDatetime" ><column name="CreatedDatetime" sql-type="DATETIME" /></property>
+	<property name="promisedDatetime" ><column name="PromisedDatetime" sql-type="DATETIME" /></property>
+	<property name="currentPromisedDate" ><column name="CurrentPromisedDate" sql-type="DATETIME" /></property>
+	<property name="priority" ><column name="Priority" sql-type="CHAR(1)" /></property>
+	<property name="sequenceId" ><column name="SequenceId" sql-type="DECIMAL(20,0)" /></property>
+	<property name="oldPickStartDate" ><column name="OldPickStartDate" sql-type="DATETIME" /></property>
+	<property name="createdBy" ></property>
+	<property name="updatedBy" ></property>
+	<property name="active" ></property>
+	<property name="deleted" ></property>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="updatedAt" column="UpdatedAt" />
+
+
+  </class>
+  
+</hibernate-mapping>
+

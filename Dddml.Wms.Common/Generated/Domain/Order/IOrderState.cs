@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.Order;
+using Dddml.Wms.Domain.PartyRole;
 
 namespace Dddml.Wms.Domain.Order
 {
@@ -29,7 +30,13 @@ namespace Dddml.Wms.Domain.Order
 		void Mutate(IEvent e);
 
 
+		IOrderRoleStates OrderRoles { get; set; }
+
+
 		IOrderItemStates OrderItems { get; set; }
+
+
+		IOrderShipGroupStates OrderShipGroups { get; set; }
 
 
         bool IsUnsaved { get; }

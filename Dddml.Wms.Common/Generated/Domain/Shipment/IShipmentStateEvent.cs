@@ -25,6 +25,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 		string PrimaryReturnId { get; set; }
 
+		long? PrimaryShipGroupSeqId { get; set; }
+
 		string PicklistBinId { get; set; }
 
 		DateTime? EstimatedReadyDate { get; set; }
@@ -65,8 +67,6 @@ namespace Dddml.Wms.Domain.Shipment
 
 		string AddtlShippingChargeDesc { get; set; }
 
-		string ShipperId { get; set; }
-
 		bool? Active { get; set; }
 
 	}
@@ -85,6 +85,12 @@ namespace Dddml.Wms.Domain.Shipment
 
 		IShipmentReceiptStateCreated NewShipmentReceiptStateCreated(string receiptSeqId);
 
+		IEnumerable<IItemIssuanceStateCreated> ItemIssuanceEvents { get; }
+		
+		void AddItemIssuanceEvent(IItemIssuanceStateCreated e);
+
+		IItemIssuanceStateCreated NewItemIssuanceStateCreated(string itemIssuanceSeqId);
+
 	
 	}
 
@@ -98,6 +104,8 @@ namespace Dddml.Wms.Domain.Shipment
 		bool IsPropertyPrimaryOrderIdRemoved { get; set; }
 
 		bool IsPropertyPrimaryReturnIdRemoved { get; set; }
+
+		bool IsPropertyPrimaryShipGroupSeqIdRemoved { get; set; }
 
 		bool IsPropertyPicklistBinIdRemoved { get; set; }
 
@@ -139,8 +147,6 @@ namespace Dddml.Wms.Domain.Shipment
 
 		bool IsPropertyAddtlShippingChargeDescRemoved { get; set; }
 
-		bool IsPropertyShipperIdRemoved { get; set; }
-
 		bool IsPropertyActiveRemoved { get; set; }
 
 		IEnumerable<IShipmentItemStateEvent> ShipmentItemEvents { get; }
@@ -158,6 +164,16 @@ namespace Dddml.Wms.Domain.Shipment
 		IShipmentReceiptStateCreated NewShipmentReceiptStateCreated(string receiptSeqId);
 
 		IShipmentReceiptStateMergePatched NewShipmentReceiptStateMergePatched(string receiptSeqId);
+
+		IEnumerable<IItemIssuanceStateEvent> ItemIssuanceEvents { get; }
+		
+		void AddItemIssuanceEvent(IItemIssuanceStateEvent e);
+
+		IItemIssuanceStateCreated NewItemIssuanceStateCreated(string itemIssuanceSeqId);
+
+		IItemIssuanceStateMergePatched NewItemIssuanceStateMergePatched(string itemIssuanceSeqId);
+
+		IItemIssuanceStateRemoved NewItemIssuanceStateRemoved(string itemIssuanceSeqId);
 
 
 	}

@@ -1,0 +1,300 @@
+package org.dddml.wms.restful.resource;
+
+import java.util.*;
+import javax.servlet.http.*;
+import javax.validation.constraints.*;
+import javax.ws.rs.*;
+import javax.ws.rs.core.*;
+import org.apache.cxf.jaxrs.ext.PATCH;
+
+import org.dddml.support.criterion.*;
+import org.dddml.wms.domain.shipmentpackage.*;
+import java.util.Date;
+import org.dddml.wms.domain.*;
+import org.dddml.wms.specialization.*;
+import org.dddml.wms.domain.shipmentpackagecontentmvo.*;
+import org.dddml.wms.domain.meta.*;
+
+import com.alibaba.fastjson.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.dddml.support.criterion.TypeConverter;
+
+@Path("ShipmentPackageContentMvos") @Produces(MediaType.APPLICATION_JSON)
+public class ShipmentPackageContentMvoResource {
+
+
+    @Autowired
+    private ShipmentPackageContentMvoApplicationService shipmentPackageContentMvoApplicationService;
+
+
+    @GET
+    public ShipmentPackageContentMvoStateDto[] getAll(@Context HttpServletRequest request,
+                                   @QueryParam("sort") String sort,
+                                   @QueryParam("fields") String fields,
+                                   @QueryParam("firstResult") @DefaultValue("0") Integer firstResult,
+                                   @QueryParam("maxResults") @DefaultValue("2147483647") Integer maxResults,
+                                   @QueryParam("filter") String filter) {
+        if (firstResult < 0) { firstResult = 0; }
+        if (maxResults == null || maxResults < 1) { maxResults = Integer.MAX_VALUE; }
+        try {
+
+            Iterable<ShipmentPackageContentMvoState> states = null; 
+            if (!StringHelper.isNullOrEmpty(filter)) {
+                states = shipmentPackageContentMvoApplicationService.get(
+                        CriterionDto.toSubclass(
+                                JSON.parseObject(filter, CriterionDto.class),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ShipmentPackageContentMvoFilteringProperties.aliasMap.containsKey(n) ? ShipmentPackageContentMvoFilteringProperties.aliasMap.get(n) : n)),
+                        ShipmentPackageContentMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        firstResult, maxResults);
+            } else {
+                states = shipmentPackageContentMvoApplicationService.get(
+                        ShipmentPackageContentMvoResourceUtils.getQueryFilterMap(request.getParameterMap()),
+                        ShipmentPackageContentMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
+                        firstResult, maxResults);
+            }
+
+            ShipmentPackageContentMvoStateDto.DtoConverter dtoConverter = new ShipmentPackageContentMvoStateDto.DtoConverter();
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
+            return dtoConverter.toShipmentPackageContentMvoStateDtoArray(states);
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @Path("{id}") @GET
+    public ShipmentPackageContentMvoStateDto get(@PathParam("id") String id, @QueryParam("fields") String fields) {
+        try {
+            ShipmentPackageContentId idObj = ShipmentPackageContentMvoResourceUtils.parseIdString(id);
+            ShipmentPackageContentMvoState state = shipmentPackageContentMvoApplicationService.get(idObj);
+            if (state == null) { return null; }
+
+            ShipmentPackageContentMvoStateDto.DtoConverter dtoConverter = new ShipmentPackageContentMvoStateDto.DtoConverter();
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
+            return dtoConverter.toShipmentPackageContentMvoStateDto(state);
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @Path("_count") @GET
+    public long getCount(@Context HttpServletRequest request,
+                         @QueryParam("filter") String filter) {
+        try {
+            long count = 0;
+            if (!StringHelper.isNullOrEmpty(filter)) {
+                count = shipmentPackageContentMvoApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ShipmentPackageContentMvoFilteringProperties.aliasMap.containsKey(n) ? ShipmentPackageContentMvoFilteringProperties.aliasMap.get(n) : n)));
+            } else {
+                count = shipmentPackageContentMvoApplicationService.getCount(ShipmentPackageContentMvoResourceUtils.getQueryFilterMap(request.getParameterMap()));
+            }
+            return count;
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
+    @Path("{id}") @PUT
+    public void put(@PathParam("id") String id, CreateOrMergePatchShipmentPackageContentMvoDto.CreateShipmentPackageContentMvoDto value) {
+        try {
+
+            ShipmentPackageContentMvoCommand.CreateShipmentPackageContentMvo cmd = value.toCreateShipmentPackageContentMvo();
+            ShipmentPackageContentMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            shipmentPackageContentMvoApplicationService.when(cmd);
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
+    @Path("{id}") @PATCH
+    public void patch(@PathParam("id") String id, CreateOrMergePatchShipmentPackageContentMvoDto.MergePatchShipmentPackageContentMvoDto value) {
+        try {
+
+            ShipmentPackageContentMvoCommand.MergePatchShipmentPackageContentMvo cmd = value.toMergePatchShipmentPackageContentMvo();
+            ShipmentPackageContentMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+            shipmentPackageContentMvoApplicationService.when(cmd);
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @Path("{id}") @DELETE
+    public void delete(@PathParam("id") String id,
+                       @NotNull @QueryParam("commandId") String commandId,
+                       @NotNull @QueryParam("version") @Min(value = -1) Long version,
+                       @QueryParam("requesterId") String requesterId) {
+        try {
+
+            ShipmentPackageContentMvoCommand.DeleteShipmentPackageContentMvo deleteCmd = new AbstractShipmentPackageContentMvoCommand.SimpleDeleteShipmentPackageContentMvo();
+
+            deleteCmd.setCommandId(commandId);
+            deleteCmd.setRequesterId(requesterId);
+            deleteCmd.setShipmentPackageVersion(version);
+            ShipmentPackageContentMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, deleteCmd);
+            shipmentPackageContentMvoApplicationService.when(deleteCmd);
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @Path("_metadata/filteringFields") @GET
+    public List<PropertyMetadataDto> getMetadataFilteringFields() {
+        try {
+
+            List<PropertyMetadataDto> filtering = new ArrayList<>();
+            ShipmentPackageContentMvoFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+                filtering.add(new PropertyMetadataDto(key, value, true));
+            });
+            return filtering;
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @Path("{id}/_stateEvents/{version}") @GET
+    public ShipmentPackageContentMvoStateEventDto getStateEvent(@PathParam("id") String id, @PathParam("version") long version) {
+        try {
+
+            ShipmentPackageContentId idObj = ShipmentPackageContentMvoResourceUtils.parseIdString(id);
+            ShipmentPackageContentMvoStateEventDtoConverter dtoConverter = getShipmentPackageContentMvoStateEventDtoConverter();
+            return dtoConverter.toShipmentPackageContentMvoStateEventDto((AbstractShipmentPackageContentMvoStateEvent) shipmentPackageContentMvoApplicationService.getStateEvent(idObj, version));
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @Path("{id}/_historyStates/{version}") @GET
+    public ShipmentPackageContentMvoStateDto getHistoryState(@PathParam("id") String id, @PathParam("version") long version, @QueryParam("fields") String fields) {
+        try {
+
+            ShipmentPackageContentId idObj = ShipmentPackageContentMvoResourceUtils.parseIdString(id);
+            ShipmentPackageContentMvoStateDto.DtoConverter dtoConverter = new ShipmentPackageContentMvoStateDto.DtoConverter();
+            if (StringHelper.isNullOrEmpty(fields)) {
+                dtoConverter.setAllFieldsReturned(true);
+            } else {
+                dtoConverter.setReturnedFieldsString(fields);
+            }
+            return dtoConverter.toShipmentPackageContentMvoStateDto(shipmentPackageContentMvoApplicationService.getHistoryState(idObj, version));
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
+    protected  ShipmentPackageContentMvoStateEventDtoConverter getShipmentPackageContentMvoStateEventDtoConverter() {
+        return new ShipmentPackageContentMvoStateEventDtoConverter();
+    }
+
+    protected String getQueryOrderSeparator() {
+        return ",";
+    }
+
+    protected TypeConverter getCriterionTypeConverter() {
+        return new DefaultTypeConverter();
+    }
+
+    protected PropertyTypeResolver getPropertyTypeResolver() {
+        return new ShipmentPackageContentMvoPropertyTypeResolver();
+    }
+
+    // ////////////////////////////////
+
+    private class ShipmentPackageContentMvoPropertyTypeResolver implements PropertyTypeResolver {
+        @Override
+        public Class resolveTypeByPropertyName(String propertyName) {
+            return ShipmentPackageContentMvoResourceUtils.getFilterPropertyType(propertyName);
+        }
+    }
+
+ 
+    public static class ShipmentPackageContentMvoResourceUtils {
+
+        public static List<String> getQueryOrders(String str, String separator) {
+            List<String> orders = new ArrayList<>();
+            if (StringHelper.isNullOrEmpty(str)) {
+                return orders;
+            }
+            String[] splits = str.split(separator);
+            for (String item : splits) {
+                if (!StringHelper.isNullOrEmpty(item)) {
+                    orders.add(item);
+                }
+            }
+            return orders;
+        }
+
+        public static void setNullIdOrThrowOnInconsistentIds(String id, ShipmentPackageContentMvoCommand value) {
+            ShipmentPackageContentId idObj = parseIdString(id);
+            if (value.getShipmentPackageContentId() == null) {
+                value.setShipmentPackageContentId(idObj);
+            } else if (!value.getShipmentPackageContentId().equals(idObj)) {
+                throw DomainError.named("inconsistentId", "Argument Id %1$s NOT equals body Id %2$s", id, value.getShipmentPackageContentId());
+            }
+        }
+    
+
+        public static ShipmentPackageContentId parseIdString(String idString) {
+            TextFormatter<ShipmentPackageContentId> formatter =
+                    new AbstractValueObjectTextFormatter<ShipmentPackageContentId>(ShipmentPackageContentId.class) {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    };
+            return formatter.parse(idString);
+        }
+
+
+        public static String getFilterPropertyName(String fieldName) {
+            if ("sort".equalsIgnoreCase(fieldName)
+                    || "firstResult".equalsIgnoreCase(fieldName)
+                    || "maxResults".equalsIgnoreCase(fieldName)
+                    || "fields".equalsIgnoreCase(fieldName)) {
+                return null;
+            }
+            if (ShipmentPackageContentMvoFilteringProperties.aliasMap.containsKey(fieldName)) {
+                return ShipmentPackageContentMvoFilteringProperties.aliasMap.get(fieldName);
+            }
+            return null;
+        }
+
+        public static Class getFilterPropertyType(String propertyName) {
+            if (ShipmentPackageContentMvoFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = ShipmentPackageContentMvoFilteringProperties.propertyTypeMap.get(propertyName);
+                if (!StringHelper.isNullOrEmpty(propertyType)) {
+                    if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
+                        return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);
+                    }
+                }
+            }
+            return String.class;
+        }
+
+        public static Iterable<Map.Entry<String, Object>> getQueryFilterMap(Map<String, String[]> queryNameValuePairs) {
+            Map<String, Object> filter = new HashMap<>();
+            queryNameValuePairs.forEach((key, values) -> {
+                if (values.length > 0) {
+                    String pName = getFilterPropertyName(key);
+                    if (!StringHelper.isNullOrEmpty(pName)) {
+                        Class pClass = getFilterPropertyType(pName);
+                        filter.put(pName, ApplicationContext.current.getTypeConverter().convertFromString(pClass, values[0]));
+                    }
+                }
+            });
+            return filter.entrySet();
+        }
+
+        public static ShipmentPackageContentMvoStateDto[] toShipmentPackageContentMvoStateDtoArray(Iterable<ShipmentPackageContentId> ids) {
+            List<ShipmentPackageContentMvoStateDto> states = new ArrayList<>();
+            ids.forEach(id -> {
+                ShipmentPackageContentMvoStateDto dto = new ShipmentPackageContentMvoStateDto();
+                dto.setShipmentPackageContentId(id);
+                states.add(dto);
+            });
+            return states.toArray(new ShipmentPackageContentMvoStateDto[0]);
+        }
+
+    }
+
+}
+

@@ -2,6 +2,7 @@ package org.dddml.wms.domain.order;
 
 import java.util.*;
 import java.util.Date;
+import org.dddml.wms.domain.partyrole.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 
@@ -381,6 +382,18 @@ public class OrderStateDto
         this.updatedAt = updatedAt;
     }
 
+    private OrderRoleStateDto[] orderRoles;
+
+    public OrderRoleStateDto[] getOrderRoles()
+    {
+        return this.orderRoles;
+    }	
+
+    public void setOrderRoles(OrderRoleStateDto[] orderRoles)
+    {
+        this.orderRoles = orderRoles;
+    }
+
     private OrderItemStateDto[] orderItems;
 
     public OrderItemStateDto[] getOrderItems()
@@ -393,10 +406,22 @@ public class OrderStateDto
         this.orderItems = orderItems;
     }
 
+    private OrderShipGroupStateDto[] orderShipGroups;
+
+    public OrderShipGroupStateDto[] getOrderShipGroups()
+    {
+        return this.orderShipGroups;
+    }	
+
+    public void setOrderShipGroups(OrderShipGroupStateDto[] orderShipGroups)
+    {
+        this.orderShipGroups = orderShipGroups;
+    }
+
 
     public static class DtoConverter extends AbstractStateDtoConverter
     {
-        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{"OrderItems"});
+        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{"OrderRoles", "OrderItems", "OrderShipGroups"});
 
         @Override
         protected boolean isCollectionField(String fieldName) {
@@ -512,6 +537,18 @@ public class OrderStateDto
             if (returnedFieldsContains("UpdatedAt")) {
                 dto.setUpdatedAt(state.getUpdatedAt());
             }
+            if (returnedFieldsContains("OrderRoles")) {
+                ArrayList<OrderRoleStateDto> arrayList = new ArrayList();
+                if (state.getOrderRoles() != null) {
+                    OrderRoleStateDto.DtoConverter conv = new OrderRoleStateDto.DtoConverter();
+                    String returnFS = CollectionUtils.mapGetValueIgnoringCase(getReturnedFields(), "OrderRoles");
+                    if(returnFS != null) { conv.setReturnedFieldsString(returnFS); } else { conv.setAllFieldsReturned(this.getAllFieldsReturned()); }
+                    for (OrderRoleState s : state.getOrderRoles()) {
+                        arrayList.add(conv.toOrderRoleStateDto(s));
+                    }
+                }
+                dto.setOrderRoles(arrayList.toArray(new OrderRoleStateDto[0]));
+            }
             if (returnedFieldsContains("OrderItems")) {
                 ArrayList<OrderItemStateDto> arrayList = new ArrayList();
                 if (state.getOrderItems() != null) {
@@ -523,6 +560,18 @@ public class OrderStateDto
                     }
                 }
                 dto.setOrderItems(arrayList.toArray(new OrderItemStateDto[0]));
+            }
+            if (returnedFieldsContains("OrderShipGroups")) {
+                ArrayList<OrderShipGroupStateDto> arrayList = new ArrayList();
+                if (state.getOrderShipGroups() != null) {
+                    OrderShipGroupStateDto.DtoConverter conv = new OrderShipGroupStateDto.DtoConverter();
+                    String returnFS = CollectionUtils.mapGetValueIgnoringCase(getReturnedFields(), "OrderShipGroups");
+                    if(returnFS != null) { conv.setReturnedFieldsString(returnFS); } else { conv.setAllFieldsReturned(this.getAllFieldsReturned()); }
+                    for (OrderShipGroupState s : state.getOrderShipGroups()) {
+                        arrayList.add(conv.toOrderShipGroupStateDto(s));
+                    }
+                }
+                dto.setOrderShipGroups(arrayList.toArray(new OrderShipGroupStateDto[0]));
             }
             return dto;
         }

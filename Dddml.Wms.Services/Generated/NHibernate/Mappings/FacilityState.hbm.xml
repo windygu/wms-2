@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+				   assembly="Dddml.Wms.Common" 
+				   namespace="Dddml.Wms.Domain.Facility">
+  
+  <class name="Dddml.Wms.Domain.Facility.FacilityState" table="Facilities">
+
+	<id name="FacilityId" length="20" column="FacilityId"><generator class="assigned"/></id>
+
+	<version name="Version" column="Version" type="long" unsaved-value="0"/>
+
+    <property name="FacilityTypeId" ><column name="FacilityTypeId" sql-type="VARCHAR(20)" /></property>
+    <property name="ParentFacilityId" ><column name="ParentFacilityId" sql-type="VARCHAR(20)" /></property>
+    <property name="OwnerPartyId" ><column name="OwnerPartyId" sql-type="VARCHAR(20)" /></property>
+    <property name="DefaultInventoryItemTypeId" ><column name="DefaultInventoryItemTypeId" sql-type="VARCHAR(20)" /></property>
+    <property name="FacilityName" ><column name="FacilityName" sql-type="VARCHAR(100)" /></property>
+    <property name="PrimaryFacilityGroupId" ><column name="PrimaryFacilityGroupId" sql-type="VARCHAR(20)" /></property>
+    <property name="OldSquareFootage" ><column name="OldSquareFootage" sql-type="DECIMAL(20,0)" /></property>
+    <property name="FacilitySize" ><column name="FacilitySize" sql-type="DECIMAL(18,6)" /></property>
+    <property name="FacilitySizeUomId" ><column name="FacilitySizeUomId" sql-type="VARCHAR(20)" /></property>
+    <property name="ProductStoreId" ><column name="ProductStoreId" sql-type="VARCHAR(20)" /></property>
+    <property name="DefaultDaysToShip" ><column name="DefaultDaysToShip" sql-type="DECIMAL(20,0)" /></property>
+    <property name="OpenedDate" ><column name="OpenedDate" sql-type="DATETIME" /></property>
+    <property name="ClosedDate" ><column name="ClosedDate" sql-type="DATETIME" /></property>
+    <property name="Description" ><column name="Description" sql-type="VARCHAR(255)" /></property>
+    <property name="DefaultDimensionUomId" ><column name="DefaultDimensionUomId" sql-type="VARCHAR(20)" /></property>
+    <property name="DefaultWeightUomId" ><column name="DefaultWeightUomId" sql-type="VARCHAR(20)" /></property>
+    <property name="GeoPointId" ><column name="GeoPointId" sql-type="VARCHAR(20)" /></property>
+    <property name="CreatedBy" ></property>
+    <property name="UpdatedBy" ></property>
+    <property name="Active" ></property>
+    <property name="Deleted" ></property>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+
+    <property name="UpdatedAt" column="UpdatedAt" type="DateTimeUtc"/>
+
+
+  </class>
+  
+</hibernate-mapping>
+

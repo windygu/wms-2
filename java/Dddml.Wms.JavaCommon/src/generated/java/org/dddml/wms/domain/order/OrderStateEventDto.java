@@ -1,6 +1,7 @@
 package org.dddml.wms.domain.order;
 
 import java.util.Date;
+import org.dddml.wms.domain.partyrole.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.AbstractStateEvent;
 
@@ -555,6 +556,17 @@ public class OrderStateEventDto extends AbstractStateEvent
     }
 
 
+    private OrderRoleStateEventDto[] orderRoleEvents;
+
+    public OrderRoleStateEventDto[] getOrderRoleEvents() {
+        return this.orderRoleEvents;
+    }
+
+    public void setOrderRoleEvents(OrderRoleStateEventDto[] events) {
+        this.orderRoleEvents = events;
+    }
+
+
     private OrderItemStateEventDto[] orderItemEvents;
 
     public OrderItemStateEventDto[] getOrderItemEvents() {
@@ -563,6 +575,17 @@ public class OrderStateEventDto extends AbstractStateEvent
 
     public void setOrderItemEvents(OrderItemStateEventDto[] events) {
         this.orderItemEvents = events;
+    }
+
+
+    private OrderShipGroupStateEventDto[] orderShipGroupEvents;
+
+    public OrderShipGroupStateEventDto[] getOrderShipGroupEvents() {
+        return this.orderShipGroupEvents;
+    }
+
+    public void setOrderShipGroupEvents(OrderShipGroupStateEventDto[] events) {
+        this.orderShipGroupEvents = events;
     }
 
 

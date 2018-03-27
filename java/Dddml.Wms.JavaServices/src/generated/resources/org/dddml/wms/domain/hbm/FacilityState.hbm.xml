@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.facility">
+  
+  <class name="org.dddml.wms.domain.facility.AbstractFacilityState$SimpleFacilityState" table="Facilities">
+
+	<id name="facilityId" length="20" column="FacilityId"><generator class="assigned"/></id>
+	<version name="version" column="Version" type="long" />
+
+	<property name="facilityTypeId" ><column name="FacilityTypeId" sql-type="VARCHAR(20)" /></property>
+	<property name="parentFacilityId" ><column name="ParentFacilityId" sql-type="VARCHAR(20)" /></property>
+	<property name="ownerPartyId" ><column name="OwnerPartyId" sql-type="VARCHAR(20)" /></property>
+	<property name="defaultInventoryItemTypeId" ><column name="DefaultInventoryItemTypeId" sql-type="VARCHAR(20)" /></property>
+	<property name="facilityName" ><column name="FacilityName" sql-type="VARCHAR(100)" /></property>
+	<property name="primaryFacilityGroupId" ><column name="PrimaryFacilityGroupId" sql-type="VARCHAR(20)" /></property>
+	<property name="oldSquareFootage" ><column name="OldSquareFootage" sql-type="DECIMAL(20,0)" /></property>
+	<property name="facilitySize" ><column name="FacilitySize" sql-type="DECIMAL(18,6)" /></property>
+	<property name="facilitySizeUomId" ><column name="FacilitySizeUomId" sql-type="VARCHAR(20)" /></property>
+	<property name="productStoreId" ><column name="ProductStoreId" sql-type="VARCHAR(20)" /></property>
+	<property name="defaultDaysToShip" ><column name="DefaultDaysToShip" sql-type="DECIMAL(20,0)" /></property>
+	<property name="openedDate" ><column name="OpenedDate" sql-type="DATETIME" /></property>
+	<property name="closedDate" ><column name="ClosedDate" sql-type="DATETIME" /></property>
+	<property name="description" ><column name="Description" sql-type="VARCHAR(255)" /></property>
+	<property name="defaultDimensionUomId" ><column name="DefaultDimensionUomId" sql-type="VARCHAR(20)" /></property>
+	<property name="defaultWeightUomId" ><column name="DefaultWeightUomId" sql-type="VARCHAR(20)" /></property>
+	<property name="geoPointId" ><column name="GeoPointId" sql-type="VARCHAR(20)" /></property>
+	<property name="createdBy" ></property>
+	<property name="updatedBy" ></property>
+	<property name="active" ></property>
+	<property name="deleted" ></property>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="updatedAt" column="UpdatedAt" />
+
+
+  </class>
+  
+</hibernate-mapping>
+

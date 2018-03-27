@@ -74,6 +74,16 @@ public class ShipmentStateEventDto extends AbstractStateEvent
         this.primaryReturnId = primaryReturnId;
     }
 
+    private Long primaryShipGroupSeqId;
+
+    public Long getPrimaryShipGroupSeqId() {
+        return this.primaryShipGroupSeqId;
+    }
+
+    public void setPrimaryShipGroupSeqId(Long primaryShipGroupSeqId) {
+        this.primaryShipGroupSeqId = primaryShipGroupSeqId;
+    }
+
     private String picklistBinId;
 
     public String getPicklistBinId() {
@@ -274,16 +284,6 @@ public class ShipmentStateEventDto extends AbstractStateEvent
         this.addtlShippingChargeDesc = addtlShippingChargeDesc;
     }
 
-    private String shipperId;
-
-    public String getShipperId() {
-        return this.shipperId;
-    }
-
-    public void setShipperId(String shipperId) {
-        this.shipperId = shipperId;
-    }
-
     private Boolean active;
 
     public Boolean getActive() {
@@ -352,6 +352,16 @@ public class ShipmentStateEventDto extends AbstractStateEvent
 
     public void setIsPropertyPrimaryReturnIdRemoved(Boolean removed) {
         this.isPropertyPrimaryReturnIdRemoved = removed;
+    }
+
+    private Boolean isPropertyPrimaryShipGroupSeqIdRemoved;
+
+    public Boolean getIsPropertyPrimaryShipGroupSeqIdRemoved() {
+        return this.isPropertyPrimaryShipGroupSeqIdRemoved;
+    }
+
+    public void setIsPropertyPrimaryShipGroupSeqIdRemoved(Boolean removed) {
+        this.isPropertyPrimaryShipGroupSeqIdRemoved = removed;
     }
 
     private Boolean isPropertyPicklistBinIdRemoved;
@@ -554,16 +564,6 @@ public class ShipmentStateEventDto extends AbstractStateEvent
         this.isPropertyAddtlShippingChargeDescRemoved = removed;
     }
 
-    private Boolean isPropertyShipperIdRemoved;
-
-    public Boolean getIsPropertyShipperIdRemoved() {
-        return this.isPropertyShipperIdRemoved;
-    }
-
-    public void setIsPropertyShipperIdRemoved(Boolean removed) {
-        this.isPropertyShipperIdRemoved = removed;
-    }
-
     private Boolean isPropertyActiveRemoved;
 
     public Boolean getIsPropertyActiveRemoved() {
@@ -594,6 +594,17 @@ public class ShipmentStateEventDto extends AbstractStateEvent
 
     public void setShipmentReceiptEvents(ShipmentReceiptStateEventDto[] events) {
         this.shipmentReceiptEvents = events;
+    }
+
+
+    private ItemIssuanceStateEventDto[] itemIssuanceEvents;
+
+    public ItemIssuanceStateEventDto[] getItemIssuanceEvents() {
+        return this.itemIssuanceEvents;
+    }
+
+    public void setItemIssuanceEvents(ItemIssuanceStateEventDto[] events) {
+        this.itemIssuanceEvents = events;
     }
 
 

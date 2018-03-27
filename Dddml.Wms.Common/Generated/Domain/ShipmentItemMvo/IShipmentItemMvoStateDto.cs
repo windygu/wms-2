@@ -39,12 +39,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             set;
         }
 
-        decimal? TargetQuantity
-        {
-            get;
-            set;
-        }
-
         string ShipmentContentDescription
         {
             get;
@@ -82,6 +76,12 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
         }
 
         string ShipmentPrimaryReturnId
+        {
+            get;
+            set;
+        }
+
+        long? ShipmentPrimaryShipGroupSeqId
         {
             get;
             set;
@@ -202,12 +202,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
         }
 
         string ShipmentAddtlShippingChargeDesc
-        {
-            get;
-            set;
-        }
-
-        string ShipmentShipperId
         {
             get;
             set;

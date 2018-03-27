@@ -95,6 +95,9 @@
     <Compile Include="Generated\AttributeValueMvoApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\ContactMechApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\DamageHandlingMethodApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
@@ -108,6 +111,9 @@
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\DocumentTypeApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\FacilityApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\InOutApplicationServiceProxy.cs">
@@ -132,6 +138,9 @@
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\InventoryPRTriggeredApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\ItemIssuanceMvoApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\LocatorApplicationServiceProxy.cs">
@@ -164,6 +173,15 @@
     <Compile Include="Generated\OrderItemMvoApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\OrderItemShipGrpInvReservationApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\OrderRoleMvoApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\OrderShipGroupMvoApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\OrderShipmentApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
@@ -179,10 +197,25 @@
     <Compile Include="Generated\PartyApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\PartyRoleApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\PhysicalInventoryApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\PhysicalInventoryLineMvoApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\PicklistApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\PicklistBinApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\PicklistItemMvoApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\PicklistRoleMvoApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\ProductApplicationServiceProxy.cs">
@@ -197,6 +230,9 @@
     <Compile Include="Generated\RejectionReasonApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\RoleTypeApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\SellableInventoryItemApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
@@ -207,6 +243,15 @@
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\ShipmentItemMvoApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\ShipmentMethodTypeApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\ShipmentPackageApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\ShipmentPackageContentMvoApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\ShipmentReceiptMvoApplicationServiceProxy.cs">
@@ -248,11 +293,13 @@
 .\AttributeSetInstanceExtensionFieldGroupApplicationServiceProxy.cs
 .\AttributeUseMvoApplicationServiceProxy.cs
 .\AttributeValueMvoApplicationServiceProxy.cs
+.\ContactMechApplicationServiceProxy.cs
 .\DamageHandlingMethodApplicationServiceProxy.cs
 .\DamageReasonApplicationServiceProxy.cs
 .\DamageTypeApplicationServiceProxy.cs
 .\DddmlWmsRamlClient.cs
 .\DocumentTypeApplicationServiceProxy.cs
+.\FacilityApplicationServiceProxy.cs
 .\GenerateRamlClientProxies.txt
 .\InOutApplicationServiceProxy.cs
 .\InOutLineMvoApplicationServiceProxy.cs
@@ -262,6 +309,7 @@
 .\InventoryItemRequirementEntryMvoApplicationServiceProxy.cs
 .\InventoryPostingRuleApplicationServiceProxy.cs
 .\InventoryPRTriggeredApplicationServiceProxy.cs
+.\ItemIssuanceMvoApplicationServiceProxy.cs
 .\LocatorApplicationServiceProxy.cs
 .\LocatorTreeApplicationServiceProxy.cs
 .\LotApplicationServiceProxy.cs
@@ -272,21 +320,33 @@
 .\MovementTypeApplicationServiceProxy.cs
 .\OrderApplicationServiceProxy.cs
 .\OrderItemMvoApplicationServiceProxy.cs
+.\OrderItemShipGrpInvReservationApplicationServiceProxy.cs
+.\OrderRoleMvoApplicationServiceProxy.cs
+.\OrderShipGroupMvoApplicationServiceProxy.cs
 .\OrderShipmentApplicationServiceProxy.cs
 .\OrganizationStructureApplicationServiceProxy.cs
 .\OrganizationStructureTypeApplicationServiceProxy.cs
 .\OrganizationTreeApplicationServiceProxy.cs
 .\PartyApplicationServiceProxy.cs
+.\PartyRoleApplicationServiceProxy.cs
 .\PhysicalInventoryApplicationServiceProxy.cs
 .\PhysicalInventoryLineMvoApplicationServiceProxy.cs
+.\PicklistApplicationServiceProxy.cs
+.\PicklistBinApplicationServiceProxy.cs
+.\PicklistItemMvoApplicationServiceProxy.cs
+.\PicklistRoleMvoApplicationServiceProxy.cs
 .\ProductApplicationServiceProxy.cs
 .\ProductCategoryApplicationServiceProxy.cs
 .\ProductCategoryMemberApplicationServiceProxy.cs
 .\RejectionReasonApplicationServiceProxy.cs
+.\RoleTypeApplicationServiceProxy.cs
 .\SellableInventoryItemApplicationServiceProxy.cs
 .\SellableInventoryItemEntryMvoApplicationServiceProxy.cs
 .\ShipmentApplicationServiceProxy.cs
 .\ShipmentItemMvoApplicationServiceProxy.cs
+.\ShipmentMethodTypeApplicationServiceProxy.cs
+.\ShipmentPackageApplicationServiceProxy.cs
+.\ShipmentPackageContentMvoApplicationServiceProxy.cs
 .\ShipmentReceiptMvoApplicationServiceProxy.cs
 .\ShipmentTypeApplicationServiceProxy.cs
 .\StatusItemApplicationServiceProxy.cs

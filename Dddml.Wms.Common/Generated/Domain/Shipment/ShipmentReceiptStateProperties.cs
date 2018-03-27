@@ -20,7 +20,19 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual string AttributeSetInstanceId { get; set; }
 
+		public virtual string LocatorId { get; set; }
+
 		public virtual string ShipmentItemSeqId { get; set; }
+
+		public virtual string ShipmentPackageSeqId { get; set; }
+
+		public virtual string OrderId { get; set; }
+
+		public virtual string OrderItemSeqId { get; set; }
+
+		public virtual string ReturnId { get; set; }
+
+		public virtual string ReturnItemSeqId { get; set; }
 
 		public virtual string RejectionReasonId { get; set; }
 

@@ -277,6 +277,19 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = ShipmentsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{shipmentId}/ItemIssuances/{itemIssuanceSeqId}")]
+        [HttpGet]
+        public IItemIssuanceStateDto GetItemIssuance(string shipmentId, string itemIssuanceSeqId)
+        {
+          try {
+            var state = (ItemIssuanceState)_shipmentApplicationService.GetItemIssuance(shipmentId, itemIssuanceSeqId);
+            if (state == null) { return null; }
+            var stateDto = new ItemIssuanceStateDtoWrapper(state);
+            stateDto.AllFieldsReturned = true;
+            return stateDto;
+          } catch (Exception ex) { var response = ShipmentsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
 
 		// /////////////////////////////////////////////////
 

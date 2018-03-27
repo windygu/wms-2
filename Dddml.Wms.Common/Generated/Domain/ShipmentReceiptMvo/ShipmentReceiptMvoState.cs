@@ -166,7 +166,19 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
 			this.AttributeSetInstanceId = e.AttributeSetInstanceId;
 
+			this.LocatorId = e.LocatorId;
+
 			this.ShipmentItemSeqId = e.ShipmentItemSeqId;
+
+			this.ShipmentPackageSeqId = e.ShipmentPackageSeqId;
+
+			this.OrderId = e.OrderId;
+
+			this.OrderItemSeqId = e.OrderItemSeqId;
+
+			this.ReturnId = e.ReturnId;
+
+			this.ReturnItemSeqId = e.ReturnItemSeqId;
 
 			this.RejectionReasonId = e.RejectionReasonId;
 
@@ -197,6 +209,8 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 			this.ShipmentPrimaryOrderId = e.ShipmentPrimaryOrderId;
 
 			this.ShipmentPrimaryReturnId = e.ShipmentPrimaryReturnId;
+
+			this.ShipmentPrimaryShipGroupSeqId = e.ShipmentPrimaryShipGroupSeqId;
 
 			this.ShipmentPicklistBinId = e.ShipmentPicklistBinId;
 
@@ -237,8 +251,6 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 			this.ShipmentAdditionalShippingCharge = e.ShipmentAdditionalShippingCharge;
 
 			this.ShipmentAddtlShippingChargeDesc = e.ShipmentAddtlShippingChargeDesc;
-
-			this.ShipmentShipperId = e.ShipmentShipperId;
 
 			this.ShipmentCreatedBy = e.ShipmentCreatedBy;
 
@@ -285,6 +297,18 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 				this.AttributeSetInstanceId = e.AttributeSetInstanceId;
 			}
 
+			if (e.LocatorId == null)
+			{
+				if (e.IsPropertyLocatorIdRemoved)
+				{
+					this.LocatorId = default(string);
+				}
+			}
+			else
+			{
+				this.LocatorId = e.LocatorId;
+			}
+
 			if (e.ShipmentItemSeqId == null)
 			{
 				if (e.IsPropertyShipmentItemSeqIdRemoved)
@@ -295,6 +319,66 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 			else
 			{
 				this.ShipmentItemSeqId = e.ShipmentItemSeqId;
+			}
+
+			if (e.ShipmentPackageSeqId == null)
+			{
+				if (e.IsPropertyShipmentPackageSeqIdRemoved)
+				{
+					this.ShipmentPackageSeqId = default(string);
+				}
+			}
+			else
+			{
+				this.ShipmentPackageSeqId = e.ShipmentPackageSeqId;
+			}
+
+			if (e.OrderId == null)
+			{
+				if (e.IsPropertyOrderIdRemoved)
+				{
+					this.OrderId = default(string);
+				}
+			}
+			else
+			{
+				this.OrderId = e.OrderId;
+			}
+
+			if (e.OrderItemSeqId == null)
+			{
+				if (e.IsPropertyOrderItemSeqIdRemoved)
+				{
+					this.OrderItemSeqId = default(string);
+				}
+			}
+			else
+			{
+				this.OrderItemSeqId = e.OrderItemSeqId;
+			}
+
+			if (e.ReturnId == null)
+			{
+				if (e.IsPropertyReturnIdRemoved)
+				{
+					this.ReturnId = default(string);
+				}
+			}
+			else
+			{
+				this.ReturnId = e.ReturnId;
+			}
+
+			if (e.ReturnItemSeqId == null)
+			{
+				if (e.IsPropertyReturnItemSeqIdRemoved)
+				{
+					this.ReturnItemSeqId = default(string);
+				}
+			}
+			else
+			{
+				this.ReturnItemSeqId = e.ReturnItemSeqId;
 			}
 
 			if (e.RejectionReasonId == null)
@@ -475,6 +559,18 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 			else
 			{
 				this.ShipmentPrimaryReturnId = e.ShipmentPrimaryReturnId;
+			}
+
+			if (e.ShipmentPrimaryShipGroupSeqId == null)
+			{
+				if (e.IsPropertyShipmentPrimaryShipGroupSeqIdRemoved)
+				{
+					this.ShipmentPrimaryShipGroupSeqId = default(long?);
+				}
+			}
+			else
+			{
+				this.ShipmentPrimaryShipGroupSeqId = e.ShipmentPrimaryShipGroupSeqId;
 			}
 
 			if (e.ShipmentPicklistBinId == null)
@@ -715,18 +811,6 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 			else
 			{
 				this.ShipmentAddtlShippingChargeDesc = e.ShipmentAddtlShippingChargeDesc;
-			}
-
-			if (e.ShipmentShipperId == null)
-			{
-				if (e.IsPropertyShipmentShipperIdRemoved)
-				{
-					this.ShipmentShipperId = default(string);
-				}
-			}
-			else
-			{
-				this.ShipmentShipperId = e.ShipmentShipperId;
 			}
 
 			if (e.ShipmentCreatedBy == null)

@@ -2,9 +2,10 @@ package org.dddml.wms.domain.order;
 
 import java.util.*;
 import java.util.Date;
+import org.dddml.wms.domain.partyrole.*;
 import org.dddml.wms.domain.*;
 
-public abstract class AbstractOrderStateCommandConverter<TCreateOrder extends OrderCommand.CreateOrder, TMergePatchOrder extends OrderCommand.MergePatchOrder, TDeleteOrder extends OrderCommand.DeleteOrder, TCreateOrderItem extends OrderItemCommand.CreateOrderItem, TMergePatchOrderItem extends OrderItemCommand.MergePatchOrderItem, TRemoveOrderItem extends OrderItemCommand.RemoveOrderItem>
+public abstract class AbstractOrderStateCommandConverter<TCreateOrder extends OrderCommand.CreateOrder, TMergePatchOrder extends OrderCommand.MergePatchOrder, TDeleteOrder extends OrderCommand.DeleteOrder, TCreateOrderRole extends OrderRoleCommand.CreateOrderRole, TMergePatchOrderRole extends OrderRoleCommand.MergePatchOrderRole, TRemoveOrderRole extends OrderRoleCommand.RemoveOrderRole, TCreateOrderItem extends OrderItemCommand.CreateOrderItem, TMergePatchOrderItem extends OrderItemCommand.MergePatchOrderItem, TRemoveOrderItem extends OrderItemCommand.RemoveOrderItem, TCreateOrderShipGroup extends OrderShipGroupCommand.CreateOrderShipGroup, TMergePatchOrderShipGroup extends OrderShipGroupCommand.MergePatchOrderShipGroup, TRemoveOrderShipGroup extends OrderShipGroupCommand.RemoveOrderShipGroup>
 {
     public OrderCommand toCreateOrMergePatchOrder(OrderState state)
     {
@@ -88,10 +89,20 @@ public abstract class AbstractOrderStateCommandConverter<TCreateOrder extends Or
         if (state.getGrandTotal() == null) { cmd.setIsPropertyGrandTotalRemoved(true); }
         if (state.getInvoicePerShipment() == null) { cmd.setIsPropertyInvoicePerShipmentRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
+        for (OrderRoleState d : state.getOrderRoles())
+        {
+            OrderRoleCommand c = getOrderRoleStateCommandConverter().toCreateOrMergePatchOrderRole(d);
+            cmd.getOrderRoleCommands().add(c);
+        }
         for (OrderItemState d : state.getOrderItems())
         {
             OrderItemCommand c = getOrderItemStateCommandConverter().toCreateOrMergePatchOrderItem(d);
             cmd.getOrderItemCommands().add(c);
+        }
+        for (OrderShipGroupState d : state.getOrderShipGroups())
+        {
+            OrderShipGroupCommand c = getOrderShipGroupStateCommandConverter().toCreateOrMergePatchOrderShipGroup(d);
+            cmd.getOrderShipGroupCommands().add(c);
         }
         return cmd;
     }
@@ -127,16 +138,32 @@ public abstract class AbstractOrderStateCommandConverter<TCreateOrder extends Or
         cmd.setGrandTotal(state.getGrandTotal());
         cmd.setInvoicePerShipment(state.getInvoicePerShipment());
         cmd.setActive(state.getActive());
+        for (OrderRoleState d : state.getOrderRoles())
+        {
+            OrderRoleCommand.CreateOrderRole c = getOrderRoleStateCommandConverter().toCreateOrderRole(d);
+            cmd.getOrderRoles().add(c);
+        }
         for (OrderItemState d : state.getOrderItems())
         {
             OrderItemCommand.CreateOrderItem c = getOrderItemStateCommandConverter().toCreateOrderItem(d);
             cmd.getOrderItems().add(c);
         }
+        for (OrderShipGroupState d : state.getOrderShipGroups())
+        {
+            OrderShipGroupCommand.CreateOrderShipGroup c = getOrderShipGroupStateCommandConverter().toCreateOrderShipGroup(d);
+            cmd.getOrderShipGroups().add(c);
+        }
         return cmd;
     }
 
+    protected abstract AbstractOrderRoleStateCommandConverter<TCreateOrderRole, TMergePatchOrderRole, TRemoveOrderRole>
+        getOrderRoleStateCommandConverter();
+
     protected abstract AbstractOrderItemStateCommandConverter<TCreateOrderItem, TMergePatchOrderItem, TRemoveOrderItem>
         getOrderItemStateCommandConverter();
+
+    protected abstract AbstractOrderShipGroupStateCommandConverter<TCreateOrderShipGroup, TMergePatchOrderShipGroup, TRemoveOrderShipGroup>
+        getOrderShipGroupStateCommandConverter();
 
     protected abstract TCreateOrder newCreateOrder();
 
@@ -144,7 +171,7 @@ public abstract class AbstractOrderStateCommandConverter<TCreateOrder extends Or
 
     protected abstract TDeleteOrder newDeleteOrder();
 
-    public static class SimpleOrderStateCommandConverter extends AbstractOrderStateCommandConverter<AbstractOrderCommand.SimpleCreateOrder, AbstractOrderCommand.SimpleMergePatchOrder, AbstractOrderCommand.SimpleDeleteOrder, AbstractOrderItemCommand.SimpleCreateOrderItem, AbstractOrderItemCommand.SimpleMergePatchOrderItem, AbstractOrderItemCommand.SimpleRemoveOrderItem>
+    public static class SimpleOrderStateCommandConverter extends AbstractOrderStateCommandConverter<AbstractOrderCommand.SimpleCreateOrder, AbstractOrderCommand.SimpleMergePatchOrder, AbstractOrderCommand.SimpleDeleteOrder, AbstractOrderRoleCommand.SimpleCreateOrderRole, AbstractOrderRoleCommand.SimpleMergePatchOrderRole, AbstractOrderRoleCommand.SimpleRemoveOrderRole, AbstractOrderItemCommand.SimpleCreateOrderItem, AbstractOrderItemCommand.SimpleMergePatchOrderItem, AbstractOrderItemCommand.SimpleRemoveOrderItem, AbstractOrderShipGroupCommand.SimpleCreateOrderShipGroup, AbstractOrderShipGroupCommand.SimpleMergePatchOrderShipGroup, AbstractOrderShipGroupCommand.SimpleRemoveOrderShipGroup>
     {
         @Override
         protected AbstractOrderCommand.SimpleCreateOrder newCreateOrder() {
@@ -162,9 +189,21 @@ public abstract class AbstractOrderStateCommandConverter<TCreateOrder extends Or
         }
 
         @Override
+        protected AbstractOrderRoleStateCommandConverter<AbstractOrderRoleCommand.SimpleCreateOrderRole, AbstractOrderRoleCommand.SimpleMergePatchOrderRole, AbstractOrderRoleCommand.SimpleRemoveOrderRole> getOrderRoleStateCommandConverter()
+        {
+            return new AbstractOrderRoleStateCommandConverter.SimpleOrderRoleStateCommandConverter();
+        }
+
+        @Override
         protected AbstractOrderItemStateCommandConverter<AbstractOrderItemCommand.SimpleCreateOrderItem, AbstractOrderItemCommand.SimpleMergePatchOrderItem, AbstractOrderItemCommand.SimpleRemoveOrderItem> getOrderItemStateCommandConverter()
         {
             return new AbstractOrderItemStateCommandConverter.SimpleOrderItemStateCommandConverter();
+        }
+
+        @Override
+        protected AbstractOrderShipGroupStateCommandConverter<AbstractOrderShipGroupCommand.SimpleCreateOrderShipGroup, AbstractOrderShipGroupCommand.SimpleMergePatchOrderShipGroup, AbstractOrderShipGroupCommand.SimpleRemoveOrderShipGroup> getOrderShipGroupStateCommandConverter()
+        {
+            return new AbstractOrderShipGroupStateCommandConverter.SimpleOrderShipGroupStateCommandConverter();
         }
 
 

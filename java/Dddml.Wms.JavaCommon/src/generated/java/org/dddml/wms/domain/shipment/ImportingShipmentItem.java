@@ -41,18 +41,6 @@ public class ImportingShipmentItem implements Serializable
         this.quantity = quantity;
     }
 
-    private java.math.BigDecimal targetQuantity;
-
-    public java.math.BigDecimal getTargetQuantity()
-    {
-        return this.targetQuantity;
-    }
-
-    public void setTargetQuantity(java.math.BigDecimal targetQuantity)
-    {
-        this.targetQuantity = targetQuantity;
-    }
-
     private String shipmentContentDescription;
 
     public String getShipmentContentDescription()
@@ -81,12 +69,11 @@ public class ImportingShipmentItem implements Serializable
     {
     }
 
-    public ImportingShipmentItem(String shipmentItemSeqId, String productId, java.math.BigDecimal quantity, java.math.BigDecimal targetQuantity, String shipmentContentDescription, java.util.Map<String, Object> attributeSetInstance)
+    public ImportingShipmentItem(String shipmentItemSeqId, String productId, java.math.BigDecimal quantity, String shipmentContentDescription, java.util.Map<String, Object> attributeSetInstance)
     {
         this.shipmentItemSeqId = shipmentItemSeqId;
         this.productId = productId;
         this.quantity = quantity;
-        this.targetQuantity = targetQuantity;
         this.shipmentContentDescription = shipmentContentDescription;
         this.attributeSetInstance = attributeSetInstance;
     }
@@ -106,7 +93,6 @@ public class ImportingShipmentItem implements Serializable
             && (shipmentItemSeqId == other.shipmentItemSeqId || (shipmentItemSeqId != null && shipmentItemSeqId.equals(other.shipmentItemSeqId)))
             && (productId == other.productId || (productId != null && productId.equals(other.productId)))
             && (quantity == other.quantity || (quantity != null && quantity.equals(other.quantity)))
-            && (targetQuantity == other.targetQuantity || (targetQuantity != null && targetQuantity.equals(other.targetQuantity)))
             && (shipmentContentDescription == other.shipmentContentDescription || (shipmentContentDescription != null && shipmentContentDescription.equals(other.shipmentContentDescription)))
             && (attributeSetInstance == other.attributeSetInstance || (attributeSetInstance != null && attributeSetInstance.equals(other.attributeSetInstance)))
             ;
@@ -124,9 +110,6 @@ public class ImportingShipmentItem implements Serializable
         }
         if (this.quantity != null) {
             hash += 13 * this.quantity.hashCode();
-        }
-        if (this.targetQuantity != null) {
-            hash += 13 * this.targetQuantity.hashCode();
         }
         if (this.shipmentContentDescription != null) {
             hash += 13 * this.shipmentContentDescription.hashCode();

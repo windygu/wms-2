@@ -2,6 +2,7 @@ package org.dddml.wms.domain.order;
 
 import java.util.Set;
 import java.util.Date;
+import org.dddml.wms.domain.partyrole.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 import org.dddml.wms.domain.order.OrderStateEvent.*;
@@ -141,7 +142,11 @@ public interface OrderState
 
     boolean getForReapplying();
 
+    OrderRoleStates getOrderRoles();
+
     OrderItemStates getOrderItems();
+
+    OrderShipGroupStates getOrderShipGroups();
 
 
     void mutate(Event e);

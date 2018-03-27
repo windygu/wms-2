@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.Order;
+using Dddml.Wms.Domain.PartyRole;
 using Dddml.Support.Criterion;
 
 namespace Dddml.Wms.Domain.Order
@@ -32,7 +33,11 @@ namespace Dddml.Wms.Domain.Order
 
         long GetCount(ICriterion filter);
 
+        IOrderRoleState GetOrderRole(string orderId, PartyRoleId partyRoleId);
+
         IOrderItemState GetOrderItem(string orderId, string orderItemSeqId);
+
+        IOrderShipGroupState GetOrderShipGroup(string orderId, long? shipGroupSeqId);
 
 	}
 

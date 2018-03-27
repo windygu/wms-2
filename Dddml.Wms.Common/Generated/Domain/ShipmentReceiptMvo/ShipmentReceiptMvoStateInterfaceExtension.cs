@@ -51,7 +51,13 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             cmd.ShipmentReceiptId = state.ShipmentReceiptId;
             cmd.ProductId = state.ProductId;
             cmd.AttributeSetInstanceId = state.AttributeSetInstanceId;
+            cmd.LocatorId = state.LocatorId;
             cmd.ShipmentItemSeqId = state.ShipmentItemSeqId;
+            cmd.ShipmentPackageSeqId = state.ShipmentPackageSeqId;
+            cmd.OrderId = state.OrderId;
+            cmd.OrderItemSeqId = state.OrderItemSeqId;
+            cmd.ReturnId = state.ReturnId;
+            cmd.ReturnItemSeqId = state.ReturnItemSeqId;
             cmd.RejectionReasonId = state.RejectionReasonId;
             cmd.DamageStatusId = state.DamageStatusId;
             cmd.DamageReasonId = state.DamageReasonId;
@@ -67,6 +73,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             cmd.ShipmentStatusId = state.ShipmentStatusId;
             cmd.ShipmentPrimaryOrderId = state.ShipmentPrimaryOrderId;
             cmd.ShipmentPrimaryReturnId = state.ShipmentPrimaryReturnId;
+            cmd.ShipmentPrimaryShipGroupSeqId = state.ShipmentPrimaryShipGroupSeqId;
             cmd.ShipmentPicklistBinId = state.ShipmentPicklistBinId;
             cmd.ShipmentEstimatedReadyDate = state.ShipmentEstimatedReadyDate;
             cmd.ShipmentEstimatedShipDate = state.ShipmentEstimatedShipDate;
@@ -87,7 +94,6 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             cmd.ShipmentPartyIdFrom = state.ShipmentPartyIdFrom;
             cmd.ShipmentAdditionalShippingCharge = state.ShipmentAdditionalShippingCharge;
             cmd.ShipmentAddtlShippingChargeDesc = state.ShipmentAddtlShippingChargeDesc;
-            cmd.ShipmentShipperId = state.ShipmentShipperId;
             cmd.ShipmentCreatedBy = state.ShipmentCreatedBy;
             cmd.ShipmentCreatedAt = state.ShipmentCreatedAt;
             cmd.ShipmentUpdatedBy = state.ShipmentUpdatedBy;
@@ -96,7 +102,13 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             
             if (state.ProductId == null) { cmd.IsPropertyProductIdRemoved = true; }
             if (state.AttributeSetInstanceId == null) { cmd.IsPropertyAttributeSetInstanceIdRemoved = true; }
+            if (state.LocatorId == null) { cmd.IsPropertyLocatorIdRemoved = true; }
             if (state.ShipmentItemSeqId == null) { cmd.IsPropertyShipmentItemSeqIdRemoved = true; }
+            if (state.ShipmentPackageSeqId == null) { cmd.IsPropertyShipmentPackageSeqIdRemoved = true; }
+            if (state.OrderId == null) { cmd.IsPropertyOrderIdRemoved = true; }
+            if (state.OrderItemSeqId == null) { cmd.IsPropertyOrderItemSeqIdRemoved = true; }
+            if (state.ReturnId == null) { cmd.IsPropertyReturnIdRemoved = true; }
+            if (state.ReturnItemSeqId == null) { cmd.IsPropertyReturnItemSeqIdRemoved = true; }
             if (state.RejectionReasonId == null) { cmd.IsPropertyRejectionReasonIdRemoved = true; }
             if (state.DamageStatusId == null) { cmd.IsPropertyDamageStatusIdRemoved = true; }
             if (state.DamageReasonId == null) { cmd.IsPropertyDamageReasonIdRemoved = true; }
@@ -110,6 +122,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             if (state.ShipmentStatusId == null) { cmd.IsPropertyShipmentStatusIdRemoved = true; }
             if (state.ShipmentPrimaryOrderId == null) { cmd.IsPropertyShipmentPrimaryOrderIdRemoved = true; }
             if (state.ShipmentPrimaryReturnId == null) { cmd.IsPropertyShipmentPrimaryReturnIdRemoved = true; }
+            if (state.ShipmentPrimaryShipGroupSeqId == null) { cmd.IsPropertyShipmentPrimaryShipGroupSeqIdRemoved = true; }
             if (state.ShipmentPicklistBinId == null) { cmd.IsPropertyShipmentPicklistBinIdRemoved = true; }
             if (state.ShipmentEstimatedReadyDate == null) { cmd.IsPropertyShipmentEstimatedReadyDateRemoved = true; }
             if (state.ShipmentEstimatedShipDate == null) { cmd.IsPropertyShipmentEstimatedShipDateRemoved = true; }
@@ -130,7 +143,6 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             if (state.ShipmentPartyIdFrom == null) { cmd.IsPropertyShipmentPartyIdFromRemoved = true; }
             if (state.ShipmentAdditionalShippingCharge == null) { cmd.IsPropertyShipmentAdditionalShippingChargeRemoved = true; }
             if (state.ShipmentAddtlShippingChargeDesc == null) { cmd.IsPropertyShipmentAddtlShippingChargeDescRemoved = true; }
-            if (state.ShipmentShipperId == null) { cmd.IsPropertyShipmentShipperIdRemoved = true; }
             if (state.ShipmentCreatedBy == null) { cmd.IsPropertyShipmentCreatedByRemoved = true; }
             if (state.ShipmentUpdatedBy == null) { cmd.IsPropertyShipmentUpdatedByRemoved = true; }
             return cmd;
@@ -146,7 +158,13 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             cmd.ShipmentReceiptId = state.ShipmentReceiptId;
             cmd.ProductId = state.ProductId;
             cmd.AttributeSetInstanceId = state.AttributeSetInstanceId;
+            cmd.LocatorId = state.LocatorId;
             cmd.ShipmentItemSeqId = state.ShipmentItemSeqId;
+            cmd.ShipmentPackageSeqId = state.ShipmentPackageSeqId;
+            cmd.OrderId = state.OrderId;
+            cmd.OrderItemSeqId = state.OrderItemSeqId;
+            cmd.ReturnId = state.ReturnId;
+            cmd.ReturnItemSeqId = state.ReturnItemSeqId;
             cmd.RejectionReasonId = state.RejectionReasonId;
             cmd.DamageStatusId = state.DamageStatusId;
             cmd.DamageReasonId = state.DamageReasonId;
@@ -162,6 +180,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             cmd.ShipmentStatusId = state.ShipmentStatusId;
             cmd.ShipmentPrimaryOrderId = state.ShipmentPrimaryOrderId;
             cmd.ShipmentPrimaryReturnId = state.ShipmentPrimaryReturnId;
+            cmd.ShipmentPrimaryShipGroupSeqId = state.ShipmentPrimaryShipGroupSeqId;
             cmd.ShipmentPicklistBinId = state.ShipmentPicklistBinId;
             cmd.ShipmentEstimatedReadyDate = state.ShipmentEstimatedReadyDate;
             cmd.ShipmentEstimatedShipDate = state.ShipmentEstimatedShipDate;
@@ -182,7 +201,6 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             cmd.ShipmentPartyIdFrom = state.ShipmentPartyIdFrom;
             cmd.ShipmentAdditionalShippingCharge = state.ShipmentAdditionalShippingCharge;
             cmd.ShipmentAddtlShippingChargeDesc = state.ShipmentAddtlShippingChargeDesc;
-            cmd.ShipmentShipperId = state.ShipmentShipperId;
             cmd.ShipmentCreatedBy = state.ShipmentCreatedBy;
             cmd.ShipmentCreatedAt = state.ShipmentCreatedAt;
             cmd.ShipmentUpdatedBy = state.ShipmentUpdatedBy;

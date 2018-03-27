@@ -14,7 +14,13 @@ public final class ShipmentReceiptFilteringProperties
             "receiptSeqId",
             "productId",
             "attributeSetInstanceId",
+            "locatorId",
             "shipmentItemSeqId",
+            "shipmentPackageSeqId",
+            "orderId",
+            "orderItemSeqId",
+            "returnId",
+            "returnItemSeqId",
             "rejectionReasonId",
             "damageStatusId",
             "damageReasonId",
@@ -37,6 +43,12 @@ public final class ShipmentReceiptFilteringProperties
     };
 
     public static final String[] propertyTypes = new String[] {
+            "String",
+            "String",
+            "String",
+            "String",
+            "String",
+            "String",
             "String",
             "String",
             "String",
@@ -80,8 +92,20 @@ public final class ShipmentReceiptFilteringProperties
         aliasMap.put("ProductId", "productId");
         aliasMap.put("attributeSetInstanceId", "attributeSetInstanceId");
         aliasMap.put("AttributeSetInstanceId", "attributeSetInstanceId");
+        aliasMap.put("locatorId", "locatorId");
+        aliasMap.put("LocatorId", "locatorId");
         aliasMap.put("shipmentItemSeqId", "shipmentItemSeqId");
         aliasMap.put("ShipmentItemSeqId", "shipmentItemSeqId");
+        aliasMap.put("shipmentPackageSeqId", "shipmentPackageSeqId");
+        aliasMap.put("ShipmentPackageSeqId", "shipmentPackageSeqId");
+        aliasMap.put("orderId", "orderId");
+        aliasMap.put("OrderId", "orderId");
+        aliasMap.put("orderItemSeqId", "orderItemSeqId");
+        aliasMap.put("OrderItemSeqId", "orderItemSeqId");
+        aliasMap.put("returnId", "returnId");
+        aliasMap.put("ReturnId", "returnId");
+        aliasMap.put("returnItemSeqId", "returnItemSeqId");
+        aliasMap.put("ReturnItemSeqId", "returnItemSeqId");
         aliasMap.put("rejectionReasonId", "rejectionReasonId");
         aliasMap.put("RejectionReasonId", "rejectionReasonId");
         aliasMap.put("damageStatusId", "damageStatusId");

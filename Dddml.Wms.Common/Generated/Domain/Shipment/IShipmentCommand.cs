@@ -31,6 +31,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 		string PrimaryReturnId { get; set; }
 
+		long? PrimaryShipGroupSeqId { get; set; }
+
 		string PicklistBinId { get; set; }
 
 		DateTime? EstimatedReadyDate { get; set; }
@@ -71,8 +73,6 @@ namespace Dddml.Wms.Domain.Shipment
 
 		string AddtlShippingChargeDesc { get; set; }
 
-		string ShipperId { get; set; }
-
 		bool? Active { get; set; }
 
 
@@ -88,6 +88,10 @@ namespace Dddml.Wms.Domain.Shipment
 
         ICreateShipmentReceipt NewCreateShipmentReceipt();
 
+        ICreateItemIssuanceCommands ItemIssuances { get; }
+
+        ICreateItemIssuance NewCreateItemIssuance();
+
 	}
 
 	public interface IMergePatchShipment : ICreateOrMergePatchOrDeleteShipment
@@ -100,6 +104,8 @@ namespace Dddml.Wms.Domain.Shipment
 		bool IsPropertyPrimaryOrderIdRemoved { get; set; }
 
 		bool IsPropertyPrimaryReturnIdRemoved { get; set; }
+
+		bool IsPropertyPrimaryShipGroupSeqIdRemoved { get; set; }
 
 		bool IsPropertyPicklistBinIdRemoved { get; set; }
 
@@ -141,8 +147,6 @@ namespace Dddml.Wms.Domain.Shipment
 
 		bool IsPropertyAddtlShippingChargeDescRemoved { get; set; }
 
-		bool IsPropertyShipperIdRemoved { get; set; }
-
 		bool IsPropertyActiveRemoved { get; set; }
 
         IShipmentItemCommands ShipmentItemCommands { get; }
@@ -160,6 +164,14 @@ namespace Dddml.Wms.Domain.Shipment
         IMergePatchShipmentReceipt NewMergePatchShipmentReceipt();
 
         IRemoveShipmentReceipt NewRemoveShipmentReceipt();
+
+        IItemIssuanceCommands ItemIssuanceCommands { get; }
+
+        ICreateItemIssuance NewCreateItemIssuance();
+
+        IMergePatchItemIssuance NewMergePatchItemIssuance();
+
+        IRemoveItemIssuance NewRemoveItemIssuance();
 
 
 	}
@@ -203,6 +215,26 @@ namespace Dddml.Wms.Domain.Shipment
         void Add(IShipmentReceiptCommand c);
 
         void Remove(IShipmentReceiptCommand c);
+
+        void Clear();
+
+    }
+
+    public interface ICreateItemIssuanceCommands : IEnumerable<ICreateItemIssuance>
+    {
+        void Add(ICreateItemIssuance c);
+
+        void Remove(ICreateItemIssuance c);
+
+        void Clear();
+
+    }
+
+    public interface IItemIssuanceCommands : IEnumerable<IItemIssuanceCommand>
+    {
+        void Add(IItemIssuanceCommand c);
+
+        void Remove(IItemIssuanceCommand c);
 
         void Clear();
 

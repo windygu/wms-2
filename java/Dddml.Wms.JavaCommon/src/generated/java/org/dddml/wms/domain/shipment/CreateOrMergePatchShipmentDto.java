@@ -53,6 +53,18 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.primaryReturnId = primaryReturnId;
     }
 
+    private Long primaryShipGroupSeqId;
+
+    public Long getPrimaryShipGroupSeqId()
+    {
+        return this.primaryShipGroupSeqId;
+    }
+
+    public void setPrimaryShipGroupSeqId(Long primaryShipGroupSeqId)
+    {
+        this.primaryShipGroupSeqId = primaryShipGroupSeqId;
+    }
+
     private String picklistBinId;
 
     public String getPicklistBinId()
@@ -293,18 +305,6 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.addtlShippingChargeDesc = addtlShippingChargeDesc;
     }
 
-    private String shipperId;
-
-    public String getShipperId()
-    {
-        return this.shipperId;
-    }
-
-    public void setShipperId(String shipperId)
-    {
-        this.shipperId = shipperId;
-    }
-
     private Boolean active;
 
     public Boolean getActive()
@@ -339,6 +339,18 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
     public void setShipmentReceipts(CreateOrMergePatchShipmentReceiptDto[] shipmentReceipts)
     {
         this.shipmentReceipts = shipmentReceipts;
+    }
+
+    private CreateOrMergePatchItemIssuanceDto[] itemIssuances;
+
+    public CreateOrMergePatchItemIssuanceDto[] getItemIssuances()
+    {
+        return this.itemIssuances;
+    }
+
+    public void setItemIssuances(CreateOrMergePatchItemIssuanceDto[] itemIssuances)
+    {
+        this.itemIssuances = itemIssuances;
     }
 
     private Boolean isPropertyShipmentTypeIdRemoved;
@@ -387,6 +399,18 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
     public void setIsPropertyPrimaryReturnIdRemoved(Boolean removed)
     {
         this.isPropertyPrimaryReturnIdRemoved = removed;
+    }
+
+    private Boolean isPropertyPrimaryShipGroupSeqIdRemoved;
+
+    public Boolean getIsPropertyPrimaryShipGroupSeqIdRemoved()
+    {
+        return this.isPropertyPrimaryShipGroupSeqIdRemoved;
+    }
+
+    public void setIsPropertyPrimaryShipGroupSeqIdRemoved(Boolean removed)
+    {
+        this.isPropertyPrimaryShipGroupSeqIdRemoved = removed;
     }
 
     private Boolean isPropertyPicklistBinIdRemoved;
@@ -629,18 +653,6 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.isPropertyAddtlShippingChargeDescRemoved = removed;
     }
 
-    private Boolean isPropertyShipperIdRemoved;
-
-    public Boolean getIsPropertyShipperIdRemoved()
-    {
-        return this.isPropertyShipperIdRemoved;
-    }
-
-    public void setIsPropertyShipperIdRemoved(Boolean removed)
-    {
-        this.isPropertyShipperIdRemoved = removed;
-    }
-
     private Boolean isPropertyActiveRemoved;
 
     public Boolean getIsPropertyActiveRemoved()
@@ -660,6 +672,7 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         command.setStatusId(this.getStatusId());
         command.setPrimaryOrderId(this.getPrimaryOrderId());
         command.setPrimaryReturnId(this.getPrimaryReturnId());
+        command.setPrimaryShipGroupSeqId(this.getPrimaryShipGroupSeqId());
         command.setPicklistBinId(this.getPicklistBinId());
         command.setEstimatedReadyDate(this.getEstimatedReadyDate());
         command.setEstimatedShipDate(this.getEstimatedShipDate());
@@ -680,7 +693,6 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         command.setPartyIdFrom(this.getPartyIdFrom());
         command.setAdditionalShippingCharge(this.getAdditionalShippingCharge());
         command.setAddtlShippingChargeDesc(this.getAddtlShippingChargeDesc());
-        command.setShipperId(this.getShipperId());
         command.setActive(this.getActive());
     }
 
@@ -699,6 +711,11 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
                     command.getShipmentReceipts().add((ShipmentReceiptCommand.CreateShipmentReceipt) cmd.toCommand());
                 }
             }
+            if (this.getItemIssuances() != null) {
+                for (CreateOrMergePatchItemIssuanceDto cmd : this.getItemIssuances()) {
+                    command.getItemIssuances().add((ItemIssuanceCommand.CreateItemIssuance) cmd.toCommand());
+                }
+            }
             return command;
         } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {
             AbstractShipmentCommand.SimpleMergePatchShipment command = new AbstractShipmentCommand.SimpleMergePatchShipment();
@@ -711,6 +728,11 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
             if (this.getShipmentReceipts() != null) {
                 for (CreateOrMergePatchShipmentReceiptDto cmd : this.getShipmentReceipts()) {
                     command.getShipmentReceiptCommands().add(cmd.toCommand());
+                }
+            }
+            if (this.getItemIssuances() != null) {
+                for (CreateOrMergePatchItemIssuanceDto cmd : this.getItemIssuances()) {
+                    command.getItemIssuanceCommands().add(cmd.toCommand());
                 }
             }
             return command;
@@ -730,6 +752,7 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         command.setIsPropertyStatusIdRemoved(this.getIsPropertyStatusIdRemoved());
         command.setIsPropertyPrimaryOrderIdRemoved(this.getIsPropertyPrimaryOrderIdRemoved());
         command.setIsPropertyPrimaryReturnIdRemoved(this.getIsPropertyPrimaryReturnIdRemoved());
+        command.setIsPropertyPrimaryShipGroupSeqIdRemoved(this.getIsPropertyPrimaryShipGroupSeqIdRemoved());
         command.setIsPropertyPicklistBinIdRemoved(this.getIsPropertyPicklistBinIdRemoved());
         command.setIsPropertyEstimatedReadyDateRemoved(this.getIsPropertyEstimatedReadyDateRemoved());
         command.setIsPropertyEstimatedShipDateRemoved(this.getIsPropertyEstimatedShipDateRemoved());
@@ -750,7 +773,6 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         command.setIsPropertyPartyIdFromRemoved(this.getIsPropertyPartyIdFromRemoved());
         command.setIsPropertyAdditionalShippingChargeRemoved(this.getIsPropertyAdditionalShippingChargeRemoved());
         command.setIsPropertyAddtlShippingChargeDescRemoved(this.getIsPropertyAddtlShippingChargeDescRemoved());
-        command.setIsPropertyShipperIdRemoved(this.getIsPropertyShipperIdRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
     }
 

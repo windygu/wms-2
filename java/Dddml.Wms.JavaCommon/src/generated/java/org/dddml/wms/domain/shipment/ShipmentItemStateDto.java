@@ -57,18 +57,6 @@ public class ShipmentItemStateDto
         this.quantity = quantity;
     }
 
-    private java.math.BigDecimal targetQuantity;
-
-    public java.math.BigDecimal getTargetQuantity()
-    {
-        return this.targetQuantity;
-    }
-
-    public void setTargetQuantity(java.math.BigDecimal targetQuantity)
-    {
-        this.targetQuantity = targetQuantity;
-    }
-
     private String shipmentContentDescription;
 
     public String getShipmentContentDescription()
@@ -202,9 +190,6 @@ public class ShipmentItemStateDto
             }
             if (returnedFieldsContains("Quantity")) {
                 dto.setQuantity(state.getQuantity());
-            }
-            if (returnedFieldsContains("TargetQuantity")) {
-                dto.setTargetQuantity(state.getTargetQuantity());
             }
             if (returnedFieldsContains("ShipmentContentDescription")) {
                 dto.setShipmentContentDescription(state.getShipmentContentDescription());

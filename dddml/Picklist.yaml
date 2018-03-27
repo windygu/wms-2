@@ -1,0 +1,97 @@
+﻿#%DDDML 0.1
+
+---
+aggregates:
+
+  Picklist:
+    id:
+      name: PicklistId
+      type: id-ne
+      
+    properties:
+      Description:
+        type: description
+      FacilityId:
+        type: id-ne
+      ShipmentMethodTypeId:
+        type: id-ne
+      StatusId:
+        type: id-ne
+      PicklistDate:
+        type: date-time
+      CreatedByUserLogin:
+        type: id-vlong
+      LastModifiedByUserLogin:
+        type: id-vlong
+        
+      PicklistRoles:
+        itemType: PicklistRole
+        
+    references:
+      # Facility:
+        # name: Facility
+        # displayName: Facility
+        # type: Facility
+        # properties:
+        # - FacilityId
+        # foreignKeyName: PICKLST_FLTY
+      # ShipmentMethodType:
+        # name: ShipmentMethodType
+        # displayName: ShipmentMethodType
+        # type: ShipmentMethodType
+        # properties:
+        # - ShipmentMethodTypeId
+        # foreignKeyName: PICKLST_SMTP
+        
+    reservedProperties:
+      createdBy: CreatedByUserLogin
+      updatedBy: LastModifiedByUserLogin
+          
+    entities:
+    
+      PicklistRole:
+        id:
+          name: PartyRoleId
+          type: PartyRoleId
+          
+        properties:
+          # ThruDate:
+            # type: date-time
+          CreatedByUserLogin:
+            type: id-vlong
+          LastModifiedByUserLogin:
+            type: id-vlong
+        # references:
+          # Picklist:
+            # name: Picklist
+            # displayName: Picklist
+            # type: Picklist
+            # properties:
+            # - PicklistRoleId.PicklistId
+            # foreignKeyName: PCKLST_RLE_PKLT
+          # RoleType:
+            # name: RoleType
+            # displayName: RoleType
+            # type: RoleType
+            # properties:
+            # - PicklistRoleId.RoleTypeId
+        reservedProperties:
+          # noActive: true
+          # noDeleted: true
+          createdBy: CreatedByUserLogin
+          updatedBy: LastModifiedByUserLogin
+          
+        # valueObjects:
+          # PicklistRoleId:
+            # name: PicklistRoleId
+            # properties:
+              # PicklistId:
+                # type: id-ne
+              # PartyId:
+                # type: id-ne
+              # RoleTypeId:
+                # type: id-ne
+              # FromDate:
+                # type: date-time
+
+                

@@ -2,6 +2,7 @@ package org.dddml.wms.domain.order;
 
 import java.util.*;
 import java.util.Date;
+import org.dddml.wms.domain.partyrole.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.order.OrderStateEvent.*;
@@ -386,6 +387,18 @@ public abstract class AbstractOrderState implements OrderState, Saveable
         return this.getVersion() == null;
     }
 
+    private OrderRoleStates orderRoles;
+
+    public OrderRoleStates getOrderRoles()
+    {
+        return this.orderRoles;
+    }
+
+    public void setOrderRoles(OrderRoleStates orderRoles)
+    {
+        this.orderRoles = orderRoles;
+    }
+
     private OrderItemStates orderItems;
 
     public OrderItemStates getOrderItems()
@@ -396,6 +409,18 @@ public abstract class AbstractOrderState implements OrderState, Saveable
     public void setOrderItems(OrderItemStates orderItems)
     {
         this.orderItems = orderItems;
+    }
+
+    private OrderShipGroupStates orderShipGroups;
+
+    public OrderShipGroupStates getOrderShipGroups()
+    {
+        return this.orderShipGroups;
+    }
+
+    public void setOrderShipGroups(OrderShipGroupStates orderShipGroups)
+    {
+        this.orderShipGroups = orderShipGroups;
     }
 
     private Boolean stateReadOnly;
@@ -437,7 +462,9 @@ public abstract class AbstractOrderState implements OrderState, Saveable
     }
     
     protected void initializeProperties() {
+        orderRoles = new SimpleOrderRoleStates(this);
         orderItems = new SimpleOrderItemStates(this);
+        orderShipGroups = new SimpleOrderShipGroupStates(this);
     }
 
 
@@ -485,8 +512,16 @@ public abstract class AbstractOrderState implements OrderState, Saveable
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+        for (OrderRoleStateEvent.OrderRoleStateCreated innerEvent : e.getOrderRoleEvents()) {
+            OrderRoleState innerState = this.getOrderRoles().get(innerEvent.getOrderRoleEventId().getPartyRoleId());
+            innerState.mutate(innerEvent);
+        }
         for (OrderItemStateEvent.OrderItemStateCreated innerEvent : e.getOrderItemEvents()) {
             OrderItemState innerState = this.getOrderItems().get(innerEvent.getOrderItemEventId().getOrderItemSeqId());
+            innerState.mutate(innerEvent);
+        }
+        for (OrderShipGroupStateEvent.OrderShipGroupStateCreated innerEvent : e.getOrderShipGroupEvents()) {
+            OrderShipGroupState innerState = this.getOrderShipGroups().get(innerEvent.getOrderShipGroupEventId().getShipGroupSeqId());
             innerState.mutate(innerEvent);
         }
     }
@@ -774,15 +809,37 @@ public abstract class AbstractOrderState implements OrderState, Saveable
         this.setUpdatedBy(e.getCreatedBy());
         this.setUpdatedAt(e.getCreatedAt());
 
+        for (OrderRoleStateEvent innerEvent : e.getOrderRoleEvents()) {
+            OrderRoleState innerState = this.getOrderRoles().get(innerEvent.getOrderRoleEventId().getPartyRoleId());
+            innerState.mutate(innerEvent);
+            if (innerEvent instanceof OrderRoleStateEvent.OrderRoleStateRemoved)
+            {
+                //OrderRoleStateEvent.OrderRoleStateRemoved removed = (OrderRoleStateEvent.OrderRoleStateRemoved)innerEvent;
+                this.getOrderRoles().remove(innerState);
+            }
+        }
         for (OrderItemStateEvent innerEvent : e.getOrderItemEvents()) {
             OrderItemState innerState = this.getOrderItems().get(innerEvent.getOrderItemEventId().getOrderItemSeqId());
             innerState.mutate(innerEvent);
+        }
+        for (OrderShipGroupStateEvent innerEvent : e.getOrderShipGroupEvents()) {
+            OrderShipGroupState innerState = this.getOrderShipGroups().get(innerEvent.getOrderShipGroupEventId().getShipGroupSeqId());
+            innerState.mutate(innerEvent);
+            if (innerEvent instanceof OrderShipGroupStateEvent.OrderShipGroupStateRemoved)
+            {
+                //OrderShipGroupStateEvent.OrderShipGroupStateRemoved removed = (OrderShipGroupStateEvent.OrderShipGroupStateRemoved)innerEvent;
+                this.getOrderShipGroups().remove(innerState);
+            }
         }
     }
 
     public void save()
     {
+        orderRoles.save();
+
         orderItems.save();
+
+        orderShipGroups.save();
 
     }
 
@@ -823,9 +880,25 @@ public abstract class AbstractOrderState implements OrderState, Saveable
 
     }
 
+    static class SimpleOrderRoleStates extends AbstractOrderRoleStates
+    {
+        public SimpleOrderRoleStates(AbstractOrderState outerState)
+        {
+            super(outerState);
+        }
+    }
+
     static class SimpleOrderItemStates extends AbstractOrderItemStates
     {
         public SimpleOrderItemStates(AbstractOrderState outerState)
+        {
+            super(outerState);
+        }
+    }
+
+    static class SimpleOrderShipGroupStates extends AbstractOrderShipGroupStates
+    {
+        public SimpleOrderShipGroupStates(AbstractOrderState outerState)
         {
             super(outerState);
         }

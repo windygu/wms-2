@@ -29,10 +29,6 @@ public interface ShipmentItemMvoState
 
     void setQuantity(java.math.BigDecimal quantity);
 
-    java.math.BigDecimal getTargetQuantity();
-
-    void setTargetQuantity(java.math.BigDecimal targetQuantity);
-
     String getShipmentContentDescription();
 
     void setShipmentContentDescription(String shipmentContentDescription);
@@ -76,6 +72,10 @@ public interface ShipmentItemMvoState
     String getShipmentPrimaryReturnId();
 
     void setShipmentPrimaryReturnId(String shipmentPrimaryReturnId);
+
+    Long getShipmentPrimaryShipGroupSeqId();
+
+    void setShipmentPrimaryShipGroupSeqId(Long shipmentPrimaryShipGroupSeqId);
 
     String getShipmentPicklistBinId();
 
@@ -156,10 +156,6 @@ public interface ShipmentItemMvoState
     String getShipmentAddtlShippingChargeDesc();
 
     void setShipmentAddtlShippingChargeDesc(String shipmentAddtlShippingChargeDesc);
-
-    String getShipmentShipperId();
-
-    void setShipmentShipperId(String shipmentShipperId);
 
     Long getShipmentVersion();
 

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+
+    <!-- C:\svn\ofbiz.15.12\applications\commonext\data\ShippingData.xml -->
+    <ShipmentMethodType description="No Shipping" shipmentMethodTypeId="NO_SHIPPING" />
+    <ShipmentMethodType description="Local Delivery" shipmentMethodTypeId="LOCAL_DELIVERY" />
+    <ShipmentMethodType description="Next Morning" shipmentMethodTypeId="NEXT_AM" />
+    <ShipmentMethodType description="Next Afternoon" shipmentMethodTypeId="NEXT_PM" />
+    <ShipmentMethodType description="Same Day" shipmentMethodTypeId="SAME_DAY" />
+    <ShipmentMethodType description="Guaranteed Next Day" shipmentMethodTypeId="NEXT_DAY" />
+    <ShipmentMethodType description="Air" shipmentMethodTypeId="AIR" />
+    <ShipmentMethodType description="Third Day" shipmentMethodTypeId="THIRD_DAY" />
+    <ShipmentMethodType description="International Express" shipmentMethodTypeId="INT_EXPRESS" />
+    <ShipmentMethodType description="Priority Overnight" shipmentMethodTypeId="PR_OVERNIGHT" />
+    <ShipmentMethodType description="Standard Overnight" shipmentMethodTypeId="ST_OVERNIGHT" />
+    <ShipmentMethodType description="First Overnight" shipmentMethodTypeId="FI_OVERNIGHT" />
+    <ShipmentMethodType description="Second Day" shipmentMethodTypeId="SECOND_DAY" />
+    <ShipmentMethodType description="Express Saver" shipmentMethodTypeId="EXPRESS_SAVER" />
+    <ShipmentMethodType description="International Priority" shipmentMethodTypeId="INTERNAT_PRI" />
+    <ShipmentMethodType description="International Economy" shipmentMethodTypeId="INTERNAT_ECON" />
+    <ShipmentMethodType description="International First" shipmentMethodTypeId="INTERNAT_FI" />
+    <ShipmentMethodType description="1Day Freight" shipmentMethodTypeId="FIRST_DAY_FR" />
+    <ShipmentMethodType description="2Day Freight" shipmentMethodTypeId="SECOND_DAY_FR" />
+    <ShipmentMethodType description="3Day Freight" shipmentMethodTypeId="THIRD_DAY_FR" />
+    <ShipmentMethodType description="Ground" shipmentMethodTypeId="GROUND" />
+    <ShipmentMethodType description="Ground Home Delivery" shipmentMethodTypeId="GROUND_HOME" />
+    <ShipmentMethodType description="International Economy Freight" shipmentMethodTypeId="INTERNAT_ECON_FR" />
+    <ShipmentMethodType description="International Priority Freight" shipmentMethodTypeId="INTERNAT_PRI_FR" />
+    <ShipmentMethodType description="2Day AM" shipmentMethodTypeId="SECOND_DAY_AM" />
+    <ShipmentMethodType description="Europe First Priority" shipmentMethodTypeId="EUROPE_FI_PRIORITY" />
+    <ShipmentMethodType description="Smart Post" shipmentMethodTypeId="SMART_POST" />
+    <ShipmentMethodType description="Fedex National Freight" shipmentMethodTypeId="FEDEX_NATIONAL_FR" />
+    <ShipmentMethodType description="Fedex International Ground " shipmentMethodTypeId="FEDEX_INT_GROUND" />
+    <ShipmentMethodType description="Fedex Freight" shipmentMethodTypeId="FEDEX_FREIGHT" />
+    <ShipmentMethodType description="Standard" shipmentMethodTypeId="STANDARD" />
+    <ShipmentMethodType description="Three-Day Select" shipmentMethodTypeId="THIRD_DAY_AIR_SEL" />
+    <ShipmentMethodType description="Second Day Air" shipmentMethodTypeId="SECOND_DAY_AIR" />
+    <ShipmentMethodType description="Second Day Air Early A.M.  " shipmentMethodTypeId="SECOND_DAY_AIR_AM" />
+    <ShipmentMethodType description="Next Day Air Saver" shipmentMethodTypeId="NEXT_DAY_AIR_SA" />
+    <ShipmentMethodType description="Next Day Air" shipmentMethodTypeId="NEXT_DAY_AIR" />
+    <ShipmentMethodType description="Next Day Air Early A.M." shipmentMethodTypeId="NEXT_DAY_AIR_AM" />
+    <ShipmentMethodType description="Worldwide ExpressSM" shipmentMethodTypeId="WORLDWIDE_EXPRESS" />
+    <ShipmentMethodType description="Worldwide Express Plus" shipmentMethodTypeId="WORLDWIDE_EXPR_PLUS" />
+    <ShipmentMethodType description="Worldwide ExpeditedSM" shipmentMethodTypeId="WORLDWIDE_EXPEDITED" />
+    <ShipmentMethodType description="Saver" shipmentMethodTypeId="SAVER" />
+    <ShipmentMethodType description="First Class" shipmentMethodTypeId="FIRST_CLASS" />
+    <ShipmentMethodType description="First Class International" shipmentMethodTypeId="FC_INTERNATIONAL" />
+    <ShipmentMethodType description="Priority" shipmentMethodTypeId="PRIORITY" />
+    <ShipmentMethodType description="Priority International" shipmentMethodTypeId="PR_INTERNATIONAL" />
+    <ShipmentMethodType description="Express" shipmentMethodTypeId="EXPRESS" />
+    <ShipmentMethodType description="Express International" shipmentMethodTypeId="EXP_INTERNATIONAL" />
+    <ShipmentMethodType description="Media Mail" shipmentMethodTypeId="MEDIA_MAIL" />
+    <ShipmentMethodType description="Standard Post" shipmentMethodTypeId="STANDARD_POST" />
+    <ShipmentMethodType description="Library" shipmentMethodTypeId="LIBRARY" />
+    <ShipmentMethodType description="Express Saturday" shipmentMethodTypeId="EXP_SATURDAY" />
+    <ShipmentMethodType description="Express 10.30 AM" shipmentMethodTypeId="EXP_10_30_AM" />
+
+</entity-engine-xml>

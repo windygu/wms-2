@@ -32,6 +32,10 @@ public interface ShipmentState
 
     void setPrimaryReturnId(String primaryReturnId);
 
+    Long getPrimaryShipGroupSeqId();
+
+    void setPrimaryShipGroupSeqId(Long primaryShipGroupSeqId);
+
     String getPicklistBinId();
 
     void setPicklistBinId(String picklistBinId);
@@ -112,10 +116,6 @@ public interface ShipmentState
 
     void setAddtlShippingChargeDesc(String addtlShippingChargeDesc);
 
-    String getShipperId();
-
-    void setShipperId(String shipperId);
-
     Long getVersion();
 
     void setVersion(Long version);
@@ -148,6 +148,8 @@ public interface ShipmentState
     ShipmentItemStates getShipmentItems();
 
     ShipmentReceiptStates getShipmentReceipts();
+
+    ItemIssuanceStates getItemIssuances();
 
 
     void mutate(Event e);

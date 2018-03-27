@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.picklistrolemvo">
+  
+  <class name="org.dddml.wms.domain.picklistrolemvo.AbstractPicklistRoleMvoState$SimplePicklistRoleMvoState" table="PicklistRole_RV">
+
+	<composite-id name="picklistRoleId" class="org.dddml.wms.domain.picklist.PicklistRoleId">
+		<key-property name="picklistId" ><column name="PicklistRoleIdPicklistId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="partyRoleIdPartyId" ><column name="PicklistRoleIdPartyRoleIdPartyId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="partyRoleIdRoleTypeId" ><column name="PicklistRoleIdPartyRoleIdRoleTypeId" sql-type="VARCHAR(20)" /></key-property>
+	</composite-id>
+	<version name="picklistVersion" column="PicklistVersion" type="long" />
+
+	<property name="createdByUserLogin" ><column name="CreatedByUserLogin" sql-type="VARCHAR(250)" /></property>
+	<property name="lastModifiedByUserLogin" ><column name="LastModifiedByUserLogin" sql-type="VARCHAR(250)" /></property>
+	<property name="version" ></property>
+	<property name="active" ></property>
+	<property name="deleted" ></property>
+	<property name="picklistDescription" ><column name="PicklistDescription" sql-type="VARCHAR(255)" /></property>
+	<property name="picklistFacilityId" ><column name="PicklistFacilityId" sql-type="VARCHAR(20)" /></property>
+	<property name="picklistShipmentMethodTypeId" ><column name="PicklistShipmentMethodTypeId" sql-type="VARCHAR(20)" /></property>
+	<property name="picklistStatusId" ><column name="PicklistStatusId" sql-type="VARCHAR(20)" /></property>
+	<property name="picklistPicklistDate" ><column name="PicklistPicklistDate" sql-type="DATETIME" /></property>
+	<property name="picklistCreatedByUserLogin" ><column name="PicklistCreatedByUserLogin" sql-type="VARCHAR(250)" /></property>
+	<property name="picklistLastModifiedByUserLogin" ><column name="PicklistLastModifiedByUserLogin" sql-type="VARCHAR(250)" /></property>
+	<property name="picklistCreatedAt" type="timestamp"><column name="PicklistCreatedAt" sql-type="DATETIME" /></property>
+	<property name="picklistUpdatedAt" type="timestamp"><column name="PicklistUpdatedAt" sql-type="DATETIME" /></property>
+	<property name="picklistActive" ></property>
+	<property name="picklistDeleted" ></property>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="updatedAt" column="UpdatedAt" />
+
+
+  </class>
+  
+</hibernate-mapping>
+

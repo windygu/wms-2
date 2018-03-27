@@ -29,6 +29,7 @@ public class ShipmentStateEventDtoConverter {
         dto.setStatusId(e.getStatusId());
         dto.setPrimaryOrderId(e.getPrimaryOrderId());
         dto.setPrimaryReturnId(e.getPrimaryReturnId());
+        dto.setPrimaryShipGroupSeqId(e.getPrimaryShipGroupSeqId());
         dto.setPicklistBinId(e.getPicklistBinId());
         dto.setEstimatedReadyDate(e.getEstimatedReadyDate());
         dto.setEstimatedShipDate(e.getEstimatedShipDate());
@@ -49,7 +50,6 @@ public class ShipmentStateEventDtoConverter {
         dto.setPartyIdFrom(e.getPartyIdFrom());
         dto.setAdditionalShippingCharge(e.getAdditionalShippingCharge());
         dto.setAddtlShippingChargeDesc(e.getAddtlShippingChargeDesc());
-        dto.setShipperId(e.getShipperId());
         dto.setActive(e.getActive());
         List<ShipmentItemStateEventDto.ShipmentItemStateCreatedDto> shipmentItemEvents = new ArrayList<>();
         for (ShipmentItemStateEvent.ShipmentItemStateCreated ee : e.getShipmentItemEvents()) {
@@ -65,6 +65,13 @@ public class ShipmentStateEventDtoConverter {
         }
         dto.setShipmentReceiptEvents(shipmentReceiptEvents.toArray(new ShipmentReceiptStateEventDto.ShipmentReceiptStateCreatedDto[0]));
 
+        List<ItemIssuanceStateEventDto.ItemIssuanceStateCreatedDto> itemIssuanceEvents = new ArrayList<>();
+        for (ItemIssuanceStateEvent.ItemIssuanceStateCreated ee : e.getItemIssuanceEvents()) {
+            ItemIssuanceStateEventDto.ItemIssuanceStateCreatedDto eeDto = getItemIssuanceStateEventDtoConverter().toItemIssuanceStateCreatedDto(ee);
+            itemIssuanceEvents.add(eeDto);
+        }
+        dto.setItemIssuanceEvents(itemIssuanceEvents.toArray(new ItemIssuanceStateEventDto.ItemIssuanceStateCreatedDto[0]));
+
         return dto;
     }
 
@@ -78,6 +85,7 @@ public class ShipmentStateEventDtoConverter {
         dto.setStatusId(e.getStatusId());
         dto.setPrimaryOrderId(e.getPrimaryOrderId());
         dto.setPrimaryReturnId(e.getPrimaryReturnId());
+        dto.setPrimaryShipGroupSeqId(e.getPrimaryShipGroupSeqId());
         dto.setPicklistBinId(e.getPicklistBinId());
         dto.setEstimatedReadyDate(e.getEstimatedReadyDate());
         dto.setEstimatedShipDate(e.getEstimatedShipDate());
@@ -98,12 +106,12 @@ public class ShipmentStateEventDtoConverter {
         dto.setPartyIdFrom(e.getPartyIdFrom());
         dto.setAdditionalShippingCharge(e.getAdditionalShippingCharge());
         dto.setAddtlShippingChargeDesc(e.getAddtlShippingChargeDesc());
-        dto.setShipperId(e.getShipperId());
         dto.setActive(e.getActive());
         dto.setIsPropertyShipmentTypeIdRemoved(e.getIsPropertyShipmentTypeIdRemoved());
         dto.setIsPropertyStatusIdRemoved(e.getIsPropertyStatusIdRemoved());
         dto.setIsPropertyPrimaryOrderIdRemoved(e.getIsPropertyPrimaryOrderIdRemoved());
         dto.setIsPropertyPrimaryReturnIdRemoved(e.getIsPropertyPrimaryReturnIdRemoved());
+        dto.setIsPropertyPrimaryShipGroupSeqIdRemoved(e.getIsPropertyPrimaryShipGroupSeqIdRemoved());
         dto.setIsPropertyPicklistBinIdRemoved(e.getIsPropertyPicklistBinIdRemoved());
         dto.setIsPropertyEstimatedReadyDateRemoved(e.getIsPropertyEstimatedReadyDateRemoved());
         dto.setIsPropertyEstimatedShipDateRemoved(e.getIsPropertyEstimatedShipDateRemoved());
@@ -124,7 +132,6 @@ public class ShipmentStateEventDtoConverter {
         dto.setIsPropertyPartyIdFromRemoved(e.getIsPropertyPartyIdFromRemoved());
         dto.setIsPropertyAdditionalShippingChargeRemoved(e.getIsPropertyAdditionalShippingChargeRemoved());
         dto.setIsPropertyAddtlShippingChargeDescRemoved(e.getIsPropertyAddtlShippingChargeDescRemoved());
-        dto.setIsPropertyShipperIdRemoved(e.getIsPropertyShipperIdRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
         List<ShipmentItemStateEventDto> shipmentItemEvents = new ArrayList<>();
         for (ShipmentItemStateEvent ee : e.getShipmentItemEvents()) {
@@ -140,6 +147,13 @@ public class ShipmentStateEventDtoConverter {
         }
         dto.setShipmentReceiptEvents(shipmentReceiptEvents.toArray(new ShipmentReceiptStateEventDto[0]));
 
+        List<ItemIssuanceStateEventDto> itemIssuanceEvents = new ArrayList<>();
+        for (ItemIssuanceStateEvent ee : e.getItemIssuanceEvents()) {
+            ItemIssuanceStateEventDto eeDto = getItemIssuanceStateEventDtoConverter().toItemIssuanceStateEventDto((AbstractItemIssuanceStateEvent) ee);
+            itemIssuanceEvents.add(eeDto);
+        }
+        dto.setItemIssuanceEvents(itemIssuanceEvents.toArray(new ItemIssuanceStateEventDto[0]));
+
         return dto;
     }
 
@@ -150,6 +164,10 @@ public class ShipmentStateEventDtoConverter {
 
     protected ShipmentReceiptStateEventDtoConverter getShipmentReceiptStateEventDtoConverter() {
         return new ShipmentReceiptStateEventDtoConverter();
+    }
+
+    protected ItemIssuanceStateEventDtoConverter getItemIssuanceStateEventDtoConverter() {
+        return new ItemIssuanceStateEventDtoConverter();
     }
 
 }

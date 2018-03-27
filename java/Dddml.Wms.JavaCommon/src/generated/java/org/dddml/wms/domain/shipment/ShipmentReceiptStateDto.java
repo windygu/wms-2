@@ -45,6 +45,18 @@ public class ShipmentReceiptStateDto
         this.attributeSetInstanceId = attributeSetInstanceId;
     }
 
+    private String locatorId;
+
+    public String getLocatorId()
+    {
+        return this.locatorId;
+    }
+
+    public void setLocatorId(String locatorId)
+    {
+        this.locatorId = locatorId;
+    }
+
     private String shipmentItemSeqId;
 
     public String getShipmentItemSeqId()
@@ -55,6 +67,66 @@ public class ShipmentReceiptStateDto
     public void setShipmentItemSeqId(String shipmentItemSeqId)
     {
         this.shipmentItemSeqId = shipmentItemSeqId;
+    }
+
+    private String shipmentPackageSeqId;
+
+    public String getShipmentPackageSeqId()
+    {
+        return this.shipmentPackageSeqId;
+    }
+
+    public void setShipmentPackageSeqId(String shipmentPackageSeqId)
+    {
+        this.shipmentPackageSeqId = shipmentPackageSeqId;
+    }
+
+    private String orderId;
+
+    public String getOrderId()
+    {
+        return this.orderId;
+    }
+
+    public void setOrderId(String orderId)
+    {
+        this.orderId = orderId;
+    }
+
+    private String orderItemSeqId;
+
+    public String getOrderItemSeqId()
+    {
+        return this.orderItemSeqId;
+    }
+
+    public void setOrderItemSeqId(String orderItemSeqId)
+    {
+        this.orderItemSeqId = orderItemSeqId;
+    }
+
+    private String returnId;
+
+    public String getReturnId()
+    {
+        return this.returnId;
+    }
+
+    public void setReturnId(String returnId)
+    {
+        this.returnId = returnId;
+    }
+
+    private String returnItemSeqId;
+
+    public String getReturnItemSeqId()
+    {
+        return this.returnItemSeqId;
+    }
+
+    public void setReturnItemSeqId(String returnItemSeqId)
+    {
+        this.returnItemSeqId = returnItemSeqId;
     }
 
     private String rejectionReasonId;
@@ -284,8 +356,26 @@ public class ShipmentReceiptStateDto
             if (returnedFieldsContains("AttributeSetInstanceId")) {
                 dto.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
             }
+            if (returnedFieldsContains("LocatorId")) {
+                dto.setLocatorId(state.getLocatorId());
+            }
             if (returnedFieldsContains("ShipmentItemSeqId")) {
                 dto.setShipmentItemSeqId(state.getShipmentItemSeqId());
+            }
+            if (returnedFieldsContains("ShipmentPackageSeqId")) {
+                dto.setShipmentPackageSeqId(state.getShipmentPackageSeqId());
+            }
+            if (returnedFieldsContains("OrderId")) {
+                dto.setOrderId(state.getOrderId());
+            }
+            if (returnedFieldsContains("OrderItemSeqId")) {
+                dto.setOrderItemSeqId(state.getOrderItemSeqId());
+            }
+            if (returnedFieldsContains("ReturnId")) {
+                dto.setReturnId(state.getReturnId());
+            }
+            if (returnedFieldsContains("ReturnItemSeqId")) {
+                dto.setReturnItemSeqId(state.getReturnItemSeqId());
             }
             if (returnedFieldsContains("RejectionReasonId")) {
                 dto.setRejectionReasonId(state.getRejectionReasonId());

@@ -338,6 +338,23 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetShipmentReceiptAsync(shipmentId, receiptSeqId).GetAwaiter().GetResult();
         }
 
+        public async virtual Task<IItemIssuanceState> GetItemIssuanceAsync(string shipmentId, string itemIssuanceSeqId)
+        {
+            var uriParameters = new ItemIssuanceUriParameters();
+            uriParameters.ShipmentId = shipmentId;
+            uriParameters.ItemIssuanceSeqId = itemIssuanceSeqId;
+
+            var req = new ItemIssuanceGetRequest(uriParameters);
+            var resp = await _ramlClient.ItemIssuance.Get(req);
+            ShipmentProxyUtils.ThrowOnHttpResponseError(resp);
+            return (resp.Content == null) ? null : resp.Content.ToItemIssuanceState();
+        }
+
+        public virtual IItemIssuanceState GetItemIssuance(string shipmentId, string itemIssuanceSeqId)
+        {
+            return GetItemIssuanceAsync(shipmentId, itemIssuanceSeqId).GetAwaiter().GetResult();
+        }
+
 
         protected virtual string QueryFieldValueSeparator
         {

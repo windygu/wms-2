@@ -69,18 +69,6 @@ public abstract class AbstractShipmentItemMvoStateEvent extends AbstractStateEve
         this.quantity = quantity;
     }
 
-    private java.math.BigDecimal targetQuantity;
-
-    public java.math.BigDecimal getTargetQuantity()
-    {
-        return this.targetQuantity;
-    }
-
-    public void setTargetQuantity(java.math.BigDecimal targetQuantity)
-    {
-        this.targetQuantity = targetQuantity;
-    }
-
     private String shipmentContentDescription;
 
     public String getShipmentContentDescription()
@@ -187,6 +175,18 @@ public abstract class AbstractShipmentItemMvoStateEvent extends AbstractStateEve
     public void setShipmentPrimaryReturnId(String shipmentPrimaryReturnId)
     {
         this.shipmentPrimaryReturnId = shipmentPrimaryReturnId;
+    }
+
+    private Long shipmentPrimaryShipGroupSeqId;
+
+    public Long getShipmentPrimaryShipGroupSeqId()
+    {
+        return this.shipmentPrimaryShipGroupSeqId;
+    }
+
+    public void setShipmentPrimaryShipGroupSeqId(Long shipmentPrimaryShipGroupSeqId)
+    {
+        this.shipmentPrimaryShipGroupSeqId = shipmentPrimaryShipGroupSeqId;
     }
 
     private String shipmentPicklistBinId;
@@ -429,18 +429,6 @@ public abstract class AbstractShipmentItemMvoStateEvent extends AbstractStateEve
         this.shipmentAddtlShippingChargeDesc = shipmentAddtlShippingChargeDesc;
     }
 
-    private String shipmentShipperId;
-
-    public String getShipmentShipperId()
-    {
-        return this.shipmentShipperId;
-    }
-
-    public void setShipmentShipperId(String shipmentShipperId)
-    {
-        this.shipmentShipperId = shipmentShipperId;
-    }
-
     private String shipmentCreatedBy;
 
     public String getShipmentCreatedBy()
@@ -584,16 +572,6 @@ public abstract class AbstractShipmentItemMvoStateEvent extends AbstractStateEve
             this.isPropertyQuantityRemoved = removed;
         }
 
-        private Boolean isPropertyTargetQuantityRemoved;
-
-        public Boolean getIsPropertyTargetQuantityRemoved() {
-            return this.isPropertyTargetQuantityRemoved;
-        }
-
-        public void setIsPropertyTargetQuantityRemoved(Boolean removed) {
-            this.isPropertyTargetQuantityRemoved = removed;
-        }
-
         private Boolean isPropertyShipmentContentDescriptionRemoved;
 
         public Boolean getIsPropertyShipmentContentDescriptionRemoved() {
@@ -662,6 +640,16 @@ public abstract class AbstractShipmentItemMvoStateEvent extends AbstractStateEve
 
         public void setIsPropertyShipmentPrimaryReturnIdRemoved(Boolean removed) {
             this.isPropertyShipmentPrimaryReturnIdRemoved = removed;
+        }
+
+        private Boolean isPropertyShipmentPrimaryShipGroupSeqIdRemoved;
+
+        public Boolean getIsPropertyShipmentPrimaryShipGroupSeqIdRemoved() {
+            return this.isPropertyShipmentPrimaryShipGroupSeqIdRemoved;
+        }
+
+        public void setIsPropertyShipmentPrimaryShipGroupSeqIdRemoved(Boolean removed) {
+            this.isPropertyShipmentPrimaryShipGroupSeqIdRemoved = removed;
         }
 
         private Boolean isPropertyShipmentPicklistBinIdRemoved;
@@ -862,16 +850,6 @@ public abstract class AbstractShipmentItemMvoStateEvent extends AbstractStateEve
 
         public void setIsPropertyShipmentAddtlShippingChargeDescRemoved(Boolean removed) {
             this.isPropertyShipmentAddtlShippingChargeDescRemoved = removed;
-        }
-
-        private Boolean isPropertyShipmentShipperIdRemoved;
-
-        public Boolean getIsPropertyShipmentShipperIdRemoved() {
-            return this.isPropertyShipmentShipperIdRemoved;
-        }
-
-        public void setIsPropertyShipmentShipperIdRemoved(Boolean removed) {
-            this.isPropertyShipmentShipperIdRemoved = removed;
         }
 
         private Boolean isPropertyShipmentCreatedByRemoved;

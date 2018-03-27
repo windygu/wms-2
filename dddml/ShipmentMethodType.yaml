@@ -1,0 +1,21 @@
+﻿#%DDDML 0.1
+
+---
+aggregates:
+
+  ShipmentMethodType:
+    id:
+      name: ShipmentMethodTypeId
+      type: id-ne
+      
+    properties:
+    
+      Description:
+        type: description
+      SequenceNum:
+        type: numeric
+        
+    references: {}
+    
+    reservedProperties: {}
+    

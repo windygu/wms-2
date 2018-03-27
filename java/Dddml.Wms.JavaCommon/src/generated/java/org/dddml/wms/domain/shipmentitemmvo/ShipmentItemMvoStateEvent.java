@@ -26,10 +26,6 @@ public interface ShipmentItemMvoStateEvent extends Event
 
     void setQuantity(java.math.BigDecimal quantity);
 
-    java.math.BigDecimal getTargetQuantity();
-
-    void setTargetQuantity(java.math.BigDecimal targetQuantity);
-
     String getShipmentContentDescription();
 
     void setShipmentContentDescription(String shipmentContentDescription);
@@ -65,6 +61,10 @@ public interface ShipmentItemMvoStateEvent extends Event
     String getShipmentPrimaryReturnId();
 
     void setShipmentPrimaryReturnId(String shipmentPrimaryReturnId);
+
+    Long getShipmentPrimaryShipGroupSeqId();
+
+    void setShipmentPrimaryShipGroupSeqId(Long shipmentPrimaryShipGroupSeqId);
 
     String getShipmentPicklistBinId();
 
@@ -146,10 +146,6 @@ public interface ShipmentItemMvoStateEvent extends Event
 
     void setShipmentAddtlShippingChargeDesc(String shipmentAddtlShippingChargeDesc);
 
-    String getShipmentShipperId();
-
-    void setShipmentShipperId(String shipmentShipperId);
-
     String getShipmentCreatedBy();
 
     void setShipmentCreatedBy(String shipmentCreatedBy);
@@ -194,10 +190,6 @@ public interface ShipmentItemMvoStateEvent extends Event
 
         void setIsPropertyQuantityRemoved(Boolean removed);
 
-        Boolean getIsPropertyTargetQuantityRemoved();
-
-        void setIsPropertyTargetQuantityRemoved(Boolean removed);
-
         Boolean getIsPropertyShipmentContentDescriptionRemoved();
 
         void setIsPropertyShipmentContentDescriptionRemoved(Boolean removed);
@@ -225,6 +217,10 @@ public interface ShipmentItemMvoStateEvent extends Event
         Boolean getIsPropertyShipmentPrimaryReturnIdRemoved();
 
         void setIsPropertyShipmentPrimaryReturnIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyShipmentPrimaryShipGroupSeqIdRemoved();
+
+        void setIsPropertyShipmentPrimaryShipGroupSeqIdRemoved(Boolean removed);
 
         Boolean getIsPropertyShipmentPicklistBinIdRemoved();
 
@@ -305,10 +301,6 @@ public interface ShipmentItemMvoStateEvent extends Event
         Boolean getIsPropertyShipmentAddtlShippingChargeDescRemoved();
 
         void setIsPropertyShipmentAddtlShippingChargeDescRemoved(Boolean removed);
-
-        Boolean getIsPropertyShipmentShipperIdRemoved();
-
-        void setIsPropertyShipmentShipperIdRemoved(Boolean removed);
 
         Boolean getIsPropertyShipmentCreatedByRemoved();
 

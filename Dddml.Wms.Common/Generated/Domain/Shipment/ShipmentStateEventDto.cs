@@ -50,6 +50,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual string PrimaryReturnId { get; set; }
 
+		public virtual long? PrimaryShipGroupSeqId { get; set; }
+
 		public virtual string PicklistBinId { get; set; }
 
 		public virtual DateTime? EstimatedReadyDate { get; set; }
@@ -89,8 +91,6 @@ namespace Dddml.Wms.Domain.Shipment
 		public virtual decimal? AdditionalShippingCharge { get; set; }
 
 		public virtual string AddtlShippingChargeDesc { get; set; }
-
-		public virtual string ShipperId { get; set; }
 
 		public virtual bool? Active { get; set; }
 
@@ -196,6 +196,25 @@ namespace Dddml.Wms.Domain.Shipment
             set 
             {
                 this.IsPropertyPrimaryReturnIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyPrimaryShipGroupSeqIdRemoved { get; set; }
+
+        bool IShipmentStateMergePatched.IsPropertyPrimaryShipGroupSeqIdRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyPrimaryShipGroupSeqIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyPrimaryShipGroupSeqIdRemoved = value;
             }
         }
 
@@ -579,25 +598,6 @@ namespace Dddml.Wms.Domain.Shipment
             }
         }
 
-		public virtual bool? IsPropertyShipperIdRemoved { get; set; }
-
-        bool IShipmentStateMergePatched.IsPropertyShipperIdRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyShipperIdRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyShipperIdRemoved = value;
-            }
-        }
-
 		public virtual bool? IsPropertyActiveRemoved { get; set; }
 
         bool IShipmentStateMergePatched.IsPropertyActiveRemoved
@@ -789,6 +789,97 @@ namespace Dddml.Wms.Domain.Shipment
         IShipmentReceiptStateMergePatched IShipmentStateMergePatched.NewShipmentReceiptStateMergePatched(string receiptSeqId)
         {
             return NewShipmentReceiptStateMergePatched(receiptSeqId);
+        }
+
+
+        private ItemIssuanceStateCreatedOrMergePatchedOrRemovedDtos _itemIssuanceEvents = new ItemIssuanceStateCreatedOrMergePatchedOrRemovedDtos();
+
+        public virtual ItemIssuanceStateCreatedOrMergePatchedOrRemovedDto[] ItemIssuanceEvents
+        {
+            get
+            {
+                return _itemIssuanceEvents.ToArray();
+            }
+            set
+            {
+                _itemIssuanceEvents.Clear();
+                _itemIssuanceEvents.AddRange(value);
+            }
+        }
+
+
+
+        private ItemIssuanceEventId NewItemIssuanceEventId(string itemIssuanceSeqId)
+        {
+            var eId = new ItemIssuanceEventId();
+            eId.ShipmentId = this.ShipmentEventId.ShipmentId;
+            eId.ItemIssuanceSeqId = itemIssuanceSeqId;
+            eId.ShipmentVersion = this.ShipmentEventId.Version;
+            return eId;
+        }
+
+        public virtual ItemIssuanceStateCreatedDto NewItemIssuanceStateCreated(string itemIssuanceSeqId)
+        {
+            var e = new ItemIssuanceStateCreatedDto();
+            var eId = NewItemIssuanceEventId(itemIssuanceSeqId);
+            e.ItemIssuanceEventId = eId;
+            return e;
+        }
+
+        public virtual ItemIssuanceStateMergePatchedDto NewItemIssuanceStateMergePatched(string itemIssuanceSeqId)
+        {
+            var e = new ItemIssuanceStateMergePatchedDto();
+            var eId = NewItemIssuanceEventId(itemIssuanceSeqId);
+            e.ItemIssuanceEventId = eId;
+            return e;
+        }
+
+        public virtual ItemIssuanceStateRemovedDto NewItemIssuanceStateRemoved(string itemIssuanceSeqId)
+        {
+            var e = new ItemIssuanceStateRemovedDto();
+            var eId = NewItemIssuanceEventId(itemIssuanceSeqId);
+            e.ItemIssuanceEventId = eId;
+            return e;
+        }
+
+        IEnumerable<IItemIssuanceStateCreated> IShipmentStateCreated.ItemIssuanceEvents
+        {
+            get { return this._itemIssuanceEvents; }
+        }
+
+        void IShipmentStateCreated.AddItemIssuanceEvent(IItemIssuanceStateCreated e)
+        {
+            this._itemIssuanceEvents.AddItemIssuanceEvent(e);
+        }
+
+        IItemIssuanceStateCreated IShipmentStateCreated.NewItemIssuanceStateCreated(string itemIssuanceSeqId)
+        {
+            return NewItemIssuanceStateCreated(itemIssuanceSeqId);
+        }
+
+        IEnumerable<IItemIssuanceStateEvent> IShipmentStateMergePatched.ItemIssuanceEvents
+        {
+            get { return this._itemIssuanceEvents; }
+        }
+
+        void IShipmentStateMergePatched.AddItemIssuanceEvent(IItemIssuanceStateEvent e)
+        {
+            this._itemIssuanceEvents.AddItemIssuanceEvent(e);
+        }
+
+        IItemIssuanceStateCreated IShipmentStateMergePatched.NewItemIssuanceStateCreated(string itemIssuanceSeqId)
+        {
+            return NewItemIssuanceStateCreated(itemIssuanceSeqId);
+        }
+
+        IItemIssuanceStateMergePatched IShipmentStateMergePatched.NewItemIssuanceStateMergePatched(string itemIssuanceSeqId)
+        {
+            return NewItemIssuanceStateMergePatched(itemIssuanceSeqId);
+        }
+
+        IItemIssuanceStateRemoved IShipmentStateMergePatched.NewItemIssuanceStateRemoved(string itemIssuanceSeqId)
+        {
+            return NewItemIssuanceStateRemoved(itemIssuanceSeqId);
         }
 
 

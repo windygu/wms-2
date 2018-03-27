@@ -15,7 +15,7 @@ namespace Dddml.Wms.Domain.Shipment
 	public partial class ShipmentStateDtoWrapper : StateDtoWrapperBase, IShipmentStateDto, IShipmentState
 	{
 
-        internal static IList<string> _collectionFieldNames = new string[] { "ShipmentItems", "ShipmentReceipts" };
+        internal static IList<string> _collectionFieldNames = new string[] { "ShipmentItems", "ShipmentReceipts", "ItemIssuances" };
 
         protected override bool IsCollectionField(string fieldName)
         {
@@ -176,6 +176,34 @@ namespace Dddml.Wms.Domain.Shipment
             set 
             {
                 (this._state as IShipmentStateProperties).PrimaryReturnId = value;
+            }
+        }
+
+		public virtual long? PrimaryShipGroupSeqId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("PrimaryShipGroupSeqId"))
+                {
+                    return _state.PrimaryShipGroupSeqId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.PrimaryShipGroupSeqId = value;
+            }
+        }
+
+        long? IShipmentStateProperties.PrimaryShipGroupSeqId
+        {
+            get 
+            {
+                return (this._state as IShipmentStateProperties).PrimaryShipGroupSeqId;
+            }
+            set 
+            {
+                (this._state as IShipmentStateProperties).PrimaryShipGroupSeqId = value;
             }
         }
 
@@ -739,34 +767,6 @@ namespace Dddml.Wms.Domain.Shipment
             }
         }
 
-		public virtual string ShipperId
-		{
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("ShipperId"))
-                {
-                    return _state.ShipperId;
-                }
-                return null;
-            }
-            set
-            {
-                _state.ShipperId = value;
-            }
-        }
-
-        string IShipmentStateProperties.ShipperId
-        {
-            get 
-            {
-                return (this._state as IShipmentStateProperties).ShipperId;
-            }
-            set 
-            {
-                (this._state as IShipmentStateProperties).ShipperId = value;
-            }
-        }
-
 		public virtual bool? Active
         {
             get
@@ -1055,6 +1055,52 @@ namespace Dddml.Wms.Domain.Shipment
             set { _state.ShipmentReceipts = value; }
         }
 
+        public virtual IItemIssuanceStateDto[] ItemIssuances
+        {
+            get 
+            {
+                if (!(this as IStateDtoWrapper).ReturnedFieldsContains("ItemIssuances"))
+                {
+                    return null;
+                }
+                var dtos = new List<IItemIssuanceStateDto>();
+                if (this._state.ItemIssuances != null)
+                {
+                    foreach (var s in this._state.ItemIssuances)
+                    {
+                        var dto = new ItemIssuanceStateDtoWrapper((ItemIssuanceState)s);
+                        var returnFS = CollectionUtils.DictionaryGetValueIgnoringCase(ReturnedFields, "ItemIssuances");
+                        if (!String.IsNullOrWhiteSpace(returnFS))
+                        {
+                            (dto as IStateDtoWrapper).ReturnedFieldsString = returnFS;
+                        }
+                        else
+                        {
+                            (dto as IStateDtoWrapper).AllFieldsReturned = this.AllFieldsReturned;
+                        }
+                        dtos.Add(dto);
+                    }
+                }
+                return dtos.ToArray();
+            }
+            set 
+            {
+                if (value == null) { value = new ItemIssuanceStateDtoWrapper[0]; }
+                var states = new List<IItemIssuanceState>();
+                foreach (var s in value)
+                {
+                    states.Add(s.ToItemIssuanceState());
+                }
+                this._state.ItemIssuances = new DtoItemIssuanceStates(this._state, states);
+            }
+        }
+
+        IItemIssuanceStates IShipmentState.ItemIssuances
+        {
+            get { return _state.ItemIssuances; }
+            set { _state.ItemIssuances = value; }
+        }
+
 		void IShipmentState.When(IShipmentStateCreated e)
 		{
             throw new NotSupportedException();
@@ -1197,6 +1243,67 @@ namespace Dddml.Wms.Domain.Shipment
             }
 
             public void AddToSave(IShipmentReceiptState state)
+            {
+                throw new NotSupportedException();
+            }
+
+            public void Save()
+            {
+                throw new NotSupportedException();
+            }
+        }
+
+        public class DtoItemIssuanceStates : IItemIssuanceStates
+        {
+
+            private IShipmentState _outerState;
+
+            private IEnumerable<IItemIssuanceState> _innerStates;
+
+            public DtoItemIssuanceStates(IShipmentState outerState, IEnumerable<IItemIssuanceState> innerStates)
+            {
+                this._outerState = outerState;
+                if (innerStates == null)
+                {
+                    this._innerStates = new IItemIssuanceState[] { };
+                }
+                else
+                {
+                    this._innerStates = innerStates;
+                }
+            }
+
+            public IEnumerator<IItemIssuanceState> GetEnumerator()
+            {
+                return _innerStates.GetEnumerator();
+            }
+
+            System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+            {
+                return _innerStates.GetEnumerator();
+            }
+
+            public IItemIssuanceState Get(string itemIssuanceSeqId)
+            {
+                throw new NotSupportedException();
+            }
+
+            public IItemIssuanceState Get(string itemIssuanceSeqId, bool forCreation)
+            {
+                throw new NotSupportedException();
+            }
+
+            public IItemIssuanceState Get(string itemIssuanceSeqId, bool forCreation, bool nullAllowed)
+            {
+                throw new NotSupportedException();
+            }
+
+            public void Remove(IItemIssuanceState state)
+            {
+                throw new NotSupportedException();
+            }
+
+            public void AddToSave(IItemIssuanceState state)
             {
                 throw new NotSupportedException();
             }

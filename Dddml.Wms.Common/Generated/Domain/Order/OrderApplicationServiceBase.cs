@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.Order;
+using Dddml.Wms.Domain.PartyRole;
 using Dddml.Support.Criterion;
 
 namespace Dddml.Wms.Domain.Order
@@ -160,9 +161,19 @@ namespace Dddml.Wms.Domain.Order
             return new OrderState(eventStream.Events);
         }
 
+        public virtual IOrderRoleState GetOrderRole(string orderId, PartyRoleId partyRoleId)
+        {
+            return StateQueryRepository.GetOrderRole(orderId, partyRoleId);
+        }
+
         public virtual IOrderItemState GetOrderItem(string orderId, string orderItemSeqId)
         {
             return StateQueryRepository.GetOrderItem(orderId, orderItemSeqId);
+        }
+
+        public virtual IOrderShipGroupState GetOrderShipGroup(string orderId, long? shipGroupSeqId)
+        {
+            return StateQueryRepository.GetOrderShipGroup(orderId, shipGroupSeqId);
         }
 
 

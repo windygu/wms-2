@@ -59,6 +59,18 @@ public abstract class AbstractShipmentReceiptState implements ShipmentReceiptSta
         this.attributeSetInstanceId = attributeSetInstanceId;
     }
 
+    private String locatorId;
+
+    public String getLocatorId()
+    {
+        return this.locatorId;
+    }
+
+    public void setLocatorId(String locatorId)
+    {
+        this.locatorId = locatorId;
+    }
+
     private String shipmentItemSeqId;
 
     public String getShipmentItemSeqId()
@@ -69,6 +81,66 @@ public abstract class AbstractShipmentReceiptState implements ShipmentReceiptSta
     public void setShipmentItemSeqId(String shipmentItemSeqId)
     {
         this.shipmentItemSeqId = shipmentItemSeqId;
+    }
+
+    private String shipmentPackageSeqId;
+
+    public String getShipmentPackageSeqId()
+    {
+        return this.shipmentPackageSeqId;
+    }
+
+    public void setShipmentPackageSeqId(String shipmentPackageSeqId)
+    {
+        this.shipmentPackageSeqId = shipmentPackageSeqId;
+    }
+
+    private String orderId;
+
+    public String getOrderId()
+    {
+        return this.orderId;
+    }
+
+    public void setOrderId(String orderId)
+    {
+        this.orderId = orderId;
+    }
+
+    private String orderItemSeqId;
+
+    public String getOrderItemSeqId()
+    {
+        return this.orderItemSeqId;
+    }
+
+    public void setOrderItemSeqId(String orderItemSeqId)
+    {
+        this.orderItemSeqId = orderItemSeqId;
+    }
+
+    private String returnId;
+
+    public String getReturnId()
+    {
+        return this.returnId;
+    }
+
+    public void setReturnId(String returnId)
+    {
+        this.returnId = returnId;
+    }
+
+    private String returnItemSeqId;
+
+    public String getReturnItemSeqId()
+    {
+        return this.returnItemSeqId;
+    }
+
+    public void setReturnItemSeqId(String returnItemSeqId)
+    {
+        this.returnItemSeqId = returnItemSeqId;
     }
 
     private String rejectionReasonId;
@@ -304,7 +376,13 @@ public abstract class AbstractShipmentReceiptState implements ShipmentReceiptSta
 
         this.setProductId(e.getProductId());
         this.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
+        this.setLocatorId(e.getLocatorId());
         this.setShipmentItemSeqId(e.getShipmentItemSeqId());
+        this.setShipmentPackageSeqId(e.getShipmentPackageSeqId());
+        this.setOrderId(e.getOrderId());
+        this.setOrderItemSeqId(e.getOrderItemSeqId());
+        this.setReturnId(e.getReturnId());
+        this.setReturnItemSeqId(e.getReturnItemSeqId());
         this.setRejectionReasonId(e.getRejectionReasonId());
         this.setDamageStatusId(e.getDamageStatusId());
         this.setDamageReasonId(e.getDamageReasonId());
@@ -347,6 +425,17 @@ public abstract class AbstractShipmentReceiptState implements ShipmentReceiptSta
         {
             this.setAttributeSetInstanceId(e.getAttributeSetInstanceId());
         }
+        if (e.getLocatorId() == null)
+        {
+            if (e.getIsPropertyLocatorIdRemoved() != null && e.getIsPropertyLocatorIdRemoved())
+            {
+                this.setLocatorId(null);
+            }
+        }
+        else
+        {
+            this.setLocatorId(e.getLocatorId());
+        }
         if (e.getShipmentItemSeqId() == null)
         {
             if (e.getIsPropertyShipmentItemSeqIdRemoved() != null && e.getIsPropertyShipmentItemSeqIdRemoved())
@@ -357,6 +446,61 @@ public abstract class AbstractShipmentReceiptState implements ShipmentReceiptSta
         else
         {
             this.setShipmentItemSeqId(e.getShipmentItemSeqId());
+        }
+        if (e.getShipmentPackageSeqId() == null)
+        {
+            if (e.getIsPropertyShipmentPackageSeqIdRemoved() != null && e.getIsPropertyShipmentPackageSeqIdRemoved())
+            {
+                this.setShipmentPackageSeqId(null);
+            }
+        }
+        else
+        {
+            this.setShipmentPackageSeqId(e.getShipmentPackageSeqId());
+        }
+        if (e.getOrderId() == null)
+        {
+            if (e.getIsPropertyOrderIdRemoved() != null && e.getIsPropertyOrderIdRemoved())
+            {
+                this.setOrderId(null);
+            }
+        }
+        else
+        {
+            this.setOrderId(e.getOrderId());
+        }
+        if (e.getOrderItemSeqId() == null)
+        {
+            if (e.getIsPropertyOrderItemSeqIdRemoved() != null && e.getIsPropertyOrderItemSeqIdRemoved())
+            {
+                this.setOrderItemSeqId(null);
+            }
+        }
+        else
+        {
+            this.setOrderItemSeqId(e.getOrderItemSeqId());
+        }
+        if (e.getReturnId() == null)
+        {
+            if (e.getIsPropertyReturnIdRemoved() != null && e.getIsPropertyReturnIdRemoved())
+            {
+                this.setReturnId(null);
+            }
+        }
+        else
+        {
+            this.setReturnId(e.getReturnId());
+        }
+        if (e.getReturnItemSeqId() == null)
+        {
+            if (e.getIsPropertyReturnItemSeqIdRemoved() != null && e.getIsPropertyReturnItemSeqIdRemoved())
+            {
+                this.setReturnItemSeqId(null);
+            }
+        }
+        else
+        {
+            this.setReturnItemSeqId(e.getReturnItemSeqId());
         }
         if (e.getRejectionReasonId() == null)
         {

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.Order;
+using Dddml.Wms.Domain.PartyRole;
 
 namespace Dddml.Wms.Domain.Order
 {
@@ -71,11 +72,23 @@ namespace Dddml.Wms.Domain.Order
 
 	public interface IOrderStateCreated : IOrderStateEvent//, IOrderStateProperties
 	{
+		IEnumerable<IOrderRoleStateCreated> OrderRoleEvents { get; }
+		
+		void AddOrderRoleEvent(IOrderRoleStateCreated e);
+
+		IOrderRoleStateCreated NewOrderRoleStateCreated(PartyRoleId partyRoleId);
+
 		IEnumerable<IOrderItemStateCreated> OrderItemEvents { get; }
 		
 		void AddOrderItemEvent(IOrderItemStateCreated e);
 
 		IOrderItemStateCreated NewOrderItemStateCreated(string orderItemSeqId);
+
+		IEnumerable<IOrderShipGroupStateCreated> OrderShipGroupEvents { get; }
+		
+		void AddOrderShipGroupEvent(IOrderShipGroupStateCreated e);
+
+		IOrderShipGroupStateCreated NewOrderShipGroupStateCreated(long? shipGroupSeqId);
 
 	
 	}
@@ -133,6 +146,16 @@ namespace Dddml.Wms.Domain.Order
 
 		bool IsPropertyActiveRemoved { get; set; }
 
+		IEnumerable<IOrderRoleStateEvent> OrderRoleEvents { get; }
+		
+		void AddOrderRoleEvent(IOrderRoleStateEvent e);
+
+		IOrderRoleStateCreated NewOrderRoleStateCreated(PartyRoleId partyRoleId);
+
+		IOrderRoleStateMergePatched NewOrderRoleStateMergePatched(PartyRoleId partyRoleId);
+
+		IOrderRoleStateRemoved NewOrderRoleStateRemoved(PartyRoleId partyRoleId);
+
 		IEnumerable<IOrderItemStateEvent> OrderItemEvents { get; }
 		
 		void AddOrderItemEvent(IOrderItemStateEvent e);
@@ -140,6 +163,16 @@ namespace Dddml.Wms.Domain.Order
 		IOrderItemStateCreated NewOrderItemStateCreated(string orderItemSeqId);
 
 		IOrderItemStateMergePatched NewOrderItemStateMergePatched(string orderItemSeqId);
+
+		IEnumerable<IOrderShipGroupStateEvent> OrderShipGroupEvents { get; }
+		
+		void AddOrderShipGroupEvent(IOrderShipGroupStateEvent e);
+
+		IOrderShipGroupStateCreated NewOrderShipGroupStateCreated(long? shipGroupSeqId);
+
+		IOrderShipGroupStateMergePatched NewOrderShipGroupStateMergePatched(long? shipGroupSeqId);
+
+		IOrderShipGroupStateRemoved NewOrderShipGroupStateRemoved(long? shipGroupSeqId);
 
 
 	}

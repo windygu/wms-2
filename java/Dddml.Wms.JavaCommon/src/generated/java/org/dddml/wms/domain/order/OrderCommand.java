@@ -2,6 +2,7 @@ package org.dddml.wms.domain.order;
 
 import java.util.*;
 import java.util.Date;
+import org.dddml.wms.domain.partyrole.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.Command;
 import org.dddml.wms.specialization.DomainError;
@@ -140,9 +141,17 @@ public interface OrderCommand extends Command
 
     interface CreateOrder extends CreateOrMergePatchOrder
     {
+        CreateOrderRoleCommands getOrderRoles();
+
+        OrderRoleCommand.CreateOrderRole newCreateOrderRole();
+
         CreateOrderItemCommands getOrderItems();
 
         OrderItemCommand.CreateOrderItem newCreateOrderItem();
+
+        CreateOrderShipGroupCommands getOrderShipGroups();
+
+        OrderShipGroupCommand.CreateOrderShipGroup newCreateOrderShipGroup();
 
     }
 
@@ -248,6 +257,14 @@ public interface OrderCommand extends Command
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
+        OrderRoleCommands getOrderRoleCommands();
+
+        OrderRoleCommand.CreateOrderRole newCreateOrderRole();
+
+        OrderRoleCommand.MergePatchOrderRole newMergePatchOrderRole();
+
+        OrderRoleCommand.RemoveOrderRole newRemoveOrderRole();
+
         OrderItemCommands getOrderItemCommands();
 
         OrderItemCommand.CreateOrderItem newCreateOrderItem();
@@ -256,11 +273,37 @@ public interface OrderCommand extends Command
 
         OrderItemCommand.RemoveOrderItem newRemoveOrderItem();
 
+        OrderShipGroupCommands getOrderShipGroupCommands();
+
+        OrderShipGroupCommand.CreateOrderShipGroup newCreateOrderShipGroup();
+
+        OrderShipGroupCommand.MergePatchOrderShipGroup newMergePatchOrderShipGroup();
+
+        OrderShipGroupCommand.RemoveOrderShipGroup newRemoveOrderShipGroup();
+
     }
 
 	interface DeleteOrder extends OrderCommand
 	{
 	}
+
+    interface CreateOrderRoleCommands extends Iterable<OrderRoleCommand.CreateOrderRole>
+    {
+        void add(OrderRoleCommand.CreateOrderRole c);
+
+        void remove(OrderRoleCommand.CreateOrderRole c);
+
+        void clear();
+    }
+
+    interface OrderRoleCommands extends Iterable<OrderRoleCommand>
+    {
+        void add(OrderRoleCommand c);
+
+        void remove(OrderRoleCommand c);
+
+        void clear();
+    }
 
     interface CreateOrderItemCommands extends Iterable<OrderItemCommand.CreateOrderItem>
     {
@@ -276,6 +319,24 @@ public interface OrderCommand extends Command
         void add(OrderItemCommand c);
 
         void remove(OrderItemCommand c);
+
+        void clear();
+    }
+
+    interface CreateOrderShipGroupCommands extends Iterable<OrderShipGroupCommand.CreateOrderShipGroup>
+    {
+        void add(OrderShipGroupCommand.CreateOrderShipGroup c);
+
+        void remove(OrderShipGroupCommand.CreateOrderShipGroup c);
+
+        void clear();
+    }
+
+    interface OrderShipGroupCommands extends Iterable<OrderShipGroupCommand>
+    {
+        void add(OrderShipGroupCommand c);
+
+        void remove(OrderShipGroupCommand c);
 
         void clear();
     }

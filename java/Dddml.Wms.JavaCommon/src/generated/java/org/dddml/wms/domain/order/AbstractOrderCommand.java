@@ -2,6 +2,7 @@ package org.dddml.wms.domain.order;
 
 import java.util.*;
 import java.util.Date;
+import org.dddml.wms.domain.partyrole.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.AbstractCommand;
 
@@ -334,6 +335,30 @@ public abstract class AbstractOrderCommand extends AbstractCommand implements Or
             this.active = active;
         }
 
+        public OrderRoleCommand.CreateOrderRole newCreateOrderRole()
+        {
+            AbstractOrderRoleCommand.SimpleCreateOrderRole c = new AbstractOrderRoleCommand.SimpleCreateOrderRole();
+            c.setOrderId(this.getOrderId());
+
+            return c;
+        }
+
+        public OrderRoleCommand.MergePatchOrderRole newMergePatchOrderRole()
+        {
+            AbstractOrderRoleCommand.SimpleMergePatchOrderRole c = new AbstractOrderRoleCommand.SimpleMergePatchOrderRole();
+            c.setOrderId(this.getOrderId());
+
+            return c;
+        }
+
+        public OrderRoleCommand.RemoveOrderRole newRemoveOrderRole()
+        {
+            AbstractOrderRoleCommand.SimpleRemoveOrderRole c = new AbstractOrderRoleCommand.SimpleRemoveOrderRole();
+            c.setOrderId(this.getOrderId());
+
+            return c;
+        }
+
         public OrderItemCommand.CreateOrderItem newCreateOrderItem()
         {
             AbstractOrderItemCommand.SimpleCreateOrderItem c = new AbstractOrderItemCommand.SimpleCreateOrderItem();
@@ -358,6 +383,30 @@ public abstract class AbstractOrderCommand extends AbstractCommand implements Or
             return c;
         }
 
+        public OrderShipGroupCommand.CreateOrderShipGroup newCreateOrderShipGroup()
+        {
+            AbstractOrderShipGroupCommand.SimpleCreateOrderShipGroup c = new AbstractOrderShipGroupCommand.SimpleCreateOrderShipGroup();
+            c.setOrderId(this.getOrderId());
+
+            return c;
+        }
+
+        public OrderShipGroupCommand.MergePatchOrderShipGroup newMergePatchOrderShipGroup()
+        {
+            AbstractOrderShipGroupCommand.SimpleMergePatchOrderShipGroup c = new AbstractOrderShipGroupCommand.SimpleMergePatchOrderShipGroup();
+            c.setOrderId(this.getOrderId());
+
+            return c;
+        }
+
+        public OrderShipGroupCommand.RemoveOrderShipGroup newRemoveOrderShipGroup()
+        {
+            AbstractOrderShipGroupCommand.SimpleRemoveOrderShipGroup c = new AbstractOrderShipGroupCommand.SimpleRemoveOrderShipGroup();
+            c.setOrderId(this.getOrderId());
+
+            return c;
+        }
+
     }
 
     public static abstract class AbstractCreateOrder extends AbstractCreateOrMergePatchOrder implements CreateOrder
@@ -367,11 +416,25 @@ public abstract class AbstractOrderCommand extends AbstractCommand implements Or
             return COMMAND_TYPE_CREATE;
         }
 
+        private CreateOrderRoleCommands orderRoles = new SimpleCreateOrderRoleCommands();
+
+        public CreateOrderRoleCommands getOrderRoles()
+        {
+            return this.orderRoles;
+        }
+
         private CreateOrderItemCommands orderItems = new SimpleCreateOrderItemCommands();
 
         public CreateOrderItemCommands getOrderItems()
         {
             return this.orderItems;
+        }
+
+        private CreateOrderShipGroupCommands orderShipGroups = new SimpleCreateOrderShipGroupCommands();
+
+        public CreateOrderShipGroupCommands getOrderShipGroups()
+        {
+            return this.orderShipGroups;
         }
 
     }
@@ -683,11 +746,25 @@ public abstract class AbstractOrderCommand extends AbstractCommand implements Or
             this.isPropertyActiveRemoved = removed;
         }
 
+        private OrderRoleCommands orderRoleCommands = new SimpleOrderRoleCommands();
+
+        public OrderRoleCommands getOrderRoleCommands()
+        {
+            return this.orderRoleCommands;
+        }
+
         private OrderItemCommands orderItemCommands = new SimpleOrderItemCommands();
 
         public OrderItemCommands getOrderItemCommands()
         {
             return this.orderItemCommands;
+        }
+
+        private OrderShipGroupCommands orderShipGroupCommands = new SimpleOrderShipGroupCommands();
+
+        public OrderShipGroupCommands getOrderShipGroupCommands()
+        {
+            return this.orderShipGroupCommands;
         }
 
     }
@@ -711,6 +788,58 @@ public abstract class AbstractOrderCommand extends AbstractCommand implements Or
 	}
 
     
+    public static class SimpleCreateOrderRoleCommands implements CreateOrderRoleCommands
+    {
+        private List<OrderRoleCommand.CreateOrderRole> innerCommands = new ArrayList<OrderRoleCommand.CreateOrderRole>();
+
+        public void add(OrderRoleCommand.CreateOrderRole c)
+        {
+            innerCommands.add(c);
+        }
+
+        public void remove(OrderRoleCommand.CreateOrderRole c)
+        {
+            innerCommands.remove(c);
+        }
+
+        public void clear()
+        {
+            innerCommands.clear();
+        }
+
+        @Override
+        public Iterator<OrderRoleCommand.CreateOrderRole> iterator()
+        {
+            return innerCommands.iterator();
+        }
+    }
+
+    public static class SimpleOrderRoleCommands implements OrderRoleCommands
+    {
+        private List<OrderRoleCommand> innerCommands = new ArrayList<OrderRoleCommand>();
+
+        public void add(OrderRoleCommand c)
+        {
+            innerCommands.add(c);
+        }
+
+        public void remove(OrderRoleCommand c)
+        {
+            innerCommands.remove(c);
+        }
+
+        public void clear()
+        {
+            innerCommands.clear();
+        }
+
+        @Override
+        public Iterator<OrderRoleCommand> iterator()
+        {
+            return innerCommands.iterator();
+        }
+    }
+
     public static class SimpleCreateOrderItemCommands implements CreateOrderItemCommands
     {
         private List<OrderItemCommand.CreateOrderItem> innerCommands = new ArrayList<OrderItemCommand.CreateOrderItem>();
@@ -758,6 +887,58 @@ public abstract class AbstractOrderCommand extends AbstractCommand implements Or
 
         @Override
         public Iterator<OrderItemCommand> iterator()
+        {
+            return innerCommands.iterator();
+        }
+    }
+
+    public static class SimpleCreateOrderShipGroupCommands implements CreateOrderShipGroupCommands
+    {
+        private List<OrderShipGroupCommand.CreateOrderShipGroup> innerCommands = new ArrayList<OrderShipGroupCommand.CreateOrderShipGroup>();
+
+        public void add(OrderShipGroupCommand.CreateOrderShipGroup c)
+        {
+            innerCommands.add(c);
+        }
+
+        public void remove(OrderShipGroupCommand.CreateOrderShipGroup c)
+        {
+            innerCommands.remove(c);
+        }
+
+        public void clear()
+        {
+            innerCommands.clear();
+        }
+
+        @Override
+        public Iterator<OrderShipGroupCommand.CreateOrderShipGroup> iterator()
+        {
+            return innerCommands.iterator();
+        }
+    }
+
+    public static class SimpleOrderShipGroupCommands implements OrderShipGroupCommands
+    {
+        private List<OrderShipGroupCommand> innerCommands = new ArrayList<OrderShipGroupCommand>();
+
+        public void add(OrderShipGroupCommand c)
+        {
+            innerCommands.add(c);
+        }
+
+        public void remove(OrderShipGroupCommand c)
+        {
+            innerCommands.remove(c);
+        }
+
+        public void clear()
+        {
+            innerCommands.clear();
+        }
+
+        @Override
+        public Iterator<OrderShipGroupCommand> iterator()
         {
             return innerCommands.iterator();
         }

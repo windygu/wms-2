@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.picklistbin">
+  
+  <class name="org.dddml.wms.domain.picklistbin.AbstractPicklistBinState$SimplePicklistBinState" table="PicklistBins">
+
+	<id name="picklistBinId" length="20" column="PicklistBinId"><generator class="assigned"/></id>
+	<version name="version" column="Version" type="long" />
+
+	<property name="picklistId" ><column name="PicklistId" sql-type="VARCHAR(20)" /></property>
+	<property name="binLocationNumber" ><column name="BinLocationNumber" sql-type="DECIMAL(20,0)" /></property>
+	<property name="primaryOrderId" ><column name="PrimaryOrderId" sql-type="VARCHAR(20)" /></property>
+	<property name="primaryShipGroupSeqId" ><column name="PrimaryShipGroupSeqId" sql-type="DECIMAL(20,0)" /></property>
+	<property name="createdBy" ></property>
+	<property name="updatedBy" ></property>
+	<property name="active" ></property>
+	<property name="deleted" ></property>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="updatedAt" column="UpdatedAt" />
+
+
+  </class>
+  
+</hibernate-mapping>
+

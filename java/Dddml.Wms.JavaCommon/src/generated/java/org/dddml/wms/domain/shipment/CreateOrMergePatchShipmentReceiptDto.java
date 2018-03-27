@@ -29,6 +29,18 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         this.attributeSetInstanceId = attributeSetInstanceId;
     }
 
+    private String locatorId;
+
+    public String getLocatorId()
+    {
+        return this.locatorId;
+    }
+
+    public void setLocatorId(String locatorId)
+    {
+        this.locatorId = locatorId;
+    }
+
     private String shipmentItemSeqId;
 
     public String getShipmentItemSeqId()
@@ -39,6 +51,66 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
     public void setShipmentItemSeqId(String shipmentItemSeqId)
     {
         this.shipmentItemSeqId = shipmentItemSeqId;
+    }
+
+    private String shipmentPackageSeqId;
+
+    public String getShipmentPackageSeqId()
+    {
+        return this.shipmentPackageSeqId;
+    }
+
+    public void setShipmentPackageSeqId(String shipmentPackageSeqId)
+    {
+        this.shipmentPackageSeqId = shipmentPackageSeqId;
+    }
+
+    private String orderId;
+
+    public String getOrderId()
+    {
+        return this.orderId;
+    }
+
+    public void setOrderId(String orderId)
+    {
+        this.orderId = orderId;
+    }
+
+    private String orderItemSeqId;
+
+    public String getOrderItemSeqId()
+    {
+        return this.orderItemSeqId;
+    }
+
+    public void setOrderItemSeqId(String orderItemSeqId)
+    {
+        this.orderItemSeqId = orderItemSeqId;
+    }
+
+    private String returnId;
+
+    public String getReturnId()
+    {
+        return this.returnId;
+    }
+
+    public void setReturnId(String returnId)
+    {
+        this.returnId = returnId;
+    }
+
+    private String returnItemSeqId;
+
+    public String getReturnItemSeqId()
+    {
+        return this.returnItemSeqId;
+    }
+
+    public void setReturnItemSeqId(String returnItemSeqId)
+    {
+        this.returnItemSeqId = returnItemSeqId;
     }
 
     private String rejectionReasonId;
@@ -185,6 +257,18 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         this.isPropertyAttributeSetInstanceIdRemoved = removed;
     }
 
+    private Boolean isPropertyLocatorIdRemoved;
+
+    public Boolean getIsPropertyLocatorIdRemoved()
+    {
+        return this.isPropertyLocatorIdRemoved;
+    }
+
+    public void setIsPropertyLocatorIdRemoved(Boolean removed)
+    {
+        this.isPropertyLocatorIdRemoved = removed;
+    }
+
     private Boolean isPropertyShipmentItemSeqIdRemoved;
 
     public Boolean getIsPropertyShipmentItemSeqIdRemoved()
@@ -195,6 +279,66 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
     public void setIsPropertyShipmentItemSeqIdRemoved(Boolean removed)
     {
         this.isPropertyShipmentItemSeqIdRemoved = removed;
+    }
+
+    private Boolean isPropertyShipmentPackageSeqIdRemoved;
+
+    public Boolean getIsPropertyShipmentPackageSeqIdRemoved()
+    {
+        return this.isPropertyShipmentPackageSeqIdRemoved;
+    }
+
+    public void setIsPropertyShipmentPackageSeqIdRemoved(Boolean removed)
+    {
+        this.isPropertyShipmentPackageSeqIdRemoved = removed;
+    }
+
+    private Boolean isPropertyOrderIdRemoved;
+
+    public Boolean getIsPropertyOrderIdRemoved()
+    {
+        return this.isPropertyOrderIdRemoved;
+    }
+
+    public void setIsPropertyOrderIdRemoved(Boolean removed)
+    {
+        this.isPropertyOrderIdRemoved = removed;
+    }
+
+    private Boolean isPropertyOrderItemSeqIdRemoved;
+
+    public Boolean getIsPropertyOrderItemSeqIdRemoved()
+    {
+        return this.isPropertyOrderItemSeqIdRemoved;
+    }
+
+    public void setIsPropertyOrderItemSeqIdRemoved(Boolean removed)
+    {
+        this.isPropertyOrderItemSeqIdRemoved = removed;
+    }
+
+    private Boolean isPropertyReturnIdRemoved;
+
+    public Boolean getIsPropertyReturnIdRemoved()
+    {
+        return this.isPropertyReturnIdRemoved;
+    }
+
+    public void setIsPropertyReturnIdRemoved(Boolean removed)
+    {
+        this.isPropertyReturnIdRemoved = removed;
+    }
+
+    private Boolean isPropertyReturnItemSeqIdRemoved;
+
+    public Boolean getIsPropertyReturnItemSeqIdRemoved()
+    {
+        return this.isPropertyReturnItemSeqIdRemoved;
+    }
+
+    public void setIsPropertyReturnItemSeqIdRemoved(Boolean removed)
+    {
+        this.isPropertyReturnItemSeqIdRemoved = removed;
     }
 
     private Boolean isPropertyRejectionReasonIdRemoved;
@@ -322,7 +466,13 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         ((AbstractShipmentReceiptCommandDto) this).copyTo(command);
         command.setProductId(this.getProductId());
         command.setAttributeSetInstanceId(this.getAttributeSetInstanceId());
+        command.setLocatorId(this.getLocatorId());
         command.setShipmentItemSeqId(this.getShipmentItemSeqId());
+        command.setShipmentPackageSeqId(this.getShipmentPackageSeqId());
+        command.setOrderId(this.getOrderId());
+        command.setOrderItemSeqId(this.getOrderItemSeqId());
+        command.setReturnId(this.getReturnId());
+        command.setReturnItemSeqId(this.getReturnItemSeqId());
         command.setRejectionReasonId(this.getRejectionReasonId());
         command.setDamageStatusId(this.getDamageStatusId());
         command.setDamageReasonId(this.getDamageReasonId());
@@ -364,7 +514,13 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
         copyTo((AbstractShipmentReceiptCommand.AbstractCreateOrMergePatchShipmentReceipt) command);
         command.setIsPropertyProductIdRemoved(this.getIsPropertyProductIdRemoved());
         command.setIsPropertyAttributeSetInstanceIdRemoved(this.getIsPropertyAttributeSetInstanceIdRemoved());
+        command.setIsPropertyLocatorIdRemoved(this.getIsPropertyLocatorIdRemoved());
         command.setIsPropertyShipmentItemSeqIdRemoved(this.getIsPropertyShipmentItemSeqIdRemoved());
+        command.setIsPropertyShipmentPackageSeqIdRemoved(this.getIsPropertyShipmentPackageSeqIdRemoved());
+        command.setIsPropertyOrderIdRemoved(this.getIsPropertyOrderIdRemoved());
+        command.setIsPropertyOrderItemSeqIdRemoved(this.getIsPropertyOrderItemSeqIdRemoved());
+        command.setIsPropertyReturnIdRemoved(this.getIsPropertyReturnIdRemoved());
+        command.setIsPropertyReturnItemSeqIdRemoved(this.getIsPropertyReturnItemSeqIdRemoved());
         command.setIsPropertyRejectionReasonIdRemoved(this.getIsPropertyRejectionReasonIdRemoved());
         command.setIsPropertyDamageStatusIdRemoved(this.getIsPropertyDamageStatusIdRemoved());
         command.setIsPropertyDamageReasonIdRemoved(this.getIsPropertyDamageReasonIdRemoved());

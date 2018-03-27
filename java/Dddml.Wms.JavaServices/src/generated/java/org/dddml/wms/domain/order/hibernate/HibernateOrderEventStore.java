@@ -3,6 +3,7 @@ package org.dddml.wms.domain.order.hibernate;
 import java.io.Serializable;
 import java.util.*;
 import java.util.Date;
+import org.dddml.wms.domain.partyrole.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.specialization.hibernate.AbstractHibernateEventStore;

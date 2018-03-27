@@ -33,7 +33,43 @@ namespace Dddml.Wms.Domain.Shipment
             set;
         }
 
+        public virtual string LocatorId
+        {
+            get;
+            set;
+        }
+
         public virtual string ShipmentItemSeqId
+        {
+            get;
+            set;
+        }
+
+        public virtual string ShipmentPackageSeqId
+        {
+            get;
+            set;
+        }
+
+        public virtual string OrderId
+        {
+            get;
+            set;
+        }
+
+        public virtual string OrderItemSeqId
+        {
+            get;
+            set;
+        }
+
+        public virtual string ReturnId
+        {
+            get;
+            set;
+        }
+
+        public virtual string ReturnItemSeqId
         {
             get;
             set;
@@ -141,7 +177,13 @@ namespace Dddml.Wms.Domain.Shipment
             state.ReceiptSeqId = this.ReceiptSeqId;
             state.ProductId = this.ProductId;
             state.AttributeSetInstanceId = this.AttributeSetInstanceId;
+            state.LocatorId = this.LocatorId;
             state.ShipmentItemSeqId = this.ShipmentItemSeqId;
+            state.ShipmentPackageSeqId = this.ShipmentPackageSeqId;
+            state.OrderId = this.OrderId;
+            state.OrderItemSeqId = this.OrderItemSeqId;
+            state.ReturnId = this.ReturnId;
+            state.ReturnItemSeqId = this.ReturnItemSeqId;
             state.RejectionReasonId = this.RejectionReasonId;
             state.DamageStatusId = this.DamageStatusId;
             state.DamageReasonId = this.DamageReasonId;

@@ -1,6 +1,7 @@
 package org.dddml.wms.domain.order;
 
 import java.util.Date;
+import org.dddml.wms.domain.partyrole.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.domain.AbstractCommand;
 

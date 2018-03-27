@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.Order;
+using Dddml.Wms.Domain.PartyRole;
 
 namespace Dddml.Wms.Domain.Order
 {
@@ -118,6 +119,21 @@ namespace Dddml.Wms.Domain.Order
 		}
 
 
+        private IOrderRoleStates _orderRoles;
+      
+        public virtual IOrderRoleStates OrderRoles
+        {
+            get
+            {
+                return this._orderRoles;
+            }
+            set
+            {
+                this._orderRoles = value;
+            }
+        }
+
+
         private IOrderItemStates _orderItems;
       
         public virtual IOrderItemStates OrderItems
@@ -129,6 +145,21 @@ namespace Dddml.Wms.Domain.Order
             set
             {
                 this._orderItems = value;
+            }
+        }
+
+
+        private IOrderShipGroupStates _orderShipGroups;
+      
+        public virtual IOrderShipGroupStates OrderShipGroups
+        {
+            get
+            {
+                return this._orderShipGroups;
+            }
+            set
+            {
+                this._orderShipGroups = value;
             }
         }
 
@@ -169,7 +200,11 @@ namespace Dddml.Wms.Domain.Order
         public OrderState(bool forReapplying)
         {
             this._forReapplying = forReapplying;
+            _orderRoles = new OrderRoleStates(this);
+
             _orderItems = new OrderItemStates(this);
+
+            _orderShipGroups = new OrderShipGroupStates(this);
 
             InitializeProperties();
         }
@@ -179,7 +214,11 @@ namespace Dddml.Wms.Domain.Order
 
         public virtual void Save()
         {
+            _orderRoles.Save();
+
             _orderItems.Save();
+
+            _orderShipGroups.Save();
 
         }
 
@@ -243,8 +282,16 @@ namespace Dddml.Wms.Domain.Order
 			this.CreatedBy = e.CreatedBy;
 			this.CreatedAt = e.CreatedAt;
 
+			foreach (IOrderRoleStateCreated innerEvent in e.OrderRoleEvents) {
+				IOrderRoleState innerState = this.OrderRoles.Get(innerEvent.GlobalId.PartyRoleId, true);
+				innerState.Mutate (innerEvent);
+			}
 			foreach (IOrderItemStateCreated innerEvent in e.OrderItemEvents) {
 				IOrderItemState innerState = this.OrderItems.Get(innerEvent.GlobalId.OrderItemSeqId, true);
+				innerState.Mutate (innerEvent);
+			}
+			foreach (IOrderShipGroupStateCreated innerEvent in e.OrderShipGroupEvents) {
+				IOrderShipGroupState innerState = this.OrderShipGroups.Get(innerEvent.GlobalId.ShipGroupSeqId, true);
 				innerState.Mutate (innerEvent);
 			}
 
@@ -560,11 +607,37 @@ namespace Dddml.Wms.Domain.Order
 			this.UpdatedAt = e.CreatedAt;
 
 
+			foreach (IOrderRoleStateEvent innerEvent in e.OrderRoleEvents)
+            {
+                IOrderRoleState innerState = this.OrderRoles.Get(innerEvent.GlobalId.PartyRoleId);
+
+                innerState.Mutate(innerEvent);
+                var removed = innerEvent as IOrderRoleStateRemoved;
+                if (removed != null)
+                {
+                    this.OrderRoles.Remove(innerState);
+                }
+          
+            }
+
 			foreach (IOrderItemStateEvent innerEvent in e.OrderItemEvents)
             {
                 IOrderItemState innerState = this.OrderItems.Get(innerEvent.GlobalId.OrderItemSeqId);
 
                 innerState.Mutate(innerEvent);
+          
+            }
+
+			foreach (IOrderShipGroupStateEvent innerEvent in e.OrderShipGroupEvents)
+            {
+                IOrderShipGroupState innerState = this.OrderShipGroups.Get(innerEvent.GlobalId.ShipGroupSeqId);
+
+                innerState.Mutate(innerEvent);
+                var removed = innerEvent as IOrderShipGroupStateRemoved;
+                if (removed != null)
+                {
+                    this.OrderShipGroups.Remove(innerState);
+                }
           
             }
 

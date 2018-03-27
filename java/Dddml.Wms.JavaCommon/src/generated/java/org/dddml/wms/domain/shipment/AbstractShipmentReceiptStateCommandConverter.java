@@ -35,7 +35,13 @@ public abstract class AbstractShipmentReceiptStateCommandConverter<TCreateShipme
         cmd.setReceiptSeqId(state.getReceiptSeqId());
         cmd.setProductId(state.getProductId());
         cmd.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
+        cmd.setLocatorId(state.getLocatorId());
         cmd.setShipmentItemSeqId(state.getShipmentItemSeqId());
+        cmd.setShipmentPackageSeqId(state.getShipmentPackageSeqId());
+        cmd.setOrderId(state.getOrderId());
+        cmd.setOrderItemSeqId(state.getOrderItemSeqId());
+        cmd.setReturnId(state.getReturnId());
+        cmd.setReturnItemSeqId(state.getReturnItemSeqId());
         cmd.setRejectionReasonId(state.getRejectionReasonId());
         cmd.setDamageStatusId(state.getDamageStatusId());
         cmd.setDamageReasonId(state.getDamageReasonId());
@@ -50,7 +56,13 @@ public abstract class AbstractShipmentReceiptStateCommandConverter<TCreateShipme
             
         if (state.getProductId() == null) { cmd.setIsPropertyProductIdRemoved(true); }
         if (state.getAttributeSetInstanceId() == null) { cmd.setIsPropertyAttributeSetInstanceIdRemoved(true); }
+        if (state.getLocatorId() == null) { cmd.setIsPropertyLocatorIdRemoved(true); }
         if (state.getShipmentItemSeqId() == null) { cmd.setIsPropertyShipmentItemSeqIdRemoved(true); }
+        if (state.getShipmentPackageSeqId() == null) { cmd.setIsPropertyShipmentPackageSeqIdRemoved(true); }
+        if (state.getOrderId() == null) { cmd.setIsPropertyOrderIdRemoved(true); }
+        if (state.getOrderItemSeqId() == null) { cmd.setIsPropertyOrderItemSeqIdRemoved(true); }
+        if (state.getReturnId() == null) { cmd.setIsPropertyReturnIdRemoved(true); }
+        if (state.getReturnItemSeqId() == null) { cmd.setIsPropertyReturnItemSeqIdRemoved(true); }
         if (state.getRejectionReasonId() == null) { cmd.setIsPropertyRejectionReasonIdRemoved(true); }
         if (state.getDamageStatusId() == null) { cmd.setIsPropertyDamageStatusIdRemoved(true); }
         if (state.getDamageReasonId() == null) { cmd.setIsPropertyDamageReasonIdRemoved(true); }
@@ -71,7 +83,13 @@ public abstract class AbstractShipmentReceiptStateCommandConverter<TCreateShipme
         cmd.setReceiptSeqId(state.getReceiptSeqId());
         cmd.setProductId(state.getProductId());
         cmd.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
+        cmd.setLocatorId(state.getLocatorId());
         cmd.setShipmentItemSeqId(state.getShipmentItemSeqId());
+        cmd.setShipmentPackageSeqId(state.getShipmentPackageSeqId());
+        cmd.setOrderId(state.getOrderId());
+        cmd.setOrderItemSeqId(state.getOrderItemSeqId());
+        cmd.setReturnId(state.getReturnId());
+        cmd.setReturnItemSeqId(state.getReturnItemSeqId());
         cmd.setRejectionReasonId(state.getRejectionReasonId());
         cmd.setDamageStatusId(state.getDamageStatusId());
         cmd.setDamageReasonId(state.getDamageReasonId());

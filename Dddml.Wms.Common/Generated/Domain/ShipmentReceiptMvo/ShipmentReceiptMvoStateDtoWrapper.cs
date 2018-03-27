@@ -124,6 +124,34 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             }
         }
 
+		public virtual string LocatorId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("LocatorId"))
+                {
+                    return _state.LocatorId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.LocatorId = value;
+            }
+        }
+
+        string IShipmentReceiptMvoStateProperties.LocatorId
+        {
+            get 
+            {
+                return (this._state as IShipmentReceiptMvoStateProperties).LocatorId;
+            }
+            set 
+            {
+                (this._state as IShipmentReceiptMvoStateProperties).LocatorId = value;
+            }
+        }
+
 		public virtual string ShipmentItemSeqId
 		{
             get
@@ -149,6 +177,146 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             set 
             {
                 (this._state as IShipmentReceiptMvoStateProperties).ShipmentItemSeqId = value;
+            }
+        }
+
+		public virtual string ShipmentPackageSeqId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("ShipmentPackageSeqId"))
+                {
+                    return _state.ShipmentPackageSeqId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.ShipmentPackageSeqId = value;
+            }
+        }
+
+        string IShipmentReceiptMvoStateProperties.ShipmentPackageSeqId
+        {
+            get 
+            {
+                return (this._state as IShipmentReceiptMvoStateProperties).ShipmentPackageSeqId;
+            }
+            set 
+            {
+                (this._state as IShipmentReceiptMvoStateProperties).ShipmentPackageSeqId = value;
+            }
+        }
+
+		public virtual string OrderId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("OrderId"))
+                {
+                    return _state.OrderId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.OrderId = value;
+            }
+        }
+
+        string IShipmentReceiptMvoStateProperties.OrderId
+        {
+            get 
+            {
+                return (this._state as IShipmentReceiptMvoStateProperties).OrderId;
+            }
+            set 
+            {
+                (this._state as IShipmentReceiptMvoStateProperties).OrderId = value;
+            }
+        }
+
+		public virtual string OrderItemSeqId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("OrderItemSeqId"))
+                {
+                    return _state.OrderItemSeqId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.OrderItemSeqId = value;
+            }
+        }
+
+        string IShipmentReceiptMvoStateProperties.OrderItemSeqId
+        {
+            get 
+            {
+                return (this._state as IShipmentReceiptMvoStateProperties).OrderItemSeqId;
+            }
+            set 
+            {
+                (this._state as IShipmentReceiptMvoStateProperties).OrderItemSeqId = value;
+            }
+        }
+
+		public virtual string ReturnId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("ReturnId"))
+                {
+                    return _state.ReturnId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.ReturnId = value;
+            }
+        }
+
+        string IShipmentReceiptMvoStateProperties.ReturnId
+        {
+            get 
+            {
+                return (this._state as IShipmentReceiptMvoStateProperties).ReturnId;
+            }
+            set 
+            {
+                (this._state as IShipmentReceiptMvoStateProperties).ReturnId = value;
+            }
+        }
+
+		public virtual string ReturnItemSeqId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("ReturnItemSeqId"))
+                {
+                    return _state.ReturnItemSeqId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.ReturnItemSeqId = value;
+            }
+        }
+
+        string IShipmentReceiptMvoStateProperties.ReturnItemSeqId
+        {
+            get 
+            {
+                return (this._state as IShipmentReceiptMvoStateProperties).ReturnItemSeqId;
+            }
+            set 
+            {
+                (this._state as IShipmentReceiptMvoStateProperties).ReturnItemSeqId = value;
             }
         }
 
@@ -575,6 +743,34 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             set 
             {
                 (this._state as IShipmentReceiptMvoStateProperties).ShipmentPrimaryReturnId = value;
+            }
+        }
+
+		public virtual long? ShipmentPrimaryShipGroupSeqId
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("ShipmentPrimaryShipGroupSeqId"))
+                {
+                    return _state.ShipmentPrimaryShipGroupSeqId;
+                }
+                return null;
+            }
+            set
+            {
+                _state.ShipmentPrimaryShipGroupSeqId = value;
+            }
+        }
+
+        long? IShipmentReceiptMvoStateProperties.ShipmentPrimaryShipGroupSeqId
+        {
+            get 
+            {
+                return (this._state as IShipmentReceiptMvoStateProperties).ShipmentPrimaryShipGroupSeqId;
+            }
+            set 
+            {
+                (this._state as IShipmentReceiptMvoStateProperties).ShipmentPrimaryShipGroupSeqId = value;
             }
         }
 
@@ -1135,34 +1331,6 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             set 
             {
                 (this._state as IShipmentReceiptMvoStateProperties).ShipmentAddtlShippingChargeDesc = value;
-            }
-        }
-
-		public virtual string ShipmentShipperId
-		{
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("ShipmentShipperId"))
-                {
-                    return _state.ShipmentShipperId;
-                }
-                return null;
-            }
-            set
-            {
-                _state.ShipmentShipperId = value;
-            }
-        }
-
-        string IShipmentReceiptMvoStateProperties.ShipmentShipperId
-        {
-            get 
-            {
-                return (this._state as IShipmentReceiptMvoStateProperties).ShipmentShipperId;
-            }
-            set 
-            {
-                (this._state as IShipmentReceiptMvoStateProperties).ShipmentShipperId = value;
             }
         }
 

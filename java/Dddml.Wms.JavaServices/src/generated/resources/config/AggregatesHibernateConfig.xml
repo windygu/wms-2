@@ -75,6 +75,27 @@
   </bean>
 
 
+  <bean id="contactMechStateRepository" class="org.dddml.wms.domain.contactmech.hibernate.HibernateContactMechStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="contactMechStateQueryRepository" class="org.dddml.wms.domain.contactmech.hibernate.HibernateContactMechStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="contactMechEventStore" class="org.dddml.wms.domain.contactmech.hibernate.HibernateContactMechEventStore">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="contactMechApplicationService" class="org.dddml.wms.domain.contactmech.AbstractContactMechApplicationService$SimpleContactMechApplicationService">
+    <constructor-arg ref="contactMechEventStore"/>
+    <constructor-arg ref="contactMechStateRepository"/>
+    <constructor-arg ref="contactMechStateQueryRepository"/>
+  </bean>
+
+
   <bean id="damageHandlingMethodStateRepository" class="org.dddml.wms.domain.damagehandlingmethod.hibernate.HibernateDamageHandlingMethodStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
@@ -141,6 +162,27 @@
   <bean id="documentTypeApplicationService" class="org.dddml.wms.domain.documenttype.AbstractDocumentTypeApplicationService$SimpleDocumentTypeApplicationService">
     <constructor-arg ref="documentTypeStateRepository"/>
     <constructor-arg ref="documentTypeStateQueryRepository"/>
+  </bean>
+
+
+  <bean id="facilityStateRepository" class="org.dddml.wms.domain.facility.hibernate.HibernateFacilityStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="facilityStateQueryRepository" class="org.dddml.wms.domain.facility.hibernate.HibernateFacilityStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="facilityEventStore" class="org.dddml.wms.domain.facility.hibernate.HibernateFacilityEventStore">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="facilityApplicationService" class="org.dddml.wms.domain.facility.AbstractFacilityApplicationService$SimpleFacilityApplicationService">
+    <constructor-arg ref="facilityEventStore"/>
+    <constructor-arg ref="facilityStateRepository"/>
+    <constructor-arg ref="facilityStateQueryRepository"/>
   </bean>
 
 
@@ -381,12 +423,30 @@
   </bean>
 
 
+  <bean id="orderRoleStateDao" class="org.dddml.wms.domain.order.hibernate.HibernateOrderRoleStateDao">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="orderRoleStateEventDao" class="org.dddml.wms.domain.order.hibernate.HibernateOrderRoleStateEventDao">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
   <bean id="orderItemStateDao" class="org.dddml.wms.domain.order.hibernate.HibernateOrderItemStateDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
   <bean id="orderItemStateEventDao" class="org.dddml.wms.domain.order.hibernate.HibernateOrderItemStateEventDao">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="orderShipGroupStateDao" class="org.dddml.wms.domain.order.hibernate.HibernateOrderShipGroupStateDao">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="orderShipGroupStateEventDao" class="org.dddml.wms.domain.order.hibernate.HibernateOrderShipGroupStateEventDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
@@ -408,6 +468,27 @@
     <constructor-arg ref="orderEventStore"/>
     <constructor-arg ref="orderStateRepository"/>
     <constructor-arg ref="orderStateQueryRepository"/>
+  </bean>
+
+
+  <bean id="orderItemShipGrpInvReservationStateRepository" class="org.dddml.wms.domain.orderitemshipgrpinvreservation.hibernate.HibernateOrderItemShipGrpInvReservationStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="orderItemShipGrpInvReservationStateQueryRepository" class="org.dddml.wms.domain.orderitemshipgrpinvreservation.hibernate.HibernateOrderItemShipGrpInvReservationStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="orderItemShipGrpInvReservationEventStore" class="org.dddml.wms.domain.orderitemshipgrpinvreservation.hibernate.HibernateOrderItemShipGrpInvReservationEventStore">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="orderItemShipGrpInvReservationApplicationService" class="org.dddml.wms.domain.orderitemshipgrpinvreservation.AbstractOrderItemShipGrpInvReservationApplicationService$SimpleOrderItemShipGrpInvReservationApplicationService">
+    <constructor-arg ref="orderItemShipGrpInvReservationEventStore"/>
+    <constructor-arg ref="orderItemShipGrpInvReservationStateRepository"/>
+    <constructor-arg ref="orderItemShipGrpInvReservationStateQueryRepository"/>
   </bean>
 
 
@@ -500,6 +581,27 @@
   </bean>
 
 
+  <bean id="partyRoleStateRepository" class="org.dddml.wms.domain.partyrole.hibernate.HibernatePartyRoleStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="partyRoleStateQueryRepository" class="org.dddml.wms.domain.partyrole.hibernate.HibernatePartyRoleStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="partyRoleEventStore" class="org.dddml.wms.domain.partyrole.hibernate.HibernatePartyRoleEventStore">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="partyRoleApplicationService" class="org.dddml.wms.domain.partyrole.AbstractPartyRoleApplicationService$SimplePartyRoleApplicationService">
+    <constructor-arg ref="partyRoleEventStore"/>
+    <constructor-arg ref="partyRoleStateRepository"/>
+    <constructor-arg ref="partyRoleStateQueryRepository"/>
+  </bean>
+
+
   <bean id="physicalInventoryLineStateDao" class="org.dddml.wms.domain.physicalinventory.hibernate.HibernatePhysicalInventoryLineStateDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
@@ -527,6 +629,66 @@
     <constructor-arg ref="physicalInventoryEventStore"/>
     <constructor-arg ref="physicalInventoryStateRepository"/>
     <constructor-arg ref="physicalInventoryStateQueryRepository"/>
+  </bean>
+
+
+  <bean id="picklistRoleStateDao" class="org.dddml.wms.domain.picklist.hibernate.HibernatePicklistRoleStateDao">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="picklistRoleStateEventDao" class="org.dddml.wms.domain.picklist.hibernate.HibernatePicklistRoleStateEventDao">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="picklistStateRepository" class="org.dddml.wms.domain.picklist.hibernate.HibernatePicklistStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="picklistStateQueryRepository" class="org.dddml.wms.domain.picklist.hibernate.HibernatePicklistStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="picklistEventStore" class="org.dddml.wms.domain.picklist.hibernate.HibernatePicklistEventStore">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="picklistApplicationService" class="org.dddml.wms.domain.picklist.AbstractPicklistApplicationService$SimplePicklistApplicationService">
+    <constructor-arg ref="picklistEventStore"/>
+    <constructor-arg ref="picklistStateRepository"/>
+    <constructor-arg ref="picklistStateQueryRepository"/>
+  </bean>
+
+
+  <bean id="picklistItemStateDao" class="org.dddml.wms.domain.picklistbin.hibernate.HibernatePicklistItemStateDao">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="picklistItemStateEventDao" class="org.dddml.wms.domain.picklistbin.hibernate.HibernatePicklistItemStateEventDao">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="picklistBinStateRepository" class="org.dddml.wms.domain.picklistbin.hibernate.HibernatePicklistBinStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="picklistBinStateQueryRepository" class="org.dddml.wms.domain.picklistbin.hibernate.HibernatePicklistBinStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="picklistBinEventStore" class="org.dddml.wms.domain.picklistbin.hibernate.HibernatePicklistBinEventStore">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="picklistBinApplicationService" class="org.dddml.wms.domain.picklistbin.AbstractPicklistBinApplicationService$SimplePicklistBinApplicationService">
+    <constructor-arg ref="picklistBinEventStore"/>
+    <constructor-arg ref="picklistBinStateRepository"/>
+    <constructor-arg ref="picklistBinStateQueryRepository"/>
   </bean>
 
 
@@ -614,6 +776,27 @@
   </bean>
 
 
+  <bean id="roleTypeStateRepository" class="org.dddml.wms.domain.roletype.hibernate.HibernateRoleTypeStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="roleTypeStateQueryRepository" class="org.dddml.wms.domain.roletype.hibernate.HibernateRoleTypeStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="roleTypeEventStore" class="org.dddml.wms.domain.roletype.hibernate.HibernateRoleTypeEventStore">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="roleTypeApplicationService" class="org.dddml.wms.domain.roletype.AbstractRoleTypeApplicationService$SimpleRoleTypeApplicationService">
+    <constructor-arg ref="roleTypeEventStore"/>
+    <constructor-arg ref="roleTypeStateRepository"/>
+    <constructor-arg ref="roleTypeStateQueryRepository"/>
+  </bean>
+
+
   <bean id="sellableInventoryItemEntryStateDao" class="org.dddml.wms.domain.sellableinventoryitem.hibernate.HibernateSellableInventoryItemEntryStateDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
@@ -653,6 +836,15 @@
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
+  <bean id="itemIssuanceStateDao" class="org.dddml.wms.domain.shipment.hibernate.HibernateItemIssuanceStateDao">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="itemIssuanceStateEventDao" class="org.dddml.wms.domain.shipment.hibernate.HibernateItemIssuanceStateEventDao">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
   <bean id="shipmentStateRepository" class="org.dddml.wms.domain.shipment.hibernate.HibernateShipmentStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
@@ -671,6 +863,57 @@
     <constructor-arg ref="shipmentEventStore"/>
     <constructor-arg ref="shipmentStateRepository"/>
     <constructor-arg ref="shipmentStateQueryRepository"/>
+  </bean>
+
+
+  <bean id="shipmentMethodTypeStateRepository" class="org.dddml.wms.domain.shipmentmethodtype.hibernate.HibernateShipmentMethodTypeStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="shipmentMethodTypeStateQueryRepository" class="org.dddml.wms.domain.shipmentmethodtype.hibernate.HibernateShipmentMethodTypeStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="shipmentMethodTypeEventStore" class="org.dddml.wms.domain.shipmentmethodtype.hibernate.HibernateShipmentMethodTypeEventStore">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="shipmentMethodTypeApplicationService" class="org.dddml.wms.domain.shipmentmethodtype.AbstractShipmentMethodTypeApplicationService$SimpleShipmentMethodTypeApplicationService">
+    <constructor-arg ref="shipmentMethodTypeEventStore"/>
+    <constructor-arg ref="shipmentMethodTypeStateRepository"/>
+    <constructor-arg ref="shipmentMethodTypeStateQueryRepository"/>
+  </bean>
+
+
+  <bean id="shipmentPackageContentStateDao" class="org.dddml.wms.domain.shipmentpackage.hibernate.HibernateShipmentPackageContentStateDao">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="shipmentPackageContentStateEventDao" class="org.dddml.wms.domain.shipmentpackage.hibernate.HibernateShipmentPackageContentStateEventDao">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="shipmentPackageStateRepository" class="org.dddml.wms.domain.shipmentpackage.hibernate.HibernateShipmentPackageStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="shipmentPackageStateQueryRepository" class="org.dddml.wms.domain.shipmentpackage.hibernate.HibernateShipmentPackageStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="shipmentPackageEventStore" class="org.dddml.wms.domain.shipmentpackage.hibernate.HibernateShipmentPackageEventStore">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="shipmentPackageApplicationService" class="org.dddml.wms.domain.shipmentpackage.AbstractShipmentPackageApplicationService$SimpleShipmentPackageApplicationService">
+    <constructor-arg ref="shipmentPackageEventStore"/>
+    <constructor-arg ref="shipmentPackageStateRepository"/>
+    <constructor-arg ref="shipmentPackageStateQueryRepository"/>
   </bean>
 
 
@@ -1038,6 +1281,27 @@
   </bean>
 
 
+  <bean id="orderRoleMvoStateRepository" class="org.dddml.wms.domain.orderrolemvo.hibernate.HibernateOrderRoleMvoStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="orderRoleMvoStateQueryRepository" class="org.dddml.wms.domain.orderrolemvo.hibernate.HibernateOrderRoleMvoStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="orderRoleMvoEventStore" class="org.dddml.wms.domain.orderrolemvo.hibernate.HibernateOrderRoleMvoEventStore">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="orderRoleMvoApplicationService" class="org.dddml.wms.domain.orderrolemvo.AbstractOrderRoleMvoApplicationService$SimpleOrderRoleMvoApplicationService">
+    <constructor-arg ref="orderRoleMvoEventStore"/>
+    <constructor-arg ref="orderRoleMvoStateRepository"/>
+    <constructor-arg ref="orderRoleMvoStateQueryRepository"/>
+  </bean>
+
+
   <bean id="orderItemMvoStateRepository" class="org.dddml.wms.domain.orderitemmvo.hibernate.HibernateOrderItemMvoStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
@@ -1059,6 +1323,27 @@
   </bean>
 
 
+  <bean id="orderShipGroupMvoStateRepository" class="org.dddml.wms.domain.ordershipgroupmvo.hibernate.HibernateOrderShipGroupMvoStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="orderShipGroupMvoStateQueryRepository" class="org.dddml.wms.domain.ordershipgroupmvo.hibernate.HibernateOrderShipGroupMvoStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="orderShipGroupMvoEventStore" class="org.dddml.wms.domain.ordershipgroupmvo.hibernate.HibernateOrderShipGroupMvoEventStore">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="orderShipGroupMvoApplicationService" class="org.dddml.wms.domain.ordershipgroupmvo.AbstractOrderShipGroupMvoApplicationService$SimpleOrderShipGroupMvoApplicationService">
+    <constructor-arg ref="orderShipGroupMvoEventStore"/>
+    <constructor-arg ref="orderShipGroupMvoStateRepository"/>
+    <constructor-arg ref="orderShipGroupMvoStateQueryRepository"/>
+  </bean>
+
+
   <bean id="physicalInventoryLineMvoStateRepository" class="org.dddml.wms.domain.physicalinventorylinemvo.hibernate.HibernatePhysicalInventoryLineMvoStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
@@ -1077,6 +1362,48 @@
     <constructor-arg ref="physicalInventoryLineMvoEventStore"/>
     <constructor-arg ref="physicalInventoryLineMvoStateRepository"/>
     <constructor-arg ref="physicalInventoryLineMvoStateQueryRepository"/>
+  </bean>
+
+
+  <bean id="picklistRoleMvoStateRepository" class="org.dddml.wms.domain.picklistrolemvo.hibernate.HibernatePicklistRoleMvoStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="picklistRoleMvoStateQueryRepository" class="org.dddml.wms.domain.picklistrolemvo.hibernate.HibernatePicklistRoleMvoStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="picklistRoleMvoEventStore" class="org.dddml.wms.domain.picklistrolemvo.hibernate.HibernatePicklistRoleMvoEventStore">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="picklistRoleMvoApplicationService" class="org.dddml.wms.domain.picklistrolemvo.AbstractPicklistRoleMvoApplicationService$SimplePicklistRoleMvoApplicationService">
+    <constructor-arg ref="picklistRoleMvoEventStore"/>
+    <constructor-arg ref="picklistRoleMvoStateRepository"/>
+    <constructor-arg ref="picklistRoleMvoStateQueryRepository"/>
+  </bean>
+
+
+  <bean id="picklistItemMvoStateRepository" class="org.dddml.wms.domain.picklistitemmvo.hibernate.HibernatePicklistItemMvoStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="picklistItemMvoStateQueryRepository" class="org.dddml.wms.domain.picklistitemmvo.hibernate.HibernatePicklistItemMvoStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="picklistItemMvoEventStore" class="org.dddml.wms.domain.picklistitemmvo.hibernate.HibernatePicklistItemMvoEventStore">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="picklistItemMvoApplicationService" class="org.dddml.wms.domain.picklistitemmvo.AbstractPicklistItemMvoApplicationService$SimplePicklistItemMvoApplicationService">
+    <constructor-arg ref="picklistItemMvoEventStore"/>
+    <constructor-arg ref="picklistItemMvoStateRepository"/>
+    <constructor-arg ref="picklistItemMvoStateQueryRepository"/>
   </bean>
 
 
@@ -1140,6 +1467,48 @@
     <constructor-arg ref="shipmentReceiptMvoEventStore"/>
     <constructor-arg ref="shipmentReceiptMvoStateRepository"/>
     <constructor-arg ref="shipmentReceiptMvoStateQueryRepository"/>
+  </bean>
+
+
+  <bean id="itemIssuanceMvoStateRepository" class="org.dddml.wms.domain.itemissuancemvo.hibernate.HibernateItemIssuanceMvoStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="itemIssuanceMvoStateQueryRepository" class="org.dddml.wms.domain.itemissuancemvo.hibernate.HibernateItemIssuanceMvoStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="itemIssuanceMvoEventStore" class="org.dddml.wms.domain.itemissuancemvo.hibernate.HibernateItemIssuanceMvoEventStore">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="itemIssuanceMvoApplicationService" class="org.dddml.wms.domain.itemissuancemvo.AbstractItemIssuanceMvoApplicationService$SimpleItemIssuanceMvoApplicationService">
+    <constructor-arg ref="itemIssuanceMvoEventStore"/>
+    <constructor-arg ref="itemIssuanceMvoStateRepository"/>
+    <constructor-arg ref="itemIssuanceMvoStateQueryRepository"/>
+  </bean>
+
+
+  <bean id="shipmentPackageContentMvoStateRepository" class="org.dddml.wms.domain.shipmentpackagecontentmvo.hibernate.HibernateShipmentPackageContentMvoStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="shipmentPackageContentMvoStateQueryRepository" class="org.dddml.wms.domain.shipmentpackagecontentmvo.hibernate.HibernateShipmentPackageContentMvoStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="shipmentPackageContentMvoEventStore" class="org.dddml.wms.domain.shipmentpackagecontentmvo.hibernate.HibernateShipmentPackageContentMvoEventStore">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="shipmentPackageContentMvoApplicationService" class="org.dddml.wms.domain.shipmentpackagecontentmvo.AbstractShipmentPackageContentMvoApplicationService$SimpleShipmentPackageContentMvoApplicationService">
+    <constructor-arg ref="shipmentPackageContentMvoEventStore"/>
+    <constructor-arg ref="shipmentPackageContentMvoStateRepository"/>
+    <constructor-arg ref="shipmentPackageContentMvoStateQueryRepository"/>
   </bean>
 
 </beans>

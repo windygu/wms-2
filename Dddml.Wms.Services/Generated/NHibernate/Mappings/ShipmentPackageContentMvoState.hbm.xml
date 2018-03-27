@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+				   assembly="Dddml.Wms.Common" 
+				   namespace="Dddml.Wms.Domain.ShipmentPackageContentMvo">
+  
+  <class name="Dddml.Wms.Domain.ShipmentPackageContentMvo.ShipmentPackageContentMvoState" table="ShipmentPackageContent_RV">
+
+    <composite-id name="ShipmentPackageContentId" class="Dddml.Wms.Domain.ShipmentPackage.ShipmentPackageContentId">
+        <key-property name="ShipmentPackageIdShipmentId" ><column name="ShipmentPackageContentIdShipmentPackageIdShipmentId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="ShipmentPackageIdShipmentPackageSeqId" ><column name="ShipmentPackageContentIdShipmentPackageIdShipmentPackageSeqId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="ShipmentItemSeqId" ><column name="ShipmentPackageContentIdShipmentItemSeqId" sql-type="VARCHAR(20)" /></key-property>
+    </composite-id>
+
+	<version name="ShipmentPackageVersion" column="ShipmentPackageVersion" type="long" unsaved-value="0"/>
+
+    <property name="Quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>
+    <property name="SubProductId" ><column name="SubProductId" sql-type="VARCHAR(20)" /></property>
+    <property name="SubProductQuantity" ><column name="SubProductQuantity" sql-type="DECIMAL(18,6)" /></property>
+    <property name="Version" ></property>
+    <property name="CreatedBy" ></property>
+    <property name="UpdatedBy" ></property>
+    <property name="Active" ></property>
+    <property name="Deleted" ></property>
+    <property name="ShipmentPackageShipmentBoxTypeId" ><column name="ShipmentPackageShipmentBoxTypeId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentPackageDateCreated" ><column name="ShipmentPackageDateCreated" sql-type="DATETIME" /></property>
+    <property name="ShipmentPackageBoxLength" ><column name="ShipmentPackageBoxLength" sql-type="DECIMAL(18,6)" /></property>
+    <property name="ShipmentPackageBoxHeight" ><column name="ShipmentPackageBoxHeight" sql-type="DECIMAL(18,6)" /></property>
+    <property name="ShipmentPackageBoxWidth" ><column name="ShipmentPackageBoxWidth" sql-type="DECIMAL(18,6)" /></property>
+    <property name="ShipmentPackageDimensionUomId" ><column name="ShipmentPackageDimensionUomId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentPackageWeight" ><column name="ShipmentPackageWeight" sql-type="DECIMAL(18,6)" /></property>
+    <property name="ShipmentPackageWeightUomId" ><column name="ShipmentPackageWeightUomId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentPackageInsuredValue" ><column name="ShipmentPackageInsuredValue" sql-type="DECIMAL(18,2)" /></property>
+    <property name="ShipmentPackageCreatedBy" ></property>
+    <property name="ShipmentPackageCreatedAt" ><column name="ShipmentPackageCreatedAt" sql-type="DATETIME" /></property>
+    <property name="ShipmentPackageUpdatedBy" ></property>
+    <property name="ShipmentPackageUpdatedAt" ><column name="ShipmentPackageUpdatedAt" sql-type="DATETIME" /></property>
+    <property name="ShipmentPackageActive" ></property>
+    <property name="ShipmentPackageDeleted" ></property>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+
+    <property name="UpdatedAt" column="UpdatedAt" type="DateTimeUtc"/>
+
+
+  </class>
+  
+</hibernate-mapping>
+

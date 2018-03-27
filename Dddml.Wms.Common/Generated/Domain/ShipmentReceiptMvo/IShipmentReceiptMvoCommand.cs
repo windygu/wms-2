@@ -28,7 +28,19 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
 		string AttributeSetInstanceId { get; set; }
 
+		string LocatorId { get; set; }
+
 		string ShipmentItemSeqId { get; set; }
+
+		string ShipmentPackageSeqId { get; set; }
+
+		string OrderId { get; set; }
+
+		string OrderItemSeqId { get; set; }
+
+		string ReturnId { get; set; }
+
+		string ReturnItemSeqId { get; set; }
 
 		string RejectionReasonId { get; set; }
 
@@ -59,6 +71,8 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 		string ShipmentPrimaryOrderId { get; set; }
 
 		string ShipmentPrimaryReturnId { get; set; }
+
+		long? ShipmentPrimaryShipGroupSeqId { get; set; }
 
 		string ShipmentPicklistBinId { get; set; }
 
@@ -100,8 +114,6 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
 		string ShipmentAddtlShippingChargeDesc { get; set; }
 
-		string ShipmentShipperId { get; set; }
-
 		string ShipmentCreatedBy { get; set; }
 
 		DateTime? ShipmentCreatedAt { get; set; }
@@ -126,7 +138,19 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 
 		bool IsPropertyAttributeSetInstanceIdRemoved { get; set; }
 
+		bool IsPropertyLocatorIdRemoved { get; set; }
+
 		bool IsPropertyShipmentItemSeqIdRemoved { get; set; }
+
+		bool IsPropertyShipmentPackageSeqIdRemoved { get; set; }
+
+		bool IsPropertyOrderIdRemoved { get; set; }
+
+		bool IsPropertyOrderItemSeqIdRemoved { get; set; }
+
+		bool IsPropertyReturnIdRemoved { get; set; }
+
+		bool IsPropertyReturnItemSeqIdRemoved { get; set; }
 
 		bool IsPropertyRejectionReasonIdRemoved { get; set; }
 
@@ -157,6 +181,8 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 		bool IsPropertyShipmentPrimaryOrderIdRemoved { get; set; }
 
 		bool IsPropertyShipmentPrimaryReturnIdRemoved { get; set; }
+
+		bool IsPropertyShipmentPrimaryShipGroupSeqIdRemoved { get; set; }
 
 		bool IsPropertyShipmentPicklistBinIdRemoved { get; set; }
 
@@ -197,8 +223,6 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
 		bool IsPropertyShipmentAdditionalShippingChargeRemoved { get; set; }
 
 		bool IsPropertyShipmentAddtlShippingChargeDescRemoved { get; set; }
-
-		bool IsPropertyShipmentShipperIdRemoved { get; set; }
 
 		bool IsPropertyShipmentCreatedByRemoved { get; set; }
 

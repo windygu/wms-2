@@ -172,6 +172,7 @@
     <Content Include="..\data\StatusItemData.xml">
       <Link>Data\StatusItemData.xml</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="..\data\UomConversionData.xml">
       <Link>Data\UomConversionData.xml</Link>
@@ -197,6 +198,9 @@
     <Content Include="Sql\DropRViews.sql">
       <DependentUpon>GenerateDropRViews.tt</DependentUpon>
     </Content>
+    <Content Include="Sql\DropStateIdForeignKeyConstraints.sql">
+      <DependentUpon>GenerateBoundedContextStateIdForeignKeyConstraints.tt</DependentUpon>
+    </Content>
     <Content Include="Sql\GenerateDropRViews.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -217,9 +221,6 @@
 .\GenerateDropRViews.txt
 </LastOutputs>
       <LastGenOutput>GenerateDropRViews.txt</LastGenOutput>
-    </Content>
-    <Content Include="Sql\DropStateIdForeignKeyConstraints.sql">
-      <DependentUpon>GenerateBoundedContextStateIdForeignKeyConstraints.tt</DependentUpon>
     </Content>
     <Content Include="Sql\GenerateBoundedContextStateIdForeignKeyConstraints.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

@@ -41,18 +41,6 @@ public class CreateOrMergePatchShipmentItemDto extends AbstractShipmentItemComma
         this.quantity = quantity;
     }
 
-    private java.math.BigDecimal targetQuantity;
-
-    public java.math.BigDecimal getTargetQuantity()
-    {
-        return this.targetQuantity;
-    }
-
-    public void setTargetQuantity(java.math.BigDecimal targetQuantity)
-    {
-        this.targetQuantity = targetQuantity;
-    }
-
     private String shipmentContentDescription;
 
     public String getShipmentContentDescription()
@@ -113,18 +101,6 @@ public class CreateOrMergePatchShipmentItemDto extends AbstractShipmentItemComma
         this.isPropertyQuantityRemoved = removed;
     }
 
-    private Boolean isPropertyTargetQuantityRemoved;
-
-    public Boolean getIsPropertyTargetQuantityRemoved()
-    {
-        return this.isPropertyTargetQuantityRemoved;
-    }
-
-    public void setIsPropertyTargetQuantityRemoved(Boolean removed)
-    {
-        this.isPropertyTargetQuantityRemoved = removed;
-    }
-
     private Boolean isPropertyShipmentContentDescriptionRemoved;
 
     public Boolean getIsPropertyShipmentContentDescriptionRemoved()
@@ -155,7 +131,6 @@ public class CreateOrMergePatchShipmentItemDto extends AbstractShipmentItemComma
         command.setProductId(this.getProductId());
         command.setAttributeSetInstanceId(this.getAttributeSetInstanceId());
         command.setQuantity(this.getQuantity());
-        command.setTargetQuantity(this.getTargetQuantity());
         command.setShipmentContentDescription(this.getShipmentContentDescription());
         command.setActive(this.getActive());
     }
@@ -190,7 +165,6 @@ public class CreateOrMergePatchShipmentItemDto extends AbstractShipmentItemComma
         command.setIsPropertyProductIdRemoved(this.getIsPropertyProductIdRemoved());
         command.setIsPropertyAttributeSetInstanceIdRemoved(this.getIsPropertyAttributeSetInstanceIdRemoved());
         command.setIsPropertyQuantityRemoved(this.getIsPropertyQuantityRemoved());
-        command.setIsPropertyTargetQuantityRemoved(this.getIsPropertyTargetQuantityRemoved());
         command.setIsPropertyShipmentContentDescriptionRemoved(this.getIsPropertyShipmentContentDescriptionRemoved());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
     }

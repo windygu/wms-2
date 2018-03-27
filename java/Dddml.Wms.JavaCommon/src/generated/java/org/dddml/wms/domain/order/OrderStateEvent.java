@@ -2,6 +2,7 @@ package org.dddml.wms.domain.order;
 
 import java.util.*;
 import java.util.Date;
+import org.dddml.wms.domain.partyrole.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
 
@@ -127,11 +128,23 @@ public interface OrderStateEvent extends Event
 
     interface OrderStateCreated extends OrderStateEvent
     {
+        Iterable<OrderRoleStateEvent.OrderRoleStateCreated> getOrderRoleEvents();
+        
+        void addOrderRoleEvent(OrderRoleStateEvent.OrderRoleStateCreated e);
+
+        OrderRoleStateEvent.OrderRoleStateCreated newOrderRoleStateCreated(PartyRoleId partyRoleId);
+
         Iterable<OrderItemStateEvent.OrderItemStateCreated> getOrderItemEvents();
         
         void addOrderItemEvent(OrderItemStateEvent.OrderItemStateCreated e);
 
         OrderItemStateEvent.OrderItemStateCreated newOrderItemStateCreated(String orderItemSeqId);
+
+        Iterable<OrderShipGroupStateEvent.OrderShipGroupStateCreated> getOrderShipGroupEvents();
+        
+        void addOrderShipGroupEvent(OrderShipGroupStateEvent.OrderShipGroupStateCreated e);
+
+        OrderShipGroupStateEvent.OrderShipGroupStateCreated newOrderShipGroupStateCreated(Long shipGroupSeqId);
 
     
     }
@@ -239,6 +252,16 @@ public interface OrderStateEvent extends Event
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
+        Iterable<OrderRoleStateEvent> getOrderRoleEvents();
+        
+        void addOrderRoleEvent(OrderRoleStateEvent e);
+
+        OrderRoleStateEvent.OrderRoleStateCreated newOrderRoleStateCreated(PartyRoleId partyRoleId);
+
+        OrderRoleStateEvent.OrderRoleStateMergePatched newOrderRoleStateMergePatched(PartyRoleId partyRoleId);
+
+        OrderRoleStateEvent.OrderRoleStateRemoved newOrderRoleStateRemoved(PartyRoleId partyRoleId);
+
         Iterable<OrderItemStateEvent> getOrderItemEvents();
         
         void addOrderItemEvent(OrderItemStateEvent e);
@@ -246,6 +269,16 @@ public interface OrderStateEvent extends Event
         OrderItemStateEvent.OrderItemStateCreated newOrderItemStateCreated(String orderItemSeqId);
 
         OrderItemStateEvent.OrderItemStateMergePatched newOrderItemStateMergePatched(String orderItemSeqId);
+
+        Iterable<OrderShipGroupStateEvent> getOrderShipGroupEvents();
+        
+        void addOrderShipGroupEvent(OrderShipGroupStateEvent e);
+
+        OrderShipGroupStateEvent.OrderShipGroupStateCreated newOrderShipGroupStateCreated(Long shipGroupSeqId);
+
+        OrderShipGroupStateEvent.OrderShipGroupStateMergePatched newOrderShipGroupStateMergePatched(Long shipGroupSeqId);
+
+        OrderShipGroupStateEvent.OrderShipGroupStateRemoved newOrderShipGroupStateRemoved(Long shipGroupSeqId);
 
 
     }

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.Order;
+using Dddml.Wms.Domain.PartyRole;
 
 namespace Dddml.Wms.Domain.Order
 {
@@ -130,6 +131,33 @@ namespace Dddml.Wms.Domain.Order
             this.OrderEventId = stateEventId;
         }
 
+		protected IOrderRoleStateEventDao OrderRoleStateEventDao
+		{
+			get { return ApplicationContext.Current["OrderRoleStateEventDao"] as IOrderRoleStateEventDao; }
+		}
+
+        protected OrderRoleEventId NewOrderRoleEventId(PartyRoleId partyRoleId)
+        {
+            var stateEventId = new OrderRoleEventId(this.OrderEventId.OrderId, partyRoleId, this.OrderEventId.Version);
+            return stateEventId;
+        }
+
+
+        protected void ThrowOnInconsistentEventIds(IOrderRoleStateEvent e)
+        {
+            ThrowOnInconsistentEventIds(this, e);
+        }
+
+		public static void ThrowOnInconsistentEventIds(IOrderStateEvent oe, IOrderRoleStateEvent e)
+		{
+			if (!oe.OrderEventId.OrderId.Equals(e.OrderRoleEventId.OrderId))
+			{ 
+				throw DomainError.Named("inconsistentEventIds", "Outer Id OrderId {0} but inner id OrderId {1}", 
+					oe.OrderEventId.OrderId, e.OrderRoleEventId.OrderId);
+			}
+		}
+
+
 		protected IOrderItemStateEventDao OrderItemStateEventDao
 		{
 			get { return ApplicationContext.Current["OrderItemStateEventDao"] as IOrderItemStateEventDao; }
@@ -157,6 +185,33 @@ namespace Dddml.Wms.Domain.Order
 		}
 
 
+		protected IOrderShipGroupStateEventDao OrderShipGroupStateEventDao
+		{
+			get { return ApplicationContext.Current["OrderShipGroupStateEventDao"] as IOrderShipGroupStateEventDao; }
+		}
+
+        protected OrderShipGroupEventId NewOrderShipGroupEventId(long? shipGroupSeqId)
+        {
+            var stateEventId = new OrderShipGroupEventId(this.OrderEventId.OrderId, shipGroupSeqId, this.OrderEventId.Version);
+            return stateEventId;
+        }
+
+
+        protected void ThrowOnInconsistentEventIds(IOrderShipGroupStateEvent e)
+        {
+            ThrowOnInconsistentEventIds(this, e);
+        }
+
+		public static void ThrowOnInconsistentEventIds(IOrderStateEvent oe, IOrderShipGroupStateEvent e)
+		{
+			if (!oe.OrderEventId.OrderId.Equals(e.OrderShipGroupEventId.OrderId))
+			{ 
+				throw DomainError.Named("inconsistentEventIds", "Outer Id OrderId {0} but inner id OrderId {1}", 
+					oe.OrderEventId.OrderId, e.OrderShipGroupEventId.OrderId);
+			}
+		}
+
+
 
         string IStateEventDto.StateEventType
         {
@@ -176,6 +231,56 @@ namespace Dddml.Wms.Domain.Order
 		public OrderStateCreated (OrderEventId stateEventId) : base(stateEventId)
 		{
 		}
+
+		private Dictionary<OrderRoleEventId, IOrderRoleStateCreated> _orderRoleEvents = new Dictionary<OrderRoleEventId, IOrderRoleStateCreated>();
+        
+        private IEnumerable<IOrderRoleStateCreated> _readOnlyOrderRoleEvents;
+
+        public virtual IEnumerable<IOrderRoleStateCreated> OrderRoleEvents
+        {
+            get
+            {
+                if (!StateEventReadOnly)
+                {
+                    return this._orderRoleEvents.Values;
+                }
+                else
+                {
+                    if (_readOnlyOrderRoleEvents != null) { return _readOnlyOrderRoleEvents; }
+                    var eventDao = OrderRoleStateEventDao;
+                    var eL = new List<IOrderRoleStateCreated>();
+                    foreach (var e in eventDao.FindByOrderEventId(this.OrderEventId))
+                    {
+                        e.ReadOnly = true;
+                        eL.Add((IOrderRoleStateCreated)e);
+                    }
+                    return (_readOnlyOrderRoleEvents = eL);
+                }
+            }
+            set 
+            {
+                if (value != null)
+                {
+                    foreach (var e in value)
+                    {
+                        AddOrderRoleEvent(e);
+                    }
+                }
+                else { this._orderRoleEvents.Clear(); }
+            }
+        }
+    
+		public virtual void AddOrderRoleEvent(IOrderRoleStateCreated e)
+		{
+			ThrowOnInconsistentEventIds(e);
+			this._orderRoleEvents[e.OrderRoleEventId] = e;
+		}
+
+        public virtual IOrderRoleStateCreated NewOrderRoleStateCreated(PartyRoleId partyRoleId)
+        {
+            var stateEvent = new OrderRoleStateCreated(NewOrderRoleEventId(partyRoleId));
+            return stateEvent;
+        }
 
 		private Dictionary<OrderItemEventId, IOrderItemStateCreated> _orderItemEvents = new Dictionary<OrderItemEventId, IOrderItemStateCreated>();
         
@@ -227,10 +332,66 @@ namespace Dddml.Wms.Domain.Order
             return stateEvent;
         }
 
+		private Dictionary<OrderShipGroupEventId, IOrderShipGroupStateCreated> _orderShipGroupEvents = new Dictionary<OrderShipGroupEventId, IOrderShipGroupStateCreated>();
+        
+        private IEnumerable<IOrderShipGroupStateCreated> _readOnlyOrderShipGroupEvents;
+
+        public virtual IEnumerable<IOrderShipGroupStateCreated> OrderShipGroupEvents
+        {
+            get
+            {
+                if (!StateEventReadOnly)
+                {
+                    return this._orderShipGroupEvents.Values;
+                }
+                else
+                {
+                    if (_readOnlyOrderShipGroupEvents != null) { return _readOnlyOrderShipGroupEvents; }
+                    var eventDao = OrderShipGroupStateEventDao;
+                    var eL = new List<IOrderShipGroupStateCreated>();
+                    foreach (var e in eventDao.FindByOrderEventId(this.OrderEventId))
+                    {
+                        e.ReadOnly = true;
+                        eL.Add((IOrderShipGroupStateCreated)e);
+                    }
+                    return (_readOnlyOrderShipGroupEvents = eL);
+                }
+            }
+            set 
+            {
+                if (value != null)
+                {
+                    foreach (var e in value)
+                    {
+                        AddOrderShipGroupEvent(e);
+                    }
+                }
+                else { this._orderShipGroupEvents.Clear(); }
+            }
+        }
+    
+		public virtual void AddOrderShipGroupEvent(IOrderShipGroupStateCreated e)
+		{
+			ThrowOnInconsistentEventIds(e);
+			this._orderShipGroupEvents[e.OrderShipGroupEventId] = e;
+		}
+
+        public virtual IOrderShipGroupStateCreated NewOrderShipGroupStateCreated(long? shipGroupSeqId)
+        {
+            var stateEvent = new OrderShipGroupStateCreated(NewOrderShipGroupEventId(shipGroupSeqId));
+            return stateEvent;
+        }
+
 		public virtual void Save ()
 		{
+			foreach (IOrderRoleStateCreated e in this.OrderRoleEvents) {
+				OrderRoleStateEventDao.Save(e);
+			}
 			foreach (IOrderItemStateCreated e in this.OrderItemEvents) {
 				OrderItemStateEventDao.Save(e);
+			}
+			foreach (IOrderShipGroupStateCreated e in this.OrderShipGroupEvents) {
+				OrderShipGroupStateEventDao.Save(e);
 			}
 		}
 
@@ -303,6 +464,68 @@ namespace Dddml.Wms.Domain.Order
 		{
 		}
 
+		private Dictionary<OrderRoleEventId, IOrderRoleStateEvent> _orderRoleEvents = new Dictionary<OrderRoleEventId, IOrderRoleStateEvent>();
+
+        private IEnumerable<IOrderRoleStateEvent> _readOnlyOrderRoleEvents;
+        
+        public virtual IEnumerable<IOrderRoleStateEvent> OrderRoleEvents
+        {
+            get
+            {
+                if (!StateEventReadOnly)
+                {
+                    return this._orderRoleEvents.Values;
+                }
+                else
+                {
+                    if (_readOnlyOrderRoleEvents != null) { return _readOnlyOrderRoleEvents; }
+                    var eventDao = OrderRoleStateEventDao;
+                    var eL = new List<IOrderRoleStateEvent>();
+                    foreach (var e in eventDao.FindByOrderEventId(this.OrderEventId))
+                    {
+                        e.ReadOnly = true;
+                        eL.Add((IOrderRoleStateEvent)e);
+                    }
+                    return (_readOnlyOrderRoleEvents = eL);
+                }
+            }
+            set 
+            {
+                if (value != null)
+                {
+                    foreach (var e in value)
+                    {
+                        AddOrderRoleEvent(e);
+                    }
+                }
+                else { this._orderRoleEvents.Clear(); }
+            }
+        }
+
+		public virtual void AddOrderRoleEvent(IOrderRoleStateEvent e)
+		{
+			ThrowOnInconsistentEventIds(e);
+			this._orderRoleEvents[e.OrderRoleEventId] = e;
+		}
+
+        public virtual IOrderRoleStateCreated NewOrderRoleStateCreated(PartyRoleId partyRoleId)
+        {
+            var stateEvent = new OrderRoleStateCreated(NewOrderRoleEventId(partyRoleId));
+            return stateEvent;
+        }
+
+        public virtual IOrderRoleStateMergePatched NewOrderRoleStateMergePatched(PartyRoleId partyRoleId)
+        {
+            var stateEvent = new OrderRoleStateMergePatched(NewOrderRoleEventId(partyRoleId));
+            return stateEvent;
+        }
+
+        public virtual IOrderRoleStateRemoved NewOrderRoleStateRemoved(PartyRoleId partyRoleId)
+        {
+            var stateEvent = new OrderRoleStateRemoved(NewOrderRoleEventId(partyRoleId));
+            return stateEvent;
+        }
+
 		private Dictionary<OrderItemEventId, IOrderItemStateEvent> _orderItemEvents = new Dictionary<OrderItemEventId, IOrderItemStateEvent>();
 
         private IEnumerable<IOrderItemStateEvent> _readOnlyOrderItemEvents;
@@ -359,10 +582,78 @@ namespace Dddml.Wms.Domain.Order
             return stateEvent;
         }
 
+		private Dictionary<OrderShipGroupEventId, IOrderShipGroupStateEvent> _orderShipGroupEvents = new Dictionary<OrderShipGroupEventId, IOrderShipGroupStateEvent>();
+
+        private IEnumerable<IOrderShipGroupStateEvent> _readOnlyOrderShipGroupEvents;
+        
+        public virtual IEnumerable<IOrderShipGroupStateEvent> OrderShipGroupEvents
+        {
+            get
+            {
+                if (!StateEventReadOnly)
+                {
+                    return this._orderShipGroupEvents.Values;
+                }
+                else
+                {
+                    if (_readOnlyOrderShipGroupEvents != null) { return _readOnlyOrderShipGroupEvents; }
+                    var eventDao = OrderShipGroupStateEventDao;
+                    var eL = new List<IOrderShipGroupStateEvent>();
+                    foreach (var e in eventDao.FindByOrderEventId(this.OrderEventId))
+                    {
+                        e.ReadOnly = true;
+                        eL.Add((IOrderShipGroupStateEvent)e);
+                    }
+                    return (_readOnlyOrderShipGroupEvents = eL);
+                }
+            }
+            set 
+            {
+                if (value != null)
+                {
+                    foreach (var e in value)
+                    {
+                        AddOrderShipGroupEvent(e);
+                    }
+                }
+                else { this._orderShipGroupEvents.Clear(); }
+            }
+        }
+
+		public virtual void AddOrderShipGroupEvent(IOrderShipGroupStateEvent e)
+		{
+			ThrowOnInconsistentEventIds(e);
+			this._orderShipGroupEvents[e.OrderShipGroupEventId] = e;
+		}
+
+        public virtual IOrderShipGroupStateCreated NewOrderShipGroupStateCreated(long? shipGroupSeqId)
+        {
+            var stateEvent = new OrderShipGroupStateCreated(NewOrderShipGroupEventId(shipGroupSeqId));
+            return stateEvent;
+        }
+
+        public virtual IOrderShipGroupStateMergePatched NewOrderShipGroupStateMergePatched(long? shipGroupSeqId)
+        {
+            var stateEvent = new OrderShipGroupStateMergePatched(NewOrderShipGroupEventId(shipGroupSeqId));
+            return stateEvent;
+        }
+
+        public virtual IOrderShipGroupStateRemoved NewOrderShipGroupStateRemoved(long? shipGroupSeqId)
+        {
+            var stateEvent = new OrderShipGroupStateRemoved(NewOrderShipGroupEventId(shipGroupSeqId));
+            return stateEvent;
+        }
+
 		public virtual void Save ()
 		{
+			foreach (IOrderRoleStateEvent e in this.OrderRoleEvents) {
+				OrderRoleStateEventDao.Save(e);
+			}
 			foreach (IOrderItemStateEvent e in this.OrderItemEvents) {
 				OrderItemStateEventDao.Save(e);
+			}
+			foreach (IOrderShipGroupStateEvent e in this.OrderShipGroupEvents) {
+				OrderShipGroupStateEventDao.Save(e);
 			}
 		}
 

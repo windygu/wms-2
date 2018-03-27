@@ -29,7 +29,19 @@ namespace Dddml.Wms.Domain.Shipment
 
 		string AttributeSetInstanceId { get; set; }
 
+		string LocatorId { get; set; }
+
 		string ShipmentItemSeqId { get; set; }
+
+		string ShipmentPackageSeqId { get; set; }
+
+		string OrderId { get; set; }
+
+		string OrderItemSeqId { get; set; }
+
+		string ReturnId { get; set; }
+
+		string ReturnItemSeqId { get; set; }
 
 		string RejectionReasonId { get; set; }
 
@@ -65,7 +77,19 @@ namespace Dddml.Wms.Domain.Shipment
 
 		bool IsPropertyAttributeSetInstanceIdRemoved { get; set; }
 
+		bool IsPropertyLocatorIdRemoved { get; set; }
+
 		bool IsPropertyShipmentItemSeqIdRemoved { get; set; }
+
+		bool IsPropertyShipmentPackageSeqIdRemoved { get; set; }
+
+		bool IsPropertyOrderIdRemoved { get; set; }
+
+		bool IsPropertyOrderItemSeqIdRemoved { get; set; }
+
+		bool IsPropertyReturnIdRemoved { get; set; }
+
+		bool IsPropertyReturnItemSeqIdRemoved { get; set; }
 
 		bool IsPropertyRejectionReasonIdRemoved { get; set; }
 

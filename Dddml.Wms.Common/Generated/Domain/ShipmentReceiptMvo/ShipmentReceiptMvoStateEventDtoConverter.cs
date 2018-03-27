@@ -40,7 +40,13 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             dto.CommandId = e.CommandId;
             dto.ProductId = e.ProductId;
             dto.AttributeSetInstanceId = e.AttributeSetInstanceId;
+            dto.LocatorId = e.LocatorId;
             dto.ShipmentItemSeqId = e.ShipmentItemSeqId;
+            dto.ShipmentPackageSeqId = e.ShipmentPackageSeqId;
+            dto.OrderId = e.OrderId;
+            dto.OrderItemSeqId = e.OrderItemSeqId;
+            dto.ReturnId = e.ReturnId;
+            dto.ReturnItemSeqId = e.ReturnItemSeqId;
             dto.RejectionReasonId = e.RejectionReasonId;
             dto.DamageStatusId = e.DamageStatusId;
             dto.DamageReasonId = e.DamageReasonId;
@@ -56,6 +62,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             dto.ShipmentStatusId = e.ShipmentStatusId;
             dto.ShipmentPrimaryOrderId = e.ShipmentPrimaryOrderId;
             dto.ShipmentPrimaryReturnId = e.ShipmentPrimaryReturnId;
+            dto.ShipmentPrimaryShipGroupSeqId = e.ShipmentPrimaryShipGroupSeqId;
             dto.ShipmentPicklistBinId = e.ShipmentPicklistBinId;
             dto.ShipmentEstimatedReadyDate = e.ShipmentEstimatedReadyDate;
             dto.ShipmentEstimatedShipDate = e.ShipmentEstimatedShipDate;
@@ -76,7 +83,6 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             dto.ShipmentPartyIdFrom = e.ShipmentPartyIdFrom;
             dto.ShipmentAdditionalShippingCharge = e.ShipmentAdditionalShippingCharge;
             dto.ShipmentAddtlShippingChargeDesc = e.ShipmentAddtlShippingChargeDesc;
-            dto.ShipmentShipperId = e.ShipmentShipperId;
             dto.ShipmentCreatedBy = e.ShipmentCreatedBy;
             dto.ShipmentCreatedAt = e.ShipmentCreatedAt;
             dto.ShipmentUpdatedBy = e.ShipmentUpdatedBy;
@@ -94,7 +100,13 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             dto.CommandId = e.CommandId;
             dto.ProductId = e.ProductId;
             dto.AttributeSetInstanceId = e.AttributeSetInstanceId;
+            dto.LocatorId = e.LocatorId;
             dto.ShipmentItemSeqId = e.ShipmentItemSeqId;
+            dto.ShipmentPackageSeqId = e.ShipmentPackageSeqId;
+            dto.OrderId = e.OrderId;
+            dto.OrderItemSeqId = e.OrderItemSeqId;
+            dto.ReturnId = e.ReturnId;
+            dto.ReturnItemSeqId = e.ReturnItemSeqId;
             dto.RejectionReasonId = e.RejectionReasonId;
             dto.DamageStatusId = e.DamageStatusId;
             dto.DamageReasonId = e.DamageReasonId;
@@ -110,6 +122,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             dto.ShipmentStatusId = e.ShipmentStatusId;
             dto.ShipmentPrimaryOrderId = e.ShipmentPrimaryOrderId;
             dto.ShipmentPrimaryReturnId = e.ShipmentPrimaryReturnId;
+            dto.ShipmentPrimaryShipGroupSeqId = e.ShipmentPrimaryShipGroupSeqId;
             dto.ShipmentPicklistBinId = e.ShipmentPicklistBinId;
             dto.ShipmentEstimatedReadyDate = e.ShipmentEstimatedReadyDate;
             dto.ShipmentEstimatedShipDate = e.ShipmentEstimatedShipDate;
@@ -130,7 +143,6 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             dto.ShipmentPartyIdFrom = e.ShipmentPartyIdFrom;
             dto.ShipmentAdditionalShippingCharge = e.ShipmentAdditionalShippingCharge;
             dto.ShipmentAddtlShippingChargeDesc = e.ShipmentAddtlShippingChargeDesc;
-            dto.ShipmentShipperId = e.ShipmentShipperId;
             dto.ShipmentCreatedBy = e.ShipmentCreatedBy;
             dto.ShipmentCreatedAt = e.ShipmentCreatedAt;
             dto.ShipmentUpdatedBy = e.ShipmentUpdatedBy;
@@ -138,7 +150,13 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             dto.ShipmentActive = e.ShipmentActive;
             dto.IsPropertyProductIdRemoved = e.IsPropertyProductIdRemoved;
             dto.IsPropertyAttributeSetInstanceIdRemoved = e.IsPropertyAttributeSetInstanceIdRemoved;
+            dto.IsPropertyLocatorIdRemoved = e.IsPropertyLocatorIdRemoved;
             dto.IsPropertyShipmentItemSeqIdRemoved = e.IsPropertyShipmentItemSeqIdRemoved;
+            dto.IsPropertyShipmentPackageSeqIdRemoved = e.IsPropertyShipmentPackageSeqIdRemoved;
+            dto.IsPropertyOrderIdRemoved = e.IsPropertyOrderIdRemoved;
+            dto.IsPropertyOrderItemSeqIdRemoved = e.IsPropertyOrderItemSeqIdRemoved;
+            dto.IsPropertyReturnIdRemoved = e.IsPropertyReturnIdRemoved;
+            dto.IsPropertyReturnItemSeqIdRemoved = e.IsPropertyReturnItemSeqIdRemoved;
             dto.IsPropertyRejectionReasonIdRemoved = e.IsPropertyRejectionReasonIdRemoved;
             dto.IsPropertyDamageStatusIdRemoved = e.IsPropertyDamageStatusIdRemoved;
             dto.IsPropertyDamageReasonIdRemoved = e.IsPropertyDamageReasonIdRemoved;
@@ -154,6 +172,7 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             dto.IsPropertyShipmentStatusIdRemoved = e.IsPropertyShipmentStatusIdRemoved;
             dto.IsPropertyShipmentPrimaryOrderIdRemoved = e.IsPropertyShipmentPrimaryOrderIdRemoved;
             dto.IsPropertyShipmentPrimaryReturnIdRemoved = e.IsPropertyShipmentPrimaryReturnIdRemoved;
+            dto.IsPropertyShipmentPrimaryShipGroupSeqIdRemoved = e.IsPropertyShipmentPrimaryShipGroupSeqIdRemoved;
             dto.IsPropertyShipmentPicklistBinIdRemoved = e.IsPropertyShipmentPicklistBinIdRemoved;
             dto.IsPropertyShipmentEstimatedReadyDateRemoved = e.IsPropertyShipmentEstimatedReadyDateRemoved;
             dto.IsPropertyShipmentEstimatedShipDateRemoved = e.IsPropertyShipmentEstimatedShipDateRemoved;
@@ -174,7 +193,6 @@ namespace Dddml.Wms.Domain.ShipmentReceiptMvo
             dto.IsPropertyShipmentPartyIdFromRemoved = e.IsPropertyShipmentPartyIdFromRemoved;
             dto.IsPropertyShipmentAdditionalShippingChargeRemoved = e.IsPropertyShipmentAdditionalShippingChargeRemoved;
             dto.IsPropertyShipmentAddtlShippingChargeDescRemoved = e.IsPropertyShipmentAddtlShippingChargeDescRemoved;
-            dto.IsPropertyShipmentShipperIdRemoved = e.IsPropertyShipmentShipperIdRemoved;
             dto.IsPropertyShipmentCreatedByRemoved = e.IsPropertyShipmentCreatedByRemoved;
             dto.IsPropertyShipmentCreatedAtRemoved = e.IsPropertyShipmentCreatedAtRemoved;
             dto.IsPropertyShipmentUpdatedByRemoved = e.IsPropertyShipmentUpdatedByRemoved;

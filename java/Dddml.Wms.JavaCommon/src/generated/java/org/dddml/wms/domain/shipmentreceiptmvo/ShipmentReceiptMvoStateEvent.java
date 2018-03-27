@@ -22,9 +22,33 @@ public interface ShipmentReceiptMvoStateEvent extends Event
 
     void setAttributeSetInstanceId(String attributeSetInstanceId);
 
+    String getLocatorId();
+
+    void setLocatorId(String locatorId);
+
     String getShipmentItemSeqId();
 
     void setShipmentItemSeqId(String shipmentItemSeqId);
+
+    String getShipmentPackageSeqId();
+
+    void setShipmentPackageSeqId(String shipmentPackageSeqId);
+
+    String getOrderId();
+
+    void setOrderId(String orderId);
+
+    String getOrderItemSeqId();
+
+    void setOrderItemSeqId(String orderItemSeqId);
+
+    String getReturnId();
+
+    void setReturnId(String returnId);
+
+    String getReturnItemSeqId();
+
+    void setReturnItemSeqId(String returnItemSeqId);
 
     String getRejectionReasonId();
 
@@ -93,6 +117,10 @@ public interface ShipmentReceiptMvoStateEvent extends Event
     String getShipmentPrimaryReturnId();
 
     void setShipmentPrimaryReturnId(String shipmentPrimaryReturnId);
+
+    Long getShipmentPrimaryShipGroupSeqId();
+
+    void setShipmentPrimaryShipGroupSeqId(Long shipmentPrimaryShipGroupSeqId);
 
     String getShipmentPicklistBinId();
 
@@ -174,10 +202,6 @@ public interface ShipmentReceiptMvoStateEvent extends Event
 
     void setShipmentAddtlShippingChargeDesc(String shipmentAddtlShippingChargeDesc);
 
-    String getShipmentShipperId();
-
-    void setShipmentShipperId(String shipmentShipperId);
-
     String getShipmentCreatedBy();
 
     void setShipmentCreatedBy(String shipmentCreatedBy);
@@ -218,9 +242,33 @@ public interface ShipmentReceiptMvoStateEvent extends Event
 
         void setIsPropertyAttributeSetInstanceIdRemoved(Boolean removed);
 
+        Boolean getIsPropertyLocatorIdRemoved();
+
+        void setIsPropertyLocatorIdRemoved(Boolean removed);
+
         Boolean getIsPropertyShipmentItemSeqIdRemoved();
 
         void setIsPropertyShipmentItemSeqIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyShipmentPackageSeqIdRemoved();
+
+        void setIsPropertyShipmentPackageSeqIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyOrderIdRemoved();
+
+        void setIsPropertyOrderIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyOrderItemSeqIdRemoved();
+
+        void setIsPropertyOrderItemSeqIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyReturnIdRemoved();
+
+        void setIsPropertyReturnIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyReturnItemSeqIdRemoved();
+
+        void setIsPropertyReturnItemSeqIdRemoved(Boolean removed);
 
         Boolean getIsPropertyRejectionReasonIdRemoved();
 
@@ -281,6 +329,10 @@ public interface ShipmentReceiptMvoStateEvent extends Event
         Boolean getIsPropertyShipmentPrimaryReturnIdRemoved();
 
         void setIsPropertyShipmentPrimaryReturnIdRemoved(Boolean removed);
+
+        Boolean getIsPropertyShipmentPrimaryShipGroupSeqIdRemoved();
+
+        void setIsPropertyShipmentPrimaryShipGroupSeqIdRemoved(Boolean removed);
 
         Boolean getIsPropertyShipmentPicklistBinIdRemoved();
 
@@ -361,10 +413,6 @@ public interface ShipmentReceiptMvoStateEvent extends Event
         Boolean getIsPropertyShipmentAddtlShippingChargeDescRemoved();
 
         void setIsPropertyShipmentAddtlShippingChargeDescRemoved(Boolean removed);
-
-        Boolean getIsPropertyShipmentShipperIdRemoved();
-
-        void setIsPropertyShipmentShipperIdRemoved(Boolean removed);
 
         Boolean getIsPropertyShipmentCreatedByRemoved();
 

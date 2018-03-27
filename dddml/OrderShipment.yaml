@@ -48,8 +48,8 @@ aggregates:
           OrderItemSeqId:
             type: id-ne
             
-          # ShipGroupSeqId:
-            # type: id-ne
+          ShipGroupSeqId:
+            type: numeric
             
           # 装运单 Id.
           ShipmentId:
@@ -58,7 +58,4 @@ aggregates:
           ShipmentItemSeqId:
             type: id-ne
 
-    # metadata:
-      # StateEventDatabaseTableName: ORDER_SHIPMENT_STATE_EVENT
-      
       

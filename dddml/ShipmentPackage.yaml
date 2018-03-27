@@ -1,0 +1,90 @@
+﻿#%DDDML 0.1
+
+---
+aggregates:
+
+  ShipmentPackage:
+    id:
+      name: ShipmentPackageId
+      type: ShipmentPackageId
+      
+    properties:
+    
+      ShipmentBoxTypeId:
+        type: id
+      DateCreated:
+        type: date-time
+      BoxLength:
+        description: This field store the length of package; if a shipmentBoxTypeId is specified then this overrides the dimension specified there; this field is meant to be used when there is no applicable ShipmentBoxType
+        type: fixed-point
+      BoxHeight:
+        description: This field store the height of package; if a shipmentBoxTypeId is specified then this overrides the dimension specified there; this field is meant to be used when there is no applicable ShipmentBoxType
+        type: fixed-point
+      BoxWidth:
+        description: This field store the width of package; if a shipmentBoxTypeId is specified then this overrides the dimension specified there; this field is meant to be used when there is no applicable ShipmentBoxType
+        type: fixed-point
+      DimensionUomId:
+        description: This field store the unit of measurement of dimension (length, width and height)
+        type: id
+      Weight:
+        type: fixed-point
+      WeightUomId:
+        type: id
+      InsuredValue:
+        type: currency-amount
+        
+      ShipmentPackageContents:
+        itemType: ShipmentPackageContent
+        
+    references: {}
+    
+    reservedProperties: {}
+    
+    valueObjects:
+    
+      ShipmentPackageId:
+        name: ShipmentPackageId
+        properties:
+          ShipmentId:
+            type: id-ne
+          ShipmentPackageSeqId:
+            type: id-ne
+
+    entities:
+
+      ShipmentPackageContent:
+        id:
+          # name: ShipmentPackageContentId
+          # type: ShipmentPackageContentId
+          name: ShipmentItemSeqId
+          type: id-ne
+              
+        properties:
+          Quantity:
+            type: fixed-point
+          SubProductId:
+            type: id
+          SubProductQuantity:
+            type: fixed-point
+        # references:
+          # ShipmentPackage:
+            # name: ShipmentPackage
+            # displayName: ShipmentPackage
+            # type: ShipmentPackage
+            # properties:
+            # - ShipmentPackageContentId.ShipmentId
+            # - ShipmentPackageContentId.ShipmentPackageSeqId
+            # foreignKeyName: PCK_CNTNT_SHPKG
+            
+        # reservedProperties: {}
+        
+        # valueObjects:
+          # ShipmentPackageContentId:
+            # properties:
+              # ShipmentId:
+                # type: id-ne
+              # ShipmentPackageSeqId:
+                # type: id-ne
+              # ShipmentItemSeqId:
+                # type: id-ne
+    

@@ -30,5 +30,7 @@ public interface ShipmentStateQueryRepository
 
     ShipmentReceiptState getShipmentReceipt(String shipmentId, String receiptSeqId);
 
+    ItemIssuanceState getItemIssuance(String shipmentId, String itemIssuanceSeqId);
+
 }
 

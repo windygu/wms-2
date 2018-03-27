@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.Order;
+using Dddml.Wms.Domain.PartyRole;
 
 namespace Dddml.Wms.Domain.Order
 {
@@ -78,9 +79,17 @@ namespace Dddml.Wms.Domain.Order
 
 	public interface ICreateOrder : ICreateOrMergePatchOrDeleteOrder
 	{
+        ICreateOrderRoleCommands OrderRoles { get; }
+
+        ICreateOrderRole NewCreateOrderRole();
+
         ICreateOrderItemCommands OrderItems { get; }
 
         ICreateOrderItem NewCreateOrderItem();
+
+        ICreateOrderShipGroupCommands OrderShipGroups { get; }
+
+        ICreateOrderShipGroup NewCreateOrderShipGroup();
 
 	}
 
@@ -137,6 +146,14 @@ namespace Dddml.Wms.Domain.Order
 
 		bool IsPropertyActiveRemoved { get; set; }
 
+        IOrderRoleCommands OrderRoleCommands { get; }
+
+        ICreateOrderRole NewCreateOrderRole();
+
+        IMergePatchOrderRole NewMergePatchOrderRole();
+
+        IRemoveOrderRole NewRemoveOrderRole();
+
         IOrderItemCommands OrderItemCommands { get; }
 
         ICreateOrderItem NewCreateOrderItem();
@@ -145,12 +162,40 @@ namespace Dddml.Wms.Domain.Order
 
         IRemoveOrderItem NewRemoveOrderItem();
 
+        IOrderShipGroupCommands OrderShipGroupCommands { get; }
+
+        ICreateOrderShipGroup NewCreateOrderShipGroup();
+
+        IMergePatchOrderShipGroup NewMergePatchOrderShipGroup();
+
+        IRemoveOrderShipGroup NewRemoveOrderShipGroup();
+
 
 	}
 
 	public interface IDeleteOrder : ICreateOrMergePatchOrDeleteOrder
 	{
 	}
+
+    public interface ICreateOrderRoleCommands : IEnumerable<ICreateOrderRole>
+    {
+        void Add(ICreateOrderRole c);
+
+        void Remove(ICreateOrderRole c);
+
+        void Clear();
+
+    }
+
+    public interface IOrderRoleCommands : IEnumerable<IOrderRoleCommand>
+    {
+        void Add(IOrderRoleCommand c);
+
+        void Remove(IOrderRoleCommand c);
+
+        void Clear();
+
+    }
 
     public interface ICreateOrderItemCommands : IEnumerable<ICreateOrderItem>
     {
@@ -167,6 +212,26 @@ namespace Dddml.Wms.Domain.Order
         void Add(IOrderItemCommand c);
 
         void Remove(IOrderItemCommand c);
+
+        void Clear();
+
+    }
+
+    public interface ICreateOrderShipGroupCommands : IEnumerable<ICreateOrderShipGroup>
+    {
+        void Add(ICreateOrderShipGroup c);
+
+        void Remove(ICreateOrderShipGroup c);
+
+        void Clear();
+
+    }
+
+    public interface IOrderShipGroupCommands : IEnumerable<IOrderShipGroupCommand>
+    {
+        void Add(IOrderShipGroupCommand c);
+
+        void Remove(IOrderShipGroupCommand c);
 
         void Clear();
 

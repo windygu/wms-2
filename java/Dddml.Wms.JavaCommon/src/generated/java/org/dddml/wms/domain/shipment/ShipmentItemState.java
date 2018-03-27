@@ -32,10 +32,6 @@ public interface ShipmentItemState
 
     void setQuantity(java.math.BigDecimal quantity);
 
-    java.math.BigDecimal getTargetQuantity();
-
-    void setTargetQuantity(java.math.BigDecimal targetQuantity);
-
     String getShipmentContentDescription();
 
     void setShipmentContentDescription(String shipmentContentDescription);

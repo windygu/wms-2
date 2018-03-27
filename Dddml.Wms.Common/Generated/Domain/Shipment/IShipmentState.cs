@@ -35,6 +35,9 @@ namespace Dddml.Wms.Domain.Shipment
 		IShipmentReceiptStates ShipmentReceipts { get; set; }
 
 
+		IItemIssuanceStates ItemIssuances { get; set; }
+
+
         bool IsUnsaved { get; }
 
 	}

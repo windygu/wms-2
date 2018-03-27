@@ -1,0 +1,148 @@
+﻿#%DDDML 0.1
+
+---
+aggregates:
+
+  PicklistBin:
+    id:
+      name: PicklistBinId
+      type: id-ne
+      columnName: PicklistBinId
+      
+    properties:
+      PicklistId:
+        type: id-ne
+      BinLocationNumber:
+        type: numeric
+      PrimaryOrderId:
+        type: id
+      PrimaryShipGroupSeqId:
+        type: numeric
+        
+      PicklistItems:
+        itemType: PicklistItem
+        
+    references:
+      Picklist:
+        name: Picklist
+        displayName: Picklist
+        type: Picklist
+        properties:
+        - PicklistId
+        foreignKeyName: PCKLST_BIN_PKLT
+      OrderShipGroup:
+        name: OrderShipGroup
+        displayName: OrderShipGroup
+        description: Primary
+        type: OrderShipGroup
+        properties:
+        - PrimaryOrderId
+        - PrimaryShipGroupSeqId
+        foreignKeyName: PCKLST_BIN_OISG
+
+        
+    reservedProperties: {}
+    
+
+    entities:
+    
+      # -----------------------------------
+      # 拣货项目
+      PicklistItem:
+        id:
+          # name: PicklistItemId
+          # type: PicklistItemId
+          name: PicklistItemOrderShipGrpInvId
+          type: PicklistItemOrderShipGrpInvId
+          
+        properties:
+        
+          ItemStatusId:
+            type: id-ne
+          Quantity:
+            type: fixed-point
+          # ItemIssuances:
+            # itemType: ItemIssuance
+            # isDerived: true
+            # itemPropertyMap:
+            # - propertyName: PicklistItemId.OrderId
+              # relatedPropertyName: OrderId
+            # - propertyName: PicklistItemId.OrderItemSeqId
+              # relatedPropertyName: OrderItemSeqId
+            # - propertyName: PicklistItemId.ShipGroupSeqId
+              # relatedPropertyName: ShipGroupSeqId
+            # - propertyName: PicklistItemId.InventoryItemId
+              # relatedPropertyName: InventoryItemId
+              
+        references:
+          PicklistBin:
+            name: PicklistBin
+            displayName: PicklistBin
+            type: PicklistBin
+            properties:
+            - PicklistItemId.PicklistBinId
+            foreignKeyName: PCKLST_ITM_BIN
+          OrderShipGroup:
+            name: OrderShipGroup
+            displayName: OrderShipGroup
+            type: OrderShipGroup
+            properties:
+            - PicklistItemId.OrderId
+            - PicklistItemId.ShipGroupSeqId
+            foreignKeyName: PCKLST_ITM_OISG
+          # OrderItemShipGrpInvRes:
+            # name: OrderItemShipGrpInvRes
+            # displayName: OrderItemShipGrpInvRes
+            # type: OrderItemShipGrpInvRes
+            # properties:
+            # - PicklistItemId.OrderId
+            # - PicklistItemId.OrderItemSeqId
+            # - PicklistItemId.ShipGroupSeqId
+            # - PicklistItemId.InventoryItemId
+            
+        reservedProperties: {}
+        
+        valueObjects:
+          # PicklistItemId:
+            # properties:
+              # PicklistBinId:
+                # type: id-ne
+              # OrderId:
+                # type: id-ne
+              # OrderItemSeqId:
+                # type: id-ne
+              # ShipGroupSeqId:
+                # type: id-ne
+              # InventoryItemId:
+                # type: id-ne
+          PicklistItemOrderShipGrpInvId:
+            properties:
+              OrderId:
+                type: id-ne
+                columnName: OrderId
+              OrderItemSeqId:
+                type: id-ne
+                columnName: OrderItemSeqId
+              ShipGroupSeqId:
+                type: numeric
+                columnName: ShipGroupSeqId
+              # InventoryItemId:
+                # type: id-ne
+              # 产品 Id            
+              ProductId:
+                type: id-long
+                length: 60
+                columnName: ProductId
+              # 货位 Id.
+              LocatorId: 
+                type: string
+                length: 50
+                columnName: LocatorId
+              # 属性集实例 Id.
+              AttributeSetInstanceId:
+                type: string
+                length: 50
+                columnName: AttributeSetInstanceId
+                
+
+                        

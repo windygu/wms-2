@@ -40,7 +40,13 @@ public abstract class AbstractShipmentReceiptMvoStateCommandConverter<TCreateShi
         cmd.setShipmentReceiptId(state.getShipmentReceiptId());
         cmd.setProductId(state.getProductId());
         cmd.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
+        cmd.setLocatorId(state.getLocatorId());
         cmd.setShipmentItemSeqId(state.getShipmentItemSeqId());
+        cmd.setShipmentPackageSeqId(state.getShipmentPackageSeqId());
+        cmd.setOrderId(state.getOrderId());
+        cmd.setOrderItemSeqId(state.getOrderItemSeqId());
+        cmd.setReturnId(state.getReturnId());
+        cmd.setReturnItemSeqId(state.getReturnItemSeqId());
         cmd.setRejectionReasonId(state.getRejectionReasonId());
         cmd.setDamageStatusId(state.getDamageStatusId());
         cmd.setDamageReasonId(state.getDamageReasonId());
@@ -56,6 +62,7 @@ public abstract class AbstractShipmentReceiptMvoStateCommandConverter<TCreateShi
         cmd.setShipmentStatusId(state.getShipmentStatusId());
         cmd.setShipmentPrimaryOrderId(state.getShipmentPrimaryOrderId());
         cmd.setShipmentPrimaryReturnId(state.getShipmentPrimaryReturnId());
+        cmd.setShipmentPrimaryShipGroupSeqId(state.getShipmentPrimaryShipGroupSeqId());
         cmd.setShipmentPicklistBinId(state.getShipmentPicklistBinId());
         cmd.setShipmentEstimatedReadyDate(state.getShipmentEstimatedReadyDate());
         cmd.setShipmentEstimatedShipDate(state.getShipmentEstimatedShipDate());
@@ -76,7 +83,6 @@ public abstract class AbstractShipmentReceiptMvoStateCommandConverter<TCreateShi
         cmd.setShipmentPartyIdFrom(state.getShipmentPartyIdFrom());
         cmd.setShipmentAdditionalShippingCharge(state.getShipmentAdditionalShippingCharge());
         cmd.setShipmentAddtlShippingChargeDesc(state.getShipmentAddtlShippingChargeDesc());
-        cmd.setShipmentShipperId(state.getShipmentShipperId());
         cmd.setShipmentCreatedBy(state.getShipmentCreatedBy());
         cmd.setShipmentCreatedAt(state.getShipmentCreatedAt());
         cmd.setShipmentUpdatedBy(state.getShipmentUpdatedBy());
@@ -85,7 +91,13 @@ public abstract class AbstractShipmentReceiptMvoStateCommandConverter<TCreateShi
             
         if (state.getProductId() == null) { cmd.setIsPropertyProductIdRemoved(true); }
         if (state.getAttributeSetInstanceId() == null) { cmd.setIsPropertyAttributeSetInstanceIdRemoved(true); }
+        if (state.getLocatorId() == null) { cmd.setIsPropertyLocatorIdRemoved(true); }
         if (state.getShipmentItemSeqId() == null) { cmd.setIsPropertyShipmentItemSeqIdRemoved(true); }
+        if (state.getShipmentPackageSeqId() == null) { cmd.setIsPropertyShipmentPackageSeqIdRemoved(true); }
+        if (state.getOrderId() == null) { cmd.setIsPropertyOrderIdRemoved(true); }
+        if (state.getOrderItemSeqId() == null) { cmd.setIsPropertyOrderItemSeqIdRemoved(true); }
+        if (state.getReturnId() == null) { cmd.setIsPropertyReturnIdRemoved(true); }
+        if (state.getReturnItemSeqId() == null) { cmd.setIsPropertyReturnItemSeqIdRemoved(true); }
         if (state.getRejectionReasonId() == null) { cmd.setIsPropertyRejectionReasonIdRemoved(true); }
         if (state.getDamageStatusId() == null) { cmd.setIsPropertyDamageStatusIdRemoved(true); }
         if (state.getDamageReasonId() == null) { cmd.setIsPropertyDamageReasonIdRemoved(true); }
@@ -101,6 +113,7 @@ public abstract class AbstractShipmentReceiptMvoStateCommandConverter<TCreateShi
         if (state.getShipmentStatusId() == null) { cmd.setIsPropertyShipmentStatusIdRemoved(true); }
         if (state.getShipmentPrimaryOrderId() == null) { cmd.setIsPropertyShipmentPrimaryOrderIdRemoved(true); }
         if (state.getShipmentPrimaryReturnId() == null) { cmd.setIsPropertyShipmentPrimaryReturnIdRemoved(true); }
+        if (state.getShipmentPrimaryShipGroupSeqId() == null) { cmd.setIsPropertyShipmentPrimaryShipGroupSeqIdRemoved(true); }
         if (state.getShipmentPicklistBinId() == null) { cmd.setIsPropertyShipmentPicklistBinIdRemoved(true); }
         if (state.getShipmentEstimatedReadyDate() == null) { cmd.setIsPropertyShipmentEstimatedReadyDateRemoved(true); }
         if (state.getShipmentEstimatedShipDate() == null) { cmd.setIsPropertyShipmentEstimatedShipDateRemoved(true); }
@@ -121,7 +134,6 @@ public abstract class AbstractShipmentReceiptMvoStateCommandConverter<TCreateShi
         if (state.getShipmentPartyIdFrom() == null) { cmd.setIsPropertyShipmentPartyIdFromRemoved(true); }
         if (state.getShipmentAdditionalShippingCharge() == null) { cmd.setIsPropertyShipmentAdditionalShippingChargeRemoved(true); }
         if (state.getShipmentAddtlShippingChargeDesc() == null) { cmd.setIsPropertyShipmentAddtlShippingChargeDescRemoved(true); }
-        if (state.getShipmentShipperId() == null) { cmd.setIsPropertyShipmentShipperIdRemoved(true); }
         if (state.getShipmentCreatedBy() == null) { cmd.setIsPropertyShipmentCreatedByRemoved(true); }
         if (state.getShipmentCreatedAt() == null) { cmd.setIsPropertyShipmentCreatedAtRemoved(true); }
         if (state.getShipmentUpdatedBy() == null) { cmd.setIsPropertyShipmentUpdatedByRemoved(true); }
@@ -138,7 +150,13 @@ public abstract class AbstractShipmentReceiptMvoStateCommandConverter<TCreateShi
         cmd.setShipmentReceiptId(state.getShipmentReceiptId());
         cmd.setProductId(state.getProductId());
         cmd.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
+        cmd.setLocatorId(state.getLocatorId());
         cmd.setShipmentItemSeqId(state.getShipmentItemSeqId());
+        cmd.setShipmentPackageSeqId(state.getShipmentPackageSeqId());
+        cmd.setOrderId(state.getOrderId());
+        cmd.setOrderItemSeqId(state.getOrderItemSeqId());
+        cmd.setReturnId(state.getReturnId());
+        cmd.setReturnItemSeqId(state.getReturnItemSeqId());
         cmd.setRejectionReasonId(state.getRejectionReasonId());
         cmd.setDamageStatusId(state.getDamageStatusId());
         cmd.setDamageReasonId(state.getDamageReasonId());
@@ -154,6 +172,7 @@ public abstract class AbstractShipmentReceiptMvoStateCommandConverter<TCreateShi
         cmd.setShipmentStatusId(state.getShipmentStatusId());
         cmd.setShipmentPrimaryOrderId(state.getShipmentPrimaryOrderId());
         cmd.setShipmentPrimaryReturnId(state.getShipmentPrimaryReturnId());
+        cmd.setShipmentPrimaryShipGroupSeqId(state.getShipmentPrimaryShipGroupSeqId());
         cmd.setShipmentPicklistBinId(state.getShipmentPicklistBinId());
         cmd.setShipmentEstimatedReadyDate(state.getShipmentEstimatedReadyDate());
         cmd.setShipmentEstimatedShipDate(state.getShipmentEstimatedShipDate());
@@ -174,7 +193,6 @@ public abstract class AbstractShipmentReceiptMvoStateCommandConverter<TCreateShi
         cmd.setShipmentPartyIdFrom(state.getShipmentPartyIdFrom());
         cmd.setShipmentAdditionalShippingCharge(state.getShipmentAdditionalShippingCharge());
         cmd.setShipmentAddtlShippingChargeDesc(state.getShipmentAddtlShippingChargeDesc());
-        cmd.setShipmentShipperId(state.getShipmentShipperId());
         cmd.setShipmentCreatedBy(state.getShipmentCreatedBy());
         cmd.setShipmentCreatedAt(state.getShipmentCreatedAt());
         cmd.setShipmentUpdatedBy(state.getShipmentUpdatedBy());

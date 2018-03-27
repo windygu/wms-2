@@ -61,6 +61,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual string PrimaryReturnId { get; set; }
 
+		public virtual long? PrimaryShipGroupSeqId { get; set; }
+
 		public virtual string PicklistBinId { get; set; }
 
 		public virtual DateTime? EstimatedReadyDate { get; set; }
@@ -100,8 +102,6 @@ namespace Dddml.Wms.Domain.Shipment
 		public virtual decimal? AdditionalShippingCharge { get; set; }
 
 		public virtual string AddtlShippingChargeDesc { get; set; }
-
-		public virtual string ShipperId { get; set; }
 
 		public virtual bool? Active { get; set; }
 
@@ -178,6 +178,25 @@ namespace Dddml.Wms.Domain.Shipment
             set
             {
                 this.IsPropertyPrimaryReturnIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyPrimaryShipGroupSeqIdRemoved { get; set; }
+
+        bool IMergePatchShipment.IsPropertyPrimaryShipGroupSeqIdRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyPrimaryShipGroupSeqIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyPrimaryShipGroupSeqIdRemoved = value;
             }
         }
 
@@ -561,25 +580,6 @@ namespace Dddml.Wms.Domain.Shipment
             }
         }
 
-		public virtual bool? IsPropertyShipperIdRemoved { get; set; }
-
-        bool IMergePatchShipment.IsPropertyShipperIdRemoved
-        {
-            get
-            {
-                var b = this.IsPropertyShipperIdRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return false;
-            }
-            set
-            {
-                this.IsPropertyShipperIdRemoved = value;
-            }
-        }
-
 		public virtual bool? IsPropertyActiveRemoved { get; set; }
 
         bool IMergePatchShipment.IsPropertyActiveRemoved
@@ -746,6 +746,81 @@ namespace Dddml.Wms.Domain.Shipment
             {
                 _shipmentReceipts.Clear();
                 _shipmentReceipts.AddRange(value);
+            }
+        }
+
+        ICreateItemIssuanceCommands ICreateShipment.ItemIssuances
+        {
+            get
+            {
+                return this._itemIssuances;
+            }
+        }
+
+        IItemIssuanceCommands IMergePatchShipment.ItemIssuanceCommands
+        {
+            get
+            {
+                return this._itemIssuances;
+            }
+        }
+
+        public virtual CreateItemIssuanceDto NewCreateItemIssuance()
+        {
+            var c = new CreateItemIssuanceDto();
+            c.ShipmentId = this.ShipmentId;
+
+            return c;
+        }
+
+        ICreateItemIssuance ICreateShipment.NewCreateItemIssuance()
+        {
+            return this.NewCreateItemIssuance();
+        }
+
+        ICreateItemIssuance IMergePatchShipment.NewCreateItemIssuance()
+        {
+            return this.NewCreateItemIssuance();
+        }
+
+        public virtual MergePatchItemIssuanceDto NewMergePatchItemIssuance()
+        {
+            var c = new MergePatchItemIssuanceDto();
+            c.ShipmentId = this.ShipmentId;
+
+            return c;
+        }
+
+        IMergePatchItemIssuance IMergePatchShipment.NewMergePatchItemIssuance()
+        {
+            return this.NewMergePatchItemIssuance();
+        }
+
+        public virtual RemoveItemIssuanceDto NewRemoveItemIssuance()
+        {
+            var c = new RemoveItemIssuanceDto();
+            c.ShipmentId = this.ShipmentId;
+
+            return c;
+        }
+
+        IRemoveItemIssuance IMergePatchShipment.NewRemoveItemIssuance()
+        {
+            return this.NewRemoveItemIssuance();
+        }
+
+        private CreateOrMergePatchOrRemoveItemIssuanceDtos _itemIssuances = new CreateOrMergePatchOrRemoveItemIssuanceDtos();
+
+        public virtual CreateOrMergePatchOrRemoveItemIssuanceDto[] ItemIssuances
+        {
+            get
+            {
+                return _itemIssuances.ToArray();
+            }
+            set
+            {
+                _itemIssuances.Clear();
+                _itemIssuances.AddRange(value);
             }
         }
 

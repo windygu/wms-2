@@ -30,8 +30,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 
 		decimal? Quantity { get; set; }
 
-		decimal? TargetQuantity { get; set; }
-
 		string ShipmentContentDescription { get; set; }
 
 		long? Version { get; set; }
@@ -45,6 +43,8 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 		string ShipmentPrimaryOrderId { get; set; }
 
 		string ShipmentPrimaryReturnId { get; set; }
+
+		long? ShipmentPrimaryShipGroupSeqId { get; set; }
 
 		string ShipmentPicklistBinId { get; set; }
 
@@ -86,8 +86,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 
 		string ShipmentAddtlShippingChargeDesc { get; set; }
 
-		string ShipmentShipperId { get; set; }
-
 		string ShipmentCreatedBy { get; set; }
 
 		DateTime? ShipmentCreatedAt { get; set; }
@@ -114,8 +112,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 
 		bool IsPropertyQuantityRemoved { get; set; }
 
-		bool IsPropertyTargetQuantityRemoved { get; set; }
-
 		bool IsPropertyShipmentContentDescriptionRemoved { get; set; }
 
 		bool IsPropertyVersionRemoved { get; set; }
@@ -129,6 +125,8 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 		bool IsPropertyShipmentPrimaryOrderIdRemoved { get; set; }
 
 		bool IsPropertyShipmentPrimaryReturnIdRemoved { get; set; }
+
+		bool IsPropertyShipmentPrimaryShipGroupSeqIdRemoved { get; set; }
 
 		bool IsPropertyShipmentPicklistBinIdRemoved { get; set; }
 
@@ -169,8 +167,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
 		bool IsPropertyShipmentAdditionalShippingChargeRemoved { get; set; }
 
 		bool IsPropertyShipmentAddtlShippingChargeDescRemoved { get; set; }
-
-		bool IsPropertyShipmentShipperIdRemoved { get; set; }
 
 		bool IsPropertyShipmentCreatedByRemoved { get; set; }
 

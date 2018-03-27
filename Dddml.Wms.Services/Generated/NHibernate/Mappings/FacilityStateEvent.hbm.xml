@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+                   assembly="Dddml.Wms.Common" 
+                   namespace="Dddml.Wms.Domain.Facility">
+  
+  <class name="FacilityStateEventBase" table="FacilityStateEvents" mutable="false" abstract="true">
+
+    <composite-id name="FacilityEventId" class="Dddml.Wms.Domain.Facility.FacilityEventId">
+        <key-property name="FacilityId" ><column name="FacilityId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="Version" ></key-property>
+    </composite-id>
+    <discriminator column="StateEventType" type="String" />
+
+    <property name="FacilityTypeId" ><column name="FacilityTypeId" sql-type="VARCHAR(20)" /></property>
+    <property name="ParentFacilityId" ><column name="ParentFacilityId" sql-type="VARCHAR(20)" /></property>
+    <property name="OwnerPartyId" ><column name="OwnerPartyId" sql-type="VARCHAR(20)" /></property>
+    <property name="DefaultInventoryItemTypeId" ><column name="DefaultInventoryItemTypeId" sql-type="VARCHAR(20)" /></property>
+    <property name="FacilityName" ><column name="FacilityName" sql-type="VARCHAR(100)" /></property>
+    <property name="PrimaryFacilityGroupId" ><column name="PrimaryFacilityGroupId" sql-type="VARCHAR(20)" /></property>
+    <property name="OldSquareFootage" ><column name="OldSquareFootage" sql-type="DECIMAL(20,0)" /></property>
+    <property name="FacilitySize" ><column name="FacilitySize" sql-type="DECIMAL(18,6)" /></property>
+    <property name="FacilitySizeUomId" ><column name="FacilitySizeUomId" sql-type="VARCHAR(20)" /></property>
+    <property name="ProductStoreId" ><column name="ProductStoreId" sql-type="VARCHAR(20)" /></property>
+    <property name="DefaultDaysToShip" ><column name="DefaultDaysToShip" sql-type="DECIMAL(20,0)" /></property>
+    <property name="OpenedDate" ><column name="OpenedDate" sql-type="DATETIME" /></property>
+    <property name="ClosedDate" ><column name="ClosedDate" sql-type="DATETIME" /></property>
+    <property name="Description" ><column name="Description" sql-type="VARCHAR(255)" /></property>
+    <property name="DefaultDimensionUomId" ><column name="DefaultDimensionUomId" sql-type="VARCHAR(20)" /></property>
+    <property name="DefaultWeightUomId" ><column name="DefaultWeightUomId" sql-type="VARCHAR(20)" /></property>
+    <property name="GeoPointId" ><column name="GeoPointId" sql-type="VARCHAR(20)" /></property>
+    <property name="Active" ></property>
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+    <subclass name="FacilityStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="FacilityStateMergePatched"  discriminator-value="MergePatched">
+
+
+        <property name="IsPropertyFacilityTypeIdRemoved" column="IsPropertyFacilityTypeIdRemoved"/>
+
+        <property name="IsPropertyParentFacilityIdRemoved" column="IsPropertyParentFacilityIdRemoved"/>
+
+        <property name="IsPropertyOwnerPartyIdRemoved" column="IsPropertyOwnerPartyIdRemoved"/>
+
+        <property name="IsPropertyDefaultInventoryItemTypeIdRemoved" column="IsPropertyDefaultInventoryItemTypeIdRemoved"/>
+
+        <property name="IsPropertyFacilityNameRemoved" column="IsPropertyFacilityNameRemoved"/>
+
+        <property name="IsPropertyPrimaryFacilityGroupIdRemoved" column="IsPropertyPrimaryFacilityGroupIdRemoved"/>
+
+        <property name="IsPropertyOldSquareFootageRemoved" column="IsPropertyOldSquareFootageRemoved"/>
+
+        <property name="IsPropertyFacilitySizeRemoved" column="IsPropertyFacilitySizeRemoved"/>
+
+        <property name="IsPropertyFacilitySizeUomIdRemoved" column="IsPropertyFacilitySizeUomIdRemoved"/>
+
+        <property name="IsPropertyProductStoreIdRemoved" column="IsPropertyProductStoreIdRemoved"/>
+
+        <property name="IsPropertyDefaultDaysToShipRemoved" column="IsPropertyDefaultDaysToShipRemoved"/>
+
+        <property name="IsPropertyOpenedDateRemoved" column="IsPropertyOpenedDateRemoved"/>
+
+        <property name="IsPropertyClosedDateRemoved" column="IsPropertyClosedDateRemoved"/>
+
+        <property name="IsPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
+
+        <property name="IsPropertyDefaultDimensionUomIdRemoved" column="IsPropertyDefaultDimensionUomIdRemoved"/>
+
+        <property name="IsPropertyDefaultWeightUomIdRemoved" column="IsPropertyDefaultWeightUomIdRemoved"/>
+
+        <property name="IsPropertyGeoPointIdRemoved" column="IsPropertyGeoPointIdRemoved"/>
+
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+    </subclass>
+
+    <subclass name="FacilityStateDeleted"  discriminator-value="Deleted">
+
+    </subclass>
+
+
+
+  </class>
+  
+</hibernate-mapping>

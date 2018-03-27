@@ -17,7 +17,7 @@ namespace Dddml.Wms.Domain.Shipment
 
         public static IShipmentCommand ToCreateOrMergePatchShipment(this ShipmentStateDtoWrapper state)
         {
-            return state.ToCreateOrMergePatchShipment<CreateShipmentDto, MergePatchShipmentDto, CreateShipmentItemDto, MergePatchShipmentItemDto, CreateShipmentReceiptDto, MergePatchShipmentReceiptDto>();
+            return state.ToCreateOrMergePatchShipment<CreateShipmentDto, MergePatchShipmentDto, CreateShipmentItemDto, MergePatchShipmentItemDto, CreateShipmentReceiptDto, MergePatchShipmentReceiptDto, CreateItemIssuanceDto, MergePatchItemIssuanceDto>();
         }
 
         public static DeleteShipmentDto ToDeleteShipment(this ShipmentStateDtoWrapper state)
@@ -27,12 +27,12 @@ namespace Dddml.Wms.Domain.Shipment
 
         public static MergePatchShipmentDto ToMergePatchShipment(this ShipmentStateDtoWrapper state)
         {
-            return state.ToMergePatchShipment<MergePatchShipmentDto, CreateShipmentItemDto, MergePatchShipmentItemDto, CreateShipmentReceiptDto, MergePatchShipmentReceiptDto>();
+            return state.ToMergePatchShipment<MergePatchShipmentDto, CreateShipmentItemDto, MergePatchShipmentItemDto, CreateShipmentReceiptDto, MergePatchShipmentReceiptDto, CreateItemIssuanceDto, MergePatchItemIssuanceDto>();
         }
 
         public static CreateShipmentDto ToCreateShipment(this ShipmentStateDtoWrapper state)
         {
-            return state.ToCreateShipment<CreateShipmentDto, CreateShipmentItemDto, CreateShipmentReceiptDto>();
+            return state.ToCreateShipment<CreateShipmentDto, CreateShipmentItemDto, CreateShipmentReceiptDto, CreateItemIssuanceDto>();
         }
 		
 

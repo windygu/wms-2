@@ -69,6 +69,18 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
         this.primaryReturnId = primaryReturnId;
     }
 
+    private Long primaryShipGroupSeqId;
+
+    public Long getPrimaryShipGroupSeqId()
+    {
+        return this.primaryShipGroupSeqId;
+    }
+
+    public void setPrimaryShipGroupSeqId(Long primaryShipGroupSeqId)
+    {
+        this.primaryShipGroupSeqId = primaryShipGroupSeqId;
+    }
+
     private String picklistBinId;
 
     public String getPicklistBinId()
@@ -309,18 +321,6 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
         this.addtlShippingChargeDesc = addtlShippingChargeDesc;
     }
 
-    private String shipperId;
-
-    public String getShipperId()
-    {
-        return this.shipperId;
-    }
-
-    public void setShipperId(String shipperId)
-    {
-        this.shipperId = shipperId;
-    }
-
     private Long version;
 
     public Long getVersion()
@@ -422,6 +422,18 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
         this.shipmentReceipts = shipmentReceipts;
     }
 
+    private ItemIssuanceStates itemIssuances;
+
+    public ItemIssuanceStates getItemIssuances()
+    {
+        return this.itemIssuances;
+    }
+
+    public void setItemIssuances(ItemIssuanceStates itemIssuances)
+    {
+        this.itemIssuances = itemIssuances;
+    }
+
     private Boolean stateReadOnly;
 
     public Boolean getStateReadOnly() { return this.stateReadOnly; }
@@ -463,6 +475,7 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
     protected void initializeProperties() {
         shipmentItems = new SimpleShipmentItemStates(this);
         shipmentReceipts = new SimpleShipmentReceiptStates(this);
+        itemIssuances = new SimpleItemIssuanceStates(this);
     }
 
 
@@ -485,6 +498,7 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
         this.setStatusId(e.getStatusId());
         this.setPrimaryOrderId(e.getPrimaryOrderId());
         this.setPrimaryReturnId(e.getPrimaryReturnId());
+        this.setPrimaryShipGroupSeqId(e.getPrimaryShipGroupSeqId());
         this.setPicklistBinId(e.getPicklistBinId());
         this.setEstimatedReadyDate(e.getEstimatedReadyDate());
         this.setEstimatedShipDate(e.getEstimatedShipDate());
@@ -505,7 +519,6 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
         this.setPartyIdFrom(e.getPartyIdFrom());
         this.setAdditionalShippingCharge(e.getAdditionalShippingCharge());
         this.setAddtlShippingChargeDesc(e.getAddtlShippingChargeDesc());
-        this.setShipperId(e.getShipperId());
         this.setActive(e.getActive());
 
         this.setCreatedBy(e.getCreatedBy());
@@ -517,6 +530,10 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
         }
         for (ShipmentReceiptStateEvent.ShipmentReceiptStateCreated innerEvent : e.getShipmentReceiptEvents()) {
             ShipmentReceiptState innerState = this.getShipmentReceipts().get(innerEvent.getShipmentReceiptEventId().getReceiptSeqId());
+            innerState.mutate(innerEvent);
+        }
+        for (ItemIssuanceStateEvent.ItemIssuanceStateCreated innerEvent : e.getItemIssuanceEvents()) {
+            ItemIssuanceState innerState = this.getItemIssuances().get(innerEvent.getItemIssuanceEventId().getItemIssuanceSeqId());
             innerState.mutate(innerEvent);
         }
     }
@@ -568,6 +585,17 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
         else
         {
             this.setPrimaryReturnId(e.getPrimaryReturnId());
+        }
+        if (e.getPrimaryShipGroupSeqId() == null)
+        {
+            if (e.getIsPropertyPrimaryShipGroupSeqIdRemoved() != null && e.getIsPropertyPrimaryShipGroupSeqIdRemoved())
+            {
+                this.setPrimaryShipGroupSeqId(null);
+            }
+        }
+        else
+        {
+            this.setPrimaryShipGroupSeqId(e.getPrimaryShipGroupSeqId());
         }
         if (e.getPicklistBinId() == null)
         {
@@ -789,17 +817,6 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
         {
             this.setAddtlShippingChargeDesc(e.getAddtlShippingChargeDesc());
         }
-        if (e.getShipperId() == null)
-        {
-            if (e.getIsPropertyShipperIdRemoved() != null && e.getIsPropertyShipperIdRemoved())
-            {
-                this.setShipperId(null);
-            }
-        }
-        else
-        {
-            this.setShipperId(e.getShipperId());
-        }
         if (e.getActive() == null)
         {
             if (e.getIsPropertyActiveRemoved() != null && e.getIsPropertyActiveRemoved())
@@ -823,6 +840,15 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
             ShipmentReceiptState innerState = this.getShipmentReceipts().get(innerEvent.getShipmentReceiptEventId().getReceiptSeqId());
             innerState.mutate(innerEvent);
         }
+        for (ItemIssuanceStateEvent innerEvent : e.getItemIssuanceEvents()) {
+            ItemIssuanceState innerState = this.getItemIssuances().get(innerEvent.getItemIssuanceEventId().getItemIssuanceSeqId());
+            innerState.mutate(innerEvent);
+            if (innerEvent instanceof ItemIssuanceStateEvent.ItemIssuanceStateRemoved)
+            {
+                //ItemIssuanceStateEvent.ItemIssuanceStateRemoved removed = (ItemIssuanceStateEvent.ItemIssuanceStateRemoved)innerEvent;
+                this.getItemIssuances().remove(innerState);
+            }
+        }
     }
 
     public void save()
@@ -830,6 +856,8 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
         shipmentItems.save();
 
         shipmentReceipts.save();
+
+        itemIssuances.save();
 
     }
 
@@ -881,6 +909,14 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
     static class SimpleShipmentReceiptStates extends AbstractShipmentReceiptStates
     {
         public SimpleShipmentReceiptStates(AbstractShipmentState outerState)
+        {
+            super(outerState);
+        }
+    }
+
+    static class SimpleItemIssuanceStates extends AbstractItemIssuanceStates
+    {
+        public SimpleItemIssuanceStates(AbstractShipmentState outerState)
         {
             super(outerState);
         }

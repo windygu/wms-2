@@ -31,6 +31,14 @@
 
     drop table if exists DocumentTypes;
 
+    drop table if exists ContactMeches;
+
+    drop table if exists ContactMechStateEvents;
+
+    drop table if exists Facilities;
+
+    drop table if exists FacilityStateEvents;
+
     drop table if exists AttributeSetInstances;
 
     drop table if exists AttributeSetInstanceExtensionFields;
@@ -133,6 +141,38 @@
 
     drop table if exists PhysicalInventoryLineStateEvents;
 
+    drop table if exists Locators;
+
+    drop table if exists LocatorStateEvents;
+
+    drop table if exists OrderRoles;
+
+    drop table if exists OrderRoleStateEvents;
+
+    drop table if exists OrderShipGroups;
+
+    drop table if exists OrderShipGroupStateEvents;
+
+    drop table if exists PartyRoles;
+
+    drop table if exists PartyRoleStateEvents;
+
+    drop table if exists Picklists;
+
+    drop table if exists PicklistStateEvents;
+
+    drop table if exists PicklistRoles;
+
+    drop table if exists PicklistRoleStateEvents;
+
+    drop table if exists PicklistBins;
+
+    drop table if exists PicklistBinStateEvents;
+
+    drop table if exists PicklistItems;
+
+    drop table if exists PicklistItemStateEvents;
+
     drop table if exists Products;
 
     drop table if exists ProductStateEvents;
@@ -149,6 +189,10 @@
 
     drop table if exists RejectionReasonStateEvents;
 
+    drop table if exists RoleTypes;
+
+    drop table if exists RoleTypeStateEvents;
+
     drop table if exists SellableInventoryItems;
 
     drop table if exists SellableInventoryItemEntries;
@@ -164,6 +208,22 @@
     drop table if exists ShipmentReceipts;
 
     drop table if exists ShipmentReceiptStateEvents;
+
+    drop table if exists ItemIssuances;
+
+    drop table if exists ItemIssuanceStateEvents;
+
+    drop table if exists ShipmentMethodTypes;
+
+    drop table if exists ShipmentMethodTypeStateEvents;
+
+    drop table if exists ShipmentPackages;
+
+    drop table if exists ShipmentPackageStateEvents;
+
+    drop table if exists ShipmentPackageContents;
+
+    drop table if exists ShipmentPackageContentStateEvents;
 
     drop table if exists ShipmentTypes;
 
@@ -187,10 +247,6 @@
 
     drop table if exists WarehouseStateEvents;
 
-    drop table if exists Locators;
-
-    drop table if exists LocatorStateEvents;
-
     drop table if exists InOutLine_RV;
 
     drop table if exists InOutLineMvoStateEvents;
@@ -211,13 +267,29 @@
 
     drop table if exists MovementConfirmationLineMvoStateEvents;
 
+    drop table if exists OrderRole_RV;
+
+    drop table if exists OrderRoleMvoStateEvents;
+
     drop table if exists OrderItem_RV;
 
     drop table if exists OrderItemMvoStateEvents;
 
+    drop table if exists OrderShipGroup_RV;
+
+    drop table if exists OrderShipGroupMvoStateEvents;
+
     drop table if exists PhysicalInventoryLine_RV;
 
     drop table if exists PhysicalInventoryLineMvoStateEvents;
+
+    drop table if exists PicklistRole_RV;
+
+    drop table if exists PicklistRoleMvoStateEvents;
+
+    drop table if exists PicklistItem_RV;
+
+    drop table if exists PicklistItemMvoStateEvents;
 
     drop table if exists SellableInventoryItemEntry_RV;
 
@@ -230,5 +302,17 @@
     drop table if exists ShipmentReceipt_RV;
 
     drop table if exists ShipmentReceiptMvoStateEvents;
+
+    drop table if exists ItemIssuance_RV;
+
+    drop table if exists ItemIssuanceMvoStateEvents;
+
+    drop table if exists ShipmentPackageContent_RV;
+
+    drop table if exists ShipmentPackageContentMvoStateEvents;
+
+    drop table if exists OrderItemShipGrpInvReservations;
+
+    drop table if exists OrderItemShipGrpInvReservationStateEvents;
 
     drop table if exists nhibernate_hilo_table;

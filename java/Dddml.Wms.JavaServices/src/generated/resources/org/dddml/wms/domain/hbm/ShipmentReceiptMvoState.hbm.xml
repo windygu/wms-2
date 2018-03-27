@@ -16,7 +16,13 @@
 
 	<property name="productId" ><column name="ProductId" sql-type="VARCHAR(60)" /></property>
 	<property name="attributeSetInstanceId" ></property>
+	<property name="locatorId" ></property>
 	<property name="shipmentItemSeqId" ><column name="ShipmentItemSeqId" sql-type="VARCHAR(20)" /></property>
+	<property name="shipmentPackageSeqId" ><column name="ShipmentPackageSeqId" sql-type="VARCHAR(20)" /></property>
+	<property name="orderId" ><column name="OrderId" sql-type="VARCHAR(20)" /></property>
+	<property name="orderItemSeqId" ><column name="OrderItemSeqId" sql-type="VARCHAR(20)" /></property>
+	<property name="returnId" ><column name="ReturnId" sql-type="VARCHAR(20)" /></property>
+	<property name="returnItemSeqId" ><column name="ReturnItemSeqId" sql-type="VARCHAR(20)" /></property>
 	<property name="rejectionReasonId" ><column name="RejectionReasonId" sql-type="VARCHAR(60)" /></property>
 	<property name="damageStatusId" ><column name="DamageStatusId" sql-type="VARCHAR(20)" /></property>
 	<property name="damageReasonId" ><column name="DamageReasonId" sql-type="VARCHAR(60)" /></property>
@@ -34,6 +40,7 @@
 	<property name="shipmentStatusId" ><column name="ShipmentStatusId" sql-type="VARCHAR(20)" /></property>
 	<property name="shipmentPrimaryOrderId" ><column name="ShipmentPrimaryOrderId" sql-type="VARCHAR(20)" /></property>
 	<property name="shipmentPrimaryReturnId" ><column name="ShipmentPrimaryReturnId" sql-type="VARCHAR(20)" /></property>
+	<property name="shipmentPrimaryShipGroupSeqId" ><column name="ShipmentPrimaryShipGroupSeqId" sql-type="DECIMAL(20,0)" /></property>
 	<property name="shipmentPicklistBinId" ><column name="ShipmentPicklistBinId" sql-type="VARCHAR(20)" /></property>
 	<property name="shipmentEstimatedReadyDate" ><column name="ShipmentEstimatedReadyDate" sql-type="DATETIME" /></property>
 	<property name="shipmentEstimatedShipDate" ><column name="ShipmentEstimatedShipDate" sql-type="DATETIME" /></property>
@@ -54,7 +61,6 @@
 	<property name="shipmentPartyIdFrom" ><column name="ShipmentPartyIdFrom" sql-type="VARCHAR(20)" /></property>
 	<property name="shipmentAdditionalShippingCharge" ><column name="ShipmentAdditionalShippingCharge" sql-type="DECIMAL(18,2)" /></property>
 	<property name="shipmentAddtlShippingChargeDesc" ><column name="ShipmentAddtlShippingChargeDesc" sql-type="VARCHAR(255)" /></property>
-	<property name="shipmentShipperId" ><column name="ShipmentShipperId" sql-type="VARCHAR(20)" /></property>
 	<property name="shipmentCreatedBy" ></property>
 	<property name="shipmentCreatedAt" type="timestamp"><column name="ShipmentCreatedAt" sql-type="DATETIME" /></property>
 	<property name="shipmentUpdatedBy" ></property>

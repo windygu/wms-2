@@ -46,10 +46,26 @@ alter TABLE `MovementConfirmationLines` add
     (`DocumentNumber`) 
   ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+alter TABLE `OrderRoles` add
+  CONSTRAINT `FK_OrderRole_Order_StateId` 
+  FOREIGN KEY 
+    (`OrderRoleIdOrderId`) 
+  REFERENCES `Orders` 
+    (`OrderId`) 
+  ON DELETE NO ACTION ON UPDATE NO ACTION;
+
 alter TABLE `OrderItems` add
   CONSTRAINT `FK_OrderItem_Order_StateId` 
   FOREIGN KEY 
     (`OrderItemIdOrderId`) 
+  REFERENCES `Orders` 
+    (`OrderId`) 
+  ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+alter TABLE `OrderShipGroups` add
+  CONSTRAINT `FK_OrderShipGroup_Order_StateId` 
+  FOREIGN KEY 
+    (`OrderShipGroupIdOrderId`) 
   REFERENCES `Orders` 
     (`OrderId`) 
   ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -60,6 +76,22 @@ alter TABLE `PhysicalInventoryLines` add
     (`PhysicalInventoryLineIdPhysicalInventoryDocumentNumber`) 
   REFERENCES `PhysicalInventories` 
     (`DocumentNumber`) 
+  ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+alter TABLE `PicklistRoles` add
+  CONSTRAINT `FK_PicklistRole_Picklist_StateId` 
+  FOREIGN KEY 
+    (`PicklistRoleIdPicklistId`) 
+  REFERENCES `Picklists` 
+    (`PicklistId`) 
+  ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+alter TABLE `PicklistItems` add
+  CONSTRAINT `FK_PicklistItem_PicklistBin_StateId` 
+  FOREIGN KEY 
+    (`PicklistBinId`) 
+  REFERENCES `PicklistBins` 
+    (`PicklistBinId`) 
   ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 alter TABLE `ShipmentItems` add
@@ -76,5 +108,21 @@ alter TABLE `ShipmentReceipts` add
     (`ShipmentReceiptIdShipmentId`) 
   REFERENCES `Shipments` 
     (`ShipmentId`) 
+  ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+alter TABLE `ItemIssuances` add
+  CONSTRAINT `FK_ItemIssuance_Shipment_StateId` 
+  FOREIGN KEY 
+    (`ShipmentItemIssuanceIdShipmentId`) 
+  REFERENCES `Shipments` 
+    (`ShipmentId`) 
+  ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+alter TABLE `ShipmentPackageContents` add
+  CONSTRAINT `FK_ShipmentPackageContent_ShipmentPackage_StateId` 
+  FOREIGN KEY 
+    (`ShipmentPackageContentIdShipmentPackageIdShipmentId`, `ShipmentPackageContentIdShipmentPackageIdShipmentPackageSeqId`) 
+  REFERENCES `ShipmentPackages` 
+    (`ShipmentPackageIdShipmentId`, `ShipmentPackageIdShipmentPackageSeqId`) 
   ON DELETE NO ACTION ON UPDATE NO ACTION;
 

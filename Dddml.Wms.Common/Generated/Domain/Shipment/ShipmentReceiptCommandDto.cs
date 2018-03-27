@@ -38,7 +38,19 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual string AttributeSetInstanceId { get; set; }
 
+		public virtual string LocatorId { get; set; }
+
 		public virtual string ShipmentItemSeqId { get; set; }
+
+		public virtual string ShipmentPackageSeqId { get; set; }
+
+		public virtual string OrderId { get; set; }
+
+		public virtual string OrderItemSeqId { get; set; }
+
+		public virtual string ReturnId { get; set; }
+
+		public virtual string ReturnItemSeqId { get; set; }
 
 		public virtual string RejectionReasonId { get; set; }
 
@@ -100,6 +112,25 @@ namespace Dddml.Wms.Domain.Shipment
             }
         }
 
+		public virtual bool? IsPropertyLocatorIdRemoved { get; set; }
+
+        bool IMergePatchShipmentReceipt.IsPropertyLocatorIdRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyLocatorIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyLocatorIdRemoved = value;
+            }
+        }
+
 		public virtual bool? IsPropertyShipmentItemSeqIdRemoved { get; set; }
 
         bool IMergePatchShipmentReceipt.IsPropertyShipmentItemSeqIdRemoved
@@ -116,6 +147,101 @@ namespace Dddml.Wms.Domain.Shipment
             set
             {
                 this.IsPropertyShipmentItemSeqIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyShipmentPackageSeqIdRemoved { get; set; }
+
+        bool IMergePatchShipmentReceipt.IsPropertyShipmentPackageSeqIdRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyShipmentPackageSeqIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyShipmentPackageSeqIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyOrderIdRemoved { get; set; }
+
+        bool IMergePatchShipmentReceipt.IsPropertyOrderIdRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyOrderIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyOrderIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyOrderItemSeqIdRemoved { get; set; }
+
+        bool IMergePatchShipmentReceipt.IsPropertyOrderItemSeqIdRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyOrderItemSeqIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyOrderItemSeqIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyReturnIdRemoved { get; set; }
+
+        bool IMergePatchShipmentReceipt.IsPropertyReturnIdRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyReturnIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyReturnIdRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyReturnItemSeqIdRemoved { get; set; }
+
+        bool IMergePatchShipmentReceipt.IsPropertyReturnItemSeqIdRemoved
+        {
+            get
+            {
+                var b = this.IsPropertyReturnItemSeqIdRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return false;
+            }
+            set
+            {
+                this.IsPropertyReturnItemSeqIdRemoved = value;
             }
         }
 

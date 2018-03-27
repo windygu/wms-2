@@ -9,6 +9,7 @@ import org.apache.cxf.jaxrs.ext.PATCH;
 
 import org.dddml.support.criterion.*;
 import java.util.Date;
+import org.dddml.wms.domain.partyrole.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.order.*;
@@ -161,6 +162,25 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @Path("{orderId}/OrderRoles/{partyRoleId}") @GET
+    public OrderRoleStateDto getOrderRole(@PathParam("orderId") String orderId, @PathParam("partyRoleId") String partyRoleId) {
+        try {
+
+            OrderRoleState state = orderApplicationService.getOrderRole(orderId, (new AbstractValueObjectTextFormatter<PartyRoleId>(PartyRoleId.class, ",") {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    }.parse(partyRoleId)));
+            if (state == null) { return null; }
+            OrderRoleStateDto.DtoConverter dtoConverter = new OrderRoleStateDto.DtoConverter();
+            OrderRoleStateDto stateDto = dtoConverter.toOrderRoleStateDto(state);
+            dtoConverter.setAllFieldsReturned(true);
+            return stateDto;
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
     @Path("{orderId}/OrderItems/{orderItemSeqId}") @GET
     public OrderItemStateDto getOrderItem(@PathParam("orderId") String orderId, @PathParam("orderItemSeqId") String orderItemSeqId) {
         try {
@@ -169,6 +189,20 @@ public class OrderResource {
             if (state == null) { return null; }
             OrderItemStateDto.DtoConverter dtoConverter = new OrderItemStateDto.DtoConverter();
             OrderItemStateDto stateDto = dtoConverter.toOrderItemStateDto(state);
+            dtoConverter.setAllFieldsReturned(true);
+            return stateDto;
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @Path("{orderId}/OrderShipGroups/{shipGroupSeqId}") @GET
+    public OrderShipGroupStateDto getOrderShipGroup(@PathParam("orderId") String orderId, @PathParam("shipGroupSeqId") Long shipGroupSeqId) {
+        try {
+
+            OrderShipGroupState state = orderApplicationService.getOrderShipGroup(orderId, shipGroupSeqId);
+            if (state == null) { return null; }
+            OrderShipGroupStateDto.DtoConverter dtoConverter = new OrderShipGroupStateDto.DtoConverter();
+            OrderShipGroupStateDto stateDto = dtoConverter.toOrderShipGroupStateDto(state);
             dtoConverter.setAllFieldsReturned(true);
             return stateDto;
 

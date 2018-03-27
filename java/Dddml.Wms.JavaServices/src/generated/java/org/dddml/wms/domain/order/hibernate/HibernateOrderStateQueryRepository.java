@@ -2,6 +2,7 @@ package org.dddml.wms.domain.order.hibernate;
 
 import java.util.*;
 import java.util.Date;
+import org.dddml.wms.domain.partyrole.*;
 import org.dddml.wms.domain.*;
 import org.hibernate.Session;
 import org.hibernate.Criteria;
@@ -26,7 +27,7 @@ public class HibernateOrderStateQueryRepository implements OrderStateQueryReposi
         return this.sessionFactory.getCurrentSession();
     }
     
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("OrderId", "OrderTypeId", "OrderName", "ExternalId", "SalesChannelEnumId", "OrderDate", "Priority", "EntryDate", "PickSheetPrintedDate", "StatusId", "CurrencyUom", "SyncStatusId", "BillingAccountId", "OriginFacilityId", "WebSiteId", "ProductStoreId", "TerminalId", "TransactionId", "AutoOrderShoppingListId", "NeedsInventoryIssuance", "IsRushOrder", "InternalCode", "RemainingSubTotal", "GrandTotal", "InvoicePerShipment", "OrderItems", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("OrderId", "OrderTypeId", "OrderName", "ExternalId", "SalesChannelEnumId", "OrderDate", "Priority", "EntryDate", "PickSheetPrintedDate", "StatusId", "CurrencyUom", "SyncStatusId", "BillingAccountId", "OriginFacilityId", "WebSiteId", "ProductStoreId", "TerminalId", "TransactionId", "AutoOrderShoppingListId", "NeedsInventoryIssuance", "IsRushOrder", "InternalCode", "RemainingSubTotal", "GrandTotal", "InvoicePerShipment", "OrderItems", "OrderRoles", "OrderShipGroups", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     
@@ -133,10 +134,24 @@ public class HibernateOrderStateQueryRepository implements OrderStateQueryReposi
     }
 
     @Transactional(readOnly = true)
+    public OrderRoleState getOrderRole(String orderId, PartyRoleId partyRoleId)
+    {
+        OrderRoleId entityId = new OrderRoleId(orderId, partyRoleId);
+        return (OrderRoleState) getCurrentSession().get(AbstractOrderRoleState.SimpleOrderRoleState.class, entityId);
+    }
+
+    @Transactional(readOnly = true)
     public OrderItemState getOrderItem(String orderId, String orderItemSeqId)
     {
         OrderItemId entityId = new OrderItemId(orderId, orderItemSeqId);
         return (OrderItemState) getCurrentSession().get(AbstractOrderItemState.SimpleOrderItemState.class, entityId);
+    }
+
+    @Transactional(readOnly = true)
+    public OrderShipGroupState getOrderShipGroup(String orderId, Long shipGroupSeqId)
+    {
+        OrderShipGroupId entityId = new OrderShipGroupId(orderId, shipGroupSeqId);
+        return (OrderShipGroupState) getCurrentSession().get(AbstractOrderShipGroupState.SimpleOrderShipGroupState.class, entityId);
     }
 
 

@@ -133,35 +133,6 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "TargetQuantity",
-                    Type = typeof(decimal),
-                    TypeName = "decimal",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "The Quantity which should be shipped.",
-                    Length = 0,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = false,
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
-                new PropertyMetadata {
                     Name = "ShipmentContentDescription",
                     Type = typeof(string),
                     TypeName = "string",
@@ -484,6 +455,35 @@ namespace Dddml.Wms.Domain.Metadata
                     Name = "ShipmentPrimaryReturnId",
                     Type = typeof(string),
                     TypeName = "string",
+                    IsSimpleValueObjectType = true,
+                    IsNullableType = false,
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "",
+                    ReferenceName = "",
+                    ItemTypeName = "",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = true,
+                },
+                new PropertyMetadata {
+                    Name = "ShipmentPrimaryShipGroupSeqId",
+                    Type = typeof(long),
+                    TypeName = "long",
                     IsSimpleValueObjectType = true,
                     IsNullableType = false,
                     DisplayName = "",
@@ -1090,35 +1090,6 @@ namespace Dddml.Wms.Domain.Metadata
                     IsFilteringProperty = true,
                 },
                 new PropertyMetadata {
-                    Name = "ShipmentShipperId",
-                    Type = typeof(string),
-                    TypeName = "string",
-                    IsSimpleValueObjectType = true,
-                    IsNullableType = false,
-                    DisplayName = "",
-                    Description = "",
-                    Length = 0,
-                    GenericTypeName = "",
-                    ReferenceTypeName = "",
-                    ReferenceName = "",
-                    ItemTypeName = "",
-                    InverseOf = "",
-                    IsHoisted = false,
-                    IsId = false,
-                    IsGlobalId = false,
-                    IsDerived = false,
-                    IsDiscriminator = false,
-                    IsReservedProperty = false,
-                    IsReservedPropertyVersion = false,
-                    IsReservedPropertyDeleted = false,
-                    IsReservedPropertyActive = false,
-                    IsReservedPropertyCreatedBy = false,
-                    IsReservedPropertyCreatedAt = false,
-                    IsReservedPropertyUpdatedBy = false,
-                    IsReservedPropertyUpdatedAt = false,
-                    IsFilteringProperty = true,
-                },
-                new PropertyMetadata {
                     Name = "ShipmentShipmentItems",
                     DisplayName = "",
                     Description = "",
@@ -1152,6 +1123,31 @@ namespace Dddml.Wms.Domain.Metadata
                     ReferenceTypeName = "",
                     ReferenceName = "",
                     ItemTypeName = "ShipmentReceipt",
+                    InverseOf = "",
+                    IsHoisted = false,
+                    IsId = false,
+                    IsGlobalId = false,
+                    IsDerived = false,
+                    IsDiscriminator = false,
+                    IsReservedProperty = false,
+                    IsReservedPropertyVersion = false,
+                    IsReservedPropertyDeleted = false,
+                    IsReservedPropertyActive = false,
+                    IsReservedPropertyCreatedBy = false,
+                    IsReservedPropertyCreatedAt = false,
+                    IsReservedPropertyUpdatedBy = false,
+                    IsReservedPropertyUpdatedAt = false,
+                    IsFilteringProperty = false,
+                },
+                new PropertyMetadata {
+                    Name = "ShipmentItemIssuances",
+                    DisplayName = "",
+                    Description = "",
+                    Length = 0,
+                    GenericTypeName = "",
+                    ReferenceTypeName = "",
+                    ReferenceName = "",
+                    ItemTypeName = "ItemIssuance",
                     InverseOf = "",
                     IsHoisted = false,
                     IsId = false,
@@ -1425,8 +1421,6 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("attributeSetInstanceId", "AttributeSetInstanceId");
             d.Add("Quantity", "Quantity");
             d.Add("quantity", "Quantity");
-            d.Add("TargetQuantity", "TargetQuantity");
-            d.Add("targetQuantity", "TargetQuantity");
             d.Add("ShipmentContentDescription", "ShipmentContentDescription");
             d.Add("shipmentContentDescription", "ShipmentContentDescription");
             d.Add("Version", "Version");
@@ -1451,6 +1445,8 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("shipmentPrimaryOrderId", "ShipmentPrimaryOrderId");
             d.Add("ShipmentPrimaryReturnId", "ShipmentPrimaryReturnId");
             d.Add("shipmentPrimaryReturnId", "ShipmentPrimaryReturnId");
+            d.Add("ShipmentPrimaryShipGroupSeqId", "ShipmentPrimaryShipGroupSeqId");
+            d.Add("shipmentPrimaryShipGroupSeqId", "ShipmentPrimaryShipGroupSeqId");
             d.Add("ShipmentPicklistBinId", "ShipmentPicklistBinId");
             d.Add("shipmentPicklistBinId", "ShipmentPicklistBinId");
             d.Add("ShipmentEstimatedReadyDate", "ShipmentEstimatedReadyDate");
@@ -1491,8 +1487,6 @@ namespace Dddml.Wms.Domain.Metadata
             d.Add("shipmentAdditionalShippingCharge", "ShipmentAdditionalShippingCharge");
             d.Add("ShipmentAddtlShippingChargeDesc", "ShipmentAddtlShippingChargeDesc");
             d.Add("shipmentAddtlShippingChargeDesc", "ShipmentAddtlShippingChargeDesc");
-            d.Add("ShipmentShipperId", "ShipmentShipperId");
-            d.Add("shipmentShipperId", "ShipmentShipperId");
             d.Add("ShipmentVersion", "ShipmentVersion");
             d.Add("shipmentVersion", "ShipmentVersion");
             d.Add("ShipmentCreatedBy", "ShipmentCreatedBy");

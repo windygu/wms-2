@@ -28,9 +28,33 @@ public interface ShipmentReceiptState
 
     void setAttributeSetInstanceId(String attributeSetInstanceId);
 
+    String getLocatorId();
+
+    void setLocatorId(String locatorId);
+
     String getShipmentItemSeqId();
 
     void setShipmentItemSeqId(String shipmentItemSeqId);
+
+    String getShipmentPackageSeqId();
+
+    void setShipmentPackageSeqId(String shipmentPackageSeqId);
+
+    String getOrderId();
+
+    void setOrderId(String orderId);
+
+    String getOrderItemSeqId();
+
+    void setOrderItemSeqId(String orderItemSeqId);
+
+    String getReturnId();
+
+    void setReturnId(String returnId);
+
+    String getReturnItemSeqId();
+
+    void setReturnItemSeqId(String returnItemSeqId);
 
     String getRejectionReasonId();
 

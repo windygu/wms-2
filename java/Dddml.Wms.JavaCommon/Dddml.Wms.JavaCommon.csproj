@@ -748,6 +748,74 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\Command.java">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\contactmech\AbstractContactMechAggregate.java">
+      <DependentUpon>GenerateContactMechDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\contactmech\AbstractContactMechApplicationService.java">
+      <DependentUpon>GenerateContactMechDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\contactmech\AbstractContactMechCommand.java">
+      <DependentUpon>GenerateContactMechDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\contactmech\AbstractContactMechCommandDto.java">
+      <DependentUpon>GenerateContactMechDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\contactmech\AbstractContactMechState.java">
+      <DependentUpon>GenerateContactMechDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\contactmech\AbstractContactMechStateCommandConverter.java">
+      <DependentUpon>GenerateContactMechDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\contactmech\AbstractContactMechStateEvent.java">
+      <DependentUpon>GenerateContactMechDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\contactmech\ContactMechAggregate.java">
+      <DependentUpon>GenerateContactMechDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\contactmech\ContactMechApplicationService.java">
+      <DependentUpon>GenerateContactMechDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\contactmech\ContactMechCommand.java">
+      <DependentUpon>GenerateContactMechDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\contactmech\ContactMechEventId.java">
+      <DependentUpon>GenerateContactMechDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\contactmech\ContactMechState.java">
+      <DependentUpon>GenerateContactMechDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\contactmech\ContactMechStateDto.java">
+      <DependentUpon>GenerateContactMechDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\contactmech\ContactMechStateEvent.java">
+      <DependentUpon>GenerateContactMechDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\contactmech\ContactMechStateEventDto.java">
+      <DependentUpon>GenerateContactMechDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\contactmech\ContactMechStateEventDtoConverter.java">
+      <DependentUpon>GenerateContactMechDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\contactmech\ContactMechStateQueryRepository.java">
+      <DependentUpon>GenerateContactMechDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\contactmech\ContactMechStateRepository.java">
+      <DependentUpon>GenerateContactMechDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\contactmech\ContactMechTypeId.java">
+      <DependentUpon>GenerateContactMechDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\contactmech\CreateOrMergePatchContactMechDto.java">
+      <DependentUpon>GenerateContactMechDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\contactmech\DeleteContactMechDto.java">
+      <DependentUpon>GenerateContactMechDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\contactmech\GenerateContactMechDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateContactMechDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\damagehandlingmethod\AbstractDamageHandlingMethodApplicationService.java">
       <DependentUpon>GenerateDamageHandlingMethodDomain.tt</DependentUpon>
     </Content>
@@ -892,6 +960,71 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\DocumentAction.java">
       <DependentUpon>GenerateBoundedContextDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\facility\AbstractFacilityAggregate.java">
+      <DependentUpon>GenerateFacilityDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\facility\AbstractFacilityApplicationService.java">
+      <DependentUpon>GenerateFacilityDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\facility\AbstractFacilityCommand.java">
+      <DependentUpon>GenerateFacilityDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\facility\AbstractFacilityCommandDto.java">
+      <DependentUpon>GenerateFacilityDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\facility\AbstractFacilityState.java">
+      <DependentUpon>GenerateFacilityDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\facility\AbstractFacilityStateCommandConverter.java">
+      <DependentUpon>GenerateFacilityDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\facility\AbstractFacilityStateEvent.java">
+      <DependentUpon>GenerateFacilityDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\facility\CreateOrMergePatchFacilityDto.java">
+      <DependentUpon>GenerateFacilityDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\facility\DeleteFacilityDto.java">
+      <DependentUpon>GenerateFacilityDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\facility\FacilityAggregate.java">
+      <DependentUpon>GenerateFacilityDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\facility\FacilityApplicationService.java">
+      <DependentUpon>GenerateFacilityDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\facility\FacilityCommand.java">
+      <DependentUpon>GenerateFacilityDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\facility\FacilityEventId.java">
+      <DependentUpon>GenerateFacilityDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\facility\FacilityState.java">
+      <DependentUpon>GenerateFacilityDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\facility\FacilityStateDto.java">
+      <DependentUpon>GenerateFacilityDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\facility\FacilityStateEvent.java">
+      <DependentUpon>GenerateFacilityDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\facility\FacilityStateEventDto.java">
+      <DependentUpon>GenerateFacilityDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\facility\FacilityStateEventDtoConverter.java">
+      <DependentUpon>GenerateFacilityDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\facility\FacilityStateQueryRepository.java">
+      <DependentUpon>GenerateFacilityDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\facility\FacilityStateRepository.java">
+      <DependentUpon>GenerateFacilityDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\facility\GenerateFacilityDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateFacilityDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inoutlinemvo\InOutLineMvoEventId.java">
       <DependentUpon>GenerateInOutLineMvoDomain.tt</DependentUpon>
     </Content>
@@ -936,11 +1069,202 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\inventoryprtriggered\InventoryPRTriggeredEventId.java">
       <DependentUpon>GenerateInventoryPRTriggeredDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\itemissuancemvo\AbstractItemIssuanceMvoAggregate.java">
+      <DependentUpon>GenerateItemIssuanceMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\itemissuancemvo\AbstractItemIssuanceMvoApplicationService.java">
+      <DependentUpon>GenerateItemIssuanceMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\itemissuancemvo\AbstractItemIssuanceMvoCommand.java">
+      <DependentUpon>GenerateItemIssuanceMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\itemissuancemvo\AbstractItemIssuanceMvoCommandDto.java">
+      <DependentUpon>GenerateItemIssuanceMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\itemissuancemvo\AbstractItemIssuanceMvoState.java">
+      <DependentUpon>GenerateItemIssuanceMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\itemissuancemvo\AbstractItemIssuanceMvoStateCommandConverter.java">
+      <DependentUpon>GenerateItemIssuanceMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\itemissuancemvo\AbstractItemIssuanceMvoStateEvent.java">
+      <DependentUpon>GenerateItemIssuanceMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\itemissuancemvo\CreateOrMergePatchItemIssuanceMvoDto.java">
+      <DependentUpon>GenerateItemIssuanceMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\itemissuancemvo\DeleteItemIssuanceMvoDto.java">
+      <DependentUpon>GenerateItemIssuanceMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\itemissuancemvo\GenerateItemIssuanceMvoDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateItemIssuanceMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\itemissuancemvo\ItemIssuanceMvoAggregate.java">
+      <DependentUpon>GenerateItemIssuanceMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\itemissuancemvo\ItemIssuanceMvoApplicationService.java">
+      <DependentUpon>GenerateItemIssuanceMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\itemissuancemvo\ItemIssuanceMvoCommand.java">
+      <DependentUpon>GenerateItemIssuanceMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\itemissuancemvo\ItemIssuanceMvoEventId.java">
+      <DependentUpon>GenerateItemIssuanceMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\itemissuancemvo\ItemIssuanceMvoState.java">
+      <DependentUpon>GenerateItemIssuanceMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\itemissuancemvo\ItemIssuanceMvoStateDto.java">
+      <DependentUpon>GenerateItemIssuanceMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\itemissuancemvo\ItemIssuanceMvoStateEvent.java">
+      <DependentUpon>GenerateItemIssuanceMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\itemissuancemvo\ItemIssuanceMvoStateEventDto.java">
+      <DependentUpon>GenerateItemIssuanceMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\itemissuancemvo\ItemIssuanceMvoStateEventDtoConverter.java">
+      <DependentUpon>GenerateItemIssuanceMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\itemissuancemvo\ItemIssuanceMvoStateQueryRepository.java">
+      <DependentUpon>GenerateItemIssuanceMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\itemissuancemvo\ItemIssuanceMvoStateRepository.java">
+      <DependentUpon>GenerateItemIssuanceMvoDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\locator\LocatorEventId.java">
       <DependentUpon>GenerateLocatorDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\lot\LotEventId.java">
       <DependentUpon>GenerateLotDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\ContactMechFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\ContactMechMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\FacilityFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\FacilityMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\ItemIssuanceFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\ItemIssuanceMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\ItemIssuanceMvoFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\ItemIssuanceMvoMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrderItemShipGrpInvReservationFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrderItemShipGrpInvReservationMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrderRoleFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrderRoleMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrderRoleMvoFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrderRoleMvoMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrderShipGroupFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrderShipGroupMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrderShipGroupMvoFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrderShipGroupMvoMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\PartyRoleFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\PartyRoleMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\PicklistBinFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\PicklistBinMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\PicklistFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\PicklistItemFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\PicklistItemMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\PicklistItemMvoFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\PicklistItemMvoMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\PicklistMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\PicklistRoleFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\PicklistRoleMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\PicklistRoleMvoFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\PicklistRoleMvoMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\RoleTypeFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\RoleTypeMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\ShipmentMethodTypeFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\ShipmentMethodTypeMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\ShipmentPackageContentFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\ShipmentPackageContentMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\ShipmentPackageContentMvoFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\ShipmentPackageContentMvoMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\ShipmentPackageFilteringProperties.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\meta\ShipmentPackageMetadata.java">
+      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmationlinemvo\MovementConfirmationLineMvoEventId.java">
       <DependentUpon>GenerateMovementConfirmationLineMvoDomain.tt</DependentUpon>
@@ -963,8 +1287,248 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\orderitemmvo\OrderItemMvoEventId.java">
       <DependentUpon>GenerateOrderItemMvoDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgrpinvreservation\AbstractOrderItemShipGrpInvReservationAggregate.java">
+      <DependentUpon>GenerateOrderItemShipGrpInvReservationDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgrpinvreservation\AbstractOrderItemShipGrpInvReservationApplicationService.java">
+      <DependentUpon>GenerateOrderItemShipGrpInvReservationDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgrpinvreservation\AbstractOrderItemShipGrpInvReservationCommand.java">
+      <DependentUpon>GenerateOrderItemShipGrpInvReservationDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgrpinvreservation\AbstractOrderItemShipGrpInvReservationCommandDto.java">
+      <DependentUpon>GenerateOrderItemShipGrpInvReservationDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgrpinvreservation\AbstractOrderItemShipGrpInvReservationState.java">
+      <DependentUpon>GenerateOrderItemShipGrpInvReservationDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgrpinvreservation\AbstractOrderItemShipGrpInvReservationStateCommandConverter.java">
+      <DependentUpon>GenerateOrderItemShipGrpInvReservationDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgrpinvreservation\AbstractOrderItemShipGrpInvReservationStateEvent.java">
+      <DependentUpon>GenerateOrderItemShipGrpInvReservationDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgrpinvreservation\CreateOrMergePatchOrderItemShipGrpInvReservationDto.java">
+      <DependentUpon>GenerateOrderItemShipGrpInvReservationDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgrpinvreservation\DeleteOrderItemShipGrpInvReservationDto.java">
+      <DependentUpon>GenerateOrderItemShipGrpInvReservationDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgrpinvreservation\GenerateOrderItemShipGrpInvReservationDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateOrderItemShipGrpInvReservationDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgrpinvreservation\OrderItemShipGrpInvReservationAggregate.java">
+      <DependentUpon>GenerateOrderItemShipGrpInvReservationDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgrpinvreservation\OrderItemShipGrpInvReservationApplicationService.java">
+      <DependentUpon>GenerateOrderItemShipGrpInvReservationDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgrpinvreservation\OrderItemShipGrpInvReservationCommand.java">
+      <DependentUpon>GenerateOrderItemShipGrpInvReservationDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgrpinvreservation\OrderItemShipGrpInvReservationEventId.java">
+      <DependentUpon>GenerateOrderItemShipGrpInvReservationDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgrpinvreservation\OrderItemShipGrpInvReservationState.java">
+      <DependentUpon>GenerateOrderItemShipGrpInvReservationDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgrpinvreservation\OrderItemShipGrpInvReservationStateDto.java">
+      <DependentUpon>GenerateOrderItemShipGrpInvReservationDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgrpinvreservation\OrderItemShipGrpInvReservationStateEvent.java">
+      <DependentUpon>GenerateOrderItemShipGrpInvReservationDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgrpinvreservation\OrderItemShipGrpInvReservationStateEventDto.java">
+      <DependentUpon>GenerateOrderItemShipGrpInvReservationDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgrpinvreservation\OrderItemShipGrpInvReservationStateEventDtoConverter.java">
+      <DependentUpon>GenerateOrderItemShipGrpInvReservationDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgrpinvreservation\OrderItemShipGrpInvReservationStateQueryRepository.java">
+      <DependentUpon>GenerateOrderItemShipGrpInvReservationDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgrpinvreservation\OrderItemShipGrpInvReservationStateRepository.java">
+      <DependentUpon>GenerateOrderItemShipGrpInvReservationDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgrpinvreservation\OrderItemShipGrpInvResId.java">
+      <DependentUpon>GenerateOrderItemShipGrpInvReservationDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderrolemvo\AbstractOrderRoleMvoAggregate.java">
+      <DependentUpon>GenerateOrderRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderrolemvo\AbstractOrderRoleMvoApplicationService.java">
+      <DependentUpon>GenerateOrderRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderrolemvo\AbstractOrderRoleMvoCommand.java">
+      <DependentUpon>GenerateOrderRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderrolemvo\AbstractOrderRoleMvoCommandDto.java">
+      <DependentUpon>GenerateOrderRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderrolemvo\AbstractOrderRoleMvoState.java">
+      <DependentUpon>GenerateOrderRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderrolemvo\AbstractOrderRoleMvoStateCommandConverter.java">
+      <DependentUpon>GenerateOrderRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderrolemvo\AbstractOrderRoleMvoStateEvent.java">
+      <DependentUpon>GenerateOrderRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderrolemvo\CreateOrMergePatchOrderRoleMvoDto.java">
+      <DependentUpon>GenerateOrderRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderrolemvo\DeleteOrderRoleMvoDto.java">
+      <DependentUpon>GenerateOrderRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderrolemvo\GenerateOrderRoleMvoDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateOrderRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderrolemvo\OrderRoleMvoAggregate.java">
+      <DependentUpon>GenerateOrderRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderrolemvo\OrderRoleMvoApplicationService.java">
+      <DependentUpon>GenerateOrderRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderrolemvo\OrderRoleMvoCommand.java">
+      <DependentUpon>GenerateOrderRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderrolemvo\OrderRoleMvoEventId.java">
+      <DependentUpon>GenerateOrderRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderrolemvo\OrderRoleMvoState.java">
+      <DependentUpon>GenerateOrderRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderrolemvo\OrderRoleMvoStateDto.java">
+      <DependentUpon>GenerateOrderRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderrolemvo\OrderRoleMvoStateEvent.java">
+      <DependentUpon>GenerateOrderRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderrolemvo\OrderRoleMvoStateEventDto.java">
+      <DependentUpon>GenerateOrderRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderrolemvo\OrderRoleMvoStateEventDtoConverter.java">
+      <DependentUpon>GenerateOrderRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderrolemvo\OrderRoleMvoStateQueryRepository.java">
+      <DependentUpon>GenerateOrderRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderrolemvo\OrderRoleMvoStateRepository.java">
+      <DependentUpon>GenerateOrderRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\ordershipgroupmvo\AbstractOrderShipGroupMvoAggregate.java">
+      <DependentUpon>GenerateOrderShipGroupMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\ordershipgroupmvo\AbstractOrderShipGroupMvoApplicationService.java">
+      <DependentUpon>GenerateOrderShipGroupMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\ordershipgroupmvo\AbstractOrderShipGroupMvoCommand.java">
+      <DependentUpon>GenerateOrderShipGroupMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\ordershipgroupmvo\AbstractOrderShipGroupMvoCommandDto.java">
+      <DependentUpon>GenerateOrderShipGroupMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\ordershipgroupmvo\AbstractOrderShipGroupMvoState.java">
+      <DependentUpon>GenerateOrderShipGroupMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\ordershipgroupmvo\AbstractOrderShipGroupMvoStateCommandConverter.java">
+      <DependentUpon>GenerateOrderShipGroupMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\ordershipgroupmvo\AbstractOrderShipGroupMvoStateEvent.java">
+      <DependentUpon>GenerateOrderShipGroupMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\ordershipgroupmvo\CreateOrMergePatchOrderShipGroupMvoDto.java">
+      <DependentUpon>GenerateOrderShipGroupMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\ordershipgroupmvo\DeleteOrderShipGroupMvoDto.java">
+      <DependentUpon>GenerateOrderShipGroupMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\ordershipgroupmvo\GenerateOrderShipGroupMvoDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateOrderShipGroupMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\ordershipgroupmvo\OrderShipGroupMvoAggregate.java">
+      <DependentUpon>GenerateOrderShipGroupMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\ordershipgroupmvo\OrderShipGroupMvoApplicationService.java">
+      <DependentUpon>GenerateOrderShipGroupMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\ordershipgroupmvo\OrderShipGroupMvoCommand.java">
+      <DependentUpon>GenerateOrderShipGroupMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\ordershipgroupmvo\OrderShipGroupMvoEventId.java">
+      <DependentUpon>GenerateOrderShipGroupMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\ordershipgroupmvo\OrderShipGroupMvoState.java">
+      <DependentUpon>GenerateOrderShipGroupMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\ordershipgroupmvo\OrderShipGroupMvoStateDto.java">
+      <DependentUpon>GenerateOrderShipGroupMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\ordershipgroupmvo\OrderShipGroupMvoStateEvent.java">
+      <DependentUpon>GenerateOrderShipGroupMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\ordershipgroupmvo\OrderShipGroupMvoStateEventDto.java">
+      <DependentUpon>GenerateOrderShipGroupMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\ordershipgroupmvo\OrderShipGroupMvoStateEventDtoConverter.java">
+      <DependentUpon>GenerateOrderShipGroupMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\ordershipgroupmvo\OrderShipGroupMvoStateQueryRepository.java">
+      <DependentUpon>GenerateOrderShipGroupMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\ordershipgroupmvo\OrderShipGroupMvoStateRepository.java">
+      <DependentUpon>GenerateOrderShipGroupMvoDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\ordershipment\OrderShipmentEventId.java">
       <DependentUpon>GenerateOrderShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\AbstractOrderRoleCommand.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\AbstractOrderRoleCommandDto.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\AbstractOrderRoleState.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\AbstractOrderRoleStateCommandConverter.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\AbstractOrderRoleStateEvent.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\AbstractOrderRoleStates.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\AbstractOrderShipGroupCommand.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\AbstractOrderShipGroupCommandDto.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\AbstractOrderShipGroupState.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\AbstractOrderShipGroupStateCommandConverter.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\AbstractOrderShipGroupStateEvent.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\AbstractOrderShipGroupStates.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\CreateOrMergePatchOrderRoleDto.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\CreateOrMergePatchOrderShipGroupDto.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderEventId.java">
       <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
@@ -972,11 +1536,151 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderItemEventId.java">
       <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderRoleCommand.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderRoleEventId.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderRoleId.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderRoleState.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderRoleStateDao.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderRoleStateDto.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderRoleStateEvent.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderRoleStateEventDao.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderRoleStateEventDto.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderRoleStateEventDtoConverter.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderRoleStates.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderShipGroupCommand.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderShipGroupEventId.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderShipGroupId.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderShipGroupState.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderShipGroupStateDao.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderShipGroupStateDto.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderShipGroupStateEvent.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderShipGroupStateEventDao.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderShipGroupStateEventDto.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderShipGroupStateEventDtoConverter.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\OrderShipGroupStates.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\RemoveOrderRoleDto.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\RemoveOrderShipGroupDto.java">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructuretype\OrganizationStructureTypeEventId.java">
       <DependentUpon>GenerateOrganizationStructureTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\organizationstructure\OrganizationStructureEventId.java">
       <DependentUpon>GenerateOrganizationStructureDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\partyrole\AbstractPartyRoleAggregate.java">
+      <DependentUpon>GeneratePartyRoleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\partyrole\AbstractPartyRoleApplicationService.java">
+      <DependentUpon>GeneratePartyRoleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\partyrole\AbstractPartyRoleCommand.java">
+      <DependentUpon>GeneratePartyRoleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\partyrole\AbstractPartyRoleCommandDto.java">
+      <DependentUpon>GeneratePartyRoleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\partyrole\AbstractPartyRoleState.java">
+      <DependentUpon>GeneratePartyRoleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\partyrole\AbstractPartyRoleStateCommandConverter.java">
+      <DependentUpon>GeneratePartyRoleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\partyrole\AbstractPartyRoleStateEvent.java">
+      <DependentUpon>GeneratePartyRoleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\partyrole\CreateOrMergePatchPartyRoleDto.java">
+      <DependentUpon>GeneratePartyRoleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\partyrole\DeletePartyRoleDto.java">
+      <DependentUpon>GeneratePartyRoleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\partyrole\GeneratePartyRoleDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GeneratePartyRoleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\partyrole\PartyRoleAggregate.java">
+      <DependentUpon>GeneratePartyRoleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\partyrole\PartyRoleApplicationService.java">
+      <DependentUpon>GeneratePartyRoleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\partyrole\PartyRoleCommand.java">
+      <DependentUpon>GeneratePartyRoleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\partyrole\PartyRoleEventId.java">
+      <DependentUpon>GeneratePartyRoleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\partyrole\PartyRoleId.java">
+      <DependentUpon>GeneratePartyRoleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\partyrole\PartyRoleState.java">
+      <DependentUpon>GeneratePartyRoleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\partyrole\PartyRoleStateDto.java">
+      <DependentUpon>GeneratePartyRoleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\partyrole\PartyRoleStateEvent.java">
+      <DependentUpon>GeneratePartyRoleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\partyrole\PartyRoleStateEventDto.java">
+      <DependentUpon>GeneratePartyRoleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\partyrole\PartyRoleStateEventDtoConverter.java">
+      <DependentUpon>GeneratePartyRoleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\partyrole\PartyRoleStateQueryRepository.java">
+      <DependentUpon>GeneratePartyRoleDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\partyrole\PartyRoleStateRepository.java">
+      <DependentUpon>GeneratePartyRoleDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\party\PartyEventId.java">
       <DependentUpon>GeneratePartyDomain.tt</DependentUpon>
@@ -990,6 +1694,383 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventory\PhysicalInventoryLineEventId.java">
       <DependentUpon>GeneratePhysicalInventoryDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\AbstractPicklistBinAggregate.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\AbstractPicklistBinApplicationService.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\AbstractPicklistBinCommand.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\AbstractPicklistBinCommandDto.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\AbstractPicklistBinState.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\AbstractPicklistBinStateCommandConverter.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\AbstractPicklistBinStateEvent.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\AbstractPicklistItemCommand.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\AbstractPicklistItemCommandDto.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\AbstractPicklistItemState.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\AbstractPicklistItemStateCommandConverter.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\AbstractPicklistItemStateEvent.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\AbstractPicklistItemStates.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\CreateOrMergePatchPicklistBinDto.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\CreateOrMergePatchPicklistItemDto.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\DeletePicklistBinDto.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\GeneratePicklistBinDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\PicklistBinAggregate.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\PicklistBinApplicationService.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\PicklistBinCommand.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\PicklistBinEventId.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\PicklistBinPicklistItemId.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\PicklistBinState.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\PicklistBinStateDto.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\PicklistBinStateEvent.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\PicklistBinStateEventDto.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\PicklistBinStateEventDtoConverter.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\PicklistBinStateQueryRepository.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\PicklistBinStateRepository.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\PicklistItemCommand.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\PicklistItemEventId.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\PicklistItemOrderShipGrpInvId.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\PicklistItemState.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\PicklistItemStateDao.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\PicklistItemStateDto.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\PicklistItemStateEvent.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\PicklistItemStateEventDao.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\PicklistItemStateEventDto.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\PicklistItemStateEventDtoConverter.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\PicklistItemStates.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\RemovePicklistItemDto.java">
+      <DependentUpon>GeneratePicklistBinDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistitemmvo\AbstractPicklistItemMvoAggregate.java">
+      <DependentUpon>GeneratePicklistItemMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistitemmvo\AbstractPicklistItemMvoApplicationService.java">
+      <DependentUpon>GeneratePicklistItemMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistitemmvo\AbstractPicklistItemMvoCommand.java">
+      <DependentUpon>GeneratePicklistItemMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistitemmvo\AbstractPicklistItemMvoCommandDto.java">
+      <DependentUpon>GeneratePicklistItemMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistitemmvo\AbstractPicklistItemMvoState.java">
+      <DependentUpon>GeneratePicklistItemMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistitemmvo\AbstractPicklistItemMvoStateCommandConverter.java">
+      <DependentUpon>GeneratePicklistItemMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistitemmvo\AbstractPicklistItemMvoStateEvent.java">
+      <DependentUpon>GeneratePicklistItemMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistitemmvo\CreateOrMergePatchPicklistItemMvoDto.java">
+      <DependentUpon>GeneratePicklistItemMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistitemmvo\DeletePicklistItemMvoDto.java">
+      <DependentUpon>GeneratePicklistItemMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistitemmvo\GeneratePicklistItemMvoDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GeneratePicklistItemMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistitemmvo\PicklistItemMvoAggregate.java">
+      <DependentUpon>GeneratePicklistItemMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistitemmvo\PicklistItemMvoApplicationService.java">
+      <DependentUpon>GeneratePicklistItemMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistitemmvo\PicklistItemMvoCommand.java">
+      <DependentUpon>GeneratePicklistItemMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistitemmvo\PicklistItemMvoEventId.java">
+      <DependentUpon>GeneratePicklistItemMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistitemmvo\PicklistItemMvoState.java">
+      <DependentUpon>GeneratePicklistItemMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistitemmvo\PicklistItemMvoStateDto.java">
+      <DependentUpon>GeneratePicklistItemMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistitemmvo\PicklistItemMvoStateEvent.java">
+      <DependentUpon>GeneratePicklistItemMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistitemmvo\PicklistItemMvoStateEventDto.java">
+      <DependentUpon>GeneratePicklistItemMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistitemmvo\PicklistItemMvoStateEventDtoConverter.java">
+      <DependentUpon>GeneratePicklistItemMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistitemmvo\PicklistItemMvoStateQueryRepository.java">
+      <DependentUpon>GeneratePicklistItemMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistitemmvo\PicklistItemMvoStateRepository.java">
+      <DependentUpon>GeneratePicklistItemMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistrolemvo\AbstractPicklistRoleMvoAggregate.java">
+      <DependentUpon>GeneratePicklistRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistrolemvo\AbstractPicklistRoleMvoApplicationService.java">
+      <DependentUpon>GeneratePicklistRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistrolemvo\AbstractPicklistRoleMvoCommand.java">
+      <DependentUpon>GeneratePicklistRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistrolemvo\AbstractPicklistRoleMvoCommandDto.java">
+      <DependentUpon>GeneratePicklistRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistrolemvo\AbstractPicklistRoleMvoState.java">
+      <DependentUpon>GeneratePicklistRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistrolemvo\AbstractPicklistRoleMvoStateCommandConverter.java">
+      <DependentUpon>GeneratePicklistRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistrolemvo\AbstractPicklistRoleMvoStateEvent.java">
+      <DependentUpon>GeneratePicklistRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistrolemvo\CreateOrMergePatchPicklistRoleMvoDto.java">
+      <DependentUpon>GeneratePicklistRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistrolemvo\DeletePicklistRoleMvoDto.java">
+      <DependentUpon>GeneratePicklistRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistrolemvo\GeneratePicklistRoleMvoDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GeneratePicklistRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistrolemvo\PicklistRoleMvoAggregate.java">
+      <DependentUpon>GeneratePicklistRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistrolemvo\PicklistRoleMvoApplicationService.java">
+      <DependentUpon>GeneratePicklistRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistrolemvo\PicklistRoleMvoCommand.java">
+      <DependentUpon>GeneratePicklistRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistrolemvo\PicklistRoleMvoEventId.java">
+      <DependentUpon>GeneratePicklistRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistrolemvo\PicklistRoleMvoState.java">
+      <DependentUpon>GeneratePicklistRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistrolemvo\PicklistRoleMvoStateDto.java">
+      <DependentUpon>GeneratePicklistRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistrolemvo\PicklistRoleMvoStateEvent.java">
+      <DependentUpon>GeneratePicklistRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistrolemvo\PicklistRoleMvoStateEventDto.java">
+      <DependentUpon>GeneratePicklistRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistrolemvo\PicklistRoleMvoStateEventDtoConverter.java">
+      <DependentUpon>GeneratePicklistRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistrolemvo\PicklistRoleMvoStateQueryRepository.java">
+      <DependentUpon>GeneratePicklistRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistrolemvo\PicklistRoleMvoStateRepository.java">
+      <DependentUpon>GeneratePicklistRoleMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\AbstractPicklistAggregate.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\AbstractPicklistApplicationService.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\AbstractPicklistCommand.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\AbstractPicklistCommandDto.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\AbstractPicklistRoleCommand.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\AbstractPicklistRoleCommandDto.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\AbstractPicklistRoleState.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\AbstractPicklistRoleStateCommandConverter.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\AbstractPicklistRoleStateEvent.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\AbstractPicklistRoleStates.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\AbstractPicklistState.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\AbstractPicklistStateCommandConverter.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\AbstractPicklistStateEvent.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\CreateOrMergePatchPicklistDto.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\CreateOrMergePatchPicklistRoleDto.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\DeletePicklistDto.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\GeneratePicklistDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\PicklistAggregate.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\PicklistApplicationService.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\PicklistCommand.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\PicklistEventId.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\PicklistRoleCommand.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\PicklistRoleEventId.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\PicklistRoleId.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\PicklistRoleState.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\PicklistRoleStateDao.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\PicklistRoleStateDto.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\PicklistRoleStateEvent.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\PicklistRoleStateEventDao.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\PicklistRoleStateEventDto.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\PicklistRoleStateEventDtoConverter.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\PicklistRoleStates.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\PicklistState.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\PicklistStateDto.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\PicklistStateEvent.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\PicklistStateEventDto.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\PicklistStateEventDtoConverter.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\PicklistStateQueryRepository.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\PicklistStateRepository.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\RemovePicklistRoleDto.java">
+      <DependentUpon>GeneratePicklistDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\productcategorymember\ProductCategoryMemberEventId.java">
       <DependentUpon>GenerateProductCategoryMemberDomain.tt</DependentUpon>
     </Content>
@@ -1001,6 +2082,71 @@
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\rejectionreason\RejectionReasonEventId.java">
       <DependentUpon>GenerateRejectionReasonDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\roletype\AbstractRoleTypeAggregate.java">
+      <DependentUpon>GenerateRoleTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\roletype\AbstractRoleTypeApplicationService.java">
+      <DependentUpon>GenerateRoleTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\roletype\AbstractRoleTypeCommand.java">
+      <DependentUpon>GenerateRoleTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\roletype\AbstractRoleTypeCommandDto.java">
+      <DependentUpon>GenerateRoleTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\roletype\AbstractRoleTypeState.java">
+      <DependentUpon>GenerateRoleTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\roletype\AbstractRoleTypeStateCommandConverter.java">
+      <DependentUpon>GenerateRoleTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\roletype\AbstractRoleTypeStateEvent.java">
+      <DependentUpon>GenerateRoleTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\roletype\CreateOrMergePatchRoleTypeDto.java">
+      <DependentUpon>GenerateRoleTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\roletype\DeleteRoleTypeDto.java">
+      <DependentUpon>GenerateRoleTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\roletype\GenerateRoleTypeDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateRoleTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\roletype\RoleTypeAggregate.java">
+      <DependentUpon>GenerateRoleTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\roletype\RoleTypeApplicationService.java">
+      <DependentUpon>GenerateRoleTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\roletype\RoleTypeCommand.java">
+      <DependentUpon>GenerateRoleTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\roletype\RoleTypeEventId.java">
+      <DependentUpon>GenerateRoleTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\roletype\RoleTypeState.java">
+      <DependentUpon>GenerateRoleTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\roletype\RoleTypeStateDto.java">
+      <DependentUpon>GenerateRoleTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\roletype\RoleTypeStateEvent.java">
+      <DependentUpon>GenerateRoleTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\roletype\RoleTypeStateEventDto.java">
+      <DependentUpon>GenerateRoleTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\roletype\RoleTypeStateEventDtoConverter.java">
+      <DependentUpon>GenerateRoleTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\roletype\RoleTypeStateQueryRepository.java">
+      <DependentUpon>GenerateRoleTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\roletype\RoleTypeStateRepository.java">
+      <DependentUpon>GenerateRoleTypeDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\sellableinventoryitementrymvo\SellableInventoryItemEntryMvoEventId.java">
       <DependentUpon>GenerateSellableInventoryItemEntryMvoDomain.tt</DependentUpon>
@@ -1014,6 +2160,261 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\shipmentitemmvo\ShipmentItemMvoEventId.java">
       <DependentUpon>GenerateShipmentItemMvoDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentmethodtype\AbstractShipmentMethodTypeAggregate.java">
+      <DependentUpon>GenerateShipmentMethodTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentmethodtype\AbstractShipmentMethodTypeApplicationService.java">
+      <DependentUpon>GenerateShipmentMethodTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentmethodtype\AbstractShipmentMethodTypeCommand.java">
+      <DependentUpon>GenerateShipmentMethodTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentmethodtype\AbstractShipmentMethodTypeCommandDto.java">
+      <DependentUpon>GenerateShipmentMethodTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentmethodtype\AbstractShipmentMethodTypeState.java">
+      <DependentUpon>GenerateShipmentMethodTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentmethodtype\AbstractShipmentMethodTypeStateCommandConverter.java">
+      <DependentUpon>GenerateShipmentMethodTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentmethodtype\AbstractShipmentMethodTypeStateEvent.java">
+      <DependentUpon>GenerateShipmentMethodTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentmethodtype\CreateOrMergePatchShipmentMethodTypeDto.java">
+      <DependentUpon>GenerateShipmentMethodTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentmethodtype\DeleteShipmentMethodTypeDto.java">
+      <DependentUpon>GenerateShipmentMethodTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentmethodtype\GenerateShipmentMethodTypeDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateShipmentMethodTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentmethodtype\ShipmentMethodTypeAggregate.java">
+      <DependentUpon>GenerateShipmentMethodTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentmethodtype\ShipmentMethodTypeApplicationService.java">
+      <DependentUpon>GenerateShipmentMethodTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentmethodtype\ShipmentMethodTypeCommand.java">
+      <DependentUpon>GenerateShipmentMethodTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentmethodtype\ShipmentMethodTypeEventId.java">
+      <DependentUpon>GenerateShipmentMethodTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentmethodtype\ShipmentMethodTypeState.java">
+      <DependentUpon>GenerateShipmentMethodTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentmethodtype\ShipmentMethodTypeStateDto.java">
+      <DependentUpon>GenerateShipmentMethodTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentmethodtype\ShipmentMethodTypeStateEvent.java">
+      <DependentUpon>GenerateShipmentMethodTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentmethodtype\ShipmentMethodTypeStateEventDto.java">
+      <DependentUpon>GenerateShipmentMethodTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentmethodtype\ShipmentMethodTypeStateEventDtoConverter.java">
+      <DependentUpon>GenerateShipmentMethodTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentmethodtype\ShipmentMethodTypeStateQueryRepository.java">
+      <DependentUpon>GenerateShipmentMethodTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentmethodtype\ShipmentMethodTypeStateRepository.java">
+      <DependentUpon>GenerateShipmentMethodTypeDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackagecontentmvo\AbstractShipmentPackageContentMvoAggregate.java">
+      <DependentUpon>GenerateShipmentPackageContentMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackagecontentmvo\AbstractShipmentPackageContentMvoApplicationService.java">
+      <DependentUpon>GenerateShipmentPackageContentMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackagecontentmvo\AbstractShipmentPackageContentMvoCommand.java">
+      <DependentUpon>GenerateShipmentPackageContentMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackagecontentmvo\AbstractShipmentPackageContentMvoCommandDto.java">
+      <DependentUpon>GenerateShipmentPackageContentMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackagecontentmvo\AbstractShipmentPackageContentMvoState.java">
+      <DependentUpon>GenerateShipmentPackageContentMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackagecontentmvo\AbstractShipmentPackageContentMvoStateCommandConverter.java">
+      <DependentUpon>GenerateShipmentPackageContentMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackagecontentmvo\AbstractShipmentPackageContentMvoStateEvent.java">
+      <DependentUpon>GenerateShipmentPackageContentMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackagecontentmvo\CreateOrMergePatchShipmentPackageContentMvoDto.java">
+      <DependentUpon>GenerateShipmentPackageContentMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackagecontentmvo\DeleteShipmentPackageContentMvoDto.java">
+      <DependentUpon>GenerateShipmentPackageContentMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackagecontentmvo\GenerateShipmentPackageContentMvoDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateShipmentPackageContentMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackagecontentmvo\ShipmentPackageContentMvoAggregate.java">
+      <DependentUpon>GenerateShipmentPackageContentMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackagecontentmvo\ShipmentPackageContentMvoApplicationService.java">
+      <DependentUpon>GenerateShipmentPackageContentMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackagecontentmvo\ShipmentPackageContentMvoCommand.java">
+      <DependentUpon>GenerateShipmentPackageContentMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackagecontentmvo\ShipmentPackageContentMvoEventId.java">
+      <DependentUpon>GenerateShipmentPackageContentMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackagecontentmvo\ShipmentPackageContentMvoState.java">
+      <DependentUpon>GenerateShipmentPackageContentMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackagecontentmvo\ShipmentPackageContentMvoStateDto.java">
+      <DependentUpon>GenerateShipmentPackageContentMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackagecontentmvo\ShipmentPackageContentMvoStateEvent.java">
+      <DependentUpon>GenerateShipmentPackageContentMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackagecontentmvo\ShipmentPackageContentMvoStateEventDto.java">
+      <DependentUpon>GenerateShipmentPackageContentMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackagecontentmvo\ShipmentPackageContentMvoStateEventDtoConverter.java">
+      <DependentUpon>GenerateShipmentPackageContentMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackagecontentmvo\ShipmentPackageContentMvoStateQueryRepository.java">
+      <DependentUpon>GenerateShipmentPackageContentMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackagecontentmvo\ShipmentPackageContentMvoStateRepository.java">
+      <DependentUpon>GenerateShipmentPackageContentMvoDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\AbstractShipmentPackageAggregate.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\AbstractShipmentPackageApplicationService.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\AbstractShipmentPackageCommand.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\AbstractShipmentPackageCommandDto.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\AbstractShipmentPackageContentCommand.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\AbstractShipmentPackageContentCommandDto.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\AbstractShipmentPackageContentState.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\AbstractShipmentPackageContentStateCommandConverter.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\AbstractShipmentPackageContentStateEvent.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\AbstractShipmentPackageContentStates.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\AbstractShipmentPackageState.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\AbstractShipmentPackageStateCommandConverter.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\AbstractShipmentPackageStateEvent.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\CreateOrMergePatchShipmentPackageContentDto.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\CreateOrMergePatchShipmentPackageDto.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\DeleteShipmentPackageDto.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\GenerateShipmentPackageDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\RemoveShipmentPackageContentDto.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\ShipmentPackageAggregate.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\ShipmentPackageApplicationService.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\ShipmentPackageCommand.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\ShipmentPackageContentCommand.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\ShipmentPackageContentEventId.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\ShipmentPackageContentId.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\ShipmentPackageContentState.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\ShipmentPackageContentStateDao.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\ShipmentPackageContentStateDto.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\ShipmentPackageContentStateEvent.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\ShipmentPackageContentStateEventDao.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\ShipmentPackageContentStateEventDto.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\ShipmentPackageContentStateEventDtoConverter.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\ShipmentPackageContentStates.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\ShipmentPackageEventId.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\ShipmentPackageId.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\ShipmentPackageState.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\ShipmentPackageStateDto.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\ShipmentPackageStateEvent.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\ShipmentPackageStateEventDto.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\ShipmentPackageStateEventDtoConverter.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\ShipmentPackageStateQueryRepository.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\ShipmentPackageStateRepository.java">
+      <DependentUpon>GenerateShipmentPackageDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipmentreceiptmvo\GenerateShipmentReceiptMvoDomain.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1022,10 +2423,67 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\shipmentreceiptmvo\ShipmentReceiptMvoEventId.java">
       <DependentUpon>GenerateShipmentReceiptMvoDomain.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\AbstractItemIssuanceCommand.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\AbstractItemIssuanceCommandDto.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\AbstractItemIssuanceState.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\AbstractItemIssuanceStateCommandConverter.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\AbstractItemIssuanceStateEvent.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\AbstractItemIssuanceStates.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\CreateOrMergePatchItemIssuanceDto.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ItemIssuanceCommand.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ItemIssuanceEventId.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ItemIssuanceState.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ItemIssuanceStateDao.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ItemIssuanceStateDto.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ItemIssuanceStateEvent.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ItemIssuanceStateEventDao.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ItemIssuanceStateEventDto.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ItemIssuanceStateEventDtoConverter.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ItemIssuanceStates.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\RemoveItemIssuanceDto.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentEventId.java">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentItemEventId.java">
+      <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentItemIssuanceId.java">
       <DependentUpon>GenerateShipmentDomain.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\ShipmentReceiptEventId.java">
@@ -2047,6 +3505,8 @@
 .\AttributeValueMetadata.java
 .\AttributeValueMvoFilteringProperties.java
 .\AttributeValueMvoMetadata.java
+.\ContactMechFilteringProperties.java
+.\ContactMechMetadata.java
 .\DamageHandlingMethodFilteringProperties.java
 .\DamageHandlingMethodMetadata.java
 .\DamageReasonFilteringProperties.java
@@ -2055,6 +3515,8 @@
 .\DamageTypeMetadata.java
 .\DocumentTypeFilteringProperties.java
 .\DocumentTypeMetadata.java
+.\FacilityFilteringProperties.java
+.\FacilityMetadata.java
 .\GenerateBoundedContextDomainAggregatesMetadata.txt
 .\InOutFilteringProperties.java
 .\InOutLineFilteringProperties.java
@@ -2078,6 +3540,10 @@
 .\InventoryPostingRuleMetadata.java
 .\InventoryPRTriggeredFilteringProperties.java
 .\InventoryPRTriggeredMetadata.java
+.\ItemIssuanceFilteringProperties.java
+.\ItemIssuanceMetadata.java
+.\ItemIssuanceMvoFilteringProperties.java
+.\ItemIssuanceMvoMetadata.java
 .\LocatorFilteringProperties.java
 .\LocatorMetadata.java
 .\LotFilteringProperties.java
@@ -2101,7 +3567,17 @@
 .\OrderItemMetadata.java
 .\OrderItemMvoFilteringProperties.java
 .\OrderItemMvoMetadata.java
+.\OrderItemShipGrpInvReservationFilteringProperties.java
+.\OrderItemShipGrpInvReservationMetadata.java
 .\OrderMetadata.java
+.\OrderRoleFilteringProperties.java
+.\OrderRoleMetadata.java
+.\OrderRoleMvoFilteringProperties.java
+.\OrderRoleMvoMetadata.java
+.\OrderShipGroupFilteringProperties.java
+.\OrderShipGroupMetadata.java
+.\OrderShipGroupMvoFilteringProperties.java
+.\OrderShipGroupMvoMetadata.java
 .\OrderShipmentFilteringProperties.java
 .\OrderShipmentMetadata.java
 .\OrganizationStructureFilteringProperties.java
@@ -2110,12 +3586,26 @@
 .\OrganizationStructureTypeMetadata.java
 .\PartyFilteringProperties.java
 .\PartyMetadata.java
+.\PartyRoleFilteringProperties.java
+.\PartyRoleMetadata.java
 .\PhysicalInventoryFilteringProperties.java
 .\PhysicalInventoryLineFilteringProperties.java
 .\PhysicalInventoryLineMetadata.java
 .\PhysicalInventoryLineMvoFilteringProperties.java
 .\PhysicalInventoryLineMvoMetadata.java
 .\PhysicalInventoryMetadata.java
+.\PicklistBinFilteringProperties.java
+.\PicklistBinMetadata.java
+.\PicklistFilteringProperties.java
+.\PicklistItemFilteringProperties.java
+.\PicklistItemMetadata.java
+.\PicklistItemMvoFilteringProperties.java
+.\PicklistItemMvoMetadata.java
+.\PicklistMetadata.java
+.\PicklistRoleFilteringProperties.java
+.\PicklistRoleMetadata.java
+.\PicklistRoleMvoFilteringProperties.java
+.\PicklistRoleMvoMetadata.java
 .\ProductCategoryFilteringProperties.java
 .\ProductCategoryMemberFilteringProperties.java
 .\ProductCategoryMemberMetadata.java
@@ -2124,6 +3614,8 @@
 .\ProductMetadata.java
 .\RejectionReasonFilteringProperties.java
 .\RejectionReasonMetadata.java
+.\RoleTypeFilteringProperties.java
+.\RoleTypeMetadata.java
 .\SellableInventoryItemEntryFilteringProperties.java
 .\SellableInventoryItemEntryMetadata.java
 .\SellableInventoryItemEntryMvoFilteringProperties.java
@@ -2136,6 +3628,14 @@
 .\ShipmentItemMvoFilteringProperties.java
 .\ShipmentItemMvoMetadata.java
 .\ShipmentMetadata.java
+.\ShipmentMethodTypeFilteringProperties.java
+.\ShipmentMethodTypeMetadata.java
+.\ShipmentPackageContentFilteringProperties.java
+.\ShipmentPackageContentMetadata.java
+.\ShipmentPackageContentMvoFilteringProperties.java
+.\ShipmentPackageContentMvoMetadata.java
+.\ShipmentPackageFilteringProperties.java
+.\ShipmentPackageMetadata.java
 .\ShipmentReceiptFilteringProperties.java
 .\ShipmentReceiptMetadata.java
 .\ShipmentReceiptMvoFilteringProperties.java
@@ -5452,6 +6952,12 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateShipmentDomain.txt</LastGenOutput>
       <LastOutputs>
+.\AbstractItemIssuanceCommand.java
+.\AbstractItemIssuanceCommandDto.java
+.\AbstractItemIssuanceState.java
+.\AbstractItemIssuanceStateCommandConverter.java
+.\AbstractItemIssuanceStateEvent.java
+.\AbstractItemIssuanceStates.java
 .\AbstractShipmentAggregate.java
 .\AbstractShipmentApplicationService.java
 .\AbstractShipmentCommand.java
@@ -5471,12 +6977,24 @@
 .\AbstractShipmentState.java
 .\AbstractShipmentStateCommandConverter.java
 .\AbstractShipmentStateEvent.java
+.\CreateOrMergePatchItemIssuanceDto.java
 .\CreateOrMergePatchShipmentDto.java
 .\CreateOrMergePatchShipmentItemDto.java
 .\CreateOrMergePatchShipmentReceiptDto.java
 .\DeleteShipmentDto.java
 .\GenerateShipmentDomain.txt
 .\ImportingShipmentItem.java
+.\ItemIssuanceCommand.java
+.\ItemIssuanceEventId.java
+.\ItemIssuanceState.java
+.\ItemIssuanceStateDao.java
+.\ItemIssuanceStateDto.java
+.\ItemIssuanceStateEvent.java
+.\ItemIssuanceStateEventDao.java
+.\ItemIssuanceStateEventDto.java
+.\ItemIssuanceStateEventDtoConverter.java
+.\ItemIssuanceStates.java
+.\RemoveItemIssuanceDto.java
 .\RemoveShipmentItemDto.java
 .\RemoveShipmentReceiptDto.java
 .\ShipmentAggregate.java
@@ -5488,6 +7006,7 @@
 .\ShipmentItemCommand.java
 .\ShipmentItemEventId.java
 .\ShipmentItemId.java
+.\ShipmentItemIssuanceId.java
 .\ShipmentItemState.java
 .\ShipmentItemStateDao.java
 .\ShipmentItemStateDto.java
@@ -5575,11 +7094,25 @@
 .\AbstractOrderItemStateCommandConverter.java
 .\AbstractOrderItemStateEvent.java
 .\AbstractOrderItemStates.java
+.\AbstractOrderRoleCommand.java
+.\AbstractOrderRoleCommandDto.java
+.\AbstractOrderRoleState.java
+.\AbstractOrderRoleStateCommandConverter.java
+.\AbstractOrderRoleStateEvent.java
+.\AbstractOrderRoleStates.java
+.\AbstractOrderShipGroupCommand.java
+.\AbstractOrderShipGroupCommandDto.java
+.\AbstractOrderShipGroupState.java
+.\AbstractOrderShipGroupStateCommandConverter.java
+.\AbstractOrderShipGroupStateEvent.java
+.\AbstractOrderShipGroupStates.java
 .\AbstractOrderState.java
 .\AbstractOrderStateCommandConverter.java
 .\AbstractOrderStateEvent.java
 .\CreateOrMergePatchOrderDto.java
 .\CreateOrMergePatchOrderItemDto.java
+.\CreateOrMergePatchOrderRoleDto.java
+.\CreateOrMergePatchOrderShipGroupDto.java
 .\DeleteOrderDto.java
 .\GenerateOrderDomain.txt
 .\OrderAggregate.java
@@ -5597,6 +7130,28 @@
 .\OrderItemStateEventDto.java
 .\OrderItemStateEventDtoConverter.java
 .\OrderItemStates.java
+.\OrderRoleCommand.java
+.\OrderRoleEventId.java
+.\OrderRoleId.java
+.\OrderRoleState.java
+.\OrderRoleStateDao.java
+.\OrderRoleStateDto.java
+.\OrderRoleStateEvent.java
+.\OrderRoleStateEventDao.java
+.\OrderRoleStateEventDto.java
+.\OrderRoleStateEventDtoConverter.java
+.\OrderRoleStates.java
+.\OrderShipGroupCommand.java
+.\OrderShipGroupEventId.java
+.\OrderShipGroupId.java
+.\OrderShipGroupState.java
+.\OrderShipGroupStateDao.java
+.\OrderShipGroupStateDto.java
+.\OrderShipGroupStateEvent.java
+.\OrderShipGroupStateEventDao.java
+.\OrderShipGroupStateEventDto.java
+.\OrderShipGroupStateEventDtoConverter.java
+.\OrderShipGroupStates.java
 .\OrderState.java
 .\OrderStateDto.java
 .\OrderStateEvent.java
@@ -5605,6 +7160,8 @@
 .\OrderStateQueryRepository.java
 .\OrderStateRepository.java
 .\RemoveOrderItemDto.java
+.\RemoveOrderRoleDto.java
+.\RemoveOrderShipGroupDto.java
 </LastOutputs>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\productcategorymember\GenerateProductCategoryMemberDomain.tt">
@@ -6290,6 +7847,473 @@
 .\PartyStateQueryRepository.java
 .\PartyStateRepository.java
 .\PartyTypeIds.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\contactmech\GenerateContactMechDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateContactMechDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractContactMechAggregate.java
+.\AbstractContactMechApplicationService.java
+.\AbstractContactMechCommand.java
+.\AbstractContactMechCommandDto.java
+.\AbstractContactMechState.java
+.\AbstractContactMechStateCommandConverter.java
+.\AbstractContactMechStateEvent.java
+.\ContactMechAggregate.java
+.\ContactMechApplicationService.java
+.\ContactMechCommand.java
+.\ContactMechEventId.java
+.\ContactMechState.java
+.\ContactMechStateDto.java
+.\ContactMechStateEvent.java
+.\ContactMechStateEventDto.java
+.\ContactMechStateEventDtoConverter.java
+.\ContactMechStateQueryRepository.java
+.\ContactMechStateRepository.java
+.\ContactMechTypeId.java
+.\CreateOrMergePatchContactMechDto.java
+.\DeleteContactMechDto.java
+.\GenerateContactMechDomain.txt
+</LastOutputs>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\facility\GenerateFacilityDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateFacilityDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractFacilityAggregate.java
+.\AbstractFacilityApplicationService.java
+.\AbstractFacilityCommand.java
+.\AbstractFacilityCommandDto.java
+.\AbstractFacilityState.java
+.\AbstractFacilityStateCommandConverter.java
+.\AbstractFacilityStateEvent.java
+.\CreateOrMergePatchFacilityDto.java
+.\DeleteFacilityDto.java
+.\FacilityAggregate.java
+.\FacilityApplicationService.java
+.\FacilityCommand.java
+.\FacilityEventId.java
+.\FacilityState.java
+.\FacilityStateDto.java
+.\FacilityStateEvent.java
+.\FacilityStateEventDto.java
+.\FacilityStateEventDtoConverter.java
+.\FacilityStateQueryRepository.java
+.\FacilityStateRepository.java
+.\GenerateFacilityDomain.txt
+</LastOutputs>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\partyrole\GeneratePartyRoleDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GeneratePartyRoleDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractPartyRoleAggregate.java
+.\AbstractPartyRoleApplicationService.java
+.\AbstractPartyRoleCommand.java
+.\AbstractPartyRoleCommandDto.java
+.\AbstractPartyRoleState.java
+.\AbstractPartyRoleStateCommandConverter.java
+.\AbstractPartyRoleStateEvent.java
+.\CreateOrMergePatchPartyRoleDto.java
+.\DeletePartyRoleDto.java
+.\GeneratePartyRoleDomain.txt
+.\PartyRoleAggregate.java
+.\PartyRoleApplicationService.java
+.\PartyRoleCommand.java
+.\PartyRoleEventId.java
+.\PartyRoleId.java
+.\PartyRoleState.java
+.\PartyRoleStateDto.java
+.\PartyRoleStateEvent.java
+.\PartyRoleStateEventDto.java
+.\PartyRoleStateEventDtoConverter.java
+.\PartyRoleStateQueryRepository.java
+.\PartyRoleStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\GeneratePicklistDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GeneratePicklistDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractPicklistAggregate.java
+.\AbstractPicklistApplicationService.java
+.\AbstractPicklistCommand.java
+.\AbstractPicklistCommandDto.java
+.\AbstractPicklistRoleCommand.java
+.\AbstractPicklistRoleCommandDto.java
+.\AbstractPicklistRoleState.java
+.\AbstractPicklistRoleStateCommandConverter.java
+.\AbstractPicklistRoleStateEvent.java
+.\AbstractPicklistRoleStates.java
+.\AbstractPicklistState.java
+.\AbstractPicklistStateCommandConverter.java
+.\AbstractPicklistStateEvent.java
+.\CreateOrMergePatchPicklistDto.java
+.\CreateOrMergePatchPicklistRoleDto.java
+.\DeletePicklistDto.java
+.\GeneratePicklistDomain.txt
+.\PicklistAggregate.java
+.\PicklistApplicationService.java
+.\PicklistCommand.java
+.\PicklistEventId.java
+.\PicklistRoleCommand.java
+.\PicklistRoleEventId.java
+.\PicklistRoleId.java
+.\PicklistRoleState.java
+.\PicklistRoleStateDao.java
+.\PicklistRoleStateDto.java
+.\PicklistRoleStateEvent.java
+.\PicklistRoleStateEventDao.java
+.\PicklistRoleStateEventDto.java
+.\PicklistRoleStateEventDtoConverter.java
+.\PicklistRoleStates.java
+.\PicklistState.java
+.\PicklistStateDto.java
+.\PicklistStateEvent.java
+.\PicklistStateEventDto.java
+.\PicklistStateEventDtoConverter.java
+.\PicklistStateQueryRepository.java
+.\PicklistStateRepository.java
+.\RemovePicklistRoleDto.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\GeneratePicklistBinDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GeneratePicklistBinDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractPicklistBinAggregate.java
+.\AbstractPicklistBinApplicationService.java
+.\AbstractPicklistBinCommand.java
+.\AbstractPicklistBinCommandDto.java
+.\AbstractPicklistBinState.java
+.\AbstractPicklistBinStateCommandConverter.java
+.\AbstractPicklistBinStateEvent.java
+.\AbstractPicklistItemCommand.java
+.\AbstractPicklistItemCommandDto.java
+.\AbstractPicklistItemState.java
+.\AbstractPicklistItemStateCommandConverter.java
+.\AbstractPicklistItemStateEvent.java
+.\AbstractPicklistItemStates.java
+.\CreateOrMergePatchPicklistBinDto.java
+.\CreateOrMergePatchPicklistItemDto.java
+.\DeletePicklistBinDto.java
+.\GeneratePicklistBinDomain.txt
+.\PicklistBinAggregate.java
+.\PicklistBinApplicationService.java
+.\PicklistBinCommand.java
+.\PicklistBinEventId.java
+.\PicklistBinPicklistItemId.java
+.\PicklistBinState.java
+.\PicklistBinStateDto.java
+.\PicklistBinStateEvent.java
+.\PicklistBinStateEventDto.java
+.\PicklistBinStateEventDtoConverter.java
+.\PicklistBinStateQueryRepository.java
+.\PicklistBinStateRepository.java
+.\PicklistItemCommand.java
+.\PicklistItemEventId.java
+.\PicklistItemOrderShipGrpInvId.java
+.\PicklistItemState.java
+.\PicklistItemStateDao.java
+.\PicklistItemStateDto.java
+.\PicklistItemStateEvent.java
+.\PicklistItemStateEventDao.java
+.\PicklistItemStateEventDto.java
+.\PicklistItemStateEventDtoConverter.java
+.\PicklistItemStates.java
+.\RemovePicklistItemDto.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\roletype\GenerateRoleTypeDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateRoleTypeDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractRoleTypeAggregate.java
+.\AbstractRoleTypeApplicationService.java
+.\AbstractRoleTypeCommand.java
+.\AbstractRoleTypeCommandDto.java
+.\AbstractRoleTypeState.java
+.\AbstractRoleTypeStateCommandConverter.java
+.\AbstractRoleTypeStateEvent.java
+.\CreateOrMergePatchRoleTypeDto.java
+.\DeleteRoleTypeDto.java
+.\GenerateRoleTypeDomain.txt
+.\RoleTypeAggregate.java
+.\RoleTypeApplicationService.java
+.\RoleTypeCommand.java
+.\RoleTypeEventId.java
+.\RoleTypeState.java
+.\RoleTypeStateDto.java
+.\RoleTypeStateEvent.java
+.\RoleTypeStateEventDto.java
+.\RoleTypeStateEventDtoConverter.java
+.\RoleTypeStateQueryRepository.java
+.\RoleTypeStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentmethodtype\GenerateShipmentMethodTypeDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateShipmentMethodTypeDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractShipmentMethodTypeAggregate.java
+.\AbstractShipmentMethodTypeApplicationService.java
+.\AbstractShipmentMethodTypeCommand.java
+.\AbstractShipmentMethodTypeCommandDto.java
+.\AbstractShipmentMethodTypeState.java
+.\AbstractShipmentMethodTypeStateCommandConverter.java
+.\AbstractShipmentMethodTypeStateEvent.java
+.\CreateOrMergePatchShipmentMethodTypeDto.java
+.\DeleteShipmentMethodTypeDto.java
+.\GenerateShipmentMethodTypeDomain.txt
+.\ShipmentMethodTypeAggregate.java
+.\ShipmentMethodTypeApplicationService.java
+.\ShipmentMethodTypeCommand.java
+.\ShipmentMethodTypeEventId.java
+.\ShipmentMethodTypeState.java
+.\ShipmentMethodTypeStateDto.java
+.\ShipmentMethodTypeStateEvent.java
+.\ShipmentMethodTypeStateEventDto.java
+.\ShipmentMethodTypeStateEventDtoConverter.java
+.\ShipmentMethodTypeStateQueryRepository.java
+.\ShipmentMethodTypeStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\GenerateShipmentPackageDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateShipmentPackageDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractShipmentPackageAggregate.java
+.\AbstractShipmentPackageApplicationService.java
+.\AbstractShipmentPackageCommand.java
+.\AbstractShipmentPackageCommandDto.java
+.\AbstractShipmentPackageContentCommand.java
+.\AbstractShipmentPackageContentCommandDto.java
+.\AbstractShipmentPackageContentState.java
+.\AbstractShipmentPackageContentStateCommandConverter.java
+.\AbstractShipmentPackageContentStateEvent.java
+.\AbstractShipmentPackageContentStates.java
+.\AbstractShipmentPackageState.java
+.\AbstractShipmentPackageStateCommandConverter.java
+.\AbstractShipmentPackageStateEvent.java
+.\CreateOrMergePatchShipmentPackageContentDto.java
+.\CreateOrMergePatchShipmentPackageDto.java
+.\DeleteShipmentPackageDto.java
+.\GenerateShipmentPackageDomain.txt
+.\RemoveShipmentPackageContentDto.java
+.\ShipmentPackageAggregate.java
+.\ShipmentPackageApplicationService.java
+.\ShipmentPackageCommand.java
+.\ShipmentPackageContentCommand.java
+.\ShipmentPackageContentEventId.java
+.\ShipmentPackageContentId.java
+.\ShipmentPackageContentState.java
+.\ShipmentPackageContentStateDao.java
+.\ShipmentPackageContentStateDto.java
+.\ShipmentPackageContentStateEvent.java
+.\ShipmentPackageContentStateEventDao.java
+.\ShipmentPackageContentStateEventDto.java
+.\ShipmentPackageContentStateEventDtoConverter.java
+.\ShipmentPackageContentStates.java
+.\ShipmentPackageEventId.java
+.\ShipmentPackageId.java
+.\ShipmentPackageState.java
+.\ShipmentPackageStateDto.java
+.\ShipmentPackageStateEvent.java
+.\ShipmentPackageStateEventDto.java
+.\ShipmentPackageStateEventDtoConverter.java
+.\ShipmentPackageStateQueryRepository.java
+.\ShipmentPackageStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderrolemvo\GenerateOrderRoleMvoDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateOrderRoleMvoDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractOrderRoleMvoAggregate.java
+.\AbstractOrderRoleMvoApplicationService.java
+.\AbstractOrderRoleMvoCommand.java
+.\AbstractOrderRoleMvoCommandDto.java
+.\AbstractOrderRoleMvoState.java
+.\AbstractOrderRoleMvoStateCommandConverter.java
+.\AbstractOrderRoleMvoStateEvent.java
+.\CreateOrMergePatchOrderRoleMvoDto.java
+.\DeleteOrderRoleMvoDto.java
+.\GenerateOrderRoleMvoDomain.txt
+.\OrderRoleMvoAggregate.java
+.\OrderRoleMvoApplicationService.java
+.\OrderRoleMvoCommand.java
+.\OrderRoleMvoEventId.java
+.\OrderRoleMvoState.java
+.\OrderRoleMvoStateDto.java
+.\OrderRoleMvoStateEvent.java
+.\OrderRoleMvoStateEventDto.java
+.\OrderRoleMvoStateEventDtoConverter.java
+.\OrderRoleMvoStateQueryRepository.java
+.\OrderRoleMvoStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\ordershipgroupmvo\GenerateOrderShipGroupMvoDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateOrderShipGroupMvoDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractOrderShipGroupMvoAggregate.java
+.\AbstractOrderShipGroupMvoApplicationService.java
+.\AbstractOrderShipGroupMvoCommand.java
+.\AbstractOrderShipGroupMvoCommandDto.java
+.\AbstractOrderShipGroupMvoState.java
+.\AbstractOrderShipGroupMvoStateCommandConverter.java
+.\AbstractOrderShipGroupMvoStateEvent.java
+.\CreateOrMergePatchOrderShipGroupMvoDto.java
+.\DeleteOrderShipGroupMvoDto.java
+.\GenerateOrderShipGroupMvoDomain.txt
+.\OrderShipGroupMvoAggregate.java
+.\OrderShipGroupMvoApplicationService.java
+.\OrderShipGroupMvoCommand.java
+.\OrderShipGroupMvoEventId.java
+.\OrderShipGroupMvoState.java
+.\OrderShipGroupMvoStateDto.java
+.\OrderShipGroupMvoStateEvent.java
+.\OrderShipGroupMvoStateEventDto.java
+.\OrderShipGroupMvoStateEventDtoConverter.java
+.\OrderShipGroupMvoStateQueryRepository.java
+.\OrderShipGroupMvoStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistrolemvo\GeneratePicklistRoleMvoDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GeneratePicklistRoleMvoDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractPicklistRoleMvoAggregate.java
+.\AbstractPicklistRoleMvoApplicationService.java
+.\AbstractPicklistRoleMvoCommand.java
+.\AbstractPicklistRoleMvoCommandDto.java
+.\AbstractPicklistRoleMvoState.java
+.\AbstractPicklistRoleMvoStateCommandConverter.java
+.\AbstractPicklistRoleMvoStateEvent.java
+.\CreateOrMergePatchPicklistRoleMvoDto.java
+.\DeletePicklistRoleMvoDto.java
+.\GeneratePicklistRoleMvoDomain.txt
+.\PicklistRoleMvoAggregate.java
+.\PicklistRoleMvoApplicationService.java
+.\PicklistRoleMvoCommand.java
+.\PicklistRoleMvoEventId.java
+.\PicklistRoleMvoState.java
+.\PicklistRoleMvoStateDto.java
+.\PicklistRoleMvoStateEvent.java
+.\PicklistRoleMvoStateEventDto.java
+.\PicklistRoleMvoStateEventDtoConverter.java
+.\PicklistRoleMvoStateQueryRepository.java
+.\PicklistRoleMvoStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistitemmvo\GeneratePicklistItemMvoDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GeneratePicklistItemMvoDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractPicklistItemMvoAggregate.java
+.\AbstractPicklistItemMvoApplicationService.java
+.\AbstractPicklistItemMvoCommand.java
+.\AbstractPicklistItemMvoCommandDto.java
+.\AbstractPicklistItemMvoState.java
+.\AbstractPicklistItemMvoStateCommandConverter.java
+.\AbstractPicklistItemMvoStateEvent.java
+.\CreateOrMergePatchPicklistItemMvoDto.java
+.\DeletePicklistItemMvoDto.java
+.\GeneratePicklistItemMvoDomain.txt
+.\PicklistItemMvoAggregate.java
+.\PicklistItemMvoApplicationService.java
+.\PicklistItemMvoCommand.java
+.\PicklistItemMvoEventId.java
+.\PicklistItemMvoState.java
+.\PicklistItemMvoStateDto.java
+.\PicklistItemMvoStateEvent.java
+.\PicklistItemMvoStateEventDto.java
+.\PicklistItemMvoStateEventDtoConverter.java
+.\PicklistItemMvoStateQueryRepository.java
+.\PicklistItemMvoStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\itemissuancemvo\GenerateItemIssuanceMvoDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateItemIssuanceMvoDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractItemIssuanceMvoAggregate.java
+.\AbstractItemIssuanceMvoApplicationService.java
+.\AbstractItemIssuanceMvoCommand.java
+.\AbstractItemIssuanceMvoCommandDto.java
+.\AbstractItemIssuanceMvoState.java
+.\AbstractItemIssuanceMvoStateCommandConverter.java
+.\AbstractItemIssuanceMvoStateEvent.java
+.\CreateOrMergePatchItemIssuanceMvoDto.java
+.\DeleteItemIssuanceMvoDto.java
+.\GenerateItemIssuanceMvoDomain.txt
+.\ItemIssuanceMvoAggregate.java
+.\ItemIssuanceMvoApplicationService.java
+.\ItemIssuanceMvoCommand.java
+.\ItemIssuanceMvoEventId.java
+.\ItemIssuanceMvoState.java
+.\ItemIssuanceMvoStateDto.java
+.\ItemIssuanceMvoStateEvent.java
+.\ItemIssuanceMvoStateEventDto.java
+.\ItemIssuanceMvoStateEventDtoConverter.java
+.\ItemIssuanceMvoStateQueryRepository.java
+.\ItemIssuanceMvoStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackagecontentmvo\GenerateShipmentPackageContentMvoDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateShipmentPackageContentMvoDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractShipmentPackageContentMvoAggregate.java
+.\AbstractShipmentPackageContentMvoApplicationService.java
+.\AbstractShipmentPackageContentMvoCommand.java
+.\AbstractShipmentPackageContentMvoCommandDto.java
+.\AbstractShipmentPackageContentMvoState.java
+.\AbstractShipmentPackageContentMvoStateCommandConverter.java
+.\AbstractShipmentPackageContentMvoStateEvent.java
+.\CreateOrMergePatchShipmentPackageContentMvoDto.java
+.\DeleteShipmentPackageContentMvoDto.java
+.\GenerateShipmentPackageContentMvoDomain.txt
+.\ShipmentPackageContentMvoAggregate.java
+.\ShipmentPackageContentMvoApplicationService.java
+.\ShipmentPackageContentMvoCommand.java
+.\ShipmentPackageContentMvoEventId.java
+.\ShipmentPackageContentMvoState.java
+.\ShipmentPackageContentMvoStateDto.java
+.\ShipmentPackageContentMvoStateEvent.java
+.\ShipmentPackageContentMvoStateEventDto.java
+.\ShipmentPackageContentMvoStateEventDtoConverter.java
+.\ShipmentPackageContentMvoStateQueryRepository.java
+.\ShipmentPackageContentMvoStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgrpinvreservation\GenerateOrderItemShipGrpInvReservationDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateOrderItemShipGrpInvReservationDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\AbstractOrderItemShipGrpInvReservationAggregate.java
+.\AbstractOrderItemShipGrpInvReservationApplicationService.java
+.\AbstractOrderItemShipGrpInvReservationCommand.java
+.\AbstractOrderItemShipGrpInvReservationCommandDto.java
+.\AbstractOrderItemShipGrpInvReservationState.java
+.\AbstractOrderItemShipGrpInvReservationStateCommandConverter.java
+.\AbstractOrderItemShipGrpInvReservationStateEvent.java
+.\CreateOrMergePatchOrderItemShipGrpInvReservationDto.java
+.\DeleteOrderItemShipGrpInvReservationDto.java
+.\GenerateOrderItemShipGrpInvReservationDomain.txt
+.\OrderItemShipGrpInvReservationAggregate.java
+.\OrderItemShipGrpInvReservationApplicationService.java
+.\OrderItemShipGrpInvReservationCommand.java
+.\OrderItemShipGrpInvReservationEventId.java
+.\OrderItemShipGrpInvReservationState.java
+.\OrderItemShipGrpInvReservationStateDto.java
+.\OrderItemShipGrpInvReservationStateEvent.java
+.\OrderItemShipGrpInvReservationStateEventDto.java
+.\OrderItemShipGrpInvReservationStateEventDtoConverter.java
+.\OrderItemShipGrpInvReservationStateQueryRepository.java
+.\OrderItemShipGrpInvReservationStateRepository.java
+.\OrderItemShipGrpInvResId.java
 </LastOutputs>
     </Content>
   </ItemGroup>

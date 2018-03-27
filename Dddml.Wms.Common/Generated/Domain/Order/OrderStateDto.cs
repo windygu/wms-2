@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.Order;
+using Dddml.Wms.Domain.PartyRole;
 
 namespace Dddml.Wms.Domain.Order
 {
@@ -201,6 +202,18 @@ namespace Dddml.Wms.Domain.Order
             set;
         }
 
+        public virtual OrderRoleStateDto[] OrderRoles
+        {
+            get;
+            set;
+        }
+
+        IOrderRoleStateDto[] IOrderStateDto.OrderRoles
+        {
+            get { return this.OrderRoles; }
+            set { this.OrderRoles = value.Select(e => ((OrderRoleStateDto)e)).ToArray(); }
+        }
+
         public virtual OrderItemStateDto[] OrderItems
         {
             get;
@@ -211,6 +224,18 @@ namespace Dddml.Wms.Domain.Order
         {
             get { return this.OrderItems; }
             set { this.OrderItems = value.Select(e => ((OrderItemStateDto)e)).ToArray(); }
+        }
+
+        public virtual OrderShipGroupStateDto[] OrderShipGroups
+        {
+            get;
+            set;
+        }
+
+        IOrderShipGroupStateDto[] IOrderStateDto.OrderShipGroups
+        {
+            get { return this.OrderShipGroups; }
+            set { this.OrderShipGroups = value.Select(e => ((OrderShipGroupStateDto)e)).ToArray(); }
         }
 
         public virtual IOrderState ToOrderState()
@@ -247,7 +272,9 @@ namespace Dddml.Wms.Domain.Order
             if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }
             state.UpdatedBy = this.UpdatedBy;
             if (this.UpdatedAt != null && this.UpdatedAt.HasValue) { state.UpdatedAt = this.UpdatedAt.Value; }
+            if (this.OrderRoles != null) { foreach (var s in this.OrderRoles) { state.OrderRoles.AddToSave(s.ToOrderRoleState()); } };
             if (this.OrderItems != null) { foreach (var s in this.OrderItems) { state.OrderItems.AddToSave(s.ToOrderItemState()); } };
+            if (this.OrderShipGroups != null) { foreach (var s in this.OrderShipGroups) { state.OrderShipGroups.AddToSave(s.ToOrderShipGroupState()); } };
 
             return state;
         }

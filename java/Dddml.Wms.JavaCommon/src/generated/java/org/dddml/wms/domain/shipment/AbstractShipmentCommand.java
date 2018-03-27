@@ -82,6 +82,18 @@ public abstract class AbstractShipmentCommand extends AbstractCommand implements
             this.primaryReturnId = primaryReturnId;
         }
 
+        private Long primaryShipGroupSeqId;
+
+        public Long getPrimaryShipGroupSeqId()
+        {
+            return this.primaryShipGroupSeqId;
+        }
+
+        public void setPrimaryShipGroupSeqId(Long primaryShipGroupSeqId)
+        {
+            this.primaryShipGroupSeqId = primaryShipGroupSeqId;
+        }
+
         private String picklistBinId;
 
         public String getPicklistBinId()
@@ -322,18 +334,6 @@ public abstract class AbstractShipmentCommand extends AbstractCommand implements
             this.addtlShippingChargeDesc = addtlShippingChargeDesc;
         }
 
-        private String shipperId;
-
-        public String getShipperId()
-        {
-            return this.shipperId;
-        }
-
-        public void setShipperId(String shipperId)
-        {
-            this.shipperId = shipperId;
-        }
-
         private Boolean active;
 
         public Boolean getActive()
@@ -394,6 +394,30 @@ public abstract class AbstractShipmentCommand extends AbstractCommand implements
             return c;
         }
 
+        public ItemIssuanceCommand.CreateItemIssuance newCreateItemIssuance()
+        {
+            AbstractItemIssuanceCommand.SimpleCreateItemIssuance c = new AbstractItemIssuanceCommand.SimpleCreateItemIssuance();
+            c.setShipmentId(this.getShipmentId());
+
+            return c;
+        }
+
+        public ItemIssuanceCommand.MergePatchItemIssuance newMergePatchItemIssuance()
+        {
+            AbstractItemIssuanceCommand.SimpleMergePatchItemIssuance c = new AbstractItemIssuanceCommand.SimpleMergePatchItemIssuance();
+            c.setShipmentId(this.getShipmentId());
+
+            return c;
+        }
+
+        public ItemIssuanceCommand.RemoveItemIssuance newRemoveItemIssuance()
+        {
+            AbstractItemIssuanceCommand.SimpleRemoveItemIssuance c = new AbstractItemIssuanceCommand.SimpleRemoveItemIssuance();
+            c.setShipmentId(this.getShipmentId());
+
+            return c;
+        }
+
     }
 
     public static abstract class AbstractCreateShipment extends AbstractCreateOrMergePatchShipment implements CreateShipment
@@ -415,6 +439,13 @@ public abstract class AbstractShipmentCommand extends AbstractCommand implements
         public CreateShipmentReceiptCommands getShipmentReceipts()
         {
             return this.shipmentReceipts;
+        }
+
+        private CreateItemIssuanceCommands itemIssuances = new SimpleCreateItemIssuanceCommands();
+
+        public CreateItemIssuanceCommands getItemIssuances()
+        {
+            return this.itemIssuances;
         }
 
     }
@@ -472,6 +503,18 @@ public abstract class AbstractShipmentCommand extends AbstractCommand implements
         public void setIsPropertyPrimaryReturnIdRemoved(Boolean removed)
         {
             this.isPropertyPrimaryReturnIdRemoved = removed;
+        }
+
+        private Boolean isPropertyPrimaryShipGroupSeqIdRemoved;
+
+        public Boolean getIsPropertyPrimaryShipGroupSeqIdRemoved()
+        {
+            return this.isPropertyPrimaryShipGroupSeqIdRemoved;
+        }
+
+        public void setIsPropertyPrimaryShipGroupSeqIdRemoved(Boolean removed)
+        {
+            this.isPropertyPrimaryShipGroupSeqIdRemoved = removed;
         }
 
         private Boolean isPropertyPicklistBinIdRemoved;
@@ -714,18 +757,6 @@ public abstract class AbstractShipmentCommand extends AbstractCommand implements
             this.isPropertyAddtlShippingChargeDescRemoved = removed;
         }
 
-        private Boolean isPropertyShipperIdRemoved;
-
-        public Boolean getIsPropertyShipperIdRemoved()
-        {
-            return this.isPropertyShipperIdRemoved;
-        }
-
-        public void setIsPropertyShipperIdRemoved(Boolean removed)
-        {
-            this.isPropertyShipperIdRemoved = removed;
-        }
-
         private Boolean isPropertyActiveRemoved;
 
         public Boolean getIsPropertyActiveRemoved()
@@ -750,6 +781,13 @@ public abstract class AbstractShipmentCommand extends AbstractCommand implements
         public ShipmentReceiptCommands getShipmentReceiptCommands()
         {
             return this.shipmentReceiptCommands;
+        }
+
+        private ItemIssuanceCommands itemIssuanceCommands = new SimpleItemIssuanceCommands();
+
+        public ItemIssuanceCommands getItemIssuanceCommands()
+        {
+            return this.itemIssuanceCommands;
         }
 
     }
@@ -872,6 +910,58 @@ public abstract class AbstractShipmentCommand extends AbstractCommand implements
 
         @Override
         public Iterator<ShipmentReceiptCommand> iterator()
+        {
+            return innerCommands.iterator();
+        }
+    }
+
+    public static class SimpleCreateItemIssuanceCommands implements CreateItemIssuanceCommands
+    {
+        private List<ItemIssuanceCommand.CreateItemIssuance> innerCommands = new ArrayList<ItemIssuanceCommand.CreateItemIssuance>();
+
+        public void add(ItemIssuanceCommand.CreateItemIssuance c)
+        {
+            innerCommands.add(c);
+        }
+
+        public void remove(ItemIssuanceCommand.CreateItemIssuance c)
+        {
+            innerCommands.remove(c);
+        }
+
+        public void clear()
+        {
+            innerCommands.clear();
+        }
+
+        @Override
+        public Iterator<ItemIssuanceCommand.CreateItemIssuance> iterator()
+        {
+            return innerCommands.iterator();
+        }
+    }
+
+    public static class SimpleItemIssuanceCommands implements ItemIssuanceCommands
+    {
+        private List<ItemIssuanceCommand> innerCommands = new ArrayList<ItemIssuanceCommand>();
+
+        public void add(ItemIssuanceCommand c)
+        {
+            innerCommands.add(c);
+        }
+
+        public void remove(ItemIssuanceCommand c)
+        {
+            innerCommands.remove(c);
+        }
+
+        public void clear()
+        {
+            innerCommands.clear();
+        }
+
+        @Override
+        public Iterator<ItemIssuanceCommand> iterator()
         {
             return innerCommands.iterator();
         }

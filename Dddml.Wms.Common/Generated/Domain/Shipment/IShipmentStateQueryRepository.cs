@@ -36,6 +36,8 @@ namespace Dddml.Wms.Domain.Shipment
 
         IShipmentReceiptState GetShipmentReceipt(string shipmentId, string receiptSeqId);
 
+        IItemIssuanceState GetItemIssuance(string shipmentId, string itemIssuanceSeqId);
+
 	}
 
 }

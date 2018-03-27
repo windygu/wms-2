@@ -31,6 +31,8 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual string PrimaryReturnId { get; set; }
 
+		public virtual long? PrimaryShipGroupSeqId { get; set; }
+
 		public virtual string PicklistBinId { get; set; }
 
 		public virtual DateTime? EstimatedReadyDate { get; set; }
@@ -70,8 +72,6 @@ namespace Dddml.Wms.Domain.Shipment
 		public virtual decimal? AdditionalShippingCharge { get; set; }
 
 		public virtual string AddtlShippingChargeDesc { get; set; }
-
-		public virtual string ShipperId { get; set; }
 
 		public virtual bool? Active { get; set; }
 
@@ -182,6 +182,33 @@ namespace Dddml.Wms.Domain.Shipment
 			{ 
 				throw DomainError.Named("inconsistentEventIds", "Outer Id ShipmentId {0} but inner id ShipmentId {1}", 
 					oe.ShipmentEventId.ShipmentId, e.ShipmentReceiptEventId.ShipmentId);
+			}
+		}
+
+
+		protected IItemIssuanceStateEventDao ItemIssuanceStateEventDao
+		{
+			get { return ApplicationContext.Current["ItemIssuanceStateEventDao"] as IItemIssuanceStateEventDao; }
+		}
+
+        protected ItemIssuanceEventId NewItemIssuanceEventId(string itemIssuanceSeqId)
+        {
+            var stateEventId = new ItemIssuanceEventId(this.ShipmentEventId.ShipmentId, itemIssuanceSeqId, this.ShipmentEventId.Version);
+            return stateEventId;
+        }
+
+
+        protected void ThrowOnInconsistentEventIds(IItemIssuanceStateEvent e)
+        {
+            ThrowOnInconsistentEventIds(this, e);
+        }
+
+		public static void ThrowOnInconsistentEventIds(IShipmentStateEvent oe, IItemIssuanceStateEvent e)
+		{
+			if (!oe.ShipmentEventId.ShipmentId.Equals(e.ItemIssuanceEventId.ShipmentId))
+			{ 
+				throw DomainError.Named("inconsistentEventIds", "Outer Id ShipmentId {0} but inner id ShipmentId {1}", 
+					oe.ShipmentEventId.ShipmentId, e.ItemIssuanceEventId.ShipmentId);
 			}
 		}
 
@@ -306,6 +333,56 @@ namespace Dddml.Wms.Domain.Shipment
             return stateEvent;
         }
 
+		private Dictionary<ItemIssuanceEventId, IItemIssuanceStateCreated> _itemIssuanceEvents = new Dictionary<ItemIssuanceEventId, IItemIssuanceStateCreated>();
+        
+        private IEnumerable<IItemIssuanceStateCreated> _readOnlyItemIssuanceEvents;
+
+        public virtual IEnumerable<IItemIssuanceStateCreated> ItemIssuanceEvents
+        {
+            get
+            {
+                if (!StateEventReadOnly)
+                {
+                    return this._itemIssuanceEvents.Values;
+                }
+                else
+                {
+                    if (_readOnlyItemIssuanceEvents != null) { return _readOnlyItemIssuanceEvents; }
+                    var eventDao = ItemIssuanceStateEventDao;
+                    var eL = new List<IItemIssuanceStateCreated>();
+                    foreach (var e in eventDao.FindByShipmentEventId(this.ShipmentEventId))
+                    {
+                        e.ReadOnly = true;
+                        eL.Add((IItemIssuanceStateCreated)e);
+                    }
+                    return (_readOnlyItemIssuanceEvents = eL);
+                }
+            }
+            set 
+            {
+                if (value != null)
+                {
+                    foreach (var e in value)
+                    {
+                        AddItemIssuanceEvent(e);
+                    }
+                }
+                else { this._itemIssuanceEvents.Clear(); }
+            }
+        }
+    
+		public virtual void AddItemIssuanceEvent(IItemIssuanceStateCreated e)
+		{
+			ThrowOnInconsistentEventIds(e);
+			this._itemIssuanceEvents[e.ItemIssuanceEventId] = e;
+		}
+
+        public virtual IItemIssuanceStateCreated NewItemIssuanceStateCreated(string itemIssuanceSeqId)
+        {
+            var stateEvent = new ItemIssuanceStateCreated(NewItemIssuanceEventId(itemIssuanceSeqId));
+            return stateEvent;
+        }
+
 		public virtual void Save ()
 		{
 			foreach (IShipmentItemStateCreated e in this.ShipmentItemEvents) {
@@ -313,6 +390,9 @@ namespace Dddml.Wms.Domain.Shipment
 			}
 			foreach (IShipmentReceiptStateCreated e in this.ShipmentReceiptEvents) {
 				ShipmentReceiptStateEventDao.Save(e);
+			}
+			foreach (IItemIssuanceStateCreated e in this.ItemIssuanceEvents) {
+				ItemIssuanceStateEventDao.Save(e);
 			}
 		}
 
@@ -333,6 +413,8 @@ namespace Dddml.Wms.Domain.Shipment
 		public virtual bool IsPropertyPrimaryOrderIdRemoved { get; set; }
 
 		public virtual bool IsPropertyPrimaryReturnIdRemoved { get; set; }
+
+		public virtual bool IsPropertyPrimaryShipGroupSeqIdRemoved { get; set; }
 
 		public virtual bool IsPropertyPicklistBinIdRemoved { get; set; }
 
@@ -373,8 +455,6 @@ namespace Dddml.Wms.Domain.Shipment
 		public virtual bool IsPropertyAdditionalShippingChargeRemoved { get; set; }
 
 		public virtual bool IsPropertyAddtlShippingChargeDescRemoved { get; set; }
-
-		public virtual bool IsPropertyShipperIdRemoved { get; set; }
 
 		public virtual bool IsPropertyActiveRemoved { get; set; }
 
@@ -499,6 +579,68 @@ namespace Dddml.Wms.Domain.Shipment
             return stateEvent;
         }
 
+		private Dictionary<ItemIssuanceEventId, IItemIssuanceStateEvent> _itemIssuanceEvents = new Dictionary<ItemIssuanceEventId, IItemIssuanceStateEvent>();
+
+        private IEnumerable<IItemIssuanceStateEvent> _readOnlyItemIssuanceEvents;
+        
+        public virtual IEnumerable<IItemIssuanceStateEvent> ItemIssuanceEvents
+        {
+            get
+            {
+                if (!StateEventReadOnly)
+                {
+                    return this._itemIssuanceEvents.Values;
+                }
+                else
+                {
+                    if (_readOnlyItemIssuanceEvents != null) { return _readOnlyItemIssuanceEvents; }
+                    var eventDao = ItemIssuanceStateEventDao;
+                    var eL = new List<IItemIssuanceStateEvent>();
+                    foreach (var e in eventDao.FindByShipmentEventId(this.ShipmentEventId))
+                    {
+                        e.ReadOnly = true;
+                        eL.Add((IItemIssuanceStateEvent)e);
+                    }
+                    return (_readOnlyItemIssuanceEvents = eL);
+                }
+            }
+            set 
+            {
+                if (value != null)
+                {
+                    foreach (var e in value)
+                    {
+                        AddItemIssuanceEvent(e);
+                    }
+                }
+                else { this._itemIssuanceEvents.Clear(); }
+            }
+        }
+
+		public virtual void AddItemIssuanceEvent(IItemIssuanceStateEvent e)
+		{
+			ThrowOnInconsistentEventIds(e);
+			this._itemIssuanceEvents[e.ItemIssuanceEventId] = e;
+		}
+
+        public virtual IItemIssuanceStateCreated NewItemIssuanceStateCreated(string itemIssuanceSeqId)
+        {
+            var stateEvent = new ItemIssuanceStateCreated(NewItemIssuanceEventId(itemIssuanceSeqId));
+            return stateEvent;
+        }
+
+        public virtual IItemIssuanceStateMergePatched NewItemIssuanceStateMergePatched(string itemIssuanceSeqId)
+        {
+            var stateEvent = new ItemIssuanceStateMergePatched(NewItemIssuanceEventId(itemIssuanceSeqId));
+            return stateEvent;
+        }
+
+        public virtual IItemIssuanceStateRemoved NewItemIssuanceStateRemoved(string itemIssuanceSeqId)
+        {
+            var stateEvent = new ItemIssuanceStateRemoved(NewItemIssuanceEventId(itemIssuanceSeqId));
+            return stateEvent;
+        }
+
 		public virtual void Save ()
 		{
 			foreach (IShipmentItemStateEvent e in this.ShipmentItemEvents) {
@@ -506,6 +648,9 @@ namespace Dddml.Wms.Domain.Shipment
 			}
 			foreach (IShipmentReceiptStateEvent e in this.ShipmentReceiptEvents) {
 				ShipmentReceiptStateEventDao.Save(e);
+			}
+			foreach (IItemIssuanceStateEvent e in this.ItemIssuanceEvents) {
+				ItemIssuanceStateEventDao.Save(e);
 			}
 		}
 

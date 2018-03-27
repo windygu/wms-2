@@ -40,12 +40,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             set;
         }
 
-        public virtual decimal? TargetQuantity
-        {
-            get;
-            set;
-        }
-
         public virtual string ShipmentContentDescription
         {
             get;
@@ -83,6 +77,12 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
         }
 
         public virtual string ShipmentPrimaryReturnId
+        {
+            get;
+            set;
+        }
+
+        public virtual long? ShipmentPrimaryShipGroupSeqId
         {
             get;
             set;
@@ -208,12 +208,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             set;
         }
 
-        public virtual string ShipmentShipperId
-        {
-            get;
-            set;
-        }
-
         public virtual string ShipmentCreatedBy
         {
             get;
@@ -281,7 +275,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             state.ProductId = this.ProductId;
             state.AttributeSetInstanceId = this.AttributeSetInstanceId;
             state.Quantity = this.Quantity;
-            state.TargetQuantity = this.TargetQuantity;
             state.ShipmentContentDescription = this.ShipmentContentDescription;
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
@@ -289,6 +282,7 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             state.ShipmentStatusId = this.ShipmentStatusId;
             state.ShipmentPrimaryOrderId = this.ShipmentPrimaryOrderId;
             state.ShipmentPrimaryReturnId = this.ShipmentPrimaryReturnId;
+            state.ShipmentPrimaryShipGroupSeqId = this.ShipmentPrimaryShipGroupSeqId;
             state.ShipmentPicklistBinId = this.ShipmentPicklistBinId;
             state.ShipmentEstimatedReadyDate = this.ShipmentEstimatedReadyDate;
             state.ShipmentEstimatedShipDate = this.ShipmentEstimatedShipDate;
@@ -309,7 +303,6 @@ namespace Dddml.Wms.Domain.ShipmentItemMvo
             state.ShipmentPartyIdFrom = this.ShipmentPartyIdFrom;
             state.ShipmentAdditionalShippingCharge = this.ShipmentAdditionalShippingCharge;
             state.ShipmentAddtlShippingChargeDesc = this.ShipmentAddtlShippingChargeDesc;
-            state.ShipmentShipperId = this.ShipmentShipperId;
             state.ShipmentCreatedBy = this.ShipmentCreatedBy;
             if (this.ShipmentCreatedAt != null && this.ShipmentCreatedAt.HasValue) { state.ShipmentCreatedAt = this.ShipmentCreatedAt.Value; }
             state.ShipmentUpdatedBy = this.ShipmentUpdatedBy;

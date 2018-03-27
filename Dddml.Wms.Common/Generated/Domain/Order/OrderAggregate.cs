@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.Order;
+using Dddml.Wms.Domain.PartyRole;
 
 namespace Dddml.Wms.Domain.Order
 {
@@ -129,12 +130,28 @@ namespace Dddml.Wms.Domain.Order
             e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 			var version = c.Version;
 
+            foreach (ICreateOrderRole innerCommand in c.OrderRoles)
+            {
+                ThrowOnInconsistentCommands(c, innerCommand);
+
+                IOrderRoleStateCreated innerEvent = MapCreate(innerCommand, c, version, _state);
+                e.AddOrderRoleEvent(innerEvent);
+            }
+
             foreach (ICreateOrderItem innerCommand in c.OrderItems)
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
 
                 IOrderItemStateCreated innerEvent = MapCreate(innerCommand, c, version, _state);
                 e.AddOrderItemEvent(innerEvent);
+            }
+
+            foreach (ICreateOrderShipGroup innerCommand in c.OrderShipGroups)
+            {
+                ThrowOnInconsistentCommands(c, innerCommand);
+
+                IOrderShipGroupStateCreated innerEvent = MapCreate(innerCommand, c, version, _state);
+                e.AddOrderShipGroupEvent(innerEvent);
             }
 
 
@@ -205,6 +222,14 @@ namespace Dddml.Wms.Domain.Order
 
 			var version = c.Version;
 
+            foreach (IOrderRoleCommand innerCommand in c.OrderRoleCommands)
+            {
+                ThrowOnInconsistentCommands(c, innerCommand);
+
+                IOrderRoleStateEvent innerEvent = Map(innerCommand, c, version, _state);
+                e.AddOrderRoleEvent(innerEvent);
+            }
+
             foreach (IOrderItemCommand innerCommand in c.OrderItemCommands)
             {
                 ThrowOnInconsistentCommands(c, innerCommand);
@@ -213,9 +238,39 @@ namespace Dddml.Wms.Domain.Order
                 e.AddOrderItemEvent(innerEvent);
             }
 
+            foreach (IOrderShipGroupCommand innerCommand in c.OrderShipGroupCommands)
+            {
+                ThrowOnInconsistentCommands(c, innerCommand);
+
+                IOrderShipGroupStateEvent innerEvent = Map(innerCommand, c, version, _state);
+                e.AddOrderShipGroupEvent(innerEvent);
+            }
+
 
             return e;
         }
+
+
+        protected void ThrowOnInconsistentCommands(IOrderCommand command, IOrderRoleCommand innerCommand)
+        {
+
+            var properties =  command as ICreateOrMergePatchOrDeleteOrder;
+            var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveOrderRole;
+            if (properties == null || innerProperties == null) { return; }
+            if (innerProperties.OrderId == default(string))
+            {
+                innerProperties.OrderId = properties.OrderId;
+            }
+            else
+            {
+                var outerOrderIdName = "OrderId";
+                var outerOrderIdValue = properties.OrderId;
+                var innerOrderIdName = "OrderId";
+                var innerOrderIdValue = innerProperties.OrderId;
+                ThrowOnInconsistentIds(innerProperties, innerOrderIdName, innerOrderIdValue, outerOrderIdName, outerOrderIdValue);
+            }
+
+        }// END ThrowOnInconsistentCommands /////////////////////
 
 
         protected void ThrowOnInconsistentCommands(IOrderCommand command, IOrderItemCommand innerCommand)
@@ -238,6 +293,100 @@ namespace Dddml.Wms.Domain.Order
             }
 
         }// END ThrowOnInconsistentCommands /////////////////////
+
+
+        protected void ThrowOnInconsistentCommands(IOrderCommand command, IOrderShipGroupCommand innerCommand)
+        {
+
+            var properties =  command as ICreateOrMergePatchOrDeleteOrder;
+            var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveOrderShipGroup;
+            if (properties == null || innerProperties == null) { return; }
+            if (innerProperties.OrderId == default(string))
+            {
+                innerProperties.OrderId = properties.OrderId;
+            }
+            else
+            {
+                var outerOrderIdName = "OrderId";
+                var outerOrderIdValue = properties.OrderId;
+                var innerOrderIdName = "OrderId";
+                var innerOrderIdValue = innerProperties.OrderId;
+                ThrowOnInconsistentIds(innerProperties, innerOrderIdName, innerOrderIdValue, outerOrderIdName, outerOrderIdValue);
+            }
+
+        }// END ThrowOnInconsistentCommands /////////////////////
+
+
+        protected virtual IOrderRoleStateEvent Map(IOrderRoleCommand c, IOrderCommand outerCommand, long version, IOrderState outerState)
+        {
+            var create = (c.CommandType == CommandType.Create) ? (c as ICreateOrderRole) : null;
+            if(create != null)
+            {
+                return MapCreate(create, outerCommand, version, outerState);
+            }
+
+            var merge = (c.CommandType == CommandType.MergePatch) ? (c as IMergePatchOrderRole) : null;
+            if(merge != null)
+            {
+                return MapMergePatch(merge, outerCommand, version, outerState);
+            }
+
+            var remove = (c.CommandType == CommandType.Remove) ? (c as IRemoveOrderRole) : null;
+            if (remove != null)
+            {
+                return MapRemove(remove, outerCommand, version);
+            }
+            throw new NotSupportedException();
+        }
+
+
+        protected virtual IOrderRoleStateCreated MapCreate(ICreateOrderRole c, IOrderCommand outerCommand, long version, IOrderState outerState)
+        {
+            c.RequesterId = outerCommand.RequesterId;
+			var stateEventId = new OrderRoleEventId(c.OrderId, c.PartyRoleId, version);
+            IOrderRoleStateCreated e = NewOrderRoleStateCreated(stateEventId);
+            var s = outerState.OrderRoles.Get(c.PartyRoleId, true);
+
+            e.Active = c.Active;
+
+            e.CreatedBy = (string)c.RequesterId;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+            return e;
+
+        }// END Map(ICreate... ////////////////////////////
+
+
+
+        protected virtual IOrderRoleStateMergePatched MapMergePatch(IMergePatchOrderRole c, IOrderCommand outerCommand, long version, IOrderState outerState)
+        {
+            c.RequesterId = outerCommand.RequesterId;
+			var stateEventId = new OrderRoleEventId(c.OrderId, c.PartyRoleId, version);
+            IOrderRoleStateMergePatched e = NewOrderRoleStateMergePatched(stateEventId);
+            var s = outerState.OrderRoles.Get(c.PartyRoleId);
+
+            e.Active = c.Active;
+            e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
+
+            e.CreatedBy = (string)c.RequesterId;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+            return e;
+
+        }// END Map(IMergePatch... ////////////////////////////
+
+
+        protected virtual IOrderRoleStateRemoved MapRemove(IRemoveOrderRole c, IOrderCommand outerCommand, long version)
+        {
+            c.RequesterId = outerCommand.RequesterId;
+			var stateEventId = new OrderRoleEventId(c.OrderId, c.PartyRoleId, version);
+            IOrderRoleStateRemoved e = NewOrderRoleStateRemoved(stateEventId);
+
+
+            e.CreatedBy = (string)c.RequesterId;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+
+            return e;
+
+        }// END Map(IRemove... ////////////////////////////
 
 
         protected virtual IOrderItemStateEvent Map(IOrderItemCommand c, IOrderCommand outerCommand, long version, IOrderState outerState)
@@ -397,6 +546,129 @@ namespace Dddml.Wms.Domain.Order
         }// END Map(IMergePatch... ////////////////////////////
 
 
+
+        protected virtual IOrderShipGroupStateEvent Map(IOrderShipGroupCommand c, IOrderCommand outerCommand, long version, IOrderState outerState)
+        {
+            var create = (c.CommandType == CommandType.Create) ? (c as ICreateOrderShipGroup) : null;
+            if(create != null)
+            {
+                return MapCreate(create, outerCommand, version, outerState);
+            }
+
+            var merge = (c.CommandType == CommandType.MergePatch) ? (c as IMergePatchOrderShipGroup) : null;
+            if(merge != null)
+            {
+                return MapMergePatch(merge, outerCommand, version, outerState);
+            }
+
+            var remove = (c.CommandType == CommandType.Remove) ? (c as IRemoveOrderShipGroup) : null;
+            if (remove != null)
+            {
+                return MapRemove(remove, outerCommand, version);
+            }
+            throw new NotSupportedException();
+        }
+
+
+        protected virtual IOrderShipGroupStateCreated MapCreate(ICreateOrderShipGroup c, IOrderCommand outerCommand, long version, IOrderState outerState)
+        {
+            c.RequesterId = outerCommand.RequesterId;
+			var stateEventId = new OrderShipGroupEventId(c.OrderId, c.ShipGroupSeqId, version);
+            IOrderShipGroupStateCreated e = NewOrderShipGroupStateCreated(stateEventId);
+            var s = outerState.OrderShipGroups.Get(c.ShipGroupSeqId, true);
+
+            e.ShipmentMethodTypeId = c.ShipmentMethodTypeId;
+            e.SupplierPartyId = c.SupplierPartyId;
+            e.VendorPartyId = c.VendorPartyId;
+            e.CarrierPartyId = c.CarrierPartyId;
+            e.CarrierRoleTypeId = c.CarrierRoleTypeId;
+            e.FacilityId = c.FacilityId;
+            e.ContactMechId = c.ContactMechId;
+            e.TelecomContactMechId = c.TelecomContactMechId;
+            e.TrackingNumber = c.TrackingNumber;
+            e.ShippingInstructions = c.ShippingInstructions;
+            e.MaySplit = c.MaySplit;
+            e.GiftMessage = c.GiftMessage;
+            e.IsGift = c.IsGift;
+            e.ShipAfterDate = c.ShipAfterDate;
+            e.ShipByDate = c.ShipByDate;
+            e.EstimatedShipDate = c.EstimatedShipDate;
+            e.EstimatedDeliveryDate = c.EstimatedDeliveryDate;
+            e.Active = c.Active;
+
+            e.CreatedBy = (string)c.RequesterId;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+            return e;
+
+        }// END Map(ICreate... ////////////////////////////
+
+
+
+        protected virtual IOrderShipGroupStateMergePatched MapMergePatch(IMergePatchOrderShipGroup c, IOrderCommand outerCommand, long version, IOrderState outerState)
+        {
+            c.RequesterId = outerCommand.RequesterId;
+			var stateEventId = new OrderShipGroupEventId(c.OrderId, c.ShipGroupSeqId, version);
+            IOrderShipGroupStateMergePatched e = NewOrderShipGroupStateMergePatched(stateEventId);
+            var s = outerState.OrderShipGroups.Get(c.ShipGroupSeqId);
+
+            e.ShipmentMethodTypeId = c.ShipmentMethodTypeId;
+            e.SupplierPartyId = c.SupplierPartyId;
+            e.VendorPartyId = c.VendorPartyId;
+            e.CarrierPartyId = c.CarrierPartyId;
+            e.CarrierRoleTypeId = c.CarrierRoleTypeId;
+            e.FacilityId = c.FacilityId;
+            e.ContactMechId = c.ContactMechId;
+            e.TelecomContactMechId = c.TelecomContactMechId;
+            e.TrackingNumber = c.TrackingNumber;
+            e.ShippingInstructions = c.ShippingInstructions;
+            e.MaySplit = c.MaySplit;
+            e.GiftMessage = c.GiftMessage;
+            e.IsGift = c.IsGift;
+            e.ShipAfterDate = c.ShipAfterDate;
+            e.ShipByDate = c.ShipByDate;
+            e.EstimatedShipDate = c.EstimatedShipDate;
+            e.EstimatedDeliveryDate = c.EstimatedDeliveryDate;
+            e.Active = c.Active;
+            e.IsPropertyShipmentMethodTypeIdRemoved = c.IsPropertyShipmentMethodTypeIdRemoved;
+            e.IsPropertySupplierPartyIdRemoved = c.IsPropertySupplierPartyIdRemoved;
+            e.IsPropertyVendorPartyIdRemoved = c.IsPropertyVendorPartyIdRemoved;
+            e.IsPropertyCarrierPartyIdRemoved = c.IsPropertyCarrierPartyIdRemoved;
+            e.IsPropertyCarrierRoleTypeIdRemoved = c.IsPropertyCarrierRoleTypeIdRemoved;
+            e.IsPropertyFacilityIdRemoved = c.IsPropertyFacilityIdRemoved;
+            e.IsPropertyContactMechIdRemoved = c.IsPropertyContactMechIdRemoved;
+            e.IsPropertyTelecomContactMechIdRemoved = c.IsPropertyTelecomContactMechIdRemoved;
+            e.IsPropertyTrackingNumberRemoved = c.IsPropertyTrackingNumberRemoved;
+            e.IsPropertyShippingInstructionsRemoved = c.IsPropertyShippingInstructionsRemoved;
+            e.IsPropertyMaySplitRemoved = c.IsPropertyMaySplitRemoved;
+            e.IsPropertyGiftMessageRemoved = c.IsPropertyGiftMessageRemoved;
+            e.IsPropertyIsGiftRemoved = c.IsPropertyIsGiftRemoved;
+            e.IsPropertyShipAfterDateRemoved = c.IsPropertyShipAfterDateRemoved;
+            e.IsPropertyShipByDateRemoved = c.IsPropertyShipByDateRemoved;
+            e.IsPropertyEstimatedShipDateRemoved = c.IsPropertyEstimatedShipDateRemoved;
+            e.IsPropertyEstimatedDeliveryDateRemoved = c.IsPropertyEstimatedDeliveryDateRemoved;
+            e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
+
+            e.CreatedBy = (string)c.RequesterId;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+            return e;
+
+        }// END Map(IMergePatch... ////////////////////////////
+
+
+        protected virtual IOrderShipGroupStateRemoved MapRemove(IRemoveOrderShipGroup c, IOrderCommand outerCommand, long version)
+        {
+            c.RequesterId = outerCommand.RequesterId;
+			var stateEventId = new OrderShipGroupEventId(c.OrderId, c.ShipGroupSeqId, version);
+            IOrderShipGroupStateRemoved e = NewOrderShipGroupStateRemoved(stateEventId);
+
+
+            e.CreatedBy = (string)c.RequesterId;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+
+            return e;
+
+        }// END Map(IRemove... ////////////////////////////
+
         private void ThrowOnInconsistentIds(object innerObject, string innerIdName, object innerIdValue, string outerIdName, object outerIdValue)
         {
             if (!Object.Equals(innerIdValue, outerIdValue))
@@ -451,6 +723,22 @@ namespace Dddml.Wms.Domain.Order
 		}
 
 
+		private OrderRoleStateCreated NewOrderRoleStateCreated(OrderRoleEventId stateEventId)
+		{
+			return new OrderRoleStateCreated(stateEventId);
+		}
+
+        private OrderRoleStateMergePatched NewOrderRoleStateMergePatched(OrderRoleEventId stateEventId)
+		{
+			return new OrderRoleStateMergePatched(stateEventId);
+		}
+
+        private OrderRoleStateRemoved NewOrderRoleStateRemoved(OrderRoleEventId stateEventId)
+		{
+			return new OrderRoleStateRemoved(stateEventId);
+		}
+
+
 		private OrderItemStateCreated NewOrderItemStateCreated(OrderItemEventId stateEventId)
 		{
 			return new OrderItemStateCreated(stateEventId);
@@ -459,6 +747,22 @@ namespace Dddml.Wms.Domain.Order
         private OrderItemStateMergePatched NewOrderItemStateMergePatched(OrderItemEventId stateEventId)
 		{
 			return new OrderItemStateMergePatched(stateEventId);
+		}
+
+
+		private OrderShipGroupStateCreated NewOrderShipGroupStateCreated(OrderShipGroupEventId stateEventId)
+		{
+			return new OrderShipGroupStateCreated(stateEventId);
+		}
+
+        private OrderShipGroupStateMergePatched NewOrderShipGroupStateMergePatched(OrderShipGroupEventId stateEventId)
+		{
+			return new OrderShipGroupStateMergePatched(stateEventId);
+		}
+
+        private OrderShipGroupStateRemoved NewOrderShipGroupStateRemoved(OrderShipGroupEventId stateEventId)
+		{
+			return new OrderShipGroupStateRemoved(stateEventId);
 		}
 
     }

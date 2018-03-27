@@ -22,8 +22,6 @@ namespace Dddml.Wms.Domain.Shipment
 
 		public virtual decimal? Quantity { get; set; }
 
-		public virtual decimal? TargetQuantity { get; set; }
-
 		public virtual string ShipmentContentDescription { get; set; }
 
 		public virtual long Version { get; set; }

@@ -46,6 +46,18 @@ public class ShipmentReceiptMvoStateDto
         this.attributeSetInstanceId = attributeSetInstanceId;
     }
 
+    private String locatorId;
+
+    public String getLocatorId()
+    {
+        return this.locatorId;
+    }
+
+    public void setLocatorId(String locatorId)
+    {
+        this.locatorId = locatorId;
+    }
+
     private String shipmentItemSeqId;
 
     public String getShipmentItemSeqId()
@@ -56,6 +68,66 @@ public class ShipmentReceiptMvoStateDto
     public void setShipmentItemSeqId(String shipmentItemSeqId)
     {
         this.shipmentItemSeqId = shipmentItemSeqId;
+    }
+
+    private String shipmentPackageSeqId;
+
+    public String getShipmentPackageSeqId()
+    {
+        return this.shipmentPackageSeqId;
+    }
+
+    public void setShipmentPackageSeqId(String shipmentPackageSeqId)
+    {
+        this.shipmentPackageSeqId = shipmentPackageSeqId;
+    }
+
+    private String orderId;
+
+    public String getOrderId()
+    {
+        return this.orderId;
+    }
+
+    public void setOrderId(String orderId)
+    {
+        this.orderId = orderId;
+    }
+
+    private String orderItemSeqId;
+
+    public String getOrderItemSeqId()
+    {
+        return this.orderItemSeqId;
+    }
+
+    public void setOrderItemSeqId(String orderItemSeqId)
+    {
+        this.orderItemSeqId = orderItemSeqId;
+    }
+
+    private String returnId;
+
+    public String getReturnId()
+    {
+        return this.returnId;
+    }
+
+    public void setReturnId(String returnId)
+    {
+        this.returnId = returnId;
+    }
+
+    private String returnItemSeqId;
+
+    public String getReturnItemSeqId()
+    {
+        return this.returnItemSeqId;
+    }
+
+    public void setReturnItemSeqId(String returnItemSeqId)
+    {
+        this.returnItemSeqId = returnItemSeqId;
     }
 
     private String rejectionReasonId;
@@ -236,6 +308,18 @@ public class ShipmentReceiptMvoStateDto
     public void setShipmentPrimaryReturnId(String shipmentPrimaryReturnId)
     {
         this.shipmentPrimaryReturnId = shipmentPrimaryReturnId;
+    }
+
+    private Long shipmentPrimaryShipGroupSeqId;
+
+    public Long getShipmentPrimaryShipGroupSeqId()
+    {
+        return this.shipmentPrimaryShipGroupSeqId;
+    }
+
+    public void setShipmentPrimaryShipGroupSeqId(Long shipmentPrimaryShipGroupSeqId)
+    {
+        this.shipmentPrimaryShipGroupSeqId = shipmentPrimaryShipGroupSeqId;
     }
 
     private String shipmentPicklistBinId;
@@ -478,18 +562,6 @@ public class ShipmentReceiptMvoStateDto
         this.shipmentAddtlShippingChargeDesc = shipmentAddtlShippingChargeDesc;
     }
 
-    private String shipmentShipperId;
-
-    public String getShipmentShipperId()
-    {
-        return this.shipmentShipperId;
-    }
-
-    public void setShipmentShipperId(String shipmentShipperId)
-    {
-        this.shipmentShipperId = shipmentShipperId;
-    }
-
     private String shipmentCreatedBy;
 
     public String getShipmentCreatedBy()
@@ -645,8 +717,26 @@ public class ShipmentReceiptMvoStateDto
             if (returnedFieldsContains("AttributeSetInstanceId")) {
                 dto.setAttributeSetInstanceId(state.getAttributeSetInstanceId());
             }
+            if (returnedFieldsContains("LocatorId")) {
+                dto.setLocatorId(state.getLocatorId());
+            }
             if (returnedFieldsContains("ShipmentItemSeqId")) {
                 dto.setShipmentItemSeqId(state.getShipmentItemSeqId());
+            }
+            if (returnedFieldsContains("ShipmentPackageSeqId")) {
+                dto.setShipmentPackageSeqId(state.getShipmentPackageSeqId());
+            }
+            if (returnedFieldsContains("OrderId")) {
+                dto.setOrderId(state.getOrderId());
+            }
+            if (returnedFieldsContains("OrderItemSeqId")) {
+                dto.setOrderItemSeqId(state.getOrderItemSeqId());
+            }
+            if (returnedFieldsContains("ReturnId")) {
+                dto.setReturnId(state.getReturnId());
+            }
+            if (returnedFieldsContains("ReturnItemSeqId")) {
+                dto.setReturnItemSeqId(state.getReturnItemSeqId());
             }
             if (returnedFieldsContains("RejectionReasonId")) {
                 dto.setRejectionReasonId(state.getRejectionReasonId());
@@ -692,6 +782,9 @@ public class ShipmentReceiptMvoStateDto
             }
             if (returnedFieldsContains("ShipmentPrimaryReturnId")) {
                 dto.setShipmentPrimaryReturnId(state.getShipmentPrimaryReturnId());
+            }
+            if (returnedFieldsContains("ShipmentPrimaryShipGroupSeqId")) {
+                dto.setShipmentPrimaryShipGroupSeqId(state.getShipmentPrimaryShipGroupSeqId());
             }
             if (returnedFieldsContains("ShipmentPicklistBinId")) {
                 dto.setShipmentPicklistBinId(state.getShipmentPicklistBinId());
@@ -752,9 +845,6 @@ public class ShipmentReceiptMvoStateDto
             }
             if (returnedFieldsContains("ShipmentAddtlShippingChargeDesc")) {
                 dto.setShipmentAddtlShippingChargeDesc(state.getShipmentAddtlShippingChargeDesc());
-            }
-            if (returnedFieldsContains("ShipmentShipperId")) {
-                dto.setShipmentShipperId(state.getShipmentShipperId());
             }
             if (returnedFieldsContains("ShipmentCreatedBy")) {
                 dto.setShipmentCreatedBy(state.getShipmentCreatedBy());

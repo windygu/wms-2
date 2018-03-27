@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.Order;
+using Dddml.Wms.Domain.PartyRole;
 using Dddml.Wms.Specialization.NHibernate;
 using NHibernate;
 using NHibernate.Criterion;
@@ -28,7 +29,7 @@ namespace Dddml.Wms.Domain.Order.NHibernate
 			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
-        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "OrderId", "OrderTypeId", "OrderName", "ExternalId", "SalesChannelEnumId", "OrderDate", "Priority", "EntryDate", "PickSheetPrintedDate", "StatusId", "CurrencyUom", "SyncStatusId", "BillingAccountId", "OriginFacilityId", "WebSiteId", "ProductStoreId", "TerminalId", "TransactionId", "AutoOrderShoppingListId", "NeedsInventoryIssuance", "IsRushOrder", "InternalCode", "RemainingSubTotal", "GrandTotal", "InvoicePerShipment", "OrderItems", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
+        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "OrderId", "OrderTypeId", "OrderName", "ExternalId", "SalesChannelEnumId", "OrderDate", "Priority", "EntryDate", "PickSheetPrintedDate", "StatusId", "CurrencyUom", "SyncStatusId", "BillingAccountId", "OriginFacilityId", "WebSiteId", "ProductStoreId", "TerminalId", "TransactionId", "AutoOrderShoppingListId", "NeedsInventoryIssuance", "IsRushOrder", "InternalCode", "RemainingSubTotal", "GrandTotal", "InvoicePerShipment", "OrderItems", "OrderRoles", "OrderShipGroups", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
     
         public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
 
@@ -127,10 +128,24 @@ namespace Dddml.Wms.Domain.Order.NHibernate
         }
 
         [Transaction(ReadOnly = true)]
+        public virtual IOrderRoleState GetOrderRole(string orderId, PartyRoleId partyRoleId)
+        {
+            var entityId = new OrderRoleId(orderId, partyRoleId);
+            return CurrentSession.Get<OrderRoleState>(entityId);
+        }
+
+        [Transaction(ReadOnly = true)]
         public virtual IOrderItemState GetOrderItem(string orderId, string orderItemSeqId)
         {
             var entityId = new OrderItemId(orderId, orderItemSeqId);
             return CurrentSession.Get<OrderItemState>(entityId);
+        }
+
+        [Transaction(ReadOnly = true)]
+        public virtual IOrderShipGroupState GetOrderShipGroup(string orderId, long? shipGroupSeqId)
+        {
+            var entityId = new OrderShipGroupId(orderId, shipGroupSeqId);
+            return CurrentSession.Get<OrderShipGroupState>(entityId);
         }
 
 

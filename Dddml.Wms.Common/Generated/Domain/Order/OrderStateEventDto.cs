@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Dddml.Wms.Specialization;
 using Dddml.Wms.Domain;
 using Dddml.Wms.Domain.Order;
+using Dddml.Wms.Domain.PartyRole;
 
 namespace Dddml.Wms.Domain.Order
 {
@@ -615,6 +616,97 @@ namespace Dddml.Wms.Domain.Order
 		}
 
 
+        private OrderRoleStateCreatedOrMergePatchedOrRemovedDtos _orderRoleEvents = new OrderRoleStateCreatedOrMergePatchedOrRemovedDtos();
+
+        public virtual OrderRoleStateCreatedOrMergePatchedOrRemovedDto[] OrderRoleEvents
+        {
+            get
+            {
+                return _orderRoleEvents.ToArray();
+            }
+            set
+            {
+                _orderRoleEvents.Clear();
+                _orderRoleEvents.AddRange(value);
+            }
+        }
+
+
+
+        private OrderRoleEventId NewOrderRoleEventId(PartyRoleId partyRoleId)
+        {
+            var eId = new OrderRoleEventId();
+            eId.OrderId = this.OrderEventId.OrderId;
+            eId.PartyRoleId = partyRoleId;
+            eId.OrderVersion = this.OrderEventId.Version;
+            return eId;
+        }
+
+        public virtual OrderRoleStateCreatedDto NewOrderRoleStateCreated(PartyRoleId partyRoleId)
+        {
+            var e = new OrderRoleStateCreatedDto();
+            var eId = NewOrderRoleEventId(partyRoleId);
+            e.OrderRoleEventId = eId;
+            return e;
+        }
+
+        public virtual OrderRoleStateMergePatchedDto NewOrderRoleStateMergePatched(PartyRoleId partyRoleId)
+        {
+            var e = new OrderRoleStateMergePatchedDto();
+            var eId = NewOrderRoleEventId(partyRoleId);
+            e.OrderRoleEventId = eId;
+            return e;
+        }
+
+        public virtual OrderRoleStateRemovedDto NewOrderRoleStateRemoved(PartyRoleId partyRoleId)
+        {
+            var e = new OrderRoleStateRemovedDto();
+            var eId = NewOrderRoleEventId(partyRoleId);
+            e.OrderRoleEventId = eId;
+            return e;
+        }
+
+        IEnumerable<IOrderRoleStateCreated> IOrderStateCreated.OrderRoleEvents
+        {
+            get { return this._orderRoleEvents; }
+        }
+
+        void IOrderStateCreated.AddOrderRoleEvent(IOrderRoleStateCreated e)
+        {
+            this._orderRoleEvents.AddOrderRoleEvent(e);
+        }
+
+        IOrderRoleStateCreated IOrderStateCreated.NewOrderRoleStateCreated(PartyRoleId partyRoleId)
+        {
+            return NewOrderRoleStateCreated(partyRoleId);
+        }
+
+        IEnumerable<IOrderRoleStateEvent> IOrderStateMergePatched.OrderRoleEvents
+        {
+            get { return this._orderRoleEvents; }
+        }
+
+        void IOrderStateMergePatched.AddOrderRoleEvent(IOrderRoleStateEvent e)
+        {
+            this._orderRoleEvents.AddOrderRoleEvent(e);
+        }
+
+        IOrderRoleStateCreated IOrderStateMergePatched.NewOrderRoleStateCreated(PartyRoleId partyRoleId)
+        {
+            return NewOrderRoleStateCreated(partyRoleId);
+        }
+
+        IOrderRoleStateMergePatched IOrderStateMergePatched.NewOrderRoleStateMergePatched(PartyRoleId partyRoleId)
+        {
+            return NewOrderRoleStateMergePatched(partyRoleId);
+        }
+
+        IOrderRoleStateRemoved IOrderStateMergePatched.NewOrderRoleStateRemoved(PartyRoleId partyRoleId)
+        {
+            return NewOrderRoleStateRemoved(partyRoleId);
+        }
+
+
         private OrderItemStateCreatedOrMergePatchedOrRemovedDtos _orderItemEvents = new OrderItemStateCreatedOrMergePatchedOrRemovedDtos();
 
         public virtual OrderItemStateCreatedOrMergePatchedOrRemovedDto[] OrderItemEvents
@@ -690,6 +782,97 @@ namespace Dddml.Wms.Domain.Order
         IOrderItemStateMergePatched IOrderStateMergePatched.NewOrderItemStateMergePatched(string orderItemSeqId)
         {
             return NewOrderItemStateMergePatched(orderItemSeqId);
+        }
+
+
+        private OrderShipGroupStateCreatedOrMergePatchedOrRemovedDtos _orderShipGroupEvents = new OrderShipGroupStateCreatedOrMergePatchedOrRemovedDtos();
+
+        public virtual OrderShipGroupStateCreatedOrMergePatchedOrRemovedDto[] OrderShipGroupEvents
+        {
+            get
+            {
+                return _orderShipGroupEvents.ToArray();
+            }
+            set
+            {
+                _orderShipGroupEvents.Clear();
+                _orderShipGroupEvents.AddRange(value);
+            }
+        }
+
+
+
+        private OrderShipGroupEventId NewOrderShipGroupEventId(long? shipGroupSeqId)
+        {
+            var eId = new OrderShipGroupEventId();
+            eId.OrderId = this.OrderEventId.OrderId;
+            eId.ShipGroupSeqId = shipGroupSeqId;
+            eId.OrderVersion = this.OrderEventId.Version;
+            return eId;
+        }
+
+        public virtual OrderShipGroupStateCreatedDto NewOrderShipGroupStateCreated(long? shipGroupSeqId)
+        {
+            var e = new OrderShipGroupStateCreatedDto();
+            var eId = NewOrderShipGroupEventId(shipGroupSeqId);
+            e.OrderShipGroupEventId = eId;
+            return e;
+        }
+
+        public virtual OrderShipGroupStateMergePatchedDto NewOrderShipGroupStateMergePatched(long? shipGroupSeqId)
+        {
+            var e = new OrderShipGroupStateMergePatchedDto();
+            var eId = NewOrderShipGroupEventId(shipGroupSeqId);
+            e.OrderShipGroupEventId = eId;
+            return e;
+        }
+
+        public virtual OrderShipGroupStateRemovedDto NewOrderShipGroupStateRemoved(long? shipGroupSeqId)
+        {
+            var e = new OrderShipGroupStateRemovedDto();
+            var eId = NewOrderShipGroupEventId(shipGroupSeqId);
+            e.OrderShipGroupEventId = eId;
+            return e;
+        }
+
+        IEnumerable<IOrderShipGroupStateCreated> IOrderStateCreated.OrderShipGroupEvents
+        {
+            get { return this._orderShipGroupEvents; }
+        }
+
+        void IOrderStateCreated.AddOrderShipGroupEvent(IOrderShipGroupStateCreated e)
+        {
+            this._orderShipGroupEvents.AddOrderShipGroupEvent(e);
+        }
+
+        IOrderShipGroupStateCreated IOrderStateCreated.NewOrderShipGroupStateCreated(long? shipGroupSeqId)
+        {
+            return NewOrderShipGroupStateCreated(shipGroupSeqId);
+        }
+
+        IEnumerable<IOrderShipGroupStateEvent> IOrderStateMergePatched.OrderShipGroupEvents
+        {
+            get { return this._orderShipGroupEvents; }
+        }
+
+        void IOrderStateMergePatched.AddOrderShipGroupEvent(IOrderShipGroupStateEvent e)
+        {
+            this._orderShipGroupEvents.AddOrderShipGroupEvent(e);
+        }
+
+        IOrderShipGroupStateCreated IOrderStateMergePatched.NewOrderShipGroupStateCreated(long? shipGroupSeqId)
+        {
+            return NewOrderShipGroupStateCreated(shipGroupSeqId);
+        }
+
+        IOrderShipGroupStateMergePatched IOrderStateMergePatched.NewOrderShipGroupStateMergePatched(long? shipGroupSeqId)
+        {
+            return NewOrderShipGroupStateMergePatched(shipGroupSeqId);
+        }
+
+        IOrderShipGroupStateRemoved IOrderStateMergePatched.NewOrderShipGroupStateRemoved(long? shipGroupSeqId)
+        {
+            return NewOrderShipGroupStateRemoved(shipGroupSeqId);
         }
 
 

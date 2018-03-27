@@ -1,6 +1,7 @@
 package org.dddml.wms.domain.order;
 
 import java.util.Date;
+import org.dddml.wms.domain.partyrole.*;
 import org.dddml.wms.domain.*;
 
 public class CreateOrMergePatchOrderDto extends AbstractOrderCommandDto
@@ -305,6 +306,18 @@ public class CreateOrMergePatchOrderDto extends AbstractOrderCommandDto
         this.active = active;
     }
 
+    private CreateOrMergePatchOrderRoleDto[] orderRoles;
+
+    public CreateOrMergePatchOrderRoleDto[] getOrderRoles()
+    {
+        return this.orderRoles;
+    }
+
+    public void setOrderRoles(CreateOrMergePatchOrderRoleDto[] orderRoles)
+    {
+        this.orderRoles = orderRoles;
+    }
+
     private CreateOrMergePatchOrderItemDto[] orderItems;
 
     public CreateOrMergePatchOrderItemDto[] getOrderItems()
@@ -315,6 +328,18 @@ public class CreateOrMergePatchOrderDto extends AbstractOrderCommandDto
     public void setOrderItems(CreateOrMergePatchOrderItemDto[] orderItems)
     {
         this.orderItems = orderItems;
+    }
+
+    private CreateOrMergePatchOrderShipGroupDto[] orderShipGroups;
+
+    public CreateOrMergePatchOrderShipGroupDto[] getOrderShipGroups()
+    {
+        return this.orderShipGroups;
+    }
+
+    public void setOrderShipGroups(CreateOrMergePatchOrderShipGroupDto[] orderShipGroups)
+    {
+        this.orderShipGroups = orderShipGroups;
     }
 
     private Boolean isPropertyOrderTypeIdRemoved;
@@ -652,18 +677,38 @@ public class CreateOrMergePatchOrderDto extends AbstractOrderCommandDto
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractOrderCommand.SimpleCreateOrder command = new AbstractOrderCommand.SimpleCreateOrder();
             copyTo((AbstractOrderCommand.AbstractCreateOrder) command);
+            if (this.getOrderRoles() != null) {
+                for (CreateOrMergePatchOrderRoleDto cmd : this.getOrderRoles()) {
+                    command.getOrderRoles().add((OrderRoleCommand.CreateOrderRole) cmd.toCommand());
+                }
+            }
             if (this.getOrderItems() != null) {
                 for (CreateOrMergePatchOrderItemDto cmd : this.getOrderItems()) {
                     command.getOrderItems().add((OrderItemCommand.CreateOrderItem) cmd.toCommand());
+                }
+            }
+            if (this.getOrderShipGroups() != null) {
+                for (CreateOrMergePatchOrderShipGroupDto cmd : this.getOrderShipGroups()) {
+                    command.getOrderShipGroups().add((OrderShipGroupCommand.CreateOrderShipGroup) cmd.toCommand());
                 }
             }
             return command;
         } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {
             AbstractOrderCommand.SimpleMergePatchOrder command = new AbstractOrderCommand.SimpleMergePatchOrder();
             copyTo((AbstractOrderCommand.SimpleMergePatchOrder) command);
+            if (this.getOrderRoles() != null) {
+                for (CreateOrMergePatchOrderRoleDto cmd : this.getOrderRoles()) {
+                    command.getOrderRoleCommands().add(cmd.toCommand());
+                }
+            }
             if (this.getOrderItems() != null) {
                 for (CreateOrMergePatchOrderItemDto cmd : this.getOrderItems()) {
                     command.getOrderItemCommands().add(cmd.toCommand());
+                }
+            }
+            if (this.getOrderShipGroups() != null) {
+                for (CreateOrMergePatchOrderShipGroupDto cmd : this.getOrderShipGroups()) {
+                    command.getOrderShipGroupCommands().add(cmd.toCommand());
                 }
             }
             return command;

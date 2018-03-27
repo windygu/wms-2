@@ -80,18 +80,6 @@ public abstract class AbstractShipmentItemStateEvent extends AbstractStateEvent 
         this.quantity = quantity;
     }
 
-    private java.math.BigDecimal targetQuantity;
-
-    public java.math.BigDecimal getTargetQuantity()
-    {
-        return this.targetQuantity;
-    }
-
-    public void setTargetQuantity(java.math.BigDecimal targetQuantity)
-    {
-        this.targetQuantity = targetQuantity;
-    }
-
     private String shipmentContentDescription;
 
     public String getShipmentContentDescription()
@@ -221,16 +209,6 @@ public abstract class AbstractShipmentItemStateEvent extends AbstractStateEvent 
 
         public void setIsPropertyQuantityRemoved(Boolean removed) {
             this.isPropertyQuantityRemoved = removed;
-        }
-
-        private Boolean isPropertyTargetQuantityRemoved;
-
-        public Boolean getIsPropertyTargetQuantityRemoved() {
-            return this.isPropertyTargetQuantityRemoved;
-        }
-
-        public void setIsPropertyTargetQuantityRemoved(Boolean removed) {
-            this.isPropertyTargetQuantityRemoved = removed;
         }
 
         private Boolean isPropertyShipmentContentDescriptionRemoved;
