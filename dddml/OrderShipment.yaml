@@ -5,7 +5,7 @@
 # ------------------------------
 aggregates:
 
-  # 订单 - 装运关系
+  # 订单装运关系
   OrderShipment:
     id:
       name: OrderShipmentId

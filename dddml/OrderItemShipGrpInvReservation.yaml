@@ -2,7 +2,8 @@
 
 ---
 aggregates:
-
+  
+  # 订单装运库存保留
   OrderItemShipGrpInvReservation:
     id:
       name: OrderItemShipGrpInvResId
@@ -31,14 +32,13 @@ aggregates:
       OldPickStartDate:
         type: date-time
         
-    # references:
-      # OrderItemShipGroup:
-        # name: OrderItemShipGroup
-        # displayName: OrderItemShipGroup
-        # type: OrderItemShipGroup
-        # properties:
-        # - OrderItemShipGrpInvResId.OrderId
-        # - OrderItemShipGrpInvResId.ShipGroupSeqId
+    references:
+      OrderShipGroup:
+        displayName: OrderShipGroup
+        type: OrderShipGroup
+        properties:
+        - OrderItemShipGrpInvResId.OrderId
+        - OrderItemShipGrpInvResId.ShipGroupSeqId
         
     # reservedProperties: {}
     
@@ -47,12 +47,17 @@ aggregates:
       OrderItemShipGrpInvResId:
       
         properties:
+          # 订单 Id.
           OrderId:
             type: id-ne
+          # 装运组序号
           ShipGroupSeqId:
             type: numeric
+          # 订单项（行）序号
           OrderItemSeqId:
             type: id-ne
+          # ------------------------
+          # 库存单元 Id.
           # InventoryItemId:
             # type: id-ne
           # 产品 Id
@@ -67,6 +72,7 @@ aggregates:
           AttributeSetInstanceId:
             type: string
             length: 50
+          # ------------------------
             
 
             

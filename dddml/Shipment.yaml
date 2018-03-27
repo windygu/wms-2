@@ -21,14 +21,21 @@ aggregates:
         type: id
         referenceType: StatusItem
 
+      # ------------------------
+      # 主订单 Id
       PrimaryOrderId:
         type: id
       PrimaryReturnId:
         type: id
+      # ------------------------
+      # 主订单装运组序号
       PrimaryShipGroupSeqId:
         type: numeric
+      # -------------------------
+      # 拣货箱 Id.
       PicklistBinId:
         type: id
+        
       EstimatedReadyDate:
         type: date-time
       EstimatedShipDate:
@@ -75,10 +82,6 @@ aggregates:
         # type: date-time
       # LastModifiedByUserLogin:
         # type: id-vlong
-        
-      # 运输商 Id. ???
-      # ShipperId:
-        # type: id
       
       ShipmentItems:
         itemType: ShipmentItem
@@ -89,8 +92,20 @@ aggregates:
       ItemIssuances:
         itemType: ItemIssuance
         
-    references: {}
-    
+    references:
+      OrderShipGroup:
+        name: OrderShipGroup
+        displayName: OrderShipGroup
+        description: Primary OrderShipGroup
+        type: OrderShipGroup
+        properties:
+        - PrimaryOrderId
+        - PrimaryShipGroupSeqId
+        foreignKeyName: SHIPMENT_OSG
+        # ------------------------------------------
+        # 运输商 Id 等信息在 OrderShipGroup 里
+        # ------------------------------------------
+      
     reservedProperties:
       # createdAt: CreatedDate
       # createdBy: CreatedByUserLogin
@@ -158,7 +173,7 @@ aggregates:
           # StateEventDatabaseTableName: SHIPMENT_ITEM_STATE_EVENT
 
       # ------------------------------------------
-      # 装运（行）接收记录
+      # 装运收货
       ShipmentReceipt:
         id:
           name: ReceiptSeqId
@@ -248,7 +263,7 @@ aggregates:
           # StateEventDatabaseTableName: SHIPMENT_RECEIPT_STATE_EVENT
 
       # ------------------------------------------
-      # （装运）项目发货记录
+      # （装运）项目发货
       ItemIssuance:
         id:
           name: ItemIssuanceSeqId

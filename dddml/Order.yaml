@@ -126,6 +126,7 @@ aggregates:
 
                 
       # -----------------------------------------
+      # 订单项（行）
       OrderItem:
         id:
           # name: OrderItemId
@@ -280,14 +281,17 @@ aggregates:
         # metadata: 
           # StateEventDatabaseTableName: ORDER_ITEM_STATE_EVENT
 
-
+      # ------------------------------------------------------
+      # 订单装运组
       OrderShipGroup:
         # old_name: OrderItemShipGroup
         id:
-          # name: OrderItemShipGroupId
-          # type: OrderItemShipGroupId
+          #---------------------------------
+          # 订单装运组序号
           name: ShipGroupSeqId
           type: numeric
+          # name: OrderItemShipGroupId
+          # type: OrderItemShipGroupId
           
         properties:
           ShipmentMethodTypeId:

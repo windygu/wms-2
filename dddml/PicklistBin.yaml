@@ -2,7 +2,9 @@
 
 ---
 aggregates:
-
+  
+  # -------------------------------------
+  # 拣货箱（容器）
   PicklistBin:
     id:
       name: PicklistBinId
@@ -30,6 +32,8 @@ aggregates:
         properties:
         - PicklistId
         foreignKeyName: PCKLST_BIN_PKLT
+      # ------------------------------------
+      # 订单装运组
       OrderShipGroup:
         name: OrderShipGroup
         displayName: OrderShipGroup
@@ -38,7 +42,7 @@ aggregates:
         properties:
         - PrimaryOrderId
         - PrimaryShipGroupSeqId
-        foreignKeyName: PCKLST_BIN_OISG
+        foreignKeyName: PCKLST_BIN_OSG
 
         
     reservedProperties: {}
@@ -117,18 +121,23 @@ aggregates:
                 # type: id-ne
           PicklistItemOrderShipGrpInvId:
             properties:
+              # 订单 Id.
               OrderId:
                 type: id-ne
                 columnName: OrderId
+              # 订单项（行）序号
               OrderItemSeqId:
                 type: id-ne
                 columnName: OrderItemSeqId
+              # 订单装运组序号
               ShipGroupSeqId:
                 type: numeric
                 columnName: ShipGroupSeqId
+              # ------------------------------------
+              # 库存单元 Id.
               # InventoryItemId:
                 # type: id-ne
-              # 产品 Id            
+              # 产品 Id.              
               ProductId:
                 type: id-long
                 length: 60
@@ -143,6 +152,6 @@ aggregates:
                 type: string
                 length: 50
                 columnName: AttributeSetInstanceId
-                
+              # ------------------------------------
 
                         
