@@ -3,6 +3,7 @@
 ---
 aggregates:
 
+  # 装运包裹
   ShipmentPackage:
     id:
       name: ShipmentPackageId
@@ -51,13 +52,15 @@ aggregates:
             type: id-ne
 
     entities:
-
+      # --------------------------
+      # 装运包裹内容
       ShipmentPackageContent:
         id:
-          # name: ShipmentPackageContentId
-          # type: ShipmentPackageContentId
+          # 装运项（行）序号
           name: ShipmentItemSeqId
           type: id-ne
+          # name: ShipmentPackageContentId
+          # type: ShipmentPackageContentId
               
         properties:
           Quantity:
@@ -66,6 +69,7 @@ aggregates:
             type: id
           SubProductQuantity:
             type: fixed-point
+            
         # references:
           # ShipmentPackage:
             # name: ShipmentPackage
