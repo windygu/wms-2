@@ -44,6 +44,8 @@ namespace Dddml.Wms.Domain.Order
 
         IOrderShipGroupState GetOrderShipGroup(string orderId, long? shipGroupSeqId);
 
+        IOrderItemShipGroupAssociationState GetOrderItemShipGroupAssociation(string orderId, long? orderShipGroupShipGroupSeqId, string orderItemSeqId);
+
 
 	}
 

@@ -121,6 +121,7 @@
 .\MovementResource.java
 .\MovementTypeResource.java
 .\OrderItemMvoResource.java
+.\OrderItemShipGroupAssociationMvoResource.java
 .\OrderItemShipGrpInvReservationResource.java
 .\OrderResource.java
 .\OrderRoleMvoResource.java
@@ -188,6 +189,9 @@
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\LocatorTypeResource.java">
+      <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\restful\resource\OrderItemShipGroupAssociationMvoResource.java">
       <DependentUpon>GenerateAggregatesResources.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\restful\resource\OrderItemShipGrpInvReservationResource.java">

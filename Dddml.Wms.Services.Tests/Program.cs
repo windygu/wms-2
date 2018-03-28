@@ -19,10 +19,10 @@ namespace Dddml.Wms.Services.Tests
             var initdb = new InitDatabase();
             initdb.SetUp();
 
-            //var xmlDataLoader1 = new XmlDataLoader();
-            //xmlDataLoader1.Process(".\\Data", "*ConversionData.xml");
-            //Console.ReadKey();
-            //return;
+            var xmlDataLoader1 = new XmlDataLoader();
+            xmlDataLoader1.Process(".\\Data", "*ShipmentMethodTypeData.xml");
+            Console.ReadKey();
+            return;
 
             initdb.Hbm2DdlOutput();
             Console.WriteLine("Output hbm2ddl files, ok.");

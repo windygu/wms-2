@@ -172,6 +172,18 @@ namespace Dddml.Wms.Domain.Order
             set;
         }
 
+        public virtual OrderItemShipGroupAssociationStateDto[] OrderItemShipGroupAssociations
+        {
+            get;
+            set;
+        }
+
+        IOrderItemShipGroupAssociationStateDto[] IOrderShipGroupStateDto.OrderItemShipGroupAssociations
+        {
+            get { return this.OrderItemShipGroupAssociations; }
+            set { this.OrderItemShipGroupAssociations = value.Select(e => ((OrderItemShipGroupAssociationStateDto)e)).ToArray(); }
+        }
+
         public virtual IOrderShipGroupState ToOrderShipGroupState()
         {
             var state = new OrderShipGroupState(true);
@@ -201,6 +213,7 @@ namespace Dddml.Wms.Domain.Order
             if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }
             state.UpdatedBy = this.UpdatedBy;
             if (this.UpdatedAt != null && this.UpdatedAt.HasValue) { state.UpdatedAt = this.UpdatedAt.Value; }
+            if (this.OrderItemShipGroupAssociations != null) { foreach (var s in this.OrderItemShipGroupAssociations) { state.OrderItemShipGroupAssociations.AddToSave(s.ToOrderItemShipGroupAssociationState()); } };
 
             return state;
         }

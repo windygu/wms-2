@@ -154,6 +154,13 @@ public class HibernateOrderStateQueryRepository implements OrderStateQueryReposi
         return (OrderShipGroupState) getCurrentSession().get(AbstractOrderShipGroupState.SimpleOrderShipGroupState.class, entityId);
     }
 
+    @Transactional(readOnly = true)
+    public OrderItemShipGroupAssociationState getOrderItemShipGroupAssociation(String orderId, Long orderShipGroupShipGroupSeqId, String orderItemSeqId)
+    {
+        OrderItemShipGroupAssociationId entityId = new OrderItemShipGroupAssociationId(orderId, orderShipGroupShipGroupSeqId, orderItemSeqId);
+        return (OrderItemShipGroupAssociationState) getCurrentSession().get(AbstractOrderItemShipGroupAssociationState.SimpleOrderItemShipGroupAssociationState.class, entityId);
+    }
+
 
     protected static void addNotDeletedRestriction(Criteria criteria) {
     }

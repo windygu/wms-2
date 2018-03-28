@@ -233,6 +233,18 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         this.active = active;
     }
 
+    private CreateOrMergePatchOrderItemShipGroupAssociationDto[] orderItemShipGroupAssociations;
+
+    public CreateOrMergePatchOrderItemShipGroupAssociationDto[] getOrderItemShipGroupAssociations()
+    {
+        return this.orderItemShipGroupAssociations;
+    }
+
+    public void setOrderItemShipGroupAssociations(CreateOrMergePatchOrderItemShipGroupAssociationDto[] orderItemShipGroupAssociations)
+    {
+        this.orderItemShipGroupAssociations = orderItemShipGroupAssociations;
+    }
+
     private Boolean isPropertyShipmentMethodTypeIdRemoved;
 
     public Boolean getIsPropertyShipmentMethodTypeIdRemoved()
@@ -490,10 +502,20 @@ public class CreateOrMergePatchOrderShipGroupDto extends AbstractOrderShipGroupC
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractOrderShipGroupCommand.SimpleCreateOrderShipGroup command = new AbstractOrderShipGroupCommand.SimpleCreateOrderShipGroup();
             copyTo((AbstractOrderShipGroupCommand.AbstractCreateOrderShipGroup) command);
+            if (this.getOrderItemShipGroupAssociations() != null) {
+                for (CreateOrMergePatchOrderItemShipGroupAssociationDto cmd : this.getOrderItemShipGroupAssociations()) {
+                    command.getOrderItemShipGroupAssociations().add((OrderItemShipGroupAssociationCommand.CreateOrderItemShipGroupAssociation) cmd.toCommand());
+                }
+            }
             return command;
         } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {
             AbstractOrderShipGroupCommand.SimpleMergePatchOrderShipGroup command = new AbstractOrderShipGroupCommand.SimpleMergePatchOrderShipGroup();
             copyTo((AbstractOrderShipGroupCommand.SimpleMergePatchOrderShipGroup) command);
+            if (this.getOrderItemShipGroupAssociations() != null) {
+                for (CreateOrMergePatchOrderItemShipGroupAssociationDto cmd : this.getOrderItemShipGroupAssociations()) {
+                    command.getOrderItemShipGroupAssociationCommands().add(cmd.toCommand());
+                }
+            }
             return command;
         } 
         else if (COMMAND_TYPE_REMOVE.equals(getCommandType())) {

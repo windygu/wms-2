@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.order.OrderShipGroupStateEvent.*;
 
-public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
+public abstract class AbstractOrderShipGroupState implements OrderShipGroupState, Saveable
 {
 
     private OrderShipGroupId orderShipGroupId = new OrderShipGroupId();
@@ -340,6 +340,18 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         return this.getVersion() == null;
     }
 
+    private OrderItemShipGroupAssociationStates orderItemShipGroupAssociations;
+
+    public OrderItemShipGroupAssociationStates getOrderItemShipGroupAssociations()
+    {
+        return this.orderItemShipGroupAssociations;
+    }
+
+    public void setOrderItemShipGroupAssociations(OrderItemShipGroupAssociationStates orderItemShipGroupAssociations)
+    {
+        this.orderItemShipGroupAssociations = orderItemShipGroupAssociations;
+    }
+
     private Boolean stateReadOnly;
 
     public Boolean getStateReadOnly() { return this.stateReadOnly; }
@@ -368,6 +380,7 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
     }
     
     protected void initializeProperties() {
+        orderItemShipGroupAssociations = new SimpleOrderItemShipGroupAssociationStates(this);
     }
 
 
@@ -413,6 +426,10 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+        for (OrderItemShipGroupAssociationStateEvent.OrderItemShipGroupAssociationStateCreated innerEvent : e.getOrderItemShipGroupAssociationEvents()) {
+            OrderItemShipGroupAssociationState innerState = this.getOrderItemShipGroupAssociations().get(innerEvent.getOrderItemShipGroupAssociationEventId().getOrderItemSeqId());
+            innerState.mutate(innerEvent);
+        }
     }
 
     public void when(OrderShipGroupStateMergePatched e)
@@ -632,6 +649,15 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         this.setUpdatedBy(e.getCreatedBy());
         this.setUpdatedAt(e.getCreatedAt());
 
+        for (OrderItemShipGroupAssociationStateEvent innerEvent : e.getOrderItemShipGroupAssociationEvents()) {
+            OrderItemShipGroupAssociationState innerState = this.getOrderItemShipGroupAssociations().get(innerEvent.getOrderItemShipGroupAssociationEventId().getOrderItemSeqId());
+            innerState.mutate(innerEvent);
+            if (innerEvent instanceof OrderItemShipGroupAssociationStateEvent.OrderItemShipGroupAssociationStateRemoved)
+            {
+                //OrderItemShipGroupAssociationStateEvent.OrderItemShipGroupAssociationStateRemoved removed = (OrderItemShipGroupAssociationStateEvent.OrderItemShipGroupAssociationStateRemoved)innerEvent;
+                this.getOrderItemShipGroupAssociations().remove(innerState);
+            }
+        }
     }
 
     public void when(OrderShipGroupStateRemoved e)
@@ -642,10 +668,22 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         this.setUpdatedBy(e.getCreatedBy());
         this.setUpdatedAt(e.getCreatedAt());
 
+        for (OrderItemShipGroupAssociationState innerState : this.getOrderItemShipGroupAssociations())
+        {
+            this.getOrderItemShipGroupAssociations().remove(innerState);
+        
+            OrderItemShipGroupAssociationStateEvent.OrderItemShipGroupAssociationStateRemoved innerE = e.newOrderItemShipGroupAssociationStateRemoved(innerState.getOrderItemSeqId());
+            innerE.setCreatedAt(e.getCreatedAt());
+            innerE.setCreatedBy(e.getCreatedBy());
+            innerState.when(innerE);
+            //e.addOrderItemShipGroupAssociationEvent(innerE);
+        }
     }
 
     public void save()
     {
+        orderItemShipGroupAssociations.save();
+
     }
 
     protected void throwOnWrongEvent(OrderShipGroupStateEvent stateEvent)
@@ -689,6 +727,14 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
             super(forReapplying);
         }
 
+    }
+
+    static class SimpleOrderItemShipGroupAssociationStates extends AbstractOrderItemShipGroupAssociationStates
+    {
+        public SimpleOrderItemShipGroupAssociationStates(AbstractOrderShipGroupState outerState)
+        {
+            super(outerState);
+        }
     }
 
 

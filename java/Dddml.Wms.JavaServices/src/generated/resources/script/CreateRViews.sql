@@ -538,6 +538,87 @@ CREATE VIEW `OrderShipGroup_RV` AS
         );
 
 
+CREATE VIEW `OrderItemShipGroupAssociation_RV` AS
+    SELECT 
+        `OrderItemShipGroupAssociations`.`OrderItemShipGroupAssociationIdOrderId`,
+        `OrderItemShipGroupAssociations`.`OrderItemShipGroupAssociationIdOrderShipGroupShipGroupSeqId`,
+        `OrderItemShipGroupAssociations`.`OrderItemShipGroupAssociationIdOrderItemSeqId`,
+        `OrderItemShipGroupAssociations`.`Quantity`,
+        `OrderItemShipGroupAssociations`.`CancelQuantity`,
+        `OrderItemShipGroupAssociations`.`Version`,
+        `OrderItemShipGroupAssociations`.`CreatedBy`,
+        `OrderItemShipGroupAssociations`.`CreatedAt`,
+        `OrderItemShipGroupAssociations`.`UpdatedBy`,
+        `OrderItemShipGroupAssociations`.`UpdatedAt`,
+        `OrderItemShipGroupAssociations`.`Active`,
+        `OrderItemShipGroupAssociations`.`Deleted`,
+        `OrderShipGroups`.`ShipmentMethodTypeId` AS `OrderShipGroupShipmentMethodTypeId`,
+        `OrderShipGroups`.`SupplierPartyId` AS `OrderShipGroupSupplierPartyId`,
+        `OrderShipGroups`.`VendorPartyId` AS `OrderShipGroupVendorPartyId`,
+        `OrderShipGroups`.`CarrierPartyId` AS `OrderShipGroupCarrierPartyId`,
+        `OrderShipGroups`.`CarrierRoleTypeId` AS `OrderShipGroupCarrierRoleTypeId`,
+        `OrderShipGroups`.`FacilityId` AS `OrderShipGroupFacilityId`,
+        `OrderShipGroups`.`ContactMechId` AS `OrderShipGroupContactMechId`,
+        `OrderShipGroups`.`TelecomContactMechId` AS `OrderShipGroupTelecomContactMechId`,
+        `OrderShipGroups`.`TrackingNumber` AS `OrderShipGroupTrackingNumber`,
+        `OrderShipGroups`.`ShippingInstructions` AS `OrderShipGroupShippingInstructions`,
+        `OrderShipGroups`.`MaySplit` AS `OrderShipGroupMaySplit`,
+        `OrderShipGroups`.`GiftMessage` AS `OrderShipGroupGiftMessage`,
+        `OrderShipGroups`.`IsGift` AS `OrderShipGroupIsGift`,
+        `OrderShipGroups`.`ShipAfterDate` AS `OrderShipGroupShipAfterDate`,
+        `OrderShipGroups`.`ShipByDate` AS `OrderShipGroupShipByDate`,
+        `OrderShipGroups`.`EstimatedShipDate` AS `OrderShipGroupEstimatedShipDate`,
+        `OrderShipGroups`.`EstimatedDeliveryDate` AS `OrderShipGroupEstimatedDeliveryDate`,
+        `OrderShipGroups`.`PickwaveId` AS `OrderShipGroupPickwaveId`,
+        `OrderShipGroups`.`Version` AS `OrderShipGroupVersion`,
+        `OrderShipGroups`.`CreatedBy` AS `OrderShipGroupCreatedBy`,
+        `OrderShipGroups`.`CreatedAt` AS `OrderShipGroupCreatedAt`,
+        `OrderShipGroups`.`UpdatedBy` AS `OrderShipGroupUpdatedBy`,
+        `OrderShipGroups`.`UpdatedAt` AS `OrderShipGroupUpdatedAt`,
+        `OrderShipGroups`.`Active` AS `OrderShipGroupActive`,
+        `OrderShipGroups`.`Deleted` AS `OrderShipGroupDeleted`,
+        `Orders`.`OrderTypeId` AS `OrderOrderTypeId`,
+        `Orders`.`OrderName` AS `OrderOrderName`,
+        `Orders`.`ExternalId` AS `OrderExternalId`,
+        `Orders`.`SalesChannelEnumId` AS `OrderSalesChannelEnumId`,
+        `Orders`.`OrderDate` AS `OrderOrderDate`,
+        `Orders`.`Priority` AS `OrderPriority`,
+        `Orders`.`EntryDate` AS `OrderEntryDate`,
+        `Orders`.`PickSheetPrintedDate` AS `OrderPickSheetPrintedDate`,
+        `Orders`.`StatusId` AS `OrderStatusId`,
+        `Orders`.`CurrencyUom` AS `OrderCurrencyUom`,
+        `Orders`.`SyncStatusId` AS `OrderSyncStatusId`,
+        `Orders`.`BillingAccountId` AS `OrderBillingAccountId`,
+        `Orders`.`OriginFacilityId` AS `OrderOriginFacilityId`,
+        `Orders`.`WebSiteId` AS `OrderWebSiteId`,
+        `Orders`.`ProductStoreId` AS `OrderProductStoreId`,
+        `Orders`.`TerminalId` AS `OrderTerminalId`,
+        `Orders`.`TransactionId` AS `OrderTransactionId`,
+        `Orders`.`AutoOrderShoppingListId` AS `OrderAutoOrderShoppingListId`,
+        `Orders`.`NeedsInventoryIssuance` AS `OrderNeedsInventoryIssuance`,
+        `Orders`.`IsRushOrder` AS `OrderIsRushOrder`,
+        `Orders`.`InternalCode` AS `OrderInternalCode`,
+        `Orders`.`RemainingSubTotal` AS `OrderRemainingSubTotal`,
+        `Orders`.`GrandTotal` AS `OrderGrandTotal`,
+        `Orders`.`InvoicePerShipment` AS `OrderInvoicePerShipment`,
+        `Orders`.`Version` AS `OrderVersion`,
+        `Orders`.`CreatedBy` AS `OrderCreatedBy`,
+        `Orders`.`CreatedAt` AS `OrderCreatedAt`,
+        `Orders`.`UpdatedBy` AS `OrderUpdatedBy`,
+        `Orders`.`UpdatedAt` AS `OrderUpdatedAt`,
+        `Orders`.`Active` AS `OrderActive`
+    FROM
+        (`OrderItemShipGroupAssociations`
+            JOIN `OrderShipGroups` ON ( 1=1 
+                and (`OrderItemShipGroupAssociations`.`OrderItemShipGroupAssociationIdOrderId` = `OrderShipGroups`.`OrderShipGroupIdOrderId`)
+                and (`OrderItemShipGroupAssociations`.`OrderItemShipGroupAssociationIdOrderShipGroupShipGroupSeqId` = `OrderShipGroups`.`OrderShipGroupIdShipGroupSeqId`)
+            )
+            JOIN `Orders` ON ( 1=1 
+                and (`OrderItemShipGroupAssociations`.`OrderItemShipGroupAssociationIdOrderId` = `Orders`.`OrderId`)
+            )
+        );
+
+
 CREATE VIEW `PhysicalInventoryLine_RV` AS
     SELECT 
         `PhysicalInventoryLines`.`PhysicalInventoryLineIdPhysicalInventoryDocumentNumber`,

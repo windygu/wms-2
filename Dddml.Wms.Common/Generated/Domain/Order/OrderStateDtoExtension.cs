@@ -18,7 +18,7 @@ namespace Dddml.Wms.Domain.Order
 
         public static IOrderCommand ToCreateOrMergePatchOrder(this OrderStateDtoWrapper state)
         {
-            return state.ToCreateOrMergePatchOrder<CreateOrderDto, MergePatchOrderDto, CreateOrderRoleDto, MergePatchOrderRoleDto, CreateOrderItemDto, MergePatchOrderItemDto, CreateOrderShipGroupDto, MergePatchOrderShipGroupDto>();
+            return state.ToCreateOrMergePatchOrder<CreateOrderDto, MergePatchOrderDto, CreateOrderRoleDto, MergePatchOrderRoleDto, CreateOrderItemDto, MergePatchOrderItemDto, CreateOrderShipGroupDto, MergePatchOrderShipGroupDto, CreateOrderItemShipGroupAssociationDto, MergePatchOrderItemShipGroupAssociationDto>();
         }
 
         public static DeleteOrderDto ToDeleteOrder(this OrderStateDtoWrapper state)
@@ -28,12 +28,12 @@ namespace Dddml.Wms.Domain.Order
 
         public static MergePatchOrderDto ToMergePatchOrder(this OrderStateDtoWrapper state)
         {
-            return state.ToMergePatchOrder<MergePatchOrderDto, CreateOrderRoleDto, MergePatchOrderRoleDto, CreateOrderItemDto, MergePatchOrderItemDto, CreateOrderShipGroupDto, MergePatchOrderShipGroupDto>();
+            return state.ToMergePatchOrder<MergePatchOrderDto, CreateOrderRoleDto, MergePatchOrderRoleDto, CreateOrderItemDto, MergePatchOrderItemDto, CreateOrderShipGroupDto, MergePatchOrderShipGroupDto, CreateOrderItemShipGroupAssociationDto, MergePatchOrderItemShipGroupAssociationDto>();
         }
 
         public static CreateOrderDto ToCreateOrder(this OrderStateDtoWrapper state)
         {
-            return state.ToCreateOrder<CreateOrderDto, CreateOrderRoleDto, CreateOrderItemDto, CreateOrderShipGroupDto>();
+            return state.ToCreateOrder<CreateOrderDto, CreateOrderRoleDto, CreateOrderItemDto, CreateOrderShipGroupDto, CreateOrderItemShipGroupAssociationDto>();
         }
 		
 

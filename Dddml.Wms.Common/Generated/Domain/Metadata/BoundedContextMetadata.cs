@@ -90,6 +90,7 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNames.Add("OrderRoleMvo");
             _aggregateNames.Add("OrderItemMvo");
             _aggregateNames.Add("OrderShipGroupMvo");
+            _aggregateNames.Add("OrderItemShipGroupAssociationMvo");
             _aggregateNames.Add("PhysicalInventoryLineMvo");
             _aggregateNames.Add("PicklistRoleMvo");
             _aggregateNames.Add("PicklistItemMvo");
@@ -160,6 +161,7 @@ namespace Dddml.Wms.Domain.Metadata
             _aggregateNamespaces.Add("OrderRoleMvo", "Dddml.Wms.Domain.OrderRoleMvo");
             _aggregateNamespaces.Add("OrderItemMvo", "Dddml.Wms.Domain.OrderItemMvo");
             _aggregateNamespaces.Add("OrderShipGroupMvo", "Dddml.Wms.Domain.OrderShipGroupMvo");
+            _aggregateNamespaces.Add("OrderItemShipGroupAssociationMvo", "Dddml.Wms.Domain.OrderItemShipGroupAssociationMvo");
             _aggregateNamespaces.Add("PhysicalInventoryLineMvo", "Dddml.Wms.Domain.PhysicalInventoryLineMvo");
             _aggregateNamespaces.Add("PicklistRoleMvo", "Dddml.Wms.Domain.PicklistRoleMvo");
             _aggregateNamespaces.Add("PicklistItemMvo", "Dddml.Wms.Domain.PicklistItemMvo");

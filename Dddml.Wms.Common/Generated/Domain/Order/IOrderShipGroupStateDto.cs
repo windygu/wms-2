@@ -171,6 +171,12 @@ namespace Dddml.Wms.Domain.Order
             set;
         }
 
+        IOrderItemShipGroupAssociationStateDto[] OrderItemShipGroupAssociations
+        {
+            get;
+            set;
+        }
+
         IOrderShipGroupState ToOrderShipGroupState();
 
     }

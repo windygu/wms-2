@@ -5,7 +5,7 @@ import java.util.Date;
 import org.dddml.wms.domain.partyrole.*;
 import org.dddml.wms.domain.*;
 
-public abstract class AbstractOrderStateCommandConverter<TCreateOrder extends OrderCommand.CreateOrder, TMergePatchOrder extends OrderCommand.MergePatchOrder, TDeleteOrder extends OrderCommand.DeleteOrder, TCreateOrderRole extends OrderRoleCommand.CreateOrderRole, TMergePatchOrderRole extends OrderRoleCommand.MergePatchOrderRole, TRemoveOrderRole extends OrderRoleCommand.RemoveOrderRole, TCreateOrderItem extends OrderItemCommand.CreateOrderItem, TMergePatchOrderItem extends OrderItemCommand.MergePatchOrderItem, TRemoveOrderItem extends OrderItemCommand.RemoveOrderItem, TCreateOrderShipGroup extends OrderShipGroupCommand.CreateOrderShipGroup, TMergePatchOrderShipGroup extends OrderShipGroupCommand.MergePatchOrderShipGroup, TRemoveOrderShipGroup extends OrderShipGroupCommand.RemoveOrderShipGroup>
+public abstract class AbstractOrderStateCommandConverter<TCreateOrder extends OrderCommand.CreateOrder, TMergePatchOrder extends OrderCommand.MergePatchOrder, TDeleteOrder extends OrderCommand.DeleteOrder, TCreateOrderRole extends OrderRoleCommand.CreateOrderRole, TMergePatchOrderRole extends OrderRoleCommand.MergePatchOrderRole, TRemoveOrderRole extends OrderRoleCommand.RemoveOrderRole, TCreateOrderItem extends OrderItemCommand.CreateOrderItem, TMergePatchOrderItem extends OrderItemCommand.MergePatchOrderItem, TRemoveOrderItem extends OrderItemCommand.RemoveOrderItem, TCreateOrderShipGroup extends OrderShipGroupCommand.CreateOrderShipGroup, TMergePatchOrderShipGroup extends OrderShipGroupCommand.MergePatchOrderShipGroup, TRemoveOrderShipGroup extends OrderShipGroupCommand.RemoveOrderShipGroup, TCreateOrderItemShipGroupAssociation extends OrderItemShipGroupAssociationCommand.CreateOrderItemShipGroupAssociation, TMergePatchOrderItemShipGroupAssociation extends OrderItemShipGroupAssociationCommand.MergePatchOrderItemShipGroupAssociation, TRemoveOrderItemShipGroupAssociation extends OrderItemShipGroupAssociationCommand.RemoveOrderItemShipGroupAssociation>
 {
     public OrderCommand toCreateOrMergePatchOrder(OrderState state)
     {
@@ -162,7 +162,7 @@ public abstract class AbstractOrderStateCommandConverter<TCreateOrder extends Or
     protected abstract AbstractOrderItemStateCommandConverter<TCreateOrderItem, TMergePatchOrderItem, TRemoveOrderItem>
         getOrderItemStateCommandConverter();
 
-    protected abstract AbstractOrderShipGroupStateCommandConverter<TCreateOrderShipGroup, TMergePatchOrderShipGroup, TRemoveOrderShipGroup>
+    protected abstract AbstractOrderShipGroupStateCommandConverter<TCreateOrderShipGroup, TMergePatchOrderShipGroup, TRemoveOrderShipGroup, TCreateOrderItemShipGroupAssociation, TMergePatchOrderItemShipGroupAssociation, TRemoveOrderItemShipGroupAssociation>
         getOrderShipGroupStateCommandConverter();
 
     protected abstract TCreateOrder newCreateOrder();
@@ -171,7 +171,7 @@ public abstract class AbstractOrderStateCommandConverter<TCreateOrder extends Or
 
     protected abstract TDeleteOrder newDeleteOrder();
 
-    public static class SimpleOrderStateCommandConverter extends AbstractOrderStateCommandConverter<AbstractOrderCommand.SimpleCreateOrder, AbstractOrderCommand.SimpleMergePatchOrder, AbstractOrderCommand.SimpleDeleteOrder, AbstractOrderRoleCommand.SimpleCreateOrderRole, AbstractOrderRoleCommand.SimpleMergePatchOrderRole, AbstractOrderRoleCommand.SimpleRemoveOrderRole, AbstractOrderItemCommand.SimpleCreateOrderItem, AbstractOrderItemCommand.SimpleMergePatchOrderItem, AbstractOrderItemCommand.SimpleRemoveOrderItem, AbstractOrderShipGroupCommand.SimpleCreateOrderShipGroup, AbstractOrderShipGroupCommand.SimpleMergePatchOrderShipGroup, AbstractOrderShipGroupCommand.SimpleRemoveOrderShipGroup>
+    public static class SimpleOrderStateCommandConverter extends AbstractOrderStateCommandConverter<AbstractOrderCommand.SimpleCreateOrder, AbstractOrderCommand.SimpleMergePatchOrder, AbstractOrderCommand.SimpleDeleteOrder, AbstractOrderRoleCommand.SimpleCreateOrderRole, AbstractOrderRoleCommand.SimpleMergePatchOrderRole, AbstractOrderRoleCommand.SimpleRemoveOrderRole, AbstractOrderItemCommand.SimpleCreateOrderItem, AbstractOrderItemCommand.SimpleMergePatchOrderItem, AbstractOrderItemCommand.SimpleRemoveOrderItem, AbstractOrderShipGroupCommand.SimpleCreateOrderShipGroup, AbstractOrderShipGroupCommand.SimpleMergePatchOrderShipGroup, AbstractOrderShipGroupCommand.SimpleRemoveOrderShipGroup, AbstractOrderItemShipGroupAssociationCommand.SimpleCreateOrderItemShipGroupAssociation, AbstractOrderItemShipGroupAssociationCommand.SimpleMergePatchOrderItemShipGroupAssociation, AbstractOrderItemShipGroupAssociationCommand.SimpleRemoveOrderItemShipGroupAssociation>
     {
         @Override
         protected AbstractOrderCommand.SimpleCreateOrder newCreateOrder() {
@@ -201,7 +201,7 @@ public abstract class AbstractOrderStateCommandConverter<TCreateOrder extends Or
         }
 
         @Override
-        protected AbstractOrderShipGroupStateCommandConverter<AbstractOrderShipGroupCommand.SimpleCreateOrderShipGroup, AbstractOrderShipGroupCommand.SimpleMergePatchOrderShipGroup, AbstractOrderShipGroupCommand.SimpleRemoveOrderShipGroup> getOrderShipGroupStateCommandConverter()
+        protected AbstractOrderShipGroupStateCommandConverter<AbstractOrderShipGroupCommand.SimpleCreateOrderShipGroup, AbstractOrderShipGroupCommand.SimpleMergePatchOrderShipGroup, AbstractOrderShipGroupCommand.SimpleRemoveOrderShipGroup, AbstractOrderItemShipGroupAssociationCommand.SimpleCreateOrderItemShipGroupAssociation, AbstractOrderItemShipGroupAssociationCommand.SimpleMergePatchOrderItemShipGroupAssociation, AbstractOrderItemShipGroupAssociationCommand.SimpleRemoveOrderItemShipGroupAssociation> getOrderShipGroupStateCommandConverter()
         {
             return new AbstractOrderShipGroupStateCommandConverter.SimpleOrderShipGroupStateCommandConverter();
         }

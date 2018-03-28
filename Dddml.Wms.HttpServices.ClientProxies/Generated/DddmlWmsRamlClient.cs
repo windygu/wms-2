@@ -54,6 +54,7 @@ using Dddml.Wms.Domain.MovementLineMvo;
 using Dddml.Wms.Domain.MovementType;
 using Dddml.Wms.Domain.Order;
 using Dddml.Wms.Domain.OrderItemMvo;
+using Dddml.Wms.Domain.OrderItemShipGroupAssociationMvo;
 using Dddml.Wms.Domain.OrderItemShipGrpInvReservation;
 using Dddml.Wms.Domain.OrderRoleMvo;
 using Dddml.Wms.Domain.OrderShipGroupMvo;
@@ -9325,6 +9326,73 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 				
             }
             return new Models.OrderShipGroupGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class OrderItemShipGroupAssociation
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal OrderItemShipGroupAssociation(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.OrderItemShipGroupAssociationGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.OrderItemShipGroupAssociationGetResponse> Get(Models.OrderItemShipGroupAssociationGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "Orders/{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations/{orderItemSeqId}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.OrderId == null)
+				throw new InvalidOperationException("Uri Parameter OrderId cannot be null");
+
+            url = url.Replace("{orderId}", request.UriParameters.OrderId.ToString());
+
+			if(request.UriParameters.OrderShipGroupShipGroupSeqId == null)
+				throw new InvalidOperationException("Uri Parameter OrderShipGroupShipGroupSeqId cannot be null");
+
+            url = url.Replace("{orderShipGroupShipGroupSeqId}", request.UriParameters.OrderShipGroupShipGroupSeqId.ToString());
+
+			if(request.UriParameters.OrderItemSeqId == null)
+				throw new InvalidOperationException("Uri Parameter OrderItemSeqId cannot be null");
+
+            url = url.Replace("{orderItemSeqId}", request.UriParameters.OrderItemSeqId.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.OrderItemShipGroupAssociationGetResponse  
                                             {
                                                 RawContent = response.Content,
                                                 RawHeaders = response.Headers,
@@ -26986,6 +27054,434 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
 
     }
 
+    public partial class OrderItemShipGroupAssociationMvo
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal OrderItemShipGroupAssociationMvo(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.OrderItemShipGroupAssociationMvoGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.OrderItemShipGroupAssociationMvoGetResponse> Get(Models.OrderItemShipGroupAssociationMvoGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "OrderItemShipGroupAssociationMvos/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.Fields != null)
+                    url += "&fields=" + request.Query.Fields;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.OrderItemShipGroupAssociationMvoGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+
+        		/// <param name="request">Models.OrderItemShipGroupAssociationMvoPutRequest</param>
+        public virtual async Task<ApiResponse> Put(Models.OrderItemShipGroupAssociationMvoPutRequest request)
+        {
+
+            var url = "OrderItemShipGroupAssociationMvos/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Put, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+            if(request.Formatter == null)
+                request.Formatter = proxy.GetJsonMediaTypeFormatter();
+            req.Content = new ObjectContent(typeof(CreateOrderItemShipGroupAssociationMvoDto), request.Content , request.Formatter);                           
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+
+        		/// <param name="request">Models.OrderItemShipGroupAssociationMvoPatchRequest</param>
+        public virtual async Task<ApiResponse> Patch(Models.OrderItemShipGroupAssociationMvoPatchRequest request)
+        {
+
+            var url = "OrderItemShipGroupAssociationMvos/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(new HttpMethod("PATCH"), url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+            if(request.Formatter == null)
+                request.Formatter = proxy.GetJsonMediaTypeFormatter();
+            req.Content = new ObjectContent(typeof(MergePatchOrderItemShipGroupAssociationMvoDto), request.Content , request.Formatter);                           
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+
+        		/// <param name="request">Models.OrderItemShipGroupAssociationMvoDeleteRequest</param>
+        public virtual async Task<ApiResponse> Delete(Models.OrderItemShipGroupAssociationMvoDeleteRequest request)
+        {
+
+            var url = "OrderItemShipGroupAssociationMvos/{id}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.CommandId != null)
+                    url += "&commandId=" + request.Query.CommandId;
+                if(request.Query.Version != null)
+                    url += "&version=" + request.Query.Version;
+                if(request.Query.RequesterId != null)
+                    url += "&requesterId=" + request.Query.RequesterId;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Delete, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class OrderItemShipGroupAssociationMvos
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal OrderItemShipGroupAssociationMvos(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.OrderItemShipGroupAssociationMvosGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.OrderItemShipGroupAssociationMvosGetResponse> Get(Models.OrderItemShipGroupAssociationMvosGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "OrderItemShipGroupAssociationMvos";
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.FirstResult != null)
+                    url += "&firstResult=" + request.Query.FirstResult;
+                if(request.Query.MaxResults != null)
+                    url += "&maxResults=" + request.Query.MaxResults;
+                if(request.Query.Sort != null)
+                    url += "&sort=" + request.Query.Sort;
+                if(request.Query.Fields != null)
+                    url += "&fields=" + request.Query.Fields;
+                if(request.Query.Filter != null)
+                    url += "&filter=" + request.Query.Filter;
+                if(request.Query.FilterTag != null)
+                    url += "&filterTag=" + request.Query.FilterTag;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.OrderItemShipGroupAssociationMvosGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class OrderItemShipGroupAssociationMvosCount
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal OrderItemShipGroupAssociationMvosCount(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.OrderItemShipGroupAssociationMvosCountGetRequest</param>
+        public virtual async Task<ApiResponse> Get(Models.OrderItemShipGroupAssociationMvosCountGetRequest request)
+        {
+
+            var url = "OrderItemShipGroupAssociationMvos/_count";
+            if(request.Query != null)
+            {
+                url += "?";
+                if(request.Query.Filter != null)
+                    url += "&filter=" + request.Query.Filter;
+                if(request.Query.FilterTag != null)
+                    url += "&filterTag=" + request.Query.FilterTag;
+            }
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+            return new ApiResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class OrderItemShipGroupAssociationMvoStateEvent
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal OrderItemShipGroupAssociationMvoStateEvent(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.OrderItemShipGroupAssociationMvoStateEventGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.OrderItemShipGroupAssociationMvoStateEventGetResponse> Get(Models.OrderItemShipGroupAssociationMvoStateEventGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "OrderItemShipGroupAssociationMvos/{id}/_stateEvents/{version}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+			if(request.UriParameters.Version == null)
+				throw new InvalidOperationException("Uri Parameter Version cannot be null");
+
+            url = url.Replace("{version}", request.UriParameters.Version.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.OrderItemShipGroupAssociationMvoStateEventGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
+    public partial class OrderItemShipGroupAssociationMvoHistoryState
+    {
+        private readonly DddmlWmsRamlClient proxy;
+
+        internal OrderItemShipGroupAssociationMvoHistoryState(DddmlWmsRamlClient proxy)
+        {
+            this.proxy = proxy;
+        }
+
+        		/// <param name="request">Models.OrderItemShipGroupAssociationMvoHistoryStateGetRequest</param>
+		/// <param name="responseFormatters">response formatters</param>
+        public virtual async Task<Models.OrderItemShipGroupAssociationMvoHistoryStateGetResponse> Get(Models.OrderItemShipGroupAssociationMvoHistoryStateGetRequest request, IEnumerable<MediaTypeFormatter> responseFormatters = null)
+        {
+
+            var url = "OrderItemShipGroupAssociationMvos/{id}/_historyStates/{version}";
+			if(request.UriParameters == null)
+				throw new InvalidOperationException("Uri Parameters cannot be null");               
+
+			if(request.UriParameters.Id == null)
+				throw new InvalidOperationException("Uri Parameter Id cannot be null");
+
+            url = url.Replace("{id}", request.UriParameters.Id.ToString());
+
+			if(request.UriParameters.Version == null)
+				throw new InvalidOperationException("Uri Parameter Version cannot be null");
+
+            url = url.Replace("{version}", request.UriParameters.Version.ToString());
+
+            url = url.Replace("?&", "?");
+
+            var req = new HttpRequestMessage(HttpMethod.Get, url);
+            proxy.SetAuthenticationHeader(req);
+
+            if(request.RawHeaders != null)
+            {
+                foreach(var header in request.RawHeaders)
+                {
+                    req.Headers.TryAddWithoutValidation(header.Key, string.Join(",", header.Value));
+                }
+            }
+	        var response = await proxy.Client.SendAsync(req);
+			if (proxy.SchemaValidation.Enabled && proxy.SchemaValidation.RaiseExceptions)
+            {
+				if(proxy.SchemaValidation.RaiseExceptions)
+				{
+					;
+				}
+				
+            }
+            return new Models.OrderItemShipGroupAssociationMvoHistoryStateGetResponse  
+                                            {
+                                                RawContent = response.Content,
+                                                RawHeaders = response.Headers,
+	                                            Formatters = responseFormatters,
+                                                StatusCode = response.StatusCode,
+                                                ReasonPhrase = response.ReasonPhrase,
+												SchemaValidation = new Lazy<SchemaValidationResults>(() => new SchemaValidationResults(true), true)
+                                            };
+        }
+
+    }
+
     public partial class PhysicalInventoryLineMvo
     {
         private readonly DddmlWmsRamlClient proxy;
@@ -30989,6 +31485,12 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
+        public virtual OrderItemShipGroupAssociationMvo OrderItemShipGroupAssociationMvo
+        {
+            get { return new OrderItemShipGroupAssociationMvo(this); }
+        }
+                
+
         public virtual PhysicalInventoryLineMvo PhysicalInventoryLineMvo
         {
             get { return new PhysicalInventoryLineMvo(this); }
@@ -31394,6 +31896,12 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         public virtual OrderShipGroupMvos OrderShipGroupMvos
         {
             get { return new OrderShipGroupMvos(this); }
+        }
+                
+
+        public virtual OrderItemShipGroupAssociationMvos OrderItemShipGroupAssociationMvos
+        {
+            get { return new OrderItemShipGroupAssociationMvos(this); }
         }
                 
 
@@ -31805,6 +32313,12 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
+        public virtual OrderItemShipGroupAssociationMvosCount OrderItemShipGroupAssociationMvosCount
+        {
+            get { return new OrderItemShipGroupAssociationMvosCount(this); }
+        }
+                
+
         public virtual PhysicalInventoryLineMvosCount PhysicalInventoryLineMvosCount
         {
             get { return new PhysicalInventoryLineMvosCount(this); }
@@ -32210,6 +32724,12 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         public virtual OrderShipGroupMvoStateEvent OrderShipGroupMvoStateEvent
         {
             get { return new OrderShipGroupMvoStateEvent(this); }
+        }
+                
+
+        public virtual OrderItemShipGroupAssociationMvoStateEvent OrderItemShipGroupAssociationMvoStateEvent
+        {
+            get { return new OrderItemShipGroupAssociationMvoStateEvent(this); }
         }
                 
 
@@ -32621,6 +33141,12 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         }
                 
 
+        public virtual OrderItemShipGroupAssociationMvoHistoryState OrderItemShipGroupAssociationMvoHistoryState
+        {
+            get { return new OrderItemShipGroupAssociationMvoHistoryState(this); }
+        }
+                
+
         public virtual PhysicalInventoryLineMvoHistoryState PhysicalInventoryLineMvoHistoryState
         {
             get { return new PhysicalInventoryLineMvoHistoryState(this); }
@@ -32732,6 +33258,12 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml
         public virtual OrderShipGroup OrderShipGroup
         {
             get { return new OrderShipGroup(this); }
+        }
+                
+
+        public virtual OrderItemShipGroupAssociation OrderItemShipGroupAssociation
+        {
+            get { return new OrderItemShipGroupAssociation(this); }
         }
                 
 
@@ -36181,6 +36713,62 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
 
     } // end class
 
+    public partial class  OrderItemShipGroupAssociationMvoGetQuery 
+    {
+		[JsonProperty("fields")]
+        public string Fields { get; set; }
+
+
+    } // end class
+
+    public partial class  OrderItemShipGroupAssociationMvoDeleteQuery 
+    {
+		[JsonProperty("commandId")]
+        public string CommandId { get; set; }
+
+		[JsonProperty("version")]
+        public string Version { get; set; }
+
+		[JsonProperty("requesterId")]
+        public string RequesterId { get; set; }
+
+
+    } // end class
+
+    public partial class  OrderItemShipGroupAssociationMvosGetQuery 
+    {
+		[JsonProperty("firstResult")]
+        public int? FirstResult { get; set; }
+
+		[JsonProperty("maxResults")]
+        public int? MaxResults { get; set; }
+
+		[JsonProperty("sort")]
+        public string Sort { get; set; }
+
+		[JsonProperty("fields")]
+        public string Fields { get; set; }
+
+		[JsonProperty("filter")]
+        public string Filter { get; set; }
+
+		[JsonProperty("filterTag")]
+        public string FilterTag { get; set; }
+
+
+    } // end class
+
+    public partial class  OrderItemShipGroupAssociationMvosCountGetQuery 
+    {
+		[JsonProperty("filter")]
+        public string Filter { get; set; }
+
+		[JsonProperty("filterTag")]
+        public string FilterTag { get; set; }
+
+
+    } // end class
+
     public partial class  PhysicalInventoryLineMvoGetQuery 
     {
 		[JsonProperty("fields")]
@@ -37611,6 +38199,23 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
 
 		[JsonProperty("shipGroupSeqId")]
         public long? ShipGroupSeqId { get; set; }
+
+
+    } // end class
+
+    /// <summary>
+    /// Uri Parameters for resource /Orders/{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations/{orderItemSeqId}
+    /// </summary>
+    public partial class  OrderItemShipGroupAssociationUriParameters 
+    {
+		[JsonProperty("orderId")]
+        public string OrderId { get; set; }
+
+		[JsonProperty("orderShipGroupShipGroupSeqId")]
+        public long? OrderShipGroupShipGroupSeqId { get; set; }
+
+		[JsonProperty("orderItemSeqId")]
+        public string OrderItemSeqId { get; set; }
 
 
     } // end class
@@ -39277,6 +39882,45 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     /// Uri Parameters for resource /OrderShipGroupMvos/{id}/_historyStates/{version}
     /// </summary>
     public partial class  OrderShipGroupMvoHistoryStateUriParameters 
+    {
+		[JsonProperty("id")]
+        public string Id { get; set; }
+
+		[JsonProperty("version")]
+        public string Version { get; set; }
+
+
+    } // end class
+
+    /// <summary>
+    /// Uri Parameters for resource /OrderItemShipGroupAssociationMvos/{id}
+    /// </summary>
+    public partial class  OrderItemShipGroupAssociationMvoUriParameters 
+    {
+		[JsonProperty("id")]
+        public string Id { get; set; }
+
+
+    } // end class
+
+    /// <summary>
+    /// Uri Parameters for resource /OrderItemShipGroupAssociationMvos/{id}/_stateEvents/{version}
+    /// </summary>
+    public partial class  OrderItemShipGroupAssociationMvoStateEventUriParameters 
+    {
+		[JsonProperty("id")]
+        public string Id { get; set; }
+
+		[JsonProperty("version")]
+        public string Version { get; set; }
+
+
+    } // end class
+
+    /// <summary>
+    /// Uri Parameters for resource /OrderItemShipGroupAssociationMvos/{id}/_historyStates/{version}
+    /// </summary>
+    public partial class  OrderItemShipGroupAssociationMvoHistoryStateUriParameters 
     {
 		[JsonProperty("id")]
         public string Id { get; set; }
@@ -43103,6 +43747,23 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
         /// Request Uri Parameters
         /// </summary>
         public OrderShipGroupUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class OrderItemShipGroupAssociation
+    /// </summary>
+    public partial class OrderItemShipGroupAssociationGetRequest : ApiRequest
+    {
+        public OrderItemShipGroupAssociationGetRequest(OrderItemShipGroupAssociationUriParameters UriParameters)
+        {
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public OrderItemShipGroupAssociationUriParameters UriParameters { get; set; }
 
     } // end class
 
@@ -49905,6 +50566,172 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
     } // end class
 
     /// <summary>
+    /// Request object for method Get of class OrderItemShipGroupAssociationMvo
+    /// </summary>
+    public partial class OrderItemShipGroupAssociationMvoGetRequest : ApiRequest
+    {
+        public OrderItemShipGroupAssociationMvoGetRequest(OrderItemShipGroupAssociationMvoUriParameters UriParameters, OrderItemShipGroupAssociationMvoGetQuery Query = null)
+        {
+            this.Query = Query;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public OrderItemShipGroupAssociationMvoGetQuery Query { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public OrderItemShipGroupAssociationMvoUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Put of class OrderItemShipGroupAssociationMvo
+    /// </summary>
+    public partial class OrderItemShipGroupAssociationMvoPutRequest : ApiRequest
+    {
+        public OrderItemShipGroupAssociationMvoPutRequest(OrderItemShipGroupAssociationMvoUriParameters UriParameters, CreateOrderItemShipGroupAssociationMvoDto Content = null, MediaTypeFormatter Formatter = null)
+        {
+            this.Content = Content;
+            this.Formatter = Formatter;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request content
+        /// </summary>
+        public CreateOrderItemShipGroupAssociationMvoDto Content { get; set; }
+        /// <summary>
+        /// Request formatter
+        /// </summary>
+        public MediaTypeFormatter Formatter { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public OrderItemShipGroupAssociationMvoUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Patch of class OrderItemShipGroupAssociationMvo
+    /// </summary>
+    public partial class OrderItemShipGroupAssociationMvoPatchRequest : ApiRequest
+    {
+        public OrderItemShipGroupAssociationMvoPatchRequest(OrderItemShipGroupAssociationMvoUriParameters UriParameters, MergePatchOrderItemShipGroupAssociationMvoDto Content = null, MediaTypeFormatter Formatter = null)
+        {
+            this.Content = Content;
+            this.Formatter = Formatter;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request content
+        /// </summary>
+        public MergePatchOrderItemShipGroupAssociationMvoDto Content { get; set; }
+        /// <summary>
+        /// Request formatter
+        /// </summary>
+        public MediaTypeFormatter Formatter { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public OrderItemShipGroupAssociationMvoUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Delete of class OrderItemShipGroupAssociationMvo
+    /// </summary>
+    public partial class OrderItemShipGroupAssociationMvoDeleteRequest : ApiRequest
+    {
+        public OrderItemShipGroupAssociationMvoDeleteRequest(OrderItemShipGroupAssociationMvoUriParameters UriParameters, OrderItemShipGroupAssociationMvoDeleteQuery Query = null)
+        {
+            this.Query = Query;
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public OrderItemShipGroupAssociationMvoDeleteQuery Query { get; set; }
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public OrderItemShipGroupAssociationMvoUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class OrderItemShipGroupAssociationMvos
+    /// </summary>
+    public partial class OrderItemShipGroupAssociationMvosGetRequest : ApiRequest
+    {
+        public OrderItemShipGroupAssociationMvosGetRequest(OrderItemShipGroupAssociationMvosGetQuery Query = null)
+        {
+            this.Query = Query;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public OrderItemShipGroupAssociationMvosGetQuery Query { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class OrderItemShipGroupAssociationMvosCount
+    /// </summary>
+    public partial class OrderItemShipGroupAssociationMvosCountGetRequest : ApiRequest
+    {
+        public OrderItemShipGroupAssociationMvosCountGetRequest(OrderItemShipGroupAssociationMvosCountGetQuery Query = null)
+        {
+            this.Query = Query;
+        }
+
+        /// <summary>
+        /// Request query string properties
+        /// </summary>
+        public OrderItemShipGroupAssociationMvosCountGetQuery Query { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class OrderItemShipGroupAssociationMvoStateEvent
+    /// </summary>
+    public partial class OrderItemShipGroupAssociationMvoStateEventGetRequest : ApiRequest
+    {
+        public OrderItemShipGroupAssociationMvoStateEventGetRequest(OrderItemShipGroupAssociationMvoStateEventUriParameters UriParameters)
+        {
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public OrderItemShipGroupAssociationMvoStateEventUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
+    /// Request object for method Get of class OrderItemShipGroupAssociationMvoHistoryState
+    /// </summary>
+    public partial class OrderItemShipGroupAssociationMvoHistoryStateGetRequest : ApiRequest
+    {
+        public OrderItemShipGroupAssociationMvoHistoryStateGetRequest(OrderItemShipGroupAssociationMvoHistoryStateUriParameters UriParameters)
+        {
+            this.UriParameters = UriParameters;
+        }
+
+        /// <summary>
+        /// Request Uri Parameters
+        /// </summary>
+        public OrderItemShipGroupAssociationMvoHistoryStateUriParameters UriParameters { get; set; }
+
+    } // end class
+
+    /// <summary>
     /// Request object for method Get of class PhysicalInventoryLineMvo
     /// </summary>
     public partial class PhysicalInventoryLineMvoGetRequest : ApiRequest
@@ -55712,6 +56539,55 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
                     var task =  Formatters != null && Formatters.Any() 
                                 ? RawContent.ReadAsAsync<OrderShipGroupStateDto>(Formatters).ConfigureAwait(false)
                                 : RawContent.ReadAsAsync<OrderShipGroupStateDto>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class OrderItemShipGroupAssociation
+    /// </summary>
+
+    public partial class OrderItemShipGroupAssociationGetResponse : ApiResponse
+    {
+
+
+	    private OrderItemShipGroupAssociationStateDto typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public OrderItemShipGroupAssociationStateDto Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (OrderItemShipGroupAssociationStateDto)new XmlSerializer(typeof(OrderItemShipGroupAssociationStateDto)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<OrderItemShipGroupAssociationStateDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<OrderItemShipGroupAssociationStateDto>().ConfigureAwait(false);
 		        
 		            typedContent = task.GetAwaiter().GetResult();
                 }
@@ -63944,6 +64820,202 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Raml.Models
                     var task =  Formatters != null && Formatters.Any() 
                                 ? RawContent.ReadAsAsync<OrderShipGroupMvoStateDto>(Formatters).ConfigureAwait(false)
                                 : RawContent.ReadAsAsync<OrderShipGroupMvoStateDto>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class OrderItemShipGroupAssociationMvo
+    /// </summary>
+
+    public partial class OrderItemShipGroupAssociationMvoGetResponse : ApiResponse
+    {
+
+
+	    private OrderItemShipGroupAssociationMvoStateDto typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public OrderItemShipGroupAssociationMvoStateDto Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (OrderItemShipGroupAssociationMvoStateDto)new XmlSerializer(typeof(OrderItemShipGroupAssociationMvoStateDto)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<OrderItemShipGroupAssociationMvoStateDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<OrderItemShipGroupAssociationMvoStateDto>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class OrderItemShipGroupAssociationMvos
+    /// </summary>
+
+    public partial class OrderItemShipGroupAssociationMvosGetResponse : ApiResponse
+    {
+
+
+	    private IList<OrderItemShipGroupAssociationMvoStateDto> typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public IList<OrderItemShipGroupAssociationMvoStateDto> Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (IList<OrderItemShipGroupAssociationMvoStateDto>)new XmlSerializer(typeof(IList<OrderItemShipGroupAssociationMvoStateDto>)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<IList<OrderItemShipGroupAssociationMvoStateDto>>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<IList<OrderItemShipGroupAssociationMvoStateDto>>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class OrderItemShipGroupAssociationMvoStateEvent
+    /// </summary>
+
+    public partial class OrderItemShipGroupAssociationMvoStateEventGetResponse : ApiResponse
+    {
+
+
+	    private OrderItemShipGroupAssociationMvoStateCreatedOrMergePatchedOrDeletedDto typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public OrderItemShipGroupAssociationMvoStateCreatedOrMergePatchedOrDeletedDto Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (OrderItemShipGroupAssociationMvoStateCreatedOrMergePatchedOrDeletedDto)new XmlSerializer(typeof(OrderItemShipGroupAssociationMvoStateCreatedOrMergePatchedOrDeletedDto)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<OrderItemShipGroupAssociationMvoStateCreatedOrMergePatchedOrDeletedDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<OrderItemShipGroupAssociationMvoStateCreatedOrMergePatchedOrDeletedDto>().ConfigureAwait(false);
+		        
+		            typedContent = task.GetAwaiter().GetResult();
+                }
+
+		        return typedContent;
+	        }
+	    }
+
+		
+
+
+    } // end class
+
+    /// <summary>
+    /// Response object for method Get of class OrderItemShipGroupAssociationMvoHistoryState
+    /// </summary>
+
+    public partial class OrderItemShipGroupAssociationMvoHistoryStateGetResponse : ApiResponse
+    {
+
+
+	    private OrderItemShipGroupAssociationMvoStateDto typedContent;
+        /// <summary>
+        /// Typed Response content
+        /// </summary>
+        public OrderItemShipGroupAssociationMvoStateDto Content 
+    	{
+	        get
+	        {
+		        if (typedContent != null)
+			        return typedContent;
+
+                IEnumerable<string> values = new List<string>();
+                if (RawContent != null && RawContent.Headers != null)
+                    RawContent.Headers.TryGetValues("Content-Type", out values);
+
+                if (values.Any(hv => hv.ToLowerInvariant().Contains("xml")) &&
+                    !values.Any(hv => hv.ToLowerInvariant().Contains("json")))
+                {
+                    var task = RawContent.ReadAsStreamAsync();
+
+                    var xmlStream = task.GetAwaiter().GetResult();
+                    typedContent = (OrderItemShipGroupAssociationMvoStateDto)new XmlSerializer(typeof(OrderItemShipGroupAssociationMvoStateDto)).Deserialize(xmlStream);
+                }
+                else
+                {
+                    var task =  Formatters != null && Formatters.Any() 
+                                ? RawContent.ReadAsAsync<OrderItemShipGroupAssociationMvoStateDto>(Formatters).ConfigureAwait(false)
+                                : RawContent.ReadAsAsync<OrderItemShipGroupAssociationMvoStateDto>().ConfigureAwait(false);
 		        
 		            typedContent = task.GetAwaiter().GetResult();
                 }

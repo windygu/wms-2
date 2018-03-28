@@ -18,7 +18,7 @@ namespace Dddml.Wms.Domain.Order
 
         public static IOrderShipGroupCommand ToCreateOrMergePatchOrderShipGroup(this OrderShipGroupState state)
         {
-            return state.ToCreateOrMergePatchOrderShipGroup<CreateOrderShipGroup, MergePatchOrderShipGroup>();
+            return state.ToCreateOrMergePatchOrderShipGroup<CreateOrderShipGroup, MergePatchOrderShipGroup, CreateOrderItemShipGroupAssociation, MergePatchOrderItemShipGroupAssociation>();
         }
 
         public static RemoveOrderShipGroup ToRemoveOrderShipGroup(this OrderShipGroupState state)
@@ -28,12 +28,12 @@ namespace Dddml.Wms.Domain.Order
 
         public static MergePatchOrderShipGroup ToMergePatchOrderShipGroup(this OrderShipGroupState state)
         {
-            return state.ToMergePatchOrderShipGroup<MergePatchOrderShipGroup>();
+            return state.ToMergePatchOrderShipGroup<MergePatchOrderShipGroup, CreateOrderItemShipGroupAssociation, MergePatchOrderItemShipGroupAssociation>();
         }
 
         public static CreateOrderShipGroup ToCreateOrderShipGroup(this OrderShipGroupState state)
         {
-            return state.ToCreateOrderShipGroup<CreateOrderShipGroup>();
+            return state.ToCreateOrderShipGroup<CreateOrderShipGroup, CreateOrderItemShipGroupAssociation>();
         }
 		
 

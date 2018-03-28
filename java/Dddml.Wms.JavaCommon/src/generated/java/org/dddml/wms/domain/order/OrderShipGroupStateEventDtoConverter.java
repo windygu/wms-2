@@ -48,6 +48,13 @@ public class OrderShipGroupStateEventDtoConverter {
         dto.setEstimatedDeliveryDate(e.getEstimatedDeliveryDate());
         dto.setPickwaveId(e.getPickwaveId());
         dto.setActive(e.getActive());
+        List<OrderItemShipGroupAssociationStateEventDto.OrderItemShipGroupAssociationStateCreatedDto> orderItemShipGroupAssociationEvents = new ArrayList<>();
+        for (OrderItemShipGroupAssociationStateEvent.OrderItemShipGroupAssociationStateCreated ee : e.getOrderItemShipGroupAssociationEvents()) {
+            OrderItemShipGroupAssociationStateEventDto.OrderItemShipGroupAssociationStateCreatedDto eeDto = getOrderItemShipGroupAssociationStateEventDtoConverter().toOrderItemShipGroupAssociationStateCreatedDto(ee);
+            orderItemShipGroupAssociationEvents.add(eeDto);
+        }
+        dto.setOrderItemShipGroupAssociationEvents(orderItemShipGroupAssociationEvents.toArray(new OrderItemShipGroupAssociationStateEventDto.OrderItemShipGroupAssociationStateCreatedDto[0]));
+
         return dto;
     }
 
@@ -96,6 +103,13 @@ public class OrderShipGroupStateEventDtoConverter {
         dto.setIsPropertyEstimatedDeliveryDateRemoved(e.getIsPropertyEstimatedDeliveryDateRemoved());
         dto.setIsPropertyPickwaveIdRemoved(e.getIsPropertyPickwaveIdRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
+        List<OrderItemShipGroupAssociationStateEventDto> orderItemShipGroupAssociationEvents = new ArrayList<>();
+        for (OrderItemShipGroupAssociationStateEvent ee : e.getOrderItemShipGroupAssociationEvents()) {
+            OrderItemShipGroupAssociationStateEventDto eeDto = getOrderItemShipGroupAssociationStateEventDtoConverter().toOrderItemShipGroupAssociationStateEventDto((AbstractOrderItemShipGroupAssociationStateEvent) ee);
+            orderItemShipGroupAssociationEvents.add(eeDto);
+        }
+        dto.setOrderItemShipGroupAssociationEvents(orderItemShipGroupAssociationEvents.toArray(new OrderItemShipGroupAssociationStateEventDto[0]));
+
         return dto;
     }
 
@@ -107,7 +121,18 @@ public class OrderShipGroupStateEventDtoConverter {
         dto.setCreatedBy(e.getCreatedBy());
         dto.setVersion(e.getVersion());
         dto.setCommandId(e.getCommandId());
+        List<OrderItemShipGroupAssociationStateEventDto.OrderItemShipGroupAssociationStateRemovedDto> orderItemShipGroupAssociationEvents = new ArrayList<>();
+        for (OrderItemShipGroupAssociationStateEvent.OrderItemShipGroupAssociationStateRemoved ee : e.getOrderItemShipGroupAssociationEvents()) {
+            OrderItemShipGroupAssociationStateEventDto.OrderItemShipGroupAssociationStateRemovedDto eeDto = getOrderItemShipGroupAssociationStateEventDtoConverter().toOrderItemShipGroupAssociationStateRemovedDto(ee);
+            orderItemShipGroupAssociationEvents.add(eeDto);
+        }
+        dto.setOrderItemShipGroupAssociationEvents(orderItemShipGroupAssociationEvents.toArray(new OrderItemShipGroupAssociationStateEventDto.OrderItemShipGroupAssociationStateRemovedDto[0]));
+
         return dto;
+    }
+
+    protected OrderItemShipGroupAssociationStateEventDtoConverter getOrderItemShipGroupAssociationStateEventDtoConverter() {
+        return new OrderItemShipGroupAssociationStateEventDtoConverter();
     }
 
 }

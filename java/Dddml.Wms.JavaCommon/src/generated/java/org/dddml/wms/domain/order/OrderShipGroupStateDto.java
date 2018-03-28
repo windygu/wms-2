@@ -321,10 +321,22 @@ public class OrderShipGroupStateDto
         this.updatedAt = updatedAt;
     }
 
+    private OrderItemShipGroupAssociationStateDto[] orderItemShipGroupAssociations;
+
+    public OrderItemShipGroupAssociationStateDto[] getOrderItemShipGroupAssociations()
+    {
+        return this.orderItemShipGroupAssociations;
+    }	
+
+    public void setOrderItemShipGroupAssociations(OrderItemShipGroupAssociationStateDto[] orderItemShipGroupAssociations)
+    {
+        this.orderItemShipGroupAssociations = orderItemShipGroupAssociations;
+    }
+
 
     public static class DtoConverter extends AbstractStateDtoConverter
     {
-        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{});
+        public static Collection<String> collectionFieldNames = Arrays.asList(new String[]{"OrderItemShipGroupAssociations"});
 
         @Override
         protected boolean isCollectionField(String fieldName) {
@@ -424,6 +436,18 @@ public class OrderShipGroupStateDto
             }
             if (returnedFieldsContains("UpdatedAt")) {
                 dto.setUpdatedAt(state.getUpdatedAt());
+            }
+            if (returnedFieldsContains("OrderItemShipGroupAssociations")) {
+                ArrayList<OrderItemShipGroupAssociationStateDto> arrayList = new ArrayList();
+                if (state.getOrderItemShipGroupAssociations() != null) {
+                    OrderItemShipGroupAssociationStateDto.DtoConverter conv = new OrderItemShipGroupAssociationStateDto.DtoConverter();
+                    String returnFS = CollectionUtils.mapGetValueIgnoringCase(getReturnedFields(), "OrderItemShipGroupAssociations");
+                    if(returnFS != null) { conv.setReturnedFieldsString(returnFS); } else { conv.setAllFieldsReturned(this.getAllFieldsReturned()); }
+                    for (OrderItemShipGroupAssociationState s : state.getOrderItemShipGroupAssociations()) {
+                        arrayList.add(conv.toOrderItemShipGroupAssociationStateDto(s));
+                    }
+                }
+                dto.setOrderItemShipGroupAssociations(arrayList.toArray(new OrderItemShipGroupAssociationStateDto[0]));
             }
             return dto;
         }

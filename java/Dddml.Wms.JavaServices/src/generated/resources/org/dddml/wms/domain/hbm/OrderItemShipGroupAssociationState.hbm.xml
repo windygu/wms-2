@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.order">
+  
+  <class name="org.dddml.wms.domain.order.AbstractOrderItemShipGroupAssociationState$SimpleOrderItemShipGroupAssociationState" table="OrderItemShipGroupAssociations">
+
+	<composite-id name="orderItemShipGroupAssociationId" class="org.dddml.wms.domain.order.OrderItemShipGroupAssociationId">
+		<key-property name="orderId" ><column name="OrderItemShipGroupAssociationIdOrderId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="orderShipGroupShipGroupSeqId" ><column name="OrderItemShipGroupAssociationIdOrderShipGroupShipGroupSeqId" sql-type="DECIMAL(20,0)" /></key-property>
+		<key-property name="orderItemSeqId" ><column name="OrderItemShipGroupAssociationIdOrderItemSeqId" sql-type="VARCHAR(20)" /></key-property>
+	</composite-id>
+	<version name="version" column="Version" type="long" />
+
+	<property name="quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>
+	<property name="cancelQuantity" ><column name="CancelQuantity" sql-type="DECIMAL(18,6)" /></property>
+	<property name="createdBy" ></property>
+	<property name="updatedBy" ></property>
+	<property name="active" ></property>
+	<property name="deleted" ></property>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="updatedAt" column="UpdatedAt" />
+
+
+  </class>
+  
+</hibernate-mapping>
+

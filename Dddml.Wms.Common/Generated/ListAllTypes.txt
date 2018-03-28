@@ -17,6 +17,7 @@
                 dict.Add("MovementConfirmationLineId", "_MOVEMENTCONFIRMATIONLINEID_");
                 dict.Add("MovementLineId", "_MOVEMENTLINEID_");
                 dict.Add("OrderItemId", "_ORDERITEMID_");
+                dict.Add("OrderItemShipGroupAssociationId", "_ORDERITEMSHIPGROUPASSOCIATIONID_");
                 dict.Add("OrderItemShipGrpInvResId", "_ORDERITEMSHIPGRPINVRESID_");
                 dict.Add("OrderRoleId", "_ORDERROLEID_");
                 dict.Add("OrderShipGroupId", "_ORDERSHIPGROUPID_");
@@ -74,6 +75,7 @@
                 dict.Add("name", "_NAME_");
                 dict.Add("numeric", "_NUMERIC_");
                 dict.Add("OrderItem", "_ORDERITEM_");
+                dict.Add("OrderItemShipGroupAssociation", "_ORDERITEMSHIPGROUPASSOCIATION_");
                 dict.Add("OrderRole", "_ORDERROLE_");
                 dict.Add("OrderShipGroup", "_ORDERSHIPGROUP_");
                 dict.Add("PhysicalInventoryLine", "_PHYSICALINVENTORYLINE_");

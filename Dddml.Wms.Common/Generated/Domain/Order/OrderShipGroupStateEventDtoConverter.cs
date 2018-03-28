@@ -63,6 +63,14 @@ namespace Dddml.Wms.Domain.Order
             dto.EstimatedDeliveryDate = e.EstimatedDeliveryDate;
             dto.PickwaveId = e.PickwaveId;
             dto.Active = e.Active;
+            var orderItemShipGroupAssociationEvents = new List<OrderItemShipGroupAssociationStateCreatedDto>();
+            foreach (var ee in e.OrderItemShipGroupAssociationEvents)
+            {
+                OrderItemShipGroupAssociationStateCreatedDto eeDto = OrderItemShipGroupAssociationStateEventDtoConverter.ToOrderItemShipGroupAssociationStateCreatedDto(ee);
+                orderItemShipGroupAssociationEvents.Add(eeDto);
+            }
+            dto.OrderItemShipGroupAssociationEvents = orderItemShipGroupAssociationEvents.ToArray();
+
             return dto;
         }
 
@@ -112,6 +120,14 @@ namespace Dddml.Wms.Domain.Order
             dto.IsPropertyEstimatedDeliveryDateRemoved = e.IsPropertyEstimatedDeliveryDateRemoved;
             dto.IsPropertyPickwaveIdRemoved = e.IsPropertyPickwaveIdRemoved;
             dto.IsPropertyActiveRemoved = e.IsPropertyActiveRemoved;
+            var orderItemShipGroupAssociationEvents = new List<OrderItemShipGroupAssociationStateCreatedOrMergePatchedOrRemovedDto>();
+            foreach (var ee in e.OrderItemShipGroupAssociationEvents)
+            {
+                OrderItemShipGroupAssociationStateCreatedOrMergePatchedOrRemovedDto eeDto = OrderItemShipGroupAssociationStateEventDtoConverter.ToOrderItemShipGroupAssociationStateEventDto(ee);
+                orderItemShipGroupAssociationEvents.Add(eeDto);
+            }
+            dto.OrderItemShipGroupAssociationEvents = orderItemShipGroupAssociationEvents.ToArray();
+
 
             return dto;
         }
@@ -125,8 +141,24 @@ namespace Dddml.Wms.Domain.Order
             dto.CreatedBy = e.CreatedBy;
             dto.Version = e.Version;
             dto.CommandId = e.CommandId;
+            var orderItemShipGroupAssociationEvents = new List<OrderItemShipGroupAssociationStateRemovedDto>();
+            foreach (var ee in e.OrderItemShipGroupAssociationEvents)
+            {
+                OrderItemShipGroupAssociationStateRemovedDto eeDto = OrderItemShipGroupAssociationStateEventDtoConverter.ToOrderItemShipGroupAssociationStateRemovedDto(ee);
+                orderItemShipGroupAssociationEvents.Add(eeDto);
+            }
+            dto.OrderItemShipGroupAssociationEvents = orderItemShipGroupAssociationEvents.ToArray();
+
 
             return dto;
+        }
+
+        protected virtual OrderItemShipGroupAssociationStateEventDtoConverter OrderItemShipGroupAssociationStateEventDtoConverter
+        {
+            get
+            {
+                return new OrderItemShipGroupAssociationStateEventDtoConverter();
+            }
         }
 
 

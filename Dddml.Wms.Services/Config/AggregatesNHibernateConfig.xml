@@ -486,6 +486,15 @@
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>
 
+  <object id="orderItemShipGroupAssociationStateDao" type="Dddml.Wms.Domain.Order.NHibernate.NHibernateOrderItemShipGroupAssociationStateDao, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="orderItemShipGroupAssociationStateEventDao" type="Dddml.Wms.Domain.Order.NHibernate.NHibernateOrderItemShipGroupAssociationStateEventDao, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
 
   <object id="orderStateRepository" type="Dddml.Wms.Domain.Order.NHibernate.NHibernateOrderStateRepository, Dddml.Wms.Services">
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
@@ -1439,6 +1448,28 @@
     <constructor-arg ref="orderShipGroupMvoEventStore"/>
     <constructor-arg ref="orderShipGroupMvoStateRepository"/>
     <constructor-arg ref="orderShipGroupMvoStateQueryRepository"/>
+  </object>
+
+
+
+  <object id="orderItemShipGroupAssociationMvoStateRepository" type="Dddml.Wms.Domain.OrderItemShipGroupAssociationMvo.NHibernate.NHibernateOrderItemShipGroupAssociationMvoStateRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="orderItemShipGroupAssociationMvoStateQueryRepository" type="Dddml.Wms.Domain.OrderItemShipGroupAssociationMvo.NHibernate.NHibernateOrderItemShipGroupAssociationMvoStateQueryRepository, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+    <property name="ReadOnlyProxyGenerator" ref="StateReadOnlyProxyGenerator"/>
+  </object>
+
+  <object id="orderItemShipGroupAssociationMvoEventStore" type="Dddml.Wms.Domain.OrderItemShipGroupAssociationMvo.NHibernate.NHibernateOrderItemShipGroupAssociationMvoEventStore, Dddml.Wms.Services">
+    <property name="SessionFactory" ref="NHibernateSessionFactory"/>
+  </object>
+
+  <object id="orderItemShipGroupAssociationMvoApplicationService" type="Dddml.Wms.Domain.OrderItemShipGroupAssociationMvo.NHibernate.OrderItemShipGroupAssociationMvoApplicationService, Dddml.Wms.Services">
+    <constructor-arg ref="orderItemShipGroupAssociationMvoEventStore"/>
+    <constructor-arg ref="orderItemShipGroupAssociationMvoStateRepository"/>
+    <constructor-arg ref="orderItemShipGroupAssociationMvoStateQueryRepository"/>
   </object>
 
 

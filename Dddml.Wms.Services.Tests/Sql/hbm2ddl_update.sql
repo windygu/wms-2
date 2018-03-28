@@ -87,36 +87,6 @@
        UpdatedAt DATETIME,
        primary key (AttributeSetAttributeUseIdAttributeSetId, AttributeSetAttributeUseIdAttributeId)
     );
-    alter table OrderShipments 
-        add column OrderShipmentIdShipGroupSeqId DECIMAL(20,0);
-    alter table OrderShipmentStateEvents 
-        add column OrderShipmentIdShipGroupSeqId DECIMAL(20,0);
-    alter table Parties 
-        add column PrimaryRoleTypeId VARCHAR(20);
-    alter table Organizations 
-        add column PrimaryRoleTypeId VARCHAR(20);
-    alter table PartyStateEvents 
-        add column PrimaryRoleTypeId VARCHAR(20);
-    alter table PartyStateEvents 
-        add column IsPropertyPrimaryRoleTypeIdRemoved TINYINT(1);
-    alter table Locators 
-        add column LocatorTypeId VARCHAR(255);
-    alter table LocatorStateEvents 
-        add column LocatorTypeId VARCHAR(255);
-    alter table LocatorStateEvents 
-        add column IsPropertyLocatorTypeIdRemoved TINYINT(1);
-    alter table OrderShipGroups 
-        add column PickwaveId DECIMAL(20,0);
-    alter table OrderShipGroupStateEvents 
-        add column PickwaveId DECIMAL(20,0);
-    alter table OrderShipGroupStateEvents 
-        add column IsPropertyPickwaveIdRemoved TINYINT(1);
-    alter table Picklists 
-        add column PickwaveId DECIMAL(20,0);
-    alter table PicklistStateEvents 
-        add column PickwaveId DECIMAL(20,0);
-    alter table PicklistStateEvents 
-        add column IsPropertyPickwaveIdRemoved TINYINT(1);
     create table InOutLine_RV (
         InOutLineIdInOutDocumentNumber VARCHAR(50) not null,
        InOutLineIdLineNumber VARCHAR(50) not null,
@@ -492,10 +462,6 @@
        UpdatedAt DATETIME,
        primary key (OrderShipGroupIdOrderId, OrderShipGroupIdShipGroupSeqId)
     );
-    alter table OrderShipGroupMvoStateEvents 
-        add column PickwaveId DECIMAL(20,0);
-    alter table OrderShipGroupMvoStateEvents 
-        add column IsPropertyPickwaveIdRemoved TINYINT(1);
     create table PhysicalInventoryLine_RV (
         PhysicalInventoryLineIdPhysicalInventoryDocumentNumber VARCHAR(50) not null,
        ProductId VARCHAR(60) not null,
@@ -562,10 +528,6 @@
        UpdatedAt DATETIME,
        primary key (PicklistRoleIdPicklistId, PicklistRoleIdPartyRoleIdPartyId, PicklistRoleIdPartyRoleIdRoleTypeId)
     );
-    alter table PicklistRoleMvoStateEvents 
-        add column PicklistPickwaveId DECIMAL(20,0);
-    alter table PicklistRoleMvoStateEvents 
-        add column IsPropertyPicklistPickwaveIdRemoved TINYINT(1);
     create table PicklistItem_RV (
         PicklistBinId VARCHAR(20) not null,
        OrderId VARCHAR(20) not null,
@@ -815,56 +777,233 @@
        UpdatedAt DATETIME,
        primary key (ShipmentPackageContentIdShipmentPackageIdShipmentId, ShipmentPackageContentIdShipmentPackageIdShipmentPackageSeqId, ShipmentPackageContentIdShipmentItemSeqId)
     );
-    create table LocatorTypes (
-        LocatorTypeId VARCHAR(50) not null,
+    create table OrderItemShipGroupAssociations (
+        OrderItemShipGroupAssociationIdOrderId VARCHAR(20) not null,
+       OrderItemShipGroupAssociationIdOrderShipGroupShipGroupSeqId DECIMAL(20,0) not null,
+       OrderItemShipGroupAssociationIdOrderItemSeqId VARCHAR(20) not null,
        Version BIGINT not null,
-       Description VARCHAR(255),
+       Quantity DECIMAL(18,6),
+       CancelQuantity DECIMAL(18,6),
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
        Active TINYINT(1),
        Deleted TINYINT(1),
        CreatedAt DATETIME,
        UpdatedAt DATETIME,
-       primary key (LocatorTypeId)
+       primary key (OrderItemShipGroupAssociationIdOrderId, OrderItemShipGroupAssociationIdOrderShipGroupShipGroupSeqId, OrderItemShipGroupAssociationIdOrderItemSeqId)
     );
-    create table LocatorTypeStateEvents (
-        LocatorTypeId VARCHAR(50) not null,
-       Version BIGINT not null,
+    create table OrderItemShipGroupAssociationStateEvents (
+        OrderItemShipGroupAssociationIdOrderId VARCHAR(20) not null,
+       OrderItemShipGroupAssociationIdOrderShipGroupShipGroupSeqId DECIMAL(20,0) not null,
+       OrderItemShipGroupAssociationIdOrderItemSeqId VARCHAR(20) not null,
+       OrderVersion BIGINT not null,
        StateEventType VARCHAR(255) not null,
-       Description VARCHAR(255),
+       Quantity DECIMAL(18,6),
+       CancelQuantity DECIMAL(18,6),
        Active TINYINT(1),
        CreatedBy VARCHAR(255),
        CreatedAt DATETIME,
        CommandId VARCHAR(255),
-       IsPropertyDescriptionRemoved TINYINT(1),
-       IsPropertyActiveRemoved TINYINT(1),
-       primary key (LocatorTypeId, Version)
-    );
-    create table Pickwaves (
-        PickwaveId BIGINT not null,
        Version BIGINT not null,
-       StatusId VARCHAR(20),
-       Description VARCHAR(255),
+       IsPropertyQuantityRemoved TINYINT(1),
+       IsPropertyCancelQuantityRemoved TINYINT(1),
+       IsPropertyActiveRemoved TINYINT(1),
+       primary key (OrderItemShipGroupAssociationIdOrderId, OrderItemShipGroupAssociationIdOrderShipGroupShipGroupSeqId, OrderItemShipGroupAssociationIdOrderItemSeqId, OrderVersion)
+    );
+    create table OrderItemShipGroupAssociation_RV (
+        OrderItemShipGroupAssociationIdOrderId VARCHAR(20) not null,
+       OrderItemShipGroupAssociationIdOrderShipGroupShipGroupSeqId DECIMAL(20,0) not null,
+       OrderItemShipGroupAssociationIdOrderItemSeqId VARCHAR(20) not null,
+       OrderVersion BIGINT not null,
+       Quantity DECIMAL(18,6),
+       CancelQuantity DECIMAL(18,6),
+       Version BIGINT,
        CreatedBy VARCHAR(255),
        UpdatedBy VARCHAR(255),
        Active TINYINT(1),
        Deleted TINYINT(1),
+       OrderShipGroupShipmentMethodTypeId VARCHAR(20),
+       OrderShipGroupSupplierPartyId VARCHAR(20),
+       OrderShipGroupVendorPartyId VARCHAR(20),
+       OrderShipGroupCarrierPartyId VARCHAR(20),
+       OrderShipGroupCarrierRoleTypeId VARCHAR(20),
+       OrderShipGroupFacilityId VARCHAR(20),
+       OrderShipGroupContactMechId VARCHAR(20),
+       OrderShipGroupTelecomContactMechId VARCHAR(20),
+       OrderShipGroupTrackingNumber VARCHAR(60),
+       OrderShipGroupShippingInstructions VARCHAR(255),
+       OrderShipGroupMaySplit CHAR(1),
+       OrderShipGroupGiftMessage VARCHAR(255),
+       OrderShipGroupIsGift CHAR(1),
+       OrderShipGroupShipAfterDate DATETIME,
+       OrderShipGroupShipByDate DATETIME,
+       OrderShipGroupEstimatedShipDate DATETIME,
+       OrderShipGroupEstimatedDeliveryDate DATETIME,
+       OrderShipGroupPickwaveId DECIMAL(20,0),
+       OrderShipGroupVersion BIGINT,
+       OrderShipGroupCreatedBy VARCHAR(255),
+       OrderShipGroupCreatedAt DATETIME,
+       OrderShipGroupUpdatedBy VARCHAR(255),
+       OrderShipGroupUpdatedAt DATETIME,
+       OrderShipGroupActive TINYINT(1),
+       OrderShipGroupDeleted TINYINT(1),
+       OrderOrderTypeId VARCHAR(20),
+       OrderOrderName VARCHAR(100),
+       OrderExternalId VARCHAR(20),
+       OrderSalesChannelEnumId VARCHAR(20),
+       OrderOrderDate DATETIME,
+       OrderPriority CHAR(1),
+       OrderEntryDate DATETIME,
+       OrderPickSheetPrintedDate DATETIME,
+       OrderStatusId VARCHAR(20),
+       OrderCurrencyUom VARCHAR(20),
+       OrderSyncStatusId VARCHAR(20),
+       OrderBillingAccountId VARCHAR(20),
+       OrderOriginFacilityId VARCHAR(20),
+       OrderWebSiteId VARCHAR(20),
+       OrderProductStoreId VARCHAR(20),
+       OrderTerminalId VARCHAR(60),
+       OrderTransactionId VARCHAR(60),
+       OrderAutoOrderShoppingListId VARCHAR(20),
+       OrderNeedsInventoryIssuance CHAR(1),
+       OrderIsRushOrder CHAR(1),
+       OrderInternalCode VARCHAR(60),
+       OrderRemainingSubTotal DECIMAL(18,2),
+       OrderGrandTotal DECIMAL(18,2),
+       OrderInvoicePerShipment CHAR(1),
+       OrderCreatedBy VARCHAR(255),
+       OrderCreatedAt DATETIME,
+       OrderUpdatedBy VARCHAR(255),
+       OrderUpdatedAt DATETIME,
+       OrderActive TINYINT(1),
        CreatedAt DATETIME,
        UpdatedAt DATETIME,
-       primary key (PickwaveId)
+       primary key (OrderItemShipGroupAssociationIdOrderId, OrderItemShipGroupAssociationIdOrderShipGroupShipGroupSeqId, OrderItemShipGroupAssociationIdOrderItemSeqId)
     );
-    create table PickwaveStateEvents (
-        PickwaveId DECIMAL(20,0) not null,
-       Version BIGINT not null,
+    create table OrderItemShipGroupAssociationMvoStateEvents (
+        OrderItemShipGroupAssociationIdOrderId VARCHAR(20) not null,
+       OrderItemShipGroupAssociationIdOrderShipGroupShipGroupSeqId DECIMAL(20,0) not null,
+       OrderItemShipGroupAssociationIdOrderItemSeqId VARCHAR(20) not null,
+       OrderVersion BIGINT not null,
        StateEventType VARCHAR(255) not null,
-       StatusId VARCHAR(20),
-       Description VARCHAR(255),
+       Quantity DECIMAL(18,6),
+       CancelQuantity DECIMAL(18,6),
+       Version BIGINT,
        Active TINYINT(1),
+       OrderShipGroupShipmentMethodTypeId VARCHAR(20),
+       OrderShipGroupSupplierPartyId VARCHAR(20),
+       OrderShipGroupVendorPartyId VARCHAR(20),
+       OrderShipGroupCarrierPartyId VARCHAR(20),
+       OrderShipGroupCarrierRoleTypeId VARCHAR(20),
+       OrderShipGroupFacilityId VARCHAR(20),
+       OrderShipGroupContactMechId VARCHAR(20),
+       OrderShipGroupTelecomContactMechId VARCHAR(20),
+       OrderShipGroupTrackingNumber VARCHAR(60),
+       OrderShipGroupShippingInstructions VARCHAR(255),
+       OrderShipGroupMaySplit CHAR(1),
+       OrderShipGroupGiftMessage VARCHAR(255),
+       OrderShipGroupIsGift CHAR(1),
+       OrderShipGroupShipAfterDate DATETIME,
+       OrderShipGroupShipByDate DATETIME,
+       OrderShipGroupEstimatedShipDate DATETIME,
+       OrderShipGroupEstimatedDeliveryDate DATETIME,
+       OrderShipGroupPickwaveId DECIMAL(20,0),
+       OrderShipGroupVersion BIGINT,
+       OrderShipGroupCreatedBy VARCHAR(255),
+       OrderShipGroupCreatedAt DATETIME,
+       OrderShipGroupUpdatedBy VARCHAR(255),
+       OrderShipGroupUpdatedAt DATETIME,
+       OrderShipGroupActive TINYINT(1),
+       OrderShipGroupDeleted TINYINT(1),
+       OrderOrderTypeId VARCHAR(20),
+       OrderOrderName VARCHAR(100),
+       OrderExternalId VARCHAR(20),
+       OrderSalesChannelEnumId VARCHAR(20),
+       OrderOrderDate DATETIME,
+       OrderPriority CHAR(1),
+       OrderEntryDate DATETIME,
+       OrderPickSheetPrintedDate DATETIME,
+       OrderStatusId VARCHAR(20),
+       OrderCurrencyUom VARCHAR(20),
+       OrderSyncStatusId VARCHAR(20),
+       OrderBillingAccountId VARCHAR(20),
+       OrderOriginFacilityId VARCHAR(20),
+       OrderWebSiteId VARCHAR(20),
+       OrderProductStoreId VARCHAR(20),
+       OrderTerminalId VARCHAR(60),
+       OrderTransactionId VARCHAR(60),
+       OrderAutoOrderShoppingListId VARCHAR(20),
+       OrderNeedsInventoryIssuance CHAR(1),
+       OrderIsRushOrder CHAR(1),
+       OrderInternalCode VARCHAR(60),
+       OrderRemainingSubTotal DECIMAL(18,2),
+       OrderGrandTotal DECIMAL(18,2),
+       OrderInvoicePerShipment CHAR(1),
+       OrderCreatedBy VARCHAR(255),
+       OrderCreatedAt DATETIME,
+       OrderUpdatedBy VARCHAR(255),
+       OrderUpdatedAt DATETIME,
+       OrderActive TINYINT(1),
        CreatedBy VARCHAR(255),
        CreatedAt DATETIME,
        CommandId VARCHAR(255),
-       IsPropertyStatusIdRemoved TINYINT(1),
-       IsPropertyDescriptionRemoved TINYINT(1),
+       IsPropertyQuantityRemoved TINYINT(1),
+       IsPropertyCancelQuantityRemoved TINYINT(1),
+       IsPropertyVersionRemoved TINYINT(1),
        IsPropertyActiveRemoved TINYINT(1),
-       primary key (PickwaveId, Version)
+       IsPropertyOrderShipGroupShipmentMethodTypeIdRemoved TINYINT(1),
+       IsPropertyOrderShipGroupSupplierPartyIdRemoved TINYINT(1),
+       IsPropertyOrderShipGroupVendorPartyIdRemoved TINYINT(1),
+       IsPropertyOrderShipGroupCarrierPartyIdRemoved TINYINT(1),
+       IsPropertyOrderShipGroupCarrierRoleTypeIdRemoved TINYINT(1),
+       IsPropertyOrderShipGroupFacilityIdRemoved TINYINT(1),
+       IsPropertyOrderShipGroupContactMechIdRemoved TINYINT(1),
+       IsPropertyOrderShipGroupTelecomContactMechIdRemoved TINYINT(1),
+       IsPropertyOrderShipGroupTrackingNumberRemoved TINYINT(1),
+       IsPropertyOrderShipGroupShippingInstructionsRemoved TINYINT(1),
+       IsPropertyOrderShipGroupMaySplitRemoved TINYINT(1),
+       IsPropertyOrderShipGroupGiftMessageRemoved TINYINT(1),
+       IsPropertyOrderShipGroupIsGiftRemoved TINYINT(1),
+       IsPropertyOrderShipGroupShipAfterDateRemoved TINYINT(1),
+       IsPropertyOrderShipGroupShipByDateRemoved TINYINT(1),
+       IsPropertyOrderShipGroupEstimatedShipDateRemoved TINYINT(1),
+       IsPropertyOrderShipGroupEstimatedDeliveryDateRemoved TINYINT(1),
+       IsPropertyOrderShipGroupPickwaveIdRemoved TINYINT(1),
+       IsPropertyOrderShipGroupVersionRemoved TINYINT(1),
+       IsPropertyOrderShipGroupCreatedByRemoved TINYINT(1),
+       IsPropertyOrderShipGroupCreatedAtRemoved TINYINT(1),
+       IsPropertyOrderShipGroupUpdatedByRemoved TINYINT(1),
+       IsPropertyOrderShipGroupUpdatedAtRemoved TINYINT(1),
+       IsPropertyOrderShipGroupActiveRemoved TINYINT(1),
+       IsPropertyOrderShipGroupDeletedRemoved TINYINT(1),
+       IsPropertyOrderOrderTypeIdRemoved TINYINT(1),
+       IsPropertyOrderOrderNameRemoved TINYINT(1),
+       IsPropertyOrderExternalIdRemoved TINYINT(1),
+       IsPropertyOrderSalesChannelEnumIdRemoved TINYINT(1),
+       IsPropertyOrderOrderDateRemoved TINYINT(1),
+       IsPropertyOrderPriorityRemoved TINYINT(1),
+       IsPropertyOrderEntryDateRemoved TINYINT(1),
+       IsPropertyOrderPickSheetPrintedDateRemoved TINYINT(1),
+       IsPropertyOrderStatusIdRemoved TINYINT(1),
+       IsPropertyOrderCurrencyUomRemoved TINYINT(1),
+       IsPropertyOrderSyncStatusIdRemoved TINYINT(1),
+       IsPropertyOrderBillingAccountIdRemoved TINYINT(1),
+       IsPropertyOrderOriginFacilityIdRemoved TINYINT(1),
+       IsPropertyOrderWebSiteIdRemoved TINYINT(1),
+       IsPropertyOrderProductStoreIdRemoved TINYINT(1),
+       IsPropertyOrderTerminalIdRemoved TINYINT(1),
+       IsPropertyOrderTransactionIdRemoved TINYINT(1),
+       IsPropertyOrderAutoOrderShoppingListIdRemoved TINYINT(1),
+       IsPropertyOrderNeedsInventoryIssuanceRemoved TINYINT(1),
+       IsPropertyOrderIsRushOrderRemoved TINYINT(1),
+       IsPropertyOrderInternalCodeRemoved TINYINT(1),
+       IsPropertyOrderRemainingSubTotalRemoved TINYINT(1),
+       IsPropertyOrderGrandTotalRemoved TINYINT(1),
+       IsPropertyOrderInvoicePerShipmentRemoved TINYINT(1),
+       IsPropertyOrderCreatedByRemoved TINYINT(1),
+       IsPropertyOrderCreatedAtRemoved TINYINT(1),
+       IsPropertyOrderUpdatedByRemoved TINYINT(1),
+       IsPropertyOrderUpdatedAtRemoved TINYINT(1),
+       IsPropertyOrderActiveRemoved TINYINT(1),
+       primary key (OrderItemShipGroupAssociationIdOrderId, OrderItemShipGroupAssociationIdOrderShipGroupShipGroupSeqId, OrderItemShipGroupAssociationIdOrderItemSeqId, OrderVersion)
     );

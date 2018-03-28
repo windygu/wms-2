@@ -9,6 +9,7 @@ DROP TABLE if exists `MovementConfirmationLine_RV`;
 DROP TABLE if exists `OrderRole_RV`;
 DROP TABLE if exists `OrderItem_RV`;
 DROP TABLE if exists `OrderShipGroup_RV`;
+DROP TABLE if exists `OrderItemShipGroupAssociation_RV`;
 DROP TABLE if exists `PhysicalInventoryLine_RV`;
 DROP TABLE if exists `PicklistRole_RV`;
 DROP TABLE if exists `PicklistItem_RV`;

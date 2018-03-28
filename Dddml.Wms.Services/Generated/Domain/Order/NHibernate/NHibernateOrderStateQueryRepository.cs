@@ -148,6 +148,13 @@ namespace Dddml.Wms.Domain.Order.NHibernate
             return CurrentSession.Get<OrderShipGroupState>(entityId);
         }
 
+        [Transaction(ReadOnly = true)]
+        public virtual IOrderItemShipGroupAssociationState GetOrderItemShipGroupAssociation(string orderId, long? orderShipGroupShipGroupSeqId, string orderItemSeqId)
+        {
+            var entityId = new OrderItemShipGroupAssociationId(orderId, orderShipGroupShipGroupSeqId, orderItemSeqId);
+            return CurrentSession.Get<OrderItemShipGroupAssociationState>(entityId);
+        }
+
 
         protected static void AddNotDeletedRestriction(ICriteria criteria)
         {

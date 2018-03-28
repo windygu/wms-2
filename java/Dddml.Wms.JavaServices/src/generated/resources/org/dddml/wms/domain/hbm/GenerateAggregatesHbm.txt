@@ -76,6 +76,8 @@
         <mapping resource="org/dddml/wms/domain/hbm/OrderItemStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/OrderShipGroupState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/OrderShipGroupStateEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/OrderItemShipGroupAssociationState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/OrderItemShipGroupAssociationStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/OrderItemShipGrpInvReservationState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/OrderItemShipGrpInvReservationStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/OrderShipmentState.hbm.xml"/>
@@ -166,6 +168,8 @@
         <mapping resource="org/dddml/wms/domain/hbm/OrderItemMvoStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/OrderShipGroupMvoState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/OrderShipGroupMvoStateEvent.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/OrderItemShipGroupAssociationMvoState.hbm.xml"/>
+        <mapping resource="org/dddml/wms/domain/hbm/OrderItemShipGroupAssociationMvoStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/PhysicalInventoryLineMvoState.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/PhysicalInventoryLineMvoStateEvent.hbm.xml"/>
         <mapping resource="org/dddml/wms/domain/hbm/PicklistRoleMvoState.hbm.xml"/>

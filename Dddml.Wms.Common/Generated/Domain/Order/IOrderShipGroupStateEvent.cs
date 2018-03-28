@@ -65,6 +65,12 @@ namespace Dddml.Wms.Domain.Order
 
 	public interface IOrderShipGroupStateCreated : IOrderShipGroupStateEvent//, IOrderShipGroupStateProperties
 	{
+		IEnumerable<IOrderItemShipGroupAssociationStateCreated> OrderItemShipGroupAssociationEvents { get; }
+		
+		void AddOrderItemShipGroupAssociationEvent(IOrderItemShipGroupAssociationStateCreated e);
+
+		IOrderItemShipGroupAssociationStateCreated NewOrderItemShipGroupAssociationStateCreated(string orderItemSeqId);
+
 	
 	}
 
@@ -109,11 +115,27 @@ namespace Dddml.Wms.Domain.Order
 
 		bool IsPropertyActiveRemoved { get; set; }
 
+		IEnumerable<IOrderItemShipGroupAssociationStateEvent> OrderItemShipGroupAssociationEvents { get; }
+		
+		void AddOrderItemShipGroupAssociationEvent(IOrderItemShipGroupAssociationStateEvent e);
+
+		IOrderItemShipGroupAssociationStateCreated NewOrderItemShipGroupAssociationStateCreated(string orderItemSeqId);
+
+		IOrderItemShipGroupAssociationStateMergePatched NewOrderItemShipGroupAssociationStateMergePatched(string orderItemSeqId);
+
+		IOrderItemShipGroupAssociationStateRemoved NewOrderItemShipGroupAssociationStateRemoved(string orderItemSeqId);
+
 
 	}
 
 	public interface IOrderShipGroupStateRemoved : IOrderShipGroupStateEvent
 	{
+		IEnumerable<IOrderItemShipGroupAssociationStateRemoved> OrderItemShipGroupAssociationEvents { get; }
+		
+		void AddOrderItemShipGroupAssociationEvent(IOrderItemShipGroupAssociationStateRemoved e);
+		
+		IOrderItemShipGroupAssociationStateRemoved NewOrderItemShipGroupAssociationStateRemoved(string orderItemSeqId);
+
 	}
 
 

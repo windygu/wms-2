@@ -18,7 +18,7 @@ namespace Dddml.Wms.Domain.Order
 
         public static IOrderCommand ToCreateOrMergePatchOrder(this OrderState state)
         {
-            return state.ToCreateOrMergePatchOrder<CreateOrder, MergePatchOrder, CreateOrderRole, MergePatchOrderRole, CreateOrderItem, MergePatchOrderItem, CreateOrderShipGroup, MergePatchOrderShipGroup>();
+            return state.ToCreateOrMergePatchOrder<CreateOrder, MergePatchOrder, CreateOrderRole, MergePatchOrderRole, CreateOrderItem, MergePatchOrderItem, CreateOrderShipGroup, MergePatchOrderShipGroup, CreateOrderItemShipGroupAssociation, MergePatchOrderItemShipGroupAssociation>();
         }
 
         public static DeleteOrder ToDeleteOrder(this OrderState state)
@@ -28,12 +28,12 @@ namespace Dddml.Wms.Domain.Order
 
         public static MergePatchOrder ToMergePatchOrder(this OrderState state)
         {
-            return state.ToMergePatchOrder<MergePatchOrder, CreateOrderRole, MergePatchOrderRole, CreateOrderItem, MergePatchOrderItem, CreateOrderShipGroup, MergePatchOrderShipGroup>();
+            return state.ToMergePatchOrder<MergePatchOrder, CreateOrderRole, MergePatchOrderRole, CreateOrderItem, MergePatchOrderItem, CreateOrderShipGroup, MergePatchOrderShipGroup, CreateOrderItemShipGroupAssociation, MergePatchOrderItemShipGroupAssociation>();
         }
 
         public static CreateOrder ToCreateOrder(this OrderState state)
         {
-            return state.ToCreateOrder<CreateOrder, CreateOrderRole, CreateOrderItem, CreateOrderShipGroup>();
+            return state.ToCreateOrder<CreateOrder, CreateOrderRole, CreateOrderItem, CreateOrderShipGroup, CreateOrderItemShipGroupAssociation>();
         }
 		
 

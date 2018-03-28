@@ -55,6 +55,7 @@ public class BoundedContextMetadata {
         typeToAggMap.put("OrderRole", "Order");
         typeToAggMap.put("OrderItem", "Order");
         typeToAggMap.put("OrderShipGroup", "Order");
+        typeToAggMap.put("OrderItemShipGroupAssociation", "Order");
         typeToAggMap.put("OrderItemShipGrpInvReservation", "OrderItemShipGrpInvReservation");
         typeToAggMap.put("OrderShipment", "OrderShipment");
         typeToAggMap.put("OrganizationStructure", "OrganizationStructure");
@@ -104,6 +105,7 @@ public class BoundedContextMetadata {
         typeToAggMap.put("OrderRoleMvo", "OrderRoleMvo");
         typeToAggMap.put("OrderItemMvo", "OrderItemMvo");
         typeToAggMap.put("OrderShipGroupMvo", "OrderShipGroupMvo");
+        typeToAggMap.put("OrderItemShipGroupAssociationMvo", "OrderItemShipGroupAssociationMvo");
         typeToAggMap.put("PhysicalInventoryLineMvo", "PhysicalInventoryLineMvo");
         typeToAggMap.put("PicklistRoleMvo", "PicklistRoleMvo");
         typeToAggMap.put("PicklistItemMvo", "PicklistItemMvo");

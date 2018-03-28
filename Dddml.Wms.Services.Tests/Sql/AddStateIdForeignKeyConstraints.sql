@@ -70,6 +70,14 @@ alter TABLE `OrderShipGroups` add
     (`OrderId`) 
   ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+alter TABLE `OrderItemShipGroupAssociations` add
+  CONSTRAINT `FK_OrderItemShipGroupAssociation_OrderShipGroup_StateId` 
+  FOREIGN KEY 
+    (`OrderItemShipGroupAssociationIdOrderId`, `OrderItemShipGroupAssociationIdOrderShipGroupShipGroupSeqId`) 
+  REFERENCES `OrderShipGroups` 
+    (`OrderShipGroupIdOrderId`, `OrderShipGroupIdShipGroupSeqId`) 
+  ON DELETE NO ACTION ON UPDATE NO ACTION;
+
 alter TABLE `PhysicalInventoryLines` add
   CONSTRAINT `FK_PhysicalInventoryLine_PhysicalInventory_StateId` 
   FOREIGN KEY 

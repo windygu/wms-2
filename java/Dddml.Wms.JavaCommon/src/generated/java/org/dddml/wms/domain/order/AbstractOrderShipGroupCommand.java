@@ -262,6 +262,36 @@ public abstract class AbstractOrderShipGroupCommand extends AbstractCommand impl
             this.active = active;
         }
 
+        public OrderItemShipGroupAssociationCommand.CreateOrderItemShipGroupAssociation newCreateOrderItemShipGroupAssociation()
+        {
+            AbstractOrderItemShipGroupAssociationCommand.SimpleCreateOrderItemShipGroupAssociation c = new AbstractOrderItemShipGroupAssociationCommand.SimpleCreateOrderItemShipGroupAssociation();
+            c.setOrderId(this.getOrderId());
+
+            c.setOrderShipGroupShipGroupSeqId(this.getShipGroupSeqId());
+
+            return c;
+        }
+
+        public OrderItemShipGroupAssociationCommand.MergePatchOrderItemShipGroupAssociation newMergePatchOrderItemShipGroupAssociation()
+        {
+            AbstractOrderItemShipGroupAssociationCommand.SimpleMergePatchOrderItemShipGroupAssociation c = new AbstractOrderItemShipGroupAssociationCommand.SimpleMergePatchOrderItemShipGroupAssociation();
+            c.setOrderId(this.getOrderId());
+
+            c.setOrderShipGroupShipGroupSeqId(this.getShipGroupSeqId());
+
+            return c;
+        }
+
+        public OrderItemShipGroupAssociationCommand.RemoveOrderItemShipGroupAssociation newRemoveOrderItemShipGroupAssociation()
+        {
+            AbstractOrderItemShipGroupAssociationCommand.SimpleRemoveOrderItemShipGroupAssociation c = new AbstractOrderItemShipGroupAssociationCommand.SimpleRemoveOrderItemShipGroupAssociation();
+            c.setOrderId(this.getOrderId());
+
+            c.setOrderShipGroupShipGroupSeqId(this.getShipGroupSeqId());
+
+            return c;
+        }
+
     }
 
     public static abstract class AbstractCreateOrderShipGroup extends AbstractCreateOrMergePatchOrderShipGroup implements CreateOrderShipGroup
@@ -269,6 +299,13 @@ public abstract class AbstractOrderShipGroupCommand extends AbstractCommand impl
         @Override
         public String getCommandType() {
             return COMMAND_TYPE_CREATE;
+        }
+
+        private CreateOrderItemShipGroupAssociationCommands orderItemShipGroupAssociations = new SimpleCreateOrderItemShipGroupAssociationCommands();
+
+        public CreateOrderItemShipGroupAssociationCommands getOrderItemShipGroupAssociations()
+        {
+            return this.orderItemShipGroupAssociations;
         }
 
     }
@@ -508,6 +545,13 @@ public abstract class AbstractOrderShipGroupCommand extends AbstractCommand impl
             this.isPropertyActiveRemoved = removed;
         }
 
+        private OrderItemShipGroupAssociationCommands orderItemShipGroupAssociationCommands = new SimpleOrderItemShipGroupAssociationCommands();
+
+        public OrderItemShipGroupAssociationCommands getOrderItemShipGroupAssociationCommands()
+        {
+            return this.orderItemShipGroupAssociationCommands;
+        }
+
     }
 
     public static class SimpleCreateOrderShipGroup extends AbstractCreateOrderShipGroup
@@ -529,6 +573,58 @@ public abstract class AbstractOrderShipGroupCommand extends AbstractCommand impl
 	}
 
     
+    public static class SimpleCreateOrderItemShipGroupAssociationCommands implements CreateOrderItemShipGroupAssociationCommands
+    {
+        private List<OrderItemShipGroupAssociationCommand.CreateOrderItemShipGroupAssociation> innerCommands = new ArrayList<OrderItemShipGroupAssociationCommand.CreateOrderItemShipGroupAssociation>();
+
+        public void add(OrderItemShipGroupAssociationCommand.CreateOrderItemShipGroupAssociation c)
+        {
+            innerCommands.add(c);
+        }
+
+        public void remove(OrderItemShipGroupAssociationCommand.CreateOrderItemShipGroupAssociation c)
+        {
+            innerCommands.remove(c);
+        }
+
+        public void clear()
+        {
+            innerCommands.clear();
+        }
+
+        @Override
+        public Iterator<OrderItemShipGroupAssociationCommand.CreateOrderItemShipGroupAssociation> iterator()
+        {
+            return innerCommands.iterator();
+        }
+    }
+
+    public static class SimpleOrderItemShipGroupAssociationCommands implements OrderItemShipGroupAssociationCommands
+    {
+        private List<OrderItemShipGroupAssociationCommand> innerCommands = new ArrayList<OrderItemShipGroupAssociationCommand>();
+
+        public void add(OrderItemShipGroupAssociationCommand c)
+        {
+            innerCommands.add(c);
+        }
+
+        public void remove(OrderItemShipGroupAssociationCommand c)
+        {
+            innerCommands.remove(c);
+        }
+
+        public void clear()
+        {
+            innerCommands.clear();
+        }
+
+        @Override
+        public Iterator<OrderItemShipGroupAssociationCommand> iterator()
+        {
+            return innerCommands.iterator();
+        }
+    }
+
 
 }
 

@@ -69,6 +69,10 @@ namespace Dddml.Wms.Domain.Order
 
 	public interface ICreateOrderShipGroup : ICreateOrMergePatchOrRemoveOrderShipGroup
 	{
+        ICreateOrderItemShipGroupAssociationCommands OrderItemShipGroupAssociations { get; }
+
+        ICreateOrderItemShipGroupAssociation NewCreateOrderItemShipGroupAssociation();
+
 	}
 
 	public interface IMergePatchOrderShipGroup : ICreateOrMergePatchOrRemoveOrderShipGroup
@@ -112,12 +116,40 @@ namespace Dddml.Wms.Domain.Order
 
 		bool IsPropertyActiveRemoved { get; set; }
 
+        IOrderItemShipGroupAssociationCommands OrderItemShipGroupAssociationCommands { get; }
+
+        ICreateOrderItemShipGroupAssociation NewCreateOrderItemShipGroupAssociation();
+
+        IMergePatchOrderItemShipGroupAssociation NewMergePatchOrderItemShipGroupAssociation();
+
+        IRemoveOrderItemShipGroupAssociation NewRemoveOrderItemShipGroupAssociation();
+
 
 	}
 
 	public interface IRemoveOrderShipGroup : ICreateOrMergePatchOrRemoveOrderShipGroup
 	{
 	}
+
+    public interface ICreateOrderItemShipGroupAssociationCommands : IEnumerable<ICreateOrderItemShipGroupAssociation>
+    {
+        void Add(ICreateOrderItemShipGroupAssociation c);
+
+        void Remove(ICreateOrderItemShipGroupAssociation c);
+
+        void Clear();
+
+    }
+
+    public interface IOrderItemShipGroupAssociationCommands : IEnumerable<IOrderItemShipGroupAssociationCommand>
+    {
+        void Add(IOrderItemShipGroupAssociationCommand c);
+
+        void Remove(IOrderItemShipGroupAssociationCommand c);
+
+        void Clear();
+
+    }
 
 
 }

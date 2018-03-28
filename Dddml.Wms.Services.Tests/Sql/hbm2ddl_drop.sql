@@ -323,4 +323,12 @@
 
     drop table if exists PickwaveStateEvents;
 
+    drop table if exists OrderItemShipGroupAssociations;
+
+    drop table if exists OrderItemShipGroupAssociationStateEvents;
+
+    drop table if exists OrderItemShipGroupAssociation_RV;
+
+    drop table if exists OrderItemShipGroupAssociationMvoStateEvents;
+
     drop table if exists nhibernate_hilo_table;

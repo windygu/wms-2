@@ -521,6 +521,18 @@
     <Compile Include="Generated\Domain\OrderItemMvo\NHibernate\OrderItemMvoApplicationService.cs">
       <DependentUpon>GenerateOrderItemMvoDomainNHibernate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\OrderItemShipGroupAssociationMvo\NHibernate\NHibernateOrderItemShipGroupAssociationMvoEventStore.cs">
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderItemShipGroupAssociationMvo\NHibernate\NHibernateOrderItemShipGroupAssociationMvoStateQueryRepository.cs">
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderItemShipGroupAssociationMvo\NHibernate\NHibernateOrderItemShipGroupAssociationMvoStateRepository.cs">
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderItemShipGroupAssociationMvo\NHibernate\OrderItemShipGroupAssociationMvoApplicationService.cs">
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomainNHibernate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\OrderItemShipGrpInvReservation\NHibernate\NHibernateOrderItemShipGrpInvReservationEventStore.cs">
       <DependentUpon>GenerateOrderItemShipGrpInvReservationDomainNHibernate.tt</DependentUpon>
     </Compile>
@@ -570,6 +582,12 @@
       <DependentUpon>GenerateOrderShipmentDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Order\NHibernate\NHibernateOrderEventStore.cs">
+      <DependentUpon>GenerateOrderDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Order\NHibernate\NHibernateOrderItemShipGroupAssociationStateDao.cs">
+      <DependentUpon>GenerateOrderDomainNHibernate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Order\NHibernate\NHibernateOrderItemShipGroupAssociationStateEventDao.cs">
       <DependentUpon>GenerateOrderDomainNHibernate.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Order\NHibernate\NHibernateOrderItemStateDao.cs">
@@ -1248,6 +1266,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateOrderItemMvoDomainNHibernate.tt</DependentUpon>
     </Content>
+    <Content Include="Generated\Domain\OrderItemShipGroupAssociationMvo\NHibernate\GenerateOrderItemShipGroupAssociationMvoDomainNHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomainNHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="Generated\Domain\OrderItemShipGrpInvReservation\NHibernate\GenerateOrderItemShipGrpInvReservationDomainNHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1599,6 +1622,10 @@
 .\MovementTypeState.hbm.xml
 .\OrderItemMvoState.hbm.xml
 .\OrderItemMvoStateEvent.hbm.xml
+.\OrderItemShipGroupAssociationMvoState.hbm.xml
+.\OrderItemShipGroupAssociationMvoStateEvent.hbm.xml
+.\OrderItemShipGroupAssociationState.hbm.xml
+.\OrderItemShipGroupAssociationStateEvent.hbm.xml
 .\OrderItemShipGrpInvReservationState.hbm.xml
 .\OrderItemShipGrpInvReservationStateEvent.hbm.xml
 .\OrderItemState.hbm.xml
@@ -2094,6 +2121,18 @@
     <EmbeddedResource Include="Generated\NHibernate\Mappings\PickwaveStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\OrderItemShipGroupAssociationState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\OrderItemShipGroupAssociationStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\OrderItemShipGroupAssociationMvoState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generated\NHibernate\Mappings\OrderItemShipGroupAssociationMvoStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
     <Content Include="LoadBoundedContext.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>LoadBoundedContext.txt</LastGenOutput>
@@ -2443,6 +2482,8 @@
       <LastOutputs>
 .\GenerateOrderDomainNHibernate.txt
 .\NHibernateOrderEventStore.cs
+.\NHibernateOrderItemShipGroupAssociationStateDao.cs
+.\NHibernateOrderItemShipGroupAssociationStateEventDao.cs
 .\NHibernateOrderItemStateDao.cs
 .\NHibernateOrderItemStateEventDao.cs
 .\NHibernateOrderRoleStateDao.cs
@@ -2902,6 +2943,17 @@
 .\NHibernatePickwaveStateQueryRepository.cs
 .\NHibernatePickwaveStateRepository.cs
 .\PickwaveApplicationService.cs
+</LastOutputs>
+    </Content>
+    <Content Include="Generated\Domain\OrderItemShipGroupAssociationMvo\NHibernate\GenerateOrderItemShipGroupAssociationMvoDomainNHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateOrderItemShipGroupAssociationMvoDomainNHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateOrderItemShipGroupAssociationMvoDomainNHibernate.txt
+.\NHibernateOrderItemShipGroupAssociationMvoEventStore.cs
+.\NHibernateOrderItemShipGroupAssociationMvoStateQueryRepository.cs
+.\NHibernateOrderItemShipGroupAssociationMvoStateRepository.cs
+.\OrderItemShipGroupAssociationMvoApplicationService.cs
 </LastOutputs>
     </Content>
   </ItemGroup>

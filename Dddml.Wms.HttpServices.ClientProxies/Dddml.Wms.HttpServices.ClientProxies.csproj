@@ -176,6 +176,9 @@
     <Compile Include="Generated\OrderItemMvoApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\OrderItemShipGroupAssociationMvoApplicationServiceProxy.cs">
+      <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\OrderItemShipGrpInvReservationApplicationServiceProxy.cs">
       <DependentUpon>GenerateRamlClientProxies.tt</DependentUpon>
     </Compile>
@@ -327,6 +330,7 @@
 .\MovementTypeApplicationServiceProxy.cs
 .\OrderApplicationServiceProxy.cs
 .\OrderItemMvoApplicationServiceProxy.cs
+.\OrderItemShipGroupAssociationMvoApplicationServiceProxy.cs
 .\OrderItemShipGrpInvReservationApplicationServiceProxy.cs
 .\OrderRoleMvoApplicationServiceProxy.cs
 .\OrderShipGroupMvoApplicationServiceProxy.cs

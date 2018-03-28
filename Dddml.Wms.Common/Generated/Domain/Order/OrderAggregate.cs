@@ -317,6 +317,41 @@ namespace Dddml.Wms.Domain.Order
         }// END ThrowOnInconsistentCommands /////////////////////
 
 
+        protected void ThrowOnInconsistentCommands(IOrderShipGroupCommand command, IOrderItemShipGroupAssociationCommand innerCommand)
+        {
+
+            var properties =  command as ICreateOrMergePatchOrRemoveOrderShipGroup;
+            var innerProperties = innerCommand as ICreateOrMergePatchOrRemoveOrderItemShipGroupAssociation;
+            if (properties == null || innerProperties == null) { return; }
+            if (innerProperties.OrderId == default(string))
+            {
+                innerProperties.OrderId = properties.OrderId;
+            }
+            else
+            {
+                var outerOrderIdName = "OrderId";
+                var outerOrderIdValue = properties.OrderId;
+                var innerOrderIdName = "OrderId";
+                var innerOrderIdValue = innerProperties.OrderId;
+                ThrowOnInconsistentIds(innerProperties, innerOrderIdName, innerOrderIdValue, outerOrderIdName, outerOrderIdValue);
+            }
+
+            if (innerProperties.OrderShipGroupShipGroupSeqId == default(long?))
+            {
+                innerProperties.OrderShipGroupShipGroupSeqId = properties.ShipGroupSeqId;
+            }
+            else
+            {
+                var outerShipGroupSeqIdName = "ShipGroupSeqId";
+                var outerShipGroupSeqIdValue = properties.ShipGroupSeqId;
+                var innerOrderShipGroupShipGroupSeqIdName = "OrderShipGroupShipGroupSeqId";
+                var innerOrderShipGroupShipGroupSeqIdValue = innerProperties.OrderShipGroupShipGroupSeqId;
+                ThrowOnInconsistentIds(innerProperties, innerOrderShipGroupShipGroupSeqIdName, innerOrderShipGroupShipGroupSeqIdValue, outerShipGroupSeqIdName, outerShipGroupSeqIdValue);
+            }
+
+        }// END ThrowOnInconsistentCommands /////////////////////
+
+
         protected virtual IOrderRoleStateEvent Map(IOrderRoleCommand c, IOrderCommand outerCommand, long version, IOrderState outerState)
         {
             var create = (c.CommandType == CommandType.Create) ? (c as ICreateOrderRole) : null;
@@ -599,6 +634,15 @@ namespace Dddml.Wms.Domain.Order
 
             e.CreatedBy = (string)c.RequesterId;
             e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+
+            foreach (ICreateOrderItemShipGroupAssociation innerCommand in c.OrderItemShipGroupAssociations)
+            {
+                ThrowOnInconsistentCommands(c, innerCommand);
+
+                IOrderItemShipGroupAssociationStateCreated innerEvent = MapCreate(innerCommand, c, version, s);
+                e.AddOrderItemShipGroupAssociationEvent(innerEvent);
+            }
+
             return e;
 
         }// END Map(ICreate... ////////////////////////////
@@ -653,6 +697,15 @@ namespace Dddml.Wms.Domain.Order
 
             e.CreatedBy = (string)c.RequesterId;
             e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+
+            foreach (IOrderItemShipGroupAssociationCommand innerCommand in c.OrderItemShipGroupAssociationCommands)
+            {
+                ThrowOnInconsistentCommands(c, innerCommand);
+
+                IOrderItemShipGroupAssociationStateEvent innerEvent = Map(innerCommand, c, version, s);
+                e.AddOrderItemShipGroupAssociationEvent(innerEvent);
+            }
+
             return e;
 
         }// END Map(IMergePatch... ////////////////////////////
@@ -663,6 +716,84 @@ namespace Dddml.Wms.Domain.Order
             c.RequesterId = outerCommand.RequesterId;
 			var stateEventId = new OrderShipGroupEventId(c.OrderId, c.ShipGroupSeqId, version);
             IOrderShipGroupStateRemoved e = NewOrderShipGroupStateRemoved(stateEventId);
+
+
+            e.CreatedBy = (string)c.RequesterId;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+
+            return e;
+
+        }// END Map(IRemove... ////////////////////////////
+
+
+        protected virtual IOrderItemShipGroupAssociationStateEvent Map(IOrderItemShipGroupAssociationCommand c, IOrderShipGroupCommand outerCommand, long version, IOrderShipGroupState outerState)
+        {
+            var create = (c.CommandType == CommandType.Create) ? (c as ICreateOrderItemShipGroupAssociation) : null;
+            if(create != null)
+            {
+                return MapCreate(create, outerCommand, version, outerState);
+            }
+
+            var merge = (c.CommandType == CommandType.MergePatch) ? (c as IMergePatchOrderItemShipGroupAssociation) : null;
+            if(merge != null)
+            {
+                return MapMergePatch(merge, outerCommand, version, outerState);
+            }
+
+            var remove = (c.CommandType == CommandType.Remove) ? (c as IRemoveOrderItemShipGroupAssociation) : null;
+            if (remove != null)
+            {
+                return MapRemove(remove, outerCommand, version);
+            }
+            throw new NotSupportedException();
+        }
+
+
+        protected virtual IOrderItemShipGroupAssociationStateCreated MapCreate(ICreateOrderItemShipGroupAssociation c, IOrderShipGroupCommand outerCommand, long version, IOrderShipGroupState outerState)
+        {
+            c.RequesterId = outerCommand.RequesterId;
+			var stateEventId = new OrderItemShipGroupAssociationEventId(c.OrderId, c.OrderShipGroupShipGroupSeqId, c.OrderItemSeqId, version);
+            IOrderItemShipGroupAssociationStateCreated e = NewOrderItemShipGroupAssociationStateCreated(stateEventId);
+            var s = outerState.OrderItemShipGroupAssociations.Get(c.OrderItemSeqId, true);
+
+            e.Quantity = c.Quantity;
+            e.CancelQuantity = c.CancelQuantity;
+            e.Active = c.Active;
+
+            e.CreatedBy = (string)c.RequesterId;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+            return e;
+
+        }// END Map(ICreate... ////////////////////////////
+
+
+
+        protected virtual IOrderItemShipGroupAssociationStateMergePatched MapMergePatch(IMergePatchOrderItemShipGroupAssociation c, IOrderShipGroupCommand outerCommand, long version, IOrderShipGroupState outerState)
+        {
+            c.RequesterId = outerCommand.RequesterId;
+			var stateEventId = new OrderItemShipGroupAssociationEventId(c.OrderId, c.OrderShipGroupShipGroupSeqId, c.OrderItemSeqId, version);
+            IOrderItemShipGroupAssociationStateMergePatched e = NewOrderItemShipGroupAssociationStateMergePatched(stateEventId);
+            var s = outerState.OrderItemShipGroupAssociations.Get(c.OrderItemSeqId);
+
+            e.Quantity = c.Quantity;
+            e.CancelQuantity = c.CancelQuantity;
+            e.Active = c.Active;
+            e.IsPropertyQuantityRemoved = c.IsPropertyQuantityRemoved;
+            e.IsPropertyCancelQuantityRemoved = c.IsPropertyCancelQuantityRemoved;
+            e.IsPropertyActiveRemoved = c.IsPropertyActiveRemoved;
+
+            e.CreatedBy = (string)c.RequesterId;
+            e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
+            return e;
+
+        }// END Map(IMergePatch... ////////////////////////////
+
+
+        protected virtual IOrderItemShipGroupAssociationStateRemoved MapRemove(IRemoveOrderItemShipGroupAssociation c, IOrderShipGroupCommand outerCommand, long version)
+        {
+            c.RequesterId = outerCommand.RequesterId;
+			var stateEventId = new OrderItemShipGroupAssociationEventId(c.OrderId, c.OrderShipGroupShipGroupSeqId, c.OrderItemSeqId, version);
+            IOrderItemShipGroupAssociationStateRemoved e = NewOrderItemShipGroupAssociationStateRemoved(stateEventId);
 
 
             e.CreatedBy = (string)c.RequesterId;
@@ -766,6 +897,22 @@ namespace Dddml.Wms.Domain.Order
         private OrderShipGroupStateRemoved NewOrderShipGroupStateRemoved(OrderShipGroupEventId stateEventId)
 		{
 			return new OrderShipGroupStateRemoved(stateEventId);
+		}
+
+
+		private OrderItemShipGroupAssociationStateCreated NewOrderItemShipGroupAssociationStateCreated(OrderItemShipGroupAssociationEventId stateEventId)
+		{
+			return new OrderItemShipGroupAssociationStateCreated(stateEventId);
+		}
+
+        private OrderItemShipGroupAssociationStateMergePatched NewOrderItemShipGroupAssociationStateMergePatched(OrderItemShipGroupAssociationEventId stateEventId)
+		{
+			return new OrderItemShipGroupAssociationStateMergePatched(stateEventId);
+		}
+
+        private OrderItemShipGroupAssociationStateRemoved NewOrderItemShipGroupAssociationStateRemoved(OrderItemShipGroupAssociationEventId stateEventId)
+		{
+			return new OrderItemShipGroupAssociationStateRemoved(stateEventId);
 		}
 
     }

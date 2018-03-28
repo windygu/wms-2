@@ -336,6 +336,24 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetOrderShipGroupAsync(orderId, shipGroupSeqId).GetAwaiter().GetResult();
         }
 
+        public async virtual Task<IOrderItemShipGroupAssociationState> GetOrderItemShipGroupAssociationAsync(string orderId, long? orderShipGroupShipGroupSeqId, string orderItemSeqId)
+        {
+            var uriParameters = new OrderItemShipGroupAssociationUriParameters();
+            uriParameters.OrderId = orderId;
+            uriParameters.OrderShipGroupShipGroupSeqId = orderShipGroupShipGroupSeqId;
+            uriParameters.OrderItemSeqId = orderItemSeqId;
+
+            var req = new OrderItemShipGroupAssociationGetRequest(uriParameters);
+            var resp = await _ramlClient.OrderItemShipGroupAssociation.Get(req);
+            OrderProxyUtils.ThrowOnHttpResponseError(resp);
+            return (resp.Content == null) ? null : resp.Content.ToOrderItemShipGroupAssociationState();
+        }
+
+        public virtual IOrderItemShipGroupAssociationState GetOrderItemShipGroupAssociation(string orderId, long? orderShipGroupShipGroupSeqId, string orderItemSeqId)
+        {
+            return GetOrderItemShipGroupAssociationAsync(orderId, orderShipGroupShipGroupSeqId, orderItemSeqId).GetAwaiter().GetResult();
+        }
+
 
         protected virtual string QueryFieldValueSeparator
         {

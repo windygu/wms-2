@@ -98,6 +98,10 @@ public interface OrderShipGroupCommand extends Command
 
     interface CreateOrderShipGroup extends CreateOrMergePatchOrderShipGroup
     {
+        CreateOrderItemShipGroupAssociationCommands getOrderItemShipGroupAssociations();
+
+        OrderItemShipGroupAssociationCommand.CreateOrderItemShipGroupAssociation newCreateOrderItemShipGroupAssociation();
+
     }
 
     interface MergePatchOrderShipGroup extends CreateOrMergePatchOrderShipGroup
@@ -178,11 +182,37 @@ public interface OrderShipGroupCommand extends Command
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
+        OrderItemShipGroupAssociationCommands getOrderItemShipGroupAssociationCommands();
+
+        OrderItemShipGroupAssociationCommand.CreateOrderItemShipGroupAssociation newCreateOrderItemShipGroupAssociation();
+
+        OrderItemShipGroupAssociationCommand.MergePatchOrderItemShipGroupAssociation newMergePatchOrderItemShipGroupAssociation();
+
+        OrderItemShipGroupAssociationCommand.RemoveOrderItemShipGroupAssociation newRemoveOrderItemShipGroupAssociation();
+
     }
 
 	interface RemoveOrderShipGroup extends OrderShipGroupCommand
 	{
 	}
+
+    interface CreateOrderItemShipGroupAssociationCommands extends Iterable<OrderItemShipGroupAssociationCommand.CreateOrderItemShipGroupAssociation>
+    {
+        void add(OrderItemShipGroupAssociationCommand.CreateOrderItemShipGroupAssociation c);
+
+        void remove(OrderItemShipGroupAssociationCommand.CreateOrderItemShipGroupAssociation c);
+
+        void clear();
+    }
+
+    interface OrderItemShipGroupAssociationCommands extends Iterable<OrderItemShipGroupAssociationCommand>
+    {
+        void add(OrderItemShipGroupAssociationCommand c);
+
+        void remove(OrderItemShipGroupAssociationCommand c);
+
+        void clear();
+    }
 
 }
 

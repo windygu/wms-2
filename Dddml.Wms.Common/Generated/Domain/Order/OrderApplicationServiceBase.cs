@@ -176,6 +176,11 @@ namespace Dddml.Wms.Domain.Order
             return StateQueryRepository.GetOrderShipGroup(orderId, shipGroupSeqId);
         }
 
+        public virtual IOrderItemShipGroupAssociationState GetOrderItemShipGroupAssociation(string orderId, long? orderShipGroupShipGroupSeqId, string orderItemSeqId)
+        {
+            return StateQueryRepository.GetOrderItemShipGroupAssociation(orderId, orderShipGroupShipGroupSeqId, orderItemSeqId);
+        }
+
 
 		public abstract IOrderAggregate GetOrderAggregate(IOrderState state);
 

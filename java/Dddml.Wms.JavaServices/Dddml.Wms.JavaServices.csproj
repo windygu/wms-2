@@ -550,6 +550,20 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\orderitemmvo\hibernate\HibernateOrderItemMvoStateRepository.java">
       <DependentUpon>GenerateOrderItemMvoDomainHibernate.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgroupassociationmvo\hibernate\GenerateOrderItemShipGroupAssociationMvoDomainHibernate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgroupassociationmvo\hibernate\HibernateOrderItemShipGroupAssociationMvoEventStore.java">
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgroupassociationmvo\hibernate\HibernateOrderItemShipGroupAssociationMvoStateQueryRepository.java">
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgroupassociationmvo\hibernate\HibernateOrderItemShipGroupAssociationMvoStateRepository.java">
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomainHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgrpinvreservation\hibernate\GenerateOrderItemShipGrpInvReservationDomainHibernate.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -612,6 +626,12 @@
       <DependentUpon>GenerateOrderDomainHibernate.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\order\hibernate\HibernateOrderEventStore.java">
+      <DependentUpon>GenerateOrderDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\hibernate\HibernateOrderItemShipGroupAssociationStateDao.java">
+      <DependentUpon>GenerateOrderDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\hibernate\HibernateOrderItemShipGroupAssociationStateEventDao.java">
       <DependentUpon>GenerateOrderDomainHibernate.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\order\hibernate\HibernateOrderItemStateDao.java">
@@ -1602,6 +1622,18 @@
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PickwaveStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderItemShipGroupAssociationState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderItemShipGroupAssociationStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderItemShipGroupAssociationMvoState.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderItemShipGroupAssociationMvoStateEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
     <Content Include="src\generated\resources\script\AddStateIdForeignKeyConstraints.sql">
       <DependentUpon>GenerateStateIdForeignKeyConstraints.tt</DependentUpon>
     </Content>
@@ -1756,6 +1788,10 @@
 .\MovementTypeState.hbm.xml
 .\OrderItemMvoState.hbm.xml
 .\OrderItemMvoStateEvent.hbm.xml
+.\OrderItemShipGroupAssociationMvoState.hbm.xml
+.\OrderItemShipGroupAssociationMvoStateEvent.hbm.xml
+.\OrderItemShipGroupAssociationState.hbm.xml
+.\OrderItemShipGroupAssociationStateEvent.hbm.xml
 .\OrderItemShipGrpInvReservationState.hbm.xml
 .\OrderItemShipGrpInvReservationStateEvent.hbm.xml
 .\OrderItemState.hbm.xml
@@ -2139,6 +2175,8 @@
       <LastOutputs>
 .\GenerateOrderDomainHibernate.txt
 .\HibernateOrderEventStore.java
+.\HibernateOrderItemShipGroupAssociationStateDao.java
+.\HibernateOrderItemShipGroupAssociationStateEventDao.java
 .\HibernateOrderItemStateDao.java
 .\HibernateOrderItemStateEventDao.java
 .\HibernateOrderRoleStateDao.java
@@ -2557,6 +2595,16 @@
 .\HibernatePickwaveEventStore.java
 .\HibernatePickwaveStateQueryRepository.java
 .\HibernatePickwaveStateRepository.java
+</LastOutputs>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\orderitemshipgroupassociationmvo\hibernate\GenerateOrderItemShipGroupAssociationMvoDomainHibernate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateOrderItemShipGroupAssociationMvoDomainHibernate.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateOrderItemShipGroupAssociationMvoDomainHibernate.txt
+.\HibernateOrderItemShipGroupAssociationMvoEventStore.java
+.\HibernateOrderItemShipGroupAssociationMvoStateQueryRepository.java
+.\HibernateOrderItemShipGroupAssociationMvoStateRepository.java
 </LastOutputs>
     </Content>
   </ItemGroup>

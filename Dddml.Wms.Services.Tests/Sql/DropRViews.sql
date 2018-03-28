@@ -9,6 +9,7 @@ DROP view if exists `MovementConfirmationLine_RV` ;
 DROP view if exists `OrderRole_RV` ;
 DROP view if exists `OrderItem_RV` ;
 DROP view if exists `OrderShipGroup_RV` ;
+DROP view if exists `OrderItemShipGroupAssociation_RV` ;
 DROP view if exists `PhysicalInventoryLine_RV` ;
 DROP view if exists `PicklistRole_RV` ;
 DROP view if exists `PicklistItem_RV` ;

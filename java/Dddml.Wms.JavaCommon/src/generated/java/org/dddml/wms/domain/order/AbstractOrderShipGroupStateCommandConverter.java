@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 
-public abstract class AbstractOrderShipGroupStateCommandConverter<TCreateOrderShipGroup extends OrderShipGroupCommand.CreateOrderShipGroup, TMergePatchOrderShipGroup extends OrderShipGroupCommand.MergePatchOrderShipGroup, TRemoveOrderShipGroup extends OrderShipGroupCommand.RemoveOrderShipGroup>
+public abstract class AbstractOrderShipGroupStateCommandConverter<TCreateOrderShipGroup extends OrderShipGroupCommand.CreateOrderShipGroup, TMergePatchOrderShipGroup extends OrderShipGroupCommand.MergePatchOrderShipGroup, TRemoveOrderShipGroup extends OrderShipGroupCommand.RemoveOrderShipGroup, TCreateOrderItemShipGroupAssociation extends OrderItemShipGroupAssociationCommand.CreateOrderItemShipGroupAssociation, TMergePatchOrderItemShipGroupAssociation extends OrderItemShipGroupAssociationCommand.MergePatchOrderItemShipGroupAssociation, TRemoveOrderItemShipGroupAssociation extends OrderItemShipGroupAssociationCommand.RemoveOrderItemShipGroupAssociation>
 {
     public OrderShipGroupCommand toCreateOrMergePatchOrderShipGroup(OrderShipGroupState state)
     {
@@ -73,6 +73,11 @@ public abstract class AbstractOrderShipGroupStateCommandConverter<TCreateOrderSh
         if (state.getEstimatedDeliveryDate() == null) { cmd.setIsPropertyEstimatedDeliveryDateRemoved(true); }
         if (state.getPickwaveId() == null) { cmd.setIsPropertyPickwaveIdRemoved(true); }
         if (state.getActive() == null) { cmd.setIsPropertyActiveRemoved(true); }
+        for (OrderItemShipGroupAssociationState d : state.getOrderItemShipGroupAssociations())
+        {
+            OrderItemShipGroupAssociationCommand c = getOrderItemShipGroupAssociationStateCommandConverter().toCreateOrMergePatchOrderItemShipGroupAssociation(d);
+            cmd.getOrderItemShipGroupAssociationCommands().add(c);
+        }
         return cmd;
     }
 
@@ -101,8 +106,16 @@ public abstract class AbstractOrderShipGroupStateCommandConverter<TCreateOrderSh
         cmd.setPickwaveId(state.getPickwaveId());
         cmd.setActive(state.getActive());
         cmd.setOrderId(state.getOrderId());
+        for (OrderItemShipGroupAssociationState d : state.getOrderItemShipGroupAssociations())
+        {
+            OrderItemShipGroupAssociationCommand.CreateOrderItemShipGroupAssociation c = getOrderItemShipGroupAssociationStateCommandConverter().toCreateOrderItemShipGroupAssociation(d);
+            cmd.getOrderItemShipGroupAssociations().add(c);
+        }
         return cmd;
     }
+
+    protected abstract AbstractOrderItemShipGroupAssociationStateCommandConverter<TCreateOrderItemShipGroupAssociation, TMergePatchOrderItemShipGroupAssociation, TRemoveOrderItemShipGroupAssociation>
+        getOrderItemShipGroupAssociationStateCommandConverter();
 
     protected abstract TCreateOrderShipGroup newCreateOrderShipGroup();
 
@@ -110,7 +123,7 @@ public abstract class AbstractOrderShipGroupStateCommandConverter<TCreateOrderSh
 
     protected abstract TRemoveOrderShipGroup newRemoveOrderShipGroup();
 
-    public static class SimpleOrderShipGroupStateCommandConverter extends AbstractOrderShipGroupStateCommandConverter<AbstractOrderShipGroupCommand.SimpleCreateOrderShipGroup, AbstractOrderShipGroupCommand.SimpleMergePatchOrderShipGroup, AbstractOrderShipGroupCommand.SimpleRemoveOrderShipGroup>
+    public static class SimpleOrderShipGroupStateCommandConverter extends AbstractOrderShipGroupStateCommandConverter<AbstractOrderShipGroupCommand.SimpleCreateOrderShipGroup, AbstractOrderShipGroupCommand.SimpleMergePatchOrderShipGroup, AbstractOrderShipGroupCommand.SimpleRemoveOrderShipGroup, AbstractOrderItemShipGroupAssociationCommand.SimpleCreateOrderItemShipGroupAssociation, AbstractOrderItemShipGroupAssociationCommand.SimpleMergePatchOrderItemShipGroupAssociation, AbstractOrderItemShipGroupAssociationCommand.SimpleRemoveOrderItemShipGroupAssociation>
     {
         @Override
         protected AbstractOrderShipGroupCommand.SimpleCreateOrderShipGroup newCreateOrderShipGroup() {
@@ -125,6 +138,12 @@ public abstract class AbstractOrderShipGroupStateCommandConverter<TCreateOrderSh
         @Override
         protected AbstractOrderShipGroupCommand.SimpleRemoveOrderShipGroup newRemoveOrderShipGroup() {
             return new AbstractOrderShipGroupCommand.SimpleRemoveOrderShipGroup();
+        }
+
+        @Override
+        protected AbstractOrderItemShipGroupAssociationStateCommandConverter<AbstractOrderItemShipGroupAssociationCommand.SimpleCreateOrderItemShipGroupAssociation, AbstractOrderItemShipGroupAssociationCommand.SimpleMergePatchOrderItemShipGroupAssociation, AbstractOrderItemShipGroupAssociationCommand.SimpleRemoveOrderItemShipGroupAssociation> getOrderItemShipGroupAssociationStateCommandConverter()
+        {
+            return new AbstractOrderItemShipGroupAssociationStateCommandConverter.SimpleOrderItemShipGroupAssociationStateCommandConverter();
         }
 
 

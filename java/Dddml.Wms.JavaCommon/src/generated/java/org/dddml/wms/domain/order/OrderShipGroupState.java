@@ -129,6 +129,8 @@ public interface OrderShipGroupState
 
     boolean getForReapplying();
 
+    OrderItemShipGroupAssociationStates getOrderItemShipGroupAssociations();
+
 
     void mutate(Event e);
 

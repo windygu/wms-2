@@ -34,6 +34,9 @@ namespace Dddml.Wms.Domain.Order
 		void Mutate(IEvent e);
 
 
+		IOrderItemShipGroupAssociationStates OrderItemShipGroupAssociations { get; set; }
+
+
         bool IsUnsaved { get; }
 
 	}

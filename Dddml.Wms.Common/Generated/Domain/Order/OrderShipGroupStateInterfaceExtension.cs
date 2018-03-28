@@ -16,18 +16,20 @@ namespace Dddml.Wms.Domain.Order
 	public static partial class OrderShipGroupStateInterfaceExtension
 	{
 
-        public static IOrderShipGroupCommand ToCreateOrMergePatchOrderShipGroup<TCreateOrderShipGroup, TMergePatchOrderShipGroup>(this IOrderShipGroupState state)
+        public static IOrderShipGroupCommand ToCreateOrMergePatchOrderShipGroup<TCreateOrderShipGroup, TMergePatchOrderShipGroup, TCreateOrderItemShipGroupAssociation, TMergePatchOrderItemShipGroupAssociation>(this IOrderShipGroupState state)
             where TCreateOrderShipGroup : ICreateOrderShipGroup, new()
             where TMergePatchOrderShipGroup : IMergePatchOrderShipGroup, new()
+            where TCreateOrderItemShipGroupAssociation : ICreateOrderItemShipGroupAssociation, new()
+            where TMergePatchOrderItemShipGroupAssociation : IMergePatchOrderItemShipGroupAssociation, new()
         {
             bool bUnsaved = ((IOrderShipGroupState)state).IsUnsaved;
             if (bUnsaved)
             {
-                return state.ToCreateOrderShipGroup<TCreateOrderShipGroup>();
+                return state.ToCreateOrderShipGroup<TCreateOrderShipGroup, TCreateOrderItemShipGroupAssociation>();
             }
             else 
             {
-                return state.ToMergePatchOrderShipGroup<TMergePatchOrderShipGroup>();
+                return state.ToMergePatchOrderShipGroup<TMergePatchOrderShipGroup, TCreateOrderItemShipGroupAssociation, TMergePatchOrderItemShipGroupAssociation>();
             }
         }
 
@@ -39,8 +41,10 @@ namespace Dddml.Wms.Domain.Order
             return cmd;
         }
 
-        public static TMergePatchOrderShipGroup ToMergePatchOrderShipGroup<TMergePatchOrderShipGroup>(this IOrderShipGroupState state)
+        public static TMergePatchOrderShipGroup ToMergePatchOrderShipGroup<TMergePatchOrderShipGroup, TCreateOrderItemShipGroupAssociation, TMergePatchOrderItemShipGroupAssociation>(this IOrderShipGroupState state)
             where TMergePatchOrderShipGroup : IMergePatchOrderShipGroup, new()
+            where TCreateOrderItemShipGroupAssociation : ICreateOrderItemShipGroupAssociation, new()
+            where TMergePatchOrderItemShipGroupAssociation : IMergePatchOrderItemShipGroupAssociation, new()
         {
             var cmd = new TMergePatchOrderShipGroup();
 
@@ -84,11 +88,17 @@ namespace Dddml.Wms.Domain.Order
             if (state.EstimatedShipDate == null) { cmd.IsPropertyEstimatedShipDateRemoved = true; }
             if (state.EstimatedDeliveryDate == null) { cmd.IsPropertyEstimatedDeliveryDateRemoved = true; }
             if (state.PickwaveId == null) { cmd.IsPropertyPickwaveIdRemoved = true; }
+            foreach (var d in state.OrderItemShipGroupAssociations)
+            {
+                var c = d.ToCreateOrMergePatchOrderItemShipGroupAssociation<TCreateOrderItemShipGroupAssociation, TMergePatchOrderItemShipGroupAssociation>();
+                cmd.OrderItemShipGroupAssociationCommands.Add(c);
+            }
             return cmd;
         }
 
-        public static TCreateOrderShipGroup ToCreateOrderShipGroup<TCreateOrderShipGroup>(this IOrderShipGroupState state)
+        public static TCreateOrderShipGroup ToCreateOrderShipGroup<TCreateOrderShipGroup, TCreateOrderItemShipGroupAssociation>(this IOrderShipGroupState state)
             where TCreateOrderShipGroup : ICreateOrderShipGroup, new()
+            where TCreateOrderItemShipGroupAssociation : ICreateOrderItemShipGroupAssociation, new()
         {
             var cmd = new TCreateOrderShipGroup();
 
@@ -113,6 +123,11 @@ namespace Dddml.Wms.Domain.Order
             cmd.PickwaveId = state.PickwaveId;
             cmd.Active = ((IOrderShipGroupStateProperties)state).Active;
             cmd.OrderId = state.OrderId;
+            foreach (var d in state.OrderItemShipGroupAssociations)
+            {
+                var c = d.ToCreateOrderItemShipGroupAssociation<TCreateOrderItemShipGroupAssociation>();
+                cmd.OrderItemShipGroupAssociations.Add(c);
+            }
             return cmd;
         }
 		

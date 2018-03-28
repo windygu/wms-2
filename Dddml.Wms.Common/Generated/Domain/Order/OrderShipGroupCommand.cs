@@ -98,6 +98,33 @@ namespace Dddml.Wms.Domain.Order
 		}
 
 
+        private CreateOrderItemShipGroupAssociationCommands _orderItemShipGroupAssociations = new CreateOrderItemShipGroupAssociationCommands();
+
+        public ICreateOrderItemShipGroupAssociationCommands OrderItemShipGroupAssociations
+        {
+            get
+            {
+                return this._orderItemShipGroupAssociations;
+            }
+        }
+
+        public CreateOrderItemShipGroupAssociation NewCreateOrderItemShipGroupAssociation()
+        {
+            var c = new CreateOrderItemShipGroupAssociation();
+            c.OrderId = this.OrderId;
+
+            c.OrderShipGroupShipGroupSeqId = this.ShipGroupSeqId;
+
+            return c;
+        }
+
+        ICreateOrderItemShipGroupAssociation ICreateOrderShipGroup.NewCreateOrderItemShipGroupAssociation()
+        {
+            return this.NewCreateOrderItemShipGroupAssociation();
+        }
+
+
+
         protected override string GetCommandType()
         {
             return Dddml.Wms.Specialization.CommandType.Create;
@@ -151,6 +178,64 @@ namespace Dddml.Wms.Domain.Order
 		{
 		}
 
+        private OrderItemShipGroupAssociationCommands _orderItemShipGroupAssociationCommands = new OrderItemShipGroupAssociationCommands();
+
+        public IOrderItemShipGroupAssociationCommands OrderItemShipGroupAssociationCommands
+        {
+            get
+            {
+                return this._orderItemShipGroupAssociationCommands;
+            }
+        }
+
+
+        public CreateOrderItemShipGroupAssociation NewCreateOrderItemShipGroupAssociation()
+        {
+            var c = new CreateOrderItemShipGroupAssociation();
+            c.OrderId = this.OrderId;
+
+            c.OrderShipGroupShipGroupSeqId = this.ShipGroupSeqId;
+
+            return c;
+        }
+
+        ICreateOrderItemShipGroupAssociation IMergePatchOrderShipGroup.NewCreateOrderItemShipGroupAssociation()
+        {
+            return this.NewCreateOrderItemShipGroupAssociation();
+        }
+
+        public MergePatchOrderItemShipGroupAssociation NewMergePatchOrderItemShipGroupAssociation()
+        {
+            var c = new MergePatchOrderItemShipGroupAssociation();
+            c.OrderId = this.OrderId;
+
+            c.OrderShipGroupShipGroupSeqId = this.ShipGroupSeqId;
+
+            return c;
+        }
+
+        IMergePatchOrderItemShipGroupAssociation IMergePatchOrderShipGroup.NewMergePatchOrderItemShipGroupAssociation()
+        {
+            return this.NewMergePatchOrderItemShipGroupAssociation();
+        }
+
+
+        public RemoveOrderItemShipGroupAssociation NewRemoveOrderItemShipGroupAssociation()
+        {
+            var c = new RemoveOrderItemShipGroupAssociation();
+            c.OrderId = this.OrderId;
+
+            c.OrderShipGroupShipGroupSeqId = this.ShipGroupSeqId;
+
+            return c;
+        }
+
+        IRemoveOrderItemShipGroupAssociation IMergePatchOrderShipGroup.NewRemoveOrderItemShipGroupAssociation()
+        {
+            return this.NewRemoveOrderItemShipGroupAssociation();
+        }
+
+
         protected override string GetCommandType()
         {
             return Dddml.Wms.Specialization.CommandType.MergePatch;
@@ -169,5 +254,68 @@ namespace Dddml.Wms.Domain.Order
             return Dddml.Wms.Specialization.CommandType.Remove;
         }
 	}
+
+
+    public class CreateOrderItemShipGroupAssociationCommands : ICreateOrderItemShipGroupAssociationCommands
+    {
+        private List<ICreateOrderItemShipGroupAssociation> _innerCommands = new List<ICreateOrderItemShipGroupAssociation>();
+
+        public void Add(ICreateOrderItemShipGroupAssociation c)
+        {
+            _innerCommands.Add(c);
+        }
+
+        public void Remove(ICreateOrderItemShipGroupAssociation c)
+        {
+            _innerCommands.Remove(c);
+        }
+
+        public void Clear()
+        {
+            _innerCommands.Clear();
+        }
+
+        public IEnumerator<ICreateOrderItemShipGroupAssociation> GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+    }
+
+    public class OrderItemShipGroupAssociationCommands : IOrderItemShipGroupAssociationCommands
+    {
+        private List<IOrderItemShipGroupAssociationCommand> _innerCommands = new List<IOrderItemShipGroupAssociationCommand>();
+
+        public void Add(IOrderItemShipGroupAssociationCommand c)
+        {
+            _innerCommands.Add(c);
+        }
+
+        public void Remove(IOrderItemShipGroupAssociationCommand c)
+        {
+            _innerCommands.Remove(c);
+        }
+
+        public void Clear()
+        {
+            _innerCommands.Clear();
+        }
+
+        public IEnumerator<IOrderItemShipGroupAssociationCommand> GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return _innerCommands.GetEnumerator();
+        }
+
+    }
 
 }

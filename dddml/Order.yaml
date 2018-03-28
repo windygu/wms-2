@@ -347,6 +347,9 @@ aggregates:
           PickwaveId:
             referenceType: Pickwave
           # -------------------------
+          
+          OrderItemShipGroupAssociations:
+            itemType: OrderItemShipGroupAssociation
             
         # references:
           # Facility:
@@ -394,5 +397,34 @@ aggregates:
                 # columnName: SHIP_GROUP_SEQ_ID
                 # type: id-ne
                 
-          
+        entities:
+          # 订单项（行）装运组关联
+          OrderItemShipGroupAssociation:
+            id:
+              # 订单项（行）序号
+              name: OrderItemSeqId
+              type: id-ne
+              # name: OrderItemShipGroupAssocId
+              # type: OrderItemShipGroupAssocId
+              
+            properties:
+              Quantity:
+                type: fixed-point
+              CancelQuantity:
+                type: fixed-point
+                
+            # references: {}
+            # reservedProperties: {}
+            
+            # valueObjects:
+              # OrderItemShipGroupAssocId:
+                # properties:
+                  # OrderId:
+                    # type: id-ne
+                  # OrderItemSeqId:
+                    # type: id-ne
+                  # ShipGroupSeqId:
+                    # type: id-ne
+
+        
       

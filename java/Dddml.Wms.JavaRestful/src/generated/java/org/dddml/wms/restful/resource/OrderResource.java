@@ -209,6 +209,20 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @Path("{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations/{orderItemSeqId}") @GET
+    public OrderItemShipGroupAssociationStateDto getOrderItemShipGroupAssociation(@PathParam("orderId") String orderId, @PathParam("orderShipGroupShipGroupSeqId") Long orderShipGroupShipGroupSeqId, @PathParam("orderItemSeqId") String orderItemSeqId) {
+        try {
+
+            OrderItemShipGroupAssociationState state = orderApplicationService.getOrderItemShipGroupAssociation(orderId, orderShipGroupShipGroupSeqId, orderItemSeqId);
+            if (state == null) { return null; }
+            OrderItemShipGroupAssociationStateDto.DtoConverter dtoConverter = new OrderItemShipGroupAssociationStateDto.DtoConverter();
+            OrderItemShipGroupAssociationStateDto stateDto = dtoConverter.toOrderItemShipGroupAssociationStateDto(state);
+            dtoConverter.setAllFieldsReturned(true);
+            return stateDto;
+
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
 
     protected  OrderStateEventDtoConverter getOrderStateEventDtoConverter() {
         return new OrderStateEventDtoConverter();

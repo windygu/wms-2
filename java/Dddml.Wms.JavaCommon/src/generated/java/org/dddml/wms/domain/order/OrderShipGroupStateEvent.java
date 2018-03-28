@@ -107,6 +107,12 @@ public interface OrderShipGroupStateEvent extends Event
 
     interface OrderShipGroupStateCreated extends OrderShipGroupStateEvent
     {
+        Iterable<OrderItemShipGroupAssociationStateEvent.OrderItemShipGroupAssociationStateCreated> getOrderItemShipGroupAssociationEvents();
+        
+        void addOrderItemShipGroupAssociationEvent(OrderItemShipGroupAssociationStateEvent.OrderItemShipGroupAssociationStateCreated e);
+
+        OrderItemShipGroupAssociationStateEvent.OrderItemShipGroupAssociationStateCreated newOrderItemShipGroupAssociationStateCreated(String orderItemSeqId);
+
     
     }
 
@@ -189,11 +195,27 @@ public interface OrderShipGroupStateEvent extends Event
 
         void setIsPropertyActiveRemoved(Boolean removed);
 
+        Iterable<OrderItemShipGroupAssociationStateEvent> getOrderItemShipGroupAssociationEvents();
+        
+        void addOrderItemShipGroupAssociationEvent(OrderItemShipGroupAssociationStateEvent e);
+
+        OrderItemShipGroupAssociationStateEvent.OrderItemShipGroupAssociationStateCreated newOrderItemShipGroupAssociationStateCreated(String orderItemSeqId);
+
+        OrderItemShipGroupAssociationStateEvent.OrderItemShipGroupAssociationStateMergePatched newOrderItemShipGroupAssociationStateMergePatched(String orderItemSeqId);
+
+        OrderItemShipGroupAssociationStateEvent.OrderItemShipGroupAssociationStateRemoved newOrderItemShipGroupAssociationStateRemoved(String orderItemSeqId);
+
 
     }
 
     interface OrderShipGroupStateRemoved extends OrderShipGroupStateEvent
     {
+        Iterable<OrderItemShipGroupAssociationStateEvent.OrderItemShipGroupAssociationStateRemoved> getOrderItemShipGroupAssociationEvents();
+        
+        void addOrderItemShipGroupAssociationEvent(OrderItemShipGroupAssociationStateEvent.OrderItemShipGroupAssociationStateRemoved e);
+        
+        OrderItemShipGroupAssociationStateEvent.OrderItemShipGroupAssociationStateRemoved newOrderItemShipGroupAssociationStateRemoved(String orderItemSeqId);
+
     }
 
 

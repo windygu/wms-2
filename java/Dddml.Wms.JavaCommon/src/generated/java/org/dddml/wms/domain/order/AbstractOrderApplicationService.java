@@ -111,6 +111,10 @@ public abstract class AbstractOrderApplicationService implements OrderApplicatio
         return getStateQueryRepository().getOrderShipGroup(orderId, shipGroupSeqId);
     }
 
+    public OrderItemShipGroupAssociationState getOrderItemShipGroupAssociation(String orderId, Long orderShipGroupShipGroupSeqId, String orderItemSeqId) {
+        return getStateQueryRepository().getOrderItemShipGroupAssociation(orderId, orderShipGroupShipGroupSeqId, orderItemSeqId);
+    }
+
 
     public OrderAggregate getOrderAggregate(OrderState state)
     {

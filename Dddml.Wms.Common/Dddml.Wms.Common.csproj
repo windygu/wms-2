@@ -2679,6 +2679,12 @@
     <Compile Include="Generated\Domain\Metadata\OrderItemMvoMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\Metadata\OrderItemShipGroupAssociationMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Metadata\OrderItemShipGroupAssociationMvoMetadata.cs">
+      <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\Metadata\OrderItemShipGrpInvReservationMetadata.cs">
       <DependentUpon>GenerateDomainMetadata.tt</DependentUpon>
     </Compile>
@@ -3420,6 +3426,84 @@
     <Compile Include="Generated\Domain\OrderItemMvo\OrderItemMvoStateProperties.cs">
       <DependentUpon>GenerateOrderItemMvoDomain.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\OrderItemShipGroupAssociationMvo\IOrderItemShipGroupAssociationMvoAggregate.cs">
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderItemShipGroupAssociationMvo\IOrderItemShipGroupAssociationMvoApplicationService.cs">
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderItemShipGroupAssociationMvo\IOrderItemShipGroupAssociationMvoApplicationServiceFactory.cs">
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderItemShipGroupAssociationMvo\IOrderItemShipGroupAssociationMvoCommand.cs">
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderItemShipGroupAssociationMvo\IOrderItemShipGroupAssociationMvoState.cs">
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderItemShipGroupAssociationMvo\IOrderItemShipGroupAssociationMvoStateDto.cs">
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderItemShipGroupAssociationMvo\IOrderItemShipGroupAssociationMvoStateEvent.cs">
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderItemShipGroupAssociationMvo\IOrderItemShipGroupAssociationMvoStateProperties.cs">
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderItemShipGroupAssociationMvo\IOrderItemShipGroupAssociationMvoStateQueryRepository.cs">
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderItemShipGroupAssociationMvo\IOrderItemShipGroupAssociationMvoStateRepository.cs">
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderItemShipGroupAssociationMvo\OrderItemShipGroupAssociationMvoAggregate.cs">
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderItemShipGroupAssociationMvo\OrderItemShipGroupAssociationMvoApplicationServiceBase.cs">
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderItemShipGroupAssociationMvo\OrderItemShipGroupAssociationMvoApplicationServiceFactory.cs">
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderItemShipGroupAssociationMvo\OrderItemShipGroupAssociationMvoCommand.cs">
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderItemShipGroupAssociationMvo\OrderItemShipGroupAssociationMvoCommandDto.cs">
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderItemShipGroupAssociationMvo\OrderItemShipGroupAssociationMvoEventId.cs">
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderItemShipGroupAssociationMvo\OrderItemShipGroupAssociationMvoState.cs">
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderItemShipGroupAssociationMvo\OrderItemShipGroupAssociationMvoStateDto.cs">
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderItemShipGroupAssociationMvo\OrderItemShipGroupAssociationMvoStateDtoExtension.cs">
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderItemShipGroupAssociationMvo\OrderItemShipGroupAssociationMvoStateDtoWrapper.cs">
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderItemShipGroupAssociationMvo\OrderItemShipGroupAssociationMvoStateEvent.cs">
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderItemShipGroupAssociationMvo\OrderItemShipGroupAssociationMvoStateEventDto.cs">
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderItemShipGroupAssociationMvo\OrderItemShipGroupAssociationMvoStateEventDtoConverter.cs">
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderItemShipGroupAssociationMvo\OrderItemShipGroupAssociationMvoStateExtension.cs">
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderItemShipGroupAssociationMvo\OrderItemShipGroupAssociationMvoStateInterfaceExtension.cs">
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\OrderItemShipGroupAssociationMvo\OrderItemShipGroupAssociationMvoStateProperties.cs">
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomain.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\OrderItemShipGrpInvReservation\IOrderItemShipGrpInvReservationAggregate.cs">
       <DependentUpon>GenerateOrderItemShipGrpInvReservationDomain.tt</DependentUpon>
     </Compile>
@@ -3753,6 +3837,30 @@
     <Compile Include="Generated\Domain\Order\IOrderItemCommand.cs">
       <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Domain\Order\IOrderItemShipGroupAssociationCommand.cs">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Order\IOrderItemShipGroupAssociationState.cs">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Order\IOrderItemShipGroupAssociationStateDao.cs">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Order\IOrderItemShipGroupAssociationStateDto.cs">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Order\IOrderItemShipGroupAssociationStateEvent.cs">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Order\IOrderItemShipGroupAssociationStateEventDao.cs">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Order\IOrderItemShipGroupAssociationStateProperties.cs">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Order\IOrderItemShipGroupAssociationStates.cs">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Domain\Order\IOrderItemState.cs">
       <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
     </Compile>
@@ -3868,6 +3976,51 @@
       <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Order\OrderItemId.cs">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Order\OrderItemShipGroupAssociationCommand.cs">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Order\OrderItemShipGroupAssociationCommandDto.cs">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Order\OrderItemShipGroupAssociationEventId.cs">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Order\OrderItemShipGroupAssociationId.cs">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Order\OrderItemShipGroupAssociationState.cs">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Order\OrderItemShipGroupAssociationStateDto.cs">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Order\OrderItemShipGroupAssociationStateDtoExtension.cs">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Order\OrderItemShipGroupAssociationStateDtoWrapper.cs">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Order\OrderItemShipGroupAssociationStateEvent.cs">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Order\OrderItemShipGroupAssociationStateEventDto.cs">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Order\OrderItemShipGroupAssociationStateEventDtoConverter.cs">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Order\OrderItemShipGroupAssociationStateExtension.cs">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Order\OrderItemShipGroupAssociationStateInterfaceExtension.cs">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Order\OrderItemShipGroupAssociationStateProperties.cs">
+      <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Generated\Domain\Order\OrderItemShipGroupAssociationStates.cs">
       <DependentUpon>GenerateOrderDomain.tt</DependentUpon>
     </Compile>
     <Compile Include="Generated\Domain\Order\OrderItemState.cs">
@@ -7214,6 +7367,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateOrderItemMvoDomain.tt</DependentUpon>
     </Content>
+    <Content Include="Generated\Domain\OrderItemShipGroupAssociationMvo\GenerateOrderItemShipGroupAssociationMvoDomain.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateOrderItemShipGroupAssociationMvoDomain.tt</DependentUpon>
+    </Content>
     <Content Include="Generated\Domain\OrderItemShipGrpInvReservation\GenerateOrderItemShipGrpInvReservationDomain.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -8612,6 +8770,14 @@
 .\IOrderApplicationServiceFactory.cs
 .\IOrderCommand.cs
 .\IOrderItemCommand.cs
+.\IOrderItemShipGroupAssociationCommand.cs
+.\IOrderItemShipGroupAssociationState.cs
+.\IOrderItemShipGroupAssociationStateDao.cs
+.\IOrderItemShipGroupAssociationStateDto.cs
+.\IOrderItemShipGroupAssociationStateEvent.cs
+.\IOrderItemShipGroupAssociationStateEventDao.cs
+.\IOrderItemShipGroupAssociationStateProperties.cs
+.\IOrderItemShipGroupAssociationStates.cs
 .\IOrderItemState.cs
 .\IOrderItemStateDao.cs
 .\IOrderItemStateDto.cs
@@ -8651,6 +8817,21 @@
 .\OrderItemCommandDto.cs
 .\OrderItemEventId.cs
 .\OrderItemId.cs
+.\OrderItemShipGroupAssociationCommand.cs
+.\OrderItemShipGroupAssociationCommandDto.cs
+.\OrderItemShipGroupAssociationEventId.cs
+.\OrderItemShipGroupAssociationId.cs
+.\OrderItemShipGroupAssociationState.cs
+.\OrderItemShipGroupAssociationStateDto.cs
+.\OrderItemShipGroupAssociationStateDtoExtension.cs
+.\OrderItemShipGroupAssociationStateDtoWrapper.cs
+.\OrderItemShipGroupAssociationStateEvent.cs
+.\OrderItemShipGroupAssociationStateEventDto.cs
+.\OrderItemShipGroupAssociationStateEventDtoConverter.cs
+.\OrderItemShipGroupAssociationStateExtension.cs
+.\OrderItemShipGroupAssociationStateInterfaceExtension.cs
+.\OrderItemShipGroupAssociationStateProperties.cs
+.\OrderItemShipGroupAssociationStates.cs
 .\OrderItemState.cs
 .\OrderItemStateDto.cs
 .\OrderItemStateDtoExtension.cs
@@ -10195,6 +10376,39 @@
 .\PickwaveStateProperties.cs
 </LastOutputs>
     </Content>
+    <Content Include="Generated\Domain\OrderItemShipGroupAssociationMvo\GenerateOrderItemShipGroupAssociationMvoDomain.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateOrderItemShipGroupAssociationMvoDomain.txt</LastGenOutput>
+      <LastOutputs>
+.\GenerateOrderItemShipGroupAssociationMvoDomain.txt
+.\IOrderItemShipGroupAssociationMvoAggregate.cs
+.\IOrderItemShipGroupAssociationMvoApplicationService.cs
+.\IOrderItemShipGroupAssociationMvoApplicationServiceFactory.cs
+.\IOrderItemShipGroupAssociationMvoCommand.cs
+.\IOrderItemShipGroupAssociationMvoState.cs
+.\IOrderItemShipGroupAssociationMvoStateDto.cs
+.\IOrderItemShipGroupAssociationMvoStateEvent.cs
+.\IOrderItemShipGroupAssociationMvoStateProperties.cs
+.\IOrderItemShipGroupAssociationMvoStateQueryRepository.cs
+.\IOrderItemShipGroupAssociationMvoStateRepository.cs
+.\OrderItemShipGroupAssociationMvoAggregate.cs
+.\OrderItemShipGroupAssociationMvoApplicationServiceBase.cs
+.\OrderItemShipGroupAssociationMvoApplicationServiceFactory.cs
+.\OrderItemShipGroupAssociationMvoCommand.cs
+.\OrderItemShipGroupAssociationMvoCommandDto.cs
+.\OrderItemShipGroupAssociationMvoEventId.cs
+.\OrderItemShipGroupAssociationMvoState.cs
+.\OrderItemShipGroupAssociationMvoStateDto.cs
+.\OrderItemShipGroupAssociationMvoStateDtoExtension.cs
+.\OrderItemShipGroupAssociationMvoStateDtoWrapper.cs
+.\OrderItemShipGroupAssociationMvoStateEvent.cs
+.\OrderItemShipGroupAssociationMvoStateEventDto.cs
+.\OrderItemShipGroupAssociationMvoStateEventDtoConverter.cs
+.\OrderItemShipGroupAssociationMvoStateExtension.cs
+.\OrderItemShipGroupAssociationMvoStateInterfaceExtension.cs
+.\OrderItemShipGroupAssociationMvoStateProperties.cs
+</LastOutputs>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Generated\Domain\GenerateBoundedContextDomainAggregates.tt">
@@ -10274,6 +10488,8 @@
 .\MovementTypeMetadata.cs
 .\OrderItemMetadata.cs
 .\OrderItemMvoMetadata.cs
+.\OrderItemShipGroupAssociationMetadata.cs
+.\OrderItemShipGroupAssociationMvoMetadata.cs
 .\OrderItemShipGrpInvReservationMetadata.cs
 .\OrderMetadata.cs
 .\OrderRoleMetadata.cs

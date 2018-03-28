@@ -471,6 +471,15 @@
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
+  <bean id="orderItemShipGroupAssociationStateDao" class="org.dddml.wms.domain.order.hibernate.HibernateOrderItemShipGroupAssociationStateDao">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="orderItemShipGroupAssociationStateEventDao" class="org.dddml.wms.domain.order.hibernate.HibernateOrderItemShipGroupAssociationStateEventDao">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
   <bean id="orderStateRepository" class="org.dddml.wms.domain.order.hibernate.HibernateOrderStateRepository">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
@@ -1383,6 +1392,27 @@
     <constructor-arg ref="orderShipGroupMvoEventStore"/>
     <constructor-arg ref="orderShipGroupMvoStateRepository"/>
     <constructor-arg ref="orderShipGroupMvoStateQueryRepository"/>
+  </bean>
+
+
+  <bean id="orderItemShipGroupAssociationMvoStateRepository" class="org.dddml.wms.domain.orderitemshipgroupassociationmvo.hibernate.HibernateOrderItemShipGroupAssociationMvoStateRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="orderItemShipGroupAssociationMvoStateQueryRepository" class="org.dddml.wms.domain.orderitemshipgroupassociationmvo.hibernate.HibernateOrderItemShipGroupAssociationMvoStateQueryRepository">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
+  </bean>
+
+  <bean id="orderItemShipGroupAssociationMvoEventStore" class="org.dddml.wms.domain.orderitemshipgroupassociationmvo.hibernate.HibernateOrderItemShipGroupAssociationMvoEventStore">
+    <property name="sessionFactory" ref="hibernateSessionFactory"/>
+  </bean>
+
+  <bean id="orderItemShipGroupAssociationMvoApplicationService" class="org.dddml.wms.domain.orderitemshipgroupassociationmvo.AbstractOrderItemShipGroupAssociationMvoApplicationService$SimpleOrderItemShipGroupAssociationMvoApplicationService">
+    <constructor-arg ref="orderItemShipGroupAssociationMvoEventStore"/>
+    <constructor-arg ref="orderItemShipGroupAssociationMvoStateRepository"/>
+    <constructor-arg ref="orderItemShipGroupAssociationMvoStateQueryRepository"/>
   </bean>
 
 

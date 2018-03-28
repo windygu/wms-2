@@ -14,7 +14,7 @@ using Dddml.Wms.Domain.PartyRole;
 namespace Dddml.Wms.Domain.Order
 {
 
-	public partial class OrderShipGroupState : OrderShipGroupStateProperties, IOrderShipGroupState
+	public partial class OrderShipGroupState : OrderShipGroupStateProperties, IOrderShipGroupState, ISaveable
 	{
 
 		public virtual string CreatedBy { get; set; }
@@ -165,6 +165,21 @@ namespace Dddml.Wms.Domain.Order
 		}
 
 
+        private IOrderItemShipGroupAssociationStates _orderItemShipGroupAssociations;
+      
+        public virtual IOrderItemShipGroupAssociationStates OrderItemShipGroupAssociations
+        {
+            get
+            {
+                return this._orderItemShipGroupAssociations;
+            }
+            set
+            {
+                this._orderItemShipGroupAssociations = value;
+            }
+        }
+
+
         public virtual bool StateReadOnly { get; set; }
 
         bool IState.ReadOnly
@@ -188,8 +203,22 @@ namespace Dddml.Wms.Domain.Order
         public OrderShipGroupState(bool forReapplying)
         {
             this._forReapplying = forReapplying;
+            _orderItemShipGroupAssociations = new OrderItemShipGroupAssociationStates(this);
+
             InitializeProperties();
         }
+
+
+		#region Saveable Implements
+
+        public virtual void Save()
+        {
+            _orderItemShipGroupAssociations.Save();
+
+        }
+
+
+		#endregion
 
 
 		public virtual void When(IOrderShipGroupStateCreated e)
@@ -238,6 +267,10 @@ namespace Dddml.Wms.Domain.Order
 			this.CreatedBy = e.CreatedBy;
 			this.CreatedAt = e.CreatedAt;
 
+			foreach (IOrderItemShipGroupAssociationStateCreated innerEvent in e.OrderItemShipGroupAssociationEvents) {
+				IOrderItemShipGroupAssociationState innerState = this.OrderItemShipGroupAssociations.Get(innerEvent.GlobalId.OrderItemSeqId, true);
+				innerState.Mutate (innerEvent);
+			}
 
 		}
 
@@ -479,6 +512,19 @@ namespace Dddml.Wms.Domain.Order
 			this.UpdatedAt = e.CreatedAt;
 
 
+			foreach (IOrderItemShipGroupAssociationStateEvent innerEvent in e.OrderItemShipGroupAssociationEvents)
+            {
+                IOrderItemShipGroupAssociationState innerState = this.OrderItemShipGroupAssociations.Get(innerEvent.GlobalId.OrderItemSeqId);
+
+                innerState.Mutate(innerEvent);
+                var removed = innerEvent as IOrderItemShipGroupAssociationStateRemoved;
+                if (removed != null)
+                {
+                    this.OrderItemShipGroupAssociations.Remove(innerState);
+                }
+          
+            }
+
 		}
 
 		public virtual void When(IOrderShipGroupStateRemoved e)
@@ -488,6 +534,18 @@ namespace Dddml.Wms.Domain.Order
 			this.Deleted = true;
 			this.UpdatedBy = e.CreatedBy;
 			this.UpdatedAt = e.CreatedAt;
+
+            foreach (var innerState in this.OrderItemShipGroupAssociations)
+            {
+                this.OrderItemShipGroupAssociations.Remove(innerState);
+                
+                var innerE = e.NewOrderItemShipGroupAssociationStateRemoved(innerState.OrderItemSeqId);
+                ((OrderItemShipGroupAssociationStateEventBase)innerE).CreatedAt = e.CreatedAt;
+                ((OrderItemShipGroupAssociationStateEventBase)innerE).CreatedBy = e.CreatedBy;
+                innerState.When(innerE);
+                //e.AddOrderItemShipGroupAssociationEvent(innerE);
+
+            }
 
 		}
 

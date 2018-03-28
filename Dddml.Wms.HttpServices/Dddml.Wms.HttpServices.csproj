@@ -371,6 +371,9 @@
     <Compile Include="Generated\Controllers\OrderItemMvosController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
+    <Compile Include="Generated\Controllers\OrderItemShipGroupAssociationMvosController.cs">
+      <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generated\Controllers\OrderItemShipGrpInvReservationsController.cs">
       <DependentUpon>GenerateAggregatesControllers.tt</DependentUpon>
     </Compile>
@@ -572,6 +575,7 @@
 .\MovementsController.cs
 .\MovementTypesController.cs
 .\OrderItemMvosController.cs
+.\OrderItemShipGroupAssociationMvosController.cs
 .\OrderItemShipGrpInvReservationsController.cs
 .\OrderRoleMvosController.cs
 .\OrdersController.cs

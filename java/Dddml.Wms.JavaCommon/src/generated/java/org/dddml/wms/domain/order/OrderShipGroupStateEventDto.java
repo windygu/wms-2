@@ -437,6 +437,17 @@ public class OrderShipGroupStateEventDto extends AbstractStateEvent
     }
 
 
+    private OrderItemShipGroupAssociationStateEventDto[] orderItemShipGroupAssociationEvents;
+
+    public OrderItemShipGroupAssociationStateEventDto[] getOrderItemShipGroupAssociationEvents() {
+        return this.orderItemShipGroupAssociationEvents;
+    }
+
+    public void setOrderItemShipGroupAssociationEvents(OrderItemShipGroupAssociationStateEventDto[] events) {
+        this.orderItemShipGroupAssociationEvents = events;
+    }
+
+
 	public static class OrderShipGroupStateCreatedDto extends OrderShipGroupStateEventDto
 	{
         @Override

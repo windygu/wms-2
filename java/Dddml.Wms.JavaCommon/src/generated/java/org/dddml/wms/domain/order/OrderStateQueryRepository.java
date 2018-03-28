@@ -33,5 +33,7 @@ public interface OrderStateQueryRepository
 
     OrderShipGroupState getOrderShipGroup(String orderId, Long shipGroupSeqId);
 
+    OrderItemShipGroupAssociationState getOrderItemShipGroupAssociation(String orderId, Long orderShipGroupShipGroupSeqId, String orderItemSeqId);
+
 }
 

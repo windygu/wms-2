@@ -16,7 +16,7 @@ namespace Dddml.Wms.Domain.Order
 	public static partial class OrderStateInterfaceExtension
 	{
 
-        public static IOrderCommand ToCreateOrMergePatchOrder<TCreateOrder, TMergePatchOrder, TCreateOrderRole, TMergePatchOrderRole, TCreateOrderItem, TMergePatchOrderItem, TCreateOrderShipGroup, TMergePatchOrderShipGroup>(this IOrderState state)
+        public static IOrderCommand ToCreateOrMergePatchOrder<TCreateOrder, TMergePatchOrder, TCreateOrderRole, TMergePatchOrderRole, TCreateOrderItem, TMergePatchOrderItem, TCreateOrderShipGroup, TMergePatchOrderShipGroup, TCreateOrderItemShipGroupAssociation, TMergePatchOrderItemShipGroupAssociation>(this IOrderState state)
             where TCreateOrder : ICreateOrder, new()
             where TMergePatchOrder : IMergePatchOrder, new()
             where TCreateOrderRole : ICreateOrderRole, new()
@@ -25,15 +25,17 @@ namespace Dddml.Wms.Domain.Order
             where TMergePatchOrderItem : IMergePatchOrderItem, new()
             where TCreateOrderShipGroup : ICreateOrderShipGroup, new()
             where TMergePatchOrderShipGroup : IMergePatchOrderShipGroup, new()
+            where TCreateOrderItemShipGroupAssociation : ICreateOrderItemShipGroupAssociation, new()
+            where TMergePatchOrderItemShipGroupAssociation : IMergePatchOrderItemShipGroupAssociation, new()
         {
             bool bUnsaved = ((IOrderState)state).IsUnsaved;
             if (bUnsaved)
             {
-                return state.ToCreateOrder<TCreateOrder, TCreateOrderRole, TCreateOrderItem, TCreateOrderShipGroup>();
+                return state.ToCreateOrder<TCreateOrder, TCreateOrderRole, TCreateOrderItem, TCreateOrderShipGroup, TCreateOrderItemShipGroupAssociation>();
             }
             else 
             {
-                return state.ToMergePatchOrder<TMergePatchOrder, TCreateOrderRole, TMergePatchOrderRole, TCreateOrderItem, TMergePatchOrderItem, TCreateOrderShipGroup, TMergePatchOrderShipGroup>();
+                return state.ToMergePatchOrder<TMergePatchOrder, TCreateOrderRole, TMergePatchOrderRole, TCreateOrderItem, TMergePatchOrderItem, TCreateOrderShipGroup, TMergePatchOrderShipGroup, TCreateOrderItemShipGroupAssociation, TMergePatchOrderItemShipGroupAssociation>();
             }
         }
 
@@ -47,7 +49,7 @@ namespace Dddml.Wms.Domain.Order
             return cmd;
         }
 
-        public static TMergePatchOrder ToMergePatchOrder<TMergePatchOrder, TCreateOrderRole, TMergePatchOrderRole, TCreateOrderItem, TMergePatchOrderItem, TCreateOrderShipGroup, TMergePatchOrderShipGroup>(this IOrderState state)
+        public static TMergePatchOrder ToMergePatchOrder<TMergePatchOrder, TCreateOrderRole, TMergePatchOrderRole, TCreateOrderItem, TMergePatchOrderItem, TCreateOrderShipGroup, TMergePatchOrderShipGroup, TCreateOrderItemShipGroupAssociation, TMergePatchOrderItemShipGroupAssociation>(this IOrderState state)
             where TMergePatchOrder : IMergePatchOrder, new()
             where TCreateOrderRole : ICreateOrderRole, new()
             where TMergePatchOrderRole : IMergePatchOrderRole, new()
@@ -55,6 +57,8 @@ namespace Dddml.Wms.Domain.Order
             where TMergePatchOrderItem : IMergePatchOrderItem, new()
             where TCreateOrderShipGroup : ICreateOrderShipGroup, new()
             where TMergePatchOrderShipGroup : IMergePatchOrderShipGroup, new()
+            where TCreateOrderItemShipGroupAssociation : ICreateOrderItemShipGroupAssociation, new()
+            where TMergePatchOrderItemShipGroupAssociation : IMergePatchOrderItemShipGroupAssociation, new()
         {
             var cmd = new TMergePatchOrder();
 
@@ -123,17 +127,18 @@ namespace Dddml.Wms.Domain.Order
             }
             foreach (var d in state.OrderShipGroups)
             {
-                var c = d.ToCreateOrMergePatchOrderShipGroup<TCreateOrderShipGroup, TMergePatchOrderShipGroup>();
+                var c = d.ToCreateOrMergePatchOrderShipGroup<TCreateOrderShipGroup, TMergePatchOrderShipGroup, TCreateOrderItemShipGroupAssociation, TMergePatchOrderItemShipGroupAssociation>();
                 cmd.OrderShipGroupCommands.Add(c);
             }
             return cmd;
         }
 
-        public static TCreateOrder ToCreateOrder<TCreateOrder, TCreateOrderRole, TCreateOrderItem, TCreateOrderShipGroup>(this IOrderState state)
+        public static TCreateOrder ToCreateOrder<TCreateOrder, TCreateOrderRole, TCreateOrderItem, TCreateOrderShipGroup, TCreateOrderItemShipGroupAssociation>(this IOrderState state)
             where TCreateOrder : ICreateOrder, new()
             where TCreateOrderRole : ICreateOrderRole, new()
             where TCreateOrderItem : ICreateOrderItem, new()
             where TCreateOrderShipGroup : ICreateOrderShipGroup, new()
+            where TCreateOrderItemShipGroupAssociation : ICreateOrderItemShipGroupAssociation, new()
         {
             var cmd = new TCreateOrder();
 
@@ -177,7 +182,7 @@ namespace Dddml.Wms.Domain.Order
             }
             foreach (var d in state.OrderShipGroups)
             {
-                var c = d.ToCreateOrderShipGroup<TCreateOrderShipGroup>();
+                var c = d.ToCreateOrderShipGroup<TCreateOrderShipGroup, TCreateOrderItemShipGroupAssociation>();
                 cmd.OrderShipGroups.Add(c);
             }
             return cmd;

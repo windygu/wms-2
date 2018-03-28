@@ -21,7 +21,7 @@ public class HibernateOrderShipGroupStateDao implements OrderShipGroupStateDao
         return this.sessionFactory.getCurrentSession();
     }
 
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("ShipGroupSeqId", "ShipmentMethodTypeId", "SupplierPartyId", "VendorPartyId", "CarrierPartyId", "CarrierRoleTypeId", "FacilityId", "ContactMechId", "TelecomContactMechId", "TrackingNumber", "ShippingInstructions", "MaySplit", "GiftMessage", "IsGift", "ShipAfterDate", "ShipByDate", "EstimatedShipDate", "EstimatedDeliveryDate", "PickwaveId", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "OrderId"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("ShipGroupSeqId", "ShipmentMethodTypeId", "SupplierPartyId", "VendorPartyId", "CarrierPartyId", "CarrierRoleTypeId", "FacilityId", "ContactMechId", "TelecomContactMechId", "TrackingNumber", "ShippingInstructions", "MaySplit", "GiftMessage", "IsGift", "ShipAfterDate", "ShipByDate", "EstimatedShipDate", "EstimatedDeliveryDate", "PickwaveId", "OrderItemShipGroupAssociations", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted", "OrderId"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     
@@ -43,7 +43,7 @@ public class HibernateOrderShipGroupStateDao implements OrderShipGroupStateDao
             state.setOrderShipGroupId(id);
         }
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (OrderShipGroupState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{OrderShipGroupState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (OrderShipGroupState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{OrderShipGroupState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }
