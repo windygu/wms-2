@@ -165,6 +165,14 @@
       <Link>Data\DamageTypeData.xml</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="..\data\RoleTypeData.xml">
+      <Link>Data\RoleTypeData.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\data\ShipmentMethodTypeData.xml">
+      <Link>Data\ShipmentMethodTypeData.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="..\data\ShipmentTypeData.xml">
       <Link>Data\ShipmentTypeData.xml</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
