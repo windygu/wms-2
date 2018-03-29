@@ -57,13 +57,13 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
 
 		public virtual DateTime? PicklistPicklistDate { get; set; }
 
-		public virtual string PicklistCreatedByUserLogin { get; set; }
-
-		public virtual string PicklistLastModifiedByUserLogin { get; set; }
-
 		public virtual long? PicklistPickwaveId { get; set; }
 
+		public virtual string PicklistCreatedBy { get; set; }
+
 		public virtual DateTime? PicklistCreatedAt { get; set; }
+
+		public virtual string PicklistUpdatedBy { get; set; }
 
 		public virtual DateTime? PicklistUpdatedAt { get; set; }
 
@@ -233,44 +233,6 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
             }
         }
 
-		public virtual bool? IsPropertyPicklistCreatedByUserLoginRemoved { get; set; }
-
-        bool IPicklistRoleMvoStateMergePatched.IsPropertyPicklistCreatedByUserLoginRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyPicklistCreatedByUserLoginRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyPicklistCreatedByUserLoginRemoved = value;
-            }
-        }
-
-		public virtual bool? IsPropertyPicklistLastModifiedByUserLoginRemoved { get; set; }
-
-        bool IPicklistRoleMvoStateMergePatched.IsPropertyPicklistLastModifiedByUserLoginRemoved
-        {
-            get 
-            {
-                var b = this.IsPropertyPicklistLastModifiedByUserLoginRemoved;
-                if (b != null && b.HasValue)
-                {
-                    return b.Value;
-                }
-                return default(bool);
-            }
-            set 
-            {
-                this.IsPropertyPicklistLastModifiedByUserLoginRemoved = value;
-            }
-        }
-
 		public virtual bool? IsPropertyPicklistPickwaveIdRemoved { get; set; }
 
         bool IPicklistRoleMvoStateMergePatched.IsPropertyPicklistPickwaveIdRemoved
@@ -290,6 +252,25 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
             }
         }
 
+		public virtual bool? IsPropertyPicklistCreatedByRemoved { get; set; }
+
+        bool IPicklistRoleMvoStateMergePatched.IsPropertyPicklistCreatedByRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyPicklistCreatedByRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyPicklistCreatedByRemoved = value;
+            }
+        }
+
 		public virtual bool? IsPropertyPicklistCreatedAtRemoved { get; set; }
 
         bool IPicklistRoleMvoStateMergePatched.IsPropertyPicklistCreatedAtRemoved
@@ -306,6 +287,25 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
             set 
             {
                 this.IsPropertyPicklistCreatedAtRemoved = value;
+            }
+        }
+
+		public virtual bool? IsPropertyPicklistUpdatedByRemoved { get; set; }
+
+        bool IPicklistRoleMvoStateMergePatched.IsPropertyPicklistUpdatedByRemoved
+        {
+            get 
+            {
+                var b = this.IsPropertyPicklistUpdatedByRemoved;
+                if (b != null && b.HasValue)
+                {
+                    return b.Value;
+                }
+                return default(bool);
+            }
+            set 
+            {
+                this.IsPropertyPicklistUpdatedByRemoved = value;
             }
         }
 

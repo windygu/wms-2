@@ -41,7 +41,7 @@ namespace Dddml.Wms.Domain.Picklist
             var dto = new PicklistStateCreatedDto();
             dto.PicklistEventId = e.PicklistEventId;
             dto.CreatedAt = e.CreatedAt;
-            dto.CreatedByUserLogin = e.CreatedBy;
+            dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
             dto.Description = e.Description;
             dto.FacilityId = e.FacilityId;
@@ -66,7 +66,7 @@ namespace Dddml.Wms.Domain.Picklist
             var dto = new PicklistStateMergePatchedDto();
             dto.PicklistEventId = e.PicklistEventId;
             dto.CreatedAt = e.CreatedAt;
-            dto.CreatedByUserLogin = e.CreatedBy;
+            dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
             dto.Description = e.Description;
             dto.FacilityId = e.FacilityId;
@@ -100,7 +100,7 @@ namespace Dddml.Wms.Domain.Picklist
             var dto = new PicklistStateDeletedDto();
             dto.PicklistEventId = e.PicklistEventId;
             dto.CreatedAt = e.CreatedAt;
-            dto.CreatedByUserLogin = e.CreatedBy;
+            dto.CreatedBy = e.CreatedBy;
             dto.CommandId = e.CommandId;
             var picklistRoleEvents = new List<PicklistRoleStateRemovedDto>();
             foreach (var ee in e.PicklistRoleEvents)

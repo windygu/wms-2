@@ -20,10 +20,10 @@ aggregates:
         type: id-ne
       PicklistDate:
         type: date-time
-      CreatedByUserLogin:
-        type: id-vlong
-      LastModifiedByUserLogin:
-        type: id-vlong
+      # CreatedByUserLogin:
+        # type: id-vlong
+      # LastModifiedByUserLogin:
+        # type: id-vlong
       
       # -------------------------
       PickwaveId:
@@ -49,9 +49,9 @@ aggregates:
         # - ShipmentMethodTypeId
         # foreignKeyName: PICKLST_SMTP
         
-    reservedProperties:
-      createdBy: CreatedByUserLogin
-      updatedBy: LastModifiedByUserLogin
+    # reservedProperties:
+      # createdBy: CreatedByUserLogin
+      # updatedBy: LastModifiedByUserLogin
           
     entities:
       

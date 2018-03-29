@@ -17,11 +17,11 @@ public final class PicklistFilteringProperties
             "shipmentMethodTypeId",
             "statusId",
             "picklistDate",
-            "createdByUserLogin",
-            "lastModifiedByUserLogin",
             "pickwaveId",
             "version",
+            "createdBy",
             "createdAt",
+            "updatedBy",
             "updatedAt",
             "active",
             "deleted",
@@ -34,11 +34,11 @@ public final class PicklistFilteringProperties
             "String",
             "String",
             "java.sql.Timestamp",
-            "String",
-            "String",
             "Long",
             "Long",
+            "String",
             "Date",
+            "String",
             "Date",
             "Boolean",
             "Boolean",
@@ -68,16 +68,16 @@ public final class PicklistFilteringProperties
         aliasMap.put("StatusId", "statusId");
         aliasMap.put("picklistDate", "picklistDate");
         aliasMap.put("PicklistDate", "picklistDate");
-        aliasMap.put("createdByUserLogin", "createdByUserLogin");
-        aliasMap.put("CreatedByUserLogin", "createdByUserLogin");
-        aliasMap.put("lastModifiedByUserLogin", "lastModifiedByUserLogin");
-        aliasMap.put("LastModifiedByUserLogin", "lastModifiedByUserLogin");
         aliasMap.put("pickwaveId", "pickwaveId");
         aliasMap.put("PickwaveId", "pickwaveId");
         aliasMap.put("version", "version");
         aliasMap.put("Version", "version");
+        aliasMap.put("createdBy", "createdBy");
+        aliasMap.put("CreatedBy", "createdBy");
         aliasMap.put("createdAt", "createdAt");
         aliasMap.put("CreatedAt", "createdAt");
+        aliasMap.put("updatedBy", "updatedBy");
+        aliasMap.put("UpdatedBy", "updatedBy");
         aliasMap.put("updatedAt", "updatedAt");
         aliasMap.put("UpdatedAt", "updatedAt");
         aliasMap.put("active", "active");

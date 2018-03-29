@@ -67,13 +67,13 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
 
 		public virtual DateTime? PicklistPicklistDate { get; set; }
 
-		public virtual string PicklistCreatedByUserLogin { get; set; }
-
-		public virtual string PicklistLastModifiedByUserLogin { get; set; }
-
 		public virtual long? PicklistPickwaveId { get; set; }
 
+		public virtual string PicklistCreatedBy { get; set; }
+
 		public virtual DateTime? PicklistCreatedAt { get; set; }
+
+		public virtual string PicklistUpdatedBy { get; set; }
 
 		public virtual DateTime? PicklistUpdatedAt { get; set; }
 
@@ -127,13 +127,13 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
 
 		public virtual bool IsPropertyPicklistPicklistDateRemoved { get; set; }
 
-		public virtual bool IsPropertyPicklistCreatedByUserLoginRemoved { get; set; }
-
-		public virtual bool IsPropertyPicklistLastModifiedByUserLoginRemoved { get; set; }
-
 		public virtual bool IsPropertyPicklistPickwaveIdRemoved { get; set; }
 
+		public virtual bool IsPropertyPicklistCreatedByRemoved { get; set; }
+
 		public virtual bool IsPropertyPicklistCreatedAtRemoved { get; set; }
+
+		public virtual bool IsPropertyPicklistUpdatedByRemoved { get; set; }
 
 		public virtual bool IsPropertyPicklistUpdatedAtRemoved { get; set; }
 

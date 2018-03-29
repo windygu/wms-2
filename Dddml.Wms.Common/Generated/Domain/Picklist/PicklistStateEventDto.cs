@@ -57,7 +57,7 @@ namespace Dddml.Wms.Domain.Picklist
 
 		public virtual bool? Active { get; set; }
 
-		public virtual string CreatedByUserLogin { get; set; }
+		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
 
@@ -221,10 +221,10 @@ namespace Dddml.Wms.Domain.Picklist
 
 		string ICreated<string>.CreatedBy {
 			get {
-				return this.CreatedByUserLogin;
+				return this.CreatedBy;
 			}
 			set {
-				this.CreatedByUserLogin = value;
+				this.CreatedBy = value;
 			}
 		}
 

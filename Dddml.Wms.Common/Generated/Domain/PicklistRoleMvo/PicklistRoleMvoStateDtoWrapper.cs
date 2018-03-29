@@ -270,62 +270,6 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
             }
         }
 
-		public virtual string PicklistCreatedByUserLogin
-		{
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("PicklistCreatedByUserLogin"))
-                {
-                    return _state.PicklistCreatedByUserLogin;
-                }
-                return null;
-            }
-            set
-            {
-                _state.PicklistCreatedByUserLogin = value;
-            }
-        }
-
-        string IPicklistRoleMvoStateProperties.PicklistCreatedByUserLogin
-        {
-            get 
-            {
-                return (this._state as IPicklistRoleMvoStateProperties).PicklistCreatedByUserLogin;
-            }
-            set 
-            {
-                (this._state as IPicklistRoleMvoStateProperties).PicklistCreatedByUserLogin = value;
-            }
-        }
-
-		public virtual string PicklistLastModifiedByUserLogin
-		{
-            get
-            {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("PicklistLastModifiedByUserLogin"))
-                {
-                    return _state.PicklistLastModifiedByUserLogin;
-                }
-                return null;
-            }
-            set
-            {
-                _state.PicklistLastModifiedByUserLogin = value;
-            }
-        }
-
-        string IPicklistRoleMvoStateProperties.PicklistLastModifiedByUserLogin
-        {
-            get 
-            {
-                return (this._state as IPicklistRoleMvoStateProperties).PicklistLastModifiedByUserLogin;
-            }
-            set 
-            {
-                (this._state as IPicklistRoleMvoStateProperties).PicklistLastModifiedByUserLogin = value;
-            }
-        }
-
 		public virtual long? PicklistPickwaveId
 		{
             get
@@ -351,6 +295,34 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
             set 
             {
                 (this._state as IPicklistRoleMvoStateProperties).PicklistPickwaveId = value;
+            }
+        }
+
+		public virtual string PicklistCreatedBy
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("PicklistCreatedBy"))
+                {
+                    return _state.PicklistCreatedBy;
+                }
+                return null;
+            }
+            set
+            {
+                _state.PicklistCreatedBy = value;
+            }
+        }
+
+        string IPicklistRoleMvoStateProperties.PicklistCreatedBy
+        {
+            get 
+            {
+                return (this._state as IPicklistRoleMvoStateProperties).PicklistCreatedBy;
+            }
+            set 
+            {
+                (this._state as IPicklistRoleMvoStateProperties).PicklistCreatedBy = value;
             }
         }
 
@@ -382,6 +354,34 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
             set 
             {
                 (this._state as IPicklistRoleMvoStateProperties).PicklistCreatedAt = value;
+            }
+        }
+
+		public virtual string PicklistUpdatedBy
+		{
+            get
+            {
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("PicklistUpdatedBy"))
+                {
+                    return _state.PicklistUpdatedBy;
+                }
+                return null;
+            }
+            set
+            {
+                _state.PicklistUpdatedBy = value;
+            }
+        }
+
+        string IPicklistRoleMvoStateProperties.PicklistUpdatedBy
+        {
+            get 
+            {
+                return (this._state as IPicklistRoleMvoStateProperties).PicklistUpdatedBy;
+            }
+            set 
+            {
+                (this._state as IPicklistRoleMvoStateProperties).PicklistUpdatedBy = value;
             }
         }
 

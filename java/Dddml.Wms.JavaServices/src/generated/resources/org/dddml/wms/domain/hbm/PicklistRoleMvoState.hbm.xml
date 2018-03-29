@@ -25,10 +25,10 @@
 	<property name="picklistShipmentMethodTypeId" ><column name="PicklistShipmentMethodTypeId" sql-type="VARCHAR(20)" /></property>
 	<property name="picklistStatusId" ><column name="PicklistStatusId" sql-type="VARCHAR(20)" /></property>
 	<property name="picklistPicklistDate" ><column name="PicklistPicklistDate" sql-type="DATETIME" /></property>
-	<property name="picklistCreatedByUserLogin" ><column name="PicklistCreatedByUserLogin" sql-type="VARCHAR(250)" /></property>
-	<property name="picklistLastModifiedByUserLogin" ><column name="PicklistLastModifiedByUserLogin" sql-type="VARCHAR(250)" /></property>
 	<property name="picklistPickwaveId" ><column name="PicklistPickwaveId" sql-type="DECIMAL(20,0)" /></property>
+	<property name="picklistCreatedBy" ></property>
 	<property name="picklistCreatedAt" type="timestamp"><column name="PicklistCreatedAt" sql-type="DATETIME" /></property>
+	<property name="picklistUpdatedBy" ></property>
 	<property name="picklistUpdatedAt" type="timestamp"><column name="PicklistUpdatedAt" sql-type="DATETIME" /></property>
 	<property name="picklistActive" ></property>
 	<property name="picklistDeleted" ></property>

@@ -189,13 +189,13 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
 
 			this.PicklistPicklistDate = e.PicklistPicklistDate;
 
-			this.PicklistCreatedByUserLogin = e.PicklistCreatedByUserLogin;
-
-			this.PicklistLastModifiedByUserLogin = e.PicklistLastModifiedByUserLogin;
-
 			this.PicklistPickwaveId = e.PicklistPickwaveId;
 
+			this.PicklistCreatedBy = e.PicklistCreatedBy;
+
             this.PicklistCreatedAt = (e.PicklistCreatedAt != null && e.PicklistCreatedAt.HasValue) ? e.PicklistCreatedAt.Value : default(DateTime);
+
+			this.PicklistUpdatedBy = e.PicklistUpdatedBy;
 
             this.PicklistUpdatedAt = (e.PicklistUpdatedAt != null && e.PicklistUpdatedAt.HasValue) ? e.PicklistUpdatedAt.Value : default(DateTime);
 
@@ -300,30 +300,6 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
 				this.PicklistPicklistDate = e.PicklistPicklistDate;
 			}
 
-			if (e.PicklistCreatedByUserLogin == null)
-			{
-				if (e.IsPropertyPicklistCreatedByUserLoginRemoved)
-				{
-					this.PicklistCreatedByUserLogin = default(string);
-				}
-			}
-			else
-			{
-				this.PicklistCreatedByUserLogin = e.PicklistCreatedByUserLogin;
-			}
-
-			if (e.PicklistLastModifiedByUserLogin == null)
-			{
-				if (e.IsPropertyPicklistLastModifiedByUserLoginRemoved)
-				{
-					this.PicklistLastModifiedByUserLogin = default(string);
-				}
-			}
-			else
-			{
-				this.PicklistLastModifiedByUserLogin = e.PicklistLastModifiedByUserLogin;
-			}
-
 			if (e.PicklistPickwaveId == null)
 			{
 				if (e.IsPropertyPicklistPickwaveIdRemoved)
@@ -336,6 +312,18 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
 				this.PicklistPickwaveId = e.PicklistPickwaveId;
 			}
 
+			if (e.PicklistCreatedBy == null)
+			{
+				if (e.IsPropertyPicklistCreatedByRemoved)
+				{
+					this.PicklistCreatedBy = default(string);
+				}
+			}
+			else
+			{
+				this.PicklistCreatedBy = e.PicklistCreatedBy;
+			}
+
 			if (e.PicklistCreatedAt == null)
 			{
 				if (e.IsPropertyPicklistCreatedAtRemoved)
@@ -346,6 +334,18 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
 			else
 			{
 				this.PicklistCreatedAt = (e.PicklistCreatedAt != null && e.PicklistCreatedAt.HasValue) ? e.PicklistCreatedAt.Value : default(DateTime);
+			}
+
+			if (e.PicklistUpdatedBy == null)
+			{
+				if (e.IsPropertyPicklistUpdatedByRemoved)
+				{
+					this.PicklistUpdatedBy = default(string);
+				}
+			}
+			else
+			{
+				this.PicklistUpdatedBy = e.PicklistUpdatedBy;
 			}
 
 			if (e.PicklistUpdatedAt == null)

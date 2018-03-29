@@ -36,10 +36,10 @@ public class PicklistRoleMvoStateEventDtoConverter {
         dto.setPicklistShipmentMethodTypeId(e.getPicklistShipmentMethodTypeId());
         dto.setPicklistStatusId(e.getPicklistStatusId());
         dto.setPicklistPicklistDate(e.getPicklistPicklistDate());
-        dto.setPicklistCreatedByUserLogin(e.getPicklistCreatedByUserLogin());
-        dto.setPicklistLastModifiedByUserLogin(e.getPicklistLastModifiedByUserLogin());
         dto.setPicklistPickwaveId(e.getPicklistPickwaveId());
+        dto.setPicklistCreatedBy(e.getPicklistCreatedBy());
         dto.setPicklistCreatedAt(e.getPicklistCreatedAt());
+        dto.setPicklistUpdatedBy(e.getPicklistUpdatedBy());
         dto.setPicklistUpdatedAt(e.getPicklistUpdatedAt());
         dto.setPicklistActive(e.getPicklistActive());
         dto.setPicklistDeleted(e.getPicklistDeleted());
@@ -59,10 +59,10 @@ public class PicklistRoleMvoStateEventDtoConverter {
         dto.setPicklistShipmentMethodTypeId(e.getPicklistShipmentMethodTypeId());
         dto.setPicklistStatusId(e.getPicklistStatusId());
         dto.setPicklistPicklistDate(e.getPicklistPicklistDate());
-        dto.setPicklistCreatedByUserLogin(e.getPicklistCreatedByUserLogin());
-        dto.setPicklistLastModifiedByUserLogin(e.getPicklistLastModifiedByUserLogin());
         dto.setPicklistPickwaveId(e.getPicklistPickwaveId());
+        dto.setPicklistCreatedBy(e.getPicklistCreatedBy());
         dto.setPicklistCreatedAt(e.getPicklistCreatedAt());
+        dto.setPicklistUpdatedBy(e.getPicklistUpdatedBy());
         dto.setPicklistUpdatedAt(e.getPicklistUpdatedAt());
         dto.setPicklistActive(e.getPicklistActive());
         dto.setPicklistDeleted(e.getPicklistDeleted());
@@ -73,10 +73,10 @@ public class PicklistRoleMvoStateEventDtoConverter {
         dto.setIsPropertyPicklistShipmentMethodTypeIdRemoved(e.getIsPropertyPicklistShipmentMethodTypeIdRemoved());
         dto.setIsPropertyPicklistStatusIdRemoved(e.getIsPropertyPicklistStatusIdRemoved());
         dto.setIsPropertyPicklistPicklistDateRemoved(e.getIsPropertyPicklistPicklistDateRemoved());
-        dto.setIsPropertyPicklistCreatedByUserLoginRemoved(e.getIsPropertyPicklistCreatedByUserLoginRemoved());
-        dto.setIsPropertyPicklistLastModifiedByUserLoginRemoved(e.getIsPropertyPicklistLastModifiedByUserLoginRemoved());
         dto.setIsPropertyPicklistPickwaveIdRemoved(e.getIsPropertyPicklistPickwaveIdRemoved());
+        dto.setIsPropertyPicklistCreatedByRemoved(e.getIsPropertyPicklistCreatedByRemoved());
         dto.setIsPropertyPicklistCreatedAtRemoved(e.getIsPropertyPicklistCreatedAtRemoved());
+        dto.setIsPropertyPicklistUpdatedByRemoved(e.getIsPropertyPicklistUpdatedByRemoved());
         dto.setIsPropertyPicklistUpdatedAtRemoved(e.getIsPropertyPicklistUpdatedAtRemoved());
         dto.setIsPropertyPicklistActiveRemoved(e.getIsPropertyPicklistActiveRemoved());
         dto.setIsPropertyPicklistDeletedRemoved(e.getIsPropertyPicklistDeletedRemoved());

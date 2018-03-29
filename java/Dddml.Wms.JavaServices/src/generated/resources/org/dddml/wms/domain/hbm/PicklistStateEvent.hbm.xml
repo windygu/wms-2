@@ -23,7 +23,7 @@
 	<property name="pickwaveId" ><column name="PickwaveId" sql-type="DECIMAL(20,0)" /></property>
 	<property name="active" ></property>
 
-    <property name="createdByUserLogin" column="CreatedByUserLogin"/>
+    <property name="createdBy" column="CreatedBy"/>
 
     <property name="createdAt" column="CreatedAt" />
 

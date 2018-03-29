@@ -82,30 +82,6 @@ public abstract class AbstractPicklistState implements PicklistState, Saveable
         this.picklistDate = picklistDate;
     }
 
-    private String createdByUserLogin;
-
-    public String getCreatedByUserLogin()
-    {
-        return this.createdByUserLogin;
-    }
-
-    public void setCreatedByUserLogin(String createdByUserLogin)
-    {
-        this.createdByUserLogin = createdByUserLogin;
-    }
-
-    private String lastModifiedByUserLogin;
-
-    public String getLastModifiedByUserLogin()
-    {
-        return this.lastModifiedByUserLogin;
-    }
-
-    public void setLastModifiedByUserLogin(String lastModifiedByUserLogin)
-    {
-        this.lastModifiedByUserLogin = lastModifiedByUserLogin;
-    }
-
     private Long pickwaveId;
 
     public Long getPickwaveId()
@@ -130,6 +106,18 @@ public abstract class AbstractPicklistState implements PicklistState, Saveable
         this.version = version;
     }
 
+    private String createdBy;
+
+    public String getCreatedBy()
+    {
+        return this.createdBy;
+    }
+
+    public void setCreatedBy(String createdBy)
+    {
+        this.createdBy = createdBy;
+    }
+
     private Date createdAt;
 
     public Date getCreatedAt()
@@ -140,6 +128,18 @@ public abstract class AbstractPicklistState implements PicklistState, Saveable
     public void setCreatedAt(Date createdAt)
     {
         this.createdAt = createdAt;
+    }
+
+    private String updatedBy;
+
+    public String getUpdatedBy()
+    {
+        return this.updatedBy;
+    }
+
+    public void setUpdatedBy(String updatedBy)
+    {
+        this.updatedBy = updatedBy;
     }
 
     private Date updatedAt;
@@ -265,7 +265,7 @@ public abstract class AbstractPicklistState implements PicklistState, Saveable
 
         this.setDeleted(false);
 
-        this.setCreatedByUserLogin(e.getCreatedByUserLogin());
+        this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
         for (PicklistRoleStateEvent.PicklistRoleStateCreated innerEvent : e.getPicklistRoleEvents()) {
@@ -356,7 +356,7 @@ public abstract class AbstractPicklistState implements PicklistState, Saveable
             this.setActive(e.getActive());
         }
 
-        this.setLastModifiedByUserLogin(e.getCreatedByUserLogin());
+        this.setUpdatedBy(e.getCreatedBy());
         this.setUpdatedAt(e.getCreatedAt());
 
         for (PicklistRoleStateEvent innerEvent : e.getPicklistRoleEvents()) {
@@ -375,7 +375,7 @@ public abstract class AbstractPicklistState implements PicklistState, Saveable
         throwOnWrongEvent(e);
 
         this.setDeleted(true);
-        this.setLastModifiedByUserLogin(e.getCreatedByUserLogin());
+        this.setUpdatedBy(e.getCreatedBy());
         this.setUpdatedAt(e.getCreatedAt());
 
         for (PicklistRoleState innerState : this.getPicklistRoles())
@@ -384,7 +384,7 @@ public abstract class AbstractPicklistState implements PicklistState, Saveable
         
             PicklistRoleStateEvent.PicklistRoleStateRemoved innerE = e.newPicklistRoleStateRemoved(innerState.getPartyRoleId());
             innerE.setCreatedAt(e.getCreatedAt());
-            innerE.setCreatedByUserLogin(e.getCreatedByUserLogin());
+            innerE.setCreatedByUserLogin(e.getCreatedBy());
             innerState.when(innerE);
             //e.addPicklistRoleEvent(innerE);
         }

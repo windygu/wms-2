@@ -50,21 +50,21 @@ public interface PicklistRoleMvoStateEvent extends Event
 
     void setPicklistPicklistDate(java.sql.Timestamp picklistPicklistDate);
 
-    String getPicklistCreatedByUserLogin();
-
-    void setPicklistCreatedByUserLogin(String picklistCreatedByUserLogin);
-
-    String getPicklistLastModifiedByUserLogin();
-
-    void setPicklistLastModifiedByUserLogin(String picklistLastModifiedByUserLogin);
-
     Long getPicklistPickwaveId();
 
     void setPicklistPickwaveId(Long picklistPickwaveId);
 
+    String getPicklistCreatedBy();
+
+    void setPicklistCreatedBy(String picklistCreatedBy);
+
     Date getPicklistCreatedAt();
 
     void setPicklistCreatedAt(Date picklistCreatedAt);
+
+    String getPicklistUpdatedBy();
+
+    void setPicklistUpdatedBy(String picklistUpdatedBy);
 
     Date getPicklistUpdatedAt();
 
@@ -118,21 +118,21 @@ public interface PicklistRoleMvoStateEvent extends Event
 
         void setIsPropertyPicklistPicklistDateRemoved(Boolean removed);
 
-        Boolean getIsPropertyPicklistCreatedByUserLoginRemoved();
-
-        void setIsPropertyPicklistCreatedByUserLoginRemoved(Boolean removed);
-
-        Boolean getIsPropertyPicklistLastModifiedByUserLoginRemoved();
-
-        void setIsPropertyPicklistLastModifiedByUserLoginRemoved(Boolean removed);
-
         Boolean getIsPropertyPicklistPickwaveIdRemoved();
 
         void setIsPropertyPicklistPickwaveIdRemoved(Boolean removed);
 
+        Boolean getIsPropertyPicklistCreatedByRemoved();
+
+        void setIsPropertyPicklistCreatedByRemoved(Boolean removed);
+
         Boolean getIsPropertyPicklistCreatedAtRemoved();
 
         void setIsPropertyPicklistCreatedAtRemoved(Boolean removed);
+
+        Boolean getIsPropertyPicklistUpdatedByRemoved();
+
+        void setIsPropertyPicklistUpdatedByRemoved(Boolean removed);
 
         Boolean getIsPropertyPicklistUpdatedAtRemoved();
 

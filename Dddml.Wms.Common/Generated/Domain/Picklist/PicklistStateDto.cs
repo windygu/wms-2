@@ -70,7 +70,7 @@ namespace Dddml.Wms.Domain.Picklist
             set;
         }
 
-        public virtual string CreatedByUserLogin
+        public virtual string CreatedBy
         {
             get;
             set;
@@ -82,7 +82,7 @@ namespace Dddml.Wms.Domain.Picklist
             set;
         }
 
-        public virtual string LastModifiedByUserLogin
+        public virtual string UpdatedBy
         {
             get;
             set;
@@ -118,9 +118,9 @@ namespace Dddml.Wms.Domain.Picklist
             state.PickwaveId = this.PickwaveId;
             if (this.Active != null && this.Active.HasValue) { state.Active = this.Active.Value; }
             if (this.Version != null && this.Version.HasValue) { state.Version = this.Version.Value; }
-            state.CreatedByUserLogin = this.CreatedByUserLogin;
+            state.CreatedBy = this.CreatedBy;
             if (this.CreatedAt != null && this.CreatedAt.HasValue) { state.CreatedAt = this.CreatedAt.Value; }
-            state.LastModifiedByUserLogin = this.LastModifiedByUserLogin;
+            state.UpdatedBy = this.UpdatedBy;
             if (this.UpdatedAt != null && this.UpdatedAt.HasValue) { state.UpdatedAt = this.UpdatedAt.Value; }
             if (this.PicklistRoles != null) { foreach (var s in this.PicklistRoles) { state.PicklistRoles.AddToSave(s.ToPicklistRoleState()); } };
 

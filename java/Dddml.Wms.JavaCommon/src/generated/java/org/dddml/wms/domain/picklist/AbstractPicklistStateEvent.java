@@ -93,18 +93,6 @@ public abstract class AbstractPicklistStateEvent extends AbstractStateEvent impl
         this.picklistDate = picklistDate;
     }
 
-    private String createdByUserLogin;
-
-    public String getCreatedByUserLogin()
-    {
-        return this.createdByUserLogin;
-    }
-
-    public void setCreatedByUserLogin(String createdByUserLogin)
-    {
-        this.createdByUserLogin = createdByUserLogin;
-    }
-
     private Long pickwaveId;
 
     public Long getPickwaveId()
@@ -115,6 +103,18 @@ public abstract class AbstractPicklistStateEvent extends AbstractStateEvent impl
     public void setPickwaveId(Long pickwaveId)
     {
         this.pickwaveId = pickwaveId;
+    }
+
+    private String createdBy;
+
+    public String getCreatedBy()
+    {
+        return this.createdBy;
+    }
+
+    public void setCreatedBy(String createdBy)
+    {
+        this.createdBy = createdBy;
     }
 
     private Date createdAt;

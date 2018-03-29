@@ -37,14 +37,6 @@ public interface PicklistState
 
     void setPicklistDate(java.sql.Timestamp picklistDate);
 
-    String getCreatedByUserLogin();
-
-    void setCreatedByUserLogin(String createdByUserLogin);
-
-    String getLastModifiedByUserLogin();
-
-    void setLastModifiedByUserLogin(String lastModifiedByUserLogin);
-
     Long getPickwaveId();
 
     void setPickwaveId(Long pickwaveId);
@@ -53,9 +45,17 @@ public interface PicklistState
 
     void setVersion(Long version);
 
+    String getCreatedBy();
+
+    void setCreatedBy(String createdBy);
+
     Date getCreatedAt();
 
     void setCreatedAt(Date createdAt);
+
+    String getUpdatedBy();
+
+    void setUpdatedBy(String updatedBy);
 
     Date getUpdatedAt();
 

@@ -65,10 +65,10 @@ public abstract class AbstractPicklistRoleMvoAggregate extends AbstractAggregate
         e.setPicklistShipmentMethodTypeId(c.getPicklistShipmentMethodTypeId());
         e.setPicklistStatusId(c.getPicklistStatusId());
         e.setPicklistPicklistDate(c.getPicklistPicklistDate());
-        e.setPicklistCreatedByUserLogin(c.getPicklistCreatedByUserLogin());
-        e.setPicklistLastModifiedByUserLogin(c.getPicklistLastModifiedByUserLogin());
         e.setPicklistPickwaveId(c.getPicklistPickwaveId());
+        e.setPicklistCreatedBy(c.getPicklistCreatedBy());
         e.setPicklistCreatedAt(c.getPicklistCreatedAt());
+        e.setPicklistUpdatedBy(c.getPicklistUpdatedBy());
         e.setPicklistUpdatedAt(c.getPicklistUpdatedAt());
         e.setPicklistActive(c.getPicklistActive());
         e.setPicklistDeleted(c.getPicklistDeleted());
@@ -88,10 +88,10 @@ public abstract class AbstractPicklistRoleMvoAggregate extends AbstractAggregate
         e.setPicklistShipmentMethodTypeId(c.getPicklistShipmentMethodTypeId());
         e.setPicklistStatusId(c.getPicklistStatusId());
         e.setPicklistPicklistDate(c.getPicklistPicklistDate());
-        e.setPicklistCreatedByUserLogin(c.getPicklistCreatedByUserLogin());
-        e.setPicklistLastModifiedByUserLogin(c.getPicklistLastModifiedByUserLogin());
         e.setPicklistPickwaveId(c.getPicklistPickwaveId());
+        e.setPicklistCreatedBy(c.getPicklistCreatedBy());
         e.setPicklistCreatedAt(c.getPicklistCreatedAt());
+        e.setPicklistUpdatedBy(c.getPicklistUpdatedBy());
         e.setPicklistUpdatedAt(c.getPicklistUpdatedAt());
         e.setPicklistActive(c.getPicklistActive());
         e.setPicklistDeleted(c.getPicklistDeleted());
@@ -102,10 +102,10 @@ public abstract class AbstractPicklistRoleMvoAggregate extends AbstractAggregate
         e.setIsPropertyPicklistShipmentMethodTypeIdRemoved(c.getIsPropertyPicklistShipmentMethodTypeIdRemoved());
         e.setIsPropertyPicklistStatusIdRemoved(c.getIsPropertyPicklistStatusIdRemoved());
         e.setIsPropertyPicklistPicklistDateRemoved(c.getIsPropertyPicklistPicklistDateRemoved());
-        e.setIsPropertyPicklistCreatedByUserLoginRemoved(c.getIsPropertyPicklistCreatedByUserLoginRemoved());
-        e.setIsPropertyPicklistLastModifiedByUserLoginRemoved(c.getIsPropertyPicklistLastModifiedByUserLoginRemoved());
         e.setIsPropertyPicklistPickwaveIdRemoved(c.getIsPropertyPicklistPickwaveIdRemoved());
+        e.setIsPropertyPicklistCreatedByRemoved(c.getIsPropertyPicklistCreatedByRemoved());
         e.setIsPropertyPicklistCreatedAtRemoved(c.getIsPropertyPicklistCreatedAtRemoved());
+        e.setIsPropertyPicklistUpdatedByRemoved(c.getIsPropertyPicklistUpdatedByRemoved());
         e.setIsPropertyPicklistUpdatedAtRemoved(c.getIsPropertyPicklistUpdatedAtRemoved());
         e.setIsPropertyPicklistActiveRemoved(c.getIsPropertyPicklistActiveRemoved());
         e.setIsPropertyPicklistDeletedRemoved(c.getIsPropertyPicklistDeletedRemoved());

@@ -27,7 +27,7 @@ public class HibernatePicklistStateQueryRepository implements PicklistStateQuery
         return this.sessionFactory.getCurrentSession();
     }
     
-    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("PicklistId", "Description", "FacilityId", "ShipmentMethodTypeId", "StatusId", "PicklistDate", "CreatedByUserLogin", "LastModifiedByUserLogin", "PickwaveId", "PicklistRoles", "Version", "CreatedAt", "UpdatedAt", "Active", "Deleted"));
+    private static final Set<String> readOnlyPropertyPascalCaseNames = new HashSet<String>(Arrays.asList("PicklistId", "Description", "FacilityId", "ShipmentMethodTypeId", "StatusId", "PicklistDate", "PickwaveId", "PicklistRoles", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted"));
     
     private ReadOnlyProxyGenerator readOnlyProxyGenerator;
     

@@ -29,7 +29,7 @@ namespace Dddml.Wms.Domain.Picklist.NHibernate
 			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
-        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "PicklistId", "Description", "FacilityId", "ShipmentMethodTypeId", "StatusId", "PicklistDate", "CreatedByUserLogin", "LastModifiedByUserLogin", "PickwaveId", "PicklistRoles", "Version", "CreatedAt", "UpdatedAt", "Active", "Deleted" });
+        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "PicklistId", "Description", "FacilityId", "ShipmentMethodTypeId", "StatusId", "PicklistDate", "PickwaveId", "PicklistRoles", "Version", "CreatedBy", "CreatedAt", "UpdatedBy", "UpdatedAt", "Active", "Deleted" });
     
         public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
 

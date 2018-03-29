@@ -45,10 +45,10 @@ public abstract class AbstractPicklistRoleMvoStateCommandConverter<TCreatePickli
         cmd.setPicklistShipmentMethodTypeId(state.getPicklistShipmentMethodTypeId());
         cmd.setPicklistStatusId(state.getPicklistStatusId());
         cmd.setPicklistPicklistDate(state.getPicklistPicklistDate());
-        cmd.setPicklistCreatedByUserLogin(state.getPicklistCreatedByUserLogin());
-        cmd.setPicklistLastModifiedByUserLogin(state.getPicklistLastModifiedByUserLogin());
         cmd.setPicklistPickwaveId(state.getPicklistPickwaveId());
+        cmd.setPicklistCreatedBy(state.getPicklistCreatedBy());
         cmd.setPicklistCreatedAt(state.getPicklistCreatedAt());
+        cmd.setPicklistUpdatedBy(state.getPicklistUpdatedBy());
         cmd.setPicklistUpdatedAt(state.getPicklistUpdatedAt());
         cmd.setPicklistActive(state.getPicklistActive());
         cmd.setPicklistDeleted(state.getPicklistDeleted());
@@ -60,10 +60,10 @@ public abstract class AbstractPicklistRoleMvoStateCommandConverter<TCreatePickli
         if (state.getPicklistShipmentMethodTypeId() == null) { cmd.setIsPropertyPicklistShipmentMethodTypeIdRemoved(true); }
         if (state.getPicklistStatusId() == null) { cmd.setIsPropertyPicklistStatusIdRemoved(true); }
         if (state.getPicklistPicklistDate() == null) { cmd.setIsPropertyPicklistPicklistDateRemoved(true); }
-        if (state.getPicklistCreatedByUserLogin() == null) { cmd.setIsPropertyPicklistCreatedByUserLoginRemoved(true); }
-        if (state.getPicklistLastModifiedByUserLogin() == null) { cmd.setIsPropertyPicklistLastModifiedByUserLoginRemoved(true); }
         if (state.getPicklistPickwaveId() == null) { cmd.setIsPropertyPicklistPickwaveIdRemoved(true); }
+        if (state.getPicklistCreatedBy() == null) { cmd.setIsPropertyPicklistCreatedByRemoved(true); }
         if (state.getPicklistCreatedAt() == null) { cmd.setIsPropertyPicklistCreatedAtRemoved(true); }
+        if (state.getPicklistUpdatedBy() == null) { cmd.setIsPropertyPicklistUpdatedByRemoved(true); }
         if (state.getPicklistUpdatedAt() == null) { cmd.setIsPropertyPicklistUpdatedAtRemoved(true); }
         if (state.getPicklistActive() == null) { cmd.setIsPropertyPicklistActiveRemoved(true); }
         if (state.getPicklistDeleted() == null) { cmd.setIsPropertyPicklistDeletedRemoved(true); }
@@ -83,10 +83,10 @@ public abstract class AbstractPicklistRoleMvoStateCommandConverter<TCreatePickli
         cmd.setPicklistShipmentMethodTypeId(state.getPicklistShipmentMethodTypeId());
         cmd.setPicklistStatusId(state.getPicklistStatusId());
         cmd.setPicklistPicklistDate(state.getPicklistPicklistDate());
-        cmd.setPicklistCreatedByUserLogin(state.getPicklistCreatedByUserLogin());
-        cmd.setPicklistLastModifiedByUserLogin(state.getPicklistLastModifiedByUserLogin());
         cmd.setPicklistPickwaveId(state.getPicklistPickwaveId());
+        cmd.setPicklistCreatedBy(state.getPicklistCreatedBy());
         cmd.setPicklistCreatedAt(state.getPicklistCreatedAt());
+        cmd.setPicklistUpdatedBy(state.getPicklistUpdatedBy());
         cmd.setPicklistUpdatedAt(state.getPicklistUpdatedAt());
         cmd.setPicklistActive(state.getPicklistActive());
         cmd.setPicklistDeleted(state.getPicklistDeleted());

@@ -27,7 +27,7 @@ public class PicklistStateEventDtoConverter {
         PicklistStateEventDto.PicklistStateCreatedDto dto = new PicklistStateEventDto.PicklistStateCreatedDto();
         dto.setPicklistEventId(e.getPicklistEventId());
         dto.setCreatedAt(e.getCreatedAt());
-        dto.setCreatedByUserLogin(e.getCreatedByUserLogin());
+        dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
         dto.setDescription(e.getDescription());
         dto.setFacilityId(e.getFacilityId());
@@ -50,7 +50,7 @@ public class PicklistStateEventDtoConverter {
         PicklistStateEventDto.PicklistStateMergePatchedDto dto = new PicklistStateEventDto.PicklistStateMergePatchedDto();
         dto.setPicklistEventId(e.getPicklistEventId());
         dto.setCreatedAt(e.getCreatedAt());
-        dto.setCreatedByUserLogin(e.getCreatedByUserLogin());
+        dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
         dto.setDescription(e.getDescription());
         dto.setFacilityId(e.getFacilityId());
@@ -81,7 +81,7 @@ public class PicklistStateEventDtoConverter {
         PicklistStateEventDto.PicklistStateDeletedDto dto = new PicklistStateEventDto.PicklistStateDeletedDto();
         dto.setPicklistEventId(e.getPicklistEventId());
         dto.setCreatedAt(e.getCreatedAt());
-        dto.setCreatedByUserLogin(e.getCreatedByUserLogin());
+        dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
         List<PicklistRoleStateEventDto.PicklistRoleStateRemovedDto> picklistRoleEvents = new ArrayList<>();
         for (PicklistRoleStateEvent.PicklistRoleStateRemoved ee : e.getPicklistRoleEvents()) {

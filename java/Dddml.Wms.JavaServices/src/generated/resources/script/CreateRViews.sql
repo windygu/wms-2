@@ -682,11 +682,11 @@ CREATE VIEW `PicklistRole_RV` AS
         `Picklists`.`ShipmentMethodTypeId` AS `PicklistShipmentMethodTypeId`,
         `Picklists`.`StatusId` AS `PicklistStatusId`,
         `Picklists`.`PicklistDate` AS `PicklistPicklistDate`,
-        `Picklists`.`CreatedByUserLogin` AS `PicklistCreatedByUserLogin`,
-        `Picklists`.`LastModifiedByUserLogin` AS `PicklistLastModifiedByUserLogin`,
         `Picklists`.`PickwaveId` AS `PicklistPickwaveId`,
         `Picklists`.`Version` AS `PicklistVersion`,
+        `Picklists`.`CreatedBy` AS `PicklistCreatedBy`,
         `Picklists`.`CreatedAt` AS `PicklistCreatedAt`,
+        `Picklists`.`UpdatedBy` AS `PicklistUpdatedBy`,
         `Picklists`.`UpdatedAt` AS `PicklistUpdatedAt`,
         `Picklists`.`Active` AS `PicklistActive`,
         `Picklists`.`Deleted` AS `PicklistDeleted`

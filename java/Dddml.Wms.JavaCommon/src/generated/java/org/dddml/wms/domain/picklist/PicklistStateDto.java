@@ -118,16 +118,16 @@ public class PicklistStateDto
         this.version = version;
     }
 
-    private String createdByUserLogin;
+    private String createdBy;
 
-    public String getCreatedByUserLogin()
+    public String getCreatedBy()
     {
-        return this.createdByUserLogin;
+        return this.createdBy;
     }
 
-    public void setCreatedByUserLogin(String createdByUserLogin)
+    public void setCreatedBy(String createdBy)
     {
-        this.createdByUserLogin = createdByUserLogin;
+        this.createdBy = createdBy;
     }
 
     private Date createdAt;
@@ -142,16 +142,16 @@ public class PicklistStateDto
         this.createdAt = createdAt;
     }
 
-    private String lastModifiedByUserLogin;
+    private String updatedBy;
 
-    public String getLastModifiedByUserLogin()
+    public String getUpdatedBy()
     {
-        return this.lastModifiedByUserLogin;
+        return this.updatedBy;
     }
 
-    public void setLastModifiedByUserLogin(String lastModifiedByUserLogin)
+    public void setUpdatedBy(String updatedBy)
     {
-        this.lastModifiedByUserLogin = lastModifiedByUserLogin;
+        this.updatedBy = updatedBy;
     }
 
     private Date updatedAt;
@@ -231,14 +231,14 @@ public class PicklistStateDto
             if (returnedFieldsContains("Version")) {
                 dto.setVersion(state.getVersion());
             }
-            if (returnedFieldsContains("CreatedByUserLogin")) {
-                dto.setCreatedByUserLogin(state.getCreatedByUserLogin());
+            if (returnedFieldsContains("CreatedBy")) {
+                dto.setCreatedBy(state.getCreatedBy());
             }
             if (returnedFieldsContains("CreatedAt")) {
                 dto.setCreatedAt(state.getCreatedAt());
             }
-            if (returnedFieldsContains("LastModifiedByUserLogin")) {
-                dto.setLastModifiedByUserLogin(state.getLastModifiedByUserLogin());
+            if (returnedFieldsContains("UpdatedBy")) {
+                dto.setUpdatedBy(state.getUpdatedBy());
             }
             if (returnedFieldsContains("UpdatedAt")) {
                 dto.setUpdatedAt(state.getUpdatedAt());

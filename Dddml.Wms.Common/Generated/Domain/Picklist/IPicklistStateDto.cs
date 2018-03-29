@@ -69,7 +69,7 @@ namespace Dddml.Wms.Domain.Picklist
             set;
         }
 
-        string CreatedByUserLogin
+        string CreatedBy
         {
             get;
             set;
@@ -81,7 +81,7 @@ namespace Dddml.Wms.Domain.Picklist
             set;
         }
 
-        string LastModifiedByUserLogin
+        string UpdatedBy
         {
             get;
             set;

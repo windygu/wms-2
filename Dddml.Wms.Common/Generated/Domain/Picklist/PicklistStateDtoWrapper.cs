@@ -298,11 +298,11 @@ namespace Dddml.Wms.Domain.Picklist
             }
         }
 
-		public virtual string CreatedByUserLogin
+		public virtual string CreatedBy
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("CreatedByUserLogin"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("CreatedBy"))
                 {
                     return _state.CreatedBy;
                 }
@@ -333,11 +333,11 @@ namespace Dddml.Wms.Domain.Picklist
             }
         }
 
-		public virtual string LastModifiedByUserLogin
+		public virtual string UpdatedBy
 		{
             get
             {
-                if ((this as IStateDtoWrapper).ReturnedFieldsContains("LastModifiedByUserLogin"))
+                if ((this as IStateDtoWrapper).ReturnedFieldsContains("UpdatedBy"))
                 {
                     return _state.UpdatedBy;
                 }

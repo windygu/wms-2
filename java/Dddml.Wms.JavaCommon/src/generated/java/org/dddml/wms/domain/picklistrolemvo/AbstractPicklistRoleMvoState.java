@@ -166,30 +166,6 @@ public abstract class AbstractPicklistRoleMvoState implements PicklistRoleMvoSta
         this.picklistPicklistDate = picklistPicklistDate;
     }
 
-    private String picklistCreatedByUserLogin;
-
-    public String getPicklistCreatedByUserLogin()
-    {
-        return this.picklistCreatedByUserLogin;
-    }
-
-    public void setPicklistCreatedByUserLogin(String picklistCreatedByUserLogin)
-    {
-        this.picklistCreatedByUserLogin = picklistCreatedByUserLogin;
-    }
-
-    private String picklistLastModifiedByUserLogin;
-
-    public String getPicklistLastModifiedByUserLogin()
-    {
-        return this.picklistLastModifiedByUserLogin;
-    }
-
-    public void setPicklistLastModifiedByUserLogin(String picklistLastModifiedByUserLogin)
-    {
-        this.picklistLastModifiedByUserLogin = picklistLastModifiedByUserLogin;
-    }
-
     private Long picklistPickwaveId;
 
     public Long getPicklistPickwaveId()
@@ -214,6 +190,18 @@ public abstract class AbstractPicklistRoleMvoState implements PicklistRoleMvoSta
         this.picklistVersion = picklistVersion;
     }
 
+    private String picklistCreatedBy;
+
+    public String getPicklistCreatedBy()
+    {
+        return this.picklistCreatedBy;
+    }
+
+    public void setPicklistCreatedBy(String picklistCreatedBy)
+    {
+        this.picklistCreatedBy = picklistCreatedBy;
+    }
+
     private Date picklistCreatedAt;
 
     public Date getPicklistCreatedAt()
@@ -224,6 +212,18 @@ public abstract class AbstractPicklistRoleMvoState implements PicklistRoleMvoSta
     public void setPicklistCreatedAt(Date picklistCreatedAt)
     {
         this.picklistCreatedAt = picklistCreatedAt;
+    }
+
+    private String picklistUpdatedBy;
+
+    public String getPicklistUpdatedBy()
+    {
+        return this.picklistUpdatedBy;
+    }
+
+    public void setPicklistUpdatedBy(String picklistUpdatedBy)
+    {
+        this.picklistUpdatedBy = picklistUpdatedBy;
     }
 
     private Date picklistUpdatedAt;
@@ -333,10 +333,10 @@ public abstract class AbstractPicklistRoleMvoState implements PicklistRoleMvoSta
         this.setPicklistShipmentMethodTypeId(e.getPicklistShipmentMethodTypeId());
         this.setPicklistStatusId(e.getPicklistStatusId());
         this.setPicklistPicklistDate(e.getPicklistPicklistDate());
-        this.setPicklistCreatedByUserLogin(e.getPicklistCreatedByUserLogin());
-        this.setPicklistLastModifiedByUserLogin(e.getPicklistLastModifiedByUserLogin());
         this.setPicklistPickwaveId(e.getPicklistPickwaveId());
+        this.setPicklistCreatedBy(e.getPicklistCreatedBy());
         this.setPicklistCreatedAt(e.getPicklistCreatedAt());
+        this.setPicklistUpdatedBy(e.getPicklistUpdatedBy());
         this.setPicklistUpdatedAt(e.getPicklistUpdatedAt());
         this.setPicklistActive(e.getPicklistActive());
         this.setPicklistDeleted(e.getPicklistDeleted());
@@ -429,28 +429,6 @@ public abstract class AbstractPicklistRoleMvoState implements PicklistRoleMvoSta
         {
             this.setPicklistPicklistDate(e.getPicklistPicklistDate());
         }
-        if (e.getPicklistCreatedByUserLogin() == null)
-        {
-            if (e.getIsPropertyPicklistCreatedByUserLoginRemoved() != null && e.getIsPropertyPicklistCreatedByUserLoginRemoved())
-            {
-                this.setPicklistCreatedByUserLogin(null);
-            }
-        }
-        else
-        {
-            this.setPicklistCreatedByUserLogin(e.getPicklistCreatedByUserLogin());
-        }
-        if (e.getPicklistLastModifiedByUserLogin() == null)
-        {
-            if (e.getIsPropertyPicklistLastModifiedByUserLoginRemoved() != null && e.getIsPropertyPicklistLastModifiedByUserLoginRemoved())
-            {
-                this.setPicklistLastModifiedByUserLogin(null);
-            }
-        }
-        else
-        {
-            this.setPicklistLastModifiedByUserLogin(e.getPicklistLastModifiedByUserLogin());
-        }
         if (e.getPicklistPickwaveId() == null)
         {
             if (e.getIsPropertyPicklistPickwaveIdRemoved() != null && e.getIsPropertyPicklistPickwaveIdRemoved())
@@ -462,6 +440,17 @@ public abstract class AbstractPicklistRoleMvoState implements PicklistRoleMvoSta
         {
             this.setPicklistPickwaveId(e.getPicklistPickwaveId());
         }
+        if (e.getPicklistCreatedBy() == null)
+        {
+            if (e.getIsPropertyPicklistCreatedByRemoved() != null && e.getIsPropertyPicklistCreatedByRemoved())
+            {
+                this.setPicklistCreatedBy(null);
+            }
+        }
+        else
+        {
+            this.setPicklistCreatedBy(e.getPicklistCreatedBy());
+        }
         if (e.getPicklistCreatedAt() == null)
         {
             if (e.getIsPropertyPicklistCreatedAtRemoved() != null && e.getIsPropertyPicklistCreatedAtRemoved())
@@ -472,6 +461,17 @@ public abstract class AbstractPicklistRoleMvoState implements PicklistRoleMvoSta
         else
         {
             this.setPicklistCreatedAt(e.getPicklistCreatedAt());
+        }
+        if (e.getPicklistUpdatedBy() == null)
+        {
+            if (e.getIsPropertyPicklistUpdatedByRemoved() != null && e.getIsPropertyPicklistUpdatedByRemoved())
+            {
+                this.setPicklistUpdatedBy(null);
+            }
+        }
+        else
+        {
+            this.setPicklistUpdatedBy(e.getPicklistUpdatedBy());
         }
         if (e.getPicklistUpdatedAt() == null)
         {

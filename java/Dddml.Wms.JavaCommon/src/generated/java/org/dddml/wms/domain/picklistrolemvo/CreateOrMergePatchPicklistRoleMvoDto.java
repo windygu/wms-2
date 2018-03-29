@@ -90,30 +90,6 @@ public class CreateOrMergePatchPicklistRoleMvoDto extends AbstractPicklistRoleMv
         this.picklistPicklistDate = picklistPicklistDate;
     }
 
-    private String picklistCreatedByUserLogin;
-
-    public String getPicklistCreatedByUserLogin()
-    {
-        return this.picklistCreatedByUserLogin;
-    }
-
-    public void setPicklistCreatedByUserLogin(String picklistCreatedByUserLogin)
-    {
-        this.picklistCreatedByUserLogin = picklistCreatedByUserLogin;
-    }
-
-    private String picklistLastModifiedByUserLogin;
-
-    public String getPicklistLastModifiedByUserLogin()
-    {
-        return this.picklistLastModifiedByUserLogin;
-    }
-
-    public void setPicklistLastModifiedByUserLogin(String picklistLastModifiedByUserLogin)
-    {
-        this.picklistLastModifiedByUserLogin = picklistLastModifiedByUserLogin;
-    }
-
     private Long picklistPickwaveId;
 
     public Long getPicklistPickwaveId()
@@ -126,6 +102,18 @@ public class CreateOrMergePatchPicklistRoleMvoDto extends AbstractPicklistRoleMv
         this.picklistPickwaveId = picklistPickwaveId;
     }
 
+    private String picklistCreatedBy;
+
+    public String getPicklistCreatedBy()
+    {
+        return this.picklistCreatedBy;
+    }
+
+    public void setPicklistCreatedBy(String picklistCreatedBy)
+    {
+        this.picklistCreatedBy = picklistCreatedBy;
+    }
+
     private Date picklistCreatedAt;
 
     public Date getPicklistCreatedAt()
@@ -136,6 +124,18 @@ public class CreateOrMergePatchPicklistRoleMvoDto extends AbstractPicklistRoleMv
     public void setPicklistCreatedAt(Date picklistCreatedAt)
     {
         this.picklistCreatedAt = picklistCreatedAt;
+    }
+
+    private String picklistUpdatedBy;
+
+    public String getPicklistUpdatedBy()
+    {
+        return this.picklistUpdatedBy;
+    }
+
+    public void setPicklistUpdatedBy(String picklistUpdatedBy)
+    {
+        this.picklistUpdatedBy = picklistUpdatedBy;
     }
 
     private Date picklistUpdatedAt;
@@ -258,30 +258,6 @@ public class CreateOrMergePatchPicklistRoleMvoDto extends AbstractPicklistRoleMv
         this.isPropertyPicklistPicklistDateRemoved = removed;
     }
 
-    private Boolean isPropertyPicklistCreatedByUserLoginRemoved;
-
-    public Boolean getIsPropertyPicklistCreatedByUserLoginRemoved()
-    {
-        return this.isPropertyPicklistCreatedByUserLoginRemoved;
-    }
-
-    public void setIsPropertyPicklistCreatedByUserLoginRemoved(Boolean removed)
-    {
-        this.isPropertyPicklistCreatedByUserLoginRemoved = removed;
-    }
-
-    private Boolean isPropertyPicklistLastModifiedByUserLoginRemoved;
-
-    public Boolean getIsPropertyPicklistLastModifiedByUserLoginRemoved()
-    {
-        return this.isPropertyPicklistLastModifiedByUserLoginRemoved;
-    }
-
-    public void setIsPropertyPicklistLastModifiedByUserLoginRemoved(Boolean removed)
-    {
-        this.isPropertyPicklistLastModifiedByUserLoginRemoved = removed;
-    }
-
     private Boolean isPropertyPicklistPickwaveIdRemoved;
 
     public Boolean getIsPropertyPicklistPickwaveIdRemoved()
@@ -294,6 +270,18 @@ public class CreateOrMergePatchPicklistRoleMvoDto extends AbstractPicklistRoleMv
         this.isPropertyPicklistPickwaveIdRemoved = removed;
     }
 
+    private Boolean isPropertyPicklistCreatedByRemoved;
+
+    public Boolean getIsPropertyPicklistCreatedByRemoved()
+    {
+        return this.isPropertyPicklistCreatedByRemoved;
+    }
+
+    public void setIsPropertyPicklistCreatedByRemoved(Boolean removed)
+    {
+        this.isPropertyPicklistCreatedByRemoved = removed;
+    }
+
     private Boolean isPropertyPicklistCreatedAtRemoved;
 
     public Boolean getIsPropertyPicklistCreatedAtRemoved()
@@ -304,6 +292,18 @@ public class CreateOrMergePatchPicklistRoleMvoDto extends AbstractPicklistRoleMv
     public void setIsPropertyPicklistCreatedAtRemoved(Boolean removed)
     {
         this.isPropertyPicklistCreatedAtRemoved = removed;
+    }
+
+    private Boolean isPropertyPicklistUpdatedByRemoved;
+
+    public Boolean getIsPropertyPicklistUpdatedByRemoved()
+    {
+        return this.isPropertyPicklistUpdatedByRemoved;
+    }
+
+    public void setIsPropertyPicklistUpdatedByRemoved(Boolean removed)
+    {
+        this.isPropertyPicklistUpdatedByRemoved = removed;
     }
 
     private Boolean isPropertyPicklistUpdatedAtRemoved;
@@ -352,10 +352,10 @@ public class CreateOrMergePatchPicklistRoleMvoDto extends AbstractPicklistRoleMv
         command.setPicklistShipmentMethodTypeId(this.getPicklistShipmentMethodTypeId());
         command.setPicklistStatusId(this.getPicklistStatusId());
         command.setPicklistPicklistDate(this.getPicklistPicklistDate());
-        command.setPicklistCreatedByUserLogin(this.getPicklistCreatedByUserLogin());
-        command.setPicklistLastModifiedByUserLogin(this.getPicklistLastModifiedByUserLogin());
         command.setPicklistPickwaveId(this.getPicklistPickwaveId());
+        command.setPicklistCreatedBy(this.getPicklistCreatedBy());
         command.setPicklistCreatedAt(this.getPicklistCreatedAt());
+        command.setPicklistUpdatedBy(this.getPicklistUpdatedBy());
         command.setPicklistUpdatedAt(this.getPicklistUpdatedAt());
         command.setPicklistActive(this.getPicklistActive());
         command.setPicklistDeleted(this.getPicklistDeleted());
@@ -390,10 +390,10 @@ public class CreateOrMergePatchPicklistRoleMvoDto extends AbstractPicklistRoleMv
         command.setIsPropertyPicklistShipmentMethodTypeIdRemoved(this.getIsPropertyPicklistShipmentMethodTypeIdRemoved());
         command.setIsPropertyPicklistStatusIdRemoved(this.getIsPropertyPicklistStatusIdRemoved());
         command.setIsPropertyPicklistPicklistDateRemoved(this.getIsPropertyPicklistPicklistDateRemoved());
-        command.setIsPropertyPicklistCreatedByUserLoginRemoved(this.getIsPropertyPicklistCreatedByUserLoginRemoved());
-        command.setIsPropertyPicklistLastModifiedByUserLoginRemoved(this.getIsPropertyPicklistLastModifiedByUserLoginRemoved());
         command.setIsPropertyPicklistPickwaveIdRemoved(this.getIsPropertyPicklistPickwaveIdRemoved());
+        command.setIsPropertyPicklistCreatedByRemoved(this.getIsPropertyPicklistCreatedByRemoved());
         command.setIsPropertyPicklistCreatedAtRemoved(this.getIsPropertyPicklistCreatedAtRemoved());
+        command.setIsPropertyPicklistUpdatedByRemoved(this.getIsPropertyPicklistUpdatedByRemoved());
         command.setIsPropertyPicklistUpdatedAtRemoved(this.getIsPropertyPicklistUpdatedAtRemoved());
         command.setIsPropertyPicklistActiveRemoved(this.getIsPropertyPicklistActiveRemoved());
         command.setIsPropertyPicklistDeletedRemoved(this.getIsPropertyPicklistDeletedRemoved());

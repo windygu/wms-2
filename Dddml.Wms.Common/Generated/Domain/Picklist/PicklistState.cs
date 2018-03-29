@@ -17,11 +17,11 @@ namespace Dddml.Wms.Domain.Picklist
 	public partial class PicklistState : PicklistStateProperties, IPicklistState, ISaveable
 	{
 
-		public virtual string CreatedByUserLogin { get; set; }
+		public virtual string CreatedBy { get; set; }
 
 		public virtual DateTime CreatedAt { get; set; }
 
-		public virtual string LastModifiedByUserLogin { get; set; }
+		public virtual string UpdatedBy { get; set; }
 
 		public virtual DateTime UpdatedAt { get; set; }
 
@@ -67,11 +67,11 @@ namespace Dddml.Wms.Domain.Picklist
 		{
 			get
 			{
-				return this.CreatedByUserLogin;
+				return this.CreatedBy;
 			}
 			set
 			{
-				this.CreatedByUserLogin = value;
+				this.CreatedBy = value;
 			}
 		}
 
@@ -93,8 +93,8 @@ namespace Dddml.Wms.Domain.Picklist
 
 		string IUpdated<string>.UpdatedBy
 		{
-			get { return this.LastModifiedByUserLogin; }
-			set { this.LastModifiedByUserLogin = value; }
+			get { return this.UpdatedBy; }
+			set { this.UpdatedBy = value; }
 		}
 
 		DateTime IUpdated<string>.UpdatedAt
@@ -220,7 +220,7 @@ namespace Dddml.Wms.Domain.Picklist
 
 			this.Deleted = false;
 
-			this.CreatedByUserLogin = e.CreatedBy;
+			this.CreatedBy = e.CreatedBy;
 			this.CreatedAt = e.CreatedAt;
 
 			foreach (IPicklistRoleStateCreated innerEvent in e.PicklistRoleEvents) {
@@ -320,7 +320,7 @@ namespace Dddml.Wms.Domain.Picklist
 			}
 
 
-			this.LastModifiedByUserLogin = e.CreatedBy;
+			this.UpdatedBy = e.CreatedBy;
 			this.UpdatedAt = e.CreatedAt;
 
 
@@ -344,7 +344,7 @@ namespace Dddml.Wms.Domain.Picklist
 			ThrowOnWrongEvent(e);
 
 			this.Deleted = true;
-			this.LastModifiedByUserLogin = e.CreatedBy;
+			this.UpdatedBy = e.CreatedBy;
 			this.UpdatedAt = e.CreatedAt;
 
             foreach (var innerState in this.PicklistRoles)
@@ -353,7 +353,7 @@ namespace Dddml.Wms.Domain.Picklist
                 
                 var innerE = e.NewPicklistRoleStateRemoved(innerState.PartyRoleId);
                 ((PicklistRoleStateEventBase)innerE).CreatedAt = e.CreatedAt;
-                ((PicklistRoleStateEventBase)innerE).CreatedByUserLogin = e.CreatedBy;//CreatedByUserLogin
+                ((PicklistRoleStateEventBase)innerE).CreatedByUserLogin = e.CreatedBy;
                 innerState.When(innerE);
                 //e.AddPicklistRoleEvent(innerE);
 

@@ -20,10 +20,10 @@
     <property name="PicklistShipmentMethodTypeId" ><column name="PicklistShipmentMethodTypeId" sql-type="VARCHAR(20)" /></property>
     <property name="PicklistStatusId" ><column name="PicklistStatusId" sql-type="VARCHAR(20)" /></property>
     <property name="PicklistPicklistDate" ><column name="PicklistPicklistDate" sql-type="DATETIME" /></property>
-    <property name="PicklistCreatedByUserLogin" ><column name="PicklistCreatedByUserLogin" sql-type="VARCHAR(250)" /></property>
-    <property name="PicklistLastModifiedByUserLogin" ><column name="PicklistLastModifiedByUserLogin" sql-type="VARCHAR(250)" /></property>
     <property name="PicklistPickwaveId" ><column name="PicklistPickwaveId" sql-type="DECIMAL(20,0)" /></property>
+    <property name="PicklistCreatedBy" ></property>
     <property name="PicklistCreatedAt" ><column name="PicklistCreatedAt" sql-type="DATETIME" /></property>
+    <property name="PicklistUpdatedBy" ></property>
     <property name="PicklistUpdatedAt" ><column name="PicklistUpdatedAt" sql-type="DATETIME" /></property>
     <property name="PicklistActive" ></property>
     <property name="PicklistDeleted" ></property>
@@ -53,13 +53,13 @@
 
         <property name="IsPropertyPicklistPicklistDateRemoved" column="IsPropertyPicklistPicklistDateRemoved"/>
 
-        <property name="IsPropertyPicklistCreatedByUserLoginRemoved" column="IsPropertyPicklistCreatedByUserLoginRemoved"/>
-
-        <property name="IsPropertyPicklistLastModifiedByUserLoginRemoved" column="IsPropertyPicklistLastModifiedByUserLoginRemoved"/>
-
         <property name="IsPropertyPicklistPickwaveIdRemoved" column="IsPropertyPicklistPickwaveIdRemoved"/>
 
+        <property name="IsPropertyPicklistCreatedByRemoved" column="IsPropertyPicklistCreatedByRemoved"/>
+
         <property name="IsPropertyPicklistCreatedAtRemoved" column="IsPropertyPicklistCreatedAtRemoved"/>
+
+        <property name="IsPropertyPicklistUpdatedByRemoved" column="IsPropertyPicklistUpdatedByRemoved"/>
 
         <property name="IsPropertyPicklistUpdatedAtRemoved" column="IsPropertyPicklistUpdatedAtRemoved"/>
 

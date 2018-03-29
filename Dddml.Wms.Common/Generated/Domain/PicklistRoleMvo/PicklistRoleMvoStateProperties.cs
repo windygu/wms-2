@@ -31,15 +31,15 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
 
 		public virtual DateTime? PicklistPicklistDate { get; set; }
 
-		public virtual string PicklistCreatedByUserLogin { get; set; }
-
-		public virtual string PicklistLastModifiedByUserLogin { get; set; }
-
 		public virtual long? PicklistPickwaveId { get; set; }
 
 		public virtual long PicklistVersion { get; set; }
 
+		public virtual string PicklistCreatedBy { get; set; }
+
 		public virtual DateTime PicklistCreatedAt { get; set; }
+
+		public virtual string PicklistUpdatedBy { get; set; }
 
 		public virtual DateTime PicklistUpdatedAt { get; set; }
 

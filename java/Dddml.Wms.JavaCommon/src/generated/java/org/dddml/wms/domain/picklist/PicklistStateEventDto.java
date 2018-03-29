@@ -105,14 +105,14 @@ public class PicklistStateEventDto extends AbstractStateEvent
         this.active = active;
     }
 
-    private String createdByUserLogin;
+    private String createdBy;
 
-    public String getCreatedByUserLogin() {
-        return this.createdByUserLogin;
+    public String getCreatedBy() {
+        return this.createdBy;
     }
 
-    public void setCreatedByUserLogin(String createdByUserLogin) {
-        this.createdByUserLogin = createdByUserLogin;
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
     }
 
     private Date createdAt;

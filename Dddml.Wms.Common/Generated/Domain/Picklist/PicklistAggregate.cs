@@ -304,7 +304,7 @@ namespace Dddml.Wms.Domain.Picklist
 
             e.CommandId = commandId;
 
-            e.CreatedByUserLogin = (string)requesterId;
+            e.CreatedBy = (string)requesterId;
             e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;
@@ -317,7 +317,7 @@ namespace Dddml.Wms.Domain.Picklist
 
             e.CommandId = commandId;
 
-            e.CreatedByUserLogin = (string)requesterId;
+            e.CreatedBy = (string)requesterId;
             e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;
@@ -331,7 +331,7 @@ namespace Dddml.Wms.Domain.Picklist
 
             e.CommandId = commandId;
 
-            e.CreatedByUserLogin = (string)requesterId;
+            e.CreatedBy = (string)requesterId;
             e.CreatedAt = ApplicationContext.Current.TimestampService.Now<DateTime>();
 
             return e;

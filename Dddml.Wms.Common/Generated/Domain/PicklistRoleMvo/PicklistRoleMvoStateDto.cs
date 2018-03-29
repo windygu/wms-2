@@ -64,25 +64,25 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
             set;
         }
 
-        public virtual string PicklistCreatedByUserLogin
-        {
-            get;
-            set;
-        }
-
-        public virtual string PicklistLastModifiedByUserLogin
-        {
-            get;
-            set;
-        }
-
         public virtual long? PicklistPickwaveId
         {
             get;
             set;
         }
 
+        public virtual string PicklistCreatedBy
+        {
+            get;
+            set;
+        }
+
         public virtual DateTime? PicklistCreatedAt
+        {
+            get;
+            set;
+        }
+
+        public virtual string PicklistUpdatedBy
         {
             get;
             set;
@@ -147,10 +147,10 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
             state.PicklistShipmentMethodTypeId = this.PicklistShipmentMethodTypeId;
             state.PicklistStatusId = this.PicklistStatusId;
             state.PicklistPicklistDate = this.PicklistPicklistDate;
-            state.PicklistCreatedByUserLogin = this.PicklistCreatedByUserLogin;
-            state.PicklistLastModifiedByUserLogin = this.PicklistLastModifiedByUserLogin;
             state.PicklistPickwaveId = this.PicklistPickwaveId;
+            state.PicklistCreatedBy = this.PicklistCreatedBy;
             if (this.PicklistCreatedAt != null && this.PicklistCreatedAt.HasValue) { state.PicklistCreatedAt = this.PicklistCreatedAt.Value; }
+            state.PicklistUpdatedBy = this.PicklistUpdatedBy;
             if (this.PicklistUpdatedAt != null && this.PicklistUpdatedAt.HasValue) { state.PicklistUpdatedAt = this.PicklistUpdatedAt.Value; }
             if (this.PicklistActive != null && this.PicklistActive.HasValue) { state.PicklistActive = this.PicklistActive.Value; }
             if (this.PicklistDeleted != null && this.PicklistDeleted.HasValue) { state.PicklistDeleted = this.PicklistDeleted.Value; }

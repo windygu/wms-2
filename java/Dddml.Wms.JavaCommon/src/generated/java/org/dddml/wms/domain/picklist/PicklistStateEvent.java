@@ -34,13 +34,13 @@ public interface PicklistStateEvent extends Event
 
     void setPicklistDate(java.sql.Timestamp picklistDate);
 
-    String getCreatedByUserLogin();
-
-    void setCreatedByUserLogin(String createdByUserLogin);
-
     Long getPickwaveId();
 
     void setPickwaveId(Long pickwaveId);
+
+    String getCreatedBy();
+
+    void setCreatedBy(String createdBy);
 
     Date getCreatedAt();
 

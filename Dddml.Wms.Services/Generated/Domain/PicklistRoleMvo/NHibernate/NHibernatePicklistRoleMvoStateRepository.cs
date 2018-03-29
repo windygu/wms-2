@@ -29,7 +29,7 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo.NHibernate
 			get { return this.SessionFactory.GetCurrentSession (); }
 		}
 
-        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "PicklistRoleId", "CreatedByUserLogin", "LastModifiedByUserLogin", "Version", "CreatedAt", "UpdatedAt", "Active", "Deleted", "PicklistDescription", "PicklistFacilityId", "PicklistShipmentMethodTypeId", "PicklistStatusId", "PicklistPicklistDate", "PicklistCreatedByUserLogin", "PicklistLastModifiedByUserLogin", "PicklistPickwaveId", "PicklistPicklistRoles", "PicklistVersion", "PicklistCreatedAt", "PicklistUpdatedAt", "PicklistActive", "PicklistDeleted" });
+        private static readonly ISet<string> _readOnlyPropertyNames = new SortedSet<string>(new String[] { "PicklistRoleId", "CreatedByUserLogin", "LastModifiedByUserLogin", "Version", "CreatedAt", "UpdatedAt", "Active", "Deleted", "PicklistDescription", "PicklistFacilityId", "PicklistShipmentMethodTypeId", "PicklistStatusId", "PicklistPicklistDate", "PicklistPickwaveId", "PicklistPicklistRoles", "PicklistVersion", "PicklistCreatedBy", "PicklistCreatedAt", "PicklistUpdatedBy", "PicklistUpdatedAt", "PicklistActive", "PicklistDeleted" });
     
         public IReadOnlyProxyGenerator ReadOnlyProxyGenerator { get; set; }
 

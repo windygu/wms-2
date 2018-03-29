@@ -65,14 +65,6 @@ public interface PicklistRoleMvoState
 
     void setPicklistPicklistDate(java.sql.Timestamp picklistPicklistDate);
 
-    String getPicklistCreatedByUserLogin();
-
-    void setPicklistCreatedByUserLogin(String picklistCreatedByUserLogin);
-
-    String getPicklistLastModifiedByUserLogin();
-
-    void setPicklistLastModifiedByUserLogin(String picklistLastModifiedByUserLogin);
-
     Long getPicklistPickwaveId();
 
     void setPicklistPickwaveId(Long picklistPickwaveId);
@@ -81,9 +73,17 @@ public interface PicklistRoleMvoState
 
     void setPicklistVersion(Long picklistVersion);
 
+    String getPicklistCreatedBy();
+
+    void setPicklistCreatedBy(String picklistCreatedBy);
+
     Date getPicklistCreatedAt();
 
     void setPicklistCreatedAt(Date picklistCreatedAt);
+
+    String getPicklistUpdatedBy();
+
+    void setPicklistUpdatedBy(String picklistUpdatedBy);
 
     Date getPicklistUpdatedAt();
 

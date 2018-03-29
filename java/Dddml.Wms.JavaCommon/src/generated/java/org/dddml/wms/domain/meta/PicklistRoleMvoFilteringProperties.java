@@ -23,11 +23,11 @@ public final class PicklistRoleMvoFilteringProperties
             "picklistShipmentMethodTypeId",
             "picklistStatusId",
             "picklistPicklistDate",
-            "picklistCreatedByUserLogin",
-            "picklistLastModifiedByUserLogin",
             "picklistPickwaveId",
             "picklistVersion",
+            "picklistCreatedBy",
             "picklistCreatedAt",
+            "picklistUpdatedBy",
             "picklistUpdatedAt",
             "picklistActive",
             "picklistDeleted",
@@ -49,11 +49,11 @@ public final class PicklistRoleMvoFilteringProperties
             "String",
             "String",
             "java.sql.Timestamp",
-            "String",
-            "String",
             "Long",
             "Long",
+            "String",
             "Date",
+            "String",
             "Date",
             "Boolean",
             "Boolean",
@@ -98,16 +98,16 @@ public final class PicklistRoleMvoFilteringProperties
         aliasMap.put("PicklistStatusId", "picklistStatusId");
         aliasMap.put("picklistPicklistDate", "picklistPicklistDate");
         aliasMap.put("PicklistPicklistDate", "picklistPicklistDate");
-        aliasMap.put("picklistCreatedByUserLogin", "picklistCreatedByUserLogin");
-        aliasMap.put("PicklistCreatedByUserLogin", "picklistCreatedByUserLogin");
-        aliasMap.put("picklistLastModifiedByUserLogin", "picklistLastModifiedByUserLogin");
-        aliasMap.put("PicklistLastModifiedByUserLogin", "picklistLastModifiedByUserLogin");
         aliasMap.put("picklistPickwaveId", "picklistPickwaveId");
         aliasMap.put("PicklistPickwaveId", "picklistPickwaveId");
         aliasMap.put("picklistVersion", "picklistVersion");
         aliasMap.put("PicklistVersion", "picklistVersion");
+        aliasMap.put("picklistCreatedBy", "picklistCreatedBy");
+        aliasMap.put("PicklistCreatedBy", "picklistCreatedBy");
         aliasMap.put("picklistCreatedAt", "picklistCreatedAt");
         aliasMap.put("PicklistCreatedAt", "picklistCreatedAt");
+        aliasMap.put("picklistUpdatedBy", "picklistUpdatedBy");
+        aliasMap.put("PicklistUpdatedBy", "picklistUpdatedBy");
         aliasMap.put("picklistUpdatedAt", "picklistUpdatedAt");
         aliasMap.put("PicklistUpdatedAt", "picklistUpdatedAt");
         aliasMap.put("picklistActive", "picklistActive");

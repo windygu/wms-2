@@ -106,30 +106,6 @@ public class PicklistRoleMvoStateDto
         this.picklistPicklistDate = picklistPicklistDate;
     }
 
-    private String picklistCreatedByUserLogin;
-
-    public String getPicklistCreatedByUserLogin()
-    {
-        return this.picklistCreatedByUserLogin;
-    }
-
-    public void setPicklistCreatedByUserLogin(String picklistCreatedByUserLogin)
-    {
-        this.picklistCreatedByUserLogin = picklistCreatedByUserLogin;
-    }
-
-    private String picklistLastModifiedByUserLogin;
-
-    public String getPicklistLastModifiedByUserLogin()
-    {
-        return this.picklistLastModifiedByUserLogin;
-    }
-
-    public void setPicklistLastModifiedByUserLogin(String picklistLastModifiedByUserLogin)
-    {
-        this.picklistLastModifiedByUserLogin = picklistLastModifiedByUserLogin;
-    }
-
     private Long picklistPickwaveId;
 
     public Long getPicklistPickwaveId()
@@ -142,6 +118,18 @@ public class PicklistRoleMvoStateDto
         this.picklistPickwaveId = picklistPickwaveId;
     }
 
+    private String picklistCreatedBy;
+
+    public String getPicklistCreatedBy()
+    {
+        return this.picklistCreatedBy;
+    }
+
+    public void setPicklistCreatedBy(String picklistCreatedBy)
+    {
+        this.picklistCreatedBy = picklistCreatedBy;
+    }
+
     private Date picklistCreatedAt;
 
     public Date getPicklistCreatedAt()
@@ -152,6 +140,18 @@ public class PicklistRoleMvoStateDto
     public void setPicklistCreatedAt(Date picklistCreatedAt)
     {
         this.picklistCreatedAt = picklistCreatedAt;
+    }
+
+    private String picklistUpdatedBy;
+
+    public String getPicklistUpdatedBy()
+    {
+        return this.picklistUpdatedBy;
+    }
+
+    public void setPicklistUpdatedBy(String picklistUpdatedBy)
+    {
+        this.picklistUpdatedBy = picklistUpdatedBy;
     }
 
     private Date picklistUpdatedAt;
@@ -300,17 +300,17 @@ public class PicklistRoleMvoStateDto
             if (returnedFieldsContains("PicklistPicklistDate")) {
                 dto.setPicklistPicklistDate(state.getPicklistPicklistDate());
             }
-            if (returnedFieldsContains("PicklistCreatedByUserLogin")) {
-                dto.setPicklistCreatedByUserLogin(state.getPicklistCreatedByUserLogin());
-            }
-            if (returnedFieldsContains("PicklistLastModifiedByUserLogin")) {
-                dto.setPicklistLastModifiedByUserLogin(state.getPicklistLastModifiedByUserLogin());
-            }
             if (returnedFieldsContains("PicklistPickwaveId")) {
                 dto.setPicklistPickwaveId(state.getPicklistPickwaveId());
             }
+            if (returnedFieldsContains("PicklistCreatedBy")) {
+                dto.setPicklistCreatedBy(state.getPicklistCreatedBy());
+            }
             if (returnedFieldsContains("PicklistCreatedAt")) {
                 dto.setPicklistCreatedAt(state.getPicklistCreatedAt());
+            }
+            if (returnedFieldsContains("PicklistUpdatedBy")) {
+                dto.setPicklistUpdatedBy(state.getPicklistUpdatedBy());
             }
             if (returnedFieldsContains("PicklistUpdatedAt")) {
                 dto.setPicklistUpdatedAt(state.getPicklistUpdatedAt());

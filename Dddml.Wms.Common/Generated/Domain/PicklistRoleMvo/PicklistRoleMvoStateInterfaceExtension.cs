@@ -56,10 +56,10 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
             cmd.PicklistShipmentMethodTypeId = state.PicklistShipmentMethodTypeId;
             cmd.PicklistStatusId = state.PicklistStatusId;
             cmd.PicklistPicklistDate = state.PicklistPicklistDate;
-            cmd.PicklistCreatedByUserLogin = state.PicklistCreatedByUserLogin;
-            cmd.PicklistLastModifiedByUserLogin = state.PicklistLastModifiedByUserLogin;
             cmd.PicklistPickwaveId = state.PicklistPickwaveId;
+            cmd.PicklistCreatedBy = state.PicklistCreatedBy;
             cmd.PicklistCreatedAt = state.PicklistCreatedAt;
+            cmd.PicklistUpdatedBy = state.PicklistUpdatedBy;
             cmd.PicklistUpdatedAt = state.PicklistUpdatedAt;
             cmd.PicklistActive = state.PicklistActive;
             cmd.PicklistDeleted = state.PicklistDeleted;
@@ -69,9 +69,9 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
             if (state.PicklistShipmentMethodTypeId == null) { cmd.IsPropertyPicklistShipmentMethodTypeIdRemoved = true; }
             if (state.PicklistStatusId == null) { cmd.IsPropertyPicklistStatusIdRemoved = true; }
             if (state.PicklistPicklistDate == null) { cmd.IsPropertyPicklistPicklistDateRemoved = true; }
-            if (state.PicklistCreatedByUserLogin == null) { cmd.IsPropertyPicklistCreatedByUserLoginRemoved = true; }
-            if (state.PicklistLastModifiedByUserLogin == null) { cmd.IsPropertyPicklistLastModifiedByUserLoginRemoved = true; }
             if (state.PicklistPickwaveId == null) { cmd.IsPropertyPicklistPickwaveIdRemoved = true; }
+            if (state.PicklistCreatedBy == null) { cmd.IsPropertyPicklistCreatedByRemoved = true; }
+            if (state.PicklistUpdatedBy == null) { cmd.IsPropertyPicklistUpdatedByRemoved = true; }
             return cmd;
         }
 
@@ -90,10 +90,10 @@ namespace Dddml.Wms.Domain.PicklistRoleMvo
             cmd.PicklistShipmentMethodTypeId = state.PicklistShipmentMethodTypeId;
             cmd.PicklistStatusId = state.PicklistStatusId;
             cmd.PicklistPicklistDate = state.PicklistPicklistDate;
-            cmd.PicklistCreatedByUserLogin = state.PicklistCreatedByUserLogin;
-            cmd.PicklistLastModifiedByUserLogin = state.PicklistLastModifiedByUserLogin;
             cmd.PicklistPickwaveId = state.PicklistPickwaveId;
+            cmd.PicklistCreatedBy = state.PicklistCreatedBy;
             cmd.PicklistCreatedAt = state.PicklistCreatedAt;
+            cmd.PicklistUpdatedBy = state.PicklistUpdatedBy;
             cmd.PicklistUpdatedAt = state.PicklistUpdatedAt;
             cmd.PicklistActive = state.PicklistActive;
             cmd.PicklistDeleted = state.PicklistDeleted;
