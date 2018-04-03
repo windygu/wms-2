@@ -104,6 +104,21 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = OrganizationStructuresControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route(Order = 1)]
+        [HttpPost][SetRequesterId]
+        public HttpResponseMessage Post([FromBody]CreateOrganizationStructureDto value)
+        {
+          try {
+            if (value.Id == null)
+            {
+                throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "OrganizationStructure");
+            }
+            var idObj = value.Id;
+
+            return Request.CreateResponse<OrganizationStructureId>(HttpStatusCode.Created, idObj);
+          } catch (Exception ex) { var response = OrganizationStructuresControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
         [HttpPut][SetRequesterId]
         public void Put(string id, [FromBody]CreateOrganizationStructureDto value)
         {

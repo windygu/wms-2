@@ -104,6 +104,21 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = OrderItemShipGrpInvReservationsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route(Order = 1)]
+        [HttpPost][SetRequesterId]
+        public HttpResponseMessage Post([FromBody]CreateOrderItemShipGrpInvReservationDto value)
+        {
+          try {
+            if (value.OrderItemShipGrpInvResId == null)
+            {
+                throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "OrderItemShipGrpInvReservation");
+            }
+            var idObj = value.OrderItemShipGrpInvResId;
+
+            return Request.CreateResponse<OrderItemShipGrpInvResId>(HttpStatusCode.Created, idObj);
+          } catch (Exception ex) { var response = OrderItemShipGrpInvReservationsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
         [HttpPut][SetRequesterId]
         public void Put(string id, [FromBody]CreateOrderItemShipGrpInvReservationDto value)
         {

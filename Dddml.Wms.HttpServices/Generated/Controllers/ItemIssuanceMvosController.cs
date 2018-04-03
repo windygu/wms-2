@@ -105,6 +105,21 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = ItemIssuanceMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route(Order = 1)]
+        [HttpPost][SetRequesterId]
+        public HttpResponseMessage Post([FromBody]CreateItemIssuanceMvoDto value)
+        {
+          try {
+            if (value.ShipmentItemIssuanceId == null)
+            {
+                throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "ItemIssuanceMvo");
+            }
+            var idObj = value.ShipmentItemIssuanceId;
+
+            return Request.CreateResponse<ShipmentItemIssuanceId>(HttpStatusCode.Created, idObj);
+          } catch (Exception ex) { var response = ItemIssuanceMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
         [HttpPut][SetRequesterId]
         public void Put(string id, [FromBody]CreateItemIssuanceMvoDto value)
         {

@@ -105,6 +105,21 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = MovementLineMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route(Order = 1)]
+        [HttpPost][SetRequesterId]
+        public HttpResponseMessage Post([FromBody]CreateMovementLineMvoDto value)
+        {
+          try {
+            if (value.MovementLineId == null)
+            {
+                throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "MovementLineMvo");
+            }
+            var idObj = value.MovementLineId;
+
+            return Request.CreateResponse<MovementLineId>(HttpStatusCode.Created, idObj);
+          } catch (Exception ex) { var response = MovementLineMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
         [HttpPut][SetRequesterId]
         public void Put(string id, [FromBody]CreateMovementLineMvoDto value)
         {

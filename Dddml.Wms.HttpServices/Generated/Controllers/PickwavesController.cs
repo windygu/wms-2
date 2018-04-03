@@ -104,6 +104,21 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = PickwavesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route(Order = 1)]
+        [HttpPost][SetRequesterId]
+        public HttpResponseMessage Post([FromBody]CreatePickwaveDto value)
+        {
+          try {
+            if (value.PickwaveId == null)
+            {
+                throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "Pickwave");
+            }
+            var idObj = value.PickwaveId;
+
+            return Request.CreateResponse<long?>(HttpStatusCode.Created, idObj);
+          } catch (Exception ex) { var response = PickwavesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
         [HttpPut][SetRequesterId]
         public void Put(long? id, [FromBody]CreatePickwaveDto value)
         {

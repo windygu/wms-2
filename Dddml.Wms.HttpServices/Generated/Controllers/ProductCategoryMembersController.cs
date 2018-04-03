@@ -104,6 +104,21 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = ProductCategoryMembersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route(Order = 1)]
+        [HttpPost][SetRequesterId]
+        public HttpResponseMessage Post([FromBody]CreateProductCategoryMemberDto value)
+        {
+          try {
+            if (value.ProductCategoryMemberId == null)
+            {
+                throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "ProductCategoryMember");
+            }
+            var idObj = value.ProductCategoryMemberId;
+
+            return Request.CreateResponse<ProductCategoryMemberId>(HttpStatusCode.Created, idObj);
+          } catch (Exception ex) { var response = ProductCategoryMembersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
         [HttpPut][SetRequesterId]
         public void Put(string id, [FromBody]CreateProductCategoryMemberDto value)
         {

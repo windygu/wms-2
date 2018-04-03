@@ -105,6 +105,21 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = PicklistRoleMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route(Order = 1)]
+        [HttpPost][SetRequesterId]
+        public HttpResponseMessage Post([FromBody]CreatePicklistRoleMvoDto value)
+        {
+          try {
+            if (value.PicklistRoleId == null)
+            {
+                throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "PicklistRoleMvo");
+            }
+            var idObj = value.PicklistRoleId;
+
+            return Request.CreateResponse<PicklistRoleId>(HttpStatusCode.Created, idObj);
+          } catch (Exception ex) { var response = PicklistRoleMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
         [HttpPut][SetRequesterId]
         public void Put(string id, [FromBody]CreatePicklistRoleMvoDto value)
         {

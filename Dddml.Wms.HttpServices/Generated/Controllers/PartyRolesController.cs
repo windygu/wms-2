@@ -104,6 +104,21 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = PartyRolesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route(Order = 1)]
+        [HttpPost][SetRequesterId]
+        public HttpResponseMessage Post([FromBody]CreatePartyRoleDto value)
+        {
+          try {
+            if (value.PartyRoleId == null)
+            {
+                throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "PartyRole");
+            }
+            var idObj = value.PartyRoleId;
+
+            return Request.CreateResponse<PartyRoleId>(HttpStatusCode.Created, idObj);
+          } catch (Exception ex) { var response = PartyRolesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
         [HttpPut][SetRequesterId]
         public void Put(string id, [FromBody]CreatePartyRoleDto value)
         {

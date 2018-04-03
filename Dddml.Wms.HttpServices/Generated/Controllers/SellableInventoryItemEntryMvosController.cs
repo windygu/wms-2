@@ -106,6 +106,21 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = SellableInventoryItemEntryMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route(Order = 1)]
+        [HttpPost][SetRequesterId]
+        public HttpResponseMessage Post([FromBody]CreateSellableInventoryItemEntryMvoDto value)
+        {
+          try {
+            if (value.SellableInventoryItemEntryId == null)
+            {
+                throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "SellableInventoryItemEntryMvo");
+            }
+            var idObj = value.SellableInventoryItemEntryId;
+
+            return Request.CreateResponse<SellableInventoryItemEntryId>(HttpStatusCode.Created, idObj);
+          } catch (Exception ex) { var response = SellableInventoryItemEntryMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
         [HttpPut][SetRequesterId]
         public void Put(string id, [FromBody]CreateSellableInventoryItemEntryMvoDto value)
         {

@@ -105,6 +105,21 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = MovementConfirmationLineMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route(Order = 1)]
+        [HttpPost][SetRequesterId]
+        public HttpResponseMessage Post([FromBody]CreateMovementConfirmationLineMvoDto value)
+        {
+          try {
+            if (value.MovementConfirmationLineId == null)
+            {
+                throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "MovementConfirmationLineMvo");
+            }
+            var idObj = value.MovementConfirmationLineId;
+
+            return Request.CreateResponse<MovementConfirmationLineId>(HttpStatusCode.Created, idObj);
+          } catch (Exception ex) { var response = MovementConfirmationLineMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
         [HttpPut][SetRequesterId]
         public void Put(string id, [FromBody]CreateMovementConfirmationLineMvoDto value)
         {

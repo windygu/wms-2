@@ -105,6 +105,21 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = InOutLineMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route(Order = 1)]
+        [HttpPost][SetRequesterId]
+        public HttpResponseMessage Post([FromBody]CreateInOutLineMvoDto value)
+        {
+          try {
+            if (value.InOutLineId == null)
+            {
+                throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "InOutLineMvo");
+            }
+            var idObj = value.InOutLineId;
+
+            return Request.CreateResponse<InOutLineId>(HttpStatusCode.Created, idObj);
+          } catch (Exception ex) { var response = InOutLineMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
         [HttpPut][SetRequesterId]
         public void Put(string id, [FromBody]CreateInOutLineMvoDto value)
         {

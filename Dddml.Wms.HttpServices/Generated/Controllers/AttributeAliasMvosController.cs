@@ -105,6 +105,21 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = AttributeAliasMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route(Order = 1)]
+        [HttpPost][SetRequesterId]
+        public HttpResponseMessage Post([FromBody]CreateAttributeAliasMvoDto value)
+        {
+          try {
+            if (value.AttributeAliasId == null)
+            {
+                throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "AttributeAliasMvo");
+            }
+            var idObj = value.AttributeAliasId;
+
+            return Request.CreateResponse<AttributeAliasId>(HttpStatusCode.Created, idObj);
+          } catch (Exception ex) { var response = AttributeAliasMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
         [HttpPut][SetRequesterId]
         public void Put(string id, [FromBody]CreateAttributeAliasMvoDto value)
         {
