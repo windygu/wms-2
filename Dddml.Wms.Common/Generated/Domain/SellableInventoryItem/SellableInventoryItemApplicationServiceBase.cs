@@ -144,6 +144,11 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
             return StateQueryRepository.GetSellableInventoryItemEntry(sellableInventoryItemId, entrySeqId);
         }
 
+        public IEnumerable<ISellableInventoryItemEntryState> GetSellableInventoryItemEntries(InventoryItemId sellableInventoryItemId)
+        {
+            return StateQueryRepository.GetSellableInventoryItemEntries(sellableInventoryItemId);
+        }
+
 
 		public abstract ISellableInventoryItemAggregate GetSellableInventoryItemAggregate(ISellableInventoryItemState state);
 

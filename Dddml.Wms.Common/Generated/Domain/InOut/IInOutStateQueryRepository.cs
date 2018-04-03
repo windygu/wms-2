@@ -34,6 +34,8 @@ namespace Dddml.Wms.Domain.InOut
 
         IInOutLineState GetInOutLine(string inOutDocumentNumber, string lineNumber);
 
+        IEnumerable<IInOutLineState> GetInOutLines(string inOutDocumentNumber);
+
 	}
 
 }

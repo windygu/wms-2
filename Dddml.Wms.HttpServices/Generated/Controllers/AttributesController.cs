@@ -227,6 +227,24 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = AttributesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{attributeId}/AttributeValues/")]
+        [HttpGet]
+        public IEnumerable<IAttributeValueStateDto> GetAttributeValues(string attributeId)
+        {
+          try {
+            var states = _attributeApplicationService.GetAttributeValues(attributeId);
+            if (states == null) { return null; }
+            var stateDtos = new List<IAttributeValueStateDto>();
+            foreach (var s in states)
+            {
+                var dto = s is AttributeValueStateDtoWrapper ? (AttributeValueStateDtoWrapper)s : new AttributeValueStateDtoWrapper((AttributeValueState)s);
+                dto.AllFieldsReturned = true;
+                stateDtos.Add(dto);
+            }
+            return stateDtos;
+          } catch (Exception ex) { var response = AttributesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
         [Route("{attributeId}/AttributeAlias/{code}")]
         [HttpGet]
         public IAttributeAliasStateDto GetAttributeAlias(string attributeId, string code)
@@ -237,6 +255,24 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDto = new AttributeAliasStateDtoWrapper(state);
             stateDto.AllFieldsReturned = true;
             return stateDto;
+          } catch (Exception ex) { var response = AttributesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
+        [Route("{attributeId}/AttributeAlias/")]
+        [HttpGet]
+        public IEnumerable<IAttributeAliasStateDto> GetAttributeAlias(string attributeId)
+        {
+          try {
+            var states = _attributeApplicationService.GetAttributeAlias(attributeId);
+            if (states == null) { return null; }
+            var stateDtos = new List<IAttributeAliasStateDto>();
+            foreach (var s in states)
+            {
+                var dto = s is AttributeAliasStateDtoWrapper ? (AttributeAliasStateDtoWrapper)s : new AttributeAliasStateDtoWrapper((AttributeAliasState)s);
+                dto.AllFieldsReturned = true;
+                stateDtos.Add(dto);
+            }
+            return stateDtos;
           } catch (Exception ex) { var response = AttributesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 

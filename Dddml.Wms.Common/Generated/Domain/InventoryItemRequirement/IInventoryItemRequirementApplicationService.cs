@@ -37,6 +37,8 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
 
         IInventoryItemRequirementEntryState GetInventoryItemRequirementEntry(InventoryItemId inventoryItemRequirementId, long entrySeqId);
 
+        IEnumerable<IInventoryItemRequirementEntryState> GetInventoryItemRequirementEntries(InventoryItemId inventoryItemRequirementId);
+
 
 	}
 

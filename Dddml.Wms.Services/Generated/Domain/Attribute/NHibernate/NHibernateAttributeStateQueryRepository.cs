@@ -134,10 +134,32 @@ namespace Dddml.Wms.Domain.Attribute.NHibernate
         }
 
         [Transaction(ReadOnly = true)]
+        public IEnumerable<IAttributeValueState> GetAttributeValues(string attributeId)
+        {
+            var criteria = CurrentSession.CreateCriteria<AttributeValueState>();
+            var partIdCondition = global::NHibernate.Criterion.Restrictions.Conjunction()
+                .Add(global::NHibernate.Criterion.Restrictions.Eq("AttributeValueId.AttributeId", attributeId))
+                ;
+
+            return criteria.Add(partIdCondition).List<AttributeValueState>();
+        }
+
+        [Transaction(ReadOnly = true)]
         public virtual IAttributeAliasState GetAttributeAlias(string attributeId, string code)
         {
             var entityId = new AttributeAliasId(attributeId, code);
             return CurrentSession.Get<AttributeAliasState>(entityId);
+        }
+
+        [Transaction(ReadOnly = true)]
+        public IEnumerable<IAttributeAliasState> GetAttributeAlias(string attributeId)
+        {
+            var criteria = CurrentSession.CreateCriteria<AttributeAliasState>();
+            var partIdCondition = global::NHibernate.Criterion.Restrictions.Conjunction()
+                .Add(global::NHibernate.Criterion.Restrictions.Eq("AttributeAliasId.AttributeId", attributeId))
+                ;
+
+            return criteria.Add(partIdCondition).List<AttributeAliasState>();
         }
 
 

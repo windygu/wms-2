@@ -133,6 +133,19 @@ namespace Dddml.Wms.Domain.InventoryItem.NHibernate
             return CurrentSession.Get<InventoryItemEntryState>(entityId);
         }
 
+        [Transaction(ReadOnly = true)]
+        public IEnumerable<IInventoryItemEntryState> GetInventoryItemEntries(InventoryItemId inventoryItemId)
+        {
+            var criteria = CurrentSession.CreateCriteria<InventoryItemEntryState>();
+            var partIdCondition = global::NHibernate.Criterion.Restrictions.Conjunction()
+                .Add(global::NHibernate.Criterion.Restrictions.Eq("InventoryItemEntryId.InventoryItemIdProductId", inventoryItemId.ProductId))
+                .Add(global::NHibernate.Criterion.Restrictions.Eq("InventoryItemEntryId.InventoryItemIdLocatorId", inventoryItemId.LocatorId))
+                .Add(global::NHibernate.Criterion.Restrictions.Eq("InventoryItemEntryId.InventoryItemIdAttributeSetInstanceId", inventoryItemId.AttributeSetInstanceId))
+                ;
+
+            return criteria.Add(partIdCondition).List<InventoryItemEntryState>();
+        }
+
 
         protected static void AddNotDeletedRestriction(ICriteria criteria)
         {

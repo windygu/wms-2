@@ -321,6 +321,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetShipmentItemAsync(shipmentId, shipmentItemSeqId).GetAwaiter().GetResult();
         }
 
+        public IEnumerable<IShipmentItemState> GetShipmentItems(string shipmentId)
+        {
+            throw new NotImplementedException();//todo
+        }
+
         public async virtual Task<IShipmentReceiptState> GetShipmentReceiptAsync(string shipmentId, string receiptSeqId)
         {
             var uriParameters = new ShipmentReceiptUriParameters();
@@ -338,6 +343,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetShipmentReceiptAsync(shipmentId, receiptSeqId).GetAwaiter().GetResult();
         }
 
+        public IEnumerable<IShipmentReceiptState> GetShipmentReceipts(string shipmentId)
+        {
+            throw new NotImplementedException();//todo
+        }
+
         public async virtual Task<IItemIssuanceState> GetItemIssuanceAsync(string shipmentId, string itemIssuanceSeqId)
         {
             var uriParameters = new ItemIssuanceUriParameters();
@@ -353,6 +363,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
         public virtual IItemIssuanceState GetItemIssuance(string shipmentId, string itemIssuanceSeqId)
         {
             return GetItemIssuanceAsync(shipmentId, itemIssuanceSeqId).GetAwaiter().GetResult();
+        }
+
+        public IEnumerable<IItemIssuanceState> GetItemIssuances(string shipmentId)
+        {
+            throw new NotImplementedException();//todo
         }
 
 

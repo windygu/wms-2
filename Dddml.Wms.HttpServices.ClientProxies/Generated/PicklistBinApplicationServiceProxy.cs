@@ -306,6 +306,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetPicklistItemAsync(picklistBinId, picklistItemOrderShipGrpInvId).GetAwaiter().GetResult();
         }
 
+        public IEnumerable<IPicklistItemState> GetPicklistItems(string picklistBinId)
+        {
+            throw new NotImplementedException();//todo
+        }
+
 
         protected virtual string QueryFieldValueSeparator
         {

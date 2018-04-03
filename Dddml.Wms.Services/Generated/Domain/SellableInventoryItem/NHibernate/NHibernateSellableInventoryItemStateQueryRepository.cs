@@ -131,6 +131,19 @@ namespace Dddml.Wms.Domain.SellableInventoryItem.NHibernate
             return CurrentSession.Get<SellableInventoryItemEntryState>(entityId);
         }
 
+        [Transaction(ReadOnly = true)]
+        public IEnumerable<ISellableInventoryItemEntryState> GetSellableInventoryItemEntries(InventoryItemId sellableInventoryItemId)
+        {
+            var criteria = CurrentSession.CreateCriteria<SellableInventoryItemEntryState>();
+            var partIdCondition = global::NHibernate.Criterion.Restrictions.Conjunction()
+                .Add(global::NHibernate.Criterion.Restrictions.Eq("SellableInventoryItemEntryId.SellableInventoryItemIdProductId", sellableInventoryItemId.ProductId))
+                .Add(global::NHibernate.Criterion.Restrictions.Eq("SellableInventoryItemEntryId.SellableInventoryItemIdLocatorId", sellableInventoryItemId.LocatorId))
+                .Add(global::NHibernate.Criterion.Restrictions.Eq("SellableInventoryItemEntryId.SellableInventoryItemIdAttributeSetInstanceId", sellableInventoryItemId.AttributeSetInstanceId))
+                ;
+
+            return criteria.Add(partIdCondition).List<SellableInventoryItemEntryState>();
+        }
+
 
         protected static void AddNotDeletedRestriction(ICriteria criteria)
         {

@@ -171,6 +171,11 @@ namespace Dddml.Wms.Domain.Picklist
             return StateQueryRepository.GetPicklistRole(picklistId, partyRoleId);
         }
 
+        public IEnumerable<IPicklistRoleState> GetPicklistRoles(string picklistId)
+        {
+            return StateQueryRepository.GetPicklistRoles(picklistId);
+        }
+
 
 		public abstract IPicklistAggregate GetPicklistAggregate(IPicklistState state);
 

@@ -175,6 +175,11 @@ namespace Dddml.Wms.Domain.MovementConfirmation
             return StateQueryRepository.GetMovementConfirmationLine(movementConfirmationDocumentNumber, lineNumber);
         }
 
+        public IEnumerable<IMovementConfirmationLineState> GetMovementConfirmationLines(string movementConfirmationDocumentNumber)
+        {
+            return StateQueryRepository.GetMovementConfirmationLines(movementConfirmationDocumentNumber);
+        }
+
 
 		public abstract IMovementConfirmationAggregate GetMovementConfirmationAggregate(IMovementConfirmationState state);
 

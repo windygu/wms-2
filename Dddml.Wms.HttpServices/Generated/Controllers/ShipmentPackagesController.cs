@@ -216,6 +216,24 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = ShipmentPackagesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{shipmentPackageId}/ShipmentPackageContents/")]
+        [HttpGet]
+        public IEnumerable<IShipmentPackageContentStateDto> GetShipmentPackageContents(string shipmentPackageId)
+        {
+          try {
+            var states = _shipmentPackageApplicationService.GetShipmentPackageContents(((new ValueObjectTextFormatter<ShipmentPackageId>()).Parse(shipmentPackageId)));
+            if (states == null) { return null; }
+            var stateDtos = new List<IShipmentPackageContentStateDto>();
+            foreach (var s in states)
+            {
+                var dto = s is ShipmentPackageContentStateDtoWrapper ? (ShipmentPackageContentStateDtoWrapper)s : new ShipmentPackageContentStateDtoWrapper((ShipmentPackageContentState)s);
+                dto.AllFieldsReturned = true;
+                stateDtos.Add(dto);
+            }
+            return stateDtos;
+          } catch (Exception ex) { var response = ShipmentPackagesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
 
 		// /////////////////////////////////////////////////
 

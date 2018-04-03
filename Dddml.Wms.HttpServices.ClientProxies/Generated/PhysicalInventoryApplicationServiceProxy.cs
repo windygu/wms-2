@@ -312,6 +312,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetPhysicalInventoryLineAsync(physicalInventoryDocumentNumber, inventoryItemId).GetAwaiter().GetResult();
         }
 
+        public IEnumerable<IPhysicalInventoryLineState> GetPhysicalInventoryLines(string physicalInventoryDocumentNumber)
+        {
+            throw new NotImplementedException();//todo
+        }
+
 
         protected virtual string QueryFieldValueSeparator
         {

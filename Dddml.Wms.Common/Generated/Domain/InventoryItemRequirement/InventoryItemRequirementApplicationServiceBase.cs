@@ -144,6 +144,11 @@ namespace Dddml.Wms.Domain.InventoryItemRequirement
             return StateQueryRepository.GetInventoryItemRequirementEntry(inventoryItemRequirementId, entrySeqId);
         }
 
+        public IEnumerable<IInventoryItemRequirementEntryState> GetInventoryItemRequirementEntries(InventoryItemId inventoryItemRequirementId)
+        {
+            return StateQueryRepository.GetInventoryItemRequirementEntries(inventoryItemRequirementId);
+        }
+
 
 		public abstract IInventoryItemRequirementAggregate GetInventoryItemRequirementAggregate(IInventoryItemRequirementState state);
 

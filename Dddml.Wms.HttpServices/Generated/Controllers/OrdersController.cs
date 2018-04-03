@@ -204,6 +204,24 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = OrdersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{orderId}/OrderRoles/")]
+        [HttpGet]
+        public IEnumerable<IOrderRoleStateDto> GetOrderRoles(string orderId)
+        {
+          try {
+            var states = _orderApplicationService.GetOrderRoles(orderId);
+            if (states == null) { return null; }
+            var stateDtos = new List<IOrderRoleStateDto>();
+            foreach (var s in states)
+            {
+                var dto = s is OrderRoleStateDtoWrapper ? (OrderRoleStateDtoWrapper)s : new OrderRoleStateDtoWrapper((OrderRoleState)s);
+                dto.AllFieldsReturned = true;
+                stateDtos.Add(dto);
+            }
+            return stateDtos;
+          } catch (Exception ex) { var response = OrdersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
         [Route("{orderId}/OrderItems/{orderItemSeqId}")]
         [HttpGet]
         public IOrderItemStateDto GetOrderItem(string orderId, string orderItemSeqId)
@@ -214,6 +232,24 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDto = new OrderItemStateDtoWrapper(state);
             stateDto.AllFieldsReturned = true;
             return stateDto;
+          } catch (Exception ex) { var response = OrdersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
+        [Route("{orderId}/OrderItems/")]
+        [HttpGet]
+        public IEnumerable<IOrderItemStateDto> GetOrderItems(string orderId)
+        {
+          try {
+            var states = _orderApplicationService.GetOrderItems(orderId);
+            if (states == null) { return null; }
+            var stateDtos = new List<IOrderItemStateDto>();
+            foreach (var s in states)
+            {
+                var dto = s is OrderItemStateDtoWrapper ? (OrderItemStateDtoWrapper)s : new OrderItemStateDtoWrapper((OrderItemState)s);
+                dto.AllFieldsReturned = true;
+                stateDtos.Add(dto);
+            }
+            return stateDtos;
           } catch (Exception ex) { var response = OrdersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
@@ -230,6 +266,24 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = OrdersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{orderId}/OrderShipGroups/")]
+        [HttpGet]
+        public IEnumerable<IOrderShipGroupStateDto> GetOrderShipGroups(string orderId)
+        {
+          try {
+            var states = _orderApplicationService.GetOrderShipGroups(orderId);
+            if (states == null) { return null; }
+            var stateDtos = new List<IOrderShipGroupStateDto>();
+            foreach (var s in states)
+            {
+                var dto = s is OrderShipGroupStateDtoWrapper ? (OrderShipGroupStateDtoWrapper)s : new OrderShipGroupStateDtoWrapper((OrderShipGroupState)s);
+                dto.AllFieldsReturned = true;
+                stateDtos.Add(dto);
+            }
+            return stateDtos;
+          } catch (Exception ex) { var response = OrdersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
         [Route("{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations/{orderItemSeqId}")]
         [HttpGet]
         public IOrderItemShipGroupAssociationStateDto GetOrderItemShipGroupAssociation(string orderId, long? orderShipGroupShipGroupSeqId, string orderItemSeqId)
@@ -240,6 +294,24 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDto = new OrderItemShipGroupAssociationStateDtoWrapper(state);
             stateDto.AllFieldsReturned = true;
             return stateDto;
+          } catch (Exception ex) { var response = OrdersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
+        [Route("{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations/")]
+        [HttpGet]
+        public IEnumerable<IOrderItemShipGroupAssociationStateDto> GetOrderItemShipGroupAssociations(string orderId, long? orderShipGroupShipGroupSeqId)
+        {
+          try {
+            var states = _orderApplicationService.GetOrderItemShipGroupAssociations(orderId, orderShipGroupShipGroupSeqId);
+            if (states == null) { return null; }
+            var stateDtos = new List<IOrderItemShipGroupAssociationStateDto>();
+            foreach (var s in states)
+            {
+                var dto = s is OrderItemShipGroupAssociationStateDtoWrapper ? (OrderItemShipGroupAssociationStateDtoWrapper)s : new OrderItemShipGroupAssociationStateDtoWrapper((OrderItemShipGroupAssociationState)s);
+                dto.AllFieldsReturned = true;
+                stateDtos.Add(dto);
+            }
+            return stateDtos;
           } catch (Exception ex) { var response = OrdersControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 

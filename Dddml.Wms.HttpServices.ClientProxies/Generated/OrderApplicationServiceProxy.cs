@@ -302,6 +302,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetOrderRoleAsync(orderId, partyRoleId).GetAwaiter().GetResult();
         }
 
+        public IEnumerable<IOrderRoleState> GetOrderRoles(string orderId)
+        {
+            throw new NotImplementedException();//todo
+        }
+
         public async virtual Task<IOrderItemState> GetOrderItemAsync(string orderId, string orderItemSeqId)
         {
             var uriParameters = new OrderItemUriParameters();
@@ -317,6 +322,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
         public virtual IOrderItemState GetOrderItem(string orderId, string orderItemSeqId)
         {
             return GetOrderItemAsync(orderId, orderItemSeqId).GetAwaiter().GetResult();
+        }
+
+        public IEnumerable<IOrderItemState> GetOrderItems(string orderId)
+        {
+            throw new NotImplementedException();//todo
         }
 
         public async virtual Task<IOrderShipGroupState> GetOrderShipGroupAsync(string orderId, long? shipGroupSeqId)
@@ -336,6 +346,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetOrderShipGroupAsync(orderId, shipGroupSeqId).GetAwaiter().GetResult();
         }
 
+        public IEnumerable<IOrderShipGroupState> GetOrderShipGroups(string orderId)
+        {
+            throw new NotImplementedException();//todo
+        }
+
         public async virtual Task<IOrderItemShipGroupAssociationState> GetOrderItemShipGroupAssociationAsync(string orderId, long? orderShipGroupShipGroupSeqId, string orderItemSeqId)
         {
             var uriParameters = new OrderItemShipGroupAssociationUriParameters();
@@ -352,6 +367,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
         public virtual IOrderItemShipGroupAssociationState GetOrderItemShipGroupAssociation(string orderId, long? orderShipGroupShipGroupSeqId, string orderItemSeqId)
         {
             return GetOrderItemShipGroupAssociationAsync(orderId, orderShipGroupShipGroupSeqId, orderItemSeqId).GetAwaiter().GetResult();
+        }
+
+        public IEnumerable<IOrderItemShipGroupAssociationState> GetOrderItemShipGroupAssociations(string orderId, long? orderShipGroupShipGroupSeqId)
+        {
+            throw new NotImplementedException();//todo
         }
 
 

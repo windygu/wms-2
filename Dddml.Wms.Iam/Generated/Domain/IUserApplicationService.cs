@@ -41,11 +41,19 @@ namespace Dddml.Wms.Domain.User
 
         IUserRoleState GetUserRole(string userId, string roleId);
 
+        IEnumerable<IUserRoleState> GetUserRoles(string userId);
+
         IUserClaimState GetUserClaim(string userId, int claimId);
+
+        IEnumerable<IUserClaimState> GetUserClaims(string userId);
 
         IUserPermissionState GetUserPermission(string userId, string permissionId);
 
+        IEnumerable<IUserPermissionState> GetUserPermissions(string userId);
+
         IUserLoginState GetUserLogin(string userId, LoginKey loginKey);
+
+        IEnumerable<IUserLoginState> GetUserLogins(string userId);
 
 
 	}

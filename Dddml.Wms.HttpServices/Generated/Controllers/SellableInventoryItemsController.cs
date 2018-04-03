@@ -172,6 +172,24 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = SellableInventoryItemsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{sellableInventoryItemId}/SellableInventoryItemEntries/")]
+        [HttpGet]
+        public IEnumerable<ISellableInventoryItemEntryStateDto> GetSellableInventoryItemEntries(string sellableInventoryItemId)
+        {
+          try {
+            var states = _sellableInventoryItemApplicationService.GetSellableInventoryItemEntries(((new ValueObjectTextFormatter<InventoryItemId>()).Parse(sellableInventoryItemId)));
+            if (states == null) { return null; }
+            var stateDtos = new List<ISellableInventoryItemEntryStateDto>();
+            foreach (var s in states)
+            {
+                var dto = s is SellableInventoryItemEntryStateDtoWrapper ? (SellableInventoryItemEntryStateDtoWrapper)s : new SellableInventoryItemEntryStateDtoWrapper((SellableInventoryItemEntryState)s);
+                dto.AllFieldsReturned = true;
+                stateDtos.Add(dto);
+            }
+            return stateDtos;
+          } catch (Exception ex) { var response = SellableInventoryItemsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
 
 		// /////////////////////////////////////////////////
 

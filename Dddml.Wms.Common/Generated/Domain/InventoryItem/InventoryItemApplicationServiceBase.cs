@@ -165,6 +165,11 @@ namespace Dddml.Wms.Domain.InventoryItem
             return StateQueryRepository.GetInventoryItemEntry(inventoryItemId, entrySeqId);
         }
 
+        public IEnumerable<IInventoryItemEntryState> GetInventoryItemEntries(InventoryItemId inventoryItemId)
+        {
+            return StateQueryRepository.GetInventoryItemEntries(inventoryItemId);
+        }
+
 
 		public abstract IInventoryItemAggregate GetInventoryItemAggregate(IInventoryItemState state);
 

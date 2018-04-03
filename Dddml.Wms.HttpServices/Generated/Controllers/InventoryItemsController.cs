@@ -185,6 +185,24 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = InventoryItemsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{inventoryItemId}/InventoryItemEntries/")]
+        [HttpGet]
+        public IEnumerable<IInventoryItemEntryStateDto> GetInventoryItemEntries(string inventoryItemId)
+        {
+          try {
+            var states = _inventoryItemApplicationService.GetInventoryItemEntries(((new ValueObjectTextFormatter<InventoryItemId>()).Parse(inventoryItemId)));
+            if (states == null) { return null; }
+            var stateDtos = new List<IInventoryItemEntryStateDto>();
+            foreach (var s in states)
+            {
+                var dto = s is InventoryItemEntryStateDtoWrapper ? (InventoryItemEntryStateDtoWrapper)s : new InventoryItemEntryStateDtoWrapper((InventoryItemEntryState)s);
+                dto.AllFieldsReturned = true;
+                stateDtos.Add(dto);
+            }
+            return stateDtos;
+          } catch (Exception ex) { var response = InventoryItemsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
 
 		// /////////////////////////////////////////////////
 

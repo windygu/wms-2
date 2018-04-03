@@ -216,6 +216,24 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = PicklistBinsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{picklistBinId}/PicklistItems/")]
+        [HttpGet]
+        public IEnumerable<IPicklistItemStateDto> GetPicklistItems(string picklistBinId)
+        {
+          try {
+            var states = _picklistBinApplicationService.GetPicklistItems(picklistBinId);
+            if (states == null) { return null; }
+            var stateDtos = new List<IPicklistItemStateDto>();
+            foreach (var s in states)
+            {
+                var dto = s is PicklistItemStateDtoWrapper ? (PicklistItemStateDtoWrapper)s : new PicklistItemStateDtoWrapper((PicklistItemState)s);
+                dto.AllFieldsReturned = true;
+                stateDtos.Add(dto);
+            }
+            return stateDtos;
+          } catch (Exception ex) { var response = PicklistBinsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
 
 		// /////////////////////////////////////////////////
 

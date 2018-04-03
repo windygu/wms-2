@@ -185,14 +185,29 @@ namespace Dddml.Wms.Domain.Shipment
             return StateQueryRepository.GetShipmentItem(shipmentId, shipmentItemSeqId);
         }
 
+        public IEnumerable<IShipmentItemState> GetShipmentItems(string shipmentId)
+        {
+            return StateQueryRepository.GetShipmentItems(shipmentId);
+        }
+
         public virtual IShipmentReceiptState GetShipmentReceipt(string shipmentId, string receiptSeqId)
         {
             return StateQueryRepository.GetShipmentReceipt(shipmentId, receiptSeqId);
         }
 
+        public IEnumerable<IShipmentReceiptState> GetShipmentReceipts(string shipmentId)
+        {
+            return StateQueryRepository.GetShipmentReceipts(shipmentId);
+        }
+
         public virtual IItemIssuanceState GetItemIssuance(string shipmentId, string itemIssuanceSeqId)
         {
             return StateQueryRepository.GetItemIssuance(shipmentId, itemIssuanceSeqId);
+        }
+
+        public IEnumerable<IItemIssuanceState> GetItemIssuances(string shipmentId)
+        {
+            return StateQueryRepository.GetItemIssuances(shipmentId);
         }
 
 

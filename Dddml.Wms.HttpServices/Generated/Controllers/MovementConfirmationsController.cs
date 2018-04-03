@@ -235,6 +235,24 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = MovementConfirmationsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{movementConfirmationDocumentNumber}/MovementConfirmationLines/")]
+        [HttpGet]
+        public IEnumerable<IMovementConfirmationLineStateDto> GetMovementConfirmationLines(string movementConfirmationDocumentNumber)
+        {
+          try {
+            var states = _movementConfirmationApplicationService.GetMovementConfirmationLines(movementConfirmationDocumentNumber);
+            if (states == null) { return null; }
+            var stateDtos = new List<IMovementConfirmationLineStateDto>();
+            foreach (var s in states)
+            {
+                var dto = s is MovementConfirmationLineStateDtoWrapper ? (MovementConfirmationLineStateDtoWrapper)s : new MovementConfirmationLineStateDtoWrapper((MovementConfirmationLineState)s);
+                dto.AllFieldsReturned = true;
+                stateDtos.Add(dto);
+            }
+            return stateDtos;
+          } catch (Exception ex) { var response = MovementConfirmationsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
 
 		// /////////////////////////////////////////////////
 

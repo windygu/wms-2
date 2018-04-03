@@ -175,6 +175,11 @@ namespace Dddml.Wms.Domain.Movement
             return StateQueryRepository.GetMovementLine(movementDocumentNumber, lineNumber);
         }
 
+        public IEnumerable<IMovementLineState> GetMovementLines(string movementDocumentNumber)
+        {
+            return StateQueryRepository.GetMovementLines(movementDocumentNumber);
+        }
+
 
 		public abstract IMovementAggregate GetMovementAggregate(IMovementState state);
 

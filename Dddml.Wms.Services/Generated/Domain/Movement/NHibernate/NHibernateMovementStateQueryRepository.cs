@@ -133,6 +133,17 @@ namespace Dddml.Wms.Domain.Movement.NHibernate
             return CurrentSession.Get<MovementLineState>(entityId);
         }
 
+        [Transaction(ReadOnly = true)]
+        public IEnumerable<IMovementLineState> GetMovementLines(string movementDocumentNumber)
+        {
+            var criteria = CurrentSession.CreateCriteria<MovementLineState>();
+            var partIdCondition = global::NHibernate.Criterion.Restrictions.Conjunction()
+                .Add(global::NHibernate.Criterion.Restrictions.Eq("MovementLineId.MovementDocumentNumber", movementDocumentNumber))
+                ;
+
+            return criteria.Add(partIdCondition).List<MovementLineState>();
+        }
+
 
         protected static void AddNotDeletedRestriction(ICriteria criteria)
         {

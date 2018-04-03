@@ -134,6 +134,17 @@ namespace Dddml.Wms.Domain.PhysicalInventory.NHibernate
             return CurrentSession.Get<PhysicalInventoryLineState>(entityId);
         }
 
+        [Transaction(ReadOnly = true)]
+        public IEnumerable<IPhysicalInventoryLineState> GetPhysicalInventoryLines(string physicalInventoryDocumentNumber)
+        {
+            var criteria = CurrentSession.CreateCriteria<PhysicalInventoryLineState>();
+            var partIdCondition = global::NHibernate.Criterion.Restrictions.Conjunction()
+                .Add(global::NHibernate.Criterion.Restrictions.Eq("PhysicalInventoryLineId.PhysicalInventoryDocumentNumber", physicalInventoryDocumentNumber))
+                ;
+
+            return criteria.Add(partIdCondition).List<PhysicalInventoryLineState>();
+        }
+
 
         protected static void AddNotDeletedRestriction(ICriteria criteria)
         {

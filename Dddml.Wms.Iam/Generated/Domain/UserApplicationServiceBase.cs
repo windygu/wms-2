@@ -170,9 +170,19 @@ namespace Dddml.Wms.Domain.User
             return StateQueryRepository.GetUserRole(userId, roleId);
         }
 
+        public IEnumerable<IUserRoleState> GetUserRoles(string userId)
+        {
+            return StateQueryRepository.GetUserRoles(userId);
+        }
+
         public virtual IUserClaimState GetUserClaim(string userId, int claimId)
         {
             return StateQueryRepository.GetUserClaim(userId, claimId);
+        }
+
+        public IEnumerable<IUserClaimState> GetUserClaims(string userId)
+        {
+            return StateQueryRepository.GetUserClaims(userId);
         }
 
         public virtual IUserPermissionState GetUserPermission(string userId, string permissionId)
@@ -180,9 +190,19 @@ namespace Dddml.Wms.Domain.User
             return StateQueryRepository.GetUserPermission(userId, permissionId);
         }
 
+        public IEnumerable<IUserPermissionState> GetUserPermissions(string userId)
+        {
+            return StateQueryRepository.GetUserPermissions(userId);
+        }
+
         public virtual IUserLoginState GetUserLogin(string userId, LoginKey loginKey)
         {
             return StateQueryRepository.GetUserLogin(userId, loginKey);
+        }
+
+        public IEnumerable<IUserLoginState> GetUserLogins(string userId)
+        {
+            return StateQueryRepository.GetUserLogins(userId);
         }
 
 

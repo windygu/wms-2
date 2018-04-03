@@ -133,6 +133,17 @@ namespace Dddml.Wms.Domain.MovementConfirmation.NHibernate
             return CurrentSession.Get<MovementConfirmationLineState>(entityId);
         }
 
+        [Transaction(ReadOnly = true)]
+        public IEnumerable<IMovementConfirmationLineState> GetMovementConfirmationLines(string movementConfirmationDocumentNumber)
+        {
+            var criteria = CurrentSession.CreateCriteria<MovementConfirmationLineState>();
+            var partIdCondition = global::NHibernate.Criterion.Restrictions.Conjunction()
+                .Add(global::NHibernate.Criterion.Restrictions.Eq("MovementConfirmationLineId.MovementConfirmationDocumentNumber", movementConfirmationDocumentNumber))
+                ;
+
+            return criteria.Add(partIdCondition).List<MovementConfirmationLineState>();
+        }
+
 
         protected static void AddNotDeletedRestriction(ICriteria criteria)
         {

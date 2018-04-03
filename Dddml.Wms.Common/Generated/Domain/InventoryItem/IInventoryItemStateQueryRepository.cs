@@ -34,6 +34,8 @@ namespace Dddml.Wms.Domain.InventoryItem
 
         IInventoryItemEntryState GetInventoryItemEntry(InventoryItemId inventoryItemId, long entrySeqId);
 
+        IEnumerable<IInventoryItemEntryState> GetInventoryItemEntries(InventoryItemId inventoryItemId);
+
 	}
 
 }

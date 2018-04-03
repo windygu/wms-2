@@ -134,6 +134,17 @@ namespace Dddml.Wms.Domain.Shipment.NHibernate
         }
 
         [Transaction(ReadOnly = true)]
+        public IEnumerable<IShipmentItemState> GetShipmentItems(string shipmentId)
+        {
+            var criteria = CurrentSession.CreateCriteria<ShipmentItemState>();
+            var partIdCondition = global::NHibernate.Criterion.Restrictions.Conjunction()
+                .Add(global::NHibernate.Criterion.Restrictions.Eq("ShipmentItemId.ShipmentId", shipmentId))
+                ;
+
+            return criteria.Add(partIdCondition).List<ShipmentItemState>();
+        }
+
+        [Transaction(ReadOnly = true)]
         public virtual IShipmentReceiptState GetShipmentReceipt(string shipmentId, string receiptSeqId)
         {
             var entityId = new ShipmentReceiptId(shipmentId, receiptSeqId);
@@ -141,10 +152,32 @@ namespace Dddml.Wms.Domain.Shipment.NHibernate
         }
 
         [Transaction(ReadOnly = true)]
+        public IEnumerable<IShipmentReceiptState> GetShipmentReceipts(string shipmentId)
+        {
+            var criteria = CurrentSession.CreateCriteria<ShipmentReceiptState>();
+            var partIdCondition = global::NHibernate.Criterion.Restrictions.Conjunction()
+                .Add(global::NHibernate.Criterion.Restrictions.Eq("ShipmentReceiptId.ShipmentId", shipmentId))
+                ;
+
+            return criteria.Add(partIdCondition).List<ShipmentReceiptState>();
+        }
+
+        [Transaction(ReadOnly = true)]
         public virtual IItemIssuanceState GetItemIssuance(string shipmentId, string itemIssuanceSeqId)
         {
             var entityId = new ShipmentItemIssuanceId(shipmentId, itemIssuanceSeqId);
             return CurrentSession.Get<ItemIssuanceState>(entityId);
+        }
+
+        [Transaction(ReadOnly = true)]
+        public IEnumerable<IItemIssuanceState> GetItemIssuances(string shipmentId)
+        {
+            var criteria = CurrentSession.CreateCriteria<ItemIssuanceState>();
+            var partIdCondition = global::NHibernate.Criterion.Restrictions.Conjunction()
+                .Add(global::NHibernate.Criterion.Restrictions.Eq("ShipmentItemIssuanceId.ShipmentId", shipmentId))
+                ;
+
+            return criteria.Add(partIdCondition).List<ItemIssuanceState>();
         }
 
 

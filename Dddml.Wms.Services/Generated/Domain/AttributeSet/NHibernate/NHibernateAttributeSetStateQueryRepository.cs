@@ -133,6 +133,17 @@ namespace Dddml.Wms.Domain.AttributeSet.NHibernate
             return CurrentSession.Get<AttributeUseState>(entityId);
         }
 
+        [Transaction(ReadOnly = true)]
+        public IEnumerable<IAttributeUseState> GetAttributeUses(string attributeSetId)
+        {
+            var criteria = CurrentSession.CreateCriteria<AttributeUseState>();
+            var partIdCondition = global::NHibernate.Criterion.Restrictions.Conjunction()
+                .Add(global::NHibernate.Criterion.Restrictions.Eq("AttributeSetAttributeUseId.AttributeSetId", attributeSetId))
+                ;
+
+            return criteria.Add(partIdCondition).List<AttributeUseState>();
+        }
+
 
         protected static void AddNotDeletedRestriction(ICriteria criteria)
         {

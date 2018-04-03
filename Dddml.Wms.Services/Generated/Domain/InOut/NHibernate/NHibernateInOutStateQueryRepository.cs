@@ -133,6 +133,17 @@ namespace Dddml.Wms.Domain.InOut.NHibernate
             return CurrentSession.Get<InOutLineState>(entityId);
         }
 
+        [Transaction(ReadOnly = true)]
+        public IEnumerable<IInOutLineState> GetInOutLines(string inOutDocumentNumber)
+        {
+            var criteria = CurrentSession.CreateCriteria<InOutLineState>();
+            var partIdCondition = global::NHibernate.Criterion.Restrictions.Conjunction()
+                .Add(global::NHibernate.Criterion.Restrictions.Eq("InOutLineId.InOutDocumentNumber", inOutDocumentNumber))
+                ;
+
+            return criteria.Add(partIdCondition).List<InOutLineState>();
+        }
+
 
         protected static void AddNotDeletedRestriction(ICriteria criteria)
         {

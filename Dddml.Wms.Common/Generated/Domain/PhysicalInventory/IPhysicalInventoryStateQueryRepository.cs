@@ -35,6 +35,8 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 
         IPhysicalInventoryLineState GetPhysicalInventoryLine(string physicalInventoryDocumentNumber, InventoryItemId inventoryItemId);
 
+        IEnumerable<IPhysicalInventoryLineState> GetPhysicalInventoryLines(string physicalInventoryDocumentNumber);
+
 	}
 
 }

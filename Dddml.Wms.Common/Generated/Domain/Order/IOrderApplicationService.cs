@@ -40,11 +40,19 @@ namespace Dddml.Wms.Domain.Order
 
         IOrderRoleState GetOrderRole(string orderId, PartyRoleId partyRoleId);
 
+        IEnumerable<IOrderRoleState> GetOrderRoles(string orderId);
+
         IOrderItemState GetOrderItem(string orderId, string orderItemSeqId);
+
+        IEnumerable<IOrderItemState> GetOrderItems(string orderId);
 
         IOrderShipGroupState GetOrderShipGroup(string orderId, long? shipGroupSeqId);
 
+        IEnumerable<IOrderShipGroupState> GetOrderShipGroups(string orderId);
+
         IOrderItemShipGroupAssociationState GetOrderItemShipGroupAssociation(string orderId, long? orderShipGroupShipGroupSeqId, string orderItemSeqId);
+
+        IEnumerable<IOrderItemShipGroupAssociationState> GetOrderItemShipGroupAssociations(string orderId, long? orderShipGroupShipGroupSeqId);
 
 
 	}

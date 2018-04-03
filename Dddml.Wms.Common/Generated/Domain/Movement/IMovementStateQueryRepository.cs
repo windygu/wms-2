@@ -34,6 +34,8 @@ namespace Dddml.Wms.Domain.Movement
 
         IMovementLineState GetMovementLine(string movementDocumentNumber, string lineNumber);
 
+        IEnumerable<IMovementLineState> GetMovementLines(string movementDocumentNumber);
+
 	}
 
 }

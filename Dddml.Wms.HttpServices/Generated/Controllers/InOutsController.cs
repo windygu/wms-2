@@ -317,6 +317,24 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = InOutsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{inOutDocumentNumber}/InOutLines/")]
+        [HttpGet]
+        public IEnumerable<IInOutLineStateDto> GetInOutLines(string inOutDocumentNumber)
+        {
+          try {
+            var states = _inOutApplicationService.GetInOutLines(inOutDocumentNumber);
+            if (states == null) { return null; }
+            var stateDtos = new List<IInOutLineStateDto>();
+            foreach (var s in states)
+            {
+                var dto = s is InOutLineStateDtoWrapper ? (InOutLineStateDtoWrapper)s : new InOutLineStateDtoWrapper((InOutLineState)s);
+                dto.AllFieldsReturned = true;
+                stateDtos.Add(dto);
+            }
+            return stateDtos;
+          } catch (Exception ex) { var response = InOutsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
 
 		// /////////////////////////////////////////////////
 

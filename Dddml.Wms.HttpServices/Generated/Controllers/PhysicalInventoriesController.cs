@@ -242,6 +242,24 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = PhysicalInventoriesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{physicalInventoryDocumentNumber}/PhysicalInventoryLines/")]
+        [HttpGet]
+        public IEnumerable<IPhysicalInventoryLineStateDto> GetPhysicalInventoryLines(string physicalInventoryDocumentNumber)
+        {
+          try {
+            var states = _physicalInventoryApplicationService.GetPhysicalInventoryLines(physicalInventoryDocumentNumber);
+            if (states == null) { return null; }
+            var stateDtos = new List<IPhysicalInventoryLineStateDto>();
+            foreach (var s in states)
+            {
+                var dto = s is PhysicalInventoryLineStateDtoWrapper ? (PhysicalInventoryLineStateDtoWrapper)s : new PhysicalInventoryLineStateDtoWrapper((PhysicalInventoryLineState)s);
+                dto.AllFieldsReturned = true;
+                stateDtos.Add(dto);
+            }
+            return stateDtos;
+          } catch (Exception ex) { var response = PhysicalInventoriesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
 
 		// /////////////////////////////////////////////////
 

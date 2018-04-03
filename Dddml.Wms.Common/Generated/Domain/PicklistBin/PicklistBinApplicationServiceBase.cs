@@ -170,6 +170,11 @@ namespace Dddml.Wms.Domain.PicklistBin
             return StateQueryRepository.GetPicklistItem(picklistBinId, picklistItemOrderShipGrpInvId);
         }
 
+        public IEnumerable<IPicklistItemState> GetPicklistItems(string picklistBinId)
+        {
+            return StateQueryRepository.GetPicklistItems(picklistBinId);
+        }
+
 
 		public abstract IPicklistBinAggregate GetPicklistBinAggregate(IPicklistBinState state);
 

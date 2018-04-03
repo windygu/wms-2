@@ -311,6 +311,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetMovementLineAsync(movementDocumentNumber, lineNumber).GetAwaiter().GetResult();
         }
 
+        public IEnumerable<IMovementLineState> GetMovementLines(string movementDocumentNumber)
+        {
+            throw new NotImplementedException();//todo
+        }
+
 
         protected virtual string QueryFieldValueSeparator
         {

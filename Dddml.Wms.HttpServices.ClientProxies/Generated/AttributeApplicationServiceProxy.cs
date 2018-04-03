@@ -306,6 +306,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetAttributeValueAsync(attributeId, value).GetAwaiter().GetResult();
         }
 
+        public IEnumerable<IAttributeValueState> GetAttributeValues(string attributeId)
+        {
+            throw new NotImplementedException();//todo
+        }
+
         public async virtual Task<IAttributeAliasState> GetAttributeAliasAsync(string attributeId, string code)
         {
             var uriParameters = new AttributeAliasUriParameters();
@@ -321,6 +326,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
         public virtual IAttributeAliasState GetAttributeAlias(string attributeId, string code)
         {
             return GetAttributeAliasAsync(attributeId, code).GetAwaiter().GetResult();
+        }
+
+        public IEnumerable<IAttributeAliasState> GetAttributeAlias(string attributeId)
+        {
+            throw new NotImplementedException();//todo
         }
 
 

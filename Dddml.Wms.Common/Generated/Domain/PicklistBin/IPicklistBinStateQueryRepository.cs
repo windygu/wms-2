@@ -34,6 +34,8 @@ namespace Dddml.Wms.Domain.PicklistBin
 
         IPicklistItemState GetPicklistItem(string picklistBinId, PicklistItemOrderShipGrpInvId picklistItemOrderShipGrpInvId);
 
+        IEnumerable<IPicklistItemState> GetPicklistItems(string picklistBinId);
+
 	}
 
 }

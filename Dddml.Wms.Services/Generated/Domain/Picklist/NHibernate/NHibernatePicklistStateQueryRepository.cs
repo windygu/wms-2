@@ -134,6 +134,17 @@ namespace Dddml.Wms.Domain.Picklist.NHibernate
             return CurrentSession.Get<PicklistRoleState>(entityId);
         }
 
+        [Transaction(ReadOnly = true)]
+        public IEnumerable<IPicklistRoleState> GetPicklistRoles(string picklistId)
+        {
+            var criteria = CurrentSession.CreateCriteria<PicklistRoleState>();
+            var partIdCondition = global::NHibernate.Criterion.Restrictions.Conjunction()
+                .Add(global::NHibernate.Criterion.Restrictions.Eq("PicklistRoleId.PicklistId", picklistId))
+                ;
+
+            return criteria.Add(partIdCondition).List<PicklistRoleState>();
+        }
+
 
         protected static void AddNotDeletedRestriction(ICriteria criteria)
         {

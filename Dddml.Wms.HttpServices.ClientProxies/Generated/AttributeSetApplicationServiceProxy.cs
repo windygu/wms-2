@@ -306,6 +306,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetAttributeUseAsync(attributeSetId, attributeId).GetAwaiter().GetResult();
         }
 
+        public IEnumerable<IAttributeUseState> GetAttributeUses(string attributeSetId)
+        {
+            throw new NotImplementedException();//todo
+        }
+
 
         protected virtual string QueryFieldValueSeparator
         {

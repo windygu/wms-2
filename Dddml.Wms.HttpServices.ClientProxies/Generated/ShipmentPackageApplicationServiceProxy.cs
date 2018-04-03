@@ -306,6 +306,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetShipmentPackageContentAsync(shipmentPackageId, shipmentItemSeqId).GetAwaiter().GetResult();
         }
 
+        public IEnumerable<IShipmentPackageContentState> GetShipmentPackageContents(ShipmentPackageId shipmentPackageId)
+        {
+            throw new NotImplementedException();//todo
+        }
+
 
         protected virtual string QueryFieldValueSeparator
         {

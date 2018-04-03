@@ -331,6 +331,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetInOutLineAsync(inOutDocumentNumber, lineNumber).GetAwaiter().GetResult();
         }
 
+        public IEnumerable<IInOutLineState> GetInOutLines(string inOutDocumentNumber)
+        {
+            throw new NotImplementedException();//todo
+        }
+
 
         protected virtual string QueryFieldValueSeparator
         {

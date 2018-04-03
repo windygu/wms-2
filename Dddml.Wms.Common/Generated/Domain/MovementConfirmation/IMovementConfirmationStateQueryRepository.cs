@@ -34,6 +34,8 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 
         IMovementConfirmationLineState GetMovementConfirmationLine(string movementConfirmationDocumentNumber, string lineNumber);
 
+        IEnumerable<IMovementConfirmationLineState> GetMovementConfirmationLines(string movementConfirmationDocumentNumber);
+
 	}
 
 }

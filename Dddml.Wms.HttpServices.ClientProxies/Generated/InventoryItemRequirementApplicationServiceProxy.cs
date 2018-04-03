@@ -303,6 +303,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetInventoryItemRequirementEntryAsync(inventoryItemRequirementId, entrySeqId).GetAwaiter().GetResult();
         }
 
+        public IEnumerable<IInventoryItemRequirementEntryState> GetInventoryItemRequirementEntries(InventoryItemId inventoryItemRequirementId)
+        {
+            throw new NotImplementedException();//todo
+        }
+
 
         protected virtual string QueryFieldValueSeparator
         {

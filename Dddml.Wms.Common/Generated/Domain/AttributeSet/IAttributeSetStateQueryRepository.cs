@@ -34,6 +34,8 @@ namespace Dddml.Wms.Domain.AttributeSet
 
         IAttributeUseState GetAttributeUse(string attributeSetId, string attributeId);
 
+        IEnumerable<IAttributeUseState> GetAttributeUses(string attributeSetId);
+
 	}
 
 }

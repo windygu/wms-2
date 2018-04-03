@@ -134,10 +134,32 @@ namespace Dddml.Wms.Domain.User.NHibernate
         }
 
         [Transaction(ReadOnly = true)]
+        public IEnumerable<IUserRoleState> GetUserRoles(string userId)
+        {
+            var criteria = CurrentSession.CreateCriteria<UserRoleState>();
+            var partIdCondition = global::NHibernate.Criterion.Restrictions.Conjunction()
+                .Add(global::NHibernate.Criterion.Restrictions.Eq("UserRoleId.UserId", userId))
+                ;
+
+            return criteria.Add(partIdCondition).List<UserRoleState>();
+        }
+
+        [Transaction(ReadOnly = true)]
         public virtual IUserClaimState GetUserClaim(string userId, int claimId)
         {
             var entityId = new UserClaimId(userId, claimId);
             return CurrentSession.Get<UserClaimState>(entityId);
+        }
+
+        [Transaction(ReadOnly = true)]
+        public IEnumerable<IUserClaimState> GetUserClaims(string userId)
+        {
+            var criteria = CurrentSession.CreateCriteria<UserClaimState>();
+            var partIdCondition = global::NHibernate.Criterion.Restrictions.Conjunction()
+                .Add(global::NHibernate.Criterion.Restrictions.Eq("UserClaimId.UserId", userId))
+                ;
+
+            return criteria.Add(partIdCondition).List<UserClaimState>();
         }
 
         [Transaction(ReadOnly = true)]
@@ -148,10 +170,32 @@ namespace Dddml.Wms.Domain.User.NHibernate
         }
 
         [Transaction(ReadOnly = true)]
+        public IEnumerable<IUserPermissionState> GetUserPermissions(string userId)
+        {
+            var criteria = CurrentSession.CreateCriteria<UserPermissionState>();
+            var partIdCondition = global::NHibernate.Criterion.Restrictions.Conjunction()
+                .Add(global::NHibernate.Criterion.Restrictions.Eq("UserPermissionId.UserId", userId))
+                ;
+
+            return criteria.Add(partIdCondition).List<UserPermissionState>();
+        }
+
+        [Transaction(ReadOnly = true)]
         public virtual IUserLoginState GetUserLogin(string userId, LoginKey loginKey)
         {
             var entityId = new UserLoginId(userId, loginKey);
             return CurrentSession.Get<UserLoginState>(entityId);
+        }
+
+        [Transaction(ReadOnly = true)]
+        public IEnumerable<IUserLoginState> GetUserLogins(string userId)
+        {
+            var criteria = CurrentSession.CreateCriteria<UserLoginState>();
+            var partIdCondition = global::NHibernate.Criterion.Restrictions.Conjunction()
+                .Add(global::NHibernate.Criterion.Restrictions.Eq("UserLoginId.UserId", userId))
+                ;
+
+            return criteria.Add(partIdCondition).List<UserLoginState>();
         }
 
 

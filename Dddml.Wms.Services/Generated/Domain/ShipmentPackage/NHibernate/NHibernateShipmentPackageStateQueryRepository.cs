@@ -133,6 +133,18 @@ namespace Dddml.Wms.Domain.ShipmentPackage.NHibernate
             return CurrentSession.Get<ShipmentPackageContentState>(entityId);
         }
 
+        [Transaction(ReadOnly = true)]
+        public IEnumerable<IShipmentPackageContentState> GetShipmentPackageContents(ShipmentPackageId shipmentPackageId)
+        {
+            var criteria = CurrentSession.CreateCriteria<ShipmentPackageContentState>();
+            var partIdCondition = global::NHibernate.Criterion.Restrictions.Conjunction()
+                .Add(global::NHibernate.Criterion.Restrictions.Eq("ShipmentPackageContentId.ShipmentPackageIdShipmentId", shipmentPackageId.ShipmentId))
+                .Add(global::NHibernate.Criterion.Restrictions.Eq("ShipmentPackageContentId.ShipmentPackageIdShipmentPackageSeqId", shipmentPackageId.ShipmentPackageSeqId))
+                ;
+
+            return criteria.Add(partIdCondition).List<ShipmentPackageContentState>();
+        }
+
 
         protected static void AddNotDeletedRestriction(ICriteria criteria)
         {

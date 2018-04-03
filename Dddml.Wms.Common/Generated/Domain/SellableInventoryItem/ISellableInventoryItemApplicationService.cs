@@ -37,6 +37,8 @@ namespace Dddml.Wms.Domain.SellableInventoryItem
 
         ISellableInventoryItemEntryState GetSellableInventoryItemEntry(InventoryItemId sellableInventoryItemId, long entrySeqId);
 
+        IEnumerable<ISellableInventoryItemEntryState> GetSellableInventoryItemEntries(InventoryItemId sellableInventoryItemId);
+
 
 	}
 

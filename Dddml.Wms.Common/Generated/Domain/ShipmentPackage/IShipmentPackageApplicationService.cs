@@ -41,6 +41,8 @@ namespace Dddml.Wms.Domain.ShipmentPackage
 
         IShipmentPackageContentState GetShipmentPackageContent(ShipmentPackageId shipmentPackageId, string shipmentItemSeqId);
 
+        IEnumerable<IShipmentPackageContentState> GetShipmentPackageContents(ShipmentPackageId shipmentPackageId);
+
 
 	}
 

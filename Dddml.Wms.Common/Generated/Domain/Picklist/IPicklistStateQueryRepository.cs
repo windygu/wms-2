@@ -35,6 +35,8 @@ namespace Dddml.Wms.Domain.Picklist
 
         IPicklistRoleState GetPicklistRole(string picklistId, PartyRoleId partyRoleId);
 
+        IEnumerable<IPicklistRoleState> GetPicklistRoles(string picklistId);
+
 	}
 
 }

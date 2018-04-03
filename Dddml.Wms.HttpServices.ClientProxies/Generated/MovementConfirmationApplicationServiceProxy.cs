@@ -311,6 +311,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetMovementConfirmationLineAsync(movementConfirmationDocumentNumber, lineNumber).GetAwaiter().GetResult();
         }
 
+        public IEnumerable<IMovementConfirmationLineState> GetMovementConfirmationLines(string movementConfirmationDocumentNumber)
+        {
+            throw new NotImplementedException();//todo
+        }
+
 
         protected virtual string QueryFieldValueSeparator
         {

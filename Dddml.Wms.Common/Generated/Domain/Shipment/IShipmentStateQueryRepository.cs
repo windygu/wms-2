@@ -34,9 +34,15 @@ namespace Dddml.Wms.Domain.Shipment
 
         IShipmentItemState GetShipmentItem(string shipmentId, string shipmentItemSeqId);
 
+        IEnumerable<IShipmentItemState> GetShipmentItems(string shipmentId);
+
         IShipmentReceiptState GetShipmentReceipt(string shipmentId, string receiptSeqId);
 
+        IEnumerable<IShipmentReceiptState> GetShipmentReceipts(string shipmentId);
+
         IItemIssuanceState GetItemIssuance(string shipmentId, string itemIssuanceSeqId);
+
+        IEnumerable<IItemIssuanceState> GetItemIssuances(string shipmentId);
 
 	}
 

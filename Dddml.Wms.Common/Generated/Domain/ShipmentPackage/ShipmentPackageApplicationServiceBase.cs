@@ -170,6 +170,11 @@ namespace Dddml.Wms.Domain.ShipmentPackage
             return StateQueryRepository.GetShipmentPackageContent(shipmentPackageId, shipmentItemSeqId);
         }
 
+        public IEnumerable<IShipmentPackageContentState> GetShipmentPackageContents(ShipmentPackageId shipmentPackageId)
+        {
+            return StateQueryRepository.GetShipmentPackageContents(shipmentPackageId);
+        }
+
 
 		public abstract IShipmentPackageAggregate GetShipmentPackageAggregate(IShipmentPackageState state);
 

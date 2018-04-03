@@ -235,6 +235,24 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = MovementsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{movementDocumentNumber}/MovementLines/")]
+        [HttpGet]
+        public IEnumerable<IMovementLineStateDto> GetMovementLines(string movementDocumentNumber)
+        {
+          try {
+            var states = _movementApplicationService.GetMovementLines(movementDocumentNumber);
+            if (states == null) { return null; }
+            var stateDtos = new List<IMovementLineStateDto>();
+            foreach (var s in states)
+            {
+                var dto = s is MovementLineStateDtoWrapper ? (MovementLineStateDtoWrapper)s : new MovementLineStateDtoWrapper((MovementLineState)s);
+                dto.AllFieldsReturned = true;
+                stateDtos.Add(dto);
+            }
+            return stateDtos;
+          } catch (Exception ex) { var response = MovementsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
 
 		// /////////////////////////////////////////////////
 

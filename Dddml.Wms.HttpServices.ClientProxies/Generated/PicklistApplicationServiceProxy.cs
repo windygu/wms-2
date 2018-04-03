@@ -307,6 +307,11 @@ namespace Dddml.Wms.HttpServices.ClientProxies
             return GetPicklistRoleAsync(picklistId, partyRoleId).GetAwaiter().GetResult();
         }
 
+        public IEnumerable<IPicklistRoleState> GetPicklistRoles(string picklistId)
+        {
+            throw new NotImplementedException();//todo
+        }
+
 
         protected virtual string QueryFieldValueSeparator
         {

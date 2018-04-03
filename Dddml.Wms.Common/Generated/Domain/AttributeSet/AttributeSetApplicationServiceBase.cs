@@ -170,6 +170,11 @@ namespace Dddml.Wms.Domain.AttributeSet
             return StateQueryRepository.GetAttributeUse(attributeSetId, attributeId);
         }
 
+        public IEnumerable<IAttributeUseState> GetAttributeUses(string attributeSetId)
+        {
+            return StateQueryRepository.GetAttributeUses(attributeSetId);
+        }
+
 
 		public abstract IAttributeSetAggregate GetAttributeSetAggregate(IAttributeSetState state);
 

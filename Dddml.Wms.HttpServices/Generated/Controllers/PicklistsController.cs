@@ -217,6 +217,24 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = PicklistsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{picklistId}/PicklistRoles/")]
+        [HttpGet]
+        public IEnumerable<IPicklistRoleStateDto> GetPicklistRoles(string picklistId)
+        {
+          try {
+            var states = _picklistApplicationService.GetPicklistRoles(picklistId);
+            if (states == null) { return null; }
+            var stateDtos = new List<IPicklistRoleStateDto>();
+            foreach (var s in states)
+            {
+                var dto = s is PicklistRoleStateDtoWrapper ? (PicklistRoleStateDtoWrapper)s : new PicklistRoleStateDtoWrapper((PicklistRoleState)s);
+                dto.AllFieldsReturned = true;
+                stateDtos.Add(dto);
+            }
+            return stateDtos;
+          } catch (Exception ex) { var response = PicklistsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
 
 		// /////////////////////////////////////////////////
 

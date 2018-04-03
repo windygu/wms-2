@@ -279,6 +279,24 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = ShipmentsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{shipmentId}/ShipmentItems/")]
+        [HttpGet]
+        public IEnumerable<IShipmentItemStateDto> GetShipmentItems(string shipmentId)
+        {
+          try {
+            var states = _shipmentApplicationService.GetShipmentItems(shipmentId);
+            if (states == null) { return null; }
+            var stateDtos = new List<IShipmentItemStateDto>();
+            foreach (var s in states)
+            {
+                var dto = s is ShipmentItemStateDtoWrapper ? (ShipmentItemStateDtoWrapper)s : new ShipmentItemStateDtoWrapper((ShipmentItemState)s);
+                dto.AllFieldsReturned = true;
+                stateDtos.Add(dto);
+            }
+            return stateDtos;
+          } catch (Exception ex) { var response = ShipmentsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
         [Route("{shipmentId}/ShipmentReceipts/{receiptSeqId}")]
         [HttpGet]
         public IShipmentReceiptStateDto GetShipmentReceipt(string shipmentId, string receiptSeqId)
@@ -292,6 +310,24 @@ namespace Dddml.Wms.HttpServices.ApiControllers
           } catch (Exception ex) { var response = ShipmentsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 
+        [Route("{shipmentId}/ShipmentReceipts/")]
+        [HttpGet]
+        public IEnumerable<IShipmentReceiptStateDto> GetShipmentReceipts(string shipmentId)
+        {
+          try {
+            var states = _shipmentApplicationService.GetShipmentReceipts(shipmentId);
+            if (states == null) { return null; }
+            var stateDtos = new List<IShipmentReceiptStateDto>();
+            foreach (var s in states)
+            {
+                var dto = s is ShipmentReceiptStateDtoWrapper ? (ShipmentReceiptStateDtoWrapper)s : new ShipmentReceiptStateDtoWrapper((ShipmentReceiptState)s);
+                dto.AllFieldsReturned = true;
+                stateDtos.Add(dto);
+            }
+            return stateDtos;
+          } catch (Exception ex) { var response = ShipmentsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
         [Route("{shipmentId}/ItemIssuances/{itemIssuanceSeqId}")]
         [HttpGet]
         public IItemIssuanceStateDto GetItemIssuance(string shipmentId, string itemIssuanceSeqId)
@@ -302,6 +338,24 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             var stateDto = new ItemIssuanceStateDtoWrapper(state);
             stateDto.AllFieldsReturned = true;
             return stateDto;
+          } catch (Exception ex) { var response = ShipmentsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
+        }
+
+        [Route("{shipmentId}/ItemIssuances/")]
+        [HttpGet]
+        public IEnumerable<IItemIssuanceStateDto> GetItemIssuances(string shipmentId)
+        {
+          try {
+            var states = _shipmentApplicationService.GetItemIssuances(shipmentId);
+            if (states == null) { return null; }
+            var stateDtos = new List<IItemIssuanceStateDto>();
+            foreach (var s in states)
+            {
+                var dto = s is ItemIssuanceStateDtoWrapper ? (ItemIssuanceStateDtoWrapper)s : new ItemIssuanceStateDtoWrapper((ItemIssuanceState)s);
+                dto.AllFieldsReturned = true;
+                stateDtos.Add(dto);
+            }
+            return stateDtos;
           } catch (Exception ex) { var response = ShipmentsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
         }
 

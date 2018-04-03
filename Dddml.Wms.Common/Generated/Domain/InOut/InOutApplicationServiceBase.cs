@@ -195,6 +195,11 @@ namespace Dddml.Wms.Domain.InOut
             return StateQueryRepository.GetInOutLine(inOutDocumentNumber, lineNumber);
         }
 
+        public IEnumerable<IInOutLineState> GetInOutLines(string inOutDocumentNumber)
+        {
+            return StateQueryRepository.GetInOutLines(inOutDocumentNumber);
+        }
+
 
 		public abstract IInOutAggregate GetInOutAggregate(IInOutState state);
 
