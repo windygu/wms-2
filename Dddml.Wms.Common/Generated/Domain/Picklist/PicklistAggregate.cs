@@ -220,7 +220,7 @@ namespace Dddml.Wms.Domain.Picklist
                 return MapCreate(create, outerCommand, version, outerState);
             }
 
-            var merge = (c.CommandType == CommandType.MergePatch) ? (c as IMergePatchPicklistRole) : null;
+            var merge = (c.CommandType == CommandType.MergePatch || c.CommandType == null) ? (c as IMergePatchPicklistRole) : null;
             if(merge != null)
             {
                 return MapMergePatch(merge, outerCommand, version, outerState);

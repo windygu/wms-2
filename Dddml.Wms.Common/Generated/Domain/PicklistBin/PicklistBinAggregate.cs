@@ -213,7 +213,7 @@ namespace Dddml.Wms.Domain.PicklistBin
                 return MapCreate(create, outerCommand, version, outerState);
             }
 
-            var merge = (c.CommandType == CommandType.MergePatch) ? (c as IMergePatchPicklistItem) : null;
+            var merge = (c.CommandType == CommandType.MergePatch || c.CommandType == null) ? (c as IMergePatchPicklistItem) : null;
             if(merge != null)
             {
                 return MapMergePatch(merge, outerCommand, version, outerState);

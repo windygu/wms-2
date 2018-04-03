@@ -219,7 +219,7 @@ namespace Dddml.Wms.Domain.AttributeSet
                 return MapCreate(create, outerCommand, version, outerState);
             }
 
-            var merge = (c.CommandType == CommandType.MergePatch) ? (c as IMergePatchAttributeUse) : null;
+            var merge = (c.CommandType == CommandType.MergePatch || c.CommandType == null) ? (c as IMergePatchAttributeUse) : null;
             if(merge != null)
             {
                 return MapMergePatch(merge, outerCommand, version, outerState);

@@ -228,7 +228,7 @@ namespace Dddml.Wms.Domain.ShipmentPackage
                 return MapCreate(create, outerCommand, version, outerState);
             }
 
-            var merge = (c.CommandType == CommandType.MergePatch) ? (c as IMergePatchShipmentPackageContent) : null;
+            var merge = (c.CommandType == CommandType.MergePatch || c.CommandType == null) ? (c as IMergePatchShipmentPackageContent) : null;
             if(merge != null)
             {
                 return MapMergePatch(merge, outerCommand, version, outerState);

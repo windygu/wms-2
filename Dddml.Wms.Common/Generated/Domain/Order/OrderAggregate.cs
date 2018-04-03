@@ -360,7 +360,7 @@ namespace Dddml.Wms.Domain.Order
                 return MapCreate(create, outerCommand, version, outerState);
             }
 
-            var merge = (c.CommandType == CommandType.MergePatch) ? (c as IMergePatchOrderRole) : null;
+            var merge = (c.CommandType == CommandType.MergePatch || c.CommandType == null) ? (c as IMergePatchOrderRole) : null;
             if(merge != null)
             {
                 return MapMergePatch(merge, outerCommand, version, outerState);
@@ -432,7 +432,7 @@ namespace Dddml.Wms.Domain.Order
                 return MapCreate(create, outerCommand, version, outerState);
             }
 
-            var merge = (c.CommandType == CommandType.MergePatch) ? (c as IMergePatchOrderItem) : null;
+            var merge = (c.CommandType == CommandType.MergePatch || c.CommandType == null) ? (c as IMergePatchOrderItem) : null;
             if(merge != null)
             {
                 return MapMergePatch(merge, outerCommand, version, outerState);
@@ -590,7 +590,7 @@ namespace Dddml.Wms.Domain.Order
                 return MapCreate(create, outerCommand, version, outerState);
             }
 
-            var merge = (c.CommandType == CommandType.MergePatch) ? (c as IMergePatchOrderShipGroup) : null;
+            var merge = (c.CommandType == CommandType.MergePatch || c.CommandType == null) ? (c as IMergePatchOrderShipGroup) : null;
             if(merge != null)
             {
                 return MapMergePatch(merge, outerCommand, version, outerState);
@@ -734,7 +734,7 @@ namespace Dddml.Wms.Domain.Order
                 return MapCreate(create, outerCommand, version, outerState);
             }
 
-            var merge = (c.CommandType == CommandType.MergePatch) ? (c as IMergePatchOrderItemShipGroupAssociation) : null;
+            var merge = (c.CommandType == CommandType.MergePatch || c.CommandType == null) ? (c as IMergePatchOrderItemShipGroupAssociation) : null;
             if(merge != null)
             {
                 return MapMergePatch(merge, outerCommand, version, outerState);

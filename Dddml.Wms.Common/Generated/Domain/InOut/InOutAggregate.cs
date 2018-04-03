@@ -264,7 +264,7 @@ namespace Dddml.Wms.Domain.InOut
                 return MapCreate(create, outerCommand, version, outerState);
             }
 
-            var merge = (c.CommandType == CommandType.MergePatch) ? (c as IMergePatchInOutLine) : null;
+            var merge = (c.CommandType == CommandType.MergePatch || c.CommandType == null) ? (c as IMergePatchInOutLine) : null;
             if(merge != null)
             {
                 return MapMergePatch(merge, outerCommand, version, outerState);

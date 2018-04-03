@@ -327,7 +327,7 @@ namespace Dddml.Wms.Domain.Shipment
                 return MapCreate(create, outerCommand, version, outerState);
             }
 
-            var merge = (c.CommandType == CommandType.MergePatch) ? (c as IMergePatchShipmentItem) : null;
+            var merge = (c.CommandType == CommandType.MergePatch || c.CommandType == null) ? (c as IMergePatchShipmentItem) : null;
             if(merge != null)
             {
                 return MapMergePatch(merge, outerCommand, version, outerState);
@@ -392,7 +392,7 @@ namespace Dddml.Wms.Domain.Shipment
                 return MapCreate(create, outerCommand, version, outerState);
             }
 
-            var merge = (c.CommandType == CommandType.MergePatch) ? (c as IMergePatchShipmentReceipt) : null;
+            var merge = (c.CommandType == CommandType.MergePatch || c.CommandType == null) ? (c as IMergePatchShipmentReceipt) : null;
             if(merge != null)
             {
                 return MapMergePatch(merge, outerCommand, version, outerState);
@@ -499,7 +499,7 @@ namespace Dddml.Wms.Domain.Shipment
                 return MapCreate(create, outerCommand, version, outerState);
             }
 
-            var merge = (c.CommandType == CommandType.MergePatch) ? (c as IMergePatchItemIssuance) : null;
+            var merge = (c.CommandType == CommandType.MergePatch || c.CommandType == null) ? (c as IMergePatchItemIssuance) : null;
             if(merge != null)
             {
                 return MapMergePatch(merge, outerCommand, version, outerState);

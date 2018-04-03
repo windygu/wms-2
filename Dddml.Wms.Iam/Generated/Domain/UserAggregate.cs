@@ -348,7 +348,7 @@ namespace Dddml.Wms.Domain.User
                 return MapCreate(create, outerCommand, version, outerState);
             }
 
-            var merge = (c.CommandType == CommandType.MergePatch) ? (c as IMergePatchUserRole) : null;
+            var merge = (c.CommandType == CommandType.MergePatch || c.CommandType == null) ? (c as IMergePatchUserRole) : null;
             if(merge != null)
             {
                 return MapMergePatch(merge, outerCommand, version, outerState);
@@ -420,7 +420,7 @@ namespace Dddml.Wms.Domain.User
                 return MapCreate(create, outerCommand, version, outerState);
             }
 
-            var merge = (c.CommandType == CommandType.MergePatch) ? (c as IMergePatchUserClaim) : null;
+            var merge = (c.CommandType == CommandType.MergePatch || c.CommandType == null) ? (c as IMergePatchUserClaim) : null;
             if(merge != null)
             {
                 return MapMergePatch(merge, outerCommand, version, outerState);
@@ -498,7 +498,7 @@ namespace Dddml.Wms.Domain.User
                 return MapCreate(create, outerCommand, version, outerState);
             }
 
-            var merge = (c.CommandType == CommandType.MergePatch) ? (c as IMergePatchUserPermission) : null;
+            var merge = (c.CommandType == CommandType.MergePatch || c.CommandType == null) ? (c as IMergePatchUserPermission) : null;
             if(merge != null)
             {
                 return MapMergePatch(merge, outerCommand, version, outerState);
@@ -570,7 +570,7 @@ namespace Dddml.Wms.Domain.User
                 return MapCreate(create, outerCommand, version, outerState);
             }
 
-            var merge = (c.CommandType == CommandType.MergePatch) ? (c as IMergePatchUserLogin) : null;
+            var merge = (c.CommandType == CommandType.MergePatch || c.CommandType == null) ? (c as IMergePatchUserLogin) : null;
             if(merge != null)
             {
                 return MapMergePatch(merge, outerCommand, version, outerState);

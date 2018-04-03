@@ -217,7 +217,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
                 return MapCreate(create, outerCommand, version, outerState);
             }
 
-            var merge = (c.CommandType == CommandType.MergePatch) ? (c as IMergePatchPhysicalInventoryLine) : null;
+            var merge = (c.CommandType == CommandType.MergePatch || c.CommandType == null) ? (c as IMergePatchPhysicalInventoryLine) : null;
             if(merge != null)
             {
                 return MapMergePatch(merge, outerCommand, version, outerState);

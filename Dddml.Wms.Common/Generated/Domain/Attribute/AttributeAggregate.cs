@@ -266,7 +266,7 @@ namespace Dddml.Wms.Domain.Attribute
                 return MapCreate(create, outerCommand, version, outerState);
             }
 
-            var merge = (c.CommandType == CommandType.MergePatch) ? (c as IMergePatchAttributeValue) : null;
+            var merge = (c.CommandType == CommandType.MergePatch || c.CommandType == null) ? (c as IMergePatchAttributeValue) : null;
             if(merge != null)
             {
                 return MapMergePatch(merge, outerCommand, version, outerState);
@@ -347,7 +347,7 @@ namespace Dddml.Wms.Domain.Attribute
                 return MapCreate(create, outerCommand, version, outerState);
             }
 
-            var merge = (c.CommandType == CommandType.MergePatch) ? (c as IMergePatchAttributeAlias) : null;
+            var merge = (c.CommandType == CommandType.MergePatch || c.CommandType == null) ? (c as IMergePatchAttributeAlias) : null;
             if(merge != null)
             {
                 return MapMergePatch(merge, outerCommand, version, outerState);

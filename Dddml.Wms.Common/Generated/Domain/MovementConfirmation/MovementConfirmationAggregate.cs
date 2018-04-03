@@ -223,7 +223,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
                 return MapCreate(create, outerCommand, version, outerState);
             }
 
-            var merge = (c.CommandType == CommandType.MergePatch) ? (c as IMergePatchMovementConfirmationLine) : null;
+            var merge = (c.CommandType == CommandType.MergePatch || c.CommandType == null) ? (c as IMergePatchMovementConfirmationLine) : null;
             if(merge != null)
             {
                 return MapMergePatch(merge, outerCommand, version, outerState);
