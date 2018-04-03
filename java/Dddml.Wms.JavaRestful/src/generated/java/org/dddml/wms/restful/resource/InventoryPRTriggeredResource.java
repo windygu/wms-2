@@ -113,10 +113,18 @@ public class InventoryPRTriggeredResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchInventoryPRTriggeredDto.CreateInventoryPRTriggeredDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchInventoryPRTriggeredDto value) {
         try {
+            if (value.getVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                InventoryPRTriggeredCommand.MergePatchInventoryPRTriggered cmd = (InventoryPRTriggeredCommand.MergePatchInventoryPRTriggered) value.toCommand();
+                InventoryPRTriggeredResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                inventoryPRTriggeredApplicationService.when(cmd);
+                return;
+            }
 
-            InventoryPRTriggeredCommand.CreateInventoryPRTriggered cmd = value.toCreateInventoryPRTriggered();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            InventoryPRTriggeredCommand.CreateInventoryPRTriggered cmd = (InventoryPRTriggeredCommand.CreateInventoryPRTriggered) value.toCommand();
             InventoryPRTriggeredResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             inventoryPRTriggeredApplicationService.when(cmd);
 

@@ -113,10 +113,18 @@ public class ProductCategoryResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchProductCategoryDto.CreateProductCategoryDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchProductCategoryDto value) {
         try {
+            if (value.getVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                ProductCategoryCommand.MergePatchProductCategory cmd = (ProductCategoryCommand.MergePatchProductCategory) value.toCommand();
+                ProductCategoryResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                productCategoryApplicationService.when(cmd);
+                return;
+            }
 
-            ProductCategoryCommand.CreateProductCategory cmd = value.toCreateProductCategory();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            ProductCategoryCommand.CreateProductCategory cmd = (ProductCategoryCommand.CreateProductCategory) value.toCommand();
             ProductCategoryResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             productCategoryApplicationService.when(cmd);
 

@@ -113,10 +113,18 @@ public class PartyRoleResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchPartyRoleDto.CreatePartyRoleDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchPartyRoleDto value) {
         try {
+            if (value.getVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                PartyRoleCommand.MergePatchPartyRole cmd = (PartyRoleCommand.MergePatchPartyRole) value.toCommand();
+                PartyRoleResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                partyRoleApplicationService.when(cmd);
+                return;
+            }
 
-            PartyRoleCommand.CreatePartyRole cmd = value.toCreatePartyRole();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            PartyRoleCommand.CreatePartyRole cmd = (PartyRoleCommand.CreatePartyRole) value.toCommand();
             PartyRoleResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             partyRoleApplicationService.when(cmd);
 

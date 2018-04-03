@@ -114,10 +114,18 @@ public class InOutResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchInOutDto.CreateInOutDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchInOutDto value) {
         try {
+            if (value.getVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                InOutCommand.MergePatchInOut cmd = (InOutCommand.MergePatchInOut) value.toCommand();
+                InOutResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                inOutApplicationService.when(cmd);
+                return;
+            }
 
-            InOutCommand.CreateInOut cmd = value.toCreateInOut();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            InOutCommand.CreateInOut cmd = (InOutCommand.CreateInOut) value.toCommand();
             InOutResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             inOutApplicationService.when(cmd);
 

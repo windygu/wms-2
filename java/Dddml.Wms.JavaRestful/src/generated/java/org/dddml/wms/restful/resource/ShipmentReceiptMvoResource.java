@@ -114,10 +114,18 @@ public class ShipmentReceiptMvoResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchShipmentReceiptMvoDto.CreateShipmentReceiptMvoDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchShipmentReceiptMvoDto value) {
         try {
+            if (value.getShipmentVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                ShipmentReceiptMvoCommand.MergePatchShipmentReceiptMvo cmd = (ShipmentReceiptMvoCommand.MergePatchShipmentReceiptMvo) value.toCommand();
+                ShipmentReceiptMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                shipmentReceiptMvoApplicationService.when(cmd);
+                return;
+            }
 
-            ShipmentReceiptMvoCommand.CreateShipmentReceiptMvo cmd = value.toCreateShipmentReceiptMvo();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            ShipmentReceiptMvoCommand.CreateShipmentReceiptMvo cmd = (ShipmentReceiptMvoCommand.CreateShipmentReceiptMvo) value.toCommand();
             ShipmentReceiptMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             shipmentReceiptMvoApplicationService.when(cmd);
 

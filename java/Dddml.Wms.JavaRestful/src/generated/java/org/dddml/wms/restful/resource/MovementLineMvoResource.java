@@ -115,10 +115,18 @@ public class MovementLineMvoResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchMovementLineMvoDto.CreateMovementLineMvoDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchMovementLineMvoDto value) {
         try {
+            if (value.getMovementVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                MovementLineMvoCommand.MergePatchMovementLineMvo cmd = (MovementLineMvoCommand.MergePatchMovementLineMvo) value.toCommand();
+                MovementLineMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                movementLineMvoApplicationService.when(cmd);
+                return;
+            }
 
-            MovementLineMvoCommand.CreateMovementLineMvo cmd = value.toCreateMovementLineMvo();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            MovementLineMvoCommand.CreateMovementLineMvo cmd = (MovementLineMvoCommand.CreateMovementLineMvo) value.toCommand();
             MovementLineMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             movementLineMvoApplicationService.when(cmd);
 

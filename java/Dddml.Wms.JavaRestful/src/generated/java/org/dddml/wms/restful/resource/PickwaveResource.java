@@ -113,10 +113,18 @@ public class PickwaveResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") Long id, CreateOrMergePatchPickwaveDto.CreatePickwaveDto value) {
+    public void put(@PathParam("id") Long id, CreateOrMergePatchPickwaveDto value) {
         try {
+            if (value.getVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                PickwaveCommand.MergePatchPickwave cmd = (PickwaveCommand.MergePatchPickwave) value.toCommand();
+                PickwaveResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                pickwaveApplicationService.when(cmd);
+                return;
+            }
 
-            PickwaveCommand.CreatePickwave cmd = value.toCreatePickwave();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            PickwaveCommand.CreatePickwave cmd = (PickwaveCommand.CreatePickwave) value.toCommand();
             PickwaveResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             pickwaveApplicationService.when(cmd);
 

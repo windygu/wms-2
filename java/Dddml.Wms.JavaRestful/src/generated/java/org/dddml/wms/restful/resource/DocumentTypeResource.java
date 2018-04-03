@@ -113,10 +113,18 @@ public class DocumentTypeResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchDocumentTypeDto.CreateDocumentTypeDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchDocumentTypeDto value) {
         try {
+            if (value.getVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                DocumentTypeCommand.MergePatchDocumentType cmd = (DocumentTypeCommand.MergePatchDocumentType) value.toCommand();
+                DocumentTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                documentTypeApplicationService.when(cmd);
+                return;
+            }
 
-            DocumentTypeCommand.CreateDocumentType cmd = value.toCreateDocumentType();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            DocumentTypeCommand.CreateDocumentType cmd = (DocumentTypeCommand.CreateDocumentType) value.toCommand();
             DocumentTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             documentTypeApplicationService.when(cmd);
 

@@ -113,10 +113,18 @@ public class ProductResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchProductDto.CreateProductDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchProductDto value) {
         try {
+            if (value.getVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                ProductCommand.MergePatchProduct cmd = (ProductCommand.MergePatchProduct) value.toCommand();
+                ProductResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                productApplicationService.when(cmd);
+                return;
+            }
 
-            ProductCommand.CreateProduct cmd = value.toCreateProduct();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            ProductCommand.CreateProduct cmd = (ProductCommand.CreateProduct) value.toCommand();
             ProductResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             productApplicationService.when(cmd);
 

@@ -115,10 +115,18 @@ public class PhysicalInventoryResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchPhysicalInventoryDto.CreatePhysicalInventoryDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchPhysicalInventoryDto value) {
         try {
+            if (value.getVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                PhysicalInventoryCommand.MergePatchPhysicalInventory cmd = (PhysicalInventoryCommand.MergePatchPhysicalInventory) value.toCommand();
+                PhysicalInventoryResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                physicalInventoryApplicationService.when(cmd);
+                return;
+            }
 
-            PhysicalInventoryCommand.CreatePhysicalInventory cmd = value.toCreatePhysicalInventory();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            PhysicalInventoryCommand.CreatePhysicalInventory cmd = (PhysicalInventoryCommand.CreatePhysicalInventory) value.toCommand();
             PhysicalInventoryResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             physicalInventoryApplicationService.when(cmd);
 

@@ -113,10 +113,18 @@ public class DamageHandlingMethodResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchDamageHandlingMethodDto.CreateDamageHandlingMethodDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchDamageHandlingMethodDto value) {
         try {
+            if (value.getVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                DamageHandlingMethodCommand.MergePatchDamageHandlingMethod cmd = (DamageHandlingMethodCommand.MergePatchDamageHandlingMethod) value.toCommand();
+                DamageHandlingMethodResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                damageHandlingMethodApplicationService.when(cmd);
+                return;
+            }
 
-            DamageHandlingMethodCommand.CreateDamageHandlingMethod cmd = value.toCreateDamageHandlingMethod();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            DamageHandlingMethodCommand.CreateDamageHandlingMethod cmd = (DamageHandlingMethodCommand.CreateDamageHandlingMethod) value.toCommand();
             DamageHandlingMethodResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             damageHandlingMethodApplicationService.when(cmd);
 

@@ -113,10 +113,18 @@ public class DamageTypeResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchDamageTypeDto.CreateDamageTypeDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchDamageTypeDto value) {
         try {
+            if (value.getVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                DamageTypeCommand.MergePatchDamageType cmd = (DamageTypeCommand.MergePatchDamageType) value.toCommand();
+                DamageTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                damageTypeApplicationService.when(cmd);
+                return;
+            }
 
-            DamageTypeCommand.CreateDamageType cmd = value.toCreateDamageType();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            DamageTypeCommand.CreateDamageType cmd = (DamageTypeCommand.CreateDamageType) value.toCommand();
             DamageTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             damageTypeApplicationService.when(cmd);
 

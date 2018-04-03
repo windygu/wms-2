@@ -114,10 +114,18 @@ public class OrderItemShipGroupAssociationMvoResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchOrderItemShipGroupAssociationMvoDto.CreateOrderItemShipGroupAssociationMvoDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchOrderItemShipGroupAssociationMvoDto value) {
         try {
+            if (value.getOrderVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                OrderItemShipGroupAssociationMvoCommand.MergePatchOrderItemShipGroupAssociationMvo cmd = (OrderItemShipGroupAssociationMvoCommand.MergePatchOrderItemShipGroupAssociationMvo) value.toCommand();
+                OrderItemShipGroupAssociationMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                orderItemShipGroupAssociationMvoApplicationService.when(cmd);
+                return;
+            }
 
-            OrderItemShipGroupAssociationMvoCommand.CreateOrderItemShipGroupAssociationMvo cmd = value.toCreateOrderItemShipGroupAssociationMvo();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            OrderItemShipGroupAssociationMvoCommand.CreateOrderItemShipGroupAssociationMvo cmd = (OrderItemShipGroupAssociationMvoCommand.CreateOrderItemShipGroupAssociationMvo) value.toCommand();
             OrderItemShipGroupAssociationMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             orderItemShipGroupAssociationMvoApplicationService.when(cmd);
 

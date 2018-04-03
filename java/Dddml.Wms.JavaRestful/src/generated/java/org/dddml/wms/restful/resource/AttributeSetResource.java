@@ -113,10 +113,18 @@ public class AttributeSetResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchAttributeSetDto.CreateAttributeSetDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchAttributeSetDto value) {
         try {
+            if (value.getVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                AttributeSetCommand.MergePatchAttributeSet cmd = (AttributeSetCommand.MergePatchAttributeSet) value.toCommand();
+                AttributeSetResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                attributeSetApplicationService.when(cmd);
+                return;
+            }
 
-            AttributeSetCommand.CreateAttributeSet cmd = value.toCreateAttributeSet();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            AttributeSetCommand.CreateAttributeSet cmd = (AttributeSetCommand.CreateAttributeSet) value.toCommand();
             AttributeSetResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             attributeSetApplicationService.when(cmd);
 

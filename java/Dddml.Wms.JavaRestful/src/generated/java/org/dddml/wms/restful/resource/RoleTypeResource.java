@@ -113,10 +113,18 @@ public class RoleTypeResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchRoleTypeDto.CreateRoleTypeDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchRoleTypeDto value) {
         try {
+            if (value.getVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                RoleTypeCommand.MergePatchRoleType cmd = (RoleTypeCommand.MergePatchRoleType) value.toCommand();
+                RoleTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                roleTypeApplicationService.when(cmd);
+                return;
+            }
 
-            RoleTypeCommand.CreateRoleType cmd = value.toCreateRoleType();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            RoleTypeCommand.CreateRoleType cmd = (RoleTypeCommand.CreateRoleType) value.toCommand();
             RoleTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             roleTypeApplicationService.when(cmd);
 

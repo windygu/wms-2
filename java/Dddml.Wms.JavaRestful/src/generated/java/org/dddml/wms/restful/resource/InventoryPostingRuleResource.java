@@ -114,10 +114,18 @@ public class InventoryPostingRuleResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchInventoryPostingRuleDto.CreateInventoryPostingRuleDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchInventoryPostingRuleDto value) {
         try {
+            if (value.getVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                InventoryPostingRuleCommand.MergePatchInventoryPostingRule cmd = (InventoryPostingRuleCommand.MergePatchInventoryPostingRule) value.toCommand();
+                InventoryPostingRuleResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                inventoryPostingRuleApplicationService.when(cmd);
+                return;
+            }
 
-            InventoryPostingRuleCommand.CreateInventoryPostingRule cmd = value.toCreateInventoryPostingRule();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            InventoryPostingRuleCommand.CreateInventoryPostingRule cmd = (InventoryPostingRuleCommand.CreateInventoryPostingRule) value.toCommand();
             InventoryPostingRuleResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             inventoryPostingRuleApplicationService.when(cmd);
 

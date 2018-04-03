@@ -115,10 +115,18 @@ public class InOutLineMvoResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchInOutLineMvoDto.CreateInOutLineMvoDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchInOutLineMvoDto value) {
         try {
+            if (value.getInOutVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                InOutLineMvoCommand.MergePatchInOutLineMvo cmd = (InOutLineMvoCommand.MergePatchInOutLineMvo) value.toCommand();
+                InOutLineMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                inOutLineMvoApplicationService.when(cmd);
+                return;
+            }
 
-            InOutLineMvoCommand.CreateInOutLineMvo cmd = value.toCreateInOutLineMvo();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            InOutLineMvoCommand.CreateInOutLineMvo cmd = (InOutLineMvoCommand.CreateInOutLineMvo) value.toCommand();
             InOutLineMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             inOutLineMvoApplicationService.when(cmd);
 

@@ -116,10 +116,18 @@ public class SellableInventoryItemResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchSellableInventoryItemDto.CreateSellableInventoryItemDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchSellableInventoryItemDto value) {
         try {
+            if (value.getVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                SellableInventoryItemCommand.MergePatchSellableInventoryItem cmd = (SellableInventoryItemCommand.MergePatchSellableInventoryItem) value.toCommand();
+                SellableInventoryItemResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                sellableInventoryItemApplicationService.when(cmd);
+                return;
+            }
 
-            SellableInventoryItemCommand.CreateSellableInventoryItem cmd = value.toCreateSellableInventoryItem();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            SellableInventoryItemCommand.CreateSellableInventoryItem cmd = (SellableInventoryItemCommand.CreateSellableInventoryItem) value.toCommand();
             SellableInventoryItemResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             sellableInventoryItemApplicationService.when(cmd);
 

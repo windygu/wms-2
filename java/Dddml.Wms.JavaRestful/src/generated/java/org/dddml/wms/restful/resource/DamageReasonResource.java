@@ -113,10 +113,18 @@ public class DamageReasonResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchDamageReasonDto.CreateDamageReasonDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchDamageReasonDto value) {
         try {
+            if (value.getVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                DamageReasonCommand.MergePatchDamageReason cmd = (DamageReasonCommand.MergePatchDamageReason) value.toCommand();
+                DamageReasonResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                damageReasonApplicationService.when(cmd);
+                return;
+            }
 
-            DamageReasonCommand.CreateDamageReason cmd = value.toCreateDamageReason();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            DamageReasonCommand.CreateDamageReason cmd = (DamageReasonCommand.CreateDamageReason) value.toCommand();
             DamageReasonResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             damageReasonApplicationService.when(cmd);
 

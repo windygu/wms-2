@@ -113,10 +113,18 @@ public class UomResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchUomDto.CreateUomDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchUomDto value) {
         try {
+            if (value.getVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                UomCommand.MergePatchUom cmd = (UomCommand.MergePatchUom) value.toCommand();
+                UomResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                uomApplicationService.when(cmd);
+                return;
+            }
 
-            UomCommand.CreateUom cmd = value.toCreateUom();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            UomCommand.CreateUom cmd = (UomCommand.CreateUom) value.toCommand();
             UomResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             uomApplicationService.when(cmd);
 

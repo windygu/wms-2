@@ -113,10 +113,18 @@ public class ContactMechResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchContactMechDto.CreateContactMechDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchContactMechDto value) {
         try {
+            if (value.getVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                ContactMechCommand.MergePatchContactMech cmd = (ContactMechCommand.MergePatchContactMech) value.toCommand();
+                ContactMechResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                contactMechApplicationService.when(cmd);
+                return;
+            }
 
-            ContactMechCommand.CreateContactMech cmd = value.toCreateContactMech();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            ContactMechCommand.CreateContactMech cmd = (ContactMechCommand.CreateContactMech) value.toCommand();
             ContactMechResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             contactMechApplicationService.when(cmd);
 

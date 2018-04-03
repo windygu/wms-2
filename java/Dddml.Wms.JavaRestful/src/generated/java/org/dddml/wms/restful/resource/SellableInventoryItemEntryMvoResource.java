@@ -116,10 +116,18 @@ public class SellableInventoryItemEntryMvoResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchSellableInventoryItemEntryMvoDto.CreateSellableInventoryItemEntryMvoDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchSellableInventoryItemEntryMvoDto value) {
         try {
+            if (value.getSellableInventoryItemVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                SellableInventoryItemEntryMvoCommand.MergePatchSellableInventoryItemEntryMvo cmd = (SellableInventoryItemEntryMvoCommand.MergePatchSellableInventoryItemEntryMvo) value.toCommand();
+                SellableInventoryItemEntryMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                sellableInventoryItemEntryMvoApplicationService.when(cmd);
+                return;
+            }
 
-            SellableInventoryItemEntryMvoCommand.CreateSellableInventoryItemEntryMvo cmd = value.toCreateSellableInventoryItemEntryMvo();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            SellableInventoryItemEntryMvoCommand.CreateSellableInventoryItemEntryMvo cmd = (SellableInventoryItemEntryMvoCommand.CreateSellableInventoryItemEntryMvo) value.toCommand();
             SellableInventoryItemEntryMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             sellableInventoryItemEntryMvoApplicationService.when(cmd);
 

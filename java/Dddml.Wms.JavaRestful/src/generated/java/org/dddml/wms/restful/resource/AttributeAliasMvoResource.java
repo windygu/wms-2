@@ -114,10 +114,18 @@ public class AttributeAliasMvoResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchAttributeAliasMvoDto.CreateAttributeAliasMvoDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchAttributeAliasMvoDto value) {
         try {
+            if (value.getAttributeVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                AttributeAliasMvoCommand.MergePatchAttributeAliasMvo cmd = (AttributeAliasMvoCommand.MergePatchAttributeAliasMvo) value.toCommand();
+                AttributeAliasMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                attributeAliasMvoApplicationService.when(cmd);
+                return;
+            }
 
-            AttributeAliasMvoCommand.CreateAttributeAliasMvo cmd = value.toCreateAttributeAliasMvo();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            AttributeAliasMvoCommand.CreateAttributeAliasMvo cmd = (AttributeAliasMvoCommand.CreateAttributeAliasMvo) value.toCommand();
             AttributeAliasMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             attributeAliasMvoApplicationService.when(cmd);
 

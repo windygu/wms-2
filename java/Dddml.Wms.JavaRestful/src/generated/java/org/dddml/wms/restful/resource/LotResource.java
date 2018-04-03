@@ -113,10 +113,18 @@ public class LotResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchLotDto.CreateLotDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchLotDto value) {
         try {
+            if (value.getVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                LotCommand.MergePatchLot cmd = (LotCommand.MergePatchLot) value.toCommand();
+                LotResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                lotApplicationService.when(cmd);
+                return;
+            }
 
-            LotCommand.CreateLot cmd = value.toCreateLot();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            LotCommand.CreateLot cmd = (LotCommand.CreateLot) value.toCommand();
             LotResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             lotApplicationService.when(cmd);
 

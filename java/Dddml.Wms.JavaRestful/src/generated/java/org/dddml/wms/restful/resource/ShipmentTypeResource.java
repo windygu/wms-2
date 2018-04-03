@@ -113,10 +113,18 @@ public class ShipmentTypeResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchShipmentTypeDto.CreateShipmentTypeDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchShipmentTypeDto value) {
         try {
+            if (value.getVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                ShipmentTypeCommand.MergePatchShipmentType cmd = (ShipmentTypeCommand.MergePatchShipmentType) value.toCommand();
+                ShipmentTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                shipmentTypeApplicationService.when(cmd);
+                return;
+            }
 
-            ShipmentTypeCommand.CreateShipmentType cmd = value.toCreateShipmentType();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            ShipmentTypeCommand.CreateShipmentType cmd = (ShipmentTypeCommand.CreateShipmentType) value.toCommand();
             ShipmentTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             shipmentTypeApplicationService.when(cmd);
 

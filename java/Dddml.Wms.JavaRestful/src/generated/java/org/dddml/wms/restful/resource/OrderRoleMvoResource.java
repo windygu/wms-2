@@ -114,10 +114,18 @@ public class OrderRoleMvoResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchOrderRoleMvoDto.CreateOrderRoleMvoDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchOrderRoleMvoDto value) {
         try {
+            if (value.getOrderVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                OrderRoleMvoCommand.MergePatchOrderRoleMvo cmd = (OrderRoleMvoCommand.MergePatchOrderRoleMvo) value.toCommand();
+                OrderRoleMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                orderRoleMvoApplicationService.when(cmd);
+                return;
+            }
 
-            OrderRoleMvoCommand.CreateOrderRoleMvo cmd = value.toCreateOrderRoleMvo();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            OrderRoleMvoCommand.CreateOrderRoleMvo cmd = (OrderRoleMvoCommand.CreateOrderRoleMvo) value.toCommand();
             OrderRoleMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             orderRoleMvoApplicationService.when(cmd);
 

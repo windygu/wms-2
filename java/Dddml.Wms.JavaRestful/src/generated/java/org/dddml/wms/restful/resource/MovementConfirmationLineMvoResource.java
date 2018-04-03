@@ -115,10 +115,18 @@ public class MovementConfirmationLineMvoResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchMovementConfirmationLineMvoDto.CreateMovementConfirmationLineMvoDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchMovementConfirmationLineMvoDto value) {
         try {
+            if (value.getMovementConfirmationVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                MovementConfirmationLineMvoCommand.MergePatchMovementConfirmationLineMvo cmd = (MovementConfirmationLineMvoCommand.MergePatchMovementConfirmationLineMvo) value.toCommand();
+                MovementConfirmationLineMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                movementConfirmationLineMvoApplicationService.when(cmd);
+                return;
+            }
 
-            MovementConfirmationLineMvoCommand.CreateMovementConfirmationLineMvo cmd = value.toCreateMovementConfirmationLineMvo();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            MovementConfirmationLineMvoCommand.CreateMovementConfirmationLineMvo cmd = (MovementConfirmationLineMvoCommand.CreateMovementConfirmationLineMvo) value.toCommand();
             MovementConfirmationLineMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             movementConfirmationLineMvoApplicationService.when(cmd);
 

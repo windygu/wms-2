@@ -113,10 +113,18 @@ public class LocatorTypeResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchLocatorTypeDto.CreateLocatorTypeDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchLocatorTypeDto value) {
         try {
+            if (value.getVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                LocatorTypeCommand.MergePatchLocatorType cmd = (LocatorTypeCommand.MergePatchLocatorType) value.toCommand();
+                LocatorTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                locatorTypeApplicationService.when(cmd);
+                return;
+            }
 
-            LocatorTypeCommand.CreateLocatorType cmd = value.toCreateLocatorType();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            LocatorTypeCommand.CreateLocatorType cmd = (LocatorTypeCommand.CreateLocatorType) value.toCommand();
             LocatorTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             locatorTypeApplicationService.when(cmd);
 

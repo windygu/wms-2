@@ -113,10 +113,18 @@ public class OrganizationStructureTypeResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchOrganizationStructureTypeDto.CreateOrganizationStructureTypeDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchOrganizationStructureTypeDto value) {
         try {
+            if (value.getVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                OrganizationStructureTypeCommand.MergePatchOrganizationStructureType cmd = (OrganizationStructureTypeCommand.MergePatchOrganizationStructureType) value.toCommand();
+                OrganizationStructureTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                organizationStructureTypeApplicationService.when(cmd);
+                return;
+            }
 
-            OrganizationStructureTypeCommand.CreateOrganizationStructureType cmd = value.toCreateOrganizationStructureType();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            OrganizationStructureTypeCommand.CreateOrganizationStructureType cmd = (OrganizationStructureTypeCommand.CreateOrganizationStructureType) value.toCommand();
             OrganizationStructureTypeResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             organizationStructureTypeApplicationService.when(cmd);
 

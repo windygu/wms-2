@@ -113,10 +113,18 @@ public class WarehouseResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchWarehouseDto.CreateWarehouseDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchWarehouseDto value) {
         try {
+            if (value.getVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                WarehouseCommand.MergePatchWarehouse cmd = (WarehouseCommand.MergePatchWarehouse) value.toCommand();
+                WarehouseResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                warehouseApplicationService.when(cmd);
+                return;
+            }
 
-            WarehouseCommand.CreateWarehouse cmd = value.toCreateWarehouse();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            WarehouseCommand.CreateWarehouse cmd = (WarehouseCommand.CreateWarehouse) value.toCommand();
             WarehouseResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             warehouseApplicationService.when(cmd);
 

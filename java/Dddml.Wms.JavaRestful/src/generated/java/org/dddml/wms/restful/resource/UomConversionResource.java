@@ -113,10 +113,18 @@ public class UomConversionResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchUomConversionDto.CreateUomConversionDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchUomConversionDto value) {
         try {
+            if (value.getVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                UomConversionCommand.MergePatchUomConversion cmd = (UomConversionCommand.MergePatchUomConversion) value.toCommand();
+                UomConversionResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                uomConversionApplicationService.when(cmd);
+                return;
+            }
 
-            UomConversionCommand.CreateUomConversion cmd = value.toCreateUomConversion();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            UomConversionCommand.CreateUomConversion cmd = (UomConversionCommand.CreateUomConversion) value.toCommand();
             UomConversionResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             uomConversionApplicationService.when(cmd);
 

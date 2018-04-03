@@ -113,10 +113,18 @@ public class RejectionReasonResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchRejectionReasonDto.CreateRejectionReasonDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchRejectionReasonDto value) {
         try {
+            if (value.getVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                RejectionReasonCommand.MergePatchRejectionReason cmd = (RejectionReasonCommand.MergePatchRejectionReason) value.toCommand();
+                RejectionReasonResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                rejectionReasonApplicationService.when(cmd);
+                return;
+            }
 
-            RejectionReasonCommand.CreateRejectionReason cmd = value.toCreateRejectionReason();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            RejectionReasonCommand.CreateRejectionReason cmd = (RejectionReasonCommand.CreateRejectionReason) value.toCommand();
             RejectionReasonResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             rejectionReasonApplicationService.when(cmd);
 

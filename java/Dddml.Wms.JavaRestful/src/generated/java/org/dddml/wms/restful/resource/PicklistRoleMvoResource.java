@@ -114,10 +114,18 @@ public class PicklistRoleMvoResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchPicklistRoleMvoDto.CreatePicklistRoleMvoDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchPicklistRoleMvoDto value) {
         try {
+            if (value.getPicklistVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                PicklistRoleMvoCommand.MergePatchPicklistRoleMvo cmd = (PicklistRoleMvoCommand.MergePatchPicklistRoleMvo) value.toCommand();
+                PicklistRoleMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                picklistRoleMvoApplicationService.when(cmd);
+                return;
+            }
 
-            PicklistRoleMvoCommand.CreatePicklistRoleMvo cmd = value.toCreatePicklistRoleMvo();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            PicklistRoleMvoCommand.CreatePicklistRoleMvo cmd = (PicklistRoleMvoCommand.CreatePicklistRoleMvo) value.toCommand();
             PicklistRoleMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             picklistRoleMvoApplicationService.when(cmd);
 

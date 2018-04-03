@@ -113,10 +113,18 @@ public class AttributeSetInstanceExtensionFieldResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchAttributeSetInstanceExtensionFieldDto.CreateAttributeSetInstanceExtensionFieldDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchAttributeSetInstanceExtensionFieldDto value) {
         try {
+            if (value.getVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                AttributeSetInstanceExtensionFieldCommand.MergePatchAttributeSetInstanceExtensionField cmd = (AttributeSetInstanceExtensionFieldCommand.MergePatchAttributeSetInstanceExtensionField) value.toCommand();
+                AttributeSetInstanceExtensionFieldResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                attributeSetInstanceExtensionFieldApplicationService.when(cmd);
+                return;
+            }
 
-            AttributeSetInstanceExtensionFieldCommand.CreateAttributeSetInstanceExtensionField cmd = value.toCreateAttributeSetInstanceExtensionField();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            AttributeSetInstanceExtensionFieldCommand.CreateAttributeSetInstanceExtensionField cmd = (AttributeSetInstanceExtensionFieldCommand.CreateAttributeSetInstanceExtensionField) value.toCommand();
             AttributeSetInstanceExtensionFieldResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             attributeSetInstanceExtensionFieldApplicationService.when(cmd);
 

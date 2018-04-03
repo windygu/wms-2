@@ -114,10 +114,18 @@ public class PicklistResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchPicklistDto.CreatePicklistDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchPicklistDto value) {
         try {
+            if (value.getVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                PicklistCommand.MergePatchPicklist cmd = (PicklistCommand.MergePatchPicklist) value.toCommand();
+                PicklistResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                picklistApplicationService.when(cmd);
+                return;
+            }
 
-            PicklistCommand.CreatePicklist cmd = value.toCreatePicklist();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            PicklistCommand.CreatePicklist cmd = (PicklistCommand.CreatePicklist) value.toCommand();
             PicklistResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             picklistApplicationService.when(cmd);
 

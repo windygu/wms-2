@@ -113,10 +113,18 @@ public class StatusItemResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchStatusItemDto.CreateStatusItemDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchStatusItemDto value) {
         try {
+            if (value.getVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                StatusItemCommand.MergePatchStatusItem cmd = (StatusItemCommand.MergePatchStatusItem) value.toCommand();
+                StatusItemResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                statusItemApplicationService.when(cmd);
+                return;
+            }
 
-            StatusItemCommand.CreateStatusItem cmd = value.toCreateStatusItem();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            StatusItemCommand.CreateStatusItem cmd = (StatusItemCommand.CreateStatusItem) value.toCommand();
             StatusItemResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             statusItemApplicationService.when(cmd);
 

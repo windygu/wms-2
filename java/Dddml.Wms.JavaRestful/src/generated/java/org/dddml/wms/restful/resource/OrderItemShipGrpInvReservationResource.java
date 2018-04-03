@@ -113,10 +113,18 @@ public class OrderItemShipGrpInvReservationResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchOrderItemShipGrpInvReservationDto.CreateOrderItemShipGrpInvReservationDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchOrderItemShipGrpInvReservationDto value) {
         try {
+            if (value.getVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                OrderItemShipGrpInvReservationCommand.MergePatchOrderItemShipGrpInvReservation cmd = (OrderItemShipGrpInvReservationCommand.MergePatchOrderItemShipGrpInvReservation) value.toCommand();
+                OrderItemShipGrpInvReservationResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                orderItemShipGrpInvReservationApplicationService.when(cmd);
+                return;
+            }
 
-            OrderItemShipGrpInvReservationCommand.CreateOrderItemShipGrpInvReservation cmd = value.toCreateOrderItemShipGrpInvReservation();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            OrderItemShipGrpInvReservationCommand.CreateOrderItemShipGrpInvReservation cmd = (OrderItemShipGrpInvReservationCommand.CreateOrderItemShipGrpInvReservation) value.toCommand();
             OrderItemShipGrpInvReservationResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             orderItemShipGrpInvReservationApplicationService.when(cmd);
 

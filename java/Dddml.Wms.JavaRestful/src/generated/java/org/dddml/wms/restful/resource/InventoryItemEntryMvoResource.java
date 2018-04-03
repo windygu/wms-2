@@ -115,10 +115,18 @@ public class InventoryItemEntryMvoResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchInventoryItemEntryMvoDto.CreateInventoryItemEntryMvoDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchInventoryItemEntryMvoDto value) {
         try {
+            if (value.getInventoryItemVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                InventoryItemEntryMvoCommand.MergePatchInventoryItemEntryMvo cmd = (InventoryItemEntryMvoCommand.MergePatchInventoryItemEntryMvo) value.toCommand();
+                InventoryItemEntryMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                inventoryItemEntryMvoApplicationService.when(cmd);
+                return;
+            }
 
-            InventoryItemEntryMvoCommand.CreateInventoryItemEntryMvo cmd = value.toCreateInventoryItemEntryMvo();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            InventoryItemEntryMvoCommand.CreateInventoryItemEntryMvo cmd = (InventoryItemEntryMvoCommand.CreateInventoryItemEntryMvo) value.toCommand();
             InventoryItemEntryMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             inventoryItemEntryMvoApplicationService.when(cmd);
 

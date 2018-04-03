@@ -113,10 +113,18 @@ public class ProductCategoryMemberResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchProductCategoryMemberDto.CreateProductCategoryMemberDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchProductCategoryMemberDto value) {
         try {
+            if (value.getVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                ProductCategoryMemberCommand.MergePatchProductCategoryMember cmd = (ProductCategoryMemberCommand.MergePatchProductCategoryMember) value.toCommand();
+                ProductCategoryMemberResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                productCategoryMemberApplicationService.when(cmd);
+                return;
+            }
 
-            ProductCategoryMemberCommand.CreateProductCategoryMember cmd = value.toCreateProductCategoryMember();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            ProductCategoryMemberCommand.CreateProductCategoryMember cmd = (ProductCategoryMemberCommand.CreateProductCategoryMember) value.toCommand();
             ProductCategoryMemberResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             productCategoryMemberApplicationService.when(cmd);
 

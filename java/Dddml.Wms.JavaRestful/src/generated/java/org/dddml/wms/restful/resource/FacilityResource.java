@@ -113,10 +113,18 @@ public class FacilityResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchFacilityDto.CreateFacilityDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchFacilityDto value) {
         try {
+            if (value.getVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                FacilityCommand.MergePatchFacility cmd = (FacilityCommand.MergePatchFacility) value.toCommand();
+                FacilityResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                facilityApplicationService.when(cmd);
+                return;
+            }
 
-            FacilityCommand.CreateFacility cmd = value.toCreateFacility();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            FacilityCommand.CreateFacility cmd = (FacilityCommand.CreateFacility) value.toCommand();
             FacilityResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             facilityApplicationService.when(cmd);
 

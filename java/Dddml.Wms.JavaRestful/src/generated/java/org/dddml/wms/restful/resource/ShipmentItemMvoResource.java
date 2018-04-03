@@ -114,10 +114,18 @@ public class ShipmentItemMvoResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchShipmentItemMvoDto.CreateShipmentItemMvoDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchShipmentItemMvoDto value) {
         try {
+            if (value.getShipmentVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                ShipmentItemMvoCommand.MergePatchShipmentItemMvo cmd = (ShipmentItemMvoCommand.MergePatchShipmentItemMvo) value.toCommand();
+                ShipmentItemMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                shipmentItemMvoApplicationService.when(cmd);
+                return;
+            }
 
-            ShipmentItemMvoCommand.CreateShipmentItemMvo cmd = value.toCreateShipmentItemMvo();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            ShipmentItemMvoCommand.CreateShipmentItemMvo cmd = (ShipmentItemMvoCommand.CreateShipmentItemMvo) value.toCommand();
             ShipmentItemMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             shipmentItemMvoApplicationService.when(cmd);
 

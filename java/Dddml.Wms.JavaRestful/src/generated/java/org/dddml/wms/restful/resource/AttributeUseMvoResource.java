@@ -114,10 +114,18 @@ public class AttributeUseMvoResource {
 
 
     @Path("{id}") @PUT
-    public void put(@PathParam("id") String id, CreateOrMergePatchAttributeUseMvoDto.CreateAttributeUseMvoDto value) {
+    public void put(@PathParam("id") String id, CreateOrMergePatchAttributeUseMvoDto value) {
         try {
+            if (value.getAttributeSetVersion() != null) {
+                value.setCommandType(Command.COMMAND_TYPE_MERGE_PATCH);
+                AttributeUseMvoCommand.MergePatchAttributeUseMvo cmd = (AttributeUseMvoCommand.MergePatchAttributeUseMvo) value.toCommand();
+                AttributeUseMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
+                attributeUseMvoApplicationService.when(cmd);
+                return;
+            }
 
-            AttributeUseMvoCommand.CreateAttributeUseMvo cmd = value.toCreateAttributeUseMvo();
+            value.setCommandType(Command.COMMAND_TYPE_CREATE);
+            AttributeUseMvoCommand.CreateAttributeUseMvo cmd = (AttributeUseMvoCommand.CreateAttributeUseMvo) value.toCommand();
             AttributeUseMvoResourceUtils.setNullIdOrThrowOnInconsistentIds(id, cmd);
             attributeUseMvoApplicationService.when(cmd);
 

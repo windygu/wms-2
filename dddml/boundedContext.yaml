@@ -47,6 +47,7 @@ configuration:
     HttpServicesAuthorizationEnabled: false
     
     HttpPostCreationWithIdEnabled: true
+    HttpPutToMergePatchEnabled: true
     
     MvoUsingRViewAsMView: true
     #MvoStateDatabaseTableNameFormat: "{0}s"
