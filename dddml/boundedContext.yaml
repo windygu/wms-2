@@ -46,6 +46,8 @@ configuration:
     
     HttpServicesAuthorizationEnabled: false
     
+    HttpPostCreationWithIdEnabled: true
+    
     MvoUsingRViewAsMView: true
     #MvoStateDatabaseTableNameFormat: "{0}s"
     #MvoHttpServiceResourceCollectionNameFormat: "{0}s"
