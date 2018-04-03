@@ -109,7 +109,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         public HttpResponseMessage Post([FromBody]CreateLotDto value)
         {
           try {
-            if (value.LotId == null)
+            if (value.LotId == default(string))
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "Lot");
             }

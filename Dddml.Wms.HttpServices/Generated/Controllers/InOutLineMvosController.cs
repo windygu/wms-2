@@ -110,7 +110,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         public HttpResponseMessage Post([FromBody]CreateInOutLineMvoDto value)
         {
           try {
-            if (value.InOutLineId == null)
+            if (value.InOutLineId == default(InOutLineId))
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "InOutLineMvo");
             }

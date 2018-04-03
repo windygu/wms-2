@@ -109,7 +109,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         public HttpResponseMessage Post([FromBody]CreateOrderItemShipGrpInvReservationDto value)
         {
           try {
-            if (value.OrderItemShipGrpInvResId == null)
+            if (value.OrderItemShipGrpInvResId == default(OrderItemShipGrpInvResId))
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "OrderItemShipGrpInvReservation");
             }

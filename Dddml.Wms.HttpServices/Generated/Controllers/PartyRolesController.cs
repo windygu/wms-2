@@ -109,7 +109,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         public HttpResponseMessage Post([FromBody]CreatePartyRoleDto value)
         {
           try {
-            if (value.PartyRoleId == null)
+            if (value.PartyRoleId == default(PartyRoleId))
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "PartyRole");
             }

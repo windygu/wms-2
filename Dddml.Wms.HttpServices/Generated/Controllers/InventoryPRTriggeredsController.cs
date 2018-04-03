@@ -110,7 +110,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         public HttpResponseMessage Post([FromBody]CreateInventoryPRTriggeredDto value)
         {
           try {
-            if (value.InventoryPRTriggeredId == null)
+            if (value.InventoryPRTriggeredId == default(InventoryPRTriggeredId))
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "InventoryPRTriggered");
             }

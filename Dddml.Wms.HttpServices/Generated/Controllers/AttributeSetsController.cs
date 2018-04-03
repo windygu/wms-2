@@ -109,7 +109,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         public HttpResponseMessage Post([FromBody]CreateAttributeSetDto value)
         {
           try {
-            if (value.AttributeSetId == null)
+            if (value.AttributeSetId == default(string))
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "AttributeSet");
             }

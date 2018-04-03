@@ -111,7 +111,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         public HttpResponseMessage Post([FromBody]CreateInventoryItemRequirementDto value)
         {
           try {
-            if (value.InventoryItemRequirementId == null)
+            if (value.InventoryItemRequirementId == default(InventoryItemId))
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "InventoryItemRequirement");
             }

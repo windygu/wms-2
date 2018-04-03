@@ -112,7 +112,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             CreateAttributeSetInstanceDto value = _attributeSetInstanceDtoJObjectMapper.ToCommandCreate(dynamicObject);
-            if (value.AttributeSetInstanceId == null)
+            if (value.AttributeSetInstanceId == default(string))
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "AttributeSetInstance");
             }

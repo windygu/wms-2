@@ -109,7 +109,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         public HttpResponseMessage Post([FromBody]CreateRoleTypeDto value)
         {
           try {
-            if (value.RoleTypeId == null)
+            if (value.RoleTypeId == default(string))
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "RoleType");
             }

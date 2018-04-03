@@ -109,7 +109,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         public HttpResponseMessage Post([FromBody]CreateInOutDto value)
         {
           try {
-            if (value.DocumentNumber == null)
+            if (value.DocumentNumber == default(string))
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "InOut");
             }

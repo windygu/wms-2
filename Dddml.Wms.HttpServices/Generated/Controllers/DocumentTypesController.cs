@@ -109,7 +109,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         public HttpResponseMessage Post([FromBody]CreateDocumentTypeDto value)
         {
           try {
-            if (value.DocumentTypeId == null)
+            if (value.DocumentTypeId == default(string))
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "DocumentType");
             }

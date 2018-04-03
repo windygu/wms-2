@@ -109,7 +109,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         public HttpResponseMessage Post([FromBody]CreateLocatorTypeDto value)
         {
           try {
-            if (value.LocatorTypeId == null)
+            if (value.LocatorTypeId == default(string))
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "LocatorType");
             }

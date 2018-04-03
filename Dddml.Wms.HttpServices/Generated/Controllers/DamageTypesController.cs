@@ -109,7 +109,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         public HttpResponseMessage Post([FromBody]CreateDamageTypeDto value)
         {
           try {
-            if (value.DamageTypeId == null)
+            if (value.DamageTypeId == default(string))
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "DamageType");
             }

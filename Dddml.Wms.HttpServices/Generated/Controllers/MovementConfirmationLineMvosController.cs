@@ -110,7 +110,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         public HttpResponseMessage Post([FromBody]CreateMovementConfirmationLineMvoDto value)
         {
           try {
-            if (value.MovementConfirmationLineId == null)
+            if (value.MovementConfirmationLineId == default(MovementConfirmationLineId))
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "MovementConfirmationLineMvo");
             }

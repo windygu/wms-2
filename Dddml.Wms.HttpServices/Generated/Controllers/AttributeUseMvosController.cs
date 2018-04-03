@@ -110,7 +110,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         public HttpResponseMessage Post([FromBody]CreateAttributeUseMvoDto value)
         {
           try {
-            if (value.AttributeSetAttributeUseId == null)
+            if (value.AttributeSetAttributeUseId == default(AttributeSetAttributeUseId))
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "AttributeUseMvo");
             }

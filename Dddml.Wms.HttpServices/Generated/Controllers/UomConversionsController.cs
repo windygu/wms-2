@@ -109,7 +109,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         public HttpResponseMessage Post([FromBody]CreateUomConversionDto value)
         {
           try {
-            if (value.UomConversionId == null)
+            if (value.UomConversionId == default(UomConversionId))
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "UomConversion");
             }

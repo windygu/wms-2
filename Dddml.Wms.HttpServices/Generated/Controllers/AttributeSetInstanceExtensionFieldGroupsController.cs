@@ -109,7 +109,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         public HttpResponseMessage Post([FromBody]CreateAttributeSetInstanceExtensionFieldGroupDto value)
         {
           try {
-            if (value.Id == null)
+            if (value.Id == default(string))
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "AttributeSetInstanceExtensionFieldGroup");
             }

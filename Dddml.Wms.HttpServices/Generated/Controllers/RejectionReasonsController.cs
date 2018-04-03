@@ -109,7 +109,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         public HttpResponseMessage Post([FromBody]CreateRejectionReasonDto value)
         {
           try {
-            if (value.RejectionReasonId == null)
+            if (value.RejectionReasonId == default(string))
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "RejectionReason");
             }

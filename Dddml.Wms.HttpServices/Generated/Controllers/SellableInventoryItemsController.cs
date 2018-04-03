@@ -111,7 +111,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         public HttpResponseMessage Post([FromBody]CreateSellableInventoryItemDto value)
         {
           try {
-            if (value.SellableInventoryItemId == null)
+            if (value.SellableInventoryItemId == default(InventoryItemId))
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "SellableInventoryItem");
             }

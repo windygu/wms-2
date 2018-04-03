@@ -109,7 +109,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         public HttpResponseMessage Post([FromBody]CreatePickwaveDto value)
         {
           try {
-            if (value.PickwaveId == null)
+            if (value.PickwaveId == default(long?))
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "Pickwave");
             }

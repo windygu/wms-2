@@ -109,7 +109,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         public HttpResponseMessage Post([FromBody]CreateProductCategoryMemberDto value)
         {
           try {
-            if (value.ProductCategoryMemberId == null)
+            if (value.ProductCategoryMemberId == default(ProductCategoryMemberId))
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "ProductCategoryMember");
             }

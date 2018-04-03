@@ -110,7 +110,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         public HttpResponseMessage Post([FromBody]CreateOrderShipGroupMvoDto value)
         {
           try {
-            if (value.OrderShipGroupId == null)
+            if (value.OrderShipGroupId == default(OrderShipGroupId))
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "OrderShipGroupMvo");
             }

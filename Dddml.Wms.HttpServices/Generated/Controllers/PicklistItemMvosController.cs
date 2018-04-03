@@ -110,7 +110,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         public HttpResponseMessage Post([FromBody]CreatePicklistItemMvoDto value)
         {
           try {
-            if (value.PicklistBinPicklistItemId == null)
+            if (value.PicklistBinPicklistItemId == default(PicklistBinPicklistItemId))
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "PicklistItemMvo");
             }

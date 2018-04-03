@@ -114,7 +114,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         {
           try {
             value.PartyTypeId = PartyTypeIds.Organization;
-            if (value.PartyId == null)
+            if (value.PartyId == default(string))
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "Party");
             }

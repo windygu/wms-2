@@ -110,7 +110,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         public HttpResponseMessage Post([FromBody]CreateAttributeValueMvoDto value)
         {
           try {
-            if (value.AttributeValueId == null)
+            if (value.AttributeValueId == default(AttributeValueId))
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "AttributeValueMvo");
             }
