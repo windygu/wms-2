@@ -176,6 +176,11 @@ namespace Dddml.Wms.Domain.PhysicalInventory
             return StateQueryRepository.GetPhysicalInventoryLine(physicalInventoryDocumentNumber, inventoryItemId);
         }
 
+        public IEnumerable<IPhysicalInventoryLineState> GetPhysicalInventoryLines(string physicalInventoryDocumentNumber)
+        {
+            return StateQueryRepository.GetPhysicalInventoryLines(physicalInventoryDocumentNumber);
+        }
+
 
 		public abstract IPhysicalInventoryAggregate GetPhysicalInventoryAggregate(IPhysicalInventoryState state);
 
