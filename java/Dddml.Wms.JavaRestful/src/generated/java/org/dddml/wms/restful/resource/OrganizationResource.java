@@ -101,6 +101,21 @@ public class OrganizationResource {
     }
 
 
+    @POST
+    public String post(CreateOrMergePatchPartyDto.CreatePartyDto value, @Context HttpServletResponse response) {
+        try {
+            value.setPartyTypeId(PartyTypeIds.ORGANIZATION);
+            PartyCommand.CreateParty cmd = value.toCreateParty();
+            if (cmd.getPartyId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "Party");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getPartyId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchPartyDto.CreatePartyDto value) {
         try {

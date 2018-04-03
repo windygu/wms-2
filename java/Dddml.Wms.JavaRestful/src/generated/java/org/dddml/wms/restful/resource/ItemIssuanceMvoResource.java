@@ -99,6 +99,20 @@ public class ItemIssuanceMvoResource {
     }
 
 
+    @POST
+    public ShipmentItemIssuanceId post(CreateOrMergePatchItemIssuanceMvoDto.CreateItemIssuanceMvoDto value, @Context HttpServletResponse response) {
+        try {
+            ItemIssuanceMvoCommand.CreateItemIssuanceMvo cmd = value.toCreateItemIssuanceMvo();
+            if (cmd.getShipmentItemIssuanceId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "ItemIssuanceMvo");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getShipmentItemIssuanceId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchItemIssuanceMvoDto.CreateItemIssuanceMvoDto value) {
         try {

@@ -99,6 +99,20 @@ public class PicklistRoleMvoResource {
     }
 
 
+    @POST
+    public PicklistRoleId post(CreateOrMergePatchPicklistRoleMvoDto.CreatePicklistRoleMvoDto value, @Context HttpServletResponse response) {
+        try {
+            PicklistRoleMvoCommand.CreatePicklistRoleMvo cmd = value.toCreatePicklistRoleMvo();
+            if (cmd.getPicklistRoleId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "PicklistRoleMvo");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getPicklistRoleId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchPicklistRoleMvoDto.CreatePicklistRoleMvoDto value) {
         try {

@@ -98,6 +98,20 @@ public class AttributeSetResource {
     }
 
 
+    @POST
+    public String post(CreateOrMergePatchAttributeSetDto.CreateAttributeSetDto value, @Context HttpServletResponse response) {
+        try {
+            AttributeSetCommand.CreateAttributeSet cmd = value.toCreateAttributeSet();
+            if (cmd.getAttributeSetId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "AttributeSet");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getAttributeSetId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchAttributeSetDto.CreateAttributeSetDto value) {
         try {

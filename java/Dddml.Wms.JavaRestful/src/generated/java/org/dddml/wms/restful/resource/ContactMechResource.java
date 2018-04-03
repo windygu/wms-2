@@ -98,6 +98,20 @@ public class ContactMechResource {
     }
 
 
+    @POST
+    public String post(CreateOrMergePatchContactMechDto.CreateContactMechDto value, @Context HttpServletResponse response) {
+        try {
+            ContactMechCommand.CreateContactMech cmd = value.toCreateContactMech();
+            if (cmd.getContactMechId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "ContactMech");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getContactMechId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchContactMechDto.CreateContactMechDto value) {
         try {

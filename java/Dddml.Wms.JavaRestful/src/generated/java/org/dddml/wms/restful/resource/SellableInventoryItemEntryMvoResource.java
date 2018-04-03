@@ -101,6 +101,20 @@ public class SellableInventoryItemEntryMvoResource {
     }
 
 
+    @POST
+    public SellableInventoryItemEntryId post(CreateOrMergePatchSellableInventoryItemEntryMvoDto.CreateSellableInventoryItemEntryMvoDto value, @Context HttpServletResponse response) {
+        try {
+            SellableInventoryItemEntryMvoCommand.CreateSellableInventoryItemEntryMvo cmd = value.toCreateSellableInventoryItemEntryMvo();
+            if (cmd.getSellableInventoryItemEntryId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "SellableInventoryItemEntryMvo");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getSellableInventoryItemEntryId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchSellableInventoryItemEntryMvoDto.CreateSellableInventoryItemEntryMvoDto value) {
         try {

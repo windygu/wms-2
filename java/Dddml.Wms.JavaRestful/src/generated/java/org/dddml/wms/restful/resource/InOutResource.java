@@ -99,6 +99,20 @@ public class InOutResource {
     }
 
 
+    @POST
+    public String post(CreateOrMergePatchInOutDto.CreateInOutDto value, @Context HttpServletResponse response) {
+        try {
+            InOutCommand.CreateInOut cmd = value.toCreateInOut();
+            if (cmd.getDocumentNumber() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "InOut");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getDocumentNumber();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchInOutDto.CreateInOutDto value) {
         try {

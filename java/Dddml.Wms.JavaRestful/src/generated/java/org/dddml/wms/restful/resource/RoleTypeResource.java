@@ -98,6 +98,20 @@ public class RoleTypeResource {
     }
 
 
+    @POST
+    public String post(CreateOrMergePatchRoleTypeDto.CreateRoleTypeDto value, @Context HttpServletResponse response) {
+        try {
+            RoleTypeCommand.CreateRoleType cmd = value.toCreateRoleType();
+            if (cmd.getRoleTypeId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "RoleType");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getRoleTypeId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchRoleTypeDto.CreateRoleTypeDto value) {
         try {

@@ -98,6 +98,20 @@ public class FacilityResource {
     }
 
 
+    @POST
+    public String post(CreateOrMergePatchFacilityDto.CreateFacilityDto value, @Context HttpServletResponse response) {
+        try {
+            FacilityCommand.CreateFacility cmd = value.toCreateFacility();
+            if (cmd.getFacilityId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "Facility");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getFacilityId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchFacilityDto.CreateFacilityDto value) {
         try {

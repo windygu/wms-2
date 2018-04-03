@@ -99,6 +99,20 @@ public class AttributeUseMvoResource {
     }
 
 
+    @POST
+    public AttributeSetAttributeUseId post(CreateOrMergePatchAttributeUseMvoDto.CreateAttributeUseMvoDto value, @Context HttpServletResponse response) {
+        try {
+            AttributeUseMvoCommand.CreateAttributeUseMvo cmd = value.toCreateAttributeUseMvo();
+            if (cmd.getAttributeSetAttributeUseId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "AttributeUseMvo");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getAttributeSetAttributeUseId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchAttributeUseMvoDto.CreateAttributeUseMvoDto value) {
         try {

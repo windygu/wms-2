@@ -98,6 +98,20 @@ public class MovementTypeResource {
     }
 
 
+    @POST
+    public String post(CreateOrMergePatchMovementTypeDto.CreateMovementTypeDto value, @Context HttpServletResponse response) {
+        try {
+            MovementTypeCommand.CreateMovementType cmd = value.toCreateMovementType();
+            if (cmd.getMovementTypeId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "MovementType");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getMovementTypeId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchMovementTypeDto.CreateMovementTypeDto value) {
         try {

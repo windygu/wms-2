@@ -100,6 +100,20 @@ public class InOutLineMvoResource {
     }
 
 
+    @POST
+    public InOutLineId post(CreateOrMergePatchInOutLineMvoDto.CreateInOutLineMvoDto value, @Context HttpServletResponse response) {
+        try {
+            InOutLineMvoCommand.CreateInOutLineMvo cmd = value.toCreateInOutLineMvo();
+            if (cmd.getInOutLineId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "InOutLineMvo");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getInOutLineId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchInOutLineMvoDto.CreateInOutLineMvoDto value) {
         try {

@@ -98,6 +98,20 @@ public class DamageHandlingMethodResource {
     }
 
 
+    @POST
+    public String post(CreateOrMergePatchDamageHandlingMethodDto.CreateDamageHandlingMethodDto value, @Context HttpServletResponse response) {
+        try {
+            DamageHandlingMethodCommand.CreateDamageHandlingMethod cmd = value.toCreateDamageHandlingMethod();
+            if (cmd.getDamageHandlingMethodId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "DamageHandlingMethod");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getDamageHandlingMethodId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchDamageHandlingMethodDto.CreateDamageHandlingMethodDto value) {
         try {

@@ -98,6 +98,20 @@ public class PickwaveResource {
     }
 
 
+    @POST
+    public Long post(CreateOrMergePatchPickwaveDto.CreatePickwaveDto value, @Context HttpServletResponse response) {
+        try {
+            PickwaveCommand.CreatePickwave cmd = value.toCreatePickwave();
+            if (cmd.getPickwaveId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "Pickwave");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getPickwaveId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") Long id, CreateOrMergePatchPickwaveDto.CreatePickwaveDto value) {
         try {

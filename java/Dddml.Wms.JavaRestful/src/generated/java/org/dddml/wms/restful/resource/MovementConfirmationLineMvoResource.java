@@ -100,6 +100,20 @@ public class MovementConfirmationLineMvoResource {
     }
 
 
+    @POST
+    public MovementConfirmationLineId post(CreateOrMergePatchMovementConfirmationLineMvoDto.CreateMovementConfirmationLineMvoDto value, @Context HttpServletResponse response) {
+        try {
+            MovementConfirmationLineMvoCommand.CreateMovementConfirmationLineMvo cmd = value.toCreateMovementConfirmationLineMvo();
+            if (cmd.getMovementConfirmationLineId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "MovementConfirmationLineMvo");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getMovementConfirmationLineId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchMovementConfirmationLineMvoDto.CreateMovementConfirmationLineMvoDto value) {
         try {

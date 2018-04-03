@@ -98,6 +98,20 @@ public class WarehouseResource {
     }
 
 
+    @POST
+    public String post(CreateOrMergePatchWarehouseDto.CreateWarehouseDto value, @Context HttpServletResponse response) {
+        try {
+            WarehouseCommand.CreateWarehouse cmd = value.toCreateWarehouse();
+            if (cmd.getWarehouseId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "Warehouse");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getWarehouseId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchWarehouseDto.CreateWarehouseDto value) {
         try {

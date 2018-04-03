@@ -100,6 +100,20 @@ public class MovementLineMvoResource {
     }
 
 
+    @POST
+    public MovementLineId post(CreateOrMergePatchMovementLineMvoDto.CreateMovementLineMvoDto value, @Context HttpServletResponse response) {
+        try {
+            MovementLineMvoCommand.CreateMovementLineMvo cmd = value.toCreateMovementLineMvo();
+            if (cmd.getMovementLineId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "MovementLineMvo");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getMovementLineId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchMovementLineMvoDto.CreateMovementLineMvoDto value) {
         try {

@@ -98,6 +98,20 @@ public class StatusItemResource {
     }
 
 
+    @POST
+    public String post(CreateOrMergePatchStatusItemDto.CreateStatusItemDto value, @Context HttpServletResponse response) {
+        try {
+            StatusItemCommand.CreateStatusItem cmd = value.toCreateStatusItem();
+            if (cmd.getStatusId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "StatusItem");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getStatusId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchStatusItemDto.CreateStatusItemDto value) {
         try {

@@ -99,6 +99,20 @@ public class OrderItemShipGroupAssociationMvoResource {
     }
 
 
+    @POST
+    public OrderItemShipGroupAssociationId post(CreateOrMergePatchOrderItemShipGroupAssociationMvoDto.CreateOrderItemShipGroupAssociationMvoDto value, @Context HttpServletResponse response) {
+        try {
+            OrderItemShipGroupAssociationMvoCommand.CreateOrderItemShipGroupAssociationMvo cmd = value.toCreateOrderItemShipGroupAssociationMvo();
+            if (cmd.getOrderItemShipGroupAssociationId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "OrderItemShipGroupAssociationMvo");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getOrderItemShipGroupAssociationId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchOrderItemShipGroupAssociationMvoDto.CreateOrderItemShipGroupAssociationMvoDto value) {
         try {

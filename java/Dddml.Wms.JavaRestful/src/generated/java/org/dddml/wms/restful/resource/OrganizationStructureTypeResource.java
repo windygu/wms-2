@@ -98,6 +98,20 @@ public class OrganizationStructureTypeResource {
     }
 
 
+    @POST
+    public String post(CreateOrMergePatchOrganizationStructureTypeDto.CreateOrganizationStructureTypeDto value, @Context HttpServletResponse response) {
+        try {
+            OrganizationStructureTypeCommand.CreateOrganizationStructureType cmd = value.toCreateOrganizationStructureType();
+            if (cmd.getId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "OrganizationStructureType");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchOrganizationStructureTypeDto.CreateOrganizationStructureTypeDto value) {
         try {

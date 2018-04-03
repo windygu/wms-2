@@ -98,6 +98,20 @@ public class LocatorResource {
     }
 
 
+    @POST
+    public String post(CreateOrMergePatchLocatorDto.CreateLocatorDto value, @Context HttpServletResponse response) {
+        try {
+            LocatorCommand.CreateLocator cmd = value.toCreateLocator();
+            if (cmd.getLocatorId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "Locator");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getLocatorId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchLocatorDto.CreateLocatorDto value) {
         try {

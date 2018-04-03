@@ -23,9 +23,6 @@ import org.dddml.support.criterion.TypeConverter;
 public class AttributeSetInstanceResource {
 
     @Autowired
-    private IdGenerator<String, AttributeSetInstanceCommand.CreateAttributeSetInstance, AttributeSetInstanceState> attributeSetInstanceIdGenerator;
-
-    @Autowired
     private AbstractDynamicObjectMapper<JSONObject,
             AttributeSetInstanceState,
             AttributeSetInstanceCommand.CreateAttributeSetInstance,
@@ -106,10 +103,12 @@ public class AttributeSetInstanceResource {
     public String post(JSONObject dynamicObject, @Context HttpServletResponse response) {
         try {
             AttributeSetInstanceCommand.CreateAttributeSetInstance cmd = attributeSetInstanceDynamicObjectMapper.toCommandCreate(dynamicObject);
-            String idObj = attributeSetInstanceApplicationService.createWithoutId(cmd);
+            if (cmd.getAttributeSetInstanceId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "AttributeSetInstance");
+            }
 
             response.setStatus(Response.Status.CREATED.getStatusCode());
-            return idObj;
+            return cmd.getAttributeSetInstanceId();
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 

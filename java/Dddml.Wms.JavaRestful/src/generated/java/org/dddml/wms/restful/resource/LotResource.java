@@ -98,6 +98,20 @@ public class LotResource {
     }
 
 
+    @POST
+    public String post(CreateOrMergePatchLotDto.CreateLotDto value, @Context HttpServletResponse response) {
+        try {
+            LotCommand.CreateLot cmd = value.toCreateLot();
+            if (cmd.getLotId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "Lot");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getLotId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchLotDto.CreateLotDto value) {
         try {

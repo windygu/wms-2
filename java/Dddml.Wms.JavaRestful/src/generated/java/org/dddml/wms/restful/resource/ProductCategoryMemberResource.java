@@ -98,6 +98,20 @@ public class ProductCategoryMemberResource {
     }
 
 
+    @POST
+    public ProductCategoryMemberId post(CreateOrMergePatchProductCategoryMemberDto.CreateProductCategoryMemberDto value, @Context HttpServletResponse response) {
+        try {
+            ProductCategoryMemberCommand.CreateProductCategoryMember cmd = value.toCreateProductCategoryMember();
+            if (cmd.getProductCategoryMemberId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "ProductCategoryMember");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getProductCategoryMemberId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchProductCategoryMemberDto.CreateProductCategoryMemberDto value) {
         try {

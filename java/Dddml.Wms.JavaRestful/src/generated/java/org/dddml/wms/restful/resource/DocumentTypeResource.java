@@ -98,6 +98,20 @@ public class DocumentTypeResource {
     }
 
 
+    @POST
+    public String post(CreateOrMergePatchDocumentTypeDto.CreateDocumentTypeDto value, @Context HttpServletResponse response) {
+        try {
+            DocumentTypeCommand.CreateDocumentType cmd = value.toCreateDocumentType();
+            if (cmd.getDocumentTypeId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "DocumentType");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getDocumentTypeId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchDocumentTypeDto.CreateDocumentTypeDto value) {
         try {

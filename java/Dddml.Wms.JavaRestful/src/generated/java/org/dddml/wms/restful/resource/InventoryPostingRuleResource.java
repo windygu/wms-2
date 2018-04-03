@@ -99,6 +99,20 @@ public class InventoryPostingRuleResource {
     }
 
 
+    @POST
+    public String post(CreateOrMergePatchInventoryPostingRuleDto.CreateInventoryPostingRuleDto value, @Context HttpServletResponse response) {
+        try {
+            InventoryPostingRuleCommand.CreateInventoryPostingRule cmd = value.toCreateInventoryPostingRule();
+            if (cmd.getInventoryPostingRuleId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "InventoryPostingRule");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getInventoryPostingRuleId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchInventoryPostingRuleDto.CreateInventoryPostingRuleDto value) {
         try {

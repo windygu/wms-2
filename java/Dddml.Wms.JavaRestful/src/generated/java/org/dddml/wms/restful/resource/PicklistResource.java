@@ -99,6 +99,20 @@ public class PicklistResource {
     }
 
 
+    @POST
+    public String post(CreateOrMergePatchPicklistDto.CreatePicklistDto value, @Context HttpServletResponse response) {
+        try {
+            PicklistCommand.CreatePicklist cmd = value.toCreatePicklist();
+            if (cmd.getPicklistId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "Picklist");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getPicklistId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchPicklistDto.CreatePicklistDto value) {
         try {

@@ -99,6 +99,20 @@ public class OrderRoleMvoResource {
     }
 
 
+    @POST
+    public OrderRoleId post(CreateOrMergePatchOrderRoleMvoDto.CreateOrderRoleMvoDto value, @Context HttpServletResponse response) {
+        try {
+            OrderRoleMvoCommand.CreateOrderRoleMvo cmd = value.toCreateOrderRoleMvo();
+            if (cmd.getOrderRoleId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "OrderRoleMvo");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getOrderRoleId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchOrderRoleMvoDto.CreateOrderRoleMvoDto value) {
         try {

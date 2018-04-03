@@ -99,6 +99,20 @@ public class MovementResource {
     }
 
 
+    @POST
+    public String post(CreateOrMergePatchMovementDto.CreateMovementDto value, @Context HttpServletResponse response) {
+        try {
+            MovementCommand.CreateMovement cmd = value.toCreateMovement();
+            if (cmd.getDocumentNumber() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "Movement");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getDocumentNumber();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchMovementDto.CreateMovementDto value) {
         try {

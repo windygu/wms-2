@@ -98,6 +98,20 @@ public class PartyRoleResource {
     }
 
 
+    @POST
+    public PartyRoleId post(CreateOrMergePatchPartyRoleDto.CreatePartyRoleDto value, @Context HttpServletResponse response) {
+        try {
+            PartyRoleCommand.CreatePartyRole cmd = value.toCreatePartyRole();
+            if (cmd.getPartyRoleId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "PartyRole");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getPartyRoleId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchPartyRoleDto.CreatePartyRoleDto value) {
         try {

@@ -98,6 +98,20 @@ public class RejectionReasonResource {
     }
 
 
+    @POST
+    public String post(CreateOrMergePatchRejectionReasonDto.CreateRejectionReasonDto value, @Context HttpServletResponse response) {
+        try {
+            RejectionReasonCommand.CreateRejectionReason cmd = value.toCreateRejectionReason();
+            if (cmd.getRejectionReasonId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "RejectionReason");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getRejectionReasonId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchRejectionReasonDto.CreateRejectionReasonDto value) {
         try {

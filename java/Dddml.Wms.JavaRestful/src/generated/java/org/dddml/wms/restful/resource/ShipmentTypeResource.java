@@ -98,6 +98,20 @@ public class ShipmentTypeResource {
     }
 
 
+    @POST
+    public String post(CreateOrMergePatchShipmentTypeDto.CreateShipmentTypeDto value, @Context HttpServletResponse response) {
+        try {
+            ShipmentTypeCommand.CreateShipmentType cmd = value.toCreateShipmentType();
+            if (cmd.getShipmentTypeId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "ShipmentType");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getShipmentTypeId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchShipmentTypeDto.CreateShipmentTypeDto value) {
         try {

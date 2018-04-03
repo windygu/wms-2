@@ -101,6 +101,20 @@ public class InventoryItemRequirementEntryMvoResource {
     }
 
 
+    @POST
+    public InventoryItemRequirementEntryId post(CreateOrMergePatchInventoryItemRequirementEntryMvoDto.CreateInventoryItemRequirementEntryMvoDto value, @Context HttpServletResponse response) {
+        try {
+            InventoryItemRequirementEntryMvoCommand.CreateInventoryItemRequirementEntryMvo cmd = value.toCreateInventoryItemRequirementEntryMvo();
+            if (cmd.getInventoryItemRequirementEntryId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "InventoryItemRequirementEntryMvo");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getInventoryItemRequirementEntryId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchInventoryItemRequirementEntryMvoDto.CreateInventoryItemRequirementEntryMvoDto value) {
         try {

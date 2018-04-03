@@ -98,6 +98,20 @@ public class InventoryPRTriggeredResource {
     }
 
 
+    @POST
+    public InventoryPRTriggeredId post(CreateOrMergePatchInventoryPRTriggeredDto.CreateInventoryPRTriggeredDto value, @Context HttpServletResponse response) {
+        try {
+            InventoryPRTriggeredCommand.CreateInventoryPRTriggered cmd = value.toCreateInventoryPRTriggered();
+            if (cmd.getInventoryPRTriggeredId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "InventoryPRTriggered");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getInventoryPRTriggeredId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchInventoryPRTriggeredDto.CreateInventoryPRTriggeredDto value) {
         try {

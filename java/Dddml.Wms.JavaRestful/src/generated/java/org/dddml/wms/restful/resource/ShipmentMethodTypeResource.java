@@ -98,6 +98,20 @@ public class ShipmentMethodTypeResource {
     }
 
 
+    @POST
+    public String post(CreateOrMergePatchShipmentMethodTypeDto.CreateShipmentMethodTypeDto value, @Context HttpServletResponse response) {
+        try {
+            ShipmentMethodTypeCommand.CreateShipmentMethodType cmd = value.toCreateShipmentMethodType();
+            if (cmd.getShipmentMethodTypeId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "ShipmentMethodType");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getShipmentMethodTypeId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchShipmentMethodTypeDto.CreateShipmentMethodTypeDto value) {
         try {

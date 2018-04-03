@@ -100,6 +100,20 @@ public class PhysicalInventoryLineMvoResource {
     }
 
 
+    @POST
+    public PhysicalInventoryLineId post(CreateOrMergePatchPhysicalInventoryLineMvoDto.CreatePhysicalInventoryLineMvoDto value, @Context HttpServletResponse response) {
+        try {
+            PhysicalInventoryLineMvoCommand.CreatePhysicalInventoryLineMvo cmd = value.toCreatePhysicalInventoryLineMvo();
+            if (cmd.getPhysicalInventoryLineId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "PhysicalInventoryLineMvo");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getPhysicalInventoryLineId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchPhysicalInventoryLineMvoDto.CreatePhysicalInventoryLineMvoDto value) {
         try {

@@ -98,6 +98,20 @@ public class UomConversionResource {
     }
 
 
+    @POST
+    public UomConversionId post(CreateOrMergePatchUomConversionDto.CreateUomConversionDto value, @Context HttpServletResponse response) {
+        try {
+            UomConversionCommand.CreateUomConversion cmd = value.toCreateUomConversion();
+            if (cmd.getUomConversionId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "UomConversion");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getUomConversionId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchUomConversionDto.CreateUomConversionDto value) {
         try {

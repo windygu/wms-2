@@ -98,6 +98,20 @@ public class UomResource {
     }
 
 
+    @POST
+    public String post(CreateOrMergePatchUomDto.CreateUomDto value, @Context HttpServletResponse response) {
+        try {
+            UomCommand.CreateUom cmd = value.toCreateUom();
+            if (cmd.getUomId() == null) {
+                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "Uom");
+            }
+
+            response.setStatus(Response.Status.CREATED.getStatusCode());
+            return cmd.getUomId();
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+
     @Path("{id}") @PUT
     public void put(@PathParam("id") String id, CreateOrMergePatchUomDto.CreateUomDto value) {
         try {
