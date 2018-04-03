@@ -105,6 +105,7 @@ public class UomResource {
             if (cmd.getUomId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "Uom");
             }
+            uomApplicationService.when(cmd);
 
             response.setStatus(Response.Status.CREATED.getStatusCode());
             return cmd.getUomId();

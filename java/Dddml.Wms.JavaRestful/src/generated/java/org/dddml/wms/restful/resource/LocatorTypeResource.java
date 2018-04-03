@@ -105,6 +105,7 @@ public class LocatorTypeResource {
             if (cmd.getLocatorTypeId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "LocatorType");
             }
+            locatorTypeApplicationService.when(cmd);
 
             response.setStatus(Response.Status.CREATED.getStatusCode());
             return cmd.getLocatorTypeId();

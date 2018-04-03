@@ -105,6 +105,7 @@ public class ContactMechResource {
             if (cmd.getContactMechId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "ContactMech");
             }
+            contactMechApplicationService.when(cmd);
 
             response.setStatus(Response.Status.CREATED.getStatusCode());
             return cmd.getContactMechId();

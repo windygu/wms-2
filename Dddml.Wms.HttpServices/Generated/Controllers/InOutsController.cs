@@ -113,6 +113,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "InOut");
             }
+            _inOutApplicationService.When(value as ICreateInOut);
             var idObj = value.DocumentNumber;
 
             return Request.CreateResponse<string>(HttpStatusCode.Created, idObj);
@@ -120,9 +121,19 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpPut][SetRequesterId]
-        public void Put(string id, [FromBody]CreateInOutDto value)
+        public void Put(string id, [FromBody]CreateOrMergePatchOrDeleteInOutDto value)
         {
           try {
+              // ///////////////////////////////
+              if (value.Version != default(long))
+              {
+                  value.CommandType = CommandType.MergePatch;
+                  InOutsControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                  _inOutApplicationService.When(value as IMergePatchInOut);
+                  return;
+              }
+              // ///////////////////////////////
+
             InOutsControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _inOutApplicationService.When(value as ICreateInOut);
           } catch (Exception ex) { var response = InOutsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }

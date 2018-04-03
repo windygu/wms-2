@@ -113,6 +113,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "ContactMech");
             }
+            _contactMechApplicationService.When(value as ICreateContactMech);
             var idObj = value.ContactMechId;
 
             return Request.CreateResponse<string>(HttpStatusCode.Created, idObj);
@@ -120,9 +121,19 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpPut][SetRequesterId]
-        public void Put(string id, [FromBody]CreateContactMechDto value)
+        public void Put(string id, [FromBody]CreateOrMergePatchOrDeleteContactMechDto value)
         {
           try {
+              // ///////////////////////////////
+              if (value.Version != default(long))
+              {
+                  value.CommandType = CommandType.MergePatch;
+                  ContactMechesControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                  _contactMechApplicationService.When(value as IMergePatchContactMech);
+                  return;
+              }
+              // ///////////////////////////////
+
             ContactMechesControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _contactMechApplicationService.When(value as ICreateContactMech);
           } catch (Exception ex) { var response = ContactMechesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }

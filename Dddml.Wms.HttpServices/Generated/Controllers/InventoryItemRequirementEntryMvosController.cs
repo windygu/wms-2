@@ -115,6 +115,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "InventoryItemRequirementEntryMvo");
             }
+            _inventoryItemRequirementEntryMvoApplicationService.When(value as ICreateInventoryItemRequirementEntryMvo);
             var idObj = value.InventoryItemRequirementEntryId;
 
             return Request.CreateResponse<InventoryItemRequirementEntryId>(HttpStatusCode.Created, idObj);
@@ -122,9 +123,19 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpPut][SetRequesterId]
-        public void Put(string id, [FromBody]CreateInventoryItemRequirementEntryMvoDto value)
+        public void Put(string id, [FromBody]CreateOrMergePatchOrDeleteInventoryItemRequirementEntryMvoDto value)
         {
           try {
+              // ///////////////////////////////
+              if (value.InventoryItemRequirementVersion != default(long))
+              {
+                  value.CommandType = CommandType.MergePatch;
+                  InventoryItemRequirementEntryMvosControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                  _inventoryItemRequirementEntryMvoApplicationService.When(value as IMergePatchInventoryItemRequirementEntryMvo);
+                  return;
+              }
+              // ///////////////////////////////
+
             InventoryItemRequirementEntryMvosControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _inventoryItemRequirementEntryMvoApplicationService.When(value as ICreateInventoryItemRequirementEntryMvo);
           } catch (Exception ex) { var response = InventoryItemRequirementEntryMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }

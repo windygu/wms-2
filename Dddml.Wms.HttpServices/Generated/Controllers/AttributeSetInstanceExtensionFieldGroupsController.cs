@@ -113,6 +113,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "AttributeSetInstanceExtensionFieldGroup");
             }
+            _attributeSetInstanceExtensionFieldGroupApplicationService.When(value as ICreateAttributeSetInstanceExtensionFieldGroup);
             var idObj = value.Id;
 
             return Request.CreateResponse<string>(HttpStatusCode.Created, idObj);
@@ -120,9 +121,19 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpPut][SetRequesterId]
-        public void Put(string id, [FromBody]CreateAttributeSetInstanceExtensionFieldGroupDto value)
+        public void Put(string id, [FromBody]CreateOrMergePatchOrDeleteAttributeSetInstanceExtensionFieldGroupDto value)
         {
           try {
+              // ///////////////////////////////
+              if (value.Version != default(long))
+              {
+                  value.CommandType = CommandType.MergePatch;
+                  AttributeSetInstanceExtensionFieldGroupsControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                  _attributeSetInstanceExtensionFieldGroupApplicationService.When(value as IMergePatchAttributeSetInstanceExtensionFieldGroup);
+                  return;
+              }
+              // ///////////////////////////////
+
             AttributeSetInstanceExtensionFieldGroupsControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _attributeSetInstanceExtensionFieldGroupApplicationService.When(value as ICreateAttributeSetInstanceExtensionFieldGroup);
           } catch (Exception ex) { var response = AttributeSetInstanceExtensionFieldGroupsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }

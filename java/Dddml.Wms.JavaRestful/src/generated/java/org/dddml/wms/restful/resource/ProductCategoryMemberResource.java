@@ -105,6 +105,7 @@ public class ProductCategoryMemberResource {
             if (cmd.getProductCategoryMemberId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "ProductCategoryMember");
             }
+            productCategoryMemberApplicationService.when(cmd);
 
             response.setStatus(Response.Status.CREATED.getStatusCode());
             return cmd.getProductCategoryMemberId();

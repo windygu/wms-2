@@ -105,6 +105,7 @@ public class MovementTypeResource {
             if (cmd.getMovementTypeId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "MovementType");
             }
+            movementTypeApplicationService.when(cmd);
 
             response.setStatus(Response.Status.CREATED.getStatusCode());
             return cmd.getMovementTypeId();

@@ -113,6 +113,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "AttributeSet");
             }
+            _attributeSetApplicationService.When(value as ICreateAttributeSet);
             var idObj = value.AttributeSetId;
 
             return Request.CreateResponse<string>(HttpStatusCode.Created, idObj);
@@ -120,9 +121,19 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpPut][SetRequesterId]
-        public void Put(string id, [FromBody]CreateAttributeSetDto value)
+        public void Put(string id, [FromBody]CreateOrMergePatchOrDeleteAttributeSetDto value)
         {
           try {
+              // ///////////////////////////////
+              if (value.Version != default(long))
+              {
+                  value.CommandType = CommandType.MergePatch;
+                  AttributeSetsControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                  _attributeSetApplicationService.When(value as IMergePatchAttributeSet);
+                  return;
+              }
+              // ///////////////////////////////
+
             AttributeSetsControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _attributeSetApplicationService.When(value as ICreateAttributeSet);
           } catch (Exception ex) { var response = AttributeSetsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }

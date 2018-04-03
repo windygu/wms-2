@@ -113,6 +113,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "PartyRole");
             }
+            _partyRoleApplicationService.When(value as ICreatePartyRole);
             var idObj = value.PartyRoleId;
 
             return Request.CreateResponse<PartyRoleId>(HttpStatusCode.Created, idObj);
@@ -120,9 +121,19 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpPut][SetRequesterId]
-        public void Put(string id, [FromBody]CreatePartyRoleDto value)
+        public void Put(string id, [FromBody]CreateOrMergePatchOrDeletePartyRoleDto value)
         {
           try {
+              // ///////////////////////////////
+              if (value.Version != default(long))
+              {
+                  value.CommandType = CommandType.MergePatch;
+                  PartyRolesControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                  _partyRoleApplicationService.When(value as IMergePatchPartyRole);
+                  return;
+              }
+              // ///////////////////////////////
+
             PartyRolesControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _partyRoleApplicationService.When(value as ICreatePartyRole);
           } catch (Exception ex) { var response = PartyRolesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }

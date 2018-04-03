@@ -113,6 +113,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "MovementConfirmation");
             }
+            _movementConfirmationApplicationService.When(value as ICreateMovementConfirmation);
             var idObj = value.DocumentNumber;
 
             return Request.CreateResponse<string>(HttpStatusCode.Created, idObj);
@@ -120,9 +121,19 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpPut][SetRequesterId]
-        public void Put(string id, [FromBody]CreateMovementConfirmationDto value)
+        public void Put(string id, [FromBody]CreateOrMergePatchOrDeleteMovementConfirmationDto value)
         {
           try {
+              // ///////////////////////////////
+              if (value.Version != default(long))
+              {
+                  value.CommandType = CommandType.MergePatch;
+                  MovementConfirmationsControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                  _movementConfirmationApplicationService.When(value as IMergePatchMovementConfirmation);
+                  return;
+              }
+              // ///////////////////////////////
+
             MovementConfirmationsControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _movementConfirmationApplicationService.When(value as ICreateMovementConfirmation);
           } catch (Exception ex) { var response = MovementConfirmationsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }

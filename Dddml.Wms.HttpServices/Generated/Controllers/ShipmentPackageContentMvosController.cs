@@ -114,6 +114,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "ShipmentPackageContentMvo");
             }
+            _shipmentPackageContentMvoApplicationService.When(value as ICreateShipmentPackageContentMvo);
             var idObj = value.ShipmentPackageContentId;
 
             return Request.CreateResponse<ShipmentPackageContentId>(HttpStatusCode.Created, idObj);
@@ -121,9 +122,19 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpPut][SetRequesterId]
-        public void Put(string id, [FromBody]CreateShipmentPackageContentMvoDto value)
+        public void Put(string id, [FromBody]CreateOrMergePatchOrDeleteShipmentPackageContentMvoDto value)
         {
           try {
+              // ///////////////////////////////
+              if (value.ShipmentPackageVersion != default(long))
+              {
+                  value.CommandType = CommandType.MergePatch;
+                  ShipmentPackageContentMvosControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                  _shipmentPackageContentMvoApplicationService.When(value as IMergePatchShipmentPackageContentMvo);
+                  return;
+              }
+              // ///////////////////////////////
+
             ShipmentPackageContentMvosControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _shipmentPackageContentMvoApplicationService.When(value as ICreateShipmentPackageContentMvo);
           } catch (Exception ex) { var response = ShipmentPackageContentMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }

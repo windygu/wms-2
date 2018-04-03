@@ -106,6 +106,7 @@ public class OrderResource {
             if (cmd.getOrderId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "Order");
             }
+            orderApplicationService.when(cmd);
 
             response.setStatus(Response.Status.CREATED.getStatusCode());
             return cmd.getOrderId();

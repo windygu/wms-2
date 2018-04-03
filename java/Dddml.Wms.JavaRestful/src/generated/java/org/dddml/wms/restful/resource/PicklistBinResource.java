@@ -105,6 +105,7 @@ public class PicklistBinResource {
             if (cmd.getPicklistBinId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "PicklistBin");
             }
+            picklistBinApplicationService.when(cmd);
 
             response.setStatus(Response.Status.CREATED.getStatusCode());
             return cmd.getPicklistBinId();

@@ -106,6 +106,7 @@ public class AttributeUseMvoResource {
             if (cmd.getAttributeSetAttributeUseId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "AttributeUseMvo");
             }
+            attributeUseMvoApplicationService.when(cmd);
 
             response.setStatus(Response.Status.CREATED.getStatusCode());
             return cmd.getAttributeSetAttributeUseId();

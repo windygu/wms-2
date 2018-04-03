@@ -114,6 +114,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "PhysicalInventoryLineMvo");
             }
+            _physicalInventoryLineMvoApplicationService.When(value as ICreatePhysicalInventoryLineMvo);
             var idObj = value.PhysicalInventoryLineId;
 
             return Request.CreateResponse<PhysicalInventoryLineId>(HttpStatusCode.Created, idObj);
@@ -121,9 +122,19 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpPut][SetRequesterId]
-        public void Put(string id, [FromBody]CreatePhysicalInventoryLineMvoDto value)
+        public void Put(string id, [FromBody]CreateOrMergePatchOrDeletePhysicalInventoryLineMvoDto value)
         {
           try {
+              // ///////////////////////////////
+              if (value.PhysicalInventoryVersion != default(long))
+              {
+                  value.CommandType = CommandType.MergePatch;
+                  PhysicalInventoryLineMvosControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                  _physicalInventoryLineMvoApplicationService.When(value as IMergePatchPhysicalInventoryLineMvo);
+                  return;
+              }
+              // ///////////////////////////////
+
             PhysicalInventoryLineMvosControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _physicalInventoryLineMvoApplicationService.When(value as ICreatePhysicalInventoryLineMvo);
           } catch (Exception ex) { var response = PhysicalInventoryLineMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }

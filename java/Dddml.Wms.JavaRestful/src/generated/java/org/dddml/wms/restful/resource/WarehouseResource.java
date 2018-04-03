@@ -105,6 +105,7 @@ public class WarehouseResource {
             if (cmd.getWarehouseId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "Warehouse");
             }
+            warehouseApplicationService.when(cmd);
 
             response.setStatus(Response.Status.CREATED.getStatusCode());
             return cmd.getWarehouseId();

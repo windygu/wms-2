@@ -113,6 +113,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "Pickwave");
             }
+            _pickwaveApplicationService.When(value as ICreatePickwave);
             var idObj = value.PickwaveId;
 
             return Request.CreateResponse<long?>(HttpStatusCode.Created, idObj);
@@ -120,9 +121,19 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpPut][SetRequesterId]
-        public void Put(long? id, [FromBody]CreatePickwaveDto value)
+        public void Put(long? id, [FromBody]CreateOrMergePatchOrDeletePickwaveDto value)
         {
           try {
+              // ///////////////////////////////
+              if (value.Version != default(long))
+              {
+                  value.CommandType = CommandType.MergePatch;
+                  PickwavesControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                  _pickwaveApplicationService.When(value as IMergePatchPickwave);
+                  return;
+              }
+              // ///////////////////////////////
+
             PickwavesControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _pickwaveApplicationService.When(value as ICreatePickwave);
           } catch (Exception ex) { var response = PickwavesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }

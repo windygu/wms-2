@@ -114,6 +114,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "PicklistRoleMvo");
             }
+            _picklistRoleMvoApplicationService.When(value as ICreatePicklistRoleMvo);
             var idObj = value.PicklistRoleId;
 
             return Request.CreateResponse<PicklistRoleId>(HttpStatusCode.Created, idObj);
@@ -121,9 +122,19 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpPut][SetRequesterId]
-        public void Put(string id, [FromBody]CreatePicklistRoleMvoDto value)
+        public void Put(string id, [FromBody]CreateOrMergePatchOrDeletePicklistRoleMvoDto value)
         {
           try {
+              // ///////////////////////////////
+              if (value.PicklistVersion != default(long))
+              {
+                  value.CommandType = CommandType.MergePatch;
+                  PicklistRoleMvosControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                  _picklistRoleMvoApplicationService.When(value as IMergePatchPicklistRoleMvo);
+                  return;
+              }
+              // ///////////////////////////////
+
             PicklistRoleMvosControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _picklistRoleMvoApplicationService.When(value as ICreatePicklistRoleMvo);
           } catch (Exception ex) { var response = PicklistRoleMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }

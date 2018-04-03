@@ -107,6 +107,7 @@ public class MovementLineMvoResource {
             if (cmd.getMovementLineId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "MovementLineMvo");
             }
+            movementLineMvoApplicationService.when(cmd);
 
             response.setStatus(Response.Status.CREATED.getStatusCode());
             return cmd.getMovementLineId();

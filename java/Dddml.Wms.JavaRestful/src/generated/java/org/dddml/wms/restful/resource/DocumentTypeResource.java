@@ -105,6 +105,7 @@ public class DocumentTypeResource {
             if (cmd.getDocumentTypeId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "DocumentType");
             }
+            documentTypeApplicationService.when(cmd);
 
             response.setStatus(Response.Status.CREATED.getStatusCode());
             return cmd.getDocumentTypeId();

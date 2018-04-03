@@ -114,6 +114,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "AttributeAliasMvo");
             }
+            _attributeAliasMvoApplicationService.When(value as ICreateAttributeAliasMvo);
             var idObj = value.AttributeAliasId;
 
             return Request.CreateResponse<AttributeAliasId>(HttpStatusCode.Created, idObj);
@@ -121,9 +122,19 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpPut][SetRequesterId]
-        public void Put(string id, [FromBody]CreateAttributeAliasMvoDto value)
+        public void Put(string id, [FromBody]CreateOrMergePatchOrDeleteAttributeAliasMvoDto value)
         {
           try {
+              // ///////////////////////////////
+              if (value.AttributeVersion != default(long))
+              {
+                  value.CommandType = CommandType.MergePatch;
+                  AttributeAliasMvosControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                  _attributeAliasMvoApplicationService.When(value as IMergePatchAttributeAliasMvo);
+                  return;
+              }
+              // ///////////////////////////////
+
             AttributeAliasMvosControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _attributeAliasMvoApplicationService.When(value as ICreateAttributeAliasMvo);
           } catch (Exception ex) { var response = AttributeAliasMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }

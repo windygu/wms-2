@@ -113,6 +113,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "Warehouse");
             }
+            _warehouseApplicationService.When(value as ICreateWarehouse);
             var idObj = value.WarehouseId;
 
             return Request.CreateResponse<string>(HttpStatusCode.Created, idObj);
@@ -120,9 +121,19 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpPut][SetRequesterId]
-        public void Put(string id, [FromBody]CreateWarehouseDto value)
+        public void Put(string id, [FromBody]CreateOrMergePatchOrDeleteWarehouseDto value)
         {
           try {
+              // ///////////////////////////////
+              if (value.Version != default(long))
+              {
+                  value.CommandType = CommandType.MergePatch;
+                  WarehousesControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                  _warehouseApplicationService.When(value as IMergePatchWarehouse);
+                  return;
+              }
+              // ///////////////////////////////
+
             WarehousesControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _warehouseApplicationService.When(value as ICreateWarehouse);
           } catch (Exception ex) { var response = WarehousesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }

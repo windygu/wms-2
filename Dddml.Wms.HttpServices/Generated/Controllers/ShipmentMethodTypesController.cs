@@ -113,6 +113,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "ShipmentMethodType");
             }
+            _shipmentMethodTypeApplicationService.When(value as ICreateShipmentMethodType);
             var idObj = value.ShipmentMethodTypeId;
 
             return Request.CreateResponse<string>(HttpStatusCode.Created, idObj);
@@ -120,9 +121,19 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpPut][SetRequesterId]
-        public void Put(string id, [FromBody]CreateShipmentMethodTypeDto value)
+        public void Put(string id, [FromBody]CreateOrMergePatchOrDeleteShipmentMethodTypeDto value)
         {
           try {
+              // ///////////////////////////////
+              if (value.Version != default(long))
+              {
+                  value.CommandType = CommandType.MergePatch;
+                  ShipmentMethodTypesControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                  _shipmentMethodTypeApplicationService.When(value as IMergePatchShipmentMethodType);
+                  return;
+              }
+              // ///////////////////////////////
+
             ShipmentMethodTypesControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _shipmentMethodTypeApplicationService.When(value as ICreateShipmentMethodType);
           } catch (Exception ex) { var response = ShipmentMethodTypesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }

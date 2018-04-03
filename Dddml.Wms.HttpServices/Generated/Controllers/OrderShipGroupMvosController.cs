@@ -114,6 +114,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "OrderShipGroupMvo");
             }
+            _orderShipGroupMvoApplicationService.When(value as ICreateOrderShipGroupMvo);
             var idObj = value.OrderShipGroupId;
 
             return Request.CreateResponse<OrderShipGroupId>(HttpStatusCode.Created, idObj);
@@ -121,9 +122,19 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpPut][SetRequesterId]
-        public void Put(string id, [FromBody]CreateOrderShipGroupMvoDto value)
+        public void Put(string id, [FromBody]CreateOrMergePatchOrDeleteOrderShipGroupMvoDto value)
         {
           try {
+              // ///////////////////////////////
+              if (value.OrderVersion != default(long))
+              {
+                  value.CommandType = CommandType.MergePatch;
+                  OrderShipGroupMvosControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                  _orderShipGroupMvoApplicationService.When(value as IMergePatchOrderShipGroupMvo);
+                  return;
+              }
+              // ///////////////////////////////
+
             OrderShipGroupMvosControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _orderShipGroupMvoApplicationService.When(value as ICreateOrderShipGroupMvo);
           } catch (Exception ex) { var response = OrderShipGroupMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }

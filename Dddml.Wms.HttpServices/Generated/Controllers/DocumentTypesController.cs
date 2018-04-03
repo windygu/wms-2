@@ -113,6 +113,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "DocumentType");
             }
+            _documentTypeApplicationService.When(value as ICreateDocumentType);
             var idObj = value.DocumentTypeId;
 
             return Request.CreateResponse<string>(HttpStatusCode.Created, idObj);
@@ -120,9 +121,19 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpPut][SetRequesterId]
-        public void Put(string id, [FromBody]CreateDocumentTypeDto value)
+        public void Put(string id, [FromBody]CreateOrMergePatchOrDeleteDocumentTypeDto value)
         {
           try {
+              // ///////////////////////////////
+              if (value.Version != default(long))
+              {
+                  value.CommandType = CommandType.MergePatch;
+                  DocumentTypesControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                  _documentTypeApplicationService.When(value as IMergePatchDocumentType);
+                  return;
+              }
+              // ///////////////////////////////
+
             DocumentTypesControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _documentTypeApplicationService.When(value as ICreateDocumentType);
           } catch (Exception ex) { var response = DocumentTypesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }

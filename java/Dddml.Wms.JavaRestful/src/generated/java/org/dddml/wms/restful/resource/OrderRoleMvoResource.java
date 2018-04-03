@@ -106,6 +106,7 @@ public class OrderRoleMvoResource {
             if (cmd.getOrderRoleId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "OrderRoleMvo");
             }
+            orderRoleMvoApplicationService.when(cmd);
 
             response.setStatus(Response.Status.CREATED.getStatusCode());
             return cmd.getOrderRoleId();

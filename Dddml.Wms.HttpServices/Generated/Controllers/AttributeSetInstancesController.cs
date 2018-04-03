@@ -116,6 +116,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "AttributeSetInstance");
             }
+            _attributeSetInstanceApplicationService.When(value as ICreateAttributeSetInstance);
             var idObj = value.AttributeSetInstanceId;
 
             return Request.CreateResponse<string>(HttpStatusCode.Created, idObj);

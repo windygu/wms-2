@@ -106,6 +106,7 @@ public class AttributeSetInstanceResource {
             if (cmd.getAttributeSetInstanceId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "AttributeSetInstance");
             }
+            attributeSetInstanceApplicationService.when(cmd);
 
             response.setStatus(Response.Status.CREATED.getStatusCode());
             return cmd.getAttributeSetInstanceId();

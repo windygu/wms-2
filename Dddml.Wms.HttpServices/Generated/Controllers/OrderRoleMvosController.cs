@@ -114,6 +114,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "OrderRoleMvo");
             }
+            _orderRoleMvoApplicationService.When(value as ICreateOrderRoleMvo);
             var idObj = value.OrderRoleId;
 
             return Request.CreateResponse<OrderRoleId>(HttpStatusCode.Created, idObj);
@@ -121,9 +122,19 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpPut][SetRequesterId]
-        public void Put(string id, [FromBody]CreateOrderRoleMvoDto value)
+        public void Put(string id, [FromBody]CreateOrMergePatchOrDeleteOrderRoleMvoDto value)
         {
           try {
+              // ///////////////////////////////
+              if (value.OrderVersion != default(long))
+              {
+                  value.CommandType = CommandType.MergePatch;
+                  OrderRoleMvosControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                  _orderRoleMvoApplicationService.When(value as IMergePatchOrderRoleMvo);
+                  return;
+              }
+              // ///////////////////////////////
+
             OrderRoleMvosControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _orderRoleMvoApplicationService.When(value as ICreateOrderRoleMvo);
           } catch (Exception ex) { var response = OrderRoleMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }

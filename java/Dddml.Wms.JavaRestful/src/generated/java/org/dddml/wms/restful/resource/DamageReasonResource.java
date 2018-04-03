@@ -105,6 +105,7 @@ public class DamageReasonResource {
             if (cmd.getDamageReasonId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "DamageReason");
             }
+            damageReasonApplicationService.when(cmd);
 
             response.setStatus(Response.Status.CREATED.getStatusCode());
             return cmd.getDamageReasonId();

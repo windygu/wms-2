@@ -113,6 +113,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "Product");
             }
+            _productApplicationService.When(value as ICreateProduct);
             var idObj = value.ProductId;
 
             return Request.CreateResponse<string>(HttpStatusCode.Created, idObj);
@@ -120,9 +121,19 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpPut][SetRequesterId]
-        public void Put(string id, [FromBody]CreateProductDto value)
+        public void Put(string id, [FromBody]CreateOrMergePatchOrDeleteProductDto value)
         {
           try {
+              // ///////////////////////////////
+              if (value.Version != default(long))
+              {
+                  value.CommandType = CommandType.MergePatch;
+                  ProductsControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                  _productApplicationService.When(value as IMergePatchProduct);
+                  return;
+              }
+              // ///////////////////////////////
+
             ProductsControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _productApplicationService.When(value as ICreateProduct);
           } catch (Exception ex) { var response = ProductsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }

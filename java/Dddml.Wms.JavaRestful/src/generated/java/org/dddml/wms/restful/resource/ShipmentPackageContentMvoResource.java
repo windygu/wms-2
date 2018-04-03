@@ -106,6 +106,7 @@ public class ShipmentPackageContentMvoResource {
             if (cmd.getShipmentPackageContentId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "ShipmentPackageContentMvo");
             }
+            shipmentPackageContentMvoApplicationService.when(cmd);
 
             response.setStatus(Response.Status.CREATED.getStatusCode());
             return cmd.getShipmentPackageContentId();

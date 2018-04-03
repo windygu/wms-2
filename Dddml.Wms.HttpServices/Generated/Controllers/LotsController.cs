@@ -113,6 +113,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "Lot");
             }
+            _lotApplicationService.When(value as ICreateLot);
             var idObj = value.LotId;
 
             return Request.CreateResponse<string>(HttpStatusCode.Created, idObj);
@@ -120,9 +121,19 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpPut][SetRequesterId]
-        public void Put(string id, [FromBody]CreateLotDto value)
+        public void Put(string id, [FromBody]CreateOrMergePatchOrDeleteLotDto value)
         {
           try {
+              // ///////////////////////////////
+              if (value.Version != default(long))
+              {
+                  value.CommandType = CommandType.MergePatch;
+                  LotsControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                  _lotApplicationService.When(value as IMergePatchLot);
+                  return;
+              }
+              // ///////////////////////////////
+
             LotsControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _lotApplicationService.When(value as ICreateLot);
           } catch (Exception ex) { var response = LotsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }

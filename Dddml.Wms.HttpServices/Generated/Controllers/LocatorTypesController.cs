@@ -113,6 +113,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "LocatorType");
             }
+            _locatorTypeApplicationService.When(value as ICreateLocatorType);
             var idObj = value.LocatorTypeId;
 
             return Request.CreateResponse<string>(HttpStatusCode.Created, idObj);
@@ -120,9 +121,19 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpPut][SetRequesterId]
-        public void Put(string id, [FromBody]CreateLocatorTypeDto value)
+        public void Put(string id, [FromBody]CreateOrMergePatchOrDeleteLocatorTypeDto value)
         {
           try {
+              // ///////////////////////////////
+              if (value.Version != default(long))
+              {
+                  value.CommandType = CommandType.MergePatch;
+                  LocatorTypesControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                  _locatorTypeApplicationService.When(value as IMergePatchLocatorType);
+                  return;
+              }
+              // ///////////////////////////////
+
             LocatorTypesControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _locatorTypeApplicationService.When(value as ICreateLocatorType);
           } catch (Exception ex) { var response = LocatorTypesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }

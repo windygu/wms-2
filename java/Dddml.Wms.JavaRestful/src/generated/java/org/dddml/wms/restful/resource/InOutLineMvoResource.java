@@ -107,6 +107,7 @@ public class InOutLineMvoResource {
             if (cmd.getInOutLineId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "InOutLineMvo");
             }
+            inOutLineMvoApplicationService.when(cmd);
 
             response.setStatus(Response.Status.CREATED.getStatusCode());
             return cmd.getInOutLineId();

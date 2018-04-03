@@ -113,6 +113,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "Facility");
             }
+            _facilityApplicationService.When(value as ICreateFacility);
             var idObj = value.FacilityId;
 
             return Request.CreateResponse<string>(HttpStatusCode.Created, idObj);
@@ -120,9 +121,19 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpPut][SetRequesterId]
-        public void Put(string id, [FromBody]CreateFacilityDto value)
+        public void Put(string id, [FromBody]CreateOrMergePatchOrDeleteFacilityDto value)
         {
           try {
+              // ///////////////////////////////
+              if (value.Version != default(long))
+              {
+                  value.CommandType = CommandType.MergePatch;
+                  FacilitiesControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                  _facilityApplicationService.When(value as IMergePatchFacility);
+                  return;
+              }
+              // ///////////////////////////////
+
             FacilitiesControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _facilityApplicationService.When(value as ICreateFacility);
           } catch (Exception ex) { var response = FacilitiesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }

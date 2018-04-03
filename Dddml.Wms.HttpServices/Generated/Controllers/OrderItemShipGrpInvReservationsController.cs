@@ -113,6 +113,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "OrderItemShipGrpInvReservation");
             }
+            _orderItemShipGrpInvReservationApplicationService.When(value as ICreateOrderItemShipGrpInvReservation);
             var idObj = value.OrderItemShipGrpInvResId;
 
             return Request.CreateResponse<OrderItemShipGrpInvResId>(HttpStatusCode.Created, idObj);
@@ -120,9 +121,19 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpPut][SetRequesterId]
-        public void Put(string id, [FromBody]CreateOrderItemShipGrpInvReservationDto value)
+        public void Put(string id, [FromBody]CreateOrMergePatchOrDeleteOrderItemShipGrpInvReservationDto value)
         {
           try {
+              // ///////////////////////////////
+              if (value.Version != default(long))
+              {
+                  value.CommandType = CommandType.MergePatch;
+                  OrderItemShipGrpInvReservationsControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                  _orderItemShipGrpInvReservationApplicationService.When(value as IMergePatchOrderItemShipGrpInvReservation);
+                  return;
+              }
+              // ///////////////////////////////
+
             OrderItemShipGrpInvReservationsControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _orderItemShipGrpInvReservationApplicationService.When(value as ICreateOrderItemShipGrpInvReservation);
           } catch (Exception ex) { var response = OrderItemShipGrpInvReservationsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }

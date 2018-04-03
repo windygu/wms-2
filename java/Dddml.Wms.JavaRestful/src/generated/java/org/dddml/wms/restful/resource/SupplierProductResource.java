@@ -105,6 +105,7 @@ public class SupplierProductResource {
             if (cmd.getSupplierProductId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "SupplierProduct");
             }
+            supplierProductApplicationService.when(cmd);
 
             response.setStatus(Response.Status.CREATED.getStatusCode());
             return cmd.getSupplierProductId();

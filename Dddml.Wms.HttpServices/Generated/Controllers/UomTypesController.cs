@@ -113,6 +113,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "UomType");
             }
+            _uomTypeApplicationService.When(value as ICreateUomType);
             var idObj = value.UomTypeId;
 
             return Request.CreateResponse<string>(HttpStatusCode.Created, idObj);
@@ -120,9 +121,19 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpPut][SetRequesterId]
-        public void Put(string id, [FromBody]CreateUomTypeDto value)
+        public void Put(string id, [FromBody]CreateOrMergePatchOrDeleteUomTypeDto value)
         {
           try {
+              // ///////////////////////////////
+              if (value.Version != default(long))
+              {
+                  value.CommandType = CommandType.MergePatch;
+                  UomTypesControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                  _uomTypeApplicationService.When(value as IMergePatchUomType);
+                  return;
+              }
+              // ///////////////////////////////
+
             UomTypesControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _uomTypeApplicationService.When(value as ICreateUomType);
           } catch (Exception ex) { var response = UomTypesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }

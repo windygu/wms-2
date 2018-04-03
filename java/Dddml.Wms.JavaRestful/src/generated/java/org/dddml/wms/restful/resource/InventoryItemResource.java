@@ -106,6 +106,7 @@ public class InventoryItemResource {
             if (cmd.getInventoryItemId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "InventoryItem");
             }
+            inventoryItemApplicationService.when(cmd);
 
             response.setStatus(Response.Status.CREATED.getStatusCode());
             return cmd.getInventoryItemId();

@@ -113,6 +113,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "InventoryItem");
             }
+            _inventoryItemApplicationService.When(value as ICreateInventoryItem);
             var idObj = value.InventoryItemId;
 
             return Request.CreateResponse<InventoryItemId>(HttpStatusCode.Created, idObj);

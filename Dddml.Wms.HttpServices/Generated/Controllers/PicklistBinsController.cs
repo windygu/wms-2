@@ -113,6 +113,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "PicklistBin");
             }
+            _picklistBinApplicationService.When(value as ICreatePicklistBin);
             var idObj = value.PicklistBinId;
 
             return Request.CreateResponse<string>(HttpStatusCode.Created, idObj);
@@ -120,9 +121,19 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpPut][SetRequesterId]
-        public void Put(string id, [FromBody]CreatePicklistBinDto value)
+        public void Put(string id, [FromBody]CreateOrMergePatchOrDeletePicklistBinDto value)
         {
           try {
+              // ///////////////////////////////
+              if (value.Version != default(long))
+              {
+                  value.CommandType = CommandType.MergePatch;
+                  PicklistBinsControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                  _picklistBinApplicationService.When(value as IMergePatchPicklistBin);
+                  return;
+              }
+              // ///////////////////////////////
+
             PicklistBinsControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _picklistBinApplicationService.When(value as ICreatePicklistBin);
           } catch (Exception ex) { var response = PicklistBinsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }

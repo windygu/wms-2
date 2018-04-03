@@ -118,6 +118,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "Party");
             }
+            _partyApplicationService.When(value as ICreateParty);
             var idObj = value.PartyId;
 
             return Request.CreateResponse<string>(HttpStatusCode.Created, idObj);
@@ -125,10 +126,20 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpPut][SetRequesterId]
-        public void Put(string id, [FromBody]CreatePartyDto value)
+        public void Put(string id, [FromBody]CreateOrMergePatchOrDeletePartyDto value)
         {
           try {
             value.PartyTypeId = PartyTypeIds.Organization;
+              // ///////////////////////////////
+              if (value.Version != default(long))
+              {
+                  value.CommandType = CommandType.MergePatch;
+                  OrganizationsControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                  _partyApplicationService.When(value as IMergePatchParty);
+                  return;
+              }
+              // ///////////////////////////////
+
             OrganizationsControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _partyApplicationService.When(value as ICreateParty);
           } catch (Exception ex) { var response = OrganizationsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }

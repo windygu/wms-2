@@ -105,6 +105,7 @@ public class UomConversionResource {
             if (cmd.getUomConversionId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "UomConversion");
             }
+            uomConversionApplicationService.when(cmd);
 
             response.setStatus(Response.Status.CREATED.getStatusCode());
             return cmd.getUomConversionId();

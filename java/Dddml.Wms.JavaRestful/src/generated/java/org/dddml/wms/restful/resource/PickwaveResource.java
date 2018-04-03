@@ -105,6 +105,7 @@ public class PickwaveResource {
             if (cmd.getPickwaveId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "Pickwave");
             }
+            pickwaveApplicationService.when(cmd);
 
             response.setStatus(Response.Status.CREATED.getStatusCode());
             return cmd.getPickwaveId();

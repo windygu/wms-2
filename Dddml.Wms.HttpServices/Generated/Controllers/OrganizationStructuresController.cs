@@ -113,6 +113,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "OrganizationStructure");
             }
+            _organizationStructureApplicationService.When(value as ICreateOrganizationStructure);
             var idObj = value.Id;
 
             return Request.CreateResponse<OrganizationStructureId>(HttpStatusCode.Created, idObj);
@@ -120,9 +121,19 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpPut][SetRequesterId]
-        public void Put(string id, [FromBody]CreateOrganizationStructureDto value)
+        public void Put(string id, [FromBody]CreateOrMergePatchOrDeleteOrganizationStructureDto value)
         {
           try {
+              // ///////////////////////////////
+              if (value.Version != default(long))
+              {
+                  value.CommandType = CommandType.MergePatch;
+                  OrganizationStructuresControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                  _organizationStructureApplicationService.When(value as IMergePatchOrganizationStructure);
+                  return;
+              }
+              // ///////////////////////////////
+
             OrganizationStructuresControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _organizationStructureApplicationService.When(value as ICreateOrganizationStructure);
           } catch (Exception ex) { var response = OrganizationStructuresControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }

@@ -105,6 +105,7 @@ public class FacilityResource {
             if (cmd.getFacilityId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "Facility");
             }
+            facilityApplicationService.when(cmd);
 
             response.setStatus(Response.Status.CREATED.getStatusCode());
             return cmd.getFacilityId();

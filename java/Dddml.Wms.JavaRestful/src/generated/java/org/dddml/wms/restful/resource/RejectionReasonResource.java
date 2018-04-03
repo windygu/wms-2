@@ -105,6 +105,7 @@ public class RejectionReasonResource {
             if (cmd.getRejectionReasonId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "RejectionReason");
             }
+            rejectionReasonApplicationService.when(cmd);
 
             response.setStatus(Response.Status.CREATED.getStatusCode());
             return cmd.getRejectionReasonId();

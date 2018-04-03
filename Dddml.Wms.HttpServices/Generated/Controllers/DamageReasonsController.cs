@@ -113,6 +113,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "DamageReason");
             }
+            _damageReasonApplicationService.When(value as ICreateDamageReason);
             var idObj = value.DamageReasonId;
 
             return Request.CreateResponse<string>(HttpStatusCode.Created, idObj);
@@ -120,9 +121,19 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpPut][SetRequesterId]
-        public void Put(string id, [FromBody]CreateDamageReasonDto value)
+        public void Put(string id, [FromBody]CreateOrMergePatchOrDeleteDamageReasonDto value)
         {
           try {
+              // ///////////////////////////////
+              if (value.Version != default(long))
+              {
+                  value.CommandType = CommandType.MergePatch;
+                  DamageReasonsControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                  _damageReasonApplicationService.When(value as IMergePatchDamageReason);
+                  return;
+              }
+              // ///////////////////////////////
+
             DamageReasonsControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _damageReasonApplicationService.When(value as ICreateDamageReason);
           } catch (Exception ex) { var response = DamageReasonsControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }

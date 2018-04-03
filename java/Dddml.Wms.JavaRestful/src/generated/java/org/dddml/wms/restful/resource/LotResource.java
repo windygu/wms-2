@@ -105,6 +105,7 @@ public class LotResource {
             if (cmd.getLotId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "Lot");
             }
+            lotApplicationService.when(cmd);
 
             response.setStatus(Response.Status.CREATED.getStatusCode());
             return cmd.getLotId();

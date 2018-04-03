@@ -113,6 +113,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "RoleType");
             }
+            _roleTypeApplicationService.When(value as ICreateRoleType);
             var idObj = value.RoleTypeId;
 
             return Request.CreateResponse<string>(HttpStatusCode.Created, idObj);
@@ -120,9 +121,19 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpPut][SetRequesterId]
-        public void Put(string id, [FromBody]CreateRoleTypeDto value)
+        public void Put(string id, [FromBody]CreateOrMergePatchOrDeleteRoleTypeDto value)
         {
           try {
+              // ///////////////////////////////
+              if (value.Version != default(long))
+              {
+                  value.CommandType = CommandType.MergePatch;
+                  RoleTypesControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                  _roleTypeApplicationService.When(value as IMergePatchRoleType);
+                  return;
+              }
+              // ///////////////////////////////
+
             RoleTypesControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _roleTypeApplicationService.When(value as ICreateRoleType);
           } catch (Exception ex) { var response = RoleTypesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }

@@ -107,6 +107,7 @@ public class PhysicalInventoryLineMvoResource {
             if (cmd.getPhysicalInventoryLineId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "PhysicalInventoryLineMvo");
             }
+            physicalInventoryLineMvoApplicationService.when(cmd);
 
             response.setStatus(Response.Status.CREATED.getStatusCode());
             return cmd.getPhysicalInventoryLineId();

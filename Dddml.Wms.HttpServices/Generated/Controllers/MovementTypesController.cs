@@ -113,6 +113,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "MovementType");
             }
+            _movementTypeApplicationService.When(value as ICreateMovementType);
             var idObj = value.MovementTypeId;
 
             return Request.CreateResponse<string>(HttpStatusCode.Created, idObj);
@@ -120,9 +121,19 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpPut][SetRequesterId]
-        public void Put(string id, [FromBody]CreateMovementTypeDto value)
+        public void Put(string id, [FromBody]CreateOrMergePatchOrDeleteMovementTypeDto value)
         {
           try {
+              // ///////////////////////////////
+              if (value.Version != default(long))
+              {
+                  value.CommandType = CommandType.MergePatch;
+                  MovementTypesControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                  _movementTypeApplicationService.When(value as IMergePatchMovementType);
+                  return;
+              }
+              // ///////////////////////////////
+
             MovementTypesControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _movementTypeApplicationService.When(value as ICreateMovementType);
           } catch (Exception ex) { var response = MovementTypesControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }

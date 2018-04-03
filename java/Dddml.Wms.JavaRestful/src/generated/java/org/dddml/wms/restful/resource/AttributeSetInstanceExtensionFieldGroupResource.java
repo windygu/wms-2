@@ -105,6 +105,7 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
             if (cmd.getId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "AttributeSetInstanceExtensionFieldGroup");
             }
+            attributeSetInstanceExtensionFieldGroupApplicationService.when(cmd);
 
             response.setStatus(Response.Status.CREATED.getStatusCode());
             return cmd.getId();

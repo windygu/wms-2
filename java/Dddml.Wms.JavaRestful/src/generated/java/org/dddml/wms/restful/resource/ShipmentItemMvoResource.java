@@ -106,6 +106,7 @@ public class ShipmentItemMvoResource {
             if (cmd.getShipmentItemId() == null) {
                 throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "ShipmentItemMvo");
             }
+            shipmentItemMvoApplicationService.when(cmd);
 
             response.setStatus(Response.Status.CREATED.getStatusCode());
             return cmd.getShipmentItemId();

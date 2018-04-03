@@ -115,6 +115,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "SellableInventoryItemEntryMvo");
             }
+            _sellableInventoryItemEntryMvoApplicationService.When(value as ICreateSellableInventoryItemEntryMvo);
             var idObj = value.SellableInventoryItemEntryId;
 
             return Request.CreateResponse<SellableInventoryItemEntryId>(HttpStatusCode.Created, idObj);
@@ -122,9 +123,19 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpPut][SetRequesterId]
-        public void Put(string id, [FromBody]CreateSellableInventoryItemEntryMvoDto value)
+        public void Put(string id, [FromBody]CreateOrMergePatchOrDeleteSellableInventoryItemEntryMvoDto value)
         {
           try {
+              // ///////////////////////////////
+              if (value.SellableInventoryItemVersion != default(long))
+              {
+                  value.CommandType = CommandType.MergePatch;
+                  SellableInventoryItemEntryMvosControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                  _sellableInventoryItemEntryMvoApplicationService.When(value as IMergePatchSellableInventoryItemEntryMvo);
+                  return;
+              }
+              // ///////////////////////////////
+
             SellableInventoryItemEntryMvosControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _sellableInventoryItemEntryMvoApplicationService.When(value as ICreateSellableInventoryItemEntryMvo);
           } catch (Exception ex) { var response = SellableInventoryItemEntryMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }

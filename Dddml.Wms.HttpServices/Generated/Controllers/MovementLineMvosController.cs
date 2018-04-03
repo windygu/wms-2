@@ -114,6 +114,7 @@ namespace Dddml.Wms.HttpServices.ApiControllers
             {
                 throw DomainError.Named("nullId", "Aggregate Id in cmd is null, aggregate name: {0}.", "MovementLineMvo");
             }
+            _movementLineMvoApplicationService.When(value as ICreateMovementLineMvo);
             var idObj = value.MovementLineId;
 
             return Request.CreateResponse<MovementLineId>(HttpStatusCode.Created, idObj);
@@ -121,9 +122,19 @@ namespace Dddml.Wms.HttpServices.ApiControllers
         }
 
         [HttpPut][SetRequesterId]
-        public void Put(string id, [FromBody]CreateMovementLineMvoDto value)
+        public void Put(string id, [FromBody]CreateOrMergePatchOrDeleteMovementLineMvoDto value)
         {
           try {
+              // ///////////////////////////////
+              if (value.MovementVersion != default(long))
+              {
+                  value.CommandType = CommandType.MergePatch;
+                  MovementLineMvosControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
+                  _movementLineMvoApplicationService.When(value as IMergePatchMovementLineMvo);
+                  return;
+              }
+              // ///////////////////////////////
+
             MovementLineMvosControllerUtils.SetNullIdOrThrowOnInconsistentIds(id, value);
             _movementLineMvoApplicationService.When(value as ICreateMovementLineMvo);
           } catch (Exception ex) { var response = MovementLineMvosControllerUtils.GetErrorHttpResponseMessage(ex); throw new HttpResponseException(response); }
