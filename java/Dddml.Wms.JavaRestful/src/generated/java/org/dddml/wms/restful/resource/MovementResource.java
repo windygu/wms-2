@@ -43,7 +43,7 @@ public class MovementResource {
                 states = movementApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (MovementFilteringProperties.aliasMap.containsKey(n) ? MovementFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (MovementMetadata.aliasMap.containsKey(n) ? MovementMetadata.aliasMap.get(n) : n)),
                         MovementResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -89,7 +89,7 @@ public class MovementResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = movementApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (MovementFilteringProperties.aliasMap.containsKey(n) ? MovementFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (MovementMetadata.aliasMap.containsKey(n) ? MovementMetadata.aliasMap.get(n) : n)));
             } else {
                 count = movementApplicationService.getCount(MovementResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -162,7 +162,7 @@ public class MovementResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            MovementFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            MovementMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -272,15 +272,15 @@ public class MovementResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (MovementFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return MovementFilteringProperties.aliasMap.get(fieldName);
+            if (MovementMetadata.aliasMap.containsKey(fieldName)) {
+                return MovementMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (MovementFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = MovementFilteringProperties.propertyTypeMap.get(propertyName);
+            if (MovementMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = MovementMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

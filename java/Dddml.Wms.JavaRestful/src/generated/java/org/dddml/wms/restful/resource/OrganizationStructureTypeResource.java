@@ -42,7 +42,7 @@ public class OrganizationStructureTypeResource {
                 states = organizationStructureTypeApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrganizationStructureTypeFilteringProperties.aliasMap.containsKey(n) ? OrganizationStructureTypeFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrganizationStructureTypeMetadata.aliasMap.containsKey(n) ? OrganizationStructureTypeMetadata.aliasMap.get(n) : n)),
                         OrganizationStructureTypeResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -88,7 +88,7 @@ public class OrganizationStructureTypeResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = organizationStructureTypeApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrganizationStructureTypeFilteringProperties.aliasMap.containsKey(n) ? OrganizationStructureTypeFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrganizationStructureTypeMetadata.aliasMap.containsKey(n) ? OrganizationStructureTypeMetadata.aliasMap.get(n) : n)));
             } else {
                 count = organizationStructureTypeApplicationService.getCount(OrganizationStructureTypeResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -144,7 +144,7 @@ public class OrganizationStructureTypeResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            OrganizationStructureTypeFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            OrganizationStructureTypeMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -240,15 +240,15 @@ public class OrganizationStructureTypeResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (OrganizationStructureTypeFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return OrganizationStructureTypeFilteringProperties.aliasMap.get(fieldName);
+            if (OrganizationStructureTypeMetadata.aliasMap.containsKey(fieldName)) {
+                return OrganizationStructureTypeMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (OrganizationStructureTypeFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = OrganizationStructureTypeFilteringProperties.propertyTypeMap.get(propertyName);
+            if (OrganizationStructureTypeMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = OrganizationStructureTypeMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

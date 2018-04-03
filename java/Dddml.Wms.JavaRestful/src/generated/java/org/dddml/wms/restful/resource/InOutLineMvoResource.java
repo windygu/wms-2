@@ -44,7 +44,7 @@ public class InOutLineMvoResource {
                 states = inOutLineMvoApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InOutLineMvoFilteringProperties.aliasMap.containsKey(n) ? InOutLineMvoFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InOutLineMvoMetadata.aliasMap.containsKey(n) ? InOutLineMvoMetadata.aliasMap.get(n) : n)),
                         InOutLineMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -90,7 +90,7 @@ public class InOutLineMvoResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = inOutLineMvoApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InOutLineMvoFilteringProperties.aliasMap.containsKey(n) ? InOutLineMvoFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InOutLineMvoMetadata.aliasMap.containsKey(n) ? InOutLineMvoMetadata.aliasMap.get(n) : n)));
             } else {
                 count = inOutLineMvoApplicationService.getCount(InOutLineMvoResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -146,7 +146,7 @@ public class InOutLineMvoResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            InOutLineMvoFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            InOutLineMvoMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -253,15 +253,15 @@ public class InOutLineMvoResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (InOutLineMvoFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return InOutLineMvoFilteringProperties.aliasMap.get(fieldName);
+            if (InOutLineMvoMetadata.aliasMap.containsKey(fieldName)) {
+                return InOutLineMvoMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (InOutLineMvoFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = InOutLineMvoFilteringProperties.propertyTypeMap.get(propertyName);
+            if (InOutLineMvoMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = InOutLineMvoMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

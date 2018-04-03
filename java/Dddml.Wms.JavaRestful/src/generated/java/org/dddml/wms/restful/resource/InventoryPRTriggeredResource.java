@@ -42,7 +42,7 @@ public class InventoryPRTriggeredResource {
                 states = inventoryPRTriggeredApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryPRTriggeredFilteringProperties.aliasMap.containsKey(n) ? InventoryPRTriggeredFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryPRTriggeredMetadata.aliasMap.containsKey(n) ? InventoryPRTriggeredMetadata.aliasMap.get(n) : n)),
                         InventoryPRTriggeredResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -88,7 +88,7 @@ public class InventoryPRTriggeredResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = inventoryPRTriggeredApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryPRTriggeredFilteringProperties.aliasMap.containsKey(n) ? InventoryPRTriggeredFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryPRTriggeredMetadata.aliasMap.containsKey(n) ? InventoryPRTriggeredMetadata.aliasMap.get(n) : n)));
             } else {
                 count = inventoryPRTriggeredApplicationService.getCount(InventoryPRTriggeredResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -126,7 +126,7 @@ public class InventoryPRTriggeredResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            InventoryPRTriggeredFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            InventoryPRTriggeredMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -206,15 +206,15 @@ public class InventoryPRTriggeredResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (InventoryPRTriggeredFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return InventoryPRTriggeredFilteringProperties.aliasMap.get(fieldName);
+            if (InventoryPRTriggeredMetadata.aliasMap.containsKey(fieldName)) {
+                return InventoryPRTriggeredMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (InventoryPRTriggeredFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = InventoryPRTriggeredFilteringProperties.propertyTypeMap.get(propertyName);
+            if (InventoryPRTriggeredMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = InventoryPRTriggeredMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

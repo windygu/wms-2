@@ -42,7 +42,7 @@ public class UomConversionResource {
                 states = uomConversionApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (UomConversionFilteringProperties.aliasMap.containsKey(n) ? UomConversionFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (UomConversionMetadata.aliasMap.containsKey(n) ? UomConversionMetadata.aliasMap.get(n) : n)),
                         UomConversionResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -88,7 +88,7 @@ public class UomConversionResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = uomConversionApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (UomConversionFilteringProperties.aliasMap.containsKey(n) ? UomConversionFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (UomConversionMetadata.aliasMap.containsKey(n) ? UomConversionMetadata.aliasMap.get(n) : n)));
             } else {
                 count = uomConversionApplicationService.getCount(UomConversionResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -144,7 +144,7 @@ public class UomConversionResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            UomConversionFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            UomConversionMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -251,15 +251,15 @@ public class UomConversionResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (UomConversionFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return UomConversionFilteringProperties.aliasMap.get(fieldName);
+            if (UomConversionMetadata.aliasMap.containsKey(fieldName)) {
+                return UomConversionMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (UomConversionFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = UomConversionFilteringProperties.propertyTypeMap.get(propertyName);
+            if (UomConversionMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = UomConversionMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

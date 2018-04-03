@@ -43,7 +43,7 @@ public class PicklistItemMvoResource {
                 states = picklistItemMvoApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PicklistItemMvoFilteringProperties.aliasMap.containsKey(n) ? PicklistItemMvoFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PicklistItemMvoMetadata.aliasMap.containsKey(n) ? PicklistItemMvoMetadata.aliasMap.get(n) : n)),
                         PicklistItemMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -89,7 +89,7 @@ public class PicklistItemMvoResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = picklistItemMvoApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PicklistItemMvoFilteringProperties.aliasMap.containsKey(n) ? PicklistItemMvoFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PicklistItemMvoMetadata.aliasMap.containsKey(n) ? PicklistItemMvoMetadata.aliasMap.get(n) : n)));
             } else {
                 count = picklistItemMvoApplicationService.getCount(PicklistItemMvoResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -145,7 +145,7 @@ public class PicklistItemMvoResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            PicklistItemMvoFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            PicklistItemMvoMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -252,15 +252,15 @@ public class PicklistItemMvoResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (PicklistItemMvoFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return PicklistItemMvoFilteringProperties.aliasMap.get(fieldName);
+            if (PicklistItemMvoMetadata.aliasMap.containsKey(fieldName)) {
+                return PicklistItemMvoMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (PicklistItemMvoFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = PicklistItemMvoFilteringProperties.propertyTypeMap.get(propertyName);
+            if (PicklistItemMvoMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = PicklistItemMvoMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

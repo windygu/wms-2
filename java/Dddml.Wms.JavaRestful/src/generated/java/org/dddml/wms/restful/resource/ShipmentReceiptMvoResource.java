@@ -43,7 +43,7 @@ public class ShipmentReceiptMvoResource {
                 states = shipmentReceiptMvoApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ShipmentReceiptMvoFilteringProperties.aliasMap.containsKey(n) ? ShipmentReceiptMvoFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ShipmentReceiptMvoMetadata.aliasMap.containsKey(n) ? ShipmentReceiptMvoMetadata.aliasMap.get(n) : n)),
                         ShipmentReceiptMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -89,7 +89,7 @@ public class ShipmentReceiptMvoResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = shipmentReceiptMvoApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ShipmentReceiptMvoFilteringProperties.aliasMap.containsKey(n) ? ShipmentReceiptMvoFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ShipmentReceiptMvoMetadata.aliasMap.containsKey(n) ? ShipmentReceiptMvoMetadata.aliasMap.get(n) : n)));
             } else {
                 count = shipmentReceiptMvoApplicationService.getCount(ShipmentReceiptMvoResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -127,7 +127,7 @@ public class ShipmentReceiptMvoResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            ShipmentReceiptMvoFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            ShipmentReceiptMvoMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -234,15 +234,15 @@ public class ShipmentReceiptMvoResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (ShipmentReceiptMvoFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return ShipmentReceiptMvoFilteringProperties.aliasMap.get(fieldName);
+            if (ShipmentReceiptMvoMetadata.aliasMap.containsKey(fieldName)) {
+                return ShipmentReceiptMvoMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (ShipmentReceiptMvoFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = ShipmentReceiptMvoFilteringProperties.propertyTypeMap.get(propertyName);
+            if (ShipmentReceiptMvoMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = ShipmentReceiptMvoMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

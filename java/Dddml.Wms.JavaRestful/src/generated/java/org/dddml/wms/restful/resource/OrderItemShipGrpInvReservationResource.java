@@ -42,7 +42,7 @@ public class OrderItemShipGrpInvReservationResource {
                 states = orderItemShipGrpInvReservationApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrderItemShipGrpInvReservationFilteringProperties.aliasMap.containsKey(n) ? OrderItemShipGrpInvReservationFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrderItemShipGrpInvReservationMetadata.aliasMap.containsKey(n) ? OrderItemShipGrpInvReservationMetadata.aliasMap.get(n) : n)),
                         OrderItemShipGrpInvReservationResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -88,7 +88,7 @@ public class OrderItemShipGrpInvReservationResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = orderItemShipGrpInvReservationApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrderItemShipGrpInvReservationFilteringProperties.aliasMap.containsKey(n) ? OrderItemShipGrpInvReservationFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrderItemShipGrpInvReservationMetadata.aliasMap.containsKey(n) ? OrderItemShipGrpInvReservationMetadata.aliasMap.get(n) : n)));
             } else {
                 count = orderItemShipGrpInvReservationApplicationService.getCount(OrderItemShipGrpInvReservationResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -144,7 +144,7 @@ public class OrderItemShipGrpInvReservationResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            OrderItemShipGrpInvReservationFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            OrderItemShipGrpInvReservationMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -251,15 +251,15 @@ public class OrderItemShipGrpInvReservationResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (OrderItemShipGrpInvReservationFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return OrderItemShipGrpInvReservationFilteringProperties.aliasMap.get(fieldName);
+            if (OrderItemShipGrpInvReservationMetadata.aliasMap.containsKey(fieldName)) {
+                return OrderItemShipGrpInvReservationMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (OrderItemShipGrpInvReservationFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = OrderItemShipGrpInvReservationFilteringProperties.propertyTypeMap.get(propertyName);
+            if (OrderItemShipGrpInvReservationMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = OrderItemShipGrpInvReservationMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

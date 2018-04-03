@@ -45,7 +45,7 @@ public class SellableInventoryItemEntryMvoResource {
                 states = sellableInventoryItemEntryMvoApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (SellableInventoryItemEntryMvoFilteringProperties.aliasMap.containsKey(n) ? SellableInventoryItemEntryMvoFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (SellableInventoryItemEntryMvoMetadata.aliasMap.containsKey(n) ? SellableInventoryItemEntryMvoMetadata.aliasMap.get(n) : n)),
                         SellableInventoryItemEntryMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -91,7 +91,7 @@ public class SellableInventoryItemEntryMvoResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = sellableInventoryItemEntryMvoApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (SellableInventoryItemEntryMvoFilteringProperties.aliasMap.containsKey(n) ? SellableInventoryItemEntryMvoFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (SellableInventoryItemEntryMvoMetadata.aliasMap.containsKey(n) ? SellableInventoryItemEntryMvoMetadata.aliasMap.get(n) : n)));
             } else {
                 count = sellableInventoryItemEntryMvoApplicationService.getCount(SellableInventoryItemEntryMvoResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -129,7 +129,7 @@ public class SellableInventoryItemEntryMvoResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            SellableInventoryItemEntryMvoFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            SellableInventoryItemEntryMvoMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -236,15 +236,15 @@ public class SellableInventoryItemEntryMvoResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (SellableInventoryItemEntryMvoFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return SellableInventoryItemEntryMvoFilteringProperties.aliasMap.get(fieldName);
+            if (SellableInventoryItemEntryMvoMetadata.aliasMap.containsKey(fieldName)) {
+                return SellableInventoryItemEntryMvoMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (SellableInventoryItemEntryMvoFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = SellableInventoryItemEntryMvoFilteringProperties.propertyTypeMap.get(propertyName);
+            if (SellableInventoryItemEntryMvoMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = SellableInventoryItemEntryMvoMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

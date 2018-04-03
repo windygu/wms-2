@@ -42,7 +42,7 @@ public class ShipmentTypeResource {
                 states = shipmentTypeApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ShipmentTypeFilteringProperties.aliasMap.containsKey(n) ? ShipmentTypeFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ShipmentTypeMetadata.aliasMap.containsKey(n) ? ShipmentTypeMetadata.aliasMap.get(n) : n)),
                         ShipmentTypeResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -88,7 +88,7 @@ public class ShipmentTypeResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = shipmentTypeApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ShipmentTypeFilteringProperties.aliasMap.containsKey(n) ? ShipmentTypeFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ShipmentTypeMetadata.aliasMap.containsKey(n) ? ShipmentTypeMetadata.aliasMap.get(n) : n)));
             } else {
                 count = shipmentTypeApplicationService.getCount(ShipmentTypeResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -126,7 +126,7 @@ public class ShipmentTypeResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            ShipmentTypeFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            ShipmentTypeMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -190,15 +190,15 @@ public class ShipmentTypeResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (ShipmentTypeFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return ShipmentTypeFilteringProperties.aliasMap.get(fieldName);
+            if (ShipmentTypeMetadata.aliasMap.containsKey(fieldName)) {
+                return ShipmentTypeMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (ShipmentTypeFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = ShipmentTypeFilteringProperties.propertyTypeMap.get(propertyName);
+            if (ShipmentTypeMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = ShipmentTypeMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

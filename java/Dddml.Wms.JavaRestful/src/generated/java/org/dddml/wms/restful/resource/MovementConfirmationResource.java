@@ -43,7 +43,7 @@ public class MovementConfirmationResource {
                 states = movementConfirmationApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (MovementConfirmationFilteringProperties.aliasMap.containsKey(n) ? MovementConfirmationFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (MovementConfirmationMetadata.aliasMap.containsKey(n) ? MovementConfirmationMetadata.aliasMap.get(n) : n)),
                         MovementConfirmationResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -89,7 +89,7 @@ public class MovementConfirmationResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = movementConfirmationApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (MovementConfirmationFilteringProperties.aliasMap.containsKey(n) ? MovementConfirmationFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (MovementConfirmationMetadata.aliasMap.containsKey(n) ? MovementConfirmationMetadata.aliasMap.get(n) : n)));
             } else {
                 count = movementConfirmationApplicationService.getCount(MovementConfirmationResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -162,7 +162,7 @@ public class MovementConfirmationResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            MovementConfirmationFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            MovementConfirmationMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -272,15 +272,15 @@ public class MovementConfirmationResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (MovementConfirmationFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return MovementConfirmationFilteringProperties.aliasMap.get(fieldName);
+            if (MovementConfirmationMetadata.aliasMap.containsKey(fieldName)) {
+                return MovementConfirmationMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (MovementConfirmationFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = MovementConfirmationFilteringProperties.propertyTypeMap.get(propertyName);
+            if (MovementConfirmationMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = MovementConfirmationMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

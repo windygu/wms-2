@@ -42,7 +42,7 @@ public class RejectionReasonResource {
                 states = rejectionReasonApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (RejectionReasonFilteringProperties.aliasMap.containsKey(n) ? RejectionReasonFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (RejectionReasonMetadata.aliasMap.containsKey(n) ? RejectionReasonMetadata.aliasMap.get(n) : n)),
                         RejectionReasonResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -88,7 +88,7 @@ public class RejectionReasonResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = rejectionReasonApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (RejectionReasonFilteringProperties.aliasMap.containsKey(n) ? RejectionReasonFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (RejectionReasonMetadata.aliasMap.containsKey(n) ? RejectionReasonMetadata.aliasMap.get(n) : n)));
             } else {
                 count = rejectionReasonApplicationService.getCount(RejectionReasonResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -144,7 +144,7 @@ public class RejectionReasonResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            RejectionReasonFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            RejectionReasonMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -240,15 +240,15 @@ public class RejectionReasonResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (RejectionReasonFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return RejectionReasonFilteringProperties.aliasMap.get(fieldName);
+            if (RejectionReasonMetadata.aliasMap.containsKey(fieldName)) {
+                return RejectionReasonMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (RejectionReasonFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = RejectionReasonFilteringProperties.propertyTypeMap.get(propertyName);
+            if (RejectionReasonMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = RejectionReasonMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

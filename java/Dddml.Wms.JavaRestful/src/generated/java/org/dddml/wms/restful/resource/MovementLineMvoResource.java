@@ -44,7 +44,7 @@ public class MovementLineMvoResource {
                 states = movementLineMvoApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (MovementLineMvoFilteringProperties.aliasMap.containsKey(n) ? MovementLineMvoFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (MovementLineMvoMetadata.aliasMap.containsKey(n) ? MovementLineMvoMetadata.aliasMap.get(n) : n)),
                         MovementLineMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -90,7 +90,7 @@ public class MovementLineMvoResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = movementLineMvoApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (MovementLineMvoFilteringProperties.aliasMap.containsKey(n) ? MovementLineMvoFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (MovementLineMvoMetadata.aliasMap.containsKey(n) ? MovementLineMvoMetadata.aliasMap.get(n) : n)));
             } else {
                 count = movementLineMvoApplicationService.getCount(MovementLineMvoResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -146,7 +146,7 @@ public class MovementLineMvoResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            MovementLineMvoFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            MovementLineMvoMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -253,15 +253,15 @@ public class MovementLineMvoResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (MovementLineMvoFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return MovementLineMvoFilteringProperties.aliasMap.get(fieldName);
+            if (MovementLineMvoMetadata.aliasMap.containsKey(fieldName)) {
+                return MovementLineMvoMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (MovementLineMvoFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = MovementLineMvoFilteringProperties.propertyTypeMap.get(propertyName);
+            if (MovementLineMvoMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = MovementLineMvoMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

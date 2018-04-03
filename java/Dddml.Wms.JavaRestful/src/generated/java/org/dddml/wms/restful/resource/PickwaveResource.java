@@ -42,7 +42,7 @@ public class PickwaveResource {
                 states = pickwaveApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PickwaveFilteringProperties.aliasMap.containsKey(n) ? PickwaveFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PickwaveMetadata.aliasMap.containsKey(n) ? PickwaveMetadata.aliasMap.get(n) : n)),
                         PickwaveResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -88,7 +88,7 @@ public class PickwaveResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = pickwaveApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PickwaveFilteringProperties.aliasMap.containsKey(n) ? PickwaveFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PickwaveMetadata.aliasMap.containsKey(n) ? PickwaveMetadata.aliasMap.get(n) : n)));
             } else {
                 count = pickwaveApplicationService.getCount(PickwaveResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -144,7 +144,7 @@ public class PickwaveResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            PickwaveFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            PickwaveMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -240,15 +240,15 @@ public class PickwaveResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (PickwaveFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return PickwaveFilteringProperties.aliasMap.get(fieldName);
+            if (PickwaveMetadata.aliasMap.containsKey(fieldName)) {
+                return PickwaveMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (PickwaveFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = PickwaveFilteringProperties.propertyTypeMap.get(propertyName);
+            if (PickwaveMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = PickwaveMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

@@ -43,7 +43,7 @@ public class OrderRoleMvoResource {
                 states = orderRoleMvoApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrderRoleMvoFilteringProperties.aliasMap.containsKey(n) ? OrderRoleMvoFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrderRoleMvoMetadata.aliasMap.containsKey(n) ? OrderRoleMvoMetadata.aliasMap.get(n) : n)),
                         OrderRoleMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -89,7 +89,7 @@ public class OrderRoleMvoResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = orderRoleMvoApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrderRoleMvoFilteringProperties.aliasMap.containsKey(n) ? OrderRoleMvoFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrderRoleMvoMetadata.aliasMap.containsKey(n) ? OrderRoleMvoMetadata.aliasMap.get(n) : n)));
             } else {
                 count = orderRoleMvoApplicationService.getCount(OrderRoleMvoResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -145,7 +145,7 @@ public class OrderRoleMvoResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            OrderRoleMvoFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            OrderRoleMvoMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -252,15 +252,15 @@ public class OrderRoleMvoResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (OrderRoleMvoFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return OrderRoleMvoFilteringProperties.aliasMap.get(fieldName);
+            if (OrderRoleMvoMetadata.aliasMap.containsKey(fieldName)) {
+                return OrderRoleMvoMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (OrderRoleMvoFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = OrderRoleMvoFilteringProperties.propertyTypeMap.get(propertyName);
+            if (OrderRoleMvoMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = OrderRoleMvoMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

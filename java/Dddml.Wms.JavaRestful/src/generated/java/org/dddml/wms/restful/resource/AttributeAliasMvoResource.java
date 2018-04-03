@@ -43,7 +43,7 @@ public class AttributeAliasMvoResource {
                 states = attributeAliasMvoApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeAliasMvoFilteringProperties.aliasMap.containsKey(n) ? AttributeAliasMvoFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeAliasMvoMetadata.aliasMap.containsKey(n) ? AttributeAliasMvoMetadata.aliasMap.get(n) : n)),
                         AttributeAliasMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -89,7 +89,7 @@ public class AttributeAliasMvoResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = attributeAliasMvoApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeAliasMvoFilteringProperties.aliasMap.containsKey(n) ? AttributeAliasMvoFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeAliasMvoMetadata.aliasMap.containsKey(n) ? AttributeAliasMvoMetadata.aliasMap.get(n) : n)));
             } else {
                 count = attributeAliasMvoApplicationService.getCount(AttributeAliasMvoResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -145,7 +145,7 @@ public class AttributeAliasMvoResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            AttributeAliasMvoFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            AttributeAliasMvoMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -252,15 +252,15 @@ public class AttributeAliasMvoResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (AttributeAliasMvoFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return AttributeAliasMvoFilteringProperties.aliasMap.get(fieldName);
+            if (AttributeAliasMvoMetadata.aliasMap.containsKey(fieldName)) {
+                return AttributeAliasMvoMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (AttributeAliasMvoFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = AttributeAliasMvoFilteringProperties.propertyTypeMap.get(propertyName);
+            if (AttributeAliasMvoMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = AttributeAliasMvoMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

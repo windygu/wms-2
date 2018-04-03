@@ -45,7 +45,7 @@ public class AttributeResource {
                 states = attributeApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeFilteringProperties.aliasMap.containsKey(n) ? AttributeFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeMetadata.aliasMap.containsKey(n) ? AttributeMetadata.aliasMap.get(n) : n)),
                         AttributeResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -99,7 +99,7 @@ public class AttributeResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = attributeApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeFilteringProperties.aliasMap.containsKey(n) ? AttributeFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeMetadata.aliasMap.containsKey(n) ? AttributeMetadata.aliasMap.get(n) : n)));
             } else {
                 count = attributeApplicationService.getCount(AttributeResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -155,7 +155,7 @@ public class AttributeResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            AttributeFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            AttributeMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -279,15 +279,15 @@ public class AttributeResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (AttributeFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return AttributeFilteringProperties.aliasMap.get(fieldName);
+            if (AttributeMetadata.aliasMap.containsKey(fieldName)) {
+                return AttributeMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (AttributeFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = AttributeFilteringProperties.propertyTypeMap.get(propertyName);
+            if (AttributeMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = AttributeMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

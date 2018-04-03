@@ -43,7 +43,7 @@ public class OrderShipGroupMvoResource {
                 states = orderShipGroupMvoApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrderShipGroupMvoFilteringProperties.aliasMap.containsKey(n) ? OrderShipGroupMvoFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrderShipGroupMvoMetadata.aliasMap.containsKey(n) ? OrderShipGroupMvoMetadata.aliasMap.get(n) : n)),
                         OrderShipGroupMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -89,7 +89,7 @@ public class OrderShipGroupMvoResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = orderShipGroupMvoApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrderShipGroupMvoFilteringProperties.aliasMap.containsKey(n) ? OrderShipGroupMvoFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrderShipGroupMvoMetadata.aliasMap.containsKey(n) ? OrderShipGroupMvoMetadata.aliasMap.get(n) : n)));
             } else {
                 count = orderShipGroupMvoApplicationService.getCount(OrderShipGroupMvoResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -145,7 +145,7 @@ public class OrderShipGroupMvoResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            OrderShipGroupMvoFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            OrderShipGroupMvoMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -252,15 +252,15 @@ public class OrderShipGroupMvoResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (OrderShipGroupMvoFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return OrderShipGroupMvoFilteringProperties.aliasMap.get(fieldName);
+            if (OrderShipGroupMvoMetadata.aliasMap.containsKey(fieldName)) {
+                return OrderShipGroupMvoMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (OrderShipGroupMvoFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = OrderShipGroupMvoFilteringProperties.propertyTypeMap.get(propertyName);
+            if (OrderShipGroupMvoMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = OrderShipGroupMvoMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

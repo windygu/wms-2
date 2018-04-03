@@ -42,7 +42,7 @@ public class PartyRoleResource {
                 states = partyRoleApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PartyRoleFilteringProperties.aliasMap.containsKey(n) ? PartyRoleFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PartyRoleMetadata.aliasMap.containsKey(n) ? PartyRoleMetadata.aliasMap.get(n) : n)),
                         PartyRoleResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -88,7 +88,7 @@ public class PartyRoleResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = partyRoleApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PartyRoleFilteringProperties.aliasMap.containsKey(n) ? PartyRoleFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PartyRoleMetadata.aliasMap.containsKey(n) ? PartyRoleMetadata.aliasMap.get(n) : n)));
             } else {
                 count = partyRoleApplicationService.getCount(PartyRoleResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -144,7 +144,7 @@ public class PartyRoleResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            PartyRoleFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            PartyRoleMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -251,15 +251,15 @@ public class PartyRoleResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (PartyRoleFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return PartyRoleFilteringProperties.aliasMap.get(fieldName);
+            if (PartyRoleMetadata.aliasMap.containsKey(fieldName)) {
+                return PartyRoleMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (PartyRoleFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = PartyRoleFilteringProperties.propertyTypeMap.get(propertyName);
+            if (PartyRoleMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = PartyRoleMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

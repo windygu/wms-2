@@ -42,7 +42,7 @@ public class AttributeSetInstanceExtensionFieldResource {
                 states = attributeSetInstanceExtensionFieldApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeSetInstanceExtensionFieldFilteringProperties.aliasMap.containsKey(n) ? AttributeSetInstanceExtensionFieldFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeSetInstanceExtensionFieldMetadata.aliasMap.containsKey(n) ? AttributeSetInstanceExtensionFieldMetadata.aliasMap.get(n) : n)),
                         AttributeSetInstanceExtensionFieldResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -88,7 +88,7 @@ public class AttributeSetInstanceExtensionFieldResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = attributeSetInstanceExtensionFieldApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeSetInstanceExtensionFieldFilteringProperties.aliasMap.containsKey(n) ? AttributeSetInstanceExtensionFieldFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeSetInstanceExtensionFieldMetadata.aliasMap.containsKey(n) ? AttributeSetInstanceExtensionFieldMetadata.aliasMap.get(n) : n)));
             } else {
                 count = attributeSetInstanceExtensionFieldApplicationService.getCount(AttributeSetInstanceExtensionFieldResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -144,7 +144,7 @@ public class AttributeSetInstanceExtensionFieldResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            AttributeSetInstanceExtensionFieldFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            AttributeSetInstanceExtensionFieldMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -240,15 +240,15 @@ public class AttributeSetInstanceExtensionFieldResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (AttributeSetInstanceExtensionFieldFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return AttributeSetInstanceExtensionFieldFilteringProperties.aliasMap.get(fieldName);
+            if (AttributeSetInstanceExtensionFieldMetadata.aliasMap.containsKey(fieldName)) {
+                return AttributeSetInstanceExtensionFieldMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (AttributeSetInstanceExtensionFieldFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = AttributeSetInstanceExtensionFieldFilteringProperties.propertyTypeMap.get(propertyName);
+            if (AttributeSetInstanceExtensionFieldMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = AttributeSetInstanceExtensionFieldMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

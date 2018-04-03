@@ -42,7 +42,7 @@ public class WarehouseResource {
                 states = warehouseApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (WarehouseFilteringProperties.aliasMap.containsKey(n) ? WarehouseFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (WarehouseMetadata.aliasMap.containsKey(n) ? WarehouseMetadata.aliasMap.get(n) : n)),
                         WarehouseResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -88,7 +88,7 @@ public class WarehouseResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = warehouseApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (WarehouseFilteringProperties.aliasMap.containsKey(n) ? WarehouseFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (WarehouseMetadata.aliasMap.containsKey(n) ? WarehouseMetadata.aliasMap.get(n) : n)));
             } else {
                 count = warehouseApplicationService.getCount(WarehouseResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -144,7 +144,7 @@ public class WarehouseResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            WarehouseFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            WarehouseMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -240,15 +240,15 @@ public class WarehouseResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (WarehouseFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return WarehouseFilteringProperties.aliasMap.get(fieldName);
+            if (WarehouseMetadata.aliasMap.containsKey(fieldName)) {
+                return WarehouseMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (WarehouseFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = WarehouseFilteringProperties.propertyTypeMap.get(propertyName);
+            if (WarehouseMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = WarehouseMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

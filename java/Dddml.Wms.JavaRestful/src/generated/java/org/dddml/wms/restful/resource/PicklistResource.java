@@ -43,7 +43,7 @@ public class PicklistResource {
                 states = picklistApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PicklistFilteringProperties.aliasMap.containsKey(n) ? PicklistFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PicklistMetadata.aliasMap.containsKey(n) ? PicklistMetadata.aliasMap.get(n) : n)),
                         PicklistResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -89,7 +89,7 @@ public class PicklistResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = picklistApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PicklistFilteringProperties.aliasMap.containsKey(n) ? PicklistFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PicklistMetadata.aliasMap.containsKey(n) ? PicklistMetadata.aliasMap.get(n) : n)));
             } else {
                 count = picklistApplicationService.getCount(PicklistResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -145,7 +145,7 @@ public class PicklistResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            PicklistFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            PicklistMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -260,15 +260,15 @@ public class PicklistResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (PicklistFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return PicklistFilteringProperties.aliasMap.get(fieldName);
+            if (PicklistMetadata.aliasMap.containsKey(fieldName)) {
+                return PicklistMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (PicklistFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = PicklistFilteringProperties.propertyTypeMap.get(propertyName);
+            if (PicklistMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = PicklistMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

@@ -42,7 +42,7 @@ public class LocatorTypeResource {
                 states = locatorTypeApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (LocatorTypeFilteringProperties.aliasMap.containsKey(n) ? LocatorTypeFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (LocatorTypeMetadata.aliasMap.containsKey(n) ? LocatorTypeMetadata.aliasMap.get(n) : n)),
                         LocatorTypeResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -88,7 +88,7 @@ public class LocatorTypeResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = locatorTypeApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (LocatorTypeFilteringProperties.aliasMap.containsKey(n) ? LocatorTypeFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (LocatorTypeMetadata.aliasMap.containsKey(n) ? LocatorTypeMetadata.aliasMap.get(n) : n)));
             } else {
                 count = locatorTypeApplicationService.getCount(LocatorTypeResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -144,7 +144,7 @@ public class LocatorTypeResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            LocatorTypeFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            LocatorTypeMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -240,15 +240,15 @@ public class LocatorTypeResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (LocatorTypeFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return LocatorTypeFilteringProperties.aliasMap.get(fieldName);
+            if (LocatorTypeMetadata.aliasMap.containsKey(fieldName)) {
+                return LocatorTypeMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (LocatorTypeFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = LocatorTypeFilteringProperties.propertyTypeMap.get(propertyName);
+            if (LocatorTypeMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = LocatorTypeMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

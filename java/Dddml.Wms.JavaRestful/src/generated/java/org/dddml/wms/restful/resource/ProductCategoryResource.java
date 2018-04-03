@@ -42,7 +42,7 @@ public class ProductCategoryResource {
                 states = productCategoryApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ProductCategoryFilteringProperties.aliasMap.containsKey(n) ? ProductCategoryFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ProductCategoryMetadata.aliasMap.containsKey(n) ? ProductCategoryMetadata.aliasMap.get(n) : n)),
                         ProductCategoryResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -88,7 +88,7 @@ public class ProductCategoryResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = productCategoryApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ProductCategoryFilteringProperties.aliasMap.containsKey(n) ? ProductCategoryFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ProductCategoryMetadata.aliasMap.containsKey(n) ? ProductCategoryMetadata.aliasMap.get(n) : n)));
             } else {
                 count = productCategoryApplicationService.getCount(ProductCategoryResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -144,7 +144,7 @@ public class ProductCategoryResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            ProductCategoryFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            ProductCategoryMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -253,15 +253,15 @@ public class ProductCategoryResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (ProductCategoryFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return ProductCategoryFilteringProperties.aliasMap.get(fieldName);
+            if (ProductCategoryMetadata.aliasMap.containsKey(fieldName)) {
+                return ProductCategoryMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (ProductCategoryFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = ProductCategoryFilteringProperties.propertyTypeMap.get(propertyName);
+            if (ProductCategoryMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = ProductCategoryMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

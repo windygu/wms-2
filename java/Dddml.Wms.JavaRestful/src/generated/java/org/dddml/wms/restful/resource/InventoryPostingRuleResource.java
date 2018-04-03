@@ -43,7 +43,7 @@ public class InventoryPostingRuleResource {
                 states = inventoryPostingRuleApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryPostingRuleFilteringProperties.aliasMap.containsKey(n) ? InventoryPostingRuleFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryPostingRuleMetadata.aliasMap.containsKey(n) ? InventoryPostingRuleMetadata.aliasMap.get(n) : n)),
                         InventoryPostingRuleResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -89,7 +89,7 @@ public class InventoryPostingRuleResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = inventoryPostingRuleApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryPostingRuleFilteringProperties.aliasMap.containsKey(n) ? InventoryPostingRuleFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryPostingRuleMetadata.aliasMap.containsKey(n) ? InventoryPostingRuleMetadata.aliasMap.get(n) : n)));
             } else {
                 count = inventoryPostingRuleApplicationService.getCount(InventoryPostingRuleResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -145,7 +145,7 @@ public class InventoryPostingRuleResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            InventoryPostingRuleFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            InventoryPostingRuleMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -241,15 +241,15 @@ public class InventoryPostingRuleResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (InventoryPostingRuleFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return InventoryPostingRuleFilteringProperties.aliasMap.get(fieldName);
+            if (InventoryPostingRuleMetadata.aliasMap.containsKey(fieldName)) {
+                return InventoryPostingRuleMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (InventoryPostingRuleFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = InventoryPostingRuleFilteringProperties.propertyTypeMap.get(propertyName);
+            if (InventoryPostingRuleMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = InventoryPostingRuleMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

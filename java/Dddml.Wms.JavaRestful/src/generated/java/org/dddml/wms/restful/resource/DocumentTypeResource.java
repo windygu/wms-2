@@ -42,7 +42,7 @@ public class DocumentTypeResource {
                 states = documentTypeApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (DocumentTypeFilteringProperties.aliasMap.containsKey(n) ? DocumentTypeFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (DocumentTypeMetadata.aliasMap.containsKey(n) ? DocumentTypeMetadata.aliasMap.get(n) : n)),
                         DocumentTypeResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -88,7 +88,7 @@ public class DocumentTypeResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = documentTypeApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (DocumentTypeFilteringProperties.aliasMap.containsKey(n) ? DocumentTypeFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (DocumentTypeMetadata.aliasMap.containsKey(n) ? DocumentTypeMetadata.aliasMap.get(n) : n)));
             } else {
                 count = documentTypeApplicationService.getCount(DocumentTypeResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -144,7 +144,7 @@ public class DocumentTypeResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            DocumentTypeFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            DocumentTypeMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -208,15 +208,15 @@ public class DocumentTypeResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (DocumentTypeFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return DocumentTypeFilteringProperties.aliasMap.get(fieldName);
+            if (DocumentTypeMetadata.aliasMap.containsKey(fieldName)) {
+                return DocumentTypeMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (DocumentTypeFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = DocumentTypeFilteringProperties.propertyTypeMap.get(propertyName);
+            if (DocumentTypeMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = DocumentTypeMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

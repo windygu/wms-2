@@ -42,7 +42,7 @@ public class ShipmentPackageResource {
                 states = shipmentPackageApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ShipmentPackageFilteringProperties.aliasMap.containsKey(n) ? ShipmentPackageFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ShipmentPackageMetadata.aliasMap.containsKey(n) ? ShipmentPackageMetadata.aliasMap.get(n) : n)),
                         ShipmentPackageResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -88,7 +88,7 @@ public class ShipmentPackageResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = shipmentPackageApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ShipmentPackageFilteringProperties.aliasMap.containsKey(n) ? ShipmentPackageFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ShipmentPackageMetadata.aliasMap.containsKey(n) ? ShipmentPackageMetadata.aliasMap.get(n) : n)));
             } else {
                 count = shipmentPackageApplicationService.getCount(ShipmentPackageResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -144,7 +144,7 @@ public class ShipmentPackageResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            ShipmentPackageFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            ShipmentPackageMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -270,15 +270,15 @@ public class ShipmentPackageResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (ShipmentPackageFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return ShipmentPackageFilteringProperties.aliasMap.get(fieldName);
+            if (ShipmentPackageMetadata.aliasMap.containsKey(fieldName)) {
+                return ShipmentPackageMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (ShipmentPackageFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = ShipmentPackageFilteringProperties.propertyTypeMap.get(propertyName);
+            if (ShipmentPackageMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = ShipmentPackageMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

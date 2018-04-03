@@ -42,7 +42,7 @@ public class StatusItemResource {
                 states = statusItemApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (StatusItemFilteringProperties.aliasMap.containsKey(n) ? StatusItemFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (StatusItemMetadata.aliasMap.containsKey(n) ? StatusItemMetadata.aliasMap.get(n) : n)),
                         StatusItemResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -88,7 +88,7 @@ public class StatusItemResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = statusItemApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (StatusItemFilteringProperties.aliasMap.containsKey(n) ? StatusItemFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (StatusItemMetadata.aliasMap.containsKey(n) ? StatusItemMetadata.aliasMap.get(n) : n)));
             } else {
                 count = statusItemApplicationService.getCount(StatusItemResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -126,7 +126,7 @@ public class StatusItemResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            StatusItemFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            StatusItemMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -195,15 +195,15 @@ public class StatusItemResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (StatusItemFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return StatusItemFilteringProperties.aliasMap.get(fieldName);
+            if (StatusItemMetadata.aliasMap.containsKey(fieldName)) {
+                return StatusItemMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (StatusItemFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = StatusItemFilteringProperties.propertyTypeMap.get(propertyName);
+            if (StatusItemMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = StatusItemMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

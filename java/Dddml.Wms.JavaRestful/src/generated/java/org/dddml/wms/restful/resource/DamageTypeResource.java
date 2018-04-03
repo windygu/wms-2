@@ -42,7 +42,7 @@ public class DamageTypeResource {
                 states = damageTypeApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (DamageTypeFilteringProperties.aliasMap.containsKey(n) ? DamageTypeFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (DamageTypeMetadata.aliasMap.containsKey(n) ? DamageTypeMetadata.aliasMap.get(n) : n)),
                         DamageTypeResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -88,7 +88,7 @@ public class DamageTypeResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = damageTypeApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (DamageTypeFilteringProperties.aliasMap.containsKey(n) ? DamageTypeFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (DamageTypeMetadata.aliasMap.containsKey(n) ? DamageTypeMetadata.aliasMap.get(n) : n)));
             } else {
                 count = damageTypeApplicationService.getCount(DamageTypeResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -144,7 +144,7 @@ public class DamageTypeResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            DamageTypeFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            DamageTypeMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -208,15 +208,15 @@ public class DamageTypeResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (DamageTypeFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return DamageTypeFilteringProperties.aliasMap.get(fieldName);
+            if (DamageTypeMetadata.aliasMap.containsKey(fieldName)) {
+                return DamageTypeMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (DamageTypeFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = DamageTypeFilteringProperties.propertyTypeMap.get(propertyName);
+            if (DamageTypeMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = DamageTypeMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

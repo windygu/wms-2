@@ -44,7 +44,7 @@ public class InventoryItemEntryMvoResource {
                 states = inventoryItemEntryMvoApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryItemEntryMvoFilteringProperties.aliasMap.containsKey(n) ? InventoryItemEntryMvoFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryItemEntryMvoMetadata.aliasMap.containsKey(n) ? InventoryItemEntryMvoMetadata.aliasMap.get(n) : n)),
                         InventoryItemEntryMvoResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -90,7 +90,7 @@ public class InventoryItemEntryMvoResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = inventoryItemEntryMvoApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryItemEntryMvoFilteringProperties.aliasMap.containsKey(n) ? InventoryItemEntryMvoFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryItemEntryMvoMetadata.aliasMap.containsKey(n) ? InventoryItemEntryMvoMetadata.aliasMap.get(n) : n)));
             } else {
                 count = inventoryItemEntryMvoApplicationService.getCount(InventoryItemEntryMvoResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -128,7 +128,7 @@ public class InventoryItemEntryMvoResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            InventoryItemEntryMvoFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            InventoryItemEntryMvoMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -235,15 +235,15 @@ public class InventoryItemEntryMvoResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (InventoryItemEntryMvoFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return InventoryItemEntryMvoFilteringProperties.aliasMap.get(fieldName);
+            if (InventoryItemEntryMvoMetadata.aliasMap.containsKey(fieldName)) {
+                return InventoryItemEntryMvoMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (InventoryItemEntryMvoFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = InventoryItemEntryMvoFilteringProperties.propertyTypeMap.get(propertyName);
+            if (InventoryItemEntryMvoMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = InventoryItemEntryMvoMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

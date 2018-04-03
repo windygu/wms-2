@@ -43,7 +43,7 @@ public class InventoryItemResource {
                 states = inventoryItemApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryItemFilteringProperties.aliasMap.containsKey(n) ? InventoryItemFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryItemMetadata.aliasMap.containsKey(n) ? InventoryItemMetadata.aliasMap.get(n) : n)),
                         InventoryItemResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -89,7 +89,7 @@ public class InventoryItemResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = inventoryItemApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryItemFilteringProperties.aliasMap.containsKey(n) ? InventoryItemFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (InventoryItemMetadata.aliasMap.containsKey(n) ? InventoryItemMetadata.aliasMap.get(n) : n)));
             } else {
                 count = inventoryItemApplicationService.getCount(InventoryItemResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -103,7 +103,7 @@ public class InventoryItemResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            InventoryItemFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            InventoryItemMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -229,15 +229,15 @@ public class InventoryItemResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (InventoryItemFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return InventoryItemFilteringProperties.aliasMap.get(fieldName);
+            if (InventoryItemMetadata.aliasMap.containsKey(fieldName)) {
+                return InventoryItemMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (InventoryItemFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = InventoryItemFilteringProperties.propertyTypeMap.get(propertyName);
+            if (InventoryItemMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = InventoryItemMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

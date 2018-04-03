@@ -42,7 +42,7 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
                 states = attributeSetInstanceExtensionFieldGroupApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeSetInstanceExtensionFieldGroupFilteringProperties.aliasMap.containsKey(n) ? AttributeSetInstanceExtensionFieldGroupFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeSetInstanceExtensionFieldGroupMetadata.aliasMap.containsKey(n) ? AttributeSetInstanceExtensionFieldGroupMetadata.aliasMap.get(n) : n)),
                         AttributeSetInstanceExtensionFieldGroupResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -88,7 +88,7 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = attributeSetInstanceExtensionFieldGroupApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeSetInstanceExtensionFieldGroupFilteringProperties.aliasMap.containsKey(n) ? AttributeSetInstanceExtensionFieldGroupFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeSetInstanceExtensionFieldGroupMetadata.aliasMap.containsKey(n) ? AttributeSetInstanceExtensionFieldGroupMetadata.aliasMap.get(n) : n)));
             } else {
                 count = attributeSetInstanceExtensionFieldGroupApplicationService.getCount(AttributeSetInstanceExtensionFieldGroupResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -144,7 +144,7 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            AttributeSetInstanceExtensionFieldGroupFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            AttributeSetInstanceExtensionFieldGroupMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -240,15 +240,15 @@ public class AttributeSetInstanceExtensionFieldGroupResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (AttributeSetInstanceExtensionFieldGroupFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return AttributeSetInstanceExtensionFieldGroupFilteringProperties.aliasMap.get(fieldName);
+            if (AttributeSetInstanceExtensionFieldGroupMetadata.aliasMap.containsKey(fieldName)) {
+                return AttributeSetInstanceExtensionFieldGroupMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (AttributeSetInstanceExtensionFieldGroupFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = AttributeSetInstanceExtensionFieldGroupFilteringProperties.propertyTypeMap.get(propertyName);
+            if (AttributeSetInstanceExtensionFieldGroupMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = AttributeSetInstanceExtensionFieldGroupMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

@@ -44,7 +44,7 @@ public class LocatorTreeResource {
                                 CriterionDto.toSubclass(
                                         JSON.parseObject(filter, CriterionDto.class),
                                         getCriterionTypeConverter(),
-                                        getPropertyTypeResolver(), n -> (LocatorFilteringProperties.aliasMap.containsKey(n) ? LocatorFilteringProperties.aliasMap.get(n) : n)),
+                                        getPropertyTypeResolver(), n -> (LocatorMetadata.aliasMap.containsKey(n) ? LocatorMetadata.aliasMap.get(n) : n)),
                                 LocatorResource.LocatorResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                                 firstResult, maxResults);
 
@@ -54,7 +54,7 @@ public class LocatorTreeResource {
                                 CriterionDto.toSubclass(
                                         JSON.parseObject(filter, CriterionDto.class),
                                         getCriterionTypeConverter(),
-                                        getPropertyTypeResolver(), n -> (LocatorFilteringProperties.aliasMap.containsKey(n) ? LocatorFilteringProperties.aliasMap.get(n) : n)),
+                                        getPropertyTypeResolver(), n -> (LocatorMetadata.aliasMap.containsKey(n) ? LocatorMetadata.aliasMap.get(n) : n)),
                                 LocatorResource.LocatorResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                                 firstResult, maxResults);
 
@@ -65,7 +65,7 @@ public class LocatorTreeResource {
                                 CriterionDto.toSubclass(
                                         JSON.parseObject(filter, CriterionDto.class),
                                         getCriterionTypeConverter(),
-                                        getPropertyTypeResolver(), n -> (LocatorFilteringProperties.aliasMap.containsKey(n) ? LocatorFilteringProperties.aliasMap.get(n) : n)),
+                                        getPropertyTypeResolver(), n -> (LocatorMetadata.aliasMap.containsKey(n) ? LocatorMetadata.aliasMap.get(n) : n)),
                                 LocatorResource.LocatorResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                                 firstResult, maxResults);
 
@@ -76,7 +76,7 @@ public class LocatorTreeResource {
                                 CriterionDto.toSubclass(
                                         JSON.parseObject(filter, CriterionDto.class),
                                         getCriterionTypeConverter(),
-                                        getPropertyTypeResolver(), n -> (LocatorFilteringProperties.aliasMap.containsKey(n) ? LocatorFilteringProperties.aliasMap.get(n) : n)),
+                                        getPropertyTypeResolver(), n -> (LocatorMetadata.aliasMap.containsKey(n) ? LocatorMetadata.aliasMap.get(n) : n)),
                                 LocatorResource.LocatorResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                                 firstResult, maxResults);
                     }
@@ -135,7 +135,7 @@ public class LocatorTreeResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            LocatorFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            LocatorMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;

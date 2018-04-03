@@ -42,7 +42,7 @@ public class LotResource {
                 states = lotApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (LotFilteringProperties.aliasMap.containsKey(n) ? LotFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (LotMetadata.aliasMap.containsKey(n) ? LotMetadata.aliasMap.get(n) : n)),
                         LotResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -88,7 +88,7 @@ public class LotResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = lotApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (LotFilteringProperties.aliasMap.containsKey(n) ? LotFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (LotMetadata.aliasMap.containsKey(n) ? LotMetadata.aliasMap.get(n) : n)));
             } else {
                 count = lotApplicationService.getCount(LotResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -144,7 +144,7 @@ public class LotResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            LotFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            LotMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -240,15 +240,15 @@ public class LotResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (LotFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return LotFilteringProperties.aliasMap.get(fieldName);
+            if (LotMetadata.aliasMap.containsKey(fieldName)) {
+                return LotMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (LotFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = LotFilteringProperties.propertyTypeMap.get(propertyName);
+            if (LotMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = LotMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

@@ -42,7 +42,7 @@ public class RoleTypeResource {
                 states = roleTypeApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (RoleTypeFilteringProperties.aliasMap.containsKey(n) ? RoleTypeFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (RoleTypeMetadata.aliasMap.containsKey(n) ? RoleTypeMetadata.aliasMap.get(n) : n)),
                         RoleTypeResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -88,7 +88,7 @@ public class RoleTypeResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = roleTypeApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (RoleTypeFilteringProperties.aliasMap.containsKey(n) ? RoleTypeFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (RoleTypeMetadata.aliasMap.containsKey(n) ? RoleTypeMetadata.aliasMap.get(n) : n)));
             } else {
                 count = roleTypeApplicationService.getCount(RoleTypeResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -144,7 +144,7 @@ public class RoleTypeResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            RoleTypeFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            RoleTypeMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -240,15 +240,15 @@ public class RoleTypeResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (RoleTypeFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return RoleTypeFilteringProperties.aliasMap.get(fieldName);
+            if (RoleTypeMetadata.aliasMap.containsKey(fieldName)) {
+                return RoleTypeMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (RoleTypeFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = RoleTypeFilteringProperties.propertyTypeMap.get(propertyName);
+            if (RoleTypeMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = RoleTypeMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

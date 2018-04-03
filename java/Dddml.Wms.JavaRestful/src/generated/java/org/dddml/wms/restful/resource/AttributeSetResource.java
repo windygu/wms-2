@@ -42,7 +42,7 @@ public class AttributeSetResource {
                 states = attributeSetApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeSetFilteringProperties.aliasMap.containsKey(n) ? AttributeSetFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeSetMetadata.aliasMap.containsKey(n) ? AttributeSetMetadata.aliasMap.get(n) : n)),
                         AttributeSetResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -88,7 +88,7 @@ public class AttributeSetResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = attributeSetApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeSetFilteringProperties.aliasMap.containsKey(n) ? AttributeSetFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (AttributeSetMetadata.aliasMap.containsKey(n) ? AttributeSetMetadata.aliasMap.get(n) : n)));
             } else {
                 count = attributeSetApplicationService.getCount(AttributeSetResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -144,7 +144,7 @@ public class AttributeSetResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            AttributeSetFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            AttributeSetMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -254,15 +254,15 @@ public class AttributeSetResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (AttributeSetFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return AttributeSetFilteringProperties.aliasMap.get(fieldName);
+            if (AttributeSetMetadata.aliasMap.containsKey(fieldName)) {
+                return AttributeSetMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (AttributeSetFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = AttributeSetFilteringProperties.propertyTypeMap.get(propertyName);
+            if (AttributeSetMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = AttributeSetMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

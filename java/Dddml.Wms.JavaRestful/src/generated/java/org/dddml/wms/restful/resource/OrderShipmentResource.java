@@ -42,7 +42,7 @@ public class OrderShipmentResource {
                 states = orderShipmentApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrderShipmentFilteringProperties.aliasMap.containsKey(n) ? OrderShipmentFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrderShipmentMetadata.aliasMap.containsKey(n) ? OrderShipmentMetadata.aliasMap.get(n) : n)),
                         OrderShipmentResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -88,7 +88,7 @@ public class OrderShipmentResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = orderShipmentApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrderShipmentFilteringProperties.aliasMap.containsKey(n) ? OrderShipmentFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (OrderShipmentMetadata.aliasMap.containsKey(n) ? OrderShipmentMetadata.aliasMap.get(n) : n)));
             } else {
                 count = orderShipmentApplicationService.getCount(OrderShipmentResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -126,7 +126,7 @@ public class OrderShipmentResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            OrderShipmentFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            OrderShipmentMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -233,15 +233,15 @@ public class OrderShipmentResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (OrderShipmentFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return OrderShipmentFilteringProperties.aliasMap.get(fieldName);
+            if (OrderShipmentMetadata.aliasMap.containsKey(fieldName)) {
+                return OrderShipmentMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (OrderShipmentFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = OrderShipmentFilteringProperties.propertyTypeMap.get(propertyName);
+            if (OrderShipmentMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = OrderShipmentMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

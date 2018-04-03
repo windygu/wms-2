@@ -42,7 +42,7 @@ public class ContactMechResource {
                 states = contactMechApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ContactMechFilteringProperties.aliasMap.containsKey(n) ? ContactMechFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ContactMechMetadata.aliasMap.containsKey(n) ? ContactMechMetadata.aliasMap.get(n) : n)),
                         ContactMechResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -88,7 +88,7 @@ public class ContactMechResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = contactMechApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ContactMechFilteringProperties.aliasMap.containsKey(n) ? ContactMechFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (ContactMechMetadata.aliasMap.containsKey(n) ? ContactMechMetadata.aliasMap.get(n) : n)));
             } else {
                 count = contactMechApplicationService.getCount(ContactMechResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -144,7 +144,7 @@ public class ContactMechResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            ContactMechFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            ContactMechMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -240,15 +240,15 @@ public class ContactMechResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (ContactMechFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return ContactMechFilteringProperties.aliasMap.get(fieldName);
+            if (ContactMechMetadata.aliasMap.containsKey(fieldName)) {
+                return ContactMechMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (ContactMechFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = ContactMechFilteringProperties.propertyTypeMap.get(propertyName);
+            if (ContactMechMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = ContactMechMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

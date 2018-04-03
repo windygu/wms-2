@@ -44,7 +44,7 @@ public class PhysicalInventoryResource {
                 states = physicalInventoryApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PhysicalInventoryFilteringProperties.aliasMap.containsKey(n) ? PhysicalInventoryFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PhysicalInventoryMetadata.aliasMap.containsKey(n) ? PhysicalInventoryMetadata.aliasMap.get(n) : n)),
                         PhysicalInventoryResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -90,7 +90,7 @@ public class PhysicalInventoryResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = physicalInventoryApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PhysicalInventoryFilteringProperties.aliasMap.containsKey(n) ? PhysicalInventoryFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PhysicalInventoryMetadata.aliasMap.containsKey(n) ? PhysicalInventoryMetadata.aliasMap.get(n) : n)));
             } else {
                 count = physicalInventoryApplicationService.getCount(PhysicalInventoryResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -162,7 +162,7 @@ public class PhysicalInventoryResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            PhysicalInventoryFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            PhysicalInventoryMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -277,15 +277,15 @@ public class PhysicalInventoryResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (PhysicalInventoryFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return PhysicalInventoryFilteringProperties.aliasMap.get(fieldName);
+            if (PhysicalInventoryMetadata.aliasMap.containsKey(fieldName)) {
+                return PhysicalInventoryMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (PhysicalInventoryFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = PhysicalInventoryFilteringProperties.propertyTypeMap.get(propertyName);
+            if (PhysicalInventoryMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = PhysicalInventoryMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);

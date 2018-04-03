@@ -44,7 +44,7 @@ public class OrganizationTreeResource {
                                 CriterionDto.toSubclass(
                                         JSON.parseObject(filter, CriterionDto.class),
                                         getCriterionTypeConverter(),
-                                        getPropertyTypeResolver(), n -> (OrganizationStructureFilteringProperties.aliasMap.containsKey(n) ? OrganizationStructureFilteringProperties.aliasMap.get(n) : n)),
+                                        getPropertyTypeResolver(), n -> (OrganizationStructureMetadata.aliasMap.containsKey(n) ? OrganizationStructureMetadata.aliasMap.get(n) : n)),
                                 OrganizationStructureResource.OrganizationStructureResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                                 firstResult, maxResults);
 
@@ -54,7 +54,7 @@ public class OrganizationTreeResource {
                                 CriterionDto.toSubclass(
                                         JSON.parseObject(filter, CriterionDto.class),
                                         getCriterionTypeConverter(),
-                                        getPropertyTypeResolver(), n -> (OrganizationStructureFilteringProperties.aliasMap.containsKey(n) ? OrganizationStructureFilteringProperties.aliasMap.get(n) : n)),
+                                        getPropertyTypeResolver(), n -> (OrganizationStructureMetadata.aliasMap.containsKey(n) ? OrganizationStructureMetadata.aliasMap.get(n) : n)),
                                 OrganizationStructureResource.OrganizationStructureResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                                 firstResult, maxResults);
 
@@ -65,7 +65,7 @@ public class OrganizationTreeResource {
                                 CriterionDto.toSubclass(
                                         JSON.parseObject(filter, CriterionDto.class),
                                         getCriterionTypeConverter(),
-                                        getPropertyTypeResolver(), n -> (OrganizationStructureFilteringProperties.aliasMap.containsKey(n) ? OrganizationStructureFilteringProperties.aliasMap.get(n) : n)),
+                                        getPropertyTypeResolver(), n -> (OrganizationStructureMetadata.aliasMap.containsKey(n) ? OrganizationStructureMetadata.aliasMap.get(n) : n)),
                                 OrganizationStructureResource.OrganizationStructureResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                                 firstResult, maxResults);
 
@@ -76,7 +76,7 @@ public class OrganizationTreeResource {
                                 CriterionDto.toSubclass(
                                         JSON.parseObject(filter, CriterionDto.class),
                                         getCriterionTypeConverter(),
-                                        getPropertyTypeResolver(), n -> (OrganizationStructureFilteringProperties.aliasMap.containsKey(n) ? OrganizationStructureFilteringProperties.aliasMap.get(n) : n)),
+                                        getPropertyTypeResolver(), n -> (OrganizationStructureMetadata.aliasMap.containsKey(n) ? OrganizationStructureMetadata.aliasMap.get(n) : n)),
                                 OrganizationStructureResource.OrganizationStructureResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                                 firstResult, maxResults);
                     }
@@ -135,7 +135,7 @@ public class OrganizationTreeResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            OrganizationStructureFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            OrganizationStructureMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;

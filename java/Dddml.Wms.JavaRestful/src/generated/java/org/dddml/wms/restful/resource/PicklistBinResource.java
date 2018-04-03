@@ -42,7 +42,7 @@ public class PicklistBinResource {
                 states = picklistBinApplicationService.get(
                         CriterionDto.toSubclass(
                                 JSON.parseObject(filter, CriterionDto.class),
-                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PicklistBinFilteringProperties.aliasMap.containsKey(n) ? PicklistBinFilteringProperties.aliasMap.get(n) : n)),
+                                getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PicklistBinMetadata.aliasMap.containsKey(n) ? PicklistBinMetadata.aliasMap.get(n) : n)),
                         PicklistBinResourceUtils.getQueryOrders(sort, getQueryOrderSeparator()),
                         firstResult, maxResults);
             } else {
@@ -88,7 +88,7 @@ public class PicklistBinResource {
             long count = 0;
             if (!StringHelper.isNullOrEmpty(filter)) {
                 count = picklistBinApplicationService.getCount(CriterionDto.toSubclass(JSONObject.parseObject(filter, CriterionDto.class),
-                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PicklistBinFilteringProperties.aliasMap.containsKey(n) ? PicklistBinFilteringProperties.aliasMap.get(n) : n)));
+                        getCriterionTypeConverter(), getPropertyTypeResolver(), n -> (PicklistBinMetadata.aliasMap.containsKey(n) ? PicklistBinMetadata.aliasMap.get(n) : n)));
             } else {
                 count = picklistBinApplicationService.getCount(PicklistBinResourceUtils.getQueryFilterMap(request.getParameterMap()));
             }
@@ -144,7 +144,7 @@ public class PicklistBinResource {
         try {
 
             List<PropertyMetadataDto> filtering = new ArrayList<>();
-            PicklistBinFilteringProperties.propertyTypeMap.forEach((key, value) -> {
+            PicklistBinMetadata.propertyTypeMap.forEach((key, value) -> {
                 filtering.add(new PropertyMetadataDto(key, value, true));
             });
             return filtering;
@@ -259,15 +259,15 @@ public class PicklistBinResource {
                     || "fields".equalsIgnoreCase(fieldName)) {
                 return null;
             }
-            if (PicklistBinFilteringProperties.aliasMap.containsKey(fieldName)) {
-                return PicklistBinFilteringProperties.aliasMap.get(fieldName);
+            if (PicklistBinMetadata.aliasMap.containsKey(fieldName)) {
+                return PicklistBinMetadata.aliasMap.get(fieldName);
             }
             return null;
         }
 
         public static Class getFilterPropertyType(String propertyName) {
-            if (PicklistBinFilteringProperties.propertyTypeMap.containsKey(propertyName)) {
-                String propertyType = PicklistBinFilteringProperties.propertyTypeMap.get(propertyName);
+            if (PicklistBinMetadata.propertyTypeMap.containsKey(propertyName)) {
+                String propertyType = PicklistBinMetadata.propertyTypeMap.get(propertyName);
                 if (!StringHelper.isNullOrEmpty(propertyType)) {
                     if (org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.containsKey(propertyType)) {
                         return org.dddml.wms.domain.meta.BoundedContextMetadata.CLASS_MAP.get(propertyType);
