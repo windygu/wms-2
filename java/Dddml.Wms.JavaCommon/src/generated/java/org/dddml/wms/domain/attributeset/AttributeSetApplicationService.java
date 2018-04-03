@@ -36,5 +36,7 @@ public interface AttributeSetApplicationService
 
     AttributeUseState getAttributeUse(String attributeSetId, String attributeId);
 
+    Iterable<AttributeUseState> getAttributeUses(String attributeSetId);
+
 }
 

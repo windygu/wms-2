@@ -80,6 +80,10 @@ public abstract class AbstractInventoryItemRequirementApplicationService impleme
         return getStateQueryRepository().getInventoryItemRequirementEntry(inventoryItemRequirementId, entrySeqId);
     }
 
+    public Iterable<InventoryItemRequirementEntryState> getInventoryItemRequirementEntries(InventoryItemId inventoryItemRequirementId) {
+        return getStateQueryRepository().getInventoryItemRequirementEntries(inventoryItemRequirementId);
+    }
+
 
     public InventoryItemRequirementAggregate getInventoryItemRequirementAggregate(InventoryItemRequirementState state)
     {

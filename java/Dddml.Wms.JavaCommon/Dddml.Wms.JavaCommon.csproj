@@ -1205,100 +1205,49 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\lot\LotEventId.java">
       <DependentUpon>GenerateLotDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\ContactMechFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\ContactMechMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\FacilityFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\FacilityMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\ItemIssuanceFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\ItemIssuanceMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\ItemIssuanceMvoFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\ItemIssuanceMvoMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\LocatorTypeFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\LocatorTypeMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrderItemShipGroupAssociationFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrderItemShipGroupAssociationMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrderItemShipGroupAssociationMvoFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrderItemShipGroupAssociationMvoMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrderItemShipGrpInvReservationFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrderItemShipGrpInvReservationMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrderRoleFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrderRoleMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrderRoleMvoFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrderRoleMvoMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrderShipGroupFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrderShipGroupMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrderShipGroupMvoFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrderShipGroupMvoMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\PartyRoleFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\PartyRoleMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\PicklistBinFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\PicklistBinMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\PicklistFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\PicklistItemFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\PicklistItemMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\PicklistItemMvoFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\PicklistItemMvoMetadata.java">
@@ -1307,49 +1256,25 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\PicklistMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\PicklistRoleFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\PicklistRoleMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\PicklistRoleMvoFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\PicklistRoleMvoMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\PickwaveFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\PickwaveMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\RoleTypeFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\RoleTypeMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\ShipmentMethodTypeFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\ShipmentMethodTypeMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\ShipmentPackageContentFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\ShipmentPackageContentMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\ShipmentPackageContentMvoFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\ShipmentPackageContentMvoMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\ShipmentPackageFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\ShipmentPackageMetadata.java">
@@ -3773,31 +3698,13 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\lot\LotStateRepository.java">
       <DependentUpon>GenerateLotDomain.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\AttributeAliasFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\AttributeAliasMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\AttributeAliasMvoFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\AttributeAliasMvoMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\AttributeFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\AttributeMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\AttributeSetFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\AttributeSetInstanceExtensionFieldFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\AttributeSetInstanceExtensionFieldGroupFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\AttributeSetInstanceExtensionFieldGroupMetadata.java">
@@ -3806,34 +3713,19 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\AttributeSetInstanceExtensionFieldMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\AttributeSetInstanceFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\AttributeSetInstanceMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\AttributeSetMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\AttributeUseFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\AttributeUseMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\AttributeUseMvoFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\AttributeUseMvoMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\AttributeValueFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\AttributeValueMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\AttributeValueMvoFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\AttributeValueMvoMetadata.java">
@@ -3842,25 +3734,13 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\BoundedContextMetadata.java">
       <DependentUpon>GenerateBoundedContextMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\DamageHandlingMethodFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\DamageHandlingMethodMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\DamageReasonFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\DamageReasonMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\DamageTypeFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\DamageTypeMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\DocumentTypeFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\DocumentTypeMetadata.java">
@@ -3870,184 +3750,95 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateBoundedContextDomainAggregatesMetadata.txt</LastGenOutput>
       <LastOutputs>
-.\AttributeAliasFilteringProperties.java
 .\AttributeAliasMetadata.java
-.\AttributeAliasMvoFilteringProperties.java
 .\AttributeAliasMvoMetadata.java
-.\AttributeFilteringProperties.java
 .\AttributeMetadata.java
-.\AttributeSetFilteringProperties.java
-.\AttributeSetInstanceExtensionFieldFilteringProperties.java
-.\AttributeSetInstanceExtensionFieldGroupFilteringProperties.java
 .\AttributeSetInstanceExtensionFieldGroupMetadata.java
 .\AttributeSetInstanceExtensionFieldMetadata.java
-.\AttributeSetInstanceFilteringProperties.java
 .\AttributeSetInstanceMetadata.java
 .\AttributeSetMetadata.java
-.\AttributeUseFilteringProperties.java
 .\AttributeUseMetadata.java
-.\AttributeUseMvoFilteringProperties.java
 .\AttributeUseMvoMetadata.java
-.\AttributeValueFilteringProperties.java
 .\AttributeValueMetadata.java
-.\AttributeValueMvoFilteringProperties.java
 .\AttributeValueMvoMetadata.java
-.\ContactMechFilteringProperties.java
 .\ContactMechMetadata.java
-.\DamageHandlingMethodFilteringProperties.java
 .\DamageHandlingMethodMetadata.java
-.\DamageReasonFilteringProperties.java
 .\DamageReasonMetadata.java
-.\DamageTypeFilteringProperties.java
 .\DamageTypeMetadata.java
-.\DocumentTypeFilteringProperties.java
 .\DocumentTypeMetadata.java
-.\FacilityFilteringProperties.java
 .\FacilityMetadata.java
 .\GenerateBoundedContextDomainAggregatesMetadata.txt
-.\InOutFilteringProperties.java
-.\InOutLineFilteringProperties.java
 .\InOutLineMetadata.java
-.\InOutLineMvoFilteringProperties.java
 .\InOutLineMvoMetadata.java
 .\InOutMetadata.java
-.\InventoryItemEntryFilteringProperties.java
 .\InventoryItemEntryMetadata.java
-.\InventoryItemEntryMvoFilteringProperties.java
 .\InventoryItemEntryMvoMetadata.java
-.\InventoryItemFilteringProperties.java
 .\InventoryItemMetadata.java
-.\InventoryItemRequirementEntryFilteringProperties.java
 .\InventoryItemRequirementEntryMetadata.java
-.\InventoryItemRequirementEntryMvoFilteringProperties.java
 .\InventoryItemRequirementEntryMvoMetadata.java
-.\InventoryItemRequirementFilteringProperties.java
 .\InventoryItemRequirementMetadata.java
-.\InventoryPostingRuleFilteringProperties.java
 .\InventoryPostingRuleMetadata.java
-.\InventoryPRTriggeredFilteringProperties.java
 .\InventoryPRTriggeredMetadata.java
-.\ItemIssuanceFilteringProperties.java
 .\ItemIssuanceMetadata.java
-.\ItemIssuanceMvoFilteringProperties.java
 .\ItemIssuanceMvoMetadata.java
-.\LocatorFilteringProperties.java
 .\LocatorMetadata.java
-.\LocatorTypeFilteringProperties.java
 .\LocatorTypeMetadata.java
-.\LotFilteringProperties.java
 .\LotMetadata.java
-.\MovementConfirmationFilteringProperties.java
-.\MovementConfirmationLineFilteringProperties.java
 .\MovementConfirmationLineMetadata.java
-.\MovementConfirmationLineMvoFilteringProperties.java
 .\MovementConfirmationLineMvoMetadata.java
 .\MovementConfirmationMetadata.java
-.\MovementFilteringProperties.java
-.\MovementLineFilteringProperties.java
 .\MovementLineMetadata.java
-.\MovementLineMvoFilteringProperties.java
 .\MovementLineMvoMetadata.java
 .\MovementMetadata.java
-.\MovementTypeFilteringProperties.java
 .\MovementTypeMetadata.java
-.\OrderFilteringProperties.java
-.\OrderItemFilteringProperties.java
 .\OrderItemMetadata.java
-.\OrderItemMvoFilteringProperties.java
 .\OrderItemMvoMetadata.java
-.\OrderItemShipGroupAssociationFilteringProperties.java
 .\OrderItemShipGroupAssociationMetadata.java
-.\OrderItemShipGroupAssociationMvoFilteringProperties.java
 .\OrderItemShipGroupAssociationMvoMetadata.java
-.\OrderItemShipGrpInvReservationFilteringProperties.java
 .\OrderItemShipGrpInvReservationMetadata.java
 .\OrderMetadata.java
-.\OrderRoleFilteringProperties.java
 .\OrderRoleMetadata.java
-.\OrderRoleMvoFilteringProperties.java
 .\OrderRoleMvoMetadata.java
-.\OrderShipGroupFilteringProperties.java
 .\OrderShipGroupMetadata.java
-.\OrderShipGroupMvoFilteringProperties.java
 .\OrderShipGroupMvoMetadata.java
-.\OrderShipmentFilteringProperties.java
 .\OrderShipmentMetadata.java
-.\OrganizationStructureFilteringProperties.java
 .\OrganizationStructureMetadata.java
-.\OrganizationStructureTypeFilteringProperties.java
 .\OrganizationStructureTypeMetadata.java
-.\PartyFilteringProperties.java
 .\PartyMetadata.java
-.\PartyRoleFilteringProperties.java
 .\PartyRoleMetadata.java
-.\PhysicalInventoryFilteringProperties.java
-.\PhysicalInventoryLineFilteringProperties.java
 .\PhysicalInventoryLineMetadata.java
-.\PhysicalInventoryLineMvoFilteringProperties.java
 .\PhysicalInventoryLineMvoMetadata.java
 .\PhysicalInventoryMetadata.java
-.\PicklistBinFilteringProperties.java
 .\PicklistBinMetadata.java
-.\PicklistFilteringProperties.java
-.\PicklistItemFilteringProperties.java
 .\PicklistItemMetadata.java
-.\PicklistItemMvoFilteringProperties.java
 .\PicklistItemMvoMetadata.java
 .\PicklistMetadata.java
-.\PicklistRoleFilteringProperties.java
 .\PicklistRoleMetadata.java
-.\PicklistRoleMvoFilteringProperties.java
 .\PicklistRoleMvoMetadata.java
-.\PickwaveFilteringProperties.java
 .\PickwaveMetadata.java
-.\ProductCategoryFilteringProperties.java
-.\ProductCategoryMemberFilteringProperties.java
 .\ProductCategoryMemberMetadata.java
 .\ProductCategoryMetadata.java
-.\ProductFilteringProperties.java
 .\ProductMetadata.java
-.\RejectionReasonFilteringProperties.java
 .\RejectionReasonMetadata.java
-.\RoleTypeFilteringProperties.java
 .\RoleTypeMetadata.java
-.\SellableInventoryItemEntryFilteringProperties.java
 .\SellableInventoryItemEntryMetadata.java
-.\SellableInventoryItemEntryMvoFilteringProperties.java
 .\SellableInventoryItemEntryMvoMetadata.java
-.\SellableInventoryItemFilteringProperties.java
 .\SellableInventoryItemMetadata.java
-.\ShipmentFilteringProperties.java
-.\ShipmentItemFilteringProperties.java
 .\ShipmentItemMetadata.java
-.\ShipmentItemMvoFilteringProperties.java
 .\ShipmentItemMvoMetadata.java
 .\ShipmentMetadata.java
-.\ShipmentMethodTypeFilteringProperties.java
 .\ShipmentMethodTypeMetadata.java
-.\ShipmentPackageContentFilteringProperties.java
 .\ShipmentPackageContentMetadata.java
-.\ShipmentPackageContentMvoFilteringProperties.java
 .\ShipmentPackageContentMvoMetadata.java
-.\ShipmentPackageFilteringProperties.java
 .\ShipmentPackageMetadata.java
-.\ShipmentReceiptFilteringProperties.java
 .\ShipmentReceiptMetadata.java
-.\ShipmentReceiptMvoFilteringProperties.java
 .\ShipmentReceiptMvoMetadata.java
-.\ShipmentTypeFilteringProperties.java
 .\ShipmentTypeMetadata.java
-.\StatusItemFilteringProperties.java
 .\StatusItemMetadata.java
-.\SupplierProductFilteringProperties.java
 .\SupplierProductMetadata.java
-.\UomConversionFilteringProperties.java
 .\UomConversionMetadata.java
-.\UomFilteringProperties.java
 .\UomMetadata.java
-.\UomTypeFilteringProperties.java
 .\UomTypeMetadata.java
-.\WarehouseFilteringProperties.java
 .\WarehouseMetadata.java
 </LastOutputs>
     </Content>
@@ -4069,16 +3860,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateBoundedContextMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\InOutFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\InOutLineFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\InOutLineMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\InOutLineMvoFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\InOutLineMvoMetadata.java">
@@ -4087,76 +3869,37 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\InOutMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\InventoryItemEntryFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\InventoryItemEntryMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\InventoryItemEntryMvoFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\InventoryItemEntryMvoMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\InventoryItemFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\InventoryItemMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\InventoryItemRequirementEntryFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\InventoryItemRequirementEntryMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\InventoryItemRequirementEntryMvoFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\InventoryItemRequirementEntryMvoMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\InventoryItemRequirementFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\InventoryItemRequirementMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\InventoryPostingRuleFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\InventoryPostingRuleMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\InventoryPRTriggeredFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\InventoryPRTriggeredMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\LocatorFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\LocatorMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\LotFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\LotMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\MovementConfirmationFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\MovementConfirmationLineFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\MovementConfirmationLineMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\MovementConfirmationLineMvoFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\MovementConfirmationLineMvoMetadata.java">
@@ -4165,16 +3908,7 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\MovementConfirmationMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\MovementFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\MovementLineFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\MovementLineMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\MovementLineMvoFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\MovementLineMvoMetadata.java">
@@ -4183,22 +3917,10 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\MovementMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\MovementTypeFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\MovementTypeMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrderFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrderItemFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrderItemMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrderItemMvoFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrderItemMvoMetadata.java">
@@ -4207,40 +3929,19 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrderMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrderShipmentFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrderShipmentMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrganizationStructureFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrganizationStructureMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrganizationStructureTypeFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\OrganizationStructureTypeMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\PartyFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\PartyMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\PhysicalInventoryFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\PhysicalInventoryLineFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\PhysicalInventoryLineMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\PhysicalInventoryLineMvoFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\PhysicalInventoryLineMvoMetadata.java">
@@ -4249,58 +3950,28 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\PhysicalInventoryMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\ProductCategoryFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\ProductCategoryMemberFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\ProductCategoryMemberMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\ProductCategoryMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\ProductFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\ProductMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\RejectionReasonFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\RejectionReasonMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\SellableInventoryItemEntryFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\SellableInventoryItemEntryMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\SellableInventoryItemEntryMvoFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\SellableInventoryItemEntryMvoMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\SellableInventoryItemFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\SellableInventoryItemMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\ShipmentFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\ShipmentItemFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\ShipmentItemMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\ShipmentItemMvoFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\ShipmentItemMvoMetadata.java">
@@ -4309,55 +3980,28 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\ShipmentMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\ShipmentReceiptFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\ShipmentReceiptMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\ShipmentReceiptMvoFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\ShipmentReceiptMvoMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\ShipmentTypeFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\ShipmentTypeMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\StatusItemFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\StatusItemMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\SupplierProductFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\SupplierProductMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\UomConversionFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\UomConversionMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\UomFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\UomMetadata.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\UomTypeFilteringProperties.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\UomTypeMetadata.java">
-      <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\meta\WarehouseFilteringProperties.java">
       <DependentUpon>GenerateBoundedContextDomainAggregatesMetadata.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\meta\WarehouseMetadata.java">

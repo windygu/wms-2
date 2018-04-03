@@ -133,24 +133,48 @@ public class HibernateShipmentStateQueryRepository implements ShipmentStateQuery
     }
 
     @Transactional(readOnly = true)
-    public ShipmentItemState getShipmentItem(String shipmentId, String shipmentItemSeqId)
-    {
+    public ShipmentItemState getShipmentItem(String shipmentId, String shipmentItemSeqId) {
         ShipmentItemId entityId = new ShipmentItemId(shipmentId, shipmentItemSeqId);
         return (ShipmentItemState) getCurrentSession().get(AbstractShipmentItemState.SimpleShipmentItemState.class, entityId);
     }
 
     @Transactional(readOnly = true)
-    public ShipmentReceiptState getShipmentReceipt(String shipmentId, String receiptSeqId)
-    {
+    public Iterable<ShipmentItemState> getShipmentItems(String shipmentId) {
+        Criteria criteria = getCurrentSession().createCriteria(AbstractShipmentItemState.SimpleShipmentItemState.class);
+        org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
+            .add(org.hibernate.criterion.Restrictions.eq("shipmentItemId.shipmentId", shipmentId))
+            ;
+        return criteria.add(partIdCondition).list();
+    }
+
+    @Transactional(readOnly = true)
+    public ShipmentReceiptState getShipmentReceipt(String shipmentId, String receiptSeqId) {
         ShipmentReceiptId entityId = new ShipmentReceiptId(shipmentId, receiptSeqId);
         return (ShipmentReceiptState) getCurrentSession().get(AbstractShipmentReceiptState.SimpleShipmentReceiptState.class, entityId);
     }
 
     @Transactional(readOnly = true)
-    public ItemIssuanceState getItemIssuance(String shipmentId, String itemIssuanceSeqId)
-    {
+    public Iterable<ShipmentReceiptState> getShipmentReceipts(String shipmentId) {
+        Criteria criteria = getCurrentSession().createCriteria(AbstractShipmentReceiptState.SimpleShipmentReceiptState.class);
+        org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
+            .add(org.hibernate.criterion.Restrictions.eq("shipmentReceiptId.shipmentId", shipmentId))
+            ;
+        return criteria.add(partIdCondition).list();
+    }
+
+    @Transactional(readOnly = true)
+    public ItemIssuanceState getItemIssuance(String shipmentId, String itemIssuanceSeqId) {
         ShipmentItemIssuanceId entityId = new ShipmentItemIssuanceId(shipmentId, itemIssuanceSeqId);
         return (ItemIssuanceState) getCurrentSession().get(AbstractItemIssuanceState.SimpleItemIssuanceState.class, entityId);
+    }
+
+    @Transactional(readOnly = true)
+    public Iterable<ItemIssuanceState> getItemIssuances(String shipmentId) {
+        Criteria criteria = getCurrentSession().createCriteria(AbstractItemIssuanceState.SimpleItemIssuanceState.class);
+        org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
+            .add(org.hibernate.criterion.Restrictions.eq("shipmentItemIssuanceId.shipmentId", shipmentId))
+            ;
+        return criteria.add(partIdCondition).list();
     }
 
 

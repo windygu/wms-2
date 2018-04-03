@@ -28,5 +28,7 @@ public interface PicklistBinStateQueryRepository
 
     PicklistItemState getPicklistItem(String picklistBinId, PicklistItemOrderShipGrpInvId picklistItemOrderShipGrpInvId);
 
+    Iterable<PicklistItemState> getPicklistItems(String picklistBinId);
+
 }
 

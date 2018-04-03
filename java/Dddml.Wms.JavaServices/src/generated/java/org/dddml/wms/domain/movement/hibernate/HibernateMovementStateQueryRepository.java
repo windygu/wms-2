@@ -134,10 +134,18 @@ public class HibernateMovementStateQueryRepository implements MovementStateQuery
     }
 
     @Transactional(readOnly = true)
-    public MovementLineState getMovementLine(String movementDocumentNumber, String lineNumber)
-    {
+    public MovementLineState getMovementLine(String movementDocumentNumber, String lineNumber) {
         MovementLineId entityId = new MovementLineId(movementDocumentNumber, lineNumber);
         return (MovementLineState) getCurrentSession().get(AbstractMovementLineState.SimpleMovementLineState.class, entityId);
+    }
+
+    @Transactional(readOnly = true)
+    public Iterable<MovementLineState> getMovementLines(String movementDocumentNumber) {
+        Criteria criteria = getCurrentSession().createCriteria(AbstractMovementLineState.SimpleMovementLineState.class);
+        org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
+            .add(org.hibernate.criterion.Restrictions.eq("movementLineId.movementDocumentNumber", movementDocumentNumber))
+            ;
+        return criteria.add(partIdCondition).list();
     }
 
 

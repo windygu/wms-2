@@ -111,6 +111,10 @@ public abstract class AbstractMovementApplicationService implements MovementAppl
         return getStateQueryRepository().getMovementLine(movementDocumentNumber, lineNumber);
     }
 
+    public Iterable<MovementLineState> getMovementLines(String movementDocumentNumber) {
+        return getStateQueryRepository().getMovementLines(movementDocumentNumber);
+    }
+
 
     public MovementAggregate getMovementAggregate(MovementState state)
     {

@@ -106,6 +106,10 @@ public abstract class AbstractShipmentPackageApplicationService implements Shipm
         return getStateQueryRepository().getShipmentPackageContent(shipmentPackageId, shipmentItemSeqId);
     }
 
+    public Iterable<ShipmentPackageContentState> getShipmentPackageContents(ShipmentPackageId shipmentPackageId) {
+        return getStateQueryRepository().getShipmentPackageContents(shipmentPackageId);
+    }
+
 
     public ShipmentPackageAggregate getShipmentPackageAggregate(ShipmentPackageState state)
     {

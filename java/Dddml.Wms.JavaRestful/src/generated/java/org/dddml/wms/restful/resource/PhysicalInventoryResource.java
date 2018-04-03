@@ -230,6 +230,17 @@ public class PhysicalInventoryResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @Path("{physicalInventoryDocumentNumber}/PhysicalInventoryLines/") @GET
+    public PhysicalInventoryLineStateDto[] getPhysicalInventoryLines(@PathParam("physicalInventoryDocumentNumber") String physicalInventoryDocumentNumber) {
+        try {
+            Iterable<PhysicalInventoryLineState> states = physicalInventoryApplicationService.getPhysicalInventoryLines(physicalInventoryDocumentNumber);
+            if (states == null) { return null; }
+            PhysicalInventoryLineStateDto.DtoConverter dtoConverter = new PhysicalInventoryLineStateDto.DtoConverter();
+            dtoConverter.setAllFieldsReturned(true);
+            return dtoConverter.toPhysicalInventoryLineStateDtoArray(states);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
 
     protected  PhysicalInventoryStateEventDtoConverter getPhysicalInventoryStateEventDtoConverter() {
         return new PhysicalInventoryStateEventDtoConverter();

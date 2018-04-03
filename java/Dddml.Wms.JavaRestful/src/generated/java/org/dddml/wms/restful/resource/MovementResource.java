@@ -225,6 +225,17 @@ public class MovementResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @Path("{movementDocumentNumber}/MovementLines/") @GET
+    public MovementLineStateDto[] getMovementLines(@PathParam("movementDocumentNumber") String movementDocumentNumber) {
+        try {
+            Iterable<MovementLineState> states = movementApplicationService.getMovementLines(movementDocumentNumber);
+            if (states == null) { return null; }
+            MovementLineStateDto.DtoConverter dtoConverter = new MovementLineStateDto.DtoConverter();
+            dtoConverter.setAllFieldsReturned(true);
+            return dtoConverter.toMovementLineStateDtoArray(states);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
 
     protected  MovementStateEventDtoConverter getMovementStateEventDtoConverter() {
         return new MovementStateEventDtoConverter();

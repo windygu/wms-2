@@ -106,6 +106,10 @@ public abstract class AbstractAttributeSetApplicationService implements Attribut
         return getStateQueryRepository().getAttributeUse(attributeSetId, attributeId);
     }
 
+    public Iterable<AttributeUseState> getAttributeUses(String attributeSetId) {
+        return getStateQueryRepository().getAttributeUses(attributeSetId);
+    }
+
 
     public AttributeSetAggregate getAttributeSetAggregate(AttributeSetState state)
     {

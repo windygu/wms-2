@@ -170,6 +170,22 @@ public class SellableInventoryItemResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @Path("{sellableInventoryItemId}/SellableInventoryItemEntries/") @GET
+    public SellableInventoryItemEntryStateDto[] getSellableInventoryItemEntries(@PathParam("sellableInventoryItemId") String sellableInventoryItemId) {
+        try {
+            Iterable<SellableInventoryItemEntryState> states = sellableInventoryItemApplicationService.getSellableInventoryItemEntries((new AbstractValueObjectTextFormatter<InventoryItemId>(InventoryItemId.class, ",") {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    }.parse(sellableInventoryItemId)));
+            if (states == null) { return null; }
+            SellableInventoryItemEntryStateDto.DtoConverter dtoConverter = new SellableInventoryItemEntryStateDto.DtoConverter();
+            dtoConverter.setAllFieldsReturned(true);
+            return dtoConverter.toSellableInventoryItemEntryStateDtoArray(states);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
 
     protected  SellableInventoryItemStateEventDtoConverter getSellableInventoryItemStateEventDtoConverter() {
         return new SellableInventoryItemStateEventDtoConverter();

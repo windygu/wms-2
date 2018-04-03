@@ -195,6 +195,17 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @Path("{orderId}/OrderRoles/") @GET
+    public OrderRoleStateDto[] getOrderRoles(@PathParam("orderId") String orderId) {
+        try {
+            Iterable<OrderRoleState> states = orderApplicationService.getOrderRoles(orderId);
+            if (states == null) { return null; }
+            OrderRoleStateDto.DtoConverter dtoConverter = new OrderRoleStateDto.DtoConverter();
+            dtoConverter.setAllFieldsReturned(true);
+            return dtoConverter.toOrderRoleStateDtoArray(states);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
     @Path("{orderId}/OrderItems/{orderItemSeqId}") @GET
     public OrderItemStateDto getOrderItem(@PathParam("orderId") String orderId, @PathParam("orderItemSeqId") String orderItemSeqId) {
         try {
@@ -206,6 +217,17 @@ public class OrderResource {
             dtoConverter.setAllFieldsReturned(true);
             return stateDto;
 
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @Path("{orderId}/OrderItems/") @GET
+    public OrderItemStateDto[] getOrderItems(@PathParam("orderId") String orderId) {
+        try {
+            Iterable<OrderItemState> states = orderApplicationService.getOrderItems(orderId);
+            if (states == null) { return null; }
+            OrderItemStateDto.DtoConverter dtoConverter = new OrderItemStateDto.DtoConverter();
+            dtoConverter.setAllFieldsReturned(true);
+            return dtoConverter.toOrderItemStateDtoArray(states);
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
@@ -223,6 +245,17 @@ public class OrderResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @Path("{orderId}/OrderShipGroups/") @GET
+    public OrderShipGroupStateDto[] getOrderShipGroups(@PathParam("orderId") String orderId) {
+        try {
+            Iterable<OrderShipGroupState> states = orderApplicationService.getOrderShipGroups(orderId);
+            if (states == null) { return null; }
+            OrderShipGroupStateDto.DtoConverter dtoConverter = new OrderShipGroupStateDto.DtoConverter();
+            dtoConverter.setAllFieldsReturned(true);
+            return dtoConverter.toOrderShipGroupStateDtoArray(states);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
     @Path("{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations/{orderItemSeqId}") @GET
     public OrderItemShipGroupAssociationStateDto getOrderItemShipGroupAssociation(@PathParam("orderId") String orderId, @PathParam("orderShipGroupShipGroupSeqId") Long orderShipGroupShipGroupSeqId, @PathParam("orderItemSeqId") String orderItemSeqId) {
         try {
@@ -234,6 +267,17 @@ public class OrderResource {
             dtoConverter.setAllFieldsReturned(true);
             return stateDto;
 
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @Path("{orderId}/OrderShipGroups/{orderShipGroupShipGroupSeqId}/OrderItemShipGroupAssociations/") @GET
+    public OrderItemShipGroupAssociationStateDto[] getOrderItemShipGroupAssociations(@PathParam("orderId") String orderId, @PathParam("orderShipGroupShipGroupSeqId") Long orderShipGroupShipGroupSeqId) {
+        try {
+            Iterable<OrderItemShipGroupAssociationState> states = orderApplicationService.getOrderItemShipGroupAssociations(orderId, orderShipGroupShipGroupSeqId);
+            if (states == null) { return null; }
+            OrderItemShipGroupAssociationStateDto.DtoConverter dtoConverter = new OrderItemShipGroupAssociationStateDto.DtoConverter();
+            dtoConverter.setAllFieldsReturned(true);
+            return dtoConverter.toOrderItemShipGroupAssociationStateDtoArray(states);
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 

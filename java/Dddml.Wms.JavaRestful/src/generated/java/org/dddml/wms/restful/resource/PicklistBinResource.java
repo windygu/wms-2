@@ -212,6 +212,17 @@ public class PicklistBinResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @Path("{picklistBinId}/PicklistItems/") @GET
+    public PicklistItemStateDto[] getPicklistItems(@PathParam("picklistBinId") String picklistBinId) {
+        try {
+            Iterable<PicklistItemState> states = picklistBinApplicationService.getPicklistItems(picklistBinId);
+            if (states == null) { return null; }
+            PicklistItemStateDto.DtoConverter dtoConverter = new PicklistItemStateDto.DtoConverter();
+            dtoConverter.setAllFieldsReturned(true);
+            return dtoConverter.toPicklistItemStateDtoArray(states);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
 
     protected  PicklistBinStateEventDtoConverter getPicklistBinStateEventDtoConverter() {
         return new PicklistBinStateEventDtoConverter();

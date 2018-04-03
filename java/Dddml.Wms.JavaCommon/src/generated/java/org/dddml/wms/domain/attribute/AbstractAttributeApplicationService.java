@@ -106,8 +106,16 @@ public abstract class AbstractAttributeApplicationService implements AttributeAp
         return getStateQueryRepository().getAttributeValue(attributeId, value);
     }
 
+    public Iterable<AttributeValueState> getAttributeValues(String attributeId) {
+        return getStateQueryRepository().getAttributeValues(attributeId);
+    }
+
     public AttributeAliasState getAttributeAlias(String attributeId, String code) {
         return getStateQueryRepository().getAttributeAlias(attributeId, code);
+    }
+
+    public Iterable<AttributeAliasState> getAttributeAlias(String attributeId) {
+        return getStateQueryRepository().getAttributeAlias(attributeId);
     }
 
 

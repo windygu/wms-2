@@ -212,6 +212,22 @@ public class ShipmentPackageResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @Path("{shipmentPackageId}/ShipmentPackageContents/") @GET
+    public ShipmentPackageContentStateDto[] getShipmentPackageContents(@PathParam("shipmentPackageId") String shipmentPackageId) {
+        try {
+            Iterable<ShipmentPackageContentState> states = shipmentPackageApplicationService.getShipmentPackageContents((new AbstractValueObjectTextFormatter<ShipmentPackageId>(ShipmentPackageId.class, ",") {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    }.parse(shipmentPackageId)));
+            if (states == null) { return null; }
+            ShipmentPackageContentStateDto.DtoConverter dtoConverter = new ShipmentPackageContentStateDto.DtoConverter();
+            dtoConverter.setAllFieldsReturned(true);
+            return dtoConverter.toShipmentPackageContentStateDtoArray(states);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
 
     protected  ShipmentPackageStateEventDtoConverter getShipmentPackageStateEventDtoConverter() {
         return new ShipmentPackageStateEventDtoConverter();

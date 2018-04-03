@@ -29,5 +29,7 @@ public interface MovementConfirmationStateQueryRepository
 
     MovementConfirmationLineState getMovementConfirmationLine(String movementConfirmationDocumentNumber, String lineNumber);
 
+    Iterable<MovementConfirmationLineState> getMovementConfirmationLines(String movementConfirmationDocumentNumber);
+
 }
 

@@ -29,5 +29,7 @@ public interface InOutStateQueryRepository
 
     InOutLineState getInOutLine(String inOutDocumentNumber, String lineNumber);
 
+    Iterable<InOutLineState> getInOutLines(String inOutDocumentNumber);
+
 }
 

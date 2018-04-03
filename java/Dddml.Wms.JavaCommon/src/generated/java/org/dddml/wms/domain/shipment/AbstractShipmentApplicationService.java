@@ -118,12 +118,24 @@ public abstract class AbstractShipmentApplicationService implements ShipmentAppl
         return getStateQueryRepository().getShipmentItem(shipmentId, shipmentItemSeqId);
     }
 
+    public Iterable<ShipmentItemState> getShipmentItems(String shipmentId) {
+        return getStateQueryRepository().getShipmentItems(shipmentId);
+    }
+
     public ShipmentReceiptState getShipmentReceipt(String shipmentId, String receiptSeqId) {
         return getStateQueryRepository().getShipmentReceipt(shipmentId, receiptSeqId);
     }
 
+    public Iterable<ShipmentReceiptState> getShipmentReceipts(String shipmentId) {
+        return getStateQueryRepository().getShipmentReceipts(shipmentId);
+    }
+
     public ItemIssuanceState getItemIssuance(String shipmentId, String itemIssuanceSeqId) {
         return getStateQueryRepository().getItemIssuance(shipmentId, itemIssuanceSeqId);
+    }
+
+    public Iterable<ItemIssuanceState> getItemIssuances(String shipmentId) {
+        return getStateQueryRepository().getItemIssuances(shipmentId);
     }
 
 

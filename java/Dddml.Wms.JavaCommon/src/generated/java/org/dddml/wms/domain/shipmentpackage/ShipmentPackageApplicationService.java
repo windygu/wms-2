@@ -36,5 +36,7 @@ public interface ShipmentPackageApplicationService
 
     ShipmentPackageContentState getShipmentPackageContent(ShipmentPackageId shipmentPackageId, String shipmentItemSeqId);
 
+    Iterable<ShipmentPackageContentState> getShipmentPackageContents(ShipmentPackageId shipmentPackageId);
+
 }
 

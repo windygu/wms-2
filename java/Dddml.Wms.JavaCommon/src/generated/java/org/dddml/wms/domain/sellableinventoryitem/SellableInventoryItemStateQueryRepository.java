@@ -31,5 +31,7 @@ public interface SellableInventoryItemStateQueryRepository
 
     SellableInventoryItemEntryState getSellableInventoryItemEntry(InventoryItemId sellableInventoryItemId, Long entrySeqId);
 
+    Iterable<SellableInventoryItemEntryState> getSellableInventoryItemEntries(InventoryItemId sellableInventoryItemId);
+
 }
 

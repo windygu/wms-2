@@ -134,10 +134,20 @@ public class HibernateInventoryItemStateQueryRepository implements InventoryItem
     }
 
     @Transactional(readOnly = true)
-    public InventoryItemEntryState getInventoryItemEntry(InventoryItemId inventoryItemId, Long entrySeqId)
-    {
+    public InventoryItemEntryState getInventoryItemEntry(InventoryItemId inventoryItemId, Long entrySeqId) {
         InventoryItemEntryId entityId = new InventoryItemEntryId(inventoryItemId, entrySeqId);
         return (InventoryItemEntryState) getCurrentSession().get(AbstractInventoryItemEntryState.SimpleInventoryItemEntryState.class, entityId);
+    }
+
+    @Transactional(readOnly = true)
+    public Iterable<InventoryItemEntryState> getInventoryItemEntries(InventoryItemId inventoryItemId) {
+        Criteria criteria = getCurrentSession().createCriteria(AbstractInventoryItemEntryState.SimpleInventoryItemEntryState.class);
+        org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
+            .add(org.hibernate.criterion.Restrictions.eq("inventoryItemEntryId.inventoryItemIdProductId", inventoryItemId.getProductId()))
+            .add(org.hibernate.criterion.Restrictions.eq("inventoryItemEntryId.inventoryItemIdLocatorId", inventoryItemId.getLocatorId()))
+            .add(org.hibernate.criterion.Restrictions.eq("inventoryItemEntryId.inventoryItemIdAttributeSetInstanceId", inventoryItemId.getAttributeSetInstanceId()))
+            ;
+        return criteria.add(partIdCondition).list();
     }
 
 

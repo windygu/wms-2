@@ -225,6 +225,17 @@ public class MovementConfirmationResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @Path("{movementConfirmationDocumentNumber}/MovementConfirmationLines/") @GET
+    public MovementConfirmationLineStateDto[] getMovementConfirmationLines(@PathParam("movementConfirmationDocumentNumber") String movementConfirmationDocumentNumber) {
+        try {
+            Iterable<MovementConfirmationLineState> states = movementConfirmationApplicationService.getMovementConfirmationLines(movementConfirmationDocumentNumber);
+            if (states == null) { return null; }
+            MovementConfirmationLineStateDto.DtoConverter dtoConverter = new MovementConfirmationLineStateDto.DtoConverter();
+            dtoConverter.setAllFieldsReturned(true);
+            return dtoConverter.toMovementConfirmationLineStateDtoArray(states);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
 
     protected  MovementConfirmationStateEventDtoConverter getMovementConfirmationStateEventDtoConverter() {
         return new MovementConfirmationStateEventDtoConverter();

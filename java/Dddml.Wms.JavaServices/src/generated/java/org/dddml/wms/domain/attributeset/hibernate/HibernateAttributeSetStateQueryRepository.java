@@ -133,10 +133,18 @@ public class HibernateAttributeSetStateQueryRepository implements AttributeSetSt
     }
 
     @Transactional(readOnly = true)
-    public AttributeUseState getAttributeUse(String attributeSetId, String attributeId)
-    {
+    public AttributeUseState getAttributeUse(String attributeSetId, String attributeId) {
         AttributeSetAttributeUseId entityId = new AttributeSetAttributeUseId(attributeSetId, attributeId);
         return (AttributeUseState) getCurrentSession().get(AbstractAttributeUseState.SimpleAttributeUseState.class, entityId);
+    }
+
+    @Transactional(readOnly = true)
+    public Iterable<AttributeUseState> getAttributeUses(String attributeSetId) {
+        Criteria criteria = getCurrentSession().createCriteria(AbstractAttributeUseState.SimpleAttributeUseState.class);
+        org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
+            .add(org.hibernate.criterion.Restrictions.eq("attributeSetAttributeUseId.attributeSetId", attributeSetId))
+            ;
+        return criteria.add(partIdCondition).list();
     }
 
 

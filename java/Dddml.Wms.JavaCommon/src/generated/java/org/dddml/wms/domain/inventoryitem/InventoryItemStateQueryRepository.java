@@ -29,5 +29,7 @@ public interface InventoryItemStateQueryRepository
 
     InventoryItemEntryState getInventoryItemEntry(InventoryItemId inventoryItemId, Long entrySeqId);
 
+    Iterable<InventoryItemEntryState> getInventoryItemEntries(InventoryItemId inventoryItemId);
+
 }
 

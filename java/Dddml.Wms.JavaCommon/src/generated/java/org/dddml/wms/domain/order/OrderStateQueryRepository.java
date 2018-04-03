@@ -29,11 +29,19 @@ public interface OrderStateQueryRepository
 
     OrderRoleState getOrderRole(String orderId, PartyRoleId partyRoleId);
 
+    Iterable<OrderRoleState> getOrderRoles(String orderId);
+
     OrderItemState getOrderItem(String orderId, String orderItemSeqId);
+
+    Iterable<OrderItemState> getOrderItems(String orderId);
 
     OrderShipGroupState getOrderShipGroup(String orderId, Long shipGroupSeqId);
 
+    Iterable<OrderShipGroupState> getOrderShipGroups(String orderId);
+
     OrderItemShipGroupAssociationState getOrderItemShipGroupAssociation(String orderId, Long orderShipGroupShipGroupSeqId, String orderItemSeqId);
+
+    Iterable<OrderItemShipGroupAssociationState> getOrderItemShipGroupAssociations(String orderId, Long orderShipGroupShipGroupSeqId);
 
 }
 

@@ -37,5 +37,7 @@ public interface PicklistApplicationService
 
     PicklistRoleState getPicklistRole(String picklistId, PartyRoleId partyRoleId);
 
+    Iterable<PicklistRoleState> getPicklistRoles(String picklistId);
+
 }
 

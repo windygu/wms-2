@@ -111,6 +111,10 @@ public abstract class AbstractMovementConfirmationApplicationService implements 
         return getStateQueryRepository().getMovementConfirmationLine(movementConfirmationDocumentNumber, lineNumber);
     }
 
+    public Iterable<MovementConfirmationLineState> getMovementConfirmationLines(String movementConfirmationDocumentNumber) {
+        return getStateQueryRepository().getMovementConfirmationLines(movementConfirmationDocumentNumber);
+    }
+
 
     public MovementConfirmationAggregate getMovementConfirmationAggregate(MovementConfirmationState state)
     {

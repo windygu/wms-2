@@ -257,6 +257,17 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @Path("{shipmentId}/ShipmentItems/") @GET
+    public ShipmentItemStateDto[] getShipmentItems(@PathParam("shipmentId") String shipmentId) {
+        try {
+            Iterable<ShipmentItemState> states = shipmentApplicationService.getShipmentItems(shipmentId);
+            if (states == null) { return null; }
+            ShipmentItemStateDto.DtoConverter dtoConverter = new ShipmentItemStateDto.DtoConverter();
+            dtoConverter.setAllFieldsReturned(true);
+            return dtoConverter.toShipmentItemStateDtoArray(states);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
     @Path("{shipmentId}/ShipmentReceipts/{receiptSeqId}") @GET
     public ShipmentReceiptStateDto getShipmentReceipt(@PathParam("shipmentId") String shipmentId, @PathParam("receiptSeqId") String receiptSeqId) {
         try {
@@ -271,6 +282,17 @@ public class ShipmentResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @Path("{shipmentId}/ShipmentReceipts/") @GET
+    public ShipmentReceiptStateDto[] getShipmentReceipts(@PathParam("shipmentId") String shipmentId) {
+        try {
+            Iterable<ShipmentReceiptState> states = shipmentApplicationService.getShipmentReceipts(shipmentId);
+            if (states == null) { return null; }
+            ShipmentReceiptStateDto.DtoConverter dtoConverter = new ShipmentReceiptStateDto.DtoConverter();
+            dtoConverter.setAllFieldsReturned(true);
+            return dtoConverter.toShipmentReceiptStateDtoArray(states);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
     @Path("{shipmentId}/ItemIssuances/{itemIssuanceSeqId}") @GET
     public ItemIssuanceStateDto getItemIssuance(@PathParam("shipmentId") String shipmentId, @PathParam("itemIssuanceSeqId") String itemIssuanceSeqId) {
         try {
@@ -282,6 +304,17 @@ public class ShipmentResource {
             dtoConverter.setAllFieldsReturned(true);
             return stateDto;
 
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @Path("{shipmentId}/ItemIssuances/") @GET
+    public ItemIssuanceStateDto[] getItemIssuances(@PathParam("shipmentId") String shipmentId) {
+        try {
+            Iterable<ItemIssuanceState> states = shipmentApplicationService.getItemIssuances(shipmentId);
+            if (states == null) { return null; }
+            ItemIssuanceStateDto.DtoConverter dtoConverter = new ItemIssuanceStateDto.DtoConverter();
+            dtoConverter.setAllFieldsReturned(true);
+            return dtoConverter.toItemIssuanceStateDtoArray(states);
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 

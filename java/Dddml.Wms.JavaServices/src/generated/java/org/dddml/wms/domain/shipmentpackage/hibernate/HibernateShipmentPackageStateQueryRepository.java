@@ -133,10 +133,19 @@ public class HibernateShipmentPackageStateQueryRepository implements ShipmentPac
     }
 
     @Transactional(readOnly = true)
-    public ShipmentPackageContentState getShipmentPackageContent(ShipmentPackageId shipmentPackageId, String shipmentItemSeqId)
-    {
+    public ShipmentPackageContentState getShipmentPackageContent(ShipmentPackageId shipmentPackageId, String shipmentItemSeqId) {
         ShipmentPackageContentId entityId = new ShipmentPackageContentId(shipmentPackageId, shipmentItemSeqId);
         return (ShipmentPackageContentState) getCurrentSession().get(AbstractShipmentPackageContentState.SimpleShipmentPackageContentState.class, entityId);
+    }
+
+    @Transactional(readOnly = true)
+    public Iterable<ShipmentPackageContentState> getShipmentPackageContents(ShipmentPackageId shipmentPackageId) {
+        Criteria criteria = getCurrentSession().createCriteria(AbstractShipmentPackageContentState.SimpleShipmentPackageContentState.class);
+        org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
+            .add(org.hibernate.criterion.Restrictions.eq("shipmentPackageContentId.shipmentPackageIdShipmentId", shipmentPackageId.getShipmentId()))
+            .add(org.hibernate.criterion.Restrictions.eq("shipmentPackageContentId.shipmentPackageIdShipmentPackageSeqId", shipmentPackageId.getShipmentPackageSeqId()))
+            ;
+        return criteria.add(partIdCondition).list();
     }
 
 

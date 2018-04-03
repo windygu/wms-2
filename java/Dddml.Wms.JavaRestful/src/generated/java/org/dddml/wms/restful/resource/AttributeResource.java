@@ -218,6 +218,17 @@ public class AttributeResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @Path("{attributeId}/AttributeValues/") @GET
+    public AttributeValueStateDto[] getAttributeValues(@PathParam("attributeId") String attributeId) {
+        try {
+            Iterable<AttributeValueState> states = attributeApplicationService.getAttributeValues(attributeId);
+            if (states == null) { return null; }
+            AttributeValueStateDto.DtoConverter dtoConverter = new AttributeValueStateDto.DtoConverter();
+            dtoConverter.setAllFieldsReturned(true);
+            return dtoConverter.toAttributeValueStateDtoArray(states);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
     @Path("{attributeId}/AttributeAlias/{code}") @GET
     public AttributeAliasStateDto getAttributeAlias(@PathParam("attributeId") String attributeId, @PathParam("code") String code) {
         try {
@@ -229,6 +240,17 @@ public class AttributeResource {
             dtoConverter.setAllFieldsReturned(true);
             return stateDto;
 
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
+    @Path("{attributeId}/AttributeAlias/") @GET
+    public AttributeAliasStateDto[] getAttributeAlias(@PathParam("attributeId") String attributeId) {
+        try {
+            Iterable<AttributeAliasState> states = attributeApplicationService.getAttributeAlias(attributeId);
+            if (states == null) { return null; }
+            AttributeAliasStateDto.DtoConverter dtoConverter = new AttributeAliasStateDto.DtoConverter();
+            dtoConverter.setAllFieldsReturned(true);
+            return dtoConverter.toAttributeAliasStateDtoArray(states);
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 

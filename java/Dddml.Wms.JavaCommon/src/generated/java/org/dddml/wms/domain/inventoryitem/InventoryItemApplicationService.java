@@ -35,5 +35,7 @@ public interface InventoryItemApplicationService
 
     InventoryItemEntryState getInventoryItemEntry(InventoryItemId inventoryItemId, Long entrySeqId);
 
+    Iterable<InventoryItemEntryState> getInventoryItemEntries(InventoryItemId inventoryItemId);
+
 }
 

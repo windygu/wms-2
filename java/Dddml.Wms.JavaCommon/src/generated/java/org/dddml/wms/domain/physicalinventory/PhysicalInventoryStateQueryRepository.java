@@ -30,5 +30,7 @@ public interface PhysicalInventoryStateQueryRepository
 
     PhysicalInventoryLineState getPhysicalInventoryLine(String physicalInventoryDocumentNumber, InventoryItemId inventoryItemId);
 
+    Iterable<PhysicalInventoryLineState> getPhysicalInventoryLines(String physicalInventoryDocumentNumber);
+
 }
 

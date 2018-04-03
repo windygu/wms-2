@@ -80,6 +80,10 @@ public abstract class AbstractSellableInventoryItemApplicationService implements
         return getStateQueryRepository().getSellableInventoryItemEntry(sellableInventoryItemId, entrySeqId);
     }
 
+    public Iterable<SellableInventoryItemEntryState> getSellableInventoryItemEntries(InventoryItemId sellableInventoryItemId) {
+        return getStateQueryRepository().getSellableInventoryItemEntries(sellableInventoryItemId);
+    }
+
 
     public SellableInventoryItemAggregate getSellableInventoryItemAggregate(SellableInventoryItemState state)
     {

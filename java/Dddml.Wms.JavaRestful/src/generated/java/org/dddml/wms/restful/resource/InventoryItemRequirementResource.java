@@ -170,6 +170,22 @@ public class InventoryItemRequirementResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @Path("{inventoryItemRequirementId}/InventoryItemRequirementEntries/") @GET
+    public InventoryItemRequirementEntryStateDto[] getInventoryItemRequirementEntries(@PathParam("inventoryItemRequirementId") String inventoryItemRequirementId) {
+        try {
+            Iterable<InventoryItemRequirementEntryState> states = inventoryItemRequirementApplicationService.getInventoryItemRequirementEntries((new AbstractValueObjectTextFormatter<InventoryItemId>(InventoryItemId.class, ",") {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    }.parse(inventoryItemRequirementId)));
+            if (states == null) { return null; }
+            InventoryItemRequirementEntryStateDto.DtoConverter dtoConverter = new InventoryItemRequirementEntryStateDto.DtoConverter();
+            dtoConverter.setAllFieldsReturned(true);
+            return dtoConverter.toInventoryItemRequirementEntryStateDtoArray(states);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
 
     protected  InventoryItemRequirementStateEventDtoConverter getInventoryItemRequirementStateEventDtoConverter() {
         return new InventoryItemRequirementStateEventDtoConverter();

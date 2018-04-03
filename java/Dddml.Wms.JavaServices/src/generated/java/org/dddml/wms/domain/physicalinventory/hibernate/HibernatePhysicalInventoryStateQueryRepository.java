@@ -135,10 +135,18 @@ public class HibernatePhysicalInventoryStateQueryRepository implements PhysicalI
     }
 
     @Transactional(readOnly = true)
-    public PhysicalInventoryLineState getPhysicalInventoryLine(String physicalInventoryDocumentNumber, InventoryItemId inventoryItemId)
-    {
+    public PhysicalInventoryLineState getPhysicalInventoryLine(String physicalInventoryDocumentNumber, InventoryItemId inventoryItemId) {
         PhysicalInventoryLineId entityId = new PhysicalInventoryLineId(physicalInventoryDocumentNumber, inventoryItemId);
         return (PhysicalInventoryLineState) getCurrentSession().get(AbstractPhysicalInventoryLineState.SimplePhysicalInventoryLineState.class, entityId);
+    }
+
+    @Transactional(readOnly = true)
+    public Iterable<PhysicalInventoryLineState> getPhysicalInventoryLines(String physicalInventoryDocumentNumber) {
+        Criteria criteria = getCurrentSession().createCriteria(AbstractPhysicalInventoryLineState.SimplePhysicalInventoryLineState.class);
+        org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
+            .add(org.hibernate.criterion.Restrictions.eq("physicalInventoryLineId.physicalInventoryDocumentNumber", physicalInventoryDocumentNumber))
+            ;
+        return criteria.add(partIdCondition).list();
     }
 
 

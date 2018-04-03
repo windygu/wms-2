@@ -292,6 +292,17 @@ public class InOutResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @Path("{inOutDocumentNumber}/InOutLines/") @GET
+    public InOutLineStateDto[] getInOutLines(@PathParam("inOutDocumentNumber") String inOutDocumentNumber) {
+        try {
+            Iterable<InOutLineState> states = inOutApplicationService.getInOutLines(inOutDocumentNumber);
+            if (states == null) { return null; }
+            InOutLineStateDto.DtoConverter dtoConverter = new InOutLineStateDto.DtoConverter();
+            dtoConverter.setAllFieldsReturned(true);
+            return dtoConverter.toInOutLineStateDtoArray(states);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
 
     protected  InOutStateEventDtoConverter getInOutStateEventDtoConverter() {
         return new InOutStateEventDtoConverter();

@@ -106,6 +106,10 @@ public abstract class AbstractPicklistBinApplicationService implements PicklistB
         return getStateQueryRepository().getPicklistItem(picklistBinId, picklistItemOrderShipGrpInvId);
     }
 
+    public Iterable<PicklistItemState> getPicklistItems(String picklistBinId) {
+        return getStateQueryRepository().getPicklistItems(picklistBinId);
+    }
+
 
     public PicklistBinAggregate getPicklistBinAggregate(PicklistBinState state)
     {

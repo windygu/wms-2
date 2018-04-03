@@ -28,9 +28,15 @@ public interface ShipmentStateQueryRepository
 
     ShipmentItemState getShipmentItem(String shipmentId, String shipmentItemSeqId);
 
+    Iterable<ShipmentItemState> getShipmentItems(String shipmentId);
+
     ShipmentReceiptState getShipmentReceipt(String shipmentId, String receiptSeqId);
 
+    Iterable<ShipmentReceiptState> getShipmentReceipts(String shipmentId);
+
     ItemIssuanceState getItemIssuance(String shipmentId, String itemIssuanceSeqId);
+
+    Iterable<ItemIssuanceState> getItemIssuances(String shipmentId);
 
 }
 

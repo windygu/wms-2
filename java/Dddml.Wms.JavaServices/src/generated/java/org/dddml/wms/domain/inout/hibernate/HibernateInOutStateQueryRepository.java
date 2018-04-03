@@ -134,10 +134,18 @@ public class HibernateInOutStateQueryRepository implements InOutStateQueryReposi
     }
 
     @Transactional(readOnly = true)
-    public InOutLineState getInOutLine(String inOutDocumentNumber, String lineNumber)
-    {
+    public InOutLineState getInOutLine(String inOutDocumentNumber, String lineNumber) {
         InOutLineId entityId = new InOutLineId(inOutDocumentNumber, lineNumber);
         return (InOutLineState) getCurrentSession().get(AbstractInOutLineState.SimpleInOutLineState.class, entityId);
+    }
+
+    @Transactional(readOnly = true)
+    public Iterable<InOutLineState> getInOutLines(String inOutDocumentNumber) {
+        Criteria criteria = getCurrentSession().createCriteria(AbstractInOutLineState.SimpleInOutLineState.class);
+        org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
+            .add(org.hibernate.criterion.Restrictions.eq("inOutLineId.inOutDocumentNumber", inOutDocumentNumber))
+            ;
+        return criteria.add(partIdCondition).list();
     }
 
 

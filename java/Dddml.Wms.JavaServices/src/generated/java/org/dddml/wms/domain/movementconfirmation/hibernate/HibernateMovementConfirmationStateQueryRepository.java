@@ -134,10 +134,18 @@ public class HibernateMovementConfirmationStateQueryRepository implements Moveme
     }
 
     @Transactional(readOnly = true)
-    public MovementConfirmationLineState getMovementConfirmationLine(String movementConfirmationDocumentNumber, String lineNumber)
-    {
+    public MovementConfirmationLineState getMovementConfirmationLine(String movementConfirmationDocumentNumber, String lineNumber) {
         MovementConfirmationLineId entityId = new MovementConfirmationLineId(movementConfirmationDocumentNumber, lineNumber);
         return (MovementConfirmationLineState) getCurrentSession().get(AbstractMovementConfirmationLineState.SimpleMovementConfirmationLineState.class, entityId);
+    }
+
+    @Transactional(readOnly = true)
+    public Iterable<MovementConfirmationLineState> getMovementConfirmationLines(String movementConfirmationDocumentNumber) {
+        Criteria criteria = getCurrentSession().createCriteria(AbstractMovementConfirmationLineState.SimpleMovementConfirmationLineState.class);
+        org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
+            .add(org.hibernate.criterion.Restrictions.eq("movementConfirmationLineId.movementConfirmationDocumentNumber", movementConfirmationDocumentNumber))
+            ;
+        return criteria.add(partIdCondition).list();
     }
 
 

@@ -127,6 +127,10 @@ public abstract class AbstractInOutApplicationService implements InOutApplicatio
         return getStateQueryRepository().getInOutLine(inOutDocumentNumber, lineNumber);
     }
 
+    public Iterable<InOutLineState> getInOutLines(String inOutDocumentNumber) {
+        return getStateQueryRepository().getInOutLines(inOutDocumentNumber);
+    }
+
 
     public InOutAggregate getInOutAggregate(InOutState state)
     {

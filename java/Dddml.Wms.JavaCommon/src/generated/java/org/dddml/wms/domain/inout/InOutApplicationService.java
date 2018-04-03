@@ -47,5 +47,7 @@ public interface InOutApplicationService
 
     InOutLineState getInOutLine(String inOutDocumentNumber, String lineNumber);
 
+    Iterable<InOutLineState> getInOutLines(String inOutDocumentNumber);
+
 }
 

@@ -112,6 +112,10 @@ public abstract class AbstractPhysicalInventoryApplicationService implements Phy
         return getStateQueryRepository().getPhysicalInventoryLine(physicalInventoryDocumentNumber, inventoryItemId);
     }
 
+    public Iterable<PhysicalInventoryLineState> getPhysicalInventoryLines(String physicalInventoryDocumentNumber) {
+        return getStateQueryRepository().getPhysicalInventoryLines(physicalInventoryDocumentNumber);
+    }
+
 
     public PhysicalInventoryAggregate getPhysicalInventoryAggregate(PhysicalInventoryState state)
     {

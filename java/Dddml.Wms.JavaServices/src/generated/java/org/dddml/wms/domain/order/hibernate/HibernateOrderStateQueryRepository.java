@@ -134,31 +134,64 @@ public class HibernateOrderStateQueryRepository implements OrderStateQueryReposi
     }
 
     @Transactional(readOnly = true)
-    public OrderRoleState getOrderRole(String orderId, PartyRoleId partyRoleId)
-    {
+    public OrderRoleState getOrderRole(String orderId, PartyRoleId partyRoleId) {
         OrderRoleId entityId = new OrderRoleId(orderId, partyRoleId);
         return (OrderRoleState) getCurrentSession().get(AbstractOrderRoleState.SimpleOrderRoleState.class, entityId);
     }
 
     @Transactional(readOnly = true)
-    public OrderItemState getOrderItem(String orderId, String orderItemSeqId)
-    {
+    public Iterable<OrderRoleState> getOrderRoles(String orderId) {
+        Criteria criteria = getCurrentSession().createCriteria(AbstractOrderRoleState.SimpleOrderRoleState.class);
+        org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
+            .add(org.hibernate.criterion.Restrictions.eq("orderRoleId.orderId", orderId))
+            ;
+        return criteria.add(partIdCondition).list();
+    }
+
+    @Transactional(readOnly = true)
+    public OrderItemState getOrderItem(String orderId, String orderItemSeqId) {
         OrderItemId entityId = new OrderItemId(orderId, orderItemSeqId);
         return (OrderItemState) getCurrentSession().get(AbstractOrderItemState.SimpleOrderItemState.class, entityId);
     }
 
     @Transactional(readOnly = true)
-    public OrderShipGroupState getOrderShipGroup(String orderId, Long shipGroupSeqId)
-    {
+    public Iterable<OrderItemState> getOrderItems(String orderId) {
+        Criteria criteria = getCurrentSession().createCriteria(AbstractOrderItemState.SimpleOrderItemState.class);
+        org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
+            .add(org.hibernate.criterion.Restrictions.eq("orderItemId.orderId", orderId))
+            ;
+        return criteria.add(partIdCondition).list();
+    }
+
+    @Transactional(readOnly = true)
+    public OrderShipGroupState getOrderShipGroup(String orderId, Long shipGroupSeqId) {
         OrderShipGroupId entityId = new OrderShipGroupId(orderId, shipGroupSeqId);
         return (OrderShipGroupState) getCurrentSession().get(AbstractOrderShipGroupState.SimpleOrderShipGroupState.class, entityId);
     }
 
     @Transactional(readOnly = true)
-    public OrderItemShipGroupAssociationState getOrderItemShipGroupAssociation(String orderId, Long orderShipGroupShipGroupSeqId, String orderItemSeqId)
-    {
+    public Iterable<OrderShipGroupState> getOrderShipGroups(String orderId) {
+        Criteria criteria = getCurrentSession().createCriteria(AbstractOrderShipGroupState.SimpleOrderShipGroupState.class);
+        org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
+            .add(org.hibernate.criterion.Restrictions.eq("orderShipGroupId.orderId", orderId))
+            ;
+        return criteria.add(partIdCondition).list();
+    }
+
+    @Transactional(readOnly = true)
+    public OrderItemShipGroupAssociationState getOrderItemShipGroupAssociation(String orderId, Long orderShipGroupShipGroupSeqId, String orderItemSeqId) {
         OrderItemShipGroupAssociationId entityId = new OrderItemShipGroupAssociationId(orderId, orderShipGroupShipGroupSeqId, orderItemSeqId);
         return (OrderItemShipGroupAssociationState) getCurrentSession().get(AbstractOrderItemShipGroupAssociationState.SimpleOrderItemShipGroupAssociationState.class, entityId);
+    }
+
+    @Transactional(readOnly = true)
+    public Iterable<OrderItemShipGroupAssociationState> getOrderItemShipGroupAssociations(String orderId, Long orderShipGroupShipGroupSeqId) {
+        Criteria criteria = getCurrentSession().createCriteria(AbstractOrderItemShipGroupAssociationState.SimpleOrderItemShipGroupAssociationState.class);
+        org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
+            .add(org.hibernate.criterion.Restrictions.eq("orderItemShipGroupAssociationId.orderId", orderId))
+            .add(org.hibernate.criterion.Restrictions.eq("orderItemShipGroupAssociationId.orderShipGroupShipGroupSeqId", orderShipGroupShipGroupSeqId))
+            ;
+        return criteria.add(partIdCondition).list();
     }
 
 

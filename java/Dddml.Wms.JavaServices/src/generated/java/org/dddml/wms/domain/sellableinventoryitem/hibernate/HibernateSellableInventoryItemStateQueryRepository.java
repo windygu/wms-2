@@ -133,10 +133,20 @@ public class HibernateSellableInventoryItemStateQueryRepository implements Sella
     }
 
     @Transactional(readOnly = true)
-    public SellableInventoryItemEntryState getSellableInventoryItemEntry(InventoryItemId sellableInventoryItemId, Long entrySeqId)
-    {
+    public SellableInventoryItemEntryState getSellableInventoryItemEntry(InventoryItemId sellableInventoryItemId, Long entrySeqId) {
         SellableInventoryItemEntryId entityId = new SellableInventoryItemEntryId(sellableInventoryItemId, entrySeqId);
         return (SellableInventoryItemEntryState) getCurrentSession().get(AbstractSellableInventoryItemEntryState.SimpleSellableInventoryItemEntryState.class, entityId);
+    }
+
+    @Transactional(readOnly = true)
+    public Iterable<SellableInventoryItemEntryState> getSellableInventoryItemEntries(InventoryItemId sellableInventoryItemId) {
+        Criteria criteria = getCurrentSession().createCriteria(AbstractSellableInventoryItemEntryState.SimpleSellableInventoryItemEntryState.class);
+        org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
+            .add(org.hibernate.criterion.Restrictions.eq("sellableInventoryItemEntryId.sellableInventoryItemIdProductId", sellableInventoryItemId.getProductId()))
+            .add(org.hibernate.criterion.Restrictions.eq("sellableInventoryItemEntryId.sellableInventoryItemIdLocatorId", sellableInventoryItemId.getLocatorId()))
+            .add(org.hibernate.criterion.Restrictions.eq("sellableInventoryItemEntryId.sellableInventoryItemIdAttributeSetInstanceId", sellableInventoryItemId.getAttributeSetInstanceId()))
+            ;
+        return criteria.add(partIdCondition).list();
     }
 
 

@@ -134,10 +134,18 @@ public class HibernatePicklistStateQueryRepository implements PicklistStateQuery
     }
 
     @Transactional(readOnly = true)
-    public PicklistRoleState getPicklistRole(String picklistId, PartyRoleId partyRoleId)
-    {
+    public PicklistRoleState getPicklistRole(String picklistId, PartyRoleId partyRoleId) {
         PicklistRoleId entityId = new PicklistRoleId(picklistId, partyRoleId);
         return (PicklistRoleState) getCurrentSession().get(AbstractPicklistRoleState.SimplePicklistRoleState.class, entityId);
+    }
+
+    @Transactional(readOnly = true)
+    public Iterable<PicklistRoleState> getPicklistRoles(String picklistId) {
+        Criteria criteria = getCurrentSession().createCriteria(AbstractPicklistRoleState.SimplePicklistRoleState.class);
+        org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
+            .add(org.hibernate.criterion.Restrictions.eq("picklistRoleId.picklistId", picklistId))
+            ;
+        return criteria.add(partIdCondition).list();
     }
 
 

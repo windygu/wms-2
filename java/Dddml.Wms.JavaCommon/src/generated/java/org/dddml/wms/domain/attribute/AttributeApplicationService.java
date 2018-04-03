@@ -36,7 +36,11 @@ public interface AttributeApplicationService
 
     AttributeValueState getAttributeValue(String attributeId, String value);
 
+    Iterable<AttributeValueState> getAttributeValues(String attributeId);
+
     AttributeAliasState getAttributeAlias(String attributeId, String code);
+
+    Iterable<AttributeAliasState> getAttributeAlias(String attributeId);
 
 }
 

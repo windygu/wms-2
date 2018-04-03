@@ -207,6 +207,17 @@ public class AttributeSetResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @Path("{attributeSetId}/AttributeUses/") @GET
+    public AttributeUseStateDto[] getAttributeUses(@PathParam("attributeSetId") String attributeSetId) {
+        try {
+            Iterable<AttributeUseState> states = attributeSetApplicationService.getAttributeUses(attributeSetId);
+            if (states == null) { return null; }
+            AttributeUseStateDto.DtoConverter dtoConverter = new AttributeUseStateDto.DtoConverter();
+            dtoConverter.setAllFieldsReturned(true);
+            return dtoConverter.toAttributeUseStateDtoArray(states);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
 
     protected  AttributeSetStateEventDtoConverter getAttributeSetStateEventDtoConverter() {
         return new AttributeSetStateEventDtoConverter();

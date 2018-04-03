@@ -133,17 +133,33 @@ public class HibernateAttributeStateQueryRepository implements AttributeStateQue
     }
 
     @Transactional(readOnly = true)
-    public AttributeValueState getAttributeValue(String attributeId, String value)
-    {
+    public AttributeValueState getAttributeValue(String attributeId, String value) {
         AttributeValueId entityId = new AttributeValueId(attributeId, value);
         return (AttributeValueState) getCurrentSession().get(AbstractAttributeValueState.SimpleAttributeValueState.class, entityId);
     }
 
     @Transactional(readOnly = true)
-    public AttributeAliasState getAttributeAlias(String attributeId, String code)
-    {
+    public Iterable<AttributeValueState> getAttributeValues(String attributeId) {
+        Criteria criteria = getCurrentSession().createCriteria(AbstractAttributeValueState.SimpleAttributeValueState.class);
+        org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
+            .add(org.hibernate.criterion.Restrictions.eq("attributeValueId.attributeId", attributeId))
+            ;
+        return criteria.add(partIdCondition).list();
+    }
+
+    @Transactional(readOnly = true)
+    public AttributeAliasState getAttributeAlias(String attributeId, String code) {
         AttributeAliasId entityId = new AttributeAliasId(attributeId, code);
         return (AttributeAliasState) getCurrentSession().get(AbstractAttributeAliasState.SimpleAttributeAliasState.class, entityId);
+    }
+
+    @Transactional(readOnly = true)
+    public Iterable<AttributeAliasState> getAttributeAlias(String attributeId) {
+        Criteria criteria = getCurrentSession().createCriteria(AbstractAttributeAliasState.SimpleAttributeAliasState.class);
+        org.hibernate.criterion.Junction partIdCondition = org.hibernate.criterion.Restrictions.conjunction()
+            .add(org.hibernate.criterion.Restrictions.eq("attributeAliasId.attributeId", attributeId))
+            ;
+        return criteria.add(partIdCondition).list();
     }
 
 

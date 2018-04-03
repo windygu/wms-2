@@ -28,5 +28,7 @@ public interface AttributeSetStateQueryRepository
 
     AttributeUseState getAttributeUse(String attributeSetId, String attributeId);
 
+    Iterable<AttributeUseState> getAttributeUses(String attributeSetId);
+
 }
 

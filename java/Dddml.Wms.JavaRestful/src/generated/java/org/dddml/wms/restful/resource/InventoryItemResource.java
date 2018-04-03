@@ -171,6 +171,22 @@ public class InventoryItemResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
+    @Path("{inventoryItemId}/InventoryItemEntries/") @GET
+    public InventoryItemEntryStateDto[] getInventoryItemEntries(@PathParam("inventoryItemId") String inventoryItemId) {
+        try {
+            Iterable<InventoryItemEntryState> states = inventoryItemApplicationService.getInventoryItemEntries((new AbstractValueObjectTextFormatter<InventoryItemId>(InventoryItemId.class, ",") {
+                        @Override
+                        protected Class<?> getClassByTypeName(String type) {
+                            return BoundedContextMetadata.CLASS_MAP.get(type);
+                        }
+                    }.parse(inventoryItemId)));
+            if (states == null) { return null; }
+            InventoryItemEntryStateDto.DtoConverter dtoConverter = new InventoryItemEntryStateDto.DtoConverter();
+            dtoConverter.setAllFieldsReturned(true);
+            return dtoConverter.toInventoryItemEntryStateDtoArray(states);
+        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
+    }
+
 
     protected  InventoryItemStateEventDtoConverter getInventoryItemStateEventDtoConverter() {
         return new InventoryItemStateEventDtoConverter();
