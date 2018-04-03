@@ -103,6 +103,9 @@ public class CreateOrMergePatchShipmentTypeDto extends AbstractShipmentTypeComma
 
     public ShipmentTypeCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             return toCreateShipmentType();
         } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {

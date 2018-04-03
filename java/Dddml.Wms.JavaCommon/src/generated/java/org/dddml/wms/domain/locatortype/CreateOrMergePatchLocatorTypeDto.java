@@ -62,6 +62,9 @@ public class CreateOrMergePatchLocatorTypeDto extends AbstractLocatorTypeCommand
 
     public LocatorTypeCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractLocatorTypeCommand.SimpleCreateLocatorType command = new AbstractLocatorTypeCommand.SimpleCreateLocatorType();
             copyTo((AbstractLocatorTypeCommand.AbstractCreateLocatorType) command);

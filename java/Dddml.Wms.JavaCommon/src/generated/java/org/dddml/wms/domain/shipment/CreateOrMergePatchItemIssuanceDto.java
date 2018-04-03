@@ -362,6 +362,9 @@ public class CreateOrMergePatchItemIssuanceDto extends AbstractItemIssuanceComma
 
     public ItemIssuanceCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractItemIssuanceCommand.SimpleCreateItemIssuance command = new AbstractItemIssuanceCommand.SimpleCreateItemIssuance();
             copyTo((AbstractItemIssuanceCommand.AbstractCreateItemIssuance) command);

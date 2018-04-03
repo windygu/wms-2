@@ -37,6 +37,9 @@ public class CreateOrMergePatchOrganizationStructureDto extends AbstractOrganiza
 
     public OrganizationStructureCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractOrganizationStructureCommand.SimpleCreateOrganizationStructure command = new AbstractOrganizationStructureCommand.SimpleCreateOrganizationStructure();
             copyTo((AbstractOrganizationStructureCommand.AbstractCreateOrganizationStructure) command);

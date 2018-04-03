@@ -87,6 +87,9 @@ public class CreateOrMergePatchShipmentMethodTypeDto extends AbstractShipmentMet
 
     public ShipmentMethodTypeCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractShipmentMethodTypeCommand.SimpleCreateShipmentMethodType command = new AbstractShipmentMethodTypeCommand.SimpleCreateShipmentMethodType();
             copyTo((AbstractShipmentMethodTypeCommand.AbstractCreateShipmentMethodType) command);

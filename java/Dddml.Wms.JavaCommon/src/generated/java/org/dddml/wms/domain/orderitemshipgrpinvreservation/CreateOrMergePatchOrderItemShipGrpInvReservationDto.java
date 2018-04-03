@@ -287,6 +287,9 @@ public class CreateOrMergePatchOrderItemShipGrpInvReservationDto extends Abstrac
 
     public OrderItemShipGrpInvReservationCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractOrderItemShipGrpInvReservationCommand.SimpleCreateOrderItemShipGrpInvReservation command = new AbstractOrderItemShipGrpInvReservationCommand.SimpleCreateOrderItemShipGrpInvReservation();
             copyTo((AbstractOrderItemShipGrpInvReservationCommand.AbstractCreateOrderItemShipGrpInvReservation) command);

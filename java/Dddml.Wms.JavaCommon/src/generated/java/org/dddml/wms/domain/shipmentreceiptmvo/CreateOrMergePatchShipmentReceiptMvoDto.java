@@ -1263,6 +1263,9 @@ public class CreateOrMergePatchShipmentReceiptMvoDto extends AbstractShipmentRec
 
     public ShipmentReceiptMvoCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractShipmentReceiptMvoCommand.SimpleCreateShipmentReceiptMvo command = new AbstractShipmentReceiptMvoCommand.SimpleCreateShipmentReceiptMvo();
             copyTo((AbstractShipmentReceiptMvoCommand.AbstractCreateShipmentReceiptMvo) command);

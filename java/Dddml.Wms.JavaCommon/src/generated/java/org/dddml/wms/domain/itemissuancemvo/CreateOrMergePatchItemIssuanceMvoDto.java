@@ -1138,6 +1138,9 @@ public class CreateOrMergePatchItemIssuanceMvoDto extends AbstractItemIssuanceMv
 
     public ItemIssuanceMvoCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractItemIssuanceMvoCommand.SimpleCreateItemIssuanceMvo command = new AbstractItemIssuanceMvoCommand.SimpleCreateItemIssuanceMvo();
             copyTo((AbstractItemIssuanceMvoCommand.AbstractCreateItemIssuanceMvo) command);

@@ -439,6 +439,9 @@ public class CreateOrMergePatchInventoryItemEntryMvoDto extends AbstractInventor
 
     public InventoryItemEntryMvoCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractInventoryItemEntryMvoCommand.SimpleCreateInventoryItemEntryMvo command = new AbstractInventoryItemEntryMvoCommand.SimpleCreateInventoryItemEntryMvo();
             copyTo((AbstractInventoryItemEntryMvoCommand.AbstractCreateInventoryItemEntryMvo) command);

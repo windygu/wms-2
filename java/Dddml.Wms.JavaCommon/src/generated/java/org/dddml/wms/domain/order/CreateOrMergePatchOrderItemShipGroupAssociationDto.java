@@ -87,6 +87,9 @@ public class CreateOrMergePatchOrderItemShipGroupAssociationDto extends Abstract
 
     public OrderItemShipGroupAssociationCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractOrderItemShipGroupAssociationCommand.SimpleCreateOrderItemShipGroupAssociation command = new AbstractOrderItemShipGroupAssociationCommand.SimpleCreateOrderItemShipGroupAssociation();
             copyTo((AbstractOrderItemShipGroupAssociationCommand.AbstractCreateOrderItemShipGroupAssociation) command);

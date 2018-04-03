@@ -1663,6 +1663,9 @@ public class CreateOrMergePatchOrderItemMvoDto extends AbstractOrderItemMvoComma
 
     public OrderItemMvoCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractOrderItemMvoCommand.SimpleCreateOrderItemMvo command = new AbstractOrderItemMvoCommand.SimpleCreateOrderItemMvo();
             copyTo((AbstractOrderItemMvoCommand.AbstractCreateOrderItemMvo) command);

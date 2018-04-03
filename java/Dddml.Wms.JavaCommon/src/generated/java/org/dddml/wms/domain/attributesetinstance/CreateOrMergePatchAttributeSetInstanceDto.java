@@ -1713,6 +1713,9 @@ public class CreateOrMergePatchAttributeSetInstanceDto extends AbstractAttribute
 
     public AttributeSetInstanceCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractAttributeSetInstanceCommand.SimpleCreateAttributeSetInstance command = new AbstractAttributeSetInstanceCommand.SimpleCreateAttributeSetInstance();
             copyTo((AbstractAttributeSetInstanceCommand.AbstractCreateAttributeSetInstance) command);

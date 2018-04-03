@@ -79,6 +79,9 @@ public class CreateOrMergePatchDocumentTypeDto extends AbstractDocumentTypeComma
 
     public DocumentTypeCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             return toCreateDocumentType();
         } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {

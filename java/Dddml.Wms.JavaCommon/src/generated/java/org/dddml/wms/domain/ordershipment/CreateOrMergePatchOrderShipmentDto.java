@@ -62,6 +62,9 @@ public class CreateOrMergePatchOrderShipmentDto extends AbstractOrderShipmentCom
 
     public OrderShipmentCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractOrderShipmentCommand.SimpleCreateOrderShipment command = new AbstractOrderShipmentCommand.SimpleCreateOrderShipment();
             copyTo((AbstractOrderShipmentCommand.AbstractCreateOrderShipment) command);

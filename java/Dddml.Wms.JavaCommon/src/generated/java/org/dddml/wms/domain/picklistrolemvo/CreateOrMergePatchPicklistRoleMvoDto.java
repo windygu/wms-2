@@ -363,6 +363,9 @@ public class CreateOrMergePatchPicklistRoleMvoDto extends AbstractPicklistRoleMv
 
     public PicklistRoleMvoCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractPicklistRoleMvoCommand.SimpleCreatePicklistRoleMvo command = new AbstractPicklistRoleMvoCommand.SimpleCreatePicklistRoleMvo();
             copyTo((AbstractPicklistRoleMvoCommand.AbstractCreatePicklistRoleMvo) command);

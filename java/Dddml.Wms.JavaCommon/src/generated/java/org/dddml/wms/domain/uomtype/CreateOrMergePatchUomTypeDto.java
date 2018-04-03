@@ -103,6 +103,9 @@ public class CreateOrMergePatchUomTypeDto extends AbstractUomTypeCommandDto
 
     public UomTypeCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             return toCreateUomType();
         } else if (COMMAND_TYPE_MERGE_PATCH.equals(getCommandType())) {

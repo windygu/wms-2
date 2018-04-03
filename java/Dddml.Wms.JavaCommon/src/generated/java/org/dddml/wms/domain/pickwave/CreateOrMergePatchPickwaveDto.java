@@ -87,6 +87,9 @@ public class CreateOrMergePatchPickwaveDto extends AbstractPickwaveCommandDto
 
     public PickwaveCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractPickwaveCommand.SimpleCreatePickwave command = new AbstractPickwaveCommand.SimpleCreatePickwave();
             copyTo((AbstractPickwaveCommand.AbstractCreatePickwave) command);

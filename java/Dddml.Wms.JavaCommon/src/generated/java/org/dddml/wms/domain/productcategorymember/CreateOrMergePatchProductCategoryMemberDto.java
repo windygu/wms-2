@@ -137,6 +137,9 @@ public class CreateOrMergePatchProductCategoryMemberDto extends AbstractProductC
 
     public ProductCategoryMemberCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractProductCategoryMemberCommand.SimpleCreateProductCategoryMember command = new AbstractProductCategoryMemberCommand.SimpleCreateProductCategoryMember();
             copyTo((AbstractProductCategoryMemberCommand.AbstractCreateProductCategoryMember) command);

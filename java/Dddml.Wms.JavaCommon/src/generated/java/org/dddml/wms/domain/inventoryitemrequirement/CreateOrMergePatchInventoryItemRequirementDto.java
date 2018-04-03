@@ -52,6 +52,9 @@ public class CreateOrMergePatchInventoryItemRequirementDto extends AbstractInven
 
     public InventoryItemRequirementCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractInventoryItemRequirementCommand.SimpleCreateInventoryItemRequirement command = new AbstractInventoryItemRequirementCommand.SimpleCreateInventoryItemRequirement();
             copyTo((AbstractInventoryItemRequirementCommand.AbstractCreateInventoryItemRequirement) command);

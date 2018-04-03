@@ -240,6 +240,9 @@ public class CreateOrMergePatchInventoryItemRequirementEntryMvoDto extends Abstr
 
     public InventoryItemRequirementEntryMvoCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractInventoryItemRequirementEntryMvoCommand.SimpleCreateInventoryItemRequirementEntryMvo command = new AbstractInventoryItemRequirementEntryMvoCommand.SimpleCreateInventoryItemRequirementEntryMvo();
             copyTo((AbstractInventoryItemRequirementEntryMvoCommand.AbstractCreateInventoryItemRequirementEntryMvo) command);

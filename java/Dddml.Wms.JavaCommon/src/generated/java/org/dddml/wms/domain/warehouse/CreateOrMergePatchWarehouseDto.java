@@ -112,6 +112,9 @@ public class CreateOrMergePatchWarehouseDto extends AbstractWarehouseCommandDto
 
     public WarehouseCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractWarehouseCommand.SimpleCreateWarehouse command = new AbstractWarehouseCommand.SimpleCreateWarehouse();
             copyTo((AbstractWarehouseCommand.AbstractCreateWarehouse) command);

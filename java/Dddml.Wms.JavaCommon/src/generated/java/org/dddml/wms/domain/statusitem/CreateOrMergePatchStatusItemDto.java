@@ -137,6 +137,9 @@ public class CreateOrMergePatchStatusItemDto extends AbstractStatusItemCommandDt
 
     public StatusItemCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractStatusItemCommand.SimpleCreateStatusItem command = new AbstractStatusItemCommand.SimpleCreateStatusItem();
             copyTo((AbstractStatusItemCommand.AbstractCreateStatusItem) command);

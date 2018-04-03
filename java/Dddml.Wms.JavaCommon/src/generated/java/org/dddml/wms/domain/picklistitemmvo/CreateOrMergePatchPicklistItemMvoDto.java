@@ -363,6 +363,9 @@ public class CreateOrMergePatchPicklistItemMvoDto extends AbstractPicklistItemMv
 
     public PicklistItemMvoCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractPicklistItemMvoCommand.SimpleCreatePicklistItemMvo command = new AbstractPicklistItemMvoCommand.SimpleCreatePicklistItemMvo();
             copyTo((AbstractPicklistItemMvoCommand.AbstractCreatePicklistItemMvo) command);

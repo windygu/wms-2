@@ -376,6 +376,9 @@ public class CreateOrMergePatchPhysicalInventoryDto extends AbstractPhysicalInve
 
     public PhysicalInventoryCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractPhysicalInventoryCommand.SimpleCreatePhysicalInventory command = new AbstractPhysicalInventoryCommand.SimpleCreatePhysicalInventory();
             copyTo((AbstractPhysicalInventoryCommand.AbstractCreatePhysicalInventory) command);

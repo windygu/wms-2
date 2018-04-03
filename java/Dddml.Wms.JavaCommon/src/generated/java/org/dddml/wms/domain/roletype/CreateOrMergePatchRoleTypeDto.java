@@ -112,6 +112,9 @@ public class CreateOrMergePatchRoleTypeDto extends AbstractRoleTypeCommandDto
 
     public RoleTypeCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractRoleTypeCommand.SimpleCreateRoleType command = new AbstractRoleTypeCommand.SimpleCreateRoleType();
             copyTo((AbstractRoleTypeCommand.AbstractCreateRoleType) command);

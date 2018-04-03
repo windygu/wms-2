@@ -62,6 +62,9 @@ public class CreateOrMergePatchInventoryPRTriggeredDto extends AbstractInventory
 
     public InventoryPRTriggeredCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractInventoryPRTriggeredCommand.SimpleCreateInventoryPRTriggered command = new AbstractInventoryPRTriggeredCommand.SimpleCreateInventoryPRTriggered();
             copyTo((AbstractInventoryPRTriggeredCommand.AbstractCreateInventoryPRTriggered) command);

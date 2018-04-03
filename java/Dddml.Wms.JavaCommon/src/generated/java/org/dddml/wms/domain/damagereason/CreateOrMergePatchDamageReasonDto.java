@@ -87,6 +87,9 @@ public class CreateOrMergePatchDamageReasonDto extends AbstractDamageReasonComma
 
     public DamageReasonCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractDamageReasonCommand.SimpleCreateDamageReason command = new AbstractDamageReasonCommand.SimpleCreateDamageReason();
             copyTo((AbstractDamageReasonCommand.AbstractCreateDamageReason) command);

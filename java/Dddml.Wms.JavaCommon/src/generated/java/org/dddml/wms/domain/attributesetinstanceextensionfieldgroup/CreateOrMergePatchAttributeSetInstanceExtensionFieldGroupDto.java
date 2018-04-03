@@ -162,6 +162,9 @@ public class CreateOrMergePatchAttributeSetInstanceExtensionFieldGroupDto extend
 
     public AttributeSetInstanceExtensionFieldGroupCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractAttributeSetInstanceExtensionFieldGroupCommand.SimpleCreateAttributeSetInstanceExtensionFieldGroup command = new AbstractAttributeSetInstanceExtensionFieldGroupCommand.SimpleCreateAttributeSetInstanceExtensionFieldGroup();
             copyTo((AbstractAttributeSetInstanceExtensionFieldGroupCommand.AbstractCreateAttributeSetInstanceExtensionFieldGroup) command);

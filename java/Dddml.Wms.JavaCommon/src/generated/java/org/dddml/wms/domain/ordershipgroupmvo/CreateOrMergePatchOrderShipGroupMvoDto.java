@@ -1238,6 +1238,9 @@ public class CreateOrMergePatchOrderShipGroupMvoDto extends AbstractOrderShipGro
 
     public OrderShipGroupMvoCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractOrderShipGroupMvoCommand.SimpleCreateOrderShipGroupMvo command = new AbstractOrderShipGroupMvoCommand.SimpleCreateOrderShipGroupMvo();
             copyTo((AbstractOrderShipGroupMvoCommand.AbstractCreateOrderShipGroupMvo) command);

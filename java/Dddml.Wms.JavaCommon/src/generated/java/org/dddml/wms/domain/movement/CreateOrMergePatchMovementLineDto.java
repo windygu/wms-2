@@ -213,6 +213,9 @@ public class CreateOrMergePatchMovementLineDto extends AbstractMovementLineComma
 
     public MovementLineCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractMovementLineCommand.SimpleCreateMovementLine command = new AbstractMovementLineCommand.SimpleCreateMovementLine();
             copyTo((AbstractMovementLineCommand.AbstractCreateMovementLine) command);

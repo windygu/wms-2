@@ -112,6 +112,9 @@ public class CreateOrMergePatchShipmentPackageContentDto extends AbstractShipmen
 
     public ShipmentPackageContentCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractShipmentPackageContentCommand.SimpleCreateShipmentPackageContent command = new AbstractShipmentPackageContentCommand.SimpleCreateShipmentPackageContent();
             copyTo((AbstractShipmentPackageContentCommand.AbstractCreateShipmentPackageContent) command);

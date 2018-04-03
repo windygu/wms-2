@@ -87,6 +87,9 @@ public class CreateOrMergePatchLotDto extends AbstractLotCommandDto
 
     public LotCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractLotCommand.SimpleCreateLot command = new AbstractLotCommand.SimpleCreateLot();
             copyTo((AbstractLotCommand.AbstractCreateLot) command);

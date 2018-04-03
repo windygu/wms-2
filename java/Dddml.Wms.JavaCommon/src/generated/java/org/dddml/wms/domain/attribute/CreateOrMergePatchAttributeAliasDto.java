@@ -62,6 +62,9 @@ public class CreateOrMergePatchAttributeAliasDto extends AbstractAttributeAliasC
 
     public AttributeAliasCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractAttributeAliasCommand.SimpleCreateAttributeAlias command = new AbstractAttributeAliasCommand.SimpleCreateAttributeAlias();
             copyTo((AbstractAttributeAliasCommand.AbstractCreateAttributeAlias) command);

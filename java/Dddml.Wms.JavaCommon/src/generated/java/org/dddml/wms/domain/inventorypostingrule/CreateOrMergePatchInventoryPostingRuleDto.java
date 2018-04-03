@@ -163,6 +163,9 @@ public class CreateOrMergePatchInventoryPostingRuleDto extends AbstractInventory
 
     public InventoryPostingRuleCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractInventoryPostingRuleCommand.SimpleCreateInventoryPostingRule command = new AbstractInventoryPostingRuleCommand.SimpleCreateInventoryPostingRule();
             copyTo((AbstractInventoryPostingRuleCommand.AbstractCreateInventoryPostingRule) command);

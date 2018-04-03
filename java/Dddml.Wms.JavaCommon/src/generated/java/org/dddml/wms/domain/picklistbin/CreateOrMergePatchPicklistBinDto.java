@@ -149,6 +149,9 @@ public class CreateOrMergePatchPicklistBinDto extends AbstractPicklistBinCommand
 
     public PicklistBinCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractPicklistBinCommand.SimpleCreatePicklistBin command = new AbstractPicklistBinCommand.SimpleCreatePicklistBin();
             copyTo((AbstractPicklistBinCommand.AbstractCreatePicklistBin) command);

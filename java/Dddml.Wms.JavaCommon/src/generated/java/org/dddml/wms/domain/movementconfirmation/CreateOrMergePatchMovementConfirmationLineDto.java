@@ -213,6 +213,9 @@ public class CreateOrMergePatchMovementConfirmationLineDto extends AbstractMovem
 
     public MovementConfirmationLineCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractMovementConfirmationLineCommand.SimpleCreateMovementConfirmationLine command = new AbstractMovementConfirmationLineCommand.SimpleCreateMovementConfirmationLine();
             copyTo((AbstractMovementConfirmationLineCommand.AbstractCreateMovementConfirmationLine) command);

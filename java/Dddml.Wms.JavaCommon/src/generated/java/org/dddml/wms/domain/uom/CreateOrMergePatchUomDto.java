@@ -112,6 +112,9 @@ public class CreateOrMergePatchUomDto extends AbstractUomCommandDto
 
     public UomCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractUomCommand.SimpleCreateUom command = new AbstractUomCommand.SimpleCreateUom();
             copyTo((AbstractUomCommand.AbstractCreateUom) command);

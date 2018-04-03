@@ -463,6 +463,9 @@ public class CreateOrMergePatchAttributeAliasMvoDto extends AbstractAttributeAli
 
     public AttributeAliasMvoCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractAttributeAliasMvoCommand.SimpleCreateAttributeAliasMvo command = new AbstractAttributeAliasMvoCommand.SimpleCreateAttributeAliasMvo();
             copyTo((AbstractAttributeAliasMvoCommand.AbstractCreateAttributeAliasMvo) command);

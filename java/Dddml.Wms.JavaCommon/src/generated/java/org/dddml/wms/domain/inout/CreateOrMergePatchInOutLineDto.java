@@ -313,6 +313,9 @@ public class CreateOrMergePatchInOutLineDto extends AbstractInOutLineCommandDto
 
     public InOutLineCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractInOutLineCommand.SimpleCreateInOutLine command = new AbstractInOutLineCommand.SimpleCreateInOutLine();
             copyTo((AbstractInOutLineCommand.AbstractCreateInOutLine) command);

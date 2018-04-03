@@ -487,6 +487,9 @@ public class CreateOrMergePatchShipmentReceiptDto extends AbstractShipmentReceip
 
     public ShipmentReceiptCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractShipmentReceiptCommand.SimpleCreateShipmentReceipt command = new AbstractShipmentReceiptCommand.SimpleCreateShipmentReceipt();
             copyTo((AbstractShipmentReceiptCommand.AbstractCreateShipmentReceipt) command);

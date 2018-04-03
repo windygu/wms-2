@@ -462,6 +462,9 @@ public class CreateOrMergePatchFacilityDto extends AbstractFacilityCommandDto
 
     public FacilityCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractFacilityCommand.SimpleCreateFacility command = new AbstractFacilityCommand.SimpleCreateFacility();
             copyTo((AbstractFacilityCommand.AbstractCreateFacility) command);

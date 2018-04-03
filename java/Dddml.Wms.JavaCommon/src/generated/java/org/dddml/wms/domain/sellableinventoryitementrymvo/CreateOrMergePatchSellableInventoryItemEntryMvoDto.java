@@ -240,6 +240,9 @@ public class CreateOrMergePatchSellableInventoryItemEntryMvoDto extends Abstract
 
     public SellableInventoryItemEntryMvoCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractSellableInventoryItemEntryMvoCommand.SimpleCreateSellableInventoryItemEntryMvo command = new AbstractSellableInventoryItemEntryMvoCommand.SimpleCreateSellableInventoryItemEntryMvo();
             copyTo((AbstractSellableInventoryItemEntryMvoCommand.AbstractCreateSellableInventoryItemEntryMvo) command);

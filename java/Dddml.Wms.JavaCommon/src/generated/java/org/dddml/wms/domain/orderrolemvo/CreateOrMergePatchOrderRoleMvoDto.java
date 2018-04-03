@@ -788,6 +788,9 @@ public class CreateOrMergePatchOrderRoleMvoDto extends AbstractOrderRoleMvoComma
 
     public OrderRoleMvoCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractOrderRoleMvoCommand.SimpleCreateOrderRoleMvo command = new AbstractOrderRoleMvoCommand.SimpleCreateOrderRoleMvo();
             copyTo((AbstractOrderRoleMvoCommand.AbstractCreateOrderRoleMvo) command);

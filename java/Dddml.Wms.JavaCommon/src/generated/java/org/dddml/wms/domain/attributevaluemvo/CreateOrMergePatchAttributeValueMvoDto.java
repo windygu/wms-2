@@ -513,6 +513,9 @@ public class CreateOrMergePatchAttributeValueMvoDto extends AbstractAttributeVal
 
     public AttributeValueMvoCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractAttributeValueMvoCommand.SimpleCreateAttributeValueMvo command = new AbstractAttributeValueMvoCommand.SimpleCreateAttributeValueMvo();
             copyTo((AbstractAttributeValueMvoCommand.AbstractCreateAttributeValueMvo) command);

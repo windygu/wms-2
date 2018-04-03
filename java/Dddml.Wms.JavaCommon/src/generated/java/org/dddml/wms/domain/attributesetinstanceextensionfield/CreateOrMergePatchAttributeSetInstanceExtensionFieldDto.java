@@ -162,6 +162,9 @@ public class CreateOrMergePatchAttributeSetInstanceExtensionFieldDto extends Abs
 
     public AttributeSetInstanceExtensionFieldCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractAttributeSetInstanceExtensionFieldCommand.SimpleCreateAttributeSetInstanceExtensionField command = new AbstractAttributeSetInstanceExtensionFieldCommand.SimpleCreateAttributeSetInstanceExtensionField();
             copyTo((AbstractAttributeSetInstanceExtensionFieldCommand.AbstractCreateAttributeSetInstanceExtensionField) command);

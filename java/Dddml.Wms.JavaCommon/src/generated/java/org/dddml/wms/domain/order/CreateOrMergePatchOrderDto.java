@@ -674,6 +674,9 @@ public class CreateOrMergePatchOrderDto extends AbstractOrderCommandDto
 
     public OrderCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractOrderCommand.SimpleCreateOrder command = new AbstractOrderCommand.SimpleCreateOrder();
             copyTo((AbstractOrderCommand.AbstractCreateOrder) command);

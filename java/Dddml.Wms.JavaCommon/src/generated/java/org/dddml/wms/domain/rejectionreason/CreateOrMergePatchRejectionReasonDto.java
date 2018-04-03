@@ -62,6 +62,9 @@ public class CreateOrMergePatchRejectionReasonDto extends AbstractRejectionReaso
 
     public RejectionReasonCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractRejectionReasonCommand.SimpleCreateRejectionReason command = new AbstractRejectionReasonCommand.SimpleCreateRejectionReason();
             copyTo((AbstractRejectionReasonCommand.AbstractCreateRejectionReason) command);

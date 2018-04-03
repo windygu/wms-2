@@ -37,6 +37,9 @@ public class CreateOrMergePatchPartyRoleDto extends AbstractPartyRoleCommandDto
 
     public PartyRoleCommand toCommand()
     {
+        if (getCommandType() == null) {
+            setCommandType(COMMAND_TYPE_MERGE_PATCH);
+        }
         if (COMMAND_TYPE_CREATE.equals(getCommandType())) {
             AbstractPartyRoleCommand.SimpleCreatePartyRole command = new AbstractPartyRoleCommand.SimpleCreatePartyRole();
             copyTo((AbstractPartyRoleCommand.AbstractCreatePartyRole) command);
