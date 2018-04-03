@@ -108,7 +108,7 @@ public class PicklistRoleMvoResource {
             }
             picklistRoleMvoApplicationService.when(cmd);
 
-            response.setStatus(Response.Status.CREATED.getStatusCode());
+            response.setStatus(HttpServletResponse.SC_CREATED);
             return cmd.getPicklistRoleId();
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

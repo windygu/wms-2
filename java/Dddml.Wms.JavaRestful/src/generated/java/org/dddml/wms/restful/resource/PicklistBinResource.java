@@ -107,7 +107,7 @@ public class PicklistBinResource {
             }
             picklistBinApplicationService.when(cmd);
 
-            response.setStatus(Response.Status.CREATED.getStatusCode());
+            response.setStatus(HttpServletResponse.SC_CREATED);
             return cmd.getPicklistBinId();
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

@@ -107,7 +107,7 @@ public class RejectionReasonResource {
             }
             rejectionReasonApplicationService.when(cmd);
 
-            response.setStatus(Response.Status.CREATED.getStatusCode());
+            response.setStatus(HttpServletResponse.SC_CREATED);
             return cmd.getRejectionReasonId();
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
