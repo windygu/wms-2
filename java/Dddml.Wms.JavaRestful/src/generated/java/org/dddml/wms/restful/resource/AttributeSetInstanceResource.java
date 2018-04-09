@@ -103,10 +103,7 @@ public class AttributeSetInstanceResource {
     public String post(JSONObject dynamicObject, @Context HttpServletResponse response) {
         try {
             AttributeSetInstanceCommand.CreateAttributeSetInstance cmd = attributeSetInstanceDynamicObjectMapper.toCommandCreate(dynamicObject);
-            if (cmd.getAttributeSetInstanceId() == null) {
-                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "AttributeSetInstance");
-            }
-            attributeSetInstanceApplicationService.when(cmd);
+            String idObj = attributeSetInstanceApplicationService.createWithoutId(cmd);
 
             response.setStatus(HttpServletResponse.SC_CREATED);
             return cmd.getAttributeSetInstanceId();

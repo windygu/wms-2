@@ -67,7 +67,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Tests
 
             Assert.AreEqual("R", resultObj.Color.ToString());
 
-            var urlPost = "AttributeSetInstances/";
+            var urlPost = "AttributeSetInstances";
             TestPostAttributeSetInstance(client, jObject, urlPost);
             TestPostAttributeSetInstance(client, jObject, urlPost);
 

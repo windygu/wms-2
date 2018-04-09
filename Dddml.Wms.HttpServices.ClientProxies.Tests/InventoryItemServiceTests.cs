@@ -38,6 +38,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Tests
             //};
         }
 
+        /*
         [Test]
         public void TestCreateInventoryItem()
         {
@@ -58,6 +59,7 @@ namespace Dddml.Wms.HttpServices.ClientProxies.Tests
 
             service.When(ii);
         }
+        */ 
     }
 
 }
