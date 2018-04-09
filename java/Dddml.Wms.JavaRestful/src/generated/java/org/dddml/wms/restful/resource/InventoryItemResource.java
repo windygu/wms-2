@@ -98,21 +98,6 @@ public class InventoryItemResource {
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }
 
-
-    @POST
-    public InventoryItemId post(CreateOrMergePatchInventoryItemDto.CreateInventoryItemDto value, @Context HttpServletResponse response) {
-        try {
-            InventoryItemCommand.CreateInventoryItem cmd = value.toCreateInventoryItem();
-            if (cmd.getInventoryItemId() == null) {
-                throw DomainError.named("nullId", "Aggregate Id in cmd is null, aggregate name: %1$s.", "InventoryItem");
-            }
-            inventoryItemApplicationService.when(cmd);
-
-            response.setStatus(HttpServletResponse.SC_CREATED);
-            return cmd.getInventoryItemId();
-        } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
-    }
-
     @Path("_metadata/filteringFields") @GET
     public List<PropertyMetadataDto> getMetadataFilteringFields() {
         try {
