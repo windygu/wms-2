@@ -340,7 +340,13 @@ public class XmlEntityDataTool {
                             throw new RuntimeException(String.format("CANNOT get WriteMethod for proeprty '%1$s'.", ppDescriptor.getName()));
                         }
                         if(pref == null) {
-                            throw new RuntimeException(String.format("The parent proeprty '%1$s' is null.", propertyDescriptor.getName()));
+                            //throw new RuntimeException(String.format("The parent proeprty '%1$s' is null.", propertyDescriptor.getName()));
+                            try {
+                                pref = propertyType.newInstance();
+                                propertyDescriptor.getWriteMethod().invoke(b, pref);
+                            } catch (InstantiationException e) {
+                                throw new RuntimeException(e);
+                            }
                         }
                         ppDescriptor.getWriteMethod().invoke(pref, pVal);
                     }
