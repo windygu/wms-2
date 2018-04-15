@@ -2,9 +2,9 @@ package org.dddml.wms.domain.shipment;
 
 import java.util.Date;
 import org.dddml.wms.domain.*;
-import org.dddml.wms.domain.AbstractStateEvent;
+import org.dddml.wms.domain.AbstractEvent;
 
-public class ItemIssuanceStateEventDto extends AbstractStateEvent
+public class ItemIssuanceStateEventDto extends AbstractEvent
 {
 
     private ItemIssuanceEventId itemIssuanceEventId;
@@ -340,7 +340,7 @@ public class ItemIssuanceStateEventDto extends AbstractStateEvent
 	public static class ItemIssuanceStateCreatedDto extends ItemIssuanceStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_CREATED;
         }
@@ -351,7 +351,7 @@ public class ItemIssuanceStateEventDto extends AbstractStateEvent
 	public static class ItemIssuanceStateMergePatchedDto extends ItemIssuanceStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_MERGE_PATCHED;
         }
@@ -362,7 +362,7 @@ public class ItemIssuanceStateEventDto extends AbstractStateEvent
 	public static class ItemIssuanceStateRemovedDto extends ItemIssuanceStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_REMOVED;
         }

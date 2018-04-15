@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+                   assembly="Dddml.Wms.Common" 
+                   namespace="Dddml.Wms.Domain.OrderItemShipGroupAssociationMvo">
+  
+  <class name="OrderItemShipGroupAssociationMvoStateEventBase" table="OrderItemShipGroupAssociationMvoEvents" mutable="false" abstract="true">
+
+    <composite-id name="OrderItemShipGroupAssociationMvoEventId" class="Dddml.Wms.Domain.OrderItemShipGroupAssociationMvo.OrderItemShipGroupAssociationMvoEventId">
+        <key-property name="OrderItemShipGroupAssociationIdOrderId" ><column name="OrderItemShipGroupAssociationIdOrderId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="OrderItemShipGroupAssociationIdOrderShipGroupShipGroupSeqId" ><column name="OrderItemShipGroupAssociationIdOrderShipGroupShipGroupSeqId" sql-type="DECIMAL(20,0)" /></key-property>
+        <key-property name="OrderItemShipGroupAssociationIdOrderItemSeqId" ><column name="OrderItemShipGroupAssociationIdOrderItemSeqId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="OrderVersion" ></key-property>
+    </composite-id>
+    <discriminator column="EventType" type="String" />
+
+    <property name="Quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>
+    <property name="CancelQuantity" ><column name="CancelQuantity" sql-type="DECIMAL(18,6)" /></property>
+    <property name="Version" ></property>
+    <property name="Active" ></property>
+    <property name="OrderShipGroupShipmentMethodTypeId" ><column name="OrderShipGroupShipmentMethodTypeId" sql-type="VARCHAR(20)" /></property>
+    <property name="OrderShipGroupSupplierPartyId" ><column name="OrderShipGroupSupplierPartyId" sql-type="VARCHAR(20)" /></property>
+    <property name="OrderShipGroupVendorPartyId" ><column name="OrderShipGroupVendorPartyId" sql-type="VARCHAR(20)" /></property>
+    <property name="OrderShipGroupCarrierPartyId" ><column name="OrderShipGroupCarrierPartyId" sql-type="VARCHAR(20)" /></property>
+    <property name="OrderShipGroupCarrierRoleTypeId" ><column name="OrderShipGroupCarrierRoleTypeId" sql-type="VARCHAR(20)" /></property>
+    <property name="OrderShipGroupFacilityId" ><column name="OrderShipGroupFacilityId" sql-type="VARCHAR(20)" /></property>
+    <property name="OrderShipGroupContactMechId" ><column name="OrderShipGroupContactMechId" sql-type="VARCHAR(20)" /></property>
+    <property name="OrderShipGroupTelecomContactMechId" ><column name="OrderShipGroupTelecomContactMechId" sql-type="VARCHAR(20)" /></property>
+    <property name="OrderShipGroupTrackingNumber" ><column name="OrderShipGroupTrackingNumber" sql-type="VARCHAR(60)" /></property>
+    <property name="OrderShipGroupShippingInstructions" ><column name="OrderShipGroupShippingInstructions" sql-type="VARCHAR(255)" /></property>
+    <property name="OrderShipGroupMaySplit" ><column name="OrderShipGroupMaySplit" sql-type="CHAR(1)" /></property>
+    <property name="OrderShipGroupGiftMessage" ><column name="OrderShipGroupGiftMessage" sql-type="VARCHAR(255)" /></property>
+    <property name="OrderShipGroupIsGift" ><column name="OrderShipGroupIsGift" sql-type="CHAR(1)" /></property>
+    <property name="OrderShipGroupShipAfterDate" ><column name="OrderShipGroupShipAfterDate" sql-type="DATETIME" /></property>
+    <property name="OrderShipGroupShipByDate" ><column name="OrderShipGroupShipByDate" sql-type="DATETIME" /></property>
+    <property name="OrderShipGroupEstimatedShipDate" ><column name="OrderShipGroupEstimatedShipDate" sql-type="DATETIME" /></property>
+    <property name="OrderShipGroupEstimatedDeliveryDate" ><column name="OrderShipGroupEstimatedDeliveryDate" sql-type="DATETIME" /></property>
+    <property name="OrderShipGroupPickwaveId" ><column name="OrderShipGroupPickwaveId" sql-type="DECIMAL(20,0)" /></property>
+    <property name="OrderShipGroupVersion" ></property>
+    <property name="OrderShipGroupCreatedBy" ></property>
+    <property name="OrderShipGroupCreatedAt" ><column name="OrderShipGroupCreatedAt" sql-type="DATETIME" /></property>
+    <property name="OrderShipGroupUpdatedBy" ></property>
+    <property name="OrderShipGroupUpdatedAt" ><column name="OrderShipGroupUpdatedAt" sql-type="DATETIME" /></property>
+    <property name="OrderShipGroupActive" ></property>
+    <property name="OrderShipGroupDeleted" ></property>
+    <property name="OrderOrderTypeId" ><column name="OrderOrderTypeId" sql-type="VARCHAR(20)" /></property>
+    <property name="OrderOrderName" ><column name="OrderOrderName" sql-type="VARCHAR(100)" /></property>
+    <property name="OrderExternalId" ><column name="OrderExternalId" sql-type="VARCHAR(20)" /></property>
+    <property name="OrderSalesChannelEnumId" ><column name="OrderSalesChannelEnumId" sql-type="VARCHAR(20)" /></property>
+    <property name="OrderOrderDate" ><column name="OrderOrderDate" sql-type="DATETIME" /></property>
+    <property name="OrderPriority" ><column name="OrderPriority" sql-type="CHAR(1)" /></property>
+    <property name="OrderEntryDate" ><column name="OrderEntryDate" sql-type="DATETIME" /></property>
+    <property name="OrderPickSheetPrintedDate" ><column name="OrderPickSheetPrintedDate" sql-type="DATETIME" /></property>
+    <property name="OrderStatusId" ><column name="OrderStatusId" sql-type="VARCHAR(20)" /></property>
+    <property name="OrderCurrencyUom" ><column name="OrderCurrencyUom" sql-type="VARCHAR(20)" /></property>
+    <property name="OrderSyncStatusId" ><column name="OrderSyncStatusId" sql-type="VARCHAR(20)" /></property>
+    <property name="OrderBillingAccountId" ><column name="OrderBillingAccountId" sql-type="VARCHAR(20)" /></property>
+    <property name="OrderOriginFacilityId" ><column name="OrderOriginFacilityId" sql-type="VARCHAR(20)" /></property>
+    <property name="OrderWebSiteId" ><column name="OrderWebSiteId" sql-type="VARCHAR(20)" /></property>
+    <property name="OrderProductStoreId" ><column name="OrderProductStoreId" sql-type="VARCHAR(20)" /></property>
+    <property name="OrderTerminalId" ><column name="OrderTerminalId" sql-type="VARCHAR(60)" /></property>
+    <property name="OrderTransactionId" ><column name="OrderTransactionId" sql-type="VARCHAR(60)" /></property>
+    <property name="OrderAutoOrderShoppingListId" ><column name="OrderAutoOrderShoppingListId" sql-type="VARCHAR(20)" /></property>
+    <property name="OrderNeedsInventoryIssuance" ><column name="OrderNeedsInventoryIssuance" sql-type="CHAR(1)" /></property>
+    <property name="OrderIsRushOrder" ><column name="OrderIsRushOrder" sql-type="CHAR(1)" /></property>
+    <property name="OrderInternalCode" ><column name="OrderInternalCode" sql-type="VARCHAR(60)" /></property>
+    <property name="OrderRemainingSubTotal" ><column name="OrderRemainingSubTotal" sql-type="DECIMAL(18,2)" /></property>
+    <property name="OrderGrandTotal" ><column name="OrderGrandTotal" sql-type="DECIMAL(18,2)" /></property>
+    <property name="OrderInvoicePerShipment" ><column name="OrderInvoicePerShipment" sql-type="CHAR(1)" /></property>
+    <property name="OrderCreatedBy" ></property>
+    <property name="OrderCreatedAt" ><column name="OrderCreatedAt" sql-type="DATETIME" /></property>
+    <property name="OrderUpdatedBy" ></property>
+    <property name="OrderUpdatedAt" ><column name="OrderUpdatedAt" sql-type="DATETIME" /></property>
+    <property name="OrderActive" ></property>
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+    <subclass name="OrderItemShipGroupAssociationMvoStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="OrderItemShipGroupAssociationMvoStateMergePatched"  discriminator-value="MergePatched">
+
+
+        <property name="IsPropertyQuantityRemoved" column="IsPropertyQuantityRemoved"/>
+
+        <property name="IsPropertyCancelQuantityRemoved" column="IsPropertyCancelQuantityRemoved"/>
+
+        <property name="IsPropertyVersionRemoved" column="IsPropertyVersionRemoved"/>
+
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+
+        <property name="IsPropertyOrderShipGroupShipmentMethodTypeIdRemoved" column="IsPropertyOrderShipGroupShipmentMethodTypeIdRemoved"/>
+
+        <property name="IsPropertyOrderShipGroupSupplierPartyIdRemoved" column="IsPropertyOrderShipGroupSupplierPartyIdRemoved"/>
+
+        <property name="IsPropertyOrderShipGroupVendorPartyIdRemoved" column="IsPropertyOrderShipGroupVendorPartyIdRemoved"/>
+
+        <property name="IsPropertyOrderShipGroupCarrierPartyIdRemoved" column="IsPropertyOrderShipGroupCarrierPartyIdRemoved"/>
+
+        <property name="IsPropertyOrderShipGroupCarrierRoleTypeIdRemoved" column="IsPropertyOrderShipGroupCarrierRoleTypeIdRemoved"/>
+
+        <property name="IsPropertyOrderShipGroupFacilityIdRemoved" column="IsPropertyOrderShipGroupFacilityIdRemoved"/>
+
+        <property name="IsPropertyOrderShipGroupContactMechIdRemoved" column="IsPropertyOrderShipGroupContactMechIdRemoved"/>
+
+        <property name="IsPropertyOrderShipGroupTelecomContactMechIdRemoved" column="IsPropertyOrderShipGroupTelecomContactMechIdRemoved"/>
+
+        <property name="IsPropertyOrderShipGroupTrackingNumberRemoved" column="IsPropertyOrderShipGroupTrackingNumberRemoved"/>
+
+        <property name="IsPropertyOrderShipGroupShippingInstructionsRemoved" column="IsPropertyOrderShipGroupShippingInstructionsRemoved"/>
+
+        <property name="IsPropertyOrderShipGroupMaySplitRemoved" column="IsPropertyOrderShipGroupMaySplitRemoved"/>
+
+        <property name="IsPropertyOrderShipGroupGiftMessageRemoved" column="IsPropertyOrderShipGroupGiftMessageRemoved"/>
+
+        <property name="IsPropertyOrderShipGroupIsGiftRemoved" column="IsPropertyOrderShipGroupIsGiftRemoved"/>
+
+        <property name="IsPropertyOrderShipGroupShipAfterDateRemoved" column="IsPropertyOrderShipGroupShipAfterDateRemoved"/>
+
+        <property name="IsPropertyOrderShipGroupShipByDateRemoved" column="IsPropertyOrderShipGroupShipByDateRemoved"/>
+
+        <property name="IsPropertyOrderShipGroupEstimatedShipDateRemoved" column="IsPropertyOrderShipGroupEstimatedShipDateRemoved"/>
+
+        <property name="IsPropertyOrderShipGroupEstimatedDeliveryDateRemoved" column="IsPropertyOrderShipGroupEstimatedDeliveryDateRemoved"/>
+
+        <property name="IsPropertyOrderShipGroupPickwaveIdRemoved" column="IsPropertyOrderShipGroupPickwaveIdRemoved"/>
+
+        <property name="IsPropertyOrderShipGroupVersionRemoved" column="IsPropertyOrderShipGroupVersionRemoved"/>
+
+        <property name="IsPropertyOrderShipGroupCreatedByRemoved" column="IsPropertyOrderShipGroupCreatedByRemoved"/>
+
+        <property name="IsPropertyOrderShipGroupCreatedAtRemoved" column="IsPropertyOrderShipGroupCreatedAtRemoved"/>
+
+        <property name="IsPropertyOrderShipGroupUpdatedByRemoved" column="IsPropertyOrderShipGroupUpdatedByRemoved"/>
+
+        <property name="IsPropertyOrderShipGroupUpdatedAtRemoved" column="IsPropertyOrderShipGroupUpdatedAtRemoved"/>
+
+        <property name="IsPropertyOrderShipGroupActiveRemoved" column="IsPropertyOrderShipGroupActiveRemoved"/>
+
+        <property name="IsPropertyOrderShipGroupDeletedRemoved" column="IsPropertyOrderShipGroupDeletedRemoved"/>
+
+        <property name="IsPropertyOrderOrderTypeIdRemoved" column="IsPropertyOrderOrderTypeIdRemoved"/>
+
+        <property name="IsPropertyOrderOrderNameRemoved" column="IsPropertyOrderOrderNameRemoved"/>
+
+        <property name="IsPropertyOrderExternalIdRemoved" column="IsPropertyOrderExternalIdRemoved"/>
+
+        <property name="IsPropertyOrderSalesChannelEnumIdRemoved" column="IsPropertyOrderSalesChannelEnumIdRemoved"/>
+
+        <property name="IsPropertyOrderOrderDateRemoved" column="IsPropertyOrderOrderDateRemoved"/>
+
+        <property name="IsPropertyOrderPriorityRemoved" column="IsPropertyOrderPriorityRemoved"/>
+
+        <property name="IsPropertyOrderEntryDateRemoved" column="IsPropertyOrderEntryDateRemoved"/>
+
+        <property name="IsPropertyOrderPickSheetPrintedDateRemoved" column="IsPropertyOrderPickSheetPrintedDateRemoved"/>
+
+        <property name="IsPropertyOrderStatusIdRemoved" column="IsPropertyOrderStatusIdRemoved"/>
+
+        <property name="IsPropertyOrderCurrencyUomRemoved" column="IsPropertyOrderCurrencyUomRemoved"/>
+
+        <property name="IsPropertyOrderSyncStatusIdRemoved" column="IsPropertyOrderSyncStatusIdRemoved"/>
+
+        <property name="IsPropertyOrderBillingAccountIdRemoved" column="IsPropertyOrderBillingAccountIdRemoved"/>
+
+        <property name="IsPropertyOrderOriginFacilityIdRemoved" column="IsPropertyOrderOriginFacilityIdRemoved"/>
+
+        <property name="IsPropertyOrderWebSiteIdRemoved" column="IsPropertyOrderWebSiteIdRemoved"/>
+
+        <property name="IsPropertyOrderProductStoreIdRemoved" column="IsPropertyOrderProductStoreIdRemoved"/>
+
+        <property name="IsPropertyOrderTerminalIdRemoved" column="IsPropertyOrderTerminalIdRemoved"/>
+
+        <property name="IsPropertyOrderTransactionIdRemoved" column="IsPropertyOrderTransactionIdRemoved"/>
+
+        <property name="IsPropertyOrderAutoOrderShoppingListIdRemoved" column="IsPropertyOrderAutoOrderShoppingListIdRemoved"/>
+
+        <property name="IsPropertyOrderNeedsInventoryIssuanceRemoved" column="IsPropertyOrderNeedsInventoryIssuanceRemoved"/>
+
+        <property name="IsPropertyOrderIsRushOrderRemoved" column="IsPropertyOrderIsRushOrderRemoved"/>
+
+        <property name="IsPropertyOrderInternalCodeRemoved" column="IsPropertyOrderInternalCodeRemoved"/>
+
+        <property name="IsPropertyOrderRemainingSubTotalRemoved" column="IsPropertyOrderRemainingSubTotalRemoved"/>
+
+        <property name="IsPropertyOrderGrandTotalRemoved" column="IsPropertyOrderGrandTotalRemoved"/>
+
+        <property name="IsPropertyOrderInvoicePerShipmentRemoved" column="IsPropertyOrderInvoicePerShipmentRemoved"/>
+
+        <property name="IsPropertyOrderCreatedByRemoved" column="IsPropertyOrderCreatedByRemoved"/>
+
+        <property name="IsPropertyOrderCreatedAtRemoved" column="IsPropertyOrderCreatedAtRemoved"/>
+
+        <property name="IsPropertyOrderUpdatedByRemoved" column="IsPropertyOrderUpdatedByRemoved"/>
+
+        <property name="IsPropertyOrderUpdatedAtRemoved" column="IsPropertyOrderUpdatedAtRemoved"/>
+
+        <property name="IsPropertyOrderActiveRemoved" column="IsPropertyOrderActiveRemoved"/>
+    </subclass>
+
+    <subclass name="OrderItemShipGroupAssociationMvoStateDeleted"  discriminator-value="Deleted">
+
+    </subclass>
+
+
+
+  </class>
+  
+</hibernate-mapping>

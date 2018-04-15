@@ -62,17 +62,17 @@ namespace Dddml.Wms.Domain.User
 			}
 		}
 
-        public virtual bool StateEventReadOnly { get; set; }
+        public virtual bool EventReadOnly { get; set; }
 
         bool IUserStateEvent.ReadOnly
         {
             get
             {
-                return this.StateEventReadOnly;
+                return this.EventReadOnly;
             }
             set
             {
-                this.StateEventReadOnly = value;
+                this.EventReadOnly = value;
             }
         }
 
@@ -240,7 +240,7 @@ namespace Dddml.Wms.Domain.User
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._userRoleEvents.Values;
                 }
@@ -290,7 +290,7 @@ namespace Dddml.Wms.Domain.User
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._userClaimEvents.Values;
                 }
@@ -340,7 +340,7 @@ namespace Dddml.Wms.Domain.User
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._userPermissionEvents.Values;
                 }
@@ -390,7 +390,7 @@ namespace Dddml.Wms.Domain.User
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._userLoginEvents.Values;
                 }
@@ -499,7 +499,7 @@ namespace Dddml.Wms.Domain.User
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._userRoleEvents.Values;
                 }
@@ -561,7 +561,7 @@ namespace Dddml.Wms.Domain.User
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._userClaimEvents.Values;
                 }
@@ -623,7 +623,7 @@ namespace Dddml.Wms.Domain.User
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._userPermissionEvents.Values;
                 }
@@ -685,7 +685,7 @@ namespace Dddml.Wms.Domain.User
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._userLoginEvents.Values;
                 }
@@ -786,7 +786,7 @@ namespace Dddml.Wms.Domain.User
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._userRoleEvents.Values;
                 }
@@ -836,7 +836,7 @@ namespace Dddml.Wms.Domain.User
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._userClaimEvents.Values;
                 }
@@ -886,7 +886,7 @@ namespace Dddml.Wms.Domain.User
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._userPermissionEvents.Values;
                 }
@@ -936,7 +936,7 @@ namespace Dddml.Wms.Domain.User
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._userLoginEvents.Values;
                 }

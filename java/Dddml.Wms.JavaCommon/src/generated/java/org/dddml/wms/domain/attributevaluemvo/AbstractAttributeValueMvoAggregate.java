@@ -28,19 +28,19 @@ public abstract class AbstractAttributeValueMvoAggregate extends AbstractAggrega
     public void create(AttributeValueMvoCommand.CreateAttributeValueMvo c)
     {
         if (c.getAttributeVersion() == null) { c.setAttributeVersion(AttributeValueMvoState.VERSION_NULL); }
-        AttributeValueMvoStateEvent e = map(c);
+        AttributeValueMvoEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(AttributeValueMvoCommand.MergePatchAttributeValueMvo c)
     {
-        AttributeValueMvoStateEvent e = map(c);
+        AttributeValueMvoEvent e = map(c);
         apply(e);
     }
 
     public void delete(AttributeValueMvoCommand.DeleteAttributeValueMvo c)
     {
-        AttributeValueMvoStateEvent e = map(c);
+        AttributeValueMvoEvent e = map(c);
         apply(e);
     }
 
@@ -55,9 +55,9 @@ public abstract class AbstractAttributeValueMvoAggregate extends AbstractAggrega
         changes.add(e);
     }
 
-    protected AttributeValueMvoStateEvent map(AttributeValueMvoCommand.CreateAttributeValueMvo c) {
+    protected AttributeValueMvoEvent map(AttributeValueMvoCommand.CreateAttributeValueMvo c) {
         AttributeValueMvoEventId stateEventId = new AttributeValueMvoEventId(c.getAttributeValueId(), c.getAttributeVersion());
-        AttributeValueMvoStateEvent.AttributeValueMvoStateCreated e = newAttributeValueMvoStateCreated(stateEventId);
+        AttributeValueMvoEvent.AttributeValueMvoStateCreated e = newAttributeValueMvoStateCreated(stateEventId);
         e.setAttributeValueName(c.getAttributeValueName());
         e.setDescription(c.getDescription());
         e.setReferenceId(c.getReferenceId());
@@ -78,15 +78,15 @@ public abstract class AbstractAttributeValueMvoAggregate extends AbstractAggrega
         e.setAttributeUpdatedAt(c.getAttributeUpdatedAt());
         e.setAttributeActive(c.getAttributeActive());
         e.setAttributeDeleted(c.getAttributeDeleted());
-        ((AbstractAttributeValueMvoStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractAttributeValueMvoEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected AttributeValueMvoStateEvent map(AttributeValueMvoCommand.MergePatchAttributeValueMvo c) {
+    protected AttributeValueMvoEvent map(AttributeValueMvoCommand.MergePatchAttributeValueMvo c) {
         AttributeValueMvoEventId stateEventId = new AttributeValueMvoEventId(c.getAttributeValueId(), c.getAttributeVersion());
-        AttributeValueMvoStateEvent.AttributeValueMvoStateMergePatched e = newAttributeValueMvoStateMergePatched(stateEventId);
+        AttributeValueMvoEvent.AttributeValueMvoStateMergePatched e = newAttributeValueMvoStateMergePatched(stateEventId);
         e.setAttributeValueName(c.getAttributeValueName());
         e.setDescription(c.getDescription());
         e.setReferenceId(c.getReferenceId());
@@ -127,16 +127,16 @@ public abstract class AbstractAttributeValueMvoAggregate extends AbstractAggrega
         e.setIsPropertyAttributeUpdatedAtRemoved(c.getIsPropertyAttributeUpdatedAtRemoved());
         e.setIsPropertyAttributeActiveRemoved(c.getIsPropertyAttributeActiveRemoved());
         e.setIsPropertyAttributeDeletedRemoved(c.getIsPropertyAttributeDeletedRemoved());
-        ((AbstractAttributeValueMvoStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractAttributeValueMvoEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected AttributeValueMvoStateEvent map(AttributeValueMvoCommand.DeleteAttributeValueMvo c) {
+    protected AttributeValueMvoEvent map(AttributeValueMvoCommand.DeleteAttributeValueMvo c) {
         AttributeValueMvoEventId stateEventId = new AttributeValueMvoEventId(c.getAttributeValueId(), c.getAttributeVersion());
-        AttributeValueMvoStateEvent.AttributeValueMvoStateDeleted e = newAttributeValueMvoStateDeleted(stateEventId);
-        ((AbstractAttributeValueMvoStateEvent)e).setCommandId(c.getCommandId());
+        AttributeValueMvoEvent.AttributeValueMvoStateDeleted e = newAttributeValueMvoStateDeleted(stateEventId);
+        ((AbstractAttributeValueMvoEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
@@ -145,44 +145,44 @@ public abstract class AbstractAttributeValueMvoAggregate extends AbstractAggrega
 
     ////////////////////////
 
-    protected AttributeValueMvoStateEvent.AttributeValueMvoStateCreated newAttributeValueMvoStateCreated(Long version, String commandId, String requesterId) {
+    protected AttributeValueMvoEvent.AttributeValueMvoStateCreated newAttributeValueMvoStateCreated(Long version, String commandId, String requesterId) {
         AttributeValueMvoEventId stateEventId = new AttributeValueMvoEventId(this.state.getAttributeValueId(), version);
-        AttributeValueMvoStateEvent.AttributeValueMvoStateCreated e = newAttributeValueMvoStateCreated(stateEventId);
-        ((AbstractAttributeValueMvoStateEvent)e).setCommandId(commandId);
+        AttributeValueMvoEvent.AttributeValueMvoStateCreated e = newAttributeValueMvoStateCreated(stateEventId);
+        ((AbstractAttributeValueMvoEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected AttributeValueMvoStateEvent.AttributeValueMvoStateMergePatched newAttributeValueMvoStateMergePatched(Long version, String commandId, String requesterId) {
+    protected AttributeValueMvoEvent.AttributeValueMvoStateMergePatched newAttributeValueMvoStateMergePatched(Long version, String commandId, String requesterId) {
         AttributeValueMvoEventId stateEventId = new AttributeValueMvoEventId(this.state.getAttributeValueId(), version);
-        AttributeValueMvoStateEvent.AttributeValueMvoStateMergePatched e = newAttributeValueMvoStateMergePatched(stateEventId);
-        ((AbstractAttributeValueMvoStateEvent)e).setCommandId(commandId);
+        AttributeValueMvoEvent.AttributeValueMvoStateMergePatched e = newAttributeValueMvoStateMergePatched(stateEventId);
+        ((AbstractAttributeValueMvoEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected AttributeValueMvoStateEvent.AttributeValueMvoStateDeleted newAttributeValueMvoStateDeleted(Long version, String commandId, String requesterId) {
+    protected AttributeValueMvoEvent.AttributeValueMvoStateDeleted newAttributeValueMvoStateDeleted(Long version, String commandId, String requesterId) {
         AttributeValueMvoEventId stateEventId = new AttributeValueMvoEventId(this.state.getAttributeValueId(), version);
-        AttributeValueMvoStateEvent.AttributeValueMvoStateDeleted e = newAttributeValueMvoStateDeleted(stateEventId);
-        ((AbstractAttributeValueMvoStateEvent)e).setCommandId(commandId);
+        AttributeValueMvoEvent.AttributeValueMvoStateDeleted e = newAttributeValueMvoStateDeleted(stateEventId);
+        ((AbstractAttributeValueMvoEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected AttributeValueMvoStateEvent.AttributeValueMvoStateCreated newAttributeValueMvoStateCreated(AttributeValueMvoEventId stateEventId) {
-        return new AbstractAttributeValueMvoStateEvent.SimpleAttributeValueMvoStateCreated(stateEventId);
+    protected AttributeValueMvoEvent.AttributeValueMvoStateCreated newAttributeValueMvoStateCreated(AttributeValueMvoEventId stateEventId) {
+        return new AbstractAttributeValueMvoEvent.SimpleAttributeValueMvoStateCreated(stateEventId);
     }
 
-    protected AttributeValueMvoStateEvent.AttributeValueMvoStateMergePatched newAttributeValueMvoStateMergePatched(AttributeValueMvoEventId stateEventId) {
-        return new AbstractAttributeValueMvoStateEvent.SimpleAttributeValueMvoStateMergePatched(stateEventId);
+    protected AttributeValueMvoEvent.AttributeValueMvoStateMergePatched newAttributeValueMvoStateMergePatched(AttributeValueMvoEventId stateEventId) {
+        return new AbstractAttributeValueMvoEvent.SimpleAttributeValueMvoStateMergePatched(stateEventId);
     }
 
-    protected AttributeValueMvoStateEvent.AttributeValueMvoStateDeleted newAttributeValueMvoStateDeleted(AttributeValueMvoEventId stateEventId)
+    protected AttributeValueMvoEvent.AttributeValueMvoStateDeleted newAttributeValueMvoStateDeleted(AttributeValueMvoEventId stateEventId)
     {
-        return new AbstractAttributeValueMvoStateEvent.SimpleAttributeValueMvoStateDeleted(stateEventId);
+        return new AbstractAttributeValueMvoEvent.SimpleAttributeValueMvoStateDeleted(stateEventId);
     }
 
     public static class SimpleAttributeValueMvoAggregate extends AbstractAttributeValueMvoAggregate

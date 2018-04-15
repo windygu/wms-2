@@ -7,22 +7,22 @@ import org.dddml.wms.specialization.*;
 
 public class AttributeStateEventDtoConverter {
 
-    public AttributeStateEventDto toAttributeStateEventDto(AbstractAttributeStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractAttributeStateEvent.AbstractAttributeStateCreated) {
-            AttributeStateEvent.AttributeStateCreated e = (AttributeStateEvent.AttributeStateCreated) stateEvent;
+    public AttributeStateEventDto toAttributeStateEventDto(AbstractAttributeEvent stateEvent) {
+        if (stateEvent instanceof AbstractAttributeEvent.AbstractAttributeStateCreated) {
+            AttributeEvent.AttributeStateCreated e = (AttributeEvent.AttributeStateCreated) stateEvent;
             return toAttributeStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractAttributeStateEvent.AbstractAttributeStateMergePatched) {
-            AttributeStateEvent.AttributeStateMergePatched e = (AttributeStateEvent.AttributeStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractAttributeEvent.AbstractAttributeStateMergePatched) {
+            AttributeEvent.AttributeStateMergePatched e = (AttributeEvent.AttributeStateMergePatched) stateEvent;
             return toAttributeStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractAttributeStateEvent.AbstractAttributeStateDeleted) {
-            AttributeStateEvent.AttributeStateDeleted e = (AttributeStateEvent.AttributeStateDeleted) stateEvent;
+        } else if (stateEvent instanceof AbstractAttributeEvent.AbstractAttributeStateDeleted) {
+            AttributeEvent.AttributeStateDeleted e = (AttributeEvent.AttributeStateDeleted) stateEvent;
             return toAttributeStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public AttributeStateEventDto.AttributeStateCreatedDto toAttributeStateCreatedDto(AttributeStateEvent.AttributeStateCreated e) {
+    public AttributeStateEventDto.AttributeStateCreatedDto toAttributeStateCreatedDto(AttributeEvent.AttributeStateCreated e) {
         AttributeStateEventDto.AttributeStateCreatedDto dto = new AttributeStateEventDto.AttributeStateCreatedDto();
         dto.setAttributeEventId(e.getAttributeEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -39,14 +39,14 @@ public class AttributeStateEventDtoConverter {
         dto.setReferenceId(e.getReferenceId());
         dto.setActive(e.getActive());
         List<AttributeValueStateEventDto.AttributeValueStateCreatedDto> attributeValueEvents = new ArrayList<>();
-        for (AttributeValueStateEvent.AttributeValueStateCreated ee : e.getAttributeValueEvents()) {
+        for (AttributeValueEvent.AttributeValueStateCreated ee : e.getAttributeValueEvents()) {
             AttributeValueStateEventDto.AttributeValueStateCreatedDto eeDto = getAttributeValueStateEventDtoConverter().toAttributeValueStateCreatedDto(ee);
             attributeValueEvents.add(eeDto);
         }
         dto.setAttributeValueEvents(attributeValueEvents.toArray(new AttributeValueStateEventDto.AttributeValueStateCreatedDto[0]));
 
         List<AttributeAliasStateEventDto.AttributeAliasStateCreatedDto> attributeAliasEvents = new ArrayList<>();
-        for (AttributeAliasStateEvent.AttributeAliasStateCreated ee : e.getAttributeAliasEvents()) {
+        for (AttributeAliasEvent.AttributeAliasStateCreated ee : e.getAttributeAliasEvents()) {
             AttributeAliasStateEventDto.AttributeAliasStateCreatedDto eeDto = getAttributeAliasStateEventDtoConverter().toAttributeAliasStateCreatedDto(ee);
             attributeAliasEvents.add(eeDto);
         }
@@ -55,7 +55,7 @@ public class AttributeStateEventDtoConverter {
         return dto;
     }
 
-    public AttributeStateEventDto.AttributeStateMergePatchedDto toAttributeStateMergePatchedDto(AttributeStateEvent.AttributeStateMergePatched e) {
+    public AttributeStateEventDto.AttributeStateMergePatchedDto toAttributeStateMergePatchedDto(AttributeEvent.AttributeStateMergePatched e) {
         AttributeStateEventDto.AttributeStateMergePatchedDto dto = new AttributeStateEventDto.AttributeStateMergePatchedDto();
         dto.setAttributeEventId(e.getAttributeEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -82,15 +82,15 @@ public class AttributeStateEventDtoConverter {
         dto.setIsPropertyReferenceIdRemoved(e.getIsPropertyReferenceIdRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
         List<AttributeValueStateEventDto> attributeValueEvents = new ArrayList<>();
-        for (AttributeValueStateEvent ee : e.getAttributeValueEvents()) {
-            AttributeValueStateEventDto eeDto = getAttributeValueStateEventDtoConverter().toAttributeValueStateEventDto((AbstractAttributeValueStateEvent) ee);
+        for (AttributeValueEvent ee : e.getAttributeValueEvents()) {
+            AttributeValueStateEventDto eeDto = getAttributeValueStateEventDtoConverter().toAttributeValueStateEventDto((AbstractAttributeValueEvent) ee);
             attributeValueEvents.add(eeDto);
         }
         dto.setAttributeValueEvents(attributeValueEvents.toArray(new AttributeValueStateEventDto[0]));
 
         List<AttributeAliasStateEventDto> attributeAliasEvents = new ArrayList<>();
-        for (AttributeAliasStateEvent ee : e.getAttributeAliasEvents()) {
-            AttributeAliasStateEventDto eeDto = getAttributeAliasStateEventDtoConverter().toAttributeAliasStateEventDto((AbstractAttributeAliasStateEvent) ee);
+        for (AttributeAliasEvent ee : e.getAttributeAliasEvents()) {
+            AttributeAliasStateEventDto eeDto = getAttributeAliasStateEventDtoConverter().toAttributeAliasStateEventDto((AbstractAttributeAliasEvent) ee);
             attributeAliasEvents.add(eeDto);
         }
         dto.setAttributeAliasEvents(attributeAliasEvents.toArray(new AttributeAliasStateEventDto[0]));
@@ -99,21 +99,21 @@ public class AttributeStateEventDtoConverter {
     }
 
 
-    public AttributeStateEventDto.AttributeStateDeletedDto toAttributeStateDeletedDto(AttributeStateEvent.AttributeStateDeleted e) {
+    public AttributeStateEventDto.AttributeStateDeletedDto toAttributeStateDeletedDto(AttributeEvent.AttributeStateDeleted e) {
         AttributeStateEventDto.AttributeStateDeletedDto dto = new AttributeStateEventDto.AttributeStateDeletedDto();
         dto.setAttributeEventId(e.getAttributeEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
         List<AttributeValueStateEventDto.AttributeValueStateRemovedDto> attributeValueEvents = new ArrayList<>();
-        for (AttributeValueStateEvent.AttributeValueStateRemoved ee : e.getAttributeValueEvents()) {
+        for (AttributeValueEvent.AttributeValueStateRemoved ee : e.getAttributeValueEvents()) {
             AttributeValueStateEventDto.AttributeValueStateRemovedDto eeDto = getAttributeValueStateEventDtoConverter().toAttributeValueStateRemovedDto(ee);
             attributeValueEvents.add(eeDto);
         }
         dto.setAttributeValueEvents(attributeValueEvents.toArray(new AttributeValueStateEventDto.AttributeValueStateRemovedDto[0]));
 
         List<AttributeAliasStateEventDto.AttributeAliasStateRemovedDto> attributeAliasEvents = new ArrayList<>();
-        for (AttributeAliasStateEvent.AttributeAliasStateRemoved ee : e.getAttributeAliasEvents()) {
+        for (AttributeAliasEvent.AttributeAliasStateRemoved ee : e.getAttributeAliasEvents()) {
             AttributeAliasStateEventDto.AttributeAliasStateRemovedDto eeDto = getAttributeAliasStateEventDtoConverter().toAttributeAliasStateRemovedDto(ee);
             attributeAliasEvents.add(eeDto);
         }

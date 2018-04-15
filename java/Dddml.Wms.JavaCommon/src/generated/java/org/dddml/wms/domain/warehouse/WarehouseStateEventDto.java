@@ -2,9 +2,9 @@ package org.dddml.wms.domain.warehouse;
 
 import java.util.Date;
 import org.dddml.wms.domain.*;
-import org.dddml.wms.domain.AbstractStateEvent;
+import org.dddml.wms.domain.AbstractEvent;
 
-public class WarehouseStateEventDto extends AbstractStateEvent
+public class WarehouseStateEventDto extends AbstractEvent
 {
 
     private WarehouseEventId warehouseEventId;
@@ -138,7 +138,7 @@ public class WarehouseStateEventDto extends AbstractStateEvent
 	public static class WarehouseStateCreatedDto extends WarehouseStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_CREATED;
         }
@@ -149,7 +149,7 @@ public class WarehouseStateEventDto extends AbstractStateEvent
 	public static class WarehouseStateMergePatchedDto extends WarehouseStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_MERGE_PATCHED;
         }
@@ -160,7 +160,7 @@ public class WarehouseStateEventDto extends AbstractStateEvent
 	public static class WarehouseStateDeletedDto extends WarehouseStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_DELETED;
         }

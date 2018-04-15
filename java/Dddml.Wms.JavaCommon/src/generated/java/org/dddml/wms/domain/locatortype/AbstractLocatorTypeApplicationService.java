@@ -86,19 +86,19 @@ public abstract class AbstractLocatorTypeApplicationService implements LocatorTy
         return getStateQueryRepository().getCount(filter);
     }
 
-    public LocatorTypeStateEvent getStateEvent(String locatorTypeId, long version) {
-        LocatorTypeStateEvent e = (LocatorTypeStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(locatorTypeId), version);
+    public LocatorTypeEvent getEvent(String locatorTypeId, long version) {
+        LocatorTypeEvent e = (LocatorTypeEvent)getEventStore().getEvent(toEventStoreAggregateId(locatorTypeId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(locatorTypeId, 0);
+            return getEvent(locatorTypeId, 0);
         }
         return e;
     }
 
     public LocatorTypeState getHistoryState(String locatorTypeId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractLocatorTypeStateEvent.class, toEventStoreAggregateId(locatorTypeId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractLocatorTypeEvent.class, toEventStoreAggregateId(locatorTypeId), version - 1);
         return new AbstractLocatorTypeState.SimpleLocatorTypeState(eventStream.getEvents());
     }
 
@@ -137,7 +137,7 @@ public abstract class AbstractLocatorTypeApplicationService implements LocatorTy
         }
     }
 
-    public void initialize(LocatorTypeStateEvent.LocatorTypeStateCreated stateCreated) {
+    public void initialize(LocatorTypeEvent.LocatorTypeStateCreated stateCreated) {
         String aggregateId = stateCreated.getLocatorTypeEventId().getLocatorTypeId();
         LocatorTypeState state = new AbstractLocatorTypeState.SimpleLocatorTypeState();
         state.setLocatorTypeId(aggregateId);
@@ -155,9 +155,9 @@ public abstract class AbstractLocatorTypeApplicationService implements LocatorTy
         if (command.getVersion() == null) { command.setVersion(LocatorTypeState.VERSION_NULL); }
         if (state.getVersion() != null && state.getVersion() > command.getVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractLocatorTypeStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractLocatorTypeEvent.class, eventStoreAggregateId, command.getVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

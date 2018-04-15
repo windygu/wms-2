@@ -7,22 +7,22 @@ import org.dddml.wms.specialization.*;
 
 public class AttributeValueStateEventDtoConverter {
 
-    public AttributeValueStateEventDto toAttributeValueStateEventDto(AbstractAttributeValueStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractAttributeValueStateEvent.AbstractAttributeValueStateCreated) {
-            AttributeValueStateEvent.AttributeValueStateCreated e = (AttributeValueStateEvent.AttributeValueStateCreated) stateEvent;
+    public AttributeValueStateEventDto toAttributeValueStateEventDto(AbstractAttributeValueEvent stateEvent) {
+        if (stateEvent instanceof AbstractAttributeValueEvent.AbstractAttributeValueStateCreated) {
+            AttributeValueEvent.AttributeValueStateCreated e = (AttributeValueEvent.AttributeValueStateCreated) stateEvent;
             return toAttributeValueStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractAttributeValueStateEvent.AbstractAttributeValueStateMergePatched) {
-            AttributeValueStateEvent.AttributeValueStateMergePatched e = (AttributeValueStateEvent.AttributeValueStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractAttributeValueEvent.AbstractAttributeValueStateMergePatched) {
+            AttributeValueEvent.AttributeValueStateMergePatched e = (AttributeValueEvent.AttributeValueStateMergePatched) stateEvent;
             return toAttributeValueStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractAttributeValueStateEvent.AbstractAttributeValueStateRemoved) {
-            AttributeValueStateEvent.AttributeValueStateRemoved e = (AttributeValueStateEvent.AttributeValueStateRemoved) stateEvent;
+        } else if (stateEvent instanceof AbstractAttributeValueEvent.AbstractAttributeValueStateRemoved) {
+            AttributeValueEvent.AttributeValueStateRemoved e = (AttributeValueEvent.AttributeValueStateRemoved) stateEvent;
             return toAttributeValueStateRemovedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public AttributeValueStateEventDto.AttributeValueStateCreatedDto toAttributeValueStateCreatedDto(AttributeValueStateEvent.AttributeValueStateCreated e) {
+    public AttributeValueStateEventDto.AttributeValueStateCreatedDto toAttributeValueStateCreatedDto(AttributeValueEvent.AttributeValueStateCreated e) {
         AttributeValueStateEventDto.AttributeValueStateCreatedDto dto = new AttributeValueStateEventDto.AttributeValueStateCreatedDto();
         dto.setAttributeValueEventId(e.getAttributeValueEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -36,7 +36,7 @@ public class AttributeValueStateEventDtoConverter {
         return dto;
     }
 
-    public AttributeValueStateEventDto.AttributeValueStateMergePatchedDto toAttributeValueStateMergePatchedDto(AttributeValueStateEvent.AttributeValueStateMergePatched e) {
+    public AttributeValueStateEventDto.AttributeValueStateMergePatchedDto toAttributeValueStateMergePatchedDto(AttributeValueEvent.AttributeValueStateMergePatched e) {
         AttributeValueStateEventDto.AttributeValueStateMergePatchedDto dto = new AttributeValueStateEventDto.AttributeValueStateMergePatchedDto();
         dto.setAttributeValueEventId(e.getAttributeValueEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -55,7 +55,7 @@ public class AttributeValueStateEventDtoConverter {
     }
 
 
-    public AttributeValueStateEventDto.AttributeValueStateRemovedDto toAttributeValueStateRemovedDto(AttributeValueStateEvent.AttributeValueStateRemoved e) {
+    public AttributeValueStateEventDto.AttributeValueStateRemovedDto toAttributeValueStateRemovedDto(AttributeValueEvent.AttributeValueStateRemoved e) {
         AttributeValueStateEventDto.AttributeValueStateRemovedDto dto = new AttributeValueStateEventDto.AttributeValueStateRemovedDto();
         dto.setAttributeValueEventId(e.getAttributeValueEventId());
         dto.setCreatedAt(e.getCreatedAt());

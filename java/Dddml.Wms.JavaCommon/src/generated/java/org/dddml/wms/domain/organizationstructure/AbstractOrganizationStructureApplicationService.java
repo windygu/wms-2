@@ -86,19 +86,19 @@ public abstract class AbstractOrganizationStructureApplicationService implements
         return getStateQueryRepository().getCount(filter);
     }
 
-    public OrganizationStructureStateEvent getStateEvent(OrganizationStructureId id, long version) {
-        OrganizationStructureStateEvent e = (OrganizationStructureStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(id), version);
+    public OrganizationStructureEvent getEvent(OrganizationStructureId id, long version) {
+        OrganizationStructureEvent e = (OrganizationStructureEvent)getEventStore().getEvent(toEventStoreAggregateId(id), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(id, 0);
+            return getEvent(id, 0);
         }
         return e;
     }
 
     public OrganizationStructureState getHistoryState(OrganizationStructureId id, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractOrganizationStructureStateEvent.class, toEventStoreAggregateId(id), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractOrganizationStructureEvent.class, toEventStoreAggregateId(id), version - 1);
         return new AbstractOrganizationStructureState.SimpleOrganizationStructureState(eventStream.getEvents());
     }
 
@@ -137,7 +137,7 @@ public abstract class AbstractOrganizationStructureApplicationService implements
         }
     }
 
-    public void initialize(OrganizationStructureStateEvent.OrganizationStructureStateCreated stateCreated) {
+    public void initialize(OrganizationStructureEvent.OrganizationStructureStateCreated stateCreated) {
         OrganizationStructureId aggregateId = stateCreated.getOrganizationStructureEventId().getId();
         OrganizationStructureState state = new AbstractOrganizationStructureState.SimpleOrganizationStructureState();
         state.setId(aggregateId);
@@ -155,9 +155,9 @@ public abstract class AbstractOrganizationStructureApplicationService implements
         if (command.getVersion() == null) { command.setVersion(OrganizationStructureState.VERSION_NULL); }
         if (state.getVersion() != null && state.getVersion() > command.getVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractOrganizationStructureStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractOrganizationStructureEvent.class, eventStoreAggregateId, command.getVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

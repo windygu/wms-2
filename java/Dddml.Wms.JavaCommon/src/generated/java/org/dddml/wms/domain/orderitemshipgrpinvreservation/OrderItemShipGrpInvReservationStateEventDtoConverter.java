@@ -7,22 +7,22 @@ import org.dddml.wms.specialization.*;
 
 public class OrderItemShipGrpInvReservationStateEventDtoConverter {
 
-    public OrderItemShipGrpInvReservationStateEventDto toOrderItemShipGrpInvReservationStateEventDto(AbstractOrderItemShipGrpInvReservationStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractOrderItemShipGrpInvReservationStateEvent.AbstractOrderItemShipGrpInvReservationStateCreated) {
-            OrderItemShipGrpInvReservationStateEvent.OrderItemShipGrpInvReservationStateCreated e = (OrderItemShipGrpInvReservationStateEvent.OrderItemShipGrpInvReservationStateCreated) stateEvent;
+    public OrderItemShipGrpInvReservationStateEventDto toOrderItemShipGrpInvReservationStateEventDto(AbstractOrderItemShipGrpInvReservationEvent stateEvent) {
+        if (stateEvent instanceof AbstractOrderItemShipGrpInvReservationEvent.AbstractOrderItemShipGrpInvReservationStateCreated) {
+            OrderItemShipGrpInvReservationEvent.OrderItemShipGrpInvReservationStateCreated e = (OrderItemShipGrpInvReservationEvent.OrderItemShipGrpInvReservationStateCreated) stateEvent;
             return toOrderItemShipGrpInvReservationStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractOrderItemShipGrpInvReservationStateEvent.AbstractOrderItemShipGrpInvReservationStateMergePatched) {
-            OrderItemShipGrpInvReservationStateEvent.OrderItemShipGrpInvReservationStateMergePatched e = (OrderItemShipGrpInvReservationStateEvent.OrderItemShipGrpInvReservationStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractOrderItemShipGrpInvReservationEvent.AbstractOrderItemShipGrpInvReservationStateMergePatched) {
+            OrderItemShipGrpInvReservationEvent.OrderItemShipGrpInvReservationStateMergePatched e = (OrderItemShipGrpInvReservationEvent.OrderItemShipGrpInvReservationStateMergePatched) stateEvent;
             return toOrderItemShipGrpInvReservationStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractOrderItemShipGrpInvReservationStateEvent.AbstractOrderItemShipGrpInvReservationStateDeleted) {
-            OrderItemShipGrpInvReservationStateEvent.OrderItemShipGrpInvReservationStateDeleted e = (OrderItemShipGrpInvReservationStateEvent.OrderItemShipGrpInvReservationStateDeleted) stateEvent;
+        } else if (stateEvent instanceof AbstractOrderItemShipGrpInvReservationEvent.AbstractOrderItemShipGrpInvReservationStateDeleted) {
+            OrderItemShipGrpInvReservationEvent.OrderItemShipGrpInvReservationStateDeleted e = (OrderItemShipGrpInvReservationEvent.OrderItemShipGrpInvReservationStateDeleted) stateEvent;
             return toOrderItemShipGrpInvReservationStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public OrderItemShipGrpInvReservationStateEventDto.OrderItemShipGrpInvReservationStateCreatedDto toOrderItemShipGrpInvReservationStateCreatedDto(OrderItemShipGrpInvReservationStateEvent.OrderItemShipGrpInvReservationStateCreated e) {
+    public OrderItemShipGrpInvReservationStateEventDto.OrderItemShipGrpInvReservationStateCreatedDto toOrderItemShipGrpInvReservationStateCreatedDto(OrderItemShipGrpInvReservationEvent.OrderItemShipGrpInvReservationStateCreated e) {
         OrderItemShipGrpInvReservationStateEventDto.OrderItemShipGrpInvReservationStateCreatedDto dto = new OrderItemShipGrpInvReservationStateEventDto.OrderItemShipGrpInvReservationStateCreatedDto();
         dto.setOrderItemShipGrpInvReservationEventId(e.getOrderItemShipGrpInvReservationEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -42,7 +42,7 @@ public class OrderItemShipGrpInvReservationStateEventDtoConverter {
         return dto;
     }
 
-    public OrderItemShipGrpInvReservationStateEventDto.OrderItemShipGrpInvReservationStateMergePatchedDto toOrderItemShipGrpInvReservationStateMergePatchedDto(OrderItemShipGrpInvReservationStateEvent.OrderItemShipGrpInvReservationStateMergePatched e) {
+    public OrderItemShipGrpInvReservationStateEventDto.OrderItemShipGrpInvReservationStateMergePatchedDto toOrderItemShipGrpInvReservationStateMergePatchedDto(OrderItemShipGrpInvReservationEvent.OrderItemShipGrpInvReservationStateMergePatched e) {
         OrderItemShipGrpInvReservationStateEventDto.OrderItemShipGrpInvReservationStateMergePatchedDto dto = new OrderItemShipGrpInvReservationStateEventDto.OrderItemShipGrpInvReservationStateMergePatchedDto();
         dto.setOrderItemShipGrpInvReservationEventId(e.getOrderItemShipGrpInvReservationEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -74,7 +74,7 @@ public class OrderItemShipGrpInvReservationStateEventDtoConverter {
     }
 
 
-    public OrderItemShipGrpInvReservationStateEventDto.OrderItemShipGrpInvReservationStateDeletedDto toOrderItemShipGrpInvReservationStateDeletedDto(OrderItemShipGrpInvReservationStateEvent.OrderItemShipGrpInvReservationStateDeleted e) {
+    public OrderItemShipGrpInvReservationStateEventDto.OrderItemShipGrpInvReservationStateDeletedDto toOrderItemShipGrpInvReservationStateDeletedDto(OrderItemShipGrpInvReservationEvent.OrderItemShipGrpInvReservationStateDeleted e) {
         OrderItemShipGrpInvReservationStateEventDto.OrderItemShipGrpInvReservationStateDeletedDto dto = new OrderItemShipGrpInvReservationStateEventDto.OrderItemShipGrpInvReservationStateDeletedDto();
         dto.setOrderItemShipGrpInvReservationEventId(e.getOrderItemShipGrpInvReservationEventId());
         dto.setCreatedAt(e.getCreatedAt());

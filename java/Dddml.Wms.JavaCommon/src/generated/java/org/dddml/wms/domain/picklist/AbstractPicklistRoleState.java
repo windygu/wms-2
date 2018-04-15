@@ -5,7 +5,7 @@ import org.dddml.wms.domain.partyrole.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.picklist.PicklistRoleStateEvent.*;
+import org.dddml.wms.domain.picklist.PicklistRoleEvent.*;
 
 public abstract class AbstractPicklistRoleState implements PicklistRoleState
 {
@@ -217,7 +217,7 @@ public abstract class AbstractPicklistRoleState implements PicklistRoleState
     {
     }
 
-    protected void throwOnWrongEvent(PicklistRoleStateEvent stateEvent)
+    protected void throwOnWrongEvent(PicklistRoleEvent stateEvent)
     {
         String stateEntityIdPicklistId = this.getPicklistRoleId().getPicklistId();
         String eventEntityIdPicklistId = stateEvent.getPicklistRoleEventId().getPicklistId();

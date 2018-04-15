@@ -86,19 +86,19 @@ public abstract class AbstractPicklistBinApplicationService implements PicklistB
         return getStateQueryRepository().getCount(filter);
     }
 
-    public PicklistBinStateEvent getStateEvent(String picklistBinId, long version) {
-        PicklistBinStateEvent e = (PicklistBinStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(picklistBinId), version);
+    public PicklistBinEvent getEvent(String picklistBinId, long version) {
+        PicklistBinEvent e = (PicklistBinEvent)getEventStore().getEvent(toEventStoreAggregateId(picklistBinId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(picklistBinId, 0);
+            return getEvent(picklistBinId, 0);
         }
         return e;
     }
 
     public PicklistBinState getHistoryState(String picklistBinId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractPicklistBinStateEvent.class, toEventStoreAggregateId(picklistBinId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractPicklistBinEvent.class, toEventStoreAggregateId(picklistBinId), version - 1);
         return new AbstractPicklistBinState.SimplePicklistBinState(eventStream.getEvents());
     }
 
@@ -145,7 +145,7 @@ public abstract class AbstractPicklistBinApplicationService implements PicklistB
         }
     }
 
-    public void initialize(PicklistBinStateEvent.PicklistBinStateCreated stateCreated) {
+    public void initialize(PicklistBinEvent.PicklistBinStateCreated stateCreated) {
         String aggregateId = stateCreated.getPicklistBinEventId().getPicklistBinId();
         PicklistBinState state = new AbstractPicklistBinState.SimplePicklistBinState();
         state.setPicklistBinId(aggregateId);
@@ -163,9 +163,9 @@ public abstract class AbstractPicklistBinApplicationService implements PicklistB
         if (command.getVersion() == null) { command.setVersion(PicklistBinState.VERSION_NULL); }
         if (state.getVersion() != null && state.getVersion() > command.getVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractPicklistBinStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractPicklistBinEvent.class, eventStoreAggregateId, command.getVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

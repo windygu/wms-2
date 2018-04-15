@@ -3,9 +3,9 @@ package org.dddml.wms.domain.movementconfirmation;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
-import org.dddml.wms.domain.AbstractStateEvent;
+import org.dddml.wms.domain.AbstractEvent;
 
-public class MovementConfirmationLineStateEventDto extends AbstractStateEvent
+public class MovementConfirmationLineStateEventDto extends AbstractEvent
 {
 
     private MovementConfirmationLineEventId movementConfirmationLineEventId;
@@ -221,7 +221,7 @@ public class MovementConfirmationLineStateEventDto extends AbstractStateEvent
 	public static class MovementConfirmationLineStateCreatedDto extends MovementConfirmationLineStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_CREATED;
         }
@@ -232,7 +232,7 @@ public class MovementConfirmationLineStateEventDto extends AbstractStateEvent
 	public static class MovementConfirmationLineStateMergePatchedDto extends MovementConfirmationLineStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_MERGE_PATCHED;
         }
@@ -243,7 +243,7 @@ public class MovementConfirmationLineStateEventDto extends AbstractStateEvent
 	public static class MovementConfirmationLineStateRemovedDto extends MovementConfirmationLineStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_REMOVED;
         }

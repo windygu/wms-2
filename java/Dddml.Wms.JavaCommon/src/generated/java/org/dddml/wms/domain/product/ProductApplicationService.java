@@ -28,7 +28,7 @@ public interface ProductApplicationService
 
     long getCount(Criterion filter);
 
-    ProductStateEvent getStateEvent(String productId, long version);
+    ProductEvent getEvent(String productId, long version);
 
     ProductState getHistoryState(String productId, long version);
 

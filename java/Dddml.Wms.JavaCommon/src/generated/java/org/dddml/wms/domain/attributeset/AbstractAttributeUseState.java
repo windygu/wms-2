@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.attributeset.AttributeUseStateEvent.*;
+import org.dddml.wms.domain.attributeset.AttributeUseEvent.*;
 
 public abstract class AbstractAttributeUseState implements AttributeUseState
 {
@@ -240,7 +240,7 @@ public abstract class AbstractAttributeUseState implements AttributeUseState
     {
     }
 
-    protected void throwOnWrongEvent(AttributeUseStateEvent stateEvent)
+    protected void throwOnWrongEvent(AttributeUseEvent stateEvent)
     {
         String stateEntityIdAttributeSetId = this.getAttributeSetAttributeUseId().getAttributeSetId();
         String eventEntityIdAttributeSetId = stateEvent.getAttributeUseEventId().getAttributeSetId();

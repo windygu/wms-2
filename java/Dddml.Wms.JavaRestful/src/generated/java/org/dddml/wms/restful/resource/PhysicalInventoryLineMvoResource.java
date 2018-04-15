@@ -183,7 +183,7 @@ public class PhysicalInventoryLineMvoResource {
 
             PhysicalInventoryLineId idObj = PhysicalInventoryLineMvoResourceUtils.parseIdString(id);
             PhysicalInventoryLineMvoStateEventDtoConverter dtoConverter = getPhysicalInventoryLineMvoStateEventDtoConverter();
-            return dtoConverter.toPhysicalInventoryLineMvoStateEventDto((AbstractPhysicalInventoryLineMvoStateEvent) physicalInventoryLineMvoApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toPhysicalInventoryLineMvoStateEventDto((AbstractPhysicalInventoryLineMvoEvent) physicalInventoryLineMvoApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

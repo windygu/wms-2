@@ -7,22 +7,22 @@ import org.dddml.wms.specialization.*;
 
 public class ShipmentMethodTypeStateEventDtoConverter {
 
-    public ShipmentMethodTypeStateEventDto toShipmentMethodTypeStateEventDto(AbstractShipmentMethodTypeStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractShipmentMethodTypeStateEvent.AbstractShipmentMethodTypeStateCreated) {
-            ShipmentMethodTypeStateEvent.ShipmentMethodTypeStateCreated e = (ShipmentMethodTypeStateEvent.ShipmentMethodTypeStateCreated) stateEvent;
+    public ShipmentMethodTypeStateEventDto toShipmentMethodTypeStateEventDto(AbstractShipmentMethodTypeEvent stateEvent) {
+        if (stateEvent instanceof AbstractShipmentMethodTypeEvent.AbstractShipmentMethodTypeStateCreated) {
+            ShipmentMethodTypeEvent.ShipmentMethodTypeStateCreated e = (ShipmentMethodTypeEvent.ShipmentMethodTypeStateCreated) stateEvent;
             return toShipmentMethodTypeStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractShipmentMethodTypeStateEvent.AbstractShipmentMethodTypeStateMergePatched) {
-            ShipmentMethodTypeStateEvent.ShipmentMethodTypeStateMergePatched e = (ShipmentMethodTypeStateEvent.ShipmentMethodTypeStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractShipmentMethodTypeEvent.AbstractShipmentMethodTypeStateMergePatched) {
+            ShipmentMethodTypeEvent.ShipmentMethodTypeStateMergePatched e = (ShipmentMethodTypeEvent.ShipmentMethodTypeStateMergePatched) stateEvent;
             return toShipmentMethodTypeStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractShipmentMethodTypeStateEvent.AbstractShipmentMethodTypeStateDeleted) {
-            ShipmentMethodTypeStateEvent.ShipmentMethodTypeStateDeleted e = (ShipmentMethodTypeStateEvent.ShipmentMethodTypeStateDeleted) stateEvent;
+        } else if (stateEvent instanceof AbstractShipmentMethodTypeEvent.AbstractShipmentMethodTypeStateDeleted) {
+            ShipmentMethodTypeEvent.ShipmentMethodTypeStateDeleted e = (ShipmentMethodTypeEvent.ShipmentMethodTypeStateDeleted) stateEvent;
             return toShipmentMethodTypeStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public ShipmentMethodTypeStateEventDto.ShipmentMethodTypeStateCreatedDto toShipmentMethodTypeStateCreatedDto(ShipmentMethodTypeStateEvent.ShipmentMethodTypeStateCreated e) {
+    public ShipmentMethodTypeStateEventDto.ShipmentMethodTypeStateCreatedDto toShipmentMethodTypeStateCreatedDto(ShipmentMethodTypeEvent.ShipmentMethodTypeStateCreated e) {
         ShipmentMethodTypeStateEventDto.ShipmentMethodTypeStateCreatedDto dto = new ShipmentMethodTypeStateEventDto.ShipmentMethodTypeStateCreatedDto();
         dto.setShipmentMethodTypeEventId(e.getShipmentMethodTypeEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -34,7 +34,7 @@ public class ShipmentMethodTypeStateEventDtoConverter {
         return dto;
     }
 
-    public ShipmentMethodTypeStateEventDto.ShipmentMethodTypeStateMergePatchedDto toShipmentMethodTypeStateMergePatchedDto(ShipmentMethodTypeStateEvent.ShipmentMethodTypeStateMergePatched e) {
+    public ShipmentMethodTypeStateEventDto.ShipmentMethodTypeStateMergePatchedDto toShipmentMethodTypeStateMergePatchedDto(ShipmentMethodTypeEvent.ShipmentMethodTypeStateMergePatched e) {
         ShipmentMethodTypeStateEventDto.ShipmentMethodTypeStateMergePatchedDto dto = new ShipmentMethodTypeStateEventDto.ShipmentMethodTypeStateMergePatchedDto();
         dto.setShipmentMethodTypeEventId(e.getShipmentMethodTypeEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -50,7 +50,7 @@ public class ShipmentMethodTypeStateEventDtoConverter {
     }
 
 
-    public ShipmentMethodTypeStateEventDto.ShipmentMethodTypeStateDeletedDto toShipmentMethodTypeStateDeletedDto(ShipmentMethodTypeStateEvent.ShipmentMethodTypeStateDeleted e) {
+    public ShipmentMethodTypeStateEventDto.ShipmentMethodTypeStateDeletedDto toShipmentMethodTypeStateDeletedDto(ShipmentMethodTypeEvent.ShipmentMethodTypeStateDeleted e) {
         ShipmentMethodTypeStateEventDto.ShipmentMethodTypeStateDeletedDto dto = new ShipmentMethodTypeStateEventDto.ShipmentMethodTypeStateDeletedDto();
         dto.setShipmentMethodTypeEventId(e.getShipmentMethodTypeEventId());
         dto.setCreatedAt(e.getCreatedAt());

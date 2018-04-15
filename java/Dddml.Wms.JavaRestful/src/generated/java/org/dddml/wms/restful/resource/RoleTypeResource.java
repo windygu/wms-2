@@ -181,7 +181,7 @@ public class RoleTypeResource {
 
             String idObj = id;
             RoleTypeStateEventDtoConverter dtoConverter = getRoleTypeStateEventDtoConverter();
-            return dtoConverter.toRoleTypeStateEventDto((AbstractRoleTypeStateEvent) roleTypeApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toRoleTypeStateEventDto((AbstractRoleTypeEvent) roleTypeApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

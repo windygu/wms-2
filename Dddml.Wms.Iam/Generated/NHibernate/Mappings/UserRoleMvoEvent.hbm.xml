@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+                   assembly="Dddml.Wms.Iam" 
+                   namespace="Dddml.Wms.Domain.UserRoleMvo">
+  
+  <class name="UserRoleMvoStateEventBase" table="UserRoleMvoEvents" mutable="false" abstract="true">
+
+    <composite-id name="UserRoleMvoEventId" class="Dddml.Wms.Domain.UserRoleMvo.UserRoleMvoEventId">
+        <key-property name="UserRoleIdUserId" ><column name="UserRoleIdUserId" length="50" /></key-property>
+        <key-property name="UserRoleIdRoleId" ><column name="UserRoleIdRoleId" length="50" /></key-property>
+        <key-property name="UserVersion" ></key-property>
+    </composite-id>
+    <discriminator column="EventType" type="String" />
+
+    <property name="Version" ></property>
+    <property name="Active" ></property>
+    <property name="UserUserName" ></property>
+    <property name="UserAccessFailedCount" ></property>
+    <property name="UserEmail" ></property>
+    <property name="UserEmailConfirmed" ></property>
+    <property name="UserLockoutEnabled" ></property>
+    <property name="UserLockoutEndDateUtc" ></property>
+    <property name="UserPasswordHash" ></property>
+    <property name="UserPhoneNumber" ></property>
+    <property name="UserPhoneNumberConfirmed" ></property>
+    <property name="UserTwoFactorEnabled" ></property>
+    <property name="UserSecurityStamp" ></property>
+    <property name="UserCreatedBy" ></property>
+    <property name="UserCreatedAt" ><column name="UserCreatedAt" sql-type="DATETIME" /></property>
+    <property name="UserUpdatedBy" ></property>
+    <property name="UserUpdatedAt" ><column name="UserUpdatedAt" sql-type="DATETIME" /></property>
+    <property name="UserActive" ></property>
+    <property name="UserDeleted" ></property>
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+    <subclass name="UserRoleMvoStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="UserRoleMvoStateMergePatched"  discriminator-value="MergePatched">
+
+
+        <property name="IsPropertyVersionRemoved" column="IsPropertyVersionRemoved"/>
+
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+
+        <property name="IsPropertyUserUserNameRemoved" column="IsPropertyUserUserNameRemoved"/>
+
+        <property name="IsPropertyUserAccessFailedCountRemoved" column="IsPropertyUserAccessFailedCountRemoved"/>
+
+        <property name="IsPropertyUserEmailRemoved" column="IsPropertyUserEmailRemoved"/>
+
+        <property name="IsPropertyUserEmailConfirmedRemoved" column="IsPropertyUserEmailConfirmedRemoved"/>
+
+        <property name="IsPropertyUserLockoutEnabledRemoved" column="IsPropertyUserLockoutEnabledRemoved"/>
+
+        <property name="IsPropertyUserLockoutEndDateUtcRemoved" column="IsPropertyUserLockoutEndDateUtcRemoved"/>
+
+        <property name="IsPropertyUserPasswordHashRemoved" column="IsPropertyUserPasswordHashRemoved"/>
+
+        <property name="IsPropertyUserPhoneNumberRemoved" column="IsPropertyUserPhoneNumberRemoved"/>
+
+        <property name="IsPropertyUserPhoneNumberConfirmedRemoved" column="IsPropertyUserPhoneNumberConfirmedRemoved"/>
+
+        <property name="IsPropertyUserTwoFactorEnabledRemoved" column="IsPropertyUserTwoFactorEnabledRemoved"/>
+
+        <property name="IsPropertyUserSecurityStampRemoved" column="IsPropertyUserSecurityStampRemoved"/>
+
+        <property name="IsPropertyUserCreatedByRemoved" column="IsPropertyUserCreatedByRemoved"/>
+
+        <property name="IsPropertyUserCreatedAtRemoved" column="IsPropertyUserCreatedAtRemoved"/>
+
+        <property name="IsPropertyUserUpdatedByRemoved" column="IsPropertyUserUpdatedByRemoved"/>
+
+        <property name="IsPropertyUserUpdatedAtRemoved" column="IsPropertyUserUpdatedAtRemoved"/>
+
+        <property name="IsPropertyUserActiveRemoved" column="IsPropertyUserActiveRemoved"/>
+
+        <property name="IsPropertyUserDeletedRemoved" column="IsPropertyUserDeletedRemoved"/>
+    </subclass>
+
+    <subclass name="UserRoleMvoStateDeleted"  discriminator-value="Deleted">
+
+    </subclass>
+
+
+
+  </class>
+  
+</hibernate-mapping>

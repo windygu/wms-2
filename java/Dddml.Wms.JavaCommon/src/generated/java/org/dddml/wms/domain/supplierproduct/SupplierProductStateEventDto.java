@@ -2,9 +2,9 @@ package org.dddml.wms.domain.supplierproduct;
 
 import java.util.Date;
 import org.dddml.wms.domain.*;
-import org.dddml.wms.domain.AbstractStateEvent;
+import org.dddml.wms.domain.AbstractEvent;
 
-public class SupplierProductStateEventDto extends AbstractStateEvent
+public class SupplierProductStateEventDto extends AbstractEvent
 {
 
     private SupplierProductEventId supplierProductEventId;
@@ -338,7 +338,7 @@ public class SupplierProductStateEventDto extends AbstractStateEvent
 	public static class SupplierProductStateCreatedDto extends SupplierProductStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_CREATED;
         }
@@ -349,7 +349,7 @@ public class SupplierProductStateEventDto extends AbstractStateEvent
 	public static class SupplierProductStateMergePatchedDto extends SupplierProductStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_MERGE_PATCHED;
         }
@@ -360,7 +360,7 @@ public class SupplierProductStateEventDto extends AbstractStateEvent
 	public static class SupplierProductStateDeletedDto extends SupplierProductStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_DELETED;
         }

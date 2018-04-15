@@ -20,20 +20,20 @@ public class HibernateOrderShipmentEventStore extends AbstractHibernateEventStor
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractOrderShipmentStateEvent.class;
+        return AbstractOrderShipmentEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractOrderShipmentStateEvent.class;
+        Class supportedEventType = AbstractOrderShipmentEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         OrderShipmentId idObj = (OrderShipmentId) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractOrderShipmentStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractOrderShipmentEvent.class);
         criteria.add(Restrictions.eq("orderShipmentEventId.orderShipmentIdOrderId", idObj.getOrderId()));
         criteria.add(Restrictions.eq("orderShipmentEventId.orderShipmentIdOrderItemSeqId", idObj.getOrderItemSeqId()));
         criteria.add(Restrictions.eq("orderShipmentEventId.orderShipmentIdShipGroupSeqId", idObj.getShipGroupSeqId()));
@@ -43,11 +43,11 @@ public class HibernateOrderShipmentEventStore extends AbstractHibernateEventStor
         criteria.addOrder(Order.asc("orderShipmentEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractOrderShipmentStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractOrderShipmentEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractOrderShipmentStateEvent) es.get(es.size() - 1)).getOrderShipmentEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractOrderShipmentEvent) es.get(es.size() - 1)).getOrderShipmentEventId().getVersion());
         } else {
             //todo?
         }

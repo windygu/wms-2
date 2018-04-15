@@ -32,7 +32,7 @@ public interface InOutLineMvoApplicationService
 
     long getCount(Criterion filter);
 
-    InOutLineMvoStateEvent getStateEvent(InOutLineId inOutLineId, long version);
+    InOutLineMvoEvent getEvent(InOutLineId inOutLineId, long version);
 
     InOutLineMvoState getHistoryState(InOutLineId inOutLineId, long version);
 

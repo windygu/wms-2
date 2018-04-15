@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.attributesetinstanceextensionfield.AttributeSetInstanceExtensionFieldStateEvent.*;
+import org.dddml.wms.domain.attributesetinstanceextensionfield.AttributeSetInstanceExtensionFieldEvent.*;
 
 public abstract class AbstractAttributeSetInstanceExtensionFieldState implements AttributeSetInstanceExtensionFieldState
 {
@@ -189,7 +189,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldState implements
     public AbstractAttributeSetInstanceExtensionFieldState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setName(((AttributeSetInstanceExtensionFieldStateEvent) events.get(0)).getAttributeSetInstanceExtensionFieldEventId().getName());
+            this.setName(((AttributeSetInstanceExtensionFieldEvent) events.get(0)).getAttributeSetInstanceExtensionFieldEventId().getName());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -333,10 +333,10 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldState implements
     {
     }
 
-    protected void throwOnWrongEvent(AttributeSetInstanceExtensionFieldStateEvent stateEvent)
+    protected void throwOnWrongEvent(AttributeSetInstanceExtensionFieldEvent stateEvent)
     {
         String stateEntityId = this.getName(); // Aggregate Id
-        String eventEntityId = stateEvent.getAttributeSetInstanceExtensionFieldEventId().getName(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        String eventEntityId = stateEvent.getAttributeSetInstanceExtensionFieldEventId().getName(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

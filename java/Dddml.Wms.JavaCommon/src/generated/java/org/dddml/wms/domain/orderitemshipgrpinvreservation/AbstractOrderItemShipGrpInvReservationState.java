@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.orderitemshipgrpinvreservation.OrderItemShipGrpInvReservationStateEvent.*;
+import org.dddml.wms.domain.orderitemshipgrpinvreservation.OrderItemShipGrpInvReservationEvent.*;
 
 public abstract class AbstractOrderItemShipGrpInvReservationState implements OrderItemShipGrpInvReservationState
 {
@@ -249,7 +249,7 @@ public abstract class AbstractOrderItemShipGrpInvReservationState implements Ord
     public AbstractOrderItemShipGrpInvReservationState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setOrderItemShipGrpInvResId(((OrderItemShipGrpInvReservationStateEvent) events.get(0)).getOrderItemShipGrpInvReservationEventId().getOrderItemShipGrpInvResId());
+            this.setOrderItemShipGrpInvResId(((OrderItemShipGrpInvReservationEvent) events.get(0)).getOrderItemShipGrpInvReservationEventId().getOrderItemShipGrpInvResId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -453,10 +453,10 @@ public abstract class AbstractOrderItemShipGrpInvReservationState implements Ord
     {
     }
 
-    protected void throwOnWrongEvent(OrderItemShipGrpInvReservationStateEvent stateEvent)
+    protected void throwOnWrongEvent(OrderItemShipGrpInvReservationEvent stateEvent)
     {
         OrderItemShipGrpInvResId stateEntityId = this.getOrderItemShipGrpInvResId(); // Aggregate Id
-        OrderItemShipGrpInvResId eventEntityId = stateEvent.getOrderItemShipGrpInvReservationEventId().getOrderItemShipGrpInvResId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        OrderItemShipGrpInvResId eventEntityId = stateEvent.getOrderItemShipGrpInvReservationEventId().getOrderItemShipGrpInvResId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

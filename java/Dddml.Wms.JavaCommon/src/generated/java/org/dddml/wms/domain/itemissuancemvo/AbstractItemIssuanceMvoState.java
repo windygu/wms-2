@@ -5,7 +5,7 @@ import org.dddml.wms.domain.shipment.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.itemissuancemvo.ItemIssuanceMvoStateEvent.*;
+import org.dddml.wms.domain.itemissuancemvo.ItemIssuanceMvoEvent.*;
 
 public abstract class AbstractItemIssuanceMvoState implements ItemIssuanceMvoState
 {
@@ -658,7 +658,7 @@ public abstract class AbstractItemIssuanceMvoState implements ItemIssuanceMvoSta
     public AbstractItemIssuanceMvoState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setShipmentItemIssuanceId(((ItemIssuanceMvoStateEvent) events.get(0)).getItemIssuanceMvoEventId().getShipmentItemIssuanceId());
+            this.setShipmentItemIssuanceId(((ItemIssuanceMvoEvent) events.get(0)).getItemIssuanceMvoEventId().getShipmentItemIssuanceId());
             for (Event e : events) {
                 mutate(e);
                 this.setShipmentVersion(this.getShipmentVersion() + 1);
@@ -1270,10 +1270,10 @@ public abstract class AbstractItemIssuanceMvoState implements ItemIssuanceMvoSta
     {
     }
 
-    protected void throwOnWrongEvent(ItemIssuanceMvoStateEvent stateEvent)
+    protected void throwOnWrongEvent(ItemIssuanceMvoEvent stateEvent)
     {
         ShipmentItemIssuanceId stateEntityId = this.getShipmentItemIssuanceId(); // Aggregate Id
-        ShipmentItemIssuanceId eventEntityId = stateEvent.getItemIssuanceMvoEventId().getShipmentItemIssuanceId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        ShipmentItemIssuanceId eventEntityId = stateEvent.getItemIssuanceMvoEventId().getShipmentItemIssuanceId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

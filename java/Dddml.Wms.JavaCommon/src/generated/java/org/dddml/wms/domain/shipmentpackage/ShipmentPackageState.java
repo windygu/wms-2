@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.shipmentpackage.ShipmentPackageStateEvent.*;
+import org.dddml.wms.domain.shipmentpackage.ShipmentPackageEvent.*;
 
 public interface ShipmentPackageState
 {
@@ -90,11 +90,11 @@ public interface ShipmentPackageState
 
     void mutate(Event e);
 
-    void when(ShipmentPackageStateEvent.ShipmentPackageStateCreated e);
+    void when(ShipmentPackageEvent.ShipmentPackageStateCreated e);
 
-    void when(ShipmentPackageStateEvent.ShipmentPackageStateMergePatched e);
+    void when(ShipmentPackageEvent.ShipmentPackageStateMergePatched e);
 
-    void when(ShipmentPackageStateEvent.ShipmentPackageStateDeleted e);
+    void when(ShipmentPackageEvent.ShipmentPackageStateDeleted e);
     
 }
 

@@ -87,19 +87,19 @@ public abstract class AbstractItemIssuanceMvoApplicationService implements ItemI
         return getStateQueryRepository().getCount(filter);
     }
 
-    public ItemIssuanceMvoStateEvent getStateEvent(ShipmentItemIssuanceId shipmentItemIssuanceId, long version) {
-        ItemIssuanceMvoStateEvent e = (ItemIssuanceMvoStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(shipmentItemIssuanceId), version);
+    public ItemIssuanceMvoEvent getEvent(ShipmentItemIssuanceId shipmentItemIssuanceId, long version) {
+        ItemIssuanceMvoEvent e = (ItemIssuanceMvoEvent)getEventStore().getEvent(toEventStoreAggregateId(shipmentItemIssuanceId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(shipmentItemIssuanceId, 0);
+            return getEvent(shipmentItemIssuanceId, 0);
         }
         return e;
     }
 
     public ItemIssuanceMvoState getHistoryState(ShipmentItemIssuanceId shipmentItemIssuanceId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractItemIssuanceMvoStateEvent.class, toEventStoreAggregateId(shipmentItemIssuanceId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractItemIssuanceMvoEvent.class, toEventStoreAggregateId(shipmentItemIssuanceId), version - 1);
         return new AbstractItemIssuanceMvoState.SimpleItemIssuanceMvoState(eventStream.getEvents());
     }
 
@@ -138,7 +138,7 @@ public abstract class AbstractItemIssuanceMvoApplicationService implements ItemI
         }
     }
 
-    public void initialize(ItemIssuanceMvoStateEvent.ItemIssuanceMvoStateCreated stateCreated) {
+    public void initialize(ItemIssuanceMvoEvent.ItemIssuanceMvoStateCreated stateCreated) {
         ShipmentItemIssuanceId aggregateId = stateCreated.getItemIssuanceMvoEventId().getShipmentItemIssuanceId();
         ItemIssuanceMvoState state = new AbstractItemIssuanceMvoState.SimpleItemIssuanceMvoState();
         state.setShipmentItemIssuanceId(aggregateId);
@@ -156,9 +156,9 @@ public abstract class AbstractItemIssuanceMvoApplicationService implements ItemI
         if (command.getShipmentVersion() == null) { command.setShipmentVersion(ItemIssuanceMvoState.VERSION_NULL); }
         if (state.getShipmentVersion() != null && state.getShipmentVersion() > command.getShipmentVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractItemIssuanceMvoStateEvent.class, eventStoreAggregateId, command.getShipmentVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractItemIssuanceMvoEvent.class, eventStoreAggregateId, command.getShipmentVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

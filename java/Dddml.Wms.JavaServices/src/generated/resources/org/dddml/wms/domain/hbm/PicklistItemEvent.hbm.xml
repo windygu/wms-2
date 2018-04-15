@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.picklistbin">
+  
+  <class name="AbstractPicklistItemEvent" table="PicklistItemEvents" mutable="false" abstract="true">
+
+	<composite-id name="picklistItemEventId" class="org.dddml.wms.domain.picklistbin.PicklistItemEventId">
+		<key-property name="picklistBinId" ><column name="PicklistBinId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="picklistItemOrderShipGrpInvIdOrderId" ><column name="OrderId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="picklistItemOrderShipGrpInvIdOrderItemSeqId" ><column name="OrderItemSeqId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="picklistItemOrderShipGrpInvIdShipGroupSeqId" ><column name="ShipGroupSeqId" sql-type="DECIMAL(20,0)" /></key-property>
+		<key-property name="picklistItemOrderShipGrpInvIdProductId" ><column name="ProductId" length="60" sql-type="VARCHAR(60)" /></key-property>
+		<key-property name="picklistItemOrderShipGrpInvIdLocatorId" ><column name="LocatorId" length="50" /></key-property>
+		<key-property name="picklistItemOrderShipGrpInvIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" length="50" /></key-property>
+		<key-property name="picklistBinVersion" ></key-property>
+	</composite-id>
+
+    <discriminator column="EventType" type="string" />
+
+	<property name="itemStatusId" ><column name="ItemStatusId" sql-type="VARCHAR(20)" /></property>
+	<property name="quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>
+	<property name="active" ></property>
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+    <property name="version" column="Version" not-null="true" />
+
+    <subclass name="AbstractPicklistItemEvent$SimplePicklistItemStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="AbstractPicklistItemEvent$SimplePicklistItemStateMergePatched" discriminator-value="MergePatched">
+
+        <property name="isPropertyItemStatusIdRemoved" column="IsPropertyItemStatusIdRemoved"/>
+
+        <property name="isPropertyQuantityRemoved" column="IsPropertyQuantityRemoved"/>
+
+        <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+
+
+    </subclass>
+
+    <subclass name="AbstractPicklistItemEvent$SimplePicklistItemStateRemoved" discriminator-value="Removed">
+
+    </subclass>
+
+
+
+  </class>
+  
+</hibernate-mapping>

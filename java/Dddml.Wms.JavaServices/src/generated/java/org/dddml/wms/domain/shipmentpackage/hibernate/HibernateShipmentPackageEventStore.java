@@ -20,31 +20,31 @@ public class HibernateShipmentPackageEventStore extends AbstractHibernateEventSt
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractShipmentPackageStateEvent.class;
+        return AbstractShipmentPackageEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractShipmentPackageStateEvent.class;
+        Class supportedEventType = AbstractShipmentPackageEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         ShipmentPackageId idObj = (ShipmentPackageId) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractShipmentPackageStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractShipmentPackageEvent.class);
         criteria.add(Restrictions.eq("shipmentPackageEventId.shipmentPackageIdShipmentId", idObj.getShipmentId()));
         criteria.add(Restrictions.eq("shipmentPackageEventId.shipmentPackageIdShipmentPackageSeqId", idObj.getShipmentPackageSeqId()));
         criteria.add(Restrictions.le("shipmentPackageEventId.version", version));
         criteria.addOrder(Order.asc("shipmentPackageEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractShipmentPackageStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractShipmentPackageEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractShipmentPackageStateEvent) es.get(es.size() - 1)).getShipmentPackageEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractShipmentPackageEvent) es.get(es.size() - 1)).getShipmentPackageEventId().getVersion());
         } else {
             //todo?
         }

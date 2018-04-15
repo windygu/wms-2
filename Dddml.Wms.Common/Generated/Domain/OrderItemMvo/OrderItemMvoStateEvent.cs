@@ -171,17 +171,17 @@ namespace Dddml.Wms.Domain.OrderItemMvo
 			}
 		}
 
-        public virtual bool StateEventReadOnly { get; set; }
+        public virtual bool EventReadOnly { get; set; }
 
         bool IOrderItemMvoStateEvent.ReadOnly
         {
             get
             {
-                return this.StateEventReadOnly;
+                return this.EventReadOnly;
             }
             set
             {
-                this.StateEventReadOnly = value;
+                this.EventReadOnly = value;
             }
         }
 

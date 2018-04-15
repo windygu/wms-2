@@ -7,7 +7,7 @@ import java.util.Date;
 import org.dddml.wms.domain.inventoryprtriggered.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.sellableinventoryitem.SellableInventoryItemStateEvent.*;
+import org.dddml.wms.domain.sellableinventoryitem.SellableInventoryItemEvent.*;
 
 public abstract class AbstractSellableInventoryItemState implements SellableInventoryItemState, Saveable
 {
@@ -142,7 +142,7 @@ public abstract class AbstractSellableInventoryItemState implements SellableInve
     public AbstractSellableInventoryItemState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setSellableInventoryItemId(((SellableInventoryItemStateEvent) events.get(0)).getSellableInventoryItemEventId().getSellableInventoryItemId());
+            this.setSellableInventoryItemId(((SellableInventoryItemEvent) events.get(0)).getSellableInventoryItemEventId().getSellableInventoryItemId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -186,7 +186,7 @@ public abstract class AbstractSellableInventoryItemState implements SellableInve
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
-        for (SellableInventoryItemEntryStateEvent.SellableInventoryItemEntryStateCreated innerEvent : e.getSellableInventoryItemEntryEvents()) {
+        for (SellableInventoryItemEntryEvent.SellableInventoryItemEntryStateCreated innerEvent : e.getSellableInventoryItemEntryEvents()) {
             SellableInventoryItemEntryState innerState = this.getEntries().get(innerEvent.getSellableInventoryItemEntryEventId().getEntrySeqId());
             innerState.mutate(innerEvent);
         }
@@ -211,7 +211,7 @@ public abstract class AbstractSellableInventoryItemState implements SellableInve
         this.setUpdatedBy(e.getCreatedBy());
         this.setUpdatedAt(e.getCreatedAt());
 
-        for (SellableInventoryItemEntryStateEvent innerEvent : e.getSellableInventoryItemEntryEvents()) {
+        for (SellableInventoryItemEntryEvent innerEvent : e.getSellableInventoryItemEntryEvents()) {
             SellableInventoryItemEntryState innerState = this.getEntries().get(innerEvent.getSellableInventoryItemEntryEventId().getEntrySeqId());
             innerState.mutate(innerEvent);
         }
@@ -223,10 +223,10 @@ public abstract class AbstractSellableInventoryItemState implements SellableInve
 
     }
 
-    protected void throwOnWrongEvent(SellableInventoryItemStateEvent stateEvent)
+    protected void throwOnWrongEvent(SellableInventoryItemEvent stateEvent)
     {
         InventoryItemId stateEntityId = this.getSellableInventoryItemId(); // Aggregate Id
-        InventoryItemId eventEntityId = stateEvent.getSellableInventoryItemEventId().getSellableInventoryItemId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        InventoryItemId eventEntityId = stateEvent.getSellableInventoryItemEventId().getSellableInventoryItemId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

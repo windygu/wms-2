@@ -82,19 +82,19 @@ public abstract class AbstractOrderShipmentApplicationService implements OrderSh
         return getStateQueryRepository().getCount(filter);
     }
 
-    public OrderShipmentStateEvent getStateEvent(OrderShipmentId orderShipmentId, long version) {
-        OrderShipmentStateEvent e = (OrderShipmentStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(orderShipmentId), version);
+    public OrderShipmentEvent getEvent(OrderShipmentId orderShipmentId, long version) {
+        OrderShipmentEvent e = (OrderShipmentEvent)getEventStore().getEvent(toEventStoreAggregateId(orderShipmentId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(orderShipmentId, 0);
+            return getEvent(orderShipmentId, 0);
         }
         return e;
     }
 
     public OrderShipmentState getHistoryState(OrderShipmentId orderShipmentId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractOrderShipmentStateEvent.class, toEventStoreAggregateId(orderShipmentId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractOrderShipmentEvent.class, toEventStoreAggregateId(orderShipmentId), version - 1);
         return new AbstractOrderShipmentState.SimpleOrderShipmentState(eventStream.getEvents());
     }
 
@@ -133,7 +133,7 @@ public abstract class AbstractOrderShipmentApplicationService implements OrderSh
         }
     }
 
-    public void initialize(OrderShipmentStateEvent.OrderShipmentStateCreated stateCreated) {
+    public void initialize(OrderShipmentEvent.OrderShipmentStateCreated stateCreated) {
         OrderShipmentId aggregateId = stateCreated.getOrderShipmentEventId().getOrderShipmentId();
         OrderShipmentState state = new AbstractOrderShipmentState.SimpleOrderShipmentState();
         state.setOrderShipmentId(aggregateId);
@@ -151,9 +151,9 @@ public abstract class AbstractOrderShipmentApplicationService implements OrderSh
         if (command.getVersion() == null) { command.setVersion(OrderShipmentState.VERSION_NULL); }
         if (state.getVersion() != null && state.getVersion() > command.getVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractOrderShipmentStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractOrderShipmentEvent.class, eventStoreAggregateId, command.getVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

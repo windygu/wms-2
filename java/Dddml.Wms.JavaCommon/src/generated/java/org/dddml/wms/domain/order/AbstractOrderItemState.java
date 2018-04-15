@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.order.OrderItemStateEvent.*;
+import org.dddml.wms.domain.order.OrderItemEvent.*;
 
 public abstract class AbstractOrderItemState implements OrderItemState
 {
@@ -1030,7 +1030,7 @@ public abstract class AbstractOrderItemState implements OrderItemState
     {
     }
 
-    protected void throwOnWrongEvent(OrderItemStateEvent stateEvent)
+    protected void throwOnWrongEvent(OrderItemEvent stateEvent)
     {
         String stateEntityIdOrderId = this.getOrderItemId().getOrderId();
         String eventEntityIdOrderId = stateEvent.getOrderItemEventId().getOrderId();

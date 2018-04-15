@@ -29,7 +29,7 @@ public interface OrderApplicationService
 
     long getCount(Criterion filter);
 
-    OrderStateEvent getStateEvent(String orderId, long version);
+    OrderEvent getEvent(String orderId, long version);
 
     OrderState getHistoryState(String orderId, long version);
 

@@ -30,7 +30,7 @@ public interface RejectionReasonApplicationService
 
     long getCount(Criterion filter);
 
-    RejectionReasonStateEvent getStateEvent(String rejectionReasonId, long version);
+    RejectionReasonEvent getEvent(String rejectionReasonId, long version);
 
     RejectionReasonState getHistoryState(String rejectionReasonId, long version);
 

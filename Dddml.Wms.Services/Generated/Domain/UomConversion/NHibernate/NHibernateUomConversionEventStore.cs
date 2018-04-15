@@ -46,7 +46,7 @@ namespace Dddml.Wms.Domain.UomConversion.NHibernate
             var es = criteria.List<IEvent>();
             foreach (UomConversionStateEventBase e in es)
             {
-                e.StateEventReadOnly = true;
+                e.EventReadOnly = true;
             }
             return new EventStream()
             {

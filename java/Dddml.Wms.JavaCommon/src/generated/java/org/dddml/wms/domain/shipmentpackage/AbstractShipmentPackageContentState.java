@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.shipmentpackage.ShipmentPackageContentStateEvent.*;
+import org.dddml.wms.domain.shipmentpackage.ShipmentPackageContentEvent.*;
 
 public abstract class AbstractShipmentPackageContentState implements ShipmentPackageContentState
 {
@@ -288,7 +288,7 @@ public abstract class AbstractShipmentPackageContentState implements ShipmentPac
     {
     }
 
-    protected void throwOnWrongEvent(ShipmentPackageContentStateEvent stateEvent)
+    protected void throwOnWrongEvent(ShipmentPackageContentEvent stateEvent)
     {
         ShipmentPackageId stateEntityIdShipmentPackageId = this.getShipmentPackageContentId().getShipmentPackageId();
         ShipmentPackageId eventEntityIdShipmentPackageId = stateEvent.getShipmentPackageContentEventId().getShipmentPackageId();

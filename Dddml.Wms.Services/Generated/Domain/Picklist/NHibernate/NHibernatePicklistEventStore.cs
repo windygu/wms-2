@@ -46,7 +46,7 @@ namespace Dddml.Wms.Domain.Picklist.NHibernate
             var es = criteria.List<IEvent>();
             foreach (PicklistStateEventBase e in es)
             {
-                e.StateEventReadOnly = true;
+                e.EventReadOnly = true;
             }
             return new EventStream()
             {

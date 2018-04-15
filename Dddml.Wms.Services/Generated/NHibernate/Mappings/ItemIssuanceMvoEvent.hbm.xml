@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+                   assembly="Dddml.Wms.Common" 
+                   namespace="Dddml.Wms.Domain.ItemIssuanceMvo">
+  
+  <class name="ItemIssuanceMvoStateEventBase" table="ItemIssuanceMvoEvents" mutable="false" abstract="true">
+
+    <composite-id name="ItemIssuanceMvoEventId" class="Dddml.Wms.Domain.ItemIssuanceMvo.ItemIssuanceMvoEventId">
+        <key-property name="ShipmentItemIssuanceIdShipmentId" ><column name="ShipmentItemIssuanceIdShipmentId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="ShipmentItemIssuanceIdItemIssuanceSeqId" ><column name="ShipmentItemIssuanceIdItemIssuanceSeqId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="ShipmentVersion" ></key-property>
+    </composite-id>
+    <discriminator column="EventType" type="String" />
+
+    <property name="OrderId" ><column name="OrderId" sql-type="VARCHAR(20)" /></property>
+    <property name="OrderItemSeqId" ><column name="OrderItemSeqId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipGroupSeqId" ><column name="ShipGroupSeqId" sql-type="DECIMAL(20,0)" /></property>
+    <property name="ProductId" ><column name="ProductId" length="60" sql-type="VARCHAR(60)" /></property>
+    <property name="LocatorId" ><column name="LocatorId" length="50" /></property>
+    <property name="AttributeSetInstanceId" ><column name="AttributeSetInstanceId" length="50" /></property>
+    <property name="ShipmentItemSeqId" ><column name="ShipmentItemSeqId" sql-type="VARCHAR(20)" /></property>
+    <property name="FixedAssetId" ><column name="FixedAssetId" sql-type="VARCHAR(20)" /></property>
+    <property name="MaintHistSeqId" ><column name="MaintHistSeqId" sql-type="VARCHAR(20)" /></property>
+    <property name="IssuedDateTime" ><column name="IssuedDateTime" sql-type="DATETIME" /></property>
+    <property name="IssuedByUserLoginId" ><column name="IssuedByUserLoginId" sql-type="VARCHAR(250)" /></property>
+    <property name="Quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>
+    <property name="CancelQuantity" ><column name="CancelQuantity" sql-type="DECIMAL(18,6)" /></property>
+    <property name="Version" ></property>
+    <property name="Active" ></property>
+    <property name="ShipmentShipmentTypeId" ><column name="ShipmentShipmentTypeId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentStatusId" ><column name="ShipmentStatusId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentPrimaryOrderId" ><column name="ShipmentPrimaryOrderId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentPrimaryReturnId" ><column name="ShipmentPrimaryReturnId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentPrimaryShipGroupSeqId" ><column name="ShipmentPrimaryShipGroupSeqId" sql-type="DECIMAL(20,0)" /></property>
+    <property name="ShipmentPicklistBinId" ><column name="ShipmentPicklistBinId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentEstimatedReadyDate" ><column name="ShipmentEstimatedReadyDate" sql-type="DATETIME" /></property>
+    <property name="ShipmentEstimatedShipDate" ><column name="ShipmentEstimatedShipDate" sql-type="DATETIME" /></property>
+    <property name="ShipmentEstimatedShipWorkEffId" ><column name="ShipmentEstimatedShipWorkEffId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentEstimatedArrivalDate" ><column name="ShipmentEstimatedArrivalDate" sql-type="DATETIME" /></property>
+    <property name="ShipmentEstimatedArrivalWorkEffId" ><column name="ShipmentEstimatedArrivalWorkEffId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentLatestCancelDate" ><column name="ShipmentLatestCancelDate" sql-type="DATETIME" /></property>
+    <property name="ShipmentEstimatedShipCost" ><column name="ShipmentEstimatedShipCost" sql-type="DECIMAL(18,2)" /></property>
+    <property name="ShipmentCurrencyUomId" ><column name="ShipmentCurrencyUomId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentHandlingInstructions" ><column name="ShipmentHandlingInstructions" sql-type="VARCHAR(255)" /></property>
+    <property name="ShipmentOriginFacilityId" ><column name="ShipmentOriginFacilityId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentDestinationFacilityId" ><column name="ShipmentDestinationFacilityId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentOriginContactMechId" ><column name="ShipmentOriginContactMechId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentOriginTelecomNumberId" ><column name="ShipmentOriginTelecomNumberId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentDestinationContactMechId" ><column name="ShipmentDestinationContactMechId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentDestinationTelecomNumberId" ><column name="ShipmentDestinationTelecomNumberId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentPartyIdTo" ><column name="ShipmentPartyIdTo" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentPartyIdFrom" ><column name="ShipmentPartyIdFrom" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipmentAdditionalShippingCharge" ><column name="ShipmentAdditionalShippingCharge" sql-type="DECIMAL(18,2)" /></property>
+    <property name="ShipmentAddtlShippingChargeDesc" ><column name="ShipmentAddtlShippingChargeDesc" sql-type="VARCHAR(255)" /></property>
+    <property name="ShipmentCreatedBy" ></property>
+    <property name="ShipmentCreatedAt" ><column name="ShipmentCreatedAt" sql-type="DATETIME" /></property>
+    <property name="ShipmentUpdatedBy" ></property>
+    <property name="ShipmentUpdatedAt" ><column name="ShipmentUpdatedAt" sql-type="DATETIME" /></property>
+    <property name="ShipmentActive" ></property>
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+    <subclass name="ItemIssuanceMvoStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="ItemIssuanceMvoStateMergePatched"  discriminator-value="MergePatched">
+
+
+        <property name="IsPropertyOrderIdRemoved" column="IsPropertyOrderIdRemoved"/>
+
+        <property name="IsPropertyOrderItemSeqIdRemoved" column="IsPropertyOrderItemSeqIdRemoved"/>
+
+        <property name="IsPropertyShipGroupSeqIdRemoved" column="IsPropertyShipGroupSeqIdRemoved"/>
+
+        <property name="IsPropertyProductIdRemoved" column="IsPropertyProductIdRemoved"/>
+
+        <property name="IsPropertyLocatorIdRemoved" column="IsPropertyLocatorIdRemoved"/>
+
+        <property name="IsPropertyAttributeSetInstanceIdRemoved" column="IsPropertyAttributeSetInstanceIdRemoved"/>
+
+        <property name="IsPropertyShipmentItemSeqIdRemoved" column="IsPropertyShipmentItemSeqIdRemoved"/>
+
+        <property name="IsPropertyFixedAssetIdRemoved" column="IsPropertyFixedAssetIdRemoved"/>
+
+        <property name="IsPropertyMaintHistSeqIdRemoved" column="IsPropertyMaintHistSeqIdRemoved"/>
+
+        <property name="IsPropertyIssuedDateTimeRemoved" column="IsPropertyIssuedDateTimeRemoved"/>
+
+        <property name="IsPropertyIssuedByUserLoginIdRemoved" column="IsPropertyIssuedByUserLoginIdRemoved"/>
+
+        <property name="IsPropertyQuantityRemoved" column="IsPropertyQuantityRemoved"/>
+
+        <property name="IsPropertyCancelQuantityRemoved" column="IsPropertyCancelQuantityRemoved"/>
+
+        <property name="IsPropertyVersionRemoved" column="IsPropertyVersionRemoved"/>
+
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+
+        <property name="IsPropertyShipmentShipmentTypeIdRemoved" column="IsPropertyShipmentShipmentTypeIdRemoved"/>
+
+        <property name="IsPropertyShipmentStatusIdRemoved" column="IsPropertyShipmentStatusIdRemoved"/>
+
+        <property name="IsPropertyShipmentPrimaryOrderIdRemoved" column="IsPropertyShipmentPrimaryOrderIdRemoved"/>
+
+        <property name="IsPropertyShipmentPrimaryReturnIdRemoved" column="IsPropertyShipmentPrimaryReturnIdRemoved"/>
+
+        <property name="IsPropertyShipmentPrimaryShipGroupSeqIdRemoved" column="IsPropertyShipmentPrimaryShipGroupSeqIdRemoved"/>
+
+        <property name="IsPropertyShipmentPicklistBinIdRemoved" column="IsPropertyShipmentPicklistBinIdRemoved"/>
+
+        <property name="IsPropertyShipmentEstimatedReadyDateRemoved" column="IsPropertyShipmentEstimatedReadyDateRemoved"/>
+
+        <property name="IsPropertyShipmentEstimatedShipDateRemoved" column="IsPropertyShipmentEstimatedShipDateRemoved"/>
+
+        <property name="IsPropertyShipmentEstimatedShipWorkEffIdRemoved" column="IsPropertyShipmentEstimatedShipWorkEffIdRemoved"/>
+
+        <property name="IsPropertyShipmentEstimatedArrivalDateRemoved" column="IsPropertyShipmentEstimatedArrivalDateRemoved"/>
+
+        <property name="IsPropertyShipmentEstimatedArrivalWorkEffIdRemoved" column="IsPropertyShipmentEstimatedArrivalWorkEffIdRemoved"/>
+
+        <property name="IsPropertyShipmentLatestCancelDateRemoved" column="IsPropertyShipmentLatestCancelDateRemoved"/>
+
+        <property name="IsPropertyShipmentEstimatedShipCostRemoved" column="IsPropertyShipmentEstimatedShipCostRemoved"/>
+
+        <property name="IsPropertyShipmentCurrencyUomIdRemoved" column="IsPropertyShipmentCurrencyUomIdRemoved"/>
+
+        <property name="IsPropertyShipmentHandlingInstructionsRemoved" column="IsPropertyShipmentHandlingInstructionsRemoved"/>
+
+        <property name="IsPropertyShipmentOriginFacilityIdRemoved" column="IsPropertyShipmentOriginFacilityIdRemoved"/>
+
+        <property name="IsPropertyShipmentDestinationFacilityIdRemoved" column="IsPropertyShipmentDestinationFacilityIdRemoved"/>
+
+        <property name="IsPropertyShipmentOriginContactMechIdRemoved" column="IsPropertyShipmentOriginContactMechIdRemoved"/>
+
+        <property name="IsPropertyShipmentOriginTelecomNumberIdRemoved" column="IsPropertyShipmentOriginTelecomNumberIdRemoved"/>
+
+        <property name="IsPropertyShipmentDestinationContactMechIdRemoved" column="IsPropertyShipmentDestinationContactMechIdRemoved"/>
+
+        <property name="IsPropertyShipmentDestinationTelecomNumberIdRemoved" column="IsPropertyShipmentDestinationTelecomNumberIdRemoved"/>
+
+        <property name="IsPropertyShipmentPartyIdToRemoved" column="IsPropertyShipmentPartyIdToRemoved"/>
+
+        <property name="IsPropertyShipmentPartyIdFromRemoved" column="IsPropertyShipmentPartyIdFromRemoved"/>
+
+        <property name="IsPropertyShipmentAdditionalShippingChargeRemoved" column="IsPropertyShipmentAdditionalShippingChargeRemoved"/>
+
+        <property name="IsPropertyShipmentAddtlShippingChargeDescRemoved" column="IsPropertyShipmentAddtlShippingChargeDescRemoved"/>
+
+        <property name="IsPropertyShipmentCreatedByRemoved" column="IsPropertyShipmentCreatedByRemoved"/>
+
+        <property name="IsPropertyShipmentCreatedAtRemoved" column="IsPropertyShipmentCreatedAtRemoved"/>
+
+        <property name="IsPropertyShipmentUpdatedByRemoved" column="IsPropertyShipmentUpdatedByRemoved"/>
+
+        <property name="IsPropertyShipmentUpdatedAtRemoved" column="IsPropertyShipmentUpdatedAtRemoved"/>
+
+        <property name="IsPropertyShipmentActiveRemoved" column="IsPropertyShipmentActiveRemoved"/>
+    </subclass>
+
+    <subclass name="ItemIssuanceMvoStateDeleted"  discriminator-value="Deleted">
+
+    </subclass>
+
+
+
+  </class>
+  
+</hibernate-mapping>

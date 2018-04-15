@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.uom.UomStateEvent.*;
+import org.dddml.wms.domain.uom.UomEvent.*;
 
 public interface UomState
 {
@@ -64,11 +64,11 @@ public interface UomState
 
     void mutate(Event e);
 
-    void when(UomStateEvent.UomStateCreated e);
+    void when(UomEvent.UomStateCreated e);
 
-    void when(UomStateEvent.UomStateMergePatched e);
+    void when(UomEvent.UomStateMergePatched e);
 
-    void when(UomStateEvent.UomStateDeleted e);
+    void when(UomEvent.UomStateDeleted e);
     
 }
 

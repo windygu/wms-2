@@ -2,9 +2,9 @@ package org.dddml.wms.domain.orderitemshipgrpinvreservation;
 
 import java.util.Date;
 import org.dddml.wms.domain.*;
-import org.dddml.wms.domain.AbstractStateEvent;
+import org.dddml.wms.domain.AbstractEvent;
 
-public class OrderItemShipGrpInvReservationStateEventDto extends AbstractStateEvent
+public class OrderItemShipGrpInvReservationStateEventDto extends AbstractEvent
 {
 
     private OrderItemShipGrpInvReservationEventId orderItemShipGrpInvReservationEventId;
@@ -278,7 +278,7 @@ public class OrderItemShipGrpInvReservationStateEventDto extends AbstractStateEv
 	public static class OrderItemShipGrpInvReservationStateCreatedDto extends OrderItemShipGrpInvReservationStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_CREATED;
         }
@@ -289,7 +289,7 @@ public class OrderItemShipGrpInvReservationStateEventDto extends AbstractStateEv
 	public static class OrderItemShipGrpInvReservationStateMergePatchedDto extends OrderItemShipGrpInvReservationStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_MERGE_PATCHED;
         }
@@ -300,7 +300,7 @@ public class OrderItemShipGrpInvReservationStateEventDto extends AbstractStateEv
 	public static class OrderItemShipGrpInvReservationStateDeletedDto extends OrderItemShipGrpInvReservationStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_DELETED;
         }

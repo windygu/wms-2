@@ -3,9 +3,9 @@ package org.dddml.wms.domain.orderitemshipgroupassociationmvo;
 import org.dddml.wms.domain.order.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
-import org.dddml.wms.domain.AbstractStateEvent;
+import org.dddml.wms.domain.AbstractEvent;
 
-public class OrderItemShipGroupAssociationMvoStateEventDto extends AbstractStateEvent
+public class OrderItemShipGroupAssociationMvoStateEventDto extends AbstractEvent
 {
 
     private OrderItemShipGroupAssociationMvoEventId orderItemShipGroupAssociationMvoEventId;
@@ -1219,7 +1219,7 @@ public class OrderItemShipGroupAssociationMvoStateEventDto extends AbstractState
 	public static class OrderItemShipGroupAssociationMvoStateCreatedDto extends OrderItemShipGroupAssociationMvoStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_CREATED;
         }
@@ -1230,7 +1230,7 @@ public class OrderItemShipGroupAssociationMvoStateEventDto extends AbstractState
 	public static class OrderItemShipGroupAssociationMvoStateMergePatchedDto extends OrderItemShipGroupAssociationMvoStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_MERGE_PATCHED;
         }
@@ -1241,7 +1241,7 @@ public class OrderItemShipGroupAssociationMvoStateEventDto extends AbstractState
 	public static class OrderItemShipGroupAssociationMvoStateDeletedDto extends OrderItemShipGroupAssociationMvoStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_DELETED;
         }

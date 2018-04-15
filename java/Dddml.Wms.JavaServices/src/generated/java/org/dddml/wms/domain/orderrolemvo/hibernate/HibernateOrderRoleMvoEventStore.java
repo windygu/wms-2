@@ -21,20 +21,20 @@ public class HibernateOrderRoleMvoEventStore extends AbstractHibernateEventStore
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractOrderRoleMvoStateEvent.class;
+        return AbstractOrderRoleMvoEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractOrderRoleMvoStateEvent.class;
+        Class supportedEventType = AbstractOrderRoleMvoEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         OrderRoleId idObj = (OrderRoleId) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractOrderRoleMvoStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractOrderRoleMvoEvent.class);
         criteria.add(Restrictions.eq("orderRoleMvoEventId.orderRoleIdOrderId", idObj.getOrderId()));
         criteria.add(Restrictions.eq("orderRoleMvoEventId.orderRoleIdPartyRoleIdPartyId", idObj.getPartyRoleId().getPartyId()));
         criteria.add(Restrictions.eq("orderRoleMvoEventId.orderRoleIdPartyRoleIdRoleTypeId", idObj.getPartyRoleId().getRoleTypeId()));
@@ -42,11 +42,11 @@ public class HibernateOrderRoleMvoEventStore extends AbstractHibernateEventStore
         criteria.addOrder(Order.asc("orderRoleMvoEventId.orderVersion"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractOrderRoleMvoStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractOrderRoleMvoEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractOrderRoleMvoStateEvent) es.get(es.size() - 1)).getOrderRoleMvoEventId().getOrderVersion());
+            eventStream.setSteamVersion(((AbstractOrderRoleMvoEvent) es.get(es.size() - 1)).getOrderRoleMvoEventId().getOrderVersion());
         } else {
             //todo?
         }

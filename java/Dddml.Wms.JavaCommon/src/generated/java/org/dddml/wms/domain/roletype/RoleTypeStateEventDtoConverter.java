@@ -7,22 +7,22 @@ import org.dddml.wms.specialization.*;
 
 public class RoleTypeStateEventDtoConverter {
 
-    public RoleTypeStateEventDto toRoleTypeStateEventDto(AbstractRoleTypeStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractRoleTypeStateEvent.AbstractRoleTypeStateCreated) {
-            RoleTypeStateEvent.RoleTypeStateCreated e = (RoleTypeStateEvent.RoleTypeStateCreated) stateEvent;
+    public RoleTypeStateEventDto toRoleTypeStateEventDto(AbstractRoleTypeEvent stateEvent) {
+        if (stateEvent instanceof AbstractRoleTypeEvent.AbstractRoleTypeStateCreated) {
+            RoleTypeEvent.RoleTypeStateCreated e = (RoleTypeEvent.RoleTypeStateCreated) stateEvent;
             return toRoleTypeStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractRoleTypeStateEvent.AbstractRoleTypeStateMergePatched) {
-            RoleTypeStateEvent.RoleTypeStateMergePatched e = (RoleTypeStateEvent.RoleTypeStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractRoleTypeEvent.AbstractRoleTypeStateMergePatched) {
+            RoleTypeEvent.RoleTypeStateMergePatched e = (RoleTypeEvent.RoleTypeStateMergePatched) stateEvent;
             return toRoleTypeStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractRoleTypeStateEvent.AbstractRoleTypeStateDeleted) {
-            RoleTypeStateEvent.RoleTypeStateDeleted e = (RoleTypeStateEvent.RoleTypeStateDeleted) stateEvent;
+        } else if (stateEvent instanceof AbstractRoleTypeEvent.AbstractRoleTypeStateDeleted) {
+            RoleTypeEvent.RoleTypeStateDeleted e = (RoleTypeEvent.RoleTypeStateDeleted) stateEvent;
             return toRoleTypeStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public RoleTypeStateEventDto.RoleTypeStateCreatedDto toRoleTypeStateCreatedDto(RoleTypeStateEvent.RoleTypeStateCreated e) {
+    public RoleTypeStateEventDto.RoleTypeStateCreatedDto toRoleTypeStateCreatedDto(RoleTypeEvent.RoleTypeStateCreated e) {
         RoleTypeStateEventDto.RoleTypeStateCreatedDto dto = new RoleTypeStateEventDto.RoleTypeStateCreatedDto();
         dto.setRoleTypeEventId(e.getRoleTypeEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -35,7 +35,7 @@ public class RoleTypeStateEventDtoConverter {
         return dto;
     }
 
-    public RoleTypeStateEventDto.RoleTypeStateMergePatchedDto toRoleTypeStateMergePatchedDto(RoleTypeStateEvent.RoleTypeStateMergePatched e) {
+    public RoleTypeStateEventDto.RoleTypeStateMergePatchedDto toRoleTypeStateMergePatchedDto(RoleTypeEvent.RoleTypeStateMergePatched e) {
         RoleTypeStateEventDto.RoleTypeStateMergePatchedDto dto = new RoleTypeStateEventDto.RoleTypeStateMergePatchedDto();
         dto.setRoleTypeEventId(e.getRoleTypeEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -53,7 +53,7 @@ public class RoleTypeStateEventDtoConverter {
     }
 
 
-    public RoleTypeStateEventDto.RoleTypeStateDeletedDto toRoleTypeStateDeletedDto(RoleTypeStateEvent.RoleTypeStateDeleted e) {
+    public RoleTypeStateEventDto.RoleTypeStateDeletedDto toRoleTypeStateDeletedDto(RoleTypeEvent.RoleTypeStateDeleted e) {
         RoleTypeStateEventDto.RoleTypeStateDeletedDto dto = new RoleTypeStateEventDto.RoleTypeStateDeletedDto();
         dto.setRoleTypeEventId(e.getRoleTypeEventId());
         dto.setCreatedAt(e.getCreatedAt());

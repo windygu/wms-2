@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+                   assembly="Dddml.Wms.Common" 
+                   namespace="Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup">
+  
+  <class name="AttributeSetInstanceExtensionFieldGroupStateEventBase" table="AttributeSetInstanceExtensionFieldGroupEvents" mutable="false" abstract="true">
+
+    <composite-id name="AttributeSetInstanceExtensionFieldGroupEventId" class="Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup.AttributeSetInstanceExtensionFieldGroupEventId">
+        <key-property name="Id" ><column name="Id" length="50" /></key-property>
+        <key-property name="Version" ></key-property>
+    </composite-id>
+    <discriminator column="EventType" type="String" />
+
+    <property name="FieldType" ></property>
+    <property name="FieldLength" ></property>
+    <property name="FieldCount" ></property>
+    <property name="NameFormat" ></property>
+    <property name="Description" ></property>
+    <property name="Active" ></property>
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+    <subclass name="AttributeSetInstanceExtensionFieldGroupStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="AttributeSetInstanceExtensionFieldGroupStateMergePatched"  discriminator-value="MergePatched">
+
+
+        <property name="IsPropertyFieldTypeRemoved" column="IsPropertyFieldTypeRemoved"/>
+
+        <property name="IsPropertyFieldLengthRemoved" column="IsPropertyFieldLengthRemoved"/>
+
+        <property name="IsPropertyFieldCountRemoved" column="IsPropertyFieldCountRemoved"/>
+
+        <property name="IsPropertyNameFormatRemoved" column="IsPropertyNameFormatRemoved"/>
+
+        <property name="IsPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
+
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+    </subclass>
+
+    <subclass name="AttributeSetInstanceExtensionFieldGroupStateDeleted"  discriminator-value="Deleted">
+
+    </subclass>
+
+
+
+  </class>
+  
+</hibernate-mapping>

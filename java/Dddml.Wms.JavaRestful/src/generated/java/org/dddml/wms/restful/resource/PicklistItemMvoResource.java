@@ -182,7 +182,7 @@ public class PicklistItemMvoResource {
 
             PicklistBinPicklistItemId idObj = PicklistItemMvoResourceUtils.parseIdString(id);
             PicklistItemMvoStateEventDtoConverter dtoConverter = getPicklistItemMvoStateEventDtoConverter();
-            return dtoConverter.toPicklistItemMvoStateEventDto((AbstractPicklistItemMvoStateEvent) picklistItemMvoApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toPicklistItemMvoStateEventDto((AbstractPicklistItemMvoEvent) picklistItemMvoApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

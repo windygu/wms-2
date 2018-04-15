@@ -2,9 +2,9 @@ package org.dddml.wms.domain.organizationstructuretype;
 
 import java.util.Date;
 import org.dddml.wms.domain.*;
-import org.dddml.wms.domain.AbstractStateEvent;
+import org.dddml.wms.domain.AbstractEvent;
 
-public class OrganizationStructureTypeStateEventDto extends AbstractStateEvent
+public class OrganizationStructureTypeStateEventDto extends AbstractEvent
 {
 
     private OrganizationStructureTypeEventId organizationStructureTypeEventId;
@@ -98,7 +98,7 @@ public class OrganizationStructureTypeStateEventDto extends AbstractStateEvent
 	public static class OrganizationStructureTypeStateCreatedDto extends OrganizationStructureTypeStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_CREATED;
         }
@@ -109,7 +109,7 @@ public class OrganizationStructureTypeStateEventDto extends AbstractStateEvent
 	public static class OrganizationStructureTypeStateMergePatchedDto extends OrganizationStructureTypeStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_MERGE_PATCHED;
         }
@@ -120,7 +120,7 @@ public class OrganizationStructureTypeStateEventDto extends AbstractStateEvent
 	public static class OrganizationStructureTypeStateDeletedDto extends OrganizationStructureTypeStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_DELETED;
         }

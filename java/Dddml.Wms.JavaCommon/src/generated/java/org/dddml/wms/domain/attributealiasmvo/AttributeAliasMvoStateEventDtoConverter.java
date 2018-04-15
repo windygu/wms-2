@@ -8,22 +8,22 @@ import org.dddml.wms.specialization.*;
 
 public class AttributeAliasMvoStateEventDtoConverter {
 
-    public AttributeAliasMvoStateEventDto toAttributeAliasMvoStateEventDto(AbstractAttributeAliasMvoStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractAttributeAliasMvoStateEvent.AbstractAttributeAliasMvoStateCreated) {
-            AttributeAliasMvoStateEvent.AttributeAliasMvoStateCreated e = (AttributeAliasMvoStateEvent.AttributeAliasMvoStateCreated) stateEvent;
+    public AttributeAliasMvoStateEventDto toAttributeAliasMvoStateEventDto(AbstractAttributeAliasMvoEvent stateEvent) {
+        if (stateEvent instanceof AbstractAttributeAliasMvoEvent.AbstractAttributeAliasMvoStateCreated) {
+            AttributeAliasMvoEvent.AttributeAliasMvoStateCreated e = (AttributeAliasMvoEvent.AttributeAliasMvoStateCreated) stateEvent;
             return toAttributeAliasMvoStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractAttributeAliasMvoStateEvent.AbstractAttributeAliasMvoStateMergePatched) {
-            AttributeAliasMvoStateEvent.AttributeAliasMvoStateMergePatched e = (AttributeAliasMvoStateEvent.AttributeAliasMvoStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractAttributeAliasMvoEvent.AbstractAttributeAliasMvoStateMergePatched) {
+            AttributeAliasMvoEvent.AttributeAliasMvoStateMergePatched e = (AttributeAliasMvoEvent.AttributeAliasMvoStateMergePatched) stateEvent;
             return toAttributeAliasMvoStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractAttributeAliasMvoStateEvent.AbstractAttributeAliasMvoStateDeleted) {
-            AttributeAliasMvoStateEvent.AttributeAliasMvoStateDeleted e = (AttributeAliasMvoStateEvent.AttributeAliasMvoStateDeleted) stateEvent;
+        } else if (stateEvent instanceof AbstractAttributeAliasMvoEvent.AbstractAttributeAliasMvoStateDeleted) {
+            AttributeAliasMvoEvent.AttributeAliasMvoStateDeleted e = (AttributeAliasMvoEvent.AttributeAliasMvoStateDeleted) stateEvent;
             return toAttributeAliasMvoStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public AttributeAliasMvoStateEventDto.AttributeAliasMvoStateCreatedDto toAttributeAliasMvoStateCreatedDto(AttributeAliasMvoStateEvent.AttributeAliasMvoStateCreated e) {
+    public AttributeAliasMvoStateEventDto.AttributeAliasMvoStateCreatedDto toAttributeAliasMvoStateCreatedDto(AttributeAliasMvoEvent.AttributeAliasMvoStateCreated e) {
         AttributeAliasMvoStateEventDto.AttributeAliasMvoStateCreatedDto dto = new AttributeAliasMvoStateEventDto.AttributeAliasMvoStateCreatedDto();
         dto.setAttributeAliasMvoEventId(e.getAttributeAliasMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -50,7 +50,7 @@ public class AttributeAliasMvoStateEventDtoConverter {
         return dto;
     }
 
-    public AttributeAliasMvoStateEventDto.AttributeAliasMvoStateMergePatchedDto toAttributeAliasMvoStateMergePatchedDto(AttributeAliasMvoStateEvent.AttributeAliasMvoStateMergePatched e) {
+    public AttributeAliasMvoStateEventDto.AttributeAliasMvoStateMergePatchedDto toAttributeAliasMvoStateMergePatchedDto(AttributeAliasMvoEvent.AttributeAliasMvoStateMergePatched e) {
         AttributeAliasMvoStateEventDto.AttributeAliasMvoStateMergePatchedDto dto = new AttributeAliasMvoStateEventDto.AttributeAliasMvoStateMergePatchedDto();
         dto.setAttributeAliasMvoEventId(e.getAttributeAliasMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -96,7 +96,7 @@ public class AttributeAliasMvoStateEventDtoConverter {
     }
 
 
-    public AttributeAliasMvoStateEventDto.AttributeAliasMvoStateDeletedDto toAttributeAliasMvoStateDeletedDto(AttributeAliasMvoStateEvent.AttributeAliasMvoStateDeleted e) {
+    public AttributeAliasMvoStateEventDto.AttributeAliasMvoStateDeletedDto toAttributeAliasMvoStateDeletedDto(AttributeAliasMvoEvent.AttributeAliasMvoStateDeleted e) {
         AttributeAliasMvoStateEventDto.AttributeAliasMvoStateDeletedDto dto = new AttributeAliasMvoStateEventDto.AttributeAliasMvoStateDeletedDto();
         dto.setAttributeAliasMvoEventId(e.getAttributeAliasMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());

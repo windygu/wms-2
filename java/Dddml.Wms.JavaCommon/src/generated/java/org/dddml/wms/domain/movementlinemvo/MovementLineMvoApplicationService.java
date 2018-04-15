@@ -32,7 +32,7 @@ public interface MovementLineMvoApplicationService
 
     long getCount(Criterion filter);
 
-    MovementLineMvoStateEvent getStateEvent(MovementLineId movementLineId, long version);
+    MovementLineMvoEvent getEvent(MovementLineId movementLineId, long version);
 
     MovementLineMvoState getHistoryState(MovementLineId movementLineId, long version);
 

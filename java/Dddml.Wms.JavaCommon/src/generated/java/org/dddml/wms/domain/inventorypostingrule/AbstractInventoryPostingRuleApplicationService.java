@@ -87,19 +87,19 @@ public abstract class AbstractInventoryPostingRuleApplicationService implements 
         return getStateQueryRepository().getCount(filter);
     }
 
-    public InventoryPostingRuleStateEvent getStateEvent(String inventoryPostingRuleId, long version) {
-        InventoryPostingRuleStateEvent e = (InventoryPostingRuleStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(inventoryPostingRuleId), version);
+    public InventoryPostingRuleEvent getEvent(String inventoryPostingRuleId, long version) {
+        InventoryPostingRuleEvent e = (InventoryPostingRuleEvent)getEventStore().getEvent(toEventStoreAggregateId(inventoryPostingRuleId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(inventoryPostingRuleId, 0);
+            return getEvent(inventoryPostingRuleId, 0);
         }
         return e;
     }
 
     public InventoryPostingRuleState getHistoryState(String inventoryPostingRuleId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractInventoryPostingRuleStateEvent.class, toEventStoreAggregateId(inventoryPostingRuleId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractInventoryPostingRuleEvent.class, toEventStoreAggregateId(inventoryPostingRuleId), version - 1);
         return new AbstractInventoryPostingRuleState.SimpleInventoryPostingRuleState(eventStream.getEvents());
     }
 
@@ -138,7 +138,7 @@ public abstract class AbstractInventoryPostingRuleApplicationService implements 
         }
     }
 
-    public void initialize(InventoryPostingRuleStateEvent.InventoryPostingRuleStateCreated stateCreated) {
+    public void initialize(InventoryPostingRuleEvent.InventoryPostingRuleStateCreated stateCreated) {
         String aggregateId = stateCreated.getInventoryPostingRuleEventId().getInventoryPostingRuleId();
         InventoryPostingRuleState state = new AbstractInventoryPostingRuleState.SimpleInventoryPostingRuleState();
         state.setInventoryPostingRuleId(aggregateId);
@@ -156,9 +156,9 @@ public abstract class AbstractInventoryPostingRuleApplicationService implements 
         if (command.getVersion() == null) { command.setVersion(InventoryPostingRuleState.VERSION_NULL); }
         if (state.getVersion() != null && state.getVersion() > command.getVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractInventoryPostingRuleStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractInventoryPostingRuleEvent.class, eventStoreAggregateId, command.getVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

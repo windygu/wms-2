@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.partyrole.PartyRoleStateEvent.*;
+import org.dddml.wms.domain.partyrole.PartyRoleEvent.*;
 
 public abstract class AbstractPartyRoleState implements PartyRoleState
 {
@@ -129,7 +129,7 @@ public abstract class AbstractPartyRoleState implements PartyRoleState
     public AbstractPartyRoleState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setPartyRoleId(((PartyRoleStateEvent) events.get(0)).getPartyRoleEventId().getPartyRoleId());
+            this.setPartyRoleId(((PartyRoleEvent) events.get(0)).getPartyRoleEventId().getPartyRoleId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -213,10 +213,10 @@ public abstract class AbstractPartyRoleState implements PartyRoleState
     {
     }
 
-    protected void throwOnWrongEvent(PartyRoleStateEvent stateEvent)
+    protected void throwOnWrongEvent(PartyRoleEvent stateEvent)
     {
         PartyRoleId stateEntityId = this.getPartyRoleId(); // Aggregate Id
-        PartyRoleId eventEntityId = stateEvent.getPartyRoleEventId().getPartyRoleId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        PartyRoleId eventEntityId = stateEvent.getPartyRoleEventId().getPartyRoleId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

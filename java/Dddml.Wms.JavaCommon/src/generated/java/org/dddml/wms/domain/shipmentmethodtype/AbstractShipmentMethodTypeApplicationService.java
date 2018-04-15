@@ -86,19 +86,19 @@ public abstract class AbstractShipmentMethodTypeApplicationService implements Sh
         return getStateQueryRepository().getCount(filter);
     }
 
-    public ShipmentMethodTypeStateEvent getStateEvent(String shipmentMethodTypeId, long version) {
-        ShipmentMethodTypeStateEvent e = (ShipmentMethodTypeStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(shipmentMethodTypeId), version);
+    public ShipmentMethodTypeEvent getEvent(String shipmentMethodTypeId, long version) {
+        ShipmentMethodTypeEvent e = (ShipmentMethodTypeEvent)getEventStore().getEvent(toEventStoreAggregateId(shipmentMethodTypeId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(shipmentMethodTypeId, 0);
+            return getEvent(shipmentMethodTypeId, 0);
         }
         return e;
     }
 
     public ShipmentMethodTypeState getHistoryState(String shipmentMethodTypeId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractShipmentMethodTypeStateEvent.class, toEventStoreAggregateId(shipmentMethodTypeId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractShipmentMethodTypeEvent.class, toEventStoreAggregateId(shipmentMethodTypeId), version - 1);
         return new AbstractShipmentMethodTypeState.SimpleShipmentMethodTypeState(eventStream.getEvents());
     }
 
@@ -137,7 +137,7 @@ public abstract class AbstractShipmentMethodTypeApplicationService implements Sh
         }
     }
 
-    public void initialize(ShipmentMethodTypeStateEvent.ShipmentMethodTypeStateCreated stateCreated) {
+    public void initialize(ShipmentMethodTypeEvent.ShipmentMethodTypeStateCreated stateCreated) {
         String aggregateId = stateCreated.getShipmentMethodTypeEventId().getShipmentMethodTypeId();
         ShipmentMethodTypeState state = new AbstractShipmentMethodTypeState.SimpleShipmentMethodTypeState();
         state.setShipmentMethodTypeId(aggregateId);
@@ -155,9 +155,9 @@ public abstract class AbstractShipmentMethodTypeApplicationService implements Sh
         if (command.getVersion() == null) { command.setVersion(ShipmentMethodTypeState.VERSION_NULL); }
         if (state.getVersion() != null && state.getVersion() > command.getVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractShipmentMethodTypeStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractShipmentMethodTypeEvent.class, eventStoreAggregateId, command.getVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

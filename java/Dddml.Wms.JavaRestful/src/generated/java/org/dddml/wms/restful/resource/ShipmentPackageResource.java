@@ -181,7 +181,7 @@ public class ShipmentPackageResource {
 
             ShipmentPackageId idObj = ShipmentPackageResourceUtils.parseIdString(id);
             ShipmentPackageStateEventDtoConverter dtoConverter = getShipmentPackageStateEventDtoConverter();
-            return dtoConverter.toShipmentPackageStateEventDto((AbstractShipmentPackageStateEvent) shipmentPackageApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toShipmentPackageStateEventDto((AbstractShipmentPackageEvent) shipmentPackageApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

@@ -27,19 +27,19 @@ public abstract class AbstractUomAggregate extends AbstractAggregate implements 
     public void create(UomCommand.CreateUom c)
     {
         if (c.getVersion() == null) { c.setVersion(UomState.VERSION_NULL); }
-        UomStateEvent e = map(c);
+        UomEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(UomCommand.MergePatchUom c)
     {
-        UomStateEvent e = map(c);
+        UomEvent e = map(c);
         apply(e);
     }
 
     public void delete(UomCommand.DeleteUom c)
     {
-        UomStateEvent e = map(c);
+        UomEvent e = map(c);
         apply(e);
     }
 
@@ -54,22 +54,22 @@ public abstract class AbstractUomAggregate extends AbstractAggregate implements 
         changes.add(e);
     }
 
-    protected UomStateEvent map(UomCommand.CreateUom c) {
+    protected UomEvent map(UomCommand.CreateUom c) {
         UomEventId stateEventId = new UomEventId(c.getUomId(), c.getVersion());
-        UomStateEvent.UomStateCreated e = newUomStateCreated(stateEventId);
+        UomEvent.UomStateCreated e = newUomStateCreated(stateEventId);
         e.setUomTypeId(c.getUomTypeId());
         e.setAbbreviation(c.getAbbreviation());
         e.setDescription(c.getDescription());
         e.setActive(c.getActive());
-        ((AbstractUomStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractUomEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected UomStateEvent map(UomCommand.MergePatchUom c) {
+    protected UomEvent map(UomCommand.MergePatchUom c) {
         UomEventId stateEventId = new UomEventId(c.getUomId(), c.getVersion());
-        UomStateEvent.UomStateMergePatched e = newUomStateMergePatched(stateEventId);
+        UomEvent.UomStateMergePatched e = newUomStateMergePatched(stateEventId);
         e.setUomTypeId(c.getUomTypeId());
         e.setAbbreviation(c.getAbbreviation());
         e.setDescription(c.getDescription());
@@ -78,16 +78,16 @@ public abstract class AbstractUomAggregate extends AbstractAggregate implements 
         e.setIsPropertyAbbreviationRemoved(c.getIsPropertyAbbreviationRemoved());
         e.setIsPropertyDescriptionRemoved(c.getIsPropertyDescriptionRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
-        ((AbstractUomStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractUomEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected UomStateEvent map(UomCommand.DeleteUom c) {
+    protected UomEvent map(UomCommand.DeleteUom c) {
         UomEventId stateEventId = new UomEventId(c.getUomId(), c.getVersion());
-        UomStateEvent.UomStateDeleted e = newUomStateDeleted(stateEventId);
-        ((AbstractUomStateEvent)e).setCommandId(c.getCommandId());
+        UomEvent.UomStateDeleted e = newUomStateDeleted(stateEventId);
+        ((AbstractUomEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
@@ -96,44 +96,44 @@ public abstract class AbstractUomAggregate extends AbstractAggregate implements 
 
     ////////////////////////
 
-    protected UomStateEvent.UomStateCreated newUomStateCreated(Long version, String commandId, String requesterId) {
+    protected UomEvent.UomStateCreated newUomStateCreated(Long version, String commandId, String requesterId) {
         UomEventId stateEventId = new UomEventId(this.state.getUomId(), version);
-        UomStateEvent.UomStateCreated e = newUomStateCreated(stateEventId);
-        ((AbstractUomStateEvent)e).setCommandId(commandId);
+        UomEvent.UomStateCreated e = newUomStateCreated(stateEventId);
+        ((AbstractUomEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected UomStateEvent.UomStateMergePatched newUomStateMergePatched(Long version, String commandId, String requesterId) {
+    protected UomEvent.UomStateMergePatched newUomStateMergePatched(Long version, String commandId, String requesterId) {
         UomEventId stateEventId = new UomEventId(this.state.getUomId(), version);
-        UomStateEvent.UomStateMergePatched e = newUomStateMergePatched(stateEventId);
-        ((AbstractUomStateEvent)e).setCommandId(commandId);
+        UomEvent.UomStateMergePatched e = newUomStateMergePatched(stateEventId);
+        ((AbstractUomEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected UomStateEvent.UomStateDeleted newUomStateDeleted(Long version, String commandId, String requesterId) {
+    protected UomEvent.UomStateDeleted newUomStateDeleted(Long version, String commandId, String requesterId) {
         UomEventId stateEventId = new UomEventId(this.state.getUomId(), version);
-        UomStateEvent.UomStateDeleted e = newUomStateDeleted(stateEventId);
-        ((AbstractUomStateEvent)e).setCommandId(commandId);
+        UomEvent.UomStateDeleted e = newUomStateDeleted(stateEventId);
+        ((AbstractUomEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected UomStateEvent.UomStateCreated newUomStateCreated(UomEventId stateEventId) {
-        return new AbstractUomStateEvent.SimpleUomStateCreated(stateEventId);
+    protected UomEvent.UomStateCreated newUomStateCreated(UomEventId stateEventId) {
+        return new AbstractUomEvent.SimpleUomStateCreated(stateEventId);
     }
 
-    protected UomStateEvent.UomStateMergePatched newUomStateMergePatched(UomEventId stateEventId) {
-        return new AbstractUomStateEvent.SimpleUomStateMergePatched(stateEventId);
+    protected UomEvent.UomStateMergePatched newUomStateMergePatched(UomEventId stateEventId) {
+        return new AbstractUomEvent.SimpleUomStateMergePatched(stateEventId);
     }
 
-    protected UomStateEvent.UomStateDeleted newUomStateDeleted(UomEventId stateEventId)
+    protected UomEvent.UomStateDeleted newUomStateDeleted(UomEventId stateEventId)
     {
-        return new AbstractUomStateEvent.SimpleUomStateDeleted(stateEventId);
+        return new AbstractUomEvent.SimpleUomStateDeleted(stateEventId);
     }
 
     public static class SimpleUomAggregate extends AbstractUomAggregate

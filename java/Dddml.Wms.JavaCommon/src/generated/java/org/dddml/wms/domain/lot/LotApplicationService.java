@@ -30,7 +30,7 @@ public interface LotApplicationService
 
     long getCount(Criterion filter);
 
-    LotStateEvent getStateEvent(String lotId, long version);
+    LotEvent getEvent(String lotId, long version);
 
     LotState getHistoryState(String lotId, long version);
 

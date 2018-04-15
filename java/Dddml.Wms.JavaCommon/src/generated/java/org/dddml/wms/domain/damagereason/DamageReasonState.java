@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.damagereason.DamageReasonStateEvent.*;
+import org.dddml.wms.domain.damagereason.DamageReasonEvent.*;
 
 public interface DamageReasonState
 {
@@ -60,11 +60,11 @@ public interface DamageReasonState
 
     void mutate(Event e);
 
-    void when(DamageReasonStateEvent.DamageReasonStateCreated e);
+    void when(DamageReasonEvent.DamageReasonStateCreated e);
 
-    void when(DamageReasonStateEvent.DamageReasonStateMergePatched e);
+    void when(DamageReasonEvent.DamageReasonStateMergePatched e);
 
-    void when(DamageReasonStateEvent.DamageReasonStateDeleted e);
+    void when(DamageReasonEvent.DamageReasonStateDeleted e);
     
 }
 

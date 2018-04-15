@@ -20,30 +20,30 @@ public class HibernateRejectionReasonEventStore extends AbstractHibernateEventSt
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractRejectionReasonStateEvent.class;
+        return AbstractRejectionReasonEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractRejectionReasonStateEvent.class;
+        Class supportedEventType = AbstractRejectionReasonEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         String idObj = (String) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractRejectionReasonStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractRejectionReasonEvent.class);
         criteria.add(Restrictions.eq("rejectionReasonEventId.rejectionReasonId", idObj));
         criteria.add(Restrictions.le("rejectionReasonEventId.version", version));
         criteria.addOrder(Order.asc("rejectionReasonEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractRejectionReasonStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractRejectionReasonEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractRejectionReasonStateEvent) es.get(es.size() - 1)).getRejectionReasonEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractRejectionReasonEvent) es.get(es.size() - 1)).getRejectionReasonEventId().getVersion());
         } else {
             //todo?
         }

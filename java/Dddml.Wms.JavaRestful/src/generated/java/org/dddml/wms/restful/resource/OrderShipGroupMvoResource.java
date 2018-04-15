@@ -182,7 +182,7 @@ public class OrderShipGroupMvoResource {
 
             OrderShipGroupId idObj = OrderShipGroupMvoResourceUtils.parseIdString(id);
             OrderShipGroupMvoStateEventDtoConverter dtoConverter = getOrderShipGroupMvoStateEventDtoConverter();
-            return dtoConverter.toOrderShipGroupMvoStateEventDto((AbstractOrderShipGroupMvoStateEvent) orderShipGroupMvoApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toOrderShipGroupMvoStateEventDto((AbstractOrderShipGroupMvoEvent) orderShipGroupMvoApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

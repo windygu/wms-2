@@ -8,16 +8,16 @@ import org.dddml.wms.specialization.*;
 
 public class AttributeSetInstanceStateEventDtoConverter {
 
-    public AttributeSetInstanceStateEventDto toAttributeSetInstanceStateEventDto(AbstractAttributeSetInstanceStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractAttributeSetInstanceStateEvent.AbstractAttributeSetInstanceStateCreated) {
-            AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated e = (AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated) stateEvent;
+    public AttributeSetInstanceStateEventDto toAttributeSetInstanceStateEventDto(AbstractAttributeSetInstanceEvent stateEvent) {
+        if (stateEvent instanceof AbstractAttributeSetInstanceEvent.AbstractAttributeSetInstanceStateCreated) {
+            AttributeSetInstanceEvent.AttributeSetInstanceStateCreated e = (AttributeSetInstanceEvent.AttributeSetInstanceStateCreated) stateEvent;
             return toAttributeSetInstanceStateCreatedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public AttributeSetInstanceStateEventDto.AttributeSetInstanceStateCreatedDto toAttributeSetInstanceStateCreatedDto(AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated e) {
+    public AttributeSetInstanceStateEventDto.AttributeSetInstanceStateCreatedDto toAttributeSetInstanceStateCreatedDto(AttributeSetInstanceEvent.AttributeSetInstanceStateCreated e) {
         AttributeSetInstanceStateEventDto.AttributeSetInstanceStateCreatedDto dto = new AttributeSetInstanceStateEventDto.AttributeSetInstanceStateCreatedDto();
         dto.setAttributeSetInstanceEventId(e.getAttributeSetInstanceEventId());
         dto.setCreatedAt(e.getCreatedAt());

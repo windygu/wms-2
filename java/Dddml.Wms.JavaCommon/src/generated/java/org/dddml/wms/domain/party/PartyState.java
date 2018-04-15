@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.party.PartyStateEvent.*;
+import org.dddml.wms.domain.party.PartyEvent.*;
 
 public interface PartyState
 {
@@ -60,11 +60,11 @@ public interface PartyState
 
     void mutate(Event e);
 
-    void when(PartyStateEvent.PartyStateCreated e);
+    void when(PartyEvent.PartyStateCreated e);
 
-    void when(PartyStateEvent.PartyStateMergePatched e);
+    void when(PartyEvent.PartyStateMergePatched e);
 
-    void when(PartyStateEvent.PartyStateDeleted e);
+    void when(PartyEvent.PartyStateDeleted e);
     
 }
 

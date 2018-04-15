@@ -27,19 +27,19 @@ public abstract class AbstractRoleTypeAggregate extends AbstractAggregate implem
     public void create(RoleTypeCommand.CreateRoleType c)
     {
         if (c.getVersion() == null) { c.setVersion(RoleTypeState.VERSION_NULL); }
-        RoleTypeStateEvent e = map(c);
+        RoleTypeEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(RoleTypeCommand.MergePatchRoleType c)
     {
-        RoleTypeStateEvent e = map(c);
+        RoleTypeEvent e = map(c);
         apply(e);
     }
 
     public void delete(RoleTypeCommand.DeleteRoleType c)
     {
-        RoleTypeStateEvent e = map(c);
+        RoleTypeEvent e = map(c);
         apply(e);
     }
 
@@ -54,22 +54,22 @@ public abstract class AbstractRoleTypeAggregate extends AbstractAggregate implem
         changes.add(e);
     }
 
-    protected RoleTypeStateEvent map(RoleTypeCommand.CreateRoleType c) {
+    protected RoleTypeEvent map(RoleTypeCommand.CreateRoleType c) {
         RoleTypeEventId stateEventId = new RoleTypeEventId(c.getRoleTypeId(), c.getVersion());
-        RoleTypeStateEvent.RoleTypeStateCreated e = newRoleTypeStateCreated(stateEventId);
+        RoleTypeEvent.RoleTypeStateCreated e = newRoleTypeStateCreated(stateEventId);
         e.setParentTypeId(c.getParentTypeId());
         e.setHasTable(c.getHasTable());
         e.setDescription(c.getDescription());
         e.setActive(c.getActive());
-        ((AbstractRoleTypeStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractRoleTypeEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected RoleTypeStateEvent map(RoleTypeCommand.MergePatchRoleType c) {
+    protected RoleTypeEvent map(RoleTypeCommand.MergePatchRoleType c) {
         RoleTypeEventId stateEventId = new RoleTypeEventId(c.getRoleTypeId(), c.getVersion());
-        RoleTypeStateEvent.RoleTypeStateMergePatched e = newRoleTypeStateMergePatched(stateEventId);
+        RoleTypeEvent.RoleTypeStateMergePatched e = newRoleTypeStateMergePatched(stateEventId);
         e.setParentTypeId(c.getParentTypeId());
         e.setHasTable(c.getHasTable());
         e.setDescription(c.getDescription());
@@ -78,16 +78,16 @@ public abstract class AbstractRoleTypeAggregate extends AbstractAggregate implem
         e.setIsPropertyHasTableRemoved(c.getIsPropertyHasTableRemoved());
         e.setIsPropertyDescriptionRemoved(c.getIsPropertyDescriptionRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
-        ((AbstractRoleTypeStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractRoleTypeEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected RoleTypeStateEvent map(RoleTypeCommand.DeleteRoleType c) {
+    protected RoleTypeEvent map(RoleTypeCommand.DeleteRoleType c) {
         RoleTypeEventId stateEventId = new RoleTypeEventId(c.getRoleTypeId(), c.getVersion());
-        RoleTypeStateEvent.RoleTypeStateDeleted e = newRoleTypeStateDeleted(stateEventId);
-        ((AbstractRoleTypeStateEvent)e).setCommandId(c.getCommandId());
+        RoleTypeEvent.RoleTypeStateDeleted e = newRoleTypeStateDeleted(stateEventId);
+        ((AbstractRoleTypeEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
@@ -96,44 +96,44 @@ public abstract class AbstractRoleTypeAggregate extends AbstractAggregate implem
 
     ////////////////////////
 
-    protected RoleTypeStateEvent.RoleTypeStateCreated newRoleTypeStateCreated(Long version, String commandId, String requesterId) {
+    protected RoleTypeEvent.RoleTypeStateCreated newRoleTypeStateCreated(Long version, String commandId, String requesterId) {
         RoleTypeEventId stateEventId = new RoleTypeEventId(this.state.getRoleTypeId(), version);
-        RoleTypeStateEvent.RoleTypeStateCreated e = newRoleTypeStateCreated(stateEventId);
-        ((AbstractRoleTypeStateEvent)e).setCommandId(commandId);
+        RoleTypeEvent.RoleTypeStateCreated e = newRoleTypeStateCreated(stateEventId);
+        ((AbstractRoleTypeEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected RoleTypeStateEvent.RoleTypeStateMergePatched newRoleTypeStateMergePatched(Long version, String commandId, String requesterId) {
+    protected RoleTypeEvent.RoleTypeStateMergePatched newRoleTypeStateMergePatched(Long version, String commandId, String requesterId) {
         RoleTypeEventId stateEventId = new RoleTypeEventId(this.state.getRoleTypeId(), version);
-        RoleTypeStateEvent.RoleTypeStateMergePatched e = newRoleTypeStateMergePatched(stateEventId);
-        ((AbstractRoleTypeStateEvent)e).setCommandId(commandId);
+        RoleTypeEvent.RoleTypeStateMergePatched e = newRoleTypeStateMergePatched(stateEventId);
+        ((AbstractRoleTypeEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected RoleTypeStateEvent.RoleTypeStateDeleted newRoleTypeStateDeleted(Long version, String commandId, String requesterId) {
+    protected RoleTypeEvent.RoleTypeStateDeleted newRoleTypeStateDeleted(Long version, String commandId, String requesterId) {
         RoleTypeEventId stateEventId = new RoleTypeEventId(this.state.getRoleTypeId(), version);
-        RoleTypeStateEvent.RoleTypeStateDeleted e = newRoleTypeStateDeleted(stateEventId);
-        ((AbstractRoleTypeStateEvent)e).setCommandId(commandId);
+        RoleTypeEvent.RoleTypeStateDeleted e = newRoleTypeStateDeleted(stateEventId);
+        ((AbstractRoleTypeEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected RoleTypeStateEvent.RoleTypeStateCreated newRoleTypeStateCreated(RoleTypeEventId stateEventId) {
-        return new AbstractRoleTypeStateEvent.SimpleRoleTypeStateCreated(stateEventId);
+    protected RoleTypeEvent.RoleTypeStateCreated newRoleTypeStateCreated(RoleTypeEventId stateEventId) {
+        return new AbstractRoleTypeEvent.SimpleRoleTypeStateCreated(stateEventId);
     }
 
-    protected RoleTypeStateEvent.RoleTypeStateMergePatched newRoleTypeStateMergePatched(RoleTypeEventId stateEventId) {
-        return new AbstractRoleTypeStateEvent.SimpleRoleTypeStateMergePatched(stateEventId);
+    protected RoleTypeEvent.RoleTypeStateMergePatched newRoleTypeStateMergePatched(RoleTypeEventId stateEventId) {
+        return new AbstractRoleTypeEvent.SimpleRoleTypeStateMergePatched(stateEventId);
     }
 
-    protected RoleTypeStateEvent.RoleTypeStateDeleted newRoleTypeStateDeleted(RoleTypeEventId stateEventId)
+    protected RoleTypeEvent.RoleTypeStateDeleted newRoleTypeStateDeleted(RoleTypeEventId stateEventId)
     {
-        return new AbstractRoleTypeStateEvent.SimpleRoleTypeStateDeleted(stateEventId);
+        return new AbstractRoleTypeEvent.SimpleRoleTypeStateDeleted(stateEventId);
     }
 
     public static class SimpleRoleTypeAggregate extends AbstractRoleTypeAggregate

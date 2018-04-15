@@ -7,22 +7,22 @@ import org.dddml.wms.specialization.*;
 
 public class AttributeSetStateEventDtoConverter {
 
-    public AttributeSetStateEventDto toAttributeSetStateEventDto(AbstractAttributeSetStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractAttributeSetStateEvent.AbstractAttributeSetStateCreated) {
-            AttributeSetStateEvent.AttributeSetStateCreated e = (AttributeSetStateEvent.AttributeSetStateCreated) stateEvent;
+    public AttributeSetStateEventDto toAttributeSetStateEventDto(AbstractAttributeSetEvent stateEvent) {
+        if (stateEvent instanceof AbstractAttributeSetEvent.AbstractAttributeSetStateCreated) {
+            AttributeSetEvent.AttributeSetStateCreated e = (AttributeSetEvent.AttributeSetStateCreated) stateEvent;
             return toAttributeSetStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractAttributeSetStateEvent.AbstractAttributeSetStateMergePatched) {
-            AttributeSetStateEvent.AttributeSetStateMergePatched e = (AttributeSetStateEvent.AttributeSetStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractAttributeSetEvent.AbstractAttributeSetStateMergePatched) {
+            AttributeSetEvent.AttributeSetStateMergePatched e = (AttributeSetEvent.AttributeSetStateMergePatched) stateEvent;
             return toAttributeSetStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractAttributeSetStateEvent.AbstractAttributeSetStateDeleted) {
-            AttributeSetStateEvent.AttributeSetStateDeleted e = (AttributeSetStateEvent.AttributeSetStateDeleted) stateEvent;
+        } else if (stateEvent instanceof AbstractAttributeSetEvent.AbstractAttributeSetStateDeleted) {
+            AttributeSetEvent.AttributeSetStateDeleted e = (AttributeSetEvent.AttributeSetStateDeleted) stateEvent;
             return toAttributeSetStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public AttributeSetStateEventDto.AttributeSetStateCreatedDto toAttributeSetStateCreatedDto(AttributeSetStateEvent.AttributeSetStateCreated e) {
+    public AttributeSetStateEventDto.AttributeSetStateCreatedDto toAttributeSetStateCreatedDto(AttributeSetEvent.AttributeSetStateCreated e) {
         AttributeSetStateEventDto.AttributeSetStateCreatedDto dto = new AttributeSetStateEventDto.AttributeSetStateCreatedDto();
         dto.setAttributeSetEventId(e.getAttributeSetEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -36,7 +36,7 @@ public class AttributeSetStateEventDtoConverter {
         dto.setIsMandatory(e.getIsMandatory());
         dto.setActive(e.getActive());
         List<AttributeUseStateEventDto.AttributeUseStateCreatedDto> attributeUseEvents = new ArrayList<>();
-        for (AttributeUseStateEvent.AttributeUseStateCreated ee : e.getAttributeUseEvents()) {
+        for (AttributeUseEvent.AttributeUseStateCreated ee : e.getAttributeUseEvents()) {
             AttributeUseStateEventDto.AttributeUseStateCreatedDto eeDto = getAttributeUseStateEventDtoConverter().toAttributeUseStateCreatedDto(ee);
             attributeUseEvents.add(eeDto);
         }
@@ -45,7 +45,7 @@ public class AttributeSetStateEventDtoConverter {
         return dto;
     }
 
-    public AttributeSetStateEventDto.AttributeSetStateMergePatchedDto toAttributeSetStateMergePatchedDto(AttributeSetStateEvent.AttributeSetStateMergePatched e) {
+    public AttributeSetStateEventDto.AttributeSetStateMergePatchedDto toAttributeSetStateMergePatchedDto(AttributeSetEvent.AttributeSetStateMergePatched e) {
         AttributeSetStateEventDto.AttributeSetStateMergePatchedDto dto = new AttributeSetStateEventDto.AttributeSetStateMergePatchedDto();
         dto.setAttributeSetEventId(e.getAttributeSetEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -66,8 +66,8 @@ public class AttributeSetStateEventDtoConverter {
         dto.setIsPropertyIsMandatoryRemoved(e.getIsPropertyIsMandatoryRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
         List<AttributeUseStateEventDto> attributeUseEvents = new ArrayList<>();
-        for (AttributeUseStateEvent ee : e.getAttributeUseEvents()) {
-            AttributeUseStateEventDto eeDto = getAttributeUseStateEventDtoConverter().toAttributeUseStateEventDto((AbstractAttributeUseStateEvent) ee);
+        for (AttributeUseEvent ee : e.getAttributeUseEvents()) {
+            AttributeUseStateEventDto eeDto = getAttributeUseStateEventDtoConverter().toAttributeUseStateEventDto((AbstractAttributeUseEvent) ee);
             attributeUseEvents.add(eeDto);
         }
         dto.setAttributeUseEvents(attributeUseEvents.toArray(new AttributeUseStateEventDto[0]));
@@ -76,14 +76,14 @@ public class AttributeSetStateEventDtoConverter {
     }
 
 
-    public AttributeSetStateEventDto.AttributeSetStateDeletedDto toAttributeSetStateDeletedDto(AttributeSetStateEvent.AttributeSetStateDeleted e) {
+    public AttributeSetStateEventDto.AttributeSetStateDeletedDto toAttributeSetStateDeletedDto(AttributeSetEvent.AttributeSetStateDeleted e) {
         AttributeSetStateEventDto.AttributeSetStateDeletedDto dto = new AttributeSetStateEventDto.AttributeSetStateDeletedDto();
         dto.setAttributeSetEventId(e.getAttributeSetEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
         List<AttributeUseStateEventDto.AttributeUseStateRemovedDto> attributeUseEvents = new ArrayList<>();
-        for (AttributeUseStateEvent.AttributeUseStateRemoved ee : e.getAttributeUseEvents()) {
+        for (AttributeUseEvent.AttributeUseStateRemoved ee : e.getAttributeUseEvents()) {
             AttributeUseStateEventDto.AttributeUseStateRemovedDto eeDto = getAttributeUseStateEventDtoConverter().toAttributeUseStateRemovedDto(ee);
             attributeUseEvents.add(eeDto);
         }

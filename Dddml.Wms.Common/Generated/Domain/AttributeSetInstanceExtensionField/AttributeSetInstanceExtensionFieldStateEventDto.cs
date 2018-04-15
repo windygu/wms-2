@@ -69,17 +69,17 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionField
 			}
 		}
 
-        public virtual bool StateEventReadOnly { get; set; }
+        public virtual bool EventReadOnly { get; set; }
 
         bool IAttributeSetInstanceExtensionFieldStateEvent.ReadOnly
         {
             get
             {
-                return this.StateEventReadOnly;
+                return this.EventReadOnly;
             }
             set
             {
-                this.StateEventReadOnly = value;
+                this.EventReadOnly = value;
             }
         }
 
@@ -244,17 +244,17 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionField
 
     public class AttributeSetInstanceExtensionFieldStateCreatedOrMergePatchedOrDeletedDto : AttributeSetInstanceExtensionFieldStateEventDtoBase
     {
-        private string _stateEventType;
+        private string _eventType;
 
-        public virtual string StateEventType
+        public virtual string EventType
         {
-            get { return _stateEventType; }
-            set { _stateEventType = value; }
+            get { return _eventType; }
+            set { _eventType = value; }
         }
 
         protected override string GetStateEventType()
         {
-            return this._stateEventType;
+            return this._eventType;
         }
 
     }
@@ -267,7 +267,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionField
 		{
 		}
 
-        public override string StateEventType
+        public override string EventType
         {
             get { return this.GetStateEventType(); }
             set
@@ -290,7 +290,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionField
 		{
 		}
 
-        public override string StateEventType
+        public override string EventType
         {
             get { return this.GetStateEventType(); }
             set
@@ -313,7 +313,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionField
 		{
 		}
 
-        public override string StateEventType
+        public override string EventType
         {
             get { return this.GetStateEventType(); }
             set

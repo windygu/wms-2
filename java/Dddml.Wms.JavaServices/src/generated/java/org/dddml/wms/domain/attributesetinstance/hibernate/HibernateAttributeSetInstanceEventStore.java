@@ -34,8 +34,8 @@ public class HibernateAttributeSetInstanceEventStore implements EventStore {
     @Override
     public void appendEvents(EventStoreAggregateId aggregateId, long version, Collection<Event> events, Consumer<Collection<Event>> afterEventsAppended) {
         for (Event e : events) {
-            if (e instanceof AbstractAttributeSetInstanceStateEvent.AbstractAttributeSetInstanceStateCreated) {
-                AttributeSetInstanceState s = ((AbstractAttributeSetInstanceStateEvent.AbstractAttributeSetInstanceStateCreated)e).getAttributeSetInstanceState();
+            if (e instanceof AbstractAttributeSetInstanceEvent.AbstractAttributeSetInstanceStateCreated) {
+                AttributeSetInstanceState s = ((AbstractAttributeSetInstanceEvent.AbstractAttributeSetInstanceStateCreated)e).getAttributeSetInstanceState();
                 getCurrentSession().save(s);
             } else {
                 getCurrentSession().save(e);
@@ -52,30 +52,30 @@ public class HibernateAttributeSetInstanceEventStore implements EventStore {
 
     @Transactional(readOnly = true)
     @Override
-    public Event findLastEvent(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated.class;
+    public Event getEvent(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
+        Class supportedEventType = AttributeSetInstanceEvent.AttributeSetInstanceStateCreated.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
-        return getStateEvent(eventStoreAggregateId, version);
+        return getEvent(eventStoreAggregateId, version);
     }
 
     @Transactional(readOnly = true)
     @Override
-    public Event getStateEvent(EventStoreAggregateId eventStoreAggregateId, long version) {
+    public Event getEvent(EventStoreAggregateId eventStoreAggregateId, long version) {
         String idObj = (String) eventStoreAggregateId.getId();
         AttributeSetInstanceState state = getCurrentSession().get(AbstractAttributeSetInstanceState.class, idObj);
-        return new AbstractAttributeSetInstanceStateEvent.SimpleAttributeSetInstanceStateCreated(state);
+        return new AbstractAttributeSetInstanceEvent.SimpleAttributeSetInstanceStateCreated(state);
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated.class;
+        Class supportedEventType = AttributeSetInstanceEvent.AttributeSetInstanceStateCreated.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
-        Event e = getStateEvent(eventStoreAggregateId, version);
+        Event e = getEvent(eventStoreAggregateId, version);
         EventStream es = new EventStream();
         es.setEvents(e != null ? Collections.singletonList(e) : Collections.EMPTY_LIST);
         return es;

@@ -88,19 +88,19 @@ public abstract class AbstractPhysicalInventoryLineMvoApplicationService impleme
         return getStateQueryRepository().getCount(filter);
     }
 
-    public PhysicalInventoryLineMvoStateEvent getStateEvent(PhysicalInventoryLineId physicalInventoryLineId, long version) {
-        PhysicalInventoryLineMvoStateEvent e = (PhysicalInventoryLineMvoStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(physicalInventoryLineId), version);
+    public PhysicalInventoryLineMvoEvent getEvent(PhysicalInventoryLineId physicalInventoryLineId, long version) {
+        PhysicalInventoryLineMvoEvent e = (PhysicalInventoryLineMvoEvent)getEventStore().getEvent(toEventStoreAggregateId(physicalInventoryLineId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(physicalInventoryLineId, 0);
+            return getEvent(physicalInventoryLineId, 0);
         }
         return e;
     }
 
     public PhysicalInventoryLineMvoState getHistoryState(PhysicalInventoryLineId physicalInventoryLineId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractPhysicalInventoryLineMvoStateEvent.class, toEventStoreAggregateId(physicalInventoryLineId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractPhysicalInventoryLineMvoEvent.class, toEventStoreAggregateId(physicalInventoryLineId), version - 1);
         return new AbstractPhysicalInventoryLineMvoState.SimplePhysicalInventoryLineMvoState(eventStream.getEvents());
     }
 
@@ -139,7 +139,7 @@ public abstract class AbstractPhysicalInventoryLineMvoApplicationService impleme
         }
     }
 
-    public void initialize(PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateCreated stateCreated) {
+    public void initialize(PhysicalInventoryLineMvoEvent.PhysicalInventoryLineMvoStateCreated stateCreated) {
         PhysicalInventoryLineId aggregateId = stateCreated.getPhysicalInventoryLineMvoEventId().getPhysicalInventoryLineId();
         PhysicalInventoryLineMvoState state = new AbstractPhysicalInventoryLineMvoState.SimplePhysicalInventoryLineMvoState();
         state.setPhysicalInventoryLineId(aggregateId);
@@ -157,9 +157,9 @@ public abstract class AbstractPhysicalInventoryLineMvoApplicationService impleme
         if (command.getPhysicalInventoryVersion() == null) { command.setPhysicalInventoryVersion(PhysicalInventoryLineMvoState.VERSION_NULL); }
         if (state.getPhysicalInventoryVersion() != null && state.getPhysicalInventoryVersion() > command.getPhysicalInventoryVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractPhysicalInventoryLineMvoStateEvent.class, eventStoreAggregateId, command.getPhysicalInventoryVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractPhysicalInventoryLineMvoEvent.class, eventStoreAggregateId, command.getPhysicalInventoryVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

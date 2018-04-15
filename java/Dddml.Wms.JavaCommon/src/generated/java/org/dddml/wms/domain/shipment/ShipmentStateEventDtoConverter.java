@@ -7,19 +7,19 @@ import org.dddml.wms.specialization.*;
 
 public class ShipmentStateEventDtoConverter {
 
-    public ShipmentStateEventDto toShipmentStateEventDto(AbstractShipmentStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractShipmentStateEvent.AbstractShipmentStateCreated) {
-            ShipmentStateEvent.ShipmentStateCreated e = (ShipmentStateEvent.ShipmentStateCreated) stateEvent;
+    public ShipmentStateEventDto toShipmentStateEventDto(AbstractShipmentEvent stateEvent) {
+        if (stateEvent instanceof AbstractShipmentEvent.AbstractShipmentStateCreated) {
+            ShipmentEvent.ShipmentStateCreated e = (ShipmentEvent.ShipmentStateCreated) stateEvent;
             return toShipmentStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractShipmentStateEvent.AbstractShipmentStateMergePatched) {
-            ShipmentStateEvent.ShipmentStateMergePatched e = (ShipmentStateEvent.ShipmentStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractShipmentEvent.AbstractShipmentStateMergePatched) {
+            ShipmentEvent.ShipmentStateMergePatched e = (ShipmentEvent.ShipmentStateMergePatched) stateEvent;
             return toShipmentStateMergePatchedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public ShipmentStateEventDto.ShipmentStateCreatedDto toShipmentStateCreatedDto(ShipmentStateEvent.ShipmentStateCreated e) {
+    public ShipmentStateEventDto.ShipmentStateCreatedDto toShipmentStateCreatedDto(ShipmentEvent.ShipmentStateCreated e) {
         ShipmentStateEventDto.ShipmentStateCreatedDto dto = new ShipmentStateEventDto.ShipmentStateCreatedDto();
         dto.setShipmentEventId(e.getShipmentEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -52,21 +52,21 @@ public class ShipmentStateEventDtoConverter {
         dto.setAddtlShippingChargeDesc(e.getAddtlShippingChargeDesc());
         dto.setActive(e.getActive());
         List<ShipmentItemStateEventDto.ShipmentItemStateCreatedDto> shipmentItemEvents = new ArrayList<>();
-        for (ShipmentItemStateEvent.ShipmentItemStateCreated ee : e.getShipmentItemEvents()) {
+        for (ShipmentItemEvent.ShipmentItemStateCreated ee : e.getShipmentItemEvents()) {
             ShipmentItemStateEventDto.ShipmentItemStateCreatedDto eeDto = getShipmentItemStateEventDtoConverter().toShipmentItemStateCreatedDto(ee);
             shipmentItemEvents.add(eeDto);
         }
         dto.setShipmentItemEvents(shipmentItemEvents.toArray(new ShipmentItemStateEventDto.ShipmentItemStateCreatedDto[0]));
 
         List<ShipmentReceiptStateEventDto.ShipmentReceiptStateCreatedDto> shipmentReceiptEvents = new ArrayList<>();
-        for (ShipmentReceiptStateEvent.ShipmentReceiptStateCreated ee : e.getShipmentReceiptEvents()) {
+        for (ShipmentReceiptEvent.ShipmentReceiptStateCreated ee : e.getShipmentReceiptEvents()) {
             ShipmentReceiptStateEventDto.ShipmentReceiptStateCreatedDto eeDto = getShipmentReceiptStateEventDtoConverter().toShipmentReceiptStateCreatedDto(ee);
             shipmentReceiptEvents.add(eeDto);
         }
         dto.setShipmentReceiptEvents(shipmentReceiptEvents.toArray(new ShipmentReceiptStateEventDto.ShipmentReceiptStateCreatedDto[0]));
 
         List<ItemIssuanceStateEventDto.ItemIssuanceStateCreatedDto> itemIssuanceEvents = new ArrayList<>();
-        for (ItemIssuanceStateEvent.ItemIssuanceStateCreated ee : e.getItemIssuanceEvents()) {
+        for (ItemIssuanceEvent.ItemIssuanceStateCreated ee : e.getItemIssuanceEvents()) {
             ItemIssuanceStateEventDto.ItemIssuanceStateCreatedDto eeDto = getItemIssuanceStateEventDtoConverter().toItemIssuanceStateCreatedDto(ee);
             itemIssuanceEvents.add(eeDto);
         }
@@ -75,7 +75,7 @@ public class ShipmentStateEventDtoConverter {
         return dto;
     }
 
-    public ShipmentStateEventDto.ShipmentStateMergePatchedDto toShipmentStateMergePatchedDto(ShipmentStateEvent.ShipmentStateMergePatched e) {
+    public ShipmentStateEventDto.ShipmentStateMergePatchedDto toShipmentStateMergePatchedDto(ShipmentEvent.ShipmentStateMergePatched e) {
         ShipmentStateEventDto.ShipmentStateMergePatchedDto dto = new ShipmentStateEventDto.ShipmentStateMergePatchedDto();
         dto.setShipmentEventId(e.getShipmentEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -134,22 +134,22 @@ public class ShipmentStateEventDtoConverter {
         dto.setIsPropertyAddtlShippingChargeDescRemoved(e.getIsPropertyAddtlShippingChargeDescRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
         List<ShipmentItemStateEventDto> shipmentItemEvents = new ArrayList<>();
-        for (ShipmentItemStateEvent ee : e.getShipmentItemEvents()) {
-            ShipmentItemStateEventDto eeDto = getShipmentItemStateEventDtoConverter().toShipmentItemStateEventDto((AbstractShipmentItemStateEvent) ee);
+        for (ShipmentItemEvent ee : e.getShipmentItemEvents()) {
+            ShipmentItemStateEventDto eeDto = getShipmentItemStateEventDtoConverter().toShipmentItemStateEventDto((AbstractShipmentItemEvent) ee);
             shipmentItemEvents.add(eeDto);
         }
         dto.setShipmentItemEvents(shipmentItemEvents.toArray(new ShipmentItemStateEventDto[0]));
 
         List<ShipmentReceiptStateEventDto> shipmentReceiptEvents = new ArrayList<>();
-        for (ShipmentReceiptStateEvent ee : e.getShipmentReceiptEvents()) {
-            ShipmentReceiptStateEventDto eeDto = getShipmentReceiptStateEventDtoConverter().toShipmentReceiptStateEventDto((AbstractShipmentReceiptStateEvent) ee);
+        for (ShipmentReceiptEvent ee : e.getShipmentReceiptEvents()) {
+            ShipmentReceiptStateEventDto eeDto = getShipmentReceiptStateEventDtoConverter().toShipmentReceiptStateEventDto((AbstractShipmentReceiptEvent) ee);
             shipmentReceiptEvents.add(eeDto);
         }
         dto.setShipmentReceiptEvents(shipmentReceiptEvents.toArray(new ShipmentReceiptStateEventDto[0]));
 
         List<ItemIssuanceStateEventDto> itemIssuanceEvents = new ArrayList<>();
-        for (ItemIssuanceStateEvent ee : e.getItemIssuanceEvents()) {
-            ItemIssuanceStateEventDto eeDto = getItemIssuanceStateEventDtoConverter().toItemIssuanceStateEventDto((AbstractItemIssuanceStateEvent) ee);
+        for (ItemIssuanceEvent ee : e.getItemIssuanceEvents()) {
+            ItemIssuanceStateEventDto eeDto = getItemIssuanceStateEventDtoConverter().toItemIssuanceStateEventDto((AbstractItemIssuanceEvent) ee);
             itemIssuanceEvents.add(eeDto);
         }
         dto.setItemIssuanceEvents(itemIssuanceEvents.toArray(new ItemIssuanceStateEventDto[0]));

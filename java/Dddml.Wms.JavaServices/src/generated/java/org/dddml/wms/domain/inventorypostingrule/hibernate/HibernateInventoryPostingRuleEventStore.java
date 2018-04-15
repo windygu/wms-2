@@ -21,30 +21,30 @@ public class HibernateInventoryPostingRuleEventStore extends AbstractHibernateEv
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractInventoryPostingRuleStateEvent.class;
+        return AbstractInventoryPostingRuleEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractInventoryPostingRuleStateEvent.class;
+        Class supportedEventType = AbstractInventoryPostingRuleEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         String idObj = (String) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractInventoryPostingRuleStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractInventoryPostingRuleEvent.class);
         criteria.add(Restrictions.eq("inventoryPostingRuleEventId.inventoryPostingRuleId", idObj));
         criteria.add(Restrictions.le("inventoryPostingRuleEventId.version", version));
         criteria.addOrder(Order.asc("inventoryPostingRuleEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractInventoryPostingRuleStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractInventoryPostingRuleEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractInventoryPostingRuleStateEvent) es.get(es.size() - 1)).getInventoryPostingRuleEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractInventoryPostingRuleEvent) es.get(es.size() - 1)).getInventoryPostingRuleEventId().getVersion());
         } else {
             //todo?
         }

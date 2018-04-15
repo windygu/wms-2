@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.ordershipment.OrderShipmentStateEvent.*;
+import org.dddml.wms.domain.ordershipment.OrderShipmentEvent.*;
 
 public interface OrderShipmentState
 {
@@ -52,9 +52,9 @@ public interface OrderShipmentState
 
     void mutate(Event e);
 
-    void when(OrderShipmentStateEvent.OrderShipmentStateCreated e);
+    void when(OrderShipmentEvent.OrderShipmentStateCreated e);
 
-    void when(OrderShipmentStateEvent.OrderShipmentStateMergePatched e);
+    void when(OrderShipmentEvent.OrderShipmentStateMergePatched e);
 
     
 }

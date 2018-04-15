@@ -163,7 +163,7 @@ public class OrderShipmentResource {
 
             OrderShipmentId idObj = OrderShipmentResourceUtils.parseIdString(id);
             OrderShipmentStateEventDtoConverter dtoConverter = getOrderShipmentStateEventDtoConverter();
-            return dtoConverter.toOrderShipmentStateEventDto((AbstractOrderShipmentStateEvent) orderShipmentApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toOrderShipmentStateEventDto((AbstractOrderShipmentEvent) orderShipmentApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

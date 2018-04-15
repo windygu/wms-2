@@ -181,7 +181,7 @@ public class LocatorResource {
 
             String idObj = id;
             LocatorStateEventDtoConverter dtoConverter = getLocatorStateEventDtoConverter();
-            return dtoConverter.toLocatorStateEventDto((AbstractLocatorStateEvent) locatorApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toLocatorStateEventDto((AbstractLocatorEvent) locatorApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

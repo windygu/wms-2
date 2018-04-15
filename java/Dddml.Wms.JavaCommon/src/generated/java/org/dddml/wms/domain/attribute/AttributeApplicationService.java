@@ -30,7 +30,7 @@ public interface AttributeApplicationService
 
     long getCount(Criterion filter);
 
-    AttributeStateEvent getStateEvent(String attributeId, long version);
+    AttributeEvent getEvent(String attributeId, long version);
 
     AttributeState getHistoryState(String attributeId, long version);
 

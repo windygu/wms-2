@@ -23,20 +23,20 @@ public class HibernateInventoryItemRequirementEntryMvoEventStore extends Abstrac
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractInventoryItemRequirementEntryMvoStateEvent.class;
+        return AbstractInventoryItemRequirementEntryMvoEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractInventoryItemRequirementEntryMvoStateEvent.class;
+        Class supportedEventType = AbstractInventoryItemRequirementEntryMvoEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         InventoryItemRequirementEntryId idObj = (InventoryItemRequirementEntryId) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractInventoryItemRequirementEntryMvoStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractInventoryItemRequirementEntryMvoEvent.class);
         criteria.add(Restrictions.eq("inventoryItemRequirementEntryMvoEventId.inventoryItemRequirementEntryIdInventoryItemRequirementIdProductId", idObj.getInventoryItemRequirementId().getProductId()));
         criteria.add(Restrictions.eq("inventoryItemRequirementEntryMvoEventId.inventoryItemRequirementEntryIdInventoryItemRequirementIdLocatorId", idObj.getInventoryItemRequirementId().getLocatorId()));
         criteria.add(Restrictions.eq("inventoryItemRequirementEntryMvoEventId.inventoryItemRequirementEntryIdInventoryItemRequirementIdAttributeSetInstanceId", idObj.getInventoryItemRequirementId().getAttributeSetInstanceId()));
@@ -45,11 +45,11 @@ public class HibernateInventoryItemRequirementEntryMvoEventStore extends Abstrac
         criteria.addOrder(Order.asc("inventoryItemRequirementEntryMvoEventId.inventoryItemRequirementVersion"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractInventoryItemRequirementEntryMvoStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractInventoryItemRequirementEntryMvoEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractInventoryItemRequirementEntryMvoStateEvent) es.get(es.size() - 1)).getInventoryItemRequirementEntryMvoEventId().getInventoryItemRequirementVersion());
+            eventStream.setSteamVersion(((AbstractInventoryItemRequirementEntryMvoEvent) es.get(es.size() - 1)).getInventoryItemRequirementEntryMvoEventId().getInventoryItemRequirementVersion());
         } else {
             //todo?
         }

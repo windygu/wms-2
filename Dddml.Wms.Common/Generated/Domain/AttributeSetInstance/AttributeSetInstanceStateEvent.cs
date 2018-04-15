@@ -189,17 +189,17 @@ namespace Dddml.Wms.Domain.AttributeSetInstance
 			}
 		}
 
-        public virtual bool StateEventReadOnly { get; set; }
+        public virtual bool EventReadOnly { get; set; }
 
         bool IAttributeSetInstanceStateEvent.ReadOnly
         {
             get
             {
-                return this.StateEventReadOnly;
+                return this.EventReadOnly;
             }
             set
             {
-                this.StateEventReadOnly = value;
+                this.EventReadOnly = value;
             }
         }
 

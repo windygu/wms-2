@@ -2,9 +2,9 @@ package org.dddml.wms.domain.contactmech;
 
 import java.util.Date;
 import org.dddml.wms.domain.*;
-import org.dddml.wms.domain.AbstractStateEvent;
+import org.dddml.wms.domain.AbstractEvent;
 
-public class ContactMechStateEventDto extends AbstractStateEvent
+public class ContactMechStateEventDto extends AbstractEvent
 {
 
     private ContactMechEventId contactMechEventId;
@@ -458,7 +458,7 @@ public class ContactMechStateEventDto extends AbstractStateEvent
 	public static class ContactMechStateCreatedDto extends ContactMechStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_CREATED;
         }
@@ -469,7 +469,7 @@ public class ContactMechStateEventDto extends AbstractStateEvent
 	public static class ContactMechStateMergePatchedDto extends ContactMechStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_MERGE_PATCHED;
         }
@@ -480,7 +480,7 @@ public class ContactMechStateEventDto extends AbstractStateEvent
 	public static class ContactMechStateDeletedDto extends ContactMechStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_DELETED;
         }

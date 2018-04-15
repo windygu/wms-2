@@ -92,19 +92,19 @@ public abstract class AbstractPhysicalInventoryApplicationService implements Phy
         return getStateQueryRepository().getCount(filter);
     }
 
-    public PhysicalInventoryStateEvent getStateEvent(String documentNumber, long version) {
-        PhysicalInventoryStateEvent e = (PhysicalInventoryStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(documentNumber), version);
+    public PhysicalInventoryEvent getEvent(String documentNumber, long version) {
+        PhysicalInventoryEvent e = (PhysicalInventoryEvent)getEventStore().getEvent(toEventStoreAggregateId(documentNumber), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(documentNumber, 0);
+            return getEvent(documentNumber, 0);
         }
         return e;
     }
 
     public PhysicalInventoryState getHistoryState(String documentNumber, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractPhysicalInventoryStateEvent.class, toEventStoreAggregateId(documentNumber), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractPhysicalInventoryEvent.class, toEventStoreAggregateId(documentNumber), version - 1);
         return new AbstractPhysicalInventoryState.SimplePhysicalInventoryState(eventStream.getEvents());
     }
 
@@ -151,7 +151,7 @@ public abstract class AbstractPhysicalInventoryApplicationService implements Phy
         }
     }
 
-    public void initialize(PhysicalInventoryStateEvent.PhysicalInventoryStateCreated stateCreated) {
+    public void initialize(PhysicalInventoryEvent.PhysicalInventoryStateCreated stateCreated) {
         String aggregateId = stateCreated.getPhysicalInventoryEventId().getDocumentNumber();
         PhysicalInventoryState state = new AbstractPhysicalInventoryState.SimplePhysicalInventoryState();
         state.setDocumentNumber(aggregateId);
@@ -169,9 +169,9 @@ public abstract class AbstractPhysicalInventoryApplicationService implements Phy
         if (command.getVersion() == null) { command.setVersion(PhysicalInventoryState.VERSION_NULL); }
         if (state.getVersion() != null && state.getVersion() > command.getVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractPhysicalInventoryStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractPhysicalInventoryEvent.class, eventStoreAggregateId, command.getVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

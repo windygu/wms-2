@@ -46,17 +46,17 @@ namespace Dddml.Wms.Domain.RoleType
 			}
 		}
 
-        public virtual bool StateEventReadOnly { get; set; }
+        public virtual bool EventReadOnly { get; set; }
 
         bool IRoleTypeStateEvent.ReadOnly
         {
             get
             {
-                return this.StateEventReadOnly;
+                return this.EventReadOnly;
             }
             set
             {
-                this.StateEventReadOnly = value;
+                this.EventReadOnly = value;
             }
         }
 

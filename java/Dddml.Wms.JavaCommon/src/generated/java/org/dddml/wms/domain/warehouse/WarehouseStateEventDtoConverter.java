@@ -7,22 +7,22 @@ import org.dddml.wms.specialization.*;
 
 public class WarehouseStateEventDtoConverter {
 
-    public WarehouseStateEventDto toWarehouseStateEventDto(AbstractWarehouseStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractWarehouseStateEvent.AbstractWarehouseStateCreated) {
-            WarehouseStateEvent.WarehouseStateCreated e = (WarehouseStateEvent.WarehouseStateCreated) stateEvent;
+    public WarehouseStateEventDto toWarehouseStateEventDto(AbstractWarehouseEvent stateEvent) {
+        if (stateEvent instanceof AbstractWarehouseEvent.AbstractWarehouseStateCreated) {
+            WarehouseEvent.WarehouseStateCreated e = (WarehouseEvent.WarehouseStateCreated) stateEvent;
             return toWarehouseStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractWarehouseStateEvent.AbstractWarehouseStateMergePatched) {
-            WarehouseStateEvent.WarehouseStateMergePatched e = (WarehouseStateEvent.WarehouseStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractWarehouseEvent.AbstractWarehouseStateMergePatched) {
+            WarehouseEvent.WarehouseStateMergePatched e = (WarehouseEvent.WarehouseStateMergePatched) stateEvent;
             return toWarehouseStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractWarehouseStateEvent.AbstractWarehouseStateDeleted) {
-            WarehouseStateEvent.WarehouseStateDeleted e = (WarehouseStateEvent.WarehouseStateDeleted) stateEvent;
+        } else if (stateEvent instanceof AbstractWarehouseEvent.AbstractWarehouseStateDeleted) {
+            WarehouseEvent.WarehouseStateDeleted e = (WarehouseEvent.WarehouseStateDeleted) stateEvent;
             return toWarehouseStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public WarehouseStateEventDto.WarehouseStateCreatedDto toWarehouseStateCreatedDto(WarehouseStateEvent.WarehouseStateCreated e) {
+    public WarehouseStateEventDto.WarehouseStateCreatedDto toWarehouseStateCreatedDto(WarehouseEvent.WarehouseStateCreated e) {
         WarehouseStateEventDto.WarehouseStateCreatedDto dto = new WarehouseStateEventDto.WarehouseStateCreatedDto();
         dto.setWarehouseEventId(e.getWarehouseEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -35,7 +35,7 @@ public class WarehouseStateEventDtoConverter {
         return dto;
     }
 
-    public WarehouseStateEventDto.WarehouseStateMergePatchedDto toWarehouseStateMergePatchedDto(WarehouseStateEvent.WarehouseStateMergePatched e) {
+    public WarehouseStateEventDto.WarehouseStateMergePatchedDto toWarehouseStateMergePatchedDto(WarehouseEvent.WarehouseStateMergePatched e) {
         WarehouseStateEventDto.WarehouseStateMergePatchedDto dto = new WarehouseStateEventDto.WarehouseStateMergePatchedDto();
         dto.setWarehouseEventId(e.getWarehouseEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -53,7 +53,7 @@ public class WarehouseStateEventDtoConverter {
     }
 
 
-    public WarehouseStateEventDto.WarehouseStateDeletedDto toWarehouseStateDeletedDto(WarehouseStateEvent.WarehouseStateDeleted e) {
+    public WarehouseStateEventDto.WarehouseStateDeletedDto toWarehouseStateDeletedDto(WarehouseEvent.WarehouseStateDeleted e) {
         WarehouseStateEventDto.WarehouseStateDeletedDto dto = new WarehouseStateEventDto.WarehouseStateDeletedDto();
         dto.setWarehouseEventId(e.getWarehouseEventId());
         dto.setCreatedAt(e.getCreatedAt());

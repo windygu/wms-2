@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.inventoryitem.InventoryItemEntryStateEvent.*;
+import org.dddml.wms.domain.inventoryitem.InventoryItemEntryEvent.*;
 
 public interface InventoryItemEntryState
 {
@@ -81,7 +81,7 @@ public interface InventoryItemEntryState
 
     void mutate(Event e);
 
-    void when(InventoryItemEntryStateEvent.InventoryItemEntryStateCreated e);
+    void when(InventoryItemEntryEvent.InventoryItemEntryStateCreated e);
 
     
 }

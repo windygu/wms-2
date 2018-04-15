@@ -31,7 +31,7 @@ public interface PicklistRoleMvoApplicationService
 
     long getCount(Criterion filter);
 
-    PicklistRoleMvoStateEvent getStateEvent(PicklistRoleId picklistRoleId, long version);
+    PicklistRoleMvoEvent getEvent(PicklistRoleId picklistRoleId, long version);
 
     PicklistRoleMvoState getHistoryState(PicklistRoleId picklistRoleId, long version);
 

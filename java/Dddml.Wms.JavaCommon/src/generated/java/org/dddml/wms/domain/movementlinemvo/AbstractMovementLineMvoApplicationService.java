@@ -88,19 +88,19 @@ public abstract class AbstractMovementLineMvoApplicationService implements Movem
         return getStateQueryRepository().getCount(filter);
     }
 
-    public MovementLineMvoStateEvent getStateEvent(MovementLineId movementLineId, long version) {
-        MovementLineMvoStateEvent e = (MovementLineMvoStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(movementLineId), version);
+    public MovementLineMvoEvent getEvent(MovementLineId movementLineId, long version) {
+        MovementLineMvoEvent e = (MovementLineMvoEvent)getEventStore().getEvent(toEventStoreAggregateId(movementLineId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(movementLineId, 0);
+            return getEvent(movementLineId, 0);
         }
         return e;
     }
 
     public MovementLineMvoState getHistoryState(MovementLineId movementLineId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractMovementLineMvoStateEvent.class, toEventStoreAggregateId(movementLineId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractMovementLineMvoEvent.class, toEventStoreAggregateId(movementLineId), version - 1);
         return new AbstractMovementLineMvoState.SimpleMovementLineMvoState(eventStream.getEvents());
     }
 
@@ -139,7 +139,7 @@ public abstract class AbstractMovementLineMvoApplicationService implements Movem
         }
     }
 
-    public void initialize(MovementLineMvoStateEvent.MovementLineMvoStateCreated stateCreated) {
+    public void initialize(MovementLineMvoEvent.MovementLineMvoStateCreated stateCreated) {
         MovementLineId aggregateId = stateCreated.getMovementLineMvoEventId().getMovementLineId();
         MovementLineMvoState state = new AbstractMovementLineMvoState.SimpleMovementLineMvoState();
         state.setMovementLineId(aggregateId);
@@ -157,9 +157,9 @@ public abstract class AbstractMovementLineMvoApplicationService implements Movem
         if (command.getMovementVersion() == null) { command.setMovementVersion(MovementLineMvoState.VERSION_NULL); }
         if (state.getMovementVersion() != null && state.getMovementVersion() > command.getMovementVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractMovementLineMvoStateEvent.class, eventStoreAggregateId, command.getMovementVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractMovementLineMvoEvent.class, eventStoreAggregateId, command.getMovementVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

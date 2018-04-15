@@ -83,19 +83,19 @@ public abstract class AbstractOrderApplicationService implements OrderApplicatio
         return getStateQueryRepository().getCount(filter);
     }
 
-    public OrderStateEvent getStateEvent(String orderId, long version) {
-        OrderStateEvent e = (OrderStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(orderId), version);
+    public OrderEvent getEvent(String orderId, long version) {
+        OrderEvent e = (OrderEvent)getEventStore().getEvent(toEventStoreAggregateId(orderId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(orderId, 0);
+            return getEvent(orderId, 0);
         }
         return e;
     }
 
     public OrderState getHistoryState(String orderId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractOrderStateEvent.class, toEventStoreAggregateId(orderId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractOrderEvent.class, toEventStoreAggregateId(orderId), version - 1);
         return new AbstractOrderState.SimpleOrderState(eventStream.getEvents());
     }
 
@@ -166,7 +166,7 @@ public abstract class AbstractOrderApplicationService implements OrderApplicatio
         }
     }
 
-    public void initialize(OrderStateEvent.OrderStateCreated stateCreated) {
+    public void initialize(OrderEvent.OrderStateCreated stateCreated) {
         String aggregateId = stateCreated.getOrderEventId().getOrderId();
         OrderState state = new AbstractOrderState.SimpleOrderState();
         state.setOrderId(aggregateId);
@@ -184,9 +184,9 @@ public abstract class AbstractOrderApplicationService implements OrderApplicatio
         if (command.getVersion() == null) { command.setVersion(OrderState.VERSION_NULL); }
         if (state.getVersion() != null && state.getVersion() > command.getVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractOrderStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractOrderEvent.class, eventStoreAggregateId, command.getVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

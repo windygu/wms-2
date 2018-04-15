@@ -47,7 +47,7 @@ namespace Dddml.Wms.Domain.ItemIssuanceMvo.NHibernate
             var es = criteria.List<IEvent>();
             foreach (ItemIssuanceMvoStateEventBase e in es)
             {
-                e.StateEventReadOnly = true;
+                e.EventReadOnly = true;
             }
             return new EventStream()
             {

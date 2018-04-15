@@ -45,7 +45,7 @@ namespace Dddml.Wms.Domain.Locator.NHibernate
             var es = criteria.List<IEvent>();
             foreach (LocatorStateEventBase e in es)
             {
-                e.StateEventReadOnly = true;
+                e.EventReadOnly = true;
             }
             return new EventStream()
             {

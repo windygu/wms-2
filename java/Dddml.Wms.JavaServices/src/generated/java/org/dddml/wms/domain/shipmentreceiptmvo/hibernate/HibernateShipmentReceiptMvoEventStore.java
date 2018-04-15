@@ -21,31 +21,31 @@ public class HibernateShipmentReceiptMvoEventStore extends AbstractHibernateEven
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractShipmentReceiptMvoStateEvent.class;
+        return AbstractShipmentReceiptMvoEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractShipmentReceiptMvoStateEvent.class;
+        Class supportedEventType = AbstractShipmentReceiptMvoEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         ShipmentReceiptId idObj = (ShipmentReceiptId) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractShipmentReceiptMvoStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractShipmentReceiptMvoEvent.class);
         criteria.add(Restrictions.eq("shipmentReceiptMvoEventId.shipmentReceiptIdShipmentId", idObj.getShipmentId()));
         criteria.add(Restrictions.eq("shipmentReceiptMvoEventId.shipmentReceiptIdReceiptSeqId", idObj.getReceiptSeqId()));
         criteria.add(Restrictions.le("shipmentReceiptMvoEventId.shipmentVersion", version));
         criteria.addOrder(Order.asc("shipmentReceiptMvoEventId.shipmentVersion"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractShipmentReceiptMvoStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractShipmentReceiptMvoEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractShipmentReceiptMvoStateEvent) es.get(es.size() - 1)).getShipmentReceiptMvoEventId().getShipmentVersion());
+            eventStream.setSteamVersion(((AbstractShipmentReceiptMvoEvent) es.get(es.size() - 1)).getShipmentReceiptMvoEventId().getShipmentVersion());
         } else {
             //todo?
         }

@@ -48,17 +48,17 @@ namespace Dddml.Wms.Domain.PicklistBin
 			}
 		}
 
-        public virtual bool StateEventReadOnly { get; set; }
+        public virtual bool EventReadOnly { get; set; }
 
         bool IPicklistBinStateEvent.ReadOnly
         {
             get
             {
-                return this.StateEventReadOnly;
+                return this.EventReadOnly;
             }
             set
             {
-                this.StateEventReadOnly = value;
+                this.EventReadOnly = value;
             }
         }
 
@@ -145,7 +145,7 @@ namespace Dddml.Wms.Domain.PicklistBin
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._picklistItemEvents.Values;
                 }
@@ -231,7 +231,7 @@ namespace Dddml.Wms.Domain.PicklistBin
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._picklistItemEvents.Values;
                 }
@@ -323,7 +323,7 @@ namespace Dddml.Wms.Domain.PicklistBin
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._picklistItemEvents.Values;
                 }

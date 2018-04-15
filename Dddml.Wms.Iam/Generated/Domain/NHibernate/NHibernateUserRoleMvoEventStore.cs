@@ -47,7 +47,7 @@ namespace Dddml.Wms.Domain.UserRoleMvo.NHibernate
             var es = criteria.List<IEvent>();
             foreach (UserRoleMvoStateEventBase e in es)
             {
-                e.StateEventReadOnly = true;
+                e.EventReadOnly = true;
             }
             return new EventStream()
             {

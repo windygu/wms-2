@@ -86,19 +86,19 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldApplicationServi
         return getStateQueryRepository().getCount(filter);
     }
 
-    public AttributeSetInstanceExtensionFieldStateEvent getStateEvent(String name, long version) {
-        AttributeSetInstanceExtensionFieldStateEvent e = (AttributeSetInstanceExtensionFieldStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(name), version);
+    public AttributeSetInstanceExtensionFieldEvent getEvent(String name, long version) {
+        AttributeSetInstanceExtensionFieldEvent e = (AttributeSetInstanceExtensionFieldEvent)getEventStore().getEvent(toEventStoreAggregateId(name), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(name, 0);
+            return getEvent(name, 0);
         }
         return e;
     }
 
     public AttributeSetInstanceExtensionFieldState getHistoryState(String name, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractAttributeSetInstanceExtensionFieldStateEvent.class, toEventStoreAggregateId(name), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractAttributeSetInstanceExtensionFieldEvent.class, toEventStoreAggregateId(name), version - 1);
         return new AbstractAttributeSetInstanceExtensionFieldState.SimpleAttributeSetInstanceExtensionFieldState(eventStream.getEvents());
     }
 
@@ -137,7 +137,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldApplicationServi
         }
     }
 
-    public void initialize(AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateCreated stateCreated) {
+    public void initialize(AttributeSetInstanceExtensionFieldEvent.AttributeSetInstanceExtensionFieldStateCreated stateCreated) {
         String aggregateId = stateCreated.getAttributeSetInstanceExtensionFieldEventId().getName();
         AttributeSetInstanceExtensionFieldState state = new AbstractAttributeSetInstanceExtensionFieldState.SimpleAttributeSetInstanceExtensionFieldState();
         state.setName(aggregateId);
@@ -155,9 +155,9 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldApplicationServi
         if (command.getVersion() == null) { command.setVersion(AttributeSetInstanceExtensionFieldState.VERSION_NULL); }
         if (state.getVersion() != null && state.getVersion() > command.getVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractAttributeSetInstanceExtensionFieldStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractAttributeSetInstanceExtensionFieldEvent.class, eventStoreAggregateId, command.getVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

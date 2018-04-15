@@ -42,7 +42,7 @@ public interface PartyApplicationService
 
     long getCount(Class<? extends PartyState> stateType, Criterion filter);
 
-    PartyStateEvent getStateEvent(String partyId, long version);
+    PartyEvent getEvent(String partyId, long version);
 
     PartyState getHistoryState(String partyId, long version);
 

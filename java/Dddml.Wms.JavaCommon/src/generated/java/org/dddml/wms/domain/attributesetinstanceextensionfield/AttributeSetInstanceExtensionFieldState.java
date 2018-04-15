@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.attributesetinstanceextensionfield.AttributeSetInstanceExtensionFieldStateEvent.*;
+import org.dddml.wms.domain.attributesetinstanceextensionfield.AttributeSetInstanceExtensionFieldEvent.*;
 
 public interface AttributeSetInstanceExtensionFieldState
 {
@@ -72,11 +72,11 @@ public interface AttributeSetInstanceExtensionFieldState
 
     void mutate(Event e);
 
-    void when(AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateCreated e);
+    void when(AttributeSetInstanceExtensionFieldEvent.AttributeSetInstanceExtensionFieldStateCreated e);
 
-    void when(AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateMergePatched e);
+    void when(AttributeSetInstanceExtensionFieldEvent.AttributeSetInstanceExtensionFieldStateMergePatched e);
 
-    void when(AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateDeleted e);
+    void when(AttributeSetInstanceExtensionFieldEvent.AttributeSetInstanceExtensionFieldStateDeleted e);
     
 }
 

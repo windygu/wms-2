@@ -181,7 +181,7 @@ public class PartyRoleResource {
 
             PartyRoleId idObj = PartyRoleResourceUtils.parseIdString(id);
             PartyRoleStateEventDtoConverter dtoConverter = getPartyRoleStateEventDtoConverter();
-            return dtoConverter.toPartyRoleStateEventDto((AbstractPartyRoleStateEvent) partyRoleApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toPartyRoleStateEventDto((AbstractPartyRoleEvent) partyRoleApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

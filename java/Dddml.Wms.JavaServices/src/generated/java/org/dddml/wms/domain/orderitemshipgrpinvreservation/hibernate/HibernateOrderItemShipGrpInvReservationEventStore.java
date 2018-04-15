@@ -20,20 +20,20 @@ public class HibernateOrderItemShipGrpInvReservationEventStore extends AbstractH
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractOrderItemShipGrpInvReservationStateEvent.class;
+        return AbstractOrderItemShipGrpInvReservationEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractOrderItemShipGrpInvReservationStateEvent.class;
+        Class supportedEventType = AbstractOrderItemShipGrpInvReservationEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         OrderItemShipGrpInvResId idObj = (OrderItemShipGrpInvResId) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractOrderItemShipGrpInvReservationStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractOrderItemShipGrpInvReservationEvent.class);
         criteria.add(Restrictions.eq("orderItemShipGrpInvReservationEventId.orderItemShipGrpInvResIdOrderId", idObj.getOrderId()));
         criteria.add(Restrictions.eq("orderItemShipGrpInvReservationEventId.orderItemShipGrpInvResIdShipGroupSeqId", idObj.getShipGroupSeqId()));
         criteria.add(Restrictions.eq("orderItemShipGrpInvReservationEventId.orderItemShipGrpInvResIdOrderItemSeqId", idObj.getOrderItemSeqId()));
@@ -44,11 +44,11 @@ public class HibernateOrderItemShipGrpInvReservationEventStore extends AbstractH
         criteria.addOrder(Order.asc("orderItemShipGrpInvReservationEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractOrderItemShipGrpInvReservationStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractOrderItemShipGrpInvReservationEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractOrderItemShipGrpInvReservationStateEvent) es.get(es.size() - 1)).getOrderItemShipGrpInvReservationEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractOrderItemShipGrpInvReservationEvent) es.get(es.size() - 1)).getOrderItemShipGrpInvReservationEventId().getVersion());
         } else {
             //todo?
         }

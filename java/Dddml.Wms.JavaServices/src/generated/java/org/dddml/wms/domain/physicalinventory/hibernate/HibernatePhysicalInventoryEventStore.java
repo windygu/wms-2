@@ -22,30 +22,30 @@ public class HibernatePhysicalInventoryEventStore extends AbstractHibernateEvent
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractPhysicalInventoryStateEvent.class;
+        return AbstractPhysicalInventoryEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractPhysicalInventoryStateEvent.class;
+        Class supportedEventType = AbstractPhysicalInventoryEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         String idObj = (String) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractPhysicalInventoryStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractPhysicalInventoryEvent.class);
         criteria.add(Restrictions.eq("physicalInventoryEventId.documentNumber", idObj));
         criteria.add(Restrictions.le("physicalInventoryEventId.version", version));
         criteria.addOrder(Order.asc("physicalInventoryEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractPhysicalInventoryStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractPhysicalInventoryEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractPhysicalInventoryStateEvent) es.get(es.size() - 1)).getPhysicalInventoryEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractPhysicalInventoryEvent) es.get(es.size() - 1)).getPhysicalInventoryEventId().getVersion());
         } else {
             //todo?
         }

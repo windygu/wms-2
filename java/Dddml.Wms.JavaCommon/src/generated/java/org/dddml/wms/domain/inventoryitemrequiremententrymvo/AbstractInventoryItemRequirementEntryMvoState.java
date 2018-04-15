@@ -7,7 +7,7 @@ import org.dddml.wms.domain.inventoryprtriggered.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.inventoryitemrequiremententrymvo.InventoryItemRequirementEntryMvoStateEvent.*;
+import org.dddml.wms.domain.inventoryitemrequiremententrymvo.InventoryItemRequirementEntryMvoEvent.*;
 
 public abstract class AbstractInventoryItemRequirementEntryMvoState implements InventoryItemRequirementEntryMvoState
 {
@@ -204,7 +204,7 @@ public abstract class AbstractInventoryItemRequirementEntryMvoState implements I
     public AbstractInventoryItemRequirementEntryMvoState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setInventoryItemRequirementEntryId(((InventoryItemRequirementEntryMvoStateEvent) events.get(0)).getInventoryItemRequirementEntryMvoEventId().getInventoryItemRequirementEntryId());
+            this.setInventoryItemRequirementEntryId(((InventoryItemRequirementEntryMvoEvent) events.get(0)).getInventoryItemRequirementEntryMvoEventId().getInventoryItemRequirementEntryId());
             for (Event e : events) {
                 mutate(e);
                 this.setInventoryItemRequirementVersion(this.getInventoryItemRequirementVersion() + 1);
@@ -358,10 +358,10 @@ public abstract class AbstractInventoryItemRequirementEntryMvoState implements I
     {
     }
 
-    protected void throwOnWrongEvent(InventoryItemRequirementEntryMvoStateEvent stateEvent)
+    protected void throwOnWrongEvent(InventoryItemRequirementEntryMvoEvent stateEvent)
     {
         InventoryItemRequirementEntryId stateEntityId = this.getInventoryItemRequirementEntryId(); // Aggregate Id
-        InventoryItemRequirementEntryId eventEntityId = stateEvent.getInventoryItemRequirementEntryMvoEventId().getInventoryItemRequirementEntryId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        InventoryItemRequirementEntryId eventEntityId = stateEvent.getInventoryItemRequirementEntryMvoEventId().getInventoryItemRequirementEntryId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

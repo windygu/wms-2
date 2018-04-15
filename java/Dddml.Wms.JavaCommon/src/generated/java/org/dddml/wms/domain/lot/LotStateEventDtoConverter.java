@@ -7,22 +7,22 @@ import org.dddml.wms.specialization.*;
 
 public class LotStateEventDtoConverter {
 
-    public LotStateEventDto toLotStateEventDto(AbstractLotStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractLotStateEvent.AbstractLotStateCreated) {
-            LotStateEvent.LotStateCreated e = (LotStateEvent.LotStateCreated) stateEvent;
+    public LotStateEventDto toLotStateEventDto(AbstractLotEvent stateEvent) {
+        if (stateEvent instanceof AbstractLotEvent.AbstractLotStateCreated) {
+            LotEvent.LotStateCreated e = (LotEvent.LotStateCreated) stateEvent;
             return toLotStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractLotStateEvent.AbstractLotStateMergePatched) {
-            LotStateEvent.LotStateMergePatched e = (LotStateEvent.LotStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractLotEvent.AbstractLotStateMergePatched) {
+            LotEvent.LotStateMergePatched e = (LotEvent.LotStateMergePatched) stateEvent;
             return toLotStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractLotStateEvent.AbstractLotStateDeleted) {
-            LotStateEvent.LotStateDeleted e = (LotStateEvent.LotStateDeleted) stateEvent;
+        } else if (stateEvent instanceof AbstractLotEvent.AbstractLotStateDeleted) {
+            LotEvent.LotStateDeleted e = (LotEvent.LotStateDeleted) stateEvent;
             return toLotStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public LotStateEventDto.LotStateCreatedDto toLotStateCreatedDto(LotStateEvent.LotStateCreated e) {
+    public LotStateEventDto.LotStateCreatedDto toLotStateCreatedDto(LotEvent.LotStateCreated e) {
         LotStateEventDto.LotStateCreatedDto dto = new LotStateEventDto.LotStateCreatedDto();
         dto.setLotEventId(e.getLotEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -34,7 +34,7 @@ public class LotStateEventDtoConverter {
         return dto;
     }
 
-    public LotStateEventDto.LotStateMergePatchedDto toLotStateMergePatchedDto(LotStateEvent.LotStateMergePatched e) {
+    public LotStateEventDto.LotStateMergePatchedDto toLotStateMergePatchedDto(LotEvent.LotStateMergePatched e) {
         LotStateEventDto.LotStateMergePatchedDto dto = new LotStateEventDto.LotStateMergePatchedDto();
         dto.setLotEventId(e.getLotEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -50,7 +50,7 @@ public class LotStateEventDtoConverter {
     }
 
 
-    public LotStateEventDto.LotStateDeletedDto toLotStateDeletedDto(LotStateEvent.LotStateDeleted e) {
+    public LotStateEventDto.LotStateDeletedDto toLotStateDeletedDto(LotEvent.LotStateDeleted e) {
         LotStateEventDto.LotStateDeletedDto dto = new LotStateEventDto.LotStateDeletedDto();
         dto.setLotEventId(e.getLotEventId());
         dto.setCreatedAt(e.getCreatedAt());

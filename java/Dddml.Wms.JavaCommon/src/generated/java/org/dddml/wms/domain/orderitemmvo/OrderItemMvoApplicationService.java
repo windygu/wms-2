@@ -29,7 +29,7 @@ public interface OrderItemMvoApplicationService
 
     long getCount(Criterion filter);
 
-    OrderItemMvoStateEvent getStateEvent(OrderItemId orderItemId, long version);
+    OrderItemMvoEvent getEvent(OrderItemId orderItemId, long version);
 
     OrderItemMvoState getHistoryState(OrderItemId orderItemId, long version);
 

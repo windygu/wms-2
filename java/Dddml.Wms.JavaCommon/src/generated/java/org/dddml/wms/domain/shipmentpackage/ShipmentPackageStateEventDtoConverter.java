@@ -7,22 +7,22 @@ import org.dddml.wms.specialization.*;
 
 public class ShipmentPackageStateEventDtoConverter {
 
-    public ShipmentPackageStateEventDto toShipmentPackageStateEventDto(AbstractShipmentPackageStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractShipmentPackageStateEvent.AbstractShipmentPackageStateCreated) {
-            ShipmentPackageStateEvent.ShipmentPackageStateCreated e = (ShipmentPackageStateEvent.ShipmentPackageStateCreated) stateEvent;
+    public ShipmentPackageStateEventDto toShipmentPackageStateEventDto(AbstractShipmentPackageEvent stateEvent) {
+        if (stateEvent instanceof AbstractShipmentPackageEvent.AbstractShipmentPackageStateCreated) {
+            ShipmentPackageEvent.ShipmentPackageStateCreated e = (ShipmentPackageEvent.ShipmentPackageStateCreated) stateEvent;
             return toShipmentPackageStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractShipmentPackageStateEvent.AbstractShipmentPackageStateMergePatched) {
-            ShipmentPackageStateEvent.ShipmentPackageStateMergePatched e = (ShipmentPackageStateEvent.ShipmentPackageStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractShipmentPackageEvent.AbstractShipmentPackageStateMergePatched) {
+            ShipmentPackageEvent.ShipmentPackageStateMergePatched e = (ShipmentPackageEvent.ShipmentPackageStateMergePatched) stateEvent;
             return toShipmentPackageStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractShipmentPackageStateEvent.AbstractShipmentPackageStateDeleted) {
-            ShipmentPackageStateEvent.ShipmentPackageStateDeleted e = (ShipmentPackageStateEvent.ShipmentPackageStateDeleted) stateEvent;
+        } else if (stateEvent instanceof AbstractShipmentPackageEvent.AbstractShipmentPackageStateDeleted) {
+            ShipmentPackageEvent.ShipmentPackageStateDeleted e = (ShipmentPackageEvent.ShipmentPackageStateDeleted) stateEvent;
             return toShipmentPackageStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public ShipmentPackageStateEventDto.ShipmentPackageStateCreatedDto toShipmentPackageStateCreatedDto(ShipmentPackageStateEvent.ShipmentPackageStateCreated e) {
+    public ShipmentPackageStateEventDto.ShipmentPackageStateCreatedDto toShipmentPackageStateCreatedDto(ShipmentPackageEvent.ShipmentPackageStateCreated e) {
         ShipmentPackageStateEventDto.ShipmentPackageStateCreatedDto dto = new ShipmentPackageStateEventDto.ShipmentPackageStateCreatedDto();
         dto.setShipmentPackageEventId(e.getShipmentPackageEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -39,7 +39,7 @@ public class ShipmentPackageStateEventDtoConverter {
         dto.setInsuredValue(e.getInsuredValue());
         dto.setActive(e.getActive());
         List<ShipmentPackageContentStateEventDto.ShipmentPackageContentStateCreatedDto> shipmentPackageContentEvents = new ArrayList<>();
-        for (ShipmentPackageContentStateEvent.ShipmentPackageContentStateCreated ee : e.getShipmentPackageContentEvents()) {
+        for (ShipmentPackageContentEvent.ShipmentPackageContentStateCreated ee : e.getShipmentPackageContentEvents()) {
             ShipmentPackageContentStateEventDto.ShipmentPackageContentStateCreatedDto eeDto = getShipmentPackageContentStateEventDtoConverter().toShipmentPackageContentStateCreatedDto(ee);
             shipmentPackageContentEvents.add(eeDto);
         }
@@ -48,7 +48,7 @@ public class ShipmentPackageStateEventDtoConverter {
         return dto;
     }
 
-    public ShipmentPackageStateEventDto.ShipmentPackageStateMergePatchedDto toShipmentPackageStateMergePatchedDto(ShipmentPackageStateEvent.ShipmentPackageStateMergePatched e) {
+    public ShipmentPackageStateEventDto.ShipmentPackageStateMergePatchedDto toShipmentPackageStateMergePatchedDto(ShipmentPackageEvent.ShipmentPackageStateMergePatched e) {
         ShipmentPackageStateEventDto.ShipmentPackageStateMergePatchedDto dto = new ShipmentPackageStateEventDto.ShipmentPackageStateMergePatchedDto();
         dto.setShipmentPackageEventId(e.getShipmentPackageEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -75,8 +75,8 @@ public class ShipmentPackageStateEventDtoConverter {
         dto.setIsPropertyInsuredValueRemoved(e.getIsPropertyInsuredValueRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
         List<ShipmentPackageContentStateEventDto> shipmentPackageContentEvents = new ArrayList<>();
-        for (ShipmentPackageContentStateEvent ee : e.getShipmentPackageContentEvents()) {
-            ShipmentPackageContentStateEventDto eeDto = getShipmentPackageContentStateEventDtoConverter().toShipmentPackageContentStateEventDto((AbstractShipmentPackageContentStateEvent) ee);
+        for (ShipmentPackageContentEvent ee : e.getShipmentPackageContentEvents()) {
+            ShipmentPackageContentStateEventDto eeDto = getShipmentPackageContentStateEventDtoConverter().toShipmentPackageContentStateEventDto((AbstractShipmentPackageContentEvent) ee);
             shipmentPackageContentEvents.add(eeDto);
         }
         dto.setShipmentPackageContentEvents(shipmentPackageContentEvents.toArray(new ShipmentPackageContentStateEventDto[0]));
@@ -85,14 +85,14 @@ public class ShipmentPackageStateEventDtoConverter {
     }
 
 
-    public ShipmentPackageStateEventDto.ShipmentPackageStateDeletedDto toShipmentPackageStateDeletedDto(ShipmentPackageStateEvent.ShipmentPackageStateDeleted e) {
+    public ShipmentPackageStateEventDto.ShipmentPackageStateDeletedDto toShipmentPackageStateDeletedDto(ShipmentPackageEvent.ShipmentPackageStateDeleted e) {
         ShipmentPackageStateEventDto.ShipmentPackageStateDeletedDto dto = new ShipmentPackageStateEventDto.ShipmentPackageStateDeletedDto();
         dto.setShipmentPackageEventId(e.getShipmentPackageEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
         List<ShipmentPackageContentStateEventDto.ShipmentPackageContentStateRemovedDto> shipmentPackageContentEvents = new ArrayList<>();
-        for (ShipmentPackageContentStateEvent.ShipmentPackageContentStateRemoved ee : e.getShipmentPackageContentEvents()) {
+        for (ShipmentPackageContentEvent.ShipmentPackageContentStateRemoved ee : e.getShipmentPackageContentEvents()) {
             ShipmentPackageContentStateEventDto.ShipmentPackageContentStateRemovedDto eeDto = getShipmentPackageContentStateEventDtoConverter().toShipmentPackageContentStateRemovedDto(ee);
             shipmentPackageContentEvents.add(eeDto);
         }

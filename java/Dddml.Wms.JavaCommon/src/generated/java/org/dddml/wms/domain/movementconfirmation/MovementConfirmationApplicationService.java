@@ -33,7 +33,7 @@ public interface MovementConfirmationApplicationService
 
     long getCount(Criterion filter);
 
-    MovementConfirmationStateEvent getStateEvent(String documentNumber, long version);
+    MovementConfirmationEvent getEvent(String documentNumber, long version);
 
     MovementConfirmationState getHistoryState(String documentNumber, long version);
 

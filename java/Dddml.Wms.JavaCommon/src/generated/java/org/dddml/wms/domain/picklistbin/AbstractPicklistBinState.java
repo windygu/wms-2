@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.picklistbin.PicklistBinStateEvent.*;
+import org.dddml.wms.domain.picklistbin.PicklistBinEvent.*;
 
 public abstract class AbstractPicklistBinState implements PicklistBinState, Saveable
 {
@@ -189,7 +189,7 @@ public abstract class AbstractPicklistBinState implements PicklistBinState, Save
     public AbstractPicklistBinState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setPicklistBinId(((PicklistBinStateEvent) events.get(0)).getPicklistBinEventId().getPicklistBinId());
+            this.setPicklistBinId(((PicklistBinEvent) events.get(0)).getPicklistBinEventId().getPicklistBinId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -241,7 +241,7 @@ public abstract class AbstractPicklistBinState implements PicklistBinState, Save
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
-        for (PicklistItemStateEvent.PicklistItemStateCreated innerEvent : e.getPicklistItemEvents()) {
+        for (PicklistItemEvent.PicklistItemStateCreated innerEvent : e.getPicklistItemEvents()) {
             PicklistItemState innerState = this.getPicklistItems().get(innerEvent.getPicklistItemEventId().getPicklistItemOrderShipGrpInvId());
             innerState.mutate(innerEvent);
         }
@@ -310,12 +310,12 @@ public abstract class AbstractPicklistBinState implements PicklistBinState, Save
         this.setUpdatedBy(e.getCreatedBy());
         this.setUpdatedAt(e.getCreatedAt());
 
-        for (PicklistItemStateEvent innerEvent : e.getPicklistItemEvents()) {
+        for (PicklistItemEvent innerEvent : e.getPicklistItemEvents()) {
             PicklistItemState innerState = this.getPicklistItems().get(innerEvent.getPicklistItemEventId().getPicklistItemOrderShipGrpInvId());
             innerState.mutate(innerEvent);
-            if (innerEvent instanceof PicklistItemStateEvent.PicklistItemStateRemoved)
+            if (innerEvent instanceof PicklistItemEvent.PicklistItemStateRemoved)
             {
-                //PicklistItemStateEvent.PicklistItemStateRemoved removed = (PicklistItemStateEvent.PicklistItemStateRemoved)innerEvent;
+                //PicklistItemEvent.PicklistItemStateRemoved removed = (PicklistItemEvent.PicklistItemStateRemoved)innerEvent;
                 this.getPicklistItems().remove(innerState);
             }
         }
@@ -333,7 +333,7 @@ public abstract class AbstractPicklistBinState implements PicklistBinState, Save
         {
             this.getPicklistItems().remove(innerState);
         
-            PicklistItemStateEvent.PicklistItemStateRemoved innerE = e.newPicklistItemStateRemoved(innerState.getPicklistItemOrderShipGrpInvId());
+            PicklistItemEvent.PicklistItemStateRemoved innerE = e.newPicklistItemStateRemoved(innerState.getPicklistItemOrderShipGrpInvId());
             innerE.setCreatedAt(e.getCreatedAt());
             innerE.setCreatedBy(e.getCreatedBy());
             innerState.when(innerE);
@@ -347,10 +347,10 @@ public abstract class AbstractPicklistBinState implements PicklistBinState, Save
 
     }
 
-    protected void throwOnWrongEvent(PicklistBinStateEvent stateEvent)
+    protected void throwOnWrongEvent(PicklistBinEvent stateEvent)
     {
         String stateEntityId = this.getPicklistBinId(); // Aggregate Id
-        String eventEntityId = stateEvent.getPicklistBinEventId().getPicklistBinId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        String eventEntityId = stateEvent.getPicklistBinEventId().getPicklistBinId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

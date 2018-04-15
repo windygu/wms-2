@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.attribute.AttributeAliasStateEvent.*;
+import org.dddml.wms.domain.attribute.AttributeAliasEvent.*;
 
 public interface AttributeAliasState
 {
@@ -64,11 +64,11 @@ public interface AttributeAliasState
 
     void mutate(Event e);
 
-    void when(AttributeAliasStateEvent.AttributeAliasStateCreated e);
+    void when(AttributeAliasEvent.AttributeAliasStateCreated e);
 
-    void when(AttributeAliasStateEvent.AttributeAliasStateMergePatched e);
+    void when(AttributeAliasEvent.AttributeAliasStateMergePatched e);
 
-    void when(AttributeAliasStateEvent.AttributeAliasStateRemoved e);
+    void when(AttributeAliasEvent.AttributeAliasStateRemoved e);
     
 }
 

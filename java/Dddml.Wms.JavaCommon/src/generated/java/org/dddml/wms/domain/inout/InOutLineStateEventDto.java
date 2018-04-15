@@ -3,9 +3,9 @@ package org.dddml.wms.domain.inout;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
-import org.dddml.wms.domain.AbstractStateEvent;
+import org.dddml.wms.domain.AbstractEvent;
 
-public class InOutLineStateEventDto extends AbstractStateEvent
+public class InOutLineStateEventDto extends AbstractEvent
 {
 
     private InOutLineEventId inOutLineEventId;
@@ -301,7 +301,7 @@ public class InOutLineStateEventDto extends AbstractStateEvent
 	public static class InOutLineStateCreatedDto extends InOutLineStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_CREATED;
         }
@@ -312,7 +312,7 @@ public class InOutLineStateEventDto extends AbstractStateEvent
 	public static class InOutLineStateMergePatchedDto extends InOutLineStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_MERGE_PATCHED;
         }
@@ -323,7 +323,7 @@ public class InOutLineStateEventDto extends AbstractStateEvent
 	public static class InOutLineStateRemovedDto extends InOutLineStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_REMOVED;
         }

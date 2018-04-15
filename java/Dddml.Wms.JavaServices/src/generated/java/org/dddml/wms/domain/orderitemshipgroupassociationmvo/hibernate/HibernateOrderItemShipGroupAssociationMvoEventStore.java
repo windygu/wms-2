@@ -21,20 +21,20 @@ public class HibernateOrderItemShipGroupAssociationMvoEventStore extends Abstrac
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractOrderItemShipGroupAssociationMvoStateEvent.class;
+        return AbstractOrderItemShipGroupAssociationMvoEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractOrderItemShipGroupAssociationMvoStateEvent.class;
+        Class supportedEventType = AbstractOrderItemShipGroupAssociationMvoEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         OrderItemShipGroupAssociationId idObj = (OrderItemShipGroupAssociationId) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractOrderItemShipGroupAssociationMvoStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractOrderItemShipGroupAssociationMvoEvent.class);
         criteria.add(Restrictions.eq("orderItemShipGroupAssociationMvoEventId.orderItemShipGroupAssociationIdOrderId", idObj.getOrderId()));
         criteria.add(Restrictions.eq("orderItemShipGroupAssociationMvoEventId.orderItemShipGroupAssociationIdOrderShipGroupShipGroupSeqId", idObj.getOrderShipGroupShipGroupSeqId()));
         criteria.add(Restrictions.eq("orderItemShipGroupAssociationMvoEventId.orderItemShipGroupAssociationIdOrderItemSeqId", idObj.getOrderItemSeqId()));
@@ -42,11 +42,11 @@ public class HibernateOrderItemShipGroupAssociationMvoEventStore extends Abstrac
         criteria.addOrder(Order.asc("orderItemShipGroupAssociationMvoEventId.orderVersion"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractOrderItemShipGroupAssociationMvoStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractOrderItemShipGroupAssociationMvoEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractOrderItemShipGroupAssociationMvoStateEvent) es.get(es.size() - 1)).getOrderItemShipGroupAssociationMvoEventId().getOrderVersion());
+            eventStream.setSteamVersion(((AbstractOrderItemShipGroupAssociationMvoEvent) es.get(es.size() - 1)).getOrderItemShipGroupAssociationMvoEventId().getOrderVersion());
         } else {
             //todo?
         }

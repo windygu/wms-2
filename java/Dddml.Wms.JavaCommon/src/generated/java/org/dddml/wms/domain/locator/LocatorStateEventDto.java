@@ -2,9 +2,9 @@ package org.dddml.wms.domain.locator;
 
 import java.util.Date;
 import org.dddml.wms.domain.*;
-import org.dddml.wms.domain.AbstractStateEvent;
+import org.dddml.wms.domain.AbstractEvent;
 
-public class LocatorStateEventDto extends AbstractStateEvent
+public class LocatorStateEventDto extends AbstractEvent
 {
 
     private LocatorEventId locatorEventId;
@@ -278,7 +278,7 @@ public class LocatorStateEventDto extends AbstractStateEvent
 	public static class LocatorStateCreatedDto extends LocatorStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_CREATED;
         }
@@ -289,7 +289,7 @@ public class LocatorStateEventDto extends AbstractStateEvent
 	public static class LocatorStateMergePatchedDto extends LocatorStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_MERGE_PATCHED;
         }
@@ -300,7 +300,7 @@ public class LocatorStateEventDto extends AbstractStateEvent
 	public static class LocatorStateDeletedDto extends LocatorStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_DELETED;
         }

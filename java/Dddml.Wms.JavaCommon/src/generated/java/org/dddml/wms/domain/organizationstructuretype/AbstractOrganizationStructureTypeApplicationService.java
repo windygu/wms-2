@@ -86,19 +86,19 @@ public abstract class AbstractOrganizationStructureTypeApplicationService implem
         return getStateQueryRepository().getCount(filter);
     }
 
-    public OrganizationStructureTypeStateEvent getStateEvent(String id, long version) {
-        OrganizationStructureTypeStateEvent e = (OrganizationStructureTypeStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(id), version);
+    public OrganizationStructureTypeEvent getEvent(String id, long version) {
+        OrganizationStructureTypeEvent e = (OrganizationStructureTypeEvent)getEventStore().getEvent(toEventStoreAggregateId(id), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(id, 0);
+            return getEvent(id, 0);
         }
         return e;
     }
 
     public OrganizationStructureTypeState getHistoryState(String id, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractOrganizationStructureTypeStateEvent.class, toEventStoreAggregateId(id), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractOrganizationStructureTypeEvent.class, toEventStoreAggregateId(id), version - 1);
         return new AbstractOrganizationStructureTypeState.SimpleOrganizationStructureTypeState(eventStream.getEvents());
     }
 
@@ -137,7 +137,7 @@ public abstract class AbstractOrganizationStructureTypeApplicationService implem
         }
     }
 
-    public void initialize(OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateCreated stateCreated) {
+    public void initialize(OrganizationStructureTypeEvent.OrganizationStructureTypeStateCreated stateCreated) {
         String aggregateId = stateCreated.getOrganizationStructureTypeEventId().getId();
         OrganizationStructureTypeState state = new AbstractOrganizationStructureTypeState.SimpleOrganizationStructureTypeState();
         state.setId(aggregateId);
@@ -155,9 +155,9 @@ public abstract class AbstractOrganizationStructureTypeApplicationService implem
         if (command.getVersion() == null) { command.setVersion(OrganizationStructureTypeState.VERSION_NULL); }
         if (state.getVersion() != null && state.getVersion() > command.getVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractOrganizationStructureTypeStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractOrganizationStructureTypeEvent.class, eventStoreAggregateId, command.getVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

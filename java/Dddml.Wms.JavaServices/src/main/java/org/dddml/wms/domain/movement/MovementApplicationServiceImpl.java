@@ -343,7 +343,7 @@ public class MovementApplicationServiceImpl extends AbstractMovementApplicationS
         }
 
         public void reverse(String reversalDocumentNumber, String desc, long version, String commandId, String requesterId) {
-            MovementStateEvent.MovementStateMergePatched e = newMovementStateMergePatched(version, commandId, requesterId);
+            MovementEvent.MovementStateMergePatched e = newMovementStateMergePatched(version, commandId, requesterId);
             e.setReversalDocumentNumber(reversalDocumentNumber);
             e.setDescription(desc);
             doDocumentAction(DocumentAction.REVERSE, ts -> e.setDocumentStatusId(ts));

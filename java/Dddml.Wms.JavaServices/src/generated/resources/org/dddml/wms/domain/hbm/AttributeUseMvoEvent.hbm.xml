@@ -1,0 +1,88 @@
+﻿<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.attributeusemvo">
+  
+  <class name="AbstractAttributeUseMvoEvent" table="AttributeUseMvoEvents" mutable="false" abstract="true">
+
+	<composite-id name="attributeUseMvoEventId" class="org.dddml.wms.domain.attributeusemvo.AttributeUseMvoEventId">
+		<key-property name="attributeSetAttributeUseIdAttributeSetId" ><column name="AttributeSetAttributeUseIdAttributeSetId" length="50" /></key-property>
+		<key-property name="attributeSetAttributeUseIdAttributeId" ><column name="AttributeSetAttributeUseIdAttributeId" length="50" /></key-property>
+		<key-property name="attributeSetVersion" ></key-property>
+	</composite-id>
+
+    <discriminator column="EventType" type="string" />
+
+	<property name="sequenceNumber" ></property>
+	<property name="version" ></property>
+	<property name="active" ></property>
+	<property name="attributeSetAttributeSetName" ></property>
+	<property name="attributeSetOrganizationId" ></property>
+	<property name="attributeSetDescription" ></property>
+	<property name="attributeSetReferenceId" ></property>
+	<property name="attributeSetIsInstanceAttributeSet" ></property>
+	<property name="attributeSetIsMandatory" ></property>
+	<property name="attributeSetCreatedBy" ></property>
+	<property name="attributeSetCreatedAt" type="timestamp"><column name="AttributeSetCreatedAt" sql-type="DATETIME" /></property>
+	<property name="attributeSetUpdatedBy" ></property>
+	<property name="attributeSetUpdatedAt" type="timestamp"><column name="AttributeSetUpdatedAt" sql-type="DATETIME" /></property>
+	<property name="attributeSetActive" ></property>
+	<property name="attributeSetDeleted" ></property>
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+    <subclass name="AbstractAttributeUseMvoEvent$SimpleAttributeUseMvoStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="AbstractAttributeUseMvoEvent$SimpleAttributeUseMvoStateMergePatched" discriminator-value="MergePatched">
+
+        <property name="isPropertySequenceNumberRemoved" column="IsPropertySequenceNumberRemoved"/>
+
+        <property name="isPropertyVersionRemoved" column="IsPropertyVersionRemoved"/>
+
+        <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+
+        <property name="isPropertyAttributeSetAttributeSetNameRemoved" column="IsPropertyAttributeSetAttributeSetNameRemoved"/>
+
+        <property name="isPropertyAttributeSetOrganizationIdRemoved" column="IsPropertyAttributeSetOrganizationIdRemoved"/>
+
+        <property name="isPropertyAttributeSetDescriptionRemoved" column="IsPropertyAttributeSetDescriptionRemoved"/>
+
+        <property name="isPropertyAttributeSetReferenceIdRemoved" column="IsPropertyAttributeSetReferenceIdRemoved"/>
+
+        <property name="isPropertyAttributeSetIsInstanceAttributeSetRemoved" column="IsPropertyAttributeSetIsInstanceAttributeSetRemoved"/>
+
+        <property name="isPropertyAttributeSetIsMandatoryRemoved" column="IsPropertyAttributeSetIsMandatoryRemoved"/>
+
+        <property name="isPropertyAttributeSetCreatedByRemoved" column="IsPropertyAttributeSetCreatedByRemoved"/>
+
+        <property name="isPropertyAttributeSetCreatedAtRemoved" column="IsPropertyAttributeSetCreatedAtRemoved"/>
+
+        <property name="isPropertyAttributeSetUpdatedByRemoved" column="IsPropertyAttributeSetUpdatedByRemoved"/>
+
+        <property name="isPropertyAttributeSetUpdatedAtRemoved" column="IsPropertyAttributeSetUpdatedAtRemoved"/>
+
+        <property name="isPropertyAttributeSetActiveRemoved" column="IsPropertyAttributeSetActiveRemoved"/>
+
+        <property name="isPropertyAttributeSetDeletedRemoved" column="IsPropertyAttributeSetDeletedRemoved"/>
+
+
+    </subclass>
+
+    <subclass name="AbstractAttributeUseMvoEvent$SimpleAttributeUseMvoStateDeleted" discriminator-value="Deleted">
+
+    </subclass>
+
+
+
+  </class>
+  
+</hibernate-mapping>

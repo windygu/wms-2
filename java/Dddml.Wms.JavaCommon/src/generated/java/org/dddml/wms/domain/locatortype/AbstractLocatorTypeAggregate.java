@@ -27,19 +27,19 @@ public abstract class AbstractLocatorTypeAggregate extends AbstractAggregate imp
     public void create(LocatorTypeCommand.CreateLocatorType c)
     {
         if (c.getVersion() == null) { c.setVersion(LocatorTypeState.VERSION_NULL); }
-        LocatorTypeStateEvent e = map(c);
+        LocatorTypeEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(LocatorTypeCommand.MergePatchLocatorType c)
     {
-        LocatorTypeStateEvent e = map(c);
+        LocatorTypeEvent e = map(c);
         apply(e);
     }
 
     public void delete(LocatorTypeCommand.DeleteLocatorType c)
     {
-        LocatorTypeStateEvent e = map(c);
+        LocatorTypeEvent e = map(c);
         apply(e);
     }
 
@@ -54,34 +54,34 @@ public abstract class AbstractLocatorTypeAggregate extends AbstractAggregate imp
         changes.add(e);
     }
 
-    protected LocatorTypeStateEvent map(LocatorTypeCommand.CreateLocatorType c) {
+    protected LocatorTypeEvent map(LocatorTypeCommand.CreateLocatorType c) {
         LocatorTypeEventId stateEventId = new LocatorTypeEventId(c.getLocatorTypeId(), c.getVersion());
-        LocatorTypeStateEvent.LocatorTypeStateCreated e = newLocatorTypeStateCreated(stateEventId);
+        LocatorTypeEvent.LocatorTypeStateCreated e = newLocatorTypeStateCreated(stateEventId);
         e.setDescription(c.getDescription());
         e.setActive(c.getActive());
-        ((AbstractLocatorTypeStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractLocatorTypeEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected LocatorTypeStateEvent map(LocatorTypeCommand.MergePatchLocatorType c) {
+    protected LocatorTypeEvent map(LocatorTypeCommand.MergePatchLocatorType c) {
         LocatorTypeEventId stateEventId = new LocatorTypeEventId(c.getLocatorTypeId(), c.getVersion());
-        LocatorTypeStateEvent.LocatorTypeStateMergePatched e = newLocatorTypeStateMergePatched(stateEventId);
+        LocatorTypeEvent.LocatorTypeStateMergePatched e = newLocatorTypeStateMergePatched(stateEventId);
         e.setDescription(c.getDescription());
         e.setActive(c.getActive());
         e.setIsPropertyDescriptionRemoved(c.getIsPropertyDescriptionRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
-        ((AbstractLocatorTypeStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractLocatorTypeEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected LocatorTypeStateEvent map(LocatorTypeCommand.DeleteLocatorType c) {
+    protected LocatorTypeEvent map(LocatorTypeCommand.DeleteLocatorType c) {
         LocatorTypeEventId stateEventId = new LocatorTypeEventId(c.getLocatorTypeId(), c.getVersion());
-        LocatorTypeStateEvent.LocatorTypeStateDeleted e = newLocatorTypeStateDeleted(stateEventId);
-        ((AbstractLocatorTypeStateEvent)e).setCommandId(c.getCommandId());
+        LocatorTypeEvent.LocatorTypeStateDeleted e = newLocatorTypeStateDeleted(stateEventId);
+        ((AbstractLocatorTypeEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
@@ -90,44 +90,44 @@ public abstract class AbstractLocatorTypeAggregate extends AbstractAggregate imp
 
     ////////////////////////
 
-    protected LocatorTypeStateEvent.LocatorTypeStateCreated newLocatorTypeStateCreated(Long version, String commandId, String requesterId) {
+    protected LocatorTypeEvent.LocatorTypeStateCreated newLocatorTypeStateCreated(Long version, String commandId, String requesterId) {
         LocatorTypeEventId stateEventId = new LocatorTypeEventId(this.state.getLocatorTypeId(), version);
-        LocatorTypeStateEvent.LocatorTypeStateCreated e = newLocatorTypeStateCreated(stateEventId);
-        ((AbstractLocatorTypeStateEvent)e).setCommandId(commandId);
+        LocatorTypeEvent.LocatorTypeStateCreated e = newLocatorTypeStateCreated(stateEventId);
+        ((AbstractLocatorTypeEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected LocatorTypeStateEvent.LocatorTypeStateMergePatched newLocatorTypeStateMergePatched(Long version, String commandId, String requesterId) {
+    protected LocatorTypeEvent.LocatorTypeStateMergePatched newLocatorTypeStateMergePatched(Long version, String commandId, String requesterId) {
         LocatorTypeEventId stateEventId = new LocatorTypeEventId(this.state.getLocatorTypeId(), version);
-        LocatorTypeStateEvent.LocatorTypeStateMergePatched e = newLocatorTypeStateMergePatched(stateEventId);
-        ((AbstractLocatorTypeStateEvent)e).setCommandId(commandId);
+        LocatorTypeEvent.LocatorTypeStateMergePatched e = newLocatorTypeStateMergePatched(stateEventId);
+        ((AbstractLocatorTypeEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected LocatorTypeStateEvent.LocatorTypeStateDeleted newLocatorTypeStateDeleted(Long version, String commandId, String requesterId) {
+    protected LocatorTypeEvent.LocatorTypeStateDeleted newLocatorTypeStateDeleted(Long version, String commandId, String requesterId) {
         LocatorTypeEventId stateEventId = new LocatorTypeEventId(this.state.getLocatorTypeId(), version);
-        LocatorTypeStateEvent.LocatorTypeStateDeleted e = newLocatorTypeStateDeleted(stateEventId);
-        ((AbstractLocatorTypeStateEvent)e).setCommandId(commandId);
+        LocatorTypeEvent.LocatorTypeStateDeleted e = newLocatorTypeStateDeleted(stateEventId);
+        ((AbstractLocatorTypeEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected LocatorTypeStateEvent.LocatorTypeStateCreated newLocatorTypeStateCreated(LocatorTypeEventId stateEventId) {
-        return new AbstractLocatorTypeStateEvent.SimpleLocatorTypeStateCreated(stateEventId);
+    protected LocatorTypeEvent.LocatorTypeStateCreated newLocatorTypeStateCreated(LocatorTypeEventId stateEventId) {
+        return new AbstractLocatorTypeEvent.SimpleLocatorTypeStateCreated(stateEventId);
     }
 
-    protected LocatorTypeStateEvent.LocatorTypeStateMergePatched newLocatorTypeStateMergePatched(LocatorTypeEventId stateEventId) {
-        return new AbstractLocatorTypeStateEvent.SimpleLocatorTypeStateMergePatched(stateEventId);
+    protected LocatorTypeEvent.LocatorTypeStateMergePatched newLocatorTypeStateMergePatched(LocatorTypeEventId stateEventId) {
+        return new AbstractLocatorTypeEvent.SimpleLocatorTypeStateMergePatched(stateEventId);
     }
 
-    protected LocatorTypeStateEvent.LocatorTypeStateDeleted newLocatorTypeStateDeleted(LocatorTypeEventId stateEventId)
+    protected LocatorTypeEvent.LocatorTypeStateDeleted newLocatorTypeStateDeleted(LocatorTypeEventId stateEventId)
     {
-        return new AbstractLocatorTypeStateEvent.SimpleLocatorTypeStateDeleted(stateEventId);
+        return new AbstractLocatorTypeEvent.SimpleLocatorTypeStateDeleted(stateEventId);
     }
 
     public static class SimpleLocatorTypeAggregate extends AbstractLocatorTypeAggregate

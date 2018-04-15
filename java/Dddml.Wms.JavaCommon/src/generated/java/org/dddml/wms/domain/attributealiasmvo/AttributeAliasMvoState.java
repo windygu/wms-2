@@ -5,7 +5,7 @@ import org.dddml.wms.domain.attribute.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.attributealiasmvo.AttributeAliasMvoStateEvent.*;
+import org.dddml.wms.domain.attributealiasmvo.AttributeAliasMvoEvent.*;
 
 public interface AttributeAliasMvoState
 {
@@ -121,11 +121,11 @@ public interface AttributeAliasMvoState
 
     void mutate(Event e);
 
-    void when(AttributeAliasMvoStateEvent.AttributeAliasMvoStateCreated e);
+    void when(AttributeAliasMvoEvent.AttributeAliasMvoStateCreated e);
 
-    void when(AttributeAliasMvoStateEvent.AttributeAliasMvoStateMergePatched e);
+    void when(AttributeAliasMvoEvent.AttributeAliasMvoStateMergePatched e);
 
-    void when(AttributeAliasMvoStateEvent.AttributeAliasMvoStateDeleted e);
+    void when(AttributeAliasMvoEvent.AttributeAliasMvoStateDeleted e);
     
 }
 

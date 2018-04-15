@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.shipmentmethodtype.ShipmentMethodTypeStateEvent.*;
+import org.dddml.wms.domain.shipmentmethodtype.ShipmentMethodTypeEvent.*;
 
 public abstract class AbstractShipmentMethodTypeState implements ShipmentMethodTypeState
 {
@@ -153,7 +153,7 @@ public abstract class AbstractShipmentMethodTypeState implements ShipmentMethodT
     public AbstractShipmentMethodTypeState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setShipmentMethodTypeId(((ShipmentMethodTypeStateEvent) events.get(0)).getShipmentMethodTypeEventId().getShipmentMethodTypeId());
+            this.setShipmentMethodTypeId(((ShipmentMethodTypeEvent) events.get(0)).getShipmentMethodTypeEventId().getShipmentMethodTypeId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -261,10 +261,10 @@ public abstract class AbstractShipmentMethodTypeState implements ShipmentMethodT
     {
     }
 
-    protected void throwOnWrongEvent(ShipmentMethodTypeStateEvent stateEvent)
+    protected void throwOnWrongEvent(ShipmentMethodTypeEvent stateEvent)
     {
         String stateEntityId = this.getShipmentMethodTypeId(); // Aggregate Id
-        String eventEntityId = stateEvent.getShipmentMethodTypeEventId().getShipmentMethodTypeId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        String eventEntityId = stateEvent.getShipmentMethodTypeEventId().getShipmentMethodTypeId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

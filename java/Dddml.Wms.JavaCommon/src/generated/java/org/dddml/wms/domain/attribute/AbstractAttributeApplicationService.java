@@ -86,19 +86,19 @@ public abstract class AbstractAttributeApplicationService implements AttributeAp
         return getStateQueryRepository().getCount(filter);
     }
 
-    public AttributeStateEvent getStateEvent(String attributeId, long version) {
-        AttributeStateEvent e = (AttributeStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(attributeId), version);
+    public AttributeEvent getEvent(String attributeId, long version) {
+        AttributeEvent e = (AttributeEvent)getEventStore().getEvent(toEventStoreAggregateId(attributeId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(attributeId, 0);
+            return getEvent(attributeId, 0);
         }
         return e;
     }
 
     public AttributeState getHistoryState(String attributeId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractAttributeStateEvent.class, toEventStoreAggregateId(attributeId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractAttributeEvent.class, toEventStoreAggregateId(attributeId), version - 1);
         return new AbstractAttributeState.SimpleAttributeState(eventStream.getEvents());
     }
 
@@ -153,7 +153,7 @@ public abstract class AbstractAttributeApplicationService implements AttributeAp
         }
     }
 
-    public void initialize(AttributeStateEvent.AttributeStateCreated stateCreated) {
+    public void initialize(AttributeEvent.AttributeStateCreated stateCreated) {
         String aggregateId = stateCreated.getAttributeEventId().getAttributeId();
         AttributeState state = new AbstractAttributeState.SimpleAttributeState();
         state.setAttributeId(aggregateId);
@@ -171,9 +171,9 @@ public abstract class AbstractAttributeApplicationService implements AttributeAp
         if (command.getVersion() == null) { command.setVersion(AttributeState.VERSION_NULL); }
         if (state.getVersion() != null && state.getVersion() > command.getVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractAttributeStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractAttributeEvent.class, eventStoreAggregateId, command.getVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

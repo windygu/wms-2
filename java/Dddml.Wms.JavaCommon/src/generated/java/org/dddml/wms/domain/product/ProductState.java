@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.product.ProductStateEvent.*;
+import org.dddml.wms.domain.product.ProductEvent.*;
 
 public interface ProductState
 {
@@ -288,9 +288,9 @@ public interface ProductState
 
     void mutate(Event e);
 
-    void when(ProductStateEvent.ProductStateCreated e);
+    void when(ProductEvent.ProductStateCreated e);
 
-    void when(ProductStateEvent.ProductStateMergePatched e);
+    void when(ProductEvent.ProductStateMergePatched e);
 
     
 }

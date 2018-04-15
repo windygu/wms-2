@@ -84,19 +84,19 @@ public abstract class AbstractInventoryItemEntryMvoApplicationService implements
         return getStateQueryRepository().getCount(filter);
     }
 
-    public InventoryItemEntryMvoStateEvent getStateEvent(InventoryItemEntryId inventoryItemEntryId, long version) {
-        InventoryItemEntryMvoStateEvent e = (InventoryItemEntryMvoStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(inventoryItemEntryId), version);
+    public InventoryItemEntryMvoEvent getEvent(InventoryItemEntryId inventoryItemEntryId, long version) {
+        InventoryItemEntryMvoEvent e = (InventoryItemEntryMvoEvent)getEventStore().getEvent(toEventStoreAggregateId(inventoryItemEntryId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(inventoryItemEntryId, 0);
+            return getEvent(inventoryItemEntryId, 0);
         }
         return e;
     }
 
     public InventoryItemEntryMvoState getHistoryState(InventoryItemEntryId inventoryItemEntryId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractInventoryItemEntryMvoStateEvent.class, toEventStoreAggregateId(inventoryItemEntryId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractInventoryItemEntryMvoEvent.class, toEventStoreAggregateId(inventoryItemEntryId), version - 1);
         return new AbstractInventoryItemEntryMvoState.SimpleInventoryItemEntryMvoState(eventStream.getEvents());
     }
 
@@ -135,7 +135,7 @@ public abstract class AbstractInventoryItemEntryMvoApplicationService implements
         }
     }
 
-    public void initialize(InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateCreated stateCreated) {
+    public void initialize(InventoryItemEntryMvoEvent.InventoryItemEntryMvoStateCreated stateCreated) {
         InventoryItemEntryId aggregateId = stateCreated.getInventoryItemEntryMvoEventId().getInventoryItemEntryId();
         InventoryItemEntryMvoState state = new AbstractInventoryItemEntryMvoState.SimpleInventoryItemEntryMvoState();
         state.setInventoryItemEntryId(aggregateId);
@@ -153,9 +153,9 @@ public abstract class AbstractInventoryItemEntryMvoApplicationService implements
         if (command.getInventoryItemVersion() == null) { command.setInventoryItemVersion(InventoryItemEntryMvoState.VERSION_NULL); }
         if (state.getInventoryItemVersion() != null && state.getInventoryItemVersion() > command.getInventoryItemVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractInventoryItemEntryMvoStateEvent.class, eventStoreAggregateId, command.getInventoryItemVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractInventoryItemEntryMvoEvent.class, eventStoreAggregateId, command.getInventoryItemVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

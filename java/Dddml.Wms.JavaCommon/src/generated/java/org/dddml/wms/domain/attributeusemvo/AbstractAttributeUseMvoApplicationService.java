@@ -87,19 +87,19 @@ public abstract class AbstractAttributeUseMvoApplicationService implements Attri
         return getStateQueryRepository().getCount(filter);
     }
 
-    public AttributeUseMvoStateEvent getStateEvent(AttributeSetAttributeUseId attributeSetAttributeUseId, long version) {
-        AttributeUseMvoStateEvent e = (AttributeUseMvoStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(attributeSetAttributeUseId), version);
+    public AttributeUseMvoEvent getEvent(AttributeSetAttributeUseId attributeSetAttributeUseId, long version) {
+        AttributeUseMvoEvent e = (AttributeUseMvoEvent)getEventStore().getEvent(toEventStoreAggregateId(attributeSetAttributeUseId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(attributeSetAttributeUseId, 0);
+            return getEvent(attributeSetAttributeUseId, 0);
         }
         return e;
     }
 
     public AttributeUseMvoState getHistoryState(AttributeSetAttributeUseId attributeSetAttributeUseId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractAttributeUseMvoStateEvent.class, toEventStoreAggregateId(attributeSetAttributeUseId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractAttributeUseMvoEvent.class, toEventStoreAggregateId(attributeSetAttributeUseId), version - 1);
         return new AbstractAttributeUseMvoState.SimpleAttributeUseMvoState(eventStream.getEvents());
     }
 
@@ -138,7 +138,7 @@ public abstract class AbstractAttributeUseMvoApplicationService implements Attri
         }
     }
 
-    public void initialize(AttributeUseMvoStateEvent.AttributeUseMvoStateCreated stateCreated) {
+    public void initialize(AttributeUseMvoEvent.AttributeUseMvoStateCreated stateCreated) {
         AttributeSetAttributeUseId aggregateId = stateCreated.getAttributeUseMvoEventId().getAttributeSetAttributeUseId();
         AttributeUseMvoState state = new AbstractAttributeUseMvoState.SimpleAttributeUseMvoState();
         state.setAttributeSetAttributeUseId(aggregateId);
@@ -156,9 +156,9 @@ public abstract class AbstractAttributeUseMvoApplicationService implements Attri
         if (command.getAttributeSetVersion() == null) { command.setAttributeSetVersion(AttributeUseMvoState.VERSION_NULL); }
         if (state.getAttributeSetVersion() != null && state.getAttributeSetVersion() > command.getAttributeSetVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractAttributeUseMvoStateEvent.class, eventStoreAggregateId, command.getAttributeSetVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractAttributeUseMvoEvent.class, eventStoreAggregateId, command.getAttributeSetVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

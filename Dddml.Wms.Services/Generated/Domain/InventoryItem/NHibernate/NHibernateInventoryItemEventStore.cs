@@ -47,7 +47,7 @@ namespace Dddml.Wms.Domain.InventoryItem.NHibernate
             var es = criteria.List<IEvent>();
             foreach (InventoryItemStateEventBase e in es)
             {
-                e.StateEventReadOnly = true;
+                e.EventReadOnly = true;
             }
             return new EventStream()
             {

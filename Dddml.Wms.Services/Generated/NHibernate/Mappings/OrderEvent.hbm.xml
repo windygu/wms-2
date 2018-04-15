@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+                   assembly="Dddml.Wms.Common" 
+                   namespace="Dddml.Wms.Domain.Order">
+  
+  <class name="OrderStateEventBase" table="OrderEvents" mutable="false" abstract="true">
+
+    <composite-id name="OrderEventId" class="Dddml.Wms.Domain.Order.OrderEventId">
+        <key-property name="OrderId" ><column name="OrderId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="Version" ></key-property>
+    </composite-id>
+    <discriminator column="EventType" type="String" />
+
+    <property name="OrderTypeId" ><column name="OrderTypeId" sql-type="VARCHAR(20)" /></property>
+    <property name="OrderName" ><column name="OrderName" sql-type="VARCHAR(100)" /></property>
+    <property name="ExternalId" ><column name="ExternalId" sql-type="VARCHAR(20)" /></property>
+    <property name="SalesChannelEnumId" ><column name="SalesChannelEnumId" sql-type="VARCHAR(20)" /></property>
+    <property name="OrderDate" ><column name="OrderDate" sql-type="DATETIME" /></property>
+    <property name="Priority" ><column name="Priority" sql-type="CHAR(1)" /></property>
+    <property name="EntryDate" ><column name="EntryDate" sql-type="DATETIME" /></property>
+    <property name="PickSheetPrintedDate" ><column name="PickSheetPrintedDate" sql-type="DATETIME" /></property>
+    <property name="StatusId" ><column name="StatusId" sql-type="VARCHAR(20)" /></property>
+    <property name="CurrencyUom" ><column name="CurrencyUom" sql-type="VARCHAR(20)" /></property>
+    <property name="SyncStatusId" ><column name="SyncStatusId" sql-type="VARCHAR(20)" /></property>
+    <property name="BillingAccountId" ><column name="BillingAccountId" sql-type="VARCHAR(20)" /></property>
+    <property name="OriginFacilityId" ><column name="OriginFacilityId" sql-type="VARCHAR(20)" /></property>
+    <property name="WebSiteId" ><column name="WebSiteId" sql-type="VARCHAR(20)" /></property>
+    <property name="ProductStoreId" ><column name="ProductStoreId" sql-type="VARCHAR(20)" /></property>
+    <property name="TerminalId" ><column name="TerminalId" sql-type="VARCHAR(60)" /></property>
+    <property name="TransactionId" ><column name="TransactionId" sql-type="VARCHAR(60)" /></property>
+    <property name="AutoOrderShoppingListId" ><column name="AutoOrderShoppingListId" sql-type="VARCHAR(20)" /></property>
+    <property name="NeedsInventoryIssuance" ><column name="NeedsInventoryIssuance" sql-type="CHAR(1)" /></property>
+    <property name="IsRushOrder" ><column name="IsRushOrder" sql-type="CHAR(1)" /></property>
+    <property name="InternalCode" ><column name="InternalCode" sql-type="VARCHAR(60)" /></property>
+    <property name="RemainingSubTotal" ><column name="RemainingSubTotal" sql-type="DECIMAL(18,2)" /></property>
+    <property name="GrandTotal" ><column name="GrandTotal" sql-type="DECIMAL(18,2)" /></property>
+    <property name="InvoicePerShipment" ><column name="InvoicePerShipment" sql-type="CHAR(1)" /></property>
+    <property name="Active" ></property>
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+    <subclass name="OrderStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="OrderStateMergePatched"  discriminator-value="MergePatched">
+
+
+        <property name="IsPropertyOrderTypeIdRemoved" column="IsPropertyOrderTypeIdRemoved"/>
+
+        <property name="IsPropertyOrderNameRemoved" column="IsPropertyOrderNameRemoved"/>
+
+        <property name="IsPropertyExternalIdRemoved" column="IsPropertyExternalIdRemoved"/>
+
+        <property name="IsPropertySalesChannelEnumIdRemoved" column="IsPropertySalesChannelEnumIdRemoved"/>
+
+        <property name="IsPropertyOrderDateRemoved" column="IsPropertyOrderDateRemoved"/>
+
+        <property name="IsPropertyPriorityRemoved" column="IsPropertyPriorityRemoved"/>
+
+        <property name="IsPropertyEntryDateRemoved" column="IsPropertyEntryDateRemoved"/>
+
+        <property name="IsPropertyPickSheetPrintedDateRemoved" column="IsPropertyPickSheetPrintedDateRemoved"/>
+
+        <property name="IsPropertyStatusIdRemoved" column="IsPropertyStatusIdRemoved"/>
+
+        <property name="IsPropertyCurrencyUomRemoved" column="IsPropertyCurrencyUomRemoved"/>
+
+        <property name="IsPropertySyncStatusIdRemoved" column="IsPropertySyncStatusIdRemoved"/>
+
+        <property name="IsPropertyBillingAccountIdRemoved" column="IsPropertyBillingAccountIdRemoved"/>
+
+        <property name="IsPropertyOriginFacilityIdRemoved" column="IsPropertyOriginFacilityIdRemoved"/>
+
+        <property name="IsPropertyWebSiteIdRemoved" column="IsPropertyWebSiteIdRemoved"/>
+
+        <property name="IsPropertyProductStoreIdRemoved" column="IsPropertyProductStoreIdRemoved"/>
+
+        <property name="IsPropertyTerminalIdRemoved" column="IsPropertyTerminalIdRemoved"/>
+
+        <property name="IsPropertyTransactionIdRemoved" column="IsPropertyTransactionIdRemoved"/>
+
+        <property name="IsPropertyAutoOrderShoppingListIdRemoved" column="IsPropertyAutoOrderShoppingListIdRemoved"/>
+
+        <property name="IsPropertyNeedsInventoryIssuanceRemoved" column="IsPropertyNeedsInventoryIssuanceRemoved"/>
+
+        <property name="IsPropertyIsRushOrderRemoved" column="IsPropertyIsRushOrderRemoved"/>
+
+        <property name="IsPropertyInternalCodeRemoved" column="IsPropertyInternalCodeRemoved"/>
+
+        <property name="IsPropertyRemainingSubTotalRemoved" column="IsPropertyRemainingSubTotalRemoved"/>
+
+        <property name="IsPropertyGrandTotalRemoved" column="IsPropertyGrandTotalRemoved"/>
+
+        <property name="IsPropertyInvoicePerShipmentRemoved" column="IsPropertyInvoicePerShipmentRemoved"/>
+
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+    </subclass>
+
+
+  </class>
+  
+</hibernate-mapping>

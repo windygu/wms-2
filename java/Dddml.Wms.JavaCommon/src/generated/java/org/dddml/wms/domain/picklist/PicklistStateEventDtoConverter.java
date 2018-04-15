@@ -8,22 +8,22 @@ import org.dddml.wms.specialization.*;
 
 public class PicklistStateEventDtoConverter {
 
-    public PicklistStateEventDto toPicklistStateEventDto(AbstractPicklistStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractPicklistStateEvent.AbstractPicklistStateCreated) {
-            PicklistStateEvent.PicklistStateCreated e = (PicklistStateEvent.PicklistStateCreated) stateEvent;
+    public PicklistStateEventDto toPicklistStateEventDto(AbstractPicklistEvent stateEvent) {
+        if (stateEvent instanceof AbstractPicklistEvent.AbstractPicklistStateCreated) {
+            PicklistEvent.PicklistStateCreated e = (PicklistEvent.PicklistStateCreated) stateEvent;
             return toPicklistStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractPicklistStateEvent.AbstractPicklistStateMergePatched) {
-            PicklistStateEvent.PicklistStateMergePatched e = (PicklistStateEvent.PicklistStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractPicklistEvent.AbstractPicklistStateMergePatched) {
+            PicklistEvent.PicklistStateMergePatched e = (PicklistEvent.PicklistStateMergePatched) stateEvent;
             return toPicklistStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractPicklistStateEvent.AbstractPicklistStateDeleted) {
-            PicklistStateEvent.PicklistStateDeleted e = (PicklistStateEvent.PicklistStateDeleted) stateEvent;
+        } else if (stateEvent instanceof AbstractPicklistEvent.AbstractPicklistStateDeleted) {
+            PicklistEvent.PicklistStateDeleted e = (PicklistEvent.PicklistStateDeleted) stateEvent;
             return toPicklistStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public PicklistStateEventDto.PicklistStateCreatedDto toPicklistStateCreatedDto(PicklistStateEvent.PicklistStateCreated e) {
+    public PicklistStateEventDto.PicklistStateCreatedDto toPicklistStateCreatedDto(PicklistEvent.PicklistStateCreated e) {
         PicklistStateEventDto.PicklistStateCreatedDto dto = new PicklistStateEventDto.PicklistStateCreatedDto();
         dto.setPicklistEventId(e.getPicklistEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -37,7 +37,7 @@ public class PicklistStateEventDtoConverter {
         dto.setPickwaveId(e.getPickwaveId());
         dto.setActive(e.getActive());
         List<PicklistRoleStateEventDto.PicklistRoleStateCreatedDto> picklistRoleEvents = new ArrayList<>();
-        for (PicklistRoleStateEvent.PicklistRoleStateCreated ee : e.getPicklistRoleEvents()) {
+        for (PicklistRoleEvent.PicklistRoleStateCreated ee : e.getPicklistRoleEvents()) {
             PicklistRoleStateEventDto.PicklistRoleStateCreatedDto eeDto = getPicklistRoleStateEventDtoConverter().toPicklistRoleStateCreatedDto(ee);
             picklistRoleEvents.add(eeDto);
         }
@@ -46,7 +46,7 @@ public class PicklistStateEventDtoConverter {
         return dto;
     }
 
-    public PicklistStateEventDto.PicklistStateMergePatchedDto toPicklistStateMergePatchedDto(PicklistStateEvent.PicklistStateMergePatched e) {
+    public PicklistStateEventDto.PicklistStateMergePatchedDto toPicklistStateMergePatchedDto(PicklistEvent.PicklistStateMergePatched e) {
         PicklistStateEventDto.PicklistStateMergePatchedDto dto = new PicklistStateEventDto.PicklistStateMergePatchedDto();
         dto.setPicklistEventId(e.getPicklistEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -67,8 +67,8 @@ public class PicklistStateEventDtoConverter {
         dto.setIsPropertyPickwaveIdRemoved(e.getIsPropertyPickwaveIdRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
         List<PicklistRoleStateEventDto> picklistRoleEvents = new ArrayList<>();
-        for (PicklistRoleStateEvent ee : e.getPicklistRoleEvents()) {
-            PicklistRoleStateEventDto eeDto = getPicklistRoleStateEventDtoConverter().toPicklistRoleStateEventDto((AbstractPicklistRoleStateEvent) ee);
+        for (PicklistRoleEvent ee : e.getPicklistRoleEvents()) {
+            PicklistRoleStateEventDto eeDto = getPicklistRoleStateEventDtoConverter().toPicklistRoleStateEventDto((AbstractPicklistRoleEvent) ee);
             picklistRoleEvents.add(eeDto);
         }
         dto.setPicklistRoleEvents(picklistRoleEvents.toArray(new PicklistRoleStateEventDto[0]));
@@ -77,14 +77,14 @@ public class PicklistStateEventDtoConverter {
     }
 
 
-    public PicklistStateEventDto.PicklistStateDeletedDto toPicklistStateDeletedDto(PicklistStateEvent.PicklistStateDeleted e) {
+    public PicklistStateEventDto.PicklistStateDeletedDto toPicklistStateDeletedDto(PicklistEvent.PicklistStateDeleted e) {
         PicklistStateEventDto.PicklistStateDeletedDto dto = new PicklistStateEventDto.PicklistStateDeletedDto();
         dto.setPicklistEventId(e.getPicklistEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
         List<PicklistRoleStateEventDto.PicklistRoleStateRemovedDto> picklistRoleEvents = new ArrayList<>();
-        for (PicklistRoleStateEvent.PicklistRoleStateRemoved ee : e.getPicklistRoleEvents()) {
+        for (PicklistRoleEvent.PicklistRoleStateRemoved ee : e.getPicklistRoleEvents()) {
             PicklistRoleStateEventDto.PicklistRoleStateRemovedDto eeDto = getPicklistRoleStateEventDtoConverter().toPicklistRoleStateRemovedDto(ee);
             picklistRoleEvents.add(eeDto);
         }

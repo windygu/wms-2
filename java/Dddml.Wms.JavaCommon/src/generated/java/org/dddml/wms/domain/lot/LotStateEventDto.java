@@ -2,9 +2,9 @@ package org.dddml.wms.domain.lot;
 
 import java.util.Date;
 import org.dddml.wms.domain.*;
-import org.dddml.wms.domain.AbstractStateEvent;
+import org.dddml.wms.domain.AbstractEvent;
 
-public class LotStateEventDto extends AbstractStateEvent
+public class LotStateEventDto extends AbstractEvent
 {
 
     private LotEventId lotEventId;
@@ -118,7 +118,7 @@ public class LotStateEventDto extends AbstractStateEvent
 	public static class LotStateCreatedDto extends LotStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_CREATED;
         }
@@ -129,7 +129,7 @@ public class LotStateEventDto extends AbstractStateEvent
 	public static class LotStateMergePatchedDto extends LotStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_MERGE_PATCHED;
         }
@@ -140,7 +140,7 @@ public class LotStateEventDto extends AbstractStateEvent
 	public static class LotStateDeletedDto extends LotStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_DELETED;
         }

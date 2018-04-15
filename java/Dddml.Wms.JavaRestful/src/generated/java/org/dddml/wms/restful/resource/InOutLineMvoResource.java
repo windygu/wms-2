@@ -183,7 +183,7 @@ public class InOutLineMvoResource {
 
             InOutLineId idObj = InOutLineMvoResourceUtils.parseIdString(id);
             InOutLineMvoStateEventDtoConverter dtoConverter = getInOutLineMvoStateEventDtoConverter();
-            return dtoConverter.toInOutLineMvoStateEventDto((AbstractInOutLineMvoStateEvent) inOutLineMvoApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toInOutLineMvoStateEventDto((AbstractInOutLineMvoEvent) inOutLineMvoApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

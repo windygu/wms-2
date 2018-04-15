@@ -10,19 +10,19 @@ import org.dddml.wms.specialization.*;
 
 public class SellableInventoryItemStateEventDtoConverter {
 
-    public SellableInventoryItemStateEventDto toSellableInventoryItemStateEventDto(AbstractSellableInventoryItemStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractSellableInventoryItemStateEvent.AbstractSellableInventoryItemStateCreated) {
-            SellableInventoryItemStateEvent.SellableInventoryItemStateCreated e = (SellableInventoryItemStateEvent.SellableInventoryItemStateCreated) stateEvent;
+    public SellableInventoryItemStateEventDto toSellableInventoryItemStateEventDto(AbstractSellableInventoryItemEvent stateEvent) {
+        if (stateEvent instanceof AbstractSellableInventoryItemEvent.AbstractSellableInventoryItemStateCreated) {
+            SellableInventoryItemEvent.SellableInventoryItemStateCreated e = (SellableInventoryItemEvent.SellableInventoryItemStateCreated) stateEvent;
             return toSellableInventoryItemStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractSellableInventoryItemStateEvent.AbstractSellableInventoryItemStateMergePatched) {
-            SellableInventoryItemStateEvent.SellableInventoryItemStateMergePatched e = (SellableInventoryItemStateEvent.SellableInventoryItemStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractSellableInventoryItemEvent.AbstractSellableInventoryItemStateMergePatched) {
+            SellableInventoryItemEvent.SellableInventoryItemStateMergePatched e = (SellableInventoryItemEvent.SellableInventoryItemStateMergePatched) stateEvent;
             return toSellableInventoryItemStateMergePatchedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public SellableInventoryItemStateEventDto.SellableInventoryItemStateCreatedDto toSellableInventoryItemStateCreatedDto(SellableInventoryItemStateEvent.SellableInventoryItemStateCreated e) {
+    public SellableInventoryItemStateEventDto.SellableInventoryItemStateCreatedDto toSellableInventoryItemStateCreatedDto(SellableInventoryItemEvent.SellableInventoryItemStateCreated e) {
         SellableInventoryItemStateEventDto.SellableInventoryItemStateCreatedDto dto = new SellableInventoryItemStateEventDto.SellableInventoryItemStateCreatedDto();
         dto.setSellableInventoryItemEventId(e.getSellableInventoryItemEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -30,7 +30,7 @@ public class SellableInventoryItemStateEventDtoConverter {
         dto.setCommandId(e.getCommandId());
         dto.setSellableQuantity(e.getSellableQuantity());
         List<SellableInventoryItemEntryStateEventDto.SellableInventoryItemEntryStateCreatedDto> sellableInventoryItemEntryEvents = new ArrayList<>();
-        for (SellableInventoryItemEntryStateEvent.SellableInventoryItemEntryStateCreated ee : e.getSellableInventoryItemEntryEvents()) {
+        for (SellableInventoryItemEntryEvent.SellableInventoryItemEntryStateCreated ee : e.getSellableInventoryItemEntryEvents()) {
             SellableInventoryItemEntryStateEventDto.SellableInventoryItemEntryStateCreatedDto eeDto = getSellableInventoryItemEntryStateEventDtoConverter().toSellableInventoryItemEntryStateCreatedDto(ee);
             sellableInventoryItemEntryEvents.add(eeDto);
         }
@@ -39,7 +39,7 @@ public class SellableInventoryItemStateEventDtoConverter {
         return dto;
     }
 
-    public SellableInventoryItemStateEventDto.SellableInventoryItemStateMergePatchedDto toSellableInventoryItemStateMergePatchedDto(SellableInventoryItemStateEvent.SellableInventoryItemStateMergePatched e) {
+    public SellableInventoryItemStateEventDto.SellableInventoryItemStateMergePatchedDto toSellableInventoryItemStateMergePatchedDto(SellableInventoryItemEvent.SellableInventoryItemStateMergePatched e) {
         SellableInventoryItemStateEventDto.SellableInventoryItemStateMergePatchedDto dto = new SellableInventoryItemStateEventDto.SellableInventoryItemStateMergePatchedDto();
         dto.setSellableInventoryItemEventId(e.getSellableInventoryItemEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -48,8 +48,8 @@ public class SellableInventoryItemStateEventDtoConverter {
         dto.setSellableQuantity(e.getSellableQuantity());
         dto.setIsPropertySellableQuantityRemoved(e.getIsPropertySellableQuantityRemoved());
         List<SellableInventoryItemEntryStateEventDto> sellableInventoryItemEntryEvents = new ArrayList<>();
-        for (SellableInventoryItemEntryStateEvent ee : e.getSellableInventoryItemEntryEvents()) {
-            SellableInventoryItemEntryStateEventDto eeDto = getSellableInventoryItemEntryStateEventDtoConverter().toSellableInventoryItemEntryStateEventDto((AbstractSellableInventoryItemEntryStateEvent) ee);
+        for (SellableInventoryItemEntryEvent ee : e.getSellableInventoryItemEntryEvents()) {
+            SellableInventoryItemEntryStateEventDto eeDto = getSellableInventoryItemEntryStateEventDtoConverter().toSellableInventoryItemEntryStateEventDto((AbstractSellableInventoryItemEntryEvent) ee);
             sellableInventoryItemEntryEvents.add(eeDto);
         }
         dto.setSellableInventoryItemEntryEvents(sellableInventoryItemEntryEvents.toArray(new SellableInventoryItemEntryStateEventDto[0]));

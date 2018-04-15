@@ -181,7 +181,7 @@ public class ProductCategoryResource {
 
             String idObj = id;
             ProductCategoryStateEventDtoConverter dtoConverter = getProductCategoryStateEventDtoConverter();
-            return dtoConverter.toProductCategoryStateEventDto((AbstractProductCategoryStateEvent) productCategoryApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toProductCategoryStateEventDto((AbstractProductCategoryEvent) productCategoryApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

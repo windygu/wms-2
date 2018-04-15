@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.pickwave.PickwaveStateEvent.*;
+import org.dddml.wms.domain.pickwave.PickwaveEvent.*;
 
 public interface PickwaveState
 {
@@ -60,11 +60,11 @@ public interface PickwaveState
 
     void mutate(Event e);
 
-    void when(PickwaveStateEvent.PickwaveStateCreated e);
+    void when(PickwaveEvent.PickwaveStateCreated e);
 
-    void when(PickwaveStateEvent.PickwaveStateMergePatched e);
+    void when(PickwaveEvent.PickwaveStateMergePatched e);
 
-    void when(PickwaveStateEvent.PickwaveStateDeleted e);
+    void when(PickwaveEvent.PickwaveStateDeleted e);
     
 }
 

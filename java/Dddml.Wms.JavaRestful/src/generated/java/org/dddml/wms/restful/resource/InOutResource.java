@@ -266,7 +266,7 @@ public class InOutResource {
 
             String idObj = id;
             InOutStateEventDtoConverter dtoConverter = getInOutStateEventDtoConverter();
-            return dtoConverter.toInOutStateEventDto((AbstractInOutStateEvent) inOutApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toInOutStateEventDto((AbstractInOutEvent) inOutApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.inventoryprtriggered.InventoryPRTriggeredStateEvent.*;
+import org.dddml.wms.domain.inventoryprtriggered.InventoryPRTriggeredEvent.*;
 
 public abstract class AbstractInventoryPRTriggeredState implements InventoryPRTriggeredState
 {
@@ -127,7 +127,7 @@ public abstract class AbstractInventoryPRTriggeredState implements InventoryPRTr
     public AbstractInventoryPRTriggeredState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setInventoryPRTriggeredId(((InventoryPRTriggeredStateEvent) events.get(0)).getInventoryPRTriggeredEventId().getInventoryPRTriggeredId());
+            this.setInventoryPRTriggeredId(((InventoryPRTriggeredEvent) events.get(0)).getInventoryPRTriggeredEventId().getInventoryPRTriggeredId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -197,10 +197,10 @@ public abstract class AbstractInventoryPRTriggeredState implements InventoryPRTr
     {
     }
 
-    protected void throwOnWrongEvent(InventoryPRTriggeredStateEvent stateEvent)
+    protected void throwOnWrongEvent(InventoryPRTriggeredEvent stateEvent)
     {
         InventoryPRTriggeredId stateEntityId = this.getInventoryPRTriggeredId(); // Aggregate Id
-        InventoryPRTriggeredId eventEntityId = stateEvent.getInventoryPRTriggeredEventId().getInventoryPRTriggeredId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        InventoryPRTriggeredId eventEntityId = stateEvent.getInventoryPRTriggeredEventId().getInventoryPRTriggeredId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

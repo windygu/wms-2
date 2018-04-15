@@ -86,19 +86,19 @@ public abstract class AbstractDamageReasonApplicationService implements DamageRe
         return getStateQueryRepository().getCount(filter);
     }
 
-    public DamageReasonStateEvent getStateEvent(String damageReasonId, long version) {
-        DamageReasonStateEvent e = (DamageReasonStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(damageReasonId), version);
+    public DamageReasonEvent getEvent(String damageReasonId, long version) {
+        DamageReasonEvent e = (DamageReasonEvent)getEventStore().getEvent(toEventStoreAggregateId(damageReasonId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(damageReasonId, 0);
+            return getEvent(damageReasonId, 0);
         }
         return e;
     }
 
     public DamageReasonState getHistoryState(String damageReasonId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractDamageReasonStateEvent.class, toEventStoreAggregateId(damageReasonId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractDamageReasonEvent.class, toEventStoreAggregateId(damageReasonId), version - 1);
         return new AbstractDamageReasonState.SimpleDamageReasonState(eventStream.getEvents());
     }
 
@@ -137,7 +137,7 @@ public abstract class AbstractDamageReasonApplicationService implements DamageRe
         }
     }
 
-    public void initialize(DamageReasonStateEvent.DamageReasonStateCreated stateCreated) {
+    public void initialize(DamageReasonEvent.DamageReasonStateCreated stateCreated) {
         String aggregateId = stateCreated.getDamageReasonEventId().getDamageReasonId();
         DamageReasonState state = new AbstractDamageReasonState.SimpleDamageReasonState();
         state.setDamageReasonId(aggregateId);
@@ -155,9 +155,9 @@ public abstract class AbstractDamageReasonApplicationService implements DamageRe
         if (command.getVersion() == null) { command.setVersion(DamageReasonState.VERSION_NULL); }
         if (state.getVersion() != null && state.getVersion() > command.getVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractDamageReasonStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractDamageReasonEvent.class, eventStoreAggregateId, command.getVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

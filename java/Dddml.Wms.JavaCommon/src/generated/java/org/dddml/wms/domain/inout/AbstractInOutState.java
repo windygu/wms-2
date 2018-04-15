@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.inout.InOutStateEvent.*;
+import org.dddml.wms.domain.inout.InOutEvent.*;
 
 public abstract class AbstractInOutState implements InOutState, Saveable
 {
@@ -490,7 +490,7 @@ public abstract class AbstractInOutState implements InOutState, Saveable
     public AbstractInOutState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setDocumentNumber(((InOutStateEvent) events.get(0)).getInOutEventId().getDocumentNumber());
+            this.setDocumentNumber(((InOutEvent) events.get(0)).getInOutEventId().getDocumentNumber());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -564,7 +564,7 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
-        for (InOutLineStateEvent.InOutLineStateCreated innerEvent : e.getInOutLineEvents()) {
+        for (InOutLineEvent.InOutLineStateCreated innerEvent : e.getInOutLineEvents()) {
             InOutLineState innerState = this.getInOutLines().get(innerEvent.getInOutLineEventId().getLineNumber());
             innerState.mutate(innerEvent);
         }
@@ -919,12 +919,12 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         this.setUpdatedBy(e.getCreatedBy());
         this.setUpdatedAt(e.getCreatedAt());
 
-        for (InOutLineStateEvent innerEvent : e.getInOutLineEvents()) {
+        for (InOutLineEvent innerEvent : e.getInOutLineEvents()) {
             InOutLineState innerState = this.getInOutLines().get(innerEvent.getInOutLineEventId().getLineNumber());
             innerState.mutate(innerEvent);
-            if (innerEvent instanceof InOutLineStateEvent.InOutLineStateRemoved)
+            if (innerEvent instanceof InOutLineEvent.InOutLineStateRemoved)
             {
-                //InOutLineStateEvent.InOutLineStateRemoved removed = (InOutLineStateEvent.InOutLineStateRemoved)innerEvent;
+                //InOutLineEvent.InOutLineStateRemoved removed = (InOutLineEvent.InOutLineStateRemoved)innerEvent;
                 this.getInOutLines().remove(innerState);
             }
         }
@@ -936,10 +936,10 @@ public abstract class AbstractInOutState implements InOutState, Saveable
 
     }
 
-    protected void throwOnWrongEvent(InOutStateEvent stateEvent)
+    protected void throwOnWrongEvent(InOutEvent stateEvent)
     {
         String stateEntityId = this.getDocumentNumber(); // Aggregate Id
-        String eventEntityId = stateEvent.getInOutEventId().getDocumentNumber(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        String eventEntityId = stateEvent.getInOutEventId().getDocumentNumber(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

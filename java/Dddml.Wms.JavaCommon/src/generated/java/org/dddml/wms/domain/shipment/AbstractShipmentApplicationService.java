@@ -98,19 +98,19 @@ public abstract class AbstractShipmentApplicationService implements ShipmentAppl
         return getStateQueryRepository().getCount(filter);
     }
 
-    public ShipmentStateEvent getStateEvent(String shipmentId, long version) {
-        ShipmentStateEvent e = (ShipmentStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(shipmentId), version);
+    public ShipmentEvent getEvent(String shipmentId, long version) {
+        ShipmentEvent e = (ShipmentEvent)getEventStore().getEvent(toEventStoreAggregateId(shipmentId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(shipmentId, 0);
+            return getEvent(shipmentId, 0);
         }
         return e;
     }
 
     public ShipmentState getHistoryState(String shipmentId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractShipmentStateEvent.class, toEventStoreAggregateId(shipmentId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractShipmentEvent.class, toEventStoreAggregateId(shipmentId), version - 1);
         return new AbstractShipmentState.SimpleShipmentState(eventStream.getEvents());
     }
 
@@ -173,7 +173,7 @@ public abstract class AbstractShipmentApplicationService implements ShipmentAppl
         }
     }
 
-    public void initialize(ShipmentStateEvent.ShipmentStateCreated stateCreated) {
+    public void initialize(ShipmentEvent.ShipmentStateCreated stateCreated) {
         String aggregateId = stateCreated.getShipmentEventId().getShipmentId();
         ShipmentState state = new AbstractShipmentState.SimpleShipmentState();
         state.setShipmentId(aggregateId);
@@ -191,9 +191,9 @@ public abstract class AbstractShipmentApplicationService implements ShipmentAppl
         if (command.getVersion() == null) { command.setVersion(ShipmentState.VERSION_NULL); }
         if (state.getVersion() != null && state.getVersion() > command.getVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractShipmentStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractShipmentEvent.class, eventStoreAggregateId, command.getVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

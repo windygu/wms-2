@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+                   assembly="Dddml.Wms.Iam" 
+                   namespace="Dddml.Wms.Domain.RolePermission">
+  
+  <class name="RolePermissionStateEventBase" table="RolePermissionEvents" mutable="false" abstract="true">
+
+    <composite-id name="RolePermissionEventId" class="Dddml.Wms.Domain.RolePermission.RolePermissionEventId">
+        <key-property name="IdRoleId" ></key-property>
+        <key-property name="IdPermissionId" ></key-property>
+        <key-property name="Version" ></key-property>
+    </composite-id>
+    <discriminator column="EventType" type="String" />
+
+    <property name="Active" ></property>
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+    <subclass name="RolePermissionStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="RolePermissionStateMergePatched"  discriminator-value="MergePatched">
+
+
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+    </subclass>
+
+    <subclass name="RolePermissionStateDeleted"  discriminator-value="Deleted">
+
+    </subclass>
+
+
+
+  </class>
+  
+</hibernate-mapping>

@@ -107,19 +107,19 @@ public abstract class AbstractInOutApplicationService implements InOutApplicatio
         return getStateQueryRepository().getCount(filter);
     }
 
-    public InOutStateEvent getStateEvent(String documentNumber, long version) {
-        InOutStateEvent e = (InOutStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(documentNumber), version);
+    public InOutEvent getEvent(String documentNumber, long version) {
+        InOutEvent e = (InOutEvent)getEventStore().getEvent(toEventStoreAggregateId(documentNumber), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(documentNumber, 0);
+            return getEvent(documentNumber, 0);
         }
         return e;
     }
 
     public InOutState getHistoryState(String documentNumber, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractInOutStateEvent.class, toEventStoreAggregateId(documentNumber), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractInOutEvent.class, toEventStoreAggregateId(documentNumber), version - 1);
         return new AbstractInOutState.SimpleInOutState(eventStream.getEvents());
     }
 
@@ -166,7 +166,7 @@ public abstract class AbstractInOutApplicationService implements InOutApplicatio
         }
     }
 
-    public void initialize(InOutStateEvent.InOutStateCreated stateCreated) {
+    public void initialize(InOutEvent.InOutStateCreated stateCreated) {
         String aggregateId = stateCreated.getInOutEventId().getDocumentNumber();
         InOutState state = new AbstractInOutState.SimpleInOutState();
         state.setDocumentNumber(aggregateId);
@@ -184,9 +184,9 @@ public abstract class AbstractInOutApplicationService implements InOutApplicatio
         if (command.getVersion() == null) { command.setVersion(InOutState.VERSION_NULL); }
         if (state.getVersion() != null && state.getVersion() > command.getVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractInOutStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractInOutEvent.class, eventStoreAggregateId, command.getVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

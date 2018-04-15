@@ -30,7 +30,7 @@ public interface PickwaveApplicationService
 
     long getCount(Criterion filter);
 
-    PickwaveStateEvent getStateEvent(Long pickwaveId, long version);
+    PickwaveEvent getEvent(Long pickwaveId, long version);
 
     PickwaveState getHistoryState(Long pickwaveId, long version);
 

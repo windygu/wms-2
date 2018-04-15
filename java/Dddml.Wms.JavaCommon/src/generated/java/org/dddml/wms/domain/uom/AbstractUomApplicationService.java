@@ -86,19 +86,19 @@ public abstract class AbstractUomApplicationService implements UomApplicationSer
         return getStateQueryRepository().getCount(filter);
     }
 
-    public UomStateEvent getStateEvent(String uomId, long version) {
-        UomStateEvent e = (UomStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(uomId), version);
+    public UomEvent getEvent(String uomId, long version) {
+        UomEvent e = (UomEvent)getEventStore().getEvent(toEventStoreAggregateId(uomId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(uomId, 0);
+            return getEvent(uomId, 0);
         }
         return e;
     }
 
     public UomState getHistoryState(String uomId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractUomStateEvent.class, toEventStoreAggregateId(uomId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractUomEvent.class, toEventStoreAggregateId(uomId), version - 1);
         return new AbstractUomState.SimpleUomState(eventStream.getEvents());
     }
 
@@ -137,7 +137,7 @@ public abstract class AbstractUomApplicationService implements UomApplicationSer
         }
     }
 
-    public void initialize(UomStateEvent.UomStateCreated stateCreated) {
+    public void initialize(UomEvent.UomStateCreated stateCreated) {
         String aggregateId = stateCreated.getUomEventId().getUomId();
         UomState state = new AbstractUomState.SimpleUomState();
         state.setUomId(aggregateId);
@@ -155,9 +155,9 @@ public abstract class AbstractUomApplicationService implements UomApplicationSer
         if (command.getVersion() == null) { command.setVersion(UomState.VERSION_NULL); }
         if (state.getVersion() != null && state.getVersion() > command.getVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractUomStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractUomEvent.class, eventStoreAggregateId, command.getVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

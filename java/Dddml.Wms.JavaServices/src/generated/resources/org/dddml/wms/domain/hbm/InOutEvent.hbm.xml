@@ -1,0 +1,130 @@
+﻿<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.inout">
+  
+  <class name="AbstractInOutEvent" table="InOutEvents" mutable="false" abstract="true">
+
+	<composite-id name="inOutEventId" class="org.dddml.wms.domain.inout.InOutEventId">
+		<key-property name="documentNumber" ><column name="DocumentNumber" length="50" /></key-property>
+		<key-property name="version" ></key-property>
+	</composite-id>
+
+    <discriminator column="EventType" type="string" />
+
+	<property name="documentStatusId" ></property>
+	<property name="posted" ></property>
+	<property name="processed" ></property>
+	<property name="processing" ></property>
+	<property name="documentTypeId" ></property>
+	<property name="description" ></property>
+	<property name="orderId" ></property>
+	<property name="dateOrdered" ></property>
+	<property name="isPrinted" ></property>
+	<property name="movementTypeId" ></property>
+	<property name="movementDate" ></property>
+	<property name="businessPartnerId" ></property>
+	<property name="warehouseId" ></property>
+	<property name="POReference" ></property>
+	<property name="freightAmount" ></property>
+	<property name="shipperId" ></property>
+	<property name="chargeAmount" ></property>
+	<property name="datePrinted" ></property>
+	<property name="createdFrom" ></property>
+	<property name="salesRepresentativeId" ></property>
+	<property name="numberOfPackages" ></property>
+	<property name="pickDate" ></property>
+	<property name="shipDate" ></property>
+	<property name="trackingNumber" ></property>
+	<property name="dateReceived" ></property>
+	<property name="isInTransit" ></property>
+	<property name="isApproved" ></property>
+	<property name="isInDispute" ></property>
+	<property name="rmaDocumentNumber" ></property>
+	<property name="reversalDocumentNumber" ></property>
+	<property name="active" ></property>
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+    <subclass name="AbstractInOutEvent$SimpleInOutStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="AbstractInOutEvent$SimpleInOutStateMergePatched" discriminator-value="MergePatched">
+
+        <property name="isPropertyDocumentStatusIdRemoved" column="IsPropertyDocumentStatusIdRemoved"/>
+
+        <property name="isPropertyPostedRemoved" column="IsPropertyPostedRemoved"/>
+
+        <property name="isPropertyProcessedRemoved" column="IsPropertyProcessedRemoved"/>
+
+        <property name="isPropertyProcessingRemoved" column="IsPropertyProcessingRemoved"/>
+
+        <property name="isPropertyDocumentTypeIdRemoved" column="IsPropertyDocumentTypeIdRemoved"/>
+
+        <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
+
+        <property name="isPropertyOrderIdRemoved" column="IsPropertyOrderIdRemoved"/>
+
+        <property name="isPropertyDateOrderedRemoved" column="IsPropertyDateOrderedRemoved"/>
+
+        <property name="isPropertyIsPrintedRemoved" column="IsPropertyIsPrintedRemoved"/>
+
+        <property name="isPropertyMovementTypeIdRemoved" column="IsPropertyMovementTypeIdRemoved"/>
+
+        <property name="isPropertyMovementDateRemoved" column="IsPropertyMovementDateRemoved"/>
+
+        <property name="isPropertyBusinessPartnerIdRemoved" column="IsPropertyBusinessPartnerIdRemoved"/>
+
+        <property name="isPropertyWarehouseIdRemoved" column="IsPropertyWarehouseIdRemoved"/>
+
+        <property name="isPropertyPOReferenceRemoved" column="IsPropertyPOReferenceRemoved"/>
+
+        <property name="isPropertyFreightAmountRemoved" column="IsPropertyFreightAmountRemoved"/>
+
+        <property name="isPropertyShipperIdRemoved" column="IsPropertyShipperIdRemoved"/>
+
+        <property name="isPropertyChargeAmountRemoved" column="IsPropertyChargeAmountRemoved"/>
+
+        <property name="isPropertyDatePrintedRemoved" column="IsPropertyDatePrintedRemoved"/>
+
+        <property name="isPropertyCreatedFromRemoved" column="IsPropertyCreatedFromRemoved"/>
+
+        <property name="isPropertySalesRepresentativeIdRemoved" column="IsPropertySalesRepresentativeIdRemoved"/>
+
+        <property name="isPropertyNumberOfPackagesRemoved" column="IsPropertyNumberOfPackagesRemoved"/>
+
+        <property name="isPropertyPickDateRemoved" column="IsPropertyPickDateRemoved"/>
+
+        <property name="isPropertyShipDateRemoved" column="IsPropertyShipDateRemoved"/>
+
+        <property name="isPropertyTrackingNumberRemoved" column="IsPropertyTrackingNumberRemoved"/>
+
+        <property name="isPropertyDateReceivedRemoved" column="IsPropertyDateReceivedRemoved"/>
+
+        <property name="isPropertyIsInTransitRemoved" column="IsPropertyIsInTransitRemoved"/>
+
+        <property name="isPropertyIsApprovedRemoved" column="IsPropertyIsApprovedRemoved"/>
+
+        <property name="isPropertyIsInDisputeRemoved" column="IsPropertyIsInDisputeRemoved"/>
+
+        <property name="isPropertyRmaDocumentNumberRemoved" column="IsPropertyRmaDocumentNumberRemoved"/>
+
+        <property name="isPropertyReversalDocumentNumberRemoved" column="IsPropertyReversalDocumentNumberRemoved"/>
+
+        <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+
+
+    </subclass>
+
+
+  </class>
+  
+</hibernate-mapping>

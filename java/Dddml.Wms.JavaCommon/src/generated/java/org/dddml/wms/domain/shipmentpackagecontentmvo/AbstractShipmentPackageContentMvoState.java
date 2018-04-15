@@ -5,7 +5,7 @@ import org.dddml.wms.domain.shipmentpackage.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.shipmentpackagecontentmvo.ShipmentPackageContentMvoStateEvent.*;
+import org.dddml.wms.domain.shipmentpackagecontentmvo.ShipmentPackageContentMvoEvent.*;
 
 public abstract class AbstractShipmentPackageContentMvoState implements ShipmentPackageContentMvoState
 {
@@ -358,7 +358,7 @@ public abstract class AbstractShipmentPackageContentMvoState implements Shipment
     public AbstractShipmentPackageContentMvoState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setShipmentPackageContentId(((ShipmentPackageContentMvoStateEvent) events.get(0)).getShipmentPackageContentMvoEventId().getShipmentPackageContentId());
+            this.setShipmentPackageContentId(((ShipmentPackageContentMvoEvent) events.get(0)).getShipmentPackageContentMvoEventId().getShipmentPackageContentId());
             for (Event e : events) {
                 mutate(e);
                 this.setShipmentPackageVersion(this.getShipmentPackageVersion() + 1);
@@ -670,10 +670,10 @@ public abstract class AbstractShipmentPackageContentMvoState implements Shipment
     {
     }
 
-    protected void throwOnWrongEvent(ShipmentPackageContentMvoStateEvent stateEvent)
+    protected void throwOnWrongEvent(ShipmentPackageContentMvoEvent stateEvent)
     {
         ShipmentPackageContentId stateEntityId = this.getShipmentPackageContentId(); // Aggregate Id
-        ShipmentPackageContentId eventEntityId = stateEvent.getShipmentPackageContentMvoEventId().getShipmentPackageContentId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        ShipmentPackageContentId eventEntityId = stateEvent.getShipmentPackageContentMvoEventId().getShipmentPackageContentId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

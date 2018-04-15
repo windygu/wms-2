@@ -28,19 +28,19 @@ public abstract class AbstractItemIssuanceMvoAggregate extends AbstractAggregate
     public void create(ItemIssuanceMvoCommand.CreateItemIssuanceMvo c)
     {
         if (c.getShipmentVersion() == null) { c.setShipmentVersion(ItemIssuanceMvoState.VERSION_NULL); }
-        ItemIssuanceMvoStateEvent e = map(c);
+        ItemIssuanceMvoEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(ItemIssuanceMvoCommand.MergePatchItemIssuanceMvo c)
     {
-        ItemIssuanceMvoStateEvent e = map(c);
+        ItemIssuanceMvoEvent e = map(c);
         apply(e);
     }
 
     public void delete(ItemIssuanceMvoCommand.DeleteItemIssuanceMvo c)
     {
-        ItemIssuanceMvoStateEvent e = map(c);
+        ItemIssuanceMvoEvent e = map(c);
         apply(e);
     }
 
@@ -55,9 +55,9 @@ public abstract class AbstractItemIssuanceMvoAggregate extends AbstractAggregate
         changes.add(e);
     }
 
-    protected ItemIssuanceMvoStateEvent map(ItemIssuanceMvoCommand.CreateItemIssuanceMvo c) {
+    protected ItemIssuanceMvoEvent map(ItemIssuanceMvoCommand.CreateItemIssuanceMvo c) {
         ItemIssuanceMvoEventId stateEventId = new ItemIssuanceMvoEventId(c.getShipmentItemIssuanceId(), c.getShipmentVersion());
-        ItemIssuanceMvoStateEvent.ItemIssuanceMvoStateCreated e = newItemIssuanceMvoStateCreated(stateEventId);
+        ItemIssuanceMvoEvent.ItemIssuanceMvoStateCreated e = newItemIssuanceMvoStateCreated(stateEventId);
         e.setOrderId(c.getOrderId());
         e.setOrderItemSeqId(c.getOrderItemSeqId());
         e.setShipGroupSeqId(c.getShipGroupSeqId());
@@ -103,15 +103,15 @@ public abstract class AbstractItemIssuanceMvoAggregate extends AbstractAggregate
         e.setShipmentUpdatedBy(c.getShipmentUpdatedBy());
         e.setShipmentUpdatedAt(c.getShipmentUpdatedAt());
         e.setShipmentActive(c.getShipmentActive());
-        ((AbstractItemIssuanceMvoStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractItemIssuanceMvoEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected ItemIssuanceMvoStateEvent map(ItemIssuanceMvoCommand.MergePatchItemIssuanceMvo c) {
+    protected ItemIssuanceMvoEvent map(ItemIssuanceMvoCommand.MergePatchItemIssuanceMvo c) {
         ItemIssuanceMvoEventId stateEventId = new ItemIssuanceMvoEventId(c.getShipmentItemIssuanceId(), c.getShipmentVersion());
-        ItemIssuanceMvoStateEvent.ItemIssuanceMvoStateMergePatched e = newItemIssuanceMvoStateMergePatched(stateEventId);
+        ItemIssuanceMvoEvent.ItemIssuanceMvoStateMergePatched e = newItemIssuanceMvoStateMergePatched(stateEventId);
         e.setOrderId(c.getOrderId());
         e.setOrderItemSeqId(c.getOrderItemSeqId());
         e.setShipGroupSeqId(c.getShipGroupSeqId());
@@ -202,16 +202,16 @@ public abstract class AbstractItemIssuanceMvoAggregate extends AbstractAggregate
         e.setIsPropertyShipmentUpdatedByRemoved(c.getIsPropertyShipmentUpdatedByRemoved());
         e.setIsPropertyShipmentUpdatedAtRemoved(c.getIsPropertyShipmentUpdatedAtRemoved());
         e.setIsPropertyShipmentActiveRemoved(c.getIsPropertyShipmentActiveRemoved());
-        ((AbstractItemIssuanceMvoStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractItemIssuanceMvoEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected ItemIssuanceMvoStateEvent map(ItemIssuanceMvoCommand.DeleteItemIssuanceMvo c) {
+    protected ItemIssuanceMvoEvent map(ItemIssuanceMvoCommand.DeleteItemIssuanceMvo c) {
         ItemIssuanceMvoEventId stateEventId = new ItemIssuanceMvoEventId(c.getShipmentItemIssuanceId(), c.getShipmentVersion());
-        ItemIssuanceMvoStateEvent.ItemIssuanceMvoStateDeleted e = newItemIssuanceMvoStateDeleted(stateEventId);
-        ((AbstractItemIssuanceMvoStateEvent)e).setCommandId(c.getCommandId());
+        ItemIssuanceMvoEvent.ItemIssuanceMvoStateDeleted e = newItemIssuanceMvoStateDeleted(stateEventId);
+        ((AbstractItemIssuanceMvoEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
@@ -220,44 +220,44 @@ public abstract class AbstractItemIssuanceMvoAggregate extends AbstractAggregate
 
     ////////////////////////
 
-    protected ItemIssuanceMvoStateEvent.ItemIssuanceMvoStateCreated newItemIssuanceMvoStateCreated(Long version, String commandId, String requesterId) {
+    protected ItemIssuanceMvoEvent.ItemIssuanceMvoStateCreated newItemIssuanceMvoStateCreated(Long version, String commandId, String requesterId) {
         ItemIssuanceMvoEventId stateEventId = new ItemIssuanceMvoEventId(this.state.getShipmentItemIssuanceId(), version);
-        ItemIssuanceMvoStateEvent.ItemIssuanceMvoStateCreated e = newItemIssuanceMvoStateCreated(stateEventId);
-        ((AbstractItemIssuanceMvoStateEvent)e).setCommandId(commandId);
+        ItemIssuanceMvoEvent.ItemIssuanceMvoStateCreated e = newItemIssuanceMvoStateCreated(stateEventId);
+        ((AbstractItemIssuanceMvoEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected ItemIssuanceMvoStateEvent.ItemIssuanceMvoStateMergePatched newItemIssuanceMvoStateMergePatched(Long version, String commandId, String requesterId) {
+    protected ItemIssuanceMvoEvent.ItemIssuanceMvoStateMergePatched newItemIssuanceMvoStateMergePatched(Long version, String commandId, String requesterId) {
         ItemIssuanceMvoEventId stateEventId = new ItemIssuanceMvoEventId(this.state.getShipmentItemIssuanceId(), version);
-        ItemIssuanceMvoStateEvent.ItemIssuanceMvoStateMergePatched e = newItemIssuanceMvoStateMergePatched(stateEventId);
-        ((AbstractItemIssuanceMvoStateEvent)e).setCommandId(commandId);
+        ItemIssuanceMvoEvent.ItemIssuanceMvoStateMergePatched e = newItemIssuanceMvoStateMergePatched(stateEventId);
+        ((AbstractItemIssuanceMvoEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected ItemIssuanceMvoStateEvent.ItemIssuanceMvoStateDeleted newItemIssuanceMvoStateDeleted(Long version, String commandId, String requesterId) {
+    protected ItemIssuanceMvoEvent.ItemIssuanceMvoStateDeleted newItemIssuanceMvoStateDeleted(Long version, String commandId, String requesterId) {
         ItemIssuanceMvoEventId stateEventId = new ItemIssuanceMvoEventId(this.state.getShipmentItemIssuanceId(), version);
-        ItemIssuanceMvoStateEvent.ItemIssuanceMvoStateDeleted e = newItemIssuanceMvoStateDeleted(stateEventId);
-        ((AbstractItemIssuanceMvoStateEvent)e).setCommandId(commandId);
+        ItemIssuanceMvoEvent.ItemIssuanceMvoStateDeleted e = newItemIssuanceMvoStateDeleted(stateEventId);
+        ((AbstractItemIssuanceMvoEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected ItemIssuanceMvoStateEvent.ItemIssuanceMvoStateCreated newItemIssuanceMvoStateCreated(ItemIssuanceMvoEventId stateEventId) {
-        return new AbstractItemIssuanceMvoStateEvent.SimpleItemIssuanceMvoStateCreated(stateEventId);
+    protected ItemIssuanceMvoEvent.ItemIssuanceMvoStateCreated newItemIssuanceMvoStateCreated(ItemIssuanceMvoEventId stateEventId) {
+        return new AbstractItemIssuanceMvoEvent.SimpleItemIssuanceMvoStateCreated(stateEventId);
     }
 
-    protected ItemIssuanceMvoStateEvent.ItemIssuanceMvoStateMergePatched newItemIssuanceMvoStateMergePatched(ItemIssuanceMvoEventId stateEventId) {
-        return new AbstractItemIssuanceMvoStateEvent.SimpleItemIssuanceMvoStateMergePatched(stateEventId);
+    protected ItemIssuanceMvoEvent.ItemIssuanceMvoStateMergePatched newItemIssuanceMvoStateMergePatched(ItemIssuanceMvoEventId stateEventId) {
+        return new AbstractItemIssuanceMvoEvent.SimpleItemIssuanceMvoStateMergePatched(stateEventId);
     }
 
-    protected ItemIssuanceMvoStateEvent.ItemIssuanceMvoStateDeleted newItemIssuanceMvoStateDeleted(ItemIssuanceMvoEventId stateEventId)
+    protected ItemIssuanceMvoEvent.ItemIssuanceMvoStateDeleted newItemIssuanceMvoStateDeleted(ItemIssuanceMvoEventId stateEventId)
     {
-        return new AbstractItemIssuanceMvoStateEvent.SimpleItemIssuanceMvoStateDeleted(stateEventId);
+        return new AbstractItemIssuanceMvoEvent.SimpleItemIssuanceMvoStateDeleted(stateEventId);
     }
 
     public static class SimpleItemIssuanceMvoAggregate extends AbstractItemIssuanceMvoAggregate

@@ -8,22 +8,22 @@ import org.dddml.wms.specialization.*;
 
 public class MovementLineStateEventDtoConverter {
 
-    public MovementLineStateEventDto toMovementLineStateEventDto(AbstractMovementLineStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractMovementLineStateEvent.AbstractMovementLineStateCreated) {
-            MovementLineStateEvent.MovementLineStateCreated e = (MovementLineStateEvent.MovementLineStateCreated) stateEvent;
+    public MovementLineStateEventDto toMovementLineStateEventDto(AbstractMovementLineEvent stateEvent) {
+        if (stateEvent instanceof AbstractMovementLineEvent.AbstractMovementLineStateCreated) {
+            MovementLineEvent.MovementLineStateCreated e = (MovementLineEvent.MovementLineStateCreated) stateEvent;
             return toMovementLineStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractMovementLineStateEvent.AbstractMovementLineStateMergePatched) {
-            MovementLineStateEvent.MovementLineStateMergePatched e = (MovementLineStateEvent.MovementLineStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractMovementLineEvent.AbstractMovementLineStateMergePatched) {
+            MovementLineEvent.MovementLineStateMergePatched e = (MovementLineEvent.MovementLineStateMergePatched) stateEvent;
             return toMovementLineStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractMovementLineStateEvent.AbstractMovementLineStateRemoved) {
-            MovementLineStateEvent.MovementLineStateRemoved e = (MovementLineStateEvent.MovementLineStateRemoved) stateEvent;
+        } else if (stateEvent instanceof AbstractMovementLineEvent.AbstractMovementLineStateRemoved) {
+            MovementLineEvent.MovementLineStateRemoved e = (MovementLineEvent.MovementLineStateRemoved) stateEvent;
             return toMovementLineStateRemovedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public MovementLineStateEventDto.MovementLineStateCreatedDto toMovementLineStateCreatedDto(MovementLineStateEvent.MovementLineStateCreated e) {
+    public MovementLineStateEventDto.MovementLineStateCreatedDto toMovementLineStateCreatedDto(MovementLineEvent.MovementLineStateCreated e) {
         MovementLineStateEventDto.MovementLineStateCreatedDto dto = new MovementLineStateEventDto.MovementLineStateCreatedDto();
         dto.setMovementLineEventId(e.getMovementLineEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -41,7 +41,7 @@ public class MovementLineStateEventDtoConverter {
         return dto;
     }
 
-    public MovementLineStateEventDto.MovementLineStateMergePatchedDto toMovementLineStateMergePatchedDto(MovementLineStateEvent.MovementLineStateMergePatched e) {
+    public MovementLineStateEventDto.MovementLineStateMergePatchedDto toMovementLineStateMergePatchedDto(MovementLineEvent.MovementLineStateMergePatched e) {
         MovementLineStateEventDto.MovementLineStateMergePatchedDto dto = new MovementLineStateEventDto.MovementLineStateMergePatchedDto();
         dto.setMovementLineEventId(e.getMovementLineEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -68,7 +68,7 @@ public class MovementLineStateEventDtoConverter {
     }
 
 
-    public MovementLineStateEventDto.MovementLineStateRemovedDto toMovementLineStateRemovedDto(MovementLineStateEvent.MovementLineStateRemoved e) {
+    public MovementLineStateEventDto.MovementLineStateRemovedDto toMovementLineStateRemovedDto(MovementLineEvent.MovementLineStateRemoved e) {
         MovementLineStateEventDto.MovementLineStateRemovedDto dto = new MovementLineStateEventDto.MovementLineStateRemovedDto();
         dto.setMovementLineEventId(e.getMovementLineEventId());
         dto.setCreatedAt(e.getCreatedAt());

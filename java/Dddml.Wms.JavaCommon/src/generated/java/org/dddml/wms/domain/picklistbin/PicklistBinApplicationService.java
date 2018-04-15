@@ -30,7 +30,7 @@ public interface PicklistBinApplicationService
 
     long getCount(Criterion filter);
 
-    PicklistBinStateEvent getStateEvent(String picklistBinId, long version);
+    PicklistBinEvent getEvent(String picklistBinId, long version);
 
     PicklistBinState getHistoryState(String picklistBinId, long version);
 

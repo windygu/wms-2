@@ -2,9 +2,9 @@ package org.dddml.wms.domain.statusitem;
 
 import java.util.Date;
 import org.dddml.wms.domain.*;
-import org.dddml.wms.domain.AbstractStateEvent;
+import org.dddml.wms.domain.AbstractEvent;
 
-public class StatusItemStateEventDto extends AbstractStateEvent
+public class StatusItemStateEventDto extends AbstractEvent
 {
 
     private StatusItemEventId statusItemEventId;
@@ -158,7 +158,7 @@ public class StatusItemStateEventDto extends AbstractStateEvent
 	public static class StatusItemStateCreatedDto extends StatusItemStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_CREATED;
         }
@@ -169,7 +169,7 @@ public class StatusItemStateEventDto extends AbstractStateEvent
 	public static class StatusItemStateMergePatchedDto extends StatusItemStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_MERGE_PATCHED;
         }
@@ -180,7 +180,7 @@ public class StatusItemStateEventDto extends AbstractStateEvent
 	public static class StatusItemStateDeletedDto extends StatusItemStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_DELETED;
         }

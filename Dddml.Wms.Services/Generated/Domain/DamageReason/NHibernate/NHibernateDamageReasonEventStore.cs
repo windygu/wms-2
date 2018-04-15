@@ -45,7 +45,7 @@ namespace Dddml.Wms.Domain.DamageReason.NHibernate
             var es = criteria.List<IEvent>();
             foreach (DamageReasonStateEventBase e in es)
             {
-                e.StateEventReadOnly = true;
+                e.EventReadOnly = true;
             }
             return new EventStream()
             {

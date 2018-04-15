@@ -87,19 +87,19 @@ public abstract class AbstractPicklistItemMvoApplicationService implements Pickl
         return getStateQueryRepository().getCount(filter);
     }
 
-    public PicklistItemMvoStateEvent getStateEvent(PicklistBinPicklistItemId picklistBinPicklistItemId, long version) {
-        PicklistItemMvoStateEvent e = (PicklistItemMvoStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(picklistBinPicklistItemId), version);
+    public PicklistItemMvoEvent getEvent(PicklistBinPicklistItemId picklistBinPicklistItemId, long version) {
+        PicklistItemMvoEvent e = (PicklistItemMvoEvent)getEventStore().getEvent(toEventStoreAggregateId(picklistBinPicklistItemId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(picklistBinPicklistItemId, 0);
+            return getEvent(picklistBinPicklistItemId, 0);
         }
         return e;
     }
 
     public PicklistItemMvoState getHistoryState(PicklistBinPicklistItemId picklistBinPicklistItemId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractPicklistItemMvoStateEvent.class, toEventStoreAggregateId(picklistBinPicklistItemId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractPicklistItemMvoEvent.class, toEventStoreAggregateId(picklistBinPicklistItemId), version - 1);
         return new AbstractPicklistItemMvoState.SimplePicklistItemMvoState(eventStream.getEvents());
     }
 
@@ -138,7 +138,7 @@ public abstract class AbstractPicklistItemMvoApplicationService implements Pickl
         }
     }
 
-    public void initialize(PicklistItemMvoStateEvent.PicklistItemMvoStateCreated stateCreated) {
+    public void initialize(PicklistItemMvoEvent.PicklistItemMvoStateCreated stateCreated) {
         PicklistBinPicklistItemId aggregateId = stateCreated.getPicklistItemMvoEventId().getPicklistBinPicklistItemId();
         PicklistItemMvoState state = new AbstractPicklistItemMvoState.SimplePicklistItemMvoState();
         state.setPicklistBinPicklistItemId(aggregateId);
@@ -156,9 +156,9 @@ public abstract class AbstractPicklistItemMvoApplicationService implements Pickl
         if (command.getPicklistBinVersion() == null) { command.setPicklistBinVersion(PicklistItemMvoState.VERSION_NULL); }
         if (state.getPicklistBinVersion() != null && state.getPicklistBinVersion() > command.getPicklistBinVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractPicklistItemMvoStateEvent.class, eventStoreAggregateId, command.getPicklistBinVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractPicklistItemMvoEvent.class, eventStoreAggregateId, command.getPicklistBinVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

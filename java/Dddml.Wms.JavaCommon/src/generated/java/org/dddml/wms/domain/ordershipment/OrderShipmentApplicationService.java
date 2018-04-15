@@ -28,7 +28,7 @@ public interface OrderShipmentApplicationService
 
     long getCount(Criterion filter);
 
-    OrderShipmentStateEvent getStateEvent(OrderShipmentId orderShipmentId, long version);
+    OrderShipmentEvent getEvent(OrderShipmentId orderShipmentId, long version);
 
     OrderShipmentState getHistoryState(OrderShipmentId orderShipmentId, long version);
 

@@ -10,19 +10,19 @@ import org.dddml.wms.specialization.*;
 
 public class InventoryItemRequirementStateEventDtoConverter {
 
-    public InventoryItemRequirementStateEventDto toInventoryItemRequirementStateEventDto(AbstractInventoryItemRequirementStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractInventoryItemRequirementStateEvent.AbstractInventoryItemRequirementStateCreated) {
-            InventoryItemRequirementStateEvent.InventoryItemRequirementStateCreated e = (InventoryItemRequirementStateEvent.InventoryItemRequirementStateCreated) stateEvent;
+    public InventoryItemRequirementStateEventDto toInventoryItemRequirementStateEventDto(AbstractInventoryItemRequirementEvent stateEvent) {
+        if (stateEvent instanceof AbstractInventoryItemRequirementEvent.AbstractInventoryItemRequirementStateCreated) {
+            InventoryItemRequirementEvent.InventoryItemRequirementStateCreated e = (InventoryItemRequirementEvent.InventoryItemRequirementStateCreated) stateEvent;
             return toInventoryItemRequirementStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractInventoryItemRequirementStateEvent.AbstractInventoryItemRequirementStateMergePatched) {
-            InventoryItemRequirementStateEvent.InventoryItemRequirementStateMergePatched e = (InventoryItemRequirementStateEvent.InventoryItemRequirementStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractInventoryItemRequirementEvent.AbstractInventoryItemRequirementStateMergePatched) {
+            InventoryItemRequirementEvent.InventoryItemRequirementStateMergePatched e = (InventoryItemRequirementEvent.InventoryItemRequirementStateMergePatched) stateEvent;
             return toInventoryItemRequirementStateMergePatchedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public InventoryItemRequirementStateEventDto.InventoryItemRequirementStateCreatedDto toInventoryItemRequirementStateCreatedDto(InventoryItemRequirementStateEvent.InventoryItemRequirementStateCreated e) {
+    public InventoryItemRequirementStateEventDto.InventoryItemRequirementStateCreatedDto toInventoryItemRequirementStateCreatedDto(InventoryItemRequirementEvent.InventoryItemRequirementStateCreated e) {
         InventoryItemRequirementStateEventDto.InventoryItemRequirementStateCreatedDto dto = new InventoryItemRequirementStateEventDto.InventoryItemRequirementStateCreatedDto();
         dto.setInventoryItemRequirementEventId(e.getInventoryItemRequirementEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -30,7 +30,7 @@ public class InventoryItemRequirementStateEventDtoConverter {
         dto.setCommandId(e.getCommandId());
         dto.setQuantity(e.getQuantity());
         List<InventoryItemRequirementEntryStateEventDto.InventoryItemRequirementEntryStateCreatedDto> inventoryItemRequirementEntryEvents = new ArrayList<>();
-        for (InventoryItemRequirementEntryStateEvent.InventoryItemRequirementEntryStateCreated ee : e.getInventoryItemRequirementEntryEvents()) {
+        for (InventoryItemRequirementEntryEvent.InventoryItemRequirementEntryStateCreated ee : e.getInventoryItemRequirementEntryEvents()) {
             InventoryItemRequirementEntryStateEventDto.InventoryItemRequirementEntryStateCreatedDto eeDto = getInventoryItemRequirementEntryStateEventDtoConverter().toInventoryItemRequirementEntryStateCreatedDto(ee);
             inventoryItemRequirementEntryEvents.add(eeDto);
         }
@@ -39,7 +39,7 @@ public class InventoryItemRequirementStateEventDtoConverter {
         return dto;
     }
 
-    public InventoryItemRequirementStateEventDto.InventoryItemRequirementStateMergePatchedDto toInventoryItemRequirementStateMergePatchedDto(InventoryItemRequirementStateEvent.InventoryItemRequirementStateMergePatched e) {
+    public InventoryItemRequirementStateEventDto.InventoryItemRequirementStateMergePatchedDto toInventoryItemRequirementStateMergePatchedDto(InventoryItemRequirementEvent.InventoryItemRequirementStateMergePatched e) {
         InventoryItemRequirementStateEventDto.InventoryItemRequirementStateMergePatchedDto dto = new InventoryItemRequirementStateEventDto.InventoryItemRequirementStateMergePatchedDto();
         dto.setInventoryItemRequirementEventId(e.getInventoryItemRequirementEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -48,8 +48,8 @@ public class InventoryItemRequirementStateEventDtoConverter {
         dto.setQuantity(e.getQuantity());
         dto.setIsPropertyQuantityRemoved(e.getIsPropertyQuantityRemoved());
         List<InventoryItemRequirementEntryStateEventDto> inventoryItemRequirementEntryEvents = new ArrayList<>();
-        for (InventoryItemRequirementEntryStateEvent ee : e.getInventoryItemRequirementEntryEvents()) {
-            InventoryItemRequirementEntryStateEventDto eeDto = getInventoryItemRequirementEntryStateEventDtoConverter().toInventoryItemRequirementEntryStateEventDto((AbstractInventoryItemRequirementEntryStateEvent) ee);
+        for (InventoryItemRequirementEntryEvent ee : e.getInventoryItemRequirementEntryEvents()) {
+            InventoryItemRequirementEntryStateEventDto eeDto = getInventoryItemRequirementEntryStateEventDtoConverter().toInventoryItemRequirementEntryStateEventDto((AbstractInventoryItemRequirementEntryEvent) ee);
             inventoryItemRequirementEntryEvents.add(eeDto);
         }
         dto.setInventoryItemRequirementEntryEvents(inventoryItemRequirementEntryEvents.toArray(new InventoryItemRequirementEntryStateEventDto[0]));

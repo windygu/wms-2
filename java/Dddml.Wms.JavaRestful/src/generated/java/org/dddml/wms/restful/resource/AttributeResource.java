@@ -192,7 +192,7 @@ public class AttributeResource {
 
             String idObj = id;
             AttributeStateEventDtoConverter dtoConverter = getAttributeStateEventDtoConverter();
-            return dtoConverter.toAttributeStateEventDto((AbstractAttributeStateEvent) attributeApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toAttributeStateEventDto((AbstractAttributeEvent) attributeApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

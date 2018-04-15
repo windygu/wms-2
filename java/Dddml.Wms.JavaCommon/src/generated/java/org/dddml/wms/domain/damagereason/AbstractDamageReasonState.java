@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.damagereason.DamageReasonStateEvent.*;
+import org.dddml.wms.domain.damagereason.DamageReasonEvent.*;
 
 public abstract class AbstractDamageReasonState implements DamageReasonState
 {
@@ -153,7 +153,7 @@ public abstract class AbstractDamageReasonState implements DamageReasonState
     public AbstractDamageReasonState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setDamageReasonId(((DamageReasonStateEvent) events.get(0)).getDamageReasonEventId().getDamageReasonId());
+            this.setDamageReasonId(((DamageReasonEvent) events.get(0)).getDamageReasonEventId().getDamageReasonId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -261,10 +261,10 @@ public abstract class AbstractDamageReasonState implements DamageReasonState
     {
     }
 
-    protected void throwOnWrongEvent(DamageReasonStateEvent stateEvent)
+    protected void throwOnWrongEvent(DamageReasonEvent stateEvent)
     {
         String stateEntityId = this.getDamageReasonId(); // Aggregate Id
-        String eventEntityId = stateEvent.getDamageReasonEventId().getDamageReasonId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        String eventEntityId = stateEvent.getDamageReasonEventId().getDamageReasonId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

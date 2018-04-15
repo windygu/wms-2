@@ -45,7 +45,7 @@ namespace Dddml.Wms.Domain.OrganizationStructureType.NHibernate
             var es = criteria.List<IEvent>();
             foreach (OrganizationStructureTypeStateEventBase e in es)
             {
-                e.StateEventReadOnly = true;
+                e.EventReadOnly = true;
             }
             return new EventStream()
             {

@@ -3,9 +3,9 @@ package org.dddml.wms.domain.attributesetinstance;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
-import org.dddml.wms.domain.AbstractStateEvent;
+import org.dddml.wms.domain.AbstractEvent;
 
-public class AttributeSetInstanceStateEventDto extends AbstractStateEvent
+public class AttributeSetInstanceStateEventDto extends AbstractEvent
 {
 
     private AttributeSetInstanceEventId attributeSetInstanceEventId;
@@ -1419,7 +1419,7 @@ public class AttributeSetInstanceStateEventDto extends AbstractStateEvent
 	public static class AttributeSetInstanceStateCreatedDto extends AttributeSetInstanceStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_CREATED;
         }
@@ -1430,7 +1430,7 @@ public class AttributeSetInstanceStateEventDto extends AbstractStateEvent
 	public static class AttributeSetInstanceStateMergePatchedDto extends AttributeSetInstanceStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_MERGE_PATCHED;
         }
@@ -1441,7 +1441,7 @@ public class AttributeSetInstanceStateEventDto extends AbstractStateEvent
 	public static class AttributeSetInstanceStateDeletedDto extends AttributeSetInstanceStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_DELETED;
         }

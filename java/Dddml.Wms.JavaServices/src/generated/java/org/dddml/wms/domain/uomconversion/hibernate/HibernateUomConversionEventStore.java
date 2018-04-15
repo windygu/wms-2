@@ -20,31 +20,31 @@ public class HibernateUomConversionEventStore extends AbstractHibernateEventStor
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractUomConversionStateEvent.class;
+        return AbstractUomConversionEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractUomConversionStateEvent.class;
+        Class supportedEventType = AbstractUomConversionEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         UomConversionId idObj = (UomConversionId) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractUomConversionStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractUomConversionEvent.class);
         criteria.add(Restrictions.eq("uomConversionEventId.uomConversionIdUomId", idObj.getUomId()));
         criteria.add(Restrictions.eq("uomConversionEventId.uomConversionIdUomIdTo", idObj.getUomIdTo()));
         criteria.add(Restrictions.le("uomConversionEventId.version", version));
         criteria.addOrder(Order.asc("uomConversionEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractUomConversionStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractUomConversionEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractUomConversionStateEvent) es.get(es.size() - 1)).getUomConversionEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractUomConversionEvent) es.get(es.size() - 1)).getUomConversionEventId().getVersion());
         } else {
             //todo?
         }

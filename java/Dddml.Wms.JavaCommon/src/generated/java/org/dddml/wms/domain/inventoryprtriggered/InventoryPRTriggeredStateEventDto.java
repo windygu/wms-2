@@ -2,9 +2,9 @@ package org.dddml.wms.domain.inventoryprtriggered;
 
 import java.util.Date;
 import org.dddml.wms.domain.*;
-import org.dddml.wms.domain.AbstractStateEvent;
+import org.dddml.wms.domain.AbstractEvent;
 
-public class InventoryPRTriggeredStateEventDto extends AbstractStateEvent
+public class InventoryPRTriggeredStateEventDto extends AbstractEvent
 {
 
     private InventoryPRTriggeredEventId inventoryPRTriggeredEventId;
@@ -78,7 +78,7 @@ public class InventoryPRTriggeredStateEventDto extends AbstractStateEvent
 	public static class InventoryPRTriggeredStateCreatedDto extends InventoryPRTriggeredStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_CREATED;
         }
@@ -89,7 +89,7 @@ public class InventoryPRTriggeredStateEventDto extends AbstractStateEvent
 	public static class InventoryPRTriggeredStateMergePatchedDto extends InventoryPRTriggeredStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_MERGE_PATCHED;
         }
@@ -100,7 +100,7 @@ public class InventoryPRTriggeredStateEventDto extends AbstractStateEvent
 	public static class InventoryPRTriggeredStateDeletedDto extends InventoryPRTriggeredStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_DELETED;
         }

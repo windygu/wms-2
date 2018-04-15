@@ -27,19 +27,19 @@ public abstract class AbstractPartyRoleAggregate extends AbstractAggregate imple
     public void create(PartyRoleCommand.CreatePartyRole c)
     {
         if (c.getVersion() == null) { c.setVersion(PartyRoleState.VERSION_NULL); }
-        PartyRoleStateEvent e = map(c);
+        PartyRoleEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(PartyRoleCommand.MergePatchPartyRole c)
     {
-        PartyRoleStateEvent e = map(c);
+        PartyRoleEvent e = map(c);
         apply(e);
     }
 
     public void delete(PartyRoleCommand.DeletePartyRole c)
     {
-        PartyRoleStateEvent e = map(c);
+        PartyRoleEvent e = map(c);
         apply(e);
     }
 
@@ -54,31 +54,31 @@ public abstract class AbstractPartyRoleAggregate extends AbstractAggregate imple
         changes.add(e);
     }
 
-    protected PartyRoleStateEvent map(PartyRoleCommand.CreatePartyRole c) {
+    protected PartyRoleEvent map(PartyRoleCommand.CreatePartyRole c) {
         PartyRoleEventId stateEventId = new PartyRoleEventId(c.getPartyRoleId(), c.getVersion());
-        PartyRoleStateEvent.PartyRoleStateCreated e = newPartyRoleStateCreated(stateEventId);
+        PartyRoleEvent.PartyRoleStateCreated e = newPartyRoleStateCreated(stateEventId);
         e.setActive(c.getActive());
-        ((AbstractPartyRoleStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractPartyRoleEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected PartyRoleStateEvent map(PartyRoleCommand.MergePatchPartyRole c) {
+    protected PartyRoleEvent map(PartyRoleCommand.MergePatchPartyRole c) {
         PartyRoleEventId stateEventId = new PartyRoleEventId(c.getPartyRoleId(), c.getVersion());
-        PartyRoleStateEvent.PartyRoleStateMergePatched e = newPartyRoleStateMergePatched(stateEventId);
+        PartyRoleEvent.PartyRoleStateMergePatched e = newPartyRoleStateMergePatched(stateEventId);
         e.setActive(c.getActive());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
-        ((AbstractPartyRoleStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractPartyRoleEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected PartyRoleStateEvent map(PartyRoleCommand.DeletePartyRole c) {
+    protected PartyRoleEvent map(PartyRoleCommand.DeletePartyRole c) {
         PartyRoleEventId stateEventId = new PartyRoleEventId(c.getPartyRoleId(), c.getVersion());
-        PartyRoleStateEvent.PartyRoleStateDeleted e = newPartyRoleStateDeleted(stateEventId);
-        ((AbstractPartyRoleStateEvent)e).setCommandId(c.getCommandId());
+        PartyRoleEvent.PartyRoleStateDeleted e = newPartyRoleStateDeleted(stateEventId);
+        ((AbstractPartyRoleEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
@@ -87,44 +87,44 @@ public abstract class AbstractPartyRoleAggregate extends AbstractAggregate imple
 
     ////////////////////////
 
-    protected PartyRoleStateEvent.PartyRoleStateCreated newPartyRoleStateCreated(Long version, String commandId, String requesterId) {
+    protected PartyRoleEvent.PartyRoleStateCreated newPartyRoleStateCreated(Long version, String commandId, String requesterId) {
         PartyRoleEventId stateEventId = new PartyRoleEventId(this.state.getPartyRoleId(), version);
-        PartyRoleStateEvent.PartyRoleStateCreated e = newPartyRoleStateCreated(stateEventId);
-        ((AbstractPartyRoleStateEvent)e).setCommandId(commandId);
+        PartyRoleEvent.PartyRoleStateCreated e = newPartyRoleStateCreated(stateEventId);
+        ((AbstractPartyRoleEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected PartyRoleStateEvent.PartyRoleStateMergePatched newPartyRoleStateMergePatched(Long version, String commandId, String requesterId) {
+    protected PartyRoleEvent.PartyRoleStateMergePatched newPartyRoleStateMergePatched(Long version, String commandId, String requesterId) {
         PartyRoleEventId stateEventId = new PartyRoleEventId(this.state.getPartyRoleId(), version);
-        PartyRoleStateEvent.PartyRoleStateMergePatched e = newPartyRoleStateMergePatched(stateEventId);
-        ((AbstractPartyRoleStateEvent)e).setCommandId(commandId);
+        PartyRoleEvent.PartyRoleStateMergePatched e = newPartyRoleStateMergePatched(stateEventId);
+        ((AbstractPartyRoleEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected PartyRoleStateEvent.PartyRoleStateDeleted newPartyRoleStateDeleted(Long version, String commandId, String requesterId) {
+    protected PartyRoleEvent.PartyRoleStateDeleted newPartyRoleStateDeleted(Long version, String commandId, String requesterId) {
         PartyRoleEventId stateEventId = new PartyRoleEventId(this.state.getPartyRoleId(), version);
-        PartyRoleStateEvent.PartyRoleStateDeleted e = newPartyRoleStateDeleted(stateEventId);
-        ((AbstractPartyRoleStateEvent)e).setCommandId(commandId);
+        PartyRoleEvent.PartyRoleStateDeleted e = newPartyRoleStateDeleted(stateEventId);
+        ((AbstractPartyRoleEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected PartyRoleStateEvent.PartyRoleStateCreated newPartyRoleStateCreated(PartyRoleEventId stateEventId) {
-        return new AbstractPartyRoleStateEvent.SimplePartyRoleStateCreated(stateEventId);
+    protected PartyRoleEvent.PartyRoleStateCreated newPartyRoleStateCreated(PartyRoleEventId stateEventId) {
+        return new AbstractPartyRoleEvent.SimplePartyRoleStateCreated(stateEventId);
     }
 
-    protected PartyRoleStateEvent.PartyRoleStateMergePatched newPartyRoleStateMergePatched(PartyRoleEventId stateEventId) {
-        return new AbstractPartyRoleStateEvent.SimplePartyRoleStateMergePatched(stateEventId);
+    protected PartyRoleEvent.PartyRoleStateMergePatched newPartyRoleStateMergePatched(PartyRoleEventId stateEventId) {
+        return new AbstractPartyRoleEvent.SimplePartyRoleStateMergePatched(stateEventId);
     }
 
-    protected PartyRoleStateEvent.PartyRoleStateDeleted newPartyRoleStateDeleted(PartyRoleEventId stateEventId)
+    protected PartyRoleEvent.PartyRoleStateDeleted newPartyRoleStateDeleted(PartyRoleEventId stateEventId)
     {
-        return new AbstractPartyRoleStateEvent.SimplePartyRoleStateDeleted(stateEventId);
+        return new AbstractPartyRoleEvent.SimplePartyRoleStateDeleted(stateEventId);
     }
 
     public static class SimplePartyRoleAggregate extends AbstractPartyRoleAggregate

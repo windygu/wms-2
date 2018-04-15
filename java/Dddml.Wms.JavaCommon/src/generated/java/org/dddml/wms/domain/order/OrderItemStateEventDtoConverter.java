@@ -7,19 +7,19 @@ import org.dddml.wms.specialization.*;
 
 public class OrderItemStateEventDtoConverter {
 
-    public OrderItemStateEventDto toOrderItemStateEventDto(AbstractOrderItemStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractOrderItemStateEvent.AbstractOrderItemStateCreated) {
-            OrderItemStateEvent.OrderItemStateCreated e = (OrderItemStateEvent.OrderItemStateCreated) stateEvent;
+    public OrderItemStateEventDto toOrderItemStateEventDto(AbstractOrderItemEvent stateEvent) {
+        if (stateEvent instanceof AbstractOrderItemEvent.AbstractOrderItemStateCreated) {
+            OrderItemEvent.OrderItemStateCreated e = (OrderItemEvent.OrderItemStateCreated) stateEvent;
             return toOrderItemStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractOrderItemStateEvent.AbstractOrderItemStateMergePatched) {
-            OrderItemStateEvent.OrderItemStateMergePatched e = (OrderItemStateEvent.OrderItemStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractOrderItemEvent.AbstractOrderItemStateMergePatched) {
+            OrderItemEvent.OrderItemStateMergePatched e = (OrderItemEvent.OrderItemStateMergePatched) stateEvent;
             return toOrderItemStateMergePatchedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public OrderItemStateEventDto.OrderItemStateCreatedDto toOrderItemStateCreatedDto(OrderItemStateEvent.OrderItemStateCreated e) {
+    public OrderItemStateEventDto.OrderItemStateCreatedDto toOrderItemStateCreatedDto(OrderItemEvent.OrderItemStateCreated e) {
         OrderItemStateEventDto.OrderItemStateCreatedDto dto = new OrderItemStateEventDto.OrderItemStateCreatedDto();
         dto.setOrderItemEventId(e.getOrderItemEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -65,7 +65,7 @@ public class OrderItemStateEventDtoConverter {
         return dto;
     }
 
-    public OrderItemStateEventDto.OrderItemStateMergePatchedDto toOrderItemStateMergePatchedDto(OrderItemStateEvent.OrderItemStateMergePatched e) {
+    public OrderItemStateEventDto.OrderItemStateMergePatchedDto toOrderItemStateMergePatchedDto(OrderItemEvent.OrderItemStateMergePatched e) {
         OrderItemStateEventDto.OrderItemStateMergePatchedDto dto = new OrderItemStateEventDto.OrderItemStateMergePatchedDto();
         dto.setOrderItemEventId(e.getOrderItemEventId());
         dto.setCreatedAt(e.getCreatedAt());

@@ -82,19 +82,19 @@ public abstract class AbstractSupplierProductApplicationService implements Suppl
         return getStateQueryRepository().getCount(filter);
     }
 
-    public SupplierProductStateEvent getStateEvent(SupplierProductId supplierProductId, long version) {
-        SupplierProductStateEvent e = (SupplierProductStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(supplierProductId), version);
+    public SupplierProductEvent getEvent(SupplierProductId supplierProductId, long version) {
+        SupplierProductEvent e = (SupplierProductEvent)getEventStore().getEvent(toEventStoreAggregateId(supplierProductId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(supplierProductId, 0);
+            return getEvent(supplierProductId, 0);
         }
         return e;
     }
 
     public SupplierProductState getHistoryState(SupplierProductId supplierProductId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractSupplierProductStateEvent.class, toEventStoreAggregateId(supplierProductId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractSupplierProductEvent.class, toEventStoreAggregateId(supplierProductId), version - 1);
         return new AbstractSupplierProductState.SimpleSupplierProductState(eventStream.getEvents());
     }
 
@@ -133,7 +133,7 @@ public abstract class AbstractSupplierProductApplicationService implements Suppl
         }
     }
 
-    public void initialize(SupplierProductStateEvent.SupplierProductStateCreated stateCreated) {
+    public void initialize(SupplierProductEvent.SupplierProductStateCreated stateCreated) {
         SupplierProductId aggregateId = stateCreated.getSupplierProductEventId().getSupplierProductId();
         SupplierProductState state = new AbstractSupplierProductState.SimpleSupplierProductState();
         state.setSupplierProductId(aggregateId);
@@ -151,9 +151,9 @@ public abstract class AbstractSupplierProductApplicationService implements Suppl
         if (command.getVersion() == null) { command.setVersion(SupplierProductState.VERSION_NULL); }
         if (state.getVersion() != null && state.getVersion() > command.getVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractSupplierProductStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractSupplierProductEvent.class, eventStoreAggregateId, command.getVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

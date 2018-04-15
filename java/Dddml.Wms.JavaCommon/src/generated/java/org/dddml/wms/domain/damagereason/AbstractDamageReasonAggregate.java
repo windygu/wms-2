@@ -27,19 +27,19 @@ public abstract class AbstractDamageReasonAggregate extends AbstractAggregate im
     public void create(DamageReasonCommand.CreateDamageReason c)
     {
         if (c.getVersion() == null) { c.setVersion(DamageReasonState.VERSION_NULL); }
-        DamageReasonStateEvent e = map(c);
+        DamageReasonEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(DamageReasonCommand.MergePatchDamageReason c)
     {
-        DamageReasonStateEvent e = map(c);
+        DamageReasonEvent e = map(c);
         apply(e);
     }
 
     public void delete(DamageReasonCommand.DeleteDamageReason c)
     {
-        DamageReasonStateEvent e = map(c);
+        DamageReasonEvent e = map(c);
         apply(e);
     }
 
@@ -54,37 +54,37 @@ public abstract class AbstractDamageReasonAggregate extends AbstractAggregate im
         changes.add(e);
     }
 
-    protected DamageReasonStateEvent map(DamageReasonCommand.CreateDamageReason c) {
+    protected DamageReasonEvent map(DamageReasonCommand.CreateDamageReason c) {
         DamageReasonEventId stateEventId = new DamageReasonEventId(c.getDamageReasonId(), c.getVersion());
-        DamageReasonStateEvent.DamageReasonStateCreated e = newDamageReasonStateCreated(stateEventId);
+        DamageReasonEvent.DamageReasonStateCreated e = newDamageReasonStateCreated(stateEventId);
         e.setDescription(c.getDescription());
         e.setSequenceId(c.getSequenceId());
         e.setActive(c.getActive());
-        ((AbstractDamageReasonStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractDamageReasonEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected DamageReasonStateEvent map(DamageReasonCommand.MergePatchDamageReason c) {
+    protected DamageReasonEvent map(DamageReasonCommand.MergePatchDamageReason c) {
         DamageReasonEventId stateEventId = new DamageReasonEventId(c.getDamageReasonId(), c.getVersion());
-        DamageReasonStateEvent.DamageReasonStateMergePatched e = newDamageReasonStateMergePatched(stateEventId);
+        DamageReasonEvent.DamageReasonStateMergePatched e = newDamageReasonStateMergePatched(stateEventId);
         e.setDescription(c.getDescription());
         e.setSequenceId(c.getSequenceId());
         e.setActive(c.getActive());
         e.setIsPropertyDescriptionRemoved(c.getIsPropertyDescriptionRemoved());
         e.setIsPropertySequenceIdRemoved(c.getIsPropertySequenceIdRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
-        ((AbstractDamageReasonStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractDamageReasonEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected DamageReasonStateEvent map(DamageReasonCommand.DeleteDamageReason c) {
+    protected DamageReasonEvent map(DamageReasonCommand.DeleteDamageReason c) {
         DamageReasonEventId stateEventId = new DamageReasonEventId(c.getDamageReasonId(), c.getVersion());
-        DamageReasonStateEvent.DamageReasonStateDeleted e = newDamageReasonStateDeleted(stateEventId);
-        ((AbstractDamageReasonStateEvent)e).setCommandId(c.getCommandId());
+        DamageReasonEvent.DamageReasonStateDeleted e = newDamageReasonStateDeleted(stateEventId);
+        ((AbstractDamageReasonEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
@@ -93,44 +93,44 @@ public abstract class AbstractDamageReasonAggregate extends AbstractAggregate im
 
     ////////////////////////
 
-    protected DamageReasonStateEvent.DamageReasonStateCreated newDamageReasonStateCreated(Long version, String commandId, String requesterId) {
+    protected DamageReasonEvent.DamageReasonStateCreated newDamageReasonStateCreated(Long version, String commandId, String requesterId) {
         DamageReasonEventId stateEventId = new DamageReasonEventId(this.state.getDamageReasonId(), version);
-        DamageReasonStateEvent.DamageReasonStateCreated e = newDamageReasonStateCreated(stateEventId);
-        ((AbstractDamageReasonStateEvent)e).setCommandId(commandId);
+        DamageReasonEvent.DamageReasonStateCreated e = newDamageReasonStateCreated(stateEventId);
+        ((AbstractDamageReasonEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected DamageReasonStateEvent.DamageReasonStateMergePatched newDamageReasonStateMergePatched(Long version, String commandId, String requesterId) {
+    protected DamageReasonEvent.DamageReasonStateMergePatched newDamageReasonStateMergePatched(Long version, String commandId, String requesterId) {
         DamageReasonEventId stateEventId = new DamageReasonEventId(this.state.getDamageReasonId(), version);
-        DamageReasonStateEvent.DamageReasonStateMergePatched e = newDamageReasonStateMergePatched(stateEventId);
-        ((AbstractDamageReasonStateEvent)e).setCommandId(commandId);
+        DamageReasonEvent.DamageReasonStateMergePatched e = newDamageReasonStateMergePatched(stateEventId);
+        ((AbstractDamageReasonEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected DamageReasonStateEvent.DamageReasonStateDeleted newDamageReasonStateDeleted(Long version, String commandId, String requesterId) {
+    protected DamageReasonEvent.DamageReasonStateDeleted newDamageReasonStateDeleted(Long version, String commandId, String requesterId) {
         DamageReasonEventId stateEventId = new DamageReasonEventId(this.state.getDamageReasonId(), version);
-        DamageReasonStateEvent.DamageReasonStateDeleted e = newDamageReasonStateDeleted(stateEventId);
-        ((AbstractDamageReasonStateEvent)e).setCommandId(commandId);
+        DamageReasonEvent.DamageReasonStateDeleted e = newDamageReasonStateDeleted(stateEventId);
+        ((AbstractDamageReasonEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected DamageReasonStateEvent.DamageReasonStateCreated newDamageReasonStateCreated(DamageReasonEventId stateEventId) {
-        return new AbstractDamageReasonStateEvent.SimpleDamageReasonStateCreated(stateEventId);
+    protected DamageReasonEvent.DamageReasonStateCreated newDamageReasonStateCreated(DamageReasonEventId stateEventId) {
+        return new AbstractDamageReasonEvent.SimpleDamageReasonStateCreated(stateEventId);
     }
 
-    protected DamageReasonStateEvent.DamageReasonStateMergePatched newDamageReasonStateMergePatched(DamageReasonEventId stateEventId) {
-        return new AbstractDamageReasonStateEvent.SimpleDamageReasonStateMergePatched(stateEventId);
+    protected DamageReasonEvent.DamageReasonStateMergePatched newDamageReasonStateMergePatched(DamageReasonEventId stateEventId) {
+        return new AbstractDamageReasonEvent.SimpleDamageReasonStateMergePatched(stateEventId);
     }
 
-    protected DamageReasonStateEvent.DamageReasonStateDeleted newDamageReasonStateDeleted(DamageReasonEventId stateEventId)
+    protected DamageReasonEvent.DamageReasonStateDeleted newDamageReasonStateDeleted(DamageReasonEventId stateEventId)
     {
-        return new AbstractDamageReasonStateEvent.SimpleDamageReasonStateDeleted(stateEventId);
+        return new AbstractDamageReasonEvent.SimpleDamageReasonStateDeleted(stateEventId);
     }
 
     public static class SimpleDamageReasonAggregate extends AbstractDamageReasonAggregate

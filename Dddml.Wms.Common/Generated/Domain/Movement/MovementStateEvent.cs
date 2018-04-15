@@ -80,17 +80,17 @@ namespace Dddml.Wms.Domain.Movement
 			}
 		}
 
-        public virtual bool StateEventReadOnly { get; set; }
+        public virtual bool EventReadOnly { get; set; }
 
         bool IMovementStateEvent.ReadOnly
         {
             get
             {
-                return this.StateEventReadOnly;
+                return this.EventReadOnly;
             }
             set
             {
-                this.StateEventReadOnly = value;
+                this.EventReadOnly = value;
             }
         }
 
@@ -177,7 +177,7 @@ namespace Dddml.Wms.Domain.Movement
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._movementLineEvents.Values;
                 }
@@ -295,7 +295,7 @@ namespace Dddml.Wms.Domain.Movement
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._movementLineEvents.Values;
                 }
@@ -387,7 +387,7 @@ namespace Dddml.Wms.Domain.Movement
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._movementLineEvents.Values;
                 }

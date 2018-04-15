@@ -46,7 +46,7 @@ namespace Dddml.Wms.Domain.RolePermission.NHibernate
             var es = criteria.List<IEvent>();
             foreach (RolePermissionStateEventBase e in es)
             {
-                e.StateEventReadOnly = true;
+                e.EventReadOnly = true;
             }
             return new EventStream()
             {

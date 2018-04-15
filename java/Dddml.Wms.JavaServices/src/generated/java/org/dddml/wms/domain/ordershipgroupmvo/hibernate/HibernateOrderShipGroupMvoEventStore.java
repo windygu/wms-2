@@ -21,31 +21,31 @@ public class HibernateOrderShipGroupMvoEventStore extends AbstractHibernateEvent
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractOrderShipGroupMvoStateEvent.class;
+        return AbstractOrderShipGroupMvoEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractOrderShipGroupMvoStateEvent.class;
+        Class supportedEventType = AbstractOrderShipGroupMvoEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         OrderShipGroupId idObj = (OrderShipGroupId) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractOrderShipGroupMvoStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractOrderShipGroupMvoEvent.class);
         criteria.add(Restrictions.eq("orderShipGroupMvoEventId.orderShipGroupIdOrderId", idObj.getOrderId()));
         criteria.add(Restrictions.eq("orderShipGroupMvoEventId.orderShipGroupIdShipGroupSeqId", idObj.getShipGroupSeqId()));
         criteria.add(Restrictions.le("orderShipGroupMvoEventId.orderVersion", version));
         criteria.addOrder(Order.asc("orderShipGroupMvoEventId.orderVersion"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractOrderShipGroupMvoStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractOrderShipGroupMvoEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractOrderShipGroupMvoStateEvent) es.get(es.size() - 1)).getOrderShipGroupMvoEventId().getOrderVersion());
+            eventStream.setSteamVersion(((AbstractOrderShipGroupMvoEvent) es.get(es.size() - 1)).getOrderShipGroupMvoEventId().getOrderVersion());
         } else {
             //todo?
         }

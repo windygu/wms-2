@@ -7,19 +7,19 @@ import org.dddml.wms.specialization.*;
 
 public class ProductStateEventDtoConverter {
 
-    public ProductStateEventDto toProductStateEventDto(AbstractProductStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractProductStateEvent.AbstractProductStateCreated) {
-            ProductStateEvent.ProductStateCreated e = (ProductStateEvent.ProductStateCreated) stateEvent;
+    public ProductStateEventDto toProductStateEventDto(AbstractProductEvent stateEvent) {
+        if (stateEvent instanceof AbstractProductEvent.AbstractProductStateCreated) {
+            ProductEvent.ProductStateCreated e = (ProductEvent.ProductStateCreated) stateEvent;
             return toProductStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractProductStateEvent.AbstractProductStateMergePatched) {
-            ProductStateEvent.ProductStateMergePatched e = (ProductStateEvent.ProductStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractProductEvent.AbstractProductStateMergePatched) {
+            ProductEvent.ProductStateMergePatched e = (ProductEvent.ProductStateMergePatched) stateEvent;
             return toProductStateMergePatchedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public ProductStateEventDto.ProductStateCreatedDto toProductStateCreatedDto(ProductStateEvent.ProductStateCreated e) {
+    public ProductStateEventDto.ProductStateCreatedDto toProductStateCreatedDto(ProductEvent.ProductStateCreated e) {
         ProductStateEventDto.ProductStateCreatedDto dto = new ProductStateEventDto.ProductStateCreatedDto();
         dto.setProductEventId(e.getProductEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -89,7 +89,7 @@ public class ProductStateEventDtoConverter {
         return dto;
     }
 
-    public ProductStateEventDto.ProductStateMergePatchedDto toProductStateMergePatchedDto(ProductStateEvent.ProductStateMergePatched e) {
+    public ProductStateEventDto.ProductStateMergePatchedDto toProductStateMergePatchedDto(ProductEvent.ProductStateMergePatched e) {
         ProductStateEventDto.ProductStateMergePatchedDto dto = new ProductStateEventDto.ProductStateMergePatchedDto();
         dto.setProductEventId(e.getProductEventId());
         dto.setCreatedAt(e.getCreatedAt());

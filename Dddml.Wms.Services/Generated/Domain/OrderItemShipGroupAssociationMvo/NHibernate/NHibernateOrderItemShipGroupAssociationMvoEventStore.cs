@@ -48,7 +48,7 @@ namespace Dddml.Wms.Domain.OrderItemShipGroupAssociationMvo.NHibernate
             var es = criteria.List<IEvent>();
             foreach (OrderItemShipGroupAssociationMvoStateEventBase e in es)
             {
-                e.StateEventReadOnly = true;
+                e.EventReadOnly = true;
             }
             return new EventStream()
             {

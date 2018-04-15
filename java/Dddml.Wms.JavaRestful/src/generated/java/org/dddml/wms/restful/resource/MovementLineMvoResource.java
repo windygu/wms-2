@@ -183,7 +183,7 @@ public class MovementLineMvoResource {
 
             MovementLineId idObj = MovementLineMvoResourceUtils.parseIdString(id);
             MovementLineMvoStateEventDtoConverter dtoConverter = getMovementLineMvoStateEventDtoConverter();
-            return dtoConverter.toMovementLineMvoStateEventDto((AbstractMovementLineMvoStateEvent) movementLineMvoApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toMovementLineMvoStateEventDto((AbstractMovementLineMvoEvent) movementLineMvoApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

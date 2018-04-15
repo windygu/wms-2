@@ -27,19 +27,19 @@ public abstract class AbstractOrganizationStructureTypeAggregate extends Abstrac
     public void create(OrganizationStructureTypeCommand.CreateOrganizationStructureType c)
     {
         if (c.getVersion() == null) { c.setVersion(OrganizationStructureTypeState.VERSION_NULL); }
-        OrganizationStructureTypeStateEvent e = map(c);
+        OrganizationStructureTypeEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(OrganizationStructureTypeCommand.MergePatchOrganizationStructureType c)
     {
-        OrganizationStructureTypeStateEvent e = map(c);
+        OrganizationStructureTypeEvent e = map(c);
         apply(e);
     }
 
     public void delete(OrganizationStructureTypeCommand.DeleteOrganizationStructureType c)
     {
-        OrganizationStructureTypeStateEvent e = map(c);
+        OrganizationStructureTypeEvent e = map(c);
         apply(e);
     }
 
@@ -54,34 +54,34 @@ public abstract class AbstractOrganizationStructureTypeAggregate extends Abstrac
         changes.add(e);
     }
 
-    protected OrganizationStructureTypeStateEvent map(OrganizationStructureTypeCommand.CreateOrganizationStructureType c) {
+    protected OrganizationStructureTypeEvent map(OrganizationStructureTypeCommand.CreateOrganizationStructureType c) {
         OrganizationStructureTypeEventId stateEventId = new OrganizationStructureTypeEventId(c.getId(), c.getVersion());
-        OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateCreated e = newOrganizationStructureTypeStateCreated(stateEventId);
+        OrganizationStructureTypeEvent.OrganizationStructureTypeStateCreated e = newOrganizationStructureTypeStateCreated(stateEventId);
         e.setDescription(c.getDescription());
         e.setActive(c.getActive());
-        ((AbstractOrganizationStructureTypeStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractOrganizationStructureTypeEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected OrganizationStructureTypeStateEvent map(OrganizationStructureTypeCommand.MergePatchOrganizationStructureType c) {
+    protected OrganizationStructureTypeEvent map(OrganizationStructureTypeCommand.MergePatchOrganizationStructureType c) {
         OrganizationStructureTypeEventId stateEventId = new OrganizationStructureTypeEventId(c.getId(), c.getVersion());
-        OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateMergePatched e = newOrganizationStructureTypeStateMergePatched(stateEventId);
+        OrganizationStructureTypeEvent.OrganizationStructureTypeStateMergePatched e = newOrganizationStructureTypeStateMergePatched(stateEventId);
         e.setDescription(c.getDescription());
         e.setActive(c.getActive());
         e.setIsPropertyDescriptionRemoved(c.getIsPropertyDescriptionRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
-        ((AbstractOrganizationStructureTypeStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractOrganizationStructureTypeEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected OrganizationStructureTypeStateEvent map(OrganizationStructureTypeCommand.DeleteOrganizationStructureType c) {
+    protected OrganizationStructureTypeEvent map(OrganizationStructureTypeCommand.DeleteOrganizationStructureType c) {
         OrganizationStructureTypeEventId stateEventId = new OrganizationStructureTypeEventId(c.getId(), c.getVersion());
-        OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateDeleted e = newOrganizationStructureTypeStateDeleted(stateEventId);
-        ((AbstractOrganizationStructureTypeStateEvent)e).setCommandId(c.getCommandId());
+        OrganizationStructureTypeEvent.OrganizationStructureTypeStateDeleted e = newOrganizationStructureTypeStateDeleted(stateEventId);
+        ((AbstractOrganizationStructureTypeEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
@@ -90,44 +90,44 @@ public abstract class AbstractOrganizationStructureTypeAggregate extends Abstrac
 
     ////////////////////////
 
-    protected OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateCreated newOrganizationStructureTypeStateCreated(Long version, String commandId, String requesterId) {
+    protected OrganizationStructureTypeEvent.OrganizationStructureTypeStateCreated newOrganizationStructureTypeStateCreated(Long version, String commandId, String requesterId) {
         OrganizationStructureTypeEventId stateEventId = new OrganizationStructureTypeEventId(this.state.getId(), version);
-        OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateCreated e = newOrganizationStructureTypeStateCreated(stateEventId);
-        ((AbstractOrganizationStructureTypeStateEvent)e).setCommandId(commandId);
+        OrganizationStructureTypeEvent.OrganizationStructureTypeStateCreated e = newOrganizationStructureTypeStateCreated(stateEventId);
+        ((AbstractOrganizationStructureTypeEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateMergePatched newOrganizationStructureTypeStateMergePatched(Long version, String commandId, String requesterId) {
+    protected OrganizationStructureTypeEvent.OrganizationStructureTypeStateMergePatched newOrganizationStructureTypeStateMergePatched(Long version, String commandId, String requesterId) {
         OrganizationStructureTypeEventId stateEventId = new OrganizationStructureTypeEventId(this.state.getId(), version);
-        OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateMergePatched e = newOrganizationStructureTypeStateMergePatched(stateEventId);
-        ((AbstractOrganizationStructureTypeStateEvent)e).setCommandId(commandId);
+        OrganizationStructureTypeEvent.OrganizationStructureTypeStateMergePatched e = newOrganizationStructureTypeStateMergePatched(stateEventId);
+        ((AbstractOrganizationStructureTypeEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateDeleted newOrganizationStructureTypeStateDeleted(Long version, String commandId, String requesterId) {
+    protected OrganizationStructureTypeEvent.OrganizationStructureTypeStateDeleted newOrganizationStructureTypeStateDeleted(Long version, String commandId, String requesterId) {
         OrganizationStructureTypeEventId stateEventId = new OrganizationStructureTypeEventId(this.state.getId(), version);
-        OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateDeleted e = newOrganizationStructureTypeStateDeleted(stateEventId);
-        ((AbstractOrganizationStructureTypeStateEvent)e).setCommandId(commandId);
+        OrganizationStructureTypeEvent.OrganizationStructureTypeStateDeleted e = newOrganizationStructureTypeStateDeleted(stateEventId);
+        ((AbstractOrganizationStructureTypeEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateCreated newOrganizationStructureTypeStateCreated(OrganizationStructureTypeEventId stateEventId) {
-        return new AbstractOrganizationStructureTypeStateEvent.SimpleOrganizationStructureTypeStateCreated(stateEventId);
+    protected OrganizationStructureTypeEvent.OrganizationStructureTypeStateCreated newOrganizationStructureTypeStateCreated(OrganizationStructureTypeEventId stateEventId) {
+        return new AbstractOrganizationStructureTypeEvent.SimpleOrganizationStructureTypeStateCreated(stateEventId);
     }
 
-    protected OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateMergePatched newOrganizationStructureTypeStateMergePatched(OrganizationStructureTypeEventId stateEventId) {
-        return new AbstractOrganizationStructureTypeStateEvent.SimpleOrganizationStructureTypeStateMergePatched(stateEventId);
+    protected OrganizationStructureTypeEvent.OrganizationStructureTypeStateMergePatched newOrganizationStructureTypeStateMergePatched(OrganizationStructureTypeEventId stateEventId) {
+        return new AbstractOrganizationStructureTypeEvent.SimpleOrganizationStructureTypeStateMergePatched(stateEventId);
     }
 
-    protected OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateDeleted newOrganizationStructureTypeStateDeleted(OrganizationStructureTypeEventId stateEventId)
+    protected OrganizationStructureTypeEvent.OrganizationStructureTypeStateDeleted newOrganizationStructureTypeStateDeleted(OrganizationStructureTypeEventId stateEventId)
     {
-        return new AbstractOrganizationStructureTypeStateEvent.SimpleOrganizationStructureTypeStateDeleted(stateEventId);
+        return new AbstractOrganizationStructureTypeEvent.SimpleOrganizationStructureTypeStateDeleted(stateEventId);
     }
 
     public static class SimpleOrganizationStructureTypeAggregate extends AbstractOrganizationStructureTypeAggregate

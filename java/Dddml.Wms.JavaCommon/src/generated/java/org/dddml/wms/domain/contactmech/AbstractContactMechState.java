@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.contactmech.ContactMechStateEvent.*;
+import org.dddml.wms.domain.contactmech.ContactMechEvent.*;
 
 public abstract class AbstractContactMechState implements ContactMechState
 {
@@ -357,7 +357,7 @@ public abstract class AbstractContactMechState implements ContactMechState
     public AbstractContactMechState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setContactMechId(((ContactMechStateEvent) events.get(0)).getContactMechEventId().getContactMechId());
+            this.setContactMechId(((ContactMechEvent) events.get(0)).getContactMechEventId().getContactMechId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -669,10 +669,10 @@ public abstract class AbstractContactMechState implements ContactMechState
     {
     }
 
-    protected void throwOnWrongEvent(ContactMechStateEvent stateEvent)
+    protected void throwOnWrongEvent(ContactMechEvent stateEvent)
     {
         String stateEntityId = this.getContactMechId(); // Aggregate Id
-        String eventEntityId = stateEvent.getContactMechEventId().getContactMechId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        String eventEntityId = stateEvent.getContactMechEventId().getContactMechId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

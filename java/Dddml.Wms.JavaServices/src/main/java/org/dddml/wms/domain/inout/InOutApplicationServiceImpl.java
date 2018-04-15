@@ -333,7 +333,7 @@ public class InOutApplicationServiceImpl extends AbstractInOutApplicationService
         }
 
         public void reverse(String reversalDocumentNumber, String desc, long version, String commandId, String requesterId) {
-            InOutStateEvent.InOutStateMergePatched e = newInOutStateMergePatched(version, commandId, requesterId);
+            InOutEvent.InOutStateMergePatched e = newInOutStateMergePatched(version, commandId, requesterId);
             e.setReversalDocumentNumber(reversalDocumentNumber);
             e.setDescription(desc);
             doDocumentAction(DocumentAction.REVERSE, ts -> e.setDocumentStatusId(ts));

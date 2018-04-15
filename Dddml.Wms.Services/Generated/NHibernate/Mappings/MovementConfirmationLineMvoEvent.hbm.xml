@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+                   assembly="Dddml.Wms.Common" 
+                   namespace="Dddml.Wms.Domain.MovementConfirmationLineMvo">
+  
+  <class name="MovementConfirmationLineMvoStateEventBase" table="MovementConfirmationLineMvoEvents" mutable="false" abstract="true">
+
+    <composite-id name="MovementConfirmationLineMvoEventId" class="Dddml.Wms.Domain.MovementConfirmationLineMvo.MovementConfirmationLineMvoEventId">
+        <key-property name="MovementConfirmationLineIdMovementConfirmationDocumentNumber" ><column name="MovementConfirmationLineIdMovementConfirmationDocumentNumber" length="50" /></key-property>
+        <key-property name="MovementConfirmationLineIdLineNumber" ><column name="MovementConfirmationLineIdLineNumber" length="50" /></key-property>
+        <key-property name="MovementConfirmationVersion" ></key-property>
+    </composite-id>
+    <discriminator column="EventType" type="String" />
+
+    <property name="MovementLineNumber" ></property>
+    <property name="TargetQuantity" ></property>
+    <property name="ConfirmedQuantity" ></property>
+    <property name="DifferenceQuantity" ></property>
+    <property name="ScrappedQuantity" ></property>
+    <property name="Description" ></property>
+    <property name="Processed" ></property>
+    <property name="Version" ></property>
+    <property name="Active" ></property>
+    <property name="MovementConfirmationDocumentStatusId" ></property>
+    <property name="MovementConfirmationMovementDocumentNumber" ></property>
+    <property name="MovementConfirmationIsApproved" ></property>
+    <property name="MovementConfirmationApprovalAmount" ></property>
+    <property name="MovementConfirmationProcessed" ></property>
+    <property name="MovementConfirmationProcessing" ></property>
+    <property name="MovementConfirmationDocumentTypeId" ></property>
+    <property name="MovementConfirmationDescription" ></property>
+    <property name="MovementConfirmationCreatedBy" ></property>
+    <property name="MovementConfirmationCreatedAt" ><column name="MovementConfirmationCreatedAt" sql-type="DATETIME" /></property>
+    <property name="MovementConfirmationUpdatedBy" ></property>
+    <property name="MovementConfirmationUpdatedAt" ><column name="MovementConfirmationUpdatedAt" sql-type="DATETIME" /></property>
+    <property name="MovementConfirmationActive" ></property>
+    <property name="MovementConfirmationDeleted" ></property>
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+    <subclass name="MovementConfirmationLineMvoStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="MovementConfirmationLineMvoStateMergePatched"  discriminator-value="MergePatched">
+
+
+        <property name="IsPropertyMovementLineNumberRemoved" column="IsPropertyMovementLineNumberRemoved"/>
+
+        <property name="IsPropertyTargetQuantityRemoved" column="IsPropertyTargetQuantityRemoved"/>
+
+        <property name="IsPropertyConfirmedQuantityRemoved" column="IsPropertyConfirmedQuantityRemoved"/>
+
+        <property name="IsPropertyDifferenceQuantityRemoved" column="IsPropertyDifferenceQuantityRemoved"/>
+
+        <property name="IsPropertyScrappedQuantityRemoved" column="IsPropertyScrappedQuantityRemoved"/>
+
+        <property name="IsPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
+
+        <property name="IsPropertyProcessedRemoved" column="IsPropertyProcessedRemoved"/>
+
+        <property name="IsPropertyVersionRemoved" column="IsPropertyVersionRemoved"/>
+
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+
+        <property name="IsPropertyMovementConfirmationDocumentStatusIdRemoved" column="IsPropertyMovementConfirmationDocumentStatusIdRemoved"/>
+
+        <property name="IsPropertyMovementConfirmationMovementDocumentNumberRemoved" column="IsPropertyMovementConfirmationMovementDocumentNumberRemoved"/>
+
+        <property name="IsPropertyMovementConfirmationIsApprovedRemoved" column="IsPropertyMovementConfirmationIsApprovedRemoved"/>
+
+        <property name="IsPropertyMovementConfirmationApprovalAmountRemoved" column="IsPropertyMovementConfirmationApprovalAmountRemoved"/>
+
+        <property name="IsPropertyMovementConfirmationProcessedRemoved" column="IsPropertyMovementConfirmationProcessedRemoved"/>
+
+        <property name="IsPropertyMovementConfirmationProcessingRemoved" column="IsPropertyMovementConfirmationProcessingRemoved"/>
+
+        <property name="IsPropertyMovementConfirmationDocumentTypeIdRemoved" column="IsPropertyMovementConfirmationDocumentTypeIdRemoved"/>
+
+        <property name="IsPropertyMovementConfirmationDescriptionRemoved" column="IsPropertyMovementConfirmationDescriptionRemoved"/>
+
+        <property name="IsPropertyMovementConfirmationCreatedByRemoved" column="IsPropertyMovementConfirmationCreatedByRemoved"/>
+
+        <property name="IsPropertyMovementConfirmationCreatedAtRemoved" column="IsPropertyMovementConfirmationCreatedAtRemoved"/>
+
+        <property name="IsPropertyMovementConfirmationUpdatedByRemoved" column="IsPropertyMovementConfirmationUpdatedByRemoved"/>
+
+        <property name="IsPropertyMovementConfirmationUpdatedAtRemoved" column="IsPropertyMovementConfirmationUpdatedAtRemoved"/>
+
+        <property name="IsPropertyMovementConfirmationActiveRemoved" column="IsPropertyMovementConfirmationActiveRemoved"/>
+
+        <property name="IsPropertyMovementConfirmationDeletedRemoved" column="IsPropertyMovementConfirmationDeletedRemoved"/>
+    </subclass>
+
+    <subclass name="MovementConfirmationLineMvoStateDeleted"  discriminator-value="Deleted">
+
+    </subclass>
+
+
+
+  </class>
+  
+</hibernate-mapping>

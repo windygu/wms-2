@@ -7,22 +7,22 @@ import org.dddml.wms.specialization.*;
 
 public class UomStateEventDtoConverter {
 
-    public UomStateEventDto toUomStateEventDto(AbstractUomStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractUomStateEvent.AbstractUomStateCreated) {
-            UomStateEvent.UomStateCreated e = (UomStateEvent.UomStateCreated) stateEvent;
+    public UomStateEventDto toUomStateEventDto(AbstractUomEvent stateEvent) {
+        if (stateEvent instanceof AbstractUomEvent.AbstractUomStateCreated) {
+            UomEvent.UomStateCreated e = (UomEvent.UomStateCreated) stateEvent;
             return toUomStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractUomStateEvent.AbstractUomStateMergePatched) {
-            UomStateEvent.UomStateMergePatched e = (UomStateEvent.UomStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractUomEvent.AbstractUomStateMergePatched) {
+            UomEvent.UomStateMergePatched e = (UomEvent.UomStateMergePatched) stateEvent;
             return toUomStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractUomStateEvent.AbstractUomStateDeleted) {
-            UomStateEvent.UomStateDeleted e = (UomStateEvent.UomStateDeleted) stateEvent;
+        } else if (stateEvent instanceof AbstractUomEvent.AbstractUomStateDeleted) {
+            UomEvent.UomStateDeleted e = (UomEvent.UomStateDeleted) stateEvent;
             return toUomStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public UomStateEventDto.UomStateCreatedDto toUomStateCreatedDto(UomStateEvent.UomStateCreated e) {
+    public UomStateEventDto.UomStateCreatedDto toUomStateCreatedDto(UomEvent.UomStateCreated e) {
         UomStateEventDto.UomStateCreatedDto dto = new UomStateEventDto.UomStateCreatedDto();
         dto.setUomEventId(e.getUomEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -35,7 +35,7 @@ public class UomStateEventDtoConverter {
         return dto;
     }
 
-    public UomStateEventDto.UomStateMergePatchedDto toUomStateMergePatchedDto(UomStateEvent.UomStateMergePatched e) {
+    public UomStateEventDto.UomStateMergePatchedDto toUomStateMergePatchedDto(UomEvent.UomStateMergePatched e) {
         UomStateEventDto.UomStateMergePatchedDto dto = new UomStateEventDto.UomStateMergePatchedDto();
         dto.setUomEventId(e.getUomEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -53,7 +53,7 @@ public class UomStateEventDtoConverter {
     }
 
 
-    public UomStateEventDto.UomStateDeletedDto toUomStateDeletedDto(UomStateEvent.UomStateDeleted e) {
+    public UomStateEventDto.UomStateDeletedDto toUomStateDeletedDto(UomEvent.UomStateDeleted e) {
         UomStateEventDto.UomStateDeletedDto dto = new UomStateEventDto.UomStateDeletedDto();
         dto.setUomEventId(e.getUomEventId());
         dto.setCreatedAt(e.getCreatedAt());

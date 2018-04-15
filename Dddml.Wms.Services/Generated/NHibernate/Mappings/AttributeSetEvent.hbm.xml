@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+                   assembly="Dddml.Wms.Common" 
+                   namespace="Dddml.Wms.Domain.AttributeSet">
+  
+  <class name="AttributeSetStateEventBase" table="AttributeSetEvents" mutable="false" abstract="true">
+
+    <composite-id name="AttributeSetEventId" class="Dddml.Wms.Domain.AttributeSet.AttributeSetEventId">
+        <key-property name="AttributeSetId" ><column name="AttributeSetId" length="50" /></key-property>
+        <key-property name="Version" ></key-property>
+    </composite-id>
+    <discriminator column="EventType" type="String" />
+
+    <property name="AttributeSetName" ></property>
+    <property name="OrganizationId" ></property>
+    <property name="Description" ></property>
+    <property name="ReferenceId" ></property>
+    <property name="IsInstanceAttributeSet" ></property>
+    <property name="IsMandatory" ></property>
+    <property name="Active" ></property>
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+    <subclass name="AttributeSetStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="AttributeSetStateMergePatched"  discriminator-value="MergePatched">
+
+
+        <property name="IsPropertyAttributeSetNameRemoved" column="IsPropertyAttributeSetNameRemoved"/>
+
+        <property name="IsPropertyOrganizationIdRemoved" column="IsPropertyOrganizationIdRemoved"/>
+
+        <property name="IsPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
+
+        <property name="IsPropertyReferenceIdRemoved" column="IsPropertyReferenceIdRemoved"/>
+
+        <property name="IsPropertyIsInstanceAttributeSetRemoved" column="IsPropertyIsInstanceAttributeSetRemoved"/>
+
+        <property name="IsPropertyIsMandatoryRemoved" column="IsPropertyIsMandatoryRemoved"/>
+
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+    </subclass>
+
+    <subclass name="AttributeSetStateDeleted"  discriminator-value="Deleted">
+
+    </subclass>
+
+
+
+  </class>
+  
+</hibernate-mapping>

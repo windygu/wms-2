@@ -21,31 +21,31 @@ public class HibernateShipmentItemMvoEventStore extends AbstractHibernateEventSt
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractShipmentItemMvoStateEvent.class;
+        return AbstractShipmentItemMvoEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractShipmentItemMvoStateEvent.class;
+        Class supportedEventType = AbstractShipmentItemMvoEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         ShipmentItemId idObj = (ShipmentItemId) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractShipmentItemMvoStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractShipmentItemMvoEvent.class);
         criteria.add(Restrictions.eq("shipmentItemMvoEventId.shipmentItemIdShipmentId", idObj.getShipmentId()));
         criteria.add(Restrictions.eq("shipmentItemMvoEventId.shipmentItemIdShipmentItemSeqId", idObj.getShipmentItemSeqId()));
         criteria.add(Restrictions.le("shipmentItemMvoEventId.shipmentVersion", version));
         criteria.addOrder(Order.asc("shipmentItemMvoEventId.shipmentVersion"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractShipmentItemMvoStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractShipmentItemMvoEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractShipmentItemMvoStateEvent) es.get(es.size() - 1)).getShipmentItemMvoEventId().getShipmentVersion());
+            eventStream.setSteamVersion(((AbstractShipmentItemMvoEvent) es.get(es.size() - 1)).getShipmentItemMvoEventId().getShipmentVersion());
         } else {
             //todo?
         }

@@ -7,22 +7,22 @@ import org.dddml.wms.specialization.*;
 
 public class AttributeSetInstanceExtensionFieldGroupStateEventDtoConverter {
 
-    public AttributeSetInstanceExtensionFieldGroupStateEventDto toAttributeSetInstanceExtensionFieldGroupStateEventDto(AbstractAttributeSetInstanceExtensionFieldGroupStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractAttributeSetInstanceExtensionFieldGroupStateEvent.AbstractAttributeSetInstanceExtensionFieldGroupStateCreated) {
-            AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateCreated e = (AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateCreated) stateEvent;
+    public AttributeSetInstanceExtensionFieldGroupStateEventDto toAttributeSetInstanceExtensionFieldGroupStateEventDto(AbstractAttributeSetInstanceExtensionFieldGroupEvent stateEvent) {
+        if (stateEvent instanceof AbstractAttributeSetInstanceExtensionFieldGroupEvent.AbstractAttributeSetInstanceExtensionFieldGroupStateCreated) {
+            AttributeSetInstanceExtensionFieldGroupEvent.AttributeSetInstanceExtensionFieldGroupStateCreated e = (AttributeSetInstanceExtensionFieldGroupEvent.AttributeSetInstanceExtensionFieldGroupStateCreated) stateEvent;
             return toAttributeSetInstanceExtensionFieldGroupStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractAttributeSetInstanceExtensionFieldGroupStateEvent.AbstractAttributeSetInstanceExtensionFieldGroupStateMergePatched) {
-            AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateMergePatched e = (AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractAttributeSetInstanceExtensionFieldGroupEvent.AbstractAttributeSetInstanceExtensionFieldGroupStateMergePatched) {
+            AttributeSetInstanceExtensionFieldGroupEvent.AttributeSetInstanceExtensionFieldGroupStateMergePatched e = (AttributeSetInstanceExtensionFieldGroupEvent.AttributeSetInstanceExtensionFieldGroupStateMergePatched) stateEvent;
             return toAttributeSetInstanceExtensionFieldGroupStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractAttributeSetInstanceExtensionFieldGroupStateEvent.AbstractAttributeSetInstanceExtensionFieldGroupStateDeleted) {
-            AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateDeleted e = (AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateDeleted) stateEvent;
+        } else if (stateEvent instanceof AbstractAttributeSetInstanceExtensionFieldGroupEvent.AbstractAttributeSetInstanceExtensionFieldGroupStateDeleted) {
+            AttributeSetInstanceExtensionFieldGroupEvent.AttributeSetInstanceExtensionFieldGroupStateDeleted e = (AttributeSetInstanceExtensionFieldGroupEvent.AttributeSetInstanceExtensionFieldGroupStateDeleted) stateEvent;
             return toAttributeSetInstanceExtensionFieldGroupStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public AttributeSetInstanceExtensionFieldGroupStateEventDto.AttributeSetInstanceExtensionFieldGroupStateCreatedDto toAttributeSetInstanceExtensionFieldGroupStateCreatedDto(AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateCreated e) {
+    public AttributeSetInstanceExtensionFieldGroupStateEventDto.AttributeSetInstanceExtensionFieldGroupStateCreatedDto toAttributeSetInstanceExtensionFieldGroupStateCreatedDto(AttributeSetInstanceExtensionFieldGroupEvent.AttributeSetInstanceExtensionFieldGroupStateCreated e) {
         AttributeSetInstanceExtensionFieldGroupStateEventDto.AttributeSetInstanceExtensionFieldGroupStateCreatedDto dto = new AttributeSetInstanceExtensionFieldGroupStateEventDto.AttributeSetInstanceExtensionFieldGroupStateCreatedDto();
         dto.setAttributeSetInstanceExtensionFieldGroupEventId(e.getAttributeSetInstanceExtensionFieldGroupEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -37,7 +37,7 @@ public class AttributeSetInstanceExtensionFieldGroupStateEventDtoConverter {
         return dto;
     }
 
-    public AttributeSetInstanceExtensionFieldGroupStateEventDto.AttributeSetInstanceExtensionFieldGroupStateMergePatchedDto toAttributeSetInstanceExtensionFieldGroupStateMergePatchedDto(AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateMergePatched e) {
+    public AttributeSetInstanceExtensionFieldGroupStateEventDto.AttributeSetInstanceExtensionFieldGroupStateMergePatchedDto toAttributeSetInstanceExtensionFieldGroupStateMergePatchedDto(AttributeSetInstanceExtensionFieldGroupEvent.AttributeSetInstanceExtensionFieldGroupStateMergePatched e) {
         AttributeSetInstanceExtensionFieldGroupStateEventDto.AttributeSetInstanceExtensionFieldGroupStateMergePatchedDto dto = new AttributeSetInstanceExtensionFieldGroupStateEventDto.AttributeSetInstanceExtensionFieldGroupStateMergePatchedDto();
         dto.setAttributeSetInstanceExtensionFieldGroupEventId(e.getAttributeSetInstanceExtensionFieldGroupEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -59,7 +59,7 @@ public class AttributeSetInstanceExtensionFieldGroupStateEventDtoConverter {
     }
 
 
-    public AttributeSetInstanceExtensionFieldGroupStateEventDto.AttributeSetInstanceExtensionFieldGroupStateDeletedDto toAttributeSetInstanceExtensionFieldGroupStateDeletedDto(AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateDeleted e) {
+    public AttributeSetInstanceExtensionFieldGroupStateEventDto.AttributeSetInstanceExtensionFieldGroupStateDeletedDto toAttributeSetInstanceExtensionFieldGroupStateDeletedDto(AttributeSetInstanceExtensionFieldGroupEvent.AttributeSetInstanceExtensionFieldGroupStateDeleted e) {
         AttributeSetInstanceExtensionFieldGroupStateEventDto.AttributeSetInstanceExtensionFieldGroupStateDeletedDto dto = new AttributeSetInstanceExtensionFieldGroupStateEventDto.AttributeSetInstanceExtensionFieldGroupStateDeletedDto();
         dto.setAttributeSetInstanceExtensionFieldGroupEventId(e.getAttributeSetInstanceExtensionFieldGroupEventId());
         dto.setCreatedAt(e.getCreatedAt());

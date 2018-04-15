@@ -7,22 +7,22 @@ import org.dddml.wms.specialization.*;
 
 public class AttributeSetInstanceExtensionFieldStateEventDtoConverter {
 
-    public AttributeSetInstanceExtensionFieldStateEventDto toAttributeSetInstanceExtensionFieldStateEventDto(AbstractAttributeSetInstanceExtensionFieldStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractAttributeSetInstanceExtensionFieldStateEvent.AbstractAttributeSetInstanceExtensionFieldStateCreated) {
-            AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateCreated e = (AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateCreated) stateEvent;
+    public AttributeSetInstanceExtensionFieldStateEventDto toAttributeSetInstanceExtensionFieldStateEventDto(AbstractAttributeSetInstanceExtensionFieldEvent stateEvent) {
+        if (stateEvent instanceof AbstractAttributeSetInstanceExtensionFieldEvent.AbstractAttributeSetInstanceExtensionFieldStateCreated) {
+            AttributeSetInstanceExtensionFieldEvent.AttributeSetInstanceExtensionFieldStateCreated e = (AttributeSetInstanceExtensionFieldEvent.AttributeSetInstanceExtensionFieldStateCreated) stateEvent;
             return toAttributeSetInstanceExtensionFieldStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractAttributeSetInstanceExtensionFieldStateEvent.AbstractAttributeSetInstanceExtensionFieldStateMergePatched) {
-            AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateMergePatched e = (AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractAttributeSetInstanceExtensionFieldEvent.AbstractAttributeSetInstanceExtensionFieldStateMergePatched) {
+            AttributeSetInstanceExtensionFieldEvent.AttributeSetInstanceExtensionFieldStateMergePatched e = (AttributeSetInstanceExtensionFieldEvent.AttributeSetInstanceExtensionFieldStateMergePatched) stateEvent;
             return toAttributeSetInstanceExtensionFieldStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractAttributeSetInstanceExtensionFieldStateEvent.AbstractAttributeSetInstanceExtensionFieldStateDeleted) {
-            AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateDeleted e = (AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateDeleted) stateEvent;
+        } else if (stateEvent instanceof AbstractAttributeSetInstanceExtensionFieldEvent.AbstractAttributeSetInstanceExtensionFieldStateDeleted) {
+            AttributeSetInstanceExtensionFieldEvent.AttributeSetInstanceExtensionFieldStateDeleted e = (AttributeSetInstanceExtensionFieldEvent.AttributeSetInstanceExtensionFieldStateDeleted) stateEvent;
             return toAttributeSetInstanceExtensionFieldStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public AttributeSetInstanceExtensionFieldStateEventDto.AttributeSetInstanceExtensionFieldStateCreatedDto toAttributeSetInstanceExtensionFieldStateCreatedDto(AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateCreated e) {
+    public AttributeSetInstanceExtensionFieldStateEventDto.AttributeSetInstanceExtensionFieldStateCreatedDto toAttributeSetInstanceExtensionFieldStateCreatedDto(AttributeSetInstanceExtensionFieldEvent.AttributeSetInstanceExtensionFieldStateCreated e) {
         AttributeSetInstanceExtensionFieldStateEventDto.AttributeSetInstanceExtensionFieldStateCreatedDto dto = new AttributeSetInstanceExtensionFieldStateEventDto.AttributeSetInstanceExtensionFieldStateCreatedDto();
         dto.setAttributeSetInstanceExtensionFieldEventId(e.getAttributeSetInstanceExtensionFieldEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -37,7 +37,7 @@ public class AttributeSetInstanceExtensionFieldStateEventDtoConverter {
         return dto;
     }
 
-    public AttributeSetInstanceExtensionFieldStateEventDto.AttributeSetInstanceExtensionFieldStateMergePatchedDto toAttributeSetInstanceExtensionFieldStateMergePatchedDto(AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateMergePatched e) {
+    public AttributeSetInstanceExtensionFieldStateEventDto.AttributeSetInstanceExtensionFieldStateMergePatchedDto toAttributeSetInstanceExtensionFieldStateMergePatchedDto(AttributeSetInstanceExtensionFieldEvent.AttributeSetInstanceExtensionFieldStateMergePatched e) {
         AttributeSetInstanceExtensionFieldStateEventDto.AttributeSetInstanceExtensionFieldStateMergePatchedDto dto = new AttributeSetInstanceExtensionFieldStateEventDto.AttributeSetInstanceExtensionFieldStateMergePatchedDto();
         dto.setAttributeSetInstanceExtensionFieldEventId(e.getAttributeSetInstanceExtensionFieldEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -59,7 +59,7 @@ public class AttributeSetInstanceExtensionFieldStateEventDtoConverter {
     }
 
 
-    public AttributeSetInstanceExtensionFieldStateEventDto.AttributeSetInstanceExtensionFieldStateDeletedDto toAttributeSetInstanceExtensionFieldStateDeletedDto(AttributeSetInstanceExtensionFieldStateEvent.AttributeSetInstanceExtensionFieldStateDeleted e) {
+    public AttributeSetInstanceExtensionFieldStateEventDto.AttributeSetInstanceExtensionFieldStateDeletedDto toAttributeSetInstanceExtensionFieldStateDeletedDto(AttributeSetInstanceExtensionFieldEvent.AttributeSetInstanceExtensionFieldStateDeleted e) {
         AttributeSetInstanceExtensionFieldStateEventDto.AttributeSetInstanceExtensionFieldStateDeletedDto dto = new AttributeSetInstanceExtensionFieldStateEventDto.AttributeSetInstanceExtensionFieldStateDeletedDto();
         dto.setAttributeSetInstanceExtensionFieldEventId(e.getAttributeSetInstanceExtensionFieldEventId());
         dto.setCreatedAt(e.getCreatedAt());

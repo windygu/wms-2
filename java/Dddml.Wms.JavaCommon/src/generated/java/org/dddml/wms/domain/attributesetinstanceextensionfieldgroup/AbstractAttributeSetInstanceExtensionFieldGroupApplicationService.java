@@ -86,19 +86,19 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupApplication
         return getStateQueryRepository().getCount(filter);
     }
 
-    public AttributeSetInstanceExtensionFieldGroupStateEvent getStateEvent(String id, long version) {
-        AttributeSetInstanceExtensionFieldGroupStateEvent e = (AttributeSetInstanceExtensionFieldGroupStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(id), version);
+    public AttributeSetInstanceExtensionFieldGroupEvent getEvent(String id, long version) {
+        AttributeSetInstanceExtensionFieldGroupEvent e = (AttributeSetInstanceExtensionFieldGroupEvent)getEventStore().getEvent(toEventStoreAggregateId(id), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(id, 0);
+            return getEvent(id, 0);
         }
         return e;
     }
 
     public AttributeSetInstanceExtensionFieldGroupState getHistoryState(String id, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractAttributeSetInstanceExtensionFieldGroupStateEvent.class, toEventStoreAggregateId(id), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractAttributeSetInstanceExtensionFieldGroupEvent.class, toEventStoreAggregateId(id), version - 1);
         return new AbstractAttributeSetInstanceExtensionFieldGroupState.SimpleAttributeSetInstanceExtensionFieldGroupState(eventStream.getEvents());
     }
 
@@ -137,7 +137,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupApplication
         }
     }
 
-    public void initialize(AttributeSetInstanceExtensionFieldGroupStateEvent.AttributeSetInstanceExtensionFieldGroupStateCreated stateCreated) {
+    public void initialize(AttributeSetInstanceExtensionFieldGroupEvent.AttributeSetInstanceExtensionFieldGroupStateCreated stateCreated) {
         String aggregateId = stateCreated.getAttributeSetInstanceExtensionFieldGroupEventId().getId();
         AttributeSetInstanceExtensionFieldGroupState state = new AbstractAttributeSetInstanceExtensionFieldGroupState.SimpleAttributeSetInstanceExtensionFieldGroupState();
         state.setId(aggregateId);
@@ -155,9 +155,9 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupApplication
         if (command.getVersion() == null) { command.setVersion(AttributeSetInstanceExtensionFieldGroupState.VERSION_NULL); }
         if (state.getVersion() != null && state.getVersion() > command.getVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractAttributeSetInstanceExtensionFieldGroupStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractAttributeSetInstanceExtensionFieldGroupEvent.class, eventStoreAggregateId, command.getVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

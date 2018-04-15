@@ -5,7 +5,7 @@ import org.dddml.wms.domain.picklist.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.picklistrolemvo.PicklistRoleMvoStateEvent.*;
+import org.dddml.wms.domain.picklistrolemvo.PicklistRoleMvoEvent.*;
 
 public abstract class AbstractPicklistRoleMvoState implements PicklistRoleMvoState
 {
@@ -286,7 +286,7 @@ public abstract class AbstractPicklistRoleMvoState implements PicklistRoleMvoSta
     public AbstractPicklistRoleMvoState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setPicklistRoleId(((PicklistRoleMvoStateEvent) events.get(0)).getPicklistRoleMvoEventId().getPicklistRoleId());
+            this.setPicklistRoleId(((PicklistRoleMvoEvent) events.get(0)).getPicklistRoleMvoEventId().getPicklistRoleId());
             for (Event e : events) {
                 mutate(e);
                 this.setPicklistVersion(this.getPicklistVersion() + 1);
@@ -526,10 +526,10 @@ public abstract class AbstractPicklistRoleMvoState implements PicklistRoleMvoSta
     {
     }
 
-    protected void throwOnWrongEvent(PicklistRoleMvoStateEvent stateEvent)
+    protected void throwOnWrongEvent(PicklistRoleMvoEvent stateEvent)
     {
         PicklistRoleId stateEntityId = this.getPicklistRoleId(); // Aggregate Id
-        PicklistRoleId eventEntityId = stateEvent.getPicklistRoleMvoEventId().getPicklistRoleId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        PicklistRoleId eventEntityId = stateEvent.getPicklistRoleMvoEventId().getPicklistRoleId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

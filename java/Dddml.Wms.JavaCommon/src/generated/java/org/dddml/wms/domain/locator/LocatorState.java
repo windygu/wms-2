@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.locator.LocatorStateEvent.*;
+import org.dddml.wms.domain.locator.LocatorEvent.*;
 
 public interface LocatorState
 {
@@ -92,11 +92,11 @@ public interface LocatorState
 
     void mutate(Event e);
 
-    void when(LocatorStateEvent.LocatorStateCreated e);
+    void when(LocatorEvent.LocatorStateCreated e);
 
-    void when(LocatorStateEvent.LocatorStateMergePatched e);
+    void when(LocatorEvent.LocatorStateMergePatched e);
 
-    void when(LocatorStateEvent.LocatorStateDeleted e);
+    void when(LocatorEvent.LocatorStateDeleted e);
     
 }
 

@@ -86,19 +86,19 @@ public abstract class AbstractRejectionReasonApplicationService implements Rejec
         return getStateQueryRepository().getCount(filter);
     }
 
-    public RejectionReasonStateEvent getStateEvent(String rejectionReasonId, long version) {
-        RejectionReasonStateEvent e = (RejectionReasonStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(rejectionReasonId), version);
+    public RejectionReasonEvent getEvent(String rejectionReasonId, long version) {
+        RejectionReasonEvent e = (RejectionReasonEvent)getEventStore().getEvent(toEventStoreAggregateId(rejectionReasonId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(rejectionReasonId, 0);
+            return getEvent(rejectionReasonId, 0);
         }
         return e;
     }
 
     public RejectionReasonState getHistoryState(String rejectionReasonId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractRejectionReasonStateEvent.class, toEventStoreAggregateId(rejectionReasonId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractRejectionReasonEvent.class, toEventStoreAggregateId(rejectionReasonId), version - 1);
         return new AbstractRejectionReasonState.SimpleRejectionReasonState(eventStream.getEvents());
     }
 
@@ -137,7 +137,7 @@ public abstract class AbstractRejectionReasonApplicationService implements Rejec
         }
     }
 
-    public void initialize(RejectionReasonStateEvent.RejectionReasonStateCreated stateCreated) {
+    public void initialize(RejectionReasonEvent.RejectionReasonStateCreated stateCreated) {
         String aggregateId = stateCreated.getRejectionReasonEventId().getRejectionReasonId();
         RejectionReasonState state = new AbstractRejectionReasonState.SimpleRejectionReasonState();
         state.setRejectionReasonId(aggregateId);
@@ -155,9 +155,9 @@ public abstract class AbstractRejectionReasonApplicationService implements Rejec
         if (command.getVersion() == null) { command.setVersion(RejectionReasonState.VERSION_NULL); }
         if (state.getVersion() != null && state.getVersion() > command.getVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractRejectionReasonStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractRejectionReasonEvent.class, eventStoreAggregateId, command.getVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

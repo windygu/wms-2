@@ -21,30 +21,30 @@ public class HibernateInOutEventStore extends AbstractHibernateEventStore
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractInOutStateEvent.class;
+        return AbstractInOutEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractInOutStateEvent.class;
+        Class supportedEventType = AbstractInOutEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         String idObj = (String) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractInOutStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractInOutEvent.class);
         criteria.add(Restrictions.eq("inOutEventId.documentNumber", idObj));
         criteria.add(Restrictions.le("inOutEventId.version", version));
         criteria.addOrder(Order.asc("inOutEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractInOutStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractInOutEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractInOutStateEvent) es.get(es.size() - 1)).getInOutEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractInOutEvent) es.get(es.size() - 1)).getInOutEventId().getVersion());
         } else {
             //todo?
         }

@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.movement.MovementLineStateEvent.*;
+import org.dddml.wms.domain.movement.MovementLineEvent.*;
 
 public abstract class AbstractMovementLineState implements MovementLineState
 {
@@ -385,7 +385,7 @@ public abstract class AbstractMovementLineState implements MovementLineState
     {
     }
 
-    protected void throwOnWrongEvent(MovementLineStateEvent stateEvent)
+    protected void throwOnWrongEvent(MovementLineEvent stateEvent)
     {
         String stateEntityIdMovementDocumentNumber = this.getMovementLineId().getMovementDocumentNumber();
         String eventEntityIdMovementDocumentNumber = stateEvent.getMovementLineEventId().getMovementDocumentNumber();

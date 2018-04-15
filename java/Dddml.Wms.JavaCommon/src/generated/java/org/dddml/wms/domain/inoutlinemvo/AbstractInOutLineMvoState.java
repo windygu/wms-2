@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.inoutlinemvo.InOutLineMvoStateEvent.*;
+import org.dddml.wms.domain.inoutlinemvo.InOutLineMvoEvent.*;
 
 public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
 {
@@ -695,7 +695,7 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
     public AbstractInOutLineMvoState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setInOutLineId(((InOutLineMvoStateEvent) events.get(0)).getInOutLineMvoEventId().getInOutLineId());
+            this.setInOutLineId(((InOutLineMvoEvent) events.get(0)).getInOutLineMvoEventId().getInOutLineId());
             for (Event e : events) {
                 mutate(e);
                 this.setInOutVersion(this.getInOutVersion() + 1);
@@ -1343,10 +1343,10 @@ public abstract class AbstractInOutLineMvoState implements InOutLineMvoState
     {
     }
 
-    protected void throwOnWrongEvent(InOutLineMvoStateEvent stateEvent)
+    protected void throwOnWrongEvent(InOutLineMvoEvent stateEvent)
     {
         InOutLineId stateEntityId = this.getInOutLineId(); // Aggregate Id
-        InOutLineId eventEntityId = stateEvent.getInOutLineMvoEventId().getInOutLineId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        InOutLineId eventEntityId = stateEvent.getInOutLineMvoEventId().getInOutLineId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

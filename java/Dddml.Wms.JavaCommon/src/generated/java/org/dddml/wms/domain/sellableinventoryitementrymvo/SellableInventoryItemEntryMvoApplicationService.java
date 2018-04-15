@@ -31,7 +31,7 @@ public interface SellableInventoryItemEntryMvoApplicationService
 
     long getCount(Criterion filter);
 
-    SellableInventoryItemEntryMvoStateEvent getStateEvent(SellableInventoryItemEntryId sellableInventoryItemEntryId, long version);
+    SellableInventoryItemEntryMvoEvent getEvent(SellableInventoryItemEntryId sellableInventoryItemEntryId, long version);
 
     SellableInventoryItemEntryMvoState getHistoryState(SellableInventoryItemEntryId sellableInventoryItemEntryId, long version);
 

@@ -90,17 +90,17 @@ namespace Dddml.Wms.Domain.Shipment
 			}
 		}
 
-        public virtual bool StateEventReadOnly { get; set; }
+        public virtual bool EventReadOnly { get; set; }
 
         bool IShipmentStateEvent.ReadOnly
         {
             get
             {
-                return this.StateEventReadOnly;
+                return this.EventReadOnly;
             }
             set
             {
-                this.StateEventReadOnly = value;
+                this.EventReadOnly = value;
             }
         }
 
@@ -241,7 +241,7 @@ namespace Dddml.Wms.Domain.Shipment
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._shipmentItemEvents.Values;
                 }
@@ -291,7 +291,7 @@ namespace Dddml.Wms.Domain.Shipment
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._shipmentReceiptEvents.Values;
                 }
@@ -341,7 +341,7 @@ namespace Dddml.Wms.Domain.Shipment
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._itemIssuanceEvents.Values;
                 }
@@ -475,7 +475,7 @@ namespace Dddml.Wms.Domain.Shipment
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._shipmentItemEvents.Values;
                 }
@@ -531,7 +531,7 @@ namespace Dddml.Wms.Domain.Shipment
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._shipmentReceiptEvents.Values;
                 }
@@ -587,7 +587,7 @@ namespace Dddml.Wms.Domain.Shipment
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._itemIssuanceEvents.Values;
                 }

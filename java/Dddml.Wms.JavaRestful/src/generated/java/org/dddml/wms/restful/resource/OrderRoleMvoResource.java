@@ -182,7 +182,7 @@ public class OrderRoleMvoResource {
 
             OrderRoleId idObj = OrderRoleMvoResourceUtils.parseIdString(id);
             OrderRoleMvoStateEventDtoConverter dtoConverter = getOrderRoleMvoStateEventDtoConverter();
-            return dtoConverter.toOrderRoleMvoStateEventDto((AbstractOrderRoleMvoStateEvent) orderRoleMvoApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toOrderRoleMvoStateEventDto((AbstractOrderRoleMvoEvent) orderRoleMvoApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

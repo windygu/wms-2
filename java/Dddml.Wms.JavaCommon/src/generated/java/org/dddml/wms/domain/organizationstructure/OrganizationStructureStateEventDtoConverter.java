@@ -7,22 +7,22 @@ import org.dddml.wms.specialization.*;
 
 public class OrganizationStructureStateEventDtoConverter {
 
-    public OrganizationStructureStateEventDto toOrganizationStructureStateEventDto(AbstractOrganizationStructureStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractOrganizationStructureStateEvent.AbstractOrganizationStructureStateCreated) {
-            OrganizationStructureStateEvent.OrganizationStructureStateCreated e = (OrganizationStructureStateEvent.OrganizationStructureStateCreated) stateEvent;
+    public OrganizationStructureStateEventDto toOrganizationStructureStateEventDto(AbstractOrganizationStructureEvent stateEvent) {
+        if (stateEvent instanceof AbstractOrganizationStructureEvent.AbstractOrganizationStructureStateCreated) {
+            OrganizationStructureEvent.OrganizationStructureStateCreated e = (OrganizationStructureEvent.OrganizationStructureStateCreated) stateEvent;
             return toOrganizationStructureStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractOrganizationStructureStateEvent.AbstractOrganizationStructureStateMergePatched) {
-            OrganizationStructureStateEvent.OrganizationStructureStateMergePatched e = (OrganizationStructureStateEvent.OrganizationStructureStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractOrganizationStructureEvent.AbstractOrganizationStructureStateMergePatched) {
+            OrganizationStructureEvent.OrganizationStructureStateMergePatched e = (OrganizationStructureEvent.OrganizationStructureStateMergePatched) stateEvent;
             return toOrganizationStructureStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractOrganizationStructureStateEvent.AbstractOrganizationStructureStateDeleted) {
-            OrganizationStructureStateEvent.OrganizationStructureStateDeleted e = (OrganizationStructureStateEvent.OrganizationStructureStateDeleted) stateEvent;
+        } else if (stateEvent instanceof AbstractOrganizationStructureEvent.AbstractOrganizationStructureStateDeleted) {
+            OrganizationStructureEvent.OrganizationStructureStateDeleted e = (OrganizationStructureEvent.OrganizationStructureStateDeleted) stateEvent;
             return toOrganizationStructureStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public OrganizationStructureStateEventDto.OrganizationStructureStateCreatedDto toOrganizationStructureStateCreatedDto(OrganizationStructureStateEvent.OrganizationStructureStateCreated e) {
+    public OrganizationStructureStateEventDto.OrganizationStructureStateCreatedDto toOrganizationStructureStateCreatedDto(OrganizationStructureEvent.OrganizationStructureStateCreated e) {
         OrganizationStructureStateEventDto.OrganizationStructureStateCreatedDto dto = new OrganizationStructureStateEventDto.OrganizationStructureStateCreatedDto();
         dto.setOrganizationStructureEventId(e.getOrganizationStructureEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -32,7 +32,7 @@ public class OrganizationStructureStateEventDtoConverter {
         return dto;
     }
 
-    public OrganizationStructureStateEventDto.OrganizationStructureStateMergePatchedDto toOrganizationStructureStateMergePatchedDto(OrganizationStructureStateEvent.OrganizationStructureStateMergePatched e) {
+    public OrganizationStructureStateEventDto.OrganizationStructureStateMergePatchedDto toOrganizationStructureStateMergePatchedDto(OrganizationStructureEvent.OrganizationStructureStateMergePatched e) {
         OrganizationStructureStateEventDto.OrganizationStructureStateMergePatchedDto dto = new OrganizationStructureStateEventDto.OrganizationStructureStateMergePatchedDto();
         dto.setOrganizationStructureEventId(e.getOrganizationStructureEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -44,7 +44,7 @@ public class OrganizationStructureStateEventDtoConverter {
     }
 
 
-    public OrganizationStructureStateEventDto.OrganizationStructureStateDeletedDto toOrganizationStructureStateDeletedDto(OrganizationStructureStateEvent.OrganizationStructureStateDeleted e) {
+    public OrganizationStructureStateEventDto.OrganizationStructureStateDeletedDto toOrganizationStructureStateDeletedDto(OrganizationStructureEvent.OrganizationStructureStateDeleted e) {
         OrganizationStructureStateEventDto.OrganizationStructureStateDeletedDto dto = new OrganizationStructureStateEventDto.OrganizationStructureStateDeletedDto();
         dto.setOrganizationStructureEventId(e.getOrganizationStructureEventId());
         dto.setCreatedAt(e.getCreatedAt());

@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.shipmentpackage.ShipmentPackageStateEvent.*;
+import org.dddml.wms.domain.shipmentpackage.ShipmentPackageEvent.*;
 
 public abstract class AbstractShipmentPackageState implements ShipmentPackageState, Saveable
 {
@@ -249,7 +249,7 @@ public abstract class AbstractShipmentPackageState implements ShipmentPackageSta
     public AbstractShipmentPackageState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setShipmentPackageId(((ShipmentPackageStateEvent) events.get(0)).getShipmentPackageEventId().getShipmentPackageId());
+            this.setShipmentPackageId(((ShipmentPackageEvent) events.get(0)).getShipmentPackageEventId().getShipmentPackageId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -306,7 +306,7 @@ public abstract class AbstractShipmentPackageState implements ShipmentPackageSta
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
-        for (ShipmentPackageContentStateEvent.ShipmentPackageContentStateCreated innerEvent : e.getShipmentPackageContentEvents()) {
+        for (ShipmentPackageContentEvent.ShipmentPackageContentStateCreated innerEvent : e.getShipmentPackageContentEvents()) {
             ShipmentPackageContentState innerState = this.getShipmentPackageContents().get(innerEvent.getShipmentPackageContentEventId().getShipmentItemSeqId());
             innerState.mutate(innerEvent);
         }
@@ -430,12 +430,12 @@ public abstract class AbstractShipmentPackageState implements ShipmentPackageSta
         this.setUpdatedBy(e.getCreatedBy());
         this.setUpdatedAt(e.getCreatedAt());
 
-        for (ShipmentPackageContentStateEvent innerEvent : e.getShipmentPackageContentEvents()) {
+        for (ShipmentPackageContentEvent innerEvent : e.getShipmentPackageContentEvents()) {
             ShipmentPackageContentState innerState = this.getShipmentPackageContents().get(innerEvent.getShipmentPackageContentEventId().getShipmentItemSeqId());
             innerState.mutate(innerEvent);
-            if (innerEvent instanceof ShipmentPackageContentStateEvent.ShipmentPackageContentStateRemoved)
+            if (innerEvent instanceof ShipmentPackageContentEvent.ShipmentPackageContentStateRemoved)
             {
-                //ShipmentPackageContentStateEvent.ShipmentPackageContentStateRemoved removed = (ShipmentPackageContentStateEvent.ShipmentPackageContentStateRemoved)innerEvent;
+                //ShipmentPackageContentEvent.ShipmentPackageContentStateRemoved removed = (ShipmentPackageContentEvent.ShipmentPackageContentStateRemoved)innerEvent;
                 this.getShipmentPackageContents().remove(innerState);
             }
         }
@@ -453,7 +453,7 @@ public abstract class AbstractShipmentPackageState implements ShipmentPackageSta
         {
             this.getShipmentPackageContents().remove(innerState);
         
-            ShipmentPackageContentStateEvent.ShipmentPackageContentStateRemoved innerE = e.newShipmentPackageContentStateRemoved(innerState.getShipmentItemSeqId());
+            ShipmentPackageContentEvent.ShipmentPackageContentStateRemoved innerE = e.newShipmentPackageContentStateRemoved(innerState.getShipmentItemSeqId());
             innerE.setCreatedAt(e.getCreatedAt());
             innerE.setCreatedBy(e.getCreatedBy());
             innerState.when(innerE);
@@ -467,10 +467,10 @@ public abstract class AbstractShipmentPackageState implements ShipmentPackageSta
 
     }
 
-    protected void throwOnWrongEvent(ShipmentPackageStateEvent stateEvent)
+    protected void throwOnWrongEvent(ShipmentPackageEvent stateEvent)
     {
         ShipmentPackageId stateEntityId = this.getShipmentPackageId(); // Aggregate Id
-        ShipmentPackageId eventEntityId = stateEvent.getShipmentPackageEventId().getShipmentPackageId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        ShipmentPackageId eventEntityId = stateEvent.getShipmentPackageEventId().getShipmentPackageId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

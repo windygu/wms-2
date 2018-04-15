@@ -7,22 +7,22 @@ import org.dddml.wms.specialization.*;
 
 public class AttributeAliasStateEventDtoConverter {
 
-    public AttributeAliasStateEventDto toAttributeAliasStateEventDto(AbstractAttributeAliasStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractAttributeAliasStateEvent.AbstractAttributeAliasStateCreated) {
-            AttributeAliasStateEvent.AttributeAliasStateCreated e = (AttributeAliasStateEvent.AttributeAliasStateCreated) stateEvent;
+    public AttributeAliasStateEventDto toAttributeAliasStateEventDto(AbstractAttributeAliasEvent stateEvent) {
+        if (stateEvent instanceof AbstractAttributeAliasEvent.AbstractAttributeAliasStateCreated) {
+            AttributeAliasEvent.AttributeAliasStateCreated e = (AttributeAliasEvent.AttributeAliasStateCreated) stateEvent;
             return toAttributeAliasStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractAttributeAliasStateEvent.AbstractAttributeAliasStateMergePatched) {
-            AttributeAliasStateEvent.AttributeAliasStateMergePatched e = (AttributeAliasStateEvent.AttributeAliasStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractAttributeAliasEvent.AbstractAttributeAliasStateMergePatched) {
+            AttributeAliasEvent.AttributeAliasStateMergePatched e = (AttributeAliasEvent.AttributeAliasStateMergePatched) stateEvent;
             return toAttributeAliasStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractAttributeAliasStateEvent.AbstractAttributeAliasStateRemoved) {
-            AttributeAliasStateEvent.AttributeAliasStateRemoved e = (AttributeAliasStateEvent.AttributeAliasStateRemoved) stateEvent;
+        } else if (stateEvent instanceof AbstractAttributeAliasEvent.AbstractAttributeAliasStateRemoved) {
+            AttributeAliasEvent.AttributeAliasStateRemoved e = (AttributeAliasEvent.AttributeAliasStateRemoved) stateEvent;
             return toAttributeAliasStateRemovedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public AttributeAliasStateEventDto.AttributeAliasStateCreatedDto toAttributeAliasStateCreatedDto(AttributeAliasStateEvent.AttributeAliasStateCreated e) {
+    public AttributeAliasStateEventDto.AttributeAliasStateCreatedDto toAttributeAliasStateCreatedDto(AttributeAliasEvent.AttributeAliasStateCreated e) {
         AttributeAliasStateEventDto.AttributeAliasStateCreatedDto dto = new AttributeAliasStateEventDto.AttributeAliasStateCreatedDto();
         dto.setAttributeAliasEventId(e.getAttributeAliasEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -34,7 +34,7 @@ public class AttributeAliasStateEventDtoConverter {
         return dto;
     }
 
-    public AttributeAliasStateEventDto.AttributeAliasStateMergePatchedDto toAttributeAliasStateMergePatchedDto(AttributeAliasStateEvent.AttributeAliasStateMergePatched e) {
+    public AttributeAliasStateEventDto.AttributeAliasStateMergePatchedDto toAttributeAliasStateMergePatchedDto(AttributeAliasEvent.AttributeAliasStateMergePatched e) {
         AttributeAliasStateEventDto.AttributeAliasStateMergePatchedDto dto = new AttributeAliasStateEventDto.AttributeAliasStateMergePatchedDto();
         dto.setAttributeAliasEventId(e.getAttributeAliasEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -49,7 +49,7 @@ public class AttributeAliasStateEventDtoConverter {
     }
 
 
-    public AttributeAliasStateEventDto.AttributeAliasStateRemovedDto toAttributeAliasStateRemovedDto(AttributeAliasStateEvent.AttributeAliasStateRemoved e) {
+    public AttributeAliasStateEventDto.AttributeAliasStateRemovedDto toAttributeAliasStateRemovedDto(AttributeAliasEvent.AttributeAliasStateRemoved e) {
         AttributeAliasStateEventDto.AttributeAliasStateRemovedDto dto = new AttributeAliasStateEventDto.AttributeAliasStateRemovedDto();
         dto.setAttributeAliasEventId(e.getAttributeAliasEventId());
         dto.setCreatedAt(e.getCreatedAt());

@@ -4,9 +4,9 @@ import org.dddml.wms.domain.physicalinventory.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
-import org.dddml.wms.domain.AbstractStateEvent;
+import org.dddml.wms.domain.AbstractEvent;
 
-public class PhysicalInventoryLineMvoStateEventDto extends AbstractStateEvent
+public class PhysicalInventoryLineMvoStateEventDto extends AbstractEvent
 {
 
     private PhysicalInventoryLineMvoEventId physicalInventoryLineMvoEventId;
@@ -580,7 +580,7 @@ public class PhysicalInventoryLineMvoStateEventDto extends AbstractStateEvent
 	public static class PhysicalInventoryLineMvoStateCreatedDto extends PhysicalInventoryLineMvoStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_CREATED;
         }
@@ -591,7 +591,7 @@ public class PhysicalInventoryLineMvoStateEventDto extends AbstractStateEvent
 	public static class PhysicalInventoryLineMvoStateMergePatchedDto extends PhysicalInventoryLineMvoStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_MERGE_PATCHED;
         }
@@ -602,7 +602,7 @@ public class PhysicalInventoryLineMvoStateEventDto extends AbstractStateEvent
 	public static class PhysicalInventoryLineMvoStateDeletedDto extends PhysicalInventoryLineMvoStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_DELETED;
         }

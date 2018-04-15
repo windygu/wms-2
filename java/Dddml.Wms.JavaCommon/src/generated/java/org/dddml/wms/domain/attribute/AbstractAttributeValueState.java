@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.attribute.AttributeValueStateEvent.*;
+import org.dddml.wms.domain.attribute.AttributeValueEvent.*;
 
 public abstract class AbstractAttributeValueState implements AttributeValueState
 {
@@ -288,7 +288,7 @@ public abstract class AbstractAttributeValueState implements AttributeValueState
     {
     }
 
-    protected void throwOnWrongEvent(AttributeValueStateEvent stateEvent)
+    protected void throwOnWrongEvent(AttributeValueEvent stateEvent)
     {
         String stateEntityIdAttributeId = this.getAttributeValueId().getAttributeId();
         String eventEntityIdAttributeId = stateEvent.getAttributeValueEventId().getAttributeId();

@@ -182,7 +182,7 @@ public class PicklistRoleMvoResource {
 
             PicklistRoleId idObj = PicklistRoleMvoResourceUtils.parseIdString(id);
             PicklistRoleMvoStateEventDtoConverter dtoConverter = getPicklistRoleMvoStateEventDtoConverter();
-            return dtoConverter.toPicklistRoleMvoStateEventDto((AbstractPicklistRoleMvoStateEvent) picklistRoleMvoApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toPicklistRoleMvoStateEventDto((AbstractPicklistRoleMvoEvent) picklistRoleMvoApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

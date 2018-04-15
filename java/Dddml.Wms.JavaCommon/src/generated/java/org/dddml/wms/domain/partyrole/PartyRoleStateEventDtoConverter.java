@@ -7,22 +7,22 @@ import org.dddml.wms.specialization.*;
 
 public class PartyRoleStateEventDtoConverter {
 
-    public PartyRoleStateEventDto toPartyRoleStateEventDto(AbstractPartyRoleStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractPartyRoleStateEvent.AbstractPartyRoleStateCreated) {
-            PartyRoleStateEvent.PartyRoleStateCreated e = (PartyRoleStateEvent.PartyRoleStateCreated) stateEvent;
+    public PartyRoleStateEventDto toPartyRoleStateEventDto(AbstractPartyRoleEvent stateEvent) {
+        if (stateEvent instanceof AbstractPartyRoleEvent.AbstractPartyRoleStateCreated) {
+            PartyRoleEvent.PartyRoleStateCreated e = (PartyRoleEvent.PartyRoleStateCreated) stateEvent;
             return toPartyRoleStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractPartyRoleStateEvent.AbstractPartyRoleStateMergePatched) {
-            PartyRoleStateEvent.PartyRoleStateMergePatched e = (PartyRoleStateEvent.PartyRoleStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractPartyRoleEvent.AbstractPartyRoleStateMergePatched) {
+            PartyRoleEvent.PartyRoleStateMergePatched e = (PartyRoleEvent.PartyRoleStateMergePatched) stateEvent;
             return toPartyRoleStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractPartyRoleStateEvent.AbstractPartyRoleStateDeleted) {
-            PartyRoleStateEvent.PartyRoleStateDeleted e = (PartyRoleStateEvent.PartyRoleStateDeleted) stateEvent;
+        } else if (stateEvent instanceof AbstractPartyRoleEvent.AbstractPartyRoleStateDeleted) {
+            PartyRoleEvent.PartyRoleStateDeleted e = (PartyRoleEvent.PartyRoleStateDeleted) stateEvent;
             return toPartyRoleStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public PartyRoleStateEventDto.PartyRoleStateCreatedDto toPartyRoleStateCreatedDto(PartyRoleStateEvent.PartyRoleStateCreated e) {
+    public PartyRoleStateEventDto.PartyRoleStateCreatedDto toPartyRoleStateCreatedDto(PartyRoleEvent.PartyRoleStateCreated e) {
         PartyRoleStateEventDto.PartyRoleStateCreatedDto dto = new PartyRoleStateEventDto.PartyRoleStateCreatedDto();
         dto.setPartyRoleEventId(e.getPartyRoleEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -32,7 +32,7 @@ public class PartyRoleStateEventDtoConverter {
         return dto;
     }
 
-    public PartyRoleStateEventDto.PartyRoleStateMergePatchedDto toPartyRoleStateMergePatchedDto(PartyRoleStateEvent.PartyRoleStateMergePatched e) {
+    public PartyRoleStateEventDto.PartyRoleStateMergePatchedDto toPartyRoleStateMergePatchedDto(PartyRoleEvent.PartyRoleStateMergePatched e) {
         PartyRoleStateEventDto.PartyRoleStateMergePatchedDto dto = new PartyRoleStateEventDto.PartyRoleStateMergePatchedDto();
         dto.setPartyRoleEventId(e.getPartyRoleEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -44,7 +44,7 @@ public class PartyRoleStateEventDtoConverter {
     }
 
 
-    public PartyRoleStateEventDto.PartyRoleStateDeletedDto toPartyRoleStateDeletedDto(PartyRoleStateEvent.PartyRoleStateDeleted e) {
+    public PartyRoleStateEventDto.PartyRoleStateDeletedDto toPartyRoleStateDeletedDto(PartyRoleEvent.PartyRoleStateDeleted e) {
         PartyRoleStateEventDto.PartyRoleStateDeletedDto dto = new PartyRoleStateEventDto.PartyRoleStateDeletedDto();
         dto.setPartyRoleEventId(e.getPartyRoleEventId());
         dto.setCreatedAt(e.getCreatedAt());

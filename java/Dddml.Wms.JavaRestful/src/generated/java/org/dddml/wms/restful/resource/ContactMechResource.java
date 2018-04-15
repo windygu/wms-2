@@ -181,7 +181,7 @@ public class ContactMechResource {
 
             String idObj = id;
             ContactMechStateEventDtoConverter dtoConverter = getContactMechStateEventDtoConverter();
-            return dtoConverter.toContactMechStateEventDto((AbstractContactMechStateEvent) contactMechApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toContactMechStateEventDto((AbstractContactMechEvent) contactMechApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

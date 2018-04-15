@@ -27,19 +27,19 @@ public abstract class AbstractWarehouseAggregate extends AbstractAggregate imple
     public void create(WarehouseCommand.CreateWarehouse c)
     {
         if (c.getVersion() == null) { c.setVersion(WarehouseState.VERSION_NULL); }
-        WarehouseStateEvent e = map(c);
+        WarehouseEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(WarehouseCommand.MergePatchWarehouse c)
     {
-        WarehouseStateEvent e = map(c);
+        WarehouseEvent e = map(c);
         apply(e);
     }
 
     public void delete(WarehouseCommand.DeleteWarehouse c)
     {
-        WarehouseStateEvent e = map(c);
+        WarehouseEvent e = map(c);
         apply(e);
     }
 
@@ -54,22 +54,22 @@ public abstract class AbstractWarehouseAggregate extends AbstractAggregate imple
         changes.add(e);
     }
 
-    protected WarehouseStateEvent map(WarehouseCommand.CreateWarehouse c) {
+    protected WarehouseEvent map(WarehouseCommand.CreateWarehouse c) {
         WarehouseEventId stateEventId = new WarehouseEventId(c.getWarehouseId(), c.getVersion());
-        WarehouseStateEvent.WarehouseStateCreated e = newWarehouseStateCreated(stateEventId);
+        WarehouseEvent.WarehouseStateCreated e = newWarehouseStateCreated(stateEventId);
         e.setWarehouseName(c.getWarehouseName());
         e.setDescription(c.getDescription());
         e.setIsInTransit(c.getIsInTransit());
         e.setActive(c.getActive());
-        ((AbstractWarehouseStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractWarehouseEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected WarehouseStateEvent map(WarehouseCommand.MergePatchWarehouse c) {
+    protected WarehouseEvent map(WarehouseCommand.MergePatchWarehouse c) {
         WarehouseEventId stateEventId = new WarehouseEventId(c.getWarehouseId(), c.getVersion());
-        WarehouseStateEvent.WarehouseStateMergePatched e = newWarehouseStateMergePatched(stateEventId);
+        WarehouseEvent.WarehouseStateMergePatched e = newWarehouseStateMergePatched(stateEventId);
         e.setWarehouseName(c.getWarehouseName());
         e.setDescription(c.getDescription());
         e.setIsInTransit(c.getIsInTransit());
@@ -78,16 +78,16 @@ public abstract class AbstractWarehouseAggregate extends AbstractAggregate imple
         e.setIsPropertyDescriptionRemoved(c.getIsPropertyDescriptionRemoved());
         e.setIsPropertyIsInTransitRemoved(c.getIsPropertyIsInTransitRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
-        ((AbstractWarehouseStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractWarehouseEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected WarehouseStateEvent map(WarehouseCommand.DeleteWarehouse c) {
+    protected WarehouseEvent map(WarehouseCommand.DeleteWarehouse c) {
         WarehouseEventId stateEventId = new WarehouseEventId(c.getWarehouseId(), c.getVersion());
-        WarehouseStateEvent.WarehouseStateDeleted e = newWarehouseStateDeleted(stateEventId);
-        ((AbstractWarehouseStateEvent)e).setCommandId(c.getCommandId());
+        WarehouseEvent.WarehouseStateDeleted e = newWarehouseStateDeleted(stateEventId);
+        ((AbstractWarehouseEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
@@ -96,44 +96,44 @@ public abstract class AbstractWarehouseAggregate extends AbstractAggregate imple
 
     ////////////////////////
 
-    protected WarehouseStateEvent.WarehouseStateCreated newWarehouseStateCreated(Long version, String commandId, String requesterId) {
+    protected WarehouseEvent.WarehouseStateCreated newWarehouseStateCreated(Long version, String commandId, String requesterId) {
         WarehouseEventId stateEventId = new WarehouseEventId(this.state.getWarehouseId(), version);
-        WarehouseStateEvent.WarehouseStateCreated e = newWarehouseStateCreated(stateEventId);
-        ((AbstractWarehouseStateEvent)e).setCommandId(commandId);
+        WarehouseEvent.WarehouseStateCreated e = newWarehouseStateCreated(stateEventId);
+        ((AbstractWarehouseEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected WarehouseStateEvent.WarehouseStateMergePatched newWarehouseStateMergePatched(Long version, String commandId, String requesterId) {
+    protected WarehouseEvent.WarehouseStateMergePatched newWarehouseStateMergePatched(Long version, String commandId, String requesterId) {
         WarehouseEventId stateEventId = new WarehouseEventId(this.state.getWarehouseId(), version);
-        WarehouseStateEvent.WarehouseStateMergePatched e = newWarehouseStateMergePatched(stateEventId);
-        ((AbstractWarehouseStateEvent)e).setCommandId(commandId);
+        WarehouseEvent.WarehouseStateMergePatched e = newWarehouseStateMergePatched(stateEventId);
+        ((AbstractWarehouseEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected WarehouseStateEvent.WarehouseStateDeleted newWarehouseStateDeleted(Long version, String commandId, String requesterId) {
+    protected WarehouseEvent.WarehouseStateDeleted newWarehouseStateDeleted(Long version, String commandId, String requesterId) {
         WarehouseEventId stateEventId = new WarehouseEventId(this.state.getWarehouseId(), version);
-        WarehouseStateEvent.WarehouseStateDeleted e = newWarehouseStateDeleted(stateEventId);
-        ((AbstractWarehouseStateEvent)e).setCommandId(commandId);
+        WarehouseEvent.WarehouseStateDeleted e = newWarehouseStateDeleted(stateEventId);
+        ((AbstractWarehouseEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected WarehouseStateEvent.WarehouseStateCreated newWarehouseStateCreated(WarehouseEventId stateEventId) {
-        return new AbstractWarehouseStateEvent.SimpleWarehouseStateCreated(stateEventId);
+    protected WarehouseEvent.WarehouseStateCreated newWarehouseStateCreated(WarehouseEventId stateEventId) {
+        return new AbstractWarehouseEvent.SimpleWarehouseStateCreated(stateEventId);
     }
 
-    protected WarehouseStateEvent.WarehouseStateMergePatched newWarehouseStateMergePatched(WarehouseEventId stateEventId) {
-        return new AbstractWarehouseStateEvent.SimpleWarehouseStateMergePatched(stateEventId);
+    protected WarehouseEvent.WarehouseStateMergePatched newWarehouseStateMergePatched(WarehouseEventId stateEventId) {
+        return new AbstractWarehouseEvent.SimpleWarehouseStateMergePatched(stateEventId);
     }
 
-    protected WarehouseStateEvent.WarehouseStateDeleted newWarehouseStateDeleted(WarehouseEventId stateEventId)
+    protected WarehouseEvent.WarehouseStateDeleted newWarehouseStateDeleted(WarehouseEventId stateEventId)
     {
-        return new AbstractWarehouseStateEvent.SimpleWarehouseStateDeleted(stateEventId);
+        return new AbstractWarehouseEvent.SimpleWarehouseStateDeleted(stateEventId);
     }
 
     public static class SimpleWarehouseAggregate extends AbstractWarehouseAggregate

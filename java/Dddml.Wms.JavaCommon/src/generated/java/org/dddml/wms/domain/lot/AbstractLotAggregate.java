@@ -27,19 +27,19 @@ public abstract class AbstractLotAggregate extends AbstractAggregate implements 
     public void create(LotCommand.CreateLot c)
     {
         if (c.getVersion() == null) { c.setVersion(LotState.VERSION_NULL); }
-        LotStateEvent e = map(c);
+        LotEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(LotCommand.MergePatchLot c)
     {
-        LotStateEvent e = map(c);
+        LotEvent e = map(c);
         apply(e);
     }
 
     public void delete(LotCommand.DeleteLot c)
     {
-        LotStateEvent e = map(c);
+        LotEvent e = map(c);
         apply(e);
     }
 
@@ -54,37 +54,37 @@ public abstract class AbstractLotAggregate extends AbstractAggregate implements 
         changes.add(e);
     }
 
-    protected LotStateEvent map(LotCommand.CreateLot c) {
+    protected LotEvent map(LotCommand.CreateLot c) {
         LotEventId stateEventId = new LotEventId(c.getLotId(), c.getVersion());
-        LotStateEvent.LotStateCreated e = newLotStateCreated(stateEventId);
+        LotEvent.LotStateCreated e = newLotStateCreated(stateEventId);
         e.setQuantity(c.getQuantity());
         e.setExpirationDate(c.getExpirationDate());
         e.setActive(c.getActive());
-        ((AbstractLotStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractLotEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected LotStateEvent map(LotCommand.MergePatchLot c) {
+    protected LotEvent map(LotCommand.MergePatchLot c) {
         LotEventId stateEventId = new LotEventId(c.getLotId(), c.getVersion());
-        LotStateEvent.LotStateMergePatched e = newLotStateMergePatched(stateEventId);
+        LotEvent.LotStateMergePatched e = newLotStateMergePatched(stateEventId);
         e.setQuantity(c.getQuantity());
         e.setExpirationDate(c.getExpirationDate());
         e.setActive(c.getActive());
         e.setIsPropertyQuantityRemoved(c.getIsPropertyQuantityRemoved());
         e.setIsPropertyExpirationDateRemoved(c.getIsPropertyExpirationDateRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
-        ((AbstractLotStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractLotEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected LotStateEvent map(LotCommand.DeleteLot c) {
+    protected LotEvent map(LotCommand.DeleteLot c) {
         LotEventId stateEventId = new LotEventId(c.getLotId(), c.getVersion());
-        LotStateEvent.LotStateDeleted e = newLotStateDeleted(stateEventId);
-        ((AbstractLotStateEvent)e).setCommandId(c.getCommandId());
+        LotEvent.LotStateDeleted e = newLotStateDeleted(stateEventId);
+        ((AbstractLotEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
@@ -93,44 +93,44 @@ public abstract class AbstractLotAggregate extends AbstractAggregate implements 
 
     ////////////////////////
 
-    protected LotStateEvent.LotStateCreated newLotStateCreated(Long version, String commandId, String requesterId) {
+    protected LotEvent.LotStateCreated newLotStateCreated(Long version, String commandId, String requesterId) {
         LotEventId stateEventId = new LotEventId(this.state.getLotId(), version);
-        LotStateEvent.LotStateCreated e = newLotStateCreated(stateEventId);
-        ((AbstractLotStateEvent)e).setCommandId(commandId);
+        LotEvent.LotStateCreated e = newLotStateCreated(stateEventId);
+        ((AbstractLotEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected LotStateEvent.LotStateMergePatched newLotStateMergePatched(Long version, String commandId, String requesterId) {
+    protected LotEvent.LotStateMergePatched newLotStateMergePatched(Long version, String commandId, String requesterId) {
         LotEventId stateEventId = new LotEventId(this.state.getLotId(), version);
-        LotStateEvent.LotStateMergePatched e = newLotStateMergePatched(stateEventId);
-        ((AbstractLotStateEvent)e).setCommandId(commandId);
+        LotEvent.LotStateMergePatched e = newLotStateMergePatched(stateEventId);
+        ((AbstractLotEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected LotStateEvent.LotStateDeleted newLotStateDeleted(Long version, String commandId, String requesterId) {
+    protected LotEvent.LotStateDeleted newLotStateDeleted(Long version, String commandId, String requesterId) {
         LotEventId stateEventId = new LotEventId(this.state.getLotId(), version);
-        LotStateEvent.LotStateDeleted e = newLotStateDeleted(stateEventId);
-        ((AbstractLotStateEvent)e).setCommandId(commandId);
+        LotEvent.LotStateDeleted e = newLotStateDeleted(stateEventId);
+        ((AbstractLotEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected LotStateEvent.LotStateCreated newLotStateCreated(LotEventId stateEventId) {
-        return new AbstractLotStateEvent.SimpleLotStateCreated(stateEventId);
+    protected LotEvent.LotStateCreated newLotStateCreated(LotEventId stateEventId) {
+        return new AbstractLotEvent.SimpleLotStateCreated(stateEventId);
     }
 
-    protected LotStateEvent.LotStateMergePatched newLotStateMergePatched(LotEventId stateEventId) {
-        return new AbstractLotStateEvent.SimpleLotStateMergePatched(stateEventId);
+    protected LotEvent.LotStateMergePatched newLotStateMergePatched(LotEventId stateEventId) {
+        return new AbstractLotEvent.SimpleLotStateMergePatched(stateEventId);
     }
 
-    protected LotStateEvent.LotStateDeleted newLotStateDeleted(LotEventId stateEventId)
+    protected LotEvent.LotStateDeleted newLotStateDeleted(LotEventId stateEventId)
     {
-        return new AbstractLotStateEvent.SimpleLotStateDeleted(stateEventId);
+        return new AbstractLotEvent.SimpleLotStateDeleted(stateEventId);
     }
 
     public static class SimpleLotAggregate extends AbstractLotAggregate

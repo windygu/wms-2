@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.movementconfirmation.MovementConfirmationStateEvent.*;
+import org.dddml.wms.domain.movementconfirmation.MovementConfirmationEvent.*;
 
 public interface MovementConfirmationState
 {
@@ -87,11 +87,11 @@ public interface MovementConfirmationState
 
     void mutate(Event e);
 
-    void when(MovementConfirmationStateEvent.MovementConfirmationStateCreated e);
+    void when(MovementConfirmationEvent.MovementConfirmationStateCreated e);
 
-    void when(MovementConfirmationStateEvent.MovementConfirmationStateMergePatched e);
+    void when(MovementConfirmationEvent.MovementConfirmationStateMergePatched e);
 
-    void when(MovementConfirmationStateEvent.MovementConfirmationStateDeleted e);
+    void when(MovementConfirmationEvent.MovementConfirmationStateDeleted e);
     
 }
 

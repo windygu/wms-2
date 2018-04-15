@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.attribute.AttributeStateEvent.*;
+import org.dddml.wms.domain.attribute.AttributeEvent.*;
 
 public interface AttributeState
 {
@@ -92,11 +92,11 @@ public interface AttributeState
 
     void mutate(Event e);
 
-    void when(AttributeStateEvent.AttributeStateCreated e);
+    void when(AttributeEvent.AttributeStateCreated e);
 
-    void when(AttributeStateEvent.AttributeStateMergePatched e);
+    void when(AttributeEvent.AttributeStateMergePatched e);
 
-    void when(AttributeStateEvent.AttributeStateDeleted e);
+    void when(AttributeEvent.AttributeStateDeleted e);
     
 }
 

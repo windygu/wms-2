@@ -50,17 +50,17 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionFieldGroup
 			}
 		}
 
-        public virtual bool StateEventReadOnly { get; set; }
+        public virtual bool EventReadOnly { get; set; }
 
         bool IAttributeSetInstanceExtensionFieldGroupStateEvent.ReadOnly
         {
             get
             {
-                return this.StateEventReadOnly;
+                return this.EventReadOnly;
             }
             set
             {
-                this.StateEventReadOnly = value;
+                this.EventReadOnly = value;
             }
         }
 

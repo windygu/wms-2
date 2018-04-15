@@ -27,19 +27,19 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
     public void create(AttributeCommand.CreateAttribute c)
     {
         if (c.getVersion() == null) { c.setVersion(AttributeState.VERSION_NULL); }
-        AttributeStateEvent e = map(c);
+        AttributeEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(AttributeCommand.MergePatchAttribute c)
     {
-        AttributeStateEvent e = map(c);
+        AttributeEvent e = map(c);
         apply(e);
     }
 
     public void delete(AttributeCommand.DeleteAttribute c)
     {
-        AttributeStateEvent e = map(c);
+        AttributeEvent e = map(c);
         apply(e);
     }
 
@@ -54,9 +54,9 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
         changes.add(e);
     }
 
-    protected AttributeStateEvent map(AttributeCommand.CreateAttribute c) {
+    protected AttributeEvent map(AttributeCommand.CreateAttribute c) {
         AttributeEventId stateEventId = new AttributeEventId(c.getAttributeId(), c.getVersion());
-        AttributeStateEvent.AttributeStateCreated e = newAttributeStateCreated(stateEventId);
+        AttributeEvent.AttributeStateCreated e = newAttributeStateCreated(stateEventId);
         e.setAttributeName(c.getAttributeName());
         e.setOrganizationId(c.getOrganizationId());
         e.setDescription(c.getDescription());
@@ -67,30 +67,30 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
         e.setFieldName(c.getFieldName());
         e.setReferenceId(c.getReferenceId());
         e.setActive(c.getActive());
-        ((AbstractAttributeStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractAttributeEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         Long version = c.getVersion();
         for (AttributeValueCommand.CreateAttributeValue innerCommand : c.getAttributeValues())
         {
             throwOnInconsistentCommands(c, innerCommand);
-            AttributeValueStateEvent.AttributeValueStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);
+            AttributeValueEvent.AttributeValueStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);
             e.addAttributeValueEvent(innerEvent);
         }
 
         for (AttributeAliasCommand.CreateAttributeAlias innerCommand : c.getAliases())
         {
             throwOnInconsistentCommands(c, innerCommand);
-            AttributeAliasStateEvent.AttributeAliasStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);
+            AttributeAliasEvent.AttributeAliasStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);
             e.addAttributeAliasEvent(innerEvent);
         }
 
         return e;
     }
 
-    protected AttributeStateEvent map(AttributeCommand.MergePatchAttribute c) {
+    protected AttributeEvent map(AttributeCommand.MergePatchAttribute c) {
         AttributeEventId stateEventId = new AttributeEventId(c.getAttributeId(), c.getVersion());
-        AttributeStateEvent.AttributeStateMergePatched e = newAttributeStateMergePatched(stateEventId);
+        AttributeEvent.AttributeStateMergePatched e = newAttributeStateMergePatched(stateEventId);
         e.setAttributeName(c.getAttributeName());
         e.setOrganizationId(c.getOrganizationId());
         e.setDescription(c.getDescription());
@@ -111,38 +111,38 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
         e.setIsPropertyFieldNameRemoved(c.getIsPropertyFieldNameRemoved());
         e.setIsPropertyReferenceIdRemoved(c.getIsPropertyReferenceIdRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
-        ((AbstractAttributeStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractAttributeEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         Long version = c.getVersion();
         for (AttributeValueCommand innerCommand : c.getAttributeValueCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
-            AttributeValueStateEvent innerEvent = map(innerCommand, c, version, this.state);
+            AttributeValueEvent innerEvent = map(innerCommand, c, version, this.state);
             e.addAttributeValueEvent(innerEvent);
         }
 
         for (AttributeAliasCommand innerCommand : c.getAttributeAliasCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
-            AttributeAliasStateEvent innerEvent = map(innerCommand, c, version, this.state);
+            AttributeAliasEvent innerEvent = map(innerCommand, c, version, this.state);
             e.addAttributeAliasEvent(innerEvent);
         }
 
         return e;
     }
 
-    protected AttributeStateEvent map(AttributeCommand.DeleteAttribute c) {
+    protected AttributeEvent map(AttributeCommand.DeleteAttribute c) {
         AttributeEventId stateEventId = new AttributeEventId(c.getAttributeId(), c.getVersion());
-        AttributeStateEvent.AttributeStateDeleted e = newAttributeStateDeleted(stateEventId);
-        ((AbstractAttributeStateEvent)e).setCommandId(c.getCommandId());
+        AttributeEvent.AttributeStateDeleted e = newAttributeStateDeleted(stateEventId);
+        ((AbstractAttributeEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
 
-    protected AttributeValueStateEvent map(AttributeValueCommand c, AttributeCommand outerCommand, long version, AttributeState outerState)
+    protected AttributeValueEvent map(AttributeValueCommand c, AttributeCommand outerCommand, Long version, AttributeState outerState)
     {
         AttributeValueCommand.CreateAttributeValue create = (c.getCommandType().equals(CommandType.CREATE)) ? ((AttributeValueCommand.CreateAttributeValue)c) : null;
         if(create != null)
@@ -164,11 +164,11 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
         throw new UnsupportedOperationException();
     }
 
-    protected AttributeValueStateEvent.AttributeValueStateCreated mapCreate(AttributeValueCommand.CreateAttributeValue c, AttributeCommand outerCommand, Long version, AttributeState outerState)
+    protected AttributeValueEvent.AttributeValueStateCreated mapCreate(AttributeValueCommand.CreateAttributeValue c, AttributeCommand outerCommand, Long version, AttributeState outerState)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
         AttributeValueEventId stateEventId = new AttributeValueEventId(c.getAttributeId(), c.getValue(), version);
-        AttributeValueStateEvent.AttributeValueStateCreated e = newAttributeValueStateCreated(stateEventId);
+        AttributeValueEvent.AttributeValueStateCreated e = newAttributeValueStateCreated(stateEventId);
         AttributeValueState s = outerState.getAttributeValues().get(c.getValue());
 
         e.setAttributeValueName(c.getAttributeValueName());
@@ -181,11 +181,11 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
 
     }// END map(ICreate... ////////////////////////////
 
-    protected AttributeValueStateEvent.AttributeValueStateMergePatched mapMergePatch(AttributeValueCommand.MergePatchAttributeValue c, AttributeCommand outerCommand, Long version, AttributeState outerState)
+    protected AttributeValueEvent.AttributeValueStateMergePatched mapMergePatch(AttributeValueCommand.MergePatchAttributeValue c, AttributeCommand outerCommand, Long version, AttributeState outerState)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
         AttributeValueEventId stateEventId = new AttributeValueEventId(c.getAttributeId(), c.getValue(), version);
-        AttributeValueStateEvent.AttributeValueStateMergePatched e = newAttributeValueStateMergePatched(stateEventId);
+        AttributeValueEvent.AttributeValueStateMergePatched e = newAttributeValueStateMergePatched(stateEventId);
         AttributeValueState s = outerState.getAttributeValues().get(c.getValue());
 
         e.setAttributeValueName(c.getAttributeValueName());
@@ -202,11 +202,11 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
 
     }// END map(IMergePatch... ////////////////////////////
 
-    protected AttributeValueStateEvent.AttributeValueStateRemoved mapRemove(AttributeValueCommand.RemoveAttributeValue c, AttributeCommand outerCommand, Long version)
+    protected AttributeValueEvent.AttributeValueStateRemoved mapRemove(AttributeValueCommand.RemoveAttributeValue c, AttributeCommand outerCommand, Long version)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
         AttributeValueEventId stateEventId = new AttributeValueEventId(c.getAttributeId(), c.getValue(), version);
-        AttributeValueStateEvent.AttributeValueStateRemoved e = newAttributeValueStateRemoved(stateEventId);
+        AttributeValueEvent.AttributeValueStateRemoved e = newAttributeValueStateRemoved(stateEventId);
 
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
@@ -216,7 +216,7 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
     }// END map(IRemove... ////////////////////////////
 
 
-    protected AttributeAliasStateEvent map(AttributeAliasCommand c, AttributeCommand outerCommand, long version, AttributeState outerState)
+    protected AttributeAliasEvent map(AttributeAliasCommand c, AttributeCommand outerCommand, Long version, AttributeState outerState)
     {
         AttributeAliasCommand.CreateAttributeAlias create = (c.getCommandType().equals(CommandType.CREATE)) ? ((AttributeAliasCommand.CreateAttributeAlias)c) : null;
         if(create != null)
@@ -238,11 +238,11 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
         throw new UnsupportedOperationException();
     }
 
-    protected AttributeAliasStateEvent.AttributeAliasStateCreated mapCreate(AttributeAliasCommand.CreateAttributeAlias c, AttributeCommand outerCommand, Long version, AttributeState outerState)
+    protected AttributeAliasEvent.AttributeAliasStateCreated mapCreate(AttributeAliasCommand.CreateAttributeAlias c, AttributeCommand outerCommand, Long version, AttributeState outerState)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
         AttributeAliasEventId stateEventId = new AttributeAliasEventId(c.getAttributeId(), c.getCode(), version);
-        AttributeAliasStateEvent.AttributeAliasStateCreated e = newAttributeAliasStateCreated(stateEventId);
+        AttributeAliasEvent.AttributeAliasStateCreated e = newAttributeAliasStateCreated(stateEventId);
         AttributeAliasState s = outerState.getAliases().get(c.getCode());
 
         e.setName(c.getName());
@@ -253,11 +253,11 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
 
     }// END map(ICreate... ////////////////////////////
 
-    protected AttributeAliasStateEvent.AttributeAliasStateMergePatched mapMergePatch(AttributeAliasCommand.MergePatchAttributeAlias c, AttributeCommand outerCommand, Long version, AttributeState outerState)
+    protected AttributeAliasEvent.AttributeAliasStateMergePatched mapMergePatch(AttributeAliasCommand.MergePatchAttributeAlias c, AttributeCommand outerCommand, Long version, AttributeState outerState)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
         AttributeAliasEventId stateEventId = new AttributeAliasEventId(c.getAttributeId(), c.getCode(), version);
-        AttributeAliasStateEvent.AttributeAliasStateMergePatched e = newAttributeAliasStateMergePatched(stateEventId);
+        AttributeAliasEvent.AttributeAliasStateMergePatched e = newAttributeAliasStateMergePatched(stateEventId);
         AttributeAliasState s = outerState.getAliases().get(c.getCode());
 
         e.setName(c.getName());
@@ -270,11 +270,11 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
 
     }// END map(IMergePatch... ////////////////////////////
 
-    protected AttributeAliasStateEvent.AttributeAliasStateRemoved mapRemove(AttributeAliasCommand.RemoveAttributeAlias c, AttributeCommand outerCommand, Long version)
+    protected AttributeAliasEvent.AttributeAliasStateRemoved mapRemove(AttributeAliasCommand.RemoveAttributeAlias c, AttributeCommand outerCommand, Long version)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
         AttributeAliasEventId stateEventId = new AttributeAliasEventId(c.getAttributeId(), c.getCode(), version);
-        AttributeAliasStateEvent.AttributeAliasStateRemoved e = newAttributeAliasStateRemoved(stateEventId);
+        AttributeAliasEvent.AttributeAliasStateRemoved e = newAttributeAliasStateRemoved(stateEventId);
 
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
@@ -324,70 +324,70 @@ public abstract class AbstractAttributeAggregate extends AbstractAggregate imple
 
     ////////////////////////
 
-    protected AttributeStateEvent.AttributeStateCreated newAttributeStateCreated(Long version, String commandId, String requesterId) {
+    protected AttributeEvent.AttributeStateCreated newAttributeStateCreated(Long version, String commandId, String requesterId) {
         AttributeEventId stateEventId = new AttributeEventId(this.state.getAttributeId(), version);
-        AttributeStateEvent.AttributeStateCreated e = newAttributeStateCreated(stateEventId);
-        ((AbstractAttributeStateEvent)e).setCommandId(commandId);
+        AttributeEvent.AttributeStateCreated e = newAttributeStateCreated(stateEventId);
+        ((AbstractAttributeEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected AttributeStateEvent.AttributeStateMergePatched newAttributeStateMergePatched(Long version, String commandId, String requesterId) {
+    protected AttributeEvent.AttributeStateMergePatched newAttributeStateMergePatched(Long version, String commandId, String requesterId) {
         AttributeEventId stateEventId = new AttributeEventId(this.state.getAttributeId(), version);
-        AttributeStateEvent.AttributeStateMergePatched e = newAttributeStateMergePatched(stateEventId);
-        ((AbstractAttributeStateEvent)e).setCommandId(commandId);
+        AttributeEvent.AttributeStateMergePatched e = newAttributeStateMergePatched(stateEventId);
+        ((AbstractAttributeEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected AttributeStateEvent.AttributeStateDeleted newAttributeStateDeleted(Long version, String commandId, String requesterId) {
+    protected AttributeEvent.AttributeStateDeleted newAttributeStateDeleted(Long version, String commandId, String requesterId) {
         AttributeEventId stateEventId = new AttributeEventId(this.state.getAttributeId(), version);
-        AttributeStateEvent.AttributeStateDeleted e = newAttributeStateDeleted(stateEventId);
-        ((AbstractAttributeStateEvent)e).setCommandId(commandId);
+        AttributeEvent.AttributeStateDeleted e = newAttributeStateDeleted(stateEventId);
+        ((AbstractAttributeEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected AttributeStateEvent.AttributeStateCreated newAttributeStateCreated(AttributeEventId stateEventId) {
-        return new AbstractAttributeStateEvent.SimpleAttributeStateCreated(stateEventId);
+    protected AttributeEvent.AttributeStateCreated newAttributeStateCreated(AttributeEventId stateEventId) {
+        return new AbstractAttributeEvent.SimpleAttributeStateCreated(stateEventId);
     }
 
-    protected AttributeStateEvent.AttributeStateMergePatched newAttributeStateMergePatched(AttributeEventId stateEventId) {
-        return new AbstractAttributeStateEvent.SimpleAttributeStateMergePatched(stateEventId);
+    protected AttributeEvent.AttributeStateMergePatched newAttributeStateMergePatched(AttributeEventId stateEventId) {
+        return new AbstractAttributeEvent.SimpleAttributeStateMergePatched(stateEventId);
     }
 
-    protected AttributeStateEvent.AttributeStateDeleted newAttributeStateDeleted(AttributeEventId stateEventId)
+    protected AttributeEvent.AttributeStateDeleted newAttributeStateDeleted(AttributeEventId stateEventId)
     {
-        return new AbstractAttributeStateEvent.SimpleAttributeStateDeleted(stateEventId);
+        return new AbstractAttributeEvent.SimpleAttributeStateDeleted(stateEventId);
     }
 
-    protected AttributeValueStateEvent.AttributeValueStateCreated newAttributeValueStateCreated(AttributeValueEventId stateEventId) {
-        return new AbstractAttributeValueStateEvent.SimpleAttributeValueStateCreated(stateEventId);
+    protected AttributeValueEvent.AttributeValueStateCreated newAttributeValueStateCreated(AttributeValueEventId stateEventId) {
+        return new AbstractAttributeValueEvent.SimpleAttributeValueStateCreated(stateEventId);
     }
 
-    protected AttributeValueStateEvent.AttributeValueStateMergePatched newAttributeValueStateMergePatched(AttributeValueEventId stateEventId) {
-        return new AbstractAttributeValueStateEvent.SimpleAttributeValueStateMergePatched(stateEventId);
+    protected AttributeValueEvent.AttributeValueStateMergePatched newAttributeValueStateMergePatched(AttributeValueEventId stateEventId) {
+        return new AbstractAttributeValueEvent.SimpleAttributeValueStateMergePatched(stateEventId);
     }
 
-    protected AttributeValueStateEvent.AttributeValueStateRemoved newAttributeValueStateRemoved(AttributeValueEventId stateEventId)
+    protected AttributeValueEvent.AttributeValueStateRemoved newAttributeValueStateRemoved(AttributeValueEventId stateEventId)
     {
-        return new AbstractAttributeValueStateEvent.SimpleAttributeValueStateRemoved(stateEventId);
+        return new AbstractAttributeValueEvent.SimpleAttributeValueStateRemoved(stateEventId);
     }
 
-    protected AttributeAliasStateEvent.AttributeAliasStateCreated newAttributeAliasStateCreated(AttributeAliasEventId stateEventId) {
-        return new AbstractAttributeAliasStateEvent.SimpleAttributeAliasStateCreated(stateEventId);
+    protected AttributeAliasEvent.AttributeAliasStateCreated newAttributeAliasStateCreated(AttributeAliasEventId stateEventId) {
+        return new AbstractAttributeAliasEvent.SimpleAttributeAliasStateCreated(stateEventId);
     }
 
-    protected AttributeAliasStateEvent.AttributeAliasStateMergePatched newAttributeAliasStateMergePatched(AttributeAliasEventId stateEventId) {
-        return new AbstractAttributeAliasStateEvent.SimpleAttributeAliasStateMergePatched(stateEventId);
+    protected AttributeAliasEvent.AttributeAliasStateMergePatched newAttributeAliasStateMergePatched(AttributeAliasEventId stateEventId) {
+        return new AbstractAttributeAliasEvent.SimpleAttributeAliasStateMergePatched(stateEventId);
     }
 
-    protected AttributeAliasStateEvent.AttributeAliasStateRemoved newAttributeAliasStateRemoved(AttributeAliasEventId stateEventId)
+    protected AttributeAliasEvent.AttributeAliasStateRemoved newAttributeAliasStateRemoved(AttributeAliasEventId stateEventId)
     {
-        return new AbstractAttributeAliasStateEvent.SimpleAttributeAliasStateRemoved(stateEventId);
+        return new AbstractAttributeAliasEvent.SimpleAttributeAliasStateRemoved(stateEventId);
     }
 
     public static class SimpleAttributeAggregate extends AbstractAttributeAggregate

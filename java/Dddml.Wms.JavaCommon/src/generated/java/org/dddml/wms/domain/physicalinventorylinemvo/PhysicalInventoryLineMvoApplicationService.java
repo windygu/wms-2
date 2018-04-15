@@ -32,7 +32,7 @@ public interface PhysicalInventoryLineMvoApplicationService
 
     long getCount(Criterion filter);
 
-    PhysicalInventoryLineMvoStateEvent getStateEvent(PhysicalInventoryLineId physicalInventoryLineId, long version);
+    PhysicalInventoryLineMvoEvent getEvent(PhysicalInventoryLineId physicalInventoryLineId, long version);
 
     PhysicalInventoryLineMvoState getHistoryState(PhysicalInventoryLineId physicalInventoryLineId, long version);
 

@@ -2,9 +2,9 @@ package org.dddml.wms.domain.productcategory;
 
 import java.util.Date;
 import org.dddml.wms.domain.*;
-import org.dddml.wms.domain.AbstractStateEvent;
+import org.dddml.wms.domain.AbstractEvent;
 
-public class ProductCategoryStateEventDto extends AbstractStateEvent
+public class ProductCategoryStateEventDto extends AbstractEvent
 {
 
     private ProductCategoryEventId productCategoryEventId;
@@ -238,7 +238,7 @@ public class ProductCategoryStateEventDto extends AbstractStateEvent
 	public static class ProductCategoryStateCreatedDto extends ProductCategoryStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_CREATED;
         }
@@ -249,7 +249,7 @@ public class ProductCategoryStateEventDto extends AbstractStateEvent
 	public static class ProductCategoryStateMergePatchedDto extends ProductCategoryStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_MERGE_PATCHED;
         }
@@ -260,7 +260,7 @@ public class ProductCategoryStateEventDto extends AbstractStateEvent
 	public static class ProductCategoryStateDeletedDto extends ProductCategoryStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_DELETED;
         }

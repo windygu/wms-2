@@ -7,22 +7,22 @@ import org.dddml.wms.specialization.*;
 
 public class PicklistBinStateEventDtoConverter {
 
-    public PicklistBinStateEventDto toPicklistBinStateEventDto(AbstractPicklistBinStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractPicklistBinStateEvent.AbstractPicklistBinStateCreated) {
-            PicklistBinStateEvent.PicklistBinStateCreated e = (PicklistBinStateEvent.PicklistBinStateCreated) stateEvent;
+    public PicklistBinStateEventDto toPicklistBinStateEventDto(AbstractPicklistBinEvent stateEvent) {
+        if (stateEvent instanceof AbstractPicklistBinEvent.AbstractPicklistBinStateCreated) {
+            PicklistBinEvent.PicklistBinStateCreated e = (PicklistBinEvent.PicklistBinStateCreated) stateEvent;
             return toPicklistBinStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractPicklistBinStateEvent.AbstractPicklistBinStateMergePatched) {
-            PicklistBinStateEvent.PicklistBinStateMergePatched e = (PicklistBinStateEvent.PicklistBinStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractPicklistBinEvent.AbstractPicklistBinStateMergePatched) {
+            PicklistBinEvent.PicklistBinStateMergePatched e = (PicklistBinEvent.PicklistBinStateMergePatched) stateEvent;
             return toPicklistBinStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractPicklistBinStateEvent.AbstractPicklistBinStateDeleted) {
-            PicklistBinStateEvent.PicklistBinStateDeleted e = (PicklistBinStateEvent.PicklistBinStateDeleted) stateEvent;
+        } else if (stateEvent instanceof AbstractPicklistBinEvent.AbstractPicklistBinStateDeleted) {
+            PicklistBinEvent.PicklistBinStateDeleted e = (PicklistBinEvent.PicklistBinStateDeleted) stateEvent;
             return toPicklistBinStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public PicklistBinStateEventDto.PicklistBinStateCreatedDto toPicklistBinStateCreatedDto(PicklistBinStateEvent.PicklistBinStateCreated e) {
+    public PicklistBinStateEventDto.PicklistBinStateCreatedDto toPicklistBinStateCreatedDto(PicklistBinEvent.PicklistBinStateCreated e) {
         PicklistBinStateEventDto.PicklistBinStateCreatedDto dto = new PicklistBinStateEventDto.PicklistBinStateCreatedDto();
         dto.setPicklistBinEventId(e.getPicklistBinEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -34,7 +34,7 @@ public class PicklistBinStateEventDtoConverter {
         dto.setPrimaryShipGroupSeqId(e.getPrimaryShipGroupSeqId());
         dto.setActive(e.getActive());
         List<PicklistItemStateEventDto.PicklistItemStateCreatedDto> picklistItemEvents = new ArrayList<>();
-        for (PicklistItemStateEvent.PicklistItemStateCreated ee : e.getPicklistItemEvents()) {
+        for (PicklistItemEvent.PicklistItemStateCreated ee : e.getPicklistItemEvents()) {
             PicklistItemStateEventDto.PicklistItemStateCreatedDto eeDto = getPicklistItemStateEventDtoConverter().toPicklistItemStateCreatedDto(ee);
             picklistItemEvents.add(eeDto);
         }
@@ -43,7 +43,7 @@ public class PicklistBinStateEventDtoConverter {
         return dto;
     }
 
-    public PicklistBinStateEventDto.PicklistBinStateMergePatchedDto toPicklistBinStateMergePatchedDto(PicklistBinStateEvent.PicklistBinStateMergePatched e) {
+    public PicklistBinStateEventDto.PicklistBinStateMergePatchedDto toPicklistBinStateMergePatchedDto(PicklistBinEvent.PicklistBinStateMergePatched e) {
         PicklistBinStateEventDto.PicklistBinStateMergePatchedDto dto = new PicklistBinStateEventDto.PicklistBinStateMergePatchedDto();
         dto.setPicklistBinEventId(e.getPicklistBinEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -60,8 +60,8 @@ public class PicklistBinStateEventDtoConverter {
         dto.setIsPropertyPrimaryShipGroupSeqIdRemoved(e.getIsPropertyPrimaryShipGroupSeqIdRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
         List<PicklistItemStateEventDto> picklistItemEvents = new ArrayList<>();
-        for (PicklistItemStateEvent ee : e.getPicklistItemEvents()) {
-            PicklistItemStateEventDto eeDto = getPicklistItemStateEventDtoConverter().toPicklistItemStateEventDto((AbstractPicklistItemStateEvent) ee);
+        for (PicklistItemEvent ee : e.getPicklistItemEvents()) {
+            PicklistItemStateEventDto eeDto = getPicklistItemStateEventDtoConverter().toPicklistItemStateEventDto((AbstractPicklistItemEvent) ee);
             picklistItemEvents.add(eeDto);
         }
         dto.setPicklistItemEvents(picklistItemEvents.toArray(new PicklistItemStateEventDto[0]));
@@ -70,14 +70,14 @@ public class PicklistBinStateEventDtoConverter {
     }
 
 
-    public PicklistBinStateEventDto.PicklistBinStateDeletedDto toPicklistBinStateDeletedDto(PicklistBinStateEvent.PicklistBinStateDeleted e) {
+    public PicklistBinStateEventDto.PicklistBinStateDeletedDto toPicklistBinStateDeletedDto(PicklistBinEvent.PicklistBinStateDeleted e) {
         PicklistBinStateEventDto.PicklistBinStateDeletedDto dto = new PicklistBinStateEventDto.PicklistBinStateDeletedDto();
         dto.setPicklistBinEventId(e.getPicklistBinEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
         List<PicklistItemStateEventDto.PicklistItemStateRemovedDto> picklistItemEvents = new ArrayList<>();
-        for (PicklistItemStateEvent.PicklistItemStateRemoved ee : e.getPicklistItemEvents()) {
+        for (PicklistItemEvent.PicklistItemStateRemoved ee : e.getPicklistItemEvents()) {
             PicklistItemStateEventDto.PicklistItemStateRemovedDto eeDto = getPicklistItemStateEventDtoConverter().toPicklistItemStateRemovedDto(ee);
             picklistItemEvents.add(eeDto);
         }

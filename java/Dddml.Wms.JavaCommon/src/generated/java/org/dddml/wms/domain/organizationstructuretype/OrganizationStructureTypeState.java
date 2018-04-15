@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.organizationstructuretype.OrganizationStructureTypeStateEvent.*;
+import org.dddml.wms.domain.organizationstructuretype.OrganizationStructureTypeEvent.*;
 
 public interface OrganizationStructureTypeState
 {
@@ -56,11 +56,11 @@ public interface OrganizationStructureTypeState
 
     void mutate(Event e);
 
-    void when(OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateCreated e);
+    void when(OrganizationStructureTypeEvent.OrganizationStructureTypeStateCreated e);
 
-    void when(OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateMergePatched e);
+    void when(OrganizationStructureTypeEvent.OrganizationStructureTypeStateMergePatched e);
 
-    void when(OrganizationStructureTypeStateEvent.OrganizationStructureTypeStateDeleted e);
+    void when(OrganizationStructureTypeEvent.OrganizationStructureTypeStateDeleted e);
     
 }
 

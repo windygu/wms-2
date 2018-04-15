@@ -50,7 +50,7 @@ namespace Dddml.Wms.Domain.InventoryItemRequirementEntryMvo.NHibernate
             var es = criteria.List<IEvent>();
             foreach (InventoryItemRequirementEntryMvoStateEventBase e in es)
             {
-                e.StateEventReadOnly = true;
+                e.EventReadOnly = true;
             }
             return new EventStream()
             {

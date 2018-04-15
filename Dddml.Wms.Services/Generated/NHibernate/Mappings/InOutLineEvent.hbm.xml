@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+                   assembly="Dddml.Wms.Common" 
+                   namespace="Dddml.Wms.Domain.InOut">
+  
+  <class name="InOutLineStateEventBase" table="InOutLineEvents" mutable="false" abstract="true">
+
+    <composite-id name="InOutLineEventId" class="Dddml.Wms.Domain.InOut.InOutLineEventId">
+        <key-property name="InOutDocumentNumber" ><column name="InOutLineIdInOutDocumentNumber" length="50" /></key-property>
+        <key-property name="LineNumber" ><column name="InOutLineIdLineNumber" length="50" /></key-property>
+        <key-property name="InOutVersion" ></key-property>
+    </composite-id>
+    <discriminator column="EventType" type="String" />
+
+    <property name="LocatorId" ></property>
+    <property name="ProductId" ><column name="ProductId" sql-type="VARCHAR(60)" /></property>
+    <property name="AttributeSetInstanceId" ></property>
+    <property name="Description" ></property>
+    <property name="QuantityUomId" ></property>
+    <property name="MovementQuantity" ></property>
+    <property name="PickedQuantity" ></property>
+    <property name="IsInvoiced" ></property>
+    <property name="Processed" ></property>
+    <property name="RmaLineNumber" ></property>
+    <property name="ReversalLineNumber" ></property>
+    <property name="Active" ></property>
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+    <property name="Version" column="Version" not-null="true" />
+
+    <subclass name="InOutLineStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="InOutLineStateMergePatched"  discriminator-value="MergePatched">
+
+
+        <property name="IsPropertyLocatorIdRemoved" column="IsPropertyLocatorIdRemoved"/>
+
+        <property name="IsPropertyProductIdRemoved" column="IsPropertyProductIdRemoved"/>
+
+        <property name="IsPropertyAttributeSetInstanceIdRemoved" column="IsPropertyAttributeSetInstanceIdRemoved"/>
+
+        <property name="IsPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
+
+        <property name="IsPropertyQuantityUomIdRemoved" column="IsPropertyQuantityUomIdRemoved"/>
+
+        <property name="IsPropertyMovementQuantityRemoved" column="IsPropertyMovementQuantityRemoved"/>
+
+        <property name="IsPropertyPickedQuantityRemoved" column="IsPropertyPickedQuantityRemoved"/>
+
+        <property name="IsPropertyIsInvoicedRemoved" column="IsPropertyIsInvoicedRemoved"/>
+
+        <property name="IsPropertyProcessedRemoved" column="IsPropertyProcessedRemoved"/>
+
+        <property name="IsPropertyRmaLineNumberRemoved" column="IsPropertyRmaLineNumberRemoved"/>
+
+        <property name="IsPropertyReversalLineNumberRemoved" column="IsPropertyReversalLineNumberRemoved"/>
+
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+    </subclass>
+
+    <subclass name="InOutLineStateRemoved"  discriminator-value="Removed">
+
+    </subclass>
+
+
+
+  </class>
+  
+</hibernate-mapping>

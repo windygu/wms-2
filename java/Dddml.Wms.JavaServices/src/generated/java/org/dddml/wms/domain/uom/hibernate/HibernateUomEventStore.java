@@ -20,30 +20,30 @@ public class HibernateUomEventStore extends AbstractHibernateEventStore
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractUomStateEvent.class;
+        return AbstractUomEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractUomStateEvent.class;
+        Class supportedEventType = AbstractUomEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         String idObj = (String) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractUomStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractUomEvent.class);
         criteria.add(Restrictions.eq("uomEventId.uomId", idObj));
         criteria.add(Restrictions.le("uomEventId.version", version));
         criteria.addOrder(Order.asc("uomEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractUomStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractUomEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractUomStateEvent) es.get(es.size() - 1)).getUomEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractUomEvent) es.get(es.size() - 1)).getUomEventId().getVersion());
         } else {
             //todo?
         }

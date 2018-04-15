@@ -30,7 +30,7 @@ public interface OrganizationStructureApplicationService
 
     long getCount(Criterion filter);
 
-    OrganizationStructureStateEvent getStateEvent(OrganizationStructureId id, long version);
+    OrganizationStructureEvent getEvent(OrganizationStructureId id, long version);
 
     OrganizationStructureState getHistoryState(OrganizationStructureId id, long version);
 

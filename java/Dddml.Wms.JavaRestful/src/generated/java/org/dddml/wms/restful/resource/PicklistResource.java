@@ -182,7 +182,7 @@ public class PicklistResource {
 
             String idObj = id;
             PicklistStateEventDtoConverter dtoConverter = getPicklistStateEventDtoConverter();
-            return dtoConverter.toPicklistStateEventDto((AbstractPicklistStateEvent) picklistApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toPicklistStateEventDto((AbstractPicklistEvent) picklistApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

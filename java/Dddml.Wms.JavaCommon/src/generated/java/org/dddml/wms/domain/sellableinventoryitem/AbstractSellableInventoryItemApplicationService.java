@@ -118,7 +118,7 @@ public abstract class AbstractSellableInventoryItemApplicationService implements
         }
     }
 
-    public void initialize(SellableInventoryItemStateEvent.SellableInventoryItemStateCreated stateCreated) {
+    public void initialize(SellableInventoryItemEvent.SellableInventoryItemStateCreated stateCreated) {
         InventoryItemId aggregateId = stateCreated.getSellableInventoryItemEventId().getSellableInventoryItemId();
         SellableInventoryItemState state = new AbstractSellableInventoryItemState.SimpleSellableInventoryItemState();
         state.setSellableInventoryItemId(aggregateId);

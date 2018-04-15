@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.organizationstructuretype.OrganizationStructureTypeStateEvent.*;
+import org.dddml.wms.domain.organizationstructuretype.OrganizationStructureTypeEvent.*;
 
 public abstract class AbstractOrganizationStructureTypeState implements OrganizationStructureTypeState
 {
@@ -141,7 +141,7 @@ public abstract class AbstractOrganizationStructureTypeState implements Organiza
     public AbstractOrganizationStructureTypeState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setId(((OrganizationStructureTypeStateEvent) events.get(0)).getOrganizationStructureTypeEventId().getId());
+            this.setId(((OrganizationStructureTypeEvent) events.get(0)).getOrganizationStructureTypeEventId().getId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -237,10 +237,10 @@ public abstract class AbstractOrganizationStructureTypeState implements Organiza
     {
     }
 
-    protected void throwOnWrongEvent(OrganizationStructureTypeStateEvent stateEvent)
+    protected void throwOnWrongEvent(OrganizationStructureTypeEvent stateEvent)
     {
         String stateEntityId = this.getId(); // Aggregate Id
-        String eventEntityId = stateEvent.getOrganizationStructureTypeEventId().getId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        String eventEntityId = stateEvent.getOrganizationStructureTypeEventId().getId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

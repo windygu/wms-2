@@ -5,7 +5,7 @@ import org.dddml.wms.domain.order.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.orderitemshipgroupassociationmvo.OrderItemShipGroupAssociationMvoStateEvent.*;
+import org.dddml.wms.domain.orderitemshipgroupassociationmvo.OrderItemShipGroupAssociationMvoEvent.*;
 
 public abstract class AbstractOrderItemShipGroupAssociationMvoState implements OrderItemShipGroupAssociationMvoState
 {
@@ -814,7 +814,7 @@ public abstract class AbstractOrderItemShipGroupAssociationMvoState implements O
     public AbstractOrderItemShipGroupAssociationMvoState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setOrderItemShipGroupAssociationId(((OrderItemShipGroupAssociationMvoStateEvent) events.get(0)).getOrderItemShipGroupAssociationMvoEventId().getOrderItemShipGroupAssociationId());
+            this.setOrderItemShipGroupAssociationId(((OrderItemShipGroupAssociationMvoEvent) events.get(0)).getOrderItemShipGroupAssociationMvoEventId().getOrderItemShipGroupAssociationId());
             for (Event e : events) {
                 mutate(e);
                 this.setOrderVersion(this.getOrderVersion() + 1);
@@ -1582,10 +1582,10 @@ public abstract class AbstractOrderItemShipGroupAssociationMvoState implements O
     {
     }
 
-    protected void throwOnWrongEvent(OrderItemShipGroupAssociationMvoStateEvent stateEvent)
+    protected void throwOnWrongEvent(OrderItemShipGroupAssociationMvoEvent stateEvent)
     {
         OrderItemShipGroupAssociationId stateEntityId = this.getOrderItemShipGroupAssociationId(); // Aggregate Id
-        OrderItemShipGroupAssociationId eventEntityId = stateEvent.getOrderItemShipGroupAssociationMvoEventId().getOrderItemShipGroupAssociationId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        OrderItemShipGroupAssociationId eventEntityId = stateEvent.getOrderItemShipGroupAssociationMvoEventId().getOrderItemShipGroupAssociationId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

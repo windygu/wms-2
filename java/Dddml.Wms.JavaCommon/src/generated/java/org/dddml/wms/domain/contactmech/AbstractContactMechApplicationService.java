@@ -86,19 +86,19 @@ public abstract class AbstractContactMechApplicationService implements ContactMe
         return getStateQueryRepository().getCount(filter);
     }
 
-    public ContactMechStateEvent getStateEvent(String contactMechId, long version) {
-        ContactMechStateEvent e = (ContactMechStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(contactMechId), version);
+    public ContactMechEvent getEvent(String contactMechId, long version) {
+        ContactMechEvent e = (ContactMechEvent)getEventStore().getEvent(toEventStoreAggregateId(contactMechId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(contactMechId, 0);
+            return getEvent(contactMechId, 0);
         }
         return e;
     }
 
     public ContactMechState getHistoryState(String contactMechId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractContactMechStateEvent.class, toEventStoreAggregateId(contactMechId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractContactMechEvent.class, toEventStoreAggregateId(contactMechId), version - 1);
         return new AbstractContactMechState.SimpleContactMechState(eventStream.getEvents());
     }
 
@@ -137,7 +137,7 @@ public abstract class AbstractContactMechApplicationService implements ContactMe
         }
     }
 
-    public void initialize(ContactMechStateEvent.ContactMechStateCreated stateCreated) {
+    public void initialize(ContactMechEvent.ContactMechStateCreated stateCreated) {
         String aggregateId = stateCreated.getContactMechEventId().getContactMechId();
         ContactMechState state = new AbstractContactMechState.SimpleContactMechState();
         state.setContactMechId(aggregateId);
@@ -155,9 +155,9 @@ public abstract class AbstractContactMechApplicationService implements ContactMe
         if (command.getVersion() == null) { command.setVersion(ContactMechState.VERSION_NULL); }
         if (state.getVersion() != null && state.getVersion() > command.getVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractContactMechStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractContactMechEvent.class, eventStoreAggregateId, command.getVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

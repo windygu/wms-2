@@ -34,7 +34,7 @@ public interface PhysicalInventoryApplicationService
 
     long getCount(Criterion filter);
 
-    PhysicalInventoryStateEvent getStateEvent(String documentNumber, long version);
+    PhysicalInventoryEvent getEvent(String documentNumber, long version);
 
     PhysicalInventoryState getHistoryState(String documentNumber, long version);
 

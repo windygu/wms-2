@@ -30,7 +30,7 @@ public interface OrganizationStructureTypeApplicationService
 
     long getCount(Criterion filter);
 
-    OrganizationStructureTypeStateEvent getStateEvent(String id, long version);
+    OrganizationStructureTypeEvent getEvent(String id, long version);
 
     OrganizationStructureTypeState getHistoryState(String id, long version);
 

@@ -142,7 +142,7 @@ public class AttributeSetInstanceResource {
 
             String idObj = id;
             AttributeSetInstanceStateEventDtoConverter dtoConverter = getAttributeSetInstanceStateEventDtoConverter();
-            return dtoConverter.toAttributeSetInstanceStateEventDto((AbstractAttributeSetInstanceStateEvent) attributeSetInstanceApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toAttributeSetInstanceStateEventDto((AbstractAttributeSetInstanceEvent) attributeSetInstanceApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

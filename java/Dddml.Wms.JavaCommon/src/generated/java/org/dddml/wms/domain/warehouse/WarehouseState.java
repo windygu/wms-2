@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.warehouse.WarehouseStateEvent.*;
+import org.dddml.wms.domain.warehouse.WarehouseEvent.*;
 
 public interface WarehouseState
 {
@@ -64,11 +64,11 @@ public interface WarehouseState
 
     void mutate(Event e);
 
-    void when(WarehouseStateEvent.WarehouseStateCreated e);
+    void when(WarehouseEvent.WarehouseStateCreated e);
 
-    void when(WarehouseStateEvent.WarehouseStateMergePatched e);
+    void when(WarehouseEvent.WarehouseStateMergePatched e);
 
-    void when(WarehouseStateEvent.WarehouseStateDeleted e);
+    void when(WarehouseEvent.WarehouseStateDeleted e);
     
 }
 

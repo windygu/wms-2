@@ -27,13 +27,13 @@ public abstract class AbstractSupplierProductAggregate extends AbstractAggregate
     public void create(SupplierProductCommand.CreateSupplierProduct c)
     {
         if (c.getVersion() == null) { c.setVersion(SupplierProductState.VERSION_NULL); }
-        SupplierProductStateEvent e = map(c);
+        SupplierProductEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(SupplierProductCommand.MergePatchSupplierProduct c)
     {
-        SupplierProductStateEvent e = map(c);
+        SupplierProductEvent e = map(c);
         apply(e);
     }
 
@@ -48,9 +48,9 @@ public abstract class AbstractSupplierProductAggregate extends AbstractAggregate
         changes.add(e);
     }
 
-    protected SupplierProductStateEvent map(SupplierProductCommand.CreateSupplierProduct c) {
+    protected SupplierProductEvent map(SupplierProductCommand.CreateSupplierProduct c) {
         SupplierProductEventId stateEventId = new SupplierProductEventId(c.getSupplierProductId(), c.getVersion());
-        SupplierProductStateEvent.SupplierProductStateCreated e = newSupplierProductStateCreated(stateEventId);
+        SupplierProductEvent.SupplierProductStateCreated e = newSupplierProductStateCreated(stateEventId);
         e.setAvailableThruDate(c.getAvailableThruDate());
         e.setSupplierPrefOrderId(c.getSupplierPrefOrderId());
         e.setSupplierRatingTypeId(c.getSupplierRatingTypeId());
@@ -65,15 +65,15 @@ public abstract class AbstractSupplierProductAggregate extends AbstractAggregate
         e.setCanDropShip(c.getCanDropShip());
         e.setComments(c.getComments());
         e.setActive(c.getActive());
-        ((AbstractSupplierProductStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractSupplierProductEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected SupplierProductStateEvent map(SupplierProductCommand.MergePatchSupplierProduct c) {
+    protected SupplierProductEvent map(SupplierProductCommand.MergePatchSupplierProduct c) {
         SupplierProductEventId stateEventId = new SupplierProductEventId(c.getSupplierProductId(), c.getVersion());
-        SupplierProductStateEvent.SupplierProductStateMergePatched e = newSupplierProductStateMergePatched(stateEventId);
+        SupplierProductEvent.SupplierProductStateMergePatched e = newSupplierProductStateMergePatched(stateEventId);
         e.setAvailableThruDate(c.getAvailableThruDate());
         e.setSupplierPrefOrderId(c.getSupplierPrefOrderId());
         e.setSupplierRatingTypeId(c.getSupplierRatingTypeId());
@@ -102,7 +102,7 @@ public abstract class AbstractSupplierProductAggregate extends AbstractAggregate
         e.setIsPropertyCanDropShipRemoved(c.getIsPropertyCanDropShipRemoved());
         e.setIsPropertyCommentsRemoved(c.getIsPropertyCommentsRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
-        ((AbstractSupplierProductStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractSupplierProductEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
@@ -111,30 +111,30 @@ public abstract class AbstractSupplierProductAggregate extends AbstractAggregate
 
     ////////////////////////
 
-    protected SupplierProductStateEvent.SupplierProductStateCreated newSupplierProductStateCreated(Long version, String commandId, String requesterId) {
+    protected SupplierProductEvent.SupplierProductStateCreated newSupplierProductStateCreated(Long version, String commandId, String requesterId) {
         SupplierProductEventId stateEventId = new SupplierProductEventId(this.state.getSupplierProductId(), version);
-        SupplierProductStateEvent.SupplierProductStateCreated e = newSupplierProductStateCreated(stateEventId);
-        ((AbstractSupplierProductStateEvent)e).setCommandId(commandId);
+        SupplierProductEvent.SupplierProductStateCreated e = newSupplierProductStateCreated(stateEventId);
+        ((AbstractSupplierProductEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected SupplierProductStateEvent.SupplierProductStateMergePatched newSupplierProductStateMergePatched(Long version, String commandId, String requesterId) {
+    protected SupplierProductEvent.SupplierProductStateMergePatched newSupplierProductStateMergePatched(Long version, String commandId, String requesterId) {
         SupplierProductEventId stateEventId = new SupplierProductEventId(this.state.getSupplierProductId(), version);
-        SupplierProductStateEvent.SupplierProductStateMergePatched e = newSupplierProductStateMergePatched(stateEventId);
-        ((AbstractSupplierProductStateEvent)e).setCommandId(commandId);
+        SupplierProductEvent.SupplierProductStateMergePatched e = newSupplierProductStateMergePatched(stateEventId);
+        ((AbstractSupplierProductEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected SupplierProductStateEvent.SupplierProductStateCreated newSupplierProductStateCreated(SupplierProductEventId stateEventId) {
-        return new AbstractSupplierProductStateEvent.SimpleSupplierProductStateCreated(stateEventId);
+    protected SupplierProductEvent.SupplierProductStateCreated newSupplierProductStateCreated(SupplierProductEventId stateEventId) {
+        return new AbstractSupplierProductEvent.SimpleSupplierProductStateCreated(stateEventId);
     }
 
-    protected SupplierProductStateEvent.SupplierProductStateMergePatched newSupplierProductStateMergePatched(SupplierProductEventId stateEventId) {
-        return new AbstractSupplierProductStateEvent.SimpleSupplierProductStateMergePatched(stateEventId);
+    protected SupplierProductEvent.SupplierProductStateMergePatched newSupplierProductStateMergePatched(SupplierProductEventId stateEventId) {
+        return new AbstractSupplierProductEvent.SimpleSupplierProductStateMergePatched(stateEventId);
     }
 
     public static class SimpleSupplierProductAggregate extends AbstractSupplierProductAggregate

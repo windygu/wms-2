@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.inventoryprtriggered.InventoryPRTriggeredStateEvent.*;
+import org.dddml.wms.domain.inventoryprtriggered.InventoryPRTriggeredEvent.*;
 
 public interface InventoryPRTriggeredState
 {
@@ -52,9 +52,9 @@ public interface InventoryPRTriggeredState
 
     void mutate(Event e);
 
-    void when(InventoryPRTriggeredStateEvent.InventoryPRTriggeredStateCreated e);
+    void when(InventoryPRTriggeredEvent.InventoryPRTriggeredStateCreated e);
 
-    void when(InventoryPRTriggeredStateEvent.InventoryPRTriggeredStateMergePatched e);
+    void when(InventoryPRTriggeredEvent.InventoryPRTriggeredStateMergePatched e);
 
     
 }

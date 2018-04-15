@@ -21,30 +21,30 @@ public class HibernatePicklistEventStore extends AbstractHibernateEventStore
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractPicklistStateEvent.class;
+        return AbstractPicklistEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractPicklistStateEvent.class;
+        Class supportedEventType = AbstractPicklistEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         String idObj = (String) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractPicklistStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractPicklistEvent.class);
         criteria.add(Restrictions.eq("picklistEventId.picklistId", idObj));
         criteria.add(Restrictions.le("picklistEventId.version", version));
         criteria.addOrder(Order.asc("picklistEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractPicklistStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractPicklistEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractPicklistStateEvent) es.get(es.size() - 1)).getPicklistEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractPicklistEvent) es.get(es.size() - 1)).getPicklistEventId().getVersion());
         } else {
             //todo?
         }

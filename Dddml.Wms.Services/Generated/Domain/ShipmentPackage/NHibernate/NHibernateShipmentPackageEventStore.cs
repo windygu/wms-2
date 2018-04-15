@@ -46,7 +46,7 @@ namespace Dddml.Wms.Domain.ShipmentPackage.NHibernate
             var es = criteria.List<IEvent>();
             foreach (ShipmentPackageStateEventBase e in es)
             {
-                e.StateEventReadOnly = true;
+                e.EventReadOnly = true;
             }
             return new EventStream()
             {

@@ -7,22 +7,22 @@ import org.dddml.wms.specialization.*;
 
 public class LocatorTypeStateEventDtoConverter {
 
-    public LocatorTypeStateEventDto toLocatorTypeStateEventDto(AbstractLocatorTypeStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractLocatorTypeStateEvent.AbstractLocatorTypeStateCreated) {
-            LocatorTypeStateEvent.LocatorTypeStateCreated e = (LocatorTypeStateEvent.LocatorTypeStateCreated) stateEvent;
+    public LocatorTypeStateEventDto toLocatorTypeStateEventDto(AbstractLocatorTypeEvent stateEvent) {
+        if (stateEvent instanceof AbstractLocatorTypeEvent.AbstractLocatorTypeStateCreated) {
+            LocatorTypeEvent.LocatorTypeStateCreated e = (LocatorTypeEvent.LocatorTypeStateCreated) stateEvent;
             return toLocatorTypeStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractLocatorTypeStateEvent.AbstractLocatorTypeStateMergePatched) {
-            LocatorTypeStateEvent.LocatorTypeStateMergePatched e = (LocatorTypeStateEvent.LocatorTypeStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractLocatorTypeEvent.AbstractLocatorTypeStateMergePatched) {
+            LocatorTypeEvent.LocatorTypeStateMergePatched e = (LocatorTypeEvent.LocatorTypeStateMergePatched) stateEvent;
             return toLocatorTypeStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractLocatorTypeStateEvent.AbstractLocatorTypeStateDeleted) {
-            LocatorTypeStateEvent.LocatorTypeStateDeleted e = (LocatorTypeStateEvent.LocatorTypeStateDeleted) stateEvent;
+        } else if (stateEvent instanceof AbstractLocatorTypeEvent.AbstractLocatorTypeStateDeleted) {
+            LocatorTypeEvent.LocatorTypeStateDeleted e = (LocatorTypeEvent.LocatorTypeStateDeleted) stateEvent;
             return toLocatorTypeStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public LocatorTypeStateEventDto.LocatorTypeStateCreatedDto toLocatorTypeStateCreatedDto(LocatorTypeStateEvent.LocatorTypeStateCreated e) {
+    public LocatorTypeStateEventDto.LocatorTypeStateCreatedDto toLocatorTypeStateCreatedDto(LocatorTypeEvent.LocatorTypeStateCreated e) {
         LocatorTypeStateEventDto.LocatorTypeStateCreatedDto dto = new LocatorTypeStateEventDto.LocatorTypeStateCreatedDto();
         dto.setLocatorTypeEventId(e.getLocatorTypeEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -33,7 +33,7 @@ public class LocatorTypeStateEventDtoConverter {
         return dto;
     }
 
-    public LocatorTypeStateEventDto.LocatorTypeStateMergePatchedDto toLocatorTypeStateMergePatchedDto(LocatorTypeStateEvent.LocatorTypeStateMergePatched e) {
+    public LocatorTypeStateEventDto.LocatorTypeStateMergePatchedDto toLocatorTypeStateMergePatchedDto(LocatorTypeEvent.LocatorTypeStateMergePatched e) {
         LocatorTypeStateEventDto.LocatorTypeStateMergePatchedDto dto = new LocatorTypeStateEventDto.LocatorTypeStateMergePatchedDto();
         dto.setLocatorTypeEventId(e.getLocatorTypeEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -47,7 +47,7 @@ public class LocatorTypeStateEventDtoConverter {
     }
 
 
-    public LocatorTypeStateEventDto.LocatorTypeStateDeletedDto toLocatorTypeStateDeletedDto(LocatorTypeStateEvent.LocatorTypeStateDeleted e) {
+    public LocatorTypeStateEventDto.LocatorTypeStateDeletedDto toLocatorTypeStateDeletedDto(LocatorTypeEvent.LocatorTypeStateDeleted e) {
         LocatorTypeStateEventDto.LocatorTypeStateDeletedDto dto = new LocatorTypeStateEventDto.LocatorTypeStateDeletedDto();
         dto.setLocatorTypeEventId(e.getLocatorTypeEventId());
         dto.setCreatedAt(e.getCreatedAt());

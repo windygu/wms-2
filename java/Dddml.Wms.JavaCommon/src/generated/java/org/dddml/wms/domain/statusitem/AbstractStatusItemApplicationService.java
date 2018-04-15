@@ -107,7 +107,7 @@ public abstract class AbstractStatusItemApplicationService implements StatusItem
         }
     }
 
-    public void initialize(StatusItemStateEvent.StatusItemStateCreated stateCreated) {
+    public void initialize(StatusItemEvent.StatusItemStateCreated stateCreated) {
         String aggregateId = stateCreated.getStatusItemEventId().getStatusId();
         StatusItemState state = new AbstractStatusItemState.SimpleStatusItemState();
         state.setStatusId(aggregateId);

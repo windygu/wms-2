@@ -2,9 +2,9 @@ package org.dddml.wms.domain.picklistbin;
 
 import java.util.Date;
 import org.dddml.wms.domain.*;
-import org.dddml.wms.domain.AbstractStateEvent;
+import org.dddml.wms.domain.AbstractEvent;
 
-public class PicklistItemStateEventDto extends AbstractStateEvent
+public class PicklistItemStateEventDto extends AbstractEvent
 {
 
     private PicklistItemEventId picklistItemEventId;
@@ -120,7 +120,7 @@ public class PicklistItemStateEventDto extends AbstractStateEvent
 	public static class PicklistItemStateCreatedDto extends PicklistItemStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_CREATED;
         }
@@ -131,7 +131,7 @@ public class PicklistItemStateEventDto extends AbstractStateEvent
 	public static class PicklistItemStateMergePatchedDto extends PicklistItemStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_MERGE_PATCHED;
         }
@@ -142,7 +142,7 @@ public class PicklistItemStateEventDto extends AbstractStateEvent
 	public static class PicklistItemStateRemovedDto extends PicklistItemStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_REMOVED;
         }

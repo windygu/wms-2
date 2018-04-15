@@ -181,7 +181,7 @@ public class AttributeSetInstanceExtensionFieldResource {
 
             String idObj = id;
             AttributeSetInstanceExtensionFieldStateEventDtoConverter dtoConverter = getAttributeSetInstanceExtensionFieldStateEventDtoConverter();
-            return dtoConverter.toAttributeSetInstanceExtensionFieldStateEventDto((AbstractAttributeSetInstanceExtensionFieldStateEvent) attributeSetInstanceExtensionFieldApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toAttributeSetInstanceExtensionFieldStateEventDto((AbstractAttributeSetInstanceExtensionFieldEvent) attributeSetInstanceExtensionFieldApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

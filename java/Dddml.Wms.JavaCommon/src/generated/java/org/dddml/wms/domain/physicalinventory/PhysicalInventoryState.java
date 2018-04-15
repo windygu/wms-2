@@ -6,7 +6,7 @@ import java.util.Date;
 import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.physicalinventory.PhysicalInventoryStateEvent.*;
+import org.dddml.wms.domain.physicalinventory.PhysicalInventoryEvent.*;
 
 public interface PhysicalInventoryState
 {
@@ -108,9 +108,9 @@ public interface PhysicalInventoryState
 
     void mutate(Event e);
 
-    void when(PhysicalInventoryStateEvent.PhysicalInventoryStateCreated e);
+    void when(PhysicalInventoryEvent.PhysicalInventoryStateCreated e);
 
-    void when(PhysicalInventoryStateEvent.PhysicalInventoryStateMergePatched e);
+    void when(PhysicalInventoryEvent.PhysicalInventoryStateMergePatched e);
 
     
 }

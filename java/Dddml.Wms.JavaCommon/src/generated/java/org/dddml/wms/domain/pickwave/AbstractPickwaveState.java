@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.pickwave.PickwaveStateEvent.*;
+import org.dddml.wms.domain.pickwave.PickwaveEvent.*;
 
 public abstract class AbstractPickwaveState implements PickwaveState
 {
@@ -153,7 +153,7 @@ public abstract class AbstractPickwaveState implements PickwaveState
     public AbstractPickwaveState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setPickwaveId(((PickwaveStateEvent) events.get(0)).getPickwaveEventId().getPickwaveId());
+            this.setPickwaveId(((PickwaveEvent) events.get(0)).getPickwaveEventId().getPickwaveId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -261,10 +261,10 @@ public abstract class AbstractPickwaveState implements PickwaveState
     {
     }
 
-    protected void throwOnWrongEvent(PickwaveStateEvent stateEvent)
+    protected void throwOnWrongEvent(PickwaveEvent stateEvent)
     {
         Long stateEntityId = this.getPickwaveId(); // Aggregate Id
-        Long eventEntityId = stateEvent.getPickwaveEventId().getPickwaveId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        Long eventEntityId = stateEvent.getPickwaveEventId().getPickwaveId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

@@ -32,7 +32,7 @@ public interface MovementConfirmationLineMvoApplicationService
 
     long getCount(Criterion filter);
 
-    MovementConfirmationLineMvoStateEvent getStateEvent(MovementConfirmationLineId movementConfirmationLineId, long version);
+    MovementConfirmationLineMvoEvent getEvent(MovementConfirmationLineId movementConfirmationLineId, long version);
 
     MovementConfirmationLineMvoState getHistoryState(MovementConfirmationLineId movementConfirmationLineId, long version);
 

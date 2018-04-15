@@ -7,22 +7,22 @@ import org.dddml.wms.specialization.*;
 
 public class ItemIssuanceStateEventDtoConverter {
 
-    public ItemIssuanceStateEventDto toItemIssuanceStateEventDto(AbstractItemIssuanceStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractItemIssuanceStateEvent.AbstractItemIssuanceStateCreated) {
-            ItemIssuanceStateEvent.ItemIssuanceStateCreated e = (ItemIssuanceStateEvent.ItemIssuanceStateCreated) stateEvent;
+    public ItemIssuanceStateEventDto toItemIssuanceStateEventDto(AbstractItemIssuanceEvent stateEvent) {
+        if (stateEvent instanceof AbstractItemIssuanceEvent.AbstractItemIssuanceStateCreated) {
+            ItemIssuanceEvent.ItemIssuanceStateCreated e = (ItemIssuanceEvent.ItemIssuanceStateCreated) stateEvent;
             return toItemIssuanceStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractItemIssuanceStateEvent.AbstractItemIssuanceStateMergePatched) {
-            ItemIssuanceStateEvent.ItemIssuanceStateMergePatched e = (ItemIssuanceStateEvent.ItemIssuanceStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractItemIssuanceEvent.AbstractItemIssuanceStateMergePatched) {
+            ItemIssuanceEvent.ItemIssuanceStateMergePatched e = (ItemIssuanceEvent.ItemIssuanceStateMergePatched) stateEvent;
             return toItemIssuanceStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractItemIssuanceStateEvent.AbstractItemIssuanceStateRemoved) {
-            ItemIssuanceStateEvent.ItemIssuanceStateRemoved e = (ItemIssuanceStateEvent.ItemIssuanceStateRemoved) stateEvent;
+        } else if (stateEvent instanceof AbstractItemIssuanceEvent.AbstractItemIssuanceStateRemoved) {
+            ItemIssuanceEvent.ItemIssuanceStateRemoved e = (ItemIssuanceEvent.ItemIssuanceStateRemoved) stateEvent;
             return toItemIssuanceStateRemovedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public ItemIssuanceStateEventDto.ItemIssuanceStateCreatedDto toItemIssuanceStateCreatedDto(ItemIssuanceStateEvent.ItemIssuanceStateCreated e) {
+    public ItemIssuanceStateEventDto.ItemIssuanceStateCreatedDto toItemIssuanceStateCreatedDto(ItemIssuanceEvent.ItemIssuanceStateCreated e) {
         ItemIssuanceStateEventDto.ItemIssuanceStateCreatedDto dto = new ItemIssuanceStateEventDto.ItemIssuanceStateCreatedDto();
         dto.setItemIssuanceEventId(e.getItemIssuanceEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -46,7 +46,7 @@ public class ItemIssuanceStateEventDtoConverter {
         return dto;
     }
 
-    public ItemIssuanceStateEventDto.ItemIssuanceStateMergePatchedDto toItemIssuanceStateMergePatchedDto(ItemIssuanceStateEvent.ItemIssuanceStateMergePatched e) {
+    public ItemIssuanceStateEventDto.ItemIssuanceStateMergePatchedDto toItemIssuanceStateMergePatchedDto(ItemIssuanceEvent.ItemIssuanceStateMergePatched e) {
         ItemIssuanceStateEventDto.ItemIssuanceStateMergePatchedDto dto = new ItemIssuanceStateEventDto.ItemIssuanceStateMergePatchedDto();
         dto.setItemIssuanceEventId(e.getItemIssuanceEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -85,7 +85,7 @@ public class ItemIssuanceStateEventDtoConverter {
     }
 
 
-    public ItemIssuanceStateEventDto.ItemIssuanceStateRemovedDto toItemIssuanceStateRemovedDto(ItemIssuanceStateEvent.ItemIssuanceStateRemoved e) {
+    public ItemIssuanceStateEventDto.ItemIssuanceStateRemovedDto toItemIssuanceStateRemovedDto(ItemIssuanceEvent.ItemIssuanceStateRemoved e) {
         ItemIssuanceStateEventDto.ItemIssuanceStateRemovedDto dto = new ItemIssuanceStateEventDto.ItemIssuanceStateRemovedDto();
         dto.setItemIssuanceEventId(e.getItemIssuanceEventId());
         dto.setCreatedAt(e.getCreatedAt());

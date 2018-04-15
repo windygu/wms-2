@@ -31,7 +31,7 @@ public interface ShipmentPackageContentMvoApplicationService
 
     long getCount(Criterion filter);
 
-    ShipmentPackageContentMvoStateEvent getStateEvent(ShipmentPackageContentId shipmentPackageContentId, long version);
+    ShipmentPackageContentMvoEvent getEvent(ShipmentPackageContentId shipmentPackageContentId, long version);
 
     ShipmentPackageContentMvoState getHistoryState(ShipmentPackageContentId shipmentPackageContentId, long version);
 

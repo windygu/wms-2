@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.party.OrganizationStateEvent.*;
+import org.dddml.wms.domain.party.OrganizationEvent.*;
 
 public abstract class AbstractOrganizationState extends AbstractPartyState implements OrganizationState
 {
@@ -60,7 +60,7 @@ public abstract class AbstractOrganizationState extends AbstractPartyState imple
     public AbstractOrganizationState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setPartyId(((OrganizationStateEvent) events.get(0)).getPartyEventId().getPartyId());
+            this.setPartyId(((OrganizationEvent) events.get(0)).getPartyEventId().getPartyId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -92,8 +92,8 @@ public abstract class AbstractOrganizationState extends AbstractPartyState imple
             when((OrganizationStateMergePatched) e);
         } else if (e instanceof OrganizationStateDeleted) {
             when((OrganizationStateDeleted) e);
-        } else if (e instanceof PartyStateEvent.PartyStateDeleted) {
-            when((PartyStateEvent.PartyStateDeleted) e);
+        } else if (e instanceof PartyEvent.PartyStateDeleted) {
+            when((PartyEvent.PartyStateDeleted) e);
         } else {
             throw new UnsupportedOperationException(String.format("Unsupported event type: %1$s", e.getClass().getName()));
         }

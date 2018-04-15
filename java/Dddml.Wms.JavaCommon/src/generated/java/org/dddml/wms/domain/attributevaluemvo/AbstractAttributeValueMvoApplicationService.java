@@ -87,19 +87,19 @@ public abstract class AbstractAttributeValueMvoApplicationService implements Att
         return getStateQueryRepository().getCount(filter);
     }
 
-    public AttributeValueMvoStateEvent getStateEvent(AttributeValueId attributeValueId, long version) {
-        AttributeValueMvoStateEvent e = (AttributeValueMvoStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(attributeValueId), version);
+    public AttributeValueMvoEvent getEvent(AttributeValueId attributeValueId, long version) {
+        AttributeValueMvoEvent e = (AttributeValueMvoEvent)getEventStore().getEvent(toEventStoreAggregateId(attributeValueId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(attributeValueId, 0);
+            return getEvent(attributeValueId, 0);
         }
         return e;
     }
 
     public AttributeValueMvoState getHistoryState(AttributeValueId attributeValueId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractAttributeValueMvoStateEvent.class, toEventStoreAggregateId(attributeValueId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractAttributeValueMvoEvent.class, toEventStoreAggregateId(attributeValueId), version - 1);
         return new AbstractAttributeValueMvoState.SimpleAttributeValueMvoState(eventStream.getEvents());
     }
 
@@ -138,7 +138,7 @@ public abstract class AbstractAttributeValueMvoApplicationService implements Att
         }
     }
 
-    public void initialize(AttributeValueMvoStateEvent.AttributeValueMvoStateCreated stateCreated) {
+    public void initialize(AttributeValueMvoEvent.AttributeValueMvoStateCreated stateCreated) {
         AttributeValueId aggregateId = stateCreated.getAttributeValueMvoEventId().getAttributeValueId();
         AttributeValueMvoState state = new AbstractAttributeValueMvoState.SimpleAttributeValueMvoState();
         state.setAttributeValueId(aggregateId);
@@ -156,9 +156,9 @@ public abstract class AbstractAttributeValueMvoApplicationService implements Att
         if (command.getAttributeVersion() == null) { command.setAttributeVersion(AttributeValueMvoState.VERSION_NULL); }
         if (state.getAttributeVersion() != null && state.getAttributeVersion() > command.getAttributeVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractAttributeValueMvoStateEvent.class, eventStoreAggregateId, command.getAttributeVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractAttributeValueMvoEvent.class, eventStoreAggregateId, command.getAttributeVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

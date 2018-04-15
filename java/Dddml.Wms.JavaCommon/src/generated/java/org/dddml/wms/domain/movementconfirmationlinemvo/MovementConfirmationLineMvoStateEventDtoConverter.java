@@ -9,22 +9,22 @@ import org.dddml.wms.specialization.*;
 
 public class MovementConfirmationLineMvoStateEventDtoConverter {
 
-    public MovementConfirmationLineMvoStateEventDto toMovementConfirmationLineMvoStateEventDto(AbstractMovementConfirmationLineMvoStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractMovementConfirmationLineMvoStateEvent.AbstractMovementConfirmationLineMvoStateCreated) {
-            MovementConfirmationLineMvoStateEvent.MovementConfirmationLineMvoStateCreated e = (MovementConfirmationLineMvoStateEvent.MovementConfirmationLineMvoStateCreated) stateEvent;
+    public MovementConfirmationLineMvoStateEventDto toMovementConfirmationLineMvoStateEventDto(AbstractMovementConfirmationLineMvoEvent stateEvent) {
+        if (stateEvent instanceof AbstractMovementConfirmationLineMvoEvent.AbstractMovementConfirmationLineMvoStateCreated) {
+            MovementConfirmationLineMvoEvent.MovementConfirmationLineMvoStateCreated e = (MovementConfirmationLineMvoEvent.MovementConfirmationLineMvoStateCreated) stateEvent;
             return toMovementConfirmationLineMvoStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractMovementConfirmationLineMvoStateEvent.AbstractMovementConfirmationLineMvoStateMergePatched) {
-            MovementConfirmationLineMvoStateEvent.MovementConfirmationLineMvoStateMergePatched e = (MovementConfirmationLineMvoStateEvent.MovementConfirmationLineMvoStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractMovementConfirmationLineMvoEvent.AbstractMovementConfirmationLineMvoStateMergePatched) {
+            MovementConfirmationLineMvoEvent.MovementConfirmationLineMvoStateMergePatched e = (MovementConfirmationLineMvoEvent.MovementConfirmationLineMvoStateMergePatched) stateEvent;
             return toMovementConfirmationLineMvoStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractMovementConfirmationLineMvoStateEvent.AbstractMovementConfirmationLineMvoStateDeleted) {
-            MovementConfirmationLineMvoStateEvent.MovementConfirmationLineMvoStateDeleted e = (MovementConfirmationLineMvoStateEvent.MovementConfirmationLineMvoStateDeleted) stateEvent;
+        } else if (stateEvent instanceof AbstractMovementConfirmationLineMvoEvent.AbstractMovementConfirmationLineMvoStateDeleted) {
+            MovementConfirmationLineMvoEvent.MovementConfirmationLineMvoStateDeleted e = (MovementConfirmationLineMvoEvent.MovementConfirmationLineMvoStateDeleted) stateEvent;
             return toMovementConfirmationLineMvoStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public MovementConfirmationLineMvoStateEventDto.MovementConfirmationLineMvoStateCreatedDto toMovementConfirmationLineMvoStateCreatedDto(MovementConfirmationLineMvoStateEvent.MovementConfirmationLineMvoStateCreated e) {
+    public MovementConfirmationLineMvoStateEventDto.MovementConfirmationLineMvoStateCreatedDto toMovementConfirmationLineMvoStateCreatedDto(MovementConfirmationLineMvoEvent.MovementConfirmationLineMvoStateCreated e) {
         MovementConfirmationLineMvoStateEventDto.MovementConfirmationLineMvoStateCreatedDto dto = new MovementConfirmationLineMvoStateEventDto.MovementConfirmationLineMvoStateCreatedDto();
         dto.setMovementConfirmationLineMvoEventId(e.getMovementConfirmationLineMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -56,7 +56,7 @@ public class MovementConfirmationLineMvoStateEventDtoConverter {
         return dto;
     }
 
-    public MovementConfirmationLineMvoStateEventDto.MovementConfirmationLineMvoStateMergePatchedDto toMovementConfirmationLineMvoStateMergePatchedDto(MovementConfirmationLineMvoStateEvent.MovementConfirmationLineMvoStateMergePatched e) {
+    public MovementConfirmationLineMvoStateEventDto.MovementConfirmationLineMvoStateMergePatchedDto toMovementConfirmationLineMvoStateMergePatchedDto(MovementConfirmationLineMvoEvent.MovementConfirmationLineMvoStateMergePatched e) {
         MovementConfirmationLineMvoStateEventDto.MovementConfirmationLineMvoStateMergePatchedDto dto = new MovementConfirmationLineMvoStateEventDto.MovementConfirmationLineMvoStateMergePatchedDto();
         dto.setMovementConfirmationLineMvoEventId(e.getMovementConfirmationLineMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -112,7 +112,7 @@ public class MovementConfirmationLineMvoStateEventDtoConverter {
     }
 
 
-    public MovementConfirmationLineMvoStateEventDto.MovementConfirmationLineMvoStateDeletedDto toMovementConfirmationLineMvoStateDeletedDto(MovementConfirmationLineMvoStateEvent.MovementConfirmationLineMvoStateDeleted e) {
+    public MovementConfirmationLineMvoStateEventDto.MovementConfirmationLineMvoStateDeletedDto toMovementConfirmationLineMvoStateDeletedDto(MovementConfirmationLineMvoEvent.MovementConfirmationLineMvoStateDeleted e) {
         MovementConfirmationLineMvoStateEventDto.MovementConfirmationLineMvoStateDeletedDto dto = new MovementConfirmationLineMvoStateEventDto.MovementConfirmationLineMvoStateDeletedDto();
         dto.setMovementConfirmationLineMvoEventId(e.getMovementConfirmationLineMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());

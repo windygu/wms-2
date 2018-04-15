@@ -267,7 +267,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
                 throw new IllegalArgumentException(String.format("Error shipment status: %1$s.", getState().getStatusId()));
             }
 
-            ShipmentStateEvent.ShipmentStateMergePatched e = newShipmentStateMergePatched(version, commandId, requesterId);
+            ShipmentEvent.ShipmentStateMergePatched e = newShipmentStateMergePatched(version, commandId, requesterId);
             if (Objects.equals(getState().getShipmentTypeId().toLowerCase(), ShipmentTypeIds.INCOMING_SHIPMENT.toLowerCase())
                     || Objects.equals(ShipmentTypeIds.getParentTypeId(getState().getShipmentTypeId()).toLowerCase(), ShipmentTypeIds.INCOMING_SHIPMENT.toLowerCase())) {
                 e.setStatusId(StatusItemIds.PURCH_SHIP_SHIPPED);
@@ -286,7 +286,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
             if (!isStatusOk) {
                 throw new IllegalArgumentException(String.format("Error shipment status: %1$s.", getState().getStatusId()));
             }
-            ShipmentStateEvent.ShipmentStateMergePatched e = newShipmentStateMergePatched(version, commandId, requesterId);
+            ShipmentEvent.ShipmentStateMergePatched e = newShipmentStateMergePatched(version, commandId, requesterId);
             e.setStatusId(StatusItemIds.PURCH_SHIP_RECEIVED);
             apply(e);
         }

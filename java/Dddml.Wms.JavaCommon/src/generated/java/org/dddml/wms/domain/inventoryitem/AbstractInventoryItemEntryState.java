@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.inventoryitem.InventoryItemEntryStateEvent.*;
+import org.dddml.wms.domain.inventoryitem.InventoryItemEntryEvent.*;
 
 public abstract class AbstractInventoryItemEntryState implements InventoryItemEntryState
 {
@@ -243,7 +243,7 @@ public abstract class AbstractInventoryItemEntryState implements InventoryItemEn
     {
     }
 
-    protected void throwOnWrongEvent(InventoryItemEntryStateEvent stateEvent)
+    protected void throwOnWrongEvent(InventoryItemEntryEvent stateEvent)
     {
         InventoryItemId stateEntityIdInventoryItemId = this.getInventoryItemEntryId().getInventoryItemId();
         InventoryItemId eventEntityIdInventoryItemId = stateEvent.getInventoryItemEntryEventId().getInventoryItemId();

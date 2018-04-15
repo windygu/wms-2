@@ -181,7 +181,7 @@ public class UomResource {
 
             String idObj = id;
             UomStateEventDtoConverter dtoConverter = getUomStateEventDtoConverter();
-            return dtoConverter.toUomStateEventDto((AbstractUomStateEvent) uomApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toUomStateEventDto((AbstractUomEvent) uomApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

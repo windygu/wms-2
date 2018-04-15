@@ -181,7 +181,7 @@ public class LotResource {
 
             String idObj = id;
             LotStateEventDtoConverter dtoConverter = getLotStateEventDtoConverter();
-            return dtoConverter.toLotStateEventDto((AbstractLotStateEvent) lotApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toLotStateEventDto((AbstractLotEvent) lotApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

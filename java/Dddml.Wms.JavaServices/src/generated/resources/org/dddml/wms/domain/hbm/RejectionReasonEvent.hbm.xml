@@ -1,0 +1,48 @@
+﻿<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.rejectionreason">
+  
+  <class name="AbstractRejectionReasonEvent" table="RejectionReasonEvents" mutable="false" abstract="true">
+
+	<composite-id name="rejectionReasonEventId" class="org.dddml.wms.domain.rejectionreason.RejectionReasonEventId">
+		<key-property name="rejectionReasonId" ><column name="RejectionReasonId" sql-type="VARCHAR(60)" /></key-property>
+		<key-property name="version" ></key-property>
+	</composite-id>
+
+    <discriminator column="EventType" type="string" />
+
+	<property name="description" ><column name="Description" sql-type="VARCHAR(255)" /></property>
+	<property name="active" ></property>
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+    <subclass name="AbstractRejectionReasonEvent$SimpleRejectionReasonStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="AbstractRejectionReasonEvent$SimpleRejectionReasonStateMergePatched" discriminator-value="MergePatched">
+
+        <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
+
+        <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+
+
+    </subclass>
+
+    <subclass name="AbstractRejectionReasonEvent$SimpleRejectionReasonStateDeleted" discriminator-value="Deleted">
+
+    </subclass>
+
+
+
+  </class>
+  
+</hibernate-mapping>

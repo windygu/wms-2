@@ -5,7 +5,7 @@ import org.dddml.wms.domain.inventoryitem.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.inventorypostingrule.InventoryPostingRuleStateEvent.*;
+import org.dddml.wms.domain.inventorypostingrule.InventoryPostingRuleEvent.*;
 
 public abstract class AbstractInventoryPostingRuleState implements InventoryPostingRuleState
 {
@@ -190,7 +190,7 @@ public abstract class AbstractInventoryPostingRuleState implements InventoryPost
     public AbstractInventoryPostingRuleState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setInventoryPostingRuleId(((InventoryPostingRuleStateEvent) events.get(0)).getInventoryPostingRuleEventId().getInventoryPostingRuleId());
+            this.setInventoryPostingRuleId(((InventoryPostingRuleEvent) events.get(0)).getInventoryPostingRuleEventId().getInventoryPostingRuleId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -334,10 +334,10 @@ public abstract class AbstractInventoryPostingRuleState implements InventoryPost
     {
     }
 
-    protected void throwOnWrongEvent(InventoryPostingRuleStateEvent stateEvent)
+    protected void throwOnWrongEvent(InventoryPostingRuleEvent stateEvent)
     {
         String stateEntityId = this.getInventoryPostingRuleId(); // Aggregate Id
-        String eventEntityId = stateEvent.getInventoryPostingRuleEventId().getInventoryPostingRuleId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        String eventEntityId = stateEvent.getInventoryPostingRuleEventId().getInventoryPostingRuleId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

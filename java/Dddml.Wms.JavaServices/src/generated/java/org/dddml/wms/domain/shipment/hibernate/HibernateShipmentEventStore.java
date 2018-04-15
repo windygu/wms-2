@@ -20,30 +20,30 @@ public class HibernateShipmentEventStore extends AbstractHibernateEventStore
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractShipmentStateEvent.class;
+        return AbstractShipmentEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractShipmentStateEvent.class;
+        Class supportedEventType = AbstractShipmentEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         String idObj = (String) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractShipmentStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractShipmentEvent.class);
         criteria.add(Restrictions.eq("shipmentEventId.shipmentId", idObj));
         criteria.add(Restrictions.le("shipmentEventId.version", version));
         criteria.addOrder(Order.asc("shipmentEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractShipmentStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractShipmentEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractShipmentStateEvent) es.get(es.size() - 1)).getShipmentEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractShipmentEvent) es.get(es.size() - 1)).getShipmentEventId().getVersion());
         } else {
             //todo?
         }

@@ -8,22 +8,22 @@ import org.dddml.wms.specialization.*;
 
 public class PicklistRoleMvoStateEventDtoConverter {
 
-    public PicklistRoleMvoStateEventDto toPicklistRoleMvoStateEventDto(AbstractPicklistRoleMvoStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractPicklistRoleMvoStateEvent.AbstractPicklistRoleMvoStateCreated) {
-            PicklistRoleMvoStateEvent.PicklistRoleMvoStateCreated e = (PicklistRoleMvoStateEvent.PicklistRoleMvoStateCreated) stateEvent;
+    public PicklistRoleMvoStateEventDto toPicklistRoleMvoStateEventDto(AbstractPicklistRoleMvoEvent stateEvent) {
+        if (stateEvent instanceof AbstractPicklistRoleMvoEvent.AbstractPicklistRoleMvoStateCreated) {
+            PicklistRoleMvoEvent.PicklistRoleMvoStateCreated e = (PicklistRoleMvoEvent.PicklistRoleMvoStateCreated) stateEvent;
             return toPicklistRoleMvoStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractPicklistRoleMvoStateEvent.AbstractPicklistRoleMvoStateMergePatched) {
-            PicklistRoleMvoStateEvent.PicklistRoleMvoStateMergePatched e = (PicklistRoleMvoStateEvent.PicklistRoleMvoStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractPicklistRoleMvoEvent.AbstractPicklistRoleMvoStateMergePatched) {
+            PicklistRoleMvoEvent.PicklistRoleMvoStateMergePatched e = (PicklistRoleMvoEvent.PicklistRoleMvoStateMergePatched) stateEvent;
             return toPicklistRoleMvoStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractPicklistRoleMvoStateEvent.AbstractPicklistRoleMvoStateDeleted) {
-            PicklistRoleMvoStateEvent.PicklistRoleMvoStateDeleted e = (PicklistRoleMvoStateEvent.PicklistRoleMvoStateDeleted) stateEvent;
+        } else if (stateEvent instanceof AbstractPicklistRoleMvoEvent.AbstractPicklistRoleMvoStateDeleted) {
+            PicklistRoleMvoEvent.PicklistRoleMvoStateDeleted e = (PicklistRoleMvoEvent.PicklistRoleMvoStateDeleted) stateEvent;
             return toPicklistRoleMvoStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public PicklistRoleMvoStateEventDto.PicklistRoleMvoStateCreatedDto toPicklistRoleMvoStateCreatedDto(PicklistRoleMvoStateEvent.PicklistRoleMvoStateCreated e) {
+    public PicklistRoleMvoStateEventDto.PicklistRoleMvoStateCreatedDto toPicklistRoleMvoStateCreatedDto(PicklistRoleMvoEvent.PicklistRoleMvoStateCreated e) {
         PicklistRoleMvoStateEventDto.PicklistRoleMvoStateCreatedDto dto = new PicklistRoleMvoStateEventDto.PicklistRoleMvoStateCreatedDto();
         dto.setPicklistRoleMvoEventId(e.getPicklistRoleMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -46,7 +46,7 @@ public class PicklistRoleMvoStateEventDtoConverter {
         return dto;
     }
 
-    public PicklistRoleMvoStateEventDto.PicklistRoleMvoStateMergePatchedDto toPicklistRoleMvoStateMergePatchedDto(PicklistRoleMvoStateEvent.PicklistRoleMvoStateMergePatched e) {
+    public PicklistRoleMvoStateEventDto.PicklistRoleMvoStateMergePatchedDto toPicklistRoleMvoStateMergePatchedDto(PicklistRoleMvoEvent.PicklistRoleMvoStateMergePatched e) {
         PicklistRoleMvoStateEventDto.PicklistRoleMvoStateMergePatchedDto dto = new PicklistRoleMvoStateEventDto.PicklistRoleMvoStateMergePatchedDto();
         dto.setPicklistRoleMvoEventId(e.getPicklistRoleMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -84,7 +84,7 @@ public class PicklistRoleMvoStateEventDtoConverter {
     }
 
 
-    public PicklistRoleMvoStateEventDto.PicklistRoleMvoStateDeletedDto toPicklistRoleMvoStateDeletedDto(PicklistRoleMvoStateEvent.PicklistRoleMvoStateDeleted e) {
+    public PicklistRoleMvoStateEventDto.PicklistRoleMvoStateDeletedDto toPicklistRoleMvoStateDeletedDto(PicklistRoleMvoEvent.PicklistRoleMvoStateDeleted e) {
         PicklistRoleMvoStateEventDto.PicklistRoleMvoStateDeletedDto dto = new PicklistRoleMvoStateEventDto.PicklistRoleMvoStateDeletedDto();
         dto.setPicklistRoleMvoEventId(e.getPicklistRoleMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());

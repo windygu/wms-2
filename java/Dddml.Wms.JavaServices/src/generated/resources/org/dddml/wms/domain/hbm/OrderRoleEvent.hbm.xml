@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.order">
+  
+  <class name="AbstractOrderRoleEvent" table="OrderRoleEvents" mutable="false" abstract="true">
+
+	<composite-id name="orderRoleEventId" class="org.dddml.wms.domain.order.OrderRoleEventId">
+		<key-property name="orderId" ><column name="OrderRoleIdOrderId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="partyRoleIdPartyId" ><column name="OrderRoleIdPartyRoleIdPartyId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="partyRoleIdRoleTypeId" ><column name="OrderRoleIdPartyRoleIdRoleTypeId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="orderVersion" ></key-property>
+	</composite-id>
+
+    <discriminator column="EventType" type="string" />
+
+	<property name="active" ></property>
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+    <property name="version" column="Version" not-null="true" />
+
+    <subclass name="AbstractOrderRoleEvent$SimpleOrderRoleStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="AbstractOrderRoleEvent$SimpleOrderRoleStateMergePatched" discriminator-value="MergePatched">
+
+        <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+
+
+    </subclass>
+
+    <subclass name="AbstractOrderRoleEvent$SimpleOrderRoleStateRemoved" discriminator-value="Removed">
+
+    </subclass>
+
+
+
+  </class>
+  
+</hibernate-mapping>

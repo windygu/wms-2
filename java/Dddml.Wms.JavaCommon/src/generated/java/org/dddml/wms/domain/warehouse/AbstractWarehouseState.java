@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.warehouse.WarehouseStateEvent.*;
+import org.dddml.wms.domain.warehouse.WarehouseEvent.*;
 
 public abstract class AbstractWarehouseState implements WarehouseState
 {
@@ -165,7 +165,7 @@ public abstract class AbstractWarehouseState implements WarehouseState
     public AbstractWarehouseState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setWarehouseId(((WarehouseStateEvent) events.get(0)).getWarehouseEventId().getWarehouseId());
+            this.setWarehouseId(((WarehouseEvent) events.get(0)).getWarehouseEventId().getWarehouseId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -285,10 +285,10 @@ public abstract class AbstractWarehouseState implements WarehouseState
     {
     }
 
-    protected void throwOnWrongEvent(WarehouseStateEvent stateEvent)
+    protected void throwOnWrongEvent(WarehouseEvent stateEvent)
     {
         String stateEntityId = this.getWarehouseId(); // Aggregate Id
-        String eventEntityId = stateEvent.getWarehouseEventId().getWarehouseId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        String eventEntityId = stateEvent.getWarehouseEventId().getWarehouseId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

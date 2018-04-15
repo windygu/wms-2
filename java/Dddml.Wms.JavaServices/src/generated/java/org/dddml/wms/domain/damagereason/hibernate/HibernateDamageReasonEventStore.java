@@ -20,30 +20,30 @@ public class HibernateDamageReasonEventStore extends AbstractHibernateEventStore
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractDamageReasonStateEvent.class;
+        return AbstractDamageReasonEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractDamageReasonStateEvent.class;
+        Class supportedEventType = AbstractDamageReasonEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         String idObj = (String) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractDamageReasonStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractDamageReasonEvent.class);
         criteria.add(Restrictions.eq("damageReasonEventId.damageReasonId", idObj));
         criteria.add(Restrictions.le("damageReasonEventId.version", version));
         criteria.addOrder(Order.asc("damageReasonEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractDamageReasonStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractDamageReasonEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractDamageReasonStateEvent) es.get(es.size() - 1)).getDamageReasonEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractDamageReasonEvent) es.get(es.size() - 1)).getDamageReasonEventId().getVersion());
         } else {
             //todo?
         }

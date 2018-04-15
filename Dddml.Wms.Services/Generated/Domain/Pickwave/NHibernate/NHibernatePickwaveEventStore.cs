@@ -45,7 +45,7 @@ namespace Dddml.Wms.Domain.Pickwave.NHibernate
             var es = criteria.List<IEvent>();
             foreach (PickwaveStateEventBase e in es)
             {
-                e.StateEventReadOnly = true;
+                e.EventReadOnly = true;
             }
             return new EventStream()
             {

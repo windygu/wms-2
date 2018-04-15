@@ -58,17 +58,17 @@ namespace Dddml.Wms.Domain.Attribute
 			}
 		}
 
-        public virtual bool StateEventReadOnly { get; set; }
+        public virtual bool EventReadOnly { get; set; }
 
         bool IAttributeStateEvent.ReadOnly
         {
             get
             {
-                return this.StateEventReadOnly;
+                return this.EventReadOnly;
             }
             set
             {
-                this.StateEventReadOnly = value;
+                this.EventReadOnly = value;
             }
         }
 
@@ -182,7 +182,7 @@ namespace Dddml.Wms.Domain.Attribute
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._attributeValueEvents.Values;
                 }
@@ -232,7 +232,7 @@ namespace Dddml.Wms.Domain.Attribute
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._attributeAliasEvents.Values;
                 }
@@ -331,7 +331,7 @@ namespace Dddml.Wms.Domain.Attribute
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._attributeValueEvents.Values;
                 }
@@ -393,7 +393,7 @@ namespace Dddml.Wms.Domain.Attribute
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._attributeAliasEvents.Values;
                 }
@@ -488,7 +488,7 @@ namespace Dddml.Wms.Domain.Attribute
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._attributeValueEvents.Values;
                 }
@@ -538,7 +538,7 @@ namespace Dddml.Wms.Domain.Attribute
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._attributeAliasEvents.Values;
                 }

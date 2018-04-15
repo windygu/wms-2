@@ -31,7 +31,7 @@ public interface InventoryPostingRuleApplicationService
 
     long getCount(Criterion filter);
 
-    InventoryPostingRuleStateEvent getStateEvent(String inventoryPostingRuleId, long version);
+    InventoryPostingRuleEvent getEvent(String inventoryPostingRuleId, long version);
 
     InventoryPostingRuleState getHistoryState(String inventoryPostingRuleId, long version);
 

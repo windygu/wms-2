@@ -7,22 +7,22 @@ import org.dddml.wms.specialization.*;
 
 public class FacilityStateEventDtoConverter {
 
-    public FacilityStateEventDto toFacilityStateEventDto(AbstractFacilityStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractFacilityStateEvent.AbstractFacilityStateCreated) {
-            FacilityStateEvent.FacilityStateCreated e = (FacilityStateEvent.FacilityStateCreated) stateEvent;
+    public FacilityStateEventDto toFacilityStateEventDto(AbstractFacilityEvent stateEvent) {
+        if (stateEvent instanceof AbstractFacilityEvent.AbstractFacilityStateCreated) {
+            FacilityEvent.FacilityStateCreated e = (FacilityEvent.FacilityStateCreated) stateEvent;
             return toFacilityStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractFacilityStateEvent.AbstractFacilityStateMergePatched) {
-            FacilityStateEvent.FacilityStateMergePatched e = (FacilityStateEvent.FacilityStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractFacilityEvent.AbstractFacilityStateMergePatched) {
+            FacilityEvent.FacilityStateMergePatched e = (FacilityEvent.FacilityStateMergePatched) stateEvent;
             return toFacilityStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractFacilityStateEvent.AbstractFacilityStateDeleted) {
-            FacilityStateEvent.FacilityStateDeleted e = (FacilityStateEvent.FacilityStateDeleted) stateEvent;
+        } else if (stateEvent instanceof AbstractFacilityEvent.AbstractFacilityStateDeleted) {
+            FacilityEvent.FacilityStateDeleted e = (FacilityEvent.FacilityStateDeleted) stateEvent;
             return toFacilityStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public FacilityStateEventDto.FacilityStateCreatedDto toFacilityStateCreatedDto(FacilityStateEvent.FacilityStateCreated e) {
+    public FacilityStateEventDto.FacilityStateCreatedDto toFacilityStateCreatedDto(FacilityEvent.FacilityStateCreated e) {
         FacilityStateEventDto.FacilityStateCreatedDto dto = new FacilityStateEventDto.FacilityStateCreatedDto();
         dto.setFacilityEventId(e.getFacilityEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -49,7 +49,7 @@ public class FacilityStateEventDtoConverter {
         return dto;
     }
 
-    public FacilityStateEventDto.FacilityStateMergePatchedDto toFacilityStateMergePatchedDto(FacilityStateEvent.FacilityStateMergePatched e) {
+    public FacilityStateEventDto.FacilityStateMergePatchedDto toFacilityStateMergePatchedDto(FacilityEvent.FacilityStateMergePatched e) {
         FacilityStateEventDto.FacilityStateMergePatchedDto dto = new FacilityStateEventDto.FacilityStateMergePatchedDto();
         dto.setFacilityEventId(e.getFacilityEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -95,7 +95,7 @@ public class FacilityStateEventDtoConverter {
     }
 
 
-    public FacilityStateEventDto.FacilityStateDeletedDto toFacilityStateDeletedDto(FacilityStateEvent.FacilityStateDeleted e) {
+    public FacilityStateEventDto.FacilityStateDeletedDto toFacilityStateDeletedDto(FacilityEvent.FacilityStateDeleted e) {
         FacilityStateEventDto.FacilityStateDeletedDto dto = new FacilityStateEventDto.FacilityStateDeletedDto();
         dto.setFacilityEventId(e.getFacilityEventId());
         dto.setCreatedAt(e.getCreatedAt());

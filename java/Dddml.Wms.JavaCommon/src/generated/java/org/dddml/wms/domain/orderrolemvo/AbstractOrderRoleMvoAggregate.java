@@ -28,19 +28,19 @@ public abstract class AbstractOrderRoleMvoAggregate extends AbstractAggregate im
     public void create(OrderRoleMvoCommand.CreateOrderRoleMvo c)
     {
         if (c.getOrderVersion() == null) { c.setOrderVersion(OrderRoleMvoState.VERSION_NULL); }
-        OrderRoleMvoStateEvent e = map(c);
+        OrderRoleMvoEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(OrderRoleMvoCommand.MergePatchOrderRoleMvo c)
     {
-        OrderRoleMvoStateEvent e = map(c);
+        OrderRoleMvoEvent e = map(c);
         apply(e);
     }
 
     public void delete(OrderRoleMvoCommand.DeleteOrderRoleMvo c)
     {
-        OrderRoleMvoStateEvent e = map(c);
+        OrderRoleMvoEvent e = map(c);
         apply(e);
     }
 
@@ -55,9 +55,9 @@ public abstract class AbstractOrderRoleMvoAggregate extends AbstractAggregate im
         changes.add(e);
     }
 
-    protected OrderRoleMvoStateEvent map(OrderRoleMvoCommand.CreateOrderRoleMvo c) {
+    protected OrderRoleMvoEvent map(OrderRoleMvoCommand.CreateOrderRoleMvo c) {
         OrderRoleMvoEventId stateEventId = new OrderRoleMvoEventId(c.getOrderRoleId(), c.getOrderVersion());
-        OrderRoleMvoStateEvent.OrderRoleMvoStateCreated e = newOrderRoleMvoStateCreated(stateEventId);
+        OrderRoleMvoEvent.OrderRoleMvoStateCreated e = newOrderRoleMvoStateCreated(stateEventId);
         e.setVersion(c.getVersion());
         e.setActive(c.getActive());
         e.setOrderOrderTypeId(c.getOrderOrderTypeId());
@@ -89,15 +89,15 @@ public abstract class AbstractOrderRoleMvoAggregate extends AbstractAggregate im
         e.setOrderUpdatedBy(c.getOrderUpdatedBy());
         e.setOrderUpdatedAt(c.getOrderUpdatedAt());
         e.setOrderActive(c.getOrderActive());
-        ((AbstractOrderRoleMvoStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractOrderRoleMvoEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected OrderRoleMvoStateEvent map(OrderRoleMvoCommand.MergePatchOrderRoleMvo c) {
+    protected OrderRoleMvoEvent map(OrderRoleMvoCommand.MergePatchOrderRoleMvo c) {
         OrderRoleMvoEventId stateEventId = new OrderRoleMvoEventId(c.getOrderRoleId(), c.getOrderVersion());
-        OrderRoleMvoStateEvent.OrderRoleMvoStateMergePatched e = newOrderRoleMvoStateMergePatched(stateEventId);
+        OrderRoleMvoEvent.OrderRoleMvoStateMergePatched e = newOrderRoleMvoStateMergePatched(stateEventId);
         e.setVersion(c.getVersion());
         e.setActive(c.getActive());
         e.setOrderOrderTypeId(c.getOrderOrderTypeId());
@@ -160,16 +160,16 @@ public abstract class AbstractOrderRoleMvoAggregate extends AbstractAggregate im
         e.setIsPropertyOrderUpdatedByRemoved(c.getIsPropertyOrderUpdatedByRemoved());
         e.setIsPropertyOrderUpdatedAtRemoved(c.getIsPropertyOrderUpdatedAtRemoved());
         e.setIsPropertyOrderActiveRemoved(c.getIsPropertyOrderActiveRemoved());
-        ((AbstractOrderRoleMvoStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractOrderRoleMvoEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected OrderRoleMvoStateEvent map(OrderRoleMvoCommand.DeleteOrderRoleMvo c) {
+    protected OrderRoleMvoEvent map(OrderRoleMvoCommand.DeleteOrderRoleMvo c) {
         OrderRoleMvoEventId stateEventId = new OrderRoleMvoEventId(c.getOrderRoleId(), c.getOrderVersion());
-        OrderRoleMvoStateEvent.OrderRoleMvoStateDeleted e = newOrderRoleMvoStateDeleted(stateEventId);
-        ((AbstractOrderRoleMvoStateEvent)e).setCommandId(c.getCommandId());
+        OrderRoleMvoEvent.OrderRoleMvoStateDeleted e = newOrderRoleMvoStateDeleted(stateEventId);
+        ((AbstractOrderRoleMvoEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
@@ -178,44 +178,44 @@ public abstract class AbstractOrderRoleMvoAggregate extends AbstractAggregate im
 
     ////////////////////////
 
-    protected OrderRoleMvoStateEvent.OrderRoleMvoStateCreated newOrderRoleMvoStateCreated(Long version, String commandId, String requesterId) {
+    protected OrderRoleMvoEvent.OrderRoleMvoStateCreated newOrderRoleMvoStateCreated(Long version, String commandId, String requesterId) {
         OrderRoleMvoEventId stateEventId = new OrderRoleMvoEventId(this.state.getOrderRoleId(), version);
-        OrderRoleMvoStateEvent.OrderRoleMvoStateCreated e = newOrderRoleMvoStateCreated(stateEventId);
-        ((AbstractOrderRoleMvoStateEvent)e).setCommandId(commandId);
+        OrderRoleMvoEvent.OrderRoleMvoStateCreated e = newOrderRoleMvoStateCreated(stateEventId);
+        ((AbstractOrderRoleMvoEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected OrderRoleMvoStateEvent.OrderRoleMvoStateMergePatched newOrderRoleMvoStateMergePatched(Long version, String commandId, String requesterId) {
+    protected OrderRoleMvoEvent.OrderRoleMvoStateMergePatched newOrderRoleMvoStateMergePatched(Long version, String commandId, String requesterId) {
         OrderRoleMvoEventId stateEventId = new OrderRoleMvoEventId(this.state.getOrderRoleId(), version);
-        OrderRoleMvoStateEvent.OrderRoleMvoStateMergePatched e = newOrderRoleMvoStateMergePatched(stateEventId);
-        ((AbstractOrderRoleMvoStateEvent)e).setCommandId(commandId);
+        OrderRoleMvoEvent.OrderRoleMvoStateMergePatched e = newOrderRoleMvoStateMergePatched(stateEventId);
+        ((AbstractOrderRoleMvoEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected OrderRoleMvoStateEvent.OrderRoleMvoStateDeleted newOrderRoleMvoStateDeleted(Long version, String commandId, String requesterId) {
+    protected OrderRoleMvoEvent.OrderRoleMvoStateDeleted newOrderRoleMvoStateDeleted(Long version, String commandId, String requesterId) {
         OrderRoleMvoEventId stateEventId = new OrderRoleMvoEventId(this.state.getOrderRoleId(), version);
-        OrderRoleMvoStateEvent.OrderRoleMvoStateDeleted e = newOrderRoleMvoStateDeleted(stateEventId);
-        ((AbstractOrderRoleMvoStateEvent)e).setCommandId(commandId);
+        OrderRoleMvoEvent.OrderRoleMvoStateDeleted e = newOrderRoleMvoStateDeleted(stateEventId);
+        ((AbstractOrderRoleMvoEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected OrderRoleMvoStateEvent.OrderRoleMvoStateCreated newOrderRoleMvoStateCreated(OrderRoleMvoEventId stateEventId) {
-        return new AbstractOrderRoleMvoStateEvent.SimpleOrderRoleMvoStateCreated(stateEventId);
+    protected OrderRoleMvoEvent.OrderRoleMvoStateCreated newOrderRoleMvoStateCreated(OrderRoleMvoEventId stateEventId) {
+        return new AbstractOrderRoleMvoEvent.SimpleOrderRoleMvoStateCreated(stateEventId);
     }
 
-    protected OrderRoleMvoStateEvent.OrderRoleMvoStateMergePatched newOrderRoleMvoStateMergePatched(OrderRoleMvoEventId stateEventId) {
-        return new AbstractOrderRoleMvoStateEvent.SimpleOrderRoleMvoStateMergePatched(stateEventId);
+    protected OrderRoleMvoEvent.OrderRoleMvoStateMergePatched newOrderRoleMvoStateMergePatched(OrderRoleMvoEventId stateEventId) {
+        return new AbstractOrderRoleMvoEvent.SimpleOrderRoleMvoStateMergePatched(stateEventId);
     }
 
-    protected OrderRoleMvoStateEvent.OrderRoleMvoStateDeleted newOrderRoleMvoStateDeleted(OrderRoleMvoEventId stateEventId)
+    protected OrderRoleMvoEvent.OrderRoleMvoStateDeleted newOrderRoleMvoStateDeleted(OrderRoleMvoEventId stateEventId)
     {
-        return new AbstractOrderRoleMvoStateEvent.SimpleOrderRoleMvoStateDeleted(stateEventId);
+        return new AbstractOrderRoleMvoEvent.SimpleOrderRoleMvoStateDeleted(stateEventId);
     }
 
     public static class SimpleOrderRoleMvoAggregate extends AbstractOrderRoleMvoAggregate

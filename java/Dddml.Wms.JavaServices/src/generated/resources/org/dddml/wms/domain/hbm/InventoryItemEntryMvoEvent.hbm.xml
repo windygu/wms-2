@@ -1,0 +1,93 @@
+﻿<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.inventoryitementrymvo">
+  
+  <class name="AbstractInventoryItemEntryMvoEvent" table="InventoryItemEntryMvoEvents" mutable="false" abstract="true">
+
+	<composite-id name="inventoryItemEntryMvoEventId" class="org.dddml.wms.domain.inventoryitementrymvo.InventoryItemEntryMvoEventId">
+		<key-property name="inventoryItemEntryIdInventoryItemIdProductId" ><column name="ProductId" length="60" sql-type="VARCHAR(60)" /></key-property>
+		<key-property name="inventoryItemEntryIdInventoryItemIdLocatorId" ><column name="LocatorId" length="50" /></key-property>
+		<key-property name="inventoryItemEntryIdInventoryItemIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" length="50" /></key-property>
+		<key-property name="inventoryItemEntryIdEntrySeqId" ><column name="EntrySeqId" /></key-property>
+		<key-property name="inventoryItemVersion" ></key-property>
+	</composite-id>
+
+    <discriminator column="EventType" type="string" />
+
+	<property name="onHandQuantity" ></property>
+	<property name="inTransitQuantity" ></property>
+	<property name="reservedQuantity" ></property>
+	<property name="occupiedQuantity" ></property>
+	<property name="virtualQuantity" ></property>
+	<component name="source" class="org.dddml.wms.domain.inventoryitem.InventoryItemSourceInfo">
+		<property name="documentTypeId" ><column name="sourceDocumentTypeId" /></property>
+		<property name="documentNumber" ><column name="sourceDocumentNumber" /></property>
+		<property name="lineNumber" ><column name="sourceLineNumber" /></property>
+		<property name="lineSubSeqId" ><column name="sourceLineSeqId" /></property>
+	</component>
+	<property name="version" ></property>
+	<property name="inventoryItemOnHandQuantity" ></property>
+	<property name="inventoryItemInTransitQuantity" ></property>
+	<property name="inventoryItemReservedQuantity" ></property>
+	<property name="inventoryItemOccupiedQuantity" ></property>
+	<property name="inventoryItemVirtualQuantity" ></property>
+	<property name="inventoryItemCreatedBy" ></property>
+	<property name="inventoryItemCreatedAt" type="timestamp"><column name="InventoryItemCreatedAt" sql-type="DATETIME" /></property>
+	<property name="inventoryItemUpdatedBy" ></property>
+	<property name="inventoryItemUpdatedAt" type="timestamp"><column name="InventoryItemUpdatedAt" sql-type="DATETIME" /></property>
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+    <subclass name="AbstractInventoryItemEntryMvoEvent$SimpleInventoryItemEntryMvoStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="AbstractInventoryItemEntryMvoEvent$SimpleInventoryItemEntryMvoStateMergePatched" discriminator-value="MergePatched">
+
+        <property name="isPropertyOnHandQuantityRemoved" column="IsPropertyOnHandQuantityRemoved"/>
+
+        <property name="isPropertyInTransitQuantityRemoved" column="IsPropertyInTransitQuantityRemoved"/>
+
+        <property name="isPropertyReservedQuantityRemoved" column="IsPropertyReservedQuantityRemoved"/>
+
+        <property name="isPropertyOccupiedQuantityRemoved" column="IsPropertyOccupiedQuantityRemoved"/>
+
+        <property name="isPropertyVirtualQuantityRemoved" column="IsPropertyVirtualQuantityRemoved"/>
+
+        <property name="isPropertySourceRemoved" column="IsPropertySourceRemoved"/>
+
+        <property name="isPropertyVersionRemoved" column="IsPropertyVersionRemoved"/>
+
+        <property name="isPropertyInventoryItemOnHandQuantityRemoved" column="IsPropertyInventoryItemOnHandQuantityRemoved"/>
+
+        <property name="isPropertyInventoryItemInTransitQuantityRemoved" column="IsPropertyInventoryItemInTransitQuantityRemoved"/>
+
+        <property name="isPropertyInventoryItemReservedQuantityRemoved" column="IsPropertyInventoryItemReservedQuantityRemoved"/>
+
+        <property name="isPropertyInventoryItemOccupiedQuantityRemoved" column="IsPropertyInventoryItemOccupiedQuantityRemoved"/>
+
+        <property name="isPropertyInventoryItemVirtualQuantityRemoved" column="IsPropertyInventoryItemVirtualQuantityRemoved"/>
+
+        <property name="isPropertyInventoryItemCreatedByRemoved" column="IsPropertyInventoryItemCreatedByRemoved"/>
+
+        <property name="isPropertyInventoryItemCreatedAtRemoved" column="IsPropertyInventoryItemCreatedAtRemoved"/>
+
+        <property name="isPropertyInventoryItemUpdatedByRemoved" column="IsPropertyInventoryItemUpdatedByRemoved"/>
+
+        <property name="isPropertyInventoryItemUpdatedAtRemoved" column="IsPropertyInventoryItemUpdatedAtRemoved"/>
+
+
+    </subclass>
+
+
+  </class>
+  
+</hibernate-mapping>

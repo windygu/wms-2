@@ -3,9 +3,9 @@ package org.dddml.wms.domain.inventorypostingrule;
 import org.dddml.wms.domain.inventoryitem.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
-import org.dddml.wms.domain.AbstractStateEvent;
+import org.dddml.wms.domain.AbstractEvent;
 
-public class InventoryPostingRuleStateEventDto extends AbstractStateEvent
+public class InventoryPostingRuleStateEventDto extends AbstractEvent
 {
 
     private InventoryPostingRuleEventId inventoryPostingRuleEventId;
@@ -179,7 +179,7 @@ public class InventoryPostingRuleStateEventDto extends AbstractStateEvent
 	public static class InventoryPostingRuleStateCreatedDto extends InventoryPostingRuleStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_CREATED;
         }
@@ -190,7 +190,7 @@ public class InventoryPostingRuleStateEventDto extends AbstractStateEvent
 	public static class InventoryPostingRuleStateMergePatchedDto extends InventoryPostingRuleStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_MERGE_PATCHED;
         }
@@ -201,7 +201,7 @@ public class InventoryPostingRuleStateEventDto extends AbstractStateEvent
 	public static class InventoryPostingRuleStateDeletedDto extends InventoryPostingRuleStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_DELETED;
         }

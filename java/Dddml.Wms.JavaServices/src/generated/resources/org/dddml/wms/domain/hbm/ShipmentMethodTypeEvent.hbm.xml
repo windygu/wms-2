@@ -1,0 +1,51 @@
+﻿<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.shipmentmethodtype">
+  
+  <class name="AbstractShipmentMethodTypeEvent" table="ShipmentMethodTypeEvents" mutable="false" abstract="true">
+
+	<composite-id name="shipmentMethodTypeEventId" class="org.dddml.wms.domain.shipmentmethodtype.ShipmentMethodTypeEventId">
+		<key-property name="shipmentMethodTypeId" ><column name="ShipmentMethodTypeId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="version" ></key-property>
+	</composite-id>
+
+    <discriminator column="EventType" type="string" />
+
+	<property name="description" ><column name="Description" sql-type="VARCHAR(255)" /></property>
+	<property name="sequenceNum" ><column name="SequenceNum" sql-type="DECIMAL(20,0)" /></property>
+	<property name="active" ></property>
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+    <subclass name="AbstractShipmentMethodTypeEvent$SimpleShipmentMethodTypeStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="AbstractShipmentMethodTypeEvent$SimpleShipmentMethodTypeStateMergePatched" discriminator-value="MergePatched">
+
+        <property name="isPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
+
+        <property name="isPropertySequenceNumRemoved" column="IsPropertySequenceNumRemoved"/>
+
+        <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+
+
+    </subclass>
+
+    <subclass name="AbstractShipmentMethodTypeEvent$SimpleShipmentMethodTypeStateDeleted" discriminator-value="Deleted">
+
+    </subclass>
+
+
+
+  </class>
+  
+</hibernate-mapping>

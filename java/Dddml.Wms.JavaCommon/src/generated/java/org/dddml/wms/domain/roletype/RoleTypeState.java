@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.roletype.RoleTypeStateEvent.*;
+import org.dddml.wms.domain.roletype.RoleTypeEvent.*;
 
 public interface RoleTypeState
 {
@@ -64,11 +64,11 @@ public interface RoleTypeState
 
     void mutate(Event e);
 
-    void when(RoleTypeStateEvent.RoleTypeStateCreated e);
+    void when(RoleTypeEvent.RoleTypeStateCreated e);
 
-    void when(RoleTypeStateEvent.RoleTypeStateMergePatched e);
+    void when(RoleTypeEvent.RoleTypeStateMergePatched e);
 
-    void when(RoleTypeStateEvent.RoleTypeStateDeleted e);
+    void when(RoleTypeEvent.RoleTypeStateDeleted e);
     
 }
 

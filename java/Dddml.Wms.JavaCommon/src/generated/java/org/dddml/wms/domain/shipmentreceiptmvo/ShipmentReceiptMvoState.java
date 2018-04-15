@@ -5,7 +5,7 @@ import org.dddml.wms.domain.shipment.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.shipmentreceiptmvo.ShipmentReceiptMvoStateEvent.*;
+import org.dddml.wms.domain.shipmentreceiptmvo.ShipmentReceiptMvoEvent.*;
 
 public interface ShipmentReceiptMvoState
 {
@@ -245,9 +245,9 @@ public interface ShipmentReceiptMvoState
 
     void mutate(Event e);
 
-    void when(ShipmentReceiptMvoStateEvent.ShipmentReceiptMvoStateCreated e);
+    void when(ShipmentReceiptMvoEvent.ShipmentReceiptMvoStateCreated e);
 
-    void when(ShipmentReceiptMvoStateEvent.ShipmentReceiptMvoStateMergePatched e);
+    void when(ShipmentReceiptMvoEvent.ShipmentReceiptMvoStateMergePatched e);
 
     
 }

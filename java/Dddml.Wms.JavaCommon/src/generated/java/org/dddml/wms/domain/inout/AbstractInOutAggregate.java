@@ -28,13 +28,13 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
     public void create(InOutCommand.CreateInOut c)
     {
         if (c.getVersion() == null) { c.setVersion(InOutState.VERSION_NULL); }
-        InOutStateEvent e = map(c);
+        InOutEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(InOutCommand.MergePatchInOut c)
     {
-        InOutStateEvent e = map(c);
+        InOutEvent e = map(c);
         apply(e);
     }
 
@@ -49,9 +49,9 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         changes.add(e);
     }
 
-    protected InOutStateEvent map(InOutCommand.CreateInOut c) {
+    protected InOutEvent map(InOutCommand.CreateInOut c) {
         InOutEventId stateEventId = new InOutEventId(c.getDocumentNumber(), c.getVersion());
-        InOutStateEvent.InOutStateCreated e = newInOutStateCreated(stateEventId);
+        InOutEvent.InOutStateCreated e = newInOutStateCreated(stateEventId);
         newInOutDocumentActionCommandAndExecute(c, state, e);
         e.setPosted(c.getPosted());
         e.setProcessed(c.getProcessed());
@@ -83,23 +83,23 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         e.setRmaDocumentNumber(c.getRmaDocumentNumber());
         e.setReversalDocumentNumber(c.getReversalDocumentNumber());
         e.setActive(c.getActive());
-        ((AbstractInOutStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractInOutEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         Long version = c.getVersion();
         for (InOutLineCommand.CreateInOutLine innerCommand : c.getInOutLines())
         {
             throwOnInconsistentCommands(c, innerCommand);
-            InOutLineStateEvent.InOutLineStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);
+            InOutLineEvent.InOutLineStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);
             e.addInOutLineEvent(innerEvent);
         }
 
         return e;
     }
 
-    protected InOutStateEvent map(InOutCommand.MergePatchInOut c) {
+    protected InOutEvent map(InOutCommand.MergePatchInOut c) {
         InOutEventId stateEventId = new InOutEventId(c.getDocumentNumber(), c.getVersion());
-        InOutStateEvent.InOutStateMergePatched e = newInOutStateMergePatched(stateEventId);
+        InOutEvent.InOutStateMergePatched e = newInOutStateMergePatched(stateEventId);
         e.setPosted(c.getPosted());
         e.setProcessed(c.getProcessed());
         e.setProcessing(c.getProcessing());
@@ -160,14 +160,14 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         e.setIsPropertyRmaDocumentNumberRemoved(c.getIsPropertyRmaDocumentNumberRemoved());
         e.setIsPropertyReversalDocumentNumberRemoved(c.getIsPropertyReversalDocumentNumberRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
-        ((AbstractInOutStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractInOutEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         Long version = c.getVersion();
         for (InOutLineCommand innerCommand : c.getInOutLineCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
-            InOutLineStateEvent innerEvent = map(innerCommand, c, version, this.state);
+            InOutLineEvent innerEvent = map(innerCommand, c, version, this.state);
             e.addInOutLineEvent(innerEvent);
         }
 
@@ -175,7 +175,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
     }
 
 
-    protected InOutLineStateEvent map(InOutLineCommand c, InOutCommand outerCommand, long version, InOutState outerState)
+    protected InOutLineEvent map(InOutLineCommand c, InOutCommand outerCommand, Long version, InOutState outerState)
     {
         InOutLineCommand.CreateInOutLine create = (c.getCommandType().equals(CommandType.CREATE)) ? ((InOutLineCommand.CreateInOutLine)c) : null;
         if(create != null)
@@ -197,11 +197,11 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         throw new UnsupportedOperationException();
     }
 
-    protected InOutLineStateEvent.InOutLineStateCreated mapCreate(InOutLineCommand.CreateInOutLine c, InOutCommand outerCommand, Long version, InOutState outerState)
+    protected InOutLineEvent.InOutLineStateCreated mapCreate(InOutLineCommand.CreateInOutLine c, InOutCommand outerCommand, Long version, InOutState outerState)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
         InOutLineEventId stateEventId = new InOutLineEventId(c.getInOutDocumentNumber(), c.getLineNumber(), version);
-        InOutLineStateEvent.InOutLineStateCreated e = newInOutLineStateCreated(stateEventId);
+        InOutLineEvent.InOutLineStateCreated e = newInOutLineStateCreated(stateEventId);
         InOutLineState s = outerState.getInOutLines().get(c.getLineNumber());
 
         e.setLocatorId(c.getLocatorId());
@@ -222,11 +222,11 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
 
     }// END map(ICreate... ////////////////////////////
 
-    protected InOutLineStateEvent.InOutLineStateMergePatched mapMergePatch(InOutLineCommand.MergePatchInOutLine c, InOutCommand outerCommand, Long version, InOutState outerState)
+    protected InOutLineEvent.InOutLineStateMergePatched mapMergePatch(InOutLineCommand.MergePatchInOutLine c, InOutCommand outerCommand, Long version, InOutState outerState)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
         InOutLineEventId stateEventId = new InOutLineEventId(c.getInOutDocumentNumber(), c.getLineNumber(), version);
-        InOutLineStateEvent.InOutLineStateMergePatched e = newInOutLineStateMergePatched(stateEventId);
+        InOutLineEvent.InOutLineStateMergePatched e = newInOutLineStateMergePatched(stateEventId);
         InOutLineState s = outerState.getInOutLines().get(c.getLineNumber());
 
         e.setLocatorId(c.getLocatorId());
@@ -259,11 +259,11 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
 
     }// END map(IMergePatch... ////////////////////////////
 
-    protected InOutLineStateEvent.InOutLineStateRemoved mapRemove(InOutLineCommand.RemoveInOutLine c, InOutCommand outerCommand, Long version)
+    protected InOutLineEvent.InOutLineStateRemoved mapRemove(InOutLineCommand.RemoveInOutLine c, InOutCommand outerCommand, Long version)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
         InOutLineEventId stateEventId = new InOutLineEventId(c.getInOutDocumentNumber(), c.getLineNumber(), version);
-        InOutLineStateEvent.InOutLineStateRemoved e = newInOutLineStateRemoved(stateEventId);
+        InOutLineEvent.InOutLineStateRemoved e = newInOutLineStateRemoved(stateEventId);
 
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
@@ -294,46 +294,46 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
 
     ////////////////////////
 
-    protected InOutStateEvent.InOutStateCreated newInOutStateCreated(Long version, String commandId, String requesterId) {
+    protected InOutEvent.InOutStateCreated newInOutStateCreated(Long version, String commandId, String requesterId) {
         InOutEventId stateEventId = new InOutEventId(this.state.getDocumentNumber(), version);
-        InOutStateEvent.InOutStateCreated e = newInOutStateCreated(stateEventId);
-        ((AbstractInOutStateEvent)e).setCommandId(commandId);
+        InOutEvent.InOutStateCreated e = newInOutStateCreated(stateEventId);
+        ((AbstractInOutEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected InOutStateEvent.InOutStateMergePatched newInOutStateMergePatched(Long version, String commandId, String requesterId) {
+    protected InOutEvent.InOutStateMergePatched newInOutStateMergePatched(Long version, String commandId, String requesterId) {
         InOutEventId stateEventId = new InOutEventId(this.state.getDocumentNumber(), version);
-        InOutStateEvent.InOutStateMergePatched e = newInOutStateMergePatched(stateEventId);
-        ((AbstractInOutStateEvent)e).setCommandId(commandId);
+        InOutEvent.InOutStateMergePatched e = newInOutStateMergePatched(stateEventId);
+        ((AbstractInOutEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected InOutStateEvent.InOutStateCreated newInOutStateCreated(InOutEventId stateEventId) {
-        return new AbstractInOutStateEvent.SimpleInOutStateCreated(stateEventId);
+    protected InOutEvent.InOutStateCreated newInOutStateCreated(InOutEventId stateEventId) {
+        return new AbstractInOutEvent.SimpleInOutStateCreated(stateEventId);
     }
 
-    protected InOutStateEvent.InOutStateMergePatched newInOutStateMergePatched(InOutEventId stateEventId) {
-        return new AbstractInOutStateEvent.SimpleInOutStateMergePatched(stateEventId);
+    protected InOutEvent.InOutStateMergePatched newInOutStateMergePatched(InOutEventId stateEventId) {
+        return new AbstractInOutEvent.SimpleInOutStateMergePatched(stateEventId);
     }
 
-    protected InOutLineStateEvent.InOutLineStateCreated newInOutLineStateCreated(InOutLineEventId stateEventId) {
-        return new AbstractInOutLineStateEvent.SimpleInOutLineStateCreated(stateEventId);
+    protected InOutLineEvent.InOutLineStateCreated newInOutLineStateCreated(InOutLineEventId stateEventId) {
+        return new AbstractInOutLineEvent.SimpleInOutLineStateCreated(stateEventId);
     }
 
-    protected InOutLineStateEvent.InOutLineStateMergePatched newInOutLineStateMergePatched(InOutLineEventId stateEventId) {
-        return new AbstractInOutLineStateEvent.SimpleInOutLineStateMergePatched(stateEventId);
+    protected InOutLineEvent.InOutLineStateMergePatched newInOutLineStateMergePatched(InOutLineEventId stateEventId) {
+        return new AbstractInOutLineEvent.SimpleInOutLineStateMergePatched(stateEventId);
     }
 
-    protected InOutLineStateEvent.InOutLineStateRemoved newInOutLineStateRemoved(InOutLineEventId stateEventId)
+    protected InOutLineEvent.InOutLineStateRemoved newInOutLineStateRemoved(InOutLineEventId stateEventId)
     {
-        return new AbstractInOutLineStateEvent.SimpleInOutLineStateRemoved(stateEventId);
+        return new AbstractInOutLineEvent.SimpleInOutLineStateRemoved(stateEventId);
     }
 
-    protected void newInOutDocumentActionCommandAndExecute(InOutCommand.CreateInOut c, InOutState s, InOutStateEvent.InOutStateCreated e)
+    protected void newInOutDocumentActionCommandAndExecute(InOutCommand.CreateInOut c, InOutState s, InOutEvent.InOutStateCreated e)
     {
         PropertyCommandHandler<String, String> pCommandHandler = this.getInOutDocumentActionCommandHandler();
         String pCmdContent = null;
@@ -420,7 +420,7 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
 
         @Override
         public void documentAction(String value, Long version, String commandId, String requesterId) {
-            InOutStateEvent.InOutStateMergePatched e = newInOutStateMergePatched(version, commandId, requesterId);
+            InOutEvent.InOutStateMergePatched e = newInOutStateMergePatched(version, commandId, requesterId);
             doDocumentAction(value, s -> e.setDocumentStatusId(s));
             apply(e);
         }

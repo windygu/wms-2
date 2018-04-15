@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.order.OrderShipGroupStateEvent.*;
+import org.dddml.wms.domain.order.OrderShipGroupEvent.*;
 
 public abstract class AbstractOrderShipGroupState implements OrderShipGroupState, Saveable
 {
@@ -426,7 +426,7 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
-        for (OrderItemShipGroupAssociationStateEvent.OrderItemShipGroupAssociationStateCreated innerEvent : e.getOrderItemShipGroupAssociationEvents()) {
+        for (OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateCreated innerEvent : e.getOrderItemShipGroupAssociationEvents()) {
             OrderItemShipGroupAssociationState innerState = this.getOrderItemShipGroupAssociations().get(innerEvent.getOrderItemShipGroupAssociationEventId().getOrderItemSeqId());
             innerState.mutate(innerEvent);
         }
@@ -649,12 +649,12 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         this.setUpdatedBy(e.getCreatedBy());
         this.setUpdatedAt(e.getCreatedAt());
 
-        for (OrderItemShipGroupAssociationStateEvent innerEvent : e.getOrderItemShipGroupAssociationEvents()) {
+        for (OrderItemShipGroupAssociationEvent innerEvent : e.getOrderItemShipGroupAssociationEvents()) {
             OrderItemShipGroupAssociationState innerState = this.getOrderItemShipGroupAssociations().get(innerEvent.getOrderItemShipGroupAssociationEventId().getOrderItemSeqId());
             innerState.mutate(innerEvent);
-            if (innerEvent instanceof OrderItemShipGroupAssociationStateEvent.OrderItemShipGroupAssociationStateRemoved)
+            if (innerEvent instanceof OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateRemoved)
             {
-                //OrderItemShipGroupAssociationStateEvent.OrderItemShipGroupAssociationStateRemoved removed = (OrderItemShipGroupAssociationStateEvent.OrderItemShipGroupAssociationStateRemoved)innerEvent;
+                //OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateRemoved removed = (OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateRemoved)innerEvent;
                 this.getOrderItemShipGroupAssociations().remove(innerState);
             }
         }
@@ -672,7 +672,7 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         {
             this.getOrderItemShipGroupAssociations().remove(innerState);
         
-            OrderItemShipGroupAssociationStateEvent.OrderItemShipGroupAssociationStateRemoved innerE = e.newOrderItemShipGroupAssociationStateRemoved(innerState.getOrderItemSeqId());
+            OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateRemoved innerE = e.newOrderItemShipGroupAssociationStateRemoved(innerState.getOrderItemSeqId());
             innerE.setCreatedAt(e.getCreatedAt());
             innerE.setCreatedBy(e.getCreatedBy());
             innerState.when(innerE);
@@ -686,7 +686,7 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
 
     }
 
-    protected void throwOnWrongEvent(OrderShipGroupStateEvent stateEvent)
+    protected void throwOnWrongEvent(OrderShipGroupEvent stateEvent)
     {
         String stateEntityIdOrderId = this.getOrderShipGroupId().getOrderId();
         String eventEntityIdOrderId = stateEvent.getOrderShipGroupEventId().getOrderId();

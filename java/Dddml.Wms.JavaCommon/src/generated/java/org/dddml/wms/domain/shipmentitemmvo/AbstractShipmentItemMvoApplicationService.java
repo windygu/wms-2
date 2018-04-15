@@ -83,19 +83,19 @@ public abstract class AbstractShipmentItemMvoApplicationService implements Shipm
         return getStateQueryRepository().getCount(filter);
     }
 
-    public ShipmentItemMvoStateEvent getStateEvent(ShipmentItemId shipmentItemId, long version) {
-        ShipmentItemMvoStateEvent e = (ShipmentItemMvoStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(shipmentItemId), version);
+    public ShipmentItemMvoEvent getEvent(ShipmentItemId shipmentItemId, long version) {
+        ShipmentItemMvoEvent e = (ShipmentItemMvoEvent)getEventStore().getEvent(toEventStoreAggregateId(shipmentItemId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(shipmentItemId, 0);
+            return getEvent(shipmentItemId, 0);
         }
         return e;
     }
 
     public ShipmentItemMvoState getHistoryState(ShipmentItemId shipmentItemId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractShipmentItemMvoStateEvent.class, toEventStoreAggregateId(shipmentItemId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractShipmentItemMvoEvent.class, toEventStoreAggregateId(shipmentItemId), version - 1);
         return new AbstractShipmentItemMvoState.SimpleShipmentItemMvoState(eventStream.getEvents());
     }
 
@@ -134,7 +134,7 @@ public abstract class AbstractShipmentItemMvoApplicationService implements Shipm
         }
     }
 
-    public void initialize(ShipmentItemMvoStateEvent.ShipmentItemMvoStateCreated stateCreated) {
+    public void initialize(ShipmentItemMvoEvent.ShipmentItemMvoStateCreated stateCreated) {
         ShipmentItemId aggregateId = stateCreated.getShipmentItemMvoEventId().getShipmentItemId();
         ShipmentItemMvoState state = new AbstractShipmentItemMvoState.SimpleShipmentItemMvoState();
         state.setShipmentItemId(aggregateId);
@@ -152,9 +152,9 @@ public abstract class AbstractShipmentItemMvoApplicationService implements Shipm
         if (command.getShipmentVersion() == null) { command.setShipmentVersion(ShipmentItemMvoState.VERSION_NULL); }
         if (state.getShipmentVersion() != null && state.getShipmentVersion() > command.getShipmentVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractShipmentItemMvoStateEvent.class, eventStoreAggregateId, command.getShipmentVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractShipmentItemMvoEvent.class, eventStoreAggregateId, command.getShipmentVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

@@ -27,19 +27,19 @@ public abstract class AbstractShipmentMethodTypeAggregate extends AbstractAggreg
     public void create(ShipmentMethodTypeCommand.CreateShipmentMethodType c)
     {
         if (c.getVersion() == null) { c.setVersion(ShipmentMethodTypeState.VERSION_NULL); }
-        ShipmentMethodTypeStateEvent e = map(c);
+        ShipmentMethodTypeEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(ShipmentMethodTypeCommand.MergePatchShipmentMethodType c)
     {
-        ShipmentMethodTypeStateEvent e = map(c);
+        ShipmentMethodTypeEvent e = map(c);
         apply(e);
     }
 
     public void delete(ShipmentMethodTypeCommand.DeleteShipmentMethodType c)
     {
-        ShipmentMethodTypeStateEvent e = map(c);
+        ShipmentMethodTypeEvent e = map(c);
         apply(e);
     }
 
@@ -54,37 +54,37 @@ public abstract class AbstractShipmentMethodTypeAggregate extends AbstractAggreg
         changes.add(e);
     }
 
-    protected ShipmentMethodTypeStateEvent map(ShipmentMethodTypeCommand.CreateShipmentMethodType c) {
+    protected ShipmentMethodTypeEvent map(ShipmentMethodTypeCommand.CreateShipmentMethodType c) {
         ShipmentMethodTypeEventId stateEventId = new ShipmentMethodTypeEventId(c.getShipmentMethodTypeId(), c.getVersion());
-        ShipmentMethodTypeStateEvent.ShipmentMethodTypeStateCreated e = newShipmentMethodTypeStateCreated(stateEventId);
+        ShipmentMethodTypeEvent.ShipmentMethodTypeStateCreated e = newShipmentMethodTypeStateCreated(stateEventId);
         e.setDescription(c.getDescription());
         e.setSequenceNum(c.getSequenceNum());
         e.setActive(c.getActive());
-        ((AbstractShipmentMethodTypeStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractShipmentMethodTypeEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected ShipmentMethodTypeStateEvent map(ShipmentMethodTypeCommand.MergePatchShipmentMethodType c) {
+    protected ShipmentMethodTypeEvent map(ShipmentMethodTypeCommand.MergePatchShipmentMethodType c) {
         ShipmentMethodTypeEventId stateEventId = new ShipmentMethodTypeEventId(c.getShipmentMethodTypeId(), c.getVersion());
-        ShipmentMethodTypeStateEvent.ShipmentMethodTypeStateMergePatched e = newShipmentMethodTypeStateMergePatched(stateEventId);
+        ShipmentMethodTypeEvent.ShipmentMethodTypeStateMergePatched e = newShipmentMethodTypeStateMergePatched(stateEventId);
         e.setDescription(c.getDescription());
         e.setSequenceNum(c.getSequenceNum());
         e.setActive(c.getActive());
         e.setIsPropertyDescriptionRemoved(c.getIsPropertyDescriptionRemoved());
         e.setIsPropertySequenceNumRemoved(c.getIsPropertySequenceNumRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
-        ((AbstractShipmentMethodTypeStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractShipmentMethodTypeEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected ShipmentMethodTypeStateEvent map(ShipmentMethodTypeCommand.DeleteShipmentMethodType c) {
+    protected ShipmentMethodTypeEvent map(ShipmentMethodTypeCommand.DeleteShipmentMethodType c) {
         ShipmentMethodTypeEventId stateEventId = new ShipmentMethodTypeEventId(c.getShipmentMethodTypeId(), c.getVersion());
-        ShipmentMethodTypeStateEvent.ShipmentMethodTypeStateDeleted e = newShipmentMethodTypeStateDeleted(stateEventId);
-        ((AbstractShipmentMethodTypeStateEvent)e).setCommandId(c.getCommandId());
+        ShipmentMethodTypeEvent.ShipmentMethodTypeStateDeleted e = newShipmentMethodTypeStateDeleted(stateEventId);
+        ((AbstractShipmentMethodTypeEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
@@ -93,44 +93,44 @@ public abstract class AbstractShipmentMethodTypeAggregate extends AbstractAggreg
 
     ////////////////////////
 
-    protected ShipmentMethodTypeStateEvent.ShipmentMethodTypeStateCreated newShipmentMethodTypeStateCreated(Long version, String commandId, String requesterId) {
+    protected ShipmentMethodTypeEvent.ShipmentMethodTypeStateCreated newShipmentMethodTypeStateCreated(Long version, String commandId, String requesterId) {
         ShipmentMethodTypeEventId stateEventId = new ShipmentMethodTypeEventId(this.state.getShipmentMethodTypeId(), version);
-        ShipmentMethodTypeStateEvent.ShipmentMethodTypeStateCreated e = newShipmentMethodTypeStateCreated(stateEventId);
-        ((AbstractShipmentMethodTypeStateEvent)e).setCommandId(commandId);
+        ShipmentMethodTypeEvent.ShipmentMethodTypeStateCreated e = newShipmentMethodTypeStateCreated(stateEventId);
+        ((AbstractShipmentMethodTypeEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected ShipmentMethodTypeStateEvent.ShipmentMethodTypeStateMergePatched newShipmentMethodTypeStateMergePatched(Long version, String commandId, String requesterId) {
+    protected ShipmentMethodTypeEvent.ShipmentMethodTypeStateMergePatched newShipmentMethodTypeStateMergePatched(Long version, String commandId, String requesterId) {
         ShipmentMethodTypeEventId stateEventId = new ShipmentMethodTypeEventId(this.state.getShipmentMethodTypeId(), version);
-        ShipmentMethodTypeStateEvent.ShipmentMethodTypeStateMergePatched e = newShipmentMethodTypeStateMergePatched(stateEventId);
-        ((AbstractShipmentMethodTypeStateEvent)e).setCommandId(commandId);
+        ShipmentMethodTypeEvent.ShipmentMethodTypeStateMergePatched e = newShipmentMethodTypeStateMergePatched(stateEventId);
+        ((AbstractShipmentMethodTypeEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected ShipmentMethodTypeStateEvent.ShipmentMethodTypeStateDeleted newShipmentMethodTypeStateDeleted(Long version, String commandId, String requesterId) {
+    protected ShipmentMethodTypeEvent.ShipmentMethodTypeStateDeleted newShipmentMethodTypeStateDeleted(Long version, String commandId, String requesterId) {
         ShipmentMethodTypeEventId stateEventId = new ShipmentMethodTypeEventId(this.state.getShipmentMethodTypeId(), version);
-        ShipmentMethodTypeStateEvent.ShipmentMethodTypeStateDeleted e = newShipmentMethodTypeStateDeleted(stateEventId);
-        ((AbstractShipmentMethodTypeStateEvent)e).setCommandId(commandId);
+        ShipmentMethodTypeEvent.ShipmentMethodTypeStateDeleted e = newShipmentMethodTypeStateDeleted(stateEventId);
+        ((AbstractShipmentMethodTypeEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected ShipmentMethodTypeStateEvent.ShipmentMethodTypeStateCreated newShipmentMethodTypeStateCreated(ShipmentMethodTypeEventId stateEventId) {
-        return new AbstractShipmentMethodTypeStateEvent.SimpleShipmentMethodTypeStateCreated(stateEventId);
+    protected ShipmentMethodTypeEvent.ShipmentMethodTypeStateCreated newShipmentMethodTypeStateCreated(ShipmentMethodTypeEventId stateEventId) {
+        return new AbstractShipmentMethodTypeEvent.SimpleShipmentMethodTypeStateCreated(stateEventId);
     }
 
-    protected ShipmentMethodTypeStateEvent.ShipmentMethodTypeStateMergePatched newShipmentMethodTypeStateMergePatched(ShipmentMethodTypeEventId stateEventId) {
-        return new AbstractShipmentMethodTypeStateEvent.SimpleShipmentMethodTypeStateMergePatched(stateEventId);
+    protected ShipmentMethodTypeEvent.ShipmentMethodTypeStateMergePatched newShipmentMethodTypeStateMergePatched(ShipmentMethodTypeEventId stateEventId) {
+        return new AbstractShipmentMethodTypeEvent.SimpleShipmentMethodTypeStateMergePatched(stateEventId);
     }
 
-    protected ShipmentMethodTypeStateEvent.ShipmentMethodTypeStateDeleted newShipmentMethodTypeStateDeleted(ShipmentMethodTypeEventId stateEventId)
+    protected ShipmentMethodTypeEvent.ShipmentMethodTypeStateDeleted newShipmentMethodTypeStateDeleted(ShipmentMethodTypeEventId stateEventId)
     {
-        return new AbstractShipmentMethodTypeStateEvent.SimpleShipmentMethodTypeStateDeleted(stateEventId);
+        return new AbstractShipmentMethodTypeEvent.SimpleShipmentMethodTypeStateDeleted(stateEventId);
     }
 
     public static class SimpleShipmentMethodTypeAggregate extends AbstractShipmentMethodTypeAggregate

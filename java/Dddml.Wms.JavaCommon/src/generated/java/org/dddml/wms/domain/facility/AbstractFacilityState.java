@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.facility.FacilityStateEvent.*;
+import org.dddml.wms.domain.facility.FacilityEvent.*;
 
 public abstract class AbstractFacilityState implements FacilityState
 {
@@ -333,7 +333,7 @@ public abstract class AbstractFacilityState implements FacilityState
     public AbstractFacilityState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setFacilityId(((FacilityStateEvent) events.get(0)).getFacilityEventId().getFacilityId());
+            this.setFacilityId(((FacilityEvent) events.get(0)).getFacilityEventId().getFacilityId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -621,10 +621,10 @@ public abstract class AbstractFacilityState implements FacilityState
     {
     }
 
-    protected void throwOnWrongEvent(FacilityStateEvent stateEvent)
+    protected void throwOnWrongEvent(FacilityEvent stateEvent)
     {
         String stateEntityId = this.getFacilityId(); // Aggregate Id
-        String eventEntityId = stateEvent.getFacilityEventId().getFacilityId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        String eventEntityId = stateEvent.getFacilityEventId().getFacilityId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

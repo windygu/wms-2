@@ -27,19 +27,19 @@ public abstract class AbstractRejectionReasonAggregate extends AbstractAggregate
     public void create(RejectionReasonCommand.CreateRejectionReason c)
     {
         if (c.getVersion() == null) { c.setVersion(RejectionReasonState.VERSION_NULL); }
-        RejectionReasonStateEvent e = map(c);
+        RejectionReasonEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(RejectionReasonCommand.MergePatchRejectionReason c)
     {
-        RejectionReasonStateEvent e = map(c);
+        RejectionReasonEvent e = map(c);
         apply(e);
     }
 
     public void delete(RejectionReasonCommand.DeleteRejectionReason c)
     {
-        RejectionReasonStateEvent e = map(c);
+        RejectionReasonEvent e = map(c);
         apply(e);
     }
 
@@ -54,34 +54,34 @@ public abstract class AbstractRejectionReasonAggregate extends AbstractAggregate
         changes.add(e);
     }
 
-    protected RejectionReasonStateEvent map(RejectionReasonCommand.CreateRejectionReason c) {
+    protected RejectionReasonEvent map(RejectionReasonCommand.CreateRejectionReason c) {
         RejectionReasonEventId stateEventId = new RejectionReasonEventId(c.getRejectionReasonId(), c.getVersion());
-        RejectionReasonStateEvent.RejectionReasonStateCreated e = newRejectionReasonStateCreated(stateEventId);
+        RejectionReasonEvent.RejectionReasonStateCreated e = newRejectionReasonStateCreated(stateEventId);
         e.setDescription(c.getDescription());
         e.setActive(c.getActive());
-        ((AbstractRejectionReasonStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractRejectionReasonEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected RejectionReasonStateEvent map(RejectionReasonCommand.MergePatchRejectionReason c) {
+    protected RejectionReasonEvent map(RejectionReasonCommand.MergePatchRejectionReason c) {
         RejectionReasonEventId stateEventId = new RejectionReasonEventId(c.getRejectionReasonId(), c.getVersion());
-        RejectionReasonStateEvent.RejectionReasonStateMergePatched e = newRejectionReasonStateMergePatched(stateEventId);
+        RejectionReasonEvent.RejectionReasonStateMergePatched e = newRejectionReasonStateMergePatched(stateEventId);
         e.setDescription(c.getDescription());
         e.setActive(c.getActive());
         e.setIsPropertyDescriptionRemoved(c.getIsPropertyDescriptionRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
-        ((AbstractRejectionReasonStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractRejectionReasonEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected RejectionReasonStateEvent map(RejectionReasonCommand.DeleteRejectionReason c) {
+    protected RejectionReasonEvent map(RejectionReasonCommand.DeleteRejectionReason c) {
         RejectionReasonEventId stateEventId = new RejectionReasonEventId(c.getRejectionReasonId(), c.getVersion());
-        RejectionReasonStateEvent.RejectionReasonStateDeleted e = newRejectionReasonStateDeleted(stateEventId);
-        ((AbstractRejectionReasonStateEvent)e).setCommandId(c.getCommandId());
+        RejectionReasonEvent.RejectionReasonStateDeleted e = newRejectionReasonStateDeleted(stateEventId);
+        ((AbstractRejectionReasonEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
@@ -90,44 +90,44 @@ public abstract class AbstractRejectionReasonAggregate extends AbstractAggregate
 
     ////////////////////////
 
-    protected RejectionReasonStateEvent.RejectionReasonStateCreated newRejectionReasonStateCreated(Long version, String commandId, String requesterId) {
+    protected RejectionReasonEvent.RejectionReasonStateCreated newRejectionReasonStateCreated(Long version, String commandId, String requesterId) {
         RejectionReasonEventId stateEventId = new RejectionReasonEventId(this.state.getRejectionReasonId(), version);
-        RejectionReasonStateEvent.RejectionReasonStateCreated e = newRejectionReasonStateCreated(stateEventId);
-        ((AbstractRejectionReasonStateEvent)e).setCommandId(commandId);
+        RejectionReasonEvent.RejectionReasonStateCreated e = newRejectionReasonStateCreated(stateEventId);
+        ((AbstractRejectionReasonEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected RejectionReasonStateEvent.RejectionReasonStateMergePatched newRejectionReasonStateMergePatched(Long version, String commandId, String requesterId) {
+    protected RejectionReasonEvent.RejectionReasonStateMergePatched newRejectionReasonStateMergePatched(Long version, String commandId, String requesterId) {
         RejectionReasonEventId stateEventId = new RejectionReasonEventId(this.state.getRejectionReasonId(), version);
-        RejectionReasonStateEvent.RejectionReasonStateMergePatched e = newRejectionReasonStateMergePatched(stateEventId);
-        ((AbstractRejectionReasonStateEvent)e).setCommandId(commandId);
+        RejectionReasonEvent.RejectionReasonStateMergePatched e = newRejectionReasonStateMergePatched(stateEventId);
+        ((AbstractRejectionReasonEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected RejectionReasonStateEvent.RejectionReasonStateDeleted newRejectionReasonStateDeleted(Long version, String commandId, String requesterId) {
+    protected RejectionReasonEvent.RejectionReasonStateDeleted newRejectionReasonStateDeleted(Long version, String commandId, String requesterId) {
         RejectionReasonEventId stateEventId = new RejectionReasonEventId(this.state.getRejectionReasonId(), version);
-        RejectionReasonStateEvent.RejectionReasonStateDeleted e = newRejectionReasonStateDeleted(stateEventId);
-        ((AbstractRejectionReasonStateEvent)e).setCommandId(commandId);
+        RejectionReasonEvent.RejectionReasonStateDeleted e = newRejectionReasonStateDeleted(stateEventId);
+        ((AbstractRejectionReasonEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected RejectionReasonStateEvent.RejectionReasonStateCreated newRejectionReasonStateCreated(RejectionReasonEventId stateEventId) {
-        return new AbstractRejectionReasonStateEvent.SimpleRejectionReasonStateCreated(stateEventId);
+    protected RejectionReasonEvent.RejectionReasonStateCreated newRejectionReasonStateCreated(RejectionReasonEventId stateEventId) {
+        return new AbstractRejectionReasonEvent.SimpleRejectionReasonStateCreated(stateEventId);
     }
 
-    protected RejectionReasonStateEvent.RejectionReasonStateMergePatched newRejectionReasonStateMergePatched(RejectionReasonEventId stateEventId) {
-        return new AbstractRejectionReasonStateEvent.SimpleRejectionReasonStateMergePatched(stateEventId);
+    protected RejectionReasonEvent.RejectionReasonStateMergePatched newRejectionReasonStateMergePatched(RejectionReasonEventId stateEventId) {
+        return new AbstractRejectionReasonEvent.SimpleRejectionReasonStateMergePatched(stateEventId);
     }
 
-    protected RejectionReasonStateEvent.RejectionReasonStateDeleted newRejectionReasonStateDeleted(RejectionReasonEventId stateEventId)
+    protected RejectionReasonEvent.RejectionReasonStateDeleted newRejectionReasonStateDeleted(RejectionReasonEventId stateEventId)
     {
-        return new AbstractRejectionReasonStateEvent.SimpleRejectionReasonStateDeleted(stateEventId);
+        return new AbstractRejectionReasonEvent.SimpleRejectionReasonStateDeleted(stateEventId);
     }
 
     public static class SimpleRejectionReasonAggregate extends AbstractRejectionReasonAggregate

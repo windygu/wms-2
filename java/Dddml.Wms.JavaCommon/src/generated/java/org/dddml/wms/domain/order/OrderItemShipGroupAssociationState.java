@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.order.OrderItemShipGroupAssociationStateEvent.*;
+import org.dddml.wms.domain.order.OrderItemShipGroupAssociationEvent.*;
 
 public interface OrderItemShipGroupAssociationState
 {
@@ -72,11 +72,11 @@ public interface OrderItemShipGroupAssociationState
 
     void mutate(Event e);
 
-    void when(OrderItemShipGroupAssociationStateEvent.OrderItemShipGroupAssociationStateCreated e);
+    void when(OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateCreated e);
 
-    void when(OrderItemShipGroupAssociationStateEvent.OrderItemShipGroupAssociationStateMergePatched e);
+    void when(OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateMergePatched e);
 
-    void when(OrderItemShipGroupAssociationStateEvent.OrderItemShipGroupAssociationStateRemoved e);
+    void when(OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateRemoved e);
     
 }
 

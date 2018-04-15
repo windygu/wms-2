@@ -166,7 +166,7 @@ public class InventoryItemRequirementEntryMvoResource {
 
             InventoryItemRequirementEntryId idObj = InventoryItemRequirementEntryMvoResourceUtils.parseIdString(id);
             InventoryItemRequirementEntryMvoStateEventDtoConverter dtoConverter = getInventoryItemRequirementEntryMvoStateEventDtoConverter();
-            return dtoConverter.toInventoryItemRequirementEntryMvoStateEventDto((AbstractInventoryItemRequirementEntryMvoStateEvent) inventoryItemRequirementEntryMvoApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toInventoryItemRequirementEntryMvoStateEventDto((AbstractInventoryItemRequirementEntryMvoEvent) inventoryItemRequirementEntryMvoApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

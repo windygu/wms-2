@@ -2,9 +2,9 @@ package org.dddml.wms.domain.damagereason;
 
 import java.util.Date;
 import org.dddml.wms.domain.*;
-import org.dddml.wms.domain.AbstractStateEvent;
+import org.dddml.wms.domain.AbstractEvent;
 
-public class DamageReasonStateEventDto extends AbstractStateEvent
+public class DamageReasonStateEventDto extends AbstractEvent
 {
 
     private DamageReasonEventId damageReasonEventId;
@@ -118,7 +118,7 @@ public class DamageReasonStateEventDto extends AbstractStateEvent
 	public static class DamageReasonStateCreatedDto extends DamageReasonStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_CREATED;
         }
@@ -129,7 +129,7 @@ public class DamageReasonStateEventDto extends AbstractStateEvent
 	public static class DamageReasonStateMergePatchedDto extends DamageReasonStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_MERGE_PATCHED;
         }
@@ -140,7 +140,7 @@ public class DamageReasonStateEventDto extends AbstractStateEvent
 	public static class DamageReasonStateDeletedDto extends DamageReasonStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_DELETED;
         }

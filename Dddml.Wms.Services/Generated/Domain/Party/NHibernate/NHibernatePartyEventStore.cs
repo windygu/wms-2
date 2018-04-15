@@ -45,7 +45,7 @@ namespace Dddml.Wms.Domain.Party.NHibernate
             var es = criteria.List<IEvent>();
             foreach (PartyStateEventBase e in es)
             {
-                e.StateEventReadOnly = true;
+                e.EventReadOnly = true;
             }
             return new EventStream()
             {

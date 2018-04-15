@@ -1,0 +1,86 @@
+﻿<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.picklistrolemvo">
+  
+  <class name="AbstractPicklistRoleMvoEvent" table="PicklistRoleMvoEvents" mutable="false" abstract="true">
+
+	<composite-id name="picklistRoleMvoEventId" class="org.dddml.wms.domain.picklistrolemvo.PicklistRoleMvoEventId">
+		<key-property name="picklistRoleIdPicklistId" ><column name="PicklistRoleIdPicklistId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="picklistRoleIdPartyRoleIdPartyId" ><column name="PicklistRoleIdPartyRoleIdPartyId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="picklistRoleIdPartyRoleIdRoleTypeId" ><column name="PicklistRoleIdPartyRoleIdRoleTypeId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="picklistVersion" ></key-property>
+	</composite-id>
+
+    <discriminator column="EventType" type="string" />
+
+	<property name="version" ></property>
+	<property name="active" ></property>
+	<property name="picklistDescription" ><column name="PicklistDescription" sql-type="VARCHAR(255)" /></property>
+	<property name="picklistFacilityId" ><column name="PicklistFacilityId" sql-type="VARCHAR(20)" /></property>
+	<property name="picklistShipmentMethodTypeId" ><column name="PicklistShipmentMethodTypeId" sql-type="VARCHAR(20)" /></property>
+	<property name="picklistStatusId" ><column name="PicklistStatusId" sql-type="VARCHAR(20)" /></property>
+	<property name="picklistPicklistDate" ><column name="PicklistPicklistDate" sql-type="DATETIME" /></property>
+	<property name="picklistPickwaveId" ><column name="PicklistPickwaveId" sql-type="DECIMAL(20,0)" /></property>
+	<property name="picklistCreatedBy" ></property>
+	<property name="picklistCreatedAt" type="timestamp"><column name="PicklistCreatedAt" sql-type="DATETIME" /></property>
+	<property name="picklistUpdatedBy" ></property>
+	<property name="picklistUpdatedAt" type="timestamp"><column name="PicklistUpdatedAt" sql-type="DATETIME" /></property>
+	<property name="picklistActive" ></property>
+	<property name="picklistDeleted" ></property>
+
+    <property name="createdByUserLogin" column="CreatedByUserLogin"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+    <subclass name="AbstractPicklistRoleMvoEvent$SimplePicklistRoleMvoStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="AbstractPicklistRoleMvoEvent$SimplePicklistRoleMvoStateMergePatched" discriminator-value="MergePatched">
+
+        <property name="isPropertyVersionRemoved" column="IsPropertyVersionRemoved"/>
+
+        <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+
+        <property name="isPropertyPicklistDescriptionRemoved" column="IsPropertyPicklistDescriptionRemoved"/>
+
+        <property name="isPropertyPicklistFacilityIdRemoved" column="IsPropertyPicklistFacilityIdRemoved"/>
+
+        <property name="isPropertyPicklistShipmentMethodTypeIdRemoved" column="IsPropertyPicklistShipmentMethodTypeIdRemoved"/>
+
+        <property name="isPropertyPicklistStatusIdRemoved" column="IsPropertyPicklistStatusIdRemoved"/>
+
+        <property name="isPropertyPicklistPicklistDateRemoved" column="IsPropertyPicklistPicklistDateRemoved"/>
+
+        <property name="isPropertyPicklistPickwaveIdRemoved" column="IsPropertyPicklistPickwaveIdRemoved"/>
+
+        <property name="isPropertyPicklistCreatedByRemoved" column="IsPropertyPicklistCreatedByRemoved"/>
+
+        <property name="isPropertyPicklistCreatedAtRemoved" column="IsPropertyPicklistCreatedAtRemoved"/>
+
+        <property name="isPropertyPicklistUpdatedByRemoved" column="IsPropertyPicklistUpdatedByRemoved"/>
+
+        <property name="isPropertyPicklistUpdatedAtRemoved" column="IsPropertyPicklistUpdatedAtRemoved"/>
+
+        <property name="isPropertyPicklistActiveRemoved" column="IsPropertyPicklistActiveRemoved"/>
+
+        <property name="isPropertyPicklistDeletedRemoved" column="IsPropertyPicklistDeletedRemoved"/>
+
+
+    </subclass>
+
+    <subclass name="AbstractPicklistRoleMvoEvent$SimplePicklistRoleMvoStateDeleted" discriminator-value="Deleted">
+
+    </subclass>
+
+
+
+  </class>
+  
+</hibernate-mapping>

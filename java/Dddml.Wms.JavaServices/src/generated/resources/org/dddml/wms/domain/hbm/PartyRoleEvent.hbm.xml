@@ -1,0 +1,46 @@
+﻿<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.partyrole">
+  
+  <class name="AbstractPartyRoleEvent" table="PartyRoleEvents" mutable="false" abstract="true">
+
+	<composite-id name="partyRoleEventId" class="org.dddml.wms.domain.partyrole.PartyRoleEventId">
+		<key-property name="partyRoleIdPartyId" ><column name="PartyRoleIdPartyId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="partyRoleIdRoleTypeId" ><column name="PartyRoleIdRoleTypeId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="version" ></key-property>
+	</composite-id>
+
+    <discriminator column="EventType" type="string" />
+
+	<property name="active" ></property>
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+    <subclass name="AbstractPartyRoleEvent$SimplePartyRoleStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="AbstractPartyRoleEvent$SimplePartyRoleStateMergePatched" discriminator-value="MergePatched">
+
+        <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+
+
+    </subclass>
+
+    <subclass name="AbstractPartyRoleEvent$SimplePartyRoleStateDeleted" discriminator-value="Deleted">
+
+    </subclass>
+
+
+
+  </class>
+  
+</hibernate-mapping>

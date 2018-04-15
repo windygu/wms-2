@@ -27,19 +27,19 @@ public abstract class AbstractFacilityAggregate extends AbstractAggregate implem
     public void create(FacilityCommand.CreateFacility c)
     {
         if (c.getVersion() == null) { c.setVersion(FacilityState.VERSION_NULL); }
-        FacilityStateEvent e = map(c);
+        FacilityEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(FacilityCommand.MergePatchFacility c)
     {
-        FacilityStateEvent e = map(c);
+        FacilityEvent e = map(c);
         apply(e);
     }
 
     public void delete(FacilityCommand.DeleteFacility c)
     {
-        FacilityStateEvent e = map(c);
+        FacilityEvent e = map(c);
         apply(e);
     }
 
@@ -54,9 +54,9 @@ public abstract class AbstractFacilityAggregate extends AbstractAggregate implem
         changes.add(e);
     }
 
-    protected FacilityStateEvent map(FacilityCommand.CreateFacility c) {
+    protected FacilityEvent map(FacilityCommand.CreateFacility c) {
         FacilityEventId stateEventId = new FacilityEventId(c.getFacilityId(), c.getVersion());
-        FacilityStateEvent.FacilityStateCreated e = newFacilityStateCreated(stateEventId);
+        FacilityEvent.FacilityStateCreated e = newFacilityStateCreated(stateEventId);
         e.setFacilityTypeId(c.getFacilityTypeId());
         e.setParentFacilityId(c.getParentFacilityId());
         e.setOwnerPartyId(c.getOwnerPartyId());
@@ -75,15 +75,15 @@ public abstract class AbstractFacilityAggregate extends AbstractAggregate implem
         e.setDefaultWeightUomId(c.getDefaultWeightUomId());
         e.setGeoPointId(c.getGeoPointId());
         e.setActive(c.getActive());
-        ((AbstractFacilityStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractFacilityEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected FacilityStateEvent map(FacilityCommand.MergePatchFacility c) {
+    protected FacilityEvent map(FacilityCommand.MergePatchFacility c) {
         FacilityEventId stateEventId = new FacilityEventId(c.getFacilityId(), c.getVersion());
-        FacilityStateEvent.FacilityStateMergePatched e = newFacilityStateMergePatched(stateEventId);
+        FacilityEvent.FacilityStateMergePatched e = newFacilityStateMergePatched(stateEventId);
         e.setFacilityTypeId(c.getFacilityTypeId());
         e.setParentFacilityId(c.getParentFacilityId());
         e.setOwnerPartyId(c.getOwnerPartyId());
@@ -120,16 +120,16 @@ public abstract class AbstractFacilityAggregate extends AbstractAggregate implem
         e.setIsPropertyDefaultWeightUomIdRemoved(c.getIsPropertyDefaultWeightUomIdRemoved());
         e.setIsPropertyGeoPointIdRemoved(c.getIsPropertyGeoPointIdRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
-        ((AbstractFacilityStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractFacilityEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected FacilityStateEvent map(FacilityCommand.DeleteFacility c) {
+    protected FacilityEvent map(FacilityCommand.DeleteFacility c) {
         FacilityEventId stateEventId = new FacilityEventId(c.getFacilityId(), c.getVersion());
-        FacilityStateEvent.FacilityStateDeleted e = newFacilityStateDeleted(stateEventId);
-        ((AbstractFacilityStateEvent)e).setCommandId(c.getCommandId());
+        FacilityEvent.FacilityStateDeleted e = newFacilityStateDeleted(stateEventId);
+        ((AbstractFacilityEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
@@ -138,44 +138,44 @@ public abstract class AbstractFacilityAggregate extends AbstractAggregate implem
 
     ////////////////////////
 
-    protected FacilityStateEvent.FacilityStateCreated newFacilityStateCreated(Long version, String commandId, String requesterId) {
+    protected FacilityEvent.FacilityStateCreated newFacilityStateCreated(Long version, String commandId, String requesterId) {
         FacilityEventId stateEventId = new FacilityEventId(this.state.getFacilityId(), version);
-        FacilityStateEvent.FacilityStateCreated e = newFacilityStateCreated(stateEventId);
-        ((AbstractFacilityStateEvent)e).setCommandId(commandId);
+        FacilityEvent.FacilityStateCreated e = newFacilityStateCreated(stateEventId);
+        ((AbstractFacilityEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected FacilityStateEvent.FacilityStateMergePatched newFacilityStateMergePatched(Long version, String commandId, String requesterId) {
+    protected FacilityEvent.FacilityStateMergePatched newFacilityStateMergePatched(Long version, String commandId, String requesterId) {
         FacilityEventId stateEventId = new FacilityEventId(this.state.getFacilityId(), version);
-        FacilityStateEvent.FacilityStateMergePatched e = newFacilityStateMergePatched(stateEventId);
-        ((AbstractFacilityStateEvent)e).setCommandId(commandId);
+        FacilityEvent.FacilityStateMergePatched e = newFacilityStateMergePatched(stateEventId);
+        ((AbstractFacilityEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected FacilityStateEvent.FacilityStateDeleted newFacilityStateDeleted(Long version, String commandId, String requesterId) {
+    protected FacilityEvent.FacilityStateDeleted newFacilityStateDeleted(Long version, String commandId, String requesterId) {
         FacilityEventId stateEventId = new FacilityEventId(this.state.getFacilityId(), version);
-        FacilityStateEvent.FacilityStateDeleted e = newFacilityStateDeleted(stateEventId);
-        ((AbstractFacilityStateEvent)e).setCommandId(commandId);
+        FacilityEvent.FacilityStateDeleted e = newFacilityStateDeleted(stateEventId);
+        ((AbstractFacilityEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected FacilityStateEvent.FacilityStateCreated newFacilityStateCreated(FacilityEventId stateEventId) {
-        return new AbstractFacilityStateEvent.SimpleFacilityStateCreated(stateEventId);
+    protected FacilityEvent.FacilityStateCreated newFacilityStateCreated(FacilityEventId stateEventId) {
+        return new AbstractFacilityEvent.SimpleFacilityStateCreated(stateEventId);
     }
 
-    protected FacilityStateEvent.FacilityStateMergePatched newFacilityStateMergePatched(FacilityEventId stateEventId) {
-        return new AbstractFacilityStateEvent.SimpleFacilityStateMergePatched(stateEventId);
+    protected FacilityEvent.FacilityStateMergePatched newFacilityStateMergePatched(FacilityEventId stateEventId) {
+        return new AbstractFacilityEvent.SimpleFacilityStateMergePatched(stateEventId);
     }
 
-    protected FacilityStateEvent.FacilityStateDeleted newFacilityStateDeleted(FacilityEventId stateEventId)
+    protected FacilityEvent.FacilityStateDeleted newFacilityStateDeleted(FacilityEventId stateEventId)
     {
-        return new AbstractFacilityStateEvent.SimpleFacilityStateDeleted(stateEventId);
+        return new AbstractFacilityEvent.SimpleFacilityStateDeleted(stateEventId);
     }
 
     public static class SimpleFacilityAggregate extends AbstractFacilityAggregate

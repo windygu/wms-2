@@ -183,7 +183,7 @@ public class MovementConfirmationLineMvoResource {
 
             MovementConfirmationLineId idObj = MovementConfirmationLineMvoResourceUtils.parseIdString(id);
             MovementConfirmationLineMvoStateEventDtoConverter dtoConverter = getMovementConfirmationLineMvoStateEventDtoConverter();
-            return dtoConverter.toMovementConfirmationLineMvoStateEventDto((AbstractMovementConfirmationLineMvoStateEvent) movementConfirmationLineMvoApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toMovementConfirmationLineMvoStateEventDto((AbstractMovementConfirmationLineMvoEvent) movementConfirmationLineMvoApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

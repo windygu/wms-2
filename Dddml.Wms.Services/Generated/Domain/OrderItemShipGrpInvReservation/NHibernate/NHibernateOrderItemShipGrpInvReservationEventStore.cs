@@ -50,7 +50,7 @@ namespace Dddml.Wms.Domain.OrderItemShipGrpInvReservation.NHibernate
             var es = criteria.List<IEvent>();
             foreach (OrderItemShipGrpInvReservationStateEventBase e in es)
             {
-                e.StateEventReadOnly = true;
+                e.EventReadOnly = true;
             }
             return new EventStream()
             {

@@ -28,13 +28,13 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
     public void create(OrderCommand.CreateOrder c)
     {
         if (c.getVersion() == null) { c.setVersion(OrderState.VERSION_NULL); }
-        OrderStateEvent e = map(c);
+        OrderEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(OrderCommand.MergePatchOrder c)
     {
-        OrderStateEvent e = map(c);
+        OrderEvent e = map(c);
         apply(e);
     }
 
@@ -49,9 +49,9 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         changes.add(e);
     }
 
-    protected OrderStateEvent map(OrderCommand.CreateOrder c) {
+    protected OrderEvent map(OrderCommand.CreateOrder c) {
         OrderEventId stateEventId = new OrderEventId(c.getOrderId(), c.getVersion());
-        OrderStateEvent.OrderStateCreated e = newOrderStateCreated(stateEventId);
+        OrderEvent.OrderStateCreated e = newOrderStateCreated(stateEventId);
         e.setOrderTypeId(c.getOrderTypeId());
         e.setOrderName(c.getOrderName());
         e.setExternalId(c.getExternalId());
@@ -77,37 +77,37 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         e.setGrandTotal(c.getGrandTotal());
         e.setInvoicePerShipment(c.getInvoicePerShipment());
         e.setActive(c.getActive());
-        ((AbstractOrderStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractOrderEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         Long version = c.getVersion();
         for (OrderRoleCommand.CreateOrderRole innerCommand : c.getOrderRoles())
         {
             throwOnInconsistentCommands(c, innerCommand);
-            OrderRoleStateEvent.OrderRoleStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);
+            OrderRoleEvent.OrderRoleStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);
             e.addOrderRoleEvent(innerEvent);
         }
 
         for (OrderItemCommand.CreateOrderItem innerCommand : c.getOrderItems())
         {
             throwOnInconsistentCommands(c, innerCommand);
-            OrderItemStateEvent.OrderItemStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);
+            OrderItemEvent.OrderItemStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);
             e.addOrderItemEvent(innerEvent);
         }
 
         for (OrderShipGroupCommand.CreateOrderShipGroup innerCommand : c.getOrderShipGroups())
         {
             throwOnInconsistentCommands(c, innerCommand);
-            OrderShipGroupStateEvent.OrderShipGroupStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);
+            OrderShipGroupEvent.OrderShipGroupStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);
             e.addOrderShipGroupEvent(innerEvent);
         }
 
         return e;
     }
 
-    protected OrderStateEvent map(OrderCommand.MergePatchOrder c) {
+    protected OrderEvent map(OrderCommand.MergePatchOrder c) {
         OrderEventId stateEventId = new OrderEventId(c.getOrderId(), c.getVersion());
-        OrderStateEvent.OrderStateMergePatched e = newOrderStateMergePatched(stateEventId);
+        OrderEvent.OrderStateMergePatched e = newOrderStateMergePatched(stateEventId);
         e.setOrderTypeId(c.getOrderTypeId());
         e.setOrderName(c.getOrderName());
         e.setExternalId(c.getExternalId());
@@ -158,28 +158,28 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         e.setIsPropertyGrandTotalRemoved(c.getIsPropertyGrandTotalRemoved());
         e.setIsPropertyInvoicePerShipmentRemoved(c.getIsPropertyInvoicePerShipmentRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
-        ((AbstractOrderStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractOrderEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         Long version = c.getVersion();
         for (OrderRoleCommand innerCommand : c.getOrderRoleCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
-            OrderRoleStateEvent innerEvent = map(innerCommand, c, version, this.state);
+            OrderRoleEvent innerEvent = map(innerCommand, c, version, this.state);
             e.addOrderRoleEvent(innerEvent);
         }
 
         for (OrderItemCommand innerCommand : c.getOrderItemCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
-            OrderItemStateEvent innerEvent = map(innerCommand, c, version, this.state);
+            OrderItemEvent innerEvent = map(innerCommand, c, version, this.state);
             e.addOrderItemEvent(innerEvent);
         }
 
         for (OrderShipGroupCommand innerCommand : c.getOrderShipGroupCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
-            OrderShipGroupStateEvent innerEvent = map(innerCommand, c, version, this.state);
+            OrderShipGroupEvent innerEvent = map(innerCommand, c, version, this.state);
             e.addOrderShipGroupEvent(innerEvent);
         }
 
@@ -187,7 +187,7 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
     }
 
 
-    protected OrderRoleStateEvent map(OrderRoleCommand c, OrderCommand outerCommand, long version, OrderState outerState)
+    protected OrderRoleEvent map(OrderRoleCommand c, OrderCommand outerCommand, Long version, OrderState outerState)
     {
         OrderRoleCommand.CreateOrderRole create = (c.getCommandType().equals(CommandType.CREATE)) ? ((OrderRoleCommand.CreateOrderRole)c) : null;
         if(create != null)
@@ -209,11 +209,11 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         throw new UnsupportedOperationException();
     }
 
-    protected OrderRoleStateEvent.OrderRoleStateCreated mapCreate(OrderRoleCommand.CreateOrderRole c, OrderCommand outerCommand, Long version, OrderState outerState)
+    protected OrderRoleEvent.OrderRoleStateCreated mapCreate(OrderRoleCommand.CreateOrderRole c, OrderCommand outerCommand, Long version, OrderState outerState)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
         OrderRoleEventId stateEventId = new OrderRoleEventId(c.getOrderId(), c.getPartyRoleId(), version);
-        OrderRoleStateEvent.OrderRoleStateCreated e = newOrderRoleStateCreated(stateEventId);
+        OrderRoleEvent.OrderRoleStateCreated e = newOrderRoleStateCreated(stateEventId);
         OrderRoleState s = outerState.getOrderRoles().get(c.getPartyRoleId());
 
         e.setActive(c.getActive());
@@ -223,11 +223,11 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
 
     }// END map(ICreate... ////////////////////////////
 
-    protected OrderRoleStateEvent.OrderRoleStateMergePatched mapMergePatch(OrderRoleCommand.MergePatchOrderRole c, OrderCommand outerCommand, Long version, OrderState outerState)
+    protected OrderRoleEvent.OrderRoleStateMergePatched mapMergePatch(OrderRoleCommand.MergePatchOrderRole c, OrderCommand outerCommand, Long version, OrderState outerState)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
         OrderRoleEventId stateEventId = new OrderRoleEventId(c.getOrderId(), c.getPartyRoleId(), version);
-        OrderRoleStateEvent.OrderRoleStateMergePatched e = newOrderRoleStateMergePatched(stateEventId);
+        OrderRoleEvent.OrderRoleStateMergePatched e = newOrderRoleStateMergePatched(stateEventId);
         OrderRoleState s = outerState.getOrderRoles().get(c.getPartyRoleId());
 
         e.setActive(c.getActive());
@@ -238,11 +238,11 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
 
     }// END map(IMergePatch... ////////////////////////////
 
-    protected OrderRoleStateEvent.OrderRoleStateRemoved mapRemove(OrderRoleCommand.RemoveOrderRole c, OrderCommand outerCommand, Long version)
+    protected OrderRoleEvent.OrderRoleStateRemoved mapRemove(OrderRoleCommand.RemoveOrderRole c, OrderCommand outerCommand, Long version)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
         OrderRoleEventId stateEventId = new OrderRoleEventId(c.getOrderId(), c.getPartyRoleId(), version);
-        OrderRoleStateEvent.OrderRoleStateRemoved e = newOrderRoleStateRemoved(stateEventId);
+        OrderRoleEvent.OrderRoleStateRemoved e = newOrderRoleStateRemoved(stateEventId);
 
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
@@ -252,7 +252,7 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
     }// END map(IRemove... ////////////////////////////
 
 
-    protected OrderItemStateEvent map(OrderItemCommand c, OrderCommand outerCommand, long version, OrderState outerState)
+    protected OrderItemEvent map(OrderItemCommand c, OrderCommand outerCommand, Long version, OrderState outerState)
     {
         OrderItemCommand.CreateOrderItem create = (c.getCommandType().equals(CommandType.CREATE)) ? ((OrderItemCommand.CreateOrderItem)c) : null;
         if(create != null)
@@ -269,11 +269,11 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         throw new UnsupportedOperationException();
     }
 
-    protected OrderItemStateEvent.OrderItemStateCreated mapCreate(OrderItemCommand.CreateOrderItem c, OrderCommand outerCommand, Long version, OrderState outerState)
+    protected OrderItemEvent.OrderItemStateCreated mapCreate(OrderItemCommand.CreateOrderItem c, OrderCommand outerCommand, Long version, OrderState outerState)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
         OrderItemEventId stateEventId = new OrderItemEventId(c.getOrderId(), c.getOrderItemSeqId(), version);
-        OrderItemStateEvent.OrderItemStateCreated e = newOrderItemStateCreated(stateEventId);
+        OrderItemEvent.OrderItemStateCreated e = newOrderItemStateCreated(stateEventId);
         OrderItemState s = outerState.getOrderItems().get(c.getOrderItemSeqId());
 
         e.setProductId(c.getProductId());
@@ -318,11 +318,11 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
 
     }// END map(ICreate... ////////////////////////////
 
-    protected OrderItemStateEvent.OrderItemStateMergePatched mapMergePatch(OrderItemCommand.MergePatchOrderItem c, OrderCommand outerCommand, Long version, OrderState outerState)
+    protected OrderItemEvent.OrderItemStateMergePatched mapMergePatch(OrderItemCommand.MergePatchOrderItem c, OrderCommand outerCommand, Long version, OrderState outerState)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
         OrderItemEventId stateEventId = new OrderItemEventId(c.getOrderId(), c.getOrderItemSeqId(), version);
-        OrderItemStateEvent.OrderItemStateMergePatched e = newOrderItemStateMergePatched(stateEventId);
+        OrderItemEvent.OrderItemStateMergePatched e = newOrderItemStateMergePatched(stateEventId);
         OrderItemState s = outerState.getOrderItems().get(c.getOrderItemSeqId());
 
         e.setProductId(c.getProductId());
@@ -404,7 +404,7 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
     }// END map(IMergePatch... ////////////////////////////
 
 
-    protected OrderShipGroupStateEvent map(OrderShipGroupCommand c, OrderCommand outerCommand, long version, OrderState outerState)
+    protected OrderShipGroupEvent map(OrderShipGroupCommand c, OrderCommand outerCommand, Long version, OrderState outerState)
     {
         OrderShipGroupCommand.CreateOrderShipGroup create = (c.getCommandType().equals(CommandType.CREATE)) ? ((OrderShipGroupCommand.CreateOrderShipGroup)c) : null;
         if(create != null)
@@ -426,11 +426,11 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         throw new UnsupportedOperationException();
     }
 
-    protected OrderShipGroupStateEvent.OrderShipGroupStateCreated mapCreate(OrderShipGroupCommand.CreateOrderShipGroup c, OrderCommand outerCommand, Long version, OrderState outerState)
+    protected OrderShipGroupEvent.OrderShipGroupStateCreated mapCreate(OrderShipGroupCommand.CreateOrderShipGroup c, OrderCommand outerCommand, Long version, OrderState outerState)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
         OrderShipGroupEventId stateEventId = new OrderShipGroupEventId(c.getOrderId(), c.getShipGroupSeqId(), version);
-        OrderShipGroupStateEvent.OrderShipGroupStateCreated e = newOrderShipGroupStateCreated(stateEventId);
+        OrderShipGroupEvent.OrderShipGroupStateCreated e = newOrderShipGroupStateCreated(stateEventId);
         OrderShipGroupState s = outerState.getOrderShipGroups().get(c.getShipGroupSeqId());
 
         e.setShipmentMethodTypeId(c.getShipmentMethodTypeId());
@@ -459,7 +459,7 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         {
             throwOnInconsistentCommands(c, innerCommand);
 
-            OrderItemShipGroupAssociationStateEvent.OrderItemShipGroupAssociationStateCreated innerEvent = mapCreate(innerCommand, c, version, s);
+            OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateCreated innerEvent = mapCreate(innerCommand, c, version, s);
             e.addOrderItemShipGroupAssociationEvent(innerEvent);
         }
 
@@ -467,11 +467,11 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
 
     }// END map(ICreate... ////////////////////////////
 
-    protected OrderShipGroupStateEvent.OrderShipGroupStateMergePatched mapMergePatch(OrderShipGroupCommand.MergePatchOrderShipGroup c, OrderCommand outerCommand, Long version, OrderState outerState)
+    protected OrderShipGroupEvent.OrderShipGroupStateMergePatched mapMergePatch(OrderShipGroupCommand.MergePatchOrderShipGroup c, OrderCommand outerCommand, Long version, OrderState outerState)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
         OrderShipGroupEventId stateEventId = new OrderShipGroupEventId(c.getOrderId(), c.getShipGroupSeqId(), version);
-        OrderShipGroupStateEvent.OrderShipGroupStateMergePatched e = newOrderShipGroupStateMergePatched(stateEventId);
+        OrderShipGroupEvent.OrderShipGroupStateMergePatched e = newOrderShipGroupStateMergePatched(stateEventId);
         OrderShipGroupState s = outerState.getOrderShipGroups().get(c.getShipGroupSeqId());
 
         e.setShipmentMethodTypeId(c.getShipmentMethodTypeId());
@@ -519,7 +519,7 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         {
             throwOnInconsistentCommands(c, innerCommand);
 
-            OrderItemShipGroupAssociationStateEvent innerEvent = map(innerCommand, c, version, s);
+            OrderItemShipGroupAssociationEvent innerEvent = map(innerCommand, c, version, s);
             e.addOrderItemShipGroupAssociationEvent(innerEvent);
         }
 
@@ -527,11 +527,11 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
 
     }// END map(IMergePatch... ////////////////////////////
 
-    protected OrderShipGroupStateEvent.OrderShipGroupStateRemoved mapRemove(OrderShipGroupCommand.RemoveOrderShipGroup c, OrderCommand outerCommand, Long version)
+    protected OrderShipGroupEvent.OrderShipGroupStateRemoved mapRemove(OrderShipGroupCommand.RemoveOrderShipGroup c, OrderCommand outerCommand, Long version)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
         OrderShipGroupEventId stateEventId = new OrderShipGroupEventId(c.getOrderId(), c.getShipGroupSeqId(), version);
-        OrderShipGroupStateEvent.OrderShipGroupStateRemoved e = newOrderShipGroupStateRemoved(stateEventId);
+        OrderShipGroupEvent.OrderShipGroupStateRemoved e = newOrderShipGroupStateRemoved(stateEventId);
 
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
@@ -541,7 +541,7 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
     }// END map(IRemove... ////////////////////////////
 
 
-    protected OrderItemShipGroupAssociationStateEvent map(OrderItemShipGroupAssociationCommand c, OrderShipGroupCommand outerCommand, long version, OrderShipGroupState outerState)
+    protected OrderItemShipGroupAssociationEvent map(OrderItemShipGroupAssociationCommand c, OrderShipGroupCommand outerCommand, Long version, OrderShipGroupState outerState)
     {
         OrderItemShipGroupAssociationCommand.CreateOrderItemShipGroupAssociation create = (c.getCommandType().equals(CommandType.CREATE)) ? ((OrderItemShipGroupAssociationCommand.CreateOrderItemShipGroupAssociation)c) : null;
         if(create != null)
@@ -563,11 +563,11 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         throw new UnsupportedOperationException();
     }
 
-    protected OrderItemShipGroupAssociationStateEvent.OrderItemShipGroupAssociationStateCreated mapCreate(OrderItemShipGroupAssociationCommand.CreateOrderItemShipGroupAssociation c, OrderShipGroupCommand outerCommand, Long version, OrderShipGroupState outerState)
+    protected OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateCreated mapCreate(OrderItemShipGroupAssociationCommand.CreateOrderItemShipGroupAssociation c, OrderShipGroupCommand outerCommand, Long version, OrderShipGroupState outerState)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
         OrderItemShipGroupAssociationEventId stateEventId = new OrderItemShipGroupAssociationEventId(c.getOrderId(), c.getOrderShipGroupShipGroupSeqId(), c.getOrderItemSeqId(), version);
-        OrderItemShipGroupAssociationStateEvent.OrderItemShipGroupAssociationStateCreated e = newOrderItemShipGroupAssociationStateCreated(stateEventId);
+        OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateCreated e = newOrderItemShipGroupAssociationStateCreated(stateEventId);
         OrderItemShipGroupAssociationState s = outerState.getOrderItemShipGroupAssociations().get(c.getOrderItemSeqId());
 
         e.setQuantity(c.getQuantity());
@@ -579,11 +579,11 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
 
     }// END map(ICreate... ////////////////////////////
 
-    protected OrderItemShipGroupAssociationStateEvent.OrderItemShipGroupAssociationStateMergePatched mapMergePatch(OrderItemShipGroupAssociationCommand.MergePatchOrderItemShipGroupAssociation c, OrderShipGroupCommand outerCommand, Long version, OrderShipGroupState outerState)
+    protected OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateMergePatched mapMergePatch(OrderItemShipGroupAssociationCommand.MergePatchOrderItemShipGroupAssociation c, OrderShipGroupCommand outerCommand, Long version, OrderShipGroupState outerState)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
         OrderItemShipGroupAssociationEventId stateEventId = new OrderItemShipGroupAssociationEventId(c.getOrderId(), c.getOrderShipGroupShipGroupSeqId(), c.getOrderItemSeqId(), version);
-        OrderItemShipGroupAssociationStateEvent.OrderItemShipGroupAssociationStateMergePatched e = newOrderItemShipGroupAssociationStateMergePatched(stateEventId);
+        OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateMergePatched e = newOrderItemShipGroupAssociationStateMergePatched(stateEventId);
         OrderItemShipGroupAssociationState s = outerState.getOrderItemShipGroupAssociations().get(c.getOrderItemSeqId());
 
         e.setQuantity(c.getQuantity());
@@ -598,11 +598,11 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
 
     }// END map(IMergePatch... ////////////////////////////
 
-    protected OrderItemShipGroupAssociationStateEvent.OrderItemShipGroupAssociationStateRemoved mapRemove(OrderItemShipGroupAssociationCommand.RemoveOrderItemShipGroupAssociation c, OrderShipGroupCommand outerCommand, Long version)
+    protected OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateRemoved mapRemove(OrderItemShipGroupAssociationCommand.RemoveOrderItemShipGroupAssociation c, OrderShipGroupCommand outerCommand, Long version)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
         OrderItemShipGroupAssociationEventId stateEventId = new OrderItemShipGroupAssociationEventId(c.getOrderId(), c.getOrderShipGroupShipGroupSeqId(), c.getOrderItemSeqId(), version);
-        OrderItemShipGroupAssociationStateEvent.OrderItemShipGroupAssociationStateRemoved e = newOrderItemShipGroupAssociationStateRemoved(stateEventId);
+        OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateRemoved e = newOrderItemShipGroupAssociationStateRemoved(stateEventId);
 
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
@@ -702,77 +702,77 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
 
     ////////////////////////
 
-    protected OrderStateEvent.OrderStateCreated newOrderStateCreated(Long version, String commandId, String requesterId) {
+    protected OrderEvent.OrderStateCreated newOrderStateCreated(Long version, String commandId, String requesterId) {
         OrderEventId stateEventId = new OrderEventId(this.state.getOrderId(), version);
-        OrderStateEvent.OrderStateCreated e = newOrderStateCreated(stateEventId);
-        ((AbstractOrderStateEvent)e).setCommandId(commandId);
+        OrderEvent.OrderStateCreated e = newOrderStateCreated(stateEventId);
+        ((AbstractOrderEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected OrderStateEvent.OrderStateMergePatched newOrderStateMergePatched(Long version, String commandId, String requesterId) {
+    protected OrderEvent.OrderStateMergePatched newOrderStateMergePatched(Long version, String commandId, String requesterId) {
         OrderEventId stateEventId = new OrderEventId(this.state.getOrderId(), version);
-        OrderStateEvent.OrderStateMergePatched e = newOrderStateMergePatched(stateEventId);
-        ((AbstractOrderStateEvent)e).setCommandId(commandId);
+        OrderEvent.OrderStateMergePatched e = newOrderStateMergePatched(stateEventId);
+        ((AbstractOrderEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected OrderStateEvent.OrderStateCreated newOrderStateCreated(OrderEventId stateEventId) {
-        return new AbstractOrderStateEvent.SimpleOrderStateCreated(stateEventId);
+    protected OrderEvent.OrderStateCreated newOrderStateCreated(OrderEventId stateEventId) {
+        return new AbstractOrderEvent.SimpleOrderStateCreated(stateEventId);
     }
 
-    protected OrderStateEvent.OrderStateMergePatched newOrderStateMergePatched(OrderEventId stateEventId) {
-        return new AbstractOrderStateEvent.SimpleOrderStateMergePatched(stateEventId);
+    protected OrderEvent.OrderStateMergePatched newOrderStateMergePatched(OrderEventId stateEventId) {
+        return new AbstractOrderEvent.SimpleOrderStateMergePatched(stateEventId);
     }
 
-    protected OrderRoleStateEvent.OrderRoleStateCreated newOrderRoleStateCreated(OrderRoleEventId stateEventId) {
-        return new AbstractOrderRoleStateEvent.SimpleOrderRoleStateCreated(stateEventId);
+    protected OrderRoleEvent.OrderRoleStateCreated newOrderRoleStateCreated(OrderRoleEventId stateEventId) {
+        return new AbstractOrderRoleEvent.SimpleOrderRoleStateCreated(stateEventId);
     }
 
-    protected OrderRoleStateEvent.OrderRoleStateMergePatched newOrderRoleStateMergePatched(OrderRoleEventId stateEventId) {
-        return new AbstractOrderRoleStateEvent.SimpleOrderRoleStateMergePatched(stateEventId);
+    protected OrderRoleEvent.OrderRoleStateMergePatched newOrderRoleStateMergePatched(OrderRoleEventId stateEventId) {
+        return new AbstractOrderRoleEvent.SimpleOrderRoleStateMergePatched(stateEventId);
     }
 
-    protected OrderRoleStateEvent.OrderRoleStateRemoved newOrderRoleStateRemoved(OrderRoleEventId stateEventId)
+    protected OrderRoleEvent.OrderRoleStateRemoved newOrderRoleStateRemoved(OrderRoleEventId stateEventId)
     {
-        return new AbstractOrderRoleStateEvent.SimpleOrderRoleStateRemoved(stateEventId);
+        return new AbstractOrderRoleEvent.SimpleOrderRoleStateRemoved(stateEventId);
     }
 
-    protected OrderItemStateEvent.OrderItemStateCreated newOrderItemStateCreated(OrderItemEventId stateEventId) {
-        return new AbstractOrderItemStateEvent.SimpleOrderItemStateCreated(stateEventId);
+    protected OrderItemEvent.OrderItemStateCreated newOrderItemStateCreated(OrderItemEventId stateEventId) {
+        return new AbstractOrderItemEvent.SimpleOrderItemStateCreated(stateEventId);
     }
 
-    protected OrderItemStateEvent.OrderItemStateMergePatched newOrderItemStateMergePatched(OrderItemEventId stateEventId) {
-        return new AbstractOrderItemStateEvent.SimpleOrderItemStateMergePatched(stateEventId);
+    protected OrderItemEvent.OrderItemStateMergePatched newOrderItemStateMergePatched(OrderItemEventId stateEventId) {
+        return new AbstractOrderItemEvent.SimpleOrderItemStateMergePatched(stateEventId);
     }
 
-    protected OrderShipGroupStateEvent.OrderShipGroupStateCreated newOrderShipGroupStateCreated(OrderShipGroupEventId stateEventId) {
-        return new AbstractOrderShipGroupStateEvent.SimpleOrderShipGroupStateCreated(stateEventId);
+    protected OrderShipGroupEvent.OrderShipGroupStateCreated newOrderShipGroupStateCreated(OrderShipGroupEventId stateEventId) {
+        return new AbstractOrderShipGroupEvent.SimpleOrderShipGroupStateCreated(stateEventId);
     }
 
-    protected OrderShipGroupStateEvent.OrderShipGroupStateMergePatched newOrderShipGroupStateMergePatched(OrderShipGroupEventId stateEventId) {
-        return new AbstractOrderShipGroupStateEvent.SimpleOrderShipGroupStateMergePatched(stateEventId);
+    protected OrderShipGroupEvent.OrderShipGroupStateMergePatched newOrderShipGroupStateMergePatched(OrderShipGroupEventId stateEventId) {
+        return new AbstractOrderShipGroupEvent.SimpleOrderShipGroupStateMergePatched(stateEventId);
     }
 
-    protected OrderShipGroupStateEvent.OrderShipGroupStateRemoved newOrderShipGroupStateRemoved(OrderShipGroupEventId stateEventId)
+    protected OrderShipGroupEvent.OrderShipGroupStateRemoved newOrderShipGroupStateRemoved(OrderShipGroupEventId stateEventId)
     {
-        return new AbstractOrderShipGroupStateEvent.SimpleOrderShipGroupStateRemoved(stateEventId);
+        return new AbstractOrderShipGroupEvent.SimpleOrderShipGroupStateRemoved(stateEventId);
     }
 
-    protected OrderItemShipGroupAssociationStateEvent.OrderItemShipGroupAssociationStateCreated newOrderItemShipGroupAssociationStateCreated(OrderItemShipGroupAssociationEventId stateEventId) {
-        return new AbstractOrderItemShipGroupAssociationStateEvent.SimpleOrderItemShipGroupAssociationStateCreated(stateEventId);
+    protected OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateCreated newOrderItemShipGroupAssociationStateCreated(OrderItemShipGroupAssociationEventId stateEventId) {
+        return new AbstractOrderItemShipGroupAssociationEvent.SimpleOrderItemShipGroupAssociationStateCreated(stateEventId);
     }
 
-    protected OrderItemShipGroupAssociationStateEvent.OrderItemShipGroupAssociationStateMergePatched newOrderItemShipGroupAssociationStateMergePatched(OrderItemShipGroupAssociationEventId stateEventId) {
-        return new AbstractOrderItemShipGroupAssociationStateEvent.SimpleOrderItemShipGroupAssociationStateMergePatched(stateEventId);
+    protected OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateMergePatched newOrderItemShipGroupAssociationStateMergePatched(OrderItemShipGroupAssociationEventId stateEventId) {
+        return new AbstractOrderItemShipGroupAssociationEvent.SimpleOrderItemShipGroupAssociationStateMergePatched(stateEventId);
     }
 
-    protected OrderItemShipGroupAssociationStateEvent.OrderItemShipGroupAssociationStateRemoved newOrderItemShipGroupAssociationStateRemoved(OrderItemShipGroupAssociationEventId stateEventId)
+    protected OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateRemoved newOrderItemShipGroupAssociationStateRemoved(OrderItemShipGroupAssociationEventId stateEventId)
     {
-        return new AbstractOrderItemShipGroupAssociationStateEvent.SimpleOrderItemShipGroupAssociationStateRemoved(stateEventId);
+        return new AbstractOrderItemShipGroupAssociationEvent.SimpleOrderItemShipGroupAssociationStateRemoved(stateEventId);
     }
 
     public static class SimpleOrderAggregate extends AbstractOrderAggregate

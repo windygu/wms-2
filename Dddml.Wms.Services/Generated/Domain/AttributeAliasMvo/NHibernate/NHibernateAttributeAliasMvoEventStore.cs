@@ -47,7 +47,7 @@ namespace Dddml.Wms.Domain.AttributeAliasMvo.NHibernate
             var es = criteria.List<IEvent>();
             foreach (AttributeAliasMvoStateEventBase e in es)
             {
-                e.StateEventReadOnly = true;
+                e.EventReadOnly = true;
             }
             return new EventStream()
             {

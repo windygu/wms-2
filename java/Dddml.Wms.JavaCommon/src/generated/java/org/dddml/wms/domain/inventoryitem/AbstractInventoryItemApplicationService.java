@@ -83,19 +83,19 @@ public abstract class AbstractInventoryItemApplicationService implements Invento
         return getStateQueryRepository().getCount(filter);
     }
 
-    public InventoryItemStateEvent getStateEvent(InventoryItemId inventoryItemId, long version) {
-        InventoryItemStateEvent e = (InventoryItemStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(inventoryItemId), version);
+    public InventoryItemEvent getEvent(InventoryItemId inventoryItemId, long version) {
+        InventoryItemEvent e = (InventoryItemEvent)getEventStore().getEvent(toEventStoreAggregateId(inventoryItemId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(inventoryItemId, 0);
+            return getEvent(inventoryItemId, 0);
         }
         return e;
     }
 
     public InventoryItemState getHistoryState(InventoryItemId inventoryItemId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractInventoryItemStateEvent.class, toEventStoreAggregateId(inventoryItemId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractInventoryItemEvent.class, toEventStoreAggregateId(inventoryItemId), version - 1);
         return new AbstractInventoryItemState.SimpleInventoryItemState(eventStream.getEvents());
     }
 
@@ -142,7 +142,7 @@ public abstract class AbstractInventoryItemApplicationService implements Invento
         }
     }
 
-    public void initialize(InventoryItemStateEvent.InventoryItemStateCreated stateCreated) {
+    public void initialize(InventoryItemEvent.InventoryItemStateCreated stateCreated) {
         InventoryItemId aggregateId = stateCreated.getInventoryItemEventId().getInventoryItemId();
         InventoryItemState state = new AbstractInventoryItemState.SimpleInventoryItemState();
         state.setInventoryItemId(aggregateId);
@@ -160,9 +160,9 @@ public abstract class AbstractInventoryItemApplicationService implements Invento
         if (command.getVersion() == null) { command.setVersion(InventoryItemState.VERSION_NULL); }
         if (state.getVersion() != null && state.getVersion() > command.getVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractInventoryItemStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractInventoryItemEvent.class, eventStoreAggregateId, command.getVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

@@ -5,7 +5,7 @@ import org.dddml.wms.domain.order.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.orderitemmvo.OrderItemMvoStateEvent.*;
+import org.dddml.wms.domain.orderitemmvo.OrderItemMvoEvent.*;
 
 public interface OrderItemMvoState
 {
@@ -309,9 +309,9 @@ public interface OrderItemMvoState
 
     void mutate(Event e);
 
-    void when(OrderItemMvoStateEvent.OrderItemMvoStateCreated e);
+    void when(OrderItemMvoEvent.OrderItemMvoStateCreated e);
 
-    void when(OrderItemMvoStateEvent.OrderItemMvoStateMergePatched e);
+    void when(OrderItemMvoEvent.OrderItemMvoStateMergePatched e);
 
     
 }

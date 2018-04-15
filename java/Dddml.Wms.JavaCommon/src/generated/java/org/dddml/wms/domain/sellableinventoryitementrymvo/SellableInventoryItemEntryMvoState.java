@@ -7,7 +7,7 @@ import org.dddml.wms.domain.inventoryprtriggered.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.sellableinventoryitementrymvo.SellableInventoryItemEntryMvoStateEvent.*;
+import org.dddml.wms.domain.sellableinventoryitementrymvo.SellableInventoryItemEntryMvoEvent.*;
 
 public interface SellableInventoryItemEntryMvoState
 {
@@ -79,9 +79,9 @@ public interface SellableInventoryItemEntryMvoState
 
     void mutate(Event e);
 
-    void when(SellableInventoryItemEntryMvoStateEvent.SellableInventoryItemEntryMvoStateCreated e);
+    void when(SellableInventoryItemEntryMvoEvent.SellableInventoryItemEntryMvoStateCreated e);
 
-    void when(SellableInventoryItemEntryMvoStateEvent.SellableInventoryItemEntryMvoStateMergePatched e);
+    void when(SellableInventoryItemEntryMvoEvent.SellableInventoryItemEntryMvoStateMergePatched e);
 
     
 }

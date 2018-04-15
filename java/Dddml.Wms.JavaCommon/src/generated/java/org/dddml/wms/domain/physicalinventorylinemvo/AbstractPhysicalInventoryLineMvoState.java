@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.physicalinventorylinemvo.PhysicalInventoryLineMvoStateEvent.*;
+import org.dddml.wms.domain.physicalinventorylinemvo.PhysicalInventoryLineMvoEvent.*;
 
 public abstract class AbstractPhysicalInventoryLineMvoState implements PhysicalInventoryLineMvoState
 {
@@ -431,7 +431,7 @@ public abstract class AbstractPhysicalInventoryLineMvoState implements PhysicalI
     public AbstractPhysicalInventoryLineMvoState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setPhysicalInventoryLineId(((PhysicalInventoryLineMvoStateEvent) events.get(0)).getPhysicalInventoryLineMvoEventId().getPhysicalInventoryLineId());
+            this.setPhysicalInventoryLineId(((PhysicalInventoryLineMvoEvent) events.get(0)).getPhysicalInventoryLineMvoEventId().getPhysicalInventoryLineId());
             for (Event e : events) {
                 mutate(e);
                 this.setPhysicalInventoryVersion(this.getPhysicalInventoryVersion() + 1);
@@ -815,10 +815,10 @@ public abstract class AbstractPhysicalInventoryLineMvoState implements PhysicalI
     {
     }
 
-    protected void throwOnWrongEvent(PhysicalInventoryLineMvoStateEvent stateEvent)
+    protected void throwOnWrongEvent(PhysicalInventoryLineMvoEvent stateEvent)
     {
         PhysicalInventoryLineId stateEntityId = this.getPhysicalInventoryLineId(); // Aggregate Id
-        PhysicalInventoryLineId eventEntityId = stateEvent.getPhysicalInventoryLineMvoEventId().getPhysicalInventoryLineId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        PhysicalInventoryLineId eventEntityId = stateEvent.getPhysicalInventoryLineMvoEventId().getPhysicalInventoryLineId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

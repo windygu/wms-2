@@ -181,7 +181,7 @@ public class UomConversionResource {
 
             UomConversionId idObj = UomConversionResourceUtils.parseIdString(id);
             UomConversionStateEventDtoConverter dtoConverter = getUomConversionStateEventDtoConverter();
-            return dtoConverter.toUomConversionStateEventDto((AbstractUomConversionStateEvent) uomConversionApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toUomConversionStateEventDto((AbstractUomConversionEvent) uomConversionApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

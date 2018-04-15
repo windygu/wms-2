@@ -110,19 +110,19 @@ public abstract class AbstractPartyApplicationService implements PartyApplicatio
         return getStateQueryRepository().getCount(stateType, filter);
     }
 
-    public PartyStateEvent getStateEvent(String partyId, long version) {
-        PartyStateEvent e = (PartyStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(partyId), version);
+    public PartyEvent getEvent(String partyId, long version) {
+        PartyEvent e = (PartyEvent)getEventStore().getEvent(toEventStoreAggregateId(partyId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(partyId, 0);
+            return getEvent(partyId, 0);
         }
         return e;
     }
 
     public PartyState getHistoryState(String partyId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractPartyStateEvent.class, toEventStoreAggregateId(partyId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractPartyEvent.class, toEventStoreAggregateId(partyId), version - 1);
         return new AbstractPartyState.SimplePartyState(eventStream.getEvents());
     }
 
@@ -162,7 +162,7 @@ public abstract class AbstractPartyApplicationService implements PartyApplicatio
         }
     }
 
-    public void initialize(PartyStateEvent.PartyStateCreated stateCreated) {
+    public void initialize(PartyEvent.PartyStateCreated stateCreated) {
         String aggregateId = stateCreated.getPartyEventId().getPartyId();
         PartyState state = new AbstractPartyState.SimplePartyState();
         state.setPartyId(aggregateId);
@@ -174,7 +174,7 @@ public abstract class AbstractPartyApplicationService implements PartyApplicatio
         persist(eventStoreAggregateId, stateCreated.getPartyEventId().getVersion(), aggregate, state);
     }
 
-    public void initialize(OrganizationStateEvent.OrganizationStateCreated stateCreated) {
+    public void initialize(OrganizationEvent.OrganizationStateCreated stateCreated) {
         String aggregateId = stateCreated.getPartyEventId().getPartyId();
         OrganizationState state = new AbstractOrganizationState.SimpleOrganizationState();
         state.setPartyId(aggregateId);
@@ -213,9 +213,9 @@ public abstract class AbstractPartyApplicationService implements PartyApplicatio
         if (command.getVersion() == null) { command.setVersion(PartyState.VERSION_NULL); }
         if (state.getVersion() != null && state.getVersion() > command.getVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractPartyStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractPartyEvent.class, eventStoreAggregateId, command.getVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

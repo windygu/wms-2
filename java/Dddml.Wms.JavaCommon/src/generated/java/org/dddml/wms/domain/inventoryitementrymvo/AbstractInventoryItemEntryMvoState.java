@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.inventoryitementrymvo.InventoryItemEntryMvoStateEvent.*;
+import org.dddml.wms.domain.inventoryitementrymvo.InventoryItemEntryMvoEvent.*;
 
 public abstract class AbstractInventoryItemEntryMvoState implements InventoryItemEntryMvoState
 {
@@ -299,7 +299,7 @@ public abstract class AbstractInventoryItemEntryMvoState implements InventoryIte
     public AbstractInventoryItemEntryMvoState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setInventoryItemEntryId(((InventoryItemEntryMvoStateEvent) events.get(0)).getInventoryItemEntryMvoEventId().getInventoryItemEntryId());
+            this.setInventoryItemEntryId(((InventoryItemEntryMvoEvent) events.get(0)).getInventoryItemEntryMvoEventId().getInventoryItemEntryId());
             for (Event e : events) {
                 mutate(e);
                 this.setInventoryItemVersion(this.getInventoryItemVersion() + 1);
@@ -549,10 +549,10 @@ public abstract class AbstractInventoryItemEntryMvoState implements InventoryIte
     {
     }
 
-    protected void throwOnWrongEvent(InventoryItemEntryMvoStateEvent stateEvent)
+    protected void throwOnWrongEvent(InventoryItemEntryMvoEvent stateEvent)
     {
         InventoryItemEntryId stateEntityId = this.getInventoryItemEntryId(); // Aggregate Id
-        InventoryItemEntryId eventEntityId = stateEvent.getInventoryItemEntryMvoEventId().getInventoryItemEntryId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        InventoryItemEntryId eventEntityId = stateEvent.getInventoryItemEntryMvoEventId().getInventoryItemEntryId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

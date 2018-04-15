@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.lot.LotStateEvent.*;
+import org.dddml.wms.domain.lot.LotEvent.*;
 
 public interface LotState
 {
@@ -60,11 +60,11 @@ public interface LotState
 
     void mutate(Event e);
 
-    void when(LotStateEvent.LotStateCreated e);
+    void when(LotEvent.LotStateCreated e);
 
-    void when(LotStateEvent.LotStateMergePatched e);
+    void when(LotEvent.LotStateMergePatched e);
 
-    void when(LotStateEvent.LotStateDeleted e);
+    void when(LotEvent.LotStateDeleted e);
     
 }
 

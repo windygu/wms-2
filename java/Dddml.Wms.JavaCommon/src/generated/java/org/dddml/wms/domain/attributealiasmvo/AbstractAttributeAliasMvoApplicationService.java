@@ -87,19 +87,19 @@ public abstract class AbstractAttributeAliasMvoApplicationService implements Att
         return getStateQueryRepository().getCount(filter);
     }
 
-    public AttributeAliasMvoStateEvent getStateEvent(AttributeAliasId attributeAliasId, long version) {
-        AttributeAliasMvoStateEvent e = (AttributeAliasMvoStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(attributeAliasId), version);
+    public AttributeAliasMvoEvent getEvent(AttributeAliasId attributeAliasId, long version) {
+        AttributeAliasMvoEvent e = (AttributeAliasMvoEvent)getEventStore().getEvent(toEventStoreAggregateId(attributeAliasId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(attributeAliasId, 0);
+            return getEvent(attributeAliasId, 0);
         }
         return e;
     }
 
     public AttributeAliasMvoState getHistoryState(AttributeAliasId attributeAliasId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractAttributeAliasMvoStateEvent.class, toEventStoreAggregateId(attributeAliasId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractAttributeAliasMvoEvent.class, toEventStoreAggregateId(attributeAliasId), version - 1);
         return new AbstractAttributeAliasMvoState.SimpleAttributeAliasMvoState(eventStream.getEvents());
     }
 
@@ -138,7 +138,7 @@ public abstract class AbstractAttributeAliasMvoApplicationService implements Att
         }
     }
 
-    public void initialize(AttributeAliasMvoStateEvent.AttributeAliasMvoStateCreated stateCreated) {
+    public void initialize(AttributeAliasMvoEvent.AttributeAliasMvoStateCreated stateCreated) {
         AttributeAliasId aggregateId = stateCreated.getAttributeAliasMvoEventId().getAttributeAliasId();
         AttributeAliasMvoState state = new AbstractAttributeAliasMvoState.SimpleAttributeAliasMvoState();
         state.setAttributeAliasId(aggregateId);
@@ -156,9 +156,9 @@ public abstract class AbstractAttributeAliasMvoApplicationService implements Att
         if (command.getAttributeVersion() == null) { command.setAttributeVersion(AttributeAliasMvoState.VERSION_NULL); }
         if (state.getAttributeVersion() != null && state.getAttributeVersion() > command.getAttributeVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractAttributeAliasMvoStateEvent.class, eventStoreAggregateId, command.getAttributeVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractAttributeAliasMvoEvent.class, eventStoreAggregateId, command.getAttributeVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

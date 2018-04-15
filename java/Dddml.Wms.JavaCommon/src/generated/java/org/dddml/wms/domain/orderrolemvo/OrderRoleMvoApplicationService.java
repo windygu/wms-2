@@ -31,7 +31,7 @@ public interface OrderRoleMvoApplicationService
 
     long getCount(Criterion filter);
 
-    OrderRoleMvoStateEvent getStateEvent(OrderRoleId orderRoleId, long version);
+    OrderRoleMvoEvent getEvent(OrderRoleId orderRoleId, long version);
 
     OrderRoleMvoState getHistoryState(OrderRoleId orderRoleId, long version);
 

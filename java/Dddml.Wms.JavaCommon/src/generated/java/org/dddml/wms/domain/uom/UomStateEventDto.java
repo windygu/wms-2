@@ -2,9 +2,9 @@ package org.dddml.wms.domain.uom;
 
 import java.util.Date;
 import org.dddml.wms.domain.*;
-import org.dddml.wms.domain.AbstractStateEvent;
+import org.dddml.wms.domain.AbstractEvent;
 
-public class UomStateEventDto extends AbstractStateEvent
+public class UomStateEventDto extends AbstractEvent
 {
 
     private UomEventId uomEventId;
@@ -138,7 +138,7 @@ public class UomStateEventDto extends AbstractStateEvent
 	public static class UomStateCreatedDto extends UomStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_CREATED;
         }
@@ -149,7 +149,7 @@ public class UomStateEventDto extends AbstractStateEvent
 	public static class UomStateMergePatchedDto extends UomStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_MERGE_PATCHED;
         }
@@ -160,7 +160,7 @@ public class UomStateEventDto extends AbstractStateEvent
 	public static class UomStateDeletedDto extends UomStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_DELETED;
         }

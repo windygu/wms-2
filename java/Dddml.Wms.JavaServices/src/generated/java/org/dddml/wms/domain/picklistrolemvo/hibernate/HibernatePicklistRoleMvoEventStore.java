@@ -21,20 +21,20 @@ public class HibernatePicklistRoleMvoEventStore extends AbstractHibernateEventSt
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractPicklistRoleMvoStateEvent.class;
+        return AbstractPicklistRoleMvoEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractPicklistRoleMvoStateEvent.class;
+        Class supportedEventType = AbstractPicklistRoleMvoEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         PicklistRoleId idObj = (PicklistRoleId) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractPicklistRoleMvoStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractPicklistRoleMvoEvent.class);
         criteria.add(Restrictions.eq("picklistRoleMvoEventId.picklistRoleIdPicklistId", idObj.getPicklistId()));
         criteria.add(Restrictions.eq("picklistRoleMvoEventId.picklistRoleIdPartyRoleIdPartyId", idObj.getPartyRoleId().getPartyId()));
         criteria.add(Restrictions.eq("picklistRoleMvoEventId.picklistRoleIdPartyRoleIdRoleTypeId", idObj.getPartyRoleId().getRoleTypeId()));
@@ -42,11 +42,11 @@ public class HibernatePicklistRoleMvoEventStore extends AbstractHibernateEventSt
         criteria.addOrder(Order.asc("picklistRoleMvoEventId.picklistVersion"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractPicklistRoleMvoStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractPicklistRoleMvoEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractPicklistRoleMvoStateEvent) es.get(es.size() - 1)).getPicklistRoleMvoEventId().getPicklistVersion());
+            eventStream.setSteamVersion(((AbstractPicklistRoleMvoEvent) es.get(es.size() - 1)).getPicklistRoleMvoEventId().getPicklistVersion());
         } else {
             //todo?
         }

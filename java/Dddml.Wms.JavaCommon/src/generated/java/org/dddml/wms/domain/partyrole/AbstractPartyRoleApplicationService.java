@@ -86,19 +86,19 @@ public abstract class AbstractPartyRoleApplicationService implements PartyRoleAp
         return getStateQueryRepository().getCount(filter);
     }
 
-    public PartyRoleStateEvent getStateEvent(PartyRoleId partyRoleId, long version) {
-        PartyRoleStateEvent e = (PartyRoleStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(partyRoleId), version);
+    public PartyRoleEvent getEvent(PartyRoleId partyRoleId, long version) {
+        PartyRoleEvent e = (PartyRoleEvent)getEventStore().getEvent(toEventStoreAggregateId(partyRoleId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(partyRoleId, 0);
+            return getEvent(partyRoleId, 0);
         }
         return e;
     }
 
     public PartyRoleState getHistoryState(PartyRoleId partyRoleId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractPartyRoleStateEvent.class, toEventStoreAggregateId(partyRoleId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractPartyRoleEvent.class, toEventStoreAggregateId(partyRoleId), version - 1);
         return new AbstractPartyRoleState.SimplePartyRoleState(eventStream.getEvents());
     }
 
@@ -137,7 +137,7 @@ public abstract class AbstractPartyRoleApplicationService implements PartyRoleAp
         }
     }
 
-    public void initialize(PartyRoleStateEvent.PartyRoleStateCreated stateCreated) {
+    public void initialize(PartyRoleEvent.PartyRoleStateCreated stateCreated) {
         PartyRoleId aggregateId = stateCreated.getPartyRoleEventId().getPartyRoleId();
         PartyRoleState state = new AbstractPartyRoleState.SimplePartyRoleState();
         state.setPartyRoleId(aggregateId);
@@ -155,9 +155,9 @@ public abstract class AbstractPartyRoleApplicationService implements PartyRoleAp
         if (command.getVersion() == null) { command.setVersion(PartyRoleState.VERSION_NULL); }
         if (state.getVersion() != null && state.getVersion() > command.getVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractPartyRoleStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractPartyRoleEvent.class, eventStoreAggregateId, command.getVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

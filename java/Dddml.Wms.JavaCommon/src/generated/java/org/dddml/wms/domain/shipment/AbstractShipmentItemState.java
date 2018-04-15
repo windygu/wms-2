@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.shipment.ShipmentItemStateEvent.*;
+import org.dddml.wms.domain.shipment.ShipmentItemEvent.*;
 
 public abstract class AbstractShipmentItemState implements ShipmentItemState
 {
@@ -286,7 +286,7 @@ public abstract class AbstractShipmentItemState implements ShipmentItemState
     {
     }
 
-    protected void throwOnWrongEvent(ShipmentItemStateEvent stateEvent)
+    protected void throwOnWrongEvent(ShipmentItemEvent stateEvent)
     {
         String stateEntityIdShipmentId = this.getShipmentItemId().getShipmentId();
         String eventEntityIdShipmentId = stateEvent.getShipmentItemEventId().getShipmentId();

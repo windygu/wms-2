@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.productcategorymember.ProductCategoryMemberStateEvent.*;
+import org.dddml.wms.domain.productcategorymember.ProductCategoryMemberEvent.*;
 
 public interface ProductCategoryMemberState
 {
@@ -64,9 +64,9 @@ public interface ProductCategoryMemberState
 
     void mutate(Event e);
 
-    void when(ProductCategoryMemberStateEvent.ProductCategoryMemberStateCreated e);
+    void when(ProductCategoryMemberEvent.ProductCategoryMemberStateCreated e);
 
-    void when(ProductCategoryMemberStateEvent.ProductCategoryMemberStateMergePatched e);
+    void when(ProductCategoryMemberEvent.ProductCategoryMemberStateMergePatched e);
 
     
 }

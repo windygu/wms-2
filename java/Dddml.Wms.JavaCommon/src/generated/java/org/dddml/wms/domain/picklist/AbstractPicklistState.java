@@ -5,7 +5,7 @@ import java.util.Date;
 import org.dddml.wms.domain.partyrole.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.picklist.PicklistStateEvent.*;
+import org.dddml.wms.domain.picklist.PicklistEvent.*;
 
 public abstract class AbstractPicklistState implements PicklistState, Saveable
 {
@@ -214,7 +214,7 @@ public abstract class AbstractPicklistState implements PicklistState, Saveable
     public AbstractPicklistState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setPicklistId(((PicklistStateEvent) events.get(0)).getPicklistEventId().getPicklistId());
+            this.setPicklistId(((PicklistEvent) events.get(0)).getPicklistEventId().getPicklistId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -268,7 +268,7 @@ public abstract class AbstractPicklistState implements PicklistState, Saveable
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
-        for (PicklistRoleStateEvent.PicklistRoleStateCreated innerEvent : e.getPicklistRoleEvents()) {
+        for (PicklistRoleEvent.PicklistRoleStateCreated innerEvent : e.getPicklistRoleEvents()) {
             PicklistRoleState innerState = this.getPicklistRoles().get(innerEvent.getPicklistRoleEventId().getPartyRoleId());
             innerState.mutate(innerEvent);
         }
@@ -359,12 +359,12 @@ public abstract class AbstractPicklistState implements PicklistState, Saveable
         this.setUpdatedBy(e.getCreatedBy());
         this.setUpdatedAt(e.getCreatedAt());
 
-        for (PicklistRoleStateEvent innerEvent : e.getPicklistRoleEvents()) {
+        for (PicklistRoleEvent innerEvent : e.getPicklistRoleEvents()) {
             PicklistRoleState innerState = this.getPicklistRoles().get(innerEvent.getPicklistRoleEventId().getPartyRoleId());
             innerState.mutate(innerEvent);
-            if (innerEvent instanceof PicklistRoleStateEvent.PicklistRoleStateRemoved)
+            if (innerEvent instanceof PicklistRoleEvent.PicklistRoleStateRemoved)
             {
-                //PicklistRoleStateEvent.PicklistRoleStateRemoved removed = (PicklistRoleStateEvent.PicklistRoleStateRemoved)innerEvent;
+                //PicklistRoleEvent.PicklistRoleStateRemoved removed = (PicklistRoleEvent.PicklistRoleStateRemoved)innerEvent;
                 this.getPicklistRoles().remove(innerState);
             }
         }
@@ -382,7 +382,7 @@ public abstract class AbstractPicklistState implements PicklistState, Saveable
         {
             this.getPicklistRoles().remove(innerState);
         
-            PicklistRoleStateEvent.PicklistRoleStateRemoved innerE = e.newPicklistRoleStateRemoved(innerState.getPartyRoleId());
+            PicklistRoleEvent.PicklistRoleStateRemoved innerE = e.newPicklistRoleStateRemoved(innerState.getPartyRoleId());
             innerE.setCreatedAt(e.getCreatedAt());
             innerE.setCreatedByUserLogin(e.getCreatedBy());
             innerState.when(innerE);
@@ -396,10 +396,10 @@ public abstract class AbstractPicklistState implements PicklistState, Saveable
 
     }
 
-    protected void throwOnWrongEvent(PicklistStateEvent stateEvent)
+    protected void throwOnWrongEvent(PicklistEvent stateEvent)
     {
         String stateEntityId = this.getPicklistId(); // Aggregate Id
-        String eventEntityId = stateEvent.getPicklistEventId().getPicklistId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        String eventEntityId = stateEvent.getPicklistEventId().getPicklistId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

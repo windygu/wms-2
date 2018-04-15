@@ -88,19 +88,19 @@ public abstract class AbstractInOutLineMvoApplicationService implements InOutLin
         return getStateQueryRepository().getCount(filter);
     }
 
-    public InOutLineMvoStateEvent getStateEvent(InOutLineId inOutLineId, long version) {
-        InOutLineMvoStateEvent e = (InOutLineMvoStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(inOutLineId), version);
+    public InOutLineMvoEvent getEvent(InOutLineId inOutLineId, long version) {
+        InOutLineMvoEvent e = (InOutLineMvoEvent)getEventStore().getEvent(toEventStoreAggregateId(inOutLineId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(inOutLineId, 0);
+            return getEvent(inOutLineId, 0);
         }
         return e;
     }
 
     public InOutLineMvoState getHistoryState(InOutLineId inOutLineId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractInOutLineMvoStateEvent.class, toEventStoreAggregateId(inOutLineId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractInOutLineMvoEvent.class, toEventStoreAggregateId(inOutLineId), version - 1);
         return new AbstractInOutLineMvoState.SimpleInOutLineMvoState(eventStream.getEvents());
     }
 
@@ -139,7 +139,7 @@ public abstract class AbstractInOutLineMvoApplicationService implements InOutLin
         }
     }
 
-    public void initialize(InOutLineMvoStateEvent.InOutLineMvoStateCreated stateCreated) {
+    public void initialize(InOutLineMvoEvent.InOutLineMvoStateCreated stateCreated) {
         InOutLineId aggregateId = stateCreated.getInOutLineMvoEventId().getInOutLineId();
         InOutLineMvoState state = new AbstractInOutLineMvoState.SimpleInOutLineMvoState();
         state.setInOutLineId(aggregateId);
@@ -157,9 +157,9 @@ public abstract class AbstractInOutLineMvoApplicationService implements InOutLin
         if (command.getInOutVersion() == null) { command.setInOutVersion(InOutLineMvoState.VERSION_NULL); }
         if (state.getInOutVersion() != null && state.getInOutVersion() > command.getInOutVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractInOutLineMvoStateEvent.class, eventStoreAggregateId, command.getInOutVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractInOutLineMvoEvent.class, eventStoreAggregateId, command.getInOutVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

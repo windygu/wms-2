@@ -5,7 +5,7 @@ import org.dddml.wms.domain.picklistbin.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.picklistitemmvo.PicklistItemMvoStateEvent.*;
+import org.dddml.wms.domain.picklistitemmvo.PicklistItemMvoEvent.*;
 
 public abstract class AbstractPicklistItemMvoState implements PicklistItemMvoState
 {
@@ -286,7 +286,7 @@ public abstract class AbstractPicklistItemMvoState implements PicklistItemMvoSta
     public AbstractPicklistItemMvoState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setPicklistBinPicklistItemId(((PicklistItemMvoStateEvent) events.get(0)).getPicklistItemMvoEventId().getPicklistBinPicklistItemId());
+            this.setPicklistBinPicklistItemId(((PicklistItemMvoEvent) events.get(0)).getPicklistItemMvoEventId().getPicklistBinPicklistItemId());
             for (Event e : events) {
                 mutate(e);
                 this.setPicklistBinVersion(this.getPicklistBinVersion() + 1);
@@ -526,10 +526,10 @@ public abstract class AbstractPicklistItemMvoState implements PicklistItemMvoSta
     {
     }
 
-    protected void throwOnWrongEvent(PicklistItemMvoStateEvent stateEvent)
+    protected void throwOnWrongEvent(PicklistItemMvoEvent stateEvent)
     {
         PicklistBinPicklistItemId stateEntityId = this.getPicklistBinPicklistItemId(); // Aggregate Id
-        PicklistBinPicklistItemId eventEntityId = stateEvent.getPicklistItemMvoEventId().getPicklistBinPicklistItemId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        PicklistBinPicklistItemId eventEntityId = stateEvent.getPicklistItemMvoEventId().getPicklistBinPicklistItemId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

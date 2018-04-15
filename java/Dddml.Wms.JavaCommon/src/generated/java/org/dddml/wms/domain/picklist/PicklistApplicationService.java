@@ -31,7 +31,7 @@ public interface PicklistApplicationService
 
     long getCount(Criterion filter);
 
-    PicklistStateEvent getStateEvent(String picklistId, long version);
+    PicklistEvent getEvent(String picklistId, long version);
 
     PicklistState getHistoryState(String picklistId, long version);
 

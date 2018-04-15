@@ -28,19 +28,19 @@ public abstract class AbstractAttributeAliasMvoAggregate extends AbstractAggrega
     public void create(AttributeAliasMvoCommand.CreateAttributeAliasMvo c)
     {
         if (c.getAttributeVersion() == null) { c.setAttributeVersion(AttributeAliasMvoState.VERSION_NULL); }
-        AttributeAliasMvoStateEvent e = map(c);
+        AttributeAliasMvoEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(AttributeAliasMvoCommand.MergePatchAttributeAliasMvo c)
     {
-        AttributeAliasMvoStateEvent e = map(c);
+        AttributeAliasMvoEvent e = map(c);
         apply(e);
     }
 
     public void delete(AttributeAliasMvoCommand.DeleteAttributeAliasMvo c)
     {
-        AttributeAliasMvoStateEvent e = map(c);
+        AttributeAliasMvoEvent e = map(c);
         apply(e);
     }
 
@@ -55,9 +55,9 @@ public abstract class AbstractAttributeAliasMvoAggregate extends AbstractAggrega
         changes.add(e);
     }
 
-    protected AttributeAliasMvoStateEvent map(AttributeAliasMvoCommand.CreateAttributeAliasMvo c) {
+    protected AttributeAliasMvoEvent map(AttributeAliasMvoCommand.CreateAttributeAliasMvo c) {
         AttributeAliasMvoEventId stateEventId = new AttributeAliasMvoEventId(c.getAttributeAliasId(), c.getAttributeVersion());
-        AttributeAliasMvoStateEvent.AttributeAliasMvoStateCreated e = newAttributeAliasMvoStateCreated(stateEventId);
+        AttributeAliasMvoEvent.AttributeAliasMvoStateCreated e = newAttributeAliasMvoStateCreated(stateEventId);
         e.setName(c.getName());
         e.setVersion(c.getVersion());
         e.setActive(c.getActive());
@@ -76,15 +76,15 @@ public abstract class AbstractAttributeAliasMvoAggregate extends AbstractAggrega
         e.setAttributeUpdatedAt(c.getAttributeUpdatedAt());
         e.setAttributeActive(c.getAttributeActive());
         e.setAttributeDeleted(c.getAttributeDeleted());
-        ((AbstractAttributeAliasMvoStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractAttributeAliasMvoEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected AttributeAliasMvoStateEvent map(AttributeAliasMvoCommand.MergePatchAttributeAliasMvo c) {
+    protected AttributeAliasMvoEvent map(AttributeAliasMvoCommand.MergePatchAttributeAliasMvo c) {
         AttributeAliasMvoEventId stateEventId = new AttributeAliasMvoEventId(c.getAttributeAliasId(), c.getAttributeVersion());
-        AttributeAliasMvoStateEvent.AttributeAliasMvoStateMergePatched e = newAttributeAliasMvoStateMergePatched(stateEventId);
+        AttributeAliasMvoEvent.AttributeAliasMvoStateMergePatched e = newAttributeAliasMvoStateMergePatched(stateEventId);
         e.setName(c.getName());
         e.setVersion(c.getVersion());
         e.setActive(c.getActive());
@@ -121,16 +121,16 @@ public abstract class AbstractAttributeAliasMvoAggregate extends AbstractAggrega
         e.setIsPropertyAttributeUpdatedAtRemoved(c.getIsPropertyAttributeUpdatedAtRemoved());
         e.setIsPropertyAttributeActiveRemoved(c.getIsPropertyAttributeActiveRemoved());
         e.setIsPropertyAttributeDeletedRemoved(c.getIsPropertyAttributeDeletedRemoved());
-        ((AbstractAttributeAliasMvoStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractAttributeAliasMvoEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected AttributeAliasMvoStateEvent map(AttributeAliasMvoCommand.DeleteAttributeAliasMvo c) {
+    protected AttributeAliasMvoEvent map(AttributeAliasMvoCommand.DeleteAttributeAliasMvo c) {
         AttributeAliasMvoEventId stateEventId = new AttributeAliasMvoEventId(c.getAttributeAliasId(), c.getAttributeVersion());
-        AttributeAliasMvoStateEvent.AttributeAliasMvoStateDeleted e = newAttributeAliasMvoStateDeleted(stateEventId);
-        ((AbstractAttributeAliasMvoStateEvent)e).setCommandId(c.getCommandId());
+        AttributeAliasMvoEvent.AttributeAliasMvoStateDeleted e = newAttributeAliasMvoStateDeleted(stateEventId);
+        ((AbstractAttributeAliasMvoEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
@@ -139,44 +139,44 @@ public abstract class AbstractAttributeAliasMvoAggregate extends AbstractAggrega
 
     ////////////////////////
 
-    protected AttributeAliasMvoStateEvent.AttributeAliasMvoStateCreated newAttributeAliasMvoStateCreated(Long version, String commandId, String requesterId) {
+    protected AttributeAliasMvoEvent.AttributeAliasMvoStateCreated newAttributeAliasMvoStateCreated(Long version, String commandId, String requesterId) {
         AttributeAliasMvoEventId stateEventId = new AttributeAliasMvoEventId(this.state.getAttributeAliasId(), version);
-        AttributeAliasMvoStateEvent.AttributeAliasMvoStateCreated e = newAttributeAliasMvoStateCreated(stateEventId);
-        ((AbstractAttributeAliasMvoStateEvent)e).setCommandId(commandId);
+        AttributeAliasMvoEvent.AttributeAliasMvoStateCreated e = newAttributeAliasMvoStateCreated(stateEventId);
+        ((AbstractAttributeAliasMvoEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected AttributeAliasMvoStateEvent.AttributeAliasMvoStateMergePatched newAttributeAliasMvoStateMergePatched(Long version, String commandId, String requesterId) {
+    protected AttributeAliasMvoEvent.AttributeAliasMvoStateMergePatched newAttributeAliasMvoStateMergePatched(Long version, String commandId, String requesterId) {
         AttributeAliasMvoEventId stateEventId = new AttributeAliasMvoEventId(this.state.getAttributeAliasId(), version);
-        AttributeAliasMvoStateEvent.AttributeAliasMvoStateMergePatched e = newAttributeAliasMvoStateMergePatched(stateEventId);
-        ((AbstractAttributeAliasMvoStateEvent)e).setCommandId(commandId);
+        AttributeAliasMvoEvent.AttributeAliasMvoStateMergePatched e = newAttributeAliasMvoStateMergePatched(stateEventId);
+        ((AbstractAttributeAliasMvoEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected AttributeAliasMvoStateEvent.AttributeAliasMvoStateDeleted newAttributeAliasMvoStateDeleted(Long version, String commandId, String requesterId) {
+    protected AttributeAliasMvoEvent.AttributeAliasMvoStateDeleted newAttributeAliasMvoStateDeleted(Long version, String commandId, String requesterId) {
         AttributeAliasMvoEventId stateEventId = new AttributeAliasMvoEventId(this.state.getAttributeAliasId(), version);
-        AttributeAliasMvoStateEvent.AttributeAliasMvoStateDeleted e = newAttributeAliasMvoStateDeleted(stateEventId);
-        ((AbstractAttributeAliasMvoStateEvent)e).setCommandId(commandId);
+        AttributeAliasMvoEvent.AttributeAliasMvoStateDeleted e = newAttributeAliasMvoStateDeleted(stateEventId);
+        ((AbstractAttributeAliasMvoEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected AttributeAliasMvoStateEvent.AttributeAliasMvoStateCreated newAttributeAliasMvoStateCreated(AttributeAliasMvoEventId stateEventId) {
-        return new AbstractAttributeAliasMvoStateEvent.SimpleAttributeAliasMvoStateCreated(stateEventId);
+    protected AttributeAliasMvoEvent.AttributeAliasMvoStateCreated newAttributeAliasMvoStateCreated(AttributeAliasMvoEventId stateEventId) {
+        return new AbstractAttributeAliasMvoEvent.SimpleAttributeAliasMvoStateCreated(stateEventId);
     }
 
-    protected AttributeAliasMvoStateEvent.AttributeAliasMvoStateMergePatched newAttributeAliasMvoStateMergePatched(AttributeAliasMvoEventId stateEventId) {
-        return new AbstractAttributeAliasMvoStateEvent.SimpleAttributeAliasMvoStateMergePatched(stateEventId);
+    protected AttributeAliasMvoEvent.AttributeAliasMvoStateMergePatched newAttributeAliasMvoStateMergePatched(AttributeAliasMvoEventId stateEventId) {
+        return new AbstractAttributeAliasMvoEvent.SimpleAttributeAliasMvoStateMergePatched(stateEventId);
     }
 
-    protected AttributeAliasMvoStateEvent.AttributeAliasMvoStateDeleted newAttributeAliasMvoStateDeleted(AttributeAliasMvoEventId stateEventId)
+    protected AttributeAliasMvoEvent.AttributeAliasMvoStateDeleted newAttributeAliasMvoStateDeleted(AttributeAliasMvoEventId stateEventId)
     {
-        return new AbstractAttributeAliasMvoStateEvent.SimpleAttributeAliasMvoStateDeleted(stateEventId);
+        return new AbstractAttributeAliasMvoEvent.SimpleAttributeAliasMvoStateDeleted(stateEventId);
     }
 
     public static class SimpleAttributeAliasMvoAggregate extends AbstractAttributeAliasMvoAggregate

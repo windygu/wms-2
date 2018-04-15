@@ -8,22 +8,22 @@ import org.dddml.wms.specialization.*;
 
 public class ItemIssuanceMvoStateEventDtoConverter {
 
-    public ItemIssuanceMvoStateEventDto toItemIssuanceMvoStateEventDto(AbstractItemIssuanceMvoStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractItemIssuanceMvoStateEvent.AbstractItemIssuanceMvoStateCreated) {
-            ItemIssuanceMvoStateEvent.ItemIssuanceMvoStateCreated e = (ItemIssuanceMvoStateEvent.ItemIssuanceMvoStateCreated) stateEvent;
+    public ItemIssuanceMvoStateEventDto toItemIssuanceMvoStateEventDto(AbstractItemIssuanceMvoEvent stateEvent) {
+        if (stateEvent instanceof AbstractItemIssuanceMvoEvent.AbstractItemIssuanceMvoStateCreated) {
+            ItemIssuanceMvoEvent.ItemIssuanceMvoStateCreated e = (ItemIssuanceMvoEvent.ItemIssuanceMvoStateCreated) stateEvent;
             return toItemIssuanceMvoStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractItemIssuanceMvoStateEvent.AbstractItemIssuanceMvoStateMergePatched) {
-            ItemIssuanceMvoStateEvent.ItemIssuanceMvoStateMergePatched e = (ItemIssuanceMvoStateEvent.ItemIssuanceMvoStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractItemIssuanceMvoEvent.AbstractItemIssuanceMvoStateMergePatched) {
+            ItemIssuanceMvoEvent.ItemIssuanceMvoStateMergePatched e = (ItemIssuanceMvoEvent.ItemIssuanceMvoStateMergePatched) stateEvent;
             return toItemIssuanceMvoStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractItemIssuanceMvoStateEvent.AbstractItemIssuanceMvoStateDeleted) {
-            ItemIssuanceMvoStateEvent.ItemIssuanceMvoStateDeleted e = (ItemIssuanceMvoStateEvent.ItemIssuanceMvoStateDeleted) stateEvent;
+        } else if (stateEvent instanceof AbstractItemIssuanceMvoEvent.AbstractItemIssuanceMvoStateDeleted) {
+            ItemIssuanceMvoEvent.ItemIssuanceMvoStateDeleted e = (ItemIssuanceMvoEvent.ItemIssuanceMvoStateDeleted) stateEvent;
             return toItemIssuanceMvoStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public ItemIssuanceMvoStateEventDto.ItemIssuanceMvoStateCreatedDto toItemIssuanceMvoStateCreatedDto(ItemIssuanceMvoStateEvent.ItemIssuanceMvoStateCreated e) {
+    public ItemIssuanceMvoStateEventDto.ItemIssuanceMvoStateCreatedDto toItemIssuanceMvoStateCreatedDto(ItemIssuanceMvoEvent.ItemIssuanceMvoStateCreated e) {
         ItemIssuanceMvoStateEventDto.ItemIssuanceMvoStateCreatedDto dto = new ItemIssuanceMvoStateEventDto.ItemIssuanceMvoStateCreatedDto();
         dto.setItemIssuanceMvoEventId(e.getItemIssuanceMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -77,7 +77,7 @@ public class ItemIssuanceMvoStateEventDtoConverter {
         return dto;
     }
 
-    public ItemIssuanceMvoStateEventDto.ItemIssuanceMvoStateMergePatchedDto toItemIssuanceMvoStateMergePatchedDto(ItemIssuanceMvoStateEvent.ItemIssuanceMvoStateMergePatched e) {
+    public ItemIssuanceMvoStateEventDto.ItemIssuanceMvoStateMergePatchedDto toItemIssuanceMvoStateMergePatchedDto(ItemIssuanceMvoEvent.ItemIssuanceMvoStateMergePatched e) {
         ItemIssuanceMvoStateEventDto.ItemIssuanceMvoStateMergePatchedDto dto = new ItemIssuanceMvoStateEventDto.ItemIssuanceMvoStateMergePatchedDto();
         dto.setItemIssuanceMvoEventId(e.getItemIssuanceMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -177,7 +177,7 @@ public class ItemIssuanceMvoStateEventDtoConverter {
     }
 
 
-    public ItemIssuanceMvoStateEventDto.ItemIssuanceMvoStateDeletedDto toItemIssuanceMvoStateDeletedDto(ItemIssuanceMvoStateEvent.ItemIssuanceMvoStateDeleted e) {
+    public ItemIssuanceMvoStateEventDto.ItemIssuanceMvoStateDeletedDto toItemIssuanceMvoStateDeletedDto(ItemIssuanceMvoEvent.ItemIssuanceMvoStateDeleted e) {
         ItemIssuanceMvoStateEventDto.ItemIssuanceMvoStateDeletedDto dto = new ItemIssuanceMvoStateEventDto.ItemIssuanceMvoStateDeletedDto();
         dto.setItemIssuanceMvoEventId(e.getItemIssuanceMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());

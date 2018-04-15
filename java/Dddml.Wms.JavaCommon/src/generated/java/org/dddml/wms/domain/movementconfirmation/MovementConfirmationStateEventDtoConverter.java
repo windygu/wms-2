@@ -8,22 +8,22 @@ import org.dddml.wms.specialization.*;
 
 public class MovementConfirmationStateEventDtoConverter {
 
-    public MovementConfirmationStateEventDto toMovementConfirmationStateEventDto(AbstractMovementConfirmationStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractMovementConfirmationStateEvent.AbstractMovementConfirmationStateCreated) {
-            MovementConfirmationStateEvent.MovementConfirmationStateCreated e = (MovementConfirmationStateEvent.MovementConfirmationStateCreated) stateEvent;
+    public MovementConfirmationStateEventDto toMovementConfirmationStateEventDto(AbstractMovementConfirmationEvent stateEvent) {
+        if (stateEvent instanceof AbstractMovementConfirmationEvent.AbstractMovementConfirmationStateCreated) {
+            MovementConfirmationEvent.MovementConfirmationStateCreated e = (MovementConfirmationEvent.MovementConfirmationStateCreated) stateEvent;
             return toMovementConfirmationStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractMovementConfirmationStateEvent.AbstractMovementConfirmationStateMergePatched) {
-            MovementConfirmationStateEvent.MovementConfirmationStateMergePatched e = (MovementConfirmationStateEvent.MovementConfirmationStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractMovementConfirmationEvent.AbstractMovementConfirmationStateMergePatched) {
+            MovementConfirmationEvent.MovementConfirmationStateMergePatched e = (MovementConfirmationEvent.MovementConfirmationStateMergePatched) stateEvent;
             return toMovementConfirmationStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractMovementConfirmationStateEvent.AbstractMovementConfirmationStateDeleted) {
-            MovementConfirmationStateEvent.MovementConfirmationStateDeleted e = (MovementConfirmationStateEvent.MovementConfirmationStateDeleted) stateEvent;
+        } else if (stateEvent instanceof AbstractMovementConfirmationEvent.AbstractMovementConfirmationStateDeleted) {
+            MovementConfirmationEvent.MovementConfirmationStateDeleted e = (MovementConfirmationEvent.MovementConfirmationStateDeleted) stateEvent;
             return toMovementConfirmationStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public MovementConfirmationStateEventDto.MovementConfirmationStateCreatedDto toMovementConfirmationStateCreatedDto(MovementConfirmationStateEvent.MovementConfirmationStateCreated e) {
+    public MovementConfirmationStateEventDto.MovementConfirmationStateCreatedDto toMovementConfirmationStateCreatedDto(MovementConfirmationEvent.MovementConfirmationStateCreated e) {
         MovementConfirmationStateEventDto.MovementConfirmationStateCreatedDto dto = new MovementConfirmationStateEventDto.MovementConfirmationStateCreatedDto();
         dto.setMovementConfirmationEventId(e.getMovementConfirmationEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -39,7 +39,7 @@ public class MovementConfirmationStateEventDtoConverter {
         dto.setDescription(e.getDescription());
         dto.setActive(e.getActive());
         List<MovementConfirmationLineStateEventDto.MovementConfirmationLineStateCreatedDto> movementConfirmationLineEvents = new ArrayList<>();
-        for (MovementConfirmationLineStateEvent.MovementConfirmationLineStateCreated ee : e.getMovementConfirmationLineEvents()) {
+        for (MovementConfirmationLineEvent.MovementConfirmationLineStateCreated ee : e.getMovementConfirmationLineEvents()) {
             MovementConfirmationLineStateEventDto.MovementConfirmationLineStateCreatedDto eeDto = getMovementConfirmationLineStateEventDtoConverter().toMovementConfirmationLineStateCreatedDto(ee);
             movementConfirmationLineEvents.add(eeDto);
         }
@@ -48,7 +48,7 @@ public class MovementConfirmationStateEventDtoConverter {
         return dto;
     }
 
-    public MovementConfirmationStateEventDto.MovementConfirmationStateMergePatchedDto toMovementConfirmationStateMergePatchedDto(MovementConfirmationStateEvent.MovementConfirmationStateMergePatched e) {
+    public MovementConfirmationStateEventDto.MovementConfirmationStateMergePatchedDto toMovementConfirmationStateMergePatchedDto(MovementConfirmationEvent.MovementConfirmationStateMergePatched e) {
         MovementConfirmationStateEventDto.MovementConfirmationStateMergePatchedDto dto = new MovementConfirmationStateEventDto.MovementConfirmationStateMergePatchedDto();
         dto.setMovementConfirmationEventId(e.getMovementConfirmationEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -73,8 +73,8 @@ public class MovementConfirmationStateEventDtoConverter {
         dto.setIsPropertyDescriptionRemoved(e.getIsPropertyDescriptionRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
         List<MovementConfirmationLineStateEventDto> movementConfirmationLineEvents = new ArrayList<>();
-        for (MovementConfirmationLineStateEvent ee : e.getMovementConfirmationLineEvents()) {
-            MovementConfirmationLineStateEventDto eeDto = getMovementConfirmationLineStateEventDtoConverter().toMovementConfirmationLineStateEventDto((AbstractMovementConfirmationLineStateEvent) ee);
+        for (MovementConfirmationLineEvent ee : e.getMovementConfirmationLineEvents()) {
+            MovementConfirmationLineStateEventDto eeDto = getMovementConfirmationLineStateEventDtoConverter().toMovementConfirmationLineStateEventDto((AbstractMovementConfirmationLineEvent) ee);
             movementConfirmationLineEvents.add(eeDto);
         }
         dto.setMovementConfirmationLineEvents(movementConfirmationLineEvents.toArray(new MovementConfirmationLineStateEventDto[0]));
@@ -83,14 +83,14 @@ public class MovementConfirmationStateEventDtoConverter {
     }
 
 
-    public MovementConfirmationStateEventDto.MovementConfirmationStateDeletedDto toMovementConfirmationStateDeletedDto(MovementConfirmationStateEvent.MovementConfirmationStateDeleted e) {
+    public MovementConfirmationStateEventDto.MovementConfirmationStateDeletedDto toMovementConfirmationStateDeletedDto(MovementConfirmationEvent.MovementConfirmationStateDeleted e) {
         MovementConfirmationStateEventDto.MovementConfirmationStateDeletedDto dto = new MovementConfirmationStateEventDto.MovementConfirmationStateDeletedDto();
         dto.setMovementConfirmationEventId(e.getMovementConfirmationEventId());
         dto.setCreatedAt(e.getCreatedAt());
         dto.setCreatedBy(e.getCreatedBy());
         dto.setCommandId(e.getCommandId());
         List<MovementConfirmationLineStateEventDto.MovementConfirmationLineStateRemovedDto> movementConfirmationLineEvents = new ArrayList<>();
-        for (MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved ee : e.getMovementConfirmationLineEvents()) {
+        for (MovementConfirmationLineEvent.MovementConfirmationLineStateRemoved ee : e.getMovementConfirmationLineEvents()) {
             MovementConfirmationLineStateEventDto.MovementConfirmationLineStateRemovedDto eeDto = getMovementConfirmationLineStateEventDtoConverter().toMovementConfirmationLineStateRemovedDto(ee);
             movementConfirmationLineEvents.add(eeDto);
         }

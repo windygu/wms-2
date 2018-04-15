@@ -91,19 +91,19 @@ public abstract class AbstractMovementApplicationService implements MovementAppl
         return getStateQueryRepository().getCount(filter);
     }
 
-    public MovementStateEvent getStateEvent(String documentNumber, long version) {
-        MovementStateEvent e = (MovementStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(documentNumber), version);
+    public MovementEvent getEvent(String documentNumber, long version) {
+        MovementEvent e = (MovementEvent)getEventStore().getEvent(toEventStoreAggregateId(documentNumber), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(documentNumber, 0);
+            return getEvent(documentNumber, 0);
         }
         return e;
     }
 
     public MovementState getHistoryState(String documentNumber, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractMovementStateEvent.class, toEventStoreAggregateId(documentNumber), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractMovementEvent.class, toEventStoreAggregateId(documentNumber), version - 1);
         return new AbstractMovementState.SimpleMovementState(eventStream.getEvents());
     }
 
@@ -150,7 +150,7 @@ public abstract class AbstractMovementApplicationService implements MovementAppl
         }
     }
 
-    public void initialize(MovementStateEvent.MovementStateCreated stateCreated) {
+    public void initialize(MovementEvent.MovementStateCreated stateCreated) {
         String aggregateId = stateCreated.getMovementEventId().getDocumentNumber();
         MovementState state = new AbstractMovementState.SimpleMovementState();
         state.setDocumentNumber(aggregateId);
@@ -168,9 +168,9 @@ public abstract class AbstractMovementApplicationService implements MovementAppl
         if (command.getVersion() == null) { command.setVersion(MovementState.VERSION_NULL); }
         if (state.getVersion() != null && state.getVersion() > command.getVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractMovementStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractMovementEvent.class, eventStoreAggregateId, command.getVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

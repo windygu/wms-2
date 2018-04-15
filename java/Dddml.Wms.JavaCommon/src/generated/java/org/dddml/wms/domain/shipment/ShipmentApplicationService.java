@@ -36,7 +36,7 @@ public interface ShipmentApplicationService
 
     long getCount(Criterion filter);
 
-    ShipmentStateEvent getStateEvent(String shipmentId, long version);
+    ShipmentEvent getEvent(String shipmentId, long version);
 
     ShipmentState getHistoryState(String shipmentId, long version);
 

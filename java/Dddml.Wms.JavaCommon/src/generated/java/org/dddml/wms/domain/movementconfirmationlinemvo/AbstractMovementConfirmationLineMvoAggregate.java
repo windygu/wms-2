@@ -29,19 +29,19 @@ public abstract class AbstractMovementConfirmationLineMvoAggregate extends Abstr
     public void create(MovementConfirmationLineMvoCommand.CreateMovementConfirmationLineMvo c)
     {
         if (c.getMovementConfirmationVersion() == null) { c.setMovementConfirmationVersion(MovementConfirmationLineMvoState.VERSION_NULL); }
-        MovementConfirmationLineMvoStateEvent e = map(c);
+        MovementConfirmationLineMvoEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(MovementConfirmationLineMvoCommand.MergePatchMovementConfirmationLineMvo c)
     {
-        MovementConfirmationLineMvoStateEvent e = map(c);
+        MovementConfirmationLineMvoEvent e = map(c);
         apply(e);
     }
 
     public void delete(MovementConfirmationLineMvoCommand.DeleteMovementConfirmationLineMvo c)
     {
-        MovementConfirmationLineMvoStateEvent e = map(c);
+        MovementConfirmationLineMvoEvent e = map(c);
         apply(e);
     }
 
@@ -56,9 +56,9 @@ public abstract class AbstractMovementConfirmationLineMvoAggregate extends Abstr
         changes.add(e);
     }
 
-    protected MovementConfirmationLineMvoStateEvent map(MovementConfirmationLineMvoCommand.CreateMovementConfirmationLineMvo c) {
+    protected MovementConfirmationLineMvoEvent map(MovementConfirmationLineMvoCommand.CreateMovementConfirmationLineMvo c) {
         MovementConfirmationLineMvoEventId stateEventId = new MovementConfirmationLineMvoEventId(c.getMovementConfirmationLineId(), c.getMovementConfirmationVersion());
-        MovementConfirmationLineMvoStateEvent.MovementConfirmationLineMvoStateCreated e = newMovementConfirmationLineMvoStateCreated(stateEventId);
+        MovementConfirmationLineMvoEvent.MovementConfirmationLineMvoStateCreated e = newMovementConfirmationLineMvoStateCreated(stateEventId);
         e.setMovementLineNumber(c.getMovementLineNumber());
         e.setTargetQuantity(c.getTargetQuantity());
         e.setConfirmedQuantity(c.getConfirmedQuantity());
@@ -82,15 +82,15 @@ public abstract class AbstractMovementConfirmationLineMvoAggregate extends Abstr
         e.setMovementConfirmationUpdatedAt(c.getMovementConfirmationUpdatedAt());
         e.setMovementConfirmationActive(c.getMovementConfirmationActive());
         e.setMovementConfirmationDeleted(c.getMovementConfirmationDeleted());
-        ((AbstractMovementConfirmationLineMvoStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractMovementConfirmationLineMvoEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected MovementConfirmationLineMvoStateEvent map(MovementConfirmationLineMvoCommand.MergePatchMovementConfirmationLineMvo c) {
+    protected MovementConfirmationLineMvoEvent map(MovementConfirmationLineMvoCommand.MergePatchMovementConfirmationLineMvo c) {
         MovementConfirmationLineMvoEventId stateEventId = new MovementConfirmationLineMvoEventId(c.getMovementConfirmationLineId(), c.getMovementConfirmationVersion());
-        MovementConfirmationLineMvoStateEvent.MovementConfirmationLineMvoStateMergePatched e = newMovementConfirmationLineMvoStateMergePatched(stateEventId);
+        MovementConfirmationLineMvoEvent.MovementConfirmationLineMvoStateMergePatched e = newMovementConfirmationLineMvoStateMergePatched(stateEventId);
         e.setMovementLineNumber(c.getMovementLineNumber());
         e.setTargetQuantity(c.getTargetQuantity());
         e.setConfirmedQuantity(c.getConfirmedQuantity());
@@ -137,16 +137,16 @@ public abstract class AbstractMovementConfirmationLineMvoAggregate extends Abstr
         e.setIsPropertyMovementConfirmationUpdatedAtRemoved(c.getIsPropertyMovementConfirmationUpdatedAtRemoved());
         e.setIsPropertyMovementConfirmationActiveRemoved(c.getIsPropertyMovementConfirmationActiveRemoved());
         e.setIsPropertyMovementConfirmationDeletedRemoved(c.getIsPropertyMovementConfirmationDeletedRemoved());
-        ((AbstractMovementConfirmationLineMvoStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractMovementConfirmationLineMvoEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected MovementConfirmationLineMvoStateEvent map(MovementConfirmationLineMvoCommand.DeleteMovementConfirmationLineMvo c) {
+    protected MovementConfirmationLineMvoEvent map(MovementConfirmationLineMvoCommand.DeleteMovementConfirmationLineMvo c) {
         MovementConfirmationLineMvoEventId stateEventId = new MovementConfirmationLineMvoEventId(c.getMovementConfirmationLineId(), c.getMovementConfirmationVersion());
-        MovementConfirmationLineMvoStateEvent.MovementConfirmationLineMvoStateDeleted e = newMovementConfirmationLineMvoStateDeleted(stateEventId);
-        ((AbstractMovementConfirmationLineMvoStateEvent)e).setCommandId(c.getCommandId());
+        MovementConfirmationLineMvoEvent.MovementConfirmationLineMvoStateDeleted e = newMovementConfirmationLineMvoStateDeleted(stateEventId);
+        ((AbstractMovementConfirmationLineMvoEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
@@ -155,44 +155,44 @@ public abstract class AbstractMovementConfirmationLineMvoAggregate extends Abstr
 
     ////////////////////////
 
-    protected MovementConfirmationLineMvoStateEvent.MovementConfirmationLineMvoStateCreated newMovementConfirmationLineMvoStateCreated(Long version, String commandId, String requesterId) {
+    protected MovementConfirmationLineMvoEvent.MovementConfirmationLineMvoStateCreated newMovementConfirmationLineMvoStateCreated(Long version, String commandId, String requesterId) {
         MovementConfirmationLineMvoEventId stateEventId = new MovementConfirmationLineMvoEventId(this.state.getMovementConfirmationLineId(), version);
-        MovementConfirmationLineMvoStateEvent.MovementConfirmationLineMvoStateCreated e = newMovementConfirmationLineMvoStateCreated(stateEventId);
-        ((AbstractMovementConfirmationLineMvoStateEvent)e).setCommandId(commandId);
+        MovementConfirmationLineMvoEvent.MovementConfirmationLineMvoStateCreated e = newMovementConfirmationLineMvoStateCreated(stateEventId);
+        ((AbstractMovementConfirmationLineMvoEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected MovementConfirmationLineMvoStateEvent.MovementConfirmationLineMvoStateMergePatched newMovementConfirmationLineMvoStateMergePatched(Long version, String commandId, String requesterId) {
+    protected MovementConfirmationLineMvoEvent.MovementConfirmationLineMvoStateMergePatched newMovementConfirmationLineMvoStateMergePatched(Long version, String commandId, String requesterId) {
         MovementConfirmationLineMvoEventId stateEventId = new MovementConfirmationLineMvoEventId(this.state.getMovementConfirmationLineId(), version);
-        MovementConfirmationLineMvoStateEvent.MovementConfirmationLineMvoStateMergePatched e = newMovementConfirmationLineMvoStateMergePatched(stateEventId);
-        ((AbstractMovementConfirmationLineMvoStateEvent)e).setCommandId(commandId);
+        MovementConfirmationLineMvoEvent.MovementConfirmationLineMvoStateMergePatched e = newMovementConfirmationLineMvoStateMergePatched(stateEventId);
+        ((AbstractMovementConfirmationLineMvoEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected MovementConfirmationLineMvoStateEvent.MovementConfirmationLineMvoStateDeleted newMovementConfirmationLineMvoStateDeleted(Long version, String commandId, String requesterId) {
+    protected MovementConfirmationLineMvoEvent.MovementConfirmationLineMvoStateDeleted newMovementConfirmationLineMvoStateDeleted(Long version, String commandId, String requesterId) {
         MovementConfirmationLineMvoEventId stateEventId = new MovementConfirmationLineMvoEventId(this.state.getMovementConfirmationLineId(), version);
-        MovementConfirmationLineMvoStateEvent.MovementConfirmationLineMvoStateDeleted e = newMovementConfirmationLineMvoStateDeleted(stateEventId);
-        ((AbstractMovementConfirmationLineMvoStateEvent)e).setCommandId(commandId);
+        MovementConfirmationLineMvoEvent.MovementConfirmationLineMvoStateDeleted e = newMovementConfirmationLineMvoStateDeleted(stateEventId);
+        ((AbstractMovementConfirmationLineMvoEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected MovementConfirmationLineMvoStateEvent.MovementConfirmationLineMvoStateCreated newMovementConfirmationLineMvoStateCreated(MovementConfirmationLineMvoEventId stateEventId) {
-        return new AbstractMovementConfirmationLineMvoStateEvent.SimpleMovementConfirmationLineMvoStateCreated(stateEventId);
+    protected MovementConfirmationLineMvoEvent.MovementConfirmationLineMvoStateCreated newMovementConfirmationLineMvoStateCreated(MovementConfirmationLineMvoEventId stateEventId) {
+        return new AbstractMovementConfirmationLineMvoEvent.SimpleMovementConfirmationLineMvoStateCreated(stateEventId);
     }
 
-    protected MovementConfirmationLineMvoStateEvent.MovementConfirmationLineMvoStateMergePatched newMovementConfirmationLineMvoStateMergePatched(MovementConfirmationLineMvoEventId stateEventId) {
-        return new AbstractMovementConfirmationLineMvoStateEvent.SimpleMovementConfirmationLineMvoStateMergePatched(stateEventId);
+    protected MovementConfirmationLineMvoEvent.MovementConfirmationLineMvoStateMergePatched newMovementConfirmationLineMvoStateMergePatched(MovementConfirmationLineMvoEventId stateEventId) {
+        return new AbstractMovementConfirmationLineMvoEvent.SimpleMovementConfirmationLineMvoStateMergePatched(stateEventId);
     }
 
-    protected MovementConfirmationLineMvoStateEvent.MovementConfirmationLineMvoStateDeleted newMovementConfirmationLineMvoStateDeleted(MovementConfirmationLineMvoEventId stateEventId)
+    protected MovementConfirmationLineMvoEvent.MovementConfirmationLineMvoStateDeleted newMovementConfirmationLineMvoStateDeleted(MovementConfirmationLineMvoEventId stateEventId)
     {
-        return new AbstractMovementConfirmationLineMvoStateEvent.SimpleMovementConfirmationLineMvoStateDeleted(stateEventId);
+        return new AbstractMovementConfirmationLineMvoEvent.SimpleMovementConfirmationLineMvoStateDeleted(stateEventId);
     }
 
     public static class SimpleMovementConfirmationLineMvoAggregate extends AbstractMovementConfirmationLineMvoAggregate

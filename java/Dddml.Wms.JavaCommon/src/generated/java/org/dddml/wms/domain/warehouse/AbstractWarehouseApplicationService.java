@@ -86,19 +86,19 @@ public abstract class AbstractWarehouseApplicationService implements WarehouseAp
         return getStateQueryRepository().getCount(filter);
     }
 
-    public WarehouseStateEvent getStateEvent(String warehouseId, long version) {
-        WarehouseStateEvent e = (WarehouseStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(warehouseId), version);
+    public WarehouseEvent getEvent(String warehouseId, long version) {
+        WarehouseEvent e = (WarehouseEvent)getEventStore().getEvent(toEventStoreAggregateId(warehouseId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(warehouseId, 0);
+            return getEvent(warehouseId, 0);
         }
         return e;
     }
 
     public WarehouseState getHistoryState(String warehouseId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractWarehouseStateEvent.class, toEventStoreAggregateId(warehouseId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractWarehouseEvent.class, toEventStoreAggregateId(warehouseId), version - 1);
         return new AbstractWarehouseState.SimpleWarehouseState(eventStream.getEvents());
     }
 
@@ -137,7 +137,7 @@ public abstract class AbstractWarehouseApplicationService implements WarehouseAp
         }
     }
 
-    public void initialize(WarehouseStateEvent.WarehouseStateCreated stateCreated) {
+    public void initialize(WarehouseEvent.WarehouseStateCreated stateCreated) {
         String aggregateId = stateCreated.getWarehouseEventId().getWarehouseId();
         WarehouseState state = new AbstractWarehouseState.SimpleWarehouseState();
         state.setWarehouseId(aggregateId);
@@ -155,9 +155,9 @@ public abstract class AbstractWarehouseApplicationService implements WarehouseAp
         if (command.getVersion() == null) { command.setVersion(WarehouseState.VERSION_NULL); }
         if (state.getVersion() != null && state.getVersion() > command.getVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractWarehouseStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractWarehouseEvent.class, eventStoreAggregateId, command.getVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

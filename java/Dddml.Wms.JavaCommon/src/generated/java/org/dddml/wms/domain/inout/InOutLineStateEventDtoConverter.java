@@ -8,22 +8,22 @@ import org.dddml.wms.specialization.*;
 
 public class InOutLineStateEventDtoConverter {
 
-    public InOutLineStateEventDto toInOutLineStateEventDto(AbstractInOutLineStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractInOutLineStateEvent.AbstractInOutLineStateCreated) {
-            InOutLineStateEvent.InOutLineStateCreated e = (InOutLineStateEvent.InOutLineStateCreated) stateEvent;
+    public InOutLineStateEventDto toInOutLineStateEventDto(AbstractInOutLineEvent stateEvent) {
+        if (stateEvent instanceof AbstractInOutLineEvent.AbstractInOutLineStateCreated) {
+            InOutLineEvent.InOutLineStateCreated e = (InOutLineEvent.InOutLineStateCreated) stateEvent;
             return toInOutLineStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractInOutLineStateEvent.AbstractInOutLineStateMergePatched) {
-            InOutLineStateEvent.InOutLineStateMergePatched e = (InOutLineStateEvent.InOutLineStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractInOutLineEvent.AbstractInOutLineStateMergePatched) {
+            InOutLineEvent.InOutLineStateMergePatched e = (InOutLineEvent.InOutLineStateMergePatched) stateEvent;
             return toInOutLineStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractInOutLineStateEvent.AbstractInOutLineStateRemoved) {
-            InOutLineStateEvent.InOutLineStateRemoved e = (InOutLineStateEvent.InOutLineStateRemoved) stateEvent;
+        } else if (stateEvent instanceof AbstractInOutLineEvent.AbstractInOutLineStateRemoved) {
+            InOutLineEvent.InOutLineStateRemoved e = (InOutLineEvent.InOutLineStateRemoved) stateEvent;
             return toInOutLineStateRemovedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public InOutLineStateEventDto.InOutLineStateCreatedDto toInOutLineStateCreatedDto(InOutLineStateEvent.InOutLineStateCreated e) {
+    public InOutLineStateEventDto.InOutLineStateCreatedDto toInOutLineStateCreatedDto(InOutLineEvent.InOutLineStateCreated e) {
         InOutLineStateEventDto.InOutLineStateCreatedDto dto = new InOutLineStateEventDto.InOutLineStateCreatedDto();
         dto.setInOutLineEventId(e.getInOutLineEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -45,7 +45,7 @@ public class InOutLineStateEventDtoConverter {
         return dto;
     }
 
-    public InOutLineStateEventDto.InOutLineStateMergePatchedDto toInOutLineStateMergePatchedDto(InOutLineStateEvent.InOutLineStateMergePatched e) {
+    public InOutLineStateEventDto.InOutLineStateMergePatchedDto toInOutLineStateMergePatchedDto(InOutLineEvent.InOutLineStateMergePatched e) {
         InOutLineStateEventDto.InOutLineStateMergePatchedDto dto = new InOutLineStateEventDto.InOutLineStateMergePatchedDto();
         dto.setInOutLineEventId(e.getInOutLineEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -80,7 +80,7 @@ public class InOutLineStateEventDtoConverter {
     }
 
 
-    public InOutLineStateEventDto.InOutLineStateRemovedDto toInOutLineStateRemovedDto(InOutLineStateEvent.InOutLineStateRemoved e) {
+    public InOutLineStateEventDto.InOutLineStateRemovedDto toInOutLineStateRemovedDto(InOutLineEvent.InOutLineStateRemoved e) {
         InOutLineStateEventDto.InOutLineStateRemovedDto dto = new InOutLineStateEventDto.InOutLineStateRemovedDto();
         dto.setInOutLineEventId(e.getInOutLineEventId());
         dto.setCreatedAt(e.getCreatedAt());

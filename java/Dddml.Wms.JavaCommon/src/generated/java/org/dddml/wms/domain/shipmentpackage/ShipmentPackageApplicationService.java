@@ -30,7 +30,7 @@ public interface ShipmentPackageApplicationService
 
     long getCount(Criterion filter);
 
-    ShipmentPackageStateEvent getStateEvent(ShipmentPackageId shipmentPackageId, long version);
+    ShipmentPackageEvent getEvent(ShipmentPackageId shipmentPackageId, long version);
 
     ShipmentPackageState getHistoryState(ShipmentPackageId shipmentPackageId, long version);
 

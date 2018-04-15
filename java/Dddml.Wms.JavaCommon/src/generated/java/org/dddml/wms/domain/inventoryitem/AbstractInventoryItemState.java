@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.inventoryitem.InventoryItemStateEvent.*;
+import org.dddml.wms.domain.inventoryitem.InventoryItemEvent.*;
 
 public abstract class AbstractInventoryItemState implements InventoryItemState, Saveable
 {
@@ -178,7 +178,7 @@ public abstract class AbstractInventoryItemState implements InventoryItemState, 
     public AbstractInventoryItemState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setInventoryItemId(((InventoryItemStateEvent) events.get(0)).getInventoryItemEventId().getInventoryItemId());
+            this.setInventoryItemId(((InventoryItemEvent) events.get(0)).getInventoryItemEventId().getInventoryItemId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -226,7 +226,7 @@ public abstract class AbstractInventoryItemState implements InventoryItemState, 
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
-        for (InventoryItemEntryStateEvent.InventoryItemEntryStateCreated innerEvent : e.getInventoryItemEntryEvents()) {
+        for (InventoryItemEntryEvent.InventoryItemEntryStateCreated innerEvent : e.getInventoryItemEntryEvents()) {
             InventoryItemEntryState innerState = this.getEntries().get(innerEvent.getInventoryItemEntryEventId().getEntrySeqId());
             innerState.mutate(innerEvent);
         }
@@ -295,7 +295,7 @@ public abstract class AbstractInventoryItemState implements InventoryItemState, 
         this.setUpdatedBy(e.getCreatedBy());
         this.setUpdatedAt(e.getCreatedAt());
 
-        for (InventoryItemEntryStateEvent innerEvent : e.getInventoryItemEntryEvents()) {
+        for (InventoryItemEntryEvent innerEvent : e.getInventoryItemEntryEvents()) {
             InventoryItemEntryState innerState = this.getEntries().get(innerEvent.getInventoryItemEntryEventId().getEntrySeqId());
             innerState.mutate(innerEvent);
         }
@@ -307,10 +307,10 @@ public abstract class AbstractInventoryItemState implements InventoryItemState, 
 
     }
 
-    protected void throwOnWrongEvent(InventoryItemStateEvent stateEvent)
+    protected void throwOnWrongEvent(InventoryItemEvent stateEvent)
     {
         InventoryItemId stateEntityId = this.getInventoryItemId(); // Aggregate Id
-        InventoryItemId eventEntityId = stateEvent.getInventoryItemEventId().getInventoryItemId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        InventoryItemId eventEntityId = stateEvent.getInventoryItemEventId().getInventoryItemId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

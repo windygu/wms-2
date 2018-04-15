@@ -28,7 +28,7 @@ public interface ProductCategoryMemberApplicationService
 
     long getCount(Criterion filter);
 
-    ProductCategoryMemberStateEvent getStateEvent(ProductCategoryMemberId productCategoryMemberId, long version);
+    ProductCategoryMemberEvent getEvent(ProductCategoryMemberId productCategoryMemberId, long version);
 
     ProductCategoryMemberState getHistoryState(ProductCategoryMemberId productCategoryMemberId, long version);
 

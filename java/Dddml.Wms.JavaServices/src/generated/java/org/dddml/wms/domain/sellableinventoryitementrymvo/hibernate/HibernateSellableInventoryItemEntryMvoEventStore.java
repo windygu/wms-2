@@ -23,20 +23,20 @@ public class HibernateSellableInventoryItemEntryMvoEventStore extends AbstractHi
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractSellableInventoryItemEntryMvoStateEvent.class;
+        return AbstractSellableInventoryItemEntryMvoEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractSellableInventoryItemEntryMvoStateEvent.class;
+        Class supportedEventType = AbstractSellableInventoryItemEntryMvoEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         SellableInventoryItemEntryId idObj = (SellableInventoryItemEntryId) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractSellableInventoryItemEntryMvoStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractSellableInventoryItemEntryMvoEvent.class);
         criteria.add(Restrictions.eq("sellableInventoryItemEntryMvoEventId.sellableInventoryItemEntryIdSellableInventoryItemIdProductId", idObj.getSellableInventoryItemId().getProductId()));
         criteria.add(Restrictions.eq("sellableInventoryItemEntryMvoEventId.sellableInventoryItemEntryIdSellableInventoryItemIdLocatorId", idObj.getSellableInventoryItemId().getLocatorId()));
         criteria.add(Restrictions.eq("sellableInventoryItemEntryMvoEventId.sellableInventoryItemEntryIdSellableInventoryItemIdAttributeSetInstanceId", idObj.getSellableInventoryItemId().getAttributeSetInstanceId()));
@@ -45,11 +45,11 @@ public class HibernateSellableInventoryItemEntryMvoEventStore extends AbstractHi
         criteria.addOrder(Order.asc("sellableInventoryItemEntryMvoEventId.sellableInventoryItemVersion"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractSellableInventoryItemEntryMvoStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractSellableInventoryItemEntryMvoEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractSellableInventoryItemEntryMvoStateEvent) es.get(es.size() - 1)).getSellableInventoryItemEntryMvoEventId().getSellableInventoryItemVersion());
+            eventStream.setSteamVersion(((AbstractSellableInventoryItemEntryMvoEvent) es.get(es.size() - 1)).getSellableInventoryItemEntryMvoEventId().getSellableInventoryItemVersion());
         } else {
             //todo?
         }

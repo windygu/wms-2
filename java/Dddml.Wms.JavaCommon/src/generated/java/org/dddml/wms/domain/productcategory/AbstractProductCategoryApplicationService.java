@@ -86,19 +86,19 @@ public abstract class AbstractProductCategoryApplicationService implements Produ
         return getStateQueryRepository().getCount(filter);
     }
 
-    public ProductCategoryStateEvent getStateEvent(String productCategoryId, long version) {
-        ProductCategoryStateEvent e = (ProductCategoryStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(productCategoryId), version);
+    public ProductCategoryEvent getEvent(String productCategoryId, long version) {
+        ProductCategoryEvent e = (ProductCategoryEvent)getEventStore().getEvent(toEventStoreAggregateId(productCategoryId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(productCategoryId, 0);
+            return getEvent(productCategoryId, 0);
         }
         return e;
     }
 
     public ProductCategoryState getHistoryState(String productCategoryId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractProductCategoryStateEvent.class, toEventStoreAggregateId(productCategoryId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractProductCategoryEvent.class, toEventStoreAggregateId(productCategoryId), version - 1);
         return new AbstractProductCategoryState.SimpleProductCategoryState(eventStream.getEvents());
     }
 
@@ -142,7 +142,7 @@ public abstract class AbstractProductCategoryApplicationService implements Produ
         }
     }
 
-    public void initialize(ProductCategoryStateEvent.ProductCategoryStateCreated stateCreated) {
+    public void initialize(ProductCategoryEvent.ProductCategoryStateCreated stateCreated) {
         String aggregateId = stateCreated.getProductCategoryEventId().getProductCategoryId();
         ProductCategoryState state = new AbstractProductCategoryState.SimpleProductCategoryState();
         state.setProductCategoryId(aggregateId);
@@ -160,9 +160,9 @@ public abstract class AbstractProductCategoryApplicationService implements Produ
         if (command.getVersion() == null) { command.setVersion(ProductCategoryState.VERSION_NULL); }
         if (state.getVersion() != null && state.getVersion() > command.getVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractProductCategoryStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractProductCategoryEvent.class, eventStoreAggregateId, command.getVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

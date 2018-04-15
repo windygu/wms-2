@@ -105,19 +105,19 @@ public abstract class AbstractAttributeSetInstanceApplicationService implements 
         return getStateQueryRepository().getCount(filter);
     }
 
-    public AttributeSetInstanceStateEvent getStateEvent(String attributeSetInstanceId, long version) {
-        AttributeSetInstanceStateEvent e = (AttributeSetInstanceStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(attributeSetInstanceId), version);
+    public AttributeSetInstanceEvent getEvent(String attributeSetInstanceId, long version) {
+        AttributeSetInstanceEvent e = (AttributeSetInstanceEvent)getEventStore().getEvent(toEventStoreAggregateId(attributeSetInstanceId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(attributeSetInstanceId, 0);
+            return getEvent(attributeSetInstanceId, 0);
         }
         return e;
     }
 
     public AttributeSetInstanceState getHistoryState(String attributeSetInstanceId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractAttributeSetInstanceStateEvent.class, toEventStoreAggregateId(attributeSetInstanceId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractAttributeSetInstanceEvent.class, toEventStoreAggregateId(attributeSetInstanceId), version - 1);
         return new AbstractAttributeSetInstanceState.SimpleAttributeSetInstanceState(eventStream.getEvents());
     }
 
@@ -156,7 +156,7 @@ public abstract class AbstractAttributeSetInstanceApplicationService implements 
         }
     }
 
-    public void initialize(AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated stateCreated) {
+    public void initialize(AttributeSetInstanceEvent.AttributeSetInstanceStateCreated stateCreated) {
         String aggregateId = stateCreated.getAttributeSetInstanceEventId().getAttributeSetInstanceId();
         AttributeSetInstanceState state = new AbstractAttributeSetInstanceState.SimpleAttributeSetInstanceState();
         state.setAttributeSetInstanceId(aggregateId);
@@ -174,9 +174,9 @@ public abstract class AbstractAttributeSetInstanceApplicationService implements 
         if (command.getVersion() == null) { command.setVersion(AttributeSetInstanceState.VERSION_NULL); }
         if (state.getVersion() != null && state.getVersion() > command.getVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractAttributeSetInstanceStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractAttributeSetInstanceEvent.class, eventStoreAggregateId, command.getVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

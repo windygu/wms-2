@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.shipment.ShipmentReceiptStateEvent.*;
+import org.dddml.wms.domain.shipment.ShipmentReceiptEvent.*;
 
 public interface ShipmentReceiptState
 {
@@ -128,9 +128,9 @@ public interface ShipmentReceiptState
 
     void mutate(Event e);
 
-    void when(ShipmentReceiptStateEvent.ShipmentReceiptStateCreated e);
+    void when(ShipmentReceiptEvent.ShipmentReceiptStateCreated e);
 
-    void when(ShipmentReceiptStateEvent.ShipmentReceiptStateMergePatched e);
+    void when(ShipmentReceiptEvent.ShipmentReceiptStateMergePatched e);
 
     
 }

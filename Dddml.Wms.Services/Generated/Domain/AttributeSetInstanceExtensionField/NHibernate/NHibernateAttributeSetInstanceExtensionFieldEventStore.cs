@@ -45,7 +45,7 @@ namespace Dddml.Wms.Domain.AttributeSetInstanceExtensionField.NHibernate
             var es = criteria.List<IEvent>();
             foreach (AttributeSetInstanceExtensionFieldStateEventBase e in es)
             {
-                e.StateEventReadOnly = true;
+                e.EventReadOnly = true;
             }
             return new EventStream()
             {

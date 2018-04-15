@@ -199,7 +199,7 @@ public class PhysicalInventoryResource {
 
             String idObj = id;
             PhysicalInventoryStateEventDtoConverter dtoConverter = getPhysicalInventoryStateEventDtoConverter();
-            return dtoConverter.toPhysicalInventoryStateEventDto((AbstractPhysicalInventoryStateEvent) physicalInventoryApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toPhysicalInventoryStateEventDto((AbstractPhysicalInventoryEvent) physicalInventoryApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

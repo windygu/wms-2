@@ -29,19 +29,19 @@ public abstract class AbstractPhysicalInventoryLineMvoAggregate extends Abstract
     public void create(PhysicalInventoryLineMvoCommand.CreatePhysicalInventoryLineMvo c)
     {
         if (c.getPhysicalInventoryVersion() == null) { c.setPhysicalInventoryVersion(PhysicalInventoryLineMvoState.VERSION_NULL); }
-        PhysicalInventoryLineMvoStateEvent e = map(c);
+        PhysicalInventoryLineMvoEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(PhysicalInventoryLineMvoCommand.MergePatchPhysicalInventoryLineMvo c)
     {
-        PhysicalInventoryLineMvoStateEvent e = map(c);
+        PhysicalInventoryLineMvoEvent e = map(c);
         apply(e);
     }
 
     public void delete(PhysicalInventoryLineMvoCommand.DeletePhysicalInventoryLineMvo c)
     {
-        PhysicalInventoryLineMvoStateEvent e = map(c);
+        PhysicalInventoryLineMvoEvent e = map(c);
         apply(e);
     }
 
@@ -56,9 +56,9 @@ public abstract class AbstractPhysicalInventoryLineMvoAggregate extends Abstract
         changes.add(e);
     }
 
-    protected PhysicalInventoryLineMvoStateEvent map(PhysicalInventoryLineMvoCommand.CreatePhysicalInventoryLineMvo c) {
+    protected PhysicalInventoryLineMvoEvent map(PhysicalInventoryLineMvoCommand.CreatePhysicalInventoryLineMvo c) {
         PhysicalInventoryLineMvoEventId stateEventId = new PhysicalInventoryLineMvoEventId(c.getPhysicalInventoryLineId(), c.getPhysicalInventoryVersion());
-        PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateCreated e = newPhysicalInventoryLineMvoStateCreated(stateEventId);
+        PhysicalInventoryLineMvoEvent.PhysicalInventoryLineMvoStateCreated e = newPhysicalInventoryLineMvoStateCreated(stateEventId);
         e.setBookQuantity(c.getBookQuantity());
         e.setCountedQuantity(c.getCountedQuantity());
         e.setProcessed(c.getProcessed());
@@ -85,15 +85,15 @@ public abstract class AbstractPhysicalInventoryLineMvoAggregate extends Abstract
         e.setPhysicalInventoryUpdatedBy(c.getPhysicalInventoryUpdatedBy());
         e.setPhysicalInventoryUpdatedAt(c.getPhysicalInventoryUpdatedAt());
         e.setPhysicalInventoryActive(c.getPhysicalInventoryActive());
-        ((AbstractPhysicalInventoryLineMvoStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractPhysicalInventoryLineMvoEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected PhysicalInventoryLineMvoStateEvent map(PhysicalInventoryLineMvoCommand.MergePatchPhysicalInventoryLineMvo c) {
+    protected PhysicalInventoryLineMvoEvent map(PhysicalInventoryLineMvoCommand.MergePatchPhysicalInventoryLineMvo c) {
         PhysicalInventoryLineMvoEventId stateEventId = new PhysicalInventoryLineMvoEventId(c.getPhysicalInventoryLineId(), c.getPhysicalInventoryVersion());
-        PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateMergePatched e = newPhysicalInventoryLineMvoStateMergePatched(stateEventId);
+        PhysicalInventoryLineMvoEvent.PhysicalInventoryLineMvoStateMergePatched e = newPhysicalInventoryLineMvoStateMergePatched(stateEventId);
         e.setBookQuantity(c.getBookQuantity());
         e.setCountedQuantity(c.getCountedQuantity());
         e.setProcessed(c.getProcessed());
@@ -146,16 +146,16 @@ public abstract class AbstractPhysicalInventoryLineMvoAggregate extends Abstract
         e.setIsPropertyPhysicalInventoryUpdatedByRemoved(c.getIsPropertyPhysicalInventoryUpdatedByRemoved());
         e.setIsPropertyPhysicalInventoryUpdatedAtRemoved(c.getIsPropertyPhysicalInventoryUpdatedAtRemoved());
         e.setIsPropertyPhysicalInventoryActiveRemoved(c.getIsPropertyPhysicalInventoryActiveRemoved());
-        ((AbstractPhysicalInventoryLineMvoStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractPhysicalInventoryLineMvoEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected PhysicalInventoryLineMvoStateEvent map(PhysicalInventoryLineMvoCommand.DeletePhysicalInventoryLineMvo c) {
+    protected PhysicalInventoryLineMvoEvent map(PhysicalInventoryLineMvoCommand.DeletePhysicalInventoryLineMvo c) {
         PhysicalInventoryLineMvoEventId stateEventId = new PhysicalInventoryLineMvoEventId(c.getPhysicalInventoryLineId(), c.getPhysicalInventoryVersion());
-        PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateDeleted e = newPhysicalInventoryLineMvoStateDeleted(stateEventId);
-        ((AbstractPhysicalInventoryLineMvoStateEvent)e).setCommandId(c.getCommandId());
+        PhysicalInventoryLineMvoEvent.PhysicalInventoryLineMvoStateDeleted e = newPhysicalInventoryLineMvoStateDeleted(stateEventId);
+        ((AbstractPhysicalInventoryLineMvoEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
@@ -164,44 +164,44 @@ public abstract class AbstractPhysicalInventoryLineMvoAggregate extends Abstract
 
     ////////////////////////
 
-    protected PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateCreated newPhysicalInventoryLineMvoStateCreated(Long version, String commandId, String requesterId) {
+    protected PhysicalInventoryLineMvoEvent.PhysicalInventoryLineMvoStateCreated newPhysicalInventoryLineMvoStateCreated(Long version, String commandId, String requesterId) {
         PhysicalInventoryLineMvoEventId stateEventId = new PhysicalInventoryLineMvoEventId(this.state.getPhysicalInventoryLineId(), version);
-        PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateCreated e = newPhysicalInventoryLineMvoStateCreated(stateEventId);
-        ((AbstractPhysicalInventoryLineMvoStateEvent)e).setCommandId(commandId);
+        PhysicalInventoryLineMvoEvent.PhysicalInventoryLineMvoStateCreated e = newPhysicalInventoryLineMvoStateCreated(stateEventId);
+        ((AbstractPhysicalInventoryLineMvoEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateMergePatched newPhysicalInventoryLineMvoStateMergePatched(Long version, String commandId, String requesterId) {
+    protected PhysicalInventoryLineMvoEvent.PhysicalInventoryLineMvoStateMergePatched newPhysicalInventoryLineMvoStateMergePatched(Long version, String commandId, String requesterId) {
         PhysicalInventoryLineMvoEventId stateEventId = new PhysicalInventoryLineMvoEventId(this.state.getPhysicalInventoryLineId(), version);
-        PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateMergePatched e = newPhysicalInventoryLineMvoStateMergePatched(stateEventId);
-        ((AbstractPhysicalInventoryLineMvoStateEvent)e).setCommandId(commandId);
+        PhysicalInventoryLineMvoEvent.PhysicalInventoryLineMvoStateMergePatched e = newPhysicalInventoryLineMvoStateMergePatched(stateEventId);
+        ((AbstractPhysicalInventoryLineMvoEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateDeleted newPhysicalInventoryLineMvoStateDeleted(Long version, String commandId, String requesterId) {
+    protected PhysicalInventoryLineMvoEvent.PhysicalInventoryLineMvoStateDeleted newPhysicalInventoryLineMvoStateDeleted(Long version, String commandId, String requesterId) {
         PhysicalInventoryLineMvoEventId stateEventId = new PhysicalInventoryLineMvoEventId(this.state.getPhysicalInventoryLineId(), version);
-        PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateDeleted e = newPhysicalInventoryLineMvoStateDeleted(stateEventId);
-        ((AbstractPhysicalInventoryLineMvoStateEvent)e).setCommandId(commandId);
+        PhysicalInventoryLineMvoEvent.PhysicalInventoryLineMvoStateDeleted e = newPhysicalInventoryLineMvoStateDeleted(stateEventId);
+        ((AbstractPhysicalInventoryLineMvoEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateCreated newPhysicalInventoryLineMvoStateCreated(PhysicalInventoryLineMvoEventId stateEventId) {
-        return new AbstractPhysicalInventoryLineMvoStateEvent.SimplePhysicalInventoryLineMvoStateCreated(stateEventId);
+    protected PhysicalInventoryLineMvoEvent.PhysicalInventoryLineMvoStateCreated newPhysicalInventoryLineMvoStateCreated(PhysicalInventoryLineMvoEventId stateEventId) {
+        return new AbstractPhysicalInventoryLineMvoEvent.SimplePhysicalInventoryLineMvoStateCreated(stateEventId);
     }
 
-    protected PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateMergePatched newPhysicalInventoryLineMvoStateMergePatched(PhysicalInventoryLineMvoEventId stateEventId) {
-        return new AbstractPhysicalInventoryLineMvoStateEvent.SimplePhysicalInventoryLineMvoStateMergePatched(stateEventId);
+    protected PhysicalInventoryLineMvoEvent.PhysicalInventoryLineMvoStateMergePatched newPhysicalInventoryLineMvoStateMergePatched(PhysicalInventoryLineMvoEventId stateEventId) {
+        return new AbstractPhysicalInventoryLineMvoEvent.SimplePhysicalInventoryLineMvoStateMergePatched(stateEventId);
     }
 
-    protected PhysicalInventoryLineMvoStateEvent.PhysicalInventoryLineMvoStateDeleted newPhysicalInventoryLineMvoStateDeleted(PhysicalInventoryLineMvoEventId stateEventId)
+    protected PhysicalInventoryLineMvoEvent.PhysicalInventoryLineMvoStateDeleted newPhysicalInventoryLineMvoStateDeleted(PhysicalInventoryLineMvoEventId stateEventId)
     {
-        return new AbstractPhysicalInventoryLineMvoStateEvent.SimplePhysicalInventoryLineMvoStateDeleted(stateEventId);
+        return new AbstractPhysicalInventoryLineMvoEvent.SimplePhysicalInventoryLineMvoStateDeleted(stateEventId);
     }
 
     public static class SimplePhysicalInventoryLineMvoAggregate extends AbstractPhysicalInventoryLineMvoAggregate

@@ -5,7 +5,7 @@ import java.util.Date;
 import java.math.BigDecimal;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.movement.MovementStateEvent.*;
+import org.dddml.wms.domain.movement.MovementEvent.*;
 
 public abstract class AbstractMovementState implements MovementState, Saveable
 {
@@ -382,7 +382,7 @@ public abstract class AbstractMovementState implements MovementState, Saveable
     public AbstractMovementState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setDocumentNumber(((MovementStateEvent) events.get(0)).getMovementEventId().getDocumentNumber());
+            this.setDocumentNumber(((MovementEvent) events.get(0)).getMovementEventId().getDocumentNumber());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -450,7 +450,7 @@ public abstract class AbstractMovementState implements MovementState, Saveable
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
-        for (MovementLineStateEvent.MovementLineStateCreated innerEvent : e.getMovementLineEvents()) {
+        for (MovementLineEvent.MovementLineStateCreated innerEvent : e.getMovementLineEvents()) {
             MovementLineState innerState = this.getMovementLines().get(innerEvent.getMovementLineEventId().getLineNumber());
             innerState.mutate(innerEvent);
         }
@@ -695,12 +695,12 @@ public abstract class AbstractMovementState implements MovementState, Saveable
         this.setUpdatedBy(e.getCreatedBy());
         this.setUpdatedAt(e.getCreatedAt());
 
-        for (MovementLineStateEvent innerEvent : e.getMovementLineEvents()) {
+        for (MovementLineEvent innerEvent : e.getMovementLineEvents()) {
             MovementLineState innerState = this.getMovementLines().get(innerEvent.getMovementLineEventId().getLineNumber());
             innerState.mutate(innerEvent);
-            if (innerEvent instanceof MovementLineStateEvent.MovementLineStateRemoved)
+            if (innerEvent instanceof MovementLineEvent.MovementLineStateRemoved)
             {
-                //MovementLineStateEvent.MovementLineStateRemoved removed = (MovementLineStateEvent.MovementLineStateRemoved)innerEvent;
+                //MovementLineEvent.MovementLineStateRemoved removed = (MovementLineEvent.MovementLineStateRemoved)innerEvent;
                 this.getMovementLines().remove(innerState);
             }
         }
@@ -718,7 +718,7 @@ public abstract class AbstractMovementState implements MovementState, Saveable
         {
             this.getMovementLines().remove(innerState);
         
-            MovementLineStateEvent.MovementLineStateRemoved innerE = e.newMovementLineStateRemoved(innerState.getLineNumber());
+            MovementLineEvent.MovementLineStateRemoved innerE = e.newMovementLineStateRemoved(innerState.getLineNumber());
             innerE.setCreatedAt(e.getCreatedAt());
             innerE.setCreatedBy(e.getCreatedBy());
             innerState.when(innerE);
@@ -732,10 +732,10 @@ public abstract class AbstractMovementState implements MovementState, Saveable
 
     }
 
-    protected void throwOnWrongEvent(MovementStateEvent stateEvent)
+    protected void throwOnWrongEvent(MovementEvent stateEvent)
     {
         String stateEntityId = this.getDocumentNumber(); // Aggregate Id
-        String eventEntityId = stateEvent.getMovementEventId().getDocumentNumber(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        String eventEntityId = stateEvent.getMovementEventId().getDocumentNumber(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

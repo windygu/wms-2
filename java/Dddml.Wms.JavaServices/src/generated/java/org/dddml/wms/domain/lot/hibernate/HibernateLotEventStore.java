@@ -20,30 +20,30 @@ public class HibernateLotEventStore extends AbstractHibernateEventStore
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractLotStateEvent.class;
+        return AbstractLotEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractLotStateEvent.class;
+        Class supportedEventType = AbstractLotEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         String idObj = (String) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractLotStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractLotEvent.class);
         criteria.add(Restrictions.eq("lotEventId.lotId", idObj));
         criteria.add(Restrictions.le("lotEventId.version", version));
         criteria.addOrder(Order.asc("lotEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractLotStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractLotEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractLotStateEvent) es.get(es.size() - 1)).getLotEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractLotEvent) es.get(es.size() - 1)).getLotEventId().getVersion());
         } else {
             //todo?
         }

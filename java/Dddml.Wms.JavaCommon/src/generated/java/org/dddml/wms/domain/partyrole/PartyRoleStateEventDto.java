@@ -2,9 +2,9 @@ package org.dddml.wms.domain.partyrole;
 
 import java.util.Date;
 import org.dddml.wms.domain.*;
-import org.dddml.wms.domain.AbstractStateEvent;
+import org.dddml.wms.domain.AbstractEvent;
 
-public class PartyRoleStateEventDto extends AbstractStateEvent
+public class PartyRoleStateEventDto extends AbstractEvent
 {
 
     private PartyRoleEventId partyRoleEventId;
@@ -78,7 +78,7 @@ public class PartyRoleStateEventDto extends AbstractStateEvent
 	public static class PartyRoleStateCreatedDto extends PartyRoleStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_CREATED;
         }
@@ -89,7 +89,7 @@ public class PartyRoleStateEventDto extends AbstractStateEvent
 	public static class PartyRoleStateMergePatchedDto extends PartyRoleStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_MERGE_PATCHED;
         }
@@ -100,7 +100,7 @@ public class PartyRoleStateEventDto extends AbstractStateEvent
 	public static class PartyRoleStateDeletedDto extends PartyRoleStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_DELETED;
         }

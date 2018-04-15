@@ -5,7 +5,7 @@ import org.dddml.wms.domain.partyrole.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.order.OrderRoleStateEvent.*;
+import org.dddml.wms.domain.order.OrderRoleEvent.*;
 
 public abstract class AbstractOrderRoleState implements OrderRoleState
 {
@@ -217,7 +217,7 @@ public abstract class AbstractOrderRoleState implements OrderRoleState
     {
     }
 
-    protected void throwOnWrongEvent(OrderRoleStateEvent stateEvent)
+    protected void throwOnWrongEvent(OrderRoleEvent stateEvent)
     {
         String stateEntityIdOrderId = this.getOrderRoleId().getOrderId();
         String eventEntityIdOrderId = stateEvent.getOrderRoleEventId().getOrderId();

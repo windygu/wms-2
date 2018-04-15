@@ -30,7 +30,7 @@ public interface DamageReasonApplicationService
 
     long getCount(Criterion filter);
 
-    DamageReasonStateEvent getStateEvent(String damageReasonId, long version);
+    DamageReasonEvent getEvent(String damageReasonId, long version);
 
     DamageReasonState getHistoryState(String damageReasonId, long version);
 

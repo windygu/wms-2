@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.inout.InOutLineStateEvent.*;
+import org.dddml.wms.domain.inout.InOutLineEvent.*;
 
 public interface InOutLineState
 {
@@ -105,11 +105,11 @@ public interface InOutLineState
 
     void mutate(Event e);
 
-    void when(InOutLineStateEvent.InOutLineStateCreated e);
+    void when(InOutLineEvent.InOutLineStateCreated e);
 
-    void when(InOutLineStateEvent.InOutLineStateMergePatched e);
+    void when(InOutLineEvent.InOutLineStateMergePatched e);
 
-    void when(InOutLineStateEvent.InOutLineStateRemoved e);
+    void when(InOutLineEvent.InOutLineStateRemoved e);
     
 }
 

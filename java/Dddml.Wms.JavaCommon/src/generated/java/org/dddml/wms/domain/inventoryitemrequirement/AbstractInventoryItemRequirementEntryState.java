@@ -7,7 +7,7 @@ import java.util.Date;
 import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.inventoryitemrequirement.InventoryItemRequirementEntryStateEvent.*;
+import org.dddml.wms.domain.inventoryitemrequirement.InventoryItemRequirementEntryEvent.*;
 
 public abstract class AbstractInventoryItemRequirementEntryState implements InventoryItemRequirementEntryState
 {
@@ -193,7 +193,7 @@ public abstract class AbstractInventoryItemRequirementEntryState implements Inve
     {
     }
 
-    protected void throwOnWrongEvent(InventoryItemRequirementEntryStateEvent stateEvent)
+    protected void throwOnWrongEvent(InventoryItemRequirementEntryEvent stateEvent)
     {
         InventoryItemId stateEntityIdInventoryItemRequirementId = this.getInventoryItemRequirementEntryId().getInventoryItemRequirementId();
         InventoryItemId eventEntityIdInventoryItemRequirementId = stateEvent.getInventoryItemRequirementEntryEventId().getInventoryItemRequirementId();

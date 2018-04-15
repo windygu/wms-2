@@ -7,7 +7,7 @@ import org.dddml.wms.domain.inventoryprtriggered.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.sellableinventoryitementrymvo.SellableInventoryItemEntryMvoStateEvent.*;
+import org.dddml.wms.domain.sellableinventoryitementrymvo.SellableInventoryItemEntryMvoEvent.*;
 
 public abstract class AbstractSellableInventoryItemEntryMvoState implements SellableInventoryItemEntryMvoState
 {
@@ -204,7 +204,7 @@ public abstract class AbstractSellableInventoryItemEntryMvoState implements Sell
     public AbstractSellableInventoryItemEntryMvoState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setSellableInventoryItemEntryId(((SellableInventoryItemEntryMvoStateEvent) events.get(0)).getSellableInventoryItemEntryMvoEventId().getSellableInventoryItemEntryId());
+            this.setSellableInventoryItemEntryId(((SellableInventoryItemEntryMvoEvent) events.get(0)).getSellableInventoryItemEntryMvoEventId().getSellableInventoryItemEntryId());
             for (Event e : events) {
                 mutate(e);
                 this.setSellableInventoryItemVersion(this.getSellableInventoryItemVersion() + 1);
@@ -358,10 +358,10 @@ public abstract class AbstractSellableInventoryItemEntryMvoState implements Sell
     {
     }
 
-    protected void throwOnWrongEvent(SellableInventoryItemEntryMvoStateEvent stateEvent)
+    protected void throwOnWrongEvent(SellableInventoryItemEntryMvoEvent stateEvent)
     {
         SellableInventoryItemEntryId stateEntityId = this.getSellableInventoryItemEntryId(); // Aggregate Id
-        SellableInventoryItemEntryId eventEntityId = stateEvent.getSellableInventoryItemEntryMvoEventId().getSellableInventoryItemEntryId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        SellableInventoryItemEntryId eventEntityId = stateEvent.getSellableInventoryItemEntryMvoEventId().getSellableInventoryItemEntryId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

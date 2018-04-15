@@ -10,16 +10,16 @@ import org.dddml.wms.specialization.*;
 
 public class InventoryItemRequirementEntryStateEventDtoConverter {
 
-    public InventoryItemRequirementEntryStateEventDto toInventoryItemRequirementEntryStateEventDto(AbstractInventoryItemRequirementEntryStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractInventoryItemRequirementEntryStateEvent.AbstractInventoryItemRequirementEntryStateCreated) {
-            InventoryItemRequirementEntryStateEvent.InventoryItemRequirementEntryStateCreated e = (InventoryItemRequirementEntryStateEvent.InventoryItemRequirementEntryStateCreated) stateEvent;
+    public InventoryItemRequirementEntryStateEventDto toInventoryItemRequirementEntryStateEventDto(AbstractInventoryItemRequirementEntryEvent stateEvent) {
+        if (stateEvent instanceof AbstractInventoryItemRequirementEntryEvent.AbstractInventoryItemRequirementEntryStateCreated) {
+            InventoryItemRequirementEntryEvent.InventoryItemRequirementEntryStateCreated e = (InventoryItemRequirementEntryEvent.InventoryItemRequirementEntryStateCreated) stateEvent;
             return toInventoryItemRequirementEntryStateCreatedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public InventoryItemRequirementEntryStateEventDto.InventoryItemRequirementEntryStateCreatedDto toInventoryItemRequirementEntryStateCreatedDto(InventoryItemRequirementEntryStateEvent.InventoryItemRequirementEntryStateCreated e) {
+    public InventoryItemRequirementEntryStateEventDto.InventoryItemRequirementEntryStateCreatedDto toInventoryItemRequirementEntryStateCreatedDto(InventoryItemRequirementEntryEvent.InventoryItemRequirementEntryStateCreated e) {
         InventoryItemRequirementEntryStateEventDto.InventoryItemRequirementEntryStateCreatedDto dto = new InventoryItemRequirementEntryStateEventDto.InventoryItemRequirementEntryStateCreatedDto();
         dto.setInventoryItemRequirementEntryEventId(e.getInventoryItemRequirementEntryEventId());
         dto.setCreatedAt(e.getCreatedAt());

@@ -20,30 +20,30 @@ public class HibernateWarehouseEventStore extends AbstractHibernateEventStore
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractWarehouseStateEvent.class;
+        return AbstractWarehouseEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractWarehouseStateEvent.class;
+        Class supportedEventType = AbstractWarehouseEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         String idObj = (String) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractWarehouseStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractWarehouseEvent.class);
         criteria.add(Restrictions.eq("warehouseEventId.warehouseId", idObj));
         criteria.add(Restrictions.le("warehouseEventId.version", version));
         criteria.addOrder(Order.asc("warehouseEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractWarehouseStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractWarehouseEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractWarehouseStateEvent) es.get(es.size() - 1)).getWarehouseEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractWarehouseEvent) es.get(es.size() - 1)).getWarehouseEventId().getVersion());
         } else {
             //todo?
         }

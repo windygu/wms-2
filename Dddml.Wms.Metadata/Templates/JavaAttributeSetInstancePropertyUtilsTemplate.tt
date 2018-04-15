@@ -59,7 +59,7 @@ public class AttributeSetInstancePropertyUtils {
     }
 
 <#+
-		var getHashParameterTypeNames = new string[] {"AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated", "AttributeSetInstanceCommand.CreateAttributeSetInstance", "AttributeSetInstanceState"};
+		var getHashParameterTypeNames = new string[] {"AttributeSetInstanceEvent.AttributeSetInstanceStateCreated", "AttributeSetInstanceCommand.CreateAttributeSetInstance", "AttributeSetInstanceState"};
 		foreach (var pTypeName in getHashParameterTypeNames)
 		{
 #>

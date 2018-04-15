@@ -56,17 +56,17 @@ namespace Dddml.Wms.Domain.MovementConfirmation
 			}
 		}
 
-        public virtual bool StateEventReadOnly { get; set; }
+        public virtual bool EventReadOnly { get; set; }
 
         bool IMovementConfirmationStateEvent.ReadOnly
         {
             get
             {
-                return this.StateEventReadOnly;
+                return this.EventReadOnly;
             }
             set
             {
-                this.StateEventReadOnly = value;
+                this.EventReadOnly = value;
             }
         }
 
@@ -153,7 +153,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._movementConfirmationLineEvents.Values;
                 }
@@ -247,7 +247,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._movementConfirmationLineEvents.Values;
                 }
@@ -339,7 +339,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._movementConfirmationLineEvents.Values;
                 }

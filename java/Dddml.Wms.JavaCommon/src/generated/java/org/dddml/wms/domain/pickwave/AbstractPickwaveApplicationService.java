@@ -86,19 +86,19 @@ public abstract class AbstractPickwaveApplicationService implements PickwaveAppl
         return getStateQueryRepository().getCount(filter);
     }
 
-    public PickwaveStateEvent getStateEvent(Long pickwaveId, long version) {
-        PickwaveStateEvent e = (PickwaveStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(pickwaveId), version);
+    public PickwaveEvent getEvent(Long pickwaveId, long version) {
+        PickwaveEvent e = (PickwaveEvent)getEventStore().getEvent(toEventStoreAggregateId(pickwaveId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(pickwaveId, 0);
+            return getEvent(pickwaveId, 0);
         }
         return e;
     }
 
     public PickwaveState getHistoryState(Long pickwaveId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractPickwaveStateEvent.class, toEventStoreAggregateId(pickwaveId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractPickwaveEvent.class, toEventStoreAggregateId(pickwaveId), version - 1);
         return new AbstractPickwaveState.SimplePickwaveState(eventStream.getEvents());
     }
 
@@ -137,7 +137,7 @@ public abstract class AbstractPickwaveApplicationService implements PickwaveAppl
         }
     }
 
-    public void initialize(PickwaveStateEvent.PickwaveStateCreated stateCreated) {
+    public void initialize(PickwaveEvent.PickwaveStateCreated stateCreated) {
         Long aggregateId = stateCreated.getPickwaveEventId().getPickwaveId();
         PickwaveState state = new AbstractPickwaveState.SimplePickwaveState();
         state.setPickwaveId(aggregateId);
@@ -155,9 +155,9 @@ public abstract class AbstractPickwaveApplicationService implements PickwaveAppl
         if (command.getVersion() == null) { command.setVersion(PickwaveState.VERSION_NULL); }
         if (state.getVersion() != null && state.getVersion() > command.getVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractPickwaveStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractPickwaveEvent.class, eventStoreAggregateId, command.getVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

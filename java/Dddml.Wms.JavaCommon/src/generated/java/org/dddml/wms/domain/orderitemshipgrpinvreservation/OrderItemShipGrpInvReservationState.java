@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.orderitemshipgrpinvreservation.OrderItemShipGrpInvReservationStateEvent.*;
+import org.dddml.wms.domain.orderitemshipgrpinvreservation.OrderItemShipGrpInvReservationEvent.*;
 
 public interface OrderItemShipGrpInvReservationState
 {
@@ -92,11 +92,11 @@ public interface OrderItemShipGrpInvReservationState
 
     void mutate(Event e);
 
-    void when(OrderItemShipGrpInvReservationStateEvent.OrderItemShipGrpInvReservationStateCreated e);
+    void when(OrderItemShipGrpInvReservationEvent.OrderItemShipGrpInvReservationStateCreated e);
 
-    void when(OrderItemShipGrpInvReservationStateEvent.OrderItemShipGrpInvReservationStateMergePatched e);
+    void when(OrderItemShipGrpInvReservationEvent.OrderItemShipGrpInvReservationStateMergePatched e);
 
-    void when(OrderItemShipGrpInvReservationStateEvent.OrderItemShipGrpInvReservationStateDeleted e);
+    void when(OrderItemShipGrpInvReservationEvent.OrderItemShipGrpInvReservationStateDeleted e);
     
 }
 

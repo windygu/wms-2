@@ -22,20 +22,20 @@ public class HibernateInventoryItemEntryMvoEventStore extends AbstractHibernateE
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractInventoryItemEntryMvoStateEvent.class;
+        return AbstractInventoryItemEntryMvoEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractInventoryItemEntryMvoStateEvent.class;
+        Class supportedEventType = AbstractInventoryItemEntryMvoEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         InventoryItemEntryId idObj = (InventoryItemEntryId) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractInventoryItemEntryMvoStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractInventoryItemEntryMvoEvent.class);
         criteria.add(Restrictions.eq("inventoryItemEntryMvoEventId.inventoryItemEntryIdInventoryItemIdProductId", idObj.getInventoryItemId().getProductId()));
         criteria.add(Restrictions.eq("inventoryItemEntryMvoEventId.inventoryItemEntryIdInventoryItemIdLocatorId", idObj.getInventoryItemId().getLocatorId()));
         criteria.add(Restrictions.eq("inventoryItemEntryMvoEventId.inventoryItemEntryIdInventoryItemIdAttributeSetInstanceId", idObj.getInventoryItemId().getAttributeSetInstanceId()));
@@ -44,11 +44,11 @@ public class HibernateInventoryItemEntryMvoEventStore extends AbstractHibernateE
         criteria.addOrder(Order.asc("inventoryItemEntryMvoEventId.inventoryItemVersion"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractInventoryItemEntryMvoStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractInventoryItemEntryMvoEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractInventoryItemEntryMvoStateEvent) es.get(es.size() - 1)).getInventoryItemEntryMvoEventId().getInventoryItemVersion());
+            eventStream.setSteamVersion(((AbstractInventoryItemEntryMvoEvent) es.get(es.size() - 1)).getInventoryItemEntryMvoEventId().getInventoryItemVersion());
         } else {
             //todo?
         }

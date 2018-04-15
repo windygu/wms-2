@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.partyrole.PartyRoleStateEvent.*;
+import org.dddml.wms.domain.partyrole.PartyRoleEvent.*;
 
 public interface PartyRoleState
 {
@@ -52,11 +52,11 @@ public interface PartyRoleState
 
     void mutate(Event e);
 
-    void when(PartyRoleStateEvent.PartyRoleStateCreated e);
+    void when(PartyRoleEvent.PartyRoleStateCreated e);
 
-    void when(PartyRoleStateEvent.PartyRoleStateMergePatched e);
+    void when(PartyRoleEvent.PartyRoleStateMergePatched e);
 
-    void when(PartyRoleStateEvent.PartyRoleStateDeleted e);
+    void when(PartyRoleEvent.PartyRoleStateDeleted e);
     
 }
 

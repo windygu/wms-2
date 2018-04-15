@@ -3,9 +3,9 @@ package org.dddml.wms.domain.movement;
 import java.util.Date;
 import java.math.BigDecimal;
 import org.dddml.wms.domain.*;
-import org.dddml.wms.domain.AbstractStateEvent;
+import org.dddml.wms.domain.AbstractEvent;
 
-public class MovementStateEventDto extends AbstractStateEvent
+public class MovementStateEventDto extends AbstractEvent
 {
 
     private MovementEventId movementEventId;
@@ -490,7 +490,7 @@ public class MovementStateEventDto extends AbstractStateEvent
 	public static class MovementStateCreatedDto extends MovementStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_CREATED;
         }
@@ -501,7 +501,7 @@ public class MovementStateEventDto extends AbstractStateEvent
 	public static class MovementStateMergePatchedDto extends MovementStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_MERGE_PATCHED;
         }
@@ -512,7 +512,7 @@ public class MovementStateEventDto extends AbstractStateEvent
 	public static class MovementStateDeletedDto extends MovementStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_DELETED;
         }

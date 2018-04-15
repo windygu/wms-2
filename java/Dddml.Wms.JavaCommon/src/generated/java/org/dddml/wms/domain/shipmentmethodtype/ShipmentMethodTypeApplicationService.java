@@ -30,7 +30,7 @@ public interface ShipmentMethodTypeApplicationService
 
     long getCount(Criterion filter);
 
-    ShipmentMethodTypeStateEvent getStateEvent(String shipmentMethodTypeId, long version);
+    ShipmentMethodTypeEvent getEvent(String shipmentMethodTypeId, long version);
 
     ShipmentMethodTypeState getHistoryState(String shipmentMethodTypeId, long version);
 

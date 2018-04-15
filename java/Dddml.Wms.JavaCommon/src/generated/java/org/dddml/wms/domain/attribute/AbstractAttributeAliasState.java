@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.attribute.AttributeAliasStateEvent.*;
+import org.dddml.wms.domain.attribute.AttributeAliasEvent.*;
 
 public abstract class AbstractAttributeAliasState implements AttributeAliasState
 {
@@ -240,7 +240,7 @@ public abstract class AbstractAttributeAliasState implements AttributeAliasState
     {
     }
 
-    protected void throwOnWrongEvent(AttributeAliasStateEvent stateEvent)
+    protected void throwOnWrongEvent(AttributeAliasEvent stateEvent)
     {
         String stateEntityIdAttributeId = this.getAttributeAliasId().getAttributeId();
         String eventEntityIdAttributeId = stateEvent.getAttributeAliasEventId().getAttributeId();

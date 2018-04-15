@@ -22,31 +22,31 @@ public class HibernateInOutLineMvoEventStore extends AbstractHibernateEventStore
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractInOutLineMvoStateEvent.class;
+        return AbstractInOutLineMvoEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractInOutLineMvoStateEvent.class;
+        Class supportedEventType = AbstractInOutLineMvoEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         InOutLineId idObj = (InOutLineId) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractInOutLineMvoStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractInOutLineMvoEvent.class);
         criteria.add(Restrictions.eq("inOutLineMvoEventId.inOutLineIdInOutDocumentNumber", idObj.getInOutDocumentNumber()));
         criteria.add(Restrictions.eq("inOutLineMvoEventId.inOutLineIdLineNumber", idObj.getLineNumber()));
         criteria.add(Restrictions.le("inOutLineMvoEventId.inOutVersion", version));
         criteria.addOrder(Order.asc("inOutLineMvoEventId.inOutVersion"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractInOutLineMvoStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractInOutLineMvoEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractInOutLineMvoStateEvent) es.get(es.size() - 1)).getInOutLineMvoEventId().getInOutVersion());
+            eventStream.setSteamVersion(((AbstractInOutLineMvoEvent) es.get(es.size() - 1)).getInOutLineMvoEventId().getInOutVersion());
         } else {
             //todo?
         }

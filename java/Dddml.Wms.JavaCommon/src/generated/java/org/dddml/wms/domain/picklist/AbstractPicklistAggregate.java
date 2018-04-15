@@ -28,19 +28,19 @@ public abstract class AbstractPicklistAggregate extends AbstractAggregate implem
     public void create(PicklistCommand.CreatePicklist c)
     {
         if (c.getVersion() == null) { c.setVersion(PicklistState.VERSION_NULL); }
-        PicklistStateEvent e = map(c);
+        PicklistEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(PicklistCommand.MergePatchPicklist c)
     {
-        PicklistStateEvent e = map(c);
+        PicklistEvent e = map(c);
         apply(e);
     }
 
     public void delete(PicklistCommand.DeletePicklist c)
     {
-        PicklistStateEvent e = map(c);
+        PicklistEvent e = map(c);
         apply(e);
     }
 
@@ -55,9 +55,9 @@ public abstract class AbstractPicklistAggregate extends AbstractAggregate implem
         changes.add(e);
     }
 
-    protected PicklistStateEvent map(PicklistCommand.CreatePicklist c) {
+    protected PicklistEvent map(PicklistCommand.CreatePicklist c) {
         PicklistEventId stateEventId = new PicklistEventId(c.getPicklistId(), c.getVersion());
-        PicklistStateEvent.PicklistStateCreated e = newPicklistStateCreated(stateEventId);
+        PicklistEvent.PicklistStateCreated e = newPicklistStateCreated(stateEventId);
         e.setDescription(c.getDescription());
         e.setFacilityId(c.getFacilityId());
         e.setShipmentMethodTypeId(c.getShipmentMethodTypeId());
@@ -65,23 +65,23 @@ public abstract class AbstractPicklistAggregate extends AbstractAggregate implem
         e.setPicklistDate(c.getPicklistDate());
         e.setPickwaveId(c.getPickwaveId());
         e.setActive(c.getActive());
-        ((AbstractPicklistStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractPicklistEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         Long version = c.getVersion();
         for (PicklistRoleCommand.CreatePicklistRole innerCommand : c.getPicklistRoles())
         {
             throwOnInconsistentCommands(c, innerCommand);
-            PicklistRoleStateEvent.PicklistRoleStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);
+            PicklistRoleEvent.PicklistRoleStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);
             e.addPicklistRoleEvent(innerEvent);
         }
 
         return e;
     }
 
-    protected PicklistStateEvent map(PicklistCommand.MergePatchPicklist c) {
+    protected PicklistEvent map(PicklistCommand.MergePatchPicklist c) {
         PicklistEventId stateEventId = new PicklistEventId(c.getPicklistId(), c.getVersion());
-        PicklistStateEvent.PicklistStateMergePatched e = newPicklistStateMergePatched(stateEventId);
+        PicklistEvent.PicklistStateMergePatched e = newPicklistStateMergePatched(stateEventId);
         e.setDescription(c.getDescription());
         e.setFacilityId(c.getFacilityId());
         e.setShipmentMethodTypeId(c.getShipmentMethodTypeId());
@@ -96,31 +96,31 @@ public abstract class AbstractPicklistAggregate extends AbstractAggregate implem
         e.setIsPropertyPicklistDateRemoved(c.getIsPropertyPicklistDateRemoved());
         e.setIsPropertyPickwaveIdRemoved(c.getIsPropertyPickwaveIdRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
-        ((AbstractPicklistStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractPicklistEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         Long version = c.getVersion();
         for (PicklistRoleCommand innerCommand : c.getPicklistRoleCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
-            PicklistRoleStateEvent innerEvent = map(innerCommand, c, version, this.state);
+            PicklistRoleEvent innerEvent = map(innerCommand, c, version, this.state);
             e.addPicklistRoleEvent(innerEvent);
         }
 
         return e;
     }
 
-    protected PicklistStateEvent map(PicklistCommand.DeletePicklist c) {
+    protected PicklistEvent map(PicklistCommand.DeletePicklist c) {
         PicklistEventId stateEventId = new PicklistEventId(c.getPicklistId(), c.getVersion());
-        PicklistStateEvent.PicklistStateDeleted e = newPicklistStateDeleted(stateEventId);
-        ((AbstractPicklistStateEvent)e).setCommandId(c.getCommandId());
+        PicklistEvent.PicklistStateDeleted e = newPicklistStateDeleted(stateEventId);
+        ((AbstractPicklistEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
 
-    protected PicklistRoleStateEvent map(PicklistRoleCommand c, PicklistCommand outerCommand, long version, PicklistState outerState)
+    protected PicklistRoleEvent map(PicklistRoleCommand c, PicklistCommand outerCommand, Long version, PicklistState outerState)
     {
         PicklistRoleCommand.CreatePicklistRole create = (c.getCommandType().equals(CommandType.CREATE)) ? ((PicklistRoleCommand.CreatePicklistRole)c) : null;
         if(create != null)
@@ -142,11 +142,11 @@ public abstract class AbstractPicklistAggregate extends AbstractAggregate implem
         throw new UnsupportedOperationException();
     }
 
-    protected PicklistRoleStateEvent.PicklistRoleStateCreated mapCreate(PicklistRoleCommand.CreatePicklistRole c, PicklistCommand outerCommand, Long version, PicklistState outerState)
+    protected PicklistRoleEvent.PicklistRoleStateCreated mapCreate(PicklistRoleCommand.CreatePicklistRole c, PicklistCommand outerCommand, Long version, PicklistState outerState)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
         PicklistRoleEventId stateEventId = new PicklistRoleEventId(c.getPicklistId(), c.getPartyRoleId(), version);
-        PicklistRoleStateEvent.PicklistRoleStateCreated e = newPicklistRoleStateCreated(stateEventId);
+        PicklistRoleEvent.PicklistRoleStateCreated e = newPicklistRoleStateCreated(stateEventId);
         PicklistRoleState s = outerState.getPicklistRoles().get(c.getPartyRoleId());
 
         e.setActive(c.getActive());
@@ -156,11 +156,11 @@ public abstract class AbstractPicklistAggregate extends AbstractAggregate implem
 
     }// END map(ICreate... ////////////////////////////
 
-    protected PicklistRoleStateEvent.PicklistRoleStateMergePatched mapMergePatch(PicklistRoleCommand.MergePatchPicklistRole c, PicklistCommand outerCommand, Long version, PicklistState outerState)
+    protected PicklistRoleEvent.PicklistRoleStateMergePatched mapMergePatch(PicklistRoleCommand.MergePatchPicklistRole c, PicklistCommand outerCommand, Long version, PicklistState outerState)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
         PicklistRoleEventId stateEventId = new PicklistRoleEventId(c.getPicklistId(), c.getPartyRoleId(), version);
-        PicklistRoleStateEvent.PicklistRoleStateMergePatched e = newPicklistRoleStateMergePatched(stateEventId);
+        PicklistRoleEvent.PicklistRoleStateMergePatched e = newPicklistRoleStateMergePatched(stateEventId);
         PicklistRoleState s = outerState.getPicklistRoles().get(c.getPartyRoleId());
 
         e.setActive(c.getActive());
@@ -171,11 +171,11 @@ public abstract class AbstractPicklistAggregate extends AbstractAggregate implem
 
     }// END map(IMergePatch... ////////////////////////////
 
-    protected PicklistRoleStateEvent.PicklistRoleStateRemoved mapRemove(PicklistRoleCommand.RemovePicklistRole c, PicklistCommand outerCommand, Long version)
+    protected PicklistRoleEvent.PicklistRoleStateRemoved mapRemove(PicklistRoleCommand.RemovePicklistRole c, PicklistCommand outerCommand, Long version)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
         PicklistRoleEventId stateEventId = new PicklistRoleEventId(c.getPicklistId(), c.getPartyRoleId(), version);
-        PicklistRoleStateEvent.PicklistRoleStateRemoved e = newPicklistRoleStateRemoved(stateEventId);
+        PicklistRoleEvent.PicklistRoleStateRemoved e = newPicklistRoleStateRemoved(stateEventId);
 
         e.setCreatedByUserLogin(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
@@ -206,57 +206,57 @@ public abstract class AbstractPicklistAggregate extends AbstractAggregate implem
 
     ////////////////////////
 
-    protected PicklistStateEvent.PicklistStateCreated newPicklistStateCreated(Long version, String commandId, String requesterId) {
+    protected PicklistEvent.PicklistStateCreated newPicklistStateCreated(Long version, String commandId, String requesterId) {
         PicklistEventId stateEventId = new PicklistEventId(this.state.getPicklistId(), version);
-        PicklistStateEvent.PicklistStateCreated e = newPicklistStateCreated(stateEventId);
-        ((AbstractPicklistStateEvent)e).setCommandId(commandId);
+        PicklistEvent.PicklistStateCreated e = newPicklistStateCreated(stateEventId);
+        ((AbstractPicklistEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected PicklistStateEvent.PicklistStateMergePatched newPicklistStateMergePatched(Long version, String commandId, String requesterId) {
+    protected PicklistEvent.PicklistStateMergePatched newPicklistStateMergePatched(Long version, String commandId, String requesterId) {
         PicklistEventId stateEventId = new PicklistEventId(this.state.getPicklistId(), version);
-        PicklistStateEvent.PicklistStateMergePatched e = newPicklistStateMergePatched(stateEventId);
-        ((AbstractPicklistStateEvent)e).setCommandId(commandId);
+        PicklistEvent.PicklistStateMergePatched e = newPicklistStateMergePatched(stateEventId);
+        ((AbstractPicklistEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected PicklistStateEvent.PicklistStateDeleted newPicklistStateDeleted(Long version, String commandId, String requesterId) {
+    protected PicklistEvent.PicklistStateDeleted newPicklistStateDeleted(Long version, String commandId, String requesterId) {
         PicklistEventId stateEventId = new PicklistEventId(this.state.getPicklistId(), version);
-        PicklistStateEvent.PicklistStateDeleted e = newPicklistStateDeleted(stateEventId);
-        ((AbstractPicklistStateEvent)e).setCommandId(commandId);
+        PicklistEvent.PicklistStateDeleted e = newPicklistStateDeleted(stateEventId);
+        ((AbstractPicklistEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected PicklistStateEvent.PicklistStateCreated newPicklistStateCreated(PicklistEventId stateEventId) {
-        return new AbstractPicklistStateEvent.SimplePicklistStateCreated(stateEventId);
+    protected PicklistEvent.PicklistStateCreated newPicklistStateCreated(PicklistEventId stateEventId) {
+        return new AbstractPicklistEvent.SimplePicklistStateCreated(stateEventId);
     }
 
-    protected PicklistStateEvent.PicklistStateMergePatched newPicklistStateMergePatched(PicklistEventId stateEventId) {
-        return new AbstractPicklistStateEvent.SimplePicklistStateMergePatched(stateEventId);
+    protected PicklistEvent.PicklistStateMergePatched newPicklistStateMergePatched(PicklistEventId stateEventId) {
+        return new AbstractPicklistEvent.SimplePicklistStateMergePatched(stateEventId);
     }
 
-    protected PicklistStateEvent.PicklistStateDeleted newPicklistStateDeleted(PicklistEventId stateEventId)
+    protected PicklistEvent.PicklistStateDeleted newPicklistStateDeleted(PicklistEventId stateEventId)
     {
-        return new AbstractPicklistStateEvent.SimplePicklistStateDeleted(stateEventId);
+        return new AbstractPicklistEvent.SimplePicklistStateDeleted(stateEventId);
     }
 
-    protected PicklistRoleStateEvent.PicklistRoleStateCreated newPicklistRoleStateCreated(PicklistRoleEventId stateEventId) {
-        return new AbstractPicklistRoleStateEvent.SimplePicklistRoleStateCreated(stateEventId);
+    protected PicklistRoleEvent.PicklistRoleStateCreated newPicklistRoleStateCreated(PicklistRoleEventId stateEventId) {
+        return new AbstractPicklistRoleEvent.SimplePicklistRoleStateCreated(stateEventId);
     }
 
-    protected PicklistRoleStateEvent.PicklistRoleStateMergePatched newPicklistRoleStateMergePatched(PicklistRoleEventId stateEventId) {
-        return new AbstractPicklistRoleStateEvent.SimplePicklistRoleStateMergePatched(stateEventId);
+    protected PicklistRoleEvent.PicklistRoleStateMergePatched newPicklistRoleStateMergePatched(PicklistRoleEventId stateEventId) {
+        return new AbstractPicklistRoleEvent.SimplePicklistRoleStateMergePatched(stateEventId);
     }
 
-    protected PicklistRoleStateEvent.PicklistRoleStateRemoved newPicklistRoleStateRemoved(PicklistRoleEventId stateEventId)
+    protected PicklistRoleEvent.PicklistRoleStateRemoved newPicklistRoleStateRemoved(PicklistRoleEventId stateEventId)
     {
-        return new AbstractPicklistRoleStateEvent.SimplePicklistRoleStateRemoved(stateEventId);
+        return new AbstractPicklistRoleEvent.SimplePicklistRoleStateRemoved(stateEventId);
     }
 
     public static class SimplePicklistAggregate extends AbstractPicklistAggregate

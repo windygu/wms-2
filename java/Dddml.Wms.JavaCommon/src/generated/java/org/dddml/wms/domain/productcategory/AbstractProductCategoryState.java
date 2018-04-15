@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.productcategory.ProductCategoryStateEvent.*;
+import org.dddml.wms.domain.productcategory.ProductCategoryEvent.*;
 
 public abstract class AbstractProductCategoryState implements ProductCategoryState
 {
@@ -225,7 +225,7 @@ public abstract class AbstractProductCategoryState implements ProductCategorySta
     public AbstractProductCategoryState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setProductCategoryId(((ProductCategoryStateEvent) events.get(0)).getProductCategoryEventId().getProductCategoryId());
+            this.setProductCategoryId(((ProductCategoryEvent) events.get(0)).getProductCategoryEventId().getProductCategoryId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -405,10 +405,10 @@ public abstract class AbstractProductCategoryState implements ProductCategorySta
     {
     }
 
-    protected void throwOnWrongEvent(ProductCategoryStateEvent stateEvent)
+    protected void throwOnWrongEvent(ProductCategoryEvent stateEvent)
     {
         String stateEntityId = this.getProductCategoryId(); // Aggregate Id
-        String eventEntityId = stateEvent.getProductCategoryEventId().getProductCategoryId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        String eventEntityId = stateEvent.getProductCategoryEventId().getProductCategoryId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

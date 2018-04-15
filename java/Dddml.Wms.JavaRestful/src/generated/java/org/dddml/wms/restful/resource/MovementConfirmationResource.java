@@ -199,7 +199,7 @@ public class MovementConfirmationResource {
 
             String idObj = id;
             MovementConfirmationStateEventDtoConverter dtoConverter = getMovementConfirmationStateEventDtoConverter();
-            return dtoConverter.toMovementConfirmationStateEventDto((AbstractMovementConfirmationStateEvent) movementConfirmationApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toMovementConfirmationStateEventDto((AbstractMovementConfirmationEvent) movementConfirmationApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

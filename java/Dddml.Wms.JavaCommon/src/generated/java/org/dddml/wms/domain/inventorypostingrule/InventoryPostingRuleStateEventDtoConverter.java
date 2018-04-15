@@ -8,22 +8,22 @@ import org.dddml.wms.specialization.*;
 
 public class InventoryPostingRuleStateEventDtoConverter {
 
-    public InventoryPostingRuleStateEventDto toInventoryPostingRuleStateEventDto(AbstractInventoryPostingRuleStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractInventoryPostingRuleStateEvent.AbstractInventoryPostingRuleStateCreated) {
-            InventoryPostingRuleStateEvent.InventoryPostingRuleStateCreated e = (InventoryPostingRuleStateEvent.InventoryPostingRuleStateCreated) stateEvent;
+    public InventoryPostingRuleStateEventDto toInventoryPostingRuleStateEventDto(AbstractInventoryPostingRuleEvent stateEvent) {
+        if (stateEvent instanceof AbstractInventoryPostingRuleEvent.AbstractInventoryPostingRuleStateCreated) {
+            InventoryPostingRuleEvent.InventoryPostingRuleStateCreated e = (InventoryPostingRuleEvent.InventoryPostingRuleStateCreated) stateEvent;
             return toInventoryPostingRuleStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractInventoryPostingRuleStateEvent.AbstractInventoryPostingRuleStateMergePatched) {
-            InventoryPostingRuleStateEvent.InventoryPostingRuleStateMergePatched e = (InventoryPostingRuleStateEvent.InventoryPostingRuleStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractInventoryPostingRuleEvent.AbstractInventoryPostingRuleStateMergePatched) {
+            InventoryPostingRuleEvent.InventoryPostingRuleStateMergePatched e = (InventoryPostingRuleEvent.InventoryPostingRuleStateMergePatched) stateEvent;
             return toInventoryPostingRuleStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractInventoryPostingRuleStateEvent.AbstractInventoryPostingRuleStateDeleted) {
-            InventoryPostingRuleStateEvent.InventoryPostingRuleStateDeleted e = (InventoryPostingRuleStateEvent.InventoryPostingRuleStateDeleted) stateEvent;
+        } else if (stateEvent instanceof AbstractInventoryPostingRuleEvent.AbstractInventoryPostingRuleStateDeleted) {
+            InventoryPostingRuleEvent.InventoryPostingRuleStateDeleted e = (InventoryPostingRuleEvent.InventoryPostingRuleStateDeleted) stateEvent;
             return toInventoryPostingRuleStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public InventoryPostingRuleStateEventDto.InventoryPostingRuleStateCreatedDto toInventoryPostingRuleStateCreatedDto(InventoryPostingRuleStateEvent.InventoryPostingRuleStateCreated e) {
+    public InventoryPostingRuleStateEventDto.InventoryPostingRuleStateCreatedDto toInventoryPostingRuleStateCreatedDto(InventoryPostingRuleEvent.InventoryPostingRuleStateCreated e) {
         InventoryPostingRuleStateEventDto.InventoryPostingRuleStateCreatedDto dto = new InventoryPostingRuleStateEventDto.InventoryPostingRuleStateCreatedDto();
         dto.setInventoryPostingRuleEventId(e.getInventoryPostingRuleEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -38,7 +38,7 @@ public class InventoryPostingRuleStateEventDtoConverter {
         return dto;
     }
 
-    public InventoryPostingRuleStateEventDto.InventoryPostingRuleStateMergePatchedDto toInventoryPostingRuleStateMergePatchedDto(InventoryPostingRuleStateEvent.InventoryPostingRuleStateMergePatched e) {
+    public InventoryPostingRuleStateEventDto.InventoryPostingRuleStateMergePatchedDto toInventoryPostingRuleStateMergePatchedDto(InventoryPostingRuleEvent.InventoryPostingRuleStateMergePatched e) {
         InventoryPostingRuleStateEventDto.InventoryPostingRuleStateMergePatchedDto dto = new InventoryPostingRuleStateEventDto.InventoryPostingRuleStateMergePatchedDto();
         dto.setInventoryPostingRuleEventId(e.getInventoryPostingRuleEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -60,7 +60,7 @@ public class InventoryPostingRuleStateEventDtoConverter {
     }
 
 
-    public InventoryPostingRuleStateEventDto.InventoryPostingRuleStateDeletedDto toInventoryPostingRuleStateDeletedDto(InventoryPostingRuleStateEvent.InventoryPostingRuleStateDeleted e) {
+    public InventoryPostingRuleStateEventDto.InventoryPostingRuleStateDeletedDto toInventoryPostingRuleStateDeletedDto(InventoryPostingRuleEvent.InventoryPostingRuleStateDeleted e) {
         InventoryPostingRuleStateEventDto.InventoryPostingRuleStateDeletedDto dto = new InventoryPostingRuleStateEventDto.InventoryPostingRuleStateDeletedDto();
         dto.setInventoryPostingRuleEventId(e.getInventoryPostingRuleEventId());
         dto.setCreatedAt(e.getCreatedAt());

@@ -181,7 +181,7 @@ public class AttributeSetResource {
 
             String idObj = id;
             AttributeSetStateEventDtoConverter dtoConverter = getAttributeSetStateEventDtoConverter();
-            return dtoConverter.toAttributeSetStateEventDto((AbstractAttributeSetStateEvent) attributeSetApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toAttributeSetStateEventDto((AbstractAttributeSetEvent) attributeSetApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

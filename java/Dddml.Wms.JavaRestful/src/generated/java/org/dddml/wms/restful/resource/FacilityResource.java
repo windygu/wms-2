@@ -181,7 +181,7 @@ public class FacilityResource {
 
             String idObj = id;
             FacilityStateEventDtoConverter dtoConverter = getFacilityStateEventDtoConverter();
-            return dtoConverter.toFacilityStateEventDto((AbstractFacilityStateEvent) facilityApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toFacilityStateEventDto((AbstractFacilityEvent) facilityApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

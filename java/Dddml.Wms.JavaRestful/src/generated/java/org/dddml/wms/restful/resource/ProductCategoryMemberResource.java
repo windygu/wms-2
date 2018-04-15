@@ -163,7 +163,7 @@ public class ProductCategoryMemberResource {
 
             ProductCategoryMemberId idObj = ProductCategoryMemberResourceUtils.parseIdString(id);
             ProductCategoryMemberStateEventDtoConverter dtoConverter = getProductCategoryMemberStateEventDtoConverter();
-            return dtoConverter.toProductCategoryMemberStateEventDto((AbstractProductCategoryMemberStateEvent) productCategoryMemberApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toProductCategoryMemberStateEventDto((AbstractProductCategoryMemberEvent) productCategoryMemberApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

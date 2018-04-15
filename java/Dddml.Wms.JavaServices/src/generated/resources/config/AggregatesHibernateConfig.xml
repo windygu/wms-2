@@ -11,7 +11,7 @@
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="attributeValueStateEventDao" class="org.dddml.wms.domain.attribute.hibernate.HibernateAttributeValueStateEventDao">
+  <bean id="attributeValueEventDao" class="org.dddml.wms.domain.attribute.hibernate.HibernateAttributeValueEventDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
@@ -20,7 +20,7 @@
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="attributeAliasStateEventDao" class="org.dddml.wms.domain.attribute.hibernate.HibernateAttributeAliasStateEventDao">
+  <bean id="attributeAliasEventDao" class="org.dddml.wms.domain.attribute.hibernate.HibernateAttributeAliasEventDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
@@ -50,7 +50,7 @@
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="attributeUseStateEventDao" class="org.dddml.wms.domain.attributeset.hibernate.HibernateAttributeUseStateEventDao">
+  <bean id="attributeUseEventDao" class="org.dddml.wms.domain.attributeset.hibernate.HibernateAttributeUseEventDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
@@ -191,7 +191,7 @@
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="inOutLineStateEventDao" class="org.dddml.wms.domain.inout.hibernate.HibernateInOutLineStateEventDao">
+  <bean id="inOutLineEventDao" class="org.dddml.wms.domain.inout.hibernate.HibernateInOutLineEventDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
@@ -221,7 +221,7 @@
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="inventoryItemEntryStateEventDao" class="org.dddml.wms.domain.inventoryitem.hibernate.HibernateInventoryItemEntryStateEventDao">
+  <bean id="inventoryItemEntryEventDao" class="org.dddml.wms.domain.inventoryitem.hibernate.HibernateInventoryItemEntryEventDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
@@ -373,7 +373,7 @@
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="movementLineStateEventDao" class="org.dddml.wms.domain.movement.hibernate.HibernateMovementLineStateEventDao">
+  <bean id="movementLineEventDao" class="org.dddml.wms.domain.movement.hibernate.HibernateMovementLineEventDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
@@ -403,7 +403,7 @@
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="movementConfirmationLineStateEventDao" class="org.dddml.wms.domain.movementconfirmation.hibernate.HibernateMovementConfirmationLineStateEventDao">
+  <bean id="movementConfirmationLineEventDao" class="org.dddml.wms.domain.movementconfirmation.hibernate.HibernateMovementConfirmationLineEventDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
@@ -449,7 +449,7 @@
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="orderRoleStateEventDao" class="org.dddml.wms.domain.order.hibernate.HibernateOrderRoleStateEventDao">
+  <bean id="orderRoleEventDao" class="org.dddml.wms.domain.order.hibernate.HibernateOrderRoleEventDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
@@ -458,7 +458,7 @@
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="orderItemStateEventDao" class="org.dddml.wms.domain.order.hibernate.HibernateOrderItemStateEventDao">
+  <bean id="orderItemEventDao" class="org.dddml.wms.domain.order.hibernate.HibernateOrderItemEventDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
@@ -467,7 +467,7 @@
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="orderShipGroupStateEventDao" class="org.dddml.wms.domain.order.hibernate.HibernateOrderShipGroupStateEventDao">
+  <bean id="orderShipGroupEventDao" class="org.dddml.wms.domain.order.hibernate.HibernateOrderShipGroupEventDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
@@ -476,7 +476,7 @@
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="orderItemShipGroupAssociationStateEventDao" class="org.dddml.wms.domain.order.hibernate.HibernateOrderItemShipGroupAssociationStateEventDao">
+  <bean id="orderItemShipGroupAssociationEventDao" class="org.dddml.wms.domain.order.hibernate.HibernateOrderItemShipGroupAssociationEventDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
@@ -637,7 +637,7 @@
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="physicalInventoryLineStateEventDao" class="org.dddml.wms.domain.physicalinventory.hibernate.HibernatePhysicalInventoryLineStateEventDao">
+  <bean id="physicalInventoryLineEventDao" class="org.dddml.wms.domain.physicalinventory.hibernate.HibernatePhysicalInventoryLineEventDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
@@ -667,7 +667,7 @@
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="picklistRoleStateEventDao" class="org.dddml.wms.domain.picklist.hibernate.HibernatePicklistRoleStateEventDao">
+  <bean id="picklistRoleEventDao" class="org.dddml.wms.domain.picklist.hibernate.HibernatePicklistRoleEventDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
@@ -697,7 +697,7 @@
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="picklistItemStateEventDao" class="org.dddml.wms.domain.picklistbin.hibernate.HibernatePicklistItemStateEventDao">
+  <bean id="picklistItemEventDao" class="org.dddml.wms.domain.picklistbin.hibernate.HibernatePicklistItemEventDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
@@ -874,7 +874,7 @@
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="shipmentItemStateEventDao" class="org.dddml.wms.domain.shipment.hibernate.HibernateShipmentItemStateEventDao">
+  <bean id="shipmentItemEventDao" class="org.dddml.wms.domain.shipment.hibernate.HibernateShipmentItemEventDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
@@ -883,7 +883,7 @@
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="shipmentReceiptStateEventDao" class="org.dddml.wms.domain.shipment.hibernate.HibernateShipmentReceiptStateEventDao">
+  <bean id="shipmentReceiptEventDao" class="org.dddml.wms.domain.shipment.hibernate.HibernateShipmentReceiptEventDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
@@ -892,7 +892,7 @@
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="itemIssuanceStateEventDao" class="org.dddml.wms.domain.shipment.hibernate.HibernateItemIssuanceStateEventDao">
+  <bean id="itemIssuanceEventDao" class="org.dddml.wms.domain.shipment.hibernate.HibernateItemIssuanceEventDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 
@@ -943,7 +943,7 @@
     <property name="readOnlyProxyGenerator" ref="stateReadOnlyProxyGenerator"/>
   </bean>
 
-  <bean id="shipmentPackageContentStateEventDao" class="org.dddml.wms.domain.shipmentpackage.hibernate.HibernateShipmentPackageContentStateEventDao">
+  <bean id="shipmentPackageContentEventDao" class="org.dddml.wms.domain.shipmentpackage.hibernate.HibernateShipmentPackageContentEventDao">
     <property name="sessionFactory" ref="hibernateSessionFactory"/>
   </bean>
 

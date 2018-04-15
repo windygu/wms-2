@@ -5,7 +5,7 @@ import org.dddml.wms.domain.attribute.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.attributealiasmvo.AttributeAliasMvoStateEvent.*;
+import org.dddml.wms.domain.attributealiasmvo.AttributeAliasMvoEvent.*;
 
 public abstract class AbstractAttributeAliasMvoState implements AttributeAliasMvoState
 {
@@ -334,7 +334,7 @@ public abstract class AbstractAttributeAliasMvoState implements AttributeAliasMv
     public AbstractAttributeAliasMvoState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setAttributeAliasId(((AttributeAliasMvoStateEvent) events.get(0)).getAttributeAliasMvoEventId().getAttributeAliasId());
+            this.setAttributeAliasId(((AttributeAliasMvoEvent) events.get(0)).getAttributeAliasMvoEventId().getAttributeAliasId());
             for (Event e : events) {
                 mutate(e);
                 this.setAttributeVersion(this.getAttributeVersion() + 1);
@@ -622,10 +622,10 @@ public abstract class AbstractAttributeAliasMvoState implements AttributeAliasMv
     {
     }
 
-    protected void throwOnWrongEvent(AttributeAliasMvoStateEvent stateEvent)
+    protected void throwOnWrongEvent(AttributeAliasMvoEvent stateEvent)
     {
         AttributeAliasId stateEntityId = this.getAttributeAliasId(); // Aggregate Id
-        AttributeAliasId eventEntityId = stateEvent.getAttributeAliasMvoEventId().getAttributeAliasId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        AttributeAliasId eventEntityId = stateEvent.getAttributeAliasMvoEventId().getAttributeAliasId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

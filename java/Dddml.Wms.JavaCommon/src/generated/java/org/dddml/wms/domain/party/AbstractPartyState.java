@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.party.PartyStateEvent.*;
+import org.dddml.wms.domain.party.PartyEvent.*;
 
 public abstract class AbstractPartyState implements PartyState
 {
@@ -153,7 +153,7 @@ public abstract class AbstractPartyState implements PartyState
     public AbstractPartyState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setPartyId(((PartyStateEvent) events.get(0)).getPartyEventId().getPartyId());
+            this.setPartyId(((PartyEvent) events.get(0)).getPartyEventId().getPartyId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -261,10 +261,10 @@ public abstract class AbstractPartyState implements PartyState
     {
     }
 
-    protected void throwOnWrongEvent(PartyStateEvent stateEvent)
+    protected void throwOnWrongEvent(PartyEvent stateEvent)
     {
         String stateEntityId = this.getPartyId(); // Aggregate Id
-        String eventEntityId = stateEvent.getPartyEventId().getPartyId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        String eventEntityId = stateEvent.getPartyEventId().getPartyId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

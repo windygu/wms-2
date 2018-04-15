@@ -7,22 +7,22 @@ import org.dddml.wms.specialization.*;
 
 public class PickwaveStateEventDtoConverter {
 
-    public PickwaveStateEventDto toPickwaveStateEventDto(AbstractPickwaveStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractPickwaveStateEvent.AbstractPickwaveStateCreated) {
-            PickwaveStateEvent.PickwaveStateCreated e = (PickwaveStateEvent.PickwaveStateCreated) stateEvent;
+    public PickwaveStateEventDto toPickwaveStateEventDto(AbstractPickwaveEvent stateEvent) {
+        if (stateEvent instanceof AbstractPickwaveEvent.AbstractPickwaveStateCreated) {
+            PickwaveEvent.PickwaveStateCreated e = (PickwaveEvent.PickwaveStateCreated) stateEvent;
             return toPickwaveStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractPickwaveStateEvent.AbstractPickwaveStateMergePatched) {
-            PickwaveStateEvent.PickwaveStateMergePatched e = (PickwaveStateEvent.PickwaveStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractPickwaveEvent.AbstractPickwaveStateMergePatched) {
+            PickwaveEvent.PickwaveStateMergePatched e = (PickwaveEvent.PickwaveStateMergePatched) stateEvent;
             return toPickwaveStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractPickwaveStateEvent.AbstractPickwaveStateDeleted) {
-            PickwaveStateEvent.PickwaveStateDeleted e = (PickwaveStateEvent.PickwaveStateDeleted) stateEvent;
+        } else if (stateEvent instanceof AbstractPickwaveEvent.AbstractPickwaveStateDeleted) {
+            PickwaveEvent.PickwaveStateDeleted e = (PickwaveEvent.PickwaveStateDeleted) stateEvent;
             return toPickwaveStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public PickwaveStateEventDto.PickwaveStateCreatedDto toPickwaveStateCreatedDto(PickwaveStateEvent.PickwaveStateCreated e) {
+    public PickwaveStateEventDto.PickwaveStateCreatedDto toPickwaveStateCreatedDto(PickwaveEvent.PickwaveStateCreated e) {
         PickwaveStateEventDto.PickwaveStateCreatedDto dto = new PickwaveStateEventDto.PickwaveStateCreatedDto();
         dto.setPickwaveEventId(e.getPickwaveEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -34,7 +34,7 @@ public class PickwaveStateEventDtoConverter {
         return dto;
     }
 
-    public PickwaveStateEventDto.PickwaveStateMergePatchedDto toPickwaveStateMergePatchedDto(PickwaveStateEvent.PickwaveStateMergePatched e) {
+    public PickwaveStateEventDto.PickwaveStateMergePatchedDto toPickwaveStateMergePatchedDto(PickwaveEvent.PickwaveStateMergePatched e) {
         PickwaveStateEventDto.PickwaveStateMergePatchedDto dto = new PickwaveStateEventDto.PickwaveStateMergePatchedDto();
         dto.setPickwaveEventId(e.getPickwaveEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -50,7 +50,7 @@ public class PickwaveStateEventDtoConverter {
     }
 
 
-    public PickwaveStateEventDto.PickwaveStateDeletedDto toPickwaveStateDeletedDto(PickwaveStateEvent.PickwaveStateDeleted e) {
+    public PickwaveStateEventDto.PickwaveStateDeletedDto toPickwaveStateDeletedDto(PickwaveEvent.PickwaveStateDeleted e) {
         PickwaveStateEventDto.PickwaveStateDeletedDto dto = new PickwaveStateEventDto.PickwaveStateDeletedDto();
         dto.setPickwaveEventId(e.getPickwaveEventId());
         dto.setCreatedAt(e.getCreatedAt());

@@ -29,7 +29,7 @@ public interface InventoryItemApplicationService
 
     long getCount(Criterion filter);
 
-    InventoryItemStateEvent getStateEvent(InventoryItemId inventoryItemId, long version);
+    InventoryItemEvent getEvent(InventoryItemId inventoryItemId, long version);
 
     InventoryItemState getHistoryState(InventoryItemId inventoryItemId, long version);
 

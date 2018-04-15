@@ -164,7 +164,7 @@ public class ShipmentItemMvoResource {
 
             ShipmentItemId idObj = ShipmentItemMvoResourceUtils.parseIdString(id);
             ShipmentItemMvoStateEventDtoConverter dtoConverter = getShipmentItemMvoStateEventDtoConverter();
-            return dtoConverter.toShipmentItemMvoStateEventDto((AbstractShipmentItemMvoStateEvent) shipmentItemMvoApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toShipmentItemMvoStateEventDto((AbstractShipmentItemMvoEvent) shipmentItemMvoApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

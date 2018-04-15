@@ -181,7 +181,7 @@ public class WarehouseResource {
 
             String idObj = id;
             WarehouseStateEventDtoConverter dtoConverter = getWarehouseStateEventDtoConverter();
-            return dtoConverter.toWarehouseStateEventDto((AbstractWarehouseStateEvent) warehouseApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toWarehouseStateEventDto((AbstractWarehouseEvent) warehouseApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

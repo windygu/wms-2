@@ -5,7 +5,7 @@ import org.dddml.wms.domain.shipmentpackage.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.shipmentpackagecontentmvo.ShipmentPackageContentMvoStateEvent.*;
+import org.dddml.wms.domain.shipmentpackagecontentmvo.ShipmentPackageContentMvoEvent.*;
 
 public interface ShipmentPackageContentMvoState
 {
@@ -129,11 +129,11 @@ public interface ShipmentPackageContentMvoState
 
     void mutate(Event e);
 
-    void when(ShipmentPackageContentMvoStateEvent.ShipmentPackageContentMvoStateCreated e);
+    void when(ShipmentPackageContentMvoEvent.ShipmentPackageContentMvoStateCreated e);
 
-    void when(ShipmentPackageContentMvoStateEvent.ShipmentPackageContentMvoStateMergePatched e);
+    void when(ShipmentPackageContentMvoEvent.ShipmentPackageContentMvoStateMergePatched e);
 
-    void when(ShipmentPackageContentMvoStateEvent.ShipmentPackageContentMvoStateDeleted e);
+    void when(ShipmentPackageContentMvoEvent.ShipmentPackageContentMvoStateDeleted e);
     
 }
 

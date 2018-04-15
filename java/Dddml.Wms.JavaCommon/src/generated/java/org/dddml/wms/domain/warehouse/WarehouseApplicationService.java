@@ -30,7 +30,7 @@ public interface WarehouseApplicationService
 
     long getCount(Criterion filter);
 
-    WarehouseStateEvent getStateEvent(String warehouseId, long version);
+    WarehouseEvent getEvent(String warehouseId, long version);
 
     WarehouseState getHistoryState(String warehouseId, long version);
 

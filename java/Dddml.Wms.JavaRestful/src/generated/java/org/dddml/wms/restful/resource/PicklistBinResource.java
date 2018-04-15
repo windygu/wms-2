@@ -181,7 +181,7 @@ public class PicklistBinResource {
 
             String idObj = id;
             PicklistBinStateEventDtoConverter dtoConverter = getPicklistBinStateEventDtoConverter();
-            return dtoConverter.toPicklistBinStateEventDto((AbstractPicklistBinStateEvent) picklistBinApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toPicklistBinStateEventDto((AbstractPicklistBinEvent) picklistBinApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

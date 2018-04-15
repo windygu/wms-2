@@ -163,7 +163,7 @@ public class ProductResource {
 
             String idObj = id;
             ProductStateEventDtoConverter dtoConverter = getProductStateEventDtoConverter();
-            return dtoConverter.toProductStateEventDto((AbstractProductStateEvent) productApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toProductStateEventDto((AbstractProductEvent) productApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

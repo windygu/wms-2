@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.uomconversion.UomConversionStateEvent.*;
+import org.dddml.wms.domain.uomconversion.UomConversionEvent.*;
 
 public interface UomConversionState
 {
@@ -68,11 +68,11 @@ public interface UomConversionState
 
     void mutate(Event e);
 
-    void when(UomConversionStateEvent.UomConversionStateCreated e);
+    void when(UomConversionEvent.UomConversionStateCreated e);
 
-    void when(UomConversionStateEvent.UomConversionStateMergePatched e);
+    void when(UomConversionEvent.UomConversionStateMergePatched e);
 
-    void when(UomConversionStateEvent.UomConversionStateDeleted e);
+    void when(UomConversionEvent.UomConversionStateDeleted e);
     
 }
 

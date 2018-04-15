@@ -9,19 +9,19 @@ import org.dddml.wms.specialization.*;
 
 public class PhysicalInventoryStateEventDtoConverter {
 
-    public PhysicalInventoryStateEventDto toPhysicalInventoryStateEventDto(AbstractPhysicalInventoryStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractPhysicalInventoryStateEvent.AbstractPhysicalInventoryStateCreated) {
-            PhysicalInventoryStateEvent.PhysicalInventoryStateCreated e = (PhysicalInventoryStateEvent.PhysicalInventoryStateCreated) stateEvent;
+    public PhysicalInventoryStateEventDto toPhysicalInventoryStateEventDto(AbstractPhysicalInventoryEvent stateEvent) {
+        if (stateEvent instanceof AbstractPhysicalInventoryEvent.AbstractPhysicalInventoryStateCreated) {
+            PhysicalInventoryEvent.PhysicalInventoryStateCreated e = (PhysicalInventoryEvent.PhysicalInventoryStateCreated) stateEvent;
             return toPhysicalInventoryStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractPhysicalInventoryStateEvent.AbstractPhysicalInventoryStateMergePatched) {
-            PhysicalInventoryStateEvent.PhysicalInventoryStateMergePatched e = (PhysicalInventoryStateEvent.PhysicalInventoryStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractPhysicalInventoryEvent.AbstractPhysicalInventoryStateMergePatched) {
+            PhysicalInventoryEvent.PhysicalInventoryStateMergePatched e = (PhysicalInventoryEvent.PhysicalInventoryStateMergePatched) stateEvent;
             return toPhysicalInventoryStateMergePatchedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public PhysicalInventoryStateEventDto.PhysicalInventoryStateCreatedDto toPhysicalInventoryStateCreatedDto(PhysicalInventoryStateEvent.PhysicalInventoryStateCreated e) {
+    public PhysicalInventoryStateEventDto.PhysicalInventoryStateCreatedDto toPhysicalInventoryStateCreatedDto(PhysicalInventoryEvent.PhysicalInventoryStateCreated e) {
         PhysicalInventoryStateEventDto.PhysicalInventoryStateCreatedDto dto = new PhysicalInventoryStateEventDto.PhysicalInventoryStateCreatedDto();
         dto.setPhysicalInventoryEventId(e.getPhysicalInventoryEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -43,7 +43,7 @@ public class PhysicalInventoryStateEventDtoConverter {
         dto.setReversalDocumentNumber(e.getReversalDocumentNumber());
         dto.setActive(e.getActive());
         List<PhysicalInventoryLineStateEventDto.PhysicalInventoryLineStateCreatedDto> physicalInventoryLineEvents = new ArrayList<>();
-        for (PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateCreated ee : e.getPhysicalInventoryLineEvents()) {
+        for (PhysicalInventoryLineEvent.PhysicalInventoryLineStateCreated ee : e.getPhysicalInventoryLineEvents()) {
             PhysicalInventoryLineStateEventDto.PhysicalInventoryLineStateCreatedDto eeDto = getPhysicalInventoryLineStateEventDtoConverter().toPhysicalInventoryLineStateCreatedDto(ee);
             physicalInventoryLineEvents.add(eeDto);
         }
@@ -52,7 +52,7 @@ public class PhysicalInventoryStateEventDtoConverter {
         return dto;
     }
 
-    public PhysicalInventoryStateEventDto.PhysicalInventoryStateMergePatchedDto toPhysicalInventoryStateMergePatchedDto(PhysicalInventoryStateEvent.PhysicalInventoryStateMergePatched e) {
+    public PhysicalInventoryStateEventDto.PhysicalInventoryStateMergePatchedDto toPhysicalInventoryStateMergePatchedDto(PhysicalInventoryEvent.PhysicalInventoryStateMergePatched e) {
         PhysicalInventoryStateEventDto.PhysicalInventoryStateMergePatchedDto dto = new PhysicalInventoryStateEventDto.PhysicalInventoryStateMergePatchedDto();
         dto.setPhysicalInventoryEventId(e.getPhysicalInventoryEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -89,8 +89,8 @@ public class PhysicalInventoryStateEventDtoConverter {
         dto.setIsPropertyReversalDocumentNumberRemoved(e.getIsPropertyReversalDocumentNumberRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
         List<PhysicalInventoryLineStateEventDto> physicalInventoryLineEvents = new ArrayList<>();
-        for (PhysicalInventoryLineStateEvent ee : e.getPhysicalInventoryLineEvents()) {
-            PhysicalInventoryLineStateEventDto eeDto = getPhysicalInventoryLineStateEventDtoConverter().toPhysicalInventoryLineStateEventDto((AbstractPhysicalInventoryLineStateEvent) ee);
+        for (PhysicalInventoryLineEvent ee : e.getPhysicalInventoryLineEvents()) {
+            PhysicalInventoryLineStateEventDto eeDto = getPhysicalInventoryLineStateEventDtoConverter().toPhysicalInventoryLineStateEventDto((AbstractPhysicalInventoryLineEvent) ee);
             physicalInventoryLineEvents.add(eeDto);
         }
         dto.setPhysicalInventoryLineEvents(physicalInventoryLineEvents.toArray(new PhysicalInventoryLineStateEventDto[0]));

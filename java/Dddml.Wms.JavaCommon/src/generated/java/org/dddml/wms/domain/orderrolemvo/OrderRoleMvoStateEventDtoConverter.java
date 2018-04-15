@@ -8,22 +8,22 @@ import org.dddml.wms.specialization.*;
 
 public class OrderRoleMvoStateEventDtoConverter {
 
-    public OrderRoleMvoStateEventDto toOrderRoleMvoStateEventDto(AbstractOrderRoleMvoStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractOrderRoleMvoStateEvent.AbstractOrderRoleMvoStateCreated) {
-            OrderRoleMvoStateEvent.OrderRoleMvoStateCreated e = (OrderRoleMvoStateEvent.OrderRoleMvoStateCreated) stateEvent;
+    public OrderRoleMvoStateEventDto toOrderRoleMvoStateEventDto(AbstractOrderRoleMvoEvent stateEvent) {
+        if (stateEvent instanceof AbstractOrderRoleMvoEvent.AbstractOrderRoleMvoStateCreated) {
+            OrderRoleMvoEvent.OrderRoleMvoStateCreated e = (OrderRoleMvoEvent.OrderRoleMvoStateCreated) stateEvent;
             return toOrderRoleMvoStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractOrderRoleMvoStateEvent.AbstractOrderRoleMvoStateMergePatched) {
-            OrderRoleMvoStateEvent.OrderRoleMvoStateMergePatched e = (OrderRoleMvoStateEvent.OrderRoleMvoStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractOrderRoleMvoEvent.AbstractOrderRoleMvoStateMergePatched) {
+            OrderRoleMvoEvent.OrderRoleMvoStateMergePatched e = (OrderRoleMvoEvent.OrderRoleMvoStateMergePatched) stateEvent;
             return toOrderRoleMvoStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractOrderRoleMvoStateEvent.AbstractOrderRoleMvoStateDeleted) {
-            OrderRoleMvoStateEvent.OrderRoleMvoStateDeleted e = (OrderRoleMvoStateEvent.OrderRoleMvoStateDeleted) stateEvent;
+        } else if (stateEvent instanceof AbstractOrderRoleMvoEvent.AbstractOrderRoleMvoStateDeleted) {
+            OrderRoleMvoEvent.OrderRoleMvoStateDeleted e = (OrderRoleMvoEvent.OrderRoleMvoStateDeleted) stateEvent;
             return toOrderRoleMvoStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public OrderRoleMvoStateEventDto.OrderRoleMvoStateCreatedDto toOrderRoleMvoStateCreatedDto(OrderRoleMvoStateEvent.OrderRoleMvoStateCreated e) {
+    public OrderRoleMvoStateEventDto.OrderRoleMvoStateCreatedDto toOrderRoleMvoStateCreatedDto(OrderRoleMvoEvent.OrderRoleMvoStateCreated e) {
         OrderRoleMvoStateEventDto.OrderRoleMvoStateCreatedDto dto = new OrderRoleMvoStateEventDto.OrderRoleMvoStateCreatedDto();
         dto.setOrderRoleMvoEventId(e.getOrderRoleMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -63,7 +63,7 @@ public class OrderRoleMvoStateEventDtoConverter {
         return dto;
     }
 
-    public OrderRoleMvoStateEventDto.OrderRoleMvoStateMergePatchedDto toOrderRoleMvoStateMergePatchedDto(OrderRoleMvoStateEvent.OrderRoleMvoStateMergePatched e) {
+    public OrderRoleMvoStateEventDto.OrderRoleMvoStateMergePatchedDto toOrderRoleMvoStateMergePatchedDto(OrderRoleMvoEvent.OrderRoleMvoStateMergePatched e) {
         OrderRoleMvoStateEventDto.OrderRoleMvoStateMergePatchedDto dto = new OrderRoleMvoStateEventDto.OrderRoleMvoStateMergePatchedDto();
         dto.setOrderRoleMvoEventId(e.getOrderRoleMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -135,7 +135,7 @@ public class OrderRoleMvoStateEventDtoConverter {
     }
 
 
-    public OrderRoleMvoStateEventDto.OrderRoleMvoStateDeletedDto toOrderRoleMvoStateDeletedDto(OrderRoleMvoStateEvent.OrderRoleMvoStateDeleted e) {
+    public OrderRoleMvoStateEventDto.OrderRoleMvoStateDeletedDto toOrderRoleMvoStateDeletedDto(OrderRoleMvoEvent.OrderRoleMvoStateDeleted e) {
         OrderRoleMvoStateEventDto.OrderRoleMvoStateDeletedDto dto = new OrderRoleMvoStateEventDto.OrderRoleMvoStateDeletedDto();
         dto.setOrderRoleMvoEventId(e.getOrderRoleMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());

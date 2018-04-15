@@ -11,9 +11,9 @@ public interface EventStore {
 
     void appendEvents(EventStoreAggregateId aggregateId, long version, Collection<Event> events, Consumer<Collection<Event>> afterEventsAppended);
 
-    Event findLastEvent(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version);
+    Event getEvent(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version);
 
-    Event getStateEvent(EventStoreAggregateId eventStoreAggregateId, long version);
+    Event getEvent(EventStoreAggregateId eventStoreAggregateId, long version);
 
     EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version);
 }

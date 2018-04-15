@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.shipment.ShipmentReceiptStateEvent.*;
+import org.dddml.wms.domain.shipment.ShipmentReceiptEvent.*;
 
 public abstract class AbstractShipmentReceiptState implements ShipmentReceiptState
 {
@@ -622,7 +622,7 @@ public abstract class AbstractShipmentReceiptState implements ShipmentReceiptSta
     {
     }
 
-    protected void throwOnWrongEvent(ShipmentReceiptStateEvent stateEvent)
+    protected void throwOnWrongEvent(ShipmentReceiptEvent stateEvent)
     {
         String stateEntityIdShipmentId = this.getShipmentReceiptId().getShipmentId();
         String eventEntityIdShipmentId = stateEvent.getShipmentReceiptEventId().getShipmentId();

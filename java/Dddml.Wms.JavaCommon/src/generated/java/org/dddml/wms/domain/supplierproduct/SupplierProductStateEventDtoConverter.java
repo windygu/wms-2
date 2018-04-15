@@ -7,19 +7,19 @@ import org.dddml.wms.specialization.*;
 
 public class SupplierProductStateEventDtoConverter {
 
-    public SupplierProductStateEventDto toSupplierProductStateEventDto(AbstractSupplierProductStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractSupplierProductStateEvent.AbstractSupplierProductStateCreated) {
-            SupplierProductStateEvent.SupplierProductStateCreated e = (SupplierProductStateEvent.SupplierProductStateCreated) stateEvent;
+    public SupplierProductStateEventDto toSupplierProductStateEventDto(AbstractSupplierProductEvent stateEvent) {
+        if (stateEvent instanceof AbstractSupplierProductEvent.AbstractSupplierProductStateCreated) {
+            SupplierProductEvent.SupplierProductStateCreated e = (SupplierProductEvent.SupplierProductStateCreated) stateEvent;
             return toSupplierProductStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractSupplierProductStateEvent.AbstractSupplierProductStateMergePatched) {
-            SupplierProductStateEvent.SupplierProductStateMergePatched e = (SupplierProductStateEvent.SupplierProductStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractSupplierProductEvent.AbstractSupplierProductStateMergePatched) {
+            SupplierProductEvent.SupplierProductStateMergePatched e = (SupplierProductEvent.SupplierProductStateMergePatched) stateEvent;
             return toSupplierProductStateMergePatchedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public SupplierProductStateEventDto.SupplierProductStateCreatedDto toSupplierProductStateCreatedDto(SupplierProductStateEvent.SupplierProductStateCreated e) {
+    public SupplierProductStateEventDto.SupplierProductStateCreatedDto toSupplierProductStateCreatedDto(SupplierProductEvent.SupplierProductStateCreated e) {
         SupplierProductStateEventDto.SupplierProductStateCreatedDto dto = new SupplierProductStateEventDto.SupplierProductStateCreatedDto();
         dto.setSupplierProductEventId(e.getSupplierProductEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -42,7 +42,7 @@ public class SupplierProductStateEventDtoConverter {
         return dto;
     }
 
-    public SupplierProductStateEventDto.SupplierProductStateMergePatchedDto toSupplierProductStateMergePatchedDto(SupplierProductStateEvent.SupplierProductStateMergePatched e) {
+    public SupplierProductStateEventDto.SupplierProductStateMergePatchedDto toSupplierProductStateMergePatchedDto(SupplierProductEvent.SupplierProductStateMergePatched e) {
         SupplierProductStateEventDto.SupplierProductStateMergePatchedDto dto = new SupplierProductStateEventDto.SupplierProductStateMergePatchedDto();
         dto.setSupplierProductEventId(e.getSupplierProductEventId());
         dto.setCreatedAt(e.getCreatedAt());

@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.physicalinventory.PhysicalInventoryLineStateEvent.*;
+import org.dddml.wms.domain.physicalinventory.PhysicalInventoryLineEvent.*;
 
 public interface PhysicalInventoryLineState
 {
@@ -82,11 +82,11 @@ public interface PhysicalInventoryLineState
 
     void mutate(Event e);
 
-    void when(PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateCreated e);
+    void when(PhysicalInventoryLineEvent.PhysicalInventoryLineStateCreated e);
 
-    void when(PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateMergePatched e);
+    void when(PhysicalInventoryLineEvent.PhysicalInventoryLineStateMergePatched e);
 
-    void when(PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateRemoved e);
+    void when(PhysicalInventoryLineEvent.PhysicalInventoryLineStateRemoved e);
     
 }
 

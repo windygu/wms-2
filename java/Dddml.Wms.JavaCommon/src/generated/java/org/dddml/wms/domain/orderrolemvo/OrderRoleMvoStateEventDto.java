@@ -3,9 +3,9 @@ package org.dddml.wms.domain.orderrolemvo;
 import org.dddml.wms.domain.order.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
-import org.dddml.wms.domain.AbstractStateEvent;
+import org.dddml.wms.domain.AbstractEvent;
 
-public class OrderRoleMvoStateEventDto extends AbstractStateEvent
+public class OrderRoleMvoStateEventDto extends AbstractEvent
 {
 
     private OrderRoleMvoEventId orderRoleMvoEventId;
@@ -679,7 +679,7 @@ public class OrderRoleMvoStateEventDto extends AbstractStateEvent
 	public static class OrderRoleMvoStateCreatedDto extends OrderRoleMvoStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_CREATED;
         }
@@ -690,7 +690,7 @@ public class OrderRoleMvoStateEventDto extends AbstractStateEvent
 	public static class OrderRoleMvoStateMergePatchedDto extends OrderRoleMvoStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_MERGE_PATCHED;
         }
@@ -701,7 +701,7 @@ public class OrderRoleMvoStateEventDto extends AbstractStateEvent
 	public static class OrderRoleMvoStateDeletedDto extends OrderRoleMvoStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_DELETED;
         }

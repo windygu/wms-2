@@ -46,7 +46,7 @@ namespace Dddml.Wms.Domain.InventoryPostingRule.NHibernate
             var es = criteria.List<IEvent>();
             foreach (InventoryPostingRuleStateEventBase e in es)
             {
-                e.StateEventReadOnly = true;
+                e.EventReadOnly = true;
             }
             return new EventStream()
             {

@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.movement.MovementLineStateEvent.*;
+import org.dddml.wms.domain.movement.MovementLineEvent.*;
 
 public interface MovementLineState
 {
@@ -89,11 +89,11 @@ public interface MovementLineState
 
     void mutate(Event e);
 
-    void when(MovementLineStateEvent.MovementLineStateCreated e);
+    void when(MovementLineEvent.MovementLineStateCreated e);
 
-    void when(MovementLineStateEvent.MovementLineStateMergePatched e);
+    void when(MovementLineEvent.MovementLineStateMergePatched e);
 
-    void when(MovementLineStateEvent.MovementLineStateRemoved e);
+    void when(MovementLineEvent.MovementLineStateRemoved e);
     
 }
 

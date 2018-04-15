@@ -21,20 +21,20 @@ public class HibernateInventoryItemEventStore extends AbstractHibernateEventStor
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractInventoryItemStateEvent.class;
+        return AbstractInventoryItemEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractInventoryItemStateEvent.class;
+        Class supportedEventType = AbstractInventoryItemEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         InventoryItemId idObj = (InventoryItemId) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractInventoryItemStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractInventoryItemEvent.class);
         criteria.add(Restrictions.eq("inventoryItemEventId.inventoryItemIdProductId", idObj.getProductId()));
         criteria.add(Restrictions.eq("inventoryItemEventId.inventoryItemIdLocatorId", idObj.getLocatorId()));
         criteria.add(Restrictions.eq("inventoryItemEventId.inventoryItemIdAttributeSetInstanceId", idObj.getAttributeSetInstanceId()));
@@ -42,11 +42,11 @@ public class HibernateInventoryItemEventStore extends AbstractHibernateEventStor
         criteria.addOrder(Order.asc("inventoryItemEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractInventoryItemStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractInventoryItemEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractInventoryItemStateEvent) es.get(es.size() - 1)).getInventoryItemEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractInventoryItemEvent) es.get(es.size() - 1)).getInventoryItemEventId().getVersion());
         } else {
             //todo?
         }

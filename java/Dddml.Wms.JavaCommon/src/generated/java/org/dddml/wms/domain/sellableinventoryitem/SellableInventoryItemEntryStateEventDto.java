@@ -5,9 +5,9 @@ import org.dddml.wms.domain.inventoryprtriggered.*;
 import java.util.Date;
 import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.*;
-import org.dddml.wms.domain.AbstractStateEvent;
+import org.dddml.wms.domain.AbstractEvent;
 
-public class SellableInventoryItemEntryStateEventDto extends AbstractStateEvent
+public class SellableInventoryItemEntryStateEventDto extends AbstractEvent
 {
 
     private SellableInventoryItemEntryEventId sellableInventoryItemEntryEventId;
@@ -103,7 +103,7 @@ public class SellableInventoryItemEntryStateEventDto extends AbstractStateEvent
 	public static class SellableInventoryItemEntryStateCreatedDto extends SellableInventoryItemEntryStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_CREATED;
         }
@@ -114,7 +114,7 @@ public class SellableInventoryItemEntryStateEventDto extends AbstractStateEvent
 	public static class SellableInventoryItemEntryStateMergePatchedDto extends SellableInventoryItemEntryStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_MERGE_PATCHED;
         }
@@ -125,7 +125,7 @@ public class SellableInventoryItemEntryStateEventDto extends AbstractStateEvent
 	public static class SellableInventoryItemEntryStateRemovedDto extends SellableInventoryItemEntryStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_REMOVED;
         }

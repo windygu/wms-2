@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.order.OrderItemShipGroupAssociationStateEvent.*;
+import org.dddml.wms.domain.order.OrderItemShipGroupAssociationEvent.*;
 
 public abstract class AbstractOrderItemShipGroupAssociationState implements OrderItemShipGroupAssociationState
 {
@@ -272,7 +272,7 @@ public abstract class AbstractOrderItemShipGroupAssociationState implements Orde
     {
     }
 
-    protected void throwOnWrongEvent(OrderItemShipGroupAssociationStateEvent stateEvent)
+    protected void throwOnWrongEvent(OrderItemShipGroupAssociationEvent stateEvent)
     {
         String stateEntityIdOrderId = this.getOrderItemShipGroupAssociationId().getOrderId();
         String eventEntityIdOrderId = stateEvent.getOrderItemShipGroupAssociationEventId().getOrderId();

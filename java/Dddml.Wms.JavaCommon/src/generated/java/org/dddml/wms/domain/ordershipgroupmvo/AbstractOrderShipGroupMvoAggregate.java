@@ -28,19 +28,19 @@ public abstract class AbstractOrderShipGroupMvoAggregate extends AbstractAggrega
     public void create(OrderShipGroupMvoCommand.CreateOrderShipGroupMvo c)
     {
         if (c.getOrderVersion() == null) { c.setOrderVersion(OrderShipGroupMvoState.VERSION_NULL); }
-        OrderShipGroupMvoStateEvent e = map(c);
+        OrderShipGroupMvoEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(OrderShipGroupMvoCommand.MergePatchOrderShipGroupMvo c)
     {
-        OrderShipGroupMvoStateEvent e = map(c);
+        OrderShipGroupMvoEvent e = map(c);
         apply(e);
     }
 
     public void delete(OrderShipGroupMvoCommand.DeleteOrderShipGroupMvo c)
     {
-        OrderShipGroupMvoStateEvent e = map(c);
+        OrderShipGroupMvoEvent e = map(c);
         apply(e);
     }
 
@@ -55,9 +55,9 @@ public abstract class AbstractOrderShipGroupMvoAggregate extends AbstractAggrega
         changes.add(e);
     }
 
-    protected OrderShipGroupMvoStateEvent map(OrderShipGroupMvoCommand.CreateOrderShipGroupMvo c) {
+    protected OrderShipGroupMvoEvent map(OrderShipGroupMvoCommand.CreateOrderShipGroupMvo c) {
         OrderShipGroupMvoEventId stateEventId = new OrderShipGroupMvoEventId(c.getOrderShipGroupId(), c.getOrderVersion());
-        OrderShipGroupMvoStateEvent.OrderShipGroupMvoStateCreated e = newOrderShipGroupMvoStateCreated(stateEventId);
+        OrderShipGroupMvoEvent.OrderShipGroupMvoStateCreated e = newOrderShipGroupMvoStateCreated(stateEventId);
         e.setShipmentMethodTypeId(c.getShipmentMethodTypeId());
         e.setSupplierPartyId(c.getSupplierPartyId());
         e.setVendorPartyId(c.getVendorPartyId());
@@ -107,15 +107,15 @@ public abstract class AbstractOrderShipGroupMvoAggregate extends AbstractAggrega
         e.setOrderUpdatedBy(c.getOrderUpdatedBy());
         e.setOrderUpdatedAt(c.getOrderUpdatedAt());
         e.setOrderActive(c.getOrderActive());
-        ((AbstractOrderShipGroupMvoStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractOrderShipGroupMvoEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected OrderShipGroupMvoStateEvent map(OrderShipGroupMvoCommand.MergePatchOrderShipGroupMvo c) {
+    protected OrderShipGroupMvoEvent map(OrderShipGroupMvoCommand.MergePatchOrderShipGroupMvo c) {
         OrderShipGroupMvoEventId stateEventId = new OrderShipGroupMvoEventId(c.getOrderShipGroupId(), c.getOrderVersion());
-        OrderShipGroupMvoStateEvent.OrderShipGroupMvoStateMergePatched e = newOrderShipGroupMvoStateMergePatched(stateEventId);
+        OrderShipGroupMvoEvent.OrderShipGroupMvoStateMergePatched e = newOrderShipGroupMvoStateMergePatched(stateEventId);
         e.setShipmentMethodTypeId(c.getShipmentMethodTypeId());
         e.setSupplierPartyId(c.getSupplierPartyId());
         e.setVendorPartyId(c.getVendorPartyId());
@@ -214,16 +214,16 @@ public abstract class AbstractOrderShipGroupMvoAggregate extends AbstractAggrega
         e.setIsPropertyOrderUpdatedByRemoved(c.getIsPropertyOrderUpdatedByRemoved());
         e.setIsPropertyOrderUpdatedAtRemoved(c.getIsPropertyOrderUpdatedAtRemoved());
         e.setIsPropertyOrderActiveRemoved(c.getIsPropertyOrderActiveRemoved());
-        ((AbstractOrderShipGroupMvoStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractOrderShipGroupMvoEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected OrderShipGroupMvoStateEvent map(OrderShipGroupMvoCommand.DeleteOrderShipGroupMvo c) {
+    protected OrderShipGroupMvoEvent map(OrderShipGroupMvoCommand.DeleteOrderShipGroupMvo c) {
         OrderShipGroupMvoEventId stateEventId = new OrderShipGroupMvoEventId(c.getOrderShipGroupId(), c.getOrderVersion());
-        OrderShipGroupMvoStateEvent.OrderShipGroupMvoStateDeleted e = newOrderShipGroupMvoStateDeleted(stateEventId);
-        ((AbstractOrderShipGroupMvoStateEvent)e).setCommandId(c.getCommandId());
+        OrderShipGroupMvoEvent.OrderShipGroupMvoStateDeleted e = newOrderShipGroupMvoStateDeleted(stateEventId);
+        ((AbstractOrderShipGroupMvoEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
@@ -232,44 +232,44 @@ public abstract class AbstractOrderShipGroupMvoAggregate extends AbstractAggrega
 
     ////////////////////////
 
-    protected OrderShipGroupMvoStateEvent.OrderShipGroupMvoStateCreated newOrderShipGroupMvoStateCreated(Long version, String commandId, String requesterId) {
+    protected OrderShipGroupMvoEvent.OrderShipGroupMvoStateCreated newOrderShipGroupMvoStateCreated(Long version, String commandId, String requesterId) {
         OrderShipGroupMvoEventId stateEventId = new OrderShipGroupMvoEventId(this.state.getOrderShipGroupId(), version);
-        OrderShipGroupMvoStateEvent.OrderShipGroupMvoStateCreated e = newOrderShipGroupMvoStateCreated(stateEventId);
-        ((AbstractOrderShipGroupMvoStateEvent)e).setCommandId(commandId);
+        OrderShipGroupMvoEvent.OrderShipGroupMvoStateCreated e = newOrderShipGroupMvoStateCreated(stateEventId);
+        ((AbstractOrderShipGroupMvoEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected OrderShipGroupMvoStateEvent.OrderShipGroupMvoStateMergePatched newOrderShipGroupMvoStateMergePatched(Long version, String commandId, String requesterId) {
+    protected OrderShipGroupMvoEvent.OrderShipGroupMvoStateMergePatched newOrderShipGroupMvoStateMergePatched(Long version, String commandId, String requesterId) {
         OrderShipGroupMvoEventId stateEventId = new OrderShipGroupMvoEventId(this.state.getOrderShipGroupId(), version);
-        OrderShipGroupMvoStateEvent.OrderShipGroupMvoStateMergePatched e = newOrderShipGroupMvoStateMergePatched(stateEventId);
-        ((AbstractOrderShipGroupMvoStateEvent)e).setCommandId(commandId);
+        OrderShipGroupMvoEvent.OrderShipGroupMvoStateMergePatched e = newOrderShipGroupMvoStateMergePatched(stateEventId);
+        ((AbstractOrderShipGroupMvoEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected OrderShipGroupMvoStateEvent.OrderShipGroupMvoStateDeleted newOrderShipGroupMvoStateDeleted(Long version, String commandId, String requesterId) {
+    protected OrderShipGroupMvoEvent.OrderShipGroupMvoStateDeleted newOrderShipGroupMvoStateDeleted(Long version, String commandId, String requesterId) {
         OrderShipGroupMvoEventId stateEventId = new OrderShipGroupMvoEventId(this.state.getOrderShipGroupId(), version);
-        OrderShipGroupMvoStateEvent.OrderShipGroupMvoStateDeleted e = newOrderShipGroupMvoStateDeleted(stateEventId);
-        ((AbstractOrderShipGroupMvoStateEvent)e).setCommandId(commandId);
+        OrderShipGroupMvoEvent.OrderShipGroupMvoStateDeleted e = newOrderShipGroupMvoStateDeleted(stateEventId);
+        ((AbstractOrderShipGroupMvoEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected OrderShipGroupMvoStateEvent.OrderShipGroupMvoStateCreated newOrderShipGroupMvoStateCreated(OrderShipGroupMvoEventId stateEventId) {
-        return new AbstractOrderShipGroupMvoStateEvent.SimpleOrderShipGroupMvoStateCreated(stateEventId);
+    protected OrderShipGroupMvoEvent.OrderShipGroupMvoStateCreated newOrderShipGroupMvoStateCreated(OrderShipGroupMvoEventId stateEventId) {
+        return new AbstractOrderShipGroupMvoEvent.SimpleOrderShipGroupMvoStateCreated(stateEventId);
     }
 
-    protected OrderShipGroupMvoStateEvent.OrderShipGroupMvoStateMergePatched newOrderShipGroupMvoStateMergePatched(OrderShipGroupMvoEventId stateEventId) {
-        return new AbstractOrderShipGroupMvoStateEvent.SimpleOrderShipGroupMvoStateMergePatched(stateEventId);
+    protected OrderShipGroupMvoEvent.OrderShipGroupMvoStateMergePatched newOrderShipGroupMvoStateMergePatched(OrderShipGroupMvoEventId stateEventId) {
+        return new AbstractOrderShipGroupMvoEvent.SimpleOrderShipGroupMvoStateMergePatched(stateEventId);
     }
 
-    protected OrderShipGroupMvoStateEvent.OrderShipGroupMvoStateDeleted newOrderShipGroupMvoStateDeleted(OrderShipGroupMvoEventId stateEventId)
+    protected OrderShipGroupMvoEvent.OrderShipGroupMvoStateDeleted newOrderShipGroupMvoStateDeleted(OrderShipGroupMvoEventId stateEventId)
     {
-        return new AbstractOrderShipGroupMvoStateEvent.SimpleOrderShipGroupMvoStateDeleted(stateEventId);
+        return new AbstractOrderShipGroupMvoEvent.SimpleOrderShipGroupMvoStateDeleted(stateEventId);
     }
 
     public static class SimpleOrderShipGroupMvoAggregate extends AbstractOrderShipGroupMvoAggregate

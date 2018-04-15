@@ -5,7 +5,7 @@ import org.dddml.wms.domain.order.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.ordershipgroupmvo.OrderShipGroupMvoStateEvent.*;
+import org.dddml.wms.domain.ordershipgroupmvo.OrderShipGroupMvoEvent.*;
 
 public abstract class AbstractOrderShipGroupMvoState implements OrderShipGroupMvoState
 {
@@ -706,7 +706,7 @@ public abstract class AbstractOrderShipGroupMvoState implements OrderShipGroupMv
     public AbstractOrderShipGroupMvoState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setOrderShipGroupId(((OrderShipGroupMvoStateEvent) events.get(0)).getOrderShipGroupMvoEventId().getOrderShipGroupId());
+            this.setOrderShipGroupId(((OrderShipGroupMvoEvent) events.get(0)).getOrderShipGroupMvoEventId().getOrderShipGroupId());
             for (Event e : events) {
                 mutate(e);
                 this.setOrderVersion(this.getOrderVersion() + 1);
@@ -1366,10 +1366,10 @@ public abstract class AbstractOrderShipGroupMvoState implements OrderShipGroupMv
     {
     }
 
-    protected void throwOnWrongEvent(OrderShipGroupMvoStateEvent stateEvent)
+    protected void throwOnWrongEvent(OrderShipGroupMvoEvent stateEvent)
     {
         OrderShipGroupId stateEntityId = this.getOrderShipGroupId(); // Aggregate Id
-        OrderShipGroupId eventEntityId = stateEvent.getOrderShipGroupMvoEventId().getOrderShipGroupId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        OrderShipGroupId eventEntityId = stateEvent.getOrderShipGroupMvoEventId().getOrderShipGroupId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

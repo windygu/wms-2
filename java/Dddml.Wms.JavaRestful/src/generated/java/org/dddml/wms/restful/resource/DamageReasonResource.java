@@ -181,7 +181,7 @@ public class DamageReasonResource {
 
             String idObj = id;
             DamageReasonStateEventDtoConverter dtoConverter = getDamageReasonStateEventDtoConverter();
-            return dtoConverter.toDamageReasonStateEventDto((AbstractDamageReasonStateEvent) damageReasonApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toDamageReasonStateEventDto((AbstractDamageReasonEvent) damageReasonApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

@@ -30,7 +30,7 @@ public interface FacilityApplicationService
 
     long getCount(Criterion filter);
 
-    FacilityStateEvent getStateEvent(String facilityId, long version);
+    FacilityEvent getEvent(String facilityId, long version);
 
     FacilityState getHistoryState(String facilityId, long version);
 

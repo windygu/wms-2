@@ -9,22 +9,22 @@ import org.dddml.wms.specialization.*;
 
 public class MovementLineMvoStateEventDtoConverter {
 
-    public MovementLineMvoStateEventDto toMovementLineMvoStateEventDto(AbstractMovementLineMvoStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractMovementLineMvoStateEvent.AbstractMovementLineMvoStateCreated) {
-            MovementLineMvoStateEvent.MovementLineMvoStateCreated e = (MovementLineMvoStateEvent.MovementLineMvoStateCreated) stateEvent;
+    public MovementLineMvoStateEventDto toMovementLineMvoStateEventDto(AbstractMovementLineMvoEvent stateEvent) {
+        if (stateEvent instanceof AbstractMovementLineMvoEvent.AbstractMovementLineMvoStateCreated) {
+            MovementLineMvoEvent.MovementLineMvoStateCreated e = (MovementLineMvoEvent.MovementLineMvoStateCreated) stateEvent;
             return toMovementLineMvoStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractMovementLineMvoStateEvent.AbstractMovementLineMvoStateMergePatched) {
-            MovementLineMvoStateEvent.MovementLineMvoStateMergePatched e = (MovementLineMvoStateEvent.MovementLineMvoStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractMovementLineMvoEvent.AbstractMovementLineMvoStateMergePatched) {
+            MovementLineMvoEvent.MovementLineMvoStateMergePatched e = (MovementLineMvoEvent.MovementLineMvoStateMergePatched) stateEvent;
             return toMovementLineMvoStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractMovementLineMvoStateEvent.AbstractMovementLineMvoStateDeleted) {
-            MovementLineMvoStateEvent.MovementLineMvoStateDeleted e = (MovementLineMvoStateEvent.MovementLineMvoStateDeleted) stateEvent;
+        } else if (stateEvent instanceof AbstractMovementLineMvoEvent.AbstractMovementLineMvoStateDeleted) {
+            MovementLineMvoEvent.MovementLineMvoStateDeleted e = (MovementLineMvoEvent.MovementLineMvoStateDeleted) stateEvent;
             return toMovementLineMvoStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public MovementLineMvoStateEventDto.MovementLineMvoStateCreatedDto toMovementLineMvoStateCreatedDto(MovementLineMvoStateEvent.MovementLineMvoStateCreated e) {
+    public MovementLineMvoStateEventDto.MovementLineMvoStateCreatedDto toMovementLineMvoStateCreatedDto(MovementLineMvoEvent.MovementLineMvoStateCreated e) {
         MovementLineMvoStateEventDto.MovementLineMvoStateCreatedDto dto = new MovementLineMvoStateEventDto.MovementLineMvoStateCreatedDto();
         dto.setMovementLineMvoEventId(e.getMovementLineMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -68,7 +68,7 @@ public class MovementLineMvoStateEventDtoConverter {
         return dto;
     }
 
-    public MovementLineMvoStateEventDto.MovementLineMvoStateMergePatchedDto toMovementLineMvoStateMergePatchedDto(MovementLineMvoStateEvent.MovementLineMvoStateMergePatched e) {
+    public MovementLineMvoStateEventDto.MovementLineMvoStateMergePatchedDto toMovementLineMvoStateMergePatchedDto(MovementLineMvoEvent.MovementLineMvoStateMergePatched e) {
         MovementLineMvoStateEventDto.MovementLineMvoStateMergePatchedDto dto = new MovementLineMvoStateEventDto.MovementLineMvoStateMergePatchedDto();
         dto.setMovementLineMvoEventId(e.getMovementLineMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -148,7 +148,7 @@ public class MovementLineMvoStateEventDtoConverter {
     }
 
 
-    public MovementLineMvoStateEventDto.MovementLineMvoStateDeletedDto toMovementLineMvoStateDeletedDto(MovementLineMvoStateEvent.MovementLineMvoStateDeleted e) {
+    public MovementLineMvoStateEventDto.MovementLineMvoStateDeletedDto toMovementLineMvoStateDeletedDto(MovementLineMvoEvent.MovementLineMvoStateDeleted e) {
         MovementLineMvoStateEventDto.MovementLineMvoStateDeletedDto dto = new MovementLineMvoStateEventDto.MovementLineMvoStateDeletedDto();
         dto.setMovementLineMvoEventId(e.getMovementLineMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());

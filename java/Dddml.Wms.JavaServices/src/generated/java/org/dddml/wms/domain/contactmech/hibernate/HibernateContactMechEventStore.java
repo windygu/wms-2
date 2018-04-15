@@ -20,30 +20,30 @@ public class HibernateContactMechEventStore extends AbstractHibernateEventStore
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractContactMechStateEvent.class;
+        return AbstractContactMechEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractContactMechStateEvent.class;
+        Class supportedEventType = AbstractContactMechEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         String idObj = (String) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractContactMechStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractContactMechEvent.class);
         criteria.add(Restrictions.eq("contactMechEventId.contactMechId", idObj));
         criteria.add(Restrictions.le("contactMechEventId.version", version));
         criteria.addOrder(Order.asc("contactMechEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractContactMechStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractContactMechEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractContactMechStateEvent) es.get(es.size() - 1)).getContactMechEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractContactMechEvent) es.get(es.size() - 1)).getContactMechEventId().getVersion());
         } else {
             //todo?
         }

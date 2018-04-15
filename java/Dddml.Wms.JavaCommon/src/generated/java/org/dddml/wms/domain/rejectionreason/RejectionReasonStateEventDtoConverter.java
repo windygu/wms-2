@@ -7,22 +7,22 @@ import org.dddml.wms.specialization.*;
 
 public class RejectionReasonStateEventDtoConverter {
 
-    public RejectionReasonStateEventDto toRejectionReasonStateEventDto(AbstractRejectionReasonStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractRejectionReasonStateEvent.AbstractRejectionReasonStateCreated) {
-            RejectionReasonStateEvent.RejectionReasonStateCreated e = (RejectionReasonStateEvent.RejectionReasonStateCreated) stateEvent;
+    public RejectionReasonStateEventDto toRejectionReasonStateEventDto(AbstractRejectionReasonEvent stateEvent) {
+        if (stateEvent instanceof AbstractRejectionReasonEvent.AbstractRejectionReasonStateCreated) {
+            RejectionReasonEvent.RejectionReasonStateCreated e = (RejectionReasonEvent.RejectionReasonStateCreated) stateEvent;
             return toRejectionReasonStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractRejectionReasonStateEvent.AbstractRejectionReasonStateMergePatched) {
-            RejectionReasonStateEvent.RejectionReasonStateMergePatched e = (RejectionReasonStateEvent.RejectionReasonStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractRejectionReasonEvent.AbstractRejectionReasonStateMergePatched) {
+            RejectionReasonEvent.RejectionReasonStateMergePatched e = (RejectionReasonEvent.RejectionReasonStateMergePatched) stateEvent;
             return toRejectionReasonStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractRejectionReasonStateEvent.AbstractRejectionReasonStateDeleted) {
-            RejectionReasonStateEvent.RejectionReasonStateDeleted e = (RejectionReasonStateEvent.RejectionReasonStateDeleted) stateEvent;
+        } else if (stateEvent instanceof AbstractRejectionReasonEvent.AbstractRejectionReasonStateDeleted) {
+            RejectionReasonEvent.RejectionReasonStateDeleted e = (RejectionReasonEvent.RejectionReasonStateDeleted) stateEvent;
             return toRejectionReasonStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public RejectionReasonStateEventDto.RejectionReasonStateCreatedDto toRejectionReasonStateCreatedDto(RejectionReasonStateEvent.RejectionReasonStateCreated e) {
+    public RejectionReasonStateEventDto.RejectionReasonStateCreatedDto toRejectionReasonStateCreatedDto(RejectionReasonEvent.RejectionReasonStateCreated e) {
         RejectionReasonStateEventDto.RejectionReasonStateCreatedDto dto = new RejectionReasonStateEventDto.RejectionReasonStateCreatedDto();
         dto.setRejectionReasonEventId(e.getRejectionReasonEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -33,7 +33,7 @@ public class RejectionReasonStateEventDtoConverter {
         return dto;
     }
 
-    public RejectionReasonStateEventDto.RejectionReasonStateMergePatchedDto toRejectionReasonStateMergePatchedDto(RejectionReasonStateEvent.RejectionReasonStateMergePatched e) {
+    public RejectionReasonStateEventDto.RejectionReasonStateMergePatchedDto toRejectionReasonStateMergePatchedDto(RejectionReasonEvent.RejectionReasonStateMergePatched e) {
         RejectionReasonStateEventDto.RejectionReasonStateMergePatchedDto dto = new RejectionReasonStateEventDto.RejectionReasonStateMergePatchedDto();
         dto.setRejectionReasonEventId(e.getRejectionReasonEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -47,7 +47,7 @@ public class RejectionReasonStateEventDtoConverter {
     }
 
 
-    public RejectionReasonStateEventDto.RejectionReasonStateDeletedDto toRejectionReasonStateDeletedDto(RejectionReasonStateEvent.RejectionReasonStateDeleted e) {
+    public RejectionReasonStateEventDto.RejectionReasonStateDeletedDto toRejectionReasonStateDeletedDto(RejectionReasonEvent.RejectionReasonStateDeleted e) {
         RejectionReasonStateEventDto.RejectionReasonStateDeletedDto dto = new RejectionReasonStateEventDto.RejectionReasonStateDeletedDto();
         dto.setRejectionReasonEventId(e.getRejectionReasonEventId());
         dto.setCreatedAt(e.getCreatedAt());

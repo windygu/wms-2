@@ -27,13 +27,13 @@ public abstract class AbstractOrderShipmentAggregate extends AbstractAggregate i
     public void create(OrderShipmentCommand.CreateOrderShipment c)
     {
         if (c.getVersion() == null) { c.setVersion(OrderShipmentState.VERSION_NULL); }
-        OrderShipmentStateEvent e = map(c);
+        OrderShipmentEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(OrderShipmentCommand.MergePatchOrderShipment c)
     {
-        OrderShipmentStateEvent e = map(c);
+        OrderShipmentEvent e = map(c);
         apply(e);
     }
 
@@ -48,25 +48,25 @@ public abstract class AbstractOrderShipmentAggregate extends AbstractAggregate i
         changes.add(e);
     }
 
-    protected OrderShipmentStateEvent map(OrderShipmentCommand.CreateOrderShipment c) {
+    protected OrderShipmentEvent map(OrderShipmentCommand.CreateOrderShipment c) {
         OrderShipmentEventId stateEventId = new OrderShipmentEventId(c.getOrderShipmentId(), c.getVersion());
-        OrderShipmentStateEvent.OrderShipmentStateCreated e = newOrderShipmentStateCreated(stateEventId);
+        OrderShipmentEvent.OrderShipmentStateCreated e = newOrderShipmentStateCreated(stateEventId);
         e.setQuantity(c.getQuantity());
         e.setActive(c.getActive());
-        ((AbstractOrderShipmentStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractOrderShipmentEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected OrderShipmentStateEvent map(OrderShipmentCommand.MergePatchOrderShipment c) {
+    protected OrderShipmentEvent map(OrderShipmentCommand.MergePatchOrderShipment c) {
         OrderShipmentEventId stateEventId = new OrderShipmentEventId(c.getOrderShipmentId(), c.getVersion());
-        OrderShipmentStateEvent.OrderShipmentStateMergePatched e = newOrderShipmentStateMergePatched(stateEventId);
+        OrderShipmentEvent.OrderShipmentStateMergePatched e = newOrderShipmentStateMergePatched(stateEventId);
         e.setQuantity(c.getQuantity());
         e.setActive(c.getActive());
         e.setIsPropertyQuantityRemoved(c.getIsPropertyQuantityRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
-        ((AbstractOrderShipmentStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractOrderShipmentEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
@@ -75,30 +75,30 @@ public abstract class AbstractOrderShipmentAggregate extends AbstractAggregate i
 
     ////////////////////////
 
-    protected OrderShipmentStateEvent.OrderShipmentStateCreated newOrderShipmentStateCreated(Long version, String commandId, String requesterId) {
+    protected OrderShipmentEvent.OrderShipmentStateCreated newOrderShipmentStateCreated(Long version, String commandId, String requesterId) {
         OrderShipmentEventId stateEventId = new OrderShipmentEventId(this.state.getOrderShipmentId(), version);
-        OrderShipmentStateEvent.OrderShipmentStateCreated e = newOrderShipmentStateCreated(stateEventId);
-        ((AbstractOrderShipmentStateEvent)e).setCommandId(commandId);
+        OrderShipmentEvent.OrderShipmentStateCreated e = newOrderShipmentStateCreated(stateEventId);
+        ((AbstractOrderShipmentEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected OrderShipmentStateEvent.OrderShipmentStateMergePatched newOrderShipmentStateMergePatched(Long version, String commandId, String requesterId) {
+    protected OrderShipmentEvent.OrderShipmentStateMergePatched newOrderShipmentStateMergePatched(Long version, String commandId, String requesterId) {
         OrderShipmentEventId stateEventId = new OrderShipmentEventId(this.state.getOrderShipmentId(), version);
-        OrderShipmentStateEvent.OrderShipmentStateMergePatched e = newOrderShipmentStateMergePatched(stateEventId);
-        ((AbstractOrderShipmentStateEvent)e).setCommandId(commandId);
+        OrderShipmentEvent.OrderShipmentStateMergePatched e = newOrderShipmentStateMergePatched(stateEventId);
+        ((AbstractOrderShipmentEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected OrderShipmentStateEvent.OrderShipmentStateCreated newOrderShipmentStateCreated(OrderShipmentEventId stateEventId) {
-        return new AbstractOrderShipmentStateEvent.SimpleOrderShipmentStateCreated(stateEventId);
+    protected OrderShipmentEvent.OrderShipmentStateCreated newOrderShipmentStateCreated(OrderShipmentEventId stateEventId) {
+        return new AbstractOrderShipmentEvent.SimpleOrderShipmentStateCreated(stateEventId);
     }
 
-    protected OrderShipmentStateEvent.OrderShipmentStateMergePatched newOrderShipmentStateMergePatched(OrderShipmentEventId stateEventId) {
-        return new AbstractOrderShipmentStateEvent.SimpleOrderShipmentStateMergePatched(stateEventId);
+    protected OrderShipmentEvent.OrderShipmentStateMergePatched newOrderShipmentStateMergePatched(OrderShipmentEventId stateEventId) {
+        return new AbstractOrderShipmentEvent.SimpleOrderShipmentStateMergePatched(stateEventId);
     }
 
     public static class SimpleOrderShipmentAggregate extends AbstractOrderShipmentAggregate

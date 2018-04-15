@@ -239,7 +239,9 @@ public class XmlEntityDataTool {
             if (ignorableNames.contains(attrName)) {
                 return;
             }
-            throw new NullPointerException("Property setter NOT found. Attribute name: " + attrName);
+            throw new NullPointerException(String.format(
+                    "Property setter NOT found. Attribute name: '%1$s', object type: '%2$s' ",
+                    attrName, obj.getClass().getName()));
         }
         Class propertyType = propertySetter.getPropertyType();
         propertySetter.invoke(obj, convertAttributeValue(attrVal, propertyType));
@@ -334,6 +336,12 @@ public class XmlEntityDataTool {
                     @Override
                     public void invoke(Object b, Object pVal) throws InvocationTargetException, IllegalAccessException {
                         Object pref = propertyDescriptor.getReadMethod().invoke(b);
+                        if(ppDescriptor.getWriteMethod() == null) {
+                            throw new RuntimeException(String.format("CANNOT get WriteMethod for proeprty '%1$s'.", ppDescriptor.getName()));
+                        }
+                        if(pref == null) {
+                            throw new RuntimeException(String.format("The parent proeprty '%1$s' is null.", propertyDescriptor.getName()));
+                        }
                         ppDescriptor.getWriteMethod().invoke(pref, pVal);
                     }
 

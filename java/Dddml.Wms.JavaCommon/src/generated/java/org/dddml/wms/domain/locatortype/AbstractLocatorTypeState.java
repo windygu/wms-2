@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.locatortype.LocatorTypeStateEvent.*;
+import org.dddml.wms.domain.locatortype.LocatorTypeEvent.*;
 
 public abstract class AbstractLocatorTypeState implements LocatorTypeState
 {
@@ -141,7 +141,7 @@ public abstract class AbstractLocatorTypeState implements LocatorTypeState
     public AbstractLocatorTypeState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setLocatorTypeId(((LocatorTypeStateEvent) events.get(0)).getLocatorTypeEventId().getLocatorTypeId());
+            this.setLocatorTypeId(((LocatorTypeEvent) events.get(0)).getLocatorTypeEventId().getLocatorTypeId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -237,10 +237,10 @@ public abstract class AbstractLocatorTypeState implements LocatorTypeState
     {
     }
 
-    protected void throwOnWrongEvent(LocatorTypeStateEvent stateEvent)
+    protected void throwOnWrongEvent(LocatorTypeEvent stateEvent)
     {
         String stateEntityId = this.getLocatorTypeId(); // Aggregate Id
-        String eventEntityId = stateEvent.getLocatorTypeEventId().getLocatorTypeId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        String eventEntityId = stateEvent.getLocatorTypeEventId().getLocatorTypeId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

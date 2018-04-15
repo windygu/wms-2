@@ -30,7 +30,7 @@ public interface UomConversionApplicationService
 
     long getCount(Criterion filter);
 
-    UomConversionStateEvent getStateEvent(UomConversionId uomConversionId, long version);
+    UomConversionEvent getEvent(UomConversionId uomConversionId, long version);
 
     UomConversionState getHistoryState(UomConversionId uomConversionId, long version);
 

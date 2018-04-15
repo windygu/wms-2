@@ -85,19 +85,19 @@ public abstract class AbstractSellableInventoryItemEntryMvoApplicationService im
         return getStateQueryRepository().getCount(filter);
     }
 
-    public SellableInventoryItemEntryMvoStateEvent getStateEvent(SellableInventoryItemEntryId sellableInventoryItemEntryId, long version) {
-        SellableInventoryItemEntryMvoStateEvent e = (SellableInventoryItemEntryMvoStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(sellableInventoryItemEntryId), version);
+    public SellableInventoryItemEntryMvoEvent getEvent(SellableInventoryItemEntryId sellableInventoryItemEntryId, long version) {
+        SellableInventoryItemEntryMvoEvent e = (SellableInventoryItemEntryMvoEvent)getEventStore().getEvent(toEventStoreAggregateId(sellableInventoryItemEntryId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(sellableInventoryItemEntryId, 0);
+            return getEvent(sellableInventoryItemEntryId, 0);
         }
         return e;
     }
 
     public SellableInventoryItemEntryMvoState getHistoryState(SellableInventoryItemEntryId sellableInventoryItemEntryId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractSellableInventoryItemEntryMvoStateEvent.class, toEventStoreAggregateId(sellableInventoryItemEntryId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractSellableInventoryItemEntryMvoEvent.class, toEventStoreAggregateId(sellableInventoryItemEntryId), version - 1);
         return new AbstractSellableInventoryItemEntryMvoState.SimpleSellableInventoryItemEntryMvoState(eventStream.getEvents());
     }
 
@@ -136,7 +136,7 @@ public abstract class AbstractSellableInventoryItemEntryMvoApplicationService im
         }
     }
 
-    public void initialize(SellableInventoryItemEntryMvoStateEvent.SellableInventoryItemEntryMvoStateCreated stateCreated) {
+    public void initialize(SellableInventoryItemEntryMvoEvent.SellableInventoryItemEntryMvoStateCreated stateCreated) {
         SellableInventoryItemEntryId aggregateId = stateCreated.getSellableInventoryItemEntryMvoEventId().getSellableInventoryItemEntryId();
         SellableInventoryItemEntryMvoState state = new AbstractSellableInventoryItemEntryMvoState.SimpleSellableInventoryItemEntryMvoState();
         state.setSellableInventoryItemEntryId(aggregateId);
@@ -154,9 +154,9 @@ public abstract class AbstractSellableInventoryItemEntryMvoApplicationService im
         if (command.getSellableInventoryItemVersion() == null) { command.setSellableInventoryItemVersion(SellableInventoryItemEntryMvoState.VERSION_NULL); }
         if (state.getSellableInventoryItemVersion() != null && state.getSellableInventoryItemVersion() > command.getSellableInventoryItemVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractSellableInventoryItemEntryMvoStateEvent.class, eventStoreAggregateId, command.getSellableInventoryItemVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractSellableInventoryItemEntryMvoEvent.class, eventStoreAggregateId, command.getSellableInventoryItemVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

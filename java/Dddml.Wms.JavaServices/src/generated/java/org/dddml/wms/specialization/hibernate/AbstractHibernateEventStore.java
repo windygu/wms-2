@@ -45,8 +45,8 @@ public abstract class AbstractHibernateEventStore implements EventStore {
 
     @Transactional(readOnly = true)
     @Override
-    public Event findLastEvent(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = getSupportedStateEventType();
+    public Event getEvent(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
+        Class supportedEventType = getSupportedEventType();
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
@@ -56,12 +56,12 @@ public abstract class AbstractHibernateEventStore implements EventStore {
 
     @Transactional(readOnly = true)
     @Override
-    public Event getStateEvent(EventStoreAggregateId eventStoreAggregateId, long version) {
+    public Event getEvent(EventStoreAggregateId eventStoreAggregateId, long version) {
         Serializable eventId = getEventId(eventStoreAggregateId, version);
-        return (Event) getCurrentSession().get(getSupportedStateEventType(), eventId);
+        return (Event) getCurrentSession().get(getSupportedEventType(), eventId);
     }
 
-    protected abstract Class getSupportedStateEventType();
+    protected abstract Class getSupportedEventType();
 
     protected abstract Serializable getEventId(EventStoreAggregateId eventStoreAggregateId, long version);
 

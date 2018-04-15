@@ -9,19 +9,19 @@ import org.dddml.wms.specialization.*;
 
 public class InventoryItemEntryMvoStateEventDtoConverter {
 
-    public InventoryItemEntryMvoStateEventDto toInventoryItemEntryMvoStateEventDto(AbstractInventoryItemEntryMvoStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractInventoryItemEntryMvoStateEvent.AbstractInventoryItemEntryMvoStateCreated) {
-            InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateCreated e = (InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateCreated) stateEvent;
+    public InventoryItemEntryMvoStateEventDto toInventoryItemEntryMvoStateEventDto(AbstractInventoryItemEntryMvoEvent stateEvent) {
+        if (stateEvent instanceof AbstractInventoryItemEntryMvoEvent.AbstractInventoryItemEntryMvoStateCreated) {
+            InventoryItemEntryMvoEvent.InventoryItemEntryMvoStateCreated e = (InventoryItemEntryMvoEvent.InventoryItemEntryMvoStateCreated) stateEvent;
             return toInventoryItemEntryMvoStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractInventoryItemEntryMvoStateEvent.AbstractInventoryItemEntryMvoStateMergePatched) {
-            InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateMergePatched e = (InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractInventoryItemEntryMvoEvent.AbstractInventoryItemEntryMvoStateMergePatched) {
+            InventoryItemEntryMvoEvent.InventoryItemEntryMvoStateMergePatched e = (InventoryItemEntryMvoEvent.InventoryItemEntryMvoStateMergePatched) stateEvent;
             return toInventoryItemEntryMvoStateMergePatchedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public InventoryItemEntryMvoStateEventDto.InventoryItemEntryMvoStateCreatedDto toInventoryItemEntryMvoStateCreatedDto(InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateCreated e) {
+    public InventoryItemEntryMvoStateEventDto.InventoryItemEntryMvoStateCreatedDto toInventoryItemEntryMvoStateCreatedDto(InventoryItemEntryMvoEvent.InventoryItemEntryMvoStateCreated e) {
         InventoryItemEntryMvoStateEventDto.InventoryItemEntryMvoStateCreatedDto dto = new InventoryItemEntryMvoStateEventDto.InventoryItemEntryMvoStateCreatedDto();
         dto.setInventoryItemEntryMvoEventId(e.getInventoryItemEntryMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -46,7 +46,7 @@ public class InventoryItemEntryMvoStateEventDtoConverter {
         return dto;
     }
 
-    public InventoryItemEntryMvoStateEventDto.InventoryItemEntryMvoStateMergePatchedDto toInventoryItemEntryMvoStateMergePatchedDto(InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateMergePatched e) {
+    public InventoryItemEntryMvoStateEventDto.InventoryItemEntryMvoStateMergePatchedDto toInventoryItemEntryMvoStateMergePatchedDto(InventoryItemEntryMvoEvent.InventoryItemEntryMvoStateMergePatched e) {
         InventoryItemEntryMvoStateEventDto.InventoryItemEntryMvoStateMergePatchedDto dto = new InventoryItemEntryMvoStateEventDto.InventoryItemEntryMvoStateMergePatchedDto();
         dto.setInventoryItemEntryMvoEventId(e.getInventoryItemEntryMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());

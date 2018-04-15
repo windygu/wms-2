@@ -30,7 +30,7 @@ public interface ProductCategoryApplicationService
 
     long getCount(Criterion filter);
 
-    ProductCategoryStateEvent getStateEvent(String productCategoryId, long version);
+    ProductCategoryEvent getEvent(String productCategoryId, long version);
 
     ProductCategoryState getHistoryState(String productCategoryId, long version);
 

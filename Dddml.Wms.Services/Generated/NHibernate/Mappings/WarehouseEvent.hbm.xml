@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+                   assembly="Dddml.Wms.Common" 
+                   namespace="Dddml.Wms.Domain.Warehouse">
+  
+  <class name="WarehouseStateEventBase" table="WarehouseEvents" mutable="false" abstract="true">
+
+    <composite-id name="WarehouseEventId" class="Dddml.Wms.Domain.Warehouse.WarehouseEventId">
+        <key-property name="WarehouseId" ><column name="WarehouseId" length="50" /></key-property>
+        <key-property name="Version" ></key-property>
+    </composite-id>
+    <discriminator column="EventType" type="String" />
+
+    <property name="WarehouseName" ></property>
+    <property name="Description" ></property>
+    <property name="IsInTransit" ></property>
+    <property name="Active" ></property>
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+    <subclass name="WarehouseStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="WarehouseStateMergePatched"  discriminator-value="MergePatched">
+
+
+        <property name="IsPropertyWarehouseNameRemoved" column="IsPropertyWarehouseNameRemoved"/>
+
+        <property name="IsPropertyDescriptionRemoved" column="IsPropertyDescriptionRemoved"/>
+
+        <property name="IsPropertyIsInTransitRemoved" column="IsPropertyIsInTransitRemoved"/>
+
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+    </subclass>
+
+    <subclass name="WarehouseStateDeleted"  discriminator-value="Deleted">
+
+    </subclass>
+
+
+
+  </class>
+  
+</hibernate-mapping>

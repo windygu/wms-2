@@ -163,7 +163,7 @@ public class SupplierProductResource {
 
             SupplierProductId idObj = SupplierProductResourceUtils.parseIdString(id);
             SupplierProductStateEventDtoConverter dtoConverter = getSupplierProductStateEventDtoConverter();
-            return dtoConverter.toSupplierProductStateEventDto((AbstractSupplierProductStateEvent) supplierProductApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toSupplierProductStateEventDto((AbstractSupplierProductEvent) supplierProductApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

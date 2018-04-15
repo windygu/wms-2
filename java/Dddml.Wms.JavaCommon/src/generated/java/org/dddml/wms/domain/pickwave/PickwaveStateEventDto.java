@@ -2,9 +2,9 @@ package org.dddml.wms.domain.pickwave;
 
 import java.util.Date;
 import org.dddml.wms.domain.*;
-import org.dddml.wms.domain.AbstractStateEvent;
+import org.dddml.wms.domain.AbstractEvent;
 
-public class PickwaveStateEventDto extends AbstractStateEvent
+public class PickwaveStateEventDto extends AbstractEvent
 {
 
     private PickwaveEventId pickwaveEventId;
@@ -118,7 +118,7 @@ public class PickwaveStateEventDto extends AbstractStateEvent
 	public static class PickwaveStateCreatedDto extends PickwaveStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_CREATED;
         }
@@ -129,7 +129,7 @@ public class PickwaveStateEventDto extends AbstractStateEvent
 	public static class PickwaveStateMergePatchedDto extends PickwaveStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_MERGE_PATCHED;
         }
@@ -140,7 +140,7 @@ public class PickwaveStateEventDto extends AbstractStateEvent
 	public static class PickwaveStateDeletedDto extends PickwaveStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_DELETED;
         }

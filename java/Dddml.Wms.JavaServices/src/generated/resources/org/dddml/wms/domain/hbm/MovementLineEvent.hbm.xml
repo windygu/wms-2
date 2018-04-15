@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.movement">
+  
+  <class name="AbstractMovementLineEvent" table="MovementLineEvents" mutable="false" abstract="true">
+
+	<composite-id name="movementLineEventId" class="org.dddml.wms.domain.movement.MovementLineEventId">
+		<key-property name="movementDocumentNumber" ><column name="MovementLineIdMovementDocumentNumber" length="50" /></key-property>
+		<key-property name="lineNumber" ><column name="MovementLineIdLineNumber" length="50" /></key-property>
+		<key-property name="movementVersion" ></key-property>
+	</composite-id>
+
+    <discriminator column="EventType" type="string" />
+
+	<property name="movementQuantity" ></property>
+	<property name="productId" ><column name="ProductId" sql-type="VARCHAR(60)" /></property>
+	<property name="locatorIdFrom" ></property>
+	<property name="locatorIdTo" ></property>
+	<property name="attributeSetInstanceId" ></property>
+	<property name="processed" ></property>
+	<property name="reversalLineNumber" ></property>
+	<property name="active" ></property>
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+    <property name="version" column="Version" not-null="true" />
+
+    <subclass name="AbstractMovementLineEvent$SimpleMovementLineStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="AbstractMovementLineEvent$SimpleMovementLineStateMergePatched" discriminator-value="MergePatched">
+
+        <property name="isPropertyMovementQuantityRemoved" column="IsPropertyMovementQuantityRemoved"/>
+
+        <property name="isPropertyProductIdRemoved" column="IsPropertyProductIdRemoved"/>
+
+        <property name="isPropertyLocatorIdFromRemoved" column="IsPropertyLocatorIdFromRemoved"/>
+
+        <property name="isPropertyLocatorIdToRemoved" column="IsPropertyLocatorIdToRemoved"/>
+
+        <property name="isPropertyAttributeSetInstanceIdRemoved" column="IsPropertyAttributeSetInstanceIdRemoved"/>
+
+        <property name="isPropertyProcessedRemoved" column="IsPropertyProcessedRemoved"/>
+
+        <property name="isPropertyReversalLineNumberRemoved" column="IsPropertyReversalLineNumberRemoved"/>
+
+        <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+
+
+    </subclass>
+
+    <subclass name="AbstractMovementLineEvent$SimpleMovementLineStateRemoved" discriminator-value="Removed">
+
+    </subclass>
+
+
+
+  </class>
+  
+</hibernate-mapping>

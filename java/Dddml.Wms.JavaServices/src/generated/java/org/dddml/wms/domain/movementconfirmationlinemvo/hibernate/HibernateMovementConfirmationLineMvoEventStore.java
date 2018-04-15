@@ -22,31 +22,31 @@ public class HibernateMovementConfirmationLineMvoEventStore extends AbstractHibe
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractMovementConfirmationLineMvoStateEvent.class;
+        return AbstractMovementConfirmationLineMvoEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractMovementConfirmationLineMvoStateEvent.class;
+        Class supportedEventType = AbstractMovementConfirmationLineMvoEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         MovementConfirmationLineId idObj = (MovementConfirmationLineId) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractMovementConfirmationLineMvoStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractMovementConfirmationLineMvoEvent.class);
         criteria.add(Restrictions.eq("movementConfirmationLineMvoEventId.movementConfirmationLineIdMovementConfirmationDocumentNumber", idObj.getMovementConfirmationDocumentNumber()));
         criteria.add(Restrictions.eq("movementConfirmationLineMvoEventId.movementConfirmationLineIdLineNumber", idObj.getLineNumber()));
         criteria.add(Restrictions.le("movementConfirmationLineMvoEventId.movementConfirmationVersion", version));
         criteria.addOrder(Order.asc("movementConfirmationLineMvoEventId.movementConfirmationVersion"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractMovementConfirmationLineMvoStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractMovementConfirmationLineMvoEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractMovementConfirmationLineMvoStateEvent) es.get(es.size() - 1)).getMovementConfirmationLineMvoEventId().getMovementConfirmationVersion());
+            eventStream.setSteamVersion(((AbstractMovementConfirmationLineMvoEvent) es.get(es.size() - 1)).getMovementConfirmationLineMvoEventId().getMovementConfirmationVersion());
         } else {
             //todo?
         }

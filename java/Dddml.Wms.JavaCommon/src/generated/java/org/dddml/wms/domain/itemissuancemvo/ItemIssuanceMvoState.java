@@ -5,7 +5,7 @@ import org.dddml.wms.domain.shipment.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.itemissuancemvo.ItemIssuanceMvoStateEvent.*;
+import org.dddml.wms.domain.itemissuancemvo.ItemIssuanceMvoEvent.*;
 
 public interface ItemIssuanceMvoState
 {
@@ -229,11 +229,11 @@ public interface ItemIssuanceMvoState
 
     void mutate(Event e);
 
-    void when(ItemIssuanceMvoStateEvent.ItemIssuanceMvoStateCreated e);
+    void when(ItemIssuanceMvoEvent.ItemIssuanceMvoStateCreated e);
 
-    void when(ItemIssuanceMvoStateEvent.ItemIssuanceMvoStateMergePatched e);
+    void when(ItemIssuanceMvoEvent.ItemIssuanceMvoStateMergePatched e);
 
-    void when(ItemIssuanceMvoStateEvent.ItemIssuanceMvoStateDeleted e);
+    void when(ItemIssuanceMvoEvent.ItemIssuanceMvoStateDeleted e);
     
 }
 

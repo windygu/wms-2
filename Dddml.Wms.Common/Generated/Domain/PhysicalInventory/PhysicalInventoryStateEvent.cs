@@ -69,17 +69,17 @@ namespace Dddml.Wms.Domain.PhysicalInventory
 			}
 		}
 
-        public virtual bool StateEventReadOnly { get; set; }
+        public virtual bool EventReadOnly { get; set; }
 
         bool IPhysicalInventoryStateEvent.ReadOnly
         {
             get
             {
-                return this.StateEventReadOnly;
+                return this.EventReadOnly;
             }
             set
             {
-                this.StateEventReadOnly = value;
+                this.EventReadOnly = value;
             }
         }
 
@@ -166,7 +166,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._physicalInventoryLineEvents.Values;
                 }
@@ -272,7 +272,7 @@ namespace Dddml.Wms.Domain.PhysicalInventory
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._physicalInventoryLineEvents.Values;
                 }

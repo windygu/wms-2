@@ -83,19 +83,19 @@ public abstract class AbstractShipmentReceiptMvoApplicationService implements Sh
         return getStateQueryRepository().getCount(filter);
     }
 
-    public ShipmentReceiptMvoStateEvent getStateEvent(ShipmentReceiptId shipmentReceiptId, long version) {
-        ShipmentReceiptMvoStateEvent e = (ShipmentReceiptMvoStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(shipmentReceiptId), version);
+    public ShipmentReceiptMvoEvent getEvent(ShipmentReceiptId shipmentReceiptId, long version) {
+        ShipmentReceiptMvoEvent e = (ShipmentReceiptMvoEvent)getEventStore().getEvent(toEventStoreAggregateId(shipmentReceiptId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(shipmentReceiptId, 0);
+            return getEvent(shipmentReceiptId, 0);
         }
         return e;
     }
 
     public ShipmentReceiptMvoState getHistoryState(ShipmentReceiptId shipmentReceiptId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractShipmentReceiptMvoStateEvent.class, toEventStoreAggregateId(shipmentReceiptId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractShipmentReceiptMvoEvent.class, toEventStoreAggregateId(shipmentReceiptId), version - 1);
         return new AbstractShipmentReceiptMvoState.SimpleShipmentReceiptMvoState(eventStream.getEvents());
     }
 
@@ -134,7 +134,7 @@ public abstract class AbstractShipmentReceiptMvoApplicationService implements Sh
         }
     }
 
-    public void initialize(ShipmentReceiptMvoStateEvent.ShipmentReceiptMvoStateCreated stateCreated) {
+    public void initialize(ShipmentReceiptMvoEvent.ShipmentReceiptMvoStateCreated stateCreated) {
         ShipmentReceiptId aggregateId = stateCreated.getShipmentReceiptMvoEventId().getShipmentReceiptId();
         ShipmentReceiptMvoState state = new AbstractShipmentReceiptMvoState.SimpleShipmentReceiptMvoState();
         state.setShipmentReceiptId(aggregateId);
@@ -152,9 +152,9 @@ public abstract class AbstractShipmentReceiptMvoApplicationService implements Sh
         if (command.getShipmentVersion() == null) { command.setShipmentVersion(ShipmentReceiptMvoState.VERSION_NULL); }
         if (state.getShipmentVersion() != null && state.getShipmentVersion() > command.getShipmentVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractShipmentReceiptMvoStateEvent.class, eventStoreAggregateId, command.getShipmentVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractShipmentReceiptMvoEvent.class, eventStoreAggregateId, command.getShipmentVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

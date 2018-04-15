@@ -20,30 +20,30 @@ public class HibernateAttributeSetInstanceExtensionFieldEventStore extends Abstr
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractAttributeSetInstanceExtensionFieldStateEvent.class;
+        return AbstractAttributeSetInstanceExtensionFieldEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractAttributeSetInstanceExtensionFieldStateEvent.class;
+        Class supportedEventType = AbstractAttributeSetInstanceExtensionFieldEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         String idObj = (String) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractAttributeSetInstanceExtensionFieldStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractAttributeSetInstanceExtensionFieldEvent.class);
         criteria.add(Restrictions.eq("attributeSetInstanceExtensionFieldEventId.name", idObj));
         criteria.add(Restrictions.le("attributeSetInstanceExtensionFieldEventId.version", version));
         criteria.addOrder(Order.asc("attributeSetInstanceExtensionFieldEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractAttributeSetInstanceExtensionFieldStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractAttributeSetInstanceExtensionFieldEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractAttributeSetInstanceExtensionFieldStateEvent) es.get(es.size() - 1)).getAttributeSetInstanceExtensionFieldEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractAttributeSetInstanceExtensionFieldEvent) es.get(es.size() - 1)).getAttributeSetInstanceExtensionFieldEventId().getVersion());
         } else {
             //todo?
         }

@@ -87,19 +87,19 @@ public abstract class AbstractOrderRoleMvoApplicationService implements OrderRol
         return getStateQueryRepository().getCount(filter);
     }
 
-    public OrderRoleMvoStateEvent getStateEvent(OrderRoleId orderRoleId, long version) {
-        OrderRoleMvoStateEvent e = (OrderRoleMvoStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(orderRoleId), version);
+    public OrderRoleMvoEvent getEvent(OrderRoleId orderRoleId, long version) {
+        OrderRoleMvoEvent e = (OrderRoleMvoEvent)getEventStore().getEvent(toEventStoreAggregateId(orderRoleId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(orderRoleId, 0);
+            return getEvent(orderRoleId, 0);
         }
         return e;
     }
 
     public OrderRoleMvoState getHistoryState(OrderRoleId orderRoleId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractOrderRoleMvoStateEvent.class, toEventStoreAggregateId(orderRoleId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractOrderRoleMvoEvent.class, toEventStoreAggregateId(orderRoleId), version - 1);
         return new AbstractOrderRoleMvoState.SimpleOrderRoleMvoState(eventStream.getEvents());
     }
 
@@ -138,7 +138,7 @@ public abstract class AbstractOrderRoleMvoApplicationService implements OrderRol
         }
     }
 
-    public void initialize(OrderRoleMvoStateEvent.OrderRoleMvoStateCreated stateCreated) {
+    public void initialize(OrderRoleMvoEvent.OrderRoleMvoStateCreated stateCreated) {
         OrderRoleId aggregateId = stateCreated.getOrderRoleMvoEventId().getOrderRoleId();
         OrderRoleMvoState state = new AbstractOrderRoleMvoState.SimpleOrderRoleMvoState();
         state.setOrderRoleId(aggregateId);
@@ -156,9 +156,9 @@ public abstract class AbstractOrderRoleMvoApplicationService implements OrderRol
         if (command.getOrderVersion() == null) { command.setOrderVersion(OrderRoleMvoState.VERSION_NULL); }
         if (state.getOrderVersion() != null && state.getOrderVersion() > command.getOrderVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractOrderRoleMvoStateEvent.class, eventStoreAggregateId, command.getOrderVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractOrderRoleMvoEvent.class, eventStoreAggregateId, command.getOrderVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

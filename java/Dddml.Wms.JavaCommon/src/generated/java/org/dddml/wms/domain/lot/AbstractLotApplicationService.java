@@ -86,19 +86,19 @@ public abstract class AbstractLotApplicationService implements LotApplicationSer
         return getStateQueryRepository().getCount(filter);
     }
 
-    public LotStateEvent getStateEvent(String lotId, long version) {
-        LotStateEvent e = (LotStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(lotId), version);
+    public LotEvent getEvent(String lotId, long version) {
+        LotEvent e = (LotEvent)getEventStore().getEvent(toEventStoreAggregateId(lotId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(lotId, 0);
+            return getEvent(lotId, 0);
         }
         return e;
     }
 
     public LotState getHistoryState(String lotId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractLotStateEvent.class, toEventStoreAggregateId(lotId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractLotEvent.class, toEventStoreAggregateId(lotId), version - 1);
         return new AbstractLotState.SimpleLotState(eventStream.getEvents());
     }
 
@@ -137,7 +137,7 @@ public abstract class AbstractLotApplicationService implements LotApplicationSer
         }
     }
 
-    public void initialize(LotStateEvent.LotStateCreated stateCreated) {
+    public void initialize(LotEvent.LotStateCreated stateCreated) {
         String aggregateId = stateCreated.getLotEventId().getLotId();
         LotState state = new AbstractLotState.SimpleLotState();
         state.setLotId(aggregateId);
@@ -155,9 +155,9 @@ public abstract class AbstractLotApplicationService implements LotApplicationSer
         if (command.getVersion() == null) { command.setVersion(LotState.VERSION_NULL); }
         if (state.getVersion() != null && state.getVersion() > command.getVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractLotStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractLotEvent.class, eventStoreAggregateId, command.getVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

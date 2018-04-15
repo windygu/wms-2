@@ -45,7 +45,7 @@ namespace Dddml.Wms.Domain.ContactMech.NHibernate
             var es = criteria.List<IEvent>();
             foreach (ContactMechStateEventBase e in es)
             {
-                e.StateEventReadOnly = true;
+                e.EventReadOnly = true;
             }
             return new EventStream()
             {

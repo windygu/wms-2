@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.physicalinventory.PhysicalInventoryLineStateEvent.*;
+import org.dddml.wms.domain.physicalinventory.PhysicalInventoryLineEvent.*;
 
 public abstract class AbstractPhysicalInventoryLineState implements PhysicalInventoryLineState
 {
@@ -338,7 +338,7 @@ public abstract class AbstractPhysicalInventoryLineState implements PhysicalInve
     {
     }
 
-    protected void throwOnWrongEvent(PhysicalInventoryLineStateEvent stateEvent)
+    protected void throwOnWrongEvent(PhysicalInventoryLineEvent stateEvent)
     {
         String stateEntityIdPhysicalInventoryDocumentNumber = this.getPhysicalInventoryLineId().getPhysicalInventoryDocumentNumber();
         String eventEntityIdPhysicalInventoryDocumentNumber = stateEvent.getPhysicalInventoryLineEventId().getPhysicalInventoryDocumentNumber();

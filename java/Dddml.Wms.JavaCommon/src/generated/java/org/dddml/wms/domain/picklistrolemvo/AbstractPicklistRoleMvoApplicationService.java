@@ -87,19 +87,19 @@ public abstract class AbstractPicklistRoleMvoApplicationService implements Pickl
         return getStateQueryRepository().getCount(filter);
     }
 
-    public PicklistRoleMvoStateEvent getStateEvent(PicklistRoleId picklistRoleId, long version) {
-        PicklistRoleMvoStateEvent e = (PicklistRoleMvoStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(picklistRoleId), version);
+    public PicklistRoleMvoEvent getEvent(PicklistRoleId picklistRoleId, long version) {
+        PicklistRoleMvoEvent e = (PicklistRoleMvoEvent)getEventStore().getEvent(toEventStoreAggregateId(picklistRoleId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(picklistRoleId, 0);
+            return getEvent(picklistRoleId, 0);
         }
         return e;
     }
 
     public PicklistRoleMvoState getHistoryState(PicklistRoleId picklistRoleId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractPicklistRoleMvoStateEvent.class, toEventStoreAggregateId(picklistRoleId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractPicklistRoleMvoEvent.class, toEventStoreAggregateId(picklistRoleId), version - 1);
         return new AbstractPicklistRoleMvoState.SimplePicklistRoleMvoState(eventStream.getEvents());
     }
 
@@ -138,7 +138,7 @@ public abstract class AbstractPicklistRoleMvoApplicationService implements Pickl
         }
     }
 
-    public void initialize(PicklistRoleMvoStateEvent.PicklistRoleMvoStateCreated stateCreated) {
+    public void initialize(PicklistRoleMvoEvent.PicklistRoleMvoStateCreated stateCreated) {
         PicklistRoleId aggregateId = stateCreated.getPicklistRoleMvoEventId().getPicklistRoleId();
         PicklistRoleMvoState state = new AbstractPicklistRoleMvoState.SimplePicklistRoleMvoState();
         state.setPicklistRoleId(aggregateId);
@@ -156,9 +156,9 @@ public abstract class AbstractPicklistRoleMvoApplicationService implements Pickl
         if (command.getPicklistVersion() == null) { command.setPicklistVersion(PicklistRoleMvoState.VERSION_NULL); }
         if (state.getPicklistVersion() != null && state.getPicklistVersion() > command.getPicklistVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractPicklistRoleMvoStateEvent.class, eventStoreAggregateId, command.getPicklistVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractPicklistRoleMvoEvent.class, eventStoreAggregateId, command.getPicklistVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

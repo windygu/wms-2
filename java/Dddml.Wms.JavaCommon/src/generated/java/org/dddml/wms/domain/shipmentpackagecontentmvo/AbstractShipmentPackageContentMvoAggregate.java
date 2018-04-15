@@ -28,19 +28,19 @@ public abstract class AbstractShipmentPackageContentMvoAggregate extends Abstrac
     public void create(ShipmentPackageContentMvoCommand.CreateShipmentPackageContentMvo c)
     {
         if (c.getShipmentPackageVersion() == null) { c.setShipmentPackageVersion(ShipmentPackageContentMvoState.VERSION_NULL); }
-        ShipmentPackageContentMvoStateEvent e = map(c);
+        ShipmentPackageContentMvoEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(ShipmentPackageContentMvoCommand.MergePatchShipmentPackageContentMvo c)
     {
-        ShipmentPackageContentMvoStateEvent e = map(c);
+        ShipmentPackageContentMvoEvent e = map(c);
         apply(e);
     }
 
     public void delete(ShipmentPackageContentMvoCommand.DeleteShipmentPackageContentMvo c)
     {
-        ShipmentPackageContentMvoStateEvent e = map(c);
+        ShipmentPackageContentMvoEvent e = map(c);
         apply(e);
     }
 
@@ -55,9 +55,9 @@ public abstract class AbstractShipmentPackageContentMvoAggregate extends Abstrac
         changes.add(e);
     }
 
-    protected ShipmentPackageContentMvoStateEvent map(ShipmentPackageContentMvoCommand.CreateShipmentPackageContentMvo c) {
+    protected ShipmentPackageContentMvoEvent map(ShipmentPackageContentMvoCommand.CreateShipmentPackageContentMvo c) {
         ShipmentPackageContentMvoEventId stateEventId = new ShipmentPackageContentMvoEventId(c.getShipmentPackageContentId(), c.getShipmentPackageVersion());
-        ShipmentPackageContentMvoStateEvent.ShipmentPackageContentMvoStateCreated e = newShipmentPackageContentMvoStateCreated(stateEventId);
+        ShipmentPackageContentMvoEvent.ShipmentPackageContentMvoStateCreated e = newShipmentPackageContentMvoStateCreated(stateEventId);
         e.setQuantity(c.getQuantity());
         e.setSubProductId(c.getSubProductId());
         e.setSubProductQuantity(c.getSubProductQuantity());
@@ -78,15 +78,15 @@ public abstract class AbstractShipmentPackageContentMvoAggregate extends Abstrac
         e.setShipmentPackageUpdatedAt(c.getShipmentPackageUpdatedAt());
         e.setShipmentPackageActive(c.getShipmentPackageActive());
         e.setShipmentPackageDeleted(c.getShipmentPackageDeleted());
-        ((AbstractShipmentPackageContentMvoStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractShipmentPackageContentMvoEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected ShipmentPackageContentMvoStateEvent map(ShipmentPackageContentMvoCommand.MergePatchShipmentPackageContentMvo c) {
+    protected ShipmentPackageContentMvoEvent map(ShipmentPackageContentMvoCommand.MergePatchShipmentPackageContentMvo c) {
         ShipmentPackageContentMvoEventId stateEventId = new ShipmentPackageContentMvoEventId(c.getShipmentPackageContentId(), c.getShipmentPackageVersion());
-        ShipmentPackageContentMvoStateEvent.ShipmentPackageContentMvoStateMergePatched e = newShipmentPackageContentMvoStateMergePatched(stateEventId);
+        ShipmentPackageContentMvoEvent.ShipmentPackageContentMvoStateMergePatched e = newShipmentPackageContentMvoStateMergePatched(stateEventId);
         e.setQuantity(c.getQuantity());
         e.setSubProductId(c.getSubProductId());
         e.setSubProductQuantity(c.getSubProductQuantity());
@@ -127,16 +127,16 @@ public abstract class AbstractShipmentPackageContentMvoAggregate extends Abstrac
         e.setIsPropertyShipmentPackageUpdatedAtRemoved(c.getIsPropertyShipmentPackageUpdatedAtRemoved());
         e.setIsPropertyShipmentPackageActiveRemoved(c.getIsPropertyShipmentPackageActiveRemoved());
         e.setIsPropertyShipmentPackageDeletedRemoved(c.getIsPropertyShipmentPackageDeletedRemoved());
-        ((AbstractShipmentPackageContentMvoStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractShipmentPackageContentMvoEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected ShipmentPackageContentMvoStateEvent map(ShipmentPackageContentMvoCommand.DeleteShipmentPackageContentMvo c) {
+    protected ShipmentPackageContentMvoEvent map(ShipmentPackageContentMvoCommand.DeleteShipmentPackageContentMvo c) {
         ShipmentPackageContentMvoEventId stateEventId = new ShipmentPackageContentMvoEventId(c.getShipmentPackageContentId(), c.getShipmentPackageVersion());
-        ShipmentPackageContentMvoStateEvent.ShipmentPackageContentMvoStateDeleted e = newShipmentPackageContentMvoStateDeleted(stateEventId);
-        ((AbstractShipmentPackageContentMvoStateEvent)e).setCommandId(c.getCommandId());
+        ShipmentPackageContentMvoEvent.ShipmentPackageContentMvoStateDeleted e = newShipmentPackageContentMvoStateDeleted(stateEventId);
+        ((AbstractShipmentPackageContentMvoEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
@@ -145,44 +145,44 @@ public abstract class AbstractShipmentPackageContentMvoAggregate extends Abstrac
 
     ////////////////////////
 
-    protected ShipmentPackageContentMvoStateEvent.ShipmentPackageContentMvoStateCreated newShipmentPackageContentMvoStateCreated(Long version, String commandId, String requesterId) {
+    protected ShipmentPackageContentMvoEvent.ShipmentPackageContentMvoStateCreated newShipmentPackageContentMvoStateCreated(Long version, String commandId, String requesterId) {
         ShipmentPackageContentMvoEventId stateEventId = new ShipmentPackageContentMvoEventId(this.state.getShipmentPackageContentId(), version);
-        ShipmentPackageContentMvoStateEvent.ShipmentPackageContentMvoStateCreated e = newShipmentPackageContentMvoStateCreated(stateEventId);
-        ((AbstractShipmentPackageContentMvoStateEvent)e).setCommandId(commandId);
+        ShipmentPackageContentMvoEvent.ShipmentPackageContentMvoStateCreated e = newShipmentPackageContentMvoStateCreated(stateEventId);
+        ((AbstractShipmentPackageContentMvoEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected ShipmentPackageContentMvoStateEvent.ShipmentPackageContentMvoStateMergePatched newShipmentPackageContentMvoStateMergePatched(Long version, String commandId, String requesterId) {
+    protected ShipmentPackageContentMvoEvent.ShipmentPackageContentMvoStateMergePatched newShipmentPackageContentMvoStateMergePatched(Long version, String commandId, String requesterId) {
         ShipmentPackageContentMvoEventId stateEventId = new ShipmentPackageContentMvoEventId(this.state.getShipmentPackageContentId(), version);
-        ShipmentPackageContentMvoStateEvent.ShipmentPackageContentMvoStateMergePatched e = newShipmentPackageContentMvoStateMergePatched(stateEventId);
-        ((AbstractShipmentPackageContentMvoStateEvent)e).setCommandId(commandId);
+        ShipmentPackageContentMvoEvent.ShipmentPackageContentMvoStateMergePatched e = newShipmentPackageContentMvoStateMergePatched(stateEventId);
+        ((AbstractShipmentPackageContentMvoEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected ShipmentPackageContentMvoStateEvent.ShipmentPackageContentMvoStateDeleted newShipmentPackageContentMvoStateDeleted(Long version, String commandId, String requesterId) {
+    protected ShipmentPackageContentMvoEvent.ShipmentPackageContentMvoStateDeleted newShipmentPackageContentMvoStateDeleted(Long version, String commandId, String requesterId) {
         ShipmentPackageContentMvoEventId stateEventId = new ShipmentPackageContentMvoEventId(this.state.getShipmentPackageContentId(), version);
-        ShipmentPackageContentMvoStateEvent.ShipmentPackageContentMvoStateDeleted e = newShipmentPackageContentMvoStateDeleted(stateEventId);
-        ((AbstractShipmentPackageContentMvoStateEvent)e).setCommandId(commandId);
+        ShipmentPackageContentMvoEvent.ShipmentPackageContentMvoStateDeleted e = newShipmentPackageContentMvoStateDeleted(stateEventId);
+        ((AbstractShipmentPackageContentMvoEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected ShipmentPackageContentMvoStateEvent.ShipmentPackageContentMvoStateCreated newShipmentPackageContentMvoStateCreated(ShipmentPackageContentMvoEventId stateEventId) {
-        return new AbstractShipmentPackageContentMvoStateEvent.SimpleShipmentPackageContentMvoStateCreated(stateEventId);
+    protected ShipmentPackageContentMvoEvent.ShipmentPackageContentMvoStateCreated newShipmentPackageContentMvoStateCreated(ShipmentPackageContentMvoEventId stateEventId) {
+        return new AbstractShipmentPackageContentMvoEvent.SimpleShipmentPackageContentMvoStateCreated(stateEventId);
     }
 
-    protected ShipmentPackageContentMvoStateEvent.ShipmentPackageContentMvoStateMergePatched newShipmentPackageContentMvoStateMergePatched(ShipmentPackageContentMvoEventId stateEventId) {
-        return new AbstractShipmentPackageContentMvoStateEvent.SimpleShipmentPackageContentMvoStateMergePatched(stateEventId);
+    protected ShipmentPackageContentMvoEvent.ShipmentPackageContentMvoStateMergePatched newShipmentPackageContentMvoStateMergePatched(ShipmentPackageContentMvoEventId stateEventId) {
+        return new AbstractShipmentPackageContentMvoEvent.SimpleShipmentPackageContentMvoStateMergePatched(stateEventId);
     }
 
-    protected ShipmentPackageContentMvoStateEvent.ShipmentPackageContentMvoStateDeleted newShipmentPackageContentMvoStateDeleted(ShipmentPackageContentMvoEventId stateEventId)
+    protected ShipmentPackageContentMvoEvent.ShipmentPackageContentMvoStateDeleted newShipmentPackageContentMvoStateDeleted(ShipmentPackageContentMvoEventId stateEventId)
     {
-        return new AbstractShipmentPackageContentMvoStateEvent.SimpleShipmentPackageContentMvoStateDeleted(stateEventId);
+        return new AbstractShipmentPackageContentMvoEvent.SimpleShipmentPackageContentMvoStateDeleted(stateEventId);
     }
 
     public static class SimpleShipmentPackageContentMvoAggregate extends AbstractShipmentPackageContentMvoAggregate

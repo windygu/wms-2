@@ -8,19 +8,19 @@ import org.dddml.wms.specialization.*;
 
 public class InOutStateEventDtoConverter {
 
-    public InOutStateEventDto toInOutStateEventDto(AbstractInOutStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractInOutStateEvent.AbstractInOutStateCreated) {
-            InOutStateEvent.InOutStateCreated e = (InOutStateEvent.InOutStateCreated) stateEvent;
+    public InOutStateEventDto toInOutStateEventDto(AbstractInOutEvent stateEvent) {
+        if (stateEvent instanceof AbstractInOutEvent.AbstractInOutStateCreated) {
+            InOutEvent.InOutStateCreated e = (InOutEvent.InOutStateCreated) stateEvent;
             return toInOutStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractInOutStateEvent.AbstractInOutStateMergePatched) {
-            InOutStateEvent.InOutStateMergePatched e = (InOutStateEvent.InOutStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractInOutEvent.AbstractInOutStateMergePatched) {
+            InOutEvent.InOutStateMergePatched e = (InOutEvent.InOutStateMergePatched) stateEvent;
             return toInOutStateMergePatchedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public InOutStateEventDto.InOutStateCreatedDto toInOutStateCreatedDto(InOutStateEvent.InOutStateCreated e) {
+    public InOutStateEventDto.InOutStateCreatedDto toInOutStateCreatedDto(InOutEvent.InOutStateCreated e) {
         InOutStateEventDto.InOutStateCreatedDto dto = new InOutStateEventDto.InOutStateCreatedDto();
         dto.setInOutEventId(e.getInOutEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -58,7 +58,7 @@ public class InOutStateEventDtoConverter {
         dto.setReversalDocumentNumber(e.getReversalDocumentNumber());
         dto.setActive(e.getActive());
         List<InOutLineStateEventDto.InOutLineStateCreatedDto> inOutLineEvents = new ArrayList<>();
-        for (InOutLineStateEvent.InOutLineStateCreated ee : e.getInOutLineEvents()) {
+        for (InOutLineEvent.InOutLineStateCreated ee : e.getInOutLineEvents()) {
             InOutLineStateEventDto.InOutLineStateCreatedDto eeDto = getInOutLineStateEventDtoConverter().toInOutLineStateCreatedDto(ee);
             inOutLineEvents.add(eeDto);
         }
@@ -67,7 +67,7 @@ public class InOutStateEventDtoConverter {
         return dto;
     }
 
-    public InOutStateEventDto.InOutStateMergePatchedDto toInOutStateMergePatchedDto(InOutStateEvent.InOutStateMergePatched e) {
+    public InOutStateEventDto.InOutStateMergePatchedDto toInOutStateMergePatchedDto(InOutEvent.InOutStateMergePatched e) {
         InOutStateEventDto.InOutStateMergePatchedDto dto = new InOutStateEventDto.InOutStateMergePatchedDto();
         dto.setInOutEventId(e.getInOutEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -136,8 +136,8 @@ public class InOutStateEventDtoConverter {
         dto.setIsPropertyReversalDocumentNumberRemoved(e.getIsPropertyReversalDocumentNumberRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
         List<InOutLineStateEventDto> inOutLineEvents = new ArrayList<>();
-        for (InOutLineStateEvent ee : e.getInOutLineEvents()) {
-            InOutLineStateEventDto eeDto = getInOutLineStateEventDtoConverter().toInOutLineStateEventDto((AbstractInOutLineStateEvent) ee);
+        for (InOutLineEvent ee : e.getInOutLineEvents()) {
+            InOutLineStateEventDto eeDto = getInOutLineStateEventDtoConverter().toInOutLineStateEventDto((AbstractInOutLineEvent) ee);
             inOutLineEvents.add(eeDto);
         }
         dto.setInOutLineEvents(inOutLineEvents.toArray(new InOutLineStateEventDto[0]));

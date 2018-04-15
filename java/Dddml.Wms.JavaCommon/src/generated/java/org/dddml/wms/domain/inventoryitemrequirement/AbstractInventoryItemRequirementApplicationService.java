@@ -118,7 +118,7 @@ public abstract class AbstractInventoryItemRequirementApplicationService impleme
         }
     }
 
-    public void initialize(InventoryItemRequirementStateEvent.InventoryItemRequirementStateCreated stateCreated) {
+    public void initialize(InventoryItemRequirementEvent.InventoryItemRequirementStateCreated stateCreated) {
         InventoryItemId aggregateId = stateCreated.getInventoryItemRequirementEventId().getInventoryItemRequirementId();
         InventoryItemRequirementState state = new AbstractInventoryItemRequirementState.SimpleInventoryItemRequirementState();
         state.setInventoryItemRequirementId(aggregateId);

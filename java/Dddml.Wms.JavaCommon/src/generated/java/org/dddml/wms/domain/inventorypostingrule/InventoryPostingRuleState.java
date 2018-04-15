@@ -5,7 +5,7 @@ import org.dddml.wms.domain.inventoryitem.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.inventorypostingrule.InventoryPostingRuleStateEvent.*;
+import org.dddml.wms.domain.inventorypostingrule.InventoryPostingRuleEvent.*;
 
 public interface InventoryPostingRuleState
 {
@@ -73,11 +73,11 @@ public interface InventoryPostingRuleState
 
     void mutate(Event e);
 
-    void when(InventoryPostingRuleStateEvent.InventoryPostingRuleStateCreated e);
+    void when(InventoryPostingRuleEvent.InventoryPostingRuleStateCreated e);
 
-    void when(InventoryPostingRuleStateEvent.InventoryPostingRuleStateMergePatched e);
+    void when(InventoryPostingRuleEvent.InventoryPostingRuleStateMergePatched e);
 
-    void when(InventoryPostingRuleStateEvent.InventoryPostingRuleStateDeleted e);
+    void when(InventoryPostingRuleEvent.InventoryPostingRuleStateDeleted e);
     
 }
 

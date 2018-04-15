@@ -21,31 +21,31 @@ public class HibernateOrderItemMvoEventStore extends AbstractHibernateEventStore
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractOrderItemMvoStateEvent.class;
+        return AbstractOrderItemMvoEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractOrderItemMvoStateEvent.class;
+        Class supportedEventType = AbstractOrderItemMvoEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         OrderItemId idObj = (OrderItemId) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractOrderItemMvoStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractOrderItemMvoEvent.class);
         criteria.add(Restrictions.eq("orderItemMvoEventId.orderItemIdOrderId", idObj.getOrderId()));
         criteria.add(Restrictions.eq("orderItemMvoEventId.orderItemIdOrderItemSeqId", idObj.getOrderItemSeqId()));
         criteria.add(Restrictions.le("orderItemMvoEventId.orderVersion", version));
         criteria.addOrder(Order.asc("orderItemMvoEventId.orderVersion"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractOrderItemMvoStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractOrderItemMvoEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractOrderItemMvoStateEvent) es.get(es.size() - 1)).getOrderItemMvoEventId().getOrderVersion());
+            eventStream.setSteamVersion(((AbstractOrderItemMvoEvent) es.get(es.size() - 1)).getOrderItemMvoEventId().getOrderVersion());
         } else {
             //todo?
         }

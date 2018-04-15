@@ -3,9 +3,9 @@ package org.dddml.wms.domain.shipmentreceiptmvo;
 import org.dddml.wms.domain.shipment.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
-import org.dddml.wms.domain.AbstractStateEvent;
+import org.dddml.wms.domain.AbstractEvent;
 
-public class ShipmentReceiptMvoStateEventDto extends AbstractStateEvent
+public class ShipmentReceiptMvoStateEventDto extends AbstractEvent
 {
 
     private ShipmentReceiptMvoEventId shipmentReceiptMvoEventId;
@@ -1059,7 +1059,7 @@ public class ShipmentReceiptMvoStateEventDto extends AbstractStateEvent
 	public static class ShipmentReceiptMvoStateCreatedDto extends ShipmentReceiptMvoStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_CREATED;
         }
@@ -1070,7 +1070,7 @@ public class ShipmentReceiptMvoStateEventDto extends AbstractStateEvent
 	public static class ShipmentReceiptMvoStateMergePatchedDto extends ShipmentReceiptMvoStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_MERGE_PATCHED;
         }
@@ -1081,7 +1081,7 @@ public class ShipmentReceiptMvoStateEventDto extends AbstractStateEvent
 	public static class ShipmentReceiptMvoStateDeletedDto extends ShipmentReceiptMvoStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_DELETED;
         }

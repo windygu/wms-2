@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.facility.FacilityStateEvent.*;
+import org.dddml.wms.domain.facility.FacilityEvent.*;
 
 public interface FacilityState
 {
@@ -120,11 +120,11 @@ public interface FacilityState
 
     void mutate(Event e);
 
-    void when(FacilityStateEvent.FacilityStateCreated e);
+    void when(FacilityEvent.FacilityStateCreated e);
 
-    void when(FacilityStateEvent.FacilityStateMergePatched e);
+    void when(FacilityEvent.FacilityStateMergePatched e);
 
-    void when(FacilityStateEvent.FacilityStateDeleted e);
+    void when(FacilityEvent.FacilityStateDeleted e);
     
 }
 

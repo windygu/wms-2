@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.inout.InOutLineStateEvent.*;
+import org.dddml.wms.domain.inout.InOutLineEvent.*;
 
 public abstract class AbstractInOutLineState implements InOutLineState
 {
@@ -481,7 +481,7 @@ public abstract class AbstractInOutLineState implements InOutLineState
     {
     }
 
-    protected void throwOnWrongEvent(InOutLineStateEvent stateEvent)
+    protected void throwOnWrongEvent(InOutLineEvent stateEvent)
     {
         String stateEntityIdInOutDocumentNumber = this.getInOutLineId().getInOutDocumentNumber();
         String eventEntityIdInOutDocumentNumber = stateEvent.getInOutLineEventId().getInOutDocumentNumber();

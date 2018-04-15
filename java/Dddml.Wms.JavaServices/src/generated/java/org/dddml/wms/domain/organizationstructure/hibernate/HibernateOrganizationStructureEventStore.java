@@ -20,20 +20,20 @@ public class HibernateOrganizationStructureEventStore extends AbstractHibernateE
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractOrganizationStructureStateEvent.class;
+        return AbstractOrganizationStructureEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractOrganizationStructureStateEvent.class;
+        Class supportedEventType = AbstractOrganizationStructureEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         OrganizationStructureId idObj = (OrganizationStructureId) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractOrganizationStructureStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractOrganizationStructureEvent.class);
         criteria.add(Restrictions.eq("organizationStructureEventId.idOrganizationStructureTypeId", idObj.getOrganizationStructureTypeId()));
         criteria.add(Restrictions.eq("organizationStructureEventId.idParentId", idObj.getParentId()));
         criteria.add(Restrictions.eq("organizationStructureEventId.idSubsidiaryId", idObj.getSubsidiaryId()));
@@ -41,11 +41,11 @@ public class HibernateOrganizationStructureEventStore extends AbstractHibernateE
         criteria.addOrder(Order.asc("organizationStructureEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractOrganizationStructureStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractOrganizationStructureEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractOrganizationStructureStateEvent) es.get(es.size() - 1)).getOrganizationStructureEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractOrganizationStructureEvent) es.get(es.size() - 1)).getOrganizationStructureEventId().getVersion());
         } else {
             //todo?
         }

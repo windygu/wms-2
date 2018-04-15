@@ -20,31 +20,31 @@ public class HibernatePartyRoleEventStore extends AbstractHibernateEventStore
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractPartyRoleStateEvent.class;
+        return AbstractPartyRoleEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractPartyRoleStateEvent.class;
+        Class supportedEventType = AbstractPartyRoleEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         PartyRoleId idObj = (PartyRoleId) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractPartyRoleStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractPartyRoleEvent.class);
         criteria.add(Restrictions.eq("partyRoleEventId.partyRoleIdPartyId", idObj.getPartyId()));
         criteria.add(Restrictions.eq("partyRoleEventId.partyRoleIdRoleTypeId", idObj.getRoleTypeId()));
         criteria.add(Restrictions.le("partyRoleEventId.version", version));
         criteria.addOrder(Order.asc("partyRoleEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractPartyRoleStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractPartyRoleEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractPartyRoleStateEvent) es.get(es.size() - 1)).getPartyRoleEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractPartyRoleEvent) es.get(es.size() - 1)).getPartyRoleEventId().getVersion());
         } else {
             //todo?
         }

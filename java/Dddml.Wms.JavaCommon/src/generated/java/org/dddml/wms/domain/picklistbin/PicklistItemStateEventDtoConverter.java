@@ -7,22 +7,22 @@ import org.dddml.wms.specialization.*;
 
 public class PicklistItemStateEventDtoConverter {
 
-    public PicklistItemStateEventDto toPicklistItemStateEventDto(AbstractPicklistItemStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractPicklistItemStateEvent.AbstractPicklistItemStateCreated) {
-            PicklistItemStateEvent.PicklistItemStateCreated e = (PicklistItemStateEvent.PicklistItemStateCreated) stateEvent;
+    public PicklistItemStateEventDto toPicklistItemStateEventDto(AbstractPicklistItemEvent stateEvent) {
+        if (stateEvent instanceof AbstractPicklistItemEvent.AbstractPicklistItemStateCreated) {
+            PicklistItemEvent.PicklistItemStateCreated e = (PicklistItemEvent.PicklistItemStateCreated) stateEvent;
             return toPicklistItemStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractPicklistItemStateEvent.AbstractPicklistItemStateMergePatched) {
-            PicklistItemStateEvent.PicklistItemStateMergePatched e = (PicklistItemStateEvent.PicklistItemStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractPicklistItemEvent.AbstractPicklistItemStateMergePatched) {
+            PicklistItemEvent.PicklistItemStateMergePatched e = (PicklistItemEvent.PicklistItemStateMergePatched) stateEvent;
             return toPicklistItemStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractPicklistItemStateEvent.AbstractPicklistItemStateRemoved) {
-            PicklistItemStateEvent.PicklistItemStateRemoved e = (PicklistItemStateEvent.PicklistItemStateRemoved) stateEvent;
+        } else if (stateEvent instanceof AbstractPicklistItemEvent.AbstractPicklistItemStateRemoved) {
+            PicklistItemEvent.PicklistItemStateRemoved e = (PicklistItemEvent.PicklistItemStateRemoved) stateEvent;
             return toPicklistItemStateRemovedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public PicklistItemStateEventDto.PicklistItemStateCreatedDto toPicklistItemStateCreatedDto(PicklistItemStateEvent.PicklistItemStateCreated e) {
+    public PicklistItemStateEventDto.PicklistItemStateCreatedDto toPicklistItemStateCreatedDto(PicklistItemEvent.PicklistItemStateCreated e) {
         PicklistItemStateEventDto.PicklistItemStateCreatedDto dto = new PicklistItemStateEventDto.PicklistItemStateCreatedDto();
         dto.setPicklistItemEventId(e.getPicklistItemEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -35,7 +35,7 @@ public class PicklistItemStateEventDtoConverter {
         return dto;
     }
 
-    public PicklistItemStateEventDto.PicklistItemStateMergePatchedDto toPicklistItemStateMergePatchedDto(PicklistItemStateEvent.PicklistItemStateMergePatched e) {
+    public PicklistItemStateEventDto.PicklistItemStateMergePatchedDto toPicklistItemStateMergePatchedDto(PicklistItemEvent.PicklistItemStateMergePatched e) {
         PicklistItemStateEventDto.PicklistItemStateMergePatchedDto dto = new PicklistItemStateEventDto.PicklistItemStateMergePatchedDto();
         dto.setPicklistItemEventId(e.getPicklistItemEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -52,7 +52,7 @@ public class PicklistItemStateEventDtoConverter {
     }
 
 
-    public PicklistItemStateEventDto.PicklistItemStateRemovedDto toPicklistItemStateRemovedDto(PicklistItemStateEvent.PicklistItemStateRemoved e) {
+    public PicklistItemStateEventDto.PicklistItemStateRemovedDto toPicklistItemStateRemovedDto(PicklistItemEvent.PicklistItemStateRemoved e) {
         PicklistItemStateEventDto.PicklistItemStateRemovedDto dto = new PicklistItemStateEventDto.PicklistItemStateRemovedDto();
         dto.setPicklistItemEventId(e.getPicklistItemEventId());
         dto.setCreatedAt(e.getCreatedAt());

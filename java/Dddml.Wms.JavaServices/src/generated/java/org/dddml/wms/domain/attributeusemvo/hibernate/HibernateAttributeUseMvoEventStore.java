@@ -21,31 +21,31 @@ public class HibernateAttributeUseMvoEventStore extends AbstractHibernateEventSt
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractAttributeUseMvoStateEvent.class;
+        return AbstractAttributeUseMvoEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractAttributeUseMvoStateEvent.class;
+        Class supportedEventType = AbstractAttributeUseMvoEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         AttributeSetAttributeUseId idObj = (AttributeSetAttributeUseId) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractAttributeUseMvoStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractAttributeUseMvoEvent.class);
         criteria.add(Restrictions.eq("attributeUseMvoEventId.attributeSetAttributeUseIdAttributeSetId", idObj.getAttributeSetId()));
         criteria.add(Restrictions.eq("attributeUseMvoEventId.attributeSetAttributeUseIdAttributeId", idObj.getAttributeId()));
         criteria.add(Restrictions.le("attributeUseMvoEventId.attributeSetVersion", version));
         criteria.addOrder(Order.asc("attributeUseMvoEventId.attributeSetVersion"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractAttributeUseMvoStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractAttributeUseMvoEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractAttributeUseMvoStateEvent) es.get(es.size() - 1)).getAttributeUseMvoEventId().getAttributeSetVersion());
+            eventStream.setSteamVersion(((AbstractAttributeUseMvoEvent) es.get(es.size() - 1)).getAttributeUseMvoEventId().getAttributeSetVersion());
         } else {
             //todo?
         }

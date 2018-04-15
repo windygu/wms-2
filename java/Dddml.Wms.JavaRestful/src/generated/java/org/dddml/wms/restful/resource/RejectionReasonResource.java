@@ -181,7 +181,7 @@ public class RejectionReasonResource {
 
             String idObj = id;
             RejectionReasonStateEventDtoConverter dtoConverter = getRejectionReasonStateEventDtoConverter();
-            return dtoConverter.toRejectionReasonStateEventDto((AbstractRejectionReasonStateEvent) rejectionReasonApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toRejectionReasonStateEventDto((AbstractRejectionReasonEvent) rejectionReasonApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

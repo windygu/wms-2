@@ -21,31 +21,31 @@ public class HibernateAttributeAliasMvoEventStore extends AbstractHibernateEvent
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractAttributeAliasMvoStateEvent.class;
+        return AbstractAttributeAliasMvoEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractAttributeAliasMvoStateEvent.class;
+        Class supportedEventType = AbstractAttributeAliasMvoEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         AttributeAliasId idObj = (AttributeAliasId) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractAttributeAliasMvoStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractAttributeAliasMvoEvent.class);
         criteria.add(Restrictions.eq("attributeAliasMvoEventId.attributeAliasIdAttributeId", idObj.getAttributeId()));
         criteria.add(Restrictions.eq("attributeAliasMvoEventId.attributeAliasIdCode", idObj.getCode()));
         criteria.add(Restrictions.le("attributeAliasMvoEventId.attributeVersion", version));
         criteria.addOrder(Order.asc("attributeAliasMvoEventId.attributeVersion"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractAttributeAliasMvoStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractAttributeAliasMvoEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractAttributeAliasMvoStateEvent) es.get(es.size() - 1)).getAttributeAliasMvoEventId().getAttributeVersion());
+            eventStream.setSteamVersion(((AbstractAttributeAliasMvoEvent) es.get(es.size() - 1)).getAttributeAliasMvoEventId().getAttributeVersion());
         } else {
             //todo?
         }

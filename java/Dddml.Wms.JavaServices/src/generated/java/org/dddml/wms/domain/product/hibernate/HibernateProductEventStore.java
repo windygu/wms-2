@@ -20,30 +20,30 @@ public class HibernateProductEventStore extends AbstractHibernateEventStore
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractProductStateEvent.class;
+        return AbstractProductEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractProductStateEvent.class;
+        Class supportedEventType = AbstractProductEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         String idObj = (String) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractProductStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractProductEvent.class);
         criteria.add(Restrictions.eq("productEventId.productId", idObj));
         criteria.add(Restrictions.le("productEventId.version", version));
         criteria.addOrder(Order.asc("productEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractProductStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractProductEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractProductStateEvent) es.get(es.size() - 1)).getProductEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractProductEvent) es.get(es.size() - 1)).getProductEventId().getVersion());
         } else {
             //todo?
         }

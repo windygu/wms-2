@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.roletype.RoleTypeStateEvent.*;
+import org.dddml.wms.domain.roletype.RoleTypeEvent.*;
 
 public abstract class AbstractRoleTypeState implements RoleTypeState
 {
@@ -165,7 +165,7 @@ public abstract class AbstractRoleTypeState implements RoleTypeState
     public AbstractRoleTypeState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setRoleTypeId(((RoleTypeStateEvent) events.get(0)).getRoleTypeEventId().getRoleTypeId());
+            this.setRoleTypeId(((RoleTypeEvent) events.get(0)).getRoleTypeEventId().getRoleTypeId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -285,10 +285,10 @@ public abstract class AbstractRoleTypeState implements RoleTypeState
     {
     }
 
-    protected void throwOnWrongEvent(RoleTypeStateEvent stateEvent)
+    protected void throwOnWrongEvent(RoleTypeEvent stateEvent)
     {
         String stateEntityId = this.getRoleTypeId(); // Aggregate Id
-        String eventEntityId = stateEvent.getRoleTypeEventId().getRoleTypeId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        String eventEntityId = stateEvent.getRoleTypeEventId().getRoleTypeId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

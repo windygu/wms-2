@@ -181,7 +181,7 @@ public class PartyResource {
 
             String idObj = id;
             PartyStateEventDtoConverter dtoConverter = getPartyStateEventDtoConverter();
-            return dtoConverter.toPartyStateEventDto((AbstractPartyStateEvent) partyApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toPartyStateEventDto((AbstractPartyEvent) partyApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

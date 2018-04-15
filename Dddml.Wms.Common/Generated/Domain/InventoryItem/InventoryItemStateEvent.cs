@@ -48,17 +48,17 @@ namespace Dddml.Wms.Domain.InventoryItem
 			}
 		}
 
-        public virtual bool StateEventReadOnly { get; set; }
+        public virtual bool EventReadOnly { get; set; }
 
         bool IInventoryItemStateEvent.ReadOnly
         {
             get
             {
-                return this.StateEventReadOnly;
+                return this.EventReadOnly;
             }
             set
             {
-                this.StateEventReadOnly = value;
+                this.EventReadOnly = value;
             }
         }
 
@@ -145,7 +145,7 @@ namespace Dddml.Wms.Domain.InventoryItem
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._inventoryItemEntryEvents.Values;
                 }
@@ -231,7 +231,7 @@ namespace Dddml.Wms.Domain.InventoryItem
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._inventoryItemEntryEvents.Values;
                 }

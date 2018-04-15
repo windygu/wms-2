@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.lot.LotStateEvent.*;
+import org.dddml.wms.domain.lot.LotEvent.*;
 
 public abstract class AbstractLotState implements LotState
 {
@@ -153,7 +153,7 @@ public abstract class AbstractLotState implements LotState
     public AbstractLotState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setLotId(((LotStateEvent) events.get(0)).getLotEventId().getLotId());
+            this.setLotId(((LotEvent) events.get(0)).getLotEventId().getLotId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -261,10 +261,10 @@ public abstract class AbstractLotState implements LotState
     {
     }
 
-    protected void throwOnWrongEvent(LotStateEvent stateEvent)
+    protected void throwOnWrongEvent(LotEvent stateEvent)
     {
         String stateEntityId = this.getLotId(); // Aggregate Id
-        String eventEntityId = stateEvent.getLotEventId().getLotId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        String eventEntityId = stateEvent.getLotEventId().getLotId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

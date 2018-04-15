@@ -2,9 +2,9 @@ package org.dddml.wms.domain.facility;
 
 import java.util.Date;
 import org.dddml.wms.domain.*;
-import org.dddml.wms.domain.AbstractStateEvent;
+import org.dddml.wms.domain.AbstractEvent;
 
-public class FacilityStateEventDto extends AbstractStateEvent
+public class FacilityStateEventDto extends AbstractEvent
 {
 
     private FacilityEventId facilityEventId;
@@ -418,7 +418,7 @@ public class FacilityStateEventDto extends AbstractStateEvent
 	public static class FacilityStateCreatedDto extends FacilityStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_CREATED;
         }
@@ -429,7 +429,7 @@ public class FacilityStateEventDto extends AbstractStateEvent
 	public static class FacilityStateMergePatchedDto extends FacilityStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_MERGE_PATCHED;
         }
@@ -440,7 +440,7 @@ public class FacilityStateEventDto extends AbstractStateEvent
 	public static class FacilityStateDeletedDto extends FacilityStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_DELETED;
         }

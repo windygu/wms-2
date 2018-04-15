@@ -44,7 +44,7 @@ public class AttributeSetInstancePropertyUtils {
 
 
 
-    public static String getHash(AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated instance) {
+    public static String getHash(AttributeSetInstanceEvent.AttributeSetInstanceStateCreated instance) {
         StringBuilder sb = new StringBuilder();
         sb.append("AttributeSetId").append("=").append(getSafeStringValue(instance.getAttributeSetId())).append("|");
         sb.append("OrganizationId").append("=").append(getSafeStringValue(instance.getOrganizationId())).append("|");

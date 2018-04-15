@@ -181,7 +181,7 @@ public class PickwaveResource {
 
             Long idObj = id;
             PickwaveStateEventDtoConverter dtoConverter = getPickwaveStateEventDtoConverter();
-            return dtoConverter.toPickwaveStateEventDto((AbstractPickwaveStateEvent) pickwaveApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toPickwaveStateEventDto((AbstractPickwaveEvent) pickwaveApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

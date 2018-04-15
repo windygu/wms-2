@@ -27,19 +27,19 @@ public abstract class AbstractContactMechAggregate extends AbstractAggregate imp
     public void create(ContactMechCommand.CreateContactMech c)
     {
         if (c.getVersion() == null) { c.setVersion(ContactMechState.VERSION_NULL); }
-        ContactMechStateEvent e = map(c);
+        ContactMechEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(ContactMechCommand.MergePatchContactMech c)
     {
-        ContactMechStateEvent e = map(c);
+        ContactMechEvent e = map(c);
         apply(e);
     }
 
     public void delete(ContactMechCommand.DeleteContactMech c)
     {
-        ContactMechStateEvent e = map(c);
+        ContactMechEvent e = map(c);
         apply(e);
     }
 
@@ -54,9 +54,9 @@ public abstract class AbstractContactMechAggregate extends AbstractAggregate imp
         changes.add(e);
     }
 
-    protected ContactMechStateEvent map(ContactMechCommand.CreateContactMech c) {
+    protected ContactMechEvent map(ContactMechCommand.CreateContactMech c) {
         ContactMechEventId stateEventId = new ContactMechEventId(c.getContactMechId(), c.getVersion());
-        ContactMechStateEvent.ContactMechStateCreated e = newContactMechStateCreated(stateEventId);
+        ContactMechEvent.ContactMechStateCreated e = newContactMechStateCreated(stateEventId);
         e.setContactMechTypeId(c.getContactMechTypeId());
         e.setInfoString(c.getInfoString());
         e.setToName(c.getToName());
@@ -77,15 +77,15 @@ public abstract class AbstractContactMechAggregate extends AbstractAggregate imp
         e.setContactNumber(c.getContactNumber());
         e.setAskForName(c.getAskForName());
         e.setActive(c.getActive());
-        ((AbstractContactMechStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractContactMechEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected ContactMechStateEvent map(ContactMechCommand.MergePatchContactMech c) {
+    protected ContactMechEvent map(ContactMechCommand.MergePatchContactMech c) {
         ContactMechEventId stateEventId = new ContactMechEventId(c.getContactMechId(), c.getVersion());
-        ContactMechStateEvent.ContactMechStateMergePatched e = newContactMechStateMergePatched(stateEventId);
+        ContactMechEvent.ContactMechStateMergePatched e = newContactMechStateMergePatched(stateEventId);
         e.setContactMechTypeId(c.getContactMechTypeId());
         e.setInfoString(c.getInfoString());
         e.setToName(c.getToName());
@@ -126,16 +126,16 @@ public abstract class AbstractContactMechAggregate extends AbstractAggregate imp
         e.setIsPropertyContactNumberRemoved(c.getIsPropertyContactNumberRemoved());
         e.setIsPropertyAskForNameRemoved(c.getIsPropertyAskForNameRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
-        ((AbstractContactMechStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractContactMechEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected ContactMechStateEvent map(ContactMechCommand.DeleteContactMech c) {
+    protected ContactMechEvent map(ContactMechCommand.DeleteContactMech c) {
         ContactMechEventId stateEventId = new ContactMechEventId(c.getContactMechId(), c.getVersion());
-        ContactMechStateEvent.ContactMechStateDeleted e = newContactMechStateDeleted(stateEventId);
-        ((AbstractContactMechStateEvent)e).setCommandId(c.getCommandId());
+        ContactMechEvent.ContactMechStateDeleted e = newContactMechStateDeleted(stateEventId);
+        ((AbstractContactMechEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
@@ -144,44 +144,44 @@ public abstract class AbstractContactMechAggregate extends AbstractAggregate imp
 
     ////////////////////////
 
-    protected ContactMechStateEvent.ContactMechStateCreated newContactMechStateCreated(Long version, String commandId, String requesterId) {
+    protected ContactMechEvent.ContactMechStateCreated newContactMechStateCreated(Long version, String commandId, String requesterId) {
         ContactMechEventId stateEventId = new ContactMechEventId(this.state.getContactMechId(), version);
-        ContactMechStateEvent.ContactMechStateCreated e = newContactMechStateCreated(stateEventId);
-        ((AbstractContactMechStateEvent)e).setCommandId(commandId);
+        ContactMechEvent.ContactMechStateCreated e = newContactMechStateCreated(stateEventId);
+        ((AbstractContactMechEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected ContactMechStateEvent.ContactMechStateMergePatched newContactMechStateMergePatched(Long version, String commandId, String requesterId) {
+    protected ContactMechEvent.ContactMechStateMergePatched newContactMechStateMergePatched(Long version, String commandId, String requesterId) {
         ContactMechEventId stateEventId = new ContactMechEventId(this.state.getContactMechId(), version);
-        ContactMechStateEvent.ContactMechStateMergePatched e = newContactMechStateMergePatched(stateEventId);
-        ((AbstractContactMechStateEvent)e).setCommandId(commandId);
+        ContactMechEvent.ContactMechStateMergePatched e = newContactMechStateMergePatched(stateEventId);
+        ((AbstractContactMechEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected ContactMechStateEvent.ContactMechStateDeleted newContactMechStateDeleted(Long version, String commandId, String requesterId) {
+    protected ContactMechEvent.ContactMechStateDeleted newContactMechStateDeleted(Long version, String commandId, String requesterId) {
         ContactMechEventId stateEventId = new ContactMechEventId(this.state.getContactMechId(), version);
-        ContactMechStateEvent.ContactMechStateDeleted e = newContactMechStateDeleted(stateEventId);
-        ((AbstractContactMechStateEvent)e).setCommandId(commandId);
+        ContactMechEvent.ContactMechStateDeleted e = newContactMechStateDeleted(stateEventId);
+        ((AbstractContactMechEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected ContactMechStateEvent.ContactMechStateCreated newContactMechStateCreated(ContactMechEventId stateEventId) {
-        return new AbstractContactMechStateEvent.SimpleContactMechStateCreated(stateEventId);
+    protected ContactMechEvent.ContactMechStateCreated newContactMechStateCreated(ContactMechEventId stateEventId) {
+        return new AbstractContactMechEvent.SimpleContactMechStateCreated(stateEventId);
     }
 
-    protected ContactMechStateEvent.ContactMechStateMergePatched newContactMechStateMergePatched(ContactMechEventId stateEventId) {
-        return new AbstractContactMechStateEvent.SimpleContactMechStateMergePatched(stateEventId);
+    protected ContactMechEvent.ContactMechStateMergePatched newContactMechStateMergePatched(ContactMechEventId stateEventId) {
+        return new AbstractContactMechEvent.SimpleContactMechStateMergePatched(stateEventId);
     }
 
-    protected ContactMechStateEvent.ContactMechStateDeleted newContactMechStateDeleted(ContactMechEventId stateEventId)
+    protected ContactMechEvent.ContactMechStateDeleted newContactMechStateDeleted(ContactMechEventId stateEventId)
     {
-        return new AbstractContactMechStateEvent.SimpleContactMechStateDeleted(stateEventId);
+        return new AbstractContactMechEvent.SimpleContactMechStateDeleted(stateEventId);
     }
 
     public static class SimpleContactMechAggregate extends AbstractContactMechAggregate

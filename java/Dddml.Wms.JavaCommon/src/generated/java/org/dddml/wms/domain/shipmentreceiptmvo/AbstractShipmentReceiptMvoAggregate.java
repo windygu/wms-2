@@ -28,13 +28,13 @@ public abstract class AbstractShipmentReceiptMvoAggregate extends AbstractAggreg
     public void create(ShipmentReceiptMvoCommand.CreateShipmentReceiptMvo c)
     {
         if (c.getShipmentVersion() == null) { c.setShipmentVersion(ShipmentReceiptMvoState.VERSION_NULL); }
-        ShipmentReceiptMvoStateEvent e = map(c);
+        ShipmentReceiptMvoEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(ShipmentReceiptMvoCommand.MergePatchShipmentReceiptMvo c)
     {
-        ShipmentReceiptMvoStateEvent e = map(c);
+        ShipmentReceiptMvoEvent e = map(c);
         apply(e);
     }
 
@@ -49,9 +49,9 @@ public abstract class AbstractShipmentReceiptMvoAggregate extends AbstractAggreg
         changes.add(e);
     }
 
-    protected ShipmentReceiptMvoStateEvent map(ShipmentReceiptMvoCommand.CreateShipmentReceiptMvo c) {
+    protected ShipmentReceiptMvoEvent map(ShipmentReceiptMvoCommand.CreateShipmentReceiptMvo c) {
         ShipmentReceiptMvoEventId stateEventId = new ShipmentReceiptMvoEventId(c.getShipmentReceiptId(), c.getShipmentVersion());
-        ShipmentReceiptMvoStateEvent.ShipmentReceiptMvoStateCreated e = newShipmentReceiptMvoStateCreated(stateEventId);
+        ShipmentReceiptMvoEvent.ShipmentReceiptMvoStateCreated e = newShipmentReceiptMvoStateCreated(stateEventId);
         e.setProductId(c.getProductId());
         e.setAttributeSetInstanceId(c.getAttributeSetInstanceId());
         e.setLocatorId(c.getLocatorId());
@@ -102,15 +102,15 @@ public abstract class AbstractShipmentReceiptMvoAggregate extends AbstractAggreg
         e.setShipmentUpdatedBy(c.getShipmentUpdatedBy());
         e.setShipmentUpdatedAt(c.getShipmentUpdatedAt());
         e.setShipmentActive(c.getShipmentActive());
-        ((AbstractShipmentReceiptMvoStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractShipmentReceiptMvoEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected ShipmentReceiptMvoStateEvent map(ShipmentReceiptMvoCommand.MergePatchShipmentReceiptMvo c) {
+    protected ShipmentReceiptMvoEvent map(ShipmentReceiptMvoCommand.MergePatchShipmentReceiptMvo c) {
         ShipmentReceiptMvoEventId stateEventId = new ShipmentReceiptMvoEventId(c.getShipmentReceiptId(), c.getShipmentVersion());
-        ShipmentReceiptMvoStateEvent.ShipmentReceiptMvoStateMergePatched e = newShipmentReceiptMvoStateMergePatched(stateEventId);
+        ShipmentReceiptMvoEvent.ShipmentReceiptMvoStateMergePatched e = newShipmentReceiptMvoStateMergePatched(stateEventId);
         e.setProductId(c.getProductId());
         e.setAttributeSetInstanceId(c.getAttributeSetInstanceId());
         e.setLocatorId(c.getLocatorId());
@@ -211,7 +211,7 @@ public abstract class AbstractShipmentReceiptMvoAggregate extends AbstractAggreg
         e.setIsPropertyShipmentUpdatedByRemoved(c.getIsPropertyShipmentUpdatedByRemoved());
         e.setIsPropertyShipmentUpdatedAtRemoved(c.getIsPropertyShipmentUpdatedAtRemoved());
         e.setIsPropertyShipmentActiveRemoved(c.getIsPropertyShipmentActiveRemoved());
-        ((AbstractShipmentReceiptMvoStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractShipmentReceiptMvoEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
@@ -220,30 +220,30 @@ public abstract class AbstractShipmentReceiptMvoAggregate extends AbstractAggreg
 
     ////////////////////////
 
-    protected ShipmentReceiptMvoStateEvent.ShipmentReceiptMvoStateCreated newShipmentReceiptMvoStateCreated(Long version, String commandId, String requesterId) {
+    protected ShipmentReceiptMvoEvent.ShipmentReceiptMvoStateCreated newShipmentReceiptMvoStateCreated(Long version, String commandId, String requesterId) {
         ShipmentReceiptMvoEventId stateEventId = new ShipmentReceiptMvoEventId(this.state.getShipmentReceiptId(), version);
-        ShipmentReceiptMvoStateEvent.ShipmentReceiptMvoStateCreated e = newShipmentReceiptMvoStateCreated(stateEventId);
-        ((AbstractShipmentReceiptMvoStateEvent)e).setCommandId(commandId);
+        ShipmentReceiptMvoEvent.ShipmentReceiptMvoStateCreated e = newShipmentReceiptMvoStateCreated(stateEventId);
+        ((AbstractShipmentReceiptMvoEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected ShipmentReceiptMvoStateEvent.ShipmentReceiptMvoStateMergePatched newShipmentReceiptMvoStateMergePatched(Long version, String commandId, String requesterId) {
+    protected ShipmentReceiptMvoEvent.ShipmentReceiptMvoStateMergePatched newShipmentReceiptMvoStateMergePatched(Long version, String commandId, String requesterId) {
         ShipmentReceiptMvoEventId stateEventId = new ShipmentReceiptMvoEventId(this.state.getShipmentReceiptId(), version);
-        ShipmentReceiptMvoStateEvent.ShipmentReceiptMvoStateMergePatched e = newShipmentReceiptMvoStateMergePatched(stateEventId);
-        ((AbstractShipmentReceiptMvoStateEvent)e).setCommandId(commandId);
+        ShipmentReceiptMvoEvent.ShipmentReceiptMvoStateMergePatched e = newShipmentReceiptMvoStateMergePatched(stateEventId);
+        ((AbstractShipmentReceiptMvoEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected ShipmentReceiptMvoStateEvent.ShipmentReceiptMvoStateCreated newShipmentReceiptMvoStateCreated(ShipmentReceiptMvoEventId stateEventId) {
-        return new AbstractShipmentReceiptMvoStateEvent.SimpleShipmentReceiptMvoStateCreated(stateEventId);
+    protected ShipmentReceiptMvoEvent.ShipmentReceiptMvoStateCreated newShipmentReceiptMvoStateCreated(ShipmentReceiptMvoEventId stateEventId) {
+        return new AbstractShipmentReceiptMvoEvent.SimpleShipmentReceiptMvoStateCreated(stateEventId);
     }
 
-    protected ShipmentReceiptMvoStateEvent.ShipmentReceiptMvoStateMergePatched newShipmentReceiptMvoStateMergePatched(ShipmentReceiptMvoEventId stateEventId) {
-        return new AbstractShipmentReceiptMvoStateEvent.SimpleShipmentReceiptMvoStateMergePatched(stateEventId);
+    protected ShipmentReceiptMvoEvent.ShipmentReceiptMvoStateMergePatched newShipmentReceiptMvoStateMergePatched(ShipmentReceiptMvoEventId stateEventId) {
+        return new AbstractShipmentReceiptMvoEvent.SimpleShipmentReceiptMvoStateMergePatched(stateEventId);
     }
 
     public static class SimpleShipmentReceiptMvoAggregate extends AbstractShipmentReceiptMvoAggregate

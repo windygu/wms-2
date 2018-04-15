@@ -7,19 +7,19 @@ import org.dddml.wms.specialization.*;
 
 public class InventoryPRTriggeredStateEventDtoConverter {
 
-    public InventoryPRTriggeredStateEventDto toInventoryPRTriggeredStateEventDto(AbstractInventoryPRTriggeredStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractInventoryPRTriggeredStateEvent.AbstractInventoryPRTriggeredStateCreated) {
-            InventoryPRTriggeredStateEvent.InventoryPRTriggeredStateCreated e = (InventoryPRTriggeredStateEvent.InventoryPRTriggeredStateCreated) stateEvent;
+    public InventoryPRTriggeredStateEventDto toInventoryPRTriggeredStateEventDto(AbstractInventoryPRTriggeredEvent stateEvent) {
+        if (stateEvent instanceof AbstractInventoryPRTriggeredEvent.AbstractInventoryPRTriggeredStateCreated) {
+            InventoryPRTriggeredEvent.InventoryPRTriggeredStateCreated e = (InventoryPRTriggeredEvent.InventoryPRTriggeredStateCreated) stateEvent;
             return toInventoryPRTriggeredStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractInventoryPRTriggeredStateEvent.AbstractInventoryPRTriggeredStateMergePatched) {
-            InventoryPRTriggeredStateEvent.InventoryPRTriggeredStateMergePatched e = (InventoryPRTriggeredStateEvent.InventoryPRTriggeredStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractInventoryPRTriggeredEvent.AbstractInventoryPRTriggeredStateMergePatched) {
+            InventoryPRTriggeredEvent.InventoryPRTriggeredStateMergePatched e = (InventoryPRTriggeredEvent.InventoryPRTriggeredStateMergePatched) stateEvent;
             return toInventoryPRTriggeredStateMergePatchedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public InventoryPRTriggeredStateEventDto.InventoryPRTriggeredStateCreatedDto toInventoryPRTriggeredStateCreatedDto(InventoryPRTriggeredStateEvent.InventoryPRTriggeredStateCreated e) {
+    public InventoryPRTriggeredStateEventDto.InventoryPRTriggeredStateCreatedDto toInventoryPRTriggeredStateCreatedDto(InventoryPRTriggeredEvent.InventoryPRTriggeredStateCreated e) {
         InventoryPRTriggeredStateEventDto.InventoryPRTriggeredStateCreatedDto dto = new InventoryPRTriggeredStateEventDto.InventoryPRTriggeredStateCreatedDto();
         dto.setInventoryPRTriggeredEventId(e.getInventoryPRTriggeredEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -29,7 +29,7 @@ public class InventoryPRTriggeredStateEventDtoConverter {
         return dto;
     }
 
-    public InventoryPRTriggeredStateEventDto.InventoryPRTriggeredStateMergePatchedDto toInventoryPRTriggeredStateMergePatchedDto(InventoryPRTriggeredStateEvent.InventoryPRTriggeredStateMergePatched e) {
+    public InventoryPRTriggeredStateEventDto.InventoryPRTriggeredStateMergePatchedDto toInventoryPRTriggeredStateMergePatchedDto(InventoryPRTriggeredEvent.InventoryPRTriggeredStateMergePatched e) {
         InventoryPRTriggeredStateEventDto.InventoryPRTriggeredStateMergePatchedDto dto = new InventoryPRTriggeredStateEventDto.InventoryPRTriggeredStateMergePatchedDto();
         dto.setInventoryPRTriggeredEventId(e.getInventoryPRTriggeredEventId());
         dto.setCreatedAt(e.getCreatedAt());

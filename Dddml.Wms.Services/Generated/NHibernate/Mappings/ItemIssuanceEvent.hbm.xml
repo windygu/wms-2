@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+                   assembly="Dddml.Wms.Common" 
+                   namespace="Dddml.Wms.Domain.Shipment">
+  
+  <class name="ItemIssuanceStateEventBase" table="ItemIssuanceEvents" mutable="false" abstract="true">
+
+    <composite-id name="ItemIssuanceEventId" class="Dddml.Wms.Domain.Shipment.ItemIssuanceEventId">
+        <key-property name="ShipmentId" ><column name="ShipmentItemIssuanceIdShipmentId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="ItemIssuanceSeqId" ><column name="ShipmentItemIssuanceIdItemIssuanceSeqId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="ShipmentVersion" ></key-property>
+    </composite-id>
+    <discriminator column="EventType" type="String" />
+
+    <property name="OrderId" ><column name="OrderId" sql-type="VARCHAR(20)" /></property>
+    <property name="OrderItemSeqId" ><column name="OrderItemSeqId" sql-type="VARCHAR(20)" /></property>
+    <property name="ShipGroupSeqId" ><column name="ShipGroupSeqId" sql-type="DECIMAL(20,0)" /></property>
+    <property name="ProductId" ><column name="ProductId" length="60" sql-type="VARCHAR(60)" /></property>
+    <property name="LocatorId" ><column name="LocatorId" length="50" /></property>
+    <property name="AttributeSetInstanceId" ><column name="AttributeSetInstanceId" length="50" /></property>
+    <property name="ShipmentItemSeqId" ><column name="ShipmentItemSeqId" sql-type="VARCHAR(20)" /></property>
+    <property name="FixedAssetId" ><column name="FixedAssetId" sql-type="VARCHAR(20)" /></property>
+    <property name="MaintHistSeqId" ><column name="MaintHistSeqId" sql-type="VARCHAR(20)" /></property>
+    <property name="IssuedDateTime" ><column name="IssuedDateTime" sql-type="DATETIME" /></property>
+    <property name="IssuedByUserLoginId" ><column name="IssuedByUserLoginId" sql-type="VARCHAR(250)" /></property>
+    <property name="Quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>
+    <property name="CancelQuantity" ><column name="CancelQuantity" sql-type="DECIMAL(18,6)" /></property>
+    <property name="Active" ></property>
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+    <property name="Version" column="Version" not-null="true" />
+
+    <subclass name="ItemIssuanceStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="ItemIssuanceStateMergePatched"  discriminator-value="MergePatched">
+
+
+        <property name="IsPropertyOrderIdRemoved" column="IsPropertyOrderIdRemoved"/>
+
+        <property name="IsPropertyOrderItemSeqIdRemoved" column="IsPropertyOrderItemSeqIdRemoved"/>
+
+        <property name="IsPropertyShipGroupSeqIdRemoved" column="IsPropertyShipGroupSeqIdRemoved"/>
+
+        <property name="IsPropertyProductIdRemoved" column="IsPropertyProductIdRemoved"/>
+
+        <property name="IsPropertyLocatorIdRemoved" column="IsPropertyLocatorIdRemoved"/>
+
+        <property name="IsPropertyAttributeSetInstanceIdRemoved" column="IsPropertyAttributeSetInstanceIdRemoved"/>
+
+        <property name="IsPropertyShipmentItemSeqIdRemoved" column="IsPropertyShipmentItemSeqIdRemoved"/>
+
+        <property name="IsPropertyFixedAssetIdRemoved" column="IsPropertyFixedAssetIdRemoved"/>
+
+        <property name="IsPropertyMaintHistSeqIdRemoved" column="IsPropertyMaintHistSeqIdRemoved"/>
+
+        <property name="IsPropertyIssuedDateTimeRemoved" column="IsPropertyIssuedDateTimeRemoved"/>
+
+        <property name="IsPropertyIssuedByUserLoginIdRemoved" column="IsPropertyIssuedByUserLoginIdRemoved"/>
+
+        <property name="IsPropertyQuantityRemoved" column="IsPropertyQuantityRemoved"/>
+
+        <property name="IsPropertyCancelQuantityRemoved" column="IsPropertyCancelQuantityRemoved"/>
+
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+    </subclass>
+
+    <subclass name="ItemIssuanceStateRemoved"  discriminator-value="Removed">
+
+    </subclass>
+
+
+
+  </class>
+  
+</hibernate-mapping>

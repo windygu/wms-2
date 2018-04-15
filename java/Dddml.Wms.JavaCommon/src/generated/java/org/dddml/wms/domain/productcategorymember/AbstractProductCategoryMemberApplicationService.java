@@ -82,19 +82,19 @@ public abstract class AbstractProductCategoryMemberApplicationService implements
         return getStateQueryRepository().getCount(filter);
     }
 
-    public ProductCategoryMemberStateEvent getStateEvent(ProductCategoryMemberId productCategoryMemberId, long version) {
-        ProductCategoryMemberStateEvent e = (ProductCategoryMemberStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(productCategoryMemberId), version);
+    public ProductCategoryMemberEvent getEvent(ProductCategoryMemberId productCategoryMemberId, long version) {
+        ProductCategoryMemberEvent e = (ProductCategoryMemberEvent)getEventStore().getEvent(toEventStoreAggregateId(productCategoryMemberId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(productCategoryMemberId, 0);
+            return getEvent(productCategoryMemberId, 0);
         }
         return e;
     }
 
     public ProductCategoryMemberState getHistoryState(ProductCategoryMemberId productCategoryMemberId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractProductCategoryMemberStateEvent.class, toEventStoreAggregateId(productCategoryMemberId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractProductCategoryMemberEvent.class, toEventStoreAggregateId(productCategoryMemberId), version - 1);
         return new AbstractProductCategoryMemberState.SimpleProductCategoryMemberState(eventStream.getEvents());
     }
 
@@ -133,7 +133,7 @@ public abstract class AbstractProductCategoryMemberApplicationService implements
         }
     }
 
-    public void initialize(ProductCategoryMemberStateEvent.ProductCategoryMemberStateCreated stateCreated) {
+    public void initialize(ProductCategoryMemberEvent.ProductCategoryMemberStateCreated stateCreated) {
         ProductCategoryMemberId aggregateId = stateCreated.getProductCategoryMemberEventId().getProductCategoryMemberId();
         ProductCategoryMemberState state = new AbstractProductCategoryMemberState.SimpleProductCategoryMemberState();
         state.setProductCategoryMemberId(aggregateId);
@@ -151,9 +151,9 @@ public abstract class AbstractProductCategoryMemberApplicationService implements
         if (command.getVersion() == null) { command.setVersion(ProductCategoryMemberState.VERSION_NULL); }
         if (state.getVersion() != null && state.getVersion() > command.getVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractProductCategoryMemberStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractProductCategoryMemberEvent.class, eventStoreAggregateId, command.getVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

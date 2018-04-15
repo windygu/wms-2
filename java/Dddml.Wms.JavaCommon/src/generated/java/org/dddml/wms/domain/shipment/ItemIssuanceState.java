@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.shipment.ItemIssuanceStateEvent.*;
+import org.dddml.wms.domain.shipment.ItemIssuanceEvent.*;
 
 public interface ItemIssuanceState
 {
@@ -112,11 +112,11 @@ public interface ItemIssuanceState
 
     void mutate(Event e);
 
-    void when(ItemIssuanceStateEvent.ItemIssuanceStateCreated e);
+    void when(ItemIssuanceEvent.ItemIssuanceStateCreated e);
 
-    void when(ItemIssuanceStateEvent.ItemIssuanceStateMergePatched e);
+    void when(ItemIssuanceEvent.ItemIssuanceStateMergePatched e);
 
-    void when(ItemIssuanceStateEvent.ItemIssuanceStateRemoved e);
+    void when(ItemIssuanceEvent.ItemIssuanceStateRemoved e);
     
 }
 

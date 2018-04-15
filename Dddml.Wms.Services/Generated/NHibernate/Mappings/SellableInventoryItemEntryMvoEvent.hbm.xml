@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+                   assembly="Dddml.Wms.Common" 
+                   namespace="Dddml.Wms.Domain.SellableInventoryItemEntryMvo">
+  
+  <class name="SellableInventoryItemEntryMvoStateEventBase" table="SellableInventoryItemEntryMvoEvents" mutable="false" abstract="true">
+
+    <composite-id name="SellableInventoryItemEntryMvoEventId" class="Dddml.Wms.Domain.SellableInventoryItemEntryMvo.SellableInventoryItemEntryMvoEventId">
+        <key-property name="SellableInventoryItemEntryIdSellableInventoryItemIdProductId" ><column name="ProductId" length="60" sql-type="VARCHAR(60)" /></key-property>
+        <key-property name="SellableInventoryItemEntryIdSellableInventoryItemIdLocatorId" ><column name="LocatorId" length="50" /></key-property>
+        <key-property name="SellableInventoryItemEntryIdSellableInventoryItemIdAttributeSetInstanceId" ><column name="AttributeSetInstanceId" length="50" /></key-property>
+        <key-property name="SellableInventoryItemEntryIdEntrySeqId" ><column name="EntrySeqId" /></key-property>
+        <key-property name="SellableInventoryItemVersion" ></key-property>
+    </composite-id>
+    <discriminator column="EventType" type="String" />
+
+    <property name="SellableQuantity" ></property>
+    <component name="SourceEventId" class="Dddml.Wms.Domain.InventoryPRTriggered.InventoryPRTriggeredId">
+        <property name="SourceEntryIdInventoryItemIdProductId" ><column name="SrcEventProductId" length="60" sql-type="VARCHAR(60)" /></property>
+        <property name="SourceEntryIdInventoryItemIdLocatorId" ><column name="SrcEventLocatorId" length="50" /></property>
+        <property name="SourceEntryIdInventoryItemIdAttributeSetInstanceId" ><column name="SrcEventAttributeSetInstanceId" length="50" /></property>
+        <property name="SourceEntryIdEntrySeqId" ><column name="SrcEventEntrySeqId" /></property>
+        <property name="InventoryPostingRuleId" ><column name="SrcEventInventoryPostingRuleId" length="50" /></property>
+    </component>
+    <property name="Version" ></property>
+    <property name="SellableInventoryItemSellableQuantity" ></property>
+    <property name="SellableInventoryItemCreatedBy" ></property>
+    <property name="SellableInventoryItemCreatedAt" ><column name="SellableInventoryItemCreatedAt" sql-type="DATETIME" /></property>
+    <property name="SellableInventoryItemUpdatedBy" ></property>
+    <property name="SellableInventoryItemUpdatedAt" ><column name="SellableInventoryItemUpdatedAt" sql-type="DATETIME" /></property>
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+    <subclass name="SellableInventoryItemEntryMvoStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="SellableInventoryItemEntryMvoStateMergePatched"  discriminator-value="MergePatched">
+
+
+        <property name="IsPropertySellableQuantityRemoved" column="IsPropertySellableQuantityRemoved"/>
+
+        <property name="IsPropertySourceEventIdRemoved" column="IsPropertySourceEventIdRemoved"/>
+
+        <property name="IsPropertyVersionRemoved" column="IsPropertyVersionRemoved"/>
+
+        <property name="IsPropertySellableInventoryItemSellableQuantityRemoved" column="IsPropertySellableInventoryItemSellableQuantityRemoved"/>
+
+        <property name="IsPropertySellableInventoryItemCreatedByRemoved" column="IsPropertySellableInventoryItemCreatedByRemoved"/>
+
+        <property name="IsPropertySellableInventoryItemCreatedAtRemoved" column="IsPropertySellableInventoryItemCreatedAtRemoved"/>
+
+        <property name="IsPropertySellableInventoryItemUpdatedByRemoved" column="IsPropertySellableInventoryItemUpdatedByRemoved"/>
+
+        <property name="IsPropertySellableInventoryItemUpdatedAtRemoved" column="IsPropertySellableInventoryItemUpdatedAtRemoved"/>
+    </subclass>
+
+
+  </class>
+  
+</hibernate-mapping>

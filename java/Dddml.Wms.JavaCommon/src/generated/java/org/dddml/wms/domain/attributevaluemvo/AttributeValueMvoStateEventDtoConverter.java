@@ -8,22 +8,22 @@ import org.dddml.wms.specialization.*;
 
 public class AttributeValueMvoStateEventDtoConverter {
 
-    public AttributeValueMvoStateEventDto toAttributeValueMvoStateEventDto(AbstractAttributeValueMvoStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractAttributeValueMvoStateEvent.AbstractAttributeValueMvoStateCreated) {
-            AttributeValueMvoStateEvent.AttributeValueMvoStateCreated e = (AttributeValueMvoStateEvent.AttributeValueMvoStateCreated) stateEvent;
+    public AttributeValueMvoStateEventDto toAttributeValueMvoStateEventDto(AbstractAttributeValueMvoEvent stateEvent) {
+        if (stateEvent instanceof AbstractAttributeValueMvoEvent.AbstractAttributeValueMvoStateCreated) {
+            AttributeValueMvoEvent.AttributeValueMvoStateCreated e = (AttributeValueMvoEvent.AttributeValueMvoStateCreated) stateEvent;
             return toAttributeValueMvoStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractAttributeValueMvoStateEvent.AbstractAttributeValueMvoStateMergePatched) {
-            AttributeValueMvoStateEvent.AttributeValueMvoStateMergePatched e = (AttributeValueMvoStateEvent.AttributeValueMvoStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractAttributeValueMvoEvent.AbstractAttributeValueMvoStateMergePatched) {
+            AttributeValueMvoEvent.AttributeValueMvoStateMergePatched e = (AttributeValueMvoEvent.AttributeValueMvoStateMergePatched) stateEvent;
             return toAttributeValueMvoStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractAttributeValueMvoStateEvent.AbstractAttributeValueMvoStateDeleted) {
-            AttributeValueMvoStateEvent.AttributeValueMvoStateDeleted e = (AttributeValueMvoStateEvent.AttributeValueMvoStateDeleted) stateEvent;
+        } else if (stateEvent instanceof AbstractAttributeValueMvoEvent.AbstractAttributeValueMvoStateDeleted) {
+            AttributeValueMvoEvent.AttributeValueMvoStateDeleted e = (AttributeValueMvoEvent.AttributeValueMvoStateDeleted) stateEvent;
             return toAttributeValueMvoStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public AttributeValueMvoStateEventDto.AttributeValueMvoStateCreatedDto toAttributeValueMvoStateCreatedDto(AttributeValueMvoStateEvent.AttributeValueMvoStateCreated e) {
+    public AttributeValueMvoStateEventDto.AttributeValueMvoStateCreatedDto toAttributeValueMvoStateCreatedDto(AttributeValueMvoEvent.AttributeValueMvoStateCreated e) {
         AttributeValueMvoStateEventDto.AttributeValueMvoStateCreatedDto dto = new AttributeValueMvoStateEventDto.AttributeValueMvoStateCreatedDto();
         dto.setAttributeValueMvoEventId(e.getAttributeValueMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -52,7 +52,7 @@ public class AttributeValueMvoStateEventDtoConverter {
         return dto;
     }
 
-    public AttributeValueMvoStateEventDto.AttributeValueMvoStateMergePatchedDto toAttributeValueMvoStateMergePatchedDto(AttributeValueMvoStateEvent.AttributeValueMvoStateMergePatched e) {
+    public AttributeValueMvoStateEventDto.AttributeValueMvoStateMergePatchedDto toAttributeValueMvoStateMergePatchedDto(AttributeValueMvoEvent.AttributeValueMvoStateMergePatched e) {
         AttributeValueMvoStateEventDto.AttributeValueMvoStateMergePatchedDto dto = new AttributeValueMvoStateEventDto.AttributeValueMvoStateMergePatchedDto();
         dto.setAttributeValueMvoEventId(e.getAttributeValueMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -102,7 +102,7 @@ public class AttributeValueMvoStateEventDtoConverter {
     }
 
 
-    public AttributeValueMvoStateEventDto.AttributeValueMvoStateDeletedDto toAttributeValueMvoStateDeletedDto(AttributeValueMvoStateEvent.AttributeValueMvoStateDeleted e) {
+    public AttributeValueMvoStateEventDto.AttributeValueMvoStateDeletedDto toAttributeValueMvoStateDeletedDto(AttributeValueMvoEvent.AttributeValueMvoStateDeleted e) {
         AttributeValueMvoStateEventDto.AttributeValueMvoStateDeletedDto dto = new AttributeValueMvoStateEventDto.AttributeValueMvoStateDeletedDto();
         dto.setAttributeValueMvoEventId(e.getAttributeValueMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());

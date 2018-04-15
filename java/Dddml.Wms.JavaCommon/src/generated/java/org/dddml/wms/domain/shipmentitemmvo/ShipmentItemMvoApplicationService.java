@@ -29,7 +29,7 @@ public interface ShipmentItemMvoApplicationService
 
     long getCount(Criterion filter);
 
-    ShipmentItemMvoStateEvent getStateEvent(ShipmentItemId shipmentItemId, long version);
+    ShipmentItemMvoEvent getEvent(ShipmentItemId shipmentItemId, long version);
 
     ShipmentItemMvoState getHistoryState(ShipmentItemId shipmentItemId, long version);
 

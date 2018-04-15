@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.inout.InOutStateEvent.*;
+import org.dddml.wms.domain.inout.InOutEvent.*;
 
 public interface InOutState
 {
@@ -171,9 +171,9 @@ public interface InOutState
 
     void mutate(Event e);
 
-    void when(InOutStateEvent.InOutStateCreated e);
+    void when(InOutEvent.InOutStateCreated e);
 
-    void when(InOutStateEvent.InOutStateMergePatched e);
+    void when(InOutEvent.InOutStateMergePatched e);
 
     
 }

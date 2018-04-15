@@ -7,22 +7,22 @@ import org.dddml.wms.specialization.*;
 
 public class ContactMechStateEventDtoConverter {
 
-    public ContactMechStateEventDto toContactMechStateEventDto(AbstractContactMechStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractContactMechStateEvent.AbstractContactMechStateCreated) {
-            ContactMechStateEvent.ContactMechStateCreated e = (ContactMechStateEvent.ContactMechStateCreated) stateEvent;
+    public ContactMechStateEventDto toContactMechStateEventDto(AbstractContactMechEvent stateEvent) {
+        if (stateEvent instanceof AbstractContactMechEvent.AbstractContactMechStateCreated) {
+            ContactMechEvent.ContactMechStateCreated e = (ContactMechEvent.ContactMechStateCreated) stateEvent;
             return toContactMechStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractContactMechStateEvent.AbstractContactMechStateMergePatched) {
-            ContactMechStateEvent.ContactMechStateMergePatched e = (ContactMechStateEvent.ContactMechStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractContactMechEvent.AbstractContactMechStateMergePatched) {
+            ContactMechEvent.ContactMechStateMergePatched e = (ContactMechEvent.ContactMechStateMergePatched) stateEvent;
             return toContactMechStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractContactMechStateEvent.AbstractContactMechStateDeleted) {
-            ContactMechStateEvent.ContactMechStateDeleted e = (ContactMechStateEvent.ContactMechStateDeleted) stateEvent;
+        } else if (stateEvent instanceof AbstractContactMechEvent.AbstractContactMechStateDeleted) {
+            ContactMechEvent.ContactMechStateDeleted e = (ContactMechEvent.ContactMechStateDeleted) stateEvent;
             return toContactMechStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public ContactMechStateEventDto.ContactMechStateCreatedDto toContactMechStateCreatedDto(ContactMechStateEvent.ContactMechStateCreated e) {
+    public ContactMechStateEventDto.ContactMechStateCreatedDto toContactMechStateCreatedDto(ContactMechEvent.ContactMechStateCreated e) {
         ContactMechStateEventDto.ContactMechStateCreatedDto dto = new ContactMechStateEventDto.ContactMechStateCreatedDto();
         dto.setContactMechEventId(e.getContactMechEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -51,7 +51,7 @@ public class ContactMechStateEventDtoConverter {
         return dto;
     }
 
-    public ContactMechStateEventDto.ContactMechStateMergePatchedDto toContactMechStateMergePatchedDto(ContactMechStateEvent.ContactMechStateMergePatched e) {
+    public ContactMechStateEventDto.ContactMechStateMergePatchedDto toContactMechStateMergePatchedDto(ContactMechEvent.ContactMechStateMergePatched e) {
         ContactMechStateEventDto.ContactMechStateMergePatchedDto dto = new ContactMechStateEventDto.ContactMechStateMergePatchedDto();
         dto.setContactMechEventId(e.getContactMechEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -101,7 +101,7 @@ public class ContactMechStateEventDtoConverter {
     }
 
 
-    public ContactMechStateEventDto.ContactMechStateDeletedDto toContactMechStateDeletedDto(ContactMechStateEvent.ContactMechStateDeleted e) {
+    public ContactMechStateEventDto.ContactMechStateDeletedDto toContactMechStateDeletedDto(ContactMechEvent.ContactMechStateDeleted e) {
         ContactMechStateEventDto.ContactMechStateDeletedDto dto = new ContactMechStateEventDto.ContactMechStateDeletedDto();
         dto.setContactMechEventId(e.getContactMechEventId());
         dto.setCreatedAt(e.getCreatedAt());

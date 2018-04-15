@@ -182,7 +182,7 @@ public class AttributeUseMvoResource {
 
             AttributeSetAttributeUseId idObj = AttributeUseMvoResourceUtils.parseIdString(id);
             AttributeUseMvoStateEventDtoConverter dtoConverter = getAttributeUseMvoStateEventDtoConverter();
-            return dtoConverter.toAttributeUseMvoStateEventDto((AbstractAttributeUseMvoStateEvent) attributeUseMvoApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toAttributeUseMvoStateEventDto((AbstractAttributeUseMvoEvent) attributeUseMvoApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

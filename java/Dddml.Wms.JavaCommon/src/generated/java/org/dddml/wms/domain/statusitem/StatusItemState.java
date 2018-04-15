@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.statusitem.StatusItemStateEvent.*;
+import org.dddml.wms.domain.statusitem.StatusItemEvent.*;
 
 public interface StatusItemState
 {
@@ -68,9 +68,9 @@ public interface StatusItemState
 
     void mutate(Event e);
 
-    void when(StatusItemStateEvent.StatusItemStateCreated e);
+    void when(StatusItemEvent.StatusItemStateCreated e);
 
-    void when(StatusItemStateEvent.StatusItemStateMergePatched e);
+    void when(StatusItemEvent.StatusItemStateMergePatched e);
 
     
 }

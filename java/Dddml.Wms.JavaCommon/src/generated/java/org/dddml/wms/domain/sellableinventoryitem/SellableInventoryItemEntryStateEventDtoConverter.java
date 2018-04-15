@@ -10,16 +10,16 @@ import org.dddml.wms.specialization.*;
 
 public class SellableInventoryItemEntryStateEventDtoConverter {
 
-    public SellableInventoryItemEntryStateEventDto toSellableInventoryItemEntryStateEventDto(AbstractSellableInventoryItemEntryStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractSellableInventoryItemEntryStateEvent.AbstractSellableInventoryItemEntryStateCreated) {
-            SellableInventoryItemEntryStateEvent.SellableInventoryItemEntryStateCreated e = (SellableInventoryItemEntryStateEvent.SellableInventoryItemEntryStateCreated) stateEvent;
+    public SellableInventoryItemEntryStateEventDto toSellableInventoryItemEntryStateEventDto(AbstractSellableInventoryItemEntryEvent stateEvent) {
+        if (stateEvent instanceof AbstractSellableInventoryItemEntryEvent.AbstractSellableInventoryItemEntryStateCreated) {
+            SellableInventoryItemEntryEvent.SellableInventoryItemEntryStateCreated e = (SellableInventoryItemEntryEvent.SellableInventoryItemEntryStateCreated) stateEvent;
             return toSellableInventoryItemEntryStateCreatedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public SellableInventoryItemEntryStateEventDto.SellableInventoryItemEntryStateCreatedDto toSellableInventoryItemEntryStateCreatedDto(SellableInventoryItemEntryStateEvent.SellableInventoryItemEntryStateCreated e) {
+    public SellableInventoryItemEntryStateEventDto.SellableInventoryItemEntryStateCreatedDto toSellableInventoryItemEntryStateCreatedDto(SellableInventoryItemEntryEvent.SellableInventoryItemEntryStateCreated e) {
         SellableInventoryItemEntryStateEventDto.SellableInventoryItemEntryStateCreatedDto dto = new SellableInventoryItemEntryStateEventDto.SellableInventoryItemEntryStateCreatedDto();
         dto.setSellableInventoryItemEntryEventId(e.getSellableInventoryItemEntryEventId());
         dto.setCreatedAt(e.getCreatedAt());

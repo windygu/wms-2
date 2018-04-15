@@ -164,7 +164,7 @@ public class OrderItemMvoResource {
 
             OrderItemId idObj = OrderItemMvoResourceUtils.parseIdString(id);
             OrderItemMvoStateEventDtoConverter dtoConverter = getOrderItemMvoStateEventDtoConverter();
-            return dtoConverter.toOrderItemMvoStateEventDto((AbstractOrderItemMvoStateEvent) orderItemMvoApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toOrderItemMvoStateEventDto((AbstractOrderItemMvoEvent) orderItemMvoApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

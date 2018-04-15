@@ -28,7 +28,7 @@ public interface SupplierProductApplicationService
 
     long getCount(Criterion filter);
 
-    SupplierProductStateEvent getStateEvent(SupplierProductId supplierProductId, long version);
+    SupplierProductEvent getEvent(SupplierProductId supplierProductId, long version);
 
     SupplierProductState getHistoryState(SupplierProductId supplierProductId, long version);
 

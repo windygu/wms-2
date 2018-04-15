@@ -5,7 +5,7 @@ import org.dddml.wms.domain.shipment.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.shipmentreceiptmvo.ShipmentReceiptMvoStateEvent.*;
+import org.dddml.wms.domain.shipmentreceiptmvo.ShipmentReceiptMvoEvent.*;
 
 public abstract class AbstractShipmentReceiptMvoState implements ShipmentReceiptMvoState
 {
@@ -706,7 +706,7 @@ public abstract class AbstractShipmentReceiptMvoState implements ShipmentReceipt
     public AbstractShipmentReceiptMvoState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setShipmentReceiptId(((ShipmentReceiptMvoStateEvent) events.get(0)).getShipmentReceiptMvoEventId().getShipmentReceiptId());
+            this.setShipmentReceiptId(((ShipmentReceiptMvoEvent) events.get(0)).getShipmentReceiptMvoEventId().getShipmentReceiptId());
             for (Event e : events) {
                 mutate(e);
                 this.setShipmentVersion(this.getShipmentVersion() + 1);
@@ -1364,10 +1364,10 @@ public abstract class AbstractShipmentReceiptMvoState implements ShipmentReceipt
     {
     }
 
-    protected void throwOnWrongEvent(ShipmentReceiptMvoStateEvent stateEvent)
+    protected void throwOnWrongEvent(ShipmentReceiptMvoEvent stateEvent)
     {
         ShipmentReceiptId stateEntityId = this.getShipmentReceiptId(); // Aggregate Id
-        ShipmentReceiptId eventEntityId = stateEvent.getShipmentReceiptMvoEventId().getShipmentReceiptId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        ShipmentReceiptId eventEntityId = stateEvent.getShipmentReceiptMvoEventId().getShipmentReceiptId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

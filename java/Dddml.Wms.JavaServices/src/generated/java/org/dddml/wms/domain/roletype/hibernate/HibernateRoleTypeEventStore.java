@@ -20,30 +20,30 @@ public class HibernateRoleTypeEventStore extends AbstractHibernateEventStore
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractRoleTypeStateEvent.class;
+        return AbstractRoleTypeEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractRoleTypeStateEvent.class;
+        Class supportedEventType = AbstractRoleTypeEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         String idObj = (String) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractRoleTypeStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractRoleTypeEvent.class);
         criteria.add(Restrictions.eq("roleTypeEventId.roleTypeId", idObj));
         criteria.add(Restrictions.le("roleTypeEventId.version", version));
         criteria.addOrder(Order.asc("roleTypeEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractRoleTypeStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractRoleTypeEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractRoleTypeStateEvent) es.get(es.size() - 1)).getRoleTypeEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractRoleTypeEvent) es.get(es.size() - 1)).getRoleTypeEventId().getVersion());
         } else {
             //todo?
         }

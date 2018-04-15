@@ -47,7 +47,7 @@ namespace Dddml.Wms.Domain.UserClaimMvo.NHibernate
             var es = criteria.List<IEvent>();
             foreach (UserClaimMvoStateEventBase e in es)
             {
-                e.StateEventReadOnly = true;
+                e.EventReadOnly = true;
             }
             return new EventStream()
             {

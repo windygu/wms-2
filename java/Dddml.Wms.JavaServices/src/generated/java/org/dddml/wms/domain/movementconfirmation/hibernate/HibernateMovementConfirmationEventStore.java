@@ -21,30 +21,30 @@ public class HibernateMovementConfirmationEventStore extends AbstractHibernateEv
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractMovementConfirmationStateEvent.class;
+        return AbstractMovementConfirmationEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractMovementConfirmationStateEvent.class;
+        Class supportedEventType = AbstractMovementConfirmationEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         String idObj = (String) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractMovementConfirmationStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractMovementConfirmationEvent.class);
         criteria.add(Restrictions.eq("movementConfirmationEventId.documentNumber", idObj));
         criteria.add(Restrictions.le("movementConfirmationEventId.version", version));
         criteria.addOrder(Order.asc("movementConfirmationEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractMovementConfirmationStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractMovementConfirmationEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractMovementConfirmationStateEvent) es.get(es.size() - 1)).getMovementConfirmationEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractMovementConfirmationEvent) es.get(es.size() - 1)).getMovementConfirmationEventId().getVersion());
         } else {
             //todo?
         }

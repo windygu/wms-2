@@ -41,7 +41,7 @@ public interface InOutApplicationService
 
     long getCount(Criterion filter);
 
-    InOutStateEvent getStateEvent(String documentNumber, long version);
+    InOutEvent getEvent(String documentNumber, long version);
 
     InOutState getHistoryState(String documentNumber, long version);
 

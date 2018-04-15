@@ -30,7 +30,7 @@ public interface PartyRoleApplicationService
 
     long getCount(Criterion filter);
 
-    PartyRoleStateEvent getStateEvent(PartyRoleId partyRoleId, long version);
+    PartyRoleEvent getEvent(PartyRoleId partyRoleId, long version);
 
     PartyRoleState getHistoryState(PartyRoleId partyRoleId, long version);
 

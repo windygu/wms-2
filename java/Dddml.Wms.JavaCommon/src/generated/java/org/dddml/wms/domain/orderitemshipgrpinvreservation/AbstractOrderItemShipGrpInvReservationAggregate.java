@@ -27,19 +27,19 @@ public abstract class AbstractOrderItemShipGrpInvReservationAggregate extends Ab
     public void create(OrderItemShipGrpInvReservationCommand.CreateOrderItemShipGrpInvReservation c)
     {
         if (c.getVersion() == null) { c.setVersion(OrderItemShipGrpInvReservationState.VERSION_NULL); }
-        OrderItemShipGrpInvReservationStateEvent e = map(c);
+        OrderItemShipGrpInvReservationEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(OrderItemShipGrpInvReservationCommand.MergePatchOrderItemShipGrpInvReservation c)
     {
-        OrderItemShipGrpInvReservationStateEvent e = map(c);
+        OrderItemShipGrpInvReservationEvent e = map(c);
         apply(e);
     }
 
     public void delete(OrderItemShipGrpInvReservationCommand.DeleteOrderItemShipGrpInvReservation c)
     {
-        OrderItemShipGrpInvReservationStateEvent e = map(c);
+        OrderItemShipGrpInvReservationEvent e = map(c);
         apply(e);
     }
 
@@ -54,9 +54,9 @@ public abstract class AbstractOrderItemShipGrpInvReservationAggregate extends Ab
         changes.add(e);
     }
 
-    protected OrderItemShipGrpInvReservationStateEvent map(OrderItemShipGrpInvReservationCommand.CreateOrderItemShipGrpInvReservation c) {
+    protected OrderItemShipGrpInvReservationEvent map(OrderItemShipGrpInvReservationCommand.CreateOrderItemShipGrpInvReservation c) {
         OrderItemShipGrpInvReservationEventId stateEventId = new OrderItemShipGrpInvReservationEventId(c.getOrderItemShipGrpInvResId(), c.getVersion());
-        OrderItemShipGrpInvReservationStateEvent.OrderItemShipGrpInvReservationStateCreated e = newOrderItemShipGrpInvReservationStateCreated(stateEventId);
+        OrderItemShipGrpInvReservationEvent.OrderItemShipGrpInvReservationStateCreated e = newOrderItemShipGrpInvReservationStateCreated(stateEventId);
         e.setReserveOrderEnumId(c.getReserveOrderEnumId());
         e.setQuantity(c.getQuantity());
         e.setQuantityNotAvailable(c.getQuantityNotAvailable());
@@ -68,15 +68,15 @@ public abstract class AbstractOrderItemShipGrpInvReservationAggregate extends Ab
         e.setSequenceId(c.getSequenceId());
         e.setOldPickStartDate(c.getOldPickStartDate());
         e.setActive(c.getActive());
-        ((AbstractOrderItemShipGrpInvReservationStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractOrderItemShipGrpInvReservationEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected OrderItemShipGrpInvReservationStateEvent map(OrderItemShipGrpInvReservationCommand.MergePatchOrderItemShipGrpInvReservation c) {
+    protected OrderItemShipGrpInvReservationEvent map(OrderItemShipGrpInvReservationCommand.MergePatchOrderItemShipGrpInvReservation c) {
         OrderItemShipGrpInvReservationEventId stateEventId = new OrderItemShipGrpInvReservationEventId(c.getOrderItemShipGrpInvResId(), c.getVersion());
-        OrderItemShipGrpInvReservationStateEvent.OrderItemShipGrpInvReservationStateMergePatched e = newOrderItemShipGrpInvReservationStateMergePatched(stateEventId);
+        OrderItemShipGrpInvReservationEvent.OrderItemShipGrpInvReservationStateMergePatched e = newOrderItemShipGrpInvReservationStateMergePatched(stateEventId);
         e.setReserveOrderEnumId(c.getReserveOrderEnumId());
         e.setQuantity(c.getQuantity());
         e.setQuantityNotAvailable(c.getQuantityNotAvailable());
@@ -99,16 +99,16 @@ public abstract class AbstractOrderItemShipGrpInvReservationAggregate extends Ab
         e.setIsPropertySequenceIdRemoved(c.getIsPropertySequenceIdRemoved());
         e.setIsPropertyOldPickStartDateRemoved(c.getIsPropertyOldPickStartDateRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
-        ((AbstractOrderItemShipGrpInvReservationStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractOrderItemShipGrpInvReservationEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected OrderItemShipGrpInvReservationStateEvent map(OrderItemShipGrpInvReservationCommand.DeleteOrderItemShipGrpInvReservation c) {
+    protected OrderItemShipGrpInvReservationEvent map(OrderItemShipGrpInvReservationCommand.DeleteOrderItemShipGrpInvReservation c) {
         OrderItemShipGrpInvReservationEventId stateEventId = new OrderItemShipGrpInvReservationEventId(c.getOrderItemShipGrpInvResId(), c.getVersion());
-        OrderItemShipGrpInvReservationStateEvent.OrderItemShipGrpInvReservationStateDeleted e = newOrderItemShipGrpInvReservationStateDeleted(stateEventId);
-        ((AbstractOrderItemShipGrpInvReservationStateEvent)e).setCommandId(c.getCommandId());
+        OrderItemShipGrpInvReservationEvent.OrderItemShipGrpInvReservationStateDeleted e = newOrderItemShipGrpInvReservationStateDeleted(stateEventId);
+        ((AbstractOrderItemShipGrpInvReservationEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
@@ -117,44 +117,44 @@ public abstract class AbstractOrderItemShipGrpInvReservationAggregate extends Ab
 
     ////////////////////////
 
-    protected OrderItemShipGrpInvReservationStateEvent.OrderItemShipGrpInvReservationStateCreated newOrderItemShipGrpInvReservationStateCreated(Long version, String commandId, String requesterId) {
+    protected OrderItemShipGrpInvReservationEvent.OrderItemShipGrpInvReservationStateCreated newOrderItemShipGrpInvReservationStateCreated(Long version, String commandId, String requesterId) {
         OrderItemShipGrpInvReservationEventId stateEventId = new OrderItemShipGrpInvReservationEventId(this.state.getOrderItemShipGrpInvResId(), version);
-        OrderItemShipGrpInvReservationStateEvent.OrderItemShipGrpInvReservationStateCreated e = newOrderItemShipGrpInvReservationStateCreated(stateEventId);
-        ((AbstractOrderItemShipGrpInvReservationStateEvent)e).setCommandId(commandId);
+        OrderItemShipGrpInvReservationEvent.OrderItemShipGrpInvReservationStateCreated e = newOrderItemShipGrpInvReservationStateCreated(stateEventId);
+        ((AbstractOrderItemShipGrpInvReservationEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected OrderItemShipGrpInvReservationStateEvent.OrderItemShipGrpInvReservationStateMergePatched newOrderItemShipGrpInvReservationStateMergePatched(Long version, String commandId, String requesterId) {
+    protected OrderItemShipGrpInvReservationEvent.OrderItemShipGrpInvReservationStateMergePatched newOrderItemShipGrpInvReservationStateMergePatched(Long version, String commandId, String requesterId) {
         OrderItemShipGrpInvReservationEventId stateEventId = new OrderItemShipGrpInvReservationEventId(this.state.getOrderItemShipGrpInvResId(), version);
-        OrderItemShipGrpInvReservationStateEvent.OrderItemShipGrpInvReservationStateMergePatched e = newOrderItemShipGrpInvReservationStateMergePatched(stateEventId);
-        ((AbstractOrderItemShipGrpInvReservationStateEvent)e).setCommandId(commandId);
+        OrderItemShipGrpInvReservationEvent.OrderItemShipGrpInvReservationStateMergePatched e = newOrderItemShipGrpInvReservationStateMergePatched(stateEventId);
+        ((AbstractOrderItemShipGrpInvReservationEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected OrderItemShipGrpInvReservationStateEvent.OrderItemShipGrpInvReservationStateDeleted newOrderItemShipGrpInvReservationStateDeleted(Long version, String commandId, String requesterId) {
+    protected OrderItemShipGrpInvReservationEvent.OrderItemShipGrpInvReservationStateDeleted newOrderItemShipGrpInvReservationStateDeleted(Long version, String commandId, String requesterId) {
         OrderItemShipGrpInvReservationEventId stateEventId = new OrderItemShipGrpInvReservationEventId(this.state.getOrderItemShipGrpInvResId(), version);
-        OrderItemShipGrpInvReservationStateEvent.OrderItemShipGrpInvReservationStateDeleted e = newOrderItemShipGrpInvReservationStateDeleted(stateEventId);
-        ((AbstractOrderItemShipGrpInvReservationStateEvent)e).setCommandId(commandId);
+        OrderItemShipGrpInvReservationEvent.OrderItemShipGrpInvReservationStateDeleted e = newOrderItemShipGrpInvReservationStateDeleted(stateEventId);
+        ((AbstractOrderItemShipGrpInvReservationEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected OrderItemShipGrpInvReservationStateEvent.OrderItemShipGrpInvReservationStateCreated newOrderItemShipGrpInvReservationStateCreated(OrderItemShipGrpInvReservationEventId stateEventId) {
-        return new AbstractOrderItemShipGrpInvReservationStateEvent.SimpleOrderItemShipGrpInvReservationStateCreated(stateEventId);
+    protected OrderItemShipGrpInvReservationEvent.OrderItemShipGrpInvReservationStateCreated newOrderItemShipGrpInvReservationStateCreated(OrderItemShipGrpInvReservationEventId stateEventId) {
+        return new AbstractOrderItemShipGrpInvReservationEvent.SimpleOrderItemShipGrpInvReservationStateCreated(stateEventId);
     }
 
-    protected OrderItemShipGrpInvReservationStateEvent.OrderItemShipGrpInvReservationStateMergePatched newOrderItemShipGrpInvReservationStateMergePatched(OrderItemShipGrpInvReservationEventId stateEventId) {
-        return new AbstractOrderItemShipGrpInvReservationStateEvent.SimpleOrderItemShipGrpInvReservationStateMergePatched(stateEventId);
+    protected OrderItemShipGrpInvReservationEvent.OrderItemShipGrpInvReservationStateMergePatched newOrderItemShipGrpInvReservationStateMergePatched(OrderItemShipGrpInvReservationEventId stateEventId) {
+        return new AbstractOrderItemShipGrpInvReservationEvent.SimpleOrderItemShipGrpInvReservationStateMergePatched(stateEventId);
     }
 
-    protected OrderItemShipGrpInvReservationStateEvent.OrderItemShipGrpInvReservationStateDeleted newOrderItemShipGrpInvReservationStateDeleted(OrderItemShipGrpInvReservationEventId stateEventId)
+    protected OrderItemShipGrpInvReservationEvent.OrderItemShipGrpInvReservationStateDeleted newOrderItemShipGrpInvReservationStateDeleted(OrderItemShipGrpInvReservationEventId stateEventId)
     {
-        return new AbstractOrderItemShipGrpInvReservationStateEvent.SimpleOrderItemShipGrpInvReservationStateDeleted(stateEventId);
+        return new AbstractOrderItemShipGrpInvReservationEvent.SimpleOrderItemShipGrpInvReservationStateDeleted(stateEventId);
     }
 
     public static class SimpleOrderItemShipGrpInvReservationAggregate extends AbstractOrderItemShipGrpInvReservationAggregate

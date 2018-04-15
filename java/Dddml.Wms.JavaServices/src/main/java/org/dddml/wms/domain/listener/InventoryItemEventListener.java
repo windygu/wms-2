@@ -81,26 +81,26 @@ public class InventoryItemEventListener implements AggregateEventListener<Invent
 
     @Override
     public void eventAppended(AggregateEvent<InventoryItemAggregate, InventoryItemState> e) {
-        if (!(e.getEvent() != null && e.getEvent() instanceof InventoryItemStateEvent)) {
+        if (!(e.getEvent() != null && e.getEvent() instanceof InventoryItemEvent)) {
             return;
         }
-        InventoryItemStateEvent inventoryItemEvent = (InventoryItemStateEvent) e.getEvent();
-        Iterable<InventoryItemEntryStateEvent.InventoryItemEntryStateCreated> itemEntriesCreated = null;
-        if (inventoryItemEvent instanceof InventoryItemStateEvent.InventoryItemStateCreated) {
-            itemEntriesCreated = ((InventoryItemStateEvent.InventoryItemStateCreated) inventoryItemEvent).getInventoryItemEntryEvents();
-        } else if (inventoryItemEvent instanceof InventoryItemStateEvent.InventoryItemStateMergePatched) {
+        InventoryItemEvent inventoryItemEvent = (InventoryItemEvent) e.getEvent();
+        Iterable<InventoryItemEntryEvent.InventoryItemEntryStateCreated> itemEntriesCreated = null;
+        if (inventoryItemEvent instanceof InventoryItemEvent.InventoryItemStateCreated) {
+            itemEntriesCreated = ((InventoryItemEvent.InventoryItemStateCreated) inventoryItemEvent).getInventoryItemEntryEvents();
+        } else if (inventoryItemEvent instanceof InventoryItemEvent.InventoryItemStateMergePatched) {
             itemEntriesCreated =
                     StreamSupport.stream(
-                            ((InventoryItemStateEvent.InventoryItemStateMergePatched) inventoryItemEvent)
+                            ((InventoryItemEvent.InventoryItemStateMergePatched) inventoryItemEvent)
                                     .getInventoryItemEntryEvents().spliterator(), false
-                    ).filter(ie -> ie instanceof InventoryItemEntryStateEvent.InventoryItemEntryStateCreated)
-                            .map(ie -> (InventoryItemEntryStateEvent.InventoryItemEntryStateCreated) ie)
+                    ).filter(ie -> ie instanceof InventoryItemEntryEvent.InventoryItemEntryStateCreated)
+                            .map(ie -> (InventoryItemEntryEvent.InventoryItemEntryStateCreated) ie)
                             .collect(Collectors.toList());
         }
         if (itemEntriesCreated == null) {
             return;
         }
-        for (InventoryItemEntryStateEvent.InventoryItemEntryStateCreated iie : itemEntriesCreated) {
+        for (InventoryItemEntryEvent.InventoryItemEntryStateCreated iie : itemEntriesCreated) {
             for (InventoryPostingRuleState pr : getPostingRules(iie.getInventoryItemEntryEventId().getInventoryItemId())) {
                 BigDecimal outputQuantity = getOutputQuantity(pr, iie);
                 if (outputQuantity == null || outputQuantity.equals(0)) {
@@ -198,7 +198,7 @@ public class InventoryItemEventListener implements AggregateEventListener<Invent
 
     // ///////////////////////////////////
 
-    private InventoryPRTriggeredId getOrCreateInventoryPRTriggered(InventoryPostingRuleState pr, InventoryItemEntryStateEvent.InventoryItemEntryStateCreated iie) {
+    private InventoryPRTriggeredId getOrCreateInventoryPRTriggered(InventoryPostingRuleState pr, InventoryItemEntryEvent.InventoryItemEntryStateCreated iie) {
         InventoryPRTriggeredCommand.CreateInventoryPRTriggered createTriggered = new AbstractInventoryPRTriggeredCommand.SimpleCreateInventoryPRTriggered();
         InventoryItemEntryId sourceEntryId = new InventoryItemEntryId(iie.getInventoryItemEntryEventId().getInventoryItemId(),
                 iie.getInventoryItemEntryEventId().getEntrySeqId());
@@ -211,7 +211,7 @@ public class InventoryItemEventListener implements AggregateEventListener<Invent
         return tid;//todo If existed??
     }
 
-    private BigDecimal getOutputQuantity(InventoryPostingRuleState pr, InventoryItemEntryStateEvent.InventoryItemEntryStateCreated sourceEntry) {
+    private BigDecimal getOutputQuantity(InventoryPostingRuleState pr, InventoryItemEntryEvent.InventoryItemEntryStateCreated sourceEntry) {
         String accountName = pr.getTriggerAccountName();
         BigDecimal srcAmount = (BigDecimal) (ReflectUtils.getPropertyValue(accountName, sourceEntry));
         return (pr.getIsOutputNegated() != null && pr.getIsOutputNegated())

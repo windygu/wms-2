@@ -91,19 +91,19 @@ public abstract class AbstractMovementConfirmationApplicationService implements 
         return getStateQueryRepository().getCount(filter);
     }
 
-    public MovementConfirmationStateEvent getStateEvent(String documentNumber, long version) {
-        MovementConfirmationStateEvent e = (MovementConfirmationStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(documentNumber), version);
+    public MovementConfirmationEvent getEvent(String documentNumber, long version) {
+        MovementConfirmationEvent e = (MovementConfirmationEvent)getEventStore().getEvent(toEventStoreAggregateId(documentNumber), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(documentNumber, 0);
+            return getEvent(documentNumber, 0);
         }
         return e;
     }
 
     public MovementConfirmationState getHistoryState(String documentNumber, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractMovementConfirmationStateEvent.class, toEventStoreAggregateId(documentNumber), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractMovementConfirmationEvent.class, toEventStoreAggregateId(documentNumber), version - 1);
         return new AbstractMovementConfirmationState.SimpleMovementConfirmationState(eventStream.getEvents());
     }
 
@@ -150,7 +150,7 @@ public abstract class AbstractMovementConfirmationApplicationService implements 
         }
     }
 
-    public void initialize(MovementConfirmationStateEvent.MovementConfirmationStateCreated stateCreated) {
+    public void initialize(MovementConfirmationEvent.MovementConfirmationStateCreated stateCreated) {
         String aggregateId = stateCreated.getMovementConfirmationEventId().getDocumentNumber();
         MovementConfirmationState state = new AbstractMovementConfirmationState.SimpleMovementConfirmationState();
         state.setDocumentNumber(aggregateId);
@@ -168,9 +168,9 @@ public abstract class AbstractMovementConfirmationApplicationService implements 
         if (command.getVersion() == null) { command.setVersion(MovementConfirmationState.VERSION_NULL); }
         if (state.getVersion() != null && state.getVersion() > command.getVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractMovementConfirmationStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractMovementConfirmationEvent.class, eventStoreAggregateId, command.getVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

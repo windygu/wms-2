@@ -7,7 +7,7 @@ import java.util.Date;
 import org.dddml.wms.domain.inventoryprtriggered.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.inventoryitemrequirement.InventoryItemRequirementStateEvent.*;
+import org.dddml.wms.domain.inventoryitemrequirement.InventoryItemRequirementEvent.*;
 
 public interface InventoryItemRequirementState
 {
@@ -57,9 +57,9 @@ public interface InventoryItemRequirementState
 
     void mutate(Event e);
 
-    void when(InventoryItemRequirementStateEvent.InventoryItemRequirementStateCreated e);
+    void when(InventoryItemRequirementEvent.InventoryItemRequirementStateCreated e);
 
-    void when(InventoryItemRequirementStateEvent.InventoryItemRequirementStateMergePatched e);
+    void when(InventoryItemRequirementEvent.InventoryItemRequirementStateMergePatched e);
 
     
 }

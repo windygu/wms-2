@@ -20,30 +20,30 @@ public class HibernateLocatorEventStore extends AbstractHibernateEventStore
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractLocatorStateEvent.class;
+        return AbstractLocatorEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractLocatorStateEvent.class;
+        Class supportedEventType = AbstractLocatorEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         String idObj = (String) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractLocatorStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractLocatorEvent.class);
         criteria.add(Restrictions.eq("locatorEventId.locatorId", idObj));
         criteria.add(Restrictions.le("locatorEventId.version", version));
         criteria.addOrder(Order.asc("locatorEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractLocatorStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractLocatorEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractLocatorStateEvent) es.get(es.size() - 1)).getLocatorEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractLocatorEvent) es.get(es.size() - 1)).getLocatorEventId().getVersion());
         } else {
             //todo?
         }

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+                   assembly="Dddml.Wms.Common" 
+                   namespace="Dddml.Wms.Domain.OrderShipment">
+  
+  <class name="OrderShipmentStateEventBase" table="OrderShipmentEvents" mutable="false" abstract="true">
+
+    <composite-id name="OrderShipmentEventId" class="Dddml.Wms.Domain.OrderShipment.OrderShipmentEventId">
+        <key-property name="OrderShipmentIdOrderId" ><column name="OrderShipmentIdOrderId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="OrderShipmentIdOrderItemSeqId" ><column name="OrderShipmentIdOrderItemSeqId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="OrderShipmentIdShipGroupSeqId" ><column name="OrderShipmentIdShipGroupSeqId" sql-type="DECIMAL(20,0)" /></key-property>
+        <key-property name="OrderShipmentIdShipmentId" ><column name="OrderShipmentIdShipmentId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="OrderShipmentIdShipmentItemSeqId" ><column name="OrderShipmentIdShipmentItemSeqId" sql-type="VARCHAR(20)" /></key-property>
+        <key-property name="Version" ></key-property>
+    </composite-id>
+    <discriminator column="EventType" type="String" />
+
+    <property name="Quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>
+    <property name="Active" ></property>
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+    <subclass name="OrderShipmentStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="OrderShipmentStateMergePatched"  discriminator-value="MergePatched">
+
+
+        <property name="IsPropertyQuantityRemoved" column="IsPropertyQuantityRemoved"/>
+
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+    </subclass>
+
+
+  </class>
+  
+</hibernate-mapping>

@@ -7,7 +7,7 @@ import java.util.Date;
 import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.sellableinventoryitem.SellableInventoryItemEntryStateEvent.*;
+import org.dddml.wms.domain.sellableinventoryitem.SellableInventoryItemEntryEvent.*;
 
 public abstract class AbstractSellableInventoryItemEntryState implements SellableInventoryItemEntryState
 {
@@ -193,7 +193,7 @@ public abstract class AbstractSellableInventoryItemEntryState implements Sellabl
     {
     }
 
-    protected void throwOnWrongEvent(SellableInventoryItemEntryStateEvent stateEvent)
+    protected void throwOnWrongEvent(SellableInventoryItemEntryEvent stateEvent)
     {
         InventoryItemId stateEntityIdSellableInventoryItemId = this.getSellableInventoryItemEntryId().getSellableInventoryItemId();
         InventoryItemId eventEntityIdSellableInventoryItemId = stateEvent.getSellableInventoryItemEntryEventId().getSellableInventoryItemId();

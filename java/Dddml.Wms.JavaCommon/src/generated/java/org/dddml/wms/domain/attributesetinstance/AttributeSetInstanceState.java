@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceStateEvent.*;
+import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceEvent.*;
 
 public interface AttributeSetInstanceState
 {
@@ -321,7 +321,7 @@ public interface AttributeSetInstanceState
 
     void mutate(Event e);
 
-    void when(AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated e);
+    void when(AttributeSetInstanceEvent.AttributeSetInstanceStateCreated e);
 
     
 }

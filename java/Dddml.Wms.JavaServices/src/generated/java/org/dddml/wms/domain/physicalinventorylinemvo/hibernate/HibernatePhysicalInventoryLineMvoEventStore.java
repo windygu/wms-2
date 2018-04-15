@@ -22,20 +22,20 @@ public class HibernatePhysicalInventoryLineMvoEventStore extends AbstractHiberna
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractPhysicalInventoryLineMvoStateEvent.class;
+        return AbstractPhysicalInventoryLineMvoEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractPhysicalInventoryLineMvoStateEvent.class;
+        Class supportedEventType = AbstractPhysicalInventoryLineMvoEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         PhysicalInventoryLineId idObj = (PhysicalInventoryLineId) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractPhysicalInventoryLineMvoStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractPhysicalInventoryLineMvoEvent.class);
         criteria.add(Restrictions.eq("physicalInventoryLineMvoEventId.physicalInventoryLineIdPhysicalInventoryDocumentNumber", idObj.getPhysicalInventoryDocumentNumber()));
         criteria.add(Restrictions.eq("physicalInventoryLineMvoEventId.physicalInventoryLineIdInventoryItemIdProductId", idObj.getInventoryItemId().getProductId()));
         criteria.add(Restrictions.eq("physicalInventoryLineMvoEventId.physicalInventoryLineIdInventoryItemIdLocatorId", idObj.getInventoryItemId().getLocatorId()));
@@ -44,11 +44,11 @@ public class HibernatePhysicalInventoryLineMvoEventStore extends AbstractHiberna
         criteria.addOrder(Order.asc("physicalInventoryLineMvoEventId.physicalInventoryVersion"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractPhysicalInventoryLineMvoStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractPhysicalInventoryLineMvoEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractPhysicalInventoryLineMvoStateEvent) es.get(es.size() - 1)).getPhysicalInventoryLineMvoEventId().getPhysicalInventoryVersion());
+            eventStream.setSteamVersion(((AbstractPhysicalInventoryLineMvoEvent) es.get(es.size() - 1)).getPhysicalInventoryLineMvoEventId().getPhysicalInventoryVersion());
         } else {
             //todo?
         }

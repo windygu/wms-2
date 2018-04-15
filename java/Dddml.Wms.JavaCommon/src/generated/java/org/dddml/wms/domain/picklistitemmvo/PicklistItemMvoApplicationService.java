@@ -31,7 +31,7 @@ public interface PicklistItemMvoApplicationService
 
     long getCount(Criterion filter);
 
-    PicklistItemMvoStateEvent getStateEvent(PicklistBinPicklistItemId picklistBinPicklistItemId, long version);
+    PicklistItemMvoEvent getEvent(PicklistBinPicklistItemId picklistBinPicklistItemId, long version);
 
     PicklistItemMvoState getHistoryState(PicklistBinPicklistItemId picklistBinPicklistItemId, long version);
 

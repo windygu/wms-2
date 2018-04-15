@@ -20,30 +20,30 @@ public class HibernateAttributeSetInstanceExtensionFieldGroupEventStore extends 
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractAttributeSetInstanceExtensionFieldGroupStateEvent.class;
+        return AbstractAttributeSetInstanceExtensionFieldGroupEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractAttributeSetInstanceExtensionFieldGroupStateEvent.class;
+        Class supportedEventType = AbstractAttributeSetInstanceExtensionFieldGroupEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         String idObj = (String) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractAttributeSetInstanceExtensionFieldGroupStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractAttributeSetInstanceExtensionFieldGroupEvent.class);
         criteria.add(Restrictions.eq("attributeSetInstanceExtensionFieldGroupEventId.id", idObj));
         criteria.add(Restrictions.le("attributeSetInstanceExtensionFieldGroupEventId.version", version));
         criteria.addOrder(Order.asc("attributeSetInstanceExtensionFieldGroupEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractAttributeSetInstanceExtensionFieldGroupStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractAttributeSetInstanceExtensionFieldGroupEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractAttributeSetInstanceExtensionFieldGroupStateEvent) es.get(es.size() - 1)).getAttributeSetInstanceExtensionFieldGroupEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractAttributeSetInstanceExtensionFieldGroupEvent) es.get(es.size() - 1)).getAttributeSetInstanceExtensionFieldGroupEventId().getVersion());
         } else {
             //todo?
         }

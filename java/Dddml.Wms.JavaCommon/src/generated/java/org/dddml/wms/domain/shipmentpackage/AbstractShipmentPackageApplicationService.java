@@ -86,19 +86,19 @@ public abstract class AbstractShipmentPackageApplicationService implements Shipm
         return getStateQueryRepository().getCount(filter);
     }
 
-    public ShipmentPackageStateEvent getStateEvent(ShipmentPackageId shipmentPackageId, long version) {
-        ShipmentPackageStateEvent e = (ShipmentPackageStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(shipmentPackageId), version);
+    public ShipmentPackageEvent getEvent(ShipmentPackageId shipmentPackageId, long version) {
+        ShipmentPackageEvent e = (ShipmentPackageEvent)getEventStore().getEvent(toEventStoreAggregateId(shipmentPackageId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(shipmentPackageId, 0);
+            return getEvent(shipmentPackageId, 0);
         }
         return e;
     }
 
     public ShipmentPackageState getHistoryState(ShipmentPackageId shipmentPackageId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractShipmentPackageStateEvent.class, toEventStoreAggregateId(shipmentPackageId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractShipmentPackageEvent.class, toEventStoreAggregateId(shipmentPackageId), version - 1);
         return new AbstractShipmentPackageState.SimpleShipmentPackageState(eventStream.getEvents());
     }
 
@@ -145,7 +145,7 @@ public abstract class AbstractShipmentPackageApplicationService implements Shipm
         }
     }
 
-    public void initialize(ShipmentPackageStateEvent.ShipmentPackageStateCreated stateCreated) {
+    public void initialize(ShipmentPackageEvent.ShipmentPackageStateCreated stateCreated) {
         ShipmentPackageId aggregateId = stateCreated.getShipmentPackageEventId().getShipmentPackageId();
         ShipmentPackageState state = new AbstractShipmentPackageState.SimpleShipmentPackageState();
         state.setShipmentPackageId(aggregateId);
@@ -163,9 +163,9 @@ public abstract class AbstractShipmentPackageApplicationService implements Shipm
         if (command.getVersion() == null) { command.setVersion(ShipmentPackageState.VERSION_NULL); }
         if (state.getVersion() != null && state.getVersion() > command.getVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractShipmentPackageStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractShipmentPackageEvent.class, eventStoreAggregateId, command.getVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.order.OrderItemStateEvent.*;
+import org.dddml.wms.domain.order.OrderItemEvent.*;
 
 public interface OrderItemState
 {
@@ -196,9 +196,9 @@ public interface OrderItemState
 
     void mutate(Event e);
 
-    void when(OrderItemStateEvent.OrderItemStateCreated e);
+    void when(OrderItemEvent.OrderItemStateCreated e);
 
-    void when(OrderItemStateEvent.OrderItemStateMergePatched e);
+    void when(OrderItemEvent.OrderItemStateMergePatched e);
 
     
 }

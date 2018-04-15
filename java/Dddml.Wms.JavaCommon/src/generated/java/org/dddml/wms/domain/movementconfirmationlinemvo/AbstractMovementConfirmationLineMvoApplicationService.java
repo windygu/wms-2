@@ -88,19 +88,19 @@ public abstract class AbstractMovementConfirmationLineMvoApplicationService impl
         return getStateQueryRepository().getCount(filter);
     }
 
-    public MovementConfirmationLineMvoStateEvent getStateEvent(MovementConfirmationLineId movementConfirmationLineId, long version) {
-        MovementConfirmationLineMvoStateEvent e = (MovementConfirmationLineMvoStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(movementConfirmationLineId), version);
+    public MovementConfirmationLineMvoEvent getEvent(MovementConfirmationLineId movementConfirmationLineId, long version) {
+        MovementConfirmationLineMvoEvent e = (MovementConfirmationLineMvoEvent)getEventStore().getEvent(toEventStoreAggregateId(movementConfirmationLineId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(movementConfirmationLineId, 0);
+            return getEvent(movementConfirmationLineId, 0);
         }
         return e;
     }
 
     public MovementConfirmationLineMvoState getHistoryState(MovementConfirmationLineId movementConfirmationLineId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractMovementConfirmationLineMvoStateEvent.class, toEventStoreAggregateId(movementConfirmationLineId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractMovementConfirmationLineMvoEvent.class, toEventStoreAggregateId(movementConfirmationLineId), version - 1);
         return new AbstractMovementConfirmationLineMvoState.SimpleMovementConfirmationLineMvoState(eventStream.getEvents());
     }
 
@@ -139,7 +139,7 @@ public abstract class AbstractMovementConfirmationLineMvoApplicationService impl
         }
     }
 
-    public void initialize(MovementConfirmationLineMvoStateEvent.MovementConfirmationLineMvoStateCreated stateCreated) {
+    public void initialize(MovementConfirmationLineMvoEvent.MovementConfirmationLineMvoStateCreated stateCreated) {
         MovementConfirmationLineId aggregateId = stateCreated.getMovementConfirmationLineMvoEventId().getMovementConfirmationLineId();
         MovementConfirmationLineMvoState state = new AbstractMovementConfirmationLineMvoState.SimpleMovementConfirmationLineMvoState();
         state.setMovementConfirmationLineId(aggregateId);
@@ -157,9 +157,9 @@ public abstract class AbstractMovementConfirmationLineMvoApplicationService impl
         if (command.getMovementConfirmationVersion() == null) { command.setMovementConfirmationVersion(MovementConfirmationLineMvoState.VERSION_NULL); }
         if (state.getMovementConfirmationVersion() != null && state.getMovementConfirmationVersion() > command.getMovementConfirmationVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractMovementConfirmationLineMvoStateEvent.class, eventStoreAggregateId, command.getMovementConfirmationVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractMovementConfirmationLineMvoEvent.class, eventStoreAggregateId, command.getMovementConfirmationVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

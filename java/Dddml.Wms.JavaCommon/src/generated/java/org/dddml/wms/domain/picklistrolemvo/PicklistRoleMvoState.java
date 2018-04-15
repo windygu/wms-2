@@ -5,7 +5,7 @@ import org.dddml.wms.domain.picklist.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.picklistrolemvo.PicklistRoleMvoStateEvent.*;
+import org.dddml.wms.domain.picklistrolemvo.PicklistRoleMvoEvent.*;
 
 public interface PicklistRoleMvoState
 {
@@ -105,11 +105,11 @@ public interface PicklistRoleMvoState
 
     void mutate(Event e);
 
-    void when(PicklistRoleMvoStateEvent.PicklistRoleMvoStateCreated e);
+    void when(PicklistRoleMvoEvent.PicklistRoleMvoStateCreated e);
 
-    void when(PicklistRoleMvoStateEvent.PicklistRoleMvoStateMergePatched e);
+    void when(PicklistRoleMvoEvent.PicklistRoleMvoStateMergePatched e);
 
-    void when(PicklistRoleMvoStateEvent.PicklistRoleMvoStateDeleted e);
+    void when(PicklistRoleMvoEvent.PicklistRoleMvoStateDeleted e);
     
 }
 

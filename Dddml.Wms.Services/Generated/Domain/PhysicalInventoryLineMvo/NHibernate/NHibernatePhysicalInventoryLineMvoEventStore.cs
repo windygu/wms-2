@@ -49,7 +49,7 @@ namespace Dddml.Wms.Domain.PhysicalInventoryLineMvo.NHibernate
             var es = criteria.List<IEvent>();
             foreach (PhysicalInventoryLineMvoStateEventBase e in es)
             {
-                e.StateEventReadOnly = true;
+                e.EventReadOnly = true;
             }
             return new EventStream()
             {

@@ -182,7 +182,7 @@ public class OrderItemShipGroupAssociationMvoResource {
 
             OrderItemShipGroupAssociationId idObj = OrderItemShipGroupAssociationMvoResourceUtils.parseIdString(id);
             OrderItemShipGroupAssociationMvoStateEventDtoConverter dtoConverter = getOrderItemShipGroupAssociationMvoStateEventDtoConverter();
-            return dtoConverter.toOrderItemShipGroupAssociationMvoStateEventDto((AbstractOrderItemShipGroupAssociationMvoStateEvent) orderItemShipGroupAssociationMvoApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toOrderItemShipGroupAssociationMvoStateEventDto((AbstractOrderItemShipGroupAssociationMvoEvent) orderItemShipGroupAssociationMvoApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

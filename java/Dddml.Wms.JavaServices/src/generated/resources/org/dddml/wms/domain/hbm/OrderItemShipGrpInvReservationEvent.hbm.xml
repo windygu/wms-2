@@ -1,0 +1,80 @@
+﻿<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.dddml.wms.domain.orderitemshipgrpinvreservation">
+  
+  <class name="AbstractOrderItemShipGrpInvReservationEvent" table="OrderItemShipGrpInvReservationEvents" mutable="false" abstract="true">
+
+	<composite-id name="orderItemShipGrpInvReservationEventId" class="org.dddml.wms.domain.orderitemshipgrpinvreservation.OrderItemShipGrpInvReservationEventId">
+		<key-property name="orderItemShipGrpInvResIdOrderId" ><column name="OrderItemShipGrpInvResIdOrderId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="orderItemShipGrpInvResIdShipGroupSeqId" ><column name="OrderItemShipGrpInvResIdShipGroupSeqId" sql-type="DECIMAL(20,0)" /></key-property>
+		<key-property name="orderItemShipGrpInvResIdOrderItemSeqId" ><column name="OrderItemShipGrpInvResIdOrderItemSeqId" sql-type="VARCHAR(20)" /></key-property>
+		<key-property name="orderItemShipGrpInvResIdProductId" ><column name="OrderItemShipGrpInvResIdProductId" length="60" sql-type="VARCHAR(60)" /></key-property>
+		<key-property name="orderItemShipGrpInvResIdLocatorId" ><column name="OrderItemShipGrpInvResIdLocatorId" length="50" /></key-property>
+		<key-property name="orderItemShipGrpInvResIdAttributeSetInstanceId" ><column name="OrderItemShipGrpInvResIdAttributeSetInstanceId" length="50" /></key-property>
+		<key-property name="version" ></key-property>
+	</composite-id>
+
+    <discriminator column="EventType" type="string" />
+
+	<property name="reserveOrderEnumId" ><column name="ReserveOrderEnumId" sql-type="VARCHAR(20)" /></property>
+	<property name="quantity" ><column name="Quantity" sql-type="DECIMAL(18,6)" /></property>
+	<property name="quantityNotAvailable" ><column name="QuantityNotAvailable" sql-type="DECIMAL(18,6)" /></property>
+	<property name="reservedDatetime" ><column name="ReservedDatetime" sql-type="DATETIME" /></property>
+	<property name="createdDatetime" ><column name="CreatedDatetime" sql-type="DATETIME" /></property>
+	<property name="promisedDatetime" ><column name="PromisedDatetime" sql-type="DATETIME" /></property>
+	<property name="currentPromisedDate" ><column name="CurrentPromisedDate" sql-type="DATETIME" /></property>
+	<property name="priority" ><column name="Priority" sql-type="CHAR(1)" /></property>
+	<property name="sequenceId" ><column name="SequenceId" sql-type="DECIMAL(20,0)" /></property>
+	<property name="oldPickStartDate" ><column name="OldPickStartDate" sql-type="DATETIME" /></property>
+	<property name="active" ></property>
+
+    <property name="createdBy" column="CreatedBy"/>
+
+    <property name="createdAt" column="CreatedAt" />
+
+    <property name="commandId" column="CommandId"/>
+
+    <subclass name="AbstractOrderItemShipGrpInvReservationEvent$SimpleOrderItemShipGrpInvReservationStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="AbstractOrderItemShipGrpInvReservationEvent$SimpleOrderItemShipGrpInvReservationStateMergePatched" discriminator-value="MergePatched">
+
+        <property name="isPropertyReserveOrderEnumIdRemoved" column="IsPropertyReserveOrderEnumIdRemoved"/>
+
+        <property name="isPropertyQuantityRemoved" column="IsPropertyQuantityRemoved"/>
+
+        <property name="isPropertyQuantityNotAvailableRemoved" column="IsPropertyQuantityNotAvailableRemoved"/>
+
+        <property name="isPropertyReservedDatetimeRemoved" column="IsPropertyReservedDatetimeRemoved"/>
+
+        <property name="isPropertyCreatedDatetimeRemoved" column="IsPropertyCreatedDatetimeRemoved"/>
+
+        <property name="isPropertyPromisedDatetimeRemoved" column="IsPropertyPromisedDatetimeRemoved"/>
+
+        <property name="isPropertyCurrentPromisedDateRemoved" column="IsPropertyCurrentPromisedDateRemoved"/>
+
+        <property name="isPropertyPriorityRemoved" column="IsPropertyPriorityRemoved"/>
+
+        <property name="isPropertySequenceIdRemoved" column="IsPropertySequenceIdRemoved"/>
+
+        <property name="isPropertyOldPickStartDateRemoved" column="IsPropertyOldPickStartDateRemoved"/>
+
+        <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+
+
+    </subclass>
+
+    <subclass name="AbstractOrderItemShipGrpInvReservationEvent$SimpleOrderItemShipGrpInvReservationStateDeleted" discriminator-value="Deleted">
+
+    </subclass>
+
+
+
+  </class>
+  
+</hibernate-mapping>

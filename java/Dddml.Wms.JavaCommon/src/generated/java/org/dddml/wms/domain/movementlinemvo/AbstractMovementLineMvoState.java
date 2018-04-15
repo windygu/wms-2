@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.movementlinemvo.MovementLineMvoStateEvent.*;
+import org.dddml.wms.domain.movementlinemvo.MovementLineMvoEvent.*;
 
 public abstract class AbstractMovementLineMvoState implements MovementLineMvoState
 {
@@ -539,7 +539,7 @@ public abstract class AbstractMovementLineMvoState implements MovementLineMvoSta
     public AbstractMovementLineMvoState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setMovementLineId(((MovementLineMvoStateEvent) events.get(0)).getMovementLineMvoEventId().getMovementLineId());
+            this.setMovementLineId(((MovementLineMvoEvent) events.get(0)).getMovementLineMvoEventId().getMovementLineId());
             for (Event e : events) {
                 mutate(e);
                 this.setMovementVersion(this.getMovementVersion() + 1);
@@ -1031,10 +1031,10 @@ public abstract class AbstractMovementLineMvoState implements MovementLineMvoSta
     {
     }
 
-    protected void throwOnWrongEvent(MovementLineMvoStateEvent stateEvent)
+    protected void throwOnWrongEvent(MovementLineMvoEvent stateEvent)
     {
         MovementLineId stateEntityId = this.getMovementLineId(); // Aggregate Id
-        MovementLineId eventEntityId = stateEvent.getMovementLineMvoEventId().getMovementLineId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        MovementLineId eventEntityId = stateEvent.getMovementLineMvoEventId().getMovementLineId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

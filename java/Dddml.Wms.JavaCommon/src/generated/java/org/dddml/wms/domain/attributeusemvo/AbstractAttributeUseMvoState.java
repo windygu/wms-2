@@ -5,7 +5,7 @@ import org.dddml.wms.domain.attributeset.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.attributeusemvo.AttributeUseMvoStateEvent.*;
+import org.dddml.wms.domain.attributeusemvo.AttributeUseMvoEvent.*;
 
 public abstract class AbstractAttributeUseMvoState implements AttributeUseMvoState
 {
@@ -298,7 +298,7 @@ public abstract class AbstractAttributeUseMvoState implements AttributeUseMvoSta
     public AbstractAttributeUseMvoState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setAttributeSetAttributeUseId(((AttributeUseMvoStateEvent) events.get(0)).getAttributeUseMvoEventId().getAttributeSetAttributeUseId());
+            this.setAttributeSetAttributeUseId(((AttributeUseMvoEvent) events.get(0)).getAttributeUseMvoEventId().getAttributeSetAttributeUseId());
             for (Event e : events) {
                 mutate(e);
                 this.setAttributeSetVersion(this.getAttributeSetVersion() + 1);
@@ -550,10 +550,10 @@ public abstract class AbstractAttributeUseMvoState implements AttributeUseMvoSta
     {
     }
 
-    protected void throwOnWrongEvent(AttributeUseMvoStateEvent stateEvent)
+    protected void throwOnWrongEvent(AttributeUseMvoEvent stateEvent)
     {
         AttributeSetAttributeUseId stateEntityId = this.getAttributeSetAttributeUseId(); // Aggregate Id
-        AttributeSetAttributeUseId eventEntityId = stateEvent.getAttributeUseMvoEventId().getAttributeSetAttributeUseId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        AttributeSetAttributeUseId eventEntityId = stateEvent.getAttributeUseMvoEventId().getAttributeSetAttributeUseId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

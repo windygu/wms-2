@@ -112,10 +112,10 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\attributeset\hibernate\HibernateAttributeSetStateRepository.java">
       <DependentUpon>GenerateAttributeSetDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\attributeset\hibernate\HibernateAttributeUseStateDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributeset\hibernate\HibernateAttributeUseEventDao.java">
       <DependentUpon>GenerateAttributeSetDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\attributeset\hibernate\HibernateAttributeUseStateEventDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attributeset\hibernate\HibernateAttributeUseStateDao.java">
       <DependentUpon>GenerateAttributeSetDomainHibernate.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\attributeusemvo\hibernate\GenerateAttributeUseMvoDomainHibernate.txt">
@@ -151,10 +151,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateAttributeDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\attribute\hibernate\HibernateAttributeAliasStateDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attribute\hibernate\HibernateAttributeAliasEventDao.java">
       <DependentUpon>GenerateAttributeDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\attribute\hibernate\HibernateAttributeAliasStateEventDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attribute\hibernate\HibernateAttributeAliasStateDao.java">
       <DependentUpon>GenerateAttributeDomainHibernate.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\attribute\hibernate\HibernateAttributeEventStore.java">
@@ -166,10 +166,10 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\attribute\hibernate\HibernateAttributeStateRepository.java">
       <DependentUpon>GenerateAttributeDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\attribute\hibernate\HibernateAttributeValueStateDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attribute\hibernate\HibernateAttributeValueEventDao.java">
       <DependentUpon>GenerateAttributeDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\attribute\hibernate\HibernateAttributeValueStateEventDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\attribute\hibernate\HibernateAttributeValueStateDao.java">
       <DependentUpon>GenerateAttributeDomainHibernate.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\contactmech\hibernate\GenerateContactMechDomainHibernate.txt">
@@ -299,10 +299,10 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\hibernate\HibernateInOutEventStore.java">
       <DependentUpon>GenerateInOutDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inout\hibernate\HibernateInOutLineStateDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\hibernate\HibernateInOutLineEventDao.java">
       <DependentUpon>GenerateInOutDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inout\hibernate\HibernateInOutLineStateEventDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inout\hibernate\HibernateInOutLineStateDao.java">
       <DependentUpon>GenerateInOutDomainHibernate.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\hibernate\HibernateInOutStateQueryRepository.java">
@@ -358,10 +358,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateInventoryItemDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitem\hibernate\HibernateInventoryItemEntryStateDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitem\hibernate\HibernateInventoryItemEntryEventDao.java">
       <DependentUpon>GenerateInventoryItemDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitem\hibernate\HibernateInventoryItemEntryStateEventDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitem\hibernate\HibernateInventoryItemEntryStateDao.java">
       <DependentUpon>GenerateInventoryItemDomainHibernate.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inventoryitem\hibernate\HibernateInventoryItemEventStore.java">
@@ -479,10 +479,10 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmation\hibernate\HibernateMovementConfirmationEventStore.java">
       <DependentUpon>GenerateMovementConfirmationDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmation\hibernate\HibernateMovementConfirmationLineStateDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmation\hibernate\HibernateMovementConfirmationLineEventDao.java">
       <DependentUpon>GenerateMovementConfirmationDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmation\hibernate\HibernateMovementConfirmationLineStateEventDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmation\hibernate\HibernateMovementConfirmationLineStateDao.java">
       <DependentUpon>GenerateMovementConfirmationDomainHibernate.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\movementconfirmation\hibernate\HibernateMovementConfirmationStateQueryRepository.java">
@@ -524,10 +524,10 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\movement\hibernate\HibernateMovementEventStore.java">
       <DependentUpon>GenerateMovementDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\movement\hibernate\HibernateMovementLineStateDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\movement\hibernate\HibernateMovementLineEventDao.java">
       <DependentUpon>GenerateMovementDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\movement\hibernate\HibernateMovementLineStateEventDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\movement\hibernate\HibernateMovementLineStateDao.java">
       <DependentUpon>GenerateMovementDomainHibernate.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\movement\hibernate\HibernateMovementStateQueryRepository.java">
@@ -628,28 +628,28 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\order\hibernate\HibernateOrderEventStore.java">
       <DependentUpon>GenerateOrderDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\order\hibernate\HibernateOrderItemShipGroupAssociationStateDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\hibernate\HibernateOrderItemEventDao.java">
       <DependentUpon>GenerateOrderDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\order\hibernate\HibernateOrderItemShipGroupAssociationStateEventDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\hibernate\HibernateOrderItemShipGroupAssociationEventDao.java">
+      <DependentUpon>GenerateOrderDomainHibernate.tt</DependentUpon>
+    </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\hibernate\HibernateOrderItemShipGroupAssociationStateDao.java">
       <DependentUpon>GenerateOrderDomainHibernate.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\order\hibernate\HibernateOrderItemStateDao.java">
       <DependentUpon>GenerateOrderDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\order\hibernate\HibernateOrderItemStateEventDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\hibernate\HibernateOrderRoleEventDao.java">
       <DependentUpon>GenerateOrderDomainHibernate.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\order\hibernate\HibernateOrderRoleStateDao.java">
       <DependentUpon>GenerateOrderDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\order\hibernate\HibernateOrderRoleStateEventDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\order\hibernate\HibernateOrderShipGroupEventDao.java">
       <DependentUpon>GenerateOrderDomainHibernate.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\order\hibernate\HibernateOrderShipGroupStateDao.java">
-      <DependentUpon>GenerateOrderDomainHibernate.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\order\hibernate\HibernateOrderShipGroupStateEventDao.java">
       <DependentUpon>GenerateOrderDomainHibernate.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\order\hibernate\HibernateOrderStateQueryRepository.java">
@@ -742,10 +742,10 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventory\hibernate\HibernatePhysicalInventoryEventStore.java">
       <DependentUpon>GeneratePhysicalInventoryDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventory\hibernate\HibernatePhysicalInventoryLineStateDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventory\hibernate\HibernatePhysicalInventoryLineEventDao.java">
       <DependentUpon>GeneratePhysicalInventoryDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventory\hibernate\HibernatePhysicalInventoryLineStateEventDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventory\hibernate\HibernatePhysicalInventoryLineStateDao.java">
       <DependentUpon>GeneratePhysicalInventoryDomainHibernate.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\physicalinventory\hibernate\HibernatePhysicalInventoryStateQueryRepository.java">
@@ -768,10 +768,10 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\hibernate\HibernatePicklistBinStateRepository.java">
       <DependentUpon>GeneratePicklistBinDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\hibernate\HibernatePicklistItemStateDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\hibernate\HibernatePicklistItemEventDao.java">
       <DependentUpon>GeneratePicklistBinDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\hibernate\HibernatePicklistItemStateEventDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklistbin\hibernate\HibernatePicklistItemStateDao.java">
       <DependentUpon>GeneratePicklistBinDomainHibernate.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\picklistitemmvo\hibernate\GeneratePicklistItemMvoDomainHibernate.txt">
@@ -810,10 +810,10 @@
     <Content Include="src\generated\java\org\dddml\wms\domain\picklist\hibernate\HibernatePicklistEventStore.java">
       <DependentUpon>GeneratePicklistDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\hibernate\HibernatePicklistRoleStateDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\hibernate\HibernatePicklistRoleEventDao.java">
       <DependentUpon>GeneratePicklistDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\hibernate\HibernatePicklistRoleStateEventDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\picklist\hibernate\HibernatePicklistRoleStateDao.java">
       <DependentUpon>GeneratePicklistDomainHibernate.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\picklist\hibernate\HibernatePicklistStateQueryRepository.java">
@@ -981,10 +981,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateShipmentPackageDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\hibernate\HibernateShipmentPackageContentStateDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\hibernate\HibernateShipmentPackageContentEventDao.java">
       <DependentUpon>GenerateShipmentPackageDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\hibernate\HibernateShipmentPackageContentStateEventDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\hibernate\HibernateShipmentPackageContentStateDao.java">
       <DependentUpon>GenerateShipmentPackageDomainHibernate.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipmentpackage\hibernate\HibernateShipmentPackageEventStore.java">
@@ -1026,25 +1026,25 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GenerateShipmentDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\hibernate\HibernateItemIssuanceStateDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\hibernate\HibernateItemIssuanceEventDao.java">
       <DependentUpon>GenerateShipmentDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\hibernate\HibernateItemIssuanceStateEventDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\hibernate\HibernateItemIssuanceStateDao.java">
       <DependentUpon>GenerateShipmentDomainHibernate.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\hibernate\HibernateShipmentEventStore.java">
       <DependentUpon>GenerateShipmentDomainHibernate.tt</DependentUpon>
     </Content>
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\hibernate\HibernateShipmentItemEventDao.java">
+      <DependentUpon>GenerateShipmentDomainHibernate.tt</DependentUpon>
+    </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\hibernate\HibernateShipmentItemStateDao.java">
       <DependentUpon>GenerateShipmentDomainHibernate.tt</DependentUpon>
     </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\hibernate\HibernateShipmentItemStateEventDao.java">
+    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\hibernate\HibernateShipmentReceiptEventDao.java">
       <DependentUpon>GenerateShipmentDomainHibernate.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\hibernate\HibernateShipmentReceiptStateDao.java">
-      <DependentUpon>GenerateShipmentDomainHibernate.tt</DependentUpon>
-    </Content>
-    <Content Include="src\generated\java\org\dddml\wms\domain\shipment\hibernate\HibernateShipmentReceiptStateEventDao.java">
       <DependentUpon>GenerateShipmentDomainHibernate.tt</DependentUpon>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\shipment\hibernate\HibernateShipmentStateQueryRepository.java">
@@ -1144,37 +1144,19 @@
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeValueState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeValueStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeAliasState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeAliasStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeSetState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeSetStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeUseState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeUseStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\DamageReasonState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\DamageReasonStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\DamageTypeState.hbm.xml">
@@ -1189,19 +1171,10 @@
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InOutState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InOutStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InOutLineState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InOutLineStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemEntryState.hbm.xml">
@@ -1216,40 +1189,22 @@
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryPostingRuleState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryPostingRuleStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryPRTriggeredState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\LotState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\LotStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementLineState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementLineStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementConfirmationState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementConfirmationStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementConfirmationLineState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementConfirmationLineStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementTypeState.hbm.xml">
@@ -1258,146 +1213,73 @@
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderItemState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderItemStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderShipmentState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderShipmentStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrganizationStructureState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrganizationStructureStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrganizationStructureTypeState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrganizationStructureTypeStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PartyState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PartyStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PhysicalInventoryState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PhysicalInventoryStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PhysicalInventoryLineState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PhysicalInventoryLineStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\LocatorState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\LocatorStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ContactMechState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ContactMechStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\FacilityState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\FacilityStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderRoleState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderRoleStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderShipGroupState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderShipGroupStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PartyRoleState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PartyRoleStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PicklistState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PicklistStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PicklistRoleState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PicklistRoleStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PicklistBinState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PicklistBinStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderItemShipGrpInvReservationState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderItemShipGrpInvReservationStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PicklistItemState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PicklistItemStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ProductState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ProductStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ProductCategoryState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ProductCategoryStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ProductCategoryMemberState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ProductCategoryMemberStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\RejectionReasonState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\RejectionReasonStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\RoleTypeState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\RoleTypeStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\SellableInventoryItemState.hbm.xml">
@@ -1409,43 +1291,22 @@
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentItemState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentItemStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentReceiptState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentReceiptStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ItemIssuanceState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ItemIssuanceStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentMethodTypeState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentMethodTypeStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentPackageState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentPackageStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentPackageContentState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentPackageContentStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentTypeState.hbm.xml">
@@ -1457,19 +1318,10 @@
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\SupplierProductState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\SupplierProductStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\UomState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\UomStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\UomConversionState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\UomConversionStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\UomTypeState.hbm.xml">
@@ -1478,160 +1330,307 @@
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\WarehouseState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\WarehouseStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeSetInstanceState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldGroupState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldGroupStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeValueMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeValueMvoStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeAliasMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeAliasMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeUseMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeUseMvoStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InOutLineMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InOutLineMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemEntryMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemEntryMvoStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemRequirementEntryMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemRequirementEntryMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementLineMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementLineMvoStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementConfirmationLineMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementConfirmationLineMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderRoleMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderRoleMvoStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderItemMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderItemMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderShipGroupMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderShipGroupMvoStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PhysicalInventoryLineMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PhysicalInventoryLineMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PicklistRoleMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PicklistRoleMvoStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PicklistItemMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PicklistItemMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\SellableInventoryItemEntryMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\SellableInventoryItemEntryMvoStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentItemMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentItemMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentReceiptMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentReceiptMvoStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ItemIssuanceMvoState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ItemIssuanceMvoStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentPackageContentMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentPackageContentMvoStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\LocatorTypeState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\LocatorTypeStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PickwaveState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PickwaveStateEvent.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderItemShipGroupAssociationState.hbm.xml">
-      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderItemShipGroupAssociationStateEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderItemShipGroupAssociationMvoState.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderItemShipGroupAssociationMvoStateEvent.hbm.xml">
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeValueEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeAliasEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeSetEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeUseEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ContactMechEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\DamageReasonEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\FacilityEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InOutEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InOutLineEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryPostingRuleEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\LocatorEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\LocatorTypeEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\LotEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementLineEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementConfirmationEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementConfirmationLineEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderRoleEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderItemEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderShipGroupEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderItemShipGroupAssociationEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderItemShipGrpInvReservationEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderShipmentEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrganizationStructureEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrganizationStructureTypeEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PartyEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PartyRoleEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PhysicalInventoryEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PhysicalInventoryLineEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PicklistEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PicklistRoleEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PicklistBinEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PicklistItemEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PickwaveEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ProductEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ProductCategoryEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ProductCategoryMemberEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\RejectionReasonEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\RoleTypeEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentItemEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentReceiptEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ItemIssuanceEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentMethodTypeEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentPackageEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentPackageContentEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\SupplierProductEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\UomEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\UomConversionEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\WarehouseEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeSetInstanceExtensionFieldGroupEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeValueMvoEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeAliasMvoEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\AttributeUseMvoEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InOutLineMvoEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemEntryMvoEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\InventoryItemRequirementEntryMvoEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementLineMvoEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\MovementConfirmationLineMvoEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderRoleMvoEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderItemMvoEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderShipGroupMvoEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\OrderItemShipGroupAssociationMvoEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PhysicalInventoryLineMvoEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PicklistRoleMvoEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\PicklistItemMvoEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\SellableInventoryItemEntryMvoEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentItemMvoEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentReceiptMvoEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ItemIssuanceMvoEvent.hbm.xml">
+      <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\generated\resources\org\dddml\wms\domain\hbm\ShipmentPackageContentMvoEvent.hbm.xml">
       <DependentUpon>GenerateAggregatesHbm.tt</DependentUpon>
     </EmbeddedResource>
     <Content Include="src\generated\resources\script\AddStateIdForeignKeyConstraints.sql">
@@ -1714,171 +1713,171 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GenerateAggregatesHbm.txt</LastGenOutput>
       <LastOutputs>
+.\AttributeAliasEvent.hbm.xml
+.\AttributeAliasMvoEvent.hbm.xml
 .\AttributeAliasMvoState.hbm.xml
-.\AttributeAliasMvoStateEvent.hbm.xml
 .\AttributeAliasState.hbm.xml
-.\AttributeAliasStateEvent.hbm.xml
+.\AttributeEvent.hbm.xml
+.\AttributeSetEvent.hbm.xml
+.\AttributeSetInstanceExtensionFieldEvent.hbm.xml
+.\AttributeSetInstanceExtensionFieldGroupEvent.hbm.xml
 .\AttributeSetInstanceExtensionFieldGroupState.hbm.xml
-.\AttributeSetInstanceExtensionFieldGroupStateEvent.hbm.xml
 .\AttributeSetInstanceExtensionFieldState.hbm.xml
-.\AttributeSetInstanceExtensionFieldStateEvent.hbm.xml
 .\AttributeSetInstanceState.hbm.xml
 .\AttributeSetState.hbm.xml
-.\AttributeSetStateEvent.hbm.xml
 .\AttributeState.hbm.xml
-.\AttributeStateEvent.hbm.xml
+.\AttributeUseEvent.hbm.xml
+.\AttributeUseMvoEvent.hbm.xml
 .\AttributeUseMvoState.hbm.xml
-.\AttributeUseMvoStateEvent.hbm.xml
 .\AttributeUseState.hbm.xml
-.\AttributeUseStateEvent.hbm.xml
+.\AttributeValueEvent.hbm.xml
+.\AttributeValueMvoEvent.hbm.xml
 .\AttributeValueMvoState.hbm.xml
-.\AttributeValueMvoStateEvent.hbm.xml
 .\AttributeValueState.hbm.xml
-.\AttributeValueStateEvent.hbm.xml
+.\ContactMechEvent.hbm.xml
 .\ContactMechState.hbm.xml
-.\ContactMechStateEvent.hbm.xml
 .\DamageHandlingMethodState.hbm.xml
+.\DamageReasonEvent.hbm.xml
 .\DamageReasonState.hbm.xml
-.\DamageReasonStateEvent.hbm.xml
 .\DamageTypeState.hbm.xml
 .\DocumentTypeState.hbm.xml
+.\FacilityEvent.hbm.xml
 .\FacilityState.hbm.xml
-.\FacilityStateEvent.hbm.xml
 .\GenerateAggregatesHbm.txt
+.\InOutEvent.hbm.xml
+.\InOutLineEvent.hbm.xml
+.\InOutLineMvoEvent.hbm.xml
 .\InOutLineMvoState.hbm.xml
-.\InOutLineMvoStateEvent.hbm.xml
 .\InOutLineState.hbm.xml
-.\InOutLineStateEvent.hbm.xml
 .\InOutState.hbm.xml
-.\InOutStateEvent.hbm.xml
+.\InventoryItemEntryMvoEvent.hbm.xml
 .\InventoryItemEntryMvoState.hbm.xml
-.\InventoryItemEntryMvoStateEvent.hbm.xml
 .\InventoryItemEntryState.hbm.xml
+.\InventoryItemEvent.hbm.xml
+.\InventoryItemRequirementEntryMvoEvent.hbm.xml
 .\InventoryItemRequirementEntryMvoState.hbm.xml
-.\InventoryItemRequirementEntryMvoStateEvent.hbm.xml
 .\InventoryItemRequirementEntryState.hbm.xml
 .\InventoryItemRequirementState.hbm.xml
 .\InventoryItemState.hbm.xml
-.\InventoryItemStateEvent.hbm.xml
+.\InventoryPostingRuleEvent.hbm.xml
 .\InventoryPostingRuleState.hbm.xml
-.\InventoryPostingRuleStateEvent.hbm.xml
 .\InventoryPRTriggeredState.hbm.xml
+.\ItemIssuanceEvent.hbm.xml
+.\ItemIssuanceMvoEvent.hbm.xml
 .\ItemIssuanceMvoState.hbm.xml
-.\ItemIssuanceMvoStateEvent.hbm.xml
 .\ItemIssuanceState.hbm.xml
-.\ItemIssuanceStateEvent.hbm.xml
+.\LocatorEvent.hbm.xml
 .\LocatorState.hbm.xml
-.\LocatorStateEvent.hbm.xml
+.\LocatorTypeEvent.hbm.xml
 .\LocatorTypeState.hbm.xml
-.\LocatorTypeStateEvent.hbm.xml
+.\LotEvent.hbm.xml
 .\LotState.hbm.xml
-.\LotStateEvent.hbm.xml
+.\MovementConfirmationEvent.hbm.xml
+.\MovementConfirmationLineEvent.hbm.xml
+.\MovementConfirmationLineMvoEvent.hbm.xml
 .\MovementConfirmationLineMvoState.hbm.xml
-.\MovementConfirmationLineMvoStateEvent.hbm.xml
 .\MovementConfirmationLineState.hbm.xml
-.\MovementConfirmationLineStateEvent.hbm.xml
 .\MovementConfirmationState.hbm.xml
-.\MovementConfirmationStateEvent.hbm.xml
+.\MovementEvent.hbm.xml
+.\MovementLineEvent.hbm.xml
+.\MovementLineMvoEvent.hbm.xml
 .\MovementLineMvoState.hbm.xml
-.\MovementLineMvoStateEvent.hbm.xml
 .\MovementLineState.hbm.xml
-.\MovementLineStateEvent.hbm.xml
 .\MovementState.hbm.xml
-.\MovementStateEvent.hbm.xml
 .\MovementTypeState.hbm.xml
+.\OrderEvent.hbm.xml
+.\OrderItemEvent.hbm.xml
+.\OrderItemMvoEvent.hbm.xml
 .\OrderItemMvoState.hbm.xml
-.\OrderItemMvoStateEvent.hbm.xml
+.\OrderItemShipGroupAssociationEvent.hbm.xml
+.\OrderItemShipGroupAssociationMvoEvent.hbm.xml
 .\OrderItemShipGroupAssociationMvoState.hbm.xml
-.\OrderItemShipGroupAssociationMvoStateEvent.hbm.xml
 .\OrderItemShipGroupAssociationState.hbm.xml
-.\OrderItemShipGroupAssociationStateEvent.hbm.xml
+.\OrderItemShipGrpInvReservationEvent.hbm.xml
 .\OrderItemShipGrpInvReservationState.hbm.xml
-.\OrderItemShipGrpInvReservationStateEvent.hbm.xml
 .\OrderItemState.hbm.xml
-.\OrderItemStateEvent.hbm.xml
+.\OrderRoleEvent.hbm.xml
+.\OrderRoleMvoEvent.hbm.xml
 .\OrderRoleMvoState.hbm.xml
-.\OrderRoleMvoStateEvent.hbm.xml
 .\OrderRoleState.hbm.xml
-.\OrderRoleStateEvent.hbm.xml
+.\OrderShipGroupEvent.hbm.xml
+.\OrderShipGroupMvoEvent.hbm.xml
 .\OrderShipGroupMvoState.hbm.xml
-.\OrderShipGroupMvoStateEvent.hbm.xml
 .\OrderShipGroupState.hbm.xml
-.\OrderShipGroupStateEvent.hbm.xml
+.\OrderShipmentEvent.hbm.xml
 .\OrderShipmentState.hbm.xml
-.\OrderShipmentStateEvent.hbm.xml
 .\OrderState.hbm.xml
-.\OrderStateEvent.hbm.xml
+.\OrganizationStructureEvent.hbm.xml
 .\OrganizationStructureState.hbm.xml
-.\OrganizationStructureStateEvent.hbm.xml
+.\OrganizationStructureTypeEvent.hbm.xml
 .\OrganizationStructureTypeState.hbm.xml
-.\OrganizationStructureTypeStateEvent.hbm.xml
+.\PartyEvent.hbm.xml
+.\PartyRoleEvent.hbm.xml
 .\PartyRoleState.hbm.xml
-.\PartyRoleStateEvent.hbm.xml
 .\PartyState.hbm.xml
-.\PartyStateEvent.hbm.xml
+.\PhysicalInventoryEvent.hbm.xml
+.\PhysicalInventoryLineEvent.hbm.xml
+.\PhysicalInventoryLineMvoEvent.hbm.xml
 .\PhysicalInventoryLineMvoState.hbm.xml
-.\PhysicalInventoryLineMvoStateEvent.hbm.xml
 .\PhysicalInventoryLineState.hbm.xml
-.\PhysicalInventoryLineStateEvent.hbm.xml
 .\PhysicalInventoryState.hbm.xml
-.\PhysicalInventoryStateEvent.hbm.xml
+.\PicklistBinEvent.hbm.xml
 .\PicklistBinState.hbm.xml
-.\PicklistBinStateEvent.hbm.xml
+.\PicklistEvent.hbm.xml
+.\PicklistItemEvent.hbm.xml
+.\PicklistItemMvoEvent.hbm.xml
 .\PicklistItemMvoState.hbm.xml
-.\PicklistItemMvoStateEvent.hbm.xml
 .\PicklistItemState.hbm.xml
-.\PicklistItemStateEvent.hbm.xml
+.\PicklistRoleEvent.hbm.xml
+.\PicklistRoleMvoEvent.hbm.xml
 .\PicklistRoleMvoState.hbm.xml
-.\PicklistRoleMvoStateEvent.hbm.xml
 .\PicklistRoleState.hbm.xml
-.\PicklistRoleStateEvent.hbm.xml
 .\PicklistState.hbm.xml
-.\PicklistStateEvent.hbm.xml
+.\PickwaveEvent.hbm.xml
 .\PickwaveState.hbm.xml
-.\PickwaveStateEvent.hbm.xml
+.\ProductCategoryEvent.hbm.xml
+.\ProductCategoryMemberEvent.hbm.xml
 .\ProductCategoryMemberState.hbm.xml
-.\ProductCategoryMemberStateEvent.hbm.xml
 .\ProductCategoryState.hbm.xml
-.\ProductCategoryStateEvent.hbm.xml
+.\ProductEvent.hbm.xml
 .\ProductState.hbm.xml
-.\ProductStateEvent.hbm.xml
+.\RejectionReasonEvent.hbm.xml
 .\RejectionReasonState.hbm.xml
-.\RejectionReasonStateEvent.hbm.xml
+.\RoleTypeEvent.hbm.xml
 .\RoleTypeState.hbm.xml
-.\RoleTypeStateEvent.hbm.xml
+.\SellableInventoryItemEntryMvoEvent.hbm.xml
 .\SellableInventoryItemEntryMvoState.hbm.xml
-.\SellableInventoryItemEntryMvoStateEvent.hbm.xml
 .\SellableInventoryItemEntryState.hbm.xml
 .\SellableInventoryItemState.hbm.xml
+.\ShipmentEvent.hbm.xml
+.\ShipmentItemEvent.hbm.xml
+.\ShipmentItemMvoEvent.hbm.xml
 .\ShipmentItemMvoState.hbm.xml
-.\ShipmentItemMvoStateEvent.hbm.xml
 .\ShipmentItemState.hbm.xml
-.\ShipmentItemStateEvent.hbm.xml
+.\ShipmentMethodTypeEvent.hbm.xml
 .\ShipmentMethodTypeState.hbm.xml
-.\ShipmentMethodTypeStateEvent.hbm.xml
+.\ShipmentPackageContentEvent.hbm.xml
+.\ShipmentPackageContentMvoEvent.hbm.xml
 .\ShipmentPackageContentMvoState.hbm.xml
-.\ShipmentPackageContentMvoStateEvent.hbm.xml
 .\ShipmentPackageContentState.hbm.xml
-.\ShipmentPackageContentStateEvent.hbm.xml
+.\ShipmentPackageEvent.hbm.xml
 .\ShipmentPackageState.hbm.xml
-.\ShipmentPackageStateEvent.hbm.xml
+.\ShipmentReceiptEvent.hbm.xml
+.\ShipmentReceiptMvoEvent.hbm.xml
 .\ShipmentReceiptMvoState.hbm.xml
-.\ShipmentReceiptMvoStateEvent.hbm.xml
 .\ShipmentReceiptState.hbm.xml
-.\ShipmentReceiptStateEvent.hbm.xml
 .\ShipmentState.hbm.xml
-.\ShipmentStateEvent.hbm.xml
 .\ShipmentTypeState.hbm.xml
 .\StatusItemState.hbm.xml
+.\SupplierProductEvent.hbm.xml
 .\SupplierProductState.hbm.xml
-.\SupplierProductStateEvent.hbm.xml
+.\UomConversionEvent.hbm.xml
 .\UomConversionState.hbm.xml
-.\UomConversionStateEvent.hbm.xml
+.\UomEvent.hbm.xml
 .\UomState.hbm.xml
-.\UomStateEvent.hbm.xml
 .\UomTypeState.hbm.xml
+.\WarehouseEvent.hbm.xml
 .\WarehouseState.hbm.xml
-.\WarehouseStateEvent.hbm.xml
 </LastOutputs>
     </Content>
     <Content Include="src\generated\resources\org\dddml\wms\domain\hbm\GenerateAggregatesHbm.txt">
@@ -1891,13 +1890,13 @@
       <LastGenOutput>GenerateAttributeDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
 .\GenerateAttributeDomainHibernate.txt
+.\HibernateAttributeAliasEventDao.java
 .\HibernateAttributeAliasStateDao.java
-.\HibernateAttributeAliasStateEventDao.java
 .\HibernateAttributeEventStore.java
 .\HibernateAttributeStateQueryRepository.java
 .\HibernateAttributeStateRepository.java
+.\HibernateAttributeValueEventDao.java
 .\HibernateAttributeValueStateDao.java
-.\HibernateAttributeValueStateEventDao.java
 </LastOutputs>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\attributeset\hibernate\GenerateAttributeSetDomainHibernate.tt">
@@ -1908,8 +1907,8 @@
 .\HibernateAttributeSetEventStore.java
 .\HibernateAttributeSetStateQueryRepository.java
 .\HibernateAttributeSetStateRepository.java
+.\HibernateAttributeUseEventDao.java
 .\HibernateAttributeUseStateDao.java
-.\HibernateAttributeUseStateEventDao.java
 </LastOutputs>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\inout\hibernate\GenerateInOutDomainHibernate.tt">
@@ -1918,8 +1917,8 @@
       <LastOutputs>
 .\GenerateInOutDomainHibernate.txt
 .\HibernateInOutEventStore.java
+.\HibernateInOutLineEventDao.java
 .\HibernateInOutLineStateDao.java
-.\HibernateInOutLineStateEventDao.java
 .\HibernateInOutStateQueryRepository.java
 .\HibernateInOutStateRepository.java
 </LastOutputs>
@@ -2021,8 +2020,8 @@
       <LastGenOutput>GenerateInventoryItemDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
 .\GenerateInventoryItemDomainHibernate.txt
+.\HibernateInventoryItemEntryEventDao.java
 .\HibernateInventoryItemEntryStateDao.java
-.\HibernateInventoryItemEntryStateEventDao.java
 .\HibernateInventoryItemEventStore.java
 .\HibernateInventoryItemStateQueryRepository.java
 .\HibernateInventoryItemStateRepository.java
@@ -2140,13 +2139,13 @@
       <LastGenOutput>GenerateShipmentDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
 .\GenerateShipmentDomainHibernate.txt
+.\HibernateItemIssuanceEventDao.java
 .\HibernateItemIssuanceStateDao.java
-.\HibernateItemIssuanceStateEventDao.java
 .\HibernateShipmentEventStore.java
+.\HibernateShipmentItemEventDao.java
 .\HibernateShipmentItemStateDao.java
-.\HibernateShipmentItemStateEventDao.java
+.\HibernateShipmentReceiptEventDao.java
 .\HibernateShipmentReceiptStateDao.java
-.\HibernateShipmentReceiptStateEventDao.java
 .\HibernateShipmentStateQueryRepository.java
 .\HibernateShipmentStateRepository.java
 </LastOutputs>
@@ -2175,14 +2174,14 @@
       <LastOutputs>
 .\GenerateOrderDomainHibernate.txt
 .\HibernateOrderEventStore.java
+.\HibernateOrderItemEventDao.java
+.\HibernateOrderItemShipGroupAssociationEventDao.java
 .\HibernateOrderItemShipGroupAssociationStateDao.java
-.\HibernateOrderItemShipGroupAssociationStateEventDao.java
 .\HibernateOrderItemStateDao.java
-.\HibernateOrderItemStateEventDao.java
+.\HibernateOrderRoleEventDao.java
 .\HibernateOrderRoleStateDao.java
-.\HibernateOrderRoleStateEventDao.java
+.\HibernateOrderShipGroupEventDao.java
 .\HibernateOrderShipGroupStateDao.java
-.\HibernateOrderShipGroupStateEventDao.java
 .\HibernateOrderStateQueryRepository.java
 .\HibernateOrderStateRepository.java
 </LastOutputs>
@@ -2243,8 +2242,8 @@
       <LastOutputs>
 .\GenerateMovementDomainHibernate.txt
 .\HibernateMovementEventStore.java
+.\HibernateMovementLineEventDao.java
 .\HibernateMovementLineStateDao.java
-.\HibernateMovementLineStateEventDao.java
 .\HibernateMovementStateQueryRepository.java
 .\HibernateMovementStateRepository.java
 </LastOutputs>
@@ -2275,8 +2274,8 @@
       <LastOutputs>
 .\GenerateMovementConfirmationDomainHibernate.txt
 .\HibernateMovementConfirmationEventStore.java
+.\HibernateMovementConfirmationLineEventDao.java
 .\HibernateMovementConfirmationLineStateDao.java
-.\HibernateMovementConfirmationLineStateEventDao.java
 .\HibernateMovementConfirmationStateQueryRepository.java
 .\HibernateMovementConfirmationStateRepository.java
 </LastOutputs>
@@ -2287,8 +2286,8 @@
       <LastOutputs>
 .\GeneratePhysicalInventoryDomainHibernate.txt
 .\HibernatePhysicalInventoryEventStore.java
+.\HibernatePhysicalInventoryLineEventDao.java
 .\HibernatePhysicalInventoryLineStateDao.java
-.\HibernatePhysicalInventoryLineStateEventDao.java
 .\HibernatePhysicalInventoryStateQueryRepository.java
 .\HibernatePhysicalInventoryStateRepository.java
 </LastOutputs>
@@ -2457,8 +2456,8 @@
       <LastOutputs>
 .\GeneratePicklistDomainHibernate.txt
 .\HibernatePicklistEventStore.java
+.\HibernatePicklistRoleEventDao.java
 .\HibernatePicklistRoleStateDao.java
-.\HibernatePicklistRoleStateEventDao.java
 .\HibernatePicklistStateQueryRepository.java
 .\HibernatePicklistStateRepository.java
 </LastOutputs>
@@ -2471,8 +2470,8 @@
 .\HibernatePicklistBinEventStore.java
 .\HibernatePicklistBinStateQueryRepository.java
 .\HibernatePicklistBinStateRepository.java
+.\HibernatePicklistItemEventDao.java
 .\HibernatePicklistItemStateDao.java
-.\HibernatePicklistItemStateEventDao.java
 </LastOutputs>
     </Content>
     <Content Include="src\generated\java\org\dddml\wms\domain\roletype\hibernate\GenerateRoleTypeDomainHibernate.tt">
@@ -2500,8 +2499,8 @@
       <LastGenOutput>GenerateShipmentPackageDomainHibernate.txt</LastGenOutput>
       <LastOutputs>
 .\GenerateShipmentPackageDomainHibernate.txt
+.\HibernateShipmentPackageContentEventDao.java
 .\HibernateShipmentPackageContentStateDao.java
-.\HibernateShipmentPackageContentStateEventDao.java
 .\HibernateShipmentPackageEventStore.java
 .\HibernateShipmentPackageStateQueryRepository.java
 .\HibernateShipmentPackageStateRepository.java

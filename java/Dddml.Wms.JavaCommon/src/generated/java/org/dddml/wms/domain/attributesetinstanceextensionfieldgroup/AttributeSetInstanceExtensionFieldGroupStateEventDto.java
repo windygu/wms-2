@@ -2,9 +2,9 @@ package org.dddml.wms.domain.attributesetinstanceextensionfieldgroup;
 
 import java.util.Date;
 import org.dddml.wms.domain.*;
-import org.dddml.wms.domain.AbstractStateEvent;
+import org.dddml.wms.domain.AbstractEvent;
 
-public class AttributeSetInstanceExtensionFieldGroupStateEventDto extends AbstractStateEvent
+public class AttributeSetInstanceExtensionFieldGroupStateEventDto extends AbstractEvent
 {
 
     private AttributeSetInstanceExtensionFieldGroupEventId attributeSetInstanceExtensionFieldGroupEventId;
@@ -178,7 +178,7 @@ public class AttributeSetInstanceExtensionFieldGroupStateEventDto extends Abstra
 	public static class AttributeSetInstanceExtensionFieldGroupStateCreatedDto extends AttributeSetInstanceExtensionFieldGroupStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_CREATED;
         }
@@ -189,7 +189,7 @@ public class AttributeSetInstanceExtensionFieldGroupStateEventDto extends Abstra
 	public static class AttributeSetInstanceExtensionFieldGroupStateMergePatchedDto extends AttributeSetInstanceExtensionFieldGroupStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_MERGE_PATCHED;
         }
@@ -200,7 +200,7 @@ public class AttributeSetInstanceExtensionFieldGroupStateEventDto extends Abstra
 	public static class AttributeSetInstanceExtensionFieldGroupStateDeletedDto extends AttributeSetInstanceExtensionFieldGroupStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_DELETED;
         }

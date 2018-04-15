@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.movementconfirmationlinemvo.MovementConfirmationLineMvoStateEvent.*;
+import org.dddml.wms.domain.movementconfirmationlinemvo.MovementConfirmationLineMvoEvent.*;
 
 public abstract class AbstractMovementConfirmationLineMvoState implements MovementConfirmationLineMvoState
 {
@@ -395,7 +395,7 @@ public abstract class AbstractMovementConfirmationLineMvoState implements Moveme
     public AbstractMovementConfirmationLineMvoState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setMovementConfirmationLineId(((MovementConfirmationLineMvoStateEvent) events.get(0)).getMovementConfirmationLineMvoEventId().getMovementConfirmationLineId());
+            this.setMovementConfirmationLineId(((MovementConfirmationLineMvoEvent) events.get(0)).getMovementConfirmationLineMvoEventId().getMovementConfirmationLineId());
             for (Event e : events) {
                 mutate(e);
                 this.setMovementConfirmationVersion(this.getMovementConfirmationVersion() + 1);
@@ -743,10 +743,10 @@ public abstract class AbstractMovementConfirmationLineMvoState implements Moveme
     {
     }
 
-    protected void throwOnWrongEvent(MovementConfirmationLineMvoStateEvent stateEvent)
+    protected void throwOnWrongEvent(MovementConfirmationLineMvoEvent stateEvent)
     {
         MovementConfirmationLineId stateEntityId = this.getMovementConfirmationLineId(); // Aggregate Id
-        MovementConfirmationLineId eventEntityId = stateEvent.getMovementConfirmationLineMvoEventId().getMovementConfirmationLineId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        MovementConfirmationLineId eventEntityId = stateEvent.getMovementConfirmationLineMvoEventId().getMovementConfirmationLineId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

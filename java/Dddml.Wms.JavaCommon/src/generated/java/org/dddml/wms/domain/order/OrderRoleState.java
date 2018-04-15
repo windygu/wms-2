@@ -5,7 +5,7 @@ import org.dddml.wms.domain.partyrole.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.order.OrderRoleStateEvent.*;
+import org.dddml.wms.domain.order.OrderRoleEvent.*;
 
 public interface OrderRoleState
 {
@@ -61,11 +61,11 @@ public interface OrderRoleState
 
     void mutate(Event e);
 
-    void when(OrderRoleStateEvent.OrderRoleStateCreated e);
+    void when(OrderRoleEvent.OrderRoleStateCreated e);
 
-    void when(OrderRoleStateEvent.OrderRoleStateMergePatched e);
+    void when(OrderRoleEvent.OrderRoleStateMergePatched e);
 
-    void when(OrderRoleStateEvent.OrderRoleStateRemoved e);
+    void when(OrderRoleEvent.OrderRoleStateRemoved e);
     
 }
 

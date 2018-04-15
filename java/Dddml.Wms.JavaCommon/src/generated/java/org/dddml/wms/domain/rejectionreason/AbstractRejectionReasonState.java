@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.rejectionreason.RejectionReasonStateEvent.*;
+import org.dddml.wms.domain.rejectionreason.RejectionReasonEvent.*;
 
 public abstract class AbstractRejectionReasonState implements RejectionReasonState
 {
@@ -141,7 +141,7 @@ public abstract class AbstractRejectionReasonState implements RejectionReasonSta
     public AbstractRejectionReasonState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setRejectionReasonId(((RejectionReasonStateEvent) events.get(0)).getRejectionReasonEventId().getRejectionReasonId());
+            this.setRejectionReasonId(((RejectionReasonEvent) events.get(0)).getRejectionReasonEventId().getRejectionReasonId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -237,10 +237,10 @@ public abstract class AbstractRejectionReasonState implements RejectionReasonSta
     {
     }
 
-    protected void throwOnWrongEvent(RejectionReasonStateEvent stateEvent)
+    protected void throwOnWrongEvent(RejectionReasonEvent stateEvent)
     {
         String stateEntityId = this.getRejectionReasonId(); // Aggregate Id
-        String eventEntityId = stateEvent.getRejectionReasonEventId().getRejectionReasonId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        String eventEntityId = stateEvent.getRejectionReasonEventId().getRejectionReasonId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

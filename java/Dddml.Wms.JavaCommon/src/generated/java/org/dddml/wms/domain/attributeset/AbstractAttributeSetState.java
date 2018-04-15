@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.attributeset.AttributeSetStateEvent.*;
+import org.dddml.wms.domain.attributeset.AttributeSetEvent.*;
 
 public abstract class AbstractAttributeSetState implements AttributeSetState, Saveable
 {
@@ -213,7 +213,7 @@ public abstract class AbstractAttributeSetState implements AttributeSetState, Sa
     public AbstractAttributeSetState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setAttributeSetId(((AttributeSetStateEvent) events.get(0)).getAttributeSetEventId().getAttributeSetId());
+            this.setAttributeSetId(((AttributeSetEvent) events.get(0)).getAttributeSetEventId().getAttributeSetId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -267,7 +267,7 @@ public abstract class AbstractAttributeSetState implements AttributeSetState, Sa
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
-        for (AttributeUseStateEvent.AttributeUseStateCreated innerEvent : e.getAttributeUseEvents()) {
+        for (AttributeUseEvent.AttributeUseStateCreated innerEvent : e.getAttributeUseEvents()) {
             AttributeUseState innerState = this.getAttributeUses().get(innerEvent.getAttributeUseEventId().getAttributeId());
             innerState.mutate(innerEvent);
         }
@@ -358,12 +358,12 @@ public abstract class AbstractAttributeSetState implements AttributeSetState, Sa
         this.setUpdatedBy(e.getCreatedBy());
         this.setUpdatedAt(e.getCreatedAt());
 
-        for (AttributeUseStateEvent innerEvent : e.getAttributeUseEvents()) {
+        for (AttributeUseEvent innerEvent : e.getAttributeUseEvents()) {
             AttributeUseState innerState = this.getAttributeUses().get(innerEvent.getAttributeUseEventId().getAttributeId());
             innerState.mutate(innerEvent);
-            if (innerEvent instanceof AttributeUseStateEvent.AttributeUseStateRemoved)
+            if (innerEvent instanceof AttributeUseEvent.AttributeUseStateRemoved)
             {
-                //AttributeUseStateEvent.AttributeUseStateRemoved removed = (AttributeUseStateEvent.AttributeUseStateRemoved)innerEvent;
+                //AttributeUseEvent.AttributeUseStateRemoved removed = (AttributeUseEvent.AttributeUseStateRemoved)innerEvent;
                 this.getAttributeUses().remove(innerState);
             }
         }
@@ -381,7 +381,7 @@ public abstract class AbstractAttributeSetState implements AttributeSetState, Sa
         {
             this.getAttributeUses().remove(innerState);
         
-            AttributeUseStateEvent.AttributeUseStateRemoved innerE = e.newAttributeUseStateRemoved(innerState.getAttributeId());
+            AttributeUseEvent.AttributeUseStateRemoved innerE = e.newAttributeUseStateRemoved(innerState.getAttributeId());
             innerE.setCreatedAt(e.getCreatedAt());
             innerE.setCreatedBy(e.getCreatedBy());
             innerState.when(innerE);
@@ -395,10 +395,10 @@ public abstract class AbstractAttributeSetState implements AttributeSetState, Sa
 
     }
 
-    protected void throwOnWrongEvent(AttributeSetStateEvent stateEvent)
+    protected void throwOnWrongEvent(AttributeSetEvent stateEvent)
     {
         String stateEntityId = this.getAttributeSetId(); // Aggregate Id
-        String eventEntityId = stateEvent.getAttributeSetEventId().getAttributeSetId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        String eventEntityId = stateEvent.getAttributeSetEventId().getAttributeSetId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

@@ -31,7 +31,7 @@ public interface OrderItemShipGroupAssociationMvoApplicationService
 
     long getCount(Criterion filter);
 
-    OrderItemShipGroupAssociationMvoStateEvent getStateEvent(OrderItemShipGroupAssociationId orderItemShipGroupAssociationId, long version);
+    OrderItemShipGroupAssociationMvoEvent getEvent(OrderItemShipGroupAssociationId orderItemShipGroupAssociationId, long version);
 
     OrderItemShipGroupAssociationMvoState getHistoryState(OrderItemShipGroupAssociationId orderItemShipGroupAssociationId, long version);
 

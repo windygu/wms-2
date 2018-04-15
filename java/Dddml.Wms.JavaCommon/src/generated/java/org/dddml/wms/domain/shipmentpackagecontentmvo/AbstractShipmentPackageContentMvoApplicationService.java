@@ -87,19 +87,19 @@ public abstract class AbstractShipmentPackageContentMvoApplicationService implem
         return getStateQueryRepository().getCount(filter);
     }
 
-    public ShipmentPackageContentMvoStateEvent getStateEvent(ShipmentPackageContentId shipmentPackageContentId, long version) {
-        ShipmentPackageContentMvoStateEvent e = (ShipmentPackageContentMvoStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(shipmentPackageContentId), version);
+    public ShipmentPackageContentMvoEvent getEvent(ShipmentPackageContentId shipmentPackageContentId, long version) {
+        ShipmentPackageContentMvoEvent e = (ShipmentPackageContentMvoEvent)getEventStore().getEvent(toEventStoreAggregateId(shipmentPackageContentId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(shipmentPackageContentId, 0);
+            return getEvent(shipmentPackageContentId, 0);
         }
         return e;
     }
 
     public ShipmentPackageContentMvoState getHistoryState(ShipmentPackageContentId shipmentPackageContentId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractShipmentPackageContentMvoStateEvent.class, toEventStoreAggregateId(shipmentPackageContentId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractShipmentPackageContentMvoEvent.class, toEventStoreAggregateId(shipmentPackageContentId), version - 1);
         return new AbstractShipmentPackageContentMvoState.SimpleShipmentPackageContentMvoState(eventStream.getEvents());
     }
 
@@ -138,7 +138,7 @@ public abstract class AbstractShipmentPackageContentMvoApplicationService implem
         }
     }
 
-    public void initialize(ShipmentPackageContentMvoStateEvent.ShipmentPackageContentMvoStateCreated stateCreated) {
+    public void initialize(ShipmentPackageContentMvoEvent.ShipmentPackageContentMvoStateCreated stateCreated) {
         ShipmentPackageContentId aggregateId = stateCreated.getShipmentPackageContentMvoEventId().getShipmentPackageContentId();
         ShipmentPackageContentMvoState state = new AbstractShipmentPackageContentMvoState.SimpleShipmentPackageContentMvoState();
         state.setShipmentPackageContentId(aggregateId);
@@ -156,9 +156,9 @@ public abstract class AbstractShipmentPackageContentMvoApplicationService implem
         if (command.getShipmentPackageVersion() == null) { command.setShipmentPackageVersion(ShipmentPackageContentMvoState.VERSION_NULL); }
         if (state.getShipmentPackageVersion() != null && state.getShipmentPackageVersion() > command.getShipmentPackageVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractShipmentPackageContentMvoStateEvent.class, eventStoreAggregateId, command.getShipmentPackageVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractShipmentPackageContentMvoEvent.class, eventStoreAggregateId, command.getShipmentPackageVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

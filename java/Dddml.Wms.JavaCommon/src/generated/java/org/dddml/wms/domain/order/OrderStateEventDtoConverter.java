@@ -8,19 +8,19 @@ import org.dddml.wms.specialization.*;
 
 public class OrderStateEventDtoConverter {
 
-    public OrderStateEventDto toOrderStateEventDto(AbstractOrderStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractOrderStateEvent.AbstractOrderStateCreated) {
-            OrderStateEvent.OrderStateCreated e = (OrderStateEvent.OrderStateCreated) stateEvent;
+    public OrderStateEventDto toOrderStateEventDto(AbstractOrderEvent stateEvent) {
+        if (stateEvent instanceof AbstractOrderEvent.AbstractOrderStateCreated) {
+            OrderEvent.OrderStateCreated e = (OrderEvent.OrderStateCreated) stateEvent;
             return toOrderStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractOrderStateEvent.AbstractOrderStateMergePatched) {
-            OrderStateEvent.OrderStateMergePatched e = (OrderStateEvent.OrderStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractOrderEvent.AbstractOrderStateMergePatched) {
+            OrderEvent.OrderStateMergePatched e = (OrderEvent.OrderStateMergePatched) stateEvent;
             return toOrderStateMergePatchedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public OrderStateEventDto.OrderStateCreatedDto toOrderStateCreatedDto(OrderStateEvent.OrderStateCreated e) {
+    public OrderStateEventDto.OrderStateCreatedDto toOrderStateCreatedDto(OrderEvent.OrderStateCreated e) {
         OrderStateEventDto.OrderStateCreatedDto dto = new OrderStateEventDto.OrderStateCreatedDto();
         dto.setOrderEventId(e.getOrderEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -52,21 +52,21 @@ public class OrderStateEventDtoConverter {
         dto.setInvoicePerShipment(e.getInvoicePerShipment());
         dto.setActive(e.getActive());
         List<OrderRoleStateEventDto.OrderRoleStateCreatedDto> orderRoleEvents = new ArrayList<>();
-        for (OrderRoleStateEvent.OrderRoleStateCreated ee : e.getOrderRoleEvents()) {
+        for (OrderRoleEvent.OrderRoleStateCreated ee : e.getOrderRoleEvents()) {
             OrderRoleStateEventDto.OrderRoleStateCreatedDto eeDto = getOrderRoleStateEventDtoConverter().toOrderRoleStateCreatedDto(ee);
             orderRoleEvents.add(eeDto);
         }
         dto.setOrderRoleEvents(orderRoleEvents.toArray(new OrderRoleStateEventDto.OrderRoleStateCreatedDto[0]));
 
         List<OrderItemStateEventDto.OrderItemStateCreatedDto> orderItemEvents = new ArrayList<>();
-        for (OrderItemStateEvent.OrderItemStateCreated ee : e.getOrderItemEvents()) {
+        for (OrderItemEvent.OrderItemStateCreated ee : e.getOrderItemEvents()) {
             OrderItemStateEventDto.OrderItemStateCreatedDto eeDto = getOrderItemStateEventDtoConverter().toOrderItemStateCreatedDto(ee);
             orderItemEvents.add(eeDto);
         }
         dto.setOrderItemEvents(orderItemEvents.toArray(new OrderItemStateEventDto.OrderItemStateCreatedDto[0]));
 
         List<OrderShipGroupStateEventDto.OrderShipGroupStateCreatedDto> orderShipGroupEvents = new ArrayList<>();
-        for (OrderShipGroupStateEvent.OrderShipGroupStateCreated ee : e.getOrderShipGroupEvents()) {
+        for (OrderShipGroupEvent.OrderShipGroupStateCreated ee : e.getOrderShipGroupEvents()) {
             OrderShipGroupStateEventDto.OrderShipGroupStateCreatedDto eeDto = getOrderShipGroupStateEventDtoConverter().toOrderShipGroupStateCreatedDto(ee);
             orderShipGroupEvents.add(eeDto);
         }
@@ -75,7 +75,7 @@ public class OrderStateEventDtoConverter {
         return dto;
     }
 
-    public OrderStateEventDto.OrderStateMergePatchedDto toOrderStateMergePatchedDto(OrderStateEvent.OrderStateMergePatched e) {
+    public OrderStateEventDto.OrderStateMergePatchedDto toOrderStateMergePatchedDto(OrderEvent.OrderStateMergePatched e) {
         OrderStateEventDto.OrderStateMergePatchedDto dto = new OrderStateEventDto.OrderStateMergePatchedDto();
         dto.setOrderEventId(e.getOrderEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -132,22 +132,22 @@ public class OrderStateEventDtoConverter {
         dto.setIsPropertyInvoicePerShipmentRemoved(e.getIsPropertyInvoicePerShipmentRemoved());
         dto.setIsPropertyActiveRemoved(e.getIsPropertyActiveRemoved());
         List<OrderRoleStateEventDto> orderRoleEvents = new ArrayList<>();
-        for (OrderRoleStateEvent ee : e.getOrderRoleEvents()) {
-            OrderRoleStateEventDto eeDto = getOrderRoleStateEventDtoConverter().toOrderRoleStateEventDto((AbstractOrderRoleStateEvent) ee);
+        for (OrderRoleEvent ee : e.getOrderRoleEvents()) {
+            OrderRoleStateEventDto eeDto = getOrderRoleStateEventDtoConverter().toOrderRoleStateEventDto((AbstractOrderRoleEvent) ee);
             orderRoleEvents.add(eeDto);
         }
         dto.setOrderRoleEvents(orderRoleEvents.toArray(new OrderRoleStateEventDto[0]));
 
         List<OrderItemStateEventDto> orderItemEvents = new ArrayList<>();
-        for (OrderItemStateEvent ee : e.getOrderItemEvents()) {
-            OrderItemStateEventDto eeDto = getOrderItemStateEventDtoConverter().toOrderItemStateEventDto((AbstractOrderItemStateEvent) ee);
+        for (OrderItemEvent ee : e.getOrderItemEvents()) {
+            OrderItemStateEventDto eeDto = getOrderItemStateEventDtoConverter().toOrderItemStateEventDto((AbstractOrderItemEvent) ee);
             orderItemEvents.add(eeDto);
         }
         dto.setOrderItemEvents(orderItemEvents.toArray(new OrderItemStateEventDto[0]));
 
         List<OrderShipGroupStateEventDto> orderShipGroupEvents = new ArrayList<>();
-        for (OrderShipGroupStateEvent ee : e.getOrderShipGroupEvents()) {
-            OrderShipGroupStateEventDto eeDto = getOrderShipGroupStateEventDtoConverter().toOrderShipGroupStateEventDto((AbstractOrderShipGroupStateEvent) ee);
+        for (OrderShipGroupEvent ee : e.getOrderShipGroupEvents()) {
+            OrderShipGroupStateEventDto eeDto = getOrderShipGroupStateEventDtoConverter().toOrderShipGroupStateEventDto((AbstractOrderShipGroupEvent) ee);
             orderShipGroupEvents.add(eeDto);
         }
         dto.setOrderShipGroupEvents(orderShipGroupEvents.toArray(new OrderShipGroupStateEventDto[0]));

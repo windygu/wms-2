@@ -28,13 +28,13 @@ public abstract class AbstractInventoryItemAggregate extends AbstractAggregate i
     public void create(InventoryItemCommand.CreateInventoryItem c)
     {
         if (c.getVersion() == null) { c.setVersion(InventoryItemState.VERSION_NULL); }
-        InventoryItemStateEvent e = map(c);
+        InventoryItemEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(InventoryItemCommand.MergePatchInventoryItem c)
     {
-        InventoryItemStateEvent e = map(c);
+        InventoryItemEvent e = map(c);
         apply(e);
     }
 
@@ -49,10 +49,10 @@ public abstract class AbstractInventoryItemAggregate extends AbstractAggregate i
         changes.add(e);
     }
 
-    protected InventoryItemStateEvent map(InventoryItemCommand.CreateInventoryItem c) {
+    protected InventoryItemEvent map(InventoryItemCommand.CreateInventoryItem c) {
         InventoryItemEventId stateEventId = new InventoryItemEventId(c.getInventoryItemId(), c.getVersion());
-        InventoryItemStateEvent.InventoryItemStateCreated e = newInventoryItemStateCreated(stateEventId);
-        ((AbstractInventoryItemStateEvent)e).setCommandId(c.getCommandId());
+        InventoryItemEvent.InventoryItemStateCreated e = newInventoryItemStateCreated(stateEventId);
+        ((AbstractInventoryItemEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         BigDecimal onHandQuantity = BigDecimal.ZERO;
@@ -64,7 +64,7 @@ public abstract class AbstractInventoryItemAggregate extends AbstractAggregate i
         for (InventoryItemEntryCommand.CreateInventoryItemEntry innerCommand : c.getEntries())
         {
             throwOnInconsistentCommands(c, innerCommand);
-            InventoryItemEntryStateEvent.InventoryItemEntryStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);
+            InventoryItemEntryEvent.InventoryItemEntryStateCreated innerEvent = mapCreate(innerCommand, c, version, this.state);
             e.addInventoryItemEntryEvent(innerEvent);
             onHandQuantity = onHandQuantity.add(innerEvent.getOnHandQuantity() != null ? innerEvent.getOnHandQuantity() : BigDecimal.ZERO);
             inTransitQuantity = inTransitQuantity.add(innerEvent.getInTransitQuantity() != null ? innerEvent.getInTransitQuantity() : BigDecimal.ZERO);
@@ -81,10 +81,10 @@ public abstract class AbstractInventoryItemAggregate extends AbstractAggregate i
         return e;
     }
 
-    protected InventoryItemStateEvent map(InventoryItemCommand.MergePatchInventoryItem c) {
+    protected InventoryItemEvent map(InventoryItemCommand.MergePatchInventoryItem c) {
         InventoryItemEventId stateEventId = new InventoryItemEventId(c.getInventoryItemId(), c.getVersion());
-        InventoryItemStateEvent.InventoryItemStateMergePatched e = newInventoryItemStateMergePatched(stateEventId);
-        ((AbstractInventoryItemStateEvent)e).setCommandId(c.getCommandId());
+        InventoryItemEvent.InventoryItemStateMergePatched e = newInventoryItemStateMergePatched(stateEventId);
+        ((AbstractInventoryItemEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         BigDecimal onHandQuantity = this.state.getOnHandQuantity();
@@ -96,11 +96,11 @@ public abstract class AbstractInventoryItemAggregate extends AbstractAggregate i
         for (InventoryItemEntryCommand innerCommand : c.getInventoryItemEntryCommands())
         {
             throwOnInconsistentCommands(c, innerCommand);
-            InventoryItemEntryStateEvent innerEvent = map(innerCommand, c, version, this.state);
+            InventoryItemEntryEvent innerEvent = map(innerCommand, c, version, this.state);
             e.addInventoryItemEntryEvent(innerEvent);
             // ////////////////
-            if (!(innerEvent instanceof InventoryItemEntryStateEvent.InventoryItemEntryStateCreated)) { continue; }
-            InventoryItemEntryStateEvent.InventoryItemEntryStateCreated entryCreated = (InventoryItemEntryStateEvent.InventoryItemEntryStateCreated)innerEvent;
+            if (!(innerEvent instanceof InventoryItemEntryEvent.InventoryItemEntryStateCreated)) { continue; }
+            InventoryItemEntryEvent.InventoryItemEntryStateCreated entryCreated = (InventoryItemEntryEvent.InventoryItemEntryStateCreated)innerEvent;
             onHandQuantity = onHandQuantity.add(entryCreated.getOnHandQuantity() != null ? entryCreated.getOnHandQuantity() : BigDecimal.ZERO);
             inTransitQuantity = inTransitQuantity.add(entryCreated.getInTransitQuantity() != null ? entryCreated.getInTransitQuantity() : BigDecimal.ZERO);
             reservedQuantity = reservedQuantity.add(entryCreated.getReservedQuantity() != null ? entryCreated.getReservedQuantity() : BigDecimal.ZERO);
@@ -118,7 +118,7 @@ public abstract class AbstractInventoryItemAggregate extends AbstractAggregate i
     }
 
 
-    protected InventoryItemEntryStateEvent map(InventoryItemEntryCommand c, InventoryItemCommand outerCommand, long version, InventoryItemState outerState)
+    protected InventoryItemEntryEvent map(InventoryItemEntryCommand c, InventoryItemCommand outerCommand, Long version, InventoryItemState outerState)
     {
         InventoryItemEntryCommand.CreateInventoryItemEntry create = (c.getCommandType().equals(CommandType.CREATE)) ? ((InventoryItemEntryCommand.CreateInventoryItemEntry)c) : null;
         if(create != null)
@@ -129,11 +129,11 @@ public abstract class AbstractInventoryItemAggregate extends AbstractAggregate i
         throw new UnsupportedOperationException();
     }
 
-    protected InventoryItemEntryStateEvent.InventoryItemEntryStateCreated mapCreate(InventoryItemEntryCommand.CreateInventoryItemEntry c, InventoryItemCommand outerCommand, Long version, InventoryItemState outerState)
+    protected InventoryItemEntryEvent.InventoryItemEntryStateCreated mapCreate(InventoryItemEntryCommand.CreateInventoryItemEntry c, InventoryItemCommand outerCommand, Long version, InventoryItemState outerState)
     {
         ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
         InventoryItemEntryEventId stateEventId = new InventoryItemEntryEventId(c.getInventoryItemId(), c.getEntrySeqId(), version);
-        InventoryItemEntryStateEvent.InventoryItemEntryStateCreated e = newInventoryItemEntryStateCreated(stateEventId);
+        InventoryItemEntryEvent.InventoryItemEntryStateCreated e = newInventoryItemEntryStateCreated(stateEventId);
         InventoryItemEntryState s = outerState.getEntries().get(c.getEntrySeqId());
 
         e.setOnHandQuantity(c.getOnHandQuantity());
@@ -170,34 +170,34 @@ public abstract class AbstractInventoryItemAggregate extends AbstractAggregate i
 
     ////////////////////////
 
-    protected InventoryItemStateEvent.InventoryItemStateCreated newInventoryItemStateCreated(Long version, String commandId, String requesterId) {
+    protected InventoryItemEvent.InventoryItemStateCreated newInventoryItemStateCreated(Long version, String commandId, String requesterId) {
         InventoryItemEventId stateEventId = new InventoryItemEventId(this.state.getInventoryItemId(), version);
-        InventoryItemStateEvent.InventoryItemStateCreated e = newInventoryItemStateCreated(stateEventId);
-        ((AbstractInventoryItemStateEvent)e).setCommandId(commandId);
+        InventoryItemEvent.InventoryItemStateCreated e = newInventoryItemStateCreated(stateEventId);
+        ((AbstractInventoryItemEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected InventoryItemStateEvent.InventoryItemStateMergePatched newInventoryItemStateMergePatched(Long version, String commandId, String requesterId) {
+    protected InventoryItemEvent.InventoryItemStateMergePatched newInventoryItemStateMergePatched(Long version, String commandId, String requesterId) {
         InventoryItemEventId stateEventId = new InventoryItemEventId(this.state.getInventoryItemId(), version);
-        InventoryItemStateEvent.InventoryItemStateMergePatched e = newInventoryItemStateMergePatched(stateEventId);
-        ((AbstractInventoryItemStateEvent)e).setCommandId(commandId);
+        InventoryItemEvent.InventoryItemStateMergePatched e = newInventoryItemStateMergePatched(stateEventId);
+        ((AbstractInventoryItemEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected InventoryItemStateEvent.InventoryItemStateCreated newInventoryItemStateCreated(InventoryItemEventId stateEventId) {
-        return new AbstractInventoryItemStateEvent.SimpleInventoryItemStateCreated(stateEventId);
+    protected InventoryItemEvent.InventoryItemStateCreated newInventoryItemStateCreated(InventoryItemEventId stateEventId) {
+        return new AbstractInventoryItemEvent.SimpleInventoryItemStateCreated(stateEventId);
     }
 
-    protected InventoryItemStateEvent.InventoryItemStateMergePatched newInventoryItemStateMergePatched(InventoryItemEventId stateEventId) {
-        return new AbstractInventoryItemStateEvent.SimpleInventoryItemStateMergePatched(stateEventId);
+    protected InventoryItemEvent.InventoryItemStateMergePatched newInventoryItemStateMergePatched(InventoryItemEventId stateEventId) {
+        return new AbstractInventoryItemEvent.SimpleInventoryItemStateMergePatched(stateEventId);
     }
 
-    protected InventoryItemEntryStateEvent.InventoryItemEntryStateCreated newInventoryItemEntryStateCreated(InventoryItemEntryEventId stateEventId) {
-        return new AbstractInventoryItemEntryStateEvent.SimpleInventoryItemEntryStateCreated(stateEventId);
+    protected InventoryItemEntryEvent.InventoryItemEntryStateCreated newInventoryItemEntryStateCreated(InventoryItemEntryEventId stateEventId) {
+        return new AbstractInventoryItemEntryEvent.SimpleInventoryItemEntryStateCreated(stateEventId);
     }
 
     public static class SimpleInventoryItemAggregate extends AbstractInventoryItemAggregate

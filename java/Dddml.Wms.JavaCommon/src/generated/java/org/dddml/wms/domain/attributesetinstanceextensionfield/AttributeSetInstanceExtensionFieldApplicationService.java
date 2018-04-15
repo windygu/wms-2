@@ -30,7 +30,7 @@ public interface AttributeSetInstanceExtensionFieldApplicationService
 
     long getCount(Criterion filter);
 
-    AttributeSetInstanceExtensionFieldStateEvent getStateEvent(String name, long version);
+    AttributeSetInstanceExtensionFieldEvent getEvent(String name, long version);
 
     AttributeSetInstanceExtensionFieldState getHistoryState(String name, long version);
 

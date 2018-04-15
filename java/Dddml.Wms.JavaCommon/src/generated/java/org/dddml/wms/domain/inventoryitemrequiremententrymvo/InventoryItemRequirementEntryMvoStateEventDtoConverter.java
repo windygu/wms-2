@@ -10,19 +10,19 @@ import org.dddml.wms.specialization.*;
 
 public class InventoryItemRequirementEntryMvoStateEventDtoConverter {
 
-    public InventoryItemRequirementEntryMvoStateEventDto toInventoryItemRequirementEntryMvoStateEventDto(AbstractInventoryItemRequirementEntryMvoStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractInventoryItemRequirementEntryMvoStateEvent.AbstractInventoryItemRequirementEntryMvoStateCreated) {
-            InventoryItemRequirementEntryMvoStateEvent.InventoryItemRequirementEntryMvoStateCreated e = (InventoryItemRequirementEntryMvoStateEvent.InventoryItemRequirementEntryMvoStateCreated) stateEvent;
+    public InventoryItemRequirementEntryMvoStateEventDto toInventoryItemRequirementEntryMvoStateEventDto(AbstractInventoryItemRequirementEntryMvoEvent stateEvent) {
+        if (stateEvent instanceof AbstractInventoryItemRequirementEntryMvoEvent.AbstractInventoryItemRequirementEntryMvoStateCreated) {
+            InventoryItemRequirementEntryMvoEvent.InventoryItemRequirementEntryMvoStateCreated e = (InventoryItemRequirementEntryMvoEvent.InventoryItemRequirementEntryMvoStateCreated) stateEvent;
             return toInventoryItemRequirementEntryMvoStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractInventoryItemRequirementEntryMvoStateEvent.AbstractInventoryItemRequirementEntryMvoStateMergePatched) {
-            InventoryItemRequirementEntryMvoStateEvent.InventoryItemRequirementEntryMvoStateMergePatched e = (InventoryItemRequirementEntryMvoStateEvent.InventoryItemRequirementEntryMvoStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractInventoryItemRequirementEntryMvoEvent.AbstractInventoryItemRequirementEntryMvoStateMergePatched) {
+            InventoryItemRequirementEntryMvoEvent.InventoryItemRequirementEntryMvoStateMergePatched e = (InventoryItemRequirementEntryMvoEvent.InventoryItemRequirementEntryMvoStateMergePatched) stateEvent;
             return toInventoryItemRequirementEntryMvoStateMergePatchedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public InventoryItemRequirementEntryMvoStateEventDto.InventoryItemRequirementEntryMvoStateCreatedDto toInventoryItemRequirementEntryMvoStateCreatedDto(InventoryItemRequirementEntryMvoStateEvent.InventoryItemRequirementEntryMvoStateCreated e) {
+    public InventoryItemRequirementEntryMvoStateEventDto.InventoryItemRequirementEntryMvoStateCreatedDto toInventoryItemRequirementEntryMvoStateCreatedDto(InventoryItemRequirementEntryMvoEvent.InventoryItemRequirementEntryMvoStateCreated e) {
         InventoryItemRequirementEntryMvoStateEventDto.InventoryItemRequirementEntryMvoStateCreatedDto dto = new InventoryItemRequirementEntryMvoStateEventDto.InventoryItemRequirementEntryMvoStateCreatedDto();
         dto.setInventoryItemRequirementEntryMvoEventId(e.getInventoryItemRequirementEntryMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -39,7 +39,7 @@ public class InventoryItemRequirementEntryMvoStateEventDtoConverter {
         return dto;
     }
 
-    public InventoryItemRequirementEntryMvoStateEventDto.InventoryItemRequirementEntryMvoStateMergePatchedDto toInventoryItemRequirementEntryMvoStateMergePatchedDto(InventoryItemRequirementEntryMvoStateEvent.InventoryItemRequirementEntryMvoStateMergePatched e) {
+    public InventoryItemRequirementEntryMvoStateEventDto.InventoryItemRequirementEntryMvoStateMergePatchedDto toInventoryItemRequirementEntryMvoStateMergePatchedDto(InventoryItemRequirementEntryMvoEvent.InventoryItemRequirementEntryMvoStateMergePatched e) {
         InventoryItemRequirementEntryMvoStateEventDto.InventoryItemRequirementEntryMvoStateMergePatchedDto dto = new InventoryItemRequirementEntryMvoStateEventDto.InventoryItemRequirementEntryMvoStateMergePatchedDto();
         dto.setInventoryItemRequirementEntryMvoEventId(e.getInventoryItemRequirementEntryMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());

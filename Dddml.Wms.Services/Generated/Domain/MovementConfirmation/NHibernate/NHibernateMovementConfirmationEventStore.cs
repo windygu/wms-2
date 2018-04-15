@@ -45,7 +45,7 @@ namespace Dddml.Wms.Domain.MovementConfirmation.NHibernate
             var es = criteria.List<IEvent>();
             foreach (MovementConfirmationStateEventBase e in es)
             {
-                e.StateEventReadOnly = true;
+                e.EventReadOnly = true;
             }
             return new EventStream()
             {

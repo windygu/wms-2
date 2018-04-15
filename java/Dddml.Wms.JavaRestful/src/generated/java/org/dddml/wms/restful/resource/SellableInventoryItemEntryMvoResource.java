@@ -166,7 +166,7 @@ public class SellableInventoryItemEntryMvoResource {
 
             SellableInventoryItemEntryId idObj = SellableInventoryItemEntryMvoResourceUtils.parseIdString(id);
             SellableInventoryItemEntryMvoStateEventDtoConverter dtoConverter = getSellableInventoryItemEntryMvoStateEventDtoConverter();
-            return dtoConverter.toSellableInventoryItemEntryMvoStateEventDto((AbstractSellableInventoryItemEntryMvoStateEvent) sellableInventoryItemEntryMvoApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toSellableInventoryItemEntryMvoStateEventDto((AbstractSellableInventoryItemEntryMvoEvent) sellableInventoryItemEntryMvoApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

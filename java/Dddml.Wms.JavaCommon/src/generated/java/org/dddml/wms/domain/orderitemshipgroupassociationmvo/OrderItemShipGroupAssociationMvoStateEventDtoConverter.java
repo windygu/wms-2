@@ -8,22 +8,22 @@ import org.dddml.wms.specialization.*;
 
 public class OrderItemShipGroupAssociationMvoStateEventDtoConverter {
 
-    public OrderItemShipGroupAssociationMvoStateEventDto toOrderItemShipGroupAssociationMvoStateEventDto(AbstractOrderItemShipGroupAssociationMvoStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractOrderItemShipGroupAssociationMvoStateEvent.AbstractOrderItemShipGroupAssociationMvoStateCreated) {
-            OrderItemShipGroupAssociationMvoStateEvent.OrderItemShipGroupAssociationMvoStateCreated e = (OrderItemShipGroupAssociationMvoStateEvent.OrderItemShipGroupAssociationMvoStateCreated) stateEvent;
+    public OrderItemShipGroupAssociationMvoStateEventDto toOrderItemShipGroupAssociationMvoStateEventDto(AbstractOrderItemShipGroupAssociationMvoEvent stateEvent) {
+        if (stateEvent instanceof AbstractOrderItemShipGroupAssociationMvoEvent.AbstractOrderItemShipGroupAssociationMvoStateCreated) {
+            OrderItemShipGroupAssociationMvoEvent.OrderItemShipGroupAssociationMvoStateCreated e = (OrderItemShipGroupAssociationMvoEvent.OrderItemShipGroupAssociationMvoStateCreated) stateEvent;
             return toOrderItemShipGroupAssociationMvoStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractOrderItemShipGroupAssociationMvoStateEvent.AbstractOrderItemShipGroupAssociationMvoStateMergePatched) {
-            OrderItemShipGroupAssociationMvoStateEvent.OrderItemShipGroupAssociationMvoStateMergePatched e = (OrderItemShipGroupAssociationMvoStateEvent.OrderItemShipGroupAssociationMvoStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractOrderItemShipGroupAssociationMvoEvent.AbstractOrderItemShipGroupAssociationMvoStateMergePatched) {
+            OrderItemShipGroupAssociationMvoEvent.OrderItemShipGroupAssociationMvoStateMergePatched e = (OrderItemShipGroupAssociationMvoEvent.OrderItemShipGroupAssociationMvoStateMergePatched) stateEvent;
             return toOrderItemShipGroupAssociationMvoStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractOrderItemShipGroupAssociationMvoStateEvent.AbstractOrderItemShipGroupAssociationMvoStateDeleted) {
-            OrderItemShipGroupAssociationMvoStateEvent.OrderItemShipGroupAssociationMvoStateDeleted e = (OrderItemShipGroupAssociationMvoStateEvent.OrderItemShipGroupAssociationMvoStateDeleted) stateEvent;
+        } else if (stateEvent instanceof AbstractOrderItemShipGroupAssociationMvoEvent.AbstractOrderItemShipGroupAssociationMvoStateDeleted) {
+            OrderItemShipGroupAssociationMvoEvent.OrderItemShipGroupAssociationMvoStateDeleted e = (OrderItemShipGroupAssociationMvoEvent.OrderItemShipGroupAssociationMvoStateDeleted) stateEvent;
             return toOrderItemShipGroupAssociationMvoStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public OrderItemShipGroupAssociationMvoStateEventDto.OrderItemShipGroupAssociationMvoStateCreatedDto toOrderItemShipGroupAssociationMvoStateCreatedDto(OrderItemShipGroupAssociationMvoStateEvent.OrderItemShipGroupAssociationMvoStateCreated e) {
+    public OrderItemShipGroupAssociationMvoStateEventDto.OrderItemShipGroupAssociationMvoStateCreatedDto toOrderItemShipGroupAssociationMvoStateCreatedDto(OrderItemShipGroupAssociationMvoEvent.OrderItemShipGroupAssociationMvoStateCreated e) {
         OrderItemShipGroupAssociationMvoStateEventDto.OrderItemShipGroupAssociationMvoStateCreatedDto dto = new OrderItemShipGroupAssociationMvoStateEventDto.OrderItemShipGroupAssociationMvoStateCreatedDto();
         dto.setOrderItemShipGroupAssociationMvoEventId(e.getOrderItemShipGroupAssociationMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -90,7 +90,7 @@ public class OrderItemShipGroupAssociationMvoStateEventDtoConverter {
         return dto;
     }
 
-    public OrderItemShipGroupAssociationMvoStateEventDto.OrderItemShipGroupAssociationMvoStateMergePatchedDto toOrderItemShipGroupAssociationMvoStateMergePatchedDto(OrderItemShipGroupAssociationMvoStateEvent.OrderItemShipGroupAssociationMvoStateMergePatched e) {
+    public OrderItemShipGroupAssociationMvoStateEventDto.OrderItemShipGroupAssociationMvoStateMergePatchedDto toOrderItemShipGroupAssociationMvoStateMergePatchedDto(OrderItemShipGroupAssociationMvoEvent.OrderItemShipGroupAssociationMvoStateMergePatched e) {
         OrderItemShipGroupAssociationMvoStateEventDto.OrderItemShipGroupAssociationMvoStateMergePatchedDto dto = new OrderItemShipGroupAssociationMvoStateEventDto.OrderItemShipGroupAssociationMvoStateMergePatchedDto();
         dto.setOrderItemShipGroupAssociationMvoEventId(e.getOrderItemShipGroupAssociationMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -216,7 +216,7 @@ public class OrderItemShipGroupAssociationMvoStateEventDtoConverter {
     }
 
 
-    public OrderItemShipGroupAssociationMvoStateEventDto.OrderItemShipGroupAssociationMvoStateDeletedDto toOrderItemShipGroupAssociationMvoStateDeletedDto(OrderItemShipGroupAssociationMvoStateEvent.OrderItemShipGroupAssociationMvoStateDeleted e) {
+    public OrderItemShipGroupAssociationMvoStateEventDto.OrderItemShipGroupAssociationMvoStateDeletedDto toOrderItemShipGroupAssociationMvoStateDeletedDto(OrderItemShipGroupAssociationMvoEvent.OrderItemShipGroupAssociationMvoStateDeleted e) {
         OrderItemShipGroupAssociationMvoStateEventDto.OrderItemShipGroupAssociationMvoStateDeletedDto dto = new OrderItemShipGroupAssociationMvoStateEventDto.OrderItemShipGroupAssociationMvoStateDeletedDto();
         dto.setOrderItemShipGroupAssociationMvoEventId(e.getOrderItemShipGroupAssociationMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());

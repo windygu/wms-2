@@ -82,19 +82,19 @@ public abstract class AbstractProductApplicationService implements ProductApplic
         return getStateQueryRepository().getCount(filter);
     }
 
-    public ProductStateEvent getStateEvent(String productId, long version) {
-        ProductStateEvent e = (ProductStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(productId), version);
+    public ProductEvent getEvent(String productId, long version) {
+        ProductEvent e = (ProductEvent)getEventStore().getEvent(toEventStoreAggregateId(productId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(productId, 0);
+            return getEvent(productId, 0);
         }
         return e;
     }
 
     public ProductState getHistoryState(String productId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractProductStateEvent.class, toEventStoreAggregateId(productId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractProductEvent.class, toEventStoreAggregateId(productId), version - 1);
         return new AbstractProductState.SimpleProductState(eventStream.getEvents());
     }
 
@@ -133,7 +133,7 @@ public abstract class AbstractProductApplicationService implements ProductApplic
         }
     }
 
-    public void initialize(ProductStateEvent.ProductStateCreated stateCreated) {
+    public void initialize(ProductEvent.ProductStateCreated stateCreated) {
         String aggregateId = stateCreated.getProductEventId().getProductId();
         ProductState state = new AbstractProductState.SimpleProductState();
         state.setProductId(aggregateId);
@@ -151,9 +151,9 @@ public abstract class AbstractProductApplicationService implements ProductApplic
         if (command.getVersion() == null) { command.setVersion(ProductState.VERSION_NULL); }
         if (state.getVersion() != null && state.getVersion() > command.getVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractProductStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractProductEvent.class, eventStoreAggregateId, command.getVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

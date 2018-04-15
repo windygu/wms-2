@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.attributeset.AttributeUseStateEvent.*;
+import org.dddml.wms.domain.attributeset.AttributeUseEvent.*;
 
 public interface AttributeUseState
 {
@@ -64,11 +64,11 @@ public interface AttributeUseState
 
     void mutate(Event e);
 
-    void when(AttributeUseStateEvent.AttributeUseStateCreated e);
+    void when(AttributeUseEvent.AttributeUseStateCreated e);
 
-    void when(AttributeUseStateEvent.AttributeUseStateMergePatched e);
+    void when(AttributeUseEvent.AttributeUseStateMergePatched e);
 
-    void when(AttributeUseStateEvent.AttributeUseStateRemoved e);
+    void when(AttributeUseEvent.AttributeUseStateRemoved e);
     
 }
 

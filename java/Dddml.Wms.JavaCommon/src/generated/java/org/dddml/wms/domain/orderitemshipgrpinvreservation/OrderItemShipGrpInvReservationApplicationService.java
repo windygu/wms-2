@@ -30,7 +30,7 @@ public interface OrderItemShipGrpInvReservationApplicationService
 
     long getCount(Criterion filter);
 
-    OrderItemShipGrpInvReservationStateEvent getStateEvent(OrderItemShipGrpInvResId orderItemShipGrpInvResId, long version);
+    OrderItemShipGrpInvReservationEvent getEvent(OrderItemShipGrpInvResId orderItemShipGrpInvResId, long version);
 
     OrderItemShipGrpInvReservationState getHistoryState(OrderItemShipGrpInvResId orderItemShipGrpInvResId, long version);
 

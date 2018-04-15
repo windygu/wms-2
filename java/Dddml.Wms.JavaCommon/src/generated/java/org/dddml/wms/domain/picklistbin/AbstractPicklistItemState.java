@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.picklistbin.PicklistItemStateEvent.*;
+import org.dddml.wms.domain.picklistbin.PicklistItemEvent.*;
 
 public abstract class AbstractPicklistItemState implements PicklistItemState
 {
@@ -264,7 +264,7 @@ public abstract class AbstractPicklistItemState implements PicklistItemState
     {
     }
 
-    protected void throwOnWrongEvent(PicklistItemStateEvent stateEvent)
+    protected void throwOnWrongEvent(PicklistItemEvent stateEvent)
     {
         String stateEntityIdPicklistBinId = this.getPicklistBinPicklistItemId().getPicklistBinId();
         String eventEntityIdPicklistBinId = stateEvent.getPicklistItemEventId().getPicklistBinId();

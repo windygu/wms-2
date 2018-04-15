@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.product.ProductStateEvent.*;
+import org.dddml.wms.domain.product.ProductEvent.*;
 
 public abstract class AbstractProductState implements ProductState
 {
@@ -837,7 +837,7 @@ public abstract class AbstractProductState implements ProductState
     public AbstractProductState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setProductId(((ProductStateEvent) events.get(0)).getProductEventId().getProductId());
+            this.setProductId(((ProductEvent) events.get(0)).getProductEventId().getProductId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -1627,10 +1627,10 @@ public abstract class AbstractProductState implements ProductState
     {
     }
 
-    protected void throwOnWrongEvent(ProductStateEvent stateEvent)
+    protected void throwOnWrongEvent(ProductEvent stateEvent)
     {
         String stateEntityId = this.getProductId(); // Aggregate Id
-        String eventEntityId = stateEvent.getProductEventId().getProductId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        String eventEntityId = stateEvent.getProductEventId().getProductId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

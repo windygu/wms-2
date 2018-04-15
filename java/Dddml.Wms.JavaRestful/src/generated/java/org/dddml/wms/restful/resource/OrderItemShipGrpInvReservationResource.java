@@ -181,7 +181,7 @@ public class OrderItemShipGrpInvReservationResource {
 
             OrderItemShipGrpInvResId idObj = OrderItemShipGrpInvReservationResourceUtils.parseIdString(id);
             OrderItemShipGrpInvReservationStateEventDtoConverter dtoConverter = getOrderItemShipGrpInvReservationStateEventDtoConverter();
-            return dtoConverter.toOrderItemShipGrpInvReservationStateEventDto((AbstractOrderItemShipGrpInvReservationStateEvent) orderItemShipGrpInvReservationApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toOrderItemShipGrpInvReservationStateEventDto((AbstractOrderItemShipGrpInvReservationEvent) orderItemShipGrpInvReservationApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

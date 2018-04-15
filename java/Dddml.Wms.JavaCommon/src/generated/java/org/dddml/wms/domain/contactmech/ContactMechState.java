@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.contactmech.ContactMechStateEvent.*;
+import org.dddml.wms.domain.contactmech.ContactMechEvent.*;
 
 public interface ContactMechState
 {
@@ -128,11 +128,11 @@ public interface ContactMechState
 
     void mutate(Event e);
 
-    void when(ContactMechStateEvent.ContactMechStateCreated e);
+    void when(ContactMechEvent.ContactMechStateCreated e);
 
-    void when(ContactMechStateEvent.ContactMechStateMergePatched e);
+    void when(ContactMechEvent.ContactMechStateMergePatched e);
 
-    void when(ContactMechStateEvent.ContactMechStateDeleted e);
+    void when(ContactMechEvent.ContactMechStateDeleted e);
     
 }
 

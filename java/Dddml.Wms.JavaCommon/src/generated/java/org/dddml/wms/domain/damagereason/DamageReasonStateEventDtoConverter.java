@@ -7,22 +7,22 @@ import org.dddml.wms.specialization.*;
 
 public class DamageReasonStateEventDtoConverter {
 
-    public DamageReasonStateEventDto toDamageReasonStateEventDto(AbstractDamageReasonStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractDamageReasonStateEvent.AbstractDamageReasonStateCreated) {
-            DamageReasonStateEvent.DamageReasonStateCreated e = (DamageReasonStateEvent.DamageReasonStateCreated) stateEvent;
+    public DamageReasonStateEventDto toDamageReasonStateEventDto(AbstractDamageReasonEvent stateEvent) {
+        if (stateEvent instanceof AbstractDamageReasonEvent.AbstractDamageReasonStateCreated) {
+            DamageReasonEvent.DamageReasonStateCreated e = (DamageReasonEvent.DamageReasonStateCreated) stateEvent;
             return toDamageReasonStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractDamageReasonStateEvent.AbstractDamageReasonStateMergePatched) {
-            DamageReasonStateEvent.DamageReasonStateMergePatched e = (DamageReasonStateEvent.DamageReasonStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractDamageReasonEvent.AbstractDamageReasonStateMergePatched) {
+            DamageReasonEvent.DamageReasonStateMergePatched e = (DamageReasonEvent.DamageReasonStateMergePatched) stateEvent;
             return toDamageReasonStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractDamageReasonStateEvent.AbstractDamageReasonStateDeleted) {
-            DamageReasonStateEvent.DamageReasonStateDeleted e = (DamageReasonStateEvent.DamageReasonStateDeleted) stateEvent;
+        } else if (stateEvent instanceof AbstractDamageReasonEvent.AbstractDamageReasonStateDeleted) {
+            DamageReasonEvent.DamageReasonStateDeleted e = (DamageReasonEvent.DamageReasonStateDeleted) stateEvent;
             return toDamageReasonStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public DamageReasonStateEventDto.DamageReasonStateCreatedDto toDamageReasonStateCreatedDto(DamageReasonStateEvent.DamageReasonStateCreated e) {
+    public DamageReasonStateEventDto.DamageReasonStateCreatedDto toDamageReasonStateCreatedDto(DamageReasonEvent.DamageReasonStateCreated e) {
         DamageReasonStateEventDto.DamageReasonStateCreatedDto dto = new DamageReasonStateEventDto.DamageReasonStateCreatedDto();
         dto.setDamageReasonEventId(e.getDamageReasonEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -34,7 +34,7 @@ public class DamageReasonStateEventDtoConverter {
         return dto;
     }
 
-    public DamageReasonStateEventDto.DamageReasonStateMergePatchedDto toDamageReasonStateMergePatchedDto(DamageReasonStateEvent.DamageReasonStateMergePatched e) {
+    public DamageReasonStateEventDto.DamageReasonStateMergePatchedDto toDamageReasonStateMergePatchedDto(DamageReasonEvent.DamageReasonStateMergePatched e) {
         DamageReasonStateEventDto.DamageReasonStateMergePatchedDto dto = new DamageReasonStateEventDto.DamageReasonStateMergePatchedDto();
         dto.setDamageReasonEventId(e.getDamageReasonEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -50,7 +50,7 @@ public class DamageReasonStateEventDtoConverter {
     }
 
 
-    public DamageReasonStateEventDto.DamageReasonStateDeletedDto toDamageReasonStateDeletedDto(DamageReasonStateEvent.DamageReasonStateDeleted e) {
+    public DamageReasonStateEventDto.DamageReasonStateDeletedDto toDamageReasonStateDeletedDto(DamageReasonEvent.DamageReasonStateDeleted e) {
         DamageReasonStateEventDto.DamageReasonStateDeletedDto dto = new DamageReasonStateEventDto.DamageReasonStateDeletedDto();
         dto.setDamageReasonEventId(e.getDamageReasonEventId());
         dto.setCreatedAt(e.getCreatedAt());

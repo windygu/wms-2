@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+                   assembly="Dddml.Wms.Common" 
+                   namespace="Dddml.Wms.Domain.InventoryPostingRule">
+  
+  <class name="InventoryPostingRuleStateEventBase" table="InventoryPostingRuleEvents" mutable="false" abstract="true">
+
+    <composite-id name="InventoryPostingRuleEventId" class="Dddml.Wms.Domain.InventoryPostingRule.InventoryPostingRuleEventId">
+        <key-property name="InventoryPostingRuleId" ><column name="InventoryPostingRuleId" length="50" /></key-property>
+        <key-property name="Version" ></key-property>
+    </composite-id>
+    <discriminator column="EventType" type="String" />
+
+    <component name="TriggerInventoryItemId" class="Dddml.Wms.Domain.InventoryItem.InventoryItemId">
+        <property name="ProductId" ><column name="TriggerProductId" length="60" sql-type="VARCHAR(60)" /></property>
+        <property name="LocatorId" ><column name="TriggerLocatorId" length="50" /></property>
+        <property name="AttributeSetInstanceId" ><column name="TriggerAttributeSetInstanceId" length="50" /></property>
+    </component>
+    <component name="OutputInventoryItemId" class="Dddml.Wms.Domain.InventoryItem.InventoryItemId">
+        <property name="ProductId" ><column name="OutputProductId" length="60" sql-type="VARCHAR(60)" /></property>
+        <property name="LocatorId" ><column name="OutputLocatorId" length="50" /></property>
+        <property name="AttributeSetInstanceId" ><column name="OutputAttributeSetInstanceId" length="50" /></property>
+    </component>
+    <property name="TriggerAccountName" ></property>
+    <property name="OutputAccountName" ></property>
+    <property name="IsOutputNegated" ></property>
+    <property name="Active" ></property>
+
+    <property name="CreatedBy" column="CreatedBy"/>
+
+    <property name="CreatedAt" column="CreatedAt" type="DateTimeUtc"/>
+    <property name="CommandId" column="CommandId"/>
+    <subclass name="InventoryPostingRuleStateCreated" discriminator-value="Created">
+    	
+    </subclass>
+
+    <subclass name="InventoryPostingRuleStateMergePatched"  discriminator-value="MergePatched">
+
+
+        <property name="IsPropertyTriggerInventoryItemIdRemoved" column="IsPropertyTriggerInventoryItemIdRemoved"/>
+
+        <property name="IsPropertyOutputInventoryItemIdRemoved" column="IsPropertyOutputInventoryItemIdRemoved"/>
+
+        <property name="IsPropertyTriggerAccountNameRemoved" column="IsPropertyTriggerAccountNameRemoved"/>
+
+        <property name="IsPropertyOutputAccountNameRemoved" column="IsPropertyOutputAccountNameRemoved"/>
+
+        <property name="IsPropertyIsOutputNegatedRemoved" column="IsPropertyIsOutputNegatedRemoved"/>
+
+        <property name="IsPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
+    </subclass>
+
+    <subclass name="InventoryPostingRuleStateDeleted"  discriminator-value="Deleted">
+
+    </subclass>
+
+
+
+  </class>
+  
+</hibernate-mapping>

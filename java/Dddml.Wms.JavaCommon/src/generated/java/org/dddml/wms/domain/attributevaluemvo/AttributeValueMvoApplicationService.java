@@ -31,7 +31,7 @@ public interface AttributeValueMvoApplicationService
 
     long getCount(Criterion filter);
 
-    AttributeValueMvoStateEvent getStateEvent(AttributeValueId attributeValueId, long version);
+    AttributeValueMvoEvent getEvent(AttributeValueId attributeValueId, long version);
 
     AttributeValueMvoState getHistoryState(AttributeValueId attributeValueId, long version);
 

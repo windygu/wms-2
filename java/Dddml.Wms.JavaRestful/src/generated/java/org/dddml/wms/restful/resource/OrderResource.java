@@ -164,7 +164,7 @@ public class OrderResource {
 
             String idObj = id;
             OrderStateEventDtoConverter dtoConverter = getOrderStateEventDtoConverter();
-            return dtoConverter.toOrderStateEventDto((AbstractOrderStateEvent) orderApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toOrderStateEventDto((AbstractOrderEvent) orderApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

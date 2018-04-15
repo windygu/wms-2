@@ -48,7 +48,7 @@ namespace Dddml.Wms.Domain.UserLoginMvo.NHibernate
             var es = criteria.List<IEvent>();
             foreach (UserLoginMvoStateEventBase e in es)
             {
-                e.StateEventReadOnly = true;
+                e.EventReadOnly = true;
             }
             return new EventStream()
             {

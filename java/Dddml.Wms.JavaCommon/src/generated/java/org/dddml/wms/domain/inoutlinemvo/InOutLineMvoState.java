@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.inoutlinemvo.InOutLineMvoStateEvent.*;
+import org.dddml.wms.domain.inoutlinemvo.InOutLineMvoEvent.*;
 
 public interface InOutLineMvoState
 {
@@ -242,11 +242,11 @@ public interface InOutLineMvoState
 
     void mutate(Event e);
 
-    void when(InOutLineMvoStateEvent.InOutLineMvoStateCreated e);
+    void when(InOutLineMvoEvent.InOutLineMvoStateCreated e);
 
-    void when(InOutLineMvoStateEvent.InOutLineMvoStateMergePatched e);
+    void when(InOutLineMvoEvent.InOutLineMvoStateMergePatched e);
 
-    void when(InOutLineMvoStateEvent.InOutLineMvoStateDeleted e);
+    void when(InOutLineMvoEvent.InOutLineMvoStateDeleted e);
     
 }
 

@@ -21,20 +21,20 @@ public class HibernatePicklistItemMvoEventStore extends AbstractHibernateEventSt
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractPicklistItemMvoStateEvent.class;
+        return AbstractPicklistItemMvoEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractPicklistItemMvoStateEvent.class;
+        Class supportedEventType = AbstractPicklistItemMvoEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         PicklistBinPicklistItemId idObj = (PicklistBinPicklistItemId) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractPicklistItemMvoStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractPicklistItemMvoEvent.class);
         criteria.add(Restrictions.eq("picklistItemMvoEventId.picklistBinPicklistItemIdPicklistBinId", idObj.getPicklistBinId()));
         criteria.add(Restrictions.eq("picklistItemMvoEventId.picklistBinPicklistItemIdPicklistItemOrderShipGrpInvIdOrderId", idObj.getPicklistItemOrderShipGrpInvId().getOrderId()));
         criteria.add(Restrictions.eq("picklistItemMvoEventId.picklistBinPicklistItemIdPicklistItemOrderShipGrpInvIdOrderItemSeqId", idObj.getPicklistItemOrderShipGrpInvId().getOrderItemSeqId()));
@@ -46,11 +46,11 @@ public class HibernatePicklistItemMvoEventStore extends AbstractHibernateEventSt
         criteria.addOrder(Order.asc("picklistItemMvoEventId.picklistBinVersion"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractPicklistItemMvoStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractPicklistItemMvoEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractPicklistItemMvoStateEvent) es.get(es.size() - 1)).getPicklistItemMvoEventId().getPicklistBinVersion());
+            eventStream.setSteamVersion(((AbstractPicklistItemMvoEvent) es.get(es.size() - 1)).getPicklistItemMvoEventId().getPicklistBinVersion());
         } else {
             //todo?
         }

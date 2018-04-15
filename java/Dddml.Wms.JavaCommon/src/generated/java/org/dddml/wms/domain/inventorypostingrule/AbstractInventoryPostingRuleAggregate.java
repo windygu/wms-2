@@ -28,19 +28,19 @@ public abstract class AbstractInventoryPostingRuleAggregate extends AbstractAggr
     public void create(InventoryPostingRuleCommand.CreateInventoryPostingRule c)
     {
         if (c.getVersion() == null) { c.setVersion(InventoryPostingRuleState.VERSION_NULL); }
-        InventoryPostingRuleStateEvent e = map(c);
+        InventoryPostingRuleEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(InventoryPostingRuleCommand.MergePatchInventoryPostingRule c)
     {
-        InventoryPostingRuleStateEvent e = map(c);
+        InventoryPostingRuleEvent e = map(c);
         apply(e);
     }
 
     public void delete(InventoryPostingRuleCommand.DeleteInventoryPostingRule c)
     {
-        InventoryPostingRuleStateEvent e = map(c);
+        InventoryPostingRuleEvent e = map(c);
         apply(e);
     }
 
@@ -55,24 +55,24 @@ public abstract class AbstractInventoryPostingRuleAggregate extends AbstractAggr
         changes.add(e);
     }
 
-    protected InventoryPostingRuleStateEvent map(InventoryPostingRuleCommand.CreateInventoryPostingRule c) {
+    protected InventoryPostingRuleEvent map(InventoryPostingRuleCommand.CreateInventoryPostingRule c) {
         InventoryPostingRuleEventId stateEventId = new InventoryPostingRuleEventId(c.getInventoryPostingRuleId(), c.getVersion());
-        InventoryPostingRuleStateEvent.InventoryPostingRuleStateCreated e = newInventoryPostingRuleStateCreated(stateEventId);
+        InventoryPostingRuleEvent.InventoryPostingRuleStateCreated e = newInventoryPostingRuleStateCreated(stateEventId);
         e.setTriggerInventoryItemId(c.getTriggerInventoryItemId());
         e.setOutputInventoryItemId(c.getOutputInventoryItemId());
         e.setTriggerAccountName(c.getTriggerAccountName());
         e.setOutputAccountName(c.getOutputAccountName());
         e.setIsOutputNegated(c.getIsOutputNegated());
         e.setActive(c.getActive());
-        ((AbstractInventoryPostingRuleStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractInventoryPostingRuleEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected InventoryPostingRuleStateEvent map(InventoryPostingRuleCommand.MergePatchInventoryPostingRule c) {
+    protected InventoryPostingRuleEvent map(InventoryPostingRuleCommand.MergePatchInventoryPostingRule c) {
         InventoryPostingRuleEventId stateEventId = new InventoryPostingRuleEventId(c.getInventoryPostingRuleId(), c.getVersion());
-        InventoryPostingRuleStateEvent.InventoryPostingRuleStateMergePatched e = newInventoryPostingRuleStateMergePatched(stateEventId);
+        InventoryPostingRuleEvent.InventoryPostingRuleStateMergePatched e = newInventoryPostingRuleStateMergePatched(stateEventId);
         e.setTriggerInventoryItemId(c.getTriggerInventoryItemId());
         e.setOutputInventoryItemId(c.getOutputInventoryItemId());
         e.setTriggerAccountName(c.getTriggerAccountName());
@@ -85,16 +85,16 @@ public abstract class AbstractInventoryPostingRuleAggregate extends AbstractAggr
         e.setIsPropertyOutputAccountNameRemoved(c.getIsPropertyOutputAccountNameRemoved());
         e.setIsPropertyIsOutputNegatedRemoved(c.getIsPropertyIsOutputNegatedRemoved());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
-        ((AbstractInventoryPostingRuleStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractInventoryPostingRuleEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected InventoryPostingRuleStateEvent map(InventoryPostingRuleCommand.DeleteInventoryPostingRule c) {
+    protected InventoryPostingRuleEvent map(InventoryPostingRuleCommand.DeleteInventoryPostingRule c) {
         InventoryPostingRuleEventId stateEventId = new InventoryPostingRuleEventId(c.getInventoryPostingRuleId(), c.getVersion());
-        InventoryPostingRuleStateEvent.InventoryPostingRuleStateDeleted e = newInventoryPostingRuleStateDeleted(stateEventId);
-        ((AbstractInventoryPostingRuleStateEvent)e).setCommandId(c.getCommandId());
+        InventoryPostingRuleEvent.InventoryPostingRuleStateDeleted e = newInventoryPostingRuleStateDeleted(stateEventId);
+        ((AbstractInventoryPostingRuleEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
@@ -103,44 +103,44 @@ public abstract class AbstractInventoryPostingRuleAggregate extends AbstractAggr
 
     ////////////////////////
 
-    protected InventoryPostingRuleStateEvent.InventoryPostingRuleStateCreated newInventoryPostingRuleStateCreated(Long version, String commandId, String requesterId) {
+    protected InventoryPostingRuleEvent.InventoryPostingRuleStateCreated newInventoryPostingRuleStateCreated(Long version, String commandId, String requesterId) {
         InventoryPostingRuleEventId stateEventId = new InventoryPostingRuleEventId(this.state.getInventoryPostingRuleId(), version);
-        InventoryPostingRuleStateEvent.InventoryPostingRuleStateCreated e = newInventoryPostingRuleStateCreated(stateEventId);
-        ((AbstractInventoryPostingRuleStateEvent)e).setCommandId(commandId);
+        InventoryPostingRuleEvent.InventoryPostingRuleStateCreated e = newInventoryPostingRuleStateCreated(stateEventId);
+        ((AbstractInventoryPostingRuleEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected InventoryPostingRuleStateEvent.InventoryPostingRuleStateMergePatched newInventoryPostingRuleStateMergePatched(Long version, String commandId, String requesterId) {
+    protected InventoryPostingRuleEvent.InventoryPostingRuleStateMergePatched newInventoryPostingRuleStateMergePatched(Long version, String commandId, String requesterId) {
         InventoryPostingRuleEventId stateEventId = new InventoryPostingRuleEventId(this.state.getInventoryPostingRuleId(), version);
-        InventoryPostingRuleStateEvent.InventoryPostingRuleStateMergePatched e = newInventoryPostingRuleStateMergePatched(stateEventId);
-        ((AbstractInventoryPostingRuleStateEvent)e).setCommandId(commandId);
+        InventoryPostingRuleEvent.InventoryPostingRuleStateMergePatched e = newInventoryPostingRuleStateMergePatched(stateEventId);
+        ((AbstractInventoryPostingRuleEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected InventoryPostingRuleStateEvent.InventoryPostingRuleStateDeleted newInventoryPostingRuleStateDeleted(Long version, String commandId, String requesterId) {
+    protected InventoryPostingRuleEvent.InventoryPostingRuleStateDeleted newInventoryPostingRuleStateDeleted(Long version, String commandId, String requesterId) {
         InventoryPostingRuleEventId stateEventId = new InventoryPostingRuleEventId(this.state.getInventoryPostingRuleId(), version);
-        InventoryPostingRuleStateEvent.InventoryPostingRuleStateDeleted e = newInventoryPostingRuleStateDeleted(stateEventId);
-        ((AbstractInventoryPostingRuleStateEvent)e).setCommandId(commandId);
+        InventoryPostingRuleEvent.InventoryPostingRuleStateDeleted e = newInventoryPostingRuleStateDeleted(stateEventId);
+        ((AbstractInventoryPostingRuleEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected InventoryPostingRuleStateEvent.InventoryPostingRuleStateCreated newInventoryPostingRuleStateCreated(InventoryPostingRuleEventId stateEventId) {
-        return new AbstractInventoryPostingRuleStateEvent.SimpleInventoryPostingRuleStateCreated(stateEventId);
+    protected InventoryPostingRuleEvent.InventoryPostingRuleStateCreated newInventoryPostingRuleStateCreated(InventoryPostingRuleEventId stateEventId) {
+        return new AbstractInventoryPostingRuleEvent.SimpleInventoryPostingRuleStateCreated(stateEventId);
     }
 
-    protected InventoryPostingRuleStateEvent.InventoryPostingRuleStateMergePatched newInventoryPostingRuleStateMergePatched(InventoryPostingRuleEventId stateEventId) {
-        return new AbstractInventoryPostingRuleStateEvent.SimpleInventoryPostingRuleStateMergePatched(stateEventId);
+    protected InventoryPostingRuleEvent.InventoryPostingRuleStateMergePatched newInventoryPostingRuleStateMergePatched(InventoryPostingRuleEventId stateEventId) {
+        return new AbstractInventoryPostingRuleEvent.SimpleInventoryPostingRuleStateMergePatched(stateEventId);
     }
 
-    protected InventoryPostingRuleStateEvent.InventoryPostingRuleStateDeleted newInventoryPostingRuleStateDeleted(InventoryPostingRuleEventId stateEventId)
+    protected InventoryPostingRuleEvent.InventoryPostingRuleStateDeleted newInventoryPostingRuleStateDeleted(InventoryPostingRuleEventId stateEventId)
     {
-        return new AbstractInventoryPostingRuleStateEvent.SimpleInventoryPostingRuleStateDeleted(stateEventId);
+        return new AbstractInventoryPostingRuleEvent.SimpleInventoryPostingRuleStateDeleted(stateEventId);
     }
 
     public static class SimpleInventoryPostingRuleAggregate extends AbstractInventoryPostingRuleAggregate

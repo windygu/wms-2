@@ -182,7 +182,7 @@ public class InventoryPostingRuleResource {
 
             String idObj = id;
             InventoryPostingRuleStateEventDtoConverter dtoConverter = getInventoryPostingRuleStateEventDtoConverter();
-            return dtoConverter.toInventoryPostingRuleStateEventDto((AbstractInventoryPostingRuleStateEvent) inventoryPostingRuleApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toInventoryPostingRuleStateEventDto((AbstractInventoryPostingRuleEvent) inventoryPostingRuleApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

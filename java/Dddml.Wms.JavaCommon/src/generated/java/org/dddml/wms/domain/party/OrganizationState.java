@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.party.PartyStateEvent.*;
+import org.dddml.wms.domain.party.PartyEvent.*;
 
 public interface OrganizationState extends PartyState
 {
@@ -24,11 +24,11 @@ public interface OrganizationState extends PartyState
 
     void setIsSummary(Boolean isSummary);
 
-    void when(OrganizationStateEvent.OrganizationStateCreated e);
+    void when(OrganizationEvent.OrganizationStateCreated e);
 
-    void when(OrganizationStateEvent.OrganizationStateMergePatched e);
+    void when(OrganizationEvent.OrganizationStateMergePatched e);
 
-    void when(OrganizationStateEvent.OrganizationStateDeleted e);
+    void when(OrganizationEvent.OrganizationStateDeleted e);
     
 }
 

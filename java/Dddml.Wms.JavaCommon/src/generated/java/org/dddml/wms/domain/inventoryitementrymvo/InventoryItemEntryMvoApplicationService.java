@@ -30,7 +30,7 @@ public interface InventoryItemEntryMvoApplicationService
 
     long getCount(Criterion filter);
 
-    InventoryItemEntryMvoStateEvent getStateEvent(InventoryItemEntryId inventoryItemEntryId, long version);
+    InventoryItemEntryMvoEvent getEvent(InventoryItemEntryId inventoryItemEntryId, long version);
 
     InventoryItemEntryMvoState getHistoryState(InventoryItemEntryId inventoryItemEntryId, long version);
 

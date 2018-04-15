@@ -6,7 +6,7 @@ import java.util.Date;
 import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.physicalinventory.PhysicalInventoryStateEvent.*;
+import org.dddml.wms.domain.physicalinventory.PhysicalInventoryEvent.*;
 
 public abstract class AbstractPhysicalInventoryState implements PhysicalInventoryState, Saveable
 {
@@ -299,7 +299,7 @@ public abstract class AbstractPhysicalInventoryState implements PhysicalInventor
     public AbstractPhysicalInventoryState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setDocumentNumber(((PhysicalInventoryStateEvent) events.get(0)).getPhysicalInventoryEventId().getDocumentNumber());
+            this.setDocumentNumber(((PhysicalInventoryEvent) events.get(0)).getPhysicalInventoryEventId().getDocumentNumber());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -357,7 +357,7 @@ public abstract class AbstractPhysicalInventoryState implements PhysicalInventor
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
-        for (PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateCreated innerEvent : e.getPhysicalInventoryLineEvents()) {
+        for (PhysicalInventoryLineEvent.PhysicalInventoryLineStateCreated innerEvent : e.getPhysicalInventoryLineEvents()) {
             PhysicalInventoryLineState innerState = this.getPhysicalInventoryLines().get(innerEvent.getPhysicalInventoryLineEventId().getInventoryItemId());
             innerState.mutate(innerEvent);
         }
@@ -536,12 +536,12 @@ public abstract class AbstractPhysicalInventoryState implements PhysicalInventor
         this.setUpdatedBy(e.getCreatedBy());
         this.setUpdatedAt(e.getCreatedAt());
 
-        for (PhysicalInventoryLineStateEvent innerEvent : e.getPhysicalInventoryLineEvents()) {
+        for (PhysicalInventoryLineEvent innerEvent : e.getPhysicalInventoryLineEvents()) {
             PhysicalInventoryLineState innerState = this.getPhysicalInventoryLines().get(innerEvent.getPhysicalInventoryLineEventId().getInventoryItemId());
             innerState.mutate(innerEvent);
-            if (innerEvent instanceof PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateRemoved)
+            if (innerEvent instanceof PhysicalInventoryLineEvent.PhysicalInventoryLineStateRemoved)
             {
-                //PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateRemoved removed = (PhysicalInventoryLineStateEvent.PhysicalInventoryLineStateRemoved)innerEvent;
+                //PhysicalInventoryLineEvent.PhysicalInventoryLineStateRemoved removed = (PhysicalInventoryLineEvent.PhysicalInventoryLineStateRemoved)innerEvent;
                 this.getPhysicalInventoryLines().remove(innerState);
             }
         }
@@ -553,10 +553,10 @@ public abstract class AbstractPhysicalInventoryState implements PhysicalInventor
 
     }
 
-    protected void throwOnWrongEvent(PhysicalInventoryStateEvent stateEvent)
+    protected void throwOnWrongEvent(PhysicalInventoryEvent stateEvent)
     {
         String stateEntityId = this.getDocumentNumber(); // Aggregate Id
-        String eventEntityId = stateEvent.getPhysicalInventoryEventId().getDocumentNumber(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        String eventEntityId = stateEvent.getPhysicalInventoryEventId().getDocumentNumber(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

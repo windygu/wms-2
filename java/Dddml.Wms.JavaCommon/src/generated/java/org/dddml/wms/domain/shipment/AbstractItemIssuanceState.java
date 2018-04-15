@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.shipment.ItemIssuanceStateEvent.*;
+import org.dddml.wms.domain.shipment.ItemIssuanceEvent.*;
 
 public abstract class AbstractItemIssuanceState implements ItemIssuanceState
 {
@@ -528,7 +528,7 @@ public abstract class AbstractItemIssuanceState implements ItemIssuanceState
     {
     }
 
-    protected void throwOnWrongEvent(ItemIssuanceStateEvent stateEvent)
+    protected void throwOnWrongEvent(ItemIssuanceEvent stateEvent)
     {
         String stateEntityIdShipmentId = this.getShipmentItemIssuanceId().getShipmentId();
         String eventEntityIdShipmentId = stateEvent.getItemIssuanceEventId().getShipmentId();

@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.movementlinemvo.MovementLineMvoStateEvent.*;
+import org.dddml.wms.domain.movementlinemvo.MovementLineMvoEvent.*;
 
 public interface MovementLineMvoState
 {
@@ -190,11 +190,11 @@ public interface MovementLineMvoState
 
     void mutate(Event e);
 
-    void when(MovementLineMvoStateEvent.MovementLineMvoStateCreated e);
+    void when(MovementLineMvoEvent.MovementLineMvoStateCreated e);
 
-    void when(MovementLineMvoStateEvent.MovementLineMvoStateMergePatched e);
+    void when(MovementLineMvoEvent.MovementLineMvoStateMergePatched e);
 
-    void when(MovementLineMvoStateEvent.MovementLineMvoStateDeleted e);
+    void when(MovementLineMvoEvent.MovementLineMvoStateDeleted e);
     
 }
 

@@ -31,7 +31,7 @@ public interface ItemIssuanceMvoApplicationService
 
     long getCount(Criterion filter);
 
-    ItemIssuanceMvoStateEvent getStateEvent(ShipmentItemIssuanceId shipmentItemIssuanceId, long version);
+    ItemIssuanceMvoEvent getEvent(ShipmentItemIssuanceId shipmentItemIssuanceId, long version);
 
     ItemIssuanceMvoState getHistoryState(ShipmentItemIssuanceId shipmentItemIssuanceId, long version);
 

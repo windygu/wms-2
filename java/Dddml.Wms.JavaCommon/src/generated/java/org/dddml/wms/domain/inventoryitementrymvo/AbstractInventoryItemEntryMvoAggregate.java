@@ -29,13 +29,13 @@ public abstract class AbstractInventoryItemEntryMvoAggregate extends AbstractAgg
     public void create(InventoryItemEntryMvoCommand.CreateInventoryItemEntryMvo c)
     {
         if (c.getInventoryItemVersion() == null) { c.setInventoryItemVersion(InventoryItemEntryMvoState.VERSION_NULL); }
-        InventoryItemEntryMvoStateEvent e = map(c);
+        InventoryItemEntryMvoEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(InventoryItemEntryMvoCommand.MergePatchInventoryItemEntryMvo c)
     {
-        InventoryItemEntryMvoStateEvent e = map(c);
+        InventoryItemEntryMvoEvent e = map(c);
         apply(e);
     }
 
@@ -50,9 +50,9 @@ public abstract class AbstractInventoryItemEntryMvoAggregate extends AbstractAgg
         changes.add(e);
     }
 
-    protected InventoryItemEntryMvoStateEvent map(InventoryItemEntryMvoCommand.CreateInventoryItemEntryMvo c) {
+    protected InventoryItemEntryMvoEvent map(InventoryItemEntryMvoCommand.CreateInventoryItemEntryMvo c) {
         InventoryItemEntryMvoEventId stateEventId = new InventoryItemEntryMvoEventId(c.getInventoryItemEntryId(), c.getInventoryItemVersion());
-        InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateCreated e = newInventoryItemEntryMvoStateCreated(stateEventId);
+        InventoryItemEntryMvoEvent.InventoryItemEntryMvoStateCreated e = newInventoryItemEntryMvoStateCreated(stateEventId);
         e.setOnHandQuantity(c.getOnHandQuantity());
         e.setInTransitQuantity(c.getInTransitQuantity());
         e.setReservedQuantity(c.getReservedQuantity());
@@ -69,15 +69,15 @@ public abstract class AbstractInventoryItemEntryMvoAggregate extends AbstractAgg
         e.setInventoryItemCreatedAt(c.getInventoryItemCreatedAt());
         e.setInventoryItemUpdatedBy(c.getInventoryItemUpdatedBy());
         e.setInventoryItemUpdatedAt(c.getInventoryItemUpdatedAt());
-        ((AbstractInventoryItemEntryMvoStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractInventoryItemEntryMvoEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected InventoryItemEntryMvoStateEvent map(InventoryItemEntryMvoCommand.MergePatchInventoryItemEntryMvo c) {
+    protected InventoryItemEntryMvoEvent map(InventoryItemEntryMvoCommand.MergePatchInventoryItemEntryMvo c) {
         InventoryItemEntryMvoEventId stateEventId = new InventoryItemEntryMvoEventId(c.getInventoryItemEntryId(), c.getInventoryItemVersion());
-        InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateMergePatched e = newInventoryItemEntryMvoStateMergePatched(stateEventId);
+        InventoryItemEntryMvoEvent.InventoryItemEntryMvoStateMergePatched e = newInventoryItemEntryMvoStateMergePatched(stateEventId);
         e.setOnHandQuantity(c.getOnHandQuantity());
         e.setInTransitQuantity(c.getInTransitQuantity());
         e.setReservedQuantity(c.getReservedQuantity());
@@ -110,7 +110,7 @@ public abstract class AbstractInventoryItemEntryMvoAggregate extends AbstractAgg
         e.setIsPropertyInventoryItemCreatedAtRemoved(c.getIsPropertyInventoryItemCreatedAtRemoved());
         e.setIsPropertyInventoryItemUpdatedByRemoved(c.getIsPropertyInventoryItemUpdatedByRemoved());
         e.setIsPropertyInventoryItemUpdatedAtRemoved(c.getIsPropertyInventoryItemUpdatedAtRemoved());
-        ((AbstractInventoryItemEntryMvoStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractInventoryItemEntryMvoEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
@@ -119,30 +119,30 @@ public abstract class AbstractInventoryItemEntryMvoAggregate extends AbstractAgg
 
     ////////////////////////
 
-    protected InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateCreated newInventoryItemEntryMvoStateCreated(Long version, String commandId, String requesterId) {
+    protected InventoryItemEntryMvoEvent.InventoryItemEntryMvoStateCreated newInventoryItemEntryMvoStateCreated(Long version, String commandId, String requesterId) {
         InventoryItemEntryMvoEventId stateEventId = new InventoryItemEntryMvoEventId(this.state.getInventoryItemEntryId(), version);
-        InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateCreated e = newInventoryItemEntryMvoStateCreated(stateEventId);
-        ((AbstractInventoryItemEntryMvoStateEvent)e).setCommandId(commandId);
+        InventoryItemEntryMvoEvent.InventoryItemEntryMvoStateCreated e = newInventoryItemEntryMvoStateCreated(stateEventId);
+        ((AbstractInventoryItemEntryMvoEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateMergePatched newInventoryItemEntryMvoStateMergePatched(Long version, String commandId, String requesterId) {
+    protected InventoryItemEntryMvoEvent.InventoryItemEntryMvoStateMergePatched newInventoryItemEntryMvoStateMergePatched(Long version, String commandId, String requesterId) {
         InventoryItemEntryMvoEventId stateEventId = new InventoryItemEntryMvoEventId(this.state.getInventoryItemEntryId(), version);
-        InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateMergePatched e = newInventoryItemEntryMvoStateMergePatched(stateEventId);
-        ((AbstractInventoryItemEntryMvoStateEvent)e).setCommandId(commandId);
+        InventoryItemEntryMvoEvent.InventoryItemEntryMvoStateMergePatched e = newInventoryItemEntryMvoStateMergePatched(stateEventId);
+        ((AbstractInventoryItemEntryMvoEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateCreated newInventoryItemEntryMvoStateCreated(InventoryItemEntryMvoEventId stateEventId) {
-        return new AbstractInventoryItemEntryMvoStateEvent.SimpleInventoryItemEntryMvoStateCreated(stateEventId);
+    protected InventoryItemEntryMvoEvent.InventoryItemEntryMvoStateCreated newInventoryItemEntryMvoStateCreated(InventoryItemEntryMvoEventId stateEventId) {
+        return new AbstractInventoryItemEntryMvoEvent.SimpleInventoryItemEntryMvoStateCreated(stateEventId);
     }
 
-    protected InventoryItemEntryMvoStateEvent.InventoryItemEntryMvoStateMergePatched newInventoryItemEntryMvoStateMergePatched(InventoryItemEntryMvoEventId stateEventId) {
-        return new AbstractInventoryItemEntryMvoStateEvent.SimpleInventoryItemEntryMvoStateMergePatched(stateEventId);
+    protected InventoryItemEntryMvoEvent.InventoryItemEntryMvoStateMergePatched newInventoryItemEntryMvoStateMergePatched(InventoryItemEntryMvoEventId stateEventId) {
+        return new AbstractInventoryItemEntryMvoEvent.SimpleInventoryItemEntryMvoStateMergePatched(stateEventId);
     }
 
     public static class SimpleInventoryItemEntryMvoAggregate extends AbstractInventoryItemEntryMvoAggregate

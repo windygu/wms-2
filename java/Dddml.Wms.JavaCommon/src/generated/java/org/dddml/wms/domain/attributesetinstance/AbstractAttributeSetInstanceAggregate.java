@@ -28,7 +28,7 @@ public abstract class AbstractAttributeSetInstanceAggregate extends AbstractAggr
     public void create(AttributeSetInstanceCommand.CreateAttributeSetInstance c)
     {
         if (c.getVersion() == null) { c.setVersion(AttributeSetInstanceState.VERSION_NULL); }
-        AttributeSetInstanceStateEvent e = map(c);
+        AttributeSetInstanceEvent e = map(c);
         apply(e);
     }
 
@@ -43,9 +43,9 @@ public abstract class AbstractAttributeSetInstanceAggregate extends AbstractAggr
         changes.add(e);
     }
 
-    protected AttributeSetInstanceStateEvent map(AttributeSetInstanceCommand.CreateAttributeSetInstance c) {
+    protected AttributeSetInstanceEvent map(AttributeSetInstanceCommand.CreateAttributeSetInstance c) {
         AttributeSetInstanceEventId stateEventId = new AttributeSetInstanceEventId(c.getAttributeSetInstanceId(), c.getVersion());
-        AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated e = newAttributeSetInstanceStateCreated(stateEventId);
+        AttributeSetInstanceEvent.AttributeSetInstanceStateCreated e = newAttributeSetInstanceStateCreated(stateEventId);
         e.setAttributeSetId(c.getAttributeSetId());
         e.setOrganizationId(c.getOrganizationId());
         e.setReferenceId(c.getReferenceId());
@@ -114,7 +114,7 @@ public abstract class AbstractAttributeSetInstanceAggregate extends AbstractAggr
         e.set_F_C20_4_(c.get_F_C20_4_());
         e.set_F_C50_4_(c.get_F_C50_4_());
         e.setActive(c.getActive());
-        ((AbstractAttributeSetInstanceStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractAttributeSetInstanceEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
@@ -123,17 +123,17 @@ public abstract class AbstractAttributeSetInstanceAggregate extends AbstractAggr
 
     ////////////////////////
 
-    protected AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated newAttributeSetInstanceStateCreated(Long version, String commandId, String requesterId) {
+    protected AttributeSetInstanceEvent.AttributeSetInstanceStateCreated newAttributeSetInstanceStateCreated(Long version, String commandId, String requesterId) {
         AttributeSetInstanceEventId stateEventId = new AttributeSetInstanceEventId(this.state.getAttributeSetInstanceId(), version);
-        AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated e = newAttributeSetInstanceStateCreated(stateEventId);
-        ((AbstractAttributeSetInstanceStateEvent)e).setCommandId(commandId);
+        AttributeSetInstanceEvent.AttributeSetInstanceStateCreated e = newAttributeSetInstanceStateCreated(stateEventId);
+        ((AbstractAttributeSetInstanceEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected AttributeSetInstanceStateEvent.AttributeSetInstanceStateCreated newAttributeSetInstanceStateCreated(AttributeSetInstanceEventId stateEventId) {
-        return new AbstractAttributeSetInstanceStateEvent.SimpleAttributeSetInstanceStateCreated(stateEventId);
+    protected AttributeSetInstanceEvent.AttributeSetInstanceStateCreated newAttributeSetInstanceStateCreated(AttributeSetInstanceEventId stateEventId) {
+        return new AbstractAttributeSetInstanceEvent.SimpleAttributeSetInstanceStateCreated(stateEventId);
     }
 
     public static class SimpleAttributeSetInstanceAggregate extends AbstractAttributeSetInstanceAggregate

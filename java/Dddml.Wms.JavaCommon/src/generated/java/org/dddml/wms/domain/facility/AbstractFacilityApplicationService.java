@@ -86,19 +86,19 @@ public abstract class AbstractFacilityApplicationService implements FacilityAppl
         return getStateQueryRepository().getCount(filter);
     }
 
-    public FacilityStateEvent getStateEvent(String facilityId, long version) {
-        FacilityStateEvent e = (FacilityStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(facilityId), version);
+    public FacilityEvent getEvent(String facilityId, long version) {
+        FacilityEvent e = (FacilityEvent)getEventStore().getEvent(toEventStoreAggregateId(facilityId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(facilityId, 0);
+            return getEvent(facilityId, 0);
         }
         return e;
     }
 
     public FacilityState getHistoryState(String facilityId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractFacilityStateEvent.class, toEventStoreAggregateId(facilityId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractFacilityEvent.class, toEventStoreAggregateId(facilityId), version - 1);
         return new AbstractFacilityState.SimpleFacilityState(eventStream.getEvents());
     }
 
@@ -137,7 +137,7 @@ public abstract class AbstractFacilityApplicationService implements FacilityAppl
         }
     }
 
-    public void initialize(FacilityStateEvent.FacilityStateCreated stateCreated) {
+    public void initialize(FacilityEvent.FacilityStateCreated stateCreated) {
         String aggregateId = stateCreated.getFacilityEventId().getFacilityId();
         FacilityState state = new AbstractFacilityState.SimpleFacilityState();
         state.setFacilityId(aggregateId);
@@ -155,9 +155,9 @@ public abstract class AbstractFacilityApplicationService implements FacilityAppl
         if (command.getVersion() == null) { command.setVersion(FacilityState.VERSION_NULL); }
         if (state.getVersion() != null && state.getVersion() > command.getVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractFacilityStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractFacilityEvent.class, eventStoreAggregateId, command.getVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

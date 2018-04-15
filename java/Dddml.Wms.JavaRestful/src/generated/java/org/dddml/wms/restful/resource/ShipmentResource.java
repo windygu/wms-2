@@ -231,7 +231,7 @@ public class ShipmentResource {
 
             String idObj = id;
             ShipmentStateEventDtoConverter dtoConverter = getShipmentStateEventDtoConverter();
-            return dtoConverter.toShipmentStateEventDto((AbstractShipmentStateEvent) shipmentApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toShipmentStateEventDto((AbstractShipmentEvent) shipmentApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

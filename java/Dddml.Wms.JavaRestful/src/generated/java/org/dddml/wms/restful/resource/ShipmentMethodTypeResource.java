@@ -181,7 +181,7 @@ public class ShipmentMethodTypeResource {
 
             String idObj = id;
             ShipmentMethodTypeStateEventDtoConverter dtoConverter = getShipmentMethodTypeStateEventDtoConverter();
-            return dtoConverter.toShipmentMethodTypeStateEventDto((AbstractShipmentMethodTypeStateEvent) shipmentMethodTypeApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toShipmentMethodTypeStateEventDto((AbstractShipmentMethodTypeEvent) shipmentMethodTypeApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

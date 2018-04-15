@@ -86,19 +86,19 @@ public abstract class AbstractUomConversionApplicationService implements UomConv
         return getStateQueryRepository().getCount(filter);
     }
 
-    public UomConversionStateEvent getStateEvent(UomConversionId uomConversionId, long version) {
-        UomConversionStateEvent e = (UomConversionStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(uomConversionId), version);
+    public UomConversionEvent getEvent(UomConversionId uomConversionId, long version) {
+        UomConversionEvent e = (UomConversionEvent)getEventStore().getEvent(toEventStoreAggregateId(uomConversionId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(uomConversionId, 0);
+            return getEvent(uomConversionId, 0);
         }
         return e;
     }
 
     public UomConversionState getHistoryState(UomConversionId uomConversionId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractUomConversionStateEvent.class, toEventStoreAggregateId(uomConversionId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractUomConversionEvent.class, toEventStoreAggregateId(uomConversionId), version - 1);
         return new AbstractUomConversionState.SimpleUomConversionState(eventStream.getEvents());
     }
 
@@ -137,7 +137,7 @@ public abstract class AbstractUomConversionApplicationService implements UomConv
         }
     }
 
-    public void initialize(UomConversionStateEvent.UomConversionStateCreated stateCreated) {
+    public void initialize(UomConversionEvent.UomConversionStateCreated stateCreated) {
         UomConversionId aggregateId = stateCreated.getUomConversionEventId().getUomConversionId();
         UomConversionState state = new AbstractUomConversionState.SimpleUomConversionState();
         state.setUomConversionId(aggregateId);
@@ -155,9 +155,9 @@ public abstract class AbstractUomConversionApplicationService implements UomConv
         if (command.getVersion() == null) { command.setVersion(UomConversionState.VERSION_NULL); }
         if (state.getVersion() != null && state.getVersion() > command.getVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractUomConversionStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractUomConversionEvent.class, eventStoreAggregateId, command.getVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

@@ -4,9 +4,9 @@ import org.dddml.wms.domain.inventoryitem.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
-import org.dddml.wms.domain.AbstractStateEvent;
+import org.dddml.wms.domain.AbstractEvent;
 
-public class InventoryItemEntryMvoStateEventDto extends AbstractStateEvent
+public class InventoryItemEntryMvoStateEventDto extends AbstractEvent
 {
 
     private InventoryItemEntryMvoEventId inventoryItemEntryMvoEventId;
@@ -380,7 +380,7 @@ public class InventoryItemEntryMvoStateEventDto extends AbstractStateEvent
 	public static class InventoryItemEntryMvoStateCreatedDto extends InventoryItemEntryMvoStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_CREATED;
         }
@@ -391,7 +391,7 @@ public class InventoryItemEntryMvoStateEventDto extends AbstractStateEvent
 	public static class InventoryItemEntryMvoStateMergePatchedDto extends InventoryItemEntryMvoStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_MERGE_PATCHED;
         }
@@ -402,7 +402,7 @@ public class InventoryItemEntryMvoStateEventDto extends AbstractStateEvent
 	public static class InventoryItemEntryMvoStateDeletedDto extends InventoryItemEntryMvoStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_DELETED;
         }

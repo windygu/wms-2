@@ -6,7 +6,7 @@ public class BoundedContextMetadata {
 
     public static final String NAME_REQUESTER_ID				= "requesterId";
     public static final String DISCRIMINATOR_COMMAND_TYPE		= "commandType";
-    public static final String DISCRIMINATOR_STATE_EVENT_TYPE	= "stateEventType";
+    public static final String DISCRIMINATOR_EVENT_TYPE	= "eventType";
     public static final String DISCRIMINATOR_COMMAND_ID			= "commandId";
 
     public static final String HTTP_SERVICE_ORDERS_QUERY_NAME			= "sort";

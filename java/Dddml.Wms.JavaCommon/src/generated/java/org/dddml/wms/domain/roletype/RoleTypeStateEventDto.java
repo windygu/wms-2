@@ -2,9 +2,9 @@ package org.dddml.wms.domain.roletype;
 
 import java.util.Date;
 import org.dddml.wms.domain.*;
-import org.dddml.wms.domain.AbstractStateEvent;
+import org.dddml.wms.domain.AbstractEvent;
 
-public class RoleTypeStateEventDto extends AbstractStateEvent
+public class RoleTypeStateEventDto extends AbstractEvent
 {
 
     private RoleTypeEventId roleTypeEventId;
@@ -138,7 +138,7 @@ public class RoleTypeStateEventDto extends AbstractStateEvent
 	public static class RoleTypeStateCreatedDto extends RoleTypeStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_CREATED;
         }
@@ -149,7 +149,7 @@ public class RoleTypeStateEventDto extends AbstractStateEvent
 	public static class RoleTypeStateMergePatchedDto extends RoleTypeStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_MERGE_PATCHED;
         }
@@ -160,7 +160,7 @@ public class RoleTypeStateEventDto extends AbstractStateEvent
 	public static class RoleTypeStateDeletedDto extends RoleTypeStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_DELETED;
         }

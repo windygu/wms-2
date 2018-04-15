@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.Event;
-import org.dddml.wms.domain.rejectionreason.RejectionReasonStateEvent.*;
+import org.dddml.wms.domain.rejectionreason.RejectionReasonEvent.*;
 
 public interface RejectionReasonState
 {
@@ -56,11 +56,11 @@ public interface RejectionReasonState
 
     void mutate(Event e);
 
-    void when(RejectionReasonStateEvent.RejectionReasonStateCreated e);
+    void when(RejectionReasonEvent.RejectionReasonStateCreated e);
 
-    void when(RejectionReasonStateEvent.RejectionReasonStateMergePatched e);
+    void when(RejectionReasonEvent.RejectionReasonStateMergePatched e);
 
-    void when(RejectionReasonStateEvent.RejectionReasonStateDeleted e);
+    void when(RejectionReasonEvent.RejectionReasonStateDeleted e);
     
 }
 

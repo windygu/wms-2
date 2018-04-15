@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.uom.UomStateEvent.*;
+import org.dddml.wms.domain.uom.UomEvent.*;
 
 public abstract class AbstractUomState implements UomState
 {
@@ -165,7 +165,7 @@ public abstract class AbstractUomState implements UomState
     public AbstractUomState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setUomId(((UomStateEvent) events.get(0)).getUomEventId().getUomId());
+            this.setUomId(((UomEvent) events.get(0)).getUomEventId().getUomId());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -285,10 +285,10 @@ public abstract class AbstractUomState implements UomState
     {
     }
 
-    protected void throwOnWrongEvent(UomStateEvent stateEvent)
+    protected void throwOnWrongEvent(UomEvent stateEvent)
     {
         String stateEntityId = this.getUomId(); // Aggregate Id
-        String eventEntityId = stateEvent.getUomEventId().getUomId(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        String eventEntityId = stateEvent.getUomEventId().getUomId(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

@@ -20,30 +20,30 @@ public class HibernatePickwaveEventStore extends AbstractHibernateEventStore
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractPickwaveStateEvent.class;
+        return AbstractPickwaveEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractPickwaveStateEvent.class;
+        Class supportedEventType = AbstractPickwaveEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         Long idObj = (Long) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractPickwaveStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractPickwaveEvent.class);
         criteria.add(Restrictions.eq("pickwaveEventId.pickwaveId", idObj));
         criteria.add(Restrictions.le("pickwaveEventId.version", version));
         criteria.addOrder(Order.asc("pickwaveEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractPickwaveStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractPickwaveEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractPickwaveStateEvent) es.get(es.size() - 1)).getPickwaveEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractPickwaveEvent) es.get(es.size() - 1)).getPickwaveEventId().getVersion());
         } else {
             //todo?
         }

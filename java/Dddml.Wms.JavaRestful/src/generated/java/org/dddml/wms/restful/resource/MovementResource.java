@@ -199,7 +199,7 @@ public class MovementResource {
 
             String idObj = id;
             MovementStateEventDtoConverter dtoConverter = getMovementStateEventDtoConverter();
-            return dtoConverter.toMovementStateEventDto((AbstractMovementStateEvent) movementApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toMovementStateEventDto((AbstractMovementEvent) movementApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

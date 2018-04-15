@@ -181,7 +181,7 @@ public class OrganizationStructureTypeResource {
 
             String idObj = id;
             OrganizationStructureTypeStateEventDtoConverter dtoConverter = getOrganizationStructureTypeStateEventDtoConverter();
-            return dtoConverter.toOrganizationStructureTypeStateEventDto((AbstractOrganizationStructureTypeStateEvent) organizationStructureTypeApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toOrganizationStructureTypeStateEventDto((AbstractOrganizationStructureTypeEvent) organizationStructureTypeApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

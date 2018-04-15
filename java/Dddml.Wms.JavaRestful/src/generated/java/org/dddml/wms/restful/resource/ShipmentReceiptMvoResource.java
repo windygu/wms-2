@@ -164,7 +164,7 @@ public class ShipmentReceiptMvoResource {
 
             ShipmentReceiptId idObj = ShipmentReceiptMvoResourceUtils.parseIdString(id);
             ShipmentReceiptMvoStateEventDtoConverter dtoConverter = getShipmentReceiptMvoStateEventDtoConverter();
-            return dtoConverter.toShipmentReceiptMvoStateEventDto((AbstractShipmentReceiptMvoStateEvent) shipmentReceiptMvoApplicationService.getStateEvent(idObj, version));
+            return dtoConverter.toShipmentReceiptMvoStateEventDto((AbstractShipmentReceiptMvoEvent) shipmentReceiptMvoApplicationService.getEvent(idObj, version));
 
         } catch (DomainError error) { throw error; } catch (Exception ex) { throw new DomainError("ExceptionCaught", ex); }
     }

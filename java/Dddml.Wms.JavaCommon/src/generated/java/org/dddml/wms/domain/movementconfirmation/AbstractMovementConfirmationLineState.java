@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.movementconfirmation.MovementConfirmationLineStateEvent.*;
+import org.dddml.wms.domain.movementconfirmation.MovementConfirmationLineEvent.*;
 
 public abstract class AbstractMovementConfirmationLineState implements MovementConfirmationLineState
 {
@@ -391,7 +391,7 @@ public abstract class AbstractMovementConfirmationLineState implements MovementC
     {
     }
 
-    protected void throwOnWrongEvent(MovementConfirmationLineStateEvent stateEvent)
+    protected void throwOnWrongEvent(MovementConfirmationLineEvent stateEvent)
     {
         String stateEntityIdMovementConfirmationDocumentNumber = this.getMovementConfirmationLineId().getMovementConfirmationDocumentNumber();
         String eventEntityIdMovementConfirmationDocumentNumber = stateEvent.getMovementConfirmationLineEventId().getMovementConfirmationDocumentNumber();

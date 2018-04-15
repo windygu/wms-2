@@ -31,7 +31,7 @@ public interface AttributeAliasMvoApplicationService
 
     long getCount(Criterion filter);
 
-    AttributeAliasMvoStateEvent getStateEvent(AttributeAliasId attributeAliasId, long version);
+    AttributeAliasMvoEvent getEvent(AttributeAliasId attributeAliasId, long version);
 
     AttributeAliasMvoState getHistoryState(AttributeAliasId attributeAliasId, long version);
 

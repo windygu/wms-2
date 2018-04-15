@@ -33,7 +33,7 @@ public interface MovementApplicationService
 
     long getCount(Criterion filter);
 
-    MovementStateEvent getStateEvent(String documentNumber, long version);
+    MovementEvent getEvent(String documentNumber, long version);
 
     MovementState getHistoryState(String documentNumber, long version);
 

@@ -21,20 +21,20 @@ public class HibernateShipmentPackageContentMvoEventStore extends AbstractHibern
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractShipmentPackageContentMvoStateEvent.class;
+        return AbstractShipmentPackageContentMvoEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractShipmentPackageContentMvoStateEvent.class;
+        Class supportedEventType = AbstractShipmentPackageContentMvoEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         ShipmentPackageContentId idObj = (ShipmentPackageContentId) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractShipmentPackageContentMvoStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractShipmentPackageContentMvoEvent.class);
         criteria.add(Restrictions.eq("shipmentPackageContentMvoEventId.shipmentPackageContentIdShipmentPackageIdShipmentId", idObj.getShipmentPackageId().getShipmentId()));
         criteria.add(Restrictions.eq("shipmentPackageContentMvoEventId.shipmentPackageContentIdShipmentPackageIdShipmentPackageSeqId", idObj.getShipmentPackageId().getShipmentPackageSeqId()));
         criteria.add(Restrictions.eq("shipmentPackageContentMvoEventId.shipmentPackageContentIdShipmentItemSeqId", idObj.getShipmentItemSeqId()));
@@ -42,11 +42,11 @@ public class HibernateShipmentPackageContentMvoEventStore extends AbstractHibern
         criteria.addOrder(Order.asc("shipmentPackageContentMvoEventId.shipmentPackageVersion"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractShipmentPackageContentMvoStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractShipmentPackageContentMvoEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractShipmentPackageContentMvoStateEvent) es.get(es.size() - 1)).getShipmentPackageContentMvoEventId().getShipmentPackageVersion());
+            eventStream.setSteamVersion(((AbstractShipmentPackageContentMvoEvent) es.get(es.size() - 1)).getShipmentPackageContentMvoEventId().getShipmentPackageVersion());
         } else {
             //todo?
         }

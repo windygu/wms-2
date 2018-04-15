@@ -20,20 +20,20 @@ public class HibernateSupplierProductEventStore extends AbstractHibernateEventSt
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractSupplierProductStateEvent.class;
+        return AbstractSupplierProductEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractSupplierProductStateEvent.class;
+        Class supportedEventType = AbstractSupplierProductEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         SupplierProductId idObj = (SupplierProductId) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractSupplierProductStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractSupplierProductEvent.class);
         criteria.add(Restrictions.eq("supplierProductEventId.supplierProductIdProductId", idObj.getProductId()));
         criteria.add(Restrictions.eq("supplierProductEventId.supplierProductIdPartyId", idObj.getPartyId()));
         criteria.add(Restrictions.eq("supplierProductEventId.supplierProductIdCurrencyUomId", idObj.getCurrencyUomId()));
@@ -42,11 +42,11 @@ public class HibernateSupplierProductEventStore extends AbstractHibernateEventSt
         criteria.addOrder(Order.asc("supplierProductEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractSupplierProductStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractSupplierProductEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractSupplierProductStateEvent) es.get(es.size() - 1)).getSupplierProductEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractSupplierProductEvent) es.get(es.size() - 1)).getSupplierProductEventId().getVersion());
         } else {
             //todo?
         }

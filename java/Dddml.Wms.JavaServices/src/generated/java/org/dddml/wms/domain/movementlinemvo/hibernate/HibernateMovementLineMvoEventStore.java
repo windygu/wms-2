@@ -22,31 +22,31 @@ public class HibernateMovementLineMvoEventStore extends AbstractHibernateEventSt
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractMovementLineMvoStateEvent.class;
+        return AbstractMovementLineMvoEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractMovementLineMvoStateEvent.class;
+        Class supportedEventType = AbstractMovementLineMvoEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         MovementLineId idObj = (MovementLineId) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractMovementLineMvoStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractMovementLineMvoEvent.class);
         criteria.add(Restrictions.eq("movementLineMvoEventId.movementLineIdMovementDocumentNumber", idObj.getMovementDocumentNumber()));
         criteria.add(Restrictions.eq("movementLineMvoEventId.movementLineIdLineNumber", idObj.getLineNumber()));
         criteria.add(Restrictions.le("movementLineMvoEventId.movementVersion", version));
         criteria.addOrder(Order.asc("movementLineMvoEventId.movementVersion"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractMovementLineMvoStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractMovementLineMvoEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractMovementLineMvoStateEvent) es.get(es.size() - 1)).getMovementLineMvoEventId().getMovementVersion());
+            eventStream.setSteamVersion(((AbstractMovementLineMvoEvent) es.get(es.size() - 1)).getMovementLineMvoEventId().getMovementVersion());
         } else {
             //todo?
         }

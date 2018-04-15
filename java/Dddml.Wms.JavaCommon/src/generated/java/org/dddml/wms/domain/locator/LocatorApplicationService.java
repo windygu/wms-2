@@ -30,7 +30,7 @@ public interface LocatorApplicationService
 
     long getCount(Criterion filter);
 
-    LocatorStateEvent getStateEvent(String locatorId, long version);
+    LocatorEvent getEvent(String locatorId, long version);
 
     LocatorState getHistoryState(String locatorId, long version);
 

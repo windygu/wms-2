@@ -30,7 +30,7 @@ public interface ContactMechApplicationService
 
     long getCount(Criterion filter);
 
-    ContactMechStateEvent getStateEvent(String contactMechId, long version);
+    ContactMechEvent getEvent(String contactMechId, long version);
 
     ContactMechState getHistoryState(String contactMechId, long version);
 

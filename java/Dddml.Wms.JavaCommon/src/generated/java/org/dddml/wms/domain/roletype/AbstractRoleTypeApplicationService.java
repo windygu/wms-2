@@ -86,19 +86,19 @@ public abstract class AbstractRoleTypeApplicationService implements RoleTypeAppl
         return getStateQueryRepository().getCount(filter);
     }
 
-    public RoleTypeStateEvent getStateEvent(String roleTypeId, long version) {
-        RoleTypeStateEvent e = (RoleTypeStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(roleTypeId), version);
+    public RoleTypeEvent getEvent(String roleTypeId, long version) {
+        RoleTypeEvent e = (RoleTypeEvent)getEventStore().getEvent(toEventStoreAggregateId(roleTypeId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(roleTypeId, 0);
+            return getEvent(roleTypeId, 0);
         }
         return e;
     }
 
     public RoleTypeState getHistoryState(String roleTypeId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractRoleTypeStateEvent.class, toEventStoreAggregateId(roleTypeId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractRoleTypeEvent.class, toEventStoreAggregateId(roleTypeId), version - 1);
         return new AbstractRoleTypeState.SimpleRoleTypeState(eventStream.getEvents());
     }
 
@@ -137,7 +137,7 @@ public abstract class AbstractRoleTypeApplicationService implements RoleTypeAppl
         }
     }
 
-    public void initialize(RoleTypeStateEvent.RoleTypeStateCreated stateCreated) {
+    public void initialize(RoleTypeEvent.RoleTypeStateCreated stateCreated) {
         String aggregateId = stateCreated.getRoleTypeEventId().getRoleTypeId();
         RoleTypeState state = new AbstractRoleTypeState.SimpleRoleTypeState();
         state.setRoleTypeId(aggregateId);
@@ -155,9 +155,9 @@ public abstract class AbstractRoleTypeApplicationService implements RoleTypeAppl
         if (command.getVersion() == null) { command.setVersion(RoleTypeState.VERSION_NULL); }
         if (state.getVersion() != null && state.getVersion() > command.getVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractRoleTypeStateEvent.class, eventStoreAggregateId, command.getVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractRoleTypeEvent.class, eventStoreAggregateId, command.getVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }

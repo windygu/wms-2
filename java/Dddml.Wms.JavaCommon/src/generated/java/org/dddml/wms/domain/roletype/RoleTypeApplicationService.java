@@ -30,7 +30,7 @@ public interface RoleTypeApplicationService
 
     long getCount(Criterion filter);
 
-    RoleTypeStateEvent getStateEvent(String roleTypeId, long version);
+    RoleTypeEvent getEvent(String roleTypeId, long version);
 
     RoleTypeState getHistoryState(String roleTypeId, long version);
 

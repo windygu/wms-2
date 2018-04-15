@@ -9,13 +9,13 @@ public final class PicklistRoleMvoMetadata {
     private PicklistRoleMvoMetadata() {
     }
 
-    String PROPERTY_NAME_VERSION      = "picklistVersion";
-    String PROPERTY_NAME_ACTIVE       = "active";
-    String PROPERTY_NAME_DELETED      = "deleted";
-    String PROPERTY_NAME_CREATED_BY   = "createdByUserLogin";
-    String PROPERTY_NAME_CREATED_AT   = "createdAt";
-    String PROPERTY_NAME_UPDATED_BY   = "lastModifiedByUserLogin";
-    String PROPERTY_NAME_UPDATED_AT   = "updatedAt";
+    public static final String PROPERTY_NAME_VERSION      = "picklistVersion";
+    public static final String PROPERTY_NAME_ACTIVE       = "active";
+    public static final String PROPERTY_NAME_DELETED      = "deleted";
+    public static final String PROPERTY_NAME_CREATED_BY   = "createdByUserLogin";
+    public static final String PROPERTY_NAME_CREATED_AT   = "createdAt";
+    public static final String PROPERTY_NAME_UPDATED_BY   = "lastModifiedByUserLogin";
+    public static final String PROPERTY_NAME_UPDATED_AT   = "updatedAt";
 
     public static final String[] propertyNames = new String[] {
             "createdByUserLogin",

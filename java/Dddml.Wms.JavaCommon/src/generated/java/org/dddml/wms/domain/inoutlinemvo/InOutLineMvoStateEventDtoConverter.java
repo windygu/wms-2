@@ -9,22 +9,22 @@ import org.dddml.wms.specialization.*;
 
 public class InOutLineMvoStateEventDtoConverter {
 
-    public InOutLineMvoStateEventDto toInOutLineMvoStateEventDto(AbstractInOutLineMvoStateEvent stateEvent) {
-        if (stateEvent instanceof AbstractInOutLineMvoStateEvent.AbstractInOutLineMvoStateCreated) {
-            InOutLineMvoStateEvent.InOutLineMvoStateCreated e = (InOutLineMvoStateEvent.InOutLineMvoStateCreated) stateEvent;
+    public InOutLineMvoStateEventDto toInOutLineMvoStateEventDto(AbstractInOutLineMvoEvent stateEvent) {
+        if (stateEvent instanceof AbstractInOutLineMvoEvent.AbstractInOutLineMvoStateCreated) {
+            InOutLineMvoEvent.InOutLineMvoStateCreated e = (InOutLineMvoEvent.InOutLineMvoStateCreated) stateEvent;
             return toInOutLineMvoStateCreatedDto(e);
-        } else if (stateEvent instanceof AbstractInOutLineMvoStateEvent.AbstractInOutLineMvoStateMergePatched) {
-            InOutLineMvoStateEvent.InOutLineMvoStateMergePatched e = (InOutLineMvoStateEvent.InOutLineMvoStateMergePatched) stateEvent;
+        } else if (stateEvent instanceof AbstractInOutLineMvoEvent.AbstractInOutLineMvoStateMergePatched) {
+            InOutLineMvoEvent.InOutLineMvoStateMergePatched e = (InOutLineMvoEvent.InOutLineMvoStateMergePatched) stateEvent;
             return toInOutLineMvoStateMergePatchedDto(e);
-        } else if (stateEvent instanceof AbstractInOutLineMvoStateEvent.AbstractInOutLineMvoStateDeleted) {
-            InOutLineMvoStateEvent.InOutLineMvoStateDeleted e = (InOutLineMvoStateEvent.InOutLineMvoStateDeleted) stateEvent;
+        } else if (stateEvent instanceof AbstractInOutLineMvoEvent.AbstractInOutLineMvoStateDeleted) {
+            InOutLineMvoEvent.InOutLineMvoStateDeleted e = (InOutLineMvoEvent.InOutLineMvoStateDeleted) stateEvent;
             return toInOutLineMvoStateDeletedDto(e);
         }
 
-        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getStateEventType()));
+        throw DomainError.named("invalidStateEventType", String.format("Invalid state event type: %1$s", stateEvent.getEventType()));
     }
 
-    public InOutLineMvoStateEventDto.InOutLineMvoStateCreatedDto toInOutLineMvoStateCreatedDto(InOutLineMvoStateEvent.InOutLineMvoStateCreated e) {
+    public InOutLineMvoStateEventDto.InOutLineMvoStateCreatedDto toInOutLineMvoStateCreatedDto(InOutLineMvoEvent.InOutLineMvoStateCreated e) {
         InOutLineMvoStateEventDto.InOutLineMvoStateCreatedDto dto = new InOutLineMvoStateEventDto.InOutLineMvoStateCreatedDto();
         dto.setInOutLineMvoEventId(e.getInOutLineMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -81,7 +81,7 @@ public class InOutLineMvoStateEventDtoConverter {
         return dto;
     }
 
-    public InOutLineMvoStateEventDto.InOutLineMvoStateMergePatchedDto toInOutLineMvoStateMergePatchedDto(InOutLineMvoStateEvent.InOutLineMvoStateMergePatched e) {
+    public InOutLineMvoStateEventDto.InOutLineMvoStateMergePatchedDto toInOutLineMvoStateMergePatchedDto(InOutLineMvoEvent.InOutLineMvoStateMergePatched e) {
         InOutLineMvoStateEventDto.InOutLineMvoStateMergePatchedDto dto = new InOutLineMvoStateEventDto.InOutLineMvoStateMergePatchedDto();
         dto.setInOutLineMvoEventId(e.getInOutLineMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());
@@ -187,7 +187,7 @@ public class InOutLineMvoStateEventDtoConverter {
     }
 
 
-    public InOutLineMvoStateEventDto.InOutLineMvoStateDeletedDto toInOutLineMvoStateDeletedDto(InOutLineMvoStateEvent.InOutLineMvoStateDeleted e) {
+    public InOutLineMvoStateEventDto.InOutLineMvoStateDeletedDto toInOutLineMvoStateDeletedDto(InOutLineMvoEvent.InOutLineMvoStateDeleted e) {
         InOutLineMvoStateEventDto.InOutLineMvoStateDeletedDto dto = new InOutLineMvoStateEventDto.InOutLineMvoStateDeletedDto();
         dto.setInOutLineMvoEventId(e.getInOutLineMvoEventId());
         dto.setCreatedAt(e.getCreatedAt());

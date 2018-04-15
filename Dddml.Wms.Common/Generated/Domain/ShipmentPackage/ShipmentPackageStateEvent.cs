@@ -58,17 +58,17 @@ namespace Dddml.Wms.Domain.ShipmentPackage
 			}
 		}
 
-        public virtual bool StateEventReadOnly { get; set; }
+        public virtual bool EventReadOnly { get; set; }
 
         bool IShipmentPackageStateEvent.ReadOnly
         {
             get
             {
-                return this.StateEventReadOnly;
+                return this.EventReadOnly;
             }
             set
             {
-                this.StateEventReadOnly = value;
+                this.EventReadOnly = value;
             }
         }
 
@@ -155,7 +155,7 @@ namespace Dddml.Wms.Domain.ShipmentPackage
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._shipmentPackageContentEvents.Values;
                 }
@@ -251,7 +251,7 @@ namespace Dddml.Wms.Domain.ShipmentPackage
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._shipmentPackageContentEvents.Values;
                 }
@@ -343,7 +343,7 @@ namespace Dddml.Wms.Domain.ShipmentPackage
         {
             get
             {
-                if (!StateEventReadOnly)
+                if (!EventReadOnly)
                 {
                     return this._shipmentPackageContentEvents.Values;
                 }

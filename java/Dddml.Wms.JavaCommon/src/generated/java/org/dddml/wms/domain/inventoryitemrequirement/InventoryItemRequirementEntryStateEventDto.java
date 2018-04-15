@@ -5,9 +5,9 @@ import org.dddml.wms.domain.inventoryprtriggered.*;
 import java.util.Date;
 import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.*;
-import org.dddml.wms.domain.AbstractStateEvent;
+import org.dddml.wms.domain.AbstractEvent;
 
-public class InventoryItemRequirementEntryStateEventDto extends AbstractStateEvent
+public class InventoryItemRequirementEntryStateEventDto extends AbstractEvent
 {
 
     private InventoryItemRequirementEntryEventId inventoryItemRequirementEntryEventId;
@@ -103,7 +103,7 @@ public class InventoryItemRequirementEntryStateEventDto extends AbstractStateEve
 	public static class InventoryItemRequirementEntryStateCreatedDto extends InventoryItemRequirementEntryStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_CREATED;
         }
@@ -114,7 +114,7 @@ public class InventoryItemRequirementEntryStateEventDto extends AbstractStateEve
 	public static class InventoryItemRequirementEntryStateMergePatchedDto extends InventoryItemRequirementEntryStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_MERGE_PATCHED;
         }
@@ -125,7 +125,7 @@ public class InventoryItemRequirementEntryStateEventDto extends AbstractStateEve
 	public static class InventoryItemRequirementEntryStateRemovedDto extends InventoryItemRequirementEntryStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_REMOVED;
         }

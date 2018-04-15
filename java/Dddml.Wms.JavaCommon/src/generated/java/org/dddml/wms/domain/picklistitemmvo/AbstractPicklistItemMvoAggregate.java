@@ -28,19 +28,19 @@ public abstract class AbstractPicklistItemMvoAggregate extends AbstractAggregate
     public void create(PicklistItemMvoCommand.CreatePicklistItemMvo c)
     {
         if (c.getPicklistBinVersion() == null) { c.setPicklistBinVersion(PicklistItemMvoState.VERSION_NULL); }
-        PicklistItemMvoStateEvent e = map(c);
+        PicklistItemMvoEvent e = map(c);
         apply(e);
     }
 
     public void mergePatch(PicklistItemMvoCommand.MergePatchPicklistItemMvo c)
     {
-        PicklistItemMvoStateEvent e = map(c);
+        PicklistItemMvoEvent e = map(c);
         apply(e);
     }
 
     public void delete(PicklistItemMvoCommand.DeletePicklistItemMvo c)
     {
-        PicklistItemMvoStateEvent e = map(c);
+        PicklistItemMvoEvent e = map(c);
         apply(e);
     }
 
@@ -55,9 +55,9 @@ public abstract class AbstractPicklistItemMvoAggregate extends AbstractAggregate
         changes.add(e);
     }
 
-    protected PicklistItemMvoStateEvent map(PicklistItemMvoCommand.CreatePicklistItemMvo c) {
+    protected PicklistItemMvoEvent map(PicklistItemMvoCommand.CreatePicklistItemMvo c) {
         PicklistItemMvoEventId stateEventId = new PicklistItemMvoEventId(c.getPicklistBinPicklistItemId(), c.getPicklistBinVersion());
-        PicklistItemMvoStateEvent.PicklistItemMvoStateCreated e = newPicklistItemMvoStateCreated(stateEventId);
+        PicklistItemMvoEvent.PicklistItemMvoStateCreated e = newPicklistItemMvoStateCreated(stateEventId);
         e.setItemStatusId(c.getItemStatusId());
         e.setQuantity(c.getQuantity());
         e.setVersion(c.getVersion());
@@ -72,15 +72,15 @@ public abstract class AbstractPicklistItemMvoAggregate extends AbstractAggregate
         e.setPicklistBinUpdatedAt(c.getPicklistBinUpdatedAt());
         e.setPicklistBinActive(c.getPicklistBinActive());
         e.setPicklistBinDeleted(c.getPicklistBinDeleted());
-        ((AbstractPicklistItemMvoStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractPicklistItemMvoEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected PicklistItemMvoStateEvent map(PicklistItemMvoCommand.MergePatchPicklistItemMvo c) {
+    protected PicklistItemMvoEvent map(PicklistItemMvoCommand.MergePatchPicklistItemMvo c) {
         PicklistItemMvoEventId stateEventId = new PicklistItemMvoEventId(c.getPicklistBinPicklistItemId(), c.getPicklistBinVersion());
-        PicklistItemMvoStateEvent.PicklistItemMvoStateMergePatched e = newPicklistItemMvoStateMergePatched(stateEventId);
+        PicklistItemMvoEvent.PicklistItemMvoStateMergePatched e = newPicklistItemMvoStateMergePatched(stateEventId);
         e.setItemStatusId(c.getItemStatusId());
         e.setQuantity(c.getQuantity());
         e.setVersion(c.getVersion());
@@ -109,16 +109,16 @@ public abstract class AbstractPicklistItemMvoAggregate extends AbstractAggregate
         e.setIsPropertyPicklistBinUpdatedAtRemoved(c.getIsPropertyPicklistBinUpdatedAtRemoved());
         e.setIsPropertyPicklistBinActiveRemoved(c.getIsPropertyPicklistBinActiveRemoved());
         e.setIsPropertyPicklistBinDeletedRemoved(c.getIsPropertyPicklistBinDeletedRemoved());
-        ((AbstractPicklistItemMvoStateEvent)e).setCommandId(c.getCommandId());
+        ((AbstractPicklistItemMvoEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected PicklistItemMvoStateEvent map(PicklistItemMvoCommand.DeletePicklistItemMvo c) {
+    protected PicklistItemMvoEvent map(PicklistItemMvoCommand.DeletePicklistItemMvo c) {
         PicklistItemMvoEventId stateEventId = new PicklistItemMvoEventId(c.getPicklistBinPicklistItemId(), c.getPicklistBinVersion());
-        PicklistItemMvoStateEvent.PicklistItemMvoStateDeleted e = newPicklistItemMvoStateDeleted(stateEventId);
-        ((AbstractPicklistItemMvoStateEvent)e).setCommandId(c.getCommandId());
+        PicklistItemMvoEvent.PicklistItemMvoStateDeleted e = newPicklistItemMvoStateDeleted(stateEventId);
+        ((AbstractPicklistItemMvoEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
@@ -127,44 +127,44 @@ public abstract class AbstractPicklistItemMvoAggregate extends AbstractAggregate
 
     ////////////////////////
 
-    protected PicklistItemMvoStateEvent.PicklistItemMvoStateCreated newPicklistItemMvoStateCreated(Long version, String commandId, String requesterId) {
+    protected PicklistItemMvoEvent.PicklistItemMvoStateCreated newPicklistItemMvoStateCreated(Long version, String commandId, String requesterId) {
         PicklistItemMvoEventId stateEventId = new PicklistItemMvoEventId(this.state.getPicklistBinPicklistItemId(), version);
-        PicklistItemMvoStateEvent.PicklistItemMvoStateCreated e = newPicklistItemMvoStateCreated(stateEventId);
-        ((AbstractPicklistItemMvoStateEvent)e).setCommandId(commandId);
+        PicklistItemMvoEvent.PicklistItemMvoStateCreated e = newPicklistItemMvoStateCreated(stateEventId);
+        ((AbstractPicklistItemMvoEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected PicklistItemMvoStateEvent.PicklistItemMvoStateMergePatched newPicklistItemMvoStateMergePatched(Long version, String commandId, String requesterId) {
+    protected PicklistItemMvoEvent.PicklistItemMvoStateMergePatched newPicklistItemMvoStateMergePatched(Long version, String commandId, String requesterId) {
         PicklistItemMvoEventId stateEventId = new PicklistItemMvoEventId(this.state.getPicklistBinPicklistItemId(), version);
-        PicklistItemMvoStateEvent.PicklistItemMvoStateMergePatched e = newPicklistItemMvoStateMergePatched(stateEventId);
-        ((AbstractPicklistItemMvoStateEvent)e).setCommandId(commandId);
+        PicklistItemMvoEvent.PicklistItemMvoStateMergePatched e = newPicklistItemMvoStateMergePatched(stateEventId);
+        ((AbstractPicklistItemMvoEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected PicklistItemMvoStateEvent.PicklistItemMvoStateDeleted newPicklistItemMvoStateDeleted(Long version, String commandId, String requesterId) {
+    protected PicklistItemMvoEvent.PicklistItemMvoStateDeleted newPicklistItemMvoStateDeleted(Long version, String commandId, String requesterId) {
         PicklistItemMvoEventId stateEventId = new PicklistItemMvoEventId(this.state.getPicklistBinPicklistItemId(), version);
-        PicklistItemMvoStateEvent.PicklistItemMvoStateDeleted e = newPicklistItemMvoStateDeleted(stateEventId);
-        ((AbstractPicklistItemMvoStateEvent)e).setCommandId(commandId);
+        PicklistItemMvoEvent.PicklistItemMvoStateDeleted e = newPicklistItemMvoStateDeleted(stateEventId);
+        ((AbstractPicklistItemMvoEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
         e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
         return e;
     }
 
-    protected PicklistItemMvoStateEvent.PicklistItemMvoStateCreated newPicklistItemMvoStateCreated(PicklistItemMvoEventId stateEventId) {
-        return new AbstractPicklistItemMvoStateEvent.SimplePicklistItemMvoStateCreated(stateEventId);
+    protected PicklistItemMvoEvent.PicklistItemMvoStateCreated newPicklistItemMvoStateCreated(PicklistItemMvoEventId stateEventId) {
+        return new AbstractPicklistItemMvoEvent.SimplePicklistItemMvoStateCreated(stateEventId);
     }
 
-    protected PicklistItemMvoStateEvent.PicklistItemMvoStateMergePatched newPicklistItemMvoStateMergePatched(PicklistItemMvoEventId stateEventId) {
-        return new AbstractPicklistItemMvoStateEvent.SimplePicklistItemMvoStateMergePatched(stateEventId);
+    protected PicklistItemMvoEvent.PicklistItemMvoStateMergePatched newPicklistItemMvoStateMergePatched(PicklistItemMvoEventId stateEventId) {
+        return new AbstractPicklistItemMvoEvent.SimplePicklistItemMvoStateMergePatched(stateEventId);
     }
 
-    protected PicklistItemMvoStateEvent.PicklistItemMvoStateDeleted newPicklistItemMvoStateDeleted(PicklistItemMvoEventId stateEventId)
+    protected PicklistItemMvoEvent.PicklistItemMvoStateDeleted newPicklistItemMvoStateDeleted(PicklistItemMvoEventId stateEventId)
     {
-        return new AbstractPicklistItemMvoStateEvent.SimplePicklistItemMvoStateDeleted(stateEventId);
+        return new AbstractPicklistItemMvoEvent.SimplePicklistItemMvoStateDeleted(stateEventId);
     }
 
     public static class SimplePicklistItemMvoAggregate extends AbstractPicklistItemMvoAggregate

@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
-import org.dddml.wms.domain.movementconfirmation.MovementConfirmationStateEvent.*;
+import org.dddml.wms.domain.movementconfirmation.MovementConfirmationEvent.*;
 
 public abstract class AbstractMovementConfirmationState implements MovementConfirmationState, Saveable
 {
@@ -238,7 +238,7 @@ public abstract class AbstractMovementConfirmationState implements MovementConfi
     public AbstractMovementConfirmationState(List<Event> events) {
         this(true);
         if (events != null && events.size() > 0) {
-            this.setDocumentNumber(((MovementConfirmationStateEvent) events.get(0)).getMovementConfirmationEventId().getDocumentNumber());
+            this.setDocumentNumber(((MovementConfirmationEvent) events.get(0)).getMovementConfirmationEventId().getDocumentNumber());
             for (Event e : events) {
                 mutate(e);
                 this.setVersion(this.getVersion() + 1);
@@ -294,7 +294,7 @@ public abstract class AbstractMovementConfirmationState implements MovementConfi
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
-        for (MovementConfirmationLineStateEvent.MovementConfirmationLineStateCreated innerEvent : e.getMovementConfirmationLineEvents()) {
+        for (MovementConfirmationLineEvent.MovementConfirmationLineStateCreated innerEvent : e.getMovementConfirmationLineEvents()) {
             MovementConfirmationLineState innerState = this.getMovementConfirmationLines().get(innerEvent.getMovementConfirmationLineEventId().getLineNumber());
             innerState.mutate(innerEvent);
         }
@@ -407,12 +407,12 @@ public abstract class AbstractMovementConfirmationState implements MovementConfi
         this.setUpdatedBy(e.getCreatedBy());
         this.setUpdatedAt(e.getCreatedAt());
 
-        for (MovementConfirmationLineStateEvent innerEvent : e.getMovementConfirmationLineEvents()) {
+        for (MovementConfirmationLineEvent innerEvent : e.getMovementConfirmationLineEvents()) {
             MovementConfirmationLineState innerState = this.getMovementConfirmationLines().get(innerEvent.getMovementConfirmationLineEventId().getLineNumber());
             innerState.mutate(innerEvent);
-            if (innerEvent instanceof MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved)
+            if (innerEvent instanceof MovementConfirmationLineEvent.MovementConfirmationLineStateRemoved)
             {
-                //MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved removed = (MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved)innerEvent;
+                //MovementConfirmationLineEvent.MovementConfirmationLineStateRemoved removed = (MovementConfirmationLineEvent.MovementConfirmationLineStateRemoved)innerEvent;
                 this.getMovementConfirmationLines().remove(innerState);
             }
         }
@@ -430,7 +430,7 @@ public abstract class AbstractMovementConfirmationState implements MovementConfi
         {
             this.getMovementConfirmationLines().remove(innerState);
         
-            MovementConfirmationLineStateEvent.MovementConfirmationLineStateRemoved innerE = e.newMovementConfirmationLineStateRemoved(innerState.getLineNumber());
+            MovementConfirmationLineEvent.MovementConfirmationLineStateRemoved innerE = e.newMovementConfirmationLineStateRemoved(innerState.getLineNumber());
             innerE.setCreatedAt(e.getCreatedAt());
             innerE.setCreatedBy(e.getCreatedBy());
             innerState.when(innerE);
@@ -444,10 +444,10 @@ public abstract class AbstractMovementConfirmationState implements MovementConfi
 
     }
 
-    protected void throwOnWrongEvent(MovementConfirmationStateEvent stateEvent)
+    protected void throwOnWrongEvent(MovementConfirmationEvent stateEvent)
     {
         String stateEntityId = this.getDocumentNumber(); // Aggregate Id
-        String eventEntityId = stateEvent.getMovementConfirmationEventId().getDocumentNumber(); // EntityBase.Aggregate.GetStateEventIdPropertyIdName();
+        String eventEntityId = stateEvent.getMovementConfirmationEventId().getDocumentNumber(); // EntityBase.Aggregate.GetEventIdPropertyIdName();
         if (!stateEntityId.equals(eventEntityId))
         {
             throw DomainError.named("mutateWrongEntity", "Entity Id %1$s in state but entity id %2$s in event", stateEntityId, eventEntityId);

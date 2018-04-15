@@ -20,30 +20,30 @@ public class HibernatePartyEventStore extends AbstractHibernateEventStore
     }
 
     @Override
-    protected Class getSupportedStateEventType()
+    protected Class getSupportedEventType()
     {
-        return AbstractPartyStateEvent.class;
+        return AbstractPartyEvent.class;
     }
 
     @Transactional(readOnly = true)
     @Override
     public EventStream loadEventStream(Class eventType, EventStoreAggregateId eventStoreAggregateId, long version) {
-        Class supportedEventType = AbstractPartyStateEvent.class;
+        Class supportedEventType = AbstractPartyEvent.class;
         if (!eventType.isAssignableFrom(supportedEventType)) {
             throw new UnsupportedOperationException();
         }
         String idObj = (String) eventStoreAggregateId.getId();
-        Criteria criteria = getCurrentSession().createCriteria(AbstractPartyStateEvent.class);
+        Criteria criteria = getCurrentSession().createCriteria(AbstractPartyEvent.class);
         criteria.add(Restrictions.eq("partyEventId.partyId", idObj));
         criteria.add(Restrictions.le("partyEventId.version", version));
         criteria.addOrder(Order.asc("partyEventId.version"));
         List es = criteria.list();
         for (Object e : es) {
-            ((AbstractPartyStateEvent) e).setStateEventReadOnly(true);
+            ((AbstractPartyEvent) e).setEventReadOnly(true);
         }
         EventStream eventStream = new EventStream();
         if (es.size() > 0) {
-            eventStream.setSteamVersion(((AbstractPartyStateEvent) es.get(es.size() - 1)).getPartyEventId().getVersion());
+            eventStream.setSteamVersion(((AbstractPartyEvent) es.get(es.size() - 1)).getPartyEventId().getVersion());
         } else {
             //todo?
         }

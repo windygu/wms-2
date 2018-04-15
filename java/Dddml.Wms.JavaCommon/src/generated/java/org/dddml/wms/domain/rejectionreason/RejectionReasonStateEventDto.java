@@ -2,9 +2,9 @@ package org.dddml.wms.domain.rejectionreason;
 
 import java.util.Date;
 import org.dddml.wms.domain.*;
-import org.dddml.wms.domain.AbstractStateEvent;
+import org.dddml.wms.domain.AbstractEvent;
 
-public class RejectionReasonStateEventDto extends AbstractStateEvent
+public class RejectionReasonStateEventDto extends AbstractEvent
 {
 
     private RejectionReasonEventId rejectionReasonEventId;
@@ -98,7 +98,7 @@ public class RejectionReasonStateEventDto extends AbstractStateEvent
 	public static class RejectionReasonStateCreatedDto extends RejectionReasonStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_CREATED;
         }
@@ -109,7 +109,7 @@ public class RejectionReasonStateEventDto extends AbstractStateEvent
 	public static class RejectionReasonStateMergePatchedDto extends RejectionReasonStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_MERGE_PATCHED;
         }
@@ -120,7 +120,7 @@ public class RejectionReasonStateEventDto extends AbstractStateEvent
 	public static class RejectionReasonStateDeletedDto extends RejectionReasonStateEventDto
 	{
         @Override
-        public String getStateEventType()
+        public String getEventType()
         {
             return STATE_EVENT_TYPE_DELETED;
         }

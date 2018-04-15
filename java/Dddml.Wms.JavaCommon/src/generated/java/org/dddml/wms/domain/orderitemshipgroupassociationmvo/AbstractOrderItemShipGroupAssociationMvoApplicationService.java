@@ -87,19 +87,19 @@ public abstract class AbstractOrderItemShipGroupAssociationMvoApplicationService
         return getStateQueryRepository().getCount(filter);
     }
 
-    public OrderItemShipGroupAssociationMvoStateEvent getStateEvent(OrderItemShipGroupAssociationId orderItemShipGroupAssociationId, long version) {
-        OrderItemShipGroupAssociationMvoStateEvent e = (OrderItemShipGroupAssociationMvoStateEvent)getEventStore().getStateEvent(toEventStoreAggregateId(orderItemShipGroupAssociationId), version);
+    public OrderItemShipGroupAssociationMvoEvent getEvent(OrderItemShipGroupAssociationId orderItemShipGroupAssociationId, long version) {
+        OrderItemShipGroupAssociationMvoEvent e = (OrderItemShipGroupAssociationMvoEvent)getEventStore().getEvent(toEventStoreAggregateId(orderItemShipGroupAssociationId), version);
         if (e != null)
-        { e.setStateEventReadOnly(true); }
+        { e.setEventReadOnly(true); }
         else if (version == -1)
         {
-            return getStateEvent(orderItemShipGroupAssociationId, 0);
+            return getEvent(orderItemShipGroupAssociationId, 0);
         }
         return e;
     }
 
     public OrderItemShipGroupAssociationMvoState getHistoryState(OrderItemShipGroupAssociationId orderItemShipGroupAssociationId, long version) {
-        EventStream eventStream = getEventStore().loadEventStream(AbstractOrderItemShipGroupAssociationMvoStateEvent.class, toEventStoreAggregateId(orderItemShipGroupAssociationId), version - 1);
+        EventStream eventStream = getEventStore().loadEventStream(AbstractOrderItemShipGroupAssociationMvoEvent.class, toEventStoreAggregateId(orderItemShipGroupAssociationId), version - 1);
         return new AbstractOrderItemShipGroupAssociationMvoState.SimpleOrderItemShipGroupAssociationMvoState(eventStream.getEvents());
     }
 
@@ -138,7 +138,7 @@ public abstract class AbstractOrderItemShipGroupAssociationMvoApplicationService
         }
     }
 
-    public void initialize(OrderItemShipGroupAssociationMvoStateEvent.OrderItemShipGroupAssociationMvoStateCreated stateCreated) {
+    public void initialize(OrderItemShipGroupAssociationMvoEvent.OrderItemShipGroupAssociationMvoStateCreated stateCreated) {
         OrderItemShipGroupAssociationId aggregateId = stateCreated.getOrderItemShipGroupAssociationMvoEventId().getOrderItemShipGroupAssociationId();
         OrderItemShipGroupAssociationMvoState state = new AbstractOrderItemShipGroupAssociationMvoState.SimpleOrderItemShipGroupAssociationMvoState();
         state.setOrderItemShipGroupAssociationId(aggregateId);
@@ -156,9 +156,9 @@ public abstract class AbstractOrderItemShipGroupAssociationMvoApplicationService
         if (command.getOrderVersion() == null) { command.setOrderVersion(OrderItemShipGroupAssociationMvoState.VERSION_NULL); }
         if (state.getOrderVersion() != null && state.getOrderVersion() > command.getOrderVersion())
         {
-            Event lastEvent = getEventStore().findLastEvent(AbstractOrderItemShipGroupAssociationMvoStateEvent.class, eventStoreAggregateId, command.getOrderVersion());
-            if (lastEvent != null && lastEvent instanceof AbstractStateEvent
-               && command.getCommandId() != null && command.getCommandId().equals(((AbstractStateEvent) lastEvent).getCommandId()))
+            Event lastEvent = getEventStore().getEvent(AbstractOrderItemShipGroupAssociationMvoEvent.class, eventStoreAggregateId, command.getOrderVersion());
+            if (lastEvent != null && lastEvent instanceof AbstractEvent
+               && command.getCommandId() != null && command.getCommandId().equals(((AbstractEvent) lastEvent).getCommandId()))
             {
                 repeated = true;
             }
